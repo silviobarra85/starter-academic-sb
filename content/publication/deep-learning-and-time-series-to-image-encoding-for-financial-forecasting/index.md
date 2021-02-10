@@ -2,6 +2,12 @@
 title: Deep learning and time series-To-image encoding for financial forecasting
 publication_types:
   - "2"
+authors:
+  - Silvio Barra
+  - Salvatore Mario Carta
+  - Andrea Corriga
+  - Alessandro Sebastian Podda
+  - Diego Reforgiato Recupero
 doi: 10.1109/JAS.2020.1003132
 publication: IEEE/CAA Journal of Automatica Sinica Volume 7, Issue 3, May 2020,
   Article number 9080613, Pages 683-692
