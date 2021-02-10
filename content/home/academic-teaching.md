@@ -32,26 +32,11 @@ design:
 item:
 - certificate_url: 
   date_end: ""
-  date_start: "2018-10-01"
-  description: ""
+  date_start: "AY 2020-2021"
+  description: "2nd sem"
   organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
   organization_url: 'http://informatica.dieti.unina.it/index.php/it/'
   title: Operating systems for mobile, cloud and IoT
   url: ""
-- certificate_url: https://www.edx.org
-  date_end: ""
-  date_start: "2018-03-01"
-  description: Formulated informed blockchain models, hypotheses, and use cases.
-  organization: edX
-  organization_url: https://www.edx.org
-  title: Blockchain Fundamentals
-  url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-- certificate_url: https://www.datacamp.com
-  date_end: "2017-12-21"
-  date_start: "2017-07-01"
-  description: ""
-  organization: DataCamp
-  organization_url: https://www.datacamp.com
-  title: 'Object-Oriented Programming in R: S3 and R6 Course'
-  url: ""
+
 ---
