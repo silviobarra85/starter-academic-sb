@@ -1,7 +1,7 @@
 ---
 title: "F-FID: fast fuzzy-based iris de-noising for mobile security applications"
 publication_types:
-  - "0"
+  - "2"
 authors:
   - admin
   - Carmen Bisogni
