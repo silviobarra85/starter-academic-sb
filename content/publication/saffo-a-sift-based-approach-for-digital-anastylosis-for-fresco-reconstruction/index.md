@@ -5,7 +5,7 @@ publication_types:
   - "1"
 authors:
   - Paola Barra
-  - Silvio Barra
+  - admin
   - Michele Nappi
   - Fabio Narducci
 doi: 10.1016/j.patrec.2020.07.008
