@@ -7,6 +7,8 @@ authors:
   - Fabio Narducci
   - admin
   - Modesto Castrillón-Santanaa
+doi: 10.1016/j.patrec.2018.01.005
+publication: Pattern Recognition Letters Volume 126, 1 September 2019, Pages 86-91
 abstract: In the present paper, we propose a source camera identification (SCI)
   method for mobile devices based on deep learning. Recently, convolutional
   neural networks (CNNs) have shown a remarkable performance on several tasks
