@@ -3,7 +3,7 @@ title: A Voice User Interface for football event tagging applications
 publication_types:
   - "1"
 authors:
-  - Silvio Barra
+  - admin
   - Alessandro  Carcangiu
   - Salvatore M Carta
   - Alessandro Sebastian Podda
