@@ -45,13 +45,18 @@ social:
     link: https://publons.com/researcher/1606390/silvio-barra/
     icon_pack: ai
     icon: publons
+  - display:
+      header: false
+    link: https://stackoverflow.com/users/8098659/silviobarra
+    icon_pack: ai
+    icon: stackoverflow
 organizations: []
 education:
   courses:
     - course: Ph.D. Degree in Computer Science
       year: 2016
       institution: University of Cagliari
-    - course: Master Degree (cum laude) in Computer sciences
+    - course: Master Degree (cum laude) in Computer Science
       institution: University of Salerno
       year: 2012
     - course: Bachelor Degree (cum laude) in Computer Science
