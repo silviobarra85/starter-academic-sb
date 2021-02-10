@@ -27,7 +27,7 @@ social:
     link: https://scholar.google.it/citations?user=dsXeL6YAAAAJ&hl=it
   - display:
       header: false
-    icon_pack: far
+    icon_pack: fab
     icon: stripe-s
     link: https://www.scopus.com/authid/detail.uri?authorId=56005376300
   - display:
