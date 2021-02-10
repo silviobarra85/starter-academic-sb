@@ -25,7 +25,7 @@ item:
     organization_url: 'http://informatica.dieti.unina.it/index.php/it/'
     title: Databases Laboratory (AY 2020-2021)
     url: ''
-    certificate_url: 
+    certificate_url: ''
     date_start: '2020-10-01'
     date_end: ''
     description: ''
@@ -33,7 +33,7 @@ item:
     organization_url: 'https://dmi.unica.it'
     title: Laboratory of Operating systems (AYs 2017-2018, 2018-2019, 2019-2020)
     url: ''
-    certificate_url: 
+    certificate_url: ''
     date_start: '2017-10-01'
     date_end: ''
     description: ''
@@ -41,7 +41,7 @@ item:
     organization_url: 'https://dmi.unica.it'
     title: Advanced Techniques of Image Processing (AYs 2017-2018, 2018-2019, 2019-2020)
     url: ''
-    certificate_url: 
+    certificate_url: ''
     date_start: '2017-03-01'
     date_end: ''
     description: ''
@@ -49,7 +49,7 @@ item:
     organization_url: https://www.scienzeetecnologie.uniparthenope.it'
     title: Software Engineering 2 (AYs 2015-2016, 2016-2017)
     url: ''
-    certificate_url: 
+    certificate_url: ''
     date_start: '2015-03-01'
     date_end: ''
     description: ''
@@ -57,7 +57,7 @@ item:
     organization_url: 'https://dmi.unica.it'
     title: Biometrics Security (AYs 2012-2013, 2013-2014)
     url: ''
-    certificate_url: 
+    certificate_url: ''
     date_start: '2013-10-01'
     date_end: ''
     description: ''
@@ -65,7 +65,7 @@ item:
     organization_url: 'https://dmi.unica.it'
     title: Software Engineering  (AYs 2012-2013, 2013-2014)
     url: ''
-    certificate_url: 
+    certificate_url: ''
     date_start: '2013-03-01'
     date_end: ''
     description: ''
@@ -73,7 +73,7 @@ item:
     organization_url: 'https://www.sardegnaricerche.it'
     title: Software Engineering
     url: ''
-    certificate_url: 
+    certificate_url: ''
     date_start: '2013-04-01'
     date_end: ''
     description: ''
