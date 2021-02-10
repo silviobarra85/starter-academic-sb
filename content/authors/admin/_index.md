@@ -1,5 +1,5 @@
 ---
-title: Silvio Barra Ph.D.
+title: Silvio Barra
 role: Research Assistant
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
