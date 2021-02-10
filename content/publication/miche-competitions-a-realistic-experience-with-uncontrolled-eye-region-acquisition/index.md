@@ -2,7 +2,7 @@
 title: "MICHE competitions: A realistic experience with uncontrolled eye region
   acquisition"
 publication_types:
-  - "0"
+  - "6"
 authors:
   - admin
   - Maria De Marsico
