@@ -9,7 +9,8 @@ authors:
   - Fabio Narducci
   - admin
 doi: 10.1007/s11042-019-7561-0
-publication: ""
+publication: Multimedia Tools and Applications Volume 78, Issue 23, 1 December
+  2019, Pages 32999-33021
 abstract: "Hadoop is a software framework allowing for the possibility of coding
   distributed applications starting from a MapReduce algorithm with very low
   programming efforts. However, the performance of the implementations resulting
