@@ -5,7 +5,7 @@ publication_types:
   - "2"
 authors:
   - Paola Barra
-  - Silvio Barra
+  - admin
   - Carmen Bisogni
   - Maria De Marsico
   - Michele Nappi
@@ -53,5 +53,5 @@ image:
   filename: featured
   focal_point: Smart
   preview_only: false
-date: 2021-02-10T15:40:17.663Z
+date: 2020-08-01T14:40:00.000Z
 ---
