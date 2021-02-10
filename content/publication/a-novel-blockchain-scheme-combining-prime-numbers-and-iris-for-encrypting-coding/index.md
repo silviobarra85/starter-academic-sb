@@ -2,7 +2,7 @@
 title: A novel blockchain scheme combining prime numbers and iris for encrypting
   coding
 publication_types:
-  - "0"
+  - "1"
 authors:
   - Gerardo Iovane
   - Michele Nappi
