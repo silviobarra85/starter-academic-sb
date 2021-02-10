@@ -40,6 +40,11 @@ social:
     link: https://www.researchgate.net/profile/Silvio_Barra
     icon_pack: ai
     icon: researchgate
+  - display:
+      header: false
+    link: https://publons.com/researcher/1606390/silvio-barra/
+    icon_pack: ai
+    icon: publons
 organizations: []
 education:
   courses:
