@@ -3,7 +3,7 @@ title: Deep learning and time series-To-image encoding for financial forecasting
 publication_types:
   - "2"
 authors:
-  - Silvio Barra
+  - admin
   - Salvatore Mario Carta
   - Andrea Corriga
   - Alessandro Sebastian Podda
