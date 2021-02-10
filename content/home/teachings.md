@@ -10,6 +10,7 @@ design:
   background:
     text_color_light: false
     image_darken: 0
+item:
 - certificate_url: 
   date_end: ""
   date_start: "March 2021"
