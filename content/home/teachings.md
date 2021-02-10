@@ -26,7 +26,7 @@ item:
     title: Databases Laboratory (AY 2020-2021)
     url: ''
     certificate_url: 
-    date_start: '2020-10-01”
+    date_start: '2020-10-01'
     date_end: ''
     description: ''
  -  organization: University of Cagliari (Department of Mathematics and Computer Sciences)
@@ -34,7 +34,7 @@ item:
     title: Laboratory of Operating systems (AYs 2017-2018, 2018-2019, 2019-2020)
     url: ''
     certificate_url: 
-    date_start: '2017-10-01“
+    date_start: '2017-10-01'
     date_end: ''
     description: ''
  -  organization: University of Cagliari (Department of Mathematics and Computer Sciences)
@@ -42,7 +42,7 @@ item:
     title: Advanced Techniques of Image Processing (AYs 2017-2018, 2018-2019, 2019-2020)
     url: ''
     certificate_url: 
-    date_start: '2017-03-01”
+    date_start: '2017-03-01'
     date_end: ''
     description: ''
  -  organization: University of Naples, Parthenope (Department of Sciences and Technologies)
@@ -50,7 +50,7 @@ item:
     title: Software Engineering 2 (AYs 2015-2016, 2016-2017)
     url: ''
     certificate_url: 
-    date_start: '2015-03-01”
+    date_start: '2015-03-01'
     date_end: ''
     description: ''
  -  organization: University of Cagliari (Department of Mathematics and Computer Sciences)
@@ -58,7 +58,7 @@ item:
     title: Biometrics Security (AYs 2012-2013, 2013-2014)
     url: ''
     certificate_url: 
-    date_start: '2013-10-01”
+    date_start: '2013-10-01'
     date_end: ''
     description: ''
  -  organization: University of Cagliari (Department of Mathematics and Computer Sciences)
@@ -66,7 +66,7 @@ item:
     title: Software Engineering  (AYs 2012-2013, 2013-2014)
     url: ''
     certificate_url: 
-    date_start: '2013-03-01”
+    date_start: '2013-03-01'
     date_end: ''
     description: ''
  -  organization: Sardegna Ricerche
@@ -74,7 +74,7 @@ item:
     title: Software Engineering
     url: ''
     certificate_url: 
-    date_start: '2013-04-01”
+    date_start: '2013-04-01'
     date_end: ''
     description: ''
   
