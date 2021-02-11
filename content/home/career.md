@@ -2,7 +2,7 @@
 widget: experience
 widget_id: career
 headless: true
-weight: 20
+weight: 30
 title: Academic Career
 experience:
   - title: Bachelor Degree (cum laude)
