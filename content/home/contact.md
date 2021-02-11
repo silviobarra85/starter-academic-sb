@@ -4,7 +4,7 @@ widget_id: contact
 headless: true
 weight: 130
 title: Contacts
-active: false
+active: true
 content:
   autolink: true
   form:
