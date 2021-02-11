@@ -31,7 +31,7 @@ abstract: In the last decade, market financial forecasting has attracted high
   latter provides excellent returns. Both quantitative and qualitative results
   are provided.
 draft: false
-featured: false
+featured: true
 image:
   filename: featured
   focal_point: Smart
