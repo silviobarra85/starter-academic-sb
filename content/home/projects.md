@@ -1,10 +1,10 @@
 ---
 widget: portfolio
 widget_id: projects
-headless: true
-weight: 10
-title: Projects
-active: true
+headless: true  # This file represents a page section.
+
+# ... Put Your Section Options Here (title etc.) ...
+
 content:
   # Page type to display. E.g. project.
   page_type: project
@@ -20,6 +20,10 @@ content:
   filter_button:
     - name: All
       tag: '*'
+    - name: Deep Learning
+      tag: Deep Learning
+    - name: Other
+      tag: Demo
 design:
   # Choose how many columns the section has. Valid values: 1 or 2.
   columns: '2'
@@ -30,8 +34,5 @@ design:
   #   5 = Showcase
   view: 3
   # For Showcase view, flip alternate rows?
-  flip_alt_rows: falsedesign:
-  background:
-    text_color_light: false
-    image_darken: 0
+  flip_alt_rows: false
 ---
