@@ -18,8 +18,8 @@ content:
     exclude_featured: true
 design:
   view: 4
+  columns: "1"
 ---
-
 {{% callout note %}}
-Quickly discover relevant content by [filtering publications](./publication/).
+[All the publications](./publication/).
 {{% /callout %}}
