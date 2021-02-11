@@ -7,12 +7,6 @@ title: Contacts
 active: true
 content:
   autolink: true
-  form:
-    provider: netlify
-    formspree:
-      ? id
-    netlify:
-      captcha: false
 design:
   columns: "1"
   background:
