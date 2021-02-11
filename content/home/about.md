@@ -3,9 +3,9 @@ widget: about
 widget_id: biography
 headless: true
 weight: 20
-title: Biograpdwdwdw
+title: Biography
 active: true
 author: admin
 design:
-  columns: "1"
+  columns: "2"
 ---
