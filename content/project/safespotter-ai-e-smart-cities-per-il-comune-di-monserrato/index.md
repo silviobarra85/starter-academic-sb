@@ -1,5 +1,5 @@
 ---
-title: "Safespotter: AI e Smart Cities per il Comune di Monserrato"
+title: "Safespotter: AI for Smart Cities"
 date: 2021-02-11T11:10:53.679Z
 draft: false
 featured: false
