@@ -2,7 +2,7 @@
 widget: accomplishments
 widget_id: teachings
 headless: true
-weight: 30
+weight: 40
 title: Teaching
 active: true
 date_format: Jan 2006
