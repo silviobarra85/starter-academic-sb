@@ -1,7 +1,7 @@
 ---
 title: "MOHAB: Mobile hand-based biometric recognition"
 publication_types:
-  - "0"
+  - "1"
 authors:
   - admin
   - Maria De Marsico
