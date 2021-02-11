@@ -50,6 +50,11 @@ social:
     link: https://stackoverflow.com/users/8098659/silviobarra
     icon_pack: ai
     icon: stackoverflow
+  - display:
+      header: false
+    link: "mailto: silvio.barra@unina.it"
+    icon: envelope
+    icon_pack: fas
 organizations: []
 education:
   courses:
