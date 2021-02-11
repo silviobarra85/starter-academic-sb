@@ -93,11 +93,11 @@ email = "silvio.barra@unina.it"
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 )
-address = {street = "Via Claudio, 21", city = "Naples", region = "CA", postcode = "84125", country = "Italy", country_code = "IT"}
+address = {street = "Via Claudio, 21", city = "Naples", postcode = "84125", country = "Italy", country_code = "IT"}
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.
-coordinates = {latitude = "40.82873", longitude = "14.19050"}
+coordinates = {latitude = "40.828590216106456", longitude = "14.190603369631955"}
 
 # Directions for visitors to locate you.
 #directions = "Enter Building 1 and take the stairs to Office 200 on Floor 2"
