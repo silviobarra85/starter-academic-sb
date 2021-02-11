@@ -1,6 +1,6 @@
 ---
 title: Silvio Barra
-role: Research Assistant @ University of Naples, Federico II
+role: Assistant Professor @ University of Naples, Federico II
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
 interests:
