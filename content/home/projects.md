@@ -17,13 +17,13 @@ content:
   # To show all items, set `tag` to "*".
   # To filter by a specific tag, set `tag` to an existing tag name.
   # To remove toolbar, delete/comment all instances of `filter_button` below.
-  filter_button:
-    - name: All
-      tag: '*'
-    - name: Deep Learning
-      tag: Deep Learning
-    - name: Other
-      tag: Demo
+  #filter_button:
+  #  - name: All
+  #    tag: '*'
+  #  - name: Deep Learning
+  #    tag: Deep Learning
+  #  - name: Other
+  #    tag: Demo
 design:
   # Choose how many columns the section has. Valid values: 1 or 2.
   columns: '2'
