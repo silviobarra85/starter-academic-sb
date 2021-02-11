@@ -28,7 +28,7 @@ abstract: Interest in the security of individuals has increased in recent years.
   recognition is the final goal of the surveillance system, as opposed to
   behavior analysis, anomaly detection or action recognition.
 draft: false
-featured: false
+featured: true
 image:
   filename: featured
   focal_point: Smart
