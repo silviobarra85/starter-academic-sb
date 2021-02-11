@@ -19,9 +19,3 @@ image:
   preview_only: false
 ---
 ***Car Accident Prevention Systems***
-
-* **Scientific Director**: Prof. Salvatore Carta\
-  **Founded by**: Comune di Monserrato - Sardegna Ricerche\
-  **Partners**: BeeToBit Srl, Arkys Srl and University of Cagliar
-* **Start date**: 24/06/2020\
-  **End date**: 16/12/2021
