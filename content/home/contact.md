@@ -4,18 +4,14 @@ widget_id: contact
 headless: true
 weight: 130
 title: Contacts
-active: true
+active: false
 content:
-  # Automatically link email and phone or display as text?
   autolink: true
-  
-  # Email form provider
   form:
     provider: netlify
     formspree:
-      id:
+      ? id
     netlify:
-      # Enable CAPTCHA challenge to reduce spam?
       captcha: false
 design:
   columns: "1"
