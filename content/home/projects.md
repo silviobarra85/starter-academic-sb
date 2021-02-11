@@ -8,7 +8,7 @@ content:
 weight: 60
 title: Projects
 design:
-  columns: "2"
+  columns: "1"
   view: 5
   flip_alt_rows: false
 ---
