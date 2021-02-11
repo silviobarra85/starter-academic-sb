@@ -56,6 +56,9 @@ education:
     - course: Ph.D. Degree in Computer Science
       year: 2016
       institution: University of Cagliari
+    - course: Visiting Researcher
+      year: 2014
+      institution: Universidade da Beira Interior, UBI (Covilhã, Portugal)
     - course: Master Degree (cum laude) in Computer Science
       institution: University of Salerno
       year: 2012
