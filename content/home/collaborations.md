@@ -42,6 +42,9 @@ design:
 
   * **[Hugo Pedro Proença](https://www.di.ubi.pt/~hugomcp/), Associate Professor**
   * **[João Neves](http://socia-lab.di.ubi.pt/~jcneves/), Invited assistant Professor**
+* **Universidad de Las Palmas de Gran Canaria (ULPGC)**
+
+  * **[Modesto Castrillòn-Santana](http://mozart.dis.ulpgc.es/~modesto/), Full Professor**
 
 **Labs**
 
