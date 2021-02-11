@@ -6,7 +6,7 @@ content:
   page_type: project
   filter_default: 0
 weight: 60
-title: Proojects
+title: Projects
 design:
   columns: "2"
   view: 5
