@@ -28,7 +28,7 @@ abstract: Soft biometrics have been emerging to complement other traits and are
   improve the effectiveness of face recognizers and can also be used as a
   privacy-preserving solution for biometric recognition in public environments.
 draft: false
-featured: false
+featured: true
 image:
   filename: featured
   focal_point: Smart
