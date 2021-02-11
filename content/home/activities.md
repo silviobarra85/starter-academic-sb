@@ -2,7 +2,7 @@
 widget: blank
 widget_id: activities
 headless: true
-weight: 10
+weight: 130
 title: Activities
 active: true
 design:
