@@ -71,7 +71,7 @@ highlight_name: true
 ---
 Silvio Barra was born in Battiglia (SA - ITALY) on August 7, 1985.
 
-In 2009 and in 2012 he received the B.Sc. degree (cum laude) and the M.Sc. degree (cum laude) in Computer Science from University of Salerno. In 2017 he took the Ph.D. at the University of Cagliari. Currently he is Research Assistant at the Department of Information Technology and Electrical Engineering at University of Naples, Federico II. 
+In 2009 and in 2012 he received the B.Sc. degree (cum laude) and the M.Sc. degree (cum laude) in Computer Science from University of Salerno. In 2017 he took the Ph.D. at the University of Cagliari. Currently he is Assistant Professor at the Department of Information Technology and Electrical Engineering at University of Naples, Federico II. 
 
 He is member of the GIRPR. 
 
