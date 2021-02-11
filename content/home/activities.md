@@ -11,6 +11,8 @@ design:
     text_color_light: false
     image_darken: 0
 ---
+**Associate Editor** of the [Newsletter ](https://ieee-biometrics.org/index.php/publications/newsletter)of the [IEEE Biometric Council](https://ieee-biometrics.org/)
+
 **Editorialship Activities**
 
 * **2020:** [Electronics, MDPI, (ISSN: 20799292)](https://www.mdpi.com/journal/electronics), Member of the Editorial Board as *Topic Editor.*
