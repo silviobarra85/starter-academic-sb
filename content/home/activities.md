@@ -24,13 +24,12 @@ design:
 
 **Session Chair @ International Conferences and Workshops**
 
-2019 [14th International Conference on Green, Pervasive and Cloud Computing (GPC 2019)](https://www.gpc2019.facom.ufu.br)
-
-2018 [The 10th International Symposium on Cyberspace Safety andSecurity (CSS 2018)](http://css2018.di.unisa.it)
+* 2019 [14th International Conference on Green, Pervasive and Cloud Computing (GPC 2019)](https://www.gpc2019.facom.ufu.br)
+* 2018 [The 10th International Symposium on Cyberspace Safety andSecurity (CSS 2018)](http://css2018.di.unisa.it)
 
 **Poster and Demo Chair @ International Conferences and Workshops**
 
-2020 [International Conference on Advanced Visual Interfaces (AVI 2020)](https://sites.google.com/unisa.it/avi2020/)
+* 2020 [International Conference on Advanced Visual Interfaces (AVI 2020)](https://sites.google.com/unisa.it/avi2020/)
 
 **Program Committee Member @ International Conferences and Workshops**
 
