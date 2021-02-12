@@ -1,8 +1,7 @@
 ---
 title: Silvio Barra
 role: Assistant Professor
-bio: My research interests include distributed robotics, mobile computing and
-  programmable matter.
+bio: Assistant Professor @ University of Naples
 interests:
   - Deep Learning
   - Machine Learning
@@ -10,7 +9,7 @@ interests:
   - Image Processing
   - Video Analysis
   - Financial Market Prediction
-  - Medical Images Analysi
+  - Medical Images Analysis
 social:
   - display:
       header: false
