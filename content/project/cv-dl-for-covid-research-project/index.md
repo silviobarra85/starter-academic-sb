@@ -11,10 +11,4 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-This project consists of a series of activities based on the dataset of CXR and medical records published [here](https://aiforcovid.radiomica.it) by the CDI - Centro Diagnostico Italiano. 
-
-The project is carried out together with [**Prof. Salvatore Mario Carta** ](https://people.unica.it/salvatoremariocarta/)and **[Dr. Sebastian Podda](https://aibd.unica.it/people/sebastian-podda)** of the [University of Cagliari.](https://dmi.unica.it)
-
-The activities comprise image and data processing activities.
-
-Download the PDF for further details.
+This project consists of a series of activities based on the dataset of CXR and medical records published [here](https://aiforcovid.radiomica.it) by the CDI - Centro Diagnostico Italiano. The project is carried out together with [**Prof Salvatore Mario Carta** ](https://people.unica.it/salvatoremariocarta/)and **[Dr Sebastian Podda](https://aibd.unica.it/people/sebastian-podda)** of the [University of Cagliari. ](https://dmi.unica.it)The activities comprise image and data processing activities. Download the PDF for further details.
