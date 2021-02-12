@@ -1,6 +1,6 @@
 ---
-title: "Safespotter: AI for Smart Cities"
-subtitle: POR FESR Sardegna 2014-2020.
+title: "Safespotter: AI for Smart Cities (POR FESR Sardegna 2014-2020)"
+subtitle: POR FESR Sardegna 2014-2020
 date: 2021-02-11T11:10:53.679Z
 draft: false
 featured: false
