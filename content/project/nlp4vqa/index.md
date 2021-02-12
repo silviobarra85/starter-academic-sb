@@ -4,11 +4,11 @@ subtitle: Research Project
 date: 2021-02-12T10:24:06.293Z
 draft: false
 featured: false
-external_link: content/projects/nlp4vqa/#index.md
+external_link: content/project/nlp4vqa/#index.md
 image:
   filename: featured
   focal_point: Smart
-  preview_only: true
+  preview_only: false
 ---
 This research project consists of a set of activities finalized to the classification of the prognosis of a patient affected by coronavirus. 
 
