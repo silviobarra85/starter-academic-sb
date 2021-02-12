@@ -7,8 +7,7 @@ title: Teaching
 active: true
 date_format: Jan 2006
 item:
-  - organization: University of Naples, Federico II (Department of Information
-      Technology and Electrical Engineering)
+  - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
     title: Operating Systems for Mobile, Cloud and IoT (AY 2020-2021)
     url: ""
@@ -24,8 +23,7 @@ item:
     date_start: 2019-10-01
     date_end: ""
     description: ""
-  - organization: University of Naples, Federico II (Department of Information
-    Technology and Electrical Engineering)
+  - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
     title: Databases Laboratory (AY 2020-2021)
     url: ""
