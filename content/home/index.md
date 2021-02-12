@@ -1,7 +1,9 @@
 ---
-# Homepage
 type: widget_page
-
-# Homepage is headless, other widget pages are not.
+widget: blank
+widget_id: index
 headless: true
+weight: 10
+design:
+  columns: "1"
 ---
