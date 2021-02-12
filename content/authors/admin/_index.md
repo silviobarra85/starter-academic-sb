@@ -83,3 +83,5 @@ He is member of the GIRPR.
 His main research interests include pattern recognition, biometrics, video analysis and analytics and financial forecasting. 
 
 He is author in more than 40 papers, published in International Journals, Conferences and books.
+
+[prova](terms.md)
