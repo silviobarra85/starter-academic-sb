@@ -1,6 +1,6 @@
 ---
 title: Silvio Barra
-role: Assistant Professor @ University of Naples, Federico II
+role: Assistant Professor
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
 interests:
@@ -57,7 +57,18 @@ social:
     link: "mailto: silvio.barra@unina.it"
     icon: envelope
     icon_pack: fas
-organizations: []
+organizations:
+  - name: Department of Information Technology and Electrical Engineering
+    url: https://www.dieti.unina.it/index.php/it/
+  - name: University of Naples, Federico II
+    url: http://www.unina.it/home;jsessionid=E551563B5AB5DD1F1E87BB7FEB82D1D4.node_publisher11
+  - name: Projects of Intelligent Robotics and Advanced Cognitive Systems Laboratory
+      (PRISCA Lab)
+    url: http://prisca.unina.it/home
+  - url: https://aibd.unica.it
+    name: Artificial Intelligence and Big Data Laboratory (AIBD Lab)
+  - name: ICAROS
+    url: https://www.icaros.unina.it/index.php
 education:
   courses:
     - course: Ph.D. Degree in Computer Science
