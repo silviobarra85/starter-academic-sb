@@ -1,7 +1,7 @@
 ---
 title: NLP4VQA
 date: 2021-02-12T10:24:06.293Z
-draft: false
+draft: true
 featured: false
 external_link: "#prova_page.md"
 image:
