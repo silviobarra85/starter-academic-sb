@@ -56,3 +56,4 @@ design:
 **Companies**
 
 * **[DOMO Analytics](http://www.domoanalytics.it/contatti.html)**
+* **[Panacea Lab](http://www.panacealab.it)**
