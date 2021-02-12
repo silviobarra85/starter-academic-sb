@@ -9,6 +9,8 @@ interests:
   - Biometrics
   - Image Processing
   - Video Analysis
+  - Financial Market Prediction
+  - Medical Images Analysi
 social:
   - display:
       header: false
@@ -78,10 +80,8 @@ Silvio Barra was born in Battiglia (SA - ITALY) on August 7, 1985.
 
 In 2009 and in 2012 he received the B.Sc. degree (cum laude) and the M.Sc. degree (cum laude) in Computer Science from University of Salerno. In 2017 he took the Ph.D. at the University of Cagliari. Currently he is Assistant Professor at the Department of Information Technology and Electrical Engineering at University of Naples, Federico II. 
 
-He is member of the GIRPR. 
+He is member of the GIRPR/CVPL. 
 
 His main research interests include pattern recognition, biometrics, video analysis and analytics and financial forecasting. 
 
 He is author in more than 40 papers, published in International Journals, Conferences and books.
-
-[prova](example/terms.md)
