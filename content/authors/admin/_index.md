@@ -84,4 +84,4 @@ His main research interests include pattern recognition, biometrics, video analy
 
 He is author in more than 40 papers, published in International Journals, Conferences and books.
 
-[prova](terms.md)
+[prova](example/)
