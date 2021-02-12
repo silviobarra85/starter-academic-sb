@@ -5,6 +5,11 @@ date: 2021-02-12T10:24:06.293Z
 draft: false
 featured: false
 external_link: https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/#index.md
+links:
+  - url: https://aiforcovid.radiomica.it
+    name: Ai For COVID site
+  - url: https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf
+    name: PDF of the Project
 image:
   filename: featured
   focal_point: Smart
@@ -12,7 +17,7 @@ image:
 ---
 This research project consists of a set of activities finalized to the classification of the prognosis of a patient affected by coronavirus. 
 
-The project is in collaboration with [Prof. Salvatore Carta](https://people.unica.it/salvatoremariocarta/) and [Dr. Sebastian Podda](https://aibd.unica.it/people/sebastian-podda) of the University of Cagliari.
+The project is in collaboration with [Prof Salvatore Carta](https://people.unica.it/salvatoremariocarta/) and [Dr Sebastian Podda](https://aibd.unica.it/people/sebastian-podda) of the University of Cagliari.
 
 **The Covid-19 disease**
 
