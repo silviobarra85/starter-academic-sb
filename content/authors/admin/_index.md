@@ -70,7 +70,7 @@ education:
       institution: University of Salerno
       year: 2012
     - course: Bachelor Degree (cum laude) in Computer Science
-      institution: university ofSalerno
+      institution: University of Salerno
       year: 2009
 email: ""
 superuser: true
