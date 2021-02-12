@@ -16,8 +16,16 @@ item:
     date_start: 2021-03-01
     date_end: ""
     description: ""
+  - organization: Link Campus University
+    organization_url: https://www2.unilink.it/ateneo/Scienze-della-difesa-e-della-sicurezza.asp
+    title: Foundations of Computer Science and Cybersecurity (AYs 2019-2020, 2020-2021)
+    url: ""
+    certificate_url: ""
+    date_start: 2019-10-01
+    date_end: ""
+    description: ""
   - organization: University of Naples, Federico II (Department of Information
-      Technology and Electrical Engineering)
+    Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
     title: Databases Laboratory (AY 2020-2021)
     url: ""
