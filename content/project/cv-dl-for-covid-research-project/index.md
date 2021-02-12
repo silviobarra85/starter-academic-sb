@@ -2,9 +2,10 @@
 title: CV & DL for COVID (Research Project)
 subtitle: Research Project
 date: 2021-02-12T08:50:01.303Z
+summary: ""
 draft: false
 featured: false
-external_link: https://tcs.unica.it/members/sebastian-podda
+external_link: CVDLforCOVID_ver2_08022021_eng.pdf
 links: []
 image:
   filename: featured
