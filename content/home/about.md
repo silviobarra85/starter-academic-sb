@@ -7,5 +7,5 @@ title: Biography
 active: true
 author: admin
 design:
-  columns: "2"
+  columns: "1"
 ---
