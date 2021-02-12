@@ -4,7 +4,7 @@ subtitle: Research Project
 date: 2021-02-12T10:24:06.293Z
 draft: false
 featured: false
-external_link: "#prova_page.md"
+external_link: "#nlp4vqa.md"
 image:
   filename: featured
   focal_point: Smart
