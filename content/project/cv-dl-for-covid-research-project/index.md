@@ -12,7 +12,7 @@ image:
 ---
 This research project consists of a set of activities finalized to the classification of the prognosis of a patient affected by coronavirus. 
 
-The project is in collaboration with Prof. Salvatore Carta and Dr. Sebastian Podda of the University of Cagliari.
+The project is in collaboration with [Prof. Salvatore Carta](https://people.unica.it/salvatoremariocarta/) and [Dr. Sebastian Podda](https://aibd.unica.it/people/sebastian-podda) of the University of Cagliari.
 
 **The Covid-19 disease**
 
