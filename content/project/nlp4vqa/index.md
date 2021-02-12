@@ -1,5 +1,6 @@
 ---
-title: NLP4VQA
+title: Computer Vision & Deep Learning for COVID-19 (Research Project)
+subtitle: Research Project
 date: 2021-02-12T10:24:06.293Z
 draft: true
 featured: false
@@ -9,4 +10,4 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-prova
+This research project consists of a set of activities....
