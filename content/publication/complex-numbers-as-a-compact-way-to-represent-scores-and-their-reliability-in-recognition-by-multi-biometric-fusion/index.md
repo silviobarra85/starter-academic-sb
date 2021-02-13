@@ -51,3 +51,6 @@ image:
   preview_only: false
 date: 2014-07-11T08:37:00.000Z
 ---
+[[link]] 
+name = "Amazon" 
+url = "www.amazon.com"
