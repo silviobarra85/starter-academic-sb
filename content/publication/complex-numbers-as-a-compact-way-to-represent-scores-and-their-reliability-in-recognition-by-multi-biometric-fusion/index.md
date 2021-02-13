@@ -51,6 +51,6 @@ image:
   preview_only: false
 date: 2014-07-11T08:37:00.000Z
 
-url_amazon : "www.amazon.com
+url_amazon : "www.amazon.com"
 ---
 
