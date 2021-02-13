@@ -1,8 +1,8 @@
 ---
-title: Natural Language Processing 4 Visual Question Answering
+title: Natural Language Processing 4 Visual Question Answering (Research Project)
 subtitle: Research Project
 date: 2021-02-12T10:24:06.293Z
-draft: false
+draft: true
 featured: false
 external_link: project/nlp4vqa/#index.md
 image:
