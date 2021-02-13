@@ -32,6 +32,10 @@ abstract: The growing concerns about persons security and the increasing
   effectiveness of the proposed model in comparison with the state-of-the-art.
 draft: false
 featured: false
+links:
+- name: Custom
+url: http://www.amazon.com
+
 image:
   filename: featured
   focal_point: Smart
