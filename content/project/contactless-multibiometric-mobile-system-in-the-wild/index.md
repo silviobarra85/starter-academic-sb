@@ -7,8 +7,6 @@ draft: false
 featured: false
 external_link: 
 links:
-  - url: https://silviobarra.netlify.app/project/contactless-multibiometric-mobile-system-in-the-wild/#index.md
-    name: More...
   - url: http://www.biplab.unisa.it/iwbaas/specialsession.php
     name: COSMOS Special Session @ IWBAAS2017
 image:
