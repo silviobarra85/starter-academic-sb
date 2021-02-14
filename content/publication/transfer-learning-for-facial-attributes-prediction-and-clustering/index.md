@@ -25,6 +25,9 @@ abstract: Notwithstanding the enhancement obtained in the last decade
   models should be properly trained for attribute prediction tasks.
 draft: false
 featured: false
+links:
+  - url: https://link.springer.com/chapter/10.1007/978-981-15-1301-5_9
+    name: Springer Link
 url_code: https://github.com/Luca96/face-clustering
 image:
   filename: featured
