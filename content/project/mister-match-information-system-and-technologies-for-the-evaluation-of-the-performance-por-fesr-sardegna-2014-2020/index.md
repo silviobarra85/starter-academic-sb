@@ -5,10 +5,10 @@ subtitle: POR FESR Sardegna 2014-2020
 date: 2021-02-14T07:06:49.614Z
 draft: false
 featured: false
-external_link: https://silviobarra.netlify.app/project/mister-match-information-system-and-technologies-for-the-evaluation-of-the-performance-por-fesr-sardegna-2014-2020/#index.md
+external_link: https://abinsula.com/mister/
 links: 
-  - name: Project Site
-    url: https://abinsula.com/mister/
+  - name: Abinsula - MISTER site
+    url: https://silviobarra.netlify.app/project/mister-match-information-system-and-technologies-for-the-evaluation-of-the-performance-por-fesr-sardegna-2014-2020/#index.md
 image:
   filename: featured.png
   focal_point: Smart
