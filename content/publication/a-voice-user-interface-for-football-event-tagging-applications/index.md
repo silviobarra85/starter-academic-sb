@@ -22,6 +22,7 @@ abstract: Manual event tagging may be a very long and stressful activity, due
   efficiency and the benefits brought by the developed solution.
 draft: false
 featured: false
+url_poster: "AVI2020_poster.pdf"
 image:
   filename: featured
   focal_point: Smart
