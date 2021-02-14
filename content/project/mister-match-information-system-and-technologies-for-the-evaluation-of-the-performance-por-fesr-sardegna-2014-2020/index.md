@@ -7,8 +7,6 @@ draft: false
 featured: false
 external_link: 
 links: 
-  - name: More..
-    url: https://silviobarra.netlify.app/project/mister-match-information-system-and-technologies-for-the-evaluation-of-the-performance-por-fesr-sardegna-2014-2020/#index.md
   - name: Abinsula - MISTER site
     url: https://abinsula.com/mister/
 
