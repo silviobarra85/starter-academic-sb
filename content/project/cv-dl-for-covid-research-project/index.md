@@ -5,8 +5,10 @@ subtitle: Research Project
 date: 2021-02-12T10:24:06.293Z
 draft: false
 featured: false
-external_link: https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/#index.md
+external_link: 
 links:
+  - url: https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/#index.md
+    name: More...
   - url: https://aiforcovid.radiomica.it
     name: Ai For COVID site
   - url: https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf
