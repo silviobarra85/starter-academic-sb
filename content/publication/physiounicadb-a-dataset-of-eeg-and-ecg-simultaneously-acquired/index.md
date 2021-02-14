@@ -25,6 +25,19 @@ abstract: "Most of the application involving the study of EEG
   as possible. "
 draft: false
 featured: false
+# Custom links (uncomment lines below)
+ links:
+ - name: Custom Link
+   url: http://example.org
+
+url_pdf: ''
+url_code: ''
+url_dataset: 'https://www.dropbox.com/sh/whkuvpsxb4f26nk/AAAK1CjEPvp56NJ-SqV9-yEJa?dl=0'
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
 image:
   filename: featured
   focal_point: Smart
