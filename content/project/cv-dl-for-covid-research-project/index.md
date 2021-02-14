@@ -1,5 +1,6 @@
 ---
-title: Computer Vision & Deep Learning for COVID-19 (Research Project)
+title: "CV&DL for COVID: Computer Vision & Deep Learning for COVID-19 (Research
+  Project)"
 subtitle: Research Project
 date: 2021-02-12T10:24:06.293Z
 draft: false
