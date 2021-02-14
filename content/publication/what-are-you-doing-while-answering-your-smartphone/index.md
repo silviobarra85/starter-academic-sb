@@ -30,6 +30,7 @@ abstract: "Context awareness is major component of Ambient Intelligence. In
   trigger context-sensitive system actions."
 draft: false
 featured: false
+url_poster: ICPR2018_Poster.pdf
 image:
   filename: featured
   focal_point: Smart
