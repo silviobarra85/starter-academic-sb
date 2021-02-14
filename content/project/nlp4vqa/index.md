@@ -1,5 +1,6 @@
 ---
-title: Natural Language Processing 4 Visual Question Answering (Research Project)
+title: "NLP4VQA: Natural Language Processing 4 Visual Question Answering
+  (Research Project)"
 subtitle: Research Project
 date: 2021-02-12T10:24:06.293Z
 draft: true
