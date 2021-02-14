@@ -25,7 +25,7 @@ abstract: "Most of the application involving the study of EEG
   as possible. "
 draft: false
 featured: false
- links:
+links:
  - name: Custom Link
    url: http://example.org
 
