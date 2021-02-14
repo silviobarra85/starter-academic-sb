@@ -26,8 +26,8 @@ abstract: "Most of the application involving the study of EEG
 draft: false
 featured: false
 links:
- - name: Custom Link
-   url: http://example.org
+ - name: Science Direct
+   url: https://www.sciencedirect.com/science/article/pii/S0167865517304634
 
 url_pdf: ''
 url_code: ''
