@@ -44,4 +44,4 @@ What was missing was a criterion for assessing the severity of the di
 
 The data of the patient comprise both the CXR lung image and his/her medical record. The reference database is available [here](https://aiforcovid.radiomica.it) (registration needed).
 
-Further details are available [here.](https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf) [](https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf)(updated on February 08, 2021)
+Further details are available [here.](https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf) [](https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf)(updated on February 25, 2021)
