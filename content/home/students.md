@@ -2,7 +2,7 @@
 widget: blank
 widget_id: students
 headless: true
-weight: 80
+weight: 100
 title: Bachelor, Master and Ph.D. Students on Projects
 active: true
 design:
