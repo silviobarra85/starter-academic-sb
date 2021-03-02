@@ -9,7 +9,7 @@ external_link:
 links:
   - url: https://aiforcovid.radiomica.it
     name: Ai For COVID site
-  - url: https://silviobarra.netlify.app/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf
+  - url: https://www.silviobarra.com/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf
     name: PDF of the Project
 image:
   filename: featured
