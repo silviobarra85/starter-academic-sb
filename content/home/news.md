@@ -14,6 +14,6 @@ design:
 * **February 27, 2021:** The paper entitled *Natural interaction with traffic control cameras through multimodal interfaces* has been submittedat [AI-HCI 2021](http://2021.hci.international/ai-hci) as invited paper. The conference will be held virtually on 24-29 July 2021. 
 
   * **[Arxiv - preprint version](http://arxiv.org/abs/2103.01518)**
+* **Febraury 24, 2021:** The paper entitled *FootApp: an AI-Powered System for Football Match Annotation* has been submitted to the Special Issue "**[Pattern Recognition for Adaptive User Interfaces \[1178]](https://www.springer.com/journal/11042/updates/17727466)**" on Multimedia Tools and Application.
 * **January 11, 2021:** The paper entitled *Heimdall: an AI-based infrastructure for traffic monitoring and anomalies detection* has been accepted to [PerAwareCity2021](https://sites.google.com/view/perawarecity2021)!The presentation will be on March 22, starting from 10:45 a.m. (CET)*.* Alessandro Sebastian Podda is the designed presenter. The paper is developed within the [**SAFESPOTTER** project.](https://www.silviobarra.com/project/safespotter-ai-e-smart-cities-per-il-comune-di-monserrato/)
-
-  * **[Arxiv preprint version](http://arxiv.org/abs/2103.01506)**
+* **[Arxiv preprint version](http://arxiv.org/abs/2103.01506)**
