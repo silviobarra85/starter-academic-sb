@@ -57,6 +57,8 @@ social:
     icon: envelope
     icon_pack: fas
 organizations:
+  - name: Academic Site
+    url: https://www.docenti.unina.it/silvio.barra
   - name: Department of Information Technology and Electrical Engineering
     url: https://www.dieti.unina.it/index.php/it/
   - name: University of Naples, Federico II
