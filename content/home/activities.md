@@ -35,6 +35,7 @@ design:
 
 **Program Committee Member @ International Conferences and Workshops**
 
+* 2021 [Applications for Video Action Recognition and Prediction Special Session (AVARP2020)](http://idc2020.unirc.it/stAVARP.html), Special Session @ [International Symposium on Intelligent Distributed Computing (IDC 2020)](http://idc2020.unirc.it)
 * 2020 [The 2020 International Conference on Decision Aid Sciencesand Applications (DASA’20)](http://dasa20.uob.edu.bh)
 * 2020 [The 8th IEEE International Conference on Smart City andInformatization (iSCI 2020)](http://www.isci-conf.org/iSCI2020/)
 * 2020 [The 7th IEEE International Conference on Data Science andAdvanced Analytics (DSAA 2020)](http://dsaa2020.dsaa.co)
