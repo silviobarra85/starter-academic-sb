@@ -15,7 +15,7 @@ design:
 
   * **[Arxiv - preprint version](https://arxiv.org/abs/2103.02937)**
 * **March 04, 2021:** Accepted Invitation to serve as *International Program Committee Member* for [SIBGRAPI 2021 - Conference on Graphics, Patterns and Images](https://www.inf.ufrgs.br/sibgrapi2021/)
-* **March 03, 2021**: New Updates to CV&DL for COVID project.
+* **March 03, 2021**: New Updates to [CV&DL for COVID project](https://www.silviobarra.com/project/cv-dl-for-covid-research-project/).
 * **March 02, 2021**: Accepted Invitation to serve as *Program Committee Member* [Applications for Video Action Recognition and Prediction Special Session (AVARP2020)](http://idc2020.unirc.it/stAVARP.html), Special Session @ [International Symposium on Intelligent Distributed Computing (IDC2020)](http://idc2020.unirc.it)
 * **February 27, 2021:** The paper entitled *Natural interaction with traffic control cameras through multimodal interfaces* has been submittedat [AI-HCI 2021](http://2021.hci.international/ai-hci) as invited paper. The conference will be held virtually on 24-29 July 2021. 
 
