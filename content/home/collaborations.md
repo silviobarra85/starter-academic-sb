@@ -30,6 +30,7 @@ design:
 
   * [Michele Nappi](https://docenti.unisa.it/004288/home), Full Professor
   * [Genny Tortora](https://docenti.unisa.it/000751/home), Full Professor
+  * [Giuliana Vitiello](https://docenti.unisa.it/003730/home), Associate Professor
   * [Andrea Abate](https://docenti.unisa.it/004620/home), Associate Professor
   * [Fabio Narducci](https://docenti.unisa.it/025547/home), Assistant Professor
 * **University of Naples, "Parthenope"**
