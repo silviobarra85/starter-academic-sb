@@ -8,6 +8,8 @@ external_link:
 links:
   - url: https://www.aoucagliari.it/home/it/content_viewer.page?contentId=BND89869
     name: AOU site - Contract information
+  - url: https://www.silviobarra.com/project/cv-dl-for-covid-research-project/CVDLforCOVID_eng.pdf
+    name: PDF of the Project
 image:
   filename: featured
   focal_point: Smart
