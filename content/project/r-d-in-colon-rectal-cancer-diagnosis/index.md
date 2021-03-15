@@ -15,8 +15,16 @@ image:
 ---
 The research project aims at financing researches and developments in the color rectal cancer diagnosis.
 In particular, the objecive is to enhance the knowledge in the field by proposing AI based techniques for colon-rectal cancer
-- detection;
-- diagnosis;
-- prognosis classification;
 
-Further information will follow...
+* detection;
+* diagnosis;
+* prognosis classification;
+
+The following Activities have been identified:
+
+* AI for anomalous tisser detection, via semi-supervised learning approachesI 
+* AI for cancer image segmentation
+* AI for tumor classification
+* AI for prognosis prediction
+* Development of a Human Computer Interaction system
+* Deploy on a Software/Hardware infratructure
