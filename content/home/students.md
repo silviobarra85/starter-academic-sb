@@ -35,6 +35,7 @@ design:
 * *Andrea Deidda*, B.Sc. Student @ University of Cagliari, under the supervision of Prof. Salvatore Carta
 
   * Starting activities on medical records analysis for **[*CV&DL for COVID* project](https://www.silviobarra.com/project/cv-dl-for-covid-research-project/)**
+  * 15/03/2021: Changed activities. Now on **[R&D in colon-rectal cancer diagnosis project](https://www.silviobarra.com/project/r-d-in-colon-rectal-cancer-diagnosis/)
 * *Alberto Musa,* M.Sc. Student @ University of Cagliari, under the supervision of Prof. Salvatore Carta
 
   * IoT Systems for noises and fine dust detection in construction sites.
