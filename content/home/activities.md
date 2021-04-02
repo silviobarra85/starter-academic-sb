@@ -35,6 +35,7 @@ design:
 
 **Program Committee Member @ International Conferences and Workshops**
 
+* 2021 [The 12th International Conference on Emerging Ubiquitous Systems and Pervasive Networks (EUSPN)](http://cs-conferences.acadiau.ca/euspn-21/)
 * 2021 [34th Conference on Graphics, Patterns and Images (SIBGRAPI2021)](https://www.inf.ufrgs.br/sibgrapi2021/)
 * 2021 [Applications for Video Action Recognition and Prediction Special Session (AVARP2020)](http://idc2020.unirc.it/stAVARP.html), Special Session @ [International Symposium on Intelligent Distributed Computing (IDC2020)](http://idc2020.unirc.it)
 * 2020 [The 2020 International Conference on Decision Aid Sciencesand Applications (DASA’20)](http://dasa20.uob.edu.bh)
