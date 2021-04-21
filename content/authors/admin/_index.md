@@ -70,6 +70,8 @@ organizations:
     name: Artificial Intelligence and Big Data Laboratory (AIBD Lab)
   - name: ICAROS
     url: https://www.icaros.unina.it/index.php
+  - name: Visioscientiae
+    url: https://www.visioscientiae.com
 education:
   courses:
     - course: Ph.D. Degree in Computer Science
@@ -97,3 +99,5 @@ He is member of the GIRPR/CVPL.
 His main research interests include pattern recognition, biometrics, video analysis and analytics and financial forecasting. 
 
 He is author in more than 40 papers, published in International Journals, Conferences and books.
+
+Since 2021, he is member of Visioscientiae, a spin-off of the University of Cagliari founded by Prof. Salvatore Mario Carta and Diego Reforgiato Recupero.
