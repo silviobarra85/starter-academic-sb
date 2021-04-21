@@ -11,6 +11,7 @@ design:
     text_color_light: false
     image_darken: 0
 ---
+* **March 31, 2021:** Accepted Invitation to serve as Program Committee Member for [EUSPN 2021 - The 12th International Conference on Emerging Ubiquitous Systems and Pervasive Networks](http://cs-conferences.acadiau.ca/euspn-21/)
 * **March 31, 2021:** New Updates to [CV&DL for COVID project](https://www.silviobarra.com/project/cv-dl-for-covid-research-project/).
 * **March 05, 2021:** The paper entitled "*Visual Question Answering: which investigated applications?*" has been submitted to Pattern Recognition Letters.
 
