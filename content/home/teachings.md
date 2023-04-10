@@ -9,7 +9,15 @@ date_format: Jan 2006
 item:
   - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
-    title: Operating Systems for Mobile, Cloud and IoT (AY 2020-2021)
+    title: Databases (AY 2021-2022, 2022-2023)
+    url: ""
+    certificate_url: ""
+    date_start: 2020-10-01
+    date_end: ""
+    description: ""
+  - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
+    organization_url: http://informatica.dieti.unina.it/index.php/it/
+    title: Operating Systems for Mobile, Cloud and IoT (AY 2020-2021, 2022-2023)
     url: ""
     certificate_url: ""
     date_start: 2021-03-01
