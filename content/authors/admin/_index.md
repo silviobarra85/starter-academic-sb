@@ -100,6 +100,7 @@ He is member of the GIRPR/CVPL.
 
 His main research interests include pattern recognition, biometrics, video analysis and analytics and financial forecasting. 
 
-He is author in more than 40 papers, published in International Journals, Conferences and books.
+He is author in more than 50 papers, published in International Journals, Conferences and books.
 
-Since 2021, he is member of Visioscientiae, a spin-off of the University of Cagliari founded by Prof. Salvatore Mario Carta and Diego Reforgiato Recupero.
+Since 2021, he is member of "Visioscientiae", a spin-off of the University of Cagliari founded by Prof. Salvatore Mario Carta and Diego Reforgiato Recupero.
+Also, in 2023, together with Prof. Salvatore Mario Carta he is founder of "The Cloud Alchemist", a further spin-off of the University of Cagliari.
