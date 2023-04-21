@@ -12,7 +12,8 @@ design:
     image_darken: 0
 ---
 * **April 20, 2023:** I'm officially a member of the Editorial Board of [Image and Vision Computing Journal (IMAVIS)](https://www.sciencedirect.com/journal/image-and-vision-computing/about/editorial-board) as Associate Editor.
-* **April 27, 2021:** I'm officially member of [VisioScientiae](https://www.visioscientiae.com), a spin-off of the University of Cagliari.
+* **January 1, 2023:** I'm one of the founders of [The Cloud Alchemist](https://www.thecloudalchemist.com), a spin-off of the University of Cagliari.
+![* **April 27, 2021:** I'm officially a member of [VisioScientiae](https://www.visioscientiae.com), a spin-off of the University of Cagliari.
 * **March 31, 2021:** Accepted Invitation to serve as Program Committee Member for [EUSPN 2021 - The 12th International Conference on Emerging Ubiquitous Systems and Pervasive Networks](http://cs-conferences.acadiau.ca/euspn-21/)
 * **March 31, 2021:** New Updates to [CV&DL for COVID project](https://www.silviobarra.com/project/cv-dl-for-covid-research-project/).
 * **March 05, 2021:** The paper entitled "*Visual Question Answering: which investigated applications?*" has been submitted to Pattern Recognition Letters.
@@ -28,4 +29,4 @@ design:
   * **[Arxiv - preprint version](https://arxiv.org/abs/2103.02938)**
 * **January 11, 2021:** The paper entitled *Heimdall: an AI-based infrastructure for traffic monitoring and anomalies detection* has been accepted to [PerAwareCity2021](https://sites.google.com/view/perawarecity2021)!The presentation will be on March 22, starting from 10:45 a.m. (CET)*.* Alessandro Sebastian Podda is the designed presenter. The paper is developed within the [**SAFESPOTTER** project.](https://www.silviobarra.com/project/safespotter-ai-e-smart-cities-per-il-comune-di-monserrato/)
 
-  * **[Arxiv preprint version](http://arxiv.org/abs/2103.01506)**
+  * **[Arxiv preprint version](http://arxiv.org/abs/2103.01506)**]
