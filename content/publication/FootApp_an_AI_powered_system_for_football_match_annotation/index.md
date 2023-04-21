@@ -1,5 +1,5 @@
 ---
-title: FootApp: an AI-powered system for football match annotation
+title: FootApp:an AI-powered system for football match annotation
 publication_types:
   - "2"
 authors:
