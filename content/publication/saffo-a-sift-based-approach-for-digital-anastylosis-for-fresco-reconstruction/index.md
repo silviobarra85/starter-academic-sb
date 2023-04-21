@@ -2,7 +2,7 @@
 title: "SAFFO: A SIFT based approach for digital anastylosis for fresco
   recOnstruction"
 publication_types:
-  - "1"
+  - "2"
 authors:
   - Paola Barra
   - admin
