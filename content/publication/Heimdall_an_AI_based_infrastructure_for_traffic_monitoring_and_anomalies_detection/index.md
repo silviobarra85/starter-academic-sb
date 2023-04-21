@@ -1,5 +1,5 @@
 ---
-title: Heimdall: an AI-based infrastructure for traffic monitoring and anomalies detection
+title: Heimdall:an AI-based infrastructure for traffic monitoring and anomalies detection
 publication_types:
   - "1"
 authors:
