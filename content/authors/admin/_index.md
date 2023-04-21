@@ -72,6 +72,8 @@ organizations:
     url: https://www.icaros.unina.it/index.php
   - name: Visioscientiae
     url: https://www.visioscientiae.com
+  - name: The Cloud Alchemist
+    url: https://www.thecloudalchemist.com
 education:
   courses:
     - course: Ph.D. Degree in Computer Science
