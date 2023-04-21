@@ -11,6 +11,7 @@ design:
     text_color_light: false
     image_darken: 0
 ---
+<!--
 * *Leonardo Piano,* M.Sc. Student @ University of Cagliari, under the supervision of Prof. Salvatore Carta
 
   * Lung Segmentation for **[*CV&DL for COVID* project](https://www.silviobarra.com/project/cv-dl-for-covid-research-project/)**
@@ -42,3 +43,4 @@ design:
 * *Omar Filali*, B.Sc. Student @ University of Cagliari, under the supervision of Prof. Salvatore Carta 
 
   * Waiting...
+-->
