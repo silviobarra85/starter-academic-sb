@@ -15,6 +15,9 @@ design:
 
 **Editorialship Activities**
 
+* **2023:** [Image and Vision Computing (IMAVIS), Elsevier, (ISSN: 02628856)](https://www.sciencedirect.com/journal/image-and-vision-computing/about/editorial-board), Member of the Editorial Board as *Associate Editor.*
+* **2022:** [International Journal of Blockchain Applications Secure Computing (IJBASC), IGI Global, (ISSN: 27715817)](https://www.igi-global.com/journal/international-journal-blockchain-applications-secure/290373), Member of the *Editorial Review Board*
+* **2021:** [Sensors, MDPI, (ISSN: 14243210, 14248220)](https://www.mdpi.com/journal/sensors)), Special Issue on "[Artificial Intelligence Methods for Smart Cities](https://www.mdpi.com/journal/sensors/special_issues/Intelligence_Smart_Cities)" - *Guest Editor*  with Salvatore Mario Carta and Alessandro Sebastian Podda.
 * **2020:** [Electronics, MDPI, (ISSN: 20799292)](https://www.mdpi.com/journal/electronics), Member of the Editorial Board as *Topic Editor.*
 * **2020:** [Smart Cities, MDPI, (ISSN: 26246511)](https://www.mdpi.com/journal/smartcities), Special Issue on "[Cloud-based Biometrics for Smart Cities](https://www.mdpi.com/journal/smartcities/special_issues/Cloud_Based_Biometrics_Smart_Cities)" - *Guest Editor*  with Salvatore Mario Carta and Alessandro Sebastian Podda.
 * **2020**: [Pattern Recognition Letters, Elsevier BV, (ISSN: 01678655)](https://www.journals.elsevier.com/pattern-recognition-letters/), Virtual Special Issue on "[Biometrics in Smart Cities: Techniques and Applications (BI_SCI)](https://www.guide2research.com/special-issue/call-for-paper-virtual-special-issue-biometrics-in-smart-cities-techniques-and-applications-bi_sci)" - *Guest Editor*  with Michele Nappi, Fabio Narducci, Aniello Castiglione and Vijayakumar Pandi.
@@ -22,6 +25,9 @@ design:
 
 **Program Chair @ International Conferences and Workshops**
 
+* 2022 [Second International Workshop on Artificial Intelligence meth- ods for Smart Cities (AISC 2022)](https://aibd.unica.it/aisc/)
+* 2021 [First International Workshop on Responsible Pattern Recognition and Machine Intelligence](https://rprmiworkshop.github.io/iccv2021/)
+* 2021 [First International Workshop on Artificial Intelligence meth- ods for Smart Cities (AISC 2021)](https://aibd.unica.it/aisc/2021)
 * 2017 [First International Workshop on Biometrics-as-a-Service:Cloud-based Technology, Systems and Applications (IWBAAS 2017)](http://www.biplab.unisa.it/iwbaas/)
 
 **Session Chair @ International Conferences and Workshops**
@@ -31,10 +37,23 @@ design:
 
 **Poster and Demo Chair @ International Conferences and Workshops**
 
+* 2022 [International Conference on Advanced Visual Interfaces (AVI 2022)](https://sites.google.com/di.uniroma1.it/avi2022/)
 * 2020 [International Conference on Advanced Visual Interfaces (AVI 2020)](https://sites.google.com/unisa.it/avi2020/)
+
+**Local Chair @ International Conferences and Workshops**
+
+* 2022 [31st IEEE International Conference on Robot & Human Interactive Communication (RO-MAN 2022)](http://www.ro-man2022.org) *Local Arrangement Chair*
 
 **Program Committee Member @ International Conferences and Workshops**
 
+* 2023 [The 23rd International Conference on Algorithms and Architectures for Parallel Processing (ICA3PP 2023)](http://tjutanklab.com/ica3pp2023/home.html)
+* 2022 [The 15th IEEE International Conference on Cyber Phys- ical and Social Computing (CPSCom-2022)](http://ieee-cybermatics.org/2022/cpscom/)
+* 2022 [16th International Conference on Network and System Security (NSS 2022)](http://nsclab.org/nss2022/index.html)
+* 2022 [The 8th International Online & Onsite Conference on Machine Learning, Optimization, and Data Science](https://lod2022.icas.cc)
+* 2022 [The 23rd International Conference on Algorithms and Architectures for Parallel Processing (ICA3PP 2022)](https://ica3pp2022.compute.dtu.dk)
+* 2022 [The 5th International Workshop on Attacks and Defenses for Internet-of-Things (ADIoT 2022)held in conjunction with ESORICS 2022](https://adiot.compute.dtu.dk/2022/) 
+* 2022 [The 14th International Symposium on Cyberspace Safety and Security (CSS 2022)](https://css2022.xidian.edu.cn)
+* 
 * 2021 [The 12th International Conference on Emerging Ubiquitous Systems and Pervasive Networks (EUSPN)](http://cs-conferences.acadiau.ca/euspn-21/)
 * 2021 [34th Conference on Graphics, Patterns and Images (SIBGRAPI2021)](https://www.inf.ufrgs.br/sibgrapi2021/)
 * 2021 [Applications for Video Action Recognition and Prediction Special Session (AVARP2020)](http://idc2020.unirc.it/stAVARP.html), Special Session @ [International Symposium on Intelligent Distributed Computing (IDC2020)](http://idc2020.unirc.it)
