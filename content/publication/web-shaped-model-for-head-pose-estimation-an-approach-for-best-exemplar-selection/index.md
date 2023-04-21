@@ -48,7 +48,7 @@ abstract: "Head pose estimation is a sensitive topic in video surveillance/smart
   typical of the addressed settings. Finally, examples demonstrate the selection
   of the best frames from videos captured in video surveillance conditions. "
 draft: false
-featured: true
+featured: false
 image:
   filename: featured
   focal_point: Smart
