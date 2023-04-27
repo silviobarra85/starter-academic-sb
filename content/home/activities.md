@@ -46,10 +46,11 @@ design:
 
 **Program Committee Member @ International Conferences and Workshops**
 
+* 2023 [The 1st International Conference on Data Security and Privacy Protection (DSPP 2023)](https://dspp2023.xidian.edu.cn)
 * 2023 [The 23rd International Conference on Algorithms and Architectures for Parallel Processing (ICA3PP 2023)](http://tjutanklab.com/ica3pp2023/home.html)
 * 2022 [The 15th IEEE International Conference on Cyber Phys- ical and Social Computing (CPSCom-2022)](http://ieee-cybermatics.org/2022/cpscom/)
 * 2022 [16th International Conference on Network and System Security (NSS 2022)](http://nsclab.org/nss2022/index.html)
-* 2022 [The 8th International Online & Onsite Conference on Machine Learning, Optimization, and Data Science](https://lod2022.icas.cc)
+* 2022 [The 8th International Online & Onsite Conference on Machine Learning, Optimization, and Data Science (LOD 2022)](https://lod2022.icas.cc)
 * 2022 [The 23rd International Conference on Algorithms and Architectures for Parallel Processing (ICA3PP 2022)](https://ica3pp2022.compute.dtu.dk)
 * 2022 [The 5th International Workshop on Attacks and Defenses for Internet-of-Things (ADIoT 2022)held in conjunction with ESORICS 2022](https://adiot.compute.dtu.dk/2022/) 
 * 2022 [The 14th International Symposium on Cyberspace Safety and Security (CSS 2022)](https://css2022.xidian.edu.cn)
