@@ -30,7 +30,7 @@ Recent epidemiological data on the spread of the virus indicate an extremely wor
 
 • 1,3 mln people have died
 
-The first responses of the medical and scientific community has considered the use of certain drugs, able to slow the decline of symptoms, so as to give breathing space to intensive therapies.
+The first responses of the medical and scientific community has considered the use of specific drugs, able to slow the decline of symptoms, so as to give breathing space to intensive therapies.
 
 The latter have been the true Achilles heel of health care system(both Italian and international)
 
