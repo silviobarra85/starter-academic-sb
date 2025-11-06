@@ -33,21 +33,37 @@ experience:
     date_start: 2016-01-11
     date_end: 2017-01-10
     description: null
-  - title: Assistant Professor
+  - title: Researcher
     company: University of Cagliari, Department of Mathematics and computer Sciences
     company_url: https://dmi.unica.it
     location: Cagliari, ITALY
     date_start: 2017-07-03
     date_end: 2020-02-26
     description: null
-  - title: Assistant Professor
+  - title: Researcher
     company: University of Naples, Federico II, Department of Information Technology
       and electrical Engineering
     company_url: https://www.dieti.unina.it/index.php/it/
     location: Naples, ITALY
     date_start: 2020-03-03
-    date_end: ""
+    date_end: 2022-10-24
     description: null
+  - title: Assistant Professor
+      company: University of Naples, Federico II, Department of Information Technology
+        and electrical Engineering
+      company_url: https://www.dieti.unina.it/index.php/it/
+      location: Naples, ITALY
+      date_start: 2022-10-24
+      date_end: 2025-10-24
+      description: null
+  - title: Associate Professor
+        company: University of Naples, Federico II, Department of Information Technology
+          and electrical Engineering
+        company_url: https://www.dieti.unina.it/index.php/it/
+        location: Naples, ITALY
+        date_start: 2025-10-24
+        date_end: ""
+        description: null
 active: true
 design:
   columns: "1"
