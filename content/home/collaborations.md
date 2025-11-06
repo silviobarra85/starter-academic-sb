@@ -24,23 +24,14 @@ design:
   * [Salvatore Mario Carta](https://people.unica.it/salvatoremariocarta/), Full Professor 
   * [Gianni Fenu](https://people.unica.it/giannifenu/), Full Professor
   * [Diego Reforgiato Recupero](https://people.unica.it/diegoreforgiato/), Associate Professor
-  * [Daniele Riboni](https://people.unica.it/danieleriboni/), Associate Proofessor
   * [Alessandro Sebastian Podda](https://aibd.unica.it/people/sebastian-podda), Assistant Professor
   * [Mirko Marras](https://www.unica.it/unica/page/it/mirko_marras), Assistant Professor
 * **University of Salerno**
 
-  * [Michele Nappi](https://docenti.unisa.it/004288/home), Full Professor
   * [Genny Tortora](https://docenti.unisa.it/000751/home), Full Professor
-  * [Giuliana Vitiello](https://docenti.unisa.it/003730/home), Associate Professor
-  * [Andrea Abate](https://docenti.unisa.it/004620/home), Associate Professor
-  * [Fabio Narducci](https://docenti.unisa.it/025547/home), Associate Professor
-  * [Aniello Castiglione](https://docenti.unisa.it/021311/home), Associate Professor
-* **University of Naples, "Parthenope"**
+  * [Luigi Di Biasi] (https://docenti.unisa.it/029717/home), Researcher
+  * [Pietro Battistoni] (https://docenti.unisa.it/041968/home), Assistant Professor
 
-  * [Aniello Castiglione](https://www.uniparthenope.it/ugov/person/36874), Assistant Professor
-* **University of Rome, "Sapienza"**
-
-  * [Maria De Marsico](https://www.di.uniroma1.it/it/docenti/demarsico), Associate Professor
 * **Universidade da Beira Interior (UBI) - Covilhã, Portugal**
 
   * [Hugo Pedro Proença](https://www.di.ubi.pt/~hugomcp/), Associate Professor
