@@ -11,9 +11,12 @@ design:
     text_color_light: false
     image_darken: 0
 ---
+* The News Section is under maintainance...
+* **October 24, 2025:** I'm officially an Associate Professor of the University of Naples "Federico II" after the activation of the tenure track.
+<!--
 * **April 20, 2023:** I'm officially a member of the Editorial Board of [Image and Vision Computing Journal (IMAVIS)](https://www.sciencedirect.com/journal/image-and-vision-computing/about/editorial-board) as Associate Editor.
 * **January 1, 2023:** I'm one of the founders of [The Cloud Alchemist](https://www.thecloudalchemist.com), a spin-off of the University of Cagliari.
-<!--
+
 * **April 27, 2021:** I'm officially a member of [VisioScientiae](https://www.visioscientiae.com), a spin-off of the University of Cagliari.
 * **March 31, 2021:** Accepted Invitation to serve as Program Committee Member for [EUSPN 2021 - The 12th International Conference on Emerging Ubiquitous Systems and Pervasive Networks](http://cs-conferences.acadiau.ca/euspn-21/)
 * **March 31, 2021:** New Updates to [CV&DL for COVID project](https://www.silviobarra.com/project/cv-dl-for-covid-research-project/).
