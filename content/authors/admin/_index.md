@@ -71,10 +71,12 @@ organizations:
     name: Artificial Intelligence and Big Data Laboratory (AIBD Lab)
   - name: ICAROS
     url: https://www.icaros.unina.it/index.php
-  - name: Visioscientiae
-    url: https://www.visioscientiae.com
-  - name: The Cloud Alchemist
-    url: https://www.thecloudalchemist.com
+  - name: KickTeck Srl
+    url: https://www.kicktecksrl.it
+  #- name: Visioscientiae
+  #  url: https://www.visioscientiae.com
+  #- name: The Cloud Alchemist
+  #  url: https://www.thecloudalchemist.com
 education:
   courses:
     - course: Ph.D. Degree in Computer Science
