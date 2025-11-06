@@ -11,7 +11,7 @@ design:
     text_color_light: false
     image_darken: 0
 ---
-**Associate Editor** of the [Newsletter ](https://ieee-biometrics.org/index.php/publications/newsletter)of the [IEEE Biometric Council](https://ieee-biometrics.org/)
+**Associate Editor** of the [Newsletter ](https://ieee-biometrics.org/index.php/publications/newsletter)of the [IEEE Biometric Council](https://ieee-biometrics.org/) since 2018 to 2023
 
 **Editorialship Activities**
 
