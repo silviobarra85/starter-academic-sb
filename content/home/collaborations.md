@@ -46,8 +46,11 @@ design:
 * **[Artificiall Intelligence and Big Data Laboratory (AIBD Lab)](https://aibd.unica.it)**
 * **[ICAROS](https://www.icaros.unina.it)**
 * **[Soft Computing and image Analysis Lab (SOCIA Lab)](http://socia-lab.di.ubi.pt)**
+* **[CAIS Lab](https://caislab.di.unisa.it)**
 
 **Companies**
 
-* **[DOMO Analytics](http://www.domoanalytics.it/contatti.html)**
-* **[Panacea Lab](http://www.panacealab.it)**
+* **[Math & Sport](https://mathandsport.com)**
+* **[Kickteck Srl](https://kicktecksrl.it)**
+* **[MAC Solutions](https://macsolution.it)**
+* **[SoftTecnology](https://www.softtecnology.it)**
