@@ -1,7 +1,7 @@
 ---
-title: Silvio Barra
-role: Assistant Professor
-bio: Assistant Professor @ University of Naples
+title: Prof. Silvio Barra
+role: Associate Professor
+bio: Associate Professor @ University of Naples
 interests:
   - Deep Learning
   - Machine Learning
@@ -10,6 +10,7 @@ interests:
   - Video Analysis
   - Financial Market Prediction
   - Medical Images Analysis
+  - IoT Systems
 social:
   - display:
       header: false
@@ -88,19 +89,13 @@ education:
     - course: Bachelor Degree (cum laude) in Computer Science
       institution: University of Salerno
       year: 2009
-email: ""
+email: "silvio.barra@unina.it"
 superuser: true
 highlight_name: true
 ---
-Silvio Barra was born in Battipaglia (SA - ITALY) on August 7, 1985.
-
-In 2009 and in 2012 he received the B.Sc. degree (cum laude) and the M.Sc. degree (cum laude) in Computer Science from University of Salerno. In 2017 he took the Ph.D. at the University of Cagliari. Currently he is Assistant Professor at the Department of Information Technology and Electrical Engineering at University of Naples, Federico II. 
-
-He is member of the GIRPR/CVPL. 
-
-His main research interests include pattern recognition, biometrics, video analysis and analytics and financial forecasting. 
-
-He is author in more than 50 papers, published in International Journals, Conferences and books.
-
-Since 2021, he is member of "Visioscientiae", a spin-off of the University of Cagliari founded by Prof. Salvatore Mario Carta and Diego Reforgiato Recupero.
-Also, in 2023, together with Prof. Salvatore Mario Carta he is founder of "The Cloud Alchemist", a further spin-off of the University of Cagliari.
+Silvio Barra was born in Battipaglia (SA – ITALY) on August 7, 1985.
+He received the B.Sc. degree (cum laude) and the M.Sc. degree (cum laude) in Computer Science from the University of Salerno in 2009 and 2012, respectively, and the Ph.D. degree in Computer Science from the University of Cagliari in 2017.
+He is currently Associate Professor at the Department of Information Technology and Electrical Engineering, University of Naples “Federico II”.
+His research interests include artificial intelligence, pattern recognition, biometrics, video analysis, and smart city applications.
+He has authored more than 50 papers in international journals, conferences, and books, and he actively participates in several national and international research projects.
+He is co-founder of Kickteck, a research-driven startup in sports performance analytics, as well as member of Visioscientiae (since 2021) and co-founder of The Cloud Alchemist (since 2023), both spin-offs of the University of Cagliari.
