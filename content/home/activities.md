@@ -54,7 +54,6 @@ design:
 * 2022 [The 23rd International Conference on Algorithms and Architectures for Parallel Processing (ICA3PP 2022)](https://ica3pp2022.compute.dtu.dk)
 * 2022 [The 5th International Workshop on Attacks and Defenses for Internet-of-Things (ADIoT 2022)held in conjunction with ESORICS 2022](https://adiot.compute.dtu.dk/2022/) 
 * 2022 [The 14th International Symposium on Cyberspace Safety and Security (CSS 2022)](https://css2022.xidian.edu.cn)
-* 
 * 2021 [The 12th International Conference on Emerging Ubiquitous Systems and Pervasive Networks (EUSPN)](http://cs-conferences.acadiau.ca/euspn-21/)
 * 2021 [34th Conference on Graphics, Patterns and Images (SIBGRAPI2021)](https://www.inf.ufrgs.br/sibgrapi2021/)
 * 2021 [Applications for Video Action Recognition and Prediction Special Session (AVARP2020)](http://idc2020.unirc.it/stAVARP.html), Special Session @ [International Symposium on Intelligent Distributed Computing (IDC2020)](http://idc2020.unirc.it)
