@@ -11,6 +11,7 @@ design:
     text_color_light: false
     image_darken: 0
 ---
+* The Activities Section is under maintainance
 
 **Editorialship Activities**
 
