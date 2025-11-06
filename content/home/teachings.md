@@ -9,15 +9,23 @@ date_format: Jan 2006
 item:
   - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
-    title: Databases (AY 2021-2022, 2022-2023)
+    title: Databases (AY 2021-2022, 2022-2023, 2023-2024, 2024-2025)
     url: ""
     certificate_url: ""
     date_start: 2021-10-01
     date_end: ""
     description: ""
+  - organization: University of Naples, Federico II (Department of Political Sciences)
+    organization_url: https://www.scienzepolitiche.unina.it
+    title: Security & Privacy (AY 2023-2024, 2024-2025, 2025-2026)
+    url: ""
+    certificate_url: ""
+    date_start: 2023-10-01
+    date_end: ""
+    description: ""    
   - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
-    title: Operating Systems for Mobile, Cloud and IoT (AY 2020-2021, 2022-2023)
+    title: Operating Systems for Mobile, Cloud and IoT (AY 2020-2021, 2022-2023, 2023-2024, 2024-2025, 2025-2026)
     url: ""
     certificate_url: ""
     date_start: 2021-03-01
