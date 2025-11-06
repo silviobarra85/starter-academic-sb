@@ -11,7 +11,6 @@ design:
     text_color_light: false
     image_darken: 0
 ---
-**Associate Editor** of the [Newsletter ](https://ieee-biometrics.org/index.php/publications/newsletter)of the [IEEE Biometric Council](https://ieee-biometrics.org/) since 2018 to 2023
 
 **Editorialship Activities**
 
@@ -23,11 +22,13 @@ design:
 * **2020**: [Pattern Recognition Letters, Elsevier BV, (ISSN: 01678655)](https://www.journals.elsevier.com/pattern-recognition-letters/), Virtual Special Issue on "[Biometrics in Smart Cities: Techniques and Applications (BI_SCI)](https://www.guide2research.com/special-issue/call-for-paper-virtual-special-issue-biometrics-in-smart-cities-techniques-and-applications-bi_sci)" - *Guest Editor*  with Michele Nappi, Fabio Narducci, Aniello Castiglione and Vijayakumar Pandi.
 * **2017**: [IEEE Cloud Computing, IEEE, (ISSN: 0167-8655)](https://cloudcomputing.ieee.org), Special Issue on ["Biometrics-as-a-Service](https://www.computer.org/csdl/magazine/cd/2018/04/mcd2018040033/13rRUxjyX9h)" - *Guest Editor*  with K.K.Raymond Choo, Fabio Narducci and Arcangelo Castiglione.
 
+**Associate Editor** of the [Newsletter ](https://ieee-biometrics.org/index.php/publications/newsletter)of the [IEEE Biometric Council](https://ieee-biometrics.org/) since 2018 to 2023
+
 **Program Chair @ International Conferences and Workshops**
 
-* 2022 [Second International Workshop on Artificial Intelligence meth- ods for Smart Cities (AISC 2022)](https://aibd.unica.it/aisc/)
+* 2022 [Second International Workshop on Artificial Intelligence methods for Smart Cities (AISC 2022)](https://aibd.unica.it/aisc/)
 * 2021 [First International Workshop on Responsible Pattern Recognition and Machine Intelligence](https://rprmiworkshop.github.io/iccv2021/)
-* 2021 [First International Workshop on Artificial Intelligence meth- ods for Smart Cities (AISC 2021)](https://aibd.unica.it/aisc/2021)
+* 2021 [First International Workshop on Artificial Intelligence methods for Smart Cities (AISC 2021)](https://aibd.unica.it/aisc/2021)
 * 2017 [First International Workshop on Biometrics-as-a-Service:Cloud-based Technology, Systems and Applications (IWBAAS 2017)](http://www.biplab.unisa.it/iwbaas/)
 
 **Session Chair @ International Conferences and Workshops**
