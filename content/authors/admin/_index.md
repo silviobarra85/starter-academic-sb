@@ -95,7 +95,11 @@ highlight_name: true
 ---
 Silvio Barra was born in Battipaglia (SA – ITALY) on August 7, 1985.
 He received the B.Sc. degree (cum laude) and the M.Sc. degree (cum laude) in Computer Science from the University of Salerno in 2009 and 2012, respectively, and the Ph.D. degree in Computer Science from the University of Cagliari in 2017.
+
 He is currently Associate Professor at the Department of Information Technology and Electrical Engineering, University of Naples “Federico II”.
+
 His research interests include artificial intelligence, pattern recognition, biometrics, video analysis, and smart city applications.
+
 He has authored more than 50 papers in international journals, conferences, and books, and he actively participates in several national and international research projects.
+
 He is co-founder of Kickteck, a research-driven startup in sports performance analytics, as well as member of Visioscientiae (since 2021) and co-founder of The Cloud Alchemist (since 2023), both spin-offs of the University of Cagliari.
