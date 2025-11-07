@@ -1,5 +1,5 @@
 ---
-title: CHAMPIonS
+title: CHAMPIonS: Conversational Human-AI Methodologies for Performance In Sports
 publication_types:
   - "1"
 authors:
