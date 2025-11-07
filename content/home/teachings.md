@@ -14,7 +14,7 @@ item:
     certificate_url: ""
     date_start: 2021-10-01
     date_end: ""
-    description: ""
+    description: "Bachelor Degree in Computer Sciences"
   - organization: University of Naples, Federico II (Department of Political Sciences)
     organization_url: https://www.scienzepolitiche.unina.it
     title: Security & Privacy (AY 2023-2024, 2024-2025, 2025-2026)
