@@ -64,8 +64,7 @@ organizations:
     url: https://www.dieti.unina.it/index.php/it/
   - name: University of Naples, Federico II
     url: http://www.unina.it/home;jsessionid=E551563B5AB5DD1F1E87BB7FEB82D1D4.node_publisher11
-  - name: Projects of Intelligent Robotics and Advanced Cognitive Systems Laboratory
-      (PRISCA Lab)
+  - name: Projects of Intelligent Robotics and Advanced Cognitive Systems Laboratory (PRISCA Lab)
     url: http://prisca.unina.it/home
   - url: https://aibd.unica.it
     name: Artificial Intelligence and Big Data Laboratory (AIBD Lab)
@@ -95,13 +94,7 @@ email: "silvio.barra@unina.it"
 superuser: true
 highlight_name: true
 ---
-Silvio Barra was born in Battipaglia (SA – ITALY) on August 7, 1985.
-He received the B.Sc. degree (cum laude) and the M.Sc. degree (cum laude) in Computer Science from the University of Salerno in 2009 and 2012, respectively, and the Ph.D. degree in Computer Science from the University of Cagliari in 2017.
-
-He is currently Associate Professor at the Department of Information Technology and Electrical Engineering, University of Naples “Federico II”.
-
-His research interests include artificial intelligence, pattern recognition, biometrics, video analysis, and smart city applications.
-
-He has authored more than 50 papers in international journals, conferences, and books, and he actively participates in several national and international research projects.
-
-He is co-founder of Kickteck, a research-driven startup in sports performance analytics, as well as member of Visioscientiae (since 2021) and co-founder of The Cloud Alchemist (since 2023), both spin-offs of the University of Cagliari.
+Silvio Barra is an Associate Professor of Computer Science at the Department of Electrical Engineering and Information Technologies (DIETI) of the University of Naples “Federico II”. He received his Ph.D. in Computer Science from the University of Cagliari, with a dissertation focused on the design of multibiometric platforms based on physiological and physical traits. His main research interests include Artificial Intelligence, Computer Vision, Machine Learning, Biometrics, Multimodal Recognition Systems, Video Analysis, Data Security, and Privacy, with applications in Smart Cities, Healthcare, Autonomous Driving, and Sports Analytics.
+Throughout his career, he has participated in numerous national and international research projects, both academic and industrial, often serving as Scientific Coordinator or Principal Investigator. He is the author of more than sixty scientific publications in international journals, conference proceedings, and edited volumes, and serves on the editorial boards of several journals, including Pattern Recognition Letters and Image and Vision Computing (Elsevier). He has also been Guest Editor for special issues on topics related to AI, digital security, and biometrics.
+He is the co-founder of three academic spin-offs: VisioScientiae, The Cloud Alchemist—a company focused on cloud automation solutions powered by artificial intelligence—and KickTeck, an innovative start-up that combines AI and data analytics to enhance sports performance. These initiatives reflect his strong commitment to technology transfer and the promotion of applied research.
+He collaborates with several national and international research groups and is the author of more than sixty scientific publications in top-tier journals and conferences.
