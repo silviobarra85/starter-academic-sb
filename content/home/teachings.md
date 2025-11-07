@@ -7,31 +7,34 @@ title: Teaching
 active: true
 date_format: Jan 2006
 item:
-  - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
+  - organization: Bachelor Degree in Computer Sciences - University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
-    title: Databases (AY 2021-2022, 2022-2023, 2023-2024, 2024-2025)
+    #title: Databases (AY 2021-2022, 2022-2023, 2023-2024, 2024-2025)
+    title: Databases (AY since 2021-2022 to 2024-2025)
     url: ""
     certificate_url: ""
     date_start: 2021-10-01
     date_end: ""
-    description: "Bachelor Degree in Computer Sciences"
-  - organization: University of Naples, Federico II (Department of Political Sciences)
+    description: ""
+  - organization: Master Degree in Criminological, Investigative and Cybercrime Studies - University of Naples, Federico II (Department of Political Sciences)
     organization_url: https://www.scienzepolitiche.unina.it
-    title: Security & Privacy (AY 2023-2024, 2024-2025, 2025-2026)
+    #title: Security & Privacy (AY 2023-2024, 2024-2025, 2025-2026)
+    title: Security & Privacy (AY since 2023-2024 to 2025-2026)
     url: ""
     certificate_url: ""
     date_start: 2023-10-01
     date_end: ""
     description: ""    
-  - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
+  - organization: Master Degree in Computer Sciences - University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
-    title: Operating Systems for Mobile, Cloud and IoT (AY 2020-2021, 2021-2022, 2022-2023, 2023-2024, 2024-2025, 2025-2026)
+    #title: Operating Systems for Mobile, Cloud and IoT (AY 2020-2021, 2021-2022, 2022-2023, 2023-2024, 2024-2025, 2025-2026)
+    title: Operating Systems for Mobile, Cloud and IoT (AY since 2020-2021 to 2025-2026)
     url: ""
     certificate_url: ""
     date_start: 2021-03-01
     date_end: ""
     description: ""
-  - organization: Link Campus University
+  - organization: Bachelor Degree in Defense and Security Sciences - Link Campus University
     organization_url: https://www2.unilink.it/ateneo/Scienze-della-difesa-e-della-sicurezza.asp
     title: Foundations of Computer Science and Cybersecurity (AYs 2019-2020, 2020-2021)
     url: ""
@@ -39,7 +42,7 @@ item:
     date_start: 2019-10-01
     date_end: ""
     description: ""
-  - organization: University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
+  - organization: Bachelor Degree in Computer Sciences - University of Naples, Federico II (Department of Information Technology and Electrical Engineering)
     organization_url: http://informatica.dieti.unina.it/index.php/it/
     title: Databases Laboratory (AY 2020-2021)
     url: ""
@@ -47,7 +50,7 @@ item:
     date_start: 2020-10-01
     date_end: ""
     description: ""
-  - organization: University of Cagliari (Department of Mathematics and Computer Sciences)
+  - organization: Bachelor Degree in Computer Sciences - University of Cagliari (Department of Mathematics and Computer Sciences)
     organization_url: https://dmi.unica.it
     title: Laboratory of Operating systems (AYs 2017-2018, 2018-2019, 2019-2020)
     url: ""
@@ -55,16 +58,15 @@ item:
     date_start: 2017-10-01
     date_end: ""
     description: ""
-  - organization: University of Cagliari (Department of Mathematics and Computer Sciences)
+  - organization: Master Degree in Computer Sciences - University of Cagliari (Department of Mathematics and Computer Sciences)
     organization_url: https://dmi.unica.it
-    title: Advanced Techniques of Image Processing (AYs 2017-2018, 2018-2019,
-      2019-2020)
+    title: Advanced Techniques of Image Processing (AYs 2017-2018, 2018-2019, 2019-2020)
     url: ""
     certificate_url: ""
     date_start: 2017-03-01
     date_end: ""
     description: ""
-  - organization: University of Naples, Parthenope (Department of Sciences and Technologies)
+  - organization: Master Degree in Computer Sciences - University of Naples, Parthenope (Department of Sciences and Technologies)
     organization_url: https://www.scienzeetecnologie.uniparthenope.it'
     title: Software Engineering 2 (AYs 2015-2016, 2016-2017)
     url: ""
@@ -72,7 +74,7 @@ item:
     date_start: 2015-03-01
     date_end: ""
     description: ""
-  - organization: University of Cagliari (Department of Mathematics and Computer Sciences)
+  - organization: Master Degree in Computer Sciences - University of Cagliari (Department of Mathematics and Computer Sciences)
     organization_url: https://dmi.unica.it
     title: Biometrics Security (AYs 2012-2013, 2013-2014)
     url: ""
@@ -80,7 +82,7 @@ item:
     date_start: 2013-10-01
     date_end: ""
     description: ""
-  - organization: University of Cagliari (Department of Mathematics and Computer Sciences)
+  - organization: Bachelor Degree in Computer Sciences - University of Cagliari (Department of Mathematics and Computer Sciences)
     organization_url: https://dmi.unica.it
     title: Software Engineering  (AYs 2012-2013, 2013-2014)
     url: ""
