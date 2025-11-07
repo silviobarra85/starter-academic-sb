@@ -15,6 +15,8 @@ design:
 
 **Editorialship Activities**
 
+* **2025:** [Image and Vision Computing (IMAVIS), Elsevier, (ISSN: 02628856)](https://www.sciencedirect.com/journal/image-and-vision-computing), Virtual Special Issue on [Smart Medicine: The Integration of Artificial Intelligence into Healthcare](https://www.sciencedirect.com/special-issue/10M7MGF92H9), *Guest Editor* with Fabiola de Marco and Jane Huiru (Jane)Zheng.
+* **2023:** [Pattern Recognition Letters, Elsevier BV, (ISSN: 01678655)](https://www.journals.elsevier.com/pattern-recognition-letters/), Member of the Editorial Board as *Associate Editor.*
 * **2023:** [Image and Vision Computing (IMAVIS), Elsevier, (ISSN: 02628856)](https://www.sciencedirect.com/journal/image-and-vision-computing/about/editorial-board), Member of the Editorial Board as *Associate Editor.*
 * **2022:** [International Journal of Blockchain Applications Secure Computing (IJBASC), IGI Global, (ISSN: 27715817)](https://www.igi-global.com/journal/international-journal-blockchain-applications-secure/290373), Member of the *Editorial Review Board*
 * **2021:** [Sensors, MDPI, (ISSN: 14243210, 14248220)](https://www.mdpi.com/journal/sensors)), Special Issue on "[Artificial Intelligence Methods for Smart Cities](https://www.mdpi.com/journal/sensors/special_issues/Intelligence_Smart_Cities)" - *Guest Editor*  with Salvatore Mario Carta and Alessandro Sebastian Podda.
@@ -26,7 +28,9 @@ design:
 **Associate Editor** of the [Newsletter ](https://ieee-biometrics.org/index.php/publications/newsletter)of the [IEEE Biometric Council](https://ieee-biometrics.org/) since 2018 to 2023
 
 **Program Chair @ International Conferences and Workshops**
-
+* 2025 [1st Workshop on Conversational AI-Methodologies for Performance in Sport (Champions 2025](https://sites.google.com/view/champions-25/home-page)
+* 2025 [4th International Workshop on Recent Advances in Digital Security: Biometrics and Forensics](https://biofor2025.it)
+* 2023 [3rd International Workshop on Recent Advances in Digital Security: Biometrics and Forensics]
 * 2022 [Second International Workshop on Artificial Intelligence methods for Smart Cities (AISC 2022)](https://aibd.unica.it/aisc/)
 * 2021 [First International Workshop on Responsible Pattern Recognition and Machine Intelligence](https://rprmiworkshop.github.io/iccv2021/)
 * 2021 [First International Workshop on Artificial Intelligence methods for Smart Cities (AISC 2021)](https://aibd.unica.it/aisc/2021)
