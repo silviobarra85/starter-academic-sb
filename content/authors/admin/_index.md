@@ -14,7 +14,7 @@ interests:
 social:
   - display:
       header: false
-    link: https://www.dropbox.com/s/wk8ig1cwp1zcu72/Silvio%20Barra%20ITA%20CV.pdf?dl=0
+    link: https://drive.google.com/file/d/1lQJMJSTJx3OfvQzf7MNKZBZg4KBZr9SJ/view?usp=share_link
     icon_pack: ai
     icon: cv
   - display:
