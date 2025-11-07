@@ -7,6 +7,7 @@ content:
   filter_default: 0
 weight: 60
 title: Projects
+active: false
 design:
   columns: "1"
   view: 3
