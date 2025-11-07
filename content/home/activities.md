@@ -41,6 +41,10 @@ design:
 * 2019 [14th International Conference on Green, Pervasive and Cloud Computing (GPC 2019)](https://www.gpc2019.facom.ufu.br)
 * 2018 [The 10th International Symposium on Cyberspace Safety andSecurity (CSS 2018)](http://css2018.di.unisa.it)
 
+**Doctoral Consortium Chair @ International Conferences and Workshops**
+
+* 2025 [16th Biannual Conference of the Italian SIGCHI Chapter “Technologies and Methodologies of Human-Computer Interaction in the Third Millenium“](https://chitaly2025.di.unisa.it)
+  
 **Poster and Demo Chair @ International Conferences and Workshops**
 
 * 2022 [International Conference on Advanced Visual Interfaces (AVI 2022)](https://sites.google.com/di.uniroma1.it/avi2022/)
