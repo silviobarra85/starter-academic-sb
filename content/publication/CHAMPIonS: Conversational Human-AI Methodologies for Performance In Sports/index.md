@@ -1,7 +1,7 @@
 ---
-title: CHAMPIonS: Conversational Human-AI Methodologies for Performance In Sports
+title: CHAMPIonS
 publication_types:
-  - "2"
+  - "1"
 authors:
   - admin
   - A. Bacconi
