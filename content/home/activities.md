@@ -53,6 +53,12 @@ design:
 
 * 2022 [31st IEEE International Conference on Robot & Human Interactive Communication (RO-MAN 2022)](http://www.ro-man2022.org) *Local Arrangement Chair*
 
+**Board Member @ International Conferences and Workshops**
+
+* 2026 [AI-HCI: 7TH INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE IN HCI](https://2026.hci.international/ai-hci)
+* 2025 [AI-HCI: 6TH INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE IN HCI](https://2025.hci.international/ai-hci)
+* 2024 [AI-HCI: 5TH INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE IN HCI](https://2024.hci.international/ai-hci)
+
 **Program Committee Member @ International Conferences and Workshops**
 
 * 2023 [The 1st International Conference on Data Security and Privacy Protection (DSPP 2023)](https://dspp2023.xidian.edu.cn)
