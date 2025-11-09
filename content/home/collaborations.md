@@ -29,8 +29,8 @@ design:
 * **University of Salerno**
 
   * [Genny Tortora](https://docenti.unisa.it/000751/home), Full Professor
-  * [Luigi Di Biasi] (https://docenti.unisa.it/029717/home), Researcher
-  * [Pietro Battistoni] (https://docenti.unisa.it/041968/home), Assistant Professor
+  * [Luigi Di Biasi](https://docenti.unisa.it/029717/home), Researcher
+  * [Pietro Battistoni](https://docenti.unisa.it/041968/home), Assistant Professor
 
 * **Universidade da Beira Interior (UBI) - Covilhã, Portugal**
 
