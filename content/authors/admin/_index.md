@@ -14,7 +14,7 @@ interests:
 social:
   - display:
       header: false
-    link: https://drive.google.com/file/d/1lQJMJSTJx3OfvQzf7MNKZBZg4KBZr9SJ/view?usp=share_link
+    link: https:https://drive.google.com/open?id=1Czwk8yrCw_mzRbeiwYhDkhJ0c5TEHkxo&usp=drive_fs
     icon_pack: ai
     icon: cv
   - display:
