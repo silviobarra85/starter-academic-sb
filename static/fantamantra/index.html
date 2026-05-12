@@ -17,6 +17,10 @@
         <p class="subtitle">Dashboard operativa per club, saldi FM, rose, movimenti, listoni e stadio.</p>
       </div>
       <div class="header-actions">
+        <label class="season-switcher">
+          <span>Stagione</span>
+          <select id="globalSeasonSelect" class="input season-input" aria-label="Stagione visualizzata"></select>
+        </label>
         <button id="refreshBtn" class="button button-secondary" type="button">Aggiorna dati</button>
         <button id="openLoginBtn" class="button button-primary" type="button">Area admin</button>
         <button id="logoutBtn" class="button button-danger hidden" type="button">Logout</button>
@@ -47,8 +51,22 @@
           <p class="eyebrow">Panoramica</p>
           <h2 id="dashboardTitle">Dashboard</h2>
           <p>Indicatori principali della lega e stato generale del gestionale.</p>
+          <small id="dashboardSeasonText" class="muted">Stagione visualizzata: -</small>
         </div>
       </div>
+
+      <section class="season-control-panel" aria-label="Selezione stagione visualizzata">
+        <div>
+          <p class="eyebrow">Contesto dati</p>
+          <h3>Stagione visualizzata</h3>
+          <p>La scelta aggiorna automaticamente rose, listone, stadi, movimenti e valori predefiniti dei moduli admin.</p>
+        </div>
+        <label class="season-select-label">
+          <span>Stagione</span>
+          <select id="dashboardSeasonSelect" class="input season-select"></select>
+        </label>
+      </section>
+
 <section class="cards-grid" aria-label="Indicatori principali">
       <article class="metric-card">
         <span class="metric-label">Club attivi</span>
@@ -117,10 +135,23 @@
 <section class="panel">
       <div class="panel-header">
         <div>
-          <h2>Rose</h2>
+          <h2>Riepilogo rose</h2>
+          <p>Clicca su una squadra per aprire la scheda con la rosa attuale della stagione selezionata.</p>
+        </div>
+      </div>
+      <div id="rosterClubCards" class="roster-card-grid">
+        <p class="muted">Caricamento...</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Dettaglio giocatori</h2>
           <p>Giocatori attivi per club, ruolo Mantra, prezzo e provenienza.</p>
         </div>
         <div class="filters-row">
+          <select id="rosterSeasonFilter" class="input filter-input" aria-label="Stagione rose"></select>
           <select id="rosterClubFilter" class="input filter-input">
             <option value="all">Tutti i club</option>
           </select>
@@ -493,8 +524,21 @@
     </div>
   </dialog>
 
+
+
+  <dialog id="rosterDialog" class="login-dialog roster-dialog">
+    <div class="login-card roster-card">
+      <button id="closeRosterBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
+      <p class="eyebrow">Scheda rosa</p>
+      <h2 id="rosterDialogTitle">Rosa</h2>
+      <div id="rosterDialogBody" class="roster-detail-body">
+        <p class="muted">Caricamento...</p>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="container app-footer">
-    <p>FantaMantra Manageriale · V8 pagine separate</p>
+    <p>FantaMantra Manageriale · V10 stagione globale e schede rose</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>

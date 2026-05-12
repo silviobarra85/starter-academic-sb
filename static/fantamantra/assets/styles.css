@@ -741,3 +741,149 @@ code {
     margin-left: 0;
   }
 }
+
+
+.season-control-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  margin: 0 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.season-control-panel h3 {
+  margin: 0.1rem 0;
+  font-size: 1.05rem;
+}
+
+.season-control-panel p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
+.season-select-label {
+  min-width: 260px;
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 700;
+}
+
+.season-select {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .season-control-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .season-select-label {
+    min-width: 0;
+  }
+}
+
+/* V10: selezione stagione globale e schede rosa */
+.season-switcher {
+  display: grid;
+  gap: 6px;
+  min-width: 210px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.season-input {
+  min-width: 190px;
+}
+
+.roster-card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.roster-club-card {
+  display: grid;
+  gap: 7px;
+  width: 100%;
+  min-height: 142px;
+  text-align: left;
+  color: var(--text);
+  background: rgba(31, 41, 55, 0.66);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+  transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+}
+
+.roster-club-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(34, 197, 94, 0.55);
+  background: rgba(31, 41, 55, 0.92);
+}
+
+.roster-card-title {
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.roster-card-stats {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.roster-card-stats strong {
+  color: var(--text);
+}
+
+.player-dialog .player-card {
+  width: min(1180px, calc(100vw - 32px));
+  max-width: none;
+}
+
+.roster-dialog .roster-card {
+  width: min(1120px, calc(100vw - 32px));
+  max-width: none;
+}
+
+.roster-detail-body {
+  display: grid;
+  gap: 14px;
+}
+
+.roster-summary-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.roster-dialog-table {
+  max-height: 560px;
+}
+
+@media (max-width: 1200px) {
+  .roster-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .roster-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .roster-card-grid,
+  .roster-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .season-switcher,
+  .season-input {
+    width: 100%;
+  }
+}

@@ -6,9 +6,8 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // Esempio:
 // const SUPABASE_URL = "https://xxxxxxxxxxxxxxxxxxxx.supabase.co";
 // const SUPABASE_ANON_KEY = "eyJhbGciOi...";
-const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
-
+const SUPABASE_URL = "INSERISCI_PROJECT_URL";
+const SUPABASE_ANON_KEY = "INSERISCI_ANON_PUBLIC_KEY";
 
 const ACTIVE_SEASON_ID = "2026-2027";
 
@@ -48,7 +47,9 @@ const state = {
   listoneUploads: [],
   rosterImports: [],
   latestQuotations: [],
+  selectedSeason: ACTIVE_SEASON_ID,
   selectedListoneSeason: ACTIVE_SEASON_ID,
+  selectedRosterSeason: ACTIVE_SEASON_ID,
   search: "",
   listoneSearch: "",
   listoneRoleFilter: "all",
@@ -59,6 +60,9 @@ const state = {
 const el = {
   configWarning: document.getElementById("configWarning"),
   errorBox: document.getElementById("errorBox"),
+  globalSeasonSelect: document.getElementById("globalSeasonSelect"),
+  dashboardSeasonSelect: document.getElementById("dashboardSeasonSelect"),
+  dashboardSeasonText: document.getElementById("dashboardSeasonText"),
   refreshBtn: document.getElementById("refreshBtn"),
   openLoginBtn: document.getElementById("openLoginBtn"),
   logoutBtn: document.getElementById("logoutBtn"),
@@ -72,11 +76,14 @@ const el = {
   metricTotalFm: document.getElementById("metricTotalFm"),
   metricAvgFm: document.getElementById("metricAvgFm"),
   metricAlerts: document.getElementById("metricAlerts"),
+  globalSeasonSelect: document.getElementById("globalSeasonSelect"),
   clubSearch: document.getElementById("clubSearch"),
   clubsTableBody: document.getElementById("clubsTableBody"),
   rosterClubFilter: document.getElementById("rosterClubFilter"),
   rosterSearch: document.getElementById("rosterSearch"),
+  rosterClubCards: document.getElementById("rosterClubCards"),
   rosterTableBody: document.getElementById("rosterTableBody"),
+  rosterSeasonFilter: document.getElementById("rosterSeasonFilter"),
   listoneSeasonFilter: document.getElementById("listoneSeasonFilter"),
   listoneRoleFilter: document.getElementById("listoneRoleFilter"),
   listoneMetaText: document.getElementById("listoneMetaText"),
@@ -131,6 +138,10 @@ const el = {
   closePlayerBtn: document.getElementById("closePlayerBtn"),
   playerDialogTitle: document.getElementById("playerDialogTitle"),
   playerDialogBody: document.getElementById("playerDialogBody"),
+  rosterDialog: document.getElementById("rosterDialog"),
+  closeRosterBtn: document.getElementById("closeRosterBtn"),
+  rosterDialogTitle: document.getElementById("rosterDialogTitle"),
+  rosterDialogBody: document.getElementById("rosterDialogBody"),
 };
 
 function isConfigured() {
@@ -159,6 +170,15 @@ function fmtDate(value) {
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit",
+  }).format(new Date(value));
+}
+
+function fmtDateOnly(value) {
+  if (!value) return "-";
+  return new Intl.DateTimeFormat("it-IT", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
   }).format(new Date(value));
 }
 
@@ -793,15 +813,15 @@ function clearError() {
   el.errorBox.classList.add("hidden");
 }
 
-function getClubBalance(clubId) {
+function getClubBalance(clubId, seasonId = getSelectedSeasonId()) {
   return state.movements
-    .filter((movement) => movement.club_id === clubId)
+    .filter((movement) => movement.club_id === clubId && movement.season_id === seasonId)
     .reduce((sum, movement) => sum + Number(movement.amount || 0), 0);
 }
 
-function getClubStadium(clubId) {
+function getClubStadium(clubId, seasonId = getSelectedSeasonId()) {
   return state.stadiums.find(
-    (stadium) => stadium.club_id === clubId && stadium.season_id === ACTIVE_SEASON_ID,
+    (stadium) => stadium.club_id === clubId && stadium.season_id === seasonId,
   );
 }
 
@@ -821,14 +841,14 @@ function getClubByNameKey(nameKey) {
   return state.clubs.find((club) => normalizeTextKey(club.name) === nameKey);
 }
 
-function getActiveRosterEntries(clubId) {
+function getActiveRosterEntries(clubId, seasonId = state.selectedRosterSeason || getSelectedSeasonId()) {
   return state.rosterEntries.filter(
-    (entry) => entry.club_id === clubId && entry.season_id === ACTIVE_SEASON_ID && entry.is_active,
+    (entry) => entry.club_id === clubId && entry.season_id === seasonId && entry.is_active,
   );
 }
 
-function getRosterStats(clubId) {
-  const entries = getActiveRosterEntries(clubId);
+function getRosterStats(clubId, seasonId = state.selectedRosterSeason || getSelectedSeasonId()) {
+  const entries = getActiveRosterEntries(clubId, seasonId);
   let goalkeepers = 0;
   let outfieldPlayers = 0;
 
@@ -854,8 +874,8 @@ function getRosterStats(clubId) {
 function buildRosterRows() {
   return state.rosterEntries.map((entry) => ({
     entry,
-    player: getPlayerById(entry.player_id),
-    club: getClubById(entry.club_id),
+    player: entry.players || getPlayerById(entry.player_id),
+    club: entry.clubs || getClubById(entry.club_id),
   }));
 }
 
@@ -905,13 +925,13 @@ async function fetchAll() {
       .select("*")
       .order("created_at", { ascending: false })
       .limit(1000),
-    state.supabase.from("players").select("*").order("name", { ascending: true }),
+    state.supabase.from("players").select("*").order("name", { ascending: true }).limit(20000),
     state.supabase
       .from("roster_entries")
-      .select("*")
-      .eq("season_id", ACTIVE_SEASON_ID)
-      .order("created_at", { ascending: false }),
-    state.supabase.from("stadiums").select("*").eq("season_id", ACTIVE_SEASON_ID),
+      .select("*, players(*), clubs(*)")
+      .order("created_at", { ascending: false })
+      .limit(20000),
+    state.supabase.from("stadiums").select("*").limit(1000),
     state.supabase.from("stadium_levels").select("*").order("level", { ascending: true }),
     state.supabase
       .from("player_quotations")
@@ -958,21 +978,117 @@ async function fetchAll() {
   state.playerQuotations = playerQuotationsRes.data || [];
   state.listoneUploads = listoneUploadsRes.data || [];
   state.rosterImports = rosterImportsRes?.data || [];
+
+  if (!state.seasons.some((season) => season.id === state.selectedSeason)) {
+    state.selectedSeason = state.seasons.find((season) => season.id === ACTIVE_SEASON_ID)?.id || state.seasons[0]?.id || ACTIVE_SEASON_ID;
+  }
   if (!state.seasons.some((season) => season.id === state.selectedListoneSeason)) {
-    state.selectedListoneSeason = ACTIVE_SEASON_ID;
+    state.selectedListoneSeason = state.selectedSeason;
+  }
+  if (!state.seasons.some((season) => season.id === state.selectedRosterSeason)) {
+    state.selectedRosterSeason = state.selectedSeason;
   }
   state.latestQuotations = getLatestQuotationsForSeason(state.selectedListoneSeason);
 
   renderAll();
 }
 
+function getDisplaySeasonId() {
+  return state.selectedSeason || ACTIVE_SEASON_ID;
+}
+
+function getSelectedSeasonId() {
+  return getDisplaySeasonId();
+}
+
+function renderSeasonControl() {
+  if (!el.globalSeasonSelect) return;
+
+  const currentValue = state.seasons.some((season) => season.id === state.selectedSeason)
+    ? state.selectedSeason
+    : (state.seasons.find((season) => season.id === ACTIVE_SEASON_ID)?.id || state.seasons[0]?.id || ACTIVE_SEASON_ID);
+
+  const seasonOptions = state.seasons
+    .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
+    .join("");
+  if (el.globalSeasonSelect) {
+    el.globalSeasonSelect.innerHTML = seasonOptions;
+    el.globalSeasonSelect.value = currentValue;
+  }
+  if (el.dashboardSeasonSelect) {
+    el.dashboardSeasonSelect.innerHTML = seasonOptions;
+    el.dashboardSeasonSelect.value = currentValue;
+  }
+  state.selectedSeason = currentValue;
+  if (el.dashboardSeasonText) {
+    el.dashboardSeasonText.textContent = `Stagione visualizzata: ${currentValue}`;
+  }
+}
+
+function applyDisplayedSeason(seasonId, { render = true } = {}) {
+  if (!seasonId) return;
+
+  state.selectedSeason = seasonId;
+  state.selectedRosterSeason = seasonId;
+  state.selectedListoneSeason = seasonId;
+  state.latestQuotations = getLatestQuotationsForSeason(seasonId);
+
+  if (el.globalSeasonSelect) el.globalSeasonSelect.value = seasonId;
+  if (el.dashboardSeasonSelect) el.dashboardSeasonSelect.value = seasonId;
+  if (el.rosterSeasonFilter) el.rosterSeasonFilter.value = seasonId;
+  if (el.listoneSeasonFilter) el.listoneSeasonFilter.value = seasonId;
+  if (el.movementSeason) el.movementSeason.value = seasonId;
+  if (el.listoneSeason) el.listoneSeason.value = seasonId;
+  if (el.rosterSeason) el.rosterSeason.value = seasonId;
+  if (el.auctionSeason) {
+    el.auctionSeason.value = seasonId;
+    renderAuctionPlayerOptions();
+    updateAuctionFieldsFromSelectedPlayer();
+  }
+
+  if (render) renderAll();
+}
+
+
+function renderGlobalSeasonSelector() {
+  if (!el.globalSeasonSelect) return;
+  const currentValue = getSelectedSeasonId();
+  el.globalSeasonSelect.innerHTML = state.seasons
+    .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>`)
+    .join("");
+  el.globalSeasonSelect.value = state.seasons.some((season) => season.id === currentValue)
+    ? currentValue
+    : (state.seasons[0]?.id || ACTIVE_SEASON_ID);
+  if (el.dashboardSeasonText) {
+    el.dashboardSeasonText.textContent = `Stagione visualizzata: ${el.globalSeasonSelect.value}`;
+  }
+}
+
+function setViewedSeason(seasonId, options = {}) {
+  if (!seasonId || !state.seasons.some((season) => season.id === seasonId)) return;
+  state.selectedSeason = seasonId;
+  state.selectedRosterSeason = seasonId;
+  state.selectedListoneSeason = seasonId;
+  state.latestQuotations = getLatestQuotationsForSeason(seasonId);
+  if (el.globalSeasonSelect) el.globalSeasonSelect.value = seasonId;
+  if (el.dashboardSeasonSelect) el.dashboardSeasonSelect.value = seasonId;
+  if (el.rosterSeasonFilter) el.rosterSeasonFilter.value = seasonId;
+  if (el.listoneSeasonFilter) el.listoneSeasonFilter.value = seasonId;
+  if (el.movementSeason) el.movementSeason.value = seasonId;
+  if (el.auctionSeason) el.auctionSeason.value = seasonId;
+  if (el.listoneSeason) el.listoneSeason.value = seasonId;
+  if (el.rosterSeason) el.rosterSeason.value = seasonId;
+  if (!options.skipRender) renderAll();
+}
+
 function renderMetrics() {
   const clubCount = state.clubs.filter((club) => club.active !== false).length;
-  const balances = state.clubs.map((club) => getClubBalance(club.id));
+  const seasonId = getSelectedSeasonId();
+  const balances = state.clubs.map((club) => getClubBalance(club.id, seasonId));
   const total = balances.reduce((sum, value) => sum + value, 0);
   const average = clubCount ? total / clubCount : 0;
   const negativeBalances = balances.filter((value) => value < 0).length;
-  const rosterIssues = state.clubs.filter((club) => getRosterStats(club.id).issues.length > 0).length;
+  const rosterIssues = state.clubs.filter((club) => getRosterStats(club.id, seasonId).issues.length > 0).length;
   const alerts = negativeBalances + rosterIssues;
 
   el.metricClubs.textContent = String(clubCount);
@@ -984,12 +1100,13 @@ function renderMetrics() {
 
 function renderClubs() {
   const query = state.search.trim().toLowerCase();
+  const seasonId = getSelectedSeasonId();
   const rows = state.clubs
     .map((club) => ({
       ...club,
-      balance: getClubBalance(club.id),
-      stadium: getClubStadium(club.id),
-      roster: getRosterStats(club.id),
+      balance: getClubBalance(club.id, seasonId),
+      stadium: getClubStadium(club.id, seasonId),
+      roster: getRosterStats(club.id, seasonId),
     }))
     .filter((club) => {
       if (!query) return true;
@@ -1029,6 +1146,17 @@ function renderClubs() {
 }
 
 function renderRosterFilters() {
+  if (el.rosterSeasonFilter) {
+    const currentSeason = state.selectedRosterSeason || state.selectedSeason || ACTIVE_SEASON_ID;
+    el.rosterSeasonFilter.innerHTML = state.seasons
+      .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
+      .join("");
+    el.rosterSeasonFilter.value = state.seasons.some((season) => season.id === currentSeason)
+      ? currentSeason
+      : getSelectedSeasonId();
+    state.selectedRosterSeason = el.rosterSeasonFilter.value;
+  }
+
   const currentValue = el.rosterClubFilter.value || state.rosterClubFilter;
   el.rosterClubFilter.innerHTML = [
     `<option value="all">Tutti i club</option>`,
@@ -1041,8 +1169,10 @@ function renderRosterFilters() {
 function renderRoster() {
   const query = state.rosterSearch.trim().toLowerCase();
   const selectedClub = state.rosterClubFilter;
+  const selectedSeason = state.selectedRosterSeason || getSelectedSeasonId();
   const rows = buildRosterRows()
     .filter(({ entry, player, club }) => {
+      if (entry.season_id !== selectedSeason) return false;
       if (selectedClub !== "all" && entry.club_id !== selectedClub) return false;
       if (!query) return true;
       return `${player?.name || ""} ${player?.real_team || ""} ${player?.mantra_roles || ""} ${club?.name || ""}`
@@ -1052,7 +1182,18 @@ function renderRoster() {
     .sort((a, b) => (a.club?.name || "").localeCompare(b.club?.name || "") || (a.player?.name || "").localeCompare(b.player?.name || ""));
 
   if (!rows.length) {
-    el.rosterTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun giocatore in rosa.</td></tr>`;
+    const countsBySeason = state.rosterEntries.reduce((acc, entry) => {
+      acc[entry.season_id] = (acc[entry.season_id] || 0) + 1;
+      return acc;
+    }, {});
+    const otherSeasons = Object.entries(countsBySeason)
+      .filter(([season]) => season !== selectedSeason)
+      .map(([season, count]) => `${escapeHtml(season)}: ${count}`)
+      .join(" · ");
+    const hint = otherSeasons
+      ? `<br><span class="muted small">Ci sono rose importate in altre stagioni (${otherSeasons}). Cambia il filtro stagione.</span>`
+      : "";
+    el.rosterTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun giocatore in rosa per la stagione ${escapeHtml(selectedSeason)}.${hint}</td></tr>`;
     return;
   }
 
@@ -1064,7 +1205,7 @@ function renderRoster() {
       return `
         <tr>
           <td><strong>${escapeHtml(player?.name || "Giocatore non trovato")}</strong></td>
-          <td>${escapeHtml(club?.name || entry.club_id)}</td>
+          <td><button class="link-button" type="button" data-roster-club-id="${escapeHtml(club?.id || entry.club_id)}">${escapeHtml(club?.name || entry.club_id)}</button></td>
           <td>${escapeHtml(latestQuote?.real_team || player?.real_team || "-")}</td>
           <td>${escapeHtml(latestQuote?.mantra_roles || player?.mantra_roles || "-")}</td>
           <td>${roleLabel}</td>
@@ -1078,15 +1219,102 @@ function renderRoster() {
 }
 
 
+
+function roleSortValue(player, quote) {
+  const role = String(quote?.classic_role || player?.classic_role || player?.role_class || "").toUpperCase();
+  const map = { P: 1, D: 2, C: 3, A: 4 };
+  return map[role] || 9;
+}
+
+function getRosterRowsForClub(clubId, seasonId = state.selectedRosterSeason || getSelectedSeasonId()) {
+  return buildRosterRows()
+    .filter(({ entry }) => entry.club_id === clubId && entry.season_id === seasonId && entry.is_active)
+    .sort((a, b) => {
+      const quoteA = a.player ? getLatestQuoteByPlayerIdForSeason(a.player.id, seasonId) : null;
+      const quoteB = b.player ? getLatestQuoteByPlayerIdForSeason(b.player.id, seasonId) : null;
+      return roleSortValue(a.player, quoteA) - roleSortValue(b.player, quoteB)
+        || (a.player?.name || "").localeCompare(b.player?.name || "");
+    });
+}
+
+function renderRosterClubCards() {
+  if (!el.rosterClubCards) return;
+  const seasonId = state.selectedRosterSeason || getSelectedSeasonId();
+  const cards = state.clubs.map((club) => {
+    const stats = getRosterStats(club.id, seasonId);
+    const rows = getRosterRowsForClub(club.id, seasonId);
+    const spent = rows.reduce((sum, { entry }) => sum + Number(entry.purchase_price || 0), 0);
+    const issueClass = stats.issues.length ? "status-danger" : "status-ok";
+    const issueText = stats.issues.length ? stats.issues[0] : "Rosa valida";
+    return `
+      <button class="roster-club-card" type="button" data-roster-club-id="${escapeHtml(club.id)}">
+        <span class="roster-card-title">${escapeHtml(club.name)}</span>
+        <span class="muted small">${escapeHtml(club.president || "-")}</span>
+        <span class="roster-card-stats">
+          <strong>${stats.total}</strong> giocatori · <strong>${stats.goalkeepers}</strong> P · <strong>${fmtFm(spent)}</strong>
+        </span>
+        <span class="status ${issueClass}">${escapeHtml(issueText)}</span>
+      </button>
+    `;
+  });
+  el.rosterClubCards.innerHTML = cards.join("");
+}
+
+function showRosterDialog(clubId) {
+  const club = getClubById(clubId);
+  if (!club) return;
+  const seasonId = state.selectedRosterSeason || getSelectedSeasonId();
+  const rows = getRosterRowsForClub(clubId, seasonId);
+  const stats = getRosterStats(clubId, seasonId);
+  const spent = rows.reduce((sum, { entry }) => sum + Number(entry.purchase_price || 0), 0);
+
+  el.rosterDialogTitle.textContent = `${club.name} · ${seasonId}`;
+
+  const tableRows = rows.map(({ entry, player }) => {
+    const quote = player ? getLatestQuoteByPlayerIdForSeason(player.id, seasonId) : null;
+    const status = entry.is_active ? (quote?.is_listed === false || player?.is_asterisked ? "Asteriscato" : "Attivo") : "Non attivo";
+    return `
+      <tr>
+        <td><strong>${escapeHtml(player?.name || "Giocatore non trovato")}</strong></td>
+        <td>${escapeHtml(quote?.classic_role || player?.classic_role || player?.role_class || "-")}</td>
+        <td>${escapeHtml(quote?.real_team || player?.real_team || entry.source_real_team || "-")}</td>
+        <td>${escapeHtml(quote?.mantra_roles || player?.mantra_roles || "-")}</td>
+        <td class="number">${fmtFm(entry.purchase_price)}</td>
+        <td><span class="status ${status === "Asteriscato" ? "status-warning" : entry.is_active ? "status-ok" : "status-muted"}">${status}</span></td>
+      </tr>
+    `;
+  }).join("");
+
+  el.rosterDialogBody.innerHTML = `
+    <div class="player-summary-grid roster-summary-grid">
+      <div><span>Giocatori</span><strong>${stats.total}</strong></div>
+      <div><span>Portieri</span><strong>${stats.goalkeepers}</strong></div>
+      <div><span>Movimento</span><strong>${stats.outfieldPlayers}</strong></div>
+      <div><span>Costo rosa</span><strong>${fmtFm(spent)}</strong></div>
+      <div><span>Saldo club</span><strong>${fmtFm(getClubBalance(clubId, seasonId))}</strong></div>
+      <div><span>Stato</span><strong>${stats.issues.length ? escapeHtml(stats.issues[0]) : "OK"}</strong></div>
+    </div>
+    <div class="table-wrap compact-table roster-dialog-table">
+      <table>
+        <thead>
+          <tr><th>Giocatore</th><th>R</th><th>Squadra</th><th>Ruoli</th><th class="number">Costo</th><th>Stato</th></tr>
+        </thead>
+        <tbody>${tableRows || '<tr><td colspan="6" class="muted center">Nessun giocatore in rosa.</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+  el.rosterDialog.showModal();
+}
+
 function renderListoneSeasonFilter() {
   if (!el.listoneSeasonFilter) return;
-  const currentValue = state.selectedListoneSeason || ACTIVE_SEASON_ID;
+  const currentValue = state.selectedListoneSeason || state.selectedSeason || ACTIVE_SEASON_ID;
   el.listoneSeasonFilter.innerHTML = state.seasons
     .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
     .join("");
   el.listoneSeasonFilter.value = state.seasons.some((season) => season.id === currentValue)
     ? currentValue
-    : ACTIVE_SEASON_ID;
+    : getSelectedSeasonId();
   state.selectedListoneSeason = el.listoneSeasonFilter.value;
   state.latestQuotations = getLatestQuotationsForSeason(state.selectedListoneSeason);
 }
@@ -1154,7 +1382,9 @@ function showPlayerDialog(playerId) {
   const rows = quotes
     .map((quote) => {
       const upload = getUploadById(quote.upload_id);
-      const snapshotLabel = upload ? `${escapeHtml(upload.season_id)} · ${escapeHtml(getUploadLabel(upload))}` : escapeHtml(quote.season_id || "-");
+      const snapshotLabel = upload
+        ? escapeHtml(fmtDateOnly(upload.listone_date || upload.created_at))
+        : escapeHtml(fmtDateOnly(quote.created_at) || quote.season_id || "-");
       const reason = quote.left_listone_reason === "MISSING_FROM_LISTONE"
         ? "assente nel nuovo listone"
         : quote.left_listone_reason === "CEDUTI_SHEET"
@@ -1162,7 +1392,7 @@ function showPlayerDialog(playerId) {
           : "";
       return `
       <tr>
-        <td>${snapshotLabel}<br><span class="muted small">${fmtDate(upload?.created_at || quote.created_at)}</span></td>
+        <td>${snapshotLabel}<br><span class="muted small">${escapeHtml(upload?.season_id || quote.season_id || "-")}</span></td>
         <td>${escapeHtml(quote.real_team || "-")}</td>
         <td>${escapeHtml(quote.mantra_roles || "-")}</td>
         <td class="number">${quote.quotation_current ?? "-"}</td>
@@ -1204,9 +1434,10 @@ function showPlayerDialog(playerId) {
 }
 
 function renderMovements() {
-  const recent = state.movements.slice(0, 14);
+  const seasonId = getDisplaySeasonId();
+  const recent = state.movements.filter((movement) => movement.season_id === seasonId).slice(0, 14);
   if (!recent.length) {
-    el.movementsList.innerHTML = `<p class="muted">Nessun movimento registrato.</p>`;
+    el.movementsList.innerHTML = `<p class="muted">Nessun movimento registrato per la stagione ${escapeHtml(seasonId)}.</p>`;
     return;
   }
 
@@ -1265,20 +1496,22 @@ function renderAdminControls() {
     .map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`)
     .join("");
 
+  const selectedSeason = state.selectedSeason || ACTIVE_SEASON_ID;
+
   el.movementSeason.innerHTML = seasonOptions;
-  el.movementSeason.value = ACTIVE_SEASON_ID;
+  el.movementSeason.value = selectedSeason;
   el.movementClub.innerHTML = clubOptions;
 
   el.listoneSeason.innerHTML = seasonOptions;
-  el.listoneSeason.value = state.selectedListoneSeason || ACTIVE_SEASON_ID;
+  el.listoneSeason.value = state.selectedListoneSeason || selectedSeason;
 
   if (el.rosterSeason) {
     el.rosterSeason.innerHTML = seasonOptions;
-    el.rosterSeason.value = ACTIVE_SEASON_ID;
+    el.rosterSeason.value = selectedSeason;
   }
 
   el.auctionSeason.innerHTML = seasonOptions;
-  el.auctionSeason.value = ACTIVE_SEASON_ID;
+  el.auctionSeason.value = selectedSeason;
   el.auctionClub.innerHTML = clubOptions;
   renderAuctionPlayerOptions();
   if (!el.auctionDate.value) el.auctionDate.value = todayIso();
@@ -1291,9 +1524,11 @@ function renderAdminControls() {
 }
 
 function renderAll() {
+  renderSeasonControl();
   renderMetrics();
   renderClubs();
   renderRosterFilters();
+  renderRosterClubCards();
   renderRoster();
   renderListoneSeasonFilter();
   renderListone();
@@ -1306,7 +1541,7 @@ function renderAll() {
 function renderAuctionPlayerOptions() {
   if (!el.auctionPlayerSelect) return;
   const currentValue = el.auctionPlayerSelect.value || "manual";
-  const seasonId = el.auctionSeason?.value || ACTIVE_SEASON_ID;
+  const seasonId = el.auctionSeason?.value || getSelectedSeasonId();
   const activeQuotes = getLatestQuotationsForSeason(seasonId).filter((quote) => quote.is_listed);
   el.auctionPlayerSelect.innerHTML = [
     `<option value="manual">Inserimento manuale</option>`,
@@ -1324,7 +1559,7 @@ function updateAuctionFieldsFromSelectedPlayer() {
   }
 
   const player = getPlayerById(playerId);
-  const quote = getLatestQuoteByPlayerIdForSeason(playerId, el.auctionSeason.value || ACTIVE_SEASON_ID);
+  const quote = getLatestQuoteByPlayerIdForSeason(playerId, el.auctionSeason.value || getSelectedSeasonId());
 
   el.auctionPlayerName.value = quote?.player_name || player?.name || "";
   el.auctionRealTeam.value = quote?.real_team || player?.real_team || "";
@@ -1738,7 +1973,7 @@ async function handleAuctionSubmit(event) {
 
   el.auctionForm.reset();
   el.auctionPlayerSelect.value = "manual";
-  el.auctionSeason.value = ACTIVE_SEASON_ID;
+  el.auctionSeason.value = state.selectedSeason || ACTIVE_SEASON_ID;
   el.auctionDate.value = todayIso();
   el.auctionFormStatus.textContent = "Acquisto registrato.";
   await fetchAll();
@@ -1758,7 +1993,7 @@ async function handleMovementSubmit(event) {
   }
 
   const clubId = el.movementClub.value;
-  const balance = getClubBalance(clubId);
+  const balance = getClubBalance(clubId, el.movementSeason.value);
 
   if (normalized.amount < 0 && balance + normalized.amount < 0 && normalized.movementType !== "ADJUSTMENT") {
     el.movementFormStatus.textContent = `Operazione bloccata: saldo insufficiente (${fmtFm(balance)}).`;
@@ -1782,7 +2017,7 @@ async function handleMovementSubmit(event) {
   }
 
   el.movementForm.reset();
-  el.movementSeason.value = ACTIVE_SEASON_ID;
+  el.movementSeason.value = state.selectedSeason || ACTIVE_SEASON_ID;
   updateMovementSignHint();
   el.movementFormStatus.textContent = "Movimento salvato.";
   await fetchAll();
@@ -1884,6 +2119,12 @@ function setupCollapsiblePanels() {
 }
 
 function bindEvents() {
+  if (el.globalSeasonSelect) {
+    el.globalSeasonSelect.addEventListener("change", (event) => applyDisplayedSeason(event.target.value));
+  }
+  if (el.dashboardSeasonSelect) {
+    el.dashboardSeasonSelect.addEventListener("change", (event) => applyDisplayedSeason(event.target.value));
+  }
   el.refreshBtn.addEventListener("click", () => fetchAll().catch((error) => showError(error.message)));
   el.openLoginBtn.addEventListener("click", () => el.loginDialog.showModal());
   el.closeLoginBtn.addEventListener("click", () => el.loginDialog.close());
@@ -1894,9 +2135,7 @@ function bindEvents() {
   el.listoneUploadForm.addEventListener("submit", handleListoneUpload);
   if (el.rosterUploadForm) el.rosterUploadForm.addEventListener("submit", handleRosterUpload);
   el.listoneSeasonFilter.addEventListener("change", (event) => {
-    state.selectedListoneSeason = event.target.value;
-    state.latestQuotations = getLatestQuotationsForSeason(state.selectedListoneSeason);
-    renderListone();
+    applyDisplayedSeason(event.target.value);
   });
   el.auctionSeason.addEventListener("change", () => {
     renderAuctionPlayerOptions();
@@ -1911,14 +2150,34 @@ function bindEvents() {
     state.search = event.target.value;
     renderClubs();
   });
+  if (el.rosterSeasonFilter) {
+    el.rosterSeasonFilter.addEventListener("change", (event) => {
+      applyDisplayedSeason(event.target.value);
+    });
+  }
   el.rosterSearch.addEventListener("input", (event) => {
     state.rosterSearch = event.target.value;
     renderRoster();
   });
   el.rosterClubFilter.addEventListener("change", (event) => {
     state.rosterClubFilter = event.target.value;
+    renderRosterClubCards();
     renderRoster();
   });
+  if (el.rosterClubCards) {
+    el.rosterClubCards.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-roster-club-id]");
+      if (!button) return;
+      showRosterDialog(button.dataset.rosterClubId);
+    });
+  }
+  if (el.rosterTableBody) {
+    el.rosterTableBody.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-roster-club-id]");
+      if (!button) return;
+      showRosterDialog(button.dataset.rosterClubId);
+    });
+  }
   el.listoneSearch.addEventListener("input", (event) => {
     state.listoneSearch = event.target.value;
     renderListone();
@@ -1933,6 +2192,7 @@ function bindEvents() {
     showPlayerDialog(button.dataset.playerId);
   });
   el.closePlayerBtn.addEventListener("click", () => el.playerDialog.close());
+  if (el.closeRosterBtn) el.closeRosterBtn.addEventListener("click", () => el.rosterDialog.close());
 }
 
 async function init() {
