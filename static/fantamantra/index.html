@@ -251,6 +251,49 @@
         <div class="panel-header">
           <div>
             <p class="eyebrow">Area admin</p>
+            <h2>Carica rose</h2>
+            <p>Importa il file Excel delle rose: legge i nomi dei club, crea/aggiorna i calciatori, assegna le rose e registra i costi d'asta.</p>
+          </div>
+        </div>
+
+        <form id="rosterUploadForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="rosterSeason" class="input" required></select>
+          </label>
+          <label>
+            Label import <span class="muted">(opzionale)</span>
+            <input id="rosterLabel" class="input" type="text" placeholder="Es. Rose asta iniziale, Post settembre..." />
+          </label>
+          <label class="span-2">
+            File rose Excel
+            <input id="rosterFile" class="input" type="file" accept=".xlsx,.xls" required />
+            <small class="field-hint">Il file deve avere il nome della squadra sopra ogni rosa e le colonne Ruolo, Calciatore, Squadra, Costo.</small>
+          </label>
+          <label class="checkbox-label">
+            <input id="rosterUpdateClubs" type="checkbox" checked />
+            Aggiorna i nomi dei 10 club dal file, preservando gli ID e i saldi già presenti.
+          </label>
+          <label class="checkbox-label">
+            <input id="rosterReplaceExisting" type="checkbox" checked />
+            Sostituisci le rose importate in precedenza per questa stagione.
+          </label>
+          <label class="checkbox-label">
+            <input id="rosterRegisterMovements" type="checkbox" checked />
+            Registra automaticamente i movimenti FM negativi per i costi dei giocatori.
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Carica rose</button>
+            <span id="rosterUploadStatus" class="form-status"></span>
+          </div>
+        </form>
+        <div id="rosterImportReport" class="import-report hidden"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
             <h2>Registra acquisto asta</h2>
             <p>Crea il giocatore, lo assegna alla rosa e registra automaticamente l'uscita FM.</p>
           </div>
@@ -390,7 +433,7 @@
   </dialog>
 
   <footer class="container app-footer">
-    <p>FantaMantra Manageriale · V6 import listoni con associazione giocatori, filtri e sezioni richiudibili</p>
+    <p>FantaMantra Manageriale · V7 import listoni e rose</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>

@@ -46,6 +46,7 @@ const state = {
   stadiumLevels: [],
   playerQuotations: [],
   listoneUploads: [],
+  rosterImports: [],
   latestQuotations: [],
   selectedListoneSeason: ACTIVE_SEASON_ID,
   search: "",
@@ -108,6 +109,15 @@ const el = {
   listoneFile: document.getElementById("listoneFile"),
   listoneUploadStatus: document.getElementById("listoneUploadStatus"),
   listoneImportReport: document.getElementById("listoneImportReport"),
+  rosterUploadForm: document.getElementById("rosterUploadForm"),
+  rosterSeason: document.getElementById("rosterSeason"),
+  rosterLabel: document.getElementById("rosterLabel"),
+  rosterFile: document.getElementById("rosterFile"),
+  rosterUpdateClubs: document.getElementById("rosterUpdateClubs"),
+  rosterReplaceExisting: document.getElementById("rosterReplaceExisting"),
+  rosterRegisterMovements: document.getElementById("rosterRegisterMovements"),
+  rosterUploadStatus: document.getElementById("rosterUploadStatus"),
+  rosterImportReport: document.getElementById("rosterImportReport"),
   movementForm: document.getElementById("movementForm"),
   movementSeason: document.getElementById("movementSeason"),
   movementClub: document.getElementById("movementClub"),
@@ -314,6 +324,384 @@ function readListoneWorkbook(file) {
   });
 }
 
+
+function parseResidualCredits(value) {
+  const match = String(value || "").match(/crediti\s+residui\s*:\s*([0-9]+(?:[,.][0-9]+)?)/i);
+  return match ? toNumber(match[1]) : null;
+}
+
+function getClubAssignmentOrder() {
+  function order(club) {
+    if (club.id === "salernitana1919") return 1;
+    const match = String(club.id || "").match(/club(\d+)/i);
+    if (match) return Number(match[1]);
+    return 1000;
+  }
+  return [...state.clubs].sort((a, b) => order(a) - order(b) || a.name.localeCompare(b.name));
+}
+
+function normalizeRosterRole(role) {
+  const value = String(role || "").trim().toUpperCase();
+  if (["P", "D", "C", "A"].includes(value)) return value;
+  return value.slice(0, 1);
+}
+
+function getLatestQuoteByPlayerKeyForSeason(playerKey, seasonId) {
+  return getLatestQuotationsForSeason(seasonId).find((quote) => getQuotationKey(quote) === playerKey);
+}
+
+function readRosterWorkbook(file) {
+  return new Promise((resolve, reject) => {
+    if (!window.XLSX) {
+      reject(new Error("Libreria XLSX non caricata. Controlla la connessione o il CDN."));
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const workbook = window.XLSX.read(new Uint8Array(event.target.result), { type: "array" });
+        const sheetName = workbook.SheetNames.includes("TutteLeRose") ? "TutteLeRose" : workbook.SheetNames[0];
+        const rows = window.XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1, defval: null });
+
+        const clubHeaderRow = 4;
+        const firstDataRow = 6;
+        const teams = [];
+
+        for (let col = 0; col < (rows[clubHeaderRow] || []).length; col += 5) {
+          const rawClubName = rows[clubHeaderRow]?.[col];
+          const clubName = rawClubName ? String(rawClubName).trim() : "";
+          if (!clubName) continue;
+
+          const team = {
+            sourceClubName: clubName,
+            sourceClubKey: normalizeTextKey(clubName),
+            startCol: col,
+            residualCredits: null,
+            players: [],
+          };
+
+          for (let rowIndex = firstDataRow; rowIndex < rows.length; rowIndex += 1) {
+            const row = rows[rowIndex] || [];
+            const roleCell = row[col];
+            const nameCell = row[col + 1];
+            const teamCell = row[col + 2];
+            const costCell = row[col + 3];
+
+            const residual = parseResidualCredits(roleCell);
+            if (residual !== null) {
+              team.residualCredits = residual;
+              continue;
+            }
+
+            if (!nameCell || !roleCell) continue;
+
+            const role = normalizeRosterRole(roleCell);
+            const playerName = String(nameCell).trim();
+            const playerKey = getPlayerKeyFromName(playerName);
+            const cost = toNumber(costCell) ?? 0;
+
+            if (!playerKey) continue;
+
+            team.players.push({
+              sourceClubName: clubName,
+              sourceClubKey: team.sourceClubKey,
+              rowNumber: rowIndex + 1,
+              classic_role: role,
+              role_class: role === "P" ? "P" : "MOVIMENTO",
+              player_key: playerKey,
+              player_name: playerName,
+              real_team: teamCell ? String(teamCell).trim() : null,
+              purchase_price: cost,
+            });
+          }
+
+          teams.push(team);
+        }
+
+        resolve({ sheetName, teams, totalPlayers: teams.reduce((sum, team) => sum + team.players.length, 0) });
+      } catch (error) {
+        reject(error);
+      }
+    };
+    reader.onerror = () => reject(new Error("Impossibile leggere il file Excel delle rose."));
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function renderRosterImportReport(stats) {
+  if (!el.rosterImportReport) return;
+  const clubRows = stats.clubs
+    .map((club) => `
+      <tr>
+        <td>${escapeHtml(club.sourceClubName)}</td>
+        <td>${escapeHtml(club.savedClubName)}</td>
+        <td class="number">${club.players}</td>
+        <td class="number">${fmtFm(club.spent)}</td>
+        <td class="number">${club.residualCredits ?? "-"}</td>
+      </tr>
+    `)
+    .join("");
+
+  el.rosterImportReport.innerHTML = `
+    <div class="import-summary-grid">
+      <div><span>Club letti</span><strong>${stats.clubs.length}</strong></div>
+      <div><span>Giocatori importati</span><strong>${stats.insertedRosterEntries}</strong></div>
+      <div><span>Giocatori creati/aggiornati</span><strong>${stats.playersUpserted}</strong></div>
+      <div><span>Movimenti FM</span><strong>${stats.movementsInserted}</strong></div>
+      <div><span>Totale speso</span><strong>${fmtFm(stats.totalSpent)}</strong></div>
+      <div><span>Saltati</span><strong>${stats.skipped}</strong></div>
+    </div>
+    <div class="table-wrap mini-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Squadra nel file</th>
+            <th>Club DB</th>
+            <th class="number">Giocatori</th>
+            <th class="number">Speso</th>
+            <th class="number">Crediti residui file</th>
+          </tr>
+        </thead>
+        <tbody>${clubRows}</tbody>
+      </table>
+    </div>
+  `;
+  el.rosterImportReport.classList.remove("hidden");
+}
+
+async function updateClubsFromRosterTeams(teams) {
+  const assignments = new Map();
+  const orderedClubs = getClubAssignmentOrder();
+  const usedClubIds = new Set();
+
+  for (let index = 0; index < teams.length; index += 1) {
+    const team = teams[index];
+    const existingByName = getClubByNameKey(team.sourceClubKey);
+    let club = existingByName && !usedClubIds.has(existingByName.id) ? existingByName : null;
+
+    if (!club) {
+      club = orderedClubs.find((candidate) => !usedClubIds.has(candidate.id)) || null;
+    }
+
+    if (!club) {
+      const newId = `club_${team.sourceClubKey || index + 1}`.slice(0, 48);
+      const { data, error } = await state.supabase
+        .from("clubs")
+        .insert({ id: newId, name: team.sourceClubName, president: `Presidente ${team.sourceClubName}`, active: true })
+        .select("*")
+        .single();
+      if (error) throw error;
+      club = data;
+      state.clubs.push(club);
+    } else if (club.name !== team.sourceClubName) {
+      const { data, error } = await state.supabase
+        .from("clubs")
+        .update({ name: team.sourceClubName, president: club.president || `Presidente ${team.sourceClubName}`, active: true })
+        .eq("id", club.id)
+        .select("*")
+        .single();
+      if (error) throw error;
+      Object.assign(club, data);
+    }
+
+    usedClubIds.add(club.id);
+    assignments.set(team.sourceClubKey, club);
+  }
+
+  return assignments;
+}
+
+function mapRosterTeamsToExistingClubs(teams) {
+  const assignments = new Map();
+  const orderedClubs = getClubAssignmentOrder();
+  const usedClubIds = new Set();
+
+  for (let index = 0; index < teams.length; index += 1) {
+    const team = teams[index];
+    const existingByName = getClubByNameKey(team.sourceClubKey);
+    const club = (existingByName && !usedClubIds.has(existingByName.id))
+      ? existingByName
+      : orderedClubs.find((candidate) => !usedClubIds.has(candidate.id));
+    if (!club) throw new Error(`Impossibile associare il club ${team.sourceClubName}.`);
+    usedClubIds.add(club.id);
+    assignments.set(team.sourceClubKey, club);
+  }
+
+  return assignments;
+}
+
+async function handleRosterUpload(event) {
+  event.preventDefault();
+  el.rosterUploadStatus.textContent = "Lettura file rose...";
+  el.rosterImportReport.classList.add("hidden");
+
+  const file = el.rosterFile.files?.[0];
+  const seasonId = el.rosterSeason.value;
+  const label = el.rosterLabel.value.trim() || null;
+  const shouldUpdateClubs = el.rosterUpdateClubs.checked;
+  const shouldReplace = el.rosterReplaceExisting.checked;
+  const shouldRegisterMovements = el.rosterRegisterMovements.checked;
+
+  if (!file) {
+    el.rosterUploadStatus.textContent = "Seleziona un file Excel delle rose.";
+    return;
+  }
+
+  try {
+    const parsed = await readRosterWorkbook(file);
+    if (!parsed.teams.length || !parsed.totalPlayers) {
+      el.rosterUploadStatus.textContent = "Nessuna rosa riconosciuta nel file.";
+      return;
+    }
+
+    el.rosterUploadStatus.textContent = `Riconosciute ${parsed.teams.length} rose e ${parsed.totalPlayers} giocatori...`;
+
+    const clubAssignments = shouldUpdateClubs
+      ? await updateClubsFromRosterTeams(parsed.teams)
+      : mapRosterTeamsToExistingClubs(parsed.teams);
+
+    if (shouldReplace) {
+      await state.supabase
+        .from("fm_movements")
+        .delete()
+        .eq("season_id", seasonId)
+        .eq("reference_type", "ROSTER_IMPORT");
+      await state.supabase
+        .from("roster_entries")
+        .delete()
+        .eq("season_id", seasonId)
+        .not("roster_import_id", "is", null);
+    }
+
+    const { data: rosterImport, error: importError } = await state.supabase
+      .from("roster_imports")
+      .insert({
+        season_id: seasonId,
+        file_name: file.name,
+        label,
+        total_clubs: parsed.teams.length,
+        total_players: parsed.totalPlayers,
+        created_by: state.user?.id || null,
+      })
+      .select("*")
+      .single();
+    if (importError) throw importError;
+
+    const rosterRows = parsed.teams.flatMap((team) => team.players);
+    const playerPayloads = rosterRows.map((row) => {
+      const quote = getLatestQuoteByPlayerKeyForSeason(row.player_key, seasonId);
+      const existing = getPlayerByKey(row.player_key);
+      return {
+        player_key: row.player_key,
+        name: quote?.player_name || existing?.name || row.player_name,
+        real_team: quote?.real_team || row.real_team || existing?.real_team || null,
+        classic_role: quote?.classic_role || row.classic_role || existing?.classic_role || null,
+        mantra_roles: quote?.mantra_roles || existing?.mantra_roles || row.classic_role || "",
+        role_class: quote?.role_class || existing?.role_class || row.role_class,
+        is_asterisked: quote ? !quote.is_listed : Boolean(existing?.is_asterisked),
+      };
+    });
+
+    const savedPlayers = await insertRowsInChunks("players", playerPayloads, {
+      upsert: true,
+      onConflict: "player_key",
+    });
+    const playerByKey = new Map(savedPlayers.map((player) => [String(player.player_key), player]));
+
+    const rosterEntries = [];
+    const movements = [];
+    const existingRosterKeys = new Set(
+      state.rosterEntries
+        .filter((entry) => entry.season_id === seasonId && entry.is_active)
+        .map((entry) => `${entry.club_id}:${entry.player_id}`),
+    );
+
+    let skipped = 0;
+    for (const team of parsed.teams) {
+      const club = clubAssignments.get(team.sourceClubKey);
+      if (!club) throw new Error(`Club non associato: ${team.sourceClubName}`);
+
+      for (const row of team.players) {
+        const player = playerByKey.get(row.player_key);
+        if (!player) {
+          skipped += 1;
+          continue;
+        }
+        const rosterKey = `${club.id}:${player.id}`;
+        if (!shouldReplace && existingRosterKeys.has(rosterKey)) {
+          skipped += 1;
+          continue;
+        }
+        existingRosterKeys.add(rosterKey);
+
+        rosterEntries.push({
+          season_id: seasonId,
+          club_id: club.id,
+          player_id: player.id,
+          purchase_price: row.purchase_price,
+          acquired_via: "AUCTION",
+          acquired_at: todayIso(),
+          is_active: true,
+          is_loan: false,
+          roster_import_id: rosterImport.id,
+          source_row: row.rowNumber,
+          source_club_name: row.sourceClubName,
+          source_real_team: row.real_team,
+          notes: `Import rose ${file.name}`,
+        });
+
+        if (shouldRegisterMovements && row.purchase_price > 0) {
+          movements.push({
+            season_id: seasonId,
+            club_id: club.id,
+            amount: -Math.abs(row.purchase_price),
+            movement_type: "AUCTION_BUY",
+            description: `Import rose - ${row.player_name}`,
+            reference_type: "ROSTER_IMPORT",
+            reference_id: rosterImport.id,
+            created_by: state.user?.id || null,
+          });
+        }
+      }
+    }
+
+    const insertedRosterEntries = rosterEntries.length ? await insertRowsInChunks("roster_entries", rosterEntries) : [];
+    const insertedMovements = movements.length ? await insertRowsInChunks("fm_movements", movements) : [];
+
+    const clubStats = parsed.teams.map((team) => {
+      const club = clubAssignments.get(team.sourceClubKey);
+      const spent = team.players.reduce((sum, player) => sum + Number(player.purchase_price || 0), 0);
+      return {
+        sourceClubName: team.sourceClubName,
+        savedClubName: club?.name || "-",
+        players: team.players.length,
+        spent,
+        residualCredits: team.residualCredits,
+      };
+    });
+
+    renderRosterImportReport({
+      clubs: clubStats,
+      insertedRosterEntries: insertedRosterEntries.length,
+      playersUpserted: savedPlayers.length,
+      movementsInserted: insertedMovements.length,
+      totalSpent: clubStats.reduce((sum, club) => sum + club.spent, 0),
+      skipped,
+    });
+
+    el.rosterUploadStatus.textContent = "Rose caricate correttamente.";
+    el.rosterUploadForm.reset();
+    el.rosterSeason.value = seasonId;
+    el.rosterUpdateClubs.checked = true;
+    el.rosterReplaceExisting.checked = true;
+    el.rosterRegisterMovements.checked = true;
+    await fetchAll();
+  } catch (error) {
+    el.rosterUploadStatus.textContent = error.message || "Errore durante l'importazione delle rose.";
+  }
+}
+
 function normalizeMovement(type, rawAmount) {
   const value = Number(rawAmount);
 
@@ -424,6 +812,14 @@ function getPlayerById(playerId) {
   return state.players.find((player) => player.id === playerId);
 }
 
+function getPlayerByKey(playerKey) {
+  return state.players.find((player) => player.player_key === playerKey);
+}
+
+function getClubByNameKey(nameKey) {
+  return state.clubs.find((club) => normalizeTextKey(club.name) === nameKey);
+}
+
 function getActiveRosterEntries(clubId) {
   return state.rosterEntries.filter(
     (entry) => entry.club_id === clubId && entry.season_id === ACTIVE_SEASON_ID && entry.is_active,
@@ -499,6 +895,7 @@ async function fetchAll() {
     stadiumLevelsRes,
     playerQuotationsRes,
     listoneUploadsRes,
+    rosterImportsRes,
   ] = await Promise.all([
     state.supabase.from("seasons").select("*").order("starts_on", { ascending: false }),
     state.supabase.from("clubs").select("*").order("name", { ascending: true }),
@@ -525,6 +922,11 @@ async function fetchAll() {
       .select("*")
       .order("created_at", { ascending: false })
       .limit(500),
+    state.supabase
+      .from("roster_imports")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(200),
   ]);
 
   for (const result of [
@@ -541,6 +943,10 @@ async function fetchAll() {
     if (result.error) throw result.error;
   }
 
+  if (rosterImportsRes?.error && rosterImportsRes.error.code !== "42P01") {
+    throw rosterImportsRes.error;
+  }
+
   state.seasons = seasonsRes.data || [];
   state.clubs = clubsRes.data || [];
   state.movements = movementsRes.data || [];
@@ -550,6 +956,7 @@ async function fetchAll() {
   state.stadiumLevels = stadiumLevelsRes.data || [];
   state.playerQuotations = playerQuotationsRes.data || [];
   state.listoneUploads = listoneUploadsRes.data || [];
+  state.rosterImports = rosterImportsRes?.data || [];
   if (!state.seasons.some((season) => season.id === state.selectedListoneSeason)) {
     state.selectedListoneSeason = ACTIVE_SEASON_ID;
   }
@@ -859,6 +1266,11 @@ function renderAdminControls() {
 
   el.listoneSeason.innerHTML = seasonOptions;
   el.listoneSeason.value = state.selectedListoneSeason || ACTIVE_SEASON_ID;
+
+  if (el.rosterSeason) {
+    el.rosterSeason.innerHTML = seasonOptions;
+    el.rosterSeason.value = ACTIVE_SEASON_ID;
+  }
 
   el.auctionSeason.innerHTML = seasonOptions;
   el.auctionSeason.value = ACTIVE_SEASON_ID;
@@ -1420,6 +1832,7 @@ function bindEvents() {
   el.clubForm.addEventListener("submit", handleClubSubmit);
   el.clubEditSelect.addEventListener("change", updateClubFormFields);
   el.listoneUploadForm.addEventListener("submit", handleListoneUpload);
+  if (el.rosterUploadForm) el.rosterUploadForm.addEventListener("submit", handleRosterUpload);
   el.listoneSeasonFilter.addEventListener("change", (event) => {
     state.selectedListoneSeason = event.target.value;
     state.latestQuotations = getLatestQuotationsForSeason(state.selectedListoneSeason);
