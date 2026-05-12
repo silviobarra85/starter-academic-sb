@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FantaMantra Manageriale</title>
-  <meta name="description" content="Gestionale FantaMantra Manageriale - saldi FM, club, movimenti e stadio." />
+  <meta name="description" content="Gestionale FantaMantra Manageriale - saldi FM, club, rose, movimenti e stadio." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./assets/styles.css" />
 </head>
@@ -14,7 +14,7 @@
       <div>
         <p class="eyebrow">Lega Fantacalcio</p>
         <h1>FantaMantra Manageriale</h1>
-        <p class="subtitle">Dashboard operativa per club, saldi FM, movimenti e stadio.</p>
+        <p class="subtitle">Dashboard operativa per club, saldi FM, rose, movimenti e stadio.</p>
       </div>
       <div class="header-actions">
         <button id="refreshBtn" class="button button-secondary" type="button">Aggiorna dati</button>
@@ -54,8 +54,8 @@
     <section class="panel">
       <div class="panel-header">
         <div>
-          <h2>Classifica finanziaria</h2>
-          <p>Saldo calcolato dalla somma dei movimenti FM.</p>
+          <h2>Club e situazione finanziaria</h2>
+          <p>Saldo calcolato dalla somma dei movimenti FM e controlli base sulle rose.</p>
         </div>
         <input id="clubSearch" class="input search-input" type="search" placeholder="Cerca club o presidente..." />
       </div>
@@ -67,12 +67,47 @@
               <th>Club</th>
               <th>Presidente</th>
               <th class="number">Saldo FM</th>
+              <th class="number">Rosa</th>
               <th class="number">Stadio</th>
               <th>Stato</th>
             </tr>
           </thead>
           <tbody id="clubsTableBody">
-            <tr><td colspan="6" class="muted center">Caricamento...</td></tr>
+            <tr><td colspan="7" class="muted center">Caricamento...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Rose</h2>
+          <p>Giocatori attivi per club, ruolo Mantra, prezzo e provenienza.</p>
+        </div>
+        <div class="filters-row">
+          <select id="rosterClubFilter" class="input filter-input">
+            <option value="all">Tutti i club</option>
+          </select>
+          <input id="rosterSearch" class="input search-input" type="search" placeholder="Cerca giocatore, club, ruolo..." />
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Giocatore</th>
+              <th>Club</th>
+              <th>Squadra reale</th>
+              <th>Ruoli</th>
+              <th>Tipo</th>
+              <th class="number">Costo</th>
+              <th>Acquisizione</th>
+              <th>Stato</th>
+            </tr>
+          </thead>
+          <tbody id="rosterTableBody">
+            <tr><td colspan="8" class="muted center">Caricamento...</td></tr>
           </tbody>
         </table>
       </div>
@@ -104,55 +139,141 @@
       </article>
     </section>
 
-    <section id="adminPanel" class="panel admin-panel hidden">
-      <div class="panel-header">
-        <div>
-          <p class="eyebrow">Area admin</p>
-          <h2>Registra movimento FM</h2>
-          <p>Il saldo del club si aggiorna automaticamente dalla somma dei movimenti.</p>
+    <section id="adminPanel" class="admin-panel hidden">
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Modifica club</h2>
+            <p>Aggiorna i placeholder senza entrare nel pannello Supabase.</p>
+          </div>
         </div>
-      </div>
 
-      <form id="movementForm" class="form-grid">
-        <label>
-          Stagione
-          <select id="movementSeason" class="input" required></select>
-        </label>
-        <label>
-          Club
-          <select id="movementClub" class="input" required></select>
-        </label>
-        <label>
-          Tipo movimento
-          <select id="movementType" class="input" required>
-            <option value="AUCTION_BUY">Acquisto asta</option>
-            <option value="RELEASE_REFUND">Rimborso svincolo</option>
-            <option value="TRADE_FM_IN">FM ricevuti in scambio</option>
-            <option value="TRADE_FM_OUT">FM ceduti in scambio</option>
-            <option value="LOAN_FM_IN">FM ricevuti in prestito</option>
-            <option value="LOAN_FM_OUT">FM ceduti in prestito</option>
-            <option value="STADIUM_BUILD">Costruzione stadio</option>
-            <option value="STADIUM_MAINTENANCE">Manutenzione stadio</option>
-            <option value="STADIUM_REVENUE">Introiti stadio</option>
-            <option value="PRIZE">Premio</option>
-            <option value="PENALTY">Penalizzazione</option>
-            <option value="ADJUSTMENT">Rettifica</option>
-          </select>
-        </label>
-        <label>
-          Importo FM
-          <input id="movementAmount" class="input" type="number" step="0.5" placeholder="Es. 38 oppure 12" required />
-          <small id="movementSignHint" class="field-hint">Il segno viene applicato automaticamente.</small>
-        </label>
-        <label class="span-2">
-          Descrizione
-          <input id="movementDescription" class="input" type="text" placeholder="Es. Acquisto asta - Nome giocatore" />
-        </label>
-        <div class="form-actions span-2">
-          <button class="button button-primary" type="submit">Salva movimento</button>
-          <span id="movementFormStatus" class="form-status"></span>
+        <form id="clubForm" class="form-grid">
+          <label>
+            Club da modificare
+            <select id="clubEditSelect" class="input" required></select>
+          </label>
+          <label>
+            Nome club
+            <input id="clubNameInput" class="input" type="text" required />
+          </label>
+          <label>
+            Presidente
+            <input id="clubPresidentInput" class="input" type="text" required />
+          </label>
+          <label class="checkbox-label">
+            <input id="clubActiveInput" type="checkbox" />
+            Club attivo
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva club</button>
+            <span id="clubFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Registra acquisto asta</h2>
+            <p>Crea il giocatore, lo assegna alla rosa e registra automaticamente l'uscita FM.</p>
+          </div>
         </div>
-      </form>
+
+        <form id="auctionForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="auctionSeason" class="input" required></select>
+          </label>
+          <label>
+            Club acquirente
+            <select id="auctionClub" class="input" required></select>
+          </label>
+          <label>
+            Nome calciatore
+            <input id="auctionPlayerName" class="input" type="text" placeholder="Es. Mario Rossi" required />
+          </label>
+          <label>
+            Squadra reale
+            <input id="auctionRealTeam" class="input" type="text" placeholder="Es. Inter" />
+          </label>
+          <label>
+            Ruoli Mantra
+            <input id="auctionRoles" class="input" type="text" placeholder="Es. Dc/B oppure W/A" required />
+          </label>
+          <label>
+            Tipo
+            <select id="auctionRoleClass" class="input" required>
+              <option value="MOVIMENTO">Movimento</option>
+              <option value="P">Portiere</option>
+            </select>
+          </label>
+          <label>
+            Prezzo FM
+            <input id="auctionPrice" class="input" type="number" min="0" step="0.5" placeholder="Es. 38" required />
+          </label>
+          <label>
+            Data acquisto
+            <input id="auctionDate" class="input" type="date" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva acquisto</button>
+            <span id="auctionFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Registra movimento FM</h2>
+            <p>Movimento manuale. Per gli acquisti asta usa il form dedicato sopra.</p>
+          </div>
+        </div>
+
+        <form id="movementForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="movementSeason" class="input" required></select>
+          </label>
+          <label>
+            Club
+            <select id="movementClub" class="input" required></select>
+          </label>
+          <label>
+            Tipo movimento
+            <select id="movementType" class="input" required>
+              <option value="RELEASE_REFUND">Rimborso svincolo</option>
+              <option value="TRADE_FM_IN">FM ricevuti in scambio</option>
+              <option value="TRADE_FM_OUT">FM ceduti in scambio</option>
+              <option value="LOAN_FM_IN">FM ricevuti in prestito</option>
+              <option value="LOAN_FM_OUT">FM ceduti in prestito</option>
+              <option value="STADIUM_BUILD">Costruzione stadio</option>
+              <option value="STADIUM_MAINTENANCE">Manutenzione stadio</option>
+              <option value="STADIUM_REVENUE">Introiti stadio</option>
+              <option value="PRIZE">Premio</option>
+              <option value="PENALTY">Penalizzazione</option>
+              <option value="ADJUSTMENT">Rettifica</option>
+            </select>
+          </label>
+          <label>
+            Importo FM
+            <input id="movementAmount" class="input" type="number" step="0.5" placeholder="Es. 38 oppure 12" required />
+            <small id="movementSignHint" class="field-hint">Il segno viene applicato automaticamente.</small>
+          </label>
+          <label class="span-2">
+            Descrizione
+            <input id="movementDescription" class="input" type="text" placeholder="Es. Premio, svincolo, penalizzazione..." />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva movimento</button>
+            <span id="movementFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
     </section>
   </main>
 
@@ -161,7 +282,7 @@
       <button id="closeLoginBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
       <p class="eyebrow">Accesso riservato</p>
       <h2>Area admin</h2>
-      <p class="muted">Accedi con l’utente creato in Supabase Authentication.</p>
+      <p class="muted">Accedi con l'utente creato in Supabase Authentication.</p>
       <label>
         Email
         <input id="loginEmail" class="input" type="email" autocomplete="email" required />
@@ -176,7 +297,7 @@
   </dialog>
 
   <footer class="container app-footer">
-    <p>FantaMantra Manageriale · V1 statica con Supabase</p>
+    <p>FantaMantra Manageriale · V3 club, rose e acquisti asta</p>
   </footer>
 
   <script type="module" src="./assets/app.js"></script>

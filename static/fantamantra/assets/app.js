@@ -26,6 +26,13 @@ const MOVEMENT_LABELS = {
   ADJUSTMENT: "Rettifica",
 };
 
+const ACQUIRED_LABELS = {
+  AUCTION: "Asta",
+  TRADE: "Scambio",
+  LOAN: "Prestito",
+  MANUAL: "Manuale",
+};
+
 const state = {
   supabase: null,
   user: null,
@@ -33,9 +40,13 @@ const state = {
   seasons: [],
   clubs: [],
   movements: [],
+  players: [],
+  rosterEntries: [],
   stadiums: [],
   stadiumLevels: [],
   search: "",
+  rosterSearch: "",
+  rosterClubFilter: "all",
 };
 
 const el = {
@@ -56,9 +67,28 @@ const el = {
   metricAlerts: document.getElementById("metricAlerts"),
   clubSearch: document.getElementById("clubSearch"),
   clubsTableBody: document.getElementById("clubsTableBody"),
+  rosterClubFilter: document.getElementById("rosterClubFilter"),
+  rosterSearch: document.getElementById("rosterSearch"),
+  rosterTableBody: document.getElementById("rosterTableBody"),
   movementsList: document.getElementById("movementsList"),
   stadiumsList: document.getElementById("stadiumsList"),
   adminPanel: document.getElementById("adminPanel"),
+  clubForm: document.getElementById("clubForm"),
+  clubEditSelect: document.getElementById("clubEditSelect"),
+  clubNameInput: document.getElementById("clubNameInput"),
+  clubPresidentInput: document.getElementById("clubPresidentInput"),
+  clubActiveInput: document.getElementById("clubActiveInput"),
+  clubFormStatus: document.getElementById("clubFormStatus"),
+  auctionForm: document.getElementById("auctionForm"),
+  auctionSeason: document.getElementById("auctionSeason"),
+  auctionClub: document.getElementById("auctionClub"),
+  auctionPlayerName: document.getElementById("auctionPlayerName"),
+  auctionRealTeam: document.getElementById("auctionRealTeam"),
+  auctionRoles: document.getElementById("auctionRoles"),
+  auctionRoleClass: document.getElementById("auctionRoleClass"),
+  auctionPrice: document.getElementById("auctionPrice"),
+  auctionDate: document.getElementById("auctionDate"),
+  auctionFormStatus: document.getElementById("auctionFormStatus"),
   movementForm: document.getElementById("movementForm"),
   movementSeason: document.getElementById("movementSeason"),
   movementClub: document.getElementById("movementClub"),
@@ -76,6 +106,10 @@ function isConfigured() {
     SUPABASE_ANON_KEY.length > 40 &&
     !SUPABASE_ANON_KEY.includes("INSERISCI")
   );
+}
+
+function todayIso() {
+  return new Date().toISOString().slice(0, 10);
 }
 
 function fmtFm(value) {
@@ -170,7 +204,7 @@ function updateMovementSignHint() {
   }
 
   const signText = preview.amount > 0 ? "+" : "-";
-  el.movementSignHint.textContent = `${preview.label}: verra salvato come ${signText}${fmtFm(Math.abs(preview.amount))}.`;
+  el.movementSignHint.textContent = `${preview.label}: verrà salvato come ${signText}${fmtFm(Math.abs(preview.amount))}.`;
   el.movementSignHint.className = `field-hint ${preview.amount < 0 ? "hint-negative" : "hint-positive"}`;
 }
 
@@ -200,6 +234,48 @@ function getClubById(clubId) {
   return state.clubs.find((club) => club.id === clubId);
 }
 
+function getPlayerById(playerId) {
+  return state.players.find((player) => player.id === playerId);
+}
+
+function getActiveRosterEntries(clubId) {
+  return state.rosterEntries.filter(
+    (entry) => entry.club_id === clubId && entry.season_id === ACTIVE_SEASON_ID && entry.is_active,
+  );
+}
+
+function getRosterStats(clubId) {
+  const entries = getActiveRosterEntries(clubId);
+  let goalkeepers = 0;
+  let outfieldPlayers = 0;
+
+  for (const entry of entries) {
+    const player = getPlayerById(entry.player_id);
+    if (player?.role_class === "P") goalkeepers += 1;
+    if (player?.role_class === "MOVIMENTO") outfieldPlayers += 1;
+  }
+
+  const total = entries.length;
+  const issues = [];
+
+  if (total < 23) issues.push(`rosa sotto minimo (${total}/23)`);
+  if (total > 33) issues.push(`rosa sopra massimo (${total}/33)`);
+  if (goalkeepers < 2) issues.push(`portieri insufficienti (${goalkeepers}/2)`);
+  if (goalkeepers > 5) issues.push(`troppi portieri (${goalkeepers}/5)`);
+  if (outfieldPlayers < 21) issues.push(`movimento sotto minimo (${outfieldPlayers}/21)`);
+  if (outfieldPlayers > 28) issues.push(`movimento sopra massimo (${outfieldPlayers}/28)`);
+
+  return { total, goalkeepers, outfieldPlayers, issues };
+}
+
+function buildRosterRows() {
+  return state.rosterEntries.map((entry) => ({
+    entry,
+    player: getPlayerById(entry.player_id),
+    club: getClubById(entry.club_id),
+  }));
+}
+
 async function loadAuthState() {
   const { data, error } = await state.supabase.auth.getSession();
   if (error) throw error;
@@ -227,25 +303,49 @@ async function loadAuthState() {
 async function fetchAll() {
   clearError();
 
-  const [seasonsRes, clubsRes, movementsRes, stadiumsRes, stadiumLevelsRes] = await Promise.all([
+  const [
+    seasonsRes,
+    clubsRes,
+    movementsRes,
+    playersRes,
+    rosterEntriesRes,
+    stadiumsRes,
+    stadiumLevelsRes,
+  ] = await Promise.all([
     state.supabase.from("seasons").select("*").order("starts_on", { ascending: false }),
     state.supabase.from("clubs").select("*").order("name", { ascending: true }),
     state.supabase
       .from("fm_movements")
       .select("*")
       .order("created_at", { ascending: false })
-      .limit(500),
+      .limit(1000),
+    state.supabase.from("players").select("*").order("name", { ascending: true }),
+    state.supabase
+      .from("roster_entries")
+      .select("*")
+      .eq("season_id", ACTIVE_SEASON_ID)
+      .order("created_at", { ascending: false }),
     state.supabase.from("stadiums").select("*").eq("season_id", ACTIVE_SEASON_ID),
     state.supabase.from("stadium_levels").select("*").order("level", { ascending: true }),
   ]);
 
-  for (const result of [seasonsRes, clubsRes, movementsRes, stadiumsRes, stadiumLevelsRes]) {
+  for (const result of [
+    seasonsRes,
+    clubsRes,
+    movementsRes,
+    playersRes,
+    rosterEntriesRes,
+    stadiumsRes,
+    stadiumLevelsRes,
+  ]) {
     if (result.error) throw result.error;
   }
 
   state.seasons = seasonsRes.data || [];
   state.clubs = clubsRes.data || [];
   state.movements = movementsRes.data || [];
+  state.players = playersRes.data || [];
+  state.rosterEntries = rosterEntriesRes.data || [];
   state.stadiums = stadiumsRes.data || [];
   state.stadiumLevels = stadiumLevelsRes.data || [];
 
@@ -253,17 +353,19 @@ async function fetchAll() {
 }
 
 function renderMetrics() {
-  const clubCount = state.clubs.length;
+  const clubCount = state.clubs.filter((club) => club.active !== false).length;
   const balances = state.clubs.map((club) => getClubBalance(club.id));
   const total = balances.reduce((sum, value) => sum + value, 0);
   const average = clubCount ? total / clubCount : 0;
   const negativeBalances = balances.filter((value) => value < 0).length;
+  const rosterIssues = state.clubs.filter((club) => getRosterStats(club.id).issues.length > 0).length;
+  const alerts = negativeBalances + rosterIssues;
 
   el.metricClubs.textContent = String(clubCount);
   el.metricTotalFm.textContent = fmtFm(total);
   el.metricAvgFm.textContent = fmtFm(average);
-  el.metricAlerts.textContent = negativeBalances === 0 ? "0" : String(negativeBalances);
-  el.metricAlerts.classList.toggle("danger", negativeBalances > 0);
+  el.metricAlerts.textContent = String(alerts);
+  el.metricAlerts.classList.toggle("danger", alerts > 0);
 }
 
 function renderClubs() {
@@ -273,6 +375,7 @@ function renderClubs() {
       ...club,
       balance: getClubBalance(club.id),
       stadium: getClubStadium(club.id),
+      roster: getRosterStats(club.id),
     }))
     .filter((club) => {
       if (!query) return true;
@@ -281,22 +384,78 @@ function renderClubs() {
     .sort((a, b) => b.balance - a.balance);
 
   if (!rows.length) {
-    el.clubsTableBody.innerHTML = `<tr><td colspan="6" class="muted center">Nessun club trovato.</td></tr>`;
+    el.clubsTableBody.innerHTML = `<tr><td colspan="7" class="muted center">Nessun club trovato.</td></tr>`;
     return;
   }
 
   el.clubsTableBody.innerHTML = rows
     .map((club, index) => {
       const isNegative = club.balance < 0;
-      const status = isNegative ? "Saldo negativo" : "OK";
+      const hasRosterIssues = club.roster.issues.length > 0;
+      const hasIssues = isNegative || hasRosterIssues;
+      const status = isNegative
+        ? "Saldo negativo"
+        : hasRosterIssues
+          ? club.roster.issues[0]
+          : "OK";
+
       return `
         <tr>
           <td>${index + 1}</td>
-          <td><strong>${escapeHtml(club.name)}</strong></td>
+          <td><strong>${escapeHtml(club.name)}</strong>${club.active === false ? '<span class="mini-badge">non attivo</span>' : ""}</td>
           <td>${escapeHtml(club.president)}</td>
           <td class="number ${isNegative ? "text-danger" : ""}">${fmtFm(club.balance)}</td>
+          <td class="number">${club.roster.total} <span class="muted small">(${club.roster.goalkeepers} P)</span></td>
           <td class="number">Liv. ${club.stadium?.level ?? 0}</td>
-          <td><span class="status ${isNegative ? "status-danger" : "status-ok"}">${status}</span></td>
+          <td><span class="status ${hasIssues ? "status-danger" : "status-ok"}">${escapeHtml(status)}</span></td>
+        </tr>
+      `;
+    })
+    .join("");
+}
+
+function renderRosterFilters() {
+  const currentValue = el.rosterClubFilter.value || state.rosterClubFilter;
+  el.rosterClubFilter.innerHTML = [
+    `<option value="all">Tutti i club</option>`,
+    ...state.clubs.map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`),
+  ].join("");
+  el.rosterClubFilter.value = state.clubs.some((club) => club.id === currentValue) ? currentValue : "all";
+  state.rosterClubFilter = el.rosterClubFilter.value;
+}
+
+function renderRoster() {
+  const query = state.rosterSearch.trim().toLowerCase();
+  const selectedClub = state.rosterClubFilter;
+  const rows = buildRosterRows()
+    .filter(({ entry, player, club }) => {
+      if (selectedClub !== "all" && entry.club_id !== selectedClub) return false;
+      if (!query) return true;
+      return `${player?.name || ""} ${player?.real_team || ""} ${player?.mantra_roles || ""} ${club?.name || ""}`
+        .toLowerCase()
+        .includes(query);
+    })
+    .sort((a, b) => (a.club?.name || "").localeCompare(b.club?.name || "") || (a.player?.name || "").localeCompare(b.player?.name || ""));
+
+  if (!rows.length) {
+    el.rosterTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun giocatore in rosa.</td></tr>`;
+    return;
+  }
+
+  el.rosterTableBody.innerHTML = rows
+    .map(({ entry, player, club }) => {
+      const status = entry.is_active ? "Attivo" : "Non attivo";
+      const roleLabel = player?.role_class === "P" ? "Portiere" : "Movimento";
+      return `
+        <tr>
+          <td><strong>${escapeHtml(player?.name || "Giocatore non trovato")}</strong></td>
+          <td>${escapeHtml(club?.name || entry.club_id)}</td>
+          <td>${escapeHtml(player?.real_team || "-")}</td>
+          <td>${escapeHtml(player?.mantra_roles || "-")}</td>
+          <td>${roleLabel}</td>
+          <td class="number">${fmtFm(entry.purchase_price)}</td>
+          <td>${escapeHtml(ACQUIRED_LABELS[entry.acquired_via] || entry.acquired_via)}</td>
+          <td><span class="status ${entry.is_active ? "status-ok" : "status-muted"}">${status}</span></td>
         </tr>
       `;
     })
@@ -304,7 +463,7 @@ function renderClubs() {
 }
 
 function renderMovements() {
-  const recent = state.movements.slice(0, 12);
+  const recent = state.movements.slice(0, 14);
   if (!recent.length) {
     el.movementsList.innerHTML = `<p class="muted">Nessun movimento registrato.</p>`;
     return;
@@ -353,22 +512,50 @@ function renderAdminControls() {
   el.logoutBtn.classList.toggle("hidden", !state.user);
   el.adminPanel.classList.toggle("hidden", !state.isAdmin);
 
-  el.movementSeason.innerHTML = state.seasons
+  const seasonOptions = state.seasons
     .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
     .join("");
-  el.movementSeason.value = ACTIVE_SEASON_ID;
 
-  el.movementClub.innerHTML = state.clubs
+  const clubOptions = state.clubs
     .map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`)
     .join("");
+
+  el.movementSeason.innerHTML = seasonOptions;
+  el.movementSeason.value = ACTIVE_SEASON_ID;
+  el.movementClub.innerHTML = clubOptions;
+
+  el.auctionSeason.innerHTML = seasonOptions;
+  el.auctionSeason.value = ACTIVE_SEASON_ID;
+  el.auctionClub.innerHTML = clubOptions;
+  if (!el.auctionDate.value) el.auctionDate.value = todayIso();
+
+  el.clubEditSelect.innerHTML = clubOptions;
+  if (!el.clubEditSelect.value && state.clubs.length) {
+    el.clubEditSelect.value = state.clubs[0].id;
+  }
+  updateClubFormFields();
 }
 
 function renderAll() {
   renderMetrics();
   renderClubs();
+  renderRosterFilters();
+  renderRoster();
   renderMovements();
   renderStadiums();
   renderAdminControls();
+}
+
+function updateClubFormFields() {
+  if (!el.clubEditSelect || !state.clubs.length) return;
+
+  const selected = getClubById(el.clubEditSelect.value) || state.clubs[0];
+  if (!selected) return;
+
+  el.clubEditSelect.value = selected.id;
+  el.clubNameInput.value = selected.name || "";
+  el.clubPresidentInput.value = selected.president || "";
+  el.clubActiveInput.checked = selected.active !== false;
 }
 
 async function handleLogin(event) {
@@ -398,6 +585,123 @@ async function handleLogout() {
   renderAll();
 }
 
+async function handleClubSubmit(event) {
+  event.preventDefault();
+  el.clubFormStatus.textContent = "Salvataggio...";
+
+  const clubId = el.clubEditSelect.value;
+  const payload = {
+    name: el.clubNameInput.value.trim(),
+    president: el.clubPresidentInput.value.trim(),
+    active: el.clubActiveInput.checked,
+  };
+
+  if (!payload.name || !payload.president) {
+    el.clubFormStatus.textContent = "Nome club e presidente sono obbligatori.";
+    return;
+  }
+
+  const { error } = await state.supabase.from("clubs").update(payload).eq("id", clubId);
+
+  if (error) {
+    el.clubFormStatus.textContent = error.message;
+    return;
+  }
+
+  el.clubFormStatus.textContent = "Club aggiornato.";
+  await fetchAll();
+  el.clubEditSelect.value = clubId;
+  updateClubFormFields();
+}
+
+async function handleAuctionSubmit(event) {
+  event.preventDefault();
+  el.auctionFormStatus.textContent = "Salvataggio...";
+
+  const seasonId = el.auctionSeason.value;
+  const clubId = el.auctionClub.value;
+  const playerName = el.auctionPlayerName.value.trim();
+  const realTeam = el.auctionRealTeam.value.trim() || null;
+  const mantraRoles = el.auctionRoles.value.trim();
+  const roleClass = el.auctionRoleClass.value;
+  const price = Number(el.auctionPrice.value);
+  const acquiredAt = el.auctionDate.value || todayIso();
+
+  if (!playerName || !mantraRoles) {
+    el.auctionFormStatus.textContent = "Nome calciatore e ruoli Mantra sono obbligatori.";
+    return;
+  }
+
+  if (!Number.isFinite(price) || price < 0) {
+    el.auctionFormStatus.textContent = "Inserisci un prezzo valido.";
+    return;
+  }
+
+  const balance = getClubBalance(clubId);
+  if (balance - price < 0) {
+    el.auctionFormStatus.textContent = `Operazione bloccata: saldo insufficiente (${fmtFm(balance)}).`;
+    return;
+  }
+
+  const { data: player, error: playerError } = await state.supabase
+    .from("players")
+    .insert({
+      name: playerName,
+      real_team: realTeam,
+      mantra_roles: mantraRoles,
+      role_class: roleClass,
+    })
+    .select("*")
+    .single();
+
+  if (playerError) {
+    el.auctionFormStatus.textContent = playerError.message;
+    return;
+  }
+
+  const { error: rosterError } = await state.supabase.from("roster_entries").insert({
+    season_id: seasonId,
+    club_id: clubId,
+    player_id: player.id,
+    purchase_price: price,
+    acquired_via: "AUCTION",
+    acquired_at: acquiredAt,
+    is_active: true,
+    is_loan: false,
+  });
+
+  if (rosterError) {
+    await state.supabase.from("players").delete().eq("id", player.id);
+    el.auctionFormStatus.textContent = rosterError.message;
+    return;
+  }
+
+  if (price > 0) {
+    const { error: movementError } = await state.supabase.from("fm_movements").insert({
+      season_id: seasonId,
+      club_id: clubId,
+      amount: -Math.abs(price),
+      movement_type: "AUCTION_BUY",
+      description: `Acquisto asta - ${playerName}`,
+      reference_type: "player",
+      reference_id: player.id,
+      created_by: state.user?.id || null,
+    });
+
+    if (movementError) {
+      el.auctionFormStatus.textContent = `Giocatore inserito, ma movimento FM non registrato: ${movementError.message}`;
+      await fetchAll();
+      return;
+    }
+  }
+
+  el.auctionForm.reset();
+  el.auctionSeason.value = ACTIVE_SEASON_ID;
+  el.auctionDate.value = todayIso();
+  el.auctionFormStatus.textContent = "Acquisto registrato.";
+  await fetchAll();
+}
+
 async function handleMovementSubmit(event) {
   event.preventDefault();
   el.movementFormStatus.textContent = "Salvataggio...";
@@ -411,9 +715,17 @@ async function handleMovementSubmit(event) {
     return;
   }
 
+  const clubId = el.movementClub.value;
+  const balance = getClubBalance(clubId);
+
+  if (normalized.amount < 0 && balance + normalized.amount < 0 && normalized.movementType !== "ADJUSTMENT") {
+    el.movementFormStatus.textContent = `Operazione bloccata: saldo insufficiente (${fmtFm(balance)}).`;
+    return;
+  }
+
   const payload = {
     season_id: el.movementSeason.value,
-    club_id: el.movementClub.value,
+    club_id: clubId,
     amount: normalized.amount,
     movement_type: normalized.movementType,
     description: el.movementDescription.value.trim() || null,
@@ -449,6 +761,9 @@ function bindEvents() {
   el.closeLoginBtn.addEventListener("click", () => el.loginDialog.close());
   el.loginForm.addEventListener("submit", handleLogin);
   el.logoutBtn.addEventListener("click", handleLogout);
+  el.clubForm.addEventListener("submit", handleClubSubmit);
+  el.clubEditSelect.addEventListener("change", updateClubFormFields);
+  el.auctionForm.addEventListener("submit", handleAuctionSubmit);
   el.movementForm.addEventListener("submit", handleMovementSubmit);
   el.movementType.addEventListener("change", updateMovementSignHint);
   el.movementAmount.addEventListener("input", updateMovementSignHint);
@@ -456,15 +771,25 @@ function bindEvents() {
     state.search = event.target.value;
     renderClubs();
   });
+  el.rosterSearch.addEventListener("input", (event) => {
+    state.rosterSearch = event.target.value;
+    renderRoster();
+  });
+  el.rosterClubFilter.addEventListener("change", (event) => {
+    state.rosterClubFilter = event.target.value;
+    renderRoster();
+  });
 }
 
 async function init() {
   bindEvents();
   updateMovementSignHint();
+  el.auctionDate.value = todayIso();
 
   if (!isConfigured()) {
     el.configWarning.classList.remove("hidden");
-    el.clubsTableBody.innerHTML = `<tr><td colspan="6" class="muted center">Configura Supabase per caricare i dati.</td></tr>`;
+    el.clubsTableBody.innerHTML = `<tr><td colspan="7" class="muted center">Configura Supabase per caricare i dati.</td></tr>`;
+    el.rosterTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Configura Supabase per caricare i dati.</td></tr>`;
     el.movementsList.innerHTML = `<p class="muted">Configura Supabase per caricare i dati.</p>`;
     el.stadiumsList.innerHTML = `<p class="muted">Configura Supabase per caricare i dati.</p>`;
     return;
