@@ -113,6 +113,46 @@
       </div>
     </section>
 
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Listone giocatori</h2>
+          <p>Ultima fotografia caricata da Fantacalcio: quotazioni, ruoli, squadra reale e stato listone.</p>
+          <small id="listoneMetaText" class="muted">Nessun listone selezionato.</small>
+        </div>
+        <div class="filters-row">
+          <select id="listoneSeasonFilter" class="input filter-input" aria-label="Stagione listone"></select>
+          <select id="listoneRoleFilter" class="input filter-input" aria-label="Filtro ruolo listone">
+            <option value="all">Tutti</option>
+            <option value="P">P</option>
+            <option value="D">D</option>
+            <option value="C">C</option>
+            <option value="A">A</option>
+          </select>
+          <input id="listoneSearch" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, ruolo..." />
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Giocatore</th>
+              <th>Squadra</th>
+              <th>Ruoli</th>
+              <th>R</th>
+              <th class="number">Qt.A</th>
+              <th class="number">FVM</th>
+              <th>Stato</th>
+              <th>Storico</th>
+            </tr>
+          </thead>
+          <tbody id="listoneTableBody">
+            <tr><td colspan="8" class="muted center">Nessun listone caricato.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="grid-two">
       <article class="panel">
         <div class="panel-header compact">
@@ -177,6 +217,40 @@
         <div class="panel-header">
           <div>
             <p class="eyebrow">Area admin</p>
+            <h2>Carica listone</h2>
+            <p>Importa il file Excel di Fantacalcio. La webapp aggiorna i giocatori, salva uno snapshot storico e segnala variazioni, nuovi ingressi e asteriscati.</p>
+          </div>
+        </div>
+
+        <form id="listoneUploadForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="listoneSeason" class="input" required></select>
+          </label>
+          <label>
+            Label listone <span class="muted">(opzionale)</span>
+            <input id="listoneLabel" class="input" type="text" placeholder="Es. Post mercato invernale, Aggiornamento 15/02..." />
+          </label>
+          <label>
+            Data listone <span class="muted">(opzionale)</span>
+            <input id="listoneDate" class="input" type="date" />
+          </label>
+          <label>
+            File listone Excel
+            <input id="listoneFile" class="input" type="file" accept=".xlsx,.xls" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Carica listone</button>
+            <span id="listoneUploadStatus" class="form-status"></span>
+          </div>
+        </form>
+        <div id="listoneImportReport" class="import-report hidden"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
             <h2>Registra acquisto asta</h2>
             <p>Crea il giocatore, lo assegna alla rosa e registra automaticamente l'uscita FM.</p>
           </div>
@@ -190,6 +264,13 @@
           <label>
             Club acquirente
             <select id="auctionClub" class="input" required></select>
+          </label>
+          <label class="span-2">
+            Seleziona dal listone
+            <select id="auctionPlayerSelect" class="input">
+              <option value="manual">Inserimento manuale</option>
+            </select>
+            <small class="field-hint">Se scegli un giocatore dal listone, squadra e ruoli vengono compilati automaticamente.</small>
           </label>
           <label>
             Nome calciatore
@@ -296,10 +377,23 @@
     </form>
   </dialog>
 
+
+  <dialog id="playerDialog" class="login-dialog player-dialog">
+    <div class="login-card player-card">
+      <button id="closePlayerBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
+      <p class="eyebrow">Scheda giocatore</p>
+      <h2 id="playerDialogTitle">Giocatore</h2>
+      <div id="playerDialogBody" class="player-detail-body">
+        <p class="muted">Caricamento...</p>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="container app-footer">
-    <p>FantaMantra Manageriale · V3 club, rose e acquisti asta</p>
+    <p>FantaMantra Manageriale · V6 import listoni con associazione giocatori, filtri e sezioni richiudibili</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script type="module" src="./assets/app.js"></script>
 </body>
 </html>
