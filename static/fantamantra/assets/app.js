@@ -85,6 +85,7 @@ const el = {
   movementsList: document.getElementById("movementsList"),
   stadiumsList: document.getElementById("stadiumsList"),
   adminPanel: document.getElementById("adminPanel"),
+  adminNavLink: document.getElementById("adminNavLink"),
   clubForm: document.getElementById("clubForm"),
   clubEditSelect: document.getElementById("clubEditSelect"),
   clubNameInput: document.getElementById("clubNameInput"),
@@ -1250,7 +1251,11 @@ function renderStadiums() {
 function renderAdminControls() {
   el.openLoginBtn.classList.toggle("hidden", Boolean(state.user));
   el.logoutBtn.classList.toggle("hidden", !state.user);
-  el.adminPanel.classList.toggle("hidden", !state.isAdmin);
+  if (el.adminPanel) el.adminPanel.classList.toggle("admin-locked", !state.isAdmin);
+  if (el.adminNavLink) el.adminNavLink.classList.toggle("hidden", !state.isAdmin);
+  if (!state.isAdmin && getCurrentPage() === "admin") {
+    setActivePage("dashboard");
+  }
 
   const seasonOptions = state.seasons
     .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
@@ -1793,6 +1798,61 @@ function escapeHtml(value) {
 }
 
 
+
+const PAGE_IDS = ["dashboard", "clubs", "rosters", "listone", "finance", "admin"];
+
+function getCurrentPage() {
+  return document.querySelector(".app-page.is-active")?.dataset.page || "dashboard";
+}
+
+function getPageFromHash() {
+  const raw = (window.location.hash || "#dashboard").replace("#", "").trim();
+  return PAGE_IDS.includes(raw) ? raw : "dashboard";
+}
+
+function setActivePage(pageId, options = {}) {
+  let nextPage = PAGE_IDS.includes(pageId) ? pageId : "dashboard";
+
+  if (nextPage === "admin" && !state.isAdmin) {
+    nextPage = "dashboard";
+  }
+
+  document.querySelectorAll("[data-page]").forEach((page) => {
+    page.classList.toggle("is-active", page.dataset.page === nextPage);
+  });
+
+  document.querySelectorAll("[data-page-link]").forEach((link) => {
+    const active = link.dataset.pageLink === nextPage;
+    link.classList.toggle("active", active);
+    if (active) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+
+  if (!options.skipHash && window.location.hash !== `#${nextPage}`) {
+    history.replaceState(null, "", `#${nextPage}`);
+  }
+
+  window.scrollTo({ top: 0, behavior: options.instant ? "auto" : "smooth" });
+}
+
+function setupPageNavigation() {
+  document.querySelectorAll("[data-page-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      setActivePage(link.dataset.pageLink);
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    setActivePage(getPageFromHash(), { skipHash: true, instant: true });
+  });
+
+  setActivePage(getPageFromHash(), { skipHash: true, instant: true });
+}
+
 function setupCollapsiblePanels() {
   document.querySelectorAll(".panel").forEach((panel, index) => {
     const header = panel.querySelector(":scope > .panel-header");
@@ -1882,6 +1942,7 @@ async function init() {
   el.auctionDate.value = todayIso();
 
   if (!isConfigured()) {
+    setupPageNavigation();
     el.configWarning.classList.remove("hidden");
     el.clubsTableBody.innerHTML = `<tr><td colspan="7" class="muted center">Configura Supabase per caricare i dati.</td></tr>`;
     el.rosterTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Configura Supabase per caricare i dati.</td></tr>`;
@@ -1896,6 +1957,7 @@ async function init() {
   try {
     await loadAuthState();
     await fetchAll();
+    setupPageNavigation();
   } catch (error) {
     showError(error.message || "Errore durante il caricamento dei dati.");
   }

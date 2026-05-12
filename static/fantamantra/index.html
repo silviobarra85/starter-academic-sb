@@ -14,7 +14,7 @@
       <div>
         <p class="eyebrow">Lega Fantacalcio</p>
         <h1>FantaMantra Manageriale</h1>
-        <p class="subtitle">Dashboard operativa per club, saldi FM, rose, movimenti e stadio.</p>
+        <p class="subtitle">Dashboard operativa per club, saldi FM, rose, movimenti, listoni e stadio.</p>
       </div>
       <div class="header-actions">
         <button id="refreshBtn" class="button button-secondary" type="button">Aggiorna dati</button>
@@ -22,17 +22,34 @@
         <button id="logoutBtn" class="button button-danger hidden" type="button">Logout</button>
       </div>
     </div>
+
+    <nav class="container app-nav" aria-label="Navigazione FantaMantra">
+      <a href="#dashboard" class="nav-link" data-page-link="dashboard">Dashboard</a>
+      <a href="#clubs" class="nav-link" data-page-link="clubs">Club</a>
+      <a href="#rosters" class="nav-link" data-page-link="rosters">Rose</a>
+      <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
+      <a href="#finance" class="nav-link" data-page-link="finance">Movimenti & Stadi</a>
+      <a id="adminNavLink" href="#admin" class="nav-link nav-link-admin hidden" data-page-link="admin">Admin</a>
+    </nav>
   </header>
 
   <main class="container app-main">
-    <section id="configWarning" class="notice notice-warning hidden">
+<section id="configWarning" class="notice notice-warning hidden">
       <strong>Configurazione Supabase mancante.</strong>
       Apri <code>assets/app.js</code> e inserisci <code>SUPABASE_URL</code> e <code>SUPABASE_ANON_KEY</code>.
     </section>
 
     <section id="errorBox" class="notice notice-error hidden"></section>
 
-    <section class="cards-grid" aria-label="Indicatori principali">
+    <section class="app-page is-active" data-page="dashboard" aria-labelledby="dashboardTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Panoramica</p>
+          <h2 id="dashboardTitle">Dashboard</h2>
+          <p>Indicatori principali della lega e stato generale del gestionale.</p>
+        </div>
+      </div>
+<section class="cards-grid" aria-label="Indicatori principali">
       <article class="metric-card">
         <span class="metric-label">Club attivi</span>
         <strong id="metricClubs">-</strong>
@@ -50,8 +67,17 @@
         <strong id="metricAlerts">-</strong>
       </article>
     </section>
+    </section>
 
-    <section class="panel">
+    <section class="app-page" data-page="clubs" aria-labelledby="clubsTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Anagrafica</p>
+          <h2 id="clubsTitle">Club</h2>
+          <p>Club partecipanti, presidenti, saldi FM, stadio e stato rose.</p>
+        </div>
+      </div>
+<section class="panel">
       <div class="panel-header">
         <div>
           <h2>Club e situazione finanziaria</h2>
@@ -78,8 +104,17 @@
         </table>
       </div>
     </section>
+    </section>
 
-    <section class="panel">
+    <section class="app-page" data-page="rosters" aria-labelledby="rostersTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Organico</p>
+          <h2 id="rostersTitle">Rose</h2>
+          <p>Composizione delle rose, costi d'acquisto, provenienza e stato dei calciatori.</p>
+        </div>
+      </div>
+<section class="panel">
       <div class="panel-header">
         <div>
           <h2>Rose</h2>
@@ -112,8 +147,17 @@
         </table>
       </div>
     </section>
+    </section>
 
-    <section class="panel">
+    <section class="app-page" data-page="listone" aria-labelledby="listoneTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Fantacalcio</p>
+          <h2 id="listoneTitle">Listone giocatori</h2>
+          <p>Quotazioni caricate, filtri ruolo, stato listone e schede storiche dei calciatori.</p>
+        </div>
+      </div>
+<section class="panel">
       <div class="panel-header">
         <div>
           <h2>Listone giocatori</h2>
@@ -152,8 +196,17 @@
         </table>
       </div>
     </section>
+    </section>
 
-    <section class="grid-two">
+    <section class="app-page" data-page="finance" aria-labelledby="financeTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Gestione</p>
+          <h2 id="financeTitle">Movimenti & Stadi</h2>
+          <p>Ultime operazioni economiche e livelli stadio attivi per club.</p>
+        </div>
+      </div>
+<section class="grid-two">
       <article class="panel">
         <div class="panel-header compact">
           <div>
@@ -178,9 +231,17 @@
         </div>
       </article>
     </section>
+    </section>
 
-    <section id="adminPanel" class="admin-panel hidden">
-      <article class="panel">
+    <section id="adminPanel" class="app-page admin-panel admin-locked" data-page="admin" aria-labelledby="adminTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Area riservata</p>
+          <h2 id="adminTitle">Admin</h2>
+          <p>Funzioni di gestione: club, listoni, rose, acquisti e movimenti FM.</p>
+        </div>
+      </div>
+<article class="panel">
         <div class="panel-header">
           <div>
             <p class="eyebrow">Area admin</p>
@@ -433,10 +494,11 @@
   </dialog>
 
   <footer class="container app-footer">
-    <p>FantaMantra Manageriale · V7 import listoni e rose</p>
+    <p>FantaMantra Manageriale · V8 pagine separate</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script type="module" src="./assets/app.js"></script>
 </body>
 </html>
+
