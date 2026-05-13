@@ -6,9 +6,8 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // Esempio:
 // const SUPABASE_URL = "https://xxxxxxxxxxxxxxxxxxxx.supabase.co";
 // const SUPABASE_ANON_KEY = "eyJhbGciOi...";
-const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
-
+const SUPABASE_URL = "INSERISCI_PROJECT_URL";
+const SUPABASE_ANON_KEY = "INSERISCI_ANON_PUBLIC_KEY";
 
 const ACTIVE_SEASON_ID = "2025-2026";
 
@@ -1055,9 +1054,102 @@ function honorClubButton(honorClub, extraClass = "") {
 }
 
 function getPalmaresForClubIds(clubId, honorClubId) {
+  // Deve usare buildHonorRows(), non solo state.honorRoll.
+  // state.honorRoll contiene solo le voci inserite manualmente nell'Albo d'oro;
+  // buildHonorRows() aggiunge anche i podi/vincitori ricavati automaticamente
+  // dalle finali di Coppa Italia, Champions League e Playoff.
   const currentHonor = state.honorClubs.find((club) => club.source_club_id === clubId);
   const ids = new Set([honorClubId, currentHonor?.id].filter(Boolean));
-  return state.honorRoll.filter((entry) => entry.club_id === clubId || (entry.honor_club_id && ids.has(entry.honor_club_id)));
+  const names = new Set([currentHonor?.name, getHonorClubById(honorClubId)?.name, getClubById(clubId)?.name].filter(Boolean).map(normalizeTextKey));
+
+  return buildHonorRows().filter((entry) => {
+    if (clubId && entry.club_id === clubId) return true;
+    if (entry.honor_club_id && ids.has(entry.honor_club_id)) return true;
+    if (entry.club_name && names.has(normalizeTextKey(entry.club_name))) return true;
+    return false;
+  });
+}
+
+
+function getHonorRowClubKey(row) {
+  const linkedHonorClub = row.honor_club_id ? getHonorClubById(row.honor_club_id) : null;
+  const sourceHonorClub = row.club_id ? state.honorClubs.find((club) => club.source_club_id === row.club_id) : null;
+  const currentClub = row.club_id ? getClubById(row.club_id) : null;
+  const preferredName = linkedHonorClub?.name || sourceHonorClub?.name || currentClub?.name || row.club_name || "";
+  const normalizedName = normalizeTextKey(preferredName);
+  return normalizedName || row.honor_club_id || row.club_id || "unknown-club";
+}
+
+function getHonorRowCompetitionKey(row) {
+  const fallback = COMPETITION_LABELS[row.competition_type] || row.competition_type || "Competizione";
+  return normalizeTextKey(row.competition_name || fallback) || normalizeTextKey(fallback) || "competizione";
+}
+
+function getHonorRowDedupKey(row) {
+  return [
+    row.season_id || "no-season",
+    row.competition_type || "ALTRO",
+    getHonorRowCompetitionKey(row),
+    String(Number(row.placement || 0) || "no-placement"),
+    getHonorRowClubKey(row),
+  ].join("|");
+}
+
+function getHonorSourcePriority(row) {
+  const priorities = {
+    manual: 1,
+    "calendar-final": 2,
+    calendar: 3,
+    standing: 4,
+  };
+  return priorities[row.source] || 9;
+}
+
+function mergeHonorRows(existing, candidate) {
+  const existingPriority = getHonorSourcePriority(existing);
+  const candidatePriority = getHonorSourcePriority(candidate);
+
+  if (candidatePriority < existingPriority) {
+    return {
+      ...candidate,
+      notes: candidate.notes || existing.notes || null,
+      points: candidate.points ?? existing.points ?? null,
+      fantapoints: candidate.fantapoints ?? existing.fantapoints ?? null,
+      played: candidate.played ?? existing.played ?? null,
+      wins: candidate.wins ?? existing.wins ?? null,
+      draws: candidate.draws ?? existing.draws ?? null,
+      losses: candidate.losses ?? existing.losses ?? null,
+      goals_for: candidate.goals_for ?? existing.goals_for ?? null,
+      goals_against: candidate.goals_against ?? existing.goals_against ?? null,
+      goal_difference: candidate.goal_difference ?? existing.goal_difference ?? null,
+    };
+  }
+
+  return {
+    ...existing,
+    notes: existing.notes || candidate.notes || null,
+    points: existing.points ?? candidate.points ?? null,
+    fantapoints: existing.fantapoints ?? candidate.fantapoints ?? null,
+    played: existing.played ?? candidate.played ?? null,
+    wins: existing.wins ?? candidate.wins ?? null,
+    draws: existing.draws ?? candidate.draws ?? null,
+    losses: existing.losses ?? candidate.losses ?? null,
+    goals_for: existing.goals_for ?? candidate.goals_for ?? null,
+    goals_against: existing.goals_against ?? candidate.goals_against ?? null,
+    goal_difference: existing.goal_difference ?? candidate.goal_difference ?? null,
+  };
+}
+
+function dedupeHonorRows(rows) {
+  const map = new Map();
+
+  for (const row of rows) {
+    const key = getHonorRowDedupKey(row);
+    const existing = map.get(key);
+    map.set(key, existing ? mergeHonorRows(existing, row) : row);
+  }
+
+  return Array.from(map.values());
 }
 
 function getClubMovements(clubId, seasonId = null) {
@@ -1811,13 +1903,16 @@ function renderClubExtraSections({ clubId, honorClubId = null, seasonId = getSel
     <td>${fmtDate(movement.created_at)}</td>
   </tr>`).join("");
 
-  const palmaresRows = palmares.map((entry) => `<tr>
-    <td>${escapeHtml(entry.season_id || "-")}</td>
-    <td>${escapeHtml(COMPETITION_LABELS[entry.competition_type] || entry.competition_type || "-")}</td>
-    <td>${escapeHtml(entry.title || "-")}</td>
-    <td class="number">${entry.placement ? `${entry.placement}°` : "-"}</td>
-    <td class="number">${entry.points ?? "-"}</td>
-  </tr>`).join("");
+  const palmaresRows = palmares.map((entry) => {
+    const voce = entry.title || entry.notes || entry.competition_name || "-";
+    return `<tr>
+      <td>${escapeHtml(entry.season_id || "-")}</td>
+      <td>${escapeHtml(COMPETITION_LABELS[entry.competition_type] || entry.competition_type || "-")}</td>
+      <td>${escapeHtml(voce)}</td>
+      <td class="number">${entry.placement ? `${entry.placement}°` : "-"}</td>
+      <td class="number">${entry.points ?? "-"}</td>
+    </tr>`;
+  }).join("");
 
   return `
     <section class="detail-section">
@@ -2418,7 +2513,6 @@ function buildAutomaticCupHonorRows() {
     ];
 
     for (const item of placements) {
-      if (manualHonorExistsForCupPlacement(competition, item.placement)) continue;
       const club = getClubById(item.club_id);
       rows.push({
         source: "calendar-final",
@@ -2514,7 +2608,12 @@ function buildHonorRows() {
 
   rows.push(...buildAutomaticCupHonorRows());
 
-  return rows.sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
+  return dedupeHonorRows(rows).sort((a, b) =>
+    String(b.season_id).localeCompare(String(a.season_id))
+    || String(a.competition_type || "").localeCompare(String(b.competition_type || ""), "it", { sensitivity: "base" })
+    || Number(a.placement || 999) - Number(b.placement || 999)
+    || String(a.club_name || "").localeCompare(String(b.club_name || ""), "it", { sensitivity: "base" })
+  );
 }
 
 function renderHonorClubName(row) {
