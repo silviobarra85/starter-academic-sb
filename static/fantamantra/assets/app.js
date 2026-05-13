@@ -91,6 +91,8 @@ const el = {
   listoneMetaText: document.getElementById("listoneMetaText"),
   listoneSearch: document.getElementById("listoneSearch"),
   listoneTableBody: document.getElementById("listoneTableBody"),
+  freeAgentsMetaText: document.getElementById("freeAgentsMetaText"),
+  freeAgentsTableBody: document.getElementById("freeAgentsTableBody"),
   movementsList: document.getElementById("movementsList"),
   stadiumsList: document.getElementById("stadiumsList"),
   adminPanel: document.getElementById("adminPanel"),
@@ -1311,6 +1313,43 @@ function showRosterDialog(clubId) {
   el.rosterDialog.showModal();
 }
 
+
+function getActiveRosterEntryForPlayer(playerId, seasonId = state.selectedListoneSeason || getSelectedSeasonId()) {
+  if (!playerId) return null;
+  return state.rosterEntries.find(
+    (entry) => entry.player_id === playerId && entry.season_id === seasonId && entry.is_active
+  ) || null;
+}
+
+function getRosterClubForPlayer(playerId, seasonId = state.selectedListoneSeason || getSelectedSeasonId()) {
+  const entry = getActiveRosterEntryForPlayer(playerId, seasonId);
+  if (!entry) return null;
+  return entry.club || getClubById(entry.club_id);
+}
+
+function renderRosterCellForPlayer(playerId, seasonId = state.selectedListoneSeason || getSelectedSeasonId()) {
+  const club = getRosterClubForPlayer(playerId, seasonId);
+  if (!club) {
+    return `<span class="status status-muted">Svincolato</span>`;
+  }
+  return `<button class="link-button" type="button" data-roster-club-id="${escapeHtml(club.id)}">${escapeHtml(club.name)}</button>`;
+}
+
+function getFilteredListoneRows() {
+  const query = state.listoneSearch.trim().toLowerCase();
+  const roleFilter = state.listoneRoleFilter || "all";
+  return state.latestQuotations
+    .filter((quote) => {
+      if (roleFilter !== "all" && String(quote.classic_role || "").toUpperCase() !== roleFilter) return false;
+      if (!query) return true;
+      const club = getRosterClubForPlayer(quote.player_id, state.selectedListoneSeason);
+      return `${quote.player_name || ""} ${quote.real_team || ""} ${quote.mantra_roles || ""} ${quote.classic_role || ""} ${club?.name || ""}`
+        .toLowerCase()
+        .includes(query);
+    })
+    .sort((a, b) => Number(b.is_listed) - Number(a.is_listed) || (a.player_name || "").localeCompare(b.player_name || ""));
+}
+
 function renderListoneSeasonFilter() {
   if (!el.listoneSeasonFilter) return;
   const currentValue = state.selectedListoneSeason || state.selectedSeason || ACTIVE_SEASON_ID;
@@ -1338,20 +1377,11 @@ function renderListone() {
     }
   }
 
-  const query = state.listoneSearch.trim().toLowerCase();
-  const roleFilter = state.listoneRoleFilter || "all";
-  const rows = state.latestQuotations
-    .filter((quote) => {
-      if (roleFilter !== "all" && String(quote.classic_role || "").toUpperCase() !== roleFilter) return false;
-      if (!query) return true;
-      return `${quote.player_name || ""} ${quote.real_team || ""} ${quote.mantra_roles || ""} ${quote.classic_role || ""}`
-        .toLowerCase()
-        .includes(query);
-    })
-    .sort((a, b) => Number(b.is_listed) - Number(a.is_listed) || (a.player_name || "").localeCompare(b.player_name || ""));
+  const rows = getFilteredListoneRows();
 
   if (!rows.length) {
-    el.listoneTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun listone caricato per questa stagione.</td></tr>`;
+    el.listoneTableBody.innerHTML = `<tr><td colspan="9" class="muted center">Nessun listone caricato per questa stagione.</td></tr>`;
+    renderFreeAgents();
     return;
   }
 
@@ -1364,6 +1394,7 @@ function renderListone() {
           <td>${escapeHtml(quote.real_team || "-")}</td>
           <td>${escapeHtml(quote.mantra_roles || "-")}</td>
           <td>${escapeHtml(quote.classic_role || "-")}</td>
+          <td>${renderRosterCellForPlayer(quote.player_id, state.selectedListoneSeason)}</td>
           <td class="number">${quote.quotation_current ?? "-"}</td>
           <td class="number">${quote.fvm ?? "-"}</td>
           <td><span class="status ${statusClass}">${quoteStatusLabel(quote)}</span></td>
@@ -1372,12 +1403,53 @@ function renderListone() {
       `;
     })
     .join("");
+
+  renderFreeAgents();
+}
+
+function renderFreeAgents() {
+  if (!el.freeAgentsTableBody) return;
+
+  const rows = getFilteredListoneRows().filter(
+    (quote) => quote.is_listed && !getActiveRosterEntryForPlayer(quote.player_id, state.selectedListoneSeason)
+  );
+
+  if (el.freeAgentsMetaText) {
+    el.freeAgentsMetaText.textContent = `${rows.length} svincolati disponibili nel listone della stagione ${state.selectedListoneSeason}.`;
+  }
+
+  if (!state.latestQuotations.length) {
+    el.freeAgentsTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun listone caricato per questa stagione.</td></tr>`;
+    return;
+  }
+
+  if (!rows.length) {
+    el.freeAgentsTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun giocatore svincolato trovato con i filtri attuali.</td></tr>`;
+    return;
+  }
+
+  el.freeAgentsTableBody.innerHTML = rows
+    .map((quote) => `
+      <tr>
+        <td><strong>${escapeHtml(quote.player_name)}</strong><br><span class="muted small">key ${escapeHtml(getQuotationKey(quote))}</span></td>
+        <td>${escapeHtml(quote.real_team || "-")}</td>
+        <td>${escapeHtml(quote.mantra_roles || "-")}</td>
+        <td>${escapeHtml(quote.classic_role || "-")}</td>
+        <td class="number">${quote.quotation_current ?? "-"}</td>
+        <td class="number">${quote.fvm ?? "-"}</td>
+        <td><span class="status status-muted">Svincolato</span></td>
+        <td><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}">Scheda</button></td>
+      </tr>
+    `)
+    .join("");
 }
 
 function showPlayerDialog(playerId) {
   const player = getPlayerById(playerId);
   const quotes = getPlayerQuotations(playerId);
   const latest = quotes.at(-1);
+  const rosterSeasonId = state.selectedListoneSeason || getSelectedSeasonId();
+  const rosterClub = getRosterClubForPlayer(playerId, rosterSeasonId);
 
   if (!player && !latest) return;
 
@@ -1417,6 +1489,7 @@ function showPlayerDialog(playerId) {
 
   el.playerDialogBody.innerHTML = `
     <div class="player-summary-grid">
+      <div><span>Rosa (${escapeHtml(rosterSeasonId)})</span><strong>${rosterClub ? escapeHtml(rosterClub.name) : "Svincolato"}</strong></div>
       <div><span>Squadra</span><strong>${escapeHtml(latest?.real_team || player?.real_team || "-")}</strong></div>
       <div><span>Ruoli Mantra</span><strong>${escapeHtml(latest?.mantra_roles || player?.mantra_roles || "-")}</strong></div>
       <div><span>Qt.A attuale</span><strong>${latest?.quotation_current ?? "-"}</strong></div>
@@ -2277,10 +2350,22 @@ function bindEvents() {
     renderListone();
   });
   el.listoneTableBody.addEventListener("click", (event) => {
+    const rosterButton = event.target.closest("[data-roster-club-id]");
+    if (rosterButton) {
+      showRosterDialog(rosterButton.dataset.rosterClubId);
+      return;
+    }
     const button = event.target.closest("[data-player-id]");
     if (!button) return;
     showPlayerDialog(button.dataset.playerId);
   });
+  if (el.freeAgentsTableBody) {
+    el.freeAgentsTableBody.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-player-id]");
+      if (!button) return;
+      showPlayerDialog(button.dataset.playerId);
+    });
+  }
   el.closePlayerBtn.addEventListener("click", () => el.playerDialog.close());
   if (el.closeRosterBtn) el.closeRosterBtn.addEventListener("click", () => el.rosterDialog.close());
 }
