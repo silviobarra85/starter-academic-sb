@@ -6,8 +6,9 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // Esempio:
 // const SUPABASE_URL = "https://xxxxxxxxxxxxxxxxxxxx.supabase.co";
 // const SUPABASE_ANON_KEY = "eyJhbGciOi...";
-const SUPABASE_URL = "INSERISCI_PROJECT_URL";
-const SUPABASE_ANON_KEY = "INSERISCI_ANON_PUBLIC_KEY";
+const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
+
 
 const ACTIVE_SEASON_ID = "2025-2026";
 
