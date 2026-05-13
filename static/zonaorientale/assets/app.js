@@ -1227,6 +1227,7 @@ function getRegularSeasonStandingRows(competition) {
 }
 
 function renderStandingTable(competition, limit = null) {
+  if (!competition) return `<p class="muted">Nessuna competizione selezionata.</p>`;
   if (competition?.competition_type && competition.competition_type !== "REGULAR_SEASON") {
     return renderCupPodium(competition);
   }
@@ -1248,9 +1249,12 @@ function renderStandingTable(competition, limit = null) {
       source: "manual",
     }));
 
-  if (!rows.length) return `<p class="muted">Nessuna classifica inserita o calcolabile.</p>`;
+  if (!rows.length) return `<p class="muted">Nessuna classifica inserita o calcolabile. Inserisci i risultati delle partite o una classifica manuale della Regular Season.</p>`;
+
+  const standingSource = computedRows.length ? "Classifica calcolata dai risultati delle partite." : "Classifica manuale caricata dal database.";
 
   return `
+    <small class="muted standing-source-note">${standingSource}</small>
     <div class="table-wrap compact-table">
       <table>
         <thead>
@@ -1364,6 +1368,7 @@ async function fetchCoreData() {
     clubs,
     news,
     competitions,
+    competitionStandings,
     calendarMatches,
     movements,
     stadiums,
@@ -1376,6 +1381,10 @@ async function fetchCoreData() {
       throw error;
     }),
     fetchAllRows(() => state.supabase.from("competitions").select("*").order("created_at", { ascending: true })).catch((error) => {
+      if (error?.code === "42P01") return [];
+      throw error;
+    }),
+    fetchAllRows(() => state.supabase.from("competition_standings").select("*").order("position", { ascending: true })).catch((error) => {
       if (error?.code === "42P01") return [];
       throw error;
     }),
@@ -1392,6 +1401,7 @@ async function fetchCoreData() {
   state.clubs = clubs || [];
   state.news = news || [];
   state.competitions = competitions || [];
+  state.competitionStandings = competitionStandings || [];
   state.calendarMatches = calendarMatches || [];
   state.movements = movements || [];
   state.stadiums = stadiums || [];
@@ -1487,10 +1497,12 @@ async function loadPageData(pageId, { force = false } = {}) {
   }
 
   if (page === "competitions" || page === "dashboard") {
-    const [seasonMatches] = await Promise.all([
+    const [seasonMatches, competitionStandings] = await Promise.all([
       fetchAllRows(() => state.supabase.from("calendar_matches").select("*").eq("season_id", seasonId).order("played_on", { ascending: true, nullsFirst: false })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+      fetchAllRows(() => state.supabase.from("competition_standings").select("*").order("position", { ascending: true })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
     ]);
     state.calendarMatches = mergeById(state.calendarMatches, seasonMatches || []);
+    state.competitionStandings = mergeById(state.competitionStandings, competitionStandings || []);
   }
 
   state.loadedScopes.add(scopeKey);
