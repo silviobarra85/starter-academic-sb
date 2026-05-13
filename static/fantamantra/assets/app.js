@@ -48,6 +48,7 @@ const state = {
   listoneUploads: [],
   rosterImports: [],
   latestQuotations: [],
+  allLatestQuotations: [],
   selectedSeason: ACTIVE_SEASON_ID,
   selectedListoneSeason: ACTIVE_SEASON_ID,
   selectedRosterSeason: ACTIVE_SEASON_ID,
@@ -199,6 +200,25 @@ function chunkArray(items, size = 250) {
   return chunks;
 }
 
+async function fetchAllRows(queryFactory, pageSize = 1000) {
+  const allRows = [];
+  let from = 0;
+
+  while (true) {
+    const to = from + pageSize - 1;
+    const { data, error } = await queryFactory().range(from, to);
+    if (error) throw error;
+
+    const rows = data || [];
+    allRows.push(...rows);
+
+    if (rows.length < pageSize) break;
+    from += pageSize;
+  }
+
+  return allRows;
+}
+
 function normalizeTextKey(value) {
   return String(value || "")
     .normalize("NFD")
@@ -241,6 +261,11 @@ function getQuotationsForSeason(seasonId) {
 }
 
 function getLatestQuotationsForSeason(seasonId) {
+  if (state.allLatestQuotations?.length) {
+    return state.allLatestQuotations
+      .filter((quote) => quote.season_id === seasonId)
+      .sort((a, b) => (a.player_name || "").localeCompare(b.player_name || ""));
+  }
   return getLatestQuotations(getQuotationsForSeason(seasonId));
 }
 
@@ -876,7 +901,8 @@ function buildRosterRows() {
   return state.rosterEntries.map((entry) => ({
     entry,
     player: entry.players || getPlayerById(entry.player_id),
-    club: entry.clubs || getClubById(entry.club_id),
+    club: entry.club || getClubById(entry.club_id),
+    loanFromClub: entry.loan_from_club || getClubById(entry.loan_from_club_id),
   }));
 }
 
@@ -908,77 +934,55 @@ async function fetchAll() {
   clearError();
 
   const [
-    seasonsRes,
-    clubsRes,
-    movementsRes,
-    playersRes,
-    rosterEntriesRes,
-    stadiumsRes,
-    stadiumLevelsRes,
-    playerQuotationsRes,
-    listoneUploadsRes,
-    rosterImportsRes,
+    seasons,
+    clubs,
+    movements,
+    players,
+    rosterEntries,
+    stadiums,
+    stadiumLevels,
+    playerQuotations,
+    latestPlayerQuotations,
+    listoneUploads,
+    rosterImports,
   ] = await Promise.all([
-    state.supabase.from("seasons").select("*").order("starts_on", { ascending: false }),
-    state.supabase.from("clubs").select("*").order("name", { ascending: true }),
-    state.supabase
-      .from("fm_movements")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(1000),
-    state.supabase.from("players").select("*").order("name", { ascending: true }).limit(20000),
-    state.supabase
-      .from("roster_entries")
-      .select("*, players(*), clubs(*)")
-      .order("created_at", { ascending: false })
-      .limit(20000),
-    state.supabase.from("stadiums").select("*").limit(1000),
-    state.supabase.from("stadium_levels").select("*").order("level", { ascending: true }),
-    state.supabase
-      .from("player_quotations")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(25000),
-    state.supabase
-      .from("listone_uploads")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(500),
-    state.supabase
-      .from("roster_imports")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(200),
+    fetchAllRows(() => state.supabase.from("seasons").select("*").order("starts_on", { ascending: false })),
+    fetchAllRows(() => state.supabase.from("clubs").select("*").order("name", { ascending: true })),
+    fetchAllRows(() => state.supabase.from("fm_movements").select("*").order("created_at", { ascending: false })),
+    fetchAllRows(() => state.supabase.from("players").select("*").order("name", { ascending: true })),
+    fetchAllRows(() =>
+      state.supabase
+        .from("roster_entries")
+        .select(`
+          *,
+          players(*),
+          club:clubs!roster_entries_club_id_fkey(id, name, president, active),
+          loan_from_club:clubs!roster_entries_loan_from_club_id_fkey(id, name, president, active)
+        `)
+        .order("created_at", { ascending: false })
+    ),
+    fetchAllRows(() => state.supabase.from("stadiums").select("*")),
+    fetchAllRows(() => state.supabase.from("stadium_levels").select("*").order("level", { ascending: true })),
+    fetchAllRows(() => state.supabase.from("player_quotations_history").select("*").order("upload_created_at", { ascending: false })),
+    fetchAllRows(() => state.supabase.from("latest_player_quotations").select("*").order("player_name", { ascending: true })),
+    fetchAllRows(() => state.supabase.from("listone_uploads").select("*").order("created_at", { ascending: false })),
+    fetchAllRows(() => state.supabase.from("roster_imports").select("*").order("created_at", { ascending: false })).catch((error) => {
+      if (error?.code === "42P01") return [];
+      throw error;
+    }),
   ]);
 
-  for (const result of [
-    seasonsRes,
-    clubsRes,
-    movementsRes,
-    playersRes,
-    rosterEntriesRes,
-    stadiumsRes,
-    stadiumLevelsRes,
-    playerQuotationsRes,
-    listoneUploadsRes,
-  ]) {
-    if (result.error) throw result.error;
-  }
-
-  if (rosterImportsRes?.error && rosterImportsRes.error.code !== "42P01") {
-    throw rosterImportsRes.error;
-  }
-
-  state.seasons = seasonsRes.data || [];
-  state.clubs = clubsRes.data || [];
-  state.movements = movementsRes.data || [];
-  state.players = playersRes.data || [];
-  state.rosterEntries = rosterEntriesRes.data || [];
-  state.stadiums = stadiumsRes.data || [];
-  state.stadiumLevels = stadiumLevelsRes.data || [];
-  state.playerQuotations = playerQuotationsRes.data || [];
-  state.listoneUploads = listoneUploadsRes.data || [];
-  state.rosterImports = rosterImportsRes?.data || [];
+  state.seasons = seasons || [];
+  state.clubs = clubs || [];
+  state.movements = movements || [];
+  state.players = players || [];
+  state.rosterEntries = rosterEntries || [];
+  state.stadiums = stadiums || [];
+  state.stadiumLevels = stadiumLevels || [];
+  state.playerQuotations = playerQuotations || [];
+  state.allLatestQuotations = latestPlayerQuotations || [];
+  state.listoneUploads = listoneUploads || [];
+  state.rosterImports = rosterImports || [];
 
   if (!state.seasons.some((season) => season.id === state.selectedSeason)) {
     state.selectedSeason = state.seasons.find((season) => season.id === ACTIVE_SEASON_ID)?.id || state.seasons[0]?.id || ACTIVE_SEASON_ID;
@@ -1328,7 +1332,7 @@ function renderListone() {
     if (latestUpload) {
       const label = latestUpload.label ? ` · ${escapeHtml(latestUpload.label)}` : "";
       const listoneDate = latestUpload.listone_date ? ` · data listone ${escapeHtml(latestUpload.listone_date)}` : "";
-      el.listoneMetaText.innerHTML = `Stagione ${escapeHtml(state.selectedListoneSeason)} · ultimo upload ${fmtDate(latestUpload.created_at)}${label}${listoneDate}`;
+      el.listoneMetaText.innerHTML = `Stagione ${escapeHtml(state.selectedListoneSeason)} · ultimo upload ${fmtDate(latestUpload.created_at)}${label}${listoneDate} · ${state.latestQuotations.length} giocatori effettivi`;
     } else {
       el.listoneMetaText.textContent = `Nessun listone caricato per la stagione ${state.selectedListoneSeason}.`;
     }
@@ -1344,8 +1348,7 @@ function renderListone() {
         .toLowerCase()
         .includes(query);
     })
-    .sort((a, b) => Number(b.is_listed) - Number(a.is_listed) || (a.player_name || "").localeCompare(b.player_name || ""))
-    .slice(0, 300);
+    .sort((a, b) => Number(b.is_listed) - Number(a.is_listed) || (a.player_name || "").localeCompare(b.player_name || ""));
 
   if (!rows.length) {
     el.listoneTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun listone caricato per questa stagione.</td></tr>`;
@@ -1691,7 +1694,71 @@ function buildRowsWithAutoAsterisked(parsedRows, previousLatest) {
   return { rows: Array.from(rowsMap.values()), autoAsterisked };
 }
 
-function computeListoneChanges(newRows, previousLatest) {
+function comparableString(value) {
+  return String(value || "").trim().toUpperCase();
+}
+
+function comparableNumber(value) {
+  const n = toNumber(value);
+  return n === null ? null : Number(n);
+}
+
+function rowHasQuotationChange(row, prev) {
+  if (!prev) return true;
+
+  const stringFields = [
+    "player_name",
+    "real_team",
+    "classic_role",
+    "mantra_roles",
+    "role_class",
+    "listone_status",
+    "left_listone_reason",
+  ];
+
+  for (const field of stringFields) {
+    if (comparableString(row[field]) !== comparableString(prev[field])) return true;
+  }
+
+  if (Boolean(row.is_listed) !== Boolean(prev.is_listed)) return true;
+
+  const numericFields = [
+    "quotation_current",
+    "quotation_initial",
+    "quotation_diff",
+    "quotation_current_mantra",
+    "quotation_initial_mantra",
+    "quotation_diff_mantra",
+    "fvm",
+    "fvm_mantra",
+  ];
+
+  for (const field of numericFields) {
+    if (comparableNumber(row[field]) !== comparableNumber(prev[field])) return true;
+  }
+
+  // L'ID Fantacalcio puo cambiare tra stagioni/listoni e non e una modifica sportiva.
+  return false;
+}
+
+function splitRowsByChange(rows, previousLatest) {
+  const prevByPlayerKey = new Map(previousLatest.map((quote) => [getQuotationKey(quote), quote]));
+  const changedRows = [];
+  const unchangedRows = [];
+
+  for (const row of rows) {
+    const prev = prevByPlayerKey.get(row.player_key);
+    if (rowHasQuotationChange(row, prev)) {
+      changedRows.push(row);
+    } else {
+      unchangedRows.push({ row, prev });
+    }
+  }
+
+  return { changedRows, unchangedRows };
+}
+
+function computeListoneChanges(newRows, previousLatest, unchangedRows = []) {
   const prevByPlayerKey = new Map(previousLatest.map((quote) => [getQuotationKey(quote), quote]));
 
   const changes = {
@@ -1701,6 +1768,7 @@ function computeListoneChanges(newRows, previousLatest) {
     priceChanges: [],
     teamChanges: [],
     roleChanges: [],
+    unchanged: unchangedRows,
   };
 
   for (const row of newRows) {
@@ -1759,12 +1827,23 @@ function renderImportReport(changes, uploadStats) {
     .map(({ row, prev }) => `<li>${escapeHtml(row.player_name)}: ${escapeHtml(prev.mantra_roles || "-")} → ${escapeHtml(row.mantra_roles || "-")}</li>`)
     .join("");
 
+  const unchangedRows = changes.unchanged
+    .slice(0, 12)
+    .map(({ row, prev }) => {
+      const upload = getUploadById(prev.upload_id);
+      const lastChange = upload?.listone_date || upload?.created_at || prev.upload_created_at || prev.created_at;
+      return `<li>${escapeHtml(row.player_name)} <span class="muted">ultima modifica ${escapeHtml(fmtDateOnly(lastChange))}</span></li>`;
+    })
+    .join("");
+
   el.listoneImportReport.innerHTML = `
     <div class="import-summary-grid">
       <div><span>Righe file</span><strong>${uploadStats.fileRows}</strong></div>
       <div><span>In listone</span><strong>${uploadStats.active}</strong></div>
       <div><span>Foglio Ceduti</span><strong>${uploadStats.ceduti}</strong></div>
       <div><span>Asteriscati automatici</span><strong>${uploadStats.autoAsterisked}</strong></div>
+      <div><span>Righe con modifica</span><strong>${uploadStats.changed}</strong></div>
+      <div><span>Righe invariate</span><strong>${uploadStats.unchanged}</strong></div>
       <div><span>Nuovi</span><strong>${changes.newPlayers.length}</strong></div>
       <div><span>Rientrati</span><strong>${changes.returned.length}</strong></div>
       <div><span>Variazioni prezzo</span><strong>${changes.priceChanges.length}</strong></div>
@@ -1776,6 +1855,7 @@ function renderImportReport(changes, uploadStats) {
       <div><h3>Rientrati nel listone</h3><ul>${returnedRows || '<li>Nessun rientro.</li>'}</ul></div>
       <div><h3>Cambi squadra</h3><ul>${teamRows || '<li>Nessun cambio squadra.</li>'}</ul></div>
       <div><h3>Cambi ruolo Mantra</h3><ul>${roleRows || '<li>Nessun cambio ruolo.</li>'}</ul></div>
+      <div><h3>Invariati</h3><ul>${unchangedRows || '<li>Nessun invariato oppure primo caricamento.</li>'}</ul></div>
     </div>
   `;
   el.listoneImportReport.classList.remove("hidden");
@@ -1799,24 +1879,27 @@ async function handleListoneUpload(event) {
   try {
     const previousLatest = getLatestQuotationsForSeason(seasonId);
     const parsed = await readListoneWorkbook(file);
-    const { rows, autoAsterisked } = buildRowsWithAutoAsterisked(parsed, previousLatest);
+    const { rows: effectiveRows, autoAsterisked } = buildRowsWithAutoAsterisked(parsed, previousLatest);
+    const { changedRows, unchangedRows } = splitRowsByChange(effectiveRows, previousLatest);
 
-    if (!rows.length) {
+    if (!effectiveRows.length) {
       el.listoneUploadStatus.textContent = "Nessun giocatore riconosciuto nel file.";
       return;
     }
 
-    el.listoneUploadStatus.textContent = `Importazione ${rows.length} giocatori...`;
+    el.listoneUploadStatus.textContent = `Riconosciuti ${effectiveRows.length} giocatori: ${changedRows.length} modifiche, ${unchangedRows.length} invariati...`;
 
     const uploadPayload = {
       season_id: seasonId,
       file_name: file.name,
       label,
       listone_date: listoneDate,
-      total_rows: rows.length,
+      total_rows: effectiveRows.length,
       active_rows: parsed.activeRows.length,
       ceduti_rows: parsed.cedutiRows.length,
       auto_asterisked_rows: autoAsterisked,
+      changed_rows: changedRows.length,
+      unchanged_rows: unchangedRows.length,
       created_by: state.user?.id || null,
     };
 
@@ -1828,47 +1911,53 @@ async function handleListoneUpload(event) {
 
     if (uploadError) throw uploadError;
 
-    const playerPayloads = rows.map((row) => ({
-      player_key: row.player_key,
-      fantacalcio_id: row.fantacalcio_id,
-      name: row.player_name,
-      real_team: row.real_team,
-      classic_role: row.classic_role,
-      mantra_roles: row.mantra_roles,
-      role_class: row.role_class,
-      is_asterisked: !row.is_listed,
-    }));
+    if (changedRows.length) {
+      const playerPayloads = changedRows.map((row) => ({
+        player_key: row.player_key,
+        fantacalcio_id: row.fantacalcio_id,
+        name: row.player_name,
+        real_team: row.real_team,
+        classic_role: row.classic_role,
+        mantra_roles: row.mantra_roles,
+        role_class: row.role_class,
+        is_asterisked: !row.is_listed,
+      }));
 
-    const savedPlayers = await insertRowsInChunks("players", playerPayloads, {
-      upsert: true,
-      onConflict: "player_key",
-    });
+      const savedPlayers = await insertRowsInChunks("players", playerPayloads, {
+        upsert: true,
+        onConflict: "player_key",
+      });
 
-    const playerByKey = new Map(savedPlayers.map((player) => [String(player.player_key), player]));
+      const playerByKey = new Map(savedPlayers.map((player) => [String(player.player_key), player]));
 
-    const quotationPayloads = rows.map((row) => {
-      const player = playerByKey.get(row.player_key);
-      if (!player) throw new Error(`Giocatore non salvato: ${row.player_name}`);
-      return {
-        upload_id: upload.id,
-        season_id: seasonId,
-        player_id: player.id,
-        ...row,
-      };
-    });
+      const quotationPayloads = changedRows.map((row) => {
+        const player = playerByKey.get(row.player_key);
+        if (!player) throw new Error(`Giocatore non salvato: ${row.player_name}`);
+        return {
+          upload_id: upload.id,
+          season_id: seasonId,
+          player_id: player.id,
+          ...row,
+        };
+      });
 
-    await insertRowsInChunks("player_quotations", quotationPayloads);
+      await insertRowsInChunks("player_quotations", quotationPayloads);
+    }
 
-    const changes = computeListoneChanges(rows, previousLatest);
+    const changes = computeListoneChanges(changedRows, previousLatest, unchangedRows);
     renderImportReport(changes, {
       fileRows: parsed.activeRows.length + parsed.cedutiRows.length,
-      total: rows.length,
+      total: effectiveRows.length,
       active: parsed.activeRows.length,
       ceduti: parsed.cedutiRows.length,
       autoAsterisked,
+      changed: changedRows.length,
+      unchanged: unchangedRows.length,
     });
 
-    el.listoneUploadStatus.textContent = "Listone caricato correttamente.";
+    el.listoneUploadStatus.textContent = changedRows.length
+      ? "Listone caricato correttamente. Sono state salvate solo le righe modificate."
+      : "Listone caricato correttamente. Nessuna nuova modifica da salvare nello storico giocatori.";
     el.listoneUploadForm.reset();
     state.selectedListoneSeason = seasonId;
     await fetchAll();
