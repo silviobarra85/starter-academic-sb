@@ -9,7 +9,6 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
-
 const ACTIVE_SEASON_ID = "2026-2027";
 
 const MOVEMENT_LABELS = {
@@ -91,6 +90,7 @@ const state = {
   freeAgentsSort: { key: "player_name", direction: "asc" },
   marketSearch: "",
   marketClubFilter: "all",
+  adminSearch: { news: "", competitions: "", standings: "", calendar: "", honor: "" },
   rosterSearch: "",
   rosterClubFilter: "all",
 };
@@ -201,6 +201,7 @@ const el = {
   newsBody: document.getElementById("newsBody"),
   newsFormReset: document.getElementById("newsFormReset"),
   newsFormStatus: document.getElementById("newsFormStatus"),
+  newsAdminSearch: document.getElementById("newsAdminSearch"),
   newsAdminList: document.getElementById("newsAdminList"),
   competitionForm: document.getElementById("competitionForm"),
   competitionId: document.getElementById("competitionId"),
@@ -210,6 +211,7 @@ const el = {
   competitionStatus: document.getElementById("competitionStatus"),
   competitionFormReset: document.getElementById("competitionFormReset"),
   competitionFormStatus: document.getElementById("competitionFormStatus"),
+  competitionAdminSearch: document.getElementById("competitionAdminSearch"),
   competitionAdminList: document.getElementById("competitionAdminList"),
   standingForm: document.getElementById("standingForm"),
   standingId: document.getElementById("standingId"),
@@ -223,6 +225,7 @@ const el = {
   standingPlayed: document.getElementById("standingPlayed"),
   standingFormReset: document.getElementById("standingFormReset"),
   standingFormStatus: document.getElementById("standingFormStatus"),
+  standingAdminSearch: document.getElementById("standingAdminSearch"),
   standingAdminList: document.getElementById("standingAdminList"),
   calendarForm: document.getElementById("calendarForm"),
   calendarMatchId: document.getElementById("calendarMatchId"),
@@ -236,6 +239,7 @@ const el = {
   calendarStatus: document.getElementById("calendarStatus"),
   calendarFormReset: document.getElementById("calendarFormReset"),
   calendarFormStatus: document.getElementById("calendarFormStatus"),
+  calendarAdminSearch: document.getElementById("calendarAdminSearch"),
   calendarAdminList: document.getElementById("calendarAdminList"),
   honorForm: document.getElementById("honorForm"),
   honorId: document.getElementById("honorId"),
@@ -251,6 +255,7 @@ const el = {
   honorNotes: document.getElementById("honorNotes"),
   honorFormReset: document.getElementById("honorFormReset"),
   honorFormStatus: document.getElementById("honorFormStatus"),
+  honorAdminSearch: document.getElementById("honorAdminSearch"),
   honorAdminList: document.getElementById("honorAdminList"),
   dumpForm: document.getElementById("dumpForm"),
   dumpType: document.getElementById("dumpType"),
@@ -1257,8 +1262,8 @@ async function fetchAll() {
         .select(`
           *,
           players(*),
-          club:clubs!roster_entries_club_id_fkey(id, name, president, active),
-          loan_from_club:clubs!roster_entries_loan_from_club_id_fkey(id, name, president, active)
+          club:clubs!roster_entries_club_id_fkey(id, name, president, active, logo_data_url),
+          loan_from_club:clubs!roster_entries_loan_from_club_id_fkey(id, name, president, active, logo_data_url)
         `)
         .order("created_at", { ascending: false })
     ),
@@ -1542,7 +1547,7 @@ function renderRoster() {
       return `
         <tr>
           <td>${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato")}</td>
-          <td><button class="link-button" type="button" data-roster-club-id="${escapeHtml(club?.id || entry.club_id)}">${escapeHtml(club?.name || entry.club_id)}</button></td>
+          <td>${club ? clubButton(club) : `<button class="link-button" type="button" data-roster-club-id="${escapeHtml(entry.club_id)}">${escapeHtml(entry.club_id)}</button>`}</td>
           <td>${escapeHtml(latestQuote?.real_team || player?.real_team || "-")}</td>
           <td>${escapeHtml(latestQuote?.mantra_roles || player?.mantra_roles || "-")}</td>
           <td>${roleLabel}</td>
@@ -1585,7 +1590,7 @@ function renderRosterClubCards() {
     const issueText = stats.issues.length ? stats.issues[0] : "Rosa valida";
     return `
       <button class="roster-club-card" type="button" data-roster-club-id="${escapeHtml(club.id)}">
-        <span class="roster-card-title">${escapeHtml(club.name)}</span>
+        <span class="roster-card-title">${clubNameWithLogo(club)}</span>
         <span class="muted small">${escapeHtml(club.president || "-")}</span>
         <span class="roster-card-stats">
           <strong>${stats.total}</strong> giocatori · <strong>${stats.goalkeepers}</strong> P · <strong>${fmtFm(spent)}</strong>
@@ -1973,7 +1978,7 @@ function renderDashboardCompetitions() {
             </div>
             <span class="status status-muted">${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-")}</span>
           </div>
-          ${renderStandingTable(competition)}
+          ${competition.competition_type === "REGULAR_SEASON" ? renderStandingTable(competition) : renderCupPodium(competition)}
         </div>
       `)
       .join("");
@@ -2191,12 +2196,14 @@ function renderAdminExtendedControls() {
   const clubOptions = getCurrentClubs().map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`).join("");
   const selectedSeason = getSelectedSeasonId();
   const competitionsForSeason = state.competitions.filter((competition) => competition.season_id === selectedSeason);
+  const regularCompetitionsForSeason = competitionsForSeason.filter((competition) => competition.competition_type === "REGULAR_SEASON");
   const competitionOptions = competitionsForSeason.map((competition) => `<option value="${escapeHtml(competition.id)}">${escapeHtml(competition.name)}</option>`).join("");
+  const regularCompetitionOptions = regularCompetitionsForSeason.map((competition) => `<option value="${escapeHtml(competition.id)}">${escapeHtml(competition.name)}</option>`).join("");
 
   if (el.stadiumSeason) { el.stadiumSeason.innerHTML = seasonOptions; el.stadiumSeason.value = selectedSeason; }
   if (el.stadiumClub) { el.stadiumClub.innerHTML = clubOptions; if (!el.stadiumClub.value && getCurrentClubs()[0]) el.stadiumClub.value = getCurrentClubs()[0].id; updateStadiumFormFields(); }
   if (el.competitionSeason) { el.competitionSeason.innerHTML = seasonOptions; el.competitionSeason.value = selectedSeason; }
-  if (el.standingCompetition) el.standingCompetition.innerHTML = competitionOptions || `<option value="">Nessuna competizione</option>`;
+  if (el.standingCompetition) el.standingCompetition.innerHTML = regularCompetitionOptions || `<option value="">Nessuna Regular Season</option>`;
   if (el.standingClub) el.standingClub.innerHTML = clubOptions;
   if (el.calendarCompetition) el.calendarCompetition.innerHTML = competitionOptions || `<option value="">Nessuna competizione</option>`;
   if (el.calendarHomeClub) el.calendarHomeClub.innerHTML = `<option value="">-</option>${clubOptions}`;
@@ -2212,40 +2219,108 @@ function renderAdminExtendedControls() {
   renderAdminLists();
 }
 
+function adminSearchValue(key) {
+  return String(state.adminSearch?.[key] || "").trim().toLowerCase();
+}
+
+function textMatchesQuery(text, query) {
+  if (!query) return true;
+  return String(text || "").toLowerCase().includes(query);
+}
+
+function renderAdminListMessage(message) {
+  return `<p class="muted admin-empty-message">${escapeHtml(message)}</p>`;
+}
+
 function renderAdminLists() {
+  const selectedSeason = getSelectedSeasonId();
+
   if (el.newsAdminList) {
-    el.newsAdminList.innerHTML = state.news.map((post) => `
+    const query = adminSearchValue("news");
+    const rows = state.news
+      .filter((post) => textMatchesQuery(`${post.title || ""} ${post.topic || ""} ${post.body || ""}`, query))
+      .slice(0, 80);
+    el.newsAdminList.innerHTML = rows.map((post) => `
       <div class="admin-list-item">
         <span><strong>${escapeHtml(post.title)}</strong><small>${escapeHtml(NEWS_TOPIC_LABELS[post.topic] || post.topic)} · ${fmtDate(post.created_at)}</small></span>
         <span><button class="button button-secondary button-small" type="button" data-edit-news="${escapeHtml(post.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-news="${escapeHtml(post.id)}">Elimina</button></span>
-      </div>`).join("") || `<p class="muted">Nessun comunicato.</p>`;
+      </div>`).join("") || renderAdminListMessage(query ? "Nessun comunicato trovato." : "Nessun comunicato.");
   }
+
   if (el.competitionAdminList) {
-    el.competitionAdminList.innerHTML = state.competitions.filter((c) => c.season_id === getSelectedSeasonId()).map((competition) => `
+    const query = adminSearchValue("competitions");
+    const listSeason = el.competitionSeason?.value || selectedSeason;
+    const rows = state.competitions
+      .filter((c) => c.season_id === listSeason)
+      .filter((c) => textMatchesQuery(`${c.name || ""} ${c.competition_type || ""} ${c.status || ""}`, query));
+    el.competitionAdminList.innerHTML = rows.map((competition) => `
       <div class="admin-list-item">
-        <span><strong>${escapeHtml(competition.name)}</strong><small>${escapeHtml(COMPETITION_LABELS[competition.competition_type] || competition.competition_type)} · ${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status)}</small></span>
+        <span><strong>${escapeHtml(competition.name)}</strong><small>${escapeHtml(COMPETITION_LABELS[competition.competition_type] || competition.competition_type)} · ${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status)} · ${escapeHtml(competition.season_id)}</small></span>
         <span><button class="button button-secondary button-small" type="button" data-edit-competition="${escapeHtml(competition.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-competition="${escapeHtml(competition.id)}">Elimina</button></span>
-      </div>`).join("") || `<p class="muted">Nessuna competizione.</p>`;
+      </div>`).join("") || renderAdminListMessage(query ? `Nessuna competizione trovata per ${listSeason}.` : `Nessuna competizione per ${listSeason}.`);
   }
+
   if (el.standingAdminList) {
-    el.standingAdminList.innerHTML = state.competitionStandings.filter((row) => getCompetitionById(row.competition_id)?.season_id === getSelectedSeasonId()).map((row) => {
-      const club = getClubById(row.club_id); const competition = getCompetitionById(row.competition_id);
-      return `<div class="admin-list-item"><span><strong>${escapeHtml(competition?.name || "-")} · ${escapeHtml(club?.name || "-")}</strong><small>Pos. ${row.position || "-"} · ${row.points ?? "-"} pt</small></span><span><button class="button button-secondary button-small" type="button" data-edit-standing="${escapeHtml(row.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-standing="${escapeHtml(row.id)}">Elimina</button></span></div>`;
-    }).join("") || `<p class="muted">Nessuna classifica.</p>`;
+    const query = adminSearchValue("standings");
+    const standingCompetitionId = el.standingCompetition?.value || "";
+    const rows = state.competitionStandings
+      .filter((row) => {
+        const competition = getCompetitionById(row.competition_id);
+        if (standingCompetitionId) return row.competition_id === standingCompetitionId && competition?.competition_type === "REGULAR_SEASON";
+        return competition?.season_id === selectedSeason && competition?.competition_type === "REGULAR_SEASON";
+      })
+      .filter((row) => {
+        const club = getClubById(row.club_id);
+        const competition = getCompetitionById(row.competition_id);
+        return textMatchesQuery(`${competition?.name || ""} ${club?.name || ""} ${row.position || ""} ${row.points ?? ""}`, query);
+      });
+    el.standingAdminList.innerHTML = rows.map((row) => {
+      const club = getClubById(row.club_id);
+      const competition = getCompetitionById(row.competition_id);
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(competition?.name || "-")} · ${clubButton(club)}</strong><small>Pos. ${row.position || "-"} · ${row.points ?? "-"} pt · ${escapeHtml(competition?.season_id || selectedSeason)}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-standing="${escapeHtml(row.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-standing="${escapeHtml(row.id)}">Elimina</button></span></div>`;
+    }).join("") || renderAdminListMessage(query ? "Nessuna riga di classifica trovata." : "Nessuna classifica Regular Season per la stagione selezionata.");
   }
+
   if (el.calendarAdminList) {
-    el.calendarAdminList.innerHTML = state.calendarMatches.filter((row) => row.season_id === getSelectedSeasonId()).map((match) => {
-      const competition = getCompetitionById(match.competition_id); const home = getClubById(match.home_club_id); const away = getClubById(match.away_club_id);
-      return `<div class="admin-list-item"><span><strong>${escapeHtml(match.matchday_label || "Giornata")} · ${escapeHtml(competition?.name || "-")}</strong><small>${escapeHtml(home?.name || "-")} vs ${escapeHtml(away?.name || "-")} · ${match.played_on ? fmtDateOnly(match.played_on) : "senza data"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-calendar="${escapeHtml(match.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-calendar="${escapeHtml(match.id)}">Elimina</button></span></div>`;
-    }).join("") || `<p class="muted">Nessuna giornata.</p>`;
+    const query = adminSearchValue("calendar");
+    const calendarCompetitionId = el.calendarCompetition?.value || "";
+    const rows = state.calendarMatches
+      .filter((row) => calendarCompetitionId ? row.competition_id === calendarCompetitionId : row.season_id === selectedSeason)
+      .filter((match) => {
+        const competition = getCompetitionById(match.competition_id);
+        const home = getClubById(match.home_club_id);
+        const away = getClubById(match.away_club_id);
+        return textMatchesQuery(`${match.matchday_label || ""} ${competition?.name || ""} ${home?.name || ""} ${away?.name || ""}`, query);
+      })
+      .slice(0, 120);
+    el.calendarAdminList.innerHTML = rows.map((match) => {
+      const competition = getCompetitionById(match.competition_id);
+      const home = getClubById(match.home_club_id);
+      const away = getClubById(match.away_club_id);
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(match.matchday_label || "Giornata")} · ${escapeHtml(competition?.name || "-")}</strong><small>${clubButton(home)} vs ${clubButton(away)} · ${match.played_on ? fmtDateOnly(match.played_on) : "senza data"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-calendar="${escapeHtml(match.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-calendar="${escapeHtml(match.id)}">Elimina</button></span></div>`;
+    }).join("") || renderAdminListMessage(query ? "Nessuna giornata trovata." : "Nessuna giornata per la stagione selezionata.");
   }
+
   if (el.honorAdminList) {
-    el.honorAdminList.innerHTML = state.honorRoll.map((entry) => {
+    const query = adminSearchValue("honor");
+    const honorSeason = el.honorSeason?.value || "";
+    const rows = state.honorRoll
+      .filter((entry) => !honorSeason || entry.season_id === honorSeason)
+      .filter((entry) => {
+        const honorClub = getHonorClubForEntry(entry);
+        const currentClub = getClubById(entry.club_id);
+        return textMatchesQuery(`${entry.season_id || ""} ${entry.title || ""} ${entry.competition_type || ""} ${honorClub?.name || ""} ${currentClub?.name || ""} ${entry.notes || ""}`, query);
+      })
+      .slice(0, 120);
+    el.honorAdminList.innerHTML = rows.map((entry) => {
       const honorClub = getHonorClubForEntry(entry);
-      return `<div class="admin-list-item"><span><strong>${escapeHtml(entry.season_id)} · ${escapeHtml(entry.title)}</strong><small>${escapeHtml(honorClub?.name || getClubById(entry.club_id)?.name || "-")} · ${entry.placement ? `${entry.placement}°` : "-"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-honor="${escapeHtml(entry.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-honor="${escapeHtml(entry.id)}">Elimina</button></span></div>`;
-    }).join("") || `<p class="muted">Nessuna voce albo.</p>`;
+      const currentClub = getClubById(entry.club_id);
+      const clubHtml = honorClub ? honorClubButton(honorClub) : clubButton(currentClub);
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(entry.season_id)} · ${escapeHtml(entry.title)}</strong><small>${clubHtml || "-"} · ${entry.placement ? `${entry.placement}°` : "-"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-honor="${escapeHtml(entry.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-honor="${escapeHtml(entry.id)}">Elimina</button></span></div>`;
+    }).join("") || renderAdminListMessage(query ? "Nessuna voce Albo d'oro trovata." : "Nessuna voce albo.");
   }
 }
+
 
 function renderMarketActivity() {
   if (!el.marketActivityTableBody) return;
@@ -3155,6 +3230,11 @@ function resetCompetitionForm() {
 async function handleStandingSubmit(event) {
   event.preventDefault();
   el.standingFormStatus.textContent = "Salvataggio...";
+  const selectedCompetition = getCompetitionById(el.standingCompetition.value);
+  if (!selectedCompetition || selectedCompetition.competition_type !== "REGULAR_SEASON") {
+    el.standingFormStatus.textContent = "Puoi inserire classifiche solo per la Regular Season. Per coppe e playoff usa Albo d'oro e Calendario.";
+    return;
+  }
   const id = el.standingId.value || null;
   const payload = {
     competition_id: el.standingCompetition.value,
@@ -3518,6 +3598,23 @@ function bindEvents() {
   if (el.honorForm) el.honorForm.addEventListener("submit", handleHonorSubmit);
   if (el.honorFormReset) el.honorFormReset.addEventListener("click", resetHonorForm);
   if (el.dumpForm) el.dumpForm.addEventListener("submit", handleDumpSubmit);
+  [
+    [el.newsAdminSearch, "news"],
+    [el.competitionAdminSearch, "competitions"],
+    [el.standingAdminSearch, "standings"],
+    [el.calendarAdminSearch, "calendar"],
+    [el.honorAdminSearch, "honor"],
+  ].forEach(([node, key]) => {
+    if (node) node.addEventListener("input", () => {
+      state.adminSearch[key] = node.value;
+      renderAdminLists();
+    });
+  });
+
+  [el.competitionSeason, el.standingCompetition, el.calendarCompetition, el.honorSeason].forEach((node) => {
+    if (node) node.addEventListener("change", renderAdminLists);
+  });
+
   [el.newsAdminList, el.competitionAdminList, el.standingAdminList, el.calendarAdminList, el.honorAdminList].forEach((node) => {
     if (node) node.addEventListener("click", handleAdminListClick);
   });

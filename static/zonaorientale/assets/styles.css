@@ -1105,7 +1105,8 @@ code {
   border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 14px;
   padding: 0.75rem 0.9rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(15, 23, 42, 0.72);
+  color: var(--text);
   margin-bottom: 0.75rem;
 }
 
@@ -1124,4 +1125,49 @@ code {
 
 .club-link {
   text-align: left;
+}
+
+
+/* V16 admin and readability refinements */
+.admin-edit-section {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.admin-edit-section summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text);
+}
+
+.admin-edit-section summary span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.admin-search-input {
+  margin: 0.85rem 0 0.5rem;
+  width: min(520px, 100%);
+}
+
+.admin-empty-message {
+  margin: 0.75rem 0 0;
+}
+
+.collapse-card .table-wrap,
+.collapse-card table {
+  color: var(--text);
+}
+
+.collapse-card tbody tr:hover {
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.roster-card-title .club-name-with-logo,
+.link-button .club-name-with-logo {
+  pointer-events: none;
 }
