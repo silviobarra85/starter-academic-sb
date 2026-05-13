@@ -887,3 +887,147 @@ code {
     width: 100%;
   }
 }
+
+/* V13 additions */
+.app-nav {
+  flex-wrap: wrap;
+}
+
+.dashboard-grid {
+  margin-top: 18px;
+}
+
+.stack-list,
+.news-list,
+.competition-list,
+.admin-list {
+  display: grid;
+  gap: 12px;
+}
+
+.stack-section {
+  display: grid;
+  gap: 10px;
+}
+
+.stack-section h3,
+.competition-card h4 {
+  margin: 8px 0 2px;
+  font-size: 0.95rem;
+}
+
+.stack-item,
+.admin-list-item,
+.movement-item,
+.stadium-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+
+.stack-item {
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.42);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.stack-item div:first-child,
+.admin-list-item span:first-child {
+  display: grid;
+  gap: 4px;
+}
+
+.stack-item small,
+.admin-list-item small,
+.news-card small {
+  color: var(--muted);
+}
+
+.stack-item-side {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.news-card,
+.competition-card,
+.compact-card {
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.news-card h3,
+.competition-card h3 {
+  margin: 8px 0;
+}
+
+.news-card p {
+  margin: 8px 0 0;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.news-card-header,
+.competition-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.competition-card-header > div {
+  display: grid;
+  gap: 4px;
+}
+
+.competition-card-header span:not(.status) {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.admin-list-item {
+  border-top: 1px solid var(--border);
+  padding: 10px 0;
+}
+
+.admin-list-item span:last-child {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.button-small {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.compact-card {
+  padding: 12px;
+}
+
+.compact-card .table-wrap {
+  margin-top: 8px;
+}
+
+@media (max-width: 760px) {
+  .stack-item,
+  .admin-list-item,
+  .news-card-header,
+  .competition-card-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .stack-item-side {
+    text-align: left;
+  }
+}
