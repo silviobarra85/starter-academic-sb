@@ -1031,3 +1031,17 @@ code {
     text-align: left;
   }
 }
+
+/* V14 */
+.detail-section {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+.detail-section h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+.text-ok {
+  color: #15803d;
+}

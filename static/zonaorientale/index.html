@@ -29,10 +29,10 @@
 
     <nav class="container app-nav" aria-label="Navigazione FantaMantra">
       <a href="#dashboard" class="nav-link" data-page-link="dashboard">Dashboard</a>
+      <a href="#news" class="nav-link" data-page-link="news">News</a>
       <a href="#clubs" class="nav-link" data-page-link="clubs">Club</a>
       <a href="#rosters" class="nav-link" data-page-link="rosters">Rose</a>
       <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
-      <a href="#news" class="nav-link" data-page-link="news">News</a>
       <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor">Albo d'oro</a>
       <a href="#finance" class="nav-link" data-page-link="finance">Movimenti & Stadi</a>
@@ -113,6 +113,27 @@
             <p class="muted">Caricamento...</p>
           </div>
         </article>
+      </section>
+    </section>
+
+    <section class="app-page" data-page="news" aria-labelledby="newsTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Comunicazioni</p>
+          <h2 id="newsTitle">News</h2>
+          <p>Comunicati ufficiali, aggiornamenti generali e comunicazioni delle squadre.</p>
+        </div>
+      </div>
+      <section class="panel">
+        <div class="panel-header compact">
+          <div>
+            <h2>Ultimi comunicati</h2>
+            <p>Comunicati inseriti dall'amministratore.</p>
+          </div>
+        </div>
+        <div id="newsList" class="news-list">
+          <p class="muted">Caricamento...</p>
+        </div>
       </section>
     </section>
 
@@ -286,27 +307,6 @@
         </table>
       </div>
     </section>
-    </section>
-
-    <section class="app-page" data-page="news" aria-labelledby="newsTitle">
-      <div class="page-heading">
-        <div>
-          <p class="eyebrow">Comunicazioni</p>
-          <h2 id="newsTitle">News</h2>
-          <p>Comunicati ufficiali, aggiornamenti generali e comunicazioni delle squadre.</p>
-        </div>
-      </div>
-      <section class="panel">
-        <div class="panel-header compact">
-          <div>
-            <h2>Ultimi comunicati</h2>
-            <p>Comunicati inseriti dall'amministratore.</p>
-          </div>
-        </div>
-        <div id="newsList" class="news-list">
-          <p class="muted">Caricamento...</p>
-        </div>
-      </section>
     </section>
 
     <section class="app-page" data-page="competitions" aria-labelledby="competitionsTitle">
@@ -815,8 +815,17 @@
             <select id="honorSeason" class="input" required></select>
           </label>
           <label>
-            Club
+            Squadra albo d'oro
             <select id="honorClub" class="input" required></select>
+            <small class="field-hint">Scegli una squadra storica oppure crea una nuova voce.</small>
+          </label>
+          <label>
+            Nome squadra storica
+            <input id="honorClubNameInput" class="input" type="text" placeholder="Es. Real Pastena" />
+          </label>
+          <label>
+            Presidente storico
+            <input id="honorPresidentInput" class="input" type="text" placeholder="Es. Mario Rossi" />
           </label>
           <label>
             Competizione
@@ -851,6 +860,34 @@
           </div>
         </form>
         <div id="honorAdminList" class="admin-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Backup database</h2>
+            <p>Esporta uno snapshot locale dello schema, dei dati o di entrambi. Utile per ricostruire il gestionale in caso di problemi.</p>
+          </div>
+        </div>
+        <form id="dumpForm" class="form-grid">
+          <label>
+            Tipo dump
+            <select id="dumpType" class="input" required>
+              <option value="both">Schema + dati</option>
+              <option value="schema">Solo schema</option>
+              <option value="data">Solo dati</option>
+            </select>
+          </label>
+          <label class="checkbox-label">
+            <input id="dumpPretty" type="checkbox" checked />
+            JSON leggibile
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Scarica dump</button>
+            <span id="dumpFormStatus" class="form-status"></span>
+          </div>
+        </form>
       </article>
 
       <article class="panel">
@@ -950,7 +987,7 @@
   </dialog>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V13 news, competizioni, albo d'oro e stadi</p>
+    <p>ZonaOrientale Salerno · V14 storico, backup DB e albo d'oro esteso</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>

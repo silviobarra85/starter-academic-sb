@@ -6,9 +6,8 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // Esempio:
 // const SUPABASE_URL = "https://xxxxxxxxxxxxxxxxxxxx.supabase.co";
 // const SUPABASE_ANON_KEY = "eyJhbGciOi...";
-const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
-
+const SUPABASE_URL = "INSERISCI_PROJECT_URL";
+const SUPABASE_ANON_KEY = "INSERISCI_ANON_PUBLIC_KEY";
 
 const ACTIVE_SEASON_ID = "2026-2027";
 
@@ -78,6 +77,7 @@ const state = {
   competitionStandings: [],
   calendarMatches: [],
   honorRoll: [],
+  honorClubs: [],
   latestQuotations: [],
   allLatestQuotations: [],
   selectedSeason: ACTIVE_SEASON_ID,
@@ -220,6 +220,8 @@ const el = {
   honorId: document.getElementById("honorId"),
   honorSeason: document.getElementById("honorSeason"),
   honorClub: document.getElementById("honorClub"),
+  honorClubNameInput: document.getElementById("honorClubNameInput"),
+  honorPresidentInput: document.getElementById("honorPresidentInput"),
   honorCompetitionType: document.getElementById("honorCompetitionType"),
   honorTitleInput: document.getElementById("honorTitleInput"),
   honorPlacement: document.getElementById("honorPlacement"),
@@ -228,6 +230,10 @@ const el = {
   honorFormReset: document.getElementById("honorFormReset"),
   honorFormStatus: document.getElementById("honorFormStatus"),
   honorAdminList: document.getElementById("honorAdminList"),
+  dumpForm: document.getElementById("dumpForm"),
+  dumpType: document.getElementById("dumpType"),
+  dumpPretty: document.getElementById("dumpPretty"),
+  dumpFormStatus: document.getElementById("dumpFormStatus"),
   movementForm: document.getElementById("movementForm"),
   movementSeason: document.getElementById("movementSeason"),
   movementClub: document.getElementById("movementClub"),
@@ -955,6 +961,42 @@ function getClubById(clubId) {
   return state.clubs.find((club) => club.id === clubId);
 }
 
+function getCurrentClubs() {
+  return state.clubs.filter((club) => club.active !== false);
+}
+
+function getHonorClubById(honorClubId) {
+  return state.honorClubs.find((club) => club.id === honorClubId);
+}
+
+function getHonorClubForEntry(entry) {
+  if (!entry) return null;
+  return getHonorClubById(entry.honor_club_id) || state.honorClubs.find((club) => club.source_club_id === entry.club_id) || getClubById(entry.club_id);
+}
+
+function honorClubButton(honorClub, extraClass = "") {
+  if (!honorClub) return "-";
+  const linkedCurrent = honorClub.source_club_id ? getClubById(honorClub.source_club_id) : null;
+  if (linkedCurrent) return clubButton(linkedCurrent, extraClass);
+  return `<button class="link-button ${extraClass}" type="button" data-honor-club-id="${escapeHtml(honorClub.id)}">${escapeHtml(honorClub.name)}</button>`;
+}
+
+function getPalmaresForClubIds(clubId, honorClubId) {
+  const currentHonor = state.honorClubs.find((club) => club.source_club_id === clubId);
+  const ids = new Set([honorClubId, currentHonor?.id].filter(Boolean));
+  return state.honorRoll.filter((entry) => entry.club_id === clubId || (entry.honor_club_id && ids.has(entry.honor_club_id)));
+}
+
+function getClubMovements(clubId, seasonId = null) {
+  return state.movements
+    .filter((movement) => movement.club_id === clubId && (!seasonId || movement.season_id === seasonId))
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+}
+
+function getClubReleaseMovements(clubId, seasonId = null) {
+  return getClubMovements(clubId, seasonId).filter((movement) => movement.movement_type === "RELEASE_REFUND");
+}
+
 function getPlayerById(playerId) {
   return state.players.find((player) => player.id === playerId);
 }
@@ -1137,6 +1179,7 @@ async function fetchAll() {
     competitionStandings,
     calendarMatches,
     honorRoll,
+    honorClubs,
   ] = await Promise.all([
     fetchAllRows(() => state.supabase.from("seasons").select("*").order("starts_on", { ascending: false })),
     fetchAllRows(() => state.supabase.from("clubs").select("*").order("name", { ascending: true })),
@@ -1182,6 +1225,10 @@ async function fetchAll() {
       if (error?.code === "42P01") return [];
       throw error;
     }),
+    fetchAllRows(() => state.supabase.from("honor_clubs").select("*").order("name", { ascending: true })).catch((error) => {
+      if (error?.code === "42P01") return [];
+      throw error;
+    }),
   ]);
 
   state.seasons = seasons || [];
@@ -1200,6 +1247,7 @@ async function fetchAll() {
   state.competitionStandings = competitionStandings || [];
   state.calendarMatches = calendarMatches || [];
   state.honorRoll = honorRoll || [];
+  state.honorClubs = honorClubs || [];
 
   if (!state.seasons.some((season) => season.id === state.selectedSeason)) {
     state.selectedSeason = state.seasons.find((season) => season.id === ACTIVE_SEASON_ID)?.id || state.seasons[0]?.id || ACTIVE_SEASON_ID;
@@ -1304,13 +1352,14 @@ function setViewedSeason(seasonId, options = {}) {
 }
 
 function renderMetrics() {
-  const clubCount = state.clubs.filter((club) => club.active !== false).length;
+  const currentClubs = getCurrentClubs();
+  const clubCount = currentClubs.length;
   const seasonId = getSelectedSeasonId();
-  const balances = state.clubs.map((club) => getClubBalance(club.id, seasonId));
+  const balances = currentClubs.map((club) => getClubBalance(club.id, seasonId));
   const total = balances.reduce((sum, value) => sum + value, 0);
   const average = clubCount ? total / clubCount : 0;
   const negativeBalances = balances.filter((value) => value < 0).length;
-  const rosterIssues = state.clubs.filter((club) => getRosterStats(club.id, seasonId).issues.length > 0).length;
+  const rosterIssues = currentClubs.filter((club) => getRosterStats(club.id, seasonId).issues.length > 0).length;
   const alerts = negativeBalances + rosterIssues;
 
   el.metricClubs.textContent = String(clubCount);
@@ -1323,7 +1372,7 @@ function renderMetrics() {
 function renderClubs() {
   const query = state.search.trim().toLowerCase();
   const seasonId = getSelectedSeasonId();
-  const rows = state.clubs
+  const rows = getCurrentClubs()
     .map((club) => ({
       ...club,
       balance: getClubBalance(club.id, seasonId),
@@ -1382,9 +1431,9 @@ function renderRosterFilters() {
   const currentValue = el.rosterClubFilter.value || state.rosterClubFilter;
   el.rosterClubFilter.innerHTML = [
     `<option value="all">Tutti i club</option>`,
-    ...state.clubs.map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`),
+    ...getCurrentClubs().map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`),
   ].join("");
-  el.rosterClubFilter.value = state.clubs.some((club) => club.id === currentValue) ? currentValue : "all";
+  el.rosterClubFilter.value = getCurrentClubs().some((club) => club.id === currentValue) ? currentValue : "all";
   state.rosterClubFilter = el.rosterClubFilter.value;
 }
 
@@ -1462,7 +1511,7 @@ function getRosterRowsForClub(clubId, seasonId = state.selectedRosterSeason || g
 function renderRosterClubCards() {
   if (!el.rosterClubCards) return;
   const seasonId = state.selectedRosterSeason || getSelectedSeasonId();
-  const cards = state.clubs.map((club) => {
+  const cards = getCurrentClubs().map((club) => {
     const stats = getRosterStats(club.id, seasonId);
     const rows = getRosterRowsForClub(club.id, seasonId);
     const spent = rows.reduce((sum, { entry }) => sum + Number(entry.purchase_price || 0), 0);
@@ -1480,6 +1529,64 @@ function renderRosterClubCards() {
     `;
   });
   el.rosterClubCards.innerHTML = cards.join("");
+}
+
+function renderClubExtraSections({ clubId, honorClubId = null, seasonId = getSelectedSeasonId() }) {
+  const movements = clubId ? getClubMovements(clubId).slice(0, 30) : [];
+  const releases = clubId ? getClubReleaseMovements(clubId).slice(0, 20) : [];
+  const palmares = getPalmaresForClubIds(clubId, honorClubId)
+    .sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
+
+  const movementRows = movements.map((movement) => {
+    const amount = Number(movement.amount || 0);
+    return `<tr>
+      <td>${escapeHtml(movement.season_id || "-")}</td>
+      <td>${escapeHtml(MOVEMENT_LABELS[movement.movement_type] || movement.movement_type || "-")}</td>
+      <td>${escapeHtml(movement.description || "-")}</td>
+      <td class="number ${amount < 0 ? "text-danger" : "text-ok"}">${amount > 0 ? "+" : ""}${fmtFm(amount)}</td>
+    </tr>`;
+  }).join("");
+
+  const releaseRows = releases.map((movement) => `<tr>
+    <td>${escapeHtml(movement.season_id || "-")}</td>
+    <td>${escapeHtml(movement.description || "Rimborso svincolo")}</td>
+    <td class="number">${fmtFm(movement.amount)}</td>
+    <td>${fmtDate(movement.created_at)}</td>
+  </tr>`).join("");
+
+  const palmaresRows = palmares.map((entry) => `<tr>
+    <td>${escapeHtml(entry.season_id || "-")}</td>
+    <td>${escapeHtml(COMPETITION_LABELS[entry.competition_type] || entry.competition_type || "-")}</td>
+    <td>${escapeHtml(entry.title || "-")}</td>
+    <td class="number">${entry.placement ? `${entry.placement}°` : "-"}</td>
+    <td class="number">${entry.points ?? "-"}</td>
+  </tr>`).join("");
+
+  return `
+    <section class="detail-section">
+      <h3>Palmarès e piazzamenti storici</h3>
+      <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Competizione</th><th>Voce</th><th class="number">Pos.</th><th class="number">Pt</th></tr></thead><tbody>${palmaresRows || '<tr><td colspan="5" class="muted center">Nessuna voce storica.</td></tr>'}</tbody></table></div>
+    </section>
+    ${clubId ? `<section class="detail-section"><h3>Movimenti FM</h3><div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Tipo</th><th>Descrizione</th><th class="number">Importo</th></tr></thead><tbody>${movementRows || '<tr><td colspan="4" class="muted center">Nessun movimento registrato.</td></tr>'}</tbody></table></div></section>` : ""}
+    ${clubId ? `<section class="detail-section"><h3>Svincoli effettuati</h3><div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Descrizione</th><th class="number">Rimborso</th><th>Data</th></tr></thead><tbody>${releaseRows || '<tr><td colspan="4" class="muted center">Nessuno svincolo registrato.</td></tr>'}</tbody></table></div></section>` : ""}
+  `;
+}
+
+function showHonorClubDialog(honorClubId) {
+  const honorClub = getHonorClubById(honorClubId);
+  if (!honorClub) return;
+  const current = honorClub.source_club_id ? getClubById(honorClub.source_club_id) : null;
+  if (current) return showRosterDialog(current.id);
+  el.rosterDialogTitle.textContent = `${honorClub.name} · storico`;
+  el.rosterDialogBody.innerHTML = `
+    <div class="player-summary-grid roster-summary-grid">
+      <div><span>Squadra</span><strong>${escapeHtml(honorClub.name)}</strong></div>
+      <div><span>Presidente</span><strong>${escapeHtml(honorClub.president || "-")}</strong></div>
+      <div><span>Stato</span><strong>Storica</strong></div>
+    </div>
+    ${renderClubExtraSections({ clubId: null, honorClubId })}
+  `;
+  el.rosterDialog.showModal();
 }
 
 function showRosterDialog(clubId) {
@@ -1524,6 +1631,7 @@ function showRosterDialog(clubId) {
         <tbody>${tableRows || '<tr><td colspan="6" class="muted center">Nessun giocatore in rosa.</td></tr>'}</tbody>
       </table>
     </div>
+    ${renderClubExtraSections({ clubId, seasonId })}
   `;
   el.rosterDialog.showModal();
 }
@@ -1743,7 +1851,7 @@ function renderDashboardCompetitions() {
             </div>
             <span class="status status-muted">${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-")}</span>
           </div>
-          ${renderStandingTable(competition, 5)}
+          ${renderStandingTable(competition)}
         </div>
       `)
       .join("");
@@ -1815,64 +1923,136 @@ function renderCompetitionsPage() {
     .join("");
 }
 
+function buildHonorRows() {
+  const rows = [];
+
+  for (const entry of state.honorRoll) {
+    const honorClub = getHonorClubForEntry(entry);
+    rows.push({
+      source: "manual",
+      id: `honor-${entry.id}`,
+      season_id: entry.season_id,
+      club_id: entry.club_id || honorClub?.source_club_id || null,
+      honor_club_id: entry.honor_club_id || honorClub?.id || null,
+      club_name: honorClub?.name || getClubById(entry.club_id)?.name || "-",
+      president: honorClub?.president || getClubById(entry.club_id)?.president || "-",
+      competition_type: entry.competition_type || "ALTRO",
+      competition_name: entry.title || COMPETITION_LABELS[entry.competition_type] || entry.competition_type || "Competizione",
+      placement: entry.placement,
+      points: entry.points,
+      notes: entry.notes,
+    });
+  }
+
+  for (const standing of state.competitionStandings) {
+    const competition = getCompetitionById(standing.competition_id);
+    if (!competition) continue;
+    const club = getClubById(standing.club_id);
+    rows.push({
+      source: "standing",
+      id: `standing-${standing.id}`,
+      season_id: competition.season_id,
+      club_id: standing.club_id,
+      honor_club_id: state.honorClubs.find((item) => item.source_club_id === standing.club_id)?.id || null,
+      club_name: club?.name || standing.club_id || "-",
+      president: club?.president || "-",
+      competition_type: competition.competition_type || "ALTRO",
+      competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
+      placement: standing.position,
+      points: standing.points,
+      notes: standing.notes,
+      fantapoints: standing.fantapoints,
+    });
+  }
+
+  return rows.sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
+}
+
+function renderHonorClubName(row) {
+  const current = row.club_id ? getClubById(row.club_id) : null;
+  const honor = row.honor_club_id ? getHonorClubById(row.honor_club_id) : null;
+  if (current) return clubButton(current);
+  if (honor) return honorClubButton(honor);
+  return escapeHtml(row.club_name || "-");
+}
+
 function renderHonorRoll() {
   if (!el.honorSummary || !el.honorHistory) return;
-  if (!state.honorRoll.length) {
+  const honorRows = buildHonorRows();
+  if (!honorRows.length) {
     el.honorSummary.innerHTML = `<p class="muted">Nessuna voce inserita.</p>`;
     el.honorHistory.innerHTML = `<p class="muted">Nessuna classifica storica inserita.</p>`;
     return;
   }
 
-  const wins = new Map();
-  for (const entry of state.honorRoll.filter((item) => Number(item.placement || 0) === 1)) {
-    const key = `${entry.club_id}|${entry.competition_type}`;
-    wins.set(key, (wins.get(key) || 0) + 1);
+  const winsByClub = new Map();
+  for (const row of honorRows.filter((item) => Number(item.placement || 0) === 1)) {
+    const key = row.honor_club_id || row.club_id || row.club_name;
+    if (!key) continue;
+    const current = winsByClub.get(key) || {
+      key,
+      club_id: row.club_id,
+      honor_club_id: row.honor_club_id,
+      club_name: row.club_name,
+      president: row.president,
+      counts: {},
+      total: 0,
+    };
+    current.counts[row.competition_type] = (current.counts[row.competition_type] || 0) + 1;
+    current.total += 1;
+    winsByClub.set(key, current);
   }
-  const clubsWithWins = state.clubs
-    .map((club) => {
-      const counts = Object.keys(COMPETITION_LABELS).map((type) => ({ type, count: wins.get(`${club.id}|${type}`) || 0 }));
-      const total = counts.reduce((sum, item) => sum + item.count, 0);
-      return { club, counts, total };
-    })
-    .filter((row) => row.total > 0)
-    .sort((a, b) => b.total - a.total || a.club.name.localeCompare(b.club.name));
 
-  el.honorSummary.innerHTML = clubsWithWins.length
-    ? clubsWithWins.map(({ club, counts, total }) => `
-      <div class="stack-item">
-        <div>
-          <strong>${clubButton(club)}</strong>
-          <small>${counts.filter((item) => item.count > 0).map((item) => `${COMPETITION_LABELS[item.type]}: ${item.count}`).join(" · ")}</small>
-        </div>
-        <div class="stack-item-side"><strong>${total}</strong></div>
-      </div>
-    `).join("")
+  const summaryRows = Array.from(winsByClub.values()).sort((a, b) => b.total - a.total || String(a.club_name).localeCompare(String(b.club_name)));
+  el.honorSummary.innerHTML = summaryRows.length
+    ? summaryRows.map((row) => {
+      const current = row.club_id ? getClubById(row.club_id) : null;
+      const honor = row.honor_club_id ? getHonorClubById(row.honor_club_id) : null;
+      const name = current ? clubButton(current) : honor ? honorClubButton(honor) : escapeHtml(row.club_name || "-");
+      const details = Object.entries(row.counts)
+        .filter(([, count]) => count > 0)
+        .map(([type, count]) => `${COMPETITION_LABELS[type] || type}: ${count}`)
+        .join(" · ");
+      return `<div class="stack-item">
+        <div><strong>${name}</strong><small>${escapeHtml(row.president || "")} ${details ? `· ${escapeHtml(details)}` : ""}</small></div>
+        <div class="stack-item-side"><strong>${row.total}</strong></div>
+      </div>`;
+    }).join("")
     : `<p class="muted">Nessuna vittoria registrata.</p>`;
 
-  const history = [...state.honorRoll].sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
-  el.honorHistory.innerHTML = history
-    .map((entry) => {
-      const club = getClubById(entry.club_id);
-      return `<div class="stack-item">
-        <div>
-          <strong>${escapeHtml(entry.season_id)} · ${escapeHtml(entry.title || COMPETITION_LABELS[entry.competition_type] || entry.competition_type)}</strong>
-          <small>${clubButton(club)} · ${escapeHtml(COMPETITION_LABELS[entry.competition_type] || entry.competition_type || "-")}${entry.points !== null && entry.points !== undefined ? ` · ${entry.points} punti` : ""}${entry.notes ? ` · ${escapeHtml(entry.notes)}` : ""}</small>
-        </div>
-        <div class="stack-item-side">${entry.placement ? `${entry.placement}°` : "-"}</div>
-      </div>`;
-    })
+  el.honorHistory.innerHTML = honorRows
+    .map((row) => `<div class="stack-item">
+      <div>
+        <strong>${escapeHtml(row.season_id)} · ${escapeHtml(row.competition_name)}</strong>
+        <small>${renderHonorClubName(row)} · ${escapeHtml(COMPETITION_LABELS[row.competition_type] || row.competition_type || "-")}${row.points !== null && row.points !== undefined ? ` · ${row.points} punti` : ""}${row.fantapoints !== null && row.fantapoints !== undefined ? ` · ${row.fantapoints} FP` : ""}${row.notes ? ` · ${escapeHtml(row.notes)}` : ""}${row.source === "standing" ? " · da classifica competizione" : ""}</small>
+      </div>
+      <div class="stack-item-side">${row.placement ? `${row.placement}°` : "-"}</div>
+    </div>`)
     .join("");
+}
+
+function renderHonorClubOptions() {
+  const existing = state.honorClubs.map((club) => {
+    const suffix = club.source_club_id ? " · attuale" : " · storica";
+    return `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}${escapeHtml(suffix)}</option>`;
+  });
+  return [`<option value="__new__">+ Nuova squadra storica</option>`, ...existing].join("");
+}
+
+function getHonorClubOptionValueForEntry(entry) {
+  const honorClub = getHonorClubForEntry(entry);
+  return honorClub?.id || "__new__";
 }
 
 function renderAdminExtendedControls() {
   const seasonOptions = state.seasons.map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>`).join("");
-  const clubOptions = state.clubs.map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`).join("");
+  const clubOptions = getCurrentClubs().map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`).join("");
   const selectedSeason = getSelectedSeasonId();
   const competitionsForSeason = state.competitions.filter((competition) => competition.season_id === selectedSeason);
   const competitionOptions = competitionsForSeason.map((competition) => `<option value="${escapeHtml(competition.id)}">${escapeHtml(competition.name)}</option>`).join("");
 
   if (el.stadiumSeason) { el.stadiumSeason.innerHTML = seasonOptions; el.stadiumSeason.value = selectedSeason; }
-  if (el.stadiumClub) { el.stadiumClub.innerHTML = clubOptions; if (!el.stadiumClub.value && state.clubs[0]) el.stadiumClub.value = state.clubs[0].id; updateStadiumFormFields(); }
+  if (el.stadiumClub) { el.stadiumClub.innerHTML = clubOptions; if (!el.stadiumClub.value && getCurrentClubs()[0]) el.stadiumClub.value = getCurrentClubs()[0].id; updateStadiumFormFields(); }
   if (el.competitionSeason) { el.competitionSeason.innerHTML = seasonOptions; el.competitionSeason.value = selectedSeason; }
   if (el.standingCompetition) el.standingCompetition.innerHTML = competitionOptions || `<option value="">Nessuna competizione</option>`;
   if (el.standingClub) el.standingClub.innerHTML = clubOptions;
@@ -1880,14 +2060,14 @@ function renderAdminExtendedControls() {
   if (el.calendarHomeClub) el.calendarHomeClub.innerHTML = `<option value="">-</option>${clubOptions}`;
   if (el.calendarAwayClub) el.calendarAwayClub.innerHTML = `<option value="">-</option>${clubOptions}`;
   if (el.honorSeason) { el.honorSeason.innerHTML = seasonOptions; el.honorSeason.value = selectedSeason; }
-  if (el.honorClub) el.honorClub.innerHTML = clubOptions;
+  if (el.honorClub) el.honorClub.innerHTML = renderHonorClubOptions();
 
   renderAdminLists();
 }
 
 function renderAdminLists() {
   if (el.newsAdminList) {
-    el.newsAdminList.innerHTML = state.news.slice(0, 10).map((post) => `
+    el.newsAdminList.innerHTML = state.news.map((post) => `
       <div class="admin-list-item">
         <span><strong>${escapeHtml(post.title)}</strong><small>${escapeHtml(NEWS_TOPIC_LABELS[post.topic] || post.topic)} · ${fmtDate(post.created_at)}</small></span>
         <span><button class="button button-secondary button-small" type="button" data-edit-news="${escapeHtml(post.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-news="${escapeHtml(post.id)}">Elimina</button></span>
@@ -1901,21 +2081,21 @@ function renderAdminLists() {
       </div>`).join("") || `<p class="muted">Nessuna competizione.</p>`;
   }
   if (el.standingAdminList) {
-    el.standingAdminList.innerHTML = state.competitionStandings.filter((row) => getCompetitionById(row.competition_id)?.season_id === getSelectedSeasonId()).slice(0, 20).map((row) => {
+    el.standingAdminList.innerHTML = state.competitionStandings.filter((row) => getCompetitionById(row.competition_id)?.season_id === getSelectedSeasonId()).map((row) => {
       const club = getClubById(row.club_id); const competition = getCompetitionById(row.competition_id);
       return `<div class="admin-list-item"><span><strong>${escapeHtml(competition?.name || "-")} · ${escapeHtml(club?.name || "-")}</strong><small>Pos. ${row.position || "-"} · ${row.points ?? "-"} pt</small></span><span><button class="button button-secondary button-small" type="button" data-edit-standing="${escapeHtml(row.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-standing="${escapeHtml(row.id)}">Elimina</button></span></div>`;
     }).join("") || `<p class="muted">Nessuna classifica.</p>`;
   }
   if (el.calendarAdminList) {
-    el.calendarAdminList.innerHTML = state.calendarMatches.filter((row) => row.season_id === getSelectedSeasonId()).slice(0, 20).map((match) => {
+    el.calendarAdminList.innerHTML = state.calendarMatches.filter((row) => row.season_id === getSelectedSeasonId()).map((match) => {
       const competition = getCompetitionById(match.competition_id); const home = getClubById(match.home_club_id); const away = getClubById(match.away_club_id);
       return `<div class="admin-list-item"><span><strong>${escapeHtml(match.matchday_label || "Giornata")} · ${escapeHtml(competition?.name || "-")}</strong><small>${escapeHtml(home?.name || "-")} vs ${escapeHtml(away?.name || "-")} · ${match.played_on ? fmtDateOnly(match.played_on) : "senza data"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-calendar="${escapeHtml(match.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-calendar="${escapeHtml(match.id)}">Elimina</button></span></div>`;
     }).join("") || `<p class="muted">Nessuna giornata.</p>`;
   }
   if (el.honorAdminList) {
-    el.honorAdminList.innerHTML = state.honorRoll.slice(0, 20).map((entry) => {
-      const club = getClubById(entry.club_id);
-      return `<div class="admin-list-item"><span><strong>${escapeHtml(entry.season_id)} · ${escapeHtml(entry.title)}</strong><small>${escapeHtml(club?.name || "-")} · ${entry.placement ? `${entry.placement}°` : "-"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-honor="${escapeHtml(entry.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-honor="${escapeHtml(entry.id)}">Elimina</button></span></div>`;
+    el.honorAdminList.innerHTML = state.honorRoll.map((entry) => {
+      const honorClub = getHonorClubForEntry(entry);
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(entry.season_id)} · ${escapeHtml(entry.title)}</strong><small>${escapeHtml(honorClub?.name || getClubById(entry.club_id)?.name || "-")} · ${entry.placement ? `${entry.placement}°` : "-"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-honor="${escapeHtml(entry.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-honor="${escapeHtml(entry.id)}">Elimina</button></span></div>`;
     }).join("") || `<p class="muted">Nessuna voce albo.</p>`;
   }
 }
@@ -1948,7 +2128,7 @@ function renderMovements() {
 
 function renderStadiums() {
   const seasonId = getSelectedSeasonId();
-  const items = state.clubs.map((club) => ({ club, stadium: getClubStadium(club.id, seasonId) }));
+  const items = getCurrentClubs().map((club) => ({ club, stadium: getClubStadium(club.id, seasonId) }));
 
   el.stadiumsList.innerHTML = items
     .map(({ club, stadium }) => {
@@ -1980,7 +2160,7 @@ function renderAdminControls() {
     .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
     .join("");
 
-  const clubOptions = state.clubs
+  const clubOptions = getCurrentClubs()
     .map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`)
     .join("");
 
@@ -2005,8 +2185,8 @@ function renderAdminControls() {
   if (!el.auctionDate.value) el.auctionDate.value = todayIso();
 
   el.clubEditSelect.innerHTML = clubOptions;
-  if (!el.clubEditSelect.value && state.clubs.length) {
-    el.clubEditSelect.value = state.clubs[0].id;
+  if (!el.clubEditSelect.value && getCurrentClubs().length) {
+    el.clubEditSelect.value = getCurrentClubs()[0].id;
   }
   updateClubFormFields();
   renderAdminExtendedControls();
@@ -2605,7 +2785,7 @@ async function handleMovementSubmit(event) {
 
 function updateStadiumFormFields() {
   if (!el.stadiumClub || !el.stadiumSeason) return;
-  const clubId = el.stadiumClub.value || state.clubs[0]?.id;
+  const clubId = el.stadiumClub.value || getCurrentClubs()[0]?.id;
   const seasonId = el.stadiumSeason.value || getSelectedSeasonId();
   const club = getClubById(clubId);
   const stadium = getClubStadium(clubId, seasonId);
@@ -2719,13 +2899,50 @@ function resetCalendarForm() {
   el.calendarMatchId.value = ""; el.calendarMatchday.value = ""; el.calendarDate.value = ""; el.calendarHomeClub.value = ""; el.calendarAwayClub.value = ""; el.calendarHomeScore.value = ""; el.calendarAwayScore.value = ""; el.calendarStatus.value = "SCHEDULED";
 }
 
+async function ensureHonorClubFromForm() {
+  const selectedValue = el.honorClub?.value || "__new__";
+  if (selectedValue && selectedValue !== "__new__") {
+    const club = getHonorClubById(selectedValue);
+    if (!club) throw new Error("Squadra albo d'oro non trovata.");
+    return club;
+  }
+
+  const name = el.honorClubNameInput?.value.trim();
+  const president = el.honorPresidentInput?.value.trim() || null;
+  if (!name) throw new Error("Inserisci il nome della squadra storica oppure seleziona una squadra esistente.");
+
+  const clubKey = normalizeTextKey(`${name}-${president || ""}`) || normalizeTextKey(name);
+  const existing = state.honorClubs.find((club) => normalizeTextKey(`${club.name}-${club.president || ""}`) === clubKey || normalizeTextKey(club.name) === normalizeTextKey(name));
+  if (existing) return existing;
+
+  const { data, error } = await state.supabase
+    .from("honor_clubs")
+    .insert({ name, president, source_club_id: null })
+    .select("*")
+    .single();
+
+  if (error) throw error;
+  state.honorClubs.push(data);
+  return data;
+}
+
 async function handleHonorSubmit(event) {
   event.preventDefault();
   el.honorFormStatus.textContent = "Salvataggio...";
+
+  let honorClub;
+  try {
+    honorClub = await ensureHonorClubFromForm();
+  } catch (error) {
+    el.honorFormStatus.textContent = error.message;
+    return;
+  }
+
   const id = el.honorId.value || null;
   const payload = {
     season_id: el.honorSeason.value,
-    club_id: el.honorClub.value,
+    club_id: honorClub.source_club_id || null,
+    honor_club_id: honorClub.id,
     competition_type: el.honorCompetitionType.value,
     title: el.honorTitleInput.value.trim(),
     placement: toNumber(el.honorPlacement.value),
@@ -2740,7 +2957,77 @@ async function handleHonorSubmit(event) {
 function resetHonorForm() {
   if (!el.honorForm) return;
   el.honorId.value = ""; el.honorTitleInput.value = ""; el.honorPlacement.value = ""; el.honorPoints.value = ""; el.honorNotes.value = "";
+  if (el.honorClub) el.honorClub.value = "__new__";
+  if (el.honorClubNameInput) el.honorClubNameInput.value = "";
+  if (el.honorPresidentInput) el.honorPresidentInput.value = "";
   if (el.honorSeason) el.honorSeason.value = getSelectedSeasonId();
+}
+
+const DUMP_TABLES = [
+  "profiles",
+  "seasons",
+  "clubs",
+  "fm_movements",
+  "players",
+  "roster_entries",
+  "stadium_levels",
+  "stadiums",
+  "listone_uploads",
+  "player_quotations",
+  "roster_imports",
+  "news_posts",
+  "competitions",
+  "competition_standings",
+  "calendar_matches",
+  "honor_clubs",
+  "honor_roll_entries",
+];
+
+const SCHEMA_DUMP_NOTE = `-- FantaMantra DB schema note\n-- Questo dump include i dati completi in JSON.\n-- Per ricreare lo schema, esegui in ordine le migration SQL generate nella webapp:\n-- 1) schema MVP iniziale\n-- 2) supabase_listone_migration_v7.sql\n-- 3) supabase_roster_import_migration_v7.sql\n-- 4) supabase_incremental_listone_v11.sql\n-- 5) supabase_feature_migration_v13.sql\n-- 6) supabase_feature_migration_v14.sql\n-- Le tabelle incluse nel dump dati sono elencate nel campo tables.\n`;
+
+function downloadTextFile(filename, text, mime = "application/json") {
+  const blob = new Blob([text], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+async function handleDumpSubmit(event) {
+  event.preventDefault();
+  if (!state.isAdmin) return;
+  el.dumpFormStatus.textContent = "Preparazione dump...";
+  const type = el.dumpType.value || "both";
+  const pretty = Boolean(el.dumpPretty?.checked);
+  const payload = {
+    exported_at: new Date().toISOString(),
+    app_version: "v14",
+    type,
+    tables: DUMP_TABLES,
+  };
+
+  if (type === "schema" || type === "both") {
+    payload.schema_sql_note = SCHEMA_DUMP_NOTE;
+  }
+
+  if (type === "data" || type === "both") {
+    payload.data = {};
+    for (const table of DUMP_TABLES) {
+      try {
+        payload.data[table] = await fetchAllRows(() => state.supabase.from(table).select("*"));
+      } catch (error) {
+        payload.data[table] = { error: error.message || String(error) };
+      }
+    }
+  }
+
+  const suffix = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+  downloadTextFile(`fantamantra-db-dump-${type}-${suffix}.json`, JSON.stringify(payload, null, pretty ? 2 : 0));
+  el.dumpFormStatus.textContent = "Dump scaricato.";
 }
 
 async function deleteById(table, id, messageEl) {
@@ -2760,7 +3047,22 @@ function fillEditFormsFromAdminAction(target) {
   const calendarId = target.closest("[data-edit-calendar]")?.dataset.editCalendar;
   if (calendarId) { const m = state.calendarMatches.find((item) => item.id === calendarId); if (!m) return; el.calendarMatchId.value = m.id; el.calendarCompetition.value = m.competition_id; el.calendarMatchday.value = m.matchday_label || ""; el.calendarDate.value = m.played_on || ""; el.calendarHomeClub.value = m.home_club_id || ""; el.calendarAwayClub.value = m.away_club_id || ""; el.calendarHomeScore.value = m.home_score ?? ""; el.calendarAwayScore.value = m.away_score ?? ""; el.calendarStatus.value = m.status || "SCHEDULED"; return; }
   const honorId = target.closest("[data-edit-honor]")?.dataset.editHonor;
-  if (honorId) { const h = state.honorRoll.find((item) => item.id === honorId); if (!h) return; el.honorId.value = h.id; el.honorSeason.value = h.season_id; el.honorClub.value = h.club_id; el.honorCompetitionType.value = h.competition_type || "ALTRO"; el.honorTitleInput.value = h.title || ""; el.honorPlacement.value = h.placement ?? ""; el.honorPoints.value = h.points ?? ""; el.honorNotes.value = h.notes || ""; return; }
+  if (honorId) {
+    const h = state.honorRoll.find((item) => item.id === honorId);
+    if (!h) return;
+    const honorClub = getHonorClubForEntry(h);
+    el.honorId.value = h.id;
+    el.honorSeason.value = h.season_id;
+    el.honorClub.value = honorClub?.id || "__new__";
+    if (el.honorClubNameInput) el.honorClubNameInput.value = honorClub?.source_club_id ? "" : (honorClub?.name || "");
+    if (el.honorPresidentInput) el.honorPresidentInput.value = honorClub?.source_club_id ? "" : (honorClub?.president || "");
+    el.honorCompetitionType.value = h.competition_type || "ALTRO";
+    el.honorTitleInput.value = h.title || "";
+    el.honorPlacement.value = h.placement ?? "";
+    el.honorPoints.value = h.points ?? "";
+    el.honorNotes.value = h.notes || "";
+    return;
+  }
 }
 
 function handleAdminListClick(event) {
@@ -2895,6 +3197,7 @@ function bindEvents() {
   if (el.calendarFormReset) el.calendarFormReset.addEventListener("click", resetCalendarForm);
   if (el.honorForm) el.honorForm.addEventListener("submit", handleHonorSubmit);
   if (el.honorFormReset) el.honorFormReset.addEventListener("click", resetHonorForm);
+  if (el.dumpForm) el.dumpForm.addEventListener("submit", handleDumpSubmit);
   [el.newsAdminList, el.competitionAdminList, el.standingAdminList, el.calendarAdminList, el.honorAdminList].forEach((node) => {
     if (node) node.addEventListener("click", handleAdminListClick);
   });
@@ -2949,6 +3252,8 @@ function bindEvents() {
     node.addEventListener("click", (event) => {
       const rosterButton = event.target.closest("[data-roster-club-id]");
       if (rosterButton) return showRosterDialog(rosterButton.dataset.rosterClubId);
+      const honorButton = event.target.closest("[data-honor-club-id]");
+      if (honorButton) return showHonorClubDialog(honorButton.dataset.honorClubId);
       const player = event.target.closest("[data-player-id]");
       if (player) return showPlayerDialog(player.dataset.playerId);
     });
@@ -2995,6 +3300,8 @@ function bindEvents() {
     el.rosterDialogBody.addEventListener("click", (event) => {
       const rosterButton = event.target.closest("[data-roster-club-id]");
       if (rosterButton) return showRosterDialog(rosterButton.dataset.rosterClubId);
+      const honorButton = event.target.closest("[data-honor-club-id]");
+      if (honorButton) return showHonorClubDialog(honorButton.dataset.honorClubId);
       const playerButtonEl = event.target.closest("[data-player-id]");
       if (playerButtonEl) return showPlayerDialog(playerButtonEl.dataset.playerId);
     });
