@@ -1232,3 +1232,22 @@ code {
   display: block;
   font-size: 1.05rem;
 }
+
+.single-panel-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.stack-item-side small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--muted, #8a94a6);
+  font-weight: 500;
+}

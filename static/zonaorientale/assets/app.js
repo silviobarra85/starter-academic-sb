@@ -1833,8 +1833,11 @@ function renderHonorContextDetail({ seasonId, competitionType, competitionName, 
     return;
   }
 
+  const closeButton = `<div class="detail-actions"><button class="button button-secondary button-small" type="button" data-honor-context-close>Chiudi stagione</button></div>`;
+
   if (competition.competition_type === "REGULAR_SEASON") {
     target.innerHTML = `
+      ${closeButton}
       <h3>${escapeHtml(competition.name)} · classifica ${escapeHtml(seasonId)}</h3>
       ${renderStandingTable(competition)}
     `;
@@ -1848,6 +1851,7 @@ function renderHonorContextDetail({ seasonId, competitionType, competitionName, 
     .sort((a, b) => String(a.played_on || "9999-12-31").localeCompare(String(b.played_on || "9999-12-31")) || String(a.matchday_label || "").localeCompare(String(b.matchday_label || "")));
 
   target.innerHTML = `
+    ${closeButton}
     <h3>${escapeHtml(competition.name)} · partite ${escapeHtml(honorClub.name)}</h3>
     ${clubId ? renderMatchList(matches) : `<p class="muted">Questa è una squadra storica non collegata a un club attuale: non posso filtrare automaticamente le partite per club.</p>${renderMatchList(matches)}`}
   `;
@@ -2291,6 +2295,102 @@ function renderCompetitionsPage() {
     .join("");
 }
 
+
+function isFinalMatch(match) {
+  return String(match?.matchday_label || "").trim().toLowerCase() === "finale";
+}
+
+function getCupFinalMatch(competition) {
+  if (!competition || competition.competition_type === "REGULAR_SEASON") return null;
+  return state.calendarMatches
+    .filter((match) => match.competition_id === competition.id)
+    .filter(isFinalMatch)
+    .sort((a, b) => String(b.played_on || "0000-00-00").localeCompare(String(a.played_on || "0000-00-00")) || String(b.created_at || "").localeCompare(String(a.created_at || "")))[0] || null;
+}
+
+function getCupFinalOutcome(competition) {
+  const finalMatch = getCupFinalMatch(competition);
+  if (!finalMatch || !finalMatch.home_club_id || !finalMatch.away_club_id) return null;
+  const goals = getMatchGoals(finalMatch);
+  let winnerId = null;
+  let runnerUpId = null;
+
+  if (goals) {
+    if (goals.home > goals.away) {
+      winnerId = finalMatch.home_club_id;
+      runnerUpId = finalMatch.away_club_id;
+    } else if (goals.away > goals.home) {
+      winnerId = finalMatch.away_club_id;
+      runnerUpId = finalMatch.home_club_id;
+    }
+  }
+
+  // Fallback: in caso di risultato finale in parità, usa i fantapunti se disponibili.
+  if (!winnerId) {
+    const homeFp = finalMatch.home_score !== null && finalMatch.home_score !== undefined ? Number(finalMatch.home_score) : null;
+    const awayFp = finalMatch.away_score !== null && finalMatch.away_score !== undefined ? Number(finalMatch.away_score) : null;
+    if (Number.isFinite(homeFp) && Number.isFinite(awayFp) && homeFp !== awayFp) {
+      winnerId = homeFp > awayFp ? finalMatch.home_club_id : finalMatch.away_club_id;
+      runnerUpId = homeFp > awayFp ? finalMatch.away_club_id : finalMatch.home_club_id;
+    }
+  }
+
+  if (!winnerId || !runnerUpId) return null;
+  return { finalMatch, winnerId, runnerUpId };
+}
+
+function manualHonorExistsForCupPlacement(competition, placement) {
+  return state.honorRoll.some((entry) =>
+    entry.season_id === competition.season_id
+    && entry.competition_type === competition.competition_type
+    && Number(entry.placement || 0) === Number(placement)
+  );
+}
+
+function buildAutomaticCupHonorRows() {
+  const rows = [];
+  const cupCompetitions = state.competitions.filter((competition) => competition.competition_type !== "REGULAR_SEASON");
+
+  for (const competition of cupCompetitions) {
+    const outcome = getCupFinalOutcome(competition);
+    if (!outcome) continue;
+
+    const placements = [
+      { placement: 1, club_id: outcome.winnerId, title: `Vincitore ${competition.name || COMPETITION_LABELS[competition.competition_type] || "competizione"}` },
+      { placement: 2, club_id: outcome.runnerUpId, title: `Secondo posto ${competition.name || COMPETITION_LABELS[competition.competition_type] || "competizione"}` },
+    ];
+
+    for (const item of placements) {
+      if (manualHonorExistsForCupPlacement(competition, item.placement)) continue;
+      const club = getClubById(item.club_id);
+      rows.push({
+        source: "calendar-final",
+        id: `cup-final-${competition.id}-${item.placement}-${item.club_id}`,
+        season_id: competition.season_id,
+        club_id: item.club_id,
+        honor_club_id: state.honorClubs.find((honorClub) => honorClub.source_club_id === item.club_id)?.id || null,
+        club_name: club?.name || item.club_id || "-",
+        president: club?.president || "-",
+        competition_type: competition.competition_type || "ALTRO",
+        competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
+        placement: item.placement,
+        points: null,
+        notes: `${item.title} · da finale calendario`,
+        fantapoints: null,
+        played: null,
+        wins: null,
+        draws: null,
+        losses: null,
+        goals_for: null,
+        goals_against: null,
+        goal_difference: null,
+      });
+    }
+  }
+
+  return rows;
+}
+
 function buildHonorRows() {
   const rows = [];
 
@@ -2354,6 +2454,8 @@ function buildHonorRows() {
       });
     }
   }
+
+  rows.push(...buildAutomaticCupHonorRows());
 
   return rows.sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
 }
@@ -2437,48 +2539,60 @@ function renderMatchTable(matches) {
 }
 
 function renderHonorRoll() {
-  if (!el.honorSummary || !el.honorHistory) return;
+  if (!el.honorSummary) return;
   const honorRows = buildHonorRows();
   if (!honorRows.length) {
     el.honorSummary.innerHTML = `<p class="muted">Nessuna voce inserita.</p>`;
-    el.honorHistory.innerHTML = `<p class="muted">Nessuna classifica storica inserita.</p>`;
+    if (el.honorHistory) el.honorHistory.innerHTML = ``;
     return;
   }
 
-  const winsByClub = new Map();
-  for (const row of honorRows.filter((item) => Number(item.placement || 0) === 1)) {
+  const resultsByClub = new Map();
+  for (const row of honorRows.filter((item) => [1, 2].includes(Number(item.placement || 0)))) {
     const key = row.honor_club_id || row.club_id || row.club_name;
     if (!key) continue;
-    const current = winsByClub.get(key) || {
+    const current = resultsByClub.get(key) || {
       key,
       club_id: row.club_id,
       honor_club_id: row.honor_club_id,
       club_name: row.club_name,
       president: row.president,
-      counts: {},
-      total: 0,
+      winsByCompetition: {},
+      secondsByCompetition: {},
+      wins: 0,
+      seconds: 0,
     };
-    current.counts[row.competition_type] = (current.counts[row.competition_type] || 0) + 1;
-    current.total += 1;
-    winsByClub.set(key, current);
+    if (Number(row.placement || 0) === 1) {
+      current.winsByCompetition[row.competition_type] = (current.winsByCompetition[row.competition_type] || 0) + 1;
+      current.wins += 1;
+    }
+    if (Number(row.placement || 0) === 2) {
+      current.secondsByCompetition[row.competition_type] = (current.secondsByCompetition[row.competition_type] || 0) + 1;
+      current.seconds += 1;
+    }
+    resultsByClub.set(key, current);
   }
 
-  const summaryRows = Array.from(winsByClub.values()).sort((a, b) => b.total - a.total || String(a.club_name).localeCompare(String(b.club_name)));
+  const summaryRows = Array.from(resultsByClub.values()).sort((a, b) => b.wins - a.wins || b.seconds - a.seconds || String(a.club_name).localeCompare(String(b.club_name)));
   el.honorSummary.innerHTML = summaryRows.length
     ? summaryRows.map((row) => {
       const current = row.club_id ? getClubById(row.club_id) : null;
       const honor = row.honor_club_id ? getHonorClubById(row.honor_club_id) : (current ? state.honorClubs.find((item) => item.source_club_id === current.id) : null);
       const name = honor ? honorClubButton(honor) : current ? clubButton(current) : escapeHtml(row.club_name || "-");
-      const details = Object.entries(row.counts)
+      const winDetails = Object.entries(row.winsByCompetition)
+        .filter(([, count]) => count > 0)
+        .map(([type, count]) => `${COMPETITION_LABELS[type] || type}: ${count}`)
+        .join(" · ");
+      const secondDetails = Object.entries(row.secondsByCompetition)
         .filter(([, count]) => count > 0)
         .map(([type, count]) => `${COMPETITION_LABELS[type] || type}: ${count}`)
         .join(" · ");
       return `<div class="stack-item">
-        <div><strong>${name}</strong><small>${escapeHtml(row.president || "")} ${details ? `· ${escapeHtml(details)}` : ""}</small></div>
-        <div class="stack-item-side"><strong>${row.total}</strong></div>
+        <div><strong>${name}</strong><small>${escapeHtml(row.president || "")}${winDetails ? ` · Vittorie: ${escapeHtml(winDetails)}` : ""}${secondDetails ? ` · Secondi posti: ${escapeHtml(secondDetails)}` : ""}</small></div>
+        <div class="stack-item-side"><strong>${row.wins}</strong><small>${row.seconds} secondi</small></div>
       </div>`;
     }).join("")
-    : `<p class="muted">Nessuna vittoria registrata.</p>`;
+    : `<p class="muted">Nessuna vittoria o secondo posto registrato.</p>`;
 
   const regularRows = honorRows.filter((row) => row.competition_type === "REGULAR_SEASON");
   const grouped = new Map();
@@ -2519,11 +2633,9 @@ function renderHonorRoll() {
       </details>`;
     });
 
-  const cupSections = renderHonorCupHistorySections();
-  el.honorHistory.innerHTML = [
-    ...regularSections,
-    cupSections,
-  ].filter(Boolean).join("") || `<p class="muted">Nessuna classifica o partita storica inserita.</p>`;
+  // Le classifiche storiche non sono più mostrate direttamente nell'Albo d'oro.
+  // Restano consultabili dalla scheda di ogni squadra, cliccando su "Apri stagione".
+  if (el.honorHistory) el.honorHistory.innerHTML = ``;
 }
 
 function renderHonorClubOptions() {
@@ -4115,6 +4227,12 @@ function bindEvents() {
     el.rosterDialogBody.addEventListener("click", (event) => {
       const rosterButton = event.target.closest("[data-roster-club-id]");
       if (rosterButton) return showRosterDialog(rosterButton.dataset.rosterClubId);
+      const honorContextClose = event.target.closest("[data-honor-context-close]");
+      if (honorContextClose) {
+        const target = document.getElementById("honorContextDetail");
+        if (target) target.innerHTML = `<p class="muted">Clicca su “Apri stagione” per vedere la classifica della Regular Season o le partite della squadra nelle coppe.</p>`;
+        return;
+      }
       const honorContextButton = event.target.closest("[data-honor-context-season]");
       if (honorContextButton) return renderHonorContextDetail({
         seasonId: honorContextButton.dataset.honorContextSeason,
