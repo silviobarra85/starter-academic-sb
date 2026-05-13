@@ -465,7 +465,19 @@ function getUploadLabel(upload) {
 }
 
 function roleClassFromClassicRole(role) {
-  return String(role || "").toUpperCase() === "P" ? "P" : "MOVIMENTO";
+  const value = String(role || "").trim().toUpperCase();
+  if (["P", "POR", "PORT", "PORTIERE", "GK"].includes(value)) return "P";
+  return "MOVIMENTO";
+}
+
+function isGoalkeeperPlayer(player) {
+  if (!player) return false;
+  const roleClass = String(player.role_class || "").trim().toUpperCase();
+  const classicRole = String(player.classic_role || "").trim().toUpperCase();
+  const mantraRoles = String(player.mantra_roles || "").trim().toUpperCase();
+  if (roleClass === "P") return true;
+  if (["P", "POR", "PORT", "PORTIERE", "GK"].includes(classicRole)) return true;
+  return mantraRoles.split(/[\/\s,;+-]+/).some((part) => ["P", "POR", "PORT", "PORTIERE", "GK"].includes(part));
 }
 
 function normalizeListoneRow(row, sourceSheet, isListed) {
@@ -555,7 +567,8 @@ function getClubAssignmentOrder() {
 
 function normalizeRosterRole(role) {
   const value = String(role || "").trim().toUpperCase();
-  if (["P", "D", "C", "A"].includes(value)) return value;
+  if (["P", "POR", "PORT", "PORTIERE", "GK"].includes(value)) return "P";
+  if (["D", "C", "A"].includes(value)) return value;
   return value.slice(0, 1);
 }
 
@@ -1079,9 +1092,12 @@ function getRosterStats(clubId, seasonId = state.selectedRosterSeason || getSele
   let outfieldPlayers = 0;
 
   for (const entry of entries) {
-    const player = getPlayerById(entry.player_id);
-    if (player?.role_class === "P") goalkeepers += 1;
-    if (player?.role_class === "MOVIMENTO") outfieldPlayers += 1;
+    const player = entry.players || getPlayerById(entry.player_id);
+    if (isGoalkeeperPlayer(player)) {
+      goalkeepers += 1;
+    } else {
+      outfieldPlayers += 1;
+    }
   }
 
   const total = entries.length;
@@ -2651,26 +2667,53 @@ function getHonorClubOptionValueForEntry(entry) {
   return honorClub?.id || "__new__";
 }
 
+function selectOptionPreservingValue(select, html, preferredValue, fallbackValue = "") {
+  if (!select) return "";
+  const current = preferredValue ?? select.value ?? "";
+  select.innerHTML = html;
+  const values = Array.from(select.options).map((option) => option.value);
+  const nextValue = values.includes(current) ? current : (values.includes(fallbackValue) ? fallbackValue : (values[0] || ""));
+  select.value = nextValue;
+  return nextValue;
+}
+
 function renderAdminExtendedControls() {
   const seasonOptions = state.seasons.map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>`).join("");
   const clubOptions = getCurrentClubs().map((club) => `<option value="${escapeHtml(club.id)}">${escapeHtml(club.name)}</option>`).join("");
   const selectedSeason = getSelectedSeasonId();
-  const competitionsForSeason = state.competitions.filter((competition) => competition.season_id === selectedSeason);
-  const regularCompetitionsForSeason = competitionsForSeason.filter((competition) => competition.competition_type === "REGULAR_SEASON");
-  const competitionOptions = competitionsForSeason.map((competition) => `<option value="${escapeHtml(competition.id)}">${escapeHtml(competition.name)}</option>`).join("");
+
+  const competitionSeasonValue = selectOptionPreservingValue(el.competitionSeason, seasonOptions, el.competitionSeason?.value || selectedSeason, selectedSeason);
+  const stadiumSeasonValue = selectOptionPreservingValue(el.stadiumSeason, seasonOptions, el.stadiumSeason?.value || selectedSeason, selectedSeason);
+  const honorSeasonValue = selectOptionPreservingValue(el.honorSeason, seasonOptions, el.honorSeason?.value || selectedSeason, selectedSeason);
+  selectOptionPreservingValue(el.rolloverSourceSeason, seasonOptions, el.rolloverSourceSeason?.value || selectedSeason, selectedSeason);
+
+  if (el.stadiumClub) {
+    selectOptionPreservingValue(el.stadiumClub, clubOptions, el.stadiumClub.value, getCurrentClubs()[0]?.id || "");
+    updateStadiumFormFields();
+  }
+
+  const competitionListSeason = competitionSeasonValue || selectedSeason;
+  const competitionsForFormSeason = state.competitions.filter((competition) => competition.season_id === competitionListSeason);
+  const competitionOptionsForFormSeason = competitionsForFormSeason.map((competition) => `<option value="${escapeHtml(competition.id)}">${escapeHtml(competition.name)}</option>`).join("");
+
+  const standingSeason = selectedSeason;
+  const competitionsForSelectedSeason = state.competitions.filter((competition) => competition.season_id === standingSeason);
+  const regularCompetitionsForSeason = competitionsForSelectedSeason.filter((competition) => competition.competition_type === "REGULAR_SEASON");
   const regularCompetitionOptions = regularCompetitionsForSeason.map((competition) => `<option value="${escapeHtml(competition.id)}">${escapeHtml(competition.name)}</option>`).join("");
 
-  if (el.stadiumSeason) { el.stadiumSeason.innerHTML = seasonOptions; el.stadiumSeason.value = selectedSeason; }
-  if (el.stadiumClub) { el.stadiumClub.innerHTML = clubOptions; if (!el.stadiumClub.value && getCurrentClubs()[0]) el.stadiumClub.value = getCurrentClubs()[0].id; updateStadiumFormFields(); }
-  if (el.competitionSeason) { el.competitionSeason.innerHTML = seasonOptions; el.competitionSeason.value = selectedSeason; }
-  if (el.standingCompetition) el.standingCompetition.innerHTML = regularCompetitionOptions || `<option value="">Nessuna Regular Season</option>`;
-  if (el.standingClub) el.standingClub.innerHTML = clubOptions;
-  if (el.calendarCompetition) el.calendarCompetition.innerHTML = competitionOptions || `<option value="">Nessuna competizione</option>`;
-  if (el.calendarHomeClub) el.calendarHomeClub.innerHTML = `<option value="">-</option>${clubOptions}`;
-  if (el.calendarAwayClub) el.calendarAwayClub.innerHTML = `<option value="">-</option>${clubOptions}`;
-  if (el.honorSeason) { el.honorSeason.innerHTML = seasonOptions; el.honorSeason.value = selectedSeason; }
-  if (el.honorClub) el.honorClub.innerHTML = renderHonorClubOptions();
-  if (el.rolloverSourceSeason) { el.rolloverSourceSeason.innerHTML = seasonOptions; el.rolloverSourceSeason.value = selectedSeason; }
+  const calendarCompetitionOptions = competitionsForSelectedSeason.map((competition) => `<option value="${escapeHtml(competition.id)}">${escapeHtml(competition.name)}</option>`).join("");
+
+  if (el.standingCompetition) {
+    selectOptionPreservingValue(el.standingCompetition, regularCompetitionOptions || `<option value="">Nessuna Regular Season</option>`, el.standingCompetition.value, regularCompetitionsForSeason[0]?.id || "");
+  }
+  if (el.standingClub) selectOptionPreservingValue(el.standingClub, clubOptions, el.standingClub.value, getCurrentClubs()[0]?.id || "");
+  if (el.calendarCompetition) {
+    selectOptionPreservingValue(el.calendarCompetition, calendarCompetitionOptions || `<option value="">Nessuna competizione</option>`, el.calendarCompetition.value, competitionsForSelectedSeason[0]?.id || "");
+  }
+  if (el.calendarHomeClub) selectOptionPreservingValue(el.calendarHomeClub, `<option value="">-</option>${clubOptions}`, el.calendarHomeClub.value, "");
+  if (el.calendarAwayClub) selectOptionPreservingValue(el.calendarAwayClub, `<option value="">-</option>${clubOptions}`, el.calendarAwayClub.value, "");
+  if (el.honorClub) selectOptionPreservingValue(el.honorClub, renderHonorClubOptions(), el.honorClub.value, "__new__");
+
   if (el.rolloverTargetSeason && !el.rolloverTargetSeason.value) {
     const y = Number(String(selectedSeason).slice(0, 4));
     if (Number.isFinite(y)) el.rolloverTargetSeason.value = `${y + 1}-${y + 2}`;
@@ -2704,6 +2747,18 @@ function textMatchesQuery(text, query) {
 
 function renderAdminListMessage(message) {
   return `<p class="muted admin-empty-message">${escapeHtml(message)}</p>`;
+}
+
+async function refreshAdminDataAfterMutation({ preserve = {}, statusElement = null, message = "" } = {}) {
+  await fetchCoreData();
+  await loadPageData("admin", { force: true });
+  renderAll();
+  Object.entries(preserve || {}).forEach(([key, value]) => {
+    if (el[key] && value !== undefined && value !== null) el[key].value = value;
+  });
+  updateCalendarMatchdaySuggestions();
+  renderAdminLists();
+  if (statusElement && message) statusElement.textContent = message;
 }
 
 function renderAdminLists() {
@@ -3042,9 +3097,18 @@ async function handleSeasonSubmit(event) {
   if (error) { el.seasonFormStatus.textContent = error.message; return; }
 
   await seedDefaultCompetitions(payload.id);
+  const createdSeasonId = payload.id;
   el.seasonForm.reset();
-  el.seasonFormStatus.textContent = "Stagione salvata con competizioni base.";
-  await fetchAll();
+  await refreshAdminDataAfterMutation({
+    preserve: {
+      competitionSeason: createdSeasonId,
+      honorSeason: createdSeasonId,
+      rolloverSourceSeason: createdSeasonId,
+      stadiumSeason: createdSeasonId,
+    },
+    statusElement: el.seasonFormStatus,
+    message: "Stagione salvata con competizioni base.",
+  });
 }
 
 async function seedDefaultCompetitions(seasonId) {
@@ -3054,13 +3118,21 @@ async function seedDefaultCompetitions(seasonId) {
     { name: `Coppa Italia ${seasonId}`, competition_type: "COPPA_ITALIA", status: "PLANNED" },
     { name: `Playoff ${seasonId}`, competition_type: "PLAYOFF", status: "PLANNED" },
   ];
-  for (const item of defaults) {
-    const exists = state.competitions.some((competition) => competition.season_id === seasonId && competition.competition_type === item.competition_type);
-    if (!exists) {
-      const { error } = await state.supabase.from("competitions").insert({ season_id: seasonId, ...item });
-      if (error && error.code !== "23505") throw error;
-    }
-  }
+
+  const { data: existing, error } = await state.supabase
+    .from("competitions")
+    .select("id, competition_type")
+    .eq("season_id", seasonId);
+  if (error && error.code !== "42P01") throw error;
+
+  const existingTypes = new Set((existing || []).map((competition) => competition.competition_type));
+  const missing = defaults
+    .filter((item) => !existingTypes.has(item.competition_type))
+    .map((item) => ({ season_id: seasonId, ...item }));
+
+  if (!missing.length) return;
+  const { error: insertError } = await state.supabase.from("competitions").insert(missing);
+  if (insertError && insertError.code !== "23505") throw insertError;
 }
 
 async function handleRolloverSubmit(event) {
@@ -3660,8 +3732,11 @@ async function handleStadiumSubmit(event) {
   };
   const { error } = await state.supabase.from("stadiums").upsert(payload, { onConflict: "season_id,club_id" });
   if (error) { el.stadiumFormStatus.textContent = error.message; return; }
-  el.stadiumFormStatus.textContent = "Stadio aggiornato.";
-  await fetchAll();
+  await refreshAdminDataAfterMutation({
+    preserve: { stadiumSeason: payload.season_id, stadiumClub: payload.club_id },
+    statusElement: el.stadiumFormStatus,
+    message: "Stadio aggiornato.",
+  });
 }
 
 async function handleNewsSubmit(event) {
@@ -3679,8 +3754,10 @@ async function handleNewsSubmit(event) {
     : await state.supabase.from("news_posts").insert(payload);
   if (response.error) { el.newsFormStatus.textContent = response.error.message; return; }
   resetNewsForm();
-  el.newsFormStatus.textContent = "Comunicito salvato.";
-  await fetchAll();
+  await refreshAdminDataAfterMutation({
+    statusElement: el.newsFormStatus,
+    message: "Comunicato salvato.",
+  });
 }
 
 function resetNewsForm() {
@@ -3695,13 +3772,23 @@ async function handleCompetitionSubmit(event) {
   const payload = { season_id: el.competitionSeason.value, name: el.competitionName.value.trim(), competition_type: el.competitionType.value, status: el.competitionStatus.value };
   const response = id ? await state.supabase.from("competitions").update(payload).eq("id", id) : await state.supabase.from("competitions").insert(payload);
   if (response.error) { el.competitionFormStatus.textContent = response.error.message; return; }
-  resetCompetitionForm(); el.competitionFormStatus.textContent = "Competizione salvata."; await fetchAll();
+  const savedSeason = payload.season_id;
+  resetCompetitionForm({ keepSeason: savedSeason });
+  await refreshAdminDataAfterMutation({
+    preserve: { competitionSeason: savedSeason },
+    statusElement: el.competitionFormStatus,
+    message: "Competizione salvata.",
+  });
 }
 
-function resetCompetitionForm() {
+function resetCompetitionForm(options = {}) {
   if (!el.competitionForm) return;
-  el.competitionId.value = ""; el.competitionName.value = ""; el.competitionType.value = "REGULAR_SEASON"; el.competitionStatus.value = "ACTIVE";
-  if (el.competitionSeason) el.competitionSeason.value = getSelectedSeasonId();
+  const keepSeason = options.keepSeason || el.competitionSeason?.value || getSelectedSeasonId();
+  el.competitionId.value = "";
+  el.competitionName.value = "";
+  el.competitionType.value = "REGULAR_SEASON";
+  el.competitionStatus.value = "ACTIVE";
+  if (el.competitionSeason) el.competitionSeason.value = keepSeason;
 }
 
 async function handleStandingSubmit(event) {
@@ -3725,12 +3812,21 @@ async function handleStandingSubmit(event) {
   };
   const response = id ? await state.supabase.from("competition_standings").update(payload).eq("id", id) : await state.supabase.from("competition_standings").insert(payload);
   if (response.error) { el.standingFormStatus.textContent = response.error.message; return; }
-  resetStandingForm(); el.standingFormStatus.textContent = "Riga classifica salvata."; await fetchAll();
+  const savedCompetition = payload.competition_id;
+  resetStandingForm({ keepCompetition: savedCompetition });
+  await refreshAdminDataAfterMutation({
+    preserve: { standingCompetition: savedCompetition },
+    statusElement: el.standingFormStatus,
+    message: "Riga classifica salvata.",
+  });
 }
 
-function resetStandingForm() {
+function resetStandingForm(options = {}) {
   if (!el.standingForm) return;
-  el.standingId.value = ""; [el.standingPosition, el.standingPoints, el.standingFantapoints, el.standingGoalsFor, el.standingGoalsAgainst, el.standingPlayed].forEach((field) => { if (field) field.value = ""; });
+  const keepCompetition = options.keepCompetition || el.standingCompetition?.value || "";
+  el.standingId.value = "";
+  [el.standingPosition, el.standingPoints, el.standingFantapoints, el.standingGoalsFor, el.standingGoalsAgainst, el.standingPlayed].forEach((field) => { if (field) field.value = ""; });
+  if (el.standingCompetition && keepCompetition) el.standingCompetition.value = keepCompetition;
 }
 
 async function handleCalendarSubmit(event) {
@@ -3753,12 +3849,29 @@ async function handleCalendarSubmit(event) {
   };
   const response = id ? await state.supabase.from("calendar_matches").update(payload).eq("id", id) : await state.supabase.from("calendar_matches").insert(payload);
   if (response.error) { el.calendarFormStatus.textContent = response.error.message; return; }
-  resetCalendarForm(); el.calendarFormStatus.textContent = "Giornata salvata."; await fetchAll();
+  const savedCompetition = payload.competition_id;
+  resetCalendarForm({ keepCompetition: savedCompetition });
+  await refreshAdminDataAfterMutation({
+    preserve: { calendarCompetition: savedCompetition },
+    statusElement: el.calendarFormStatus,
+    message: "Giornata salvata.",
+  });
 }
 
-function resetCalendarForm() {
+function resetCalendarForm(options = {}) {
   if (!el.calendarForm) return;
-  el.calendarMatchId.value = ""; el.calendarMatchday.value = ""; el.calendarDate.value = ""; el.calendarHomeClub.value = ""; el.calendarAwayClub.value = ""; el.calendarHomeScore.value = ""; el.calendarAwayScore.value = ""; if (el.calendarHomeGoals) el.calendarHomeGoals.value = ""; if (el.calendarAwayGoals) el.calendarAwayGoals.value = ""; el.calendarStatus.value = "SCHEDULED";
+  const keepCompetition = options.keepCompetition || el.calendarCompetition?.value || "";
+  el.calendarMatchId.value = "";
+  el.calendarMatchday.value = "";
+  el.calendarDate.value = "";
+  el.calendarHomeClub.value = "";
+  el.calendarAwayClub.value = "";
+  el.calendarHomeScore.value = "";
+  el.calendarAwayScore.value = "";
+  if (el.calendarHomeGoals) el.calendarHomeGoals.value = "";
+  if (el.calendarAwayGoals) el.calendarAwayGoals.value = "";
+  el.calendarStatus.value = "SCHEDULED";
+  if (el.calendarCompetition && keepCompetition) el.calendarCompetition.value = keepCompetition;
 }
 
 async function ensureHonorClubFromForm() {
@@ -3821,17 +3934,30 @@ async function handleHonorSubmit(event) {
   };
   const response = id ? await state.supabase.from("honor_roll_entries").update(payload).eq("id", id) : await state.supabase.from("honor_roll_entries").insert(payload);
   if (response.error) { el.honorFormStatus.textContent = response.error.message; return; }
-  resetHonorForm(); el.honorFormStatus.textContent = "Voce albo salvata."; await fetchAll();
+  const savedSeason = payload.season_id;
+  resetHonorForm({ keepSeason: savedSeason, keepCompetitionType: payload.competition_type });
+  await refreshAdminDataAfterMutation({
+    preserve: { honorSeason: savedSeason, honorCompetitionType: payload.competition_type },
+    statusElement: el.honorFormStatus,
+    message: "Voce albo salvata.",
+  });
 }
 
-function resetHonorForm() {
+function resetHonorForm(options = {}) {
   if (!el.honorForm) return;
-  el.honorId.value = ""; el.honorTitleInput.value = ""; el.honorPlacement.value = ""; el.honorPoints.value = ""; el.honorNotes.value = "";
+  const keepSeason = options.keepSeason || el.honorSeason?.value || getSelectedSeasonId();
+  const keepCompetitionType = options.keepCompetitionType || el.honorCompetitionType?.value || "REGULAR_SEASON";
+  el.honorId.value = "";
+  el.honorTitleInput.value = "";
+  el.honorPlacement.value = "";
+  el.honorPoints.value = "";
+  el.honorNotes.value = "";
   if (el.honorClub) el.honorClub.value = "__new__";
   if (el.honorClubNameInput) el.honorClubNameInput.value = "";
   if (el.honorPresidentInput) el.honorPresidentInput.value = "";
   if (el.honorClubLogoInput) el.honorClubLogoInput.value = "";
-  if (el.honorSeason) el.honorSeason.value = getSelectedSeasonId();
+  if (el.honorSeason) el.honorSeason.value = keepSeason;
+  if (el.honorCompetitionType) el.honorCompetitionType.value = keepCompetitionType;
 }
 
 const DUMP_TABLES = [
@@ -4035,6 +4161,12 @@ function setupCollapsiblePanels() {
       button.textContent = collapsed ? "Ingrandisci" : "Riduci";
       button.setAttribute("aria-expanded", String(!collapsed));
     });
+
+    if (panel.closest("#adminPanel")) {
+      panel.classList.add("is-collapsed");
+      button.textContent = "Ingrandisci";
+      button.setAttribute("aria-expanded", "false");
+    }
 
     const actions = header.querySelector(".filters-row") || header.querySelector(".panel-actions");
     if (actions) {
