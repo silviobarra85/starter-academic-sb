@@ -10,7 +10,7 @@ const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
 
-const ACTIVE_SEASON_ID = "2026-2027";
+const ACTIVE_SEASON_ID = "2025-2026";
 
 const MOVEMENT_LABELS = {
   INITIAL_BUDGET: "Budget iniziale",
@@ -53,6 +53,9 @@ const MATCH_STATUS_LABELS = {
   POSTPONED: "Rinviata",
 };
 
+const CUP_MATCHDAY_LABELS = ["QF - Andata", "QF - Ritorno", "SF - Andata", "SF - Ritorno", "Finale"];
+
+
 const NEWS_TOPIC_LABELS = {
   GENERALE: "Generale",
   COMPETIZIONE: "Competizione",
@@ -81,6 +84,7 @@ const state = {
   honorClubs: [],
   latestQuotations: [],
   allLatestQuotations: [],
+  loadedScopes: new Set(),
   selectedSeason: ACTIVE_SEASON_ID,
   selectedListoneSeason: ACTIVE_SEASON_ID,
   selectedRosterSeason: ACTIVE_SEASON_ID,
@@ -232,6 +236,7 @@ const el = {
   calendarMatchId: document.getElementById("calendarMatchId"),
   calendarCompetition: document.getElementById("calendarCompetition"),
   calendarMatchday: document.getElementById("calendarMatchday"),
+  calendarMatchdayOptions: document.getElementById("calendarMatchdayOptions"),
   calendarDate: document.getElementById("calendarDate"),
   calendarHomeClub: document.getElementById("calendarHomeClub"),
   calendarAwayClub: document.getElementById("calendarAwayClub"),
@@ -1323,50 +1328,26 @@ async function loadAuthState() {
 
 async function fetchAll() {
   clearError();
+  await fetchCoreData();
+  await loadPageData(getCurrentPage(), { force: true });
+  renderAll();
+}
+
+async function fetchCoreData() {
+  const seasonId = state.selectedSeason || ACTIVE_SEASON_ID;
 
   const [
     seasons,
     clubs,
-    movements,
-    players,
-    rosterEntries,
-    stadiums,
-    stadiumLevels,
-    playerQuotations,
-    latestPlayerQuotations,
-    listoneUploads,
-    rosterImports,
     news,
     competitions,
-    competitionStandings,
     calendarMatches,
-    honorRoll,
-    honorClubs,
+    movements,
+    stadiums,
+    stadiumLevels,
   ] = await Promise.all([
     fetchAllRows(() => state.supabase.from("seasons").select("*").order("starts_on", { ascending: false })),
     fetchAllRows(() => state.supabase.from("clubs").select("*").order("name", { ascending: true })),
-    fetchAllRows(() => state.supabase.from("fm_movements").select("*").order("created_at", { ascending: false })),
-    fetchAllRows(() => state.supabase.from("players").select("*").order("name", { ascending: true })),
-    fetchAllRows(() =>
-      state.supabase
-        .from("roster_entries")
-        .select(`
-          *,
-          players(*),
-          club:clubs!roster_entries_club_id_fkey(id, name, president, active, logo_data_url),
-          loan_from_club:clubs!roster_entries_loan_from_club_id_fkey(id, name, president, active, logo_data_url)
-        `)
-        .order("created_at", { ascending: false })
-    ),
-    fetchAllRows(() => state.supabase.from("stadiums").select("*")),
-    fetchAllRows(() => state.supabase.from("stadium_levels").select("*").order("level", { ascending: true })),
-    fetchAllRows(() => state.supabase.from("player_quotations_history").select("*").order("upload_created_at", { ascending: false })),
-    fetchAllRows(() => state.supabase.from("latest_player_quotations").select("*").order("player_name", { ascending: true })),
-    fetchAllRows(() => state.supabase.from("listone_uploads").select("*").order("created_at", { ascending: false })),
-    fetchAllRows(() => state.supabase.from("roster_imports").select("*").order("created_at", { ascending: false })).catch((error) => {
-      if (error?.code === "42P01") return [];
-      throw error;
-    }),
     fetchAllRows(() => state.supabase.from("news_posts").select("*").order("created_at", { ascending: false })).catch((error) => {
       if (error?.code === "42P01") return [];
       throw error;
@@ -1375,41 +1356,23 @@ async function fetchAll() {
       if (error?.code === "42P01") return [];
       throw error;
     }),
-    fetchAllRows(() => state.supabase.from("competition_standings").select("*").order("position", { ascending: true })).catch((error) => {
+    fetchAllRows(() => state.supabase.from("calendar_matches").select("*").eq("season_id", seasonId).order("played_on", { ascending: true, nullsFirst: false })).catch((error) => {
       if (error?.code === "42P01") return [];
       throw error;
     }),
-    fetchAllRows(() => state.supabase.from("calendar_matches").select("*").order("played_on", { ascending: true, nullsFirst: false })).catch((error) => {
-      if (error?.code === "42P01") return [];
-      throw error;
-    }),
-    fetchAllRows(() => state.supabase.from("honor_roll_entries").select("*").order("season_id", { ascending: false })).catch((error) => {
-      if (error?.code === "42P01") return [];
-      throw error;
-    }),
-    fetchAllRows(() => state.supabase.from("honor_clubs").select("*").order("name", { ascending: true })).catch((error) => {
-      if (error?.code === "42P01") return [];
-      throw error;
-    }),
+    fetchAllRows(() => state.supabase.from("fm_movements").select("*").eq("season_id", seasonId).order("created_at", { ascending: false })),
+    fetchAllRows(() => state.supabase.from("stadiums").select("*").eq("season_id", seasonId)),
+    fetchAllRows(() => state.supabase.from("stadium_levels").select("*").order("level", { ascending: true })),
   ]);
 
   state.seasons = seasons || [];
   state.clubs = clubs || [];
-  state.movements = movements || [];
-  state.players = players || [];
-  state.rosterEntries = rosterEntries || [];
-  state.stadiums = stadiums || [];
-  state.stadiumLevels = stadiumLevels || [];
-  state.playerQuotations = playerQuotations || [];
-  state.allLatestQuotations = latestPlayerQuotations || [];
-  state.listoneUploads = listoneUploads || [];
-  state.rosterImports = rosterImports || [];
   state.news = news || [];
   state.competitions = competitions || [];
-  state.competitionStandings = competitionStandings || [];
   state.calendarMatches = calendarMatches || [];
-  state.honorRoll = honorRoll || [];
-  state.honorClubs = honorClubs || [];
+  state.movements = movements || [];
+  state.stadiums = stadiums || [];
+  state.stadiumLevels = stadiumLevels || [];
 
   if (!state.seasons.some((season) => season.id === state.selectedSeason)) {
     state.selectedSeason = state.seasons.find((season) => season.id === ACTIVE_SEASON_ID)?.id || state.seasons[0]?.id || ACTIVE_SEASON_ID;
@@ -1420,9 +1383,94 @@ async function fetchAll() {
   if (!state.seasons.some((season) => season.id === state.selectedRosterSeason)) {
     state.selectedRosterSeason = state.selectedSeason;
   }
-  state.latestQuotations = getLatestQuotationsForSeason(state.selectedListoneSeason);
+}
 
-  renderAll();
+function mergeById(existing, incoming) {
+  const map = new Map((existing || []).map((item) => [item.id, item]));
+  for (const item of incoming || []) map.set(item.id, item);
+  return Array.from(map.values());
+}
+
+function resetLoadedScopesForSeason() {
+  state.loadedScopes = new Set();
+  state.players = [];
+  state.rosterEntries = [];
+  state.playerQuotations = [];
+  state.allLatestQuotations = [];
+  state.latestQuotations = [];
+  state.listoneUploads = [];
+  state.rosterImports = [];
+  state.honorRoll = [];
+  state.honorClubs = [];
+  state.competitionStandings = [];
+}
+
+async function loadPageData(pageId, { force = false } = {}) {
+  const page = pageId || getCurrentPage();
+  const seasonId = getSelectedSeasonId();
+  const scopeKey = `${page}:${seasonId}`;
+  if (!force && state.loadedScopes.has(scopeKey)) return;
+
+  if (page === "clubs" || page === "rosters" || page === "admin") {
+    const rosterEntries = await fetchAllRows(() =>
+      state.supabase
+        .from("roster_entries")
+        .select(`
+          *,
+          players(*),
+          club:clubs!roster_entries_club_id_fkey(id, name, president, active, logo_data_url),
+          loan_from_club:clubs!roster_entries_loan_from_club_id_fkey(id, name, president, active, logo_data_url)
+        `)
+        .eq("season_id", seasonId)
+        .order("created_at", { ascending: false })
+    );
+    state.rosterEntries = mergeById(state.rosterEntries, rosterEntries || []);
+  }
+
+  if (page === "listone" || page === "admin") {
+    const [latestPlayerQuotations, listoneUploads, players] = await Promise.all([
+      fetchAllRows(() => state.supabase.from("latest_player_quotations").select("*").eq("season_id", state.selectedListoneSeason || seasonId).order("player_name", { ascending: true })),
+      fetchAllRows(() => state.supabase.from("listone_uploads").select("*").eq("season_id", state.selectedListoneSeason || seasonId).order("created_at", { ascending: false })),
+      fetchAllRows(() => state.supabase.from("players").select("*").order("name", { ascending: true })),
+    ]);
+    state.allLatestQuotations = mergeById(state.allLatestQuotations, latestPlayerQuotations || []);
+    state.latestQuotations = getLatestQuotationsForSeason(state.selectedListoneSeason || seasonId);
+    state.listoneUploads = mergeById(state.listoneUploads, listoneUploads || []);
+    state.players = mergeById(state.players, players || []);
+  }
+
+  if (page === "honor" || page === "admin") {
+    const [honorRoll, honorClubs, competitionStandings, allCalendarMatches] = await Promise.all([
+      fetchAllRows(() => state.supabase.from("honor_roll_entries").select("*").order("season_id", { ascending: false })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+      fetchAllRows(() => state.supabase.from("honor_clubs").select("*").order("name", { ascending: true })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+      fetchAllRows(() => state.supabase.from("competition_standings").select("*").order("position", { ascending: true })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+      fetchAllRows(() => state.supabase.from("calendar_matches").select("*").order("played_on", { ascending: true, nullsFirst: false })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+    ]);
+    state.honorRoll = honorRoll || [];
+    state.honorClubs = honorClubs || [];
+    state.competitionStandings = competitionStandings || [];
+    state.calendarMatches = mergeById(state.calendarMatches, allCalendarMatches || []);
+  }
+
+  if (page === "finance" || page === "admin") {
+    const [movements, stadiums, rosterImports] = await Promise.all([
+      fetchAllRows(() => state.supabase.from("fm_movements").select("*").order("created_at", { ascending: false })),
+      fetchAllRows(() => state.supabase.from("stadiums").select("*")),
+      fetchAllRows(() => state.supabase.from("roster_imports").select("*").order("created_at", { ascending: false })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+    ]);
+    state.movements = movements || [];
+    state.stadiums = stadiums || [];
+    state.rosterImports = rosterImports || [];
+  }
+
+  if (page === "competitions" || page === "dashboard") {
+    const [seasonMatches] = await Promise.all([
+      fetchAllRows(() => state.supabase.from("calendar_matches").select("*").eq("season_id", seasonId).order("played_on", { ascending: true, nullsFirst: false })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+    ]);
+    state.calendarMatches = mergeById(state.calendarMatches, seasonMatches || []);
+  }
+
+  state.loadedScopes.add(scopeKey);
 }
 
 function getDisplaySeasonId() {
@@ -1478,7 +1526,13 @@ function applyDisplayedSeason(seasonId, { render = true } = {}) {
     updateAuctionFieldsFromSelectedPlayer();
   }
 
-  if (render) renderAll();
+  resetLoadedScopesForSeason();
+  if (render) {
+    fetchCoreData()
+      .then(() => loadPageData(getCurrentPage(), { force: true }))
+      .then(() => renderAll())
+      .catch((error) => showError(error.message || String(error)));
+  }
 }
 
 
@@ -1510,7 +1564,13 @@ function setViewedSeason(seasonId, options = {}) {
   if (el.auctionSeason) el.auctionSeason.value = seasonId;
   if (el.listoneSeason) el.listoneSeason.value = seasonId;
   if (el.rosterSeason) el.rosterSeason.value = seasonId;
-  if (!options.skipRender) renderAll();
+  resetLoadedScopesForSeason();
+  if (!options.skipRender) {
+    fetchCoreData()
+      .then(() => loadPageData(getCurrentPage(), { force: true }))
+      .then(() => renderAll())
+      .catch((error) => showError(error.message || String(error)));
+  }
 }
 
 function renderMetrics() {
@@ -2135,7 +2195,9 @@ function showPlayerDialog(playerId) {
 function renderCompetitionContent(competition) {
   const matches = state.calendarMatches
     .filter((match) => match.competition_id === competition.id)
-    .sort((a, b) => String(a.matchday_label || "").localeCompare(String(b.matchday_label || "")) || String(a.played_on || "").localeCompare(String(b.played_on || "")));
+    .sort(competition.competition_type === "REGULAR_SEASON"
+      ? ((a, b) => String(a.matchday_label || "").localeCompare(String(b.matchday_label || ""), "it", { numeric: true, sensitivity: "base" }) || String(a.played_on || "").localeCompare(String(b.played_on || "")))
+      : sortMatchesByRoundAndDate);
 
   if (competition.competition_type === "REGULAR_SEASON") {
     return `<h4>Classifica</h4>${renderStandingTable(competition)}<h4>Calendario</h4>${renderMatchList(matches)}`;
@@ -2304,6 +2366,76 @@ function renderHonorClubName(row) {
   return escapeHtml(row.club_name || "-");
 }
 
+function getCupHonorRowsForCompetition(competition) {
+  if (!competition || competition.competition_type === "REGULAR_SEASON") return [];
+  return buildHonorRows()
+    .filter((row) => row.season_id === competition.season_id && row.competition_type === competition.competition_type)
+    .filter((row) => !competition.name || row.competition_name === competition.name || row.notes?.includes(competition.name) || row.competition_name === (COMPETITION_LABELS[competition.competition_type] || competition.competition_type))
+    .sort((a, b) => Number(a.placement || 999) - Number(b.placement || 999));
+}
+
+function renderCupPodiumRowsForHonor(competition) {
+  const rows = getCupHonorRowsForCompetition(competition).filter((row) => Number(row.placement || 0) > 0 && Number(row.placement || 0) <= 3);
+  if (!rows.length) return `<p class="muted">Nessun podio inserito nell'Albo d'oro.</p>`;
+  return `<div class="podium-mini-grid">${rows.map((row) => `<div class="podium-mini-item"><span>${row.placement}° posto</span><strong>${renderHonorClubName(row)}</strong><small>${escapeHtml(row.notes || "")}</small></div>`).join("")}</div>`;
+}
+
+function renderHonorCupHistorySections() {
+  const cupCompetitions = state.competitions
+    .filter((competition) => competition.competition_type !== "REGULAR_SEASON")
+    .sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || String(a.name).localeCompare(String(b.name), "it", { sensitivity: "base" }));
+
+  if (!cupCompetitions.length) return "";
+
+  return cupCompetitions.map((competition, index) => {
+    const matches = state.calendarMatches
+      .filter((match) => match.competition_id === competition.id)
+      .sort(sortMatchesByRoundAndDate);
+    return `<details class="collapse-card honor-cup-section" ${index === 0 ? "open" : ""}>
+      <summary><strong>${escapeHtml(competition.season_id)} · ${escapeHtml(competition.name)}</strong><span>${escapeHtml(COMPETITION_LABELS[competition.competition_type] || competition.competition_type)} · ${matches.length} partite</span></summary>
+      <div class="honor-cup-content">
+        <h4>Podio albo d'oro</h4>
+        ${renderCupPodiumRowsForHonor(competition)}
+        <h4>Partite e risultati</h4>
+        ${renderMatchTable(matches)}
+      </div>
+    </details>`;
+  }).join("");
+}
+
+function roundOrder(label) {
+  const value = String(label || "").trim().toLowerCase();
+  const order = {
+    "qf - andata": 1,
+    "qf - ritorno": 2,
+    "sf - andata": 3,
+    "sf - ritorno": 4,
+    "finale": 5,
+  };
+  return order[value] || 99;
+}
+
+function sortMatchesByRoundAndDate(a, b) {
+  return roundOrder(a.matchday_label) - roundOrder(b.matchday_label)
+    || String(a.played_on || "9999-12-31").localeCompare(String(b.played_on || "9999-12-31"))
+    || String(a.matchday_label || "").localeCompare(String(b.matchday_label || ""), "it", { sensitivity: "base" });
+}
+
+function renderMatchTable(matches) {
+  if (!matches.length) return `<p class="muted">Nessuna partita inserita.</p>`;
+  return `<div class="table-wrap compact-table"><table>
+    <thead><tr><th>Giornata</th><th>Data</th><th>Casa</th><th>Trasferta</th><th class="number">Ris.</th><th class="number">FP</th></tr></thead>
+    <tbody>${matches.map((match) => {
+      const home = getClubById(match.home_club_id);
+      const away = getClubById(match.away_club_id);
+      const goals = getMatchGoals(match);
+      const result = goals ? `${goals.home}-${goals.away}` : "-";
+      const fp = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined ? `${match.home_score}-${match.away_score}` : "-";
+      return `<tr><td>${escapeHtml(match.matchday_label || "-")}</td><td>${match.played_on ? fmtDateOnly(match.played_on) : "-"}</td><td>${clubButton(home)}</td><td>${clubButton(away)}</td><td class="number"><strong>${escapeHtml(result)}</strong></td><td class="number">${escapeHtml(fp)}</td></tr>`;
+    }).join("")}</tbody>
+  </table></div>`;
+}
+
 function renderHonorRoll() {
   if (!el.honorSummary || !el.honorHistory) return;
   const honorRows = buildHonorRows();
@@ -2348,28 +2480,36 @@ function renderHonorRoll() {
     }).join("")
     : `<p class="muted">Nessuna vittoria registrata.</p>`;
 
+  const regularRows = honorRows.filter((row) => row.competition_type === "REGULAR_SEASON");
   const grouped = new Map();
-  for (const row of honorRows) {
+  for (const row of regularRows) {
     const key = `${row.season_id}|${row.competition_type}|${row.competition_name}`;
     if (!grouped.has(key)) grouped.set(key, []);
     grouped.get(key).push(row);
   }
 
-  const sections = Array.from(grouped.entries())
+  const regularSections = Array.from(grouped.entries())
     .sort(([a], [b]) => b.localeCompare(a))
     .map(([key, rows], index) => {
       const [seasonId, competitionType, competitionName] = key.split("|");
       rows.sort((a, b) => Number(a.placement || 999) - Number(b.placement || 999));
-      return `<details class="collapse-card" ${index === 0 ? "open" : ""}>
-        <summary><strong>${escapeHtml(seasonId)} · ${escapeHtml(competitionName)}</strong><span>${escapeHtml(COMPETITION_LABELS[competitionType] || competitionType)} · ${rows.length} righe</span></summary>
-        <div class="table-wrap compact-table">
+      return `<details class="collapse-card honor-season-section" ${index === 0 ? "open" : ""}>
+        <summary><strong>${escapeHtml(seasonId)} · ${escapeHtml(competitionName)}</strong><span>Classifica completa · ${rows.length} squadre</span></summary>
+        <div class="table-wrap compact-table honor-table-wrap">
           <table>
-            <thead><tr><th>Pos.</th><th>Squadra</th><th class="number">Punti</th><th class="number">FP</th><th>Note</th></tr></thead>
+            <thead><tr><th>Pos.</th><th>Squadra</th><th class="number">Punti</th><th class="number">G</th><th class="number">V</th><th class="number">N</th><th class="number">P</th><th class="number">GF</th><th class="number">GS</th><th class="number">DR</th><th class="number">FP</th><th>Note</th></tr></thead>
             <tbody>
               ${rows.map((row) => `<tr>
                 <td>${row.placement ? `${row.placement}°` : "-"}</td>
                 <td>${renderHonorClubName(row)}</td>
-                <td class="number">${row.points ?? "-"}</td>
+                <td class="number"><strong>${row.points ?? "-"}</strong></td>
+                <td class="number">${row.played ?? "-"}</td>
+                <td class="number">${row.wins ?? "-"}</td>
+                <td class="number">${row.draws ?? "-"}</td>
+                <td class="number">${row.losses ?? "-"}</td>
+                <td class="number">${row.goals_for ?? "-"}</td>
+                <td class="number">${row.goals_against ?? "-"}</td>
+                <td class="number">${row.goal_difference ?? "-"}</td>
                 <td class="number">${row.fantapoints ?? "-"}</td>
                 <td>${escapeHtml(row.notes || (row.source === "standing" ? "da classifica competizione" : ""))}</td>
               </tr>`).join("")}
@@ -2379,7 +2519,11 @@ function renderHonorRoll() {
       </details>`;
     });
 
-  el.honorHistory.innerHTML = sections.join("");
+  const cupSections = renderHonorCupHistorySections();
+  el.honorHistory.innerHTML = [
+    ...regularSections,
+    cupSections,
+  ].filter(Boolean).join("") || `<p class="muted">Nessuna classifica o partita storica inserita.</p>`;
 }
 
 function renderHonorClubOptions() {
@@ -2420,7 +2564,21 @@ function renderAdminExtendedControls() {
     if (Number.isFinite(y)) el.rolloverTargetSeason.value = `${y + 1}-${y + 2}`;
   }
 
+  updateCalendarMatchdaySuggestions();
   renderAdminLists();
+}
+
+function updateCalendarMatchdaySuggestions() {
+  if (!el.calendarMatchdayOptions || !el.calendarCompetition) return;
+  const competition = getCompetitionById(el.calendarCompetition.value);
+  if (competition && competition.competition_type !== "REGULAR_SEASON") {
+    el.calendarMatchdayOptions.innerHTML = CUP_MATCHDAY_LABELS.map((label) => `<option value="${escapeHtml(label)}"></option>`).join("");
+    if (el.calendarMatchday && !el.calendarMatchday.value) el.calendarMatchday.placeholder = "Es. QF - Andata";
+    return;
+  }
+  const regularOptions = Array.from({ length: 38 }, (_, index) => `<option value="Giornata ${index + 1}"></option>`).join("");
+  el.calendarMatchdayOptions.innerHTML = regularOptions;
+  if (el.calendarMatchday && !el.calendarMatchday.value) el.calendarMatchday.placeholder = "Es. Giornata 1";
 }
 
 function adminSearchValue(key) {
@@ -3725,6 +3883,12 @@ function setActivePage(pageId, options = {}) {
   }
 
   window.scrollTo({ top: 0, behavior: options.instant ? "auto" : "smooth" });
+
+  if (state.supabase) {
+    loadPageData(nextPage)
+      .then(() => renderAll())
+      .catch((error) => showError(error.message || String(error)));
+  }
 }
 
 function setupPageNavigation() {
@@ -3821,7 +3985,7 @@ function bindEvents() {
   });
 
   [el.competitionSeason, el.standingCompetition, el.calendarCompetition, el.honorSeason].forEach((node) => {
-    if (node) node.addEventListener("change", renderAdminLists);
+    if (node) node.addEventListener("change", () => { updateCalendarMatchdaySuggestions(); renderAdminLists(); });
   });
 
   [el.newsAdminList, el.competitionAdminList, el.standingAdminList, el.calendarAdminList, el.honorAdminList].forEach((node) => {

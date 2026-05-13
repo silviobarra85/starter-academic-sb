@@ -1178,3 +1178,57 @@ code {
 .honor-context-detail { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; }
 .honor-context-button { white-space: nowrap; }
 .compact-table table th, .compact-table table td { vertical-align: middle; }
+
+/* V18 compact admin calendar and honor readability */
+.calendar-compact-form {
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 0.8rem;
+  align-items: start;
+}
+.calendar-compact-form .form-actions {
+  grid-column: 1 / -1;
+}
+@media (max-width: 900px) {
+  .calendar-compact-form {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .calendar-compact-form {
+    grid-template-columns: 1fr;
+  }
+}
+.honor-table-wrap table,
+.honor-cup-content table {
+  min-width: 880px;
+}
+.honor-cup-content h4 {
+  margin: 1rem 0 0.5rem;
+  color: var(--text-primary, #f8fafc);
+}
+.podium-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0 1rem;
+}
+.podium-mini-item {
+  border: 1px solid var(--border, rgba(148, 163, 184, 0.25));
+  border-radius: 1rem;
+  padding: 0.75rem;
+  background: rgba(15, 23, 42, 0.35);
+}
+.podium-mini-item span,
+.podium-mini-item small {
+  display: block;
+  color: var(--muted, #94a3b8);
+  font-size: 0.78rem;
+}
+.podium-mini-item strong {
+  display: block;
+  margin: 0.25rem 0;
+}
+.result-score {
+  display: block;
+  font-size: 1.05rem;
+}

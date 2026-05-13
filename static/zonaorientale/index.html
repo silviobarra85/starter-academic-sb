@@ -859,10 +859,10 @@
           <div>
             <p class="eyebrow">Area admin</p>
             <h2>Calendario</h2>
-            <p>Aggiungi o modifica le giornate di calendario.</p>
+            <p>Aggiungi o modifica le giornate. Per le coppe usa QF/SF/Finale; per il campionato usa Giornata 1, 2, ecc.</p>
           </div>
         </div>
-        <form id="calendarForm" class="form-grid">
+        <form id="calendarForm" class="form-grid calendar-compact-form">
           <input id="calendarMatchId" type="hidden" />
           <label>
             Competizione
@@ -870,7 +870,14 @@
           </label>
           <label>
             Giornata
-            <input id="calendarMatchday" class="input" type="text" placeholder="Es. Giornata 1" required />
+            <input id="calendarMatchday" class="input" type="text" list="calendarMatchdayOptions" placeholder="Es. Giornata 1 oppure QF - Andata" required />
+            <datalist id="calendarMatchdayOptions">
+              <option value="QF - Andata"></option>
+              <option value="QF - Ritorno"></option>
+              <option value="SF - Andata"></option>
+              <option value="SF - Ritorno"></option>
+              <option value="Finale"></option>
+            </datalist>
           </label>
           <label>
             Data
