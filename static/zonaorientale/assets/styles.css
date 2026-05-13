@@ -1171,3 +1171,10 @@ code {
 .link-button .club-name-with-logo {
   pointer-events: none;
 }
+
+
+/* V17 */
+.result-score { font-size: 1.05rem; }
+.honor-context-detail { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; }
+.honor-context-button { white-space: nowrap; }
+.compact-table table th, .compact-table table td { vertical-align: middle; }

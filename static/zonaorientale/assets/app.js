@@ -9,6 +9,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
+
 const ACTIVE_SEASON_ID = "2026-2027";
 
 const MOVEMENT_LABELS = {
@@ -236,6 +237,8 @@ const el = {
   calendarAwayClub: document.getElementById("calendarAwayClub"),
   calendarHomeScore: document.getElementById("calendarHomeScore"),
   calendarAwayScore: document.getElementById("calendarAwayScore"),
+  calendarHomeGoals: document.getElementById("calendarHomeGoals"),
+  calendarAwayGoals: document.getElementById("calendarAwayGoals"),
   calendarStatus: document.getElementById("calendarStatus"),
   calendarFormReset: document.getElementById("calendarFormReset"),
   calendarFormStatus: document.getElementById("calendarFormStatus"),
@@ -1028,8 +1031,6 @@ function getHonorClubForEntry(entry) {
 
 function honorClubButton(honorClub, extraClass = "") {
   if (!honorClub) return "-";
-  const linkedCurrent = honorClub.source_club_id ? getClubById(honorClub.source_club_id) : null;
-  if (linkedCurrent) return clubButton(linkedCurrent, extraClass);
   return `<button class="link-button club-link ${extraClass}" type="button" data-honor-club-id="${escapeHtml(honorClub.id)}">${clubNameWithLogo(honorClub)}</button>`;
 }
 
@@ -1134,22 +1135,103 @@ function renderCupPodium(competition) {
   </div>`;
 }
 
+function getMatchGoals(match) {
+  const home = match.home_goals !== null && match.home_goals !== undefined ? Number(match.home_goals) : null;
+  const away = match.away_goals !== null && match.away_goals !== undefined ? Number(match.away_goals) : null;
+  if (!Number.isFinite(home) || !Number.isFinite(away)) return null;
+  return { home, away };
+}
+
+function getRegularSeasonStandingRows(competition) {
+  if (!competition || competition.competition_type !== "REGULAR_SEASON") return [];
+
+  const table = new Map();
+  const ensure = (clubId) => {
+    if (!clubId) return null;
+    if (!table.has(clubId)) {
+      table.set(clubId, {
+        club_id: clubId,
+        played: 0,
+        wins: 0,
+        draws: 0,
+        losses: 0,
+        points: 0,
+        goals_for: 0,
+        goals_against: 0,
+        goal_difference: 0,
+        fantapoints: 0,
+        position: null,
+      });
+    }
+    return table.get(clubId);
+  };
+
+  const matches = state.calendarMatches.filter((match) => match.competition_id === competition.id);
+  for (const match of matches) {
+    const goals = getMatchGoals(match);
+    if (!goals || !match.home_club_id || !match.away_club_id) continue;
+
+    const home = ensure(match.home_club_id);
+    const away = ensure(match.away_club_id);
+    if (!home || !away) continue;
+
+    home.played += 1;
+    away.played += 1;
+    home.goals_for += goals.home;
+    home.goals_against += goals.away;
+    away.goals_for += goals.away;
+    away.goals_against += goals.home;
+    home.fantapoints += Number(match.home_score || 0);
+    away.fantapoints += Number(match.away_score || 0);
+
+    if (goals.home > goals.away) {
+      home.wins += 1; home.points += 3; away.losses += 1;
+    } else if (goals.home < goals.away) {
+      away.wins += 1; away.points += 3; home.losses += 1;
+    } else {
+      home.draws += 1; away.draws += 1; home.points += 1; away.points += 1;
+    }
+  }
+
+  return Array.from(table.values())
+    .map((row) => ({ ...row, goal_difference: row.goals_for - row.goals_against }))
+    .sort((a, b) => Number(b.points || 0) - Number(a.points || 0)
+      || Number(b.goal_difference || 0) - Number(a.goal_difference || 0)
+      || Number(b.goals_for || 0) - Number(a.goals_for || 0)
+      || Number(b.fantapoints || 0) - Number(a.fantapoints || 0)
+      || String(getClubById(a.club_id)?.name || a.club_id).localeCompare(String(getClubById(b.club_id)?.name || b.club_id), "it", { sensitivity: "base" }))
+    .map((row, index) => ({ ...row, position: index + 1 }));
+}
+
 function renderStandingTable(competition, limit = null) {
   if (competition?.competition_type && competition.competition_type !== "REGULAR_SEASON") {
     return renderCupPodium(competition);
   }
 
-  const rows = state.competitionStandings
+  const computedRows = getRegularSeasonStandingRows(competition);
+  const manualRows = state.competitionStandings
     .filter((row) => row.competition_id === competition.id)
     .sort((a, b) => Number(a.position || 999) - Number(b.position || 999) || Number(b.points || 0) - Number(a.points || 0));
 
-  if (!rows.length) return `<p class="muted">Nessuna classifica inserita.</p>`;
+  const rows = computedRows.length
+    ? computedRows
+    : manualRows.map((row, index) => ({
+      ...row,
+      position: row.position || index + 1,
+      wins: null,
+      draws: null,
+      losses: null,
+      goal_difference: Number(row.goals_for || 0) - Number(row.goals_against || 0),
+      source: "manual",
+    }));
+
+  if (!rows.length) return `<p class="muted">Nessuna classifica inserita o calcolabile.</p>`;
 
   return `
     <div class="table-wrap compact-table">
       <table>
         <thead>
-          <tr><th>#</th><th>Club</th><th class="number">Pt</th><th class="number">FP</th><th class="number">GF</th><th class="number">GS</th></tr>
+          <tr><th>#</th><th>Club</th><th class="number">Pt</th><th class="number">G</th><th class="number">V</th><th class="number">N</th><th class="number">P</th><th class="number">GF</th><th class="number">GS</th><th class="number">DR</th><th class="number">FP</th></tr>
         </thead>
         <tbody>
           ${rows.slice(0, limit || rows.length).map((row, index) => {
@@ -1157,10 +1239,15 @@ function renderStandingTable(competition, limit = null) {
             return `<tr>
               <td>${row.position || index + 1}</td>
               <td>${clubButton(club)}</td>
-              <td class="number">${row.points ?? "-"}</td>
-              <td class="number">${row.fantapoints ?? "-"}</td>
+              <td class="number"><strong>${row.points ?? "-"}</strong></td>
+              <td class="number">${row.played ?? "-"}</td>
+              <td class="number">${row.wins ?? "-"}</td>
+              <td class="number">${row.draws ?? "-"}</td>
+              <td class="number">${row.losses ?? "-"}</td>
               <td class="number">${row.goals_for ?? "-"}</td>
               <td class="number">${row.goals_against ?? "-"}</td>
+              <td class="number">${row.goal_difference ?? "-"}</td>
+              <td class="number">${Number(row.fantapoints || 0) ? Number(row.fantapoints).toFixed(1) : (row.fantapoints ?? "-")}</td>
             </tr>`;
           }).join("")}
         </tbody>
@@ -1176,16 +1263,20 @@ function renderMatchList(matches) {
       const competition = getCompetitionById(match.competition_id);
       const home = getClubById(match.home_club_id);
       const away = getClubById(match.away_club_id);
-      const score = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined
-        ? `<strong>${match.home_score} - ${match.away_score}</strong>`
+      const goals = getMatchGoals(match);
+      const resultScore = goals
+        ? `<strong class="result-score">${goals.home} - ${goals.away}</strong>`
         : `<span class="muted">${MATCH_STATUS_LABELS[match.status] || match.status || "Da giocare"}</span>`;
+      const fpScore = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined
+        ? `<small>FP ${match.home_score} - ${match.away_score}</small>`
+        : "";
       return `<div class="stack-item">
         <div>
           <strong>${escapeHtml(match.matchday_label || "Giornata")}</strong>
           <span>${escapeHtml(competition?.name || "Competizione")}${match.played_on ? ` · ${fmtDateOnly(match.played_on)}` : ""}</span>
           <small>${clubButton(home)} vs ${clubButton(away)}</small>
         </div>
-        <div class="stack-item-side">${score}</div>
+        <div class="stack-item-side">${resultScore}${fpScore}</div>
       </div>`;
     })
     .join("");
@@ -1643,19 +1734,110 @@ function renderClubExtraSections({ clubId, honorClubId = null, seasonId = getSel
   `;
 }
 
+function getHonorRowsForHonorClub(honorClub) {
+  if (!honorClub) return [];
+  return buildHonorRows().filter((row) => {
+    if (row.honor_club_id && row.honor_club_id === honorClub.id) return true;
+    if (honorClub.source_club_id && row.club_id === honorClub.source_club_id) return true;
+    return normalizeTextKey(row.club_name) === normalizeTextKey(honorClub.name);
+  });
+}
+
+function getHonorVictoriesForHonorClub(honorClub) {
+  return getHonorRowsForHonorClub(honorClub)
+    .filter((row) => Number(row.placement || 0) === 1)
+    .sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || String(a.competition_name).localeCompare(String(b.competition_name)));
+}
+
+function renderHonorContextButton(row, honorClub) {
+  return `<button class="button button-secondary button-small honor-context-button" type="button" data-honor-context-season="${escapeHtml(row.season_id)}" data-honor-context-type="${escapeHtml(row.competition_type)}" data-honor-context-name="${escapeHtml(row.competition_name || "")}" data-honor-context-club="${escapeHtml(honorClub.id)}">Apri stagione</button>`;
+}
+
+function findCompetitionForHonorContext(seasonId, competitionType, competitionName = "") {
+  const byName = state.competitions.find((competition) => competition.season_id === seasonId && competition.competition_type === competitionType && competition.name === competitionName);
+  if (byName) return byName;
+  return state.competitions.find((competition) => competition.season_id === seasonId && competition.competition_type === competitionType);
+}
+
+function renderHonorContextDetail({ seasonId, competitionType, competitionName, honorClubId }) {
+  const target = document.getElementById("honorContextDetail");
+  if (!target) return;
+  const honorClub = getHonorClubById(honorClubId);
+  const competition = findCompetitionForHonorContext(seasonId, competitionType, competitionName);
+  if (!honorClub) {
+    target.innerHTML = `<p class="muted">Squadra storica non trovata.</p>`;
+    return;
+  }
+  if (!competition) {
+    target.innerHTML = `<p class="muted">Competizione non trovata per ${escapeHtml(seasonId)}.</p>`;
+    return;
+  }
+
+  if (competition.competition_type === "REGULAR_SEASON") {
+    target.innerHTML = `
+      <h3>${escapeHtml(competition.name)} · classifica ${escapeHtml(seasonId)}</h3>
+      ${renderStandingTable(competition)}
+    `;
+    return;
+  }
+
+  const clubId = honorClub.source_club_id;
+  const matches = state.calendarMatches
+    .filter((match) => match.competition_id === competition.id)
+    .filter((match) => !clubId || match.home_club_id === clubId || match.away_club_id === clubId)
+    .sort((a, b) => String(a.played_on || "9999-12-31").localeCompare(String(b.played_on || "9999-12-31")) || String(a.matchday_label || "").localeCompare(String(b.matchday_label || "")));
+
+  target.innerHTML = `
+    <h3>${escapeHtml(competition.name)} · partite ${escapeHtml(honorClub.name)}</h3>
+    ${clubId ? renderMatchList(matches) : `<p class="muted">Questa è una squadra storica non collegata a un club attuale: non posso filtrare automaticamente le partite per club.</p>${renderMatchList(matches)}`}
+  `;
+}
+
 function showHonorClubDialog(honorClubId) {
   const honorClub = getHonorClubById(honorClubId);
   if (!honorClub) return;
   const current = honorClub.source_club_id ? getClubById(honorClub.source_club_id) : null;
-  if (current) return showRosterDialog(current.id);
+  const victories = getHonorVictoriesForHonorClub(honorClub);
+  const allRows = getHonorRowsForHonorClub(honorClub);
+
+  const victoryRows = victories.map((row) => `<tr>
+    <td>${escapeHtml(row.season_id || "-")}</td>
+    <td>${escapeHtml(COMPETITION_LABELS[row.competition_type] || row.competition_type || "-")}</td>
+    <td>${escapeHtml(row.competition_name || row.notes || "-")}</td>
+    <td>${renderHonorContextButton(row, honorClub)}</td>
+  </tr>`).join("");
+
+  const podiumRows = allRows
+    .filter((row) => Number(row.placement || 0) > 0)
+    .sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999))
+    .map((row) => `<tr>
+      <td>${escapeHtml(row.season_id || "-")}</td>
+      <td>${escapeHtml(COMPETITION_LABELS[row.competition_type] || row.competition_type || "-")}</td>
+      <td>${row.placement ? `${row.placement}°` : "-"}</td>
+      <td>${escapeHtml(row.competition_name || row.notes || "-")}</td>
+      <td>${renderHonorContextButton(row, honorClub)}</td>
+    </tr>`).join("");
+
   el.rosterDialogTitle.textContent = `${honorClub.name} · storico`;
   el.rosterDialogBody.innerHTML = `
     <div class="player-summary-grid roster-summary-grid">
-      <div><span>Squadra</span><strong>${escapeHtml(honorClub.name)}</strong></div>
-      <div><span>Presidente</span><strong>${escapeHtml(honorClub.president || "-")}</strong></div>
-      <div><span>Stato</span><strong>Storica</strong></div>
+      <div><span>Squadra</span><strong>${clubNameWithLogo(honorClub)}</strong></div>
+      <div><span>Presidente</span><strong>${escapeHtml(honorClub.president || current?.president || "-")}</strong></div>
+      <div><span>Stato</span><strong>${current ? "Attuale" : "Storica"}</strong></div>
+      <div><span>Vittorie totali</span><strong>${victories.length}</strong></div>
     </div>
-    ${renderClubExtraSections({ clubId: null, honorClubId })}
+    <section class="detail-section">
+      <h3>Vittorie nelle competizioni</h3>
+      <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Competizione</th><th>Voce</th><th>Dettaglio</th></tr></thead><tbody>${victoryRows || '<tr><td colspan="4" class="muted center">Nessuna vittoria registrata.</td></tr>'}</tbody></table></div>
+    </section>
+    <section class="detail-section">
+      <h3>Piazzamenti e podi</h3>
+      <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Competizione</th><th>Pos.</th><th>Voce</th><th>Dettaglio</th></tr></thead><tbody>${podiumRows || '<tr><td colspan="5" class="muted center">Nessun piazzamento registrato.</td></tr>'}</tbody></table></div>
+    </section>
+    <section id="honorContextDetail" class="detail-section honor-context-detail">
+      <p class="muted">Clicca su “Apri stagione” per vedere la classifica della Regular Season o le partite della squadra nelle coppe.</p>
+    </section>
+    ${current ? renderClubExtraSections({ clubId: current.id, honorClubId }) : renderClubExtraSections({ clubId: null, honorClubId })}
   `;
   el.rosterDialog.showModal();
 }
@@ -2065,28 +2247,50 @@ function buildHonorRows() {
       placement: entry.placement,
       points: entry.points,
       notes: [entry.title, entry.notes].filter(Boolean).join(" · "),
+      fantapoints: null,
+      played: null,
+      wins: null,
+      draws: null,
+      losses: null,
+      goals_for: null,
+      goals_against: null,
+      goal_difference: null,
     });
   }
 
-  for (const standing of state.competitionStandings) {
-    const competition = getCompetitionById(standing.competition_id);
-    if (!competition || competition.competition_type !== "REGULAR_SEASON") continue;
-    const club = getClubById(standing.club_id);
-    rows.push({
-      source: "standing",
-      id: `standing-${standing.id}`,
-      season_id: competition.season_id,
-      club_id: standing.club_id,
-      honor_club_id: state.honorClubs.find((item) => item.source_club_id === standing.club_id)?.id || null,
-      club_name: club?.name || standing.club_id || "-",
-      president: club?.president || "-",
-      competition_type: competition.competition_type || "ALTRO",
-      competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
-      placement: standing.position,
-      points: standing.points,
-      notes: standing.notes,
-      fantapoints: standing.fantapoints,
-    });
+  for (const competition of state.competitions.filter((item) => item.competition_type === "REGULAR_SEASON")) {
+    const computedRows = getRegularSeasonStandingRows(competition);
+    const sourceRows = computedRows.length
+      ? computedRows
+      : state.competitionStandings
+        .filter((standing) => standing.competition_id === competition.id)
+        .sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+
+    for (const standing of sourceRows) {
+      const club = getClubById(standing.club_id);
+      rows.push({
+        source: computedRows.length ? "calendar" : "standing",
+        id: `${computedRows.length ? "calendar-standing" : "standing"}-${competition.id}-${standing.club_id}`,
+        season_id: competition.season_id,
+        club_id: standing.club_id,
+        honor_club_id: state.honorClubs.find((item) => item.source_club_id === standing.club_id)?.id || null,
+        club_name: club?.name || standing.club_id || "-",
+        president: club?.president || "-",
+        competition_type: competition.competition_type || "ALTRO",
+        competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
+        placement: standing.position,
+        points: standing.points,
+        notes: computedRows.length ? "da risultati calendario" : (standing.notes || "da classifica competizione"),
+        fantapoints: standing.fantapoints,
+        played: standing.played,
+        wins: standing.wins,
+        draws: standing.draws,
+        losses: standing.losses,
+        goals_for: standing.goals_for,
+        goals_against: standing.goals_against,
+        goal_difference: standing.goal_difference,
+      });
+    }
   }
 
   return rows.sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
@@ -2131,8 +2335,8 @@ function renderHonorRoll() {
   el.honorSummary.innerHTML = summaryRows.length
     ? summaryRows.map((row) => {
       const current = row.club_id ? getClubById(row.club_id) : null;
-      const honor = row.honor_club_id ? getHonorClubById(row.honor_club_id) : null;
-      const name = current ? clubButton(current) : honor ? honorClubButton(honor) : escapeHtml(row.club_name || "-");
+      const honor = row.honor_club_id ? getHonorClubById(row.honor_club_id) : (current ? state.honorClubs.find((item) => item.source_club_id === current.id) : null);
+      const name = honor ? honorClubButton(honor) : current ? clubButton(current) : escapeHtml(row.club_name || "-");
       const details = Object.entries(row.counts)
         .filter(([, count]) => count > 0)
         .map(([type, count]) => `${COMPETITION_LABELS[type] || type}: ${count}`)
@@ -2297,7 +2501,10 @@ function renderAdminLists() {
       const competition = getCompetitionById(match.competition_id);
       const home = getClubById(match.home_club_id);
       const away = getClubById(match.away_club_id);
-      return `<div class="admin-list-item"><span><strong>${escapeHtml(match.matchday_label || "Giornata")} · ${escapeHtml(competition?.name || "-")}</strong><small>${clubButton(home)} vs ${clubButton(away)} · ${match.played_on ? fmtDateOnly(match.played_on) : "senza data"}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-calendar="${escapeHtml(match.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-calendar="${escapeHtml(match.id)}">Elimina</button></span></div>`;
+      const goals = getMatchGoals(match);
+      const result = goals ? ` · risultato ${goals.home}-${goals.away}` : "";
+      const fp = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined ? ` · FP ${match.home_score}-${match.away_score}` : "";
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(match.matchday_label || "Giornata")} · ${escapeHtml(competition?.name || "-")}</strong><small>${clubButton(home)} vs ${clubButton(away)} · ${match.played_on ? fmtDateOnly(match.played_on) : "senza data"}${result}${fp}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-calendar="${escapeHtml(match.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-calendar="${escapeHtml(match.id)}">Elimina</button></span></div>`;
     }).join("") || renderAdminListMessage(query ? "Nessuna giornata trovata." : "Nessuna giornata per la stagione selezionata.");
   }
 
@@ -3270,6 +3477,8 @@ async function handleCalendarSubmit(event) {
     away_club_id: el.calendarAwayClub.value || null,
     home_score: toNumber(el.calendarHomeScore.value),
     away_score: toNumber(el.calendarAwayScore.value),
+    home_goals: toNumber(el.calendarHomeGoals?.value),
+    away_goals: toNumber(el.calendarAwayGoals?.value),
     status: el.calendarStatus.value,
   };
   const response = id ? await state.supabase.from("calendar_matches").update(payload).eq("id", id) : await state.supabase.from("calendar_matches").insert(payload);
@@ -3279,7 +3488,7 @@ async function handleCalendarSubmit(event) {
 
 function resetCalendarForm() {
   if (!el.calendarForm) return;
-  el.calendarMatchId.value = ""; el.calendarMatchday.value = ""; el.calendarDate.value = ""; el.calendarHomeClub.value = ""; el.calendarAwayClub.value = ""; el.calendarHomeScore.value = ""; el.calendarAwayScore.value = ""; el.calendarStatus.value = "SCHEDULED";
+  el.calendarMatchId.value = ""; el.calendarMatchday.value = ""; el.calendarDate.value = ""; el.calendarHomeClub.value = ""; el.calendarAwayClub.value = ""; el.calendarHomeScore.value = ""; el.calendarAwayScore.value = ""; if (el.calendarHomeGoals) el.calendarHomeGoals.value = ""; if (el.calendarAwayGoals) el.calendarAwayGoals.value = ""; el.calendarStatus.value = "SCHEDULED";
 }
 
 async function ensureHonorClubFromForm() {
@@ -3437,7 +3646,7 @@ function fillEditFormsFromAdminAction(target) {
   const standingId = target.closest("[data-edit-standing]")?.dataset.editStanding;
   if (standingId) { const r = state.competitionStandings.find((item) => item.id === standingId); if (!r) return; el.standingId.value = r.id; el.standingCompetition.value = r.competition_id; el.standingClub.value = r.club_id; el.standingPosition.value = r.position ?? ""; el.standingPoints.value = r.points ?? ""; el.standingFantapoints.value = r.fantapoints ?? ""; el.standingGoalsFor.value = r.goals_for ?? ""; el.standingGoalsAgainst.value = r.goals_against ?? ""; el.standingPlayed.value = r.played ?? ""; return; }
   const calendarId = target.closest("[data-edit-calendar]")?.dataset.editCalendar;
-  if (calendarId) { const m = state.calendarMatches.find((item) => item.id === calendarId); if (!m) return; el.calendarMatchId.value = m.id; el.calendarCompetition.value = m.competition_id; el.calendarMatchday.value = m.matchday_label || ""; el.calendarDate.value = m.played_on || ""; el.calendarHomeClub.value = m.home_club_id || ""; el.calendarAwayClub.value = m.away_club_id || ""; el.calendarHomeScore.value = m.home_score ?? ""; el.calendarAwayScore.value = m.away_score ?? ""; el.calendarStatus.value = m.status || "SCHEDULED"; return; }
+  if (calendarId) { const m = state.calendarMatches.find((item) => item.id === calendarId); if (!m) return; el.calendarMatchId.value = m.id; el.calendarCompetition.value = m.competition_id; el.calendarMatchday.value = m.matchday_label || ""; el.calendarDate.value = m.played_on || ""; el.calendarHomeClub.value = m.home_club_id || ""; el.calendarAwayClub.value = m.away_club_id || ""; el.calendarHomeScore.value = m.home_score ?? ""; el.calendarAwayScore.value = m.away_score ?? ""; if (el.calendarHomeGoals) el.calendarHomeGoals.value = m.home_goals ?? ""; if (el.calendarAwayGoals) el.calendarAwayGoals.value = m.away_goals ?? ""; el.calendarStatus.value = m.status || "SCHEDULED"; return; }
   const honorId = target.closest("[data-edit-honor]")?.dataset.editHonor;
   if (honorId) {
     const h = state.honorRoll.find((item) => item.id === honorId);
@@ -3742,6 +3951,13 @@ function bindEvents() {
     el.rosterDialogBody.addEventListener("click", (event) => {
       const rosterButton = event.target.closest("[data-roster-club-id]");
       if (rosterButton) return showRosterDialog(rosterButton.dataset.rosterClubId);
+      const honorContextButton = event.target.closest("[data-honor-context-season]");
+      if (honorContextButton) return renderHonorContextDetail({
+        seasonId: honorContextButton.dataset.honorContextSeason,
+        competitionType: honorContextButton.dataset.honorContextType,
+        competitionName: honorContextButton.dataset.honorContextName,
+        honorClubId: honorContextButton.dataset.honorContextClub,
+      });
       const honorButton = event.target.closest("[data-honor-club-id]");
       if (honorButton) return showHonorClubDialog(honorButton.dataset.honorClubId);
       const playerButtonEl = event.target.closest("[data-player-id]");
