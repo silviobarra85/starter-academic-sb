@@ -172,6 +172,37 @@
         </table>
       </div>
     </section>
+
+      <section class="panel" aria-labelledby="marketActivityTitle">
+        <div class="panel-header">
+          <div>
+            <h2 id="marketActivityTitle">Svincoli e mercato</h2>
+            <p>Ultimi svincoli e movimenti di mercato. Puoi filtrare per club o cercare per giocatore/descrizione.</p>
+          </div>
+          <div class="filters-row">
+            <select id="marketClubFilter" class="input filter-input" aria-label="Filtro club mercato">
+              <option value="all">Tutti i club</option>
+            </select>
+            <input id="marketSearch" class="input search-input" type="search" placeholder="Cerca giocatore, club, descrizione..." />
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Club</th>
+                <th>Tipo</th>
+                <th>Descrizione</th>
+                <th class="number">FM</th>
+              </tr>
+            </thead>
+            <tbody id="marketActivityTableBody">
+              <tr><td colspan="5" class="muted center">Caricamento...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </section>
 
     <section class="app-page" data-page="rosters" aria-labelledby="rostersTitle">
@@ -261,14 +292,14 @@
         <table>
           <thead>
             <tr>
-              <th>Giocatore</th>
-              <th>Squadra</th>
-              <th>Ruoli</th>
-              <th>R</th>
-              <th>Rosa</th>
-              <th class="number">Qt.A</th>
-              <th class="number">FVM</th>
-              <th>Stato</th>
+              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="player_name">Giocatore</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="real_team">Squadra</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="mantra_roles">Ruoli</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="classic_role">R</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="roster">Rosa</button></th>
+              <th class="number"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="quotation_current">Qt.A</button></th>
+              <th class="number"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="fvm">FVM</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="status">Stato</button></th>
               <th>Storico</th>
             </tr>
           </thead>
@@ -291,13 +322,13 @@
         <table>
           <thead>
             <tr>
-              <th>Giocatore</th>
-              <th>Squadra</th>
-              <th>Ruoli</th>
-              <th>R</th>
-              <th class="number">Qt.A</th>
-              <th class="number">FVM</th>
-              <th>Stato</th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="player_name">Giocatore</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="real_team">Squadra</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="mantra_roles">Ruoli</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="classic_role">R</button></th>
+              <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="quotation_current">Qt.A</button></th>
+              <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="fvm">FVM</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="status">Stato</button></th>
               <th>Storico</th>
             </tr>
           </thead>
@@ -411,6 +442,62 @@
         <div class="panel-header">
           <div>
             <p class="eyebrow">Area admin</p>
+            <h2>Stagioni</h2>
+            <p>Crea una nuova stagione: vengono generate automaticamente Regular Season, Champions League, Coppa Italia e Playoff.</p>
+          </div>
+        </div>
+        <form id="seasonForm" class="form-grid">
+          <label>
+            ID stagione
+            <input id="seasonIdInput" class="input" type="text" placeholder="Es. 2027-2028" required />
+          </label>
+          <label>
+            Nome stagione
+            <input id="seasonNameInput" class="input" type="text" placeholder="Es. Stagione 2027-2028" />
+          </label>
+          <label>
+            Data inizio
+            <input id="seasonStartsOn" class="input" type="date" required />
+          </label>
+          <label>
+            Data fine
+            <input id="seasonEndsOn" class="input" type="date" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Crea stagione</button>
+            <span id="seasonFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Riversa rose nella stagione successiva</h2>
+            <p>Copia nella stagione successiva tutti i giocatori ancora attivi nelle rose. Gli svincoli vanno segnati prima del riversamento.</p>
+          </div>
+        </div>
+        <form id="rolloverForm" class="form-grid">
+          <label>
+            Stagione origine
+            <select id="rolloverSourceSeason" class="input" required></select>
+          </label>
+          <label>
+            Stagione destinazione
+            <input id="rolloverTargetSeason" class="input" type="text" placeholder="Es. 2027-2028" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Riversa rose</button>
+            <span id="rolloverStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
             <h2>Modifica club</h2>
             <p>Aggiorna i placeholder senza entrare nel pannello Supabase.</p>
           </div>
@@ -428,6 +515,16 @@
           <label>
             Presidente
             <input id="clubPresidentInput" class="input" type="text" required />
+          </label>
+          <label>
+            Logo squadra
+            <input id="clubLogoInput" class="input" type="file" accept="image/*" />
+            <small class="field-hint">Il logo viene salvato nel DB come immagine base64 e mostrato in forma tonda.</small>
+          </label>
+          <div class="logo-admin-preview" id="clubLogoPreview"></div>
+          <label class="checkbox-label">
+            <input id="removeClubLogoInput" type="checkbox" />
+            Rimuovi logo attuale
           </label>
           <label class="checkbox-label">
             <input id="clubActiveInput" type="checkbox" />
@@ -698,8 +795,8 @@
         <div class="panel-header">
           <div>
             <p class="eyebrow">Area admin</p>
-            <h2>Classifica competizione</h2>
-            <p>Aggiungi o modifica una riga di classifica.</p>
+            <h2>Classifica Regular Season</h2>
+            <p>Usa questa sezione per il campionato/Regular Season. Per Coppa Italia, Champions e Playoff inserisci podio e vincitori nell'Albo d'oro e le partite nel calendario.</p>
           </div>
         </div>
         <form id="standingForm" class="form-grid">
@@ -826,6 +923,10 @@
           <label>
             Presidente storico
             <input id="honorPresidentInput" class="input" type="text" placeholder="Es. Mario Rossi" />
+          </label>
+          <label>
+            Logo squadra storica <span class="muted">(opzionale)</span>
+            <input id="honorClubLogoInput" class="input" type="file" accept="image/*" />
           </label>
           <label>
             Competizione
@@ -987,7 +1088,7 @@
   </dialog>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V14 storico, backup DB e albo d'oro esteso</p>
+    <p>ZonaOrientale Salerno · V15 competizioni, loghi, albo d'oro e rollover rose</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>

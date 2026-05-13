@@ -1045,3 +1045,83 @@ code {
 .text-ok {
   color: #15803d;
 }
+
+/* V15 additions */
+.club-name-with-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  vertical-align: middle;
+}
+
+.club-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(148, 163, 184, 0.12);
+  flex: 0 0 auto;
+}
+
+.club-logo-lg {
+  width: 64px;
+  height: 64px;
+}
+
+.club-logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--text, #0f172a);
+}
+
+.logo-admin-preview {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.table-sort {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+.table-sort:hover {
+  text-decoration: underline;
+}
+
+.collapse-card {
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 14px;
+  padding: 0.75rem 0.9rem;
+  background: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.75rem;
+}
+
+.collapse-card summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.collapse-card summary span {
+  color: var(--muted, #64748b);
+  font-size: 0.85rem;
+}
+
+.club-link {
+  text-align: left;
+}
