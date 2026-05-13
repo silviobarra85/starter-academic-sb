@@ -244,6 +244,8 @@ const el = {
   calendarAwayScore: document.getElementById("calendarAwayScore"),
   calendarHomeGoals: document.getElementById("calendarHomeGoals"),
   calendarAwayGoals: document.getElementById("calendarAwayGoals"),
+  calendarManualWinnerClub: document.getElementById("calendarManualWinnerClub"),
+  calendarManualWinnerNote: document.getElementById("calendarManualWinnerNote"),
   calendarStatus: document.getElementById("calendarStatus"),
   calendarFormReset: document.getElementById("calendarFormReset"),
   calendarFormStatus: document.getElementById("calendarFormStatus"),
@@ -1291,11 +1293,16 @@ function renderMatchList(matches) {
       const fpScore = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined
         ? `<small>FP ${match.home_score} - ${match.away_score}</small>`
         : "";
+      const manualWinner = match.manual_winner_club_id ? getClubById(match.manual_winner_club_id) : null;
+      const manualWinnerText = manualWinner
+        ? `<small>Vincitrice manuale: ${clubButton(manualWinner)}${match.manual_winner_note ? ` · ${escapeHtml(match.manual_winner_note)}` : ""}</small>`
+        : "";
       return `<div class="stack-item">
         <div>
           <strong>${escapeHtml(match.matchday_label || "Giornata")}</strong>
           <span>${escapeHtml(competition?.name || "Competizione")}${match.played_on ? ` · ${fmtDateOnly(match.played_on)}` : ""}</span>
           <small>${clubButton(home)} vs ${clubButton(away)}</small>
+          ${manualWinnerText}
         </div>
         <div class="stack-item-side">${resultScore}${fpScore}</div>
       </div>`;
@@ -2324,12 +2331,32 @@ function getCupFinalMatch(competition) {
     .sort((a, b) => String(b.played_on || "0000-00-00").localeCompare(String(a.played_on || "0000-00-00")) || String(b.created_at || "").localeCompare(String(a.created_at || "")))[0] || null;
 }
 
+function getManualWinnerOutcome(finalMatch) {
+  const manualWinnerId = finalMatch?.manual_winner_club_id || null;
+  if (!manualWinnerId || !finalMatch?.home_club_id || !finalMatch?.away_club_id) return null;
+  if (![finalMatch.home_club_id, finalMatch.away_club_id].includes(manualWinnerId)) return null;
+  const runnerUpId = manualWinnerId === finalMatch.home_club_id ? finalMatch.away_club_id : finalMatch.home_club_id;
+  return {
+    winnerId: manualWinnerId,
+    runnerUpId,
+    decidedBy: "manual",
+    note: finalMatch.manual_winner_note || "Vincitore indicato manualmente",
+  };
+}
+
 function getCupFinalOutcome(competition) {
   const finalMatch = getCupFinalMatch(competition);
   if (!finalMatch || !finalMatch.home_club_id || !finalMatch.away_club_id) return null;
+
+  const manualOutcome = getManualWinnerOutcome(finalMatch);
+  if (manualOutcome) {
+    return { finalMatch, ...manualOutcome };
+  }
+
   const goals = getMatchGoals(finalMatch);
   let winnerId = null;
   let runnerUpId = null;
+  let decidedBy = "result";
 
   if (goals) {
     if (goals.home > goals.away) {
@@ -2338,21 +2365,23 @@ function getCupFinalOutcome(competition) {
     } else if (goals.away > goals.home) {
       winnerId = finalMatch.away_club_id;
       runnerUpId = finalMatch.home_club_id;
+    } else {
+      // Le finali possono finire in parità: in quel caso serve vincitore manuale.
+      return null;
     }
-  }
-
-  // Fallback: in caso di risultato finale in parità, usa i fantapunti se disponibili.
-  if (!winnerId) {
+  } else {
+    // Fallback solo se il risultato finale non è stato inserito: usa i fantapunti se disponibili.
     const homeFp = finalMatch.home_score !== null && finalMatch.home_score !== undefined ? Number(finalMatch.home_score) : null;
     const awayFp = finalMatch.away_score !== null && finalMatch.away_score !== undefined ? Number(finalMatch.away_score) : null;
     if (Number.isFinite(homeFp) && Number.isFinite(awayFp) && homeFp !== awayFp) {
       winnerId = homeFp > awayFp ? finalMatch.home_club_id : finalMatch.away_club_id;
       runnerUpId = homeFp > awayFp ? finalMatch.away_club_id : finalMatch.home_club_id;
+      decidedBy = "fantapoints";
     }
   }
 
   if (!winnerId || !runnerUpId) return null;
-  return { finalMatch, winnerId, runnerUpId };
+  return { finalMatch, winnerId, runnerUpId, decidedBy, note: null };
 }
 
 function manualHonorExistsForCupPlacement(competition, placement) {
@@ -2391,7 +2420,7 @@ function buildAutomaticCupHonorRows() {
         competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
         placement: item.placement,
         points: null,
-        notes: `${item.title} · da finale calendario`,
+        notes: [item.title, outcome.decidedBy === "manual" ? `vincitore manuale${outcome.note ? `: ${outcome.note}` : ""}` : "da finale calendario"].filter(Boolean).join(" · "),
         fantapoints: null,
         played: null,
         wins: null,
@@ -2542,14 +2571,16 @@ function sortMatchesByRoundAndDate(a, b) {
 function renderMatchTable(matches) {
   if (!matches.length) return `<p class="muted">Nessuna partita inserita.</p>`;
   return `<div class="table-wrap compact-table"><table>
-    <thead><tr><th>Giornata</th><th>Data</th><th>Casa</th><th>Trasferta</th><th class="number">Ris.</th><th class="number">FP</th></tr></thead>
+    <thead><tr><th>Giornata</th><th>Data</th><th>Casa</th><th>Trasferta</th><th class="number">Ris.</th><th class="number">FP</th><th>Vincitrice manuale</th></tr></thead>
     <tbody>${matches.map((match) => {
       const home = getClubById(match.home_club_id);
       const away = getClubById(match.away_club_id);
       const goals = getMatchGoals(match);
       const result = goals ? `${goals.home}-${goals.away}` : "-";
       const fp = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined ? `${match.home_score}-${match.away_score}` : "-";
-      return `<tr><td>${escapeHtml(match.matchday_label || "-")}</td><td>${match.played_on ? fmtDateOnly(match.played_on) : "-"}</td><td>${clubButton(home)}</td><td>${clubButton(away)}</td><td class="number"><strong>${escapeHtml(result)}</strong></td><td class="number">${escapeHtml(fp)}</td></tr>`;
+      const manualWinner = match.manual_winner_club_id ? getClubById(match.manual_winner_club_id) : null;
+      const manual = manualWinner ? `${clubButton(manualWinner)}${match.manual_winner_note ? `<small>${escapeHtml(match.manual_winner_note)}</small>` : ""}` : "-";
+      return `<tr><td>${escapeHtml(match.matchday_label || "-")}</td><td>${match.played_on ? fmtDateOnly(match.played_on) : "-"}</td><td>${clubButton(home)}</td><td>${clubButton(away)}</td><td class="number"><strong>${escapeHtml(result)}</strong></td><td class="number">${escapeHtml(fp)}</td><td>${manual}</td></tr>`;
     }).join("")}</tbody>
   </table></div>`;
 }
@@ -2712,6 +2743,9 @@ function renderAdminExtendedControls() {
   }
   if (el.calendarHomeClub) selectOptionPreservingValue(el.calendarHomeClub, `<option value="">-</option>${clubOptions}`, el.calendarHomeClub.value, "");
   if (el.calendarAwayClub) selectOptionPreservingValue(el.calendarAwayClub, `<option value="">-</option>${clubOptions}`, el.calendarAwayClub.value, "");
+  if (el.calendarManualWinnerClub) {
+    selectOptionPreservingValue(el.calendarManualWinnerClub, `<option value="">Automatico / nessuno</option>${clubOptions}`, el.calendarManualWinnerClub.value, "");
+  }
   if (el.honorClub) selectOptionPreservingValue(el.honorClub, renderHonorClubOptions(), el.honorClub.value, "__new__");
 
   if (el.rolloverTargetSeason && !el.rolloverTargetSeason.value) {
@@ -3845,6 +3879,8 @@ async function handleCalendarSubmit(event) {
     away_score: toNumber(el.calendarAwayScore.value),
     home_goals: toNumber(el.calendarHomeGoals?.value),
     away_goals: toNumber(el.calendarAwayGoals?.value),
+    manual_winner_club_id: el.calendarManualWinnerClub?.value || null,
+    manual_winner_note: el.calendarManualWinnerNote?.value.trim() || null,
     status: el.calendarStatus.value,
   };
   const response = id ? await state.supabase.from("calendar_matches").update(payload).eq("id", id) : await state.supabase.from("calendar_matches").insert(payload);
@@ -3870,6 +3906,8 @@ function resetCalendarForm(options = {}) {
   el.calendarAwayScore.value = "";
   if (el.calendarHomeGoals) el.calendarHomeGoals.value = "";
   if (el.calendarAwayGoals) el.calendarAwayGoals.value = "";
+  if (el.calendarManualWinnerClub) el.calendarManualWinnerClub.value = "";
+  if (el.calendarManualWinnerNote) el.calendarManualWinnerNote.value = "";
   el.calendarStatus.value = "SCHEDULED";
   if (el.calendarCompetition && keepCompetition) el.calendarCompetition.value = keepCompetition;
 }
@@ -4042,7 +4080,25 @@ function fillEditFormsFromAdminAction(target) {
   const standingId = target.closest("[data-edit-standing]")?.dataset.editStanding;
   if (standingId) { const r = state.competitionStandings.find((item) => item.id === standingId); if (!r) return; el.standingId.value = r.id; el.standingCompetition.value = r.competition_id; el.standingClub.value = r.club_id; el.standingPosition.value = r.position ?? ""; el.standingPoints.value = r.points ?? ""; el.standingFantapoints.value = r.fantapoints ?? ""; el.standingGoalsFor.value = r.goals_for ?? ""; el.standingGoalsAgainst.value = r.goals_against ?? ""; el.standingPlayed.value = r.played ?? ""; return; }
   const calendarId = target.closest("[data-edit-calendar]")?.dataset.editCalendar;
-  if (calendarId) { const m = state.calendarMatches.find((item) => item.id === calendarId); if (!m) return; el.calendarMatchId.value = m.id; el.calendarCompetition.value = m.competition_id; el.calendarMatchday.value = m.matchday_label || ""; el.calendarDate.value = m.played_on || ""; el.calendarHomeClub.value = m.home_club_id || ""; el.calendarAwayClub.value = m.away_club_id || ""; el.calendarHomeScore.value = m.home_score ?? ""; el.calendarAwayScore.value = m.away_score ?? ""; if (el.calendarHomeGoals) el.calendarHomeGoals.value = m.home_goals ?? ""; if (el.calendarAwayGoals) el.calendarAwayGoals.value = m.away_goals ?? ""; el.calendarStatus.value = m.status || "SCHEDULED"; return; }
+  if (calendarId) {
+    const m = state.calendarMatches.find((item) => item.id === calendarId);
+    if (!m) return;
+    el.calendarMatchId.value = m.id;
+    el.calendarCompetition.value = m.competition_id;
+    updateCalendarMatchdaySuggestions();
+    el.calendarMatchday.value = m.matchday_label || "";
+    el.calendarDate.value = m.played_on || "";
+    el.calendarHomeClub.value = m.home_club_id || "";
+    el.calendarAwayClub.value = m.away_club_id || "";
+    el.calendarHomeScore.value = m.home_score ?? "";
+    el.calendarAwayScore.value = m.away_score ?? "";
+    if (el.calendarHomeGoals) el.calendarHomeGoals.value = m.home_goals ?? "";
+    if (el.calendarAwayGoals) el.calendarAwayGoals.value = m.away_goals ?? "";
+    if (el.calendarManualWinnerClub) el.calendarManualWinnerClub.value = m.manual_winner_club_id || "";
+    if (el.calendarManualWinnerNote) el.calendarManualWinnerNote.value = m.manual_winner_note || "";
+    el.calendarStatus.value = m.status || "SCHEDULED";
+    return;
+  }
   const honorId = target.closest("[data-edit-honor]")?.dataset.editHonor;
   if (honorId) {
     const h = state.honorRoll.find((item) => item.id === honorId);
