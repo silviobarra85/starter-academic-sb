@@ -1226,6 +1226,96 @@ function getCurrentClubs() {
   return state.clubs.filter((club) => club.active !== false);
 }
 
+function getClubsForSeason(seasonId = getSelectedSeasonId()) {
+  const ids = new Set();
+
+  state.clubSeasonIdentities
+    .filter((identity) => identity.season_id === seasonId)
+    .forEach((identity) => { if (identity.club_id) ids.add(identity.club_id); });
+
+  state.rosterEntries
+    .filter((entry) => entry.season_id === seasonId)
+    .forEach((entry) => { if (entry.club_id) ids.add(entry.club_id); });
+
+  state.calendarMatches
+    .filter((match) => match.season_id === seasonId)
+    .forEach((match) => {
+      if (match.home_club_id) ids.add(match.home_club_id);
+      if (match.away_club_id) ids.add(match.away_club_id);
+      if (match.manual_winner_club_id) ids.add(match.manual_winner_club_id);
+    });
+
+  const seasonCompetitionIds = new Set(
+    state.competitions
+      .filter((competition) => competition.season_id === seasonId)
+      .map((competition) => competition.id),
+  );
+
+  state.competitionStandings
+    .filter((standing) => seasonCompetitionIds.has(standing.competition_id))
+    .forEach((standing) => { if (standing.club_id) ids.add(standing.club_id); });
+
+  if (!ids.size) return getCurrentClubs();
+
+  return state.clubs.filter((club) => ids.has(club.id));
+}
+
+function getCalendarCompetitionSeasonId() {
+  const competition = getCompetitionById(el.calendarCompetition?.value);
+  return competition?.season_id || getSelectedSeasonId();
+}
+
+function renderClubOptionsForSeason(seasonId = getSelectedSeasonId()) {
+  return getClubsForSeason(seasonId)
+    .map((club) => {
+      const displayClub = applyClubSeasonIdentity(club, seasonId) || club;
+      return `<option value="${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}</option>`;
+    })
+    .join("");
+}
+
+function updateCalendarManualWinnerOptions() {
+  if (!el.calendarManualWinnerClub) return;
+
+  const seasonId = getCalendarCompetitionSeasonId();
+  const selected = el.calendarManualWinnerClub.value || "";
+  const homeId = el.calendarHomeClub?.value || "";
+  const awayId = el.calendarAwayClub?.value || "";
+  const candidateIds = [homeId, awayId].filter(Boolean);
+  const candidates = candidateIds.length
+    ? candidateIds.map((id) => getClubById(id)).filter(Boolean)
+    : getClubsForSeason(seasonId);
+
+  const options = candidates
+    .map((club) => {
+      const displayClub = applyClubSeasonIdentity(club, seasonId) || club;
+      return `<option value="${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}</option>`;
+    })
+    .join("");
+
+  selectOptionPreservingValue(
+    el.calendarManualWinnerClub,
+    `<option value="">Automatico / nessuno</option>${options}`,
+    selected,
+    "",
+  );
+}
+
+function updateCalendarClubOptions() {
+  const seasonId = getCalendarCompetitionSeasonId();
+  const clubOptions = renderClubOptionsForSeason(seasonId);
+  const fallbackClubId = getClubsForSeason(seasonId)[0]?.id || "";
+
+  if (el.calendarHomeClub) {
+    selectOptionPreservingValue(el.calendarHomeClub, `<option value="">-</option>${clubOptions}`, el.calendarHomeClub.value, fallbackClubId);
+  }
+  if (el.calendarAwayClub) {
+    selectOptionPreservingValue(el.calendarAwayClub, `<option value="">-</option>${clubOptions}`, el.calendarAwayClub.value, "");
+  }
+
+  updateCalendarManualWinnerOptions();
+}
+
 function getHonorClubById(honorClubId) {
   return state.honorClubs.find((club) => club.id === honorClubId);
 }
@@ -3313,11 +3403,7 @@ function renderAdminExtendedControls() {
   if (el.calendarCompetition) {
     selectOptionPreservingValue(el.calendarCompetition, calendarCompetitionOptions || `<option value="">Nessuna competizione</option>`, el.calendarCompetition.value, competitionsForSelectedSeason[0]?.id || "");
   }
-  if (el.calendarHomeClub) selectOptionPreservingValue(el.calendarHomeClub, `<option value="">-</option>${clubOptions}`, el.calendarHomeClub.value, "");
-  if (el.calendarAwayClub) selectOptionPreservingValue(el.calendarAwayClub, `<option value="">-</option>${clubOptions}`, el.calendarAwayClub.value, "");
-  if (el.calendarManualWinnerClub) {
-    selectOptionPreservingValue(el.calendarManualWinnerClub, `<option value="">Automatico / nessuno</option>${clubOptions}`, el.calendarManualWinnerClub.value, "");
-  }
+  updateCalendarClubOptions();
   if (el.honorClub) selectOptionPreservingValue(el.honorClub, renderHonorClubOptions(), el.honorClub.value, "__new__");
   const presidentOptions = renderPresidentOptions();
   if (el.clubPresidentSelect) { const current = resolvePresidentValue(el.clubPresidentSelect, el.clubPresidentInput); el.clubPresidentSelect.innerHTML = presidentOptions; setPresidentControls(el.clubPresidentSelect, el.clubPresidentInput, current || el.clubPresidentInput?.value || ""); }
@@ -4561,6 +4647,20 @@ async function handleCalendarSubmit(event) {
   el.calendarFormStatus.textContent = "Salvataggio...";
   const competition = getCompetitionById(el.calendarCompetition.value);
   const id = el.calendarMatchId.value || null;
+  const manualWinnerId = el.calendarManualWinnerClub?.value || null;
+
+  if (manualWinnerId) {
+    const participants = [el.calendarHomeClub.value, el.calendarAwayClub.value].filter(Boolean);
+    if (participants.length && !participants.includes(manualWinnerId)) {
+      el.calendarFormStatus.textContent = "La vincitrice manuale deve essere una delle due squadre della partita.";
+      return;
+    }
+    if (competition?.competition_type === "REGULAR_SEASON") {
+      el.calendarFormStatus.textContent = "La vincitrice manuale è prevista solo per coppe e playoff, non per la Regular Season.";
+      return;
+    }
+  }
+
   const payload = {
     season_id: competition?.season_id || getSelectedSeasonId(),
     competition_id: el.calendarCompetition.value,
@@ -4572,7 +4672,7 @@ async function handleCalendarSubmit(event) {
     away_score: toNumber(el.calendarAwayScore.value),
     home_goals: toNumber(el.calendarHomeGoals?.value),
     away_goals: toNumber(el.calendarAwayGoals?.value),
-    manual_winner_club_id: el.calendarManualWinnerClub?.value || null,
+    manual_winner_club_id: manualWinnerId,
     manual_winner_note: el.calendarManualWinnerNote?.value.trim() || null,
     status: el.calendarStatus.value,
   };
@@ -4603,6 +4703,7 @@ function resetCalendarForm(options = {}) {
   if (el.calendarManualWinnerNote) el.calendarManualWinnerNote.value = "";
   el.calendarStatus.value = "SCHEDULED";
   if (el.calendarCompetition && keepCompetition) el.calendarCompetition.value = keepCompetition;
+  updateCalendarClubOptions();
 }
 
 async function ensureHonorClubFromForm() {
@@ -4803,10 +4904,12 @@ function fillEditFormsFromAdminAction(target) {
     el.calendarMatchId.value = m.id;
     el.calendarCompetition.value = m.competition_id;
     updateCalendarMatchdaySuggestions();
+    updateCalendarClubOptions();
     el.calendarMatchday.value = m.matchday_label || "";
     el.calendarDate.value = m.played_on || "";
     el.calendarHomeClub.value = m.home_club_id || "";
     el.calendarAwayClub.value = m.away_club_id || "";
+    updateCalendarManualWinnerOptions();
     el.calendarHomeScore.value = m.home_score ?? "";
     el.calendarAwayScore.value = m.away_score ?? "";
     if (el.calendarHomeGoals) el.calendarHomeGoals.value = m.home_goals ?? "";
@@ -5142,7 +5245,15 @@ function bindEvents() {
   });
 
   [el.competitionSeason, el.standingCompetition, el.calendarCompetition, el.honorSeason, el.clubIdentitySeason].forEach((node) => {
-    if (node) node.addEventListener("change", () => { updateCalendarMatchdaySuggestions(); renderAdminLists(); });
+    if (node) node.addEventListener("change", () => {
+      updateCalendarMatchdaySuggestions();
+      if (node === el.calendarCompetition) updateCalendarClubOptions();
+      renderAdminLists();
+    });
+  });
+
+  [el.calendarHomeClub, el.calendarAwayClub].forEach((node) => {
+    if (node) node.addEventListener("change", updateCalendarManualWinnerOptions);
   });
 
   [el.newsAdminList, el.competitionAdminList, el.standingAdminList, el.calendarAdminList, el.honorAdminList, el.historicalClubAdminList, el.clubIdentityAdminList].forEach((node) => {
