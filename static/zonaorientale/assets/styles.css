@@ -2567,3 +2567,212 @@ body.is-mobile-ux .listone-player-cell .link-button,
 body.is-mobile-ux .mobile-roster-cell .link-button,
 body.is-mobile-ux .standing-table .link-button { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
 body.is-mobile-ux .status-dot { width: 0.62rem; height: 0.62rem; }
+
+/* V33 - Mobile-only compact tables for standings and listone.
+   Desktop layout is intentionally unchanged. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .standing-table .standing-desktop-col {
+    display: none !important;
+  }
+
+  .standing-table .mobile-only-col,
+  .standing-table .mobile-only-cell {
+    display: table-cell !important;
+  }
+
+  .mobile-standing-table {
+    table-layout: fixed !important;
+  }
+
+  .mobile-standing-table .mobile-standing-logo-head,
+  .mobile-standing-table .mobile-standing-logo-cell {
+    width: 52px !important;
+    text-align: center !important;
+  }
+
+  .mobile-standing-table .mobile-standing-logo-cell .club-logo {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto;
+  }
+
+  .mobile-standing-table th:nth-last-child(3),
+  .mobile-standing-table td:nth-last-child(3),
+  .mobile-standing-table th:nth-last-child(2),
+  .mobile-standing-table td:nth-last-child(2) {
+    width: 44px !important;
+    text-align: right !important;
+  }
+
+  .mobile-standing-table th:last-child,
+  .mobile-standing-table td:last-child {
+    width: 58px !important;
+    text-align: right !important;
+  }
+
+  .listone-table .listone-mantra-col,
+  .listone-table .listone-fvm-col {
+    display: none !important;
+  }
+
+  .listone-table .mobile-role-combo {
+    display: inline-flex !important;
+    flex-direction: column;
+    gap: 1px;
+    line-height: 1.05;
+    max-width: 100%;
+  }
+
+  .listone-table .mobile-role-combo small {
+    font-size: 0.58rem;
+    color: #94a3b8;
+    max-width: 54px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .listone-table .mobile-roster-logo-only .club-logo,
+  .mobile-roster-logo-only .club-logo {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+  }
+
+  .mobile-sv-label {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.14);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    color: #cbd5e1;
+    font-weight: 800;
+    font-size: 0.64rem;
+  }
+
+  .listone-table th:nth-child(1),
+  .listone-table td:nth-child(1) {
+    width: 34% !important;
+    min-width: 98px !important;
+  }
+
+  .listone-table th:nth-child(2),
+  .listone-table td:nth-child(2) {
+    width: 34px !important;
+    text-align: center !important;
+  }
+
+  .listone-table th:nth-child(4),
+  .listone-table td:nth-child(4) {
+    width: 58px !important;
+    text-align: center !important;
+  }
+
+  .listone-table th:nth-child(5),
+  .listone-table td:nth-child(5) {
+    width: 42px !important;
+    text-align: center !important;
+  }
+
+  .listone-table th:nth-child(6),
+  .listone-table td:nth-child(6) {
+    width: 44px !important;
+    text-align: right !important;
+  }
+
+  .listone-table th:nth-child(8),
+  .listone-table td:nth-child(8) {
+    width: 32px !important;
+    text-align: center !important;
+  }
+
+  .listone-table th:nth-child(9),
+  .listone-table td:nth-child(9) {
+    width: 40px !important;
+    text-align: center !important;
+  }
+
+  .listone-table .mobile-history-cell .link-button {
+    font-weight: 900;
+    font-size: 0.9rem;
+    min-width: 28px;
+  }
+
+  .listone-table .mobile-status-cell .status-dot {
+    width: 0.72rem;
+    height: 0.72rem;
+  }
+}
+
+body.is-mobile-ux .standing-table .standing-desktop-col {
+  display: none !important;
+}
+body.is-mobile-ux .standing-table .mobile-only-col,
+body.is-mobile-ux .standing-table .mobile-only-cell {
+  display: table-cell !important;
+}
+body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-cell {
+  width: 52px !important;
+  text-align: center !important;
+}
+body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-cell .club-logo {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
+}
+body.is-mobile-ux .listone-table .listone-mantra-col,
+body.is-mobile-ux .listone-table .listone-fvm-col {
+  display: none !important;
+}
+body.is-mobile-ux .listone-table .mobile-role-combo {
+  display: inline-flex !important;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.05;
+  max-width: 100%;
+}
+body.is-mobile-ux .listone-table .mobile-role-combo small {
+  font-size: 0.58rem;
+  color: #94a3b8;
+  max-width: 54px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body.is-mobile-ux .mobile-sv-label {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.14);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  color: #cbd5e1;
+  font-weight: 800;
+  font-size: 0.64rem;
+}
+body.is-mobile-ux .listone-table th:nth-child(1),
+body.is-mobile-ux .listone-table td:nth-child(1) { width: 34% !important; min-width: 98px !important; }
+body.is-mobile-ux .listone-table th:nth-child(2),
+body.is-mobile-ux .listone-table td:nth-child(2) { width: 34px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table th:nth-child(4),
+body.is-mobile-ux .listone-table td:nth-child(4) { width: 58px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table th:nth-child(5),
+body.is-mobile-ux .listone-table td:nth-child(5) { width: 42px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table th:nth-child(6),
+body.is-mobile-ux .listone-table td:nth-child(6) { width: 44px !important; text-align: right !important; }
+body.is-mobile-ux .listone-table th:nth-child(8),
+body.is-mobile-ux .listone-table td:nth-child(8) { width: 32px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table th:nth-child(9),
+body.is-mobile-ux .listone-table td:nth-child(9) { width: 40px !important; text-align: center !important; }
+body.is-mobile-ux .mobile-standing-table th:nth-last-child(3),
+body.is-mobile-ux .mobile-standing-table td:nth-last-child(3),
+body.is-mobile-ux .mobile-standing-table th:nth-last-child(2),
+body.is-mobile-ux .mobile-standing-table td:nth-last-child(2) { width: 44px !important; text-align: right !important; }
+body.is-mobile-ux .mobile-standing-table th:last-child,
+body.is-mobile-ux .mobile-standing-table td:last-child { width: 58px !important; text-align: right !important; }

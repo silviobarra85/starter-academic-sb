@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ZonaOrientale Salerno</title>
-  <meta name="description" content="Gestionale ZonaOrientale Salerno - saldi FM, club, rose, movimenti e stadio." />
+  <meta name="description" content="Gestionale FantaMantra Manageriale - saldi FM, club, rose, movimenti e stadio." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./assets/styles.css" />
 </head>
@@ -296,15 +296,15 @@
         <table class="mobile-tabular listone-table">
           <thead>
             <tr>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="player_name">Giocatore</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="player_name"><span class="desktop-inline">Giocatore</span><span class="mobile-inline">Gio</span></button></th>
               <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="real_team"><span class="desktop-inline">Squadra</span><span class="mobile-inline">Sq</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="mantra_roles"><span class="desktop-inline">Ruoli Mantra</span><span class="mobile-inline">RM</span></button></th>
+              <th class="listone-mantra-col"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="mantra_roles">Ruoli Mantra</button></th>
               <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="classic_role"><span class="desktop-inline">Ruoli Classic</span><span class="mobile-inline">R</span></button></th>
               <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="roster">Rosa</button></th>
               <th class="number"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="quotation_current">Qt.A</button></th>
-              <th class="number"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="fvm">FVM</button></th>
+              <th class="number listone-fvm-col"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="fvm">FVM</button></th>
               <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="status">Stato</button></th>
-              <th>Storico</th>
+              <th><span class="desktop-inline">Storico</span><span class="mobile-inline">Link</span></th>
             </tr>
           </thead>
           <tbody id="listoneTableBody">
@@ -326,18 +326,19 @@
         <table class="mobile-tabular listone-table free-agents-table">
           <thead>
             <tr>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="player_name">Giocatore</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="player_name"><span class="desktop-inline">Giocatore</span><span class="mobile-inline">Gio</span></button></th>
               <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="real_team"><span class="desktop-inline">Squadra</span><span class="mobile-inline">Sq</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="mantra_roles"><span class="desktop-inline">Ruoli Mantra</span><span class="mobile-inline">RM</span></button></th>
+              <th class="listone-mantra-col"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="mantra_roles">Ruoli Mantra</button></th>
               <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="classic_role"><span class="desktop-inline">Ruoli Classic</span><span class="mobile-inline">R</span></button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="roster">Rosa</button></th>
               <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="quotation_current">Qt.A</button></th>
-              <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="fvm">FVM</button></th>
+              <th class="number listone-fvm-col"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="fvm">FVM</button></th>
               <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="status">Stato</button></th>
-              <th>Storico</th>
+              <th><span class="desktop-inline">Storico</span><span class="mobile-inline">Link</span></th>
             </tr>
           </thead>
           <tbody id="freeAgentsTableBody">
-            <tr><td colspan="8" class="muted center">Nessun listone caricato.</td></tr>
+            <tr><td colspan="9" class="muted center">Nessun listone caricato.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1166,7 +1167,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V30 mobile UX compatta</p>
+    <p>ZonaOrientale Salerno · V33 mobile tabelle compatte</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>

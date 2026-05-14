@@ -1409,25 +1409,46 @@ function renderStandingTable(competition, limit = null) {
   return `
     <small class="muted standing-source-note">${standingSource}</small>
     <div class="table-wrap compact-table standing-table-wrap mobile-tabular-wrap">
-      <table class="standing-table">
+      <table class="standing-table mobile-standing-table">
         <thead>
-          <tr><th>#</th><th>Club</th><th class="number">Pt</th><th class="number">G</th><th class="number standing-optional">V</th><th class="number standing-optional">N</th><th class="number standing-optional">P</th><th class="number standing-optional">GF</th><th class="number standing-optional">GS</th><th class="number standing-optional">DR</th><th class="number">FP</th></tr>
+          <tr>
+            <th class="standing-desktop-col">#</th>
+            <th class="standing-desktop-col">Club</th>
+            <th class="number standing-desktop-col">Pt</th>
+            <th class="number standing-desktop-col">G</th>
+            <th class="number standing-desktop-col standing-optional">V</th>
+            <th class="number standing-desktop-col standing-optional">N</th>
+            <th class="number standing-desktop-col standing-optional">P</th>
+            <th class="number standing-desktop-col standing-optional">GF</th>
+            <th class="number standing-desktop-col standing-optional">GS</th>
+            <th class="number standing-desktop-col standing-optional">DR</th>
+            <th class="number standing-desktop-col">FP</th>
+            <th class="mobile-only-col mobile-standing-logo-head">Logo</th>
+            <th class="mobile-only-col number">G</th>
+            <th class="mobile-only-col number">Pt</th>
+            <th class="mobile-only-col number">FP</th>
+          </tr>
         </thead>
         <tbody>
           ${rows.slice(0, limit || rows.length).map((row, index) => {
             const club = getClubById(row.club_id);
+            const fp = Number(row.fantapoints || 0) ? Number(row.fantapoints).toFixed(1) : (row.fantapoints ?? "-");
             return `<tr>
-              <td>${row.position || index + 1}</td>
-              <td>${clubButton(club)}</td>
-              <td class="number"><strong>${row.points ?? "-"}</strong></td>
-              <td class="number">${row.played ?? "-"}</td>
-              <td class="number standing-optional">${row.wins ?? "-"}</td>
-              <td class="number standing-optional">${row.draws ?? "-"}</td>
-              <td class="number standing-optional">${row.losses ?? "-"}</td>
-              <td class="number standing-optional">${row.goals_for ?? "-"}</td>
-              <td class="number standing-optional">${row.goals_against ?? "-"}</td>
-              <td class="number standing-optional">${row.goal_difference ?? "-"}</td>
-              <td class="number">${Number(row.fantapoints || 0) ? Number(row.fantapoints).toFixed(1) : (row.fantapoints ?? "-")}</td>
+              <td class="standing-desktop-col">${row.position || index + 1}</td>
+              <td class="standing-desktop-col">${clubButton(club)}</td>
+              <td class="number standing-desktop-col"><strong>${row.points ?? "-"}</strong></td>
+              <td class="number standing-desktop-col">${row.played ?? "-"}</td>
+              <td class="number standing-desktop-col standing-optional">${row.wins ?? "-"}</td>
+              <td class="number standing-desktop-col standing-optional">${row.draws ?? "-"}</td>
+              <td class="number standing-desktop-col standing-optional">${row.losses ?? "-"}</td>
+              <td class="number standing-desktop-col standing-optional">${row.goals_for ?? "-"}</td>
+              <td class="number standing-desktop-col standing-optional">${row.goals_against ?? "-"}</td>
+              <td class="number standing-desktop-col standing-optional">${row.goal_difference ?? "-"}</td>
+              <td class="number standing-desktop-col">${fp}</td>
+              <td class="mobile-only-cell mobile-standing-logo-cell">${clubLogoHtml(club || { name: row.club_name || "Club" })}</td>
+              <td class="mobile-only-cell number">${row.played ?? "-"}</td>
+              <td class="mobile-only-cell number"><strong>${row.points ?? "-"}</strong></td>
+              <td class="mobile-only-cell number">${fp}</td>
             </tr>`;
           }).join("")}
         </tbody>
@@ -2174,9 +2195,9 @@ function getRosterClubForPlayer(playerId, seasonId = state.selectedListoneSeason
 function renderRosterCellForPlayer(playerId, seasonId = state.selectedListoneSeason || getSelectedSeasonId()) {
   const club = getRosterClubForPlayer(playerId, seasonId);
   if (!club) {
-    return `<span class="status status-muted">Svincolato</span>`;
+    return `<span class="desktop-inline"><span class="status status-muted">Svincolato</span></span><span class="mobile-inline mobile-sv-label">SV</span>`;
   }
-  return clubButton(club);
+  return `<span class="desktop-inline">${clubButton(club)}</span><span class="mobile-inline mobile-roster-logo-only" title="${escapeHtml(club.name || club.club_name || "Club")}">${clubLogoHtml(club)}</span>`;
 }
 
 
@@ -2278,13 +2299,13 @@ function renderListone() {
         <tr>
           <td class="listone-player-cell">${playerButton(quote.player_id, quote.player_name)}<br><span class="muted small mobile-hide-line">ID ${escapeHtml(quote.fantacalcio_id)} · key ${escapeHtml(getQuotationKey(quote))}</span></td>
           <td class="mobile-team-cell">${renderMobileTeam(quote.real_team || "-")}</td>
-          <td class="mobile-mantra-cell">${escapeHtml(quote.mantra_roles || "-")}</td>
-          <td class="mobile-role-cell">${escapeHtml(quote.classic_role || "-")}</td>
+          <td class="mobile-mantra-cell listone-mantra-col">${escapeHtml(quote.mantra_roles || "-")}</td>
+          <td class="mobile-role-cell"><span class="desktop-inline">${escapeHtml(quote.classic_role || "-")}</span><span class="mobile-inline mobile-role-combo">${escapeHtml(quote.classic_role || "-")} <small>(${escapeHtml(quote.mantra_roles || "-")})</small></span></td>
           <td class="mobile-roster-cell">${renderRosterCellForPlayer(quote.player_id, state.selectedListoneSeason)}</td>
           <td class="number mobile-quote-cell">${quote.quotation_current ?? "-"}</td>
-          <td class="number mobile-fvm-cell">${quote.fvm ?? "-"}</td>
+          <td class="number mobile-fvm-cell listone-fvm-col">${quote.fvm ?? "-"}</td>
           <td class="mobile-status-cell">${renderStatusDot(quote.is_listed ? "In listone" : "Asteriscato")}</td>
-          <td class="mobile-history-cell"><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}">Scheda</button></td>
+          <td class="mobile-history-cell"><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}"><span class="desktop-inline">Scheda</span><span class="mobile-inline">↗</span></button></td>
         </tr>
       `;
     })
@@ -2308,12 +2329,12 @@ function renderFreeAgents() {
   }
 
   if (!state.latestQuotations.length) {
-    el.freeAgentsTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun listone caricato per questa stagione.</td></tr>`;
+    el.freeAgentsTableBody.innerHTML = `<tr><td colspan="9" class="muted center">Nessun listone caricato per questa stagione.</td></tr>`;
     return;
   }
 
   if (!rows.length) {
-    el.freeAgentsTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun giocatore svincolato trovato con i filtri attuali.</td></tr>`;
+    el.freeAgentsTableBody.innerHTML = `<tr><td colspan="9" class="muted center">Nessun giocatore svincolato trovato con i filtri attuali.</td></tr>`;
     return;
   }
 
@@ -2322,12 +2343,13 @@ function renderFreeAgents() {
       <tr>
         <td class="listone-player-cell">${playerButton(quote.player_id, quote.player_name)}<br><span class="muted small mobile-hide-line">key ${escapeHtml(getQuotationKey(quote))}</span></td>
         <td class="mobile-team-cell">${renderMobileTeam(quote.real_team || "-")}</td>
-        <td class="mobile-mantra-cell">${escapeHtml(quote.mantra_roles || "-")}</td>
-        <td class="mobile-role-cell">${escapeHtml(quote.classic_role || "-")}</td>
+        <td class="mobile-mantra-cell listone-mantra-col">${escapeHtml(quote.mantra_roles || "-")}</td>
+        <td class="mobile-role-cell"><span class="desktop-inline">${escapeHtml(quote.classic_role || "-")}</span><span class="mobile-inline mobile-role-combo">${escapeHtml(quote.classic_role || "-")} <small>(${escapeHtml(quote.mantra_roles || "-")})</small></span></td>
+        <td class="mobile-roster-cell"><span class="desktop-inline"><span class="status status-muted">Svincolato</span></span><span class="mobile-inline mobile-sv-label">SV</span></td>
         <td class="number mobile-quote-cell">${quote.quotation_current ?? "-"}</td>
-        <td class="number mobile-fvm-cell">${quote.fvm ?? "-"}</td>
-        <td class="mobile-status-cell">${renderStatusDot("Svincolato", "Svincolato")}</td>
-        <td class="mobile-history-cell"><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}">Scheda</button></td>
+        <td class="number mobile-fvm-cell listone-fvm-col">${quote.fvm ?? "-"}</td>
+        <td class="mobile-status-cell">${renderStatusDot(quote.is_listed ? "In listone" : "Asteriscato")}</td>
+        <td class="mobile-history-cell"><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}"><span class="desktop-inline">Scheda</span><span class="mobile-inline">↗</span></button></td>
       </tr>
     `)
     .join("");
