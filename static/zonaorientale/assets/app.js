@@ -9,7 +9,6 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
-
 const ACTIVE_SEASON_ID = "2025-2026";
 
 const MOVEMENT_LABELS = {
@@ -1733,9 +1732,8 @@ function renderStandingTable(competition, limit = null) {
             <th class="number standing-desktop-col">FP</th>
             <th class="mobile-only-col number mobile-standing-position-head">#</th>
             <th class="mobile-only-col mobile-standing-logo-head">SQ</th>
-            <th class="mobile-only-col number">G</th>
-            <th class="mobile-only-col number">PT</th>
-            <th class="mobile-only-col number">FPT</th>
+            <th class="mobile-only-col number mobile-standing-points-head">PT</th>
+            <th class="mobile-only-col number mobile-standing-fantapoints-head">FPT</th>
           </tr>
         </thead>
         <tbody>
@@ -1756,9 +1754,8 @@ function renderStandingTable(competition, limit = null) {
               <td class="number standing-desktop-col">${fp}</td>
               <td class="mobile-only-cell number mobile-standing-position">${row.position || index + 1}</td>
               <td class="mobile-only-cell mobile-standing-logo-cell">${clubLogoHtml(applyClubSeasonIdentity(club, competition.season_id) || club || { name: row.club_name || "Club" })}</td>
-              <td class="mobile-only-cell number">${row.played ?? "-"}</td>
-              <td class="mobile-only-cell number"><strong>${row.points ?? "-"}</strong></td>
-              <td class="mobile-only-cell number">${fp}</td>
+              <td class="mobile-only-cell number mobile-standing-points"><strong>${row.points ?? "-"}</strong></td>
+              <td class="mobile-only-cell number mobile-standing-fantapoints">${fp}</td>
             </tr>`;
           }).join("")}
         </tbody>
