@@ -2837,58 +2837,287 @@ select[multiple].input option {
 }
 
 
-/* Versione 1.1 - mobile standings finali e Albo d'oro per competizione */
+/* V1.1 - mobile standings fix and honor roll competition sections */
+.honor-overall-section,
+.honor-competition-sections {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.honor-competition-sections {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.honor-overall-section h3,
+.honor-competition-sections h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
 @media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .mobile-standing-table .mobile-standing-position-head,
   .mobile-standing-table .mobile-standing-position {
-    width: 34px !important;
+    width: 30px !important;
     text-align: center !important;
   }
 
   .mobile-standing-table .mobile-standing-logo-head,
   .mobile-standing-table .mobile-standing-logo-cell {
-    width: 46px !important;
+    width: 48px !important;
     text-align: center !important;
   }
 
-  .mobile-standing-table .mobile-standing-points-head,
-  .mobile-standing-table .mobile-standing-points {
-    width: 46px !important;
+  .mobile-standing-table th:nth-last-child(2),
+  .mobile-standing-table td:nth-last-child(2),
+  .mobile-standing-table th:last-child,
+  .mobile-standing-table td:last-child {
+    width: 54px !important;
     text-align: right !important;
-  }
-
-  .mobile-standing-table .mobile-standing-fpt-head,
-  .mobile-standing-table .mobile-standing-fpt {
-    width: 58px !important;
-    text-align: right !important;
-  }
-
-  .honor-competition-rankings .table-wrap {
-    max-height: min(62vh, 520px) !important;
-    overflow: auto !important;
   }
 }
 
 body.is-mobile-ux .mobile-standing-table .mobile-standing-position-head,
 body.is-mobile-ux .mobile-standing-table .mobile-standing-position {
-  width: 34px !important;
+  width: 30px !important;
   text-align: center !important;
 }
 
 body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-head,
 body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-cell {
-  width: 46px !important;
+  width: 48px !important;
   text-align: center !important;
 }
 
-body.is-mobile-ux .mobile-standing-table .mobile-standing-points-head,
-body.is-mobile-ux .mobile-standing-table .mobile-standing-points {
-  width: 46px !important;
+body.is-mobile-ux .mobile-standing-table th:nth-last-child(2),
+body.is-mobile-ux .mobile-standing-table td:nth-last-child(2),
+body.is-mobile-ux .mobile-standing-table th:last-child,
+body.is-mobile-ux .mobile-standing-table td:last-child {
+  width: 54px !important;
   text-align: right !important;
 }
 
-body.is-mobile-ux .mobile-standing-table .mobile-standing-fpt-head,
-body.is-mobile-ux .mobile-standing-table .mobile-standing-fpt {
-  width: 58px !important;
-  text-align: right !important;
+/* V1.2 - Mobile-only refinements requested after V1 complete.
+   Desktop remains unchanged. */
+.mobile-honor-only,
+.mobile-competition-heading,
+.competition-mobile-summary {
+  display: none;
 }
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Standings mobile: exactly # | SQ | G | PT | FPT */
+  .standing-table .standing-desktop-col {
+    display: none !important;
+  }
+  .standing-table .mobile-only-col,
+  .standing-table .mobile-only-cell {
+    display: table-cell !important;
+  }
+  .mobile-standing-table th,
+  .mobile-standing-table td {
+    font-size: 0.68rem !important;
+    padding: 6px 4px !important;
+  }
+  .mobile-standing-table .mobile-standing-position-head,
+  .mobile-standing-table .mobile-standing-position {
+    width: 28px !important;
+    text-align: center !important;
+  }
+  .mobile-standing-table .mobile-standing-logo-head,
+  .mobile-standing-table .mobile-standing-logo-cell {
+    width: 42px !important;
+    text-align: center !important;
+  }
+  .mobile-standing-table .mobile-standing-logo-cell .club-logo {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .mobile-standing-table .mobile-standing-played-head,
+  .mobile-standing-table .mobile-standing-played,
+  .mobile-standing-table .mobile-standing-points-head,
+  .mobile-standing-table .mobile-standing-points {
+    width: 38px !important;
+    text-align: right !important;
+  }
+  .mobile-standing-table .mobile-standing-fpt-head,
+  .mobile-standing-table .mobile-standing-fpt {
+    width: 48px !important;
+    text-align: right !important;
+  }
+
+  /* Mobile Honor Roll summary tables. */
+  .desktop-honor-summary,
+  .desktop-honor-table {
+    display: none !important;
+  }
+  .mobile-honor-only {
+    display: block !important;
+  }
+  .mobile-honor-table-wrap {
+    max-height: min(62vh, 520px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 14px;
+  }
+  .mobile-honor-table {
+    display: table !important;
+    width: 100% !important;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.72rem;
+  }
+  .mobile-honor-table thead { display: table-header-group !important; }
+  .mobile-honor-table tbody { display: table-row-group !important; }
+  .mobile-honor-table tr { display: table-row !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
+  .mobile-honor-table th,
+  .mobile-honor-table td {
+    display: table-cell !important;
+    padding: 7px 5px !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15) !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+  }
+  .mobile-honor-table th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.98);
+    color: #e5e7eb;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .mobile-honor-table td::before,
+  .mobile-honor-table th::before {
+    content: none !important;
+    display: none !important;
+  }
+  .mobile-honor-table th:first-child,
+  .mobile-honor-table td:first-child { width: auto !important; min-width: 104px; }
+  .mobile-honor-table th:not(:first-child),
+  .mobile-honor-table td:not(:first-child) { width: 34px !important; text-align: right !important; }
+  .honor-competition-mobile-table th:not(:first-child),
+  .honor-competition-mobile-table td:not(:first-child) { width: 42px !important; }
+
+  /* Mobile competitions page: list competitions directly as collapsible cards. */
+  .app-page[data-page="competitions"] > .panel > .panel-header {
+    display: none !important;
+  }
+  .app-page[data-page="competitions"] > .panel {
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  .competition-detail-card {
+    padding: 0 !important;
+    overflow: hidden;
+  }
+  .competition-mobile-summary {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 12px;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .competition-mobile-summary span {
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: lowercase;
+  }
+  .competition-desktop-header,
+  .desktop-competition-heading {
+    display: none !important;
+  }
+  .mobile-competition-heading {
+    display: block !important;
+    margin: 0 0 6px !important;
+    font-size: 0.82rem !important;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .competition-card-body {
+    padding: 0 10px 10px;
+  }
+
+  /* Mobile cup podio: only teams, no extra labels/text. */
+  .competition-card .podium-list {
+    gap: 6px;
+  }
+  .competition-card .podium-list .stack-item {
+    display: block !important;
+    padding: 7px 8px !important;
+  }
+  .competition-card .podium-list .stack-item small,
+  .competition-card .podium-list .stack-item-side {
+    display: none !important;
+  }
+
+  /* Mobile matches inside a competition: one compact line, no competition name or FP. */
+  .mobile-match-line {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    font-size: 0.78rem;
+  }
+  .mobile-match-line strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mobile-match-line > span:last-child {
+    flex: 0 0 auto;
+    font-weight: 900;
+    color: var(--text);
+  }
+  .match-desktop-content {
+    display: none !important;
+  }
+}
+
+body.is-mobile-ux .standing-table .standing-desktop-col { display: none !important; }
+body.is-mobile-ux .standing-table .mobile-only-col,
+body.is-mobile-ux .standing-table .mobile-only-cell { display: table-cell !important; }
+body.is-mobile-ux .mobile-standing-table .mobile-standing-position-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-position { width: 28px !important; text-align: center !important; }
+body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-cell { width: 42px !important; text-align: center !important; }
+body.is-mobile-ux .mobile-standing-table .mobile-standing-played-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-played,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-points-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-points { width: 38px !important; text-align: right !important; }
+body.is-mobile-ux .mobile-standing-table .mobile-standing-fpt-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-fpt { width: 48px !important; text-align: right !important; }
+body.is-mobile-ux .desktop-honor-summary,
+body.is-mobile-ux .desktop-honor-table { display: none !important; }
+body.is-mobile-ux .mobile-honor-only { display: block !important; }
+body.is-mobile-ux .app-page[data-page="competitions"] > .panel > .panel-header { display: none !important; }
+body.is-mobile-ux .competition-mobile-summary { display: flex !important; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 12px; cursor: pointer; }
+body.is-mobile-ux .competition-desktop-header,
+body.is-mobile-ux .desktop-competition-heading { display: none !important; }
+body.is-mobile-ux .mobile-competition-heading { display: block !important; }
+body.is-mobile-ux .competition-card-body { padding: 0 10px 10px; }
+body.is-mobile-ux .competition-card .podium-list .stack-item small,
+body.is-mobile-ux .competition-card .podium-list .stack-item-side { display: none !important; }
+body.is-mobile-ux .mobile-match-line { display: flex !important; align-items: center; justify-content: space-between; gap: 8px; width: 100%; font-size: 0.78rem; }
+body.is-mobile-ux .match-desktop-content { display: none !important; }
+.mobile-match-line {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .mobile-match-line { display: flex !important; }
+}
+body.is-mobile-ux .mobile-match-line { display: flex !important; }

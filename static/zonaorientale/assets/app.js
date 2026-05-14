@@ -10,7 +10,6 @@ const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
 
-
 const ACTIVE_SEASON_ID = "2025-2026";
 
 const MOVEMENT_LABELS = {
@@ -1537,9 +1536,9 @@ function playerButton(playerId, label) {
   return `<button class="link-button" type="button" data-player-id="${escapeHtml(playerId)}">${escapeHtml(label || "Giocatore")}</button>`;
 }
 
-function renderCupPodium(competition) {
+function renderCupPodium(competition, maxPlacement = 3) {
   const rows = buildHonorRows()
-    .filter((row) => row.season_id === competition.season_id && row.competition_type === competition.competition_type && Number(row.placement || 0) <= 3)
+    .filter((row) => row.season_id === competition.season_id && row.competition_type === competition.competition_type && Number(row.placement || 0) <= maxPlacement)
     .sort((a, b) => Number(a.placement || 999) - Number(b.placement || 999));
 
   if (!rows.length) return `<p class="muted">Podio non ancora inserito nell'Albo d'oro.</p>`;
@@ -1680,6 +1679,7 @@ function renderStandingTable(competition, limit = null) {
             <th class="number standing-desktop-col">FP</th>
             <th class="mobile-only-col number mobile-standing-position-head">#</th>
             <th class="mobile-only-col mobile-standing-logo-head">SQ</th>
+            <th class="mobile-only-col number mobile-standing-played-head">G</th>
             <th class="mobile-only-col number mobile-standing-points-head">PT</th>
             <th class="mobile-only-col number mobile-standing-fpt-head">FPT</th>
           </tr>
@@ -1702,6 +1702,7 @@ function renderStandingTable(competition, limit = null) {
               <td class="number standing-desktop-col">${fp}</td>
               <td class="mobile-only-cell number mobile-standing-position">${row.position || index + 1}</td>
               <td class="mobile-only-cell mobile-standing-logo-cell">${clubLogoHtml(applyClubSeasonIdentity(club, competition.season_id) || club || { name: row.club_name || "Club" })}</td>
+              <td class="mobile-only-cell number mobile-standing-played">${row.played ?? "-"}</td>
               <td class="mobile-only-cell number mobile-standing-points"><strong>${row.points ?? "-"}</strong></td>
               <td class="mobile-only-cell number mobile-standing-fpt">${fp}</td>
             </tr>`;
@@ -1730,14 +1731,19 @@ function renderMatchList(matches) {
       const manualWinnerText = manualWinner
         ? `<small>Vincitrice manuale: ${clubButton(manualWinner)}${match.manual_winner_note ? ` · ${escapeHtml(match.manual_winner_note)}` : ""}</small>`
         : "";
-      return `<div class="stack-item">
-        <div>
+      const mobileResult = goals ? `${goals.home}-${goals.away}` : (match.status === "PLAYED" ? "-" : (MATCH_STATUS_LABELS[match.status] || match.status || "-"));
+      return `<div class="stack-item match-stack-item">
+        <div class="match-desktop-content">
           <strong>${escapeHtml(match.matchday_label || "Giornata")}</strong>
           <span>${escapeHtml(competition?.name || "Competizione")}${match.played_on ? ` · ${fmtDateOnly(match.played_on)}` : ""}</span>
           <small>${clubButton(home)} vs ${clubButton(away)}</small>
           ${manualWinnerText}
         </div>
-        <div class="stack-item-side">${resultScore}${fpScore}</div>
+        <div class="mobile-match-line">
+          <strong>${clubButton(home)} <span class="muted">VS</span> ${clubButton(away)}</strong>
+          <span>${escapeHtml(mobileResult)}</span>
+        </div>
+        <div class="stack-item-side match-desktop-content">${resultScore}${fpScore}</div>
       </div>`;
     })
     .join("");
@@ -2746,9 +2752,9 @@ function renderCompetitionContent(competition) {
       : sortMatchesByRoundAndDate);
 
   if (competition.competition_type === "REGULAR_SEASON") {
-    return `<h4>Classifica</h4>${renderStandingTable(competition)}<h4>Calendario</h4>${renderMatchList(matches)}`;
+    return `<h4 class="desktop-competition-heading">Classifica</h4>${renderStandingTable(competition)}<h4 class="desktop-competition-heading">Calendario</h4>${renderMatchList(matches)}`;
   }
-  return `<h4>Podio albo d'oro</h4>${renderCupPodium(competition)}<h4>Partite</h4>${renderMatchList(matches)}`;
+  return `<h4 class="desktop-competition-heading">Podio albo d'oro</h4><h4 class="mobile-competition-heading">Podio</h4>${renderCupPodium(competition, 2)}<h4 class="desktop-competition-heading">Partite</h4>${renderMatchList(matches)}`;
 }
 
 function getCompetitionMatches(competition) {
@@ -2812,6 +2818,10 @@ function renderRegularSeasonDashboardCard(competition) {
     return `<p class="muted">Competizione programmata. Nessuna classifica o calendario da mostrare.</p>`;
   }
 
+  if (status === "NOT_DISPUTED") {
+    return `<p class="muted">Competizione non disputata.</p>`;
+  }
+
   return `
     <div class="dashboard-competition-body">
       <h4>Classifica attuale</h4>
@@ -2843,6 +2853,10 @@ function renderCupDashboardCard(competition) {
     return `<p class="muted">Competizione programmata.</p>`;
   }
 
+  if (status === "NOT_DISPUTED") {
+    return `<p class="muted">Competizione non disputata.</p>`;
+  }
+
   return `
     <div class="dashboard-competition-body">
       ${renderSingleMatchBlock("Ultima giornata giocata", timeline.lastPlayed, "Nessuna partita giocata.")}
@@ -2864,7 +2878,7 @@ function renderDashboardCompetitionCard(competition) {
           <strong>${escapeHtml(competition.name)}</strong>
           <span>${escapeHtml(COMPETITION_LABELS[competition.competition_type] || competition.competition_type || "Competizione")}</span>
         </div>
-        <span class="status ${competition.status === "ACTIVE" ? "status-ok" : competition.status === "NOT_DISPUTED" ? "status-warning" : "status-muted"}">${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-")}</span>
+        <span class="status ${competition.status === "ACTIVE" ? "status-ok" : "status-muted"}">${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-")}</span>
       </div>
       ${content}
     </div>
@@ -2874,7 +2888,7 @@ function renderDashboardCompetitionCard(competition) {
 function renderDashboardCompetitions() {
   const seasonId = getSelectedSeasonId();
   const competitions = state.competitions
-    .filter((competition) => competition.season_id === seasonId && competition.status !== "NOT_DISPUTED")
+    .filter((competition) => competition.season_id === seasonId)
     .sort((a, b) => {
       const order = { REGULAR_SEASON: 1, CHAMPIONS: 2, COPPA_ITALIA: 3, PLAYOFF: 4, ALTRO: 9 };
       return (order[a.competition_type] || 99) - (order[b.competition_type] || 99)
@@ -2886,8 +2900,9 @@ function renderDashboardCompetitions() {
   if (!competitions.length) {
     el.dashboardStandings.innerHTML = `<p class="muted">Nessuna competizione inserita per la stagione ${escapeHtml(seasonId)}.</p>`;
   } else {
-    const planned = competitions.filter((competition) => competition.status === "PLANNED");
-    const nonPlanned = competitions.filter((competition) => competition.status !== "PLANNED");
+    const visibleCompetitions = competitions.filter((competition) => competition.status !== "NOT_DISPUTED");
+    const planned = visibleCompetitions.filter((competition) => competition.status === "PLANNED");
+    const nonPlanned = visibleCompetitions.filter((competition) => competition.status !== "PLANNED");
     const plannedBlock = planned.length
       ? `<div class="competition-card compact-card planned-competitions-card">
           <div class="competition-card-header"><div><strong>Competizioni programmate</strong><span>Non ancora iniziate</span></div></div>
@@ -2943,7 +2958,7 @@ function renderNews() {
 function renderCompetitionsPage() {
   if (!el.competitionsList) return;
   const seasonId = getSelectedSeasonId();
-  const competitions = state.competitions.filter((competition) => competition.season_id === seasonId);
+  const competitions = state.competitions.filter((competition) => competition.season_id === seasonId && competition.status !== "NOT_DISPUTED");
   if (!competitions.length) {
     el.competitionsList.innerHTML = `<p class="muted">Nessuna competizione inserita per la stagione ${escapeHtml(seasonId)}.</p>`;
     return;
@@ -2953,17 +2968,19 @@ function renderCompetitionsPage() {
       const matches = state.calendarMatches
         .filter((match) => match.competition_id === competition.id)
         .sort((a, b) => String(a.matchday_label || "").localeCompare(String(b.matchday_label || "")) || String(a.played_on || "").localeCompare(String(b.played_on || "")));
+      const statusLabel = COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-";
       return `
-        <article class="competition-card">
-          <div class="competition-card-header">
+        <details class="competition-card competition-detail-card" open>
+          <summary class="competition-mobile-summary"><strong>${escapeHtml(competition.name)}</strong><span>${escapeHtml(statusLabel)}</span></summary>
+          <div class="competition-card-header competition-desktop-header">
             <div>
               <h3>${escapeHtml(competition.name)}</h3>
               <span>${escapeHtml(COMPETITION_LABELS[competition.competition_type] || competition.competition_type || "Competizione")}</span>
             </div>
-            <span class="status ${competition.status === "ACTIVE" ? "status-ok" : competition.status === "NOT_DISPUTED" ? "status-warning" : "status-muted"}">${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-")}</span>
+            <span class="status ${competition.status === "ACTIVE" ? "status-ok" : "status-muted"}">${escapeHtml(statusLabel)}</span>
           </div>
-          ${renderCompetitionContent(competition)}
-        </article>
+          <div class="competition-card-body">${renderCompetitionContent(competition)}</div>
+        </details>
       `;
     })
     .join("");
@@ -3248,6 +3265,102 @@ function renderMatchTable(matches) {
   </table></div>`;
 }
 
+
+
+function renderHonorOverallMobileTable(summaryRows) {
+  if (!summaryRows.length) return `<p class="muted mobile-honor-only">Nessuna vittoria registrata.</p>`;
+  const getWins = (row, type) => Number(row.winsByCompetition?.[type] || 0);
+  return `<div class="mobile-honor-only mobile-honor-table-wrap"><table class="mobile-honor-table">
+    <thead><tr><th>Presidente</th><th class="number">#</th><th class="number">RS</th><th class="number">CI</th><th class="number">CL</th><th class="number">PO</th></tr></thead>
+    <tbody>${summaryRows.map((row) => `<tr>
+      <td>${presidentButton({ president: row.president, presidentKey: row.key, teamName: Array.from(row.teams || []).filter(Boolean).join(" · "), logo: row.logo })}</td>
+      <td class="number"><strong>${row.wins || 0}</strong></td>
+      <td class="number">${getWins(row, "REGULAR_SEASON")}</td>
+      <td class="number">${getWins(row, "COPPA_ITALIA")}</td>
+      <td class="number">${getWins(row, "CHAMPIONS")}</td>
+      <td class="number">${getWins(row, "PLAYOFF")}</td>
+    </tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+function renderHonorCompetitionMobileTable(summaryRows) {
+  if (!summaryRows.length) return `<p class="muted mobile-honor-only">Nessun podio registrato.</p>`;
+  return `<div class="mobile-honor-only mobile-honor-table-wrap"><table class="mobile-honor-table honor-competition-mobile-table">
+    <thead><tr><th>Presidente</th><th class="number">1°</th><th class="number">2°</th><th class="number">3°</th></tr></thead>
+    <tbody>${summaryRows.map((row) => `<tr>
+      <td>${presidentButton({ president: row.president, presidentKey: row.key, teamName: Array.from(row.teams || []).filter(Boolean).join(" · "), logo: row.logo })}</td>
+      <td class="number"><strong>${row.wins || 0}</strong></td>
+      <td class="number">${row.seconds || 0}</td>
+      <td class="number">${row.thirds || 0}</td>
+    </tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+function renderHonorCompetitionSections(honorRows) {
+  const competitionOrder = { REGULAR_SEASON: 1, CHAMPIONS: 2, COPPA_ITALIA: 3, PLAYOFF: 4, ALTRO: 9 };
+  const competitionTypes = Array.from(new Set(honorRows.map((row) => row.competition_type || "ALTRO")))
+    .sort((a, b) => (competitionOrder[a] || 99) - (competitionOrder[b] || 99) || String(a).localeCompare(String(b), "it", { sensitivity: "base" }));
+
+  if (!competitionTypes.length) return "";
+
+  return `
+    <div class="honor-competition-sections">
+      <h3>Classifiche Albo d'oro per competizione</h3>
+      ${competitionTypes.map((type, index) => {
+        const rowsForType = honorRows.filter((row) => (row.competition_type || "ALTRO") === type && [1, 2, 3].includes(Number(row.placement || 0)));
+        const byPresident = new Map();
+
+        for (const row of rowsForType) {
+          const key = getHonorRowPresidentKey(row) || getHonorRowPresident(row) || "presidente";
+          const president = getHonorRowPresident(row) || row.president || "Presidente";
+          const current = byPresident.get(key) || {
+            key,
+            president,
+            logo: row.club_id ? applyClubSeasonIdentity(getClubById(row.club_id), row.season_id)?.logo_data_url : getHonorClubById(row.honor_club_id)?.logo_data_url,
+            teams: new Set(),
+            wins: 0,
+            seconds: 0,
+            thirds: 0,
+            placements: [],
+          };
+
+          if (row.club_name) current.teams.add(row.club_name);
+          if (Number(row.placement || 0) === 1) current.wins += 1;
+          if (Number(row.placement || 0) === 2) current.seconds += 1;
+          if (Number(row.placement || 0) === 3) current.thirds += 1;
+          current.placements.push(row);
+          byPresident.set(key, current);
+        }
+
+        const summaryRows = Array.from(byPresident.values())
+          .sort((a, b) => b.wins - a.wins || b.seconds - a.seconds || b.thirds - a.thirds || String(a.president).localeCompare(String(b.president), "it", { sensitivity: "base" }));
+
+        return `<details class="collapse-card honor-competition-ranking" ${index === 0 ? "open" : ""}>
+          <summary><strong>${escapeHtml(COMPETITION_LABELS[type] || type)}</strong><span>${summaryRows.length} presidenti in classifica</span></summary>
+          ${summaryRows.length ? `${renderHonorCompetitionMobileTable(summaryRows)}<div class="table-wrap compact-table honor-table-wrap desktop-honor-table"><table>
+            <thead><tr><th>#</th><th>Presidente/i — Squadra/e</th><th class="number">Vittorie</th><th class="number">Secondi</th><th class="number">Terzi</th><th>Stagioni</th></tr></thead>
+            <tbody>${summaryRows.map((row, pos) => {
+              const teams = Array.from(row.teams).filter(Boolean).join(" · ");
+              const seasons = row.placements
+                .sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999))
+                .map((item) => `${escapeHtml(item.season_id || "-")} (${Number(item.placement || 0) ? `${item.placement}°` : "-"}${item.club_name ? `, ${escapeHtml(item.club_name)}` : ""})`)
+                .join(" · ");
+              return `<tr>
+                <td>${pos + 1}</td>
+                <td>${presidentButton({ president: row.president, presidentKey: row.key, teamName: teams, logo: row.logo })}</td>
+                <td class="number"><strong>${row.wins}</strong></td>
+                <td class="number">${row.seconds}</td>
+                <td class="number">${row.thirds}</td>
+                <td><small>${seasons}</small></td>
+              </tr>`;
+            }).join("")}</tbody>
+          </table></div>` : `<p class="muted">Nessun podio registrato per questa competizione.</p>`}
+        </details>`;
+      }).join("")}
+    </div>
+  `;
+}
+
 function renderHonorRoll() {
   if (!el.honorSummary) return;
   const honorRows = buildHonorRows();
@@ -3285,7 +3398,8 @@ function renderHonorRoll() {
   }
 
   const summaryRows = Array.from(resultsByPresident.values()).sort((a, b) => b.wins - a.wins || b.seconds - a.seconds || String(a.president).localeCompare(String(b.president)));
-  el.honorSummary.innerHTML = summaryRows.length
+  const overallHonorMobileHtml = renderHonorOverallMobileTable(summaryRows);
+  const overallHonorHtml = summaryRows.length
     ? summaryRows.map((row) => {
       const teams = Array.from(row.teams).filter(Boolean).join(" · ");
       const name = presidentButton({ president: row.president, presidentKey: row.key, teamName: teams, logo: row.logo });
@@ -3297,80 +3411,21 @@ function renderHonorRoll() {
         .filter(([, count]) => count > 0)
         .map(([type, count]) => `${COMPETITION_LABELS[type] || type}: ${count}`)
         .join(" · ");
-      return `<div class="stack-item">
+      return `<div class="stack-item desktop-honor-summary-row">
         <div><strong>${name}</strong><small>${winDetails ? `Vittorie: ${escapeHtml(winDetails)}` : ""}${secondDetails ? ` · Secondi posti: ${escapeHtml(secondDetails)}` : ""}</small></div>
         <div class="stack-item-side"><strong>${row.wins}</strong><small>${row.seconds} secondi</small></div>
       </div>`;
     }).join("")
     : `<p class="muted">Nessuna vittoria o secondo posto registrato.</p>`;
 
-  const competitionOrder = ["REGULAR_SEASON", "CHAMPIONS", "COPPA_ITALIA", "PLAYOFF", "ALTRO"];
-  const competitionSections = competitionOrder
-    .map((competitionType) => {
-      const rowsForType = honorRows.filter((row) => row.competition_type === competitionType && [1, 2, 3].includes(Number(row.placement || 0)));
-      if (!rowsForType.length) return "";
-
-      const groupedByPresident = new Map();
-      for (const row of rowsForType) {
-        const key = getHonorRowPresidentKey(row) || `${row.president || "-"}|${row.honor_club_id || row.club_id || "-"}`;
-        const current = groupedByPresident.get(key) || {
-          key,
-          president: getHonorRowPresident(row) || row.president || "Presidente",
-          logo: row.club_id ? applyClubSeasonIdentity(getClubById(row.club_id), row.season_id)?.logo_data_url : getHonorClubById(row.honor_club_id)?.logo_data_url,
-          teams: new Set(),
-          first: 0,
-          second: 0,
-          third: 0,
-          entries: [],
-        };
-        if (row.club_name) current.teams.add(row.club_name);
-        if (Number(row.placement || 0) === 1) current.first += 1;
-        if (Number(row.placement || 0) === 2) current.second += 1;
-        if (Number(row.placement || 0) === 3) current.third += 1;
-        current.entries.push(row);
-        groupedByPresident.set(key, current);
-      }
-
-      const competitionRows = Array.from(groupedByPresident.values())
-        .sort((a, b) => b.first - a.first || b.second - a.second || b.third - a.third || String(a.president).localeCompare(String(b.president), "it", { sensitivity: "base" }));
-
-      return `<details class="collapse-card honor-competition-section">
-        <summary><strong>${escapeHtml(COMPETITION_LABELS[competitionType] || competitionType)}</strong><span>${competitionRows.length} presidente/i in classifica</span></summary>
-        <div class="table-wrap compact-table honor-table-wrap">
-          <table>
-            <thead><tr><th>#</th><th>Presidente/i</th><th>Squadre usate</th><th class="number">1°</th><th class="number">2°</th><th class="number">3°</th><th>Stagioni</th></tr></thead>
-            <tbody>
-              ${competitionRows.map((row, index) => {
-                const teams = Array.from(row.teams).filter(Boolean).join(" · ");
-                const seasons = row.entries
-                  .sort((a, b) => String(b.season_id || "").localeCompare(String(a.season_id || "")))
-                  .map((entry) => `${escapeHtml(entry.season_id || "-")}${entry.placement ? ` (${entry.placement}°)` : ""}`)
-                  .join(" · ");
-                return `<tr>
-                  <td>${index + 1}</td>
-                  <td>${presidentButton({ president: row.president, presidentKey: row.key, teamName: teams, logo: row.logo })}</td>
-                  <td>${escapeHtml(teams || "-")}</td>
-                  <td class="number"><strong>${row.first || "-"}</strong></td>
-                  <td class="number">${row.second || "-"}</td>
-                  <td class="number">${row.third || "-"}</td>
-                  <td>${seasons || "-"}</td>
-                </tr>`;
-              }).join("")}
-            </tbody>
-          </table>
-        </div>
-      </details>`;
-    })
-    .filter(Boolean)
-    .join("");
-
-  if (competitionSections) {
-    el.honorSummary.innerHTML += `<div class="detail-section honor-competition-rankings">
-      <h3>Classifiche Albo d'oro per competizione</h3>
-      <p class="muted">Riepilogo per competizione, ordinato per vittorie e podi.</p>
-      ${competitionSections}
-    </div>`;
-  }
+  el.honorSummary.innerHTML = `
+    <div class="honor-overall-section">
+      <h3>Classifica generale</h3>
+      ${overallHonorMobileHtml}
+      <div class="desktop-honor-summary">${overallHonorHtml}</div>
+    </div>
+    ${renderHonorCompetitionSections(honorRows)}
+  `;
 
   const regularRows = honorRows.filter((row) => row.competition_type === "REGULAR_SEASON");
   const grouped = new Map();
