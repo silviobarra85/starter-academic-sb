@@ -2817,3 +2817,21 @@ body.is-mobile-ux .mobile-standing-table td:last-child {
   width: 52px !important;
   text-align: right !important;
 }
+
+/* V37 - Presidenti multipli e separatore presidente/squadra */
+.president-team-separator {
+  display: inline-block;
+  margin: 0 0.35rem;
+  opacity: 0.75;
+}
+.president-team-name {
+  opacity: 0.9;
+}
+select[multiple].input {
+  min-height: 7rem;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+select[multiple].input option {
+  padding: 0.2rem 0.35rem;
+}

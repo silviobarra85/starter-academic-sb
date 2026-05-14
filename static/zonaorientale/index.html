@@ -508,8 +508,10 @@
             <input id="clubNameInput" class="input" type="text" required />
           </label>
           <label>
-            Presidente
-            <input id="clubPresidentInput" class="input" type="text" required />
+            Presidenti
+            <select id="clubPresidentSelect" class="input" multiple size="4"></select>
+            <input id="clubPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Seleziona uno o più presidenti esistenti; eventuali nomi manuali saranno aggiunti. In visualizzazione saranno separati da &.</small>
           </label>
           <label>
             Logo squadra
@@ -971,12 +973,9 @@
           </label>
           <label>
             Presidente
-            <select id="historicalClubPresidentSelect" class="input">
-              <option value="">Seleziona presidente esistente</option>
-              <option value="__manual__">+ Inserisci manualmente</option>
-            </select>
-            <input id="historicalClubPresidentInput" class="input" type="text" placeholder="Es. Mario Rossi" />
-            <small class="field-hint">Scegli un presidente già presente oppure inseriscine uno nuovo manualmente.</small>
+            <select id="historicalClubPresidentSelect" class="input" multiple size="4"></select>
+            <input id="historicalClubPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Scegli uno o più presidenti già presenti oppure aggiungine manualmente.</small>
           </label>
           <label>
             Logo storico <span class="muted">(opzionale)</span>
@@ -1011,8 +1010,10 @@
             <input id="clubIdentityNameInput" class="input" type="text" placeholder="Es. ZonaOrientale FC" required />
           </label>
           <label>
-            Presidente in quella stagione
-            <input id="clubIdentityPresidentInput" class="input" type="text" placeholder="Es. Silvio Barra" />
+            Presidenti in quella stagione
+            <select id="clubIdentityPresidentSelect" class="input" multiple size="4"></select>
+            <input id="clubIdentityPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Se lo lasci vuoto usa i presidenti del club attuale.</small>
           </label>
           <label>
             Nome stadio in quella stagione
@@ -1060,12 +1061,9 @@
           </label>
           <label>
             Presidente storico
-            <select id="honorPresidentSelect" class="input">
-              <option value="">Seleziona presidente esistente</option>
-              <option value="__manual__">+ Inserisci manualmente</option>
-            </select>
-            <input id="honorPresidentInput" class="input" type="text" placeholder="Es. Mario Rossi" />
-            <small class="field-hint">Il palmarès viene raggruppato per presidente; la squadra indica il nome usato in quella stagione.</small>
+            <select id="honorPresidentSelect" class="input" multiple size="4"></select>
+            <input id="honorPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Il palmarès viene raggruppato per presidente/i; la squadra indica il nome usato in quella stagione.</small>
           </label>
           <label>
             Logo squadra storica <span class="muted">(opzionale)</span>
