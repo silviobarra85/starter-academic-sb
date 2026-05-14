@@ -1319,10 +1319,10 @@ function getRegularSeasonStandingRows(competition) {
     .map((row, index) => ({ ...row, position: index + 1 }));
 }
 
-function renderStandingTable(competition, limit = null) {
-  if (!competition) return `<p class="muted">Nessuna competizione selezionata.</p>`;
+function getStandingRowsForCompetition(competition) {
+  if (!competition) return { rows: [], source: "none" };
   if (competition?.competition_type && competition.competition_type !== "REGULAR_SEASON") {
-    return renderCupPodium(competition);
+    return { rows: [], source: "cup" };
   }
 
   const computedRows = getRegularSeasonStandingRows(competition);
@@ -1330,9 +1330,12 @@ function renderStandingTable(competition, limit = null) {
     .filter((row) => row.competition_id === competition.id)
     .sort((a, b) => Number(a.position || 999) - Number(b.position || 999) || Number(b.points || 0) - Number(a.points || 0));
 
-  const rows = computedRows.length
-    ? computedRows
-    : manualRows.map((row, index) => ({
+  if (computedRows.length) {
+    return { rows: computedRows, source: "computed" };
+  }
+
+  return {
+    rows: manualRows.map((row, index) => ({
       ...row,
       position: row.position || index + 1,
       wins: null,
@@ -1340,11 +1343,22 @@ function renderStandingTable(competition, limit = null) {
       losses: null,
       goal_difference: Number(row.goals_for || 0) - Number(row.goals_against || 0),
       source: "manual",
-    }));
+    })),
+    source: manualRows.length ? "manual" : "none",
+  };
+}
+
+function renderStandingTable(competition, limit = null) {
+  if (!competition) return `<p class="muted">Nessuna competizione selezionata.</p>`;
+  if (competition?.competition_type && competition.competition_type !== "REGULAR_SEASON") {
+    return renderCupPodium(competition);
+  }
+
+  const { rows, source } = getStandingRowsForCompetition(competition);
 
   if (!rows.length) return `<p class="muted">Nessuna classifica inserita o calcolabile. Inserisci i risultati delle partite o una classifica manuale della Regular Season.</p>`;
 
-  const standingSource = computedRows.length ? "Classifica calcolata dai risultati delle partite." : "Classifica manuale caricata dal database.";
+  const standingSource = source === "computed" ? "Classifica calcolata dai risultati delle partite." : "Classifica manuale caricata dal database.";
 
   return `
     <small class="muted standing-source-note">${standingSource}</small>
@@ -1537,7 +1551,7 @@ async function loadPageData(pageId, { force = false } = {}) {
   const scopeKey = `${page}:${seasonId}`;
   if (!force && state.loadedScopes.has(scopeKey)) return;
 
-  if (page === "clubs" || page === "rosters" || page === "admin") {
+  if (page === "dashboard" || page === "clubs" || page === "rosters" || page === "admin") {
     const rosterEntries = await fetchAllRows(() =>
       state.supabase
         .from("roster_entries")
@@ -1709,13 +1723,23 @@ function renderMetrics() {
   const total = balances.reduce((sum, value) => sum + value, 0);
   const average = clubCount ? total / clubCount : 0;
   const negativeBalances = balances.filter((value) => value < 0).length;
-  const rosterIssues = currentClubs.filter((club) => getRosterStats(club.id, seasonId).issues.length > 0).length;
+
+  // La dashboard è lazy-loaded: prima di segnalare problemi di rosa/formazione
+  // verifichiamo che esistano davvero rose caricate per la stagione selezionata.
+  // In assenza di rose, evitiamo falsi alert tipo "0 portieri" per tutti i club.
+  const hasRosterDataForSeason = state.rosterEntries.some((entry) => entry.season_id === seasonId && entry.is_active);
+  const rosterIssues = hasRosterDataForSeason
+    ? currentClubs.filter((club) => getRosterStats(club.id, seasonId).issues.length > 0).length
+    : 0;
   const alerts = negativeBalances + rosterIssues;
 
   el.metricClubs.textContent = String(clubCount);
   el.metricTotalFm.textContent = fmtFm(total);
   el.metricAvgFm.textContent = fmtFm(average);
-  el.metricAlerts.textContent = String(alerts);
+  el.metricAlerts.textContent = hasRosterDataForSeason ? String(alerts) : (negativeBalances ? String(negativeBalances) : "0");
+  el.metricAlerts.title = hasRosterDataForSeason
+    ? `${negativeBalances} saldi negativi, ${rosterIssues} rose da verificare`
+    : "Nessuna rosa caricata per questa stagione: controllo rose non applicato.";
   el.metricAlerts.classList.toggle("danger", alerts > 0);
 }
 
@@ -2340,41 +2364,173 @@ function renderCompetitionContent(competition) {
   return `<h4>Podio albo d'oro</h4>${renderCupPodium(competition)}<h4>Partite</h4>${renderMatchList(matches)}`;
 }
 
+function getCompetitionMatches(competition) {
+  if (!competition) return [];
+  const sorter = competition.competition_type === "REGULAR_SEASON"
+    ? ((a, b) => String(a.matchday_label || "").localeCompare(String(b.matchday_label || ""), "it", { numeric: true, sensitivity: "base" }) || String(a.played_on || "9999-12-31").localeCompare(String(b.played_on || "9999-12-31")))
+    : sortMatchesByRoundAndDate;
+
+  return state.calendarMatches
+    .filter((match) => match.competition_id === competition.id)
+    .sort(sorter);
+}
+
+function isPlayedMatch(match) {
+  if (!match) return false;
+  if (match.status === "PLAYED") return true;
+  if (getMatchGoals(match)) return true;
+  if (match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined) return true;
+  return false;
+}
+
+function getCompetitionTimeline(competition) {
+  const matches = getCompetitionMatches(competition);
+  const played = matches.filter(isPlayedMatch);
+  const upcoming = matches.filter((match) => !isPlayedMatch(match));
+  return {
+    matches,
+    played,
+    upcoming,
+    lastPlayed: played[played.length - 1] || null,
+    next: upcoming[0] || null,
+  };
+}
+
+function renderSingleMatchBlock(title, match, emptyText) {
+  return `
+    <div class="dashboard-match-block">
+      <h4>${escapeHtml(title)}</h4>
+      ${match ? renderMatchList([match]) : `<p class="muted">${escapeHtml(emptyText)}</p>`}
+    </div>
+  `;
+}
+
+function renderRegularSeasonDashboardCard(competition) {
+  const status = competition.status || "PLANNED";
+  const { rows } = getStandingRowsForCompetition(competition);
+  const winner = rows[0] ? getClubById(rows[0].club_id) : null;
+  const timeline = getCompetitionTimeline(competition);
+
+  if (status === "COMPLETED") {
+    return `
+      <div class="dashboard-competition-body">
+        ${winner ? `<p class="winner-line">Vincitore: <strong>${clubButton(winner)}</strong></p>` : `<p class="muted">Vincitore non ancora determinabile.</p>`}
+        <h4>Classifica finale</h4>
+        ${renderStandingTable(competition)}
+      </div>
+    `;
+  }
+
+  if (status === "PLANNED") {
+    return `<p class="muted">Competizione programmata. Nessuna classifica o calendario da mostrare.</p>`;
+  }
+
+  return `
+    <div class="dashboard-competition-body">
+      <h4>Classifica attuale</h4>
+      ${renderStandingTable(competition)}
+      ${renderSingleMatchBlock("Ultima giornata giocata", timeline.lastPlayed, "Nessuna giornata giocata.")}
+      ${renderSingleMatchBlock("Prossima giornata", timeline.next, "Nessuna prossima giornata inserita.")}
+    </div>
+  `;
+}
+
+function renderCupDashboardCard(competition) {
+  const status = competition.status || "PLANNED";
+  const timeline = getCompetitionTimeline(competition);
+
+  if (status === "COMPLETED") {
+    const finalMatch = getCupFinalMatch(competition);
+    const outcome = getCupFinalOutcome(competition);
+    const winner = outcome?.winnerId ? getClubById(outcome.winnerId) : null;
+    return `
+      <div class="dashboard-competition-body">
+        ${winner ? `<p class="winner-line">Vincitore: <strong>${clubButton(winner)}</strong></p>` : `<p class="muted">Vincitore non ancora determinabile. Controlla risultato finale o vincitrice manuale.</p>`}
+        <h4>Finale</h4>
+        ${finalMatch ? renderMatchList([finalMatch]) : `<p class="muted">Finale non inserita.</p>`}
+      </div>
+    `;
+  }
+
+  if (status === "PLANNED") {
+    return `<p class="muted">Competizione programmata.</p>`;
+  }
+
+  return `
+    <div class="dashboard-competition-body">
+      ${renderSingleMatchBlock("Ultima giornata giocata", timeline.lastPlayed, "Nessuna partita giocata.")}
+      ${renderSingleMatchBlock("Prossima giornata", timeline.next, "Nessuna prossima partita inserita.")}
+    </div>
+  `;
+}
+
+function renderDashboardCompetitionCard(competition) {
+  const isRegularSeason = competition.competition_type === "REGULAR_SEASON";
+  const content = isRegularSeason
+    ? renderRegularSeasonDashboardCard(competition)
+    : renderCupDashboardCard(competition);
+
+  return `
+    <div class="competition-card compact-card">
+      <div class="competition-card-header">
+        <div>
+          <strong>${escapeHtml(competition.name)}</strong>
+          <span>${escapeHtml(COMPETITION_LABELS[competition.competition_type] || competition.competition_type || "Competizione")}</span>
+        </div>
+        <span class="status ${competition.status === "ACTIVE" ? "status-ok" : "status-muted"}">${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-")}</span>
+      </div>
+      ${content}
+    </div>
+  `;
+}
+
 function renderDashboardCompetitions() {
   const seasonId = getSelectedSeasonId();
-  const competitions = state.competitions.filter((competition) => competition.season_id === seasonId);
+  const competitions = state.competitions
+    .filter((competition) => competition.season_id === seasonId)
+    .sort((a, b) => {
+      const order = { REGULAR_SEASON: 1, CHAMPIONS: 2, COPPA_ITALIA: 3, PLAYOFF: 4, ALTRO: 9 };
+      return (order[a.competition_type] || 99) - (order[b.competition_type] || 99)
+        || String(a.name || "").localeCompare(String(b.name || ""), "it", { sensitivity: "base" });
+    });
+
   if (!el.dashboardStandings) return;
+
   if (!competitions.length) {
     el.dashboardStandings.innerHTML = `<p class="muted">Nessuna competizione inserita per la stagione ${escapeHtml(seasonId)}.</p>`;
   } else {
-    el.dashboardStandings.innerHTML = competitions
-      .map((competition) => `
-        <div class="competition-card compact-card">
-          <div class="competition-card-header">
-            <div>
-              <strong>${escapeHtml(competition.name)}</strong>
-              <span>${escapeHtml(COMPETITION_LABELS[competition.competition_type] || competition.competition_type || "Competizione")}</span>
-            </div>
-            <span class="status status-muted">${escapeHtml(COMPETITION_STATUS_LABELS[competition.status] || competition.status || "-")}</span>
-          </div>
-          ${competition.competition_type === "REGULAR_SEASON" ? renderStandingTable(competition) : renderCupPodium(competition)}
-        </div>
-      `)
-      .join("");
+    const planned = competitions.filter((competition) => competition.status === "PLANNED");
+    const nonPlanned = competitions.filter((competition) => competition.status !== "PLANNED");
+    const plannedBlock = planned.length
+      ? `<div class="competition-card compact-card planned-competitions-card">
+          <div class="competition-card-header"><div><strong>Competizioni programmate</strong><span>Non ancora iniziate</span></div></div>
+          <div class="tag-list">${planned.map((competition) => `<span class="mini-badge">${escapeHtml(competition.name)}</span>`).join("")}</div>
+        </div>`
+      : "";
+
+    el.dashboardStandings.innerHTML = [
+      ...nonPlanned.map(renderDashboardCompetitionCard),
+      plannedBlock,
+    ].filter(Boolean).join("");
   }
 
   if (!el.dashboardCalendar) return;
-  const { previous, current } = getCurrentAndPreviousMatches(seasonId);
-  el.dashboardCalendar.innerHTML = `
-    <div class="stack-section">
-      <h3>Giornata corrente / prossima</h3>
-      ${renderMatchList(current)}
-    </div>
-    <div class="stack-section">
-      <h3>Giornata precedente</h3>
-      ${renderMatchList(previous)}
-    </div>
-  `;
+  const activeCompetitions = competitions.filter((competition) => competition.status === "ACTIVE");
+  if (!activeCompetitions.length) {
+    el.dashboardCalendar.innerHTML = `<p class="muted">Nessuna competizione attiva nella stagione selezionata.</p>`;
+    return;
+  }
+
+  el.dashboardCalendar.innerHTML = activeCompetitions.map((competition) => {
+    const timeline = getCompetitionTimeline(competition);
+    return `
+      <div class="stack-section">
+        <h3>${escapeHtml(competition.name)}</h3>
+        ${renderSingleMatchBlock(competition.competition_type === "REGULAR_SEASON" ? "Ultima giornata giocata" : "Ultima giornata giocata", timeline.lastPlayed, "Nessuna giornata giocata.")}
+        ${renderSingleMatchBlock(competition.competition_type === "REGULAR_SEASON" ? "Prossima giornata" : "Prossima giornata", timeline.next, "Nessuna prossima giornata inserita.")}
+      </div>
+    `;
+  }).join("");
 }
 
 function renderNews() {
