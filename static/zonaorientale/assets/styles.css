@@ -1767,3 +1767,407 @@ body.is-mobile-ux .mobile-more-sheet:not(.hidden) {
     flex-direction: column;
   }
 }
+
+
+/* V30 - Mobile-only compact layout and roster dialog overlap fix.
+   Desktop layout is intentionally untouched. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* The roster table inside the full-screen mobile dialog must grow naturally.
+     Previous mobile table-card rules overrode overflow while max-height stayed active,
+     causing Palmarès/Movimenti sections to overlap after a few players. */
+  .roster-dialog .roster-dialog-table,
+  .roster-dialog .compact-table,
+  .roster-dialog .table-wrap {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .roster-dialog .roster-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px !important;
+  }
+
+  .roster-dialog .roster-detail-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 108px;
+  }
+
+  .roster-dialog .detail-section {
+    position: relative;
+    clear: both;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  /* More compact mobile sections. */
+  .app-main {
+    padding-top: 8px;
+  }
+
+  .page-heading {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 14px;
+  }
+
+  .page-heading h2 {
+    font-size: 1.22rem;
+    margin-bottom: 2px;
+  }
+
+  .page-heading p,
+  .panel-header p,
+  .season-control-panel p {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .panel {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 14px;
+  }
+
+  .panel-header {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .panel-header h2,
+  .season-control-panel h3,
+  .detail-section h3 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+
+  .metric-card {
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  .metric-card strong {
+    font-size: 1.35rem;
+  }
+
+  .cards-grid,
+  .grid-two,
+  .dashboard-grid,
+  .stack-list,
+  .news-list,
+  .competition-list,
+  .admin-list {
+    gap: 8px;
+  }
+
+  .season-control-panel {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 14px;
+  }
+
+  .roster-club-card,
+  .stack-item,
+  .admin-list-item,
+  .movement-item,
+  .stadium-item,
+  .collapse-card,
+  .podium-mini-item,
+  .competition-card,
+  .news-card {
+    padding: 10px !important;
+    border-radius: 14px;
+  }
+
+  .roster-club-card {
+    min-height: 0;
+    gap: 5px;
+  }
+
+  .roster-card-title {
+    font-size: 0.95rem;
+  }
+
+  .roster-card-stats,
+  .muted,
+  .small {
+    font-size: 0.8rem;
+  }
+
+  .player-summary-grid,
+  .roster-summary-grid,
+  .import-summary-grid {
+    gap: 7px;
+  }
+
+  .player-summary-grid div,
+  .import-summary-grid div {
+    padding: 9px;
+    border-radius: 10px;
+  }
+
+  .player-summary-grid span,
+  .import-summary-grid span {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+
+  .player-summary-grid strong,
+  .import-summary-grid strong {
+    font-size: 0.94rem;
+  }
+
+  .table-wrap tbody {
+    gap: 7px;
+  }
+
+  .table-wrap tr {
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .table-wrap td {
+    padding: 6px 2px;
+    gap: 8px;
+  }
+
+  .table-wrap td::before {
+    flex-basis: 39%;
+    font-size: 0.68rem;
+  }
+
+  .button,
+  .button-small,
+  .mobile-subnav-pill {
+    min-height: 38px;
+  }
+
+  .input,
+  .search-input,
+  .filter-input {
+    min-height: 40px;
+  }
+
+  .form-grid {
+    gap: 9px;
+  }
+
+  .mobile-page-subnav:not(.hidden) {
+    padding: 7px 0 6px;
+    margin-bottom: 8px;
+  }
+
+  .mobile-subnav-pill {
+    padding: 7px 10px;
+    font-size: 0.76rem;
+  }
+}
+
+/* Same mobile fixes for JS fallback class used by Samsung Internet/Brave. */
+body.is-mobile-ux .roster-dialog .roster-dialog-table,
+body.is-mobile-ux .roster-dialog .compact-table,
+body.is-mobile-ux .roster-dialog .table-wrap {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+body.is-mobile-ux .roster-dialog .roster-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px !important;
+}
+
+body.is-mobile-ux .roster-dialog .roster-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 108px;
+}
+
+body.is-mobile-ux .roster-dialog .detail-section {
+  position: relative;
+  clear: both;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+body.is-mobile-ux .page-heading,
+body.is-mobile-ux .panel,
+body.is-mobile-ux .metric-card,
+body.is-mobile-ux .season-control-panel {
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 14px;
+}
+
+body.is-mobile-ux .panel-header {
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+body.is-mobile-ux .page-heading h2 {
+  font-size: 1.22rem;
+}
+
+body.is-mobile-ux .panel-header h2,
+body.is-mobile-ux .season-control-panel h3,
+body.is-mobile-ux .detail-section h3 {
+  font-size: 1rem;
+}
+
+body.is-mobile-ux .table-wrap tbody,
+body.is-mobile-ux .cards-grid,
+body.is-mobile-ux .grid-two,
+body.is-mobile-ux .dashboard-grid,
+body.is-mobile-ux .stack-list,
+body.is-mobile-ux .news-list,
+body.is-mobile-ux .competition-list,
+body.is-mobile-ux .admin-list {
+  gap: 8px;
+}
+
+body.is-mobile-ux .table-wrap tr,
+body.is-mobile-ux .roster-club-card,
+body.is-mobile-ux .stack-item,
+body.is-mobile-ux .admin-list-item,
+body.is-mobile-ux .movement-item,
+body.is-mobile-ux .stadium-item,
+body.is-mobile-ux .collapse-card,
+body.is-mobile-ux .podium-mini-item,
+body.is-mobile-ux .competition-card,
+body.is-mobile-ux .news-card {
+  padding: 10px !important;
+  border-radius: 14px;
+}
+
+body.is-mobile-ux .table-wrap td {
+  padding: 6px 2px;
+}
+
+
+/* V31 - Mobile overlap fix across all pages and compact standings.
+   Desktop remains unchanged. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* In mobile mode tables are rendered as stacked cards. Any max-height/overflow
+     on wrappers can make the following sections overlap the card list, so disable
+     scroll boxes globally on mobile. */
+  .compact-table,
+  .table-wrap,
+  .mini-table-wrap,
+  .honor-table-wrap,
+  .honor-cup-content,
+  .collapse-card .table-wrap,
+  .player-dialog .table-wrap,
+  .roster-dialog .table-wrap {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .app-page,
+  .panel,
+  .collapse-card,
+  .detail-section,
+  .stack-section,
+  .competition-card,
+  .news-card,
+  .stack-item,
+  .admin-list-item,
+  .movement-item,
+  .stadium-item {
+    position: relative;
+    clear: both;
+    overflow: visible;
+  }
+
+  .app-page > section,
+  .app-page > article,
+  .panel + .panel,
+  .detail-section + .detail-section,
+  .stack-section + .stack-section {
+    margin-top: 8px;
+  }
+
+  /* Mobile standings: keep only position, team, points, played and fantapoints. */
+  .standing-table .standing-optional {
+    display: none !important;
+  }
+
+  .standing-table-wrap .standing-table tr {
+    padding: 7px 8px !important;
+  }
+
+  .standing-table-wrap .standing-table td {
+    padding: 5px 2px !important;
+    min-height: 28px;
+  }
+
+  .standing-table-wrap .standing-table td::before {
+    flex: 0 0 32%;
+  }
+
+  .standing-source-note {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.72rem;
+  }
+}
+
+/* Same V31 fixes for the JS fallback class used by Samsung Internet/Brave. */
+body.is-mobile-ux .compact-table,
+body.is-mobile-ux .table-wrap,
+body.is-mobile-ux .mini-table-wrap,
+body.is-mobile-ux .honor-table-wrap,
+body.is-mobile-ux .honor-cup-content,
+body.is-mobile-ux .collapse-card .table-wrap,
+body.is-mobile-ux .player-dialog .table-wrap,
+body.is-mobile-ux .roster-dialog .table-wrap {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+body.is-mobile-ux .app-page,
+body.is-mobile-ux .panel,
+body.is-mobile-ux .collapse-card,
+body.is-mobile-ux .detail-section,
+body.is-mobile-ux .stack-section,
+body.is-mobile-ux .competition-card,
+body.is-mobile-ux .news-card,
+body.is-mobile-ux .stack-item,
+body.is-mobile-ux .admin-list-item,
+body.is-mobile-ux .movement-item,
+body.is-mobile-ux .stadium-item {
+  position: relative;
+  clear: both;
+  overflow: visible;
+}
+
+body.is-mobile-ux .standing-table .standing-optional {
+  display: none !important;
+}
+
+body.is-mobile-ux .standing-table-wrap .standing-table tr {
+  padding: 7px 8px !important;
+}
+
+body.is-mobile-ux .standing-table-wrap .standing-table td {
+  padding: 5px 2px !important;
+  min-height: 28px;
+}
+
+body.is-mobile-ux .standing-table-wrap .standing-table td::before {
+  flex: 0 0 32%;
+}
+
+body.is-mobile-ux .standing-source-note {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+}

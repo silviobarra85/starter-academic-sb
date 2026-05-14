@@ -9,7 +9,6 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
-
 const ACTIVE_SEASON_ID = "2025-2026";
 
 const MOVEMENT_LABELS = {
@@ -1387,10 +1386,10 @@ function renderStandingTable(competition, limit = null) {
 
   return `
     <small class="muted standing-source-note">${standingSource}</small>
-    <div class="table-wrap compact-table">
-      <table>
+    <div class="table-wrap compact-table standing-table-wrap">
+      <table class="standing-table">
         <thead>
-          <tr><th>#</th><th>Club</th><th class="number">Pt</th><th class="number">G</th><th class="number">V</th><th class="number">N</th><th class="number">P</th><th class="number">GF</th><th class="number">GS</th><th class="number">DR</th><th class="number">FP</th></tr>
+          <tr><th>#</th><th>Club</th><th class="number">Pt</th><th class="number">G</th><th class="number standing-optional">V</th><th class="number standing-optional">N</th><th class="number standing-optional">P</th><th class="number standing-optional">GF</th><th class="number standing-optional">GS</th><th class="number standing-optional">DR</th><th class="number">FP</th></tr>
         </thead>
         <tbody>
           ${rows.slice(0, limit || rows.length).map((row, index) => {
@@ -1400,12 +1399,12 @@ function renderStandingTable(competition, limit = null) {
               <td>${clubButton(club)}</td>
               <td class="number"><strong>${row.points ?? "-"}</strong></td>
               <td class="number">${row.played ?? "-"}</td>
-              <td class="number">${row.wins ?? "-"}</td>
-              <td class="number">${row.draws ?? "-"}</td>
-              <td class="number">${row.losses ?? "-"}</td>
-              <td class="number">${row.goals_for ?? "-"}</td>
-              <td class="number">${row.goals_against ?? "-"}</td>
-              <td class="number">${row.goal_difference ?? "-"}</td>
+              <td class="number standing-optional">${row.wins ?? "-"}</td>
+              <td class="number standing-optional">${row.draws ?? "-"}</td>
+              <td class="number standing-optional">${row.losses ?? "-"}</td>
+              <td class="number standing-optional">${row.goals_for ?? "-"}</td>
+              <td class="number standing-optional">${row.goals_against ?? "-"}</td>
+              <td class="number standing-optional">${row.goal_difference ?? "-"}</td>
               <td class="number">${Number(row.fantapoints || 0) ? Number(row.fantapoints).toFixed(1) : (row.fantapoints ?? "-")}</td>
             </tr>`;
           }).join("")}
