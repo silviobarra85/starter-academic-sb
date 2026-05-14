@@ -976,6 +976,21 @@
 
 
 
+
+
+  <dialog id="fantacalcioDialog" class="login-dialog fantacalcio-dialog">
+    <div class="login-card fantacalcio-card">
+      <button id="closeFantacalcioBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
+      <p class="eyebrow">Fantacalcio.it</p>
+      <h2 id="fantacalcioDialogTitle">Scheda Fantacalcio</h2>
+      <div class="fantacalcio-frame-actions">
+        <a id="fantacalcioExternalLink" class="button button-secondary" href="#" target="_blank" rel="noopener noreferrer">Apri in nuova scheda</a>
+        <small class="muted">Se il sito non consente l'apertura integrata, usa il pulsante qui sopra.</small>
+      </div>
+      <iframe id="fantacalcioFrame" class="fantacalcio-frame" title="Scheda giocatore Fantacalcio.it" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </dialog>
+
   <dialog id="rosterDialog" class="login-dialog roster-dialog">
     <div class="login-card roster-card">
       <button id="closeRosterBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
@@ -987,8 +1002,31 @@
     </div>
   </dialog>
 
+
+
+  <div id="mobileMoreBackdrop" class="mobile-more-backdrop hidden" aria-hidden="true"></div>
+  <nav id="mobileMoreSheet" class="mobile-more-sheet hidden" aria-label="Altre sezioni mobile">
+    <div class="mobile-more-header">
+      <strong>Altre sezioni</strong>
+      <button id="mobileMoreClose" class="mobile-icon-button" type="button" aria-label="Chiudi menu">×</button>
+    </div>
+    <a href="#clubs" class="mobile-more-link" data-page-link="clubs">Club</a>
+    <a href="#competitions" class="mobile-more-link" data-page-link="competitions">Competizioni</a>
+    <a href="#honor" class="mobile-more-link" data-page-link="honor">Albo d'oro</a>
+    <a href="#finance" class="mobile-more-link" data-page-link="finance">Movimenti & Stadi</a>
+    <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-page-link="admin">Admin</a>
+  </nav>
+
+  <nav class="mobile-bottom-nav" aria-label="Navigazione principale mobile">
+    <a href="#dashboard" class="mobile-bottom-link" data-page-link="dashboard"><span class="mobile-nav-icon">⌂</span><span>Home</span></a>
+    <a href="#news" class="mobile-bottom-link" data-page-link="news"><span class="mobile-nav-icon">📰</span><span>News</span></a>
+    <a href="#rosters" class="mobile-bottom-link" data-page-link="rosters"><span class="mobile-nav-icon">👥</span><span>Rose</span></a>
+    <a href="#listone" class="mobile-bottom-link" data-page-link="listone"><span class="mobile-nav-icon">📋</span><span>Listone</span></a>
+    <button id="mobileMoreBtn" class="mobile-bottom-link" type="button" aria-expanded="false" aria-controls="mobileMoreSheet"><span class="mobile-nav-icon">☰</span><span>Altro</span></button>
+  </nav>
+
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V14 storico, backup DB e albo d'oro esteso</p>
+    <p>ZonaOrientale Salerno · v1.4 mobile nav e albo</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
