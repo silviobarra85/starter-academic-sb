@@ -1395,6 +1395,16 @@ function presidentButton({ president, presidentKey, teamName = "", logo = "" }, 
   return `<button class="link-button club-link ${extraClass}" type="button" data-honor-president-key="${escapeHtml(safeKey)}">${logoHtml}<span><strong>${escapeHtml(display)}</strong>${suffix}</span></button>`;
 }
 
+function honorMobilePresidentCell({ president, presidentKey, teamName = "", logo = "" }) {
+  const safeKey = presidentKey || getPresidentKey(president);
+  const display = displayPresidents(president) || "Presidente";
+  const logoHtml = logo
+    ? `<img src="${escapeHtml(logo)}" alt="" class="club-logo" loading="lazy" />`
+    : `<span class="club-logo club-logo-placeholder">${escapeHtml(String(display || "?").slice(0, 1).toUpperCase())}</span>`;
+  const team = teamName ? `<small>${escapeHtml(teamName)}</small>` : "";
+  return `<button class="link-button mobile-honor-president-cell" type="button" data-honor-president-key="${escapeHtml(safeKey)}">${logoHtml}<span>${escapeHtml(display)}</span>${team}</button>`;
+}
+
 function getHonorSourcePriority(row) {
   const priorities = {
     manual: 1,
@@ -3317,7 +3327,7 @@ function renderHonorOverallMobileTable(summaryRows) {
   return `<div class="mobile-honor-only mobile-honor-table-wrap"><table class="mobile-honor-table">
     <thead><tr><th>Presidente</th><th class="number">#</th><th class="number">RS</th><th class="number">CI</th><th class="number">CL</th><th class="number">PO</th></tr></thead>
     <tbody>${summaryRows.map((row) => `<tr>
-      <td>${presidentButton({ president: row.president, presidentKey: row.key, teamName: Array.from(row.teams || []).filter(Boolean).join(" · "), logo: row.logo })}</td>
+      <td>${honorMobilePresidentCell({ president: row.president, presidentKey: row.key, teamName: Array.from(row.teams || []).filter(Boolean).join(" · "), logo: row.logo })}</td>
       <td class="number"><strong>${row.wins || 0}</strong></td>
       <td class="number">${getWins(row, "REGULAR_SEASON")}</td>
       <td class="number">${getWins(row, "COPPA_ITALIA")}</td>
@@ -3332,7 +3342,7 @@ function renderHonorCompetitionMobileTable(summaryRows) {
   return `<div class="mobile-honor-only mobile-honor-table-wrap"><table class="mobile-honor-table honor-competition-mobile-table">
     <thead><tr><th>Presidente</th><th class="number">1°</th><th class="number">2°</th><th class="number">3°</th></tr></thead>
     <tbody>${summaryRows.map((row) => `<tr>
-      <td>${presidentButton({ president: row.president, presidentKey: row.key, teamName: Array.from(row.teams || []).filter(Boolean).join(" · "), logo: row.logo })}</td>
+      <td>${honorMobilePresidentCell({ president: row.president, presidentKey: row.key, teamName: Array.from(row.teams || []).filter(Boolean).join(" · "), logo: row.logo })}</td>
       <td class="number"><strong>${row.wins || 0}</strong></td>
       <td class="number">${row.seconds || 0}</td>
       <td class="number">${row.thirds || 0}</td>

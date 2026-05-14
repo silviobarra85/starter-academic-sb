@@ -3355,3 +3355,182 @@ body.is-mobile-ux .mobile-match-team span { display: block; max-width: 100%; col
 body.is-mobile-ux .mobile-match-score { align-self: center; min-width: 46px; padding: 5px 7px; border: 1px solid rgba(148, 163, 184, 0.24); border-radius: 999px; background: rgba(15, 23, 42, 0.72); color: var(--text); font-size: 0.9rem; line-height: 1; text-align: center; }
 body.is-mobile-ux .mobile-match-meta,
 body.is-mobile-ux .mobile-match-note { color: var(--muted); font-size: 0.68rem; font-weight: 800; text-align: center; }
+
+
+/* v1.4 - mobile navigation restore, hard standing cleanup and honor logo/name cell. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 2147483000 !important;
+    display: grid !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    padding: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 24px !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.48) !important;
+    backdrop-filter: blur(16px);
+  }
+
+  .mobile-bottom-link {
+    display: grid !important;
+  }
+
+  /* Most robust fix: remove every desktop standing column by position, then show only # | SQ | G | PT | FPT. */
+  .standing-table.mobile-standing-table th:nth-child(-n+11),
+  .standing-table.mobile-standing-table td:nth-child(-n+11) {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .standing-table.mobile-standing-table th:nth-child(n+12),
+  .standing-table.mobile-standing-table td:nth-child(n+12) {
+    display: table-cell !important;
+    padding: 7px 4px !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15) !important;
+  }
+
+  .standing-table.mobile-standing-table th:nth-child(12),
+  .standing-table.mobile-standing-table td:nth-child(12) {
+    width: 30px !important;
+    text-align: center !important;
+  }
+
+  .standing-table.mobile-standing-table th:nth-child(13),
+  .standing-table.mobile-standing-table td:nth-child(13) {
+    width: auto !important;
+    text-align: center !important;
+  }
+
+  .standing-table.mobile-standing-table th:nth-child(14),
+  .standing-table.mobile-standing-table td:nth-child(14),
+  .standing-table.mobile-standing-table th:nth-child(15),
+  .standing-table.mobile-standing-table td:nth-child(15) {
+    width: 42px !important;
+    text-align: right !important;
+  }
+
+  .standing-table.mobile-standing-table th:nth-child(16),
+  .standing-table.mobile-standing-table td:nth-child(16) {
+    width: 58px !important;
+    text-align: right !important;
+  }
+
+  .mobile-honor-president-cell {
+    display: grid !important;
+    justify-items: center;
+    gap: 3px;
+    width: 100%;
+    color: var(--text);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .mobile-honor-president-cell .club-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobile-honor-president-cell span {
+    display: block;
+    max-width: 100%;
+    font-size: 0.66rem;
+    font-weight: 900;
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-honor-president-cell small {
+    display: none;
+  }
+}
+
+body.is-mobile-ux {
+  padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+body.is-mobile-ux .mobile-bottom-nav {
+  position: fixed !important;
+  left: 10px !important;
+  right: 10px !important;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  z-index: 2147483000 !important;
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 24px !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.48) !important;
+}
+
+body.is-mobile-ux .mobile-bottom-link {
+  display: grid !important;
+}
+
+body.is-mobile-ux .standing-table.mobile-standing-table th:nth-child(-n+11),
+body.is-mobile-ux .standing-table.mobile-standing-table td:nth-child(-n+11) {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+
+body.is-mobile-ux .standing-table.mobile-standing-table th:nth-child(n+12),
+body.is-mobile-ux .standing-table.mobile-standing-table td:nth-child(n+12) {
+  display: table-cell !important;
+}
+
+body.is-mobile-ux .mobile-honor-president-cell {
+  display: grid !important;
+  justify-items: center;
+  gap: 3px;
+  width: 100%;
+  color: var(--text);
+  text-align: center;
+}
+
+body.is-mobile-ux .mobile-honor-president-cell .club-logo {
+  width: 30px;
+  height: 30px;
+}
+
+body.is-mobile-ux .mobile-honor-president-cell span {
+  display: block;
+  max-width: 100%;
+  font-size: 0.66rem;
+  font-weight: 900;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.is-mobile-ux .mobile-honor-president-cell small {
+  display: none;
+}
