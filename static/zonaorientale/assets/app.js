@@ -9,6 +9,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
+
 const ACTIVE_SEASON_ID = "2025-2026";
 
 const MOVEMENT_LABELS = {
@@ -479,6 +480,27 @@ function getPlayerQuotations(playerId) {
 
 function quoteStatusLabel(quote) {
   return quote?.is_listed ? "In listone" : "Asteriscato";
+}
+
+function mobileTeamCode(value) {
+  const text = String(value || "-").trim();
+  if (!text || text === "-") return "-";
+  return text.slice(0, 3).toUpperCase();
+}
+
+function renderMobileTeam(value) {
+  const full = escapeHtml(value || "-");
+  const code = escapeHtml(mobileTeamCode(value));
+  return `<span class="desktop-inline">${full}</span><span class="mobile-inline team-code">${code}</span>`;
+}
+
+function renderStatusDot(status, label = status) {
+  const normalized = String(status || "").toLowerCase();
+  let dotClass = "status-dot-muted";
+  if (normalized.includes("attivo") || normalized.includes("listone")) dotClass = "status-dot-ok";
+  if (normalized.includes("asterisc") || normalized.includes("cedut") || normalized.includes("left")) dotClass = "status-dot-warning";
+  const safeLabel = escapeHtml(label || status || "-");
+  return `<span class="status-dot ${dotClass}" title="${safeLabel}" aria-label="${safeLabel}"></span><span class="desktop-inline"><span class="status ${dotClass === "status-dot-warning" ? "status-warning" : dotClass === "status-dot-ok" ? "status-ok" : "status-muted"}">${safeLabel}</span></span>`;
 }
 
 function getUploadById(uploadId) {
@@ -1386,7 +1408,7 @@ function renderStandingTable(competition, limit = null) {
 
   return `
     <small class="muted standing-source-note">${standingSource}</small>
-    <div class="table-wrap compact-table standing-table-wrap">
+    <div class="table-wrap compact-table standing-table-wrap mobile-tabular-wrap">
       <table class="standing-table">
         <thead>
           <tr><th>#</th><th>Club</th><th class="number">Pt</th><th class="number">G</th><th class="number standing-optional">V</th><th class="number standing-optional">N</th><th class="number standing-optional">P</th><th class="number standing-optional">GF</th><th class="number standing-optional">GS</th><th class="number standing-optional">DR</th><th class="number">FP</th></tr>
@@ -1862,7 +1884,7 @@ function renderRoster() {
     const hint = otherSeasons
       ? `<br><span class="muted small">Ci sono rose importate in altre stagioni (${otherSeasons}). Cambia il filtro stagione.</span>`
       : "";
-    el.rosterTableBody.innerHTML = `<tr><td colspan="8" class="muted center">Nessun giocatore in rosa per la stagione ${escapeHtml(selectedSeason)}.${hint}</td></tr>`;
+    el.rosterTableBody.innerHTML = `<tr><td colspan="11" class="muted center">Nessun giocatore in rosa per la stagione ${escapeHtml(selectedSeason)}.${hint}</td></tr>`;
     return;
   }
 
@@ -1873,14 +1895,17 @@ function renderRoster() {
       const roleLabel = player?.role_class === "P" ? "Portiere" : "Movimento";
       return `
         <tr>
-          <td>${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato")}</td>
-          <td>${club ? clubButton(club) : `<button class="link-button" type="button" data-roster-club-id="${escapeHtml(entry.club_id)}">${escapeHtml(entry.club_id)}</button>`}</td>
-          <td>${escapeHtml(latestQuote?.real_team || player?.real_team || "-")}</td>
-          <td>${escapeHtml(latestQuote?.mantra_roles || player?.mantra_roles || "-")}</td>
-          <td>${roleLabel}</td>
-          <td class="number">${fmtFm(entry.purchase_price)}</td>
-          <td>${escapeHtml(ACQUIRED_LABELS[entry.acquired_via] || entry.acquired_via)}</td>
-          <td><span class="status ${status === "Asteriscato" ? "status-warning" : entry.is_active ? "status-ok" : "status-muted"}">${status}</span></td>
+          <td class="roster-player-cell">${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato")}</td>
+          <td class="desktop-only-cell">${club ? clubButton(club) : `<button class="link-button" type="button" data-roster-club-id="${escapeHtml(entry.club_id)}">${escapeHtml(entry.club_id)}</button>`}</td>
+          <td class="desktop-only-cell">${escapeHtml(latestQuote?.real_team || player?.real_team || "-")}</td>
+          <td class="desktop-only-cell">${escapeHtml(latestQuote?.mantra_roles || player?.mantra_roles || "-")}</td>
+          <td class="desktop-only-cell">${roleLabel}</td>
+          <td class="mobile-only-cell mobile-role-cell">${escapeHtml(latestQuote?.classic_role || player?.classic_role || player?.role_class || "-")}</td>
+          <td class="mobile-only-cell mobile-mantra-cell">${escapeHtml(latestQuote?.mantra_roles || player?.mantra_roles || "-")}</td>
+          <td class="mobile-only-cell mobile-team-cell">${escapeHtml(mobileTeamCode(latestQuote?.real_team || player?.real_team || entry.source_real_team || "-"))}</td>
+          <td class="number mobile-cost-cell">${fmtFm(entry.purchase_price)}</td>
+          <td class="desktop-only-cell">${escapeHtml(ACQUIRED_LABELS[entry.acquired_via] || entry.acquired_via)}</td>
+          <td class="mobile-status-cell">${renderStatusDot(status)}</td>
         </tr>
       `;
     })
@@ -2100,12 +2125,12 @@ function showRosterDialog(clubId) {
     const status = entry.is_active ? (quote?.is_listed === false || player?.is_asterisked ? "Asteriscato" : "Attivo") : "Non attivo";
     return `
       <tr>
-        <td>${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato")}</td>
-        <td>${escapeHtml(quote?.classic_role || player?.classic_role || player?.role_class || "-")}</td>
-        <td>${escapeHtml(quote?.real_team || player?.real_team || entry.source_real_team || "-")}</td>
-        <td>${escapeHtml(quote?.mantra_roles || player?.mantra_roles || "-")}</td>
-        <td class="number">${fmtFm(entry.purchase_price)}</td>
-        <td><span class="status ${status === "Asteriscato" ? "status-warning" : entry.is_active ? "status-ok" : "status-muted"}">${status}</span></td>
+        <td class="roster-player-cell">${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato")}</td>
+        <td class="mobile-role-cell">${escapeHtml(quote?.classic_role || player?.classic_role || player?.role_class || "-")}</td>
+        <td class="mobile-team-cell">${escapeHtml(mobileTeamCode(quote?.real_team || player?.real_team || entry.source_real_team || "-"))}</td>
+        <td class="mobile-mantra-cell">${escapeHtml(quote?.mantra_roles || player?.mantra_roles || "-")}</td>
+        <td class="number mobile-cost-cell">${fmtFm(entry.purchase_price)}</td>
+        <td class="mobile-status-cell">${renderStatusDot(status)}</td>
       </tr>
     `;
   }).join("");
@@ -2119,10 +2144,10 @@ function showRosterDialog(clubId) {
       <div><span>Saldo club</span><strong>${fmtFm(getClubBalance(clubId, seasonId))}</strong></div>
       <div><span>Stato</span><strong>${stats.issues.length ? escapeHtml(stats.issues[0]) : "OK"}</strong></div>
     </div>
-    <div class="table-wrap compact-table roster-dialog-table">
-      <table>
+    <div class="table-wrap compact-table roster-dialog-table mobile-tabular-wrap">
+      <table class="mobile-tabular roster-dialog-players-table">
         <thead>
-          <tr><th>Giocatore</th><th>R</th><th>Squadra</th><th>Ruoli</th><th class="number">Costo</th><th>Stato</th></tr>
+          <tr><th>Giocatore</th><th>R</th><th>Sq</th><th>RM</th><th class="number">Costo</th><th>Stato</th></tr>
         </thead>
         <tbody>${tableRows || '<tr><td colspan="6" class="muted center">Nessun giocatore in rosa.</td></tr>'}</tbody>
       </table>
@@ -2251,15 +2276,15 @@ function renderListone() {
       const statusClass = quote.is_listed ? "status-ok" : "status-warning";
       return `
         <tr>
-          <td>${playerButton(quote.player_id, quote.player_name)}<br><span class="muted small">ID ${escapeHtml(quote.fantacalcio_id)} · key ${escapeHtml(getQuotationKey(quote))}</span></td>
-          <td>${escapeHtml(quote.real_team || "-")}</td>
-          <td>${escapeHtml(quote.mantra_roles || "-")}</td>
-          <td>${escapeHtml(quote.classic_role || "-")}</td>
-          <td>${renderRosterCellForPlayer(quote.player_id, state.selectedListoneSeason)}</td>
-          <td class="number">${quote.quotation_current ?? "-"}</td>
-          <td class="number">${quote.fvm ?? "-"}</td>
-          <td><span class="status ${statusClass}">${quoteStatusLabel(quote)}</span></td>
-          <td><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}">Scheda</button></td>
+          <td class="listone-player-cell">${playerButton(quote.player_id, quote.player_name)}<br><span class="muted small mobile-hide-line">ID ${escapeHtml(quote.fantacalcio_id)} · key ${escapeHtml(getQuotationKey(quote))}</span></td>
+          <td class="mobile-team-cell">${renderMobileTeam(quote.real_team || "-")}</td>
+          <td class="mobile-mantra-cell">${escapeHtml(quote.mantra_roles || "-")}</td>
+          <td class="mobile-role-cell">${escapeHtml(quote.classic_role || "-")}</td>
+          <td class="mobile-roster-cell">${renderRosterCellForPlayer(quote.player_id, state.selectedListoneSeason)}</td>
+          <td class="number mobile-quote-cell">${quote.quotation_current ?? "-"}</td>
+          <td class="number mobile-fvm-cell">${quote.fvm ?? "-"}</td>
+          <td class="mobile-status-cell">${renderStatusDot(quote.is_listed ? "In listone" : "Asteriscato")}</td>
+          <td class="mobile-history-cell"><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}">Scheda</button></td>
         </tr>
       `;
     })
@@ -2295,14 +2320,14 @@ function renderFreeAgents() {
   el.freeAgentsTableBody.innerHTML = rows
     .map((quote) => `
       <tr>
-        <td>${playerButton(quote.player_id, quote.player_name)}<br><span class="muted small">key ${escapeHtml(getQuotationKey(quote))}</span></td>
-        <td>${escapeHtml(quote.real_team || "-")}</td>
-        <td>${escapeHtml(quote.mantra_roles || "-")}</td>
-        <td>${escapeHtml(quote.classic_role || "-")}</td>
-        <td class="number">${quote.quotation_current ?? "-"}</td>
-        <td class="number">${quote.fvm ?? "-"}</td>
-        <td><span class="status status-muted">Svincolato</span></td>
-        <td><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}">Scheda</button></td>
+        <td class="listone-player-cell">${playerButton(quote.player_id, quote.player_name)}<br><span class="muted small mobile-hide-line">key ${escapeHtml(getQuotationKey(quote))}</span></td>
+        <td class="mobile-team-cell">${renderMobileTeam(quote.real_team || "-")}</td>
+        <td class="mobile-mantra-cell">${escapeHtml(quote.mantra_roles || "-")}</td>
+        <td class="mobile-role-cell">${escapeHtml(quote.classic_role || "-")}</td>
+        <td class="number mobile-quote-cell">${quote.quotation_current ?? "-"}</td>
+        <td class="number mobile-fvm-cell">${quote.fvm ?? "-"}</td>
+        <td class="mobile-status-cell">${renderStatusDot("Svincolato", "Svincolato")}</td>
+        <td class="mobile-history-cell"><button class="link-button" type="button" data-player-id="${escapeHtml(quote.player_id)}">Scheda</button></td>
       </tr>
     `)
     .join("");

@@ -2171,3 +2171,399 @@ body.is-mobile-ux .standing-source-note {
   margin-bottom: 6px;
   font-size: 0.72rem;
 }
+
+/* V32 - Mobile tabular views for standings, rosters and listone.
+   Desktop remains unchanged. */
+.mobile-only-col,
+.mobile-only-cell,
+.mobile-inline {
+  display: none;
+}
+
+.desktop-inline {
+  display: inline;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 999px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.08);
+}
+
+.status-dot-ok {
+  background: #22c55e;
+}
+
+.status-dot-warning {
+  background: #facc15;
+}
+
+.status-dot-muted {
+  background: #94a3b8;
+}
+
+.team-code {
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Undo the mobile card/table transformation only for the tables that must stay tabular. */
+  .mobile-tabular-wrap,
+  .standing-table-wrap,
+  .roster-dialog-table {
+    max-height: min(68vh, 560px) !important;
+    height: auto !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular,
+  .standing-table-wrap table.standing-table,
+  .roster-dialog-table table.mobile-tabular,
+  .mobile-tabular-wrap table.mobile-tabular thead,
+  .standing-table-wrap table.standing-table thead,
+  .roster-dialog-table table.mobile-tabular thead,
+  .mobile-tabular-wrap table.mobile-tabular tbody,
+  .standing-table-wrap table.standing-table tbody,
+  .roster-dialog-table table.mobile-tabular tbody,
+  .mobile-tabular-wrap table.mobile-tabular tr,
+  .standing-table-wrap table.standing-table tr,
+  .roster-dialog-table table.mobile-tabular tr,
+  .mobile-tabular-wrap table.mobile-tabular th,
+  .standing-table-wrap table.standing-table th,
+  .roster-dialog-table table.mobile-tabular th,
+  .mobile-tabular-wrap table.mobile-tabular td,
+  .standing-table-wrap table.standing-table td,
+  .roster-dialog-table table.mobile-tabular td {
+    width: auto !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular,
+  .standing-table-wrap table.standing-table,
+  .roster-dialog-table table.mobile-tabular {
+    display: table !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    font-size: 0.72rem;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular thead,
+  .standing-table-wrap table.standing-table thead,
+  .roster-dialog-table table.mobile-tabular thead {
+    display: table-header-group !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular tbody,
+  .standing-table-wrap table.standing-table tbody,
+  .roster-dialog-table table.mobile-tabular tbody {
+    display: table-row-group !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular tr,
+  .standing-table-wrap table.standing-table tr,
+  .roster-dialog-table table.mobile-tabular tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular th,
+  .standing-table-wrap table.standing-table th,
+  .roster-dialog-table table.mobile-tabular th,
+  .mobile-tabular-wrap table.mobile-tabular td,
+  .standing-table-wrap table.standing-table td,
+  .roster-dialog-table table.mobile-tabular td {
+    display: table-cell !important;
+    padding: 7px 5px !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15) !important;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 0 !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular td::before,
+  .standing-table-wrap table.standing-table td::before,
+  .roster-dialog-table table.mobile-tabular td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular th,
+  .standing-table-wrap table.standing-table th,
+  .roster-dialog-table table.mobile-tabular th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.98);
+    color: #e5e7eb;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular .number,
+  .standing-table-wrap table.standing-table .number,
+  .roster-dialog-table table.mobile-tabular .number {
+    text-align: right !important;
+  }
+
+  .desktop-only-col,
+  .desktop-only-cell,
+  .desktop-inline {
+    display: none !important;
+  }
+
+  .mobile-only-col,
+  .mobile-only-cell {
+    display: table-cell !important;
+  }
+
+  .mobile-inline {
+    display: inline !important;
+  }
+
+  .mobile-hide-line {
+    display: none !important;
+  }
+
+  .status-dot + .desktop-inline {
+    display: none !important;
+  }
+
+  /* Mobile standings: tabular and compact. */
+  .standing-table-wrap table.standing-table th:nth-child(1),
+  .standing-table-wrap table.standing-table td:nth-child(1) { width: 32px !important; text-align: center !important; }
+  .standing-table-wrap table.standing-table th:nth-child(2),
+  .standing-table-wrap table.standing-table td:nth-child(2) { width: auto !important; min-width: 118px; }
+  .standing-table-wrap table.standing-table th:nth-child(3),
+  .standing-table-wrap table.standing-table td:nth-child(3) { width: 42px !important; }
+  .standing-table-wrap table.standing-table th:nth-child(4),
+  .standing-table-wrap table.standing-table td:nth-child(4) { width: 34px !important; }
+  .standing-table-wrap table.standing-table th:last-child,
+  .standing-table-wrap table.standing-table td:last-child { width: 54px !important; }
+
+  /* Roster tables: Nome, R, RM, squadra abbreviata, costo, stato. */
+  .roster-main-table th:nth-child(1),
+  .roster-main-table td:nth-child(1),
+  .roster-dialog-players-table th:nth-child(1),
+  .roster-dialog-players-table td:nth-child(1) {
+    width: 39% !important;
+    min-width: 104px;
+  }
+
+  .roster-main-table th.mobile-only-col:nth-child(6),
+  .roster-main-table td.mobile-only-cell:nth-child(6),
+  .roster-dialog-players-table th:nth-child(2),
+  .roster-dialog-players-table td:nth-child(2) {
+    width: 28px !important;
+    text-align: center !important;
+  }
+
+  .roster-main-table th.mobile-only-col:nth-child(7),
+  .roster-main-table td.mobile-only-cell:nth-child(7),
+  .roster-dialog-players-table th:nth-child(4),
+  .roster-dialog-players-table td:nth-child(4) {
+    width: 52px !important;
+  }
+
+  .roster-main-table th.mobile-only-col:nth-child(8),
+  .roster-main-table td.mobile-only-cell:nth-child(8),
+  .roster-dialog-players-table th:nth-child(3),
+  .roster-dialog-players-table td:nth-child(3) {
+    width: 38px !important;
+    text-align: center !important;
+  }
+
+  .roster-main-table th:nth-child(9),
+  .roster-main-table td:nth-child(9),
+  .roster-dialog-players-table th:nth-child(5),
+  .roster-dialog-players-table td:nth-child(5) {
+    width: 52px !important;
+  }
+
+  .roster-main-table th:last-child,
+  .roster-main-table td:last-child,
+  .roster-dialog-players-table th:last-child,
+  .roster-dialog-players-table td:last-child {
+    width: 34px !important;
+    text-align: center !important;
+  }
+
+  /* Listone/free agents: compact tabular layout with sticky header. */
+  .listone-table th:nth-child(1),
+  .listone-table td:nth-child(1) { width: 33% !important; min-width: 104px; }
+  .listone-table th:nth-child(2),
+  .listone-table td:nth-child(2) { width: 34px !important; text-align: center !important; }
+  .listone-table th:nth-child(3),
+  .listone-table td:nth-child(3) { width: 50px !important; }
+  .listone-table th:nth-child(4),
+  .listone-table td:nth-child(4) { width: 28px !important; text-align: center !important; }
+  .listone-table th:nth-child(5),
+  .listone-table td:nth-child(5) { width: 54px !important; }
+  .listone-table th:nth-child(6),
+  .listone-table td:nth-child(6),
+  .listone-table th:nth-child(7),
+  .listone-table td:nth-child(7) { width: 44px !important; }
+  .listone-table th:nth-child(8),
+  .listone-table td:nth-child(8) { width: 30px !important; text-align: center !important; }
+  .listone-table th:nth-child(9),
+  .listone-table td:nth-child(9) { width: 52px !important; }
+
+  .free-agents-table th:nth-child(5),
+  .free-agents-table td:nth-child(5),
+  .free-agents-table th:nth-child(6),
+  .free-agents-table td:nth-child(6) { width: 44px !important; }
+  .free-agents-table th:nth-child(7),
+  .free-agents-table td:nth-child(7) { width: 30px !important; text-align: center !important; }
+  .free-agents-table th:nth-child(8),
+  .free-agents-table td:nth-child(8) { width: 52px !important; }
+
+  .roster-player-cell .link-button,
+  .listone-player-cell .link-button,
+  .mobile-roster-cell .link-button,
+  .standing-table .link-button {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .status-dot {
+    width: 0.62rem;
+    height: 0.62rem;
+  }
+}
+
+body.is-mobile-ux .mobile-tabular-wrap,
+body.is-mobile-ux .standing-table-wrap,
+body.is-mobile-ux .roster-dialog-table {
+  max-height: min(68vh, 560px) !important;
+  height: auto !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular,
+body.is-mobile-ux .standing-table-wrap table.standing-table,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed;
+  font-size: 0.72rem;
+}
+
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular thead,
+body.is-mobile-ux .standing-table-wrap table.standing-table thead,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular thead { display: table-header-group !important; }
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular tbody,
+body.is-mobile-ux .standing-table-wrap table.standing-table tbody,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular tbody { display: table-row-group !important; }
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular tr,
+body.is-mobile-ux .standing-table-wrap table.standing-table tr,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular tr { display: table-row !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular th,
+body.is-mobile-ux .standing-table-wrap table.standing-table th,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular th,
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular td,
+body.is-mobile-ux .standing-table-wrap table.standing-table td,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular td { display: table-cell !important; padding: 7px 5px !important; border-bottom: 1px solid rgba(148, 163, 184, 0.15) !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 0 !important; }
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular td::before,
+body.is-mobile-ux .standing-table-wrap table.standing-table td::before,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular td::before { content: none !important; display: none !important; }
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular th,
+body.is-mobile-ux .standing-table-wrap table.standing-table th,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular th { position: sticky; top: 0; z-index: 3; background: rgba(15, 23, 42, 0.98); color: #e5e7eb; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; }
+body.is-mobile-ux .desktop-only-col,
+body.is-mobile-ux .desktop-only-cell,
+body.is-mobile-ux .desktop-inline { display: none !important; }
+body.is-mobile-ux .mobile-only-col,
+body.is-mobile-ux .mobile-only-cell { display: table-cell !important; }
+body.is-mobile-ux .mobile-inline { display: inline !important; }
+body.is-mobile-ux .mobile-hide-line { display: none !important; }
+body.is-mobile-ux .status-dot + .desktop-inline { display: none !important; }
+
+body.is-mobile-ux .standing-table-wrap table.standing-table th:nth-child(1),
+body.is-mobile-ux .standing-table-wrap table.standing-table td:nth-child(1) { width: 32px !important; text-align: center !important; }
+body.is-mobile-ux .standing-table-wrap table.standing-table th:nth-child(2),
+body.is-mobile-ux .standing-table-wrap table.standing-table td:nth-child(2) { width: auto !important; min-width: 118px; }
+body.is-mobile-ux .standing-table-wrap table.standing-table th:nth-child(3),
+body.is-mobile-ux .standing-table-wrap table.standing-table td:nth-child(3) { width: 42px !important; }
+body.is-mobile-ux .standing-table-wrap table.standing-table th:nth-child(4),
+body.is-mobile-ux .standing-table-wrap table.standing-table td:nth-child(4) { width: 34px !important; }
+body.is-mobile-ux .standing-table-wrap table.standing-table th:last-child,
+body.is-mobile-ux .standing-table-wrap table.standing-table td:last-child { width: 54px !important; }
+
+body.is-mobile-ux .roster-main-table th:nth-child(1),
+body.is-mobile-ux .roster-main-table td:nth-child(1),
+body.is-mobile-ux .roster-dialog-players-table th:nth-child(1),
+body.is-mobile-ux .roster-dialog-players-table td:nth-child(1) { width: 39% !important; min-width: 104px; }
+body.is-mobile-ux .roster-main-table th.mobile-only-col:nth-child(6),
+body.is-mobile-ux .roster-main-table td.mobile-only-cell:nth-child(6),
+body.is-mobile-ux .roster-dialog-players-table th:nth-child(2),
+body.is-mobile-ux .roster-dialog-players-table td:nth-child(2) { width: 28px !important; text-align: center !important; }
+body.is-mobile-ux .roster-main-table th.mobile-only-col:nth-child(7),
+body.is-mobile-ux .roster-main-table td.mobile-only-cell:nth-child(7),
+body.is-mobile-ux .roster-dialog-players-table th:nth-child(4),
+body.is-mobile-ux .roster-dialog-players-table td:nth-child(4) { width: 52px !important; }
+body.is-mobile-ux .roster-main-table th.mobile-only-col:nth-child(8),
+body.is-mobile-ux .roster-main-table td.mobile-only-cell:nth-child(8),
+body.is-mobile-ux .roster-dialog-players-table th:nth-child(3),
+body.is-mobile-ux .roster-dialog-players-table td:nth-child(3) { width: 38px !important; text-align: center !important; }
+body.is-mobile-ux .roster-main-table th:nth-child(9),
+body.is-mobile-ux .roster-main-table td:nth-child(9),
+body.is-mobile-ux .roster-dialog-players-table th:nth-child(5),
+body.is-mobile-ux .roster-dialog-players-table td:nth-child(5) { width: 52px !important; }
+body.is-mobile-ux .roster-main-table th:last-child,
+body.is-mobile-ux .roster-main-table td:last-child,
+body.is-mobile-ux .roster-dialog-players-table th:last-child,
+body.is-mobile-ux .roster-dialog-players-table td:last-child { width: 34px !important; text-align: center !important; }
+
+body.is-mobile-ux .listone-table th:nth-child(1),
+body.is-mobile-ux .listone-table td:nth-child(1) { width: 33% !important; min-width: 104px; }
+body.is-mobile-ux .listone-table th:nth-child(2),
+body.is-mobile-ux .listone-table td:nth-child(2) { width: 34px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table th:nth-child(3),
+body.is-mobile-ux .listone-table td:nth-child(3) { width: 50px !important; }
+body.is-mobile-ux .listone-table th:nth-child(4),
+body.is-mobile-ux .listone-table td:nth-child(4) { width: 28px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table th:nth-child(5),
+body.is-mobile-ux .listone-table td:nth-child(5) { width: 54px !important; }
+body.is-mobile-ux .listone-table th:nth-child(6),
+body.is-mobile-ux .listone-table td:nth-child(6),
+body.is-mobile-ux .listone-table th:nth-child(7),
+body.is-mobile-ux .listone-table td:nth-child(7) { width: 44px !important; }
+body.is-mobile-ux .listone-table th:nth-child(8),
+body.is-mobile-ux .listone-table td:nth-child(8) { width: 30px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table th:nth-child(9),
+body.is-mobile-ux .listone-table td:nth-child(9) { width: 52px !important; }
+body.is-mobile-ux .free-agents-table th:nth-child(5),
+body.is-mobile-ux .free-agents-table td:nth-child(5),
+body.is-mobile-ux .free-agents-table th:nth-child(6),
+body.is-mobile-ux .free-agents-table td:nth-child(6) { width: 44px !important; }
+body.is-mobile-ux .free-agents-table th:nth-child(7),
+body.is-mobile-ux .free-agents-table td:nth-child(7) { width: 30px !important; text-align: center !important; }
+body.is-mobile-ux .free-agents-table th:nth-child(8),
+body.is-mobile-ux .free-agents-table td:nth-child(8) { width: 52px !important; }
+body.is-mobile-ux .roster-player-cell .link-button,
+body.is-mobile-ux .listone-player-cell .link-button,
+body.is-mobile-ux .mobile-roster-cell .link-button,
+body.is-mobile-ux .standing-table .link-button { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
+body.is-mobile-ux .status-dot { width: 0.62rem; height: 0.62rem; }
