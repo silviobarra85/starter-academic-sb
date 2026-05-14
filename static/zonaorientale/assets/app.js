@@ -1277,9 +1277,18 @@ function clubButton(club, extraClass = "") {
   return `<button class="link-button club-link ${extraClass}" type="button" data-roster-club-id="${escapeHtml(club.id)}">${clubNameWithLogo(club)}</button>`;
 }
 
-function playerButton(playerId, label) {
+function playerButton(playerId, label, action = "detail") {
   if (!playerId) return escapeHtml(label || "-");
-  return `<button class="link-button" type="button" data-player-id="${escapeHtml(playerId)}">${escapeHtml(label || "Giocatore")}</button>`;
+  return `<button class="link-button" type="button" data-player-id="${escapeHtml(playerId)}" data-player-action="${escapeHtml(action)}">${escapeHtml(label || "Giocatore")}</button>`;
+}
+
+function handlePlayerClick(playerId, action = "detail") {
+  if (!playerId) return;
+  if (action === "fantacalcio") {
+    openFantacalcioDialog(playerId);
+    return;
+  }
+  showPlayerDialog(playerId);
 }
 
 function renderCupPodium(competition) {
@@ -1916,7 +1925,7 @@ function renderRoster() {
       const roleLabel = player?.role_class === "P" ? "Portiere" : "Movimento";
       return `
         <tr>
-          <td class="roster-player-cell">${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato")}</td>
+          <td class="roster-player-cell">${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato", "fantacalcio")}</td>
           <td class="desktop-only-cell">${club ? clubButton(club) : `<button class="link-button" type="button" data-roster-club-id="${escapeHtml(entry.club_id)}">${escapeHtml(entry.club_id)}</button>`}</td>
           <td class="desktop-only-cell">${escapeHtml(latestQuote?.real_team || player?.real_team || "-")}</td>
           <td class="desktop-only-cell">${escapeHtml(latestQuote?.mantra_roles || player?.mantra_roles || "-")}</td>
@@ -2146,11 +2155,12 @@ function showRosterDialog(clubId) {
     const status = entry.is_active ? (quote?.is_listed === false || player?.is_asterisked ? "Asteriscato" : "Attivo") : "Non attivo";
     return `
       <tr>
-        <td class="roster-player-cell">${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato")}</td>
+        <td class="roster-player-cell">${playerButton(player?.id || entry.player_id, player?.name || "Giocatore non trovato", "fantacalcio")}</td>
         <td class="mobile-role-cell">${escapeHtml(quote?.classic_role || player?.classic_role || player?.role_class || "-")}</td>
         <td class="mobile-team-cell">${escapeHtml(mobileTeamCode(quote?.real_team || player?.real_team || entry.source_real_team || "-"))}</td>
         <td class="mobile-mantra-cell">${escapeHtml(quote?.mantra_roles || player?.mantra_roles || "-")}</td>
         <td class="number mobile-cost-cell">${fmtFm(entry.purchase_price)}</td>
+        <td class="number mobile-quote-current-cell">${quote?.quotation_current ?? "-"}</td>
         <td class="mobile-status-cell">${renderStatusDot(status)}</td>
       </tr>
     `;
@@ -2168,9 +2178,9 @@ function showRosterDialog(clubId) {
     <div class="table-wrap compact-table roster-dialog-table mobile-tabular-wrap">
       <table class="mobile-tabular roster-dialog-players-table">
         <thead>
-          <tr><th>Giocatore</th><th>R</th><th>Sq</th><th>RM</th><th class="number">Costo</th><th>Stato</th></tr>
+          <tr><th>Giocatore</th><th>R</th><th>Sq</th><th>RM</th><th class="number">Costo</th><th class="number">Qt.A</th><th>Stato</th></tr>
         </thead>
-        <tbody>${tableRows || '<tr><td colspan="6" class="muted center">Nessun giocatore in rosa.</td></tr>'}</tbody>
+        <tbody>${tableRows || '<tr><td colspan="7" class="muted center">Nessun giocatore in rosa.</td></tr>'}</tbody>
       </table>
     </div>
     ${renderClubExtraSections({ clubId, seasonId })}
@@ -4824,14 +4834,14 @@ function bindEvents() {
       const honorButton = event.target.closest("[data-honor-club-id]");
       if (honorButton) return showHonorClubDialog(honorButton.dataset.honorClubId);
       const player = event.target.closest("[data-player-id]");
-      if (player) return showPlayerDialog(player.dataset.playerId);
+      if (player) return handlePlayerClick(player.dataset.playerId, player.dataset.playerAction);
     });
   });
   if (el.rosterTableBody) {
     el.rosterTableBody.addEventListener("click", (event) => {
       const playerButtonEl = event.target.closest("[data-player-id]");
       if (playerButtonEl) {
-        showPlayerDialog(playerButtonEl.dataset.playerId);
+        handlePlayerClick(playerButtonEl.dataset.playerId, playerButtonEl.dataset.playerAction);
         return;
       }
       const button = event.target.closest("[data-roster-club-id]");
@@ -4880,13 +4890,13 @@ function bindEvents() {
     }
     const button = event.target.closest("[data-player-id]");
     if (!button) return;
-    showPlayerDialog(button.dataset.playerId);
+    handlePlayerClick(button.dataset.playerId, button.dataset.playerAction);
   });
   if (el.freeAgentsTableBody) {
     el.freeAgentsTableBody.addEventListener("click", (event) => {
       const button = event.target.closest("[data-player-id]");
       if (!button) return;
-      showPlayerDialog(button.dataset.playerId);
+      handlePlayerClick(button.dataset.playerId, button.dataset.playerAction);
     });
   }
   el.closePlayerBtn.addEventListener("click", () => el.playerDialog.close());
@@ -4910,7 +4920,7 @@ function bindEvents() {
       const honorButton = event.target.closest("[data-honor-club-id]");
       if (honorButton) return showHonorClubDialog(honorButton.dataset.honorClubId);
       const playerButtonEl = event.target.closest("[data-player-id]");
-      if (playerButtonEl) return showPlayerDialog(playerButtonEl.dataset.playerId);
+      if (playerButtonEl) return handlePlayerClick(playerButtonEl.dataset.playerId, playerButtonEl.dataset.playerAction);
     });
   }
   if (el.playerDialogBody) {
