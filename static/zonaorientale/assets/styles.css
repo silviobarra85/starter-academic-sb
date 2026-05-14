@@ -2835,3 +2835,60 @@ select[multiple].input {
 select[multiple].input option {
   padding: 0.2rem 0.35rem;
 }
+
+
+/* Versione 1.1 - mobile standings finali e Albo d'oro per competizione */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .mobile-standing-table .mobile-standing-position-head,
+  .mobile-standing-table .mobile-standing-position {
+    width: 34px !important;
+    text-align: center !important;
+  }
+
+  .mobile-standing-table .mobile-standing-logo-head,
+  .mobile-standing-table .mobile-standing-logo-cell {
+    width: 46px !important;
+    text-align: center !important;
+  }
+
+  .mobile-standing-table .mobile-standing-points-head,
+  .mobile-standing-table .mobile-standing-points {
+    width: 46px !important;
+    text-align: right !important;
+  }
+
+  .mobile-standing-table .mobile-standing-fpt-head,
+  .mobile-standing-table .mobile-standing-fpt {
+    width: 58px !important;
+    text-align: right !important;
+  }
+
+  .honor-competition-rankings .table-wrap {
+    max-height: min(62vh, 520px) !important;
+    overflow: auto !important;
+  }
+}
+
+body.is-mobile-ux .mobile-standing-table .mobile-standing-position-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-position {
+  width: 34px !important;
+  text-align: center !important;
+}
+
+body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-logo-cell {
+  width: 46px !important;
+  text-align: center !important;
+}
+
+body.is-mobile-ux .mobile-standing-table .mobile-standing-points-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-points {
+  width: 46px !important;
+  text-align: right !important;
+}
+
+body.is-mobile-ux .mobile-standing-table .mobile-standing-fpt-head,
+body.is-mobile-ux .mobile-standing-table .mobile-standing-fpt {
+  width: 58px !important;
+  text-align: right !important;
+}
