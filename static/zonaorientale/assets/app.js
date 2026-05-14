@@ -1713,13 +1713,60 @@ function renderStandingTable(competition, limit = null) {
   `;
 }
 
+function getMatchDisplayClubs(match) {
+  const competition = getCompetitionById(match?.competition_id);
+  const seasonId = competition?.season_id || match?.season_id || getSelectedSeasonId();
+  const homeBase = getClubById(match?.home_club_id);
+  const awayBase = getClubById(match?.away_club_id);
+  return {
+    competition,
+    seasonId,
+    homeBase,
+    awayBase,
+    home: applyClubSeasonIdentity(homeBase, seasonId) || homeBase || { name: "Casa" },
+    away: applyClubSeasonIdentity(awayBase, seasonId) || awayBase || { name: "Trasferta" },
+  };
+}
+
+function getMatchResultText(match) {
+  const goals = getMatchGoals(match);
+  if (goals) return `${goals.home}-${goals.away}`;
+  if (match?.status === "PLAYED") return "-";
+  return MATCH_STATUS_LABELS[match?.status] || match?.status || "-";
+}
+
+function renderMobileMatchCard(match) {
+  const { competition, home, away } = getMatchDisplayClubs(match);
+  const result = getMatchResultText(match);
+  const manualWinner = match.manual_winner_club_id ? getClubById(match.manual_winner_club_id) : null;
+  const manualWinnerDisplay = manualWinner ? applyClubSeasonIdentity(manualWinner, competition?.season_id || match.season_id) || manualWinner : null;
+  const meta = [match.matchday_label || "Giornata", match.played_on ? fmtDateOnly(match.played_on) : ""].filter(Boolean).join(" · ");
+  const manualNote = manualWinnerDisplay
+    ? `<small class="mobile-match-note">Vincitrice: ${escapeHtml(manualWinnerDisplay.name || manualWinnerDisplay.club_name || "-")}${match.manual_winner_note ? ` · ${escapeHtml(match.manual_winner_note)}` : ""}</small>`
+    : "";
+
+  return `<div class="mobile-match-card">
+    <div class="mobile-match-meta">${escapeHtml(meta)}</div>
+    <div class="mobile-match-scoreboard">
+      <div class="mobile-match-team">
+        ${clubLogoHtml(home)}
+        <span>${escapeHtml(home?.name || home?.club_name || "Casa")}</span>
+      </div>
+      <strong class="mobile-match-score">${escapeHtml(result)}</strong>
+      <div class="mobile-match-team">
+        ${clubLogoHtml(away)}
+        <span>${escapeHtml(away?.name || away?.club_name || "Trasferta")}</span>
+      </div>
+    </div>
+    ${manualNote}
+  </div>`;
+}
+
 function renderMatchList(matches) {
   if (!matches.length) return `<p class="muted">Nessuna giornata inserita.</p>`;
   return matches
     .map((match) => {
-      const competition = getCompetitionById(match.competition_id);
-      const home = getClubById(match.home_club_id);
-      const away = getClubById(match.away_club_id);
+      const { competition, homeBase, awayBase } = getMatchDisplayClubs(match);
       const goals = getMatchGoals(match);
       const resultScore = goals
         ? `<strong class="result-score">${goals.home} - ${goals.away}</strong>`
@@ -1729,20 +1776,16 @@ function renderMatchList(matches) {
         : "";
       const manualWinner = match.manual_winner_club_id ? getClubById(match.manual_winner_club_id) : null;
       const manualWinnerText = manualWinner
-        ? `<small>Vincitrice manuale: ${clubButton(manualWinner)}${match.manual_winner_note ? ` · ${escapeHtml(match.manual_winner_note)}` : ""}</small>`
+        ? `<small>Vincitrice manuale: ${clubButton(manualWinner, "", competition?.season_id || match.season_id)}${match.manual_winner_note ? ` · ${escapeHtml(match.manual_winner_note)}` : ""}</small>`
         : "";
-      const mobileResult = goals ? `${goals.home}-${goals.away}` : (match.status === "PLAYED" ? "-" : (MATCH_STATUS_LABELS[match.status] || match.status || "-"));
       return `<div class="stack-item match-stack-item">
         <div class="match-desktop-content">
           <strong>${escapeHtml(match.matchday_label || "Giornata")}</strong>
           <span>${escapeHtml(competition?.name || "Competizione")}${match.played_on ? ` · ${fmtDateOnly(match.played_on)}` : ""}</span>
-          <small>${clubButton(home)} vs ${clubButton(away)}</small>
+          <small>${clubButton(homeBase, "", competition?.season_id || match.season_id)} vs ${clubButton(awayBase, "", competition?.season_id || match.season_id)}</small>
           ${manualWinnerText}
         </div>
-        <div class="mobile-match-line">
-          <strong>${clubButton(home)} <span class="muted">VS</span> ${clubButton(away)}</strong>
-          <span>${escapeHtml(mobileResult)}</span>
-        </div>
+        ${renderMobileMatchCard(match)}
         <div class="stack-item-side match-desktop-content">${resultScore}${fpScore}</div>
       </div>`;
     })
@@ -3250,17 +3293,18 @@ function sortMatchesByRoundAndDate(a, b) {
 
 function renderMatchTable(matches) {
   if (!matches.length) return `<p class="muted">Nessuna partita inserita.</p>`;
-  return `<div class="table-wrap compact-table"><table>
+  return `<div class="mobile-match-card-list">${matches.map(renderMobileMatchCard).join("")}</div><div class="table-wrap compact-table match-table-desktop"><table>
     <thead><tr><th>Giornata</th><th>Data</th><th>Casa</th><th>Trasferta</th><th class="number">Ris.</th><th class="number">FP</th><th>Vincitrice manuale</th></tr></thead>
     <tbody>${matches.map((match) => {
+      const competition = getCompetitionById(match.competition_id);
       const home = getClubById(match.home_club_id);
       const away = getClubById(match.away_club_id);
       const goals = getMatchGoals(match);
       const result = goals ? `${goals.home}-${goals.away}` : "-";
       const fp = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined ? `${match.home_score}-${match.away_score}` : "-";
       const manualWinner = match.manual_winner_club_id ? getClubById(match.manual_winner_club_id) : null;
-      const manual = manualWinner ? `${clubButton(manualWinner)}${match.manual_winner_note ? `<small>${escapeHtml(match.manual_winner_note)}</small>` : ""}` : "-";
-      return `<tr><td>${escapeHtml(match.matchday_label || "-")}</td><td>${match.played_on ? fmtDateOnly(match.played_on) : "-"}</td><td>${clubButton(home)}</td><td>${clubButton(away)}</td><td class="number"><strong>${escapeHtml(result)}</strong></td><td class="number">${escapeHtml(fp)}</td><td>${manual}</td></tr>`;
+      const manual = manualWinner ? `${clubButton(manualWinner, "", competition?.season_id || match.season_id)}${match.manual_winner_note ? `<small>${escapeHtml(match.manual_winner_note)}</small>` : ""}` : "-";
+      return `<tr><td>${escapeHtml(match.matchday_label || "-")}</td><td>${match.played_on ? fmtDateOnly(match.played_on) : "-"}</td><td>${clubButton(home, "", competition?.season_id || match.season_id)}</td><td>${clubButton(away, "", competition?.season_id || match.season_id)}</td><td class="number"><strong>${escapeHtml(result)}</strong></td><td class="number">${escapeHtml(fp)}</td><td>${manual}</td></tr>`;
     }).join("")}</tbody>
   </table></div>`;
 }

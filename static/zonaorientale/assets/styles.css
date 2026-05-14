@@ -3121,3 +3121,237 @@ body.is-mobile-ux .match-desktop-content { display: none !important; }
   .mobile-match-line { display: flex !important; }
 }
 body.is-mobile-ux .mobile-match-line { display: flex !important; }
+
+/* V1.3 mobile fixes: standings duplicate columns, bottom navigation visibility, match cards with logos. */
+.mobile-match-card,
+.mobile-match-card-list {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Force the mobile bottom navigation to be visible on Samsung Internet/Brave. */
+  body {
+    padding-bottom: 96px !important;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 99999 !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    padding: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 24px !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.48) !important;
+    backdrop-filter: blur(16px);
+  }
+
+  /* Standings: hide desktop cells hard, keep only # | SQ | G | PT | FPT. */
+  .standing-table.mobile-standing-table th.standing-desktop-col,
+  .standing-table.mobile-standing-table td.standing-desktop-col,
+  .standing-table.mobile-standing-table th.standing-optional,
+  .standing-table.mobile-standing-table td.standing-optional {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .standing-table.mobile-standing-table th.mobile-only-col,
+  .standing-table.mobile-standing-table td.mobile-only-cell {
+    display: table-cell !important;
+  }
+
+  .standing-table-wrap table.mobile-standing-table {
+    table-layout: fixed !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .standing-table-wrap .mobile-standing-position-head,
+  .standing-table-wrap .mobile-standing-position {
+    width: 30px !important;
+    text-align: center !important;
+  }
+
+  .standing-table-wrap .mobile-standing-logo-head,
+  .standing-table-wrap .mobile-standing-logo-cell {
+    width: auto !important;
+    text-align: center !important;
+  }
+
+  .standing-table-wrap .mobile-standing-logo-cell .club-logo {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 auto !important;
+  }
+
+  .standing-table-wrap .mobile-standing-played-head,
+  .standing-table-wrap .mobile-standing-played,
+  .standing-table-wrap .mobile-standing-points-head,
+  .standing-table-wrap .mobile-standing-points {
+    width: 42px !important;
+    text-align: right !important;
+  }
+
+  .standing-table-wrap .mobile-standing-fpt-head,
+  .standing-table-wrap .mobile-standing-fpt {
+    width: 58px !important;
+    text-align: right !important;
+  }
+
+  /* Mobile match rendering: logos + result + names below logos. */
+  .match-stack-item {
+    padding: 8px !important;
+  }
+
+  .match-stack-item .match-desktop-content {
+    display: none !important;
+  }
+
+  .mobile-match-line {
+    display: none !important;
+  }
+
+  .mobile-match-card {
+    display: grid !important;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .mobile-match-card-list {
+    display: grid !important;
+    gap: 8px;
+  }
+
+  .match-table-desktop {
+    display: none !important;
+  }
+
+  .mobile-match-meta {
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .mobile-match-scoreboard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .mobile-match-team {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .mobile-match-team .club-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-match-team span {
+    display: block;
+    max-width: 100%;
+    color: var(--text);
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-match-score {
+    align-self: center;
+    min-width: 46px;
+    padding: 5px 7px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.72);
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .mobile-match-note {
+    display: block;
+    color: var(--muted);
+    font-size: 0.68rem;
+    text-align: center;
+  }
+}
+
+body.is-mobile-ux {
+  padding-bottom: 96px !important;
+}
+body.is-mobile-ux .mobile-bottom-nav {
+  position: fixed !important;
+  left: 10px !important;
+  right: 10px !important;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  z-index: 99999 !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 24px !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.48) !important;
+}
+body.is-mobile-ux .standing-table.mobile-standing-table th.standing-desktop-col,
+body.is-mobile-ux .standing-table.mobile-standing-table td.standing-desktop-col,
+body.is-mobile-ux .standing-table.mobile-standing-table th.standing-optional,
+body.is-mobile-ux .standing-table.mobile-standing-table td.standing-optional {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+body.is-mobile-ux .standing-table.mobile-standing-table th.mobile-only-col,
+body.is-mobile-ux .standing-table.mobile-standing-table td.mobile-only-cell {
+  display: table-cell !important;
+}
+body.is-mobile-ux .standing-table-wrap .mobile-standing-position-head,
+body.is-mobile-ux .standing-table-wrap .mobile-standing-position { width: 30px !important; text-align: center !important; }
+body.is-mobile-ux .standing-table-wrap .mobile-standing-logo-head,
+body.is-mobile-ux .standing-table-wrap .mobile-standing-logo-cell { width: auto !important; text-align: center !important; }
+body.is-mobile-ux .standing-table-wrap .mobile-standing-played-head,
+body.is-mobile-ux .standing-table-wrap .mobile-standing-played,
+body.is-mobile-ux .standing-table-wrap .mobile-standing-points-head,
+body.is-mobile-ux .standing-table-wrap .mobile-standing-points { width: 42px !important; text-align: right !important; }
+body.is-mobile-ux .standing-table-wrap .mobile-standing-fpt-head,
+body.is-mobile-ux .standing-table-wrap .mobile-standing-fpt { width: 58px !important; text-align: right !important; }
+body.is-mobile-ux .match-stack-item .match-desktop-content,
+body.is-mobile-ux .mobile-match-line,
+body.is-mobile-ux .match-table-desktop { display: none !important; }
+body.is-mobile-ux .mobile-match-card { display: grid !important; gap: 6px; width: 100%; }
+body.is-mobile-ux .mobile-match-card-list { display: grid !important; gap: 8px; }
+body.is-mobile-ux .mobile-match-scoreboard { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: start; gap: 10px; width: 100%; }
+body.is-mobile-ux .mobile-match-team { display: grid; justify-items: center; gap: 4px; min-width: 0; }
+body.is-mobile-ux .mobile-match-team .club-logo { width: 36px; height: 36px; }
+body.is-mobile-ux .mobile-match-team span { display: block; max-width: 100%; color: var(--text); font-size: 0.68rem; font-weight: 800; line-height: 1.1; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.is-mobile-ux .mobile-match-score { align-self: center; min-width: 46px; padding: 5px 7px; border: 1px solid rgba(148, 163, 184, 0.24); border-radius: 999px; background: rgba(15, 23, 42, 0.72); color: var(--text); font-size: 0.9rem; line-height: 1; text-align: center; }
+body.is-mobile-ux .mobile-match-meta,
+body.is-mobile-ux .mobile-match-note { color: var(--muted); font-size: 0.68rem; font-weight: 800; text-align: center; }
