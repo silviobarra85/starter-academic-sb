@@ -9,6 +9,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://qbngcitvlhydrypxelix.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibmdjaXR2bGh5ZHJ5cHhlbGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODY0NjEsImV4cCI6MjA5NDE2MjQ2MX0.B-_9H2Pv0i_CHcD9p-1ZmnVxKVy44jVKd6S01PfU6tM";
 
+
 const ACTIVE_SEASON_ID = "2025-2026";
 
 const MOVEMENT_LABELS = {
@@ -1195,59 +1196,15 @@ function getClubSeasonIdentity(clubId, seasonId = getSelectedSeasonId()) {
   return state.clubSeasonIdentities.find((identity) => identity.club_id === clubId && identity.season_id === seasonId) || null;
 }
 
-function getHonorClubFallbackForSeason(clubId, seasonId = getSelectedSeasonId()) {
-  if (!clubId || !seasonId) return null;
-
-  const rows = (state.honorRoll || [])
-    .filter((entry) => entry.season_id === seasonId)
-    .map((entry) => {
-      const honorClub = state.honorClubs.find((club) => club.id === entry.honor_club_id) || null;
-      const sourceClubId = entry.club_id || honorClub?.source_club_id || null;
-      return { entry, honorClub, sourceClubId };
-    })
-    .filter((row) => row.sourceClubId === clubId);
-
-  const withSeasonName = rows.find((row) => row.entry?.season_team_name || row.honorClub?.name);
-  if (!withSeasonName) return null;
-
-  const entry = withSeasonName.entry || {};
-  const honorClub = withSeasonName.honorClub || {};
-
-  return {
-    name: entry.season_team_name || honorClub.name || null,
-    president: entry.president || honorClub.president || null,
-    president_key: entry.president_key || honorClub.president_key || null,
-    logo_data_url: honorClub.logo_data_url || null,
-  };
-}
-
-function seasonSortValue(seasonId) {
-  const match = String(seasonId || "").match(/(\d{4})/);
-  return match ? Number(match[1]) : 0;
-}
-
 function getMostRecentStadiumName(clubId, seasonId = getSelectedSeasonId()) {
-  const requestedYear = seasonSortValue(seasonId);
-  const candidates = [
-    ...state.clubSeasonIdentities
-      .filter((identity) => identity.club_id === clubId && identity.stadium_name)
-      .map((identity) => ({ season_id: identity.season_id, name: identity.stadium_name, source: "identity" })),
-    ...state.stadiums
-      .filter((stadium) => stadium.club_id === clubId && stadium.name)
-      .map((stadium) => ({ season_id: stadium.season_id, name: stadium.name, source: "stadium" })),
-  ].filter((item) => item.name);
-
-  if (candidates.length) {
-    candidates.sort((a, b) => {
-      const ay = seasonSortValue(a.season_id);
-      const by = seasonSortValue(b.season_id);
-      const ad = requestedYear ? Math.abs(ay - requestedYear) : 999999;
-      const bd = requestedYear ? Math.abs(by - requestedYear) : 999999;
-      return ad - bd || by - ay || String(b.season_id || "").localeCompare(String(a.season_id || ""));
-    });
-    return candidates[0].name;
-  }
-
+  const byIdentity = state.clubSeasonIdentities
+    .filter((identity) => identity.club_id === clubId && identity.stadium_name)
+    .sort((a, b) => String(b.season_id || "").localeCompare(String(a.season_id || "")))[0]?.stadium_name;
+  if (byIdentity) return byIdentity;
+  const byStadium = state.stadiums
+    .filter((stadium) => stadium.club_id === clubId && stadium.name)
+    .sort((a, b) => String(b.season_id || "").localeCompare(String(a.season_id || "")))[0]?.name;
+  if (byStadium) return byStadium;
   const club = getClubById(clubId);
   return club?.stadium_name || (club ? `Stadio ${club.name}` : "");
 }
@@ -1255,14 +1212,13 @@ function getMostRecentStadiumName(clubId, seasonId = getSelectedSeasonId()) {
 function applyClubSeasonIdentity(club, seasonId = getSelectedSeasonId()) {
   if (!club) return null;
   const identity = getClubSeasonIdentity(club.id, seasonId);
-  const honorFallback = getHonorClubFallbackForSeason(club.id, seasonId);
+  if (!identity) return { ...club, stadium_name: club.stadium_name || getMostRecentStadiumName(club.id, seasonId) };
   return {
     ...club,
-    name: identity?.display_name || honorFallback?.name || club.name,
-    president: identity?.president || honorFallback?.president || club.president,
-    president_key: identity?.president_key || honorFallback?.president_key || club.president_key,
-    logo_data_url: identity?.logo_data_url || honorFallback?.logo_data_url || club.logo_data_url,
-    stadium_name: identity?.stadium_name || getMostRecentStadiumName(club.id, seasonId),
+    name: identity.display_name || club.name,
+    president: identity.president || club.president,
+    logo_data_url: identity.logo_data_url || club.logo_data_url,
+    stadium_name: identity.stadium_name || getMostRecentStadiumName(club.id, seasonId),
     base_name: club.name,
   };
 }
@@ -1300,14 +1256,6 @@ function getClubsForSeason(seasonId = getSelectedSeasonId()) {
     .filter((standing) => seasonCompetitionIds.has(standing.competition_id))
     .forEach((standing) => { if (standing.club_id) ids.add(standing.club_id); });
 
-  state.honorRoll
-    .filter((entry) => entry.season_id === seasonId)
-    .forEach((entry) => {
-      if (entry.club_id) ids.add(entry.club_id);
-      const honorClub = state.honorClubs.find((club) => club.id === entry.honor_club_id);
-      if (honorClub?.source_club_id) ids.add(honorClub.source_club_id);
-    });
-
   if (!ids.size) return getCurrentClubs();
 
   return state.clubs.filter((club) => ids.has(club.id));
@@ -1322,8 +1270,7 @@ function renderClubOptionsForSeason(seasonId = getSelectedSeasonId()) {
   return getClubsForSeason(seasonId)
     .map((club) => {
       const displayClub = applyClubSeasonIdentity(club, seasonId) || club;
-      const suffix = displayClub.name && club.name && normalizeTextKey(displayClub.name) !== normalizeTextKey(club.name) ? ` (${club.name})` : "";
-      return `<option value="${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}${escapeHtml(suffix)}</option>`;
+      return `<option value="${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}</option>`;
     })
     .join("");
 }
@@ -1343,8 +1290,7 @@ function updateCalendarManualWinnerOptions() {
   const options = candidates
     .map((club) => {
       const displayClub = applyClubSeasonIdentity(club, seasonId) || club;
-      const suffix = displayClub.name && club.name && normalizeTextKey(displayClub.name) !== normalizeTextKey(club.name) ? ` (${club.name})` : "";
-      return `<option value="${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}${escapeHtml(suffix)}</option>`;
+      return `<option value="${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}</option>`;
     })
     .join("");
 
@@ -1732,8 +1678,9 @@ function renderStandingTable(competition, limit = null) {
             <th class="number standing-desktop-col">FP</th>
             <th class="mobile-only-col number mobile-standing-position-head">#</th>
             <th class="mobile-only-col mobile-standing-logo-head">SQ</th>
-            <th class="mobile-only-col number mobile-standing-points-head">PT</th>
-            <th class="mobile-only-col number mobile-standing-fantapoints-head">FPT</th>
+            <th class="mobile-only-col number">G</th>
+            <th class="mobile-only-col number">PT</th>
+            <th class="mobile-only-col number">FPT</th>
           </tr>
         </thead>
         <tbody>
@@ -1754,8 +1701,9 @@ function renderStandingTable(competition, limit = null) {
               <td class="number standing-desktop-col">${fp}</td>
               <td class="mobile-only-cell number mobile-standing-position">${row.position || index + 1}</td>
               <td class="mobile-only-cell mobile-standing-logo-cell">${clubLogoHtml(applyClubSeasonIdentity(club, competition.season_id) || club || { name: row.club_name || "Club" })}</td>
-              <td class="mobile-only-cell number mobile-standing-points"><strong>${row.points ?? "-"}</strong></td>
-              <td class="mobile-only-cell number mobile-standing-fantapoints">${fp}</td>
+              <td class="mobile-only-cell number">${row.played ?? "-"}</td>
+              <td class="mobile-only-cell number"><strong>${row.points ?? "-"}</strong></td>
+              <td class="mobile-only-cell number">${fp}</td>
             </tr>`;
           }).join("")}
         </tbody>
@@ -1779,15 +1727,14 @@ function renderMatchList(matches) {
         ? `<small>FP ${match.home_score} - ${match.away_score}</small>`
         : "";
       const manualWinner = match.manual_winner_club_id ? getClubById(match.manual_winner_club_id) : null;
-      const matchSeasonId = competition?.season_id || match.season_id || getSelectedSeasonId();
       const manualWinnerText = manualWinner
-        ? `<small>Vincitrice manuale: ${clubButton(manualWinner, "", matchSeasonId)}${match.manual_winner_note ? ` · ${escapeHtml(match.manual_winner_note)}` : ""}</small>`
+        ? `<small>Vincitrice manuale: ${clubButton(manualWinner)}${match.manual_winner_note ? ` · ${escapeHtml(match.manual_winner_note)}` : ""}</small>`
         : "";
       return `<div class="stack-item">
         <div>
           <strong>${escapeHtml(match.matchday_label || "Giornata")}</strong>
           <span>${escapeHtml(competition?.name || "Competizione")}${match.played_on ? ` · ${fmtDateOnly(match.played_on)}` : ""}</span>
-          <small>${clubButton(home, "", matchSeasonId)} vs ${clubButton(away, "", matchSeasonId)}</small>
+          <small>${clubButton(home)} vs ${clubButton(away)}</small>
           ${manualWinnerText}
         </div>
         <div class="stack-item-side">${resultScore}${fpScore}</div>
@@ -1876,7 +1823,7 @@ async function fetchCoreData() {
       throw error;
     }),
     fetchAllRows(() => state.supabase.from("fm_movements").select("*").eq("season_id", seasonId).order("created_at", { ascending: false })),
-    fetchAllRows(() => state.supabase.from("stadiums").select("*")),
+    fetchAllRows(() => state.supabase.from("stadiums").select("*").eq("season_id", seasonId)),
     fetchAllRows(() => state.supabase.from("stadium_levels").select("*").order("level", { ascending: true })),
     fetchAllRows(() => state.supabase.from("club_season_identities").select("*")).catch((error) => {
       if (error?.code === "42P01") return [];
@@ -3295,9 +3242,8 @@ function renderMatchTable(matches) {
       const result = goals ? `${goals.home}-${goals.away}` : "-";
       const fp = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined ? `${match.home_score}-${match.away_score}` : "-";
       const manualWinner = match.manual_winner_club_id ? getClubById(match.manual_winner_club_id) : null;
-      const matchSeasonId = getCompetitionById(match.competition_id)?.season_id || match.season_id || getSelectedSeasonId();
-      const manual = manualWinner ? `${clubButton(manualWinner, "", matchSeasonId)}${match.manual_winner_note ? `<small>${escapeHtml(match.manual_winner_note)}</small>` : ""}` : "-";
-      return `<tr><td>${escapeHtml(match.matchday_label || "-")}</td><td>${match.played_on ? fmtDateOnly(match.played_on) : "-"}</td><td>${clubButton(home, "", matchSeasonId)}</td><td>${clubButton(away, "", matchSeasonId)}</td><td class="number"><strong>${escapeHtml(result)}</strong></td><td class="number">${escapeHtml(fp)}</td><td>${manual}</td></tr>`;
+      const manual = manualWinner ? `${clubButton(manualWinner)}${match.manual_winner_note ? `<small>${escapeHtml(match.manual_winner_note)}</small>` : ""}` : "-";
+      return `<tr><td>${escapeHtml(match.matchday_label || "-")}</td><td>${match.played_on ? fmtDateOnly(match.played_on) : "-"}</td><td>${clubButton(home)}</td><td>${clubButton(away)}</td><td class="number"><strong>${escapeHtml(result)}</strong></td><td class="number">${escapeHtml(fp)}</td><td>${manual}</td></tr>`;
     }).join("")}</tbody>
   </table></div>`;
 }
@@ -3572,8 +3518,8 @@ function renderAdminLists() {
       .filter((row) => calendarCompetitionId ? row.competition_id === calendarCompetitionId : row.season_id === selectedSeason)
       .filter((match) => {
         const competition = getCompetitionById(match.competition_id);
-        const home = applyClubSeasonIdentity(getClubById(match.home_club_id), competition?.season_id || match.season_id) || getClubById(match.home_club_id);
-        const away = applyClubSeasonIdentity(getClubById(match.away_club_id), competition?.season_id || match.season_id) || getClubById(match.away_club_id);
+        const home = getClubById(match.home_club_id);
+        const away = getClubById(match.away_club_id);
         return textMatchesQuery(`${match.matchday_label || ""} ${competition?.name || ""} ${home?.name || ""} ${away?.name || ""}`, query);
       })
       .slice(0, 120);
@@ -3584,8 +3530,7 @@ function renderAdminLists() {
       const goals = getMatchGoals(match);
       const result = goals ? ` · risultato ${goals.home}-${goals.away}` : "";
       const fp = match.home_score !== null && match.home_score !== undefined && match.away_score !== null && match.away_score !== undefined ? ` · FP ${match.home_score}-${match.away_score}` : "";
-      const matchSeasonId = competition?.season_id || match.season_id || selectedSeason;
-      return `<div class="admin-list-item"><span><strong>${escapeHtml(match.matchday_label || "Giornata")} · ${escapeHtml(competition?.name || "-")}</strong><small>${clubButton(home, "", matchSeasonId)} vs ${clubButton(away, "", matchSeasonId)} · ${match.played_on ? fmtDateOnly(match.played_on) : "senza data"}${result}${fp}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-calendar="${escapeHtml(match.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-calendar="${escapeHtml(match.id)}">Elimina</button></span></div>`;
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(match.matchday_label || "Giornata")} · ${escapeHtml(competition?.name || "-")}</strong><small>${clubButton(home)} vs ${clubButton(away)} · ${match.played_on ? fmtDateOnly(match.played_on) : "senza data"}${result}${fp}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-calendar="${escapeHtml(match.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-calendar="${escapeHtml(match.id)}">Elimina</button></span></div>`;
     }).join("") || renderAdminListMessage(query ? "Nessuna giornata trovata." : "Nessuna giornata per la stagione selezionata.");
   }
 
@@ -3634,7 +3579,7 @@ function renderAdminLists() {
       const club = getClubById(identity.club_id);
       const display = applyClubSeasonIdentity(club, identity.season_id);
       return `<div class="admin-list-item">
-        <span><strong>${clubNameWithLogo(display || club || { name: identity.display_name || "Club" })}</strong><small>${escapeHtml(identity.season_id)} · base: ${escapeHtml(club?.name || "-")} · stadio: ${escapeHtml(identity.stadium_name || getMostRecentStadiumName(identity.club_id, identity.season_id) || "-")}</small></span>
+        <span><strong>${clubNameWithLogo(display || club || { name: identity.display_name || "Club" })}</strong><small>${escapeHtml(identity.season_id)} · base: ${escapeHtml(club?.name || "-")} · stadio: ${escapeHtml(identity.stadium_name || "-")}</small></span>
         <span><button class="button button-secondary button-small" type="button" data-edit-club-identity="${escapeHtml(identity.id)}">Modifica</button></span>
       </div>`;
     }).join("") || renderAdminListMessage(query ? "Nessuna identità trovata." : `Nessuna identità stagionale per ${season}.`);
