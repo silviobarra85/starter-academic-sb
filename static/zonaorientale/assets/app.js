@@ -260,6 +260,7 @@ const el = {
   honorSeason: document.getElementById("honorSeason"),
   honorClub: document.getElementById("honorClub"),
   honorClubNameInput: document.getElementById("honorClubNameInput"),
+  honorPresidentSelect: document.getElementById("honorPresidentSelect"),
   honorPresidentInput: document.getElementById("honorPresidentInput"),
   honorClubLogoInput: document.getElementById("honorClubLogoInput"),
   honorCompetitionType: document.getElementById("honorCompetitionType"),
@@ -275,6 +276,7 @@ const el = {
   historicalClubId: document.getElementById("historicalClubId"),
   historicalClubSourceClub: document.getElementById("historicalClubSourceClub"),
   historicalClubNameInput: document.getElementById("historicalClubNameInput"),
+  historicalClubPresidentSelect: document.getElementById("historicalClubPresidentSelect"),
   historicalClubPresidentInput: document.getElementById("historicalClubPresidentInput"),
   historicalClubLogoInput: document.getElementById("historicalClubLogoInput"),
   historicalClubFormReset: document.getElementById("historicalClubFormReset"),
@@ -425,6 +427,57 @@ function normalizeTextKey(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "")
     .trim();
+}
+
+function getPresidentKey(value) {
+  return normalizeTextKey(value || "");
+}
+
+function getKnownPresidents() {
+  const values = [];
+  state.clubs.forEach((club) => values.push(club.president));
+  state.honorClubs.forEach((club) => values.push(club.president));
+  state.clubSeasonIdentities.forEach((identity) => values.push(identity.president));
+  const seen = new Set();
+  return values
+    .map((value) => String(value || "").trim())
+    .filter(Boolean)
+    .filter((value) => {
+      const key = getPresidentKey(value);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function renderPresidentOptions({ includeEmpty = true } = {}) {
+  const base = includeEmpty ? [`<option value="">Seleziona presidente esistente</option>`] : [];
+  const options = getKnownPresidents().map((name) => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`);
+  return [...base, ...options, `<option value="__manual__">+ Inserisci manualmente</option>`].join("");
+}
+
+function resolvePresidentValue(selectEl, inputEl) {
+  const selected = String(selectEl?.value || "").trim();
+  const manual = String(inputEl?.value || "").trim();
+  if (selected && selected !== "__manual__") return selected;
+  return manual || selected || "";
+}
+
+function setPresidentControls(selectEl, inputEl, president) {
+  if (!selectEl) { if (inputEl) inputEl.value = president || ""; return; }
+  const value = String(president || "").trim();
+  const values = Array.from(selectEl.options).map((option) => option.value);
+  if (value && values.includes(value)) {
+    selectEl.value = value;
+    if (inputEl) inputEl.value = "";
+  } else if (value) {
+    selectEl.value = "__manual__";
+    if (inputEl) inputEl.value = value;
+  } else {
+    selectEl.value = "";
+    if (inputEl) inputEl.value = "";
+  }
 }
 
 function getPlayerKeyFromName(name) {
@@ -1185,6 +1238,26 @@ function getHonorRowDedupKey(row) {
     String(Number(row.placement || 0) || "no-placement"),
     getHonorRowClubKey(row),
   ].join("|");
+}
+
+function getHonorRowPresident(row) {
+  return String(row.president || row.president_name || "").trim();
+}
+
+function getHonorRowPresidentKey(row) {
+  return row.president_key || getPresidentKey(getHonorRowPresident(row)) || getHonorRowClubKey(row);
+}
+
+function getHonorRowsForPresidentKey(presidentKey) {
+  if (!presidentKey) return [];
+  return buildHonorRows().filter((row) => getHonorRowPresidentKey(row) === presidentKey);
+}
+
+function presidentButton({ president, presidentKey, teamName = "", logo = "" }, extraClass = "") {
+  const safeKey = presidentKey || getPresidentKey(president);
+  const logoHtml = logo ? `<img src="${escapeHtml(logo)}" alt="" class="club-logo" loading="lazy" />` : `<span class="club-logo club-logo-placeholder">${escapeHtml(String(president || "?").slice(0, 1).toUpperCase())}</span>`;
+  const suffix = teamName ? `<small class="muted">${escapeHtml(teamName)}</small>` : "";
+  return `<button class="link-button club-link ${extraClass}" type="button" data-honor-president-key="${escapeHtml(safeKey)}">${logoHtml}<span>${escapeHtml(president || "Presidente")}${suffix}</span></button>`;
 }
 
 function getHonorSourcePriority(row) {
@@ -2032,8 +2105,6 @@ function renderRosterClubCards() {
 function renderClubExtraSections({ clubId, honorClubId = null, seasonId = getSelectedSeasonId() }) {
   const movements = clubId ? getClubMovements(clubId).slice(0, 30) : [];
   const releases = clubId ? getClubReleaseMovements(clubId).slice(0, 20) : [];
-  const palmares = getPalmaresForClubIds(clubId, honorClubId)
-    .sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
 
   const movementRows = movements.map((movement) => {
     const amount = Number(movement.amount || 0);
@@ -2052,22 +2123,7 @@ function renderClubExtraSections({ clubId, honorClubId = null, seasonId = getSel
     <td>${fmtDate(movement.created_at)}</td>
   </tr>`).join("");
 
-  const palmaresRows = palmares.map((entry) => {
-    const voce = entry.title || entry.notes || entry.competition_name || "-";
-    return `<tr>
-      <td>${escapeHtml(entry.season_id || "-")}</td>
-      <td>${escapeHtml(COMPETITION_LABELS[entry.competition_type] || entry.competition_type || "-")}</td>
-      <td>${escapeHtml(voce)}</td>
-      <td class="number">${entry.placement ? `${entry.placement}°` : "-"}</td>
-      <td class="number">${entry.points ?? "-"}</td>
-    </tr>`;
-  }).join("");
-
   return `
-    <section class="detail-section">
-      <h3>Palmarès e piazzamenti storici</h3>
-      <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Competizione</th><th>Voce</th><th class="number">Pos.</th><th class="number">Pt</th></tr></thead><tbody>${palmaresRows || '<tr><td colspan="5" class="muted center">Nessuna voce storica.</td></tr>'}</tbody></table></div>
-    </section>
     ${clubId ? `<section class="detail-section"><h3>Movimenti FM</h3><div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Tipo</th><th>Descrizione</th><th class="number">Importo</th></tr></thead><tbody>${movementRows || '<tr><td colspan="4" class="muted center">Nessun movimento registrato.</td></tr>'}</tbody></table></div></section>` : ""}
     ${clubId ? `<section class="detail-section"><h3>Svincoli effettuati</h3><div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Descrizione</th><th class="number">Rimborso</th><th>Data</th></tr></thead><tbody>${releaseRows || '<tr><td colspan="4" class="muted center">Nessuno svincolo registrato.</td></tr>'}</tbody></table></div></section>` : ""}
   `;
@@ -2089,7 +2145,7 @@ function getHonorVictoriesForHonorClub(honorClub) {
 }
 
 function renderHonorContextButton(row, honorClub) {
-  return `<button class="button button-secondary button-small honor-context-button" type="button" data-honor-context-season="${escapeHtml(row.season_id)}" data-honor-context-type="${escapeHtml(row.competition_type)}" data-honor-context-name="${escapeHtml(row.competition_name || "")}" data-honor-context-club="${escapeHtml(honorClub.id)}">Apri stagione</button>`;
+  return `<button class="button button-secondary button-small honor-context-button" type="button" data-honor-context-season="${escapeHtml(row.season_id)}" data-honor-context-type="${escapeHtml(row.competition_type)}" data-honor-context-name="${escapeHtml(row.competition_name || "")}" data-honor-context-club="${escapeHtml(honorClub?.id || "")}" data-honor-context-club-id="${escapeHtml(row.club_id || "")}">Apri stagione</button>`;
 }
 
 function findCompetitionForHonorContext(seasonId, competitionType, competitionName = "") {
@@ -2098,12 +2154,14 @@ function findCompetitionForHonorContext(seasonId, competitionType, competitionNa
   return state.competitions.find((competition) => competition.season_id === seasonId && competition.competition_type === competitionType);
 }
 
-function renderHonorContextDetail({ seasonId, competitionType, competitionName, honorClubId }) {
+function renderHonorContextDetail({ seasonId, competitionType, competitionName, honorClubId, clubId: explicitClubId = null }) {
   const target = document.getElementById("honorContextDetail");
   if (!target) return;
   const honorClub = getHonorClubById(honorClubId);
+  const contextClub = explicitClubId ? applyClubSeasonIdentity(getClubById(explicitClubId), seasonId) : null;
+  const contextName = contextClub?.name || honorClub?.name || "Squadra";
   const competition = findCompetitionForHonorContext(seasonId, competitionType, competitionName);
-  if (!honorClub) {
+  if (!honorClub && !contextClub) {
     target.innerHTML = `<p class="muted">Squadra storica non trovata.</p>`;
     return;
   }
@@ -2123,7 +2181,7 @@ function renderHonorContextDetail({ seasonId, competitionType, competitionName, 
     return;
   }
 
-  const clubId = honorClub.source_club_id;
+  const clubId = explicitClubId || honorClub.source_club_id;
   const matches = state.calendarMatches
     .filter((match) => match.competition_id === competition.id)
     .filter((match) => !clubId || match.home_club_id === clubId || match.away_club_id === clubId)
@@ -2131,7 +2189,7 @@ function renderHonorContextDetail({ seasonId, competitionType, competitionName, 
 
   target.innerHTML = `
     ${closeButton}
-    <h3>${escapeHtml(competition.name)} · partite ${escapeHtml(honorClub.name)}</h3>
+    <h3>${escapeHtml(competition.name)} · partite ${escapeHtml(applyClubSeasonIdentity(getClubById(clubId), seasonId)?.name || contextName)}</h3>
     ${clubId ? renderMatchList(matches) : `<p class="muted">Questa è una squadra storica non collegata a un club attuale: non posso filtrare automaticamente le partite per club.</p>${renderMatchList(matches)}`}
   `;
 }
@@ -2174,13 +2232,64 @@ function showHonorClubDialog(honorClubId) {
       <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Competizione</th><th>Voce</th><th>Dettaglio</th></tr></thead><tbody>${victoryRows || '<tr><td colspan="4" class="muted center">Nessuna vittoria registrata.</td></tr>'}</tbody></table></div>
     </section>
     <section class="detail-section">
-      <h3>Piazzamenti e podi</h3>
+      <h3>Palmarès e piazzamenti storici</h3>
       <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Competizione</th><th>Pos.</th><th>Voce</th><th>Dettaglio</th></tr></thead><tbody>${podiumRows || '<tr><td colspan="5" class="muted center">Nessun piazzamento registrato.</td></tr>'}</tbody></table></div>
     </section>
     <section id="honorContextDetail" class="detail-section honor-context-detail">
       <p class="muted">Clicca su “Apri stagione” per vedere la classifica della Regular Season o le partite della squadra nelle coppe.</p>
     </section>
     ${current ? renderClubExtraSections({ clubId: current.id, honorClubId }) : renderClubExtraSections({ clubId: null, honorClubId })}
+  `;
+  el.rosterDialog.showModal();
+}
+
+function showHonorPresidentDialog(presidentKey) {
+  const allRows = getHonorRowsForPresidentKey(presidentKey)
+    .sort((a, b) => String(b.season_id).localeCompare(String(a.season_id)) || Number(a.placement || 999) - Number(b.placement || 999));
+  if (!allRows.length) return;
+
+  const president = getHonorRowPresident(allRows[0]) || "Presidente";
+  const victories = allRows.filter((row) => Number(row.placement || 0) === 1);
+
+  const victoryRows = victories.map((row) => `<tr>
+    <td>${escapeHtml(row.season_id || "-")}</td>
+    <td>${escapeHtml(row.club_name || "-")}</td>
+    <td>${escapeHtml(COMPETITION_LABELS[row.competition_type] || row.competition_type || "-")}</td>
+    <td>${escapeHtml(row.competition_name || row.notes || "-")}</td>
+    <td>${renderHonorContextButton(row, getHonorClubById(row.honor_club_id))}</td>
+  </tr>`).join("");
+
+  const podiumRows = allRows
+    .filter((row) => Number(row.placement || 0) > 0)
+    .map((row) => `<tr>
+      <td>${escapeHtml(row.season_id || "-")}</td>
+      <td>${escapeHtml(row.club_name || "-")}</td>
+      <td>${escapeHtml(COMPETITION_LABELS[row.competition_type] || row.competition_type || "-")}</td>
+      <td>${row.placement ? `${row.placement}°` : "-"}</td>
+      <td>${escapeHtml(row.competition_name || row.notes || "-")}</td>
+      <td>${renderHonorContextButton(row, getHonorClubById(row.honor_club_id))}</td>
+    </tr>`).join("");
+
+  const teams = Array.from(new Set(allRows.map((row) => row.club_name).filter(Boolean)));
+  el.rosterDialogTitle.textContent = `${president} · storico`;
+  el.rosterDialogBody.innerHTML = `
+    <div class="player-summary-grid roster-summary-grid">
+      <div><span>Presidente</span><strong>${escapeHtml(president)}</strong></div>
+      <div><span>Squadre usate</span><strong>${escapeHtml(teams.join(" · ") || "-")}</strong></div>
+      <div><span>Vittorie totali</span><strong>${victories.length}</strong></div>
+      <div><span>Piazzamenti totali</span><strong>${allRows.filter((row) => Number(row.placement || 0) > 0).length}</strong></div>
+    </div>
+    <section class="detail-section">
+      <h3>Vittorie nelle competizioni</h3>
+      <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Squadra</th><th>Competizione</th><th>Voce</th><th>Dettaglio</th></tr></thead><tbody>${victoryRows || '<tr><td colspan="5" class="muted center">Nessuna vittoria registrata.</td></tr>'}</tbody></table></div>
+    </section>
+    <section class="detail-section">
+      <h3>Palmarès e piazzamenti storici</h3>
+      <div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Squadra</th><th>Competizione</th><th>Pos.</th><th>Voce</th><th>Dettaglio</th></tr></thead><tbody>${podiumRows || '<tr><td colspan="6" class="muted center">Nessun piazzamento registrato.</td></tr>'}</tbody></table></div>
+    </section>
+    <section id="honorContextDetail" class="detail-section honor-context-detail">
+      <p class="muted">Clicca su “Apri stagione” per vedere la classifica della Regular Season o le partite della squadra nelle coppe.</p>
+    </section>
   `;
   el.rosterDialog.showModal();
 }
@@ -2815,6 +2924,7 @@ function buildAutomaticCupHonorRows() {
 
     for (const item of placements) {
       const club = applyClubSeasonIdentity(getClubById(item.club_id), competition.season_id);
+      const president = club?.president || "-";
       rows.push({
         source: "calendar-final",
         id: `cup-final-${competition.id}-${item.placement}-${item.club_id}`,
@@ -2822,7 +2932,8 @@ function buildAutomaticCupHonorRows() {
         club_id: item.club_id,
         honor_club_id: state.honorClubs.find((honorClub) => honorClub.source_club_id === item.club_id)?.id || null,
         club_name: club?.name || item.club_id || "-",
-        president: club?.president || "-",
+        president,
+        president_key: getPresidentKey(president),
         competition_type: competition.competition_type || "ALTRO",
         competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
         placement: item.placement,
@@ -2848,14 +2959,18 @@ function buildHonorRows() {
 
   for (const entry of state.honorRoll) {
     const honorClub = getHonorClubForEntry(entry);
+    const sourceClubId = entry.club_id || honorClub?.source_club_id || null;
+    const seasonalClub = sourceClubId ? applyClubSeasonIdentity(getClubById(sourceClubId), entry.season_id) : null;
+    const president = entry.president || honorClub?.president || seasonalClub?.president || "-";
     rows.push({
       source: "manual",
       id: `honor-${entry.id}`,
       season_id: entry.season_id,
-      club_id: entry.club_id || honorClub?.source_club_id || null,
+      club_id: sourceClubId,
       honor_club_id: entry.honor_club_id || honorClub?.id || null,
-      club_name: honorClub?.name || applyClubSeasonIdentity(getClubById(entry.club_id), entry.season_id)?.name || "-",
-      president: honorClub?.president || applyClubSeasonIdentity(getClubById(entry.club_id), entry.season_id)?.president || "-",
+      club_name: seasonalClub?.name || honorClub?.name || "-",
+      president,
+      president_key: entry.president_key || getPresidentKey(president),
       competition_type: entry.competition_type || "ALTRO",
       competition_name: COMPETITION_LABELS[entry.competition_type] || entry.competition_type || entry.title || "Competizione",
       placement: entry.placement,
@@ -2882,6 +2997,7 @@ function buildHonorRows() {
 
     for (const standing of sourceRows) {
       const club = applyClubSeasonIdentity(getClubById(standing.club_id), competition.season_id);
+      const president = club?.president || "-";
       rows.push({
         source: computedRows.length ? "calendar" : "standing",
         id: `${computedRows.length ? "calendar-standing" : "standing"}-${competition.id}-${standing.club_id}`,
@@ -2889,7 +3005,8 @@ function buildHonorRows() {
         club_id: standing.club_id,
         honor_club_id: state.honorClubs.find((item) => item.source_club_id === standing.club_id)?.id || null,
         club_name: club?.name || standing.club_id || "-",
-        president: club?.president || "-",
+        president,
+        president_key: getPresidentKey(president),
         competition_type: competition.competition_type || "ALTRO",
         competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
         placement: standing.position,
@@ -3006,21 +3123,22 @@ function renderHonorRoll() {
     return;
   }
 
-  const resultsByClub = new Map();
+  const resultsByPresident = new Map();
   for (const row of honorRows.filter((item) => [1, 2].includes(Number(item.placement || 0)))) {
-    const key = row.honor_club_id || row.club_id || row.club_name;
+    const president = getHonorRowPresident(row) || row.president || "Presidente";
+    const key = getHonorRowPresidentKey(row);
     if (!key) continue;
-    const current = resultsByClub.get(key) || {
+    const current = resultsByPresident.get(key) || {
       key,
-      club_id: row.club_id,
-      honor_club_id: row.honor_club_id,
-      club_name: row.club_name,
-      president: row.president,
+      president,
+      logo: row.club_id ? applyClubSeasonIdentity(getClubById(row.club_id), row.season_id)?.logo_data_url : getHonorClubById(row.honor_club_id)?.logo_data_url,
+      teams: new Set(),
       winsByCompetition: {},
       secondsByCompetition: {},
       wins: 0,
       seconds: 0,
     };
+    if (row.club_name) current.teams.add(row.club_name);
     if (Number(row.placement || 0) === 1) {
       current.winsByCompetition[row.competition_type] = (current.winsByCompetition[row.competition_type] || 0) + 1;
       current.wins += 1;
@@ -3029,15 +3147,14 @@ function renderHonorRoll() {
       current.secondsByCompetition[row.competition_type] = (current.secondsByCompetition[row.competition_type] || 0) + 1;
       current.seconds += 1;
     }
-    resultsByClub.set(key, current);
+    resultsByPresident.set(key, current);
   }
 
-  const summaryRows = Array.from(resultsByClub.values()).sort((a, b) => b.wins - a.wins || b.seconds - a.seconds || String(a.club_name).localeCompare(String(b.club_name)));
+  const summaryRows = Array.from(resultsByPresident.values()).sort((a, b) => b.wins - a.wins || b.seconds - a.seconds || String(a.president).localeCompare(String(b.president)));
   el.honorSummary.innerHTML = summaryRows.length
     ? summaryRows.map((row) => {
-      const current = row.club_id ? getClubById(row.club_id) : null;
-      const honor = row.honor_club_id ? getHonorClubById(row.honor_club_id) : (current ? state.honorClubs.find((item) => item.source_club_id === current.id) : null);
-      const name = honor ? honorClubButton(honor) : current ? clubButton(current) : escapeHtml(row.club_name || "-");
+      const teams = Array.from(row.teams).filter(Boolean).join(" · ");
+      const name = presidentButton({ president: row.president, presidentKey: row.key, teamName: teams, logo: row.logo });
       const winDetails = Object.entries(row.winsByCompetition)
         .filter(([, count]) => count > 0)
         .map(([type, count]) => `${COMPETITION_LABELS[type] || type}: ${count}`)
@@ -3047,7 +3164,7 @@ function renderHonorRoll() {
         .map(([type, count]) => `${COMPETITION_LABELS[type] || type}: ${count}`)
         .join(" · ");
       return `<div class="stack-item">
-        <div><strong>${name}</strong><small>${escapeHtml(row.president || "")}${winDetails ? ` · Vittorie: ${escapeHtml(winDetails)}` : ""}${secondDetails ? ` · Secondi posti: ${escapeHtml(secondDetails)}` : ""}</small></div>
+        <div><strong>${name}</strong><small>${winDetails ? `Vittorie: ${escapeHtml(winDetails)}` : ""}${secondDetails ? ` · Secondi posti: ${escapeHtml(secondDetails)}` : ""}</small></div>
         <div class="stack-item-side"><strong>${row.wins}</strong><small>${row.seconds} secondi</small></div>
       </div>`;
     }).join("")
@@ -3159,7 +3276,9 @@ function renderAdminExtendedControls() {
     selectOptionPreservingValue(el.calendarManualWinnerClub, `<option value="">Automatico / nessuno</option>${clubOptions}`, el.calendarManualWinnerClub.value, "");
   }
   if (el.honorClub) selectOptionPreservingValue(el.honorClub, renderHonorClubOptions(), el.honorClub.value, "__new__");
+  if (el.honorPresidentSelect) selectOptionPreservingValue(el.honorPresidentSelect, renderPresidentOptions(), el.honorPresidentSelect.value, "");
   if (el.historicalClubSourceClub) selectOptionPreservingValue(el.historicalClubSourceClub, `<option value="">Nessuno / squadra storica pura</option>${clubOptions}`, el.historicalClubSourceClub.value, "");
+  if (el.historicalClubPresidentSelect) selectOptionPreservingValue(el.historicalClubPresidentSelect, renderPresidentOptions(), el.historicalClubPresidentSelect.value, "");
   if (el.clubIdentitySeason) selectOptionPreservingValue(el.clubIdentitySeason, seasonOptions, el.clubIdentitySeason.value || selectedSeason, selectedSeason);
   if (el.clubIdentityClub) selectOptionPreservingValue(el.clubIdentityClub, clubOptions, el.clubIdentityClub.value, getCurrentClubs()[0]?.id || "");
 
@@ -4281,10 +4400,12 @@ async function handleHistoricalClubSubmit(event) {
   const logoFile = el.historicalClubLogoInput?.files?.[0];
   const logo = logoFile ? await readFileAsDataUrl(logoFile) : null;
   const id = el.historicalClubId.value || null;
+  const president = resolvePresidentValue(el.historicalClubPresidentSelect, el.historicalClubPresidentInput);
   const payload = {
     source_club_id: el.historicalClubSourceClub?.value || null,
     name: el.historicalClubNameInput.value.trim(),
-    president: el.historicalClubPresidentInput.value.trim() || null,
+    president: president || null,
+    president_key: president ? getPresidentKey(president) : null,
   };
   if (logo) payload.logo_data_url = logo;
   const response = id
@@ -4300,6 +4421,7 @@ function resetHistoricalClubForm() {
   el.historicalClubId.value = "";
   if (el.historicalClubSourceClub) el.historicalClubSourceClub.value = "";
   el.historicalClubNameInput.value = "";
+  if (el.historicalClubPresidentSelect) el.historicalClubPresidentSelect.value = "";
   el.historicalClubPresidentInput.value = "";
   if (el.historicalClubLogoInput) el.historicalClubLogoInput.value = "";
 }
@@ -4450,7 +4572,7 @@ async function ensureHonorClubFromForm() {
   }
 
   const name = el.honorClubNameInput?.value.trim();
-  const president = el.honorPresidentInput?.value.trim() || null;
+  const president = resolvePresidentValue(el.honorPresidentSelect, el.honorPresidentInput) || null;
   if (!name) throw new Error("Inserisci il nome della squadra storica oppure seleziona una squadra esistente.");
 
   const logo_data_url = el.honorClubLogoInput?.files?.[0] ? await readFileAsDataUrl(el.honorClubLogoInput.files[0]) : null;
@@ -4460,7 +4582,7 @@ async function ensureHonorClubFromForm() {
 
   const { data, error } = await state.supabase
     .from("honor_clubs")
-    .insert({ name, president, logo_data_url, source_club_id: null })
+    .insert({ name, president, president_key: president ? getPresidentKey(president) : null, logo_data_url, source_club_id: null })
     .select("*")
     .single();
 
@@ -4514,6 +4636,7 @@ function resetHonorForm(options = {}) {
   el.honorNotes.value = "";
   if (el.honorClub) el.honorClub.value = "__new__";
   if (el.honorClubNameInput) el.honorClubNameInput.value = "";
+  if (el.honorPresidentSelect) el.honorPresidentSelect.value = "";
   if (el.honorPresidentInput) el.honorPresidentInput.value = "";
   if (el.honorClubLogoInput) el.honorClubLogoInput.value = "";
   if (el.honorSeason) el.honorSeason.value = keepSeason;
@@ -4609,7 +4732,7 @@ function fillEditFormsFromAdminAction(target) {
     el.historicalClubId.value = club.id;
     if (el.historicalClubSourceClub) el.historicalClubSourceClub.value = club.source_club_id || "";
     el.historicalClubNameInput.value = club.name || "";
-    el.historicalClubPresidentInput.value = club.president || "";
+    setPresidentControls(el.historicalClubPresidentSelect, el.historicalClubPresidentInput, club.president || "");
     return;
   }
   const clubIdentityId = target.closest("[data-edit-club-identity]")?.dataset.editClubIdentity;
@@ -4653,7 +4776,7 @@ function fillEditFormsFromAdminAction(target) {
     el.honorSeason.value = h.season_id;
     el.honorClub.value = honorClub?.id || "__new__";
     if (el.honorClubNameInput) el.honorClubNameInput.value = honorClub?.source_club_id ? "" : (honorClub?.name || "");
-    if (el.honorPresidentInput) el.honorPresidentInput.value = honorClub?.source_club_id ? "" : (honorClub?.president || "");
+    setPresidentControls(el.honorPresidentSelect, el.honorPresidentInput, honorClub?.president || "");
     if (el.honorClubLogoInput) el.honorClubLogoInput.value = "";
     el.honorCompetitionType.value = h.competition_type || "ALTRO";
     el.honorTitleInput.value = h.title || "";
@@ -5012,6 +5135,8 @@ function bindEvents() {
     node.addEventListener("click", (event) => {
       const rosterButton = event.target.closest("[data-roster-club-id]");
       if (rosterButton) return showRosterDialog(rosterButton.dataset.rosterClubId);
+      const presidentButtonEl = event.target.closest("[data-honor-president-key]");
+      if (presidentButtonEl) return showHonorPresidentDialog(presidentButtonEl.dataset.honorPresidentKey);
       const honorButton = event.target.closest("[data-honor-club-id]");
       if (honorButton) return showHonorClubDialog(honorButton.dataset.honorClubId);
       const player = event.target.closest("[data-player-id]");
@@ -5097,7 +5222,10 @@ function bindEvents() {
         competitionType: honorContextButton.dataset.honorContextType,
         competitionName: honorContextButton.dataset.honorContextName,
         honorClubId: honorContextButton.dataset.honorContextClub,
+        clubId: honorContextButton.dataset.honorContextClubId || null,
       });
+      const presidentButtonEl = event.target.closest("[data-honor-president-key]");
+      if (presidentButtonEl) return showHonorPresidentDialog(presidentButtonEl.dataset.honorPresidentKey);
       const honorButton = event.target.closest("[data-honor-club-id]");
       if (honorButton) return showHonorClubDialog(honorButton.dataset.honorClubId);
       const playerButtonEl = event.target.closest("[data-player-id]");
