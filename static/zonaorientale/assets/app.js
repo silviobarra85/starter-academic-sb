@@ -283,6 +283,11 @@ const el = {
   closePlayerBtn: document.getElementById("closePlayerBtn"),
   playerDialogTitle: document.getElementById("playerDialogTitle"),
   playerDialogBody: document.getElementById("playerDialogBody"),
+  fantacalcioDialog: document.getElementById("fantacalcioDialog"),
+  closeFantacalcioBtn: document.getElementById("closeFantacalcioBtn"),
+  fantacalcioDialogTitle: document.getElementById("fantacalcioDialogTitle"),
+  fantacalcioFrame: document.getElementById("fantacalcioFrame"),
+  fantacalcioExternalLink: document.getElementById("fantacalcioExternalLink"),
   rosterDialog: document.getElementById("rosterDialog"),
   closeRosterBtn: document.getElementById("closeRosterBtn"),
   rosterDialogTitle: document.getElementById("rosterDialogTitle"),
@@ -402,6 +407,26 @@ function getPlayerKeyFromName(name) {
 
 function getQuotationKey(quote) {
   return quote?.player_key || getPlayerKeyFromName(quote?.player_name || quote?.name || "");
+}
+
+function slugifyFantacalcio(value) {
+  const slug = String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " e ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug || "giocatore";
+}
+
+function buildFantacalcioPlayerUrl(player, quote) {
+  const fantacalcioId = String(quote?.fantacalcio_id || player?.fantacalcio_id || "").trim();
+  if (!fantacalcioId) return null;
+
+  const teamSlug = slugifyFantacalcio(quote?.real_team || player?.real_team || "serie-a");
+  const playerSlug = slugifyFantacalcio(quote?.player_name || player?.name || "giocatore");
+  return `https://www.fantacalcio.it/serie-a/squadre/${teamSlug}/${playerSlug}/${encodeURIComponent(fantacalcioId)}`;
 }
 
 
@@ -2336,6 +2361,7 @@ function showPlayerDialog(playerId) {
       <div><span>Delta Qt.A</span><strong class="${priceDelta < 0 ? "text-danger" : priceDelta > 0 ? "text-success" : ""}">${priceDelta === null ? "-" : (priceDelta > 0 ? "+" : "") + priceDelta}</strong></div>
       <div><span>FVM attuale</span><strong>${latest?.fvm ?? "-"}</strong></div>
       <div><span>Delta FVM</span><strong class="${fvmDelta < 0 ? "text-danger" : fvmDelta > 0 ? "text-success" : ""}">${fvmDelta === null ? "-" : (fvmDelta > 0 ? "+" : "") + fvmDelta}</strong></div>
+      <div class="player-external-action"><span>Fantacalcio.it</span><strong>${buildFantacalcioPlayerUrl(player, latest) ? `<button class="button button-secondary button-small" type="button" data-fantacalcio-player-id="${escapeHtml(playerId)}">Apri scheda</button>` : "ID non disponibile"}</strong></div>
     </div>
     <div class="table-wrap compact-table">
       <table>
@@ -2348,6 +2374,24 @@ function showPlayerDialog(playerId) {
   `;
 
   el.playerDialog.showModal();
+}
+
+function openFantacalcioDialog(playerId) {
+  const player = getPlayerById(playerId);
+  const quotes = getPlayerQuotations(playerId);
+  const latest = quotes.at(-1) || getLatestQuoteByPlayerId(playerId);
+  const url = buildFantacalcioPlayerUrl(player, latest);
+
+  if (!url) {
+    showError("Non trovo il fantacalcio_id per questo giocatore. Carica un listone che contenga l'ID Fantacalcio.");
+    return;
+  }
+
+  const title = latest?.player_name || player?.name || "Scheda Fantacalcio";
+  el.fantacalcioDialogTitle.textContent = title;
+  el.fantacalcioExternalLink.href = url;
+  el.fantacalcioFrame.src = url;
+  el.fantacalcioDialog.showModal();
 }
 
 
@@ -3240,7 +3284,7 @@ function renderAdminControls() {
   el.openLoginBtn.classList.toggle("hidden", Boolean(state.user));
   el.logoutBtn.classList.toggle("hidden", !state.user);
   if (el.adminPanel) el.adminPanel.classList.toggle("admin-locked", !state.isAdmin);
-  if (el.adminNavLink) el.adminNavLink.classList.toggle("hidden", !state.isAdmin);
+  document.querySelectorAll(".nav-link-admin").forEach((link) => link.classList.toggle("hidden", !state.isAdmin));
   if (!state.isAdmin && getCurrentPage() === "admin") {
     setActivePage("dashboard");
   }
@@ -3303,6 +3347,8 @@ function renderAll() {
   renderMarketActivity();
   renderStadiums();
   renderAdminControls();
+  applyResponsiveTableLabels();
+  updateMobilePageSubnav(getCurrentPage());
 }
 
 
@@ -4408,6 +4454,121 @@ function escapeHtml(value) {
 
 
 
+function setupMobileViewportClass() {
+  const apply = () => {
+    const coarsePointer = window.matchMedia?.("(hover: none) and (pointer: coarse)")?.matches || false;
+    const narrowViewport = window.matchMedia?.("(max-width: 900px)")?.matches || false;
+    const smallScreen = Math.min(window.innerWidth || 9999, screen.width || 9999) <= 900;
+    document.body.classList.toggle("is-mobile-ux", Boolean(coarsePointer || narrowViewport || smallScreen));
+  };
+  apply();
+  window.addEventListener("resize", apply, { passive: true });
+  window.addEventListener("orientationchange", apply, { passive: true });
+}
+
+function closeMobileMoreMenu() {
+  const sheet = document.getElementById("mobileMoreSheet");
+  const backdrop = document.getElementById("mobileMoreBackdrop");
+  const button = document.getElementById("mobileMoreBtn");
+  sheet?.classList.add("hidden");
+  backdrop?.classList.add("hidden");
+  button?.setAttribute("aria-expanded", "false");
+}
+
+function openMobileMoreMenu() {
+  const sheet = document.getElementById("mobileMoreSheet");
+  const backdrop = document.getElementById("mobileMoreBackdrop");
+  const button = document.getElementById("mobileMoreBtn");
+  sheet?.classList.remove("hidden");
+  backdrop?.classList.remove("hidden");
+  button?.setAttribute("aria-expanded", "true");
+}
+
+function setupMobileNavigation() {
+  const button = document.getElementById("mobileMoreBtn");
+  const closeButton = document.getElementById("mobileMoreClose");
+  const backdrop = document.getElementById("mobileMoreBackdrop");
+  const sheet = document.getElementById("mobileMoreSheet");
+
+  button?.addEventListener("click", () => {
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+    isOpen ? closeMobileMoreMenu() : openMobileMoreMenu();
+  });
+  closeButton?.addEventListener("click", closeMobileMoreMenu);
+  backdrop?.addEventListener("click", closeMobileMoreMenu);
+  sheet?.addEventListener("click", (event) => {
+    if (event.target.closest("[data-page-link]")) closeMobileMoreMenu();
+  });
+}
+
+function updateMobileMoreState(pageId) {
+  const morePages = ["clubs", "competitions", "honor", "finance", "admin"];
+  const button = document.getElementById("mobileMoreBtn");
+  button?.classList.toggle("active", morePages.includes(pageId));
+}
+
+function updateMobilePageSubnav(pageId) {
+  const container = document.getElementById("mobilePageSubnav");
+  const page = document.querySelector(`[data-page="${pageId}"]`);
+  if (!container || !page) return;
+
+  const panels = Array.from(page.querySelectorAll(".panel"))
+    .filter((panel) => !panel.closest("dialog"));
+
+  if (panels.length < 2) {
+    container.classList.add("hidden");
+    container.innerHTML = "";
+    return;
+  }
+
+  container.classList.remove("hidden");
+  container.innerHTML = panels
+    .map((panel, index) => {
+      if (!panel.id) panel.id = `mobile-${pageId}-section-${index + 1}`;
+      const title = panel.querySelector("h2, h3")?.textContent?.trim() || `Sezione ${index + 1}`;
+      return `<button class="mobile-subnav-pill" type="button" data-mobile-anchor="${escapeHtml(panel.id)}">${escapeHtml(title)}</button>`;
+    })
+    .join("");
+}
+
+function setupMobilePageSubnav() {
+  const container = document.getElementById("mobilePageSubnav");
+  container?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-mobile-anchor]");
+    if (!button) return;
+    const target = document.getElementById(button.dataset.mobileAnchor);
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
+function applyResponsiveTableLabels() {
+  document.querySelectorAll(".table-wrap table").forEach((table) => {
+    const labels = Array.from(table.querySelectorAll("thead th")).map((th) => th.textContent.trim().replace(/\s+/g, " "));
+    table.querySelectorAll("tbody tr").forEach((row) => {
+      Array.from(row.children).forEach((cell, index) => {
+        if (cell.tagName === "TD") cell.setAttribute("data-label", labels[index] || "");
+      });
+    });
+  });
+}
+
+function setupResponsiveTableObserver() {
+  const root = document.querySelector(".app-main");
+  if (!root) return;
+  let scheduled = false;
+  const observer = new MutationObserver(() => {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(() => {
+      applyResponsiveTableLabels();
+      scheduled = false;
+    });
+  });
+  observer.observe(root, { childList: true, subtree: true });
+  applyResponsiveTableLabels();
+}
+
+
 const PAGE_IDS = ["dashboard", "clubs", "rosters", "listone", "news", "competitions", "honor", "finance", "admin"];
 
 function getCurrentPage() {
@@ -4439,6 +4600,10 @@ function setActivePage(pageId, options = {}) {
       link.removeAttribute("aria-current");
     }
   });
+
+  updateMobileMoreState(nextPage);
+  updateMobilePageSubnav(nextPage);
+  closeMobileMoreMenu();
 
   if (!options.skipHash && window.location.hash !== `#${nextPage}`) {
     history.replaceState(null, "", `#${nextPage}`);
@@ -4704,15 +4869,32 @@ function bindEvents() {
   }
   if (el.playerDialogBody) {
     el.playerDialogBody.addEventListener("click", (event) => {
+      const fantacalcioButton = event.target.closest("[data-fantacalcio-player-id]");
+      if (fantacalcioButton) return openFantacalcioDialog(fantacalcioButton.dataset.fantacalcioPlayerId);
       const rosterButton = event.target.closest("[data-roster-club-id]");
       if (rosterButton) return showRosterDialog(rosterButton.dataset.rosterClubId);
+    });
+  }
+  if (el.closeFantacalcioBtn) {
+    el.closeFantacalcioBtn.addEventListener("click", () => {
+      el.fantacalcioDialog.close();
+      if (el.fantacalcioFrame) el.fantacalcioFrame.src = "about:blank";
+    });
+  }
+  if (el.fantacalcioDialog) {
+    el.fantacalcioDialog.addEventListener("close", () => {
+      if (el.fantacalcioFrame) el.fantacalcioFrame.src = "about:blank";
     });
   }
   if (el.closeRosterBtn) el.closeRosterBtn.addEventListener("click", () => el.rosterDialog.close());
 }
 
 async function init() {
+  setupMobileViewportClass();
   setupCollapsiblePanels();
+  setupMobileNavigation();
+  setupMobilePageSubnav();
+  setupResponsiveTableObserver();
   bindEvents();
   updateMovementSignHint();
   el.auctionDate.value = todayIso();
