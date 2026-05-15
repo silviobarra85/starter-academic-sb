@@ -985,7 +985,7 @@ function renderSeasonTeamAdminPanel() {
           <select id="adminSeasonTeamPresidentIds" class="input" multiple size="5">
             ${presidentOptions}
           </select>
-          <small class="field-hint">Qui si salva lo storico presidente/squadra/stagione.</small>
+          <small class="field-hint">Di default eredita il/i presidente/i attuale/i della squadra madre. Puoi modificarli per lo storico.</small>
         </label>
         <label class="checkbox-label span-2">
           <input id="adminSeasonTeamIsHistorical" type="checkbox" />
@@ -1227,7 +1227,7 @@ function attachAdminHandlers() {
   document.getElementById("adminTeamLogoFile")?.addEventListener("change", handleTeamLogoFileChange);
   updateTeamLogoPreview();
 
-  document.getElementById("adminSeasonTeamTeamId")?.addEventListener("change", fillSeasonTeamNameFromTeam);
+  document.getElementById("adminSeasonTeamTeamId")?.addEventListener("change", () => fillSeasonTeamDefaultsFromTeam({ force: true }));
   document.getElementById("adminSeasonTeamName")?.addEventListener("input", updateSeasonTeamLogoPreview);
   document.getElementById("adminSeasonTeamRemoveLogo")?.addEventListener("change", () => {
     if (document.getElementById("adminSeasonTeamRemoveLogo").checked) {
@@ -1237,7 +1237,7 @@ function attachAdminHandlers() {
     updateSeasonTeamLogoPreview();
   });
   document.getElementById("adminSeasonTeamLogoFile")?.addEventListener("change", handleSeasonTeamLogoFileChange);
-  fillSeasonTeamNameFromTeam();
+  fillSeasonTeamDefaultsFromTeam();
   updateSeasonTeamLogoPreview();
 
   document.getElementById("adminCompetitionResultsCompetitionId")?.addEventListener("change", (event) => {
@@ -1331,12 +1331,33 @@ function updateTeamLogoPreview() {
   `;
 }
 
-function fillSeasonTeamNameFromTeam() {
+function fillSeasonTeamDefaultsFromTeam(options = {}) {
+  const { force = false } = options;
   const teamId = document.getElementById("adminSeasonTeamTeamId")?.value;
   const { teamsById } = buildMaps();
   const team = teamsById.get(teamId);
+  if (!team) {
+    updateSeasonTeamLogoPreview();
+    return;
+  }
+
   const nameInput = document.getElementById("adminSeasonTeamName");
-  if (nameInput && !nameInput.value && team) nameInput.value = team.canonicalName || "";
+  if (nameInput && (force || !nameInput.value)) {
+    nameInput.value = team.canonicalName || "";
+  }
+
+  const presidentSelect = document.getElementById("adminSeasonTeamPresidentIds");
+  const currentPresidentIds = new Set(team.currentPresidentIds || []);
+  const hasSelectedPresidents = presidentSelect
+    ? Array.from(presidentSelect.selectedOptions).length > 0
+    : false;
+
+  if (presidentSelect && (force || !hasSelectedPresidents)) {
+    Array.from(presidentSelect.options).forEach((option) => {
+      option.selected = currentPresidentIds.has(option.value);
+    });
+  }
+
   updateSeasonTeamLogoPreview();
 }
 
@@ -1808,7 +1829,7 @@ function resetSeasonTeamForm() {
   if (idInput) idInput.value = "";
   const logoInput = document.getElementById("adminSeasonTeamLogoValue");
   if (logoInput) logoInput.value = "";
-  fillSeasonTeamNameFromTeam();
+  fillSeasonTeamDefaultsFromTeam({ force: true });
   updateSeasonTeamLogoPreview();
   showMessage("adminSeasonTeamStatus", "");
 }
