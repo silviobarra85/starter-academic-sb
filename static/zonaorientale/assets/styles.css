@@ -4267,3 +4267,65 @@ body.is-mobile-ux .palmares-table th:last-child,
 body.is-mobile-ux .palmares-table td:last-child {
   width: 46px !important;
 }
+
+/* V11 - Competition detail polish */
+.match-teams-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.match-separator {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.competition-matches-public {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.compact-detail-section {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+.compact-detail-section h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.competition-card .result-table-wrap,
+.competition-card .match-table-wrap {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .match-teams-line {
+    gap: 0.2rem;
+  }
+
+  .match-teams-line .club-logo,
+  .palmares-table .club-logo,
+  .result-table-wrap .club-logo,
+  .honor-table-wrap .club-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .competition-matches-public {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .compact-detail-section {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .compact-detail-section h4 {
+    font-size: 0.82rem;
+  }
+}

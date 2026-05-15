@@ -363,6 +363,29 @@ function getSeasonTeamDisplayName(seasonTeamId) {
   return seasonTeam.name || getTeamDisplayName(buildMaps().teamsById.get(seasonTeam.teamId));
 }
 
+function renderSeasonTeamNameWithLogo(seasonTeamId, options = {}) {
+  const { strong = true, className = "", textClass = "" } = options;
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  const name = getSeasonTeamDisplayName(seasonTeamId);
+  const logo = getSeasonTeamLogo(seasonTeam);
+  const safeTextClass = escapeHtml(textClass);
+  const text = strong
+    ? `<strong class="${safeTextClass}">${escapeHtml(name)}</strong>`
+    : `<span class="${safeTextClass}">${escapeHtml(name)}</span>`;
+
+  return `<span class="club-name-with-logo ${escapeHtml(className)}">${renderTeamLogo(name, logo)}${text}</span>`;
+}
+
+function renderTeamNameWithLogo(team, options = {}) {
+  const { strong = true, className = "" } = options;
+  const name = getTeamDisplayName(team);
+  const text = strong
+    ? `<strong>${escapeHtml(name)}</strong>`
+    : `<span>${escapeHtml(name)}</span>`;
+
+  return `<span class="club-name-with-logo ${escapeHtml(className)}">${renderTeamLogo(name, team?.logo || "")}${text}</span>`;
+}
+
 function getSeasonTeamLogo(seasonTeam) {
   if (!seasonTeam) return "";
   const { teamsById } = buildMaps();
@@ -408,6 +431,30 @@ function getWinnerLabel(competition) {
 
   const secondText = second ? ` · 2° ${getSeasonTeamDisplayName(second.seasonTeamId)}` : "";
   return `Vincitore: ${getSeasonTeamDisplayName(winner.seasonTeamId)}${secondText}`;
+}
+
+function renderWinnerLabelHtml(competition, options = {}) {
+  const { highlightWinner = false, withLogo = false } = options;
+  const results = getCompetitionResults(competition.id);
+  const winner = results.find((result) => Number(result.position) === 1);
+  const second = results.find((result) => Number(result.position) === 2);
+
+  if (!winner) return "Nessun risultato inserito";
+
+  const winnerName = getSeasonTeamDisplayName(winner.seasonTeamId);
+  const winnerHtml = withLogo
+    ? renderSeasonTeamNameWithLogo(winner.seasonTeamId, { textClass: highlightWinner ? "text-success" : "" })
+    : `<strong class="${highlightWinner ? "text-success" : ""}">${escapeHtml(winnerName)}</strong>`;
+
+  if (isRankingCompetition(competition)) {
+    return `1° ${winnerHtml}`;
+  }
+
+  const secondHtml = second
+    ? ` · 2° ${withLogo ? renderSeasonTeamNameWithLogo(second.seasonTeamId) : escapeHtml(getSeasonTeamDisplayName(second.seasonTeamId))}`
+    : "";
+
+  return `Vincitore: ${winnerHtml}${secondHtml}`;
 }
 
 function buildPalmares() {
@@ -494,7 +541,7 @@ function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
           ${matches.map((match) => `
             <tr>
               <td data-label="Fase/Giornata">${escapeHtml(match.matchday || "-")}</td>
-              <td data-label="Partita"><strong>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))}</strong> - <strong>${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</strong></td>
+              <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
               <td data-label="Stato"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
               <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
@@ -550,7 +597,7 @@ function renderDashboardCalendar(seasonId) {
               <tr>
                 <td data-label="Competizione"><strong>${escapeHtml(competition?.name || "-")}</strong></td>
                 <td data-label="Fase/Giornata">${escapeHtml(match.matchday || "-")}</td>
-                <td data-label="Partita"><strong>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))}</strong> - <strong>${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</strong></td>
+                <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
                 <td data-label="Stato"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
                 <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
@@ -573,7 +620,7 @@ function renderStadiumsPublic() {
     ? stadiums.map((stadium) => `
       <div class="stadium-item">
         <div>
-          <strong>${escapeHtml(getSeasonTeamDisplayName(stadium.seasonTeamId))}</strong>
+          ${renderSeasonTeamNameWithLogo(stadium.seasonTeamId)}
           <span>${escapeHtml(stadium.name || "Stadio senza nome")}</span>
         </div>
         <strong>Livello ${escapeHtml(stadium.level ?? 0)}</strong>
@@ -684,8 +731,7 @@ function renderDashboard() {
         <div class="stack-item">
           <div>
             <strong>${escapeHtml(competition.name)}</strong>
-            <small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type))} · ${escapeHtml(getLabel(COMPETITION_FORMATS, competition.format))}</small>
-            <small>${escapeHtml(getWinnerLabel(competition))}</small>
+            <small>${renderWinnerLabelHtml(competition, { highlightWinner: true, withLogo: true })}</small>
           </div>
           <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
         </div>`).join("")
@@ -713,14 +759,19 @@ function renderTeamsTable() {
     const stadium = getStadiumForSeasonTeam(seasonTeam.id);
     const statusClass = seasonTeam.isHistorical ? "status-muted" : "status-ok";
     const statusText = seasonTeam.isHistorical ? "Storica" : "Partecipante";
-    const logo = renderTeamLogo(seasonTeam.name || getTeamDisplayName(team), getSeasonTeamLogo(seasonTeam));
+    const displayName = seasonTeam.name || getTeamDisplayName(team);
+    const logo = renderTeamLogo(displayName, getSeasonTeamLogo(seasonTeam));
+    const canonicalName = team?.canonicalName || "";
+    const canonicalLine = canonicalName && canonicalName !== displayName
+      ? `<small class="muted">${escapeHtml(canonicalName)}</small>`
+      : "";
 
     return `
       <tr>
         <td data-label="#">${index + 1}</td>
         <td data-label="Club">
-          <span class="club-name-with-logo">${logo}<strong>${escapeHtml(seasonTeam.name || getTeamDisplayName(team))}</strong></span>
-          <small class="muted">${escapeHtml(team?.canonicalName || "")}</small>
+          <span class="club-name-with-logo">${logo}<strong>${escapeHtml(displayName)}</strong></span>
+          ${canonicalLine}
         </td>
         <td data-label="Presidente">${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</td>
         <td data-label="Saldo FM" class="number">-</td>
@@ -747,8 +798,8 @@ function renderCompetitionResultsPublic(competition) {
     const second = results.find((result) => Number(result.position) === 2);
     return `
       <div class="podium-mini-grid">
-        <div class="podium-mini-item"><span>Vincitore</span><strong>${escapeHtml(getSeasonTeamDisplayName(winner?.seasonTeamId))}</strong></div>
-        <div class="podium-mini-item"><span>Secondo</span><strong>${escapeHtml(getSeasonTeamDisplayName(second?.seasonTeamId))}</strong></div>
+        <div class="podium-mini-item"><span>Vincitore</span>${winner ? renderSeasonTeamNameWithLogo(winner.seasonTeamId) : "-"}</div>
+        <div class="podium-mini-item"><span>Secondo</span>${second ? renderSeasonTeamNameWithLogo(second.seasonTeamId) : "-"}</div>
       </div>`;
   }
 
@@ -762,13 +813,43 @@ function renderCompetitionResultsPublic(competition) {
           ${results.map((result) => `
             <tr>
               <td data-label="#">${escapeHtml(result.position || "")}</td>
-              <td data-label="Squadra">${escapeHtml(getSeasonTeamDisplayName(result.seasonTeamId))}</td>
+              <td data-label="Squadra">${renderSeasonTeamNameWithLogo(result.seasonTeamId)}</td>
               <td data-label="Punti" class="number">${escapeHtml(result.points ?? "-")}</td>
               <td data-label="G" class="number">${escapeHtml(result.played ?? "-")}</td>
               <td data-label="FPT" class="number">${escapeHtml(result.fantapoints ?? "-")}</td>
             </tr>`).join("")}
         </tbody>
       </table>
+    </div>`;
+}
+
+function renderCompetitionMatchesPublic(competition) {
+  const matches = getCompetitionMatches(competition.id);
+  const playedMatches = matches
+    .filter((match) => match.status === "GIOCATA")
+    .sort((a, b) => String(b.matchDate || "").localeCompare(String(a.matchDate || ""), "it"))
+    .slice(0, 5);
+  const scheduledMatches = matches
+    .filter((match) => match.status === "DA_GIOCARE")
+    .sort((a, b) => String(a.matchDate || "9999-12-31").localeCompare(String(b.matchDate || "9999-12-31"), "it"))
+    .slice(0, 5);
+
+  if (!playedMatches.length && !scheduledMatches.length) {
+    return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+  }
+
+  return `
+    <div class="competition-matches-public">
+      ${playedMatches.length ? `
+        <div class="detail-section compact-detail-section">
+          <h4>Ultime partite disputate</h4>
+          ${renderMatchRows(playedMatches, "Nessuna partita disputata.")}
+        </div>` : ""}
+      ${scheduledMatches.length ? `
+        <div class="detail-section compact-detail-section">
+          <h4>Partite programmate</h4>
+          ${renderMatchRows(scheduledMatches, "Nessuna partita programmata.")}
+        </div>` : ""}
     </div>`;
 }
 
@@ -788,14 +869,13 @@ function renderCompetitionsPublic() {
     <article class="competition-card">
       <div class="competition-card-header">
         <div>
-          <span>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type))}</span>
           <h3>${escapeHtml(competition.name)}</h3>
-          <span>${escapeHtml(getLabel(COMPETITION_FORMATS, competition.format))}</span>
         </div>
         <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
       </div>
       ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
       ${renderCompetitionResultsPublic(competition)}
+      ${renderCompetitionMatchesPublic(competition)}
     </article>
   `).join("");
 }
@@ -809,12 +889,12 @@ function renderHonorSummary() {
     return `
       <tr>
         <td data-label="Stagione"><strong>${escapeHtml(season.name || season.id)}</strong></td>
-        <td data-label="Campione">${escapeHtml(getSeasonTeamDisplayName(honor.championItalySeasonTeamId))}</td>
-        <td data-label="2° posto">${escapeHtml(getSeasonTeamDisplayName(honor.secondPlaceSeasonTeamId))}</td>
-        <td data-label="3° posto">${escapeHtml(getSeasonTeamDisplayName(honor.thirdPlaceSeasonTeamId))}</td>
-        <td data-label="Coppa Italia">${escapeHtml(getSeasonTeamDisplayName(honor.coppaItaliaWinnerSeasonTeamId))}</td>
-        <td data-label="Champions">${escapeHtml(getSeasonTeamDisplayName(honor.championsLeagueWinnerSeasonTeamId))}</td>
-        <td data-label="Playoff">${escapeHtml(getSeasonTeamDisplayName(honor.playoffWinnerSeasonTeamId))}</td>
+        <td data-label="Campione">${honor.championItalySeasonTeamId ? renderSeasonTeamNameWithLogo(honor.championItalySeasonTeamId) : "-"}</td>
+        <td data-label="2° posto">${honor.secondPlaceSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.secondPlaceSeasonTeamId) : "-"}</td>
+        <td data-label="3° posto">${honor.thirdPlaceSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.thirdPlaceSeasonTeamId) : "-"}</td>
+        <td data-label="Coppa Italia">${honor.coppaItaliaWinnerSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.coppaItaliaWinnerSeasonTeamId) : "-"}</td>
+        <td data-label="Champions">${honor.championsLeagueWinnerSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.championsLeagueWinnerSeasonTeamId) : "-"}</td>
+        <td data-label="Playoff">${honor.playoffWinnerSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.playoffWinnerSeasonTeamId) : "-"}</td>
       </tr>`;
   }).join("");
 
@@ -825,7 +905,7 @@ function renderHonorSummary() {
       const rows = items.map((item, index) => `
         <tr>
           <td data-label="#" class="number">${index + 1}</td>
-          <td data-label="Squadra"><strong>${escapeHtml(item.teamName)}</strong></td>
+          <td data-label="Squadra">${renderTeamNameWithLogo(buildMaps().teamsById.get(item.teamId) || { canonicalName: item.teamName })}</td>
           <td data-label="Titoli" class="number"><strong>${item.wins}</strong></td>
         </tr>`).join("") || `<tr><td colspan="3" class="muted center">Nessun vincitore ancora inserito.</td></tr>`;
 
