@@ -3617,3 +3617,224 @@ body.is-mobile-ux .mobile-honor-president-cell small {
     overflow-x: auto !important;
   }
 }
+
+
+/* Firebase admin V7: compact mobile layout and working bottom navigation. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-header {
+    padding: 14px 0 8px !important;
+  }
+
+  .header-grid {
+    gap: 10px !important;
+  }
+
+  .header-actions {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 7px !important;
+  }
+
+  .header-actions .season-switcher {
+    grid-column: 1 / -1;
+  }
+
+  .app-main {
+    padding-top: 8px !important;
+  }
+
+  .page-heading,
+  .season-control-panel,
+  .metric-card,
+  .panel,
+  .compact-card,
+  .news-card,
+  .competition-card,
+  .stack-item,
+  .movement-item,
+  .stadium-item,
+  .admin-list-item {
+    padding: 10px !important;
+    border-radius: 14px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .page-heading h2,
+  .panel-header h2,
+  .season-control-panel h3 {
+    font-size: 1.05rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .page-heading p,
+  .panel-header p,
+  .season-control-panel p,
+  .muted,
+  .small,
+  .field-hint {
+    font-size: 0.78rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .cards-grid,
+  .grid-two,
+  .dashboard-grid,
+  .palmares-grid,
+  .stack-list,
+  .news-list,
+  .competition-list,
+  .admin-list {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .panel-header,
+  .admin-list-item,
+  .stack-item,
+  .movement-item,
+  .stadium-item {
+    display: grid !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+  }
+
+  .panel-actions,
+  .form-actions,
+  .admin-list-item > span:last-child {
+    display: flex !important;
+    gap: 7px !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  .span-2 {
+    grid-column: auto !important;
+  }
+
+  .input,
+  .button,
+  .button-small,
+  .filter-input,
+  .search-input {
+    min-height: 38px !important;
+    font-size: 15px !important;
+  }
+
+  .admin-collapsible-panel.is-collapsed {
+    padding-bottom: 10px !important;
+  }
+
+  .admin-collapsible-panel.is-collapsed > :not(.panel-header) {
+    display: none !important;
+  }
+
+  .admin-edit-section summary {
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .logo-admin-preview {
+    min-height: 58px !important;
+  }
+
+  .logo-admin-preview .club-logo-lg {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .table-wrap,
+  .result-admin-table-wrap,
+  .result-table-wrap,
+  .match-table-wrap,
+  .fifa-ranking-table-wrap,
+  .honor-table-wrap {
+    max-height: min(64vh, 520px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px;
+  }
+
+  .table-wrap table,
+  .result-admin-table-wrap table,
+  .result-table-wrap table,
+  .match-table-wrap table,
+  .fifa-ranking-table-wrap table,
+  .honor-table-wrap table {
+    font-size: 0.72rem !important;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 2147483000 !important;
+  }
+
+  .mobile-bottom-link {
+    display: grid !important;
+    place-items: center !important;
+    gap: 2px !important;
+    min-height: 44px !important;
+    font-size: 0.64rem !important;
+  }
+
+  .mobile-nav-icon {
+    font-size: 1rem !important;
+  }
+
+  .mobile-more-sheet:not(.hidden),
+  .mobile-more-backdrop:not(.hidden) {
+    display: grid !important;
+  }
+}
+
+body.is-mobile-ux .app-header {
+  padding: 14px 0 8px !important;
+}
+
+body.is-mobile-ux .page-heading,
+body.is-mobile-ux .season-control-panel,
+body.is-mobile-ux .metric-card,
+body.is-mobile-ux .panel,
+body.is-mobile-ux .compact-card,
+body.is-mobile-ux .news-card,
+body.is-mobile-ux .competition-card,
+body.is-mobile-ux .stack-item,
+body.is-mobile-ux .movement-item,
+body.is-mobile-ux .stadium-item,
+body.is-mobile-ux .admin-list-item {
+  padding: 10px !important;
+  border-radius: 14px !important;
+  margin-bottom: 8px !important;
+}
+
+body.is-mobile-ux .cards-grid,
+body.is-mobile-ux .grid-two,
+body.is-mobile-ux .dashboard-grid,
+body.is-mobile-ux .palmares-grid,
+body.is-mobile-ux .stack-list,
+body.is-mobile-ux .news-list,
+body.is-mobile-ux .competition-list,
+body.is-mobile-ux .admin-list {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+
+body.is-mobile-ux .mobile-bottom-nav {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+}
+
+body.is-mobile-ux .mobile-more-sheet:not(.hidden),
+body.is-mobile-ux .mobile-more-backdrop:not(.hidden) {
+  display: grid !important;
+}

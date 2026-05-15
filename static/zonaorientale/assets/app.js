@@ -834,6 +834,9 @@ function setupNavigation() {
       link.classList.toggle("active", link.dataset.pageLink === state.currentPage);
     });
 
+    closeMobileMoreMenu();
+    updateMobileNavState();
+
     if (state.currentPage === "admin" && !state.isAdmin) {
       const dialog = document.getElementById("loginDialog");
       if (dialog?.showModal) dialog.showModal();
@@ -852,6 +855,64 @@ function setupNavigation() {
 
   const startPage = window.location.hash.replace("#", "") || "dashboard";
   setPage(startPage);
+}
+
+function closeMobileMoreMenu() {
+  const backdrop = document.getElementById("mobileMoreBackdrop");
+  const sheet = document.getElementById("mobileMoreSheet");
+  const button = document.getElementById("mobileMoreBtn");
+
+  backdrop?.classList.add("hidden");
+  sheet?.classList.add("hidden");
+  button?.setAttribute("aria-expanded", "false");
+}
+
+function openMobileMoreMenu() {
+  const backdrop = document.getElementById("mobileMoreBackdrop");
+  const sheet = document.getElementById("mobileMoreSheet");
+  const button = document.getElementById("mobileMoreBtn");
+
+  backdrop?.classList.remove("hidden");
+  sheet?.classList.remove("hidden");
+  button?.setAttribute("aria-expanded", "true");
+}
+
+function toggleMobileMoreMenu() {
+  const sheet = document.getElementById("mobileMoreSheet");
+  if (!sheet || sheet.classList.contains("hidden")) {
+    openMobileMoreMenu();
+  } else {
+    closeMobileMoreMenu();
+  }
+}
+
+function updateMobileNavState() {
+  const directMobilePages = new Set(["dashboard", "clubs", "competitions", "honor"]);
+  const moreButton = document.getElementById("mobileMoreBtn");
+  moreButton?.classList.toggle("active", !directMobilePages.has(state.currentPage));
+}
+
+function updateMobileUxClass() {
+  const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+  document.body.classList.toggle("is-mobile-ux", isMobileLike);
+}
+
+function setupMobileNavigation() {
+  const moreButton = document.getElementById("mobileMoreBtn");
+  const closeButton = document.getElementById("mobileMoreClose");
+  const backdrop = document.getElementById("mobileMoreBackdrop");
+  const sheet = document.getElementById("mobileMoreSheet");
+
+  moreButton?.addEventListener("click", toggleMobileMoreMenu);
+  closeButton?.addEventListener("click", closeMobileMoreMenu);
+  backdrop?.addEventListener("click", closeMobileMoreMenu);
+  sheet?.querySelectorAll("[data-page-link]").forEach((link) => {
+    link.addEventListener("click", closeMobileMoreMenu);
+  });
+
+  updateMobileUxClass();
+  updateMobileNavState();
+  window.addEventListener("resize", updateMobileUxClass);
 }
 
 function setupAuth() {
@@ -1721,7 +1782,7 @@ function attachAdminHandlers() {
 
   document.getElementById("adminSeasonTeamSeasonId")?.addEventListener("change", (event) => {
     state.selectedAdminSeasonTeamSeasonId = event.target.value;
-    renderAdmin();
+    renderAdminArea();
   });
   document.getElementById("adminSeasonTeamTeamId")?.addEventListener("change", () => fillSeasonTeamDefaultsFromTeam({ force: true }));
   document.getElementById("adminSeasonTeamName")?.addEventListener("input", updateSeasonTeamLogoPreview);
@@ -1738,18 +1799,18 @@ function attachAdminHandlers() {
 
   document.getElementById("adminStadiumSeasonId")?.addEventListener("change", (event) => {
     state.selectedAdminStadiumSeasonId = event.target.value;
-    renderAdmin();
+    renderAdminArea();
   });
 
   document.getElementById("adminCompetitionSeasonId")?.addEventListener("change", (event) => {
     state.selectedAdminCompetitionSeasonId = event.target.value;
-    renderAdmin();
+    renderAdminArea();
   });
 
   document.getElementById("adminCompetitionMatchSeasonId")?.addEventListener("change", (event) => {
     state.selectedAdminMatchSeasonId = event.target.value;
     state.selectedMatchCompetitionId = "";
-    renderAdmin();
+    renderAdminArea();
   });
   document.getElementById("adminCompetitionMatchCompetitionId")?.addEventListener("change", (event) => {
     state.selectedMatchCompetitionId = event.target.value;
@@ -1760,7 +1821,7 @@ function attachAdminHandlers() {
   document.getElementById("adminCompetitionResultsSeasonId")?.addEventListener("change", (event) => {
     state.selectedAdminResultsSeasonId = event.target.value;
     state.selectedResultCompetitionId = "";
-    renderAdmin();
+    renderAdminArea();
   });
   document.getElementById("adminCompetitionResultsCompetitionId")?.addEventListener("change", (event) => {
     state.selectedResultCompetitionId = event.target.value;
@@ -2640,6 +2701,7 @@ function setupSeasonSelectorEvents() {
 
 async function initializeAppUi() {
   setupNavigation();
+  setupMobileNavigation();
   setupAuth();
   setupSeasonSelectorEvents();
   updateAdminVisibility();

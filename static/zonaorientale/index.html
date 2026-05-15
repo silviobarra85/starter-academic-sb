@@ -43,8 +43,8 @@
   <main class="container app-main">
     <nav id="mobilePageSubnav" class="mobile-page-subnav hidden" aria-label="Sezioni della pagina"></nav>
 <section id="configWarning" class="notice notice-warning hidden">
-      <strong>Configurazione Supabase mancante.</strong>
-      Apri <code>assets/app.js</code> e inserisci <code>SUPABASE_URL</code> e <code>SUPABASE_ANON_KEY</code>.
+      <strong>Configurazione Firebase da verificare.</strong>
+      Controlla <code>assets/firebase.js</code> e le Security Rules di Firestore.
     </section>
 
     <section id="errorBox" class="notice notice-error hidden"></section>
@@ -1245,18 +1245,18 @@
       <strong>Altre sezioni</strong>
       <button id="mobileMoreClose" class="mobile-icon-button" type="button" aria-label="Chiudi menu">×</button>
     </div>
-    <a href="#clubs" class="mobile-more-link" data-page-link="clubs">Club</a>
-    <a href="#competitions" class="mobile-more-link" data-page-link="competitions">Competizioni</a>
-    <a href="#honor" class="mobile-more-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
-    <a href="#finance" class="mobile-more-link" data-page-link="finance">Movimenti & Stadi</a>
+    <a href="#news" class="mobile-more-link" data-page-link="news">News</a>
+    <a href="#finance" class="mobile-more-link" data-page-link="finance">Stadi</a>
+    <a href="#rosters" class="mobile-more-link" data-page-link="rosters">Rose</a>
+    <a href="#listone" class="mobile-more-link" data-page-link="listone">Listone</a>
     <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-page-link="admin">Admin</a>
   </nav>
 
   <nav class="mobile-bottom-nav" aria-label="Navigazione principale mobile">
     <a href="#dashboard" class="mobile-bottom-link" data-page-link="dashboard"><span class="mobile-nav-icon">⌂</span><span>Home</span></a>
-    <a href="#news" class="mobile-bottom-link" data-page-link="news"><span class="mobile-nav-icon">📰</span><span>News</span></a>
-    <a href="#rosters" class="mobile-bottom-link" data-page-link="rosters"><span class="mobile-nav-icon">👥</span><span>Rose</span></a>
-    <a href="#listone" class="mobile-bottom-link" data-page-link="listone"><span class="mobile-nav-icon">📋</span><span>Listone</span></a>
+    <a href="#clubs" class="mobile-bottom-link" data-page-link="clubs"><span class="mobile-nav-icon">⚽</span><span>Club</span></a>
+    <a href="#competitions" class="mobile-bottom-link" data-page-link="competitions"><span class="mobile-nav-icon">🏆</span><span>Gare</span></a>
+    <a href="#honor" class="mobile-bottom-link" data-page-link="honor"><span class="mobile-nav-icon">⭐</span><span>Albo</span></a>
     <button id="mobileMoreBtn" class="mobile-bottom-link" type="button" aria-expanded="false" aria-controls="mobileMoreSheet"><span class="mobile-nav-icon">☰</span><span>Altro</span></button>
   </nav>
 
