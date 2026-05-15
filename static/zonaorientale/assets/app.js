@@ -129,6 +129,7 @@ const state = {
   selectedAdminStadiumSeasonId: "",
   selectedAdminCompetitionSeasonId: "",
   selectedAdminMatchSeasonId: "",
+  selectedAdminMatchdayFilter: "",
   selectedAdminResultsSeasonId: "",
   collapsedAdminPanels: new Set(ADMIN_PANEL_IDS),
   collapsedContentPanels: new Set()
@@ -531,11 +532,7 @@ function sortMatchesForDisplay(matches) {
 }
 
 function formatMatchStage(match) {
-  const parts = [];
-  if (match?.matchday) parts.push(match.matchday);
-  const serieAMatchday = getMatchSerieAMatchday(match);
-  if (serieAMatchday) parts.push(`Serie A ${serieAMatchday}`);
-  return parts.join(" · ") || "-";
+  return match?.matchday || "-";
 }
 
 function getCompetitionMatches(competitionId) {
@@ -563,15 +560,14 @@ function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase/Giornata</th><th>Partita</th><th>Data</th><th class="match-status-col">Stato</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
         </thead>
         <tbody>
           ${sortedMatches.map((match) => `
             <tr>
-              <td data-label="Fase/Giornata">${escapeHtml(formatMatchStage(match))}</td>
+              <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Stato" class="match-status-col"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
               <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
@@ -616,20 +612,18 @@ function renderDashboardCalendar(seasonId) {
         <table class="dashboard-calendar-table">
           <thead>
             <tr>
-              <th>Fase/Giornata</th>
+              <th>Fase</th>
               <th>Partita</th>
               <th>Data</th>
-              <th class="match-status-col">Stato</th>
               <th class="number">Risultato</th>
             </tr>
           </thead>
           <tbody>
             ${group.matches.map((match) => `
               <tr>
-                <td data-label="Fase/Giornata">${escapeHtml(formatMatchStage(match))}</td>
+                <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                <td data-label="Stato" class="match-status-col"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
                 <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
               </tr>`).join("")}
           </tbody>
@@ -747,10 +741,7 @@ function renderDashboardCompetitionSummary(competition) {
   if (isRankingCompetition(competition)) {
     const latestMatches = getLatestChampionshipMatches(competition);
     if (latestMatches.length) {
-      const serieAMatchday = getMatchSerieAMatchday(latestMatches[0]);
-      const label = serieAMatchday
-        ? `Ultima giornata Serie A ${serieAMatchday}`
-        : `Ultima giornata ${latestMatches[0].matchday || latestMatches[0].matchDate || "giocata"}`;
+      const label = `Ultima giornata ${latestMatches[0].matchday || latestMatches[0].matchDate || "giocata"}`;
       return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderCompactMatchLines(latestMatches)}</div>`;
     }
     return `<div class="dashboard-competition-summary">${renderWinnerLabelHtml(competition, { highlightWinner: true, withLogo: true })}</div>`;
@@ -1883,10 +1874,29 @@ function renderCompetitionMatchesAdminPanel() {
   `).join("");
 
   const { competitionsById } = buildMaps();
-  const filteredMatches = sortMatchesForDisplay(state.raw.competitionMatches.filter((match) => {
-    if (match.seasonId) return match.seasonId === selectedSeasonId;
-    return competitionsById.get(match.competitionId)?.seasonId === selectedSeasonId;
+  const matchesForSelectedCompetition = sortMatchesForDisplay(state.raw.competitionMatches.filter((match) => {
+    const matchSeasonId = match.seasonId || competitionsById.get(match.competitionId)?.seasonId || "";
+    return matchSeasonId === selectedSeasonId && (!selectedCompetitionId || match.competitionId === selectedCompetitionId);
   }));
+
+  const matchdayValues = Array.from(new Set(
+    matchesForSelectedCompetition
+      .map((match) => match.matchday || "")
+      .filter(Boolean)
+  )).sort((a, b) => b.localeCompare(a, "it", { numeric: true }));
+
+  const selectedMatchdayFilter = state.selectedAdminMatchdayFilter && matchdayValues.includes(state.selectedAdminMatchdayFilter)
+    ? state.selectedAdminMatchdayFilter
+    : "";
+  state.selectedAdminMatchdayFilter = selectedMatchdayFilter;
+
+  const matchdayFilterOptions = [`<option value="">Tutte le fasi/giornate</option>`, ...matchdayValues.map((matchday) => `
+    <option value="${escapeHtml(matchday)}" ${matchday === selectedMatchdayFilter ? "selected" : ""}>${escapeHtml(matchday)}</option>
+  `)].join("");
+
+  const filteredMatches = selectedMatchdayFilter
+    ? matchesForSelectedCompetition.filter((match) => (match.matchday || "") === selectedMatchdayFilter)
+    : matchesForSelectedCompetition;
 
   const rows = filteredMatches.map((match) => {
     const competition = competitionsById.get(match.competitionId);
@@ -1902,7 +1912,7 @@ function renderCompetitionMatchesAdminPanel() {
           <button class="button button-danger button-small" type="button" data-admin-delete-match="${escapeHtml(match.id)}">Elimina</button>
         </span>
       </div>`;
-  }).join("") || `<p class="muted admin-empty-message">Nessuna partita inserita per la stagione selezionata.</p>`;
+  }).join("") || `<p class="muted admin-empty-message">Nessuna partita trovata per stagione, competizione e fase/giornata selezionate.</p>`;
 
   return renderAdminPanel("adminCompetitionMatchesPanel", "Firebase", "Partite competizioni", "Inserisci calendario e risultati delle partite. Le partite possono essere Da giocare o Giocate.", `
       <form id="adminCompetitionMatchesForm" class="form-grid">
@@ -1920,7 +1930,14 @@ function renderCompetitionMatchesAdminPanel() {
           </select>
         </label>
         <label>
-          Fase/Giornata
+          Filtro elenco fase/giornata
+          <select id="adminCompetitionMatchdayFilter" class="input">
+            ${matchdayFilterOptions}
+          </select>
+          <small class="field-hint">La lista sotto viene filtrata per stagione, competizione e fase/giornata.</small>
+        </label>
+        <label>
+          Fase
           <input id="adminCompetitionMatchday" class="input" type="text" list="adminCompetitionMatchdayOptions" placeholder="Es. Giornata 1 oppure QF - Andata" required />
           <datalist id="adminCompetitionMatchdayOptions">${matchdayOptions}</datalist>
           <small class="field-hint">Per competizioni a gironi puoi usare QF/SF/Finale/Finalissima o scrivere una giornata libera.</small>
@@ -1975,7 +1992,7 @@ function renderCompetitionMatchesAdminPanel() {
       </form>
 
       <details class="admin-edit-section" open>
-        <summary><strong>Partite della stagione selezionata</strong><span>${filteredMatches.length}</span></summary>
+        <summary><strong>Partite filtrate</strong><span>${filteredMatches.length}</span></summary>
         <div class="admin-list">${rows}</div>
       </details>
   `);
@@ -2102,11 +2119,17 @@ function attachAdminHandlers() {
   document.getElementById("adminCompetitionMatchSeasonId")?.addEventListener("change", (event) => {
     state.selectedAdminMatchSeasonId = event.target.value;
     state.selectedMatchCompetitionId = "";
+    state.selectedAdminMatchdayFilter = "";
     renderAdminArea();
   });
   document.getElementById("adminCompetitionMatchCompetitionId")?.addEventListener("change", (event) => {
     state.selectedMatchCompetitionId = event.target.value;
-    updateCompetitionMatchTeamOptions();
+    state.selectedAdminMatchdayFilter = "";
+    renderAdminArea();
+  });
+  document.getElementById("adminCompetitionMatchdayFilter")?.addEventListener("change", (event) => {
+    state.selectedAdminMatchdayFilter = event.target.value;
+    renderAdminArea();
   });
   updateCompetitionMatchTeamOptions();
 
@@ -2710,6 +2733,9 @@ async function saveCompetitionMatch(event) {
       createdAt: serverTimestamp()
     }, { merge: true });
     showMessage("adminCompetitionMatchStatusText", "Partita salvata.");
+    state.selectedAdminMatchSeasonId = payload.seasonId;
+    state.selectedMatchCompetitionId = payload.competitionId;
+    state.selectedAdminMatchdayFilter = payload.matchday || "";
     resetCompetitionMatchForm();
     await loadData();
   } catch (error) {
