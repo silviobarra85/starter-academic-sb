@@ -83,6 +83,7 @@ const state = {
   calendarMatches: [],
   honorRoll: [],
   honorClubs: [],
+  honorClubSeasons: [],
   clubSeasonIdentities: [],
   latestQuotations: [],
   allLatestQuotations: [],
@@ -278,6 +279,7 @@ const el = {
   historicalClubId: document.getElementById("historicalClubId"),
   historicalClubSourceClub: document.getElementById("historicalClubSourceClub"),
   historicalClubNameInput: document.getElementById("historicalClubNameInput"),
+  historicalClubSeasonsSelect: document.getElementById("historicalClubSeasonsSelect"),
   historicalClubPresidentSelect: document.getElementById("historicalClubPresidentSelect"),
   historicalClubPresidentInput: document.getElementById("historicalClubPresidentInput"),
   historicalClubLogoInput: document.getElementById("historicalClubLogoInput"),
@@ -1224,11 +1226,20 @@ function applyClubSeasonIdentity(club, seasonId = getSelectedSeasonId()) {
   };
 }
 
-function getCurrentClubs() {
+function getActiveClubs() {
   return state.clubs.filter((club) => club.active !== false);
 }
 
-function getClubsForSeason(seasonId = getSelectedSeasonId()) {
+function getLatestSeasonId() {
+  if (!state.seasons.length) return getSelectedSeasonId();
+  const sorted = [...state.seasons].sort((a, b) =>
+    String(b.starts_on || b.id || "").localeCompare(String(a.starts_on || a.id || ""))
+    || String(b.id || "").localeCompare(String(a.id || ""))
+  );
+  return sorted[0]?.id || getSelectedSeasonId();
+}
+
+function collectClubIdsForSeason(seasonId) {
   const ids = new Set();
 
   state.clubSeasonIdentities
@@ -1256,6 +1267,32 @@ function getClubsForSeason(seasonId = getSelectedSeasonId()) {
   state.competitionStandings
     .filter((standing) => seasonCompetitionIds.has(standing.competition_id))
     .forEach((standing) => { if (standing.club_id) ids.add(standing.club_id); });
+
+  return ids;
+}
+
+function getCurrentClubs() {
+  // Le squadre non storiche sono quelle che partecipano all'ultima stagione disponibile.
+  const latestSeasonId = getLatestSeasonId();
+  const ids = collectClubIdsForSeason(latestSeasonId);
+  if (ids.size) return state.clubs.filter((club) => ids.has(club.id));
+  return getActiveClubs();
+}
+
+function getHonorClubSeasonIds(honorClubId) {
+  return state.honorClubSeasons
+    .filter((row) => row.honor_club_id === honorClubId)
+    .map((row) => row.season_id)
+    .filter(Boolean);
+}
+
+function honorClubParticipatedInSeason(honorClubId, seasonId) {
+  const seasons = getHonorClubSeasonIds(honorClubId);
+  return seasons.length ? seasons.includes(seasonId) : true;
+}
+
+function getClubsForSeason(seasonId = getSelectedSeasonId()) {
+  const ids = collectClubIdsForSeason(seasonId);
 
   if (!ids.size) return getCurrentClubs();
 
@@ -1285,21 +1322,13 @@ function getStandingParticipantOptions(seasonId = getSelectedSeasonId()) {
     return `<option value="club:${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}${escapeHtml(president)}</option>`;
   });
 
-  const currentClubIds = new Set(currentClubs.map((club) => club.id));
   const historicalOptions = state.honorClubs
     .filter((club) => club && club.id)
-    .filter((club) => {
-      // Se una squadra storica e' solo la copia identica del club attuale, evita un doppione inutile.
-      // Resta invece selezionabile se rappresenta un nome storico diverso o un club non piu' attivo.
-      if (!club.source_club_id) return true;
-      if (!currentClubIds.has(club.source_club_id)) return true;
-      const current = getClubById(club.source_club_id);
-      const currentDisplay = applyClubSeasonIdentity(current, seasonId) || current;
-      return normalizeTextKey(club.name) !== normalizeTextKey(currentDisplay?.name || current?.name || "");
-    })
     .map((club) => {
       const president = club.president ? ` · ${displayPresidents(club.president)}` : "";
-      return `<option value="honor:${escapeHtml(club.id)}">${escapeHtml(club.name)}${escapeHtml(president)} · storica</option>`;
+      const seasons = getHonorClubSeasonIds(club.id);
+      const seasonHint = seasons.length ? ` · ${seasons.join(", ")}` : "";
+      return `<option value="honor:${escapeHtml(club.id)}">${escapeHtml(club.name)}${escapeHtml(president)} · storica${escapeHtml(seasonHint)}</option>`;
     });
 
   const sections = [];
@@ -1992,6 +2021,7 @@ async function fetchCoreData() {
     stadiums,
     stadiumLevels,
     clubSeasonIdentities,
+    honorClubSeasons,
   ] = await Promise.all([
     fetchAllRows(() => state.supabase.from("seasons").select("*").order("starts_on", { ascending: false })),
     fetchAllRows(() => state.supabase.from("clubs").select("*").order("name", { ascending: true })),
@@ -2018,6 +2048,10 @@ async function fetchCoreData() {
       if (error?.code === "42P01") return [];
       throw error;
     }),
+    fetchAllRows(() => state.supabase.from("honor_club_seasons").select("*")).catch((error) => {
+      if (error?.code === "42P01") return [];
+      throw error;
+    }),
   ]);
 
   state.seasons = seasons || [];
@@ -2030,6 +2064,7 @@ async function fetchCoreData() {
   state.stadiums = stadiums || [];
   state.stadiumLevels = stadiumLevels || [];
   state.clubSeasonIdentities = clubSeasonIdentities || [];
+  state.honorClubSeasons = honorClubSeasons || [];
 
   if (!state.seasons.some((season) => season.id === state.selectedSeason)) {
     state.selectedSeason = state.seasons.find((season) => season.id === ACTIVE_SEASON_ID)?.id || state.seasons[0]?.id || ACTIVE_SEASON_ID;
@@ -2059,6 +2094,7 @@ function resetLoadedScopesForSeason() {
   state.rosterImports = [];
   state.honorRoll = [];
   state.honorClubs = [];
+  state.honorClubSeasons = [];
   state.competitionStandings = [];
 }
 
@@ -2097,14 +2133,16 @@ async function loadPageData(pageId, { force = false } = {}) {
   }
 
   if (page === "honor" || page === "admin") {
-    const [honorRoll, honorClubs, competitionStandings, allCalendarMatches] = await Promise.all([
+    const [honorRoll, honorClubs, honorClubSeasons, competitionStandings, allCalendarMatches] = await Promise.all([
       fetchAllRows(() => state.supabase.from("honor_roll_entries").select("*").order("season_id", { ascending: false })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
       fetchAllRows(() => state.supabase.from("honor_clubs").select("*").order("name", { ascending: true })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
+      fetchAllRows(() => state.supabase.from("honor_club_seasons").select("*")).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
       fetchAllRows(() => state.supabase.from("competition_standings").select("*").order("position", { ascending: true })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
       fetchAllRows(() => state.supabase.from("calendar_matches").select("*").order("played_on", { ascending: true, nullsFirst: false })).catch((error) => error?.code === "42P01" ? [] : Promise.reject(error)),
     ]);
     state.honorRoll = honorRoll || [];
     state.honorClubs = honorClubs || [];
+    state.honorClubSeasons = honorClubSeasons || [];
     state.competitionStandings = competitionStandings || [];
     state.calendarMatches = mergeById(state.calendarMatches, allCalendarMatches || []);
   }
@@ -3762,6 +3800,13 @@ function renderAdminExtendedControls() {
   if (el.clubPresidentSelect) { const current = resolvePresidentValue(el.clubPresidentSelect, el.clubPresidentInput); el.clubPresidentSelect.innerHTML = presidentOptions; setPresidentControls(el.clubPresidentSelect, el.clubPresidentInput, current || el.clubPresidentInput?.value || ""); }
   if (el.honorPresidentSelect) { const current = resolvePresidentValue(el.honorPresidentSelect, el.honorPresidentInput); el.honorPresidentSelect.innerHTML = presidentOptions; setPresidentControls(el.honorPresidentSelect, el.honorPresidentInput, current || el.honorPresidentInput?.value || ""); }
   if (el.historicalClubSourceClub) selectOptionPreservingValue(el.historicalClubSourceClub, `<option value="">Nessuno / squadra storica pura</option>${clubOptions}`, el.historicalClubSourceClub.value, "");
+  if (el.historicalClubSeasonsSelect) {
+    const selected = new Set(Array.from(el.historicalClubSeasonsSelect.selectedOptions || []).map((option) => option.value));
+    el.historicalClubSeasonsSelect.innerHTML = seasonOptions;
+    Array.from(el.historicalClubSeasonsSelect.options).forEach((option) => {
+      option.selected = selected.has(option.value);
+    });
+  }
   if (el.historicalClubPresidentSelect) { const current = resolvePresidentValue(el.historicalClubPresidentSelect, el.historicalClubPresidentInput); el.historicalClubPresidentSelect.innerHTML = presidentOptions; setPresidentControls(el.historicalClubPresidentSelect, el.historicalClubPresidentInput, current || el.historicalClubPresidentInput?.value || ""); }
   if (el.clubIdentitySeason) selectOptionPreservingValue(el.clubIdentitySeason, seasonOptions, el.clubIdentitySeason.value || selectedSeason, selectedSeason);
   if (el.clubIdentityClub) selectOptionPreservingValue(el.clubIdentityClub, clubOptions, el.clubIdentityClub.value, getCurrentClubs()[0]?.id || "");
@@ -3909,11 +3954,15 @@ function renderAdminLists() {
     const rows = state.honorClubs
       .filter((club) => textMatchesQuery(`${club.name || ""} ${club.president || ""}`, query))
       .slice(0, 120);
-    el.historicalClubAdminList.innerHTML = rows.map((club) => `
+    el.historicalClubAdminList.innerHTML = rows.map((club) => {
+      const seasons = getHonorClubSeasonIds(club.id);
+      const seasonText = seasons.length ? ` · stagioni: ${seasons.join(", ")}` : " · nessuna stagione associata";
+      return `
       <div class="admin-list-item">
-        <span><strong>${clubNameWithLogo(club)}</strong><small>${escapeHtml(displayPresidents(club.president))}${club.source_club_id ? " · collegata a club attuale" : " · storica"}</small></span>
+        <span><strong>${clubNameWithLogo(club)}</strong><small>${escapeHtml(displayPresidents(club.president))}${club.source_club_id ? " · collegata a club attuale" : " · storica"}${escapeHtml(seasonText)}</small></span>
         <span><button class="button button-secondary button-small" type="button" data-edit-historical-club="${escapeHtml(club.id)}">Modifica</button></span>
-      </div>`).join("") || renderAdminListMessage(query ? "Nessuna squadra storica trovata." : "Nessuna squadra storica.");
+      </div>`;
+    }).join("") || renderAdminListMessage(query ? "Nessuna squadra storica trovata." : "Nessuna squadra storica.");
   }
 
   if (el.clubIdentityAdminList) {
@@ -4878,6 +4927,36 @@ function resetCompetitionForm(options = {}) {
   if (el.competitionSeason) el.competitionSeason.value = keepSeason;
 }
 
+function getSelectedHistoricalClubSeasonIds() {
+  if (!el.historicalClubSeasonsSelect) return [];
+  return Array.from(el.historicalClubSeasonsSelect.selectedOptions || [])
+    .map((option) => option.value)
+    .filter(Boolean);
+}
+
+function setHistoricalClubSeasonSelection(honorClubId) {
+  if (!el.historicalClubSeasonsSelect) return;
+  const seasons = new Set(getHonorClubSeasonIds(honorClubId));
+  Array.from(el.historicalClubSeasonsSelect.options || []).forEach((option) => {
+    option.selected = seasons.has(option.value);
+  });
+}
+
+async function syncHistoricalClubSeasons(honorClubId, seasonIds) {
+  if (!honorClubId) return;
+  try {
+    await state.supabase.from("honor_club_seasons").delete().eq("honor_club_id", honorClubId);
+    const rows = [...new Set(seasonIds || [])].filter(Boolean).map((seasonId) => ({ honor_club_id: honorClubId, season_id: seasonId }));
+    if (rows.length) {
+      const { error } = await state.supabase.from("honor_club_seasons").insert(rows);
+      if (error) throw error;
+    }
+  } catch (error) {
+    // Se la migration non e' stata ancora eseguita, il salvataggio della squadra resta valido.
+    console.warn("Impossibile sincronizzare le stagioni della squadra storica", error);
+  }
+}
+
 async function handleHistoricalClubSubmit(event) {
   event.preventDefault();
   if (!state.isAdmin) return;
@@ -4894,9 +4973,11 @@ async function handleHistoricalClubSubmit(event) {
   };
   if (logo) payload.logo_data_url = logo;
   const response = id
-    ? await state.supabase.from("honor_clubs").update(payload).eq("id", id)
-    : await state.supabase.from("honor_clubs").insert(payload);
+    ? await state.supabase.from("honor_clubs").update(payload).eq("id", id).select("*").single()
+    : await state.supabase.from("honor_clubs").insert(payload).select("*").single();
   if (response.error) { el.historicalClubFormStatus.textContent = response.error.message; return; }
+  const savedHonorClubId = response.data?.id || id;
+  await syncHistoricalClubSeasons(savedHonorClubId, getSelectedHistoricalClubSeasonIds());
   resetHistoricalClubForm();
   await refreshAdminDataAfterMutation({ statusElement: el.historicalClubFormStatus, message: "Squadra storica salvata." });
 }
@@ -4906,6 +4987,7 @@ function resetHistoricalClubForm() {
   el.historicalClubId.value = "";
   if (el.historicalClubSourceClub) el.historicalClubSourceClub.value = "";
   el.historicalClubNameInput.value = "";
+  if (el.historicalClubSeasonsSelect) Array.from(el.historicalClubSeasonsSelect.options || []).forEach((option) => { option.selected = false; });
   setPresidentControls(el.historicalClubPresidentSelect, el.historicalClubPresidentInput, "");
   if (el.historicalClubLogoInput) el.historicalClubLogoInput.value = "";
 }
@@ -5179,6 +5261,7 @@ const DUMP_TABLES = [
   "competition_standings",
   "calendar_matches",
   "honor_clubs",
+  "honor_club_seasons",
   "honor_roll_entries",
 ];
 
@@ -5268,6 +5351,7 @@ function fillEditFormsFromAdminAction(target) {
     el.historicalClubId.value = club.id;
     if (el.historicalClubSourceClub) el.historicalClubSourceClub.value = club.source_club_id || "";
     el.historicalClubNameInput.value = club.name || "";
+    setHistoricalClubSeasonSelection(club.id);
     setPresidentControls(el.historicalClubPresidentSelect, el.historicalClubPresidentInput, club.president || "");
     return;
   }

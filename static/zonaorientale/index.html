@@ -958,6 +958,11 @@
             Nome squadra storica
             <input id="historicalClubNameInput" class="input" type="text" placeholder="Es. Real Pastena" required />
           </label>
+          <label class="span-2">
+            Stagioni disputate
+            <select id="historicalClubSeasonsSelect" class="input" multiple size="5"></select>
+            <small class="field-hint">Associa la squadra storica alle stagioni in cui ha partecipato. Usa Cmd/Ctrl per selezioni multiple.</small>
+          </label>
           <label>
             Presidente
             <select id="historicalClubPresidentSelect" class="input" multiple size="4"></select>
@@ -1256,7 +1261,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V1.5 completa</p>
+    <p>ZonaOrientale Salerno · V1.9 storico squadre</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
