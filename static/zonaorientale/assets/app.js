@@ -125,6 +125,11 @@ const state = {
   selectedSeasonId: "",
   selectedResultCompetitionId: "",
   selectedMatchCompetitionId: "",
+  selectedAdminSeasonTeamSeasonId: "",
+  selectedAdminStadiumSeasonId: "",
+  selectedAdminCompetitionSeasonId: "",
+  selectedAdminMatchSeasonId: "",
+  selectedAdminResultsSeasonId: "",
   collapsedAdminPanels: new Set(ADMIN_PANEL_IDS)
 };
 
@@ -171,6 +176,29 @@ function setLoadingText(targetId, text) {
 
 function getLabel(options, value) {
   return options.find((option) => option.value === value)?.label || value || "-";
+}
+
+function getFirstSeasonId() {
+  return state.raw.seasons[0]?.id || "";
+}
+
+function getValidSeasonSelection(key) {
+  const currentValue = state[key];
+  if (currentValue && state.raw.seasons.some((season) => season.id === currentValue)) {
+    return currentValue;
+  }
+
+  const fallback = getFirstSeasonId();
+  state[key] = fallback;
+  return fallback;
+}
+
+function parseDecimalValue(value) {
+  if (value === null || value === undefined) return null;
+  const normalized = String(value).trim().replace(/\s+/g, "").replace(",", ".");
+  if (!normalized) return null;
+  const parsed = Number(normalized);
+  return Number.isFinite(parsed) ? parsed : null;
 }
 
 function makeIdPart(value) {
@@ -523,7 +551,7 @@ function buildFifaRanking() {
         ...ranking,
         team,
         teamName: team?.canonicalName || ranking.teamName || ranking.teamId || "-",
-        score: Number(ranking.score || 0)
+        score: parseDecimalValue(ranking.score) ?? 0
       };
     })
     .sort((a, b) => b.score - a.score || a.teamName.localeCompare(b.teamName, "it"))
@@ -1120,8 +1148,10 @@ function renderTeamAdminPanel() {
 }
 
 function renderSeasonTeamAdminPanel() {
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminSeasonTeamSeasonId");
+
   const seasonOptions = state.raw.seasons.map((season) => `
-    <option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
   `).join("");
 
   const teamOptions = state.raw.teams.map((team) => `
@@ -1133,7 +1163,8 @@ function renderSeasonTeamAdminPanel() {
   `).join("");
 
   const { teamsById } = buildMaps();
-  const rows = state.raw.seasonTeams.map((seasonTeam) => {
+  const filteredSeasonTeams = state.raw.seasonTeams.filter((seasonTeam) => seasonTeam.seasonId === selectedSeasonId);
+  const rows = filteredSeasonTeams.map((seasonTeam) => {
     const team = teamsById.get(seasonTeam.teamId);
     return `
       <div class="admin-list-item">
@@ -1146,7 +1177,7 @@ function renderSeasonTeamAdminPanel() {
           <button class="button button-danger button-small" type="button" data-admin-delete-season-team="${escapeHtml(seasonTeam.id)}">Elimina</button>
         </span>
       </div>`;
-  }).join("") || `<p class="muted admin-empty-message">Nessuna squadra associata a una stagione.</p>`;
+  }).join("") || `<p class="muted admin-empty-message">Nessuna squadra associata alla stagione selezionata.</p>`;
 
   return renderAdminPanel("adminSeasonTeamsPanel", "Firebase", "Squadre per stagione", "Associa le squadre alle stagioni. Una squadra associata a una stagione partecipa automaticamente a tutte le competizioni di quella stagione.", `
       <form id="adminSeasonTeamForm" class="form-grid">
@@ -1201,15 +1232,16 @@ function renderSeasonTeamAdminPanel() {
       </form>
 
       <details class="admin-edit-section" open>
-        <summary><strong>Squadre associate alle stagioni</strong><span>${state.raw.seasonTeams.length}</span></summary>
+        <summary><strong>Squadre associate alla stagione selezionata</strong><span>${filteredSeasonTeams.length}</span></summary>
         <div class="admin-list">${rows}</div>
       </details>
   `);
 }
-
 function renderCompetitionAdminPanel() {
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminCompetitionSeasonId");
+
   const seasonOptions = state.raw.seasons.map((season) => `
-    <option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
   `).join("");
 
   const typeOptions = COMPETITION_TYPES.map((type) => `
@@ -1224,7 +1256,8 @@ function renderCompetitionAdminPanel() {
     <option value="${escapeHtml(status.value)}">${escapeHtml(status.label)}</option>
   `).join("");
 
-  const rows = state.raw.competitions.map((competition) => `
+  const filteredCompetitions = state.raw.competitions.filter((competition) => competition.seasonId === selectedSeasonId);
+  const rows = filteredCompetitions.map((competition) => `
     <div class="admin-list-item">
       <span>
         <strong>${escapeHtml(competition.name || competition.id)}</strong>
@@ -1236,7 +1269,7 @@ function renderCompetitionAdminPanel() {
         <button class="button button-danger button-small" type="button" data-admin-delete-competition="${escapeHtml(competition.id)}">Elimina</button>
       </span>
     </div>
-  `).join("") || `<p class="muted admin-empty-message">Nessuna competizione inserita.</p>`;
+  `).join("") || `<p class="muted admin-empty-message">Nessuna competizione inserita per la stagione selezionata.</p>`;
 
   return renderAdminPanel("adminCompetitionsPanel", "Firebase", "Competizioni", "Crea competizioni per stagione: Campionato, Champion's League, Coppa Italia, Playoff o altre.", `
       <form id="adminCompetitionForm" class="form-grid">
@@ -1282,14 +1315,19 @@ function renderCompetitionAdminPanel() {
       </form>
 
       <details class="admin-edit-section" open>
-        <summary><strong>Competizioni esistenti</strong><span>${state.raw.competitions.length}</span></summary>
+        <summary><strong>Competizioni della stagione selezionata</strong><span>${filteredCompetitions.length}</span></summary>
         <div class="admin-list">${rows}</div>
       </details>
   `);
 }
-
 function renderCompetitionResultsAdminPanel() {
-  const concluded = state.raw.competitions.filter((competition) => competition.status === "CONCLUSA");
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminResultsSeasonId");
+
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  const concluded = state.raw.competitions.filter((competition) => competition.status === "CONCLUSA" && competition.seasonId === selectedSeasonId);
   const selectedId = state.selectedResultCompetitionId && concluded.some((competition) => competition.id === state.selectedResultCompetitionId)
     ? state.selectedResultCompetitionId
     : concluded[0]?.id || "";
@@ -1297,31 +1335,36 @@ function renderCompetitionResultsAdminPanel() {
 
   const competitionOptions = concluded.map((competition) => `
     <option value="${escapeHtml(competition.id)}" ${competition.id === selectedId ? "selected" : ""}>
-      ${escapeHtml(getSeasonName(competition.seasonId))} · ${escapeHtml(competition.name)}
+      ${escapeHtml(competition.name)}
     </option>
   `).join("");
 
-  const body = concluded.length ? `
+  const body = `
     <form id="adminCompetitionResultsForm" class="form-grid">
-      <label class="span-2">
+      <label>
+        Stagione
+        <select id="adminCompetitionResultsSeasonId" class="input" required>
+          ${seasonOptions}
+        </select>
+      </label>
+      <label>
         Competizione conclusa
-        <select id="adminCompetitionResultsCompetitionId" class="input" required>
+        <select id="adminCompetitionResultsCompetitionId" class="input" ${concluded.length ? "required" : "disabled"}>
           ${competitionOptions}
         </select>
         <small class="field-hint">I risultati si possono inserire solo per competizioni con stato Conclusa.</small>
       </label>
       <div id="adminCompetitionResultsEditor" class="span-2">
-        ${renderCompetitionResultsEditor(selectedId)}
+        ${concluded.length ? renderCompetitionResultsEditor(selectedId) : `<p class="muted">Nessuna competizione conclusa per la stagione selezionata. Prima imposta una competizione su <strong>Conclusa</strong>.</p>`}
       </div>
       <div class="form-actions span-2">
-        <button class="button button-primary" type="submit">Salva risultati e aggiorna albo</button>
+        <button class="button button-primary" type="submit" ${concluded.length ? "" : "disabled"}>Salva risultati e aggiorna albo</button>
         <span id="adminCompetitionResultsStatus" class="form-status"></span>
       </div>
-    </form>` : `<p class="muted">Nessuna competizione conclusa. Prima imposta una competizione su <strong>Conclusa</strong>.</p>`;
+    </form>`;
 
   return renderAdminPanel("adminCompetitionResultsPanel", "Firebase", "Risultati competizioni", "Inserisci classifiche o finali. Questi dati alimentano automaticamente Albo d'oro e Palmarès.", body);
 }
-
 function renderCompetitionResultsEditor(competitionId) {
   const competition = state.raw.competitions.find((item) => item.id === competitionId);
   if (!competition) return `<p class="muted">Seleziona una competizione.</p>`;
@@ -1397,15 +1440,24 @@ function renderCompetitionResultsEditor(competitionId) {
 }
 
 function renderStadiumAdminPanel() {
-  const seasonTeamOptions = state.raw.seasonTeams.map((seasonTeam) => `
-    <option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(getSeasonName(seasonTeam.seasonId))} · ${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminStadiumSeasonId");
+  const seasonTeamsForSelectedSeason = state.raw.seasonTeams.filter((seasonTeam) => seasonTeam.seasonId === selectedSeasonId);
+  const seasonTeamIdsForSelectedSeason = new Set(seasonTeamsForSelectedSeason.map((seasonTeam) => seasonTeam.id));
+
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  const seasonTeamOptions = seasonTeamsForSelectedSeason.map((seasonTeam) => `
+    <option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>
   `).join("");
 
   const levelOptions = STADIUM_LEVELS.map((level) => `
     <option value="${level.value}">${escapeHtml(level.label)}</option>
   `).join("");
 
-  const rows = state.raw.stadiums.map((stadium) => `
+  const filteredStadiums = state.raw.stadiums.filter((stadium) => seasonTeamIdsForSelectedSeason.has(stadium.seasonTeamId));
+  const rows = filteredStadiums.map((stadium) => `
     <div class="admin-list-item">
       <span>
         <strong>${escapeHtml(getSeasonTeamDisplayName(stadium.seasonTeamId))}</strong>
@@ -1416,11 +1468,17 @@ function renderStadiumAdminPanel() {
         <button class="button button-danger button-small" type="button" data-admin-delete-stadium="${escapeHtml(stadium.id)}">Elimina</button>
       </span>
     </div>
-  `).join("") || `<p class="muted admin-empty-message">Nessuno stadio inserito.</p>`;
+  `).join("") || `<p class="muted admin-empty-message">Nessuno stadio inserito per la stagione selezionata.</p>`;
 
   return renderAdminPanel("adminStadiumsPanel", "Firebase", "Stadi", "Imposta nome e livello dello stadio per ogni squadra in una determinata stagione.", `
       <form id="adminStadiumForm" class="form-grid">
         <input id="adminStadiumId" type="hidden" />
+        <label>
+          Stagione
+          <select id="adminStadiumSeasonId" class="input" required>
+            ${seasonOptions}
+          </select>
+        </label>
         <label>
           Squadra nella stagione
           <select id="adminStadiumSeasonTeamId" class="input" required>
@@ -1445,15 +1503,26 @@ function renderStadiumAdminPanel() {
       </form>
 
       <details class="admin-edit-section" open>
-        <summary><strong>Stadi inseriti</strong><span>${state.raw.stadiums.length}</span></summary>
+        <summary><strong>Stadi della stagione selezionata</strong><span>${filteredStadiums.length}</span></summary>
         <div class="admin-list">${rows}</div>
       </details>
   `);
 }
-
 function renderCompetitionMatchesAdminPanel() {
-  const competitionOptions = state.raw.competitions.map((competition) => `
-    <option value="${escapeHtml(competition.id)}">${escapeHtml(getSeasonName(competition.seasonId))} · ${escapeHtml(competition.name)}</option>
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminMatchSeasonId");
+  const competitionsForSelectedSeason = state.raw.competitions.filter((competition) => competition.seasonId === selectedSeasonId);
+
+  const selectedCompetitionId = state.selectedMatchCompetitionId && competitionsForSelectedSeason.some((competition) => competition.id === state.selectedMatchCompetitionId)
+    ? state.selectedMatchCompetitionId
+    : competitionsForSelectedSeason[0]?.id || "";
+  state.selectedMatchCompetitionId = selectedCompetitionId;
+
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  const competitionOptions = competitionsForSelectedSeason.map((competition) => `
+    <option value="${escapeHtml(competition.id)}" ${competition.id === selectedCompetitionId ? "selected" : ""}>${escapeHtml(competition.name)}</option>
   `).join("");
 
   const statusOptions = MATCH_STATUSES.map((status) => `
@@ -1464,12 +1533,18 @@ function renderCompetitionMatchesAdminPanel() {
     <option value="${escapeHtml(matchday)}"></option>
   `).join("");
 
-  const rows = state.raw.competitionMatches.map((match) => {
-    const competition = buildMaps().competitionsById.get(match.competitionId);
+  const { competitionsById } = buildMaps();
+  const filteredMatches = state.raw.competitionMatches.filter((match) => {
+    if (match.seasonId) return match.seasonId === selectedSeasonId;
+    return competitionsById.get(match.competitionId)?.seasonId === selectedSeasonId;
+  });
+
+  const rows = filteredMatches.map((match) => {
+    const competition = competitionsById.get(match.competitionId);
     return `
       <div class="admin-list-item">
         <span>
-          <strong>${escapeHtml(getSeasonName(competition?.seasonId))} · ${escapeHtml(competition?.name || match.competitionId)}</strong>
+          <strong>${escapeHtml(getSeasonName(competition?.seasonId || match.seasonId))} · ${escapeHtml(competition?.name || match.competitionId)}</strong>
           <small>${escapeHtml(match.matchday || "-")} · ${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))} · ${escapeHtml(formatMatchResult(match))}</small>
         </span>
         <span>
@@ -1478,12 +1553,18 @@ function renderCompetitionMatchesAdminPanel() {
           <button class="button button-danger button-small" type="button" data-admin-delete-match="${escapeHtml(match.id)}">Elimina</button>
         </span>
       </div>`;
-  }).join("") || `<p class="muted admin-empty-message">Nessuna partita inserita.</p>`;
+  }).join("") || `<p class="muted admin-empty-message">Nessuna partita inserita per la stagione selezionata.</p>`;
 
   return renderAdminPanel("adminCompetitionMatchesPanel", "Firebase", "Partite competizioni", "Inserisci calendario e risultati delle partite. Le partite possono essere Da giocare o Giocate.", `
       <form id="adminCompetitionMatchesForm" class="form-grid">
         <input id="adminCompetitionMatchId" type="hidden" />
-        <label class="span-2">
+        <label>
+          Stagione
+          <select id="adminCompetitionMatchSeasonId" class="input" required>
+            ${seasonOptions}
+          </select>
+        </label>
+        <label>
           Competizione
           <select id="adminCompetitionMatchCompetitionId" class="input" required>
             ${competitionOptions}
@@ -1534,19 +1615,18 @@ function renderCompetitionMatchesAdminPanel() {
           <input id="adminCompetitionMatchNotes" class="input" type="text" placeholder="Opzionale" />
         </label>
         <div class="form-actions span-2">
-          <button class="button button-primary" type="submit">Salva partita</button>
+          <button class="button button-primary" type="submit" ${competitionsForSelectedSeason.length ? "" : "disabled"}>Salva partita</button>
           <button id="adminCompetitionMatchReset" class="button button-secondary" type="button">Nuova</button>
           <span id="adminCompetitionMatchStatusText" class="form-status"></span>
         </div>
       </form>
 
       <details class="admin-edit-section" open>
-        <summary><strong>Partite inserite</strong><span>${state.raw.competitionMatches.length}</span></summary>
+        <summary><strong>Partite della stagione selezionata</strong><span>${filteredMatches.length}</span></summary>
         <div class="admin-list">${rows}</div>
       </details>
   `);
 }
-
 function renderFifaRankingAdminPanel() {
   const teamOptions = state.raw.teams.map((team) => `
     <option value="${escapeHtml(team.id)}">${escapeHtml(team.canonicalName || team.id)}</option>
@@ -1576,7 +1656,7 @@ function renderFifaRankingAdminPanel() {
         </label>
         <label>
           Punteggio
-          <input id="adminFifaRankingScore" class="input" type="number" step="0.5" required />
+          <input id="adminFifaRankingScore" class="input" type="text" inputmode="decimal" placeholder="Es. 1234,56" required />
         </label>
         <label class="span-2">
           Note
@@ -1639,6 +1719,10 @@ function attachAdminHandlers() {
   document.getElementById("adminTeamLogoFile")?.addEventListener("change", handleTeamLogoFileChange);
   updateTeamLogoPreview();
 
+  document.getElementById("adminSeasonTeamSeasonId")?.addEventListener("change", (event) => {
+    state.selectedAdminSeasonTeamSeasonId = event.target.value;
+    renderAdmin();
+  });
   document.getElementById("adminSeasonTeamTeamId")?.addEventListener("change", () => fillSeasonTeamDefaultsFromTeam({ force: true }));
   document.getElementById("adminSeasonTeamName")?.addEventListener("input", updateSeasonTeamLogoPreview);
   document.getElementById("adminSeasonTeamRemoveLogo")?.addEventListener("change", () => {
@@ -1652,9 +1736,32 @@ function attachAdminHandlers() {
   fillSeasonTeamDefaultsFromTeam();
   updateSeasonTeamLogoPreview();
 
-  document.getElementById("adminCompetitionMatchCompetitionId")?.addEventListener("change", () => updateCompetitionMatchTeamOptions());
+  document.getElementById("adminStadiumSeasonId")?.addEventListener("change", (event) => {
+    state.selectedAdminStadiumSeasonId = event.target.value;
+    renderAdmin();
+  });
+
+  document.getElementById("adminCompetitionSeasonId")?.addEventListener("change", (event) => {
+    state.selectedAdminCompetitionSeasonId = event.target.value;
+    renderAdmin();
+  });
+
+  document.getElementById("adminCompetitionMatchSeasonId")?.addEventListener("change", (event) => {
+    state.selectedAdminMatchSeasonId = event.target.value;
+    state.selectedMatchCompetitionId = "";
+    renderAdmin();
+  });
+  document.getElementById("adminCompetitionMatchCompetitionId")?.addEventListener("change", (event) => {
+    state.selectedMatchCompetitionId = event.target.value;
+    updateCompetitionMatchTeamOptions();
+  });
   updateCompetitionMatchTeamOptions();
 
+  document.getElementById("adminCompetitionResultsSeasonId")?.addEventListener("change", (event) => {
+    state.selectedAdminResultsSeasonId = event.target.value;
+    state.selectedResultCompetitionId = "";
+    renderAdmin();
+  });
   document.getElementById("adminCompetitionResultsCompetitionId")?.addEventListener("change", (event) => {
     state.selectedResultCompetitionId = event.target.value;
     const editor = document.getElementById("adminCompetitionResultsEditor");
@@ -2177,8 +2284,7 @@ function updateCompetitionMatchTeamOptions(selectedHomeId = "", selectedAwayId =
 }
 
 function nullableNumberFromInput(id) {
-  const value = document.getElementById(id)?.value;
-  return value === "" || value === undefined ? null : Number(value);
+  return parseDecimalValue(document.getElementById(id)?.value);
 }
 
 async function saveStadium(event) {
@@ -2263,9 +2369,15 @@ async function saveFifaRanking(event) {
   const existingId = document.getElementById("adminFifaRankingId").value.trim();
   const teamId = document.getElementById("adminFifaRankingTeamId").value;
 
+  const score = nullableNumberFromInput("adminFifaRankingScore");
+  if (score === null) {
+    showMessage("adminFifaRankingStatus", "Inserisci un punteggio valido. Puoi usare la virgola o il punto.", true);
+    return;
+  }
+
   const payload = {
     teamId,
-    score: Number(document.getElementById("adminFifaRankingScore").value || 0),
+    score,
     notes: document.getElementById("adminFifaRankingNotes").value.trim(),
     updatedAt: serverTimestamp()
   };
