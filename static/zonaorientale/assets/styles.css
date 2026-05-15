@@ -4463,3 +4463,67 @@ body.is-mobile-ux .app-page[data-page="dashboard"] .metric-card strong {
 body.is-mobile-ux .match-status-col {
   display: none !important;
 }
+
+/* V14 - Dashboard subsections and clearer admin match rows */
+.dashboard-subsection {
+  display: block;
+}
+
+.dashboard-subsection summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.dashboard-subsection summary::-webkit-details-marker {
+  display: none;
+}
+
+.dashboard-subsection summary > span:first-child {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.dashboard-subsection summary small {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.dashboard-competition-subsection .dashboard-competition-summary,
+.dashboard-calendar-group .table-wrap {
+  margin-top: 0.55rem;
+}
+
+.details-toggle-label {
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.admin-list-item small strong {
+  color: var(--text);
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .dashboard-subsection summary {
+    gap: 0.45rem;
+  }
+
+  .dashboard-subsection summary small {
+    font-size: 0.66rem;
+  }
+
+  .dashboard-subsection .details-toggle-label {
+    min-height: 28px;
+    padding: 4px 7px;
+    font-size: 0.64rem;
+  }
+
+  .dashboard-competition-subsection .dashboard-competition-summary,
+  .dashboard-calendar-group .table-wrap {
+    margin-top: 0.35rem;
+  }
+}

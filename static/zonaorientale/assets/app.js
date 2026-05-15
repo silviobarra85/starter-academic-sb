@@ -580,34 +580,34 @@ function renderDashboardCalendar(seasonId) {
   if (!target) return;
 
   const competitions = state.raw.competitions.filter((competition) => competition.seasonId === seasonId);
-  const competitionsById = new Map(competitions.map((competition) => [competition.id, competition]));
-  const competitionIds = new Set(competitions.map((competition) => competition.id));
+  const groups = competitions
+    .map((competition) => {
+      const matches = isRankingCompetition(competition)
+        ? getNextChampionshipMatches(competition)
+        : getCupScheduleMatches(competition);
 
-  const matches = sortMatchesForDisplay(
-    state.raw.competitionMatches.filter((match) => competitionIds.has(match.competitionId))
-  ).slice(0, 16);
+      return {
+        competition,
+        label: isRankingCompetition(competition) ? "Prossima giornata" : "Programmazione coppa",
+        matches
+      };
+    })
+    .filter((group) => group.matches.length);
 
-  if (!matches.length) {
+  if (!groups.length) {
     target.innerHTML = `<p class="muted">Nessuna partita programmata o giocata per questa stagione.</p>`;
     return;
   }
 
-  const groupedByCompetition = new Map();
-  matches.forEach((match) => {
-    const competition = competitionsById.get(match.competitionId);
-    const key = match.competitionId || "unknown";
-    if (!groupedByCompetition.has(key)) {
-      groupedByCompetition.set(key, {
-        competitionName: competition?.name || "Competizione",
-        matches: []
-      });
-    }
-    groupedByCompetition.get(key).matches.push(match);
-  });
-
-  target.innerHTML = Array.from(groupedByCompetition.values()).map((group) => `
-    <div class="dashboard-calendar-group">
-      <h4>${escapeHtml(group.competitionName)}</h4>
+  target.innerHTML = groups.map((group) => `
+    <details class="dashboard-calendar-group dashboard-subsection" open>
+      <summary>
+        <span>
+          <strong>${escapeHtml(group.competition.name)}</strong>
+          <small>${escapeHtml(group.label)}</small>
+        </span>
+        <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
+      </summary>
       <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
         <table class="dashboard-calendar-table">
           <thead>
@@ -629,7 +629,7 @@ function renderDashboardCalendar(seasonId) {
           </tbody>
         </table>
       </div>
-    </div>`).join("");
+    </details>`).join("");
 }
 
 function renderStadiumsPublic() {
@@ -701,6 +701,12 @@ function getPlayedMatchesForCompetition(competition) {
   );
 }
 
+function getUpcomingMatchesForCompetition(competition) {
+  return sortMatchesForDisplay(
+    state.raw.competitionMatches.filter((match) => match.competitionId === competition.id && match.status !== "GIOCATA")
+  );
+}
+
 function getLatestChampionshipMatches(competition) {
   const playedMatches = getPlayedMatchesForCompetition(competition);
   if (!playedMatches.length) return [];
@@ -716,6 +722,29 @@ function getLatestChampionshipMatches(competition) {
   }
 
   return playedMatches.filter((match) => match.matchDate === first.matchDate);
+}
+
+function getNextChampionshipMatches(competition) {
+  const upcomingMatches = getUpcomingMatchesForCompetition(competition);
+  if (!upcomingMatches.length) return [];
+
+  const first = upcomingMatches[upcomingMatches.length - 1] || upcomingMatches[0];
+  const serieAMatchday = getMatchSerieAMatchday(first);
+  if (serieAMatchday) {
+    return upcomingMatches.filter((match) => getMatchSerieAMatchday(match) === serieAMatchday);
+  }
+
+  if (first.matchday) {
+    return upcomingMatches.filter((match) => match.matchday === first.matchday);
+  }
+
+  return upcomingMatches.filter((match) => match.matchDate === first.matchDate);
+}
+
+function getCupScheduleMatches(competition) {
+  return sortMatchesForDisplay(
+    state.raw.competitionMatches.filter((match) => match.competitionId === competition.id)
+  );
 }
 
 function getFinalMatchesForCompetition(competition) {
@@ -745,11 +774,6 @@ function renderDashboardCompetitionSummary(competition) {
       return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderCompactMatchLines(latestMatches)}</div>`;
     }
     return `<div class="dashboard-competition-summary">${renderWinnerLabelHtml(competition, { highlightWinner: true, withLogo: true })}</div>`;
-  }
-
-  const finalMatches = getFinalMatchesForCompetition(competition);
-  if (finalMatches.length) {
-    return `<div class="dashboard-competition-summary"><span class="muted">Finale</span>${renderCompactMatchLines(finalMatches)}</div>`;
   }
 
   return `<div class="dashboard-competition-summary">${renderWinnerLabelHtml(competition, { highlightWinner: true, withLogo: true })}</div>`;
@@ -811,13 +835,16 @@ function renderDashboard() {
   if (standings) {
     standings.innerHTML = competitions.length
       ? competitions.map((competition) => `
-        <div class="stack-item">
-          <div>
-            <strong>${escapeHtml(competition.name)}</strong>
-            ${renderDashboardCompetitionSummary(competition)}
-          </div>
-          <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
-        </div>`).join("")
+        <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
+          <summary>
+            <span>
+              <strong>${escapeHtml(competition.name)}</strong>
+              <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
+            </span>
+            <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
+          </summary>
+          ${renderDashboardCompetitionSummary(competition)}
+        </details>`).join("")
       : `<p class="muted">Nessuna competizione inserita per questa stagione.</p>`;
   }
 
@@ -1904,7 +1931,7 @@ function renderCompetitionMatchesAdminPanel() {
       <div class="admin-list-item">
         <span>
           <strong>${escapeHtml(getSeasonName(competition?.seasonId || match.seasonId))} · ${escapeHtml(competition?.name || match.competitionId)}</strong>
-          <small>${escapeHtml(formatMatchStage(match))} · ${escapeHtml(match.matchDate || "-")} · ${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))} · ${escapeHtml(formatMatchResult(match))}</small>
+          <small><strong>Fase/giornata:</strong> ${escapeHtml(formatMatchStage(match))} · ${escapeHtml(match.matchDate || "-")} · ${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))} · ${escapeHtml(formatMatchResult(match))}</small>
         </span>
         <span>
           <span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span>
