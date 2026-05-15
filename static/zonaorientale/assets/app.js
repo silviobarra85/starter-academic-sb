@@ -1276,6 +1276,112 @@ function renderClubOptionsForSeason(seasonId = getSelectedSeasonId()) {
     .join("");
 }
 
+
+function getStandingParticipantOptions(seasonId = getSelectedSeasonId()) {
+  const currentClubs = getClubsForSeason(seasonId);
+  const currentOptions = currentClubs.map((club) => {
+    const displayClub = applyClubSeasonIdentity(club, seasonId) || club;
+    const president = displayClub.president ? ` · ${displayPresidents(displayClub.president)}` : "";
+    return `<option value="club:${escapeHtml(club.id)}">${escapeHtml(displayClub.name || club.name)}${escapeHtml(president)}</option>`;
+  });
+
+  const currentClubIds = new Set(currentClubs.map((club) => club.id));
+  const historicalOptions = state.honorClubs
+    .filter((club) => club && club.id)
+    .filter((club) => {
+      // Se una squadra storica e' solo la copia identica del club attuale, evita un doppione inutile.
+      // Resta invece selezionabile se rappresenta un nome storico diverso o un club non piu' attivo.
+      if (!club.source_club_id) return true;
+      if (!currentClubIds.has(club.source_club_id)) return true;
+      const current = getClubById(club.source_club_id);
+      const currentDisplay = applyClubSeasonIdentity(current, seasonId) || current;
+      return normalizeTextKey(club.name) !== normalizeTextKey(currentDisplay?.name || current?.name || "");
+    })
+    .map((club) => {
+      const president = club.president ? ` · ${displayPresidents(club.president)}` : "";
+      return `<option value="honor:${escapeHtml(club.id)}">${escapeHtml(club.name)}${escapeHtml(president)} · storica</option>`;
+    });
+
+  const sections = [];
+  if (currentOptions.length) sections.push(`<optgroup label="Squadre della stagione">${currentOptions.join("")}</optgroup>`);
+  if (historicalOptions.length) sections.push(`<optgroup label="Squadre storiche">${historicalOptions.join("")}</optgroup>`);
+  return sections.join("") || `<option value="">Nessuna squadra disponibile</option>`;
+}
+
+function parseStandingParticipantValue(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return { type: "", id: "" };
+  if (raw.startsWith("honor:")) return { type: "honor", id: raw.slice(6) };
+  if (raw.startsWith("club:")) return { type: "club", id: raw.slice(5) };
+  // Compatibilita' con vecchie versioni che salvavano direttamente l'id del club.
+  if (getClubById(raw)) return { type: "club", id: raw };
+  if (getHonorClubById(raw)) return { type: "honor", id: raw };
+  return { type: "club", id: raw };
+}
+
+function getStandingParticipantValue(row) {
+  if (!row) return "";
+  if (row.honor_club_id) return `honor:${row.honor_club_id}`;
+  if (row.club_id) return `club:${row.club_id}`;
+  return "";
+}
+
+function getStandingParticipantMetaFromValue(value, competition = null) {
+  const parsed = parseStandingParticipantValue(value);
+  const seasonId = competition?.season_id || getSelectedSeasonId();
+  if (parsed.type === "honor") {
+    const honorClub = getHonorClubById(parsed.id);
+    if (!honorClub) return null;
+    return {
+      club_id: honorClub.source_club_id || null,
+      honor_club_id: honorClub.id,
+      season_team_name: honorClub.name || null,
+      president: honorClub.president || null,
+      president_key: honorClub.president_key || getPresidentKey(honorClub.president),
+    };
+  }
+  if (parsed.type === "club") {
+    const club = getClubById(parsed.id);
+    const seasonalClub = applyClubSeasonIdentity(club, seasonId) || club;
+    const honorClub = state.honorClubs.find((item) => item.source_club_id === parsed.id) || null;
+    return {
+      club_id: parsed.id,
+      honor_club_id: honorClub?.id || null,
+      season_team_name: seasonalClub?.name || club?.name || null,
+      president: seasonalClub?.president || club?.president || null,
+      president_key: getPresidentKey(seasonalClub?.president || club?.president),
+    };
+  }
+  return null;
+}
+
+function resolveStandingParticipant(row, seasonId = getSelectedSeasonId()) {
+  const honorClub = row?.honor_club_id ? getHonorClubById(row.honor_club_id) : null;
+  const currentClub = row?.club_id ? getClubById(row.club_id) : null;
+  const seasonalClub = currentClub ? applyClubSeasonIdentity(currentClub, seasonId) : null;
+  const sourceHonorClub = currentClub ? state.honorClubs.find((club) => club.source_club_id === currentClub.id) : null;
+  const name = row?.season_team_name || honorClub?.name || seasonalClub?.name || currentClub?.name || row?.club_name || "Squadra";
+  const president = row?.president || honorClub?.president || seasonalClub?.president || currentClub?.president || "";
+  const logo = honorClub?.logo_data_url || seasonalClub?.logo_data_url || currentClub?.logo_data_url || "";
+  return {
+    id: currentClub?.id || null,
+    honor_club_id: honorClub?.id || sourceHonorClub?.id || null,
+    name,
+    president,
+    president_key: row?.president_key || honorClub?.president_key || getPresidentKey(president),
+    logo_data_url: logo,
+    currentClub,
+    honorClub: honorClub || sourceHonorClub || null,
+  };
+}
+
+function standingParticipantButton(row, seasonId = getSelectedSeasonId()) {
+  const participant = resolveStandingParticipant(row, seasonId);
+  if (participant.currentClub) return clubButton(participant.currentClub, "", seasonId);
+  if (participant.honorClub) return honorClubButton({ ...participant.honorClub, name: participant.name, president: participant.president, logo_data_url: participant.logo_data_url });
+  return clubNameWithLogo({ name: participant.name, logo_data_url: participant.logo_data_url });
+}
+
 function updateCalendarManualWinnerOptions() {
   if (!el.calendarManualWinnerClub) return;
 
@@ -1720,11 +1826,11 @@ function renderStandingTable(competition, limit = null) {
         </thead>
         <tbody>
           ${rows.slice(0, limit || rows.length).map((row, index) => {
-            const club = getClubById(row.club_id);
+            const participant = resolveStandingParticipant(row, competition.season_id);
             const fp = Number(row.fantapoints || 0) ? Number(row.fantapoints).toFixed(1) : (row.fantapoints ?? "-");
             return `<tr>
               <td class="standing-desktop-col">${row.position || index + 1}</td>
-              <td class="standing-desktop-col">${clubButton(club)}</td>
+              <td class="standing-desktop-col">${standingParticipantButton(row, competition.season_id)}</td>
               <td class="number standing-desktop-col"><strong>${row.points ?? "-"}</strong></td>
               <td class="number standing-desktop-col">${row.played ?? "-"}</td>
               <td class="number standing-desktop-col standing-optional">${row.wins ?? "-"}</td>
@@ -1735,7 +1841,7 @@ function renderStandingTable(competition, limit = null) {
               <td class="number standing-desktop-col standing-optional">${row.goal_difference ?? "-"}</td>
               <td class="number standing-desktop-col">${fp}</td>
               <td class="mobile-only-cell number mobile-standing-position">${row.position || index + 1}</td>
-              <td class="mobile-only-cell mobile-standing-logo-cell">${clubLogoHtml(applyClubSeasonIdentity(club, competition.season_id) || club || { name: row.club_name || "Club" })}</td>
+              <td class="mobile-only-cell mobile-standing-logo-cell">${clubLogoHtml({ name: participant.name, logo_data_url: participant.logo_data_url })}</td>
               <td class="mobile-only-cell number mobile-standing-played">${row.played ?? "-"}</td>
               <td class="mobile-only-cell number mobile-standing-points"><strong>${row.points ?? "-"}</strong></td>
               <td class="mobile-only-cell number mobile-standing-fpt">${fp}</td>
@@ -3263,17 +3369,17 @@ function buildHonorRows() {
         .sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
 
     for (const standing of sourceRows) {
-      const club = applyClubSeasonIdentity(getClubById(standing.club_id), competition.season_id);
-      const president = club?.president || "-";
+      const participant = resolveStandingParticipant(standing, competition.season_id);
+      const president = participant.president || "-";
       rows.push({
         source: computedRows.length ? "calendar" : "standing",
-        id: `${computedRows.length ? "calendar-standing" : "standing"}-${competition.id}-${standing.club_id}`,
+        id: `${computedRows.length ? "calendar-standing" : "standing"}-${competition.id}-${standing.club_id || standing.honor_club_id || participant.name}`,
         season_id: competition.season_id,
-        club_id: standing.club_id,
-        honor_club_id: state.honorClubs.find((item) => item.source_club_id === standing.club_id)?.id || null,
-        club_name: club?.name || standing.club_id || "-",
+        club_id: standing.club_id || null,
+        honor_club_id: standing.honor_club_id || participant.honor_club_id || null,
+        club_name: standing.season_team_name || participant.name || "-",
         president,
-        president_key: getPresidentKey(president),
+        president_key: standing.president_key || participant.president_key || getPresidentKey(president),
         competition_type: competition.competition_type || "ALTRO",
         competition_name: competition.name || COMPETITION_LABELS[competition.competition_type] || "Competizione",
         placement: standing.position,
@@ -3640,7 +3746,13 @@ function renderAdminExtendedControls() {
   if (el.standingCompetition) {
     selectOptionPreservingValue(el.standingCompetition, regularCompetitionOptions || `<option value="">Nessuna Regular Season</option>`, el.standingCompetition.value, regularCompetitionsForSeason[0]?.id || "");
   }
-  if (el.standingClub) selectOptionPreservingValue(el.standingClub, clubOptions, el.standingClub.value, getCurrentClubs()[0]?.id || "");
+  if (el.standingClub) {
+    const standingCompetition = getCompetitionById(el.standingCompetition?.value) || regularCompetitionsForSeason[0] || null;
+    const standingSeasonId = standingCompetition?.season_id || selectedSeason;
+    const standingOptions = getStandingParticipantOptions(standingSeasonId);
+    const defaultStandingValue = getClubsForSeason(standingSeasonId)[0]?.id ? `club:${getClubsForSeason(standingSeasonId)[0].id}` : "";
+    selectOptionPreservingValue(el.standingClub, standingOptions, el.standingClub.value, defaultStandingValue);
+  }
   if (el.calendarCompetition) {
     selectOptionPreservingValue(el.calendarCompetition, calendarCompetitionOptions || `<option value="">Nessuna competizione</option>`, el.calendarCompetition.value, competitionsForSelectedSeason[0]?.id || "");
   }
@@ -3740,14 +3852,13 @@ function renderAdminLists() {
         return competition?.season_id === selectedSeason && competition?.competition_type === "REGULAR_SEASON";
       })
       .filter((row) => {
-        const club = getClubById(row.club_id);
         const competition = getCompetitionById(row.competition_id);
-        return textMatchesQuery(`${competition?.name || ""} ${club?.name || ""} ${row.position || ""} ${row.points ?? ""}`, query);
+        const participant = resolveStandingParticipant(row, competition?.season_id || selectedSeason);
+        return textMatchesQuery(`${competition?.name || ""} ${participant.name || ""} ${participant.president || ""} ${row.position || ""} ${row.points ?? ""}`, query);
       });
     el.standingAdminList.innerHTML = rows.map((row) => {
-      const club = getClubById(row.club_id);
       const competition = getCompetitionById(row.competition_id);
-      return `<div class="admin-list-item"><span><strong>${escapeHtml(competition?.name || "-")} · ${clubButton(club)}</strong><small>Pos. ${row.position || "-"} · ${row.points ?? "-"} pt · ${escapeHtml(competition?.season_id || selectedSeason)}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-standing="${escapeHtml(row.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-standing="${escapeHtml(row.id)}">Elimina</button></span></div>`;
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(competition?.name || "-")} · ${standingParticipantButton(row, competition?.season_id || selectedSeason)}</strong><small>Pos. ${row.position || "-"} · ${row.points ?? "-"} pt · ${escapeHtml(competition?.season_id || selectedSeason)}</small></span><span><button class="button button-secondary button-small" type="button" data-edit-standing="${escapeHtml(row.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-delete-standing="${escapeHtml(row.id)}">Elimina</button></span></div>`;
     }).join("") || renderAdminListMessage(query ? "Nessuna riga di classifica trovata." : "Nessuna classifica Regular Season per la stagione selezionata.");
   }
 
@@ -4851,9 +4962,18 @@ async function handleStandingSubmit(event) {
     return;
   }
   const id = el.standingId.value || null;
+  const participantMeta = getStandingParticipantMetaFromValue(el.standingClub.value, selectedCompetition);
+  if (!participantMeta) {
+    el.standingFormStatus.textContent = "Seleziona una squadra valida, attuale o storica.";
+    return;
+  }
   const payload = {
     competition_id: el.standingCompetition.value,
-    club_id: el.standingClub.value,
+    club_id: participantMeta.club_id,
+    honor_club_id: participantMeta.honor_club_id,
+    season_team_name: participantMeta.season_team_name,
+    president: participantMeta.president,
+    president_key: participantMeta.president_key,
     position: toNumber(el.standingPosition.value),
     points: toNumber(el.standingPoints.value),
     fantapoints: toNumber(el.standingFantapoints.value),
@@ -5122,7 +5242,25 @@ function fillEditFormsFromAdminAction(target) {
   const compId = target.closest("[data-edit-competition]")?.dataset.editCompetition;
   if (compId) { const c = getCompetitionById(compId); if (!c) return; el.competitionId.value = c.id; el.competitionSeason.value = c.season_id; el.competitionName.value = c.name || ""; el.competitionType.value = c.competition_type || "ALTRO"; el.competitionStatus.value = c.status || "PLANNED"; return; }
   const standingId = target.closest("[data-edit-standing]")?.dataset.editStanding;
-  if (standingId) { const r = state.competitionStandings.find((item) => item.id === standingId); if (!r) return; el.standingId.value = r.id; el.standingCompetition.value = r.competition_id; el.standingClub.value = r.club_id; el.standingPosition.value = r.position ?? ""; el.standingPoints.value = r.points ?? ""; el.standingFantapoints.value = r.fantapoints ?? ""; el.standingGoalsFor.value = r.goals_for ?? ""; el.standingGoalsAgainst.value = r.goals_against ?? ""; el.standingPlayed.value = r.played ?? ""; if (el.standingWins) el.standingWins.value = r.wins ?? ""; if (el.standingDraws) el.standingDraws.value = r.draws ?? ""; if (el.standingLosses) el.standingLosses.value = r.losses ?? ""; return; }
+  if (standingId) {
+    const r = state.competitionStandings.find((item) => item.id === standingId);
+    if (!r) return;
+    el.standingId.value = r.id;
+    el.standingCompetition.value = r.competition_id;
+    const competition = getCompetitionById(r.competition_id);
+    const standingOptions = getStandingParticipantOptions(competition?.season_id || getSelectedSeasonId());
+    selectOptionPreservingValue(el.standingClub, standingOptions, getStandingParticipantValue(r), getStandingParticipantValue(r));
+    el.standingPosition.value = r.position ?? "";
+    el.standingPoints.value = r.points ?? "";
+    el.standingFantapoints.value = r.fantapoints ?? "";
+    el.standingGoalsFor.value = r.goals_for ?? "";
+    el.standingGoalsAgainst.value = r.goals_against ?? "";
+    el.standingPlayed.value = r.played ?? "";
+    if (el.standingWins) el.standingWins.value = r.wins ?? "";
+    if (el.standingDraws) el.standingDraws.value = r.draws ?? "";
+    if (el.standingLosses) el.standingLosses.value = r.losses ?? "";
+    return;
+  }
   const historicalClubId = target.closest("[data-edit-historical-club]")?.dataset.editHistoricalClub;
   if (historicalClubId) {
     const club = state.honorClubs.find((item) => item.id === historicalClubId);
