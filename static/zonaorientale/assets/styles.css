@@ -3554,3 +3554,49 @@ body.is-mobile-ux .mobile-honor-president-cell small {
 .admin-list-item .club-name-with-logo {
   gap: 0.5rem;
 }
+
+/* Firebase admin V3: season teams, results and palmares */
+.result-editor-card {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.result-admin-table-wrap table {
+  min-width: 720px;
+}
+
+.result-admin-table-wrap select.input,
+.result-admin-table-wrap input.input {
+  min-width: 0;
+  padding: 8px 9px;
+}
+
+.result-table-wrap table {
+  min-width: 560px;
+}
+
+.palmares-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.palmares-grid .compact-card {
+  display: grid;
+  gap: 8px;
+}
+
+.palmares-grid .compact-card h3 {
+  margin: 0;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .palmares-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-admin-table-wrap,
+  .result-table-wrap {
+    overflow-x: auto !important;
+  }
+}

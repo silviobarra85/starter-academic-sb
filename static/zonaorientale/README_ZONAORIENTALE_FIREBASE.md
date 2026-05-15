@@ -15,7 +15,10 @@ static/zonaorientale/
   - stagioni;
   - presidenti;
   - squadre con caricamento logo e fallback con iniziali;
-  - competizioni per stagione.
+  - associazione squadre/stagioni;
+  - competizioni per stagione;
+  - risultati delle competizioni concluse;
+  - albo d'oro e palmarès calcolati dai risultati.
 - `FIREBASE_RULES.rules`: regole Firestore da copiare in Firebase Console.
 
 ## Novità di questa versione
@@ -24,6 +27,9 @@ static/zonaorientale/
 - Le squadre non usano più un path logo manuale: puoi caricare un file immagine dal pannello Admin.
 - Il logo viene salvato nel campo `teams.logo` come data URL compresso e mostrato in forma tonda.
 - Se non c'è logo, viene mostrato un placeholder tondo con le prime due lettere del nome squadra.
+- Le stagioni hanno il campo `participantCount`, cioè il numero previsto di squadre partecipanti.
+- È stata aggiunta la gestione `seasonTeams`: qui associ una squadra a una stagione e salvi nome stagionale, presidenti stagionali e logo stagionale opzionale.
+- Una squadra associata a una stagione partecipa automaticamente a tutte le competizioni di quella stagione.
 - È stata aggiunta la gestione `competitions` con:
   - stagione;
   - nome;
@@ -31,6 +37,10 @@ static/zonaorientale/
   - formula `CLASSIFICA` oppure `GIRONI_KO`;
   - stato `ATTIVA`, `PROGRAMMATA`, `CONCLUSA`, `NON_DISPUTATA`;
   - creazione rapida delle competizioni standard: Campionato, Champion's League, Coppa Italia, Playoff.
+- È stata aggiunta la gestione `competitionResults`:
+  - per le competizioni a classifica inserisci dal primo all'ultimo posto;
+  - per le competizioni a gironi/eliminazione inserisci vincitore e secondo;
+  - il salvataggio aggiorna automaticamente `honorRoll` per Albo d'oro e Palmarès.
 
 ## Come copiarlo
 
@@ -94,11 +104,16 @@ competitionResults
 honorRoll
 ```
 
-Per ora l'Admin gestisce direttamente:
+L'Admin gestisce direttamente:
 
 ```text
 seasons
 presidents
 teams
+seasonTeams
 competitions
+competitionResults
+honorRoll
 ```
+
+Nota: `honorRoll` viene aggiornato automaticamente quando salvi i risultati di una competizione conclusa.

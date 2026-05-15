@@ -82,6 +82,7 @@ const state = {
   user: null,
   isAdmin: false,
   currentPage: "dashboard",
+  selectedResultCompetitionId: "",
   collapsedAdminPanels: new Set()
 };
 
@@ -207,11 +208,20 @@ function sortData() {
   state.raw.seasons.sort((a, b) => String(b.id).localeCompare(String(a.id), "it"));
   state.raw.presidents.sort(byText("name"));
   state.raw.teams.sort(byText("canonicalName"));
-  state.raw.seasonTeams.sort(byText("name"));
+  state.raw.seasonTeams.sort((a, b) => {
+    const seasonCompare = String(b.seasonId || "").localeCompare(String(a.seasonId || ""), "it");
+    if (seasonCompare) return seasonCompare;
+    return String(a.name || "").localeCompare(String(b.name || ""), "it");
+  });
   state.raw.competitions.sort((a, b) => {
     const seasonCompare = String(b.seasonId || "").localeCompare(String(a.seasonId || ""), "it");
     if (seasonCompare) return seasonCompare;
     return String(a.name || "").localeCompare(String(b.name || ""), "it");
+  });
+  state.raw.competitionResults.sort((a, b) => {
+    const competitionCompare = String(a.competitionId || "").localeCompare(String(b.competitionId || ""), "it");
+    if (competitionCompare) return competitionCompare;
+    return Number(a.position || 999) - Number(b.position || 999);
   });
 }
 
@@ -220,6 +230,7 @@ function buildMaps() {
     presidentsById: new Map(state.raw.presidents.map((item) => [item.id, item])),
     teamsById: new Map(state.raw.teams.map((item) => [item.id, item])),
     seasonsById: new Map(state.raw.seasons.map((item) => [item.id, item])),
+    seasonTeamsById: new Map(state.raw.seasonTeams.map((item) => [item.id, item])),
     competitionsById: new Map(state.raw.competitions.map((item) => [item.id, item]))
   };
 }
@@ -251,6 +262,107 @@ function getPresidentNames(ids = []) {
 
 function getTeamDisplayName(team) {
   return team?.canonicalName || team?.name || "-";
+}
+
+function getSeasonTeamsForSeason(seasonId) {
+  return state.raw.seasonTeams.filter((seasonTeam) => seasonTeam.seasonId === seasonId);
+}
+
+function getSeasonTeamById(seasonTeamId) {
+  const { seasonTeamsById } = buildMaps();
+  return seasonTeamsById.get(seasonTeamId) || null;
+}
+
+function getSeasonTeamDisplayName(seasonTeamId) {
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  if (!seasonTeam) return "-";
+  return seasonTeam.name || getTeamDisplayName(buildMaps().teamsById.get(seasonTeam.teamId));
+}
+
+function getSeasonTeamLogo(seasonTeam) {
+  if (!seasonTeam) return "";
+  const { teamsById } = buildMaps();
+  const team = teamsById.get(seasonTeam.teamId);
+  return seasonTeam.logo || team?.logo || "";
+}
+
+function getSeasonTeamPresidentNames(seasonTeam) {
+  return getPresidentNames(seasonTeam?.presidentIds || []);
+}
+
+function getCompetitionResults(competitionId) {
+  return state.raw.competitionResults
+    .filter((result) => result.competitionId === competitionId)
+    .sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+}
+
+function isRankingCompetition(competition) {
+  return competition?.format === "CLASSIFICA" || competition?.type === "CAMPIONATO";
+}
+
+function getParticipantsCount(seasonId) {
+  const { seasonsById } = buildMaps();
+  const configured = Number(seasonsById.get(seasonId)?.participantCount || 0);
+  const actual = getSeasonTeamsForSeason(seasonId).length;
+  return configured || actual;
+}
+
+function getHonorRollRow(seasonId) {
+  return state.raw.honorRoll.find((row) => row.id === seasonId || row.seasonId === seasonId) || null;
+}
+
+function getWinnerLabel(competition) {
+  const results = getCompetitionResults(competition.id);
+  const winner = results.find((result) => Number(result.position) === 1);
+  const second = results.find((result) => Number(result.position) === 2);
+
+  if (!winner) return "Nessun risultato inserito";
+
+  if (isRankingCompetition(competition)) {
+    return `1° ${getSeasonTeamDisplayName(winner.seasonTeamId)}`;
+  }
+
+  const secondText = second ? ` · 2° ${getSeasonTeamDisplayName(second.seasonTeamId)}` : "";
+  return `Vincitore: ${getSeasonTeamDisplayName(winner.seasonTeamId)}${secondText}`;
+}
+
+function buildPalmares() {
+  const { seasonTeamsById, teamsById } = buildMaps();
+  const buckets = {
+    CAMPIONATO: new Map(),
+    COPPA_ITALIA: new Map(),
+    CHAMPIONS_LEAGUE: new Map(),
+    PLAYOFF: new Map()
+  };
+
+  function addWin(type, seasonTeamId) {
+    if (!seasonTeamId || !buckets[type]) return;
+    const seasonTeam = seasonTeamsById.get(seasonTeamId);
+    if (!seasonTeam) return;
+    const team = teamsById.get(seasonTeam.teamId);
+    if (!team) return;
+    const current = buckets[type].get(team.id) || {
+      teamId: team.id,
+      teamName: team.canonicalName || seasonTeam.name || team.id,
+      wins: 0
+    };
+    current.wins += 1;
+    buckets[type].set(team.id, current);
+  }
+
+  state.raw.honorRoll.forEach((row) => {
+    addWin("CAMPIONATO", row.championItalySeasonTeamId);
+    addWin("COPPA_ITALIA", row.coppaItaliaWinnerSeasonTeamId);
+    addWin("CHAMPIONS_LEAGUE", row.championsLeagueWinnerSeasonTeamId);
+    addWin("PLAYOFF", row.playoffWinnerSeasonTeamId);
+  });
+
+  return Object.fromEntries(
+    Object.entries(buckets).map(([type, map]) => [
+      type,
+      Array.from(map.values()).sort((a, b) => b.wins - a.wins || a.teamName.localeCompare(b.teamName, "it"))
+    ])
+  );
 }
 
 function renderAll() {
@@ -291,8 +403,8 @@ function renderSeasonSelectors() {
 }
 
 function renderDashboard() {
-  const currentTeams = state.raw.teams.filter((team) => team.isCurrent !== false);
   const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
   const competitions = state.raw.competitions.filter((competition) => competition.seasonId === seasonId);
 
   const metricClubs = document.getElementById("metricClubs");
@@ -300,7 +412,7 @@ function renderDashboard() {
   const metricAvgFm = document.getElementById("metricAvgFm");
   const metricAlerts = document.getElementById("metricAlerts");
 
-  if (metricClubs) metricClubs.textContent = String(currentTeams.length);
+  if (metricClubs) metricClubs.textContent = String(seasonTeams.length || getParticipantsCount(seasonId) || 0);
   if (metricTotalFm) metricTotalFm.textContent = "-";
   if (metricAvgFm) metricAvgFm.textContent = "-";
   if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === "ATTIVA").length);
@@ -313,6 +425,7 @@ function renderDashboard() {
           <div>
             <strong>${escapeHtml(competition.name)}</strong>
             <small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type))} · ${escapeHtml(getLabel(COMPETITION_FORMATS, competition.format))}</small>
+            <small>${escapeHtml(getWinnerLabel(competition))}</small>
           </div>
           <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
         </div>`).join("")
@@ -326,23 +439,29 @@ function renderTeamsTable() {
   const tableBody = document.getElementById("clubsTableBody");
   if (!tableBody) return;
 
-  if (!state.raw.teams.length) {
-    tableBody.innerHTML = `<tr><td colspan="7" class="muted center">Nessuna squadra inserita.</td></tr>`;
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const { teamsById } = buildMaps();
+
+  if (!seasonTeams.length) {
+    tableBody.innerHTML = `<tr><td colspan="7" class="muted center">Nessuna squadra associata a ${escapeHtml(seasonId || "questa stagione")}.</td></tr>`;
     return;
   }
 
-  tableBody.innerHTML = state.raw.teams.map((team, index) => {
-    const statusClass = team.isCurrent === false ? "status-muted" : "status-ok";
-    const statusText = team.isCurrent === false ? "Storica" : "Attuale";
-    const logo = renderTeamLogo(team.canonicalName, team.logo);
+  tableBody.innerHTML = seasonTeams.map((seasonTeam, index) => {
+    const team = teamsById.get(seasonTeam.teamId);
+    const statusClass = seasonTeam.isHistorical ? "status-muted" : "status-ok";
+    const statusText = seasonTeam.isHistorical ? "Storica" : "Partecipante";
+    const logo = renderTeamLogo(seasonTeam.name || getTeamDisplayName(team), getSeasonTeamLogo(seasonTeam));
 
     return `
       <tr>
         <td data-label="#">${index + 1}</td>
         <td data-label="Club">
-          <span class="club-name-with-logo">${logo}<strong>${escapeHtml(getTeamDisplayName(team))}</strong></span>
+          <span class="club-name-with-logo">${logo}<strong>${escapeHtml(seasonTeam.name || getTeamDisplayName(team))}</strong></span>
+          <small class="muted">${escapeHtml(team?.canonicalName || "")}</small>
         </td>
-        <td data-label="Presidente">${escapeHtml(getPresidentNames(team.currentPresidentIds || []))}</td>
+        <td data-label="Presidente">${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</td>
         <td data-label="Saldo FM" class="number">-</td>
         <td data-label="Rosa" class="number">-</td>
         <td data-label="Stadio" class="number">-</td>
@@ -356,6 +475,40 @@ function getCompetitionStatusClass(status) {
   if (status === "PROGRAMMATA") return "status-warning";
   if (status === "CONCLUSA") return "status-muted";
   return "status-danger";
+}
+
+function renderCompetitionResultsPublic(competition) {
+  const results = getCompetitionResults(competition.id);
+  if (!results.length) return `<p class="muted">Risultati non ancora inseriti.</p>`;
+
+  if (!isRankingCompetition(competition)) {
+    const winner = results.find((result) => Number(result.position) === 1);
+    const second = results.find((result) => Number(result.position) === 2);
+    return `
+      <div class="podium-mini-grid">
+        <div class="podium-mini-item"><span>Vincitore</span><strong>${escapeHtml(getSeasonTeamDisplayName(winner?.seasonTeamId))}</strong></div>
+        <div class="podium-mini-item"><span>Secondo</span><strong>${escapeHtml(getSeasonTeamDisplayName(second?.seasonTeamId))}</strong></div>
+      </div>`;
+  }
+
+  return `
+    <div class="table-wrap compact-table result-table-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Squadra</th><th class="number">Punti</th><th class="number">G</th><th class="number">FPT</th></tr>
+        </thead>
+        <tbody>
+          ${results.map((result) => `
+            <tr>
+              <td data-label="#">${escapeHtml(result.position || "")}</td>
+              <td data-label="Squadra">${escapeHtml(getSeasonTeamDisplayName(result.seasonTeamId))}</td>
+              <td data-label="Punti" class="number">${escapeHtml(result.points ?? "-")}</td>
+              <td data-label="G" class="number">${escapeHtml(result.played ?? "-")}</td>
+              <td data-label="FPT" class="number">${escapeHtml(result.fantapoints ?? "-")}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
 }
 
 function renderCompetitionsPublic() {
@@ -381,8 +534,55 @@ function renderCompetitionsPublic() {
         <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
       </div>
       ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
+      ${renderCompetitionResultsPublic(competition)}
     </article>
   `).join("");
+}
+
+function renderHonorSummary() {
+  const target = document.getElementById("honorSummary");
+  if (!target) return;
+
+  const rows = state.raw.seasons.map((season) => {
+    const honor = getHonorRollRow(season.id) || {};
+    return `
+      <tr>
+        <td data-label="Stagione"><strong>${escapeHtml(season.name || season.id)}</strong></td>
+        <td data-label="Campione">${escapeHtml(getSeasonTeamDisplayName(honor.championItalySeasonTeamId))}</td>
+        <td data-label="2° posto">${escapeHtml(getSeasonTeamDisplayName(honor.secondPlaceSeasonTeamId))}</td>
+        <td data-label="3° posto">${escapeHtml(getSeasonTeamDisplayName(honor.thirdPlaceSeasonTeamId))}</td>
+        <td data-label="Coppa Italia">${escapeHtml(getSeasonTeamDisplayName(honor.coppaItaliaWinnerSeasonTeamId))}</td>
+        <td data-label="Champions">${escapeHtml(getSeasonTeamDisplayName(honor.championsLeagueWinnerSeasonTeamId))}</td>
+        <td data-label="Playoff">${escapeHtml(getSeasonTeamDisplayName(honor.playoffWinnerSeasonTeamId))}</td>
+      </tr>`;
+  }).join("");
+
+  const palmares = buildPalmares();
+  const palmaresHtml = Object.entries(palmares).map(([type, items]) => `
+    <div class="compact-card">
+      <h3>${escapeHtml(getLabel(COMPETITION_TYPES, type))}</h3>
+      ${items.length ? items.map((item) => `
+        <div class="stack-item">
+          <div><strong>${escapeHtml(item.teamName)}</strong></div>
+          <span class="stack-item-side">${item.wins}</span>
+        </div>`).join("") : `<p class="muted">Nessun vincitore ancora inserito.</p>`}
+    </div>`).join("");
+
+  target.innerHTML = `
+    <div class="table-wrap honor-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Stagione</th><th>Campione d'Italia</th><th>2°</th><th>3°</th><th>Coppa Italia</th><th>Champions</th><th>Playoff</th>
+          </tr>
+        </thead>
+        <tbody>${rows || `<tr><td colspan="7" class="muted center">Nessuna stagione inserita.</td></tr>`}</tbody>
+      </table>
+    </div>
+    <div class="detail-section">
+      <h3>Palmarès per competizione</h3>
+      <div class="palmares-grid">${palmaresHtml}</div>
+    </div>`;
 }
 
 function renderPlaceholderPages() {
@@ -390,7 +590,7 @@ function renderPlaceholderPages() {
   setLoadingText("rosterClubCards", "Le rose sono state escluse dalla nuova struttura dati.");
   setLoadingText("listoneTableBody", "Il listone è stato escluso dalla nuova struttura dati.");
   setLoadingText("freeAgentsTableBody", "Gli svincolati sono stati esclusi dalla nuova struttura dati.");
-  setLoadingText("honorSummary", "Modulo Albo d'oro da collegare dopo competizioni e risultati.");
+  renderHonorSummary();
   setLoadingText("movementsList", "I movimenti FM sono stati esclusi dalla nuova struttura dati.");
   setLoadingText("stadiumsList", "Modulo Stadi da collegare dopo seasonTeams.");
 }
@@ -516,14 +716,16 @@ function renderAdminArea() {
       <div>
         <p class="eyebrow">Area riservata</p>
         <h2 id="adminTitle">Admin</h2>
-        <p>Gestione Firebase: stagioni, presidenti, squadre e competizioni.</p>
+        <p>Gestione Firebase: stagioni, presidenti, squadre stagionali, competizioni e risultati.</p>
       </div>
     </div>
 
     ${renderSeasonAdminPanel()}
     ${renderPresidentAdminPanel()}
     ${renderTeamAdminPanel()}
+    ${renderSeasonTeamAdminPanel()}
     ${renderCompetitionAdminPanel()}
+    ${renderCompetitionResultsAdminPanel()}
   `;
 
   attachAdminHandlers();
@@ -554,7 +756,7 @@ function renderSeasonAdminPanel() {
     <div class="admin-list-item">
       <span>
         <strong>${escapeHtml(season.name || season.id)}</strong>
-        <small>${escapeHtml(season.id)}${season.isCurrent ? " · stagione corrente" : ""}</small>
+        <small>${escapeHtml(season.id)}${season.isCurrent ? " · stagione corrente" : ""} · Squadre previste: ${escapeHtml(season.participantCount ?? "-")}</small>
       </span>
       <span>
         <button class="button button-secondary button-small" type="button" data-admin-edit-season="${escapeHtml(season.id)}">Modifica</button>
@@ -582,7 +784,11 @@ function renderSeasonAdminPanel() {
           Data fine
           <input id="adminSeasonEndsOn" class="input" type="date" />
         </label>
-        <label class="checkbox-label span-2">
+        <label>
+          Numero squadre partecipanti
+          <input id="adminSeasonParticipantCount" class="input" type="number" min="0" step="1" placeholder="Es. 10" />
+        </label>
+        <label class="checkbox-label">
           <input id="adminSeasonIsCurrent" type="checkbox" />
           Stagione corrente
         </label>
@@ -711,6 +917,94 @@ function renderTeamAdminPanel() {
   `);
 }
 
+function renderSeasonTeamAdminPanel() {
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  const teamOptions = state.raw.teams.map((team) => `
+    <option value="${escapeHtml(team.id)}">${escapeHtml(team.canonicalName || team.id)}</option>
+  `).join("");
+
+  const presidentOptions = state.raw.presidents.map((president) => `
+    <option value="${escapeHtml(president.id)}">${escapeHtml(president.name || president.id)}</option>
+  `).join("");
+
+  const { teamsById } = buildMaps();
+  const rows = state.raw.seasonTeams.map((seasonTeam) => {
+    const team = teamsById.get(seasonTeam.teamId);
+    return `
+      <div class="admin-list-item">
+        <span>
+          <strong class="club-name-with-logo">${renderTeamLogo(seasonTeam.name || getTeamDisplayName(team), getSeasonTeamLogo(seasonTeam))}${escapeHtml(seasonTeam.name || getTeamDisplayName(team))}</strong>
+          <small>${escapeHtml(getSeasonName(seasonTeam.seasonId))} · Squadra madre: ${escapeHtml(getTeamDisplayName(team))} · Presidenti: ${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</small>
+        </span>
+        <span>
+          <button class="button button-secondary button-small" type="button" data-admin-edit-season-team="${escapeHtml(seasonTeam.id)}">Modifica</button>
+          <button class="button button-danger button-small" type="button" data-admin-delete-season-team="${escapeHtml(seasonTeam.id)}">Elimina</button>
+        </span>
+      </div>`;
+  }).join("") || `<p class="muted admin-empty-message">Nessuna squadra associata a una stagione.</p>`;
+
+  return renderAdminPanel("adminSeasonTeamsPanel", "Firebase", "Squadre per stagione", "Associa le squadre alle stagioni. Una squadra associata a una stagione partecipa automaticamente a tutte le competizioni di quella stagione.", `
+      <form id="adminSeasonTeamForm" class="form-grid">
+        <input id="adminSeasonTeamId" type="hidden" />
+        <label>
+          Stagione
+          <select id="adminSeasonTeamSeasonId" class="input" required>
+            ${seasonOptions}
+          </select>
+        </label>
+        <label>
+          Squadra madre
+          <select id="adminSeasonTeamTeamId" class="input" required>
+            ${teamOptions}
+          </select>
+        </label>
+        <label>
+          Nome squadra nella stagione
+          <input id="adminSeasonTeamName" class="input" type="text" placeholder="Es. Real Pastena 2025" required />
+          <small class="field-hint">Serve per gestire cambi nome nel tempo.</small>
+        </label>
+        <label>
+          Logo stagionale opzionale
+          <input id="adminSeasonTeamLogoFile" class="input" type="file" accept="image/*" />
+          <input id="adminSeasonTeamLogoValue" type="hidden" />
+          <small class="field-hint">Se lo lasci vuoto usa il logo della squadra madre.</small>
+        </label>
+        <div class="logo-admin-preview" id="adminSeasonTeamLogoPreview">
+          ${renderTeamLogo("Squadra", "", "club-logo-lg")}
+          <span class="muted small">Anteprima logo stagionale</span>
+        </div>
+        <label class="checkbox-label">
+          <input id="adminSeasonTeamRemoveLogo" type="checkbox" />
+          Rimuovi logo stagionale
+        </label>
+        <label class="span-2">
+          Presidente/i in quella stagione
+          <select id="adminSeasonTeamPresidentIds" class="input" multiple size="5">
+            ${presidentOptions}
+          </select>
+          <small class="field-hint">Qui si salva lo storico presidente/squadra/stagione.</small>
+        </label>
+        <label class="checkbox-label span-2">
+          <input id="adminSeasonTeamIsHistorical" type="checkbox" />
+          Squadra storica/non più attuale in quella stagione
+        </label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit">Salva associazione</button>
+          <button id="adminSeasonTeamReset" class="button button-secondary" type="button">Nuova</button>
+          <span id="adminSeasonTeamStatus" class="form-status"></span>
+        </div>
+      </form>
+
+      <details class="admin-edit-section" open>
+        <summary><strong>Squadre associate alle stagioni</strong><span>${state.raw.seasonTeams.length}</span></summary>
+        <div class="admin-list">${rows}</div>
+      </details>
+  `);
+}
+
 function renderCompetitionAdminPanel() {
   const seasonOptions = state.raw.seasons.map((season) => `
     <option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>
@@ -792,20 +1086,133 @@ function renderCompetitionAdminPanel() {
   `);
 }
 
+function renderCompetitionResultsAdminPanel() {
+  const concluded = state.raw.competitions.filter((competition) => competition.status === "CONCLUSA");
+  const selectedId = state.selectedResultCompetitionId && concluded.some((competition) => competition.id === state.selectedResultCompetitionId)
+    ? state.selectedResultCompetitionId
+    : concluded[0]?.id || "";
+  state.selectedResultCompetitionId = selectedId;
+
+  const competitionOptions = concluded.map((competition) => `
+    <option value="${escapeHtml(competition.id)}" ${competition.id === selectedId ? "selected" : ""}>
+      ${escapeHtml(getSeasonName(competition.seasonId))} · ${escapeHtml(competition.name)}
+    </option>
+  `).join("");
+
+  const body = concluded.length ? `
+    <form id="adminCompetitionResultsForm" class="form-grid">
+      <label class="span-2">
+        Competizione conclusa
+        <select id="adminCompetitionResultsCompetitionId" class="input" required>
+          ${competitionOptions}
+        </select>
+        <small class="field-hint">I risultati si possono inserire solo per competizioni con stato Conclusa.</small>
+      </label>
+      <div id="adminCompetitionResultsEditor" class="span-2">
+        ${renderCompetitionResultsEditor(selectedId)}
+      </div>
+      <div class="form-actions span-2">
+        <button class="button button-primary" type="submit">Salva risultati e aggiorna albo</button>
+        <span id="adminCompetitionResultsStatus" class="form-status"></span>
+      </div>
+    </form>` : `<p class="muted">Nessuna competizione conclusa. Prima imposta una competizione su <strong>Conclusa</strong>.</p>`;
+
+  return renderAdminPanel("adminCompetitionResultsPanel", "Firebase", "Risultati competizioni", "Inserisci classifiche o finali. Questi dati alimentano automaticamente Albo d'oro e Palmarès.", body);
+}
+
+function renderCompetitionResultsEditor(competitionId) {
+  const competition = state.raw.competitions.find((item) => item.id === competitionId);
+  if (!competition) return `<p class="muted">Seleziona una competizione.</p>`;
+
+  const seasonTeams = getSeasonTeamsForSeason(competition.seasonId);
+  if (!seasonTeams.length) {
+    return `<p class="muted">Nessuna squadra associata alla stagione ${escapeHtml(competition.seasonId)}. Inseriscile nella sezione “Squadre per stagione”.</p>`;
+  }
+
+  const currentResults = getCompetitionResults(competition.id);
+  const resultsByPosition = new Map(currentResults.map((result) => [Number(result.position), result]));
+  const teamOptions = (selectedId = "") => `
+    <option value="">Seleziona squadra</option>
+    ${seasonTeams.map((seasonTeam) => `
+      <option value="${escapeHtml(seasonTeam.id)}" ${seasonTeam.id === selectedId ? "selected" : ""}>${escapeHtml(seasonTeam.name)}</option>
+    `).join("")}`;
+
+  if (!isRankingCompetition(competition)) {
+    const winner = resultsByPosition.get(1);
+    const second = resultsByPosition.get(2);
+    return `
+      <div class="compact-card result-editor-card">
+        <h3>${escapeHtml(competition.name)}</h3>
+        <p class="muted">Formula a gironi/eliminazione: inserisci vincitore e secondo classificato.</p>
+        <div class="form-grid">
+          <label>
+            Vincitore
+            <select class="input" data-result-position="1" data-result-team>
+              ${teamOptions(winner?.seasonTeamId || "")}
+            </select>
+          </label>
+          <label>
+            Secondo
+            <select class="input" data-result-position="2" data-result-team>
+              ${teamOptions(second?.seasonTeamId || "")}
+            </select>
+          </label>
+        </div>
+      </div>`;
+  }
+
+  const expectedRows = Math.max(getParticipantsCount(competition.seasonId), seasonTeams.length, currentResults.length);
+  const rows = Array.from({ length: expectedRows }, (_, index) => {
+    const position = index + 1;
+    const result = resultsByPosition.get(position) || {};
+    return `
+      <tr>
+        <td data-label="#" class="number">${position}</td>
+        <td data-label="Squadra">
+          <select class="input" data-result-position="${position}" data-result-team>
+            ${teamOptions(result.seasonTeamId || "")}
+          </select>
+        </td>
+        <td data-label="Punti" class="number"><input class="input" type="number" step="0.5" value="${escapeHtml(result.points ?? "")}" data-result-position="${position}" data-result-points /></td>
+        <td data-label="G" class="number"><input class="input" type="number" step="1" value="${escapeHtml(result.played ?? "")}" data-result-position="${position}" data-result-played /></td>
+        <td data-label="FPT" class="number"><input class="input" type="number" step="0.5" value="${escapeHtml(result.fantapoints ?? "")}" data-result-position="${position}" data-result-fantapoints /></td>
+      </tr>`;
+  }).join("");
+
+  return `
+    <div class="compact-card result-editor-card">
+      <h3>${escapeHtml(competition.name)}</h3>
+      <p class="muted">Competizione a classifica: inserisci dal primo all'ultimo posto.</p>
+      <div class="table-wrap result-admin-table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Squadra</th><th class="number">Punti</th><th class="number">G</th><th class="number">FPT</th></tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
 function attachAdminHandlers() {
   const seasonForm = document.getElementById("adminSeasonForm");
   const presidentForm = document.getElementById("adminPresidentForm");
   const teamForm = document.getElementById("adminTeamForm");
+  const seasonTeamForm = document.getElementById("adminSeasonTeamForm");
   const competitionForm = document.getElementById("adminCompetitionForm");
+  const competitionResultsForm = document.getElementById("adminCompetitionResultsForm");
 
   seasonForm?.addEventListener("submit", saveSeason);
   presidentForm?.addEventListener("submit", savePresident);
   teamForm?.addEventListener("submit", saveTeam);
+  seasonTeamForm?.addEventListener("submit", saveSeasonTeam);
   competitionForm?.addEventListener("submit", saveCompetition);
+  competitionResultsForm?.addEventListener("submit", saveCompetitionResults);
 
   document.getElementById("adminSeasonReset")?.addEventListener("click", resetSeasonForm);
   document.getElementById("adminPresidentReset")?.addEventListener("click", resetPresidentForm);
   document.getElementById("adminTeamReset")?.addEventListener("click", resetTeamForm);
+  document.getElementById("adminSeasonTeamReset")?.addEventListener("click", resetSeasonTeamForm);
   document.getElementById("adminCompetitionReset")?.addEventListener("click", resetCompetitionForm);
   document.getElementById("adminCompetitionCreateDefaults")?.addEventListener("click", createDefaultCompetitions);
 
@@ -819,6 +1226,25 @@ function attachAdminHandlers() {
   });
   document.getElementById("adminTeamLogoFile")?.addEventListener("change", handleTeamLogoFileChange);
   updateTeamLogoPreview();
+
+  document.getElementById("adminSeasonTeamTeamId")?.addEventListener("change", fillSeasonTeamNameFromTeam);
+  document.getElementById("adminSeasonTeamName")?.addEventListener("input", updateSeasonTeamLogoPreview);
+  document.getElementById("adminSeasonTeamRemoveLogo")?.addEventListener("change", () => {
+    if (document.getElementById("adminSeasonTeamRemoveLogo").checked) {
+      document.getElementById("adminSeasonTeamLogoValue").value = "";
+      document.getElementById("adminSeasonTeamLogoFile").value = "";
+    }
+    updateSeasonTeamLogoPreview();
+  });
+  document.getElementById("adminSeasonTeamLogoFile")?.addEventListener("change", handleSeasonTeamLogoFileChange);
+  fillSeasonTeamNameFromTeam();
+  updateSeasonTeamLogoPreview();
+
+  document.getElementById("adminCompetitionResultsCompetitionId")?.addEventListener("change", (event) => {
+    state.selectedResultCompetitionId = event.target.value;
+    const editor = document.getElementById("adminCompetitionResultsEditor");
+    if (editor) editor.innerHTML = renderCompetitionResultsEditor(state.selectedResultCompetitionId);
+  });
 
   document.querySelectorAll("[data-admin-toggle-panel]").forEach((button) => {
     button.addEventListener("click", () => toggleAdminPanel(button.dataset.adminTogglePanel));
@@ -843,6 +1269,13 @@ function attachAdminHandlers() {
   });
   document.querySelectorAll("[data-admin-delete-team]").forEach((button) => {
     button.addEventListener("click", () => deleteDocument("teams", button.dataset.adminDeleteTeam, "squadra"));
+  });
+
+  document.querySelectorAll("[data-admin-edit-season-team]").forEach((button) => {
+    button.addEventListener("click", () => editSeasonTeam(button.dataset.adminEditSeasonTeam));
+  });
+  document.querySelectorAll("[data-admin-delete-season-team]").forEach((button) => {
+    button.addEventListener("click", () => deleteDocument("seasonTeams", button.dataset.adminDeleteSeasonTeam, "associazione squadra/stagione"));
   });
 
   document.querySelectorAll("[data-admin-edit-competition]").forEach((button) => {
@@ -898,6 +1331,49 @@ function updateTeamLogoPreview() {
   `;
 }
 
+function fillSeasonTeamNameFromTeam() {
+  const teamId = document.getElementById("adminSeasonTeamTeamId")?.value;
+  const { teamsById } = buildMaps();
+  const team = teamsById.get(teamId);
+  const nameInput = document.getElementById("adminSeasonTeamName");
+  if (nameInput && !nameInput.value && team) nameInput.value = team.canonicalName || "";
+  updateSeasonTeamLogoPreview();
+}
+
+async function handleSeasonTeamLogoFileChange(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+
+  try {
+    showMessage("adminSeasonTeamStatus", "Caricamento logo...");
+    const dataUrl = await readLogoFileAsDataUrl(file);
+    document.getElementById("adminSeasonTeamLogoValue").value = dataUrl;
+    document.getElementById("adminSeasonTeamRemoveLogo").checked = false;
+    updateSeasonTeamLogoPreview();
+    showMessage("adminSeasonTeamStatus", "Logo caricato. Ricorda di salvare l'associazione.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminSeasonTeamStatus", "Errore nel caricamento logo.", true);
+  }
+}
+
+function updateSeasonTeamLogoPreview() {
+  const preview = document.getElementById("adminSeasonTeamLogoPreview");
+  if (!preview) return;
+
+  const name = document.getElementById("adminSeasonTeamName")?.value || "Squadra";
+  const removeLogo = document.getElementById("adminSeasonTeamRemoveLogo")?.checked;
+  const logoValue = removeLogo ? "" : document.getElementById("adminSeasonTeamLogoValue")?.value;
+  const teamId = document.getElementById("adminSeasonTeamTeamId")?.value;
+  const teamLogo = buildMaps().teamsById.get(teamId)?.logo || "";
+  const logo = logoValue || teamLogo;
+
+  preview.innerHTML = `
+    ${renderTeamLogo(name, logo, "club-logo-lg")}
+    <span class="muted small">${logoValue ? "Logo stagionale caricato" : teamLogo ? "Logo ereditato dalla squadra madre" : "Placeholder: prime due lettere"}</span>
+  `;
+}
+
 async function saveSeason(event) {
   event.preventDefault();
   const id = document.getElementById("adminSeasonId").value.trim();
@@ -908,6 +1384,7 @@ async function saveSeason(event) {
     startsOn: document.getElementById("adminSeasonStartsOn").value || "",
     endsOn: document.getElementById("adminSeasonEndsOn").value || "",
     isCurrent: document.getElementById("adminSeasonIsCurrent").checked,
+    participantCount: Number(document.getElementById("adminSeasonParticipantCount")?.value || 0),
     updatedAt: serverTimestamp()
   };
 
@@ -1012,6 +1489,43 @@ async function saveTeam(event) {
   }
 }
 
+async function saveSeasonTeam(event) {
+  event.preventDefault();
+
+  const existingId = document.getElementById("adminSeasonTeamId").value.trim();
+  const seasonId = document.getElementById("adminSeasonTeamSeasonId").value;
+  const teamId = document.getElementById("adminSeasonTeamTeamId").value;
+  const selectedPresidentIds = Array.from(document.getElementById("adminSeasonTeamPresidentIds").selectedOptions)
+    .map((option) => option.value);
+  const removeLogo = document.getElementById("adminSeasonTeamRemoveLogo").checked;
+  const payload = {
+    seasonId,
+    teamId,
+    name: document.getElementById("adminSeasonTeamName").value.trim(),
+    logo: removeLogo ? "" : document.getElementById("adminSeasonTeamLogoValue").value,
+    presidentIds: selectedPresidentIds,
+    isHistorical: document.getElementById("adminSeasonTeamIsHistorical").checked,
+    updatedAt: serverTimestamp()
+  };
+
+  if (!payload.seasonId || !payload.teamId || !payload.name) return;
+
+  const id = existingId || `${makeIdPart(payload.seasonId)}_${makeIdPart(payload.teamId)}`;
+
+  try {
+    showMessage("adminSeasonTeamStatus", "Salvataggio...");
+    const savePayload = existingId ? payload : { ...payload, createdAt: serverTimestamp() };
+    await setDoc(doc(db, "seasonTeams", id), savePayload, { merge: true });
+
+    showMessage("adminSeasonTeamStatus", "Associazione squadra/stagione salvata.");
+    resetSeasonTeamForm();
+    await loadData();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminSeasonTeamStatus", "Errore salvataggio associazione.", true);
+  }
+}
+
 async function saveCompetition(event) {
   event.preventDefault();
   const id = document.getElementById("adminCompetitionId").value.trim();
@@ -1085,6 +1599,98 @@ async function createDefaultCompetitions() {
   }
 }
 
+async function saveCompetitionResults(event) {
+  event.preventDefault();
+  const competitionId = document.getElementById("adminCompetitionResultsCompetitionId")?.value;
+  const competition = state.raw.competitions.find((item) => item.id === competitionId);
+  if (!competition) return;
+
+  const rows = [];
+  document.querySelectorAll("[data-result-team]").forEach((select) => {
+    const position = Number(select.dataset.resultPosition);
+    const seasonTeamId = select.value;
+    if (!position || !seasonTeamId) return;
+
+    const pointsInput = document.querySelector(`[data-result-points][data-result-position="${position}"]`);
+    const playedInput = document.querySelector(`[data-result-played][data-result-position="${position}"]`);
+    const fantapointsInput = document.querySelector(`[data-result-fantapoints][data-result-position="${position}"]`);
+
+    rows.push({
+      competitionId,
+      seasonId: competition.seasonId,
+      seasonTeamId,
+      position,
+      points: pointsInput?.value === "" || !pointsInput ? null : Number(pointsInput.value),
+      played: playedInput?.value === "" || !playedInput ? null : Number(playedInput.value),
+      fantapoints: fantapointsInput?.value === "" || !fantapointsInput ? null : Number(fantapointsInput.value),
+      updatedAt: serverTimestamp()
+    });
+  });
+
+  if (!rows.length) {
+    showMessage("adminCompetitionResultsStatus", "Inserisci almeno una squadra.", true);
+    return;
+  }
+
+  const duplicateTeams = rows.some((row, index) => rows.findIndex((other) => other.seasonTeamId === row.seasonTeamId) !== index);
+  if (duplicateTeams) {
+    showMessage("adminCompetitionResultsStatus", "Una squadra è stata selezionata più volte.", true);
+    return;
+  }
+
+  try {
+    showMessage("adminCompetitionResultsStatus", "Salvataggio risultati...");
+
+    await Promise.all(
+      state.raw.competitionResults
+        .filter((result) => result.competitionId === competitionId)
+        .map((result) => deleteDoc(doc(db, "competitionResults", result.id)))
+    );
+
+    await Promise.all(rows.map((row) => setDoc(
+      doc(db, "competitionResults", `${makeIdPart(competitionId)}_${row.position}`),
+      { ...row, createdAt: serverTimestamp() },
+      { merge: true }
+    )));
+
+    await syncHonorRollForCompetition(competition, rows);
+
+    showMessage("adminCompetitionResultsStatus", "Risultati salvati e albo aggiornato.");
+    await loadData();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminCompetitionResultsStatus", "Errore salvataggio risultati.", true);
+  }
+}
+
+async function syncHonorRollForCompetition(competition, rows) {
+  const byPosition = new Map(rows.map((row) => [Number(row.position), row.seasonTeamId]));
+  const payload = {
+    seasonId: competition.seasonId,
+    updatedAt: serverTimestamp()
+  };
+
+  if (competition.type === "CAMPIONATO") {
+    payload.championItalySeasonTeamId = byPosition.get(1) || null;
+    payload.secondPlaceSeasonTeamId = byPosition.get(2) || null;
+    payload.thirdPlaceSeasonTeamId = byPosition.get(3) || null;
+  }
+
+  if (competition.type === "COPPA_ITALIA") {
+    payload.coppaItaliaWinnerSeasonTeamId = byPosition.get(1) || null;
+  }
+
+  if (competition.type === "CHAMPIONS_LEAGUE") {
+    payload.championsLeagueWinnerSeasonTeamId = byPosition.get(1) || null;
+  }
+
+  if (competition.type === "PLAYOFF") {
+    payload.playoffWinnerSeasonTeamId = byPosition.get(1) || null;
+  }
+
+  await setDoc(doc(db, "honorRoll", competition.seasonId), payload, { merge: true });
+}
+
 function editSeason(id) {
   const season = state.raw.seasons.find((item) => item.id === id);
   if (!season) return;
@@ -1094,6 +1700,7 @@ function editSeason(id) {
   document.getElementById("adminSeasonName").value = season.name || "";
   document.getElementById("adminSeasonStartsOn").value = season.startsOn || "";
   document.getElementById("adminSeasonEndsOn").value = season.endsOn || "";
+  document.getElementById("adminSeasonParticipantCount").value = season.participantCount || "";
   document.getElementById("adminSeasonIsCurrent").checked = Boolean(season.isCurrent);
   document.getElementById("adminSeasonsPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -1128,6 +1735,28 @@ function editTeam(id) {
 
   updateTeamLogoPreview();
   document.getElementById("adminTeamsPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function editSeasonTeam(id) {
+  const seasonTeam = state.raw.seasonTeams.find((item) => item.id === id);
+  if (!seasonTeam) return;
+
+  document.getElementById("adminSeasonTeamId").value = seasonTeam.id;
+  document.getElementById("adminSeasonTeamSeasonId").value = seasonTeam.seasonId || getCurrentSeasonId();
+  document.getElementById("adminSeasonTeamTeamId").value = seasonTeam.teamId || "";
+  document.getElementById("adminSeasonTeamName").value = seasonTeam.name || "";
+  document.getElementById("adminSeasonTeamLogoValue").value = seasonTeam.logo || "";
+  document.getElementById("adminSeasonTeamLogoFile").value = "";
+  document.getElementById("adminSeasonTeamRemoveLogo").checked = false;
+  document.getElementById("adminSeasonTeamIsHistorical").checked = Boolean(seasonTeam.isHistorical);
+
+  const selected = new Set(seasonTeam.presidentIds || []);
+  Array.from(document.getElementById("adminSeasonTeamPresidentIds").options).forEach((option) => {
+    option.selected = selected.has(option.value);
+  });
+
+  updateSeasonTeamLogoPreview();
+  document.getElementById("adminSeasonTeamsPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function editCompetition(id) {
@@ -1171,6 +1800,17 @@ function resetTeamForm() {
   if (logoInput) logoInput.value = "";
   updateTeamLogoPreview();
   showMessage("adminTeamStatus", "");
+}
+
+function resetSeasonTeamForm() {
+  document.getElementById("adminSeasonTeamForm")?.reset();
+  const idInput = document.getElementById("adminSeasonTeamId");
+  if (idInput) idInput.value = "";
+  const logoInput = document.getElementById("adminSeasonTeamLogoValue");
+  if (logoInput) logoInput.value = "";
+  fillSeasonTeamNameFromTeam();
+  updateSeasonTeamLogoPreview();
+  showMessage("adminSeasonTeamStatus", "");
 }
 
 function resetCompetitionForm() {
