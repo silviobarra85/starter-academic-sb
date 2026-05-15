@@ -1,0 +1,65 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    match /admins/{userId} {
+      allow read: if isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /leagueSettings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /seasons/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /presidents/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /teams/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /seasonTeams/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /stadiums/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitions/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitionResults/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /honorRoll/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
