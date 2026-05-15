@@ -508,18 +508,57 @@ function renderDashboardCalendar(seasonId) {
   const target = document.getElementById("dashboardCalendar");
   if (!target) return;
 
-  const competitionIds = new Set(
-    state.raw.competitions
-      .filter((competition) => competition.seasonId === seasonId)
-      .map((competition) => competition.id)
-  );
+  const competitions = state.raw.competitions.filter((competition) => competition.seasonId === seasonId);
+  const competitionsById = new Map(competitions.map((competition) => [competition.id, competition]));
+  const competitionIds = new Set(competitions.map((competition) => competition.id));
 
   const matches = state.raw.competitionMatches
     .filter((match) => competitionIds.has(match.competitionId))
-    .sort((a, b) => String(b.matchDate || "").localeCompare(String(a.matchDate || ""), "it"))
-    .slice(0, 8);
+    .sort((a, b) => {
+      const statusCompare = (a.status === "DA_GIOCARE" ? 0 : 1) - (b.status === "DA_GIOCARE" ? 0 : 1);
+      if (statusCompare) return statusCompare;
+      const dateA = String(a.matchDate || "9999-12-31");
+      const dateB = String(b.matchDate || "9999-12-31");
+      const dateCompare = dateA.localeCompare(dateB, "it");
+      if (dateCompare) return dateCompare;
+      return String(a.matchday || "").localeCompare(String(b.matchday || ""), "it");
+    })
+    .slice(0, 10);
 
-  target.innerHTML = renderMatchRows(matches, "Nessuna partita inserita per questa stagione.");
+  if (!matches.length) {
+    target.innerHTML = `<p class="muted">Nessuna partita programmata o giocata per questa stagione.</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
+      <table class="dashboard-calendar-table">
+        <thead>
+          <tr>
+            <th>Competizione</th>
+            <th>Fase/Giornata</th>
+            <th>Partita</th>
+            <th>Data</th>
+            <th>Stato</th>
+            <th class="number">Risultato</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${matches.map((match) => {
+            const competition = competitionsById.get(match.competitionId);
+            return `
+              <tr>
+                <td data-label="Competizione"><strong>${escapeHtml(competition?.name || "-")}</strong></td>
+                <td data-label="Fase/Giornata">${escapeHtml(match.matchday || "-")}</td>
+                <td data-label="Partita"><strong>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))}</strong> - <strong>${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</strong></td>
+                <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
+                <td data-label="Stato"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
+                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              </tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>`;
 }
 
 function renderStadiumsPublic() {
@@ -611,8 +650,7 @@ function renderSeasonSelectors() {
   if (!state.selectedSeasonId) state.selectedSeasonId = getDefaultSeasonId();
   const seasonId = getCurrentSeasonId();
   const selects = [
-    document.getElementById("globalSeasonSelect"),
-    document.getElementById("dashboardSeasonSelect")
+    document.getElementById("globalSeasonSelect")
   ].filter(Boolean);
 
   for (const select of selects) {
@@ -622,8 +660,6 @@ function renderSeasonSelectors() {
     select.value = seasonId;
   }
 
-  const seasonText = document.getElementById("dashboardSeasonText");
-  if (seasonText) seasonText.textContent = `Stagione visualizzata: ${seasonId || "-"}`;
 }
 
 function renderDashboard() {
@@ -2779,7 +2815,7 @@ function setupSeasonSelectorEvents() {
     renderStadiumsPublic();
   };
 
-  ["globalSeasonSelect", "dashboardSeasonSelect"].forEach((id) => {
+  ["globalSeasonSelect"].forEach((id) => {
     const select = document.getElementById(id);
     select?.addEventListener("change", handleChange);
   });
