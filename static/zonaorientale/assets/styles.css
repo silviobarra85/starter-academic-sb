@@ -4161,3 +4161,109 @@ body.is-mobile-ux .honor-cup-content .number,
 body.is-mobile-ux .mobile-tabular-wrap .number,
 body.is-mobile-ux .standing-table-wrap .number,
 body.is-mobile-ux .roster-dialog-table .number { text-align: right !important; }
+
+/* V9 - Palmarès by competition as compact tables; Playoff palmarès hidden in app rendering. */
+.palmares-competition-card {
+  display: grid;
+  gap: 10px;
+}
+
+.palmares-competition-card .compact-card-header h3 {
+  margin: 0 0 3px;
+}
+
+.palmares-competition-card .compact-card-header p {
+  margin: 0;
+}
+
+.palmares-table-wrap table {
+  min-width: 320px;
+}
+
+.palmares-table th:first-child,
+.palmares-table td:first-child {
+  width: 48px;
+}
+
+.palmares-table th:last-child,
+.palmares-table td:last-child {
+  width: 78px;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .palmares-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .palmares-competition-card {
+    gap: 7px !important;
+  }
+
+  .palmares-competition-card .compact-card-header h3 {
+    font-size: 0.92rem !important;
+  }
+
+  .palmares-competition-card .compact-card-header p {
+    display: none !important;
+  }
+
+  .palmares-table-wrap {
+    max-height: min(42vh, 360px) !important;
+  }
+
+  .palmares-table-wrap table {
+    min-width: 270px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .palmares-table th,
+  .palmares-table td {
+    padding: 3px 4px !important;
+    font-size: 0.58rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .palmares-table th:first-child,
+  .palmares-table td:first-child {
+    width: 30px !important;
+  }
+
+  .palmares-table th:last-child,
+  .palmares-table td:last-child {
+    width: 46px !important;
+  }
+}
+
+body.is-mobile-ux .palmares-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+
+body.is-mobile-ux .palmares-table-wrap {
+  max-height: min(42vh, 360px) !important;
+}
+
+body.is-mobile-ux .palmares-table-wrap table {
+  min-width: 270px !important;
+  font-size: 0.58rem !important;
+}
+
+body.is-mobile-ux .palmares-table th,
+body.is-mobile-ux .palmares-table td {
+  padding: 3px 4px !important;
+  font-size: 0.58rem !important;
+  line-height: 1.1 !important;
+}
+
+body.is-mobile-ux .palmares-table th:first-child,
+body.is-mobile-ux .palmares-table td:first-child {
+  width: 30px !important;
+}
+
+body.is-mobile-ux .palmares-table th:last-child,
+body.is-mobile-ux .palmares-table td:last-child {
+  width: 46px !important;
+}

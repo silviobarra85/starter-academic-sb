@@ -783,15 +783,34 @@ function renderHonorSummary() {
   }).join("");
 
   const palmares = buildPalmares();
-  const palmaresHtml = Object.entries(palmares).map(([type, items]) => `
-    <div class="compact-card">
-      <h3>${escapeHtml(getLabel(COMPETITION_TYPES, type))}</h3>
-      ${items.length ? items.map((item) => `
-        <div class="stack-item">
-          <div><strong>${escapeHtml(item.teamName)}</strong></div>
-          <span class="stack-item-side">${item.wins}</span>
-        </div>`).join("") : `<p class="muted">Nessun vincitore ancora inserito.</p>`}
-    </div>`).join("");
+  const palmaresHtml = Object.entries(palmares)
+    .filter(([type]) => type !== "PLAYOFF")
+    .map(([type, items]) => {
+      const rows = items.map((item, index) => `
+        <tr>
+          <td data-label="#" class="number">${index + 1}</td>
+          <td data-label="Squadra"><strong>${escapeHtml(item.teamName)}</strong></td>
+          <td data-label="Titoli" class="number"><strong>${item.wins}</strong></td>
+        </tr>`).join("") || `<tr><td colspan="3" class="muted center">Nessun vincitore ancora inserito.</td></tr>`;
+
+      return `
+        <div class="compact-card palmares-competition-card">
+          <div class="compact-card-header">
+            <div>
+              <h3>${escapeHtml(getLabel(COMPETITION_TYPES, type))}</h3>
+              <p class="muted">Titoli vinti per squadra</p>
+            </div>
+          </div>
+          <div class="table-wrap palmares-table-wrap">
+            <table class="palmares-table">
+              <thead>
+                <tr><th class="number">#</th><th>Squadra</th><th class="number">Titoli</th></tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </div>`;
+    }).join("");
 
   target.innerHTML = `
     <div class="table-wrap honor-table-wrap">
