@@ -117,3 +117,15 @@ honorRoll
 ```
 
 Nota: `honorRoll` viene aggiornato automaticamente quando salvi i risultati di una competizione conclusa.
+
+## Aggiornamento V5
+
+Nuove raccolte usate dall'app:
+
+- `competitionMatches`: calendario e risultati partita per ogni competizione.
+- `stadiums`: nome e livello dello stadio per ogni squadra associata a una stagione.
+- `fifaRankings`: punteggio manuale FIFA Ranking per ogni squadra.
+
+Le raccolte vengono create automaticamente al primo salvataggio dall'area Admin. Resta da creare manualmente solo `admins`.
+
+L'area Admin ora si apre con tutte le schede ridotte; usa **Ingrandisci** per aprire la scheda che vuoi modificare.

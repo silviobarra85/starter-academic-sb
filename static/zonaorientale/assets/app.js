@@ -22,8 +22,10 @@ const COLLECTIONS = [
   "seasonTeams",
   "stadiums",
   "competitions",
+  "competitionMatches",
   "competitionResults",
-  "honorRoll"
+  "honorRoll",
+  "fifaRankings"
 ];
 
 const COMPETITION_TYPES = [
@@ -77,13 +79,53 @@ const DEFAULT_COMPETITIONS = [
   }
 ];
 
+const MATCH_STATUSES = [
+  { value: "DA_GIOCARE", label: "Da giocare" },
+  { value: "GIOCATA", label: "Giocata" }
+];
+
+const STANDARD_KNOCKOUT_MATCHDAYS = [
+  "QF - Andata",
+  "QF - Ritorno",
+  "QF - Secca",
+  "SF - Andata",
+  "SF - Ritorno",
+  "SF - Secca",
+  "Finale - Andata",
+  "Finale - Ritorno",
+  "Finalissima"
+];
+
+const STADIUM_LEVELS = [
+  { value: 0, label: "Livello 0" },
+  { value: 1, label: "Livello 1" },
+  { value: 2, label: "Livello 2" },
+  { value: 3, label: "Livello 3" },
+  { value: 4, label: "Livello 4" }
+];
+
+const ADMIN_PANEL_IDS = [
+  "adminSeasonsPanel",
+  "adminPresidentsPanel",
+  "adminTeamsPanel",
+  "adminSeasonTeamsPanel",
+  "adminStadiumsPanel",
+  "adminCompetitionsPanel",
+  "adminCompetitionMatchesPanel",
+  "adminCompetitionResultsPanel",
+  "adminFifaRankingPanel"
+];
+
+
 const state = {
   raw: Object.fromEntries(COLLECTIONS.map((name) => [name, []])),
   user: null,
   isAdmin: false,
   currentPage: "dashboard",
+  selectedSeasonId: "",
   selectedResultCompetitionId: "",
-  collapsedAdminPanels: new Set()
+  selectedMatchCompetitionId: "",
+  collapsedAdminPanels: new Set(ADMIN_PANEL_IDS)
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -218,6 +260,12 @@ function sortData() {
     if (seasonCompare) return seasonCompare;
     return String(a.name || "").localeCompare(String(b.name || ""), "it");
   });
+  state.raw.competitionMatches.sort((a, b) => {
+    const competitionCompare = String(a.competitionId || "").localeCompare(String(b.competitionId || ""), "it");
+    if (competitionCompare) return competitionCompare;
+    return String(a.matchday || "").localeCompare(String(b.matchday || ""), "it");
+  });
+  state.raw.fifaRankings.sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
   state.raw.competitionResults.sort((a, b) => {
     const competitionCompare = String(a.competitionId || "").localeCompare(String(b.competitionId || ""), "it");
     if (competitionCompare) return competitionCompare;
@@ -231,7 +279,9 @@ function buildMaps() {
     teamsById: new Map(state.raw.teams.map((item) => [item.id, item])),
     seasonsById: new Map(state.raw.seasons.map((item) => [item.id, item])),
     seasonTeamsById: new Map(state.raw.seasonTeams.map((item) => [item.id, item])),
-    competitionsById: new Map(state.raw.competitions.map((item) => [item.id, item]))
+    competitionsById: new Map(state.raw.competitions.map((item) => [item.id, item])),
+    stadiumsBySeasonTeamId: new Map(state.raw.stadiums.map((item) => [item.seasonTeamId, item])),
+    fifaRankingsByTeamId: new Map(state.raw.fifaRankings.map((item) => [item.teamId, item]))
   };
 }
 
@@ -239,12 +289,17 @@ function getLeagueSettings() {
   return state.raw.leagueSettings.find((item) => item.id === "main") || state.raw.leagueSettings[0] || null;
 }
 
-function getCurrentSeasonId() {
+function getDefaultSeasonId() {
   const league = getLeagueSettings();
   if (league?.currentSeasonId) return league.currentSeasonId;
   const current = state.raw.seasons.find((season) => season.isCurrent);
   if (current) return current.id;
   return state.raw.seasons[0]?.id || "";
+}
+
+function getCurrentSeasonId() {
+  if (state.selectedSeasonId) return state.selectedSeasonId;
+  return getDefaultSeasonId();
 }
 
 function getSeasonName(id) {
@@ -365,6 +420,143 @@ function buildPalmares() {
   );
 }
 
+function getStadiumForSeasonTeam(seasonTeamId) {
+  return state.raw.stadiums.find((stadium) => stadium.seasonTeamId === seasonTeamId) || null;
+}
+
+function formatStadium(stadium) {
+  if (!stadium) return "-";
+  const name = stadium.name || "Stadio";
+  const level = stadium.level ?? 0;
+  return `${name} · L${level}`;
+}
+
+function getCompetitionMatches(competitionId) {
+  return state.raw.competitionMatches
+    .filter((match) => match.competitionId === competitionId)
+    .sort((a, b) => {
+      const dateCompare = String(a.matchDate || "").localeCompare(String(b.matchDate || ""), "it");
+      if (dateCompare) return dateCompare;
+      return String(a.matchday || "").localeCompare(String(b.matchday || ""), "it");
+    });
+}
+
+function formatMatchResult(match) {
+  if (!match || match.status !== "GIOCATA") return "Da giocare";
+  const goals = match.homeGoals !== null && match.homeGoals !== undefined && match.awayGoals !== null && match.awayGoals !== undefined
+    ? `${match.homeGoals}-${match.awayGoals}`
+    : "Risultato inserito";
+  const scores = match.homeScore !== null && match.homeScore !== undefined && match.awayScore !== null && match.awayScore !== undefined
+    ? ` · FP ${match.homeScore}-${match.awayScore}`
+    : "";
+  return `${goals}${scores}`;
+}
+
+function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
+  if (!matches.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+
+  return `
+    <div class="table-wrap match-table-wrap">
+      <table>
+        <thead>
+          <tr><th>Fase/Giornata</th><th>Partita</th><th>Data</th><th>Stato</th><th class="number">Risultato</th></tr>
+        </thead>
+        <tbody>
+          ${matches.map((match) => `
+            <tr>
+              <td data-label="Fase/Giornata">${escapeHtml(match.matchday || "-")}</td>
+              <td data-label="Partita"><strong>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))}</strong> - <strong>${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</strong></td>
+              <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
+              <td data-label="Stato"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
+              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+function renderDashboardCalendar(seasonId) {
+  const target = document.getElementById("dashboardCalendar");
+  if (!target) return;
+
+  const competitionIds = new Set(
+    state.raw.competitions
+      .filter((competition) => competition.seasonId === seasonId)
+      .map((competition) => competition.id)
+  );
+
+  const matches = state.raw.competitionMatches
+    .filter((match) => competitionIds.has(match.competitionId))
+    .sort((a, b) => String(b.matchDate || "").localeCompare(String(a.matchDate || ""), "it"))
+    .slice(0, 8);
+
+  target.innerHTML = renderMatchRows(matches, "Nessuna partita inserita per questa stagione.");
+}
+
+function renderStadiumsPublic() {
+  const target = document.getElementById("stadiumsList");
+  if (!target) return;
+
+  const seasonId = getCurrentSeasonId();
+  const seasonTeamIds = new Set(getSeasonTeamsForSeason(seasonId).map((seasonTeam) => seasonTeam.id));
+  const stadiums = state.raw.stadiums.filter((stadium) => seasonTeamIds.has(stadium.seasonTeamId));
+
+  target.innerHTML = stadiums.length
+    ? stadiums.map((stadium) => `
+      <div class="stadium-item">
+        <div>
+          <strong>${escapeHtml(getSeasonTeamDisplayName(stadium.seasonTeamId))}</strong>
+          <span>${escapeHtml(stadium.name || "Stadio senza nome")}</span>
+        </div>
+        <strong>Livello ${escapeHtml(stadium.level ?? 0)}</strong>
+      </div>`).join("")
+    : `<p class="muted">Nessuno stadio inserito per questa stagione.</p>`;
+}
+
+function buildFifaRanking() {
+  const { teamsById } = buildMaps();
+
+  return state.raw.fifaRankings
+    .map((ranking) => {
+      const team = teamsById.get(ranking.teamId);
+      return {
+        ...ranking,
+        team,
+        teamName: team?.canonicalName || ranking.teamName || ranking.teamId || "-",
+        score: Number(ranking.score || 0)
+      };
+    })
+    .sort((a, b) => b.score - a.score || a.teamName.localeCompare(b.teamName, "it"))
+    .map((ranking, index) => ({
+      ...ranking,
+      position: index + 1
+    }));
+}
+
+function renderFifaRankingPublic() {
+  const ranking = buildFifaRanking();
+
+  if (!ranking.length) return `<p class="muted">Nessun punteggio FIFA inserito.</p>`;
+
+  return `
+    <div class="table-wrap fifa-ranking-table-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Squadra</th><th class="number">Punteggio</th></tr>
+        </thead>
+        <tbody>
+          ${ranking.map((item) => `
+            <tr>
+              <td data-label="#">${item.position}</td>
+              <td data-label="Squadra"><span class="club-name-with-logo">${renderTeamLogo(item.teamName, item.team?.logo)}<strong>${escapeHtml(item.teamName)}</strong></span></td>
+              <td data-label="Punteggio" class="number"><strong>${escapeHtml(item.score)}</strong></td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+
 function renderAll() {
   renderLeagueHeader();
   renderSeasonSelectors();
@@ -372,6 +564,7 @@ function renderAll() {
   renderTeamsTable();
   renderCompetitionsPublic();
   renderPlaceholderPages();
+  renderStadiumsPublic();
   renderAdminArea();
 }
 
@@ -385,6 +578,7 @@ function renderLeagueHeader() {
 }
 
 function renderSeasonSelectors() {
+  if (!state.selectedSeasonId) state.selectedSeasonId = getDefaultSeasonId();
   const seasonId = getCurrentSeasonId();
   const selects = [
     document.getElementById("globalSeasonSelect"),
@@ -432,7 +626,7 @@ function renderDashboard() {
       : `<p class="muted">Nessuna competizione inserita per questa stagione.</p>`;
   }
 
-  setLoadingText("dashboardCalendar", "Il calendario sarà aggiunto dopo competizioni e risultati.");
+  renderDashboardCalendar(seasonId);
 }
 
 function renderTeamsTable() {
@@ -450,6 +644,7 @@ function renderTeamsTable() {
 
   tableBody.innerHTML = seasonTeams.map((seasonTeam, index) => {
     const team = teamsById.get(seasonTeam.teamId);
+    const stadium = getStadiumForSeasonTeam(seasonTeam.id);
     const statusClass = seasonTeam.isHistorical ? "status-muted" : "status-ok";
     const statusText = seasonTeam.isHistorical ? "Storica" : "Partecipante";
     const logo = renderTeamLogo(seasonTeam.name || getTeamDisplayName(team), getSeasonTeamLogo(seasonTeam));
@@ -464,7 +659,7 @@ function renderTeamsTable() {
         <td data-label="Presidente">${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</td>
         <td data-label="Saldo FM" class="number">-</td>
         <td data-label="Rosa" class="number">-</td>
-        <td data-label="Stadio" class="number">-</td>
+        <td data-label="Stadio" class="number">${escapeHtml(formatStadium(stadium))}</td>
         <td data-label="Stato"><span class="status ${statusClass}">${statusText}</span></td>
       </tr>`;
   }).join("");
@@ -582,6 +777,10 @@ function renderHonorSummary() {
     <div class="detail-section">
       <h3>Palmarès per competizione</h3>
       <div class="palmares-grid">${palmaresHtml}</div>
+    </div>
+    <div class="detail-section">
+      <h3>FIFA Ranking</h3>
+      ${renderFifaRankingPublic()}
     </div>`;
 }
 
@@ -592,7 +791,7 @@ function renderPlaceholderPages() {
   setLoadingText("freeAgentsTableBody", "Gli svincolati sono stati esclusi dalla nuova struttura dati.");
   renderHonorSummary();
   setLoadingText("movementsList", "I movimenti FM sono stati esclusi dalla nuova struttura dati.");
-  setLoadingText("stadiumsList", "Modulo Stadi da collegare dopo seasonTeams.");
+  renderStadiumsPublic();
 }
 
 function setupNavigation() {
@@ -724,8 +923,11 @@ function renderAdminArea() {
     ${renderPresidentAdminPanel()}
     ${renderTeamAdminPanel()}
     ${renderSeasonTeamAdminPanel()}
+    ${renderStadiumAdminPanel()}
     ${renderCompetitionAdminPanel()}
+    ${renderCompetitionMatchesAdminPanel()}
     ${renderCompetitionResultsAdminPanel()}
+    ${renderFifaRankingAdminPanel()}
   `;
 
   attachAdminHandlers();
@@ -1194,26 +1396,236 @@ function renderCompetitionResultsEditor(competitionId) {
     </div>`;
 }
 
+function renderStadiumAdminPanel() {
+  const seasonTeamOptions = state.raw.seasonTeams.map((seasonTeam) => `
+    <option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(getSeasonName(seasonTeam.seasonId))} · ${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>
+  `).join("");
+
+  const levelOptions = STADIUM_LEVELS.map((level) => `
+    <option value="${level.value}">${escapeHtml(level.label)}</option>
+  `).join("");
+
+  const rows = state.raw.stadiums.map((stadium) => `
+    <div class="admin-list-item">
+      <span>
+        <strong>${escapeHtml(getSeasonTeamDisplayName(stadium.seasonTeamId))}</strong>
+        <small>${escapeHtml(stadium.name || "Stadio senza nome")} · Livello ${escapeHtml(stadium.level ?? 0)}</small>
+      </span>
+      <span>
+        <button class="button button-secondary button-small" type="button" data-admin-edit-stadium="${escapeHtml(stadium.id)}">Modifica</button>
+        <button class="button button-danger button-small" type="button" data-admin-delete-stadium="${escapeHtml(stadium.id)}">Elimina</button>
+      </span>
+    </div>
+  `).join("") || `<p class="muted admin-empty-message">Nessuno stadio inserito.</p>`;
+
+  return renderAdminPanel("adminStadiumsPanel", "Firebase", "Stadi", "Imposta nome e livello dello stadio per ogni squadra in una determinata stagione.", `
+      <form id="adminStadiumForm" class="form-grid">
+        <input id="adminStadiumId" type="hidden" />
+        <label>
+          Squadra nella stagione
+          <select id="adminStadiumSeasonTeamId" class="input" required>
+            ${seasonTeamOptions}
+          </select>
+        </label>
+        <label>
+          Nome stadio
+          <input id="adminStadiumName" class="input" type="text" placeholder="Es. Arechi Stadium" />
+        </label>
+        <label>
+          Livello
+          <select id="adminStadiumLevel" class="input" required>
+            ${levelOptions}
+          </select>
+        </label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit">Salva stadio</button>
+          <button id="adminStadiumReset" class="button button-secondary" type="button">Nuovo</button>
+          <span id="adminStadiumStatus" class="form-status"></span>
+        </div>
+      </form>
+
+      <details class="admin-edit-section" open>
+        <summary><strong>Stadi inseriti</strong><span>${state.raw.stadiums.length}</span></summary>
+        <div class="admin-list">${rows}</div>
+      </details>
+  `);
+}
+
+function renderCompetitionMatchesAdminPanel() {
+  const competitionOptions = state.raw.competitions.map((competition) => `
+    <option value="${escapeHtml(competition.id)}">${escapeHtml(getSeasonName(competition.seasonId))} · ${escapeHtml(competition.name)}</option>
+  `).join("");
+
+  const statusOptions = MATCH_STATUSES.map((status) => `
+    <option value="${escapeHtml(status.value)}">${escapeHtml(status.label)}</option>
+  `).join("");
+
+  const matchdayOptions = STANDARD_KNOCKOUT_MATCHDAYS.map((matchday) => `
+    <option value="${escapeHtml(matchday)}"></option>
+  `).join("");
+
+  const rows = state.raw.competitionMatches.map((match) => {
+    const competition = buildMaps().competitionsById.get(match.competitionId);
+    return `
+      <div class="admin-list-item">
+        <span>
+          <strong>${escapeHtml(getSeasonName(competition?.seasonId))} · ${escapeHtml(competition?.name || match.competitionId)}</strong>
+          <small>${escapeHtml(match.matchday || "-")} · ${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))} · ${escapeHtml(formatMatchResult(match))}</small>
+        </span>
+        <span>
+          <span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span>
+          <button class="button button-secondary button-small" type="button" data-admin-edit-match="${escapeHtml(match.id)}">Modifica</button>
+          <button class="button button-danger button-small" type="button" data-admin-delete-match="${escapeHtml(match.id)}">Elimina</button>
+        </span>
+      </div>`;
+  }).join("") || `<p class="muted admin-empty-message">Nessuna partita inserita.</p>`;
+
+  return renderAdminPanel("adminCompetitionMatchesPanel", "Firebase", "Partite competizioni", "Inserisci calendario e risultati delle partite. Le partite possono essere Da giocare o Giocate.", `
+      <form id="adminCompetitionMatchesForm" class="form-grid">
+        <input id="adminCompetitionMatchId" type="hidden" />
+        <label class="span-2">
+          Competizione
+          <select id="adminCompetitionMatchCompetitionId" class="input" required>
+            ${competitionOptions}
+          </select>
+        </label>
+        <label>
+          Fase/Giornata
+          <input id="adminCompetitionMatchday" class="input" type="text" list="adminCompetitionMatchdayOptions" placeholder="Es. Giornata 1 oppure QF - Andata" required />
+          <datalist id="adminCompetitionMatchdayOptions">${matchdayOptions}</datalist>
+          <small class="field-hint">Per competizioni a gironi puoi usare QF/SF/Finale/Finalissima o scrivere una giornata libera.</small>
+        </label>
+        <label>
+          Data
+          <input id="adminCompetitionMatchDate" class="input" type="date" />
+        </label>
+        <label>
+          Squadra casa
+          <select id="adminCompetitionMatchHome" class="input" required></select>
+        </label>
+        <label>
+          Squadra trasferta
+          <select id="adminCompetitionMatchAway" class="input" required></select>
+        </label>
+        <label>
+          Stato partita
+          <select id="adminCompetitionMatchStatus" class="input" required>
+            ${statusOptions}
+          </select>
+        </label>
+        <label>
+          Gol casa
+          <input id="adminCompetitionMatchHomeGoals" class="input" type="number" min="0" step="1" />
+        </label>
+        <label>
+          Gol trasferta
+          <input id="adminCompetitionMatchAwayGoals" class="input" type="number" min="0" step="1" />
+        </label>
+        <label>
+          FP casa
+          <input id="adminCompetitionMatchHomeScore" class="input" type="number" step="0.5" />
+        </label>
+        <label>
+          FP trasferta
+          <input id="adminCompetitionMatchAwayScore" class="input" type="number" step="0.5" />
+        </label>
+        <label class="span-2">
+          Note
+          <input id="adminCompetitionMatchNotes" class="input" type="text" placeholder="Opzionale" />
+        </label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit">Salva partita</button>
+          <button id="adminCompetitionMatchReset" class="button button-secondary" type="button">Nuova</button>
+          <span id="adminCompetitionMatchStatusText" class="form-status"></span>
+        </div>
+      </form>
+
+      <details class="admin-edit-section" open>
+        <summary><strong>Partite inserite</strong><span>${state.raw.competitionMatches.length}</span></summary>
+        <div class="admin-list">${rows}</div>
+      </details>
+  `);
+}
+
+function renderFifaRankingAdminPanel() {
+  const teamOptions = state.raw.teams.map((team) => `
+    <option value="${escapeHtml(team.id)}">${escapeHtml(team.canonicalName || team.id)}</option>
+  `).join("");
+
+  const rows = buildFifaRanking().map((ranking) => `
+    <div class="admin-list-item">
+      <span>
+        <strong>${ranking.position}. ${escapeHtml(ranking.teamName)}</strong>
+        <small>Punteggio: ${escapeHtml(ranking.score)}</small>
+      </span>
+      <span>
+        <button class="button button-secondary button-small" type="button" data-admin-edit-fifa="${escapeHtml(ranking.id)}">Modifica</button>
+        <button class="button button-danger button-small" type="button" data-admin-delete-fifa="${escapeHtml(ranking.id)}">Elimina</button>
+      </span>
+    </div>
+  `).join("") || `<p class="muted admin-empty-message">Nessuna voce FIFA Ranking inserita.</p>`;
+
+  return renderAdminPanel("adminFifaRankingPanel", "Firebase", "FIFA Ranking", "Inserisci manualmente il punteggio FIFA di ogni squadra. La posizione è calcolata dal punteggio più alto al più basso.", `
+      <form id="adminFifaRankingForm" class="form-grid">
+        <input id="adminFifaRankingId" type="hidden" />
+        <label>
+          Squadra
+          <select id="adminFifaRankingTeamId" class="input" required>
+            ${teamOptions}
+          </select>
+        </label>
+        <label>
+          Punteggio
+          <input id="adminFifaRankingScore" class="input" type="number" step="0.5" required />
+        </label>
+        <label class="span-2">
+          Note
+          <input id="adminFifaRankingNotes" class="input" type="text" placeholder="Opzionale" />
+        </label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit">Salva ranking</button>
+          <button id="adminFifaRankingReset" class="button button-secondary" type="button">Nuovo</button>
+          <span id="adminFifaRankingStatus" class="form-status"></span>
+        </div>
+      </form>
+
+      <details class="admin-edit-section" open>
+        <summary><strong>Classifica FIFA</strong><span>${state.raw.fifaRankings.length}</span></summary>
+        <div class="admin-list">${rows}</div>
+      </details>
+  `);
+}
+
+
 function attachAdminHandlers() {
   const seasonForm = document.getElementById("adminSeasonForm");
   const presidentForm = document.getElementById("adminPresidentForm");
   const teamForm = document.getElementById("adminTeamForm");
   const seasonTeamForm = document.getElementById("adminSeasonTeamForm");
+  const stadiumForm = document.getElementById("adminStadiumForm");
   const competitionForm = document.getElementById("adminCompetitionForm");
+  const competitionMatchesForm = document.getElementById("adminCompetitionMatchesForm");
   const competitionResultsForm = document.getElementById("adminCompetitionResultsForm");
+  const fifaRankingForm = document.getElementById("adminFifaRankingForm");
 
   seasonForm?.addEventListener("submit", saveSeason);
   presidentForm?.addEventListener("submit", savePresident);
   teamForm?.addEventListener("submit", saveTeam);
   seasonTeamForm?.addEventListener("submit", saveSeasonTeam);
+  stadiumForm?.addEventListener("submit", saveStadium);
   competitionForm?.addEventListener("submit", saveCompetition);
+  competitionMatchesForm?.addEventListener("submit", saveCompetitionMatch);
   competitionResultsForm?.addEventListener("submit", saveCompetitionResults);
+  fifaRankingForm?.addEventListener("submit", saveFifaRanking);
 
   document.getElementById("adminSeasonReset")?.addEventListener("click", resetSeasonForm);
   document.getElementById("adminPresidentReset")?.addEventListener("click", resetPresidentForm);
   document.getElementById("adminTeamReset")?.addEventListener("click", resetTeamForm);
   document.getElementById("adminSeasonTeamReset")?.addEventListener("click", resetSeasonTeamForm);
+  document.getElementById("adminStadiumReset")?.addEventListener("click", resetStadiumForm);
   document.getElementById("adminCompetitionReset")?.addEventListener("click", resetCompetitionForm);
+  document.getElementById("adminCompetitionMatchReset")?.addEventListener("click", resetCompetitionMatchForm);
+  document.getElementById("adminFifaRankingReset")?.addEventListener("click", resetFifaRankingForm);
   document.getElementById("adminCompetitionCreateDefaults")?.addEventListener("click", createDefaultCompetitions);
 
   document.getElementById("adminTeamName")?.addEventListener("input", updateTeamLogoPreview);
@@ -1239,6 +1651,9 @@ function attachAdminHandlers() {
   document.getElementById("adminSeasonTeamLogoFile")?.addEventListener("change", handleSeasonTeamLogoFileChange);
   fillSeasonTeamDefaultsFromTeam();
   updateSeasonTeamLogoPreview();
+
+  document.getElementById("adminCompetitionMatchCompetitionId")?.addEventListener("change", () => updateCompetitionMatchTeamOptions());
+  updateCompetitionMatchTeamOptions();
 
   document.getElementById("adminCompetitionResultsCompetitionId")?.addEventListener("change", (event) => {
     state.selectedResultCompetitionId = event.target.value;
@@ -1278,11 +1693,32 @@ function attachAdminHandlers() {
     button.addEventListener("click", () => deleteDocument("seasonTeams", button.dataset.adminDeleteSeasonTeam, "associazione squadra/stagione"));
   });
 
+  document.querySelectorAll("[data-admin-edit-stadium]").forEach((button) => {
+    button.addEventListener("click", () => editStadium(button.dataset.adminEditStadium));
+  });
+  document.querySelectorAll("[data-admin-delete-stadium]").forEach((button) => {
+    button.addEventListener("click", () => deleteDocument("stadiums", button.dataset.adminDeleteStadium, "stadio"));
+  });
+
   document.querySelectorAll("[data-admin-edit-competition]").forEach((button) => {
     button.addEventListener("click", () => editCompetition(button.dataset.adminEditCompetition));
   });
   document.querySelectorAll("[data-admin-delete-competition]").forEach((button) => {
     button.addEventListener("click", () => deleteDocument("competitions", button.dataset.adminDeleteCompetition, "competizione"));
+  });
+
+  document.querySelectorAll("[data-admin-edit-match]").forEach((button) => {
+    button.addEventListener("click", () => editCompetitionMatch(button.dataset.adminEditMatch));
+  });
+  document.querySelectorAll("[data-admin-delete-match]").forEach((button) => {
+    button.addEventListener("click", () => deleteDocument("competitionMatches", button.dataset.adminDeleteMatch, "partita"));
+  });
+
+  document.querySelectorAll("[data-admin-edit-fifa]").forEach((button) => {
+    button.addEventListener("click", () => editFifaRanking(button.dataset.adminEditFifa));
+  });
+  document.querySelectorAll("[data-admin-delete-fifa]").forEach((button) => {
+    button.addEventListener("click", () => deleteDocument("fifaRankings", button.dataset.adminDeleteFifa, "voce FIFA ranking"));
   });
 }
 
@@ -1298,6 +1734,17 @@ function toggleAdminPanel(panelId) {
 
   const button = panel.querySelector("[data-admin-toggle-panel]");
   if (button) button.textContent = isCollapsed ? "Ingrandisci" : "Riduci";
+}
+
+function expandAdminPanel(panelId) {
+  const panel = document.getElementById(panelId);
+  if (!panel) return;
+
+  panel.classList.remove("is-collapsed");
+  state.collapsedAdminPanels.delete(panelId);
+
+  const button = panel.querySelector("[data-admin-toggle-panel]");
+  if (button) button.textContent = "Riduci";
 }
 
 async function handleTeamLogoFileChange(event) {
@@ -1712,10 +2159,211 @@ async function syncHonorRollForCompetition(competition, rows) {
   await setDoc(doc(db, "honorRoll", competition.seasonId), payload, { merge: true });
 }
 
+function updateCompetitionMatchTeamOptions(selectedHomeId = "", selectedAwayId = "") {
+  const competitionId = document.getElementById("adminCompetitionMatchCompetitionId")?.value;
+  const competition = state.raw.competitions.find((item) => item.id === competitionId);
+  const seasonTeams = competition ? getSeasonTeamsForSeason(competition.seasonId) : [];
+
+  const makeOptions = (selectedId) => `
+    <option value="">Seleziona squadra</option>
+    ${seasonTeams.map((seasonTeam) => `
+      <option value="${escapeHtml(seasonTeam.id)}" ${seasonTeam.id === selectedId ? "selected" : ""}>${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>
+    `).join("")}`;
+
+  const home = document.getElementById("adminCompetitionMatchHome");
+  const away = document.getElementById("adminCompetitionMatchAway");
+  if (home) home.innerHTML = makeOptions(selectedHomeId || home.value);
+  if (away) away.innerHTML = makeOptions(selectedAwayId || away.value);
+}
+
+function nullableNumberFromInput(id) {
+  const value = document.getElementById(id)?.value;
+  return value === "" || value === undefined ? null : Number(value);
+}
+
+async function saveStadium(event) {
+  event.preventDefault();
+  const existingId = document.getElementById("adminStadiumId").value.trim();
+  const seasonTeamId = document.getElementById("adminStadiumSeasonTeamId").value;
+
+  const payload = {
+    seasonTeamId,
+    name: document.getElementById("adminStadiumName").value.trim(),
+    level: Number(document.getElementById("adminStadiumLevel").value || 0),
+    updatedAt: serverTimestamp()
+  };
+
+  if (!payload.seasonTeamId) return;
+
+  const id = existingId || `stadium_${makeIdPart(seasonTeamId)}`;
+
+  try {
+    showMessage("adminStadiumStatus", "Salvataggio...");
+    await setDoc(doc(db, "stadiums", id), existingId ? payload : {
+      ...payload,
+      createdAt: serverTimestamp()
+    }, { merge: true });
+    showMessage("adminStadiumStatus", "Stadio salvato.");
+    resetStadiumForm();
+    await loadData();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminStadiumStatus", "Errore salvataggio stadio.", true);
+  }
+}
+
+async function saveCompetitionMatch(event) {
+  event.preventDefault();
+  const existingId = document.getElementById("adminCompetitionMatchId").value.trim();
+  const competitionId = document.getElementById("adminCompetitionMatchCompetitionId").value;
+  const competition = state.raw.competitions.find((item) => item.id === competitionId);
+  if (!competition) return;
+
+  const payload = {
+    competitionId,
+    seasonId: competition.seasonId,
+    matchday: document.getElementById("adminCompetitionMatchday").value.trim(),
+    matchDate: document.getElementById("adminCompetitionMatchDate").value || "",
+    homeSeasonTeamId: document.getElementById("adminCompetitionMatchHome").value,
+    awaySeasonTeamId: document.getElementById("adminCompetitionMatchAway").value,
+    status: document.getElementById("adminCompetitionMatchStatus").value,
+    homeGoals: nullableNumberFromInput("adminCompetitionMatchHomeGoals"),
+    awayGoals: nullableNumberFromInput("adminCompetitionMatchAwayGoals"),
+    homeScore: nullableNumberFromInput("adminCompetitionMatchHomeScore"),
+    awayScore: nullableNumberFromInput("adminCompetitionMatchAwayScore"),
+    notes: document.getElementById("adminCompetitionMatchNotes").value.trim(),
+    updatedAt: serverTimestamp()
+  };
+
+  if (!payload.matchday || !payload.homeSeasonTeamId || !payload.awaySeasonTeamId) return;
+  if (payload.homeSeasonTeamId === payload.awaySeasonTeamId) {
+    showMessage("adminCompetitionMatchStatusText", "Casa e trasferta non possono essere la stessa squadra.", true);
+    return;
+  }
+
+  const id = existingId || `${makeIdPart(competitionId)}_${makeIdPart(payload.matchday)}_${makeIdPart(payload.homeSeasonTeamId)}_${makeIdPart(payload.awaySeasonTeamId)}`;
+
+  try {
+    showMessage("adminCompetitionMatchStatusText", "Salvataggio...");
+    await setDoc(doc(db, "competitionMatches", id), existingId ? payload : {
+      ...payload,
+      createdAt: serverTimestamp()
+    }, { merge: true });
+    showMessage("adminCompetitionMatchStatusText", "Partita salvata.");
+    resetCompetitionMatchForm();
+    await loadData();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminCompetitionMatchStatusText", "Errore salvataggio partita.", true);
+  }
+}
+
+async function saveFifaRanking(event) {
+  event.preventDefault();
+  const existingId = document.getElementById("adminFifaRankingId").value.trim();
+  const teamId = document.getElementById("adminFifaRankingTeamId").value;
+
+  const payload = {
+    teamId,
+    score: Number(document.getElementById("adminFifaRankingScore").value || 0),
+    notes: document.getElementById("adminFifaRankingNotes").value.trim(),
+    updatedAt: serverTimestamp()
+  };
+
+  if (!payload.teamId) return;
+
+  const id = existingId || `fifa_${makeIdPart(teamId)}`;
+
+  try {
+    showMessage("adminFifaRankingStatus", "Salvataggio...");
+    await setDoc(doc(db, "fifaRankings", id), existingId ? payload : {
+      ...payload,
+      createdAt: serverTimestamp()
+    }, { merge: true });
+    showMessage("adminFifaRankingStatus", "FIFA Ranking salvato.");
+    resetFifaRankingForm();
+    await loadData();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminFifaRankingStatus", "Errore salvataggio FIFA Ranking.", true);
+  }
+}
+
+function editStadium(id) {
+  const stadium = state.raw.stadiums.find((item) => item.id === id);
+  if (!stadium) return;
+
+  expandAdminPanel("adminStadiumsPanel");
+  document.getElementById("adminStadiumId").value = stadium.id;
+  document.getElementById("adminStadiumSeasonTeamId").value = stadium.seasonTeamId || "";
+  document.getElementById("adminStadiumName").value = stadium.name || "";
+  document.getElementById("adminStadiumLevel").value = String(stadium.level ?? 0);
+  document.getElementById("adminStadiumsPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function editCompetitionMatch(id) {
+  const match = state.raw.competitionMatches.find((item) => item.id === id);
+  if (!match) return;
+
+  expandAdminPanel("adminCompetitionMatchesPanel");
+  document.getElementById("adminCompetitionMatchId").value = match.id;
+  document.getElementById("adminCompetitionMatchCompetitionId").value = match.competitionId || "";
+  updateCompetitionMatchTeamOptions(match.homeSeasonTeamId || "", match.awaySeasonTeamId || "");
+  document.getElementById("adminCompetitionMatchday").value = match.matchday || "";
+  document.getElementById("adminCompetitionMatchDate").value = match.matchDate || "";
+  document.getElementById("adminCompetitionMatchStatus").value = match.status || "DA_GIOCARE";
+  document.getElementById("adminCompetitionMatchHomeGoals").value = match.homeGoals ?? "";
+  document.getElementById("adminCompetitionMatchAwayGoals").value = match.awayGoals ?? "";
+  document.getElementById("adminCompetitionMatchHomeScore").value = match.homeScore ?? "";
+  document.getElementById("adminCompetitionMatchAwayScore").value = match.awayScore ?? "";
+  document.getElementById("adminCompetitionMatchNotes").value = match.notes || "";
+  document.getElementById("adminCompetitionMatchesPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function editFifaRanking(id) {
+  const ranking = state.raw.fifaRankings.find((item) => item.id === id);
+  if (!ranking) return;
+
+  expandAdminPanel("adminFifaRankingPanel");
+  document.getElementById("adminFifaRankingId").value = ranking.id;
+  document.getElementById("adminFifaRankingTeamId").value = ranking.teamId || "";
+  document.getElementById("adminFifaRankingScore").value = ranking.score ?? "";
+  document.getElementById("adminFifaRankingNotes").value = ranking.notes || "";
+  document.getElementById("adminFifaRankingPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function resetStadiumForm() {
+  document.getElementById("adminStadiumForm")?.reset();
+  const idInput = document.getElementById("adminStadiumId");
+  if (idInput) idInput.value = "";
+  const levelInput = document.getElementById("adminStadiumLevel");
+  if (levelInput) levelInput.value = "0";
+  showMessage("adminStadiumStatus", "");
+}
+
+function resetCompetitionMatchForm() {
+  document.getElementById("adminCompetitionMatchesForm")?.reset();
+  const idInput = document.getElementById("adminCompetitionMatchId");
+  if (idInput) idInput.value = "";
+  const statusInput = document.getElementById("adminCompetitionMatchStatus");
+  if (statusInput) statusInput.value = "DA_GIOCARE";
+  updateCompetitionMatchTeamOptions();
+  showMessage("adminCompetitionMatchStatusText", "");
+}
+
+function resetFifaRankingForm() {
+  document.getElementById("adminFifaRankingForm")?.reset();
+  const idInput = document.getElementById("adminFifaRankingId");
+  if (idInput) idInput.value = "";
+  showMessage("adminFifaRankingStatus", "");
+}
+
+
 function editSeason(id) {
   const season = state.raw.seasons.find((item) => item.id === id);
   if (!season) return;
 
+  expandAdminPanel("adminSeasonsPanel");
   document.getElementById("adminSeasonId").value = season.id;
   document.getElementById("adminSeasonId").readOnly = true;
   document.getElementById("adminSeasonName").value = season.name || "";
@@ -1730,6 +2378,7 @@ function editPresident(id) {
   const president = state.raw.presidents.find((item) => item.id === id);
   if (!president) return;
 
+  expandAdminPanel("adminPresidentsPanel");
   document.getElementById("adminPresidentId").value = president.id;
   document.getElementById("adminPresidentName").value = president.name || "";
   document.getElementById("adminPresidentNotes").value = president.notes || "";
@@ -1741,6 +2390,7 @@ function editTeam(id) {
   const team = state.raw.teams.find((item) => item.id === id);
   if (!team) return;
 
+  expandAdminPanel("adminTeamsPanel");
   document.getElementById("adminTeamId").value = team.id;
   document.getElementById("adminTeamName").value = team.canonicalName || "";
   document.getElementById("adminTeamLogoValue").value = team.logo || "";
@@ -1762,6 +2412,7 @@ function editSeasonTeam(id) {
   const seasonTeam = state.raw.seasonTeams.find((item) => item.id === id);
   if (!seasonTeam) return;
 
+  expandAdminPanel("adminSeasonTeamsPanel");
   document.getElementById("adminSeasonTeamId").value = seasonTeam.id;
   document.getElementById("adminSeasonTeamSeasonId").value = seasonTeam.seasonId || getCurrentSeasonId();
   document.getElementById("adminSeasonTeamTeamId").value = seasonTeam.teamId || "";
@@ -1784,6 +2435,7 @@ function editCompetition(id) {
   const competition = state.raw.competitions.find((item) => item.id === id);
   if (!competition) return;
 
+  expandAdminPanel("adminCompetitionsPanel");
   document.getElementById("adminCompetitionId").value = competition.id;
   document.getElementById("adminCompetitionSeasonId").value = competition.seasonId || getCurrentSeasonId();
   document.getElementById("adminCompetitionName").value = competition.name || "";
@@ -1858,9 +2510,26 @@ async function deleteDocument(collectionName, id, label) {
   }
 }
 
+function setupSeasonSelectorEvents() {
+  const handleChange = (event) => {
+    state.selectedSeasonId = event.target.value;
+    renderSeasonSelectors();
+    renderDashboard();
+    renderTeamsTable();
+    renderCompetitionsPublic();
+    renderStadiumsPublic();
+  };
+
+  ["globalSeasonSelect", "dashboardSeasonSelect"].forEach((id) => {
+    const select = document.getElementById(id);
+    select?.addEventListener("change", handleChange);
+  });
+}
+
 async function initializeAppUi() {
   setupNavigation();
   setupAuth();
+  setupSeasonSelectorEvents();
   updateAdminVisibility();
 
   const loginHelpText = document.querySelector("#loginDialog .muted");

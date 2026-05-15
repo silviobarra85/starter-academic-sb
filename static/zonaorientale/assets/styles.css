@@ -3600,3 +3600,20 @@ body.is-mobile-ux .mobile-honor-president-cell small {
     overflow-x: auto !important;
   }
 }
+
+/* Firebase admin V5: matches, stadiums and FIFA ranking */
+.match-table-wrap table,
+.fifa-ranking-table-wrap table {
+  min-width: 680px;
+}
+
+.admin-collapsible-panel.is-collapsed .panel-header {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .match-table-wrap,
+  .fifa-ranking-table-wrap {
+    overflow-x: auto !important;
+  }
+}

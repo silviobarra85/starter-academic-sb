@@ -52,12 +52,22 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    match /competitionMatches/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     match /competitionResults/{docId} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
     match /honorRoll/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /fifaRankings/{docId} {
       allow read: if true;
       allow write: if isAdmin();
     }
