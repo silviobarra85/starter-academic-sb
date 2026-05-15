@@ -3838,3 +3838,326 @@ body.is-mobile-ux .mobile-more-sheet:not(.hidden),
 body.is-mobile-ux .mobile-more-backdrop:not(.hidden) {
   display: grid !important;
 }
+
+/* V8 - Mobile compact real tables and collapsible public sections. */
+.content-collapsible-panel > .panel-header,
+.content-collapsible-panel > .news-card-header,
+.content-collapsible-panel > .competition-card-header,
+.content-collapsible-panel > .compact-card-header {
+  align-items: flex-start;
+}
+
+.content-collapsible-panel.section-is-collapsed > :not(.panel-header):not(.news-card-header):not(.competition-card-header):not(.compact-card-header) {
+  display: none !important;
+}
+
+.section-toggle-button {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .panel-header,
+  .news-card-header,
+  .competition-card-header,
+  .compact-card-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .panel-header > div:first-child,
+  .news-card-header > div:first-child,
+  .competition-card-header > div:first-child,
+  .compact-card-header > div:first-child {
+    min-width: 0;
+  }
+
+  .panel-actions {
+    width: auto !important;
+    flex: 0 0 auto;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+  }
+
+  .section-toggle-button,
+  [data-admin-toggle-panel] {
+    min-height: 30px !important;
+    padding: 5px 8px !important;
+    font-size: 0.68rem !important;
+    border-radius: 999px !important;
+  }
+
+  /* Keep every mobile table as an actual table, not as stacked cards. */
+  .table-wrap,
+  .compact-table,
+  .mini-table-wrap,
+  .honor-table-wrap,
+  .honor-cup-content,
+  .mobile-tabular-wrap,
+  .standing-table-wrap,
+  .roster-dialog-table {
+    max-height: min(58vh, 500px) !important;
+    height: auto !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 12px;
+  }
+
+  .table-wrap table,
+  .compact-table table,
+  .mini-table-wrap table,
+  .honor-table-wrap table,
+  .honor-cup-content table,
+  .mobile-tabular-wrap table,
+  .standing-table-wrap table,
+  .roster-dialog-table table {
+    display: table !important;
+    width: 100% !important;
+    min-width: max-content !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    table-layout: auto !important;
+    font-size: 0.62rem !important;
+  }
+
+  .table-wrap thead,
+  .compact-table thead,
+  .mini-table-wrap thead,
+  .honor-table-wrap thead,
+  .honor-cup-content thead,
+  .mobile-tabular-wrap thead,
+  .standing-table-wrap thead,
+  .roster-dialog-table thead {
+    display: table-header-group !important;
+  }
+
+  .table-wrap tbody,
+  .compact-table tbody,
+  .mini-table-wrap tbody,
+  .honor-table-wrap tbody,
+  .honor-cup-content tbody,
+  .mobile-tabular-wrap tbody,
+  .standing-table-wrap tbody,
+  .roster-dialog-table tbody {
+    display: table-row-group !important;
+    gap: 0 !important;
+  }
+
+  .table-wrap tr,
+  .compact-table tr,
+  .mini-table-wrap tr,
+  .honor-table-wrap tr,
+  .honor-cup-content tr,
+  .mobile-tabular-wrap tr,
+  .standing-table-wrap tr,
+  .roster-dialog-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  .table-wrap th,
+  .compact-table th,
+  .mini-table-wrap th,
+  .honor-table-wrap th,
+  .honor-cup-content th,
+  .mobile-tabular-wrap th,
+  .standing-table-wrap th,
+  .roster-dialog-table th,
+  .table-wrap td,
+  .compact-table td,
+  .mini-table-wrap td,
+  .honor-table-wrap td,
+  .honor-cup-content td,
+  .mobile-tabular-wrap td,
+  .standing-table-wrap td,
+  .roster-dialog-table td {
+    display: table-cell !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 140px;
+    min-height: 0 !important;
+    padding: 4px 5px !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+    text-align: left;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: 0.62rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .table-wrap th,
+  .compact-table th,
+  .mini-table-wrap th,
+  .honor-table-wrap th,
+  .honor-cup-content th,
+  .mobile-tabular-wrap th,
+  .standing-table-wrap th,
+  .roster-dialog-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 5 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    color: #e5e7eb !important;
+    font-size: 0.58rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.035em !important;
+    text-transform: uppercase !important;
+  }
+
+  .table-wrap td::before,
+  .compact-table td::before,
+  .mini-table-wrap td::before,
+  .honor-table-wrap td::before,
+  .honor-cup-content td::before,
+  .mobile-tabular-wrap td::before,
+  .standing-table-wrap td::before,
+  .roster-dialog-table td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .table-wrap .number,
+  .compact-table .number,
+  .mini-table-wrap .number,
+  .honor-table-wrap .number,
+  .honor-cup-content .number,
+  .mobile-tabular-wrap .number,
+  .standing-table-wrap .number,
+  .roster-dialog-table .number {
+    text-align: right !important;
+  }
+
+  .table-wrap .button-small,
+  .compact-table .button-small,
+  .mini-table-wrap .button-small,
+  .honor-table-wrap .button-small,
+  .honor-cup-content .button-small,
+  .mobile-tabular-wrap .button-small,
+  .standing-table-wrap .button-small,
+  .roster-dialog-table .button-small {
+    min-height: 24px !important;
+    padding: 3px 6px !important;
+    font-size: 0.58rem !important;
+    border-radius: 8px !important;
+  }
+
+  .club-logo {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .status,
+  .mini-badge {
+    padding: 2px 5px !important;
+    font-size: 0.56rem !important;
+  }
+}
+
+/* Same V8 mobile table behavior for JS fallback mobile class. */
+body.is-mobile-ux .table-wrap,
+body.is-mobile-ux .compact-table,
+body.is-mobile-ux .mini-table-wrap,
+body.is-mobile-ux .honor-table-wrap,
+body.is-mobile-ux .honor-cup-content,
+body.is-mobile-ux .mobile-tabular-wrap,
+body.is-mobile-ux .standing-table-wrap,
+body.is-mobile-ux .roster-dialog-table {
+  max-height: min(58vh, 500px) !important;
+  height: auto !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 12px;
+}
+
+body.is-mobile-ux .table-wrap table,
+body.is-mobile-ux .compact-table table,
+body.is-mobile-ux .mini-table-wrap table,
+body.is-mobile-ux .honor-table-wrap table,
+body.is-mobile-ux .honor-cup-content table,
+body.is-mobile-ux .mobile-tabular-wrap table,
+body.is-mobile-ux .standing-table-wrap table,
+body.is-mobile-ux .roster-dialog-table table {
+  display: table !important;
+  width: 100% !important;
+  min-width: max-content !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  table-layout: auto !important;
+  font-size: 0.62rem !important;
+}
+
+body.is-mobile-ux .table-wrap thead,
+body.is-mobile-ux .compact-table thead,
+body.is-mobile-ux .mini-table-wrap thead,
+body.is-mobile-ux .honor-table-wrap thead,
+body.is-mobile-ux .honor-cup-content thead,
+body.is-mobile-ux .mobile-tabular-wrap thead,
+body.is-mobile-ux .standing-table-wrap thead,
+body.is-mobile-ux .roster-dialog-table thead { display: table-header-group !important; }
+body.is-mobile-ux .table-wrap tbody,
+body.is-mobile-ux .compact-table tbody,
+body.is-mobile-ux .mini-table-wrap tbody,
+body.is-mobile-ux .honor-table-wrap tbody,
+body.is-mobile-ux .honor-cup-content tbody,
+body.is-mobile-ux .mobile-tabular-wrap tbody,
+body.is-mobile-ux .standing-table-wrap tbody,
+body.is-mobile-ux .roster-dialog-table tbody { display: table-row-group !important; gap: 0 !important; }
+body.is-mobile-ux .table-wrap tr,
+body.is-mobile-ux .compact-table tr,
+body.is-mobile-ux .mini-table-wrap tr,
+body.is-mobile-ux .honor-table-wrap tr,
+body.is-mobile-ux .honor-cup-content tr,
+body.is-mobile-ux .mobile-tabular-wrap tr,
+body.is-mobile-ux .standing-table-wrap tr,
+body.is-mobile-ux .roster-dialog-table tr { display: table-row !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .compact-table th,
+body.is-mobile-ux .mini-table-wrap th,
+body.is-mobile-ux .honor-table-wrap th,
+body.is-mobile-ux .honor-cup-content th,
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .standing-table-wrap th,
+body.is-mobile-ux .roster-dialog-table th,
+body.is-mobile-ux .table-wrap td,
+body.is-mobile-ux .compact-table td,
+body.is-mobile-ux .mini-table-wrap td,
+body.is-mobile-ux .honor-table-wrap td,
+body.is-mobile-ux .honor-cup-content td,
+body.is-mobile-ux .mobile-tabular-wrap td,
+body.is-mobile-ux .standing-table-wrap td,
+body.is-mobile-ux .roster-dialog-table td { display: table-cell !important; width: auto !important; min-width: 0 !important; max-width: 140px; min-height: 0 !important; padding: 4px 5px !important; border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important; text-align: left; vertical-align: middle !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; font-size: 0.62rem !important; line-height: 1.15 !important; }
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .compact-table th,
+body.is-mobile-ux .mini-table-wrap th,
+body.is-mobile-ux .honor-table-wrap th,
+body.is-mobile-ux .honor-cup-content th,
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .standing-table-wrap th,
+body.is-mobile-ux .roster-dialog-table th { position: sticky !important; top: 0 !important; z-index: 5 !important; background: rgba(15, 23, 42, 0.98) !important; color: #e5e7eb !important; font-size: 0.58rem !important; font-weight: 900 !important; letter-spacing: 0.035em !important; text-transform: uppercase !important; }
+body.is-mobile-ux .table-wrap td::before,
+body.is-mobile-ux .compact-table td::before,
+body.is-mobile-ux .mini-table-wrap td::before,
+body.is-mobile-ux .honor-table-wrap td::before,
+body.is-mobile-ux .honor-cup-content td::before,
+body.is-mobile-ux .mobile-tabular-wrap td::before,
+body.is-mobile-ux .standing-table-wrap td::before,
+body.is-mobile-ux .roster-dialog-table td::before { content: none !important; display: none !important; }
+body.is-mobile-ux .table-wrap .number,
+body.is-mobile-ux .compact-table .number,
+body.is-mobile-ux .mini-table-wrap .number,
+body.is-mobile-ux .honor-table-wrap .number,
+body.is-mobile-ux .honor-cup-content .number,
+body.is-mobile-ux .mobile-tabular-wrap .number,
+body.is-mobile-ux .standing-table-wrap .number,
+body.is-mobile-ux .roster-dialog-table .number { text-align: right !important; }

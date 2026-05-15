@@ -129,3 +129,9 @@ Nuove raccolte usate dall'app:
 Le raccolte vengono create automaticamente al primo salvataggio dall'area Admin. Resta da creare manualmente solo `admins`.
 
 L'area Admin ora si apre con tutte le schede ridotte; usa **Ingrandisci** per aprire la scheda che vuoi modificare.
+
+## Aggiornamento V8
+
+- Su mobile le tabelle restano tabelle vere: intestazioni visibili e sticky, layout compatto, scroll interno al contenitore.
+- Le sezioni pubbliche e le sottosezioni principali hanno il pulsante `Ingrandisci/Riduci`.
+- Le schede Admin restano ridotte di default come nelle versioni precedenti.

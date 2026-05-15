@@ -130,7 +130,8 @@ const state = {
   selectedAdminCompetitionSeasonId: "",
   selectedAdminMatchSeasonId: "",
   selectedAdminResultsSeasonId: "",
-  collapsedAdminPanels: new Set(ADMIN_PANEL_IDS)
+  collapsedAdminPanels: new Set(ADMIN_PANEL_IDS),
+  collapsedContentPanels: new Set()
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -594,6 +595,7 @@ function renderAll() {
   renderPlaceholderPages();
   renderStadiumsPublic();
   renderAdminArea();
+  setupCollapsibleSections();
 }
 
 function renderLeagueHeader() {
@@ -980,6 +982,71 @@ function updateAdminVisibility() {
 
   adminLinks.forEach((link) => {
     link.classList.toggle("hidden", !state.isAdmin);
+  });
+}
+
+
+function getCollapsePanelKey(panel, index) {
+  if (panel.dataset.collapseKey) return panel.dataset.collapseKey;
+  const page = panel.closest(".app-page")?.dataset.page || "page";
+  const explicitId = panel.id || panel.getAttribute("aria-labelledby") || `section-${index}`;
+  const key = `content-${page}-${explicitId}`;
+  panel.dataset.collapseKey = key;
+  return key;
+}
+
+function setContentPanelCollapsed(panel, key, isCollapsed) {
+  panel.classList.toggle("section-is-collapsed", isCollapsed);
+  if (isCollapsed) state.collapsedContentPanels.add(key);
+  else state.collapsedContentPanels.delete(key);
+
+  const button = panel.querySelector(`[data-content-toggle-panel="${CSS.escape(key)}"]`);
+  if (button) button.textContent = isCollapsed ? "Ingrandisci" : "Riduci";
+}
+
+function toggleContentPanel(key) {
+  const panel = document.querySelector(`[data-collapse-key="${CSS.escape(key)}"]`);
+  if (!panel) return;
+  setContentPanelCollapsed(panel, key, !panel.classList.contains("section-is-collapsed"));
+}
+
+function setupCollapsibleSections() {
+  const panels = $$(`
+    .app-page:not([data-page="admin"]) > .panel,
+    .app-page:not([data-page="admin"]) .grid-two > .panel,
+    .app-page:not([data-page="admin"]) .single-panel-layout > .panel,
+    .app-page:not([data-page="admin"]) .competition-card,
+    .app-page:not([data-page="admin"]) .news-card,
+    .app-page:not([data-page="admin"]) .compact-card
+  `);
+
+  panels.forEach((panel, index) => {
+    if (panel.classList.contains("admin-collapsible-panel")) return;
+
+    const key = getCollapsePanelKey(panel, index);
+    panel.classList.add("content-collapsible-panel");
+
+    const header = panel.querySelector(":scope > .panel-header, :scope > .news-card-header, :scope > .competition-card-header, :scope > .compact-card-header");
+    if (!header) return;
+
+    let actions = header.querySelector(":scope > .panel-actions");
+    if (!actions) {
+      actions = document.createElement("div");
+      actions.className = "panel-actions";
+      header.appendChild(actions);
+    }
+
+    let button = actions.querySelector(`[data-content-toggle-panel="${CSS.escape(key)}"]`);
+    if (!button) {
+      button = document.createElement("button");
+      button.className = "button button-secondary button-small section-toggle-button";
+      button.type = "button";
+      button.dataset.contentTogglePanel = key;
+      button.addEventListener("click", () => toggleContentPanel(key));
+      actions.appendChild(button);
+    }
+
+    setContentPanelCollapsed(panel, key, state.collapsedContentPanels.has(key));
   });
 }
 
