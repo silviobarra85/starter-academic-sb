@@ -289,11 +289,7 @@ function sortData() {
     if (seasonCompare) return seasonCompare;
     return String(a.name || "").localeCompare(String(b.name || ""), "it");
   });
-  state.raw.competitionMatches.sort((a, b) => {
-    const competitionCompare = String(a.competitionId || "").localeCompare(String(b.competitionId || ""), "it");
-    if (competitionCompare) return competitionCompare;
-    return String(a.matchday || "").localeCompare(String(b.matchday || ""), "it");
-  });
+  state.raw.competitionMatches.sort(compareMatchesForDisplay);
   state.raw.fifaRankings.sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
   state.raw.competitionResults.sort((a, b) => {
     const competitionCompare = String(a.competitionId || "").localeCompare(String(b.competitionId || ""), "it");
@@ -507,18 +503,49 @@ function formatStadium(stadium) {
   return `${name} · L${level}`;
 }
 
+function getMatchSerieAMatchday(match) {
+  const value = Number(match?.serieAMatchday ?? match?.realSerieAMatchday ?? match?.serieAGiornata ?? 0);
+  return Number.isFinite(value) ? value : 0;
+}
+
+function getCompetitionNameForMatch(match) {
+  const { competitionsById } = buildMaps();
+  return competitionsById.get(match?.competitionId)?.name || match?.competitionId || "";
+}
+
+function compareMatchesForDisplay(a, b) {
+  const competitionCompare = getCompetitionNameForMatch(a).localeCompare(getCompetitionNameForMatch(b), "it");
+  if (competitionCompare) return competitionCompare;
+
+  const dateCompare = String(b.matchDate || "").localeCompare(String(a.matchDate || ""), "it");
+  if (dateCompare) return dateCompare;
+
+  const serieACompare = getMatchSerieAMatchday(b) - getMatchSerieAMatchday(a);
+  if (serieACompare) return serieACompare;
+
+  return String(b.matchday || "").localeCompare(String(a.matchday || ""), "it");
+}
+
+function sortMatchesForDisplay(matches) {
+  return [...matches].sort(compareMatchesForDisplay);
+}
+
+function formatMatchStage(match) {
+  const parts = [];
+  if (match?.matchday) parts.push(match.matchday);
+  const serieAMatchday = getMatchSerieAMatchday(match);
+  if (serieAMatchday) parts.push(`Serie A ${serieAMatchday}`);
+  return parts.join(" · ") || "-";
+}
+
 function getCompetitionMatches(competitionId) {
-  return state.raw.competitionMatches
-    .filter((match) => match.competitionId === competitionId)
-    .sort((a, b) => {
-      const dateCompare = String(a.matchDate || "").localeCompare(String(b.matchDate || ""), "it");
-      if (dateCompare) return dateCompare;
-      return String(a.matchday || "").localeCompare(String(b.matchday || ""), "it");
-    });
+  return sortMatchesForDisplay(
+    state.raw.competitionMatches.filter((match) => match.competitionId === competitionId)
+  );
 }
 
 function formatMatchResult(match) {
-  if (!match || match.status !== "GIOCATA") return "Da giocare";
+  if (!match || match.status !== "GIOCATA") return getLabel(MATCH_STATUSES, match?.status) || "Da giocare";
   const goals = match.homeGoals !== null && match.homeGoals !== undefined && match.awayGoals !== null && match.awayGoals !== undefined
     ? `${match.homeGoals}-${match.awayGoals}`
     : "Risultato inserito";
@@ -529,21 +556,22 @@ function formatMatchResult(match) {
 }
 
 function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
-  if (!matches.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  const sortedMatches = sortMatchesForDisplay(matches);
+  if (!sortedMatches.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
 
   return `
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase/Giornata</th><th>Partita</th><th>Data</th><th>Stato</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase/Giornata</th><th>Partita</th><th>Data</th><th class="match-status-col">Stato</th><th class="number">Risultato</th></tr>
         </thead>
         <tbody>
-          ${matches.map((match) => `
+          ${sortedMatches.map((match) => `
             <tr>
-              <td data-label="Fase/Giornata">${escapeHtml(match.matchday || "-")}</td>
+              <td data-label="Fase/Giornata">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Stato"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
+              <td data-label="Stato" class="match-status-col"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
               <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
@@ -559,53 +587,55 @@ function renderDashboardCalendar(seasonId) {
   const competitionsById = new Map(competitions.map((competition) => [competition.id, competition]));
   const competitionIds = new Set(competitions.map((competition) => competition.id));
 
-  const matches = state.raw.competitionMatches
-    .filter((match) => competitionIds.has(match.competitionId))
-    .sort((a, b) => {
-      const statusCompare = (a.status === "DA_GIOCARE" ? 0 : 1) - (b.status === "DA_GIOCARE" ? 0 : 1);
-      if (statusCompare) return statusCompare;
-      const dateA = String(a.matchDate || "9999-12-31");
-      const dateB = String(b.matchDate || "9999-12-31");
-      const dateCompare = dateA.localeCompare(dateB, "it");
-      if (dateCompare) return dateCompare;
-      return String(a.matchday || "").localeCompare(String(b.matchday || ""), "it");
-    })
-    .slice(0, 10);
+  const matches = sortMatchesForDisplay(
+    state.raw.competitionMatches.filter((match) => competitionIds.has(match.competitionId))
+  ).slice(0, 16);
 
   if (!matches.length) {
     target.innerHTML = `<p class="muted">Nessuna partita programmata o giocata per questa stagione.</p>`;
     return;
   }
 
-  target.innerHTML = `
-    <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
-      <table class="dashboard-calendar-table">
-        <thead>
-          <tr>
-            <th>Competizione</th>
-            <th>Fase/Giornata</th>
-            <th>Partita</th>
-            <th>Data</th>
-            <th>Stato</th>
-            <th class="number">Risultato</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${matches.map((match) => {
-            const competition = competitionsById.get(match.competitionId);
-            return `
+  const groupedByCompetition = new Map();
+  matches.forEach((match) => {
+    const competition = competitionsById.get(match.competitionId);
+    const key = match.competitionId || "unknown";
+    if (!groupedByCompetition.has(key)) {
+      groupedByCompetition.set(key, {
+        competitionName: competition?.name || "Competizione",
+        matches: []
+      });
+    }
+    groupedByCompetition.get(key).matches.push(match);
+  });
+
+  target.innerHTML = Array.from(groupedByCompetition.values()).map((group) => `
+    <div class="dashboard-calendar-group">
+      <h4>${escapeHtml(group.competitionName)}</h4>
+      <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
+        <table class="dashboard-calendar-table">
+          <thead>
+            <tr>
+              <th>Fase/Giornata</th>
+              <th>Partita</th>
+              <th>Data</th>
+              <th class="match-status-col">Stato</th>
+              <th class="number">Risultato</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${group.matches.map((match) => `
               <tr>
-                <td data-label="Competizione"><strong>${escapeHtml(competition?.name || "-")}</strong></td>
-                <td data-label="Fase/Giornata">${escapeHtml(match.matchday || "-")}</td>
+                <td data-label="Fase/Giornata">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                <td data-label="Stato"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
+                <td data-label="Stato" class="match-status-col"><span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span></td>
                 <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
-              </tr>`;
-          }).join("")}
-        </tbody>
-      </table>
-    </div>`;
+              </tr>`).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join("");
 }
 
 function renderStadiumsPublic() {
@@ -671,6 +701,70 @@ function renderFifaRankingPublic() {
     </div>`;
 }
 
+function getPlayedMatchesForCompetition(competition) {
+  return sortMatchesForDisplay(
+    state.raw.competitionMatches.filter((match) => match.competitionId === competition.id && match.status === "GIOCATA")
+  );
+}
+
+function getLatestChampionshipMatches(competition) {
+  const playedMatches = getPlayedMatchesForCompetition(competition);
+  if (!playedMatches.length) return [];
+
+  const first = playedMatches[0];
+  const serieAMatchday = getMatchSerieAMatchday(first);
+  if (serieAMatchday) {
+    return playedMatches.filter((match) => getMatchSerieAMatchday(match) === serieAMatchday);
+  }
+
+  if (first.matchday) {
+    return playedMatches.filter((match) => match.matchday === first.matchday);
+  }
+
+  return playedMatches.filter((match) => match.matchDate === first.matchDate);
+}
+
+function getFinalMatchesForCompetition(competition) {
+  const finalMatches = getPlayedMatchesForCompetition(competition).filter((match) => /finale|finalissima/i.test(match.matchday || ""));
+  if (finalMatches.length) return finalMatches;
+  return [];
+}
+
+function renderCompactMatchLines(matches) {
+  if (!matches.length) return "";
+
+  return `
+    <div class="compact-match-lines">
+      ${sortMatchesForDisplay(matches).map((match) => `
+        <div class="compact-match-line">
+          <span>${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId, { strong: false })} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId, { strong: false })}</span>
+          <strong>${escapeHtml(formatMatchResult(match))}</strong>
+        </div>`).join("")}
+    </div>`;
+}
+
+function renderDashboardCompetitionSummary(competition) {
+  if (isRankingCompetition(competition)) {
+    const latestMatches = getLatestChampionshipMatches(competition);
+    if (latestMatches.length) {
+      const serieAMatchday = getMatchSerieAMatchday(latestMatches[0]);
+      const label = serieAMatchday
+        ? `Ultima giornata Serie A ${serieAMatchday}`
+        : `Ultima giornata ${latestMatches[0].matchday || latestMatches[0].matchDate || "giocata"}`;
+      return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderCompactMatchLines(latestMatches)}</div>`;
+    }
+    return `<div class="dashboard-competition-summary">${renderWinnerLabelHtml(competition, { highlightWinner: true, withLogo: true })}</div>`;
+  }
+
+  const finalMatches = getFinalMatchesForCompetition(competition);
+  if (finalMatches.length) {
+    return `<div class="dashboard-competition-summary"><span class="muted">Finale</span>${renderCompactMatchLines(finalMatches)}</div>`;
+  }
+
+  return `<div class="dashboard-competition-summary">${renderWinnerLabelHtml(competition, { highlightWinner: true, withLogo: true })}</div>`;
+}
+
+
 
 function renderAll() {
   renderLeagueHeader();
@@ -716,12 +810,10 @@ function renderDashboard() {
 
   const metricClubs = document.getElementById("metricClubs");
   const metricTotalFm = document.getElementById("metricTotalFm");
-  const metricAvgFm = document.getElementById("metricAvgFm");
   const metricAlerts = document.getElementById("metricAlerts");
 
   if (metricClubs) metricClubs.textContent = String(seasonTeams.length || getParticipantsCount(seasonId) || 0);
-  if (metricTotalFm) metricTotalFm.textContent = "-";
-  if (metricAvgFm) metricAvgFm.textContent = "-";
+  if (metricTotalFm) metricTotalFm.textContent = "- (medio -)";
   if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === "ATTIVA").length);
 
   const standings = document.getElementById("dashboardStandings");
@@ -731,7 +823,7 @@ function renderDashboard() {
         <div class="stack-item">
           <div>
             <strong>${escapeHtml(competition.name)}</strong>
-            <small>${renderWinnerLabelHtml(competition, { highlightWinner: true, withLogo: true })}</small>
+            ${renderDashboardCompetitionSummary(competition)}
           </div>
           <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
         </div>`).join("")
@@ -825,14 +917,8 @@ function renderCompetitionResultsPublic(competition) {
 
 function renderCompetitionMatchesPublic(competition) {
   const matches = getCompetitionMatches(competition.id);
-  const playedMatches = matches
-    .filter((match) => match.status === "GIOCATA")
-    .sort((a, b) => String(b.matchDate || "").localeCompare(String(a.matchDate || ""), "it"))
-    .slice(0, 5);
-  const scheduledMatches = matches
-    .filter((match) => match.status === "DA_GIOCARE")
-    .sort((a, b) => String(a.matchDate || "9999-12-31").localeCompare(String(b.matchDate || "9999-12-31"), "it"))
-    .slice(0, 5);
+  const playedMatches = sortMatchesForDisplay(matches.filter((match) => match.status === "GIOCATA")).slice(0, 5);
+  const scheduledMatches = sortMatchesForDisplay(matches.filter((match) => match.status === "DA_GIOCARE")).slice(0, 5);
 
   if (!playedMatches.length && !scheduledMatches.length) {
     return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
@@ -1797,10 +1883,10 @@ function renderCompetitionMatchesAdminPanel() {
   `).join("");
 
   const { competitionsById } = buildMaps();
-  const filteredMatches = state.raw.competitionMatches.filter((match) => {
+  const filteredMatches = sortMatchesForDisplay(state.raw.competitionMatches.filter((match) => {
     if (match.seasonId) return match.seasonId === selectedSeasonId;
     return competitionsById.get(match.competitionId)?.seasonId === selectedSeasonId;
-  });
+  }));
 
   const rows = filteredMatches.map((match) => {
     const competition = competitionsById.get(match.competitionId);
@@ -1808,7 +1894,7 @@ function renderCompetitionMatchesAdminPanel() {
       <div class="admin-list-item">
         <span>
           <strong>${escapeHtml(getSeasonName(competition?.seasonId || match.seasonId))} · ${escapeHtml(competition?.name || match.competitionId)}</strong>
-          <small>${escapeHtml(match.matchday || "-")} · ${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))} · ${escapeHtml(formatMatchResult(match))}</small>
+          <small>${escapeHtml(formatMatchStage(match))} · ${escapeHtml(match.matchDate || "-")} · ${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))} · ${escapeHtml(formatMatchResult(match))}</small>
         </span>
         <span>
           <span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span>
@@ -1842,6 +1928,10 @@ function renderCompetitionMatchesAdminPanel() {
         <label>
           Data
           <input id="adminCompetitionMatchDate" class="input" type="date" />
+        </label>
+        <label>
+          Giornata Serie A reale
+          <input id="adminCompetitionMatchSerieAMatchday" class="input" type="number" min="1" step="1" placeholder="Es. 12" />
         </label>
         <label>
           Squadra casa
@@ -2593,6 +2683,7 @@ async function saveCompetitionMatch(event) {
     seasonId: competition.seasonId,
     matchday: document.getElementById("adminCompetitionMatchday").value.trim(),
     matchDate: document.getElementById("adminCompetitionMatchDate").value || "",
+    serieAMatchday: nullableNumberFromInput("adminCompetitionMatchSerieAMatchday"),
     homeSeasonTeamId: document.getElementById("adminCompetitionMatchHome").value,
     awaySeasonTeamId: document.getElementById("adminCompetitionMatchAway").value,
     status: document.getElementById("adminCompetitionMatchStatus").value,
@@ -2686,6 +2777,7 @@ function editCompetitionMatch(id) {
   updateCompetitionMatchTeamOptions(match.homeSeasonTeamId || "", match.awaySeasonTeamId || "");
   document.getElementById("adminCompetitionMatchday").value = match.matchday || "";
   document.getElementById("adminCompetitionMatchDate").value = match.matchDate || "";
+  document.getElementById("adminCompetitionMatchSerieAMatchday").value = match.serieAMatchday ?? match.realSerieAMatchday ?? match.serieAGiornata ?? "";
   document.getElementById("adminCompetitionMatchStatus").value = match.status || "DA_GIOCARE";
   document.getElementById("adminCompetitionMatchHomeGoals").value = match.homeGoals ?? "";
   document.getElementById("adminCompetitionMatchAwayGoals").value = match.awayGoals ?? "";

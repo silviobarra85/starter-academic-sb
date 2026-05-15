@@ -91,7 +91,7 @@ h2 {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 18px;
 }
@@ -4328,4 +4328,138 @@ body.is-mobile-ux .palmares-table td:last-child {
   .compact-detail-section h4 {
     font-size: 0.82rem;
   }
+}
+
+
+/* V12 - Dashboard calendar, Serie A matchday and compact mobile metrics */
+.dashboard-calendar-group {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.dashboard-calendar-group h4 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.dashboard-competition-summary {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.compact-match-lines {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.compact-match-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 0.7rem;
+  background: rgba(15, 23, 42, 0.28);
+}
+
+.compact-match-line > span {
+  min-width: 0;
+}
+
+.compact-match-line > strong {
+  white-space: nowrap;
+  color: var(--text);
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="dashboard"] .cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .app-page[data-page="dashboard"] .metric-card {
+    padding: 7px 6px !important;
+    min-height: 58px;
+    border-radius: 12px !important;
+  }
+
+  .app-page[data-page="dashboard"] .metric-label {
+    font-size: 0.62rem !important;
+    margin-bottom: 3px !important;
+    line-height: 1.05 !important;
+  }
+
+  .app-page[data-page="dashboard"] .metric-card strong {
+    font-size: 0.98rem !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.04em;
+  }
+
+  .match-status-col {
+    display: none !important;
+  }
+
+  .dashboard-calendar-group {
+    gap: 0.3rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .dashboard-calendar-group h4 {
+    font-size: 0.78rem;
+  }
+
+  .dashboard-competition-summary {
+    font-size: 0.7rem;
+    gap: 0.25rem;
+  }
+
+  .compact-match-lines {
+    gap: 0.18rem;
+  }
+
+  .compact-match-line {
+    padding: 0.25rem 0.35rem;
+    gap: 0.35rem;
+    border-radius: 0.55rem;
+  }
+
+  .compact-match-line .club-logo {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="dashboard"] .cards-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  margin-bottom: 8px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="dashboard"] .metric-card {
+  padding: 7px 6px !important;
+  min-height: 58px;
+  border-radius: 12px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="dashboard"] .metric-label {
+  font-size: 0.62rem !important;
+  margin-bottom: 3px !important;
+  line-height: 1.05 !important;
+}
+
+body.is-mobile-ux .app-page[data-page="dashboard"] .metric-card strong {
+  font-size: 0.98rem !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em;
+}
+
+body.is-mobile-ux .match-status-col {
+  display: none !important;
 }
