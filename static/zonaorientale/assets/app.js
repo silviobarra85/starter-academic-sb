@@ -1334,17 +1334,41 @@ function honorClubButton(honorClub, extraClass = "") {
 
 function getPalmaresForClubIds(clubId, honorClubId) {
   // Deve usare buildHonorRows(), non solo state.honorRoll.
-  // state.honorRoll contiene solo le voci inserite manualmente nell'Albo d'oro;
+  // state.honorRoll contiene le voci inserite manualmente nell'Albo d'oro;
   // buildHonorRows() aggiunge anche i podi/vincitori ricavati automaticamente
   // dalle finali di Coppa Italia, Champions League e Playoff.
+  //
+  // Inoltre il palmarès deve seguire il/i presidente/i: se una squadra cambia nome
+  // oppure una vittoria viene inserita manualmente senza calendario partite, la voce
+  // deve comunque comparire nella scheda storica della squadra/presidente.
+  const currentClub = getClubById(clubId);
   const currentHonor = state.honorClubs.find((club) => club.source_club_id === clubId);
-  const ids = new Set([honorClubId, currentHonor?.id].filter(Boolean));
-  const names = new Set([currentHonor?.name, getHonorClubById(honorClubId)?.name, getClubById(clubId)?.name, ...state.clubSeasonIdentities.filter((identity) => identity.club_id === clubId).map((identity) => identity.display_name)].filter(Boolean).map(normalizeTextKey));
+  const explicitHonor = getHonorClubById(honorClubId);
+
+  const ids = new Set([honorClubId, currentHonor?.id, explicitHonor?.id].filter(Boolean));
+  const names = new Set([
+    currentHonor?.name,
+    explicitHonor?.name,
+    currentClub?.name,
+    ...state.clubSeasonIdentities
+      .filter((identity) => identity.club_id === clubId)
+      .map((identity) => identity.display_name),
+  ].filter(Boolean).map(normalizeTextKey));
+
+  const presidentKeys = new Set([
+    currentClub?.president,
+    currentHonor?.president,
+    explicitHonor?.president,
+    ...state.clubSeasonIdentities
+      .filter((identity) => identity.club_id === clubId)
+      .map((identity) => identity.president),
+  ].filter(Boolean).map(getPresidentKey).filter(Boolean));
 
   return buildHonorRows().filter((entry) => {
     if (clubId && entry.club_id === clubId) return true;
     if (entry.honor_club_id && ids.has(entry.honor_club_id)) return true;
     if (entry.club_name && names.has(normalizeTextKey(entry.club_name))) return true;
+    if (presidentKeys.size && presidentKeys.has(getHonorRowPresidentKey(entry))) return true;
     return false;
   });
 }
@@ -2295,6 +2319,41 @@ function renderRosterClubCards() {
   el.rosterClubCards.innerHTML = cards.join("");
 }
 
+function renderClubPalmaresSection({ clubId, honorClubId = null }) {
+  const rows = getPalmaresForClubIds(clubId, honorClubId)
+    .filter((row) => Number(row.placement || 0) > 0)
+    .sort((a, b) =>
+      String(b.season_id || "").localeCompare(String(a.season_id || ""))
+      || Number(a.placement || 999) - Number(b.placement || 999)
+      || String(a.competition_type || "").localeCompare(String(b.competition_type || ""), "it", { sensitivity: "base" })
+    );
+
+  const tableRows = rows.map((row) => {
+    const honorClub = row.honor_club_id ? getHonorClubById(row.honor_club_id) : null;
+    const contextClub = row.club_id ? getClubById(row.club_id) : null;
+    const teamLabel = row.club_name || honorClub?.name || contextClub?.name || "-";
+    const contextTarget = honorClub || (contextClub ? state.honorClubs.find((club) => club.source_club_id === contextClub.id) : null);
+    return `<tr>
+      <td>${escapeHtml(row.season_id || "-")}</td>
+      <td>${escapeHtml(teamLabel)}</td>
+      <td>${escapeHtml(COMPETITION_LABELS[row.competition_type] || row.competition_type || "-")}</td>
+      <td>${row.placement ? `${row.placement}°` : "-"}</td>
+      <td>${escapeHtml(row.notes || row.competition_name || "-")}</td>
+      <td>${renderHonorContextButton(row, contextTarget)}</td>
+    </tr>`;
+  }).join("");
+
+  return `<section class="detail-section">
+    <h3>Palmarès e piazzamenti storici</h3>
+    <div class="table-wrap compact-table">
+      <table>
+        <thead><tr><th>Stagione</th><th>Squadra</th><th>Competizione</th><th>Pos.</th><th>Voce</th><th>Dettaglio</th></tr></thead>
+        <tbody>${tableRows || '<tr><td colspan="6" class="muted center">Nessun palmarès o piazzamento registrato.</td></tr>'}</tbody>
+      </table>
+    </div>
+  </section>`;
+}
+
 function renderClubExtraSections({ clubId, honorClubId = null, seasonId = getSelectedSeasonId() }) {
   const movements = clubId ? getClubMovements(clubId).slice(0, 30) : [];
   const releases = clubId ? getClubReleaseMovements(clubId).slice(0, 20) : [];
@@ -2317,6 +2376,7 @@ function renderClubExtraSections({ clubId, honorClubId = null, seasonId = getSel
   </tr>`).join("");
 
   return `
+    ${renderClubPalmaresSection({ clubId, honorClubId })}
     ${clubId ? `<section class="detail-section"><h3>Movimenti FM</h3><div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Tipo</th><th>Descrizione</th><th class="number">Importo</th></tr></thead><tbody>${movementRows || '<tr><td colspan="4" class="muted center">Nessun movimento registrato.</td></tr>'}</tbody></table></div></section>` : ""}
     ${clubId ? `<section class="detail-section"><h3>Svincoli effettuati</h3><div class="table-wrap compact-table"><table><thead><tr><th>Stagione</th><th>Descrizione</th><th class="number">Rimborso</th><th>Data</th></tr></thead><tbody>${releaseRows || '<tr><td colspan="4" class="muted center">Nessuno svincolo registrato.</td></tr>'}</tbody></table></div></section>` : ""}
   `;
