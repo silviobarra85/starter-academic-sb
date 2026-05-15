@@ -940,6 +940,92 @@
         <div class="panel-header">
           <div>
             <p class="eyebrow">Area admin</p>
+            <h2>Squadre storiche e identità stagionali</h2>
+            <p>Gestisci squadre non più presenti e nomi storici delle squadre/presidenti nelle singole stagioni.</p>
+          </div>
+        </div>
+        <form id="historicalClubForm" class="form-grid">
+          <input id="historicalClubId" type="hidden" />
+          <label>
+            Club attuale collegato <span class="muted">(opzionale)</span>
+            <select id="historicalClubSourceClub" class="input">
+              <option value="">Nessuno / squadra storica pura</option>
+            </select>
+            <small class="field-hint">Usalo se la squadra storica appartiene a un presidente ancora presente in Lega.</small>
+          </label>
+          <label>
+            Nome squadra storica
+            <input id="historicalClubNameInput" class="input" type="text" placeholder="Es. Real Pastena" required />
+          </label>
+          <label>
+            Presidente
+            <select id="historicalClubPresidentSelect" class="input" multiple size="4"></select>
+            <input id="historicalClubPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Scegli uno o più presidenti già presenti oppure aggiungine manualmente.</small>
+          </label>
+          <label>
+            Logo storico <span class="muted">(opzionale)</span>
+            <input id="historicalClubLogoInput" class="input" type="file" accept="image/*" />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva squadra storica</button>
+            <button id="historicalClubFormReset" class="button button-secondary" type="button">Nuova</button>
+            <span id="historicalClubFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica squadre storiche</strong><span>Cerca per nome o presidente</span></summary>
+          <input id="historicalClubAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca squadra storica..." />
+          <div id="historicalClubAdminList" class="admin-list"></div>
+        </details>
+
+        <hr class="soft-separator" />
+
+        <form id="clubIdentityForm" class="form-grid">
+          <input id="clubIdentityId" type="hidden" />
+          <label>
+            Stagione
+            <select id="clubIdentitySeason" class="input" required></select>
+          </label>
+          <label>
+            Club attuale
+            <select id="clubIdentityClub" class="input" required></select>
+          </label>
+          <label>
+            Nome squadra in quella stagione
+            <input id="clubIdentityNameInput" class="input" type="text" placeholder="Es. ZonaOrientale FC" required />
+          </label>
+          <label>
+            Presidenti in quella stagione
+            <select id="clubIdentityPresidentSelect" class="input" multiple size="4"></select>
+            <input id="clubIdentityPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Se lo lasci vuoto usa i presidenti del club attuale.</small>
+          </label>
+          <label>
+            Nome stadio in quella stagione
+            <input id="clubIdentityStadiumInput" class="input" type="text" placeholder="Es. Arechi Stadium" />
+          </label>
+          <label>
+            Logo stagionale <span class="muted">(opzionale)</span>
+            <input id="clubIdentityLogoInput" class="input" type="file" accept="image/*" />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva identità stagionale</button>
+            <button id="clubIdentityFormReset" class="button button-secondary" type="button">Nuova</button>
+            <span id="clubIdentityFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica identità stagionali</strong><span>Filtrate sulla stagione selezionata</span></summary>
+          <input id="clubIdentityAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca identità stagionale..." />
+          <div id="clubIdentityAdminList" class="admin-list"></div>
+        </details>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
             <h2>Albo d'oro</h2>
             <p>Aggiungi titoli, piazzamenti e classifiche storiche.</p>
           </div>
@@ -961,7 +1047,9 @@
           </label>
           <label>
             Presidente storico
-            <input id="honorPresidentInput" class="input" type="text" placeholder="Es. Mario Rossi" />
+            <select id="honorPresidentSelect" class="input" multiple size="4"></select>
+            <input id="honorPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Il palmarès viene raggruppato per presidente/i; la squadra indica il nome usato in quella stagione.</small>
           </label>
           <label>
             Logo squadra storica <span class="muted">(opzionale)</span>

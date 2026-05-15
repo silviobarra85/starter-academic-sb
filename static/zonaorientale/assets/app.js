@@ -3172,7 +3172,10 @@ function buildHonorRows() {
       season_id: entry.season_id,
       club_id: sourceClubId,
       honor_club_id: entry.honor_club_id || honorClub?.id || null,
-      club_name: seasonalClub?.name || honorClub?.name || "-",
+      // Le voci inserite manualmente nell'Albo d'oro devono mantenere
+      // il nome squadra di quella stagione: non sovrascriverlo con il
+      // nome attuale del club se il presidente ha cambiato squadra.
+      club_name: entry.season_team_name || honorClub?.name || seasonalClub?.name || "-",
       president,
       president_key: entry.president_key || getPresidentKey(president),
       competition_type: entry.competition_type || "ALTRO",
@@ -4932,6 +4935,7 @@ async function handleHonorSubmit(event) {
   }
 
   const id = el.honorId.value || null;
+  const honorPresident = resolvePresidentValue(el.honorPresidentSelect, el.honorPresidentInput) || honorClub.president || null;
   const payload = {
     season_id: el.honorSeason.value,
     club_id: honorClub.source_club_id || null,
@@ -4941,6 +4945,12 @@ async function handleHonorSubmit(event) {
     placement: toNumber(el.honorPlacement.value),
     points: toNumber(el.honorPoints.value),
     notes: el.honorNotes.value.trim() || null,
+    // Salviamo anche presidente e nome squadra della stagione, così
+    // una posizione manuale (es. 1° posto senza calendario partite)
+    // compare correttamente nel palmarès storico del presidente/squadra.
+    president: honorPresident,
+    president_key: honorPresident ? getPresidentKey(honorPresident) : honorClub.president_key || null,
+    season_team_name: honorClub.name || null,
   };
   const response = id ? await state.supabase.from("honor_roll_entries").update(payload).eq("id", id) : await state.supabase.from("honor_roll_entries").insert(payload);
   if (response.error) { el.honorFormStatus.textContent = response.error.message; return; }
