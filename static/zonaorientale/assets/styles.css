@@ -3534,3 +3534,23 @@ body.is-mobile-ux .mobile-honor-president-cell span {
 body.is-mobile-ux .mobile-honor-president-cell small {
   display: none;
 }
+
+/* Firebase admin additions */
+.admin-collapsible-panel .panel-actions {
+  align-self: flex-start;
+}
+
+.logo-admin-preview {
+  min-height: 76px;
+  align-items: center;
+}
+
+.logo-admin-preview .club-logo-lg {
+  width: 64px;
+  height: 64px;
+  font-size: 1rem;
+}
+
+.admin-list-item .club-name-with-logo {
+  gap: 0.5rem;
+}

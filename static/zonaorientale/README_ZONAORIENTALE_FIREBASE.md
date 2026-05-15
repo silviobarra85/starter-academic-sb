@@ -1,6 +1,6 @@
 # ZonaOrientale Firebase starter
 
-Questo pacchetto contiene solo la cartella da copiare nel repository Hugo/Wowchemy:
+Questo pacchetto contiene la cartella da copiare nel repository Hugo/Wowchemy:
 
 ```text
 static/zonaorientale/
@@ -14,8 +14,23 @@ static/zonaorientale/
 - `assets/app.js`: nuova base Firebase con area Admin per:
   - stagioni;
   - presidenti;
-  - squadre.
+  - squadre con caricamento logo e fallback con iniziali;
+  - competizioni per stagione.
 - `FIREBASE_RULES.rules`: regole Firestore da copiare in Firebase Console.
+
+## Novità di questa versione
+
+- Ogni scheda Admin ha il pulsante `Ingrandisci/Riduci`.
+- Le squadre non usano più un path logo manuale: puoi caricare un file immagine dal pannello Admin.
+- Il logo viene salvato nel campo `teams.logo` come data URL compresso e mostrato in forma tonda.
+- Se non c'è logo, viene mostrato un placeholder tondo con le prime due lettere del nome squadra.
+- È stata aggiunta la gestione `competitions` con:
+  - stagione;
+  - nome;
+  - tipo/trofeo;
+  - formula `CLASSIFICA` oppure `GIRONI_KO`;
+  - stato `ATTIVA`, `PROGRAMMATA`, `CONCLUSA`, `NON_DISPUTATA`;
+  - creazione rapida delle competizioni standard: Campionato, Champion's League, Coppa Italia, Playoff.
 
 ## Come copiarlo
 
@@ -63,7 +78,7 @@ In Firebase Console devi avere:
 
 5. Regole Firestore copiate dal file `FIREBASE_RULES.rules`.
 
-## Raccolte iniziali
+## Raccolte caricate
 
 L'app carica queste raccolte:
 
@@ -79,12 +94,11 @@ competitionResults
 honorRoll
 ```
 
-Per ora l'Admin gestisce solo:
+Per ora l'Admin gestisce direttamente:
 
 ```text
 seasons
 presidents
 teams
+competitions
 ```
-
-Le altre sezioni verranno aggiunte gradualmente.
