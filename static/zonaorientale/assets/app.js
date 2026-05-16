@@ -4593,3 +4593,88 @@ document.addEventListener("click", (event) => {
   else state.expandedRosterClubIds.add(id);
   renderTeamsTable();
 }, true);
+
+
+/* V29 - UI refinements: mobile table overlap, dashboard podium labels and toggle labels. */
+function normalizeToggleLabelsV29() {
+  document.querySelectorAll("details .details-toggle-label").forEach((label) => {
+    const details = label.closest("details");
+    label.textContent = details?.open ? "Riduci" : "Espandi";
+  });
+
+  document.querySelectorAll("[data-toggle-roster-club]").forEach((button) => {
+    const expanded = button.getAttribute("aria-expanded") === "true";
+    button.textContent = expanded ? "Riduci" : "Espandi";
+  });
+
+  document.querySelectorAll("[data-content-toggle-panel]").forEach((button) => {
+    const key = button.dataset.contentTogglePanel;
+    const panel = key ? document.querySelector(`[data-collapse-key="${CSS.escape(key)}"]`) : button.closest(".content-collapsible-panel");
+    button.textContent = panel?.classList.contains("section-is-collapsed") ? "Espandi" : "Riduci";
+  });
+
+  document.querySelectorAll("[data-admin-toggle-panel]").forEach((button) => {
+    const panel = button.closest(".admin-collapsible-panel");
+    button.textContent = panel?.classList.contains("is-collapsed") ? "Espandi" : "Riduci";
+  });
+}
+
+const renderWinnerLabelHtmlBeforeV29 = renderWinnerLabelHtml;
+renderWinnerLabelHtml = function renderWinnerLabelHtmlV29(competition, options = {}) {
+  if (!options.highlightWinner || isRankingCompetition(competition)) {
+    return renderWinnerLabelHtmlBeforeV29(competition, options);
+  }
+
+  const { withLogo = false } = options;
+  const results = getCompetitionResults(competition.id);
+  const winner = results.find((result) => Number(result.position) === 1);
+  const second = results.find((result) => Number(result.position) === 2);
+
+  if (!winner) return "Nessun risultato inserito";
+
+  const winnerHtml = withLogo
+    ? renderSeasonTeamNameWithLogo(winner.seasonTeamId, { textClass: "text-success" })
+    : `<strong class="text-success">${escapeHtml(getSeasonTeamDisplayName(winner.seasonTeamId))}</strong>`;
+  const secondHtml = second
+    ? (withLogo ? renderSeasonTeamNameWithLogo(second.seasonTeamId) : escapeHtml(getSeasonTeamDisplayName(second.seasonTeamId)))
+    : "-";
+
+  return `
+    <div class="dashboard-podium-lines">
+      <div><span class="muted">Vincitore:</span> ${winnerHtml}</div>
+      <div><span class="muted">2°</span> ${secondHtml}</div>
+    </div>`;
+};
+
+const renderDashboardBeforeV29 = renderDashboard;
+renderDashboard = function renderDashboardV29() {
+  const result = renderDashboardBeforeV29();
+  normalizeToggleLabelsV29();
+  return result;
+};
+
+const renderTeamsTableBeforeV29 = renderTeamsTable;
+renderTeamsTable = function renderTeamsTableV29() {
+  const result = renderTeamsTableBeforeV29();
+  normalizeToggleLabelsV29();
+  return result;
+};
+
+const renderListonePublicBeforeV29 = renderListonePublic;
+renderListonePublic = function renderListonePublicV29() {
+  const result = renderListonePublicBeforeV29();
+  normalizeToggleLabelsV29();
+  return result;
+};
+
+document.addEventListener("toggle", (event) => {
+  if (event.target instanceof HTMLDetailsElement) {
+    normalizeToggleLabelsV29();
+  }
+}, true);
+
+document.addEventListener("click", () => {
+  window.setTimeout(normalizeToggleLabelsV29, 0);
+}, true);
+
+window.setTimeout(normalizeToggleLabelsV29, 0);
