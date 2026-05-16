@@ -131,6 +131,8 @@ const state = {
   selectedAdminMatchSeasonId: "",
   selectedAdminMatchdayFilter: "",
   selectedAdminResultsSeasonId: "",
+  selectedListoneId: "",
+  listoni: [],
   collapsedAdminPanels: new Set(ADMIN_PANEL_IDS),
   collapsedContentPanels: new Set()
 };
@@ -267,11 +269,46 @@ async function loadCollection(name) {
   }));
 }
 
+async function loadListoniData() {
+  try {
+    const manifestResponse = await fetch("./assets/listoni/manifest.json", { cache: "no-store" });
+    if (!manifestResponse.ok) {
+      state.listoni = [];
+      return;
+    }
+
+    const manifest = await manifestResponse.json();
+    const entries = Array.isArray(manifest.listoni) ? manifest.listoni : [];
+
+    const loadedListoni = await Promise.all(entries.map(async (entry) => {
+      try {
+        const response = await fetch(`./assets/listoni/${entry.file}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`Listone non leggibile: ${entry.file}`);
+        const payload = await response.json();
+        return {
+          ...entry,
+          meta: payload.meta || {},
+          players: Array.isArray(payload.players) ? payload.players : []
+        };
+      } catch (error) {
+        console.warn(error);
+        return { ...entry, meta: {}, players: [], loadError: true };
+      }
+    }));
+
+    state.listoni = loadedListoni.sort((a, b) => String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it"));
+  } catch (error) {
+    console.warn("Listoni non caricati", error);
+    state.listoni = [];
+  }
+}
+
 async function loadData() {
   const entries = await Promise.all(
     COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
   );
   state.raw = Object.fromEntries(entries);
+  await loadListoniData();
   sortData();
   renderAll();
 }
@@ -1053,11 +1090,123 @@ function renderHonorSummary() {
     </div>`;
 }
 
+function getListoniForCurrentSeason() {
+  const seasonId = getCurrentSeasonId();
+  const seasonal = state.listoni.filter((listone) => listone.seasonId === seasonId);
+  return seasonal.length ? seasonal : state.listoni;
+}
+
+function getSelectedListone() {
+  const available = getListoniForCurrentSeason();
+  if (!available.length) return null;
+
+  if (state.selectedListoneId) {
+    const selected = available.find((listone) => listone.id === state.selectedListoneId);
+    if (selected) return selected;
+  }
+
+  state.selectedListoneId = available[0].id;
+  return available[0];
+}
+
+function renderListoneSelect(listone) {
+  const select = document.getElementById("listoneSeasonFilter");
+  if (!select) return;
+
+  const available = getListoniForCurrentSeason();
+  select.innerHTML = available.length
+    ? available.map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.loadedAt || item.id)} · ${escapeHtml(item.label || item.id)}</option>`).join("")
+    : `<option value="">Nessun listone</option>`;
+
+  select.value = listone?.id || "";
+}
+
+function formatListoneNumber(value) {
+  if (value === null || value === undefined || value === "") return "-";
+  return escapeHtml(value);
+}
+
+function getFilteredListonePlayers(listone) {
+  if (!listone) return [];
+  const role = document.getElementById("listoneRoleFilter")?.value || "all";
+  const search = String(document.getElementById("listoneSearch")?.value || "").trim().toLowerCase();
+
+  return (listone.players || []).filter((player) => {
+    if (role !== "all" && player.classicRole !== role) return false;
+    if (!search) return true;
+
+    const haystack = [
+      player.playerName,
+      player.realTeam,
+      player.classicRole,
+      player.mantraRoles,
+      player.status
+    ].join(" ").toLowerCase();
+
+    return haystack.includes(search);
+  });
+}
+
+function renderListonePublic() {
+  const tbody = document.getElementById("listoneTableBody");
+  const metaText = document.getElementById("listoneMetaText");
+  const freeAgentsBody = document.getElementById("freeAgentsTableBody");
+  const freeAgentsMeta = document.getElementById("freeAgentsMetaText");
+  const listone = getSelectedListone();
+
+  renderListoneSelect(listone);
+
+  if (!tbody) return;
+
+  if (!listone) {
+    tbody.innerHTML = `<tr><td colspan="14" class="muted center">Nessun listone caricato.</td></tr>`;
+    if (metaText) metaText.textContent = "Nessun listone disponibile in assets/listoni.";
+    if (freeAgentsBody) freeAgentsBody.innerHTML = `<tr><td colspan="8" class="muted center">Svincolati non disponibili: la gestione rose non è ancora attiva.</td></tr>`;
+    return;
+  }
+
+  const players = getFilteredListonePlayers(listone);
+  const activeRows = Number(listone.activeRows ?? listone.meta?.activeRows ?? 0);
+  const asteriskRows = Number(listone.asteriskRows ?? listone.meta?.asteriskRows ?? 0);
+
+  if (metaText) {
+    metaText.textContent = `Listone ${listone.loadedAt || listone.id} · ${listone.label || ""} · ${listone.players.length} giocatori (${activeRows} in listone, ${asteriskRows} asteriscati)`;
+  }
+
+  tbody.innerHTML = players.length
+    ? players.map((player) => {
+      const isAsterisk = player.statusCode === "ASTERISCATO" || String(player.status || "").toLowerCase().includes("aster");
+      const statusClass = isAsterisk ? "status-warning" : "status-ok";
+      return `
+        <tr>
+          <td data-label="Id">${formatListoneNumber(player.fantacalcioId)}</td>
+          <td data-label="R">${escapeHtml(player.classicRole || "-")}</td>
+          <td data-label="RM">${escapeHtml(player.mantraRoles || "-")}</td>
+          <td data-label="Nome"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
+          <td data-label="Squadra"><span class="team-code">${escapeHtml(player.realTeam || "-")}</span></td>
+          <td data-label="Qt.A" class="number">${formatListoneNumber(player.quotationCurrent)}</td>
+          <td data-label="Qt.I" class="number">${formatListoneNumber(player.quotationInitial)}</td>
+          <td data-label="Diff." class="number">${formatListoneNumber(player.quotationDiff)}</td>
+          <td data-label="Qt.A M" class="number">${formatListoneNumber(player.quotationCurrentMantra)}</td>
+          <td data-label="Qt.I M" class="number">${formatListoneNumber(player.quotationInitialMantra)}</td>
+          <td data-label="Diff.M" class="number">${formatListoneNumber(player.quotationDiffMantra)}</td>
+          <td data-label="FVM" class="number">${formatListoneNumber(player.fvm)}</td>
+          <td data-label="FVM M" class="number">${formatListoneNumber(player.fvmMantra)}</td>
+          <td data-label="Stato"><span class="status ${statusClass}">${escapeHtml(player.status || "In listone")}</span></td>
+        </tr>`;
+    }).join("")
+    : `<tr><td colspan="14" class="muted center">Nessun giocatore trovato con i filtri selezionati.</td></tr>`;
+
+  if (freeAgentsMeta) freeAgentsMeta.textContent = "La sezione svincolati verrà attivata quando inseriremo le rose.";
+  if (freeAgentsBody) {
+    freeAgentsBody.innerHTML = `<tr><td colspan="8" class="muted center">Svincolati non disponibili: la gestione rose non è ancora attiva.</td></tr>`;
+  }
+}
+
 function renderPlaceholderPages() {
   setLoadingText("newsList", "Modulo News non ancora collegato.");
   setLoadingText("rosterClubCards", "Le rose sono state escluse dalla nuova struttura dati.");
-  setLoadingText("listoneTableBody", "Il listone è stato escluso dalla nuova struttura dati.");
-  setLoadingText("freeAgentsTableBody", "Gli svincolati sono stati esclusi dalla nuova struttura dati.");
+  renderListonePublic();
   renderHonorSummary();
   setLoadingText("movementsList", "I movimenti FM sono stati esclusi dalla nuova struttura dati.");
   renderStadiumsPublic();
@@ -3030,6 +3179,15 @@ async function deleteDocument(collectionName, id, label) {
   }
 }
 
+function setupListoneEvents() {
+  document.getElementById("listoneSeasonFilter")?.addEventListener("change", (event) => {
+    state.selectedListoneId = event.target.value;
+    renderListonePublic();
+  });
+  document.getElementById("listoneRoleFilter")?.addEventListener("change", renderListonePublic);
+  document.getElementById("listoneSearch")?.addEventListener("input", renderListonePublic);
+}
+
 function setupSeasonSelectorEvents() {
   const handleChange = (event) => {
     state.selectedSeasonId = event.target.value;
@@ -3038,6 +3196,8 @@ function setupSeasonSelectorEvents() {
     renderTeamsTable();
     renderCompetitionsPublic();
     renderStadiumsPublic();
+    state.selectedListoneId = "";
+    renderListonePublic();
   };
 
   ["globalSeasonSelect"].forEach((id) => {
@@ -3051,6 +3211,7 @@ async function initializeAppUi() {
   setupMobileNavigation();
   setupAuth();
   setupSeasonSelectorEvents();
+  setupListoneEvents();
   updateAdminVisibility();
 
   const loginHelpText = document.querySelector("#loginDialog .muted");

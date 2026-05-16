@@ -1,0 +1,14 @@
+{
+  "listoni": [
+    {
+      "id": "2026-05-15",
+      "seasonId": "2025-2026",
+      "label": "Quotazioni Fantacalcio Stagione 2025/26",
+      "loadedAt": "2026-05-15",
+      "file": "2026-05-15.json",
+      "rows": 661,
+      "activeRows": 531,
+      "asteriskRows": 130
+    }
+  ]
+}

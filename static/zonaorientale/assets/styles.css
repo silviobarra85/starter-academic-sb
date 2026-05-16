@@ -4527,3 +4527,100 @@ body.is-mobile-ux .match-status-col {
     margin-top: 0.35rem;
   }
 }
+
+/* V16 - Static listone snapshots */
+.listone-table-wrap {
+  max-height: 68vh;
+  overflow: auto;
+}
+
+.listone-table {
+  min-width: 1120px;
+  font-size: 0.82rem;
+}
+
+.listone-table th,
+.listone-table td {
+  padding: 8px 7px;
+  white-space: nowrap;
+}
+
+.listone-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: rgba(15, 23, 42, 0.98);
+}
+
+.listone-table th:nth-child(1),
+.listone-table td:nth-child(1) { width: 62px !important; }
+.listone-table th:nth-child(2),
+.listone-table td:nth-child(2) { width: 36px !important; text-align: center !important; }
+.listone-table th:nth-child(3),
+.listone-table td:nth-child(3) { width: 70px !important; }
+.listone-table th:nth-child(4),
+.listone-table td:nth-child(4) { width: 180px !important; }
+.listone-table th:nth-child(5),
+.listone-table td:nth-child(5) { width: 42px !important; text-align: center !important; }
+.listone-table th:nth-child(6),
+.listone-table td:nth-child(6),
+.listone-table th:nth-child(7),
+.listone-table td:nth-child(7),
+.listone-table th:nth-child(8),
+.listone-table td:nth-child(8),
+.listone-table th:nth-child(9),
+.listone-table td:nth-child(9),
+.listone-table th:nth-child(10),
+.listone-table td:nth-child(10),
+.listone-table th:nth-child(11),
+.listone-table td:nth-child(11),
+.listone-table th:nth-child(12),
+.listone-table td:nth-child(12),
+.listone-table th:nth-child(13),
+.listone-table td:nth-child(13) { width: 58px !important; }
+.listone-table th:nth-child(14),
+.listone-table td:nth-child(14) { width: 104px !important; }
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .listone-table-wrap {
+    max-height: 70vh !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .listone-table {
+    min-width: 940px !important;
+    font-size: 0.62rem !important;
+  }
+
+  .listone-table th,
+  .listone-table td {
+    padding: 5px 4px !important;
+  }
+
+  .listone-table .status {
+    padding: 2px 5px;
+    font-size: 0.58rem;
+  }
+}
+
+body.is-mobile-ux .listone-table-wrap {
+  max-height: 70vh !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.is-mobile-ux .listone-table {
+  min-width: 940px !important;
+  font-size: 0.62rem !important;
+}
+
+body.is-mobile-ux .listone-table th,
+body.is-mobile-ux .listone-table td {
+  padding: 5px 4px !important;
+}
+
+body.is-mobile-ux .listone-table .status {
+  padding: 2px 5px;
+  font-size: 0.58rem;
+}

@@ -254,18 +254,18 @@
         <div>
           <p class="eyebrow">Fantacalcio</p>
           <h2 id="listoneTitle">Listone giocatori</h2>
-          <p>Quotazioni caricate, filtri ruolo, stato listone e schede storiche dei calciatori.</p>
+          <p>Quotazioni caricate da Fantacalcio, filtri ruolo, stato listone e storico versioni.</p>
         </div>
       </div>
 <section class="panel">
       <div class="panel-header">
         <div>
           <h2>Listone giocatori</h2>
-          <p>Ultima fotografia caricata da Fantacalcio: quotazioni, ruoli, squadra reale e stato listone.</p>
+          <p>Ultima fotografia caricata da Fantacalcio: tutti i campi del file Excel, squadra reale abbreviata e stato listone.</p>
           <small id="listoneMetaText" class="muted">Nessun listone selezionato.</small>
         </div>
         <div class="filters-row">
-          <select id="listoneSeasonFilter" class="input filter-input" aria-label="Stagione listone"></select>
+          <select id="listoneSeasonFilter" class="input filter-input" aria-label="Versione listone"></select>
           <select id="listoneRoleFilter" class="input filter-input" aria-label="Filtro ruolo listone">
             <option value="all">Tutti</option>
             <option value="P">P</option>
@@ -280,19 +280,24 @@
         <table class="mobile-tabular listone-table">
           <thead>
             <tr>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="player_name">Giocatore</button></th>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="real_team"><span class="desktop-inline">Squadra</span><span class="mobile-inline">Sq</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="mantra_roles"><span class="desktop-inline">Ruoli Mantra</span><span class="mobile-inline">RM</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="classic_role"><span class="desktop-inline">Ruoli Classic</span><span class="mobile-inline">R</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="roster">Rosa</button></th>
-              <th class="number"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="quotation_current">Qt.A</button></th>
-              <th class="number"><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="fvm">FVM</button></th>
-              <th><button class="table-sort" type="button" data-sort-table="listone" data-sort-key="status">Stato</button></th>
-              <th>Storico</th>
+              <th>Id</th>
+              <th>R</th>
+              <th>RM</th>
+              <th>Nome</th>
+              <th>Sq</th>
+              <th class="number">Qt.A</th>
+              <th class="number">Qt.I</th>
+              <th class="number">Diff.</th>
+              <th class="number">Qt.A M</th>
+              <th class="number">Qt.I M</th>
+              <th class="number">Diff.M</th>
+              <th class="number">FVM</th>
+              <th class="number">FVM M</th>
+              <th>Stato</th>
             </tr>
           </thead>
           <tbody id="listoneTableBody">
-            <tr><td colspan="9" class="muted center">Nessun listone caricato.</td></tr>
+            <tr><td colspan="14" class="muted center">Nessun listone caricato.</td></tr>
           </tbody>
         </table>
       </div>

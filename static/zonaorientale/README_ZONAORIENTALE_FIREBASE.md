@@ -135,3 +135,26 @@ L'area Admin ora si apre con tutte le schede ridotte; usa **Ingrandisci** per ap
 - Su mobile le tabelle restano tabelle vere: intestazioni visibili e sticky, layout compatto, scroll interno al contenitore.
 - Le sezioni pubbliche e le sottosezioni principali hanno il pulsante `Ingrandisci/Riduci`.
 - Le schede Admin restano ridotte di default come nelle versioni precedenti.
+
+## Listoni statici
+
+I listoni giocatori non vengono salvati su Firebase. Sono file statici versionati in Git nella cartella:
+
+```text
+static/zonaorientale/assets/listoni/
+```
+
+Ogni snapshot ha un file JSON nominato con la data del listone, ad esempio:
+
+```text
+2026-05-15.json
+```
+
+Il file `manifest.json` indica al sito quali snapshot sono disponibili e a quale stagione appartengono. Questa scelta evita di appesantire Firestore con centinaia di documenti giocatore e conserva lo storico direttamente nella repository.
+
+Nel listone generato da `Quotazioni_Fantacalcio_Stagione_2025_26.xlsx`:
+
+- il foglio `Tutti` è importato con stato `In listone`;
+- il foglio `Ceduti` è importato con stato `asteriscato`;
+- la squadra reale è salvata come abbreviazione di 3 lettere maiuscole;
+- sono conservati tutti i campi numerici del file Fantacalcio.
