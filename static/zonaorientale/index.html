@@ -6,7 +6,7 @@
   <title>ZonaOrientale Salerno</title>
   <meta name="description" content="Gestionale ZonaOrientale Salerno - saldi FM, club, rose, movimenti e stadio." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="./assets/styles.css?v=22" />
+  <link rel="stylesheet" href="./assets/styles.css?v=23" />
 </head>
 <body>
   <header class="app-header">
@@ -206,8 +206,7 @@
         <table class="mobile-tabular listone-table">
           <thead>
             <tr>
-              <th>R</th>
-              <th>RM</th>
+              <th>R (RM)</th>
               <th>Nome</th>
               <th>Sq</th>
               <th>Rosa</th>
@@ -239,16 +238,14 @@
             <tr>
               <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="player_name">Giocatore</button></th>
               <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="real_team"><span class="desktop-inline">Squadra</span><span class="mobile-inline">Sq</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="mantra_roles"><span class="desktop-inline">Ruoli Mantra</span><span class="mobile-inline">RM</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="classic_role"><span class="desktop-inline">Ruoli Classic</span><span class="mobile-inline">R</span></button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="classic_role"><span class="desktop-inline">Ruoli Classic</span><span class="mobile-inline">R</span> <span class="muted">(RM)</span></button></th>
               <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="quotation_current">Qt.A</button></th>
               <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="fvm">FVM</button></th>
               <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="status">Stato</button></th>
-              <th>Storico</th>
             </tr>
           </thead>
           <tbody id="freeAgentsTableBody">
-            <tr><td colspan="8" class="muted center">Nessun listone caricato.</td></tr>
+            <tr><td colspan="6" class="muted center">Nessun listone caricato.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1171,11 +1168,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V2.2 storico squadre · Improve mobile section headers and roster ordering</p>
+    <p>ZonaOrientale Salerno · V2.3 Improve roster tables mobile sorting and FM movement form</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=22"></script>
+  <script type="module" src="./assets/app.js?v=23"></script>
 </body>
 </html>
 
