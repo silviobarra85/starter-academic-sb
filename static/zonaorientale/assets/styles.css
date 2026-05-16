@@ -4624,3 +4624,180 @@ body.is-mobile-ux .listone-table .status {
   padding: 2px 5px;
   font-size: 0.58rem;
 }
+
+/* V17 - Listone controls, static roster snapshots and admin backup. */
+.column-controls {
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
+.column-visibility-control {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.38);
+  padding: 0.75rem;
+}
+
+.column-visibility-control summary {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.column-visibility-control summary span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.column-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 0.45rem 0.8rem;
+  margin-top: 0.75rem;
+}
+
+.column-toggle-item {
+  min-height: 34px;
+  font-size: 0.82rem !important;
+}
+
+.text-warning {
+  color: #fbbf24;
+}
+
+.import-report pre {
+  max-height: 260px;
+  overflow: auto;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.62);
+  color: var(--text);
+}
+
+.listone-table th .table-sort {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .column-visibility-control {
+    padding: 0.6rem;
+  }
+
+  .column-toggle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.3rem 0.45rem;
+  }
+
+  .column-toggle-item {
+    min-height: 30px;
+    font-size: 0.72rem !important;
+  }
+
+  .listone-table-wrap table.listone-table {
+    font-size: 0.66rem !important;
+  }
+
+  .listone-table-wrap table.listone-table th,
+  .listone-table-wrap table.listone-table td {
+    padding: 5px 4px !important;
+  }
+}
+
+
+/* V18 - Dynamic rosters and FM movements */
+.roster-accordion-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.roster-accordion-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.roster-card-toggle {
+  width: 100%;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 14px;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.roster-card-main,
+.roster-card-side {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.roster-card-side {
+  justify-items: end;
+  text-align: right;
+  color: var(--muted);
+  min-width: 120px;
+}
+
+.roster-card-side strong {
+  color: var(--text);
+}
+
+.roster-inline-detail {
+  padding: 0 14px 14px;
+}
+
+.roster-inline-table-wrap {
+  max-height: 380px;
+  overflow: auto;
+}
+
+.match-teams-line .club-name-with-logo,
+.compact-match-line .club-name-with-logo {
+  display: inline-flex;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .roster-accordion-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px;
+  }
+
+  .roster-card-toggle {
+    padding: 9px 10px;
+    gap: 0.5rem;
+  }
+
+  .roster-card-title {
+    font-size: 0.86rem;
+  }
+
+  .roster-card-stats,
+  .roster-card-side small {
+    font-size: 0.68rem;
+  }
+
+  .roster-card-side {
+    min-width: 92px;
+  }
+
+  .roster-card-side .button-small {
+    min-height: 28px;
+    padding: 4px 7px;
+    font-size: 0.66rem;
+  }
+
+  .roster-inline-detail {
+    padding: 0 8px 8px;
+  }
+
+  .roster-inline-table-wrap {
+    max-height: 56vh !important;
+    overflow: auto !important;
+  }
+}

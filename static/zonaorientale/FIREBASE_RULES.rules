@@ -71,5 +71,16 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
     }
+
+
+    match /rosterEntries/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /fmMovements/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
   }
 }

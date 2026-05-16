@@ -158,3 +158,15 @@ Nel listone generato da `Quotazioni_Fantacalcio_Stagione_2025_26.xlsx`:
 - il foglio `Ceduti` è importato con stato `asteriscato`;
 - la squadra reale è salvata come abbreviazione di 3 lettere maiuscole;
 - sono conservati tutti i campi numerici del file Fantacalcio.
+
+
+## V18 - Rose modificabili e movimenti FM
+
+Da questa versione il listone resta uno snapshot statico in `assets/listoni`, mentre le rose operative e i movimenti di fantamilioni stanno in Firestore.
+
+Nuove raccolte Firestore usate automaticamente:
+
+- `rosterEntries`: giocatori attivi nelle rose, modificabili tramite movimenti.
+- `fmMovements`: movimenti FM per budget iniziale, acquisti, vendite, svincoli, scambi, bonus, penalità e rettifiche.
+
+La prima volta puoi usare Admin → Rose e movimenti FM → "Inizializza rose dal file statico" per copiare il file rose JSON in Firebase. Dopo questo passaggio la fonte operativa diventa Firestore.

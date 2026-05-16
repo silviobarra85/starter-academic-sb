@@ -30,8 +30,7 @@
     <nav class="container app-nav" aria-label="Navigazione FantaMantra">
       <a href="#dashboard" class="nav-link" data-page-link="dashboard">Dashboard</a>
       <a href="#news" class="nav-link" data-page-link="news">News</a>
-      <a href="#clubs" class="nav-link" data-page-link="clubs">Club</a>
-      <a href="#rosters" class="nav-link" data-page-link="rosters">Rose</a>
+      <a href="#clubs" class="nav-link" data-page-link="clubs">Rose</a>
       <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
       <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
@@ -125,128 +124,54 @@
     <section class="app-page" data-page="clubs" aria-labelledby="clubsTitle">
       <div class="page-heading">
         <div>
-          <p class="eyebrow">Anagrafica</p>
-          <h2 id="clubsTitle">Club</h2>
-          <p>Club partecipanti, presidenti, saldi FM, stadio e stato rose.</p>
+          <p class="eyebrow">Organico</p>
+          <h2 id="clubsTitle">Rose</h2>
+          <p>Club partecipanti, saldi FM e rose della stagione selezionata. Clicca su una rosa per aprire o chiudere il dettaglio giocatori.</p>
         </div>
       </div>
-<section class="panel">
-      <div class="panel-header">
-        <div>
-          <h2>Club e situazione finanziaria</h2>
-          <p>Saldo calcolato dalla somma dei movimenti FM e controlli base sulle rose.</p>
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Rose della stagione</h2>
+            <p>Ogni card mostra presidente, saldo FM, numero giocatori e stadio. Il dettaglio è una tabella compatta.</p>
+          </div>
         </div>
-        <input id="clubSearch" class="input search-input" type="search" placeholder="Cerca club o presidente..." />
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Club</th>
-              <th>Presidente</th>
-              <th class="number">Saldo FM</th>
-              <th class="number">Rosa</th>
-              <th class="number">Stadio</th>
-              <th>Stato</th>
-            </tr>
-          </thead>
-          <tbody id="clubsTableBody">
-            <tr><td colspan="7" class="muted center">Caricamento...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <div id="rosterClubCards" class="roster-card-grid roster-accordion-grid">
+          <p class="muted">Caricamento...</p>
+        </div>
+      </section>
 
       <section class="panel" aria-labelledby="marketActivityTitle">
         <div class="panel-header">
           <div>
-            <h2 id="marketActivityTitle">Svincoli e mercato</h2>
-            <p>Ultimi svincoli e movimenti di mercato. Puoi filtrare per club o cercare per giocatore/descrizione.</p>
+            <h2 id="marketActivityTitle">Movimenti</h2>
+            <p>Movimenti di fantamilioni e mercato: acquisti, vendite, svincoli, scambi, bonus e rettifiche.</p>
           </div>
           <div class="filters-row">
-            <select id="marketClubFilter" class="input filter-input" aria-label="Filtro club mercato">
-              <option value="all">Tutti i club</option>
+            <select id="marketClubFilter" class="input filter-input" aria-label="Filtro rose movimenti">
+              <option value="all">Tutte le rose</option>
             </select>
-            <input id="marketSearch" class="input search-input" type="search" placeholder="Cerca giocatore, club, descrizione..." />
+            <input id="marketSearch" class="input search-input" type="search" placeholder="Cerca movimento, giocatore, rosa..." />
           </div>
         </div>
-        <div class="table-wrap">
-          <table>
+        <div class="table-wrap mobile-tabular-wrap">
+          <table class="mobile-tabular">
             <thead>
               <tr>
                 <th>Data</th>
-                <th>Club</th>
+                <th>Rosa</th>
                 <th>Tipo</th>
-                <th>Descrizione</th>
+                <th>Giocatore</th>
                 <th class="number">FM</th>
+                <th>Note</th>
               </tr>
             </thead>
             <tbody id="marketActivityTableBody">
-              <tr><td colspan="5" class="muted center">Caricamento...</td></tr>
+              <tr><td colspan="6" class="muted center">Caricamento...</td></tr>
             </tbody>
           </table>
         </div>
       </section>
-    </section>
-
-    <section class="app-page" data-page="rosters" aria-labelledby="rostersTitle">
-      <div class="page-heading">
-        <div>
-          <p class="eyebrow">Organico</p>
-          <h2 id="rostersTitle">Rose</h2>
-          <p>Composizione delle rose, costi d'acquisto, provenienza e stato dei calciatori.</p>
-        </div>
-      </div>
-<section class="panel">
-      <div class="panel-header">
-        <div>
-          <h2>Riepilogo rose</h2>
-          <p>Clicca su una squadra per aprire la scheda con la rosa attuale della stagione selezionata.</p>
-        </div>
-      </div>
-      <div id="rosterClubCards" class="roster-card-grid">
-        <p class="muted">Caricamento...</p>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel-header">
-        <div>
-          <h2>Dettaglio giocatori</h2>
-          <p>Giocatori attivi per club, ruolo Mantra, prezzo e provenienza.</p>
-        </div>
-        <div class="filters-row">
-          <select id="rosterSeasonFilter" class="input filter-input" aria-label="Stagione rose"></select>
-          <select id="rosterClubFilter" class="input filter-input">
-            <option value="all">Tutti i club</option>
-          </select>
-          <input id="rosterSearch" class="input search-input" type="search" placeholder="Cerca giocatore, club, ruolo..." />
-        </div>
-      </div>
-      <div class="table-wrap mobile-tabular-wrap roster-table-wrap">
-        <table class="mobile-tabular roster-main-table">
-          <thead>
-            <tr>
-              <th>Giocatore</th>
-              <th class="desktop-only-col">Club</th>
-              <th class="desktop-only-col">Squadra reale</th>
-              <th class="desktop-only-col">Ruoli</th>
-              <th class="desktop-only-col">Tipo</th>
-              <th class="mobile-only-col">R</th>
-              <th class="mobile-only-col">RM</th>
-              <th class="mobile-only-col">Sq</th>
-              <th class="number">Costo</th>
-              <th class="desktop-only-col">Acquisizione</th>
-              <th>Stato</th>
-            </tr>
-          </thead>
-          <tbody id="rosterTableBody">
-            <tr><td colspan="11" class="muted center">Caricamento...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
     </section>
 
     <section class="app-page" data-page="listone" aria-labelledby="listoneTitle">
@@ -273,31 +198,28 @@
             <option value="C">C</option>
             <option value="A">A</option>
           </select>
-          <input id="listoneSearch" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, ruolo..." />
+          <input id="listoneSearch" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, ruolo, rosa..." />
         </div>
+        <div id="listoneColumnControls" class="column-controls"></div>
       </div>
       <div class="table-wrap mobile-tabular-wrap listone-table-wrap">
         <table class="mobile-tabular listone-table">
           <thead>
             <tr>
-              <th>Id</th>
               <th>R</th>
               <th>RM</th>
               <th>Nome</th>
               <th>Sq</th>
+              <th>Rosa</th>
               <th class="number">Qt.A</th>
               <th class="number">Qt.I</th>
               <th class="number">Diff.</th>
-              <th class="number">Qt.A M</th>
-              <th class="number">Qt.I M</th>
-              <th class="number">Diff.M</th>
               <th class="number">FVM</th>
-              <th class="number">FVM M</th>
               <th>Stato</th>
             </tr>
           </thead>
           <tbody id="listoneTableBody">
-            <tr><td colspan="14" class="muted center">Nessun listone caricato.</td></tr>
+            <tr><td colspan="10" class="muted center">Nessun listone caricato.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1236,14 +1158,13 @@
     </div>
     <a href="#news" class="mobile-more-link" data-page-link="news">News</a>
     <a href="#finance" class="mobile-more-link" data-page-link="finance">Stadi</a>
-    <a href="#rosters" class="mobile-more-link" data-page-link="rosters">Rose</a>
     <a href="#listone" class="mobile-more-link" data-page-link="listone">Listone</a>
     <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-page-link="admin">Admin</a>
   </nav>
 
   <nav class="mobile-bottom-nav" aria-label="Navigazione principale mobile">
     <a href="#dashboard" class="mobile-bottom-link" data-page-link="dashboard"><span class="mobile-nav-icon">⌂</span><span>Home</span></a>
-    <a href="#clubs" class="mobile-bottom-link" data-page-link="clubs"><span class="mobile-nav-icon">⚽</span><span>Club</span></a>
+    <a href="#clubs" class="mobile-bottom-link" data-page-link="clubs"><span class="mobile-nav-icon">⚽</span><span>Rose</span></a>
     <a href="#competitions" class="mobile-bottom-link" data-page-link="competitions"><span class="mobile-nav-icon">🏆</span><span>Gare</span></a>
     <a href="#honor" class="mobile-bottom-link" data-page-link="honor"><span class="mobile-nav-icon">⭐</span><span>Albo</span></a>
     <button id="mobileMoreBtn" class="mobile-bottom-link" type="button" aria-expanded="false" aria-controls="mobileMoreSheet"><span class="mobile-nav-icon">☰</span><span>Altro</span></button>

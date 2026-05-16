@@ -7,6 +7,7 @@ import {
   getDocs,
   setDoc,
   addDoc,
+  updateDoc,
   deleteDoc,
   serverTimestamp,
   signInWithEmailAndPassword,
@@ -113,7 +114,38 @@ const ADMIN_PANEL_IDS = [
   "adminCompetitionsPanel",
   "adminCompetitionMatchesPanel",
   "adminCompetitionResultsPanel",
-  "adminFifaRankingPanel"
+  "adminFifaRankingPanel",
+  "adminListoneToolsPanel",
+  "adminBackupPanel"
+];
+
+const LISTONE_COLUMNS = [
+  { key: "classicRole", label: "R", numeric: false },
+  { key: "mantraRoles", label: "RM", numeric: false },
+  { key: "playerName", label: "Nome", numeric: false },
+  { key: "realTeam", label: "Sq", numeric: false },
+  { key: "fantasyRoster", label: "Rosa", numeric: false },
+  { key: "quotationCurrent", label: "Qt.A", numeric: true },
+  { key: "quotationInitial", label: "Qt.I", numeric: true },
+  { key: "quotationDiff", label: "Diff.", numeric: true },
+  { key: "quotationCurrentMantra", label: "Qt.A M", numeric: true },
+  { key: "quotationInitialMantra", label: "Qt.I M", numeric: true },
+  { key: "quotationDiffMantra", label: "Diff.M", numeric: true },
+  { key: "fvm", label: "FVM", numeric: true },
+  { key: "fvmMantra", label: "FVM M", numeric: true },
+  { key: "rosterRole", label: "Ruolo rosa", numeric: false },
+  { key: "rosterCost", label: "Costo rosa", numeric: true },
+  { key: "status", label: "Stato", numeric: false },
+  { key: "sourceSheet", label: "Origine", numeric: false }
+];
+
+const DEFAULT_HIDDEN_LISTONE_COLUMNS = [
+  "quotationInitialMantra",
+  "quotationDiffMantra",
+  "fvmMantra",
+  "rosterRole",
+  "rosterCost",
+  "sourceSheet"
 ];
 
 
@@ -132,7 +164,11 @@ const state = {
   selectedAdminMatchdayFilter: "",
   selectedAdminResultsSeasonId: "",
   selectedListoneId: "",
+  selectedClubRosterFilter: "all",
   listoni: [],
+  rosters: [],
+  listoneSort: { key: "playerName", direction: "asc" },
+  hiddenListoneColumns: new Set(DEFAULT_HIDDEN_LISTONE_COLUMNS),
   collapsedAdminPanels: new Set(ADMIN_PANEL_IDS),
   collapsedContentPanels: new Set()
 };
@@ -151,6 +187,40 @@ function escapeHtml(value) {
 
 function byText(fieldName) {
   return (a, b) => String(a[fieldName] || "").localeCompare(String(b[fieldName] || ""), "it");
+}
+
+function normalizeKey(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[.'’]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function downloadJson(data, filename) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function getTodayIsoDate() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function safeFileName(value) {
+  return String(value || "export")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9-]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "export";
 }
 
 function showMessage(elementId, message, isError = false) {
@@ -303,12 +373,97 @@ async function loadListoniData() {
   }
 }
 
+
+async function loadRostersData() {
+  try {
+    const manifestResponse = await fetch("./assets/rose/manifest.json", { cache: "no-store" });
+    if (!manifestResponse.ok) {
+      state.rosters = [];
+      return;
+    }
+
+    const manifest = await manifestResponse.json();
+    const entries = Array.isArray(manifest.rosters) ? manifest.rosters : [];
+
+    const loadedRosters = await Promise.all(entries.map(async (entry) => {
+      try {
+        const response = await fetch(`./assets/rose/${entry.file}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`Rose non leggibili: ${entry.file}`);
+        const payload = await response.json();
+        return {
+          ...entry,
+          meta: payload.meta || {},
+          rosters: Array.isArray(payload.rosters) ? payload.rosters : []
+        };
+      } catch (error) {
+        console.warn(error);
+        return { ...entry, meta: {}, rosters: [], loadError: true };
+      }
+    }));
+
+    state.rosters = loadedRosters.sort((a, b) => String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it"));
+  } catch (error) {
+    console.warn("Rose non caricate", error);
+    state.rosters = [];
+  }
+}
+
+function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
+  const seasonal = state.rosters.filter((item) => item.seasonId === seasonId);
+  return seasonal[0] || state.rosters[0] || null;
+}
+
+function buildRosterPlayerIndex(seasonId = getCurrentSeasonId()) {
+  const snapshot = getRosterSnapshotForSeason(seasonId);
+  const index = new Map();
+  if (!snapshot) return index;
+
+  snapshot.rosters.forEach((roster) => {
+    (roster.players || []).forEach((player) => {
+      index.set(normalizeKey(player.playerName), {
+        ...player,
+        fantasyRoster: roster.name
+      });
+    });
+  });
+  return index;
+}
+
+function enrichListoneWithRosters(listone) {
+  if (!listone) return null;
+  const rosterIndex = buildRosterPlayerIndex(listone.seasonId || getCurrentSeasonId());
+  if (!rosterIndex.size) return listone;
+
+  return {
+    ...listone,
+    players: (listone.players || []).map((player) => {
+      if (player.fantasyRoster) return player;
+      const rosterPlayer = rosterIndex.get(normalizeKey(player.playerName));
+      if (!rosterPlayer) return { ...player, fantasyRoster: "Svincolati" };
+      return {
+        ...player,
+        fantasyRoster: rosterPlayer.fantasyRoster,
+        rosterRole: rosterPlayer.role || player.rosterRole || "",
+        rosterCost: rosterPlayer.cost ?? player.rosterCost ?? ""
+      };
+    })
+  };
+}
+
+function getRosterForSeasonTeam(seasonTeam) {
+  const snapshot = getRosterSnapshotForSeason(seasonTeam?.seasonId || getCurrentSeasonId());
+  if (!snapshot || !seasonTeam) return null;
+  const target = normalizeKey(seasonTeam.name || "");
+  return snapshot.rosters.find((roster) => normalizeKey(roster.name) === target) || null;
+}
+
 async function loadData() {
   const entries = await Promise.all(
     COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
   );
   state.raw = Object.fromEntries(entries);
   await loadListoniData();
+  await loadRostersData();
   sortData();
   renderAll();
 }
@@ -922,7 +1077,7 @@ function renderTeamsTable() {
         </td>
         <td data-label="Presidente">${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</td>
         <td data-label="Saldo FM" class="number">-</td>
-        <td data-label="Rosa" class="number">-</td>
+        <td data-label="Rosa" class="number">${escapeHtml(getRosterForSeasonTeam(seasonTeam)?.playerCount ?? getRosterForSeasonTeam(seasonTeam)?.players?.length ?? "-")}</td>
         <td data-label="Stadio" class="number">${escapeHtml(formatStadium(stadium))}</td>
         <td data-label="Stato"><span class="status ${statusClass}">${statusText}</span></td>
       </tr>`;
@@ -1102,11 +1257,11 @@ function getSelectedListone() {
 
   if (state.selectedListoneId) {
     const selected = available.find((listone) => listone.id === state.selectedListoneId);
-    if (selected) return selected;
+    if (selected) return enrichListoneWithRosters(selected);
   }
 
   state.selectedListoneId = available[0].id;
-  return available[0];
+  return enrichListoneWithRosters(available[0]);
 }
 
 function renderListoneSelect(listone) {
@@ -1126,25 +1281,90 @@ function formatListoneNumber(value) {
   return escapeHtml(value);
 }
 
+function getListoneValue(player, key) {
+  if (key === "fantasyRoster") return player.fantasyRoster || "Svincolati";
+  return player[key] ?? "";
+}
+
+function getListoneVisibleColumns() {
+  return LISTONE_COLUMNS.filter((column) => !state.hiddenListoneColumns.has(column.key));
+}
+
+function compareListoneValues(a, b, column) {
+  const valueA = getListoneValue(a, column.key);
+  const valueB = getListoneValue(b, column.key);
+
+  if (column.numeric) {
+    const numberA = parseDecimalValue(valueA) ?? Number.NEGATIVE_INFINITY;
+    const numberB = parseDecimalValue(valueB) ?? Number.NEGATIVE_INFINITY;
+    return numberA - numberB;
+  }
+
+  return String(valueA || "").localeCompare(String(valueB || ""), "it", { numeric: true, sensitivity: "base" });
+}
+
 function getFilteredListonePlayers(listone) {
   if (!listone) return [];
   const role = document.getElementById("listoneRoleFilter")?.value || "all";
   const search = String(document.getElementById("listoneSearch")?.value || "").trim().toLowerCase();
 
-  return (listone.players || []).filter((player) => {
+  const filtered = (listone.players || []).filter((player) => {
     if (role !== "all" && player.classicRole !== role) return false;
     if (!search) return true;
 
-    const haystack = [
-      player.playerName,
-      player.realTeam,
-      player.classicRole,
-      player.mantraRoles,
-      player.status
-    ].join(" ").toLowerCase();
+    const haystack = LISTONE_COLUMNS
+      .map((column) => getListoneValue(player, column.key))
+      .join(" ")
+      .toLowerCase();
 
     return haystack.includes(search);
   });
+
+  const sortColumn = LISTONE_COLUMNS.find((column) => column.key === state.listoneSort.key) || LISTONE_COLUMNS.find((column) => column.key === "playerName");
+  const direction = state.listoneSort.direction === "desc" ? -1 : 1;
+
+  return filtered.sort((a, b) => direction * compareListoneValues(a, b, sortColumn));
+}
+
+function renderListoneColumnControls() {
+  const target = document.getElementById("listoneColumnControls");
+  if (!target) return;
+
+  target.innerHTML = `
+    <details class="column-visibility-control">
+      <summary><strong>Campi visibili</strong><span>Mostra/nascondi colonne</span></summary>
+      <div class="column-toggle-grid">
+        ${LISTONE_COLUMNS.map((column) => `
+          <label class="checkbox-label column-toggle-item">
+            <input type="checkbox" data-listone-column="${escapeHtml(column.key)}" ${state.hiddenListoneColumns.has(column.key) ? "" : "checked"} />
+            ${escapeHtml(column.label)}
+          </label>`).join("")}
+      </div>
+    </details>`;
+}
+
+function renderListoneCell(player, column) {
+  const value = getListoneValue(player, column.key);
+
+  if (column.key === "playerName") {
+    return `<strong>${escapeHtml(value || "-")}</strong>`;
+  }
+
+  if (column.key === "realTeam") {
+    return `<span class="team-code">${escapeHtml(value || "-")}</span>`;
+  }
+
+  if (column.key === "status") {
+    const isAsterisk = player.statusCode === "ASTERISCATO" || String(player.status || "").toLowerCase().includes("aster");
+    const statusClass = isAsterisk ? "status-warning" : "status-ok";
+    return `<span class="status ${statusClass}">${escapeHtml(value || "In listone")}</span>`;
+  }
+
+  if (column.key === "fantasyRoster") {
+    return `<span class="${value === "Svincolati" ? "text-warning" : ""}">${escapeHtml(value || "Svincolati")}</span>`;
+  }
+
+  return column.numeric ? formatListoneNumber(value) : escapeHtml(value || "-");
 }
 
 function renderListonePublic() {
@@ -1155,57 +1375,123 @@ function renderListonePublic() {
   const listone = getSelectedListone();
 
   renderListoneSelect(listone);
+  renderListoneColumnControls();
 
   if (!tbody) return;
 
+  const visibleColumns = getListoneVisibleColumns();
+  const table = tbody.closest("table");
+  const thead = table?.querySelector("thead");
+  if (thead) {
+    thead.innerHTML = `
+      <tr>
+        ${visibleColumns.map((column) => {
+          const active = state.listoneSort.key === column.key;
+          const indicator = active ? (state.listoneSort.direction === "asc" ? " ▲" : " ▼") : "";
+          return `<th class="${column.numeric ? "number" : ""}"><button class="table-sort" type="button" data-listone-sort-key="${escapeHtml(column.key)}">${escapeHtml(column.label)}${indicator}</button></th>`;
+        }).join("")}
+      </tr>`;
+  }
+
   if (!listone) {
-    tbody.innerHTML = `<tr><td colspan="14" class="muted center">Nessun listone caricato.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="${visibleColumns.length || 1}" class="muted center">Nessun listone caricato.</td></tr>`;
     if (metaText) metaText.textContent = "Nessun listone disponibile in assets/listoni.";
-    if (freeAgentsBody) freeAgentsBody.innerHTML = `<tr><td colspan="8" class="muted center">Svincolati non disponibili: la gestione rose non è ancora attiva.</td></tr>`;
+    if (freeAgentsBody) freeAgentsBody.innerHTML = `<tr><td colspan="7" class="muted center">Svincolati non disponibili.</td></tr>`;
     return;
   }
 
   const players = getFilteredListonePlayers(listone);
   const activeRows = Number(listone.activeRows ?? listone.meta?.activeRows ?? 0);
   const asteriskRows = Number(listone.asteriskRows ?? listone.meta?.asteriskRows ?? 0);
+  const rosteredRows = Number(listone.rosteredRows ?? listone.meta?.rosteredRows ?? 0);
+  const freeAgentRows = Number(listone.freeAgentRows ?? listone.meta?.freeAgentRows ?? 0);
 
   if (metaText) {
-    metaText.textContent = `Listone ${listone.loadedAt || listone.id} · ${listone.label || ""} · ${listone.players.length} giocatori (${activeRows} in listone, ${asteriskRows} asteriscati)`;
+    metaText.textContent = `Listone ${listone.loadedAt || listone.id} · ${listone.label || ""} · ${listone.players.length} giocatori (${activeRows} in listone, ${asteriskRows} asteriscati, ${rosteredRows || "-"} in rosa, ${freeAgentRows || "-"} svincolati)`;
   }
 
   tbody.innerHTML = players.length
-    ? players.map((player) => {
-      const isAsterisk = player.statusCode === "ASTERISCATO" || String(player.status || "").toLowerCase().includes("aster");
-      const statusClass = isAsterisk ? "status-warning" : "status-ok";
-      return `
+    ? players.map((player) => `
         <tr>
-          <td data-label="Id">${formatListoneNumber(player.fantacalcioId)}</td>
-          <td data-label="R">${escapeHtml(player.classicRole || "-")}</td>
-          <td data-label="RM">${escapeHtml(player.mantraRoles || "-")}</td>
-          <td data-label="Nome"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
-          <td data-label="Squadra"><span class="team-code">${escapeHtml(player.realTeam || "-")}</span></td>
-          <td data-label="Qt.A" class="number">${formatListoneNumber(player.quotationCurrent)}</td>
-          <td data-label="Qt.I" class="number">${formatListoneNumber(player.quotationInitial)}</td>
-          <td data-label="Diff." class="number">${formatListoneNumber(player.quotationDiff)}</td>
-          <td data-label="Qt.A M" class="number">${formatListoneNumber(player.quotationCurrentMantra)}</td>
-          <td data-label="Qt.I M" class="number">${formatListoneNumber(player.quotationInitialMantra)}</td>
-          <td data-label="Diff.M" class="number">${formatListoneNumber(player.quotationDiffMantra)}</td>
-          <td data-label="FVM" class="number">${formatListoneNumber(player.fvm)}</td>
-          <td data-label="FVM M" class="number">${formatListoneNumber(player.fvmMantra)}</td>
-          <td data-label="Stato"><span class="status ${statusClass}">${escapeHtml(player.status || "In listone")}</span></td>
-        </tr>`;
-    }).join("")
-    : `<tr><td colspan="14" class="muted center">Nessun giocatore trovato con i filtri selezionati.</td></tr>`;
+          ${visibleColumns.map((column) => `
+            <td data-label="${escapeHtml(column.label)}" class="${column.numeric ? "number" : ""}">${renderListoneCell(player, column)}</td>`).join("")}
+        </tr>`).join("")
+    : `<tr><td colspan="${visibleColumns.length || 1}" class="muted center">Nessun giocatore trovato con i filtri selezionati.</td></tr>`;
 
-  if (freeAgentsMeta) freeAgentsMeta.textContent = "La sezione svincolati verrà attivata quando inseriremo le rose.";
+  const freeAgents = (listone.players || [])
+    .filter((player) => !player.fantasyRoster || player.fantasyRoster === "Svincolati")
+    .sort((a, b) => String(a.playerName || "").localeCompare(String(b.playerName || ""), "it"));
+
+  if (freeAgentsMeta) freeAgentsMeta.textContent = `${freeAgents.length} giocatori senza rosa nel listone selezionato.`;
   if (freeAgentsBody) {
-    freeAgentsBody.innerHTML = `<tr><td colspan="8" class="muted center">Svincolati non disponibili: la gestione rose non è ancora attiva.</td></tr>`;
+    freeAgentsBody.innerHTML = freeAgents.length
+      ? freeAgents.map((player) => {
+        const isAsterisk = player.statusCode === "ASTERISCATO" || String(player.status || "").toLowerCase().includes("aster");
+        const statusClass = isAsterisk ? "status-warning" : "status-ok";
+        return `
+          <tr>
+            <td data-label="Giocatore"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
+            <td data-label="Sq"><span class="team-code">${escapeHtml(player.realTeam || "-")}</span></td>
+            <td data-label="RM">${escapeHtml(player.mantraRoles || "-")}</td>
+            <td data-label="R">${escapeHtml(player.classicRole || "-")}</td>
+            <td data-label="Qt.A" class="number">${formatListoneNumber(player.quotationCurrent)}</td>
+            <td data-label="FVM" class="number">${formatListoneNumber(player.fvm)}</td>
+            <td data-label="Stato"><span class="status ${statusClass}">${escapeHtml(player.status || "In listone")}</span></td>
+          </tr>`;
+      }).join("")
+      : `<tr><td colspan="7" class="muted center">Nessuno svincolato nel listone selezionato.</td></tr>`;
   }
+}
+
+function renderClubRostersPublic() {
+  const tableBody = document.getElementById("marketActivityTableBody");
+  const clubFilter = document.getElementById("marketClubFilter");
+  if (!tableBody) return;
+
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const snapshot = getRosterSnapshotForSeason(seasonId);
+  const search = String(document.getElementById("marketSearch")?.value || "").trim().toLowerCase();
+  const selectedClub = state.selectedClubRosterFilter || clubFilter?.value || "all";
+
+  if (clubFilter) {
+    const currentValue = selectedClub;
+    clubFilter.innerHTML = `<option value="all">Tutti i club</option>${seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("")}`;
+    clubFilter.value = currentValue;
+  }
+
+  if (!snapshot) {
+    tableBody.innerHTML = `<tr><td colspan="5" class="muted center">Nessun file rose disponibile per questa stagione.</td></tr>`;
+    return;
+  }
+
+  const rows = [];
+  seasonTeams.forEach((seasonTeam) => {
+    if (selectedClub !== "all" && selectedClub !== seasonTeam.id) return;
+    const roster = getRosterForSeasonTeam(seasonTeam);
+    (roster?.players || []).forEach((player) => {
+      const haystack = [seasonTeam.name, player.playerName, player.realTeam, player.role, player.cost].join(" ").toLowerCase();
+      if (search && !haystack.includes(search)) return;
+      rows.push({ seasonTeam, player });
+    });
+  });
+
+  tableBody.innerHTML = rows.length
+    ? rows.map(({ seasonTeam, player }) => `
+      <tr>
+        <td data-label="Club">${renderSeasonTeamNameWithLogo(seasonTeam.id)}</td>
+        <td data-label="Ruolo">${escapeHtml(player.role || "-")}</td>
+        <td data-label="Giocatore"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
+        <td data-label="Squadra"><span class="team-code">${escapeHtml(player.realTeam || "-")}</span></td>
+        <td data-label="Costo" class="number">${formatListoneNumber(player.cost)}</td>
+      </tr>`).join("")
+    : `<tr><td colspan="5" class="muted center">Nessun giocatore trovato con i filtri selezionati.</td></tr>`;
 }
 
 function renderPlaceholderPages() {
   setLoadingText("newsList", "Modulo News non ancora collegato.");
-  setLoadingText("rosterClubCards", "Le rose sono state escluse dalla nuova struttura dati.");
+  setLoadingText("rosterClubCards", "Le rose sono visualizzate nella sezione Club per questa fase del progetto.");
+  renderClubRostersPublic();
   renderListonePublic();
   renderHonorSummary();
   setLoadingText("movementsList", "I movimenti FM sono stati esclusi dalla nuova struttura dati.");
@@ -1472,6 +1758,8 @@ function renderAdminArea() {
     ${renderCompetitionMatchesAdminPanel()}
     ${renderCompetitionResultsAdminPanel()}
     ${renderFifaRankingAdminPanel()}
+    ${renderListoneToolsAdminPanel()}
+    ${renderBackupAdminPanel()}
   `;
 
   attachAdminHandlers();
@@ -2223,6 +2511,50 @@ function renderFifaRankingAdminPanel() {
 }
 
 
+
+function renderListoneToolsAdminPanel() {
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  return renderAdminPanel("adminListoneToolsPanel", "File statici", "Converti listone Excel", "Carica un Excel Fantacalcio e scarica il JSON pronto da salvare in assets/listoni. Il sito mostrerà sempre l'ultimo listone indicato nel manifest.", `
+    <form id="adminListoneConverterForm" class="form-grid">
+      <label>
+        Stagione
+        <select id="adminListoneSeasonId" class="input" required>${seasonOptions}</select>
+      </label>
+      <label>
+        Data listone
+        <input id="adminListoneDate" class="input" type="date" value="${escapeHtml(getTodayIsoDate())}" required />
+      </label>
+      <label class="span-2">
+        Label
+        <input id="adminListoneLabel" class="input" type="text" placeholder="Es. Quotazioni Fantacalcio Stagione 2025/26" />
+      </label>
+      <label class="span-2">
+        File Excel listone
+        <input id="adminListoneFile" class="input" type="file" accept=".xlsx,.xls" required />
+        <small class="field-hint">Il file non viene caricato su Firebase: viene convertito nel browser e scaricato come JSON.</small>
+      </label>
+      <div class="form-actions span-2">
+        <button class="button button-primary" type="submit">Converti e scarica JSON</button>
+        <span id="adminListoneConverterStatus" class="form-status"></span>
+      </div>
+    </form>
+    <div id="adminListoneConverterReport" class="import-report hidden"></div>
+  `);
+}
+
+function renderBackupAdminPanel() {
+  return renderAdminPanel("adminBackupPanel", "Backup", "Download dati Firebase", "Scarica uno snapshot JSON delle raccolte Firestore usate dal sito.", `
+    <div class="form-actions">
+      <button id="adminDownloadFirebaseBackup" class="button button-primary" type="button">Scarica backup Firebase</button>
+      <span id="adminBackupStatus" class="form-status"></span>
+    </div>
+    <small class="field-hint">Il backup include: ${escapeHtml(COLLECTIONS.join(", "))}.</small>
+  `);
+}
+
 function attachAdminHandlers() {
   const seasonForm = document.getElementById("adminSeasonForm");
   const presidentForm = document.getElementById("adminPresidentForm");
@@ -2233,6 +2565,7 @@ function attachAdminHandlers() {
   const competitionMatchesForm = document.getElementById("adminCompetitionMatchesForm");
   const competitionResultsForm = document.getElementById("adminCompetitionResultsForm");
   const fifaRankingForm = document.getElementById("adminFifaRankingForm");
+  const listoneConverterForm = document.getElementById("adminListoneConverterForm");
 
   seasonForm?.addEventListener("submit", saveSeason);
   presidentForm?.addEventListener("submit", savePresident);
@@ -2243,6 +2576,8 @@ function attachAdminHandlers() {
   competitionMatchesForm?.addEventListener("submit", saveCompetitionMatch);
   competitionResultsForm?.addEventListener("submit", saveCompetitionResults);
   fifaRankingForm?.addEventListener("submit", saveFifaRanking);
+  listoneConverterForm?.addEventListener("submit", handleListoneConverterSubmit);
+  document.getElementById("adminDownloadFirebaseBackup")?.addEventListener("click", downloadFirebaseBackup);
 
   document.getElementById("adminSeasonReset")?.addEventListener("click", resetSeasonForm);
   document.getElementById("adminPresidentReset")?.addEventListener("click", resetPresidentForm);
@@ -3166,6 +3501,167 @@ function resetCompetitionForm() {
   showMessage("adminCompetitionStatusText", "");
 }
 
+
+function loadXlsxLibrary() {
+  if (window.XLSX) return Promise.resolve(window.XLSX);
+
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector("script[data-xlsx-loader]");
+    if (existing) {
+      existing.addEventListener("load", () => resolve(window.XLSX));
+      existing.addEventListener("error", reject);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js";
+    script.async = true;
+    script.dataset.xlsxLoader = "true";
+    script.addEventListener("load", () => window.XLSX ? resolve(window.XLSX) : reject(new Error("SheetJS non disponibile.")));
+    script.addEventListener("error", () => reject(new Error("Impossibile caricare la libreria Excel.")));
+    document.head.appendChild(script);
+  });
+}
+
+function abbreviateRealTeam(value) {
+  return String(value || "").trim().slice(0, 3).toUpperCase();
+}
+
+function toNumberOrValue(value) {
+  const parsed = parseDecimalValue(value);
+  return parsed === null ? (value ?? "") : parsed;
+}
+
+function parseListoneSheetRows(rows, sourceSheet, status, statusCode) {
+  const headerIndex = rows.findIndex((row) => row.some((cell) => String(cell || "").trim().toLowerCase() === "nome"));
+  if (headerIndex < 0) return [];
+  const headers = rows[headerIndex].map((cell) => String(cell || "").trim().toLowerCase());
+  const find = (name) => headers.indexOf(name.toLowerCase());
+  const idx = {
+    id: find("id"),
+    role: find("r"),
+    mantra: find("rm"),
+    name: find("nome"),
+    team: find("squadra"),
+    qta: find("qt.a"),
+    qti: find("qt.i"),
+    diff: find("diff."),
+    qtam: find("qt.a m"),
+    qtim: find("qt.i m"),
+    diffm: find("diff.m"),
+    fvm: find("fvm"),
+    fvmm: find("fvm m")
+  };
+
+  return rows.slice(headerIndex + 1)
+    .filter((row) => row[idx.name])
+    .map((row) => ({
+      fantacalcioId: String(row[idx.id] || ""),
+      classicRole: String(row[idx.role] || ""),
+      mantraRoles: String(row[idx.mantra] || ""),
+      playerName: String(row[idx.name] || ""),
+      realTeam: abbreviateRealTeam(row[idx.team]),
+      quotationCurrent: toNumberOrValue(row[idx.qta]),
+      quotationInitial: toNumberOrValue(row[idx.qti]),
+      quotationDiff: toNumberOrValue(row[idx.diff]),
+      quotationCurrentMantra: toNumberOrValue(row[idx.qtam]),
+      quotationInitialMantra: toNumberOrValue(row[idx.qtim]),
+      quotationDiffMantra: toNumberOrValue(row[idx.diffm]),
+      fvm: toNumberOrValue(row[idx.fvm]),
+      fvmMantra: toNumberOrValue(row[idx.fvmm]),
+      fantasyRoster: "",
+      rosterRole: "",
+      rosterCost: "",
+      status,
+      statusCode,
+      sourceSheet
+    }));
+}
+
+async function handleListoneConverterSubmit(event) {
+  event.preventDefault();
+  const file = document.getElementById("adminListoneFile")?.files?.[0];
+  if (!file) return;
+
+  try {
+    showMessage("adminListoneConverterStatus", "Conversione in corso...");
+    const XLSX = await loadXlsxLibrary();
+    const buffer = await file.arrayBuffer();
+    const workbook = XLSX.read(buffer, { type: "array" });
+    const rowsFromSheet = (name) => workbook.Sheets[name]
+      ? XLSX.utils.sheet_to_json(workbook.Sheets[name], { header: 1, defval: "" })
+      : [];
+
+    const activePlayers = parseListoneSheetRows(rowsFromSheet("Tutti"), "Tutti", "In listone", "IN_LISTONE");
+    const asteriskPlayers = parseListoneSheetRows(rowsFromSheet("Ceduti"), "Ceduti", "asteriscato", "ASTERISCATO");
+    const players = [...activePlayers, ...asteriskPlayers];
+
+    const seasonId = document.getElementById("adminListoneSeasonId")?.value || getCurrentSeasonId();
+    const loadedAt = document.getElementById("adminListoneDate")?.value || getTodayIsoDate();
+    const label = document.getElementById("adminListoneLabel")?.value || `Listone ${loadedAt}`;
+    const id = loadedAt;
+    const payload = {
+      meta: {
+        id,
+        seasonId,
+        label,
+        loadedAt,
+        sourceFile: file.name,
+        rows: players.length,
+        activeRows: activePlayers.length,
+        asteriskRows: asteriskPlayers.length,
+        fields: LISTONE_COLUMNS.map((column) => column.key).concat(["fantacalcioId"])
+      },
+      players
+    };
+
+    downloadJson(payload, `${safeFileName(id)}.json`);
+    const manifestEntry = {
+      id,
+      seasonId,
+      label,
+      loadedAt,
+      file: `${safeFileName(id)}.json`,
+      rows: players.length,
+      activeRows: activePlayers.length,
+      asteriskRows: asteriskPlayers.length
+    };
+
+    const report = document.getElementById("adminListoneConverterReport");
+    if (report) {
+      report.classList.remove("hidden");
+      report.innerHTML = `
+        <h3>JSON generato</h3>
+        <p>Giocatori: <strong>${players.length}</strong> (${activePlayers.length} in listone, ${asteriskPlayers.length} asteriscati).</p>
+        <p>Aggiungi il file scaricato in <code>static/zonaorientale/assets/listoni/</code> e aggiorna <code>manifest.json</code> con questa voce:</p>
+        <pre>${escapeHtml(JSON.stringify(manifestEntry, null, 2))}</pre>`;
+    }
+    showMessage("adminListoneConverterStatus", "JSON scaricato.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminListoneConverterStatus", error.message || "Errore durante la conversione.", true);
+  }
+}
+
+async function downloadFirebaseBackup() {
+  try {
+    showMessage("adminBackupStatus", "Preparazione backup...");
+    const collections = {};
+    for (const collectionName of COLLECTIONS) {
+      const snapshot = await getDocs(collection(db, collectionName));
+      collections[collectionName] = snapshot.docs.map((documentSnapshot) => ({
+        id: documentSnapshot.id,
+        ...documentSnapshot.data()
+      }));
+    }
+    downloadJson({ exportedAt: new Date().toISOString(), collections }, `zonaorientale-firebase-backup-${getTodayIsoDate()}.json`);
+    showMessage("adminBackupStatus", "Backup scaricato.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminBackupStatus", "Errore durante il backup Firebase.", true);
+  }
+}
+
 async function deleteDocument(collectionName, id, label) {
   const confirmed = window.confirm(`Confermi eliminazione ${label}?`);
   if (!confirmed) return;
@@ -3186,6 +3682,33 @@ function setupListoneEvents() {
   });
   document.getElementById("listoneRoleFilter")?.addEventListener("change", renderListonePublic);
   document.getElementById("listoneSearch")?.addEventListener("input", renderListonePublic);
+  document.addEventListener("click", (event) => {
+    const sortButton = event.target.closest("[data-listone-sort-key]");
+    if (!sortButton) return;
+    const key = sortButton.dataset.listoneSortKey;
+    if (state.listoneSort.key === key) {
+      state.listoneSort.direction = state.listoneSort.direction === "asc" ? "desc" : "asc";
+    } else {
+      state.listoneSort = { key, direction: "asc" };
+    }
+    renderListonePublic();
+  });
+  document.addEventListener("change", (event) => {
+    const checkbox = event.target.closest("[data-listone-column]");
+    if (!checkbox) return;
+    const key = checkbox.dataset.listoneColumn;
+    if (checkbox.checked) state.hiddenListoneColumns.delete(key);
+    else state.hiddenListoneColumns.add(key);
+    renderListonePublic();
+  });
+}
+
+function setupClubRosterEvents() {
+  document.getElementById("marketClubFilter")?.addEventListener("change", (event) => {
+    state.selectedClubRosterFilter = event.target.value;
+    renderClubRostersPublic();
+  });
+  document.getElementById("marketSearch")?.addEventListener("input", renderClubRostersPublic);
 }
 
 function setupSeasonSelectorEvents() {
@@ -3194,6 +3717,7 @@ function setupSeasonSelectorEvents() {
     renderSeasonSelectors();
     renderDashboard();
     renderTeamsTable();
+    renderClubRostersPublic();
     renderCompetitionsPublic();
     renderStadiumsPublic();
     state.selectedListoneId = "";
@@ -3206,12 +3730,601 @@ function setupSeasonSelectorEvents() {
   });
 }
 
+
+/* V18 - Dynamic rosters and FM movements.
+   Listone snapshots stay as static files; mutable rosters and FM balances live in Firestore. */
+if (!COLLECTIONS.includes("rosterEntries")) COLLECTIONS.push("rosterEntries");
+if (!COLLECTIONS.includes("fmMovements")) COLLECTIONS.push("fmMovements");
+if (!ADMIN_PANEL_IDS.includes("adminRosterMovementsPanel")) ADMIN_PANEL_IDS.push("adminRosterMovementsPanel");
+if (state.collapsedAdminPanels && typeof state.collapsedAdminPanels.add === "function") {
+  state.collapsedAdminPanels.add("adminRosterMovementsPanel");
+}
+state.expandedRosterClubIds = state.expandedRosterClubIds || new Set();
+state.selectedAdminRosterSeasonId = state.selectedAdminRosterSeasonId || "";
+
+const FM_MOVEMENT_TYPES = [
+  { value: "INITIAL_BUDGET", label: "Budget iniziale", player: false, target: false },
+  { value: "ACQUISTO", label: "Acquisto", player: true, target: false },
+  { value: "VENDITA", label: "Vendita", player: true, target: false },
+  { value: "SVINCOLO", label: "Svincolo", player: true, target: false },
+  { value: "SCAMBIO", label: "Scambio", player: true, target: true },
+  { value: "RETTIFICA", label: "Rettifica", player: false, target: false },
+  { value: "BONUS", label: "Bonus", player: false, target: false },
+  { value: "PENALITA", label: "Penalità", player: false, target: false },
+  { value: "ALTRO", label: "Altro", player: false, target: false }
+];
+
+function getFmMovementLabel(type) {
+  return FM_MOVEMENT_TYPES.find((item) => item.value === type)?.label || type || "-";
+}
+
+function normalizePlayerName(value) {
+  return normalizeKey(value);
+}
+
+function hasFirebaseRostersForSeason(seasonId) {
+  return (state.raw.rosterEntries || []).some((entry) => entry.seasonId === seasonId && entry.status !== "REMOVED");
+}
+
+function getActiveRosterEntriesForSeasonTeam(seasonTeamId) {
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  const seasonId = seasonTeam?.seasonId || getCurrentSeasonId();
+  const firebaseEntries = (state.raw.rosterEntries || [])
+    .filter((entry) => entry.seasonId === seasonId && entry.seasonTeamId === seasonTeamId && entry.status !== "REMOVED")
+    .sort((a, b) => String(a.playerName || "").localeCompare(String(b.playerName || ""), "it"));
+
+  if (firebaseEntries.length || hasFirebaseRostersForSeason(seasonId)) {
+    return firebaseEntries;
+  }
+
+  const staticRoster = getStaticRosterForSeasonTeam(seasonTeam);
+  return (staticRoster?.players || []).map((player, index) => ({
+    id: `static_${seasonTeamId}_${index}`,
+    seasonId,
+    seasonTeamId,
+    playerName: player.playerName,
+    realTeam: player.realTeam || "",
+    rosterRole: player.role || player.rosterRole || "",
+    classicRole: player.role || player.classicRole || "",
+    mantraRoles: player.mantraRoles || "",
+    cost: player.cost ?? player.rosterCost ?? "",
+    status: "ACTIVE",
+    source: "static-roster"
+  }));
+}
+
+function getStaticRosterForSeasonTeam(seasonTeam) {
+  const snapshot = getRosterSnapshotForSeason(seasonTeam?.seasonId || getCurrentSeasonId());
+  if (!snapshot || !seasonTeam) return null;
+  const target = normalizeKey(seasonTeam.name || "");
+  return snapshot.rosters.find((roster) => normalizeKey(roster.name) === target) || null;
+}
+
+getRosterForSeasonTeam = function getRosterForSeasonTeamV18(seasonTeam) {
+  if (!seasonTeam) return null;
+  const players = getActiveRosterEntriesForSeasonTeam(seasonTeam.id);
+  return {
+    id: seasonTeam.id,
+    name: seasonTeam.name,
+    playerCount: players.length,
+    players
+  };
+};
+
+buildRosterPlayerIndex = function buildRosterPlayerIndexV18(seasonId = getCurrentSeasonId()) {
+  const index = new Map();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  seasonTeams.forEach((seasonTeam) => {
+    const roster = getRosterForSeasonTeam(seasonTeam);
+    (roster?.players || []).forEach((player) => {
+      index.set(normalizePlayerName(player.playerName), {
+        ...player,
+        fantasyRoster: seasonTeam.name || getSeasonTeamDisplayName(seasonTeam.id),
+        rosterRole: player.rosterRole || player.role || player.classicRole || "",
+        rosterCost: player.cost ?? player.rosterCost ?? ""
+      });
+    });
+  });
+  return index;
+};
+
+function getFmMovementsForSeasonTeam(seasonTeamId) {
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  const seasonId = seasonTeam?.seasonId || getCurrentSeasonId();
+  return (state.raw.fmMovements || [])
+    .filter((movement) => movement.seasonId === seasonId && movement.seasonTeamId === seasonTeamId)
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""), "it"));
+}
+
+function getTeamFmBalance(seasonTeamId) {
+  return getFmMovementsForSeasonTeam(seasonTeamId)
+    .reduce((sum, movement) => sum + Number(movement.amount || 0), 0);
+}
+
+function getSeasonFmStats(seasonId) {
+  const teams = getSeasonTeamsForSeason(seasonId);
+  const balances = teams.map((seasonTeam) => getTeamFmBalance(seasonTeam.id));
+  const total = balances.reduce((sum, value) => sum + value, 0);
+  const average = balances.length ? total / balances.length : 0;
+  return { total, average };
+}
+
+function formatFm(value) {
+  const number = Number(value || 0);
+  return Number.isInteger(number) ? `${number} FM` : `${number.toFixed(2).replace(".", ",")} FM`;
+}
+
+function renderRosterPlayerTable(players) {
+  if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
+  return `
+    <div class="table-wrap mobile-tabular-wrap roster-table-wrap roster-inline-table-wrap">
+      <table class="mobile-tabular roster-main-table">
+        <thead>
+          <tr>
+            <th>Giocatore</th>
+            <th>Ruolo</th>
+            <th>RM</th>
+            <th>Sq</th>
+            <th class="number">Costo</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${players.map((player) => `
+            <tr>
+              <td data-label="Giocatore"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
+              <td data-label="Ruolo">${escapeHtml(player.rosterRole || player.classicRole || player.role || "-")}</td>
+              <td data-label="RM">${escapeHtml(player.mantraRoles || "-")}</td>
+              <td data-label="Sq">${escapeHtml(player.realTeam || "-")}</td>
+              <td data-label="Costo" class="number">${escapeHtml(player.cost ?? "-")}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+renderTeamsTable = function renderTeamsTableV18() {
+  const cards = document.getElementById("rosterClubCards");
+  const legacyTableBody = document.getElementById("clubsTableBody");
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const { teamsById } = buildMaps();
+
+  if (!cards && !legacyTableBody) return;
+
+  if (!seasonTeams.length) {
+    const empty = `<p class="muted">Nessuna squadra associata a ${escapeHtml(seasonId || "questa stagione")}.</p>`;
+    if (cards) cards.innerHTML = empty;
+    if (legacyTableBody) legacyTableBody.innerHTML = `<tr><td colspan="7" class="muted center">${empty}</td></tr>`;
+    return;
+  }
+
+  if (cards) {
+    cards.innerHTML = seasonTeams.map((seasonTeam) => {
+      const team = teamsById.get(seasonTeam.teamId);
+      const roster = getRosterForSeasonTeam(seasonTeam);
+      const stadium = getStadiumForSeasonTeam(seasonTeam.id);
+      const balance = getTeamFmBalance(seasonTeam.id);
+      const isExpanded = state.expandedRosterClubIds.has(seasonTeam.id);
+      const displayName = seasonTeam.name || getTeamDisplayName(team);
+      return `
+        <article class="roster-club-card roster-accordion-card ${isExpanded ? "is-expanded" : ""}" data-roster-card="${escapeHtml(seasonTeam.id)}">
+          <button class="roster-card-toggle" type="button" data-toggle-roster-club="${escapeHtml(seasonTeam.id)}" aria-expanded="${isExpanded ? "true" : "false"}">
+            <span class="roster-card-main">
+              <span class="roster-card-title club-name-with-logo">${renderTeamLogo(displayName, getSeasonTeamLogo(seasonTeam))}<strong>${escapeHtml(displayName)}</strong></span>
+              <span class="roster-card-stats">${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</span>
+            </span>
+            <span class="roster-card-side">
+              <strong>${escapeHtml(formatFm(balance))}</strong>
+              <small>${escapeHtml(roster?.playerCount ?? 0)} giocatori · ${escapeHtml(formatStadium(stadium))}</small>
+              <span class="button button-secondary button-small">${isExpanded ? "Riduci" : "Ingrandisci"}</span>
+            </span>
+          </button>
+          <div class="roster-inline-detail ${isExpanded ? "" : "hidden"}">
+            ${renderRosterPlayerTable(roster?.players || [])}
+          </div>
+        </article>`;
+    }).join("");
+  }
+
+  if (legacyTableBody) {
+    legacyTableBody.innerHTML = seasonTeams.map((seasonTeam, index) => {
+      const team = teamsById.get(seasonTeam.teamId);
+      const displayName = seasonTeam.name || getTeamDisplayName(team);
+      const balance = getTeamFmBalance(seasonTeam.id);
+      const roster = getRosterForSeasonTeam(seasonTeam);
+      return `
+        <tr>
+          <td data-label="#">${index + 1}</td>
+          <td data-label="Club">${renderSeasonTeamNameWithLogo(seasonTeam.id)}</td>
+          <td data-label="Presidente">${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</td>
+          <td data-label="Saldo FM" class="number">${escapeHtml(formatFm(balance))}</td>
+          <td data-label="Rosa" class="number">${escapeHtml(roster?.playerCount ?? 0)}</td>
+          <td data-label="Stadio" class="number">${escapeHtml(formatStadium(getStadiumForSeasonTeam(seasonTeam.id)))}</td>
+          <td data-label="Stato"><span class="status ${seasonTeam.isHistorical ? "status-muted" : "status-ok"}">${seasonTeam.isHistorical ? "Storica" : "Partecipante"}</span></td>
+        </tr>`;
+    }).join("");
+  }
+};
+
+renderClubRostersPublic = function renderClubRostersPublicV18() {
+  const tableBody = document.getElementById("marketActivityTableBody");
+  const clubFilter = document.getElementById("marketClubFilter");
+  const searchInput = document.getElementById("marketSearch");
+  if (!tableBody) return;
+
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const selectedClub = state.selectedClubRosterFilter || clubFilter?.value || "all";
+  const searchTerm = normalizeKey(searchInput?.value || "");
+
+  if (clubFilter) {
+    const currentValue = selectedClub;
+    clubFilter.innerHTML = `<option value="all">Tutte le rose</option>${seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("")}`;
+    clubFilter.value = seasonTeams.some((seasonTeam) => seasonTeam.id === currentValue) ? currentValue : "all";
+  }
+
+  const movements = (state.raw.fmMovements || [])
+    .filter((movement) => movement.seasonId === seasonId)
+    .filter((movement) => selectedClub === "all" || movement.seasonTeamId === selectedClub || movement.targetSeasonTeamId === selectedClub)
+    .filter((movement) => {
+      if (!searchTerm) return true;
+      return normalizeKey([
+        getSeasonTeamDisplayName(movement.seasonTeamId),
+        getSeasonTeamDisplayName(movement.targetSeasonTeamId),
+        getFmMovementLabel(movement.type),
+        movement.playerName,
+        movement.description
+      ].join(" ")).includes(searchTerm);
+    })
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""), "it"));
+
+  if (!movements.length) {
+    tableBody.innerHTML = `<tr><td colspan="6" class="muted center">Nessun movimento FM per questa stagione.</td></tr>`;
+    return;
+  }
+
+  tableBody.innerHTML = movements.map((movement) => `
+    <tr>
+      <td data-label="Data">${escapeHtml(movement.date || "-")}</td>
+      <td data-label="Rosa">${renderSeasonTeamNameWithLogo(movement.seasonTeamId, { strong: false })}</td>
+      <td data-label="Tipo"><span class="status status-muted">${escapeHtml(getFmMovementLabel(movement.type))}</span></td>
+      <td data-label="Giocatore">${escapeHtml(movement.playerName || "-")}${movement.targetSeasonTeamId ? `<small class="muted"> → ${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}</small>` : ""}</td>
+      <td data-label="FM" class="number ${Number(movement.amount || 0) >= 0 ? "text-success" : "text-danger"}"><strong>${escapeHtml(formatFm(movement.amount))}</strong></td>
+      <td data-label="Note">${escapeHtml(movement.description || "-")}</td>
+    </tr>`).join("");
+};
+
+function renderRosterMovementsAdminPanel() {
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminRosterSeasonId");
+  const seasonOptions = state.raw.seasons.map((season) => `<option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>`).join("");
+  const seasonTeams = getSeasonTeamsForSeason(selectedSeasonId);
+  const teamOptions = seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("");
+  const movementOptions = FM_MOVEMENT_TYPES.map((type) => `<option value="${escapeHtml(type.value)}">${escapeHtml(type.label)}</option>`).join("");
+  const movements = (state.raw.fmMovements || [])
+    .filter((movement) => movement.seasonId === selectedSeasonId)
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""), "it"));
+  const rosterEntryCount = (state.raw.rosterEntries || []).filter((entry) => entry.seasonId === selectedSeasonId && entry.status !== "REMOVED").length;
+
+  const movementRows = movements.map((movement) => `
+    <div class="admin-list-item">
+      <span>
+        <strong>${escapeHtml(movement.date || "-")} · ${escapeHtml(getFmMovementLabel(movement.type))} · ${escapeHtml(formatFm(movement.amount))}</strong>
+        <small>${escapeHtml(getSeasonTeamDisplayName(movement.seasonTeamId))}${movement.targetSeasonTeamId ? ` → ${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}` : ""}${movement.playerName ? ` · ${escapeHtml(movement.playerName)}` : ""}${movement.description ? ` · ${escapeHtml(movement.description)}` : ""}</small>
+      </span>
+      <span>
+        <button class="button button-danger button-small" type="button" data-admin-delete-fm-movement="${escapeHtml(movement.id)}">Elimina</button>
+      </span>
+    </div>`).join("") || `<p class="muted admin-empty-message">Nessun movimento FM per questa stagione.</p>`;
+
+  return renderAdminPanel("adminRosterMovementsPanel", "Firebase", "Rose e movimenti FM", "Gestisci rose modificabili, acquisti, vendite, svincoli, scambi e saldi fantamilioni.", `
+    <form id="adminImportStaticRostersForm" class="form-grid">
+      <label>
+        Stagione
+        <select id="adminRosterMovementSeasonId" class="input" required>${seasonOptions}</select>
+      </label>
+      <div class="form-actions">
+        <button class="button button-secondary" type="submit">Inizializza rose dal file statico</button>
+        <span id="adminImportStaticRostersStatus" class="form-status"></span>
+      </div>
+      <small class="field-hint span-2">Usalo una sola volta per portare le rose Excel statiche in Firebase. Dopo, le modifiche avvengono tramite movimenti.</small>
+    </form>
+
+    <hr class="soft-separator" />
+
+    <form id="adminFmMovementForm" class="form-grid">
+      <label>
+        Stagione
+        <select id="adminFmMovementSeasonId" class="input" required>${seasonOptions}</select>
+      </label>
+      <label>
+        Rosa / squadra
+        <select id="adminFmMovementSeasonTeamId" class="input" required>${teamOptions}</select>
+      </label>
+      <label>
+        Tipo movimento
+        <select id="adminFmMovementType" class="input" required>${movementOptions}</select>
+      </label>
+      <label>
+        Data
+        <input id="adminFmMovementDate" class="input" type="date" value="${escapeHtml(getTodayIsoDate())}" />
+      </label>
+      <label class="movement-player-field">
+        Giocatore
+        <input id="adminFmMovementPlayerName" class="input" type="text" placeholder="Nome giocatore" list="adminListonePlayers" />
+      </label>
+      <label class="movement-player-field">
+        Squadra reale
+        <input id="adminFmMovementRealTeam" class="input" type="text" placeholder="Es. NAP" />
+      </label>
+      <label class="movement-player-field">
+        Ruolo
+        <input id="adminFmMovementRole" class="input" type="text" placeholder="Es. A oppure Pc" />
+      </label>
+      <label class="movement-target-field">
+        Rosa destinazione
+        <select id="adminFmMovementTargetSeasonTeamId" class="input">
+          <option value="">Nessuna</option>${teamOptions}
+        </select>
+      </label>
+      <label>
+        FM
+        <input id="adminFmMovementAmount" class="input" type="text" inputmode="decimal" placeholder="Es. 50 oppure -12,5" />
+        <small class="field-hint">Acquisto/penalità vengono salvati come uscita se inserisci un valore positivo.</small>
+      </label>
+      <label class="span-2">
+        Note
+        <input id="adminFmMovementDescription" class="input" type="text" placeholder="Descrizione movimento" />
+      </label>
+      <datalist id="adminListonePlayers">${getCurrentListone()?.players?.map((player) => `<option value="${escapeHtml(player.playerName)}"></option>`).join("") || ""}</datalist>
+      <div class="form-actions span-2">
+        <button class="button button-primary" type="submit">Salva movimento</button>
+        <span id="adminFmMovementStatus" class="form-status"></span>
+      </div>
+    </form>
+
+    <details class="admin-edit-section" open>
+      <summary><strong>Movimenti della stagione selezionata</strong><span>${movements.length} movimenti · ${rosterEntryCount} giocatori in Firebase</span></summary>
+      <div class="admin-list">${movementRows}</div>
+    </details>
+  `);
+}
+
+const renderAdminAreaV17 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV18() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+  if (!state.isAdmin) {
+    adminPanel.innerHTML = `
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Area riservata</p>
+          <h2 id="adminTitle">Admin</h2>
+          <p>Accedi come amministratore per modificare stagioni, presidenti, rose, movimenti, competizioni e risultati.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  adminPanel.innerHTML = `
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">Area riservata</p>
+        <h2 id="adminTitle">Admin</h2>
+        <p>Gestione Firebase: stagioni, squadre, rose modificabili, movimenti FM, competizioni e risultati.</p>
+      </div>
+    </div>
+    ${renderSeasonAdminPanel()}
+    ${renderPresidentAdminPanel()}
+    ${renderTeamAdminPanel()}
+    ${renderSeasonTeamAdminPanel()}
+    ${renderRosterMovementsAdminPanel()}
+    ${renderStadiumAdminPanel()}
+    ${renderCompetitionAdminPanel()}
+    ${renderCompetitionMatchesAdminPanel()}
+    ${renderCompetitionResultsAdminPanel()}
+    ${renderFifaRankingAdminPanel()}
+    ${renderListoneToolsAdminPanel()}
+    ${renderBackupAdminPanel()}
+  `;
+  attachAdminHandlers();
+};
+
+async function importStaticRostersToFirebase(event) {
+  event.preventDefault();
+  const seasonId = document.getElementById("adminRosterMovementSeasonId")?.value || getCurrentSeasonId();
+  const snapshot = getRosterSnapshotForSeason(seasonId);
+  if (!snapshot) {
+    showMessage("adminImportStaticRostersStatus", "Nessun file rose statico disponibile per questa stagione.", true);
+    return;
+  }
+
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  let imported = 0;
+  let skipped = 0;
+  showMessage("adminImportStaticRostersStatus", "Import in corso...");
+
+  for (const roster of snapshot.rosters || []) {
+    const seasonTeam = seasonTeams.find((item) => normalizeKey(item.name) === normalizeKey(roster.name));
+    if (!seasonTeam) {
+      skipped += (roster.players || []).length;
+      continue;
+    }
+
+    for (const player of roster.players || []) {
+      const docId = `${makeIdPart(seasonId)}_${makeIdPart(seasonTeam.id)}_${makeIdPart(player.playerName)}`;
+      await setDoc(doc(db, "rosterEntries", docId), {
+        seasonId,
+        seasonTeamId: seasonTeam.id,
+        playerName: player.playerName || "",
+        realTeam: player.realTeam || "",
+        rosterRole: player.role || player.rosterRole || "",
+        classicRole: player.role || player.classicRole || "",
+        mantraRoles: player.mantraRoles || "",
+        cost: player.cost ?? "",
+        status: "ACTIVE",
+        source: "static-roster-import",
+        createdAt: serverTimestamp()
+      }, { merge: true });
+      imported += 1;
+    }
+  }
+
+  showMessage("adminImportStaticRostersStatus", `Import completato: ${imported} giocatori importati, ${skipped} non associati.`);
+  await loadData();
+  expandAdminPanel("adminRosterMovementsPanel");
+}
+
+function findRosterEntryForPlayer(seasonId, seasonTeamId, playerName) {
+  const target = normalizePlayerName(playerName);
+  return (state.raw.rosterEntries || []).find((entry) =>
+    entry.seasonId === seasonId &&
+    entry.seasonTeamId === seasonTeamId &&
+    entry.status !== "REMOVED" &&
+    normalizePlayerName(entry.playerName) === target
+  ) || null;
+}
+
+async function applyRosterSideEffectForMovement(payload) {
+  const type = payload.type;
+  const playerName = payload.playerName;
+  if (!playerName) return;
+
+  if (type === "ACQUISTO") {
+    const docId = `${makeIdPart(payload.seasonId)}_${makeIdPart(payload.seasonTeamId)}_${makeIdPart(playerName)}`;
+    await setDoc(doc(db, "rosterEntries", docId), {
+      seasonId: payload.seasonId,
+      seasonTeamId: payload.seasonTeamId,
+      playerName,
+      realTeam: payload.realTeam || "",
+      rosterRole: payload.rosterRole || "",
+      classicRole: payload.rosterRole || "",
+      mantraRoles: payload.mantraRoles || "",
+      cost: Math.abs(Number(payload.amount || 0)),
+      status: "ACTIVE",
+      source: "movement-acquisto",
+      updatedAt: serverTimestamp(),
+      createdAt: serverTimestamp()
+    }, { merge: true });
+    return;
+  }
+
+  const existing = findRosterEntryForPlayer(payload.seasonId, payload.seasonTeamId, playerName);
+  if (!existing) return;
+
+  if (type === "VENDITA" || type === "SVINCOLO") {
+    await setDoc(doc(db, "rosterEntries", existing.id), {
+      ...existing,
+      status: "REMOVED",
+      removedAt: serverTimestamp(),
+      removedByMovementType: type
+    }, { merge: true });
+  }
+
+  if (type === "SCAMBIO" && payload.targetSeasonTeamId) {
+    await setDoc(doc(db, "rosterEntries", existing.id), {
+      ...existing,
+      seasonTeamId: payload.targetSeasonTeamId,
+      updatedAt: serverTimestamp(),
+      source: "movement-scambio"
+    }, { merge: true });
+  }
+}
+
+async function saveFmMovement(event) {
+  event.preventDefault();
+  try {
+    const seasonId = document.getElementById("adminFmMovementSeasonId")?.value || getCurrentSeasonId();
+    const seasonTeamId = document.getElementById("adminFmMovementSeasonTeamId")?.value || "";
+    const type = document.getElementById("adminFmMovementType")?.value || "ALTRO";
+    let amount = parseDecimalValue(document.getElementById("adminFmMovementAmount")?.value || "0") || 0;
+    if (["ACQUISTO", "PENALITA"].includes(type) && amount > 0) amount = -amount;
+    if (["VENDITA", "SVINCOLO", "BONUS", "INITIAL_BUDGET"].includes(type) && amount < 0) amount = Math.abs(amount);
+
+    const payload = {
+      seasonId,
+      seasonTeamId,
+      targetSeasonTeamId: document.getElementById("adminFmMovementTargetSeasonTeamId")?.value || "",
+      type,
+      date: document.getElementById("adminFmMovementDate")?.value || getTodayIsoDate(),
+      amount,
+      playerName: document.getElementById("adminFmMovementPlayerName")?.value.trim() || "",
+      realTeam: abbreviateRealTeam(document.getElementById("adminFmMovementRealTeam")?.value || ""),
+      rosterRole: document.getElementById("adminFmMovementRole")?.value.trim() || "",
+      mantraRoles: document.getElementById("adminFmMovementRole")?.value.trim() || "",
+      description: document.getElementById("adminFmMovementDescription")?.value.trim() || "",
+      createdAt: serverTimestamp()
+    };
+
+    await addDoc(collection(db, "fmMovements"), payload);
+    await applyRosterSideEffectForMovement(payload);
+    showMessage("adminFmMovementStatus", "Movimento salvato.");
+    await loadData();
+    expandAdminPanel("adminRosterMovementsPanel");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminFmMovementStatus", "Errore durante il salvataggio del movimento.", true);
+  }
+}
+
+function updateMovementFieldVisibility() {
+  const type = document.getElementById("adminFmMovementType")?.value || "ALTRO";
+  const spec = FM_MOVEMENT_TYPES.find((item) => item.value === type) || {};
+  document.querySelectorAll(".movement-player-field").forEach((element) => element.classList.toggle("hidden", !spec.player));
+  document.querySelectorAll(".movement-target-field").forEach((element) => element.classList.toggle("hidden", !spec.target));
+}
+
+const attachAdminHandlersV17 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV18() {
+  attachAdminHandlersV17();
+  document.getElementById("adminImportStaticRostersForm")?.addEventListener("submit", importStaticRostersToFirebase);
+  document.getElementById("adminFmMovementForm")?.addEventListener("submit", saveFmMovement);
+  document.getElementById("adminFmMovementType")?.addEventListener("change", updateMovementFieldVisibility);
+  document.getElementById("adminRosterMovementSeasonId")?.addEventListener("change", (event) => {
+    state.selectedAdminRosterSeasonId = event.target.value;
+    renderAdminArea();
+  });
+  document.getElementById("adminFmMovementSeasonId")?.addEventListener("change", (event) => {
+    state.selectedAdminRosterSeasonId = event.target.value;
+    renderAdminArea();
+  });
+  document.querySelectorAll("[data-admin-delete-fm-movement]").forEach((button) => {
+    button.addEventListener("click", () => deleteDocument("fmMovements", button.dataset.adminDeleteFmMovement, "movimento FM"));
+  });
+  updateMovementFieldVisibility();
+};
+
+setupClubRosterEvents = function setupClubRosterEventsV18() {
+  document.getElementById("marketClubFilter")?.addEventListener("change", (event) => {
+    state.selectedClubRosterFilter = event.target.value;
+    renderClubRostersPublic();
+  });
+  document.getElementById("marketSearch")?.addEventListener("input", renderClubRostersPublic);
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-toggle-roster-club]");
+    if (!button) return;
+    const id = button.dataset.toggleRosterClub;
+    if (state.expandedRosterClubIds.has(id)) state.expandedRosterClubIds.delete(id);
+    else state.expandedRosterClubIds.add(id);
+    renderTeamsTable();
+  });
+};
+
+const renderDashboardV17 = renderDashboard;
+renderDashboard = function renderDashboardV18() {
+  renderDashboardV17();
+  const seasonId = getCurrentSeasonId();
+  const stats = getSeasonFmStats(seasonId);
+  const metricTotalFm = document.getElementById("metricTotalFm");
+  if (metricTotalFm) metricTotalFm.textContent = `${formatFm(stats.total)} (medio ${formatFm(stats.average)})`;
+};
+
 async function initializeAppUi() {
   setupNavigation();
   setupMobileNavigation();
   setupAuth();
   setupSeasonSelectorEvents();
   setupListoneEvents();
+  setupClubRosterEvents();
   updateAdminVisibility();
 
   const loginHelpText = document.querySelector("#loginDialog .muted");
