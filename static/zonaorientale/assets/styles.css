@@ -7223,3 +7223,327 @@ body.is-mobile-ux .free-agents-table .club-name-with-logo { white-space: nowrap 
     text-align: left !important;
   }
 }
+
+/* V30 - Mobile table readability reset.
+   Use real table sizing, sticky header/first column, and prevent listone/free agents overlap. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="listone"] .panel-header,
+  body.is-mobile-ux .app-page[data-page="listone"] .panel-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  .app-page[data-page="listone"] .panel-header > div:first-child,
+  body.is-mobile-ux .app-page[data-page="listone"] .panel-header > div:first-child {
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .app-page[data-page="listone"] .panel-header .filters-row,
+  body.is-mobile-ux .app-page[data-page="listone"] .panel-header .filters-row {
+    order: 2 !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .app-page[data-page="listone"] .panel-header .column-controls,
+  body.is-mobile-ux .app-page[data-page="listone"] .panel-header .column-controls {
+    order: 3 !important;
+    width: 100% !important;
+  }
+
+  .table-wrap,
+  .mobile-tabular-wrap,
+  .compact-table,
+  .mini-table-wrap,
+  .honor-table-wrap,
+  .standing-table-wrap,
+  .roster-dialog-table,
+  body.is-mobile-ux .table-wrap,
+  body.is-mobile-ux .mobile-tabular-wrap,
+  body.is-mobile-ux .compact-table,
+  body.is-mobile-ux .mini-table-wrap,
+  body.is-mobile-ux .honor-table-wrap,
+  body.is-mobile-ux .standing-table-wrap,
+  body.is-mobile-ux .roster-dialog-table {
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-width: 100% !important;
+  }
+
+  .table-wrap table,
+  .mobile-tabular-wrap table,
+  .compact-table table,
+  .mini-table-wrap table,
+  .honor-table-wrap table,
+  .standing-table-wrap table,
+  .roster-dialog-table table,
+  body.is-mobile-ux .table-wrap table,
+  body.is-mobile-ux .mobile-tabular-wrap table,
+  body.is-mobile-ux .compact-table table,
+  body.is-mobile-ux .mini-table-wrap table,
+  body.is-mobile-ux .honor-table-wrap table,
+  body.is-mobile-ux .standing-table-wrap table,
+  body.is-mobile-ux .roster-dialog-table table {
+    display: table !important;
+    table-layout: auto !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  .table-wrap thead,
+  .mobile-tabular-wrap thead,
+  .compact-table thead,
+  .mini-table-wrap thead,
+  .honor-table-wrap thead,
+  .standing-table-wrap thead,
+  .roster-dialog-table thead,
+  body.is-mobile-ux .table-wrap thead,
+  body.is-mobile-ux .mobile-tabular-wrap thead,
+  body.is-mobile-ux .compact-table thead,
+  body.is-mobile-ux .mini-table-wrap thead,
+  body.is-mobile-ux .honor-table-wrap thead,
+  body.is-mobile-ux .standing-table-wrap thead,
+  body.is-mobile-ux .roster-dialog-table thead {
+    display: table-header-group !important;
+  }
+
+  .table-wrap tbody,
+  .mobile-tabular-wrap tbody,
+  .compact-table tbody,
+  .mini-table-wrap tbody,
+  .honor-table-wrap tbody,
+  .standing-table-wrap tbody,
+  .roster-dialog-table tbody,
+  body.is-mobile-ux .table-wrap tbody,
+  body.is-mobile-ux .mobile-tabular-wrap tbody,
+  body.is-mobile-ux .compact-table tbody,
+  body.is-mobile-ux .mini-table-wrap tbody,
+  body.is-mobile-ux .honor-table-wrap tbody,
+  body.is-mobile-ux .standing-table-wrap tbody,
+  body.is-mobile-ux .roster-dialog-table tbody {
+    display: table-row-group !important;
+  }
+
+  .table-wrap tr,
+  .mobile-tabular-wrap tr,
+  .compact-table tr,
+  .mini-table-wrap tr,
+  .honor-table-wrap tr,
+  .standing-table-wrap tr,
+  .roster-dialog-table tr,
+  body.is-mobile-ux .table-wrap tr,
+  body.is-mobile-ux .mobile-tabular-wrap tr,
+  body.is-mobile-ux .compact-table tr,
+  body.is-mobile-ux .mini-table-wrap tr,
+  body.is-mobile-ux .honor-table-wrap tr,
+  body.is-mobile-ux .standing-table-wrap tr,
+  body.is-mobile-ux .roster-dialog-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .table-wrap th,
+  .table-wrap td,
+  .mobile-tabular-wrap th,
+  .mobile-tabular-wrap td,
+  .compact-table th,
+  .compact-table td,
+  .mini-table-wrap th,
+  .mini-table-wrap td,
+  .honor-table-wrap th,
+  .honor-table-wrap td,
+  .standing-table-wrap th,
+  .standing-table-wrap td,
+  .roster-dialog-table th,
+  .roster-dialog-table td,
+  body.is-mobile-ux .table-wrap th,
+  body.is-mobile-ux .table-wrap td,
+  body.is-mobile-ux .mobile-tabular-wrap th,
+  body.is-mobile-ux .mobile-tabular-wrap td,
+  body.is-mobile-ux .compact-table th,
+  body.is-mobile-ux .compact-table td,
+  body.is-mobile-ux .mini-table-wrap th,
+  body.is-mobile-ux .mini-table-wrap td,
+  body.is-mobile-ux .honor-table-wrap th,
+  body.is-mobile-ux .honor-table-wrap td,
+  body.is-mobile-ux .standing-table-wrap th,
+  body.is-mobile-ux .standing-table-wrap td,
+  body.is-mobile-ux .roster-dialog-table th,
+  body.is-mobile-ux .roster-dialog-table td {
+    display: table-cell !important;
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    padding: 6px 8px !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+
+  .table-wrap td::before,
+  .mobile-tabular-wrap td::before,
+  .compact-table td::before,
+  .mini-table-wrap td::before,
+  .honor-table-wrap td::before,
+  .standing-table-wrap td::before,
+  .roster-dialog-table td::before,
+  body.is-mobile-ux .table-wrap td::before,
+  body.is-mobile-ux .mobile-tabular-wrap td::before,
+  body.is-mobile-ux .compact-table td::before,
+  body.is-mobile-ux .mini-table-wrap td::before,
+  body.is-mobile-ux .honor-table-wrap td::before,
+  body.is-mobile-ux .standing-table-wrap td::before,
+  body.is-mobile-ux .roster-dialog-table td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .table-wrap th,
+  .mobile-tabular-wrap th,
+  .compact-table th,
+  .mini-table-wrap th,
+  .honor-table-wrap th,
+  .standing-table-wrap th,
+  .roster-dialog-table th,
+  body.is-mobile-ux .table-wrap th,
+  body.is-mobile-ux .mobile-tabular-wrap th,
+  body.is-mobile-ux .compact-table th,
+  body.is-mobile-ux .mini-table-wrap th,
+  body.is-mobile-ux .honor-table-wrap th,
+  body.is-mobile-ux .standing-table-wrap th,
+  body.is-mobile-ux .roster-dialog-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 80 !important;
+    background: rgba(15, 23, 42, 1) !important;
+    text-align: center !important;
+  }
+
+  .table-wrap th:first-child,
+  .table-wrap td:first-child,
+  .mobile-tabular-wrap th:first-child,
+  .mobile-tabular-wrap td:first-child,
+  .compact-table th:first-child,
+  .compact-table td:first-child,
+  .mini-table-wrap th:first-child,
+  .mini-table-wrap td:first-child,
+  .honor-table-wrap th:first-child,
+  .honor-table-wrap td:first-child,
+  .standing-table-wrap th:first-child,
+  .standing-table-wrap td:first-child,
+  .roster-dialog-table th:first-child,
+  .roster-dialog-table td:first-child,
+  body.is-mobile-ux .table-wrap th:first-child,
+  body.is-mobile-ux .table-wrap td:first-child,
+  body.is-mobile-ux .mobile-tabular-wrap th:first-child,
+  body.is-mobile-ux .mobile-tabular-wrap td:first-child,
+  body.is-mobile-ux .compact-table th:first-child,
+  body.is-mobile-ux .compact-table td:first-child,
+  body.is-mobile-ux .mini-table-wrap th:first-child,
+  body.is-mobile-ux .mini-table-wrap td:first-child,
+  body.is-mobile-ux .honor-table-wrap th:first-child,
+  body.is-mobile-ux .honor-table-wrap td:first-child,
+  body.is-mobile-ux .standing-table-wrap th:first-child,
+  body.is-mobile-ux .standing-table-wrap td:first-child,
+  body.is-mobile-ux .roster-dialog-table th:first-child,
+  body.is-mobile-ux .roster-dialog-table td:first-child {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 90 !important;
+    background: rgba(15, 23, 42, 1) !important;
+    box-shadow: 8px 0 12px rgba(2, 6, 23, 0.36) !important;
+  }
+
+  .table-wrap th:first-child,
+  .mobile-tabular-wrap th:first-child,
+  .compact-table th:first-child,
+  .mini-table-wrap th:first-child,
+  .honor-table-wrap th:first-child,
+  .standing-table-wrap th:first-child,
+  .roster-dialog-table th:first-child,
+  body.is-mobile-ux .table-wrap th:first-child,
+  body.is-mobile-ux .mobile-tabular-wrap th:first-child,
+  body.is-mobile-ux .compact-table th:first-child,
+  body.is-mobile-ux .mini-table-wrap th:first-child,
+  body.is-mobile-ux .honor-table-wrap th:first-child,
+  body.is-mobile-ux .standing-table-wrap th:first-child,
+  body.is-mobile-ux .roster-dialog-table th:first-child {
+    z-index: 110 !important;
+  }
+
+  table.listone-table,
+  table.free-agents-table,
+  body.is-mobile-ux table.listone-table,
+  body.is-mobile-ux table.free-agents-table {
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  table.listone-table th,
+  table.listone-table td,
+  table.free-agents-table th,
+  table.free-agents-table td,
+  body.is-mobile-ux table.listone-table th,
+  body.is-mobile-ux table.listone-table td,
+  body.is-mobile-ux table.free-agents-table th,
+  body.is-mobile-ux table.free-agents-table td {
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: none !important;
+  }
+
+  table.listone-table th:first-child,
+  table.listone-table td:first-child,
+  table.free-agents-table th:first-child,
+  table.free-agents-table td:first-child,
+  body.is-mobile-ux table.listone-table th:first-child,
+  body.is-mobile-ux table.listone-table td:first-child,
+  body.is-mobile-ux table.free-agents-table th:first-child,
+  body.is-mobile-ux table.free-agents-table td:first-child {
+    width: auto !important;
+    min-width: 11rem !important;
+    max-width: none !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    text-align: left !important;
+  }
+
+  table.listone-table td:first-child strong,
+  table.free-agents-table td:first-child strong,
+  body.is-mobile-ux table.listone-table td:first-child strong,
+  body.is-mobile-ux table.free-agents-table td:first-child strong {
+    display: inline !important;
+    width: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+  }
+
+  table.listone-table th:first-child .table-sort,
+  table.free-agents-table th:first-child .table-sort,
+  body.is-mobile-ux table.listone-table th:first-child .table-sort,
+  body.is-mobile-ux table.free-agents-table th:first-child .table-sort {
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .panel-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+}
