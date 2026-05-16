@@ -8,7 +8,11 @@
       "file": "2026-05-15.json",
       "rows": 661,
       "activeRows": 531,
-      "asteriskRows": 130
+      "asteriskRows": 130,
+      "rosterSourceFile": "Rose_zonaorientale-salerno.xlsx",
+      "rosterLoadedAt": "2026-05-12",
+      "rosteredRows": 299,
+      "freeAgentRows": 362
     }
   ]
 }
