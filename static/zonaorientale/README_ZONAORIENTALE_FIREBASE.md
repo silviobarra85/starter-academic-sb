@@ -170,3 +170,15 @@ Nuove raccolte Firestore usate automaticamente:
 - `fmMovements`: movimenti FM per budget iniziale, acquisti, vendite, svincoli, scambi, bonus, penalità e rettifiche.
 
 La prima volta puoi usare Admin → Rose e movimenti FM → "Inizializza rose dal file statico" per copiare il file rose JSON in Firebase. Dopo questo passaggio la fonte operativa diventa Firestore.
+
+
+## V32 - Snapshot pubblici e riduzione letture Firebase
+
+Questa versione introduce due raccolte per ridurre le letture Firestore del sito pubblico:
+
+- `publicSeasonSnapshots/{seasonId}`: dati precompilati per Dashboard, Competizioni, Stadi, Rose sintetiche e Movimenti della stagione.
+- `publicSnapshots/honor`: Albo d'Oro, Palmarès e FIFA Ranking già pronti.
+
+Da Admin apri **Snapshot pubblici** e clicca **Aggiorna snapshot pubblici** dopo modifiche a stagioni, squadre, competizioni, risultati, calendario, stadi, rose, movimenti FM o FIFA Ranking.
+
+Se gli snapshot non sono ancora presenti, il sito usa automaticamente la lettura completa come fallback.

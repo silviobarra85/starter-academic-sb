@@ -1837,6 +1837,7 @@ function renderAdminArea() {
     ${renderCompetitionResultsAdminPanel()}
     ${renderFifaRankingAdminPanel()}
     ${renderListoneToolsAdminPanel()}
+    ${renderPublicSnapshotsAdminPanel()}
     ${renderBackupAdminPanel()}
   `;
 
@@ -4291,6 +4292,7 @@ renderAdminArea = function renderAdminAreaV18() {
     ${renderCompetitionResultsAdminPanel()}
     ${renderFifaRankingAdminPanel()}
     ${renderListoneToolsAdminPanel()}
+    ${renderPublicSnapshotsAdminPanel()}
     ${renderBackupAdminPanel()}
   `;
   attachAdminHandlers();
@@ -4592,6 +4594,451 @@ document.addEventListener("click", (event) => {
     renderTeamsTable();
   }
 });
+
+
+
+/* V32 - Public Firestore snapshots to reduce reads.
+   Public pages can read lightweight snapshots:
+   - publicSeasonSnapshots/{seasonId}: Dashboard, competitions, stadiums, rosters/movements summaries.
+   - publicSnapshots/honor: Albo d'Oro, palmares and FIFA Ranking.
+   Admin still loads granular collections for editing. */
+if (!ADMIN_PANEL_IDS.includes("adminPublicSnapshotsPanel")) ADMIN_PANEL_IDS.push("adminPublicSnapshotsPanel");
+if (state.collapsedAdminPanels && typeof state.collapsedAdminPanels.add === "function") {
+  state.collapsedAdminPanels.add("adminPublicSnapshotsPanel");
+}
+state.publicSeasonSnapshots = state.publicSeasonSnapshots || {};
+state.publicHonorSnapshot = state.publicHonorSnapshot || null;
+state.hasFullData = Boolean(state.hasFullData);
+state.usedPublicSnapshots = false;
+
+function makeEmptyRawDataV32() {
+  const raw = Object.fromEntries(COLLECTIONS.map((name) => [name, []]));
+  raw.leagueSettings = raw.leagueSettings || [];
+  raw.seasons = raw.seasons || [];
+  raw.presidents = raw.presidents || [];
+  raw.teams = raw.teams || [];
+  raw.seasonTeams = raw.seasonTeams || [];
+  raw.stadiums = raw.stadiums || [];
+  raw.competitions = raw.competitions || [];
+  raw.competitionMatches = raw.competitionMatches || [];
+  raw.competitionResults = raw.competitionResults || [];
+  raw.honorRoll = raw.honorRoll || [];
+  raw.fifaRankings = raw.fifaRankings || [];
+  raw.rosterEntries = raw.rosterEntries || [];
+  raw.fmMovements = raw.fmMovements || [];
+  return raw;
+}
+
+async function getDocumentIfExistsV32(collectionName, documentId) {
+  try {
+    const snapshot = await getDoc(doc(db, collectionName, documentId));
+    if (!snapshot.exists()) return null;
+    return { id: snapshot.id, ...snapshot.data() };
+  } catch (error) {
+    const code = error?.code ? `${error.code}: ` : "";
+    error.message = `Errore lettura documento ${collectionName}/${documentId}. ${code}${error.message || error}`;
+    throw error;
+  }
+}
+
+async function loadPublicSeasonSnapshotV32(seasonId) {
+  if (!seasonId) return null;
+  if (state.publicSeasonSnapshots[seasonId]) return state.publicSeasonSnapshots[seasonId];
+  const snapshot = await getDocumentIfExistsV32("publicSeasonSnapshots", seasonId);
+  if (snapshot) state.publicSeasonSnapshots[seasonId] = snapshot;
+  return snapshot;
+}
+
+async function loadPublicHonorSnapshotV32() {
+  if (state.publicHonorSnapshot) return state.publicHonorSnapshot;
+  const snapshot = await getDocumentIfExistsV32("publicSnapshots", "honor");
+  if (snapshot) state.publicHonorSnapshot = snapshot;
+  return snapshot;
+}
+
+function applyPublicSeasonSnapshotV32(snapshot) {
+  if (!snapshot) return false;
+  state.raw.presidents = Array.isArray(snapshot.presidents) ? snapshot.presidents : [];
+  state.raw.teams = Array.isArray(snapshot.teams) ? snapshot.teams : [];
+  state.raw.seasonTeams = Array.isArray(snapshot.seasonTeams) ? snapshot.seasonTeams : [];
+  state.raw.stadiums = Array.isArray(snapshot.stadiums) ? snapshot.stadiums : [];
+  state.raw.competitions = Array.isArray(snapshot.competitions) ? snapshot.competitions : [];
+  state.raw.competitionMatches = Array.isArray(snapshot.competitionMatches) ? snapshot.competitionMatches : [];
+  state.raw.competitionResults = Array.isArray(snapshot.competitionResults) ? snapshot.competitionResults : [];
+  state.raw.rosterEntries = Array.isArray(snapshot.rosterEntries) ? snapshot.rosterEntries : [];
+  state.raw.fmMovements = Array.isArray(snapshot.fmMovements) ? snapshot.fmMovements : [];
+  state.raw.fifaRankings = [];
+  state.raw.honorRoll = [];
+  state.usedPublicSnapshots = true;
+  return true;
+}
+
+async function loadFullDataV32(options = {}) {
+  const { render = true } = options;
+  const entries = await Promise.all(
+    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
+  );
+  state.raw = Object.assign(makeEmptyRawDataV32(), Object.fromEntries(entries));
+  state.hasFullData = true;
+  state.usedPublicSnapshots = false;
+  await loadListoniData();
+  await loadRostersData();
+  sortData();
+  if (render) renderAll();
+}
+
+async function loadPublicDataV32() {
+  state.raw = makeEmptyRawDataV32();
+  state.raw.leagueSettings = await loadCollection("leagueSettings");
+  state.raw.seasons = await loadCollection("seasons");
+
+  if (!state.selectedSeasonId) state.selectedSeasonId = getDefaultSeasonId();
+  const seasonId = getCurrentSeasonId();
+  const seasonSnapshot = await loadPublicSeasonSnapshotV32(seasonId);
+  const honorSnapshot = await loadPublicHonorSnapshotV32();
+
+  if (!seasonSnapshot || !honorSnapshot) {
+    console.warn("Snapshot pubblici mancanti: uso lettura completa Firestore come fallback.");
+    await loadFullDataV32({ render: false });
+  } else {
+    applyPublicSeasonSnapshotV32(seasonSnapshot);
+    state.publicHonorSnapshot = honorSnapshot;
+    state.hasFullData = false;
+    await loadListoniData();
+    await loadRostersData();
+    sortData();
+  }
+  renderAll();
+}
+
+loadData = async function loadDataV32() {
+  if (state.isAdmin) {
+    await loadFullDataV32({ render: true });
+    return;
+  }
+  await loadPublicDataV32();
+};
+
+setupSeasonSelectorEvents = function setupSeasonSelectorEventsV32() {
+  const handleChange = async (event) => {
+    state.selectedSeasonId = event.target.value;
+    state.selectedListoneId = "";
+    if (!state.hasFullData && !state.isAdmin) {
+      const snapshot = await loadPublicSeasonSnapshotV32(state.selectedSeasonId);
+      if (snapshot) {
+        applyPublicSeasonSnapshotV32(snapshot);
+        await loadListoniData();
+        await loadRostersData();
+        sortData();
+        renderAll();
+        return;
+      }
+      await loadFullDataV32({ render: true });
+      return;
+    }
+    renderAll();
+  };
+
+  ["globalSeasonSelect"].forEach((id) => {
+    const select = document.getElementById(id);
+    select?.addEventListener("change", (event) => {
+      handleChange(event).catch((error) => {
+        console.error(error);
+        setError(`Cambio stagione non riuscito. ${error?.message || error}`);
+      });
+    });
+  });
+};
+
+setupAuth = function setupAuthV32() {
+  const openLoginBtn = document.getElementById("openLoginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const loginDialog = document.getElementById("loginDialog");
+  const loginForm = document.getElementById("loginForm");
+  const closeLoginBtn = document.getElementById("closeLoginBtn");
+
+  openLoginBtn?.addEventListener("click", () => {
+    if (loginDialog?.showModal) loginDialog.showModal();
+  });
+
+  closeLoginBtn?.addEventListener("click", () => loginDialog?.close());
+
+  logoutBtn?.addEventListener("click", async () => {
+    await signOut(auth);
+  });
+
+  loginForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = document.getElementById("loginEmail")?.value.trim();
+    const password = document.getElementById("loginPassword")?.value;
+    showMessage("loginStatus", "Accesso in corso...");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      loginDialog?.close();
+      loginForm.reset();
+    } catch (error) {
+      console.error(error);
+      showMessage("loginStatus", "Login non riuscito. Controlla email e password.", true);
+    }
+  });
+
+  onAuthStateChanged(auth, async (user) => {
+    state.user = user;
+    state.isAdmin = false;
+
+    if (user) {
+      try {
+        const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
+        state.isAdmin = adminSnapshot.exists();
+        if (!state.isAdmin) {
+          showMessage("loginStatus", `Utente autenticato ma non presente nella raccolta admins. UID: ${user.uid}`, true);
+        }
+      } catch (error) {
+        console.error(error);
+        const code = error?.code ? `${error.code}: ` : "";
+        showMessage("loginStatus", `Login riuscito, ma controllo admin fallito. ${code}${error.message || error}`, true);
+      }
+    }
+
+    updateAdminVisibility();
+
+    if (state.isAdmin && !state.hasFullData) {
+      try {
+        await loadFullDataV32({ render: true });
+      } catch (error) {
+        console.error(error);
+        setError(`Non riesco a caricare i dati admin. ${error?.message || error}`);
+      }
+    } else if (!state.isAdmin && state.hasFullData) {
+      state.hasFullData = false;
+      await loadPublicDataV32();
+    } else {
+      renderAdminArea();
+    }
+  });
+};
+
+function buildPublicSeasonSnapshotV32(seasonId) {
+  const seasonTeams = state.raw.seasonTeams.filter((item) => item.seasonId === seasonId);
+  const seasonTeamIds = new Set(seasonTeams.map((item) => item.id));
+  const teamIds = new Set(seasonTeams.map((item) => item.teamId).filter(Boolean));
+  const presidentIds = new Set();
+  seasonTeams.forEach((item) => (item.presidentIds || []).forEach((id) => presidentIds.add(id)));
+
+  const competitions = state.raw.competitions.filter((item) => item.seasonId === seasonId);
+  const competitionIds = new Set(competitions.map((item) => item.id));
+
+  const stadiums = state.raw.stadiums.filter((item) => seasonTeamIds.has(item.seasonTeamId));
+  const competitionMatches = state.raw.competitionMatches.filter((item) => competitionIds.has(item.competitionId));
+  const competitionResults = state.raw.competitionResults.filter((item) => competitionIds.has(item.competitionId));
+  const rosterEntries = (state.raw.rosterEntries || []).filter((item) => item.seasonId === seasonId && item.status !== "REMOVED");
+  const fmMovements = (state.raw.fmMovements || []).filter((item) => item.seasonId === seasonId);
+
+  rosterEntries.forEach((item) => {
+    if (item.seasonTeamId) seasonTeamIds.add(item.seasonTeamId);
+  });
+  fmMovements.forEach((item) => {
+    if (item.seasonTeamId) seasonTeamIds.add(item.seasonTeamId);
+  });
+
+  return {
+    id: seasonId,
+    seasonId,
+    generatedAt: new Date().toISOString(),
+    teams: state.raw.teams.filter((item) => teamIds.has(item.id)),
+    presidents: state.raw.presidents.filter((item) => presidentIds.has(item.id)),
+    seasonTeams,
+    stadiums,
+    competitions,
+    competitionMatches,
+    competitionResults,
+    rosterEntries,
+    fmMovements,
+    metrics: {
+      clubs: seasonTeams.length || getParticipantsCount(seasonId),
+      fm: getSeasonFmStats(seasonId)
+    }
+  };
+}
+
+function buildHonorTeamCellV32(seasonId, competitionType, seasonTeamId) {
+  if (seasonTeamId) {
+    const seasonTeam = getSeasonTeamById(seasonTeamId);
+    return {
+      kind: "team",
+      seasonTeamId,
+      teamId: seasonTeam?.teamId || "",
+      label: getSeasonTeamDisplayName(seasonTeamId),
+      logo: getSeasonTeamLogo(seasonTeam)
+    };
+  }
+  if (isCompetitionNotDisputed(seasonId, competitionType)) {
+    return { kind: "status", status: "NON_DISPUTATA", label: "Non disputata" };
+  }
+  return { kind: "empty", label: "-" };
+}
+
+function buildHonorSnapshotV32() {
+  const { teamsById } = buildMaps();
+  const palmares = buildPalmares();
+  const palmaresWithLogos = Object.fromEntries(Object.entries(palmares).map(([type, items]) => [
+    type,
+    items.map((item) => {
+      const team = teamsById.get(item.teamId);
+      return { ...item, logo: team?.logo || "" };
+    })
+  ]));
+
+  return {
+    id: "honor",
+    generatedAt: new Date().toISOString(),
+    honorRows: state.raw.seasons.map((season) => {
+      const honor = getHonorRollRow(season.id) || {};
+      return {
+        seasonId: season.id,
+        seasonLabel: formatSeasonShortLabel(season),
+        championItaly: buildHonorTeamCellV32(season.id, "CAMPIONATO", honor.championItalySeasonTeamId),
+        secondPlace: buildHonorTeamCellV32(season.id, "CAMPIONATO", honor.secondPlaceSeasonTeamId),
+        thirdPlace: buildHonorTeamCellV32(season.id, "CAMPIONATO", honor.thirdPlaceSeasonTeamId),
+        coppaItalia: buildHonorTeamCellV32(season.id, "COPPA_ITALIA", honor.coppaItaliaWinnerSeasonTeamId),
+        championsLeague: buildHonorTeamCellV32(season.id, "CHAMPIONS_LEAGUE", honor.championsLeagueWinnerSeasonTeamId),
+        playoff: buildHonorTeamCellV32(season.id, "PLAYOFF", honor.playoffWinnerSeasonTeamId)
+      };
+    }),
+    palmares: palmaresWithLogos,
+    fifaRanking: buildFifaRanking().map((item) => ({
+      teamId: item.teamId,
+      teamName: item.teamName,
+      points: item.score,
+      position: item.position,
+      logo: item.team?.logo || ""
+    }))
+  };
+}
+
+async function savePublicSnapshotsV32(event) {
+  event?.preventDefault?.();
+  try {
+    showMessage("adminPublicSnapshotsStatus", "Generazione snapshot in corso...");
+    if (!state.hasFullData) await loadFullDataV32({ render: false });
+
+    for (const season of state.raw.seasons) {
+      const snapshot = buildPublicSeasonSnapshotV32(season.id);
+      await setDoc(doc(db, "publicSeasonSnapshots", season.id), snapshot);
+      state.publicSeasonSnapshots[season.id] = snapshot;
+    }
+
+    const honorSnapshot = buildHonorSnapshotV32();
+    await setDoc(doc(db, "publicSnapshots", "honor"), honorSnapshot);
+    state.publicHonorSnapshot = honorSnapshot;
+
+    showMessage("adminPublicSnapshotsStatus", `Snapshot pubblici aggiornati: ${state.raw.seasons.length} stagioni + albo d'oro.`);
+    renderAdminArea();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminPublicSnapshotsStatus", `Errore snapshot: ${error?.message || error}`, true);
+  }
+}
+
+function renderPublicSnapshotsAdminPanel() {
+  const generated = state.publicHonorSnapshot?.generatedAt || "-";
+  return renderAdminPanel("adminPublicSnapshotsPanel", "Ottimizzazione", "Snapshot pubblici", "Genera documenti leggeri per ridurre le letture Firebase del sito pubblico.", `
+    <div class="form-actions">
+      <button id="adminGeneratePublicSnapshots" class="button button-primary" type="button">Aggiorna snapshot pubblici</button>
+      <span id="adminPublicSnapshotsStatus" class="form-status"></span>
+    </div>
+    <small class="field-hint">Crea/aggiorna publicSeasonSnapshots/{stagione} e publicSnapshots/honor. Ultimo honor snapshot caricato: ${escapeHtml(generated)}.</small>
+  `);
+}
+
+function renderHonorSnapshotCellV32(cell) {
+  if (!cell || cell.kind === "empty") return "-";
+  if (cell.kind === "status") return `<span class="status status-muted">${escapeHtml(cell.label || "Non disputata")}</span>`;
+  if (cell.kind === "team") return `<span class="club-name-with-logo">${renderTeamLogo(cell.label, cell.logo)}<strong>${escapeHtml(cell.label || "-")}</strong></span>`;
+  return escapeHtml(cell.label || "-");
+}
+
+const renderHonorSummaryBeforeV32 = renderHonorSummary;
+renderHonorSummary = function renderHonorSummaryV32() {
+  const target = document.getElementById("honorSummary");
+  if (!target) return;
+  const snapshot = state.publicHonorSnapshot;
+  if (!snapshot || state.hasFullData) {
+    return renderHonorSummaryBeforeV32();
+  }
+
+  const rows = (snapshot.honorRows || []).map((row) => `
+    <tr>
+      <td data-label="Stagione"><strong>${escapeHtml(row.seasonLabel || row.seasonId || "-")}</strong></td>
+      <td data-label="Campione">${renderHonorSnapshotCellV32(row.championItaly)}</td>
+      <td data-label="2° posto">${renderHonorSnapshotCellV32(row.secondPlace)}</td>
+      <td data-label="3° posto">${renderHonorSnapshotCellV32(row.thirdPlace)}</td>
+      <td data-label="Coppa Italia">${renderHonorSnapshotCellV32(row.coppaItalia)}</td>
+      <td data-label="Champions">${renderHonorSnapshotCellV32(row.championsLeague)}</td>
+      <td data-label="Playoff">${renderHonorSnapshotCellV32(row.playoff)}</td>
+    </tr>`).join("");
+
+  const palmaresHtml = Object.entries(snapshot.palmares || {})
+    .filter(([type]) => type !== "PLAYOFF")
+    .map(([type, items]) => {
+      const body = (items || []).map((item, index) => `
+        <tr>
+          <td data-label="#" class="number">${index + 1}</td>
+          <td data-label="Squadra"><span class="club-name-with-logo">${renderTeamLogo(item.teamName, item.logo)}<strong>${escapeHtml(item.teamName || "-")}</strong></span></td>
+          <td data-label="Titoli" class="number"><strong>${escapeHtml(item.wins ?? 0)}</strong></td>
+        </tr>`).join("") || `<tr><td colspan="3" class="muted center">Nessun vincitore ancora inserito.</td></tr>`;
+      return `
+        <div class="compact-card palmares-competition-card">
+          <div class="compact-card-header">
+            <div>
+              <h3>${escapeHtml(getLabel(COMPETITION_TYPES, type))}</h3>
+              <p class="muted">Titoli vinti per squadra</p>
+            </div>
+          </div>
+          <div class="table-wrap palmares-table-wrap">
+            <table class="palmares-table">
+              <thead><tr><th class="number">#</th><th>Squadra</th><th class="number">Titoli</th></tr></thead>
+              <tbody>${body}</tbody>
+            </table>
+          </div>
+        </div>`;
+    }).join("");
+
+  const rankingRows = (snapshot.fifaRanking || []).map((item) => `
+    <tr>
+      <td data-label="#">${escapeHtml(item.position || "")}</td>
+      <td data-label="Squadra"><span class="club-name-with-logo">${renderTeamLogo(item.teamName, item.logo)}<strong>${escapeHtml(item.teamName || "-")}</strong></span></td>
+      <td data-label="Punteggio" class="number"><strong>${escapeHtml(item.points ?? "-")}</strong></td>
+    </tr>`).join("") || `<tr><td colspan="3" class="muted center">Nessun punteggio FIFA inserito.</td></tr>`;
+
+  target.innerHTML = `
+    <div class="table-wrap honor-table-wrap">
+      <table>
+        <thead><tr><th>Stagione</th><th>Campione d'Italia</th><th>2°</th><th>3°</th><th>Coppa Italia</th><th>Champions</th><th>Playoff</th></tr></thead>
+        <tbody>${rows || `<tr><td colspan="7" class="muted center">Nessuna stagione inserita.</td></tr>`}</tbody>
+      </table>
+    </div>
+    <div class="detail-section">
+      <h3>Palmarès per competizione</h3>
+      <div class="palmares-grid">${palmaresHtml}</div>
+    </div>
+    <div class="detail-section">
+      <h3>FIFA Ranking</h3>
+      <div class="table-wrap fifa-ranking-table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Squadra</th><th class="number">Punteggio</th></tr></thead>
+          <tbody>${rankingRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+};
+
+const attachAdminHandlersBeforeV32 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV32() {
+  attachAdminHandlersBeforeV32();
+  document.getElementById("adminGeneratePublicSnapshots")?.addEventListener("click", savePublicSnapshotsV32);
+};
+
 
 initializeAppUi().then(() => {
   injectDisplayModeToggle();
