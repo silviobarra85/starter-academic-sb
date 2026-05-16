@@ -14,7 +14,7 @@ static/zonaorientale/
 - `assets/app.js`: nuova base Firebase con area Admin per:
   - stagioni;
   - presidenti;
-  - squadre con caricamento logo e fallback con iniziali;
+  - squadre con logo da file statico in assets/logos e fallback con iniziali;
   - associazione squadre/stagioni;
   - competizioni per stagione;
   - risultati delle competizioni concluse;
@@ -24,8 +24,8 @@ static/zonaorientale/
 ## Novità di questa versione
 
 - Ogni scheda Admin ha il pulsante `Ingrandisci/Riduci`.
-- Le squadre non usano più un path logo manuale: puoi caricare un file immagine dal pannello Admin.
-- Il logo viene salvato nel campo `teams.logo` come data URL compresso e mostrato in forma tonda.
+- Le squadre usano un path/logo file statico: inserisci il nome del file già presente in `assets/logos/`, ad esempio `real-pastena.png`, oppure un path tipo `assets/logos/real-pastena.png`.
+- Il logo non viene più salvato come base64 in Firestore: nel campo `teams.logo` e `seasonTeams.logo` viene salvato solo un path leggero.
 - Se non c'è logo, viene mostrato un placeholder tondo con le prime due lettere del nome squadra.
 - Le stagioni hanno il campo `participantCount`, cioè il numero previsto di squadre partecipanti.
 - È stata aggiunta la gestione `seasonTeams`: qui associ una squadra a una stagione e salvi nome stagionale, presidenti stagionali e logo stagionale opzionale.
@@ -186,3 +186,10 @@ Questa versione introduce due raccolte per ridurre le letture Firestore del sito
 Da Admin apri **Snapshot pubblici** e clicca **Aggiorna snapshot pubblici** dopo modifiche a stagioni, squadre, competizioni, risultati, calendario, stadi, rose, movimenti FM o FIFA Ranking.
 
 Se gli snapshot non sono ancora presenti, il sito usa automaticamente la lettura completa come fallback.
+
+
+## V35 - Loghi statici senza base64
+
+I loghi squadra vanno inseriti come file nella repo in `static/zonaorientale/assets/logos/`. Nell'Admin, nella scheda Squadre o Squadre per stagione, inserisci solo il nome del file o il path. Se inserisci solo `real-pastena.png`, il sito lo risolve come `./assets/logos/real-pastena.png`.
+
+È disponibile il pulsante **Rimuovi immagini base64 da Firebase** nella scheda Admin > Squadre: rimuove i vecchi loghi salvati come data URL da `teams` e `seasonTeams`, senza toccare i file statici. Dopo la pulizia, rigenera gli snapshot pubblici.
