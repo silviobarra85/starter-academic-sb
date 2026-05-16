@@ -15,6 +15,11 @@ import {
 
 import {
   getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
@@ -45,6 +50,11 @@ export {
   updateDoc,
   deleteDoc,
   serverTimestamp,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged

@@ -7547,3 +7547,173 @@ body.is-mobile-ux .app-page[data-page="listone"] .panel-header {
   align-items: stretch !important;
   gap: 8px !important;
 }
+
+/* V34 - president accounts, team pages and snapshot-first public views */
+.team-profile-link {
+  display: inline-flex;
+  max-width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.team-profile-link:hover strong,
+.team-profile-link:hover span:not(.club-logo) {
+  text-decoration: underline;
+}
+
+.team-profile-dialog .team-profile-card {
+  width: min(1180px, calc(100vw - 32px));
+  max-width: none;
+}
+
+.team-profile-body {
+  display: grid;
+  gap: 14px;
+}
+
+.team-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.team-profile-header h3 {
+  margin: 0 0 4px;
+}
+
+.user-request-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.user-actions-grid {
+  align-items: start;
+}
+
+.admin-approval-controls {
+  display: grid !important;
+  grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(190px, 1.2fr) auto auto;
+  width: min(860px, 100%);
+  gap: 8px !important;
+}
+
+.snapshot-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#loginForm .button + .button {
+  margin-top: 8px;
+}
+
+/* Keep mobile tabular views readable: sticky header and sticky first column. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .team-profile-dialog .team-profile-card {
+    width: 100vw !important;
+    height: 100dvh;
+    border-radius: 0;
+    overflow: auto;
+  }
+
+  .team-profile-header {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .user-request-grid,
+  .user-actions-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-approval-controls {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .mobile-tabular-wrap,
+  .table-wrap {
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular,
+  .table-wrap table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular th,
+  .table-wrap table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 6 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular td,
+  .table-wrap table td {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular th:first-child,
+  .mobile-tabular-wrap table.mobile-tabular td:first-child,
+  .listone-table-wrap table th:first-child,
+  .listone-table-wrap table td:first-child,
+  .honor-table-wrap table th:first-child,
+  .honor-table-wrap table td:first-child,
+  .fifa-ranking-table-wrap table th:first-child,
+  .fifa-ranking-table-wrap table td:first-child {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 7 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    text-align: left !important;
+    min-width: 128px !important;
+    max-width: 168px !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular th:first-child,
+  .listone-table-wrap table th:first-child,
+  .honor-table-wrap table th:first-child,
+  .fifa-ranking-table-wrap table th:first-child {
+    z-index: 9 !important;
+    text-align: center !important;
+  }
+
+  .listone-table-wrap table th:first-child,
+  .listone-table-wrap table td:first-child {
+    min-width: 145px !important;
+    max-width: 185px !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular th,
+  .mobile-tabular-wrap table.mobile-tabular td {
+    padding: 6px 7px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .table-sort {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
