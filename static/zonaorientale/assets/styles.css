@@ -7099,3 +7099,147 @@ body.is-mobile-ux .roster-season-table .club-name-with-logo,
 body.is-mobile-ux .roster-player-table .club-name-with-logo,
 body.is-mobile-ux .listone-table .club-name-with-logo,
 body.is-mobile-ux .free-agents-table .club-name-with-logo { white-space: nowrap !important; flex-wrap: nowrap !important; }
+
+
+/* V29 - Mobile listone readability and full player names.
+   Keep the first column sticky, but never truncate player names. Stack listone
+   filters on mobile with visible labels so controls remain usable. */
+.filter-field {
+  display: contents;
+}
+
+.filter-field > span {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="listone"] .listone-filters-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: none !important;
+    justify-content: stretch !important;
+  }
+
+  .app-page[data-page="listone"] .filter-field {
+    display: grid !important;
+    gap: 4px !important;
+    width: 100% !important;
+    max-width: none !important;
+    color: var(--muted);
+    font-size: 0.74rem !important;
+    font-weight: 850 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .app-page[data-page="listone"] .filter-field > span {
+    display: block !important;
+  }
+
+  .app-page[data-page="listone"] .filter-field .input,
+  .app-page[data-page="listone"] .filter-field .filter-input,
+  .app-page[data-page="listone"] .filter-field .search-input {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 42px !important;
+    padding: 10px 12px !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .app-page[data-page="listone"] .column-controls,
+  .app-page[data-page="listone"] .column-visibility-control {
+    width: 100% !important;
+  }
+
+  table.listone-table,
+  table.free-agents-table,
+  body.is-mobile-ux table.listone-table,
+  body.is-mobile-ux table.free-agents-table {
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  table.listone-table th.listone-col-playerName,
+  table.listone-table td.listone-col-playerName,
+  table.free-agents-table th.listone-col-playerName,
+  table.free-agents-table td.listone-col-playerName,
+  body.is-mobile-ux table.listone-table th.listone-col-playerName,
+  body.is-mobile-ux table.listone-table td.listone-col-playerName,
+  body.is-mobile-ux table.free-agents-table th.listone-col-playerName,
+  body.is-mobile-ux table.free-agents-table td.listone-col-playerName {
+    width: auto !important;
+    min-width: 11.5rem !important;
+    max-width: none !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    text-align: left !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  table.listone-table .listone-col-playerName *,
+  table.free-agents-table .listone-col-playerName *,
+  body.is-mobile-ux table.listone-table .listone-col-playerName *,
+  body.is-mobile-ux table.free-agents-table .listone-col-playerName * {
+    max-width: none !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  table.listone-table th.listone-col-playerName,
+  table.free-agents-table th.listone-col-playerName,
+  body.is-mobile-ux table.listone-table th.listone-col-playerName,
+  body.is-mobile-ux table.free-agents-table th.listone-col-playerName {
+    text-align: center !important;
+  }
+
+  table.listone-table th.listone-col-playerName .table-sort,
+  table.free-agents-table th.listone-col-playerName .table-sort,
+  body.is-mobile-ux table.listone-table th.listone-col-playerName .table-sort,
+  body.is-mobile-ux table.free-agents-table th.listone-col-playerName .table-sort {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .listone-filters-row {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  width: 100% !important;
+  max-width: none !important;
+  justify-content: stretch !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field {
+  display: grid !important;
+  gap: 4px !important;
+  width: 100% !important;
+  max-width: none !important;
+  color: var(--muted);
+  font-size: 0.74rem !important;
+  font-weight: 850 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field > span {
+  display: block !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field .input,
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field .filter-input,
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field .search-input {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 42px !important;
+  padding: 10px 12px !important;
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+}
