@@ -4040,9 +4040,9 @@ renderTeamsTable = function renderTeamsTableV23() {
                   <td data-label="Stadio">${escapeHtml(formatStadium(stadium))}</td>
                   <td data-label="Azione"><button class="button button-secondary button-small" type="button" data-toggle-roster-club="${escapeHtml(seasonTeam.id)}" aria-expanded="${isExpanded ? "true" : "false"}">${isExpanded ? "Riduci" : "Ingrandisci"}</button></td>
                 </tr>
-                <tr class="roster-detail-row ${isExpanded ? "" : "hidden"}">
+                ${isExpanded ? `<tr class="roster-detail-row">
                   <td colspan="6">${renderRosterPlayerTable(roster?.players || [])}</td>
-                </tr>`;
+                </tr>` : ""}`;
             }).join("")}
           </tbody>
         </table>

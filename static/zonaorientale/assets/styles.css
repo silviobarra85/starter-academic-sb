@@ -5403,3 +5403,202 @@ body.is-mobile-ux .roster-player-table .roster-col-player { width: 46% !importan
 body.is-mobile-ux .roster-player-table .roster-col-role { width: 24% !important; }
 body.is-mobile-ux .roster-player-table .roster-col-team { width: 12% !important; text-align: center !important; }
 body.is-mobile-ux .roster-player-table .roster-col-cost { width: 18% !important; }
+
+/* V25 - Compact column separators and mobile intrinsic table widths. */
+.listone-table,
+.free-agents-table,
+.roster-season-table,
+.roster-player-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.listone-table th,
+.listone-table td,
+.free-agents-table th,
+.free-agents-table td,
+.roster-season-table th,
+.roster-season-table td,
+.roster-player-table th,
+.roster-player-table td {
+  border-right: 1px solid rgba(148, 163, 184, 0.22) !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.listone-table th:last-child,
+.listone-table td:last-child,
+.free-agents-table th:last-child,
+.free-agents-table td:last-child,
+.roster-season-table th:last-child,
+.roster-season-table td:last-child,
+.roster-player-table th:last-child,
+.roster-player-table td:last-child {
+  border-right: 0 !important;
+}
+
+.listone-table .number,
+.free-agents-table .number,
+.roster-season-table .number,
+.roster-player-table .number {
+  text-align: center !important;
+}
+
+.roster-season-table .roster-team-name,
+.roster-player-table .roster-col-player,
+.listone-table .listone-col-playerName,
+.free-agents-table .listone-col-playerName {
+  text-align: center !important;
+}
+
+.roster-season-table .roster-team-name {
+  justify-content: center !important;
+}
+
+/* Make collapsed roster details stay collapsed even when mobile table rules force rows visible. */
+.roster-season-table tr.roster-detail-row.hidden,
+.roster-season-table tr.roster-detail-row.hidden > td,
+.mobile-tabular-wrap table.mobile-tabular tr.roster-detail-row.hidden,
+.mobile-tabular-wrap table.mobile-tabular tr.roster-detail-row.hidden > td,
+body.is-mobile-ux .roster-season-table tr.roster-detail-row.hidden,
+body.is-mobile-ux .roster-season-table tr.roster-detail-row.hidden > td {
+  display: none !important;
+  visibility: collapse !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .listone-table-wrap,
+  .roster-season-table-wrap,
+  .roster-inline-table-wrap {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+  }
+
+  .listone-table,
+  .free-agents-table,
+  .roster-player-table {
+    table-layout: auto !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    max-width: none !important;
+    font-size: 0.5rem !important;
+  }
+
+  .roster-season-table {
+    table-layout: auto !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    max-width: none !important;
+    font-size: 0.52rem !important;
+  }
+
+  .listone-table th,
+  .listone-table td,
+  .free-agents-table th,
+  .free-agents-table td,
+  .roster-season-table th,
+  .roster-season-table td,
+  .roster-player-table th,
+  .roster-player-table td {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 2px 4px !important;
+    line-height: 1.02 !important;
+    white-space: nowrap !important;
+  }
+
+  .listone-table .listone-col-playerName,
+  .free-agents-table .listone-col-playerName,
+  .roster-player-table .roster-col-player {
+    max-width: 9.5rem !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .listone-table .listone-col-classicRole,
+  .free-agents-table .listone-col-classicRole,
+  .listone-table .listone-col-realTeam,
+  .free-agents-table .listone-col-realTeam,
+  .roster-player-table .roster-col-role,
+  .roster-player-table .roster-col-team,
+  .roster-player-table .roster-col-cost {
+    max-width: 4.8rem !important;
+  }
+
+  .listone-table .listone-col-fantasyRoster,
+  .listone-table .listone-col-status,
+  .free-agents-table .listone-col-status {
+    max-width: 6.6rem !important;
+  }
+
+  .listone-table th[class*="listone-col-quotation"],
+  .listone-table td[class*="listone-col-quotation"],
+  .free-agents-table th[class*="listone-col-quotation"],
+  .free-agents-table td[class*="listone-col-quotation"],
+  .listone-table .listone-col-fvm,
+  .free-agents-table .listone-col-fvm,
+  .listone-table .listone-col-rosterCost,
+  .free-agents-table .listone-col-rosterCost {
+    max-width: 3.5rem !important;
+  }
+
+  .roster-season-table .club-logo,
+  .listone-table .club-logo,
+  .free-agents-table .club-logo,
+  .roster-player-table .club-logo {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .roster-season-table .button-small {
+    min-height: 24px !important;
+    padding: 3px 6px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .listone-table .status,
+  .free-agents-table .status {
+    padding: 1px 4px !important;
+    font-size: 0.5rem !important;
+  }
+}
+
+body.is-mobile-ux .listone-table,
+body.is-mobile-ux .free-agents-table,
+body.is-mobile-ux .roster-player-table,
+body.is-mobile-ux .roster-season-table {
+  table-layout: auto !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  max-width: none !important;
+}
+
+body.is-mobile-ux .listone-table th,
+body.is-mobile-ux .listone-table td,
+body.is-mobile-ux .free-agents-table th,
+body.is-mobile-ux .free-agents-table td,
+body.is-mobile-ux .roster-season-table th,
+body.is-mobile-ux .roster-season-table td,
+body.is-mobile-ux .roster-player-table th,
+body.is-mobile-ux .roster-player-table td {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  padding: 2px 4px !important;
+  line-height: 1.02 !important;
+  text-align: center !important;
+}
+
+body.is-mobile-ux .listone-table .listone-col-playerName,
+body.is-mobile-ux .free-agents-table .listone-col-playerName,
+body.is-mobile-ux .roster-player-table .roster-col-player {
+  max-width: 9.5rem !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
