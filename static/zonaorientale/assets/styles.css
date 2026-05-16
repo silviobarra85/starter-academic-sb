@@ -7243,3 +7243,231 @@ body.is-mobile-ux .app-page[data-page="listone"] .filter-field .search-input {
   font-size: 16px !important;
   line-height: 1.2 !important;
 }
+
+/* V30 - Mobile listone filters spacing and table overlap fixes. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="listone"] .panel-header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    overflow: visible !important;
+  }
+
+  .app-page[data-page="listone"] .panel-header > div {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  .app-page[data-page="listone"] .listone-filters-row {
+    position: static !important;
+    inset: auto !important;
+    order: 2 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: auto !important;
+  }
+
+  .app-page[data-page="listone"] .column-controls {
+    position: static !important;
+    order: 3 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 0 !important;
+  }
+
+  .app-page[data-page="listone"] .filter-field {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .app-page[data-page="listone"] .filter-field .input,
+  .app-page[data-page="listone"] .filter-field .filter-input,
+  .app-page[data-page="listone"] .filter-field .search-input {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 44px !important;
+  }
+
+  .app-page[data-page="listone"] .column-visibility-control summary {
+    min-height: 40px !important;
+  }
+
+  .listone-table-wrap {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+  }
+
+  table.listone-table,
+  table.free-agents-table {
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  table.listone-table th.listone-col-playerName,
+  table.listone-table td.listone-col-playerName,
+  table.free-agents-table th.listone-col-playerName,
+  table.free-agents-table td.listone-col-playerName {
+    width: 13.75rem !important;
+    min-width: 13.75rem !important;
+    max-width: 13.75rem !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  table.listone-table td.listone-col-playerName,
+  table.free-agents-table td.listone-col-playerName {
+    text-align: left !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  table.listone-table th.listone-col-playerName,
+  table.free-agents-table th.listone-col-playerName {
+    text-align: center !important;
+  }
+
+  table.listone-table .listone-col-playerName *,
+  table.free-agents-table .listone-col-playerName * {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  table.listone-table th.listone-col-classicRole,
+  table.listone-table td.listone-col-classicRole,
+  table.free-agents-table th.listone-col-classicRole,
+  table.free-agents-table td.listone-col-classicRole {
+    min-width: 4.5rem !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+
+  table.roster-player-table th.roster-col-player,
+  table.roster-player-table td.roster-col-player {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    padding-left: 8px !important;
+  }
+
+  table.roster-player-table th.roster-col-player .table-sort {
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .panel-header {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  overflow: visible !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .panel-header > div {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .listone-filters-row {
+  position: static !important;
+  inset: auto !important;
+  order: 2 !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 9px !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: auto !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .column-controls {
+  position: static !important;
+  order: 3 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-top: 0 !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 4px !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field .input,
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field .filter-input,
+body.is-mobile-ux .app-page[data-page="listone"] .filter-field .search-input {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 44px !important;
+}
+
+body.is-mobile-ux table.listone-table,
+body.is-mobile-ux table.free-agents-table {
+  width: max-content !important;
+  min-width: 100% !important;
+  table-layout: auto !important;
+}
+
+body.is-mobile-ux table.listone-table th.listone-col-playerName,
+body.is-mobile-ux table.listone-table td.listone-col-playerName,
+body.is-mobile-ux table.free-agents-table th.listone-col-playerName,
+body.is-mobile-ux table.free-agents-table td.listone-col-playerName {
+  width: 13.75rem !important;
+  min-width: 13.75rem !important;
+  max-width: 13.75rem !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+body.is-mobile-ux table.listone-table td.listone-col-playerName,
+body.is-mobile-ux table.free-agents-table td.listone-col-playerName {
+  text-align: left !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+body.is-mobile-ux table.listone-table th.listone-col-classicRole,
+body.is-mobile-ux table.listone-table td.listone-col-classicRole,
+body.is-mobile-ux table.free-agents-table th.listone-col-classicRole,
+body.is-mobile-ux table.free-agents-table td.listone-col-classicRole {
+  min-width: 4.5rem !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
+body.is-mobile-ux table.roster-player-table th.roster-col-player,
+body.is-mobile-ux table.roster-player-table td.roster-col-player {
+  text-align: left !important;
+  justify-content: flex-start !important;
+  padding-left: 8px !important;
+}
+
+body.is-mobile-ux table.roster-player-table th.roster-col-player .table-sort {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
