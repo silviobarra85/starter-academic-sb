@@ -172,6 +172,10 @@ Nuove raccolte Firestore usate automaticamente:
 La prima volta puoi usare Admin → Rose e movimenti FM → "Inizializza rose dal file statico" per copiare il file rose JSON in Firebase. Dopo questo passaggio la fonte operativa diventa Firestore.
 
 
+## V33 - Snapshot Albo d'Oro compatto
+
+La v33 evita di duplicare i loghi base64 dentro `publicSnapshots/honor`, perché Firestore blocca i documenti oltre 1 MiB. Lo snapshot pubblico dell'Albo conserva nomi, ID e piccoli path logo se presenti; per i loghi base64 usa il fallback con iniziali.
+
 ## V32 - Snapshot pubblici e riduzione letture Firebase
 
 Questa versione introduce due raccolte per ridurre le letture Firestore del sito pubblico:

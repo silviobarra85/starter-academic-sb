@@ -4597,7 +4597,8 @@ document.addEventListener("click", (event) => {
 
 
 
-/* V32 - Public Firestore snapshots to reduce reads.
+/* V33 - Compact honor snapshot avoids Firestore 1 MiB document limit.
+   V32 - Public Firestore snapshots to reduce reads.
    Public pages can read lightweight snapshots:
    - publicSeasonSnapshots/{seasonId}: Dashboard, competitions, stadiums, rosters/movements summaries.
    - publicSnapshots/honor: Albo d'Oro, palmares and FIFA Ranking.
@@ -4861,6 +4862,15 @@ function buildPublicSeasonSnapshotV32(seasonId) {
   };
 }
 
+function compactLogoForSnapshotV33(logo) {
+  if (!logo || typeof logo !== "string") return "";
+  // Firestore documents have a hard 1 MiB limit: do not duplicate base64 logos in global snapshots.
+  // Keep only lightweight URL/path logos; base64 images remain stored on the source team documents.
+  if (logo.startsWith("data:")) return "";
+  if (logo.length > 5000) return "";
+  return logo;
+}
+
 function buildHonorTeamCellV32(seasonId, competitionType, seasonTeamId) {
   if (seasonTeamId) {
     const seasonTeam = getSeasonTeamById(seasonTeamId);
@@ -4869,7 +4879,7 @@ function buildHonorTeamCellV32(seasonId, competitionType, seasonTeamId) {
       seasonTeamId,
       teamId: seasonTeam?.teamId || "",
       label: getSeasonTeamDisplayName(seasonTeamId),
-      logo: getSeasonTeamLogo(seasonTeam)
+      logo: compactLogoForSnapshotV33(getSeasonTeamLogo(seasonTeam))
     };
   }
   if (isCompetitionNotDisputed(seasonId, competitionType)) {
@@ -4885,7 +4895,7 @@ function buildHonorSnapshotV32() {
     type,
     items.map((item) => {
       const team = teamsById.get(item.teamId);
-      return { ...item, logo: team?.logo || "" };
+      return { ...item, logo: compactLogoForSnapshotV33(team?.logo || "") };
     })
   ]));
 
@@ -4911,7 +4921,7 @@ function buildHonorSnapshotV32() {
       teamName: item.teamName,
       points: item.score,
       position: item.position,
-      logo: item.team?.logo || ""
+      logo: compactLogoForSnapshotV33(item.team?.logo || "")
     }))
   };
 }
@@ -4929,10 +4939,14 @@ async function savePublicSnapshotsV32(event) {
     }
 
     const honorSnapshot = buildHonorSnapshotV32();
+    const honorSize = new Blob([JSON.stringify(honorSnapshot)]).size;
+    if (honorSize > 900000) {
+      throw new Error(`Snapshot Albo d'Oro ancora troppo grande (${Math.round(honorSize / 1024)} KB). Riduci loghi base64 o genera snapshot divisi.`);
+    }
     await setDoc(doc(db, "publicSnapshots", "honor"), honorSnapshot);
     state.publicHonorSnapshot = honorSnapshot;
 
-    showMessage("adminPublicSnapshotsStatus", `Snapshot pubblici aggiornati: ${state.raw.seasons.length} stagioni + albo d'oro.`);
+    showMessage("adminPublicSnapshotsStatus", `Snapshot pubblici aggiornati: ${state.raw.seasons.length} stagioni + albo d'oro compatto (${Math.round(honorSize / 1024)} KB).`);
     renderAdminArea();
   } catch (error) {
     console.error(error);
