@@ -1270,6 +1270,10 @@ function getSelectedListone() {
   return enrichListoneWithRosters(available[0]);
 }
 
+function getCurrentListone() {
+  return getSelectedListone();
+}
+
 function renderListoneSelect(listone) {
   const select = document.getElementById("listoneSeasonFilter");
   if (!select) return;
