@@ -3869,6 +3869,24 @@ function formatFm(value) {
   return Number.isInteger(number) ? `${number} FM` : `${number.toFixed(2).replace(".", ",")} FM`;
 }
 
+function getRosterRoleSortValue(player) {
+  const rawRole = String(player.rosterRole || player.classicRole || player.role || "").trim().toUpperCase();
+  const primaryRole = rawRole.charAt(0);
+  const order = { P: 1, D: 2, C: 3, A: 4 };
+  return order[primaryRole] || 99;
+}
+
+function sortRosterPlayersByRole(players) {
+  return [...players].sort((a, b) => {
+    const roleDiff = getRosterRoleSortValue(a) - getRosterRoleSortValue(b);
+    if (roleDiff) return roleDiff;
+
+    const nameA = String(a.playerName || "");
+    const nameB = String(b.playerName || "");
+    return nameA.localeCompare(nameB, "it", { sensitivity: "base" });
+  });
+}
+
 function renderRosterPlayerTable(players) {
   if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
   return `
@@ -3884,7 +3902,7 @@ function renderRosterPlayerTable(players) {
           </tr>
         </thead>
         <tbody>
-          ${players.map((player) => `
+          ${sortRosterPlayersByRole(players).map((player) => `
             <tr>
               <td data-label="Giocatore"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
               <td data-label="Ruolo">${escapeHtml(player.rosterRole || player.classicRole || player.role || "-")}</td>
