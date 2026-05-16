@@ -332,17 +332,11 @@ function readLogoFileAsDataUrl(file) {
 }
 
 async function loadCollection(name) {
-  try {
-    const snapshot = await getDocs(collection(db, name));
-    return snapshot.docs.map((documentSnapshot) => ({
-      id: documentSnapshot.id,
-      ...documentSnapshot.data()
-    }));
-  } catch (error) {
-    const code = error?.code ? `${error.code}: ` : "";
-    error.message = `Errore lettura raccolta ${name}. ${code}${error.message || error}`;
-    throw error;
-  }
+  const snapshot = await getDocs(collection(db, name));
+  return snapshot.docs.map((documentSnapshot) => ({
+    id: documentSnapshot.id,
+    ...documentSnapshot.data()
+  }));
 }
 
 async function loadListoniData() {
@@ -1638,16 +1632,10 @@ function setupAuth() {
     state.isAdmin = false;
 
     if (user) {
-      try {
-        const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
-        state.isAdmin = adminSnapshot.exists();
-        if (!state.isAdmin) {
-          showMessage("loginStatus", `Utente autenticato ma non presente nella raccolta admins. UID: ${user.uid}`, true);
-        }
-      } catch (error) {
-        console.error(error);
-        const code = error?.code ? `${error.code}: ` : "";
-        showMessage("loginStatus", `Login riuscito, ma controllo admin fallito. ${code}${error.message || error}`, true);
+      const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
+      state.isAdmin = adminSnapshot.exists();
+      if (!state.isAdmin) {
+        showMessage("loginStatus", "Utente autenticato ma non presente nella raccolta admins.", true);
       }
     }
 
@@ -4347,9 +4335,7 @@ async function initializeAppUi() {
     setError("");
   } catch (error) {
     console.error(error);
-    const code = error?.code ? `${error.code} - ` : "";
-    const message = error?.message || String(error);
-    setError(`Non riesco a leggere Firestore. ${code}${message}`);
+    setError("Non riesco a leggere Firestore. Controlla configurazione Firebase e Security Rules.");
   }
 }
 
