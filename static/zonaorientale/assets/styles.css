@@ -4801,3 +4801,159 @@ body.is-mobile-ux .listone-table .status {
     overflow: auto !important;
   }
 }
+
+/* V21 - Mobile readability fixes for Rose/Listone. Desktop remains unchanged. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Hide section descriptions on mobile, keep titles and useful controls visible. */
+  .page-heading > div > p:not(.eyebrow),
+  .panel-header > div > p {
+    display: none !important;
+  }
+
+  /* Keep listone as a true compact table without an oversized first column. */
+  .listone-table-wrap {
+    max-height: min(72vh, 620px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .listone-table-wrap table.listone-table {
+    table-layout: fixed !important;
+    min-width: 620px !important;
+    width: 620px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .listone-table-wrap table.listone-table th,
+  .listone-table-wrap table.listone-table td {
+    padding: 4px 3px !important;
+    font-size: 0.58rem !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .listone-table-wrap table.listone-table th:nth-child(1),
+  .listone-table-wrap table.listone-table td:nth-child(1) {
+    width: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    text-align: center !important;
+  }
+
+  .listone-table-wrap table.listone-table th:nth-child(2),
+  .listone-table-wrap table.listone-table td:nth-child(2) {
+    width: 46px !important;
+    min-width: 46px !important;
+    max-width: 46px !important;
+  }
+
+  .listone-table-wrap table.listone-table th:nth-child(3),
+  .listone-table-wrap table.listone-table td:nth-child(3) {
+    width: 112px !important;
+    min-width: 112px !important;
+    max-width: 112px !important;
+  }
+
+  .listone-table-wrap table.listone-table th:nth-child(4),
+  .listone-table-wrap table.listone-table td:nth-child(4) {
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    text-align: center !important;
+  }
+
+  .listone-table-wrap table.listone-table th:nth-child(5),
+  .listone-table-wrap table.listone-table td:nth-child(5) {
+    width: 88px !important;
+    min-width: 88px !important;
+    max-width: 88px !important;
+  }
+
+  .listone-table-wrap table.listone-table th:nth-child(n+6),
+  .listone-table-wrap table.listone-table td:nth-child(n+6) {
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    text-align: right !important;
+  }
+
+  .listone-table-wrap table.listone-table th:last-child,
+  .listone-table-wrap table.listone-table td:last-child {
+    width: 62px !important;
+    min-width: 62px !important;
+    max-width: 62px !important;
+    text-align: center !important;
+  }
+
+  .listone-table .status {
+    padding: 2px 5px !important;
+    font-size: 0.54rem !important;
+  }
+
+  .column-toggle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .column-toggle-item {
+    min-height: 30px;
+    font-size: 0.72rem !important;
+  }
+
+  .roster-accordion-grid {
+    gap: 8px !important;
+  }
+
+  .roster-card-toggle {
+    padding: 0 !important;
+  }
+
+  .roster-inline-table-wrap table {
+    min-width: 520px !important;
+  }
+}
+
+body.is-mobile-ux .page-heading > div > p:not(.eyebrow),
+body.is-mobile-ux .panel-header > div > p {
+  display: none !important;
+}
+
+body.is-mobile-ux .listone-table-wrap {
+  max-height: min(72vh, 620px) !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.is-mobile-ux .listone-table-wrap table.listone-table {
+  table-layout: fixed !important;
+  min-width: 620px !important;
+  width: 620px !important;
+  font-size: 0.58rem !important;
+}
+
+body.is-mobile-ux .listone-table-wrap table.listone-table th,
+body.is-mobile-ux .listone-table-wrap table.listone-table td {
+  padding: 4px 3px !important;
+  font-size: 0.58rem !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+body.is-mobile-ux .listone-table-wrap table.listone-table th:nth-child(1),
+body.is-mobile-ux .listone-table-wrap table.listone-table td:nth-child(1) { width: 30px !important; min-width: 30px !important; max-width: 30px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table-wrap table.listone-table th:nth-child(2),
+body.is-mobile-ux .listone-table-wrap table.listone-table td:nth-child(2) { width: 46px !important; min-width: 46px !important; max-width: 46px !important; }
+body.is-mobile-ux .listone-table-wrap table.listone-table th:nth-child(3),
+body.is-mobile-ux .listone-table-wrap table.listone-table td:nth-child(3) { width: 112px !important; min-width: 112px !important; max-width: 112px !important; }
+body.is-mobile-ux .listone-table-wrap table.listone-table th:nth-child(4),
+body.is-mobile-ux .listone-table-wrap table.listone-table td:nth-child(4) { width: 32px !important; min-width: 32px !important; max-width: 32px !important; text-align: center !important; }
+body.is-mobile-ux .listone-table-wrap table.listone-table th:nth-child(5),
+body.is-mobile-ux .listone-table-wrap table.listone-table td:nth-child(5) { width: 88px !important; min-width: 88px !important; max-width: 88px !important; }
+body.is-mobile-ux .listone-table-wrap table.listone-table th:nth-child(n+6),
+body.is-mobile-ux .listone-table-wrap table.listone-table td:nth-child(n+6) { width: 44px !important; min-width: 44px !important; max-width: 44px !important; text-align: right !important; }
+body.is-mobile-ux .listone-table-wrap table.listone-table th:last-child,
+body.is-mobile-ux .listone-table-wrap table.listone-table td:last-child { width: 62px !important; min-width: 62px !important; max-width: 62px !important; text-align: center !important; }

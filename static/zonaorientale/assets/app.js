@@ -983,9 +983,9 @@ function renderAll() {
   renderLeagueHeader();
   renderSeasonSelectors();
   renderDashboard();
-  renderTeamsTable();
   renderCompetitionsPublic();
   renderPlaceholderPages();
+  renderTeamsTable();
   renderStadiumsPublic();
   renderAdminArea();
   setupCollapsibleSections();
@@ -1500,11 +1500,10 @@ function renderClubRostersPublic() {
 
 function renderPlaceholderPages() {
   setLoadingText("newsList", "Modulo News non ancora collegato.");
-  setLoadingText("rosterClubCards", "Le rose sono visualizzate nella sezione Club per questa fase del progetto.");
-  renderClubRostersPublic();
   renderListonePublic();
   renderHonorSummary();
-  setLoadingText("movementsList", "I movimenti FM sono stati esclusi dalla nuova struttura dati.");
+  renderClubRostersPublic();
+  setLoadingText("movementsList", "I movimenti FM sono visualizzati nella sezione Rose.");
   renderStadiumsPublic();
 }
 
@@ -3910,7 +3909,7 @@ renderTeamsTable = function renderTeamsTableV18() {
   if (!seasonTeams.length) {
     const empty = `<p class="muted">Nessuna squadra associata a ${escapeHtml(seasonId || "questa stagione")}.</p>`;
     if (cards) cards.innerHTML = empty;
-    if (legacyTableBody) legacyTableBody.innerHTML = `<tr><td colspan="7" class="muted center">${empty}</td></tr>`;
+    if (legacyTableBody) legacyTableBody.innerHTML = `<tr><td colspan="7" class="muted center">Nessuna squadra associata a ${escapeHtml(seasonId || "questa stagione")}.</td></tr>`;
     return;
   }
 
