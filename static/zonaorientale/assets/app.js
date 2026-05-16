@@ -4899,6 +4899,20 @@ setupAuth = function setupAuthV32() {
   });
 };
 
+function getSnapshotRosterEntriesForSeasonTeamV37(seasonTeam) {
+  if (!seasonTeam) return [];
+  const seasonId = seasonTeam.seasonId || getCurrentSeasonId();
+  const seasonTeamId = seasonTeam.id;
+  const firebaseEntries = (state.raw.rosterEntries || [])
+    .filter((entry) => entry.seasonId === seasonId && entry.seasonTeamId === seasonTeamId && entry.status !== "REMOVED")
+    .map((entry) => ({ ...entry, source: entry.source || "firebase-roster" }));
+
+  if (firebaseEntries.length) return firebaseEntries;
+
+  const staticRoster = getStaticRosterForSeasonTeam(seasonTeam);
+  return mapStaticRosterPlayers(staticRoster, seasonId, seasonTeamId);
+}
+
 function buildPublicSeasonSnapshotV32(seasonId) {
   const seasonTeams = state.raw.seasonTeams.filter((item) => item.seasonId === seasonId);
   const seasonTeamIds = new Set(seasonTeams.map((item) => item.id));
@@ -4912,7 +4926,7 @@ function buildPublicSeasonSnapshotV32(seasonId) {
   const stadiums = state.raw.stadiums.filter((item) => seasonTeamIds.has(item.seasonTeamId));
   const competitionMatches = state.raw.competitionMatches.filter((item) => competitionIds.has(item.competitionId));
   const competitionResults = state.raw.competitionResults.filter((item) => competitionIds.has(item.competitionId));
-  const rosterEntries = (state.raw.rosterEntries || []).filter((item) => item.seasonId === seasonId && item.status !== "REMOVED");
+  const rosterEntries = seasonTeams.flatMap((seasonTeam) => getSnapshotRosterEntriesForSeasonTeamV37(seasonTeam));
   const fmMovements = (state.raw.fmMovements || []).filter((item) => item.seasonId === seasonId);
 
   rosterEntries.forEach((item) => {
@@ -5917,7 +5931,7 @@ function buildPublicTeamSnapshotV34(seasonTeam) {
     presidents: getSeasonTeamPresidentNames(seasonTeam),
     stadium: getStadiumForSeasonTeam(seasonTeamId) || null,
     fmBalance: getFmBalanceForSeasonTeam(seasonTeamId),
-    rosterEntries: (state.raw.rosterEntries || []).filter((entry) => entry.seasonTeamId === seasonTeamId && entry.status !== "REMOVED"),
+    rosterEntries: getSnapshotRosterEntriesForSeasonTeamV37(seasonTeam),
     recentMovements: (state.raw.fmMovements || []).filter((movement) => movement.seasonTeamId === seasonTeamId).sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""))).slice(0, 15),
     recentNews: (state.raw.news || []).filter((news) => news.seasonTeamId === seasonTeamId || news.teamId === seasonTeam.teamId).sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || ""))).slice(0, 10),
     palmares: buildTeamPalmaresV34(seasonTeam.teamId),
@@ -6194,3 +6208,7 @@ document.addEventListener("click", () => {
 }, true);
 
 window.setTimeout(normalizeToggleLabelsV29, 0);
+
+
+/* V37 - Snapshot rosters use static fallback when Firebase roster entries are missing.
+   This keeps teams with only static imported rosters visible in public snapshots and team profiles. */
