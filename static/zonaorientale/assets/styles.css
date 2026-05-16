@@ -5966,3 +5966,582 @@ body.is-mobile-ux .listone-table .club-name-with-logo,
 body.is-mobile-ux .free-agents-table .club-name-with-logo {
   justify-content: center !important;
 }
+
+/* V27 - Mobile readable tables: controlled widths, wrapping and no cell overflow.
+   The previous intrinsic-width experiment made text spill into neighbouring cells on
+   small screens. Mobile tables now keep real table layout, sticky headers and
+   horizontal scroll when needed, but cell content wraps safely instead of overflowing. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .table-wrap,
+  .mobile-tabular-wrap,
+  .compact-table,
+  .mini-table-wrap,
+  .honor-table-wrap,
+  .roster-inline-table-wrap,
+  .roster-season-table-wrap,
+  .listone-table-wrap {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain;
+  }
+
+  .table-wrap table,
+  .mobile-tabular-wrap table,
+  .compact-table table,
+  .mini-table-wrap table,
+  .honor-table-wrap table,
+  .roster-inline-table-wrap table,
+  .roster-season-table-wrap table,
+  table.mobile-tabular,
+  table.standing-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.62rem !important;
+  }
+
+  table.listone-table,
+  table.free-agents-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 640px !important;
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.58rem !important;
+  }
+
+  table.roster-player-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 360px !important;
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.6rem !important;
+  }
+
+  table.roster-season-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 520px !important;
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.58rem !important;
+  }
+
+  .table-wrap thead,
+  .mobile-tabular-wrap thead,
+  .compact-table thead,
+  .mini-table-wrap thead,
+  .honor-table-wrap thead,
+  table.mobile-tabular thead,
+  table.standing-table thead,
+  table.listone-table thead,
+  table.free-agents-table thead,
+  table.roster-season-table thead,
+  table.roster-player-table thead {
+    display: table-header-group !important;
+  }
+
+  .table-wrap tbody,
+  .mobile-tabular-wrap tbody,
+  .compact-table tbody,
+  .mini-table-wrap tbody,
+  .honor-table-wrap tbody,
+  table.mobile-tabular tbody,
+  table.standing-table tbody,
+  table.listone-table tbody,
+  table.free-agents-table tbody,
+  table.roster-season-table tbody,
+  table.roster-player-table tbody {
+    display: table-row-group !important;
+  }
+
+  .table-wrap tr,
+  .mobile-tabular-wrap tr,
+  .compact-table tr,
+  .mini-table-wrap tr,
+  .honor-table-wrap tr,
+  table.mobile-tabular tr,
+  table.standing-table tr,
+  table.listone-table tr,
+  table.free-agents-table tr,
+  table.roster-season-table tr,
+  table.roster-player-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  .table-wrap th,
+  .table-wrap td,
+  .mobile-tabular-wrap th,
+  .mobile-tabular-wrap td,
+  .compact-table th,
+  .compact-table td,
+  .mini-table-wrap th,
+  .mini-table-wrap td,
+  .honor-table-wrap th,
+  .honor-table-wrap td,
+  table.mobile-tabular th,
+  table.mobile-tabular td,
+  table.standing-table th,
+  table.standing-table td,
+  table.listone-table th,
+  table.listone-table td,
+  table.free-agents-table th,
+  table.free-agents-table td,
+  table.roster-season-table th,
+  table.roster-season-table td,
+  table.roster-player-table th,
+  table.roster-player-table td {
+    display: table-cell !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 3px 4px !important;
+    line-height: 1.12 !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    hyphens: auto !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    border-right: 1px solid rgba(148, 163, 184, 0.18) !important;
+  }
+
+  .table-wrap th:last-child,
+  .table-wrap td:last-child,
+  .mobile-tabular-wrap th:last-child,
+  .mobile-tabular-wrap td:last-child,
+  table.mobile-tabular th:last-child,
+  table.mobile-tabular td:last-child,
+  table.listone-table th:last-child,
+  table.listone-table td:last-child,
+  table.free-agents-table th:last-child,
+  table.free-agents-table td:last-child,
+  table.roster-season-table th:last-child,
+  table.roster-season-table td:last-child,
+  table.roster-player-table th:last-child,
+  table.roster-player-table td:last-child {
+    border-right: 0 !important;
+  }
+
+  .table-wrap td::before,
+  .mobile-tabular-wrap td::before,
+  .compact-table td::before,
+  .mini-table-wrap td::before,
+  .honor-table-wrap td::before,
+  table.mobile-tabular td::before,
+  table.standing-table td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .table-wrap th,
+  .mobile-tabular-wrap th,
+  .compact-table th,
+  .mini-table-wrap th,
+  .honor-table-wrap th,
+  table.mobile-tabular th,
+  table.standing-table th,
+  table.listone-table th,
+  table.free-agents-table th,
+  table.roster-season-table th,
+  table.roster-player-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 4 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    text-align: center !important;
+  }
+
+  .table-wrap th .table-sort,
+  .mobile-tabular-wrap th .table-sort,
+  .compact-table th .table-sort,
+  .mini-table-wrap th .table-sort,
+  .honor-table-wrap th .table-sort,
+  table.mobile-tabular th .table-sort,
+  table.standing-table th .table-sort,
+  table.listone-table th .table-sort,
+  table.free-agents-table th .table-sort,
+  table.roster-player-table th .table-sort {
+    width: 100% !important;
+    min-height: 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    line-height: 1.08 !important;
+  }
+
+  .table-wrap .number,
+  .mobile-tabular-wrap .number,
+  .compact-table .number,
+  .mini-table-wrap .number,
+  .honor-table-wrap .number,
+  table.mobile-tabular .number,
+  table.standing-table .number,
+  table.listone-table .number,
+  table.free-agents-table .number,
+  table.roster-player-table .number {
+    text-align: center !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+
+  /* Specific mobile column proportions: enough room for long names, no overflow. */
+  table.listone-table .listone-col-classicRole { width: 14% !important; }
+  table.listone-table .listone-col-playerName { width: 22% !important; }
+  table.listone-table .listone-col-realTeam { width: 7% !important; }
+  table.listone-table .listone-col-fantasyRoster { width: 15% !important; }
+  table.listone-table .listone-col-quotationCurrent,
+  table.listone-table .listone-col-quotationInitial,
+  table.listone-table .listone-col-quotationDiff,
+  table.listone-table .listone-col-fvm { width: 7% !important; }
+  table.listone-table .listone-col-status { width: 14% !important; }
+
+  table.free-agents-table .listone-col-classicRole { width: 17% !important; }
+  table.free-agents-table .listone-col-playerName { width: 30% !important; }
+  table.free-agents-table .listone-col-realTeam { width: 9% !important; }
+  table.free-agents-table .listone-col-quotationCurrent,
+  table.free-agents-table .listone-col-quotationInitial,
+  table.free-agents-table .listone-col-quotationDiff,
+  table.free-agents-table .listone-col-fvm { width: 10% !important; }
+  table.free-agents-table .listone-col-status { width: 14% !important; }
+
+  table.roster-player-table .roster-col-player { width: 44% !important; }
+  table.roster-player-table .roster-col-role { width: 25% !important; }
+  table.roster-player-table .roster-col-team { width: 15% !important; }
+  table.roster-player-table .roster-col-cost { width: 16% !important; }
+
+  table.roster-season-table .roster-team-name { width: 28% !important; }
+  table.roster-season-table th:nth-child(2),
+  table.roster-season-table td:nth-child(2) { width: 20% !important; }
+  table.roster-season-table th:nth-child(3),
+  table.roster-season-table td:nth-child(3) { width: 12% !important; }
+  table.roster-season-table th:nth-child(4),
+  table.roster-season-table td:nth-child(4) { width: 9% !important; }
+  table.roster-season-table th:nth-child(5),
+  table.roster-season-table td:nth-child(5) { width: 17% !important; }
+  table.roster-season-table th:nth-child(6),
+  table.roster-season-table td:nth-child(6) { width: 14% !important; }
+
+  .listone-table .status,
+  .free-agents-table .status,
+  .roster-season-table .status,
+  .mobile-tabular .status {
+    white-space: normal !important;
+    padding: 2px 4px !important;
+    font-size: 0.52rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .role-extra {
+    display: inline !important;
+    white-space: normal !important;
+  }
+
+  .club-name-with-logo,
+  .roster-season-table .club-name-with-logo,
+  .roster-player-table .club-name-with-logo,
+  .listone-table .club-name-with-logo,
+  .free-agents-table .club-name-with-logo {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+
+  .roster-season-table .club-logo,
+  .listone-table .club-logo,
+  .free-agents-table .club-logo,
+  .roster-player-table .club-logo {
+    width: 14px !important;
+    height: 14px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .roster-season-table .button-small {
+    min-height: 24px !important;
+    padding: 3px 5px !important;
+    font-size: 0.55rem !important;
+    white-space: normal !important;
+    line-height: 1.05 !important;
+  }
+}
+
+/* Same V27 behavior for the JS-forced mobile UX class. */
+body.is-mobile-ux .table-wrap,
+body.is-mobile-ux .mobile-tabular-wrap,
+body.is-mobile-ux .compact-table,
+body.is-mobile-ux .mini-table-wrap,
+body.is-mobile-ux .honor-table-wrap,
+body.is-mobile-ux .roster-inline-table-wrap,
+body.is-mobile-ux .roster-season-table-wrap,
+body.is-mobile-ux .listone-table-wrap {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-x: contain;
+}
+
+body.is-mobile-ux .table-wrap table,
+body.is-mobile-ux .mobile-tabular-wrap table,
+body.is-mobile-ux .compact-table table,
+body.is-mobile-ux .mini-table-wrap table,
+body.is-mobile-ux .honor-table-wrap table,
+body.is-mobile-ux .roster-inline-table-wrap table,
+body.is-mobile-ux .roster-season-table-wrap table,
+body.is-mobile-ux table.mobile-tabular,
+body.is-mobile-ux table.standing-table {
+  display: table !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  table-layout: auto !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 0.62rem !important;
+}
+
+body.is-mobile-ux table.listone-table,
+body.is-mobile-ux table.free-agents-table {
+  display: table !important;
+  width: 100% !important;
+  min-width: 640px !important;
+  table-layout: fixed !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 0.58rem !important;
+}
+
+body.is-mobile-ux table.roster-player-table {
+  display: table !important;
+  width: 100% !important;
+  min-width: 360px !important;
+  table-layout: fixed !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 0.6rem !important;
+}
+
+body.is-mobile-ux table.roster-season-table {
+  display: table !important;
+  width: 100% !important;
+  min-width: 520px !important;
+  table-layout: fixed !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 0.58rem !important;
+}
+
+body.is-mobile-ux .table-wrap thead,
+body.is-mobile-ux .mobile-tabular-wrap thead,
+body.is-mobile-ux .compact-table thead,
+body.is-mobile-ux .mini-table-wrap thead,
+body.is-mobile-ux .honor-table-wrap thead,
+body.is-mobile-ux table.mobile-tabular thead,
+body.is-mobile-ux table.standing-table thead,
+body.is-mobile-ux table.listone-table thead,
+body.is-mobile-ux table.free-agents-table thead,
+body.is-mobile-ux table.roster-season-table thead,
+body.is-mobile-ux table.roster-player-table thead { display: table-header-group !important; }
+body.is-mobile-ux .table-wrap tbody,
+body.is-mobile-ux .mobile-tabular-wrap tbody,
+body.is-mobile-ux .compact-table tbody,
+body.is-mobile-ux .mini-table-wrap tbody,
+body.is-mobile-ux .honor-table-wrap tbody,
+body.is-mobile-ux table.mobile-tabular tbody,
+body.is-mobile-ux table.standing-table tbody,
+body.is-mobile-ux table.listone-table tbody,
+body.is-mobile-ux table.free-agents-table tbody,
+body.is-mobile-ux table.roster-season-table tbody,
+body.is-mobile-ux table.roster-player-table tbody { display: table-row-group !important; }
+body.is-mobile-ux .table-wrap tr,
+body.is-mobile-ux .mobile-tabular-wrap tr,
+body.is-mobile-ux .compact-table tr,
+body.is-mobile-ux .mini-table-wrap tr,
+body.is-mobile-ux .honor-table-wrap tr,
+body.is-mobile-ux table.mobile-tabular tr,
+body.is-mobile-ux table.standing-table tr,
+body.is-mobile-ux table.listone-table tr,
+body.is-mobile-ux table.free-agents-table tr,
+body.is-mobile-ux table.roster-season-table tr,
+body.is-mobile-ux table.roster-player-table tr { display: table-row !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .table-wrap td,
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .mobile-tabular-wrap td,
+body.is-mobile-ux .compact-table th,
+body.is-mobile-ux .compact-table td,
+body.is-mobile-ux .mini-table-wrap th,
+body.is-mobile-ux .mini-table-wrap td,
+body.is-mobile-ux .honor-table-wrap th,
+body.is-mobile-ux .honor-table-wrap td,
+body.is-mobile-ux table.mobile-tabular th,
+body.is-mobile-ux table.mobile-tabular td,
+body.is-mobile-ux table.standing-table th,
+body.is-mobile-ux table.standing-table td,
+body.is-mobile-ux table.listone-table th,
+body.is-mobile-ux table.listone-table td,
+body.is-mobile-ux table.free-agents-table th,
+body.is-mobile-ux table.free-agents-table td,
+body.is-mobile-ux table.roster-season-table th,
+body.is-mobile-ux table.roster-season-table td,
+body.is-mobile-ux table.roster-player-table th,
+body.is-mobile-ux table.roster-player-table td {
+  display: table-cell !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  padding: 3px 4px !important;
+  line-height: 1.12 !important;
+  white-space: normal !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  hyphens: auto !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  border-right: 1px solid rgba(148, 163, 184, 0.18) !important;
+}
+
+body.is-mobile-ux .table-wrap th:last-child,
+body.is-mobile-ux .table-wrap td:last-child,
+body.is-mobile-ux .mobile-tabular-wrap th:last-child,
+body.is-mobile-ux .mobile-tabular-wrap td:last-child,
+body.is-mobile-ux table.mobile-tabular th:last-child,
+body.is-mobile-ux table.mobile-tabular td:last-child,
+body.is-mobile-ux table.listone-table th:last-child,
+body.is-mobile-ux table.listone-table td:last-child,
+body.is-mobile-ux table.free-agents-table th:last-child,
+body.is-mobile-ux table.free-agents-table td:last-child,
+body.is-mobile-ux table.roster-season-table th:last-child,
+body.is-mobile-ux table.roster-season-table td:last-child,
+body.is-mobile-ux table.roster-player-table th:last-child,
+body.is-mobile-ux table.roster-player-table td:last-child { border-right: 0 !important; }
+
+body.is-mobile-ux .table-wrap td::before,
+body.is-mobile-ux .mobile-tabular-wrap td::before,
+body.is-mobile-ux .compact-table td::before,
+body.is-mobile-ux .mini-table-wrap td::before,
+body.is-mobile-ux .honor-table-wrap td::before,
+body.is-mobile-ux table.mobile-tabular td::before,
+body.is-mobile-ux table.standing-table td::before { content: none !important; display: none !important; }
+
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .compact-table th,
+body.is-mobile-ux .mini-table-wrap th,
+body.is-mobile-ux .honor-table-wrap th,
+body.is-mobile-ux table.mobile-tabular th,
+body.is-mobile-ux table.standing-table th,
+body.is-mobile-ux table.listone-table th,
+body.is-mobile-ux table.free-agents-table th,
+body.is-mobile-ux table.roster-season-table th,
+body.is-mobile-ux table.roster-player-table th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 4 !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  text-align: center !important;
+}
+
+body.is-mobile-ux .table-wrap th .table-sort,
+body.is-mobile-ux .mobile-tabular-wrap th .table-sort,
+body.is-mobile-ux .compact-table th .table-sort,
+body.is-mobile-ux .mini-table-wrap th .table-sort,
+body.is-mobile-ux .honor-table-wrap th .table-sort,
+body.is-mobile-ux table.mobile-tabular th .table-sort,
+body.is-mobile-ux table.standing-table th .table-sort,
+body.is-mobile-ux table.listone-table th .table-sort,
+body.is-mobile-ux table.free-agents-table th .table-sort,
+body.is-mobile-ux table.roster-player-table th .table-sort {
+  width: 100% !important;
+  min-height: 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.08 !important;
+}
+
+body.is-mobile-ux .table-wrap .number,
+body.is-mobile-ux .mobile-tabular-wrap .number,
+body.is-mobile-ux .compact-table .number,
+body.is-mobile-ux .mini-table-wrap .number,
+body.is-mobile-ux .honor-table-wrap .number,
+body.is-mobile-ux table.mobile-tabular .number,
+body.is-mobile-ux table.standing-table .number,
+body.is-mobile-ux table.listone-table .number,
+body.is-mobile-ux table.free-agents-table .number,
+body.is-mobile-ux table.roster-player-table .number { text-align: center !important; font-variant-numeric: tabular-nums !important; }
+
+body.is-mobile-ux table.listone-table .listone-col-classicRole { width: 14% !important; }
+body.is-mobile-ux table.listone-table .listone-col-playerName { width: 22% !important; }
+body.is-mobile-ux table.listone-table .listone-col-realTeam { width: 7% !important; }
+body.is-mobile-ux table.listone-table .listone-col-fantasyRoster { width: 15% !important; }
+body.is-mobile-ux table.listone-table .listone-col-quotationCurrent,
+body.is-mobile-ux table.listone-table .listone-col-quotationInitial,
+body.is-mobile-ux table.listone-table .listone-col-quotationDiff,
+body.is-mobile-ux table.listone-table .listone-col-fvm { width: 7% !important; }
+body.is-mobile-ux table.listone-table .listone-col-status { width: 14% !important; }
+body.is-mobile-ux table.free-agents-table .listone-col-classicRole { width: 17% !important; }
+body.is-mobile-ux table.free-agents-table .listone-col-playerName { width: 30% !important; }
+body.is-mobile-ux table.free-agents-table .listone-col-realTeam { width: 9% !important; }
+body.is-mobile-ux table.free-agents-table .listone-col-quotationCurrent,
+body.is-mobile-ux table.free-agents-table .listone-col-quotationInitial,
+body.is-mobile-ux table.free-agents-table .listone-col-quotationDiff,
+body.is-mobile-ux table.free-agents-table .listone-col-fvm { width: 10% !important; }
+body.is-mobile-ux table.free-agents-table .listone-col-status { width: 14% !important; }
+body.is-mobile-ux table.roster-player-table .roster-col-player { width: 44% !important; }
+body.is-mobile-ux table.roster-player-table .roster-col-role { width: 25% !important; }
+body.is-mobile-ux table.roster-player-table .roster-col-team { width: 15% !important; }
+body.is-mobile-ux table.roster-player-table .roster-col-cost { width: 16% !important; }
+body.is-mobile-ux table.roster-season-table .roster-team-name { width: 28% !important; }
+body.is-mobile-ux table.roster-season-table th:nth-child(2),
+body.is-mobile-ux table.roster-season-table td:nth-child(2) { width: 20% !important; }
+body.is-mobile-ux table.roster-season-table th:nth-child(3),
+body.is-mobile-ux table.roster-season-table td:nth-child(3) { width: 12% !important; }
+body.is-mobile-ux table.roster-season-table th:nth-child(4),
+body.is-mobile-ux table.roster-season-table td:nth-child(4) { width: 9% !important; }
+body.is-mobile-ux table.roster-season-table th:nth-child(5),
+body.is-mobile-ux table.roster-season-table td:nth-child(5) { width: 17% !important; }
+body.is-mobile-ux table.roster-season-table th:nth-child(6),
+body.is-mobile-ux table.roster-season-table td:nth-child(6) { width: 14% !important; }
+
+body.is-mobile-ux .listone-table .status,
+body.is-mobile-ux .free-agents-table .status,
+body.is-mobile-ux .roster-season-table .status,
+body.is-mobile-ux .mobile-tabular .status { white-space: normal !important; padding: 2px 4px !important; font-size: 0.52rem !important; line-height: 1.05 !important; }
+body.is-mobile-ux .role-extra { display: inline !important; white-space: normal !important; }
+body.is-mobile-ux .club-name-with-logo,
+body.is-mobile-ux .roster-season-table .club-name-with-logo,
+body.is-mobile-ux .roster-player-table .club-name-with-logo,
+body.is-mobile-ux .listone-table .club-name-with-logo,
+body.is-mobile-ux .free-agents-table .club-name-with-logo { display: inline-flex !important; justify-content: center !important; align-items: center !important; flex-wrap: wrap !important; gap: 2px !important; max-width: 100% !important; white-space: normal !important; }
+body.is-mobile-ux .roster-season-table .club-logo,
+body.is-mobile-ux .listone-table .club-logo,
+body.is-mobile-ux .free-agents-table .club-logo,
+body.is-mobile-ux .roster-player-table .club-logo { width: 14px !important; height: 14px !important; flex: 0 0 auto !important; }
+body.is-mobile-ux .roster-season-table .button-small { min-height: 24px !important; padding: 3px 5px !important; font-size: 0.55rem !important; white-space: normal !important; line-height: 1.05 !important; }

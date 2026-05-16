@@ -4567,3 +4567,29 @@ initializeAppUi().then(() => {
   injectDisplayModeToggle();
   updateMobileUxClass();
 });
+
+/* V27 - Robust mobile roster toggles.
+   Keep rosters collapsed by default on first mobile render and handle roster toggle
+   clicks in capture phase so the button cannot be swallowed by table scroll/tap quirks. */
+const renderTeamsTableBeforeV27 = renderTeamsTable;
+renderTeamsTable = function renderTeamsTableV27() {
+  const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+  const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
+  if (isMobileLike && displayMode !== "desktop" && !state.didResetMobileRosterExpansionV27) {
+    state.expandedRosterClubIds = new Set();
+    state.didResetMobileRosterExpansionV27 = true;
+  }
+  return renderTeamsTableBeforeV27();
+};
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-toggle-roster-club]");
+  if (!button) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  const id = button.dataset.toggleRosterClub;
+  if (!id) return;
+  if (state.expandedRosterClubIds.has(id)) state.expandedRosterClubIds.delete(id);
+  else state.expandedRosterClubIds.add(id);
+  renderTeamsTable();
+}, true);
