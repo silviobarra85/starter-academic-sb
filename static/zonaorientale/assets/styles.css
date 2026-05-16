@@ -5282,3 +5282,124 @@ body.is-mobile-ux .listone-table td {
 .roster-card-grid.roster-table-container .table-wrap {
   width: 100%;
 }
+
+/* V24 - Svincolati sortable like listone and compact mobile rosters */
+.roster-detail-row.hidden,
+.roster-detail-row.hidden > td {
+  display: none !important;
+}
+
+.free-agents-table .listone-col-fantasyRoster {
+  display: none !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .roster-detail-row.hidden,
+  .roster-detail-row.hidden > td {
+    display: none !important;
+  }
+
+  .roster-season-table-wrap {
+    max-height: min(60vh, 460px) !important;
+  }
+
+  .roster-season-table {
+    min-width: 420px !important;
+    font-size: 0.56rem !important;
+  }
+
+  .roster-season-table th,
+  .roster-season-table td {
+    padding: 3px 2px !important;
+    line-height: 1.05 !important;
+  }
+
+  .roster-season-table th:nth-child(1),
+  .roster-season-table td:nth-child(1) { width: 32% !important; }
+  .roster-season-table th:nth-child(2),
+  .roster-season-table td:nth-child(2) { width: 18% !important; }
+  .roster-season-table th:nth-child(3),
+  .roster-season-table td:nth-child(3) { width: 12% !important; }
+  .roster-season-table th:nth-child(4),
+  .roster-season-table td:nth-child(4) { width: 8% !important; }
+  .roster-season-table th:nth-child(5),
+  .roster-season-table td:nth-child(5) { width: 12% !important; }
+  .roster-season-table th:nth-child(6),
+  .roster-season-table td:nth-child(6) { width: 18% !important; }
+
+  .roster-season-table .roster-detail-row > td {
+    padding: 3px !important;
+  }
+
+  .roster-inline-table-wrap,
+  .roster-inline-table-wrap.table-wrap,
+  .roster-inline-table-wrap.mobile-tabular-wrap {
+    max-height: min(46vh, 360px) !important;
+    width: 100% !important;
+    overflow: auto !important;
+  }
+
+  .roster-inline-table-wrap table.roster-player-table,
+  .roster-player-table {
+    min-width: 330px !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+    font-size: 0.54rem !important;
+  }
+
+  .roster-player-table th,
+  .roster-player-table td {
+    padding: 2px 2px !important;
+    line-height: 1.02 !important;
+  }
+
+  .roster-player-table .roster-col-player { width: 46% !important; }
+  .roster-player-table .roster-col-role { width: 24% !important; }
+  .roster-player-table .roster-col-team { width: 12% !important; text-align: center !important; }
+  .roster-player-table .roster-col-cost { width: 18% !important; }
+
+  .roster-player-table .table-sort,
+  .free-agents-table .table-sort {
+    min-height: 20px !important;
+    font-size: inherit !important;
+  }
+
+  .free-agents-table {
+    min-width: 520px !important;
+  }
+}
+
+body.is-mobile-ux .roster-detail-row.hidden,
+body.is-mobile-ux .roster-detail-row.hidden > td {
+  display: none !important;
+}
+
+body.is-mobile-ux .roster-season-table {
+  min-width: 420px !important;
+  font-size: 0.56rem !important;
+}
+
+body.is-mobile-ux .roster-season-table th,
+body.is-mobile-ux .roster-season-table td {
+  padding: 3px 2px !important;
+  line-height: 1.05 !important;
+}
+
+body.is-mobile-ux .roster-inline-table-wrap table.roster-player-table,
+body.is-mobile-ux .roster-player-table {
+  min-width: 330px !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  font-size: 0.54rem !important;
+}
+
+body.is-mobile-ux .roster-player-table th,
+body.is-mobile-ux .roster-player-table td {
+  padding: 2px 2px !important;
+  line-height: 1.02 !important;
+}
+
+body.is-mobile-ux .roster-player-table .roster-col-player { width: 46% !important; }
+body.is-mobile-ux .roster-player-table .roster-col-role { width: 24% !important; }
+body.is-mobile-ux .roster-player-table .roster-col-team { width: 12% !important; text-align: center !important; }
+body.is-mobile-ux .roster-player-table .roster-col-cost { width: 18% !important; }

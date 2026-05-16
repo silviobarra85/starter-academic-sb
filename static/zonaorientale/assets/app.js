@@ -167,6 +167,7 @@ const state = {
   listoni: [],
   rosters: [],
   listoneSort: { key: "playerName", direction: "asc" },
+  freeAgentsSort: { key: "playerName", direction: "asc" },
   rosterSort: { key: "role", direction: "asc" },
   selectedAdminMovementSeasonTeamId: "",
   hiddenListoneColumns: new Set(DEFAULT_HIDDEN_LISTONE_COLUMNS),
@@ -1301,6 +1302,31 @@ function getListoneVisibleColumns() {
   return LISTONE_COLUMNS.filter((column) => !state.hiddenListoneColumns.has(column.key));
 }
 
+function getFreeAgentsVisibleColumns() {
+  return getListoneVisibleColumns().filter((column) => column.key !== "fantasyRoster");
+}
+
+function getSortedFreeAgents(listone) {
+  if (!listone) return [];
+  const sortColumn = LISTONE_COLUMNS.find((column) => column.key === state.freeAgentsSort.key) || LISTONE_COLUMNS.find((column) => column.key === "playerName");
+  const direction = state.freeAgentsSort.direction === "desc" ? -1 : 1;
+
+  return (listone.players || [])
+    .filter((player) => !player.fantasyRoster || player.fantasyRoster === "Svincolati")
+    .sort((a, b) => direction * compareListoneValues(a, b, sortColumn));
+}
+
+function renderFreeAgentsHeader(freeAgentsVisibleColumns) {
+  return `
+    <tr>
+      ${freeAgentsVisibleColumns.map((column) => {
+        const active = state.freeAgentsSort.key === column.key;
+        const indicator = active ? (state.freeAgentsSort.direction === "asc" ? " ▲" : " ▼") : "";
+        return `<th class="listone-col-${escapeHtml(column.key)} ${column.numeric ? "number" : ""}"><button class="table-sort" type="button" data-free-agents-sort-key="${escapeHtml(column.key)}">${escapeHtml(column.label)}${indicator}</button></th>`;
+      }).join("")}
+    </tr>`;
+}
+
 function compareListoneValues(a, b, column) {
   const valueA = getListoneValue(a, column.key);
   const valueB = getListoneValue(b, column.key);
@@ -1413,7 +1439,13 @@ function renderListonePublic() {
   if (!listone) {
     tbody.innerHTML = `<tr><td colspan="${visibleColumns.length || 1}" class="muted center">Nessun listone caricato.</td></tr>`;
     if (metaText) metaText.textContent = "Nessun listone disponibile in assets/listoni.";
-    if (freeAgentsBody) freeAgentsBody.innerHTML = `<tr><td colspan="7" class="muted center">Svincolati non disponibili.</td></tr>`;
+    if (freeAgentsBody) {
+      const freeAgentsTable = freeAgentsBody.closest("table");
+      const freeAgentsThead = freeAgentsTable?.querySelector("thead");
+      const freeAgentsVisibleColumns = getFreeAgentsVisibleColumns();
+      if (freeAgentsThead) freeAgentsThead.innerHTML = renderFreeAgentsHeader(freeAgentsVisibleColumns);
+      freeAgentsBody.innerHTML = `<tr><td colspan="${freeAgentsVisibleColumns.length || 1}" class="muted center">Svincolati non disponibili.</td></tr>`;
+    }
     return;
   }
 
@@ -1435,27 +1467,22 @@ function renderListonePublic() {
         </tr>`).join("")
     : `<tr><td colspan="${visibleColumns.length || 1}" class="muted center">Nessun giocatore trovato con i filtri selezionati.</td></tr>`;
 
-  const freeAgents = (listone.players || [])
-    .filter((player) => !player.fantasyRoster || player.fantasyRoster === "Svincolati")
-    .sort((a, b) => String(a.playerName || "").localeCompare(String(b.playerName || ""), "it"));
+  const freeAgentsVisibleColumns = getFreeAgentsVisibleColumns();
+  const freeAgents = getSortedFreeAgents(listone);
 
   if (freeAgentsMeta) freeAgentsMeta.textContent = `${freeAgents.length} giocatori senza rosa nel listone selezionato.`;
   if (freeAgentsBody) {
+    const freeAgentsTable = freeAgentsBody.closest("table");
+    const freeAgentsThead = freeAgentsTable?.querySelector("thead");
+    if (freeAgentsThead) freeAgentsThead.innerHTML = renderFreeAgentsHeader(freeAgentsVisibleColumns);
+
     freeAgentsBody.innerHTML = freeAgents.length
-      ? freeAgents.map((player) => {
-        const isAsterisk = player.statusCode === "ASTERISCATO" || String(player.status || "").toLowerCase().includes("aster");
-        const statusClass = isAsterisk ? "status-warning" : "status-ok";
-        return `
+      ? freeAgents.map((player) => `
           <tr>
-            <td data-label="Giocatore"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
-            <td data-label="Sq"><span class="team-code">${escapeHtml(player.realTeam || "-")}</span></td>
-            <td data-label="R (RM)">${escapeHtml(player.classicRole || "-")}${player.mantraRoles ? ` <span class="muted role-extra">(${escapeHtml(player.mantraRoles)})</span>` : ""}</td>
-            <td data-label="Qt.A" class="number">${formatListoneNumber(player.quotationCurrent)}</td>
-            <td data-label="FVM" class="number">${formatListoneNumber(player.fvm)}</td>
-            <td data-label="Stato"><span class="status ${statusClass}">${escapeHtml(player.status || "In listone")}</span></td>
-          </tr>`;
-      }).join("")
-      : `<tr><td colspan="6" class="muted center">Nessuno svincolato nel listone selezionato.</td></tr>`;
+            ${freeAgentsVisibleColumns.map((column) => `
+              <td data-label="${escapeHtml(column.label)}" class="listone-col-${escapeHtml(column.key)} ${column.numeric ? "number" : ""}">${renderListoneCell(player, column)}</td>`).join("")}
+          </tr>`).join("")
+      : `<tr><td colspan="${freeAgentsVisibleColumns.length || 1}" class="muted center">Nessuno svincolato nel listone selezionato.</td></tr>`;
   }
 }
 
@@ -3711,6 +3738,17 @@ function setupListoneEvents() {
       state.listoneSort.direction = state.listoneSort.direction === "asc" ? "desc" : "asc";
     } else {
       state.listoneSort = { key, direction: "asc" };
+    }
+    renderListonePublic();
+  });
+  document.addEventListener("click", (event) => {
+    const sortButton = event.target.closest("[data-free-agents-sort-key]");
+    if (!sortButton) return;
+    const key = sortButton.dataset.freeAgentsSortKey;
+    if (state.freeAgentsSort.key === key) {
+      state.freeAgentsSort.direction = state.freeAgentsSort.direction === "asc" ? "desc" : "asc";
+    } else {
+      state.freeAgentsSort = { key, direction: "asc" };
     }
     renderListonePublic();
   });
