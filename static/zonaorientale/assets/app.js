@@ -533,6 +533,16 @@ function getSeasonName(id) {
   return seasonsById.get(id)?.name || id || "-";
 }
 
+function formatSeasonShortLabel(season) {
+  const raw = String(season?.id || season?.name || "");
+  const match = raw.match(/(\d{4})\D+(\d{2,4})/);
+  if (!match) return raw || "-";
+
+  const startYear = match[1];
+  const endYear = match[2].length === 4 ? match[2].slice(-2) : match[2];
+  return `${startYear}-${endYear}`;
+}
+
 function getPresidentNames(ids = []) {
   const { presidentsById } = buildMaps();
   const names = ids
@@ -613,6 +623,26 @@ function getParticipantsCount(seasonId) {
 
 function getHonorRollRow(seasonId) {
   return state.raw.honorRoll.find((row) => row.id === seasonId || row.seasonId === seasonId) || null;
+}
+
+function getCompetitionForHonorCell(seasonId, competitionType) {
+  return state.raw.competitions.find((competition) =>
+    competition.seasonId === seasonId && competition.type === competitionType
+  ) || null;
+}
+
+function isCompetitionNotDisputed(seasonId, competitionType) {
+  return getCompetitionForHonorCell(seasonId, competitionType)?.status === "NON_DISPUTATA";
+}
+
+function renderNotDisputedBadge() {
+  return `<span class="status status-muted">Non disputata</span>`;
+}
+
+function renderHonorCell(seasonId, competitionType, seasonTeamId) {
+  if (seasonTeamId) return renderSeasonTeamNameWithLogo(seasonTeamId);
+  if (isCompetitionNotDisputed(seasonId, competitionType)) return renderNotDisputedBadge();
+  return "-";
 }
 
 function getWinnerLabel(competition) {
@@ -1192,13 +1222,13 @@ function renderHonorSummary() {
     const honor = getHonorRollRow(season.id) || {};
     return `
       <tr>
-        <td data-label="Stagione"><strong>${escapeHtml(season.name || season.id)}</strong></td>
-        <td data-label="Campione">${honor.championItalySeasonTeamId ? renderSeasonTeamNameWithLogo(honor.championItalySeasonTeamId) : "-"}</td>
-        <td data-label="2° posto">${honor.secondPlaceSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.secondPlaceSeasonTeamId) : "-"}</td>
-        <td data-label="3° posto">${honor.thirdPlaceSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.thirdPlaceSeasonTeamId) : "-"}</td>
-        <td data-label="Coppa Italia">${honor.coppaItaliaWinnerSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.coppaItaliaWinnerSeasonTeamId) : "-"}</td>
-        <td data-label="Champions">${honor.championsLeagueWinnerSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.championsLeagueWinnerSeasonTeamId) : "-"}</td>
-        <td data-label="Playoff">${honor.playoffWinnerSeasonTeamId ? renderSeasonTeamNameWithLogo(honor.playoffWinnerSeasonTeamId) : "-"}</td>
+        <td data-label="Stagione"><strong>${escapeHtml(formatSeasonShortLabel(season))}</strong></td>
+        <td data-label="Campione">${renderHonorCell(season.id, "CAMPIONATO", honor.championItalySeasonTeamId)}</td>
+        <td data-label="2° posto">${renderHonorCell(season.id, "CAMPIONATO", honor.secondPlaceSeasonTeamId)}</td>
+        <td data-label="3° posto">${renderHonorCell(season.id, "CAMPIONATO", honor.thirdPlaceSeasonTeamId)}</td>
+        <td data-label="Coppa Italia">${renderHonorCell(season.id, "COPPA_ITALIA", honor.coppaItaliaWinnerSeasonTeamId)}</td>
+        <td data-label="Champions">${renderHonorCell(season.id, "CHAMPIONS_LEAGUE", honor.championsLeagueWinnerSeasonTeamId)}</td>
+        <td data-label="Playoff">${renderHonorCell(season.id, "PLAYOFF", honor.playoffWinnerSeasonTeamId)}</td>
       </tr>`;
   }).join("");
 
