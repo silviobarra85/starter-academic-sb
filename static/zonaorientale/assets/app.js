@@ -298,9 +298,25 @@ function getInitials(name) {
   return `${words[0][0] || ""}${words[1][0] || ""}`.toUpperCase();
 }
 
+function isBase64Logo(value) {
+  return typeof value === "string" && value.trim().startsWith("data:");
+}
+
+function normalizeLogoPath(value) {
+  const raw = String(value || "").trim();
+  if (!raw || isBase64Logo(raw)) return "";
+  if (/^(https?:|\/|\.\/|\.\.\/|assets\/)/i.test(raw)) return raw;
+  return `./assets/logos/${raw}`;
+}
+
+function getLogoPathForInput(value) {
+  return isBase64Logo(value) ? "" : String(value || "").trim();
+}
+
 function renderTeamLogo(name, logo, extraClass = "") {
-  if (logo) {
-    return `<img class="club-logo ${extraClass}" src="${escapeHtml(logo)}" alt="" />`;
+  const logoPath = normalizeLogoPath(logo);
+  if (logoPath) {
+    return `<img class="club-logo ${extraClass}" src="${escapeHtml(logoPath)}" alt="" />`;
   }
   return `<span class="club-logo club-logo-placeholder ${extraClass}">${escapeHtml(getInitials(name))}</span>`;
 }
@@ -1988,15 +2004,14 @@ function renderTeamAdminPanel() {
   return renderAdminPanel("adminTeamsPanel", "Firebase", "Squadre", "Inserisci squadre attuali o storiche, presidenti attuali e logo tondo.", `
       <form id="adminTeamForm" class="form-grid">
         <input id="adminTeamId" type="hidden" />
-        <input id="adminTeamLogoValue" type="hidden" />
         <label>
           Nome squadra
           <input id="adminTeamName" class="input" type="text" placeholder="Es. Real Pastena" required />
         </label>
         <label>
           Logo squadra
-          <input id="adminTeamLogoFile" class="input" type="file" accept="image/*" />
-          <small class="field-hint">Carica un'immagine: verrà salvata compressa nel documento Firestore e mostrata tonda.</small>
+          <input id="adminTeamLogoValue" class="input" type="text" placeholder="Es. real-pastena.png oppure assets/logos/real-pastena.png" />
+          <small class="field-hint">Inserisci il nome del file già presente in <code>assets/logos/</code>. Non salviamo più immagini base64 su Firebase.</small>
         </label>
         <div class="logo-admin-preview" id="adminTeamLogoPreview">
           ${renderTeamLogo("Squadra", "", "club-logo-lg")}
@@ -2027,6 +2042,11 @@ function renderTeamAdminPanel() {
           <span id="adminTeamStatus" class="form-status"></span>
         </div>
       </form>
+
+      <div class="form-actions admin-maintenance-actions">
+        <button id="adminClearBase64Logos" class="button button-secondary" type="button">Rimuovi immagini base64 da Firebase</button>
+        <small class="muted">Cancella i vecchi loghi salvati come base64 da squadre e squadre stagionali.</small>
+      </div>
 
       <details class="admin-edit-section" open>
         <summary><strong>Squadre esistenti</strong><span>${state.raw.teams.length}</span></summary>
@@ -2089,9 +2109,8 @@ function renderSeasonTeamAdminPanel() {
         </label>
         <label>
           Logo stagionale opzionale
-          <input id="adminSeasonTeamLogoFile" class="input" type="file" accept="image/*" />
-          <input id="adminSeasonTeamLogoValue" type="hidden" />
-          <small class="field-hint">Se lo lasci vuoto usa il logo della squadra madre.</small>
+          <input id="adminSeasonTeamLogoValue" class="input" type="text" placeholder="Es. real-pastena-2025.png oppure assets/logos/real-pastena-2025.png" />
+          <small class="field-hint">Se lo lasci vuoto usa il logo della squadra madre. Inserisci solo file/path, non base64.</small>
         </label>
         <div class="logo-admin-preview" id="adminSeasonTeamLogoPreview">
           ${renderTeamLogo("Squadra", "", "club-logo-lg")}
@@ -2677,11 +2696,11 @@ function attachAdminHandlers() {
   document.getElementById("adminTeamRemoveLogo")?.addEventListener("change", () => {
     if (document.getElementById("adminTeamRemoveLogo").checked) {
       document.getElementById("adminTeamLogoValue").value = "";
-      document.getElementById("adminTeamLogoFile").value = "";
     }
     updateTeamLogoPreview();
   });
-  document.getElementById("adminTeamLogoFile")?.addEventListener("change", handleTeamLogoFileChange);
+  document.getElementById("adminTeamLogoValue")?.addEventListener("input", updateTeamLogoPreview);
+  document.getElementById("adminClearBase64Logos")?.addEventListener("click", clearBase64LogosFromFirebase);
   updateTeamLogoPreview();
 
   document.getElementById("adminSeasonTeamSeasonId")?.addEventListener("change", (event) => {
@@ -2693,11 +2712,10 @@ function attachAdminHandlers() {
   document.getElementById("adminSeasonTeamRemoveLogo")?.addEventListener("change", () => {
     if (document.getElementById("adminSeasonTeamRemoveLogo").checked) {
       document.getElementById("adminSeasonTeamLogoValue").value = "";
-      document.getElementById("adminSeasonTeamLogoFile").value = "";
     }
     updateSeasonTeamLogoPreview();
   });
-  document.getElementById("adminSeasonTeamLogoFile")?.addEventListener("change", handleSeasonTeamLogoFileChange);
+  document.getElementById("adminSeasonTeamLogoValue")?.addEventListener("input", updateSeasonTeamLogoPreview);
   fillSeasonTeamDefaultsFromTeam();
   updateSeasonTeamLogoPreview();
 
@@ -2852,7 +2870,7 @@ function updateTeamLogoPreview() {
 
   preview.innerHTML = `
     ${renderTeamLogo(name, logo, "club-logo-lg")}
-    <span class="muted small">${logo ? "Logo caricato" : "Placeholder: prime due lettere"}</span>
+    <span class="muted small">${logo ? "Logo da file statico" : "Placeholder: prime due lettere"}</span>
   `;
 }
 
@@ -2911,13 +2929,42 @@ function updateSeasonTeamLogoPreview() {
   const removeLogo = document.getElementById("adminSeasonTeamRemoveLogo")?.checked;
   const logoValue = removeLogo ? "" : document.getElementById("adminSeasonTeamLogoValue")?.value;
   const teamId = document.getElementById("adminSeasonTeamTeamId")?.value;
-  const teamLogo = buildMaps().teamsById.get(teamId)?.logo || "";
+  const teamLogo = getLogoPathForInput(buildMaps().teamsById.get(teamId)?.logo || "");
   const logo = logoValue || teamLogo;
 
   preview.innerHTML = `
     ${renderTeamLogo(name, logo, "club-logo-lg")}
-    <span class="muted small">${logoValue ? "Logo stagionale caricato" : teamLogo ? "Logo ereditato dalla squadra madre" : "Placeholder: prime due lettere"}</span>
+    <span class="muted small">${logoValue ? "Logo stagionale da file statico" : teamLogo ? "Logo ereditato dalla squadra madre" : "Placeholder: prime due lettere"}</span>
   `;
+}
+
+async function clearBase64LogosFromFirebase() {
+  const teamsWithBase64 = state.raw.teams.filter((team) => isBase64Logo(team.logo));
+  const seasonTeamsWithBase64 = state.raw.seasonTeams.filter((seasonTeam) => isBase64Logo(seasonTeam.logo));
+  const total = teamsWithBase64.length + seasonTeamsWithBase64.length;
+
+  if (!total) {
+    showMessage("adminTeamStatus", "Nessun logo base64 da rimuovere.");
+    return;
+  }
+
+  const confirmed = window.confirm(`Rimuovere ${total} logo base64 da Firebase? I file statici in assets/logos/ non vengono toccati.`);
+  if (!confirmed) return;
+
+  try {
+    showMessage("adminTeamStatus", "Rimozione loghi base64 in corso...");
+
+    await Promise.all([
+      ...teamsWithBase64.map((team) => setDoc(doc(db, "teams", team.id), { logo: "", updatedAt: serverTimestamp() }, { merge: true })),
+      ...seasonTeamsWithBase64.map((seasonTeam) => setDoc(doc(db, "seasonTeams", seasonTeam.id), { logo: "", updatedAt: serverTimestamp() }, { merge: true }))
+    ]);
+
+    showMessage("adminTeamStatus", `Rimossi ${total} logo base64 da Firebase.`);
+    await loadData();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminTeamStatus", "Errore durante la rimozione dei loghi base64.", true);
+  }
 }
 
 async function saveSeason(event) {
@@ -3005,7 +3052,7 @@ async function saveTeam(event) {
   const removeLogo = document.getElementById("adminTeamRemoveLogo").checked;
   const payload = {
     canonicalName: document.getElementById("adminTeamName").value.trim(),
-    logo: removeLogo ? "" : document.getElementById("adminTeamLogoValue").value,
+    logo: removeLogo ? "" : normalizeLogoPath(document.getElementById("adminTeamLogoValue").value),
     currentPresidentIds: selectedPresidentIds,
     notes: document.getElementById("adminTeamNotes").value.trim(),
     isCurrent: document.getElementById("adminTeamIsCurrent").checked,
@@ -3048,7 +3095,7 @@ async function saveSeasonTeam(event) {
     seasonId,
     teamId,
     name: document.getElementById("adminSeasonTeamName").value.trim(),
-    logo: removeLogo ? "" : document.getElementById("adminSeasonTeamLogoValue").value,
+    logo: removeLogo ? "" : normalizeLogoPath(document.getElementById("adminSeasonTeamLogoValue").value),
     presidentIds: selectedPresidentIds,
     isHistorical: document.getElementById("adminSeasonTeamIsHistorical").checked,
     updatedAt: serverTimestamp()
@@ -3481,8 +3528,7 @@ function editTeam(id) {
   expandAdminPanel("adminTeamsPanel");
   document.getElementById("adminTeamId").value = team.id;
   document.getElementById("adminTeamName").value = team.canonicalName || "";
-  document.getElementById("adminTeamLogoValue").value = team.logo || "";
-  document.getElementById("adminTeamLogoFile").value = "";
+  document.getElementById("adminTeamLogoValue").value = getLogoPathForInput(team.logo || "");
   document.getElementById("adminTeamRemoveLogo").checked = false;
   document.getElementById("adminTeamNotes").value = team.notes || "";
   document.getElementById("adminTeamIsCurrent").checked = team.isCurrent !== false;
@@ -3505,8 +3551,7 @@ function editSeasonTeam(id) {
   document.getElementById("adminSeasonTeamSeasonId").value = seasonTeam.seasonId || getCurrentSeasonId();
   document.getElementById("adminSeasonTeamTeamId").value = seasonTeam.teamId || "";
   document.getElementById("adminSeasonTeamName").value = seasonTeam.name || "";
-  document.getElementById("adminSeasonTeamLogoValue").value = seasonTeam.logo || "";
-  document.getElementById("adminSeasonTeamLogoFile").value = "";
+  document.getElementById("adminSeasonTeamLogoValue").value = getLogoPathForInput(seasonTeam.logo || "");
   document.getElementById("adminSeasonTeamRemoveLogo").checked = false;
   document.getElementById("adminSeasonTeamIsHistorical").checked = Boolean(seasonTeam.isHistorical);
 
@@ -4868,12 +4913,9 @@ function buildPublicSeasonSnapshotV32(seasonId) {
 }
 
 function compactLogoForSnapshotV33(logo) {
-  if (!logo || typeof logo !== "string") return "";
-  // Firestore documents have a hard 1 MiB limit: do not duplicate base64 logos in global snapshots.
-  // Keep only lightweight URL/path logos; base64 images remain stored on the source team documents.
-  if (logo.startsWith("data:")) return "";
-  if (logo.length > 5000) return "";
-  return logo;
+  const logoPath = normalizeLogoPath(logo);
+  if (!logoPath || logoPath.length > 5000) return "";
+  return logoPath;
 }
 
 function buildHonorTeamCellV32(seasonId, competitionType, seasonTeamId) {
