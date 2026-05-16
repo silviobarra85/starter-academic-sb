@@ -3906,18 +3906,27 @@ function hasFirebaseRostersForSeason(seasonId) {
   return (state.raw.rosterEntries || []).some((entry) => entry.seasonId === seasonId && entry.status !== "REMOVED");
 }
 
-function getActiveRosterEntriesForSeasonTeam(seasonTeamId) {
-  const seasonTeam = getSeasonTeamById(seasonTeamId);
-  const seasonId = seasonTeam?.seasonId || getCurrentSeasonId();
-  const firebaseEntries = (state.raw.rosterEntries || [])
-    .filter((entry) => entry.seasonId === seasonId && entry.seasonTeamId === seasonTeamId && entry.status !== "REMOVED")
-    .sort((a, b) => String(a.playerName || "").localeCompare(String(b.playerName || ""), "it"));
+function getRosterAliasKeys(seasonTeam) {
+  return [
+    seasonTeam?.name,
+    seasonTeam?.rosterAlias,
+    seasonTeam?.rosterName,
+    seasonTeam?.excelRosterName,
+    seasonTeam?.teamName
+  ]
+    .filter(Boolean)
+    .flatMap((value) => [normalizeKey(value), normalizeRosterKey(value)])
+    .filter(Boolean);
+}
 
-  if (firebaseEntries.length || hasFirebaseRostersForSeason(seasonId)) {
-    return firebaseEntries;
-  }
+function normalizeRosterKey(value) {
+  return normalizeKey(value)
+    .replace(/\b(f c|fc|a c|ac|a s|as|asd|u s|us|s s|ss)\b/g, "")
+    .replace(/\s+/g, "")
+    .trim();
+}
 
-  const staticRoster = getStaticRosterForSeasonTeam(seasonTeam);
+function mapStaticRosterPlayers(staticRoster, seasonId, seasonTeamId) {
   return (staticRoster?.players || []).map((player, index) => ({
     id: `static_${seasonTeamId}_${index}`,
     seasonId,
@@ -3933,11 +3942,32 @@ function getActiveRosterEntriesForSeasonTeam(seasonTeamId) {
   }));
 }
 
+function getActiveRosterEntriesForSeasonTeam(seasonTeamId) {
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  const seasonId = seasonTeam?.seasonId || getCurrentSeasonId();
+  const firebaseEntries = (state.raw.rosterEntries || [])
+    .filter((entry) => entry.seasonId === seasonId && entry.seasonTeamId === seasonTeamId && entry.status !== "REMOVED")
+    .sort((a, b) => String(a.playerName || "").localeCompare(String(b.playerName || ""), "it"));
+
+  if (firebaseEntries.length) {
+    return firebaseEntries;
+  }
+
+  const staticRoster = getStaticRosterForSeasonTeam(seasonTeam);
+  return mapStaticRosterPlayers(staticRoster, seasonId, seasonTeamId);
+}
+
 function getStaticRosterForSeasonTeam(seasonTeam) {
   const snapshot = getRosterSnapshotForSeason(seasonTeam?.seasonId || getCurrentSeasonId());
   if (!snapshot || !seasonTeam) return null;
-  const target = normalizeKey(seasonTeam.name || "");
-  return snapshot.rosters.find((roster) => normalizeKey(roster.name) === target) || null;
+
+  const targetKeys = new Set(getRosterAliasKeys(seasonTeam));
+  if (!targetKeys.size) return null;
+
+  return snapshot.rosters.find((roster) => {
+    const rosterKeys = [normalizeKey(roster.name), normalizeRosterKey(roster.name)].filter(Boolean);
+    return rosterKeys.some((key) => targetKeys.has(key));
+  }) || null;
 }
 
 getRosterForSeasonTeam = function getRosterForSeasonTeamV18(seasonTeam) {
