@@ -4072,7 +4072,8 @@ function getRosterSortValue(player, key) {
 
 function getRosterRoleDisplay(player) {
   const role = String(player.rosterRole || player.classicRole || player.role || "-").trim() || "-";
-  const mantra = String(player.mantraRoles || "").trim();
+  const listonePlayer = player?.mantraRoles ? null : findListonePlayerForRosterPlayer(player);
+  const mantra = String(player.mantraRoles || listonePlayer?.mantraRoles || listonePlayer?.mantra_roles || "").trim();
   return `${escapeHtml(role)}${mantra ? ` <span class="muted role-extra">(${escapeHtml(mantra)})</span>` : ""}`;
 }
 
@@ -4128,9 +4129,9 @@ function renderRosterPlayerTable(players) {
           <tr>
             <th class="roster-col-player">${renderRosterSortButton("playerName", "Giocatore")}</th>
             <th class="roster-col-role">${renderRosterSortButton("role", "R (RM)")}</th>
-            <th class="number roster-col-qta">${renderRosterSortButton("quotationCurrent", "Qt.A", true)}</th>
             <th class="roster-col-team">${renderRosterSortButton("realTeam", "Sq")}</th>
             <th class="number roster-col-cost">${renderRosterSortButton("cost", "Costo", true)}</th>
+            <th class="number roster-col-qta">${renderRosterSortButton("quotationCurrent", "Qt.A", true)}</th>
           </tr>
         </thead>
         <tbody>
@@ -4138,9 +4139,9 @@ function renderRosterPlayerTable(players) {
             <tr>
               <td data-label="Giocatore" class="roster-col-player"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
               <td data-label="R (RM)" class="roster-col-role">${getRosterRoleDisplay(player)}</td>
-              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
               <td data-label="Sq" class="roster-col-team">${escapeHtml(player.realTeam || "-")}</td>
               <td data-label="Costo" class="number roster-col-cost">${escapeHtml(player.cost ?? "-")}</td>
+              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -4188,7 +4189,7 @@ renderTeamsTable = function renderTeamsTableV23() {
               const displayName = seasonTeam.name || getTeamDisplayName(team);
               return `
                 <tr class="roster-team-row ${isExpanded ? "is-expanded" : ""}">
-                  <td data-label="Rosa" class="roster-team-name">${renderTeamLogo(displayName, getSeasonTeamLogo(seasonTeam))}<strong>${escapeHtml(displayName)}</strong></td>
+                  <td data-label="Rosa" class="roster-team-name">${renderSeasonTeamNameWithLogo(seasonTeam.id)}</td>
                   <td data-label="Presidenti">${renderPresidentStack(getSeasonTeamPresidentNames(seasonTeam))}</td>
                   <td data-label="FM" class="number"><strong>${escapeHtml(formatFm(balance))}</strong></td>
                   <td data-label="Gioc." class="number">${escapeHtml(roster?.playerCount ?? 0)}</td>
@@ -6103,7 +6104,7 @@ async function openTeamProfileV34(seasonTeamId) {
     return;
   }
   const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
-    <tr><td class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td><td>${getRosterRoleDisplay(player)}</td><td class="number">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td><td>${escapeHtml(player.realTeam || "-")}</td><td class="number">${formatListoneNumber(player.cost)}</td></tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
+    <tr><td data-label="Giocatore" class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td><td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(player)}</td><td data-label="Sq" class="team-profile-team-cell">${escapeHtml(player.realTeam || "-")}</td><td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(player.cost)}</td><td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td></tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
   const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p>${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
@@ -6315,11 +6316,11 @@ openTeamProfileV34 = async function openTeamProfileV40(seasonTeamId) {
 
   const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
     <tr>
-      <td class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
-      <td>${getRosterRoleDisplay(player)}</td>
-      <td>${escapeHtml(player.realTeam || "-")}</td>
-      <td class="number">${formatListoneNumber(player.cost)}</td>
-      <td class="number">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+      <td data-label="Giocatore" class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
+      <td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(player)}</td>
+      <td data-label="Sq" class="team-profile-team-cell">${escapeHtml(player.realTeam || "-")}</td>
+      <td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(player.cost)}</td>
+      <td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
     </tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
@@ -6454,11 +6455,11 @@ function renderTeamProfileContentV42(snapshot) {
 
   const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
     <tr>
-      <td class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || '-')}</strong></td>
-      <td>${getRosterRoleDisplay(player)}</td>
-      <td>${escapeHtml(player.realTeam || '-')}</td>
-      <td class="number">${formatListoneNumber(player.cost)}</td>
-      <td class="number">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+      <td data-label="Giocatore" class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || '-')}</strong></td>
+      <td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(player)}</td>
+      <td data-label="Sq" class="team-profile-team-cell">${escapeHtml(player.realTeam || '-')}</td>
+      <td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(player.cost)}</td>
+      <td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
     </tr>`).join('') || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
 
   const palmaresRows = (snapshot.palmares || []).map((item) => `
