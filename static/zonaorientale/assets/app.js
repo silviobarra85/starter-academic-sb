@@ -6268,3 +6268,109 @@ window.setTimeout(normalizeToggleLabelsV29, 0);
 
 /* V37 - Snapshot rosters use static fallback when Firebase roster entries are missing.
    This keeps teams with only static imported rosters visible in public snapshots and team profiles. */
+
+/* V40 - Roster column order, dashboard winner-only labels and stronger sticky roster columns. */
+function renderRosterPlayerTableV40(players) {
+  if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
+  return `
+    <div class="table-wrap mobile-tabular-wrap roster-table-wrap roster-inline-table-wrap">
+      <table class="mobile-tabular roster-main-table roster-player-table roster-sticky-table">
+        <thead>
+          <tr>
+            <th class="roster-col-player">${renderRosterSortButton("playerName", "Giocatore")}</th>
+            <th class="roster-col-role">${renderRosterSortButton("role", "R (RM)")}</th>
+            <th class="roster-col-team">${renderRosterSortButton("realTeam", "Sq")}</th>
+            <th class="number roster-col-cost">${renderRosterSortButton("cost", "Costo", true)}</th>
+            <th class="number roster-col-qta">${renderRosterSortButton("quotationCurrent", "Qt.A", true)}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${sortRosterPlayersForDisplay(players).map((player) => `
+            <tr>
+              <td data-label="Giocatore" class="roster-col-player"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
+              <td data-label="R (RM)" class="roster-col-role">${getRosterRoleDisplay(player)}</td>
+              <td data-label="Sq" class="roster-col-team">${escapeHtml(player.realTeam || "-")}</td>
+              <td data-label="Costo" class="number roster-col-cost">${escapeHtml(player.cost ?? "-")}</td>
+              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+renderRosterPlayerTable = renderRosterPlayerTableV40;
+
+const openTeamProfileBeforeV40 = openTeamProfileV34;
+openTeamProfileV34 = async function openTeamProfileV40(seasonTeamId) {
+  ensureV34Dom();
+  const dialog = document.getElementById("teamProfileDialog");
+  const title = document.getElementById("teamProfileTitle");
+  const body = document.getElementById("teamProfileBody");
+  if (!dialog || !body) return;
+  if (title) title.textContent = getSeasonTeamDisplayName(seasonTeamId);
+  body.innerHTML = `<p class="muted">Caricamento scheda squadra...</p>`;
+  dialog.showModal?.();
+  const snapshot = await loadTeamSnapshotV34(seasonTeamId);
+  if (!snapshot) {
+    body.innerHTML = `<p class="muted">Scheda squadra non ancora generata. Accedi come admin e aggiorna gli snapshot squadra.</p>`;
+    return;
+  }
+
+  const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
+    <tr>
+      <td class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
+      <td>${getRosterRoleDisplay(player)}</td>
+      <td>${escapeHtml(player.realTeam || "-")}</td>
+      <td class="number">${formatListoneNumber(player.cost)}</td>
+      <td class="number">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+    </tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
+  const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
+  const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p>${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const matchesRows = (snapshot.recentMatches || []).map((match) => `
+    <tr>
+      <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
+      <td>${escapeHtml(formatMatchStage(match))}</td>
+      <td>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</td>
+      <td>${escapeHtml(formatMatchResult(match))}</td>
+    </tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
+
+  body.innerHTML = `
+    <div class="team-profile-header team-profile-header-stacked">
+      ${renderTeamLogo(snapshot.teamName, snapshot.logo, "club-logo-lg")}
+      <div class="team-profile-title-block"><h3>${escapeHtml(snapshot.teamName || "Squadra")}</h3><p class="muted team-profile-meta-line">Presidenti: ${escapeHtml(snapshot.presidents || "-")}</p><p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p><p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p></div>
+    </div>
+    <div class="detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-roster-wrap"><table class="mobile-tabular team-profile-roster-table roster-sticky-table"><thead><tr><th>Giocatore</th><th>R (RM)</th><th>Sq</th><th class="number">Costo</th><th class="number">Qt.A</th></tr></thead><tbody>${rosterRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Palmarès squadra</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-palmares-wrap"><table class="mobile-tabular team-profile-palmares-table"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap"><table class="mobile-tabular team-profile-movements-table"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Ultimi comunicati</h3>${newsHtml}</div>
+    <div class="detail-section"><h3>Ultime partite</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-matches-wrap"><table class="mobile-tabular team-profile-matches-table"><thead><tr><th>Comp.</th><th>Fase</th><th>Partita</th><th>Ris.</th></tr></thead><tbody>${matchesRows}</tbody></table></div></div>`;
+};
+
+openTeamProfile = openTeamProfileV34;
+
+const renderWinnerLabelHtmlBeforeV40 = renderWinnerLabelHtml;
+renderWinnerLabelHtml = function renderWinnerLabelHtmlV40(competition, options = {}) {
+  if (!options.highlightWinner || isRankingCompetition(competition)) {
+    return renderWinnerLabelHtmlBeforeV40(competition, options);
+  }
+
+  const { withLogo = false } = options;
+  const results = getCompetitionResults(competition.id);
+  const winner = results.find((result) => Number(result.position) === 1);
+
+  if (!winner) return "Nessun risultato inserito";
+
+  const winnerHtml = withLogo
+    ? renderSeasonTeamNameWithLogo(winner.seasonTeamId, { textClass: "text-success" })
+    : `<strong class="text-success">${escapeHtml(getSeasonTeamDisplayName(winner.seasonTeamId))}</strong>`;
+
+  return `<div class="dashboard-podium-lines"><div><span class="muted">Vincitore:</span> ${winnerHtml}</div></div>`;
+};
+
+const renderDashboardBeforeV40 = renderDashboard;
+renderDashboard = function renderDashboardV40() {
+  const result = renderDashboardBeforeV40();
+  normalizeToggleLabelsV29?.();
+  return result;
+};
