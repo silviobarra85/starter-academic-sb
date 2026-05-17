@@ -8601,3 +8601,145 @@ body.is-mobile-ux #marketActivityTableBody td:nth-child(4) {
   white-space: normal !important;
   overflow-wrap: anywhere !important;
 }
+
+/* V42 - Team profile page and dashboard news links. */
+.team-profile-page .page-heading {
+  margin-bottom: 14px;
+}
+
+.team-profile-page-body {
+  display: grid;
+  gap: 14px;
+}
+
+.team-profile-page-body .detail-section {
+  margin-top: 0;
+}
+
+.team-profile-hero-panel {
+  margin-bottom: 0;
+}
+
+.team-profile-page-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.team-profile-page-hero .button {
+  margin-left: auto;
+}
+
+.team-profile-news-list {
+  display: grid;
+  gap: 10px;
+}
+
+.team-area-profile-action {
+  margin-top: 12px;
+}
+
+.dashboard-news-panel {
+  margin-bottom: 18px;
+}
+
+.dashboard-news-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.dashboard-news-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.dashboard-news-card h3 {
+  margin: 3px 0 6px;
+  font-size: 0.98rem;
+}
+
+.dashboard-news-side {
+  display: grid;
+  justify-items: end;
+  align-content: space-between;
+  gap: 8px;
+  min-width: 96px;
+  text-align: right;
+}
+
+.dashboard-news-team-link {
+  color: var(--text);
+}
+
+.team-profile-link {
+  color: inherit;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .dashboard-news-list {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-news-card {
+    padding: 10px;
+  }
+
+  .dashboard-news-side {
+    min-width: 76px;
+  }
+
+  .team-profile-page-hero {
+    align-items: flex-start;
+  }
+
+  .team-profile-page-hero .button {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .team-profile-page-body .team-profile-roster-wrap {
+    max-height: min(62vh, 520px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .team-profile-page-body .team-profile-roster-table th:first-child,
+  .team-profile-page-body .team-profile-roster-table td:first-child {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 4;
+    background: rgba(15, 23, 42, 0.98) !important;
+    min-width: 132px !important;
+    max-width: 132px !important;
+  }
+
+  .team-profile-page-body .team-profile-roster-table th:first-child {
+    z-index: 6;
+  }
+}
+
+body.is-mobile-ux .dashboard-news-list {
+  grid-template-columns: 1fr;
+}
+
+body.is-mobile-ux .team-profile-page-body .team-profile-roster-wrap {
+  max-height: min(62vh, 520px) !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.is-mobile-ux .team-profile-page-body .team-profile-roster-table th:first-child,
+body.is-mobile-ux .team-profile-page-body .team-profile-roster-table td:first-child {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 4;
+  background: rgba(15, 23, 42, 0.98) !important;
+  min-width: 132px !important;
+  max-width: 132px !important;
+}

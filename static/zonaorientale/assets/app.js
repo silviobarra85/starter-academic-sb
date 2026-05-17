@@ -6369,3 +6369,279 @@ renderDashboard = function renderDashboardV40() {
   normalizeToggleLabelsV29?.();
   return result;
 };
+/* V42 - Team profile as a real page and dashboard latest news. */
+function ensureTeamProfilePageV42() {
+  ensureV34Dom?.();
+
+  const desktopNav = document.querySelector('.app-nav');
+  if (desktopNav && !desktopNav.querySelector('[data-page-link="teamprofile"]')) {
+    const link = document.createElement('a');
+    link.href = '#teamprofile';
+    link.className = 'nav-link nav-link-team-profile hidden';
+    link.dataset.pageLink = 'teamprofile';
+    link.textContent = 'La mia squadra';
+    const teamAreaLink = desktopNav.querySelector('[data-page-link="teamarea"]');
+    const adminLink = desktopNav.querySelector('#adminNavLink');
+    desktopNav.insertBefore(link, teamAreaLink || adminLink || null);
+  }
+
+  const mobileSheet = document.getElementById('mobileMoreSheet');
+  if (mobileSheet && !mobileSheet.querySelector('[data-page-link="teamprofile"]')) {
+    const link = document.createElement('a');
+    link.href = '#teamprofile';
+    link.className = 'mobile-more-link nav-link-team-profile hidden';
+    link.dataset.pageLink = 'teamprofile';
+    link.textContent = 'La mia squadra';
+    const teamAreaLink = mobileSheet.querySelector('[data-page-link="teamarea"]');
+    const adminLink = mobileSheet.querySelector('[data-page-link="admin"]');
+    mobileSheet.insertBefore(link, teamAreaLink || adminLink || null);
+  }
+
+  document.querySelectorAll('[data-page-link="teamarea"]').forEach((link) => {
+    if (link.textContent.trim() === 'Area squadra') link.textContent = 'Richieste';
+  });
+
+  const main = document.querySelector('main.app-main');
+  const adminPanel = document.getElementById('adminPanel');
+  if (main && !document.querySelector('[data-page="teamprofile"]')) {
+    const section = document.createElement('section');
+    section.className = 'app-page team-profile-page';
+    section.dataset.page = 'teamprofile';
+    section.setAttribute('aria-labelledby', 'teamProfilePageTitle');
+    section.innerHTML = `
+      <div class="page-heading team-profile-page-heading">
+        <div>
+          <p class="eyebrow">Profilo squadra</p>
+          <h2 id="teamProfilePageTitle">Scheda squadra</h2>
+          <p>Rosa, palmarès, ultimi movimenti, comunicati e partite della squadra selezionata.</p>
+        </div>
+      </div>
+      <div id="teamProfilePageBody" class="team-profile-page-body">
+        <section class="panel"><p class="muted">Seleziona una squadra per aprire il profilo.</p></section>
+      </div>`;
+    main.insertBefore(section, adminPanel || null);
+  }
+}
+
+function setAppPageV42(pageName) {
+  const targetPage = pageName || 'dashboard';
+  state.currentPage = targetPage;
+  document.querySelectorAll('.app-page').forEach((page) => {
+    page.classList.toggle('is-active', page.dataset.page === targetPage);
+  });
+  document.querySelectorAll('[data-page-link]').forEach((link) => {
+    link.classList.toggle('active', link.dataset.pageLink === targetPage);
+  });
+  closeMobileMoreMenu?.();
+  updateMobileNavState?.();
+  if (window.location.hash !== `#${targetPage}`) {
+    window.history.pushState(null, '', `#${targetPage}`);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function getCurrentUserSeasonTeamIdV42() {
+  const approved = getApprovedTeamUser?.();
+  return approved?.seasonTeamId || state.activeTeamProfileSeasonTeamId || '';
+}
+
+function renderTeamProfileContentV42(snapshot) {
+  if (!snapshot) {
+    return `<section class="panel"><p class="muted">Scheda squadra non ancora generata. Accedi come admin e aggiorna gli snapshot squadra.</p></section>`;
+  }
+
+  const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
+    <tr>
+      <td class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || '-')}</strong></td>
+      <td>${getRosterRoleDisplay(player)}</td>
+      <td>${escapeHtml(player.realTeam || '-')}</td>
+      <td class="number">${formatListoneNumber(player.cost)}</td>
+      <td class="number">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+    </tr>`).join('') || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
+
+  const palmaresRows = (snapshot.palmares || []).map((item) => `
+    <tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join('') || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
+
+  const movementRows = (snapshot.recentMovements || []).map((movement) => `
+    <tr><td>${escapeHtml(movement.date || '-')}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || '-')}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join('') || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
+
+  const newsHtml = (snapshot.recentNews || []).map((news) => `
+    <article class="compact-card team-profile-news-card">
+      <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
+      <p>${escapeHtml(news.body || '')}</p>
+      <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
+    </article>`).join('') || `<p class="muted">Nessun comunicato squadra.</p>`;
+
+  const matchesRows = (snapshot.recentMatches || []).map((match) => `
+    <tr>
+      <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
+      <td>${escapeHtml(formatMatchStage(match))}</td>
+      <td>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</td>
+      <td>${escapeHtml(formatMatchResult(match))}</td>
+    </tr>`).join('') || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
+
+  const isOwner = getApprovedTeamUser?.()?.seasonTeamId === snapshot.seasonTeamId;
+
+  return `
+    <section class="panel team-profile-hero-panel">
+      <div class="team-profile-header team-profile-header-stacked team-profile-page-hero">
+        ${renderTeamLogo(snapshot.teamName, snapshot.logo, 'club-logo-lg')}
+        <div class="team-profile-title-block">
+          <h3>${escapeHtml(snapshot.teamName || 'Squadra')}</h3>
+          <p class="muted team-profile-meta-line">Presidenti: ${escapeHtml(snapshot.presidents || '-')}</p>
+          <p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p>
+          <p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p>
+        </div>
+        ${isOwner ? `<button class="button button-primary button-small" type="button" data-v42-page-link="teamarea">Invia richiesta</button>` : ''}
+      </div>
+    </section>
+
+    <section class="panel detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-roster-wrap"><table class="mobile-tabular team-profile-roster-table roster-sticky-table"><thead><tr><th>Giocatore</th><th>R (RM)</th><th>Sq</th><th class="number">Costo</th><th class="number">Qt.A</th></tr></thead><tbody>${rosterRows}</tbody></table></div></section>
+    <section class="panel detail-section"><h3>Palmarès squadra</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-palmares-wrap"><table class="mobile-tabular team-profile-palmares-table"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></section>
+    <section class="panel detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap"><table class="mobile-tabular team-profile-movements-table"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></section>
+    <section class="panel detail-section"><h3>Ultimi comunicati</h3><div class="team-profile-news-list">${newsHtml}</div></section>
+    <section class="panel detail-section"><h3>Ultime partite</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-matches-wrap"><table class="mobile-tabular team-profile-matches-table"><thead><tr><th>Comp.</th><th>Fase</th><th>Partita</th><th>Ris.</th></tr></thead><tbody>${matchesRows}</tbody></table></div></section>`;
+}
+
+async function openTeamProfilePageV42(seasonTeamId) {
+  ensureTeamProfilePageV42();
+  const selectedSeasonTeamId = seasonTeamId || getCurrentUserSeasonTeamIdV42();
+  state.activeTeamProfileSeasonTeamId = selectedSeasonTeamId;
+  const title = document.getElementById('teamProfilePageTitle');
+  const body = document.getElementById('teamProfilePageBody');
+  if (!body) return;
+  if (title) title.textContent = getSeasonTeamDisplayName(selectedSeasonTeamId) || 'Scheda squadra';
+  body.innerHTML = `<section class="panel"><p class="muted">Caricamento scheda squadra...</p></section>`;
+  setAppPageV42('teamprofile');
+  const snapshot = await loadTeamSnapshotV34(selectedSeasonTeamId);
+  if (title) title.textContent = snapshot?.teamName || getSeasonTeamDisplayName(selectedSeasonTeamId) || 'Scheda squadra';
+  body.innerHTML = renderTeamProfileContentV42(snapshot);
+}
+
+openTeamProfileV34 = function openTeamProfileV42(seasonTeamId) {
+  openTeamProfilePageV42(seasonTeamId).catch((error) => {
+    console.error(error);
+    setError(`Non riesco ad aprire la pagina squadra. ${error?.message || error}`);
+  });
+};
+openTeamProfile = openTeamProfileV34;
+
+function renderDashboardNewsV42() {
+  const metrics = document.querySelector('[aria-label="Indicatori principali"]');
+  if (!metrics) return;
+  let panel = document.getElementById('dashboardNewsPanel');
+  if (!panel) {
+    panel = document.createElement('section');
+    panel.id = 'dashboardNewsPanel';
+    panel.className = 'panel dashboard-news-panel';
+    panel.innerHTML = `
+      <div class="panel-header compact">
+        <div>
+          <h2>Ultime news e comunicati</h2>
+          <p>Collegamenti rapidi agli ultimi aggiornamenti ufficiali e ai comunicati delle squadre.</p>
+        </div>
+        <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
+      </div>
+      <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
+    metrics.insertAdjacentElement('afterend', panel);
+  }
+
+  const target = document.getElementById('dashboardNewsList');
+  if (!target) return;
+  const seasonId = getCurrentSeasonId();
+  const rows = (state.raw.news || [])
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .sort((a, b) => String(b.publishedAt || b.createdAt || '').localeCompare(String(a.publishedAt || a.createdAt || '')))
+    .slice(0, 4);
+
+  target.innerHTML = rows.length ? rows.map((news) => `
+    <article class="dashboard-news-card">
+      <div>
+        <small class="muted">${escapeHtml(news.topic === 'COMUNICATO_SQUADRA' ? 'Comunicato squadra' : news.topic || 'News')}</small>
+        <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
+        ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ''}
+      </div>
+      <div class="dashboard-news-side">
+        <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
+        <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
+      </div>
+    </article>`).join('') : `<p class="muted">Nessuna news pubblicata.</p>`;
+}
+
+const renderDashboardBeforeV42 = renderDashboard;
+renderDashboard = function renderDashboardV42() {
+  const result = renderDashboardBeforeV42();
+  renderDashboardNewsV42();
+  return result;
+};
+
+const renderAllBeforeV42 = renderAll;
+renderAll = function renderAllV42() {
+  ensureTeamProfilePageV42();
+  const result = renderAllBeforeV42();
+  renderDashboardNewsV42();
+  updateUserVisibilityV42();
+  return result;
+};
+
+const updateUserVisibilityBeforeV42 = updateUserVisibilityV34;
+function updateUserVisibilityV42() {
+  updateUserVisibilityBeforeV42?.();
+  const approved = getApprovedTeamUser?.();
+  document.querySelectorAll('.nav-link-team-profile').forEach((link) => {
+    link.classList.toggle('hidden', !approved);
+    link.textContent = 'La mia squadra';
+  });
+}
+updateUserVisibilityV34 = updateUserVisibilityV42;
+
+const renderUserAreaBeforeV42 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV42() {
+  renderUserAreaBeforeV42();
+  const approved = getApprovedTeamUser?.();
+  const target = document.getElementById('teamAreaBody');
+  if (!approved || !target || target.dataset.v42ProfileLink) return;
+  target.dataset.v42ProfileLink = 'true';
+  const firstPanel = target.querySelector('.panel');
+  firstPanel?.insertAdjacentHTML('beforeend', `
+    <div class="team-area-profile-action">
+      <button class="button button-secondary" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}">Apri pagina squadra</button>
+    </div>`);
+};
+
+function handlePageLinkV42(event) {
+  const customButton = event.target.closest('[data-v42-page-link]');
+  if (customButton) {
+    event.preventDefault();
+    const page = customButton.dataset.v42PageLink;
+    if (page === 'teamprofile') {
+      openTeamProfilePageV42(getCurrentUserSeasonTeamIdV42()).catch(console.error);
+    } else {
+      setAppPageV42(page);
+    }
+    return;
+  }
+
+  const profileNav = event.target.closest('[data-page-link="teamprofile"]');
+  if (profileNav) {
+    event.preventDefault();
+    openTeamProfilePageV42(getCurrentUserSeasonTeamIdV42()).catch(console.error);
+    return;
+  }
+
+  const dynamicNav = event.target.closest('[data-page-link="teamarea"]');
+  if (dynamicNav && dynamicNav.classList.contains('nav-link-team-area')) {
+    event.preventDefault();
+    setAppPageV42('teamarea');
+  }
+}
+document.addEventListener('click', handlePageLinkV42, true);
+
+window.addEventListener('hashchange', () => {
+  const page = window.location.hash.replace('#', '');
+  if (page === 'teamprofile') {
+    openTeamProfilePageV42(getCurrentUserSeasonTeamIdV42()).catch(console.error);
+  }
+});
+
+ensureTeamProfilePageV42();
