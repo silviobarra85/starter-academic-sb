@@ -8220,3 +8220,384 @@ body.is-mobile-ux .team-profile-roster-table td:nth-child(4) { min-width: 52px !
 body.is-mobile-ux .roster-player-table .roster-col-qta,
 body.is-mobile-ux .team-profile-roster-table th:nth-child(5),
 body.is-mobile-ux .team-profile-roster-table td:nth-child(5) { min-width: 52px !important; width: 52px !important; }
+
+/* V41 - Mobile table readability and dashboard layout refinements. */
+/* Dashboard: keep competition standings and calendar stacked on desktop too. */
+.dashboard-grid {
+  grid-template-columns: 1fr !important;
+}
+
+/* Listone/Svincolati: left aligned columns and first column labelled Giocatore in JS. */
+.listone-table th,
+.listone-table td,
+.free-agents-table th,
+.free-agents-table td {
+  text-align: left !important;
+}
+.listone-table .number,
+.free-agents-table .number {
+  text-align: left !important;
+}
+.listone-table th .table-sort,
+.free-agents-table th .table-sort {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+/* Rose -> Movimenti: keep Rosa aligned left and let Giocatore wrap when needed. */
+#marketActivityTableBody td:nth-child(2),
+.app-page[data-page="clubs"] table th:nth-child(2) {
+  text-align: left !important;
+}
+#marketActivityTableBody td:nth-child(4) {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+/* Team profile tables. */
+.team-profile-roster-wrap {
+  position: relative;
+  overflow: auto !important;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.team-profile-roster-table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+.team-profile-roster-table th,
+.team-profile-roster-table td {
+  text-align: left !important;
+}
+.team-profile-roster-table .number {
+  text-align: left !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Generic mobile table behavior: real tables, horizontal scroll, sticky headers. */
+  .mobile-tabular-wrap,
+  .table-wrap,
+  .team-profile-table-wrap,
+  .team-profile-roster-wrap,
+  .listone-table-wrap,
+  .roster-inline-table-wrap,
+  .roster-season-table-wrap {
+    overflow: auto !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .mobile-tabular-wrap table,
+  .table-wrap table,
+  .team-profile-table-wrap table,
+  .team-profile-roster-wrap table,
+  table.mobile-tabular,
+  table.listone-table,
+  table.free-agents-table,
+  table.roster-player-table,
+  table.team-profile-roster-table {
+    display: table !important;
+    table-layout: auto !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.62rem !important;
+  }
+
+  .mobile-tabular-wrap thead,
+  .table-wrap thead,
+  .team-profile-table-wrap thead,
+  .team-profile-roster-wrap thead,
+  table.mobile-tabular thead,
+  table.listone-table thead,
+  table.free-agents-table thead,
+  table.roster-player-table thead,
+  table.team-profile-roster-table thead {
+    display: table-header-group !important;
+  }
+
+  .mobile-tabular-wrap tbody,
+  .table-wrap tbody,
+  .team-profile-table-wrap tbody,
+  .team-profile-roster-wrap tbody,
+  table.mobile-tabular tbody,
+  table.listone-table tbody,
+  table.free-agents-table tbody,
+  table.roster-player-table tbody,
+  table.team-profile-roster-table tbody {
+    display: table-row-group !important;
+  }
+
+  .mobile-tabular-wrap tr,
+  .table-wrap tr,
+  .team-profile-table-wrap tr,
+  .team-profile-roster-wrap tr,
+  table.mobile-tabular tr,
+  table.listone-table tr,
+  table.free-agents-table tr,
+  table.roster-player-table tr,
+  table.team-profile-roster-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .mobile-tabular-wrap th,
+  .mobile-tabular-wrap td,
+  .table-wrap th,
+  .table-wrap td,
+  .team-profile-table-wrap th,
+  .team-profile-table-wrap td,
+  .team-profile-roster-wrap th,
+  .team-profile-roster-wrap td,
+  table.mobile-tabular th,
+  table.mobile-tabular td,
+  table.listone-table th,
+  table.listone-table td,
+  table.free-agents-table th,
+  table.free-agents-table td,
+  table.roster-player-table th,
+  table.roster-player-table td,
+  table.team-profile-roster-table th,
+  table.team-profile-roster-table td {
+    display: table-cell !important;
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    padding: 4px 7px !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+    border-right: 0 !important;
+  }
+
+  .mobile-tabular-wrap td::before,
+  .table-wrap td::before,
+  .team-profile-table-wrap td::before,
+  .team-profile-roster-wrap td::before,
+  table.mobile-tabular td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .mobile-tabular-wrap th,
+  .table-wrap th,
+  .team-profile-table-wrap th,
+  .team-profile-roster-wrap th,
+  table.mobile-tabular th,
+  table.listone-table th,
+  table.free-agents-table th,
+  table.roster-player-table th,
+  table.team-profile-roster-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    text-align: left !important;
+  }
+
+  .mobile-tabular-wrap th .table-sort,
+  .table-wrap th .table-sort,
+  table.listone-table th .table-sort,
+  table.free-agents-table th .table-sort,
+  table.roster-player-table th .table-sort {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+  }
+
+  /* Sticky first column for roster tables inside team profile and roster section. */
+  table.team-profile-roster-table th:first-child,
+  table.team-profile-roster-table td:first-child,
+  table.roster-player-table th.roster-col-player,
+  table.roster-player-table td.roster-col-player {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 21 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    min-width: 9.5rem !important;
+    max-width: 9.5rem !important;
+    width: 9.5rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  table.team-profile-roster-table th:first-child,
+  table.roster-player-table th.roster-col-player {
+    z-index: 31 !important;
+  }
+
+  /* Listone and Svincolati: player name first, sticky and readable. */
+  table.listone-table th.listone-col-playerName,
+  table.listone-table td.listone-col-playerName,
+  table.free-agents-table th.listone-col-playerName,
+  table.free-agents-table td.listone-col-playerName {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 21 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    min-width: 9.8rem !important;
+    max-width: 9.8rem !important;
+    width: 9.8rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: left !important;
+  }
+
+  table.listone-table th.listone-col-playerName,
+  table.free-agents-table th.listone-col-playerName {
+    z-index: 31 !important;
+  }
+
+  /* Keep compact numeric/short columns. */
+  table.team-profile-roster-table th:nth-child(n+2),
+  table.team-profile-roster-table td:nth-child(n+2),
+  table.roster-player-table th:not(.roster-col-player),
+  table.roster-player-table td:not(.roster-col-player),
+  table.listone-table th:not(.listone-col-playerName),
+  table.listone-table td:not(.listone-col-playerName),
+  table.free-agents-table th:not(.listone-col-playerName),
+  table.free-agents-table td:not(.listone-col-playerName) {
+    min-width: 3.3rem !important;
+  }
+
+  /* Movimenti: Rosa left; Giocatore can wrap rather than overlap. */
+  #marketActivityTableBody td:nth-child(2) {
+    text-align: left !important;
+  }
+  #marketActivityTableBody td:nth-child(4) {
+    min-width: 7rem !important;
+    max-width: 9rem !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+/* Same rules for JS forced mobile UX class used by Samsung Internet/Brave. */
+body.is-mobile-ux .mobile-tabular-wrap,
+body.is-mobile-ux .table-wrap,
+body.is-mobile-ux .team-profile-table-wrap,
+body.is-mobile-ux .team-profile-roster-wrap,
+body.is-mobile-ux .listone-table-wrap,
+body.is-mobile-ux .roster-inline-table-wrap,
+body.is-mobile-ux .roster-season-table-wrap {
+  overflow: auto !important;
+  max-width: 100% !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+body.is-mobile-ux .mobile-tabular-wrap table,
+body.is-mobile-ux .table-wrap table,
+body.is-mobile-ux .team-profile-table-wrap table,
+body.is-mobile-ux .team-profile-roster-wrap table,
+body.is-mobile-ux table.mobile-tabular,
+body.is-mobile-ux table.listone-table,
+body.is-mobile-ux table.free-agents-table,
+body.is-mobile-ux table.roster-player-table,
+body.is-mobile-ux table.team-profile-roster-table {
+  display: table !important;
+  table-layout: auto !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 0.62rem !important;
+}
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .mobile-tabular-wrap td,
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .table-wrap td,
+body.is-mobile-ux .team-profile-table-wrap th,
+body.is-mobile-ux .team-profile-table-wrap td,
+body.is-mobile-ux .team-profile-roster-wrap th,
+body.is-mobile-ux .team-profile-roster-wrap td,
+body.is-mobile-ux table.mobile-tabular th,
+body.is-mobile-ux table.mobile-tabular td,
+body.is-mobile-ux table.listone-table th,
+body.is-mobile-ux table.listone-table td,
+body.is-mobile-ux table.free-agents-table th,
+body.is-mobile-ux table.free-agents-table td,
+body.is-mobile-ux table.roster-player-table th,
+body.is-mobile-ux table.roster-player-table td,
+body.is-mobile-ux table.team-profile-roster-table th,
+body.is-mobile-ux table.team-profile-roster-table td {
+  display: table-cell !important;
+  width: auto !important;
+  min-width: max-content !important;
+  max-width: none !important;
+  padding: 4px 7px !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  border-right: 0 !important;
+}
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .team-profile-table-wrap th,
+body.is-mobile-ux .team-profile-roster-wrap th,
+body.is-mobile-ux table.mobile-tabular th,
+body.is-mobile-ux table.listone-table th,
+body.is-mobile-ux table.free-agents-table th,
+body.is-mobile-ux table.roster-player-table th,
+body.is-mobile-ux table.team-profile-roster-table th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 20 !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  text-align: left !important;
+}
+body.is-mobile-ux table.team-profile-roster-table th:first-child,
+body.is-mobile-ux table.team-profile-roster-table td:first-child,
+body.is-mobile-ux table.roster-player-table th.roster-col-player,
+body.is-mobile-ux table.roster-player-table td.roster-col-player,
+body.is-mobile-ux table.listone-table th.listone-col-playerName,
+body.is-mobile-ux table.listone-table td.listone-col-playerName,
+body.is-mobile-ux table.free-agents-table th.listone-col-playerName,
+body.is-mobile-ux table.free-agents-table td.listone-col-playerName {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 21 !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+  min-width: 9.8rem !important;
+  max-width: 9.8rem !important;
+  width: 9.8rem !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-align: left !important;
+}
+body.is-mobile-ux table.team-profile-roster-table th:first-child,
+body.is-mobile-ux table.roster-player-table th.roster-col-player,
+body.is-mobile-ux table.listone-table th.listone-col-playerName,
+body.is-mobile-ux table.free-agents-table th.listone-col-playerName {
+  z-index: 31 !important;
+}
+body.is-mobile-ux table.team-profile-roster-table th:nth-child(n+2),
+body.is-mobile-ux table.team-profile-roster-table td:nth-child(n+2),
+body.is-mobile-ux table.roster-player-table th:not(.roster-col-player),
+body.is-mobile-ux table.roster-player-table td:not(.roster-col-player),
+body.is-mobile-ux table.listone-table th:not(.listone-col-playerName),
+body.is-mobile-ux table.listone-table td:not(.listone-col-playerName),
+body.is-mobile-ux table.free-agents-table th:not(.listone-col-playerName),
+body.is-mobile-ux table.free-agents-table td:not(.listone-col-playerName) {
+  min-width: 3.3rem !important;
+}
+body.is-mobile-ux #marketActivityTableBody td:nth-child(2) {
+  text-align: left !important;
+}
+body.is-mobile-ux #marketActivityTableBody td:nth-child(4) {
+  min-width: 7rem !important;
+  max-width: 9rem !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}

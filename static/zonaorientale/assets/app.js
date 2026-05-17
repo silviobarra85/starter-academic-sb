@@ -125,7 +125,7 @@ const ADMIN_PANEL_IDS = [
 ];
 
 const LISTONE_COLUMNS = [
-  { key: "playerName", label: "Nome", numeric: false },
+  { key: "playerName", label: "Giocatore", numeric: false },
   { key: "classicRole", label: "R (RM)", numeric: false },
   { key: "realTeam", label: "Sq", numeric: false },
   { key: "fantasyRoster", label: "Rosa", numeric: false },
