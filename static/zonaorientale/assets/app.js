@@ -5444,14 +5444,26 @@ setupAuth = function setupAuthV34() {
 
     if (user) {
       try {
-        const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
-        state.isAdmin = adminSnapshot.exists();
+        // V54: the admin check must never block normal president accounts.
+        // Some Firestore rules versions deny reads on admins/{uid} for non-admin users;
+        // in that case we treat the user as non-admin and continue with teamUsers/pendingUsers.
+        const adminSnapshot = await getDoc(doc(db, "admins", user.uid)).catch((error) => {
+          console.warn("Admin check unavailable; continuing as non-admin", error);
+          return null;
+        });
+        state.isAdmin = Boolean(adminSnapshot?.exists?.());
 
         if (!state.isAdmin) {
-          const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch(() => null);
+          const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch((error) => {
+            console.warn("Team user check unavailable", error);
+            return null;
+          });
           if (teamSnapshot?.exists?.()) state.currentTeamUser = { id: teamSnapshot.id, ...teamSnapshot.data() };
 
-          const pendingSnapshot = await getDoc(doc(db, "pendingUsers", user.uid)).catch(() => null);
+          const pendingSnapshot = await getDoc(doc(db, "pendingUsers", user.uid)).catch((error) => {
+            console.warn("Pending user check unavailable", error);
+            return null;
+          });
           if (pendingSnapshot?.exists?.()) state.currentPendingUser = { id: pendingSnapshot.id, ...pendingSnapshot.data() };
 
           if (!state.currentTeamUser && !state.currentPendingUser) {
@@ -5469,6 +5481,17 @@ setupAuth = function setupAuthV34() {
 
     updateAdminVisibility();
     updateUserVisibilityV34();
+    if (state.user && !state.isAdmin) {
+      const approved = getApprovedTeamUser();
+      if (approved) {
+        showMessage("loginStatus", "Accesso effettuato. Puoi usare l'area squadra.");
+        document.getElementById("loginDialog")?.close?.();
+      } else if (state.currentPendingUser) {
+        showMessage("loginStatus", state.currentPendingUser.status === "EMAIL_NOT_VERIFIED"
+          ? "Account creato: verifica la mail per richiedere l'approvazione."
+          : "Accesso effettuato. Account in attesa di approvazione admin.");
+      }
+    }
 
     if (state.isAdmin && !state.hasFullData) {
       try {
