@@ -4065,6 +4065,7 @@ function getRosterSortValue(player, key) {
   if (key === "role") return getRosterRoleSortValue(player);
   if (key === "playerName") return String(player.playerName || "");
   if (key === "realTeam") return String(player.realTeam || "");
+  if (key === "quotationCurrent") return Number(getRosterPlayerQuotationCurrent(player) || 0);
   if (key === "cost") return Number(player.cost || 0);
   return String(player[key] || "");
 }
@@ -4073,6 +4074,29 @@ function getRosterRoleDisplay(player) {
   const role = String(player.rosterRole || player.classicRole || player.role || "-").trim() || "-";
   const mantra = String(player.mantraRoles || "").trim();
   return `${escapeHtml(role)}${mantra ? ` <span class="muted role-extra">(${escapeHtml(mantra)})</span>` : ""}`;
+}
+
+function findListonePlayerForRosterPlayer(player) {
+  const name = normalizePlayerName(player?.playerName || player?.name || "");
+  if (!name) return null;
+  const listone = getCurrentListone?.();
+  return (listone?.players || []).find((item) => normalizePlayerName(item.playerName) === name) || null;
+}
+
+function getRosterPlayerQuotationCurrent(player) {
+  const direct = player?.quotationCurrent ?? player?.quotation_current ?? player?.qtA ?? player?.qta;
+  if (direct !== undefined && direct !== null && direct !== "") return direct;
+  const listonePlayer = findListonePlayerForRosterPlayer(player);
+  return listonePlayer?.quotationCurrent ?? listonePlayer?.quotation_current ?? "";
+}
+
+function renderPresidentStack(namesText) {
+  const names = String(namesText || "")
+    .split(/,|&| e /i)
+    .map((name) => name.trim())
+    .filter(Boolean);
+  if (!names.length) return "-";
+  return `<span class="president-stack">${names.map((name, index) => `<span class="president-stack-item">${escapeHtml(name)}${index < names.length - 1 ? `<span class="president-comma">, </span>` : ""}</span>`).join("")}</span>`;
 }
 
 function sortRosterPlayersForDisplay(players) {
@@ -4104,6 +4128,7 @@ function renderRosterPlayerTable(players) {
           <tr>
             <th class="roster-col-player">${renderRosterSortButton("playerName", "Giocatore")}</th>
             <th class="roster-col-role">${renderRosterSortButton("role", "R (RM)")}</th>
+            <th class="number roster-col-qta">${renderRosterSortButton("quotationCurrent", "Qt.A", true)}</th>
             <th class="roster-col-team">${renderRosterSortButton("realTeam", "Sq")}</th>
             <th class="number roster-col-cost">${renderRosterSortButton("cost", "Costo", true)}</th>
           </tr>
@@ -4113,6 +4138,7 @@ function renderRosterPlayerTable(players) {
             <tr>
               <td data-label="Giocatore" class="roster-col-player"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
               <td data-label="R (RM)" class="roster-col-role">${getRosterRoleDisplay(player)}</td>
+              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
               <td data-label="Sq" class="roster-col-team">${escapeHtml(player.realTeam || "-")}</td>
               <td data-label="Costo" class="number roster-col-cost">${escapeHtml(player.cost ?? "-")}</td>
             </tr>`).join("")}
@@ -4163,7 +4189,7 @@ renderTeamsTable = function renderTeamsTableV23() {
               return `
                 <tr class="roster-team-row ${isExpanded ? "is-expanded" : ""}">
                   <td data-label="Rosa" class="roster-team-name">${renderTeamLogo(displayName, getSeasonTeamLogo(seasonTeam))}<strong>${escapeHtml(displayName)}</strong></td>
-                  <td data-label="Presidenti">${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</td>
+                  <td data-label="Presidenti">${renderPresidentStack(getSeasonTeamPresidentNames(seasonTeam))}</td>
                   <td data-label="FM" class="number"><strong>${escapeHtml(formatFm(balance))}</strong></td>
                   <td data-label="Gioc." class="number">${escapeHtml(roster?.playerCount ?? 0)}</td>
                   <td data-label="Stadio">${escapeHtml(formatStadium(stadium))}</td>
@@ -6075,7 +6101,7 @@ async function openTeamProfileV34(seasonTeamId) {
     return;
   }
   const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
-    <tr><td>${escapeHtml(player.playerName || "-")}</td><td>${escapeHtml(player.rosterRole || player.classicRole || "-")}</td><td>${escapeHtml(player.realTeam || "-")}</td><td class="number">${formatListoneNumber(player.cost)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Rosa non disponibile.</td></tr>`;
+    <tr><td class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td><td>${getRosterRoleDisplay(player)}</td><td class="number">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td><td>${escapeHtml(player.realTeam || "-")}</td><td class="number">${formatListoneNumber(player.cost)}</td></tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
   const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p>${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
@@ -6088,11 +6114,11 @@ async function openTeamProfileV34(seasonTeamId) {
     </tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
 
   body.innerHTML = `
-    <div class="team-profile-header">
+    <div class="team-profile-header team-profile-header-stacked">
       ${renderTeamLogo(snapshot.teamName, snapshot.logo, "club-logo-lg")}
-      <div><h3>${escapeHtml(snapshot.teamName || "Squadra")}</h3><p class="muted">Presidenti: ${escapeHtml(snapshot.presidents || "-")} · Saldo FM: ${formatFm(snapshot.fmBalance || 0)} · Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p></div>
+      <div class="team-profile-title-block"><h3>${escapeHtml(snapshot.teamName || "Squadra")}</h3><p class="muted team-profile-meta-line">Presidenti: ${escapeHtml(snapshot.presidents || "-")}</p><p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p><p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p></div>
     </div>
-    <div class="detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-roster-wrap"><table class="mobile-tabular team-profile-roster-table"><thead><tr><th>Giocatore</th><th>R</th><th>Sq</th><th class="number">Costo</th></tr></thead><tbody>${rosterRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-roster-wrap"><table class="mobile-tabular team-profile-roster-table"><thead><tr><th>Giocatore</th><th>R (RM)</th><th class="number">Qt.A</th><th>Sq</th><th class="number">Costo</th></tr></thead><tbody>${rosterRows}</tbody></table></div></div>
     <div class="detail-section"><h3>Palmarès squadra</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-palmares-wrap"><table class="mobile-tabular team-profile-palmares-table"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></div>
     <div class="detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap"><table class="mobile-tabular team-profile-movements-table"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></div>
     <div class="detail-section"><h3>Ultimi comunicati</h3>${newsHtml}</div>

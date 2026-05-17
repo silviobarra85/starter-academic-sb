@@ -7859,3 +7859,214 @@ body.is-mobile-ux .team-profile-matches-table td:first-child {
   width: 38px !important;
   text-align: center !important;
 }
+
+/* V39 - Roster quotation, compact team profile and stable mobile navigation */
+.president-stack {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: center;
+}
+
+.team-profile-header-stacked {
+  align-items: center;
+}
+
+.team-profile-title-block {
+  min-width: 0;
+  display: grid;
+  gap: 0.18rem;
+}
+
+.team-profile-title-block h3,
+.team-profile-meta-line {
+  margin: 0;
+}
+
+.roster-inline-table-wrap,
+.team-profile-roster-wrap {
+  overflow: auto !important;
+}
+
+.roster-player-table th.roster-col-player,
+.roster-player-table td.roster-col-player,
+.team-profile-roster-table th:first-child,
+.team-profile-roster-table td:first-child {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 6 !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+  text-align: left !important;
+}
+
+.roster-player-table th.roster-col-player,
+.team-profile-roster-table th:first-child {
+  z-index: 9 !important;
+}
+
+.roster-player-table .roster-col-player { width: 36% !important; min-width: 13rem; }
+.roster-player-table .roster-col-role { width: 18% !important; }
+.roster-player-table .roster-col-qta { width: 11% !important; }
+.roster-player-table .roster-col-team { width: 12% !important; }
+.roster-player-table .roster-col-cost { width: 13% !important; }
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .mobile-tabular-wrap table.mobile-tabular th,
+  .mobile-tabular-wrap table.mobile-tabular td,
+  .table-wrap table th,
+  .table-wrap table td {
+    text-align: left !important;
+  }
+
+  .mobile-tabular-wrap table.mobile-tabular .number,
+  .table-wrap table .number {
+    text-align: left !important;
+  }
+
+  .roster-player-table,
+  .team-profile-roster-table {
+    min-width: 560px !important;
+    table-layout: fixed !important;
+  }
+
+  .roster-player-table .roster-col-player,
+  .team-profile-roster-table th:first-child,
+  .team-profile-roster-table td:first-child {
+    min-width: 170px !important;
+    max-width: 190px !important;
+    width: 170px !important;
+  }
+
+  .roster-player-table .roster-col-role,
+  .team-profile-roster-table th:nth-child(2),
+  .team-profile-roster-table td:nth-child(2) {
+    min-width: 82px !important;
+    width: 82px !important;
+  }
+
+  .roster-player-table .roster-col-qta,
+  .team-profile-roster-table th:nth-child(3),
+  .team-profile-roster-table td:nth-child(3) {
+    min-width: 58px !important;
+    width: 58px !important;
+  }
+
+  .roster-player-table .roster-col-team,
+  .team-profile-roster-table th:nth-child(4),
+  .team-profile-roster-table td:nth-child(4) {
+    min-width: 48px !important;
+    width: 48px !important;
+  }
+
+  .roster-player-table .roster-col-cost,
+  .team-profile-roster-table th:nth-child(5),
+  .team-profile-roster-table td:nth-child(5) {
+    min-width: 62px !important;
+    width: 62px !important;
+  }
+
+  .roster-player-table th,
+  .roster-player-table td,
+  .team-profile-roster-table th,
+  .team-profile-roster-table td {
+    padding: 5px 6px !important;
+    font-size: 0.66rem !important;
+  }
+
+  .roster-season-table .president-stack {
+    display: grid !important;
+    gap: 0.12rem !important;
+    line-height: 1.12 !important;
+  }
+
+  .roster-season-table .president-comma {
+    display: none !important;
+  }
+
+  .roster-team-name,
+  .roster-season-table .roster-team-name,
+  .roster-season-table .team-profile-link,
+  .roster-season-table .club-name-with-logo {
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+
+  .team-profile-header-stacked {
+    grid-template-columns: auto 1fr !important;
+    align-items: center !important;
+  }
+
+  .team-profile-meta-line {
+    font-size: 0.78rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 3000 !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+    contain: layout paint !important;
+  }
+
+  body {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular th,
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular td,
+body.is-mobile-ux .table-wrap table th,
+body.is-mobile-ux .table-wrap table td,
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular .number,
+body.is-mobile-ux .table-wrap table .number {
+  text-align: left !important;
+}
+
+body.is-mobile-ux .roster-player-table,
+body.is-mobile-ux .team-profile-roster-table {
+  min-width: 560px !important;
+  table-layout: fixed !important;
+}
+
+body.is-mobile-ux .roster-player-table .roster-col-player,
+body.is-mobile-ux .team-profile-roster-table th:first-child,
+body.is-mobile-ux .team-profile-roster-table td:first-child {
+  min-width: 170px !important;
+  max-width: 190px !important;
+  width: 170px !important;
+}
+
+body.is-mobile-ux .roster-player-table .roster-col-role,
+body.is-mobile-ux .team-profile-roster-table th:nth-child(2),
+body.is-mobile-ux .team-profile-roster-table td:nth-child(2) { min-width: 82px !important; width: 82px !important; }
+body.is-mobile-ux .roster-player-table .roster-col-qta,
+body.is-mobile-ux .team-profile-roster-table th:nth-child(3),
+body.is-mobile-ux .team-profile-roster-table td:nth-child(3) { min-width: 58px !important; width: 58px !important; }
+body.is-mobile-ux .roster-player-table .roster-col-team,
+body.is-mobile-ux .team-profile-roster-table th:nth-child(4),
+body.is-mobile-ux .team-profile-roster-table td:nth-child(4) { min-width: 48px !important; width: 48px !important; }
+body.is-mobile-ux .roster-player-table .roster-col-cost,
+body.is-mobile-ux .team-profile-roster-table th:nth-child(5),
+body.is-mobile-ux .team-profile-roster-table td:nth-child(5) { min-width: 62px !important; width: 62px !important; }
+
+body.is-mobile-ux .roster-season-table .president-stack {
+  display: grid !important;
+  gap: 0.12rem !important;
+  line-height: 1.12 !important;
+}
+
+body.is-mobile-ux .roster-season-table .president-comma { display: none !important; }
+body.is-mobile-ux .mobile-bottom-nav {
+  position: fixed !important;
+  left: 10px !important;
+  right: 10px !important;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  z-index: 3000 !important;
+  transform: translateZ(0) !important;
+  will-change: transform !important;
+  contain: layout paint !important;
+}
