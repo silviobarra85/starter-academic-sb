@@ -1,3 +1,6 @@
+window.__ZO_APP_STARTED = true;
+window.__ZO_APP_READY = false;
+
 import {
   db,
   auth,
@@ -1700,6 +1703,7 @@ function setupMobileNavigation() {
 
 function setupAuth() {
   const openLoginBtn = document.getElementById("openLoginBtn");
+  if (openLoginBtn && !state.isAdmin) openLoginBtn.textContent = "Area Riservata";
   const logoutBtn = document.getElementById("logoutBtn");
   const loginDialog = document.getElementById("loginDialog");
   const loginForm = document.getElementById("loginForm");
@@ -4658,6 +4662,9 @@ async function initializeAppUi() {
     const code = error?.code ? `${error.code} - ` : "";
     const message = error?.message || String(error);
     setError(`Non riesco a leggere Firestore. ${code}${message}`);
+  } finally {
+    window.__ZO_APP_READY = true;
+    bootstrapReservedAreaButtonV51?.();
   }
 }
 
@@ -6362,7 +6369,7 @@ function sortNewsRowsV50(rows) {
   return (rows || []).slice().sort((a, b) => String(newsSortValueV50(b)).localeCompare(String(newsSortValueV50(a))));
 }
 
-function renderNewsAdminPanelV48() {
+renderNewsAdminPanelV48 = function renderNewsAdminPanelV48() {
   const currentSeasonId = getCurrentSeasonId();
   const seasonOptions = (state.raw.seasons || []).map((season) => `
     <option value="${escapeHtml(season.id)}" ${season.id === currentSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
@@ -6439,7 +6446,7 @@ function renderNewsAdminPanelV48() {
   return renderAdminPanel("adminNewsPanel", "Comunicazioni", "News e comunicati", "Pubblica comunicati generali, comunicati competizione o comunicati ufficiali delle squadre.", body);
 }
 
-async function saveAdminNewsV48(event) {
+saveAdminNewsV48 = async function saveAdminNewsV48(event) {
   event.preventDefault();
   const id = document.getElementById("adminNewsId")?.value || "";
   const seasonTeamId = document.getElementById("adminNewsSeasonTeamId")?.value || "";
@@ -6473,7 +6480,7 @@ async function saveAdminNewsV48(event) {
   }
 }
 
-function resetAdminNewsFormV48() {
+resetAdminNewsFormV48 = function resetAdminNewsFormV48() {
   document.getElementById("adminNewsId") && (document.getElementById("adminNewsId").value = "");
   document.getElementById("adminNewsTitle") && (document.getElementById("adminNewsTitle").value = "");
   document.getElementById("adminNewsTopic") && (document.getElementById("adminNewsTopic").value = "GENERALE");
@@ -6484,7 +6491,7 @@ function resetAdminNewsFormV48() {
   document.getElementById("adminNewsStatus") && (document.getElementById("adminNewsStatus").textContent = "");
 }
 
-function editAdminNewsV48(newsId) {
+editAdminNewsV48 = function editAdminNewsV48(newsId) {
   const item = (state.raw.news || []).find((row) => row.id === newsId);
   if (!item) return;
   expandAdminPanel("adminNewsPanel");
@@ -6505,7 +6512,7 @@ function canCurrentUserSubmitTeamRequestsV50() {
   return approved.email && state.user.email && approved.email === state.user.email;
 }
 
-function buildBaseTeamRequestPayloadV34(type) {
+buildBaseTeamRequestPayloadV34 = function buildBaseTeamRequestPayloadV34(type) {
   const approved = getApprovedTeamUser();
   if (!state.user || !approved) throw new Error("Utente non approvato.");
   if (!canCurrentUserSubmitTeamRequestsV50()) {
@@ -6525,7 +6532,7 @@ function buildBaseTeamRequestPayloadV34(type) {
   };
 }
 
-async function approveTeamRequestV34(requestId) {
+approveTeamRequestV34 = async function approveTeamRequestV34(requestId) {
   const request = state.raw.teamRequests.find((item) => item.id === requestId);
   if (!request) return;
   const publishedAt = getNowDateTimeLocalV50();
@@ -6591,7 +6598,7 @@ async function approveTeamRequestV34(requestId) {
   expandAdminPanel("adminTeamRequestsPanel");
 }
 
-function renderUserAreaV34() {
+renderUserAreaV34 = function renderUserAreaV34() {
   const target = document.getElementById("teamAreaBody");
   if (!target) return;
   const approved = getApprovedTeamUser();
@@ -6665,7 +6672,7 @@ function renderUserAreaV34() {
   attachUserAreaHandlersV34();
 }
 
-function attachUserAreaHandlersV34() {
+attachUserAreaHandlersV34 = function attachUserAreaHandlersV34() {
   document.querySelectorAll("[data-user-logout]").forEach((button) => {
     button.addEventListener("click", async () => signOut(auth));
   });
@@ -6918,6 +6925,7 @@ function bootstrapReservedAreaButtonV51() {
 }
 
 function showStartupFailureV51(error) {
+  window.__ZO_APP_READY = false;
   console.error(error);
   const code = error?.code ? `${error.code} - ` : "";
   const message = error?.message || String(error || "Errore sconosciuto");
@@ -6928,6 +6936,7 @@ function showStartupFailureV51(error) {
 bootstrapReservedAreaButtonV51();
 initializeAppUi()
   .then(() => {
+    window.__ZO_APP_READY = true;
     bootstrapReservedAreaButtonV51();
     injectDisplayModeToggle();
     updateMobileUxClass();

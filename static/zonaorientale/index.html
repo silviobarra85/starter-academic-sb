@@ -6,7 +6,7 @@
   <title>ZonaOrientale Salerno</title>
   <meta name="description" content="Gestionale ZonaOrientale Salerno - saldi FM, club, rose, movimenti e stadio." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="./assets/styles.css?v=51" />
+  <link rel="stylesheet" href="./assets/styles.css?v=53" />
 </head>
 <body>
   <header class="app-header">
@@ -1168,11 +1168,65 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V51 resilient startup and reserved area access</p>
+    <p>ZonaOrientale Salerno · V53 Fix JavaScript startup and navigation handlers</p>
   </footer>
 
+
+  <script>
+    (function zonaOrientaleStartupFallbackV52() {
+      function onReady(callback) {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", callback, { once: true });
+        } else {
+          callback();
+        }
+      }
+
+      function openReservedAreaDialog() {
+        var dialog = document.getElementById("loginDialog");
+        if (!dialog) return;
+        try {
+          if (typeof dialog.showModal === "function" && !dialog.open) dialog.showModal();
+          else dialog.setAttribute("open", "open");
+        } catch (error) {
+          dialog.setAttribute("open", "open");
+        }
+      }
+
+      onReady(function () {
+        var openButton = document.getElementById("openLoginBtn");
+        var closeButton = document.getElementById("closeLoginBtn");
+        var dialog = document.getElementById("loginDialog");
+
+        if (openButton && !openButton.dataset.inlineReservedFallbackBound) {
+          openButton.dataset.inlineReservedFallbackBound = "true";
+          openButton.textContent = "Area Riservata";
+          openButton.addEventListener("click", openReservedAreaDialog);
+        }
+
+        if (closeButton && !closeButton.dataset.inlineReservedFallbackBound) {
+          closeButton.dataset.inlineReservedFallbackBound = "true";
+          closeButton.addEventListener("click", function () {
+            if (dialog && typeof dialog.close === "function") dialog.close();
+            else if (dialog) dialog.removeAttribute("open");
+          });
+        }
+
+        window.setTimeout(function () {
+          if (window.__ZO_APP_READY) return;
+          var errorBox = document.getElementById("errorBox");
+          if (!errorBox) return;
+          errorBox.classList.remove("hidden");
+          errorBox.textContent = window.__ZO_APP_STARTED
+            ? "Il modulo del sito si è avviato ma non ha completato il caricamento. Ricarica senza cache e controlla la console del browser."
+            : "Il modulo del sito non risulta avviato. Ricarica senza cache e controlla che app.js?v=53 sia pubblicato.";
+        }, 9000);
+      });
+    })();
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=51"></script>
+  <script type="module" src="./assets/app.js?v=53"></script>
 </body>
 </html>
 
