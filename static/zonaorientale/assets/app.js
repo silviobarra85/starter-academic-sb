@@ -5331,7 +5331,7 @@ function updateUserVisibilityV34() {
   document.querySelectorAll(".nav-link-team-area").forEach((link) => link.classList.toggle("hidden", !approved));
   const openLoginBtn = document.getElementById("openLoginBtn");
   if (openLoginBtn && !state.isAdmin) {
-    openLoginBtn.textContent = state.user ? "Account" : "Accedi / Registrati";
+    openLoginBtn.textContent = state.user ? "Account" : "Area Riservata";
     openLoginBtn.classList.remove("hidden");
   }
   renderUserAreaV34();
@@ -6896,10 +6896,43 @@ if (renderDashboardNewsBeforeV50) {
   };
 }
 
-initializeAppUi().then(() => {
-  injectDisplayModeToggle();
-  updateMobileUxClass();
-});
+
+/* V51 - Resilient startup and reserved area access.
+   Keep login/navigation clickable even if Firestore startup fails or hangs. */
+function bootstrapReservedAreaButtonV51() {
+  const openLoginBtn = document.getElementById("openLoginBtn");
+  const loginDialog = document.getElementById("loginDialog");
+  const closeLoginBtn = document.getElementById("closeLoginBtn");
+  if (openLoginBtn && !openLoginBtn.dataset.v51ReservedAccessBound) {
+    openLoginBtn.dataset.v51ReservedAccessBound = "true";
+    openLoginBtn.textContent = state.user ? "Account" : "Area Riservata";
+    openLoginBtn.addEventListener("click", () => {
+      if (loginDialog?.showModal) loginDialog.showModal();
+      else loginDialog?.setAttribute("open", "open");
+    });
+  }
+  if (closeLoginBtn && !closeLoginBtn.dataset.v51CloseLoginBound) {
+    closeLoginBtn.dataset.v51CloseLoginBound = "true";
+    closeLoginBtn.addEventListener("click", () => loginDialog?.close?.());
+  }
+}
+
+function showStartupFailureV51(error) {
+  console.error(error);
+  const code = error?.code ? `${error.code} - ` : "";
+  const message = error?.message || String(error || "Errore sconosciuto");
+  setError(`Avvio parziale: alcune funzioni non sono state caricate. ${code}${message}`);
+  bootstrapReservedAreaButtonV51();
+}
+
+bootstrapReservedAreaButtonV51();
+initializeAppUi()
+  .then(() => {
+    bootstrapReservedAreaButtonV51();
+    injectDisplayModeToggle();
+    updateMobileUxClass();
+  })
+  .catch(showStartupFailureV51);
 
 /* V27 - Robust mobile roster toggles.
    Keep rosters collapsed by default on first mobile render and handle roster toggle
@@ -7754,3 +7787,14 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
   window.addEventListener("load", scheduleViewportSizing);
   scheduleViewportSizing();
 })();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  try {
+    bootstrapReservedAreaButtonV51();
+    const openLoginBtn = document.getElementById("openLoginBtn");
+    if (openLoginBtn && !state.user) openLoginBtn.textContent = "Area Riservata";
+  } catch (error) {
+    console.error(error);
+  }
+});
