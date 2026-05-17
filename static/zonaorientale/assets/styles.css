@@ -9385,3 +9385,210 @@ body.screen-xs .mobile-table-toggle {
   padding: 6px 9px !important;
   font-size: 0.74rem !important;
 }
+
+/* V47 - Mobile fixed viewport tables and stable navigation/header.
+   Mobile only: tables fit the screen, scroll internally, and first columns are not sticky. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html,
+  body.is-mobile-ux {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  body.is-mobile-ux .app-header {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    transform: none !important;
+  }
+
+  body.is-mobile-ux .container,
+  body.is-mobile-ux .app-main,
+  body.is-mobile-ux .app-footer {
+    width: min(100% - 16px, 1220px) !important;
+    max-width: calc(100vw - 16px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux h1,
+  body.is-mobile-ux.screen-xs h1 {
+    font-size: clamp(1.5rem, 7vw, 1.8rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  body.is-mobile-ux .header-grid,
+  body.is-mobile-ux .header-actions {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav {
+    position: fixed !important;
+    display: grid !important;
+    left: var(--mobile-nav-inset, 8px) !important;
+    right: var(--mobile-nav-inset, 8px) !important;
+    bottom: calc(var(--mobile-nav-inset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
+    width: auto !important;
+    max-width: calc(100vw - (var(--mobile-nav-inset, 8px) * 2)) !important;
+    min-width: 0 !important;
+    z-index: 2147483000 !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+    contain: layout paint !important;
+  }
+
+  body.is-mobile-ux .mobile-more-sheet:not(.hidden) {
+    position: fixed !important;
+    z-index: 2147483001 !important;
+    max-width: calc(100vw - (var(--mobile-nav-inset, 8px) * 2)) !important;
+    overflow: auto !important;
+  }
+
+  /* Every mobile table stays within the screen. Data scrolls inside the table wrapper. */
+  body.is-mobile-ux .table-wrap,
+  body.is-mobile-ux .mobile-tabular-wrap,
+  body.is-mobile-ux .standing-table-wrap,
+  body.is-mobile-ux .roster-dialog-table,
+  body.is-mobile-ux .compact-table,
+  body.is-mobile-ux .mini-table-wrap,
+  body.is-mobile-ux .honor-table-wrap,
+  body.is-mobile-ux .mobile-honor-table-wrap,
+  body.is-mobile-ux .v45-mobile-table-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: calc(100vw - 16px) !important;
+    min-width: 0 !important;
+    max-height: var(--mobile-table-max-height, 392px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
+    border-radius: 14px !important;
+  }
+
+  body.is-mobile-ux table,
+  body.is-mobile-ux table.mobile-tabular,
+  body.is-mobile-ux table.v45-mobile-table,
+  body.is-mobile-ux table.standing-table,
+  body.is-mobile-ux table.mobile-honor-table {
+    display: table !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    max-width: none !important;
+    table-layout: auto !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  body.is-mobile-ux table thead,
+  body.is-mobile-ux table.mobile-tabular thead,
+  body.is-mobile-ux table.v45-mobile-table thead,
+  body.is-mobile-ux table.standing-table thead,
+  body.is-mobile-ux table.mobile-honor-table thead {
+    display: table-header-group !important;
+  }
+
+  body.is-mobile-ux table tbody,
+  body.is-mobile-ux table.mobile-tabular tbody,
+  body.is-mobile-ux table.v45-mobile-table tbody,
+  body.is-mobile-ux table.standing-table tbody,
+  body.is-mobile-ux table.mobile-honor-table tbody {
+    display: table-row-group !important;
+  }
+
+  body.is-mobile-ux table tr,
+  body.is-mobile-ux table.mobile-tabular tr,
+  body.is-mobile-ux table.v45-mobile-table tr,
+  body.is-mobile-ux table.standing-table tr,
+  body.is-mobile-ux table.mobile-honor-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  body.is-mobile-ux table th,
+  body.is-mobile-ux table td,
+  body.is-mobile-ux table.mobile-tabular th,
+  body.is-mobile-ux table.mobile-tabular td,
+  body.is-mobile-ux table.v45-mobile-table th,
+  body.is-mobile-ux table.v45-mobile-table td,
+  body.is-mobile-ux table.standing-table th,
+  body.is-mobile-ux table.standing-table td,
+  body.is-mobile-ux table.mobile-honor-table th,
+  body.is-mobile-ux table.mobile-honor-table td {
+    display: table-cell !important;
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    padding: 7px 8px !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    height: var(--mobile-table-row-height, 34px) !important;
+  }
+
+  body.is-mobile-ux table td::before,
+  body.is-mobile-ux table th::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Header remains sticky. */
+  body.is-mobile-ux table th,
+  body.is-mobile-ux table.mobile-tabular th,
+  body.is-mobile-ux table.v45-mobile-table th,
+  body.is-mobile-ux table.standing-table th,
+  body.is-mobile-ux table.mobile-honor-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+  }
+
+  /* V47: once tables have fixed screen-sized wrappers, first columns must not be sticky. */
+  body.is-mobile-ux table th:first-child,
+  body.is-mobile-ux table td:first-child,
+  body.is-mobile-ux table.v45-mobile-table th:first-child,
+  body.is-mobile-ux table.v45-mobile-table td:first-child,
+  body.is-mobile-ux table.mobile-tabular th:first-child,
+  body.is-mobile-ux table.mobile-tabular td:first-child,
+  body.is-mobile-ux table.standing-table th:first-child,
+  body.is-mobile-ux table.standing-table td:first-child,
+  body.is-mobile-ux table.mobile-honor-table th:first-child,
+  body.is-mobile-ux table.mobile-honor-table td:first-child {
+    position: static !important;
+    left: auto !important;
+    z-index: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body.is-mobile-ux table th:first-child {
+    background: rgba(15, 23, 42, 0.99) !important;
+    z-index: 20 !important;
+  }
+
+  body.is-mobile-ux .number,
+  body.is-mobile-ux table .number {
+    text-align: right !important;
+  }
+
+  body.is-mobile-ux .mobile-table-actions {
+    width: 100% !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+}
+
+body.is-mobile-ux .mobile-bottom-nav {
+  position: fixed !important;
+  display: grid !important;
+  z-index: 2147483000 !important;
+}

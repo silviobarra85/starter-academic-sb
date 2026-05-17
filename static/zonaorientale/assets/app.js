@@ -6908,10 +6908,13 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
   let scheduled = false;
 
   function getViewportSize() {
-    const viewport = window.visualViewport || null;
-    const width = Math.round(viewport?.width || window.innerWidth || document.documentElement.clientWidth || 0);
-    const height = Math.round(viewport?.height || window.innerHeight || document.documentElement.clientHeight || 0);
-    return { width, height };
+    // V47: use the layout viewport for layout decisions.
+    // visualViewport changes during pinch-zoom and could remove/move the bottom menu.
+    const width = Math.round(window.innerWidth || document.documentElement.clientWidth || 0);
+    const height = Math.round(window.innerHeight || document.documentElement.clientHeight || 0);
+    const visualWidth = Math.round(window.visualViewport?.width || width);
+    const visualHeight = Math.round(window.visualViewport?.height || height);
+    return { width, height, visualWidth, visualHeight };
   }
 
   function setBoolClass(element, className, enabled) {
@@ -6921,14 +6924,16 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
   function applyViewportSizing() {
     scheduled = false;
 
-    const { width, height } = getViewportSize();
+    const { width, height, visualWidth, visualHeight } = getViewportSize();
     const root = document.documentElement;
     const body = document.body;
     if (!body || !width || !height) return;
 
     const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
     const mediaMobile = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
-    const isMobile = displayMode !== "desktop" && mediaMobile;
+    const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    const mobileUserAgent = /Android|iPhone|iPad|iPod|Mobile|SamsungBrowser/i.test(navigator.userAgent || "");
+    const isMobile = displayMode !== "desktop" && (mediaMobile || coarsePointer || mobileUserAgent || width <= 900);
     const isLandscape = width > height;
 
     const sizeName = width <= 360 ? "xs" : width <= 430 ? "sm" : width <= 768 ? "md" : "lg";
@@ -6952,6 +6957,8 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
 
     root.style.setProperty("--viewport-width", `${width}px`);
     root.style.setProperty("--viewport-height", `${height}px`);
+    root.style.setProperty("--visual-viewport-width", `${visualWidth}px`);
+    root.style.setProperty("--visual-viewport-height", `${visualHeight}px`);
     root.style.setProperty("--mobile-nav-inset", `${navInset}px`);
     root.style.setProperty("--mobile-nav-padding", `${navPadding}px`);
     root.style.setProperty("--mobile-nav-gap", `${navGap}px`);
@@ -6998,7 +7005,7 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
   window.addEventListener("resize", scheduleViewportSizing, { passive: true });
   window.addEventListener("orientationchange", scheduleViewportSizing, { passive: true });
   window.visualViewport?.addEventListener("resize", scheduleViewportSizing, { passive: true });
-  window.visualViewport?.addEventListener("scroll", scheduleViewportSizing, { passive: true });
+  // Do not react to visualViewport scroll: during pinch-zoom it can make fixed UI jump/disappear.
   document.addEventListener("DOMContentLoaded", scheduleViewportSizing);
   window.addEventListener("load", scheduleViewportSizing);
   scheduleViewportSizing();
