@@ -5572,7 +5572,7 @@ function renderNewsPublicV34() {
         </div>
         <small>${escapeHtml(news.publishedAt || news.createdAt || "")}</small>
       </div>
-      <p>${escapeHtml(news.body || "")}</p>
+      <p class="news-body-preserve">${escapeHtml(news.body || "")}</p>
     </article>`).join("") : `<p class="muted">Nessun comunicato pubblicato.</p>`;
 }
 
@@ -5711,7 +5711,7 @@ function attachUserAreaHandlersV34() {
     event.preventDefault();
     submitTeamRequestV34("TEAM_NEWS", {
       title: document.getElementById("teamNewsRequestTitle")?.value.trim() || "Comunicato squadra",
-      body: document.getElementById("teamNewsRequestBody")?.value.trim() || ""
+      body: document.getElementById("teamNewsRequestBody")?.value || ""
     }, "teamNewsRequestStatus");
     event.target.reset();
   });
@@ -5750,7 +5750,7 @@ function renderNewsAdminPanelV48() {
           <span>
             <strong>${escapeHtml(item.title || "Comunicato")}</strong>
             <small>${escapeHtml(newsTopicLabelV48(item.topic))}${teamName ? ` · ${escapeHtml(teamName)}` : ""} · ${escapeHtml(item.publishedAt || item.createdAt || "")}</small>
-            <small>${escapeHtml(String(item.body || "").slice(0, 140))}${String(item.body || "").length > 140 ? "..." : ""}</small>
+            <small class="admin-news-preview">${escapeHtml(String(item.body || "").slice(0, 140))}${String(item.body || "").length > 140 ? "..." : ""}</small>
           </span>
           <span>
             <button class="button button-secondary button-small" type="button" data-admin-edit-news="${escapeHtml(item.id)}">Modifica</button>
@@ -5816,7 +5816,7 @@ async function saveAdminNewsV48(event) {
   const seasonTeam = getSeasonTeamById(seasonTeamId);
   const payload = {
     title: document.getElementById("adminNewsTitle")?.value.trim() || "Comunicato",
-    body: document.getElementById("adminNewsBody")?.value.trim() || "",
+    body: document.getElementById("adminNewsBody")?.value || "",
     topic: document.getElementById("adminNewsTopic")?.value || "GENERALE",
     seasonId: document.getElementById("adminNewsSeasonId")?.value || seasonTeam?.seasonId || getCurrentSeasonId(),
     teamId: seasonTeam?.teamId || "",
@@ -6271,7 +6271,7 @@ async function openTeamProfileV34(seasonTeamId) {
     <tr><td data-label="Giocatore" class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td><td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(player)}</td><td data-label="Sq" class="team-profile-team-cell">${escapeHtml(player.realTeam || "-")}</td><td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(player.cost)}</td><td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td></tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
-  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p>${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
   const matchesRows = (snapshot.recentMatches || []).map((match) => `
     <tr>
       <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
@@ -6488,7 +6488,7 @@ openTeamProfileV34 = async function openTeamProfileV40(seasonTeamId) {
     </tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
-  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p>${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
   const matchesRows = (snapshot.recentMatches || []).map((match) => `
     <tr>
       <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
@@ -6635,7 +6635,7 @@ function renderTeamProfileContentV42(snapshot) {
   const newsHtml = (snapshot.recentNews || []).map((news) => `
     <article class="compact-card team-profile-news-card">
       <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
-      <p>${escapeHtml(news.body || '')}</p>
+      <p class="news-body-preserve">${escapeHtml(news.body || '')}</p>
       <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
     </article>`).join('') || `<p class="muted">Nessun comunicato squadra.</p>`;
 

@@ -9592,3 +9592,324 @@ body.is-mobile-ux .mobile-bottom-nav {
   display: grid !important;
   z-index: 2147483000 !important;
 }
+
+
+/* V49 - Mobile table readability and preserved news formatting. */
+.news-body-preserve,
+.admin-news-preview {
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Keep every table inside the screen: horizontal/vertical data scroll happens inside the table box. */
+  .table-wrap,
+  .mobile-tabular-wrap,
+  .standing-table-wrap,
+  .roster-dialog-table,
+  .compact-table,
+  .mini-table-wrap,
+  .honor-table-wrap,
+  .mobile-honor-table-wrap,
+  .v45-mobile-table-wrap {
+    width: 100% !important;
+    max-width: calc(100vw - 20px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    max-height: min(calc(var(--viewport-height, 640px) * 0.58), 460px) !important;
+  }
+
+  /* All mobile tables stay tabular and readable: no clipped text into the next cell. */
+  .table-wrap table,
+  .mobile-tabular-wrap table,
+  .standing-table-wrap table,
+  .roster-dialog-table table,
+  .compact-table table,
+  .mini-table-wrap table,
+  .honor-table-wrap table,
+  .mobile-honor-table-wrap table,
+  table.mobile-tabular,
+  table.v45-mobile-table,
+  table.standing-table,
+  table.mobile-honor-table {
+    display: table !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    max-width: none !important;
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  .table-wrap thead,
+  .mobile-tabular-wrap thead,
+  .standing-table-wrap thead,
+  .roster-dialog-table thead,
+  .compact-table thead,
+  .mini-table-wrap thead,
+  .honor-table-wrap thead,
+  .mobile-honor-table-wrap thead {
+    display: table-header-group !important;
+  }
+
+  .table-wrap tbody,
+  .mobile-tabular-wrap tbody,
+  .standing-table-wrap tbody,
+  .roster-dialog-table tbody,
+  .compact-table tbody,
+  .mini-table-wrap tbody,
+  .honor-table-wrap tbody,
+  .mobile-honor-table-wrap tbody {
+    display: table-row-group !important;
+  }
+
+  .table-wrap tr,
+  .mobile-tabular-wrap tr,
+  .standing-table-wrap tr,
+  .roster-dialog-table tr,
+  .compact-table tr,
+  .mini-table-wrap tr,
+  .honor-table-wrap tr,
+  .mobile-honor-table-wrap tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  .table-wrap th,
+  .table-wrap td,
+  .mobile-tabular-wrap th,
+  .mobile-tabular-wrap td,
+  .standing-table-wrap th,
+  .standing-table-wrap td,
+  .roster-dialog-table th,
+  .roster-dialog-table td,
+  .compact-table th,
+  .compact-table td,
+  .mini-table-wrap th,
+  .mini-table-wrap td,
+  .honor-table-wrap th,
+  .honor-table-wrap td,
+  .mobile-honor-table-wrap th,
+  .mobile-honor-table-wrap td,
+  table.mobile-tabular th,
+  table.mobile-tabular td,
+  table.v45-mobile-table th,
+  table.v45-mobile-table td,
+  table.standing-table th,
+  table.standing-table td,
+  table.mobile-honor-table th,
+  table.mobile-honor-table td {
+    display: table-cell !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 6px 7px !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    text-overflow: clip !important;
+    line-height: 1.16 !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15) !important;
+  }
+
+  .table-wrap td::before,
+  .table-wrap th::before,
+  .mobile-tabular-wrap td::before,
+  .mobile-tabular-wrap th::before,
+  .standing-table-wrap td::before,
+  .standing-table-wrap th::before,
+  .roster-dialog-table td::before,
+  .roster-dialog-table th::before,
+  .compact-table td::before,
+  .compact-table th::before,
+  .mini-table-wrap td::before,
+  .mini-table-wrap th::before,
+  .honor-table-wrap td::before,
+  .honor-table-wrap th::before,
+  .mobile-honor-table-wrap td::before,
+  .mobile-honor-table-wrap th::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Sticky headers for every mobile table. */
+  .table-wrap th,
+  .mobile-tabular-wrap th,
+  .standing-table-wrap th,
+  .roster-dialog-table th,
+  .compact-table th,
+  .mini-table-wrap th,
+  .honor-table-wrap th,
+  .mobile-honor-table-wrap th,
+  table.mobile-tabular th,
+  table.v45-mobile-table th,
+  table.standing-table th,
+  table.mobile-honor-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    color: #e5e7eb !important;
+    text-align: left !important;
+  }
+
+  /* Keep first columns unlocked; table boxes handle scrolling. */
+  .table-wrap th:first-child,
+  .table-wrap td:first-child,
+  .mobile-tabular-wrap th:first-child,
+  .mobile-tabular-wrap td:first-child,
+  .standing-table-wrap th:first-child,
+  .standing-table-wrap td:first-child,
+  .roster-dialog-table th:first-child,
+  .roster-dialog-table td:first-child,
+  table.mobile-tabular th:first-child,
+  table.mobile-tabular td:first-child,
+  table.v45-mobile-table th:first-child,
+  table.v45-mobile-table td:first-child,
+  table.standing-table th:first-child,
+  table.standing-table td:first-child,
+  table.mobile-honor-table th:first-child,
+  table.mobile-honor-table td:first-child {
+    position: static !important;
+    left: auto !important;
+    z-index: auto !important;
+    background: transparent !important;
+  }
+
+  .table-wrap th:first-child,
+  .mobile-tabular-wrap th:first-child,
+  .standing-table-wrap th:first-child,
+  .roster-dialog-table th:first-child,
+  table.mobile-tabular th:first-child,
+  table.v45-mobile-table th:first-child,
+  table.standing-table th:first-child,
+  table.mobile-honor-table th:first-child {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+  }
+
+  .table-wrap .number,
+  .mobile-tabular-wrap .number,
+  .standing-table-wrap .number,
+  .roster-dialog-table .number,
+  table.mobile-tabular .number,
+  table.v45-mobile-table .number,
+  table.standing-table .number {
+    text-align: left !important;
+  }
+
+  /* Wider player column on Listone and Svincolati, with wrapping instead of truncation. */
+  .listone-table th:first-child,
+  .listone-table td:first-child,
+  .free-agents-table th:first-child,
+  .free-agents-table td:first-child {
+    width: 168px !important;
+    min-width: 168px !important;
+    max-width: 168px !important;
+  }
+
+  .listone-player-cell .link-button,
+  .roster-player-cell .link-button,
+  .mobile-roster-cell .link-button,
+  .team-profile-player-cell,
+  .team-profile-player-cell strong,
+  table.v45-mobile-table .listone-player-cell .link-button,
+  table.v45-mobile-table .roster-player-cell .link-button {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.12 !important;
+    max-width: none !important;
+  }
+}
+
+body.is-mobile-ux .table-wrap,
+body.is-mobile-ux .mobile-tabular-wrap,
+body.is-mobile-ux .standing-table-wrap,
+body.is-mobile-ux .roster-dialog-table,
+body.is-mobile-ux .compact-table,
+body.is-mobile-ux .mini-table-wrap,
+body.is-mobile-ux .honor-table-wrap,
+body.is-mobile-ux .mobile-honor-table-wrap,
+body.is-mobile-ux .v45-mobile-table-wrap {
+  width: 100% !important;
+  max-width: calc(100vw - 20px) !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+  max-height: min(calc(var(--viewport-height, 640px) * 0.58), 460px) !important;
+}
+
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .table-wrap td,
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .mobile-tabular-wrap td,
+body.is-mobile-ux .standing-table-wrap th,
+body.is-mobile-ux .standing-table-wrap td,
+body.is-mobile-ux .roster-dialog-table th,
+body.is-mobile-ux .roster-dialog-table td,
+body.is-mobile-ux .compact-table th,
+body.is-mobile-ux .compact-table td,
+body.is-mobile-ux .mini-table-wrap th,
+body.is-mobile-ux .mini-table-wrap td,
+body.is-mobile-ux .honor-table-wrap th,
+body.is-mobile-ux .honor-table-wrap td,
+body.is-mobile-ux table.mobile-tabular th,
+body.is-mobile-ux table.mobile-tabular td,
+body.is-mobile-ux table.v45-mobile-table th,
+body.is-mobile-ux table.v45-mobile-table td,
+body.is-mobile-ux table.standing-table th,
+body.is-mobile-ux table.standing-table td,
+body.is-mobile-ux table.mobile-honor-table th,
+body.is-mobile-ux table.mobile-honor-table td {
+  height: auto !important;
+  white-space: normal !important;
+  overflow: hidden !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  text-overflow: clip !important;
+  line-height: 1.16 !important;
+  text-align: left !important;
+}
+
+body.is-mobile-ux .table-wrap th,
+body.is-mobile-ux .mobile-tabular-wrap th,
+body.is-mobile-ux .standing-table-wrap th,
+body.is-mobile-ux .roster-dialog-table th,
+body.is-mobile-ux .compact-table th,
+body.is-mobile-ux .mini-table-wrap th,
+body.is-mobile-ux .honor-table-wrap th,
+body.is-mobile-ux table.mobile-tabular th,
+body.is-mobile-ux table.v45-mobile-table th,
+body.is-mobile-ux table.standing-table th,
+body.is-mobile-ux table.mobile-honor-table th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 20 !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+}
+
+body.is-mobile-ux .listone-table th:first-child,
+body.is-mobile-ux .listone-table td:first-child,
+body.is-mobile-ux .free-agents-table th:first-child,
+body.is-mobile-ux .free-agents-table td:first-child {
+  width: 168px !important;
+  min-width: 168px !important;
+  max-width: 168px !important;
+}
+
+body.is-mobile-ux .listone-player-cell .link-button,
+body.is-mobile-ux .roster-player-cell .link-button,
+body.is-mobile-ux .mobile-roster-cell .link-button,
+body.is-mobile-ux .team-profile-player-cell,
+body.is-mobile-ux .team-profile-player-cell strong {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-width: none !important;
+}
