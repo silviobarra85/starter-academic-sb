@@ -765,6 +765,20 @@ function getCompetitionNameForMatch(match) {
   return competitionsById.get(match?.competitionId)?.name || match?.competitionId || "";
 }
 
+function getCompetitionShortCode(competition) {
+  const type = competition?.type || competition;
+  if (type === "CAMPIONATO") return "A";
+  if (type === "COPPA_ITALIA") return "CI";
+  if (type === "CHAMPIONS_LEAGUE") return "CL";
+  if (type === "PLAYOFF") return "PO";
+  return String(competition?.name || type || "-").trim().slice(0, 3).toUpperCase() || "-";
+}
+
+function getCompetitionShortCodeById(competitionId) {
+  const { competitionsById } = buildMaps();
+  return getCompetitionShortCode(competitionsById.get(competitionId));
+}
+
 function compareMatchesForDisplay(a, b) {
   const competitionCompare = getCompetitionNameForMatch(a).localeCompare(getCompetitionNameForMatch(b), "it");
   if (competitionCompare) return competitionCompare;
@@ -3898,6 +3912,10 @@ function getFmMovementLabel(type) {
   return FM_MOVEMENT_TYPES.find((item) => item.value === type)?.label || type || "-";
 }
 
+function renderFmMovementTypeBadge(type) {
+  return `<span class="status status-muted movement-type-badge">${escapeHtml(getFmMovementLabel(type))}</span>`;
+}
+
 function normalizePlayerName(value) {
   return normalizeKey(value);
 }
@@ -5914,11 +5932,17 @@ function buildPublicTeamSnapshotV34(seasonTeam) {
   const team = buildMaps().teamsById.get(seasonTeam.teamId);
   const seasonTeamId = seasonTeam.id;
   const seasonId = seasonTeam.seasonId;
-  const competitionIds = new Set((state.raw.competitions || []).filter((competition) => competition.seasonId === seasonId).map((competition) => competition.id));
+  const competitionsForSeason = (state.raw.competitions || []).filter((competition) => competition.seasonId === seasonId);
+  const competitionsById = new Map(competitionsForSeason.map((competition) => [competition.id, competition]));
+  const competitionIds = new Set(competitionsForSeason.map((competition) => competition.id));
   const matches = (state.raw.competitionMatches || [])
     .filter((match) => competitionIds.has(match.competitionId) && (match.homeSeasonTeamId === seasonTeamId || match.awaySeasonTeamId === seasonTeamId))
     .sort(compareMatchesForDisplay)
-    .slice(0, 12);
+    .slice(0, 12)
+    .map((match) => ({
+      ...match,
+      competitionCode: getCompetitionShortCode(competitionsById.get(match.competitionId))
+    }));
   return {
     id: `${seasonId}_${seasonTeam.teamId}`,
     generatedAt: new Date().toISOString(),
@@ -6053,20 +6077,26 @@ async function openTeamProfileV34(seasonTeamId) {
   const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
     <tr><td>${escapeHtml(player.playerName || "-")}</td><td>${escapeHtml(player.rosterRole || player.classicRole || "-")}</td><td>${escapeHtml(player.realTeam || "-")}</td><td class="number">${formatListoneNumber(player.cost)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
-  const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${escapeHtml(movement.type || "-")}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
+  const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
   const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p>${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
-  const matchesRows = (snapshot.recentMatches || []).map((match) => `<tr><td>${escapeHtml(formatMatchSummaryV34(match))}</td></tr>`).join("") || `<tr><td class="muted center">Nessuna partita recente.</td></tr>`;
+  const matchesRows = (snapshot.recentMatches || []).map((match) => `
+    <tr>
+      <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
+      <td>${escapeHtml(formatMatchStage(match))}</td>
+      <td>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</td>
+      <td>${escapeHtml(formatMatchResult(match))}</td>
+    </tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
 
   body.innerHTML = `
     <div class="team-profile-header">
       ${renderTeamLogo(snapshot.teamName, snapshot.logo, "club-logo-lg")}
       <div><h3>${escapeHtml(snapshot.teamName || "Squadra")}</h3><p class="muted">Presidenti: ${escapeHtml(snapshot.presidents || "-")} · Saldo FM: ${formatFm(snapshot.fmBalance || 0)} · Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p></div>
     </div>
-    <div class="detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap"><table class="mobile-tabular"><thead><tr><th>Giocatore</th><th>R</th><th>Sq</th><th class="number">Costo</th></tr></thead><tbody>${rosterRows}</tbody></table></div></div>
-    <div class="detail-section"><h3>Palmarès squadra</h3><div class="table-wrap mobile-tabular-wrap"><table class="mobile-tabular"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></div>
-    <div class="detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap"><table class="mobile-tabular"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-roster-wrap"><table class="mobile-tabular team-profile-roster-table"><thead><tr><th>Giocatore</th><th>R</th><th>Sq</th><th class="number">Costo</th></tr></thead><tbody>${rosterRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Palmarès squadra</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-palmares-wrap"><table class="mobile-tabular team-profile-palmares-table"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap"><table class="mobile-tabular team-profile-movements-table"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></div>
     <div class="detail-section"><h3>Ultimi comunicati</h3>${newsHtml}</div>
-    <div class="detail-section"><h3>Ultime partite</h3><div class="table-wrap mobile-tabular-wrap"><table class="mobile-tabular"><tbody>${matchesRows}</tbody></table></div></div>`;
+    <div class="detail-section"><h3>Ultime partite</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-matches-wrap"><table class="mobile-tabular team-profile-matches-table"><thead><tr><th>Comp.</th><th>Fase</th><th>Partita</th><th>Ris.</th></tr></thead><tbody>${matchesRows}</tbody></table></div></div>`;
 }
 
 const renderSeasonTeamNameWithLogoBeforeV34 = renderSeasonTeamNameWithLogo;
