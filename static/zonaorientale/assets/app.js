@@ -5717,6 +5717,165 @@ function attachUserAreaHandlersV34() {
   });
 }
 
+
+/* V48 - Admin diretto per news e comunicati. */
+function newsTopicLabelV48(topic) {
+  const labels = {
+    GENERALE: "Generale",
+    COMPETIZIONE: "Competizione",
+    COMUNICATO_SQUADRA: "Comunicato squadra",
+    COMUNICATO_UFFICIALE_SQUADRA: "Comunicato ufficiale squadra",
+    TEAM_NEWS: "Comunicato squadra"
+  };
+  return labels[topic] || topic || "News";
+}
+
+function renderNewsAdminPanelV48() {
+  const currentSeasonId = getCurrentSeasonId();
+  const seasonOptions = (state.raw.seasons || []).map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === currentSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+  const seasonTeamOptions = (state.raw.seasonTeams || [])
+    .filter((seasonTeam) => !currentSeasonId || seasonTeam.seasonId === currentSeasonId)
+    .map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`)
+    .join("");
+  const rows = (state.raw.news || [])
+    .slice()
+    .sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || "")))
+    .slice(0, 40)
+    .map((item) => {
+      const teamName = item.seasonTeamId ? getSeasonTeamDisplayName(item.seasonTeamId) : "";
+      return `
+        <div class="admin-list-item">
+          <span>
+            <strong>${escapeHtml(item.title || "Comunicato")}</strong>
+            <small>${escapeHtml(newsTopicLabelV48(item.topic))}${teamName ? ` · ${escapeHtml(teamName)}` : ""} · ${escapeHtml(item.publishedAt || item.createdAt || "")}</small>
+            <small>${escapeHtml(String(item.body || "").slice(0, 140))}${String(item.body || "").length > 140 ? "..." : ""}</small>
+          </span>
+          <span>
+            <button class="button button-secondary button-small" type="button" data-admin-edit-news="${escapeHtml(item.id)}">Modifica</button>
+            <button class="button button-danger button-small" type="button" data-admin-delete-news="${escapeHtml(item.id)}">Elimina</button>
+          </span>
+        </div>`;
+    }).join("") || `<p class="muted admin-empty-message">Nessun comunicato pubblicato.</p>`;
+
+  const body = `
+    <form id="adminNewsForm" class="form-grid">
+      <input id="adminNewsId" type="hidden" />
+      <label>
+        Titolo
+        <input id="adminNewsTitle" class="input" type="text" placeholder="Es. Comunicato ufficiale" required />
+      </label>
+      <label>
+        Argomento
+        <select id="adminNewsTopic" class="input" required>
+          <option value="GENERALE">Generale</option>
+          <option value="COMPETIZIONE">Competizione</option>
+          <option value="COMUNICATO_SQUADRA">Comunicato squadra</option>
+        </select>
+      </label>
+      <label>
+        Stagione
+        <select id="adminNewsSeasonId" class="input">
+          <option value="">Nessuna / tutte</option>
+          ${seasonOptions}
+        </select>
+      </label>
+      <label>
+        Squadra collegata <span class="muted">(opzionale)</span>
+        <select id="adminNewsSeasonTeamId" class="input">
+          <option value="">Nessuna squadra</option>
+          ${seasonTeamOptions}
+        </select>
+      </label>
+      <label>
+        Data pubblicazione
+        <input id="adminNewsPublishedAt" class="input" type="date" value="${escapeHtml(getTodayIsoDate())}" />
+      </label>
+      <label class="span-2">
+        Testo
+        <textarea id="adminNewsBody" class="input textarea" rows="5" placeholder="Scrivi il comunicato..." required></textarea>
+      </label>
+      <div class="form-actions span-2">
+        <button class="button button-primary" type="submit">Salva comunicato</button>
+        <button id="adminNewsReset" class="button button-secondary" type="button">Nuovo</button>
+        <span id="adminNewsStatus" class="form-status"></span>
+      </div>
+    </form>
+    <details class="admin-edit-section" open>
+      <summary><strong>Comunicati pubblicati</strong><span>Ultimi 40</span></summary>
+      <div class="admin-list">${rows}</div>
+    </details>`;
+  return renderAdminPanel("adminNewsPanel", "Comunicazioni", "News e comunicati", "Pubblica comunicati generali, comunicati competizione o comunicati ufficiali delle squadre.", body);
+}
+
+async function saveAdminNewsV48(event) {
+  event.preventDefault();
+  const id = document.getElementById("adminNewsId")?.value || "";
+  const seasonTeamId = document.getElementById("adminNewsSeasonTeamId")?.value || "";
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  const payload = {
+    title: document.getElementById("adminNewsTitle")?.value.trim() || "Comunicato",
+    body: document.getElementById("adminNewsBody")?.value.trim() || "",
+    topic: document.getElementById("adminNewsTopic")?.value || "GENERALE",
+    seasonId: document.getElementById("adminNewsSeasonId")?.value || seasonTeam?.seasonId || getCurrentSeasonId(),
+    teamId: seasonTeam?.teamId || "",
+    seasonTeamId,
+    publishedAt: document.getElementById("adminNewsPublishedAt")?.value || getTodayIsoDate(),
+    updatedAt: serverTimestamp()
+  };
+  try {
+    const status = document.getElementById("adminNewsStatus");
+    if (status) status.textContent = "Salvataggio...";
+    if (id) {
+      await setDoc(doc(db, "news", id), payload, { merge: true });
+    } else {
+      await addDoc(collection(db, "news"), { ...payload, createdAt: serverTimestamp(), createdBy: state.user?.uid || "" });
+    }
+    if (status) status.textContent = "Comunicato salvato. Aggiorna gli snapshot pubblici per mostrarlo subito nel sito.";
+    resetAdminNewsFormV48();
+    await loadFullDataV32({ render: true });
+    expandAdminPanel("adminNewsPanel");
+  } catch (error) {
+    console.error(error);
+    const status = document.getElementById("adminNewsStatus");
+    if (status) status.textContent = `Errore: ${error.message}`;
+  }
+}
+
+function resetAdminNewsFormV48() {
+  document.getElementById("adminNewsId") && (document.getElementById("adminNewsId").value = "");
+  document.getElementById("adminNewsTitle") && (document.getElementById("adminNewsTitle").value = "");
+  document.getElementById("adminNewsTopic") && (document.getElementById("adminNewsTopic").value = "GENERALE");
+  document.getElementById("adminNewsSeasonId") && (document.getElementById("adminNewsSeasonId").value = getCurrentSeasonId());
+  document.getElementById("adminNewsSeasonTeamId") && (document.getElementById("adminNewsSeasonTeamId").value = "");
+  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = getTodayIsoDate());
+  document.getElementById("adminNewsBody") && (document.getElementById("adminNewsBody").value = "");
+  document.getElementById("adminNewsStatus") && (document.getElementById("adminNewsStatus").textContent = "");
+}
+
+function editAdminNewsV48(newsId) {
+  const item = (state.raw.news || []).find((row) => row.id === newsId);
+  if (!item) return;
+  expandAdminPanel("adminNewsPanel");
+  document.getElementById("adminNewsId") && (document.getElementById("adminNewsId").value = item.id || "");
+  document.getElementById("adminNewsTitle") && (document.getElementById("adminNewsTitle").value = item.title || "");
+  document.getElementById("adminNewsTopic") && (document.getElementById("adminNewsTopic").value = item.topic || "GENERALE");
+  document.getElementById("adminNewsSeasonId") && (document.getElementById("adminNewsSeasonId").value = item.seasonId || getCurrentSeasonId());
+  document.getElementById("adminNewsSeasonTeamId") && (document.getElementById("adminNewsSeasonTeamId").value = item.seasonTeamId || "");
+  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = item.publishedAt || getTodayIsoDate());
+  document.getElementById("adminNewsBody") && (document.getElementById("adminNewsBody").value = item.body || "");
+  document.getElementById("adminNewsStatus") && (document.getElementById("adminNewsStatus").textContent = "Modifica comunicato esistente.");
+}
+
+async function deleteAdminNewsV48(newsId) {
+  if (!newsId) return;
+  if (!confirm("Eliminare questo comunicato?")) return;
+  await deleteDoc(doc(db, "news", newsId));
+  await loadFullDataV32({ render: true });
+  expandAdminPanel("adminNewsPanel");
+}
+
 const renderAdminAreaBeforeV34 = renderAdminArea;
 renderAdminArea = function renderAdminAreaV34() {
   const adminPanel = document.getElementById("adminPanel");
@@ -5733,6 +5892,7 @@ renderAdminArea = function renderAdminAreaV34() {
     </div>
     ${renderPendingUsersAdminPanelV34()}
     ${renderTeamRequestsAdminPanelV34()}
+    ${renderNewsAdminPanelV48()}
     ${renderSeasonAdminPanel()}
     ${renderPresidentAdminPanel()}
     ${renderTeamAdminPanel()}
@@ -5899,6 +6059,10 @@ attachAdminHandlers = function attachAdminHandlersV34() {
   document.querySelectorAll("[data-reject-user]").forEach((button) => button.addEventListener("click", () => rejectPendingUserV34(button.dataset.rejectUser)));
   document.querySelectorAll("[data-approve-request]").forEach((button) => button.addEventListener("click", () => approveTeamRequestV34(button.dataset.approveRequest)));
   document.querySelectorAll("[data-reject-request]").forEach((button) => button.addEventListener("click", () => rejectTeamRequestV34(button.dataset.rejectRequest)));
+  document.getElementById("adminNewsForm")?.addEventListener("submit", saveAdminNewsV48);
+  document.getElementById("adminNewsReset")?.addEventListener("click", resetAdminNewsFormV48);
+  document.querySelectorAll("[data-admin-edit-news]").forEach((button) => button.addEventListener("click", () => editAdminNewsV48(button.dataset.adminEditNews)));
+  document.querySelectorAll("[data-admin-delete-news]").forEach((button) => button.addEventListener("click", () => deleteAdminNewsV48(button.dataset.adminDeleteNews)));
   document.getElementById("adminGenerateSelectedSeasonSnapshot")?.addEventListener("click", () => saveSelectedSeasonSnapshotV34());
   document.getElementById("adminGenerateAllSeasonSnapshots")?.addEventListener("click", () => saveAllSeasonSnapshotsV34());
   document.getElementById("adminGenerateHonorSnapshot")?.addEventListener("click", () => saveHonorSnapshotV34());
