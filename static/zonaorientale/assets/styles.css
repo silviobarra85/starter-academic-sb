@@ -8901,3 +8901,329 @@ body.is-mobile-ux table.team-profile-roster-table td::before {
   display: none !important;
   content: none !important;
 }
+
+/* V45 - Mobile-only readable tables: sticky headers/first columns, 10-row scroll, no truncation. */
+.mobile-table-actions {
+  display: none;
+}
+
+.mobile-table-toggle {
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .mobile-table-actions {
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 6px 0 8px;
+  }
+
+  .mobile-table-toggle {
+    min-width: 96px;
+    min-height: 36px;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    padding: 8px 12px !important;
+  }
+
+  .v45-mobile-table-wrap,
+  .mobile-tabular-wrap.v45-mobile-table-wrap,
+  .table-wrap.v45-mobile-table-wrap,
+  .compact-table.v45-mobile-table-wrap,
+  .standing-table-wrap.v45-mobile-table-wrap,
+  .roster-dialog-table.v45-mobile-table-wrap,
+  .honor-table-wrap.v45-mobile-table-wrap {
+    max-height: 392px !important;
+    height: auto !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    position: relative !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(148, 163, 184, 0.22) !important;
+    background: rgba(15, 23, 42, 0.25) !important;
+  }
+
+  .v45-mobile-table-wrap.mobile-table-is-collapsed {
+    max-height: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    border-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .v45-mobile-table,
+  .v45-mobile-table thead,
+  .v45-mobile-table tbody,
+  .v45-mobile-table tr,
+  .v45-mobile-table th,
+  .v45-mobile-table td {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  table.v45-mobile-table {
+    display: table !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.72rem !important;
+  }
+
+  table.v45-mobile-table thead {
+    display: table-header-group !important;
+  }
+
+  table.v45-mobile-table tbody {
+    display: table-row-group !important;
+  }
+
+  table.v45-mobile-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  table.v45-mobile-table th,
+  table.v45-mobile-table td {
+    display: table-cell !important;
+    padding: 6px 8px !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.14) !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    min-height: 0 !important;
+    line-height: 1.18 !important;
+  }
+
+  table.v45-mobile-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 30 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    color: #e5e7eb !important;
+    font-size: 0.64rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  table.v45-mobile-table td::before,
+  table.v45-mobile-table th::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  table.v45-mobile-table .number,
+  table.v45-mobile-table th.number,
+  table.v45-mobile-table td.number {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+
+  /* Sticky first column for every mobile table. The content must remain readable, never ellipsized. */
+  table.v45-mobile-table th:first-child,
+  table.v45-mobile-table td:first-child {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 35 !important;
+    background: rgba(15, 23, 42, 1) !important;
+    min-width: max-content !important;
+    width: auto !important;
+    max-width: none !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    box-shadow: 1px 0 0 rgba(148, 163, 184, 0.18) !important;
+  }
+
+  table.v45-mobile-table th:first-child {
+    z-index: 50 !important;
+  }
+
+  table.v45-mobile-table td:first-child *,
+  table.v45-mobile-table th:first-child *,
+  table.v45-mobile-table .listone-player-cell .link-button,
+  table.v45-mobile-table .roster-player-cell .link-button,
+  table.v45-mobile-table .team-profile-player-cell,
+  table.v45-mobile-table .team-profile-player-cell strong {
+    max-width: none !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  /* Listone, Svincolati and team profile roster behave as wide tables inside their own scrollbox. */
+  .listone-table-wrap.v45-mobile-table-wrap,
+  .team-profile-roster-wrap.v45-mobile-table-wrap,
+  .roster-inline-table-wrap.v45-mobile-table-wrap {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+  }
+
+  table.listone-table.v45-mobile-table th:first-child,
+  table.listone-table.v45-mobile-table td:first-child,
+  table.team-profile-roster-table.v45-mobile-table th:first-child,
+  table.team-profile-roster-table.v45-mobile-table td:first-child,
+  table.roster-player-table.v45-mobile-table th:first-child,
+  table.roster-player-table.v45-mobile-table td:first-child {
+    min-width: max-content !important;
+    padding-right: 12px !important;
+  }
+
+  table.team-profile-roster-table.v45-mobile-table th:nth-child(n+2),
+  table.team-profile-roster-table.v45-mobile-table td:nth-child(n+2),
+  table.roster-player-table.v45-mobile-table th:nth-child(n+2),
+  table.roster-player-table.v45-mobile-table td:nth-child(n+2),
+  table.listone-table.v45-mobile-table th:nth-child(n+2),
+  table.listone-table.v45-mobile-table td:nth-child(n+2) {
+    min-width: 3.2rem !important;
+  }
+
+  table.team-profile-roster-table.v45-mobile-table th:nth-child(2),
+  table.team-profile-roster-table.v45-mobile-table td:nth-child(2),
+  table.roster-player-table.v45-mobile-table th:nth-child(2),
+  table.roster-player-table.v45-mobile-table td:nth-child(2),
+  table.listone-table.v45-mobile-table th:nth-child(2),
+  table.listone-table.v45-mobile-table td:nth-child(2) {
+    min-width: 4.6rem !important;
+  }
+
+  .team-profile-page-body .team-profile-roster-table th:first-child,
+  .team-profile-page-body .team-profile-roster-table td:first-child,
+  table.team-profile-roster-table.roster-sticky-table th:first-child,
+  table.team-profile-roster-table.roster-sticky-table td:first-child {
+    min-width: max-content !important;
+    width: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+}
+
+body.is-mobile-ux .mobile-table-actions {
+  display: flex !important;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 6px 0 8px;
+}
+
+body.is-mobile-ux .mobile-table-toggle {
+  min-width: 96px;
+  min-height: 36px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  padding: 8px 12px !important;
+}
+
+body.is-mobile-ux .v45-mobile-table-wrap {
+  max-height: 392px !important;
+  height: auto !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  position: relative !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+  background: rgba(15, 23, 42, 0.25) !important;
+}
+
+body.is-mobile-ux .v45-mobile-table-wrap.mobile-table-is-collapsed {
+  max-height: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  border-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.is-mobile-ux table.v45-mobile-table {
+  display: table !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  table-layout: auto !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 0.72rem !important;
+}
+
+body.is-mobile-ux table.v45-mobile-table thead { display: table-header-group !important; }
+body.is-mobile-ux table.v45-mobile-table tbody { display: table-row-group !important; }
+body.is-mobile-ux table.v45-mobile-table tr { display: table-row !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+
+body.is-mobile-ux table.v45-mobile-table th,
+body.is-mobile-ux table.v45-mobile-table td {
+  display: table-cell !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 6px 8px !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14) !important;
+  vertical-align: middle !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  min-height: 0 !important;
+  line-height: 1.18 !important;
+}
+
+body.is-mobile-ux table.v45-mobile-table th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 30 !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+  color: #e5e7eb !important;
+  font-size: 0.64rem !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.035em !important;
+}
+
+body.is-mobile-ux table.v45-mobile-table td::before,
+body.is-mobile-ux table.v45-mobile-table th::before { content: none !important; display: none !important; }
+
+body.is-mobile-ux table.v45-mobile-table th:first-child,
+body.is-mobile-ux table.v45-mobile-table td:first-child {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 35 !important;
+  background: rgba(15, 23, 42, 1) !important;
+  min-width: max-content !important;
+  width: auto !important;
+  max-width: none !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  box-shadow: 1px 0 0 rgba(148, 163, 184, 0.18) !important;
+}
+
+body.is-mobile-ux table.v45-mobile-table th:first-child { z-index: 50 !important; }
+
+body.is-mobile-ux table.v45-mobile-table td:first-child *,
+body.is-mobile-ux table.v45-mobile-table th:first-child *,
+body.is-mobile-ux table.v45-mobile-table .listone-player-cell .link-button,
+body.is-mobile-ux table.v45-mobile-table .roster-player-cell .link-button,
+body.is-mobile-ux table.v45-mobile-table .team-profile-player-cell,
+body.is-mobile-ux table.v45-mobile-table .team-profile-player-cell strong {
+  max-width: none !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
