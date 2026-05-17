@@ -9913,3 +9913,51 @@ body.is-mobile-ux .team-profile-player-cell strong {
   text-overflow: clip !important;
   max-width: none !important;
 }
+
+
+/* V55 - Account box and universal logout visibility. */
+.account-box {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.58);
+}
+
+.account-box-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.account-box-row strong,
+.account-box-row small {
+  display: block;
+}
+
+.account-box-row small {
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.account-box-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .account-box-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .account-box-actions {
+    justify-content: stretch;
+  }
+
+  .account-box-actions .button {
+    flex: 1 1 auto;
+  }
+}

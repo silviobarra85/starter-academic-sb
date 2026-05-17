@@ -7830,3 +7830,128 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error(error);
   }
 });
+
+
+/* V55 - Make logout visible for every authenticated user and add account controls in reserved-area dialog. */
+(function setupUniversalAccountLogoutV55() {
+  function safeApprovedTeamUser() {
+    try {
+      return typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function ensureAccountBox() {
+    const form = document.getElementById("loginForm");
+    if (!form) return null;
+    let box = document.getElementById("loginAccountBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "loginAccountBox";
+      box.className = "account-box hidden";
+      const intro = form.querySelector("p.muted") || form.querySelector("h2");
+      if (intro?.nextSibling) intro.parentNode.insertBefore(box, intro.nextSibling);
+      else form.insertBefore(box, form.firstChild);
+    }
+    return box;
+  }
+
+  function renderAccountBox() {
+    const box = ensureAccountBox();
+    if (!box) return;
+    const user = state.user;
+    if (!user) {
+      box.classList.add("hidden");
+      box.innerHTML = "";
+      return;
+    }
+
+    const approved = safeApprovedTeamUser();
+    const teamName = approved
+      ? (typeof getSeasonTeamDisplayName === "function" ? getSeasonTeamDisplayName(approved.seasonTeamId) : "")
+      : "";
+
+    box.classList.remove("hidden");
+    box.innerHTML = `
+      <div class="account-box-row">
+        <div>
+          <strong>${escapeHtml(user.displayName || user.email || "Utente")}</strong>
+          <small>${escapeHtml(user.email || "")}</small>
+          ${teamName ? `<small>Squadra: ${escapeHtml(teamName)}</small>` : ""}
+        </div>
+        <div class="account-box-actions">
+          ${approved ? `<button class="button button-secondary button-small" type="button" data-account-team>La mia squadra</button>` : ""}
+          <button class="button button-danger button-small" type="button" data-account-logout>Logout</button>
+        </div>
+      </div>`;
+
+    box.querySelector("[data-account-logout]")?.addEventListener("click", async () => {
+      await signOut(auth);
+      document.getElementById("loginDialog")?.close?.();
+    });
+
+    box.querySelector("[data-account-team]")?.addEventListener("click", () => {
+      const seasonTeamId = approved?.seasonTeamId;
+      document.getElementById("loginDialog")?.close?.();
+      if (seasonTeamId && typeof openTeamProfileV34 === "function") openTeamProfileV34(seasonTeamId);
+      else if (seasonTeamId && typeof openTeamProfile === "function") openTeamProfile(seasonTeamId);
+      else if (typeof setPage === "function") setPage("teamarea");
+    });
+  }
+
+  function refreshHeaderAuthButtons() {
+    const openLoginBtn = document.getElementById("openLoginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const isLoggedIn = Boolean(state.user);
+    const isAdmin = Boolean(state.isAdmin);
+
+    if (openLoginBtn) {
+      openLoginBtn.classList.toggle("hidden", isAdmin);
+      openLoginBtn.textContent = isLoggedIn && !isAdmin ? "Account" : "Area Riservata";
+    }
+
+    if (logoutBtn) {
+      logoutBtn.classList.toggle("hidden", !isLoggedIn);
+      logoutBtn.textContent = "Logout";
+      if (!logoutBtn.dataset.logoutV55Bound) {
+        logoutBtn.dataset.logoutV55Bound = "true";
+        logoutBtn.addEventListener("click", async () => {
+          await signOut(auth);
+          document.getElementById("loginDialog")?.close?.();
+        });
+      }
+    }
+
+    renderAccountBox();
+  }
+
+  const previousUpdateAdminVisibility = typeof updateAdminVisibility === "function" ? updateAdminVisibility : null;
+  if (previousUpdateAdminVisibility) {
+    updateAdminVisibility = function updateAdminVisibilityV55() {
+      previousUpdateAdminVisibility();
+      refreshHeaderAuthButtons();
+    };
+  }
+
+  const previousUpdateUserVisibility = typeof updateUserVisibilityV34 === "function" ? updateUserVisibilityV34 : null;
+  if (previousUpdateUserVisibility) {
+    updateUserVisibilityV34 = function updateUserVisibilityV55() {
+      previousUpdateUserVisibility();
+      refreshHeaderAuthButtons();
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    refreshHeaderAuthButtons();
+    const openLoginBtn = document.getElementById("openLoginBtn");
+    if (openLoginBtn && !openLoginBtn.dataset.accountV55Bound) {
+      openLoginBtn.dataset.accountV55Bound = "true";
+      openLoginBtn.addEventListener("click", () => {
+        renderAccountBox();
+      });
+    }
+  });
+
+  window.addEventListener("focus", refreshHeaderAuthButtons);
+})();
