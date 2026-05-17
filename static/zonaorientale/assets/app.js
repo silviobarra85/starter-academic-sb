@@ -674,7 +674,7 @@ function getWinnerLabel(competition) {
   if (!winner) return "Nessun risultato inserito";
 
   if (isRankingCompetition(competition)) {
-    return `1° ${getSeasonTeamDisplayName(winner.seasonTeamId)}`;
+    return `Vincitore ${getSeasonTeamDisplayName(winner.seasonTeamId)}`;
   }
 
   const secondText = second ? ` · 2° ${getSeasonTeamDisplayName(second.seasonTeamId)}` : "";
@@ -695,7 +695,7 @@ function renderWinnerLabelHtml(competition, options = {}) {
     : `<strong class="${highlightWinner ? "text-success" : ""}">${escapeHtml(winnerName)}</strong>`;
 
   if (isRankingCompetition(competition)) {
-    return `1° ${winnerHtml}`;
+    return `Vincitore ${winnerHtml}`;
   }
 
   const secondHtml = second
