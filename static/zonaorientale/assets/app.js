@@ -6086,6 +6086,8 @@ function formatMatchSummaryV34(match) {
   return `${match.matchday || "-"} · ${home} - ${away} · ${result}`;
 }
 
+let openTeamProfile = null;
+
 async function openTeamProfileV34(seasonTeamId) {
   ensureV34Dom();
   const dialog = document.getElementById("teamProfileDialog");
@@ -6645,3 +6647,171 @@ window.addEventListener('hashchange', () => {
 });
 
 ensureTeamProfilePageV42();
+
+/* V43 - Team profile uses a real hash route based on the team name.
+   Clicking a team opens zonaorientale/#nome-squadra instead of the generic #teamprofile. */
+function slugifyTeamProfileV43(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/&/g, ' e ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'squadra';
+}
+
+function getTeamProfileSlugV43(seasonTeamId) {
+  const name = getSeasonTeamDisplayName(seasonTeamId);
+  const slug = slugifyTeamProfileV43(name);
+  return slug || String(seasonTeamId || 'squadra');
+}
+
+function getSeasonTeamIdFromSlugV43(rawSlug) {
+  const slug = slugifyTeamProfileV43(decodeURIComponent(String(rawSlug || '').replace(/^#/, '')));
+  if (!slug) return '';
+
+  const selectedSeasonId = getCurrentSeasonId?.() || '';
+  const seasonTeams = [...(state.raw.seasonTeams || [])];
+  const ordered = seasonTeams.sort((a, b) => {
+    const aScore = a.seasonId === selectedSeasonId ? 0 : 1;
+    const bScore = b.seasonId === selectedSeasonId ? 0 : 1;
+    return aScore - bScore;
+  });
+
+  const match = ordered.find((seasonTeam) => getTeamProfileSlugV43(seasonTeam.id) === slug);
+  return match?.id || '';
+}
+
+function isKnownStaticHashV43(hashValue) {
+  return new Set([
+    'dashboard',
+    'news',
+    'clubs',
+    'listone',
+    'competitions',
+    'honor',
+    'finance',
+    'admin',
+    'teamarea',
+    'teamprofile'
+  ]).has(hashValue);
+}
+
+function activateTeamProfilePageV43(seasonTeamId, options = {}) {
+  ensureTeamProfilePageV42?.();
+  state.currentPage = 'teamprofile';
+  state.activeTeamProfileSeasonTeamId = seasonTeamId;
+
+  document.querySelectorAll('.app-page').forEach((page) => {
+    page.classList.toggle('is-active', page.dataset.page === 'teamprofile');
+  });
+
+  document.querySelectorAll('[data-page-link]').forEach((link) => {
+    link.classList.toggle('active', link.dataset.pageLink === 'teamprofile');
+  });
+
+  closeMobileMoreMenu?.();
+  updateMobileNavState?.();
+
+  if (options.pushHash !== false) {
+    const nextHash = `#${getTeamProfileSlugV43(seasonTeamId)}`;
+    if (window.location.hash !== nextHash) {
+      window.history.pushState(null, '', nextHash);
+    }
+  }
+
+  if (options.scroll !== false) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+openTeamProfilePageV42 = async function openTeamProfilePageV43(seasonTeamId, options = {}) {
+  ensureTeamProfilePageV42?.();
+  const selectedSeasonTeamId = seasonTeamId || getCurrentUserSeasonTeamIdV42?.() || '';
+  if (!selectedSeasonTeamId) {
+    setError?.('Nessuna squadra selezionata.');
+    return;
+  }
+
+  const title = document.getElementById('teamProfilePageTitle');
+  const body = document.getElementById('teamProfilePageBody');
+  if (!body) return;
+
+  activateTeamProfilePageV43(selectedSeasonTeamId, options);
+
+  if (title) title.textContent = getSeasonTeamDisplayName(selectedSeasonTeamId) || 'Profilo squadra';
+  body.innerHTML = `<section class="panel"><p class="muted">Caricamento profilo squadra...</p></section>`;
+
+  const snapshot = await loadTeamSnapshotV34(selectedSeasonTeamId);
+  if (title) title.textContent = snapshot?.teamName || getSeasonTeamDisplayName(selectedSeasonTeamId) || 'Profilo squadra';
+  body.innerHTML = renderTeamProfileContentV42(snapshot);
+};
+
+openTeamProfileV34 = function openTeamProfileV43(seasonTeamId) {
+  openTeamProfilePageV42(seasonTeamId, { pushHash: true }).catch((error) => {
+    console.error(error);
+    setError?.(`Non riesco ad aprire la pagina squadra. ${error?.message || error}`);
+  });
+};
+openTeamProfile = openTeamProfileV34;
+
+const renderSeasonTeamNameWithLogoBeforeV43 = renderSeasonTeamNameWithLogo;
+renderSeasonTeamNameWithLogo = function renderSeasonTeamNameWithLogoV43(seasonTeamId, options = {}) {
+  const html = renderSeasonTeamNameWithLogoBeforeV43(seasonTeamId, { ...options, noLink: true });
+  if (!seasonTeamId || options.noLink) return html;
+  const slug = getTeamProfileSlugV43(seasonTeamId);
+  return `<a class="team-profile-link" href="#${escapeHtml(slug)}" data-open-team-profile="${escapeHtml(seasonTeamId)}">${html}</a>`;
+};
+
+function routeTeamHashV43(options = {}) {
+  const rawHash = decodeURIComponent(window.location.hash.replace(/^#/, '') || '');
+  if (!rawHash || isKnownStaticHashV43(rawHash)) {
+    if (rawHash === 'teamprofile') {
+      const ownTeamId = getCurrentUserSeasonTeamIdV42?.();
+      if (ownTeamId) {
+        openTeamProfilePageV42(ownTeamId, { pushHash: true, scroll: options.scroll !== false }).catch(console.error);
+      }
+    }
+    return false;
+  }
+
+  const seasonTeamId = getSeasonTeamIdFromSlugV43(rawHash);
+  if (!seasonTeamId) return false;
+
+  const normalizedHash = slugifyTeamProfileV43(rawHash);
+  const currentKey = `${normalizedHash}:${seasonTeamId}`;
+  if (!options.force && state.lastTeamRouteKeyV43 === currentKey && state.currentPage === 'teamprofile') {
+    return true;
+  }
+  state.lastTeamRouteKeyV43 = currentKey;
+
+  openTeamProfilePageV42(seasonTeamId, { pushHash: false, scroll: options.scroll !== false }).catch(console.error);
+  return true;
+}
+
+const renderAllBeforeV43 = renderAll;
+renderAll = function renderAllV43() {
+  const result = renderAllBeforeV43();
+  setTimeout(() => routeTeamHashV43({ scroll: false }), 0);
+  return result;
+};
+
+const updateUserVisibilityBeforeV43 = updateUserVisibilityV34;
+function updateUserVisibilityV43() {
+  updateUserVisibilityBeforeV43?.();
+  const approved = getApprovedTeamUser?.();
+  document.querySelectorAll('.nav-link-team-profile').forEach((link) => {
+    link.classList.toggle('hidden', !approved);
+    link.textContent = 'La mia squadra';
+    if (approved?.seasonTeamId) {
+      link.setAttribute('href', `#${getTeamProfileSlugV43(approved.seasonTeamId)}`);
+    }
+  });
+}
+updateUserVisibilityV34 = updateUserVisibilityV43;
+
+window.addEventListener('hashchange', () => {
+  routeTeamHashV43({ force: true });
+});
+
+setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
