@@ -9227,3 +9227,161 @@ body.is-mobile-ux table.v45-mobile-table .team-profile-player-cell strong {
   overflow: visible !important;
   text-overflow: clip !important;
 }
+
+/* V46 - Adaptive mobile sizing based on real viewport dimensions.
+   Only affects mobile UX classes generated from window.visualViewport/innerWidth. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux {
+    padding-bottom: calc(var(--mobile-nav-height, 78px) + var(--mobile-nav-inset, 10px) + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav {
+    left: var(--mobile-nav-inset, 10px) !important;
+    right: var(--mobile-nav-inset, 10px) !important;
+    bottom: calc(var(--mobile-nav-inset, 10px) + env(safe-area-inset-bottom, 0px)) !important;
+    gap: var(--mobile-nav-gap, 6px) !important;
+    padding: var(--mobile-nav-padding, 8px) !important;
+    border-radius: var(--mobile-nav-radius, 24px) !important;
+    min-height: var(--mobile-nav-height, 78px) !important;
+  }
+
+  body.is-mobile-ux .mobile-bottom-link {
+    min-height: calc(var(--mobile-nav-height, 78px) - 18px) !important;
+    padding: 6px 2px !important;
+    font-size: var(--mobile-nav-font-size, 0.68rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  body.is-mobile-ux .mobile-nav-icon {
+    font-size: var(--mobile-nav-icon-size, 1.05rem) !important;
+  }
+
+  body.is-mobile-ux .mobile-more-sheet:not(.hidden) {
+    left: var(--mobile-nav-inset, 10px) !important;
+    right: var(--mobile-nav-inset, 10px) !important;
+    bottom: calc(var(--mobile-nav-height, 78px) + var(--mobile-nav-inset, 10px) + 10px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  body.is-mobile-ux .v45-mobile-table-wrap,
+  body.is-mobile-ux .mobile-tabular-wrap,
+  body.is-mobile-ux .standing-table-wrap,
+  body.is-mobile-ux .roster-dialog-table,
+  body.is-mobile-ux .compact-table {
+    max-height: var(--mobile-table-max-height, 392px) !important;
+  }
+
+  body.is-mobile-ux table.v45-mobile-table th,
+  body.is-mobile-ux table.v45-mobile-table td {
+    height: var(--mobile-table-row-height, 34px) !important;
+  }
+
+  body.screen-xs .container {
+    width: calc(100% - 14px) !important;
+  }
+
+  body.screen-xs .app-header {
+    padding-top: 12px !important;
+  }
+
+  body.screen-xs h1 {
+    font-size: 1.36rem !important;
+  }
+
+  body.screen-xs .page-heading,
+  body.screen-xs .panel,
+  body.screen-xs .metric-card,
+  body.screen-xs .season-control-panel {
+    padding: 8px !important;
+    border-radius: 12px !important;
+  }
+
+  body.screen-xs .page-heading h2 {
+    font-size: 1.08rem !important;
+  }
+
+  body.screen-xs .panel-header h2,
+  body.screen-xs .detail-section h3 {
+    font-size: 0.94rem !important;
+  }
+
+  body.screen-xs .metric-card strong {
+    font-size: 1.14rem !important;
+  }
+
+  body.screen-xs .button,
+  body.screen-xs .button-small,
+  body.screen-xs .input,
+  body.screen-xs .search-input,
+  body.screen-xs .filter-input {
+    min-height: 36px !important;
+    font-size: 0.88rem !important;
+  }
+
+  body.screen-xs table.v45-mobile-table th,
+  body.screen-xs table.v45-mobile-table td {
+    padding: 5px 6px !important;
+    font-size: 0.66rem !important;
+  }
+
+  body.screen-sm table.v45-mobile-table th,
+  body.screen-sm table.v45-mobile-table td {
+    padding: 6px 7px !important;
+    font-size: 0.7rem !important;
+  }
+
+  body.screen-md-mobile .cards-grid {
+    gap: 10px !important;
+  }
+
+  body.screen-landscape .app-header {
+    padding-top: 10px !important;
+    padding-bottom: 8px !important;
+  }
+
+  body.screen-landscape .header-grid {
+    grid-template-columns: 1fr auto !important;
+    align-items: center !important;
+  }
+
+  body.screen-landscape .header-actions {
+    grid-template-columns: minmax(170px, 1fr) auto auto auto !important;
+    align-items: end !important;
+  }
+
+  body.screen-landscape .header-actions .season-switcher {
+    grid-column: auto !important;
+  }
+
+  body.screen-landscape .page-heading {
+    padding: 8px 10px !important;
+  }
+
+  body.screen-short .page-heading p,
+  body.screen-short .panel-header p,
+  body.screen-short .field-hint {
+    display: none !important;
+  }
+
+  body.screen-short .metric-card {
+    padding: 7px 8px !important;
+  }
+
+  body.screen-tall .v45-mobile-table-wrap {
+    max-height: min(var(--mobile-table-max-height, 410px), 62vh) !important;
+  }
+}
+
+body.is-mobile-ux .v45-mobile-table-wrap,
+body.is-mobile-ux .mobile-tabular-wrap,
+body.is-mobile-ux .standing-table-wrap,
+body.is-mobile-ux .roster-dialog-table,
+body.is-mobile-ux .compact-table {
+  max-height: var(--mobile-table-max-height, 392px) !important;
+}
+
+body.screen-xs .mobile-table-toggle {
+  min-width: 82px !important;
+  min-height: 32px !important;
+  padding: 6px 9px !important;
+  font-size: 0.74rem !important;
+}
