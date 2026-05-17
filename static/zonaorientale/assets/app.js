@@ -678,7 +678,7 @@ function getWinnerLabel(competition) {
   }
 
   const secondText = second ? ` · 2° ${getSeasonTeamDisplayName(second.seasonTeamId)}` : "";
-  return `Vincitore: ${getSeasonTeamDisplayName(winner.seasonTeamId)}${secondText}`;
+  return `Vincitore: ${getSeasonTeamDisplayName(winner.seasonTeamId)}`;
 }
 
 function renderWinnerLabelHtml(competition, options = {}) {
@@ -702,7 +702,7 @@ function renderWinnerLabelHtml(competition, options = {}) {
     ? ` · 2° ${withLogo ? renderSeasonTeamNameWithLogo(second.seasonTeamId) : escapeHtml(getSeasonTeamDisplayName(second.seasonTeamId))}`
     : "";
 
-  return `Vincitore: ${winnerHtml}${secondHtml}`;
+  return `Vincitore: ${winnerHtml}`;
 }
 
 function buildPalmares() {
@@ -6214,21 +6214,16 @@ renderWinnerLabelHtml = function renderWinnerLabelHtmlV29(competition, options =
   const { withLogo = false } = options;
   const results = getCompetitionResults(competition.id);
   const winner = results.find((result) => Number(result.position) === 1);
-  const second = results.find((result) => Number(result.position) === 2);
 
   if (!winner) return "Nessun risultato inserito";
 
   const winnerHtml = withLogo
     ? renderSeasonTeamNameWithLogo(winner.seasonTeamId, { textClass: "text-success" })
     : `<strong class="text-success">${escapeHtml(getSeasonTeamDisplayName(winner.seasonTeamId))}</strong>`;
-  const secondHtml = second
-    ? (withLogo ? renderSeasonTeamNameWithLogo(second.seasonTeamId) : escapeHtml(getSeasonTeamDisplayName(second.seasonTeamId)))
-    : "-";
 
   return `
     <div class="dashboard-podium-lines">
       <div><span class="muted">Vincitore:</span> ${winnerHtml}</div>
-      <div><span class="muted">2°</span> ${secondHtml}</div>
     </div>`;
 };
 
