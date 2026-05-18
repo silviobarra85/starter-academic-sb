@@ -169,6 +169,21 @@ function getCurrentSeasonId() {
   return getDefaultSeasonId();
 }
 
+function getFirstSeasonId() {
+  return state.raw.seasons[0]?.id || "";
+}
+
+function getValidSeasonSelection(key) {
+  const currentValue = state[key];
+  if (currentValue && state.raw.seasons.some((season) => season.id === currentValue)) {
+    return currentValue;
+  }
+
+  const fallback = getFirstSeasonId();
+  state[key] = fallback;
+  return fallback;
+}
+
 function getSeasonName(id) {
   const { seasonsById } = buildMaps();
   return seasonsById.get(id)?.name || id || "-";
