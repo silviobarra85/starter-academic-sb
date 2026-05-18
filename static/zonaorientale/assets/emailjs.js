@@ -1,6 +1,6 @@
-export const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-export const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-export const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+export const EMAILJS_PUBLIC_KEY = "Rl3BRmJx1IeJEqQAH";
+export const EMAILJS_SERVICE_ID = "service_trz4dxe";
+export const EMAILJS_TEMPLATE_ID = "template_e1o7z5e5e";
 
 export function isEmailJsConfigured() {
   return Boolean(
