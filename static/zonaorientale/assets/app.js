@@ -20,209 +20,22 @@ import {
   onAuthStateChanged
 } from "./firebase.js";
 
-const COLLECTIONS = [
-  "leagueSettings",
-  "seasons",
-  "presidents",
-  "teams",
-  "seasonTeams",
-  "stadiums",
-  "competitions",
-  "competitionMatches",
-  "competitionResults",
-  "honorRoll",
-  "fifaRankings"
-];
-
-const COMPETITION_TYPES = [
-  { value: "CAMPIONATO", label: "Campionato" },
-  { value: "COPPA_ITALIA", label: "Coppa Italia" },
-  { value: "CHAMPIONS_LEAGUE", label: "Champion's League" },
-  { value: "PLAYOFF", label: "Playoff" },
-  { value: "ALTRO", label: "Altro" }
-];
-
-const COMPETITION_FORMATS = [
-  { value: "CLASSIFICA", label: "A classifica" },
-  { value: "GIRONI_KO", label: "A gironi + quarti/semifinali/finale" }
-];
-
-const COMPETITION_STATUSES = [
-  { value: "ATTIVA", label: "Attiva" },
-  { value: "PROGRAMMATA", label: "Programmata" },
-  { value: "CONCLUSA", label: "Conclusa" },
-  { value: "NON_DISPUTATA", label: "Non disputata" }
-];
-
-const DEFAULT_COMPETITIONS = [
-  {
-    idSuffix: "campionato",
-    name: "Campionato",
-    type: "CAMPIONATO",
-    format: "CLASSIFICA",
-    status: "PROGRAMMATA"
-  },
-  {
-    idSuffix: "champions-league",
-    name: "Champion's League",
-    type: "CHAMPIONS_LEAGUE",
-    format: "GIRONI_KO",
-    status: "PROGRAMMATA"
-  },
-  {
-    idSuffix: "coppa-italia",
-    name: "Coppa Italia",
-    type: "COPPA_ITALIA",
-    format: "GIRONI_KO",
-    status: "PROGRAMMATA"
-  },
-  {
-    idSuffix: "playoff",
-    name: "Playoff",
-    type: "PLAYOFF",
-    format: "GIRONI_KO",
-    status: "PROGRAMMATA"
-  }
-];
-
-const MATCH_STATUSES = [
-  { value: "DA_GIOCARE", label: "Da giocare" },
-  { value: "GIOCATA", label: "Giocata" }
-];
-
-const STANDARD_KNOCKOUT_MATCHDAYS = [
-  "QF - Andata",
-  "QF - Ritorno",
-  "QF - Secca",
-  "SF - Andata",
-  "SF - Ritorno",
-  "SF - Secca",
-  "Finale - Andata",
-  "Finale - Ritorno",
-  "Finalissima"
-];
-
-const STADIUM_LEVELS = [
-  { value: 0, label: "Livello 0" },
-  { value: 1, label: "Livello 1" },
-  { value: 2, label: "Livello 2" },
-  { value: 3, label: "Livello 3" },
-  { value: 4, label: "Livello 4" }
-];
-
-const ADMIN_PANEL_IDS = [
-  "adminSeasonsPanel",
-  "adminPresidentsPanel",
-  "adminTeamsPanel",
-  "adminSeasonTeamsPanel",
-  "adminStadiumsPanel",
-  "adminCompetitionsPanel",
-  "adminCompetitionMatchesPanel",
-  "adminCompetitionResultsPanel",
-  "adminFifaRankingPanel",
-  "adminListoneToolsPanel",
-  "adminBackupPanel"
-];
-
-const LISTONE_COLUMNS = [
-  { key: "playerName", label: "Giocatore", numeric: false },
-  { key: "classicRole", label: "R (RM)", numeric: false },
-  { key: "realTeam", label: "Sq", numeric: false },
-  { key: "fantasyRoster", label: "Rosa", numeric: false },
-  { key: "quotationCurrent", label: "Qt.A", numeric: true },
-  { key: "quotationInitial", label: "Qt.I", numeric: true },
-  { key: "quotationDiff", label: "Diff.", numeric: true },
-  { key: "quotationCurrentMantra", label: "Qt.A M", numeric: true },
-  { key: "quotationInitialMantra", label: "Qt.I M", numeric: true },
-  { key: "quotationDiffMantra", label: "Diff.M", numeric: true },
-  { key: "fvm", label: "FVM", numeric: true },
-  { key: "fvmMantra", label: "FVM M", numeric: true },
-  { key: "rosterRole", label: "Ruolo rosa", numeric: false },
-  { key: "rosterCost", label: "Costo rosa", numeric: true },
-  { key: "status", label: "Stato", numeric: false },
-  { key: "sourceSheet", label: "Origine", numeric: false }
-];
-
-const DEFAULT_HIDDEN_LISTONE_COLUMNS = [
-  "quotationInitialMantra",
-  "quotationDiffMantra",
-  "fvmMantra",
-  "rosterRole",
-  "rosterCost",
-  "sourceSheet"
-];
-
-
-const state = {
-  raw: Object.fromEntries(COLLECTIONS.map((name) => [name, []])),
-  user: null,
-  isAdmin: false,
-  currentPage: "dashboard",
-  selectedSeasonId: "",
-  selectedResultCompetitionId: "",
-  selectedMatchCompetitionId: "",
-  selectedAdminSeasonTeamSeasonId: "",
-  selectedAdminStadiumSeasonId: "",
-  selectedAdminCompetitionSeasonId: "",
-  selectedAdminMatchSeasonId: "",
-  selectedAdminMatchdayFilter: "",
-  selectedAdminResultsSeasonId: "",
-  selectedListoneId: "",
-  selectedClubRosterFilter: "all",
-  listoni: [],
-  rosters: [],
-  listoneSort: { key: "playerName", direction: "asc" },
-  freeAgentsSort: { key: "playerName", direction: "asc" },
-  rosterSort: { key: "role", direction: "asc" },
-  selectedAdminMovementSeasonTeamId: "",
-  hiddenListoneColumns: new Set(DEFAULT_HIDDEN_LISTONE_COLUMNS),
-  collapsedAdminPanels: new Set(ADMIN_PANEL_IDS),
-  collapsedContentPanels: new Set()
-};
-
-const $ = (selector, root = document) => root.querySelector(selector);
-const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-
-function renderBoldMarkdown(value) {
-  const escaped = escapeHtml(value || "");
-  return escaped.replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>");
-}
-
-function byText(fieldName) {
-  return (a, b) => String(a[fieldName] || "").localeCompare(String(b[fieldName] || ""), "it");
-}
-
-function normalizeKey(value) {
-  return String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[.'’]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
-function downloadJson(data, filename) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
+import {
+  COLLECTIONS,
+  COMPETITION_TYPES,
+  COMPETITION_FORMATS,
+  COMPETITION_STATUSES,
+  DEFAULT_COMPETITIONS,
+  MATCH_STATUSES,
+  STANDARD_KNOCKOUT_MATCHDAYS,
+  STADIUM_LEVELS,
+  ADMIN_PANEL_IDS,
+  LISTONE_COLUMNS,
+  DEFAULT_HIDDEN_LISTONE_COLUMNS
+} from "./js/core/constants.js";
+import { state } from "./js/core/state.js";
+import { $, $$ } from "./js/core/dom.js";
+import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
 
 function getTodayIsoDate() {
   return new Date().toISOString().slice(0, 10);
@@ -1642,9 +1455,7 @@ function setupNavigation() {
     });
   });
 
-  const startHash = window.location.hash.replace("#", "") || "dashboard";
-  const startPage = startHash === "finance" ? "regolamento" : startHash;
-  if (startHash === "finance") window.history.replaceState(null, "", "#regolamento");
+  const startPage = window.location.hash.replace("#", "") || "dashboard";
   setPage(startPage);
 }
 
@@ -5590,7 +5401,7 @@ function renderNewsPublicV34() {
         </div>
         <small>${escapeHtml(news.publishedAt || news.createdAt || "")}</small>
       </div>
-      <p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p>
+      <p class="news-body-preserve">${escapeHtml(news.body || "")}</p>
     </article>`).join("") : `<p class="muted">Nessun comunicato pubblicato.</p>`;
 }
 
@@ -6289,7 +6100,7 @@ async function openTeamProfileV34(seasonTeamId) {
     <tr><td data-label="Giocatore" class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td><td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(player)}</td><td data-label="Sq" class="team-profile-team-cell">${escapeHtml(player.realTeam || "-")}</td><td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(player.cost)}</td><td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td></tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
-  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
   const matchesRows = (snapshot.recentMatches || []).map((match) => `
     <tr>
       <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
@@ -6358,17 +6169,8 @@ document.addEventListener("click", (event) => {
   event.stopImmediatePropagation();
   const id = button.dataset.toggleRosterClub;
   if (!id) return;
-  if (state.expandedRosterClubIds.has(id)) {
-    state.expandedRosterClubIds.delete(id);
-  } else {
-    const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
-    const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
-    if (isMobileLike && displayMode !== "desktop") {
-      state.expandedRosterClubIds = new Set([id]);
-    } else {
-      state.expandedRosterClubIds.add(id);
-    }
-  }
+  if (state.expandedRosterClubIds.has(id)) state.expandedRosterClubIds.delete(id);
+  else state.expandedRosterClubIds.add(id);
   renderTeamsTable();
 }, true);
 
@@ -6513,7 +6315,7 @@ openTeamProfileV34 = async function openTeamProfileV40(seasonTeamId) {
     </tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
-  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${escapeHtml(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
   const matchesRows = (snapshot.recentMatches || []).map((match) => `
     <tr>
       <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
@@ -6660,7 +6462,7 @@ function renderTeamProfileContentV42(snapshot) {
   const newsHtml = (snapshot.recentNews || []).map((news) => `
     <article class="compact-card team-profile-news-card">
       <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
-      <p class="news-body-preserve">${renderBoldMarkdown(news.body || '')}</p>
+      <p class="news-body-preserve">${escapeHtml(news.body || '')}</p>
       <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
     </article>`).join('') || `<p class="muted">Nessun comunicato squadra.</p>`;
 
@@ -6684,6 +6486,7 @@ function renderTeamProfileContentV42(snapshot) {
           <p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p>
           <p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p>
         </div>
+        ${isOwner ? `<button class="button button-primary button-small" type="button" data-v42-page-link="teamarea">Invia richiesta</button>` : ''}
       </div>
     </section>
 
@@ -6717,18 +6520,9 @@ openTeamProfileV34 = function openTeamProfileV42(seasonTeamId) {
 };
 openTeamProfile = openTeamProfileV34;
 
-function getDashboardNewsPreviewV52(body, maxLength = 190) {
-  const text = String(body || "").replace(/\s+/g, " ").trim();
-  if (!text) return "";
-  if (text.length <= maxLength) return text;
-  return `${text.slice(0, maxLength).replace(/[\s,.!?;:]+$/g, "")}...`;
-}
-
 function renderDashboardNewsV42() {
-  const dashboardPage = document.querySelector('[data-page="dashboard"]');
-  const metrics = dashboardPage?.querySelector('[aria-label="Indicatori principali"]');
-  if (!dashboardPage || !metrics) return;
-
+  const metrics = document.querySelector('[aria-label="Indicatori principali"]');
+  if (!metrics) return;
   let panel = document.getElementById('dashboardNewsPanel');
   if (!panel) {
     panel = document.createElement('section');
@@ -6738,15 +6532,12 @@ function renderDashboardNewsV42() {
       <div class="panel-header compact">
         <div>
           <h2>Ultime news e comunicati</h2>
-          <p>Le ultime 5 comunicazioni pubblicate nella stagione selezionata.</p>
+          <p>Collegamenti rapidi agli ultimi aggiornamenti ufficiali e ai comunicati delle squadre.</p>
         </div>
         <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
       </div>
       <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
-  }
-
-  if (panel.nextElementSibling !== metrics) {
-    metrics.insertAdjacentElement('beforebegin', panel);
+    metrics.insertAdjacentElement('afterend', panel);
   }
 
   const target = document.getElementById('dashboardNewsList');
@@ -6755,24 +6546,20 @@ function renderDashboardNewsV42() {
   const rows = (state.raw.news || [])
     .filter((item) => !item.seasonId || item.seasonId === seasonId)
     .sort((a, b) => String(b.publishedAt || b.createdAt || '').localeCompare(String(a.publishedAt || a.createdAt || '')))
-    .slice(0, 5);
+    .slice(0, 4);
 
-  target.innerHTML = rows.length ? rows.map((news) => {
-    const preview = getDashboardNewsPreviewV52(news.body || '', 190);
-    return `
-      <article class="dashboard-news-card">
-        <div class="dashboard-news-main">
-          <small class="muted">${escapeHtml(news.topic === 'COMUNICATO_SQUADRA' ? 'Comunicato squadra' : news.topic || 'News')}</small>
-          <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
-          ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ''}
-          ${preview ? `<p class="dashboard-news-preview news-body-preserve">${renderBoldMarkdown(preview)}</p>` : ''}
-        </div>
-        <div class="dashboard-news-side">
-          <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
-          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
-        </div>
-      </article>`;
-  }).join('') : `<p class="muted">Nessuna news pubblicata.</p>`;
+  target.innerHTML = rows.length ? rows.map((news) => `
+    <article class="dashboard-news-card">
+      <div>
+        <small class="muted">${escapeHtml(news.topic === 'COMUNICATO_SQUADRA' ? 'Comunicato squadra' : news.topic || 'News')}</small>
+        <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
+        ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ''}
+      </div>
+      <div class="dashboard-news-side">
+        <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
+        <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
+      </div>
+    </article>`).join('') : `<p class="muted">Nessuna news pubblicata.</p>`;
 }
 
 const renderDashboardBeforeV42 = renderDashboard;
@@ -6896,7 +6683,6 @@ function isKnownStaticHashV43(hashValue) {
     'competitions',
     'honor',
     'finance',
-    'regolamento',
     'admin',
     'teamarea',
     'teamprofile'
@@ -7540,303 +7326,6 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
     };
   }
 })();
-
-
-/* V52 - Hotfix public rendering: startup stays last, competitions are ordered, dashboard news are on top. */
-function getCompetitionTypeOrderV52(competition) {
-  const order = {
-    CAMPIONATO: 0,
-    CHAMPIONS_LEAGUE: 1,
-    COPPA_ITALIA: 2,
-    PLAYOFF: 3,
-    ALTRO: 4
-  };
-  return order[competition?.type] ?? 99;
-}
-
-function competitionHasProgrammedMatchesV52(competition) {
-  if (!competition?.id) return false;
-  return (state.raw.competitionMatches || []).some((match) => {
-    if (match.competitionId !== competition.id) return false;
-    const status = String(match.status || '').toUpperCase();
-    return status !== 'GIOCATA' && status !== 'CONCLUSA' && status !== 'ANNULLATA';
-  });
-}
-
-function getCompetitionDisplayPriorityV52(competition) {
-  const status = String(competition?.status || '').toUpperCase();
-  if (status === 'ATTIVA' && competitionHasProgrammedMatchesV52(competition)) return 0;
-  if (status === 'ATTIVA') return 1;
-  if (status === 'PROGRAMMATA') return 2;
-  if (status === 'CONCLUSA') return 3;
-  return 4;
-}
-
-function compareCompetitionsForPublicDisplayV52(a, b) {
-  const priorityCompare = getCompetitionDisplayPriorityV52(a) - getCompetitionDisplayPriorityV52(b);
-  if (priorityCompare) return priorityCompare;
-  const sortA = Number(a?.sortOrder ?? a?.order ?? Number.NaN);
-  const sortB = Number(b?.sortOrder ?? b?.order ?? Number.NaN);
-  if (Number.isFinite(sortA) || Number.isFinite(sortB)) {
-    const sortCompare = (Number.isFinite(sortA) ? sortA : 999) - (Number.isFinite(sortB) ? sortB : 999);
-    if (sortCompare) return sortCompare;
-  }
-  const typeCompare = getCompetitionTypeOrderV52(a) - getCompetitionTypeOrderV52(b);
-  if (typeCompare) return typeCompare;
-  return String(a?.name || a?.id || '').localeCompare(String(b?.name || b?.id || ''), 'it', { numeric: true, sensitivity: 'base' });
-}
-
-function getSeasonCompetitionsForPublicDisplayV52(seasonId = getCurrentSeasonId()) {
-  return (state.raw.competitions || [])
-    .filter((competition) => competition.seasonId === seasonId)
-    .sort(compareCompetitionsForPublicDisplayV52);
-}
-
-renderDashboardCalendar = function renderDashboardCalendarV52(seasonId) {
-  const target = document.getElementById('dashboardCalendar');
-  if (!target) return;
-
-  const groups = getSeasonCompetitionsForPublicDisplayV52(seasonId)
-    .map((competition) => {
-      const matches = isRankingCompetition(competition)
-        ? getNextChampionshipMatches(competition)
-        : getCupScheduleMatches(competition);
-      return {
-        competition,
-        label: isRankingCompetition(competition) ? 'Prossima giornata' : 'Programmazione coppa',
-        matches
-      };
-    })
-    .filter((group) => group.matches.length);
-
-  if (!groups.length) {
-    target.innerHTML = `<p class="muted">Nessuna partita programmata o giocata per questa stagione.</p>`;
-    return;
-  }
-
-  target.innerHTML = groups.map((group) => `
-    <details class="dashboard-calendar-group dashboard-subsection" open>
-      <summary>
-        <span>
-          <strong>${escapeHtml(group.competition.name)}</strong>
-          <small>${escapeHtml(group.label)}</small>
-        </span>
-        <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
-      </summary>
-      <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
-        <table class="dashboard-calendar-table">
-          <thead>
-            <tr>
-              <th>Fase</th>
-              <th>Partita</th>
-              <th>Data</th>
-              <th class="number">Risultato</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${group.matches.map((match) => `
-              <tr>
-                <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
-                <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
-                <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
-                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
-              </tr>`).join('')}
-          </tbody>
-        </table>
-      </div>
-    </details>`).join('');
-};
-
-renderDashboard = function renderDashboardV52() {
-  const seasonId = getCurrentSeasonId();
-  const seasonTeams = getSeasonTeamsForSeason(seasonId);
-  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
-  const stats = typeof getSeasonFmStats === 'function' ? getSeasonFmStats(seasonId) : null;
-
-  const metricClubs = document.getElementById('metricClubs');
-  const metricTotalFm = document.getElementById('metricTotalFm');
-  const metricAlerts = document.getElementById('metricAlerts');
-
-  if (metricClubs) metricClubs.textContent = String(seasonTeams.length || getParticipantsCount(seasonId) || 0);
-  if (metricTotalFm) metricTotalFm.textContent = stats ? `${formatFm(stats.total)} (medio ${formatFm(stats.average)})` : '- (medio -)';
-  if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === 'ATTIVA').length);
-
-  const standings = document.getElementById('dashboardStandings');
-  if (standings) {
-    standings.innerHTML = competitions.length
-      ? competitions.map((competition) => `
-        <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
-          <summary>
-            <span>
-              <strong>${escapeHtml(competition.name)}</strong>
-              <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
-            </span>
-            <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
-          </summary>
-          ${renderDashboardCompetitionSummary(competition)}
-        </details>`).join('')
-      : `<p class="muted">Nessuna competizione inserita per questa stagione.</p>`;
-  }
-
-  renderDashboardCalendar(seasonId);
-  renderDashboardNewsV42();
-  if (typeof normalizeToggleLabelsV29 === 'function') normalizeToggleLabelsV29();
-};
-
-renderCompetitionsPublic = function renderCompetitionsPublicV52() {
-  const list = document.getElementById('competitionsList');
-  if (!list) return;
-
-  const seasonId = getCurrentSeasonId();
-  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
-
-  if (!competitions.length) {
-    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || 'la stagione selezionata')}.</p>`;
-    return;
-  }
-
-  list.innerHTML = competitions.map((competition) => `
-    <article class="competition-card">
-      <div class="competition-card-header">
-        <div>
-          <h3>${escapeHtml(competition.name)}</h3>
-        </div>
-        <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
-      </div>
-      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ''}
-      ${renderCompetitionResultsPublic(competition)}
-      ${renderCompetitionMatchesPublic(competition)}
-    </article>
-  `).join('');
-};
-
-const updateUserVisibilityBeforeV52 = updateUserVisibilityV34;
-updateUserVisibilityV34 = function updateUserVisibilityV52() {
-  updateUserVisibilityBeforeV52?.();
-  const logoutBtn = document.getElementById('logoutBtn');
-  const openLoginBtn = document.getElementById('openLoginBtn');
-  logoutBtn?.classList.toggle('hidden', !state.user);
-  if (openLoginBtn && state.user && !state.isAdmin) {
-    openLoginBtn.textContent = 'Account';
-    openLoginBtn.classList.remove('hidden');
-  }
-};
-
-const updateAdminVisibilityBeforeV52 = updateAdminVisibility;
-updateAdminVisibility = function updateAdminVisibilityV52() {
-  updateAdminVisibilityBeforeV52?.();
-  const logoutBtn = document.getElementById('logoutBtn');
-  logoutBtn?.classList.toggle('hidden', !state.user);
-};
-
-
-/* V58 - Mobile roster accordion and page scroll handle.
-   On mobile only one roster detail stays open at a time. A small draggable
-   scrollbar on the right helps scrolling long pages without changing desktop. */
-function ensureMobilePageScrollHandleV58() {
-  if (!document.body || document.getElementById("mobilePageScrollRail")) return;
-
-  const rail = document.createElement("div");
-  rail.id = "mobilePageScrollRail";
-  rail.className = "mobile-page-scroll-rail";
-  rail.setAttribute("aria-hidden", "true");
-  rail.innerHTML = '<div class="mobile-page-scroll-thumb"></div>';
-  document.body.appendChild(rail);
-
-  const thumb = rail.querySelector(".mobile-page-scroll-thumb");
-  let isDragging = false;
-  let dragOffset = 0;
-
-  function isEnabled() {
-    const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
-    const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
-    return isMobileLike && displayMode !== "desktop";
-  }
-
-  function getMetrics() {
-    const documentElement = document.documentElement;
-    const scrollHeight = Math.max(documentElement.scrollHeight, document.body.scrollHeight);
-    const viewportHeight = window.innerHeight || documentElement.clientHeight || 1;
-    const maxScroll = Math.max(0, scrollHeight - viewportHeight);
-    const railRect = rail.getBoundingClientRect();
-    const railHeight = Math.max(1, railRect.height);
-    const minThumb = 38;
-    const thumbHeight = Math.max(minThumb, Math.min(railHeight, (viewportHeight / Math.max(scrollHeight, viewportHeight)) * railHeight));
-    const maxThumbTop = Math.max(0, railHeight - thumbHeight);
-    return { maxScroll, railHeight, thumbHeight, maxThumbTop, railTop: railRect.top };
-  }
-
-  function update() {
-    const enabled = isEnabled();
-    const metrics = getMetrics();
-    const canScroll = enabled && metrics.maxScroll > 24;
-    document.body.classList.toggle("mobile-page-scroll-enabled", canScroll);
-    if (!thumb || !canScroll) return;
-
-    const ratio = metrics.maxScroll ? (window.scrollY || window.pageYOffset || 0) / metrics.maxScroll : 0;
-    const top = Math.max(0, Math.min(metrics.maxThumbTop, ratio * metrics.maxThumbTop));
-    thumb.style.height = `${metrics.thumbHeight}px`;
-    thumb.style.transform = `translateY(${top}px)`;
-  }
-
-  function scrollToClientY(clientY, offset = 0) {
-    const metrics = getMetrics();
-    if (!metrics.maxScroll || !metrics.maxThumbTop) return;
-    const top = Math.max(0, Math.min(metrics.maxThumbTop, clientY - metrics.railTop - offset));
-    const ratio = top / metrics.maxThumbTop;
-    window.scrollTo({ top: ratio * metrics.maxScroll, behavior: "auto" });
-  }
-
-  function startDrag(event) {
-    if (!document.body.classList.contains("mobile-page-scroll-enabled")) return;
-    const metrics = getMetrics();
-    const thumbRect = thumb?.getBoundingClientRect();
-    isDragging = true;
-    dragOffset = thumbRect && thumbRect.top <= event.clientY && event.clientY <= thumbRect.bottom
-      ? event.clientY - thumbRect.top
-      : metrics.thumbHeight / 2;
-    scrollToClientY(event.clientY, dragOffset);
-    rail.classList.add("is-dragging");
-    rail.setPointerCapture?.(event.pointerId);
-    event.preventDefault();
-  }
-
-  function moveDrag(event) {
-    if (!isDragging) return;
-    scrollToClientY(event.clientY, dragOffset);
-    event.preventDefault();
-  }
-
-  function endDrag(event) {
-    if (!isDragging) return;
-    isDragging = false;
-    rail.classList.remove("is-dragging");
-    rail.releasePointerCapture?.(event.pointerId);
-  }
-
-  rail.addEventListener("pointerdown", startDrag);
-  rail.addEventListener("pointermove", moveDrag);
-  rail.addEventListener("pointerup", endDrag);
-  rail.addEventListener("pointercancel", endDrag);
-
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-  window.addEventListener("orientationchange", () => setTimeout(update, 200));
-
-  if (window.ResizeObserver) {
-    const observer = new ResizeObserver(update);
-    observer.observe(document.body);
-  }
-
-  const mutationObserver = new MutationObserver(() => window.requestAnimationFrame(update));
-  mutationObserver.observe(document.body, { childList: true, subtree: true, attributes: true });
-
-  update();
-}
-
-ensureMobilePageScrollHandleV58();
-window.addEventListener("load", ensureMobilePageScrollHandleV58);
-document.addEventListener("DOMContentLoaded", ensureMobilePageScrollHandleV58);
 
 /* V51 - Startup after all incremental patches.
    The previous v50 initialized before the v50 overrides were registered, so
