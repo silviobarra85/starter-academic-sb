@@ -2,7 +2,6 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-
     function isSignedIn() {
       return request.auth != null;
     }
@@ -12,10 +11,6 @@ service cloud.firestore {
         && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
     }
 
-    function isOwner(userId) {
-      return isSignedIn() && request.auth.uid == userId;
-    }
-
     function isApprovedTeamUser() {
       return isSignedIn()
         && exists(/databases/$(database)/documents/teamUsers/$(request.auth.uid))
@@ -23,78 +18,23 @@ service cloud.firestore {
     }
 
     match /admins/{userId} {
-      allow read: if isOwner(userId) || isAdmin();
+      allow read, write: if isAdmin();
+    }
+
+    match /pendingUsers/{userId} {
+      allow create, read, update: if isSignedIn() && request.auth.uid == userId;
+      allow read, write: if isAdmin();
+    }
+
+    match /teamUsers/{userId} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
       allow write: if isAdmin();
     }
 
-    match /leagueSettings/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /seasons/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /presidents/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /teams/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /seasonTeams/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /stadiums/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /competitions/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /competitionMatches/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /competitionResults/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /honorRoll/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /fifaRankings/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /rosterEntries/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /fmMovements/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    match /news/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
+    match /teamRequests/{docId} {
+      allow create: if isApprovedTeamUser();
+      allow read: if isAdmin() || (isSignedIn() && resource.data.createdBy == request.auth.uid);
+      allow update, delete: if isAdmin();
     }
 
     match /publicSeasonSnapshots/{docId} {
@@ -112,28 +52,19 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    match /pendingUsers/{userId} {
-      allow create: if isOwner(userId);
-      allow read: if isOwner(userId) || isAdmin();
-      allow update: if isOwner(userId) || isAdmin();
-      allow delete: if isAdmin();
-    }
-
-    match /teamUsers/{userId} {
-      allow read: if isOwner(userId) || isAdmin();
-      allow write: if isAdmin();
-    }
-
-    match /teamRequests/{docId} {
-      allow create: if isApprovedTeamUser()
-        && request.resource.data.createdBy == request.auth.uid
-        && request.resource.data.seasonTeamId == get(/databases/$(database)/documents/teamUsers/$(request.auth.uid)).data.seasonTeamId;
-
-      allow read: if isAdmin()
-        || (isSignedIn() && resource.data.createdBy == request.auth.uid);
-
-      allow update: if isAdmin();
-      allow delete: if isAdmin();
-    }
+    match /leagueSettings/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /seasons/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /presidents/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /teams/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /seasonTeams/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /stadiums/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /competitions/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /competitionMatches/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /competitionResults/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /honorRoll/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /fifaRankings/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /rosterEntries/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /fmMovements/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /news/{docId} { allow read: if true; allow write: if isAdmin(); }
   }
 }

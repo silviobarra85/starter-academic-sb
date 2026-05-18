@@ -1,6 +1,3 @@
-window.__ZO_APP_STARTED = true;
-window.__ZO_APP_READY = false;
-
 import {
   db,
   auth,
@@ -1703,7 +1700,6 @@ function setupMobileNavigation() {
 
 function setupAuth() {
   const openLoginBtn = document.getElementById("openLoginBtn");
-  if (openLoginBtn && !state.isAdmin) openLoginBtn.textContent = "Area Riservata";
   const logoutBtn = document.getElementById("logoutBtn");
   const loginDialog = document.getElementById("loginDialog");
   const loginForm = document.getElementById("loginForm");
@@ -4415,7 +4411,6 @@ renderAdminArea = function renderAdminAreaV18() {
     ${renderTeamAdminPanel()}
     ${renderSeasonTeamAdminPanel()}
     ${renderRosterMovementsAdminPanel()}
-    ${renderSeasonRolloverAdminPanelV50()}
     ${renderStadiumAdminPanel()}
     ${renderCompetitionAdminPanel()}
     ${renderCompetitionMatchesAdminPanel()}
@@ -4662,9 +4657,6 @@ async function initializeAppUi() {
     const code = error?.code ? `${error.code} - ` : "";
     const message = error?.message || String(error);
     setError(`Non riesco a leggere Firestore. ${code}${message}`);
-  } finally {
-    window.__ZO_APP_READY = true;
-    bootstrapReservedAreaButtonV51?.();
   }
 }
 
@@ -5338,7 +5330,7 @@ function updateUserVisibilityV34() {
   document.querySelectorAll(".nav-link-team-area").forEach((link) => link.classList.toggle("hidden", !approved));
   const openLoginBtn = document.getElementById("openLoginBtn");
   if (openLoginBtn && !state.isAdmin) {
-    openLoginBtn.textContent = state.user ? "Account" : "Area Riservata";
+    openLoginBtn.textContent = state.user ? "Account" : "Accedi / Registrati";
     openLoginBtn.classList.remove("hidden");
   }
   renderUserAreaV34();
@@ -5444,26 +5436,14 @@ setupAuth = function setupAuthV34() {
 
     if (user) {
       try {
-        // V54: the admin check must never block normal president accounts.
-        // Some Firestore rules versions deny reads on admins/{uid} for non-admin users;
-        // in that case we treat the user as non-admin and continue with teamUsers/pendingUsers.
-        const adminSnapshot = await getDoc(doc(db, "admins", user.uid)).catch((error) => {
-          console.warn("Admin check unavailable; continuing as non-admin", error);
-          return null;
-        });
-        state.isAdmin = Boolean(adminSnapshot?.exists?.());
+        const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
+        state.isAdmin = adminSnapshot.exists();
 
         if (!state.isAdmin) {
-          const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch((error) => {
-            console.warn("Team user check unavailable", error);
-            return null;
-          });
+          const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch(() => null);
           if (teamSnapshot?.exists?.()) state.currentTeamUser = { id: teamSnapshot.id, ...teamSnapshot.data() };
 
-          const pendingSnapshot = await getDoc(doc(db, "pendingUsers", user.uid)).catch((error) => {
-            console.warn("Pending user check unavailable", error);
-            return null;
-          });
+          const pendingSnapshot = await getDoc(doc(db, "pendingUsers", user.uid)).catch(() => null);
           if (pendingSnapshot?.exists?.()) state.currentPendingUser = { id: pendingSnapshot.id, ...pendingSnapshot.data() };
 
           if (!state.currentTeamUser && !state.currentPendingUser) {
@@ -5481,17 +5461,6 @@ setupAuth = function setupAuthV34() {
 
     updateAdminVisibility();
     updateUserVisibilityV34();
-    if (state.user && !state.isAdmin) {
-      const approved = getApprovedTeamUser();
-      if (approved) {
-        showMessage("loginStatus", "Accesso effettuato. Puoi usare l'area squadra.");
-        document.getElementById("loginDialog")?.close?.();
-      } else if (state.currentPendingUser) {
-        showMessage("loginStatus", state.currentPendingUser.status === "EMAIL_NOT_VERIFIED"
-          ? "Account creato: verifica la mail per richiedere l'approvazione."
-          : "Accesso effettuato. Account in attesa di approvazione admin.");
-      }
-    }
 
     if (state.isAdmin && !state.hasFullData) {
       try {
@@ -5929,7 +5898,6 @@ renderAdminArea = function renderAdminAreaV34() {
     ${renderTeamAdminPanel()}
     ${renderSeasonTeamAdminPanel()}
     ${renderRosterMovementsAdminPanel()}
-    ${renderSeasonRolloverAdminPanelV50()}
     ${renderStadiumAdminPanel()}
     ${renderCompetitionAdminPanel()}
     ${renderCompetitionMatchesAdminPanel()}
@@ -6095,7 +6063,6 @@ attachAdminHandlers = function attachAdminHandlersV34() {
   document.getElementById("adminNewsReset")?.addEventListener("click", resetAdminNewsFormV48);
   document.querySelectorAll("[data-admin-edit-news]").forEach((button) => button.addEventListener("click", () => editAdminNewsV48(button.dataset.adminEditNews)));
   document.querySelectorAll("[data-admin-delete-news]").forEach((button) => button.addEventListener("click", () => deleteAdminNewsV48(button.dataset.adminDeleteNews)));
-  document.getElementById("seasonRolloverFormV50")?.addEventListener("submit", rolloverSeasonV50);
   document.getElementById("adminGenerateSelectedSeasonSnapshot")?.addEventListener("click", () => saveSelectedSeasonSnapshotV34());
   document.getElementById("adminGenerateAllSeasonSnapshots")?.addEventListener("click", () => saveAllSeasonSnapshotsV34());
   document.getElementById("adminGenerateHonorSnapshot")?.addEventListener("click", () => saveHonorSnapshotV34());
@@ -6349,622 +6316,10 @@ renderAll = function renderAllV34() {
 };
 
 
-
-/* V50 - News date/time, season rollover, account logout and AI handoff support. */
-function getNowDateTimeLocalV50() {
-  const date = new Date();
-  const pad = (value) => String(value).padStart(2, "0");
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
-}
-
-function normalizeDateTimeLocalV50(value) {
-  if (!value) return getNowDateTimeLocalV50();
-  if (typeof value?.toDate === "function") {
-    const date = value.toDate();
-    const pad = (part) => String(part).padStart(2, "0");
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
-  }
-  const text = String(value);
-  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(text)) return text.slice(0, 16);
-  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) return `${text}T00:00`;
-  const parsed = new Date(text);
-  if (!Number.isNaN(parsed.getTime())) {
-    const pad = (part) => String(part).padStart(2, "0");
-    return `${parsed.getFullYear()}-${pad(parsed.getMonth() + 1)}-${pad(parsed.getDate())}T${pad(parsed.getHours())}:${pad(parsed.getMinutes())}`;
-  }
-  return text;
-}
-
-function formatDateTimeV50(value) {
-  if (!value) return "";
-  const local = normalizeDateTimeLocalV50(value);
-  const match = String(local).match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}))?/);
-  if (!match) return String(value);
-  const [, year, month, day, hour, minute] = match;
-  return `${day}/${month}/${year}${hour ? ` ${hour}:${minute}` : ""}`;
-}
-
-function newsSortValueV50(item) {
-  return normalizeDateTimeLocalV50(item?.publishedAt || item?.createdAt || "");
-}
-
-function sortNewsRowsV50(rows) {
-  return (rows || []).slice().sort((a, b) => String(newsSortValueV50(b)).localeCompare(String(newsSortValueV50(a))));
-}
-
-renderNewsAdminPanelV48 = function renderNewsAdminPanelV48() {
-  const currentSeasonId = getCurrentSeasonId();
-  const seasonOptions = (state.raw.seasons || []).map((season) => `
-    <option value="${escapeHtml(season.id)}" ${season.id === currentSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
-  `).join("");
-  const seasonTeamOptions = (state.raw.seasonTeams || [])
-    .filter((seasonTeam) => !currentSeasonId || seasonTeam.seasonId === currentSeasonId)
-    .map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`)
-    .join("");
-  const rows = sortNewsRowsV50(state.raw.news || [])
-    .slice(0, 40)
-    .map((item) => {
-      const teamName = item.seasonTeamId ? getSeasonTeamDisplayName(item.seasonTeamId) : "";
-      return `
-        <div class="admin-list-item">
-          <span>
-            <strong>${escapeHtml(item.title || "Comunicato")}</strong>
-            <small>${escapeHtml(newsTopicLabelV48(item.topic))}${teamName ? ` · ${escapeHtml(teamName)}` : ""} · ${escapeHtml(formatDateTimeV50(item.publishedAt || item.createdAt || ""))}</small>
-            <small class="admin-news-preview">${escapeHtml(String(item.body || "").slice(0, 140))}${String(item.body || "").length > 140 ? "..." : ""}</small>
-          </span>
-          <span>
-            <button class="button button-secondary button-small" type="button" data-admin-edit-news="${escapeHtml(item.id)}">Modifica</button>
-            <button class="button button-danger button-small" type="button" data-admin-delete-news="${escapeHtml(item.id)}">Elimina</button>
-          </span>
-        </div>`;
-    }).join("") || `<p class="muted admin-empty-message">Nessun comunicato pubblicato.</p>`;
-
-  const body = `
-    <form id="adminNewsForm" class="form-grid">
-      <input id="adminNewsId" type="hidden" />
-      <label>
-        Titolo
-        <input id="adminNewsTitle" class="input" type="text" placeholder="Es. Comunicato ufficiale" required />
-      </label>
-      <label>
-        Argomento
-        <select id="adminNewsTopic" class="input" required>
-          <option value="GENERALE">Generale</option>
-          <option value="COMPETIZIONE">Competizione</option>
-          <option value="COMUNICATO_SQUADRA">Comunicato squadra</option>
-        </select>
-      </label>
-      <label>
-        Stagione
-        <select id="adminNewsSeasonId" class="input">
-          <option value="">Nessuna / tutte</option>
-          ${seasonOptions}
-        </select>
-      </label>
-      <label>
-        Squadra collegata <span class="muted">(opzionale)</span>
-        <select id="adminNewsSeasonTeamId" class="input">
-          <option value="">Nessuna squadra</option>
-          ${seasonTeamOptions}
-        </select>
-      </label>
-      <label>
-        Data e ora pubblicazione
-        <input id="adminNewsPublishedAt" class="input" type="datetime-local" value="${escapeHtml(getNowDateTimeLocalV50())}" />
-      </label>
-      <label class="span-2">
-        Testo
-        <textarea id="adminNewsBody" class="input textarea" rows="5" placeholder="Scrivi il comunicato..." required></textarea>
-      </label>
-      <div class="form-actions span-2">
-        <button class="button button-primary" type="submit">Salva comunicato</button>
-        <button id="adminNewsReset" class="button button-secondary" type="button">Nuovo</button>
-        <span id="adminNewsStatus" class="form-status"></span>
-      </div>
-    </form>
-    <details class="admin-edit-section" open>
-      <summary><strong>Comunicati pubblicati</strong><span>Dal più recente al più vecchio</span></summary>
-      <div class="admin-list">${rows}</div>
-    </details>`;
-  return renderAdminPanel("adminNewsPanel", "Comunicazioni", "News e comunicati", "Pubblica comunicati generali, comunicati competizione o comunicati ufficiali delle squadre.", body);
-}
-
-saveAdminNewsV48 = async function saveAdminNewsV48(event) {
-  event.preventDefault();
-  const id = document.getElementById("adminNewsId")?.value || "";
-  const seasonTeamId = document.getElementById("adminNewsSeasonTeamId")?.value || "";
-  const seasonTeam = getSeasonTeamById(seasonTeamId);
-  const payload = {
-    title: document.getElementById("adminNewsTitle")?.value.trim() || "Comunicato",
-    body: document.getElementById("adminNewsBody")?.value || "",
-    topic: document.getElementById("adminNewsTopic")?.value || "GENERALE",
-    seasonId: document.getElementById("adminNewsSeasonId")?.value || seasonTeam?.seasonId || getCurrentSeasonId(),
-    teamId: seasonTeam?.teamId || "",
-    seasonTeamId,
-    publishedAt: normalizeDateTimeLocalV50(document.getElementById("adminNewsPublishedAt")?.value || getNowDateTimeLocalV50()),
-    updatedAt: serverTimestamp()
-  };
-  try {
-    const status = document.getElementById("adminNewsStatus");
-    if (status) status.textContent = "Salvataggio...";
-    if (id) {
-      await setDoc(doc(db, "news", id), payload, { merge: true });
-    } else {
-      await addDoc(collection(db, "news"), { ...payload, createdAt: serverTimestamp(), createdBy: state.user?.uid || "" });
-    }
-    if (status) status.textContent = "Comunicato salvato. Aggiorna gli snapshot pubblici per mostrarlo subito nel sito.";
-    resetAdminNewsFormV48();
-    await loadFullDataV32({ render: true });
-    expandAdminPanel("adminNewsPanel");
-  } catch (error) {
-    console.error(error);
-    const status = document.getElementById("adminNewsStatus");
-    if (status) status.textContent = `Errore: ${error.message}`;
-  }
-}
-
-resetAdminNewsFormV48 = function resetAdminNewsFormV48() {
-  document.getElementById("adminNewsId") && (document.getElementById("adminNewsId").value = "");
-  document.getElementById("adminNewsTitle") && (document.getElementById("adminNewsTitle").value = "");
-  document.getElementById("adminNewsTopic") && (document.getElementById("adminNewsTopic").value = "GENERALE");
-  document.getElementById("adminNewsSeasonId") && (document.getElementById("adminNewsSeasonId").value = getCurrentSeasonId());
-  document.getElementById("adminNewsSeasonTeamId") && (document.getElementById("adminNewsSeasonTeamId").value = "");
-  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = getNowDateTimeLocalV50());
-  document.getElementById("adminNewsBody") && (document.getElementById("adminNewsBody").value = "");
-  document.getElementById("adminNewsStatus") && (document.getElementById("adminNewsStatus").textContent = "");
-}
-
-editAdminNewsV48 = function editAdminNewsV48(newsId) {
-  const item = (state.raw.news || []).find((row) => row.id === newsId);
-  if (!item) return;
-  expandAdminPanel("adminNewsPanel");
-  document.getElementById("adminNewsId") && (document.getElementById("adminNewsId").value = item.id || "");
-  document.getElementById("adminNewsTitle") && (document.getElementById("adminNewsTitle").value = item.title || "");
-  document.getElementById("adminNewsTopic") && (document.getElementById("adminNewsTopic").value = item.topic || "GENERALE");
-  document.getElementById("adminNewsSeasonId") && (document.getElementById("adminNewsSeasonId").value = item.seasonId || getCurrentSeasonId());
-  document.getElementById("adminNewsSeasonTeamId") && (document.getElementById("adminNewsSeasonTeamId").value = item.seasonTeamId || "");
-  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = normalizeDateTimeLocalV50(item.publishedAt || item.createdAt || getNowDateTimeLocalV50()));
-  document.getElementById("adminNewsBody") && (document.getElementById("adminNewsBody").value = item.body || "");
-  document.getElementById("adminNewsStatus") && (document.getElementById("adminNewsStatus").textContent = "Modifica comunicato esistente.");
-}
-
-function canCurrentUserSubmitTeamRequestsV50() {
-  const approved = getApprovedTeamUser();
-  if (!state.user || !approved || approved.status !== "ACTIVE" || !approved.seasonTeamId) return false;
-  if (approved.id === state.user.uid || approved.uid === state.user.uid || approved.userId === state.user.uid) return true;
-  return approved.email && state.user.email && approved.email === state.user.email;
-}
-
-buildBaseTeamRequestPayloadV34 = function buildBaseTeamRequestPayloadV34(type) {
-  const approved = getApprovedTeamUser();
-  if (!state.user || !approved) throw new Error("Utente non approvato.");
-  if (!canCurrentUserSubmitTeamRequestsV50()) {
-    throw new Error("Puoi inviare richieste solo per una squadra con utente presidente attivo.");
-  }
-  return {
-    type,
-    status: "PENDING",
-    createdBy: state.user.uid,
-    createdByEmail: state.user.email || "",
-    createdByName: getCurrentUserDisplayName(),
-    presidentId: approved.presidentId || "",
-    teamId: approved.teamId || "",
-    seasonTeamId: approved.seasonTeamId || "",
-    seasonId: approved.seasonId || getCurrentSeasonId(),
-    createdAt: serverTimestamp()
-  };
-}
-
-approveTeamRequestV34 = async function approveTeamRequestV34(requestId) {
-  const request = state.raw.teamRequests.find((item) => item.id === requestId);
-  if (!request) return;
-  const publishedAt = getNowDateTimeLocalV50();
-  if (request.type === "TEAM_NEWS") {
-    await addDoc(collection(db, "news"), {
-      title: request.title || "Comunicato squadra",
-      body: request.body || "",
-      topic: "COMUNICATO_SQUADRA",
-      seasonId: request.seasonId || getCurrentSeasonId(),
-      teamId: request.teamId || "",
-      seasonTeamId: request.seasonTeamId || "",
-      authorUid: request.createdBy || "",
-      publishedAt,
-      createdAt: serverTimestamp()
-    });
-  } else if (request.type === "FM_MOVEMENT") {
-    await addDoc(collection(db, "fmMovements"), {
-      seasonId: request.seasonId || getCurrentSeasonId(),
-      seasonTeamId: request.seasonTeamId || "",
-      type: request.movementType || "ALTRO",
-      date: getTodayIsoDate(),
-      amount: Number(request.amount || 0),
-      playerName: request.playerName || "",
-      description: request.description || "Movimento proposto dal presidente",
-      createdAt: serverTimestamp()
-    });
-  } else if (request.type === "PLAYER_BUY_REQUEST") {
-    const docId = `${makeIdPart(request.seasonId)}_${makeIdPart(request.seasonTeamId)}_${makeIdPart(request.playerName)}`;
-    await setDoc(doc(db, "rosterEntries", docId), {
-      seasonId: request.seasonId || getCurrentSeasonId(),
-      seasonTeamId: request.seasonTeamId || "",
-      playerName: request.playerName || "",
-      realTeam: request.realTeam || "",
-      rosterRole: request.rosterRole || "",
-      cost: Number(request.amount || 0),
-      status: "ACTIVE",
-      updatedAt: serverTimestamp()
-    }, { merge: true });
-    await addDoc(collection(db, "fmMovements"), {
-      seasonId: request.seasonId || getCurrentSeasonId(),
-      seasonTeamId: request.seasonTeamId || "",
-      type: "ACQUISTO",
-      date: getTodayIsoDate(),
-      amount: -Math.abs(Number(request.amount || 0)),
-      playerName: request.playerName || "",
-      description: "Acquisto approvato da richiesta presidente",
-      createdAt: serverTimestamp()
-    });
-  } else if (request.type === "PLAYER_RELEASE_REQUEST") {
-    await addDoc(collection(db, "fmMovements"), {
-      seasonId: request.seasonId || getCurrentSeasonId(),
-      seasonTeamId: request.seasonTeamId || "",
-      type: "SVINCOLO",
-      date: getTodayIsoDate(),
-      amount: Math.abs(Number(request.amount || 0)),
-      playerName: request.playerName || "",
-      description: "Svincolo approvato da richiesta presidente",
-      createdAt: serverTimestamp()
-    });
-  }
-  await setDoc(doc(db, "teamRequests", requestId), { status: "APPROVED", approvedAt: serverTimestamp(), approvedBy: state.user?.uid || "" }, { merge: true });
-  await loadFullDataV32({ render: true });
-  expandAdminPanel("adminTeamRequestsPanel");
-}
-
-renderUserAreaV34 = function renderUserAreaV34() {
-  const target = document.getElementById("teamAreaBody");
-  if (!target) return;
-  const approved = getApprovedTeamUser();
-  if (!state.user) {
-    target.innerHTML = `<section class="panel"><p class="muted">Accedi o registrati come presidente per inviare richieste squadra.</p></section>`;
-    return;
-  }
-  if (!approved) {
-    const status = state.currentPendingUser?.status || (isEmailPasswordUserV34() && !state.user.emailVerified ? "EMAIL_NOT_VERIFIED" : "PENDING");
-    target.innerHTML = `
-      <section class="panel">
-        <div class="panel-header compact"><div><h2>Account in attesa</h2><p>Il tuo account non è ancora associato a una squadra.</p></div></div>
-        <p><strong>${escapeHtml(getCurrentUserDisplayName())}</strong> · ${escapeHtml(state.user.email || "")}</p>
-        <p><span class="status status-warning">${escapeHtml(requestStatusLabel(status))}</span></p>
-        ${status === "EMAIL_NOT_VERIFIED" ? `<p class="muted">Verifica la mail ricevuta da Firebase, poi ricarica questa pagina.</p>` : `<p class="muted">Un admin dovrà approvare l'account e associarlo alla squadra.</p>`}
-        <button class="button button-secondary" type="button" data-user-logout>Logout</button>
-      </section>`;
-    attachUserAreaHandlersV34();
-    return;
-  }
-
-  const seasonTeamName = getSeasonTeamDisplayName(approved.seasonTeamId) || approved.teamName || "Squadra";
-  const requestDisabled = canCurrentUserSubmitTeamRequestsV50() ? "" : "disabled";
-  const guardMessage = requestDisabled ? `<p class="notice notice-warning">Puoi inviare richieste solo quando l'admin ti ha associato a una squadra con utente presidente attivo.</p>` : "";
-  target.innerHTML = `
-    <section class="panel">
-      <div class="panel-header compact"><div><h2>${escapeHtml(seasonTeamName)}</h2><p>Invia richieste operative all'admin. I dati ufficiali cambiano solo dopo approvazione.</p></div></div>
-      <div class="cards-grid user-request-grid">
-        <article class="metric-card"><span class="metric-label">Utente</span><strong>${escapeHtml(getCurrentUserDisplayName())}</strong></article>
-        <article class="metric-card"><span class="metric-label">Ruolo</span><strong>Presidente</strong></article>
-        <article class="metric-card"><span class="metric-label">Stato</span><strong>Attivo</strong></article>
-      </div>
-      <div class="form-actions"><button class="button button-secondary" type="button" data-user-logout>Logout</button></div>
-    </section>
-    ${guardMessage}
-
-    <section class="grid-two user-actions-grid">
-      <article class="panel">
-        <div class="panel-header compact"><div><h2>Proponi movimento FM</h2><p>Bonus, rettifiche o altri movimenti da far approvare.</p></div></div>
-        <form id="teamFmRequestForm" class="form-grid">
-          <label>Tipo movimento<select id="teamFmRequestType" class="input" ${requestDisabled}><option value="BONUS">Bonus</option><option value="RETTIFICA">Rettifica</option><option value="ALTRO">Altro</option></select></label>
-          <label>Importo FM<input id="teamFmRequestAmount" class="input" type="text" inputmode="decimal" placeholder="Es. 10,5" required ${requestDisabled} /></label>
-          <label class="span-2">Giocatore <span class="muted">(opzionale)</span><input id="teamFmRequestPlayer" class="input" type="text" ${requestDisabled} /></label>
-          <label class="span-2">Descrizione<textarea id="teamFmRequestDescription" class="input textarea" rows="3" required ${requestDisabled}></textarea></label>
-          <div class="form-actions span-2"><button class="button button-primary" type="submit" ${requestDisabled}>Invia proposta</button><span id="teamFmRequestStatus" class="form-status"></span></div>
-        </form>
-      </article>
-
-      <article class="panel">
-        <div class="panel-header compact"><div><h2>Richiedi acquisto/svincolo</h2><p>La richiesta verrà valutata dall'admin.</p></div></div>
-        <form id="teamMarketRequestForm" class="form-grid">
-          <label>Tipo<select id="teamMarketRequestType" class="input" ${requestDisabled}><option value="PLAYER_BUY_REQUEST">Acquisto</option><option value="PLAYER_RELEASE_REQUEST">Svincolo</option><option value="PLAYER_TRADE_REQUEST">Scambio</option></select></label>
-          <label>Costo/Rimborso FM<input id="teamMarketRequestAmount" class="input" type="text" inputmode="decimal" ${requestDisabled} /></label>
-          <label class="span-2">Giocatore<input id="teamMarketRequestPlayer" class="input" type="text" required ${requestDisabled} /></label>
-          <label>Squadra reale<input id="teamMarketRequestRealTeam" class="input" type="text" ${requestDisabled} /></label>
-          <label>Ruolo<input id="teamMarketRequestRole" class="input" type="text" ${requestDisabled} /></label>
-          <label class="span-2">Note<textarea id="teamMarketRequestNotes" class="input textarea" rows="3" ${requestDisabled}></textarea></label>
-          <div class="form-actions span-2"><button class="button button-primary" type="submit" ${requestDisabled}>Invia richiesta</button><span id="teamMarketRequestStatus" class="form-status"></span></div>
-        </form>
-      </article>
-    </section>
-
-    <section class="panel">
-      <div class="panel-header compact"><div><h2>Invia comunicato squadra</h2><p>Il comunicato sarà pubblicato in News e nella pagina squadra dopo approvazione.</p></div></div>
-      <form id="teamNewsRequestForm" class="form-grid">
-        <label class="span-2">Titolo<input id="teamNewsRequestTitle" class="input" type="text" required ${requestDisabled} /></label>
-        <label class="span-2">Testo<textarea id="teamNewsRequestBody" class="input textarea" rows="5" required ${requestDisabled}></textarea></label>
-        <div class="form-actions span-2"><button class="button button-primary" type="submit" ${requestDisabled}>Invia comunicato</button><span id="teamNewsRequestStatus" class="form-status"></span></div>
-      </form>
-    </section>`;
-  attachUserAreaHandlersV34();
-}
-
-attachUserAreaHandlersV34 = function attachUserAreaHandlersV34() {
-  document.querySelectorAll("[data-user-logout]").forEach((button) => {
-    button.addEventListener("click", async () => signOut(auth));
-  });
-  document.getElementById("teamFmRequestForm")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    submitTeamRequestV34("FM_MOVEMENT", {
-      movementType: document.getElementById("teamFmRequestType")?.value || "ALTRO",
-      amount: parseDecimalValue(document.getElementById("teamFmRequestAmount")?.value || "0") || 0,
-      playerName: document.getElementById("teamFmRequestPlayer")?.value.trim() || "",
-      description: document.getElementById("teamFmRequestDescription")?.value.trim() || ""
-    }, "teamFmRequestStatus");
-    event.target.reset();
-  });
-
-  document.getElementById("teamMarketRequestForm")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const type = document.getElementById("teamMarketRequestType")?.value || "PLAYER_BUY_REQUEST";
-    submitTeamRequestV34(type, {
-      amount: parseDecimalValue(document.getElementById("teamMarketRequestAmount")?.value || "") || null,
-      playerName: document.getElementById("teamMarketRequestPlayer")?.value.trim() || "",
-      realTeam: abbreviateRealTeam(document.getElementById("teamMarketRequestRealTeam")?.value || ""),
-      rosterRole: document.getElementById("teamMarketRequestRole")?.value.trim() || "",
-      notes: document.getElementById("teamMarketRequestNotes")?.value.trim() || ""
-    }, "teamMarketRequestStatus");
-    event.target.reset();
-  });
-
-  document.getElementById("teamNewsRequestForm")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    submitTeamRequestV34("TEAM_NEWS", {
-      title: document.getElementById("teamNewsRequestTitle")?.value.trim() || "Comunicato squadra",
-      body: document.getElementById("teamNewsRequestBody")?.value || ""
-    }, "teamNewsRequestStatus");
-    event.target.reset();
-  });
-}
-
-function renderSeasonRolloverAdminPanelV50() {
-  const currentSeasonId = getCurrentSeasonId();
-  const seasonOptions = (state.raw.seasons || []).map((season) => `<option value="${escapeHtml(season.id)}" ${season.id === currentSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>`).join("");
-  return renderAdminPanel("adminSeasonRolloverPanelV50", "Stagioni", "Riversa stagione", "Copia squadre stagionali, presidenti, loghi, stadi e rose attive dalla stagione origine alla nuova stagione.", `
-    <form id="seasonRolloverFormV50" class="form-grid">
-      <label>Stagione origine<select id="rolloverSourceSeasonV50" class="input" required>${seasonOptions}</select></label>
-      <label>ID nuova stagione<input id="rolloverTargetSeasonV50" class="input" type="text" placeholder="Es. 2026-2027" required /></label>
-      <label>Nome nuova stagione<input id="rolloverTargetSeasonNameV50" class="input" type="text" placeholder="Es. Stagione 2026-2027" /></label>
-      <label class="checkbox-label"><input id="rolloverCopyStadiumsV50" type="checkbox" checked /> Copia stadi</label>
-      <label class="checkbox-label"><input id="rolloverCopyRostersV50" type="checkbox" checked /> Copia rose e giocatori attivi</label>
-      <label class="checkbox-label"><input id="rolloverUpdateUsersV50" type="checkbox" /> Aggiorna utenti presidenti alla nuova stagione</label>
-      <div class="form-actions span-2"><button class="button button-primary" type="submit">Riversa stagione</button><span id="seasonRolloverStatusV50" class="form-status"></span></div>
-    </form>
-    <small class="field-hint">Il riversamento crea nuovi documenti <code>seasonTeams</code> e, se selezionato, copia stadi e rosterEntries attivi. I movimenti FM non vengono copiati.</small>
-  `);
-}
-
-async function rolloverSeasonV50(event) {
-  event.preventDefault();
-  const sourceSeasonId = document.getElementById("rolloverSourceSeasonV50")?.value || "";
-  const targetSeasonId = document.getElementById("rolloverTargetSeasonV50")?.value.trim() || "";
-  const targetSeasonName = document.getElementById("rolloverTargetSeasonNameV50")?.value.trim() || `Stagione ${targetSeasonId}`;
-  const copyStadiums = Boolean(document.getElementById("rolloverCopyStadiumsV50")?.checked);
-  const copyRosters = Boolean(document.getElementById("rolloverCopyRostersV50")?.checked);
-  const updateUsers = Boolean(document.getElementById("rolloverUpdateUsersV50")?.checked);
-  const status = document.getElementById("seasonRolloverStatusV50");
-  if (!sourceSeasonId || !targetSeasonId) return;
-  if (sourceSeasonId === targetSeasonId) {
-    showMessage("seasonRolloverStatusV50", "La stagione origine e destinazione devono essere diverse.", true);
-    return;
-  }
-  if (!confirm(`Riversare ${sourceSeasonId} in ${targetSeasonId}?`)) return;
-  try {
-    if (status) status.textContent = "Riversamento in corso...";
-    if (!state.hasFullData) await loadFullDataV32({ render: false });
-    await setDoc(doc(db, "seasons", targetSeasonId), {
-      id: targetSeasonId,
-      name: targetSeasonName,
-      isCurrent: false,
-      participantCount: (state.raw.seasonTeams || []).filter((row) => row.seasonId === sourceSeasonId).length,
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp()
-    }, { merge: true });
-
-    const sourceSeasonTeams = (state.raw.seasonTeams || []).filter((row) => row.seasonId === sourceSeasonId);
-    const sourceToTargetSeasonTeam = new Map();
-    for (const seasonTeam of sourceSeasonTeams) {
-      const newSeasonTeamId = `st_${makeIdPart(targetSeasonId)}_${makeIdPart(seasonTeam.teamId || seasonTeam.id)}`;
-      sourceToTargetSeasonTeam.set(seasonTeam.id, newSeasonTeamId);
-      const payload = { ...seasonTeam };
-      delete payload.id;
-      payload.seasonId = targetSeasonId;
-      payload.updatedAt = serverTimestamp();
-      payload.createdAt = payload.createdAt || serverTimestamp();
-      await setDoc(doc(db, "seasonTeams", newSeasonTeamId), payload, { merge: true });
-    }
-
-    if (copyStadiums) {
-      const stadiums = (state.raw.stadiums || []).filter((stadium) => sourceToTargetSeasonTeam.has(stadium.seasonTeamId));
-      for (const stadium of stadiums) {
-        const newSeasonTeamId = sourceToTargetSeasonTeam.get(stadium.seasonTeamId);
-        const payload = { ...stadium };
-        delete payload.id;
-        payload.seasonTeamId = newSeasonTeamId;
-        payload.updatedAt = serverTimestamp();
-        await setDoc(doc(db, "stadiums", `stadium_${makeIdPart(targetSeasonId)}_${makeIdPart(newSeasonTeamId)}`), payload, { merge: true });
-      }
-    }
-
-    if (copyRosters) {
-      const rosterEntries = (state.raw.rosterEntries || []).filter((entry) => sourceToTargetSeasonTeam.has(entry.seasonTeamId) && (entry.status || "ACTIVE") === "ACTIVE");
-      for (const entry of rosterEntries) {
-        const newSeasonTeamId = sourceToTargetSeasonTeam.get(entry.seasonTeamId);
-        const payload = { ...entry };
-        delete payload.id;
-        payload.seasonId = targetSeasonId;
-        payload.seasonTeamId = newSeasonTeamId;
-        payload.updatedAt = serverTimestamp();
-        const docId = `${makeIdPart(targetSeasonId)}_${makeIdPart(newSeasonTeamId)}_${makeIdPart(entry.playerName || entry.id)}`;
-        await setDoc(doc(db, "rosterEntries", docId), payload, { merge: true });
-      }
-    }
-
-    if (updateUsers) {
-      const activeUsers = (state.raw.teamUsers || []).filter((user) => user.status === "ACTIVE" && sourceToTargetSeasonTeam.has(user.seasonTeamId));
-      for (const user of activeUsers) {
-        const newSeasonTeamId = sourceToTargetSeasonTeam.get(user.seasonTeamId);
-        await setDoc(doc(db, "teamUsers", user.id), {
-          seasonId: targetSeasonId,
-          seasonTeamId: newSeasonTeamId,
-          updatedAt: serverTimestamp()
-        }, { merge: true });
-      }
-    }
-
-    await loadFullDataV32({ render: true });
-    expandAdminPanel("adminSeasonRolloverPanelV50");
-    showMessage("seasonRolloverStatusV50", `Riversamento completato: ${sourceSeasonTeams.length} squadre stagionali copiate.`);
-  } catch (error) {
-    console.error(error);
-    showMessage("seasonRolloverStatusV50", `Errore riversamento: ${error?.message || error}`, true);
-  }
-}
-
-const buildPublicSeasonSnapshotBeforeV50 = buildPublicSeasonSnapshotV34;
-buildPublicSeasonSnapshotV34 = function buildPublicSeasonSnapshotV50(seasonId) {
-  const snapshot = buildPublicSeasonSnapshotBeforeV50(seasonId);
-  snapshot.news = sortNewsRowsV50(snapshot.news || state.raw.news || [])
-    .filter((item) => !item.seasonId || item.seasonId === seasonId)
-    .slice(0, 40)
-    .map((item) => ({
-      id: item.id,
-      title: item.title || "",
-      body: item.body || "",
-      topic: item.topic || "",
-      seasonId: item.seasonId || "",
-      teamId: item.teamId || "",
-      seasonTeamId: item.seasonTeamId || "",
-      publishedAt: normalizeDateTimeLocalV50(item.publishedAt || item.createdAt || "")
-    }));
-  snapshot.snapshotVersion = 50;
-  return snapshot;
-};
-
-const buildPublicTeamSnapshotBeforeV50 = buildPublicTeamSnapshotV34;
-buildPublicTeamSnapshotV34 = function buildPublicTeamSnapshotV50(seasonTeam) {
-  const snapshot = buildPublicTeamSnapshotBeforeV50(seasonTeam);
-  snapshot.recentNews = sortNewsRowsV50(snapshot.recentNews || [])
-    .slice(0, 10)
-    .map((item) => ({ ...item, publishedAt: normalizeDateTimeLocalV50(item.publishedAt || item.createdAt || "") }));
-  snapshot.snapshotVersion = 50;
-  return snapshot;
-};
-
-const renderNewsPublicBeforeV50 = renderNewsPublicV34;
-renderNewsPublicV34 = function renderNewsPublicV50() {
-  const target = document.getElementById("newsList");
-  if (!target) return renderNewsPublicBeforeV50?.();
-  const rows = sortNewsRowsV50(state.raw.news || []).slice(0, 80);
-  target.innerHTML = rows.length ? rows.map((news) => `
-    <article class="news-card">
-      <div class="news-card-header">
-        <div>
-          <small>${escapeHtml(news.topic === "COMUNICATO_SQUADRA" ? "Comunicato squadra" : news.topic || "News")}</small>
-          <h3>${escapeHtml(news.title || "Comunicato")}</h3>
-          ${news.seasonTeamId ? `<small>${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false })}</small>` : ""}
-        </div>
-        <small>${escapeHtml(formatDateTimeV50(news.publishedAt || news.createdAt || ""))}</small>
-      </div>
-      <p class="news-body-preserve">${escapeHtml(news.body || "")}</p>
-    </article>`).join("") : `<p class="muted">Nessuna news pubblicata.</p>`;
-};
-
-const renderDashboardNewsBeforeV50 = typeof renderDashboardNewsV42 === "function" ? renderDashboardNewsV42 : null;
-if (renderDashboardNewsBeforeV50) {
-  renderDashboardNewsV42 = function renderDashboardNewsV50() {
-    const dashboardPage = document.querySelector('[data-page="dashboard"]');
-    const dashboardGrid = dashboardPage?.querySelector('.dashboard-grid');
-    if (!dashboardPage || !dashboardGrid) return renderDashboardNewsBeforeV50();
-    let panel = document.getElementById('dashboardNewsPanel');
-    if (!panel) {
-      panel = document.createElement('section');
-      panel.id = 'dashboardNewsPanel';
-      panel.className = 'panel dashboard-news-panel';
-      panel.innerHTML = `
-        <div class="panel-header compact">
-          <div>
-            <h2>Ultime news e comunicati</h2>
-            <p>Comunicati generali, competizioni e comunicati squadra pubblicati di recente.</p>
-          </div>
-          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
-        </div>
-        <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
-      dashboardGrid.parentNode.insertBefore(panel, dashboardGrid);
-    }
-    const target = document.getElementById('dashboardNewsList');
-    if (!target) return;
-    const rows = sortNewsRowsV50(state.raw.news || []).slice(0, 5);
-    target.innerHTML = rows.length ? rows.map((news) => `
-      <article class="dashboard-news-card">
-        <div>
-          <small class="muted">${escapeHtml(news.topic === 'COMUNICATO_SQUADRA' ? 'Comunicato squadra' : news.topic || 'News')}</small>
-          <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
-          ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ''}
-        </div>
-        <div class="dashboard-news-side">
-          <small class="muted">${escapeHtml(formatDateTimeV50(news.publishedAt || news.createdAt || ''))}</small>
-          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
-        </div>
-      </article>`).join('') : `<p class="muted">Nessuna news pubblicata.</p>`;
-  };
-}
-
-
-/* V51 - Resilient startup and reserved area access.
-   Keep login/navigation clickable even if Firestore startup fails or hangs. */
-function bootstrapReservedAreaButtonV51() {
-  const openLoginBtn = document.getElementById("openLoginBtn");
-  const loginDialog = document.getElementById("loginDialog");
-  const closeLoginBtn = document.getElementById("closeLoginBtn");
-  if (openLoginBtn && !openLoginBtn.dataset.v51ReservedAccessBound) {
-    openLoginBtn.dataset.v51ReservedAccessBound = "true";
-    openLoginBtn.textContent = state.user ? "Account" : "Area Riservata";
-    openLoginBtn.addEventListener("click", () => {
-      if (loginDialog?.showModal) loginDialog.showModal();
-      else loginDialog?.setAttribute("open", "open");
-    });
-  }
-  if (closeLoginBtn && !closeLoginBtn.dataset.v51CloseLoginBound) {
-    closeLoginBtn.dataset.v51CloseLoginBound = "true";
-    closeLoginBtn.addEventListener("click", () => loginDialog?.close?.());
-  }
-}
-
-function showStartupFailureV51(error) {
-  window.__ZO_APP_READY = false;
-  console.error(error);
-  const code = error?.code ? `${error.code} - ` : "";
-  const message = error?.message || String(error || "Errore sconosciuto");
-  setError(`Avvio parziale: alcune funzioni non sono state caricate. ${code}${message}`);
-  bootstrapReservedAreaButtonV51();
-}
-
-bootstrapReservedAreaButtonV51();
-initializeAppUi()
-  .then(() => {
-    window.__ZO_APP_READY = true;
-    bootstrapReservedAreaButtonV51();
-    injectDisplayModeToggle();
-    updateMobileUxClass();
-  })
-  .catch(showStartupFailureV51);
+initializeAppUi().then(() => {
+  injectDisplayModeToggle();
+  updateMobileUxClass();
+});
 
 /* V27 - Robust mobile roster toggles.
    Keep rosters collapsed by default on first mobile render and handle roster toggle
@@ -7820,138 +7175,323 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
   scheduleViewportSizing();
 })();
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  try {
-    bootstrapReservedAreaButtonV51();
-    const openLoginBtn = document.getElementById("openLoginBtn");
-    if (openLoginBtn && !state.user) openLoginBtn.textContent = "Area Riservata";
-  } catch (error) {
-    console.error(error);
+/* V50 - Season rollover and transfer communication emails. */
+(function setupV50SeasonRolloverAndTransferEmails() {
+  if (typeof ADMIN_PANEL_IDS !== "undefined" && !ADMIN_PANEL_IDS.includes("adminSeasonRolloverPanel")) {
+    ADMIN_PANEL_IDS.push("adminSeasonRolloverPanel");
+    state.collapsedAdminPanels?.add?.("adminSeasonRolloverPanel");
   }
-});
 
+  function safeIdPart(value) {
+    return String(value || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "") || "item";
+  }
 
-/* V55 - Make logout visible for every authenticated user and add account controls in reserved-area dialog. */
-(function setupUniversalAccountLogoutV55() {
-  function safeApprovedTeamUser() {
-    try {
-      return typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
-    } catch (error) {
-      return null;
+  function renderSeasonRolloverAdminPanelV50() {
+    const seasonOptions = (state.raw.seasons || [])
+      .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name || season.id)}</option>`)
+      .join("");
+    const defaultSource = getCurrentSeasonId() || (state.raw.seasons || [])[0]?.id || "";
+    const defaultTarget = inferNextSeasonIdV50(defaultSource);
+
+    return renderAdminPanel("adminSeasonRolloverPanel", "Stagioni", "Riversa stagione", "Crea una nuova stagione partendo da squadre, presidenti, rose, stadi, utenti e saldi della stagione precedente.", `
+      <form id="seasonRolloverFormV50" class="form-grid">
+        <label>Stagione origine
+          <select id="rolloverSourceSeasonV50" class="input" required>${seasonOptions}</select>
+        </label>
+        <label>Stagione destinazione
+          <input id="rolloverTargetSeasonV50" class="input" type="text" value="${escapeHtml(defaultTarget)}" placeholder="Es. 2026-2027" required />
+        </label>
+        <label>Nome nuova stagione
+          <input id="rolloverTargetNameV50" class="input" type="text" value="${escapeHtml(defaultTarget ? `Stagione ${defaultTarget}` : "")}" />
+        </label>
+        <label>Budget iniziale se reset
+          <input id="rolloverInitialBudgetV50" class="input" type="text" inputmode="decimal" value="500" />
+        </label>
+        <label class="checkbox-label"><input id="rolloverCopySeasonTeamsV50" type="checkbox" checked /> Copia squadre stagionali, presidenti e loghi</label>
+        <label class="checkbox-label"><input id="rolloverCopyStadiumsV50" type="checkbox" checked /> Copia stadi</label>
+        <label class="checkbox-label"><input id="rolloverCopyRostersV50" type="checkbox" checked /> Copia rose</label>
+        <label class="checkbox-label"><input id="rolloverCopyBalancesV50" type="checkbox" checked /> Mantieni saldo FM finale</label>
+        <label class="checkbox-label"><input id="rolloverCopyUsersV50" type="checkbox" checked /> Copia utenti squadra approvati</label>
+        <label class="checkbox-label"><input id="rolloverGenerateCompetitionsV50" type="checkbox" checked /> Genera competizioni standard</label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit">Riversa stagione</button>
+          <span id="seasonRolloverStatusV50" class="form-status"></span>
+        </div>
+      </form>
+      <small class="field-hint">Dopo il riversamento rigenera gli snapshot pubblici. I presidenti anagrafici non vengono duplicati: vengono collegati alla nuova squadra stagionale.</small>
+    `);
+  }
+
+  function inferNextSeasonIdV50(sourceSeasonId) {
+    const match = String(sourceSeasonId || "").match(/(\d{4})\D+(\d{4})/);
+    if (!match) return "";
+    return `${Number(match[1]) + 1}-${Number(match[2]) + 1}`;
+  }
+
+  async function saveDefaultCompetitionsV50(targetSeasonId) {
+    const defaults = [
+      { id: `${targetSeasonId}_campionato`, name: "Campionato", type: "REGULAR_SEASON", formula: "CLASSIFICA", status: "PLANNED" },
+      { id: `${targetSeasonId}_coppa_italia`, name: "Coppa Italia", type: "COPPA_ITALIA", formula: "GIRONI_KO", status: "PLANNED" },
+      { id: `${targetSeasonId}_champions`, name: "Champions League", type: "CHAMPIONS", formula: "GIRONI_KO", status: "PLANNED" },
+      { id: `${targetSeasonId}_playoff`, name: "Playoff", type: "PLAYOFF", formula: "GIRONI_KO", status: "PLANNED" }
+    ];
+    for (const competition of defaults) {
+      await setDoc(doc(db, "competitions", competition.id), {
+        seasonId: targetSeasonId,
+        name: competition.name,
+        type: competition.type,
+        formula: competition.formula,
+        status: competition.status,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      }, { merge: true });
     }
+    return defaults.length;
   }
 
-  function ensureAccountBox() {
-    const form = document.getElementById("loginForm");
-    if (!form) return null;
-    let box = document.getElementById("loginAccountBox");
-    if (!box) {
-      box = document.createElement("div");
-      box.id = "loginAccountBox";
-      box.className = "account-box hidden";
-      const intro = form.querySelector("p.muted") || form.querySelector("h2");
-      if (intro?.nextSibling) intro.parentNode.insertBefore(box, intro.nextSibling);
-      else form.insertBefore(box, form.firstChild);
+  async function handleSeasonRolloverV50(event) {
+    event.preventDefault();
+    const sourceSeasonId = document.getElementById("rolloverSourceSeasonV50")?.value || "";
+    const targetSeasonId = document.getElementById("rolloverTargetSeasonV50")?.value.trim() || "";
+    const targetName = document.getElementById("rolloverTargetNameV50")?.value.trim() || `Stagione ${targetSeasonId}`;
+    const initialBudget = parseDecimalValue(document.getElementById("rolloverInitialBudgetV50")?.value || "500") || 0;
+    const copySeasonTeams = document.getElementById("rolloverCopySeasonTeamsV50")?.checked;
+    const copyStadiums = document.getElementById("rolloverCopyStadiumsV50")?.checked;
+    const copyRosters = document.getElementById("rolloverCopyRostersV50")?.checked;
+    const copyBalances = document.getElementById("rolloverCopyBalancesV50")?.checked;
+    const copyUsers = document.getElementById("rolloverCopyUsersV50")?.checked;
+    const generateCompetitions = document.getElementById("rolloverGenerateCompetitionsV50")?.checked;
+
+    if (!sourceSeasonId || !targetSeasonId) {
+      showMessage("seasonRolloverStatusV50", "Indica stagione origine e destinazione.", true);
+      return;
     }
-    return box;
-  }
-
-  function renderAccountBox() {
-    const box = ensureAccountBox();
-    if (!box) return;
-    const user = state.user;
-    if (!user) {
-      box.classList.add("hidden");
-      box.innerHTML = "";
+    if (sourceSeasonId === targetSeasonId) {
+      showMessage("seasonRolloverStatusV50", "La stagione destinazione deve essere diversa dall'origine.", true);
       return;
     }
 
-    const approved = safeApprovedTeamUser();
-    const teamName = approved
-      ? (typeof getSeasonTeamDisplayName === "function" ? getSeasonTeamDisplayName(approved.seasonTeamId) : "")
-      : "";
+    try {
+      showMessage("seasonRolloverStatusV50", "Riversamento in corso...");
+      if (!state.hasFullData) await loadFullDataV32({ render: false });
 
-    box.classList.remove("hidden");
-    box.innerHTML = `
-      <div class="account-box-row">
-        <div>
-          <strong>${escapeHtml(user.displayName || user.email || "Utente")}</strong>
-          <small>${escapeHtml(user.email || "")}</small>
-          ${teamName ? `<small>Squadra: ${escapeHtml(teamName)}</small>` : ""}
-        </div>
-        <div class="account-box-actions">
-          ${approved ? `<button class="button button-secondary button-small" type="button" data-account-team>La mia squadra</button>` : ""}
-          <button class="button button-danger button-small" type="button" data-account-logout>Logout</button>
-        </div>
-      </div>`;
+      await setDoc(doc(db, "seasons", targetSeasonId), {
+        id: targetSeasonId,
+        name: targetName,
+        isCurrent: false,
+        participantCount: (state.raw.seasonTeams || []).filter((item) => item.seasonId === sourceSeasonId).length,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      }, { merge: true });
 
-    box.querySelector("[data-account-logout]")?.addEventListener("click", async () => {
-      await signOut(auth);
-      document.getElementById("loginDialog")?.close?.();
-    });
+      const sourceSeasonTeams = (state.raw.seasonTeams || []).filter((item) => item.seasonId === sourceSeasonId);
+      const sourceToTargetSeasonTeamId = new Map();
+      let seasonTeamsCreated = 0;
+      let stadiumsCreated = 0;
+      let rostersCreated = 0;
+      let movementsCreated = 0;
+      let usersUpdated = 0;
+      let competitionsCreated = 0;
 
-    box.querySelector("[data-account-team]")?.addEventListener("click", () => {
-      const seasonTeamId = approved?.seasonTeamId;
-      document.getElementById("loginDialog")?.close?.();
-      if (seasonTeamId && typeof openTeamProfileV34 === "function") openTeamProfileV34(seasonTeamId);
-      else if (seasonTeamId && typeof openTeamProfile === "function") openTeamProfile(seasonTeamId);
-      else if (typeof setPage === "function") setPage("teamarea");
-    });
-  }
-
-  function refreshHeaderAuthButtons() {
-    const openLoginBtn = document.getElementById("openLoginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const isLoggedIn = Boolean(state.user);
-    const isAdmin = Boolean(state.isAdmin);
-
-    if (openLoginBtn) {
-      openLoginBtn.classList.toggle("hidden", isAdmin);
-      openLoginBtn.textContent = isLoggedIn && !isAdmin ? "Account" : "Area Riservata";
-    }
-
-    if (logoutBtn) {
-      logoutBtn.classList.toggle("hidden", !isLoggedIn);
-      logoutBtn.textContent = "Logout";
-      if (!logoutBtn.dataset.logoutV55Bound) {
-        logoutBtn.dataset.logoutV55Bound = "true";
-        logoutBtn.addEventListener("click", async () => {
-          await signOut(auth);
-          document.getElementById("loginDialog")?.close?.();
-        });
+      if (copySeasonTeams) {
+        for (const seasonTeam of sourceSeasonTeams) {
+          const targetId = `${safeIdPart(targetSeasonId)}_${safeIdPart(seasonTeam.teamId || seasonTeam.id)}`;
+          sourceToTargetSeasonTeamId.set(seasonTeam.id, targetId);
+          const payload = {
+            ...seasonTeam,
+            id: targetId,
+            seasonId: targetSeasonId,
+            previousSeasonTeamId: seasonTeam.id,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp()
+          };
+          delete payload.createdAtText;
+          await setDoc(doc(db, "seasonTeams", targetId), payload, { merge: true });
+          seasonTeamsCreated += 1;
+        }
       }
+
+      if (copyStadiums) {
+        for (const stadium of state.raw.stadiums || []) {
+          const targetSeasonTeamId = sourceToTargetSeasonTeamId.get(stadium.seasonTeamId);
+          if (!targetSeasonTeamId) continue;
+          const targetId = `${safeIdPart(targetSeasonId)}_${safeIdPart(targetSeasonTeamId)}_stadium`;
+          await setDoc(doc(db, "stadiums", targetId), {
+            ...stadium,
+            id: targetId,
+            seasonId: targetSeasonId,
+            seasonTeamId: targetSeasonTeamId,
+            previousStadiumId: stadium.id,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp()
+          }, { merge: true });
+          stadiumsCreated += 1;
+        }
+      }
+
+      if (copyRosters) {
+        for (const entry of state.raw.rosterEntries || []) {
+          if (entry.seasonId !== sourceSeasonId) continue;
+          const targetSeasonTeamId = sourceToTargetSeasonTeamId.get(entry.seasonTeamId);
+          if (!targetSeasonTeamId) continue;
+          const targetId = `${safeIdPart(targetSeasonId)}_${safeIdPart(targetSeasonTeamId)}_${safeIdPart(entry.playerName || entry.id)}`;
+          await setDoc(doc(db, "rosterEntries", targetId), {
+            ...entry,
+            id: targetId,
+            seasonId: targetSeasonId,
+            seasonTeamId: targetSeasonTeamId,
+            previousRosterEntryId: entry.id,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp()
+          }, { merge: true });
+          rostersCreated += 1;
+        }
+      }
+
+      for (const sourceSeasonTeam of sourceSeasonTeams) {
+        const targetSeasonTeamId = sourceToTargetSeasonTeamId.get(sourceSeasonTeam.id);
+        if (!targetSeasonTeamId) continue;
+        const amount = copyBalances ? getTeamFmBalance(sourceSeasonTeam.id) : initialBudget;
+        const movementId = `${safeIdPart(targetSeasonId)}_${safeIdPart(targetSeasonTeamId)}_initial_budget`;
+        await setDoc(doc(db, "fmMovements", movementId), {
+          id: movementId,
+          seasonId: targetSeasonId,
+          seasonTeamId: targetSeasonTeamId,
+          type: "INITIAL_BUDGET",
+          amount,
+          date: new Date().toISOString().slice(0, 10),
+          description: copyBalances ? "Saldo riversato dalla stagione precedente" : "Budget iniziale nuova stagione",
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
+        }, { merge: true });
+        movementsCreated += 1;
+      }
+
+      if (copyUsers) {
+        for (const teamUser of state.raw.teamUsers || []) {
+          if (teamUser.status !== "ACTIVE") continue;
+          const targetSeasonTeamId = sourceToTargetSeasonTeamId.get(teamUser.seasonTeamId);
+          if (!targetSeasonTeamId) continue;
+          await setDoc(doc(db, "teamUsers", teamUser.id), {
+            ...teamUser,
+            seasonId: targetSeasonId,
+            seasonTeamId: targetSeasonTeamId,
+            previousSeasonTeamId: teamUser.seasonTeamId,
+            updatedAt: serverTimestamp()
+          }, { merge: true });
+          usersUpdated += 1;
+        }
+      }
+
+      if (generateCompetitions) competitionsCreated = await saveDefaultCompetitionsV50(targetSeasonId);
+
+      await loadFullDataV32({ render: true });
+      expandAdminPanel("adminSeasonRolloverPanel");
+      showMessage("seasonRolloverStatusV50", `Riversamento completato: ${seasonTeamsCreated} squadre, ${stadiumsCreated} stadi, ${rostersCreated} giocatori, ${movementsCreated} saldi, ${usersUpdated} utenti, ${competitionsCreated} competizioni.`);
+    } catch (error) {
+      console.error(error);
+      showMessage("seasonRolloverStatusV50", error?.message || "Errore durante il riversamento.", true);
     }
-
-    renderAccountBox();
   }
 
-  const previousUpdateAdminVisibility = typeof updateAdminVisibility === "function" ? updateAdminVisibility : null;
-  if (previousUpdateAdminVisibility) {
-    updateAdminVisibility = function updateAdminVisibilityV55() {
-      previousUpdateAdminVisibility();
-      refreshHeaderAuthButtons();
+  async function sendTransferCommunicationEmailV50(payload) {
+    const emailModule = await import("./emailjs.js");
+    const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
+    await emailModule.sendTransferEmail({
+      to_email: "caparrotti86@yahoo.it",
+      team_name: teamName,
+      president_name: payload.createdByName || getCurrentUserDisplayName(),
+      title: payload.title || "Comunicato avvenuto scambio",
+      message: payload.body || payload.message || "",
+      created_at: new Date().toLocaleString("it-IT"),
+      subject: `Comunicato avvenuto scambio ${teamName}`
+    });
+  }
+
+  function enhanceTransferCommunicationFormV50() {
+    const target = document.getElementById("teamAreaBody");
+    const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+    if (!target || !approved || document.getElementById("teamTransferCommunicationFormV50")) return;
+    const newsPanel = document.getElementById("teamNewsRequestForm")?.closest("section, article");
+    const html = `
+      <section class="panel">
+        <div class="panel-header compact"><div><h2>Comunicato avvenuto scambio</h2><p>Invia un comunicato alla lega via email e salvalo tra le richieste.</p></div></div>
+        <form id="teamTransferCommunicationFormV50" class="form-grid">
+          <label class="span-2">Titolo<input id="teamTransferTitleV50" class="input" type="text" value="Comunicato avvenuto scambio" required /></label>
+          <label class="span-2">Testo comunicato<textarea id="teamTransferBodyV50" class="input textarea" rows="5" required></textarea></label>
+          <label>Giocatori coinvolti <span class="muted">(opzionale)</span><input id="teamTransferPlayersV50" class="input" type="text" /></label>
+          <label>Squadra coinvolta <span class="muted">(opzionale)</span><input id="teamTransferOtherTeamV50" class="input" type="text" /></label>
+          <div class="form-actions span-2"><button class="button button-primary" type="submit">Invia comunicato di scambio</button><span id="teamTransferStatusV50" class="form-status"></span></div>
+        </form>
+        <small class="field-hint">La mail viene inviata a caparrotti86@yahoo.it con oggetto: Comunicato avvenuto scambio NOME_SQUADRA.</small>
+      </section>`;
+    if (newsPanel) newsPanel.insertAdjacentHTML("afterend", html);
+    else target.insertAdjacentHTML("beforeend", html);
+
+    document.getElementById("teamTransferCommunicationFormV50")?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      try {
+        showMessage("teamTransferStatusV50", "Invio comunicato in corso...");
+        const payload = {
+          ...buildBaseTeamRequestPayloadV34("TRANSFER_NEWS"),
+          title: document.getElementById("teamTransferTitleV50")?.value || "Comunicato avvenuto scambio",
+          body: document.getElementById("teamTransferBodyV50")?.value || "",
+          players: document.getElementById("teamTransferPlayersV50")?.value || "",
+          otherTeam: document.getElementById("teamTransferOtherTeamV50")?.value || "",
+          emailTo: "caparrotti86@yahoo.it"
+        };
+        await addDoc(collection(db, "teamRequests"), payload);
+        await sendTransferCommunicationEmailV50(payload);
+        showMessage("teamTransferStatusV50", "Comunicato salvato e email inviata alla lega.");
+        event.target.reset();
+      } catch (error) {
+        console.error(error);
+        showMessage("teamTransferStatusV50", error?.message || "Errore durante invio comunicato.", true);
+      }
+    });
+  }
+
+  const renderUserAreaBeforeV50 = typeof renderUserAreaV34 === "function" ? renderUserAreaV34 : null;
+  if (renderUserAreaBeforeV50) {
+    renderUserAreaV34 = function renderUserAreaV50() {
+      renderUserAreaBeforeV50();
+      enhanceTransferCommunicationFormV50();
     };
   }
 
-  const previousUpdateUserVisibility = typeof updateUserVisibilityV34 === "function" ? updateUserVisibilityV34 : null;
-  if (previousUpdateUserVisibility) {
-    updateUserVisibilityV34 = function updateUserVisibilityV55() {
-      previousUpdateUserVisibility();
-      refreshHeaderAuthButtons();
-    };
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    refreshHeaderAuthButtons();
-    const openLoginBtn = document.getElementById("openLoginBtn");
-    if (openLoginBtn && !openLoginBtn.dataset.accountV55Bound) {
-      openLoginBtn.dataset.accountV55Bound = "true";
-      openLoginBtn.addEventListener("click", () => {
-        renderAccountBox();
+  const renderAdminAreaBeforeV50 = typeof renderAdminArea === "function" ? renderAdminArea : null;
+  if (renderAdminAreaBeforeV50) {
+    renderAdminArea = function renderAdminAreaV50() {
+      renderAdminAreaBeforeV50();
+      if (!state.isAdmin) return;
+      const adminPanel = document.getElementById("adminPanel");
+      if (!adminPanel || document.getElementById("adminSeasonRolloverPanel")) return;
+      const snapshotPanel = document.getElementById("adminPublicSnapshotsPanel");
+      if (snapshotPanel) snapshotPanel.insertAdjacentHTML("beforebegin", renderSeasonRolloverAdminPanelV50());
+      else adminPanel.insertAdjacentHTML("beforeend", renderSeasonRolloverAdminPanelV50());
+      document.getElementById("seasonRolloverFormV50")?.addEventListener("submit", handleSeasonRolloverV50);
+      const sourceSelect = document.getElementById("rolloverSourceSeasonV50");
+      const targetInput = document.getElementById("rolloverTargetSeasonV50");
+      const targetName = document.getElementById("rolloverTargetNameV50");
+      if (sourceSelect && getCurrentSeasonId()) sourceSelect.value = getCurrentSeasonId();
+      sourceSelect?.addEventListener("change", () => {
+        const next = inferNextSeasonIdV50(sourceSelect.value);
+        if (targetInput && !targetInput.value) targetInput.value = next;
+        if (targetName && !targetName.value) targetName.value = next ? `Stagione ${next}` : "";
       });
-    }
-  });
+    };
+  }
 
-  window.addEventListener("focus", refreshHeaderAuthButtons);
+  const attachAdminHandlersBeforeV50 = typeof attachAdminHandlers === "function" ? attachAdminHandlers : null;
+  if (attachAdminHandlersBeforeV50) {
+    attachAdminHandlers = function attachAdminHandlersV50() {
+      attachAdminHandlersBeforeV50();
+      document.getElementById("seasonRolloverFormV50")?.addEventListener("submit", handleSeasonRolloverV50);
+    };
+  }
 })();
