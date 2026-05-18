@@ -38,153 +38,23 @@ import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData } from "./js/data/static-files-service.js";
-
-
-
-
-
-
-function renderBoldMarkdown(value) {
-  const escaped = escapeHtml(value || "");
-  return escaped.replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>");
-}
-
-function getTodayIsoDate() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function safeFileName(value) {
-  return String(value || "export")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9-]+/g, "-")
-    .replace(/^-+|-+$/g, "") || "export";
-}
-
-function showMessage(elementId, message, isError = false) {
-  const element = document.getElementById(elementId);
-  if (!element) return;
-  element.textContent = message;
-  element.classList.toggle("text-danger", Boolean(isError));
-  element.classList.toggle("text-success", !isError && Boolean(message));
-}
-
-function setError(message) {
-  const box = document.getElementById("errorBox");
-  if (!box) return;
-  if (!message) {
-    box.classList.add("hidden");
-    box.textContent = "";
-    return;
-  }
-  box.classList.remove("hidden");
-  box.textContent = message;
-}
-
-function setLoadingText(targetId, text) {
-  const element = document.getElementById(targetId);
-  if (element) element.innerHTML = `<p class="muted">${escapeHtml(text)}</p>`;
-}
-
-function getLabel(options, value) {
-  return options.find((option) => option.value === value)?.label || value || "-";
-}
-
-function getFirstSeasonId() {
-  return state.raw.seasons[0]?.id || "";
-}
-
-function getValidSeasonSelection(key) {
-  const currentValue = state[key];
-  if (currentValue && state.raw.seasons.some((season) => season.id === currentValue)) {
-    return currentValue;
-  }
-
-  const fallback = getFirstSeasonId();
-  state[key] = fallback;
-  return fallback;
-}
-
-function parseDecimalValue(value) {
-  if (value === null || value === undefined) return null;
-  const normalized = String(value).trim().replace(/\s+/g, "").replace(",", ".");
-  if (!normalized) return null;
-  const parsed = Number(normalized);
-  return Number.isFinite(parsed) ? parsed : null;
-}
-
-function makeIdPart(value) {
-  return String(value || "")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "") || "item";
-}
-
-function getInitials(name) {
-  const cleanName = String(name || "?").trim();
-  const words = cleanName.split(/\s+/).filter(Boolean);
-  if (!words.length) return "?";
-  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-  return `${words[0][0] || ""}${words[1][0] || ""}`.toUpperCase();
-}
-
-function isBase64Logo(value) {
-  return typeof value === "string" && value.trim().startsWith("data:");
-}
-
-function normalizeLogoPath(value) {
-  const raw = String(value || "").trim();
-  if (!raw || isBase64Logo(raw)) return "";
-  if (/^(https?:|\/|\.\/|\.\.\/|assets\/)/i.test(raw)) return raw;
-  return `./assets/logos/${raw}`;
-}
-
-function getLogoPathForInput(value) {
-  return isBase64Logo(value) ? "" : String(value || "").trim();
-}
-
-function renderTeamLogo(name, logo, extraClass = "") {
-  const logoPath = normalizeLogoPath(logo);
-  if (logoPath) {
-    return `<img class="club-logo ${extraClass}" src="${escapeHtml(logoPath)}" alt="" />`;
-  }
-  return `<span class="club-logo club-logo-placeholder ${extraClass}">${escapeHtml(getInitials(name))}</span>`;
-}
-
-function readLogoFileAsDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.addEventListener("load", () => {
-      const image = new Image();
-
-      image.addEventListener("load", () => {
-        const maxSize = 320;
-        const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
-        const width = Math.max(1, Math.round(image.width * scale));
-        const height = Math.max(1, Math.round(image.height * scale));
-
-        const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-
-        const context = canvas.getContext("2d");
-        context.clearRect(0, 0, width, height);
-        context.drawImage(image, 0, 0, width, height);
-
-        resolve(canvas.toDataURL("image/png"));
-      });
-
-      image.addEventListener("error", () => reject(new Error("Logo non leggibile.")));
-      image.src = reader.result;
-    });
-
-    reader.addEventListener("error", () => reject(new Error("Impossibile leggere il file logo.")));
-    reader.readAsDataURL(file);
-  });
-}
-
+import {
+  renderBoldMarkdown,
+  getTodayIsoDate,
+  safeFileName,
+  showMessage,
+  setError,
+  setLoadingText,
+  getLabel,
+  parseDecimalValue,
+  makeIdPart,
+  getInitials,
+  isBase64Logo,
+  normalizeLogoPath,
+  getLogoPathForInput,
+  renderTeamLogo,
+  readLogoFileAsDataUrl
+} from "./js/core/ui.js";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
