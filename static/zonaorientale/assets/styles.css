@@ -9949,3 +9949,127 @@ body.is-mobile-ux .team-profile-player-cell strong {
     line-height: 1.55;
   }
 }
+
+/* V50 - Dashboard news preview first and mobile roster expansion fix. */
+.dashboard-news-main {
+  min-width: 0;
+}
+
+.dashboard-news-preview {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .dashboard-news-panel {
+    margin-bottom: 8px;
+  }
+
+  .dashboard-news-card {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .dashboard-news-side {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .dashboard-news-preview {
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+
+  .app-page[data-page="clubs"] .roster-season-table-wrap,
+  .app-page[data-page="clubs"] .roster-inline-table-wrap {
+    max-height: none !important;
+    height: auto !important;
+    overflow-y: visible !important;
+    overflow-x: auto !important;
+  }
+
+  .app-page[data-page="clubs"] .roster-season-table,
+  .app-page[data-page="clubs"] .roster-season-table tbody,
+  .app-page[data-page="clubs"] .roster-season-table tr,
+  .app-page[data-page="clubs"] .roster-season-table td {
+    overflow: visible !important;
+  }
+
+  .app-page[data-page="clubs"] .roster-detail-row,
+  .app-page[data-page="clubs"] .roster-detail-row > td {
+    position: relative !important;
+    z-index: 1;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    clear: both;
+  }
+
+  .app-page[data-page="clubs"] .roster-detail-row > td {
+    padding: 8px 4px 12px !important;
+    background: rgba(15, 23, 42, 0.5) !important;
+  }
+
+  .app-page[data-page="clubs"] .roster-player-table {
+    margin-bottom: 8px;
+  }
+}
+
+body.is-mobile-ux .dashboard-news-panel {
+  margin-bottom: 8px;
+}
+
+body.is-mobile-ux .dashboard-news-card {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+body.is-mobile-ux .dashboard-news-side {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  text-align: left;
+}
+
+body.is-mobile-ux .dashboard-news-preview {
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table-wrap,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-inline-table-wrap {
+  max-height: none !important;
+  height: auto !important;
+  overflow-y: visible !important;
+  overflow-x: auto !important;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table tbody,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table tr,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table td {
+  overflow: visible !important;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row > td {
+  position: relative !important;
+  z-index: 1;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  clear: both;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row > td {
+  padding: 8px 4px 12px !important;
+  background: rgba(15, 23, 42, 0.5) !important;
+}

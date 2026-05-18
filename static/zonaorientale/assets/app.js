@@ -7504,3 +7504,233 @@ initializeAppUi().then(() => {
   injectDisplayModeToggle();
   updateMobileUxClass();
 });
+
+/* V50 - Dashboard news priority, competition ordering and mobile roster stability. */
+function getCompetitionTypeOrderV50(competition) {
+  const order = {
+    CAMPIONATO: 0,
+    CHAMPIONS_LEAGUE: 1,
+    COPPA_ITALIA: 2,
+    PLAYOFF: 3
+  };
+  return order[competition?.type] ?? 99;
+}
+
+function competitionHasProgrammedMatchesV50(competition) {
+  if (!competition?.id) return false;
+  return (state.raw.competitionMatches || []).some((match) =>
+    match.competitionId === competition.id && match.status !== "GIOCATA"
+  );
+}
+
+function getCompetitionDisplayPriorityV50(competition) {
+  const status = competition?.status || "";
+  if (status === "ATTIVA" && competitionHasProgrammedMatchesV50(competition)) return 0;
+  if (status === "ATTIVA") return 1;
+  if (status === "PROGRAMMATA") return 2;
+  if (status === "CONCLUSA") return 3;
+  return 4;
+}
+
+function compareCompetitionsForPublicDisplayV50(a, b) {
+  const priorityCompare = getCompetitionDisplayPriorityV50(a) - getCompetitionDisplayPriorityV50(b);
+  if (priorityCompare) return priorityCompare;
+
+  const sortOrderA = Number(a?.sortOrder ?? a?.order ?? Number.NaN);
+  const sortOrderB = Number(b?.sortOrder ?? b?.order ?? Number.NaN);
+  if (Number.isFinite(sortOrderA) || Number.isFinite(sortOrderB)) {
+    const orderCompare = (Number.isFinite(sortOrderA) ? sortOrderA : 999) - (Number.isFinite(sortOrderB) ? sortOrderB : 999);
+    if (orderCompare) return orderCompare;
+  }
+
+  const typeCompare = getCompetitionTypeOrderV50(a) - getCompetitionTypeOrderV50(b);
+  if (typeCompare) return typeCompare;
+
+  return String(a?.name || a?.id || "").localeCompare(String(b?.name || b?.id || ""), "it", { numeric: true, sensitivity: "base" });
+}
+
+function getSeasonCompetitionsForPublicDisplayV50(seasonId = getCurrentSeasonId()) {
+  return (state.raw.competitions || [])
+    .filter((competition) => competition.seasonId === seasonId)
+    .sort(compareCompetitionsForPublicDisplayV50);
+}
+
+function getNewsRowsForCurrentSeasonV50(limit = 5) {
+  const seasonId = getCurrentSeasonId();
+  return (state.raw.news || [])
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || "")))
+    .slice(0, limit);
+}
+
+function getNewsPreviewTextV50(body, maxLength = 180) {
+  const text = String(body || "").replace(/\s+/g, " ").trim();
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).replace(/[\s,.!?;:]+$/g, "")}...`;
+}
+
+function renderDashboardCalendar(seasonId) {
+  const target = document.getElementById("dashboardCalendar");
+  if (!target) return;
+
+  const groups = getSeasonCompetitionsForPublicDisplayV50(seasonId)
+    .map((competition) => {
+      const matches = isRankingCompetition(competition)
+        ? getNextChampionshipMatches(competition)
+        : getCupScheduleMatches(competition);
+
+      return {
+        competition,
+        label: isRankingCompetition(competition) ? "Prossima giornata" : "Programmazione coppa",
+        matches
+      };
+    })
+    .filter((group) => group.matches.length);
+
+  if (!groups.length) {
+    target.innerHTML = `<p class="muted">Nessuna partita programmata o giocata per questa stagione.</p>`;
+    return;
+  }
+
+  target.innerHTML = groups.map((group) => `
+    <details class="dashboard-calendar-group dashboard-subsection" open>
+      <summary>
+        <span>
+          <strong>${escapeHtml(group.competition.name)}</strong>
+          <small>${escapeHtml(group.label)}</small>
+        </span>
+        <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
+      </summary>
+      <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
+        <table class="dashboard-calendar-table">
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>Partita</th>
+              <th>Data</th>
+              <th class="number">Risultato</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${group.matches.map((match) => `
+              <tr>
+                <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
+                <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
+                <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
+                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              </tr>`).join("")}
+          </tbody>
+        </table>
+      </div>
+    </details>`).join("");
+}
+
+function renderDashboardNewsV42() {
+  const dashboardPage = document.querySelector('[data-page="dashboard"]');
+  const metrics = dashboardPage?.querySelector('[aria-label="Indicatori principali"]');
+  if (!dashboardPage || !metrics) return;
+
+  let panel = document.getElementById("dashboardNewsPanel");
+  if (!panel) {
+    panel = document.createElement("section");
+    panel.id = "dashboardNewsPanel";
+    panel.className = "panel dashboard-news-panel";
+    panel.innerHTML = `
+      <div class="panel-header compact">
+        <div>
+          <h2>Ultime news e comunicati</h2>
+          <p>Le ultime 5 comunicazioni pubblicate nella stagione selezionata.</p>
+        </div>
+        <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
+      </div>
+      <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
+  }
+
+  if (panel.nextElementSibling !== metrics) {
+    metrics.insertAdjacentElement("beforebegin", panel);
+  }
+
+  const target = document.getElementById("dashboardNewsList");
+  if (!target) return;
+
+  const rows = getNewsRowsForCurrentSeasonV50(5);
+  target.innerHTML = rows.length ? rows.map((news) => {
+    const preview = getNewsPreviewTextV50(news.body || "", 190);
+    return `
+      <article class="dashboard-news-card">
+        <div class="dashboard-news-main">
+          <small class="muted">${escapeHtml(news.topic === "COMUNICATO_SQUADRA" ? "Comunicato squadra" : news.topic || "News")}</small>
+          <h3>${escapeHtml(news.title || "Comunicato")}</h3>
+          ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ""}
+          ${preview ? `<p class="dashboard-news-preview news-body-preserve">${renderBoldMarkdown(preview)}</p>` : ""}
+        </div>
+        <div class="dashboard-news-side">
+          <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || "")}</small>
+          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
+        </div>
+      </article>`;
+  }).join("") : `<p class="muted">Nessuna news pubblicata.</p>`;
+}
+
+renderDashboard = function renderDashboardV50() {
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const competitions = getSeasonCompetitionsForPublicDisplayV50(seasonId);
+
+  const metricClubs = document.getElementById("metricClubs");
+  const metricTotalFm = document.getElementById("metricTotalFm");
+  const metricAlerts = document.getElementById("metricAlerts");
+
+  if (metricClubs) metricClubs.textContent = String(seasonTeams.length || getParticipantsCount(seasonId) || 0);
+  if (metricTotalFm) metricTotalFm.textContent = "- (medio -)";
+  if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === "ATTIVA").length);
+
+  const standings = document.getElementById("dashboardStandings");
+  if (standings) {
+    standings.innerHTML = competitions.length
+      ? competitions.map((competition) => `
+        <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
+          <summary>
+            <span>
+              <strong>${escapeHtml(competition.name)}</strong>
+              <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
+            </span>
+            <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
+          </summary>
+          ${renderDashboardCompetitionSummary(competition)}
+        </details>`).join("")
+      : `<p class="muted">Nessuna competizione inserita per questa stagione.</p>`;
+  }
+
+  renderDashboardCalendar(seasonId);
+  renderDashboardNewsV42();
+  normalizeToggleLabelsV29?.();
+};
+
+renderCompetitionsPublic = function renderCompetitionsPublicV50() {
+  const list = document.getElementById("competitionsList");
+  if (!list) return;
+
+  const seasonId = getCurrentSeasonId();
+  const competitions = getSeasonCompetitionsForPublicDisplayV50(seasonId);
+
+  if (!competitions.length) {
+    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || "la stagione selezionata")}.</p>`;
+    return;
+  }
+
+  list.innerHTML = competitions.map((competition) => `
+    <article class="competition-card">
+      <div class="competition-card-header">
+        <div>
+          <h3>${escapeHtml(competition.name)}</h3>
+        </div>
+        <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
+      </div>
+      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
+      ${renderCompetitionResultsPublic(competition)}
+      ${renderCompetitionMatchesPublic(competition)}
+    </article>
+  `).join("");
+};
