@@ -6316,10 +6316,8 @@ renderAll = function renderAllV34() {
 };
 
 
-initializeAppUi().then(() => {
-  injectDisplayModeToggle();
-  updateMobileUxClass();
-});
+// V51: startup moved to the very end of the file so every version patch
+// below can override handlers before the app is initialized.
 
 /* V27 - Robust mobile roster toggles.
    Keep rosters collapsed by default on first mobile render and handle roster toggle
@@ -7495,3 +7493,12 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
     };
   }
 })();
+
+/* V51 - Startup after all incremental patches.
+   The previous v50 initialized before the v50 overrides were registered, so
+   rollover, transfer communications and some president-account handlers were
+   not active. */
+initializeAppUi().then(() => {
+  injectDisplayModeToggle();
+  updateMobileUxClass();
+});
