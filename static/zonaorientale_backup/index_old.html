@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZonaOrientale Salerno</title>
+  <meta name="description" content="Gestionale ZonaOrientale Salerno - saldi FM, club, rose, movimenti e stadio." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./assets/styles.css?v=52" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-grid">
+      <div>
+        <p class="eyebrow">Lega Fantacalcio</p>
+        <h1>ZonaOrientale Salerno</h1>
+        <p class="subtitle">Dashboard operativa per club, saldi FM, rose, movimenti, listoni e stadio.</p>
+      </div>
+      <div class="header-actions">
+        <label class="season-switcher">
+          <span>Stagione</span>
+          <select id="globalSeasonSelect" class="input season-input" aria-label="Stagione visualizzata"></select>
+        </label>
+        <button id="refreshBtn" class="button button-secondary" type="button">Aggiorna dati</button>
+        <button id="openLoginBtn" class="button button-primary" type="button">Area admin</button>
+        <button id="logoutBtn" class="button button-danger hidden" type="button">Logout</button>
+      </div>
+    </div>
+
+    <nav class="container app-nav" aria-label="Navigazione FantaMantra">
+      <a href="#dashboard" class="nav-link" data-page-link="dashboard">Dashboard</a>
+      <a href="#news" class="nav-link" data-page-link="news">News</a>
+      <a href="#clubs" class="nav-link" data-page-link="clubs">Rose</a>
+      <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
+      <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
+      <a href="#honor" class="nav-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
+      <a href="#finance" class="nav-link" data-page-link="finance">Movimenti & Stadi</a>
+      <a id="adminNavLink" href="#admin" class="nav-link nav-link-admin hidden" data-page-link="admin">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container app-main">
+    <nav id="mobilePageSubnav" class="mobile-page-subnav hidden" aria-label="Sezioni della pagina"></nav>
+<section id="configWarning" class="notice notice-warning hidden">
+      <strong>Configurazione Firebase da verificare.</strong>
+      Controlla <code>assets/firebase.js</code> e le Security Rules di Firestore.
+    </section>
+
+    <section id="errorBox" class="notice notice-error hidden"></section>
+
+    <section class="app-page is-active" data-page="dashboard" aria-labelledby="dashboardTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Panoramica</p>
+          <h2 id="dashboardTitle">Dashboard</h2>
+          <p>Indicatori principali della lega e stato generale del gestionale.</p>
+        </div>
+      </div>
+
+
+<section class="cards-grid" aria-label="Indicatori principali">
+      <article class="metric-card">
+        <span class="metric-label">Club attivi</span>
+        <strong id="metricClubs">-</strong>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">FM totali lega</span>
+        <strong id="metricTotalFm">-</strong>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Alert</span>
+        <strong id="metricAlerts">-</strong>
+      </article>
+    </section>
+
+      <section class="grid-two dashboard-grid" aria-label="Classifiche e calendario">
+        <article class="panel">
+          <div class="panel-header compact">
+            <div>
+              <h2>Classifiche competizioni</h2>
+              <p>Classifiche delle competizioni della stagione visualizzata.</p>
+            </div>
+          </div>
+          <div id="dashboardStandings" class="stack-list">
+            <p class="muted">Caricamento...</p>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header compact">
+            <div>
+              <h2>Calendario</h2>
+              <p>Partite programmate o giocate, con la competizione di riferimento.</p>
+            </div>
+          </div>
+          <div id="dashboardCalendar" class="stack-list">
+            <p class="muted">Caricamento...</p>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <section class="app-page" data-page="news" aria-labelledby="newsTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Comunicazioni</p>
+          <h2 id="newsTitle">News</h2>
+          <p>Comunicati ufficiali, aggiornamenti generali e comunicazioni delle squadre.</p>
+        </div>
+      </div>
+      <section class="panel">
+        <div class="panel-header compact">
+          <div>
+            <h2>Ultimi comunicati</h2>
+            <p>Comunicati inseriti dall'amministratore.</p>
+          </div>
+        </div>
+        <div id="newsList" class="news-list">
+          <p class="muted">Caricamento...</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="app-page" data-page="clubs" aria-labelledby="clubsTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Organico</p>
+          <h2 id="clubsTitle">Rose</h2>
+          <p>Club partecipanti, saldi FM e rose della stagione selezionata. Clicca su una rosa per aprire o chiudere il dettaglio giocatori.</p>
+        </div>
+      </div>
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Rose della stagione</h2>
+            <p>Ogni card mostra presidente, saldo FM, numero giocatori e stadio. Il dettaglio è una tabella compatta.</p>
+          </div>
+        </div>
+        <div id="rosterClubCards" class="roster-card-grid roster-accordion-grid">
+          <p class="muted">Caricamento...</p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="marketActivityTitle">
+        <div class="panel-header">
+          <div>
+            <h2 id="marketActivityTitle">Movimenti</h2>
+            <p>Movimenti di fantamilioni e mercato: acquisti, vendite, svincoli, scambi, bonus e rettifiche.</p>
+          </div>
+          <div class="filters-row">
+            <select id="marketClubFilter" class="input filter-input" aria-label="Filtro rose movimenti">
+              <option value="all">Tutte le rose</option>
+            </select>
+            <input id="marketSearch" class="input search-input" type="search" placeholder="Cerca movimento, giocatore, rosa..." />
+          </div>
+        </div>
+        <div class="table-wrap mobile-tabular-wrap">
+          <table class="mobile-tabular">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Rosa</th>
+                <th>Tipo</th>
+                <th>Giocatore</th>
+                <th class="number">FM</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody id="marketActivityTableBody">
+              <tr><td colspan="6" class="muted center">Caricamento...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="app-page" data-page="listone" aria-labelledby="listoneTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Fantacalcio</p>
+          <h2 id="listoneTitle">Listone giocatori</h2>
+          <p>Quotazioni caricate da Fantacalcio, filtri ruolo, stato listone e storico versioni.</p>
+        </div>
+      </div>
+<section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Listone giocatori</h2>
+          <p>Ultima fotografia caricata da Fantacalcio: tutti i campi del file Excel, squadra reale abbreviata e stato listone.</p>
+          <small id="listoneMetaText" class="muted">Nessun listone selezionato.</small>
+        </div>
+        <div class="filters-row">
+          <select id="listoneSeasonFilter" class="input filter-input" aria-label="Versione listone"></select>
+          <select id="listoneRoleFilter" class="input filter-input" aria-label="Filtro ruolo listone">
+            <option value="all">Tutti</option>
+            <option value="P">P</option>
+            <option value="D">D</option>
+            <option value="C">C</option>
+            <option value="A">A</option>
+          </select>
+          <input id="listoneSearch" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, ruolo, rosa..." />
+        </div>
+        <div id="listoneColumnControls" class="column-controls"></div>
+      </div>
+      <div class="table-wrap mobile-tabular-wrap listone-table-wrap">
+        <table class="mobile-tabular listone-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>R (RM)</th>
+              <th>Sq</th>
+              <th>Rosa</th>
+              <th class="number">Qt.A</th>
+              <th class="number">Qt.I</th>
+              <th class="number">Diff.</th>
+              <th class="number">FVM</th>
+              <th>Stato</th>
+            </tr>
+          </thead>
+          <tbody id="listoneTableBody">
+            <tr><td colspan="10" class="muted center">Nessun listone caricato.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="freeAgentsTitle">
+      <div class="panel-header">
+        <div>
+          <h2 id="freeAgentsTitle">Svincolati</h2>
+          <p>Giocatori presenti nell’ultimo listone della stagione selezionata che non risultano in nessuna rosa attiva.</p>
+          <small id="freeAgentsMetaText" class="muted">Calcolati sul listone e sulle rose della stagione selezionata.</small>
+        </div>
+      </div>
+      <div class="table-wrap mobile-tabular-wrap listone-table-wrap">
+        <table class="mobile-tabular listone-table free-agents-table">
+          <thead>
+            <tr>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="player_name">Giocatore</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="real_team"><span class="desktop-inline">Squadra</span><span class="mobile-inline">Sq</span></button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="classic_role"><span class="desktop-inline">Ruoli Classic</span><span class="mobile-inline">R</span> <span class="muted">(RM)</span></button></th>
+              <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="quotation_current">Qt.A</button></th>
+              <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="fvm">FVM</button></th>
+              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="status">Stato</button></th>
+            </tr>
+          </thead>
+          <tbody id="freeAgentsTableBody">
+            <tr><td colspan="6" class="muted center">Nessun listone caricato.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    </section>
+
+    <section class="app-page" data-page="competitions" aria-labelledby="competitionsTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Stagione</p>
+          <h2 id="competitionsTitle">Competizioni</h2>
+          <p>Competizioni, classifiche e calendario della stagione visualizzata.</p>
+        </div>
+      </div>
+      <section class="panel">
+        <div class="panel-header compact">
+          <div>
+            <h2>Competizioni della stagione</h2>
+            <p>Regular Season, Coppa Italia, Playoff, Champions League e altre competizioni.</p>
+          </div>
+        </div>
+        <div id="competitionsList" class="competition-list">
+          <p class="muted">Caricamento...</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="app-page" data-page="honor" aria-labelledby="honorTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Storia della Lega</p>
+          <h2 id="honorTitle">Albo d'Oro e FIFA Ranking</h2>
+          <p>Storico titoli, piazzamenti, palmarès e classifica FIFA manuale. Questa sezione non dipende dalla stagione selezionata.</p>
+        </div>
+      </div>
+      <section class="single-panel-layout">
+        <article class="panel">
+          <div class="panel-header compact">
+            <div>
+              <h2>Albo d'Oro e palmarès</h2>
+              <p>Conteggio vittorie per Campionato, Coppa Italia, Playoff e Champions. Clicca su una squadra per vedere stagioni, classifiche e partite.</p>
+            </div>
+          </div>
+          <div id="honorSummary" class="stack-list">
+            <p class="muted">Caricamento...</p>
+          </div>
+        </article>
+      </section>
+      <div id="honorHistory" class="hidden" aria-hidden="true"></div>
+    </section>
+
+    <section class="app-page" data-page="finance" aria-labelledby="financeTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Gestione</p>
+          <h2 id="financeTitle">Movimenti & Stadi</h2>
+          <p>Ultime operazioni economiche e livelli stadio attivi per club.</p>
+        </div>
+      </div>
+<section class="grid-two">
+      <article class="panel">
+        <div class="panel-header compact">
+          <div>
+            <h2>Ultimi movimenti FM</h2>
+            <p>Entrate positive, uscite negative.</p>
+          </div>
+        </div>
+        <div id="movementsList" class="movement-list">
+          <p class="muted">Caricamento...</p>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header compact">
+          <div>
+            <h2>Stadi</h2>
+            <p>Livelli attuali per club.</p>
+          </div>
+        </div>
+        <div id="stadiumsList" class="stadium-list">
+          <p class="muted">Caricamento...</p>
+        </div>
+      </article>
+    </section>
+    </section>
+
+    <section id="adminPanel" class="app-page admin-panel admin-locked" data-page="admin" aria-labelledby="adminTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Area riservata</p>
+          <h2 id="adminTitle">Admin</h2>
+          <p>Funzioni di gestione: club, listoni, rose, acquisti e movimenti FM.</p>
+        </div>
+      </div>
+<article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Stagioni</h2>
+            <p>Crea una nuova stagione: vengono generate automaticamente Regular Season, Champions League, Coppa Italia e Playoff.</p>
+          </div>
+        </div>
+        <form id="seasonForm" class="form-grid">
+          <label>
+            ID stagione
+            <input id="seasonIdInput" class="input" type="text" placeholder="Es. 2027-2028" required />
+          </label>
+          <label>
+            Nome stagione
+            <input id="seasonNameInput" class="input" type="text" placeholder="Es. Stagione 2027-2028" />
+          </label>
+          <label>
+            Data inizio
+            <input id="seasonStartsOn" class="input" type="date" required />
+          </label>
+          <label>
+            Data fine
+            <input id="seasonEndsOn" class="input" type="date" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Crea stagione</button>
+            <span id="seasonFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Riversa rose nella stagione successiva</h2>
+            <p>Copia nella stagione successiva tutti i giocatori ancora attivi nelle rose. Gli svincoli vanno segnati prima del riversamento.</p>
+          </div>
+        </div>
+        <form id="rolloverForm" class="form-grid">
+          <label>
+            Stagione origine
+            <select id="rolloverSourceSeason" class="input" required></select>
+          </label>
+          <label>
+            Stagione destinazione
+            <input id="rolloverTargetSeason" class="input" type="text" placeholder="Es. 2027-2028" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Riversa rose</button>
+            <span id="rolloverStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Modifica club</h2>
+            <p>Aggiorna i placeholder senza entrare nel pannello Supabase.</p>
+          </div>
+        </div>
+
+        <form id="clubForm" class="form-grid">
+          <label>
+            Club da modificare
+            <select id="clubEditSelect" class="input" required></select>
+          </label>
+          <label>
+            Nome club
+            <input id="clubNameInput" class="input" type="text" required />
+          </label>
+          <label>
+            Presidente
+            <input id="clubPresidentInput" class="input" type="text" required />
+          </label>
+          <label>
+            Logo squadra
+            <input id="clubLogoInput" class="input" type="file" accept="image/*" />
+            <small class="field-hint">Il logo viene salvato nel DB come immagine base64 e mostrato in forma tonda.</small>
+          </label>
+          <div class="logo-admin-preview" id="clubLogoPreview"></div>
+          <label class="checkbox-label">
+            <input id="removeClubLogoInput" type="checkbox" />
+            Rimuovi logo attuale
+          </label>
+          <label class="checkbox-label">
+            <input id="clubActiveInput" type="checkbox" />
+            Club attivo
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva club</button>
+            <span id="clubFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Carica listone</h2>
+            <p>Importa il file Excel di Fantacalcio. La webapp aggiorna i giocatori, salva uno snapshot storico e segnala variazioni, nuovi ingressi e asteriscati.</p>
+          </div>
+        </div>
+
+        <form id="listoneUploadForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="listoneSeason" class="input" required></select>
+          </label>
+          <label>
+            Label listone <span class="muted">(opzionale)</span>
+            <input id="listoneLabel" class="input" type="text" placeholder="Es. Post mercato invernale, Aggiornamento 15/02..." />
+          </label>
+          <label>
+            Data listone <span class="muted">(opzionale)</span>
+            <input id="listoneDate" class="input" type="date" />
+          </label>
+          <label>
+            File listone Excel
+            <input id="listoneFile" class="input" type="file" accept=".xlsx,.xls" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Carica listone</button>
+            <span id="listoneUploadStatus" class="form-status"></span>
+          </div>
+        </form>
+        <div id="listoneImportReport" class="import-report hidden"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Carica rose</h2>
+            <p>Importa il file Excel delle rose: legge i nomi dei club, crea/aggiorna i calciatori, assegna le rose e registra i costi d'asta.</p>
+          </div>
+        </div>
+
+        <form id="rosterUploadForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="rosterSeason" class="input" required></select>
+          </label>
+          <label>
+            Label import <span class="muted">(opzionale)</span>
+            <input id="rosterLabel" class="input" type="text" placeholder="Es. Rose asta iniziale, Post settembre..." />
+          </label>
+          <label class="span-2">
+            File rose Excel
+            <input id="rosterFile" class="input" type="file" accept=".xlsx,.xls" required />
+            <small class="field-hint">Il file deve avere il nome della squadra sopra ogni rosa e le colonne Ruolo, Calciatore, Squadra, Costo.</small>
+          </label>
+          <label class="checkbox-label">
+            <input id="rosterUpdateClubs" type="checkbox" checked />
+            Aggiorna i nomi dei 10 club dal file, preservando gli ID e i saldi già presenti.
+          </label>
+          <label class="checkbox-label">
+            <input id="rosterReplaceExisting" type="checkbox" checked />
+            Sostituisci le rose importate in precedenza per questa stagione.
+          </label>
+          <label class="checkbox-label">
+            <input id="rosterRegisterMovements" type="checkbox" checked />
+            Registra automaticamente i movimenti FM negativi per i costi dei giocatori.
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Carica rose</button>
+            <span id="rosterUploadStatus" class="form-status"></span>
+          </div>
+        </form>
+        <div id="rosterImportReport" class="import-report hidden"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Registra acquisto asta</h2>
+            <p>Crea il giocatore, lo assegna alla rosa e registra automaticamente l'uscita FM.</p>
+          </div>
+        </div>
+
+        <form id="auctionForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="auctionSeason" class="input" required></select>
+          </label>
+          <label>
+            Club acquirente
+            <select id="auctionClub" class="input" required></select>
+          </label>
+          <label class="span-2">
+            Seleziona dal listone
+            <select id="auctionPlayerSelect" class="input">
+              <option value="manual">Inserimento manuale</option>
+            </select>
+            <small class="field-hint">Se scegli un giocatore dal listone, squadra e ruoli vengono compilati automaticamente.</small>
+          </label>
+          <label>
+            Nome calciatore
+            <input id="auctionPlayerName" class="input" type="text" placeholder="Es. Mario Rossi" required />
+          </label>
+          <label>
+            Squadra reale
+            <input id="auctionRealTeam" class="input" type="text" placeholder="Es. Inter" />
+          </label>
+          <label>
+            Ruoli Mantra
+            <input id="auctionRoles" class="input" type="text" placeholder="Es. Dc/B oppure W/A" required />
+          </label>
+          <label>
+            Tipo
+            <select id="auctionRoleClass" class="input" required>
+              <option value="MOVIMENTO">Movimento</option>
+              <option value="P">Portiere</option>
+            </select>
+          </label>
+          <label>
+            Prezzo FM
+            <input id="auctionPrice" class="input" type="number" min="0" step="0.5" placeholder="Es. 38" required />
+          </label>
+          <label>
+            Data acquisto
+            <input id="auctionDate" class="input" type="date" required />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva acquisto</button>
+            <span id="auctionFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Gestione stadio</h2>
+            <p>Imposta nome e livello dello stadio della squadra nella stagione selezionata.</p>
+          </div>
+        </div>
+        <form id="stadiumForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="stadiumSeason" class="input" required></select>
+          </label>
+          <label>
+            Club
+            <select id="stadiumClub" class="input" required></select>
+          </label>
+          <label>
+            Nome stadio
+            <input id="stadiumName" class="input" type="text" placeholder="Es. Arechi" />
+          </label>
+          <label>
+            Livello
+            <select id="stadiumLevel" class="input" required>
+              <option value="0">Livello 0</option>
+              <option value="1">Livello 1</option>
+              <option value="2">Livello 2</option>
+              <option value="3">Livello 3</option>
+              <option value="4">Livello 4</option>
+            </select>
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva stadio</button>
+            <span id="stadiumFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Gestione comunicati</h2>
+            <p>Aggiungi, modifica o cancella comunicati nella sezione News.</p>
+          </div>
+        </div>
+        <form id="newsForm" class="form-grid">
+          <input id="newsId" type="hidden" />
+          <label>
+            Titolo
+            <input id="newsTitleInput" class="input" type="text" required />
+          </label>
+          <label>
+            Argomento
+            <select id="newsTopic" class="input" required>
+              <option value="GENERALE">Generale</option>
+              <option value="COMPETIZIONE">Competizione</option>
+              <option value="COMUNICATO_UFFICIALE_SQUADRA">Comunicato ufficiale squadra</option>
+            </select>
+          </label>
+          <label class="span-2">
+            Testo
+            <textarea id="newsBody" class="input textarea" rows="4" placeholder="Testo del comunicato..."></textarea>
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva comunicato</button>
+            <button id="newsFormReset" class="button button-secondary" type="button">Nuovo</button>
+            <span id="newsFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica comunicati esistenti</strong><span>Cerca per titolo, argomento o testo</span></summary>
+          <input id="newsAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca comunicato..." />
+          <div id="newsAdminList" class="admin-list"></div>
+        </details>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Gestione competizioni</h2>
+            <p>Crea competizioni, aggiorna classifiche e calendario.</p>
+          </div>
+        </div>
+        <form id="competitionForm" class="form-grid">
+          <input id="competitionId" type="hidden" />
+          <label>
+            Stagione
+            <select id="competitionSeason" class="input" required></select>
+          </label>
+          <label>
+            Nome competizione
+            <input id="competitionName" class="input" type="text" placeholder="Es. Regular Season" required />
+          </label>
+          <label>
+            Tipo
+            <select id="competitionType" class="input" required>
+              <option value="REGULAR_SEASON">Campionato / Regular Season</option>
+              <option value="COPPA_ITALIA">Coppa Italia</option>
+              <option value="PLAYOFF">Playoff</option>
+              <option value="CHAMPIONS">Champions League</option>
+              <option value="ALTRO">Altro</option>
+            </select>
+          </label>
+          <label>
+            Stato
+            <select id="competitionStatus" class="input" required>
+              <option value="PLANNED">Programmato</option>
+              <option value="ACTIVE">Attivo</option>
+              <option value="COMPLETED">Concluso</option>
+              <option value="NOT_DISPUTED">Non disputata</option>
+            </select>
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva competizione</button>
+            <button id="competitionFormReset" class="button button-secondary" type="button">Nuova</button>
+            <span id="competitionFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica competizioni esistenti</strong><span>Filtrate sulla stagione selezionata</span></summary>
+          <input id="competitionAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca competizione..." />
+          <div id="competitionAdminList" class="admin-list"></div>
+        </details>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Classifica Regular Season</h2>
+            <p>Usa questa sezione per il campionato/Regular Season. Per Coppa Italia, Champions e Playoff inserisci podio e vincitori nell'Albo d'Oro e FIFA Ranking e le partite nel calendario.</p>
+          </div>
+        </div>
+        <form id="standingForm" class="form-grid">
+          <input id="standingId" type="hidden" />
+          <label>
+            Competizione
+            <select id="standingCompetition" class="input" required></select>
+          </label>
+          <label>
+            Squadra
+            <select id="standingClub" class="input" required></select>
+            <small class="field-hint">Puoi selezionare sia club attuali/stagionali sia squadre storiche.</small>
+          </label>
+          <label>
+            Posizione
+            <input id="standingPosition" class="input" type="number" min="1" step="1" />
+          </label>
+          <label>
+            Punti
+            <input id="standingPoints" class="input" type="number" step="0.5" />
+          </label>
+          <label>
+            FP totali
+            <input id="standingFantapoints" class="input" type="number" step="0.5" />
+          </label>
+          <label>
+            Gol fatti
+            <input id="standingGoalsFor" class="input" type="number" step="1" />
+          </label>
+          <label>
+            Gol subiti
+            <input id="standingGoalsAgainst" class="input" type="number" step="1" />
+          </label>
+          <label>
+            Partite giocate
+            <input id="standingPlayed" class="input" type="number" step="1" />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva classifica</button>
+            <button id="standingFormReset" class="button button-secondary" type="button">Nuova</button>
+            <span id="standingFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica classifiche Regular Season</strong><span>Solo competizioni di tipo campionato</span></summary>
+          <input id="standingAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca squadra o competizione..." />
+          <div id="standingAdminList" class="admin-list"></div>
+        </details>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Calendario</h2>
+            <p>Aggiungi o modifica le giornate. Per le coppe usa QF/SF/Finale; per il campionato usa Giornata 1, 2, ecc.</p>
+          </div>
+        </div>
+        <form id="calendarForm" class="form-grid calendar-compact-form">
+          <input id="calendarMatchId" type="hidden" />
+          <label>
+            Competizione
+            <select id="calendarCompetition" class="input" required></select>
+          </label>
+          <label>
+            Giornata
+            <input id="calendarMatchday" class="input" type="text" list="calendarMatchdayOptions" placeholder="Es. Giornata 1 oppure QF - Andata" required />
+            <datalist id="calendarMatchdayOptions">
+              <option value="QF - Andata"></option>
+              <option value="QF - Ritorno"></option>
+              <option value="SF - Andata"></option>
+              <option value="SF - Ritorno"></option>
+              <option value="Finale"></option>
+            </datalist>
+          </label>
+          <label>
+            Data
+            <input id="calendarDate" class="input" type="date" />
+          </label>
+          <label>
+            Squadra casa
+            <select id="calendarHomeClub" class="input"></select>
+          </label>
+          <label>
+            Squadra trasferta
+            <select id="calendarAwayClub" class="input"></select>
+          </label>
+          <label>
+            Risultato casa
+            <input id="calendarHomeGoals" class="input" type="number" min="0" step="1" placeholder="Gol casa" />
+            <small class="field-hint">Risultato finale reale del fantamatch. Vale per la classifica.</small>
+          </label>
+          <label>
+            Risultato trasferta
+            <input id="calendarAwayGoals" class="input" type="number" min="0" step="1" placeholder="Gol trasferta" />
+            <small class="field-hint">3 punti vittoria, 1 pareggio, 0 sconfitta.</small>
+          </label>
+          <label>
+            Vincitrice manuale finale
+            <select id="calendarManualWinnerClub" class="input">
+              <option value="">Automatico / nessuno</option>
+            </select>
+            <small class="field-hint">Usalo se una finale, ad esempio Playoff, finisce in parità ma va assegnata una vincitrice.</small>
+          </label>
+          <label>
+            Nota vincitrice manuale
+            <input id="calendarManualWinnerNote" class="input" type="text" placeholder="Es. Vince per miglior piazzamento RS" />
+          </label>
+          <label>
+            FP casa
+            <input id="calendarHomeScore" class="input" type="number" step="0.5" />
+          </label>
+          <label>
+            FP trasferta
+            <input id="calendarAwayScore" class="input" type="number" step="0.5" />
+          </label>
+          <label>
+            Stato
+            <select id="calendarStatus" class="input">
+              <option value="SCHEDULED">Da giocare</option>
+              <option value="PLAYED">Giocata</option>
+              <option value="POSTPONED">Rinviata</option>
+            </select>
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva giornata</button>
+            <button id="calendarFormReset" class="button button-secondary" type="button">Nuova</button>
+            <span id="calendarFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica calendario esistente</strong><span>Filtrato sulla stagione selezionata</span></summary>
+          <input id="calendarAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca giornata, squadra o competizione..." />
+          <div id="calendarAdminList" class="admin-list"></div>
+        </details>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Squadre storiche e identità stagionali</h2>
+            <p>Gestisci squadre non più presenti e nomi storici delle squadre/presidenti nelle singole stagioni.</p>
+          </div>
+        </div>
+        <form id="historicalClubForm" class="form-grid">
+          <input id="historicalClubId" type="hidden" />
+          <label>
+            Club attuale collegato <span class="muted">(opzionale)</span>
+            <select id="historicalClubSourceClub" class="input">
+              <option value="">Nessuno / squadra storica pura</option>
+            </select>
+            <small class="field-hint">Usalo se la squadra storica appartiene a un presidente ancora presente in Lega.</small>
+          </label>
+          <label>
+            Nome squadra storica
+            <input id="historicalClubNameInput" class="input" type="text" placeholder="Es. Real Pastena" required />
+          </label>
+          <label class="span-2">
+            Stagioni disputate
+            <select id="historicalClubSeasonsSelect" class="input" multiple size="5"></select>
+            <small class="field-hint">Associa la squadra storica alle stagioni in cui ha partecipato. Usa Cmd/Ctrl per selezioni multiple.</small>
+          </label>
+          <label>
+            Presidente
+            <select id="historicalClubPresidentSelect" class="input" multiple size="4"></select>
+            <input id="historicalClubPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Scegli uno o più presidenti già presenti oppure aggiungine manualmente.</small>
+          </label>
+          <label>
+            Logo storico <span class="muted">(opzionale)</span>
+            <input id="historicalClubLogoInput" class="input" type="file" accept="image/*" />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva squadra storica</button>
+            <button id="historicalClubFormReset" class="button button-secondary" type="button">Nuova</button>
+            <span id="historicalClubFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica squadre storiche</strong><span>Cerca per nome o presidente</span></summary>
+          <input id="historicalClubAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca squadra storica..." />
+          <div id="historicalClubAdminList" class="admin-list"></div>
+        </details>
+
+        <hr class="soft-separator" />
+
+        <form id="clubIdentityForm" class="form-grid">
+          <input id="clubIdentityId" type="hidden" />
+          <label>
+            Stagione
+            <select id="clubIdentitySeason" class="input" required></select>
+          </label>
+          <label>
+            Club attuale
+            <select id="clubIdentityClub" class="input" required></select>
+          </label>
+          <label>
+            Nome squadra in quella stagione
+            <input id="clubIdentityNameInput" class="input" type="text" placeholder="Es. ZonaOrientale FC" required />
+          </label>
+          <label>
+            Presidenti in quella stagione
+            <select id="clubIdentityPresidentSelect" class="input" multiple size="4"></select>
+            <input id="clubIdentityPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Se lo lasci vuoto usa i presidenti del club attuale.</small>
+          </label>
+          <label>
+            Nome stadio in quella stagione
+            <input id="clubIdentityStadiumInput" class="input" type="text" placeholder="Es. Arechi Stadium" />
+          </label>
+          <label>
+            Logo stagionale <span class="muted">(opzionale)</span>
+            <input id="clubIdentityLogoInput" class="input" type="file" accept="image/*" />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva identità stagionale</button>
+            <button id="clubIdentityFormReset" class="button button-secondary" type="button">Nuova</button>
+            <span id="clubIdentityFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica identità stagionali</strong><span>Filtrate sulla stagione selezionata</span></summary>
+          <input id="clubIdentityAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca identità stagionale..." />
+          <div id="clubIdentityAdminList" class="admin-list"></div>
+        </details>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Albo d'Oro e FIFA Ranking</h2>
+            <p>Aggiungi titoli, piazzamenti e classifiche storiche.</p>
+          </div>
+        </div>
+        <form id="honorForm" class="form-grid">
+          <input id="honorId" type="hidden" />
+          <label>
+            Stagione
+            <select id="honorSeason" class="input" required></select>
+          </label>
+          <label>
+            Squadra albo d'oro
+            <select id="honorClub" class="input" required></select>
+            <small class="field-hint">Scegli una squadra storica oppure crea una nuova voce.</small>
+          </label>
+          <label>
+            Nome squadra storica
+            <input id="honorClubNameInput" class="input" type="text" placeholder="Es. Real Pastena" />
+          </label>
+          <label>
+            Presidente storico
+            <select id="honorPresidentSelect" class="input" multiple size="4"></select>
+            <input id="honorPresidentInput" class="input" type="text" placeholder="Aggiungi manualmente, anche più nomi separati da &" />
+            <small class="field-hint">Il palmarès viene raggruppato per presidente/i; la squadra indica il nome usato in quella stagione.</small>
+          </label>
+          <label>
+            Logo squadra storica <span class="muted">(opzionale)</span>
+            <input id="honorClubLogoInput" class="input" type="file" accept="image/*" />
+          </label>
+          <label>
+            Competizione
+            <select id="honorCompetitionType" class="input" required>
+              <option value="REGULAR_SEASON">Campionato / Regular Season</option>
+              <option value="COPPA_ITALIA">Coppa Italia</option>
+              <option value="PLAYOFF">Playoff</option>
+              <option value="CHAMPIONS">Champions League</option>
+              <option value="ALTRO">Altro</option>
+            </select>
+          </label>
+          <label>
+            Titolo voce
+            <input id="honorTitleInput" class="input" type="text" placeholder="Es. Vincitore Campionato" required />
+          </label>
+          <label>
+            Piazzamento
+            <input id="honorPlacement" class="input" type="number" min="1" step="1" placeholder="1 per vittoria" />
+          </label>
+          <label>
+            Punti
+            <input id="honorPoints" class="input" type="number" step="0.5" />
+          </label>
+          <label class="span-2">
+            Note
+            <input id="honorNotes" class="input" type="text" />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva albo</button>
+            <button id="honorFormReset" class="button button-secondary" type="button">Nuovo</button>
+            <span id="honorFormStatus" class="form-status"></span>
+          </div>
+        </form>
+        <details class="admin-edit-section">
+          <summary><strong>Modifica Albo d'Oro e FIFA Ranking esistente</strong><span>Cerca stagione, squadra o titolo</span></summary>
+          <input id="honorAdminSearch" class="input admin-search-input" type="search" placeholder="Cerca voce albo..." />
+          <div id="honorAdminList" class="admin-list"></div>
+        </details>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Backup database</h2>
+            <p>Esporta uno snapshot locale dello schema, dei dati o di entrambi. Utile per ricostruire il gestionale in caso di problemi.</p>
+          </div>
+        </div>
+        <form id="dumpForm" class="form-grid">
+          <label>
+            Tipo dump
+            <select id="dumpType" class="input" required>
+              <option value="both">Schema + dati</option>
+              <option value="schema">Solo schema</option>
+              <option value="data">Solo dati</option>
+            </select>
+          </label>
+          <label class="checkbox-label">
+            <input id="dumpPretty" type="checkbox" checked />
+            JSON leggibile
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Scarica dump</button>
+            <span id="dumpFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Area admin</p>
+            <h2>Registra movimento FM</h2>
+            <p>Movimento manuale. Per gli acquisti asta usa il form dedicato sopra.</p>
+          </div>
+        </div>
+
+        <form id="movementForm" class="form-grid">
+          <label>
+            Stagione
+            <select id="movementSeason" class="input" required></select>
+          </label>
+          <label>
+            Club
+            <select id="movementClub" class="input" required></select>
+          </label>
+          <label>
+            Tipo movimento
+            <select id="movementType" class="input" required>
+              <option value="RELEASE_REFUND">Rimborso svincolo</option>
+              <option value="TRADE_FM_IN">FM ricevuti in scambio</option>
+              <option value="TRADE_FM_OUT">FM ceduti in scambio</option>
+              <option value="LOAN_FM_IN">FM ricevuti in prestito</option>
+              <option value="LOAN_FM_OUT">FM ceduti in prestito</option>
+              <option value="STADIUM_BUILD">Costruzione stadio</option>
+              <option value="STADIUM_MAINTENANCE">Manutenzione stadio</option>
+              <option value="STADIUM_REVENUE">Introiti stadio</option>
+              <option value="PRIZE">Premio</option>
+              <option value="PENALTY">Penalizzazione</option>
+              <option value="ADJUSTMENT">Rettifica</option>
+            </select>
+          </label>
+          <label>
+            Importo FM
+            <input id="movementAmount" class="input" type="number" step="0.5" placeholder="Es. 38 oppure 12" required />
+            <small id="movementSignHint" class="field-hint">Il segno viene applicato automaticamente.</small>
+          </label>
+          <label class="span-2">
+            Descrizione
+            <input id="movementDescription" class="input" type="text" placeholder="Es. Premio, svincolo, penalizzazione..." />
+          </label>
+          <div class="form-actions span-2">
+            <button class="button button-primary" type="submit">Salva movimento</button>
+            <span id="movementFormStatus" class="form-status"></span>
+          </div>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="loginDialog" class="login-dialog">
+    <form id="loginForm" method="dialog" class="login-card">
+      <button id="closeLoginBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
+      <p class="eyebrow">Accesso riservato</p>
+      <h2>Area admin</h2>
+      <p class="muted">Accedi con l'utente creato in Firebase Authentication.</p>
+      <label>
+        Email
+        <input id="loginEmail" class="input" type="email" autocomplete="email" required />
+      </label>
+      <label>
+        Password
+        <input id="loginPassword" class="input" type="password" autocomplete="current-password" required />
+      </label>
+      <button class="button button-primary full-width" type="submit">Accedi</button>
+      <p id="loginStatus" class="form-status"></p>
+    </form>
+  </dialog>
+
+
+  <dialog id="playerDialog" class="login-dialog player-dialog">
+    <div class="login-card player-card">
+      <button id="closePlayerBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
+      <p class="eyebrow">Scheda giocatore</p>
+      <h2 id="playerDialogTitle">Giocatore</h2>
+      <div id="playerDialogBody" class="player-detail-body">
+        <p class="muted">Caricamento...</p>
+      </div>
+    </div>
+  </dialog>
+
+
+
+  <dialog id="fantacalcioDialog" class="login-dialog fantacalcio-dialog">
+    <div class="login-card fantacalcio-card">
+      <button id="closeFantacalcioBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
+      <p class="eyebrow">Fantacalcio.it</p>
+      <h2 id="fantacalcioDialogTitle">Scheda Fantacalcio</h2>
+      <div class="fantacalcio-frame-actions">
+        <a id="fantacalcioExternalLink" class="button button-secondary" href="#" target="_blank" rel="noopener noreferrer">Apri in nuova scheda</a>
+        <small class="muted">Se il sito non consente l'apertura integrata, usa il pulsante qui sopra.</small>
+      </div>
+      <iframe id="fantacalcioFrame" class="fantacalcio-frame" title="Scheda giocatore Fantacalcio.it" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </dialog>
+
+
+  <dialog id="rosterDialog" class="login-dialog roster-dialog">
+    <div class="login-card roster-card">
+      <button id="closeRosterBtn" class="dialog-close" type="button" aria-label="Chiudi">×</button>
+      <p class="eyebrow">Scheda rosa</p>
+      <h2 id="rosterDialogTitle">Rosa</h2>
+      <div id="rosterDialogBody" class="roster-detail-body">
+        <p class="muted">Caricamento...</p>
+      </div>
+    </div>
+  </dialog>
+
+
+  <div id="mobileMoreBackdrop" class="mobile-more-backdrop hidden" aria-hidden="true"></div>
+  <nav id="mobileMoreSheet" class="mobile-more-sheet hidden" aria-label="Altre sezioni mobile">
+    <div class="mobile-more-header">
+      <strong>Altre sezioni</strong>
+      <button id="mobileMoreClose" class="mobile-icon-button" type="button" aria-label="Chiudi menu">×</button>
+    </div>
+    <a href="#news" class="mobile-more-link" data-page-link="news">News</a>
+    <a href="#finance" class="mobile-more-link" data-page-link="finance">Stadi</a>
+    <a href="#listone" class="mobile-more-link" data-page-link="listone">Listone</a>
+    <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-page-link="admin">Admin</a>
+  </nav>
+
+  <nav class="mobile-bottom-nav" aria-label="Navigazione principale mobile">
+    <a href="#dashboard" class="mobile-bottom-link" data-page-link="dashboard"><span class="mobile-nav-icon">⌂</span><span>Home</span></a>
+    <a href="#clubs" class="mobile-bottom-link" data-page-link="clubs"><span class="mobile-nav-icon">⚽</span><span>Rose</span></a>
+    <a href="#competitions" class="mobile-bottom-link" data-page-link="competitions"><span class="mobile-nav-icon">🏆</span><span>Gare</span></a>
+    <a href="#honor" class="mobile-bottom-link" data-page-link="honor"><span class="mobile-nav-icon">⭐</span><span>Albo</span></a>
+    <button id="mobileMoreBtn" class="mobile-bottom-link" type="button" aria-expanded="false" aria-controls="mobileMoreSheet"><span class="mobile-nav-icon">☰</span><span>Altro</span></button>
+  </nav>
+
+  <footer class="container app-footer">
+    <p>ZonaOrientale Salerno · V53 Fix president login and season rollover panel</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="./assets/app.js?v=52"></script>
+</body>
+</html>
+
