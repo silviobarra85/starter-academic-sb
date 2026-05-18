@@ -5306,11 +5306,19 @@ function enhanceLoginDialogV34() {
 function updateUserVisibilityV34() {
   const approved = Boolean(getApprovedTeamUser());
   document.querySelectorAll(".nav-link-team-area").forEach((link) => link.classList.toggle("hidden", !approved));
+
   const openLoginBtn = document.getElementById("openLoginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.classList.toggle("hidden", !state.user);
+  }
+
   if (openLoginBtn && !state.isAdmin) {
     openLoginBtn.textContent = state.user ? "Account" : "Accedi / Registrati";
     openLoginBtn.classList.remove("hidden");
   }
+
   renderUserAreaV34();
 }
 
@@ -6631,8 +6639,6 @@ function renderTeamProfileContentV42(snapshot) {
       <td>${escapeHtml(formatMatchResult(match))}</td>
     </tr>`).join('') || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
 
-  const isOwner = getApprovedTeamUser?.()?.seasonTeamId === snapshot.seasonTeamId;
-
   return `
     <section class="panel team-profile-hero-panel">
       <div class="team-profile-header team-profile-header-stacked team-profile-page-hero">
@@ -6643,7 +6649,6 @@ function renderTeamProfileContentV42(snapshot) {
           <p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p>
           <p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p>
         </div>
-        ${isOwner ? `<button class="button button-primary button-small" type="button" data-v42-page-link="teamarea">Invia richiesta</button>` : ''}
       </div>
     </section>
 
