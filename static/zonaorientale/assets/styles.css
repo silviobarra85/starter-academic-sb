@@ -10029,3 +10029,71 @@ body.is-mobile-ux table.roster-season-table .roster-detail-row .mobile-tabular-w
   overflow: visible !important;
   margin: 0 !important;
 }
+
+
+/* V53 - Ripristina lo scroll orizzontale nella sezione Rose.
+   Il fix precedente anti-sovrapposizione aveva lasciato overflow: visible sui wrapper
+   delle rose mobile, quindi la tabella non poteva piu' scorrere verso destra. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="clubs"] .roster-season-table-wrap,
+  .app-page[data-page="clubs"] .roster-inline-table-wrap,
+  .app-page[data-page="clubs"] .roster-detail-row .table-wrap,
+  .app-page[data-page="clubs"] .roster-detail-row .mobile-tabular-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain !important;
+  }
+
+  .app-page[data-page="clubs"] table.roster-season-table {
+    width: max-content !important;
+    min-width: 760px !important;
+    max-width: none !important;
+    table-layout: auto !important;
+  }
+
+  .app-page[data-page="clubs"] table.roster-player-table {
+    width: max-content !important;
+    min-width: 520px !important;
+    max-width: none !important;
+    table-layout: auto !important;
+  }
+
+  .app-page[data-page="clubs"] .roster-detail-row > td {
+    overflow: visible !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table-wrap,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-inline-table-wrap,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row .table-wrap,
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row .mobile-tabular-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-x: contain !important;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] table.roster-season-table {
+  width: max-content !important;
+  min-width: 760px !important;
+  max-width: none !important;
+  table-layout: auto !important;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] table.roster-player-table {
+  width: max-content !important;
+  min-width: 520px !important;
+  max-width: none !important;
+  table-layout: auto !important;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row > td {
+  overflow: visible !important;
+}
