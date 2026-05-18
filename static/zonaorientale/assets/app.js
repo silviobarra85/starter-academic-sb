@@ -897,26 +897,6 @@ function renderDashboardCalendar(seasonId) {
     </details>`).join("");
 }
 
-function renderStadiumsPublic() {
-  const target = document.getElementById("stadiumsList");
-  if (!target) return;
-
-  const seasonId = getCurrentSeasonId();
-  const seasonTeamIds = new Set(getSeasonTeamsForSeason(seasonId).map((seasonTeam) => seasonTeam.id));
-  const stadiums = state.raw.stadiums.filter((stadium) => seasonTeamIds.has(stadium.seasonTeamId));
-
-  target.innerHTML = stadiums.length
-    ? stadiums.map((stadium) => `
-      <div class="stadium-item">
-        <div>
-          ${renderSeasonTeamNameWithLogo(stadium.seasonTeamId)}
-          <span>${escapeHtml(stadium.name || "Stadio senza nome")}</span>
-        </div>
-        <strong>Livello ${escapeHtml(stadium.level ?? 0)}</strong>
-      </div>`).join("")
-    : `<p class="muted">Nessuno stadio inserito per questa stagione.</p>`;
-}
-
 function buildFifaRanking() {
   const { teamsById } = buildMaps();
 
@@ -1053,7 +1033,6 @@ function renderAll() {
   renderCompetitionsPublic();
   renderPlaceholderPages();
   renderTeamsTable();
-  renderStadiumsPublic();
   renderAdminArea();
   setupCollapsibleSections();
 }
@@ -1601,8 +1580,6 @@ function renderPlaceholderPages() {
   renderListonePublic();
   renderHonorSummary();
   renderClubRostersPublic();
-  setLoadingText("movementsList", "I movimenti FM sono visualizzati nella sezione Rose.");
-  renderStadiumsPublic();
 }
 
 function setupNavigation() {
@@ -1636,7 +1613,9 @@ function setupNavigation() {
     });
   });
 
-  const startPage = window.location.hash.replace("#", "") || "dashboard";
+  const startHash = window.location.hash.replace("#", "") || "dashboard";
+  const startPage = startHash === "finance" ? "regolamento" : startHash;
+  if (startHash === "finance") window.history.replaceState(null, "", "#regolamento");
   setPage(startPage);
 }
 
@@ -3873,7 +3852,6 @@ function setupSeasonSelectorEvents() {
     renderTeamsTable();
     renderClubRostersPublic();
     renderCompetitionsPublic();
-    renderStadiumsPublic();
     state.selectedListoneId = "";
     renderListonePublic();
   };
@@ -5592,8 +5570,6 @@ renderPlaceholderPages = function renderPlaceholderPagesV34() {
   renderListonePublic();
   renderHonorSummary();
   renderClubRostersPublic();
-  setLoadingText("movementsList", "I movimenti FM sono visualizzati nella sezione Rose.");
-  renderStadiumsPublic();
 };
 
 function renderUserAreaV34() {
@@ -6863,6 +6839,7 @@ function isKnownStaticHashV43(hashValue) {
     'listone',
     'competitions',
     'honor',
+    'regolamento',
     'finance',
     'admin',
     'teamarea',

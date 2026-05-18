@@ -9913,3 +9913,39 @@ body.is-mobile-ux .team-profile-player-cell strong {
   text-overflow: clip !important;
   max-width: none !important;
 }
+
+
+/* V54 - Regolamento pubblico */
+.regulation-panel {
+  overflow: hidden;
+}
+
+.regulation-document {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.38);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.regulation-pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(248, 250, 252, 0.92);
+}
+
+@media (max-width: 700px) {
+  .regulation-document {
+    padding: 0.9rem;
+    border-radius: 14px;
+  }
+
+  .regulation-pre {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+}
