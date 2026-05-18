@@ -9914,162 +9914,118 @@ body.is-mobile-ux .team-profile-player-cell strong {
   max-width: none !important;
 }
 
-
-/* V54 - Regolamento pubblico */
-.regulation-panel {
-  overflow: hidden;
+/* V52 hotfix - dashboard news previews and mobile roster expansion stability. */
+.dashboard-news-panel {
+  margin-bottom: 18px;
 }
 
-.regulation-document {
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  border-radius: 18px;
-  background: rgba(15, 23, 42, 0.38);
-  padding: clamp(1rem, 2.5vw, 1.5rem);
+.dashboard-news-list {
+  display: grid;
+  gap: 10px;
 }
 
-.regulation-pre {
-  margin: 0;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: normal;
-  font-family: inherit;
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: rgba(248, 250, 252, 0.92);
+.dashboard-news-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.42);
 }
 
-@media (max-width: 700px) {
-  .regulation-document {
-    padding: 0.9rem;
-    border-radius: 14px;
-  }
-
-  .regulation-pre {
-    font-size: 0.88rem;
-    line-height: 1.55;
-  }
+.dashboard-news-card h3 {
+  margin: 4px 0 4px;
+  font-size: 1rem;
 }
 
-/* V50 - Dashboard news preview first and mobile roster expansion fix. */
 .dashboard-news-main {
   min-width: 0;
 }
 
 .dashboard-news-preview {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 0.88rem;
+  margin: 7px 0 0;
+  color: var(--text);
   line-height: 1.45;
 }
 
-@media (max-width: 900px), (hover: none) and (pointer: coarse) {
-  .dashboard-news-panel {
-    margin-bottom: 8px;
-  }
+.dashboard-news-side {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+  white-space: nowrap;
+}
 
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .dashboard-news-card {
-    display: grid !important;
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
   .dashboard-news-side {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 0;
-    text-align: left;
+    justify-items: start;
+    white-space: normal;
   }
 
-  .dashboard-news-preview {
-    font-size: 0.8rem;
-    line-height: 1.35;
-  }
-
-  .app-page[data-page="clubs"] .roster-season-table-wrap,
-  .app-page[data-page="clubs"] .roster-inline-table-wrap {
+  .roster-season-table-wrap {
     max-height: none !important;
-    height: auto !important;
-    overflow-y: visible !important;
-    overflow-x: auto !important;
-  }
-
-  .app-page[data-page="clubs"] .roster-season-table,
-  .app-page[data-page="clubs"] .roster-season-table tbody,
-  .app-page[data-page="clubs"] .roster-season-table tr,
-  .app-page[data-page="clubs"] .roster-season-table td {
     overflow: visible !important;
   }
 
-  .app-page[data-page="clubs"] .roster-detail-row,
-  .app-page[data-page="clubs"] .roster-detail-row > td {
+  table.roster-season-table .roster-detail-row,
+  table.roster-season-table .roster-detail-row > td {
     position: relative !important;
-    z-index: 1;
     height: auto !important;
-    max-height: none !important;
+    min-height: 0 !important;
+    white-space: normal !important;
     overflow: visible !important;
-    clear: both;
+    vertical-align: top !important;
   }
 
-  .app-page[data-page="clubs"] .roster-detail-row > td {
-    padding: 8px 4px 12px !important;
-    background: rgba(15, 23, 42, 0.5) !important;
+  table.roster-season-table .roster-detail-row > td {
+    padding: 8px 0 12px !important;
   }
 
-  .app-page[data-page="clubs"] .roster-player-table {
-    margin-bottom: 8px;
+  table.roster-season-table .roster-detail-row .roster-inline-table-wrap,
+  table.roster-season-table .roster-detail-row .table-wrap,
+  table.roster-season-table .roster-detail-row .mobile-tabular-wrap {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+  }
+
+  table.roster-season-table .roster-detail-row table.roster-player-table {
+    width: 100% !important;
+    min-width: 100% !important;
   }
 }
 
-body.is-mobile-ux .dashboard-news-panel {
-  margin-bottom: 8px;
-}
-
-body.is-mobile-ux .dashboard-news-card {
-  display: grid !important;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-
-body.is-mobile-ux .dashboard-news-side {
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 0;
-  text-align: left;
-}
-
-body.is-mobile-ux .dashboard-news-preview {
-  font-size: 0.8rem;
-  line-height: 1.35;
-}
-
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table-wrap,
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-inline-table-wrap {
+body.is-mobile-ux .roster-season-table-wrap {
   max-height: none !important;
-  height: auto !important;
-  overflow-y: visible !important;
-  overflow-x: auto !important;
-}
-
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table,
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table tbody,
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table tr,
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-season-table td {
   overflow: visible !important;
 }
 
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row,
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row > td {
+body.is-mobile-ux table.roster-season-table .roster-detail-row,
+body.is-mobile-ux table.roster-season-table .roster-detail-row > td {
   position: relative !important;
-  z-index: 1;
   height: auto !important;
-  max-height: none !important;
+  min-height: 0 !important;
+  white-space: normal !important;
   overflow: visible !important;
-  clear: both;
+  vertical-align: top !important;
 }
 
-body.is-mobile-ux .app-page[data-page="clubs"] .roster-detail-row > td {
-  padding: 8px 4px 12px !important;
-  background: rgba(15, 23, 42, 0.5) !important;
+body.is-mobile-ux table.roster-season-table .roster-detail-row > td {
+  padding: 8px 0 12px !important;
+}
+
+body.is-mobile-ux table.roster-season-table .roster-detail-row .roster-inline-table-wrap,
+body.is-mobile-ux table.roster-season-table .roster-detail-row .table-wrap,
+body.is-mobile-ux table.roster-season-table .roster-detail-row .mobile-tabular-wrap {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  margin: 0 !important;
 }

@@ -192,10 +192,10 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+
 function renderBoldMarkdown(value) {
-  return escapeHtml(value).replace(/\*\*([\s\S]+?)\*\*/g, (match, content) => {
-    return String(content || "").trim() ? `<strong>${content}</strong>` : match;
-  });
+  const escaped = escapeHtml(value || "");
+  return escaped.replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>");
 }
 
 function byText(fieldName) {
@@ -903,6 +903,26 @@ function renderDashboardCalendar(seasonId) {
     </details>`).join("");
 }
 
+function renderStadiumsPublic() {
+  const target = document.getElementById("stadiumsList");
+  if (!target) return;
+
+  const seasonId = getCurrentSeasonId();
+  const seasonTeamIds = new Set(getSeasonTeamsForSeason(seasonId).map((seasonTeam) => seasonTeam.id));
+  const stadiums = state.raw.stadiums.filter((stadium) => seasonTeamIds.has(stadium.seasonTeamId));
+
+  target.innerHTML = stadiums.length
+    ? stadiums.map((stadium) => `
+      <div class="stadium-item">
+        <div>
+          ${renderSeasonTeamNameWithLogo(stadium.seasonTeamId)}
+          <span>${escapeHtml(stadium.name || "Stadio senza nome")}</span>
+        </div>
+        <strong>Livello ${escapeHtml(stadium.level ?? 0)}</strong>
+      </div>`).join("")
+    : `<p class="muted">Nessuno stadio inserito per questa stagione.</p>`;
+}
+
 function buildFifaRanking() {
   const { teamsById } = buildMaps();
 
@@ -1039,6 +1059,7 @@ function renderAll() {
   renderCompetitionsPublic();
   renderPlaceholderPages();
   renderTeamsTable();
+  renderStadiumsPublic();
   renderAdminArea();
   setupCollapsibleSections();
 }
@@ -1586,6 +1607,8 @@ function renderPlaceholderPages() {
   renderListonePublic();
   renderHonorSummary();
   renderClubRostersPublic();
+  setLoadingText("movementsList", "I movimenti FM sono visualizzati nella sezione Rose.");
+  renderStadiumsPublic();
 }
 
 function setupNavigation() {
@@ -3858,6 +3881,7 @@ function setupSeasonSelectorEvents() {
     renderTeamsTable();
     renderClubRostersPublic();
     renderCompetitionsPublic();
+    renderStadiumsPublic();
     state.selectedListoneId = "";
     renderListonePublic();
   };
@@ -5312,19 +5336,11 @@ function enhanceLoginDialogV34() {
 function updateUserVisibilityV34() {
   const approved = Boolean(getApprovedTeamUser());
   document.querySelectorAll(".nav-link-team-area").forEach((link) => link.classList.toggle("hidden", !approved));
-
   const openLoginBtn = document.getElementById("openLoginBtn");
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  if (logoutBtn) {
-    logoutBtn.classList.toggle("hidden", !state.user);
-  }
-
   if (openLoginBtn && !state.isAdmin) {
     openLoginBtn.textContent = state.user ? "Account" : "Accedi / Registrati";
     openLoginBtn.classList.remove("hidden");
   }
-
   renderUserAreaV34();
 }
 
@@ -5584,6 +5600,8 @@ renderPlaceholderPages = function renderPlaceholderPagesV34() {
   renderListonePublic();
   renderHonorSummary();
   renderClubRostersPublic();
+  setLoadingText("movementsList", "I movimenti FM sono visualizzati nella sezione Rose.");
+  renderStadiumsPublic();
 };
 
 function renderUserAreaV34() {
@@ -6645,6 +6663,8 @@ function renderTeamProfileContentV42(snapshot) {
       <td>${escapeHtml(formatMatchResult(match))}</td>
     </tr>`).join('') || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
 
+  const isOwner = getApprovedTeamUser?.()?.seasonTeamId === snapshot.seasonTeamId;
+
   return `
     <section class="panel team-profile-hero-panel">
       <div class="team-profile-header team-profile-header-stacked team-profile-page-hero">
@@ -6688,9 +6708,18 @@ openTeamProfileV34 = function openTeamProfileV42(seasonTeamId) {
 };
 openTeamProfile = openTeamProfileV34;
 
+function getDashboardNewsPreviewV52(body, maxLength = 190) {
+  const text = String(body || "").replace(/\s+/g, " ").trim();
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).replace(/[\s,.!?;:]+$/g, "")}...`;
+}
+
 function renderDashboardNewsV42() {
-  const metrics = document.querySelector('[aria-label="Indicatori principali"]');
-  if (!metrics) return;
+  const dashboardPage = document.querySelector('[data-page="dashboard"]');
+  const metrics = dashboardPage?.querySelector('[aria-label="Indicatori principali"]');
+  if (!dashboardPage || !metrics) return;
+
   let panel = document.getElementById('dashboardNewsPanel');
   if (!panel) {
     panel = document.createElement('section');
@@ -6700,12 +6729,15 @@ function renderDashboardNewsV42() {
       <div class="panel-header compact">
         <div>
           <h2>Ultime news e comunicati</h2>
-          <p>Collegamenti rapidi agli ultimi aggiornamenti ufficiali e ai comunicati delle squadre.</p>
+          <p>Le ultime 5 comunicazioni pubblicate nella stagione selezionata.</p>
         </div>
         <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
       </div>
       <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
-    metrics.insertAdjacentElement('afterend', panel);
+  }
+
+  if (panel.nextElementSibling !== metrics) {
+    metrics.insertAdjacentElement('beforebegin', panel);
   }
 
   const target = document.getElementById('dashboardNewsList');
@@ -6714,20 +6746,24 @@ function renderDashboardNewsV42() {
   const rows = (state.raw.news || [])
     .filter((item) => !item.seasonId || item.seasonId === seasonId)
     .sort((a, b) => String(b.publishedAt || b.createdAt || '').localeCompare(String(a.publishedAt || a.createdAt || '')))
-    .slice(0, 4);
+    .slice(0, 5);
 
-  target.innerHTML = rows.length ? rows.map((news) => `
-    <article class="dashboard-news-card">
-      <div>
-        <small class="muted">${escapeHtml(news.topic === 'COMUNICATO_SQUADRA' ? 'Comunicato squadra' : news.topic || 'News')}</small>
-        <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
-        ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ''}
-      </div>
-      <div class="dashboard-news-side">
-        <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
-        <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
-      </div>
-    </article>`).join('') : `<p class="muted">Nessuna news pubblicata.</p>`;
+  target.innerHTML = rows.length ? rows.map((news) => {
+    const preview = getDashboardNewsPreviewV52(news.body || '', 190);
+    return `
+      <article class="dashboard-news-card">
+        <div class="dashboard-news-main">
+          <small class="muted">${escapeHtml(news.topic === 'COMUNICATO_SQUADRA' ? 'Comunicato squadra' : news.topic || 'News')}</small>
+          <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
+          ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ''}
+          ${preview ? `<p class="dashboard-news-preview news-body-preserve">${renderBoldMarkdown(preview)}</p>` : ''}
+        </div>
+        <div class="dashboard-news-side">
+          <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
+          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
+        </div>
+      </article>`;
+  }).join('') : `<p class="muted">Nessuna news pubblicata.</p>`;
 }
 
 const renderDashboardBeforeV42 = renderDashboard;
@@ -6850,8 +6886,8 @@ function isKnownStaticHashV43(hashValue) {
     'listone',
     'competitions',
     'honor',
-    'regolamento',
     'finance',
+    'regolamento',
     'admin',
     'teamarea',
     'teamprofile'
@@ -7496,93 +7532,69 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
   }
 })();
 
-/* V51 - Startup after all incremental patches.
-   The previous v50 initialized before the v50 overrides were registered, so
-   rollover, transfer communications and some president-account handlers were
-   not active. */
-initializeAppUi().then(() => {
-  injectDisplayModeToggle();
-  updateMobileUxClass();
-});
 
-/* V50 - Dashboard news priority, competition ordering and mobile roster stability. */
-function getCompetitionTypeOrderV50(competition) {
+/* V52 - Hotfix public rendering: startup stays last, competitions are ordered, dashboard news are on top. */
+function getCompetitionTypeOrderV52(competition) {
   const order = {
     CAMPIONATO: 0,
     CHAMPIONS_LEAGUE: 1,
     COPPA_ITALIA: 2,
-    PLAYOFF: 3
+    PLAYOFF: 3,
+    ALTRO: 4
   };
   return order[competition?.type] ?? 99;
 }
 
-function competitionHasProgrammedMatchesV50(competition) {
+function competitionHasProgrammedMatchesV52(competition) {
   if (!competition?.id) return false;
-  return (state.raw.competitionMatches || []).some((match) =>
-    match.competitionId === competition.id && match.status !== "GIOCATA"
-  );
+  return (state.raw.competitionMatches || []).some((match) => {
+    if (match.competitionId !== competition.id) return false;
+    const status = String(match.status || '').toUpperCase();
+    return status !== 'GIOCATA' && status !== 'CONCLUSA' && status !== 'ANNULLATA';
+  });
 }
 
-function getCompetitionDisplayPriorityV50(competition) {
-  const status = competition?.status || "";
-  if (status === "ATTIVA" && competitionHasProgrammedMatchesV50(competition)) return 0;
-  if (status === "ATTIVA") return 1;
-  if (status === "PROGRAMMATA") return 2;
-  if (status === "CONCLUSA") return 3;
+function getCompetitionDisplayPriorityV52(competition) {
+  const status = String(competition?.status || '').toUpperCase();
+  if (status === 'ATTIVA' && competitionHasProgrammedMatchesV52(competition)) return 0;
+  if (status === 'ATTIVA') return 1;
+  if (status === 'PROGRAMMATA') return 2;
+  if (status === 'CONCLUSA') return 3;
   return 4;
 }
 
-function compareCompetitionsForPublicDisplayV50(a, b) {
-  const priorityCompare = getCompetitionDisplayPriorityV50(a) - getCompetitionDisplayPriorityV50(b);
+function compareCompetitionsForPublicDisplayV52(a, b) {
+  const priorityCompare = getCompetitionDisplayPriorityV52(a) - getCompetitionDisplayPriorityV52(b);
   if (priorityCompare) return priorityCompare;
-
-  const sortOrderA = Number(a?.sortOrder ?? a?.order ?? Number.NaN);
-  const sortOrderB = Number(b?.sortOrder ?? b?.order ?? Number.NaN);
-  if (Number.isFinite(sortOrderA) || Number.isFinite(sortOrderB)) {
-    const orderCompare = (Number.isFinite(sortOrderA) ? sortOrderA : 999) - (Number.isFinite(sortOrderB) ? sortOrderB : 999);
-    if (orderCompare) return orderCompare;
+  const sortA = Number(a?.sortOrder ?? a?.order ?? Number.NaN);
+  const sortB = Number(b?.sortOrder ?? b?.order ?? Number.NaN);
+  if (Number.isFinite(sortA) || Number.isFinite(sortB)) {
+    const sortCompare = (Number.isFinite(sortA) ? sortA : 999) - (Number.isFinite(sortB) ? sortB : 999);
+    if (sortCompare) return sortCompare;
   }
-
-  const typeCompare = getCompetitionTypeOrderV50(a) - getCompetitionTypeOrderV50(b);
+  const typeCompare = getCompetitionTypeOrderV52(a) - getCompetitionTypeOrderV52(b);
   if (typeCompare) return typeCompare;
-
-  return String(a?.name || a?.id || "").localeCompare(String(b?.name || b?.id || ""), "it", { numeric: true, sensitivity: "base" });
+  return String(a?.name || a?.id || '').localeCompare(String(b?.name || b?.id || ''), 'it', { numeric: true, sensitivity: 'base' });
 }
 
-function getSeasonCompetitionsForPublicDisplayV50(seasonId = getCurrentSeasonId()) {
+function getSeasonCompetitionsForPublicDisplayV52(seasonId = getCurrentSeasonId()) {
   return (state.raw.competitions || [])
     .filter((competition) => competition.seasonId === seasonId)
-    .sort(compareCompetitionsForPublicDisplayV50);
+    .sort(compareCompetitionsForPublicDisplayV52);
 }
 
-function getNewsRowsForCurrentSeasonV50(limit = 5) {
-  const seasonId = getCurrentSeasonId();
-  return (state.raw.news || [])
-    .filter((item) => !item.seasonId || item.seasonId === seasonId)
-    .sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || "")))
-    .slice(0, limit);
-}
-
-function getNewsPreviewTextV50(body, maxLength = 180) {
-  const text = String(body || "").replace(/\s+/g, " ").trim();
-  if (!text) return "";
-  if (text.length <= maxLength) return text;
-  return `${text.slice(0, maxLength).replace(/[\s,.!?;:]+$/g, "")}...`;
-}
-
-function renderDashboardCalendar(seasonId) {
-  const target = document.getElementById("dashboardCalendar");
+renderDashboardCalendar = function renderDashboardCalendarV52(seasonId) {
+  const target = document.getElementById('dashboardCalendar');
   if (!target) return;
 
-  const groups = getSeasonCompetitionsForPublicDisplayV50(seasonId)
+  const groups = getSeasonCompetitionsForPublicDisplayV52(seasonId)
     .map((competition) => {
       const matches = isRankingCompetition(competition)
         ? getNextChampionshipMatches(competition)
         : getCupScheduleMatches(competition);
-
       return {
         competition,
-        label: isRankingCompetition(competition) ? "Prossima giornata" : "Programmazione coppa",
+        label: isRankingCompetition(competition) ? 'Prossima giornata' : 'Programmazione coppa',
         matches
       };
     })
@@ -7617,76 +7629,30 @@ function renderDashboardCalendar(seasonId) {
               <tr>
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
-                <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
+                <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
                 <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
-              </tr>`).join("")}
+              </tr>`).join('')}
           </tbody>
         </table>
       </div>
-    </details>`).join("");
-}
+    </details>`).join('');
+};
 
-function renderDashboardNewsV42() {
-  const dashboardPage = document.querySelector('[data-page="dashboard"]');
-  const metrics = dashboardPage?.querySelector('[aria-label="Indicatori principali"]');
-  if (!dashboardPage || !metrics) return;
-
-  let panel = document.getElementById("dashboardNewsPanel");
-  if (!panel) {
-    panel = document.createElement("section");
-    panel.id = "dashboardNewsPanel";
-    panel.className = "panel dashboard-news-panel";
-    panel.innerHTML = `
-      <div class="panel-header compact">
-        <div>
-          <h2>Ultime news e comunicati</h2>
-          <p>Le ultime 5 comunicazioni pubblicate nella stagione selezionata.</p>
-        </div>
-        <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
-      </div>
-      <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
-  }
-
-  if (panel.nextElementSibling !== metrics) {
-    metrics.insertAdjacentElement("beforebegin", panel);
-  }
-
-  const target = document.getElementById("dashboardNewsList");
-  if (!target) return;
-
-  const rows = getNewsRowsForCurrentSeasonV50(5);
-  target.innerHTML = rows.length ? rows.map((news) => {
-    const preview = getNewsPreviewTextV50(news.body || "", 190);
-    return `
-      <article class="dashboard-news-card">
-        <div class="dashboard-news-main">
-          <small class="muted">${escapeHtml(news.topic === "COMUNICATO_SQUADRA" ? "Comunicato squadra" : news.topic || "News")}</small>
-          <h3>${escapeHtml(news.title || "Comunicato")}</h3>
-          ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ""}
-          ${preview ? `<p class="dashboard-news-preview news-body-preserve">${renderBoldMarkdown(preview)}</p>` : ""}
-        </div>
-        <div class="dashboard-news-side">
-          <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || "")}</small>
-          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
-        </div>
-      </article>`;
-  }).join("") : `<p class="muted">Nessuna news pubblicata.</p>`;
-}
-
-renderDashboard = function renderDashboardV50() {
+renderDashboard = function renderDashboardV52() {
   const seasonId = getCurrentSeasonId();
   const seasonTeams = getSeasonTeamsForSeason(seasonId);
-  const competitions = getSeasonCompetitionsForPublicDisplayV50(seasonId);
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+  const stats = typeof getSeasonFmStats === 'function' ? getSeasonFmStats(seasonId) : null;
 
-  const metricClubs = document.getElementById("metricClubs");
-  const metricTotalFm = document.getElementById("metricTotalFm");
-  const metricAlerts = document.getElementById("metricAlerts");
+  const metricClubs = document.getElementById('metricClubs');
+  const metricTotalFm = document.getElementById('metricTotalFm');
+  const metricAlerts = document.getElementById('metricAlerts');
 
   if (metricClubs) metricClubs.textContent = String(seasonTeams.length || getParticipantsCount(seasonId) || 0);
-  if (metricTotalFm) metricTotalFm.textContent = "- (medio -)";
-  if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === "ATTIVA").length);
+  if (metricTotalFm) metricTotalFm.textContent = stats ? `${formatFm(stats.total)} (medio ${formatFm(stats.average)})` : '- (medio -)';
+  if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === 'ATTIVA').length);
 
-  const standings = document.getElementById("dashboardStandings");
+  const standings = document.getElementById('dashboardStandings');
   if (standings) {
     standings.innerHTML = competitions.length
       ? competitions.map((competition) => `
@@ -7699,24 +7665,24 @@ renderDashboard = function renderDashboardV50() {
             <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
           </summary>
           ${renderDashboardCompetitionSummary(competition)}
-        </details>`).join("")
+        </details>`).join('')
       : `<p class="muted">Nessuna competizione inserita per questa stagione.</p>`;
   }
 
   renderDashboardCalendar(seasonId);
   renderDashboardNewsV42();
-  normalizeToggleLabelsV29?.();
+  if (typeof normalizeToggleLabelsV29 === 'function') normalizeToggleLabelsV29();
 };
 
-renderCompetitionsPublic = function renderCompetitionsPublicV50() {
-  const list = document.getElementById("competitionsList");
+renderCompetitionsPublic = function renderCompetitionsPublicV52() {
+  const list = document.getElementById('competitionsList');
   if (!list) return;
 
   const seasonId = getCurrentSeasonId();
-  const competitions = getSeasonCompetitionsForPublicDisplayV50(seasonId);
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
 
   if (!competitions.length) {
-    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || "la stagione selezionata")}.</p>`;
+    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || 'la stagione selezionata')}.</p>`;
     return;
   }
 
@@ -7728,9 +7694,37 @@ renderCompetitionsPublic = function renderCompetitionsPublicV50() {
         </div>
         <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
       </div>
-      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
+      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ''}
       ${renderCompetitionResultsPublic(competition)}
       ${renderCompetitionMatchesPublic(competition)}
     </article>
-  `).join("");
+  `).join('');
 };
+
+const updateUserVisibilityBeforeV52 = updateUserVisibilityV34;
+updateUserVisibilityV34 = function updateUserVisibilityV52() {
+  updateUserVisibilityBeforeV52?.();
+  const logoutBtn = document.getElementById('logoutBtn');
+  const openLoginBtn = document.getElementById('openLoginBtn');
+  logoutBtn?.classList.toggle('hidden', !state.user);
+  if (openLoginBtn && state.user && !state.isAdmin) {
+    openLoginBtn.textContent = 'Account';
+    openLoginBtn.classList.remove('hidden');
+  }
+};
+
+const updateAdminVisibilityBeforeV52 = updateAdminVisibility;
+updateAdminVisibility = function updateAdminVisibilityV52() {
+  updateAdminVisibilityBeforeV52?.();
+  const logoutBtn = document.getElementById('logoutBtn');
+  logoutBtn?.classList.toggle('hidden', !state.user);
+};
+
+/* V51 - Startup after all incremental patches.
+   The previous v50 initialized before the v50 overrides were registered, so
+   rollover, transfer communications and some president-account handlers were
+   not active. */
+initializeAppUi().then(() => {
+  injectDisplayModeToggle();
+  updateMobileUxClass();
+});
