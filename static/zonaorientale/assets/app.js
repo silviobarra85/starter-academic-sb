@@ -5436,8 +5436,18 @@ setupAuth = function setupAuthV34() {
 
     if (user) {
       try {
-        const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
-        state.isAdmin = adminSnapshot.exists();
+        try {
+          const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
+          state.isAdmin = adminSnapshot.exists();
+        } catch (adminError) {
+          // Gli utenti presidente non hanno necessariamente un documento admins/{uid}.
+          // Se la lettura viene negata dalle rules, non deve bloccare il controllo account.
+          if (adminError?.code === "permission-denied") {
+            state.isAdmin = false;
+          } else {
+            throw adminError;
+          }
+        }
 
         if (!state.isAdmin) {
           const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch(() => null);
@@ -7472,6 +7482,8 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
       const snapshotPanel = document.getElementById("adminPublicSnapshotsPanel");
       if (snapshotPanel) snapshotPanel.insertAdjacentHTML("beforebegin", renderSeasonRolloverAdminPanelV50());
       else adminPanel.insertAdjacentHTML("beforeend", renderSeasonRolloverAdminPanelV50());
+      const rolloverToggle = document.querySelector('#adminSeasonRolloverPanel [data-admin-toggle-panel]');
+      rolloverToggle?.addEventListener("click", () => toggleAdminPanel(rolloverToggle.dataset.adminTogglePanel));
       document.getElementById("seasonRolloverFormV50")?.addEventListener("submit", handleSeasonRolloverV50);
       const sourceSelect = document.getElementById("rolloverSourceSeasonV50");
       const targetInput = document.getElementById("rolloverTargetSeasonV50");
@@ -7489,6 +7501,8 @@ setTimeout(() => routeTeamHashV43({ force: true, scroll: false }), 250);
   if (attachAdminHandlersBeforeV50) {
     attachAdminHandlers = function attachAdminHandlersV50() {
       attachAdminHandlersBeforeV50();
+      const rolloverToggle = document.querySelector('#adminSeasonRolloverPanel [data-admin-toggle-panel]');
+      rolloverToggle?.addEventListener("click", () => toggleAdminPanel(rolloverToggle.dataset.adminTogglePanel));
       document.getElementById("seasonRolloverFormV50")?.addEventListener("submit", handleSeasonRolloverV50);
     };
   }

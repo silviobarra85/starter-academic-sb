@@ -18,7 +18,10 @@ service cloud.firestore {
     }
 
     match /admins/{userId} {
-      allow read, write: if isAdmin();
+      // Un utente loggato può leggere solo il proprio eventuale documento admin.
+      // Questo permette al frontend di verificare se è admin senza bloccare i presidenti.
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow write: if isAdmin();
     }
 
     match /pendingUsers/{userId} {
