@@ -7170,6 +7170,172 @@ ensureMobilePageScrollHandle();
 window.addEventListener("load", ensureMobilePageScrollHandle);
 document.addEventListener("DOMContentLoaded", ensureMobilePageScrollHandle);
 
+
+
+/* V87 - Dashboard mobile/news refinements and result summaries. */
+function getCompetitionWinnerResultV87(competition) {
+  return getCompetitionResults(competition?.id || '').find((result) => Number(result.position) === 1) || null;
+}
+
+function getFirstUpcomingMatchV87(competition) {
+  const matches = getUpcomingMatchesForCompetition(competition).filter((match) => String(match.status || '').toUpperCase() !== 'ANNULLATA');
+  if (!matches.length) return null;
+  return matches[matches.length - 1] || matches[0];
+}
+
+function renderCompactSingleMatchLineV87(match) {
+  if (!match) return '';
+  return `
+    <div class="compact-match-line dashboard-next-match-line">
+      <span>${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId, { strong: false })} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId, { strong: false })}</span>
+      <strong>${escapeHtml(match.matchDate || formatMatchStage(match) || 'Da programmare')}</strong>
+    </div>`;
+}
+
+renderDashboardCompetitionSummary = function renderDashboardCompetitionSummaryV87(competition) {
+  const winner = getCompetitionWinnerResultV87(competition);
+  if (winner?.seasonTeamId) {
+    return `<div class="dashboard-competition-summary dashboard-winner-line"><span class="muted">Vincitore:</span> ${renderSeasonTeamNameWithLogo(winner.seasonTeamId, { textClass: 'text-success' })}</div>`;
+  }
+
+  if (isRankingCompetition(competition)) {
+    const nextMatches = getNextChampionshipMatches(competition);
+    if (nextMatches.length) {
+      const first = nextMatches[0];
+      const label = `Prossima giornata programmata${first.matchday || first.matchDate ? `: ${first.matchday || first.matchDate}` : ''}`;
+      return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderCompactMatchLines(nextMatches)}</div>`;
+    }
+    return `<div class="dashboard-competition-summary"><span class="muted">Nessuna prossima giornata programmata.</span></div>`;
+  }
+
+  const nextMatch = getFirstUpcomingMatchV87(competition);
+  if (nextMatch) {
+    const label = `Prossima partita${formatMatchStage(nextMatch) ? ` · ${formatMatchStage(nextMatch)}` : ''}`;
+    return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderCompactSingleMatchLineV87(nextMatch)}</div>`;
+  }
+
+  return `<div class="dashboard-competition-summary"><span class="muted">Nessuna prossima partita programmata.</span></div>`;
+};
+
+renderDashboardCalendar = function renderDashboardCalendarV87(seasonId) {
+  const target = document.getElementById('dashboardCalendar');
+  if (!target) return;
+
+  const groups = getSeasonCompetitionsForPublicDisplayV52(seasonId)
+    .map((competition) => {
+      const matches = isRankingCompetition(competition)
+        ? getLatestChampionshipMatches(competition)
+        : getPlayedMatchesForCompetition(competition).slice(0, 5);
+      return {
+        competition,
+        label: isRankingCompetition(competition) ? 'Ultima giornata giocata' : 'Ultime partite disputate',
+        matches
+      };
+    })
+    .filter((group) => group.matches.length);
+
+  if (!groups.length) {
+    target.innerHTML = `<p class="muted">Nessun risultato registrato per questa stagione.</p>`;
+    return;
+  }
+
+  target.innerHTML = groups.map((group) => `
+    <details class="dashboard-calendar-group dashboard-subsection" open>
+      <summary>
+        <span>
+          <strong>${escapeHtml(group.competition.name)}</strong>
+          <small>${escapeHtml(group.label)}</small>
+        </span>
+        <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Riduci</span>
+      </summary>
+      <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
+        <table class="dashboard-calendar-table">
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>Partita</th>
+              <th>Data</th>
+              <th class="number">Risultato</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${group.matches.map((match) => `
+              <tr>
+                <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
+                <td data-label="Partita"><span class="match-teams-line">${renderSeasonTeamNameWithLogo(match.homeSeasonTeamId)} <span class="match-separator">-</span> ${renderSeasonTeamNameWithLogo(match.awaySeasonTeamId)}</span></td>
+                <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
+                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </details>`).join('');
+};
+
+renderDashboardNewsV42 = function renderDashboardNewsV87() {
+  const dashboardPage = document.querySelector('[data-page="dashboard"]');
+  const metrics = dashboardPage?.querySelector('[aria-label="Indicatori principali"]');
+  if (!dashboardPage || !metrics) return;
+
+  let panel = document.getElementById('dashboardNewsPanel');
+  if (!panel) {
+    panel = document.createElement('section');
+    panel.id = 'dashboardNewsPanel';
+    panel.className = 'panel dashboard-news-panel';
+    panel.innerHTML = `
+      <div class="panel-header compact">
+        <div>
+          <h2>Ultime news e comunicati</h2>
+          <p>Le ultime 3 comunicazioni pubblicate nella stagione selezionata.</p>
+        </div>
+        <div class="panel-actions dashboard-news-header-actions">
+          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
+        </div>
+      </div>
+      <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
+  } else {
+    const description = panel.querySelector('.panel-header p');
+    if (description) description.textContent = 'Le ultime 3 comunicazioni pubblicate nella stagione selezionata.';
+  }
+
+  if (panel.nextElementSibling !== metrics) {
+    metrics.insertAdjacentElement('beforebegin', panel);
+  }
+
+  const target = document.getElementById('dashboardNewsList');
+  if (!target) return;
+  const rows = getVisibleNewsForSeasonV79(3);
+
+  target.innerHTML = rows.length ? rows.map((news, index) => {
+    const preview = getDashboardNewsPreview(news.body || '', 220);
+    return `
+      <details class="dashboard-news-card dashboard-news-details" ${index === 0 ? 'open' : ''}>
+        <summary class="dashboard-news-summary">
+          <span>
+            <small class="muted">${escapeHtml(getNewsTopicTextV79(news))}</small>
+            <strong>${escapeHtml(news.title || 'Comunicato')}</strong>
+            ${news.seasonTeamId ? `<small class="dashboard-news-team-line">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</small>` : ''}
+          </span>
+          <span class="dashboard-news-side">
+            <small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small>
+          </span>
+        </summary>
+        <div class="dashboard-news-detail-body">
+          ${preview ? `<p class="dashboard-news-preview news-body-preserve">${renderBoldMarkdown(preview)}</p>` : ''}
+          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi tutte</button>
+        </div>
+      </details>`;
+  }).join('') : `<p class="muted">Nessuna news pubblicata.</p>`;
+};
+
+const renderDashboardBeforeV87 = renderDashboard;
+renderDashboard = function renderDashboardV87() {
+  const result = renderDashboardBeforeV87();
+  renderDashboardNewsV42();
+  if (typeof normalizeToggleLabelsV29 === 'function') normalizeToggleLabelsV29();
+  return result;
+};
+
 /* V51 - Startup after all incremental patches.
    The previous v50 initialized before the v50 overrides were registered, so
    rollover, transfer communications and some president-account handlers were

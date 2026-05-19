@@ -11064,3 +11064,151 @@ body.is-mobile-ux .content-collapsible-panel > .panel-header .section-toggle-but
     text-align: left !important;
   }
 }
+
+/* V87 - Mobile dashboard, toggles, Rose movement columns and round logos. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .content-collapsible-panel > .panel-header .section-toggle-button,
+  .dashboard-subsection .details-toggle-label,
+  body.is-mobile-ux .content-collapsible-panel > .panel-header .section-toggle-button,
+  body.is-mobile-ux .dashboard-subsection .details-toggle-label {
+    min-width: 52px !important;
+    min-height: 24px !important;
+    padding: 3px 6px !important;
+    font-size: 0.56rem !important;
+    line-height: 1 !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
+  }
+
+  .content-collapsible-panel > .panel-header,
+  body.is-mobile-ux .content-collapsible-panel > .panel-header {
+    align-items: flex-start !important;
+  }
+
+  .dashboard-news-panel.content-collapsible-panel > .panel-header > .panel-actions,
+  body.is-mobile-ux .dashboard-news-panel.content-collapsible-panel > .panel-header > .panel-actions {
+    gap: 5px !important;
+    align-items: flex-start !important;
+  }
+
+  .dashboard-news-list {
+    display: grid;
+    gap: 8px;
+  }
+
+  .dashboard-news-card.dashboard-news-details {
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .dashboard-news-summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .dashboard-news-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .dashboard-news-summary > span:first-child {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .dashboard-news-summary strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dashboard-news-side {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+
+  .dashboard-news-detail-body {
+    display: grid;
+    gap: 8px;
+    padding: 0 10px 10px;
+  }
+
+  .dashboard-news-detail-body .button-small {
+    justify-self: start;
+    min-height: 28px !important;
+    padding: 5px 8px !important;
+    font-size: 0.64rem !important;
+  }
+
+  .dashboard-winner-line {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .dashboard-next-match-line {
+    margin-top: 4px;
+  }
+
+  .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular th:nth-child(2),
+  .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2),
+  body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular th:nth-child(2),
+  body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2) {
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    text-align: left !important;
+  }
+
+  table.roster-season-table .roster-team-name .club-logo,
+  table.roster-season-table .roster-team-name .club-logo-placeholder,
+  body.is-mobile-ux table.roster-season-table .roster-team-name .club-logo,
+  body.is-mobile-ux table.roster-season-table .roster-team-name .club-logo-placeholder {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    max-width: 22px !important;
+    flex: 0 0 22px !important;
+    border-radius: 999px !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    overflow: hidden !important;
+  }
+}
+
+body.is-mobile-ux .content-collapsible-panel > .panel-header .section-toggle-button,
+body.is-mobile-ux .dashboard-subsection .details-toggle-label {
+  min-width: 52px !important;
+  min-height: 24px !important;
+  padding: 3px 6px !important;
+  font-size: 0.56rem !important;
+  line-height: 1 !important;
+  border-radius: 999px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular th:nth-child(2),
+body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2) {
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  text-align: left !important;
+}
+
+body.is-mobile-ux table.roster-season-table .roster-team-name .club-logo,
+body.is-mobile-ux table.roster-season-table .roster-team-name .club-logo-placeholder {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  max-width: 22px !important;
+  flex: 0 0 22px !important;
+  border-radius: 999px !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  overflow: hidden !important;
+}
