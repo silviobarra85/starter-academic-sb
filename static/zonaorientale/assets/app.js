@@ -56,6 +56,13 @@ import {
   renderTeamLogo,
   readLogoFileAsDataUrl
 } from "./js/core/ui.js";
+import {
+  formatStadium,
+  formatListoneNumber,
+  formatFm,
+  getRosterRoleSortValue,
+  sortRosterPlayersByRole
+} from "./js/core/formatters.js";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -384,12 +391,6 @@ function getStadiumForSeasonTeam(seasonTeamId) {
   return state.raw.stadiums.find((stadium) => stadium.seasonTeamId === seasonTeamId) || null;
 }
 
-function formatStadium(stadium) {
-  if (!stadium) return "-";
-  const name = stadium.name || "Stadio";
-  const level = stadium.level ?? 0;
-  return `${name} · L${level}`;
-}
 
 function getMatchSerieAMatchday(match) {
   const value = Number(match?.serieAMatchday ?? match?.realSerieAMatchday ?? match?.serieAGiornata ?? 0);
@@ -989,10 +990,6 @@ function renderListoneSelect(listone) {
   select.value = listone?.id || "";
 }
 
-function formatListoneNumber(value) {
-  if (value === null || value === undefined || value === "") return "-";
-  return escapeHtml(value);
-}
 
 function getListoneValue(player, key) {
   if (key === "fantasyRoster") return player.fantasyRoster || "Svincolati";
@@ -3675,28 +3672,8 @@ function getSeasonFmStats(seasonId) {
   return { total, average };
 }
 
-function formatFm(value) {
-  const number = Number(value || 0);
-  return Number.isInteger(number) ? `${number} FM` : `${number.toFixed(2).replace(".", ",")} FM`;
-}
 
-function getRosterRoleSortValue(player) {
-  const rawRole = String(player.rosterRole || player.classicRole || player.role || "").trim().toUpperCase();
-  const primaryRole = rawRole.charAt(0);
-  const order = { P: 1, D: 2, C: 3, A: 4 };
-  return order[primaryRole] || 99;
-}
 
-function sortRosterPlayersByRole(players) {
-  return [...players].sort((a, b) => {
-    const roleDiff = getRosterRoleSortValue(a) - getRosterRoleSortValue(b);
-    if (roleDiff) return roleDiff;
-
-    const nameA = String(a.playerName || "");
-    const nameB = String(b.playerName || "");
-    return nameA.localeCompare(nameB, "it", { sensitivity: "base" });
-  });
-}
 
 function getRosterSortValue(player, key) {
   if (!player) return "";
