@@ -1,94 +1,134 @@
 # AI Handoff - ZonaOrientale Salerno
 
-Ultimo aggiornamento: 2026-05-19
-Versione sito/overlay corrente: V86 - dashboard news e movimenti mobile
-Branch di lavoro: `refactor/zonaorientale-moduli`
-Branch pubblico/deploy previsto: `master`
+Ultimo aggiornamento: 19/05/2026  
+Stato progetto: refactor modulare pubblicato su `master`; nuovo lavoro da fare sul branch `feature/zonaorientale-ui-funzionalita`.
 
-## Contesto del progetto
+## 1. Contesto generale
 
-ZonaOrientale Salerno è un gestionale fantacalcio manageriale ospitato dentro una repo Hugo/Wowchemy, nella cartella:
+ZonaOrientale Salerno è un gestionale fantacalcio manageriale pubblicato dentro una repo Hugo/Wowchemy. La webapp si trova nella cartella:
 
 ```text
 static/zonaorientale/
 ```
 
-Il sito è una webapp statica HTML/CSS/JS. Hugo/Wowchemy serve solo come contenitore della repo; la webapp funziona anche servendo direttamente la cartella `static` con un server statico locale.
+Il sito è statico: HTML, CSS e JavaScript vanilla. Non usa backend proprietario e non richiede build JS. Firebase viene usato dal frontend per Authentication e Firestore. I file JS sono caricati direttamente dal browser come ES modules.
 
-Stack:
+Il sito pubblico deve leggere il più possibile da snapshot pubblici per ridurre le letture Firestore. L'area Admin modifica i dati ufficiali e poi genera gli snapshot pubblici.
+
+URL pubblico:
 
 ```text
-Frontend: HTML, CSS, JavaScript modules
-Auth: Firebase Authentication
-DB: Firestore
-Dati statici: JSON in assets/listoni e assets/rose
-Deploy pubblico: branch master della repo GitHub
+https://www.silviobarra.com/zonaorientale/
 ```
 
-Il sito pubblico deve leggere soprattutto snapshot pubblici per ridurre le letture Firestore. L'area Admin modifica i dati ufficiali, genera snapshot e gestisce utenti, presidenti e richieste.
-
-## Regola operativa fondamentale
+## 2. Regole di lavoro con l'assistente AI
 
 L'utente vuole sempre ricevere:
 
 ```text
-1. zip overlay da copiare nella repo
-2. elenco file modificati
-3. istruzioni di test
-4. comandi Git aggiornati
-5. messaggio commit coerente con la modifica
+1. zip overlay pronto da copiare nella repo;
+2. elenco file modificati;
+3. istruzioni di applicazione/test;
+4. comandi Git aggiornati;
+5. messaggio commit coerente con la modifica.
 ```
 
-Non proporre modifiche invasive in un solo overlay. Dopo alcuni errori avvenuti durante il refactor, la regola è: piccoli overlay, test immediato, commit, poi step successivo.
+Gli overlay devono contenere i file già nella posizione corretta, ad esempio:
 
-## Stato attuale del refactor
+```text
+static/zonaorientale/index.html
+static/zonaorientale/assets/app.js
+static/zonaorientale/assets/styles.css
+```
 
-Il refactor è stato eseguito sul branch:
+L'utente applica gli overlay dalla root della repo con:
+
+```bash
+unzip -o nome_overlay.zip -d .
+```
+
+Non proporre modifiche dirette su `master` finché non sono testate. Il flusso corretto è:
+
+```bash
+git checkout master
+git pull origin master
+git checkout -b feature/nome-branch
+```
+
+Poi, quando la modifica funziona:
+
+```bash
+git add ...
+git commit -m "Messaggio"
+git push origin feature/nome-branch
+```
+
+Solo alla fine:
+
+```bash
+git checkout master
+git pull origin master
+git merge feature/nome-branch
+git push origin master
+```
+
+## 3. Branch attuale
+
+Il branch di refactor già usato era:
 
 ```text
 refactor/zonaorientale-moduli
 ```
 
-Lo scopo era ridurre il monolite `assets/app.js` senza cambiare comportamento.
+Quel branch è stato mergeato e pushato su `master`.
 
-Sono stati introdotti moduli statici senza npm/build system:
+Per le prossime modifiche grafiche e funzionali il branch corrente consigliato/creato è:
 
 ```text
-static/zonaorientale/assets/js/
-  core/
-    constants.js
-    dom.js
-    formatters.js
-    state.js
-    ui.js
-    utils.js
-
-  data/
-    firestore-service.js
-    static-files-service.js
-
-  domain/
-    competitions.js
-    entities.js
-    fm-movements.js
-    labels.js
-    listone.js
-    matches.js
-    news.js
-    rosters.js
-
-  admin/
-    listone-converter.js
-
-  mobile/
-    mobile-scrollbar.js
-    mobile-tables.js
-    mobile-viewport.js
+feature/zonaorientale-ui-funzionalita
 ```
 
-Lo Step 4 originale che provava a estrarre molti selector in `selectors.js` era rotto ed è stato annullato. Non reintrodurre quel file senza un refactor molto più graduale.
+## 4. Test locale
 
-## File principali attuali
+Hugo/Wowchemy può dare problemi con versioni recenti di Hugo. Per testare solo ZonaOrientale è preferibile servire la cartella `static`:
+
+```bash
+cd static
+python3 -m http.server 1313
+```
+
+Poi aprire:
+
+```text
+http://localhost:1313/zonaorientale/
+```
+
+Per tornare alla root della repo:
+
+```bash
+cd ..
+```
+
+Pagine da testare spesso:
+
+```text
+/zonaorientale/
+/zonaorientale/#dashboard
+/zonaorientale/#news
+/zonaorientale/#clubs
+/zonaorientale/#listone
+/zonaorientale/#competitions
+/zonaorientale/#honor
+/zonaorientale/#regolamento
+/zonaorientale/#admin
+/zonaorientale/news.html
+```
+
+Da mobile si può testare con Chrome DevTools: tasto destro > Ispeziona > icona telefono/tablet > refresh forzato.
+
+## 5. Architettura attuale
+
+Struttura principale:
 
 ```text
 static/zonaorientale/
@@ -104,123 +144,335 @@ static/zonaorientale/
     styles.css
 
     icons/
+      favicon-16x16.png
+      favicon-32x32.png
+      apple-touch-icon.png
+      android-chrome-192x192.png
+      android-chrome-512x512.png
+
     logos/
+      ... loghi squadre statici ...
+
     listoni/
+      manifest.json
+      2026-05-15.json
+
     rose/
+      manifest.json
+      2025-2026-2026-05-12.json
+
     js/
+      core/
+        constants.js
+        dom.js
+        formatters.js
+        state.js
+        ui.js
+        utils.js
+
+      data/
+        firestore-service.js
+        static-files-service.js
+
+      domain/
+        competitions.js
+        entities.js
+        fm-movements.js
+        labels.js
+        listone.js
+        matches.js
+        news.js
+        rosters.js
+
+      admin/
+        listone-converter.js
+
+      mobile/
+        mobile-scrollbar.js
+        mobile-tables.js
+        mobile-viewport.js
 ```
 
-File documentali consigliati fuori da `static`, perché tutto ciò che sta sotto `static` viene pubblicato:
+Documentazione consigliata fuori da `static`:
 
 ```text
 docs/zonaorientale/AI_HANDOFF_ZONAORIENTALE_REFACTOR.md
 ```
 
-Se presenti ancora dentro `static/zonaorientale`, possono essere spostati fuori da `static`:
+Backup locale ignorato:
 
 ```text
-README_ZONAORIENTALE_FIREBASE.md
-AI_HANDOFF_ZONAORIENTALE.md
+static/zonaorientale_refactor_backup/
+```
+
+## 6. File fondamentali
+
+### Frontend
+
+```text
+static/zonaorientale/index.html
+static/zonaorientale/news.html
+static/zonaorientale/assets/app.js
+static/zonaorientale/assets/styles.css
+static/zonaorientale/assets/firebase.js
+static/zonaorientale/assets/emailjs.js
+```
+
+### Moduli JS refactor
+
+```text
+static/zonaorientale/assets/js/core/constants.js
+static/zonaorientale/assets/js/core/state.js
+static/zonaorientale/assets/js/core/dom.js
+static/zonaorientale/assets/js/core/utils.js
+static/zonaorientale/assets/js/core/ui.js
+static/zonaorientale/assets/js/core/formatters.js
+
+static/zonaorientale/assets/js/data/firestore-service.js
+static/zonaorientale/assets/js/data/static-files-service.js
+
+static/zonaorientale/assets/js/domain/competitions.js
+static/zonaorientale/assets/js/domain/entities.js
+static/zonaorientale/assets/js/domain/fm-movements.js
+static/zonaorientale/assets/js/domain/labels.js
+static/zonaorientale/assets/js/domain/listone.js
+static/zonaorientale/assets/js/domain/matches.js
+static/zonaorientale/assets/js/domain/news.js
+static/zonaorientale/assets/js/domain/rosters.js
+
+static/zonaorientale/assets/js/admin/listone-converter.js
+
+static/zonaorientale/assets/js/mobile/mobile-scrollbar.js
+static/zonaorientale/assets/js/mobile/mobile-tables.js
+static/zonaorientale/assets/js/mobile/mobile-viewport.js
+```
+
+### Dati statici
+
+```text
+static/zonaorientale/assets/listoni/manifest.json
+static/zonaorientale/assets/listoni/2026-05-15.json
+static/zonaorientale/assets/rose/manifest.json
+static/zonaorientale/assets/rose/2025-2026-2026-05-12.json
+```
+
+### Documenti e configurazioni utili
+
+Se ancora presenti in repo o spostati in docs:
+
+```text
 FIREBASE_RULES.rules
+README_ZONAORIENTALE_FIREBASE.md
 debug-firestore.html
-index_old.html
+AI_HANDOFF_ZONAORIENTALE_REFACTOR.md
 ```
 
-## Backup locale consigliato prima del merge su master
+## 7. File da mandare all'assistente AI
 
-L'utente vuole creare un backup completo della cartella refactor prima del merge. Il backup deve stare fuori da `zonaorientale`, come cartella sorella:
+Per una modifica normale al sito, mandare sempre:
 
 ```text
-static/zonaorientale_refactor_backup/
+static/zonaorientale/index.html
+static/zonaorientale/assets/app.js
+static/zonaorientale/assets/styles.css
+static/zonaorientale/assets/firebase.js
+static/zonaorientale/assets/emailjs.js
+static/zonaorientale/news.html
+static/zonaorientale/site.webmanifest
 ```
 
-Questa cartella deve essere ignorata da Git tramite `.gitignore`:
+Dato che il progetto ora è modulare, mandare anche tutta la cartella:
 
 ```text
-static/zonaorientale_refactor_backup/
+static/zonaorientale/assets/js/
 ```
 
-## Test locale consigliato
+oppure almeno i file del modulo interessato.
 
-Hugo/Wowchemy può dare errori con versioni recenti di Hugo. Per testare solo ZonaOrientale usare:
-
-```bash
-cd static
-python3 -m http.server 1313
-```
-
-Poi aprire:
+Per modifiche a Listone/Svincolati, mandare anche:
 
 ```text
-http://localhost:1313/zonaorientale/
+static/zonaorientale/assets/listoni/manifest.json
+static/zonaorientale/assets/listoni/2026-05-15.json
+static/zonaorientale/assets/js/domain/listone.js
+static/zonaorientale/assets/js/admin/listone-converter.js
 ```
 
-Testare almeno:
+Per modifiche a Rose/Movimenti, mandare anche:
 
 ```text
-/zonaorientale/#dashboard
-/zonaorientale/#news
-/zonaorientale/#clubs
-/zonaorientale/#listone
-/zonaorientale/#competitions
-/zonaorientale/#honor
-/zonaorientale/#regolamento
-/zonaorientale/#admin
-/zonaorientale/news.html
+static/zonaorientale/assets/rose/manifest.json
+static/zonaorientale/assets/rose/2025-2026-2026-05-12.json
+static/zonaorientale/assets/js/domain/rosters.js
+static/zonaorientale/assets/js/domain/fm-movements.js
 ```
 
-Da mobile, senza emulatore dedicato, usare Chrome DevTools:
+Per modifiche a Competizioni/Calendario/Classifiche, mandare anche:
 
 ```text
-Tasto destro > Ispeziona > icona telefono/tablet > scegli iPhone/Pixel > Cmd+Shift+R
+static/zonaorientale/assets/js/domain/competitions.js
+static/zonaorientale/assets/js/domain/matches.js
 ```
 
-Oppure da telefono reale sulla stessa rete:
+Per modifiche mobile, mandare anche:
 
-```bash
-cd static
-python3 -m http.server 1313 --bind 0.0.0.0
+```text
+static/zonaorientale/assets/js/mobile/mobile-scrollbar.js
+static/zonaorientale/assets/js/mobile/mobile-tables.js
+static/zonaorientale/assets/js/mobile/mobile-viewport.js
 ```
 
-Poi aprire da telefono l'IP locale del Mac.
+Per modifiche Admin/Firebase/rules/snapshot, mandare anche:
 
-## Modifiche funzionali già fatte
+```text
+FIREBASE_RULES.rules
+backup Firebase più recente in JSON
+static/zonaorientale/assets/firebase.js
+static/zonaorientale/assets/js/data/firestore-service.js
+static/zonaorientale/assets/js/data/static-files-service.js
+```
 
-### Favicon
+Per far capire tutto a un nuovo assistente, mandare preferibilmente:
 
-Aggiunte favicon, icone mobile e `site.webmanifest`.
+```text
+1. AI_HANDOFF_ZONAORIENTALE_REFACTOR.md
+2. index.html
+3. news.html
+4. assets/app.js
+5. assets/styles.css
+6. assets/firebase.js
+7. assets/emailjs.js
+8. intera cartella assets/js/
+9. assets/listoni/manifest.json
+10. ultimo file assets/listoni/*.json
+11. assets/rose/manifest.json
+12. ultimo file assets/rose/*.json
+13. backup Firebase più recente
+14. FIREBASE_RULES.rules se devi toccare permessi/admin
+```
+
+## 8. Firebase e dati
+
+Firebase viene usato dal frontend.
+
+Raccolte principali usate dal gestionale:
+
+```text
+leagueSettings
+seasons
+presidents
+teams
+seasonTeams
+stadiums
+competitions
+competitionMatches
+competitionResults
+honorRoll
+fifaRankings
+rosterEntries
+fmMovements
+news
+pendingUsers
+teamUsers
+teamRequests
+publicSeasonSnapshots
+publicSnapshots
+publicTeamSnapshots
+```
+
+Il sito pubblico dovrebbe leggere soprattutto snapshot pubblici:
+
+```text
+publicSeasonSnapshots/{seasonId}
+publicSnapshots/honor
+publicTeamSnapshots/{seasonId}_{teamId}
+```
+
+Dopo modifiche Admin importanti bisogna rigenerare gli snapshot pubblici.
+
+I listoni sono statici in Git, non in Firestore, per evitare centinaia di documenti giocatore.
+
+## 9. Modifiche già fatte prima di questo handoff
+
+### Refactor modulare
+
+`app.js` è stato alleggerito estraendo moduli in:
+
+```text
+assets/js/core/
+assets/js/data/
+assets/js/domain/
+assets/js/admin/
+assets/js/mobile/
+```
+
+Il refactor sicuro si è fermato dopo l'estrazione di:
+
+```text
+core constants/state/dom/utils/ui/formatters
+data Firestore/static files
+domain FM movements, competitions, labels, news, entities, rosters, matches, listone
+admin listone converter
+mobile scrollbar, mobile tables, mobile viewport
+```
+
+Un tentativo di estrarre selector dati era stato fatto e poi annullato perché rompeva lo startup. Non ripetere refactor grandi di selector in un solo overlay.
 
 ### Regolamento
 
-La vecchia sezione pubblica `Movimenti & Stadi` è stata rimossa. Al suo posto c'è `Regolamento`, con testo importato dal PDF ufficiale. I livelli stadio vengono gestiti nelle rose.
+La vecchia sezione pubblica `Movimenti & Stadi` è stata rimossa. Al suo posto c'è la sezione:
 
-### Login/presidenti
+```text
+#regolamento
+```
 
-Corretto il logout: deve comparire per ogni utente autenticato, non solo admin.
+Il testo è dentro `index.html` in sezione Regolamento. Da mobile deve poter scorrere orizzontalmente se il `<pre>` è largo.
 
-Nella pagina presidente non deve comparire il pulsante per inviare richiesta alla propria squadra.
+### News e comunicati
 
-### Comunicati/news
-
-I comunicati supportano il grassetto con `**testo**`.
-
-Nella dashboard sono state aggiunte le anteprime delle ultime 5 news sopra le metriche.
-
-Nella sezione News tutti i comunicati partono ridotti di default tranne il più recente.
-
-I comunicati mostrano data e ora di pubblicazione.
-
-`news.html` è stata aggiunta come pagina condivisibile per anteprima social statica. Con sito statico puro non è possibile avere anteprima social sempre aggiornata da Firebase senza generazione server-side o Cloud Function.
-
-I comunicati di avvenuto scambio non devono passare da Admin > Richieste presidenti: vengono pubblicati direttamente nelle News e inviati via email.
+- I comunicati supportano grassetto con `**testo**`.
+- La pagina News mostra i comunicati ridotti di default, tranne il più recente.
+- I comunicati mostrano data e ora.
+- Esiste `news.html` per anteprima social statica e redirect verso `#news`.
+- Con sito statico, l'anteprima social automatica dell'ultima news Firebase non è davvero dinamica: per quello servirebbe server-side/Cloud Function.
 
 ### Admin
 
-Le liste lunghe in Admin devono essere scrollabili con circa 5 righe visibili, per non occupare troppo spazio. Sezioni interessate: stagioni, presidenti, squadre, squadre per stagione, rose e movimenti FM, stadi, partite competizione, FIFA ranking.
+- Alcune liste lunghe Admin sono state rese scrollabili con circa 5 righe visibili.
+- I comunicati automatici di avvenuto scambio non devono finire in Admin > Richieste presidenti e non devono richiedere approvazione.
+- Il logout deve comparire anche agli account presidente.
+- Nella pagina presidente non deve comparire un pulsante per inviare richiesta alla propria squadra.
+
+### Mobile
+
+- Bottom navigation mobile attiva.
+- Scrollbar/cursore verticale custom mobile estratto in `mobile-scrollbar.js`.
+- Gestione viewport mobile estratta in `mobile-viewport.js`.
+- Controlli tabelle mobile estratti in `mobile-tables.js`.
+- I pulsanti Riduci/Espandi delle singole tabelle mobile sono stati rimossi perché ridondanti: resta il Riduci/Espandi della sezione.
+- I pulsanti Riduci/Espandi delle sezioni da mobile devono stare allineati con il titolo.
+
+### Listone/Svincolati mobile
+
+Modifiche recenti:
+
+- Nel Listone mobile sono nascosti di default campi secondari come Qt.I, Diff, Qt.A M, FVM.
+- Colonna Giocatore ridotta per non occupare troppo spazio.
+- Colonna Stato allargata.
+- Colonna R(RM) allargata rispetto alla prima prova.
+- Header tabella reso sticky.
+- Colonna Giocatore sticky a sinistra.
+
+Attenzione: non usare cache-busting negli import interni ES module tipo `import ... from './constants.js?v=...'`, perché aveva causato problemi di moduli non allineati. Fare cache busting solo in `index.html` sui file principali caricati via `<script>`/`<link>`.
+
+### Dashboard
+
+- Sopra le metriche ci sono le anteprime delle ultime 5 news.
+- Da mobile, nella sezione Ultime news e comunicati, i pulsanti `Riduci` e `Vedi tutte` devono stare affiancati e non sovrapporsi.
 
 ### Competizioni
 
-Ordinamento pubblico competizioni:
+Ordine pubblico competizioni:
 
 ```text
 1. attive con partite programmate
@@ -230,120 +482,129 @@ Ordinamento pubblico competizioni:
 5. altre/non disputate
 ```
 
-Nelle singole competizioni, ordinare prima le partite da disputare e poi quelle già disputate.
+Dentro ogni competizione, mostrare prima le partite da disputare e poi quelle già disputate.
 
-### Mobile
+Nota: l'utente ha scritto “prima le partite disputate e poi quelle già disputate”, ma dal contesto intendeva “prima quelle da disputare, poi quelle già disputate”. Verificare se emergono ambiguità.
 
-Risolti vari problemi mobile:
+### Footer/versione
 
-- rose espanse che si sovrapponevano alle righe;
-- una sola rosa aperta per volta su mobile;
-- cursore verticale mobile opzionale per scorrere la pagina;
-- rimosso il pulsante Riduci/Espandi dalle singole tabelle mobile, lasciando solo quello della sezione;
-- allineamento dei pulsanti Riduci/Vedi tutte in dashboard news;
-- tabella movimenti: colonna Rosa più larga e allineata a sinistra;
-- Regolamento scrollabile in orizzontale su mobile.
-
-### Listone/Svincolati mobile
-
-La sezione Listone è stata rifinita su mobile:
-
-- nel Listone sono nascosti/deselezionati di default campi secondari come Qt.I, Diff, Qt.A M e FVM;
-- la colonna Giocatore è stata ridotta per evitare eccessivo spazio;
-- la colonna R(RM) è stata allargata;
-- la colonna Stato è stata allargata;
-- intestazioni rese sticky dove possibile;
-- scroll orizzontale mantenuto.
-
-## Attenzione CSS
-
-`styles.css` contiene ancora molte patch storiche e regole mobile sovrapposte. Non fare una riscrittura totale. Se si interviene sul CSS:
+Ogni volta che viene generato un nuovo `index.html`, il footer deve includere:
 
 ```text
-1. aggiungere regole finali mirate
-2. testare mobile subito
-3. evitare di rimuovere blocchi storici senza confronto visivo
+versione + ultimo aggiornamento fatto
 ```
 
-In futuro il CSS potrebbe essere diviso in:
+Esempio:
 
 ```text
-assets/css/00-tokens.css
-assets/css/10-base.css
-assets/css/20-layout.css
-assets/css/30-components.css
-assets/css/40-tables.css
-assets/css/50-mobile.css
-assets/css/60-admin.css
-assets/css/70-regulation.css
+V86 dashboard news e movimenti mobile · Ultimo aggiornamento 19/05/2026
 ```
 
-Ma non è ancora stato fatto.
+## 10. Cose da evitare
 
-## Cose da evitare
+Non fare:
 
-Non usare React/Vue/NPM/build system.
+```text
+- grandi refactor monolitici di app.js;
+- riscritture complete di CSS mobile;
+- spostamenti di file statici senza aggiornare i path;
+- inserimento di backup dentro git;
+- salvataggio loghi base64 in Firestore;
+- commit diretti su master senza branch/test;
+- git add . se ci sono backup o cartelle temporanee.
+```
 
-Non spostare i dati statici da `assets/listoni` o `assets/rose` senza aggiornare i loader.
+Non spostare:
 
-Non reintrodurre loghi base64 in Firestore: i loghi devono essere path statici dentro `assets/logos`.
+```text
+static/zonaorientale/index.html
+static/zonaorientale/news.html
+static/zonaorientale/favicon.ico
+static/zonaorientale/site.webmanifest
+static/zonaorientale/assets/
+```
 
-Non generare overlay partendo da versioni vecchie di `index.html` o `app.js`: in passato questo ha fatto riapparire `Movimenti & Stadi` e sparire `Regolamento`.
+Si possono spostare fuori da `static`, in `docs/zonaorientale/`, solo documenti di supporto non necessari al runtime.
 
-Non estrarre grandi blocchi di selector in un colpo solo. Lo Step 4 originale ha rotto la navigazione e il caricamento dati.
+## 11. Gitignore consigliato
 
-## Flusso Git raccomandato
+Il `.gitignore` dovrebbe contenere almeno:
 
-Durante sviluppo:
+```text
+# IDEs
+.idea/
+
+# Hugo
+/resources/
+public/
+jsconfig.json
+node_modules/
+
+# macOS
+.DS_Store
+
+# Local backups / private config
+static/zonaorientale.backup/
+static/zonaorientale_refactor_backup/
+config_firebase
+static/zonaorientale/comandi_git
+mine_not_to_push
+static/docs_zonaorientale/
+static/docs/
+static/zonaorientale/docs/
+```
+
+## 12. Comandi Git utili
+
+Stato repo:
 
 ```bash
 git status
-git add ...
-git commit -m "Messaggio coerente"
-git push origin refactor/zonaorientale-moduli
 ```
 
-Per pubblicare su master dopo test finale:
+Nuovo branch:
 
 ```bash
 git checkout master
 git pull origin master
-git merge refactor/zonaorientale-moduli
+git checkout -b feature/nome-branch
+```
+
+Commit sul branch:
+
+```bash
+git add file1 file2 cartella/
+git commit -m "Messaggio commit"
+git push origin feature/nome-branch
+```
+
+Merge su master:
+
+```bash
+git checkout master
+git pull origin master
+git merge feature/nome-branch
 git push origin master
 ```
 
-Prima del merge creare backup locale:
+Backup locale fuori da `zonaorientale`:
 
 ```bash
 rm -rf static/zonaorientale_refactor_backup
 cp -R static/zonaorientale static/zonaorientale_refactor_backup
 ```
 
-Assicurarsi che `.gitignore` contenga:
+## 13. Priorità future possibili
+
+Possibili prossime aree su cui ragionare:
 
 ```text
-static/zonaorientale_refactor_backup/
+- restyle grafico dashboard;
+- ridurre invasività del pulsante Aggiorna dati su mobile;
+- migliorare UI Admin per pannelli lunghi;
+- rendere news.html generabile/aggiornabile meglio;
+- pulizia CSS per sezioni, ma senza riscrivere il mobile tutto insieme;
+- migliorare Listone mobile con modalità Compatta/Completa;
+- eventuale validatore dati per backup Firebase + listoni + rose.
 ```
 
-## Nota sui percorsi
-
-L'utente spesso lavora da terminale dentro la cartella `static`. Se il terminale è in `static`, i percorsi sono:
-
-```text
-zonaorientale/index.html
-zonaorientale/assets/app.js
-```
-
-Se il terminale è nella root della repo, i percorsi sono:
-
-```text
-static/zonaorientale/index.html
-static/zonaorientale/assets/app.js
-```
-
-Controllare sempre con:
-
-```bash
-pwd
-git status
-```
