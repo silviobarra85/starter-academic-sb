@@ -1027,13 +1027,44 @@ function renderFreeAgentsHeader(freeAgentsVisibleColumns) {
     </tr>`;
 }
 
+function getCheckedListoneStatusFilters() {
+  const checked = Array.from(document.querySelectorAll('[data-listone-status-filter]:checked')).map((input) => input.dataset.listoneStatusFilter);
+  return new Set(checked.length ? checked : ["inListone", "asteriscato", "svincolati"]);
+}
+
+function getCheckedListoneRoleFilters() {
+  const checked = Array.from(document.querySelectorAll('[data-listone-role-filter]:checked')).map((input) => input.dataset.listoneRoleFilter);
+  return new Set(checked.length ? checked : ["P", "D", "C", "A"]);
+}
+
+function isListonePlayerFreeAgent(player) {
+  const roster = String(player?.fantasyRoster || "").trim();
+  return !roster || roster.toLowerCase() === "svincolati";
+}
+
+function isListonePlayerAsterisk(player) {
+  return player?.statusCode === "ASTERISCATO" || String(player?.status || "").toLowerCase().includes("aster");
+}
+
 function getFilteredListonePlayers(listone) {
   if (!listone) return [];
-  const role = document.getElementById("listoneRoleFilter")?.value || "all";
+  const selectedRoles = getCheckedListoneRoleFilters();
+  const selectedStatuses = getCheckedListoneStatusFilters();
   const search = String(document.getElementById("listoneSearch")?.value || "").trim().toLowerCase();
 
   const filtered = (listone.players || []).filter((player) => {
-    if (role !== "all" && player.classicRole !== role) return false;
+    const playerRole = String(player.classicRole || "").toUpperCase();
+    if (selectedRoles.size && !selectedRoles.has(playerRole)) return false;
+
+    const isAsterisk = isListonePlayerAsterisk(player);
+    const isFreeAgent = isListonePlayerFreeAgent(player);
+    const isActiveListone = !isAsterisk;
+    const matchesStatus =
+      (isActiveListone && selectedStatuses.has("inListone")) ||
+      (isAsterisk && selectedStatuses.has("asteriscato")) ||
+      (isFreeAgent && selectedStatuses.has("svincolati"));
+
+    if (!matchesStatus) return false;
     if (!search) return true;
 
     const haystack = LISTONE_COLUMNS
@@ -3372,7 +3403,6 @@ function setupListoneEvents() {
     state.selectedListoneId = event.target.value;
     renderListonePublic();
   });
-  document.getElementById("listoneRoleFilter")?.addEventListener("change", renderListonePublic);
   document.getElementById("listoneSearch")?.addEventListener("input", renderListonePublic);
   document.addEventListener("click", (event) => {
     const sortButton = event.target.closest("[data-listone-sort-key]");
@@ -3395,6 +3425,11 @@ function setupListoneEvents() {
       state.freeAgentsSort = { key, direction: "asc" };
     }
     renderListonePublic();
+  });
+  document.addEventListener("change", (event) => {
+    if (event.target.closest("[data-listone-status-filter], [data-listone-role-filter]")) {
+      renderListonePublic();
+    }
   });
   document.addEventListener("change", (event) => {
     const checkbox = event.target.closest("[data-listone-column]");

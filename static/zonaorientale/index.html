@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Inizio Playoff - ZonaOrientale Salerno" />
   <meta name="twitter:description" content="COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA - In occasione dell’inizio dei playoff, augurio a tutte le squadre partecipanti per una grande giornata di fantacampionato." />
-  <link rel="stylesheet" href="./assets/styles.css?v=87" />
+  <link rel="stylesheet" href="./assets/styles.css?v=88" />
 </head>
 <body>
   <header class="app-header">
@@ -189,29 +189,28 @@
     </section>
 
     <section class="app-page" data-page="listone" aria-labelledby="listoneTitle">
-      <div class="page-heading">
-        <div>
-          <p class="eyebrow">Fantacalcio</p>
-          <h2 id="listoneTitle">Listone giocatori</h2>
-          <p>Quotazioni caricate da Fantacalcio, filtri ruolo, stato listone e storico versioni.</p>
-        </div>
-      </div>
-<section class="panel">
+<section class="panel listone-main-panel">
       <div class="panel-header">
         <div>
-          <h2>Listone giocatori</h2>
+          <h2 id="listoneTitle">Listone</h2>
           <p>Ultima fotografia caricata da Fantacalcio: tutti i campi del file Excel, squadra reale abbreviata e stato listone.</p>
           <small id="listoneMetaText" class="muted">Nessun listone selezionato.</small>
         </div>
-        <div class="filters-row">
+        <div class="filters-row listone-filter-row">
           <select id="listoneSeasonFilter" class="input filter-input" aria-label="Versione listone"></select>
-          <select id="listoneRoleFilter" class="input filter-input" aria-label="Filtro ruolo listone">
-            <option value="all">Tutti</option>
-            <option value="P">P</option>
-            <option value="D">D</option>
-            <option value="C">C</option>
-            <option value="A">A</option>
-          </select>
+          <fieldset class="inline-checkbox-group listone-status-filters" aria-label="Filtro stato listone">
+            <legend>Stato</legend>
+            <label><input type="checkbox" data-listone-status-filter="inListone" checked /> In listone</label>
+            <label><input type="checkbox" data-listone-status-filter="asteriscato" checked /> Asteriscato</label>
+            <label><input type="checkbox" data-listone-status-filter="svincolati" checked /> Svincolati</label>
+          </fieldset>
+          <fieldset class="inline-checkbox-group listone-role-filters" aria-label="Filtro ruolo listone">
+            <legend>Ruoli</legend>
+            <label><input type="checkbox" data-listone-role-filter="P" checked /> P</label>
+            <label><input type="checkbox" data-listone-role-filter="D" checked /> D</label>
+            <label><input type="checkbox" data-listone-role-filter="C" checked /> C</label>
+            <label><input type="checkbox" data-listone-role-filter="A" checked /> A</label>
+          </fieldset>
           <input id="listoneSearch" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, ruolo, rosa..." />
         </div>
         <div id="listoneColumnControls" class="column-controls"></div>
@@ -238,32 +237,6 @@
       </div>
     </section>
 
-    <section class="panel" aria-labelledby="freeAgentsTitle">
-      <div class="panel-header">
-        <div>
-          <h2 id="freeAgentsTitle">Svincolati</h2>
-          <p>Giocatori presenti nell’ultimo listone della stagione selezionata che non risultano in nessuna rosa attiva.</p>
-          <small id="freeAgentsMetaText" class="muted">Calcolati sul listone e sulle rose della stagione selezionata.</small>
-        </div>
-      </div>
-      <div class="table-wrap mobile-tabular-wrap listone-table-wrap">
-        <table class="mobile-tabular listone-table free-agents-table">
-          <thead>
-            <tr>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="player_name">Giocatore</button></th>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="real_team"><span class="desktop-inline">Squadra</span><span class="mobile-inline">Sq</span></button></th>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="classic_role"><span class="desktop-inline">Ruoli Classic</span><span class="mobile-inline">R</span> <span class="muted">(RM)</span></button></th>
-              <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="quotation_current">Qt.A</button></th>
-              <th class="number"><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="fvm">FVM</button></th>
-              <th><button class="table-sort" type="button" data-sort-table="freeAgents" data-sort-key="status">Stato</button></th>
-            </tr>
-          </thead>
-          <tbody id="freeAgentsTableBody">
-            <tr><td colspan="6" class="muted center">Nessun listone caricato.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
     </section>
 
     <section class="app-page" data-page="competitions" aria-labelledby="competitionsTitle">
@@ -1618,11 +1591,11 @@ Ogni anno a partire da questa stagione verranno istituiti 6 premi oscar del calc
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V87 dashboard mobile e riepiloghi competizioni · Ultimo aggiornamento 19/05/2026</p>
+    <p>ZonaOrientale Salerno · V88 filtri listone integrati · Ultimo aggiornamento 19/05/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=87"></script>
+  <script type="module" src="./assets/app.js?v=88"></script>
 </body>
 </html>
 
