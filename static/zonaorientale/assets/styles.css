@@ -12030,3 +12030,95 @@ html[data-theme="light"] .rules-index-grid a {
 body.is-mobile-ux .rules-index-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+
+/* V97 - Light theme refinements and mobile sticky table headers. */
+html[data-theme="light"] .inline-checkbox-group {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  color: #111827 !important;
+}
+
+html[data-theme="light"] .inline-checkbox-group legend,
+html[data-theme="light"] .inline-checkbox-group label {
+  color: #111827 !important;
+}
+
+html[data-theme="light"] .status-ok {
+  color: #4b5563 !important;
+  background: rgba(34, 197, 94, 0.22) !important;
+}
+
+html[data-theme="light"] .status-warning {
+  color: #4b5563 !important;
+  background: rgba(245, 158, 11, 0.26) !important;
+  border-color: rgba(245, 158, 11, 0.32) !important;
+}
+
+html[data-theme="light"] .status-muted {
+  color: #111827 !important;
+  background: rgba(156, 163, 175, 0.34) !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .mobile-tabular-wrap,
+  .standing-table-wrap,
+  .roster-dialog-table,
+  .honor-table-wrap,
+  .mobile-honor-table-wrap,
+  .rules-table-wrap {
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-wrap table thead th,
+  .mobile-tabular-wrap table.mobile-tabular thead th,
+  .standing-table-wrap table.standing-table thead th,
+  .roster-dialog-table table.mobile-tabular thead th,
+  .honor-table-wrap table thead th,
+  .mobile-honor-table-wrap table thead th,
+  .rules-table-wrap table thead th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 12 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    color: #e5e7eb !important;
+  }
+
+  .listone-table th:first-child,
+  .listone-table .listone-col-playerName,
+  .roster-main-table th:first-child,
+  .roster-dialog-players-table th:first-child {
+    z-index: 14 !important;
+  }
+}
+
+body.is-mobile-ux .mobile-tabular-wrap,
+body.is-mobile-ux .standing-table-wrap,
+body.is-mobile-ux .roster-dialog-table,
+body.is-mobile-ux .honor-table-wrap,
+body.is-mobile-ux .mobile-honor-table-wrap,
+body.is-mobile-ux .rules-table-wrap {
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.is-mobile-ux .table-wrap table thead th,
+body.is-mobile-ux .mobile-tabular-wrap table.mobile-tabular thead th,
+body.is-mobile-ux .standing-table-wrap table.standing-table thead th,
+body.is-mobile-ux .roster-dialog-table table.mobile-tabular thead th,
+body.is-mobile-ux .honor-table-wrap table thead th,
+body.is-mobile-ux .mobile-honor-table-wrap table thead th,
+body.is-mobile-ux .rules-table-wrap table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 12 !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  color: #e5e7eb !important;
+}
+
+body.is-mobile-ux .listone-table th:first-child,
+body.is-mobile-ux .listone-table .listone-col-playerName,
+body.is-mobile-ux .roster-main-table th:first-child,
+body.is-mobile-ux .roster-dialog-players-table th:first-child {
+  z-index: 14 !important;
+}
