@@ -122,8 +122,12 @@ export const LISTONE_COLUMNS = [
 ];
 
 export const DEFAULT_HIDDEN_LISTONE_COLUMNS = [
+  "quotationInitial",
+  "quotationDiff",
+  "quotationCurrentMantra",
   "quotationInitialMantra",
   "quotationDiffMantra",
+  "fvm",
   "fvmMantra",
   "rosterRole",
   "rosterCost",

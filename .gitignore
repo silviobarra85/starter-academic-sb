@@ -7,12 +7,12 @@ public/
 jsconfig.json
 node_modules/
 
-#fileMiei
-mine_not_to_push
-
 # macOS
 .DS_Store
 
 # Local backups / private config
 static/zonaorientale.backup/
 config_firebase
+static/zonaorientale/comandi_git
+mine_not_to_push
+static/docs_zonaorientale/

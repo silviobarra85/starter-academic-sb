@@ -39,8 +39,26 @@ import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
-import { setupMobileTables } from "./js/mobile/mobile-tables.js";
+import { setupMobileTables } from "./js/mobile/mobile-tables.js?v=85";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js";
+
+const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
+  "quotationInitial",
+  "quotationDiff",
+  "quotationCurrentMantra",
+  "quotationInitialMantra",
+  "quotationDiffMantra",
+  "fvm",
+  "fvmMantra",
+  "rosterRole",
+  "rosterCost",
+  "sourceSheet"
+];
+
+for (const key of LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82) {
+  state.hiddenListoneColumns.add(key);
+}
+
 import {
   renderBoldMarkdown,
   getTodayIsoDate,
@@ -4998,24 +5016,22 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV34() {
 function renderNewsPublicV34() {
   const target = document.getElementById("newsList");
   if (!target) return;
-  const seasonId = getCurrentSeasonId();
-  const rows = (state.raw.news || [])
-    .filter((item) => !item.seasonId || item.seasonId === seasonId)
-    .sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || "")))
-    .slice(0, 30);
+  const rows = getVisibleNewsForSeasonV79(30);
 
-  target.innerHTML = rows.length ? rows.map((news) => `
-    <article class="news-card">
-      <div class="news-card-header">
+  target.innerHTML = rows.length ? rows.map((news, index) => `
+    <details class="news-card-details" ${index === 0 ? "open" : ""}>
+      <summary class="news-card-summary">
         <div>
-          <small>${escapeHtml(news.topic === "COMUNICATO_SQUADRA" ? "Comunicato squadra" : news.topic || "News")}</small>
+          <small>${escapeHtml(getNewsTopicTextV79(news))}</small>
           <h3>${escapeHtml(news.title || "Comunicato")}</h3>
           ${news.seasonTeamId ? `<small>${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false })}</small>` : ""}
         </div>
-        <small>${escapeHtml(news.publishedAt || news.createdAt || "")}</small>
+        <small>${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small>
+      </summary>
+      <div class="news-card-detail-body">
+        <p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p>
       </div>
-      <p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p>
-    </article>`).join("") : `<p class="muted">Nessun comunicato pubblicato.</p>`;
+    </details>`).join("") : `<p class="muted">Nessun comunicato pubblicato.</p>`;
 }
 
 const renderPlaceholderPagesBeforeV34 = renderPlaceholderPages;
@@ -5160,6 +5176,92 @@ function attachUserAreaHandlersV34() {
 }
 
 
+
+/* V79 - News datetime, admin scroll helpers and transfer communications. */
+function getNewsRawDateValueV79(news) {
+  return news?.publishedAt || news?.createdAt || "";
+}
+
+function timestampToDateV79(value) {
+  if (!value) return null;
+  if (value instanceof Date) return Number.isNaN(value.getTime()) ? null : value;
+  if (typeof value === "object") {
+    if (typeof value.toDate === "function") {
+      const date = value.toDate();
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+    if (Number.isFinite(value.seconds)) return new Date(value.seconds * 1000);
+  }
+  if (typeof value === "string") {
+    const cleaned = value.trim();
+    if (!cleaned) return null;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(cleaned)) return new Date(`${cleaned}T00:00:00`);
+    const date = new Date(cleaned);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+  return null;
+}
+
+function getNewsSortTimeV79(news) {
+  const date = timestampToDateV79(getNewsRawDateValueV79(news));
+  return date ? date.getTime() : 0;
+}
+
+function padDatePartV79(value) {
+  return String(value).padStart(2, "0");
+}
+
+function getNowLocalDateTimeInputValueV79(date = new Date()) {
+  return [
+    date.getFullYear(),
+    padDatePartV79(date.getMonth() + 1),
+    padDatePartV79(date.getDate())
+  ].join("-") + "T" + [
+    padDatePartV79(date.getHours()),
+    padDatePartV79(date.getMinutes())
+  ].join(":");
+}
+
+function toNewsDateTimeInputValueV79(value) {
+  const date = timestampToDateV79(value);
+  return date ? getNowLocalDateTimeInputValueV79(date) : getNowLocalDateTimeInputValueV79();
+}
+
+function normalizeNewsPublishedAtV79(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return getNowLocalDateTimeInputValueV79();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+    const now = new Date();
+    return `${raw}T${padDatePartV79(now.getHours())}:${padDatePartV79(now.getMinutes())}`;
+  }
+  return raw;
+}
+
+function formatNewsDateTimeV79(value) {
+  const date = timestampToDateV79(value);
+  if (!date) return String(value || "");
+  return date.toLocaleString("it-IT", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+function getNewsTopicTextV79(news) {
+  return news?.topic === "COMUNICATO_SQUADRA" ? "Comunicato squadra" : (news?.topic || "News");
+}
+
+function getVisibleNewsForSeasonV79(limit = 30) {
+  const seasonId = getCurrentSeasonId();
+  return (state.raw.news || [])
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .sort((a, b) => getNewsSortTimeV79(b) - getNewsSortTimeV79(a))
+    .slice(0, limit);
+}
+
+
 /* V48 - Admin diretto per news e comunicati. */
 function renderNewsAdminPanelV48() {
   const currentSeasonId = getCurrentSeasonId();
@@ -5172,7 +5274,7 @@ function renderNewsAdminPanelV48() {
     .join("");
   const rows = (state.raw.news || [])
     .slice()
-    .sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || "")))
+    .sort((a, b) => getNewsSortTimeV79(b) - getNewsSortTimeV79(a))
     .slice(0, 40)
     .map((item) => {
       const teamName = item.seasonTeamId ? getSeasonTeamDisplayName(item.seasonTeamId) : "";
@@ -5180,7 +5282,7 @@ function renderNewsAdminPanelV48() {
         <div class="admin-list-item">
           <span>
             <strong>${escapeHtml(item.title || "Comunicato")}</strong>
-            <small>${escapeHtml(newsTopicLabelV48(item.topic))}${teamName ? ` · ${escapeHtml(teamName)}` : ""} · ${escapeHtml(item.publishedAt || item.createdAt || "")}</small>
+            <small>${escapeHtml(newsTopicLabelV48(item.topic))}${teamName ? ` · ${escapeHtml(teamName)}` : ""} · ${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(item)))}</small>
             <small class="admin-news-preview">${escapeHtml(String(item.body || "").slice(0, 140))}${String(item.body || "").length > 140 ? "..." : ""}</small>
           </span>
           <span>
@@ -5221,7 +5323,7 @@ function renderNewsAdminPanelV48() {
       </label>
       <label>
         Data pubblicazione
-        <input id="adminNewsPublishedAt" class="input" type="date" value="${escapeHtml(getTodayIsoDate())}" />
+        <input id="adminNewsPublishedAt" class="input" type="datetime-local" value="${escapeHtml(getNowLocalDateTimeInputValueV79())}" />
       </label>
       <label class="span-2">
         Testo
@@ -5252,7 +5354,7 @@ async function saveAdminNewsV48(event) {
     seasonId: document.getElementById("adminNewsSeasonId")?.value || seasonTeam?.seasonId || getCurrentSeasonId(),
     teamId: seasonTeam?.teamId || "",
     seasonTeamId,
-    publishedAt: document.getElementById("adminNewsPublishedAt")?.value || getTodayIsoDate(),
+    publishedAt: normalizeNewsPublishedAtV79(document.getElementById("adminNewsPublishedAt")?.value || ""),
     updatedAt: serverTimestamp()
   };
   try {
@@ -5280,7 +5382,7 @@ function resetAdminNewsFormV48() {
   document.getElementById("adminNewsTopic") && (document.getElementById("adminNewsTopic").value = "GENERALE");
   document.getElementById("adminNewsSeasonId") && (document.getElementById("adminNewsSeasonId").value = getCurrentSeasonId());
   document.getElementById("adminNewsSeasonTeamId") && (document.getElementById("adminNewsSeasonTeamId").value = "");
-  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = getTodayIsoDate());
+  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = getNowLocalDateTimeInputValueV79());
   document.getElementById("adminNewsBody") && (document.getElementById("adminNewsBody").value = "");
   document.getElementById("adminNewsStatus") && (document.getElementById("adminNewsStatus").textContent = "");
 }
@@ -5294,7 +5396,7 @@ function editAdminNewsV48(newsId) {
   document.getElementById("adminNewsTopic") && (document.getElementById("adminNewsTopic").value = item.topic || "GENERALE");
   document.getElementById("adminNewsSeasonId") && (document.getElementById("adminNewsSeasonId").value = item.seasonId || getCurrentSeasonId());
   document.getElementById("adminNewsSeasonTeamId") && (document.getElementById("adminNewsSeasonTeamId").value = item.seasonTeamId || "");
-  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = item.publishedAt || getTodayIsoDate());
+  document.getElementById("adminNewsPublishedAt") && (document.getElementById("adminNewsPublishedAt").value = toNewsDateTimeInputValueV79(item.publishedAt || item.createdAt));
   document.getElementById("adminNewsBody") && (document.getElementById("adminNewsBody").value = item.body || "");
   document.getElementById("adminNewsStatus") && (document.getElementById("adminNewsStatus").textContent = "Modifica comunicato esistente.");
 }
@@ -5424,7 +5526,7 @@ async function approveTeamRequestV34(requestId) {
       teamId: request.teamId || "",
       seasonTeamId: request.seasonTeamId || "",
       authorUid: request.createdBy || "",
-      publishedAt: getTodayIsoDate(),
+      publishedAt: getNowLocalDateTimeInputValueV79(),
       createdAt: serverTimestamp()
     });
   } else if (request.type === "FM_MOVEMENT") {
@@ -5505,7 +5607,7 @@ function buildPublicSeasonSnapshotV34(seasonId) {
   const snapshot = buildPublicSeasonSnapshotV32(seasonId);
   snapshot.news = (state.raw.news || [])
     .filter((item) => !item.seasonId || item.seasonId === seasonId)
-    .sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || "")))
+    .sort((a, b) => getNewsSortTimeV79(b) - getNewsSortTimeV79(a))
     .slice(0, 40)
     .map((item) => ({
       id: item.id,
@@ -5579,7 +5681,7 @@ function buildPublicTeamSnapshotV34(seasonTeam) {
     fmBalance: getFmBalanceForSeasonTeam(seasonTeamId),
     rosterEntries: getSnapshotRosterEntriesForSeasonTeamV37(seasonTeam),
     recentMovements: (state.raw.fmMovements || []).filter((movement) => movement.seasonTeamId === seasonTeamId).sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""))).slice(0, 15),
-    recentNews: (state.raw.news || []).filter((news) => news.seasonTeamId === seasonTeamId || news.teamId === seasonTeam.teamId).sort((a, b) => String(b.publishedAt || b.createdAt || "").localeCompare(String(a.publishedAt || a.createdAt || ""))).slice(0, 10),
+    recentNews: (state.raw.news || []).filter((news) => news.seasonTeamId === seasonTeamId || news.teamId === seasonTeam.teamId).sort((a, b) => getNewsSortTimeV79(b) - getNewsSortTimeV79(a)).slice(0, 10),
     palmares: buildTeamPalmaresV34(seasonTeam.teamId),
     recentMatches: matches
   };
@@ -5702,7 +5804,7 @@ async function openTeamProfileV34(seasonTeamId) {
     <tr><td data-label="Giocatore" class="team-profile-player-cell"><strong>${escapeHtml(player.playerName || "-")}</strong></td><td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(player)}</td><td data-label="Sq" class="team-profile-team-cell">${escapeHtml(player.realTeam || "-")}</td><td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(player.cost)}</td><td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td></tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
-  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p><small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
   const matchesRows = (snapshot.recentMatches || []).map((match) => `
     <tr>
       <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
@@ -5926,7 +6028,7 @@ openTeamProfileV34 = async function openTeamProfileV40(seasonTeamId) {
     </tr>`).join("") || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
   const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
   const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
-  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p><small class="muted">${escapeHtml(news.publishedAt || "")}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || "Comunicato")}</h3><p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p><small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small></article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
   const matchesRows = (snapshot.recentMatches || []).map((match) => `
     <tr>
       <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
@@ -6074,7 +6176,7 @@ function renderTeamProfileContentV42(snapshot) {
     <article class="compact-card team-profile-news-card">
       <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
       <p class="news-body-preserve">${renderBoldMarkdown(news.body || '')}</p>
-      <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
+      <small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small>
     </article>`).join('') || `<p class="muted">Nessun comunicato squadra.</p>`;
 
   const matchesRows = (snapshot.recentMatches || []).map((match) => `
@@ -6146,7 +6248,9 @@ function renderDashboardNewsV42() {
           <h2>Ultime news e comunicati</h2>
           <p>Le ultime 5 comunicazioni pubblicate nella stagione selezionata.</p>
         </div>
-        <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
+        <div class="panel-actions dashboard-news-header-actions">
+          <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
+        </div>
       </div>
       <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
   }
@@ -6157,24 +6261,20 @@ function renderDashboardNewsV42() {
 
   const target = document.getElementById('dashboardNewsList');
   if (!target) return;
-  const seasonId = getCurrentSeasonId();
-  const rows = (state.raw.news || [])
-    .filter((item) => !item.seasonId || item.seasonId === seasonId)
-    .sort((a, b) => String(b.publishedAt || b.createdAt || '').localeCompare(String(a.publishedAt || a.createdAt || '')))
-    .slice(0, 5);
+  const rows = getVisibleNewsForSeasonV79(5);
 
   target.innerHTML = rows.length ? rows.map((news) => {
     const preview = getDashboardNewsPreview(news.body || '', 190);
     return `
       <article class="dashboard-news-card">
         <div class="dashboard-news-main">
-          <small class="muted">${escapeHtml(news.topic === 'COMUNICATO_SQUADRA' ? 'Comunicato squadra' : news.topic || 'News')}</small>
+          <small class="muted">${escapeHtml(getNewsTopicTextV79(news))}</small>
           <h3>${escapeHtml(news.title || 'Comunicato')}</h3>
           ${news.seasonTeamId ? `<button class="link-button dashboard-news-team-link" type="button" data-open-team-profile="${escapeHtml(news.seasonTeamId)}">${renderSeasonTeamNameWithLogo(news.seasonTeamId, { strong: false, noLink: true })}</button>` : ''}
           ${preview ? `<p class="dashboard-news-preview news-body-preserve">${renderBoldMarkdown(preview)}</p>` : ''}
         </div>
         <div class="dashboard-news-side">
-          <small class="muted">${escapeHtml(news.publishedAt || news.createdAt || '')}</small>
+          <small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small>
           <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Leggi</button>
         </div>
       </article>`;
@@ -6949,6 +7049,120 @@ updateAdminVisibility = function updateAdminVisibilityV52() {
   logoutBtn?.classList.toggle('hidden', !state.user);
 };
 
+
+
+/* V79 - Requested updates after refactor. */
+const renderTeamRequestsAdminPanelBeforeV79 = renderTeamRequestsAdminPanelV34;
+renderTeamRequestsAdminPanelV34 = function renderTeamRequestsAdminPanelV79() {
+  const requests = (state.raw.teamRequests || [])
+    .filter((request) => request.type !== "TRANSFER_NEWS")
+    .sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")));
+  const rows = requests.map((request) => `
+    <div class="admin-list-item">
+      <span>
+        <strong>${escapeHtml(requestTypeLabel(request.type))} · ${escapeHtml(getSeasonTeamDisplayName(request.seasonTeamId))}</strong>
+        <small>${escapeHtml(request.createdByName || request.createdByEmail || request.createdBy || "")} · ${escapeHtml(requestStatusLabel(request.status))}</small>
+        <small>${escapeHtml(request.title || request.playerName || request.description || request.body || request.notes || "")}</small>
+      </span>
+      <span>
+        ${request.status === "PENDING" ? `<button class="button button-primary button-small" type="button" data-approve-request="${escapeHtml(request.id)}">Approva</button><button class="button button-danger button-small" type="button" data-reject-request="${escapeHtml(request.id)}">Rifiuta</button>` : `<span class="status status-muted">${escapeHtml(requestStatusLabel(request.status))}</span>`}
+      </span>
+    </div>`).join("") || `<p class="muted admin-empty-message">Nessuna richiesta presidente.</p>`;
+  return renderAdminPanel("adminTeamRequestsPanel", "Presidenti", "Richieste presidenti", "Approva o rifiuta movimenti, acquisti, svincoli e comunicati squadra ordinari. I comunicati di avvenuto scambio vengono pubblicati direttamente.", `<div class="admin-list">${rows}</div>`);
+};
+
+async function sendTransferCommunicationEmailV79(payload) {
+  const emailModule = await import("./emailjs.js");
+  const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
+  await emailModule.sendTransferEmail({
+    to_email: "caparrotti86@yahoo.it",
+    team_name: teamName,
+    president_name: payload.createdByName || getCurrentUserDisplayName(),
+    title: payload.title || "Comunicato avvenuto scambio",
+    message: payload.body || payload.message || "",
+    created_at: new Date().toLocaleString("it-IT"),
+    subject: `Comunicato avvenuto scambio ${teamName}`
+  });
+}
+
+function upgradeTransferCommunicationFormV79() {
+  const form = document.getElementById("teamTransferCommunicationFormV50");
+  if (!form || form.dataset.v79DirectPublish === "1") return;
+  const panelText = form.closest("section")?.querySelector(".panel-header p");
+  if (panelText) panelText.textContent = "Pubblica subito il comunicato in News e invia una email alla lega. Non serve approvazione admin.";
+  const hint = form.closest("section")?.querySelector(".field-hint");
+  if (hint) hint.textContent = "Il comunicato viene pubblicato direttamente nelle News e inviato via email a caparrotti86@yahoo.it.";
+  const cleanForm = form.cloneNode(true);
+  cleanForm.dataset.v79DirectPublish = "1";
+  form.replaceWith(cleanForm);
+  cleanForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    try {
+      showMessage("teamTransferStatusV50", "Pubblicazione comunicato in corso...");
+      const base = buildBaseTeamRequestPayloadV34("TRANSFER_NEWS");
+      const payload = {
+        title: document.getElementById("teamTransferTitleV50")?.value || "Comunicato avvenuto scambio",
+        body: document.getElementById("teamTransferBodyV50")?.value || "",
+        topic: "COMUNICATO_SQUADRA",
+        seasonId: base.seasonId || getCurrentSeasonId(),
+        teamId: base.teamId || "",
+        seasonTeamId: base.seasonTeamId || "",
+        authorUid: base.createdBy || "",
+        createdByName: base.createdByName || getCurrentUserDisplayName(),
+        players: document.getElementById("teamTransferPlayersV50")?.value || "",
+        otherTeam: document.getElementById("teamTransferOtherTeamV50")?.value || "",
+        publishedAt: getNowLocalDateTimeInputValueV79(),
+        createdAt: serverTimestamp(),
+        createdBy: state.user?.uid || ""
+      };
+      await addDoc(collection(db, "news"), payload);
+      await sendTransferCommunicationEmailV79(payload);
+      showMessage("teamTransferStatusV50", "Comunicato pubblicato nelle News ed email inviata alla lega.");
+      cleanForm.reset();
+      await loadFullDataV32({ render: true });
+    } catch (error) {
+      console.error(error);
+      showMessage("teamTransferStatusV50", error?.message || "Errore durante pubblicazione comunicato.", true);
+    }
+  });
+}
+
+const renderUserAreaBeforeV79 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV79() {
+  renderUserAreaBeforeV79?.();
+  upgradeTransferCommunicationFormV79();
+};
+
+renderCompetitionMatchesPublic = function renderCompetitionMatchesPublicV79(competition) {
+  const matches = getCompetitionMatches(competition.id);
+  const scheduledMatches = sortMatchesForDisplay(matches.filter((match) => String(match.status || "").toUpperCase() !== "GIOCATA")).slice(0, 5);
+  const playedMatches = sortMatchesForDisplay(matches.filter((match) => String(match.status || "").toUpperCase() === "GIOCATA")).slice(0, 5);
+
+  if (!playedMatches.length && !scheduledMatches.length) {
+    return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+  }
+
+  return `
+    <div class="competition-matches-public">
+      ${scheduledMatches.length ? `
+        <div class="detail-section compact-detail-section">
+          <h4>Partite da disputare</h4>
+          ${renderMatchRows(scheduledMatches, "Nessuna partita da disputare.")}
+        </div>` : ""}
+      ${playedMatches.length ? `
+        <div class="detail-section compact-detail-section">
+          <h4>Partite già disputate</h4>
+          ${renderMatchRows(playedMatches, "Nessuna partita disputata.")}
+        </div>` : ""}
+    </div>`;
+};
+
+const renderAllBeforeV79 = renderAll;
+renderAll = function renderAllV79() {
+  const result = renderAllBeforeV79();
+  upgradeTransferCommunicationFormV79();
+  return result;
+};
 
 /* V58 - Mobile roster accordion and page scroll handle.
    Scroll-handle implementation lives in js/mobile/mobile-scrollbar.js. */

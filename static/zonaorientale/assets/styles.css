@@ -10187,3 +10187,880 @@ body.is-mobile-ux .mobile-page-scroll-thumb {
   background: rgba(34, 197, 94, 0.88);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.36);
 }
+
+
+/* V79 - admin scroll lists, news collapse cards and mobile regulation scroll. */
+.admin-edit-section > .admin-list {
+  max-height: 370px;
+  overflow-y: auto;
+  padding-right: 6px;
+  overscroll-behavior: contain;
+}
+
+.admin-edit-section > .admin-list::-webkit-scrollbar,
+.regulation-document::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.admin-edit-section > .admin-list::-webkit-scrollbar-thumb,
+.regulation-document::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+}
+
+.news-card-details {
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.news-card-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.news-card-summary::-webkit-details-marker {
+  display: none;
+}
+
+.news-card-summary::after {
+  content: "Ingrandisci";
+  flex: 0 0 auto;
+  align-self: flex-start;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--text);
+  background: rgba(31, 41, 55, 0.92);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.news-card-details[open] .news-card-summary::after {
+  content: "Riduci";
+}
+
+.news-card-summary h3 {
+  margin: 8px 0;
+}
+
+.news-card-summary small {
+  color: var(--muted);
+}
+
+.news-card-detail-body {
+  padding: 0 16px 16px;
+}
+
+.news-card-detail-body p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.regulation-document {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.regulation-pre {
+  min-width: 760px;
+  white-space: pre;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .admin-edit-section > .admin-list {
+    max-height: 340px;
+  }
+
+  .news-card-summary {
+    padding: 10px !important;
+    flex-direction: column;
+  }
+
+  .news-card-summary::after {
+    align-self: flex-start;
+  }
+
+  .news-card-detail-body {
+    padding: 0 10px 10px;
+  }
+
+  .regulation-panel,
+  .regulation-document {
+    overflow-x: auto !important;
+  }
+
+  .regulation-pre {
+    min-width: 760px;
+    font-size: 0.78rem;
+  }
+}
+
+
+/* V80 - Listone/Svincolati mobile compact columns.
+   Keeps the player column readable and separated from R (RM). */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="listone"] .listone-table-wrap {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table,
+  .app-page[data-page="listone"] table.free-agents-table {
+    table-layout: fixed !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.68rem !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th,
+  .app-page[data-page="listone"] table.listone-table td,
+  .app-page[data-page="listone"] table.free-agents-table th,
+  .app-page[data-page="listone"] table.free-agents-table td {
+    padding: 6px 8px !important;
+    line-height: 1.18 !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-playerName {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 35 !important;
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: 190px !important;
+    padding-right: 12px !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    box-shadow: 8px 0 14px rgba(2, 6, 23, 0.42) !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    text-overflow: clip !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName {
+    z-index: 45 !important;
+    top: 0 !important;
+  }
+
+  .app-page[data-page="listone"] .listone-col-playerName strong,
+  .app-page[data-page="listone"] .listone-col-playerName .link-button {
+    display: inline !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.16 !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-classicRole,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-classicRole,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-classicRole,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-classicRole {
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+    padding-left: 10px !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-realTeam,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-realTeam,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-realTeam,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-realTeam {
+    width: 50px !important;
+    min-width: 50px !important;
+    max-width: 50px !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-fantasyRoster,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-fantasyRoster {
+    width: 74px !important;
+    min-width: 74px !important;
+    max-width: 74px !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-fvm,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-fvm {
+    width: 54px !important;
+    min-width: 54px !important;
+    max-width: 54px !important;
+    text-align: right !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-status,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-status {
+    width: 74px !important;
+    min-width: 74px !important;
+    max-width: 74px !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-status .status,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-status .status,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-status .status,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-status .status {
+    padding: 3px 6px !important;
+    font-size: 0.62rem !important;
+    white-space: nowrap !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .listone-table-wrap {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  max-width: 100% !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table {
+  table-layout: fixed !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 0.68rem !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td {
+  padding: 6px 8px !important;
+  line-height: 1.18 !important;
+  vertical-align: middle !important;
+  text-align: left !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-playerName {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 35 !important;
+  width: 190px !important;
+  min-width: 190px !important;
+  max-width: 190px !important;
+  padding-right: 12px !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+  box-shadow: 8px 0 14px rgba(2, 6, 23, 0.42) !important;
+  white-space: normal !important;
+  overflow: hidden !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  text-overflow: clip !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName {
+  z-index: 45 !important;
+  top: 0 !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .listone-col-playerName strong,
+body.is-mobile-ux .app-page[data-page="listone"] .listone-col-playerName .link-button {
+  display: inline !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.16 !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-classicRole,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-classicRole,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-classicRole,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-classicRole {
+  width: 58px !important;
+  min-width: 58px !important;
+  max-width: 58px !important;
+  padding-left: 10px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-realTeam,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-realTeam,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-realTeam,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-realTeam {
+  width: 50px !important;
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-fantasyRoster,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-fantasyRoster {
+  width: 74px !important;
+  min-width: 74px !important;
+  max-width: 74px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-quotationCurrent,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-quotationCurrent,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-quotationCurrent,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-quotationCurrent,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-fvm,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-fvm {
+  width: 54px !important;
+  min-width: 54px !important;
+  max-width: 54px !important;
+  text-align: right !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-status {
+  width: 74px !important;
+  min-width: 74px !important;
+  max-width: 74px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-status .status,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-status .status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-status .status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-status .status {
+  padding: 3px 6px !important;
+  font-size: 0.62rem !important;
+  white-space: nowrap !important;
+}
+
+/* V81 - Listone/Svincolati mobile column refinement and sticky headers.
+   Fixes player column width, role width, default compact view and header stickiness. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="listone"] .listone-table-wrap {
+    max-width: 100% !important;
+    max-height: min(66vh, 620px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
+    border-radius: 14px;
+  }
+
+  .app-page[data-page="listone"] table.listone-table,
+  .app-page[data-page="listone"] table.free-agents-table {
+    table-layout: fixed !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.68rem !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th,
+  .app-page[data-page="listone"] table.free-agents-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 60 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    box-shadow: 0 1px 0 rgba(148, 163, 184, 0.2) !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th,
+  .app-page[data-page="listone"] table.listone-table td,
+  .app-page[data-page="listone"] table.free-agents-table th,
+  .app-page[data-page="listone"] table.free-agents-table td {
+    padding: 6px 7px !important;
+    line-height: 1.18 !important;
+    vertical-align: middle !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-playerName {
+    position: sticky !important;
+    left: 0 !important;
+    width: 164px !important;
+    min-width: 164px !important;
+    max-width: 164px !important;
+    padding-left: 8px !important;
+    padding-right: 10px !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    box-shadow: 7px 0 12px rgba(2, 6, 23, 0.38) !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    overflow-wrap: anywhere !important;
+    text-overflow: clip !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName {
+    top: 0 !important;
+    z-index: 80 !important;
+  }
+
+  .app-page[data-page="listone"] .listone-col-playerName strong,
+  .app-page[data-page="listone"] .listone-col-playerName .link-button {
+    display: inline !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.15 !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-classicRole,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-classicRole,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-classicRole,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-classicRole {
+    width: 86px !important;
+    min-width: 86px !important;
+    max-width: 86px !important;
+    padding-left: 11px !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+  }
+
+  .app-page[data-page="listone"] .listone-col-classicRole .role-extra {
+    display: inline !important;
+    font-size: 0.58rem !important;
+    white-space: normal !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-realTeam,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-realTeam,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-realTeam,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-realTeam {
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    text-align: center !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-fantasyRoster,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-fantasyRoster {
+    width: 62px !important;
+    min-width: 62px !important;
+    max-width: 62px !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-quotationCurrent,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-fvm,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-fvm {
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    text-align: right !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-status,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-status {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-status .status,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-status .status,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-status .status,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-status .status {
+    padding: 3px 6px !important;
+    font-size: 0.6rem !important;
+    white-space: nowrap !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] .listone-table-wrap {
+  max-height: min(66vh, 620px) !important;
+  overflow: auto !important;
+  overscroll-behavior: contain !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 60 !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+  box-shadow: 0 1px 0 rgba(148, 163, 184, 0.2) !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-playerName {
+  position: sticky !important;
+  left: 0 !important;
+  width: 164px !important;
+  min-width: 164px !important;
+  max-width: 164px !important;
+  padding-left: 8px !important;
+  padding-right: 10px !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+  box-shadow: 7px 0 12px rgba(2, 6, 23, 0.38) !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName {
+  top: 0 !important;
+  z-index: 80 !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-classicRole,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-classicRole,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-classicRole,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-classicRole {
+  width: 86px !important;
+  min-width: 86px !important;
+  max-width: 86px !important;
+  padding-left: 11px !important;
+  white-space: normal !important;
+}
+
+
+/* V82 - Hotfix Listone/Svincolati mobile: ripristina caricamento JS e rifinisce colonne. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .listone-table-wrap {
+    max-height: min(70vh, 620px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .listone-table th,
+  .listone-table td {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+
+  .listone-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+  }
+
+  .listone-table .listone-col-playerName {
+    width: 160px !important;
+    min-width: 160px !important;
+    max-width: 160px !important;
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 8 !important;
+    background: rgba(15, 23, 42, 0.99) !important;
+    box-shadow: 8px 0 12px rgba(2, 6, 23, 0.28);
+  }
+
+  .listone-table th.listone-col-playerName {
+    z-index: 12 !important;
+  }
+
+  .listone-table .listone-col-classicRole {
+    width: 88px !important;
+    min-width: 88px !important;
+    max-width: 88px !important;
+    white-space: normal !important;
+  }
+
+  .listone-table .role-extra {
+    display: inline !important;
+    white-space: normal !important;
+  }
+
+  .listone-table .listone-col-realTeam {
+    width: 46px !important;
+    min-width: 46px !important;
+    max-width: 46px !important;
+  }
+
+  .listone-table .listone-col-fantasyRoster {
+    width: 62px !important;
+    min-width: 62px !important;
+    max-width: 62px !important;
+  }
+
+  .listone-table .listone-col-quotationCurrent,
+  .listone-table .listone-col-fvm {
+    width: 50px !important;
+    min-width: 50px !important;
+    max-width: 50px !important;
+  }
+
+  .listone-table .listone-col-status {
+    width: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+  }
+}
+
+body.is-mobile-ux .listone-table-wrap {
+  max-height: min(70vh, 620px) !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+body.is-mobile-ux .listone-table th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9 !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+}
+body.is-mobile-ux .listone-table .listone-col-playerName {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 8 !important;
+  background: rgba(15, 23, 42, 0.99) !important;
+  box-shadow: 8px 0 12px rgba(2, 6, 23, 0.28);
+}
+body.is-mobile-ux .listone-table th.listone-col-playerName { z-index: 12 !important; }
+body.is-mobile-ux .listone-table .listone-col-classicRole {
+  width: 88px !important;
+  min-width: 88px !important;
+  max-width: 88px !important;
+  white-space: normal !important;
+}
+
+/* V83 - Listone/Svincolati mobile: colonna Stato leggermente piu larga. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="listone"] table.listone-table th.listone-col-status,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-status,
+  .listone-table .listone-col-status {
+    width: 84px !important;
+    min-width: 84px !important;
+    max-width: 84px !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table .listone-col-status .status,
+  .app-page[data-page="listone"] table.free-agents-table .listone-col-status .status {
+    padding: 3px 7px !important;
+    font-size: 0.62rem !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-status,
+body.is-mobile-ux .listone-table .listone-col-status {
+  width: 84px !important;
+  min-width: 84px !important;
+  max-width: 84px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table .listone-col-status .status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table .listone-col-status .status {
+  padding: 3px 7px !important;
+  font-size: 0.62rem !important;
+}
+
+/* V84 - Listone/Svincolati mobile: colonna Giocatore piu compatta e Stato piu largo. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-playerName,
+  .listone-table .listone-col-playerName,
+  .free-agents-table .listone-col-playerName {
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table th.listone-col-status,
+  .app-page[data-page="listone"] table.listone-table td.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table th.listone-col-status,
+  .app-page[data-page="listone"] table.free-agents-table td.listone-col-status,
+  .listone-table .listone-col-status,
+  .free-agents-table .listone-col-status {
+    width: 96px !important;
+    min-width: 96px !important;
+    max-width: 96px !important;
+  }
+
+  .app-page[data-page="listone"] table.listone-table .listone-col-status .status,
+  .app-page[data-page="listone"] table.free-agents-table .listone-col-status .status {
+    padding: 3px 8px !important;
+    font-size: 0.62rem !important;
+  }
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-playerName,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-playerName,
+body.is-mobile-ux .listone-table .listone-col-playerName,
+body.is-mobile-ux .free-agents-table .listone-col-playerName {
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table th.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table td.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table th.listone-col-status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table td.listone-col-status,
+body.is-mobile-ux .listone-table .listone-col-status,
+body.is-mobile-ux .free-agents-table .listone-col-status {
+  width: 96px !important;
+  min-width: 96px !important;
+  max-width: 96px !important;
+}
+
+body.is-mobile-ux .app-page[data-page="listone"] table.listone-table .listone-col-status .status,
+body.is-mobile-ux .app-page[data-page="listone"] table.free-agents-table .listone-col-status .status {
+  padding: 3px 8px !important;
+  font-size: 0.62rem !important;
+}
+
+/* V85 - Mobile section toggles and table controls cleanup.
+   Mobile tables no longer get their own Riduci/Espandi button: the parent
+   section toggle is the only collapse control. */
+.mobile-table-actions,
+body.is-mobile-ux .mobile-table-actions {
+  display: none !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .content-collapsible-panel > .panel-header {
+    position: relative !important;
+    align-items: flex-start !important;
+  }
+
+  .content-collapsible-panel > .panel-header > div:first-child {
+    min-width: 0 !important;
+    padding-right: 92px !important;
+  }
+
+  .content-collapsible-panel > .panel-header > .panel-actions {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    z-index: 4 !important;
+  }
+
+  .content-collapsible-panel > .panel-header .section-toggle-button {
+    min-width: 76px !important;
+    white-space: nowrap !important;
+  }
+}
+
+body.is-mobile-ux .content-collapsible-panel > .panel-header {
+  position: relative !important;
+  align-items: flex-start !important;
+}
+
+body.is-mobile-ux .content-collapsible-panel > .panel-header > div:first-child {
+  min-width: 0 !important;
+  padding-right: 92px !important;
+}
+
+body.is-mobile-ux .content-collapsible-panel > .panel-header > .panel-actions {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  z-index: 4 !important;
+}
+
+body.is-mobile-ux .content-collapsible-panel > .panel-header .section-toggle-button {
+  min-width: 76px !important;
+  white-space: nowrap !important;
+}
+
+/* V86 - Mobile refinements for dashboard news actions and Rose movements table. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .dashboard-news-panel.content-collapsible-panel > .panel-header,
+  body.is-mobile-ux .dashboard-news-panel.content-collapsible-panel > .panel-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .dashboard-news-panel.content-collapsible-panel > .panel-header > div:first-child,
+  body.is-mobile-ux .dashboard-news-panel.content-collapsible-panel > .panel-header > div:first-child {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .dashboard-news-panel.content-collapsible-panel > .panel-header > .panel-actions,
+  body.is-mobile-ux .dashboard-news-panel.content-collapsible-panel > .panel-header > .panel-actions {
+    position: static !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    z-index: auto !important;
+  }
+
+  .dashboard-news-header-actions .button-small,
+  .dashboard-news-panel .section-toggle-button,
+  body.is-mobile-ux .dashboard-news-header-actions .button-small,
+  body.is-mobile-ux .dashboard-news-panel .section-toggle-button {
+    min-width: 0 !important;
+    min-height: 30px !important;
+    padding: 5px 8px !important;
+    font-size: 0.66rem !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+  }
+
+  .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular th:nth-child(2),
+  .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2),
+  body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular th:nth-child(2),
+  body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2) {
+    width: 112px !important;
+    min-width: 112px !important;
+    max-width: 112px !important;
+    text-align: left !important;
+  }
+
+  .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2) .club-name-with-logo,
+  .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2) .link-button,
+  body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2) .club-name-with-logo,
+  body.is-mobile-ux .app-page[data-page="clubs"] section[aria-labelledby="marketActivityTitle"] .mobile-tabular-wrap table.mobile-tabular td:nth-child(2) .link-button {
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+}
