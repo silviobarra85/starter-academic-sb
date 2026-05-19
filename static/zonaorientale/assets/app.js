@@ -86,6 +86,12 @@ import {
 } from "./js/domain/labels.js";
 import { getDashboardNewsPreview } from "./js/domain/news.js";
 import {
+  getMatchSerieAMatchday,
+  getCompetitionShortCode,
+  formatMatchStage,
+  formatMatchResult
+} from "./js/domain/matches.js";
+import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneSheetRows
@@ -405,23 +411,9 @@ function getStadiumForSeasonTeam(seasonTeamId) {
 }
 
 
-function getMatchSerieAMatchday(match) {
-  const value = Number(match?.serieAMatchday ?? match?.realSerieAMatchday ?? match?.serieAGiornata ?? 0);
-  return Number.isFinite(value) ? value : 0;
-}
-
 function getCompetitionNameForMatch(match) {
   const { competitionsById } = buildMaps();
   return competitionsById.get(match?.competitionId)?.name || match?.competitionId || "";
-}
-
-function getCompetitionShortCode(competition) {
-  const type = competition?.type || competition;
-  if (type === "CAMPIONATO") return "A";
-  if (type === "COPPA_ITALIA") return "CI";
-  if (type === "CHAMPIONS_LEAGUE") return "CL";
-  if (type === "PLAYOFF") return "PO";
-  return String(competition?.name || type || "-").trim().slice(0, 3).toUpperCase() || "-";
 }
 
 function getCompetitionShortCodeById(competitionId) {
@@ -446,25 +438,10 @@ function sortMatchesForDisplay(matches) {
   return [...matches].sort(compareMatchesForDisplay);
 }
 
-function formatMatchStage(match) {
-  return match?.matchday || "-";
-}
-
 function getCompetitionMatches(competitionId) {
   return sortMatchesForDisplay(
     state.raw.competitionMatches.filter((match) => match.competitionId === competitionId)
   );
-}
-
-function formatMatchResult(match) {
-  if (!match || match.status !== "GIOCATA") return getLabel(MATCH_STATUSES, match?.status) || "Da giocare";
-  const goals = match.homeGoals !== null && match.homeGoals !== undefined && match.awayGoals !== null && match.awayGoals !== undefined
-    ? `${match.homeGoals}-${match.awayGoals}`
-    : "Risultato inserito";
-  const scores = match.homeScore !== null && match.homeScore !== undefined && match.awayScore !== null && match.awayScore !== undefined
-    ? ` · FP ${match.homeScore}-${match.awayScore}`
-    : "";
-  return `${goals}${scores}`;
 }
 
 function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
