@@ -74,6 +74,7 @@ import {
   requestTypeLabel,
   newsTopicLabelV48
 } from "./js/domain/labels.js";
+import { getDashboardNewsPreview } from "./js/domain/news.js";
 import {
   loadXlsxLibrary,
   abbreviateRealTeam,
@@ -6208,13 +6209,6 @@ openTeamProfileV34 = function openTeamProfileV42(seasonTeamId) {
 };
 openTeamProfile = openTeamProfileV34;
 
-function getDashboardNewsPreviewV52(body, maxLength = 190) {
-  const text = String(body || "").replace(/\s+/g, " ").trim();
-  if (!text) return "";
-  if (text.length <= maxLength) return text;
-  return `${text.slice(0, maxLength).replace(/[\s,.!?;:]+$/g, "")}...`;
-}
-
 function renderDashboardNewsV42() {
   const dashboardPage = document.querySelector('[data-page="dashboard"]');
   const metrics = dashboardPage?.querySelector('[aria-label="Indicatori principali"]');
@@ -6249,7 +6243,7 @@ function renderDashboardNewsV42() {
     .slice(0, 5);
 
   target.innerHTML = rows.length ? rows.map((news) => {
-    const preview = getDashboardNewsPreviewV52(news.body || '', 190);
+    const preview = getDashboardNewsPreview(news.body || '', 190);
     return `
       <article class="dashboard-news-card">
         <div class="dashboard-news-main">
