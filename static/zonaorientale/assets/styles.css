@@ -11908,3 +11908,48 @@ html[data-theme="light"] .rules-inline-note {
     overflow-y: hidden;
   }
 }
+
+/* V95 - Regolamento nel tab piu compatto. */
+.regulation-panel {
+  margin-top: 0;
+}
+
+.regulation-open-button {
+  min-height: 28px;
+  padding: 5px 9px;
+  font-size: 0.72rem;
+  line-height: 1.1;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .regulation-panel-header {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .regulation-actions {
+    width: auto !important;
+    justify-content: flex-end;
+  }
+
+  .regulation-actions .regulation-open-button {
+    width: auto !important;
+    min-height: 28px;
+    padding: 5px 8px;
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+}
+
+body.is-mobile-ux .regulation-actions {
+  width: auto !important;
+  justify-content: flex-end;
+}
+
+body.is-mobile-ux .regulation-actions .regulation-open-button {
+  width: auto !important;
+  min-height: 28px;
+  padding: 5px 8px;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
