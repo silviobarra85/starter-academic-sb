@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="Inizio Playoff - ZonaOrientale Salerno" />
   <meta name="twitter:description" content="COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA - In occasione dell’inizio dei playoff, augurio a tutte le squadre partecipanti per una grande giornata di fantacampionato." />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=95" />
+  <link rel="stylesheet" href="./assets/styles.css?v=96" />
 </head>
 <body>
   <header class="app-header">
@@ -291,17 +291,28 @@
         <div class="panel-header compact regulation-panel-header">
           <div>
             <h2 id="regolamentoDocumentoTitle">Regolamento 2024/2025</h2>
-            <p>Testo riorganizzato con sezioni, tabelle e spazi ripuliti. La pagina completa è disponibile anche come pagina statica dedicata.</p>
-          </div>
-          <div class="panel-actions regulation-actions">
-            <a class="button button-secondary regulation-open-button" href="./rules.html" target="_blank" rel="noopener">Apri pagina regolamento</a>
+            <p>Testo riorganizzato con sezioni, tabelle e indice rapido.</p>
           </div>
         </div>
         <div class="rules-inline-wrap" aria-label="Regolamento completo">
-          <div class="rules-inline-note">
-            <strong>Regolamento incorporato nella pagina.</strong>
-            <span>La pagina dedicata resta disponibile dal pulsante qui sopra.</span>
-          </div>
+          <nav class="rules-index" aria-labelledby="rulesIndexTitle">
+            <h3 id="rulesIndexTitle">Indice regolamento</h3>
+            <div class="rules-index-grid">
+              <a href="#rules-partecipanti">1. Partecipanti</a>
+              <a href="#rules-regole-base">2. Regole base</a>
+              <a href="#rules-rosa">3. La rosa</a>
+              <a href="#rules-mercato-sessioni">4. Mercato e sessioni</a>
+              <a href="#rules-date-mercato">5. Date mercato</a>
+              <a href="#rules-svincolo">6. Svincolo calciatori</a>
+              <a href="#rules-scambi">7. Scambi e prestiti</a>
+              <a href="#rules-finanze">8. Finanze</a>
+              <a href="#rules-stadio">9. Stadio</a>
+              <a href="#rules-calendario">10. Calendario</a>
+              <a href="#rules-coppe">11. Coppe</a>
+              <a href="#rules-montepremi">12. Montepremi</a>
+              <a href="#rules-oscar">13. Oscar</a>
+            </div>
+          </nav>
           <div class="rules-inline-content">
 
 
@@ -1464,7 +1475,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V95 regolamento più compatto · Ultimo aggiornamento 19/05/2026</p>
+    <p>ZonaOrientale Salerno · V96 regolamento con indice rapido · Ultimo aggiornamento 19/05/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
