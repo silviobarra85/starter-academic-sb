@@ -11855,3 +11855,56 @@ html[data-theme="light"] .rules-inline-note {
     border-radius: 14px;
   }
 }
+
+
+/* V94 - Regolamento mobile: testo sempre a capo.
+   Le tabelle restano scrollabili in orizzontale, ma paragrafi, note e liste non devono sforare lo schermo. */
+.rules-inline-wrap,
+.rules-inline-content,
+.regulation-panel,
+.rules-section {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.rules-section p,
+.rules-section li,
+.rules-note-list p,
+.rules-inline-note,
+.rules-toc a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.rules-table td,
+.rules-table th {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .regulation-panel,
+  .rules-inline-wrap,
+  .rules-inline-content,
+  .rules-section {
+    overflow-x: hidden;
+  }
+
+  .rules-section p,
+  .rules-section li,
+  .rules-note-list p,
+  .rules-inline-note,
+  .rules-toc a {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .rules-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
