@@ -962,23 +962,38 @@ function renderHonorSummary() {
     </div>`;
 }
 
+function compareListoniByDateDescV99(a, b) {
+  const dateCompare = String(b.loadedAt || b.meta?.loadedAt || b.id || "").localeCompare(
+    String(a.loadedAt || a.meta?.loadedAt || a.id || ""),
+    "it"
+  );
+  if (dateCompare) return dateCompare;
+  return String(b.id || "").localeCompare(String(a.id || ""), "it");
+}
+
 function getListoniForCurrentSeason() {
   const seasonId = getCurrentSeasonId();
-  const seasonal = state.listoni.filter((listone) => listone.seasonId === seasonId);
-  return seasonal.length ? seasonal : state.listoni;
+  if (!seasonId) return [];
+  return state.listoni
+    .filter((listone) => String(listone.seasonId || listone.meta?.seasonId || "") === String(seasonId))
+    .sort(compareListoniByDateDescV99);
 }
 
 function getSelectedListone() {
   const available = getListoniForCurrentSeason();
-  if (!available.length) return null;
+  if (!available.length) {
+    state.selectedListoneId = "";
+    return null;
+  }
 
   if (state.selectedListoneId) {
     const selected = available.find((listone) => listone.id === state.selectedListoneId);
     if (selected) return enrichListoneWithRosters(selected);
   }
 
-  state.selectedListoneId = available[0].id;
-  return enrichListoneWithRosters(available[0]);
+  const latest = available[0];
+  state.selectedListoneId = latest.id;
+  return enrichListoneWithRosters(latest);
 }
 
 function getCurrentListone() {
@@ -1208,8 +1223,9 @@ function renderListonePublic() {
   }
 
   if (!listone) {
-    tbody.innerHTML = `<tr><td colspan="${visibleColumns.length || 1}" class="muted center">Nessun listone caricato.</td></tr>`;
-    if (metaText) metaText.textContent = "Nessun listone disponibile in assets/listoni.";
+    const seasonName = getSeasonName(getCurrentSeasonId()) || getCurrentSeasonId() || "selezionata";
+    tbody.innerHTML = `<tr><td colspan="${visibleColumns.length || 1}" class="muted center">Nessun listone caricato per la stagione selezionata.</td></tr>`;
+    if (metaText) metaText.textContent = `Nessun listone caricato per la stagione ${seasonName}.`;
     if (freeAgentsBody) {
       const freeAgentsTable = freeAgentsBody.closest("table");
       const freeAgentsThead = freeAgentsTable?.querySelector("thead");
