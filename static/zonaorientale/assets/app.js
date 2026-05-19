@@ -68,6 +68,12 @@ import {
   getTeamDisplayName
 } from "./js/domain/entities.js";
 import {
+  normalizePlayerName,
+  normalizeRosterKey,
+  getRosterAliasKeys,
+  mapStaticRosterPlayers
+} from "./js/domain/rosters.js";
+import {
   FM_MOVEMENT_TYPES,
   getFmMovementLabel,
   renderFmMovementTypeBadge
@@ -3456,48 +3462,8 @@ if (state.collapsedAdminPanels && typeof state.collapsedAdminPanels.add === "fun
 state.expandedRosterClubIds = state.expandedRosterClubIds || new Set();
 state.selectedAdminRosterSeasonId = state.selectedAdminRosterSeasonId || "";
 
-function normalizePlayerName(value) {
-  return normalizeKey(value);
-}
-
 function hasFirebaseRostersForSeason(seasonId) {
   return (state.raw.rosterEntries || []).some((entry) => entry.seasonId === seasonId && entry.status !== "REMOVED");
-}
-
-function getRosterAliasKeys(seasonTeam) {
-  return [
-    seasonTeam?.name,
-    seasonTeam?.rosterAlias,
-    seasonTeam?.rosterName,
-    seasonTeam?.excelRosterName,
-    seasonTeam?.teamName
-  ]
-    .filter(Boolean)
-    .flatMap((value) => [normalizeKey(value), normalizeRosterKey(value)])
-    .filter(Boolean);
-}
-
-function normalizeRosterKey(value) {
-  return normalizeKey(value)
-    .replace(/\b(f c|fc|a c|ac|a s|as|asd|u s|us|s s|ss)\b/g, "")
-    .replace(/\s+/g, "")
-    .trim();
-}
-
-function mapStaticRosterPlayers(staticRoster, seasonId, seasonTeamId) {
-  return (staticRoster?.players || []).map((player, index) => ({
-    id: `static_${seasonTeamId}_${index}`,
-    seasonId,
-    seasonTeamId,
-    playerName: player.playerName,
-    realTeam: player.realTeam || "",
-    rosterRole: player.role || player.rosterRole || "",
-    classicRole: player.role || player.classicRole || "",
-    mantraRoles: player.mantraRoles || "",
-    cost: player.cost ?? player.rosterCost ?? "",
-    status: "ACTIVE",
-    source: "static-roster"
-  }));
 }
 
 function getActiveRosterEntriesForSeasonTeam(seasonTeamId) {
