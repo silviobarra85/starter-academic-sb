@@ -7631,6 +7631,272 @@ renderHonorSummary = function renderHonorSummaryV90() {
   return result;
 };
 
+
+/* V100 - Robust auth-gated data loading and season changes.
+   Prevents refresh/auth race conditions where public snapshots can overwrite
+   full admin data or season changes can render before the selected season data
+   is loaded. */
+let dataLoadSequenceV100 = 0;
+let unsubscribeAuthV100 = null;
+
+function getDefaultSeasonIdFromRawV100(raw) {
+  const league = (raw.leagueSettings || []).find((item) => item.id === "main") || (raw.leagueSettings || [])[0] || null;
+  if (league?.currentSeasonId) return league.currentSeasonId;
+  const current = (raw.seasons || []).find((season) => season.isCurrent);
+  if (current) return current.id;
+  return (raw.seasons || [])[0]?.id || "";
+}
+
+function isLatestDataLoadV100(requestId) {
+  return requestId === dataLoadSequenceV100;
+}
+
+async function loadFullDataStableV100(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  const entries = await Promise.all(
+    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
+  );
+  await loadListoniData();
+  await loadRostersData();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = Object.assign(makeEmptyRawDataV34(), Object.fromEntries(entries));
+  state.hasFullData = true;
+  state.usedPublicSnapshots = false;
+  state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+}
+
+async function loadPublicDataForSelectedSeasonV100(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+
+  const rawBase = makeEmptyRawDataV34();
+  const [leagueSettings, seasons] = await Promise.all([
+    loadCollection("leagueSettings"),
+    loadCollection("seasons")
+  ]);
+  rawBase.leagueSettings = leagueSettings;
+  rawBase.seasons = seasons;
+
+  const seasonId = selectedSeasonBefore || getDefaultSeasonIdFromRawV100(rawBase);
+  const [seasonSnapshot, honorSnapshot] = await Promise.all([
+    loadPublicSeasonSnapshotV32(seasonId),
+    loadPublicHonorSnapshotV32()
+  ]);
+
+  await loadListoniData();
+  await loadRostersData();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = rawBase;
+  state.selectedSeasonId = seasonId;
+  state.hasFullData = false;
+
+  if (!seasonSnapshot || !honorSnapshot) {
+    state.usedPublicSnapshots = false;
+    state.publicHonorSnapshot = honorSnapshot || null;
+    sortData();
+    if (render) renderAll();
+    setError(`Snapshot pubblico mancante per ${seasonId}. Accedi come admin e aggiorna gli snapshot pubblici.`);
+    return false;
+  }
+
+  applyPublicSeasonSnapshotV32(seasonSnapshot);
+  state.raw.news = Array.isArray(seasonSnapshot.news) ? seasonSnapshot.news : [];
+  state.publicHonorSnapshot = honorSnapshot;
+  state.hasFullData = false;
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+}
+
+async function loadDataForCurrentAuthV100(options = {}) {
+  const requestId = ++dataLoadSequenceV100;
+  if (state.isAdmin) {
+    return loadFullDataStableV100(requestId, options);
+  }
+  return loadPublicDataForSelectedSeasonV100(requestId, options);
+}
+
+loadData = async function loadDataV100() {
+  return loadDataForCurrentAuthV100({ render: true });
+};
+
+setupSeasonSelectorEvents = function setupSeasonSelectorEventsV100() {
+  document.getElementById("globalSeasonSelect")?.addEventListener("change", async (event) => {
+    state.selectedSeasonId = event.target.value;
+    state.selectedListoneId = "";
+    try {
+      if (state.isAdmin && state.hasFullData) {
+        renderAll();
+        setError("");
+        return;
+      }
+      await loadDataForCurrentAuthV100({ render: true });
+    } catch (error) {
+      console.error(error);
+      setError(`Cambio stagione non riuscito. ${error?.message || error}`);
+    }
+  });
+};
+
+setupAuth = function setupAuthV100() {
+  ensureV34Dom();
+  const openLoginBtn = document.getElementById("openLoginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const loginDialog = document.getElementById("loginDialog");
+  const loginForm = document.getElementById("loginForm");
+  const closeLoginBtn = document.getElementById("closeLoginBtn");
+  const refreshBtn = document.getElementById("refreshBtn");
+
+  openLoginBtn?.addEventListener("click", () => {
+    if (loginDialog?.showModal) loginDialog.showModal();
+  });
+  closeLoginBtn?.addEventListener("click", () => loginDialog?.close());
+  logoutBtn?.addEventListener("click", async () => signOut(auth));
+  refreshBtn?.addEventListener("click", async () => {
+    try {
+      await loadDataForCurrentAuthV100({ render: true });
+    } catch (error) {
+      console.error(error);
+      setError(`Aggiornamento dati non riuscito. ${error?.message || error}`);
+    }
+  });
+
+  loginForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = document.getElementById("loginEmail")?.value.trim();
+    const password = document.getElementById("loginPassword")?.value;
+    showMessage("loginStatus", "Accesso in corso...");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      loginDialog?.close();
+    } catch (error) {
+      console.error(error);
+      showMessage("loginStatus", "Login non riuscito. Controlla email e password.", true);
+    }
+  });
+
+  document.getElementById("registerEmailBtn")?.addEventListener("click", async () => {
+    const email = document.getElementById("loginEmail")?.value.trim();
+    const password = document.getElementById("loginPassword")?.value;
+    const displayName = document.getElementById("registerDisplayName")?.value.trim() || email;
+    if (!email || !password) {
+      showMessage("loginStatus", "Inserisci email e password per registrarti.", true);
+      return;
+    }
+    try {
+      showMessage("loginStatus", "Registrazione in corso...");
+      const credential = await createUserWithEmailAndPassword(auth, email, password);
+      if (displayName) await updateProfile(credential.user, { displayName });
+      await sendEmailVerification(credential.user);
+      await upsertPendingUserV34(credential.user, "EMAIL_NOT_VERIFIED");
+      showMessage("loginStatus", "Registrazione completata. Controlla la mail e verifica l'indirizzo prima dell'approvazione admin.");
+    } catch (error) {
+      console.error(error);
+      showMessage("loginStatus", error?.message || "Registrazione non riuscita.", true);
+    }
+  });
+
+  document.getElementById("sendVerificationAgainBtn")?.addEventListener("click", async () => {
+    try {
+      if (!auth.currentUser) {
+        showMessage("loginStatus", "Accedi prima di richiedere una nuova verifica.", true);
+        return;
+      }
+      await sendEmailVerification(auth.currentUser);
+      showMessage("loginStatus", "Email di verifica inviata nuovamente.");
+    } catch (error) {
+      console.error(error);
+      showMessage("loginStatus", "Non riesco a inviare la verifica email.", true);
+    }
+  });
+
+  document.getElementById("loginGoogleBtn")?.addEventListener("click", async () => {
+    try {
+      showMessage("loginStatus", "Accesso Google in corso...");
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      await upsertPendingUserV34(result.user, "PENDING");
+      loginDialog?.close();
+    } catch (error) {
+      console.error(error);
+      showMessage("loginStatus", error?.message || "Accesso Google non riuscito.", true);
+    }
+  });
+
+  if (unsubscribeAuthV100) unsubscribeAuthV100();
+  unsubscribeAuthV100 = onAuthStateChanged(auth, async (user) => {
+    state.user = user;
+    state.isAdmin = false;
+    state.currentTeamUser = null;
+    state.currentPendingUser = null;
+
+    if (user) {
+      try {
+        try {
+          const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
+          state.isAdmin = adminSnapshot.exists();
+        } catch (adminError) {
+          if (adminError?.code === "permission-denied") state.isAdmin = false;
+          else throw adminError;
+        }
+
+        if (!state.isAdmin) {
+          const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch(() => null);
+          if (teamSnapshot?.exists?.()) state.currentTeamUser = { id: teamSnapshot.id, ...teamSnapshot.data() };
+
+          const pendingSnapshot = await getDoc(doc(db, "pendingUsers", user.uid)).catch(() => null);
+          if (pendingSnapshot?.exists?.()) state.currentPendingUser = { id: pendingSnapshot.id, ...pendingSnapshot.data() };
+
+          if (!state.currentTeamUser && !state.currentPendingUser) {
+            if (isEmailPasswordUserV34(user) && !user.emailVerified) await upsertPendingUserV34(user, "EMAIL_NOT_VERIFIED");
+            else await upsertPendingUserV34(user, "PENDING");
+          } else if (state.currentPendingUser?.status === "EMAIL_NOT_VERIFIED" && user.emailVerified) {
+            await upsertPendingUserV34(user, "PENDING");
+          }
+        }
+      } catch (error) {
+        console.error(error);
+        showMessage("loginStatus", `Controllo account fallito. ${error?.message || error}`, true);
+      }
+    }
+
+    updateAdminVisibility();
+    updateUserVisibilityV34();
+
+    try {
+      await loadDataForCurrentAuthV100({ render: true });
+    } catch (error) {
+      console.error(error);
+      setError(`Non riesco a caricare i dati. ${error?.message || error}`);
+    }
+
+    updateAdminVisibility();
+    updateUserVisibilityV34();
+    renderUserAreaV34();
+  });
+};
+
+initializeAppUi = async function initializeAppUiV100() {
+  setupNavigation();
+  setupMobileNavigation();
+  setupAuth();
+  setupSeasonSelectorEvents();
+  setupListoneEvents();
+  setupClubRosterEvents();
+  updateAdminVisibility();
+
+  const loginHelpText = document.querySelector("#loginDialog .muted");
+  if (loginHelpText) loginHelpText.textContent = "Accedi con l'utente creato in Firebase Authentication.";
+};
+
 initializeAppUi().then(() => {
   setupThemeToggleV89();
   injectDisplayModeToggle();
