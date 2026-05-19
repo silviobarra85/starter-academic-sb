@@ -11525,3 +11525,270 @@ html[data-theme="light"] .mobile-tabular-wrap table.mobile-tabular th .table-sor
     padding: 0 10px 10px;
   }
 }
+
+
+/* V92 - Regolamento ordinato e pagina rules.html */
+.regulation-panel-header {
+  align-items: center;
+}
+
+.rules-frame-wrap {
+  width: 100%;
+  min-height: min(74vh, 760px);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.32);
+}
+
+.rules-frame {
+  display: block;
+  width: 100%;
+  height: min(74vh, 760px);
+  min-height: 620px;
+  border: 0;
+  background: transparent;
+}
+
+.rules-standalone-page {
+  min-height: 100vh;
+}
+
+.rules-page-shell {
+  padding-top: 24px;
+  padding-bottom: 42px;
+}
+
+.rules-hero {
+  padding: 24px;
+}
+
+.rules-hero h1 {
+  margin-bottom: 10px;
+  font-size: clamp(2rem, 6vw, 4.4rem);
+}
+
+.rules-top-actions,
+.regulation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rules-top-actions {
+  justify-content: flex-start;
+  margin-top: 18px;
+}
+
+.rules-toc {
+  padding: 18px;
+}
+
+.rules-toc h2 {
+  margin-bottom: 12px;
+}
+
+.rules-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+  margin: 0;
+  padding-left: 1.35rem;
+}
+
+.rules-toc a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.rules-toc a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.rules-section {
+  scroll-margin-top: 18px;
+}
+
+.rules-section h2 {
+  margin-bottom: 12px;
+  font-size: 1.55rem;
+  letter-spacing: -0.03em;
+}
+
+.rules-section h3 {
+  margin: 1.15rem 0 0.45rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.rules-section p {
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.rules-note-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.rules-note-list p {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.24);
+}
+
+.rules-list {
+  margin: 0.4rem 0 0.8rem;
+  padding-left: 1.2rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.rules-list li + li {
+  margin-top: 0.35rem;
+}
+
+.rules-table-wrap {
+  width: 100%;
+  margin: 12px 0 18px;
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.26);
+}
+
+.rules-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+}
+
+.rules-compact-table {
+  min-width: 420px;
+}
+
+.rules-table th,
+.rules-table td {
+  padding: 11px 12px;
+  vertical-align: top;
+}
+
+.rules-table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(15, 23, 42, 0.98);
+  color: #e5e7eb;
+}
+
+.rules-table td:first-child,
+.rules-table th:first-child {
+  font-weight: 850;
+}
+
+.rules-footer {
+  padding-bottom: 0;
+}
+
+html[data-theme="light"] .rules-note-list p,
+html[data-theme="light"] .rules-table-wrap,
+html[data-theme="light"] .rules-frame-wrap {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+html[data-theme="light"] .rules-toc a,
+html[data-theme="light"] .rules-section p,
+html[data-theme="light"] .rules-list,
+html[data-theme="light"] .rules-section h3 {
+  color: var(--text);
+}
+
+html[data-theme="light"] .rules-table th {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .regulation-panel-header {
+    align-items: stretch;
+  }
+
+  .regulation-actions,
+  .regulation-actions .button {
+    width: 100%;
+  }
+
+  .rules-frame-wrap {
+    min-height: 72vh;
+    border-radius: 14px;
+  }
+
+  .rules-frame {
+    height: 72vh;
+    min-height: 540px;
+  }
+
+  .rules-page-shell {
+    width: min(100% - 20px, 1220px);
+    padding-top: 12px;
+    padding-bottom: 94px;
+  }
+
+  .rules-hero,
+  .rules-toc,
+  .rules-section {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .rules-top-actions,
+  .rules-top-actions .button {
+    width: 100%;
+  }
+
+  .rules-toc ol {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    font-size: 0.92rem;
+  }
+
+  .rules-section h2 {
+    font-size: 1.22rem;
+  }
+
+  .rules-section h3 {
+    font-size: 0.96rem;
+  }
+
+  .rules-section p,
+  .rules-list {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .rules-table-wrap {
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rules-table {
+    min-width: 560px;
+    font-size: 0.82rem;
+  }
+
+  .rules-compact-table {
+    min-width: 360px;
+  }
+
+  .rules-table th,
+  .rules-table td {
+    padding: 8px 9px;
+  }
+}
