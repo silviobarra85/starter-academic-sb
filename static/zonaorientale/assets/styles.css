@@ -12122,3 +12122,270 @@ body.is-mobile-ux .roster-main-table th:first-child,
 body.is-mobile-ux .roster-dialog-players-table th:first-child {
   z-index: 14 !important;
 }
+
+
+/* V98 - Light theme: dark and sticky headers for every mobile table. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html[data-theme="light"] .table-wrap,
+  html[data-theme="light"] .mobile-tabular-wrap,
+  html[data-theme="light"] .standing-table-wrap,
+  html[data-theme="light"] .roster-dialog-table,
+  html[data-theme="light"] .honor-table-wrap,
+  html[data-theme="light"] .mobile-honor-table-wrap,
+  html[data-theme="light"] .rules-table-wrap,
+  html[data-theme="light"] .compact-table {
+    max-height: min(68vh, 560px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  html[data-theme="light"] .table-wrap table,
+  html[data-theme="light"] .mobile-tabular-wrap table,
+  html[data-theme="light"] .standing-table-wrap table,
+  html[data-theme="light"] .roster-dialog-table table,
+  html[data-theme="light"] .honor-table-wrap table,
+  html[data-theme="light"] .mobile-honor-table-wrap table,
+  html[data-theme="light"] .rules-table-wrap table,
+  html[data-theme="light"] .compact-table table {
+    display: table !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  html[data-theme="light"] .table-wrap thead,
+  html[data-theme="light"] .mobile-tabular-wrap thead,
+  html[data-theme="light"] .standing-table-wrap thead,
+  html[data-theme="light"] .roster-dialog-table thead,
+  html[data-theme="light"] .honor-table-wrap thead,
+  html[data-theme="light"] .mobile-honor-table-wrap thead,
+  html[data-theme="light"] .rules-table-wrap thead,
+  html[data-theme="light"] .compact-table thead {
+    display: table-header-group !important;
+  }
+
+  html[data-theme="light"] .table-wrap tbody,
+  html[data-theme="light"] .mobile-tabular-wrap tbody,
+  html[data-theme="light"] .standing-table-wrap tbody,
+  html[data-theme="light"] .roster-dialog-table tbody,
+  html[data-theme="light"] .honor-table-wrap tbody,
+  html[data-theme="light"] .mobile-honor-table-wrap tbody,
+  html[data-theme="light"] .rules-table-wrap tbody,
+  html[data-theme="light"] .compact-table tbody {
+    display: table-row-group !important;
+  }
+
+  html[data-theme="light"] .table-wrap tr,
+  html[data-theme="light"] .mobile-tabular-wrap tr,
+  html[data-theme="light"] .standing-table-wrap tr,
+  html[data-theme="light"] .roster-dialog-table tr,
+  html[data-theme="light"] .honor-table-wrap tr,
+  html[data-theme="light"] .mobile-honor-table-wrap tr,
+  html[data-theme="light"] .rules-table-wrap tr,
+  html[data-theme="light"] .compact-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  html[data-theme="light"] .table-wrap th,
+  html[data-theme="light"] .table-wrap td,
+  html[data-theme="light"] .mobile-tabular-wrap th,
+  html[data-theme="light"] .mobile-tabular-wrap td,
+  html[data-theme="light"] .standing-table-wrap th,
+  html[data-theme="light"] .standing-table-wrap td,
+  html[data-theme="light"] .roster-dialog-table th,
+  html[data-theme="light"] .roster-dialog-table td,
+  html[data-theme="light"] .honor-table-wrap th,
+  html[data-theme="light"] .honor-table-wrap td,
+  html[data-theme="light"] .mobile-honor-table-wrap th,
+  html[data-theme="light"] .mobile-honor-table-wrap td,
+  html[data-theme="light"] .rules-table-wrap th,
+  html[data-theme="light"] .rules-table-wrap td,
+  html[data-theme="light"] .compact-table th,
+  html[data-theme="light"] .compact-table td {
+    display: table-cell !important;
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 7px 6px !important;
+    vertical-align: middle !important;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22) !important;
+  }
+
+  html[data-theme="light"] .table-wrap td::before,
+  html[data-theme="light"] .mobile-tabular-wrap td::before,
+  html[data-theme="light"] .standing-table-wrap td::before,
+  html[data-theme="light"] .roster-dialog-table td::before,
+  html[data-theme="light"] .honor-table-wrap td::before,
+  html[data-theme="light"] .mobile-honor-table-wrap td::before,
+  html[data-theme="light"] .rules-table-wrap td::before,
+  html[data-theme="light"] .compact-table td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  html[data-theme="light"] .table-wrap thead th,
+  html[data-theme="light"] .mobile-tabular-wrap thead th,
+  html[data-theme="light"] .standing-table-wrap thead th,
+  html[data-theme="light"] .roster-dialog-table thead th,
+  html[data-theme="light"] .honor-table-wrap thead th,
+  html[data-theme="light"] .mobile-honor-table-wrap thead th,
+  html[data-theme="light"] .rules-table-wrap thead th,
+  html[data-theme="light"] .compact-table thead th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 30 !important;
+    background: #0f172a !important;
+    color: #e5e7eb !important;
+    border-bottom-color: rgba(226, 232, 240, 0.18) !important;
+  }
+
+  html[data-theme="light"] .table-wrap thead th .table-sort,
+  html[data-theme="light"] .mobile-tabular-wrap thead th .table-sort,
+  html[data-theme="light"] .standing-table-wrap thead th .table-sort,
+  html[data-theme="light"] .roster-dialog-table thead th .table-sort,
+  html[data-theme="light"] .honor-table-wrap thead th .table-sort,
+  html[data-theme="light"] .mobile-honor-table-wrap thead th .table-sort,
+  html[data-theme="light"] .rules-table-wrap thead th .table-sort,
+  html[data-theme="light"] .compact-table thead th .table-sort {
+    color: #e5e7eb !important;
+  }
+}
+
+body.is-mobile-ux[data-theme="light"] .table-wrap,
+body.is-mobile-ux[data-theme="light"] .mobile-tabular-wrap,
+body.is-mobile-ux[data-theme="light"] .standing-table-wrap,
+body.is-mobile-ux[data-theme="light"] .roster-dialog-table,
+body.is-mobile-ux[data-theme="light"] .honor-table-wrap,
+body.is-mobile-ux[data-theme="light"] .mobile-honor-table-wrap,
+body.is-mobile-ux[data-theme="light"] .rules-table-wrap,
+body.is-mobile-ux[data-theme="light"] .compact-table {
+  max-height: min(68vh, 560px) !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+html[data-theme="light"] body.is-mobile-ux .table-wrap thead,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap thead,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap thead,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table thead,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap thead,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap thead,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap thead,
+html[data-theme="light"] body.is-mobile-ux .compact-table thead {
+  display: table-header-group !important;
+}
+
+html[data-theme="light"] body.is-mobile-ux .table-wrap thead th,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap thead th,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap thead th,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table thead th,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap thead th,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap thead th,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap thead th,
+html[data-theme="light"] body.is-mobile-ux .compact-table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 30 !important;
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+}
+
+
+/* V98 fallback for browsers using the JS mobile class with wide reported viewport. */
+html[data-theme="light"] body.is-mobile-ux .table-wrap,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap,
+html[data-theme="light"] body.is-mobile-ux .compact-table {
+  max-height: min(68vh, 560px) !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+html[data-theme="light"] body.is-mobile-ux .table-wrap table,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap table,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap table,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table table,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap table,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap table,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap table,
+html[data-theme="light"] body.is-mobile-ux .compact-table table {
+  display: table !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+html[data-theme="light"] body.is-mobile-ux .table-wrap tbody,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap tbody,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap tbody,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table tbody,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap tbody,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap tbody,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap tbody,
+html[data-theme="light"] body.is-mobile-ux .compact-table tbody {
+  display: table-row-group !important;
+}
+
+html[data-theme="light"] body.is-mobile-ux .table-wrap tr,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap tr,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap tr,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table tr,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap tr,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap tr,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap tr,
+html[data-theme="light"] body.is-mobile-ux .compact-table tr {
+  display: table-row !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+html[data-theme="light"] body.is-mobile-ux .table-wrap th,
+html[data-theme="light"] body.is-mobile-ux .table-wrap td,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap th,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap td,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap th,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap td,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table th,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table td,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap th,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap td,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap th,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap td,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap th,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap td,
+html[data-theme="light"] body.is-mobile-ux .compact-table th,
+html[data-theme="light"] body.is-mobile-ux .compact-table td {
+  display: table-cell !important;
+  width: auto !important;
+  min-height: 0 !important;
+  padding: 7px 6px !important;
+  vertical-align: middle !important;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.22) !important;
+}
+
+html[data-theme="light"] body.is-mobile-ux .table-wrap td::before,
+html[data-theme="light"] body.is-mobile-ux .mobile-tabular-wrap td::before,
+html[data-theme="light"] body.is-mobile-ux .standing-table-wrap td::before,
+html[data-theme="light"] body.is-mobile-ux .roster-dialog-table td::before,
+html[data-theme="light"] body.is-mobile-ux .honor-table-wrap td::before,
+html[data-theme="light"] body.is-mobile-ux .mobile-honor-table-wrap td::before,
+html[data-theme="light"] body.is-mobile-ux .rules-table-wrap td::before,
+html[data-theme="light"] body.is-mobile-ux .compact-table td::before {
+  content: none !important;
+  display: none !important;
+}
