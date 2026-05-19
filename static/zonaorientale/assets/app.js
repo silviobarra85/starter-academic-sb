@@ -86,6 +86,10 @@ import {
 } from "./js/domain/labels.js";
 import { getDashboardNewsPreview } from "./js/domain/news.js";
 import {
+  getListoneValue,
+  compareListoneValues
+} from "./js/domain/listone.js";
+import {
   getMatchSerieAMatchday,
   getCompetitionShortCode,
   formatMatchStage,
@@ -974,11 +978,6 @@ function renderListoneSelect(listone) {
 }
 
 
-function getListoneValue(player, key) {
-  if (key === "fantasyRoster") return player.fantasyRoster || "Svincolati";
-  return player[key] ?? "";
-}
-
 function getListoneVisibleColumns() {
   return LISTONE_COLUMNS.filter((column) => !state.hiddenListoneColumns.has(column.key));
 }
@@ -1006,19 +1005,6 @@ function renderFreeAgentsHeader(freeAgentsVisibleColumns) {
         return `<th class="listone-col-${escapeHtml(column.key)} ${column.numeric ? "number" : ""}"><button class="table-sort" type="button" data-free-agents-sort-key="${escapeHtml(column.key)}">${escapeHtml(column.label)}${indicator}</button></th>`;
       }).join("")}
     </tr>`;
-}
-
-function compareListoneValues(a, b, column) {
-  const valueA = getListoneValue(a, column.key);
-  const valueB = getListoneValue(b, column.key);
-
-  if (column.numeric) {
-    const numberA = parseDecimalValue(valueA) ?? Number.NEGATIVE_INFINITY;
-    const numberB = parseDecimalValue(valueB) ?? Number.NEGATIVE_INFINITY;
-    return numberA - numberB;
-  }
-
-  return String(valueA || "").localeCompare(String(valueB || ""), "it", { numeric: true, sensitivity: "base" });
 }
 
 function getFilteredListonePlayers(listone) {
