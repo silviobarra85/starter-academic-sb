@@ -63,6 +63,11 @@ import {
   getRosterRoleSortValue,
   sortRosterPlayersByRole
 } from "./js/core/formatters.js";
+import {
+  FM_MOVEMENT_TYPES,
+  getFmMovementLabel,
+  renderFmMovementTypeBadge
+} from "./js/domain/fm-movements.js";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -3530,26 +3535,6 @@ if (state.collapsedAdminPanels && typeof state.collapsedAdminPanels.add === "fun
 }
 state.expandedRosterClubIds = state.expandedRosterClubIds || new Set();
 state.selectedAdminRosterSeasonId = state.selectedAdminRosterSeasonId || "";
-
-const FM_MOVEMENT_TYPES = [
-  { value: "INITIAL_BUDGET", label: "Budget iniziale", player: false, target: false },
-  { value: "ACQUISTO", label: "Acquisto", player: true, target: false },
-  { value: "VENDITA", label: "Vendita", player: true, target: false },
-  { value: "SVINCOLO", label: "Svincolo", player: true, target: false },
-  { value: "SCAMBIO", label: "Scambio", player: true, target: true },
-  { value: "RETTIFICA", label: "Rettifica", player: false, target: false },
-  { value: "BONUS", label: "Bonus", player: false, target: false },
-  { value: "PENALITA", label: "Penalità", player: false, target: false },
-  { value: "ALTRO", label: "Altro", player: false, target: false }
-];
-
-function getFmMovementLabel(type) {
-  return FM_MOVEMENT_TYPES.find((item) => item.value === type)?.label || type || "-";
-}
-
-function renderFmMovementTypeBadge(type) {
-  return `<span class="status status-muted movement-type-badge">${escapeHtml(getFmMovementLabel(type))}</span>`;
-}
 
 function normalizePlayerName(value) {
   return normalizeKey(value);
