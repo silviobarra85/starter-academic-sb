@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scheda giocatore - ZonaOrientale Salerno</title>
+  <meta name="description" content="Scheda giocatore Fantacalcio.it integrata nel gestionale ZonaOrientale Salerno." />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
+  <link rel="stylesheet" href="./assets/styles.css?v=90" />
+</head>
+<body>
+  <header class="app-header player-page-header">
+    <div class="container header-grid">
+      <div>
+        <p class="eyebrow">Scheda giocatore</p>
+        <h1 id="playerPageTitle">ZonaOrientale Salerno</h1>
+        <p class="subtitle">Scheda esterna da Fantacalcio.it caricata in una pagina del gestionale.</p>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Cambia tema" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
+        <a class="button button-secondary" href="./#listone">Torna al Listone</a>
+        <a id="openExternalPlayerLink" class="button button-primary" href="https://www.fantacalcio.it/" target="_blank" rel="noopener">Apri esterna</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-main player-embed-page">
+    <section class="panel">
+      <div class="panel-header compact">
+        <div>
+          <h2 id="playerFrameTitle">Scheda Fantacalcio.it</h2>
+          <p>Se la pagina non viene mostrata, aprila in una nuova scheda: il sito esterno può bloccare l’incorporamento in iframe.</p>
+        </div>
+      </div>
+      <iframe id="playerFrame" class="external-player-frame" title="Scheda giocatore Fantacalcio.it" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p id="playerFrameError" class="notice notice-error hidden">Link giocatore non valido.</p>
+    </section>
+  </main>
+
+  <footer class="container app-footer">
+    <p>ZonaOrientale Salerno · V90 rose cliccabili, albo e listone stagione · Ultimo aggiornamento 19/05/2026</p>
+  </footer>
+
+  <script type="module">
+    function applyTheme(theme) {
+      const finalTheme = theme === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = finalTheme;
+      const button = document.getElementById('themeToggleBtn');
+      if (button) {
+        button.setAttribute('aria-pressed', finalTheme === 'light' ? 'true' : 'false');
+        const icon = button.querySelector('.theme-toggle-icon');
+        const text = button.querySelector('.theme-toggle-text');
+        if (icon) icon.textContent = finalTheme === 'light' ? '☀️' : '🌙';
+        if (text) text.textContent = finalTheme === 'light' ? 'Light' : 'Dark';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('zonaOrientaleTheme') || 'dark';
+    applyTheme(savedTheme);
+    document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('zonaOrientaleTheme', next);
+      applyTheme(next);
+    });
+
+    const params = new URLSearchParams(location.search);
+    const rawUrl = params.get('url') || '';
+    const name = params.get('name') || 'Giocatore';
+    const title = document.getElementById('playerPageTitle');
+    const frameTitle = document.getElementById('playerFrameTitle');
+    const iframe = document.getElementById('playerFrame');
+    const external = document.getElementById('openExternalPlayerLink');
+    const error = document.getElementById('playerFrameError');
+
+    function isAllowedFantacalcioUrl(value) {
+      try {
+        const url = new URL(value);
+        const host = url.hostname.replace(/^www\./, '');
+        return host === 'fantacalcio.it' && url.pathname.startsWith('/serie-a/squadre/');
+      } catch (_) {
+        return false;
+      }
+    }
+
+    title.textContent = name;
+    frameTitle.textContent = `Scheda ${name}`;
+
+    if (isAllowedFantacalcioUrl(rawUrl)) {
+      iframe.src = rawUrl;
+      external.href = rawUrl;
+    } else {
+      iframe.classList.add('hidden');
+      error.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

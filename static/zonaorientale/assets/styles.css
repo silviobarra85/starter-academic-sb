@@ -11292,3 +11292,163 @@ body.is-mobile-ux .inline-checkbox-group {
   border-radius: 12px;
   font-size: 0.72rem;
 }
+
+
+/* V89 - Light/Dark switch and embedded player page */
+html[data-theme="light"] {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --panel-soft: #e5e7eb;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: rgba(15, 23, 42, 0.12);
+  --primary: #15803d;
+  --primary-dark: #166534;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --shadow: 0 18px 44px rgba(15, 23, 42, 0.11);
+}
+
+html[data-theme="light"] body {
+  background:
+    radial-gradient(circle at top left, rgba(21, 128, 61, 0.16), transparent 34rem),
+    radial-gradient(circle at 80% 10%, rgba(37, 99, 235, 0.10), transparent 28rem),
+    var(--bg);
+}
+
+html[data-theme="light"] .metric-card,
+html[data-theme="light"] .panel,
+html[data-theme="light"] .page-heading,
+html[data-theme="light"] .news-card,
+html[data-theme="light"] .competition-card,
+html[data-theme="light"] .compact-card,
+html[data-theme="light"] .stack-item,
+html[data-theme="light"] .collapse-card,
+html[data-theme="light"] .login-card {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+html[data-theme="light"] .input,
+html[data-theme="light"] code {
+  background: rgba(248, 250, 252, 0.95);
+  color: var(--text);
+}
+
+html[data-theme="light"] .nav-link,
+html[data-theme="light"] .button-secondary,
+html[data-theme="light"] .mobile-bottom-nav,
+html[data-theme="light"] .mobile-more-sheet:not(.hidden) {
+  background: rgba(226, 232, 240, 0.94);
+  color: var(--text);
+}
+
+html[data-theme="light"] .nav-link.active,
+html[data-theme="light"] .mobile-bottom-link.active,
+html[data-theme="light"] .mobile-more-link.active,
+html[data-theme="light"] .button-primary {
+  color: #ecfdf5;
+  background: var(--primary);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(31, 41, 55, 0.72);
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+  transition: transform 0.14s ease, background 0.14s ease, border-color 0.14s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+html[data-theme="light"] .theme-toggle {
+  background: rgba(226, 232, 240, 0.94);
+}
+
+.theme-toggle-icon {
+  line-height: 1;
+}
+
+.listone-player-link {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.player-embed-page .panel {
+  min-height: min(74dvh, 820px);
+}
+
+.external-player-frame {
+  width: 100%;
+  height: min(76dvh, 860px);
+  min-height: 620px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel-soft);
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .theme-toggle {
+    min-height: 38px;
+    padding: 7px 10px;
+    font-size: 0.82rem;
+  }
+
+  .header-actions {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .header-actions .theme-toggle {
+    width: 100%;
+  }
+
+  .external-player-frame {
+    min-height: 68dvh;
+    height: 68dvh;
+    border-radius: 12px;
+  }
+}
+
+
+/* V90 - Table headers stay dark in light mode, roster player links and honor clicks. */
+html[data-theme="light"] table thead th,
+html[data-theme="light"] .mobile-tabular-wrap table.mobile-tabular th,
+html[data-theme="light"] .standing-table-wrap table.standing-table th,
+html[data-theme="light"] .roster-dialog-table table.mobile-tabular th,
+html[data-theme="light"] .mobile-honor-table th {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+  border-bottom-color: rgba(226, 232, 240, 0.18) !important;
+}
+
+html[data-theme="light"] table thead th .table-sort,
+html[data-theme="light"] .mobile-tabular-wrap table.mobile-tabular th .table-sort {
+  color: #e5e7eb !important;
+}
+
+.roster-player-link,
+.team-profile-player-link {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.honor-team-profile-link {
+  max-width: 100%;
+  text-align: left;
+}

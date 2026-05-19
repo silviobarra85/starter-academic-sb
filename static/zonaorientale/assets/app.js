@@ -1098,11 +1098,64 @@ function renderListoneColumnControls() {
     </details>`;
 }
 
+
+const FANTACALCIO_TEAM_SLUGS_V89 = {
+  ATA: "atalanta",
+  BOL: "bologna",
+  CAG: "cagliari",
+  COM: "como",
+  CRE: "cremonese",
+  EMP: "empoli",
+  FIO: "fiorentina",
+  GEN: "genoa",
+  INT: "inter",
+  JUV: "juventus",
+  LAZ: "lazio",
+  LEC: "lecce",
+  MIL: "milan",
+  MON: "monza",
+  NAP: "napoli",
+  PAR: "parma",
+  PIS: "pisa",
+  ROM: "roma",
+  SAL: "salernitana",
+  SAM: "sampdoria",
+  SAS: "sassuolo",
+  SPE: "spezia",
+  TOR: "torino",
+  UDI: "udinese",
+  VEN: "venezia",
+  VER: "verona"
+};
+
+function slugifyFantacalcioPlayerNameV89(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function buildFantacalcioPlayerUrl(player) {
+  const id = player?.fantacalcioId || player?.fantacalcio_id || player?.idFantacalcio;
+  if (!id) return "";
+  const teamCode = String(player?.realTeam || player?.real_team || "").trim().toUpperCase();
+  const teamSlug = FANTACALCIO_TEAM_SLUGS_V89[teamCode] || teamCode.toLowerCase();
+  const playerSlug = slugifyFantacalcioPlayerNameV89(player?.playerName || player?.player_name || "giocatore");
+  if (!teamSlug || !playerSlug) return "";
+  return `https://www.fantacalcio.it/serie-a/squadre/${teamSlug}/${playerSlug}/${encodeURIComponent(id)}`;
+}
+
 function renderListoneCell(player, column) {
   const value = getListoneValue(player, column.key);
 
   if (column.key === "playerName") {
-    return `<strong>${escapeHtml(value || "-")}</strong>`;
+    const playerUrl = buildFantacalcioPlayerUrl(player);
+    const playerName = escapeHtml(value || "-");
+    if (!playerUrl) return `<strong>${playerName}</strong>`;
+    const pageUrl = `./player.html?url=${encodeURIComponent(playerUrl)}&name=${encodeURIComponent(value || "Giocatore")}`;
+    return `<a class="link-button listone-player-link" href="${pageUrl}" target="_blank" rel="noopener"><strong>${playerName}</strong></a>`;
   }
 
   if (column.key === "classicRole") {
@@ -7375,7 +7428,195 @@ renderDashboard = function renderDashboardV87() {
    The previous v50 initialized before the v50 overrides were registered, so
    rollover, transfer communications and some president-account handlers were
    not active. */
+
+/* V89 - Theme switch and admin-only refresh button. */
+function applyZonaOrientaleThemeV89(theme) {
+  const finalTheme = theme === "light" ? "light" : "dark";
+  document.documentElement.dataset.theme = finalTheme;
+  const toggle = document.getElementById("themeToggleBtn");
+  if (toggle) {
+    toggle.setAttribute("aria-pressed", finalTheme === "light" ? "true" : "false");
+    const icon = toggle.querySelector(".theme-toggle-icon");
+    const text = toggle.querySelector(".theme-toggle-text");
+    if (icon) icon.textContent = finalTheme === "light" ? "☀️" : "🌙";
+    if (text) text.textContent = finalTheme === "light" ? "Light" : "Dark";
+  }
+}
+
+function setupThemeToggleV89() {
+  const savedTheme = localStorage.getItem("zonaOrientaleTheme") || "dark";
+  applyZonaOrientaleThemeV89(savedTheme);
+  document.getElementById("themeToggleBtn")?.addEventListener("click", () => {
+    const current = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    const next = current === "light" ? "dark" : "light";
+    localStorage.setItem("zonaOrientaleTheme", next);
+    applyZonaOrientaleThemeV89(next);
+  });
+}
+
+const updateAdminVisibilityBeforeV89 = updateAdminVisibility;
+updateAdminVisibility = function updateAdminVisibilityV89() {
+  updateAdminVisibilityBeforeV89?.();
+  document.getElementById("refreshBtn")?.classList.toggle("hidden", !state.isAdmin);
+};
+
+
+
+/* V90 - Player links in rosters, honor profile links and latest listone per season. */
+function getListoneSortTimestampV90(listone) {
+  const candidates = [listone?.loadedAt, listone?.meta?.loadedAt, listone?.id].filter(Boolean);
+  for (const candidate of candidates) {
+    const parsed = Date.parse(String(candidate));
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+}
+
+const getListoniForCurrentSeasonBeforeV90 = getListoniForCurrentSeason;
+getListoniForCurrentSeason = function getListoniForCurrentSeasonV90() {
+  return [...(getListoniForCurrentSeasonBeforeV90?.() || [])].sort((a, b) => {
+    const byDate = getListoneSortTimestampV90(b) - getListoneSortTimestampV90(a);
+    if (byDate) return byDate;
+    return String(b.loadedAt || b.id || '').localeCompare(String(a.loadedAt || a.id || ''), 'it', { numeric: true });
+  });
+};
+
+function getPlayerPageUrlV90(player) {
+  const listonePlayer = findListonePlayerForRosterPlayer(player);
+  const merged = { ...(player || {}), ...(listonePlayer || {}) };
+  const playerUrl = buildFantacalcioPlayerUrl(merged);
+  if (!playerUrl) return '';
+  const label = merged.playerName || player?.playerName || player?.name || 'Giocatore';
+  return `./player.html?url=${encodeURIComponent(playerUrl)}&name=${encodeURIComponent(label)}`;
+}
+
+function renderPlayerNameLinkV90(player, extraClass = '') {
+  const name = escapeHtml(player?.playerName || player?.name || '-');
+  const pageUrl = getPlayerPageUrlV90(player);
+  if (!pageUrl) return `<strong>${name}</strong>`;
+  return `<a class="link-button roster-player-link ${escapeHtml(extraClass)}" href="${pageUrl}" target="_blank" rel="noopener"><strong>${name}</strong></a>`;
+}
+
+function renderRosterPlayerTableV90(players) {
+  if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
+  return `
+    <div class="table-wrap mobile-tabular-wrap roster-table-wrap roster-inline-table-wrap">
+      <table class="mobile-tabular roster-main-table roster-player-table roster-sticky-table">
+        <thead>
+          <tr>
+            <th class="roster-col-player">${renderRosterSortButton('playerName', 'Giocatore')}</th>
+            <th class="roster-col-role">${renderRosterSortButton('role', 'R (RM)')}</th>
+            <th class="roster-col-team">${renderRosterSortButton('realTeam', 'Sq')}</th>
+            <th class="number roster-col-cost">${renderRosterSortButton('cost', 'Costo', true)}</th>
+            <th class="number roster-col-qta">${renderRosterSortButton('quotationCurrent', 'Qt.A', true)}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${sortRosterPlayersForDisplay(players).map((player) => `
+            <tr>
+              <td data-label="Giocatore" class="roster-col-player">${renderPlayerNameLinkV90(player)}</td>
+              <td data-label="R (RM)" class="roster-col-role">${getRosterRoleDisplay(player)}</td>
+              <td data-label="Sq" class="roster-col-team">${escapeHtml(player.realTeam || '-')}</td>
+              <td data-label="Costo" class="number roster-col-cost">${escapeHtml(player.cost ?? '-')}</td>
+              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+}
+renderRosterPlayerTable = renderRosterPlayerTableV90;
+
+openTeamProfileV34 = async function openTeamProfileV90(seasonTeamId) {
+  ensureV34Dom();
+  const dialog = document.getElementById('teamProfileDialog');
+  const title = document.getElementById('teamProfileTitle');
+  const body = document.getElementById('teamProfileBody');
+  if (!dialog || !body) return;
+  if (title) title.textContent = getSeasonTeamDisplayName(seasonTeamId);
+  body.innerHTML = `<p class="muted">Caricamento scheda squadra...</p>`;
+  dialog.showModal?.();
+  const snapshot = await loadTeamSnapshotV34(seasonTeamId);
+  if (!snapshot) {
+    body.innerHTML = `<p class="muted">Scheda squadra non ancora generata. Accedi come admin e aggiorna gli snapshot squadra.</p>`;
+    return;
+  }
+
+  const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => `
+    <tr>
+      <td data-label="Giocatore" class="team-profile-player-cell">${renderPlayerNameLinkV90(player, 'team-profile-player-link')}</td>
+      <td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(player)}</td>
+      <td data-label="Sq" class="team-profile-team-cell">${escapeHtml(player.realTeam || '-')}</td>
+      <td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(player.cost)}</td>
+      <td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+    </tr>`).join('') || `<tr><td colspan="5" class="muted center">Rosa non disponibile.</td></tr>`;
+  const palmaresRows = (snapshot.palmares || []).map((item) => `<tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join('') || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
+  const movementRows = (snapshot.recentMovements || []).map((movement) => `<tr><td>${escapeHtml(movement.date || '-')}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || '-')}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join('') || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
+  const newsHtml = (snapshot.recentNews || []).map((news) => `<article class="compact-card"><h3>${escapeHtml(news.title || 'Comunicato')}</h3><p class="news-body-preserve">${renderBoldMarkdown(news.body || '')}</p><small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small></article>`).join('') || `<p class="muted">Nessun comunicato squadra.</p>`;
+  const matchesRows = (snapshot.recentMatches || []).map((match) => `
+    <tr>
+      <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
+      <td>${escapeHtml(formatMatchStage(match))}</td>
+      <td>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</td>
+      <td>${escapeHtml(formatMatchResult(match))}</td>
+    </tr>`).join('') || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
+
+  body.innerHTML = `
+    <div class="team-profile-header team-profile-header-stacked">
+      ${renderTeamLogo(snapshot.teamName, snapshot.logo, 'club-logo-lg')}
+      <div class="team-profile-title-block"><h3>${escapeHtml(snapshot.teamName || 'Squadra')}</h3><p class="muted team-profile-meta-line">Presidenti: ${escapeHtml(snapshot.presidents || '-')}</p><p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p><p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p></div>
+    </div>
+    <div class="detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-roster-wrap"><table class="mobile-tabular team-profile-roster-table roster-sticky-table"><thead><tr><th>Giocatore</th><th>R (RM)</th><th>Sq</th><th class="number">Costo</th><th class="number">Qt.A</th></tr></thead><tbody>${rosterRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Palmarès squadra</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-palmares-wrap"><table class="mobile-tabular team-profile-palmares-table"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap"><table class="mobile-tabular team-profile-movements-table"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></div>
+    <div class="detail-section"><h3>Ultimi comunicati</h3>${newsHtml}</div>
+    <div class="detail-section"><h3>Ultime partite</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-matches-wrap"><table class="mobile-tabular team-profile-matches-table"><thead><tr><th>Comp.</th><th>Fase</th><th>Partita</th><th>Ris.</th></tr></thead><tbody>${matchesRows}</tbody></table></div></div>`;
+};
+
+function findSeasonTeamIdForTeamNameV90(teamName) {
+  const normalized = normalizeKey(teamName || '');
+  if (!normalized) return '';
+  const currentSeasonId = getCurrentSeasonId();
+  const seasonTeams = state.raw.seasonTeams || [];
+  const teamsById = buildMaps().teamsById;
+  const scoreSeasonTeam = (seasonTeam) => {
+    const canonical = getTeamDisplayName(teamsById.get(seasonTeam.teamId));
+    const names = [seasonTeam.name, canonical].map((value) => normalizeKey(value || ''));
+    if (!names.includes(normalized)) return -1;
+    return seasonTeam.seasonId === currentSeasonId ? 3 : 1;
+  };
+  return [...seasonTeams]
+    .map((seasonTeam) => ({ seasonTeam, score: scoreSeasonTeam(seasonTeam) }))
+    .filter((item) => item.score >= 0)
+    .sort((a, b) => b.score - a.score || String(b.seasonTeam.seasonId || '').localeCompare(String(a.seasonTeam.seasonId || ''), 'it', { numeric: true }))
+    [0]?.seasonTeam.id || '';
+}
+
+function makeHonorTeamNamesClickableV90() {
+  const root = document.getElementById('honorSummary');
+  if (!root) return;
+  root.querySelectorAll('.club-name-with-logo').forEach((node) => {
+    if (node.closest('button, a, .team-profile-link')) return;
+    const name = node.textContent?.trim() || '';
+    const seasonTeamId = findSeasonTeamIdForTeamNameV90(name);
+    if (!seasonTeamId) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'team-profile-link honor-team-profile-link';
+    button.dataset.openTeamProfile = seasonTeamId;
+    node.replaceWith(button);
+    button.appendChild(node);
+  });
+}
+
+const renderHonorSummaryBeforeV90 = renderHonorSummary;
+renderHonorSummary = function renderHonorSummaryV90() {
+  const result = renderHonorSummaryBeforeV90?.();
+  makeHonorTeamNamesClickableV90();
+  return result;
+};
+
 initializeAppUi().then(() => {
+  setupThemeToggleV89();
   injectDisplayModeToggle();
   updateMobileUxClass();
 });

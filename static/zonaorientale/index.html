@@ -20,7 +20,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Inizio Playoff - ZonaOrientale Salerno" />
   <meta name="twitter:description" content="COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA - In occasione dell’inizio dei playoff, augurio a tutte le squadre partecipanti per una grande giornata di fantacampionato." />
-  <link rel="stylesheet" href="./assets/styles.css?v=88" />
+  <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
+  <link rel="stylesheet" href="./assets/styles.css?v=90" />
 </head>
 <body>
   <header class="app-header">
@@ -35,7 +36,8 @@
           <span>Stagione</span>
           <select id="globalSeasonSelect" class="input season-input" aria-label="Stagione visualizzata"></select>
         </label>
-        <button id="refreshBtn" class="button button-secondary" type="button">Aggiorna dati</button>
+        <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Cambia tema" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
+        <button id="refreshBtn" class="button button-secondary hidden" type="button">Aggiorna dati</button>
         <button id="openLoginBtn" class="button button-primary" type="button">Area admin</button>
         <button id="logoutBtn" class="button button-danger hidden" type="button">Logout</button>
       </div>
@@ -1591,11 +1593,11 @@ Ogni anno a partire da questa stagione verranno istituiti 6 premi oscar del calc
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V88 filtri listone integrati · Ultimo aggiornamento 19/05/2026</p>
+    <p>ZonaOrientale Salerno · V90 rose cliccabili, albo e listone stagione · Ultimo aggiornamento 19/05/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=88"></script>
+  <script type="module" src="./assets/app.js?v=90"></script>
 </body>
 </html>
 
