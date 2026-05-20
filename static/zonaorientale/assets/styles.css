@@ -12825,3 +12825,87 @@ html[data-theme="light"] .competition-match-stage-group h4 {
 @media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .admin-static-match-flag { width: fit-content; }
 }
+
+
+/* V114 - Admin categorie, fonti competizioni mobile e risultati. */
+.admin-category {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.admin-category-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.admin-category-heading h2 {
+  margin: 0;
+}
+
+.admin-category-heading p {
+  margin: 3px 0 0;
+  color: var(--muted);
+}
+
+.admin-category-body {
+  display: grid;
+  gap: 12px;
+}
+
+.match-result-goals {
+  font-weight: 900;
+}
+
+.match-result-separator,
+.match-result-fp {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.admin-static-match-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.18);
+  color: #bbf7d0;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .static-source-badge,
+  .firebase-source-badge,
+  .static-source-line,
+  .competition-source-line,
+  .competition-card-source-line,
+  .competition-card .static-source-line,
+  .competition-card .competition-source-line {
+    display: none !important;
+  }
+
+  .admin-category-heading {
+    display: block;
+    padding: 10px 12px;
+  }
+}
+
+body.is-mobile-ux .static-source-badge,
+body.is-mobile-ux .firebase-source-badge,
+body.is-mobile-ux .static-source-line,
+body.is-mobile-ux .competition-source-line,
+body.is-mobile-ux .competition-card-source-line,
+body.is-mobile-ux .competition-card .static-source-line,
+body.is-mobile-ux .competition-card .competition-source-line {
+  display: none !important;
+}

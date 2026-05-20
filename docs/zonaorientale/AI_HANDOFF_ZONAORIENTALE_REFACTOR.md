@@ -2,7 +2,7 @@
 
 Documento da consegnare a un nuovo assistente prima di lavorare sul progetto.
 
-Ultimo aggiornamento: 2026-05-19
+Ultimo aggiornamento: 2026-05-20
 Branch di lavoro consigliato: `refactor/zonaorientale-moduli`
 Cartella progetto dentro repo Hugo/Wowchemy: `static/zonaorientale/`
 Sito pubblico: `https://www.silviobarra.com/zonaorientale/`
@@ -290,7 +290,7 @@ Però non è indispensabile in ogni pagina, perché la webapp carica già i dati
 - mantenere `Aggiorna dati` nel desktop header;
 - su mobile nasconderlo o spostarlo in menu `Altro`;
 - per utenti non admin, trasformarlo in icona piccola;
-- eventualmente mostrare testo `Ultimo aggiornamento: HH:mm` vicino al bottone.
+- eventualmente mostrare testo `Ultimo aggiornamento: 2026-05-20
 
 Non eliminarlo subito senza accordo: è utile durante test e gestione Admin.
 
@@ -615,3 +615,26 @@ Nel JSON statico, quando possibile, salvare sempre anche:
 ```
 
 I nomi servono come fallback, ma gli ID sono la fonte piu robusta per associare squadre Firebase e JSON.
+
+
+---
+
+## 15. Stato V114 - Admin, competizioni statiche e formule
+
+Modifiche importanti introdotte fino a V114 sul branch `feature/zonaorientale-competizioni-statiche`:
+
+- Admin riorganizzato in categorie: Utenti e comunicazioni, Stagioni e club, Rose e mercato, Competizioni, Snapshot e backup.
+- Rimosso il pulsante verde rapido `Importa calendario competizione` sopra tutto l'Admin; il pannello resta nella categoria Competizioni.
+- Snapshot pubblici: il pannello deve mostrare data/ora ultimo snapshot della stagione selezionata e ultimo snapshot Albo/FIFA.
+- Formule competizione supportate in Admin:
+  - `UNO_VS_TUTTI` = 1 Vs Tutti
+  - `FORMULA_1` = Formula 1
+  - `CLASSIFICA` = A Calendario
+  - `GIRONI_KO` = Ad Eliminazione Diretta
+  - `GRUPPI` = A gruppi
+  - `BATTLE_ROYALE` = Battle Royale
+  - `HIGHLANDER` = Highlander
+- Nei calendari statici il JSON e fonte primaria; Firebase/snapshot sono fallback.
+- In mobile non mostrare badge fonte `JSON statico` / `Firebase` nella pagina Competizioni, per leggibilita.
+- Nei risultati pubblici il punteggio deve essere in grassetto e i fantapunti tra parentesi, ad esempio: `2-1 · (72,5-68)`.
+- Per utenti che sono sia admin sia presidenti: attualmente l'app privilegia il ruolo admin. Una vera scelta ruolo al login richiede una modifica dedicata dello stato UI e dei permessi; non e stata implementata in V114.

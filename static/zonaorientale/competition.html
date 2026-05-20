@@ -7,7 +7,7 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=112" />
+  <link rel="stylesheet" href="./assets/styles.css?v=114" />
 </head>
 <body>
   <main class="container app-main competition-page-main">
@@ -30,7 +30,7 @@
   </main>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V112 fasi competizione e flag JSON admin · Ultimo aggiornamento 20/05/2026</p>
+    <p>ZonaOrientale Salerno · V114 admin categorie e competizioni · Ultimo aggiornamento 20/05/2026</p>
   </footer>
 
   <script type="module">
@@ -167,7 +167,16 @@
       const hasGoals = match.homeGoals !== "" && match.homeGoals !== undefined && match.homeGoals !== null && match.awayGoals !== "" && match.awayGoals !== undefined && match.awayGoals !== null;
       const goals = hasGoals ? `${match.homeGoals}-${match.awayGoals}` : "-";
       const hasFp = match.homeScore !== "" && match.homeScore !== undefined && match.homeScore !== null && match.awayScore !== "" && match.awayScore !== undefined && match.awayScore !== null;
-      return hasFp ? `${goals} · FP ${formatNumber(match.homeScore)}-${formatNumber(match.awayScore)}` : goals;
+      return hasFp ? `${goals} · (${formatNumber(match.homeScore)}-${formatNumber(match.awayScore)})` : goals;
+    }
+
+    function renderMatchResultHtml(match) {
+      const hasGoals = match.homeGoals !== "" && match.homeGoals !== undefined && match.homeGoals !== null && match.awayGoals !== "" && match.awayGoals !== undefined && match.awayGoals !== null;
+      const goals = hasGoals ? `${match.homeGoals}-${match.awayGoals}` : "-";
+      const hasFp = match.homeScore !== "" && match.homeScore !== undefined && match.homeScore !== null && match.awayScore !== "" && match.awayScore !== undefined && match.awayScore !== null;
+      const scoreHtml = `<strong class="match-result-goals">${escapeHtml(goals)}</strong>`;
+      if (!hasFp) return scoreHtml;
+      return `${scoreHtml} <span class="match-result-separator">·</span> <span class="match-result-fp">(${escapeHtml(formatNumber(match.homeScore))}-${escapeHtml(formatNumber(match.awayScore))})</span>`;
     }
 
     function cleanStageText(value) {
@@ -327,7 +336,7 @@
                     <td data-label="G. lega">${escapeHtml(match.leagueMatchday || "-")}</td>
                     <td data-label="G. Serie A">${escapeHtml(match.serieAMatchday || "-")}</td>
                     <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                    <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+                    <td data-label="Risultato" class="number">${renderMatchResultHtml(match)}</td>
                   </tr>`).join("")}
               </tbody>
             </table>

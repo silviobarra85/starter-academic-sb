@@ -21,8 +21,13 @@ export const COMPETITION_TYPES = [
 ];
 
 export const COMPETITION_FORMATS = [
-  { value: "CLASSIFICA", label: "A classifica" },
-  { value: "GIRONI_KO", label: "A gironi + quarti/semifinali/finale" }
+  { value: "UNO_VS_TUTTI", label: "1 Vs Tutti" },
+  { value: "FORMULA_1", label: "Formula 1" },
+  { value: "CLASSIFICA", label: "A Calendario" },
+  { value: "GIRONI_KO", label: "Ad Eliminazione Diretta" },
+  { value: "GRUPPI", label: "A gruppi" },
+  { value: "BATTLE_ROYALE", label: "Battle Royale" },
+  { value: "HIGHLANDER", label: "Highlander" }
 ];
 
 export const COMPETITION_STATUSES = [

@@ -10374,3 +10374,354 @@ function renderCompetitionMatchesPublicV113(competition) {
 }
 
 renderCompetitionMatchesPublic = renderCompetitionMatchesPublicV113;
+
+
+/* V114 - Admin categorizzato, formule competizione aggiornate, snapshot date e risultati leggibili. */
+const COMPETITION_FORMATS_V114 = [
+  { value: "UNO_VS_TUTTI", label: "1 Vs Tutti" },
+  { value: "FORMULA_1", label: "Formula 1" },
+  { value: "CLASSIFICA", label: "A Calendario" },
+  { value: "GIRONI_KO", label: "Ad Eliminazione Diretta" },
+  { value: "GRUPPI", label: "A gruppi" },
+  { value: "BATTLE_ROYALE", label: "Battle Royale" },
+  { value: "HIGHLANDER", label: "Highlander" }
+];
+
+function getCompetitionFormatLabelV114(value) {
+  return getLabel(COMPETITION_FORMATS_V114, value) || getLabel(COMPETITION_FORMATS, value) || value || "-";
+}
+
+function formatSnapshotTimestampV114(value) {
+  if (!value) return "-";
+  try {
+    const date = typeof value?.toDate === "function"
+      ? value.toDate()
+      : typeof value?.seconds === "number"
+        ? new Date(value.seconds * 1000)
+        : new Date(value);
+    if (Number.isNaN(date.getTime())) return String(value);
+    return date.toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" });
+  } catch (error) {
+    return String(value);
+  }
+}
+
+function getCurrentSeasonSnapshotGeneratedAtV114() {
+  const seasonId = getCurrentSeasonId();
+  const snapshot = seasonId ? state.publicSeasonSnapshots?.[seasonId] : null;
+  return snapshot?.generatedAt || snapshot?.updatedAt || snapshot?.createdAt || "";
+}
+
+function renderPublicSnapshotsAdminPanelV114() {
+  const seasonId = getCurrentSeasonId();
+  const seasonGenerated = formatSnapshotTimestampV114(getCurrentSeasonSnapshotGeneratedAtV114());
+  const honorGenerated = formatSnapshotTimestampV114(state.publicHonorSnapshot?.generatedAt || state.publicHonorSnapshot?.updatedAt || state.publicHonorSnapshot?.createdAt || "");
+  return renderAdminPanel("adminPublicSnapshotsPanel", "Ottimizzazione", "Snapshot pubblici", "Genera documenti leggeri. Il sito pubblico legge questi snapshot invece delle raccolte complete.", `
+    <div class="snapshot-actions-grid">
+      <button id="adminGenerateSelectedSeasonSnapshot" class="button button-primary" type="button">Aggiorna stagione selezionata (${escapeHtml(seasonId || "-")})</button>
+      <button id="adminGenerateAllSeasonSnapshots" class="button button-secondary" type="button">Aggiorna tutte le stagioni</button>
+      <button id="adminGenerateHonorSnapshot" class="button button-secondary" type="button">Aggiorna Albo/FIFA</button>
+      <button id="adminGenerateTeamSnapshots" class="button button-secondary" type="button">Aggiorna schede squadra</button>
+      <button id="adminGenerateEverythingSnapshots" class="button button-primary" type="button">Aggiorna tutto</button>
+    </div>
+    <p id="adminPublicSnapshotsStatus" class="form-status"></p>
+    <div class="snapshot-last-updates">
+      <small class="field-hint"><strong>Ultimo snapshot stagione selezionata:</strong> ${escapeHtml(seasonGenerated)}.</small>
+      <small class="field-hint"><strong>Ultimo snapshot Albo/FIFA:</strong> ${escapeHtml(honorGenerated)}.</small>
+    </div>
+    <small class="field-hint">Se aggiorni dati ufficiali, rigenera gli snapshot pubblici.</small>`);
+}
+
+renderPublicSnapshotsAdminPanelV34 = renderPublicSnapshotsAdminPanelV114;
+renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+
+function renderAdminCategoryV114(title, subtitle, body) {
+  const content = String(body || "").trim();
+  if (!content) return "";
+  return `
+    <section class="admin-category" aria-label="${escapeHtml(title)}">
+      <div class="admin-category-heading">
+        <div>
+          <p class="eyebrow">Admin</p>
+          <h2>${escapeHtml(title)}</h2>
+          ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ""}
+        </div>
+      </div>
+      <div class="admin-category-body">${content}</div>
+    </section>`;
+}
+
+function renderOptionalAdminPanelV114(name) {
+  return typeof name === "function" ? name() : "";
+}
+
+// V106 aveva aggiunto un collegamento rapido verde in cima: da V114 lo rimuoviamo.
+if (typeof ensureStaticCompetitionImportAdminPanelV106 === "function") {
+  ensureStaticCompetitionImportAdminPanelV106 = function ensureStaticCompetitionImportAdminPanelV114() {
+    document.getElementById("adminStaticCompetitionImportShortcut")?.remove();
+  };
+}
+
+renderAdminArea = function renderAdminAreaV114() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+
+  if (!state.isAdmin) {
+    adminPanel.innerHTML = `
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Area riservata</p>
+          <h2 id="adminTitle">Admin</h2>
+          <p>Accedi come amministratore per modificare stagioni, presidenti, squadre e competizioni.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const rolloverPanel = typeof renderSeasonRolloverAdminPanelV50 === "function" ? renderSeasonRolloverAdminPanelV50() : "";
+  const staticCompetitionImportPanel = typeof renderStaticCompetitionImportAdminPanelV105 === "function" ? renderStaticCompetitionImportAdminPanelV105() : "";
+
+  adminPanel.innerHTML = `
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">Area riservata</p>
+        <h2 id="adminTitle">Admin</h2>
+        <p>Gestione Firebase, dati statici, utenti presidenti, richieste e snapshot pubblici.</p>
+      </div>
+    </div>
+    ${renderAdminCategoryV114("Utenti e comunicazioni", "Registrazioni, richieste presidenti e comunicati.", `
+      ${typeof renderPendingUsersAdminPanelV34 === "function" ? renderPendingUsersAdminPanelV34() : ""}
+      ${typeof renderTeamRequestsAdminPanelV34 === "function" ? renderTeamRequestsAdminPanelV34() : ""}
+      ${typeof renderNewsAdminPanelV48 === "function" ? renderNewsAdminPanelV48() : ""}
+    `)}
+    ${renderAdminCategoryV114("Stagioni e club", "Stagioni, presidenti, squadre, squadre stagionali e stadi.", `
+      ${renderSeasonAdminPanel()}
+      ${rolloverPanel}
+      ${renderPresidentAdminPanel()}
+      ${renderTeamAdminPanel()}
+      ${renderSeasonTeamAdminPanel()}
+      ${renderStadiumAdminPanel()}
+    `)}
+    ${renderAdminCategoryV114("Rose e mercato", "Rose modificabili, movimenti FM e strumenti listone.", `
+      ${typeof renderRosterMovementsAdminPanel === "function" ? renderRosterMovementsAdminPanel() : ""}
+      ${renderListoneToolsAdminPanel()}
+    `)}
+    ${renderAdminCategoryV114("Competizioni", "Competizioni, calendari, import statico, risultati e FIFA Ranking.", `
+      ${renderCompetitionAdminPanel()}
+      ${renderCompetitionMatchesAdminPanel()}
+      ${staticCompetitionImportPanel}
+      ${renderCompetitionResultsAdminPanel()}
+      ${renderFifaRankingAdminPanel()}
+    `)}
+    ${renderAdminCategoryV114("Snapshot e backup", "Pubblicazione dati leggeri e backup locale Firebase.", `
+      ${renderPublicSnapshotsAdminPanelV114()}
+      ${renderBackupAdminPanel()}
+    `)}
+  `;
+  document.getElementById("adminStaticCompetitionImportShortcut")?.remove();
+  attachAdminHandlers();
+};
+
+renderCompetitionAdminPanel = function renderCompetitionAdminPanelV114() {
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminCompetitionSeasonId");
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+  const typeOptions = COMPETITION_TYPES.map((type) => `
+    <option value="${escapeHtml(type.value)}">${escapeHtml(type.label)}</option>
+  `).join("");
+  const formatOptions = COMPETITION_FORMATS_V114.map((format) => `
+    <option value="${escapeHtml(format.value)}">${escapeHtml(format.label)}</option>
+  `).join("");
+  const statusOptions = COMPETITION_STATUSES.map((status) => `
+    <option value="${escapeHtml(status.value)}">${escapeHtml(status.label)}</option>
+  `).join("");
+  const filteredCompetitions = state.raw.competitions.filter((competition) => competition.seasonId === selectedSeasonId);
+  const rows = filteredCompetitions.map((competition) => `
+    <div class="admin-list-item">
+      <span>
+        <strong>${escapeHtml(competition.name || competition.id)}</strong>
+        <small>${escapeHtml(getSeasonName(competition.seasonId))} · ${escapeHtml(getLabel(COMPETITION_TYPES, competition.type))} · ${escapeHtml(getCompetitionFormatLabelV114(competition.format))}</small>
+      </span>
+      <span>
+        <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
+        <button class="button button-secondary button-small" type="button" data-admin-edit-competition="${escapeHtml(competition.id)}">Modifica</button>
+        <button class="button button-danger button-small" type="button" data-admin-delete-competition="${escapeHtml(competition.id)}">Elimina</button>
+      </span>
+    </div>
+  `).join("") || `<p class="muted admin-empty-message">Nessuna competizione inserita per la stagione selezionata.</p>`;
+
+  return renderAdminPanel("adminCompetitionsPanel", "Firebase", "Competizioni", "Crea competizioni per stagione: Campionato, coppe, playoff o competizioni personalizzate.", `
+      <form id="adminCompetitionForm" class="form-grid">
+        <input id="adminCompetitionId" type="hidden" />
+        <label>Stagione<select id="adminCompetitionSeasonId" class="input" required>${seasonOptions}</select></label>
+        <label>Nome competizione<input id="adminCompetitionName" class="input" type="text" placeholder="Es. Campionato" required /></label>
+        <label>Trofeo / tipo<select id="adminCompetitionType" class="input" required>${typeOptions}</select></label>
+        <label>Formula<select id="adminCompetitionFormat" class="input" required>${formatOptions}</select></label>
+        <label>Stato<select id="adminCompetitionStatus" class="input" required>${statusOptions}</select></label>
+        <label class="span-2">Note<input id="adminCompetitionNotes" class="input" type="text" placeholder="Opzionale" /></label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit">Salva competizione</button>
+          <button id="adminCompetitionReset" class="button button-secondary" type="button">Nuova</button>
+          <button id="adminCompetitionCreateDefaults" class="button button-secondary" type="button">Crea competizioni standard</button>
+          <span id="adminCompetitionStatusText" class="form-status"></span>
+        </div>
+      </form>
+      <details class="admin-edit-section" open>
+        <summary><strong>Competizioni della stagione selezionata</strong><span>${filteredCompetitions.length}</span></summary>
+        <div class="admin-list">${rows}</div>
+      </details>`);
+};
+
+const renderStaticCompetitionImportAdminPanelBeforeV114 = typeof renderStaticCompetitionImportAdminPanelV105 === "function" ? renderStaticCompetitionImportAdminPanelV105 : null;
+if (renderStaticCompetitionImportAdminPanelBeforeV114) {
+  renderStaticCompetitionImportAdminPanelV105 = function renderStaticCompetitionImportAdminPanelV114() {
+    let html = renderStaticCompetitionImportAdminPanelBeforeV114();
+    if (!html.includes('id="adminStaticCompetitionFormat"')) {
+      const formatOptions = COMPETITION_FORMATS_V114.map((format) => `
+        <option value="${escapeHtml(format.value)}" ${format.value === "GIRONI_KO" ? "selected" : ""}>${escapeHtml(format.label)}</option>
+      `).join("");
+      html = html.replace(/<label>\s*Stato\s*<select id="adminStaticCompetitionStatus"[\s\S]*?<\/label>/, (match) => `${match}
+        <label>
+          Formula
+          <select id="adminStaticCompetitionFormat" class="input" required>${formatOptions}</select>
+        </label>`);
+    }
+    return html;
+  };
+}
+
+const buildStaticCompetitionPayloadBeforeV114 = typeof buildStaticCompetitionPayloadV105 === "function" ? buildStaticCompetitionPayloadV105 : null;
+if (buildStaticCompetitionPayloadBeforeV114) {
+  buildStaticCompetitionPayloadV105 = function buildStaticCompetitionPayloadV114(matches) {
+    const result = buildStaticCompetitionPayloadBeforeV114(matches);
+    const format = document.getElementById("adminStaticCompetitionFormat")?.value || result.payload?.competition?.format || "GIRONI_KO";
+    if (result.payload?.competition) result.payload.competition.format = format;
+    if (result.payload?.meta) result.payload.meta.competitionFormat = format;
+    if (result.manifestEntry) result.manifestEntry.competitionFormat = format;
+    return result;
+  };
+}
+
+function hasMatchGoalsV114(match) {
+  return match?.homeGoals !== "" && match?.homeGoals !== undefined && match?.homeGoals !== null && match?.awayGoals !== "" && match?.awayGoals !== undefined && match?.awayGoals !== null;
+}
+
+function hasMatchFantasyPointsV114(match) {
+  return match?.homeScore !== "" && match?.homeScore !== undefined && match?.homeScore !== null && match?.awayScore !== "" && match?.awayScore !== undefined && match?.awayScore !== null;
+}
+
+function formatNumberCompactV114(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number.toLocaleString("it-IT", { maximumFractionDigits: 2 }) : String(value ?? "");
+}
+
+function renderMatchResultHtmlV114(match) {
+  const goals = hasMatchGoalsV114(match) ? `${match.homeGoals}-${match.awayGoals}` : "-";
+  const goalsHtml = `<strong class="match-result-goals">${escapeHtml(goals)}</strong>`;
+  if (!hasMatchFantasyPointsV114(match)) return goalsHtml;
+  return `${goalsHtml} <span class="match-result-separator">·</span> <span class="match-result-fp">(${escapeHtml(formatNumberCompactV114(match.homeScore))}-${escapeHtml(formatNumberCompactV114(match.awayScore))})</span>`;
+}
+
+function renderMatchRowsResultV114(matches, emptyText = "Nessuna partita inserita.", { showStage = true, preserveOrder = false } = {}) {
+  const rows = preserveOrder ? [...matches] : sortMatchesForDisplay(matches);
+  if (!rows.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="table-wrap match-table-wrap">
+      <table>
+        <thead>
+          <tr>${showStage ? "<th>Fase</th>" : ""}<th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+        </thead>
+        <tbody>
+          ${rows.map((match) => `
+            <tr>
+              ${showStage ? `<td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>` : ""}
+              <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
+              <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
+              <td data-label="Risultato" class="number">${renderMatchResultHtmlV114(match)}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+renderMatchRows = function renderMatchRowsV114(matches, emptyText = "Nessuna partita inserita.") {
+  return renderMatchRowsResultV114(matches, emptyText, { showStage: true });
+};
+
+renderMatchRowsPreserveOrderV103 = function renderMatchRowsPreserveOrderV114(matches, emptyText = "Nessuna partita inserita.") {
+  return renderMatchRowsResultV114(matches, emptyText, { showStage: true, preserveOrder: true });
+};
+
+renderMatchRowsNoStageV112 = function renderMatchRowsNoStageV114(matches, emptyText = "Nessuna partita inserita.") {
+  return renderMatchRowsResultV114(matches, emptyText, { showStage: false, preserveOrder: true });
+};
+
+renderCompactMatchLines = function renderCompactMatchLinesV114(matches) {
+  if (!matches.length) return "";
+  return `
+    <div class="compact-match-lines">
+      ${sortMatchesForDisplay(matches).map((match) => `
+        <div class="compact-match-line">
+          <span>${renderStaticMatchTeamNameV101(match, "home", { strong: false })} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}</span>
+          <span class="compact-match-result">${renderMatchResultHtmlV114(match)}</span>
+        </div>`).join("")}
+    </div>`;
+};
+
+renderCompactSingleMatchLineV87 = function renderCompactSingleMatchLineV114(match) {
+  if (!match) return "";
+  return `
+    <div class="compact-match-line dashboard-next-match-line">
+      <span>${renderStaticMatchTeamNameV101(match, "home", { strong: false })} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}</span>
+      <span class="compact-match-result">${renderMatchResultHtmlV114(match)}</span>
+    </div>`;
+};
+
+renderDashboardCalendar = function renderDashboardCalendarV114(seasonId) {
+  const target = document.getElementById("dashboardCalendar");
+  if (!target) return;
+  const groups = getSeasonCompetitionsForPublicDisplayV52(seasonId)
+    .map((competition) => {
+      const matches = isRankingCompetition(competition)
+        ? getLatestChampionshipMatches(competition)
+        : getPlayedMatchesForCompetition(competition).slice(0, 5);
+      return {
+        competition,
+        label: isRankingCompetition(competition) ? "Ultima giornata giocata" : "Ultime partite disputate",
+        matches
+      };
+    })
+    .filter((group) => group.matches.length);
+
+  if (!groups.length) {
+    target.innerHTML = `<p class="muted">Nessun risultato registrato per questa stagione.</p>`;
+    return;
+  }
+
+  target.innerHTML = groups.map((group) => `
+    <details class="dashboard-calendar-group dashboard-subsection" open>
+      <summary>
+        <span>
+          <strong>${escapeHtml(typeof getCompetitionDisplayNameV108 === "function" ? getCompetitionDisplayNameV108(group.competition) : group.competition.name || group.competition.id)}</strong>
+          <small>${escapeHtml(group.label)}</small>
+        </span>
+        <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Riduci</span>
+      </summary>
+      <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
+        <table class="dashboard-calendar-table">
+          <thead><tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr></thead>
+          <tbody>
+            ${group.matches.map((match) => `
+              <tr>
+                <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
+                <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
+                <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
+                <td data-label="Risultato" class="number">${renderMatchResultHtmlV114(match)}</td>
+              </tr>`).join("")}
+          </tbody>
+        </table>
+      </div>
+    </details>`).join("");
+};
+
