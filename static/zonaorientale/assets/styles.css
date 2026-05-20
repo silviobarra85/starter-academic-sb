@@ -12710,3 +12710,91 @@ html[data-theme="light"] .competition-match-stage-group h4 {
 .static-competition-preview-table th:nth-child(11) {
   min-width: 180px;
 }
+
+/* V111 - Competizioni: pulsante pagina dedicata e gruppi fase. */
+.competition-card-header-with-actions {
+  align-items: flex-start;
+}
+
+.competition-card-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+}
+
+.competition-open-button {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.competition-match-stage-summary {
+  align-items: center;
+}
+
+.competition-page-main {
+  padding-top: 28px;
+}
+
+.competition-page-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.competition-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0 0;
+}
+
+.competition-page-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.competition-page-stage-group summary {
+  cursor: pointer;
+}
+
+.competition-page-empty {
+  padding: 18px;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .competition-card-header-with-actions,
+  .competition-card-actions {
+    align-items: stretch;
+  }
+
+  .competition-card-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 100%;
+  }
+
+  .competition-open-button {
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 10px;
+    font-size: 0.74rem;
+  }
+
+  .competition-page-main {
+    padding-top: 12px;
+  }
+
+  .competition-page-actions {
+    justify-content: stretch;
+  }
+
+  .competition-page-actions .button {
+    width: 100%;
+    text-align: center;
+  }
+}

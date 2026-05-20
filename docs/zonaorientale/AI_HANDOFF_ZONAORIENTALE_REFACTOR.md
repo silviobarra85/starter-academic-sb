@@ -484,3 +484,82 @@ L'importatore Admin `Importa calendario competizione` legge un Excel, mostra ant
 Gli ID sono la fonte primaria; i nomi restano come fallback e per leggibilita. I vecchi JSON senza ID continuano a funzionare tramite matching per nome.
 
 Le competizioni custom sono supportate: nome libero, slug libero e tipo `ALTRO`. Nelle schermate pubbliche mostrare sempre `competition.name` se presente, altrimenti il tipo.
+
+---
+
+## 15. Competizioni statiche da Excel
+
+Nuova funzionalita su branch `feature/zonaorientale-competizioni-statiche`.
+
+Obiettivo: ridurre accessi Firebase spostando i calendari consolidati delle competizioni in file JSON statici versionati in Git. La fonte pubblica deve essere:
+
+```text
+1. JSON statico in assets/competitions/ se presente
+2. Firebase / publicSeasonSnapshots come fallback
+```
+
+Struttura prevista:
+
+```text
+static/zonaorientale/assets/competitions/
+  manifest.json
+  2025-2026/
+    champions-league-2025-2026.json
+```
+
+`manifest.json` contiene un array `competitions` con record come:
+
+```json
+{
+  "id": "2025-2026-champions-league",
+  "seasonId": "2025-2026",
+  "competitionId": "2025_2026_champions-league",
+  "competitionName": "Champion's League",
+  "competitionSlug": "champions-league",
+  "file": "2025-2026/champions-league-2025-2026.json",
+  "matches": 13,
+  "playedMatches": 13,
+  "status": "CONCLUSA"
+}
+```
+
+Il JSON della competizione deve salvare sia i nomi delle squadre sia gli ID stagionali, quando disponibili:
+
+```json
+{
+  "homeTeamName": "Prestige Worldwide",
+  "homeSeasonTeamId": "...",
+  "awayTeamName": "Real Mappine",
+  "awaySeasonTeamId": "...",
+  "homeGoals": 2,
+  "awayGoals": 1,
+  "homeScore": 73,
+  "awayScore": 66.5
+}
+```
+
+L'importatore Admin `Importa calendario competizione`:
+
+- legge Excel nel browser;
+- mostra sempre anteprima modificabile;
+- permette di correggere fase, andata/ritorno/secca, giornate, squadre, fantapunti, risultato e stato;
+- mostra select per associare Casa/Trasferta alle `seasonTeams` Firebase;
+- genera zip overlay con JSON competizione e manifest completo gia aggiornato.
+
+Nel sito pubblico:
+
+- ogni competizione mostra badge `JSON statico` oppure `Firebase`;
+- se esiste JSON statico, partite e risultati vengono da JSON;
+- se manca JSON statico, si usa Firebase/snapshot;
+- i fantapunti nel risultato (`FP 61.5-73`) indicano che il calendario statico sta arricchendo o sostituendo i dati Firebase;
+- il nome pubblico della competizione deve preferire il nome del JSON statico;
+- le fasi sono ordinate da finale a scendere: Finale, Semifinali ritorno, Semifinali andata, Semifinali secche, Quarti ritorno, Quarti andata, ecc.;
+- se una fase ha solo una partita/turno secco non deve essere etichettata come andata.
+
+Pagina dedicata:
+
+```text
+static/zonaorientale/competition.html
+```
+
+Apre il calendario completo della competizione dalla card pubblica tramite pulsante `Apri competizione`. Anche questa pagina usa prima il JSON statico e solo se assente prova lo snapshot Firebase della stagione.

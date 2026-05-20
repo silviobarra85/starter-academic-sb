@@ -754,7 +754,7 @@ function renderDashboard() {
         <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
           <summary>
             <span>
-              <strong>${escapeHtml(competition.name)}</strong>
+              <strong>${escapeHtml(getCompetitionPublicDisplayNameV110(competition))}</strong>
               <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
             </span>
             <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
@@ -7093,7 +7093,7 @@ renderDashboard = function renderDashboardV52() {
         <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
           <summary>
             <span>
-              <strong>${escapeHtml(competition.name)}</strong>
+              <strong>${escapeHtml(getCompetitionPublicDisplayNameV110(competition))}</strong>
               <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
             </span>
             <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
@@ -7815,14 +7815,26 @@ function mergeStaticCompetitionCalendarsForSeasonV101(seasonId = getCurrentSeaso
 
     if (existingCompetition) {
       Object.assign(existingCompetition, {
-        ...competitionPayload,
         ...existingCompetition,
+        // Static competition calendars are the primary source for the public
+        // competition label. Firebase can still provide ids/admin metadata, but
+        // the public name should follow the JSON file when it exists.
+        name: competitionPayload.name || existingCompetition.name,
+        staticCompetitionName: competitionPayload.name || existingCompetition.staticCompetitionName || existingCompetition.name,
+        type: competitionPayload.type || existingCompetition.type,
+        format: competitionPayload.format || existingCompetition.format,
         status: competitionPayload.status || existingCompetition.status,
+        notes: existingCompetition.notes || competitionPayload.notes,
         staticCalendarId: calendar.id,
-        source: existingCompetition.source || "firebase-with-static-calendar"
+        source: String(existingCompetition.source || "").includes("static")
+          ? existingCompetition.source
+          : "firebase-with-static-calendar"
       });
     } else {
-      state.raw.competitions.push(competitionPayload);
+      state.raw.competitions.push({
+        ...competitionPayload,
+        staticCompetitionName: competitionPayload.name
+      });
     }
 
     const existingMatchesById = new Map((state.raw.competitionMatches || []).map((match) => [match.id, match]));
@@ -8174,6 +8186,31 @@ initializeAppUi().then(() => {
   updateMobileUxClass();
 });
 
+/* V110 - Nomi competizione da JSON statico come fonte primaria. */
+function getCompetitionStaticDisplayNameV110(competition) {
+  if (!competition) return "";
+  const calendar = typeof getStaticCompetitionCalendarForCompetitionV102 === "function"
+    ? getStaticCompetitionCalendarForCompetitionV102(competition)
+    : null;
+  return String(
+    calendar?.competition?.name ||
+    calendar?.competitionName ||
+    calendar?.meta?.competitionName ||
+    competition.staticCompetitionName ||
+    ""
+  ).trim();
+}
+
+function getCompetitionPublicDisplayNameV110(competition) {
+  if (!competition) return "Competizione";
+  return getCompetitionStaticDisplayNameV110(competition) ||
+    competition.name ||
+    competition.label ||
+    getLabel(COMPETITION_TYPES, competition.type) ||
+    competition.type ||
+    "Competizione";
+}
+
 /* V102 - Indicatore visibile per competizioni con calendario JSON statico. */
 function getStaticCompetitionCalendarForCompetitionV102(competition) {
   if (!competition) return null;
@@ -8244,7 +8281,7 @@ renderCompetitionsPublic = function renderCompetitionsPublicV102() {
     <article class="competition-card${hasStaticCompetitionSourceV102(competition) ? " competition-card-static-source" : ""}">
       <div class="competition-card-header">
         <div>
-          <h3>${escapeHtml(competition.name)} ${renderStaticCompetitionBadgeV102(competition)}</h3>
+          <h3>${escapeHtml(getCompetitionPublicDisplayNameV110(competition))} ${renderStaticCompetitionBadgeV102(competition)}</h3>
         </div>
         <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
       </div>
@@ -8278,7 +8315,7 @@ renderDashboard = function renderDashboardV102() {
         <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
           <summary>
             <span>
-              <strong>${escapeHtml(competition.name)}</strong>
+              <strong>${escapeHtml(getCompetitionPublicDisplayNameV110(competition))}</strong>
               <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
               ${renderStaticCompetitionBadgeV102(competition)}
             </span>
@@ -8402,7 +8439,7 @@ renderCompetitionsPublic = function renderCompetitionsPublicV103() {
     <article class="competition-card${hasStaticCompetitionSourceV102(competition) ? ' competition-card-static-source' : ' competition-card-firebase-source'}">
       <div class="competition-card-header">
         <div>
-          <h3>${escapeHtml(competition.name)} ${renderCompetitionSourceBadgeV103(competition)}</h3>
+          <h3>${escapeHtml(getCompetitionPublicDisplayNameV110(competition))} ${renderCompetitionSourceBadgeV103(competition)}</h3>
         </div>
         <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
       </div>
@@ -8435,7 +8472,7 @@ renderDashboard = function renderDashboardV103() {
         <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
           <summary>
             <span>
-              <strong>${escapeHtml(competition.name)}</strong>
+              <strong>${escapeHtml(getCompetitionPublicDisplayNameV110(competition))}</strong>
               <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
               ${renderCompetitionSourceBadgeV103(competition)}
             </span>
@@ -9675,4 +9712,225 @@ const renderAdminAreaBeforeV109 = renderAdminArea;
 renderAdminArea = function renderAdminAreaV109() {
   renderAdminAreaBeforeV109();
   ensureStaticCompetitionImportPreviewHintV109();
+};
+
+/* V111 - Pagina competizione e fasi calendario robuste.
+   - Static JSON resta fonte primaria per calendari/risultati; Firebase e snapshot restano fallback.
+   - Le fasi distinguono andata, ritorno e partita secca in base alla presenza reale del ritorno.
+   - Aggiunge il link "Apri competizione" a ogni competizione pubblica. */
+function getCompetitionDisplayNameV111(competition) {
+  if (typeof getCompetitionStaticDisplayNameV110 === "function") {
+    const staticName = getCompetitionStaticDisplayNameV110(competition);
+    if (staticName) return staticName;
+  }
+  if (typeof getCompetitionPublicDisplayNameV110 === "function") {
+    const name = getCompetitionPublicDisplayNameV110(competition);
+    if (name) return name;
+  }
+  if (typeof getCompetitionDisplayNameV108 === "function") {
+    const name = getCompetitionDisplayNameV108(competition);
+    if (name) return name;
+  }
+  return competition?.name || competition?.competitionName || competition?.label || getLabel(COMPETITION_TYPES, competition?.type) || competition?.type || "Competizione";
+}
+
+function getCompetitionOpenUrlV111(competition) {
+  const params = new URLSearchParams();
+  const seasonId = competition?.seasonId || getCurrentSeasonId();
+  if (seasonId) params.set("seasonId", seasonId);
+  if (competition?.id) params.set("competitionId", competition.id);
+  if (competition?.staticCalendarId) params.set("staticCalendarId", competition.staticCalendarId);
+  const calendar = typeof getStaticCompetitionCalendarForCompetitionV102 === "function"
+    ? getStaticCompetitionCalendarForCompetitionV102(competition)
+    : null;
+  const calendarId = calendar?.id || calendar?.meta?.id || "";
+  if (calendarId && !params.has("staticCalendarId")) params.set("staticCalendarId", calendarId);
+  const slug = competition?.competitionSlug || calendar?.competitionSlug || calendar?.meta?.competitionSlug || "";
+  if (slug) params.set("slug", slug);
+  return `./competition.html?${params.toString()}`;
+}
+
+function renderOpenCompetitionButtonV111(competition) {
+  return `<a class="button button-secondary button-small competition-open-button" href="${escapeHtml(getCompetitionOpenUrlV111(competition))}">Apri competizione</a>`;
+}
+
+function getCompetitionSourceBadgeV111(competition) {
+  if (typeof renderCompetitionSourceBadgeV103 === "function") return renderCompetitionSourceBadgeV103(competition);
+  return "";
+}
+
+function cleanStageTextV111(value) {
+  return String(value || "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toUpperCase();
+}
+
+function getMatchBaseStageV111(match) {
+  const stageRaw = cleanStageTextV111(match?.stage || match?.phase || match?.round || "");
+  const legRaw = cleanStageTextV111(match?.leg || match?.roundLeg || "");
+  const matchdayRaw = cleanStageTextV111(match?.matchday || "");
+  const combinedOriginal = `${stageRaw} ${legRaw} ${matchdayRaw}`.trim();
+  const combined = combinedOriginal.replace(/FINAL\s+FOUR/g, " ");
+
+  if (/FINALE|FINAL\b/.test(combined)) return { key: "finale", label: "Finale", rank: 900 };
+  if (/SEMIFINAL|SEMI|\bSF\b/.test(combined)) return { key: "semifinali", label: "Semifinali", rank: 800 };
+  if (/QUARTI|QUART|\bQF\b/.test(combined)) return { key: "quarti-finale", label: "Quarti di finale", rank: 700 };
+  if (/OTTAVI|OTTAV|\bR16\b/.test(combined)) return { key: "ottavi-finale", label: "Ottavi di finale", rank: 600 };
+  if (/FINAL\s+FOUR/.test(combinedOriginal)) return { key: "final-four", label: "Final Four", rank: 650 };
+
+  const leagueDay = Number(match?.leagueMatchday || 0);
+  if (Number.isFinite(leagueDay) && leagueDay > 0) return { key: `giornata-${leagueDay}`, label: `Giornata ${leagueDay}`, rank: 100 + leagueDay };
+  const serieDay = Number(match?.serieAMatchday || 0);
+  if (Number.isFinite(serieDay) && serieDay > 0) return { key: `serie-a-${serieDay}`, label: `Serie A ${serieDay}`, rank: 50 + serieDay };
+  const fallback = String(match?.matchday || match?.stage || match?.phase || "Partite").trim() || "Partite";
+  return { key: normalizeKey(fallback) || "partite", label: fallback, rank: 0 };
+}
+
+function getMatchLegCodeV111(match) {
+  const base = getMatchBaseStageV111(match);
+  if (base.key === "finale") return "finale";
+  const legRaw = cleanStageTextV111(match?.leg || match?.roundLeg || match?.matchday || "");
+  if (/RITORNO|RETURN|\bRIT\b/.test(legRaw)) return "ritorno";
+  if (/ANDATA|FIRST|\bAND\b/.test(legRaw)) return "andata";
+  if (/SECCA|UNICA|SINGLE|ONE\s+LEG/.test(legRaw)) return "secca";
+  return "secca";
+}
+
+function buildStageLegContextV111(matches) {
+  const context = new Map();
+  matches.forEach((match) => {
+    const base = getMatchBaseStageV111(match);
+    if (!context.has(base.key)) context.set(base.key, new Set());
+    const leg = getMatchLegCodeV111(match);
+    if (leg === "andata" || leg === "ritorno") context.get(base.key).add(leg);
+  });
+  return context;
+}
+
+function getMatchStageInfoV111(match, legContext) {
+  const base = getMatchBaseStageV111(match);
+  if (base.key === "finale") return { key: "finale", label: "Finale", rank: base.rank };
+
+  const declaredLeg = getMatchLegCodeV111(match);
+  const legs = legContext?.get(base.key) || new Set();
+  const hasTwoLegs = legs.has("andata") && legs.has("ritorno");
+  const leg = hasTwoLegs ? declaredLeg : "secca";
+
+  if (leg === "ritorno") return { key: `${base.key}-ritorno`, label: `${base.label} ritorno`, rank: base.rank + 20 };
+  if (leg === "andata") return { key: `${base.key}-andata`, label: `${base.label} andata`, rank: base.rank + 10 };
+  return { key: base.key, label: base.label, rank: base.rank + 15 };
+}
+
+function groupCompetitionMatchesByStageV111(matches) {
+  const legContext = buildStageLegContextV111(matches);
+  const groups = new Map();
+  matches.forEach((match) => {
+    const info = getMatchStageInfoV111(match, legContext);
+    if (!groups.has(info.key)) groups.set(info.key, { key: info.key, label: info.label, rank: info.rank, matches: [] });
+    groups.get(info.key).matches.push(match);
+  });
+  return [...groups.values()].sort((a, b) => {
+    const rankDiff = b.rank - a.rank;
+    if (rankDiff) return rankDiff;
+    return String(a.label).localeCompare(String(b.label), "it", { numeric: true, sensitivity: "base" });
+  });
+}
+
+function sortMatchesInsideStageV111(matches) {
+  return [...matches].sort((a, b) => {
+    const dayDiff = Number(b.leagueMatchday || b.serieAMatchday || 0) - Number(a.leagueMatchday || a.serieAMatchday || 0);
+    if (dayDiff) return dayDiff;
+    const idCompare = String(a.id || "").localeCompare(String(b.id || ""), "it", { numeric: true, sensitivity: "base" });
+    if (idCompare) return idCompare;
+    return String(a.homeTeamName || getSeasonTeamDisplayName(a.homeSeasonTeamId) || "").localeCompare(String(b.homeTeamName || getSeasonTeamDisplayName(b.homeSeasonTeamId) || ""), "it", { numeric: true, sensitivity: "base" });
+  });
+}
+
+function renderCompetitionMatchesPublicV111(competition) {
+  const matches = getCompetitionMatches(competition.id);
+  if (!matches.length) return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+  const groups = groupCompetitionMatchesByStageV111(matches);
+  return `
+    <div class="competition-matches-public competition-match-groups">
+      ${groups.map((group) => `
+        <details class="detail-section compact-detail-section competition-match-stage-group competition-match-stage-details" open>
+          <summary class="competition-match-stage-summary">
+            <h4>${escapeHtml(group.label)}</h4>
+            <span class="button button-secondary button-small competition-stage-toggle-label" aria-hidden="true">Riduci/Espandi</span>
+          </summary>
+          ${renderMatchRowsPreserveOrderV103(sortMatchesInsideStageV111(group.matches), "Nessuna partita inserita.")}
+        </details>`).join("")}
+    </div>`;
+}
+
+renderCompetitionMatchesPublic = renderCompetitionMatchesPublicV111;
+
+renderCompetitionsPublic = function renderCompetitionsPublicV111() {
+  const list = document.getElementById("competitionsList");
+  if (!list) return;
+
+  const seasonId = getCurrentSeasonId();
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+
+  if (!competitions.length) {
+    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || "la stagione selezionata")}.</p>`;
+    return;
+  }
+
+  list.innerHTML = competitions.map((competition) => `
+    <article class="competition-card${hasStaticCompetitionSourceV102(competition) ? " competition-card-static-source" : " competition-card-firebase-source"}">
+      <div class="competition-card-header competition-card-header-with-actions">
+        <div>
+          <h3>${escapeHtml(getCompetitionDisplayNameV111(competition))} ${getCompetitionSourceBadgeV111(competition)}</h3>
+        </div>
+        <div class="competition-card-actions">
+          ${renderOpenCompetitionButtonV111(competition)}
+          <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
+        </div>
+      </div>
+      ${renderStaticCompetitionSourceLineV102(competition)}
+      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
+      ${renderCompetitionResultsPublic(competition)}
+      ${renderCompetitionMatchesPublic(competition)}
+    </article>
+  `).join("");
+};
+
+renderDashboard = function renderDashboardV111() {
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+  const stats = typeof getSeasonFmStats === "function" ? getSeasonFmStats(seasonId) : null;
+
+  const metricClubs = document.getElementById("metricClubs");
+  const metricTotalFm = document.getElementById("metricTotalFm");
+  const metricAlerts = document.getElementById("metricAlerts");
+
+  if (metricClubs) metricClubs.textContent = String(seasonTeams.length || getParticipantsCount(seasonId) || 0);
+  if (metricTotalFm) metricTotalFm.textContent = stats ? `${formatFm(stats.total)} (medio ${formatFm(stats.average)})` : "- (medio -)";
+  if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === "ATTIVA").length);
+
+  const standings = document.getElementById("dashboardStandings");
+  if (standings) {
+    standings.innerHTML = competitions.length
+      ? competitions.map((competition) => `
+        <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
+          <summary>
+            <span>
+              <strong>${escapeHtml(getCompetitionDisplayNameV111(competition))}</strong>
+              <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
+              ${getCompetitionSourceBadgeV111(competition)}
+            </span>
+            <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
+          </summary>
+          ${renderDashboardCompetitionSummary(competition)}
+        </details>`).join("")
+      : `<p class="muted">Nessuna competizione inserita per questa stagione.</p>`;
+  }
+
+  renderDashboardCalendar(seasonId);
+  renderDashboardNewsV42();
+  if (typeof normalizeToggleLabelsV29 === "function") normalizeToggleLabelsV29();
 };
