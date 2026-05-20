@@ -9542,3 +9542,137 @@ attachAdminHandlers = function attachAdminHandlersV108() {
     if (state.staticCompetitionImportDraftV105?.matches?.length) renderStaticCompetitionImportPreviewV105();
   });
 };
+
+/* V109 - Competizioni statiche come fonte primaria.
+   Se esiste un calendario statico in assets/competitions per una competizione,
+   il sito usa quello come fonte canonica per partite e risultati. Se non esiste,
+   resta il fallback Firebase/snapshot. L'importatore continua a mostrare sempre
+   l'anteprima modificabile e salva homeSeasonTeamId/awaySeasonTeamId nel JSON. */
+function normalizeCompetitionSlugV109(value) {
+  return makeIdPart(String(value || "").replace(/[’']/g, "")).replace(/_/g, "-");
+}
+
+function getCompetitionStaticLookupValuesV109(competition = {}) {
+  return {
+    id: String(competition.id || ""),
+    seasonId: String(competition.seasonId || ""),
+    name: normalizeKey(competition.name || competition.competitionName || competition.label || ""),
+    type: String(competition.type || competition.competitionType || ""),
+    slug: normalizeCompetitionSlugV109(competition.competitionSlug || competition.slug || competition.name || competition.id || ""),
+    staticCalendarId: String(competition.staticCalendarId || "")
+  };
+}
+
+function getCalendarStaticLookupValuesV109(calendar = {}) {
+  const meta = calendar.meta || {};
+  const competition = calendar.competition || {};
+  return {
+    id: String(calendar.id || meta.id || ""),
+    seasonId: String(calendar.seasonId || meta.seasonId || competition.seasonId || ""),
+    competitionId: String(calendar.competitionId || meta.competitionId || competition.id || ""),
+    name: normalizeKey(calendar.competitionName || meta.competitionName || competition.name || calendar.label || ""),
+    type: String(calendar.competitionType || meta.competitionType || competition.type || ""),
+    slug: normalizeCompetitionSlugV109(calendar.competitionSlug || meta.competitionSlug || competition.competitionSlug || calendar.id || meta.id || calendar.competitionName || competition.name || "")
+  };
+}
+
+function getStaticCompetitionCalendarForCompetitionV109(competition) {
+  if (!competition) return null;
+  const calendars = Array.isArray(state.competitionCalendars) ? state.competitionCalendars : [];
+  if (!calendars.length) return null;
+  const target = getCompetitionStaticLookupValuesV109(competition);
+
+  return calendars.find((calendar) => {
+    const item = getCalendarStaticLookupValuesV109(calendar);
+    if (target.staticCalendarId && item.id && item.id === target.staticCalendarId) return true;
+    if (item.competitionId && item.competitionId === target.id) return true;
+    if (item.seasonId && target.seasonId && item.seasonId !== target.seasonId) return false;
+    if (item.slug && target.slug && item.slug === target.slug) return true;
+    if (item.name && target.name && item.name === target.name) return true;
+    return Boolean(item.type && target.type && item.type === target.type && item.name && target.name && item.name === target.name);
+  }) || null;
+}
+
+const getStaticCompetitionCalendarForCompetitionBeforeV109 = typeof getStaticCompetitionCalendarForCompetitionV102 === "function"
+  ? getStaticCompetitionCalendarForCompetitionV102
+  : null;
+
+getStaticCompetitionCalendarForCompetitionV102 = function getStaticCompetitionCalendarForCompetitionV109Compat(competition) {
+  return getStaticCompetitionCalendarForCompetitionV109(competition)
+    || (getStaticCompetitionCalendarForCompetitionBeforeV109 ? getStaticCompetitionCalendarForCompetitionBeforeV109(competition) : null);
+};
+
+function getCompetitionForStaticLookupV109(competitionId) {
+  return (state.raw.competitions || []).find((competition) => competition.id === competitionId) || null;
+}
+
+function getStaticCompetitionMatchesCanonicalV109(competition) {
+  const calendar = getStaticCompetitionCalendarForCompetitionV109(competition);
+  if (!calendar || !Array.isArray(calendar.matches)) return null;
+  const seasonId = competition?.seasonId || calendar.seasonId || calendar.meta?.seasonId || calendar.competition?.seasonId || getCurrentSeasonId();
+  const competitionId = competition?.id || calendar.competitionId || calendar.meta?.competitionId || calendar.competition?.id || "";
+  return calendar.matches.map((match, index) => {
+    const normalized = normalizeStaticCompetitionMatchV101(match, seasonId, competitionId, index);
+    return {
+      ...normalized,
+      staticCalendarId: calendar.id || calendar.meta?.id || "",
+      staticSourceFile: calendar.sourceFile || calendar.meta?.sourceFile || "assets/competitions",
+      hasStaticCalendarData: true,
+      source: "static-competition-calendar"
+    };
+  });
+}
+
+const getCompetitionMatchesBeforeV109 = getCompetitionMatches;
+getCompetitionMatches = function getCompetitionMatchesV109(competitionId) {
+  const competition = getCompetitionForStaticLookupV109(competitionId);
+  const staticMatches = getStaticCompetitionMatchesCanonicalV109(competition);
+  if (staticMatches) return sortMatchesForDisplay(staticMatches);
+  return getCompetitionMatchesBeforeV109(competitionId);
+};
+
+function getStaticCompetitionResultsCanonicalV109(competition) {
+  const calendar = getStaticCompetitionCalendarForCompetitionV109(competition);
+  if (!calendar || !Array.isArray(calendar.results)) return null;
+  const seasonId = competition?.seasonId || calendar.seasonId || calendar.meta?.seasonId || calendar.competition?.seasonId || getCurrentSeasonId();
+  const competitionId = competition?.id || calendar.competitionId || calendar.meta?.competitionId || calendar.competition?.id || "";
+  return calendar.results.map((result, index) => ({
+    ...normalizeStaticCompetitionResultV101(result, seasonId, competitionId, index),
+    staticCalendarId: calendar.id || calendar.meta?.id || "",
+    staticSourceFile: calendar.sourceFile || calendar.meta?.sourceFile || "assets/competitions",
+    hasStaticCalendarData: true,
+    source: "static-competition-calendar"
+  })).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+}
+
+const getCompetitionResultsBeforeV109 = getCompetitionResults;
+getCompetitionResults = function getCompetitionResultsV109(competitionId) {
+  const competition = getCompetitionForStaticLookupV109(competitionId);
+  const staticResults = getStaticCompetitionResultsCanonicalV109(competition);
+  if (staticResults) return staticResults;
+  return getCompetitionResultsBeforeV109(competitionId);
+};
+
+function ensureStaticCompetitionImportPreviewHintV109() {
+  const panel = document.getElementById("adminStaticCompetitionImportPanel");
+  if (!panel || panel.dataset.previewHintV109 === "1") return;
+  panel.dataset.previewHintV109 = "1";
+  const fileInput = document.getElementById("adminStaticCompetitionFile");
+  fileInput?.addEventListener("change", () => {
+    if (!fileInput.files?.[0]) return;
+    showMessage("adminStaticCompetitionImportStatus", "File selezionato. Genero l'anteprima modificabile...");
+    handleStaticCompetitionImportPreviewV105({ preventDefault() {} });
+  });
+}
+
+const attachAdminHandlersBeforeV109 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV109() {
+  attachAdminHandlersBeforeV109();
+  ensureStaticCompetitionImportPreviewHintV109();
+};
+
+const renderAdminAreaBeforeV109 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV109() {
+  renderAdminAreaBeforeV109();
+  ensureStaticCompetitionImportPreviewHintV109();
+};
