@@ -12354,3 +12354,21 @@ deleteAdminNewsV48 = async function deleteAdminNewsV134(newsId) {
   await loadFullDataV32({ render: true });
   expandAdminPanel("adminNewsPanel");
 };
+
+/* V137 - Admin Accetta utenti: rifiuto definitivo e lista approvati sempre sotto le richieste. */
+rejectPendingUserV34 = async function rejectPendingUserV137(uid) {
+  if (!uid) return;
+  const user = (state.raw.pendingUsers || []).find((item) => item.id === uid);
+  const label = user?.displayName || user?.email || uid;
+  if (!window.confirm(`Rifiutare l'accesso di ${label} ed eliminare definitivamente la richiesta da Firebase?`)) return;
+  try {
+    await deleteDoc(doc(db, "pendingUsers", uid));
+    state.raw.pendingUsers = (state.raw.pendingUsers || []).filter((item) => item.id !== uid);
+    await loadFullDataV32({ render: true });
+    expandAdminPanel("adminPendingUsersPanel");
+  } catch (error) {
+    console.error("Errore eliminazione richiesta utente", error);
+    setError?.(`Non riesco a eliminare la richiesta utente. ${error?.message || error}`);
+  }
+};
+

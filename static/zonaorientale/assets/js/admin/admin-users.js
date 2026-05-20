@@ -49,12 +49,15 @@ export function createAdminUserApprovalHelpersV129({
 
     pendingUsers
       .filter((item) => item.status === "APPROVED")
-      .forEach((item) => approvedByUid.set(item.id, item));
+      .forEach((item) => approvedByUid.set(item.id, { ...item, approvalSource: "pendingUsers" }));
 
     teamUsers
       .filter((item) => item.status !== "DISABLED")
       .forEach((item) => {
-        if (!approvedByUid.has(item.id)) approvedByUid.set(item.id, item);
+        const merged = approvedByUid.has(item.id)
+          ? { ...item, ...approvedByUid.get(item.id), approvalSource: "pendingUsers/teamUsers" }
+          : { ...item, approvalSource: "teamUsers" };
+        approvedByUid.set(item.id, merged);
       });
 
     return Array.from(approvedByUid.values()).sort((a, b) => {
@@ -66,7 +69,10 @@ export function createAdminUserApprovalHelpersV129({
 
   function renderPendingUsersPanel() {
     const pendingUsers = state.raw.pendingUsers || [];
-    const pending = pendingUsers.filter((item) => item.status !== "APPROVED" && item.status !== "REJECTED");
+    const pending = pendingUsers.filter((item) => {
+      const status = item.status || "PENDING";
+      return status !== "APPROVED" && status !== "REJECTED";
+    });
     const approved = buildApprovedUsers(pendingUsers, state.raw.teamUsers || []);
 
     const presidentOptions = state.raw.presidents.map((president) => `<option value="${escapeHtml(president.id)}">${escapeHtml(president.name || president.id)}</option>`).join("");
@@ -76,12 +82,13 @@ export function createAdminUserApprovalHelpersV129({
     const pendingRows = pending.map((user) => renderPendingUserApprovalRow(user, presidentOptions, teamOptions, seasonTeamOptions)).join("") || `<p class="muted admin-empty-message">Nessun utente in attesa.</p>`;
     const approvedRows = approved.map(renderApprovedUserSummary).join("") || `<p class="muted admin-empty-message">Nessun utente approvato.</p>`;
 
-    return renderAdminPanel("adminPendingUsersPanel", "Utenti", "Accetta utenti", "Approva i presidenti registrati, rifiuta eliminando la richiesta e consulta gli accessi gia approvati.", `
-      <div class="admin-subsection-block">
+    return renderAdminPanel("adminPendingUsersPanel", "Utenti", "Accetta utenti", "Approva i presidenti registrati, rifiuta eliminando definitivamente la richiesta da Firebase e consulta gli accessi gia approvati.", `
+      <div class="admin-subsection-block admin-user-requests-block">
         <h3>Richieste in attesa</h3>
+        <p class="muted">Se una richiesta viene rifiutata, il documento viene cancellato da Firebase e non resta nello storico.</p>
         <div class="admin-list">${pendingRows}</div>
       </div>
-      <div class="admin-subsection-block">
+      <div class="admin-subsection-block admin-user-approved-block">
         <h3>Accessi approvati</h3>
         <p class="muted">Elenco degli utenti gia accettati: utile per verificare quali presidenti non hanno ancora richiesto l'accesso.</p>
         <div class="admin-list">${approvedRows}</div>
