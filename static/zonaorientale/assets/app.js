@@ -9,6 +9,8 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  query,
+  where,
   serverTimestamp,
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -12176,8 +12178,8 @@ function renderUserAreaApprovedV119(approved) {
       ${prefill ? `<p class="notice notice-success trade-prefill-notice">Proposta precompilata per <strong>${escapeHtml(prefill.playerName || "giocatore")}</strong> di ${escapeHtml(getSeasonTeamDisplayName(prefill.seasonTeamId))}.</p>` : ""}
       <form id="tradeProposalForm" class="form-grid trade-proposal-form">
         <label class="span-2">Squadra con cui trattare<select id="tradeTargetTeam" class="input" required>${targetOptions}</select></label>
-        <label>Giocatori che offri<select id="tradeOfferedPlayers" class="input" multiple size="7">${offeredOptions}</select><small class="field-hint">Puoi selezionare uno o più giocatori della tua rosa.</small></label>
-        <label>Giocatori che chiedi<select id="tradeRequestedPlayers" class="input" multiple size="7">${requestedOptions}</select><small class="field-hint">La lista dipende dalla squadra selezionata.</small></label>
+        <label>Giocatori che offri<select id="tradeOfferedPlayers" class="input" multiple size="7">${offeredOptions}</select><button class="button button-secondary button-small trade-clear-selection-button" type="button" data-clear-trade-select="tradeOfferedPlayers">Deseleziona giocatori offerti</button><small class="field-hint">Puoi selezionare uno o più giocatori della tua rosa.</small></label>
+        <label>Giocatori che chiedi<select id="tradeRequestedPlayers" class="input" multiple size="7">${requestedOptions}</select><button class="button button-secondary button-small trade-clear-selection-button" type="button" data-clear-trade-select="tradeRequestedPlayers">Deseleziona giocatori richiesti</button><small class="field-hint">La lista dipende dalla squadra selezionata.</small></label>
         <label>FM che offri<input id="tradeOfferedFm" class="input" type="text" inputmode="decimal" placeholder="Es. 10,5" /></label>
         <label>FM che chiedi<input id="tradeRequestedFm" class="input" type="text" inputmode="decimal" placeholder="Es. 5" /></label>
         <label class="span-2">Messaggio<textarea id="tradeProposalNote" class="input textarea" rows="3" placeholder="Scrivi una nota per il presidente destinatario..."></textarea></label>
@@ -12427,7 +12429,7 @@ document.addEventListener("click", async (event) => {
 }, true);
 
 ensureTransferMarketDomV119();
-ensureTransferMarketDataV119();
+// V124: il caricamento dati fantamercato parte dopo l'override sicuro a fine file.
 
 
 /* V120 - Link Fantacalcio e mercato nella pagina squadra, load sicuro delle raccolte fantamercato. */
@@ -12625,3 +12627,91 @@ rejectPendingUserV34 = async function rejectPendingUserV122(uid) {
   await loadFullDataV32({ render: true });
   expandAdminPanel("adminPendingUsersPanel");
 };
+
+
+/* V124 - Mobile refinements, alert reasons and safer transfer negotiation reads. */
+function updateDashboardAlertReasonV124() {
+  const reasonEl = document.getElementById("metricAlertsReason");
+  if (!reasonEl) return;
+  const activeCompetitions = getSeasonCompetitionsForPublicDisplayV52(getCurrentSeasonId()).filter((competition) => competition.status === "ATTIVA");
+  if (!activeCompetitions.length) {
+    reasonEl.textContent = "Nessun alert.";
+    return;
+  }
+  const names = activeCompetitions.map((competition) => getCompetitionDisplayNameV111?.(competition) || getCompetitionPublicDisplayNameV110?.(competition) || competition.name || competition.type || "Competizione");
+  reasonEl.textContent = `Motivo: competizioni attive (${names.slice(0, 3).join(", ")}${names.length > 3 ? ", ..." : ""}).`;
+}
+
+const renderDashboardBeforeV124 = renderDashboard;
+renderDashboard = function renderDashboardV124() {
+  const result = renderDashboardBeforeV124();
+  updateDashboardAlertReasonV124();
+  return result;
+};
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-clear-trade-select]");
+  if (!button) return;
+  event.preventDefault();
+  const select = document.getElementById(button.dataset.clearTradeSelect || "");
+  if (!select) return;
+  Array.from(select.options || []).forEach((option) => { option.selected = false; });
+  select.dispatchEvent(new Event("change", { bubbles: true }));
+  validateTradeFormV119?.();
+}, true);
+
+async function loadTransferNegotiationsForCurrentUserV124() {
+  if (!state.user) return [];
+  if (state.isAdmin) {
+    return loadCollection("transferNegotiations").catch((error) => {
+      if (error?.code === "permission-denied") {
+        console.info("Transfer negotiations non disponibili: aggiorna le Firestore Rules per consentire la lettura admin o per squadra.");
+        return [];
+      }
+      console.warn("Transfer negotiations non disponibili", error);
+      return [];
+    });
+  }
+  const seasonTeamId = getApprovedSeasonTeamIdV119?.() || "";
+  if (!seasonTeamId) return [];
+  const readByField = async (field) => {
+    const snapshot = await getDocs(query(collection(db, "transferNegotiations"), where(field, "==", seasonTeamId)));
+    return snapshot.docs.map((documentSnapshot) => ({ id: documentSnapshot.id, ...documentSnapshot.data() }));
+  };
+  try {
+    const [sent, received] = await Promise.all([readByField("fromSeasonTeamId"), readByField("toSeasonTeamId")]);
+    return [...new Map([...sent, ...received].map((item) => [item.id, item])).values()];
+  } catch (error) {
+    if (error?.code === "permission-denied") {
+      console.info("Transfer negotiations non disponibili: aggiorna le Firestore Rules per consentire la lettura delle trattative della propria squadra.");
+      return [];
+    }
+    console.warn("Transfer negotiations non disponibili", error);
+    return [];
+  }
+}
+
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV124() {
+  if (!state.raw) state.raw = makeEmptyRawDataV34();
+  state.transferMarketLoadingV119 = true;
+  try {
+    const listings = await loadCollection("transferListings").catch((error) => {
+      if (error?.code === "permission-denied") {
+        console.info("Transfer listings non disponibili: aggiorna le Firestore Rules per consentire la lettura dei trasferibili attivi.");
+        return state.raw.transferListings || [];
+      }
+      console.warn("Transfer listings non disponibili", error);
+      return state.raw.transferListings || [];
+    });
+    const negotiations = await loadTransferNegotiationsForCurrentUserV124();
+    state.raw.transferListings = Array.isArray(listings) ? listings : [];
+    state.raw.transferNegotiations = Array.isArray(negotiations) ? negotiations : [];
+    state.transferMarketLoadedV119 = true;
+  } finally {
+    state.transferMarketLoadingV119 = false;
+  }
+  refreshVisibleTeamProfileV120?.();
+};
+
+
+ensureTransferMarketDataV119();

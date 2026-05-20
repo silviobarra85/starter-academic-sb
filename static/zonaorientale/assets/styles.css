@@ -13360,3 +13360,287 @@ html[data-theme="light"] .trade-summary-grid > div {
 .admin-user-approved-item {
   opacity: 0.96;
 }
+
+/* V124 - Mobile-only layout refinements, alert reasons and trade deselection. */
+.metric-reason {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.76rem;
+  line-height: 1.25;
+}
+
+.trade-clear-selection-button {
+  width: fit-content;
+  margin-top: 7px;
+}
+
+.competition-page-match-teams {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.competition-page-match-team {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.competition-page-match-team .club-logo {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+
+.competition-page-match-team strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.is-mobile-ux .page-heading {
+  padding-left: 14px !important;
+}
+
+body.is-mobile-ux .page-heading::before {
+  display: none !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .page-heading {
+    padding-left: 14px !important;
+  }
+
+  .page-heading::before {
+    display: none !important;
+  }
+
+  .competition-card-header-with-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .competition-card-actions {
+    display: flex !important;
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .competition-open-button {
+    width: auto !important;
+    min-height: 26px !important;
+    padding: 4px 8px !important;
+    font-size: 0.62rem !important;
+    line-height: 1 !important;
+  }
+
+  .competition-card-actions .status {
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .competition-match-stage-summary {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .competition-match-stage-summary h2,
+  .competition-match-stage-summary h4 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .competition-stage-toggle-label {
+    justify-self: end !important;
+    max-width: 88px !important;
+    min-height: 24px !important;
+    padding: 3px 6px !important;
+    font-size: 0.56rem !important;
+    white-space: nowrap !important;
+  }
+
+  .transfer-market-panel .panel-header {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+  }
+
+  .transfer-market-panel .filters-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: min(100%, 420px) !important;
+    margin: 0 auto !important;
+    justify-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  .transfer-market-panel .filter-input,
+  .transfer-market-panel .search-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 42px !important;
+    font-size: 0.92rem !important;
+    text-align: center !important;
+  }
+
+  .transfer-market-panel select option {
+    font-size: 0.94rem;
+  }
+
+  .competition-page-stage-group .mobile-tabular-wrap {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .competition-page-stage-group table.mobile-tabular {
+    min-width: 760px !important;
+    table-layout: auto !important;
+  }
+
+  .competition-page-stage-group table.mobile-tabular th:first-child,
+  .competition-page-stage-group table.mobile-tabular td:first-child,
+  body.is-mobile-ux .competition-page-stage-group table.mobile-tabular th:first-child,
+  body.is-mobile-ux .competition-page-stage-group table.mobile-tabular td:first-child {
+    position: static !important;
+    left: auto !important;
+    z-index: auto !important;
+    box-shadow: none !important;
+  }
+
+  .competition-page-stage-group table.mobile-tabular th:first-child,
+  .competition-page-stage-group table.mobile-tabular td:first-child {
+    width: 340px !important;
+    min-width: 340px !important;
+    max-width: 340px !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+  }
+
+  .competition-page-match-teams {
+    gap: 7px;
+  }
+
+  .competition-page-match-team .club-logo {
+    width: 22px;
+    height: 22px;
+    flex-basis: 22px;
+  }
+
+  .trade-clear-selection-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+body.is-mobile-ux .competition-card-header-with-actions {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 8px !important;
+}
+
+body.is-mobile-ux .competition-card-actions {
+  display: flex !important;
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 6px !important;
+  flex-wrap: wrap !important;
+}
+
+body.is-mobile-ux .competition-open-button {
+  width: auto !important;
+  min-height: 26px !important;
+  padding: 4px 8px !important;
+  font-size: 0.62rem !important;
+  line-height: 1 !important;
+}
+
+body.is-mobile-ux .competition-match-stage-summary {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 6px !important;
+  overflow: hidden !important;
+}
+
+body.is-mobile-ux .competition-match-stage-summary h2,
+body.is-mobile-ux .competition-match-stage-summary h4 {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+body.is-mobile-ux .competition-stage-toggle-label {
+  justify-self: end !important;
+  max-width: 88px !important;
+  min-height: 24px !important;
+  padding: 3px 6px !important;
+  font-size: 0.56rem !important;
+}
+
+body.is-mobile-ux .transfer-market-panel .panel-header {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  text-align: center !important;
+  gap: 10px !important;
+}
+
+body.is-mobile-ux .transfer-market-panel .filters-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  width: min(100%, 420px) !important;
+  margin: 0 auto !important;
+  gap: 8px !important;
+}
+
+body.is-mobile-ux .transfer-market-panel .filter-input,
+body.is-mobile-ux .transfer-market-panel .search-input {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 42px !important;
+  font-size: 0.92rem !important;
+  text-align: center !important;
+}
+
+body.is-mobile-ux .competition-page-stage-group .mobile-tabular-wrap {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.is-mobile-ux .competition-page-stage-group table.mobile-tabular {
+  min-width: 760px !important;
+  table-layout: auto !important;
+}
+
+body.is-mobile-ux .competition-page-stage-group table.mobile-tabular th:first-child,
+body.is-mobile-ux .competition-page-stage-group table.mobile-tabular td:first-child {
+  position: static !important;
+  left: auto !important;
+  z-index: auto !important;
+  width: 340px !important;
+  min-width: 340px !important;
+  max-width: 340px !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}

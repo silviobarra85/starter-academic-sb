@@ -7,7 +7,7 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=119" />
+  <link rel="stylesheet" href="./assets/styles.css?v=124" />
 </head>
 <body>
   <main class="container app-main competition-page-main">
@@ -30,7 +30,7 @@
   </main>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V116 admin snapshot e badge fonti · Ultimo aggiornamento 20/05/2026</p>
+    <p>ZonaOrientale Salerno · V124 refinements mobile · Ultimo aggiornamento 20/05/2026</p>
   </footer>
 
   <script type="module">
@@ -68,6 +68,31 @@
 
     function slugify(value) {
       return normalizeKey(value).replace(/\s+/g, "-");
+    }
+
+
+    function getInitials(value) {
+      const words = String(value || "")
+        .replace(/[^a-zA-Z0-9À-ÿ\s]/g, " ")
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+      if (!words.length) return "ZO";
+      if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+      return `${words[0][0] || ""}${words[1][0] || ""}`.toUpperCase();
+    }
+
+    function normalizeLogoPath(value) {
+      const raw = String(value || "").trim();
+      if (!raw || raw.startsWith("data:")) return "";
+      if (/^(https?:|\/|\.\/|\.\.\/|assets\/)/i.test(raw)) return raw;
+      return `./assets/logos/${raw}`;
+    }
+
+    function renderTeamLogo(name, logo, extraClass = "") {
+      const logoPath = normalizeLogoPath(logo);
+      if (logoPath) return `<img class="club-logo ${escapeHtml(extraClass)}" src="${escapeHtml(logoPath)}" alt="" />`;
+      return `<span class="club-logo club-logo-placeholder ${escapeHtml(extraClass)}">${escapeHtml(getInitials(name))}</span>`;
     }
 
     let firebaseSeasonSnapshotCache = null;
@@ -157,6 +182,7 @@
       const meta = payload.meta || {};
       const competitionId = competition.id || meta.competitionId || entry.competitionId || requestedCompetitionId;
       const snapshotData = await loadFirebaseSeasonSnapshot();
+      const seasonTeams = Array.isArray(snapshotData?.seasonTeams) ? snapshotData.seasonTeams : [];
       getDeletedMatchKeys(snapshotData, competitionId);
       return {
         source: "static",
@@ -171,6 +197,7 @@
         },
         matches: filterDeletedMatches(Array.isArray(payload.matches) ? payload.matches.map((match) => ({ ...match, competitionId: match.competitionId || competitionId })) : [], new Set()),
         results: Array.isArray(payload.results) ? payload.results : [],
+        seasonTeams,
         sourceFile: entry.sourceFile || meta.sourceFile || "assets/competitions"
       };
     }
@@ -206,6 +233,24 @@
       if (name) return name;
       const team = seasonTeams.find((item) => item.id === id);
       return team?.name || id || "-";
+    }
+
+
+    function getTeamLogo(match, side, seasonTeams = []) {
+      const id = side === "home" ? match.homeSeasonTeamId : match.awaySeasonTeamId;
+      const team = seasonTeams.find((item) => item.id === id);
+      return team?.logo || "";
+    }
+
+    function renderMatchTeams(match, seasonTeams = []) {
+      const homeName = getTeamName(match, "home", seasonTeams);
+      const awayName = getTeamName(match, "away", seasonTeams);
+      return `
+        <span class="competition-page-match-teams">
+          <span class="competition-page-match-team">${renderTeamLogo(homeName, getTeamLogo(match, "home", seasonTeams))}<strong>${escapeHtml(homeName)}</strong></span>
+          <span class="match-separator">-</span>
+          <span class="competition-page-match-team">${renderTeamLogo(awayName, getTeamLogo(match, "away", seasonTeams))}<strong>${escapeHtml(awayName)}</strong></span>
+        </span>`;
     }
 
     function formatNumber(value) {
@@ -383,7 +428,7 @@
               <tbody>
                 ${group.matches.map((match) => `
                   <tr>
-                    <td data-label="Partita">${escapeHtml(getTeamName(match, "home", seasonTeams))} - ${escapeHtml(getTeamName(match, "away", seasonTeams))}</td>
+                    <td data-label="Partita">${renderMatchTeams(match, seasonTeams)}</td>
                     <td data-label="G. lega">${escapeHtml(match.leagueMatchday || "-")}</td>
                     <td data-label="G. Serie A">${escapeHtml(match.serieAMatchday || "-")}</td>
                     <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>

@@ -1,0 +1,183 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function signedInUserDoc() {
+      return get(/databases/$(database)/documents/teamUsers/$(request.auth.uid));
+    }
+
+    function hasTeamUserDoc() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/teamUsers/$(request.auth.uid));
+    }
+
+    function isApprovedTeamUser() {
+      return hasTeamUserDoc()
+        && signedInUserDoc().data.status == 'ACTIVE';
+    }
+
+    function mySeasonTeamId() {
+      return signedInUserDoc().data.seasonTeamId;
+    }
+
+    function isParticipantTeam(teamId) {
+      return isApprovedTeamUser()
+        && mySeasonTeamId() == teamId;
+    }
+
+    match /admins/{userId} {
+      // Un utente loggato puo leggere solo il proprio eventuale documento admin.
+      // Questo permette al frontend di verificare se e admin senza bloccare i presidenti.
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow write: if isAdmin();
+    }
+
+    match /pendingUsers/{userId} {
+      // Il presidente puo creare/leggere/aggiornare la propria richiesta.
+      // L'admin puo leggere, approvare o rifiutare; il rifiuto puo cancellare il record.
+      allow create, read, update: if isSignedIn() && request.auth.uid == userId;
+      allow read, write, delete: if isAdmin();
+    }
+
+    match /teamUsers/{userId} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow write: if isAdmin();
+    }
+
+    match /teamRequests/{docId} {
+      allow create: if isApprovedTeamUser();
+      allow read: if isAdmin() || (isSignedIn() && resource.data.createdBy == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    match /publicSeasonSnapshots/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /publicSnapshots/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /publicTeamSnapshots/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /transferListings/{listingId} {
+      // Fantamercato pubblico: lista giocatori trasferibili.
+      allow read: if true;
+
+      allow create: if isAdmin()
+        || isParticipantTeam(request.resource.data.seasonTeamId);
+
+      allow update: if isAdmin()
+        || isParticipantTeam(resource.data.seasonTeamId)
+        || isParticipantTeam(request.resource.data.seasonTeamId);
+
+      allow delete: if isAdmin()
+        || isParticipantTeam(resource.data.seasonTeamId);
+    }
+
+    match /transferNegotiations/{negotiationId} {
+      // Trattative visibili solo ad admin, mittente e destinatario.
+      allow read: if isAdmin()
+        || isParticipantTeam(resource.data.fromSeasonTeamId)
+        || isParticipantTeam(resource.data.toSeasonTeamId);
+
+      allow create: if isAdmin()
+        || isParticipantTeam(request.resource.data.fromSeasonTeamId);
+
+      allow update: if isAdmin()
+        || isParticipantTeam(resource.data.fromSeasonTeamId)
+        || isParticipantTeam(resource.data.toSeasonTeamId);
+
+      // Chi invia puo annullare una proposta PENDING: dalla V121 viene eliminata da Firebase.
+      allow delete: if isAdmin()
+        || (
+          isParticipantTeam(resource.data.fromSeasonTeamId)
+          && resource.data.status == 'PENDING'
+        );
+    }
+
+    match /leagueSettings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /seasons/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /presidents/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /teams/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /seasonTeams/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /stadiums/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitions/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitionMatches/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitionResults/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /honorRoll/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /fifaRankings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /rosterEntries/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /fmMovements/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /news/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
