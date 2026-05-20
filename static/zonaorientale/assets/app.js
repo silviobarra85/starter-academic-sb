@@ -12649,3 +12649,105 @@ loadTransferMarketCollectionsV119 = async function loadTransferMarketCollections
   renderMobileBlockDashboardV140();
   return result;
 };
+
+/* V141 - Mobile UI unificata: bottom navigation e Fantamercato a card. Desktop invariato via CSS. */
+function updateMobileNavStateV141() {
+  const directMobilePages = new Set(["dashboard", "teamarea", "fantamercato", "competitions"]);
+  const moreButton = document.getElementById("mobileMoreBtn");
+  moreButton?.classList.toggle("active", !directMobilePages.has(state.currentPage));
+}
+updateMobileNavState = updateMobileNavStateV141;
+
+function ensureTransferMarketMobileCardsV141() {
+  const panel = document.querySelector('.transfer-market-panel');
+  const tableWrap = panel?.querySelector('.transfer-market-table-wrap');
+  if (!panel || !tableWrap) return null;
+  let target = document.getElementById('transferMarketMobileCards');
+  if (!target) {
+    target = document.createElement('div');
+    target.id = 'transferMarketMobileCards';
+    target.className = 'mobile-transfer-card-list';
+    tableWrap.insertAdjacentElement('afterend', target);
+  }
+  return target;
+}
+
+function getTransferMarketFilteredRowsV141() {
+  const seasonId = getCurrentSeasonId();
+  const listings = typeof getActiveTransferListingsV119 === 'function'
+    ? getActiveTransferListingsV119(seasonId)
+    : (state.raw?.transferListings || []).filter((listing) => (
+      (!seasonId || listing.seasonId === seasonId)
+      && String(listing.status || 'ACTIVE').toUpperCase() === 'ACTIVE'
+    ));
+  const teamFilter = document.getElementById('transferMarketTeamFilter');
+  const searchInput = document.getElementById('transferMarketSearch');
+  const selectedTeam = state.transferMarketTeamFilterV119 || teamFilter?.value || 'all';
+  const search = normalizeKey(state.transferMarketSearchV119 || searchInput?.value || '');
+  return listings
+    .filter((listing) => selectedTeam === 'all' || listing.seasonTeamId === selectedTeam)
+    .filter((listing) => {
+      if (!search) return true;
+      return normalizeKey([
+        listing.playerName,
+        listing.teamName,
+        getSeasonTeamDisplayName(listing.seasonTeamId),
+        listing.realTeam,
+        listing.rosterRole,
+        listing.conditions
+      ].join(' ')).includes(search);
+    })
+    .sort((a, b) => String(a.playerName || '').localeCompare(String(b.playerName || ''), 'it', { sensitivity: 'base' }));
+}
+
+function renderTransferMarketMobileCardsV141() {
+  const target = ensureTransferMarketMobileCardsV141();
+  if (!target) return;
+  if (!state.transferMarketLoadedV119 && state.transferMarketLoadingV119) {
+    target.innerHTML = '<p class="muted center">Caricamento fantamercato...</p>';
+    return;
+  }
+  const rows = getTransferMarketFilteredRowsV141();
+  if (!rows.length) {
+    target.innerHTML = '<p class="muted center">Nessun giocatore trasferibile per questa stagione.</p>';
+    return;
+  }
+  target.innerHTML = rows.map((listing) => {
+    const own = typeof isOwnSeasonTeamV119 === 'function' && isOwnSeasonTeamV119(listing.seasonTeamId);
+    const actionHtml = own
+      ? `<button class="button button-secondary button-small" type="button" data-transfer-edit-listing="${escapeHtml(listing.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-transfer-remove-listing="${escapeHtml(listing.id)}">Togli</button>`
+      : `<button class="button button-primary button-small" type="button" data-transfer-propose-listing="${escapeHtml(listing.id)}">Fai proposta</button>`;
+    return `
+      <article class="mobile-transfer-card">
+        <div class="mobile-transfer-card-header">
+          <div class="mobile-transfer-card-title">
+            <h3>${escapeHtml(listing.playerName || '-')}</h3>
+            <div>${renderSeasonTeamNameWithLogo(listing.seasonTeamId, { strong: false })}</div>
+          </div>
+          <span class="status status-transfermarket">TRASF</span>
+        </div>
+        <div class="mobile-transfer-card-meta">
+          <span>${escapeHtml(listing.rosterRole || '-')}</span>
+          <span>${escapeHtml(listing.realTeam || '-')}</span>
+          <span>Costo ${formatListoneNumber(listing.cost)}</span>
+        </div>
+        <div class="mobile-transfer-card-conditions"><strong>Cerca:</strong> ${escapeHtml(listing.conditions || 'Condizioni non specificate.')}</div>
+        <div class="mobile-transfer-card-actions">${actionHtml}</div>
+      </article>`;
+  }).join('');
+}
+
+const renderTransferMarketPageBeforeV141 = renderTransferMarketPageV119;
+renderTransferMarketPageV119 = function renderTransferMarketPageV141() {
+  const result = renderTransferMarketPageBeforeV141();
+  renderTransferMarketMobileCardsV141();
+  return result;
+};
+
+const renderAllBeforeV141 = renderAll;
+renderAll = function renderAllV141() {
+  const result = renderAllBeforeV141();
+  updateMobileNavStateV141();
+  renderTransferMarketMobileCardsV141();
+  return result;
+};
