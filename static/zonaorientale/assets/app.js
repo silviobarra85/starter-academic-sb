@@ -7733,6 +7733,57 @@ function getStaticMatchMergeKeyV101(match) {
   ].join("|");
 }
 
+
+/* V107 - Enrichment from static competition calendars.
+   When a match already exists in Firebase/snapshots, keep the Firebase match
+   but enrich it with fantapoints and static metadata from assets/competitions.
+   This makes the JSON static source visible in the public result line without
+   duplicating matches. */
+function hasStaticValueV107(value) {
+  return value !== null && value !== undefined && value !== "";
+}
+
+function mergeStaticValueV107(target, source, field, options = {}) {
+  const { overwrite = false } = options;
+  if (!source || !hasStaticValueV107(source[field])) return;
+  if (overwrite || !hasStaticValueV107(target[field])) target[field] = source[field];
+}
+
+function enrichExistingMatchWithStaticDataV107(existingMatch, staticMatch, calendar = {}) {
+  if (!existingMatch || !staticMatch) return existingMatch;
+
+  // Fantapoints are the key difference between Firebase-entered matches and
+  // static calendar imports. Always trust the static JSON for these fields.
+  mergeStaticValueV107(existingMatch, staticMatch, "homeScore", { overwrite: true });
+  mergeStaticValueV107(existingMatch, staticMatch, "awayScore", { overwrite: true });
+
+  // Preserve Firebase official score if present; otherwise use the static one.
+  mergeStaticValueV107(existingMatch, staticMatch, "homeGoals");
+  mergeStaticValueV107(existingMatch, staticMatch, "awayGoals");
+  mergeStaticValueV107(existingMatch, staticMatch, "status");
+
+  [
+    "stage",
+    "leg",
+    "matchday",
+    "leagueMatchday",
+    "serieAMatchday",
+    "matchDate",
+    "homeTeamName",
+    "awayTeamName",
+    "homeSeasonTeamId",
+    "awaySeasonTeamId"
+  ].forEach((field) => mergeStaticValueV107(existingMatch, staticMatch, field));
+
+  existingMatch.staticCalendarId = calendar.id || calendar.meta?.id || existingMatch.staticCalendarId || "";
+  existingMatch.staticSourceFile = calendar.sourceFile || calendar.meta?.sourceFile || existingMatch.staticSourceFile || "assets/competitions";
+  existingMatch.hasStaticCalendarData = true;
+  existingMatch.source = String(existingMatch.source || "").includes("static")
+    ? existingMatch.source
+    : `${existingMatch.source || "firebase"}+static-competition-calendar`;
+  return existingMatch;
+}
+
 function getStaticResultMergeKeyV101(result) {
   return [
     result.competitionId || "",
@@ -7775,15 +7826,20 @@ function mergeStaticCompetitionCalendarsForSeasonV101(seasonId = getCurrentSeaso
     }
 
     const existingMatchesById = new Map((state.raw.competitionMatches || []).map((match) => [match.id, match]));
-    const existingMatchKeys = new Set((state.raw.competitionMatches || []).map(getStaticMatchMergeKeyV101));
+    const existingMatchesByKey = new Map((state.raw.competitionMatches || []).map((match) => [getStaticMatchMergeKeyV101(match), match]));
     const normalizedMatches = (calendar.matches || []).map((match, index) => normalizeStaticCompetitionMatchV101(match, seasonId, competitionId, index));
     normalizedMatches.forEach((match) => {
       const mergeKey = getStaticMatchMergeKeyV101(match);
-      if (!existingMatchesById.has(match.id) && !existingMatchKeys.has(mergeKey)) {
-        state.raw.competitionMatches.push(match);
-        existingMatchesById.set(match.id, match);
-        existingMatchKeys.add(mergeKey);
+      const existingMatch = existingMatchesById.get(match.id) || existingMatchesByKey.get(mergeKey);
+      if (existingMatch) {
+        enrichExistingMatchWithStaticDataV107(existingMatch, match, calendar);
+        existingMatchesById.set(existingMatch.id, existingMatch);
+        existingMatchesByKey.set(mergeKey, existingMatch);
+        return;
       }
+      state.raw.competitionMatches.push(match);
+      existingMatchesById.set(match.id, match);
+      existingMatchesByKey.set(mergeKey, match);
     });
 
     const existingResultsById = new Map((state.raw.competitionResults || []).map((result) => [result.id, result]));
