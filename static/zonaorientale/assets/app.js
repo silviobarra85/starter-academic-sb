@@ -10586,6 +10586,72 @@ renderDashboardCalendar = function renderDashboardCalendarV114(seasonId) {
 
 
 
+/* V136 - Dashboard upcoming match metadata (date and Serie A matchday). */
+function formatDashboardMatchDateLabelV136(match) {
+  const date = String(match?.matchDate || match?.date || "").trim();
+  return date || "Data da definire";
+}
+
+function formatDashboardSerieALabelV136(match) {
+  const serieA = getMatchSerieAMatchday(match);
+  return serieA ? `Serie A ${serieA}` : "";
+}
+
+function renderDashboardUpcomingMatchMetaV136(match) {
+  const items = [];
+  items.push(`<span class="dashboard-match-date">${escapeHtml(formatDashboardMatchDateLabelV136(match))}</span>`);
+  const serieALabel = formatDashboardSerieALabelV136(match);
+  if (serieALabel) items.push(`<span class="dashboard-match-serie-a">${escapeHtml(serieALabel)}</span>`);
+  return `<span class="dashboard-match-meta">${items.join("")}</span>`;
+}
+
+function renderDashboardUpcomingMatchLinesV136(matches) {
+  if (!matches.length) return "";
+  return `
+    <div class="compact-match-lines dashboard-upcoming-match-lines">
+      ${sortMatchesForDisplay(matches).map((match) => `
+        <div class="compact-match-line dashboard-next-match-line dashboard-next-match-line-v136">
+          <span class="dashboard-match-teams">${renderStaticMatchTeamNameV101(match, "home", { strong: false })} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}</span>
+          ${renderDashboardUpcomingMatchMetaV136(match)}
+        </div>`).join("")}
+    </div>`;
+}
+
+renderCompactSingleMatchLineV87 = function renderCompactSingleMatchLineV136(match) {
+  if (!match) return "";
+  return `
+    <div class="compact-match-line dashboard-next-match-line dashboard-next-match-line-v136">
+      <span class="dashboard-match-teams">${renderStaticMatchTeamNameV101(match, "home", { strong: false })} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}</span>
+      ${renderDashboardUpcomingMatchMetaV136(match)}
+    </div>`;
+};
+
+renderDashboardCompetitionSummary = function renderDashboardCompetitionSummaryV136(competition) {
+  const winner = getCompetitionWinnerResultV87(competition);
+  if (winner?.seasonTeamId) {
+    return `<div class="dashboard-competition-summary dashboard-winner-line"><span class="muted">Vincitore:</span> ${renderSeasonTeamNameWithLogo(winner.seasonTeamId, { textClass: "text-success" })}</div>`;
+  }
+
+  if (isRankingCompetition(competition)) {
+    const nextMatches = getNextChampionshipMatches(competition);
+    if (nextMatches.length) {
+      const first = nextMatches[0];
+      const label = `Prossima giornata programmata${first.matchday ? `: ${first.matchday}` : ""}`;
+      return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderDashboardUpcomingMatchLinesV136(nextMatches)}</div>`;
+    }
+    return `<div class="dashboard-competition-summary"><span class="muted">Nessuna prossima giornata programmata.</span></div>`;
+  }
+
+  const nextMatch = getFirstUpcomingMatchV87(competition);
+  if (nextMatch) {
+    const label = `Prossima partita${formatMatchStage(nextMatch) ? ` · ${formatMatchStage(nextMatch)}` : ""}`;
+    return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderCompactSingleMatchLineV87(nextMatch)}</div>`;
+  }
+
+  return `<div class="dashboard-competition-summary"><span class="muted">Nessuna prossima partita programmata.</span></div>`;
+};
+
+
 /* V115 - Admin: categorie rese vere sottosezioni, distinte dalle funzionalità. */
 renderAdminCategoryV114 = function renderAdminCategoryV115(title, subtitle, content) {
   if (!content || !String(content).trim()) return "";

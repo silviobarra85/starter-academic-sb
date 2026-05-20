@@ -13133,3 +13133,61 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
     white-space: nowrap !important;
   }
 }
+
+/* V136 - Dashboard upcoming matches: date and Serie A matchday. */
+.app-page[data-page="dashboard"] #dashboardStandings .dashboard-next-match-line-v136 {
+  align-items: center;
+  gap: 10px;
+}
+
+.app-page[data-page="dashboard"] #dashboardStandings .dashboard-match-teams {
+  min-width: 0;
+}
+
+.app-page[data-page="dashboard"] #dashboardStandings .dashboard-match-meta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-left: auto;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.app-page[data-page="dashboard"] #dashboardStandings .dashboard-match-date,
+.app-page[data-page="dashboard"] #dashboardStandings .dashboard-match-serie-a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border: 1px solid rgba(46, 160, 110, 0.24);
+  border-radius: 999px;
+  background: rgba(46, 160, 110, 0.08);
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.app-page[data-page="dashboard"] #dashboardStandings .dashboard-match-serie-a {
+  border-color: rgba(79, 124, 255, 0.24);
+  background: rgba(79, 124, 255, 0.08);
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page[data-page="dashboard"] #dashboardStandings .dashboard-next-match-line-v136,
+  body.is-mobile-ux .app-page[data-page="dashboard"] #dashboardStandings .dashboard-next-match-line-v136 {
+    min-width: 620px !important;
+  }
+
+  .app-page[data-page="dashboard"] #dashboardStandings .dashboard-next-match-line-v136 > .dashboard-match-teams,
+  body.is-mobile-ux .app-page[data-page="dashboard"] #dashboardStandings .dashboard-next-match-line-v136 > .dashboard-match-teams {
+    min-width: 360px !important;
+  }
+
+  .app-page[data-page="dashboard"] #dashboardStandings .dashboard-next-match-line-v136 > .dashboard-match-meta,
+  body.is-mobile-ux .app-page[data-page="dashboard"] #dashboardStandings .dashboard-next-match-line-v136 > .dashboard-match-meta {
+    min-width: 220px !important;
+    justify-content: flex-end !important;
+  }
+}
