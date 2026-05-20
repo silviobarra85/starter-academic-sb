@@ -9191,3 +9191,354 @@ attachAdminHandlers = function attachAdminHandlersV106() {
   attachAdminHandlersBeforeV106();
   ensureStaticCompetitionImportAdminPanelV106();
 };
+
+
+/* V108 - Associazione squadre statiche e competizioni custom.
+   - Mostra il nome della competizione quando presente, altrimenti il tipo.
+   - L'importatore statico salva homeSeasonTeamId/awaySeasonTeamId nel JSON.
+   - L'anteprima import mostra una select per associare ogni squadra Excel a una squadra stagionale Firebase.
+   - I JSON vecchi senza ID continuano a funzionare tramite fallback sul nome. */
+function getCompetitionDisplayNameV108(competition) {
+  const explicitName = String(competition?.name || competition?.competitionName || competition?.label || "").trim();
+  if (explicitName) return explicitName;
+  const type = competition?.type || competition?.competitionType || "";
+  return getLabel(COMPETITION_TYPES, type) || type || "Competizione";
+}
+
+function getStaticCompetitionImportSeasonIdV108() {
+  return document.getElementById("adminStaticCompetitionSeasonId")?.value || getCurrentSeasonId();
+}
+
+function getSeasonTeamImportOptionsV108(seasonId) {
+  const { teamsById } = buildMaps();
+  return (state.raw.seasonTeams || [])
+    .filter((seasonTeam) => seasonTeam.seasonId === seasonId)
+    .map((seasonTeam) => {
+      const team = teamsById.get(seasonTeam.teamId);
+      return {
+        id: seasonTeam.id,
+        name: getSeasonTeamDisplayName(seasonTeam.id) || seasonTeam.name || team?.name || seasonTeam.id
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name, "it", { numeric: true, sensitivity: "base" }));
+}
+
+function renderSeasonTeamSelectV108(field, selectedId, teamName) {
+  const seasonId = getStaticCompetitionImportSeasonIdV108();
+  const resolvedId = selectedId || resolveStaticSeasonTeamIdV101(seasonId, teamName || "", "");
+  const options = getSeasonTeamImportOptionsV108(seasonId);
+  return `
+    <select class="input static-team-select" data-field="${escapeHtml(field)}" aria-label="Associazione squadra stagionale">
+      <option value="">Solo nome Excel</option>
+      ${options.map((option) => `
+        <option value="${escapeHtml(option.id)}" data-team-name="${escapeHtml(option.name)}" ${option.id === resolvedId ? "selected" : ""}>${escapeHtml(option.name)}</option>
+      `).join("")}
+    </select>`;
+}
+
+renderStaticCompetitionImportPreviewV105 = function renderStaticCompetitionImportPreviewV108() {
+  const report = document.getElementById("adminStaticCompetitionImportReport");
+  const generateButton = document.getElementById("adminStaticCompetitionGenerateOverlay");
+  const draft = state.staticCompetitionImportDraftV105;
+  if (!report) return;
+
+  if (!draft || !draft.matches?.length) {
+    report.classList.add("hidden");
+    if (generateButton) generateButton.disabled = true;
+    return;
+  }
+
+  report.classList.remove("hidden");
+  if (generateButton) generateButton.disabled = false;
+  report.innerHTML = `
+    <h3>Anteprima modificabile</h3>
+    <p>Partite lette: <strong>${draft.matches.length}</strong>. Correggi i campi nella tabella prima di generare lo zip overlay.</p>
+    <p class="field-hint">Associa Casa/Trasferta alle squadre stagionali: il JSON salverà anche <code>homeSeasonTeamId</code> e <code>awaySeasonTeamId</code>. Se lasci “Solo nome Excel”, il sito userà il nome come fallback.</p>
+    <div class="table-wrap static-competition-preview-wrap">
+      <table class="static-competition-preview-table">
+        <thead>
+          <tr>
+            <th>Fase</th>
+            <th>And./Rit.</th>
+            <th>G. lega</th>
+            <th>G. Serie A</th>
+            <th>Data</th>
+            <th>Casa</th>
+            <th>ID casa</th>
+            <th>FP casa</th>
+            <th>FP trasf.</th>
+            <th>Trasferta</th>
+            <th>ID trasf.</th>
+            <th>Ris.</th>
+            <th>Stato</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${draft.matches.map((match, index) => `
+            <tr data-static-competition-preview-row="${index}">
+              <td><input class="input" data-field="stage" value="${escapeHtml(match.stage || "")}" /></td>
+              <td><input class="input" data-field="leg" value="${escapeHtml(match.leg || "")}" /></td>
+              <td><input class="input" data-field="leagueMatchday" type="number" min="0" step="1" value="${escapeHtml(match.leagueMatchday || "")}" /></td>
+              <td><input class="input" data-field="serieAMatchday" type="number" min="0" step="1" value="${escapeHtml(match.serieAMatchday || "")}" /></td>
+              <td><input class="input" data-field="matchDate" type="date" value="${escapeHtml(match.matchDate || "")}" /></td>
+              <td><input class="input" data-field="homeTeamName" value="${escapeHtml(match.homeTeamName || "")}" /></td>
+              <td>${renderSeasonTeamSelectV108("homeSeasonTeamId", match.homeSeasonTeamId || "", match.homeTeamName || "")}</td>
+              <td><input class="input" data-field="homeScore" type="number" step="0.5" value="${escapeHtml(match.homeScore ?? "")}" /></td>
+              <td><input class="input" data-field="awayScore" type="number" step="0.5" value="${escapeHtml(match.awayScore ?? "")}" /></td>
+              <td><input class="input" data-field="awayTeamName" value="${escapeHtml(match.awayTeamName || "")}" /></td>
+              <td>${renderSeasonTeamSelectV108("awaySeasonTeamId", match.awaySeasonTeamId || "", match.awayTeamName || "")}</td>
+              <td><input class="input" data-field="score" value="${escapeHtml(formatEditableScoreV105(match))}" placeholder="0-0" /></td>
+              <td>
+                <select class="input" data-field="status">
+                  <option value="GIOCATA" ${match.status === "GIOCATA" ? "selected" : ""}>Giocata</option>
+                  <option value="DA_GIOCARE" ${match.status !== "GIOCATA" ? "selected" : ""}>Da giocare</option>
+                </select>
+              </td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+    <small class="field-hint">Lo zip includerà il JSON della competizione e il manifest completo già aggiornato.</small>
+  `;
+};
+
+function syncStaticCompetitionTeamNameFromSelectV108(select) {
+  if (!select || !select.matches?.("select.static-team-select")) return;
+  const row = select.closest("[data-static-competition-preview-row]");
+  if (!row) return;
+  const option = select.selectedOptions?.[0];
+  const teamName = option?.dataset?.teamName || "";
+  if (!teamName) return;
+  const field = select.dataset.field === "homeSeasonTeamId" ? "homeTeamName" : "awayTeamName";
+  const input = row.querySelector(`[data-field="${field}"]`);
+  if (input) input.value = teamName;
+}
+
+collectStaticCompetitionPreviewRowsV105 = function collectStaticCompetitionPreviewRowsV108() {
+  return Array.from(document.querySelectorAll("[data-static-competition-preview-row]")).map((row, index) => {
+    const getValue = (field) => row.querySelector(`[data-field="${field}"]`)?.value || "";
+    const goals = parseGoalsFromScoreV105(getValue("score"));
+    const stage = getValue("stage").trim().toUpperCase();
+    const leg = getValue("leg").trim().toUpperCase();
+    const stageInfo = normalizeCompetitionStageLabelV105(stage);
+    const homeTeamName = getValue("homeTeamName").trim();
+    const awayTeamName = getValue("awayTeamName").trim();
+    const seasonId = getStaticCompetitionImportSeasonIdV108();
+    return {
+      rowIndex: index + 1,
+      stage,
+      leg,
+      matchday: getMatchdayLabelFromStageV105(stageInfo, leg || "ANDATA"),
+      leagueMatchday: parseNumberV105(getValue("leagueMatchday")),
+      serieAMatchday: parseNumberV105(getValue("serieAMatchday")),
+      matchDate: getValue("matchDate"),
+      homeTeamName,
+      awayTeamName,
+      homeSeasonTeamId: getValue("homeSeasonTeamId") || resolveStaticSeasonTeamIdV101(seasonId, homeTeamName, ""),
+      awaySeasonTeamId: getValue("awaySeasonTeamId") || resolveStaticSeasonTeamIdV101(seasonId, awayTeamName, ""),
+      homeScore: parseNumberV105(getValue("homeScore")),
+      awayScore: parseNumberV105(getValue("awayScore")),
+      homeGoals: goals.homeGoals,
+      awayGoals: goals.awayGoals,
+      status: getValue("status") || "DA_GIOCARE"
+    };
+  }).filter((match) => match.homeTeamName && match.awayTeamName);
+};
+
+buildStaticCompetitionPayloadV105 = function buildStaticCompetitionPayloadV108(matches) {
+  const seasonId = document.getElementById("adminStaticCompetitionSeasonId")?.value || getCurrentSeasonId();
+  const competitionName = document.getElementById("adminStaticCompetitionName")?.value?.trim() || "Competizione";
+  const competitionSlug = (document.getElementById("adminStaticCompetitionSlug")?.value || makeIdPart(competitionName).replace(/_/g, "-")).trim();
+  const competitionType = document.getElementById("adminStaticCompetitionType")?.value || "ALTRO";
+  const status = document.getElementById("adminStaticCompetitionStatus")?.value || "CONCLUSA";
+  const loadedAt = document.getElementById("adminStaticCompetitionLoadedAt")?.value || getTodayIsoDate();
+  const sourceFile = state.staticCompetitionImportDraftV105?.sourceFile || document.getElementById("adminStaticCompetitionFile")?.files?.[0]?.name || "calendario.xlsx";
+  const staticId = `${seasonId}-${competitionSlug}`;
+  const competitionId = `${makeIdPart(seasonId)}_${competitionSlug}`;
+  const file = `${seasonId}/${competitionSlug}-${seasonId}.json`;
+  const label = `${competitionName} ${seasonId.replace("-", "/")}`;
+
+  const normalizedMatches = matches.map((match, index) => {
+    const homeSeasonTeamId = match.homeSeasonTeamId || resolveStaticSeasonTeamIdV101(seasonId, match.homeTeamName || "", "");
+    const awaySeasonTeamId = match.awaySeasonTeamId || resolveStaticSeasonTeamIdV101(seasonId, match.awayTeamName || "", "");
+    return {
+      id: `${competitionId}_${makeIdPart(match.matchday || match.stage || "fase")}_${index + 1}`,
+      competitionId,
+      seasonId,
+      stage: match.stage || "",
+      leg: match.leg || "",
+      matchday: match.matchday || "",
+      leagueMatchday: match.leagueMatchday === "" ? "" : Number(match.leagueMatchday),
+      serieAMatchday: match.serieAMatchday === "" ? "" : Number(match.serieAMatchday),
+      matchDate: match.matchDate || "",
+      homeTeamName: match.homeTeamName || "",
+      awayTeamName: match.awayTeamName || "",
+      homeSeasonTeamId,
+      awaySeasonTeamId,
+      homeGoals: match.homeGoals === "" ? "" : Number(match.homeGoals),
+      awayGoals: match.awayGoals === "" ? "" : Number(match.awayGoals),
+      homeScore: match.homeScore === "" ? "" : Number(match.homeScore),
+      awayScore: match.awayScore === "" ? "" : Number(match.awayScore),
+      status: match.status || "DA_GIOCARE",
+      source: "static-competition-calendar"
+    };
+  });
+
+  const winnerInput = document.getElementById("adminStaticCompetitionWinner")?.value?.trim() || "";
+  const runnerUpInput = document.getElementById("adminStaticCompetitionRunnerUp")?.value?.trim() || "";
+  const inferred = inferCompetitionPodiumV105(normalizedMatches);
+  const winner = winnerInput || inferred.winner;
+  const runnerUp = runnerUpInput || inferred.runnerUp;
+  const results = [];
+  if (winner) {
+    results.push({
+      id: `${competitionId}_winner`,
+      competitionId,
+      seasonId,
+      position: 1,
+      seasonTeamId: resolveStaticSeasonTeamIdV101(seasonId, winner, ""),
+      teamName: winner,
+      source: "static-competition-calendar"
+    });
+  }
+  if (runnerUp) {
+    results.push({
+      id: `${competitionId}_runner_up`,
+      competitionId,
+      seasonId,
+      position: 2,
+      seasonTeamId: resolveStaticSeasonTeamIdV101(seasonId, runnerUp, ""),
+      teamName: runnerUp,
+      source: "static-competition-calendar"
+    });
+  }
+
+  const payload = {
+    meta: {
+      id: staticId,
+      seasonId,
+      competitionId,
+      competitionName,
+      competitionSlug,
+      competitionType,
+      label,
+      sourceFile,
+      loadedAt,
+      version: 2,
+      schema: "zonaorientale-static-competition-calendar-v2"
+    },
+    competition: {
+      id: competitionId,
+      seasonId,
+      name: competitionName,
+      type: competitionType,
+      format: competitionType === "CAMPIONATO" ? "CLASSIFICA" : "GIRONI_KO",
+      status,
+      notes: "Calendario importato da file Excel statico.",
+      source: "static-competition-calendar"
+    },
+    matches: normalizedMatches,
+    results
+  };
+
+  const manifestEntry = {
+    id: staticId,
+    seasonId,
+    competitionId,
+    competitionName,
+    competitionSlug,
+    competitionType,
+    label,
+    loadedAt,
+    sourceFile,
+    file,
+    matches: normalizedMatches.length,
+    playedMatches: normalizedMatches.filter((match) => match.status === "GIOCATA").length,
+    status
+  };
+
+  return { payload, manifestEntry, file, staticId, competitionSlug, seasonId };
+};
+
+const renderCompetitionsPublicBeforeV108 = renderCompetitionsPublic;
+renderCompetitionsPublic = function renderCompetitionsPublicV108() {
+  const list = document.getElementById("competitionsList");
+  if (!list) return;
+
+  const seasonId = getCurrentSeasonId();
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+
+  if (!competitions.length) {
+    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || "la stagione selezionata")}.</p>`;
+    return;
+  }
+
+  list.innerHTML = competitions.map((competition) => `
+    <article class="competition-card${hasStaticCompetitionSourceV102(competition) ? " competition-card-static-source" : " competition-card-firebase-source"}">
+      <div class="competition-card-header">
+        <div>
+          <h3>${escapeHtml(getCompetitionDisplayNameV108(competition))} ${renderCompetitionSourceBadgeV103(competition)}</h3>
+        </div>
+        <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
+      </div>
+      ${renderStaticCompetitionSourceLineV102(competition)}
+      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
+      ${renderCompetitionResultsPublic(competition)}
+      ${renderCompetitionMatchesPublic(competition)}
+    </article>
+  `).join("");
+};
+
+renderDashboard = function renderDashboardV108() {
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+  const stats = typeof getSeasonFmStats === "function" ? getSeasonFmStats(seasonId) : null;
+
+  const metricClubs = document.getElementById("metricClubs");
+  const metricTotalFm = document.getElementById("metricTotalFm");
+  const metricAlerts = document.getElementById("metricAlerts");
+
+  if (metricClubs) metricClubs.textContent = String(seasonTeams.length || getParticipantsCount(seasonId) || 0);
+  if (metricTotalFm) metricTotalFm.textContent = stats ? `${formatFm(stats.total)} (medio ${formatFm(stats.average)})` : "- (medio -)";
+  if (metricAlerts) metricAlerts.textContent = String(competitions.filter((competition) => competition.status === "ATTIVA").length);
+
+  const standings = document.getElementById("dashboardStandings");
+  if (standings) {
+    standings.innerHTML = competitions.length
+      ? competitions.map((competition) => `
+        <details class="stack-item dashboard-subsection dashboard-competition-subsection" open>
+          <summary>
+            <span>
+              <strong>${escapeHtml(getCompetitionDisplayNameV108(competition))}</strong>
+              <small class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</small>
+              ${renderCompetitionSourceBadgeV103(competition)}
+            </span>
+            <span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Ingrandisci/Riduci</span>
+          </summary>
+          ${renderDashboardCompetitionSummary(competition)}
+        </details>`).join("")
+      : `<p class="muted">Nessuna competizione inserita per questa stagione.</p>`;
+  }
+
+  renderDashboardCalendar(seasonId);
+  renderDashboardNewsV42();
+  if (typeof normalizeToggleLabelsV29 === "function") normalizeToggleLabelsV29();
+};
+
+const attachAdminHandlersBeforeV108 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV108() {
+  attachAdminHandlersBeforeV108();
+  const report = document.getElementById("adminStaticCompetitionImportReport");
+  if (report && report.dataset.teamSelectSyncV108 !== "1") {
+    report.dataset.teamSelectSyncV108 = "1";
+    report.addEventListener("change", (event) => {
+      if (event.target?.matches?.("select.static-team-select")) {
+        syncStaticCompetitionTeamNameFromSelectV108(event.target);
+      }
+    });
+  }
+  document.getElementById("adminStaticCompetitionSeasonId")?.addEventListener("change", () => {
+    if (state.staticCompetitionImportDraftV105?.matches?.length) renderStaticCompetitionImportPreviewV105();
+  });
+};
