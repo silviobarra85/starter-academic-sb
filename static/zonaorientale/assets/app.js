@@ -12486,3 +12486,166 @@ rejectPendingUserV34 = async function rejectPendingUserV138(uid) {
     setError?.(`Non riesco a eliminare la richiesta utente. ${error?.message || error}`);
   }
 };
+
+/* V140 - Mobile Home a blocchi. Desktop invariato: il rendering e visibile solo via CSS mobile. */
+function getMobileHomeActiveListingsCountV140(seasonId) {
+  if (typeof getActiveTransferListingsV119 === "function") return getActiveTransferListingsV119(seasonId).length;
+  return (state.raw?.transferListings || []).filter((listing) => (
+    (!seasonId || listing.seasonId === seasonId)
+    && String(listing.status || "ACTIVE").toUpperCase() === "ACTIVE"
+  )).length;
+}
+
+function getMobileHomePendingNegotiationsCountV140() {
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  return (state.raw?.transferNegotiations || []).filter((item) => {
+    if (String(item.status || "").toUpperCase() !== "PENDING") return false;
+    if (!currentTeamId) return state.isAdmin;
+    return item.fromSeasonTeamId === currentTeamId || item.toSeasonTeamId === currentTeamId;
+  }).length;
+}
+
+function getMobileHomeNextMatchV140(seasonId) {
+  const competitions = typeof getSeasonCompetitionsForPublicDisplayV52 === "function"
+    ? getSeasonCompetitionsForPublicDisplayV52(seasonId)
+    : (state.raw?.competitions || []).filter((competition) => competition.seasonId === seasonId);
+
+  for (const competition of competitions) {
+    const matches = (typeof isRankingCompetition === "function" && isRankingCompetition(competition))
+      ? (typeof getNextChampionshipMatches === "function" ? getNextChampionshipMatches(competition) : [])
+      : (typeof getCupScheduleMatches === "function" ? getCupScheduleMatches(competition) : []);
+    if (matches?.length) {
+      const sorted = typeof sortMatchesForDisplay === "function" ? sortMatchesForDisplay(matches) : matches;
+      return { competition, match: sorted[sorted.length - 1] || sorted[0] };
+    }
+  }
+  return { competition: null, match: null };
+}
+
+function getMobileHomeMatchTextV140(match) {
+  if (!match) return "Nessuna partita programmata";
+  const home = getSeasonTeamDisplayName(match.homeSeasonTeamId) || match.homeTeamName || "Casa";
+  const away = getSeasonTeamDisplayName(match.awaySeasonTeamId) || match.awayTeamName || "Trasferta";
+  return `${home} - ${away}`;
+}
+
+function getMobileHomeMatchMetaV140(match) {
+  if (!match) return "";
+  const date = typeof formatDashboardMatchDateLabelV136 === "function" ? formatDashboardMatchDateLabelV136(match) : (match.matchDate || match.date || "");
+  const serieA = typeof formatDashboardSerieALabelV136 === "function" ? formatDashboardSerieALabelV136(match) : "";
+  return [date, serieA].filter(Boolean).join(" · ");
+}
+
+function getMobileHomeLatestNewsV140() {
+  if (typeof getVisibleNewsForSeasonV79 === "function") return getVisibleNewsForSeasonV79(1)[0] || null;
+  const seasonId = getCurrentSeasonId();
+  return (state.raw?.news || []).filter((item) => !item.seasonId || item.seasonId === seasonId)[0] || null;
+}
+
+function renderMobileHomeActionV140(label, page, extraClass = "") {
+  return `<button class="button button-secondary button-small mobile-home-action ${escapeHtml(extraClass)}" type="button" data-v42-page-link="${escapeHtml(page)}">${escapeHtml(label)}</button>`;
+}
+
+function renderMobileHomeCardV140({ icon, kicker, title, description, value, primary = false, actions = [] }) {
+  return `
+    <article class="mobile-home-card ${primary ? "is-primary" : ""}">
+      <span class="mobile-home-icon" aria-hidden="true">${icon}</span>
+      <div class="mobile-home-content">
+        <span class="mobile-home-kicker">${escapeHtml(kicker)}</span>
+        <h3>${escapeHtml(title)}</h3>
+        ${value ? `<strong class="mobile-home-value">${escapeHtml(value)}</strong>` : ""}
+        <p>${escapeHtml(description)}</p>
+      </div>
+      ${actions.length ? `<div class="mobile-home-action-row">${actions.join("")}</div>` : ""}
+    </article>`;
+}
+
+function renderMobileBlockDashboardV140() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target) return;
+
+  const seasonId = getCurrentSeasonId();
+  const activeCompetitions = (typeof getSeasonCompetitionsForPublicDisplayV52 === "function" ? getSeasonCompetitionsForPublicDisplayV52(seasonId) : [])
+    .filter((competition) => String(competition.status || "").toUpperCase() === "ATTIVA");
+  const { competition: nextCompetition, match: nextMatch } = getMobileHomeNextMatchV140(seasonId);
+  const latestNews = getMobileHomeLatestNewsV140();
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  const currentTeamName = currentTeamId ? getSeasonTeamDisplayName(currentTeamId) : "Accedi come presidente";
+  const rosterCount = currentTeamId && typeof getRosterCountV119 === "function" ? getRosterCountV119(currentTeamId) : 0;
+  const fmBalance = currentTeamId && typeof getTeamFmBalance === "function" ? getTeamFmBalance(currentTeamId) : null;
+  const alerts = document.getElementById("metricAlerts")?.textContent?.trim() || "0";
+  const alertReason = document.getElementById("metricAlertsReason")?.textContent?.trim() || "Nessun alert.";
+  const listingsCount = getMobileHomeActiveListingsCountV140(seasonId);
+  const negotiationsCount = getMobileHomePendingNegotiationsCountV140();
+  const matchMeta = getMobileHomeMatchMetaV140(nextMatch);
+  const matchValue = nextCompetition
+    ? `${getCompetitionPublicDisplayNameV110?.(nextCompetition) || getCompetitionDisplayNameV111?.(nextCompetition) || nextCompetition.name || "Competizione"}${matchMeta ? ` · ${matchMeta}` : ""}`
+    : "Calendario aggiornato";
+
+  target.innerHTML = [
+    renderMobileHomeCardV140({
+      icon: "⚠️",
+      kicker: "Alert",
+      title: `${alerts} da controllare`,
+      value: alertReason.replace(/^Motivo:\s*/i, ""),
+      description: "Stato rapido della stagione e delle competizioni attive.",
+      primary: Number(alerts) > 0,
+      actions: [renderMobileHomeActionV140("Vai alla dashboard", "dashboard")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🏆",
+      kicker: "Competizioni",
+      title: "Prossime partite",
+      value: getMobileHomeMatchTextV140(nextMatch),
+      description: activeCompetitions.length ? `${activeCompetitions.length} competizioni attive nella stagione.` : "Consulta calendari, classifiche e risultati.",
+      primary: true,
+      actions: [renderMobileHomeActionV140("Apri competizioni", "competitions")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🔁",
+      kicker: "Fantamercato",
+      title: "Mercato e trattative",
+      value: `${listingsCount} trasferibili · ${negotiationsCount} trattative aperte`,
+      description: "Guarda i giocatori sul mercato e invia una proposta.",
+      actions: [renderMobileHomeActionV140("Vai al mercato", "fantamercato"), renderMobileHomeActionV140("Trattative", "teamarea")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "👥",
+      kicker: "Area squadra",
+      title: currentTeamName,
+      value: currentTeamId ? `${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}` : "Login presidente richiesto",
+      description: currentTeamId ? "Gestisci rosa, comunicati, proposte e giocatori trasferibili." : "Accedi per usare trattative e funzioni presidente.",
+      actions: [renderMobileHomeActionV140(currentTeamId ? "Apri area squadra" : "Accedi", currentTeamId ? "teamarea" : "dashboard")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "📋",
+      kicker: "Listone",
+      title: "Cerca giocatori",
+      value: "Quotazioni, ruoli e stato",
+      description: "Apri il listone per consultare rapidamente i giocatori.",
+      actions: [renderMobileHomeActionV140("Apri listone", "listone")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "📰",
+      kicker: "Comunicati",
+      title: latestNews?.title || "Ultime news",
+      value: latestNews ? (typeof formatNewsDateTimeV79 === "function" ? formatNewsDateTimeV79(getNewsRawDateValueV79(latestNews)) : "") : "Nessun comunicato recente",
+      description: "Leggi comunicati ufficiali e aggiornamenti della lega.",
+      actions: [renderMobileHomeActionV140("Leggi comunicati", "news")]
+    })
+  ].join("");
+}
+
+const renderDashboardBeforeV140 = renderDashboard;
+renderDashboard = function renderDashboardV140() {
+  const result = renderDashboardBeforeV140();
+  renderMobileBlockDashboardV140();
+  return result;
+};
+
+const loadTransferMarketCollectionsBeforeV140 = loadTransferMarketCollectionsV119;
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV140() {
+  const result = await loadTransferMarketCollectionsBeforeV140();
+  renderMobileBlockDashboardV140();
+  return result;
+};
