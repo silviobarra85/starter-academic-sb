@@ -93,6 +93,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -11820,74 +11821,51 @@ if (loadDataForCurrentAuthBeforeV119) {
   };
 }
 
-function getApprovedSeasonTeamIdV119() {
-  return getApprovedTeamUser?.()?.seasonTeamId || "";
-}
+const transferMarketHelpersV128 = createTransferMarketHelpersV128({
+  state,
+  escapeHtml,
+  normalizeKey,
+  normalizePlayerName,
+  formatFm,
+  parseDecimalValue,
+  getApprovedTeamUser: () => getApprovedTeamUser?.(),
+  getCurrentSeasonId,
+  getSeasonTeamsForSeason,
+  getSeasonTeamById,
+  getRosterForSeasonTeam,
+  getSeasonTeamDisplayName,
+  getTeamFmBalance,
+  sortRosterPlayersForDisplay
+});
 
-function getApprovedPresidentIdV119() {
-  return getApprovedTeamUser?.()?.presidentId || "";
-}
-
-function isOwnSeasonTeamV119(seasonTeamId) {
-  return Boolean(seasonTeamId && seasonTeamId === getApprovedSeasonTeamIdV119());
-}
-
-function getActiveSeasonTeamsForTradesV119(seasonId = getCurrentSeasonId()) {
-  const ownId = getApprovedSeasonTeamIdV119();
-  const presidentId = getApprovedPresidentIdV119();
-  return getSeasonTeamsForSeason(seasonId).filter((seasonTeam) => {
-    if (!seasonTeam?.id || seasonTeam.id === ownId) return false;
-    if (seasonTeam.isHistorical || seasonTeam.isActive === false || seasonTeam.status === "NON_ATTIVA") return false;
-    if (presidentId && Array.isArray(seasonTeam.presidentIds) && seasonTeam.presidentIds.includes(presidentId)) return false;
-    return true;
-  });
-}
-
-function getPlayerMarketKeyV119(player) {
-  return [normalizePlayerName(player?.playerName || player?.name || ""), normalizeKey(player?.realTeam || "")].filter(Boolean).join("__");
-}
-
-function getRosterPlayerByKeyV119(seasonTeamId, playerKey) {
-  const roster = getRosterForSeasonTeam(getSeasonTeamById(seasonTeamId));
-  return (roster?.players || []).find((player) => getPlayerMarketKeyV119(player) === playerKey) || null;
-}
-
-function getRosterCountV119(seasonTeamId) {
-  const roster = getRosterForSeasonTeam(getSeasonTeamById(seasonTeamId));
-  return Number(roster?.players?.length || 0);
-}
-
-function getActiveTransferListingsV119(seasonId = getCurrentSeasonId()) {
-  return (state.raw?.transferListings || []).filter((listing) =>
-    listing.seasonId === seasonId && String(listing.status || "ACTIVE").toUpperCase() === "ACTIVE"
-  );
-}
-
-function getListingForPlayerV119(seasonTeamId, player) {
-  const key = getPlayerMarketKeyV119(player);
-  return getActiveTransferListingsV119(player?.seasonId || getCurrentSeasonId()).find((listing) =>
-    listing.seasonTeamId === seasonTeamId && (listing.playerKey === key || normalizePlayerName(listing.playerName) === normalizePlayerName(player?.playerName || ""))
-  ) || null;
-}
-
-function renderTransferBadgeV119(player, seasonTeamId) {
-  const listing = getListingForPlayerV119(seasonTeamId || player?.seasonTeamId, player);
-  if (!listing) return "";
-  if (isOwnSeasonTeamV119(listing.seasonTeamId)) {
-    return `<button class="status status-transfermarket transfer-badge-button" type="button" data-transfer-edit-listing="${escapeHtml(listing.id)}" title="Modifica o togli dal mercato">TRASF</button>`;
-  }
-  return `<span class="status status-transfermarket" title="Giocatore trasferibile">TRASF</span>`;
-}
-
-function renderRosterMarketActionV119(player, seasonTeamId) {
-  if (!isOwnSeasonTeamV119(seasonTeamId)) return "";
-  const listing = getListingForPlayerV119(seasonTeamId, player);
-  const playerKey = getPlayerMarketKeyV119(player);
-  if (listing) {
-    return `<button class="button button-secondary button-small" type="button" data-transfer-edit-listing="${escapeHtml(listing.id)}">Modifica</button>`;
-  }
-  return `<button class="button button-secondary button-small" type="button" data-transfer-list-player="${escapeHtml(playerKey)}" data-season-team-id="${escapeHtml(seasonTeamId)}">Metti in vendita</button>`;
-}
+const {
+  getApprovedSeasonTeamId: getApprovedSeasonTeamIdV119,
+  getApprovedPresidentId: getApprovedPresidentIdV119,
+  isOwnSeasonTeam: isOwnSeasonTeamV119,
+  getActiveSeasonTeamsForTrades: getActiveSeasonTeamsForTradesV119,
+  getPlayerMarketKey: getPlayerMarketKeyV119,
+  getRosterPlayerByKey: getRosterPlayerByKeyV119,
+  getRosterCount: getRosterCountV119,
+  getActiveTransferListings: getActiveTransferListingsV119,
+  getListingForPlayer: getListingForPlayerV119,
+  renderTransferBadge: renderTransferBadgeV119,
+  renderRosterMarketAction: renderRosterMarketActionV119,
+  getTransferListingById: getTransferListingByIdV119,
+  getNegotiationById: getNegotiationByIdV119,
+  serializePlayerRef: serializePlayerRefV119,
+  formatPlayerRefs: formatPlayerRefsV119,
+  renderFmPart: renderFmPartV119,
+  renderNegotiationStatusBadge: renderNegotiationStatusBadgeV119,
+  getNegotiationTitle: getNegotiationTitleV119,
+  renderNegotiationCard: renderNegotiationCardV119,
+  renderNegotiationsList: renderNegotiationsListV119,
+  renderTradePlayerOptions: renderTradePlayerOptionsV119,
+  getSelectedValues: getSelectedValuesV119,
+  getSelectedPlayerRefs: getSelectedPlayerRefsV119,
+  getTradeFormValidation: getTradeFormValidationV119,
+  updateTradeTargetPlayers: updateTradeTargetPlayersV119,
+  validateTradeForm: validateTradeFormV119
+} = transferMarketHelpersV128;
 
 renderRosterPlayerTable = function renderRosterPlayerTableV119(players) {
   if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
@@ -11926,24 +11904,6 @@ renderRosterPlayerTable = function renderRosterPlayerTableV119(players) {
     </div>`;
 };
 
-function getTransferListingByIdV119(id) {
-  return (state.raw?.transferListings || []).find((listing) => listing.id === id) || null;
-}
-
-function getNegotiationByIdV119(id) {
-  return (state.raw?.transferNegotiations || []).find((item) => item.id === id) || null;
-}
-
-function serializePlayerRefV119(player, seasonTeamId) {
-  return {
-    playerKey: getPlayerMarketKeyV119(player),
-    playerName: player?.playerName || "",
-    realTeam: player?.realTeam || "",
-    rosterRole: player?.rosterRole || player?.role || player?.classicRole || "",
-    cost: player?.cost ?? player?.rosterCost ?? "",
-    seasonTeamId
-  };
-}
 
 async function savePlayerTransferListingV119(seasonTeamId, playerKey, conditions) {
   const player = getRosterPlayerByKeyV119(seasonTeamId, playerKey);
@@ -12025,134 +11985,6 @@ function renderTransferMarketPageV119() {
   }).join("") : `<tr><td colspan="7" class="muted center">Nessun giocatore trasferibile per questa stagione.</td></tr>`;
 }
 
-function formatPlayerRefsV119(players) {
-  if (!players?.length) return "-";
-  return players.map((player) => `${player.playerName || "-"}${player.realTeam ? ` (${player.realTeam})` : ""}`).join(", ");
-}
-
-function renderFmPartV119(value) {
-  const amount = Number(value || 0);
-  return amount ? `${formatFm(amount)} FM` : "-";
-}
-
-function renderNegotiationStatusBadgeV119(status) {
-  const normalized = String(status || "PENDING").toUpperCase();
-  const labels = { PENDING: "In attesa", ACCEPTED: "Accettata", REJECTED: "Rifiutata", CANCELLED: "Annullata" };
-  const cls = normalized === "ACCEPTED" ? "status-ok" : normalized === "REJECTED" || normalized === "CANCELLED" ? "status-danger" : "status-warning";
-  return `<span class="status ${cls}">${escapeHtml(labels[normalized] || normalized)}</span>`;
-}
-
-function getNegotiationTitleV119(item, perspectiveTeamId) {
-  const otherId = item.fromSeasonTeamId === perspectiveTeamId ? item.toSeasonTeamId : item.fromSeasonTeamId;
-  const direction = item.fromSeasonTeamId === perspectiveTeamId ? "A" : "Da";
-  return `${direction} ${getSeasonTeamDisplayName(otherId) || "squadra"}`;
-}
-
-function renderNegotiationCardV119(item, kind, currentSeasonTeamId) {
-  const isSent = kind === "sent";
-  const canCancel = isSent && item.status === "PENDING";
-  const canAnswer = !isSent && item.status === "PENDING";
-  return `
-    <details class="trade-card ${isSent ? "trade-card-sent" : "trade-card-received"}">
-      <summary>
-        <span><strong>${escapeHtml(getNegotiationTitleV119(item, currentSeasonTeamId))}</strong><small>${escapeHtml(item.createdAt?.toDate ? item.createdAt.toDate().toLocaleString("it-IT") : item.createdAt || "")}</small></span>
-        ${renderNegotiationStatusBadgeV119(item.status)}
-      </summary>
-      <div class="trade-card-body">
-        <div class="trade-summary-grid">
-          <div><span class="metric-label">Offerti</span><strong>${escapeHtml(formatPlayerRefsV119(item.offeredPlayers || []))}</strong><small>${escapeHtml(renderFmPartV119(item.offeredFm))}</small></div>
-          <div><span class="metric-label">Richiesti</span><strong>${escapeHtml(formatPlayerRefsV119(item.requestedPlayers || []))}</strong><small>${escapeHtml(renderFmPartV119(item.requestedFm))}</small></div>
-        </div>
-        ${item.note ? `<p class="trade-note">${escapeHtml(item.note)}</p>` : ""}
-        <div class="form-actions trade-actions">
-          ${canCancel ? `<button class="button button-danger button-small" type="button" data-trade-cancel="${escapeHtml(item.id)}">Annulla proposta</button>` : ""}
-          ${canAnswer ? `<button class="button button-primary button-small" type="button" data-trade-accept="${escapeHtml(item.id)}">Accetta</button><button class="button button-danger button-small" type="button" data-trade-reject="${escapeHtml(item.id)}">Rifiuta</button>` : ""}
-        </div>
-      </div>
-    </details>`;
-}
-
-function renderNegotiationsListV119(currentSeasonTeamId, kind) {
-  const seasonId = getCurrentSeasonId();
-  const sent = kind === "sent";
-  const items = (state.raw?.transferNegotiations || [])
-    .filter((item) => item.seasonId === seasonId)
-    .filter((item) => sent ? item.fromSeasonTeamId === currentSeasonTeamId : item.toSeasonTeamId === currentSeasonTeamId)
-    .sort((a, b) => String(b.createdAt?.seconds || b.createdAt || "").localeCompare(String(a.createdAt?.seconds || a.createdAt || ""), "it"));
-  if (!items.length) return `<p class="muted">Nessuna trattativa ${sent ? "inviata" : "ricevuta"}.</p>`;
-  return items.map((item) => renderNegotiationCardV119(item, kind, currentSeasonTeamId)).join("");
-}
-
-function renderTradePlayerOptionsV119(seasonTeamId, selectedKeys = []) {
-  const selected = new Set(selectedKeys || []);
-  const roster = getRosterForSeasonTeam(getSeasonTeamById(seasonTeamId));
-  return sortRosterPlayersForDisplay(roster?.players || []).map((player) => {
-    const key = getPlayerMarketKeyV119(player);
-    return `<option value="${escapeHtml(key)}" ${selected.has(key) ? "selected" : ""}>${escapeHtml(player.playerName || "-")} · ${escapeHtml(player.realTeam || "-")}</option>`;
-  }).join("");
-}
-
-function getSelectedValuesV119(id) {
-  const node = document.getElementById(id);
-  return node ? Array.from(node.selectedOptions || []).map((option) => option.value).filter(Boolean) : [];
-}
-
-function getSelectedPlayerRefsV119(seasonTeamId, keys) {
-  return (keys || []).map((key) => {
-    const player = getRosterPlayerByKeyV119(seasonTeamId, key);
-    return player ? serializePlayerRefV119(player, seasonTeamId) : null;
-  }).filter(Boolean);
-}
-
-function getTradeFormValidationV119() {
-  const approved = getApprovedTeamUser?.();
-  const fromTeamId = approved?.seasonTeamId || "";
-  const toTeamId = document.getElementById("tradeTargetTeam")?.value || "";
-  const offeredKeys = getSelectedValuesV119("tradeOfferedPlayers");
-  const requestedKeys = getSelectedValuesV119("tradeRequestedPlayers");
-  const offeredFm = parseDecimalValue(document.getElementById("tradeOfferedFm")?.value || "") || 0;
-  const requestedFm = parseDecimalValue(document.getElementById("tradeRequestedFm")?.value || "") || 0;
-  const messages = [];
-
-  if (!approved) messages.push("Account presidente non attivo.");
-  if (!toTeamId) messages.push("Seleziona la squadra con cui vuoi trattare.");
-  if (!offeredKeys.length && !requestedKeys.length && !offeredFm && !requestedFm) messages.push("Inserisci almeno un giocatore o un rimborso FM nella proposta.");
-  if (!requestedKeys.length && !requestedFm) messages.push("Inserisci almeno cosa stai chiedendo alla squadra destinataria.");
-  if (offeredFm < 0 || requestedFm < 0) messages.push("I rimborsi FM devono essere positivi.");
-
-  const fromBalance = getTeamFmBalance(fromTeamId);
-  const toBalance = getTeamFmBalance(toTeamId);
-  if (offeredFm > fromBalance) messages.push(`Non puoi offrire ${formatFm(offeredFm)} FM: saldo disponibile ${formatFm(fromBalance)}.`);
-  if (requestedFm > toBalance) messages.push(`La squadra destinataria non ha ${formatFm(requestedFm)} FM disponibili.`);
-
-  const fromAfter = getRosterCountV119(fromTeamId) - offeredKeys.length + requestedKeys.length;
-  const toAfter = getRosterCountV119(toTeamId) - requestedKeys.length + offeredKeys.length;
-  if (fromAfter > 30) messages.push(`La tua rosa arriverebbe a ${fromAfter} giocatori: massimo 30.`);
-  if (toAfter > 30) messages.push(`La rosa destinataria arriverebbe a ${toAfter} giocatori: massimo 30.`);
-
-  return { valid: messages.length === 0, messages, fromTeamId, toTeamId, offeredKeys, requestedKeys, offeredFm, requestedFm };
-}
-
-function updateTradeTargetPlayersV119() {
-  const targetSelect = document.getElementById("tradeTargetTeam");
-  const requestedSelect = document.getElementById("tradeRequestedPlayers");
-  if (!targetSelect || !requestedSelect) return;
-  const selected = getSelectedValuesV119("tradeRequestedPlayers");
-  requestedSelect.innerHTML = renderTradePlayerOptionsV119(targetSelect.value, selected);
-}
-
-function validateTradeFormV119() {
-  const status = document.getElementById("tradeValidationStatus");
-  const button = document.getElementById("tradeSubmitButton");
-  const validation = getTradeFormValidationV119();
-  if (status) {
-    status.innerHTML = validation.messages.length
-      ? validation.messages.map((message) => `<span class="trade-alert">${escapeHtml(message)}</span>`).join("")
-      : `<span class="trade-alert trade-alert-ok">Proposta valida. Puoi inviarla.</span>`;
-  }
-  if (button) button.disabled = !validation.valid;
-  return validation;
-}
 
 function renderUserAreaApprovedV119(approved) {
   const seasonTeamName = getSeasonTeamDisplayName(approved.seasonTeamId) || approved.teamName || "Squadra";
