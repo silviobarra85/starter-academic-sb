@@ -3,7 +3,7 @@
 Documento da consegnare a un nuovo assistente prima di lavorare sul progetto.
 
 Ultimo aggiornamento: 2026-05-20
-Branch di lavoro consigliato: `refactor/zonaorientale-moduli`
+Branch di lavoro consigliato: `feature/zonaorientale-competizioni-statiche`
 Cartella progetto dentro repo Hugo/Wowchemy: `static/zonaorientale/`
 Sito pubblico: `https://www.silviobarra.com/zonaorientale/`
 
@@ -638,3 +638,13 @@ Modifiche importanti introdotte fino a V114 sul branch `feature/zonaorientale-co
 - In mobile non mostrare badge fonte `JSON statico` / `Firebase` nella pagina Competizioni, per leggibilita.
 - Nei risultati pubblici il punteggio deve essere in grassetto e i fantapunti tra parentesi, ad esempio: `2-1 · (72,5-68)`.
 - Per utenti che sono sia admin sia presidenti: attualmente l'app privilegia il ruolo admin. Una vera scelta ruolo al login richiede una modifica dedicata dello stato UI e dei permessi; non e stata implementata in V114.
+
+
+---
+
+## 16. Stato V115 - Admin a sottosezioni
+
+- L'Admin deve mostrare vere sottosezioni visivamente distinte dai singoli pannelli funzionali.
+- Le sottosezioni attuali sono: Utenti e comunicazioni, Stagioni e club, Rose e mercato, Competizioni, Snapshot e backup.
+- Ogni sottosezione usa un contenitore `admin-category-section` con titolo, descrizione e pannelli funzionali interni.
+- Evitare di rendere il titolo della sottosezione uguale ai pannelli, perche l'utente ha segnalato che la gerarchia non era chiara.

@@ -10725,3 +10725,21 @@ renderDashboardCalendar = function renderDashboardCalendarV114(seasonId) {
     </details>`).join("");
 };
 
+
+
+/* V115 - Admin: categorie rese vere sottosezioni, distinte dalle funzionalità. */
+renderAdminCategoryV114 = function renderAdminCategoryV115(title, subtitle, content) {
+  if (!content || !String(content).trim()) return "";
+  const sectionId = `admin-category-${makeIdPart(title || "sezione")}`;
+  return `
+    <section id="${escapeHtml(sectionId)}" class="admin-category admin-category-section" aria-labelledby="${escapeHtml(sectionId)}-title">
+      <header class="admin-category-heading">
+        <div class="admin-category-heading-main">
+          <span class="admin-category-kicker">Sottosezione Admin</span>
+          <h2 id="${escapeHtml(sectionId)}-title">${escapeHtml(title)}</h2>
+          ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ""}
+        </div>
+      </header>
+      <div class="admin-category-body" role="list">${content}</div>
+    </section>`;
+};

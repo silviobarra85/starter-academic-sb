@@ -12909,3 +12909,111 @@ body.is-mobile-ux .competition-card .static-source-line,
 body.is-mobile-ux .competition-card .competition-source-line {
   display: none !important;
 }
+
+
+/* V115 - Admin: le categorie sono sottosezioni vere e distinte dai pannelli funzionali. */
+.admin-category-section {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  margin: 0 0 24px;
+  padding: 18px;
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  border-radius: 26px;
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(59, 130, 246, 0.035)),
+    rgba(15, 23, 42, 0.30);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.admin-category-section::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  bottom: 18px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--primary), rgba(34, 197, 94, 0.15));
+}
+
+.admin-category-section > .admin-category-heading {
+  display: block;
+  padding: 0 0 0 18px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.admin-category-heading-main {
+  display: grid;
+  gap: 4px;
+}
+
+.admin-category-kicker {
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.admin-category-section > .admin-category-heading h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: -0.025em;
+}
+
+.admin-category-section > .admin-category-heading p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 920px;
+}
+
+.admin-category-section > .admin-category-body {
+  display: grid;
+  gap: 14px;
+  padding-left: 18px;
+}
+
+.admin-category-section > .admin-category-body > .panel,
+.admin-category-section > .admin-category-body > article.panel {
+  margin-bottom: 0;
+  background: rgba(17, 24, 39, 0.82);
+}
+
+html[data-theme="light"] .admin-category-section {
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.10), rgba(59, 130, 246, 0.045)),
+    rgba(255, 255, 255, 0.82);
+  border-color: rgba(22, 163, 74, 0.25);
+}
+
+html[data-theme="light"] .admin-category-section > .admin-category-body > .panel,
+html[data-theme="light"] .admin-category-section > .admin-category-body > article.panel {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .admin-category-section {
+    padding: 14px;
+    border-radius: 20px;
+    gap: 10px;
+  }
+
+  .admin-category-section::before {
+    left: 14px;
+    top: 14px;
+    bottom: 14px;
+  }
+
+  .admin-category-section > .admin-category-heading,
+  .admin-category-section > .admin-category-body {
+    padding-left: 14px;
+  }
+
+  .admin-category-section > .admin-category-heading h2 {
+    font-size: 1.12rem;
+  }
+}
