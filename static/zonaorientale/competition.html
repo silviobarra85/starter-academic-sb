@@ -37,6 +37,7 @@
     const params = new URLSearchParams(window.location.search);
     const requestedSeasonId = params.get("seasonId") || "";
     const requestedCompetitionId = params.get("competitionId") || "";
+    let currentCompetitionPayload = null;
     const requestedStaticCalendarId = params.get("staticCalendarId") || "";
     const requestedSlug = params.get("slug") || "";
 
@@ -101,6 +102,7 @@
       const entry = findStaticManifestEntry(manifest);
       if (!entry?.file) return null;
       const payload = await fetchJson(`./assets/competitions/${entry.file}`, { cache: "no-store" });
+      currentCompetitionPayload = payload;
       const competition = payload.competition || {};
       const meta = payload.meta || {};
       return {
@@ -172,59 +174,117 @@
       return String(value || "").replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim().toUpperCase();
     }
 
-    function getBaseStage(match) {
+    function getCompetitionKindText(competition) {
+      return cleanStageText([
+        competition?.name,
+        competition?.competitionName,
+        competition?.staticCompetitionName,
+        competition?.label,
+        competition?.type,
+        competition?.competitionType,
+        competition?.formula
+      ].filter(Boolean).join(" "));
+    }
+
+    function isLeagueCompetition(competition) {
+      const text = getCompetitionKindText(competition);
+      return /CAMPIONATO|REGULAR\s*SEASON|REGULAR|LEGA|LEAGUE\s*TABLE/.test(text) && !/CHAMPIONS|CHAMPION|COPPA|PLAYOFF|PLAY\s*OFF|SUPERCOPPA|FINAL|KNOCK/.test(text);
+    }
+
+    function getMatchDaySortValue(match) {
+      const candidates = [match?.leagueMatchday, match?.serieAMatchday, match?.matchday, match?.stage, match?.id];
+      for (const value of candidates) {
+        const matchNumber = String(value || "").match(/\d+/);
+        if (matchNumber) {
+          const number = Number(matchNumber[0]);
+          if (Number.isFinite(number)) return number;
+        }
+      }
+      return 0;
+    }
+
+    function getExplicitBaseStage(match) {
       const stageRaw = cleanStageText(match.stage || match.phase || match.round || "");
       const legRaw = cleanStageText(match.leg || match.roundLeg || "");
       const matchdayRaw = cleanStageText(match.matchday || "");
       const combinedOriginal = `${stageRaw} ${legRaw} ${matchdayRaw}`.trim();
-      const withoutFinalFour = combinedOriginal.replace(/FINAL\s+FOUR/g, " ").replace(/\s+/g, " ").trim();
-      if (/FINALE|FINAL\b|(^|\s)F(\s|$)/.test(withoutFinalFour)) return { key: "finale", label: "Finale", rank: 900 };
-      if (/SEMIFINAL|SEMI|\bSF\b/.test(withoutFinalFour)) return { key: "semifinali", label: "Semifinali", rank: 800 };
-      if (/QUARTI|QUART|\bQF\b/.test(withoutFinalFour)) return { key: "quarti-finale", label: "Quarti di finale", rank: 700 };
-      if (/OTTAVI|OTTAV|\bR16\b/.test(withoutFinalFour)) return { key: "ottavi-finale", label: "Ottavi di finale", rank: 600 };
+      const combined = combinedOriginal.replace(/FINAL\s+FOUR/g, " ").replace(/\s+/g, " ").trim();
+      if (/FINALE|FINAL\b|(^|\s)F(\s|$)/.test(combined)) return { key: "finale", label: "Finale", rank: 900 };
+      if (/SEMIFINAL|SEMI|\bSF\b/.test(combined)) return { key: "semifinali", label: "Semifinali", rank: 800 };
+      if (/QUARTI|QUART|\bQF\b/.test(combined)) return { key: "quarti-finale", label: "Quarti di finale", rank: 700 };
+      if (/OTTAVI|OTTAV|\bR16\b/.test(combined)) return { key: "ottavi-finale", label: "Ottavi di finale", rank: 600 };
       if (/FINAL\s+FOUR/.test(combinedOriginal)) return { key: "final-four", label: "Final Four", rank: 650 };
+      return null;
+    }
+
+    function shouldInferFinalForUnknownKnockout(match, matches, competition) {
+      if (!match || isLeagueCompetition(competition)) return false;
+      if (getExplicitBaseStage(match)) return false;
+      const unknownMatches = (matches || []).filter((item) => !getExplicitBaseStage(item));
+      if (unknownMatches.length !== 1 || unknownMatches[0] !== match) return false;
+      const knownStages = (matches || []).map(getExplicitBaseStage).filter(Boolean).map((stage) => stage.key);
+      if (!knownStages.some((key) => key === "semifinali" || key === "quarti-finale" || key === "ottavi-finale" || key === "final-four")) return false;
+      const currentDay = getMatchDaySortValue(match);
+      const maxKnownDay = Math.max(0, ...(matches || []).filter((item) => item !== match).map(getMatchDaySortValue));
+      return currentDay >= maxKnownDay;
+    }
+
+    function getBaseStage(match, matches = [], competition = null) {
+      const explicit = getExplicitBaseStage(match);
+      if (explicit) return explicit;
+
       const leagueDay = Number(match.leagueMatchday || 0);
+      const serieDay = Number(match.serieAMatchday || 0);
+
+      if (isLeagueCompetition(competition)) {
+        if (Number.isFinite(leagueDay) && leagueDay > 0) return { key: `giornata-${leagueDay}`, label: `Giornata ${leagueDay}`, rank: 100 + leagueDay };
+        if (Number.isFinite(serieDay) && serieDay > 0) return { key: `giornata-${serieDay}`, label: `Giornata ${serieDay}`, rank: 100 + serieDay };
+      }
+
+      if (shouldInferFinalForUnknownKnockout(match, matches, competition)) return { key: "finale", label: "Finale", rank: 900 };
       if (Number.isFinite(leagueDay) && leagueDay > 0) return { key: `giornata-${leagueDay}`, label: `Giornata ${leagueDay}`, rank: 100 + leagueDay };
+      if (Number.isFinite(serieDay) && serieDay > 0) return { key: `serie-a-${serieDay}`, label: `Serie A ${serieDay}`, rank: 50 + serieDay };
       const fallback = String(match.matchday || match.stage || "Partite").trim() || "Partite";
       return { key: slugify(fallback) || "partite", label: fallback, rank: 0 };
     }
 
-    function getLegCode(match) {
-      const base = getBaseStage(match);
-      if (base.key === "finale") return "finale";
+    function getLegCode(match, matches = [], competition = null) {
+      const base = getBaseStage(match, matches, competition);
+      if (base.key === "finale" || base.key.startsWith("giornata-") || base.key.startsWith("serie-a-")) return "secca";
       const text = cleanStageText(match.leg || match.roundLeg || match.matchday || "");
       if (/RITORNO|RETURN|\bRIT\b|(^|\s)R(\s|$)/.test(text)) return "ritorno";
       if (/ANDATA|FIRST|\bAND\b|(^|\s)A(\s|$)/.test(text)) return "andata";
+      if (/SECCA|UNICA|SINGLE|ONE\s+LEG/.test(text)) return "secca";
       return "secca";
     }
 
-    function buildLegContext(matches) {
+    function buildLegContext(matches, competition) {
       const context = new Map();
       matches.forEach((match) => {
-        const base = getBaseStage(match);
+        const base = getBaseStage(match, matches, competition);
         if (!context.has(base.key)) context.set(base.key, new Set());
-        const leg = getLegCode(match);
+        const leg = getLegCode(match, matches, competition);
         if (leg === "andata" || leg === "ritorno") context.get(base.key).add(leg);
       });
       return context;
     }
 
-    function getStageInfo(match, context) {
-      const base = getBaseStage(match);
-      if (base.key === "finale") return { key: "finale", label: "Finale", rank: 900 };
+    function getStageInfo(match, matches, context, competition) {
+      const base = getBaseStage(match, matches, competition);
+      if (base.key === "finale" || base.key.startsWith("giornata-") || base.key.startsWith("serie-a-")) return { key: base.key, label: base.label, rank: base.rank };
       const legs = context.get(base.key) || new Set();
       const hasTwoLegs = legs.has("andata") && legs.has("ritorno");
-      const leg = hasTwoLegs ? getLegCode(match) : "secca";
+      const leg = hasTwoLegs ? getLegCode(match, matches, competition) : "secca";
       if (leg === "ritorno") return { key: `${base.key}-ritorno`, label: `${base.label} ritorno`, rank: base.rank + 20 };
       if (leg === "andata") return { key: `${base.key}-andata`, label: `${base.label} andata`, rank: base.rank + 10 };
       return { key: base.key, label: base.label, rank: base.rank + 15 };
     }
 
-    function groupMatches(matches) {
-      const context = buildLegContext(matches);
+    function groupMatches(matches, competition = null) {
+      const context = buildLegContext(matches, competition);
       const groups = new Map();
       matches.forEach((match) => {
-        const info = getStageInfo(match, context);
+        const info = getStageInfo(match, matches, context, competition);
         if (!groups.has(info.key)) groups.set(info.key, { ...info, matches: [] });
         groups.get(info.key).matches.push(match);
       });
@@ -250,7 +310,7 @@
 
     function renderMatches(matches, seasonTeams = []) {
       if (!matches.length) return `<article class="panel"><p class="muted">Nessuna partita disponibile.</p></article>`;
-      const groups = groupMatches(matches);
+      const groups = groupMatches(matches, currentCompetitionPayload?.competition || null);
       return groups.map((group) => `
         <details class="panel competition-page-stage-group" open>
           <summary class="competition-match-stage-summary">
@@ -286,6 +346,7 @@
         contentEl.innerHTML = "";
         return;
       }
+      currentCompetitionPayload = payload;
       const competition = payload.competition || {};
       const sourceLabel = payload.source === "static" ? "JSON statico" : "Firebase";
       const sourceClass = payload.source === "static" ? "static-source-badge" : "firebase-source-badge";

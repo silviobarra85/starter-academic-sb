@@ -574,3 +574,44 @@ Apre il calendario completo della competizione dalla card pubblica tramite pulsa
 - Quando le partite sono gia raggruppate per fase, la tabella delle singole partite non deve ripetere la colonna `Fase`.
 - In Admin -> Partite competizioni, le partite Firebase coperte da JSON statico mostrano un badge `JSON`, cosi l'utente puo eliminarle da Firebase dopo verifica.
 - La pagina `competition.html` mostra l'intero calendario della competizione, con JSON statico come fonte primaria.
+
+### Competizioni statiche e raggruppamento fasi
+
+Per ridurre letture Firebase e rendere lo storico versionato in Git e stata introdotta la cartella:
+
+```text
+static/zonaorientale/assets/competitions/
+  manifest.json
+  <seasonId>/<competition-slug>-<seasonId>.json
+```
+
+La fonte e `static first`: se una competizione ha JSON statico, partite e risultati vengono letti prima dal JSON; Firebase/snapshot e fallback. Le card mostrano badge `JSON statico` o `Firebase`.
+
+Le partite sono raggruppate cosi:
+
+```text
+Finale
+Semifinali ritorno
+Semifinali andata
+Semifinali
+Quarti di finale ritorno
+Quarti di finale andata
+Quarti di finale
+Giornata N, per campionato/regular season
+Serie A N solo come fallback
+```
+
+Per competizioni tipo Campionato/Regular Season, il calendario deve essere raggruppato per `Giornata 1`, `Giornata 2`, ecc. usando `leagueMatchday`; se manca `leagueMatchday` puo usare `serieAMatchday` come fallback. Per KO/Playoff, una partita senza fase esplicita ma successiva a semifinali/quarti puo essere inferita come `Finale`.
+
+Nel JSON statico, quando possibile, salvare sempre anche:
+
+```json
+{
+  "homeSeasonTeamId": "...",
+  "awaySeasonTeamId": "...",
+  "homeTeamName": "...",
+  "awayTeamName": "..."
+}
+```
+
+I nomi servono come fallback, ma gli ID sono la fonte piu robusta per associare squadre Firebase e JSON.

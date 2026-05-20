@@ -10220,3 +10220,157 @@ renderCompetitionMatchesAdminPanel = function renderCompetitionMatchesAdminPanel
       </details>
   `);
 };
+
+
+/* V113 - Raggruppamento fasi/giornate piu robusto.
+   - Le finali senza stage esplicito nei KO vengono inferite dall'ultima partita rimasta.
+   - Le competizioni tipo Campionato/Regular Season vengono raggruppate per Giornata 1, Giornata 2, ...
+   - La giornata di Serie A resta fallback solo quando non esiste una fase riconoscibile. */
+function getCompetitionKindTextV113(competition) {
+  return cleanStageTextV111([
+    competition?.name,
+    competition?.competitionName,
+    competition?.staticCompetitionName,
+    competition?.label,
+    competition?.type,
+    competition?.competitionType,
+    competition?.formula
+  ].filter(Boolean).join(" "));
+}
+
+function isLeagueCompetitionV113(competition) {
+  const text = getCompetitionKindTextV113(competition);
+  return /CAMPIONATO|REGULAR\s*SEASON|REGULAR|LEGA|LEAGUE\s*TABLE/.test(text) && !/CHAMPIONS|CHAMPION|COPPA|PLAYOFF|PLAY\s*OFF|SUPERCOPPA|FINAL|KNOCK/.test(text);
+}
+
+function getMatchDaySortValueV113(match) {
+  const candidates = [match?.leagueMatchday, match?.serieAMatchday, match?.matchday, match?.stage, match?.id];
+  for (const value of candidates) {
+    const matchNumber = String(value || "").match(/\d+/);
+    if (matchNumber) {
+      const number = Number(matchNumber[0]);
+      if (Number.isFinite(number)) return number;
+    }
+  }
+  return 0;
+}
+
+function getExplicitMatchBaseStageV113(match) {
+  const stageRaw = cleanStageTextV111(match?.stage || match?.phase || match?.round || "");
+  const legRaw = cleanStageTextV111(match?.leg || match?.roundLeg || "");
+  const matchdayRaw = cleanStageTextV111(match?.matchday || "");
+  const combinedOriginal = `${stageRaw} ${legRaw} ${matchdayRaw}`.trim();
+  const combined = combinedOriginal.replace(/FINAL\s+FOUR/g, " ").replace(/\s+/g, " ").trim();
+
+  if (/FINALE|FINAL\b|(^|\s)F(\s|$)/.test(combined)) return { key: "finale", label: "Finale", rank: 900, explicit: true };
+  if (/SEMIFINAL|SEMI|\bSF\b/.test(combined)) return { key: "semifinali", label: "Semifinali", rank: 800, explicit: true };
+  if (/QUARTI|QUART|\bQF\b/.test(combined)) return { key: "quarti-finale", label: "Quarti di finale", rank: 700, explicit: true };
+  if (/OTTAVI|OTTAV|\bR16\b/.test(combined)) return { key: "ottavi-finale", label: "Ottavi di finale", rank: 600, explicit: true };
+  if (/FINAL\s+FOUR/.test(combinedOriginal)) return { key: "final-four", label: "Final Four", rank: 650, explicit: true };
+  return null;
+}
+
+function shouldInferFinalForUnknownKnockoutV113(match, matches, competition) {
+  if (!match || isLeagueCompetitionV113(competition)) return false;
+  if (getExplicitMatchBaseStageV113(match)) return false;
+  const unknownMatches = (matches || []).filter((item) => !getExplicitMatchBaseStageV113(item));
+  if (unknownMatches.length !== 1) return false;
+  if (unknownMatches[0] !== match) return false;
+  const knownStages = (matches || []).map(getExplicitMatchBaseStageV113).filter(Boolean).map((stage) => stage.key);
+  if (!knownStages.some((key) => key === "semifinali" || key === "quarti-finale" || key === "ottavi-finale" || key === "final-four")) return false;
+  const currentDay = getMatchDaySortValueV113(match);
+  const maxKnownDay = Math.max(0, ...(matches || []).filter((item) => item !== match).map(getMatchDaySortValueV113));
+  return currentDay >= maxKnownDay;
+}
+
+function getMatchBaseStageV113(match, matches = [], competition = null) {
+  const explicit = getExplicitMatchBaseStageV113(match);
+  if (explicit) return explicit;
+
+  const leagueDay = Number(match?.leagueMatchday || 0);
+  const serieDay = Number(match?.serieAMatchday || 0);
+
+  if (isLeagueCompetitionV113(competition)) {
+    if (Number.isFinite(leagueDay) && leagueDay > 0) return { key: `giornata-${leagueDay}`, label: `Giornata ${leagueDay}`, rank: 100 + leagueDay };
+    if (Number.isFinite(serieDay) && serieDay > 0) return { key: `giornata-${serieDay}`, label: `Giornata ${serieDay}`, rank: 100 + serieDay };
+  }
+
+  if (shouldInferFinalForUnknownKnockoutV113(match, matches, competition)) {
+    return { key: "finale", label: "Finale", rank: 900, inferred: true };
+  }
+
+  if (Number.isFinite(leagueDay) && leagueDay > 0) return { key: `giornata-${leagueDay}`, label: `Giornata ${leagueDay}`, rank: 100 + leagueDay };
+  if (Number.isFinite(serieDay) && serieDay > 0) return { key: `serie-a-${serieDay}`, label: `Serie A ${serieDay}`, rank: 50 + serieDay };
+  const fallback = String(match?.matchday || match?.stage || match?.phase || "Partite").trim() || "Partite";
+  return { key: normalizeKey(fallback) || "partite", label: fallback, rank: 0 };
+}
+
+function getMatchLegCodeV113(match, matches = [], competition = null) {
+  const base = getMatchBaseStageV113(match, matches, competition);
+  if (base.key === "finale" || base.key.startsWith("giornata-") || base.key.startsWith("serie-a-")) return "secca";
+  const legRaw = cleanStageTextV111(match?.leg || match?.roundLeg || match?.matchday || "");
+  if (/RITORNO|RETURN|\bRIT\b|(^|\s)R(\s|$)/.test(legRaw)) return "ritorno";
+  if (/ANDATA|FIRST|\bAND\b|(^|\s)A(\s|$)/.test(legRaw)) return "andata";
+  if (/SECCA|UNICA|SINGLE|ONE\s+LEG/.test(legRaw)) return "secca";
+  return "secca";
+}
+
+function buildStageLegContextV113(matches, competition) {
+  const context = new Map();
+  (matches || []).forEach((match) => {
+    const base = getMatchBaseStageV113(match, matches, competition);
+    if (!context.has(base.key)) context.set(base.key, new Set());
+    const leg = getMatchLegCodeV113(match, matches, competition);
+    if (leg === "andata" || leg === "ritorno") context.get(base.key).add(leg);
+  });
+  return context;
+}
+
+function getMatchStageInfoV113(match, matches, legContext, competition) {
+  const base = getMatchBaseStageV113(match, matches, competition);
+  if (base.key === "finale" || base.key.startsWith("giornata-") || base.key.startsWith("serie-a-")) {
+    return { key: base.key, label: base.label, rank: base.rank };
+  }
+  const declaredLeg = getMatchLegCodeV113(match, matches, competition);
+  const legs = legContext?.get(base.key) || new Set();
+  const hasTwoLegs = legs.has("andata") && legs.has("ritorno");
+  const leg = hasTwoLegs ? declaredLeg : "secca";
+  if (leg === "ritorno") return { key: `${base.key}-ritorno`, label: `${base.label} ritorno`, rank: base.rank + 20 };
+  if (leg === "andata") return { key: `${base.key}-andata`, label: `${base.label} andata`, rank: base.rank + 10 };
+  return { key: base.key, label: base.label, rank: base.rank + 15 };
+}
+
+function groupCompetitionMatchesByStageV113(matches, competition) {
+  const matchList = Array.isArray(matches) ? matches : [];
+  const legContext = buildStageLegContextV113(matchList, competition);
+  const groups = new Map();
+  matchList.forEach((match) => {
+    const info = getMatchStageInfoV113(match, matchList, legContext, competition);
+    if (!groups.has(info.key)) groups.set(info.key, { key: info.key, label: info.label, rank: info.rank, matches: [] });
+    groups.get(info.key).matches.push(match);
+  });
+  return [...groups.values()].sort((a, b) => {
+    const rankDiff = b.rank - a.rank;
+    if (rankDiff) return rankDiff;
+    return String(a.label).localeCompare(String(b.label), "it", { numeric: true, sensitivity: "base" });
+  });
+}
+
+function renderCompetitionMatchesPublicV113(competition) {
+  const matches = getCompetitionMatches(competition.id);
+  if (!matches.length) return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+  const groups = groupCompetitionMatchesByStageV113(matches, competition);
+  return `
+    <div class="competition-matches-public competition-match-groups">
+      ${groups.map((group) => `
+        <details class="detail-section compact-detail-section competition-match-stage-group competition-match-stage-details" open>
+          <summary class="competition-match-stage-summary">
+            <h4>${escapeHtml(group.label)}</h4>
+            <span class="button button-secondary button-small competition-stage-toggle-label" aria-hidden="true">Riduci/Espandi</span>
+          </summary>
+          ${renderMatchRowsNoStageV112(sortMatchesInsideStageV111(group.matches), "Nessuna partita inserita.")}
+        </details>`).join("")}
+    </div>`;
+}
+
+renderCompetitionMatchesPublic = renderCompetitionMatchesPublicV113;
