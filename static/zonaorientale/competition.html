@@ -7,7 +7,7 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=116" />
+  <link rel="stylesheet" href="./assets/styles.css?v=117" />
 </head>
 <body>
   <main class="container app-main competition-page-main">
@@ -157,7 +157,7 @@
       const meta = payload.meta || {};
       const competitionId = competition.id || meta.competitionId || entry.competitionId || requestedCompetitionId;
       const snapshotData = await loadFirebaseSeasonSnapshot();
-      const deletedKeys = getDeletedMatchKeys(snapshotData, competitionId);
+      getDeletedMatchKeys(snapshotData, competitionId);
       return {
         source: "static",
         manifestEntry: entry,
@@ -169,7 +169,7 @@
           status: competition.status || entry.status || "",
           notes: competition.notes || ""
         },
-        matches: filterDeletedMatches(Array.isArray(payload.matches) ? payload.matches.map((match) => ({ ...match, competitionId: match.competitionId || competitionId })) : [], deletedKeys),
+        matches: filterDeletedMatches(Array.isArray(payload.matches) ? payload.matches.map((match) => ({ ...match, competitionId: match.competitionId || competitionId })) : [], new Set()),
         results: Array.isArray(payload.results) ? payload.results : [],
         sourceFile: entry.sourceFile || meta.sourceFile || "assets/competitions"
       };
