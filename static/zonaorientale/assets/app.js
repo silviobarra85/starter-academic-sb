@@ -127,6 +127,8 @@ import {
   abbreviateRealTeam,
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
+import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -10398,49 +10400,24 @@ function getCompetitionFormatLabelV114(value) {
   return getLabel(COMPETITION_FORMATS_V114, value) || getLabel(COMPETITION_FORMATS, value) || value || "-";
 }
 
-function formatSnapshotTimestampV114(value) {
-  if (!value) return "-";
-  try {
-    const date = typeof value?.toDate === "function"
-      ? value.toDate()
-      : typeof value?.seconds === "number"
-        ? new Date(value.seconds * 1000)
-        : new Date(value);
-    if (Number.isNaN(date.getTime())) return String(value);
-    return date.toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" });
-  } catch (error) {
-    return String(value);
-  }
-}
+const publicSnapshotAdminHelpersV129 = createPublicSnapshotAdminHelpersV129({
+  state,
+  escapeHtml,
+  renderAdminPanel,
+  getCurrentSeasonId,
+  scheduleLoadPublicSnapshotDates: (seasonId) => loadPublicSnapshotDatesForAdminV116(seasonId)
+});
 
-function getCurrentSeasonSnapshotGeneratedAtV114() {
-  const seasonId = getCurrentSeasonId();
-  const snapshot = seasonId ? state.publicSeasonSnapshots?.[seasonId] : null;
-  return snapshot?.generatedAt || snapshot?.updatedAt || snapshot?.createdAt || "";
-}
+const formatSnapshotTimestampV114 = publicSnapshotAdminHelpersV129.formatSnapshotTimestamp;
+const getCurrentSeasonSnapshotGeneratedAtV114 = publicSnapshotAdminHelpersV129.getCurrentSeasonSnapshotGeneratedAt;
 
 function renderPublicSnapshotsAdminPanelV114() {
-  const seasonId = getCurrentSeasonId();
-  const seasonGenerated = formatSnapshotTimestampV114(getCurrentSeasonSnapshotGeneratedAtV114());
-  const honorGenerated = formatSnapshotTimestampV114(state.publicHonorSnapshot?.generatedAt || state.publicHonorSnapshot?.updatedAt || state.publicHonorSnapshot?.createdAt || "");
-  return renderAdminPanel("adminPublicSnapshotsPanel", "Ottimizzazione", "Snapshot pubblici", "Genera documenti leggeri. Il sito pubblico legge questi snapshot invece delle raccolte complete.", `
-    <div class="snapshot-actions-grid">
-      <button id="adminGenerateSelectedSeasonSnapshot" class="button button-primary" type="button">Aggiorna stagione selezionata (${escapeHtml(seasonId || "-")})</button>
-      <button id="adminGenerateAllSeasonSnapshots" class="button button-secondary" type="button">Aggiorna tutte le stagioni</button>
-      <button id="adminGenerateHonorSnapshot" class="button button-secondary" type="button">Aggiorna Albo/FIFA</button>
-      <button id="adminGenerateTeamSnapshots" class="button button-secondary" type="button">Aggiorna schede squadra</button>
-      <button id="adminGenerateEverythingSnapshots" class="button button-primary" type="button">Aggiorna tutto</button>
-    </div>
-    <p id="adminPublicSnapshotsStatus" class="form-status"></p>
-    <div class="snapshot-last-updates">
-      <small class="field-hint"><strong>Ultimo snapshot stagione selezionata:</strong> ${escapeHtml(seasonGenerated)}.</small>
-      <small class="field-hint"><strong>Ultimo snapshot Albo/FIFA:</strong> ${escapeHtml(honorGenerated)}.</small>
-    </div>
-    <small class="field-hint">Se aggiorni dati ufficiali, rigenera gli snapshot pubblici.</small>`);
+  return publicSnapshotAdminHelpersV129.renderBasePanel();
 }
 
 renderPublicSnapshotsAdminPanelV34 = renderPublicSnapshotsAdminPanelV114;
 renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+
 
 function renderAdminCategoryV114(title, subtitle, body) {
   const content = String(body || "").trim();
@@ -10868,35 +10845,14 @@ async function loadPublicSnapshotDatesForAdminV116(seasonId) {
 }
 
 function getSnapshotDateTextV116(value) {
-  const formatted = formatSnapshotTimestampV114(value);
-  return formatted && formatted !== "-" ? formatted : "non trovato";
+  return publicSnapshotAdminHelpersV129.getSnapshotDateText(value);
 }
 
 renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV116() {
-  const seasonId = getCurrentSeasonId();
-  const seasonSnapshot = seasonId ? state.publicSeasonSnapshots?.[seasonId] : null;
-  const seasonGenerated = getSnapshotDateTextV116(seasonSnapshot?.generatedAt || seasonSnapshot?.updatedAt || seasonSnapshot?.createdAt || "");
-  const honorGenerated = getSnapshotDateTextV116(state.publicHonorSnapshot?.generatedAt || state.publicHonorSnapshot?.updatedAt || state.publicHonorSnapshot?.createdAt || "");
-  if (state.isAdmin) setTimeout(() => loadPublicSnapshotDatesForAdminV116(seasonId), 0);
-
-  return renderAdminPanel("adminPublicSnapshotsPanel", "Ottimizzazione", "Snapshot pubblici", "Genera documenti leggeri. Il sito pubblico legge questi snapshot invece delle raccolte complete.", `
-    <div class="snapshot-actions-grid">
-      <button id="adminGenerateSelectedSeasonSnapshot" class="button button-primary" type="button">Aggiorna stagione selezionata (${escapeHtml(seasonId || "-")})</button>
-      <button id="adminGenerateNewsSnapshot" class="button button-secondary" type="button">Aggiorna comunicati</button>
-      <button id="adminGenerateCompetitionDataSnapshot" class="button button-secondary" type="button">Aggiorna competizioni e classifiche</button>
-      <button id="adminGenerateAllSeasonSnapshots" class="button button-secondary" type="button">Aggiorna tutte le stagioni</button>
-      <button id="adminGenerateHonorSnapshot" class="button button-secondary" type="button">Aggiorna Albo/FIFA</button>
-      <button id="adminGenerateTeamSnapshots" class="button button-secondary" type="button">Aggiorna schede squadra</button>
-      <button id="adminGenerateEverythingSnapshots" class="button button-primary" type="button">Aggiorna tutto</button>
-    </div>
-    <p id="adminPublicSnapshotsStatus" class="form-status"></p>
-    <div class="snapshot-last-updates">
-      <small class="field-hint"><strong>Ultimo snapshot stagione selezionata:</strong> ${escapeHtml(seasonGenerated)}.</small>
-      <small class="field-hint"><strong>Ultimo snapshot Albo/FIFA:</strong> ${escapeHtml(honorGenerated)}.</small>
-    </div>
-    <small class="field-hint">Comunicati, competizioni e classifiche della stagione sono dentro <code>publicSeasonSnapshots/${escapeHtml(seasonId || "stagione")}</code>. Albo e FIFA sono dentro <code>publicSnapshots/honor</code>.</small>`);
+  return publicSnapshotAdminHelpersV129.renderFullPanel();
 };
 renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+
 
 async function saveNewsSnapshotV116() {
   try {
@@ -12381,82 +12337,20 @@ function getApprovedTeamUserByUidV122(uid) {
   return (state.raw.teamUsers || []).find((item) => item.id === uid) || null;
 }
 
-function renderApprovedUserSummaryV122(user) {
-  const linkedUser = getApprovedTeamUserByUidV122(user.id) || user;
-  const seasonTeamName = getSeasonTeamDisplayName(linkedUser.seasonTeamId) || user.teamName || "-";
-  const seasonId = linkedUser.seasonId || user.seasonId || getSeasonTeamById(linkedUser.seasonTeamId)?.seasonId || "-";
-  const presidentName = linkedUser.presidentId ? getPresidentNames([linkedUser.presidentId]) : "-";
-  return `
-    <div class="admin-list-item admin-user-approval-item admin-user-approved-item">
-      <span>
-        <strong>${escapeHtml(user.displayName || linkedUser.displayName || user.email || linkedUser.email || user.id)}</strong>
-        <small>${escapeHtml(user.email || linkedUser.email || "")} · <span class="status status-ok">Approvato</span></small>
-        <small>${escapeHtml(seasonId)} · ${escapeHtml(seasonTeamName)} · Presidente: ${escapeHtml(presidentName)}</small>
-      </span>
-      <span class="admin-approval-controls">
-        <span class="status status-muted">Accesso attivo</span>
-      </span>
-    </div>`;
-}
+const adminUserApprovalHelpersV129 = createAdminUserApprovalHelpersV129({
+  state,
+  escapeHtml,
+  requestStatusLabel,
+  getSeasonTeamById,
+  getTeamById,
+  renderAdminPanel
+});
 
-function renderPendingUserApprovalRowV122(user, presidentOptions, teamOptions, seasonTeamOptions) {
-  return `
-    <div class="admin-list-item admin-user-approval-item">
-      <span>
-        <strong>${escapeHtml(user.displayName || user.email || user.id)}</strong>
-        <small>${escapeHtml(user.email || "")} · ${escapeHtml(requestStatusLabel(user.status))}</small>
-      </span>
-      <span class="admin-approval-controls">
-        <select class="input" id="approvePresident_${escapeHtml(user.id)}"><option value="">Presidente...</option>${presidentOptions}</select>
-        <select class="input" id="approveTeam_${escapeHtml(user.id)}"><option value="">Squadra madre...</option>${teamOptions}</select>
-        <select class="input" id="approveSeasonTeam_${escapeHtml(user.id)}"><option value="">Rosa/stagione...</option>${seasonTeamOptions}</select>
-        <button class="button button-primary button-small" type="button" data-approve-user="${escapeHtml(user.id)}">Approva</button>
-        <button class="button button-danger button-small" type="button" data-reject-user="${escapeHtml(user.id)}">Rifiuta</button>
-      </span>
-    </div>`;
-}
-
-renderPendingUsersAdminPanelV34 = function renderPendingUsersAdminPanelV122() {
-  const pendingUsers = state.raw.pendingUsers || [];
-  const pending = pendingUsers.filter((item) => item.status !== "APPROVED");
-  const approvedByUid = new Map();
-
-  pendingUsers
-    .filter((item) => item.status === "APPROVED")
-    .forEach((item) => approvedByUid.set(item.id, item));
-
-  (state.raw.teamUsers || [])
-    .filter((item) => item.status !== "DISABLED")
-    .forEach((item) => {
-      if (!approvedByUid.has(item.id)) approvedByUid.set(item.id, item);
-    });
-
-  const approved = Array.from(approvedByUid.values()).sort((a, b) => {
-    const aName = a.displayName || a.email || a.id || "";
-    const bName = b.displayName || b.email || b.id || "";
-    return String(aName).localeCompare(String(bName), "it", { sensitivity: "base" });
-  });
-
-  const presidentOptions = state.raw.presidents.map((president) => `<option value="${escapeHtml(president.id)}">${escapeHtml(president.name || president.id)}</option>`).join("");
-  const teamOptions = state.raw.teams.map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(team.canonicalName || team.id)}</option>`).join("");
-  const seasonTeamOptions = state.raw.seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.seasonId)} · ${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("");
-
-  const pendingRows = pending.map((user) => renderPendingUserApprovalRowV122(user, presidentOptions, teamOptions, seasonTeamOptions)).join("") || `<p class="muted admin-empty-message">Nessun utente in attesa.</p>`;
-  const approvedRows = approved.map(renderApprovedUserSummaryV122).join("") || `<p class="muted admin-empty-message">Nessun utente approvato.</p>`;
-
-  return renderAdminPanel("adminPendingUsersPanel", "Utenti", "Accetta utenti", "Approva i presidenti registrati, rifiuta eliminando la richiesta e consulta gli accessi gia approvati.", `
-    <div class="admin-subsection-block">
-      <h3>Richieste in attesa</h3>
-      <div class="admin-list">${pendingRows}</div>
-    </div>
-    <div class="admin-subsection-block">
-      <h3>Accessi approvati</h3>
-      <p class="muted">Elenco degli utenti gia accettati: utile per verificare quali presidenti non hanno ancora richiesto l'accesso.</p>
-      <div class="admin-list">${approvedRows}</div>
-    </div>`);
+renderPendingUsersAdminPanelV34 = function renderPendingUsersAdminPanelV129() {
+  return adminUserApprovalHelpersV129.renderPendingUsersPanel();
 };
 
-rejectPendingUserV34 = async function rejectPendingUserV122(uid) {
+rejectPendingUserV34 = async function rejectPendingUserV129(uid) {
   if (!uid) return;
   if (!window.confirm("Rifiutare l'accesso ed eliminare definitivamente questa richiesta da Firebase?")) return;
   await deleteDoc(doc(db, "pendingUsers", uid));
