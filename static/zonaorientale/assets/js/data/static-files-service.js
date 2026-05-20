@@ -67,3 +67,44 @@ export async function loadRostersData() {
     state.rosters = [];
   }
 }
+
+
+export async function loadCompetitionCalendarData() {
+  try {
+    const manifestResponse = await fetch("./assets/competitions/manifest.json", { cache: "no-store" });
+    if (!manifestResponse.ok) {
+      state.competitionCalendars = [];
+      return;
+    }
+
+    const manifest = await manifestResponse.json();
+    const entries = Array.isArray(manifest.competitions)
+      ? manifest.competitions
+      : Array.isArray(manifest.items)
+        ? manifest.items
+        : [];
+
+    const loadedCalendars = await Promise.all(entries.map(async (entry) => {
+      try {
+        const response = await fetch(`./assets/competitions/${entry.file}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`Calendario competizione non leggibile: ${entry.file}`);
+        const payload = await response.json();
+        return {
+          ...entry,
+          meta: payload.meta || {},
+          competition: payload.competition || null,
+          matches: Array.isArray(payload.matches) ? payload.matches : [],
+          results: Array.isArray(payload.results) ? payload.results : []
+        };
+      } catch (error) {
+        console.warn(error);
+        return { ...entry, meta: {}, competition: null, matches: [], results: [], loadError: true };
+      }
+    }));
+
+    state.competitionCalendars = loadedCalendars.sort((a, b) => String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it"));
+  } catch (error) {
+    console.warn("Calendari competizioni statici non caricati", error);
+    state.competitionCalendars = [];
+  }
+}

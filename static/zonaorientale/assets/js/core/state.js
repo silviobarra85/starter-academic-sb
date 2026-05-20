@@ -18,6 +18,7 @@ export const state = {
   selectedClubRosterFilter: "all",
   listoni: [],
   rosters: [],
+  competitionCalendars: [],
   listoneSort: { key: "playerName", direction: "asc" },
   freeAgentsSort: { key: "playerName", direction: "asc" },
   rosterSort: { key: "role", direction: "asc" },

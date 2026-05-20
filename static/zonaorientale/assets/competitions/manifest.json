@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-19T00:00:00.000Z",
+  "competitions": [
+    {
+      "id": "2025-2026-champions-league",
+      "seasonId": "2025-2026",
+      "competitionId": "2025_2026_champions-league",
+      "competitionName": "Champion's League",
+      "competitionSlug": "champions-league",
+      "label": "Champion's League 2025/2026",
+      "loadedAt": "2026-05-19",
+      "sourceFile": "Calendario_Champion's-League-2025-2026.xlsx",
+      "file": "2025-2026/champions-league-2025-2026.json",
+      "matches": 13,
+      "playedMatches": 13,
+      "status": "CONCLUSA"
+    }
+  ]
+}
