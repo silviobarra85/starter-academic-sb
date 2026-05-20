@@ -12280,7 +12280,14 @@ async function updateNegotiationStatusV119(id, status) {
   const item = getNegotiationByIdV119(id);
   const currentTeamId = getApprovedSeasonTeamIdV119();
   if (!item) throw new Error("Trattativa non trovata.");
-  if (status === "CANCELLED" && item.fromSeasonTeamId !== currentTeamId) throw new Error("Solo chi invia può annullare la trattativa.");
+  if (status === "CANCELLED") {
+    if (item.fromSeasonTeamId !== currentTeamId) throw new Error("Solo chi invia può annullare la trattativa.");
+    if (item.status !== "PENDING") throw new Error("Puoi eliminare solo una trattativa ancora in attesa.");
+    await deleteDoc(doc(db, "transferNegotiations", id));
+    await loadTransferMarketCollectionsV119();
+    renderUserAreaV34();
+    return;
+  }
   if ((status === "ACCEPTED" || status === "REJECTED") && item.toSeasonTeamId !== currentTeamId) throw new Error("Solo chi riceve può rispondere alla trattativa.");
   await updateDoc(doc(db, "transferNegotiations", id), {
     status,
@@ -12401,7 +12408,7 @@ document.addEventListener("click", async (event) => {
 
     if (cancelButton) {
       event.preventDefault();
-      if (window.confirm("Annullare questa proposta?")) await updateNegotiationStatusV119(cancelButton.dataset.tradeCancel, "CANCELLED");
+      if (window.confirm("Annullare questa proposta? Verrà eliminata definitivamente da Firebase.")) await updateNegotiationStatusV119(cancelButton.dataset.tradeCancel, "CANCELLED");
       return;
     }
     if (acceptButton) {

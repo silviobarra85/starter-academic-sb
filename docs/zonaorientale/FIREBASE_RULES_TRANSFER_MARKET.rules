@@ -92,7 +92,9 @@ service cloud.firestore {
       allow update: if isAdmin() || (isApprovedTeamUser()
         && (resource.data.fromSeasonTeamId == get(/databases/$(database)/documents/teamUsers/$(request.auth.uid)).data.seasonTeamId
           || resource.data.toSeasonTeamId == get(/databases/$(database)/documents/teamUsers/$(request.auth.uid)).data.seasonTeamId));
-      allow delete: if isAdmin();
+      allow delete: if isAdmin() || (isApprovedTeamUser()
+        && resource.data.fromSeasonTeamId == get(/databases/$(database)/documents/teamUsers/$(request.auth.uid)).data.seasonTeamId
+        && resource.data.status == 'PENDING');
     }
   }
 }
