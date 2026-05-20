@@ -11687,3 +11687,736 @@ restoreCompetitionMatchV116 = async function restoreCompetitionMatchV117(matchId
   openCompetitionMatchesListV117();
 };
 
+
+/* V119 - Fantamercato, trattative squadra e badge uniformi. */
+if (!COLLECTIONS.includes("transferListings")) COLLECTIONS.push("transferListings");
+if (!COLLECTIONS.includes("transferNegotiations")) COLLECTIONS.push("transferNegotiations");
+
+state.transferMarketLoadedV119 = false;
+state.transferMarketLoadingV119 = false;
+state.transferMarketTeamFilterV119 = state.transferMarketTeamFilterV119 || "all";
+state.transferMarketSearchV119 = state.transferMarketSearchV119 || "";
+state.prefillTransferListingIdV119 = state.prefillTransferListingIdV119 || "";
+
+function ensureTransferMarketDomV119() {
+  const desktopNav = document.querySelector(".app-nav");
+  if (desktopNav && !desktopNav.querySelector('[data-page-link="fantamercato"]')) {
+    const link = document.createElement("a");
+    link.href = "#fantamercato";
+    link.className = "nav-link";
+    link.dataset.pageLink = "fantamercato";
+    link.textContent = "Fantamercato";
+    const listoneLink = desktopNav.querySelector('[data-page-link="listone"]');
+    desktopNav.insertBefore(link, listoneLink || null);
+  }
+
+  const mobileSheet = document.getElementById("mobileMoreSheet");
+  if (mobileSheet && !mobileSheet.querySelector('[data-page-link="fantamercato"]')) {
+    const link = document.createElement("a");
+    link.href = "#fantamercato";
+    link.className = "mobile-more-link";
+    link.dataset.pageLink = "fantamercato";
+    link.textContent = "Fantamercato";
+    const listoneLink = mobileSheet.querySelector('[data-page-link="listone"]');
+    mobileSheet.insertBefore(link, listoneLink || null);
+  }
+
+  const main = document.querySelector("main.app-main");
+  const listonePage = document.querySelector('[data-page="listone"]');
+  if (main && !document.querySelector('[data-page="fantamercato"]')) {
+    const section = document.createElement("section");
+    section.className = "app-page";
+    section.dataset.page = "fantamercato";
+    section.setAttribute("aria-labelledby", "fantamercatoTitle");
+    section.innerHTML = `
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Scambi e trasferibili</p>
+          <h2 id="fantamercatoTitle">Fantamercato</h2>
+          <p>Giocatori messi in vendita dai presidenti, condizioni richieste e avvio rapido di una proposta di trattativa.</p>
+        </div>
+      </div>
+      <section class="panel transfer-market-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Giocatori trasferibili</h2>
+            <p>Consulta i giocatori sul mercato e, se hai un account presidente attivo, apri una proposta di trattativa.</p>
+          </div>
+          <div class="filters-row">
+            <select id="transferMarketTeamFilter" class="input filter-input" aria-label="Filtro squadra fantamercato"><option value="all">Tutte le squadre</option></select>
+            <input id="transferMarketSearch" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, condizioni..." />
+          </div>
+        </div>
+        <div class="table-wrap mobile-tabular-wrap transfer-market-table-wrap">
+          <table class="mobile-tabular transfer-market-table">
+            <thead><tr><th>Giocatore</th><th>Rosa</th><th>Ruolo</th><th>Squadra</th><th class="number">Costo</th><th>Condizioni</th><th>Azione</th></tr></thead>
+            <tbody id="transferMarketTableBody"><tr><td colspan="7" class="muted center">Caricamento...</td></tr></tbody>
+          </table>
+        </div>
+      </section>`;
+    main.insertBefore(section, listonePage || document.getElementById("adminPanel") || null);
+  }
+}
+
+const makeEmptyRawDataBeforeV119 = makeEmptyRawDataV34;
+makeEmptyRawDataV34 = function makeEmptyRawDataV119() {
+  const raw = makeEmptyRawDataBeforeV119();
+  raw.transferListings = raw.transferListings || [];
+  raw.transferNegotiations = raw.transferNegotiations || [];
+  return raw;
+};
+
+async function loadTransferMarketCollectionsV119() {
+  if (!state.raw) state.raw = makeEmptyRawDataV34();
+  state.transferMarketLoadingV119 = true;
+  try {
+    const [listings, negotiations] = await Promise.all([
+      loadCollection("transferListings").catch((error) => {
+        console.warn("Transfer listings non disponibili", error);
+        return state.raw.transferListings || [];
+      }),
+      loadCollection("transferNegotiations").catch((error) => {
+        console.warn("Transfer negotiations non disponibili", error);
+        return state.raw.transferNegotiations || [];
+      })
+    ]);
+    state.raw.transferListings = Array.isArray(listings) ? listings : [];
+    state.raw.transferNegotiations = Array.isArray(negotiations) ? negotiations : [];
+    state.transferMarketLoadedV119 = true;
+  } finally {
+    state.transferMarketLoadingV119 = false;
+  }
+}
+
+function ensureTransferMarketDataV119() {
+  if (state.transferMarketLoadedV119 || state.transferMarketLoadingV119) return;
+  loadTransferMarketCollectionsV119().then(() => {
+    renderTransferMarketPageV119();
+    renderUserAreaV34?.();
+    renderTeamsTable?.();
+  }).catch((error) => console.warn("Fantamercato non caricato", error));
+}
+
+const loadDataForCurrentAuthBeforeV119 = typeof loadDataForCurrentAuthV100 === "function" ? loadDataForCurrentAuthV100 : null;
+if (loadDataForCurrentAuthBeforeV119) {
+  loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV119(options = {}) {
+    const result = await loadDataForCurrentAuthBeforeV119(options);
+    await loadTransferMarketCollectionsV119();
+    if (options.render) {
+      renderTransferMarketPageV119();
+      renderUserAreaV34?.();
+      renderTeamsTable?.();
+    }
+    return result;
+  };
+  loadData = async function loadDataV119() {
+    return loadDataForCurrentAuthV100({ render: true });
+  };
+}
+
+function getApprovedSeasonTeamIdV119() {
+  return getApprovedTeamUser?.()?.seasonTeamId || "";
+}
+
+function getApprovedPresidentIdV119() {
+  return getApprovedTeamUser?.()?.presidentId || "";
+}
+
+function isOwnSeasonTeamV119(seasonTeamId) {
+  return Boolean(seasonTeamId && seasonTeamId === getApprovedSeasonTeamIdV119());
+}
+
+function getActiveSeasonTeamsForTradesV119(seasonId = getCurrentSeasonId()) {
+  const ownId = getApprovedSeasonTeamIdV119();
+  const presidentId = getApprovedPresidentIdV119();
+  return getSeasonTeamsForSeason(seasonId).filter((seasonTeam) => {
+    if (!seasonTeam?.id || seasonTeam.id === ownId) return false;
+    if (seasonTeam.isHistorical || seasonTeam.isActive === false || seasonTeam.status === "NON_ATTIVA") return false;
+    if (presidentId && Array.isArray(seasonTeam.presidentIds) && seasonTeam.presidentIds.includes(presidentId)) return false;
+    return true;
+  });
+}
+
+function getPlayerMarketKeyV119(player) {
+  return [normalizePlayerName(player?.playerName || player?.name || ""), normalizeKey(player?.realTeam || "")].filter(Boolean).join("__");
+}
+
+function getRosterPlayerByKeyV119(seasonTeamId, playerKey) {
+  const roster = getRosterForSeasonTeam(getSeasonTeamById(seasonTeamId));
+  return (roster?.players || []).find((player) => getPlayerMarketKeyV119(player) === playerKey) || null;
+}
+
+function getRosterCountV119(seasonTeamId) {
+  const roster = getRosterForSeasonTeam(getSeasonTeamById(seasonTeamId));
+  return Number(roster?.players?.length || 0);
+}
+
+function getActiveTransferListingsV119(seasonId = getCurrentSeasonId()) {
+  return (state.raw?.transferListings || []).filter((listing) =>
+    listing.seasonId === seasonId && String(listing.status || "ACTIVE").toUpperCase() === "ACTIVE"
+  );
+}
+
+function getListingForPlayerV119(seasonTeamId, player) {
+  const key = getPlayerMarketKeyV119(player);
+  return getActiveTransferListingsV119(player?.seasonId || getCurrentSeasonId()).find((listing) =>
+    listing.seasonTeamId === seasonTeamId && (listing.playerKey === key || normalizePlayerName(listing.playerName) === normalizePlayerName(player?.playerName || ""))
+  ) || null;
+}
+
+function renderTransferBadgeV119(player, seasonTeamId) {
+  const listing = getListingForPlayerV119(seasonTeamId || player?.seasonTeamId, player);
+  if (!listing) return "";
+  if (isOwnSeasonTeamV119(listing.seasonTeamId)) {
+    return `<button class="status status-transfermarket transfer-badge-button" type="button" data-transfer-edit-listing="${escapeHtml(listing.id)}" title="Modifica o togli dal mercato">TRASF</button>`;
+  }
+  return `<span class="status status-transfermarket" title="Giocatore trasferibile">TRASF</span>`;
+}
+
+function renderRosterMarketActionV119(player, seasonTeamId) {
+  if (!isOwnSeasonTeamV119(seasonTeamId)) return "";
+  const listing = getListingForPlayerV119(seasonTeamId, player);
+  const playerKey = getPlayerMarketKeyV119(player);
+  if (listing) {
+    return `<button class="button button-secondary button-small" type="button" data-transfer-edit-listing="${escapeHtml(listing.id)}">Modifica</button>`;
+  }
+  return `<button class="button button-secondary button-small" type="button" data-transfer-list-player="${escapeHtml(playerKey)}" data-season-team-id="${escapeHtml(seasonTeamId)}">Metti in vendita</button>`;
+}
+
+renderRosterPlayerTable = function renderRosterPlayerTableV119(players) {
+  if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
+  const seasonTeamId = players.find((player) => player.seasonTeamId)?.seasonTeamId || "";
+  const showMarketColumn = isOwnSeasonTeamV119(seasonTeamId);
+  const colSpan = showMarketColumn ? 6 : 5;
+  return `
+    <div class="table-wrap mobile-tabular-wrap roster-table-wrap roster-inline-table-wrap">
+      <table class="mobile-tabular roster-main-table roster-player-table">
+        <thead>
+          <tr>
+            <th class="roster-col-player">${renderRosterSortButton("playerName", "Giocatore")}</th>
+            <th class="roster-col-role">${renderRosterSortButton("role", "R (RM)")}</th>
+            <th class="roster-col-team">${renderRosterSortButton("realTeam", "Sq")}</th>
+            <th class="number roster-col-cost">${renderRosterSortButton("cost", "Costo", true)}</th>
+            <th class="number roster-col-qta">${renderRosterSortButton("quotationCurrent", "Qt.A", true)}</th>
+            ${showMarketColumn ? `<th>Mercato</th>` : ""}
+          </tr>
+        </thead>
+        <tbody>
+          ${sortRosterPlayersForDisplay(players).map((player) => {
+            const currentSeasonTeamId = player.seasonTeamId || seasonTeamId;
+            return `
+            <tr>
+              <td data-label="Giocatore" class="roster-col-player"><strong>${escapeHtml(player.playerName || "-")}</strong> ${renderTransferBadgeV119(player, currentSeasonTeamId)}</td>
+              <td data-label="R (RM)" class="roster-col-role">${getRosterRoleDisplay(player)}</td>
+              <td data-label="Sq" class="roster-col-team">${escapeHtml(player.realTeam || "-")}</td>
+              <td data-label="Costo" class="number roster-col-cost">${escapeHtml(player.cost ?? "-")}</td>
+              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
+              ${showMarketColumn ? `<td data-label="Mercato">${renderRosterMarketActionV119(player, currentSeasonTeamId)}</td>` : ""}
+            </tr>`;
+          }).join("") || `<tr><td colspan="${colSpan}" class="muted center">Nessun giocatore in rosa.</td></tr>`}
+        </tbody>
+      </table>
+    </div>`;
+};
+
+function getTransferListingByIdV119(id) {
+  return (state.raw?.transferListings || []).find((listing) => listing.id === id) || null;
+}
+
+function getNegotiationByIdV119(id) {
+  return (state.raw?.transferNegotiations || []).find((item) => item.id === id) || null;
+}
+
+function serializePlayerRefV119(player, seasonTeamId) {
+  return {
+    playerKey: getPlayerMarketKeyV119(player),
+    playerName: player?.playerName || "",
+    realTeam: player?.realTeam || "",
+    rosterRole: player?.rosterRole || player?.role || player?.classicRole || "",
+    cost: player?.cost ?? player?.rosterCost ?? "",
+    seasonTeamId
+  };
+}
+
+async function savePlayerTransferListingV119(seasonTeamId, playerKey, conditions) {
+  const player = getRosterPlayerByKeyV119(seasonTeamId, playerKey);
+  if (!player) throw new Error("Giocatore non trovato nella rosa.");
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  const seasonId = seasonTeam?.seasonId || getCurrentSeasonId();
+  const docId = `${makeIdPart(seasonId)}_${makeIdPart(seasonTeamId)}_${makeIdPart(playerKey)}`.slice(0, 190);
+  const payload = {
+    ...serializePlayerRefV119(player, seasonTeamId),
+    seasonId,
+    seasonTeamId,
+    teamName: getSeasonTeamDisplayName(seasonTeamId),
+    conditions: String(conditions || "").trim(),
+    status: "ACTIVE",
+    createdBy: state.user?.uid || "",
+    updatedAt: serverTimestamp()
+  };
+  const existing = getTransferListingByIdV119(docId);
+  if (!existing) payload.createdAt = serverTimestamp();
+  await setDoc(doc(db, "transferListings", docId), payload, { merge: true });
+}
+
+async function removeTransferListingV119(listingId) {
+  await setDoc(doc(db, "transferListings", listingId), {
+    status: "REMOVED",
+    removedAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  }, { merge: true });
+}
+
+function renderTransferMarketPageV119() {
+  ensureTransferMarketDomV119();
+  const tableBody = document.getElementById("transferMarketTableBody");
+  const teamFilter = document.getElementById("transferMarketTeamFilter");
+  const searchInput = document.getElementById("transferMarketSearch");
+  if (!tableBody) return;
+
+  const seasonId = getCurrentSeasonId();
+  const listings = getActiveTransferListingsV119(seasonId);
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const selectedTeam = state.transferMarketTeamFilterV119 || teamFilter?.value || "all";
+  const search = normalizeKey(state.transferMarketSearchV119 || searchInput?.value || "");
+
+  if (teamFilter) {
+    teamFilter.innerHTML = `<option value="all">Tutte le squadre</option>${seasonTeams.map((team) => `<option value="${escapeHtml(team.id)}" ${team.id === selectedTeam ? "selected" : ""}>${escapeHtml(team.name || team.id)}</option>`).join("")}`;
+    teamFilter.value = seasonTeams.some((team) => team.id === selectedTeam) ? selectedTeam : "all";
+  }
+  if (searchInput && searchInput.value !== state.transferMarketSearchV119) searchInput.value = state.transferMarketSearchV119 || "";
+
+  const rows = listings
+    .filter((listing) => selectedTeam === "all" || listing.seasonTeamId === selectedTeam)
+    .filter((listing) => {
+      if (!search) return true;
+      return normalizeKey([listing.playerName, listing.teamName, getSeasonTeamDisplayName(listing.seasonTeamId), listing.realTeam, listing.rosterRole, listing.conditions].join(" ")).includes(search);
+    })
+    .sort((a, b) => String(a.playerName || "").localeCompare(String(b.playerName || ""), "it", { sensitivity: "base" }));
+
+  if (!state.transferMarketLoadedV119 && state.transferMarketLoadingV119) {
+    tableBody.innerHTML = `<tr><td colspan="7" class="muted center">Caricamento fantamercato...</td></tr>`;
+    return;
+  }
+
+  tableBody.innerHTML = rows.length ? rows.map((listing) => {
+    const own = isOwnSeasonTeamV119(listing.seasonTeamId);
+    return `
+      <tr>
+        <td data-label="Giocatore"><strong>${escapeHtml(listing.playerName || "-")}</strong> <span class="status status-transfermarket">TRASF</span></td>
+        <td data-label="Rosa">${renderSeasonTeamNameWithLogo(listing.seasonTeamId, { strong: false })}</td>
+        <td data-label="Ruolo">${escapeHtml(listing.rosterRole || "-")}</td>
+        <td data-label="Squadra"><span class="team-code">${escapeHtml(listing.realTeam || "-")}</span></td>
+        <td data-label="Costo" class="number">${formatListoneNumber(listing.cost)}</td>
+        <td data-label="Condizioni">${escapeHtml(listing.conditions || "-")}</td>
+        <td data-label="Azione" class="transfer-market-actions">
+          ${own
+            ? `<button class="button button-secondary button-small" type="button" data-transfer-edit-listing="${escapeHtml(listing.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-transfer-remove-listing="${escapeHtml(listing.id)}">Togli</button>`
+            : `<button class="button button-primary button-small" type="button" data-transfer-propose-listing="${escapeHtml(listing.id)}">Fai proposta</button>`}
+        </td>
+      </tr>`;
+  }).join("") : `<tr><td colspan="7" class="muted center">Nessun giocatore trasferibile per questa stagione.</td></tr>`;
+}
+
+function formatPlayerRefsV119(players) {
+  if (!players?.length) return "-";
+  return players.map((player) => `${player.playerName || "-"}${player.realTeam ? ` (${player.realTeam})` : ""}`).join(", ");
+}
+
+function renderFmPartV119(value) {
+  const amount = Number(value || 0);
+  return amount ? `${formatFm(amount)} FM` : "-";
+}
+
+function renderNegotiationStatusBadgeV119(status) {
+  const normalized = String(status || "PENDING").toUpperCase();
+  const labels = { PENDING: "In attesa", ACCEPTED: "Accettata", REJECTED: "Rifiutata", CANCELLED: "Annullata" };
+  const cls = normalized === "ACCEPTED" ? "status-ok" : normalized === "REJECTED" || normalized === "CANCELLED" ? "status-danger" : "status-warning";
+  return `<span class="status ${cls}">${escapeHtml(labels[normalized] || normalized)}</span>`;
+}
+
+function getNegotiationTitleV119(item, perspectiveTeamId) {
+  const otherId = item.fromSeasonTeamId === perspectiveTeamId ? item.toSeasonTeamId : item.fromSeasonTeamId;
+  const direction = item.fromSeasonTeamId === perspectiveTeamId ? "A" : "Da";
+  return `${direction} ${getSeasonTeamDisplayName(otherId) || "squadra"}`;
+}
+
+function renderNegotiationCardV119(item, kind, currentSeasonTeamId) {
+  const isSent = kind === "sent";
+  const canCancel = isSent && item.status === "PENDING";
+  const canAnswer = !isSent && item.status === "PENDING";
+  return `
+    <details class="trade-card ${isSent ? "trade-card-sent" : "trade-card-received"}">
+      <summary>
+        <span><strong>${escapeHtml(getNegotiationTitleV119(item, currentSeasonTeamId))}</strong><small>${escapeHtml(item.createdAt?.toDate ? item.createdAt.toDate().toLocaleString("it-IT") : item.createdAt || "")}</small></span>
+        ${renderNegotiationStatusBadgeV119(item.status)}
+      </summary>
+      <div class="trade-card-body">
+        <div class="trade-summary-grid">
+          <div><span class="metric-label">Offerti</span><strong>${escapeHtml(formatPlayerRefsV119(item.offeredPlayers || []))}</strong><small>${escapeHtml(renderFmPartV119(item.offeredFm))}</small></div>
+          <div><span class="metric-label">Richiesti</span><strong>${escapeHtml(formatPlayerRefsV119(item.requestedPlayers || []))}</strong><small>${escapeHtml(renderFmPartV119(item.requestedFm))}</small></div>
+        </div>
+        ${item.note ? `<p class="trade-note">${escapeHtml(item.note)}</p>` : ""}
+        <div class="form-actions trade-actions">
+          ${canCancel ? `<button class="button button-danger button-small" type="button" data-trade-cancel="${escapeHtml(item.id)}">Annulla proposta</button>` : ""}
+          ${canAnswer ? `<button class="button button-primary button-small" type="button" data-trade-accept="${escapeHtml(item.id)}">Accetta</button><button class="button button-danger button-small" type="button" data-trade-reject="${escapeHtml(item.id)}">Rifiuta</button>` : ""}
+        </div>
+      </div>
+    </details>`;
+}
+
+function renderNegotiationsListV119(currentSeasonTeamId, kind) {
+  const seasonId = getCurrentSeasonId();
+  const sent = kind === "sent";
+  const items = (state.raw?.transferNegotiations || [])
+    .filter((item) => item.seasonId === seasonId)
+    .filter((item) => sent ? item.fromSeasonTeamId === currentSeasonTeamId : item.toSeasonTeamId === currentSeasonTeamId)
+    .sort((a, b) => String(b.createdAt?.seconds || b.createdAt || "").localeCompare(String(a.createdAt?.seconds || a.createdAt || ""), "it"));
+  if (!items.length) return `<p class="muted">Nessuna trattativa ${sent ? "inviata" : "ricevuta"}.</p>`;
+  return items.map((item) => renderNegotiationCardV119(item, kind, currentSeasonTeamId)).join("");
+}
+
+function renderTradePlayerOptionsV119(seasonTeamId, selectedKeys = []) {
+  const selected = new Set(selectedKeys || []);
+  const roster = getRosterForSeasonTeam(getSeasonTeamById(seasonTeamId));
+  return sortRosterPlayersForDisplay(roster?.players || []).map((player) => {
+    const key = getPlayerMarketKeyV119(player);
+    return `<option value="${escapeHtml(key)}" ${selected.has(key) ? "selected" : ""}>${escapeHtml(player.playerName || "-")} · ${escapeHtml(player.realTeam || "-")}</option>`;
+  }).join("");
+}
+
+function getSelectedValuesV119(id) {
+  const node = document.getElementById(id);
+  return node ? Array.from(node.selectedOptions || []).map((option) => option.value).filter(Boolean) : [];
+}
+
+function getSelectedPlayerRefsV119(seasonTeamId, keys) {
+  return (keys || []).map((key) => {
+    const player = getRosterPlayerByKeyV119(seasonTeamId, key);
+    return player ? serializePlayerRefV119(player, seasonTeamId) : null;
+  }).filter(Boolean);
+}
+
+function getTradeFormValidationV119() {
+  const approved = getApprovedTeamUser?.();
+  const fromTeamId = approved?.seasonTeamId || "";
+  const toTeamId = document.getElementById("tradeTargetTeam")?.value || "";
+  const offeredKeys = getSelectedValuesV119("tradeOfferedPlayers");
+  const requestedKeys = getSelectedValuesV119("tradeRequestedPlayers");
+  const offeredFm = parseDecimalValue(document.getElementById("tradeOfferedFm")?.value || "") || 0;
+  const requestedFm = parseDecimalValue(document.getElementById("tradeRequestedFm")?.value || "") || 0;
+  const messages = [];
+
+  if (!approved) messages.push("Account presidente non attivo.");
+  if (!toTeamId) messages.push("Seleziona la squadra con cui vuoi trattare.");
+  if (!offeredKeys.length && !requestedKeys.length && !offeredFm && !requestedFm) messages.push("Inserisci almeno un giocatore o un rimborso FM nella proposta.");
+  if (!requestedKeys.length && !requestedFm) messages.push("Inserisci almeno cosa stai chiedendo alla squadra destinataria.");
+  if (offeredFm < 0 || requestedFm < 0) messages.push("I rimborsi FM devono essere positivi.");
+
+  const fromBalance = getTeamFmBalance(fromTeamId);
+  const toBalance = getTeamFmBalance(toTeamId);
+  if (offeredFm > fromBalance) messages.push(`Non puoi offrire ${formatFm(offeredFm)} FM: saldo disponibile ${formatFm(fromBalance)}.`);
+  if (requestedFm > toBalance) messages.push(`La squadra destinataria non ha ${formatFm(requestedFm)} FM disponibili.`);
+
+  const fromAfter = getRosterCountV119(fromTeamId) - offeredKeys.length + requestedKeys.length;
+  const toAfter = getRosterCountV119(toTeamId) - requestedKeys.length + offeredKeys.length;
+  if (fromAfter > 30) messages.push(`La tua rosa arriverebbe a ${fromAfter} giocatori: massimo 30.`);
+  if (toAfter > 30) messages.push(`La rosa destinataria arriverebbe a ${toAfter} giocatori: massimo 30.`);
+
+  return { valid: messages.length === 0, messages, fromTeamId, toTeamId, offeredKeys, requestedKeys, offeredFm, requestedFm };
+}
+
+function updateTradeTargetPlayersV119() {
+  const targetSelect = document.getElementById("tradeTargetTeam");
+  const requestedSelect = document.getElementById("tradeRequestedPlayers");
+  if (!targetSelect || !requestedSelect) return;
+  const selected = getSelectedValuesV119("tradeRequestedPlayers");
+  requestedSelect.innerHTML = renderTradePlayerOptionsV119(targetSelect.value, selected);
+}
+
+function validateTradeFormV119() {
+  const status = document.getElementById("tradeValidationStatus");
+  const button = document.getElementById("tradeSubmitButton");
+  const validation = getTradeFormValidationV119();
+  if (status) {
+    status.innerHTML = validation.messages.length
+      ? validation.messages.map((message) => `<span class="trade-alert">${escapeHtml(message)}</span>`).join("")
+      : `<span class="trade-alert trade-alert-ok">Proposta valida. Puoi inviarla.</span>`;
+  }
+  if (button) button.disabled = !validation.valid;
+  return validation;
+}
+
+function renderUserAreaApprovedV119(approved) {
+  const seasonTeamName = getSeasonTeamDisplayName(approved.seasonTeamId) || approved.teamName || "Squadra";
+  const seasonId = approved.seasonId || getCurrentSeasonId();
+  const prefill = getTransferListingByIdV119(state.prefillTransferListingIdV119 || "");
+  const prefillTargetTeamId = prefill?.seasonTeamId || "";
+  const prefillPlayerKey = prefill?.playerKey ? [prefill.playerKey] : [];
+  const targetTeams = getActiveSeasonTeamsForTradesV119(seasonId);
+  const selectedTargetTeamId = prefillTargetTeamId && targetTeams.some((team) => team.id === prefillTargetTeamId) ? prefillTargetTeamId : targetTeams[0]?.id || "";
+  const targetOptions = targetTeams.map((team) => `<option value="${escapeHtml(team.id)}" ${team.id === selectedTargetTeamId ? "selected" : ""}>${escapeHtml(team.name || team.id)}</option>`).join("");
+  const offeredOptions = renderTradePlayerOptionsV119(approved.seasonTeamId, []);
+  const requestedOptions = renderTradePlayerOptionsV119(selectedTargetTeamId, prefillTargetTeamId ? prefillPlayerKey : []);
+
+  return `
+    <section class="panel team-area-summary-panel">
+      <div class="panel-header compact"><div><h2>${escapeHtml(seasonTeamName)}</h2><p>Gestisci trattative, comunicati e profilo squadra.</p></div></div>
+      <div class="cards-grid user-request-grid">
+        <article class="metric-card"><span class="metric-label">Utente</span><strong>${escapeHtml(getCurrentUserDisplayName())}</strong></article>
+        <article class="metric-card"><span class="metric-label">Ruolo</span><strong>Presidente</strong></article>
+        <article class="metric-card"><span class="metric-label">Stato</span><strong>Attivo</strong></article>
+      </div>
+      <div class="team-area-profile-action"><button class="button button-secondary" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}">Apri pagina squadra</button></div>
+    </section>
+
+    <section class="panel trade-proposal-panel">
+      <div class="panel-header compact"><div><h2>Proponi svincolo</h2><p>Avvia una trattativa con una squadra attiva: offri giocatori e/o FM e chiedi giocatori e/o FM.</p></div></div>
+      ${prefill ? `<p class="notice notice-success trade-prefill-notice">Proposta precompilata per <strong>${escapeHtml(prefill.playerName || "giocatore")}</strong> di ${escapeHtml(getSeasonTeamDisplayName(prefill.seasonTeamId))}.</p>` : ""}
+      <form id="tradeProposalForm" class="form-grid trade-proposal-form">
+        <label class="span-2">Squadra con cui trattare<select id="tradeTargetTeam" class="input" required>${targetOptions}</select></label>
+        <label>Giocatori che offri<select id="tradeOfferedPlayers" class="input" multiple size="7">${offeredOptions}</select><small class="field-hint">Puoi selezionare uno o più giocatori della tua rosa.</small></label>
+        <label>Giocatori che chiedi<select id="tradeRequestedPlayers" class="input" multiple size="7">${requestedOptions}</select><small class="field-hint">La lista dipende dalla squadra selezionata.</small></label>
+        <label>FM che offri<input id="tradeOfferedFm" class="input" type="text" inputmode="decimal" placeholder="Es. 10,5" /></label>
+        <label>FM che chiedi<input id="tradeRequestedFm" class="input" type="text" inputmode="decimal" placeholder="Es. 5" /></label>
+        <label class="span-2">Messaggio<textarea id="tradeProposalNote" class="input textarea" rows="3" placeholder="Scrivi una nota per il presidente destinatario..."></textarea></label>
+        <div id="tradeValidationStatus" class="trade-validation span-2"></div>
+        <div class="form-actions span-2"><button id="tradeSubmitButton" class="button button-primary" type="submit" disabled>Invia proposta</button><span id="tradeProposalStatus" class="form-status"></span></div>
+      </form>
+    </section>
+
+    <section class="panel trade-list-panel">
+      <div class="panel-header compact"><div><h2>Trattative</h2><p>Storico delle proposte inviate e ricevute nella stagione selezionata.</p></div></div>
+      <div class="grid-two trade-lists-grid">
+        <article class="trade-list-column"><h3>Inviate</h3>${renderNegotiationsListV119(approved.seasonTeamId, "sent")}</article>
+        <article class="trade-list-column"><h3>Ricevute</h3>${renderNegotiationsListV119(approved.seasonTeamId, "received")}</article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header compact"><div><h2>Invia comunicato squadra</h2><p>Il comunicato sarà pubblicato in News e nella pagina squadra dopo approvazione.</p></div></div>
+      <form id="teamNewsRequestForm" class="form-grid">
+        <label class="span-2">Titolo<input id="teamNewsRequestTitle" class="input" type="text" required /></label>
+        <label class="span-2">Testo<textarea id="teamNewsRequestBody" class="input textarea" rows="5" required></textarea></label>
+        <div class="form-actions span-2"><button class="button button-primary" type="submit">Invia comunicato</button><span id="teamNewsRequestStatus" class="form-status"></span></div>
+      </form>
+    </section>`;
+}
+
+renderUserAreaV34 = function renderUserAreaV119() {
+  const target = document.getElementById("teamAreaBody");
+  if (!target) return;
+  const approved = getApprovedTeamUser?.();
+  if (!state.user || !approved) {
+    const previous = renderUserAreaBeforeV42 || renderUserAreaBeforeV34;
+    if (typeof previous === "function") previous();
+    return;
+  }
+  target.innerHTML = renderUserAreaApprovedV119(approved);
+  attachUserAreaHandlersV119();
+};
+
+function attachUserAreaHandlersV119() {
+  const targetTeam = document.getElementById("tradeTargetTeam");
+  const tradeForm = document.getElementById("tradeProposalForm");
+  targetTeam?.addEventListener("change", () => {
+    updateTradeTargetPlayersV119();
+    validateTradeFormV119();
+  });
+  ["tradeOfferedPlayers", "tradeRequestedPlayers", "tradeOfferedFm", "tradeRequestedFm", "tradeProposalNote"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("input", validateTradeFormV119);
+    document.getElementById(id)?.addEventListener("change", validateTradeFormV119);
+  });
+  validateTradeFormV119();
+
+  tradeForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const validation = validateTradeFormV119();
+    if (!validation.valid) return;
+    try {
+      const payload = {
+        seasonId: getCurrentSeasonId(),
+        fromSeasonTeamId: validation.fromTeamId,
+        fromTeamName: getSeasonTeamDisplayName(validation.fromTeamId),
+        toSeasonTeamId: validation.toTeamId,
+        toTeamName: getSeasonTeamDisplayName(validation.toTeamId),
+        offeredPlayers: getSelectedPlayerRefsV119(validation.fromTeamId, validation.offeredKeys),
+        requestedPlayers: getSelectedPlayerRefsV119(validation.toTeamId, validation.requestedKeys),
+        offeredFm: validation.offeredFm,
+        requestedFm: validation.requestedFm,
+        note: document.getElementById("tradeProposalNote")?.value.trim() || "",
+        status: "PENDING",
+        source: state.prefillTransferListingIdV119 ? "transfer-market" : "direct",
+        listingId: state.prefillTransferListingIdV119 || "",
+        createdBy: state.user?.uid || "",
+        createdByName: getCurrentUserDisplayName(),
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      };
+      await addDoc(collection(db, "transferNegotiations"), payload);
+      state.prefillTransferListingIdV119 = "";
+      await loadTransferMarketCollectionsV119();
+      renderUserAreaV34();
+      renderTransferMarketPageV119();
+      showMessage("tradeProposalStatus", "Proposta inviata.");
+    } catch (error) {
+      console.error(error);
+      showMessage("tradeProposalStatus", error?.message || "Errore invio proposta.", true);
+    }
+  });
+
+  document.getElementById("teamNewsRequestForm")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitTeamRequestV34("TEAM_NEWS", {
+      title: document.getElementById("teamNewsRequestTitle")?.value.trim() || "Comunicato squadra",
+      body: document.getElementById("teamNewsRequestBody")?.value || ""
+    }, "teamNewsRequestStatus");
+    event.target.reset();
+  });
+}
+
+async function updateNegotiationStatusV119(id, status) {
+  const item = getNegotiationByIdV119(id);
+  const currentTeamId = getApprovedSeasonTeamIdV119();
+  if (!item) throw new Error("Trattativa non trovata.");
+  if (status === "CANCELLED" && item.fromSeasonTeamId !== currentTeamId) throw new Error("Solo chi invia può annullare la trattativa.");
+  if ((status === "ACCEPTED" || status === "REJECTED") && item.toSeasonTeamId !== currentTeamId) throw new Error("Solo chi riceve può rispondere alla trattativa.");
+  await updateDoc(doc(db, "transferNegotiations", id), {
+    status,
+    updatedAt: serverTimestamp(),
+    [`${status.toLowerCase()}At`]: serverTimestamp(),
+    [`${status.toLowerCase()}By`]: state.user?.uid || ""
+  });
+  await loadTransferMarketCollectionsV119();
+  renderUserAreaV34();
+}
+
+function renderTeamProfileNegotiationsV119(seasonTeamId) {
+  const viewerTeamId = getApprovedSeasonTeamIdV119();
+  if (!seasonTeamId || (!state.isAdmin && !viewerTeamId)) return "";
+  const rows = (state.raw?.transferNegotiations || [])
+    .filter((item) => item.seasonId === getCurrentSeasonId())
+    .filter((item) => item.fromSeasonTeamId === seasonTeamId || item.toSeasonTeamId === seasonTeamId)
+    .filter((item) => state.isAdmin || item.fromSeasonTeamId === viewerTeamId || item.toSeasonTeamId === viewerTeamId)
+    .sort((a, b) => String(b.createdAt?.seconds || b.createdAt || "").localeCompare(String(a.createdAt?.seconds || a.createdAt || ""), "it"));
+  if (!rows.length) return "";
+  return `<section class="panel detail-section team-profile-trades"><h3>Trattative</h3>${rows.map((item) => renderNegotiationCardV119(item, item.fromSeasonTeamId === seasonTeamId ? "sent" : "received", seasonTeamId)).join("")}</section>`;
+}
+
+const renderTeamProfileContentBeforeV119 = renderTeamProfileContentV42;
+renderTeamProfileContentV42 = function renderTeamProfileContentWithTradesV119(snapshot) {
+  const html = renderTeamProfileContentBeforeV119(snapshot);
+  return html + renderTeamProfileNegotiationsV119(snapshot?.seasonTeamId || state.activeTeamProfileSeasonTeamId || "");
+};
+
+const renderAllBeforeV119 = renderAll;
+renderAll = function renderAllV119() {
+  ensureTransferMarketDomV119();
+  const result = renderAllBeforeV119();
+  renderTransferMarketPageV119();
+  ensureTransferMarketDataV119();
+  return result;
+};
+
+document.addEventListener("change", (event) => {
+  const teamFilter = event.target.closest("#transferMarketTeamFilter");
+  if (teamFilter) {
+    state.transferMarketTeamFilterV119 = teamFilter.value || "all";
+    renderTransferMarketPageV119();
+  }
+}, true);
+
+document.addEventListener("input", (event) => {
+  const search = event.target.closest("#transferMarketSearch");
+  if (search) {
+    state.transferMarketSearchV119 = search.value || "";
+    renderTransferMarketPageV119();
+  }
+}, true);
+
+document.addEventListener("click", async (event) => {
+  const listButton = event.target.closest("[data-transfer-list-player]");
+  const editButton = event.target.closest("[data-transfer-edit-listing]");
+  const removeButton = event.target.closest("[data-transfer-remove-listing]");
+  const proposeButton = event.target.closest("[data-transfer-propose-listing]");
+  const cancelButton = event.target.closest("[data-trade-cancel]");
+  const acceptButton = event.target.closest("[data-trade-accept]");
+  const rejectButton = event.target.closest("[data-trade-reject]");
+
+  try {
+    if (listButton) {
+      event.preventDefault();
+      const seasonTeamId = listButton.dataset.seasonTeamId;
+      if (!isOwnSeasonTeamV119(seasonTeamId)) return;
+      const player = getRosterPlayerByKeyV119(seasonTeamId, listButton.dataset.transferListPlayer);
+      const conditions = window.prompt(`Condizioni per ${player?.playerName || "il giocatore"}: cosa cerchi per trattare?`, "");
+      if (conditions === null) return;
+      await savePlayerTransferListingV119(seasonTeamId, listButton.dataset.transferListPlayer, conditions);
+      await loadTransferMarketCollectionsV119();
+      renderTeamsTable?.();
+      renderTransferMarketPageV119();
+      return;
+    }
+
+    if (editButton) {
+      event.preventDefault();
+      const listing = getTransferListingByIdV119(editButton.dataset.transferEditListing);
+      if (!listing || !isOwnSeasonTeamV119(listing.seasonTeamId)) return;
+      const next = window.prompt(`Modifica condizioni per ${listing.playerName || "il giocatore"}. Lascia vuoto e conferma per togliere dal mercato.`, listing.conditions || "");
+      if (next === null) return;
+      if (!String(next).trim() && window.confirm("Vuoi togliere il giocatore dal mercato?")) await removeTransferListingV119(listing.id);
+      else await savePlayerTransferListingV119(listing.seasonTeamId, listing.playerKey, next);
+      await loadTransferMarketCollectionsV119();
+      renderTeamsTable?.();
+      renderTransferMarketPageV119();
+      renderUserAreaV34?.();
+      return;
+    }
+
+    if (removeButton) {
+      event.preventDefault();
+      const listing = getTransferListingByIdV119(removeButton.dataset.transferRemoveListing);
+      if (!listing || !isOwnSeasonTeamV119(listing.seasonTeamId)) return;
+      if (!window.confirm(`Togli ${listing.playerName || "questo giocatore"} dal mercato?`)) return;
+      await removeTransferListingV119(listing.id);
+      await loadTransferMarketCollectionsV119();
+      renderTeamsTable?.();
+      renderTransferMarketPageV119();
+      return;
+    }
+
+    if (proposeButton) {
+      event.preventDefault();
+      if (!getApprovedTeamUser?.()) {
+        window.alert("Accedi con un account presidente attivo per fare una proposta.");
+        return;
+      }
+      state.prefillTransferListingIdV119 = proposeButton.dataset.transferProposeListing || "";
+      renderUserAreaV34?.();
+      if (typeof setAppPageV42 === "function") setAppPageV42("teamarea");
+      else window.location.hash = "#teamarea";
+      return;
+    }
+
+    if (cancelButton) {
+      event.preventDefault();
+      if (window.confirm("Annullare questa proposta?")) await updateNegotiationStatusV119(cancelButton.dataset.tradeCancel, "CANCELLED");
+      return;
+    }
+    if (acceptButton) {
+      event.preventDefault();
+      if (window.confirm("Accettare questa trattativa?")) await updateNegotiationStatusV119(acceptButton.dataset.tradeAccept, "ACCEPTED");
+      return;
+    }
+    if (rejectButton) {
+      event.preventDefault();
+      if (window.confirm("Rifiutare questa trattativa?")) await updateNegotiationStatusV119(rejectButton.dataset.tradeReject, "REJECTED");
+    }
+  } catch (error) {
+    console.error(error);
+    setError(error?.message || "Operazione fantamercato non riuscita.");
+  }
+}, true);
+
+ensureTransferMarketDomV119();
+ensureTransferMarketDataV119();

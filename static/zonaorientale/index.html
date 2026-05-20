@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="Inizio Playoff - ZonaOrientale Salerno" />
   <meta name="twitter:description" content="COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA - In occasione dell’inizio dei playoff, augurio a tutte le squadre partecipanti per una grande giornata di fantacampionato." />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=118" />
+  <link rel="stylesheet" href="./assets/styles.css?v=119" />
 </head>
 <body>
   <header class="app-header">
@@ -47,6 +47,7 @@
       <a href="#dashboard" class="nav-link" data-page-link="dashboard">Dashboard</a>
       <a href="#news" class="nav-link" data-page-link="news">News</a>
       <a href="#clubs" class="nav-link" data-page-link="clubs">Rose</a>
+      <a href="#fantamercato" class="nav-link" data-page-link="fantamercato">Fantamercato</a>
       <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
       <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
@@ -184,6 +185,48 @@
             </thead>
             <tbody id="marketActivityTableBody">
               <tr><td colspan="6" class="muted center">Caricamento...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="app-page" data-page="fantamercato" aria-labelledby="fantamercatoTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Scambi e trasferibili</p>
+          <h2 id="fantamercatoTitle">Fantamercato</h2>
+          <p>Giocatori messi in vendita dai presidenti, condizioni richieste e avvio rapido di una proposta di trattativa.</p>
+        </div>
+      </div>
+      <section class="panel transfer-market-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Giocatori trasferibili</h2>
+            <p>Consulta i giocatori sul mercato e, se hai un account presidente attivo, apri una proposta di trattativa.</p>
+          </div>
+          <div class="filters-row">
+            <select id="transferMarketTeamFilter" class="input filter-input" aria-label="Filtro squadra fantamercato">
+              <option value="all">Tutte le squadre</option>
+            </select>
+            <input id="transferMarketSearch" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, condizioni..." />
+          </div>
+        </div>
+        <div class="table-wrap mobile-tabular-wrap transfer-market-table-wrap">
+          <table class="mobile-tabular transfer-market-table">
+            <thead>
+              <tr>
+                <th>Giocatore</th>
+                <th>Rosa</th>
+                <th>Ruolo</th>
+                <th>Squadra</th>
+                <th class="number">Costo</th>
+                <th>Condizioni</th>
+                <th>Azione</th>
+              </tr>
+            </thead>
+            <tbody id="transferMarketTableBody">
+              <tr><td colspan="7" class="muted center">Caricamento...</td></tr>
             </tbody>
           </table>
         </div>
@@ -1462,6 +1505,7 @@
     </div>
     <a href="#news" class="mobile-more-link" data-page-link="news">News</a>
     <a href="#regolamento" class="mobile-more-link" data-page-link="regolamento">Regolamento</a>
+    <a href="#fantamercato" class="mobile-more-link" data-page-link="fantamercato">Fantamercato</a>
     <a href="#listone" class="mobile-more-link" data-page-link="listone">Listone</a>
     <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-page-link="admin">Admin</a>
   </nav>
@@ -1475,11 +1519,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V118 sezioni grafiche verdi · Ultimo aggiornamento 20/05/2026</p>
+    <p>ZonaOrientale Salerno · V117 admin deleted e badge Firebase · Ultimo aggiornamento 20/05/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=118"></script>
+  <script type="module" src="./assets/app.js?v=119"></script>
 </body>
 </html>
 
