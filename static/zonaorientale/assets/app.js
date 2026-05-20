@@ -12751,3 +12751,171 @@ renderAll = function renderAllV141() {
   renderTransferMarketMobileCardsV141();
   return result;
 };
+
+
+/* V142 - Mobile UI role-aware: admin senza squadra e accesso a tutte le rose. */
+function getMobileCurrentSeasonTeamsCountV142(seasonId) {
+  return (state.raw?.seasonTeams || []).filter((team) => !seasonId || team.seasonId === seasonId).length;
+}
+
+function getMobileRoleDestinationV142() {
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  if (currentTeamId) {
+    return { page: "teamarea", icon: "👥", label: "Squadra", title: "Area squadra" };
+  }
+  if (state.isAdmin) {
+    return { page: "admin", icon: "🛠️", label: "Admin", title: "Admin" };
+  }
+  return { page: "clubs", icon: "👥", label: "Rose", title: "Rose" };
+}
+
+function syncMobileRoleNavigationV142() {
+  const destination = getMobileRoleDestinationV142();
+  const nav = document.querySelector(".mobile-bottom-nav-v141");
+  const roleLink = nav?.querySelectorAll(".mobile-bottom-link[data-page-link]")?.[1];
+  if (roleLink) {
+    roleLink.href = `#${destination.page}`;
+    roleLink.dataset.pageLink = destination.page;
+    roleLink.innerHTML = `<span class="mobile-nav-icon">${destination.icon}</span><span>${escapeHtml(destination.label)}</span>`;
+    roleLink.classList.toggle("active", state.currentPage === destination.page);
+  }
+
+  const roseLink = document.querySelector('#mobileMoreSheet [data-page-link="clubs"]');
+  if (roseLink) roseLink.textContent = "Tutte le rose";
+
+  updateMobileNavStateV142();
+}
+
+function updateMobileNavStateV142() {
+  const bottomPages = new Set(Array.from(document.querySelectorAll(".mobile-bottom-nav-v141 [data-page-link]")).map((link) => link.dataset.pageLink));
+  const moreButton = document.getElementById("mobileMoreBtn");
+  moreButton?.classList.toggle("active", !bottomPages.has(state.currentPage));
+}
+updateMobileNavState = updateMobileNavStateV142;
+
+function renderMobileBlockDashboardV142() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target) return;
+
+  const seasonId = getCurrentSeasonId();
+  const activeCompetitions = (typeof getSeasonCompetitionsForPublicDisplayV52 === "function" ? getSeasonCompetitionsForPublicDisplayV52(seasonId) : [])
+    .filter((competition) => String(competition.status || "").toUpperCase() === "ATTIVA");
+  const { competition: nextCompetition, match: nextMatch } = getMobileHomeNextMatchV140(seasonId);
+  const latestNews = getMobileHomeLatestNewsV140();
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  const currentTeamName = currentTeamId ? getSeasonTeamDisplayName(currentTeamId) : "";
+  const rosterCount = currentTeamId && typeof getRosterCountV119 === "function" ? getRosterCountV119(currentTeamId) : 0;
+  const fmBalance = currentTeamId && typeof getTeamFmBalance === "function" ? getTeamFmBalance(currentTeamId) : null;
+  const alerts = document.getElementById("metricAlerts")?.textContent?.trim() || "0";
+  const alertReason = document.getElementById("metricAlertsReason")?.textContent?.trim() || "Nessun alert.";
+  const listingsCount = getMobileHomeActiveListingsCountV140(seasonId);
+  const negotiationsCount = getMobileHomePendingNegotiationsCountV140();
+  const matchMeta = getMobileHomeMatchMetaV140(nextMatch);
+  const teamCount = getMobileCurrentSeasonTeamsCountV142(seasonId);
+  const matchValue = nextCompetition
+    ? `${getCompetitionPublicDisplayNameV110?.(nextCompetition) || getCompetitionDisplayNameV111?.(nextCompetition) || nextCompetition.name || "Competizione"}${matchMeta ? ` · ${matchMeta}` : ""}`
+    : "Calendario aggiornato";
+
+  const marketActions = [renderMobileHomeActionV140("Vai al mercato", "fantamercato")];
+  if (currentTeamId) marketActions.push(renderMobileHomeActionV140("Trattative", "teamarea"));
+  else if (state.isAdmin) marketActions.push(renderMobileHomeActionV140("Admin", "admin"));
+
+  const roleCard = currentTeamId
+    ? renderMobileHomeCardV140({
+        icon: "👥",
+        kicker: "Area squadra",
+        title: currentTeamName,
+        value: `${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}`,
+        description: "Gestisci rosa, comunicati, proposte e giocatori trasferibili.",
+        actions: [renderMobileHomeActionV140("Apri area squadra", "teamarea"), renderMobileHomeActionV140("Tutte le rose", "clubs")]
+      })
+    : state.isAdmin
+      ? renderMobileHomeCardV140({
+          icon: "🛠️",
+          kicker: "Admin",
+          title: "Pannello amministrazione",
+          value: "Gestione lega",
+          description: "L'admin non è legato a una squadra: usa il pannello Admin per gestire utenti, dati e snapshot.",
+          actions: [renderMobileHomeActionV140("Apri Admin", "admin"), renderMobileHomeActionV140("Tutte le rose", "clubs")]
+        })
+      : renderMobileHomeCardV140({
+          icon: "👥",
+          kicker: "Rose",
+          title: "Rose della lega",
+          value: teamCount ? `${teamCount} squadre` : "Stagione corrente",
+          description: "Consulta le rose e le schede delle squadre della stagione.",
+          actions: [renderMobileHomeActionV140("Vedi tutte le rose", "clubs")]
+        });
+
+  const cards = [
+    renderMobileHomeCardV140({
+      icon: "⚠️",
+      kicker: "Alert",
+      title: `${alerts} da controllare`,
+      value: alertReason.replace(/^Motivo:\s*/i, ""),
+      description: "Stato rapido della stagione e delle competizioni attive.",
+      primary: Number(alerts) > 0,
+      actions: [renderMobileHomeActionV140("Vai alla dashboard", "dashboard")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🏆",
+      kicker: "Competizioni",
+      title: "Prossime partite",
+      value: getMobileHomeMatchTextV140(nextMatch),
+      description: activeCompetitions.length ? `${activeCompetitions.length} competizioni attive nella stagione.` : "Consulta calendari, classifiche e risultati.",
+      primary: true,
+      actions: [renderMobileHomeActionV140("Apri competizioni", "competitions")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🔁",
+      kicker: "Fantamercato",
+      title: "Mercato e trattative",
+      value: `${listingsCount} trasferibili · ${negotiationsCount} trattative aperte`,
+      description: currentTeamId ? "Guarda i giocatori sul mercato e invia una proposta." : "Consulta i giocatori trasferibili; le proposte sono riservate ai presidenti.",
+      actions: marketActions
+    }),
+    roleCard
+  ];
+
+  if (currentTeamId || state.isAdmin) {
+    cards.push(renderMobileHomeCardV140({
+      icon: "👥",
+      kicker: "Rose",
+      title: "Tutte le rose",
+      value: teamCount ? `${teamCount} squadre` : "Stagione corrente",
+      description: "Ogni presidente può consultare tutte le rose della lega, non solo la propria.",
+      actions: [renderMobileHomeActionV140("Apri rose", "clubs")]
+    }));
+  }
+
+  cards.push(
+    renderMobileHomeCardV140({
+      icon: "📋",
+      kicker: "Listone",
+      title: "Cerca giocatori",
+      value: "Quotazioni, ruoli e stato",
+      description: "Apri il listone per consultare rapidamente i giocatori.",
+      actions: [renderMobileHomeActionV140("Apri listone", "listone")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "📰",
+      kicker: "Comunicati",
+      title: latestNews?.title || "Ultime news",
+      value: latestNews ? (typeof formatNewsDateTimeV79 === "function" ? formatNewsDateTimeV79(getNewsRawDateValueV79(latestNews)) : "") : "Nessun comunicato recente",
+      description: "Leggi comunicati ufficiali e aggiornamenti della lega.",
+      actions: [renderMobileHomeActionV140("Leggi comunicati", "news")]
+    })
+  );
+
+  target.innerHTML = cards.join("");
+  syncMobileRoleNavigationV142();
+}
+renderMobileBlockDashboardV140 = renderMobileBlockDashboardV142;
+
+const renderAllBeforeV142 = renderAll;
+renderAll = function renderAllV142() {
+  const result = renderAllBeforeV142();
+  syncMobileRoleNavigationV142();
+  renderMobileBlockDashboardV142();
+  return result;
+};
