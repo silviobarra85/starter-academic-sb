@@ -39,7 +39,7 @@ import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
-import { setupMobileTables } from "./js/mobile/mobile-tables.js?v=85";
+import { setupMobileTables } from "./js/mobile/mobile-tables.js";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
