@@ -13342,3 +13342,21 @@ html[data-theme="light"] .trade-summary-grid > div {
     min-height: 132px;
   }
 }
+
+/* V122 - Admin Accetta utenti: sezioni richieste/approvati. */
+.admin-subsection-block {
+  border: 1px solid rgba(25, 195, 125, 0.22);
+  border-radius: 18px;
+  padding: 1rem;
+  margin: 0.85rem 0;
+  background: linear-gradient(135deg, rgba(25, 195, 125, 0.08), rgba(20, 184, 166, 0.035));
+}
+
+.admin-subsection-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.admin-user-approved-item {
+  opacity: 0.96;
+}

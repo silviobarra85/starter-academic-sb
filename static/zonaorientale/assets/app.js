@@ -12537,3 +12537,91 @@ loadTransferMarketCollectionsV119 = async function loadTransferMarketCollections
   refreshVisibleTeamProfileV120();
   return result;
 };
+
+/* V122 - Admin Accetta utenti: rifiuto elimina record, storico approvati visibile. */
+function getApprovedTeamUserByUidV122(uid) {
+  return (state.raw.teamUsers || []).find((item) => item.id === uid) || null;
+}
+
+function renderApprovedUserSummaryV122(user) {
+  const linkedUser = getApprovedTeamUserByUidV122(user.id) || user;
+  const seasonTeamName = getSeasonTeamDisplayName(linkedUser.seasonTeamId) || user.teamName || "-";
+  const seasonId = linkedUser.seasonId || user.seasonId || getSeasonTeamById(linkedUser.seasonTeamId)?.seasonId || "-";
+  const presidentName = linkedUser.presidentId ? getPresidentNames([linkedUser.presidentId]) : "-";
+  return `
+    <div class="admin-list-item admin-user-approval-item admin-user-approved-item">
+      <span>
+        <strong>${escapeHtml(user.displayName || linkedUser.displayName || user.email || linkedUser.email || user.id)}</strong>
+        <small>${escapeHtml(user.email || linkedUser.email || "")} · <span class="status status-ok">Approvato</span></small>
+        <small>${escapeHtml(seasonId)} · ${escapeHtml(seasonTeamName)} · Presidente: ${escapeHtml(presidentName)}</small>
+      </span>
+      <span class="admin-approval-controls">
+        <span class="status status-muted">Accesso attivo</span>
+      </span>
+    </div>`;
+}
+
+function renderPendingUserApprovalRowV122(user, presidentOptions, teamOptions, seasonTeamOptions) {
+  return `
+    <div class="admin-list-item admin-user-approval-item">
+      <span>
+        <strong>${escapeHtml(user.displayName || user.email || user.id)}</strong>
+        <small>${escapeHtml(user.email || "")} · ${escapeHtml(requestStatusLabel(user.status))}</small>
+      </span>
+      <span class="admin-approval-controls">
+        <select class="input" id="approvePresident_${escapeHtml(user.id)}"><option value="">Presidente...</option>${presidentOptions}</select>
+        <select class="input" id="approveTeam_${escapeHtml(user.id)}"><option value="">Squadra madre...</option>${teamOptions}</select>
+        <select class="input" id="approveSeasonTeam_${escapeHtml(user.id)}"><option value="">Rosa/stagione...</option>${seasonTeamOptions}</select>
+        <button class="button button-primary button-small" type="button" data-approve-user="${escapeHtml(user.id)}">Approva</button>
+        <button class="button button-danger button-small" type="button" data-reject-user="${escapeHtml(user.id)}">Rifiuta</button>
+      </span>
+    </div>`;
+}
+
+renderPendingUsersAdminPanelV34 = function renderPendingUsersAdminPanelV122() {
+  const pendingUsers = state.raw.pendingUsers || [];
+  const pending = pendingUsers.filter((item) => item.status !== "APPROVED");
+  const approvedByUid = new Map();
+
+  pendingUsers
+    .filter((item) => item.status === "APPROVED")
+    .forEach((item) => approvedByUid.set(item.id, item));
+
+  (state.raw.teamUsers || [])
+    .filter((item) => item.status !== "DISABLED")
+    .forEach((item) => {
+      if (!approvedByUid.has(item.id)) approvedByUid.set(item.id, item);
+    });
+
+  const approved = Array.from(approvedByUid.values()).sort((a, b) => {
+    const aName = a.displayName || a.email || a.id || "";
+    const bName = b.displayName || b.email || b.id || "";
+    return String(aName).localeCompare(String(bName), "it", { sensitivity: "base" });
+  });
+
+  const presidentOptions = state.raw.presidents.map((president) => `<option value="${escapeHtml(president.id)}">${escapeHtml(president.name || president.id)}</option>`).join("");
+  const teamOptions = state.raw.teams.map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(team.canonicalName || team.id)}</option>`).join("");
+  const seasonTeamOptions = state.raw.seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.seasonId)} · ${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("");
+
+  const pendingRows = pending.map((user) => renderPendingUserApprovalRowV122(user, presidentOptions, teamOptions, seasonTeamOptions)).join("") || `<p class="muted admin-empty-message">Nessun utente in attesa.</p>`;
+  const approvedRows = approved.map(renderApprovedUserSummaryV122).join("") || `<p class="muted admin-empty-message">Nessun utente approvato.</p>`;
+
+  return renderAdminPanel("adminPendingUsersPanel", "Utenti", "Accetta utenti", "Approva i presidenti registrati, rifiuta eliminando la richiesta e consulta gli accessi gia approvati.", `
+    <div class="admin-subsection-block">
+      <h3>Richieste in attesa</h3>
+      <div class="admin-list">${pendingRows}</div>
+    </div>
+    <div class="admin-subsection-block">
+      <h3>Accessi approvati</h3>
+      <p class="muted">Elenco degli utenti gia accettati: utile per verificare quali presidenti non hanno ancora richiesto l'accesso.</p>
+      <div class="admin-list">${approvedRows}</div>
+    </div>`);
+};
+
+rejectPendingUserV34 = async function rejectPendingUserV122(uid) {
+  if (!uid) return;
+  if (!window.confirm("Rifiutare l'accesso ed eliminare definitivamente questa richiesta da Firebase?")) return;
+  await deleteDoc(doc(db, "pendingUsers", uid));
+  await loadFullDataV32({ render: true });
+  expandAdminPanel("adminPendingUsersPanel");
+};
