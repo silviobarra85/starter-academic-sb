@@ -10743,3 +10743,654 @@ renderAdminCategoryV114 = function renderAdminCategoryV115(title, subtitle, cont
       <div class="admin-category-body" role="list">${content}</div>
     </section>`;
 };
+
+/* V116 - Admin snapshot controls, season rollover visibility, match tombstones and source badges. */
+const ADMIN_PANELS_COLLAPSED_BY_DEFAULT_V116 = [
+  "adminPendingUsersPanel",
+  "adminTeamRequestsPanel",
+  "adminNewsPanel",
+  "adminSeasonsPanel",
+  "adminSeasonRolloverPanel",
+  "adminPresidentsPanel",
+  "adminTeamsPanel",
+  "adminSeasonTeamsPanel",
+  "adminStadiumsPanel",
+  "adminRosterMovementsPanel",
+  "adminListoneToolsPanel",
+  "adminCompetitionsPanel",
+  "adminCompetitionMatchesPanel",
+  "adminStaticCompetitionImportPanel",
+  "adminCompetitionResultsPanel",
+  "adminFifaRankingPanel",
+  "adminPublicSnapshotsPanel",
+  "adminBackupPanel"
+];
+
+if (!state.__adminDefaultCollapsedV116) {
+  ADMIN_PANELS_COLLAPSED_BY_DEFAULT_V116.forEach((panelId) => state.collapsedAdminPanels?.add?.(panelId));
+  state.__adminDefaultCollapsedV116 = true;
+}
+
+function isCompetitionNotDisputedV116(competition) {
+  const status = String(competition?.status || "").toUpperCase();
+  return status === "NON_DISPUTATA" || status === "NOT_DISPUTED";
+}
+
+function getDisputableCompetitionsForSeasonV116(seasonId) {
+  return (state.raw.competitions || []).filter((competition) => (
+    competition.seasonId === seasonId && !isCompetitionNotDisputedV116(competition)
+  ));
+}
+
+function inferNextSeasonIdV116(sourceSeasonId) {
+  const match = String(sourceSeasonId || "").match(/(\d{4})\D+(\d{4})/);
+  if (!match) return "";
+  return `${Number(match[1]) + 1}-${Number(match[2]) + 1}`;
+}
+
+function renderSeasonRolloverAdminPanelV116() {
+  const defaultSource = getCurrentSeasonId() || (state.raw.seasons || [])[0]?.id || "";
+  const defaultTarget = inferNextSeasonIdV116(defaultSource);
+  const seasonOptions = (state.raw.seasons || [])
+    .map((season) => `<option value="${escapeHtml(season.id)}" ${season.id === defaultSource ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>`)
+    .join("");
+
+  return renderAdminPanel("adminSeasonRolloverPanel", "Stagioni", "Riversa stagione", "Crea una nuova stagione partendo da squadre, presidenti, rose, stadi, utenti e saldi della stagione precedente.", `
+    <form id="seasonRolloverFormV50" class="form-grid">
+      <label>Stagione origine
+        <select id="rolloverSourceSeasonV50" class="input" required>${seasonOptions}</select>
+      </label>
+      <label>Stagione destinazione
+        <input id="rolloverTargetSeasonV50" class="input" type="text" value="${escapeHtml(defaultTarget)}" placeholder="Es. 2026-2027" required />
+      </label>
+      <label>Nome nuova stagione
+        <input id="rolloverTargetNameV50" class="input" type="text" value="${escapeHtml(defaultTarget ? `Stagione ${defaultTarget}` : "")}" />
+      </label>
+      <label>Budget iniziale se reset
+        <input id="rolloverInitialBudgetV50" class="input" type="text" inputmode="decimal" value="500" />
+      </label>
+      <label class="checkbox-label"><input id="rolloverCopySeasonTeamsV50" type="checkbox" checked /> Copia squadre stagionali, presidenti e loghi</label>
+      <label class="checkbox-label"><input id="rolloverCopyStadiumsV50" type="checkbox" checked /> Copia stadi</label>
+      <label class="checkbox-label"><input id="rolloverCopyRostersV50" type="checkbox" checked /> Copia rose</label>
+      <label class="checkbox-label"><input id="rolloverCopyBalancesV50" type="checkbox" checked /> Mantieni saldo FM finale</label>
+      <label class="checkbox-label"><input id="rolloverCopyUsersV50" type="checkbox" checked /> Copia utenti squadra approvati</label>
+      <label class="checkbox-label"><input id="rolloverGenerateCompetitionsV50" type="checkbox" checked /> Genera competizioni standard</label>
+      <div class="form-actions span-2">
+        <button class="button button-primary" type="submit">Riversa stagione</button>
+        <span id="seasonRolloverStatusV50" class="form-status"></span>
+      </div>
+    </form>
+    <small class="field-hint">Dopo il riversamento rigenera gli snapshot pubblici. I presidenti anagrafici non vengono duplicati: vengono collegati alla nuova squadra stagionale.</small>
+  `);
+}
+
+function setupSeasonRolloverDefaultsV116() {
+  const sourceSelect = document.getElementById("rolloverSourceSeasonV50");
+  const targetInput = document.getElementById("rolloverTargetSeasonV50");
+  const targetName = document.getElementById("rolloverTargetNameV50");
+  sourceSelect?.addEventListener("change", () => {
+    const next = inferNextSeasonIdV116(sourceSelect.value);
+    if (targetInput && (!targetInput.value || /^\d{4}-\d{4}$/.test(targetInput.value))) targetInput.value = next;
+    if (targetName && (!targetName.value || /^Stagione \d{4}-\d{4}$/.test(targetName.value))) targetName.value = next ? `Stagione ${next}` : "";
+  });
+}
+
+function collapseAdminNestedDetailsByDefaultV116() {
+  document.querySelectorAll('#adminPanel details.admin-edit-section[open]').forEach((details) => {
+    details.removeAttribute("open");
+  });
+}
+
+async function loadPublicSnapshotDatesForAdminV116(seasonId) {
+  if (!state.isAdmin || !seasonId) return;
+  const loadKey = `${seasonId}|${state.publicHonorSnapshot?.generatedAt || ""}`;
+  if (state.__snapshotDatesLoadedKeyV116 === loadKey || state.__snapshotDatesLoadingV116) return;
+  state.__snapshotDatesLoadingV116 = true;
+  try {
+    const [seasonSnapshot, honorSnapshot] = await Promise.all([
+      getDocumentIfExistsV32("publicSeasonSnapshots", seasonId).catch(() => null),
+      getDocumentIfExistsV32("publicSnapshots", "honor").catch(() => null)
+    ]);
+    if (seasonSnapshot) state.publicSeasonSnapshots[seasonId] = seasonSnapshot;
+    if (honorSnapshot) state.publicHonorSnapshot = honorSnapshot;
+    state.__snapshotDatesLoadedKeyV116 = `${seasonId}|${state.publicHonorSnapshot?.generatedAt || ""}`;
+    renderAdminArea();
+  } finally {
+    state.__snapshotDatesLoadingV116 = false;
+  }
+}
+
+function getSnapshotDateTextV116(value) {
+  const formatted = formatSnapshotTimestampV114(value);
+  return formatted && formatted !== "-" ? formatted : "non trovato";
+}
+
+renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV116() {
+  const seasonId = getCurrentSeasonId();
+  const seasonSnapshot = seasonId ? state.publicSeasonSnapshots?.[seasonId] : null;
+  const seasonGenerated = getSnapshotDateTextV116(seasonSnapshot?.generatedAt || seasonSnapshot?.updatedAt || seasonSnapshot?.createdAt || "");
+  const honorGenerated = getSnapshotDateTextV116(state.publicHonorSnapshot?.generatedAt || state.publicHonorSnapshot?.updatedAt || state.publicHonorSnapshot?.createdAt || "");
+  if (state.isAdmin) setTimeout(() => loadPublicSnapshotDatesForAdminV116(seasonId), 0);
+
+  return renderAdminPanel("adminPublicSnapshotsPanel", "Ottimizzazione", "Snapshot pubblici", "Genera documenti leggeri. Il sito pubblico legge questi snapshot invece delle raccolte complete.", `
+    <div class="snapshot-actions-grid">
+      <button id="adminGenerateSelectedSeasonSnapshot" class="button button-primary" type="button">Aggiorna stagione selezionata (${escapeHtml(seasonId || "-")})</button>
+      <button id="adminGenerateNewsSnapshot" class="button button-secondary" type="button">Aggiorna comunicati</button>
+      <button id="adminGenerateCompetitionDataSnapshot" class="button button-secondary" type="button">Aggiorna competizioni e classifiche</button>
+      <button id="adminGenerateAllSeasonSnapshots" class="button button-secondary" type="button">Aggiorna tutte le stagioni</button>
+      <button id="adminGenerateHonorSnapshot" class="button button-secondary" type="button">Aggiorna Albo/FIFA</button>
+      <button id="adminGenerateTeamSnapshots" class="button button-secondary" type="button">Aggiorna schede squadra</button>
+      <button id="adminGenerateEverythingSnapshots" class="button button-primary" type="button">Aggiorna tutto</button>
+    </div>
+    <p id="adminPublicSnapshotsStatus" class="form-status"></p>
+    <div class="snapshot-last-updates">
+      <small class="field-hint"><strong>Ultimo snapshot stagione selezionata:</strong> ${escapeHtml(seasonGenerated)}.</small>
+      <small class="field-hint"><strong>Ultimo snapshot Albo/FIFA:</strong> ${escapeHtml(honorGenerated)}.</small>
+    </div>
+    <small class="field-hint">Comunicati, competizioni e classifiche della stagione sono dentro <code>publicSeasonSnapshots/${escapeHtml(seasonId || "stagione")}</code>. Albo e FIFA sono dentro <code>publicSnapshots/honor</code>.</small>`);
+};
+renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+
+async function saveNewsSnapshotV116() {
+  try {
+    showMessage("adminPublicSnapshotsStatus", "Aggiornamento comunicati...");
+    if (!state.hasFullData) await loadFullDataV32({ render: false });
+    const seasonId = getCurrentSeasonId();
+    await saveSeasonSnapshotByIdV34(seasonId);
+    state.__snapshotDatesLoadedKeyV116 = "";
+    showMessage("adminPublicSnapshotsStatus", `Comunicati aggiornati nello snapshot ${seasonId}.`);
+    renderAdminArea();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminPublicSnapshotsStatus", `Errore comunicati: ${error?.message || error}`, true);
+  }
+}
+
+async function saveCompetitionDataSnapshotV116() {
+  try {
+    showMessage("adminPublicSnapshotsStatus", "Aggiornamento competizioni e classifiche...");
+    if (!state.hasFullData) await loadFullDataV32({ render: false });
+    const seasonId = getCurrentSeasonId();
+    await saveSeasonSnapshotByIdV34(seasonId);
+    await saveHonorSnapshotV34();
+    state.__snapshotDatesLoadedKeyV116 = "";
+    showMessage("adminPublicSnapshotsStatus", `Competizioni e classifiche aggiornate per ${seasonId}.`);
+    renderAdminArea();
+  } catch (error) {
+    console.error(error);
+    showMessage("adminPublicSnapshotsStatus", `Errore competizioni/classifiche: ${error?.message || error}`, true);
+  }
+}
+
+function isMatchDeletedV116(match) {
+  return match?.deleted === true || String(match?.deleted || "").toLowerCase() === "true" || String(match?.status || "").toUpperCase() === "DELETED";
+}
+
+function getMatchMergeKeySafeV116(match) {
+  if (typeof getStaticMatchMergeKeyV101 === "function") return getStaticMatchMergeKeyV101(match);
+  return [
+    match?.competitionId || "",
+    normalizeKey(match?.matchday || match?.stage || ""),
+    String(match?.serieAMatchday || ""),
+    match?.homeSeasonTeamId || normalizeKey(match?.homeTeamName || ""),
+    match?.awaySeasonTeamId || normalizeKey(match?.awayTeamName || "")
+  ].join("|");
+}
+
+function getDeletedMatchKeysForCompetitionV116(competitionId) {
+  const keys = new Set();
+  (state.raw.competitionMatches || []).forEach((match) => {
+    if (match.competitionId !== competitionId || !isMatchDeletedV116(match)) return;
+    if (match.id) keys.add(`id:${match.id}`);
+    keys.add(`key:${getMatchMergeKeySafeV116(match)}`);
+  });
+  return keys;
+}
+
+function isMatchHiddenByDeletedFlagV116(match, deletedKeys) {
+  if (isMatchDeletedV116(match)) return true;
+  return Boolean(
+    deletedKeys?.has?.(`id:${match?.id || ""}`) ||
+    deletedKeys?.has?.(`key:${getMatchMergeKeySafeV116(match)}`)
+  );
+}
+
+const getCompetitionMatchesBeforeV116 = getCompetitionMatches;
+getCompetitionMatches = function getCompetitionMatchesV116(competitionId) {
+  const matches = getCompetitionMatchesBeforeV116(competitionId) || [];
+  const deletedKeys = getDeletedMatchKeysForCompetitionV116(competitionId);
+  return sortMatchesForDisplay(matches.filter((match) => !isMatchHiddenByDeletedFlagV116(match, deletedKeys)));
+};
+
+const buildPublicTeamSnapshotBeforeV116 = buildPublicTeamSnapshotV34;
+buildPublicTeamSnapshotV34 = function buildPublicTeamSnapshotV116(seasonTeam) {
+  const snapshot = buildPublicTeamSnapshotBeforeV116(seasonTeam);
+  snapshot.recentMatches = (snapshot.recentMatches || []).filter((match) => !isMatchDeletedV116(match));
+  return snapshot;
+};
+
+function getFirebaseMatchForStaticMatchV116(staticMatch, firebaseMatches) {
+  const staticKey = getMatchMergeKeySafeV116(staticMatch);
+  return (firebaseMatches || []).find((match) => {
+    if (match.id && staticMatch.id && match.id === staticMatch.id) return true;
+    return getMatchMergeKeySafeV116(match) === staticKey;
+  }) || null;
+}
+
+function getAdminMatchDisplayRowsV116(selectedCompetition, firebaseMatches) {
+  const rows = [];
+  const usedFirebaseIds = new Set();
+  const staticMatches = selectedCompetition && typeof getStaticCompetitionMatchesCanonicalV109 === "function"
+    ? getStaticCompetitionMatchesCanonicalV109(selectedCompetition) || []
+    : [];
+
+  staticMatches.forEach((staticMatch, index) => {
+    const firebaseMatch = getFirebaseMatchForStaticMatchV116(staticMatch, firebaseMatches);
+    if (firebaseMatch?.id) usedFirebaseIds.add(firebaseMatch.id);
+    rows.push({
+      key: `json-${index}-${getMatchMergeKeySafeV116(staticMatch)}`,
+      displayMatch: { ...staticMatch, ...(firebaseMatch || {}) },
+      staticMatch,
+      firebaseMatch,
+      hasJson: true,
+      hasFirebase: Boolean(firebaseMatch),
+      isDeleted: Boolean(firebaseMatch && isMatchDeletedV116(firebaseMatch))
+    });
+  });
+
+  (firebaseMatches || []).forEach((firebaseMatch) => {
+    if (firebaseMatch.id && usedFirebaseIds.has(firebaseMatch.id)) return;
+    rows.push({
+      key: `firebase-${firebaseMatch.id || getMatchMergeKeySafeV116(firebaseMatch)}`,
+      displayMatch: firebaseMatch,
+      staticMatch: null,
+      firebaseMatch,
+      hasJson: false,
+      hasFirebase: true,
+      isDeleted: isMatchDeletedV116(firebaseMatch)
+    });
+  });
+
+  return sortMatchesForDisplay(rows.map((row) => row.displayMatch)).map((displayMatch) => (
+    rows.find((row) => row.displayMatch === displayMatch) || rows.find((row) => row.displayMatch.id && row.displayMatch.id === displayMatch.id) || rows[0]
+  )).filter(Boolean);
+}
+
+function renderAdminMatchSourceBadgesV116(row) {
+  return `
+    ${row.hasJson ? `<span class="admin-match-source-badge admin-match-source-badge-json" title="Partita recuperata dal calendario JSON statico">JSON</span>` : ""}
+    ${row.hasFirebase ? `<span class="admin-match-source-badge admin-match-source-badge-firebase" title="Partita presente nella raccolta Firestore competitionMatches">Firebase</span>` : ""}
+    ${row.isDeleted ? `<span class="admin-match-source-badge admin-match-source-badge-deleted" title="Record marcato deleted: true in Firebase">deleted</span>` : ""}
+  `;
+}
+
+function getStaticDeleteDraftIdV116(match) {
+  return `${makeIdPart(match.competitionId || "competizione")}_${makeIdPart(match.matchday || match.stage || "fase")}_${makeIdPart(match.homeSeasonTeamId || match.homeTeamName || "casa")}_${makeIdPart(match.awaySeasonTeamId || match.awayTeamName || "trasferta")}_deleted`;
+}
+
+async function softDeleteCompetitionMatchV116(matchId) {
+  if (!matchId) return;
+  const match = (state.raw.competitionMatches || []).find((item) => item.id === matchId);
+  const label = match ? `${getSeasonTeamDisplayName(match.homeSeasonTeamId) || match.homeTeamName || "Casa"} - ${getSeasonTeamDisplayName(match.awaySeasonTeamId) || match.awayTeamName || "Trasferta"}` : "partita";
+  const confirmed = window.confirm(`Marcare come deleted questa partita?\n${label}\n\nIl record resta in Firebase con deleted: true e viene escluso dal sito pubblico.`);
+  if (!confirmed) return;
+  try {
+    await setDoc(doc(db, "competitionMatches", matchId), {
+      deleted: true,
+      deletedAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+    await loadData();
+    expandAdminPanel("adminCompetitionMatchesPanel");
+  } catch (error) {
+    console.error(error);
+    setError(`Errore durante il flag deleted della partita.`);
+  }
+}
+
+async function softDeleteStaticCompetitionMatchV116(draftKey) {
+  const draft = state.adminStaticMatchDeleteDraftsV116?.[draftKey];
+  if (!draft) return;
+  const confirmed = window.confirm(`Nascondere questa partita JSON creando un flag deleted in Firebase?\n${draft.homeTeamName || getSeasonTeamDisplayName(draft.homeSeasonTeamId)} - ${draft.awayTeamName || getSeasonTeamDisplayName(draft.awaySeasonTeamId)}`);
+  if (!confirmed) return;
+  const id = getStaticDeleteDraftIdV116(draft);
+  try {
+    await setDoc(doc(db, "competitionMatches", id), {
+      ...draft,
+      id,
+      deleted: true,
+      deletedAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+      source: "static-delete-tombstone"
+    }, { merge: true });
+    await loadData();
+    expandAdminPanel("adminCompetitionMatchesPanel");
+  } catch (error) {
+    console.error(error);
+    setError("Errore durante la creazione del flag deleted per la partita JSON.");
+  }
+}
+
+async function restoreCompetitionMatchV116(matchId) {
+  if (!matchId) return;
+  const confirmed = window.confirm("Ripristinare questa partita rimuovendo il flag deleted?");
+  if (!confirmed) return;
+  try {
+    await setDoc(doc(db, "competitionMatches", matchId), {
+      deleted: false,
+      restoredAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+    await loadData();
+    expandAdminPanel("adminCompetitionMatchesPanel");
+  } catch (error) {
+    console.error(error);
+    setError("Errore durante il ripristino della partita.");
+  }
+}
+
+function getAdminMatchTeamTextV116(match, side) {
+  const id = side === "home" ? match?.homeSeasonTeamId : match?.awaySeasonTeamId;
+  const name = side === "home" ? match?.homeTeamName : match?.awayTeamName;
+  return name || getSeasonTeamDisplayName(id) || id || "-";
+}
+
+function getAdminMatchActionButtonsV116(row) {
+  if (row.hasFirebase && row.firebaseMatch?.id) {
+    if (row.isDeleted) {
+      return `<button class="button button-secondary button-small" type="button" data-admin-restore-match="${escapeHtml(row.firebaseMatch.id)}">Ripristina</button>`;
+    }
+    return `
+      <button class="button button-secondary button-small" type="button" data-admin-edit-match="${escapeHtml(row.firebaseMatch.id)}">Modifica</button>
+      <button class="button button-danger button-small" type="button" data-admin-soft-delete-match="${escapeHtml(row.firebaseMatch.id)}">Elimina</button>`;
+  }
+  if (row.hasJson && row.staticMatch) {
+    const key = `static-${Object.keys(state.adminStaticMatchDeleteDraftsV116 || {}).length}`;
+    state.adminStaticMatchDeleteDraftsV116 = state.adminStaticMatchDeleteDraftsV116 || {};
+    state.adminStaticMatchDeleteDraftsV116[key] = {
+      ...row.staticMatch,
+      id: getStaticDeleteDraftIdV116(row.staticMatch),
+      competitionId: row.staticMatch.competitionId || row.displayMatch.competitionId,
+      seasonId: row.staticMatch.seasonId || row.displayMatch.seasonId,
+      matchday: row.staticMatch.matchday || row.displayMatch.matchday || "",
+      stage: row.staticMatch.stage || row.displayMatch.stage || "",
+      serieAMatchday: row.staticMatch.serieAMatchday || row.displayMatch.serieAMatchday || null,
+      homeSeasonTeamId: row.staticMatch.homeSeasonTeamId || row.displayMatch.homeSeasonTeamId || "",
+      awaySeasonTeamId: row.staticMatch.awaySeasonTeamId || row.displayMatch.awaySeasonTeamId || "",
+      homeTeamName: row.staticMatch.homeTeamName || row.displayMatch.homeTeamName || getSeasonTeamDisplayName(row.displayMatch.homeSeasonTeamId) || "",
+      awayTeamName: row.staticMatch.awayTeamName || row.displayMatch.awayTeamName || getSeasonTeamDisplayName(row.displayMatch.awaySeasonTeamId) || ""
+    };
+    return `<button class="button button-danger button-small" type="button" data-admin-soft-delete-static-match="${escapeHtml(key)}">Nascondi</button>`;
+  }
+  return `<span class="muted">Solo lettura</span>`;
+}
+
+renderCompetitionMatchesAdminPanel = function renderCompetitionMatchesAdminPanelV116() {
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminMatchSeasonId");
+  const competitionsForSelectedSeason = getDisputableCompetitionsForSeasonV116(selectedSeasonId);
+  const blockedCompetitionsCount = (state.raw.competitions || []).filter((competition) => competition.seasonId === selectedSeasonId && isCompetitionNotDisputedV116(competition)).length;
+
+  const selectedCompetitionId = state.selectedMatchCompetitionId && competitionsForSelectedSeason.some((competition) => competition.id === state.selectedMatchCompetitionId)
+    ? state.selectedMatchCompetitionId
+    : competitionsForSelectedSeason[0]?.id || "";
+  state.selectedMatchCompetitionId = selectedCompetitionId;
+
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  const competitionOptions = competitionsForSelectedSeason.map((competition) => `
+    <option value="${escapeHtml(competition.id)}" ${competition.id === selectedCompetitionId ? "selected" : ""}>${escapeHtml(getCompetitionDisplayNameV111(competition))}</option>
+  `).join("");
+
+  const statusOptions = MATCH_STATUSES.map((status) => `
+    <option value="${escapeHtml(status.value)}">${escapeHtml(status.label)}</option>
+  `).join("");
+
+  const matchdayOptions = STANDARD_KNOCKOUT_MATCHDAYS.map((matchday) => `
+    <option value="${escapeHtml(matchday)}"></option>
+  `).join("");
+
+  const { competitionsById } = buildMaps();
+  const selectedCompetition = competitionsById.get(selectedCompetitionId) || competitionsForSelectedSeason[0] || null;
+  const firebaseMatchesForSelectedCompetition = (state.raw.competitionMatches || []).filter((match) => {
+    const matchSeasonId = match.seasonId || competitionsById.get(match.competitionId)?.seasonId || "";
+    return matchSeasonId === selectedSeasonId && (!selectedCompetitionId || match.competitionId === selectedCompetitionId);
+  });
+  const allDisplayRows = getAdminMatchDisplayRowsV116(selectedCompetition, firebaseMatchesForSelectedCompetition);
+
+  const matchdayValues = Array.from(new Set(
+    allDisplayRows
+      .map((row) => row.displayMatch.matchday || row.displayMatch.stage || "")
+      .filter(Boolean)
+  )).sort((a, b) => b.localeCompare(a, "it", { numeric: true }));
+
+  const selectedMatchdayFilter = state.selectedAdminMatchdayFilter && matchdayValues.includes(state.selectedAdminMatchdayFilter)
+    ? state.selectedAdminMatchdayFilter
+    : "";
+  state.selectedAdminMatchdayFilter = selectedMatchdayFilter;
+
+  const matchdayFilterOptions = [`<option value="">Tutte le fasi/giornate</option>`, ...matchdayValues.map((matchday) => `
+    <option value="${escapeHtml(matchday)}" ${matchday === selectedMatchdayFilter ? "selected" : ""}>${escapeHtml(matchday)}</option>
+  `)].join("");
+
+  const filteredRows = selectedMatchdayFilter
+    ? allDisplayRows.filter((row) => (row.displayMatch.matchday || row.displayMatch.stage || "") === selectedMatchdayFilter)
+    : allDisplayRows;
+
+  state.adminStaticMatchDeleteDraftsV116 = {};
+  const rows = filteredRows.map((row) => {
+    const match = row.displayMatch;
+    const competition = competitionsById.get(match.competitionId) || selectedCompetition;
+    return `
+      <div class="admin-list-item${row.hasJson ? " admin-list-item-static-covered" : ""}${row.isDeleted ? " admin-list-item-deleted" : ""}">
+        <span>
+          <strong>${escapeHtml(getSeasonName(competition?.seasonId || match.seasonId))} · ${escapeHtml(getCompetitionDisplayNameV111(competition) || match.competitionId)}</strong>
+          <small><strong>Fase/giornata:</strong> ${escapeHtml(formatMatchStage(match))}${getMatchSerieAMatchday(match) ? ` · Serie A: ${escapeHtml(getMatchSerieAMatchday(match))}` : ""} · ${escapeHtml(match.matchDate || "-")} · ${escapeHtml(getAdminMatchTeamTextV116(match, "home"))} - ${escapeHtml(getAdminMatchTeamTextV116(match, "away"))} · ${escapeHtml(formatMatchResult(match))}</small>
+        </span>
+        <span class="admin-match-actions">
+          ${renderAdminMatchSourceBadgesV116(row)}
+          <span class="status ${match.status === "GIOCATA" ? "status-ok" : row.isDeleted ? "status-danger" : "status-warning"}">${escapeHtml(row.isDeleted ? "Deleted" : getLabel(MATCH_STATUSES, match.status))}</span>
+          ${getAdminMatchActionButtonsV116(row)}
+        </span>
+      </div>`;
+  }).join("") || `<p class="muted admin-empty-message">Nessuna partita trovata per stagione, competizione e fase/giornata selezionate.</p>`;
+
+  const jsonCount = filteredRows.filter((row) => row.hasJson).length;
+  const firebaseCount = filteredRows.filter((row) => row.hasFirebase).length;
+  const deletedCount = filteredRows.filter((row) => row.isDeleted).length;
+  const saveDisabled = competitionsForSelectedSeason.length ? "" : "disabled";
+
+  return renderAdminPanel("adminCompetitionMatchesPanel", "Firebase + JSON", "Partite competizioni", "Inserisci calendario e risultati solo per competizioni disputate. I badge indicano origine JSON, presenza Firebase e flag deleted.", `
+      <form id="adminCompetitionMatchesForm" class="form-grid">
+        <input id="adminCompetitionMatchId" type="hidden" />
+        <label>
+          Stagione
+          <select id="adminCompetitionMatchSeasonId" class="input" required>${seasonOptions}</select>
+        </label>
+        <label>
+          Competizione
+          <select id="adminCompetitionMatchCompetitionId" class="input" required>${competitionOptions}</select>
+          <small class="field-hint">Le competizioni segnate come Non disputata sono escluse.${blockedCompetitionsCount ? ` Escluse: ${blockedCompetitionsCount}.` : ""}</small>
+        </label>
+        <label>
+          Filtro elenco fase/giornata
+          <select id="adminCompetitionMatchdayFilter" class="input">${matchdayFilterOptions}</select>
+          <small class="field-hint">La lista sotto viene filtrata per stagione, competizione e fase/giornata.</small>
+        </label>
+        <label>
+          Fase
+          <input id="adminCompetitionMatchday" class="input" type="text" list="adminCompetitionMatchdayOptions" placeholder="Es. Giornata 1 oppure QF - Andata" required />
+          <datalist id="adminCompetitionMatchdayOptions">${matchdayOptions}</datalist>
+          <small class="field-hint">Per competizioni a gironi puoi usare QF/SF/F/Finale/Finalissima o scrivere una giornata libera.</small>
+        </label>
+        <label>Data<input id="adminCompetitionMatchDate" class="input" type="date" /></label>
+        <label>Giornata Serie A reale<input id="adminCompetitionMatchSerieAMatchday" class="input" type="number" min="1" step="1" placeholder="Es. 12" /></label>
+        <label>Squadra casa<select id="adminCompetitionMatchHome" class="input" required></select></label>
+        <label>Squadra trasferta<select id="adminCompetitionMatchAway" class="input" required></select></label>
+        <label>Stato partita<select id="adminCompetitionMatchStatus" class="input" required>${statusOptions}</select></label>
+        <label>Gol casa<input id="adminCompetitionMatchHomeGoals" class="input" type="number" min="0" step="1" /></label>
+        <label>Gol trasferta<input id="adminCompetitionMatchAwayGoals" class="input" type="number" min="0" step="1" /></label>
+        <label>FP casa<input id="adminCompetitionMatchHomeScore" class="input" type="number" step="0.5" /></label>
+        <label>FP trasferta<input id="adminCompetitionMatchAwayScore" class="input" type="number" step="0.5" /></label>
+        <label class="span-2">Note<input id="adminCompetitionMatchNotes" class="input" type="text" placeholder="Opzionale" /></label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit" ${saveDisabled}>Salva partita</button>
+          <button id="adminCompetitionMatchReset" class="button button-secondary" type="button">Nuova</button>
+          <span id="adminCompetitionMatchStatusText" class="form-status"></span>
+        </div>
+      </form>
+      <details class="admin-edit-section" open>
+        <summary><strong>Partite filtrate</strong><span>${filteredRows.length} · ${jsonCount} JSON · ${firebaseCount} Firebase${deletedCount ? ` · ${deletedCount} deleted` : ""}</span></summary>
+        <p class="field-hint">JSON = partita letta da <code>assets/competitions</code>. Firebase = record presente in Firestore. deleted = record/tombstone con <code>deleted: true</code>, escluso dal sito pubblico.</p>
+        <div class="admin-list">${rows}</div>
+      </details>
+  `);
+};
+
+const saveCompetitionMatchBeforeV116 = saveCompetitionMatch;
+saveCompetitionMatch = async function saveCompetitionMatchV116(event) {
+  const competitionId = document.getElementById("adminCompetitionMatchCompetitionId")?.value || "";
+  const competition = (state.raw.competitions || []).find((item) => item.id === competitionId);
+  if (isCompetitionNotDisputedV116(competition)) {
+    event?.preventDefault?.();
+    showMessage("adminCompetitionMatchStatusText", "Non puoi inserire partite per una competizione segnata come Non disputata.", true);
+    return;
+  }
+  return saveCompetitionMatchBeforeV116(event);
+};
+
+function getStaticImportTargetCompetitionV116() {
+  const seasonId = document.getElementById("adminStaticCompetitionSeasonId")?.value || getCurrentSeasonId();
+  const name = normalizeKey(document.getElementById("adminStaticCompetitionName")?.value || "");
+  const type = document.getElementById("adminStaticCompetitionType")?.value || "";
+  return (state.raw.competitions || []).find((competition) => {
+    if (competition.seasonId !== seasonId) return false;
+    if (name && normalizeKey(competition.name || competition.staticCompetitionName || "") === name) return true;
+    return Boolean(type && competition.type === type && isCompetitionNotDisputedV116(competition));
+  }) || null;
+}
+
+function blockStaticImportIfNotDisputedV116() {
+  const statusInput = document.getElementById("adminStaticCompetitionStatus");
+  if (statusInput?.value === "NON_DISPUTATA" || statusInput?.value === "NOT_DISPUTED") {
+    showMessage("adminStaticCompetitionImportStatus", "Non puoi importare un calendario per una competizione segnata come Non disputata.", true);
+    return true;
+  }
+  const existing = getStaticImportTargetCompetitionV116();
+  if (isCompetitionNotDisputedV116(existing)) {
+    showMessage("adminStaticCompetitionImportStatus", `La competizione ${existing.name || existing.id} è segnata come Non disputata: import bloccato.`, true);
+    return true;
+  }
+  return false;
+}
+
+if (typeof handleStaticCompetitionImportPreviewV105 === "function") {
+  const handleStaticCompetitionImportPreviewBeforeV116 = handleStaticCompetitionImportPreviewV105;
+  handleStaticCompetitionImportPreviewV105 = function handleStaticCompetitionImportPreviewV116(event) {
+    if (blockStaticImportIfNotDisputedV116()) {
+      event?.preventDefault?.();
+      return;
+    }
+    return handleStaticCompetitionImportPreviewBeforeV116(event);
+  };
+}
+
+if (typeof handleStaticCompetitionGenerateOverlayV105 === "function") {
+  const handleStaticCompetitionGenerateOverlayBeforeV116 = handleStaticCompetitionGenerateOverlayV105;
+  handleStaticCompetitionGenerateOverlayV105 = function handleStaticCompetitionGenerateOverlayV116(event) {
+    if (blockStaticImportIfNotDisputedV116()) {
+      event?.preventDefault?.();
+      return;
+    }
+    return handleStaticCompetitionGenerateOverlayBeforeV116(event);
+  };
+}
+
+if (typeof renderStaticCompetitionImportAdminPanelV105 === "function") {
+  const renderStaticCompetitionImportAdminPanelBeforeV116 = renderStaticCompetitionImportAdminPanelV105;
+  renderStaticCompetitionImportAdminPanelV105 = function renderStaticCompetitionImportAdminPanelV116() {
+    let html = renderStaticCompetitionImportAdminPanelBeforeV116();
+    html = html.replace(/<option value="NON_DISPUTATA"[\s\S]*?<\/option>/g, "");
+    html = html.replace(/<option value="NOT_DISPUTED"[\s\S]*?<\/option>/g, "");
+    return html.replace("Carica un Excel", "Carica un Excel solo per competizioni disputate");
+  };
+}
+
+const attachAdminHandlersBeforeV116 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV116() {
+  attachAdminHandlersBeforeV116();
+  setupSeasonRolloverDefaultsV116();
+  document.getElementById("adminGenerateNewsSnapshot")?.addEventListener("click", saveNewsSnapshotV116);
+  document.getElementById("adminGenerateCompetitionDataSnapshot")?.addEventListener("click", saveCompetitionDataSnapshotV116);
+  document.querySelectorAll("[data-admin-soft-delete-match]").forEach((button) => {
+    button.addEventListener("click", () => softDeleteCompetitionMatchV116(button.dataset.adminSoftDeleteMatch));
+  });
+  document.querySelectorAll("[data-admin-soft-delete-static-match]").forEach((button) => {
+    button.addEventListener("click", () => softDeleteStaticCompetitionMatchV116(button.dataset.adminSoftDeleteStaticMatch));
+  });
+  document.querySelectorAll("[data-admin-restore-match]").forEach((button) => {
+    button.addEventListener("click", () => restoreCompetitionMatchV116(button.dataset.adminRestoreMatch));
+  });
+};
+
+renderAdminArea = function renderAdminAreaV116() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+
+  if (!state.isAdmin) {
+    adminPanel.innerHTML = `
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Area riservata</p>
+          <h2 id="adminTitle">Admin</h2>
+          <p>Accedi come amministratore per modificare stagioni, presidenti, squadre e competizioni.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const staticCompetitionImportPanel = typeof renderStaticCompetitionImportAdminPanelV105 === "function" ? renderStaticCompetitionImportAdminPanelV105() : "";
+
+  adminPanel.innerHTML = `
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">Area riservata</p>
+        <h2 id="adminTitle">Admin</h2>
+        <p>Gestione Firebase, dati statici, utenti presidenti, richieste e snapshot pubblici.</p>
+      </div>
+    </div>
+    ${renderAdminCategoryV114("Utenti e comunicazioni", "Registrazioni, richieste presidenti e comunicati.", `
+      ${typeof renderPendingUsersAdminPanelV34 === "function" ? renderPendingUsersAdminPanelV34() : ""}
+      ${typeof renderTeamRequestsAdminPanelV34 === "function" ? renderTeamRequestsAdminPanelV34() : ""}
+      ${typeof renderNewsAdminPanelV48 === "function" ? renderNewsAdminPanelV48() : ""}
+    `)}
+    ${renderAdminCategoryV114("Stagioni e club", "Stagioni, riversamento, presidenti, squadre, squadre stagionali e stadi.", `
+      ${renderSeasonAdminPanel()}
+      ${renderSeasonRolloverAdminPanelV116()}
+      ${renderPresidentAdminPanel()}
+      ${renderTeamAdminPanel()}
+      ${renderSeasonTeamAdminPanel()}
+      ${renderStadiumAdminPanel()}
+    `)}
+    ${renderAdminCategoryV114("Rose e mercato", "Rose modificabili, movimenti FM e strumenti listone.", `
+      ${typeof renderRosterMovementsAdminPanel === "function" ? renderRosterMovementsAdminPanel() : ""}
+      ${renderListoneToolsAdminPanel()}
+    `)}
+    ${renderAdminCategoryV114("Competizioni", "Competizioni disputate, calendari, import statico, risultati e FIFA Ranking.", `
+      ${renderCompetitionAdminPanel()}
+      ${renderCompetitionMatchesAdminPanel()}
+      ${staticCompetitionImportPanel}
+      ${renderCompetitionResultsAdminPanel()}
+      ${renderFifaRankingAdminPanel()}
+    `)}
+    ${renderAdminCategoryV114("Snapshot e backup", "Pubblicazione dati leggeri e backup locale Firebase.", `
+      ${renderPublicSnapshotsAdminPanelV114()}
+      ${renderBackupAdminPanel()}
+    `)}
+  `;
+
+  document.getElementById("adminStaticCompetitionImportShortcut")?.remove();
+  collapseAdminNestedDetailsByDefaultV116();
+  attachAdminHandlers();
+};

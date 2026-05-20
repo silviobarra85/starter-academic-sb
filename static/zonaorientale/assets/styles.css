@@ -13017,3 +13017,66 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
     font-size: 1.12rem;
   }
 }
+
+/* V116 - Admin source/deleted badges and safer collapsed defaults. */
+.admin-match-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-match-source-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.admin-match-source-badge-json {
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(34, 197, 94, 0.28);
+}
+
+.admin-match-source-badge-firebase {
+  color: #bfdbfe;
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(59, 130, 246, 0.28);
+}
+
+.admin-match-source-badge-deleted {
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.32);
+}
+
+.admin-list-item-deleted {
+  opacity: 0.78;
+  border-color: rgba(239, 68, 68, 0.26);
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.snapshot-last-updates {
+  display: grid;
+  gap: 4px;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .admin-match-actions {
+    justify-content: flex-start;
+  }
+
+  .admin-match-source-badge {
+    width: fit-content;
+    min-width: 0;
+  }
+}

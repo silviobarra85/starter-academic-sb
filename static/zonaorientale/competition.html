@@ -7,7 +7,7 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=114" />
+  <link rel="stylesheet" href="./assets/styles.css?v=116" />
 </head>
 <body>
   <main class="container app-main competition-page-main">
@@ -30,7 +30,7 @@
   </main>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V114 admin categorie e competizioni · Ultimo aggiornamento 20/05/2026</p>
+    <p>ZonaOrientale Salerno · V116 admin snapshot e badge fonti · Ultimo aggiornamento 20/05/2026</p>
   </footer>
 
   <script type="module">
@@ -70,6 +70,56 @@
       return normalizeKey(value).replace(/\s+/g, "-");
     }
 
+    let firebaseSeasonSnapshotCache = null;
+
+    function isMatchDeleted(match) {
+      return match?.deleted === true || String(match?.deleted || "").toLowerCase() === "true" || String(match?.status || "").toUpperCase() === "DELETED";
+    }
+
+    function getMatchMergeKey(match) {
+      return [
+        match?.competitionId || "",
+        normalizeKey(match?.matchday || match?.stage || ""),
+        String(match?.serieAMatchday || ""),
+        match?.homeSeasonTeamId || normalizeKey(match?.homeTeamName || ""),
+        match?.awaySeasonTeamId || normalizeKey(match?.awayTeamName || "")
+      ].join("|");
+    }
+
+    async function loadFirebaseSeasonSnapshot() {
+      if (!requestedSeasonId) return null;
+      if (firebaseSeasonSnapshotCache !== null) return firebaseSeasonSnapshotCache;
+      try {
+        const { db, doc, getDoc } = await import("./assets/firebase.js");
+        const snapshot = await getDoc(doc(db, "publicSeasonSnapshots", requestedSeasonId));
+        firebaseSeasonSnapshotCache = snapshot.exists() ? (snapshot.data() || {}) : null;
+        return firebaseSeasonSnapshotCache;
+      } catch (error) {
+        console.warn("Snapshot Firebase non disponibile", error);
+        firebaseSeasonSnapshotCache = null;
+        return null;
+      }
+    }
+
+    function getDeletedMatchKeys(snapshotData, competitionId) {
+      const keys = new Set();
+      (Array.isArray(snapshotData?.competitionMatches) ? snapshotData.competitionMatches : []).forEach((match) => {
+        if (match.competitionId !== competitionId || !isMatchDeleted(match)) return;
+        if (match.id) keys.add(`id:${match.id}`);
+        keys.add(`key:${getMatchMergeKey(match)}`);
+      });
+      return keys;
+    }
+
+    function filterDeletedMatches(matches, deletedKeys = new Set()) {
+      return (matches || []).filter((match) => {
+        if (isMatchDeleted(match)) return false;
+        if (deletedKeys.has(`id:${match.id || ""}`)) return false;
+        if (deletedKeys.has(`key:${getMatchMergeKey(match)}`)) return false;
+        return true;
+      });
+    }
+
     async function fetchJson(url, options = {}) {
       const response = await fetch(url, options);
       if (!response.ok) throw new Error(`Impossibile caricare ${url}`);
@@ -105,18 +155,21 @@
       currentCompetitionPayload = payload;
       const competition = payload.competition || {};
       const meta = payload.meta || {};
+      const competitionId = competition.id || meta.competitionId || entry.competitionId || requestedCompetitionId;
+      const snapshotData = await loadFirebaseSeasonSnapshot();
+      const deletedKeys = getDeletedMatchKeys(snapshotData, competitionId);
       return {
         source: "static",
         manifestEntry: entry,
         competition: {
-          id: competition.id || meta.competitionId || entry.competitionId || requestedCompetitionId,
+          id: competitionId,
           seasonId: competition.seasonId || meta.seasonId || entry.seasonId || requestedSeasonId,
           name: competition.name || meta.competitionName || entry.competitionName || entry.label || "Competizione",
           type: competition.type || meta.competitionType || entry.competitionType || "ALTRO",
           status: competition.status || entry.status || "",
           notes: competition.notes || ""
         },
-        matches: Array.isArray(payload.matches) ? payload.matches : [],
+        matches: filterDeletedMatches(Array.isArray(payload.matches) ? payload.matches.map((match) => ({ ...match, competitionId: match.competitionId || competitionId })) : [], deletedKeys),
         results: Array.isArray(payload.results) ? payload.results : [],
         sourceFile: entry.sourceFile || meta.sourceFile || "assets/competitions"
       };
@@ -125,10 +178,8 @@
     async function loadFirebaseCompetition() {
       if (!requestedSeasonId) return null;
       try {
-        const { db, doc, getDoc } = await import("./assets/firebase.js");
-        const snapshot = await getDoc(doc(db, "publicSeasonSnapshots", requestedSeasonId));
-        if (!snapshot.exists()) return null;
-        const data = snapshot.data() || {};
+        const data = await loadFirebaseSeasonSnapshot();
+        if (!data) return null;
         const competitions = Array.isArray(data.competitions) ? data.competitions : [];
         const competition = competitions.find((item) => {
           if (requestedCompetitionId && item.id === requestedCompetitionId) return true;
@@ -139,7 +190,7 @@
         return {
           source: "firebase",
           competition,
-          matches: (Array.isArray(data.competitionMatches) ? data.competitionMatches : []).filter((match) => match.competitionId === competition.id),
+          matches: filterDeletedMatches((Array.isArray(data.competitionMatches) ? data.competitionMatches : []).filter((match) => match.competitionId === competition.id)),
           results: (Array.isArray(data.competitionResults) ? data.competitionResults : []).filter((result) => result.competitionId === competition.id),
           seasonTeams: Array.isArray(data.seasonTeams) ? data.seasonTeams : []
         };
