@@ -11890,7 +11890,7 @@ renderRosterPlayerTable = function renderRosterPlayerTableV119(players) {
   const colSpan = showMarketColumn ? 6 : 5;
   return `
     <div class="table-wrap mobile-tabular-wrap roster-table-wrap roster-inline-table-wrap">
-      <table class="mobile-tabular roster-main-table roster-player-table">
+      <table class="mobile-tabular roster-main-table roster-player-table roster-sticky-table">
         <thead>
           <tr>
             <th class="roster-col-player">${renderRosterSortButton("playerName", "Giocatore")}</th>
@@ -11904,14 +11904,15 @@ renderRosterPlayerTable = function renderRosterPlayerTableV119(players) {
         <tbody>
           ${sortRosterPlayersForDisplay(players).map((player) => {
             const currentSeasonTeamId = player.seasonTeamId || seasonTeamId;
+            const playerWithTeam = { ...player, seasonTeamId: currentSeasonTeamId };
             return `
             <tr>
-              <td data-label="Giocatore" class="roster-col-player"><strong>${escapeHtml(player.playerName || "-")}</strong> ${renderTransferBadgeV119(player, currentSeasonTeamId)}</td>
-              <td data-label="R (RM)" class="roster-col-role">${getRosterRoleDisplay(player)}</td>
-              <td data-label="Sq" class="roster-col-team">${escapeHtml(player.realTeam || "-")}</td>
-              <td data-label="Costo" class="number roster-col-cost">${escapeHtml(player.cost ?? "-")}</td>
-              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(player))}</td>
-              ${showMarketColumn ? `<td data-label="Mercato">${renderRosterMarketActionV119(player, currentSeasonTeamId)}</td>` : ""}
+              <td data-label="Giocatore" class="roster-col-player">${renderPlayerNameLinkV90(playerWithTeam)} ${renderTransferBadgeV119(playerWithTeam, currentSeasonTeamId)}</td>
+              <td data-label="R (RM)" class="roster-col-role">${getRosterRoleDisplay(playerWithTeam)}</td>
+              <td data-label="Sq" class="roster-col-team">${escapeHtml(playerWithTeam.realTeam || "-")}</td>
+              <td data-label="Costo" class="number roster-col-cost">${escapeHtml(playerWithTeam.cost ?? "-")}</td>
+              <td data-label="Qt.A" class="number roster-col-qta">${formatListoneNumber(getRosterPlayerQuotationCurrent(playerWithTeam))}</td>
+              ${showMarketColumn ? `<td data-label="Mercato">${renderRosterMarketActionV119(playerWithTeam, currentSeasonTeamId)}</td>` : ""}
             </tr>`;
           }).join("") || `<tr><td colspan="${colSpan}" class="muted center">Nessun giocatore in rosa.</td></tr>`}
         </tbody>
@@ -12420,3 +12421,112 @@ document.addEventListener("click", async (event) => {
 
 ensureTransferMarketDomV119();
 ensureTransferMarketDataV119();
+
+
+/* V120 - Link Fantacalcio e mercato nella pagina squadra, load sicuro delle raccolte fantamercato. */
+function removeTransferCollectionsFromCoreLoadV120() {
+  ["transferListings", "transferNegotiations"].forEach((name) => {
+    let index = COLLECTIONS.indexOf(name);
+    while (index !== -1) {
+      COLLECTIONS.splice(index, 1);
+      index = COLLECTIONS.indexOf(name);
+    }
+  });
+}
+removeTransferCollectionsFromCoreLoadV120();
+
+function renderTeamProfileContentV120(snapshot) {
+  if (!snapshot) {
+    return `<section class="panel"><p class="muted">Scheda squadra non ancora generata. Accedi come admin e aggiorna gli snapshot squadra.</p></section>`;
+  }
+
+  const seasonTeamId = snapshot.seasonTeamId || state.activeTeamProfileSeasonTeamId || "";
+  const isOwner = isOwnSeasonTeamV119(seasonTeamId);
+  const marketHeader = isOwner ? `<th>Mercato</th>` : "";
+  const rosterColspan = isOwner ? 6 : 5;
+
+  const rosterRows = (snapshot.rosterEntries || []).sort(compareRosterPlayersV34).map((player) => {
+    const playerWithTeam = { ...player, seasonTeamId };
+    return `
+      <tr>
+        <td data-label="Giocatore" class="team-profile-player-cell">${renderPlayerNameLinkV90(playerWithTeam, "team-profile-player-link")} ${renderTransferBadgeV119(playerWithTeam, seasonTeamId)}</td>
+        <td data-label="R (RM)" class="team-profile-role-cell">${getRosterRoleDisplay(playerWithTeam)}</td>
+        <td data-label="Sq" class="team-profile-team-cell">${escapeHtml(playerWithTeam.realTeam || "-")}</td>
+        <td data-label="Costo" class="number team-profile-cost-cell">${formatListoneNumber(playerWithTeam.cost)}</td>
+        <td data-label="Qt.A" class="number team-profile-qta-cell">${formatListoneNumber(getRosterPlayerQuotationCurrent(playerWithTeam))}</td>
+        ${isOwner ? `<td data-label="Mercato" class="team-profile-market-cell">${renderRosterMarketActionV119(playerWithTeam, seasonTeamId)}</td>` : ""}
+      </tr>`;
+  }).join("") || `<tr><td colspan="${rosterColspan}" class="muted center">Rosa non disponibile.</td></tr>`;
+
+  const palmaresRows = (snapshot.palmares || []).map((item) => `
+    <tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
+
+  const movementRows = (snapshot.recentMovements || []).map((movement) => `
+    <tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
+
+  const newsHtml = (snapshot.recentNews || []).map((news) => `
+    <article class="compact-card team-profile-news-card">
+      <h3>${escapeHtml(news.title || "Comunicato")}</h3>
+      <p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p>
+      <small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small>
+    </article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+
+  const matchesRows = (snapshot.recentMatches || []).map((match) => `
+    <tr>
+      <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
+      <td>${escapeHtml(formatMatchStage(match))}</td>
+      <td>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</td>
+      <td>${escapeHtml(formatMatchResult(match))}</td>
+    </tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
+
+  const negotiationsHtml = typeof renderTeamProfileNegotiationsV119 === "function"
+    ? renderTeamProfileNegotiationsV119(seasonTeamId)
+    : "";
+
+  return `
+    <section class="panel team-profile-hero-panel">
+      <div class="team-profile-header team-profile-header-stacked team-profile-page-hero">
+        ${renderTeamLogo(snapshot.teamName, snapshot.logo, "club-logo-lg")}
+        <div class="team-profile-title-block">
+          <h3>${escapeHtml(snapshot.teamName || "Squadra")}</h3>
+          <p class="muted team-profile-meta-line">Presidenti: ${escapeHtml(snapshot.presidents || "-")}</p>
+          <p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p>
+          <p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel detail-section"><h3>Rosa</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-roster-wrap"><table class="mobile-tabular team-profile-roster-table roster-sticky-table"><thead><tr><th>Giocatore</th><th>R (RM)</th><th>Sq</th><th class="number">Costo</th><th class="number">Qt.A</th>${marketHeader}</tr></thead><tbody>${rosterRows}</tbody></table></div></section>
+    <section class="panel detail-section"><h3>Palmarès squadra</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-palmares-wrap"><table class="mobile-tabular team-profile-palmares-table"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></section>
+    <section class="panel detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap"><table class="mobile-tabular team-profile-movements-table"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></section>
+    <section class="panel detail-section"><h3>Ultimi comunicati</h3><div class="team-profile-news-list">${newsHtml}</div></section>
+    <section class="panel detail-section"><h3>Ultime partite</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-matches-wrap"><table class="mobile-tabular team-profile-matches-table"><thead><tr><th>Comp.</th><th>Fase</th><th>Partita</th><th>Ris.</th></tr></thead><tbody>${matchesRows}</tbody></table></div></section>
+    ${negotiationsHtml}`;
+}
+
+renderTeamProfileContentV42 = renderTeamProfileContentV120;
+
+openTeamProfileV34 = function openTeamProfileV120(seasonTeamId) {
+  openTeamProfilePageV42(seasonTeamId, { pushHash: true }).catch((error) => {
+    console.error(error);
+    setError?.(`Non riesco ad aprire la pagina squadra. ${error?.message || error}`);
+  });
+};
+openTeamProfile = openTeamProfileV34;
+
+function refreshVisibleTeamProfileV120() {
+  if (state.currentPage !== "teamprofile" || !state.activeTeamProfileSeasonTeamId) return;
+  clearTimeout(state.refreshTeamProfileTimerV120);
+  state.refreshTeamProfileTimerV120 = setTimeout(() => {
+    openTeamProfilePageV42(state.activeTeamProfileSeasonTeamId, { pushHash: false, scroll: false }).catch((error) => {
+      console.warn("Profilo squadra non aggiornato dopo operazione mercato", error);
+    });
+  }, 0);
+}
+
+const loadTransferMarketCollectionsBeforeV120 = loadTransferMarketCollectionsV119;
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV120() {
+  const result = await loadTransferMarketCollectionsBeforeV120();
+  refreshVisibleTeamProfileV120();
+  return result;
+};
