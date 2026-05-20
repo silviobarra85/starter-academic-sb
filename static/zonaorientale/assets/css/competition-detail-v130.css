@@ -1,296 +1,5 @@
-/* V119 - page-heading green treatment, uniform badges and Fantamercato UI. */
-.page-heading {
-  position: relative;
-  overflow: hidden;
-  padding: 18px 20px 18px 34px;
-  margin-bottom: 18px;
-  border: 1px solid rgba(34, 197, 94, 0.24);
-  border-radius: 24px;
-  background:
-    linear-gradient(135deg, rgba(34, 197, 94, 0.115), rgba(59, 130, 246, 0.045)),
-    rgba(17, 24, 39, 0.58);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.18);
-}
-
-.page-heading::before {
-  content: "";
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  bottom: 16px;
-  width: 4px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0.95), rgba(34, 197, 94, 0.18));
-}
-
-.page-heading h2,
-.page-heading p {
-  position: relative;
-  z-index: 1;
-}
-
-.status,
-.mini-badge,
-.admin-match-source-badge {
-  min-height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  padding: 4px 9px;
-  font-size: 0.72rem;
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: 0.035em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-
-.status-ok {
-  border-color: rgba(34, 197, 94, 0.28);
-}
-
-.status-warning {
-  border-color: rgba(245, 158, 11, 0.30);
-}
-
-.status-danger {
-  border-color: rgba(239, 68, 68, 0.32);
-}
-
-.status-muted {
-  border-color: rgba(156, 163, 175, 0.26);
-}
-
-.status-transfermarket {
-  color: #bbf7d0;
-  background: rgba(34, 197, 94, 0.16);
-  border-color: rgba(34, 197, 94, 0.30);
-}
-
-button.status,
-.transfer-badge-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-button.status:hover,
-.transfer-badge-button:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.1);
-}
-
-.transfer-market-actions,
-.trade-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.transfer-market-table td,
-.transfer-market-table th {
-  vertical-align: middle;
-}
-
-.trade-proposal-form select[multiple] {
-  min-height: 156px;
-  padding: 8px;
-}
-
-.trade-validation {
-  display: grid;
-  gap: 6px;
-}
-
-.trade-alert {
-  display: block;
-  padding: 8px 10px;
-  border-radius: 12px;
-  color: #fed7aa;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.24);
-  font-size: 0.88rem;
-}
-
-.trade-alert-ok {
-  color: #bbf7d0;
-  background: rgba(34, 197, 94, 0.12);
-  border-color: rgba(34, 197, 94, 0.24);
-}
-
-.trade-lists-grid {
-  align-items: start;
-}
-
-.trade-list-column {
-  display: grid;
-  gap: 10px;
-}
-
-.trade-list-column h3 {
-  margin: 0;
-}
-
-.trade-card {
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 18px;
-  background: rgba(15, 23, 42, 0.42);
-  overflow: hidden;
-}
-
-.trade-card > summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 14px;
-}
-
-.trade-card > summary::-webkit-details-marker {
-  display: none;
-}
-
-.trade-card > summary span:first-child {
-  display: grid;
-  gap: 3px;
-}
-
-.trade-card > summary small {
-  color: var(--muted);
-}
-
-.trade-card-body {
-  display: grid;
-  gap: 12px;
-  padding: 0 14px 14px;
-}
-
-.trade-summary-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.trade-summary-grid > div {
-  padding: 12px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.075);
-}
-
-.trade-summary-grid strong,
-.trade-summary-grid small {
-  display: block;
-}
-
-.trade-note {
-  margin: 0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(34, 197, 94, 0.16);
-}
-
-.trade-prefill-notice {
-  margin-bottom: 14px;
-}
-
-.team-profile-trades {
-  display: grid;
-  gap: 10px;
-}
-
-html[data-theme="light"] .page-heading {
-  background:
-    linear-gradient(135deg, rgba(34, 197, 94, 0.10), rgba(59, 130, 246, 0.04)),
-    rgba(255, 255, 255, 0.86);
-  border-color: rgba(22, 163, 74, 0.24);
-}
-
-html[data-theme="light"] .trade-card,
-html[data-theme="light"] .trade-summary-grid > div {
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(15, 23, 42, 0.08);
-}
-
-@media (max-width: 900px), (hover: none) and (pointer: coarse) {
-  .page-heading {
-    padding: 15px 14px 15px 28px;
-    border-radius: 20px;
-  }
-
-  .page-heading::before {
-    left: 12px;
-    top: 14px;
-    bottom: 14px;
-    width: 3px;
-  }
-
-  .status,
-  .mini-badge,
-  .admin-match-source-badge {
-    min-height: 21px;
-    padding: 3px 7px;
-    font-size: 0.62rem;
-    letter-spacing: 0.025em;
-  }
-
-  .transfer-market-actions,
-  .trade-actions {
-    justify-content: flex-start;
-  }
-
-  .trade-summary-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .trade-card > summary {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .trade-proposal-form select[multiple] {
-    min-height: 132px;
-  }
-}
-
-/* V122 - Admin Accetta utenti: sezioni richieste/approvati. */
-.admin-subsection-block {
-  border: 1px solid rgba(25, 195, 125, 0.22);
-  border-radius: 18px;
-  padding: 1rem;
-  margin: 0.85rem 0;
-  background: linear-gradient(135deg, rgba(25, 195, 125, 0.08), rgba(20, 184, 166, 0.035));
-}
-
-.admin-subsection-block h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
-}
-
-.admin-user-approved-item {
-  opacity: 0.96;
-}
-
-/* V124 - Mobile-only layout refinements, alert reasons and trade deselection. */
-.metric-reason {
-  display: block;
-  margin-top: 4px;
-  font-size: 0.76rem;
-  line-height: 1.25;
-}
-
-.trade-clear-selection-button {
-  width: fit-content;
-  margin-top: 7px;
-}
-
+/* V130 - Dettaglio competizione e layout mobile competizioni.
+   Estratto da refinements-v119-v126.css senza modifiche funzionali. */
 .competition-page-match-teams {
   display: inline-flex;
   align-items: center;
@@ -317,23 +26,7 @@ html[data-theme="light"] .trade-summary-grid > div {
   text-overflow: ellipsis;
 }
 
-body.is-mobile-ux .page-heading {
-  padding-left: 14px !important;
-}
-
-body.is-mobile-ux .page-heading::before {
-  display: none !important;
-}
-
 @media (max-width: 900px), (hover: none) and (pointer: coarse) {
-  .page-heading {
-    padding-left: 14px !important;
-  }
-
-  .page-heading::before {
-    display: none !important;
-  }
-
   .competition-card-header-with-actions {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
@@ -391,36 +84,6 @@ body.is-mobile-ux .page-heading::before {
     white-space: nowrap !important;
   }
 
-  .transfer-market-panel .panel-header {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    text-align: center !important;
-    gap: 10px !important;
-  }
-
-  .transfer-market-panel .filters-row {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    width: min(100%, 420px) !important;
-    margin: 0 auto !important;
-    justify-items: stretch !important;
-    gap: 8px !important;
-  }
-
-  .transfer-market-panel .filter-input,
-  .transfer-market-panel .search-input {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: 42px !important;
-    font-size: 0.92rem !important;
-    text-align: center !important;
-  }
-
-  .transfer-market-panel select option {
-    font-size: 0.94rem;
-  }
-
   .competition-page-stage-group .mobile-tabular-wrap {
     overflow-x: auto !important;
     overflow-y: visible !important;
@@ -459,11 +122,6 @@ body.is-mobile-ux .page-heading::before {
     width: 22px;
     height: 22px;
     flex-basis: 22px;
-  }
-
-  .trade-clear-selection-button {
-    width: 100%;
-    justify-content: center;
   }
 }
 
@@ -514,31 +172,6 @@ body.is-mobile-ux .competition-stage-toggle-label {
   font-size: 0.56rem !important;
 }
 
-body.is-mobile-ux .transfer-market-panel .panel-header {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  justify-items: center !important;
-  text-align: center !important;
-  gap: 10px !important;
-}
-
-body.is-mobile-ux .transfer-market-panel .filters-row {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) !important;
-  width: min(100%, 420px) !important;
-  margin: 0 auto !important;
-  gap: 8px !important;
-}
-
-body.is-mobile-ux .transfer-market-panel .filter-input,
-body.is-mobile-ux .transfer-market-panel .search-input {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-height: 42px !important;
-  font-size: 0.92rem !important;
-  text-align: center !important;
-}
-
 body.is-mobile-ux .competition-page-stage-group .mobile-tabular-wrap {
   overflow-x: auto !important;
   overflow-y: visible !important;
@@ -562,7 +195,6 @@ body.is-mobile-ux .competition-page-stage-group table.mobile-tabular td:first-ch
   text-align: left !important;
 }
 
-/* V125 - Pagina competizione: stesso stile tabelle/fasi della sezione Competizioni e loghi visibili. */
 .competition-page-results-card {
   padding: 0;
   background: transparent;
@@ -738,7 +370,6 @@ body.is-mobile-ux .competition-page-match-table-wrap table td:first-child {
   text-align: left !important;
 }
 
-/* V126 - Pagina competizione: classifica Campionato compatta e colonna Partita meno larga. */
 .competition-page-result-table-wrap table.competition-page-results-table {
   min-width: 520px;
   table-layout: auto;
