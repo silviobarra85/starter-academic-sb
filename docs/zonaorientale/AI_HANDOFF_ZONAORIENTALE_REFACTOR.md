@@ -563,3 +563,14 @@ static/zonaorientale/competition.html
 ```
 
 Apre il calendario completo della competizione dalla card pubblica tramite pulsante `Apri competizione`. Anche questa pagina usa prima il JSON statico e solo se assente prova lo snapshot Firebase della stagione.
+
+### Competizioni statiche
+
+- Nuova cartella dati: `static/zonaorientale/assets/competitions/`.
+- Il sito deve leggere prima i calendari JSON statici e usare Firebase/snapshot solo come fallback.
+- Se una competizione ha JSON statico, il nome pubblico viene preso dal JSON prima che da Firebase.
+- I JSON competizione devono salvare anche `homeSeasonTeamId` e `awaySeasonTeamId`, oltre ai nomi squadra, per evitare matching fragile solo per nome.
+- In `#competitions` le partite sono raggruppate per fase in ordine: Finale, Semifinali ritorno, Semifinali andata, Semifinali secche, Quarti di finale ritorno, Quarti di finale andata, Quarti di finale secche, fasi precedenti.
+- Quando le partite sono gia raggruppate per fase, la tabella delle singole partite non deve ripetere la colonna `Fase`.
+- In Admin -> Partite competizioni, le partite Firebase coperte da JSON statico mostrano un badge `JSON`, cosi l'utente puo eliminarle da Firebase dopo verifica.
+- La pagina `competition.html` mostra l'intero calendario della competizione, con JSON statico come fonte primaria.

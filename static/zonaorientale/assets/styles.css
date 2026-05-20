@@ -12798,3 +12798,30 @@ html[data-theme="light"] .competition-match-stage-group h4 {
     text-align: center;
   }
 }
+
+
+/* V112 - Flag JSON in Admin partite e righe pubbliche senza colonna fase duplicata. */
+.admin-static-match-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #052e16;
+  background: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+.admin-list-item-static-covered {
+  border-color: rgba(34, 197, 94, 0.22);
+  background: rgba(34, 197, 94, 0.06);
+}
+.competition-match-stage-group .match-table-wrap table th:first-child,
+.competition-match-stage-group .match-table-wrap table td:first-child {
+  width: 52%;
+}
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .admin-static-match-flag { width: fit-content; }
+}

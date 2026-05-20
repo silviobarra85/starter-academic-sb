@@ -9934,3 +9934,289 @@ renderDashboard = function renderDashboardV111() {
   renderDashboardNewsV42();
   if (typeof normalizeToggleLabelsV29 === "function") normalizeToggleLabelsV29();
 };
+
+
+/* V112 - Fasi competizione piu precise e flag Admin partite coperte da JSON.
+   - Riconosce finali abbreviate come "F - Secca" senza farle cadere su Serie A.
+   - Le righe pubbliche delle partite non ripetono piu la fase quando sono gia raggruppate.
+   - In Admin > Partite competizioni segnala le partite Firebase coperte da JSON statico. */
+function getMatchBaseStageV112(match) {
+  const stageRaw = cleanStageTextV111(match?.stage || match?.phase || match?.round || "");
+  const legRaw = cleanStageTextV111(match?.leg || match?.roundLeg || "");
+  const matchdayRaw = cleanStageTextV111(match?.matchday || "");
+  const combinedOriginal = `${stageRaw} ${legRaw} ${matchdayRaw}`.trim();
+  const withoutFinalFour = combinedOriginal.replace(/FINAL\s+FOUR/g, " ").replace(/\s+/g, " ").trim();
+
+  if (/FINALE|FINAL\b|(^|\s)F(\s|$)/.test(withoutFinalFour)) return { key: "finale", label: "Finale", rank: 900 };
+  if (/SEMIFINAL|SEMI|\bSF\b/.test(withoutFinalFour)) return { key: "semifinali", label: "Semifinali", rank: 800 };
+  if (/QUARTI|QUART|\bQF\b/.test(withoutFinalFour)) return { key: "quarti-finale", label: "Quarti di finale", rank: 700 };
+  if (/OTTAVI|OTTAV|\bR16\b/.test(withoutFinalFour)) return { key: "ottavi-finale", label: "Ottavi di finale", rank: 600 };
+  if (/FINAL\s+FOUR/.test(combinedOriginal)) return { key: "final-four", label: "Final Four", rank: 650 };
+
+  const leagueDay = Number(match?.leagueMatchday || 0);
+  if (Number.isFinite(leagueDay) && leagueDay > 0) return { key: `giornata-${leagueDay}`, label: `Giornata ${leagueDay}`, rank: 100 + leagueDay };
+  const serieDay = Number(match?.serieAMatchday || 0);
+  if (Number.isFinite(serieDay) && serieDay > 0) return { key: `serie-a-${serieDay}`, label: `Serie A ${serieDay}`, rank: 50 + serieDay };
+  const fallback = String(match?.matchday || match?.stage || match?.phase || "Partite").trim() || "Partite";
+  return { key: normalizeKey(fallback) || "partite", label: fallback, rank: 0 };
+}
+
+function getMatchLegCodeV112(match) {
+  const base = getMatchBaseStageV112(match);
+  if (base.key === "finale") return "finale";
+  const legRaw = cleanStageTextV111(match?.leg || match?.roundLeg || match?.matchday || "");
+  if (/RITORNO|RETURN|\bRIT\b|(^|\s)R(\s|$)/.test(legRaw)) return "ritorno";
+  if (/ANDATA|FIRST|\bAND\b|(^|\s)A(\s|$)/.test(legRaw)) return "andata";
+  if (/SECCA|UNICA|SINGLE|ONE\s+LEG/.test(legRaw)) return "secca";
+  return "secca";
+}
+
+function buildStageLegContextV112(matches) {
+  const context = new Map();
+  matches.forEach((match) => {
+    const base = getMatchBaseStageV112(match);
+    if (!context.has(base.key)) context.set(base.key, new Set());
+    const leg = getMatchLegCodeV112(match);
+    if (leg === "andata" || leg === "ritorno") context.get(base.key).add(leg);
+  });
+  return context;
+}
+
+function getMatchStageInfoV112(match, legContext) {
+  const base = getMatchBaseStageV112(match);
+  if (base.key === "finale") return { key: "finale", label: "Finale", rank: base.rank };
+
+  const declaredLeg = getMatchLegCodeV112(match);
+  const legs = legContext?.get(base.key) || new Set();
+  const hasTwoLegs = legs.has("andata") && legs.has("ritorno");
+  const leg = hasTwoLegs ? declaredLeg : "secca";
+
+  if (leg === "ritorno") return { key: `${base.key}-ritorno`, label: `${base.label} ritorno`, rank: base.rank + 20 };
+  if (leg === "andata") return { key: `${base.key}-andata`, label: `${base.label} andata`, rank: base.rank + 10 };
+  return { key: base.key, label: base.label, rank: base.rank + 15 };
+}
+
+function groupCompetitionMatchesByStageV112(matches) {
+  const legContext = buildStageLegContextV112(matches);
+  const groups = new Map();
+  matches.forEach((match) => {
+    const info = getMatchStageInfoV112(match, legContext);
+    if (!groups.has(info.key)) groups.set(info.key, { key: info.key, label: info.label, rank: info.rank, matches: [] });
+    groups.get(info.key).matches.push(match);
+  });
+  return [...groups.values()].sort((a, b) => {
+    const rankDiff = b.rank - a.rank;
+    if (rankDiff) return rankDiff;
+    return String(a.label).localeCompare(String(b.label), "it", { numeric: true, sensitivity: "base" });
+  });
+}
+
+function renderMatchRowsNoStageV112(matches, emptyText = "Nessuna partita inserita.") {
+  if (!matches.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="table-wrap match-table-wrap">
+      <table>
+        <thead>
+          <tr><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+        </thead>
+        <tbody>
+          ${matches.map((match) => `
+            <tr>
+              <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
+              <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
+              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+function renderCompetitionMatchesPublicV112(competition) {
+  const matches = getCompetitionMatches(competition.id);
+  if (!matches.length) return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+  const groups = groupCompetitionMatchesByStageV112(matches);
+  return `
+    <div class="competition-matches-public competition-match-groups">
+      ${groups.map((group) => `
+        <details class="detail-section compact-detail-section competition-match-stage-group competition-match-stage-details" open>
+          <summary class="competition-match-stage-summary">
+            <h4>${escapeHtml(group.label)}</h4>
+            <span class="button button-secondary button-small competition-stage-toggle-label" aria-hidden="true">Riduci/Espandi</span>
+          </summary>
+          ${renderMatchRowsNoStageV112(sortMatchesInsideStageV111(group.matches), "Nessuna partita inserita.")}
+        </details>`).join("")}
+    </div>`;
+}
+
+renderCompetitionMatchesPublic = renderCompetitionMatchesPublicV112;
+
+function getStaticMatchForAdminFlagV112(match, competition) {
+  if (!match || !competition || typeof getStaticCompetitionMatchesCanonicalV109 !== "function") return null;
+  const staticMatches = getStaticCompetitionMatchesCanonicalV109(competition) || [];
+  if (!staticMatches.length) return null;
+  const matchKey = typeof getStaticMatchMergeKeyV101 === "function" ? getStaticMatchMergeKeyV101(match) : "";
+  return staticMatches.find((staticMatch) => {
+    if (staticMatch.id && match.id && staticMatch.id === match.id) return true;
+    if (matchKey && typeof getStaticMatchMergeKeyV101 === "function" && getStaticMatchMergeKeyV101(staticMatch) === matchKey) return true;
+    const sameHome = String(staticMatch.homeSeasonTeamId || "") === String(match.homeSeasonTeamId || "") || normalizeKey(staticMatch.homeTeamName || "") === normalizeKey(getSeasonTeamDisplayName(match.homeSeasonTeamId) || "");
+    const sameAway = String(staticMatch.awaySeasonTeamId || "") === String(match.awaySeasonTeamId || "") || normalizeKey(staticMatch.awayTeamName || "") === normalizeKey(getSeasonTeamDisplayName(match.awaySeasonTeamId) || "");
+    const sameRound = normalizeKey(staticMatch.matchday || staticMatch.stage || "") === normalizeKey(match.matchday || match.stage || "") || Number(staticMatch.serieAMatchday || 0) === Number(match.serieAMatchday || 0);
+    return Boolean(sameHome && sameAway && sameRound);
+  }) || null;
+}
+
+renderCompetitionMatchesAdminPanel = function renderCompetitionMatchesAdminPanelV112() {
+  const selectedSeasonId = getValidSeasonSelection("selectedAdminMatchSeasonId");
+  const competitionsForSelectedSeason = state.raw.competitions.filter((competition) => competition.seasonId === selectedSeasonId);
+
+  const selectedCompetitionId = state.selectedMatchCompetitionId && competitionsForSelectedSeason.some((competition) => competition.id === state.selectedMatchCompetitionId)
+    ? state.selectedMatchCompetitionId
+    : competitionsForSelectedSeason[0]?.id || "";
+  state.selectedMatchCompetitionId = selectedCompetitionId;
+
+  const seasonOptions = state.raw.seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === selectedSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  const competitionOptions = competitionsForSelectedSeason.map((competition) => `
+    <option value="${escapeHtml(competition.id)}" ${competition.id === selectedCompetitionId ? "selected" : ""}>${escapeHtml(getCompetitionDisplayNameV111(competition))}</option>
+  `).join("");
+
+  const statusOptions = MATCH_STATUSES.map((status) => `
+    <option value="${escapeHtml(status.value)}">${escapeHtml(status.label)}</option>
+  `).join("");
+
+  const matchdayOptions = STANDARD_KNOCKOUT_MATCHDAYS.map((matchday) => `
+    <option value="${escapeHtml(matchday)}"></option>
+  `).join("");
+
+  const { competitionsById } = buildMaps();
+  const matchesForSelectedCompetition = sortMatchesForDisplay(state.raw.competitionMatches.filter((match) => {
+    const matchSeasonId = match.seasonId || competitionsById.get(match.competitionId)?.seasonId || "";
+    return matchSeasonId === selectedSeasonId && (!selectedCompetitionId || match.competitionId === selectedCompetitionId);
+  }));
+
+  const matchdayValues = Array.from(new Set(
+    matchesForSelectedCompetition
+      .map((match) => match.matchday || "")
+      .filter(Boolean)
+  )).sort((a, b) => b.localeCompare(a, "it", { numeric: true }));
+
+  const selectedMatchdayFilter = state.selectedAdminMatchdayFilter && matchdayValues.includes(state.selectedAdminMatchdayFilter)
+    ? state.selectedAdminMatchdayFilter
+    : "";
+  state.selectedAdminMatchdayFilter = selectedMatchdayFilter;
+
+  const matchdayFilterOptions = [`<option value="">Tutte le fasi/giornate</option>`, ...matchdayValues.map((matchday) => `
+    <option value="${escapeHtml(matchday)}" ${matchday === selectedMatchdayFilter ? "selected" : ""}>${escapeHtml(matchday)}</option>
+  `)].join("");
+
+  const filteredMatches = selectedMatchdayFilter
+    ? matchesForSelectedCompetition.filter((match) => (match.matchday || "") === selectedMatchdayFilter)
+    : matchesForSelectedCompetition;
+
+  const rows = filteredMatches.map((match) => {
+    const competition = competitionsById.get(match.competitionId);
+    const staticMatch = getStaticMatchForAdminFlagV112(match, competition);
+    const staticFlag = staticMatch ? `<span class="admin-static-match-flag" title="Questa partita Firebase e gia coperta da un calendario JSON statico">JSON</span>` : "";
+    return `
+      <div class="admin-list-item${staticMatch ? " admin-list-item-static-covered" : ""}">
+        <span>
+          <strong>${escapeHtml(getSeasonName(competition?.seasonId || match.seasonId))} · ${escapeHtml(getCompetitionDisplayNameV111(competition) || match.competitionId)}</strong>
+          <small><strong>Fase/giornata:</strong> ${escapeHtml(formatMatchStage(match))}${getMatchSerieAMatchday(match) ? ` · Serie A: ${escapeHtml(getMatchSerieAMatchday(match))}` : ""} · ${escapeHtml(match.matchDate || "-")} · ${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))} · ${escapeHtml(formatMatchResult(match))}</small>
+        </span>
+        <span>
+          ${staticFlag}
+          <span class="status ${match.status === "GIOCATA" ? "status-ok" : "status-warning"}">${escapeHtml(getLabel(MATCH_STATUSES, match.status))}</span>
+          <button class="button button-secondary button-small" type="button" data-admin-edit-match="${escapeHtml(match.id)}">Modifica</button>
+          <button class="button button-danger button-small" type="button" data-admin-delete-match="${escapeHtml(match.id)}">Elimina</button>
+        </span>
+      </div>`;
+  }).join("") || `<p class="muted admin-empty-message">Nessuna partita trovata per stagione, competizione e fase/giornata selezionate.</p>`;
+
+  const coveredCount = filteredMatches.filter((match) => getStaticMatchForAdminFlagV112(match, competitionsById.get(match.competitionId))).length;
+
+  return renderAdminPanel("adminCompetitionMatchesPanel", "Firebase", "Partite competizioni", "Inserisci calendario e risultati delle partite. Le partite con badge JSON sono gia lette da assets/competitions e possono essere eliminate da Firebase dopo verifica.", `
+      <form id="adminCompetitionMatchesForm" class="form-grid">
+        <input id="adminCompetitionMatchId" type="hidden" />
+        <label>
+          Stagione
+          <select id="adminCompetitionMatchSeasonId" class="input" required>
+            ${seasonOptions}
+          </select>
+        </label>
+        <label>
+          Competizione
+          <select id="adminCompetitionMatchCompetitionId" class="input" required>
+            ${competitionOptions}
+          </select>
+        </label>
+        <label>
+          Filtro elenco fase/giornata
+          <select id="adminCompetitionMatchdayFilter" class="input">
+            ${matchdayFilterOptions}
+          </select>
+          <small class="field-hint">La lista sotto viene filtrata per stagione, competizione e fase/giornata.</small>
+        </label>
+        <label>
+          Fase
+          <input id="adminCompetitionMatchday" class="input" type="text" list="adminCompetitionMatchdayOptions" placeholder="Es. Giornata 1 oppure QF - Andata" required />
+          <datalist id="adminCompetitionMatchdayOptions">${matchdayOptions}</datalist>
+          <small class="field-hint">Per competizioni a gironi puoi usare QF/SF/F/Finale/Finalissima o scrivere una giornata libera.</small>
+        </label>
+        <label>
+          Data
+          <input id="adminCompetitionMatchDate" class="input" type="date" />
+        </label>
+        <label>
+          Giornata Serie A reale
+          <input id="adminCompetitionMatchSerieAMatchday" class="input" type="number" min="1" step="1" placeholder="Es. 12" />
+        </label>
+        <label>
+          Squadra casa
+          <select id="adminCompetitionMatchHome" class="input" required></select>
+        </label>
+        <label>
+          Squadra trasferta
+          <select id="adminCompetitionMatchAway" class="input" required></select>
+        </label>
+        <label>
+          Stato partita
+          <select id="adminCompetitionMatchStatus" class="input" required>
+            ${statusOptions}
+          </select>
+        </label>
+        <label>
+          Gol casa
+          <input id="adminCompetitionMatchHomeGoals" class="input" type="number" min="0" step="1" />
+        </label>
+        <label>
+          Gol trasferta
+          <input id="adminCompetitionMatchAwayGoals" class="input" type="number" min="0" step="1" />
+        </label>
+        <label>
+          FP casa
+          <input id="adminCompetitionMatchHomeScore" class="input" type="number" step="0.5" />
+        </label>
+        <label>
+          FP trasferta
+          <input id="adminCompetitionMatchAwayScore" class="input" type="number" step="0.5" />
+        </label>
+        <label class="span-2">
+          Note
+          <input id="adminCompetitionMatchNotes" class="input" type="text" placeholder="Opzionale" />
+        </label>
+        <div class="form-actions span-2">
+          <button class="button button-primary" type="submit" ${competitionsForSelectedSeason.length ? "" : "disabled"}>Salva partita</button>
+          <button id="adminCompetitionMatchReset" class="button button-secondary" type="button">Nuova</button>
+          <span id="adminCompetitionMatchStatusText" class="form-status"></span>
+        </div>
+      </form>
+
+      <details class="admin-edit-section" open>
+        <summary><strong>Partite filtrate</strong><span>${filteredMatches.length}${coveredCount ? ` · ${coveredCount} JSON` : ""}</span></summary>
+        <p class="field-hint">Il badge <strong>JSON</strong> indica partite Firebase gia coperte dal calendario statico della competizione.</p>
+        <div class="admin-list">${rows}</div>
+      </details>
+  `);
+};

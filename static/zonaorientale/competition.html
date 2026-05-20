@@ -7,7 +7,7 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=111" />
+  <link rel="stylesheet" href="./assets/styles.css?v=112" />
 </head>
 <body>
   <main class="container app-main competition-page-main">
@@ -30,7 +30,7 @@
   </main>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V111 pagina competizione e fasi calendario · Ultimo aggiornamento 20/05/2026</p>
+    <p>ZonaOrientale Salerno · V112 fasi competizione e flag JSON admin · Ultimo aggiornamento 20/05/2026</p>
   </footer>
 
   <script type="module">
@@ -177,11 +177,11 @@
       const legRaw = cleanStageText(match.leg || match.roundLeg || "");
       const matchdayRaw = cleanStageText(match.matchday || "");
       const combinedOriginal = `${stageRaw} ${legRaw} ${matchdayRaw}`.trim();
-      const combined = combinedOriginal.replace(/FINAL\s+FOUR/g, " ");
-      if (/FINALE|FINAL\b/.test(combined)) return { key: "finale", label: "Finale", rank: 900 };
-      if (/SEMIFINAL|SEMI|\bSF\b/.test(combined)) return { key: "semifinali", label: "Semifinali", rank: 800 };
-      if (/QUARTI|QUART|\bQF\b/.test(combined)) return { key: "quarti-finale", label: "Quarti di finale", rank: 700 };
-      if (/OTTAVI|OTTAV|\bR16\b/.test(combined)) return { key: "ottavi-finale", label: "Ottavi di finale", rank: 600 };
+      const withoutFinalFour = combinedOriginal.replace(/FINAL\s+FOUR/g, " ").replace(/\s+/g, " ").trim();
+      if (/FINALE|FINAL\b|(^|\s)F(\s|$)/.test(withoutFinalFour)) return { key: "finale", label: "Finale", rank: 900 };
+      if (/SEMIFINAL|SEMI|\bSF\b/.test(withoutFinalFour)) return { key: "semifinali", label: "Semifinali", rank: 800 };
+      if (/QUARTI|QUART|\bQF\b/.test(withoutFinalFour)) return { key: "quarti-finale", label: "Quarti di finale", rank: 700 };
+      if (/OTTAVI|OTTAV|\bR16\b/.test(withoutFinalFour)) return { key: "ottavi-finale", label: "Ottavi di finale", rank: 600 };
       if (/FINAL\s+FOUR/.test(combinedOriginal)) return { key: "final-four", label: "Final Four", rank: 650 };
       const leagueDay = Number(match.leagueMatchday || 0);
       if (Number.isFinite(leagueDay) && leagueDay > 0) return { key: `giornata-${leagueDay}`, label: `Giornata ${leagueDay}`, rank: 100 + leagueDay };
@@ -193,8 +193,8 @@
       const base = getBaseStage(match);
       if (base.key === "finale") return "finale";
       const text = cleanStageText(match.leg || match.roundLeg || match.matchday || "");
-      if (/RITORNO|RETURN|\bRIT\b/.test(text)) return "ritorno";
-      if (/ANDATA|FIRST|\bAND\b/.test(text)) return "andata";
+      if (/RITORNO|RETURN|\bRIT\b|(^|\s)R(\s|$)/.test(text)) return "ritorno";
+      if (/ANDATA|FIRST|\bAND\b|(^|\s)A(\s|$)/.test(text)) return "andata";
       return "secca";
     }
 
