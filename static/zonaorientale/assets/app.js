@@ -90,6 +90,10 @@ import {
   getTeamDisplayName
 } from "./js/domain/entities.js";
 import {
+  guessTeamLogoByName as guessTeamLogoByNameV125,
+  getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
+} from "./js/domain/team-logos.js";
+import {
   normalizePlayerName,
   normalizeRosterKey,
   getRosterAliasKeys,
@@ -12715,3 +12719,53 @@ loadTransferMarketCollectionsV119 = async function loadTransferMarketCollections
 
 
 ensureTransferMarketDataV119();
+
+/* V125 - Loghi robusti nelle competizioni statiche e nomi squadra con fallback logo.
+   Helper puri spostati in assets/js/domain/team-logos.js in V127. */
+const getSeasonTeamLogoBeforeV125 = typeof getSeasonTeamLogo === "function" ? getSeasonTeamLogo : null;
+if (getSeasonTeamLogoBeforeV125) {
+  getSeasonTeamLogo = function getSeasonTeamLogoV125(seasonTeam) {
+    const configuredLogo = getSeasonTeamLogoBeforeV125(seasonTeam);
+    if (configuredLogo) return configuredLogo;
+    if (!seasonTeam) return "";
+    const { teamsById } = buildMaps();
+    const team = teamsById.get(seasonTeam.teamId);
+    for (const name of getSeasonTeamNameCandidatesV125(seasonTeam, team)) {
+      const guessedLogo = guessTeamLogoByNameV125(name);
+      if (guessedLogo) return guessedLogo;
+    }
+    return "";
+  };
+}
+
+function findSeasonTeamByNameV125(name, seasonId = getCurrentSeasonId()) {
+  const target = normalizeKey(name || "");
+  if (!target) return null;
+  const { teamsById } = buildMaps();
+  return (state.raw.seasonTeams || []).find((seasonTeam) => {
+    if (seasonId && seasonTeam.seasonId && seasonTeam.seasonId !== seasonId) return false;
+    const team = teamsById.get(seasonTeam.teamId);
+    return getSeasonTeamNameCandidatesV125(seasonTeam, team).map(normalizeKey).includes(target);
+  }) || null;
+}
+
+const renderStaticMatchTeamNameBeforeV125 = typeof renderStaticMatchTeamNameV101 === "function" ? renderStaticMatchTeamNameV101 : null;
+if (renderStaticMatchTeamNameBeforeV125) {
+  renderStaticMatchTeamNameV101 = function renderStaticMatchTeamNameV125(match, side, options = {}) {
+    const { strong = true, className = "", textClass = "" } = options;
+    const id = side === "home" ? match.homeSeasonTeamId : match.awaySeasonTeamId;
+    const fallbackName = side === "home" ? match.homeTeamName : match.awayTeamName;
+    const seasonTeam = id ? getSeasonTeamById(id) : null;
+    const matchedSeasonTeam = seasonTeam || findSeasonTeamByNameV125(fallbackName, match.seasonId || getCurrentSeasonId());
+    const resolvedId = matchedSeasonTeam?.id || id;
+    const resolvedName = matchedSeasonTeam
+      ? (matchedSeasonTeam.name || getSeasonTeamDisplayName(resolvedId))
+      : (fallbackName || getSeasonTeamDisplayName(resolvedId) || "-");
+    const logo = (matchedSeasonTeam ? getSeasonTeamLogo(matchedSeasonTeam) : "") || guessTeamLogoByNameV125(resolvedName);
+    const safeTextClass = escapeHtml(textClass);
+    const text = strong
+      ? `<strong class="${safeTextClass}">${escapeHtml(resolvedName)}</strong>`
+      : `<span class="${safeTextClass}">${escapeHtml(resolvedName)}</span>`;
+    return `<span class="club-name-with-logo static-competition-team-name ${escapeHtml(className)}">${renderTeamLogo(resolvedName, logo)}${text}</span>`;
+  };
+}
