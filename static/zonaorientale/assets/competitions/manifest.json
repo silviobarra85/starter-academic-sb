@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-20T04:32:29.224Z",
+  "generatedAt": "2026-05-20T05:15:42.578Z",
   "competitions": [
     {
       "id": "2025-2026-champions-league",
@@ -8,6 +8,7 @@
       "competitionId": "2025-2026_champions-league",
       "competitionName": "Champion's League",
       "competitionSlug": "champions-league",
+      "competitionType": "CHAMPIONS_LEAGUE",
       "label": "Champion's League 2025/2026",
       "loadedAt": "2026-05-20",
       "sourceFile": "Calendario_Champion's-League-2025-2026.xlsx",
@@ -20,9 +21,10 @@
       "id": "2025-2026-coppa-italia-about-food-final-four",
       "seasonId": "2025-2026",
       "competitionId": "2025-2026_coppa-italia-about-food-final-four",
-      "competitionName": "Coppa Italia \"About Food\" Final Four",
+      "competitionName": "Coppa Italia About Food Final Four",
       "competitionSlug": "coppa-italia-about-food-final-four",
-      "label": "Coppa Italia \"About Food\" Final Four 2025/2026",
+      "competitionType": "COPPA_ITALIA",
+      "label": "Coppa Italia About Food Final Four 2025/2026",
       "loadedAt": "2026-05-20",
       "sourceFile": "Calendario_Coppa-Italia-About-Food-Final-Four.xlsx",
       "file": "2025-2026/coppa-italia-about-food-final-four-2025-2026.json",
