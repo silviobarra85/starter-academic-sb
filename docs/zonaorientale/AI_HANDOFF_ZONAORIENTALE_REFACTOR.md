@@ -2,8 +2,8 @@
 
 Documento da consegnare a un nuovo assistente prima di lavorare sul progetto.
 
-Ultimo aggiornamento: 2026-05-19  
-Stato corrente pubblicato: fino a V95, regolamento nel tab piu compatto  
+Ultimo aggiornamento: 2026-05-20  
+Stato corrente: V104 su branch feature/zonaorientale-competizioni-statiche, competizioni statiche e fasi riducibili  
 Sito pubblico: `https://www.silviobarra.com/zonaorientale/`  
 Cartella webapp nella repo Hugo/Wowchemy: `static/zonaorientale/`
 
@@ -141,7 +141,6 @@ Per lavorare bene, chiedere sempre questi file aggiornati:
 static/zonaorientale/index.html
 static/zonaorientale/player.html
 static/zonaorientale/news.html
-static/zonaorientale/rules.html
 static/zonaorientale/assets/app.js
 static/zonaorientale/assets/styles.css
 static/zonaorientale/assets/firebase.js
@@ -460,3 +459,47 @@ git add static/zonaorientale/index.html static/zonaorientale/assets/styles.css
 git commit -m "Descrizione breve"
 git push origin nome-branch
 ```
+
+
+## 15. Competizioni statiche
+
+Nuova funzionalita in sviluppo sul branch `feature/zonaorientale-competizioni-statiche`.
+
+Struttura prevista:
+
+```text
+static/zonaorientale/assets/competitions/
+  manifest.json
+  2025-2026/
+    champions-league-2025-2026.json
+```
+
+Il file manifest contiene i calendari statici disponibili. Ogni JSON competizione contiene `meta`, `competition`, `matches` e `results`. Il sito carica questi file da `assets/competitions`, li fonde con le competizioni gia presenti da Firebase/snapshot e mostra un badge fonte: `JSON statico` o `Firebase`.
+
+Nella sezione Competizioni le partite sono raggruppate per fase e ordinate cosi: Finale, Semifinali ritorno, Semifinali andata, Quarti di finale ritorno, Quarti di finale andata, poi eventuali fasi precedenti/giornate. Ogni fase e un blocco riducibile/espandibile.
+
+Step successivo previsto: importatore Admin Excel -> anteprima modificabile -> generazione JSON competizione + manifest aggiornato + zip overlay.
+
+### Importatore Admin competizioni statiche
+
+Dal V105 e presente in Admin un pannello `Importa calendario competizione`.
+
+Flusso previsto:
+
+```text
+1. carica Excel calendario competizione;
+2. il browser legge il file con SheetJS;
+3. viene mostrata un'anteprima modificabile delle partite;
+4. l'utente corregge fase, andata/ritorno, giornate, squadre, fantapunti, risultato e stato;
+5. clicca `Genera zip overlay`;
+6. il sito scarica uno zip con:
+   static/zonaorientale/assets/competitions/manifest.json
+   static/zonaorientale/assets/competitions/<stagione>/<competizione>-<stagione>.json
+```
+
+Il manifest generato e completo: aggiorna il manifest esistente aggiungendo o sostituendo la voce con stesso `id`/`file`. L'utente non deve copiare manualmente un record nel manifest.
+
+Limiti: l'importatore e tarato sui calendari Excel tipo `Calendario_Champion's-League-2025-2026.xlsx`, con blocchi fase, riga giornata e partite su due blocchi laterali andata/ritorno. Per formati diversi va adattato il parser.
+
+
+Quando si lavora su questa funzionalita chiedere anche eventuali file Excel calendario e, se gia esistono, `static/zonaorientale/assets/competitions/manifest.json` e i JSON in `assets/competitions/<stagione>/`.

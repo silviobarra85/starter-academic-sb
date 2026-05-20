@@ -12389,3 +12389,310 @@ html[data-theme="light"] body.is-mobile-ux .compact-table td::before {
   content: none !important;
   display: none !important;
 }
+
+/* V102 - Indicatori competizioni da JSON statico. */
+.static-source-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-left: 0.4rem;
+  padding: 0.18rem 0.48rem;
+  border: 1px solid rgba(34, 197, 94, 0.34);
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.13);
+  color: #bbf7d0;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.static-source-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.2rem 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.static-source-line .static-source-badge {
+  margin-left: 0;
+}
+
+.competition-card-static-source {
+  border-color: rgba(34, 197, 94, 0.28);
+}
+
+.dashboard-competition-subsection .static-source-badge {
+  margin-left: 0.35rem;
+  font-size: 0.6rem;
+  padding: 0.14rem 0.38rem;
+}
+
+html[data-theme="light"] .static-source-badge {
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(22, 163, 74, 0.32);
+  color: #4b5563;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .static-source-badge {
+    margin-left: 0.25rem;
+    font-size: 0.58rem;
+    padding: 0.13rem 0.34rem;
+  }
+
+  .static-source-line {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.76rem;
+  }
+}
+
+
+/* V103 - Badge fonte competizione e partite raggruppate per turno. */
+.firebase-source-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-left: 0.4rem;
+  padding: 0.18rem 0.48rem;
+  border: 1px solid rgba(148, 163, 184, 0.34);
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.14);
+  color: #d1d5db;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.competition-card-firebase-source {
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.dashboard-competition-subsection .firebase-source-badge {
+  margin-left: 0.35rem;
+  font-size: 0.6rem;
+  padding: 0.14rem 0.38rem;
+}
+
+.competition-match-groups {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.competition-match-stage-group h4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.45rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.34);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+html[data-theme="light"] .firebase-source-badge {
+  background: rgba(148, 163, 184, 0.18);
+  border-color: rgba(100, 116, 139, 0.34);
+  color: #111827;
+}
+
+html[data-theme="light"] .competition-match-stage-group h4 {
+  background: rgba(15, 23, 42, 0.08);
+  color: #111827;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .firebase-source-badge {
+    margin-left: 0.25rem;
+    font-size: 0.58rem;
+    padding: 0.13rem 0.34rem;
+  }
+
+  .competition-match-stage-group h4 {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+
+/* V104 - Fasi competizione riducibili e ordinate. */
+.competition-match-stage-details {
+  padding-top: 0.75rem;
+}
+
+.competition-match-stage-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 0.45rem;
+}
+
+.competition-match-stage-summary::-webkit-details-marker {
+  display: none;
+}
+
+.competition-match-stage-summary h4 {
+  margin: 0;
+}
+
+.competition-stage-toggle-label {
+  flex: 0 0 auto;
+  min-height: 28px;
+  padding: 4px 8px;
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+.competition-match-stage-details:not([open]) .competition-match-stage-summary {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .competition-match-stage-summary {
+    gap: 0.5rem;
+  }
+
+  .competition-stage-toggle-label {
+    min-height: 24px;
+    padding: 3px 6px;
+    font-size: 0.6rem;
+  }
+}
+
+
+/* V105 - Importatore competizioni statiche. */
+.static-competition-import-actions {
+  flex-wrap: wrap;
+}
+
+.static-competition-preview-wrap {
+  max-height: min(62vh, 560px);
+  overflow: auto;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 14px;
+}
+
+.static-competition-preview-table {
+  min-width: 1180px;
+}
+
+.static-competition-preview-table th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: rgba(15, 23, 42, 0.98);
+  color: #e5e7eb;
+}
+
+.static-competition-preview-table .input {
+  min-width: 82px;
+  padding: 7px 8px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+}
+
+.static-competition-preview-table td:nth-child(6) .input,
+.static-competition-preview-table td:nth-child(9) .input {
+  min-width: 180px;
+}
+
+.static-competition-preview-table td:nth-child(1) .input,
+.static-competition-preview-table td:nth-child(2) .input {
+  min-width: 105px;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .static-competition-preview-wrap {
+    max-height: min(66vh, 560px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .static-competition-preview-table,
+  .static-competition-preview-table thead,
+  .static-competition-preview-table tbody,
+  .static-competition-preview-table tr,
+  .static-competition-preview-table th,
+  .static-competition-preview-table td {
+    display: table !important;
+  }
+
+  .static-competition-preview-table {
+    display: table !important;
+    width: max-content !important;
+    min-width: 1180px !important;
+    table-layout: auto !important;
+  }
+
+  .static-competition-preview-table thead {
+    display: table-header-group !important;
+  }
+
+  .static-competition-preview-table tbody {
+    display: table-row-group !important;
+  }
+
+  .static-competition-preview-table tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .static-competition-preview-table th,
+  .static-competition-preview-table td {
+    display: table-cell !important;
+    width: auto !important;
+    white-space: nowrap;
+  }
+
+  .static-competition-preview-table td::before {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+/* V106 - Scorciatoia Admin per import calendario competizione */
+.admin-import-shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  margin: -6px 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(34, 197, 94, 0.08);
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .admin-import-shortcut {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-import-shortcut .button {
+    width: 100%;
+  }
+}
