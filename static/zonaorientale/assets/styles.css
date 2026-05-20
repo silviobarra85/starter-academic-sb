@@ -13080,3 +13080,248 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
     min-width: 0;
   }
 }
+
+
+/* V118 - Green framed visual sections across public pages. */
+:root {
+  --section-frame-border: rgba(34, 197, 94, 0.30);
+  --section-frame-border-strong: rgba(34, 197, 94, 0.46);
+  --section-frame-glow: rgba(34, 197, 94, 0.11);
+  --section-frame-glow-soft: rgba(59, 130, 246, 0.035);
+}
+
+.app-page:not([data-page="admin"]) > .page-heading,
+.app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel,
+.app-page:not([data-page="admin"]) .metric-card,
+.app-page:not([data-page="admin"]) .news-card,
+.app-page:not([data-page="admin"]) .news-card-details,
+.app-page:not([data-page="admin"]) .dashboard-news-card,
+.app-page:not([data-page="admin"]) .competition-card,
+.app-page:not([data-page="admin"]) .compact-card,
+.app-page:not([data-page="admin"]) .dashboard-competition-subsection,
+.app-page:not([data-page="admin"]) .honor-competition-sections,
+.competition-page-main > .page-heading,
+.competition-page-main .panel {
+  position: relative;
+  border-color: var(--section-frame-border) !important;
+  background:
+    linear-gradient(135deg, var(--section-frame-glow), var(--section-frame-glow-soft)),
+    rgba(15, 23, 42, 0.58) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 16px 38px rgba(0, 0, 0, 0.20);
+}
+
+.app-page:not([data-page="admin"]) > .page-heading,
+.competition-page-main > .page-heading {
+  padding: 18px 18px 18px 36px;
+  margin-bottom: 18px;
+  border: 1px solid var(--section-frame-border);
+  border-radius: 26px;
+}
+
+.app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel,
+.app-page:not([data-page="admin"]) .metric-card,
+.app-page:not([data-page="admin"]) .news-card,
+.app-page:not([data-page="admin"]) .news-card-details,
+.app-page:not([data-page="admin"]) .dashboard-news-card,
+.app-page:not([data-page="admin"]) .competition-card,
+.app-page:not([data-page="admin"]) .compact-card,
+.app-page:not([data-page="admin"]) .dashboard-competition-subsection,
+.app-page:not([data-page="admin"]) .honor-competition-sections,
+.competition-page-main .panel {
+  padding-left: 32px;
+}
+
+.app-page:not([data-page="admin"]) > .page-heading::before,
+.app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel::before,
+.app-page:not([data-page="admin"]) .metric-card::before,
+.app-page:not([data-page="admin"]) .news-card::before,
+.app-page:not([data-page="admin"]) .news-card-details::before,
+.app-page:not([data-page="admin"]) .dashboard-news-card::before,
+.app-page:not([data-page="admin"]) .competition-card::before,
+.app-page:not([data-page="admin"]) .compact-card::before,
+.app-page:not([data-page="admin"]) .dashboard-competition-subsection::before,
+.app-page:not([data-page="admin"]) .honor-competition-sections::before,
+.competition-page-main > .page-heading::before,
+.competition-page-main .panel::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--primary), rgba(34, 197, 94, 0.16));
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.18);
+  pointer-events: none;
+}
+
+.app-page:not([data-page="admin"]) .competition-card-static-source {
+  border-color: var(--section-frame-border-strong) !important;
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.145), rgba(59, 130, 246, 0.045)),
+    rgba(15, 23, 42, 0.62) !important;
+}
+
+.app-page:not([data-page="admin"]) .content-collapsible-panel.section-is-collapsed,
+.app-page:not([data-page="admin"]) details.news-card-details:not([open]),
+.app-page:not([data-page="admin"]) details.dashboard-news-card:not([open]),
+.competition-page-main details.panel:not([open]) {
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.075), rgba(59, 130, 246, 0.025)),
+    rgba(15, 23, 42, 0.48) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel,
+  .app-page:not([data-page="admin"]) .metric-card,
+  .app-page:not([data-page="admin"]) .news-card,
+  .app-page:not([data-page="admin"]) .news-card-details,
+  .app-page:not([data-page="admin"]) .dashboard-news-card,
+  .app-page:not([data-page="admin"]) .competition-card,
+  .app-page:not([data-page="admin"]) .compact-card,
+  .competition-page-main .panel {
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease, background 0.16s ease;
+  }
+
+  .app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel:hover,
+  .app-page:not([data-page="admin"]) .metric-card:hover,
+  .app-page:not([data-page="admin"]) .news-card:hover,
+  .app-page:not([data-page="admin"]) .news-card-details:hover,
+  .app-page:not([data-page="admin"]) .dashboard-news-card:hover,
+  .app-page:not([data-page="admin"]) .competition-card:hover,
+  .app-page:not([data-page="admin"]) .compact-card:hover,
+  .competition-page-main .panel:hover {
+    transform: translateY(-1px);
+    border-color: var(--section-frame-border-strong) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.045),
+      0 18px 44px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(34, 197, 94, 0.035);
+  }
+}
+
+html[data-theme="light"] .app-page:not([data-page="admin"]) > .page-heading,
+html[data-theme="light"] .app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .metric-card,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .news-card,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .news-card-details,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .dashboard-news-card,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .competition-card,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .compact-card,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .dashboard-competition-subsection,
+html[data-theme="light"] .app-page:not([data-page="admin"]) .honor-competition-sections,
+html[data-theme="light"] .competition-page-main > .page-heading,
+html[data-theme="light"] .competition-page-main .panel {
+  border-color: rgba(22, 163, 74, 0.26) !important;
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.10), rgba(59, 130, 246, 0.035)),
+    rgba(255, 255, 255, 0.88) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app-page:not([data-page="admin"]) > .page-heading,
+  .app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel,
+  .app-page:not([data-page="admin"]) .metric-card,
+  .app-page:not([data-page="admin"]) .news-card,
+  .app-page:not([data-page="admin"]) .news-card-details,
+  .app-page:not([data-page="admin"]) .dashboard-news-card,
+  .app-page:not([data-page="admin"]) .competition-card,
+  .app-page:not([data-page="admin"]) .compact-card,
+  .app-page:not([data-page="admin"]) .dashboard-competition-subsection,
+  .app-page:not([data-page="admin"]) .honor-competition-sections,
+  .competition-page-main > .page-heading,
+  .competition-page-main .panel {
+    padding: 12px 12px 12px 28px !important;
+    border: 1px solid var(--section-frame-border) !important;
+    border-radius: 18px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 10px 24px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  .app-page:not([data-page="admin"]) > .page-heading::before,
+  .app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel::before,
+  .app-page:not([data-page="admin"]) .metric-card::before,
+  .app-page:not([data-page="admin"]) .news-card::before,
+  .app-page:not([data-page="admin"]) .news-card-details::before,
+  .app-page:not([data-page="admin"]) .dashboard-news-card::before,
+  .app-page:not([data-page="admin"]) .competition-card::before,
+  .app-page:not([data-page="admin"]) .compact-card::before,
+  .app-page:not([data-page="admin"]) .dashboard-competition-subsection::before,
+  .app-page:not([data-page="admin"]) .honor-competition-sections::before,
+  .competition-page-main > .page-heading::before,
+  .competition-page-main .panel::before {
+    left: 11px;
+    top: 12px;
+    bottom: 12px;
+    width: 3px;
+  }
+
+  .app-page[data-page="competitions"] > .panel {
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .app-page[data-page="competitions"] > .panel::before {
+    content: none !important;
+  }
+}
+
+body.is-mobile-ux .app-page:not([data-page="admin"]) > .page-heading,
+body.is-mobile-ux .app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .metric-card,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .news-card,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .news-card-details,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .dashboard-news-card,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .competition-card,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .compact-card,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .dashboard-competition-subsection,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .honor-competition-sections,
+body.is-mobile-ux .competition-page-main > .page-heading,
+body.is-mobile-ux .competition-page-main .panel {
+  padding: 12px 12px 12px 28px !important;
+  border: 1px solid var(--section-frame-border) !important;
+  border-radius: 18px !important;
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.095), rgba(59, 130, 246, 0.030)),
+    rgba(15, 23, 42, 0.58) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 10px 24px rgba(0, 0, 0, 0.16) !important;
+}
+
+body.is-mobile-ux .app-page:not([data-page="admin"]) > .page-heading::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]):not([data-page="competitions"]) > .panel::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .metric-card::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .news-card::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .news-card-details::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .dashboard-news-card::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .competition-card::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .compact-card::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .dashboard-competition-subsection::before,
+body.is-mobile-ux .app-page:not([data-page="admin"]) .honor-competition-sections::before,
+body.is-mobile-ux .competition-page-main > .page-heading::before,
+body.is-mobile-ux .competition-page-main .panel::before {
+  left: 11px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+}
+
+body.is-mobile-ux .app-page[data-page="competitions"] > .panel {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.is-mobile-ux .app-page[data-page="competitions"] > .panel::before {
+  content: none !important;
+}
