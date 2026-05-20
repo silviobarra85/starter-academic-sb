@@ -15,3 +15,16 @@
 .admin-user-approved-item {
   opacity: 0.96;
 }
+
+/* V138 - Header compatto per conteggio richieste/accessi approvati. */
+.admin-subsection-headerline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.admin-subsection-headerline h3 {
+  margin: 0;
+}
