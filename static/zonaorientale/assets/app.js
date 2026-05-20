@@ -281,6 +281,11 @@ function getSeasonTeamById(seasonTeamId) {
   return seasonTeamsById.get(seasonTeamId) || null;
 }
 
+function getTeamById(teamId) {
+  const { teamsById } = buildMaps();
+  return teamsById.get(teamId) || null;
+}
+
 function getSeasonTeamDisplayName(seasonTeamId) {
   const seasonTeam = getSeasonTeamById(seasonTeamId);
   if (!seasonTeam) return "-";
@@ -5448,8 +5453,70 @@ renderAdminArea = function renderAdminAreaV34() {
   attachAdminHandlers();
 };
 
+function normalizeUserApprovalStatusV138(status) {
+  return String(status || "PENDING").trim().toUpperCase();
+}
+
+function isPendingUserApprovalV138(item) {
+  const status = normalizeUserApprovalStatusV138(item?.status);
+  return status === "PENDING" || status === "EMAIL_NOT_VERIFIED" || status === "";
+}
+
+function isRejectedUserApprovalV138(item) {
+  const status = normalizeUserApprovalStatusV138(item?.status);
+  return status === "REJECTED" || status === "RIFIUTATA" || status === "RIFIUTATO" || status === "DECLINED" || status === "REFUSED";
+}
+
+function buildApprovedAdminUsersV138(pendingUsers = [], teamUsers = []) {
+  const approvedByUid = new Map();
+
+  pendingUsers
+    .filter((item) => normalizeUserApprovalStatusV138(item.status) === "APPROVED")
+    .forEach((item) => approvedByUid.set(item.id, { ...item, approvalSource: "pendingUsers" }));
+
+  teamUsers
+    .filter((item) => normalizeUserApprovalStatusV138(item.status) !== "DISABLED")
+    .forEach((item) => {
+      const merged = approvedByUid.has(item.id)
+        ? { ...approvedByUid.get(item.id), ...item, approvalSource: "pendingUsers/teamUsers" }
+        : { ...item, approvalSource: "teamUsers" };
+      approvedByUid.set(item.id, merged);
+    });
+
+  return Array.from(approvedByUid.values()).sort((a, b) => {
+    const aName = a.displayName || a.email || a.id || "";
+    const bName = b.displayName || b.email || b.id || "";
+    return String(aName).localeCompare(String(bName), "it", { sensitivity: "base" });
+  });
+}
+
+function renderApprovedAdminUserRowV138(user) {
+  const seasonTeam = getSeasonTeamById(user.seasonTeamId);
+  const team = typeof getTeamById === "function" ? getTeamById(user.teamId) : null;
+  const label = user.displayName || user.email || user.id || "Utente";
+  const teamLabel = seasonTeam?.name || team?.canonicalName || user.teamName || user.seasonTeamId || "Squadra non associata";
+  const meta = [
+    user.email || "",
+    user.seasonId || seasonTeam?.seasonId || "",
+    teamLabel,
+    requestStatusLabel(user.status || "ACTIVE")
+  ].filter(Boolean).join(" · ");
+  return `
+    <div class="admin-list-item admin-user-approval-item admin-user-approved-item">
+      <span>
+        <strong>${escapeHtml(label)}</strong>
+        <small>${escapeHtml(meta)}</small>
+      </span>
+      <span><span class="status status-success">APPROVATO</span></span>
+    </div>`;
+}
+
 function renderPendingUsersAdminPanelV34() {
-  const pending = (state.raw.pendingUsers || []).filter((item) => item.status !== "APPROVED");
+  const allPendingUsers = state.raw.pendingUsers || [];
+  const pending = allPendingUsers.filter((item) => isPendingUserApprovalV138(item) && !isRejectedUserApprovalV138(item));
+  const approved = buildApprovedAdminUsersV138(allPendingUsers, state.raw.teamUsers || []);
+  const approvedCount = approved.length;
+
   const presidentOptions = state.raw.presidents.map((president) => `<option value="${escapeHtml(president.id)}">${escapeHtml(president.name || president.id)}</option>`).join("");
   const teamOptions = state.raw.teams.map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(team.canonicalName || team.id)}</option>`).join("");
   const seasonTeamOptions = state.raw.seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.seasonId)} · ${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("");
@@ -5457,7 +5524,7 @@ function renderPendingUsersAdminPanelV34() {
     <div class="admin-list-item admin-user-approval-item">
       <span>
         <strong>${escapeHtml(user.displayName || user.email || user.id)}</strong>
-        <small>${escapeHtml(user.email || "")} · ${escapeHtml(requestStatusLabel(user.status))}</small>
+        <small>${escapeHtml(user.email || "")} · ${escapeHtml(requestStatusLabel(user.status || "PENDING"))}</small>
       </span>
       <span class="admin-approval-controls">
         <select class="input" id="approvePresident_${escapeHtml(user.id)}"><option value="">Presidente...</option>${presidentOptions}</select>
@@ -5467,7 +5534,24 @@ function renderPendingUsersAdminPanelV34() {
         <button class="button button-danger button-small" type="button" data-reject-user="${escapeHtml(user.id)}">Rifiuta</button>
       </span>
     </div>`).join("") || `<p class="muted admin-empty-message">Nessun utente in attesa.</p>`;
-  return renderAdminPanel("adminPendingUsersPanel", "Utenti", "Accetta utenti", "Approva i presidenti registrati e associali alla squadra/rosa corretta.", `<div class="admin-list">${rows}</div>`);
+  const approvedRows = approved.map(renderApprovedAdminUserRowV138).join("") || `<p class="muted admin-empty-message">Nessun utente approvato.</p>`;
+  return renderAdminPanel("adminPendingUsersPanel", "Utenti", "Accetta utenti", `Approva i presidenti registrati e associali alla squadra/rosa corretta. Presidenti gia accettati: ${approvedCount}.`, `
+    <div class="admin-subsection-block admin-user-requests-block">
+      <div class="admin-subsection-headerline">
+        <h3>Richieste in attesa</h3>
+        <span class="status status-muted">${pending.length}</span>
+      </div>
+      <p class="muted">Se una richiesta viene rifiutata, il documento viene cancellato da Firebase e non resta nello storico.</p>
+      <div class="admin-list">${rows}</div>
+    </div>
+    <div class="admin-subsection-block admin-user-approved-block">
+      <div class="admin-subsection-headerline">
+        <h3>Accessi approvati</h3>
+        <span class="status status-success">${approvedCount}</span>
+      </div>
+      <p class="muted">Presidenti gia registrati e accettati. Usa questo numero per capire chi manca ancora all'appello.</p>
+      <div class="admin-list">${approvedRows}</div>
+    </div>`);
 }
 
 function renderTeamRequestsAdminPanelV34() {
@@ -5514,7 +5598,14 @@ async function approvePendingUserV34(uid) {
 }
 
 async function rejectPendingUserV34(uid) {
-  await setDoc(doc(db, "pendingUsers", uid), { status: "REJECTED", rejectedAt: serverTimestamp(), rejectedBy: state.user?.uid || "" }, { merge: true });
+  if (!uid) return;
+  const user = (state.raw.pendingUsers || []).find((item) => item.id === uid);
+  const label = user?.displayName || user?.email || uid;
+  if (!window.confirm(`Rifiutare l'accesso di ${label} ed eliminare definitivamente la richiesta da Firebase?`)) return;
+  await deleteDoc(doc(db, "pendingUsers", uid));
+  state.raw.pendingUsers = (state.raw.pendingUsers || []).filter((item) => item.id !== uid);
+  renderAdminArea();
+  expandAdminPanel("adminPendingUsersPanel");
   await loadFullDataV32({ render: true });
   expandAdminPanel("adminPendingUsersPanel");
 }
@@ -12372,3 +12463,26 @@ rejectPendingUserV34 = async function rejectPendingUserV137(uid) {
   }
 };
 
+
+/* V138 - Accetta utenti: richieste rifiutate non visibili e conteggio approvati. */
+renderPendingUsersAdminPanelV34 = function renderPendingUsersAdminPanelV138() {
+  return adminUserApprovalHelpersV129.renderPendingUsersPanel();
+};
+
+rejectPendingUserV34 = async function rejectPendingUserV138(uid) {
+  if (!uid) return;
+  const user = (state.raw.pendingUsers || []).find((item) => item.id === uid);
+  const label = user?.displayName || user?.email || uid;
+  if (!window.confirm(`Rifiutare l'accesso di ${label} ed eliminare definitivamente la richiesta da Firebase?`)) return;
+  try {
+    await deleteDoc(doc(db, "pendingUsers", uid));
+    state.raw.pendingUsers = (state.raw.pendingUsers || []).filter((item) => item.id !== uid);
+    renderAdminArea();
+    expandAdminPanel("adminPendingUsersPanel");
+    await loadFullDataV32({ render: true });
+    expandAdminPanel("adminPendingUsersPanel");
+  } catch (error) {
+    console.error("Errore eliminazione richiesta utente", error);
+    setError?.(`Non riesco a eliminare la richiesta utente. ${error?.message || error}`);
+  }
+};
