@@ -66,7 +66,7 @@ export function createAdminUserApprovalHelpersV129({
 
   function renderPendingUsersPanel() {
     const pendingUsers = state.raw.pendingUsers || [];
-    const pending = pendingUsers.filter((item) => item.status !== "APPROVED");
+    const pending = pendingUsers.filter((item) => item.status !== "APPROVED" && item.status !== "REJECTED");
     const approved = buildApprovedUsers(pendingUsers, state.raw.teamUsers || []);
 
     const presidentOptions = state.raw.presidents.map((president) => `<option value="${escapeHtml(president.id)}">${escapeHtml(president.name || president.id)}</option>`).join("");

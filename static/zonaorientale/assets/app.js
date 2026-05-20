@@ -5275,10 +5275,10 @@ function renderNewsAdminPanelV48() {
     .filter((seasonTeam) => !currentSeasonId || seasonTeam.seasonId === currentSeasonId)
     .map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`)
     .join("");
-  const rows = (state.raw.news || [])
+  const allNewsRowsV134 = (state.raw.news || [])
     .slice()
-    .sort((a, b) => getNewsSortTimeV79(b) - getNewsSortTimeV79(a))
-    .slice(0, 40)
+    .sort((a, b) => getNewsSortTimeV79(b) - getNewsSortTimeV79(a));
+  const rows = allNewsRowsV134
     .map((item) => {
       const teamName = item.seasonTeamId ? getSeasonTeamDisplayName(item.seasonTeamId) : "";
       return `
@@ -5339,10 +5339,10 @@ function renderNewsAdminPanelV48() {
       </div>
     </form>
     <details class="admin-edit-section" open>
-      <summary><strong>Comunicati pubblicati</strong><span>Ultimi 40</span></summary>
+      <summary><strong>Comunicati pubblicati</strong><span>Tutti · ${allNewsRowsV134.length}</span></summary>
       <div class="admin-list">${rows}</div>
     </details>`;
-  return renderAdminPanel("adminNewsPanel", "Comunicazioni", "News e comunicati", "Pubblica comunicati generali, comunicati competizione o comunicati ufficiali delle squadre.", body);
+  return renderAdminPanel("adminNewsPanel", "Comunicazioni", "Comunicati", "Pubblica, modifica o cancella definitivamente da Firebase qualsiasi comunicato della lega.", body);
 }
 
 async function saveAdminNewsV48(event) {
@@ -5406,7 +5406,9 @@ function editAdminNewsV48(newsId) {
 
 async function deleteAdminNewsV48(newsId) {
   if (!newsId) return;
-  if (!confirm("Eliminare questo comunicato?")) return;
+  if (!confirm("Eliminare definitivamente questo comunicato anche da Firebase?")) return;
+  const status = document.getElementById("adminNewsStatus");
+  if (status) status.textContent = "Eliminazione comunicato da Firebase...";
   await deleteDoc(doc(db, "news", newsId));
   await loadFullDataV32({ render: true });
   expandAdminPanel("adminNewsPanel");
@@ -12174,19 +12176,35 @@ async function loadTransferNegotiationsForCurrentUserV124() {
   }
 }
 
-loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV124() {
+async function loadTransferListingsForCurrentSeasonV133() {
+  const seasonId = getCurrentSeasonId?.() || "";
+  const fallbackListings = state.raw?.transferListings || [];
+  if (!seasonId) return fallbackListings;
+  try {
+    const snapshot = await getDocs(query(
+      collection(db, "transferListings"),
+      where("seasonId", "==", seasonId),
+      where("status", "==", "ACTIVE")
+    ));
+    return snapshot.docs.map((documentSnapshot) => ({ id: documentSnapshot.id, ...documentSnapshot.data() }));
+  } catch (error) {
+    if (error?.code === "permission-denied") {
+      console.info("Transfer listings non disponibili: aggiorna le Firestore Rules per consentire la lettura dei trasferibili attivi della stagione.");
+      return fallbackListings;
+    }
+    console.warn("Transfer listings non disponibili", error);
+    return fallbackListings;
+  }
+}
+
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV133() {
   if (!state.raw) state.raw = makeEmptyRawDataV34();
   state.transferMarketLoadingV119 = true;
   try {
-    const listings = await loadCollection("transferListings").catch((error) => {
-      if (error?.code === "permission-denied") {
-        console.info("Transfer listings non disponibili: aggiorna le Firestore Rules per consentire la lettura dei trasferibili attivi.");
-        return state.raw.transferListings || [];
-      }
-      console.warn("Transfer listings non disponibili", error);
-      return state.raw.transferListings || [];
-    });
-    const negotiations = await loadTransferNegotiationsForCurrentUserV124();
+    const [listings, negotiations] = await Promise.all([
+      loadTransferListingsForCurrentSeasonV133(),
+      loadTransferNegotiationsForCurrentUserV124()
+    ]);
     state.raw.transferListings = Array.isArray(listings) ? listings : [];
     state.raw.transferNegotiations = Array.isArray(negotiations) ? negotiations : [];
     state.transferMarketLoadedV119 = true;
@@ -12248,3 +12266,25 @@ if (renderStaticMatchTeamNameBeforeV125) {
     return `<span class="club-name-with-logo static-competition-team-name ${escapeHtml(className)}">${renderTeamLogo(resolvedName, logo)}${text}</span>`;
   };
 }
+
+
+/* V134 - Admin: rifiuto utenti e cancellazione comunicati definitivi da Firebase. */
+const rejectPendingUserBeforeV134 = rejectPendingUserV34;
+rejectPendingUserV34 = async function rejectPendingUserV134(uid) {
+  if (!uid) return;
+  if (!window.confirm("Rifiutare l'accesso ed eliminare definitivamente questa richiesta da Firebase?")) return;
+  await deleteDoc(doc(db, "pendingUsers", uid));
+  await loadFullDataV32({ render: true });
+  expandAdminPanel("adminPendingUsersPanel");
+};
+
+const deleteAdminNewsBeforeV134 = deleteAdminNewsV48;
+deleteAdminNewsV48 = async function deleteAdminNewsV134(newsId) {
+  if (!newsId) return;
+  if (!window.confirm("Eliminare definitivamente questo comunicato anche da Firebase?")) return;
+  const status = document.getElementById("adminNewsStatus");
+  if (status) status.textContent = "Eliminazione comunicato da Firebase...";
+  await deleteDoc(doc(db, "news", newsId));
+  await loadFullDataV32({ render: true });
+  expandAdminPanel("adminNewsPanel");
+};
