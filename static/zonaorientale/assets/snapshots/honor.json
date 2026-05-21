@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-21T12:31:56.295Z",
+  "generatedAt": "2026-05-21T20:24:36.576Z",
   "snapshot": {
     "id": "honor",
-    "generatedAt": "2026-05-21T12:31:56.288Z",
+    "generatedAt": "2026-05-21T20:24:36.563Z",
     "honorRows": [
       {
         "seasonId": "2025-2026",
@@ -108,7 +108,7 @@
           "kind": "team",
           "seasonTeamId": "2023-2024_gdisidfbuselvm64psr3",
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "label": "Olympic Salerno",
+          "label": "Olympic Salerno FC",
           "logo": "./assets/logos/olympic_salerno.png"
         },
         "thirdPlace": {
@@ -152,7 +152,7 @@
           "kind": "team",
           "seasonTeamId": "2022-2023_gdisidfbuselvm64psr3",
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "label": "Olympic Salerno",
+          "label": "Olympic Salerno FC",
           "logo": "./assets/logos/olympic_salerno.png"
         },
         "thirdPlace": {
@@ -240,7 +240,7 @@
           "kind": "team",
           "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "label": "Olympic Salerno",
+          "label": "Olympic Salerno FC",
           "logo": "./assets/logos/olympic_salerno.png"
         },
         "thirdPlace": {
@@ -310,7 +310,7 @@
           "kind": "team",
           "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         }
       },
@@ -328,7 +328,7 @@
           "kind": "team",
           "seasonTeamId": "2018-2019_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "thirdPlace": {
@@ -354,7 +354,7 @@
           "kind": "team",
           "seasonTeamId": "2018-2019_gdisidfbuselvm64psr3",
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "label": "Olympic Salerno",
+          "label": "Olympic Salerno FC",
           "logo": "./assets/logos/olympic_salerno.png"
         }
       },
@@ -379,7 +379,7 @@
           "kind": "team",
           "seasonTeamId": "2017-2018_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "coppaItalia": {
@@ -411,7 +411,7 @@
           "kind": "team",
           "seasonTeamId": "2016-2017_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "secondPlace": {
@@ -425,14 +425,14 @@
           "kind": "team",
           "seasonTeamId": "2016-2017_gdisidfbuselvm64psr3",
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "label": "Olympic Salerno",
+          "label": "Olympic Salerno FC",
           "logo": "./assets/logos/olympic_salerno.png"
         },
         "coppaItalia": {
           "kind": "team",
           "seasonTeamId": "2016-2017_gdisidfbuselvm64psr3",
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "label": "Olympic Salerno",
+          "label": "Olympic Salerno FC",
           "logo": "./assets/logos/olympic_salerno.png"
         },
         "championsLeague": {
@@ -515,14 +515,14 @@
           "kind": "team",
           "seasonTeamId": "2014-2015_gdisidfbuselvm64psr3",
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "label": "Olympic Salerno",
+          "label": "Olympic Salerno FC",
           "logo": "./assets/logos/olympic_salerno.png"
         },
         "coppaItalia": {
           "kind": "team",
           "seasonTeamId": "2014-2015_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "championsLeague": {
@@ -559,7 +559,7 @@
           "kind": "team",
           "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "coppaItalia": {
@@ -640,7 +640,7 @@
           "kind": "team",
           "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "thirdPlace": {
@@ -675,7 +675,7 @@
           "kind": "team",
           "seasonTeamId": "2010-2011_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "secondPlace": {
@@ -724,7 +724,7 @@
           "kind": "team",
           "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "thirdPlace": {
@@ -857,7 +857,7 @@
           "kind": "team",
           "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "coppaItalia": {
@@ -897,7 +897,7 @@
           "kind": "team",
           "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "label": "Due Fratelli Fc 2005",
+          "label": "FC DueFratelli2005",
           "logo": "./assets/logos/due_fratelli.png"
         },
         "coppaItalia": {
@@ -991,7 +991,7 @@
         },
         {
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "teamName": "Due Fratelli Fc 2005",
+          "teamName": "FC DueFratelli2005",
           "wins": 2,
           "logo": "./assets/logos/due_fratelli.png"
         },
@@ -1077,7 +1077,7 @@
         },
         {
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "teamName": "Due Fratelli Fc 2005",
+          "teamName": "FC DueFratelli2005",
           "wins": 1,
           "logo": "./assets/logos/due_fratelli.png"
         },
@@ -1089,7 +1089,7 @@
         },
         {
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "teamName": "Olympic Salerno",
+          "teamName": "Olympic Salerno FC",
           "wins": 1,
           "logo": "./assets/logos/olympic_salerno.png"
         },
@@ -1153,13 +1153,13 @@
         },
         {
           "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-          "teamName": "Due Fratelli Fc 2005",
+          "teamName": "FC DueFratelli2005",
           "wins": 1,
           "logo": "./assets/logos/due_fratelli.png"
         },
         {
           "teamId": "GDisIDfbuSeLVm64PSR3",
-          "teamName": "Olympic Salerno",
+          "teamName": "Olympic Salerno FC",
           "wins": 1,
           "logo": "./assets/logos/olympic_salerno.png"
         },
@@ -1201,7 +1201,7 @@
       },
       {
         "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-        "teamName": "Due Fratelli Fc 2005",
+        "teamName": "FC DueFratelli2005",
         "points": 410.46,
         "position": 4,
         "logo": "./assets/logos/due_fratelli.png"
@@ -1229,7 +1229,7 @@
       },
       {
         "teamId": "GDisIDfbuSeLVm64PSR3",
-        "teamName": "Olympic Salerno",
+        "teamName": "Olympic Salerno FC",
         "points": 370.15,
         "position": 8,
         "logo": "./assets/logos/olympic_salerno.png"
