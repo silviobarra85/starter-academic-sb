@@ -5982,14 +5982,24 @@ document.addEventListener("click", (event) => {
     }
   }
   renderTeamsTable();
-  if (!wasExpanded) {
-    window.requestAnimationFrame(() => {
+  window.requestAnimationFrame(() => {
+    const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+    const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
+    const isMobileMode = isMobileLike && displayMode !== "desktop";
+
+    if (!wasExpanded) {
       const escapedId = window.CSS?.escape ? CSS.escape(id) : id.replace(/"/g, '\"');
       const openedButton = document.querySelector(`[data-toggle-roster-club="${escapedId}"][aria-expanded="true"]`);
       const detail = openedButton?.closest?.(".mobile-roster-detail-card-v156, .roster-detail-row") || document.querySelector(".mobile-roster-detail-card-v156");
       detail?.scrollIntoView?.({ behavior: "smooth", block: "start" });
-    });
-  }
+      return;
+    }
+
+    if (isMobileMode) {
+      const selector = document.querySelector(".mobile-roster-selector-v156") || document.getElementById("rosterClubCards") || document.getElementById("clubs");
+      selector?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    }
+  });
 }, true);
 
 
