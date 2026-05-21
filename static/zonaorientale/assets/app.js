@@ -12989,3 +12989,61 @@ document.addEventListener("click", (event) => {
   if (!node) return;
   node.scrollIntoView({ behavior: "smooth", block: "start" });
 }, true);
+
+/* V150 - Mobile Coppe: layout partite compatto nella sezione Competizioni.
+   Desktop invariato: la lista mobile viene nascosta via CSS, mentre la tabella esistente resta visibile. */
+function isPlayedMatchV150(match) {
+  return String(match?.status || "").toUpperCase() === "GIOCATA" || hasMatchGoalsV114(match);
+}
+
+function formatMobileCupMatchMetaV150(match) {
+  if (isPlayedMatchV150(match)) return renderMatchResultHtmlV114(match);
+  const date = String(match?.matchDate || match?.date || "").trim();
+  return escapeHtml(date || "Data da definire");
+}
+
+function renderMobileCupMatchCardsV150(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  if (!rows.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="mobile-cup-match-list-v150" aria-label="Partite mobile">
+      ${rows.map((match) => `
+        <div class="mobile-cup-match-row-v150 ${isPlayedMatchV150(match) ? "is-played" : "is-scheduled"}">
+          <span class="mobile-cup-match-teams-v150">
+            ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+            <span class="match-separator">-</span>
+            ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+          </span>
+          <span class="mobile-cup-match-meta-v150">${formatMobileCupMatchMetaV150(match)}</span>
+        </div>`).join("")}
+    </div>`;
+}
+
+function renderCompetitionMatchRowsPublicV150(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  return `
+    <div class="competition-match-responsive-pack-v150">
+      ${renderMobileCupMatchCardsV150(rows, emptyText)}
+      ${renderMatchRowsNoStageV112(rows, emptyText)}
+    </div>`;
+}
+
+renderCompetitionMatchesPublic = function renderCompetitionMatchesPublicV150(competition) {
+  const matches = getCompetitionMatches(competition.id);
+  if (!matches.length) return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+  const groups = groupCompetitionMatchesByStageV113(matches, competition);
+  return `
+    <div class="competition-matches-public competition-match-groups competition-match-groups-v150">
+      ${groups.map((group) => {
+        const rows = sortMatchesInsideStageV111(group.matches);
+        return `
+          <details class="detail-section compact-detail-section competition-match-stage-group competition-match-stage-details" open>
+            <summary class="competition-match-stage-summary">
+              <h4>${escapeHtml(group.label)}</h4>
+              <span class="button button-secondary button-small competition-stage-toggle-label" aria-hidden="true">Riduci/Espandi</span>
+            </summary>
+            ${renderCompetitionMatchRowsPublicV150(rows, "Nessuna partita inserita.")}
+          </details>`;
+      }).join("")}
+    </div>`;
+};

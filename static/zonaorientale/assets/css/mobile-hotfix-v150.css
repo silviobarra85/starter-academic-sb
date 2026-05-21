@@ -1,0 +1,220 @@
+/* V150 - Hotfix mobile: leggibilita regolamento dark e partite Coppe compatte.
+   Desktop invariato. */
+
+.mobile-cup-match-list-v150 {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-wrap,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table-wrap {
+    color: #e5e7eb;
+    background:
+      radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 38%),
+      linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.94));
+    border-color: rgba(74, 222, 128, 0.24);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section p,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section li,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-list,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-note,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table td {
+    color: #e5e7eb;
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h2,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h3,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index h3,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    color: #f8fafc;
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index-grid a {
+    color: #dcfce7;
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(74, 222, 128, 0.26);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section .eyebrow {
+    color: #052e16;
+    background: #86efac;
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table {
+    background: rgba(15, 23, 42, 0.96);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    background: rgba(22, 101, 52, 0.42);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table td,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    border-color: rgba(148, 163, 184, 0.22);
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-wrap,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table-wrap {
+    color: #0f172a;
+    background:
+      radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 42%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.88));
+    border-color: rgba(34, 197, 94, 0.20);
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section p,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section li,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-list,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-note,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table td {
+    color: #1e293b;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h2,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h3,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index h3,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    color: #0f172a;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index-grid a {
+    color: #166534;
+    background: rgba(34, 197, 94, 0.10);
+    border-color: rgba(34, 197, 94, 0.20);
+  }
+
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 > .table-wrap {
+    display: none;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-list-v150 {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    min-height: 42px;
+    padding: 9px 10px;
+    border: 1px solid rgba(34, 197, 94, 0.18);
+    border-radius: 16px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(240, 253, 244, 0.70));
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled {
+    border-color: rgba(59, 130, 246, 0.20);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.78));
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #0f172a;
+    font-size: 0.84rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .team-logo,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .club-logo,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .match-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .match-team-name,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .team-name,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-meta-v150 {
+    justify-self: end;
+    max-width: 112px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+    color: #334155;
+    font-size: 0.74rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 {
+    background: rgba(34, 197, 94, 0.14);
+    color: #166534;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled .mobile-cup-match-meta-v150 {
+    background: rgba(59, 130, 246, 0.12);
+    color: #1d4ed8;
+  }
+
+  body.is-mobile-ux #competitions .match-result-goals {
+    color: inherit;
+  }
+
+  body.is-mobile-ux #competitions .match-result-fp,
+  body.is-mobile-ux #competitions .match-result-separator {
+    display: none;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.92));
+    border-color: rgba(74, 222, 128, 0.22);
+    box-shadow: 0 10px 26px rgba(2, 6, 23, 0.32);
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled {
+    border-color: rgba(96, 165, 250, 0.28);
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.88));
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 {
+    color: #f8fafc;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 {
+    background: rgba(34, 197, 94, 0.18);
+    color: #bbf7d0;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled .mobile-cup-match-meta-v150 {
+    background: rgba(59, 130, 246, 0.18);
+    color: #bfdbfe;
+  }
+}
+
+@media (max-width: 380px) {
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-meta-v150 {
+    justify-self: start;
+    max-width: 100%;
+    text-align: left;
+  }
+}
