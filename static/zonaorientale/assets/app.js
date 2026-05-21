@@ -14853,4 +14853,183 @@ window.ZonaOrientaleFirebaseReads = {
   }
 };
 
+
+/* V178 - Admin light startup and localhost read diagnostics by default.
+   Admin users now start with the same lightweight public snapshot flow used by
+   visitors. Granular Firebase collections are loaded only when the admin opens
+   the Admin page and presses the explicit load button. This keeps normal admin
+   browsing from triggering hundreds of Firestore reads at startup. On localhost
+   the Firebase read diagnostic is enabled automatically; debugReads=0 still
+   disables it for the browser. */
+const FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178 = "zonaOrientaleDebugReadsLocalDisabledV178";
+
+function isLocalhostRuntimeV178() {
+  const host = String(window.location.hostname || "").toLowerCase();
+  return host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0" || host === "::1";
+}
+
+const isFirebaseReadDebugEnabledBeforeV178 = isFirebaseReadDebugEnabledV177;
+isFirebaseReadDebugEnabledV177 = function isFirebaseReadDebugEnabledV178() {
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const value = params.get("debugReads");
+    if (value === "1" || value === "true") {
+      localStorage.removeItem(FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178);
+      localStorage.setItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177, "1");
+      return true;
+    }
+    if (value === "0" || value === "false") {
+      localStorage.setItem(FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178, "1");
+      localStorage.removeItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177);
+      return false;
+    }
+    if (isLocalhostRuntimeV178() && localStorage.getItem(FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178) !== "1") {
+      return true;
+    }
+  } catch (_) {
+    // Fall back to the previous opt-in behavior.
+  }
+  return isFirebaseReadDebugEnabledBeforeV178?.() || false;
+};
+
+state.adminFullCollectionsLoadedV178 = Boolean(state.adminFullCollectionsLoadedV178);
+state.adminFullDataLoadingV178 = false;
+state.adminLightModeV178 = false;
+
+function shouldUseAdminFullDataV178(options = {}) {
+  return Boolean(state.isAdmin && (options.forceFullAdminV178 || state.adminFullCollectionsLoadedV178));
+}
+
+function getAdminStartupModeLabelV178() {
+  if (!state.isAdmin) return "pubblico";
+  return state.adminFullCollectionsLoadedV178 ? "admin completo" : "admin leggero";
+}
+
+async function loadAdminFullDataForEditingV178(options = {}) {
+  const { render = true } = options;
+  const requestId = options.requestId || ++dataLoadSequenceV100;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  state.adminFullDataLoadingV178 = true;
+  if (typeof resetTransferMarketCacheV170 === "function") resetTransferMarketCacheV170();
+  if (typeof resetFirebaseReadStatsV177 === "function") resetFirebaseReadStatsV177("admin-full-on-demand");
+  try {
+    const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
+    await loadListoniData();
+    await loadRostersData();
+    if (typeof loadStaticCompetitionCalendarsV101 === "function") await loadStaticCompetitionCalendarsV101();
+    if (!isLatestDataLoadV100(requestId)) return false;
+
+    state.raw = buildRawFromEntriesV174(entries);
+    markFullAdminDataLoadedV174();
+    state.adminFullCollectionsLoadedV178 = true;
+    state.adminLightModeV178 = false;
+    state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
+    if (typeof mergeStaticCompetitionCalendarsForSeasonV101 === "function") {
+      mergeStaticCompetitionCalendarsForSeasonV101(state.selectedSeasonId);
+    }
+    sortData();
+    if (render) renderAll();
+    setError("");
+    if (typeof logFirebaseReadSummaryV177 === "function") logFirebaseReadSummaryV177("admin-full-on-demand");
+    return true;
+  } finally {
+    state.adminFullDataLoadingV178 = false;
+  }
+}
+
+const loadDataForCurrentAuthBeforeV178 = loadDataForCurrentAuthV100;
+loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV178(options = {}) {
+  if (!state.isAdmin) {
+    state.adminFullCollectionsLoadedV178 = false;
+    state.adminLightModeV178 = false;
+    return loadDataForCurrentAuthBeforeV178(options);
+  }
+
+  if (shouldUseAdminFullDataV178(options)) {
+    return loadAdminFullDataForEditingV178(options);
+  }
+
+  const requestId = ++dataLoadSequenceV100;
+  state.adminLightModeV178 = true;
+  if (typeof resetTransferMarketCacheV170 === "function") resetTransferMarketCacheV170();
+  const result = await loadPublicDataForSelectedSeasonV100(requestId, options);
+  state.adminLightModeV178 = true;
+  state.hasFullData = false;
+
+  if (typeof shouldLoadTransferMarketForPageV170 === "function" && shouldLoadTransferMarketForPageV170()) {
+    await ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170?.() || "admin-light" });
+  } else if (options.render && typeof renderTransferMarketDeferredStateV170 === "function") {
+    renderTransferMarketDeferredStateV170();
+  }
+  return result;
+};
+
+loadData = async function loadDataV178() {
+  return loadDataForCurrentAuthV100({ render: true });
+};
+
+function renderAdminLightGateV178() {
+  const collections = typeof getAdminInitialLoadCollectionsV175 === "function"
+    ? getAdminInitialLoadCollectionsV175()
+    : getAdminFullLoadCollectionsV174();
+  const buttonLabel = state.adminFullDataLoadingV178 ? "Caricamento dati..." : "Carica dati amministrazione";
+  return `
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">Area riservata</p>
+        <h2 id="adminTitle">Admin</h2>
+        <p>All'avvio stai usando la modalità admin leggero: i dati pubblici arrivano da JSON/snapshot, mentre le collection Firebase modificabili restano ferme.</p>
+      </div>
+    </div>
+    <section class="panel admin-light-gate-v178">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Firebase</p>
+          <h3>Dati amministrazione non ancora caricati</h3>
+          <p>Premi il bottone solo quando devi modificare dati, generare snapshot o scaricare backup Firebase.</p>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button id="adminLoadFullDataV178" class="button button-primary" type="button" ${state.adminFullDataLoadingV178 ? "disabled" : ""}>${escapeHtml(buttonLabel)}</button>
+        <span id="adminLoadFullDataStatusV178" class="form-status">Modalità corrente: ${escapeHtml(getAdminStartupModeLabelV178())}.</span>
+      </div>
+      <small class="field-hint">Il caricamento completo legge: ${escapeHtml(collections.join(", "))}.</small>
+    </section>`;
+}
+
+const renderAdminAreaBeforeV178 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV178() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (state.isAdmin && !state.adminFullCollectionsLoadedV178) {
+    if (adminPanel) adminPanel.innerHTML = renderAdminLightGateV178();
+    return;
+  }
+  return renderAdminAreaBeforeV178?.();
+};
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("#adminLoadFullDataV178");
+  if (!button) return;
+  event.preventDefault();
+  button.disabled = true;
+  button.textContent = "Caricamento dati...";
+  const status = document.getElementById("adminLoadFullDataStatusV178");
+  if (status) status.textContent = "Carico le collection modificabili da Firebase...";
+  try {
+    await loadAdminFullDataForEditingV178({ render: true, forceFullAdminV178: true });
+  } catch (error) {
+    console.error(error);
+    button.disabled = false;
+    button.textContent = "Riprova caricamento dati";
+    if (status) {
+      status.textContent = error?.message || "Errore durante il caricamento admin.";
+      status.classList.add("error");
+    }
+  }
+}, true);
+
+if (window.ZonaOrientaleFirebaseReads) {
+  window.ZonaOrientaleFirebaseReads.mode = () => getAdminStartupModeLabelV178();
+}
+
 startZonaOrientaleAppV173();
