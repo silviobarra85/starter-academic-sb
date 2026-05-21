@@ -14665,4 +14665,192 @@ document.addEventListener("click", (event) => {
   navigateMobileTeamAreaQuickActionV176(page);
 }, true);
 
+/* V177 - Firebase read diagnostics.
+   This lightweight monitor estimates Firestore reads from the main data paths
+   without changing the production flow. It helps validate the effect of static
+   JSON snapshots before going online. Exact billing can still differ because
+   Firestore counts cache/server behavior internally, so the UI labels it as an
+   estimate. */
+const FIREBASE_READ_DEBUG_STORAGE_KEY_V177 = "zonaOrientaleDebugReadsV177";
+
+state.firebaseReadStatsV177 = state.firebaseReadStatsV177 || {
+  startedAt: "",
+  reason: "",
+  total: 0,
+  entries: []
+};
+
+function isFirebaseReadDebugEnabledV177() {
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const value = params.get("debugReads");
+    if (value === "1" || value === "true") {
+      localStorage.setItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177, "1");
+      return true;
+    }
+    if (value === "0" || value === "false") {
+      localStorage.removeItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177);
+      return false;
+    }
+    return localStorage.getItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177) === "1";
+  } catch (_) {
+    return false;
+  }
+}
+
+function resetFirebaseReadStatsV177(reason = "") {
+  state.firebaseReadStatsV177 = {
+    startedAt: new Date().toISOString(),
+    reason: String(reason || ""),
+    total: 0,
+    entries: []
+  };
+  return state.firebaseReadStatsV177;
+}
+
+function recordFirebaseReadV177(label, count = 0, meta = {}) {
+  const numericCount = Number.isFinite(Number(count)) ? Math.max(0, Number(count)) : 0;
+  if (!state.firebaseReadStatsV177?.startedAt) resetFirebaseReadStatsV177("sessione");
+  const entry = {
+    at: new Date().toISOString(),
+    label: String(label || "Firebase"),
+    count: numericCount,
+    kind: meta.kind || "read",
+    source: meta.source || "firebase"
+  };
+  state.firebaseReadStatsV177.entries.push(entry);
+  state.firebaseReadStatsV177.total += numericCount;
+  return entry;
+}
+
+function getFirebaseReadSummaryV177() {
+  const stats = state.firebaseReadStatsV177 || resetFirebaseReadStatsV177("sessione");
+  const byLabel = new Map();
+  (stats.entries || []).forEach((entry) => {
+    const current = byLabel.get(entry.label) || 0;
+    byLabel.set(entry.label, current + (Number(entry.count) || 0));
+  });
+  const rows = [...byLabel.entries()]
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+  return {
+    startedAt: stats.startedAt || "",
+    reason: stats.reason || "",
+    total: stats.total || 0,
+    rows
+  };
+}
+
+function logFirebaseReadSummaryV177(reason = "") {
+  if (!isFirebaseReadDebugEnabledV177()) return;
+  const summary = getFirebaseReadSummaryV177();
+  const title = `[ZonaOrientale] Letture Firebase stimate${reason ? ` - ${reason}` : ""}: ${summary.total}`;
+  console.groupCollapsed(title);
+  console.table(summary.rows);
+  console.info("Dettaglio", state.firebaseReadStatsV177?.entries || []);
+  console.info("Nota: il totale e una stima applicativa, non il dato ufficiale di billing Firestore.");
+  console.groupEnd();
+}
+
+function renderFirebaseReadSummaryHtmlV177() {
+  const summary = getFirebaseReadSummaryV177();
+  const rows = summary.rows.slice(0, 6);
+  const details = rows.length
+    ? `<ul class="compact-list">${rows.map((row) => `<li><strong>${escapeHtml(row.label)}</strong>: ${escapeHtml(String(row.count))}</li>`).join("")}</ul>`
+    : `<p class="muted admin-empty-message">Nessuna lettura registrata in questa sessione.</p>`;
+  return `
+    <div class="admin-inline-note firebase-read-summary-v177">
+      <strong>Letture Firebase stimate nella sessione: ${escapeHtml(String(summary.total))}</strong>
+      ${details}
+      <small class="field-hint">Per vedere il riepilogo in console apri il sito con <code>?debugReads=1</code>. Disattiva con <code>?debugReads=0</code>.</small>
+    </div>`;
+}
+
+const getDocumentIfExistsBeforeV177 = getDocumentIfExistsV32;
+getDocumentIfExistsV32 = async function getDocumentIfExistsV177(collectionName, documentId) {
+  const result = await getDocumentIfExistsBeforeV177(collectionName, documentId);
+  recordFirebaseReadV177(`${collectionName}/${documentId}`, 1, { kind: "document" });
+  return result;
+};
+
+const loadCollectionEntriesBeforeV177 = loadCollectionEntriesV174;
+loadCollectionEntriesV174 = async function loadCollectionEntriesV177(collectionNames) {
+  const entries = await loadCollectionEntriesBeforeV177(collectionNames);
+  entries.forEach(([name, rows]) => {
+    recordFirebaseReadV177(name, Array.isArray(rows) ? rows.length : 0, { kind: "collection" });
+  });
+  return entries;
+};
+
+if (typeof loadTransferListingsForCurrentSeasonV133 === "function") {
+  const loadTransferListingsForCurrentSeasonBeforeV177 = loadTransferListingsForCurrentSeasonV133;
+  loadTransferListingsForCurrentSeasonV133 = async function loadTransferListingsForCurrentSeasonV177() {
+    const rows = await loadTransferListingsForCurrentSeasonBeforeV177();
+    if (Array.isArray(rows)) {
+      recordFirebaseReadV177("transferListings ACTIVE", rows.length, { kind: "query" });
+    }
+    return rows;
+  };
+}
+
+if (typeof loadTransferNegotiationsForCurrentUserV124 === "function") {
+  const loadTransferNegotiationsForCurrentUserBeforeV177 = loadTransferNegotiationsForCurrentUserV124;
+  loadTransferNegotiationsForCurrentUserV124 = async function loadTransferNegotiationsForCurrentUserV177() {
+    const rows = await loadTransferNegotiationsForCurrentUserBeforeV177();
+    if (Array.isArray(rows)) {
+      recordFirebaseReadV177("transferNegotiations utente", rows.length, { kind: "query" });
+    }
+    return rows;
+  };
+}
+
+const loadPublicDataForSelectedSeasonBeforeV177 = loadPublicDataForSelectedSeasonV100;
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV177(requestId, options = {}) {
+  resetFirebaseReadStatsV177("public-load");
+  const result = await loadPublicDataForSelectedSeasonBeforeV177(requestId, options);
+  logFirebaseReadSummaryV177("public-load");
+  return result;
+};
+
+const loadFullDataBeforeV177 = loadFullDataV32;
+loadFullDataV32 = async function loadFullDataV177(options = {}) {
+  resetFirebaseReadStatsV177("admin-load");
+  const result = await loadFullDataBeforeV177(options);
+  logFirebaseReadSummaryV177("admin-load");
+  return result;
+};
+
+const loadFullDataStableBeforeV177 = loadFullDataStableV100;
+loadFullDataStableV100 = async function loadFullDataStableV177(requestId, options = {}) {
+  resetFirebaseReadStatsV177("admin-load-stable");
+  const result = await loadFullDataStableBeforeV177(requestId, options);
+  logFirebaseReadSummaryV177("admin-load-stable");
+  return result;
+};
+
+const renderBackupAdminPanelBeforeV177 = renderBackupAdminPanel;
+renderBackupAdminPanel = function renderBackupAdminPanelV177() {
+  const html = renderBackupAdminPanelBeforeV177?.() || "";
+  if (!html || html.includes("firebase-read-summary-v177")) return html;
+  return html.replace('</div>\n    <small class="field-hint">', `</div>\n    ${renderFirebaseReadSummaryHtmlV177()}\n    <small class="field-hint">`);
+};
+
+window.ZonaOrientaleFirebaseReads = {
+  enable() {
+    localStorage.setItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177, "1");
+    logFirebaseReadSummaryV177("manuale");
+  },
+  disable() {
+    localStorage.removeItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177);
+  },
+  reset(reason = "manuale") {
+    return resetFirebaseReadStatsV177(reason);
+  },
+  summary() {
+    const summary = getFirebaseReadSummaryV177();
+    console.table(summary.rows);
+    return summary;
+  }
+};
+
 startZonaOrientaleAppV173();
