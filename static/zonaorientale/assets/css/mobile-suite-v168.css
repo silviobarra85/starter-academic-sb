@@ -4726,3 +4726,36 @@
     font-size: 0.72rem;
   }
 }
+
+/* V175 - Mobile Listone: fixed "Su" button. Desktop invariato. */
+.listone-scroll-top-v175 {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-scroll-top-v175 {
+    position: fixed;
+    top: max(10px, env(safe-area-inset-top));
+    left: 10px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(49, 211, 110, 0.42);
+    background: rgba(9, 19, 32, 0.92);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (min-width: 761px) {
+  .listone-scroll-top-v175 {
+    display: none !important;
+  }
+}

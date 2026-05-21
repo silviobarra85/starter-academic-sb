@@ -14456,4 +14456,174 @@ downloadFirebaseBackup = async function downloadFirebaseBackupV174() {
   }
 };
 
+
+/* V175 - Lazy admin user collections and mobile Listone scroll top.
+   Admin initial load keeps active teamUsers because they are used by multiple
+   workflows, but pendingUsers and teamRequests are now loaded only when the
+   admin opens/requests the Utenti panels. This avoids two Firebase collection
+   scans on every admin login. */
+const ADMIN_LAZY_USER_COLLECTIONS_V175 = Object.freeze([
+  "pendingUsers",
+  "teamRequests"
+]);
+
+state.adminUserCollectionsLoadedV175 = Boolean(state.adminUserCollectionsLoadedV175);
+
+function getAdminInitialLoadCollectionsV175() {
+  return uniqueCollectionNamesV174(getAdminFullLoadCollectionsV174())
+    .filter((name) => !ADMIN_LAZY_USER_COLLECTIONS_V175.includes(name));
+}
+
+function getAdminCurrentLoadCollectionsV175() {
+  const names = getAdminInitialLoadCollectionsV175();
+  if (state.adminUserCollectionsLoadedV175) names.push(...ADMIN_LAZY_USER_COLLECTIONS_V175);
+  return uniqueCollectionNamesV174(names);
+}
+
+function applyAdminUserCollectionEntriesV175(entries) {
+  const loaded = Object.fromEntries(entries || []);
+  ADMIN_LAZY_USER_COLLECTIONS_V175.forEach((name) => {
+    state.raw[name] = Array.isArray(loaded[name]) ? loaded[name] : [];
+  });
+  state.adminUserCollectionsLoadedV175 = true;
+}
+
+async function loadAdminUserCollectionsV175(options = {}) {
+  const { render = true, expandPanelId = "adminPendingUsersPanel" } = options;
+  if (!state.isAdmin) return false;
+  document.querySelectorAll("[data-admin-load-user-collections]").forEach((button) => {
+    button.disabled = true;
+    button.textContent = "Caricamento...";
+  });
+  document.querySelectorAll("[data-admin-user-lazy-status-v175]").forEach((status) => {
+    status.textContent = "Carico utenti e richieste da Firebase...";
+  });
+  try {
+    const entries = await loadCollectionEntriesV174(ADMIN_LAZY_USER_COLLECTIONS_V175);
+    applyAdminUserCollectionEntriesV175(entries);
+    if (render) {
+      renderAll();
+      expandAdminPanel(expandPanelId);
+    }
+    return true;
+  } catch (error) {
+    console.error(error);
+    document.querySelectorAll("[data-admin-load-user-collections]").forEach((button) => {
+      button.disabled = false;
+      button.textContent = "Carica utenti e richieste";
+    });
+    document.querySelectorAll("[data-admin-user-lazy-status-v175]").forEach((status) => {
+      status.textContent = error?.message || "Errore durante il caricamento.";
+      status.classList.add("error");
+    });
+    return false;
+  }
+}
+
+function renderAdminUserLazyPanelV175(panelId, eyebrow, title, description) {
+  return renderAdminPanel(panelId, eyebrow, title, description, `
+    <div class="admin-list admin-lazy-panel-v175">
+      <p class="muted admin-empty-message">Dati non caricati all'apertura admin per ridurre le letture Firebase.</p>
+      <div class="form-actions">
+        <button class="button button-primary" type="button" data-admin-load-user-collections data-admin-target-panel="${escapeHtml(panelId)}">Carica utenti e richieste</button>
+        <span class="form-status" data-admin-user-lazy-status-v175>Caricamento manuale: pendingUsers e teamRequests.</span>
+      </div>
+    </div>`);
+}
+
+const renderPendingUsersAdminPanelBeforeV175 = renderPendingUsersAdminPanelV34;
+renderPendingUsersAdminPanelV34 = function renderPendingUsersAdminPanelV175() {
+  if (!state.adminUserCollectionsLoadedV175) {
+    return renderAdminUserLazyPanelV175(
+      "adminPendingUsersPanel",
+      "Utenti",
+      "Accetta utenti",
+      "Carica le registrazioni solo quando devi approvare nuovi presidenti."
+    );
+  }
+  return renderPendingUsersAdminPanelBeforeV175?.() || "";
+};
+
+const renderTeamRequestsAdminPanelBeforeV175 = renderTeamRequestsAdminPanelV34;
+renderTeamRequestsAdminPanelV34 = function renderTeamRequestsAdminPanelV175() {
+  if (!state.adminUserCollectionsLoadedV175) {
+    return renderAdminUserLazyPanelV175(
+      "adminTeamRequestsPanel",
+      "Presidenti",
+      "Richieste presidenti",
+      "Carica le richieste operative solo quando devi approvarle o rifiutarle."
+    );
+  }
+  return renderTeamRequestsAdminPanelBeforeV175?.() || "";
+};
+
+loadFullDataV32 = async function loadFullDataV175(options = {}) {
+  const { render = true } = options;
+  const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  await loadListoniData();
+  await loadRostersData();
+  sortData();
+  if (render) renderAll();
+};
+
+loadFullDataStableV100 = async function loadFullDataStableV175(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
+  await loadListoniData();
+  await loadRostersData();
+  await loadStaticCompetitionCalendarsV101();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
+  mergeStaticCompetitionCalendarsForSeasonV101(state.selectedSeasonId);
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+};
+
+renderBackupAdminPanel = function renderBackupAdminPanelV175() {
+  const backupCollections = getFirebaseBackupCollectionsV174();
+  const initialLoadCollections = getAdminInitialLoadCollectionsV175();
+  const lazyCollections = ADMIN_LAZY_USER_COLLECTIONS_V175;
+  return renderAdminPanel("adminBackupPanel", "Backup", "Download dati Firebase", "Scarica uno snapshot JSON delle raccolte Firestore usate dal sito.", `
+    <div class="form-actions">
+      <button id="adminDownloadFirebaseBackup" class="button button-primary" type="button">Scarica backup Firebase</button>
+      <span id="adminBackupStatus" class="form-status"></span>
+    </div>
+    <small class="field-hint">Il backup include: ${escapeHtml(backupCollections.join(", "))}.</small>
+    <small class="field-hint">Il caricamento admin iniziale legge: ${escapeHtml(initialLoadCollections.join(", "))}.</small>
+    <small class="field-hint">Caricate solo su richiesta: ${escapeHtml(lazyCollections.join(", "))}.</small>
+  `);
+};
+
+const attachAdminHandlersBeforeV175 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV175() {
+  attachAdminHandlersBeforeV175?.();
+  document.querySelectorAll("[data-admin-load-user-collections]").forEach((button) => {
+    button.addEventListener("click", () => loadAdminUserCollectionsV175({
+      render: true,
+      expandPanelId: button.dataset.adminTargetPanel || "adminPendingUsersPanel"
+    }));
+  });
+};
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("#listoneScrollTopBtnV175");
+  if (!button) return;
+  event.preventDefault();
+  if (typeof scrollMobilePageTopNowV172 === "function") {
+    scrollMobilePageTopNowV172();
+    window.requestAnimationFrame(scrollMobilePageTopNowV172);
+    window.setTimeout(scrollMobilePageTopNowV172, 80);
+    return;
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+}, true);
+
 startZonaOrientaleAppV173();
