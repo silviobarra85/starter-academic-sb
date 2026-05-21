@@ -1,0 +1,240 @@
+/* V146 - Listone mobile search-first. Solo smartphone/tablet; desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="listone"] .page-heading {
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 13px;
+    border-radius: 24px;
+    border-color: rgba(61, 220, 151, 0.2);
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.12), transparent 40%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.94));
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel::before {
+    content: "";
+    position: absolute;
+    inset: 14px auto 14px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #34d399, rgba(52, 211, 153, 0.08));
+    pointer-events: none;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel > .panel-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 11px;
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel > .panel-header h2 {
+    margin: 0 0 4px;
+    font-size: 1.22rem;
+    line-height: 1.12;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel > .panel-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux #listoneMetaText {
+    display: block;
+    margin-top: 8px;
+    padding: 9px 10px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux .listone-filter-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100%;
+    padding: 11px;
+    border: 1px solid rgba(61, 220, 151, 0.16);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux #listoneSeasonFilter,
+  body.is-mobile-ux #listoneSearch {
+    width: 100%;
+    min-height: 42px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  body.is-mobile-ux #listoneSearch {
+    order: -1;
+    font-weight: 800;
+  }
+
+  body.is-mobile-ux .listone-status-filters,
+  body.is-mobile-ux .listone-role-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.36);
+  }
+
+  body.is-mobile-ux .listone-role-filters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body.is-mobile-ux .listone-status-filters legend,
+  body.is-mobile-ux .listone-role-filters legend {
+    grid-column: 1 / -1;
+    margin-bottom: 2px;
+    color: #86efac;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux .listone-status-filters label,
+  body.is-mobile-ux .listone-role-filters label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    gap: 5px;
+    padding: 7px 8px;
+    border: 1px solid rgba(61, 220, 151, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.045);
+    font-size: 0.76rem;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux .listone-role-filters label {
+    padding-inline: 4px;
+  }
+
+  body.is-mobile-ux .listone-status-filters input,
+  body.is-mobile-ux .listone-role-filters input {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+  }
+
+  body.is-mobile-ux #listoneColumnControls {
+    width: 100%;
+  }
+
+  body.is-mobile-ux .column-visibility-control {
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux .column-visibility-control > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 12px;
+    cursor: pointer;
+  }
+
+  body.is-mobile-ux .column-visibility-control > summary strong {
+    font-size: 0.84rem;
+  }
+
+  body.is-mobile-ux .column-visibility-control > summary span {
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  body.is-mobile-ux .column-toggle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 0 10px 10px;
+  }
+
+  body.is-mobile-ux .column-toggle-item {
+    min-height: 32px;
+    padding: 7px 8px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  body.is-mobile-ux .listone-table-wrap {
+    max-width: 100%;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    background: rgba(8, 13, 24, 0.4);
+  }
+
+  body.is-mobile-ux .listone-table {
+    min-width: 620px !important;
+    font-size: 0.78rem;
+  }
+
+  body.is-mobile-ux .listone-table th,
+  body.is-mobile-ux .listone-table td {
+    padding: 8px 7px !important;
+    vertical-align: middle;
+  }
+
+  body.is-mobile-ux .listone-table th:first-child,
+  body.is-mobile-ux .listone-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    min-width: 142px !important;
+    max-width: 142px !important;
+    background: rgba(15, 23, 42, 0.98);
+    box-shadow: 8px 0 14px rgba(0, 0, 0, 0.16);
+  }
+
+  body.is-mobile-ux .listone-table th:first-child {
+    z-index: 4;
+  }
+
+  body.is-mobile-ux .listone-player-cell .link-button,
+  body.is-mobile-ux .listone-player-link {
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.82rem !important;
+  }
+
+  body.is-mobile-ux .listone-table .status {
+    min-height: 22px;
+    padding: 4px 7px;
+    font-size: 0.62rem;
+  }
+
+  body.is-mobile-ux .listone-table .club-logo,
+  body.is-mobile-ux .listone-table .team-logo,
+  body.is-mobile-ux .listone-table .team-logo-fallback {
+    width: 24px;
+    height: 24px;
+  }
+}
