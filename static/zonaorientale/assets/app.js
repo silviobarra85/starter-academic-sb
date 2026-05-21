@@ -13500,11 +13500,13 @@ function applyMobileCompactDatesV156(root = document.body) {
 function renderMobileRosterSelectBlockV156(seasonTeam, { roster, balance, isExpanded } = {}) {
   const name = getSeasonTeamDisplayName(seasonTeam.id);
   const logo = getSeasonTeamLogo(seasonTeam);
-  const count = roster?.playerCount ?? (roster?.players || []).length || 0;
+  const count = (roster?.playerCount ?? (roster?.players || []).length) || 0;
+  const presidentNames = getSeasonTeamPresidentNames(seasonTeam);
   return `
     <button class="mobile-roster-select-block-v156 ${isExpanded ? "is-selected" : ""}" type="button" data-toggle-roster-club="${escapeHtml(seasonTeam.id)}" aria-expanded="${isExpanded ? "true" : "false"}">
       <span class="mobile-roster-select-logo-v156">${renderTeamLogo(name, logo)}</span>
       <span class="mobile-roster-select-name-v156">${escapeHtml(name)}</span>
+      <span class="mobile-roster-select-meta-v156">${escapeHtml(presidentNames || "Presidente da assegnare")}</span>
       <span class="mobile-roster-select-meta-v156">${escapeHtml(count)} gioc. · ${escapeHtml(formatFm(balance))}</span>
     </button>`;
 }
@@ -13528,13 +13530,13 @@ function renderMobileRosterSelectedDetailsV156(seasonTeams, teamsById) {
           ${renderTeamLogo(name, getSeasonTeamLogo(seasonTeam))}
           <div>
             <h3>${escapeHtml(name)}</h3>
-            <p>${escapeHtml(presidentNames.join(", ") || "Presidente da assegnare")}</p>
+            <p>${escapeHtml(presidentNames || "Presidente da assegnare")}</p>
           </div>
           <button class="button button-secondary button-small" type="button" data-toggle-roster-club="${escapeHtml(seasonTeam.id)}" aria-expanded="true">Chiudi</button>
         </div>
         <div class="mobile-roster-detail-stats-v156">
           <span><strong>${escapeHtml(formatFm(balance))}</strong><small>FM</small></span>
-          <span><strong>${escapeHtml(roster?.playerCount ?? (roster?.players || []).length || 0)}</strong><small>Giocatori</small></span>
+          <span><strong>${escapeHtml((roster?.playerCount ?? (roster?.players || []).length) || 0)}</strong><small>Giocatori</small></span>
           <span><strong>${escapeHtml(formatStadium(stadium))}</strong><small>Stadio</small></span>
         </div>
         ${renderRosterPlayerTable(roster?.players || [])}
