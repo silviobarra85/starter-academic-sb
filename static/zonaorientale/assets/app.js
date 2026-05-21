@@ -491,7 +491,7 @@ function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${sortedMatches.map((match) => `
@@ -499,7 +499,7 @@ function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
               <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -546,7 +546,7 @@ function renderDashboardCalendar(seasonId) {
               <th>Fase</th>
               <th>Partita</th>
               <th>Data</th>
-              <th class="number">Risultato</th>
+              <th class="number">Ris.</th>
             </tr>
           </thead>
           <tbody>
@@ -555,7 +555,7 @@ function renderDashboardCalendar(seasonId) {
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+                <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
               </tr>`).join("")}
           </tbody>
         </table>
@@ -7049,7 +7049,7 @@ renderDashboardCalendar = function renderDashboardCalendarV52(seasonId) {
               <th>Fase</th>
               <th>Partita</th>
               <th>Data</th>
-              <th class="number">Risultato</th>
+              <th class="number">Ris.</th>
             </tr>
           </thead>
           <tbody>
@@ -7058,7 +7058,7 @@ renderDashboardCalendar = function renderDashboardCalendarV52(seasonId) {
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
-                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+                <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
               </tr>`).join('')}
           </tbody>
         </table>
@@ -7354,7 +7354,7 @@ renderDashboardCalendar = function renderDashboardCalendarV87(seasonId) {
               <th>Fase</th>
               <th>Partita</th>
               <th>Data</th>
-              <th class="number">Risultato</th>
+              <th class="number">Ris.</th>
             </tr>
           </thead>
           <tbody>
@@ -7363,7 +7363,7 @@ renderDashboardCalendar = function renderDashboardCalendarV87(seasonId) {
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
-                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+                <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
               </tr>`).join('')}
           </tbody>
         </table>
@@ -7870,7 +7870,7 @@ renderMatchRows = function renderMatchRowsV101(matches, emptyText = "Nessuna par
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${sortedMatches.map((match) => `
@@ -7878,7 +7878,7 @@ renderMatchRows = function renderMatchRowsV101(matches, emptyText = "Nessuna par
               <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -8388,7 +8388,7 @@ function renderMatchRowsPreserveOrderV103(matches, emptyText = 'Nessuna partita 
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${matches.map((match) => `
@@ -8396,7 +8396,7 @@ function renderMatchRowsPreserveOrderV103(matches, emptyText = 'Nessuna partita 
               <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, 'home')} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, 'away')}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join('')}
         </tbody>
       </table>
@@ -10011,14 +10011,14 @@ function renderMatchRowsNoStageV112(matches, emptyText = "Nessuna partita inseri
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${matches.map((match) => `
             <tr>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -10583,7 +10583,7 @@ function renderMatchRowsResultV114(matches, emptyText = "Nessuna partita inserit
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr>${showStage ? "<th>Fase</th>" : ""}<th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr>${showStage ? "<th>Fase</th>" : ""}<th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${rows.map((match) => `
@@ -10591,7 +10591,7 @@ function renderMatchRowsResultV114(matches, emptyText = "Nessuna partita inserit
               ${showStage ? `<td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>` : ""}
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${renderMatchResultHtmlV114(match)}</td>
+              <td data-label="Ris." class="number">${renderMatchResultHtmlV114(match)}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -10663,14 +10663,14 @@ renderDashboardCalendar = function renderDashboardCalendarV114(seasonId) {
       </summary>
       <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
         <table class="dashboard-calendar-table">
-          <thead><tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr></thead>
+          <thead><tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr></thead>
           <tbody>
             ${group.matches.map((match) => `
               <tr>
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                <td data-label="Risultato" class="number">${renderMatchResultHtmlV114(match)}</td>
+                <td data-label="Ris." class="number">${renderMatchResultHtmlV114(match)}</td>
               </tr>`).join("")}
           </tbody>
         </table>
@@ -13324,7 +13324,7 @@ renderMobileCupMatchCardsV150 = function renderMobileCupMatchTableV154(matches, 
       <div class="mobile-cup-match-head-v154" role="row">
         <span role="columnheader">Partita</span>
         <span role="columnheader">Data</span>
-        <span role="columnheader">Risultato</span>
+        <span role="columnheader">Ris.</span>
       </div>
       ${rows.map((match) => {
         const played = typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match);
@@ -13339,7 +13339,7 @@ renderMobileCupMatchCardsV150 = function renderMobileCupMatchTableV154(matches, 
               </div>
             </div>
             <div class="mobile-cup-match-cell-v154 mobile-cup-date-cell-v154" role="cell" data-label="Data">${escapeHtml(formatMobileCupDateV154(match))}</div>
-            <div class="mobile-cup-match-cell-v154 mobile-cup-result-cell-v154 ${played ? "match-result-goals" : ""}" role="cell" data-label="Risultato">${escapeHtml(formatMobileCupResultV154(match))}</div>
+            <div class="mobile-cup-match-cell-v154 mobile-cup-result-cell-v154 ${played ? "match-result-goals" : ""}" role="cell" data-label="Ris.">${escapeHtml(formatMobileCupResultV154(match))}</div>
           </div>`;
       }).join("")}
     </div>`;
@@ -13654,4 +13654,81 @@ renderAll = function renderAllV156() {
 
 window.addEventListener("load", () => {
   window.requestAnimationFrame(() => applyMobileCompactDatesV156(document.querySelector("main") || document.body));
+});
+
+/* V162 - Mobile: card Albo/Palmares, label Ris. robusta e rose piu bilanciate. */
+function isMobileUxActiveV162() {
+  return document.body?.classList.contains("is-mobile-ux")
+    || window.matchMedia?.("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+}
+
+function ensureMobileHonorHomeCardV162() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target || !isMobileUxActiveV162()) return;
+  if (target.querySelector('[data-mobile-home-card="honor"]')) return;
+  const cardHtml = renderMobileHomeCardV140({
+    icon: "🏅",
+    kicker: "Albo d'Oro",
+    title: "Palmarès e ranking",
+    value: "Storico della lega",
+    description: "Consulta vincitori, piazzamenti, palmarès e FIFA Ranking.",
+    actions: [renderMobileHomeActionV140("Apri Albo", "honor")]
+  }).replace('class="mobile-home-card', 'data-mobile-home-card="honor" class="mobile-home-card');
+  const newsCard = Array.from(target.querySelectorAll(".mobile-home-card")).find((card) => {
+    const kicker = card.querySelector(".mobile-home-kicker")?.textContent?.trim().toLowerCase() || "";
+    return kicker === "comunicati";
+  });
+  if (newsCard) newsCard.insertAdjacentHTML("beforebegin", cardHtml);
+  else target.insertAdjacentHTML("beforeend", cardHtml);
+}
+
+function ensureMobileHonorMoreLinkV162() {
+  const sheet = document.getElementById("mobileMoreSheet");
+  if (!sheet) return;
+  if (sheet.querySelector('[data-page-link="honor"]')) return;
+  const clubs = sheet.querySelector('[data-page-link="clubs"]');
+  const link = document.createElement("a");
+  link.href = "#honor";
+  link.className = "mobile-more-link";
+  link.dataset.pageLink = "honor";
+  link.textContent = "Albo d'Oro e Palmarès";
+  if (clubs) clubs.insertAdjacentElement("afterend", link);
+  else sheet.appendChild(link);
+}
+
+function normalizeMobileMatchResultLabelsV162(root = document.body) {
+  if (!root || !isMobileUxActiveV162()) return;
+  root.querySelectorAll("th, [role='columnheader']").forEach((node) => {
+    const text = node.textContent?.trim().toLowerCase() || "";
+    if (text === "risultato") node.textContent = "Ris.";
+  });
+  root.querySelectorAll('[data-label="Risultato"]').forEach((node) => {
+    node.setAttribute("data-label", "Ris.");
+  });
+}
+
+const renderMobileBlockDashboardBeforeV162 = renderMobileBlockDashboardV140;
+renderMobileBlockDashboardV140 = function renderMobileBlockDashboardV162() {
+  const result = renderMobileBlockDashboardBeforeV162?.();
+  ensureMobileHonorHomeCardV162();
+  ensureMobileHonorMoreLinkV162();
+  normalizeMobileMatchResultLabelsV162(document.querySelector("main") || document.body);
+  return result;
+};
+
+const renderAllBeforeV162 = renderAll;
+renderAll = function renderAllV162() {
+  const result = renderAllBeforeV162();
+  ensureMobileHonorHomeCardV162();
+  ensureMobileHonorMoreLinkV162();
+  normalizeMobileMatchResultLabelsV162(document.querySelector("main") || document.body);
+  return result;
+};
+
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(() => {
+    ensureMobileHonorHomeCardV162();
+    ensureMobileHonorMoreLinkV162();
+    normalizeMobileMatchResultLabelsV162(document.querySelector("main") || document.body);
+  });
 });
