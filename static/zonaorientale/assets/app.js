@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV181";
-const DEPLOY_EXPECTED_VERSION_V181 = "181";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV182";
+const DEPLOY_EXPECTED_VERSION_V181 = "182";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -15550,5 +15550,109 @@ window.ZonaOrientaleDeploy = {
   }
 };
 
-/* V181 - Mobile report overflow fix is CSS-only; startup remains centralized here. */
+/* V182 - Auth dashboard landing.
+   Admin and president login/logout actions now land on Dashboard instead of
+   leaving the user on Admin, Squadra, Mercato or another protected tab. The
+   capture listeners set the SPA page before Firebase auth changes complete; a
+   short auth-state follow-up keeps the destination stable after renderAll(). */
+const AUTH_DASHBOARD_PENDING_KEY_V182 = "zonaOrientaleAuthDashboardPendingV182";
+let lastAuthUidV182;
+
+function setAuthDashboardPendingV182(reason = "auth") {
+  try {
+    sessionStorage.setItem(AUTH_DASHBOARD_PENDING_KEY_V182, JSON.stringify({
+      reason: String(reason || "auth"),
+      at: Date.now()
+    }));
+  } catch (_) {
+    state.authDashboardPendingV182 = { reason: String(reason || "auth"), at: Date.now() };
+  }
+}
+
+function getAuthDashboardPendingV182() {
+  try {
+    const raw = sessionStorage.getItem(AUTH_DASHBOARD_PENDING_KEY_V182);
+    if (!raw) return state.authDashboardPendingV182 || null;
+    const parsed = JSON.parse(raw);
+    if (!parsed?.at || Date.now() - Number(parsed.at) > 10000) {
+      sessionStorage.removeItem(AUTH_DASHBOARD_PENDING_KEY_V182);
+      return null;
+    }
+    return parsed;
+  } catch (_) {
+    return state.authDashboardPendingV182 || null;
+  }
+}
+
+function clearAuthDashboardPendingV182() {
+  state.authDashboardPendingV182 = null;
+  try {
+    sessionStorage.removeItem(AUTH_DASHBOARD_PENDING_KEY_V182);
+  } catch (_) {
+    // Non-critical.
+  }
+}
+
+function navigateAuthDashboardV182(options = {}) {
+  const { clearPending = false, replaceHistory = true } = options;
+  state.currentPage = "dashboard";
+  state.activeTeamProfileSeasonTeamId = "";
+
+  if (typeof setAppPageV42 === "function") {
+    setAppPageV42("dashboard");
+    if (replaceHistory && window.location.hash !== "#dashboard") {
+      window.history.replaceState(null, "", "#dashboard");
+    }
+  } else {
+    document.querySelectorAll(".app-page").forEach((page) => {
+      page.classList.toggle("is-active", page.dataset.page === "dashboard");
+    });
+    document.querySelectorAll("[data-page-link]").forEach((link) => {
+      link.classList.toggle("active", link.dataset.pageLink === "dashboard");
+    });
+    if (replaceHistory) window.history.replaceState(null, "", "#dashboard");
+  }
+
+  closeMobileMoreMenu?.();
+  updateMobileNavState?.();
+  if (typeof scheduleMobilePageTopV172 === "function") scheduleMobilePageTopV172();
+  else window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+  if (clearPending) clearAuthDashboardPendingV182();
+}
+
+function scheduleAuthDashboardLandingV182(reason = "auth") {
+  setAuthDashboardPendingV182(reason);
+  navigateAuthDashboardV182({ clearPending: false });
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: false }), 80);
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: false }), 320);
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: true }), 900);
+}
+
+document.addEventListener("submit", (event) => {
+  if (event.target?.id !== "loginForm") return;
+  scheduleAuthDashboardLandingV182("login-email");
+}, true);
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest?.("#loginGoogleBtn")) {
+    scheduleAuthDashboardLandingV182("login-google");
+    return;
+  }
+  if (event.target.closest?.("#logoutBtn")) {
+    scheduleAuthDashboardLandingV182("logout");
+  }
+}, true);
+
+onAuthStateChanged(auth, (user) => {
+  const uid = user?.uid || "";
+  const changed = lastAuthUidV182 !== undefined && lastAuthUidV182 !== uid;
+  lastAuthUidV182 = uid;
+  if (!changed && !getAuthDashboardPendingV182()) return;
+  if (!getAuthDashboardPendingV182()) return;
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: false }), 120);
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: true }), 850);
+});
+
+/* V182 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();

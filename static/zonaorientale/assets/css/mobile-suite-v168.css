@@ -4875,3 +4875,48 @@
     word-break: break-word;
   }
 }
+
+/* V182 - Report table long-value wrapping.
+   Long URLs, cache-buster lists and diagnostics stay inside their table cell. */
+.public-preflight-report-v179 table.admin-table,
+.deploy-checklist-report-v180 table.admin-table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+
+.public-preflight-report-v179 table.admin-table th,
+.public-preflight-report-v179 table.admin-table td,
+.deploy-checklist-report-v180 table.admin-table th,
+.deploy-checklist-report-v180 table.admin-table td {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  hyphens: auto;
+}
+
+.public-preflight-report-v179 table.admin-table small,
+.public-preflight-report-v179 table.admin-table code,
+.deploy-checklist-report-v180 table.admin-table small,
+.deploy-checklist-report-v180 table.admin-table code {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .public-preflight-report-v179 .table-scroll,
+  body.is-mobile-ux .deploy-checklist-report-v180 .table-scroll {
+    overflow-x: hidden !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td {
+    max-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+}

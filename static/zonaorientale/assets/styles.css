@@ -13216,3 +13216,28 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
   font-weight: 700;
   opacity: 0.78;
 }
+
+/* V182 - Keep generated deploy/preflight report values inside cells. */
+.public-preflight-report-v179 table.admin-table,
+.deploy-checklist-report-v180 table.admin-table {
+  table-layout: fixed;
+  max-width: 100%;
+}
+
+.public-preflight-report-v179 table.admin-table th,
+.public-preflight-report-v179 table.admin-table td,
+.deploy-checklist-report-v180 table.admin-table th,
+.deploy-checklist-report-v180 table.admin-table td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.public-preflight-report-v179 table.admin-table small,
+.public-preflight-report-v179 table.admin-table code,
+.deploy-checklist-report-v180 table.admin-table small,
+.deploy-checklist-report-v180 table.admin-table code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
