@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV182";
-const DEPLOY_EXPECTED_VERSION_V181 = "182";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV183";
+const DEPLOY_EXPECTED_VERSION_V181 = "183";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");

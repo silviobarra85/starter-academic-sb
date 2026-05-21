@@ -4920,3 +4920,91 @@
     word-break: break-word !important;
   }
 }
+
+/* V183 - Mobile fix for preflight/deploy report first-column overflow.
+   Overrides generic compact-table mobile rules that could let the label paint into the status column. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .public-preflight-report-v179 .table-scroll,
+  body.is-mobile-ux .deploy-checklist-report-v180 .table-scroll {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    line-break: anywhere !important;
+    text-overflow: clip !important;
+    padding: 7px 5px !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(1) {
+    width: 30% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(2) {
+    width: 18% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(3) {
+    width: 36% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(4),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(4) {
+    width: 16% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(1) {
+    width: 31% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(2) {
+    width: 20% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(3) {
+    width: 49% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table strong,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table small,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table code,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table strong,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table small,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table code {
+    display: block !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    line-break: anywhere !important;
+  }
+}

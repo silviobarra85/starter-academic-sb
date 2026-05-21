@@ -13241,3 +13241,86 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+
+/* V183 - Hard containment for deploy/preflight report columns.
+   The first column has its own width and every inline value wraps inside its cell. */
+.public-preflight-report-v179 .table-scroll,
+.deploy-checklist-report-v180 .table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.public-preflight-report-v179 table.admin-table,
+.deploy-checklist-report-v180 table.admin-table {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse;
+}
+
+.public-preflight-report-v179 table.admin-table th,
+.public-preflight-report-v179 table.admin-table td,
+.deploy-checklist-report-v180 table.admin-table th,
+.deploy-checklist-report-v180 table.admin-table td {
+  box-sizing: border-box;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  line-break: anywhere;
+  text-overflow: clip !important;
+}
+
+.public-preflight-report-v179 table.admin-table th:nth-child(1),
+.public-preflight-report-v179 table.admin-table td:nth-child(1) {
+  width: 30% !important;
+}
+
+.public-preflight-report-v179 table.admin-table th:nth-child(2),
+.public-preflight-report-v179 table.admin-table td:nth-child(2) {
+  width: 18% !important;
+}
+
+.public-preflight-report-v179 table.admin-table th:nth-child(3),
+.public-preflight-report-v179 table.admin-table td:nth-child(3) {
+  width: 36% !important;
+}
+
+.public-preflight-report-v179 table.admin-table th:nth-child(4),
+.public-preflight-report-v179 table.admin-table td:nth-child(4) {
+  width: 16% !important;
+}
+
+.deploy-checklist-report-v180 table.admin-table th:nth-child(1),
+.deploy-checklist-report-v180 table.admin-table td:nth-child(1) {
+  width: 31% !important;
+}
+
+.deploy-checklist-report-v180 table.admin-table th:nth-child(2),
+.deploy-checklist-report-v180 table.admin-table td:nth-child(2) {
+  width: 20% !important;
+}
+
+.deploy-checklist-report-v180 table.admin-table th:nth-child(3),
+.deploy-checklist-report-v180 table.admin-table td:nth-child(3) {
+  width: 49% !important;
+}
+
+.public-preflight-report-v179 table.admin-table strong,
+.public-preflight-report-v179 table.admin-table small,
+.public-preflight-report-v179 table.admin-table code,
+.deploy-checklist-report-v180 table.admin-table strong,
+.deploy-checklist-report-v180 table.admin-table small,
+.deploy-checklist-report-v180 table.admin-table code {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  line-break: anywhere;
+}
