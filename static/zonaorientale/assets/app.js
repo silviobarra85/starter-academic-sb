@@ -15032,4 +15032,303 @@ if (window.ZonaOrientaleFirebaseReads) {
   window.ZonaOrientaleFirebaseReads.mode = () => getAdminStartupModeLabelV178();
 }
 
+
+/* V179 - Public static assets preflight.
+   Adds a no-Firebase pre-online check for the JSON files that should be served
+   from GitHub/static hosting: public config, season snapshots manifest, honor,
+   listoni, rose and static competitions. The check is available from the admin
+   light gate, from Backup after full admin load, and from the console. */
+const PUBLIC_ASSET_PREFLIGHT_STORAGE_KEY_V179 = "zonaOrientalePublicAssetsPreflightV179";
+
+function getPublicPreflightAssetsV179() {
+  return [
+    {
+      key: "config",
+      label: "Config pubblica",
+      url: typeof PUBLIC_CONFIG_URL_V171 === "string" ? PUBLIC_CONFIG_URL_V171 : "assets/public/config.json",
+      required: true,
+      validator: validatePublicConfigPreflightV179
+    },
+    {
+      key: "seasonSnapshotsManifest",
+      label: "Manifest snapshot stagioni",
+      url: typeof STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172 === "string" ? STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172 : "assets/snapshots/seasons/manifest.json",
+      required: true,
+      validator: validateSeasonSnapshotsManifestPreflightV179
+    },
+    {
+      key: "honor",
+      label: "Honor snapshot statico",
+      url: typeof STATIC_HONOR_SNAPSHOT_URL_V173 === "string" ? STATIC_HONOR_SNAPSHOT_URL_V173 : "assets/snapshots/honor.json",
+      required: true,
+      validator: validateHonorSnapshotPreflightV179
+    },
+    {
+      key: "listoni",
+      label: "Manifest listoni",
+      url: "assets/listoni/manifest.json",
+      required: true,
+      validator: (payload) => validateManifestArrayPreflightV179(payload, "listoni", "listone")
+    },
+    {
+      key: "rose",
+      label: "Manifest rose",
+      url: "assets/rose/manifest.json",
+      required: true,
+      validator: (payload) => validateManifestArrayPreflightV179(payload, "rosters", "rosa")
+    },
+    {
+      key: "competitions",
+      label: "Manifest competizioni statiche",
+      url: "assets/competitions/manifest.json",
+      required: false,
+      validator: (payload) => validateManifestArrayPreflightV179(payload, "competitions", "competizione")
+    }
+  ];
+}
+
+function getRuntimeVersionInfoV179() {
+  const appScript = document.querySelector('script[src*="assets/app.js"]');
+  const appSrc = appScript?.getAttribute("src") || "";
+  const versionMatch = appSrc.match(/[?&]v=([^&]+)/);
+  return {
+    appVersion: versionMatch?.[1] || "non trovato",
+    footer: document.querySelector(".app-footer p")?.textContent?.trim() || ""
+  };
+}
+
+function normalizePreflightDateV179(value) {
+  if (!value) return "";
+  try {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return String(value);
+    return date.toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" });
+  } catch (_) {
+    return String(value);
+  }
+}
+
+function validatePublicConfigPreflightV179(payload) {
+  const normalized = typeof normalizePublicConfigV171 === "function" ? normalizePublicConfigV171(payload) : null;
+  if (!normalized) {
+    return { status: "error", detail: "JSON valido ma config non riconosciuta" };
+  }
+  return {
+    status: "ok",
+    detail: `${normalized.seasons.length} stagioni · corrente ${normalized.currentSeasonId || "n/d"}${normalized.generatedAt ? ` · ${normalizePreflightDateV179(normalized.generatedAt)}` : ""}`
+  };
+}
+
+function validateSeasonSnapshotsManifestPreflightV179(payload) {
+  const snapshots = Array.isArray(payload?.snapshots) ? payload.snapshots : [];
+  if (!snapshots.length) {
+    return { status: "warn", detail: "manifest presente ma senza snapshot stagioni" };
+  }
+  const missingFiles = snapshots.filter((entry) => !entry?.file).length;
+  if (missingFiles) {
+    return { status: "warn", detail: `${snapshots.length} snapshot, ${missingFiles} senza file` };
+  }
+  const generatedAt = payload?.generatedAt ? ` · ${normalizePreflightDateV179(payload.generatedAt)}` : "";
+  return { status: "ok", detail: `${snapshots.length} snapshot stagioni${generatedAt}` };
+}
+
+function validateHonorSnapshotPreflightV179(payload) {
+  const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+  const honorRows = Array.isArray(snapshot?.honorRows) ? snapshot.honorRows.length : 0;
+  const palmares = Array.isArray(snapshot?.palmares) ? snapshot.palmares.length : 0;
+  const fifaRanking = Array.isArray(snapshot?.fifaRanking) ? snapshot.fifaRanking.length : 0;
+  if (!honorRows && !palmares && !fifaRanking) {
+    return { status: "error", detail: "nessun dato honor/palmarès/FIFA trovato" };
+  }
+  const generatedAt = snapshot?.generatedAt || payload?.generatedAt || "";
+  return {
+    status: "ok",
+    detail: `${honorRows} albo · ${palmares} palmarès · ${fifaRanking} ranking${generatedAt ? ` · ${normalizePreflightDateV179(generatedAt)}` : ""}`
+  };
+}
+
+function validateManifestArrayPreflightV179(payload, arrayKey, singularLabel) {
+  const rows = Array.isArray(payload?.[arrayKey]) ? payload[arrayKey] : [];
+  if (!rows.length) {
+    return { status: "warn", detail: `manifest presente ma senza ${singularLabel}` };
+  }
+  const missingFiles = rows.filter((entry) => !entry?.file).length;
+  const generatedAt = payload?.generatedAt ? ` · ${normalizePreflightDateV179(payload.generatedAt)}` : "";
+  if (missingFiles) {
+    return { status: "warn", detail: `${rows.length} voci, ${missingFiles} senza file` };
+  }
+  return { status: "ok", detail: `${rows.length} voci${generatedAt}` };
+}
+
+async function checkPublicAssetPreflightV179(asset) {
+  const startedAt = performance.now?.() || Date.now();
+  try {
+    const response = await fetch(asset.url, { cache: "no-store" });
+    const elapsedMs = Math.round((performance.now?.() || Date.now()) - startedAt);
+    if (!response.ok) {
+      return {
+        ...asset,
+        status: asset.required ? "error" : "warn",
+        httpStatus: response.status,
+        detail: `HTTP ${response.status}`,
+        elapsedMs
+      };
+    }
+    let payload = null;
+    try {
+      payload = await response.json();
+    } catch (error) {
+      return {
+        ...asset,
+        status: "error",
+        httpStatus: response.status,
+        detail: "risposta non è JSON valido",
+        elapsedMs
+      };
+    }
+    const validation = typeof asset.validator === "function" ? asset.validator(payload) : { status: "ok", detail: "JSON valido" };
+    return {
+      ...asset,
+      status: validation.status || "ok",
+      httpStatus: response.status,
+      detail: validation.detail || "JSON valido",
+      elapsedMs
+    };
+  } catch (error) {
+    return {
+      ...asset,
+      status: asset.required ? "error" : "warn",
+      httpStatus: 0,
+      detail: error?.message || "fetch fallito",
+      elapsedMs: Math.round((performance.now?.() || Date.now()) - startedAt)
+    };
+  }
+}
+
+function getPreflightSummaryV179(results) {
+  const total = results.length;
+  const ok = results.filter((item) => item.status === "ok").length;
+  const warn = results.filter((item) => item.status === "warn").length;
+  const error = results.filter((item) => item.status === "error").length;
+  return { total, ok, warn, error, passed: error === 0 };
+}
+
+function renderPreflightStatusLabelV179(status) {
+  if (status === "ok") return "OK";
+  if (status === "warn") return "Attenzione";
+  return "Errore";
+}
+
+function renderPreflightResultsHtmlV179(results) {
+  const summary = getPreflightSummaryV179(results);
+  const runtime = getRuntimeVersionInfoV179();
+  const rows = results.map((item) => `
+    <tr>
+      <td><strong>${escapeHtml(item.label)}</strong><br><small>${escapeHtml(item.url)}</small></td>
+      <td>${escapeHtml(renderPreflightStatusLabelV179(item.status))}</td>
+      <td>${escapeHtml(item.detail || "")}</td>
+      <td>${escapeHtml(String(item.elapsedMs ?? "-"))} ms</td>
+    </tr>`).join("");
+  return `
+    <div class="import-report public-preflight-report-v179">
+      <h3>Controllo pre-online asset pubblici</h3>
+      <p><strong>${summary.passed ? "Pronto" : "Da verificare"}</strong> · ${summary.ok}/${summary.total} ok · ${summary.warn} attenzioni · ${summary.error} errori.</p>
+      <p class="muted">Runtime: app.js?v=${escapeHtml(runtime.appVersion)} · ${escapeHtml(runtime.footer)}</p>
+      <div class="table-scroll">
+        <table class="admin-table compact-table">
+          <thead><tr><th>Asset</th><th>Stato</th><th>Dettaglio</th><th>Tempo</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+async function runPublicAssetsPreflightV179(options = {}) {
+  const { targetId = "", silent = false } = options;
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (target && !silent) {
+    target.classList.remove("hidden");
+    target.innerHTML = `<div class="import-report"><p>Controllo asset pubblici in corso...</p></div>`;
+  }
+  const assets = getPublicPreflightAssetsV179();
+  const results = [];
+  for (const asset of assets) {
+    // Sequential requests make the console/table easier to read and avoid noise.
+    results.push(await checkPublicAssetPreflightV179(asset));
+  }
+  const summary = getPreflightSummaryV179(results);
+  state.publicAssetsPreflightV179 = { summary, results, checkedAt: new Date().toISOString() };
+  try {
+    sessionStorage.setItem(PUBLIC_ASSET_PREFLIGHT_STORAGE_KEY_V179, JSON.stringify(state.publicAssetsPreflightV179));
+  } catch (_) {
+    // Non-critical: the visible result is already rendered.
+  }
+  if (target) {
+    target.classList.remove("hidden");
+    target.innerHTML = renderPreflightResultsHtmlV179(results);
+  }
+  if (isFirebaseReadDebugEnabledV177?.() || !silent) {
+    console.info(`[ZonaOrientale] Preflight asset pubblici: ${summary.ok}/${summary.total} ok, ${summary.warn} warning, ${summary.error} errori`);
+    console.table(results.map((item) => ({ asset: item.label, status: item.status, detail: item.detail, url: item.url })));
+  }
+  return { summary, results };
+}
+
+function renderPublicPreflightButtonV179(targetId = "publicAssetsPreflightReportV179") {
+  return `
+    <div class="form-actions public-preflight-actions-v179">
+      <button class="button button-secondary" type="button" data-run-public-preflight-v179="${escapeHtml(targetId)}">Controlla asset pubblici</button>
+      <span class="form-status">Non usa Firebase: controlla solo JSON statici.</span>
+    </div>
+    <div id="${escapeHtml(targetId)}" class="hidden"></div>`;
+}
+
+const renderAdminLightGateBeforeV179 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV179) {
+  renderAdminLightGateV178 = function renderAdminLightGateV179() {
+    let html = renderAdminLightGateBeforeV179();
+    if (!html.includes('data-run-public-preflight-v179')) {
+      html = html.replace('</section>', `${renderPublicPreflightButtonV179("publicAssetsPreflightReportLightV179")}</section>`);
+    }
+    return html;
+  };
+}
+
+const renderBackupAdminPanelBeforeV179 = renderBackupAdminPanel;
+renderBackupAdminPanel = function renderBackupAdminPanelV179() {
+  let html = renderBackupAdminPanelBeforeV179?.() || "";
+  if (html && !html.includes('publicAssetsPreflightReportBackupV179')) {
+    html = html.replace('</article>', `${renderPublicPreflightButtonV179("publicAssetsPreflightReportBackupV179")}</article>`);
+  }
+  return html;
+};
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("[data-run-public-preflight-v179]");
+  if (!button) return;
+  event.preventDefault();
+  const targetId = button.dataset.runPublicPreflightV179 || "publicAssetsPreflightReportV179";
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.textContent = "Controllo in corso...";
+  try {
+    await runPublicAssetsPreflightV179({ targetId });
+  } finally {
+    button.disabled = false;
+    button.textContent = previousText || "Controlla asset pubblici";
+  }
+}, true);
+
+window.ZonaOrientalePreflight = {
+  check(options = {}) {
+    return runPublicAssetsPreflightV179({ ...options, silent: options.silent ?? false });
+  },
+  assets() {
+    return getPublicPreflightAssetsV179().map(({ key, label, url, required }) => ({ key, label, url, required }));
+  },
+  last() {
+    return state.publicAssetsPreflightV179 || null;
+  }
+};
+
 startZonaOrientaleAppV173();
