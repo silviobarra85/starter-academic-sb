@@ -5077,3 +5077,64 @@
     color: #f8fafc !important;
   }
 }
+
+/* V185 - Mobile admin header: Dark/Light, Aggiorna dati, Account and Logout on one row. */
+@media (max-width: 760px) {
+  body.is-mobile-ux.is-admin-authenticated .app-header .header-actions {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    align-items: stretch !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header .season-switcher {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #themeToggleBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #refreshBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #openLoginBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #logoutBtn:not(.hidden) {
+    flex: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 36px !important;
+    padding: 0 5px !important;
+    font-size: 0.68rem !important;
+    line-height: 1.05 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #refreshBtn:not(.hidden) {
+    grid-column: auto !important;
+    flex-basis: auto !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #themeToggleBtn .theme-toggle-text,
+  body.is-mobile-ux.is-admin-authenticated .app-header #refreshBtn,
+  body.is-mobile-ux.is-admin-authenticated .app-header #openLoginBtn,
+  body.is-mobile-ux.is-admin-authenticated .app-header #logoutBtn {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  body.is-mobile-ux .snapshot-actions-grid .button,
+  body.is-mobile-ux .snapshot-actions-grid .snapshot-action-button {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux .admin-help-grid-v185 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  body.is-mobile-ux .admin-help-grid-v185 article {
+    padding: 11px !important;
+  }
+}

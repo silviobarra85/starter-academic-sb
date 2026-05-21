@@ -13382,3 +13382,46 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
 [data-page="honor"] .fifa-ranking-section-v184 tbody tr:nth-child(even) td {
   background: rgba(15, 23, 42, 0.46);
 }
+
+/* V185 - Admin help panel and centered snapshot public buttons. */
+.snapshot-actions-grid .button,
+.snapshot-actions-grid .snapshot-action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 4px;
+  white-space: normal;
+  line-height: 1.18;
+}
+
+.admin-help-v185 {
+  margin-top: 18px;
+}
+
+.admin-help-grid-v185 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.admin-help-grid-v185 article {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.34);
+  padding: 12px;
+}
+
+.admin-help-grid-v185 h4 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 0.96rem;
+}
+
+.admin-help-grid-v185 p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}

@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=174";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=185";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV184";
-const DEPLOY_EXPECTED_VERSION_V181 = "184";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV185";
+const DEPLOY_EXPECTED_VERSION_V181 = "185";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -15654,5 +15654,84 @@ onAuthStateChanged(auth, (user) => {
   window.setTimeout(() => navigateAuthDashboardV182({ clearPending: true }), 850);
 });
 
-/* V182 - Final startup remains centralized here. */
+
+/* V185 - Admin mobile actions and inline admin help.
+   Mobile admins keep Dark/Light, Aggiorna dati, Account and Logout on one row.
+   Snapshot public buttons have centered text and the Admin page gets an
+   explanatory block at the bottom so every maintenance action is documented in UI. */
+function renderAdminHelpPanelV185() {
+  return `
+    <section class="panel admin-help-v185" aria-labelledby="adminHelpTitleV185">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Guida rapida</p>
+          <h3 id="adminHelpTitleV185">Cosa fanno le funzioni Admin</h3>
+          <p>Riepilogo operativo delle funzioni principali. I controlli di diagnostica non scrivono su Firebase.</p>
+        </div>
+      </div>
+      <div class="admin-help-grid-v185">
+        <article>
+          <h4>Carica dati amministrazione</h4>
+          <p>Passa da admin leggero ad admin completo e legge le collection Firebase modificabili. Usalo solo quando devi gestire dati o backup.</p>
+        </article>
+        <article>
+          <h4>Stagioni, presidenti e squadre</h4>
+          <p>Gestiscono anagrafiche base, squadre storiche, presidenti e associazioni delle squadre alle singole stagioni.</p>
+        </article>
+        <article>
+          <h4>Rose e movimenti FM</h4>
+          <p>Permette di aggiornare rose, acquisti, vendite, svincoli, scambi e saldo fantamilioni.</p>
+        </article>
+        <article>
+          <h4>Competizioni, partite e risultati</h4>
+          <p>Crea competizioni, calendari e risultati. Le competizioni concluse possono essere pubblicate come JSON statici su GitHub.</p>
+        </article>
+        <article>
+          <h4>FIFA Ranking e Comunicati</h4>
+          <p>Aggiorna ranking FIFA e news/comunicati visibili nella parte pubblica del sito.</p>
+        </article>
+        <article>
+          <h4>Snapshot pubblici</h4>
+          <p>Genera documenti compatti per il pubblico: stagione, albo/FIFA e schede squadra. Servono a ridurre molte letture Firebase.</p>
+        </article>
+        <article>
+          <h4>Scarica config e JSON statici</h4>
+          <p>Produce file da salvare nella repo GitHub: config, honor e snapshot stagioni. Se pubblicati, il sito li legge senza consumare Firestore.</p>
+        </article>
+        <article>
+          <h4>Controlla asset pubblici</h4>
+          <p>Verifica che i JSON statici siano presenti nei percorsi corretti. Fa solo fetch HTTP e non scrive né legge collection Firebase.</p>
+        </article>
+        <article>
+          <h4>Checklist online finale</h4>
+          <p>Controlla versione, cache-buster, asset statici, modalità admin leggera e letture stimate prima del deploy.</p>
+        </article>
+        <article>
+          <h4>Backup Firebase</h4>
+          <p>Scarica uno snapshot completo dei dati Firebase. Richiede admin completo perché legge le collection modificabili.</p>
+        </article>
+      </div>
+    </section>`;
+}
+
+const renderAdminLightGateBeforeV185 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV185) {
+  renderAdminLightGateV178 = function renderAdminLightGateV185() {
+    const html = renderAdminLightGateBeforeV185() || "";
+    if (html.includes("admin-help-v185")) return html;
+    return `${html}${renderAdminHelpPanelV185()}`;
+  };
+}
+
+const renderAdminAreaBeforeV185 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV185() {
+  const result = renderAdminAreaBeforeV185?.();
+  const adminPanel = document.getElementById("adminPanel");
+  if (state.isAdmin && adminPanel && !adminPanel.querySelector(".admin-help-v185")) {
+    adminPanel.insertAdjacentHTML("beforeend", renderAdminHelpPanelV185());
+  }
+  return result;
+};
+
+/* V185 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
