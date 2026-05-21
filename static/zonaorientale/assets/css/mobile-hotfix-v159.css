@@ -1,0 +1,100 @@
+/* V159 - Mobile: selezione rose sempre completa e dettaglio scrollabile. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* I blocchi della griglia Rose devono essere card informative, non bottoni Espandi/Riduci. */
+  body.is-mobile-ux .mobile-roster-select-block-v156 {
+    position: relative;
+    min-height: 124px !important;
+    padding: 12px 8px 10px !important;
+    display: grid !important;
+    grid-template-rows: auto auto auto auto !important;
+    align-content: center !important;
+    justify-items: center !important;
+    gap: 6px !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156::before,
+  body.is-mobile-ux .mobile-roster-select-block-v156::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156 > span,
+  body.is-mobile-ux .mobile-roster-select-logo-v156,
+  body.is-mobile-ux .mobile-roster-select-name-v156,
+  body.is-mobile-ux .mobile-roster-select-meta-v156 {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-width: 100% !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-logo-v156 {
+    line-height: 0 !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .team-logo,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .club-logo,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 img,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .team-logo-fallback {
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-name-v156 {
+    color: var(--text) !important;
+    font-size: 0.78rem !important;
+    font-weight: 900 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-meta-v156 {
+    color: var(--muted) !important;
+    font-size: 0.62rem !important;
+    font-weight: 800 !important;
+    line-height: 1.12 !important;
+    white-space: normal !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156.is-selected {
+    border-color: rgba(61, 220, 151, 0.72) !important;
+    box-shadow: 0 18px 42px rgba(16, 185, 129, 0.18) !important;
+  }
+
+  /* Nella scheda della squadra selezionata non serve un secondo tasto Chiudi/Riduci. */
+  body.is-mobile-ux .mobile-roster-detail-head-v156 [data-toggle-roster-club],
+  body.is-mobile-ux .mobile-roster-detail-head-v156 button {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 {
+    grid-template-columns: auto 1fr !important;
+  }
+
+  /* Il dettaglio rosa deve permettere lo scroll orizzontale della tabella giocatori. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .table-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x pan-y !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table {
+    min-width: 760px !important;
+    width: max-content !important;
+    max-width: none !important;
+    table-layout: auto !important;
+  }
+}

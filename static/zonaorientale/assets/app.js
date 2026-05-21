@@ -5992,6 +5992,9 @@ function normalizeToggleLabelsV29() {
   });
 
   document.querySelectorAll("[data-toggle-roster-club]").forEach((button) => {
+    // V159: i blocchi di selezione rosa mobile sono card ricche, non semplici toggle testuali.
+    // Non sostituire il loro contenuto con "Espandi/Riduci", altrimenti spariscono logo, squadra e presidenti.
+    if (button.classList?.contains("mobile-roster-select-block-v156")) return;
     const expanded = button.getAttribute("aria-expanded") === "true";
     button.textContent = expanded ? "Riduci" : "Espandi";
   });
