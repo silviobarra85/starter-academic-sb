@@ -15331,4 +15331,221 @@ window.ZonaOrientalePreflight = {
   }
 };
 
+/* V180 - Final online readiness checklist.
+   Keeps the deploy check in the admin UI without touching Firebase: it reuses
+   the static asset preflight from V179, verifies cache-busters/footer version,
+   and highlights whether the current admin session is still lightweight. */
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV180";
+
+function getRuntimeAssetsVersionInfoV180() {
+  const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
+  const scripts = [...document.querySelectorAll('script[src*=".js?v="]')].map((node) => node.getAttribute("src") || "");
+  const extractVersion = (value) => {
+    const match = String(value || "").match(/[?&]v=([^&]+)/);
+    return match?.[1] || "non trovato";
+  };
+  const versions = [...links, ...scripts].map(extractVersion).filter(Boolean);
+  const uniqueVersions = [...new Set(versions)];
+  const footer = document.querySelector(".app-footer p")?.textContent?.trim() || "";
+  const footerVersion = footer.match(/V(\d+)/)?.[1] || "non trovato";
+  return { links, scripts, uniqueVersions, footer, footerVersion };
+}
+
+function renderDeployStatusBadgeV180(status) {
+  if (status === "ok") return "OK";
+  if (status === "warn") return "Attenzione";
+  return "Errore";
+}
+
+function buildDeployRuntimeChecksV180(preflightSummary) {
+  const runtime = getRuntimeAssetsVersionInfoV180();
+  const appMode = typeof getAdminStartupModeLabelV178 === "function" ? getAdminStartupModeLabelV178() : (state.isAdmin ? "admin" : "pubblico");
+  const readsSummary = typeof getFirebaseReadSummaryV177 === "function" ? getFirebaseReadSummaryV177() : { total: 0, rows: [] };
+  const checks = [];
+
+  const versionsOk = runtime.uniqueVersions.length === 1 && runtime.uniqueVersions[0] === "180" && runtime.footerVersion === "180";
+  checks.push({
+    key: "versions",
+    label: "Version e cache-buster",
+    status: versionsOk ? "ok" : "warn",
+    detail: versionsOk
+      ? "Footer e asset puntano a V180."
+      : `Footer V${runtime.footerVersion}; asset ${runtime.uniqueVersions.join(", ") || "non trovati"}.`
+  });
+
+  if (preflightSummary) {
+    checks.push({
+      key: "static-assets",
+      label: "Asset pubblici GitHub",
+      status: preflightSummary.error ? "error" : (preflightSummary.warn ? "warn" : "ok"),
+      detail: `${preflightSummary.ok}/${preflightSummary.total} ok · ${preflightSummary.warn} attenzioni · ${preflightSummary.error} errori.`
+    });
+  } else {
+    checks.push({
+      key: "static-assets",
+      label: "Asset pubblici GitHub",
+      status: "warn",
+      detail: "Preflight non eseguito: premi Checklist online finale."
+    });
+  }
+
+  const lightweightAdminOk = !state.isAdmin || appMode === "admin leggero" || appMode === "pubblico";
+  checks.push({
+    key: "admin-mode",
+    label: "Modalità admin all'avvio",
+    status: lightweightAdminOk ? "ok" : "warn",
+    detail: state.isAdmin
+      ? `Modalità corrente: ${appMode}. Per testare l'avvio leggero, ricarica la pagina prima di premere Carica dati amministrazione.`
+      : "Sessione pubblica/non admin."
+  });
+
+  const readTotal = Number(readsSummary?.total || 0);
+  const readStatus = readTotal <= 30 ? "ok" : (readTotal <= 120 ? "warn" : "error");
+  checks.push({
+    key: "reads",
+    label: "Letture Firebase sessione",
+    status: state.isAdmin && appMode === "admin completo" ? "warn" : readStatus,
+    detail: `${readTotal} letture stimate. Il full-load admin resta previsto solo dopo il bottone Carica dati amministrazione.`
+  });
+
+  const localDebug = typeof isFirebaseReadDebugEnabledV177 === "function" ? isFirebaseReadDebugEnabledV177() : false;
+  checks.push({
+    key: "debug",
+    label: "Diagnostica locale",
+    status: localDebug || !isLocalhostRuntimeV178?.() ? "ok" : "warn",
+    detail: localDebug ? "Debug letture attivo in questa sessione." : "Debug letture non attivo; usa ?debugReads=1 se vuoi verificare."
+  });
+
+  return checks;
+}
+
+function summarizeDeployChecksV180(checks) {
+  const summary = checks.reduce((acc, item) => {
+    acc.total += 1;
+    acc[item.status] = (acc[item.status] || 0) + 1;
+    return acc;
+  }, { total: 0, ok: 0, warn: 0, error: 0 });
+  summary.passed = summary.error === 0;
+  return summary;
+}
+
+function renderDeployChecklistHtmlV180(checks, checkedAt = new Date().toISOString()) {
+  const summary = summarizeDeployChecksV180(checks);
+  const rows = checks.map((item) => `
+    <tr>
+      <td><strong>${escapeHtml(item.label)}</strong></td>
+      <td>${escapeHtml(renderDeployStatusBadgeV180(item.status))}</td>
+      <td>${escapeHtml(item.detail || "")}</td>
+    </tr>`).join("");
+  const title = summary.error ? "Da correggere prima dell'online" : (summary.warn ? "Quasi pronto" : "Pronto per l'online");
+  return `
+    <div class="import-report deploy-checklist-report-v180">
+      <h3>Checklist online finale</h3>
+      <p><strong>${escapeHtml(title)}</strong> · ${summary.ok}/${summary.total} ok · ${summary.warn} attenzioni · ${summary.error} errori.</p>
+      <p class="muted">Controllo eseguito: ${escapeHtml(normalizePreflightDateV179(checkedAt))}. Non scrive su Firebase.</p>
+      <div class="table-scroll">
+        <table class="admin-table compact-table">
+          <thead><tr><th>Controllo</th><th>Stato</th><th>Dettaglio</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <small class="field-hint">Prima del push finale esegui anche un test anonimo/incognito e un test login presidente.</small>
+    </div>`;
+}
+
+async function runDeployChecklistV180(options = {}) {
+  const { targetId = "", silent = false } = options;
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (target && !silent) {
+    target.classList.remove("hidden");
+    target.innerHTML = `<div class="import-report"><p>Checklist online in corso...</p></div>`;
+  }
+
+  let preflightSummary = null;
+  try {
+    if (typeof runPublicAssetsPreflightV179 === "function") {
+      const preflight = await runPublicAssetsPreflightV179({ silent: true });
+      preflightSummary = preflight?.summary || null;
+    }
+  } catch (error) {
+    console.warn("[ZonaOrientale] Preflight asset pubblici non completato", error);
+  }
+
+  const checks = buildDeployRuntimeChecksV180(preflightSummary);
+  const checkedAt = new Date().toISOString();
+  const payload = { checkedAt, summary: summarizeDeployChecksV180(checks), checks };
+  state.deployChecklistV180 = payload;
+  try {
+    sessionStorage.setItem(DEPLOY_CHECKLIST_STORAGE_KEY_V180, JSON.stringify(payload));
+  } catch (_) {
+    // Non-critical: the report is visible in the UI.
+  }
+  if (target) {
+    target.classList.remove("hidden");
+    target.innerHTML = renderDeployChecklistHtmlV180(checks, checkedAt);
+  }
+  if (!silent || typeof isFirebaseReadDebugEnabledV177 !== "function" || isFirebaseReadDebugEnabledV177()) {
+    console.info(`[ZonaOrientale] Checklist online: ${payload.summary.ok}/${payload.summary.total} ok, ${payload.summary.warn} warning, ${payload.summary.error} errori`);
+    console.table(checks.map((item) => ({ check: item.label, status: item.status, detail: item.detail })));
+  }
+  return payload;
+}
+
+function renderDeployChecklistButtonV180(targetId = "deployChecklistReportV180") {
+  return `
+    <div class="form-actions deploy-checklist-actions-v180">
+      <button class="button button-primary" type="button" data-run-deploy-checklist-v180="${escapeHtml(targetId)}">Checklist online finale</button>
+      <span class="form-status">Verifica versioni, asset statici e letture stimate.</span>
+    </div>
+    <div id="${escapeHtml(targetId)}" class="hidden"></div>`;
+}
+
+const renderAdminLightGateBeforeV180 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV180) {
+  renderAdminLightGateV178 = function renderAdminLightGateV180() {
+    let html = renderAdminLightGateBeforeV180();
+    if (html && !html.includes('deployChecklistReportLightV180')) {
+      html = html.replace('</section>', `${renderDeployChecklistButtonV180("deployChecklistReportLightV180")}</section>`);
+    }
+    return html;
+  };
+}
+
+const renderBackupAdminPanelBeforeV180 = renderBackupAdminPanel;
+renderBackupAdminPanel = function renderBackupAdminPanelV180() {
+  let html = renderBackupAdminPanelBeforeV180?.() || "";
+  if (html && !html.includes('deployChecklistReportBackupV180')) {
+    html = html.replace('</article>', `${renderDeployChecklistButtonV180("deployChecklistReportBackupV180")}</article>`);
+  }
+  return html;
+};
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("[data-run-deploy-checklist-v180]");
+  if (!button) return;
+  event.preventDefault();
+  const targetId = button.dataset.runDeployChecklistV180 || "deployChecklistReportV180";
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.textContent = "Checklist in corso...";
+  try {
+    await runDeployChecklistV180({ targetId });
+  } finally {
+    button.disabled = false;
+    button.textContent = previousText || "Checklist online finale";
+  }
+}, true);
+
+window.ZonaOrientaleDeploy = {
+  check(options = {}) {
+    return runDeployChecklistV180({ ...options, silent: options.silent ?? false });
+  },
+  last() {
+    return state.deployChecklistV180 || null;
+  },
+  runtime() {
+    return getRuntimeAssetsVersionInfoV180();
+  }
+};
+
 startZonaOrientaleAppV173();
