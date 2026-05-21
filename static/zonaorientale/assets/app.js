@@ -3742,8 +3742,8 @@ renderClubRostersPublic = function renderClubRostersPublicV18() {
     <tr>
       <td data-label="Data">${escapeHtml(movement.date || "-")}</td>
       <td data-label="Rosa">${renderSeasonTeamNameWithLogo(movement.seasonTeamId, { strong: false })}</td>
-      <td data-label="Tipo"><span class="status status-muted">${escapeHtml(getFmMovementLabel(movement.type))}</span></td>
-      <td data-label="Giocatore">${escapeHtml(movement.playerName || "-")}${movement.targetSeasonTeamId ? `<small class="muted"> → ${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}</small>` : ""}</td>
+      <td data-label="Tipo"><span class="status status-muted movement-type-badge movement-type-badge-${escapeHtml(String(movement.type || "").toLowerCase())}">${movement.type === "INITIAL_BUDGET" ? "Budget<br>Iniziale" : escapeHtml(getFmMovementLabel(movement.type))}</span></td>
+      <td data-label="Giocatore">${movement.type === "INITIAL_BUDGET" ? "-" : `${escapeHtml(movement.playerName || "-")}${movement.targetSeasonTeamId ? `<small class="muted"> → ${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}</small>` : ""}`}</td>
       <td data-label="FM" class="number ${Number(movement.amount || 0) >= 0 ? "text-success" : "text-danger"}"><strong>${escapeHtml(formatFm(movement.amount))}</strong></td>
       <td data-label="Note">${escapeHtml(movement.description || "-")}</td>
     </tr>`).join("");

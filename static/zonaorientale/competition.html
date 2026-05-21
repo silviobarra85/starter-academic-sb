@@ -7,14 +7,15 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=158" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=158" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=158" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=158" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=158" />
-  <link rel="stylesheet" href="./assets/css/mobile-competitions-v145.css?v=158" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v154.css?v=158" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v158.css?v=158" />
+  <link rel="stylesheet" href="./assets/styles.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/mobile-competitions-v145.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v154.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v158.css?v=160" />
+  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v160.css?v=160" />
 </head>
 <body class="is-mobile-ux">
   <main class="container app-main competition-page-main">
@@ -30,6 +31,15 @@
       </div>
     </section>
 
+    <section class="competition-mobile-heading-v160" aria-label="Navigazione competizione mobile">
+      <p class="eyebrow">Competizione</p>
+      <h1 id="competitionMobileTitleV160">Calendario competizione</h1>
+      <div class="competition-mobile-actions-v160">
+        <a class="button button-secondary button-small" href="./#competitions">Torna a tutte le competizioni</a>
+        <a class="button button-secondary button-small" href="./#dashboard">Torna alla Home</a>
+      </div>
+    </section>
+
     <section id="competitionPageError" class="notice notice-error hidden"></section>
     <section id="competitionPageContent" class="competition-page-grid">
       <article class="panel competition-page-empty"><p class="muted">Caricamento...</p></article>
@@ -37,7 +47,7 @@
   </main>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V158 mobile sezioni e rose scrollabili · Ultimo aggiornamento 21/05/2026</p>
+    <p>ZonaOrientale Salerno · V160 rose mobile e titolo competizione · Ultimo aggiornamento 21/05/2026</p>
   </footer>
 
   <script type="module">
@@ -49,6 +59,7 @@
     const requestedSlug = params.get("slug") || "";
 
     const titleEl = document.getElementById("competitionPageTitle");
+    const mobileTitleElV160 = document.getElementById("competitionMobileTitleV160");
     const subtitleEl = document.getElementById("competitionPageSubtitle");
     const metaEl = document.getElementById("competitionPageMeta");
     const contentEl = document.getElementById("competitionPageContent");
@@ -682,6 +693,7 @@
       const sourceClass = payload.source === "static" ? "static-source-badge" : "firebase-source-badge";
       const title = competition.name || competition.competitionName || competition.label || competition.type || "Competizione";
       titleEl.textContent = title;
+      if (mobileTitleElV160) mobileTitleElV160.textContent = title;
       subtitleEl.textContent = competition.notes || `Calendario completo della stagione ${competition.seasonId || requestedSeasonId || ""}.`;
       metaEl.innerHTML = `
         <span class="${sourceClass}">${sourceLabel}</span>

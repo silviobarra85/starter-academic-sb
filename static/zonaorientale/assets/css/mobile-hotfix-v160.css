@@ -1,0 +1,94 @@
+/* V160 - Mobile: rose piu compatte, movimenti FM e titolo competizione. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Rosa aperta: riduce molto la colonna Giocatore per rendere visibili piu colonne nello scroll. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table {
+    min-width: 620px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table .roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table .roster-col-player {
+    width: 104px !important;
+    min-width: 104px !important;
+    max-width: 112px !important;
+    white-space: normal !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-cell,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .mobile-roster-cell,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-cell,
+  body.is-mobile-ux .mobile-roster-selected-v156 .mobile-roster-cell {
+    max-width: 104px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-col-player .link-button,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-col-player .link-button {
+    max-width: 92px !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+  }
+
+  /* Movimenti: Budget/Iniziale su due righe e colonna piu compatta. */
+  body.is-mobile-ux #movementsList .movement-type-badge,
+  body.is-mobile-ux .team-profile-movements-table .movement-type-badge {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    line-height: 1.02 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    max-width: 82px !important;
+  }
+
+  body.is-mobile-ux #movementsList td[data-label="Tipo"],
+  body.is-mobile-ux #movementsList th:nth-child(3) {
+    width: 78px !important;
+    min-width: 78px !important;
+    max-width: 82px !important;
+  }
+
+  /* Pagina singola competizione: titolo e azioni visibili da mobile anche se l'heading desktop e nascosto. */
+  body.is-mobile-ux .competition-mobile-heading-v160 {
+    display: block !important;
+    margin: 8px 0 14px !important;
+    padding: 14px !important;
+    border: 1px solid rgba(61, 220, 151, 0.24) !important;
+    border-radius: 22px !important;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(6, 78, 59, 0.30)) !important;
+    box-shadow: 0 14px 36px rgba(2, 6, 23, 0.24) !important;
+  }
+
+  body.is-mobile-ux .competition-mobile-heading-v160 h1 {
+    margin: 4px 0 12px !important;
+    font-size: 1.55rem !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  body.is-mobile-ux .competition-mobile-actions-v160 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  body.is-mobile-ux .competition-mobile-actions-v160 .button {
+    width: 100% !important;
+    min-height: 40px !important;
+    justify-content: center !important;
+    border-radius: 999px !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .competition-mobile-heading-v160 {
+    display: none !important;
+  }
+}
