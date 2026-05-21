@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=185";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=186";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV185";
-const DEPLOY_EXPECTED_VERSION_V181 = "185";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV186";
+const DEPLOY_EXPECTED_VERSION_V181 = "186";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -15733,5 +15733,5 @@ renderAdminArea = function renderAdminAreaV185() {
   return result;
 };
 
-/* V185 - Final startup remains centralized here. */
+/* V186 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
