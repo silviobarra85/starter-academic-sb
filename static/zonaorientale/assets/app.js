@@ -13047,3 +13047,160 @@ renderCompetitionMatchesPublic = function renderCompetitionMatchesPublicV150(com
       }).join("")}
     </div>`;
 };
+
+/* V151 - Hotfix mobile: dashboard senza alert, prossima partita robusta e Coppe risultato/data. */
+function getMatchGoalsPairV151(match) {
+  if (!match) return null;
+  const homeKeys = ["homeGoals", "homeGoal", "homeResult", "homeGoalsFinal", "homeFinalGoals", "homeScoreGoals"];
+  const awayKeys = ["awayGoals", "awayGoal", "awayResult", "awayGoalsFinal", "awayFinalGoals", "awayScoreGoals"];
+  const readValue = (keys) => {
+    for (const key of keys) {
+      const value = match[key];
+      if (value !== undefined && value !== null && value !== "") return value;
+    }
+    return null;
+  };
+  const home = readValue(homeKeys);
+  const away = readValue(awayKeys);
+  return home !== null && away !== null ? { home, away } : null;
+}
+
+function getMatchDateRawV151(match) {
+  if (!match) return "";
+  return String(match.matchDate || match.date || match.scheduledDate || match.playDate || match.kickoffDate || "").trim();
+}
+
+function parseMatchDateMsV151(match) {
+  const raw = getMatchDateRawV151(match);
+  if (!raw) return Number.POSITIVE_INFINITY;
+  const normalized = raw.includes("/")
+    ? raw.replace(/^(\d{1,2})\/(\d{1,2})\/(\d{4}).*$/, "$3-$2-$1")
+    : raw;
+  const time = Date.parse(normalized);
+  return Number.isFinite(time) ? time : Number.POSITIVE_INFINITY;
+}
+
+function getMatchdaySortValueV151(match) {
+  const values = [
+    typeof getMatchSerieAMatchday === "function" ? getMatchSerieAMatchday(match) : null,
+    match?.serieAMatchday,
+    match?.serieAMatchDay,
+    match?.leagueMatchday,
+    match?.matchday,
+    match?.giornata
+  ];
+  for (const value of values) {
+    const number = Number(value);
+    if (Number.isFinite(number) && number > 0) return number;
+  }
+  return Number.POSITIVE_INFINITY;
+}
+
+function isPlayedMatchV151(match) {
+  const status = String(match?.status || match?.matchStatus || "").trim().toUpperCase();
+  const playedStatuses = new Set(["GIOCATA", "PLAYED", "FINISHED", "COMPLETED", "CONCLUSA", "DISPUTATA"]);
+  if (playedStatuses.has(status)) return true;
+  if (match?.played === true || match?.isPlayed === true || match?.finished === true) return true;
+  return !!getMatchGoalsPairV151(match);
+}
+
+function isCancelledMatchV151(match) {
+  const status = String(match?.status || match?.matchStatus || "").trim().toUpperCase();
+  return ["CANCELLED", "CANCELED", "ANNULLATA", "RINVIATA", "DELETED"].includes(status) || match?.deleted === true;
+}
+
+function getCompetitionDisplayForMobileHomeV151(competition) {
+  return getCompetitionPublicDisplayNameV110?.(competition)
+    || getCompetitionDisplayNameV111?.(competition)
+    || competition?.name
+    || competition?.competitionName
+    || "Competizione";
+}
+
+function getMobileHomeNextMatchV151(seasonId) {
+  const competitions = typeof getSeasonCompetitionsForPublicDisplayV52 === "function"
+    ? getSeasonCompetitionsForPublicDisplayV52(seasonId)
+    : (state.raw?.competitions || []).filter((competition) => competition.seasonId === seasonId);
+  const candidates = [];
+  competitions.forEach((competition, competitionIndex) => {
+    const status = String(competition?.status || "").toUpperCase();
+    if (["NON_DISPUTATA", "ANNULLATA"].includes(status)) return;
+    let matches = [];
+    if (typeof getCompetitionMatches === "function") {
+      matches = getCompetitionMatches(competition.id || competition.competitionId || competition.uid) || [];
+    }
+    if (!matches.length && typeof isRankingCompetition === "function" && isRankingCompetition(competition) && typeof getNextChampionshipMatches === "function") {
+      matches = getNextChampionshipMatches(competition) || [];
+    }
+    if (!matches.length && typeof getCupScheduleMatches === "function") {
+      matches = getCupScheduleMatches(competition) || [];
+    }
+    matches
+      .filter((match) => match && !isCancelledMatchV151(match) && !isPlayedMatchV151(match))
+      .forEach((match) => {
+        candidates.push({
+          competition,
+          match,
+          competitionIndex,
+          dateMs: parseMatchDateMsV151(match),
+          matchday: getMatchdaySortValueV151(match),
+          id: String(match.id || match.uid || "")
+        });
+      });
+  });
+  if (!candidates.length) return { competition: null, match: null };
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const future = candidates.filter((item) => Number.isFinite(item.dateMs) && item.dateMs >= today.getTime());
+  const pool = future.length ? future : candidates;
+  pool.sort((a, b) => {
+    const dateDiff = a.dateMs - b.dateMs;
+    if (Number.isFinite(dateDiff) && dateDiff !== 0) return dateDiff;
+    const matchdayDiff = a.matchday - b.matchday;
+    if (Number.isFinite(matchdayDiff) && matchdayDiff !== 0) return matchdayDiff;
+    if (a.competitionIndex !== b.competitionIndex) return a.competitionIndex - b.competitionIndex;
+    return a.id.localeCompare(b.id);
+  });
+  const first = pool[0];
+  return { competition: first.competition, match: first.match };
+}
+
+getMobileHomeNextMatchV140 = getMobileHomeNextMatchV151;
+
+function formatMobileCupMatchMetaV151(match) {
+  if (isPlayedMatchV151(match)) {
+    const pair = getMatchGoalsPairV151(match);
+    if (pair) return `<strong class="match-result-goals">${escapeHtml(pair.home)}-${escapeHtml(pair.away)}</strong>`;
+    return `<strong class="match-result-goals">Giocata</strong>`;
+  }
+  const date = getMatchDateRawV151(match);
+  if (date) return escapeHtml(date);
+  const serieA = typeof formatDashboardSerieALabelV136 === "function" ? formatDashboardSerieALabelV136(match) : "";
+  return escapeHtml(serieA || "Data da definire");
+}
+
+isPlayedMatchV150 = isPlayedMatchV151;
+formatMobileCupMatchMetaV150 = formatMobileCupMatchMetaV151;
+
+function removeMobileAlertCardV151() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target) return;
+  target.querySelectorAll(".mobile-home-card").forEach((card) => {
+    const kicker = card.querySelector(".mobile-home-kicker")?.textContent?.trim().toLowerCase() || "";
+    if (kicker === "alert") card.remove();
+  });
+}
+
+const renderMobileBlockDashboardBeforeV151 = renderMobileBlockDashboardV140;
+renderMobileBlockDashboardV140 = function renderMobileBlockDashboardV151() {
+  const result = renderMobileBlockDashboardBeforeV151?.();
+  removeMobileAlertCardV151();
+  return result;
+};
+
+const renderAllBeforeV151 = renderAll;
+renderAll = function renderAllV151() {
+  const result = renderAllBeforeV151();
+  removeMobileAlertCardV151();
+  return result;
+};
