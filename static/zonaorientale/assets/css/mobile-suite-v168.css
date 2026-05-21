@@ -4694,3 +4694,20 @@
     vertical-align: bottom;
   }
 }
+
+
+/* V171 - Keep admin account controls on one mobile row. */
+@media (max-width: 760px) {
+  body.is-mobile-ux .app-header #themeToggleBtn,
+  body.is-mobile-ux .app-header #openLoginBtn,
+  body.is-mobile-ux .app-header #logoutBtn {
+    flex: 1 1 0;
+    max-width: none;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #themeToggleBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #openLoginBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #logoutBtn:not(.hidden) {
+    flex-basis: 0;
+  }
+}

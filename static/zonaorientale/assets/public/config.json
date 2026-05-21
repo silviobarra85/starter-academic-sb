@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-21T00:00:00.000Z",
+  "currentSeasonId": "2025-2026",
+  "leagueSettings": [
+    {
+      "id": "main",
+      "currentSeasonId": "2025-2026"
+    }
+  ],
+  "seasons": [
+    {
+      "id": "2025-2026",
+      "name": "Stagione 2025-2026",
+      "isCurrent": true,
+      "participantCount": 10
+    }
+  ]
+}

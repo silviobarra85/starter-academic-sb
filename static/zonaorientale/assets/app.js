@@ -13788,3 +13788,192 @@ window.addEventListener("load", () => {
   }
 });
 
+
+
+/* V171 - Static public config and admin mobile account button.
+   Public users load assets/public/config.json before falling back to Firestore
+   leagueSettings/seasons, reducing baseline reads. Admin keeps the Account
+   button visible so Dark/Light, Account and Logout can sit on one mobile row. */
+const PUBLIC_CONFIG_URL_V171 = "assets/public/config.json";
+state.publicConfigV171 = state.publicConfigV171 || null;
+state.publicConfigSourceV171 = state.publicConfigSourceV171 || "";
+
+function normalizePublicConfigSeasonV171(season, currentSeasonId = "") {
+  const id = String(season?.id || season?.seasonId || "").trim();
+  if (!id) return null;
+  return {
+    ...season,
+    id,
+    name: season?.name || season?.label || `Stagione ${id}`,
+    isCurrent: Boolean(season?.isCurrent || id === currentSeasonId)
+  };
+}
+
+function normalizePublicConfigV171(payload) {
+  const sourceSeasons = Array.isArray(payload?.seasons)
+    ? payload.seasons
+    : Array.isArray(payload?.raw?.seasons)
+      ? payload.raw.seasons
+      : [];
+  const currentSeasonId = String(payload?.currentSeasonId || sourceSeasons.find((season) => season?.isCurrent)?.id || sourceSeasons[0]?.id || "").trim();
+  const seasons = sourceSeasons
+    .map((season) => normalizePublicConfigSeasonV171(season, currentSeasonId))
+    .filter(Boolean)
+    .sort((a, b) => String(b.id || "").localeCompare(String(a.id || ""), "it"));
+  if (!seasons.length) return null;
+
+  const leagueSettings = Array.isArray(payload?.leagueSettings) && payload.leagueSettings.length
+    ? payload.leagueSettings.map((item, index) => ({
+        ...item,
+        id: item?.id || (index === 0 ? "main" : `settings-${index + 1}`),
+        currentSeasonId: item?.currentSeasonId || currentSeasonId
+      }))
+    : [{ id: "main", currentSeasonId }];
+
+  return {
+    currentSeasonId,
+    leagueSettings,
+    seasons,
+    generatedAt: payload?.generatedAt || "",
+    version: payload?.version || 1
+  };
+}
+
+async function loadStaticPublicConfigV171() {
+  if (state.publicConfigV171) return state.publicConfigV171;
+  try {
+    const response = await fetch(PUBLIC_CONFIG_URL_V171, { cache: "no-store" });
+    if (!response.ok) return null;
+    const payload = await response.json();
+    const normalized = normalizePublicConfigV171(payload);
+    if (!normalized) return null;
+    state.publicConfigV171 = normalized;
+    state.publicConfigSourceV171 = "static";
+    return normalized;
+  } catch (error) {
+    console.warn("Config pubblica statica non disponibile", error);
+    return null;
+  }
+}
+
+async function loadPublicConfigV171() {
+  const staticConfig = await loadStaticPublicConfigV171();
+  if (staticConfig) return staticConfig;
+
+  const [leagueSettings, seasons] = await Promise.all([
+    loadCollection("leagueSettings"),
+    loadCollection("seasons")
+  ]);
+  state.publicConfigSourceV171 = "firebase";
+  return {
+    leagueSettings,
+    seasons,
+    currentSeasonId: getDefaultSeasonIdFromRawV100({ leagueSettings, seasons })
+  };
+}
+
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV171(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  const rawBase = makeEmptyRawDataV34();
+  const publicConfig = await loadPublicConfigV171();
+
+  rawBase.leagueSettings = Array.isArray(publicConfig?.leagueSettings) ? publicConfig.leagueSettings : [];
+  rawBase.seasons = Array.isArray(publicConfig?.seasons) ? publicConfig.seasons : [];
+
+  const seasonId = selectedSeasonBefore || publicConfig?.currentSeasonId || getDefaultSeasonIdFromRawV100(rawBase);
+  const [seasonSnapshot, honorSnapshot] = await Promise.all([
+    loadPublicSeasonSnapshotV32(seasonId),
+    loadPublicHonorSnapshotV32()
+  ]);
+
+  await loadListoniData();
+  await loadRostersData();
+  await loadStaticCompetitionCalendarsV101();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = rawBase;
+  state.selectedSeasonId = seasonId;
+  state.hasFullData = false;
+
+  if (!seasonSnapshot || !honorSnapshot) {
+    state.usedPublicSnapshots = false;
+    state.publicHonorSnapshot = honorSnapshot || null;
+    mergeStaticCompetitionCalendarsForSeasonV101(seasonId);
+    sortData();
+    if (render) renderAll();
+    setError(`Snapshot pubblico mancante per ${seasonId}. Accedi come admin e aggiorna gli snapshot pubblici.`);
+    return false;
+  }
+
+  applyPublicSeasonSnapshotV32(seasonSnapshot);
+  state.raw.news = Array.isArray(seasonSnapshot.news) ? seasonSnapshot.news : [];
+  mergeStaticCompetitionCalendarsForSeasonV101(seasonId);
+  state.publicHonorSnapshot = honorSnapshot;
+  state.hasFullData = false;
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+};
+
+function buildPublicConfigPayloadV171() {
+  const currentSeasonId = getCurrentSeasonId() || getDefaultSeasonId();
+  const seasons = (state.raw.seasons || []).map((season) => ({
+    ...season,
+    isCurrent: season.id === currentSeasonId || Boolean(season.isCurrent)
+  }));
+  const leagueSettings = (state.raw.leagueSettings || []).length
+    ? (state.raw.leagueSettings || []).map((item, index) => ({
+        ...item,
+        id: item?.id || (index === 0 ? "main" : `settings-${index + 1}`),
+        currentSeasonId: item?.currentSeasonId || currentSeasonId
+      }))
+    : [{ id: "main", currentSeasonId }];
+
+  return {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    currentSeasonId,
+    leagueSettings,
+    seasons
+  };
+}
+
+function downloadPublicConfigV171() {
+  const payload = buildPublicConfigPayloadV171();
+  downloadJson(payload, "config.json");
+  showMessage("adminPublicSnapshotsStatus", "Config pubblica scaricata. Salvala in assets/public/config.json e pubblicala su GitHub.");
+}
+
+const renderPublicSnapshotsAdminPanelBeforeV171 = typeof renderPublicSnapshotsAdminPanelV114 === "function" ? renderPublicSnapshotsAdminPanelV114 : null;
+if (renderPublicSnapshotsAdminPanelBeforeV171) {
+  renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV171() {
+    let html = renderPublicSnapshotsAdminPanelBeforeV171();
+    if (!html.includes('id="adminDownloadPublicConfig"')) {
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', '  <button id="adminDownloadPublicConfig" class="button button-secondary" type="button">Scarica config pubblica</button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"');
+      html = html.replace('Comunicati, competizioni e classifiche della stagione sono dentro', 'La config pubblica statica va salvata in <code>assets/public/config.json</code>. Comunicati, competizioni e classifiche della stagione sono dentro');
+    }
+    return html;
+  };
+  renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+}
+
+const attachAdminHandlersBeforeV171 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV171() {
+  attachAdminHandlersBeforeV171?.();
+  document.getElementById("adminDownloadPublicConfig")?.addEventListener("click", downloadPublicConfigV171);
+};
+
+const updateAdminVisibilityBeforeV171 = updateAdminVisibility;
+updateAdminVisibility = function updateAdminVisibilityV171() {
+  updateAdminVisibilityBeforeV171?.();
+  const openLoginBtn = document.getElementById("openLoginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (openLoginBtn && state.user) {
+    openLoginBtn.textContent = "Account";
+    openLoginBtn.classList.remove("hidden");
+  }
+  logoutBtn?.classList.toggle("hidden", !state.user);
+  document.body?.classList.toggle("is-admin-authenticated", Boolean(state.isAdmin && state.user));
+};
