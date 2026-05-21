@@ -1,0 +1,222 @@
+/* V154 - Mobile: Competizioni e pagina singola competizione con tabella compatta Partita/Data/Risultato. */
+.mobile-cup-match-table-v154,
+.competition-page-mobile-match-table-v154 {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .match-table-wrap,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 > .table-wrap,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .mobile-cup-match-list-v150,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .mobile-cup-match-list-v153 {
+    display: none !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-table-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 {
+    display: grid !important;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.03);
+  }
+
+  body.is-mobile-ux .competition-page-desktop-match-table-v154,
+  body.is-mobile-ux .competition-page-match-table-wrap.competition-page-desktop-match-table-v154 {
+    display: none !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) 82px 74px;
+    align-items: center;
+    gap: 0;
+    min-height: 34px;
+    background: rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span {
+    padding: 8px 8px;
+    color: #334155;
+    font-size: 0.66rem;
+    font-weight: 950;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) 82px 74px;
+    align-items: stretch;
+    min-height: 58px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v154:last-child,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154:last-child {
+    border-bottom: 0;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154 {
+    min-width: 0;
+    padding: 8px 8px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(148, 163, 184, 0.14);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-cell-v154:last-child,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154:last-child {
+    border-right: 0;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-teams-cell-v154 {
+    display: grid;
+    align-content: center;
+    gap: 5px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #0f172a;
+    font-size: 0.78rem;
+    font-weight: 850;
+    line-height: 1.15;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .club-name-with-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .static-competition-team-name,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .competition-page-match-team,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .club-name-with-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .static-competition-team-name,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .competition-page-match-team {
+    min-width: 0;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .team-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .club-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .match-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .team-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .club-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .match-logo {
+    width: 20px !important;
+    height: 20px !important;
+    flex: 0 0 20px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 strong,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 span:not(.team-logo):not(.club-logo):not(.match-logo),
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 strong,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 span:not(.team-logo):not(.club-logo):not(.match-logo) {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-date-cell-v154,
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-date-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 {
+    justify-content: center;
+    text-align: center;
+    color: #334155;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1.12;
+    font-variant-numeric: tabular-nums;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 {
+    color: #14532d;
+    font-size: 0.8rem;
+    font-weight: 950;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154 .match-result-goals,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-goals {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154 .match-result-fp,
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154 .match-result-separator,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-fp,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-separator {
+    display: none;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-table-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 {
+    background: rgba(15, 23, 42, 0.92);
+    border-color: rgba(148, 163, 184, 0.24);
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-head-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 {
+    background: rgba(15, 23, 42, 0.92);
+    border-color: rgba(148, 163, 184, 0.22);
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-head-v154 span,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span {
+    color: #e5e7eb;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-team-line-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 {
+    color: #f8fafc;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-date-cell-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-date-cell-v154 {
+    color: #cbd5e1;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-result-cell-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 {
+    color: #bbf7d0;
+  }
+}
+
+@media (max-width: 380px) {
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154,
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154 {
+    grid-template-columns: minmax(0, 1.45fr) 74px 62px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux #competitions .mobile-cup-match-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154 {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 {
+    font-size: 0.72rem;
+  }
+}

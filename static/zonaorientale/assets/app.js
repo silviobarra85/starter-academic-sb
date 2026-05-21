@@ -13297,3 +13297,47 @@ renderMobileCupMatchCardsV150 = function renderMobileCupMatchCardsV153(matches, 
       }).join("")}
     </div>`;
 };
+
+
+/* V154 - Mobile Competizioni: tabella compatta Partita/Data/Risultato.
+   Vale sia nella sezione Competizioni sia come struttura riusabile per la pagina singola. */
+function formatMobileCupDateV154(match) {
+  const raw = typeof getMatchDateRawV151 === "function"
+    ? getMatchDateRawV151(match)
+    : String(match?.matchDate || match?.date || match?.scheduledDate || match?.playDate || "").trim();
+  return raw || "-";
+}
+
+function formatMobileCupResultV154(match) {
+  const result = typeof getMatchResultTextV152 === "function" ? getMatchResultTextV152(match) : "";
+  return result || "-";
+}
+
+renderMobileCupMatchCardsV150 = function renderMobileCupMatchTableV154(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  if (!rows.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="mobile-cup-match-table-v154" role="table" aria-label="Partite mobile">
+      <div class="mobile-cup-match-head-v154" role="row">
+        <span role="columnheader">Partita</span>
+        <span role="columnheader">Data</span>
+        <span role="columnheader">Risultato</span>
+      </div>
+      ${rows.map((match) => {
+        const played = typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match);
+        return `
+          <div class="mobile-cup-match-row-v154 ${played ? "is-played" : "is-scheduled"}" role="row">
+            <div class="mobile-cup-match-cell-v154 mobile-cup-match-teams-cell-v154" role="cell" data-label="Partita">
+              <div class="mobile-cup-team-line-v154 mobile-cup-team-home-v154">
+                ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+              </div>
+              <div class="mobile-cup-team-line-v154 mobile-cup-team-away-v154">
+                ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+              </div>
+            </div>
+            <div class="mobile-cup-match-cell-v154 mobile-cup-date-cell-v154" role="cell" data-label="Data">${escapeHtml(formatMobileCupDateV154(match))}</div>
+            <div class="mobile-cup-match-cell-v154 mobile-cup-result-cell-v154 ${played ? "match-result-goals" : ""}" role="cell" data-label="Risultato">${escapeHtml(formatMobileCupResultV154(match))}</div>
+          </div>`;
+      }).join("")}
+    </div>`;
+};
