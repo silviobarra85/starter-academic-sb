@@ -15331,11 +15331,12 @@ window.ZonaOrientalePreflight = {
   }
 };
 
-/* V180 - Final online readiness checklist.
+/* V180/V181 - Final online readiness checklist.
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV180";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV181";
+const DEPLOY_EXPECTED_VERSION_V181 = "181";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -15363,14 +15364,15 @@ function buildDeployRuntimeChecksV180(preflightSummary) {
   const readsSummary = typeof getFirebaseReadSummaryV177 === "function" ? getFirebaseReadSummaryV177() : { total: 0, rows: [] };
   const checks = [];
 
-  const versionsOk = runtime.uniqueVersions.length === 1 && runtime.uniqueVersions[0] === "180" && runtime.footerVersion === "180";
+  const expectedVersion = DEPLOY_EXPECTED_VERSION_V181 || "181";
+  const versionsOk = runtime.uniqueVersions.length === 1 && runtime.uniqueVersions[0] === expectedVersion && runtime.footerVersion === expectedVersion;
   checks.push({
     key: "versions",
     label: "Version e cache-buster",
     status: versionsOk ? "ok" : "warn",
     detail: versionsOk
-      ? "Footer e asset puntano a V180."
-      : `Footer V${runtime.footerVersion}; asset ${runtime.uniqueVersions.join(", ") || "non trovati"}.`
+      ? `Footer e asset puntano a V${expectedVersion}.`
+      : `Footer V${runtime.footerVersion}; asset ${runtime.uniqueVersions.join(", ") || "non trovati"}; atteso ${expectedVersion}.`
   });
 
   if (preflightSummary) {
@@ -15548,4 +15550,5 @@ window.ZonaOrientaleDeploy = {
   }
 };
 
+/* V181 - Mobile report overflow fix is CSS-only; startup remains centralized here. */
 startZonaOrientaleAppV173();

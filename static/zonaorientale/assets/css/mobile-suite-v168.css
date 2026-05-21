@@ -4759,3 +4759,119 @@
     display: none !important;
   }
 }
+
+/* V181 - Mobile containment for admin preflight/deploy reports.
+   Keeps generated report tables centered inside their card on narrow screens. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .public-preflight-report-v179,
+  body.is-mobile-ux .deploy-checklist-report-v180 {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 .table-scroll,
+  body.is-mobile-ux .deploy-checklist-report-v180 .table-scroll {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    margin: 0 auto;
+    padding-bottom: 4px;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.68rem !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table thead,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table thead {
+    display: table-header-group !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table tbody,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table tbody {
+    display: table-row-group !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table tr,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table tr {
+    display: table-row !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td {
+    display: table-cell !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    width: auto !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    padding: 7px 5px !important;
+    line-height: 1.15 !important;
+    vertical-align: top !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(1) {
+    width: 34% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(2) {
+    width: 18% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(3) {
+    width: 34% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(4),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(4) {
+    width: 14% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(1) {
+    width: 34% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(2) {
+    width: 18% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(3) {
+    width: 48% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 small,
+  body.is-mobile-ux .deploy-checklist-report-v180 small,
+  body.is-mobile-ux .public-preflight-report-v179 .muted,
+  body.is-mobile-ux .deploy-checklist-report-v180 .muted {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
