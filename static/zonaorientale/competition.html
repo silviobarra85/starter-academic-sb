@@ -7,22 +7,15 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/mobile-competitions-v145.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/mobile-unified-ui-v141.css?v=162" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v154.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v158.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v160.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v161.css?v=161" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v162.css?v=162" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v163.css?v=163" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v164.css?v=164" />
+  <link rel="stylesheet" href="./assets/styles.css?v=168" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=168" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=168" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=168" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=168" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=168" />
 </head>
 <body class="is-mobile-ux competition-detail-page-v162">
+  <button id="competitionScrollTopBtnV166" class="competition-scroll-top-v166" type="button" aria-label="Torna sopra">↑ Su</button>
   <main class="container app-main competition-page-main">
     <section class="page-heading">
       <div>
@@ -57,12 +50,13 @@
       <strong>Altre sezioni</strong>
       <button id="mobileMoreClose" class="mobile-icon-button" type="button" aria-label="Chiudi menu">×</button>
     </div>
-    <a href="./#news" class="mobile-more-link">News</a>
-    <a href="./#clubs" class="mobile-more-link">Tutte le rose</a>
-    <a href="./#honor" class="mobile-more-link">Albo d'Oro e Palmarès</a>
-    <a href="./#regolamento" class="mobile-more-link">Regolamento</a>
-    <a href="./#listone" class="mobile-more-link">Listone</a>
-    <a href="./#admin" class="mobile-more-link">Admin</a>
+    <a href="./#news" class="mobile-more-link"><span class="mobile-more-icon">📰</span><span>News</span></a>
+    <a href="./#clubs" class="mobile-more-link"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
+    <a href="./#honor" class="mobile-more-link"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
+    <a href="./#regolamento" class="mobile-more-link"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
+    <a href="./#fantamercato" class="mobile-more-link"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
+    <a href="./#listone" class="mobile-more-link"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
+    <a href="./#admin" class="mobile-more-link"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
   </nav>
 
   <nav class="mobile-bottom-nav mobile-bottom-nav-v141" aria-label="Navigazione principale mobile">
@@ -74,7 +68,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V164 mobile competizioni compatte · Ultimo aggiornamento 21/05/2026</p>
+    <p>ZonaOrientale Salerno · V168 refactor CSS mobile e query mercato · Ultimo aggiornamento 21/05/2026</p>
   </footer>
 
   <script>
@@ -825,6 +819,11 @@
       console.error(error);
       showError(error.message || "Errore durante il caricamento della competizione.");
       contentEl.innerHTML = "";
+    });
+  </script>
+  <script>
+    document.getElementById('competitionScrollTopBtnV166')?.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>

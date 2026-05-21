@@ -967,7 +967,7 @@ function renderHonorSummary() {
         <tbody>${rows || `<tr><td colspan="7" class="muted center">Nessuna stagione inserita.</td></tr>`}</tbody>
       </table>
     </div>
-    <div class="detail-section">
+    <div class="detail-section palmares-competitions-section-v167">
       <h3>Palmarès per competizione</h3>
       <div class="palmares-grid">${palmaresHtml}</div>
     </div>
@@ -4644,7 +4644,7 @@ renderHonorSummary = function renderHonorSummaryV32() {
         <tbody>${rows || `<tr><td colspan="7" class="muted center">Nessuna stagione inserita.</td></tr>`}</tbody>
       </table>
     </div>
-    <div class="detail-section">
+    <div class="detail-section palmares-competitions-section-v167">
       <h3>Palmarès per competizione</h3>
       <div class="palmares-grid">${palmaresHtml}</div>
     </div>
@@ -6204,7 +6204,7 @@ function ensureTeamProfilePageV42() {
     link.href = '#teamprofile';
     link.className = 'nav-link nav-link-team-profile hidden';
     link.dataset.pageLink = 'teamprofile';
-    link.textContent = 'La mia squadra';
+    link.innerHTML = '<span class="mobile-more-icon">👕</span><span>La mia squadra</span>';
     const teamAreaLink = desktopNav.querySelector('[data-page-link="teamarea"]');
     const adminLink = desktopNav.querySelector('#adminNavLink');
     desktopNav.insertBefore(link, teamAreaLink || adminLink || null);
@@ -11586,8 +11586,8 @@ restoreCompetitionMatchV116 = async function restoreCompetitionMatchV117(matchId
 
 
 /* V119 - Fantamercato, trattative squadra e badge uniformi. */
-if (!COLLECTIONS.includes("transferListings")) COLLECTIONS.push("transferListings");
-if (!COLLECTIONS.includes("transferNegotiations")) COLLECTIONS.push("transferNegotiations");
+// V168: transfer market collections are loaded with targeted queries in loadTransferMarketCollectionsV133.
+// Do not add them to COLLECTIONS, otherwise admin full-load reads the entire collections too.
 
 state.transferMarketLoadedV119 = false;
 state.transferMarketLoadingV119 = false;
@@ -12946,7 +12946,9 @@ renderAll = function renderAllV142() {
 /* V144 - Area squadra mobile operativa: hub azioni rapide e ritocchi solo mobile. */
 function renderMobileTeamAreaHubV144(approved) {
   if (!approved?.seasonTeamId) return "";
+  const seasonTeam = typeof getSeasonTeamById === "function" ? getSeasonTeamById(approved.seasonTeamId) : null;
   const teamName = getSeasonTeamDisplayName(approved.seasonTeamId) || approved.teamName || "La mia squadra";
+  const presidentNames = typeof getSeasonTeamPresidentNames === "function" ? getSeasonTeamPresidentNames(seasonTeam) : (approved.presidentName || approved.displayName || "-");
   const rosterCount = typeof getRosterCountV119 === "function" ? getRosterCountV119(approved.seasonTeamId) : 0;
   const fmBalance = typeof getTeamFmBalance === "function" ? getTeamFmBalance(approved.seasonTeamId) : null;
   const pendingSent = (state.raw?.transferNegotiations || []).filter((item) => item.fromSeasonTeamId === approved.seasonTeamId && String(item.status || "PENDING").toUpperCase() === "PENDING").length;
@@ -12955,10 +12957,12 @@ function renderMobileTeamAreaHubV144(approved) {
 
   return `
     <section id="mobileTeamAreaHubV144" class="mobile-teamarea-hub-v144" aria-label="Azioni rapide area squadra">
-      <div class="mobile-teamarea-hero-v144">
+      <div class="mobile-teamarea-hero-v144 mobile-teamarea-hero-v167">
         <span class="mobile-teamarea-kicker-v144">Area squadra</span>
         <h3>${escapeHtml(teamName)}</h3>
+        <p class="mobile-teamarea-president-v167">${escapeHtml(presidentNames || "-")}</p>
         <p>${escapeHtml(`${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}`)}</p>
+        <button class="button button-secondary button-small mobile-teamarea-open-profile-v167" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}">Apri pagina squadra</button>
       </div>
       <div class="mobile-teamarea-stats-v144">
         <span><strong>${escapeHtml(String(listings))}</strong><small>in vendita</small></span>
@@ -12966,7 +12970,6 @@ function renderMobileTeamAreaHubV144(approved) {
         <span><strong>${escapeHtml(String(pendingReceived))}</strong><small>ricevute</small></span>
       </div>
       <div class="mobile-teamarea-actions-v144">
-        <button class="mobile-teamarea-action-v144" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}"><span>👕</span><strong>La mia rosa</strong><small>scheda completa</small></button>
         <a class="mobile-teamarea-action-v144" href="#clubs" data-page-link="clubs"><span>👥</span><strong>Tutte le rose</strong><small>lega</small></a>
         <a class="mobile-teamarea-action-v144" href="#fantamercato" data-page-link="fantamercato"><span>🔁</span><strong>Mercato</strong><small>trasferibili</small></a>
         <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll=".trade-proposal-panel"><span>✍️</span><strong>Proposta</strong><small>nuova trattativa</small></button>
