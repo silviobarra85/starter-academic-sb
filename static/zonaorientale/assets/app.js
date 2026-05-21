@@ -14626,4 +14626,43 @@ document.addEventListener("click", (event) => {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }, true);
 
+
+/* V176 - Mobile Team Area delegated quick actions.
+   The mobile hub in the president Squadra page is rendered after the initial
+   navigation listeners are attached. A delegated handler makes the dynamic
+   "Tutte le rose" and "Mercato" actions behave like normal page navigation. */
+function getMobileTeamAreaQuickActionPageV176(action) {
+  return String(action?.dataset?.pageLink || action?.dataset?.v42PageLink || "").trim();
+}
+
+function navigateMobileTeamAreaQuickActionV176(pageName) {
+  const page = String(pageName || "").trim();
+  if (!page) return false;
+  closeMobileMoreMenu?.();
+  if (typeof setAppPageV42 === "function") {
+    setAppPageV42(page);
+  } else {
+    state.currentPage = page;
+    window.location.hash = `#${page}`;
+  }
+  if (page === "fantamercato" && typeof ensureTransferMarketDataV119 === "function") {
+    ensureTransferMarketDataV119({ force: true, reason: "mobile-teamarea-action" });
+  }
+  if (typeof scheduleMobilePageTopV172 === "function") {
+    scheduleMobilePageTopV172();
+  } else {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }
+  return true;
+}
+
+document.addEventListener("click", (event) => {
+  const action = event.target.closest?.(".mobile-teamarea-actions-v144 [data-page-link], .mobile-teamarea-actions-v144 [data-v42-page-link]");
+  if (!action) return;
+  const page = getMobileTeamAreaQuickActionPageV176(action);
+  if (!page) return;
+  event.preventDefault();
+  navigateMobileTeamAreaQuickActionV176(page);
+}, true);
+
 startZonaOrientaleAppV173();
