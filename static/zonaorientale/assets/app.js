@@ -13977,3 +13977,238 @@ updateAdminVisibility = function updateAdminVisibilityV171() {
   logoutBtn?.classList.toggle("hidden", !state.user);
   document.body?.classList.toggle("is-admin-authenticated", Boolean(state.isAdmin && state.user));
 };
+
+/* V172 - Static season snapshots and mobile page top focus.
+   Public season snapshots can now be served from GitHub at
+   assets/snapshots/seasons before falling back to Firestore. On mobile,
+   every tab/page navigation is forced back to the top of the viewport. */
+const STATIC_SEASON_SNAPSHOTS_BASE_URL_V172 = "assets/snapshots/seasons/";
+const STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172 = `${STATIC_SEASON_SNAPSHOTS_BASE_URL_V172}manifest.json`;
+state.staticSeasonSnapshotsManifestV172 = state.staticSeasonSnapshotsManifestV172 || null;
+state.publicSeasonSnapshotSourcesV172 = state.publicSeasonSnapshotSourcesV172 || {};
+
+function normalizeStaticSeasonSnapshotEntryV172(entry) {
+  const seasonId = String(entry?.seasonId || entry?.id || "").trim();
+  if (!seasonId) return null;
+  const file = String(entry?.file || entry?.path || `${safeFileName(seasonId)}.json`).replace(/^\/+/, "");
+  return {
+    ...entry,
+    id: seasonId,
+    seasonId,
+    file,
+    generatedAt: entry?.generatedAt || ""
+  };
+}
+
+function getStaticSeasonSnapshotEntriesV172(manifest) {
+  if (Array.isArray(manifest?.snapshots)) return manifest.snapshots;
+  if (Array.isArray(manifest?.seasons)) return manifest.seasons;
+  if (manifest?.snapshots && typeof manifest.snapshots === "object") {
+    return Object.entries(manifest.snapshots).map(([seasonId, value]) => ({ seasonId, ...(value || {}) }));
+  }
+  return [];
+}
+
+async function loadStaticSeasonSnapshotsManifestV172() {
+  if (state.staticSeasonSnapshotsManifestV172) return state.staticSeasonSnapshotsManifestV172;
+  try {
+    const response = await fetch(STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172, { cache: "no-store" });
+    if (!response.ok) {
+      state.staticSeasonSnapshotsManifestV172 = { version: 1, generatedAt: "", snapshots: [] };
+      return state.staticSeasonSnapshotsManifestV172;
+    }
+    const payload = await response.json();
+    const snapshots = getStaticSeasonSnapshotEntriesV172(payload)
+      .map(normalizeStaticSeasonSnapshotEntryV172)
+      .filter(Boolean);
+    state.staticSeasonSnapshotsManifestV172 = {
+      version: payload?.version || 1,
+      generatedAt: payload?.generatedAt || "",
+      snapshots
+    };
+    return state.staticSeasonSnapshotsManifestV172;
+  } catch (error) {
+    console.warn("Manifest snapshot stagioni statico non disponibile", error);
+    state.staticSeasonSnapshotsManifestV172 = { version: 1, generatedAt: "", snapshots: [] };
+    return state.staticSeasonSnapshotsManifestV172;
+  }
+}
+
+function getStaticSeasonSnapshotEntryV172(manifest, seasonId) {
+  const target = String(seasonId || "").trim();
+  if (!target) return null;
+  return (manifest?.snapshots || []).find((entry) => String(entry?.seasonId || entry?.id || "") === target) || null;
+}
+
+function normalizeStaticPublicSeasonSnapshotV172(payload, seasonId) {
+  const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+  if (!snapshot || typeof snapshot !== "object") return null;
+  const normalizedSeasonId = String(snapshot.seasonId || snapshot.id || seasonId || "").trim();
+  if (!normalizedSeasonId || normalizedSeasonId !== String(seasonId || "")) return null;
+  return {
+    ...snapshot,
+    id: snapshot.id || normalizedSeasonId,
+    seasonId: normalizedSeasonId
+  };
+}
+
+async function loadStaticPublicSeasonSnapshotV172(seasonId) {
+  const manifest = await loadStaticSeasonSnapshotsManifestV172();
+  const entry = getStaticSeasonSnapshotEntryV172(manifest, seasonId);
+  if (!entry?.file) return null;
+  try {
+    const response = await fetch(`${STATIC_SEASON_SNAPSHOTS_BASE_URL_V172}${entry.file}`, { cache: "no-store" });
+    if (!response.ok) return null;
+    const payload = await response.json();
+    const snapshot = normalizeStaticPublicSeasonSnapshotV172(payload, seasonId);
+    if (!snapshot) return null;
+    snapshot.staticGeneratedAt = entry.generatedAt || snapshot.generatedAt || "";
+    state.publicSeasonSnapshotSourcesV172[seasonId] = "static";
+    return snapshot;
+  } catch (error) {
+    console.warn(`Snapshot stagione statico non disponibile per ${seasonId}`, error);
+    return null;
+  }
+}
+
+const loadPublicSeasonSnapshotBeforeV172 = loadPublicSeasonSnapshotV32;
+loadPublicSeasonSnapshotV32 = async function loadPublicSeasonSnapshotV172(seasonId) {
+  if (!seasonId) return null;
+  if (state.publicSeasonSnapshots[seasonId]) return state.publicSeasonSnapshots[seasonId];
+  const staticSnapshot = await loadStaticPublicSeasonSnapshotV172(seasonId);
+  if (staticSnapshot) {
+    state.publicSeasonSnapshots[seasonId] = staticSnapshot;
+    return staticSnapshot;
+  }
+  const firebaseSnapshot = await loadPublicSeasonSnapshotBeforeV172(seasonId);
+  if (firebaseSnapshot) state.publicSeasonSnapshotSourcesV172[seasonId] = "firebase";
+  return firebaseSnapshot;
+};
+
+function buildStaticSeasonSnapshotFileNameV172(seasonId) {
+  return `${safeFileName(seasonId || "stagione")}.json`;
+}
+
+function buildStaticSeasonSnapshotsManifestV172(snapshotEntries) {
+  return {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    snapshots: snapshotEntries.map((entry) => ({
+      seasonId: entry.seasonId,
+      file: entry.file,
+      generatedAt: entry.snapshot?.generatedAt || "",
+      snapshotVersion: entry.snapshot?.snapshotVersion || entry.snapshot?.version || ""
+    }))
+  };
+}
+
+function buildStaticSeasonSnapshotEntriesV172(seasonIds) {
+  return (seasonIds || [])
+    .filter(Boolean)
+    .map((seasonId) => {
+      const snapshot = typeof buildPublicSeasonSnapshotV34 === "function"
+        ? buildPublicSeasonSnapshotV34(seasonId)
+        : buildPublicSeasonSnapshotV32(seasonId);
+      return {
+        seasonId,
+        file: buildStaticSeasonSnapshotFileNameV172(seasonId),
+        snapshot
+      };
+    });
+}
+
+async function downloadStaticSeasonSnapshotsOverlayV172(options = {}) {
+  const { selectedOnly = false } = options;
+  try {
+    showMessage("adminPublicSnapshotsStatus", selectedOnly ? "Genero overlay snapshot stagione selezionata..." : "Genero overlay snapshot stagioni...");
+    if (!state.hasFullData) await loadFullDataV32({ render: false });
+    const seasonIds = selectedOnly
+      ? [getCurrentSeasonId()].filter(Boolean)
+      : (state.raw.seasons || []).map((season) => season.id).filter(Boolean);
+    if (!seasonIds.length) throw new Error("Nessuna stagione disponibile per generare lo snapshot statico.");
+
+    const entries = buildStaticSeasonSnapshotEntriesV172(seasonIds);
+    const manifest = buildStaticSeasonSnapshotsManifestV172(entries);
+    const JSZip = await loadZipLibraryV105();
+    const zip = new JSZip();
+    zip.file("static/zonaorientale/assets/snapshots/seasons/manifest.json", `${JSON.stringify(manifest, null, 2)}\n`);
+    entries.forEach((entry) => {
+      zip.file(`static/zonaorientale/assets/snapshots/seasons/${entry.file}`, `${JSON.stringify(entry.snapshot, null, 2)}\n`);
+    });
+    const blob = await zip.generateAsync({ type: "blob" });
+    const suffix = selectedOnly ? safeFileName(seasonIds[0]) : "tutte_le_stagioni";
+    downloadBlobV105(blob, `zonaorientale_snapshot_stagioni_${suffix}_overlay.zip`);
+    showMessage("adminPublicSnapshotsStatus", "Overlay snapshot stagioni scaricato. Pubblicalo su GitHub per evitare letture Firestore sulle stagioni staticizzate.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminPublicSnapshotsStatus", error.message || "Errore durante la generazione overlay snapshot stagioni.", true);
+  }
+}
+
+const renderPublicSnapshotsAdminPanelBeforeV172 = typeof renderPublicSnapshotsAdminPanelV114 === "function" ? renderPublicSnapshotsAdminPanelV114 : null;
+if (renderPublicSnapshotsAdminPanelBeforeV172) {
+  renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV172() {
+    let html = renderPublicSnapshotsAdminPanelBeforeV172();
+    if (!html.includes('id="adminDownloadStaticSeasonSnapshots"')) {
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', '  <button id="adminDownloadSelectedStaticSeasonSnapshot" class="button button-secondary" type="button">Scarica snapshot stagione JSON</button>\n        <button id="adminDownloadStaticSeasonSnapshots" class="button button-secondary" type="button">Scarica overlay snapshot stagioni</button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"');
+      html = html.replace('La config pubblica statica va salvata in <code>assets/public/config.json</code>.', 'La config pubblica statica va salvata in <code>assets/public/config.json</code>. Gli snapshot stagione statici vanno salvati in <code>assets/snapshots/seasons/</code>.');
+    }
+    return html;
+  };
+  renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+}
+
+const attachAdminHandlersBeforeV172 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV172() {
+  attachAdminHandlersBeforeV172?.();
+  document.getElementById("adminDownloadSelectedStaticSeasonSnapshot")?.addEventListener("click", () => downloadStaticSeasonSnapshotsOverlayV172({ selectedOnly: true }));
+  document.getElementById("adminDownloadStaticSeasonSnapshots")?.addEventListener("click", () => downloadStaticSeasonSnapshotsOverlayV172({ selectedOnly: false }));
+};
+
+function isMobileUxActiveV172() {
+  if (typeof isMobileUxActiveV162 === "function") return isMobileUxActiveV162();
+  return document.body?.classList.contains("is-mobile-ux")
+    || window.matchMedia?.("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+}
+
+function scrollMobilePageTopNowV172() {
+  if (!isMobileUxActiveV172()) return;
+  closeMobileMoreMenu?.();
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  const activePage = document.querySelector(".app-page.is-active");
+  const focusTarget = activePage?.querySelector(".page-heading h1, .page-heading h2, h1, h2") || activePage;
+  if (focusTarget && typeof focusTarget.focus === "function") {
+    const previousTabIndex = focusTarget.getAttribute("tabindex");
+    if (previousTabIndex === null) focusTarget.setAttribute("tabindex", "-1");
+    focusTarget.focus({ preventScroll: true });
+    if (previousTabIndex === null) focusTarget.removeAttribute("tabindex");
+  }
+}
+
+function scheduleMobilePageTopV172() {
+  if (!isMobileUxActiveV172()) return;
+  scrollMobilePageTopNowV172();
+  window.requestAnimationFrame(scrollMobilePageTopNowV172);
+  window.setTimeout(scrollMobilePageTopNowV172, 80);
+  window.setTimeout(scrollMobilePageTopNowV172, 240);
+}
+
+const setAppPageBeforeV172 = typeof setAppPageV42 === "function" ? setAppPageV42 : null;
+if (setAppPageBeforeV172) {
+  setAppPageV42 = function setAppPageV172(pageName) {
+    const result = setAppPageBeforeV172(pageName);
+    scheduleMobilePageTopV172();
+    return result;
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("[data-page-link], [data-v42-page-link], [data-open-team-profile]");
+  if (!link) return;
+  scheduleMobilePageTopV172();
+}, true);
+
+window.addEventListener("hashchange", scheduleMobilePageTopV172);
+
