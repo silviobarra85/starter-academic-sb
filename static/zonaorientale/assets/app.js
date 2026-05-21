@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=186";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=188";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV186";
-const DEPLOY_EXPECTED_VERSION_V181 = "186";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV188";
+const DEPLOY_EXPECTED_VERSION_V181 = "188";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -15733,5 +15733,268 @@ renderAdminArea = function renderAdminAreaV185() {
   return result;
 };
 
-/* V186 - Final startup remains centralized here. */
+
+/* V187 - Static rosters Excel converter.
+   Admin can now convert the Fantacalcio Excel rosters file directly in the
+   browser into a GitHub-ready overlay for assets/rose/manifest.json and the
+   season rosters JSON. This does not write to Firebase. */
+function simplifyRosterClubKeyV187(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(" ")
+    .filter((token) => token && !["fc", "f", "c", "as", "a", "s", "afc"].includes(token))
+    .join("");
+}
+
+function cleanStaticRosterTextV187(value) {
+  return String(value ?? "").replace(/\s+/g, " ").trim();
+}
+
+function getStaticRosterCellV187(row, index) {
+  return cleanStaticRosterTextV187(Array.isArray(row) ? row[index] : "");
+}
+
+function parseStaticRosterNumberV187(value) {
+  if (typeof value === "number" && Number.isFinite(value)) return Number.isInteger(value) ? value : Number(value.toFixed(2));
+  const normalized = String(value ?? "").replace(/\s+/g, "").replace(",", ".").trim();
+  if (!normalized) return "";
+  const parsed = Number(normalized);
+  if (!Number.isFinite(parsed)) return cleanStaticRosterTextV187(value);
+  return Number.isInteger(parsed) ? parsed : Number(parsed.toFixed(2));
+}
+
+function getRosterSeasonTeamsForMappingV187(seasonId) {
+  if (typeof getSeasonTeamsForSeason === "function") return getSeasonTeamsForSeason(seasonId) || [];
+  return (state.raw?.seasonTeams || []).filter((team) => team.seasonId === seasonId);
+}
+
+function mapStaticRosterTeamNameV187(name, seasonId) {
+  // V188: do not map or normalize club names. The static rosters JSON must
+  // preserve exactly the team name written in the Excel file, apart from
+  // trimming repeated spaces.
+  return cleanStaticRosterTextV187(name);
+}
+
+function isStaticRosterHeaderRowV187(rows, rowIndex, startCol) {
+  const name = getStaticRosterCellV187(rows[rowIndex], startCol);
+  if (!name || name.toLowerCase() === "ruolo" || name.toLowerCase().includes("crediti residui")) return false;
+  const next = rows[rowIndex + 1] || [];
+  return getStaticRosterCellV187(next, startCol).toLowerCase() === "ruolo"
+    && getStaticRosterCellV187(next, startCol + 1).toLowerCase() === "calciatore";
+}
+
+function parseStaticRosterBlockV187(rows, rowIndex, startCol, seasonId) {
+  const rawName = getStaticRosterCellV187(rows[rowIndex], startCol);
+  const name = mapStaticRosterTeamNameV187(rawName, seasonId);
+  const players = [];
+  let remainingCredits = null;
+
+  for (let i = rowIndex + 2; i < rows.length; i += 1) {
+    const role = getStaticRosterCellV187(rows[i], startCol);
+    if (!role || role.toLowerCase() === "ruolo") break;
+    if (role.toLowerCase().includes("crediti residui")) {
+      const match = role.match(/-?\d+(?:[,.]\d+)?/);
+      remainingCredits = match ? parseStaticRosterNumberV187(match[0]) : null;
+      break;
+    }
+    const playerName = getStaticRosterCellV187(rows[i], startCol + 1);
+    if (!playerName) continue;
+    players.push({
+      role: role.toUpperCase(),
+      playerName,
+      realTeam: abbreviateRealTeam(getStaticRosterCellV187(rows[i], startCol + 2)).toUpperCase(),
+      cost: parseStaticRosterNumberV187(getStaticRosterCellV187(rows[i], startCol + 3))
+    });
+  }
+
+  const roster = { name, playerCount: players.length, players };
+  if (remainingCredits !== null && remainingCredits !== "") roster.remainingCredits = remainingCredits;
+  return roster;
+}
+
+function findStaticRosterDownloadDateV187(rows) {
+  for (const row of rows.slice(0, 10)) {
+    for (const cell of row || []) {
+      const text = String(cell ?? "");
+      const match = text.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+      if (match) return `${match[3]}-${match[2]}-${match[1]}`;
+    }
+  }
+  return "";
+}
+
+function parseStaticRostersWorkbookV187(workbook, XLSX, seasonId) {
+  const rosters = [];
+  const seen = new Set();
+  let detectedDate = "";
+
+  (workbook.SheetNames || []).forEach((sheetName) => {
+    const sheet = workbook.Sheets[sheetName];
+    if (!sheet) return;
+    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
+    if (!detectedDate) detectedDate = findStaticRosterDownloadDateV187(rows);
+    rows.forEach((_, rowIndex) => {
+      [0, 5].forEach((startCol) => {
+        if (!isStaticRosterHeaderRowV187(rows, rowIndex, startCol)) return;
+        const roster = parseStaticRosterBlockV187(rows, rowIndex, startCol, seasonId);
+        const key = cleanStaticRosterTextV187(roster.name).toLocaleLowerCase("it");
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        rosters.push(roster);
+      });
+    });
+  });
+
+  return { rosters, detectedDate };
+}
+
+function buildStaticRostersManifestV187(newEntry) {
+  const existing = (state.rosters || []).map((snapshot) => ({
+    id: snapshot.id || snapshot.meta?.id,
+    seasonId: snapshot.seasonId || snapshot.meta?.seasonId,
+    label: snapshot.label || snapshot.meta?.label,
+    loadedAt: snapshot.loadedAt || snapshot.meta?.loadedAt,
+    file: snapshot.file || `${safeFileName(snapshot.id || snapshot.meta?.id || "rose")}.json`,
+    teams: snapshot.teams ?? snapshot.meta?.teams ?? (snapshot.rosters || []).length,
+    players: snapshot.players ?? snapshot.meta?.players ?? (snapshot.rosters || []).reduce((sum, roster) => sum + (roster.players || []).length, 0)
+  })).filter((entry) => entry.id && entry.file);
+
+  const merged = [newEntry, ...existing.filter((entry) => entry.id !== newEntry.id)];
+  merged.sort((a, b) => String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it"));
+  return { rosters: merged };
+}
+
+function renderStaticRosterConverterAdminFormV187() {
+  const seasons = (state.raw?.seasons || []).length
+    ? state.raw.seasons
+    : [{ id: getCurrentSeasonId(), name: getCurrentSeasonId() }];
+  const currentSeasonId = getCurrentSeasonId();
+  const options = seasons.map((season) => `
+    <option value="${escapeHtml(season.id)}" ${season.id === currentSeasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>
+  `).join("");
+
+  return `
+    <form id="adminStaticRosterConverterForm" class="form-grid">
+      <label>
+        Stagione
+        <select id="adminStaticRosterSeasonId" class="input" required>${options}</select>
+      </label>
+      <label>
+        Data rose
+        <input id="adminStaticRosterLoadedAt" class="input" type="date" value="${escapeHtml(getTodayIsoDate())}" required />
+      </label>
+      <label class="span-2">
+        Label
+        <input id="adminStaticRosterLabel" class="input" type="text" placeholder="Es. Rose ZonaOrientale Salerno 2025/26" />
+      </label>
+      <label class="span-2">
+        File Excel rose
+        <input id="adminStaticRosterFile" class="input" type="file" accept=".xlsx,.xls" required />
+        <small class="field-hint">Converte il file Excel in overlay GitHub con <code>assets/rose/manifest.json</code> e il JSON rose. Mantiene i nomi squadra dell'Excel e non scrive su Firebase.</small>
+      </label>
+      <div class="form-actions span-2">
+        <button class="button button-primary" type="submit">Converti rose e scarica overlay</button>
+        <span id="adminStaticRosterConverterStatus" class="form-status"></span>
+      </div>
+    </form>
+    <div id="adminStaticRosterConverterReport" class="import-report hidden"></div>
+    <hr class="soft-separator" />`;
+}
+
+async function handleStaticRosterConverterSubmitV187(event) {
+  event.preventDefault();
+  const file = document.getElementById("adminStaticRosterFile")?.files?.[0];
+  if (!file) return;
+
+  try {
+    showMessage("adminStaticRosterConverterStatus", "Conversione rose in corso...");
+    const seasonId = document.getElementById("adminStaticRosterSeasonId")?.value || getCurrentSeasonId();
+    const XLSX = await loadXlsxLibrary();
+    const buffer = await file.arrayBuffer();
+    const workbook = XLSX.read(buffer, { type: "array" });
+    const parsed = parseStaticRostersWorkbookV187(workbook, XLSX, seasonId);
+    if (!parsed.rosters.length) throw new Error("Nessuna rosa trovata. Controlla che il file abbia nome squadra e colonne Ruolo, Calciatore, Squadra, Costo.");
+
+    const dateInput = document.getElementById("adminStaticRosterLoadedAt");
+    const loadedAt = dateInput?.value || parsed.detectedDate || getTodayIsoDate();
+    if (dateInput && parsed.detectedDate && !dateInput.dataset.userChangedV187) dateInput.value = parsed.detectedDate;
+    const label = cleanStaticRosterTextV187(document.getElementById("adminStaticRosterLabel")?.value)
+      || `Rose ZonaOrientale Salerno ${formatSeasonShortLabel(seasonId)}`;
+    const id = `${seasonId}-${loadedAt}`;
+    const fileName = `${safeFileName(id)}.json`;
+    const players = parsed.rosters.reduce((sum, roster) => sum + (roster.players || []).length, 0);
+    const payload = {
+      meta: {
+        id,
+        seasonId,
+        label,
+        loadedAt,
+        sourceFile: file.name,
+        teams: parsed.rosters.length,
+        players
+      },
+      rosters: parsed.rosters
+    };
+    const manifestEntry = {
+      id,
+      seasonId,
+      label,
+      loadedAt,
+      file: fileName,
+      teams: parsed.rosters.length,
+      players
+    };
+    const manifest = buildStaticRostersManifestV187(manifestEntry);
+    const JSZip = await loadZipLibraryV105();
+    const zip = new JSZip();
+    zip.file("static/zonaorientale/assets/rose/manifest.json", `${JSON.stringify(manifest, null, 2)}\n`);
+    zip.file(`static/zonaorientale/assets/rose/${fileName}`, `${JSON.stringify(payload, null, 2)}\n`);
+    const blob = await zip.generateAsync({ type: "blob" });
+    downloadBlobV105(blob, `zonaorientale_rose_${safeFileName(id)}_overlay.zip`);
+
+    const report = document.getElementById("adminStaticRosterConverterReport");
+    if (report) {
+      report.classList.remove("hidden");
+      report.innerHTML = `
+        <h3>Overlay rose generato</h3>
+        <p>Rose: <strong>${parsed.rosters.length}</strong> · Giocatori: <strong>${players}</strong> · Data: <strong>${escapeHtml(loadedAt)}</strong></p>
+        <p>Lo zip contiene <code>assets/rose/manifest.json</code> e <code>assets/rose/${escapeHtml(fileName)}</code>. Estrailo dalla root della repo e committalo.</p>
+        <pre>${escapeHtml(JSON.stringify(manifestEntry, null, 2))}</pre>`;
+    }
+    showMessage("adminStaticRosterConverterStatus", "Overlay rose scaricato.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminStaticRosterConverterStatus", error.message || "Errore durante la conversione rose.", true);
+  }
+}
+
+const renderRosterMovementsAdminPanelBeforeV187 = renderRosterMovementsAdminPanel;
+renderRosterMovementsAdminPanel = function renderRosterMovementsAdminPanelV187() {
+  let html = renderRosterMovementsAdminPanelBeforeV187?.() || "";
+  if (html && !html.includes('id="adminStaticRosterConverterForm"')) {
+    html = html.replace('<form id="adminImportStaticRostersForm"', `${renderStaticRosterConverterAdminFormV187()}\n    <form id="adminImportStaticRostersForm"`);
+  }
+  return html;
+};
+
+const attachAdminHandlersBeforeV187 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV187() {
+  attachAdminHandlersBeforeV187?.();
+  document.getElementById("adminStaticRosterConverterForm")?.addEventListener("submit", handleStaticRosterConverterSubmitV187);
+  document.getElementById("adminStaticRosterLoadedAt")?.addEventListener("input", (event) => {
+    event.target.dataset.userChangedV187 = "1";
+  });
+};
+
+const renderAdminHelpPanelBeforeV187 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV187() {
+  let html = renderAdminHelpPanelBeforeV187?.() || "";
+  if (html && !html.includes("Converti rose Excel")) {
+    html = html.replace('<article>\n          <h4>Rose e movimenti FM</h4>', '<article>\n          <h4>Converti rose Excel</h4>\n          <p>Trasforma il file Excel delle rose in JSON statico e manifest da pubblicare su GitHub. Non consuma letture Firebase.</p>\n        </article>\n        <article>\n          <h4>Rose e movimenti FM</h4>');
+  }
+  return html;
+};
+
+/* V188 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
