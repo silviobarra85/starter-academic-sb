@@ -972,7 +972,7 @@ function renderHonorSummary() {
       <h3>Palmarès per competizione</h3>
       <div class="palmares-grid">${palmaresHtml}</div>
     </div>
-    <div class="detail-section">
+    <div class="detail-section fifa-ranking-section-v184">
       <h3>FIFA Ranking</h3>
       ${renderFifaRankingPublic()}
     </div>`;
@@ -4649,7 +4649,7 @@ renderHonorSummary = function renderHonorSummaryV32() {
       <h3>Palmarès per competizione</h3>
       <div class="palmares-grid">${palmaresHtml}</div>
     </div>
-    <div class="detail-section">
+    <div class="detail-section fifa-ranking-section-v184">
       <h3>FIFA Ranking</h3>
       <div class="table-wrap fifa-ranking-table-wrap">
         <table>
@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV183";
-const DEPLOY_EXPECTED_VERSION_V181 = "183";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV184";
+const DEPLOY_EXPECTED_VERSION_V181 = "184";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");

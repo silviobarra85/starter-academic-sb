@@ -13324,3 +13324,61 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
   word-break: break-word !important;
   line-break: anywhere;
 }
+
+/* V184 - Honor page: FIFA ranking dark section and palmares title spacing. */
+[data-page="honor"] .palmares-competitions-section-v167 {
+  padding: 1rem;
+  border-radius: 18px;
+}
+
+[data-page="honor"] .palmares-competitions-section-v167 > h3 {
+  margin-left: 0;
+}
+
+[data-page="honor"] .fifa-ranking-section-v184 {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid rgba(34, 197, 94, 0.26);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.94));
+  color: #f8fafc;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.20);
+}
+
+[data-page="honor"] .fifa-ranking-section-v184 h3,
+[data-page="honor"] .fifa-ranking-section-v184 strong,
+[data-page="honor"] .fifa-ranking-section-v184 .club-name-with-logo strong,
+[data-page="honor"] .fifa-ranking-section-v184 .club-name-with-logo span {
+  color: #ffffff;
+}
+
+[data-page="honor"] .fifa-ranking-section-v184 .muted,
+[data-page="honor"] .fifa-ranking-section-v184 p,
+[data-page="honor"] .fifa-ranking-section-v184 small {
+  color: rgba(226, 232, 240, 0.84);
+}
+
+[data-page="honor"] .fifa-ranking-section-v184 .fifa-ranking-table-wrap {
+  border-color: rgba(34, 197, 94, 0.22);
+  background: rgba(7, 17, 29, 0.72);
+}
+
+[data-page="honor"] .fifa-ranking-section-v184 table,
+[data-page="honor"] .fifa-ranking-section-v184 thead,
+[data-page="honor"] .fifa-ranking-section-v184 tbody,
+[data-page="honor"] .fifa-ranking-section-v184 tr,
+[data-page="honor"] .fifa-ranking-section-v184 th,
+[data-page="honor"] .fifa-ranking-section-v184 td {
+  background: transparent;
+  color: #f8fafc;
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+[data-page="honor"] .fifa-ranking-section-v184 th {
+  color: #bbf7d0;
+  background: rgba(15, 23, 42, 0.96);
+}
+
+[data-page="honor"] .fifa-ranking-section-v184 tbody tr:nth-child(even) td {
+  background: rgba(15, 23, 42, 0.46);
+}
