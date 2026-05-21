@@ -13204,3 +13204,96 @@ renderAll = function renderAllV151() {
   removeMobileAlertCardV151();
   return result;
 };
+
+
+/* V152 - Hotfix mobile: Rose senza barra laterale riga e Coppe con risultato per partite giocate. */
+function getMatchResultTextV152(match) {
+  if (!match) return "";
+  const candidateKeys = ["result", "score", "finalResult", "matchResult", "goals", "risultato"];
+  for (const key of candidateKeys) {
+    const value = match[key];
+    if (value !== undefined && value !== null && String(value).trim()) {
+      const text = String(value).trim();
+      if (/\d+\s*[-–:]\s*\d+/.test(text)) return text.replace(/[–:]/g, "-").replace(/\s+/g, "");
+    }
+  }
+  const pair = typeof getMatchGoalsPairV151 === "function" ? getMatchGoalsPairV151(match) : null;
+  if (pair) return `${pair.home}-${pair.away}`;
+  const homeKeys = ["homeGoals", "homeGoal", "homeResult", "homeGoalsFinal", "homeFinalGoals", "homeScoreGoals", "home_score_goals", "goalsHome"];
+  const awayKeys = ["awayGoals", "awayGoal", "awayResult", "awayGoalsFinal", "awayFinalGoals", "awayScoreGoals", "away_score_goals", "goalsAway"];
+  const readValue = (keys) => {
+    for (const key of keys) {
+      const value = match[key];
+      if (value !== undefined && value !== null && String(value).trim() !== "") return String(value).trim();
+    }
+    return "";
+  };
+  const home = readValue(homeKeys);
+  const away = readValue(awayKeys);
+  return home && away ? `${home}-${away}` : "";
+}
+
+function isPlayedMatchV152(match) {
+  const status = String(match?.status || match?.matchStatus || match?.state || "").trim().toUpperCase();
+  const playedStatuses = new Set(["GIOCATA", "PLAYED", "FINISHED", "COMPLETED", "CONCLUSA", "DISPUTATA", "FINAL", "ENDED"]);
+  if (playedStatuses.has(status)) return true;
+  if (match?.played === true || match?.isPlayed === true || match?.finished === true || match?.completed === true) return true;
+  return Boolean(getMatchResultTextV152(match));
+}
+
+function formatMobileCupMatchMetaV152(match) {
+  if (isPlayedMatchV152(match)) {
+    const result = getMatchResultTextV152(match);
+    return `<strong class="match-result-goals">${escapeHtml(result || "Giocata")}</strong>`;
+  }
+  const date = typeof getMatchDateRawV151 === "function" ? getMatchDateRawV151(match) : String(match?.matchDate || match?.date || "").trim();
+  if (date) return escapeHtml(date);
+  const serieA = typeof formatDashboardSerieALabelV136 === "function" ? formatDashboardSerieALabelV136(match) : "";
+  return escapeHtml(serieA || "Data da definire");
+}
+
+isPlayedMatchV150 = isPlayedMatchV152;
+formatMobileCupMatchMetaV150 = formatMobileCupMatchMetaV152;
+
+/* V153 - Mobile Coppe: partite con squadre su due righe, data e risultato sempre visibili. */
+function formatMobileCupDateV153(match) {
+  const raw = typeof getMatchDateRawV151 === "function"
+    ? getMatchDateRawV151(match)
+    : String(match?.matchDate || match?.date || match?.scheduledDate || "").trim();
+  return raw || "Data da definire";
+}
+
+function formatMobileCupResultV153(match) {
+  const result = typeof getMatchResultTextV152 === "function" ? getMatchResultTextV152(match) : "";
+  if (result) return result;
+  const played = typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match);
+  return played ? "Risultato non inserito" : "Da disputare";
+}
+
+renderMobileCupMatchCardsV150 = function renderMobileCupMatchCardsV153(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  if (!rows.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="mobile-cup-match-list-v150 mobile-cup-match-list-v153" aria-label="Partite mobile">
+      ${rows.map((match) => {
+        const played = typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match);
+        const date = formatMobileCupDateV153(match);
+        const result = formatMobileCupResultV153(match);
+        return `
+          <div class="mobile-cup-match-row-v150 mobile-cup-match-row-v153 ${played ? "is-played" : "is-scheduled"}">
+            <div class="mobile-cup-match-teams-v150 mobile-cup-match-teams-v153">
+              <div class="mobile-cup-team-line-v153 mobile-cup-team-home-v153">
+                ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+              </div>
+              <div class="mobile-cup-team-line-v153 mobile-cup-team-away-v153">
+                ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+              </div>
+            </div>
+            <div class="mobile-cup-match-meta-v150 mobile-cup-match-meta-v153">
+              <span class="mobile-cup-date-v153">${escapeHtml(date)}</span>
+              <strong class="mobile-cup-result-v153 ${played ? "match-result-goals" : "is-pending"}">${escapeHtml(result)}</strong>
+            </div>
+          </div>`;
+      }).join("")}
+    </div>`;
+};
