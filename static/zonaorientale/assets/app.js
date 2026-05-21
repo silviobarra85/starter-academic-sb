@@ -43,6 +43,7 @@ import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from ".
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js";
+import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
   "quotationInitial",
@@ -128,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=186";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -491,7 +492,7 @@ function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${sortedMatches.map((match) => `
@@ -499,7 +500,7 @@ function renderMatchRows(matches, emptyText = "Nessuna partita inserita.") {
               <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -546,7 +547,7 @@ function renderDashboardCalendar(seasonId) {
               <th>Fase</th>
               <th>Partita</th>
               <th>Data</th>
-              <th class="number">Risultato</th>
+              <th class="number">Ris.</th>
             </tr>
           </thead>
           <tbody>
@@ -555,7 +556,7 @@ function renderDashboardCalendar(seasonId) {
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+                <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
               </tr>`).join("")}
           </tbody>
         </table>
@@ -967,11 +968,11 @@ function renderHonorSummary() {
         <tbody>${rows || `<tr><td colspan="7" class="muted center">Nessuna stagione inserita.</td></tr>`}</tbody>
       </table>
     </div>
-    <div class="detail-section">
+    <div class="detail-section palmares-competitions-section-v167">
       <h3>Palmarès per competizione</h3>
       <div class="palmares-grid">${palmaresHtml}</div>
     </div>
-    <div class="detail-section">
+    <div class="detail-section fifa-ranking-section-v184">
       <h3>FIFA Ranking</h3>
       ${renderFifaRankingPublic()}
     </div>`;
@@ -3742,8 +3743,8 @@ renderClubRostersPublic = function renderClubRostersPublicV18() {
     <tr>
       <td data-label="Data">${escapeHtml(movement.date || "-")}</td>
       <td data-label="Rosa">${renderSeasonTeamNameWithLogo(movement.seasonTeamId, { strong: false })}</td>
-      <td data-label="Tipo"><span class="status status-muted">${escapeHtml(getFmMovementLabel(movement.type))}</span></td>
-      <td data-label="Giocatore">${escapeHtml(movement.playerName || "-")}${movement.targetSeasonTeamId ? `<small class="muted"> → ${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}</small>` : ""}</td>
+      <td data-label="Tipo"><span class="status status-muted movement-type-badge movement-type-badge-${escapeHtml(String(movement.type || "").toLowerCase())}">${movement.type === "INITIAL_BUDGET" ? "Budget<br>Iniziale" : escapeHtml(getFmMovementLabel(movement.type))}</span></td>
+      <td data-label="Giocatore">${movement.type === "INITIAL_BUDGET" ? "-" : `${escapeHtml(movement.playerName || "-")}${movement.targetSeasonTeamId ? `<small class="muted"> → ${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}</small>` : ""}`}</td>
       <td data-label="FM" class="number ${Number(movement.amount || 0) >= 0 ? "text-success" : "text-danger"}"><strong>${escapeHtml(formatFm(movement.amount))}</strong></td>
       <td data-label="Note">${escapeHtml(movement.description || "-")}</td>
     </tr>`).join("");
@@ -4644,11 +4645,11 @@ renderHonorSummary = function renderHonorSummaryV32() {
         <tbody>${rows || `<tr><td colspan="7" class="muted center">Nessuna stagione inserita.</td></tr>`}</tbody>
       </table>
     </div>
-    <div class="detail-section">
+    <div class="detail-section palmares-competitions-section-v167">
       <h3>Palmarès per competizione</h3>
       <div class="palmares-grid">${palmaresHtml}</div>
     </div>
-    <div class="detail-section">
+    <div class="detail-section fifa-ranking-section-v184">
       <h3>FIFA Ranking</h3>
       <div class="table-wrap fifa-ranking-table-wrap">
         <table>
@@ -5969,7 +5970,8 @@ document.addEventListener("click", (event) => {
   event.stopImmediatePropagation();
   const id = button.dataset.toggleRosterClub;
   if (!id) return;
-  if (state.expandedRosterClubIds.has(id)) {
+  const wasExpanded = state.expandedRosterClubIds.has(id);
+  if (wasExpanded) {
     state.expandedRosterClubIds.delete(id);
   } else {
     const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
@@ -5981,6 +5983,24 @@ document.addEventListener("click", (event) => {
     }
   }
   renderTeamsTable();
+  window.requestAnimationFrame(() => {
+    const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+    const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
+    const isMobileMode = isMobileLike && displayMode !== "desktop";
+
+    if (!wasExpanded) {
+      const escapedId = window.CSS?.escape ? CSS.escape(id) : id.replace(/"/g, '\"');
+      const openedButton = document.querySelector(`[data-toggle-roster-club="${escapedId}"][aria-expanded="true"]`);
+      const detail = openedButton?.closest?.(".mobile-roster-detail-card-v156, .roster-detail-row") || document.querySelector(".mobile-roster-detail-card-v156");
+      detail?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    if (isMobileMode) {
+      const selector = document.querySelector(".mobile-roster-selector-v156") || document.getElementById("rosterClubCards") || document.getElementById("clubs");
+      selector?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    }
+  });
 }, true);
 
 
@@ -5992,6 +6012,9 @@ function normalizeToggleLabelsV29() {
   });
 
   document.querySelectorAll("[data-toggle-roster-club]").forEach((button) => {
+    // V159: i blocchi di selezione rosa mobile sono card ricche, non semplici toggle testuali.
+    // Non sostituire il loro contenuto con "Espandi/Riduci", altrimenti spariscono logo, squadra e presidenti.
+    if (button.classList?.contains("mobile-roster-select-block-v156")) return;
     const expanded = button.getAttribute("aria-expanded") === "true";
     button.textContent = expanded ? "Riduci" : "Espandi";
   });
@@ -6182,7 +6205,7 @@ function ensureTeamProfilePageV42() {
     link.href = '#teamprofile';
     link.className = 'nav-link nav-link-team-profile hidden';
     link.dataset.pageLink = 'teamprofile';
-    link.textContent = 'La mia squadra';
+    link.innerHTML = '<span class="mobile-more-icon">👕</span><span>La mia squadra</span>';
     const teamAreaLink = desktopNav.querySelector('[data-page-link="teamarea"]');
     const adminLink = desktopNav.querySelector('#adminNavLink');
     desktopNav.insertBefore(link, teamAreaLink || adminLink || null);
@@ -7046,7 +7069,7 @@ renderDashboardCalendar = function renderDashboardCalendarV52(seasonId) {
               <th>Fase</th>
               <th>Partita</th>
               <th>Data</th>
-              <th class="number">Risultato</th>
+              <th class="number">Ris.</th>
             </tr>
           </thead>
           <tbody>
@@ -7055,7 +7078,7 @@ renderDashboardCalendar = function renderDashboardCalendarV52(seasonId) {
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
-                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+                <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
               </tr>`).join('')}
           </tbody>
         </table>
@@ -7351,7 +7374,7 @@ renderDashboardCalendar = function renderDashboardCalendarV87(seasonId) {
               <th>Fase</th>
               <th>Partita</th>
               <th>Data</th>
-              <th class="number">Risultato</th>
+              <th class="number">Ris.</th>
             </tr>
           </thead>
           <tbody>
@@ -7360,7 +7383,7 @@ renderDashboardCalendar = function renderDashboardCalendarV87(seasonId) {
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
-                <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+                <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
               </tr>`).join('')}
           </tbody>
         </table>
@@ -7867,7 +7890,7 @@ renderMatchRows = function renderMatchRowsV101(matches, emptyText = "Nessuna par
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${sortedMatches.map((match) => `
@@ -7875,7 +7898,7 @@ renderMatchRows = function renderMatchRowsV101(matches, emptyText = "Nessuna par
               <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -8171,11 +8194,13 @@ initializeAppUi = async function initializeAppUiV100() {
   if (loginHelpText) loginHelpText.textContent = "Accedi con l'utente creato in Firebase Authentication.";
 };
 
-initializeAppUi().then(() => {
-  setupThemeToggleV89();
-  injectDisplayModeToggle();
-  updateMobileUxClass();
-});
+function startZonaOrientaleAppV173() {
+  return initializeAppUi().then(() => {
+    setupThemeToggleV89();
+    injectDisplayModeToggle();
+    updateMobileUxClass();
+  });
+}
 
 /* V110 - Nomi competizione da JSON statico come fonte primaria. */
 function getCompetitionStaticDisplayNameV110(competition) {
@@ -8385,7 +8410,7 @@ function renderMatchRowsPreserveOrderV103(matches, emptyText = 'Nessuna partita 
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${matches.map((match) => `
@@ -8393,7 +8418,7 @@ function renderMatchRowsPreserveOrderV103(matches, emptyText = 'Nessuna partita 
               <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, 'home')} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, 'away')}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || '-')}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join('')}
         </tbody>
       </table>
@@ -10008,14 +10033,14 @@ function renderMatchRowsNoStageV112(matches, emptyText = "Nessuna partita inseri
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${matches.map((match) => `
             <tr>
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${escapeHtml(formatMatchResult(match))}</td>
+              <td data-label="Ris." class="number">${escapeHtml(formatMatchResult(match))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -10580,7 +10605,7 @@ function renderMatchRowsResultV114(matches, emptyText = "Nessuna partita inserit
     <div class="table-wrap match-table-wrap">
       <table>
         <thead>
-          <tr>${showStage ? "<th>Fase</th>" : ""}<th>Partita</th><th>Data</th><th class="number">Risultato</th></tr>
+          <tr>${showStage ? "<th>Fase</th>" : ""}<th>Partita</th><th>Data</th><th class="number">Ris.</th></tr>
         </thead>
         <tbody>
           ${rows.map((match) => `
@@ -10588,7 +10613,7 @@ function renderMatchRowsResultV114(matches, emptyText = "Nessuna partita inserit
               ${showStage ? `<td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>` : ""}
               <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
               <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-              <td data-label="Risultato" class="number">${renderMatchResultHtmlV114(match)}</td>
+              <td data-label="Ris." class="number">${renderMatchResultHtmlV114(match)}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -10660,14 +10685,14 @@ renderDashboardCalendar = function renderDashboardCalendarV114(seasonId) {
       </summary>
       <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap">
         <table class="dashboard-calendar-table">
-          <thead><tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Risultato</th></tr></thead>
+          <thead><tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr></thead>
           <tbody>
             ${group.matches.map((match) => `
               <tr>
                 <td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td>
                 <td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td>
                 <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                <td data-label="Risultato" class="number">${renderMatchResultHtmlV114(match)}</td>
+                <td data-label="Ris." class="number">${renderMatchResultHtmlV114(match)}</td>
               </tr>`).join("")}
           </tbody>
         </table>
@@ -11564,8 +11589,8 @@ restoreCompetitionMatchV116 = async function restoreCompetitionMatchV117(matchId
 
 
 /* V119 - Fantamercato, trattative squadra e badge uniformi. */
-if (!COLLECTIONS.includes("transferListings")) COLLECTIONS.push("transferListings");
-if (!COLLECTIONS.includes("transferNegotiations")) COLLECTIONS.push("transferNegotiations");
+// V168: transfer market collections are loaded with targeted queries in loadTransferMarketCollectionsV133.
+// Do not add them to COLLECTIONS, otherwise admin full-load reads the entire collections too.
 
 state.transferMarketLoadedV119 = false;
 state.transferMarketLoadingV119 = false;
@@ -12372,7 +12397,7 @@ loadTransferMarketCollectionsV119 = async function loadTransferMarketCollections
 };
 
 
-ensureTransferMarketDataV119();
+// V170: fantamercato lazy; non caricare le raccolte mercato al bootstrap pubblico.
 
 /* V125 - Loghi robusti nelle competizioni statiche e nomi squadra con fallback logo.
    Helper puri spostati in assets/js/domain/team-logos.js in V127. */
@@ -12486,3 +12511,3227 @@ rejectPendingUserV34 = async function rejectPendingUserV138(uid) {
     setError?.(`Non riesco a eliminare la richiesta utente. ${error?.message || error}`);
   }
 };
+
+/* V140 - Mobile Home a blocchi. Desktop invariato: il rendering e visibile solo via CSS mobile. */
+function getMobileHomeActiveListingsCountV140(seasonId) {
+  if (typeof getActiveTransferListingsV119 === "function") return getActiveTransferListingsV119(seasonId).length;
+  return (state.raw?.transferListings || []).filter((listing) => (
+    (!seasonId || listing.seasonId === seasonId)
+    && String(listing.status || "ACTIVE").toUpperCase() === "ACTIVE"
+  )).length;
+}
+
+function getMobileHomePendingNegotiationsCountV140() {
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  return (state.raw?.transferNegotiations || []).filter((item) => {
+    if (String(item.status || "").toUpperCase() !== "PENDING") return false;
+    if (!currentTeamId) return state.isAdmin;
+    return item.fromSeasonTeamId === currentTeamId || item.toSeasonTeamId === currentTeamId;
+  }).length;
+}
+
+function getMobileHomeNextMatchV140(seasonId) {
+  const competitions = typeof getSeasonCompetitionsForPublicDisplayV52 === "function"
+    ? getSeasonCompetitionsForPublicDisplayV52(seasonId)
+    : (state.raw?.competitions || []).filter((competition) => competition.seasonId === seasonId);
+
+  for (const competition of competitions) {
+    const matches = (typeof isRankingCompetition === "function" && isRankingCompetition(competition))
+      ? (typeof getNextChampionshipMatches === "function" ? getNextChampionshipMatches(competition) : [])
+      : (typeof getCupScheduleMatches === "function" ? getCupScheduleMatches(competition) : []);
+    if (matches?.length) {
+      const sorted = typeof sortMatchesForDisplay === "function" ? sortMatchesForDisplay(matches) : matches;
+      return { competition, match: sorted[sorted.length - 1] || sorted[0] };
+    }
+  }
+  return { competition: null, match: null };
+}
+
+function getMobileHomeMatchTextV140(match) {
+  if (!match) return "Nessuna partita programmata";
+  const home = getSeasonTeamDisplayName(match.homeSeasonTeamId) || match.homeTeamName || "Casa";
+  const away = getSeasonTeamDisplayName(match.awaySeasonTeamId) || match.awayTeamName || "Trasferta";
+  return `${home} - ${away}`;
+}
+
+function getMobileHomeMatchMetaV140(match) {
+  if (!match) return "";
+  const date = typeof formatDashboardMatchDateLabelV136 === "function" ? formatDashboardMatchDateLabelV136(match) : (match.matchDate || match.date || "");
+  const serieA = typeof formatDashboardSerieALabelV136 === "function" ? formatDashboardSerieALabelV136(match) : "";
+  return [date, serieA].filter(Boolean).join(" · ");
+}
+
+function getMobileHomeLatestNewsV140() {
+  if (typeof getVisibleNewsForSeasonV79 === "function") return getVisibleNewsForSeasonV79(1)[0] || null;
+  const seasonId = getCurrentSeasonId();
+  return (state.raw?.news || []).filter((item) => !item.seasonId || item.seasonId === seasonId)[0] || null;
+}
+
+function renderMobileHomeActionV140(label, page, extraClass = "") {
+  return `<button class="button button-secondary button-small mobile-home-action ${escapeHtml(extraClass)}" type="button" data-v42-page-link="${escapeHtml(page)}">${escapeHtml(label)}</button>`;
+}
+
+function renderMobileHomeCardV140({ icon, kicker, title, description, value, primary = false, actions = [] }) {
+  return `
+    <article class="mobile-home-card ${primary ? "is-primary" : ""}">
+      <span class="mobile-home-icon" aria-hidden="true">${icon}</span>
+      <div class="mobile-home-content">
+        <span class="mobile-home-kicker">${escapeHtml(kicker)}</span>
+        <h3>${escapeHtml(title)}</h3>
+        ${value ? `<strong class="mobile-home-value">${escapeHtml(value)}</strong>` : ""}
+        <p>${escapeHtml(description)}</p>
+      </div>
+      ${actions.length ? `<div class="mobile-home-action-row">${actions.join("")}</div>` : ""}
+    </article>`;
+}
+
+function renderMobileBlockDashboardV140() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target) return;
+
+  const seasonId = getCurrentSeasonId();
+  const activeCompetitions = (typeof getSeasonCompetitionsForPublicDisplayV52 === "function" ? getSeasonCompetitionsForPublicDisplayV52(seasonId) : [])
+    .filter((competition) => String(competition.status || "").toUpperCase() === "ATTIVA");
+  const { competition: nextCompetition, match: nextMatch } = getMobileHomeNextMatchV140(seasonId);
+  const latestNews = getMobileHomeLatestNewsV140();
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  const currentTeamName = currentTeamId ? getSeasonTeamDisplayName(currentTeamId) : "Accedi come presidente";
+  const rosterCount = currentTeamId && typeof getRosterCountV119 === "function" ? getRosterCountV119(currentTeamId) : 0;
+  const fmBalance = currentTeamId && typeof getTeamFmBalance === "function" ? getTeamFmBalance(currentTeamId) : null;
+  const alerts = document.getElementById("metricAlerts")?.textContent?.trim() || "0";
+  const alertReason = document.getElementById("metricAlertsReason")?.textContent?.trim() || "Nessun alert.";
+  const listingsCount = getMobileHomeActiveListingsCountV140(seasonId);
+  const negotiationsCount = getMobileHomePendingNegotiationsCountV140();
+  const matchMeta = getMobileHomeMatchMetaV140(nextMatch);
+  const matchValue = nextCompetition
+    ? `${getCompetitionPublicDisplayNameV110?.(nextCompetition) || getCompetitionDisplayNameV111?.(nextCompetition) || nextCompetition.name || "Competizione"}${matchMeta ? ` · ${matchMeta}` : ""}`
+    : "Calendario aggiornato";
+
+  target.innerHTML = [
+    renderMobileHomeCardV140({
+      icon: "⚠️",
+      kicker: "Alert",
+      title: `${alerts} da controllare`,
+      value: alertReason.replace(/^Motivo:\s*/i, ""),
+      description: "Stato rapido della stagione e delle competizioni attive.",
+      primary: Number(alerts) > 0,
+      actions: [renderMobileHomeActionV140("Vai alla dashboard", "dashboard")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🏆",
+      kicker: "Competizioni",
+      title: "Prossime partite",
+      value: getMobileHomeMatchTextV140(nextMatch),
+      description: activeCompetitions.length ? `${activeCompetitions.length} competizioni attive nella stagione.` : "Consulta calendari, classifiche e risultati.",
+      primary: true,
+      actions: [renderMobileHomeActionV140("Apri competizioni", "competitions")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🔁",
+      kicker: "Fantamercato",
+      title: "Mercato e trattative",
+      value: `${listingsCount} trasferibili · ${negotiationsCount} trattative aperte`,
+      description: "Guarda i giocatori sul mercato e invia una proposta.",
+      actions: [renderMobileHomeActionV140("Vai al mercato", "fantamercato"), renderMobileHomeActionV140("Trattative", "teamarea")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "👥",
+      kicker: "Area squadra",
+      title: currentTeamName,
+      value: currentTeamId ? `${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}` : "Login presidente richiesto",
+      description: currentTeamId ? "Gestisci rosa, comunicati, proposte e giocatori trasferibili." : "Accedi per usare trattative e funzioni presidente.",
+      actions: [renderMobileHomeActionV140(currentTeamId ? "Apri area squadra" : "Accedi", currentTeamId ? "teamarea" : "dashboard")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "📋",
+      kicker: "Listone",
+      title: "Cerca giocatori",
+      value: "Quotazioni, ruoli e stato",
+      description: "Apri il listone per consultare rapidamente i giocatori.",
+      actions: [renderMobileHomeActionV140("Apri listone", "listone")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "📰",
+      kicker: "Comunicati",
+      title: latestNews?.title || "Ultime news",
+      value: latestNews ? (typeof formatNewsDateTimeV79 === "function" ? formatNewsDateTimeV79(getNewsRawDateValueV79(latestNews)) : "") : "Nessun comunicato recente",
+      description: "Leggi comunicati ufficiali e aggiornamenti della lega.",
+      actions: [renderMobileHomeActionV140("Leggi comunicati", "news")]
+    })
+  ].join("");
+}
+
+const renderDashboardBeforeV140 = renderDashboard;
+renderDashboard = function renderDashboardV140() {
+  const result = renderDashboardBeforeV140();
+  renderMobileBlockDashboardV140();
+  return result;
+};
+
+const loadTransferMarketCollectionsBeforeV140 = loadTransferMarketCollectionsV119;
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV140() {
+  const result = await loadTransferMarketCollectionsBeforeV140();
+  renderMobileBlockDashboardV140();
+  return result;
+};
+
+/* V141 - Mobile UI unificata: bottom navigation e Fantamercato a card. Desktop invariato via CSS. */
+function updateMobileNavStateV141() {
+  const directMobilePages = new Set(["dashboard", "teamarea", "fantamercato", "competitions"]);
+  const moreButton = document.getElementById("mobileMoreBtn");
+  moreButton?.classList.toggle("active", !directMobilePages.has(state.currentPage));
+}
+updateMobileNavState = updateMobileNavStateV141;
+
+function ensureTransferMarketMobileCardsV141() {
+  const panel = document.querySelector('.transfer-market-panel');
+  const tableWrap = panel?.querySelector('.transfer-market-table-wrap');
+  if (!panel || !tableWrap) return null;
+  let target = document.getElementById('transferMarketMobileCards');
+  if (!target) {
+    target = document.createElement('div');
+    target.id = 'transferMarketMobileCards';
+    target.className = 'mobile-transfer-card-list';
+    tableWrap.insertAdjacentElement('afterend', target);
+  }
+  return target;
+}
+
+function getTransferMarketFilteredRowsV141() {
+  const seasonId = getCurrentSeasonId();
+  const listings = typeof getActiveTransferListingsV119 === 'function'
+    ? getActiveTransferListingsV119(seasonId)
+    : (state.raw?.transferListings || []).filter((listing) => (
+      (!seasonId || listing.seasonId === seasonId)
+      && String(listing.status || 'ACTIVE').toUpperCase() === 'ACTIVE'
+    ));
+  const teamFilter = document.getElementById('transferMarketTeamFilter');
+  const searchInput = document.getElementById('transferMarketSearch');
+  const selectedTeam = state.transferMarketTeamFilterV119 || teamFilter?.value || 'all';
+  const search = normalizeKey(state.transferMarketSearchV119 || searchInput?.value || '');
+  return listings
+    .filter((listing) => selectedTeam === 'all' || listing.seasonTeamId === selectedTeam)
+    .filter((listing) => {
+      if (!search) return true;
+      return normalizeKey([
+        listing.playerName,
+        listing.teamName,
+        getSeasonTeamDisplayName(listing.seasonTeamId),
+        listing.realTeam,
+        listing.rosterRole,
+        listing.conditions
+      ].join(' ')).includes(search);
+    })
+    .sort((a, b) => String(a.playerName || '').localeCompare(String(b.playerName || ''), 'it', { sensitivity: 'base' }));
+}
+
+function renderTransferMarketMobileCardsV141() {
+  const target = ensureTransferMarketMobileCardsV141();
+  if (!target) return;
+  if (!state.transferMarketLoadedV119 && state.transferMarketLoadingV119) {
+    target.innerHTML = '<p class="muted center">Caricamento fantamercato...</p>';
+    return;
+  }
+  const rows = getTransferMarketFilteredRowsV141();
+  if (!rows.length) {
+    target.innerHTML = '<p class="muted center">Nessun giocatore trasferibile per questa stagione.</p>';
+    return;
+  }
+  target.innerHTML = rows.map((listing) => {
+    const own = typeof isOwnSeasonTeamV119 === 'function' && isOwnSeasonTeamV119(listing.seasonTeamId);
+    const actionHtml = own
+      ? `<button class="button button-secondary button-small" type="button" data-transfer-edit-listing="${escapeHtml(listing.id)}">Modifica</button><button class="button button-danger button-small" type="button" data-transfer-remove-listing="${escapeHtml(listing.id)}">Togli</button>`
+      : `<button class="button button-primary button-small" type="button" data-transfer-propose-listing="${escapeHtml(listing.id)}">Fai proposta</button>`;
+    return `
+      <article class="mobile-transfer-card">
+        <div class="mobile-transfer-card-header">
+          <div class="mobile-transfer-card-title">
+            <h3>${escapeHtml(listing.playerName || '-')}</h3>
+            <div>${renderSeasonTeamNameWithLogo(listing.seasonTeamId, { strong: false })}</div>
+          </div>
+          <span class="status status-transfermarket">TRASF</span>
+        </div>
+        <div class="mobile-transfer-card-meta">
+          <span>${escapeHtml(listing.rosterRole || '-')}</span>
+          <span>${escapeHtml(listing.realTeam || '-')}</span>
+          <span>Costo ${formatListoneNumber(listing.cost)}</span>
+        </div>
+        <div class="mobile-transfer-card-conditions"><strong>Cerca:</strong> ${escapeHtml(listing.conditions || 'Condizioni non specificate.')}</div>
+        <div class="mobile-transfer-card-actions">${actionHtml}</div>
+      </article>`;
+  }).join('');
+}
+
+const renderTransferMarketPageBeforeV141 = renderTransferMarketPageV119;
+renderTransferMarketPageV119 = function renderTransferMarketPageV141() {
+  const result = renderTransferMarketPageBeforeV141();
+  renderTransferMarketMobileCardsV141();
+  return result;
+};
+
+const renderAllBeforeV141 = renderAll;
+renderAll = function renderAllV141() {
+  const result = renderAllBeforeV141();
+  updateMobileNavStateV141();
+  renderTransferMarketMobileCardsV141();
+  return result;
+};
+
+
+/* V142 - Mobile UI role-aware: admin senza squadra e accesso a tutte le rose. */
+function getMobileCurrentSeasonTeamsCountV142(seasonId) {
+  return (state.raw?.seasonTeams || []).filter((team) => !seasonId || team.seasonId === seasonId).length;
+}
+
+function getMobileRoleDestinationV142() {
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  if (currentTeamId) {
+    return { page: "teamarea", icon: "👥", label: "Squadra", title: "Area squadra" };
+  }
+  if (state.isAdmin) {
+    return { page: "admin", icon: "🛠️", label: "Admin", title: "Admin" };
+  }
+  return { page: "clubs", icon: "👥", label: "Rose", title: "Rose" };
+}
+
+function syncMobileRoleNavigationV142() {
+  const destination = getMobileRoleDestinationV142();
+  const nav = document.querySelector(".mobile-bottom-nav-v141");
+  const roleLink = nav?.querySelectorAll(".mobile-bottom-link[data-page-link]")?.[1];
+  if (roleLink) {
+    roleLink.href = `#${destination.page}`;
+    roleLink.dataset.pageLink = destination.page;
+    roleLink.innerHTML = `<span class="mobile-nav-icon">${destination.icon}</span><span>${escapeHtml(destination.label)}</span>`;
+    roleLink.classList.toggle("active", state.currentPage === destination.page);
+  }
+
+  const roseLink = document.querySelector('#mobileMoreSheet [data-page-link="clubs"]');
+  if (roseLink) roseLink.textContent = "Tutte le rose";
+
+  updateMobileNavStateV142();
+}
+
+function updateMobileNavStateV142() {
+  const bottomPages = new Set(Array.from(document.querySelectorAll(".mobile-bottom-nav-v141 [data-page-link]")).map((link) => link.dataset.pageLink));
+  const moreButton = document.getElementById("mobileMoreBtn");
+  moreButton?.classList.toggle("active", !bottomPages.has(state.currentPage));
+}
+updateMobileNavState = updateMobileNavStateV142;
+
+function renderMobileBlockDashboardV142() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target) return;
+
+  const seasonId = getCurrentSeasonId();
+  const activeCompetitions = (typeof getSeasonCompetitionsForPublicDisplayV52 === "function" ? getSeasonCompetitionsForPublicDisplayV52(seasonId) : [])
+    .filter((competition) => String(competition.status || "").toUpperCase() === "ATTIVA");
+  const { competition: nextCompetition, match: nextMatch } = getMobileHomeNextMatchV140(seasonId);
+  const latestNews = getMobileHomeLatestNewsV140();
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === "function" ? getApprovedSeasonTeamIdV119() : "";
+  const currentTeamName = currentTeamId ? getSeasonTeamDisplayName(currentTeamId) : "";
+  const rosterCount = currentTeamId && typeof getRosterCountV119 === "function" ? getRosterCountV119(currentTeamId) : 0;
+  const fmBalance = currentTeamId && typeof getTeamFmBalance === "function" ? getTeamFmBalance(currentTeamId) : null;
+  const alerts = document.getElementById("metricAlerts")?.textContent?.trim() || "0";
+  const alertReason = document.getElementById("metricAlertsReason")?.textContent?.trim() || "Nessun alert.";
+  const listingsCount = getMobileHomeActiveListingsCountV140(seasonId);
+  const negotiationsCount = getMobileHomePendingNegotiationsCountV140();
+  const matchMeta = getMobileHomeMatchMetaV140(nextMatch);
+  const teamCount = getMobileCurrentSeasonTeamsCountV142(seasonId);
+  const matchValue = nextCompetition
+    ? `${getCompetitionPublicDisplayNameV110?.(nextCompetition) || getCompetitionDisplayNameV111?.(nextCompetition) || nextCompetition.name || "Competizione"}${matchMeta ? ` · ${matchMeta}` : ""}`
+    : "Calendario aggiornato";
+
+  const marketActions = [renderMobileHomeActionV140("Vai al mercato", "fantamercato")];
+  if (currentTeamId) marketActions.push(renderMobileHomeActionV140("Trattative", "teamarea"));
+  else if (state.isAdmin) marketActions.push(renderMobileHomeActionV140("Admin", "admin"));
+
+  const roleCard = currentTeamId
+    ? renderMobileHomeCardV140({
+        icon: "👥",
+        kicker: "Area squadra",
+        title: currentTeamName,
+        value: `${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}`,
+        description: "Gestisci rosa, comunicati, proposte e giocatori trasferibili.",
+        actions: [renderMobileHomeActionV140("Apri area squadra", "teamarea"), renderMobileHomeActionV140("Tutte le rose", "clubs")]
+      })
+    : state.isAdmin
+      ? renderMobileHomeCardV140({
+          icon: "🛠️",
+          kicker: "Admin",
+          title: "Pannello amministrazione",
+          value: "Gestione lega",
+          description: "L'admin non è legato a una squadra: usa il pannello Admin per gestire utenti, dati e snapshot.",
+          actions: [renderMobileHomeActionV140("Apri Admin", "admin"), renderMobileHomeActionV140("Tutte le rose", "clubs")]
+        })
+      : renderMobileHomeCardV140({
+          icon: "👥",
+          kicker: "Rose",
+          title: "Rose della lega",
+          value: teamCount ? `${teamCount} squadre` : "Stagione corrente",
+          description: "Consulta le rose e le schede delle squadre della stagione.",
+          actions: [renderMobileHomeActionV140("Vedi tutte le rose", "clubs")]
+        });
+
+  const cards = [
+    renderMobileHomeCardV140({
+      icon: "⚠️",
+      kicker: "Alert",
+      title: `${alerts} da controllare`,
+      value: alertReason.replace(/^Motivo:\s*/i, ""),
+      description: "Stato rapido della stagione e delle competizioni attive.",
+      primary: Number(alerts) > 0,
+      actions: [renderMobileHomeActionV140("Vai alla dashboard", "dashboard")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🏆",
+      kicker: "Competizioni",
+      title: "Prossime partite",
+      value: getMobileHomeMatchTextV140(nextMatch),
+      description: activeCompetitions.length ? `${activeCompetitions.length} competizioni attive nella stagione.` : "Consulta calendari, classifiche e risultati.",
+      primary: true,
+      actions: [renderMobileHomeActionV140("Apri competizioni", "competitions")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "🔁",
+      kicker: "Fantamercato",
+      title: "Mercato e trattative",
+      value: `${listingsCount} trasferibili · ${negotiationsCount} trattative aperte`,
+      description: currentTeamId ? "Guarda i giocatori sul mercato e invia una proposta." : "Consulta i giocatori trasferibili; le proposte sono riservate ai presidenti.",
+      actions: marketActions
+    }),
+    roleCard
+  ];
+
+  if (currentTeamId || state.isAdmin) {
+    cards.push(renderMobileHomeCardV140({
+      icon: "👥",
+      kicker: "Rose",
+      title: "Tutte le rose",
+      value: teamCount ? `${teamCount} squadre` : "Stagione corrente",
+      description: "Ogni presidente può consultare tutte le rose della lega, non solo la propria.",
+      actions: [renderMobileHomeActionV140("Apri rose", "clubs")]
+    }));
+  }
+
+  cards.push(
+    renderMobileHomeCardV140({
+      icon: "📋",
+      kicker: "Listone",
+      title: "Cerca giocatori",
+      value: "Quotazioni, ruoli e stato",
+      description: "Apri il listone per consultare rapidamente i giocatori.",
+      actions: [renderMobileHomeActionV140("Apri listone", "listone")]
+    }),
+    renderMobileHomeCardV140({
+      icon: "📰",
+      kicker: "Comunicati",
+      title: latestNews?.title || "Ultime news",
+      value: latestNews ? (typeof formatNewsDateTimeV79 === "function" ? formatNewsDateTimeV79(getNewsRawDateValueV79(latestNews)) : "") : "Nessun comunicato recente",
+      description: "Leggi comunicati ufficiali e aggiornamenti della lega.",
+      actions: [renderMobileHomeActionV140("Leggi comunicati", "news")]
+    })
+  );
+
+  target.innerHTML = cards.join("");
+  syncMobileRoleNavigationV142();
+}
+renderMobileBlockDashboardV140 = renderMobileBlockDashboardV142;
+
+const renderAllBeforeV142 = renderAll;
+renderAll = function renderAllV142() {
+  const result = renderAllBeforeV142();
+  syncMobileRoleNavigationV142();
+  renderMobileBlockDashboardV142();
+  return result;
+};
+
+
+/* V144 - Area squadra mobile operativa: hub azioni rapide e ritocchi solo mobile. */
+function renderMobileTeamAreaHubV144(approved) {
+  if (!approved?.seasonTeamId) return "";
+  const seasonTeam = typeof getSeasonTeamById === "function" ? getSeasonTeamById(approved.seasonTeamId) : null;
+  const teamName = getSeasonTeamDisplayName(approved.seasonTeamId) || approved.teamName || "La mia squadra";
+  const presidentNames = typeof getSeasonTeamPresidentNames === "function" ? getSeasonTeamPresidentNames(seasonTeam) : (approved.presidentName || approved.displayName || "-");
+  const rosterCount = typeof getRosterCountV119 === "function" ? getRosterCountV119(approved.seasonTeamId) : 0;
+  const fmBalance = typeof getTeamFmBalance === "function" ? getTeamFmBalance(approved.seasonTeamId) : null;
+  const pendingSent = (state.raw?.transferNegotiations || []).filter((item) => item.fromSeasonTeamId === approved.seasonTeamId && String(item.status || "PENDING").toUpperCase() === "PENDING").length;
+  const pendingReceived = (state.raw?.transferNegotiations || []).filter((item) => item.toSeasonTeamId === approved.seasonTeamId && String(item.status || "PENDING").toUpperCase() === "PENDING").length;
+  const listings = typeof getActiveTransferListingsV119 === "function" ? getActiveTransferListingsV119(getCurrentSeasonId()).filter((item) => item.seasonTeamId === approved.seasonTeamId).length : 0;
+
+  return `
+    <section id="mobileTeamAreaHubV144" class="mobile-teamarea-hub-v144" aria-label="Azioni rapide area squadra">
+      <div class="mobile-teamarea-hero-v144 mobile-teamarea-hero-v167">
+        <span class="mobile-teamarea-kicker-v144">Area squadra</span>
+        <h3>${escapeHtml(teamName)}</h3>
+        <p class="mobile-teamarea-president-v167">${escapeHtml(presidentNames || "-")}</p>
+        <p>${escapeHtml(`${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}`)}</p>
+        <button class="button button-secondary button-small mobile-teamarea-open-profile-v167" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}">Apri pagina squadra</button>
+      </div>
+      <div class="mobile-teamarea-stats-v144">
+        <span><strong>${escapeHtml(String(listings))}</strong><small>in vendita</small></span>
+        <span><strong>${escapeHtml(String(pendingSent))}</strong><small>inviate</small></span>
+        <span><strong>${escapeHtml(String(pendingReceived))}</strong><small>ricevute</small></span>
+      </div>
+      <div class="mobile-teamarea-actions-v144">
+        <a class="mobile-teamarea-action-v144" href="#clubs" data-page-link="clubs"><span>👥</span><strong>Tutte le rose</strong><small>lega</small></a>
+        <a class="mobile-teamarea-action-v144" href="#fantamercato" data-page-link="fantamercato"><span>🔁</span><strong>Mercato</strong><small>trasferibili</small></a>
+        <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll=".trade-proposal-panel"><span>✍️</span><strong>Proposta</strong><small>nuova trattativa</small></button>
+        <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll=".trade-list-panel"><span>🤝</span><strong>Trattative</strong><small>storico</small></button>
+        <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll="#teamNewsRequestForm"><span>📰</span><strong>Comunicato</strong><small>squadra</small></button>
+      </div>
+    </section>`;
+}
+
+function enhanceTeamAreaMobileV144() {
+  const target = document.getElementById("teamAreaBody");
+  if (!target) return;
+  const old = document.getElementById("mobileTeamAreaHubV144");
+  if (old) old.remove();
+  const approved = getApprovedTeamUser?.();
+  if (!state.user || !approved?.seasonTeamId) return;
+  const summary = target.querySelector(".team-area-summary-panel");
+  if (!summary) return;
+  summary.insertAdjacentHTML("afterend", renderMobileTeamAreaHubV144(approved));
+}
+
+const renderUserAreaBeforeV144 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV144() {
+  const result = renderUserAreaBeforeV144?.();
+  enhanceTeamAreaMobileV144();
+  return result;
+};
+
+const renderAllBeforeV144 = renderAll;
+renderAll = function renderAllV144() {
+  const result = renderAllBeforeV144();
+  enhanceTeamAreaMobileV144();
+  return result;
+};
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest?.("[data-mobile-teamarea-scroll]");
+  if (!button) return;
+  event.preventDefault();
+  const selector = button.dataset.mobileTeamareaScroll;
+  const node = selector ? document.querySelector(selector) : null;
+  if (!node) return;
+  node.scrollIntoView({ behavior: "smooth", block: "start" });
+}, true);
+
+/* V150 - Mobile Coppe: layout partite compatto nella sezione Competizioni.
+   Desktop invariato: la lista mobile viene nascosta via CSS, mentre la tabella esistente resta visibile. */
+function isPlayedMatchV150(match) {
+  return String(match?.status || "").toUpperCase() === "GIOCATA" || hasMatchGoalsV114(match);
+}
+
+function formatMobileCupMatchMetaV150(match) {
+  if (isPlayedMatchV150(match)) return renderMatchResultHtmlV114(match);
+  const date = String(match?.matchDate || match?.date || "").trim();
+  return escapeHtml(date || "Data da definire");
+}
+
+function renderMobileCupMatchCardsV150(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  if (!rows.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="mobile-cup-match-list-v150" aria-label="Partite mobile">
+      ${rows.map((match) => `
+        <div class="mobile-cup-match-row-v150 ${isPlayedMatchV150(match) ? "is-played" : "is-scheduled"}">
+          <span class="mobile-cup-match-teams-v150">
+            ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+            <span class="match-separator">-</span>
+            ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+          </span>
+          <span class="mobile-cup-match-meta-v150">${formatMobileCupMatchMetaV150(match)}</span>
+        </div>`).join("")}
+    </div>`;
+}
+
+function renderCompetitionMatchRowsPublicV150(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  return `
+    <div class="competition-match-responsive-pack-v150">
+      ${renderMobileCupMatchCardsV150(rows, emptyText)}
+      ${renderMatchRowsNoStageV112(rows, emptyText)}
+    </div>`;
+}
+
+renderCompetitionMatchesPublic = function renderCompetitionMatchesPublicV150(competition) {
+  const matches = getCompetitionMatches(competition.id);
+  if (!matches.length) return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+  const groups = groupCompetitionMatchesByStageV113(matches, competition);
+  return `
+    <div class="competition-matches-public competition-match-groups competition-match-groups-v150">
+      ${groups.map((group) => {
+        const rows = sortMatchesInsideStageV111(group.matches);
+        return `
+          <details class="detail-section compact-detail-section competition-match-stage-group competition-match-stage-details" open>
+            <summary class="competition-match-stage-summary">
+              <h4>${escapeHtml(group.label)}</h4>
+              <span class="button button-secondary button-small competition-stage-toggle-label" aria-hidden="true">Riduci/Espandi</span>
+            </summary>
+            ${renderCompetitionMatchRowsPublicV150(rows, "Nessuna partita inserita.")}
+          </details>`;
+      }).join("")}
+    </div>`;
+};
+
+/* V151 - Hotfix mobile: dashboard senza alert, prossima partita robusta e Coppe risultato/data. */
+function getMatchGoalsPairV151(match) {
+  if (!match) return null;
+  const homeKeys = ["homeGoals", "homeGoal", "homeResult", "homeGoalsFinal", "homeFinalGoals", "homeScoreGoals"];
+  const awayKeys = ["awayGoals", "awayGoal", "awayResult", "awayGoalsFinal", "awayFinalGoals", "awayScoreGoals"];
+  const readValue = (keys) => {
+    for (const key of keys) {
+      const value = match[key];
+      if (value !== undefined && value !== null && value !== "") return value;
+    }
+    return null;
+  };
+  const home = readValue(homeKeys);
+  const away = readValue(awayKeys);
+  return home !== null && away !== null ? { home, away } : null;
+}
+
+function getMatchDateRawV151(match) {
+  if (!match) return "";
+  return String(match.matchDate || match.date || match.scheduledDate || match.playDate || match.kickoffDate || "").trim();
+}
+
+function parseMatchDateMsV151(match) {
+  const raw = getMatchDateRawV151(match);
+  if (!raw) return Number.POSITIVE_INFINITY;
+  const normalized = raw.includes("/")
+    ? raw.replace(/^(\d{1,2})\/(\d{1,2})\/(\d{4}).*$/, "$3-$2-$1")
+    : raw;
+  const time = Date.parse(normalized);
+  return Number.isFinite(time) ? time : Number.POSITIVE_INFINITY;
+}
+
+function getMatchdaySortValueV151(match) {
+  const values = [
+    typeof getMatchSerieAMatchday === "function" ? getMatchSerieAMatchday(match) : null,
+    match?.serieAMatchday,
+    match?.serieAMatchDay,
+    match?.leagueMatchday,
+    match?.matchday,
+    match?.giornata
+  ];
+  for (const value of values) {
+    const number = Number(value);
+    if (Number.isFinite(number) && number > 0) return number;
+  }
+  return Number.POSITIVE_INFINITY;
+}
+
+function isPlayedMatchV151(match) {
+  const status = String(match?.status || match?.matchStatus || "").trim().toUpperCase();
+  const playedStatuses = new Set(["GIOCATA", "PLAYED", "FINISHED", "COMPLETED", "CONCLUSA", "DISPUTATA"]);
+  if (playedStatuses.has(status)) return true;
+  if (match?.played === true || match?.isPlayed === true || match?.finished === true) return true;
+  return !!getMatchGoalsPairV151(match);
+}
+
+function isCancelledMatchV151(match) {
+  const status = String(match?.status || match?.matchStatus || "").trim().toUpperCase();
+  return ["CANCELLED", "CANCELED", "ANNULLATA", "RINVIATA", "DELETED"].includes(status) || match?.deleted === true;
+}
+
+function getCompetitionDisplayForMobileHomeV151(competition) {
+  return getCompetitionPublicDisplayNameV110?.(competition)
+    || getCompetitionDisplayNameV111?.(competition)
+    || competition?.name
+    || competition?.competitionName
+    || "Competizione";
+}
+
+function getMobileHomeNextMatchV151(seasonId) {
+  const competitions = typeof getSeasonCompetitionsForPublicDisplayV52 === "function"
+    ? getSeasonCompetitionsForPublicDisplayV52(seasonId)
+    : (state.raw?.competitions || []).filter((competition) => competition.seasonId === seasonId);
+  const candidates = [];
+  competitions.forEach((competition, competitionIndex) => {
+    const status = String(competition?.status || "").toUpperCase();
+    if (["NON_DISPUTATA", "ANNULLATA"].includes(status)) return;
+    let matches = [];
+    if (typeof getCompetitionMatches === "function") {
+      matches = getCompetitionMatches(competition.id || competition.competitionId || competition.uid) || [];
+    }
+    if (!matches.length && typeof isRankingCompetition === "function" && isRankingCompetition(competition) && typeof getNextChampionshipMatches === "function") {
+      matches = getNextChampionshipMatches(competition) || [];
+    }
+    if (!matches.length && typeof getCupScheduleMatches === "function") {
+      matches = getCupScheduleMatches(competition) || [];
+    }
+    matches
+      .filter((match) => match && !isCancelledMatchV151(match) && !isPlayedMatchV151(match))
+      .forEach((match) => {
+        candidates.push({
+          competition,
+          match,
+          competitionIndex,
+          dateMs: parseMatchDateMsV151(match),
+          matchday: getMatchdaySortValueV151(match),
+          id: String(match.id || match.uid || "")
+        });
+      });
+  });
+  if (!candidates.length) return { competition: null, match: null };
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const future = candidates.filter((item) => Number.isFinite(item.dateMs) && item.dateMs >= today.getTime());
+  const pool = future.length ? future : candidates;
+  pool.sort((a, b) => {
+    const dateDiff = a.dateMs - b.dateMs;
+    if (Number.isFinite(dateDiff) && dateDiff !== 0) return dateDiff;
+    const matchdayDiff = a.matchday - b.matchday;
+    if (Number.isFinite(matchdayDiff) && matchdayDiff !== 0) return matchdayDiff;
+    if (a.competitionIndex !== b.competitionIndex) return a.competitionIndex - b.competitionIndex;
+    return a.id.localeCompare(b.id);
+  });
+  const first = pool[0];
+  return { competition: first.competition, match: first.match };
+}
+
+getMobileHomeNextMatchV140 = getMobileHomeNextMatchV151;
+
+function formatMobileCupMatchMetaV151(match) {
+  if (isPlayedMatchV151(match)) {
+    const pair = getMatchGoalsPairV151(match);
+    if (pair) return `<strong class="match-result-goals">${escapeHtml(pair.home)}-${escapeHtml(pair.away)}</strong>`;
+    return `<strong class="match-result-goals">Giocata</strong>`;
+  }
+  const date = getMatchDateRawV151(match);
+  if (date) return escapeHtml(date);
+  const serieA = typeof formatDashboardSerieALabelV136 === "function" ? formatDashboardSerieALabelV136(match) : "";
+  return escapeHtml(serieA || "Data da definire");
+}
+
+isPlayedMatchV150 = isPlayedMatchV151;
+formatMobileCupMatchMetaV150 = formatMobileCupMatchMetaV151;
+
+function removeMobileAlertCardV151() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target) return;
+  target.querySelectorAll(".mobile-home-card").forEach((card) => {
+    const kicker = card.querySelector(".mobile-home-kicker")?.textContent?.trim().toLowerCase() || "";
+    if (kicker === "alert") card.remove();
+  });
+}
+
+const renderMobileBlockDashboardBeforeV151 = renderMobileBlockDashboardV140;
+renderMobileBlockDashboardV140 = function renderMobileBlockDashboardV151() {
+  const result = renderMobileBlockDashboardBeforeV151?.();
+  removeMobileAlertCardV151();
+  return result;
+};
+
+const renderAllBeforeV151 = renderAll;
+renderAll = function renderAllV151() {
+  const result = renderAllBeforeV151();
+  removeMobileAlertCardV151();
+  return result;
+};
+
+
+/* V152 - Hotfix mobile: Rose senza barra laterale riga e Coppe con risultato per partite giocate. */
+function getMatchResultTextV152(match) {
+  if (!match) return "";
+  const candidateKeys = ["result", "score", "finalResult", "matchResult", "goals", "risultato"];
+  for (const key of candidateKeys) {
+    const value = match[key];
+    if (value !== undefined && value !== null && String(value).trim()) {
+      const text = String(value).trim();
+      if (/\d+\s*[-–:]\s*\d+/.test(text)) return text.replace(/[–:]/g, "-").replace(/\s+/g, "");
+    }
+  }
+  const pair = typeof getMatchGoalsPairV151 === "function" ? getMatchGoalsPairV151(match) : null;
+  if (pair) return `${pair.home}-${pair.away}`;
+  const homeKeys = ["homeGoals", "homeGoal", "homeResult", "homeGoalsFinal", "homeFinalGoals", "homeScoreGoals", "home_score_goals", "goalsHome"];
+  const awayKeys = ["awayGoals", "awayGoal", "awayResult", "awayGoalsFinal", "awayFinalGoals", "awayScoreGoals", "away_score_goals", "goalsAway"];
+  const readValue = (keys) => {
+    for (const key of keys) {
+      const value = match[key];
+      if (value !== undefined && value !== null && String(value).trim() !== "") return String(value).trim();
+    }
+    return "";
+  };
+  const home = readValue(homeKeys);
+  const away = readValue(awayKeys);
+  return home && away ? `${home}-${away}` : "";
+}
+
+function isPlayedMatchV152(match) {
+  const status = String(match?.status || match?.matchStatus || match?.state || "").trim().toUpperCase();
+  const playedStatuses = new Set(["GIOCATA", "PLAYED", "FINISHED", "COMPLETED", "CONCLUSA", "DISPUTATA", "FINAL", "ENDED"]);
+  if (playedStatuses.has(status)) return true;
+  if (match?.played === true || match?.isPlayed === true || match?.finished === true || match?.completed === true) return true;
+  return Boolean(getMatchResultTextV152(match));
+}
+
+function formatMobileCupMatchMetaV152(match) {
+  if (isPlayedMatchV152(match)) {
+    const result = getMatchResultTextV152(match);
+    return `<strong class="match-result-goals">${escapeHtml(result || "Giocata")}</strong>`;
+  }
+  const date = typeof getMatchDateRawV151 === "function" ? getMatchDateRawV151(match) : String(match?.matchDate || match?.date || "").trim();
+  if (date) return escapeHtml(date);
+  const serieA = typeof formatDashboardSerieALabelV136 === "function" ? formatDashboardSerieALabelV136(match) : "";
+  return escapeHtml(serieA || "Data da definire");
+}
+
+isPlayedMatchV150 = isPlayedMatchV152;
+formatMobileCupMatchMetaV150 = formatMobileCupMatchMetaV152;
+
+/* V153 - Mobile Coppe: partite con squadre su due righe, data e risultato sempre visibili. */
+function formatMobileCupDateV153(match) {
+  const raw = typeof getMatchDateRawV151 === "function"
+    ? getMatchDateRawV151(match)
+    : String(match?.matchDate || match?.date || match?.scheduledDate || "").trim();
+  return raw || "Data da definire";
+}
+
+function formatMobileCupResultV153(match) {
+  const result = typeof getMatchResultTextV152 === "function" ? getMatchResultTextV152(match) : "";
+  if (result) return result;
+  const played = typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match);
+  return played ? "Risultato non inserito" : "Da disputare";
+}
+
+renderMobileCupMatchCardsV150 = function renderMobileCupMatchCardsV153(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  if (!rows.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="mobile-cup-match-list-v150 mobile-cup-match-list-v153" aria-label="Partite mobile">
+      ${rows.map((match) => {
+        const played = typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match);
+        const date = formatMobileCupDateV153(match);
+        const result = formatMobileCupResultV153(match);
+        return `
+          <div class="mobile-cup-match-row-v150 mobile-cup-match-row-v153 ${played ? "is-played" : "is-scheduled"}">
+            <div class="mobile-cup-match-teams-v150 mobile-cup-match-teams-v153">
+              <div class="mobile-cup-team-line-v153 mobile-cup-team-home-v153">
+                ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+              </div>
+              <div class="mobile-cup-team-line-v153 mobile-cup-team-away-v153">
+                ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+              </div>
+            </div>
+            <div class="mobile-cup-match-meta-v150 mobile-cup-match-meta-v153">
+              <span class="mobile-cup-date-v153">${escapeHtml(date)}</span>
+              <strong class="mobile-cup-result-v153 ${played ? "match-result-goals" : "is-pending"}">${escapeHtml(result)}</strong>
+            </div>
+          </div>`;
+      }).join("")}
+    </div>`;
+};
+
+
+/* V154 - Mobile Competizioni: tabella compatta Partita/Data/Risultato.
+   Vale sia nella sezione Competizioni sia come struttura riusabile per la pagina singola. */
+function formatMobileCupDateV154(match) {
+  const raw = typeof getMatchDateRawV151 === "function"
+    ? getMatchDateRawV151(match)
+    : String(match?.matchDate || match?.date || match?.scheduledDate || match?.playDate || "").trim();
+  return raw || "-";
+}
+
+function formatMobileCupResultV154(match) {
+  const result = typeof getMatchResultTextV152 === "function" ? getMatchResultTextV152(match) : "";
+  return result || "-";
+}
+
+renderMobileCupMatchCardsV150 = function renderMobileCupMatchTableV154(matches, emptyText = "Nessuna partita inserita.") {
+  const rows = Array.isArray(matches) ? matches : [];
+  if (!rows.length) return `<p class="muted">${escapeHtml(emptyText)}</p>`;
+  return `
+    <div class="mobile-cup-match-table-v154" role="table" aria-label="Partite mobile">
+      <div class="mobile-cup-match-head-v154" role="row">
+        <span role="columnheader">Partita</span>
+        <span role="columnheader">Data</span>
+        <span role="columnheader">Ris.</span>
+      </div>
+      ${rows.map((match) => {
+        const played = typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match);
+        return `
+          <div class="mobile-cup-match-row-v154 ${played ? "is-played" : "is-scheduled"}" role="row">
+            <div class="mobile-cup-match-cell-v154 mobile-cup-match-teams-cell-v154" role="cell" data-label="Partita">
+              <div class="mobile-cup-team-line-v154 mobile-cup-team-home-v154">
+                ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+              </div>
+              <div class="mobile-cup-team-line-v154 mobile-cup-team-away-v154">
+                ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+              </div>
+            </div>
+            <div class="mobile-cup-match-cell-v154 mobile-cup-date-cell-v154" role="cell" data-label="Data">${escapeHtml(formatMobileCupDateV154(match))}</div>
+            <div class="mobile-cup-match-cell-v154 mobile-cup-result-cell-v154 ${played ? "match-result-goals" : ""}" role="cell" data-label="Ris.">${escapeHtml(formatMobileCupResultV154(match))}</div>
+          </div>`;
+      }).join("")}
+    </div>`;
+};
+
+/* V155 - Mobile Competizioni: schermata a blocchi cliccabili, desktop invariato. */
+function isMobileCompetitionStatusActiveV155(competition) {
+  return String(competition?.status || "").trim().toUpperCase() === "ATTIVA";
+}
+
+function getCompetitionMatchesForMobileBlockV155(competition) {
+  if (!competition) return [];
+  if (typeof getCompetitionMatches === "function") {
+    const matches = getCompetitionMatches(competition.id) || [];
+    if (matches.length) return matches;
+  }
+  if (Array.isArray(competition.matches)) return competition.matches;
+  if (Array.isArray(competition.calendar)) return competition.calendar;
+  return [];
+}
+
+function getMobileCompetitionNextScheduledMatchV155(competition) {
+  const matches = getCompetitionMatchesForMobileBlockV155(competition)
+    .filter((match) => match && !(typeof isCancelledMatchV151 === "function" && isCancelledMatchV151(match)))
+    .filter((match) => !(typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match)));
+
+  if (!matches.length) return null;
+
+  return [...matches].sort((a, b) => {
+    const aDate = typeof parseMatchDateMsV151 === "function" ? parseMatchDateMsV151(a) : Date.parse(a?.matchDate || a?.date || "");
+    const bDate = typeof parseMatchDateMsV151 === "function" ? parseMatchDateMsV151(b) : Date.parse(b?.matchDate || b?.date || "");
+    const aFinite = Number.isFinite(aDate);
+    const bFinite = Number.isFinite(bDate);
+    if (aFinite && bFinite && aDate !== bDate) return aDate - bDate;
+    if (aFinite && !bFinite) return -1;
+    if (!aFinite && bFinite) return 1;
+
+    const aMatchday = typeof getMatchdaySortValueV151 === "function" ? getMatchdaySortValueV151(a) : Number(a?.leagueMatchday || a?.serieAMatchday || 9999);
+    const bMatchday = typeof getMatchdaySortValueV151 === "function" ? getMatchdaySortValueV151(b) : Number(b?.leagueMatchday || b?.serieAMatchday || 9999);
+    if (Number.isFinite(aMatchday) && Number.isFinite(bMatchday) && aMatchday !== bMatchday) return aMatchday - bMatchday;
+    return String(a?.id || "").localeCompare(String(b?.id || ""));
+  })[0] || null;
+}
+
+function getMobileCompetitionMatchDateV155(match) {
+  const raw = typeof getMatchDateRawV151 === "function"
+    ? getMatchDateRawV151(match)
+    : String(match?.matchDate || match?.date || match?.scheduledDate || match?.playDate || "").trim();
+  return raw || "Data da definire";
+}
+
+function renderMobileCompetitionNextMatchV155(competition) {
+  if (!isMobileCompetitionStatusActiveV155(competition)) return "";
+  const match = getMobileCompetitionNextScheduledMatchV155(competition);
+  if (!match) {
+    return `<p class="mobile-competition-block-next-v155 muted">Nessuna prossima partita programmata.</p>`;
+  }
+  return `
+    <div class="mobile-competition-block-next-v155">
+      <span class="mobile-competition-next-label-v155">Prossima partita</span>
+      <span class="mobile-competition-next-teams-v155">
+        ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+        <span class="match-separator">-</span>
+        ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+      </span>
+      <span class="mobile-competition-next-date-v155">${escapeHtml(getMobileCompetitionMatchDateV155(match))}</span>
+    </div>`;
+}
+
+function renderMobileCompetitionBlockV155(competition) {
+  const name = typeof getCompetitionDisplayNameV111 === "function"
+    ? getCompetitionDisplayNameV111(competition)
+    : (competition?.name || competition?.competitionName || "Competizione");
+  const statusText = getLabel(COMPETITION_STATUSES, competition?.status) || competition?.status || "-";
+  const url = typeof getCompetitionOpenUrlV111 === "function" ? getCompetitionOpenUrlV111(competition) : "./competition.html";
+  const activeClass = isMobileCompetitionStatusActiveV155(competition) ? " is-active" : "";
+  return `
+    <a class="mobile-competition-block-v155${activeClass}" href="${escapeHtml(url)}" aria-label="Apri ${escapeHtml(name)}">
+      <div class="mobile-competition-block-head-v155">
+        <h3>${escapeHtml(name)}</h3>
+        <span class="status ${getCompetitionStatusClass(competition?.status)}">${escapeHtml(statusText)}</span>
+      </div>
+      ${renderMobileCompetitionNextMatchV155(competition)}
+      <span class="mobile-competition-open-v155">Apri competizione →</span>
+    </a>`;
+}
+
+function renderDesktopCompetitionCardV155(competition) {
+  return `
+    <article class="competition-card${hasStaticCompetitionSourceV102(competition) ? " competition-card-static-source" : " competition-card-firebase-source"}">
+      <div class="competition-card-header competition-card-header-with-actions">
+        <div>
+          <h3>${escapeHtml(getCompetitionDisplayNameV111(competition))} ${getCompetitionSourceBadgeV111(competition)}</h3>
+        </div>
+        <div class="competition-card-actions">
+          ${renderOpenCompetitionButtonV111(competition)}
+          <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
+        </div>
+      </div>
+      ${renderStaticCompetitionSourceLineV102(competition)}
+      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
+      ${renderCompetitionResultsPublic(competition)}
+      ${renderCompetitionMatchesPublic(competition)}
+    </article>`;
+}
+
+renderCompetitionsPublic = function renderCompetitionsPublicV155() {
+  const list = document.getElementById("competitionsList");
+  if (!list) return;
+
+  const seasonId = getCurrentSeasonId();
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+
+  if (!competitions.length) {
+    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || "la stagione selezionata")}.</p>`;
+    return;
+  }
+
+  list.innerHTML = `
+    <div class="mobile-competition-blocks-v155" aria-label="Competizioni mobile">
+      ${competitions.map((competition) => renderMobileCompetitionBlockV155(competition)).join("")}
+    </div>
+    <div class="desktop-competition-list-v155">
+      ${competitions.map((competition) => renderDesktopCompetitionCardV155(competition)).join("")}
+    </div>`;
+};
+
+/* V169 - Mobile roster/date helpers extracted to js/mobile/mobile-rosters.js. */
+const mobileRosterHelpersV169 = createMobileRosterHelpersV169({
+  state,
+  escapeHtml,
+  formatFm,
+  formatStadium,
+  getRosterForSeasonTeam,
+  getSeasonTeamDisplayName,
+  getSeasonTeamLogo,
+  getSeasonTeamPresidentNames,
+  getStadiumForSeasonTeam,
+  getTeamDisplayName,
+  getTeamFmBalance,
+  renderPresidentStack,
+  renderRosterPlayerTable,
+  renderSeasonTeamNameWithLogo,
+  renderTeamLogo
+});
+const {
+  formatCompactMobileDateV156,
+  isMobileDateFormattingEnabledV156,
+  applyMobileCompactDatesV156,
+  renderMobileRosterSelectBlockV156,
+  renderMobileRosterSelectedDetailsV156,
+  renderDesktopRosterTableV156,
+  renderMobileRosterSelectorV156
+} = mobileRosterHelpersV169;
+
+const renderTeamsTableBeforeV156 = renderTeamsTable;
+renderTeamsTable = function renderTeamsTableV156() {
+  const cards = document.getElementById("rosterClubCards");
+  const legacyTableBody = document.getElementById("clubsTableBody");
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const { teamsById } = buildMaps();
+
+  if (!cards) return renderTeamsTableBeforeV156();
+
+  if (!seasonTeams.length) {
+    const empty = `<p class="muted">Nessuna squadra associata a ${escapeHtml(seasonId || "questa stagione")}.</p>`;
+    cards.innerHTML = empty;
+    if (legacyTableBody) legacyTableBody.innerHTML = `<tr><td colspan="7" class="muted center">Nessuna squadra associata a ${escapeHtml(seasonId || "questa stagione")}.</td></tr>`;
+    return;
+  }
+
+  cards.classList.add("roster-table-container", "roster-table-container-v156");
+  cards.innerHTML = `
+    ${renderMobileRosterSelectorV156(seasonTeams, teamsById)}
+    ${renderDesktopRosterTableV156(seasonTeams, teamsById)}`;
+
+  if (legacyTableBody) {
+    legacyTableBody.innerHTML = seasonTeams.map((seasonTeam, index) => {
+      const team = teamsById.get(seasonTeam.teamId);
+      const displayName = seasonTeam.name || getTeamDisplayName(team);
+      const balance = getTeamFmBalance(seasonTeam.id);
+      const roster = getRosterForSeasonTeam(seasonTeam);
+      return `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${renderSeasonTeamNameWithLogo(seasonTeam.id)}</td>
+          <td>${renderPresidentStack(getSeasonTeamPresidentNames(seasonTeam))}</td>
+          <td class="number"><strong>${escapeHtml(formatFm(balance))}</strong></td>
+          <td class="number">${escapeHtml(roster?.playerCount ?? 0)}</td>
+          <td>${escapeHtml(displayName || "-")}</td>
+        </tr>`;
+    }).join("");
+  }
+};
+
+const renderAllBeforeV156 = renderAll;
+renderAll = function renderAllV156() {
+  const result = renderAllBeforeV156();
+  window.requestAnimationFrame(() => applyMobileCompactDatesV156(document.querySelector("main") || document.body));
+  return result;
+};
+
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(() => applyMobileCompactDatesV156(document.querySelector("main") || document.body));
+});
+
+/* V162 - Mobile: card Albo/Palmares, label Ris. robusta e rose piu bilanciate. */
+function isMobileUxActiveV162() {
+  return document.body?.classList.contains("is-mobile-ux")
+    || window.matchMedia?.("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+}
+
+function ensureMobileHonorHomeCardV162() {
+  const target = document.getElementById("mobileHomeBlocks");
+  if (!target || !isMobileUxActiveV162()) return;
+  if (target.querySelector('[data-mobile-home-card="honor"]')) return;
+  const cardHtml = renderMobileHomeCardV140({
+    icon: "🏅",
+    kicker: "Albo d'Oro",
+    title: "Palmarès e ranking",
+    value: "Storico della lega",
+    description: "Consulta vincitori, piazzamenti, palmarès e FIFA Ranking.",
+    actions: [renderMobileHomeActionV140("Apri Albo", "honor")]
+  }).replace('class="mobile-home-card', 'data-mobile-home-card="honor" class="mobile-home-card');
+  const newsCard = Array.from(target.querySelectorAll(".mobile-home-card")).find((card) => {
+    const kicker = card.querySelector(".mobile-home-kicker")?.textContent?.trim().toLowerCase() || "";
+    return kicker === "comunicati";
+  });
+  if (newsCard) newsCard.insertAdjacentHTML("beforebegin", cardHtml);
+  else target.insertAdjacentHTML("beforeend", cardHtml);
+}
+
+function ensureMobileHonorMoreLinkV162() {
+  const sheet = document.getElementById("mobileMoreSheet");
+  if (!sheet) return;
+  if (sheet.querySelector('[data-page-link="honor"]')) return;
+  const clubs = sheet.querySelector('[data-page-link="clubs"]');
+  const link = document.createElement("a");
+  link.href = "#honor";
+  link.className = "mobile-more-link";
+  link.dataset.pageLink = "honor";
+  link.textContent = "Albo d'Oro e Palmarès";
+  if (clubs) clubs.insertAdjacentElement("afterend", link);
+  else sheet.appendChild(link);
+}
+
+function normalizeMobileMatchResultLabelsV162(root = document.body) {
+  if (!root || !isMobileUxActiveV162()) return;
+  root.querySelectorAll("th, [role='columnheader']").forEach((node) => {
+    const text = node.textContent?.trim().toLowerCase() || "";
+    if (text === "risultato") node.textContent = "Ris.";
+  });
+  root.querySelectorAll('[data-label="Risultato"]').forEach((node) => {
+    node.setAttribute("data-label", "Ris.");
+  });
+}
+
+const renderMobileBlockDashboardBeforeV162 = renderMobileBlockDashboardV140;
+renderMobileBlockDashboardV140 = function renderMobileBlockDashboardV162() {
+  const result = renderMobileBlockDashboardBeforeV162?.();
+  ensureMobileHonorHomeCardV162();
+  ensureMobileHonorMoreLinkV162();
+  normalizeMobileMatchResultLabelsV162(document.querySelector("main") || document.body);
+  return result;
+};
+
+const renderAllBeforeV162 = renderAll;
+renderAll = function renderAllV162() {
+  const result = renderAllBeforeV162();
+  ensureMobileHonorHomeCardV162();
+  ensureMobileHonorMoreLinkV162();
+  normalizeMobileMatchResultLabelsV162(document.querySelector("main") || document.body);
+  return result;
+};
+
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(() => {
+    ensureMobileHonorHomeCardV162();
+    ensureMobileHonorMoreLinkV162();
+    normalizeMobileMatchResultLabelsV162(document.querySelector("main") || document.body);
+  });
+});
+
+
+/* V164 - Mobile competition detail refinements live in competition.html/CSS. */
+
+/* V170 - Fantamercato lazy per ridurre le letture Firebase pubbliche. */
+state.transferMarketPromiseV170 = null;
+state.transferMarketLastLoadReasonV170 = state.transferMarketLastLoadReasonV170 || "";
+
+function resetTransferMarketCacheV170() {
+  state.transferMarketLoadedV119 = false;
+  state.transferMarketLoadingV119 = false;
+  state.transferMarketPromiseV170 = null;
+  if (state.raw) {
+    state.raw.transferListings = [];
+    state.raw.transferNegotiations = [];
+  }
+}
+
+function getHashPageV170() {
+  return String(window.location.hash || "").replace("#", "") || "dashboard";
+}
+
+function shouldLoadTransferMarketForPageV170(pageName = state.currentPage || getHashPageV170()) {
+  const page = String(pageName || "dashboard");
+  if (page === "fantamercato") return true;
+  if (page === "teamarea") return Boolean(state.user || state.isAdmin);
+  if (page === "teamprofile") {
+    const activeTeamId = state.activeTeamProfileSeasonTeamId || "";
+    return Boolean(state.user && activeTeamId && typeof isOwnSeasonTeamV119 === "function" && isOwnSeasonTeamV119(activeTeamId));
+  }
+  return false;
+}
+
+function renderTransferMarketDeferredStateV170() {
+  if (state.transferMarketLoadedV119 || state.transferMarketLoadingV119) return;
+  const tableBody = document.getElementById("transferMarketTableBody");
+  if (tableBody) {
+    tableBody.innerHTML = `<tr><td colspan="7" class="muted center">Apri il Fantamercato per caricare i trasferibili.</td></tr>`;
+  }
+  const mobileCards = document.getElementById("transferMarketMobileCardsV141");
+  if (mobileCards) {
+    mobileCards.innerHTML = '<p class="muted center">Apri il Fantamercato per caricare i trasferibili.</p>';
+  }
+}
+
+async function ensureTransferMarketDataV170(options = {}) {
+  const { force = false, reason = "" } = options || {};
+  if (state.transferMarketLoadedV119) return state.raw?.transferListings || [];
+  if (state.transferMarketPromiseV170) return state.transferMarketPromiseV170;
+  if (!force && !shouldLoadTransferMarketForPageV170()) {
+    renderTransferMarketDeferredStateV170();
+    return null;
+  }
+
+  state.transferMarketLastLoadReasonV170 = reason || state.currentPage || getHashPageV170();
+  state.transferMarketPromiseV170 = loadTransferMarketCollectionsV119()
+    .then(() => {
+      renderTransferMarketPageV119?.();
+      renderUserAreaV34?.();
+      renderTeamsTable?.();
+      return state.raw?.transferListings || [];
+    })
+    .catch((error) => {
+      console.warn("Fantamercato non caricato", error);
+      return null;
+    })
+    .finally(() => {
+      state.transferMarketPromiseV170 = null;
+    });
+
+  renderTransferMarketPageV119?.();
+  renderUserAreaV34?.();
+  return state.transferMarketPromiseV170;
+}
+
+ensureTransferMarketDataV119 = ensureTransferMarketDataV170;
+
+const renderTransferMarketPageBeforeV170 = renderTransferMarketPageV119;
+renderTransferMarketPageV119 = function renderTransferMarketPageV170() {
+  if (!state.transferMarketLoadedV119 && !state.transferMarketLoadingV119 && shouldLoadTransferMarketForPageV170()) {
+    ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170() });
+  }
+  const result = renderTransferMarketPageBeforeV170?.();
+  if (!state.transferMarketLoadedV119 && !state.transferMarketLoadingV119 && !shouldLoadTransferMarketForPageV170()) {
+    renderTransferMarketDeferredStateV170();
+  }
+  return result;
+};
+
+if (loadDataForCurrentAuthBeforeV119) {
+  loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV170(options = {}) {
+    resetTransferMarketCacheV170();
+    const result = await loadDataForCurrentAuthBeforeV119(options);
+    if (shouldLoadTransferMarketForPageV170()) {
+      await ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170() });
+    } else if (options.render) {
+      renderTransferMarketDeferredStateV170();
+    }
+    return result;
+  };
+  loadData = async function loadDataV170() {
+    return loadDataForCurrentAuthV100({ render: true });
+  };
+}
+
+const setAppPageBeforeV170 = typeof setAppPageV42 === "function" ? setAppPageV42 : null;
+if (setAppPageBeforeV170) {
+  setAppPageV42 = function setAppPageV170(pageName) {
+    const result = setAppPageBeforeV170(pageName);
+    if (shouldLoadTransferMarketForPageV170(pageName)) {
+      ensureTransferMarketDataV119({ force: true, reason: pageName || "navigation" });
+    }
+    return result;
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('[data-page-link="fantamercato"], [data-v42-page-link="fantamercato"], [data-page-link="teamarea"], [data-v42-page-link="teamarea"]');
+  if (!link) return;
+  const page = link.dataset.pageLink || link.dataset.v42PageLink || "";
+  window.setTimeout(() => {
+    if (shouldLoadTransferMarketForPageV170(page)) {
+      ensureTransferMarketDataV119({ force: true, reason: page || "click" });
+    }
+  }, 0);
+}, true);
+
+window.addEventListener("hashchange", () => {
+  const page = getHashPageV170();
+  if (shouldLoadTransferMarketForPageV170(page)) {
+    ensureTransferMarketDataV119({ force: true, reason: page });
+  }
+});
+
+window.addEventListener("load", () => {
+  if (shouldLoadTransferMarketForPageV170()) {
+    ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170() });
+  } else {
+    renderTransferMarketDeferredStateV170();
+  }
+});
+
+
+
+/* V171 - Static public config and admin mobile account button.
+   Public users load assets/public/config.json before falling back to Firestore
+   leagueSettings/seasons, reducing baseline reads. Admin keeps the Account
+   button visible so Dark/Light, Account and Logout can sit on one mobile row. */
+const PUBLIC_CONFIG_URL_V171 = "assets/public/config.json";
+state.publicConfigV171 = state.publicConfigV171 || null;
+state.publicConfigSourceV171 = state.publicConfigSourceV171 || "";
+
+function normalizePublicConfigSeasonV171(season, currentSeasonId = "") {
+  const id = String(season?.id || season?.seasonId || "").trim();
+  if (!id) return null;
+  return {
+    ...season,
+    id,
+    name: season?.name || season?.label || `Stagione ${id}`,
+    isCurrent: Boolean(season?.isCurrent || id === currentSeasonId)
+  };
+}
+
+function normalizePublicConfigV171(payload) {
+  const sourceSeasons = Array.isArray(payload?.seasons)
+    ? payload.seasons
+    : Array.isArray(payload?.raw?.seasons)
+      ? payload.raw.seasons
+      : [];
+  const currentSeasonId = String(payload?.currentSeasonId || sourceSeasons.find((season) => season?.isCurrent)?.id || sourceSeasons[0]?.id || "").trim();
+  const seasons = sourceSeasons
+    .map((season) => normalizePublicConfigSeasonV171(season, currentSeasonId))
+    .filter(Boolean)
+    .sort((a, b) => String(b.id || "").localeCompare(String(a.id || ""), "it"));
+  if (!seasons.length) return null;
+
+  const leagueSettings = Array.isArray(payload?.leagueSettings) && payload.leagueSettings.length
+    ? payload.leagueSettings.map((item, index) => ({
+        ...item,
+        id: item?.id || (index === 0 ? "main" : `settings-${index + 1}`),
+        currentSeasonId: item?.currentSeasonId || currentSeasonId
+      }))
+    : [{ id: "main", currentSeasonId }];
+
+  return {
+    currentSeasonId,
+    leagueSettings,
+    seasons,
+    generatedAt: payload?.generatedAt || "",
+    version: payload?.version || 1
+  };
+}
+
+async function loadStaticPublicConfigV171() {
+  if (state.publicConfigV171) return state.publicConfigV171;
+  try {
+    const response = await fetch(PUBLIC_CONFIG_URL_V171, { cache: "no-store" });
+    if (!response.ok) return null;
+    const payload = await response.json();
+    const normalized = normalizePublicConfigV171(payload);
+    if (!normalized) return null;
+    state.publicConfigV171 = normalized;
+    state.publicConfigSourceV171 = "static";
+    return normalized;
+  } catch (error) {
+    console.warn("Config pubblica statica non disponibile", error);
+    return null;
+  }
+}
+
+async function loadPublicConfigV171() {
+  const staticConfig = await loadStaticPublicConfigV171();
+  if (staticConfig) return staticConfig;
+
+  const [leagueSettings, seasons] = await Promise.all([
+    loadCollection("leagueSettings"),
+    loadCollection("seasons")
+  ]);
+  state.publicConfigSourceV171 = "firebase";
+  return {
+    leagueSettings,
+    seasons,
+    currentSeasonId: getDefaultSeasonIdFromRawV100({ leagueSettings, seasons })
+  };
+}
+
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV171(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  const rawBase = makeEmptyRawDataV34();
+  const publicConfig = await loadPublicConfigV171();
+
+  rawBase.leagueSettings = Array.isArray(publicConfig?.leagueSettings) ? publicConfig.leagueSettings : [];
+  rawBase.seasons = Array.isArray(publicConfig?.seasons) ? publicConfig.seasons : [];
+
+  const seasonId = selectedSeasonBefore || publicConfig?.currentSeasonId || getDefaultSeasonIdFromRawV100(rawBase);
+  const [seasonSnapshot, honorSnapshot] = await Promise.all([
+    loadPublicSeasonSnapshotV32(seasonId),
+    loadPublicHonorSnapshotV32()
+  ]);
+
+  await loadListoniData();
+  await loadRostersData();
+  await loadStaticCompetitionCalendarsV101();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = rawBase;
+  state.selectedSeasonId = seasonId;
+  state.hasFullData = false;
+
+  if (!seasonSnapshot || !honorSnapshot) {
+    state.usedPublicSnapshots = false;
+    state.publicHonorSnapshot = honorSnapshot || null;
+    mergeStaticCompetitionCalendarsForSeasonV101(seasonId);
+    sortData();
+    if (render) renderAll();
+    setError(`Snapshot pubblico mancante per ${seasonId}. Accedi come admin e aggiorna gli snapshot pubblici.`);
+    return false;
+  }
+
+  applyPublicSeasonSnapshotV32(seasonSnapshot);
+  state.raw.news = Array.isArray(seasonSnapshot.news) ? seasonSnapshot.news : [];
+  mergeStaticCompetitionCalendarsForSeasonV101(seasonId);
+  state.publicHonorSnapshot = honorSnapshot;
+  state.hasFullData = false;
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+};
+
+function buildPublicConfigPayloadV171() {
+  const currentSeasonId = getCurrentSeasonId() || getDefaultSeasonId();
+  const seasons = (state.raw.seasons || []).map((season) => ({
+    ...season,
+    isCurrent: season.id === currentSeasonId || Boolean(season.isCurrent)
+  }));
+  const leagueSettings = (state.raw.leagueSettings || []).length
+    ? (state.raw.leagueSettings || []).map((item, index) => ({
+        ...item,
+        id: item?.id || (index === 0 ? "main" : `settings-${index + 1}`),
+        currentSeasonId: item?.currentSeasonId || currentSeasonId
+      }))
+    : [{ id: "main", currentSeasonId }];
+
+  return {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    currentSeasonId,
+    leagueSettings,
+    seasons
+  };
+}
+
+function downloadPublicConfigV171() {
+  const payload = buildPublicConfigPayloadV171();
+  downloadJson(payload, "config.json");
+  showMessage("adminPublicSnapshotsStatus", "Config pubblica scaricata. Salvala in assets/public/config.json e pubblicala su GitHub.");
+}
+
+const renderPublicSnapshotsAdminPanelBeforeV171 = typeof renderPublicSnapshotsAdminPanelV114 === "function" ? renderPublicSnapshotsAdminPanelV114 : null;
+if (renderPublicSnapshotsAdminPanelBeforeV171) {
+  renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV171() {
+    let html = renderPublicSnapshotsAdminPanelBeforeV171();
+    if (!html.includes('id="adminDownloadPublicConfig"')) {
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', `  <button id="adminDownloadPublicConfig" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica config pubblica</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(publicSnapshotAdminHelpersV129.getSnapshotDateText(state.publicConfigV171?.generatedAt || ""))}</span></button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"`);
+      html = html.replace('Comunicati, competizioni e classifiche della stagione sono dentro', 'La config pubblica statica va salvata in <code>assets/public/config.json</code>. Comunicati, competizioni e classifiche della stagione sono dentro');
+    }
+    return html;
+  };
+  renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+}
+
+const attachAdminHandlersBeforeV171 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV171() {
+  attachAdminHandlersBeforeV171?.();
+  document.getElementById("adminDownloadPublicConfig")?.addEventListener("click", downloadPublicConfigV171);
+};
+
+const updateAdminVisibilityBeforeV171 = updateAdminVisibility;
+updateAdminVisibility = function updateAdminVisibilityV171() {
+  updateAdminVisibilityBeforeV171?.();
+  const openLoginBtn = document.getElementById("openLoginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (openLoginBtn && state.user) {
+    openLoginBtn.textContent = "Account";
+    openLoginBtn.classList.remove("hidden");
+  }
+  logoutBtn?.classList.toggle("hidden", !state.user);
+  document.body?.classList.toggle("is-admin-authenticated", Boolean(state.isAdmin && state.user));
+};
+
+/* V172 - Static season snapshots and mobile page top focus.
+   Public season snapshots can now be served from GitHub at
+   assets/snapshots/seasons before falling back to Firestore. On mobile,
+   every tab/page navigation is forced back to the top of the viewport. */
+const STATIC_SEASON_SNAPSHOTS_BASE_URL_V172 = "assets/snapshots/seasons/";
+const STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172 = `${STATIC_SEASON_SNAPSHOTS_BASE_URL_V172}manifest.json`;
+state.staticSeasonSnapshotsManifestV172 = state.staticSeasonSnapshotsManifestV172 || null;
+state.publicSeasonSnapshotSourcesV172 = state.publicSeasonSnapshotSourcesV172 || {};
+
+function normalizeStaticSeasonSnapshotEntryV172(entry) {
+  const seasonId = String(entry?.seasonId || entry?.id || "").trim();
+  if (!seasonId) return null;
+  const file = String(entry?.file || entry?.path || `${safeFileName(seasonId)}.json`).replace(/^\/+/, "");
+  return {
+    ...entry,
+    id: seasonId,
+    seasonId,
+    file,
+    generatedAt: entry?.generatedAt || ""
+  };
+}
+
+function getStaticSeasonSnapshotEntriesV172(manifest) {
+  if (Array.isArray(manifest?.snapshots)) return manifest.snapshots;
+  if (Array.isArray(manifest?.seasons)) return manifest.seasons;
+  if (manifest?.snapshots && typeof manifest.snapshots === "object") {
+    return Object.entries(manifest.snapshots).map(([seasonId, value]) => ({ seasonId, ...(value || {}) }));
+  }
+  return [];
+}
+
+async function loadStaticSeasonSnapshotsManifestV172() {
+  if (state.staticSeasonSnapshotsManifestV172) return state.staticSeasonSnapshotsManifestV172;
+  try {
+    const response = await fetch(STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172, { cache: "no-store" });
+    if (!response.ok) {
+      state.staticSeasonSnapshotsManifestV172 = { version: 1, generatedAt: "", snapshots: [] };
+      return state.staticSeasonSnapshotsManifestV172;
+    }
+    const payload = await response.json();
+    const snapshots = getStaticSeasonSnapshotEntriesV172(payload)
+      .map(normalizeStaticSeasonSnapshotEntryV172)
+      .filter(Boolean);
+    state.staticSeasonSnapshotsManifestV172 = {
+      version: payload?.version || 1,
+      generatedAt: payload?.generatedAt || "",
+      snapshots
+    };
+    return state.staticSeasonSnapshotsManifestV172;
+  } catch (error) {
+    console.warn("Manifest snapshot stagioni statico non disponibile", error);
+    state.staticSeasonSnapshotsManifestV172 = { version: 1, generatedAt: "", snapshots: [] };
+    return state.staticSeasonSnapshotsManifestV172;
+  }
+}
+
+function getStaticSeasonSnapshotEntryV172(manifest, seasonId) {
+  const target = String(seasonId || "").trim();
+  if (!target) return null;
+  return (manifest?.snapshots || []).find((entry) => String(entry?.seasonId || entry?.id || "") === target) || null;
+}
+
+function normalizeStaticPublicSeasonSnapshotV172(payload, seasonId) {
+  const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+  if (!snapshot || typeof snapshot !== "object") return null;
+  const normalizedSeasonId = String(snapshot.seasonId || snapshot.id || seasonId || "").trim();
+  if (!normalizedSeasonId || normalizedSeasonId !== String(seasonId || "")) return null;
+  return {
+    ...snapshot,
+    id: snapshot.id || normalizedSeasonId,
+    seasonId: normalizedSeasonId
+  };
+}
+
+async function loadStaticPublicSeasonSnapshotV172(seasonId) {
+  const manifest = await loadStaticSeasonSnapshotsManifestV172();
+  const entry = getStaticSeasonSnapshotEntryV172(manifest, seasonId);
+  if (!entry?.file) return null;
+  try {
+    const response = await fetch(`${STATIC_SEASON_SNAPSHOTS_BASE_URL_V172}${entry.file}`, { cache: "no-store" });
+    if (!response.ok) return null;
+    const payload = await response.json();
+    const snapshot = normalizeStaticPublicSeasonSnapshotV172(payload, seasonId);
+    if (!snapshot) return null;
+    snapshot.staticGeneratedAt = entry.generatedAt || snapshot.generatedAt || "";
+    state.publicSeasonSnapshotSourcesV172[seasonId] = "static";
+    return snapshot;
+  } catch (error) {
+    console.warn(`Snapshot stagione statico non disponibile per ${seasonId}`, error);
+    return null;
+  }
+}
+
+const loadPublicSeasonSnapshotBeforeV172 = loadPublicSeasonSnapshotV32;
+loadPublicSeasonSnapshotV32 = async function loadPublicSeasonSnapshotV172(seasonId) {
+  if (!seasonId) return null;
+  if (state.publicSeasonSnapshots[seasonId]) return state.publicSeasonSnapshots[seasonId];
+  const staticSnapshot = await loadStaticPublicSeasonSnapshotV172(seasonId);
+  if (staticSnapshot) {
+    state.publicSeasonSnapshots[seasonId] = staticSnapshot;
+    return staticSnapshot;
+  }
+  const firebaseSnapshot = await loadPublicSeasonSnapshotBeforeV172(seasonId);
+  if (firebaseSnapshot) state.publicSeasonSnapshotSourcesV172[seasonId] = "firebase";
+  return firebaseSnapshot;
+};
+
+function buildStaticSeasonSnapshotFileNameV172(seasonId) {
+  return `${safeFileName(seasonId || "stagione")}.json`;
+}
+
+function buildStaticSeasonSnapshotsManifestV172(snapshotEntries) {
+  return {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    snapshots: snapshotEntries.map((entry) => ({
+      seasonId: entry.seasonId,
+      file: entry.file,
+      generatedAt: entry.snapshot?.generatedAt || "",
+      snapshotVersion: entry.snapshot?.snapshotVersion || entry.snapshot?.version || ""
+    }))
+  };
+}
+
+function buildStaticSeasonSnapshotEntriesV172(seasonIds) {
+  return (seasonIds || [])
+    .filter(Boolean)
+    .map((seasonId) => {
+      const snapshot = typeof buildPublicSeasonSnapshotV34 === "function"
+        ? buildPublicSeasonSnapshotV34(seasonId)
+        : buildPublicSeasonSnapshotV32(seasonId);
+      return {
+        seasonId,
+        file: buildStaticSeasonSnapshotFileNameV172(seasonId),
+        snapshot
+      };
+    });
+}
+
+async function downloadStaticSeasonSnapshotsOverlayV172(options = {}) {
+  const { selectedOnly = false } = options;
+  try {
+    showMessage("adminPublicSnapshotsStatus", selectedOnly ? "Genero overlay snapshot stagione selezionata..." : "Genero overlay snapshot stagioni...");
+    if (!state.hasFullData) await loadFullDataV32({ render: false });
+    const seasonIds = selectedOnly
+      ? [getCurrentSeasonId()].filter(Boolean)
+      : (state.raw.seasons || []).map((season) => season.id).filter(Boolean);
+    if (!seasonIds.length) throw new Error("Nessuna stagione disponibile per generare lo snapshot statico.");
+
+    const entries = buildStaticSeasonSnapshotEntriesV172(seasonIds);
+    const manifest = buildStaticSeasonSnapshotsManifestV172(entries);
+    const JSZip = await loadZipLibraryV105();
+    const zip = new JSZip();
+    zip.file("static/zonaorientale/assets/snapshots/seasons/manifest.json", `${JSON.stringify(manifest, null, 2)}\n`);
+    entries.forEach((entry) => {
+      zip.file(`static/zonaorientale/assets/snapshots/seasons/${entry.file}`, `${JSON.stringify(entry.snapshot, null, 2)}\n`);
+    });
+    const blob = await zip.generateAsync({ type: "blob" });
+    const suffix = selectedOnly ? safeFileName(seasonIds[0]) : "tutte_le_stagioni";
+    downloadBlobV105(blob, `zonaorientale_snapshot_stagioni_${suffix}_overlay.zip`);
+    showMessage("adminPublicSnapshotsStatus", "Overlay snapshot stagioni scaricato. Pubblicalo su GitHub per evitare letture Firestore sulle stagioni staticizzate.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminPublicSnapshotsStatus", error.message || "Errore durante la generazione overlay snapshot stagioni.", true);
+  }
+}
+
+const renderPublicSnapshotsAdminPanelBeforeV172 = typeof renderPublicSnapshotsAdminPanelV114 === "function" ? renderPublicSnapshotsAdminPanelV114 : null;
+if (renderPublicSnapshotsAdminPanelBeforeV172) {
+  renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV172() {
+    let html = renderPublicSnapshotsAdminPanelBeforeV172();
+    if (!html.includes('id="adminDownloadStaticSeasonSnapshots"')) {
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', `  <button id="adminDownloadSelectedStaticSeasonSnapshot" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica snapshot stagione JSON</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(getStaticSeasonSnapshotDateTextV173(getCurrentSeasonId()))}</span></button>\n        <button id="adminDownloadStaticSeasonSnapshots" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica overlay snapshot stagioni</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(getStaticSeasonSnapshotsManifestDateTextV173())}</span></button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"`);
+      html = html.replace('La config pubblica statica va salvata in <code>assets/public/config.json</code>.', 'La config pubblica statica va salvata in <code>assets/public/config.json</code>. Gli snapshot stagione statici vanno salvati in <code>assets/snapshots/seasons/</code>.');
+    }
+    return html;
+  };
+  renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+}
+
+const attachAdminHandlersBeforeV172 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV172() {
+  attachAdminHandlersBeforeV172?.();
+  document.getElementById("adminDownloadSelectedStaticSeasonSnapshot")?.addEventListener("click", () => downloadStaticSeasonSnapshotsOverlayV172({ selectedOnly: true }));
+  document.getElementById("adminDownloadStaticSeasonSnapshots")?.addEventListener("click", () => downloadStaticSeasonSnapshotsOverlayV172({ selectedOnly: false }));
+};
+
+function isMobileUxActiveV172() {
+  if (typeof isMobileUxActiveV162 === "function") return isMobileUxActiveV162();
+  return document.body?.classList.contains("is-mobile-ux")
+    || window.matchMedia?.("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+}
+
+function scrollMobilePageTopNowV172() {
+  if (!isMobileUxActiveV172()) return;
+  closeMobileMoreMenu?.();
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  const activePage = document.querySelector(".app-page.is-active");
+  const focusTarget = activePage?.querySelector(".page-heading h1, .page-heading h2, h1, h2") || activePage;
+  if (focusTarget && typeof focusTarget.focus === "function") {
+    const previousTabIndex = focusTarget.getAttribute("tabindex");
+    if (previousTabIndex === null) focusTarget.setAttribute("tabindex", "-1");
+    focusTarget.focus({ preventScroll: true });
+    if (previousTabIndex === null) focusTarget.removeAttribute("tabindex");
+  }
+}
+
+function scheduleMobilePageTopV172() {
+  if (!isMobileUxActiveV172()) return;
+  scrollMobilePageTopNowV172();
+  window.requestAnimationFrame(scrollMobilePageTopNowV172);
+  window.setTimeout(scrollMobilePageTopNowV172, 80);
+  window.setTimeout(scrollMobilePageTopNowV172, 240);
+}
+
+const setAppPageBeforeV172 = typeof setAppPageV42 === "function" ? setAppPageV42 : null;
+if (setAppPageBeforeV172) {
+  setAppPageV42 = function setAppPageV172(pageName) {
+    const result = setAppPageBeforeV172(pageName);
+    scheduleMobilePageTopV172();
+    return result;
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("[data-page-link], [data-v42-page-link], [data-open-team-profile]");
+  if (!link) return;
+  scheduleMobilePageTopV172();
+}, true);
+
+window.addEventListener("hashchange", scheduleMobilePageTopV172);
+
+
+
+/* V173 - Static honor snapshot and snapshot button dates.
+   Albo/FIFA can now be served from assets/snapshots/honor.json before
+   Firestore fallback. Admin snapshot buttons show their latest known update
+   directly under the button label, especially on mobile. */
+const STATIC_HONOR_SNAPSHOT_URL_V173 = "assets/snapshots/honor.json";
+state.staticHonorSnapshotV173 = state.staticHonorSnapshotV173 || null;
+state.publicHonorSnapshotSourceV173 = state.publicHonorSnapshotSourceV173 || "";
+
+function normalizeStaticHonorSnapshotV173(payload) {
+  const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+  if (!snapshot || typeof snapshot !== "object") return null;
+  const hasHonorData = (Array.isArray(snapshot.honorRows) && snapshot.honorRows.length)
+    || (Array.isArray(snapshot.palmares) && snapshot.palmares.length)
+    || (Array.isArray(snapshot.fifaRanking) && snapshot.fifaRanking.length);
+  if (!hasHonorData) return null;
+  return {
+    ...snapshot,
+    generatedAt: snapshot.generatedAt || payload?.generatedAt || "",
+    snapshotVersion: snapshot.snapshotVersion || snapshot.version || payload?.version || 1
+  };
+}
+
+async function loadStaticHonorSnapshotV173() {
+  if (state.staticHonorSnapshotV173) return state.staticHonorSnapshotV173;
+  try {
+    const response = await fetch(STATIC_HONOR_SNAPSHOT_URL_V173, { cache: "no-store" });
+    if (!response.ok) return null;
+    const payload = await response.json();
+    const snapshot = normalizeStaticHonorSnapshotV173(payload);
+    if (!snapshot) return null;
+    state.staticHonorSnapshotV173 = snapshot;
+    state.publicHonorSnapshotSourceV173 = "static";
+    return snapshot;
+  } catch (error) {
+    console.warn("Snapshot honor statico non disponibile", error);
+    return null;
+  }
+}
+
+const loadPublicHonorSnapshotBeforeV173 = loadPublicHonorSnapshotV32;
+loadPublicHonorSnapshotV32 = async function loadPublicHonorSnapshotV173() {
+  if (state.publicHonorSnapshot) return state.publicHonorSnapshot;
+  const staticSnapshot = await loadStaticHonorSnapshotV173();
+  if (staticSnapshot) {
+    state.publicHonorSnapshot = staticSnapshot;
+    return staticSnapshot;
+  }
+  const firebaseSnapshot = await loadPublicHonorSnapshotBeforeV173();
+  if (firebaseSnapshot) state.publicHonorSnapshotSourceV173 = "firebase";
+  return firebaseSnapshot;
+};
+
+function getSnapshotDateTextV173(value) {
+  return publicSnapshotAdminHelpersV129.getSnapshotDateText(value || "");
+}
+
+function getStaticSeasonSnapshotDateTextV173(seasonId) {
+  const target = String(seasonId || getCurrentSeasonId() || "");
+  const entry = (state.staticSeasonSnapshotsManifestV172?.snapshots || [])
+    .find((item) => String(item?.seasonId || item?.id || "") === target);
+  return getSnapshotDateTextV173(entry?.generatedAt || state.publicSeasonSnapshots?.[target]?.generatedAt || "");
+}
+
+function getStaticSeasonSnapshotsManifestDateTextV173() {
+  return getSnapshotDateTextV173(state.staticSeasonSnapshotsManifestV172?.generatedAt || "");
+}
+
+function getStaticHonorSnapshotDateTextV173() {
+  return getSnapshotDateTextV173(state.staticHonorSnapshotV173?.generatedAt || state.publicHonorSnapshot?.generatedAt || "");
+}
+
+function buildStaticHonorSnapshotPayloadV173() {
+  const snapshot = buildHonorSnapshotV32();
+  return {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    snapshot
+  };
+}
+
+async function downloadStaticHonorSnapshotV173() {
+  try {
+    showMessage("adminPublicSnapshotsStatus", "Genero honor snapshot statico...");
+    if (!state.hasFullData) await loadFullDataV32({ render: false });
+    const payload = buildStaticHonorSnapshotPayloadV173();
+    downloadJson(payload, "honor.json");
+    showMessage("adminPublicSnapshotsStatus", "Honor snapshot scaricato. Salvalo in assets/snapshots/honor.json e pubblicalo su GitHub.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminPublicSnapshotsStatus", error.message || "Errore durante la generazione honor snapshot statico.", true);
+  }
+}
+
+const renderPublicSnapshotsAdminPanelBeforeV173 = typeof renderPublicSnapshotsAdminPanelV114 === "function" ? renderPublicSnapshotsAdminPanelV114 : null;
+if (renderPublicSnapshotsAdminPanelBeforeV173) {
+  renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV173() {
+    let html = renderPublicSnapshotsAdminPanelBeforeV173();
+    if (!html.includes('id="adminDownloadStaticHonorSnapshot"')) {
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', `  <button id="adminDownloadStaticHonorSnapshot" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica honor JSON</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(getStaticHonorSnapshotDateTextV173())}</span></button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"`);
+      html = html.replace('Gli snapshot stagione statici vanno salvati in <code>assets/snapshots/seasons/</code>.', 'Gli snapshot stagione statici vanno salvati in <code>assets/snapshots/seasons/</code>. L\'honor snapshot statico va salvato in <code>assets/snapshots/honor.json</code>.');
+    }
+    return html;
+  };
+  renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+}
+
+const attachAdminHandlersBeforeV173 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV173() {
+  attachAdminHandlersBeforeV173?.();
+  document.getElementById("adminDownloadStaticHonorSnapshot")?.addEventListener("click", downloadStaticHonorSnapshotV173);
+};
+
+
+/* V174 - Explicit admin data collections.
+   Admin full-load no longer uses the mutable COLLECTIONS array directly.
+   This prevents read-only/public snapshot collections, especially
+   publicTeamSnapshots, from being read on every admin login. Manual Firebase
+   backup still uses an explicit backup list and can include snapshots. */
+const ADMIN_FULL_LOAD_COLLECTIONS_V174 = Object.freeze([
+  "leagueSettings",
+  "seasons",
+  "presidents",
+  "teams",
+  "seasonTeams",
+  "stadiums",
+  "competitions",
+  "competitionMatches",
+  "competitionResults",
+  "honorRoll",
+  "fifaRankings",
+  "rosterEntries",
+  "fmMovements",
+  "news",
+  "pendingUsers",
+  "teamUsers",
+  "teamRequests"
+]);
+
+const ADMIN_BACKUP_COLLECTIONS_V174 = Object.freeze([
+  ...ADMIN_FULL_LOAD_COLLECTIONS_V174,
+  "publicTeamSnapshots"
+]);
+
+const ADMIN_FULL_LOAD_EXCLUDED_COLLECTIONS_V174 = Object.freeze([
+  "publicTeamSnapshots",
+  "publicSeasonSnapshots",
+  "publicSnapshots",
+  "transferListings",
+  "transferNegotiations"
+]);
+
+function uniqueCollectionNamesV174(names) {
+  return [...new Set((names || []).map((name) => String(name || "").trim()).filter(Boolean))];
+}
+
+function getAdminFullLoadCollectionsV174() {
+  return uniqueCollectionNamesV174(ADMIN_FULL_LOAD_COLLECTIONS_V174)
+    .filter((name) => !ADMIN_FULL_LOAD_EXCLUDED_COLLECTIONS_V174.includes(name));
+}
+
+function getFirebaseBackupCollectionsV174() {
+  return uniqueCollectionNamesV174(ADMIN_BACKUP_COLLECTIONS_V174);
+}
+
+async function loadCollectionEntriesV174(collectionNames) {
+  const names = uniqueCollectionNamesV174(collectionNames);
+  return Promise.all(names.map(async (name) => [name, await loadCollection(name)]));
+}
+
+function buildRawFromEntriesV174(entries) {
+  return Object.assign(makeEmptyRawDataV34(), Object.fromEntries(entries || []));
+}
+
+function markFullAdminDataLoadedV174() {
+  state.hasFullData = true;
+  state.usedPublicSnapshots = false;
+}
+
+loadFullDataV32 = async function loadFullDataV174(options = {}) {
+  const { render = true } = options;
+  const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  await loadListoniData();
+  await loadRostersData();
+  sortData();
+  if (render) renderAll();
+};
+
+loadFullDataStableV100 = async function loadFullDataStableV174(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
+  await loadListoniData();
+  await loadRostersData();
+  await loadStaticCompetitionCalendarsV101();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
+  mergeStaticCompetitionCalendarsForSeasonV101(state.selectedSeasonId);
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+};
+
+renderBackupAdminPanel = function renderBackupAdminPanelV174() {
+  const backupCollections = getFirebaseBackupCollectionsV174();
+  const adminLoadCollections = getAdminFullLoadCollectionsV174();
+  return renderAdminPanel("adminBackupPanel", "Backup", "Download dati Firebase", "Scarica uno snapshot JSON delle raccolte Firestore usate dal sito.", `
+    <div class="form-actions">
+      <button id="adminDownloadFirebaseBackup" class="button button-primary" type="button">Scarica backup Firebase</button>
+      <span id="adminBackupStatus" class="form-status"></span>
+    </div>
+    <small class="field-hint">Il backup include: ${escapeHtml(backupCollections.join(", "))}.</small>
+    <small class="field-hint">Il caricamento admin iniziale legge solo: ${escapeHtml(adminLoadCollections.join(", "))}. Gli snapshot squadra non vengono caricati automaticamente.</small>
+  `);
+};
+
+downloadFirebaseBackup = async function downloadFirebaseBackupV174() {
+  try {
+    showMessage("adminBackupStatus", "Preparazione backup...");
+    const collections = {};
+    for (const collectionName of getFirebaseBackupCollectionsV174()) {
+      const snapshot = await getDocs(collection(db, collectionName));
+      collections[collectionName] = snapshot.docs.map((documentSnapshot) => ({
+        id: documentSnapshot.id,
+        ...documentSnapshot.data()
+      }));
+    }
+    downloadJson({ exportedAt: new Date().toISOString(), collections }, `zonaorientale-firebase-backup-${getTodayIsoDate()}.json`);
+    showMessage("adminBackupStatus", "Backup scaricato.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminBackupStatus", "Errore durante il backup Firebase.", true);
+  }
+};
+
+
+/* V175 - Lazy admin user collections and mobile Listone scroll top.
+   Admin initial load keeps active teamUsers because they are used by multiple
+   workflows, but pendingUsers and teamRequests are now loaded only when the
+   admin opens/requests the Utenti panels. This avoids two Firebase collection
+   scans on every admin login. */
+const ADMIN_LAZY_USER_COLLECTIONS_V175 = Object.freeze([
+  "pendingUsers",
+  "teamRequests"
+]);
+
+state.adminUserCollectionsLoadedV175 = Boolean(state.adminUserCollectionsLoadedV175);
+
+function getAdminInitialLoadCollectionsV175() {
+  return uniqueCollectionNamesV174(getAdminFullLoadCollectionsV174())
+    .filter((name) => !ADMIN_LAZY_USER_COLLECTIONS_V175.includes(name));
+}
+
+function getAdminCurrentLoadCollectionsV175() {
+  const names = getAdminInitialLoadCollectionsV175();
+  if (state.adminUserCollectionsLoadedV175) names.push(...ADMIN_LAZY_USER_COLLECTIONS_V175);
+  return uniqueCollectionNamesV174(names);
+}
+
+function applyAdminUserCollectionEntriesV175(entries) {
+  const loaded = Object.fromEntries(entries || []);
+  ADMIN_LAZY_USER_COLLECTIONS_V175.forEach((name) => {
+    state.raw[name] = Array.isArray(loaded[name]) ? loaded[name] : [];
+  });
+  state.adminUserCollectionsLoadedV175 = true;
+}
+
+async function loadAdminUserCollectionsV175(options = {}) {
+  const { render = true, expandPanelId = "adminPendingUsersPanel" } = options;
+  if (!state.isAdmin) return false;
+  document.querySelectorAll("[data-admin-load-user-collections]").forEach((button) => {
+    button.disabled = true;
+    button.textContent = "Caricamento...";
+  });
+  document.querySelectorAll("[data-admin-user-lazy-status-v175]").forEach((status) => {
+    status.textContent = "Carico utenti e richieste da Firebase...";
+  });
+  try {
+    const entries = await loadCollectionEntriesV174(ADMIN_LAZY_USER_COLLECTIONS_V175);
+    applyAdminUserCollectionEntriesV175(entries);
+    if (render) {
+      renderAll();
+      expandAdminPanel(expandPanelId);
+    }
+    return true;
+  } catch (error) {
+    console.error(error);
+    document.querySelectorAll("[data-admin-load-user-collections]").forEach((button) => {
+      button.disabled = false;
+      button.textContent = "Carica utenti e richieste";
+    });
+    document.querySelectorAll("[data-admin-user-lazy-status-v175]").forEach((status) => {
+      status.textContent = error?.message || "Errore durante il caricamento.";
+      status.classList.add("error");
+    });
+    return false;
+  }
+}
+
+function renderAdminUserLazyPanelV175(panelId, eyebrow, title, description) {
+  return renderAdminPanel(panelId, eyebrow, title, description, `
+    <div class="admin-list admin-lazy-panel-v175">
+      <p class="muted admin-empty-message">Dati non caricati all'apertura admin per ridurre le letture Firebase.</p>
+      <div class="form-actions">
+        <button class="button button-primary" type="button" data-admin-load-user-collections data-admin-target-panel="${escapeHtml(panelId)}">Carica utenti e richieste</button>
+        <span class="form-status" data-admin-user-lazy-status-v175>Caricamento manuale: pendingUsers e teamRequests.</span>
+      </div>
+    </div>`);
+}
+
+const renderPendingUsersAdminPanelBeforeV175 = renderPendingUsersAdminPanelV34;
+renderPendingUsersAdminPanelV34 = function renderPendingUsersAdminPanelV175() {
+  if (!state.adminUserCollectionsLoadedV175) {
+    return renderAdminUserLazyPanelV175(
+      "adminPendingUsersPanel",
+      "Utenti",
+      "Accetta utenti",
+      "Carica le registrazioni solo quando devi approvare nuovi presidenti."
+    );
+  }
+  return renderPendingUsersAdminPanelBeforeV175?.() || "";
+};
+
+const renderTeamRequestsAdminPanelBeforeV175 = renderTeamRequestsAdminPanelV34;
+renderTeamRequestsAdminPanelV34 = function renderTeamRequestsAdminPanelV175() {
+  if (!state.adminUserCollectionsLoadedV175) {
+    return renderAdminUserLazyPanelV175(
+      "adminTeamRequestsPanel",
+      "Presidenti",
+      "Richieste presidenti",
+      "Carica le richieste operative solo quando devi approvarle o rifiutarle."
+    );
+  }
+  return renderTeamRequestsAdminPanelBeforeV175?.() || "";
+};
+
+loadFullDataV32 = async function loadFullDataV175(options = {}) {
+  const { render = true } = options;
+  const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  await loadListoniData();
+  await loadRostersData();
+  sortData();
+  if (render) renderAll();
+};
+
+loadFullDataStableV100 = async function loadFullDataStableV175(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
+  await loadListoniData();
+  await loadRostersData();
+  await loadStaticCompetitionCalendarsV101();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
+  mergeStaticCompetitionCalendarsForSeasonV101(state.selectedSeasonId);
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+};
+
+renderBackupAdminPanel = function renderBackupAdminPanelV175() {
+  const backupCollections = getFirebaseBackupCollectionsV174();
+  const initialLoadCollections = getAdminInitialLoadCollectionsV175();
+  const lazyCollections = ADMIN_LAZY_USER_COLLECTIONS_V175;
+  return renderAdminPanel("adminBackupPanel", "Backup", "Download dati Firebase", "Scarica uno snapshot JSON delle raccolte Firestore usate dal sito.", `
+    <div class="form-actions">
+      <button id="adminDownloadFirebaseBackup" class="button button-primary" type="button">Scarica backup Firebase</button>
+      <span id="adminBackupStatus" class="form-status"></span>
+    </div>
+    <small class="field-hint">Il backup include: ${escapeHtml(backupCollections.join(", "))}.</small>
+    <small class="field-hint">Il caricamento admin iniziale legge: ${escapeHtml(initialLoadCollections.join(", "))}.</small>
+    <small class="field-hint">Caricate solo su richiesta: ${escapeHtml(lazyCollections.join(", "))}.</small>
+  `);
+};
+
+const attachAdminHandlersBeforeV175 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV175() {
+  attachAdminHandlersBeforeV175?.();
+  document.querySelectorAll("[data-admin-load-user-collections]").forEach((button) => {
+    button.addEventListener("click", () => loadAdminUserCollectionsV175({
+      render: true,
+      expandPanelId: button.dataset.adminTargetPanel || "adminPendingUsersPanel"
+    }));
+  });
+};
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("#listoneScrollTopBtnV175");
+  if (!button) return;
+  event.preventDefault();
+  if (typeof scrollMobilePageTopNowV172 === "function") {
+    scrollMobilePageTopNowV172();
+    window.requestAnimationFrame(scrollMobilePageTopNowV172);
+    window.setTimeout(scrollMobilePageTopNowV172, 80);
+    return;
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+}, true);
+
+
+/* V176 - Mobile Team Area delegated quick actions.
+   The mobile hub in the president Squadra page is rendered after the initial
+   navigation listeners are attached. A delegated handler makes the dynamic
+   "Tutte le rose" and "Mercato" actions behave like normal page navigation. */
+function getMobileTeamAreaQuickActionPageV176(action) {
+  return String(action?.dataset?.pageLink || action?.dataset?.v42PageLink || "").trim();
+}
+
+function navigateMobileTeamAreaQuickActionV176(pageName) {
+  const page = String(pageName || "").trim();
+  if (!page) return false;
+  closeMobileMoreMenu?.();
+  if (typeof setAppPageV42 === "function") {
+    setAppPageV42(page);
+  } else {
+    state.currentPage = page;
+    window.location.hash = `#${page}`;
+  }
+  if (page === "fantamercato" && typeof ensureTransferMarketDataV119 === "function") {
+    ensureTransferMarketDataV119({ force: true, reason: "mobile-teamarea-action" });
+  }
+  if (typeof scheduleMobilePageTopV172 === "function") {
+    scheduleMobilePageTopV172();
+  } else {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }
+  return true;
+}
+
+document.addEventListener("click", (event) => {
+  const action = event.target.closest?.(".mobile-teamarea-actions-v144 [data-page-link], .mobile-teamarea-actions-v144 [data-v42-page-link]");
+  if (!action) return;
+  const page = getMobileTeamAreaQuickActionPageV176(action);
+  if (!page) return;
+  event.preventDefault();
+  navigateMobileTeamAreaQuickActionV176(page);
+}, true);
+
+/* V177 - Firebase read diagnostics.
+   This lightweight monitor estimates Firestore reads from the main data paths
+   without changing the production flow. It helps validate the effect of static
+   JSON snapshots before going online. Exact billing can still differ because
+   Firestore counts cache/server behavior internally, so the UI labels it as an
+   estimate. */
+const FIREBASE_READ_DEBUG_STORAGE_KEY_V177 = "zonaOrientaleDebugReadsV177";
+
+state.firebaseReadStatsV177 = state.firebaseReadStatsV177 || {
+  startedAt: "",
+  reason: "",
+  total: 0,
+  entries: []
+};
+
+function isFirebaseReadDebugEnabledV177() {
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const value = params.get("debugReads");
+    if (value === "1" || value === "true") {
+      localStorage.setItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177, "1");
+      return true;
+    }
+    if (value === "0" || value === "false") {
+      localStorage.removeItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177);
+      return false;
+    }
+    return localStorage.getItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177) === "1";
+  } catch (_) {
+    return false;
+  }
+}
+
+function resetFirebaseReadStatsV177(reason = "") {
+  state.firebaseReadStatsV177 = {
+    startedAt: new Date().toISOString(),
+    reason: String(reason || ""),
+    total: 0,
+    entries: []
+  };
+  return state.firebaseReadStatsV177;
+}
+
+function recordFirebaseReadV177(label, count = 0, meta = {}) {
+  const numericCount = Number.isFinite(Number(count)) ? Math.max(0, Number(count)) : 0;
+  if (!state.firebaseReadStatsV177?.startedAt) resetFirebaseReadStatsV177("sessione");
+  const entry = {
+    at: new Date().toISOString(),
+    label: String(label || "Firebase"),
+    count: numericCount,
+    kind: meta.kind || "read",
+    source: meta.source || "firebase"
+  };
+  state.firebaseReadStatsV177.entries.push(entry);
+  state.firebaseReadStatsV177.total += numericCount;
+  return entry;
+}
+
+function getFirebaseReadSummaryV177() {
+  const stats = state.firebaseReadStatsV177 || resetFirebaseReadStatsV177("sessione");
+  const byLabel = new Map();
+  (stats.entries || []).forEach((entry) => {
+    const current = byLabel.get(entry.label) || 0;
+    byLabel.set(entry.label, current + (Number(entry.count) || 0));
+  });
+  const rows = [...byLabel.entries()]
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+  return {
+    startedAt: stats.startedAt || "",
+    reason: stats.reason || "",
+    total: stats.total || 0,
+    rows
+  };
+}
+
+function logFirebaseReadSummaryV177(reason = "") {
+  if (!isFirebaseReadDebugEnabledV177()) return;
+  const summary = getFirebaseReadSummaryV177();
+  const title = `[ZonaOrientale] Letture Firebase stimate${reason ? ` - ${reason}` : ""}: ${summary.total}`;
+  console.groupCollapsed(title);
+  console.table(summary.rows);
+  console.info("Dettaglio", state.firebaseReadStatsV177?.entries || []);
+  console.info("Nota: il totale e una stima applicativa, non il dato ufficiale di billing Firestore.");
+  console.groupEnd();
+}
+
+function renderFirebaseReadSummaryHtmlV177() {
+  const summary = getFirebaseReadSummaryV177();
+  const rows = summary.rows.slice(0, 6);
+  const details = rows.length
+    ? `<ul class="compact-list">${rows.map((row) => `<li><strong>${escapeHtml(row.label)}</strong>: ${escapeHtml(String(row.count))}</li>`).join("")}</ul>`
+    : `<p class="muted admin-empty-message">Nessuna lettura registrata in questa sessione.</p>`;
+  return `
+    <div class="admin-inline-note firebase-read-summary-v177">
+      <strong>Letture Firebase stimate nella sessione: ${escapeHtml(String(summary.total))}</strong>
+      ${details}
+      <small class="field-hint">Per vedere il riepilogo in console apri il sito con <code>?debugReads=1</code>. Disattiva con <code>?debugReads=0</code>.</small>
+    </div>`;
+}
+
+const getDocumentIfExistsBeforeV177 = getDocumentIfExistsV32;
+getDocumentIfExistsV32 = async function getDocumentIfExistsV177(collectionName, documentId) {
+  const result = await getDocumentIfExistsBeforeV177(collectionName, documentId);
+  recordFirebaseReadV177(`${collectionName}/${documentId}`, 1, { kind: "document" });
+  return result;
+};
+
+const loadCollectionEntriesBeforeV177 = loadCollectionEntriesV174;
+loadCollectionEntriesV174 = async function loadCollectionEntriesV177(collectionNames) {
+  const entries = await loadCollectionEntriesBeforeV177(collectionNames);
+  entries.forEach(([name, rows]) => {
+    recordFirebaseReadV177(name, Array.isArray(rows) ? rows.length : 0, { kind: "collection" });
+  });
+  return entries;
+};
+
+if (typeof loadTransferListingsForCurrentSeasonV133 === "function") {
+  const loadTransferListingsForCurrentSeasonBeforeV177 = loadTransferListingsForCurrentSeasonV133;
+  loadTransferListingsForCurrentSeasonV133 = async function loadTransferListingsForCurrentSeasonV177() {
+    const rows = await loadTransferListingsForCurrentSeasonBeforeV177();
+    if (Array.isArray(rows)) {
+      recordFirebaseReadV177("transferListings ACTIVE", rows.length, { kind: "query" });
+    }
+    return rows;
+  };
+}
+
+if (typeof loadTransferNegotiationsForCurrentUserV124 === "function") {
+  const loadTransferNegotiationsForCurrentUserBeforeV177 = loadTransferNegotiationsForCurrentUserV124;
+  loadTransferNegotiationsForCurrentUserV124 = async function loadTransferNegotiationsForCurrentUserV177() {
+    const rows = await loadTransferNegotiationsForCurrentUserBeforeV177();
+    if (Array.isArray(rows)) {
+      recordFirebaseReadV177("transferNegotiations utente", rows.length, { kind: "query" });
+    }
+    return rows;
+  };
+}
+
+const loadPublicDataForSelectedSeasonBeforeV177 = loadPublicDataForSelectedSeasonV100;
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV177(requestId, options = {}) {
+  resetFirebaseReadStatsV177("public-load");
+  const result = await loadPublicDataForSelectedSeasonBeforeV177(requestId, options);
+  logFirebaseReadSummaryV177("public-load");
+  return result;
+};
+
+const loadFullDataBeforeV177 = loadFullDataV32;
+loadFullDataV32 = async function loadFullDataV177(options = {}) {
+  resetFirebaseReadStatsV177("admin-load");
+  const result = await loadFullDataBeforeV177(options);
+  logFirebaseReadSummaryV177("admin-load");
+  return result;
+};
+
+const loadFullDataStableBeforeV177 = loadFullDataStableV100;
+loadFullDataStableV100 = async function loadFullDataStableV177(requestId, options = {}) {
+  resetFirebaseReadStatsV177("admin-load-stable");
+  const result = await loadFullDataStableBeforeV177(requestId, options);
+  logFirebaseReadSummaryV177("admin-load-stable");
+  return result;
+};
+
+const renderBackupAdminPanelBeforeV177 = renderBackupAdminPanel;
+renderBackupAdminPanel = function renderBackupAdminPanelV177() {
+  const html = renderBackupAdminPanelBeforeV177?.() || "";
+  if (!html || html.includes("firebase-read-summary-v177")) return html;
+  return html.replace('</div>\n    <small class="field-hint">', `</div>\n    ${renderFirebaseReadSummaryHtmlV177()}\n    <small class="field-hint">`);
+};
+
+window.ZonaOrientaleFirebaseReads = {
+  enable() {
+    localStorage.setItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177, "1");
+    logFirebaseReadSummaryV177("manuale");
+  },
+  disable() {
+    localStorage.removeItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177);
+  },
+  reset(reason = "manuale") {
+    return resetFirebaseReadStatsV177(reason);
+  },
+  summary() {
+    const summary = getFirebaseReadSummaryV177();
+    console.table(summary.rows);
+    return summary;
+  }
+};
+
+
+/* V178 - Admin light startup and localhost read diagnostics by default.
+   Admin users now start with the same lightweight public snapshot flow used by
+   visitors. Granular Firebase collections are loaded only when the admin opens
+   the Admin page and presses the explicit load button. This keeps normal admin
+   browsing from triggering hundreds of Firestore reads at startup. On localhost
+   the Firebase read diagnostic is enabled automatically; debugReads=0 still
+   disables it for the browser. */
+const FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178 = "zonaOrientaleDebugReadsLocalDisabledV178";
+
+function isLocalhostRuntimeV178() {
+  const host = String(window.location.hostname || "").toLowerCase();
+  return host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0" || host === "::1";
+}
+
+const isFirebaseReadDebugEnabledBeforeV178 = isFirebaseReadDebugEnabledV177;
+isFirebaseReadDebugEnabledV177 = function isFirebaseReadDebugEnabledV178() {
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const value = params.get("debugReads");
+    if (value === "1" || value === "true") {
+      localStorage.removeItem(FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178);
+      localStorage.setItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177, "1");
+      return true;
+    }
+    if (value === "0" || value === "false") {
+      localStorage.setItem(FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178, "1");
+      localStorage.removeItem(FIREBASE_READ_DEBUG_STORAGE_KEY_V177);
+      return false;
+    }
+    if (isLocalhostRuntimeV178() && localStorage.getItem(FIREBASE_READ_DEBUG_LOCAL_DISABLED_KEY_V178) !== "1") {
+      return true;
+    }
+  } catch (_) {
+    // Fall back to the previous opt-in behavior.
+  }
+  return isFirebaseReadDebugEnabledBeforeV178?.() || false;
+};
+
+state.adminFullCollectionsLoadedV178 = Boolean(state.adminFullCollectionsLoadedV178);
+state.adminFullDataLoadingV178 = false;
+state.adminLightModeV178 = false;
+
+function shouldUseAdminFullDataV178(options = {}) {
+  return Boolean(state.isAdmin && (options.forceFullAdminV178 || state.adminFullCollectionsLoadedV178));
+}
+
+function getAdminStartupModeLabelV178() {
+  if (!state.isAdmin) return "pubblico";
+  return state.adminFullCollectionsLoadedV178 ? "admin completo" : "admin leggero";
+}
+
+async function loadAdminFullDataForEditingV178(options = {}) {
+  const { render = true } = options;
+  const requestId = options.requestId || ++dataLoadSequenceV100;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  state.adminFullDataLoadingV178 = true;
+  if (typeof resetTransferMarketCacheV170 === "function") resetTransferMarketCacheV170();
+  if (typeof resetFirebaseReadStatsV177 === "function") resetFirebaseReadStatsV177("admin-full-on-demand");
+  try {
+    const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
+    await loadListoniData();
+    await loadRostersData();
+    if (typeof loadStaticCompetitionCalendarsV101 === "function") await loadStaticCompetitionCalendarsV101();
+    if (!isLatestDataLoadV100(requestId)) return false;
+
+    state.raw = buildRawFromEntriesV174(entries);
+    markFullAdminDataLoadedV174();
+    state.adminFullCollectionsLoadedV178 = true;
+    state.adminLightModeV178 = false;
+    state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
+    if (typeof mergeStaticCompetitionCalendarsForSeasonV101 === "function") {
+      mergeStaticCompetitionCalendarsForSeasonV101(state.selectedSeasonId);
+    }
+    sortData();
+    if (render) renderAll();
+    setError("");
+    if (typeof logFirebaseReadSummaryV177 === "function") logFirebaseReadSummaryV177("admin-full-on-demand");
+    return true;
+  } finally {
+    state.adminFullDataLoadingV178 = false;
+  }
+}
+
+const loadDataForCurrentAuthBeforeV178 = loadDataForCurrentAuthV100;
+loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV178(options = {}) {
+  if (!state.isAdmin) {
+    state.adminFullCollectionsLoadedV178 = false;
+    state.adminLightModeV178 = false;
+    return loadDataForCurrentAuthBeforeV178(options);
+  }
+
+  if (shouldUseAdminFullDataV178(options)) {
+    return loadAdminFullDataForEditingV178(options);
+  }
+
+  const requestId = ++dataLoadSequenceV100;
+  state.adminLightModeV178 = true;
+  if (typeof resetTransferMarketCacheV170 === "function") resetTransferMarketCacheV170();
+  const result = await loadPublicDataForSelectedSeasonV100(requestId, options);
+  state.adminLightModeV178 = true;
+  state.hasFullData = false;
+
+  if (typeof shouldLoadTransferMarketForPageV170 === "function" && shouldLoadTransferMarketForPageV170()) {
+    await ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170?.() || "admin-light" });
+  } else if (options.render && typeof renderTransferMarketDeferredStateV170 === "function") {
+    renderTransferMarketDeferredStateV170();
+  }
+  return result;
+};
+
+loadData = async function loadDataV178() {
+  return loadDataForCurrentAuthV100({ render: true });
+};
+
+function renderAdminLightGateV178() {
+  const collections = typeof getAdminInitialLoadCollectionsV175 === "function"
+    ? getAdminInitialLoadCollectionsV175()
+    : getAdminFullLoadCollectionsV174();
+  const buttonLabel = state.adminFullDataLoadingV178 ? "Caricamento dati..." : "Carica dati amministrazione";
+  return `
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">Area riservata</p>
+        <h2 id="adminTitle">Admin</h2>
+        <p>All'avvio stai usando la modalità admin leggero: i dati pubblici arrivano da JSON/snapshot, mentre le collection Firebase modificabili restano ferme.</p>
+      </div>
+    </div>
+    <section class="panel admin-light-gate-v178">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Firebase</p>
+          <h3>Dati amministrazione non ancora caricati</h3>
+          <p>Premi il bottone solo quando devi modificare dati, generare snapshot o scaricare backup Firebase.</p>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button id="adminLoadFullDataV178" class="button button-primary" type="button" ${state.adminFullDataLoadingV178 ? "disabled" : ""}>${escapeHtml(buttonLabel)}</button>
+        <span id="adminLoadFullDataStatusV178" class="form-status">Modalità corrente: ${escapeHtml(getAdminStartupModeLabelV178())}.</span>
+      </div>
+      <small class="field-hint">Il caricamento completo legge: ${escapeHtml(collections.join(", "))}.</small>
+    </section>`;
+}
+
+const renderAdminAreaBeforeV178 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV178() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (state.isAdmin && !state.adminFullCollectionsLoadedV178) {
+    if (adminPanel) adminPanel.innerHTML = renderAdminLightGateV178();
+    return;
+  }
+  return renderAdminAreaBeforeV178?.();
+};
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("#adminLoadFullDataV178");
+  if (!button) return;
+  event.preventDefault();
+  button.disabled = true;
+  button.textContent = "Caricamento dati...";
+  const status = document.getElementById("adminLoadFullDataStatusV178");
+  if (status) status.textContent = "Carico le collection modificabili da Firebase...";
+  try {
+    await loadAdminFullDataForEditingV178({ render: true, forceFullAdminV178: true });
+  } catch (error) {
+    console.error(error);
+    button.disabled = false;
+    button.textContent = "Riprova caricamento dati";
+    if (status) {
+      status.textContent = error?.message || "Errore durante il caricamento admin.";
+      status.classList.add("error");
+    }
+  }
+}, true);
+
+if (window.ZonaOrientaleFirebaseReads) {
+  window.ZonaOrientaleFirebaseReads.mode = () => getAdminStartupModeLabelV178();
+}
+
+
+/* V179 - Public static assets preflight.
+   Adds a no-Firebase pre-online check for the JSON files that should be served
+   from GitHub/static hosting: public config, season snapshots manifest, honor,
+   listoni, rose and static competitions. The check is available from the admin
+   light gate, from Backup after full admin load, and from the console. */
+const PUBLIC_ASSET_PREFLIGHT_STORAGE_KEY_V179 = "zonaOrientalePublicAssetsPreflightV179";
+
+function getPublicPreflightAssetsV179() {
+  return [
+    {
+      key: "config",
+      label: "Config pubblica",
+      url: typeof PUBLIC_CONFIG_URL_V171 === "string" ? PUBLIC_CONFIG_URL_V171 : "assets/public/config.json",
+      required: true,
+      validator: validatePublicConfigPreflightV179
+    },
+    {
+      key: "seasonSnapshotsManifest",
+      label: "Manifest snapshot stagioni",
+      url: typeof STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172 === "string" ? STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172 : "assets/snapshots/seasons/manifest.json",
+      required: true,
+      validator: validateSeasonSnapshotsManifestPreflightV179
+    },
+    {
+      key: "honor",
+      label: "Honor snapshot statico",
+      url: typeof STATIC_HONOR_SNAPSHOT_URL_V173 === "string" ? STATIC_HONOR_SNAPSHOT_URL_V173 : "assets/snapshots/honor.json",
+      required: true,
+      validator: validateHonorSnapshotPreflightV179
+    },
+    {
+      key: "listoni",
+      label: "Manifest listoni",
+      url: "assets/listoni/manifest.json",
+      required: true,
+      validator: (payload) => validateManifestArrayPreflightV179(payload, "listoni", "listone")
+    },
+    {
+      key: "rose",
+      label: "Manifest rose",
+      url: "assets/rose/manifest.json",
+      required: true,
+      validator: (payload) => validateManifestArrayPreflightV179(payload, "rosters", "rosa")
+    },
+    {
+      key: "competitions",
+      label: "Manifest competizioni statiche",
+      url: "assets/competitions/manifest.json",
+      required: false,
+      validator: (payload) => validateManifestArrayPreflightV179(payload, "competitions", "competizione")
+    }
+  ];
+}
+
+function getRuntimeVersionInfoV179() {
+  const appScript = document.querySelector('script[src*="assets/app.js"]');
+  const appSrc = appScript?.getAttribute("src") || "";
+  const versionMatch = appSrc.match(/[?&]v=([^&]+)/);
+  return {
+    appVersion: versionMatch?.[1] || "non trovato",
+    footer: document.querySelector(".app-footer p")?.textContent?.trim() || ""
+  };
+}
+
+function normalizePreflightDateV179(value) {
+  if (!value) return "";
+  try {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return String(value);
+    return date.toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" });
+  } catch (_) {
+    return String(value);
+  }
+}
+
+function validatePublicConfigPreflightV179(payload) {
+  const normalized = typeof normalizePublicConfigV171 === "function" ? normalizePublicConfigV171(payload) : null;
+  if (!normalized) {
+    return { status: "error", detail: "JSON valido ma config non riconosciuta" };
+  }
+  return {
+    status: "ok",
+    detail: `${normalized.seasons.length} stagioni · corrente ${normalized.currentSeasonId || "n/d"}${normalized.generatedAt ? ` · ${normalizePreflightDateV179(normalized.generatedAt)}` : ""}`
+  };
+}
+
+function validateSeasonSnapshotsManifestPreflightV179(payload) {
+  const snapshots = Array.isArray(payload?.snapshots) ? payload.snapshots : [];
+  if (!snapshots.length) {
+    return { status: "warn", detail: "manifest presente ma senza snapshot stagioni" };
+  }
+  const missingFiles = snapshots.filter((entry) => !entry?.file).length;
+  if (missingFiles) {
+    return { status: "warn", detail: `${snapshots.length} snapshot, ${missingFiles} senza file` };
+  }
+  const generatedAt = payload?.generatedAt ? ` · ${normalizePreflightDateV179(payload.generatedAt)}` : "";
+  return { status: "ok", detail: `${snapshots.length} snapshot stagioni${generatedAt}` };
+}
+
+function validateHonorSnapshotPreflightV179(payload) {
+  const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+  const honorRows = Array.isArray(snapshot?.honorRows) ? snapshot.honorRows.length : 0;
+  const palmares = Array.isArray(snapshot?.palmares) ? snapshot.palmares.length : 0;
+  const fifaRanking = Array.isArray(snapshot?.fifaRanking) ? snapshot.fifaRanking.length : 0;
+  if (!honorRows && !palmares && !fifaRanking) {
+    return { status: "error", detail: "nessun dato honor/palmarès/FIFA trovato" };
+  }
+  const generatedAt = snapshot?.generatedAt || payload?.generatedAt || "";
+  return {
+    status: "ok",
+    detail: `${honorRows} albo · ${palmares} palmarès · ${fifaRanking} ranking${generatedAt ? ` · ${normalizePreflightDateV179(generatedAt)}` : ""}`
+  };
+}
+
+function validateManifestArrayPreflightV179(payload, arrayKey, singularLabel) {
+  const rows = Array.isArray(payload?.[arrayKey]) ? payload[arrayKey] : [];
+  if (!rows.length) {
+    return { status: "warn", detail: `manifest presente ma senza ${singularLabel}` };
+  }
+  const missingFiles = rows.filter((entry) => !entry?.file).length;
+  const generatedAt = payload?.generatedAt ? ` · ${normalizePreflightDateV179(payload.generatedAt)}` : "";
+  if (missingFiles) {
+    return { status: "warn", detail: `${rows.length} voci, ${missingFiles} senza file` };
+  }
+  return { status: "ok", detail: `${rows.length} voci${generatedAt}` };
+}
+
+async function checkPublicAssetPreflightV179(asset) {
+  const startedAt = performance.now?.() || Date.now();
+  try {
+    const response = await fetch(asset.url, { cache: "no-store" });
+    const elapsedMs = Math.round((performance.now?.() || Date.now()) - startedAt);
+    if (!response.ok) {
+      return {
+        ...asset,
+        status: asset.required ? "error" : "warn",
+        httpStatus: response.status,
+        detail: `HTTP ${response.status}`,
+        elapsedMs
+      };
+    }
+    let payload = null;
+    try {
+      payload = await response.json();
+    } catch (error) {
+      return {
+        ...asset,
+        status: "error",
+        httpStatus: response.status,
+        detail: "risposta non è JSON valido",
+        elapsedMs
+      };
+    }
+    const validation = typeof asset.validator === "function" ? asset.validator(payload) : { status: "ok", detail: "JSON valido" };
+    return {
+      ...asset,
+      status: validation.status || "ok",
+      httpStatus: response.status,
+      detail: validation.detail || "JSON valido",
+      elapsedMs
+    };
+  } catch (error) {
+    return {
+      ...asset,
+      status: asset.required ? "error" : "warn",
+      httpStatus: 0,
+      detail: error?.message || "fetch fallito",
+      elapsedMs: Math.round((performance.now?.() || Date.now()) - startedAt)
+    };
+  }
+}
+
+function getPreflightSummaryV179(results) {
+  const total = results.length;
+  const ok = results.filter((item) => item.status === "ok").length;
+  const warn = results.filter((item) => item.status === "warn").length;
+  const error = results.filter((item) => item.status === "error").length;
+  return { total, ok, warn, error, passed: error === 0 };
+}
+
+function renderPreflightStatusLabelV179(status) {
+  if (status === "ok") return "OK";
+  if (status === "warn") return "Attenzione";
+  return "Errore";
+}
+
+function renderPreflightResultsHtmlV179(results) {
+  const summary = getPreflightSummaryV179(results);
+  const runtime = getRuntimeVersionInfoV179();
+  const rows = results.map((item) => `
+    <tr>
+      <td><strong>${escapeHtml(item.label)}</strong><br><small>${escapeHtml(item.url)}</small></td>
+      <td>${escapeHtml(renderPreflightStatusLabelV179(item.status))}</td>
+      <td>${escapeHtml(item.detail || "")}</td>
+      <td>${escapeHtml(String(item.elapsedMs ?? "-"))} ms</td>
+    </tr>`).join("");
+  return `
+    <div class="import-report public-preflight-report-v179">
+      <h3>Controllo pre-online asset pubblici</h3>
+      <p><strong>${summary.passed ? "Pronto" : "Da verificare"}</strong> · ${summary.ok}/${summary.total} ok · ${summary.warn} attenzioni · ${summary.error} errori.</p>
+      <p class="muted">Runtime: app.js?v=${escapeHtml(runtime.appVersion)} · ${escapeHtml(runtime.footer)}</p>
+      <div class="table-scroll">
+        <table class="admin-table compact-table">
+          <thead><tr><th>Asset</th><th>Stato</th><th>Dettaglio</th><th>Tempo</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+async function runPublicAssetsPreflightV179(options = {}) {
+  const { targetId = "", silent = false } = options;
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (target && !silent) {
+    target.classList.remove("hidden");
+    target.innerHTML = `<div class="import-report"><p>Controllo asset pubblici in corso...</p></div>`;
+  }
+  const assets = getPublicPreflightAssetsV179();
+  const results = [];
+  for (const asset of assets) {
+    // Sequential requests make the console/table easier to read and avoid noise.
+    results.push(await checkPublicAssetPreflightV179(asset));
+  }
+  const summary = getPreflightSummaryV179(results);
+  state.publicAssetsPreflightV179 = { summary, results, checkedAt: new Date().toISOString() };
+  try {
+    sessionStorage.setItem(PUBLIC_ASSET_PREFLIGHT_STORAGE_KEY_V179, JSON.stringify(state.publicAssetsPreflightV179));
+  } catch (_) {
+    // Non-critical: the visible result is already rendered.
+  }
+  if (target) {
+    target.classList.remove("hidden");
+    target.innerHTML = renderPreflightResultsHtmlV179(results);
+  }
+  if (isFirebaseReadDebugEnabledV177?.() || !silent) {
+    console.info(`[ZonaOrientale] Preflight asset pubblici: ${summary.ok}/${summary.total} ok, ${summary.warn} warning, ${summary.error} errori`);
+    console.table(results.map((item) => ({ asset: item.label, status: item.status, detail: item.detail, url: item.url })));
+  }
+  return { summary, results };
+}
+
+function renderPublicPreflightButtonV179(targetId = "publicAssetsPreflightReportV179") {
+  return `
+    <div class="form-actions public-preflight-actions-v179">
+      <button class="button button-secondary" type="button" data-run-public-preflight-v179="${escapeHtml(targetId)}">Controlla asset pubblici</button>
+      <span class="form-status">Non usa Firebase: controlla solo JSON statici.</span>
+    </div>
+    <div id="${escapeHtml(targetId)}" class="hidden"></div>`;
+}
+
+const renderAdminLightGateBeforeV179 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV179) {
+  renderAdminLightGateV178 = function renderAdminLightGateV179() {
+    let html = renderAdminLightGateBeforeV179();
+    if (!html.includes('data-run-public-preflight-v179')) {
+      html = html.replace('</section>', `${renderPublicPreflightButtonV179("publicAssetsPreflightReportLightV179")}</section>`);
+    }
+    return html;
+  };
+}
+
+const renderBackupAdminPanelBeforeV179 = renderBackupAdminPanel;
+renderBackupAdminPanel = function renderBackupAdminPanelV179() {
+  let html = renderBackupAdminPanelBeforeV179?.() || "";
+  if (html && !html.includes('publicAssetsPreflightReportBackupV179')) {
+    html = html.replace('</article>', `${renderPublicPreflightButtonV179("publicAssetsPreflightReportBackupV179")}</article>`);
+  }
+  return html;
+};
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("[data-run-public-preflight-v179]");
+  if (!button) return;
+  event.preventDefault();
+  const targetId = button.dataset.runPublicPreflightV179 || "publicAssetsPreflightReportV179";
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.textContent = "Controllo in corso...";
+  try {
+    await runPublicAssetsPreflightV179({ targetId });
+  } finally {
+    button.disabled = false;
+    button.textContent = previousText || "Controlla asset pubblici";
+  }
+}, true);
+
+window.ZonaOrientalePreflight = {
+  check(options = {}) {
+    return runPublicAssetsPreflightV179({ ...options, silent: options.silent ?? false });
+  },
+  assets() {
+    return getPublicPreflightAssetsV179().map(({ key, label, url, required }) => ({ key, label, url, required }));
+  },
+  last() {
+    return state.publicAssetsPreflightV179 || null;
+  }
+};
+
+/* V180/V181 - Final online readiness checklist.
+   Keeps the deploy check in the admin UI without touching Firebase: it reuses
+   the static asset preflight from V179, verifies cache-busters/footer version,
+   and highlights whether the current admin session is still lightweight. */
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV186";
+const DEPLOY_EXPECTED_VERSION_V181 = "186";
+
+function getRuntimeAssetsVersionInfoV180() {
+  const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
+  const scripts = [...document.querySelectorAll('script[src*=".js?v="]')].map((node) => node.getAttribute("src") || "");
+  const extractVersion = (value) => {
+    const match = String(value || "").match(/[?&]v=([^&]+)/);
+    return match?.[1] || "non trovato";
+  };
+  const versions = [...links, ...scripts].map(extractVersion).filter(Boolean);
+  const uniqueVersions = [...new Set(versions)];
+  const footer = document.querySelector(".app-footer p")?.textContent?.trim() || "";
+  const footerVersion = footer.match(/V(\d+)/)?.[1] || "non trovato";
+  return { links, scripts, uniqueVersions, footer, footerVersion };
+}
+
+function renderDeployStatusBadgeV180(status) {
+  if (status === "ok") return "OK";
+  if (status === "warn") return "Attenzione";
+  return "Errore";
+}
+
+function buildDeployRuntimeChecksV180(preflightSummary) {
+  const runtime = getRuntimeAssetsVersionInfoV180();
+  const appMode = typeof getAdminStartupModeLabelV178 === "function" ? getAdminStartupModeLabelV178() : (state.isAdmin ? "admin" : "pubblico");
+  const readsSummary = typeof getFirebaseReadSummaryV177 === "function" ? getFirebaseReadSummaryV177() : { total: 0, rows: [] };
+  const checks = [];
+
+  const expectedVersion = DEPLOY_EXPECTED_VERSION_V181 || "181";
+  const versionsOk = runtime.uniqueVersions.length === 1 && runtime.uniqueVersions[0] === expectedVersion && runtime.footerVersion === expectedVersion;
+  checks.push({
+    key: "versions",
+    label: "Version e cache-buster",
+    status: versionsOk ? "ok" : "warn",
+    detail: versionsOk
+      ? `Footer e asset puntano a V${expectedVersion}.`
+      : `Footer V${runtime.footerVersion}; asset ${runtime.uniqueVersions.join(", ") || "non trovati"}; atteso ${expectedVersion}.`
+  });
+
+  if (preflightSummary) {
+    checks.push({
+      key: "static-assets",
+      label: "Asset pubblici GitHub",
+      status: preflightSummary.error ? "error" : (preflightSummary.warn ? "warn" : "ok"),
+      detail: `${preflightSummary.ok}/${preflightSummary.total} ok · ${preflightSummary.warn} attenzioni · ${preflightSummary.error} errori.`
+    });
+  } else {
+    checks.push({
+      key: "static-assets",
+      label: "Asset pubblici GitHub",
+      status: "warn",
+      detail: "Preflight non eseguito: premi Checklist online finale."
+    });
+  }
+
+  const lightweightAdminOk = !state.isAdmin || appMode === "admin leggero" || appMode === "pubblico";
+  checks.push({
+    key: "admin-mode",
+    label: "Modalità admin all'avvio",
+    status: lightweightAdminOk ? "ok" : "warn",
+    detail: state.isAdmin
+      ? `Modalità corrente: ${appMode}. Per testare l'avvio leggero, ricarica la pagina prima di premere Carica dati amministrazione.`
+      : "Sessione pubblica/non admin."
+  });
+
+  const readTotal = Number(readsSummary?.total || 0);
+  const readStatus = readTotal <= 30 ? "ok" : (readTotal <= 120 ? "warn" : "error");
+  checks.push({
+    key: "reads",
+    label: "Letture Firebase sessione",
+    status: state.isAdmin && appMode === "admin completo" ? "warn" : readStatus,
+    detail: `${readTotal} letture stimate. Il full-load admin resta previsto solo dopo il bottone Carica dati amministrazione.`
+  });
+
+  const localDebug = typeof isFirebaseReadDebugEnabledV177 === "function" ? isFirebaseReadDebugEnabledV177() : false;
+  checks.push({
+    key: "debug",
+    label: "Diagnostica locale",
+    status: localDebug || !isLocalhostRuntimeV178?.() ? "ok" : "warn",
+    detail: localDebug ? "Debug letture attivo in questa sessione." : "Debug letture non attivo; usa ?debugReads=1 se vuoi verificare."
+  });
+
+  return checks;
+}
+
+function summarizeDeployChecksV180(checks) {
+  const summary = checks.reduce((acc, item) => {
+    acc.total += 1;
+    acc[item.status] = (acc[item.status] || 0) + 1;
+    return acc;
+  }, { total: 0, ok: 0, warn: 0, error: 0 });
+  summary.passed = summary.error === 0;
+  return summary;
+}
+
+function renderDeployChecklistHtmlV180(checks, checkedAt = new Date().toISOString()) {
+  const summary = summarizeDeployChecksV180(checks);
+  const rows = checks.map((item) => `
+    <tr>
+      <td><strong>${escapeHtml(item.label)}</strong></td>
+      <td>${escapeHtml(renderDeployStatusBadgeV180(item.status))}</td>
+      <td>${escapeHtml(item.detail || "")}</td>
+    </tr>`).join("");
+  const title = summary.error ? "Da correggere prima dell'online" : (summary.warn ? "Quasi pronto" : "Pronto per l'online");
+  return `
+    <div class="import-report deploy-checklist-report-v180">
+      <h3>Checklist online finale</h3>
+      <p><strong>${escapeHtml(title)}</strong> · ${summary.ok}/${summary.total} ok · ${summary.warn} attenzioni · ${summary.error} errori.</p>
+      <p class="muted">Controllo eseguito: ${escapeHtml(normalizePreflightDateV179(checkedAt))}. Non scrive su Firebase.</p>
+      <div class="table-scroll">
+        <table class="admin-table compact-table">
+          <thead><tr><th>Controllo</th><th>Stato</th><th>Dettaglio</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <small class="field-hint">Prima del push finale esegui anche un test anonimo/incognito e un test login presidente.</small>
+    </div>`;
+}
+
+async function runDeployChecklistV180(options = {}) {
+  const { targetId = "", silent = false } = options;
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (target && !silent) {
+    target.classList.remove("hidden");
+    target.innerHTML = `<div class="import-report"><p>Checklist online in corso...</p></div>`;
+  }
+
+  let preflightSummary = null;
+  try {
+    if (typeof runPublicAssetsPreflightV179 === "function") {
+      const preflight = await runPublicAssetsPreflightV179({ silent: true });
+      preflightSummary = preflight?.summary || null;
+    }
+  } catch (error) {
+    console.warn("[ZonaOrientale] Preflight asset pubblici non completato", error);
+  }
+
+  const checks = buildDeployRuntimeChecksV180(preflightSummary);
+  const checkedAt = new Date().toISOString();
+  const payload = { checkedAt, summary: summarizeDeployChecksV180(checks), checks };
+  state.deployChecklistV180 = payload;
+  try {
+    sessionStorage.setItem(DEPLOY_CHECKLIST_STORAGE_KEY_V180, JSON.stringify(payload));
+  } catch (_) {
+    // Non-critical: the report is visible in the UI.
+  }
+  if (target) {
+    target.classList.remove("hidden");
+    target.innerHTML = renderDeployChecklistHtmlV180(checks, checkedAt);
+  }
+  if (!silent || typeof isFirebaseReadDebugEnabledV177 !== "function" || isFirebaseReadDebugEnabledV177()) {
+    console.info(`[ZonaOrientale] Checklist online: ${payload.summary.ok}/${payload.summary.total} ok, ${payload.summary.warn} warning, ${payload.summary.error} errori`);
+    console.table(checks.map((item) => ({ check: item.label, status: item.status, detail: item.detail })));
+  }
+  return payload;
+}
+
+function renderDeployChecklistButtonV180(targetId = "deployChecklistReportV180") {
+  return `
+    <div class="form-actions deploy-checklist-actions-v180">
+      <button class="button button-primary" type="button" data-run-deploy-checklist-v180="${escapeHtml(targetId)}">Checklist online finale</button>
+      <span class="form-status">Verifica versioni, asset statici e letture stimate.</span>
+    </div>
+    <div id="${escapeHtml(targetId)}" class="hidden"></div>`;
+}
+
+const renderAdminLightGateBeforeV180 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV180) {
+  renderAdminLightGateV178 = function renderAdminLightGateV180() {
+    let html = renderAdminLightGateBeforeV180();
+    if (html && !html.includes('deployChecklistReportLightV180')) {
+      html = html.replace('</section>', `${renderDeployChecklistButtonV180("deployChecklistReportLightV180")}</section>`);
+    }
+    return html;
+  };
+}
+
+const renderBackupAdminPanelBeforeV180 = renderBackupAdminPanel;
+renderBackupAdminPanel = function renderBackupAdminPanelV180() {
+  let html = renderBackupAdminPanelBeforeV180?.() || "";
+  if (html && !html.includes('deployChecklistReportBackupV180')) {
+    html = html.replace('</article>', `${renderDeployChecklistButtonV180("deployChecklistReportBackupV180")}</article>`);
+  }
+  return html;
+};
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("[data-run-deploy-checklist-v180]");
+  if (!button) return;
+  event.preventDefault();
+  const targetId = button.dataset.runDeployChecklistV180 || "deployChecklistReportV180";
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.textContent = "Checklist in corso...";
+  try {
+    await runDeployChecklistV180({ targetId });
+  } finally {
+    button.disabled = false;
+    button.textContent = previousText || "Checklist online finale";
+  }
+}, true);
+
+window.ZonaOrientaleDeploy = {
+  check(options = {}) {
+    return runDeployChecklistV180({ ...options, silent: options.silent ?? false });
+  },
+  last() {
+    return state.deployChecklistV180 || null;
+  },
+  runtime() {
+    return getRuntimeAssetsVersionInfoV180();
+  }
+};
+
+/* V182 - Auth dashboard landing.
+   Admin and president login/logout actions now land on Dashboard instead of
+   leaving the user on Admin, Squadra, Mercato or another protected tab. The
+   capture listeners set the SPA page before Firebase auth changes complete; a
+   short auth-state follow-up keeps the destination stable after renderAll(). */
+const AUTH_DASHBOARD_PENDING_KEY_V182 = "zonaOrientaleAuthDashboardPendingV182";
+let lastAuthUidV182;
+
+function setAuthDashboardPendingV182(reason = "auth") {
+  try {
+    sessionStorage.setItem(AUTH_DASHBOARD_PENDING_KEY_V182, JSON.stringify({
+      reason: String(reason || "auth"),
+      at: Date.now()
+    }));
+  } catch (_) {
+    state.authDashboardPendingV182 = { reason: String(reason || "auth"), at: Date.now() };
+  }
+}
+
+function getAuthDashboardPendingV182() {
+  try {
+    const raw = sessionStorage.getItem(AUTH_DASHBOARD_PENDING_KEY_V182);
+    if (!raw) return state.authDashboardPendingV182 || null;
+    const parsed = JSON.parse(raw);
+    if (!parsed?.at || Date.now() - Number(parsed.at) > 10000) {
+      sessionStorage.removeItem(AUTH_DASHBOARD_PENDING_KEY_V182);
+      return null;
+    }
+    return parsed;
+  } catch (_) {
+    return state.authDashboardPendingV182 || null;
+  }
+}
+
+function clearAuthDashboardPendingV182() {
+  state.authDashboardPendingV182 = null;
+  try {
+    sessionStorage.removeItem(AUTH_DASHBOARD_PENDING_KEY_V182);
+  } catch (_) {
+    // Non-critical.
+  }
+}
+
+function navigateAuthDashboardV182(options = {}) {
+  const { clearPending = false, replaceHistory = true } = options;
+  state.currentPage = "dashboard";
+  state.activeTeamProfileSeasonTeamId = "";
+
+  if (typeof setAppPageV42 === "function") {
+    setAppPageV42("dashboard");
+    if (replaceHistory && window.location.hash !== "#dashboard") {
+      window.history.replaceState(null, "", "#dashboard");
+    }
+  } else {
+    document.querySelectorAll(".app-page").forEach((page) => {
+      page.classList.toggle("is-active", page.dataset.page === "dashboard");
+    });
+    document.querySelectorAll("[data-page-link]").forEach((link) => {
+      link.classList.toggle("active", link.dataset.pageLink === "dashboard");
+    });
+    if (replaceHistory) window.history.replaceState(null, "", "#dashboard");
+  }
+
+  closeMobileMoreMenu?.();
+  updateMobileNavState?.();
+  if (typeof scheduleMobilePageTopV172 === "function") scheduleMobilePageTopV172();
+  else window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+  if (clearPending) clearAuthDashboardPendingV182();
+}
+
+function scheduleAuthDashboardLandingV182(reason = "auth") {
+  setAuthDashboardPendingV182(reason);
+  navigateAuthDashboardV182({ clearPending: false });
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: false }), 80);
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: false }), 320);
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: true }), 900);
+}
+
+document.addEventListener("submit", (event) => {
+  if (event.target?.id !== "loginForm") return;
+  scheduleAuthDashboardLandingV182("login-email");
+}, true);
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest?.("#loginGoogleBtn")) {
+    scheduleAuthDashboardLandingV182("login-google");
+    return;
+  }
+  if (event.target.closest?.("#logoutBtn")) {
+    scheduleAuthDashboardLandingV182("logout");
+  }
+}, true);
+
+onAuthStateChanged(auth, (user) => {
+  const uid = user?.uid || "";
+  const changed = lastAuthUidV182 !== undefined && lastAuthUidV182 !== uid;
+  lastAuthUidV182 = uid;
+  if (!changed && !getAuthDashboardPendingV182()) return;
+  if (!getAuthDashboardPendingV182()) return;
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: false }), 120);
+  window.setTimeout(() => navigateAuthDashboardV182({ clearPending: true }), 850);
+});
+
+
+/* V185 - Admin mobile actions and inline admin help.
+   Mobile admins keep Dark/Light, Aggiorna dati, Account and Logout on one row.
+   Snapshot public buttons have centered text and the Admin page gets an
+   explanatory block at the bottom so every maintenance action is documented in UI. */
+function renderAdminHelpPanelV185() {
+  return `
+    <section class="panel admin-help-v185" aria-labelledby="adminHelpTitleV185">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Guida rapida</p>
+          <h3 id="adminHelpTitleV185">Cosa fanno le funzioni Admin</h3>
+          <p>Riepilogo operativo delle funzioni principali. I controlli di diagnostica non scrivono su Firebase.</p>
+        </div>
+      </div>
+      <div class="admin-help-grid-v185">
+        <article>
+          <h4>Carica dati amministrazione</h4>
+          <p>Passa da admin leggero ad admin completo e legge le collection Firebase modificabili. Usalo solo quando devi gestire dati o backup.</p>
+        </article>
+        <article>
+          <h4>Stagioni, presidenti e squadre</h4>
+          <p>Gestiscono anagrafiche base, squadre storiche, presidenti e associazioni delle squadre alle singole stagioni.</p>
+        </article>
+        <article>
+          <h4>Rose e movimenti FM</h4>
+          <p>Permette di aggiornare rose, acquisti, vendite, svincoli, scambi e saldo fantamilioni.</p>
+        </article>
+        <article>
+          <h4>Competizioni, partite e risultati</h4>
+          <p>Crea competizioni, calendari e risultati. Le competizioni concluse possono essere pubblicate come JSON statici su GitHub.</p>
+        </article>
+        <article>
+          <h4>FIFA Ranking e Comunicati</h4>
+          <p>Aggiorna ranking FIFA e news/comunicati visibili nella parte pubblica del sito.</p>
+        </article>
+        <article>
+          <h4>Snapshot pubblici</h4>
+          <p>Genera documenti compatti per il pubblico: stagione, albo/FIFA e schede squadra. Servono a ridurre molte letture Firebase.</p>
+        </article>
+        <article>
+          <h4>Scarica config e JSON statici</h4>
+          <p>Produce file da salvare nella repo GitHub: config, honor e snapshot stagioni. Se pubblicati, il sito li legge senza consumare Firestore.</p>
+        </article>
+        <article>
+          <h4>Controlla asset pubblici</h4>
+          <p>Verifica che i JSON statici siano presenti nei percorsi corretti. Fa solo fetch HTTP e non scrive né legge collection Firebase.</p>
+        </article>
+        <article>
+          <h4>Checklist online finale</h4>
+          <p>Controlla versione, cache-buster, asset statici, modalità admin leggera e letture stimate prima del deploy.</p>
+        </article>
+        <article>
+          <h4>Backup Firebase</h4>
+          <p>Scarica uno snapshot completo dei dati Firebase. Richiede admin completo perché legge le collection modificabili.</p>
+        </article>
+      </div>
+    </section>`;
+}
+
+const renderAdminLightGateBeforeV185 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV185) {
+  renderAdminLightGateV178 = function renderAdminLightGateV185() {
+    const html = renderAdminLightGateBeforeV185() || "";
+    if (html.includes("admin-help-v185")) return html;
+    return `${html}${renderAdminHelpPanelV185()}`;
+  };
+}
+
+const renderAdminAreaBeforeV185 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV185() {
+  const result = renderAdminAreaBeforeV185?.();
+  const adminPanel = document.getElementById("adminPanel");
+  if (state.isAdmin && adminPanel && !adminPanel.querySelector(".admin-help-v185")) {
+    adminPanel.insertAdjacentHTML("beforeend", renderAdminHelpPanelV185());
+  }
+  return result;
+};
+
+/* V186 - Final startup remains centralized here. */
+startZonaOrientaleAppV173();

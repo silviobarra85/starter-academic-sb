@@ -1,0 +1,5140 @@
+/* V168 - Mobile CSS suite.
+   Consolidates mobile-block/mobile-hotfix files V140-V167 in original load order.
+   Desktop rules remain guarded by existing mobile media queries/selectors. */
+
+
+/* ---- mobile-block-ui-v140.css ---- */
+
+/* V140 - Mobile Home a blocchi. Desktop invariato: il blocco resta nascosto fuori dalla UX mobile. */
+.mobile-block-dashboard {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="dashboard"] .page-heading {
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .mobile-block-dashboard {
+    display: block;
+    margin: 0 0 18px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] > .cards-grid,
+  body.is-mobile-ux .app-page[data-page="dashboard"] > .dashboard-grid,
+  body.is-mobile-ux .app-page[data-page="dashboard"] > #dashboardNewsPanel {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-block-hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(61, 220, 151, 0.26);
+    border-radius: 22px;
+    padding: 18px;
+    margin-bottom: 12px;
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.18), transparent 36%),
+      linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(15, 23, 42, 0.92));
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  body.is-mobile-ux .mobile-block-hero::before {
+    content: "";
+    position: absolute;
+    inset: 14px auto 14px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #34d399, rgba(52, 211, 153, 0.08));
+  }
+
+  body.is-mobile-ux .mobile-block-hero h3 {
+    margin: 2px 0 4px;
+    font-size: 1.28rem;
+    line-height: 1.15;
+  }
+
+  body.is-mobile-ux .mobile-block-hero p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  body.is-mobile-ux .mobile-home-blocks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  body.is-mobile-ux .mobile-home-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: start;
+    width: 100%;
+    min-height: 106px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 20px;
+    padding: 14px;
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.9)),
+      radial-gradient(circle at bottom right, rgba(61, 220, 151, 0.13), transparent 42%);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  }
+
+  body.is-mobile-ux .mobile-home-card::before {
+    content: "";
+    position: absolute;
+    inset: 12px auto 12px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: rgba(61, 220, 151, 0.55);
+  }
+
+  body.is-mobile-ux .mobile-home-card.is-primary {
+    border-color: rgba(61, 220, 151, 0.42);
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.2), transparent 42%),
+      linear-gradient(135deg, rgba(6, 78, 59, 0.36), rgba(15, 23, 42, 0.94));
+  }
+
+  body.is-mobile-ux .mobile-home-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.2rem;
+  }
+
+  body.is-mobile-ux .mobile-home-content {
+    min-width: 0;
+  }
+
+  body.is-mobile-ux .mobile-home-kicker {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux .mobile-home-card h3 {
+    margin: 0 0 5px;
+    font-size: 1.02rem;
+    line-height: 1.18;
+  }
+
+  body.is-mobile-ux .mobile-home-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux .mobile-home-card strong.mobile-home-value {
+    display: block;
+    margin: 6px 0 2px;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  body.is-mobile-ux .mobile-home-action-row {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+    padding-left: 54px;
+  }
+
+  body.is-mobile-ux .mobile-home-action {
+    min-height: 34px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  body.is-mobile-ux .mobile-home-card .status-badge,
+  body.is-mobile-ux .mobile-home-card .badge {
+    vertical-align: middle;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .mobile-block-hero,
+  html[data-theme="light"] body.is-mobile-ux .mobile-home-card {
+    background:
+      radial-gradient(circle at top right, rgba(22, 163, 74, 0.14), transparent 42%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.9));
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .mobile-home-icon {
+    background: rgba(15, 23, 42, 0.05);
+    border-color: rgba(15, 23, 42, 0.08);
+  }
+}
+
+
+/* ---- mobile-unified-ui-v141.css ---- */
+
+/* V141 - Mobile UI unificata: bottom nav, Fantamercato card, Area squadra e Admin a blocchi. Desktop invariato. */
+.mobile-transfer-card-list {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux {
+    padding-bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav-v141 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2px;
+    padding: 8px max(8px, env(safe-area-inset-left, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-right, 0px));
+    border-top: 1px solid rgba(61, 220, 151, 0.24);
+    background:
+      radial-gradient(circle at top left, rgba(61, 220, 151, 0.14), transparent 34%),
+      rgba(8, 13, 24, 0.96);
+    backdrop-filter: blur(14px);
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav-v141 .mobile-bottom-link {
+    min-width: 0;
+    min-height: 52px;
+    padding: 6px 4px;
+    border-radius: 16px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav-v141 .mobile-nav-icon {
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav-v141 .mobile-bottom-link.active,
+  body.is-mobile-ux .mobile-bottom-nav-v141 .mobile-bottom-link[aria-expanded="true"] {
+    color: #ecfdf5;
+    border: 1px solid rgba(61, 220, 151, 0.42);
+    background: rgba(61, 220, 151, 0.16);
+    box-shadow: 0 10px 24px rgba(16, 185, 129, 0.12);
+  }
+
+  body.is-mobile-ux .mobile-more-sheet {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.is-mobile-ux .transfer-market-panel .panel-header {
+    display: block;
+  }
+
+  body.is-mobile-ux .transfer-market-panel .filters-row {
+    width: 100%;
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: stretch;
+  }
+
+  body.is-mobile-ux #transferMarketTeamFilter,
+  body.is-mobile-ux #transferMarketSearch {
+    width: 100%;
+    min-height: 42px;
+    text-align: center;
+    font-size: 0.96rem;
+  }
+
+  body.is-mobile-ux #transferMarketTeamFilter option {
+    font-size: 1rem;
+  }
+
+  body.is-mobile-ux .transfer-market-table-wrap {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(61, 220, 151, 0.22);
+    border-radius: 20px;
+    padding: 14px;
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.12), transparent 40%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.92));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+  }
+
+  body.is-mobile-ux .mobile-transfer-card::before {
+    content: "";
+    position: absolute;
+    inset: 12px auto 12px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #34d399, rgba(52, 211, 153, 0.08));
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-title {
+    min-width: 0;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-title h3 {
+    margin: 0 0 5px;
+    font-size: 1.04rem;
+    line-height: 1.16;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-conditions {
+    margin: 12px 0;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  body.is-mobile-ux .mobile-transfer-card-actions .button {
+    min-height: 36px;
+    border-radius: 999px;
+    flex: 1 1 auto;
+  }
+
+  body.is-mobile-ux .team-area-summary-panel,
+  body.is-mobile-ux .trade-proposal-panel,
+  body.is-mobile-ux .trade-list-panel,
+  body.is-mobile-ux .app-page[data-page="teamarea"] #teamAreaBody > .panel {
+    border-radius: 22px;
+    border: 1px solid rgba(61, 220, 151, 0.18);
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.08), transparent 38%),
+      var(--surface);
+  }
+
+  body.is-mobile-ux .team-area-profile-action .button,
+  body.is-mobile-ux .trade-proposal-form .button,
+  body.is-mobile-ux .trade-list-panel .button {
+    min-height: 38px;
+  }
+
+  body.is-mobile-ux .trade-proposal-form {
+    gap: 12px;
+  }
+
+  body.is-mobile-ux .trade-proposal-form select[multiple] {
+    min-height: 148px;
+    font-size: 0.92rem;
+  }
+
+  body.is-mobile-ux .trade-clear-selection-button {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  body.is-mobile-ux .trade-lists-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.is-mobile-ux .trade-list-column {
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 18px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux .admin-category-section {
+    border-radius: 22px;
+  }
+
+  body.is-mobile-ux .admin-category-header {
+    gap: 10px;
+  }
+
+  body.is-mobile-ux .admin-category-header h2,
+  body.is-mobile-ux .admin-panel summary h2,
+  body.is-mobile-ux .admin-panel summary h3 {
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  body.is-mobile-ux .admin-panel summary {
+    align-items: center;
+    gap: 10px;
+  }
+
+  body.is-mobile-ux .admin-panel summary .button,
+  body.is-mobile-ux .admin-panel summary::marker {
+    flex-shrink: 0;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .mobile-bottom-nav-v141 {
+    background:
+      radial-gradient(circle at top left, rgba(22, 163, 74, 0.12), transparent 34%),
+      rgba(255, 255, 255, 0.96);
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .mobile-transfer-card {
+    background:
+      radial-gradient(circle at top right, rgba(22, 163, 74, 0.12), transparent 40%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.9));
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+  }
+}
+
+
+/* ---- mobile-rosters-v143.css ---- */
+
+/* V143 - Rose mobile a card. Solo smartphone/tablet; desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="clubs"] .page-heading {
+    margin-bottom: 14px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] .panel-header {
+    display: block;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] .panel-header .filters-row {
+    width: 100%;
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  body.is-mobile-ux #marketClubFilter,
+  body.is-mobile-ux #marketSearch {
+    width: 100%;
+    min-height: 42px;
+    text-align: center;
+    font-size: 0.96rem;
+  }
+
+  body.is-mobile-ux #marketClubFilter option {
+    font-size: 1rem;
+  }
+
+  body.is-mobile-ux #rosterClubCards.roster-table-container {
+    display: block;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-season-table-wrap {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-season-table,
+  body.is-mobile-ux #rosterClubCards .roster-season-table thead,
+  body.is-mobile-ux #rosterClubCards .roster-season-table tbody,
+  body.is-mobile-ux #rosterClubCards .roster-season-table tr,
+  body.is-mobile-ux #rosterClubCards .roster-season-table td {
+    display: block;
+    width: 100%;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-season-table thead {
+    display: none;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-season-table tbody {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin: 0;
+    padding: 14px;
+    border: 1px solid rgba(61, 220, 151, 0.22);
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.13), transparent 40%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.93));
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row::before {
+    content: "";
+    position: absolute;
+    inset: 12px auto 12px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #34d399, rgba(52, 211, 153, 0.08));
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row.is-expanded {
+    border-color: rgba(61, 220, 151, 0.42);
+    box-shadow: 0 18px 42px rgba(16, 185, 129, 0.13);
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td {
+    min-width: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.86rem;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td:not(.roster-team-name) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 34px;
+    padding: 8px 10px;
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td:not(.roster-team-name)::before {
+    content: attr(data-label);
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-name {
+    grid-column: 1 / -1;
+    margin-bottom: 2px;
+    padding-left: 2px;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-name .club-name-with-logo,
+  body.is-mobile-ux #rosterClubCards .roster-team-name .team-name-with-logo,
+  body.is-mobile-ux #rosterClubCards .roster-team-name > span {
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-name strong {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.02rem;
+    line-height: 1.16;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td[data-label="Presidenti"] {
+    grid-column: 1 / -1;
+    align-items: flex-start;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td[data-label="Presidenti"]::before {
+    padding-top: 2px;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td[data-label="Stadio"] {
+    grid-column: 1 / -1;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td[data-label="Azione"] {
+    grid-column: 1 / -1;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td[data-label="Azione"]::before {
+    content: none;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row td[data-label="Azione"] .button {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 999px;
+    justify-content: center;
+    font-weight: 900;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-detail-row {
+    margin-top: -6px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-detail-row > td {
+    display: block;
+    border: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-inline-table-wrap {
+    margin: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(61, 220, 151, 0.18);
+    background: rgba(8, 13, 24, 0.58);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-player-table {
+    min-width: 540px;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-player-table th,
+  body.is-mobile-ux #rosterClubCards .roster-player-table td {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-size: 0.78rem;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-player-table .roster-col-player {
+    min-width: 185px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTitle + p {
+    font-size: 0.86rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] .panel[aria-labelledby="marketActivityTitle"] .table-wrap {
+    overflow-x: visible;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTableBody tr {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    margin-bottom: 12px;
+    padding: 13px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTableBody td {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    font-size: 0.82rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTableBody td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTableBody td[data-label="Giocatore"],
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTableBody td[data-label="Note"] {
+    display: block;
+  }
+
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTableBody td[data-label="Giocatore"]::before,
+  body.is-mobile-ux .app-page[data-page="clubs"] #marketActivityTableBody td[data-label="Note"]::before {
+    display: block;
+    margin-bottom: 3px;
+  }
+}
+
+
+/* ---- mobile-teamarea-v144.css ---- */
+
+/* V144 - Area squadra mobile operativa. Solo mobile, desktop invariato. */
+.mobile-teamarea-hub-v144 {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .mobile-teamarea-hub-v144 {
+    display: block;
+    margin: 12px 0 16px;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-hero-v144 {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(61, 220, 151, 0.24);
+    border-radius: 24px;
+    padding: 16px 16px 18px 18px;
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.16), transparent 42%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.93));
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  body.is-mobile-ux .mobile-teamarea-hero-v144::before {
+    content: "";
+    position: absolute;
+    inset: 14px auto 14px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #34d399, rgba(52, 211, 153, 0.08));
+  }
+
+  body.is-mobile-ux .mobile-teamarea-kicker-v144 {
+    display: inline-flex;
+    margin-bottom: 7px;
+    color: #86efac;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-hero-v144 h3 {
+    margin: 0;
+    font-size: 1.22rem;
+    line-height: 1.12;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-hero-v144 p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-stats-v144 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 10px 0;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-stats-v144 span {
+    min-width: 0;
+    padding: 10px 8px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.035);
+    text-align: center;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-stats-v144 strong {
+    display: block;
+    font-size: 1.04rem;
+    line-height: 1;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-stats-v144 small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-actions-v144 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-action-v144 {
+    appearance: none;
+    -webkit-appearance: none;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 2px 9px;
+    min-height: 68px;
+    padding: 12px;
+    border: 1px solid rgba(61, 220, 151, 0.18);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    text-align: left;
+    text-decoration: none;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-action-v144 span {
+    grid-row: 1 / 3;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-action-v144 strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.88rem;
+    line-height: 1.12;
+  }
+
+  body.is-mobile-ux .mobile-teamarea-action-v144 small {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.12;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .team-area-summary-panel {
+    margin-bottom: 0;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .team-area-summary-panel .panel-header h2,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-proposal-panel .panel-header h2,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-list-panel .panel-header h2 {
+    font-size: 1.05rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .team-area-summary-panel .panel-header p,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-proposal-panel .panel-header p,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-list-panel .panel-header p {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .user-request-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .metric-card {
+    padding: 10px 12px;
+    border-radius: 16px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-proposal-form label {
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-proposal-form .input {
+    min-height: 42px;
+    font-size: 0.95rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-proposal-form select[multiple] {
+    min-height: 170px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-validation {
+    border-radius: 16px;
+    padding: 10px 12px;
+    font-size: 0.86rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-submit-button,
+  body.is-mobile-ux .app-page[data-page="teamarea"] #tradeSubmitButton {
+    width: 100%;
+    min-height: 42px;
+    border-radius: 999px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-list-column h3 {
+    margin: 0 0 10px;
+    font-size: 0.98rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-card {
+    border-radius: 18px;
+    border: 1px solid rgba(61, 220, 151, 0.16);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-card summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-card summary strong {
+    font-size: 0.9rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-card summary small {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-card-body {
+    padding: 0 12px 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-summary-grid > div {
+    border-radius: 14px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .trade-actions .button {
+    width: 100%;
+    min-height: 38px;
+    justify-content: center;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .mobile-teamarea-hero-v144 {
+    background:
+      radial-gradient(circle at top right, rgba(22, 163, 74, 0.12), transparent 42%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.92));
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+  }
+}
+
+
+/* ---- mobile-competitions-v145.css ---- */
+
+/* V145 - Competizioni mobile compatte.
+   Solo smartphone/tablet; desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="competitions"] .page-heading {
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .page-heading h2 {
+    font-size: 1.32rem;
+    line-height: 1.12;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .panel {
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .panel-header.compact {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .panel-header.compact h2 {
+    margin-bottom: 4px;
+    font-size: 1.04rem;
+    line-height: 1.15;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .panel-header.compact p {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-card {
+    position: relative;
+    overflow: hidden;
+    padding: 13px !important;
+    border-radius: 22px;
+    border-color: rgba(61, 220, 151, 0.22);
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.12), transparent 42%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.92));
+    box-shadow: 0 15px 34px rgba(0, 0, 0, 0.18);
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-card::before {
+    content: "";
+    position: absolute;
+    inset: 12px auto 12px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #34d399, rgba(52, 211, 153, 0.08));
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-card-header-with-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px !important;
+    margin-bottom: 8px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-card-header h3 {
+    margin: 0;
+    font-size: 1.04rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-card-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-card-actions .status {
+    order: 1;
+    min-height: 26px;
+    padding: 4px 8px;
+    font-size: 0.64rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-open-button {
+    order: 2;
+    flex: 0 0 auto;
+    min-height: 28px !important;
+    padding: 5px 9px !important;
+    border-radius: 999px;
+    font-size: 0.66rem !important;
+    font-weight: 900;
+    line-height: 1 !important;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-card > p {
+    margin: 6px 0 8px;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .podium-mini-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .podium-mini-item {
+    padding: 9px 10px;
+    border-radius: 15px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .detail-section,
+  body.is-mobile-ux .app-page[data-page="competitions"] .compact-detail-section,
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-match-stage-group {
+    margin-top: 10px;
+    padding: 10px !important;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-match-stage-summary {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 8px !important;
+    margin-bottom: 8px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-match-stage-summary h4,
+  body.is-mobile-ux .app-page[data-page="competitions"] .compact-detail-section h4 {
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.72rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-stage-toggle-label,
+  body.is-mobile-ux .app-page[data-page="competitions"] .details-toggle-label {
+    min-height: 24px;
+    max-width: 90px;
+    padding: 4px 7px;
+    font-size: 0.56rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap table,
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap thead,
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap tbody,
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap tr,
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap th,
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap td,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap table,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap thead,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap tbody,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap tr,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap th,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap td {
+    display: table !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap thead,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap thead {
+    display: table-header-group !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap tbody,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap tbody {
+    display: table-row-group !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap tr,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap th,
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap td,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap th,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap td {
+    display: table-cell !important;
+    min-height: 0 !important;
+    padding: 8px 9px !important;
+    white-space: nowrap !important;
+    font-size: 0.76rem;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap td::before,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap table {
+    width: max-content !important;
+    min-width: 520px !important;
+    table-layout: auto !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap th:first-child,
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap td:first-child {
+    width: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    text-align: left !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap th:nth-child(2),
+  body.is-mobile-ux .app-page[data-page="competitions"] .result-table-wrap td:nth-child(2) {
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap table {
+    width: max-content !important;
+    min-width: 600px !important;
+    table-layout: auto !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap th:first-child,
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-table-wrap td:first-child {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    text-align: left !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .match-teams-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .club-name-with-logo,
+  body.is-mobile-ux .app-page[data-page="competitions"] .team-name-with-logo {
+    gap: 5px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="competitions"] .club-logo {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+  }
+
+  /* Pagina singola competizione: stesso mood, ma calendario completo. */
+  body.is-mobile-ux .competition-page-main {
+    padding-top: 10px;
+  }
+
+  body.is-mobile-ux .competition-page-main .page-heading {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .competition-page-main .page-heading h1 {
+    margin-bottom: 4px;
+    font-size: 1.34rem;
+    line-height: 1.12;
+  }
+
+  body.is-mobile-ux .competition-page-meta {
+    gap: 6px;
+  }
+
+  body.is-mobile-ux .competition-page-results-section,
+  body.is-mobile-ux .competition-page-stage-group {
+    padding: 10px !important;
+    border-radius: 18px !important;
+  }
+
+  body.is-mobile-ux .competition-page-stage-group .competition-match-stage-summary h2,
+  body.is-mobile-ux .competition-page-stage-group .competition-match-stage-summary h4 {
+    font-size: 0.74rem;
+  }
+
+  body.is-mobile-ux .competition-page-match-table-wrap table {
+    min-width: 840px !important;
+  }
+
+  body.is-mobile-ux .competition-page-match-table-wrap table th:first-child,
+  body.is-mobile-ux .competition-page-match-table-wrap table td:first-child {
+    width: 420px !important;
+    min-width: 420px !important;
+    max-width: 420px !important;
+  }
+
+  body.is-mobile-ux .competition-page-results-section .result-table-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.is-mobile-ux .competition-page-results-section .result-table-wrap table {
+    width: max-content !important;
+    min-width: 560px !important;
+    table-layout: auto !important;
+  }
+
+  body.is-mobile-ux .competition-page-results-section .result-table-wrap th:first-child,
+  body.is-mobile-ux .competition-page-results-section .result-table-wrap td:first-child {
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    text-align: left !important;
+  }
+
+  body.is-mobile-ux .competition-page-results-section .result-table-wrap th:nth-child(2),
+  body.is-mobile-ux .competition-page-results-section .result-table-wrap td:nth-child(2) {
+    width: 230px !important;
+    min-width: 230px !important;
+    max-width: 230px !important;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="competitions"] .competition-card {
+    background:
+      radial-gradient(circle at top right, rgba(22, 163, 74, 0.14), transparent 42%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.99), rgba(240, 253, 244, 0.9));
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+  }
+}
+
+
+/* ---- mobile-listone-v146.css ---- */
+
+/* V146 - Listone mobile search-first. Solo smartphone/tablet; desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="listone"] .page-heading {
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 13px;
+    border-radius: 24px;
+    border-color: rgba(61, 220, 151, 0.2);
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.12), transparent 40%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.94));
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel::before {
+    content: "";
+    position: absolute;
+    inset: 14px auto 14px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #34d399, rgba(52, 211, 153, 0.08));
+    pointer-events: none;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel > .panel-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 11px;
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel > .panel-header h2 {
+    margin: 0 0 4px;
+    font-size: 1.22rem;
+    line-height: 1.12;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel > .panel-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux #listoneMetaText {
+    display: block;
+    margin-top: 8px;
+    padding: 9px 10px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  body.is-mobile-ux .listone-filter-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100%;
+    padding: 11px;
+    border: 1px solid rgba(61, 220, 151, 0.16);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux #listoneSeasonFilter,
+  body.is-mobile-ux #listoneSearch {
+    width: 100%;
+    min-height: 42px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  body.is-mobile-ux #listoneSearch {
+    order: -1;
+    font-weight: 800;
+  }
+
+  body.is-mobile-ux .listone-status-filters,
+  body.is-mobile-ux .listone-role-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.36);
+  }
+
+  body.is-mobile-ux .listone-role-filters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body.is-mobile-ux .listone-status-filters legend,
+  body.is-mobile-ux .listone-role-filters legend {
+    grid-column: 1 / -1;
+    margin-bottom: 2px;
+    color: #86efac;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux .listone-status-filters label,
+  body.is-mobile-ux .listone-role-filters label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    gap: 5px;
+    padding: 7px 8px;
+    border: 1px solid rgba(61, 220, 151, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.045);
+    font-size: 0.76rem;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux .listone-role-filters label {
+    padding-inline: 4px;
+  }
+
+  body.is-mobile-ux .listone-status-filters input,
+  body.is-mobile-ux .listone-role-filters input {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+  }
+
+  body.is-mobile-ux #listoneColumnControls {
+    width: 100%;
+  }
+
+  body.is-mobile-ux .column-visibility-control {
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux .column-visibility-control > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 12px;
+    cursor: pointer;
+  }
+
+  body.is-mobile-ux .column-visibility-control > summary strong {
+    font-size: 0.84rem;
+  }
+
+  body.is-mobile-ux .column-visibility-control > summary span {
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  body.is-mobile-ux .column-toggle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 0 10px 10px;
+  }
+
+  body.is-mobile-ux .column-toggle-item {
+    min-height: 32px;
+    padding: 7px 8px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  body.is-mobile-ux .listone-table-wrap {
+    max-width: 100%;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    background: rgba(8, 13, 24, 0.4);
+  }
+
+  body.is-mobile-ux .listone-table {
+    min-width: 620px !important;
+    font-size: 0.78rem;
+  }
+
+  body.is-mobile-ux .listone-table th,
+  body.is-mobile-ux .listone-table td {
+    padding: 8px 7px !important;
+    vertical-align: middle;
+  }
+
+  body.is-mobile-ux .listone-table th:first-child,
+  body.is-mobile-ux .listone-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    min-width: 142px !important;
+    max-width: 142px !important;
+    background: rgba(15, 23, 42, 0.98);
+    box-shadow: 8px 0 14px rgba(0, 0, 0, 0.16);
+  }
+
+  body.is-mobile-ux .listone-table th:first-child {
+    z-index: 4;
+  }
+
+  body.is-mobile-ux .listone-player-cell .link-button,
+  body.is-mobile-ux .listone-player-link {
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.82rem !important;
+  }
+
+  body.is-mobile-ux .listone-table .status {
+    min-height: 22px;
+    padding: 4px 7px;
+    font-size: 0.62rem;
+  }
+
+  body.is-mobile-ux .listone-table .club-logo,
+  body.is-mobile-ux .listone-table .team-logo,
+  body.is-mobile-ux .listone-table .team-logo-fallback {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+/* ---- mobile-admin-v147.css ---- */
+
+/* V147 - Admin mobile a blocchi.
+   Solo mobile: migliora la leggibilità dell'area Admin senza toccare desktop. */
+
+@media (max-width: 760px) {
+  #adminPanel {
+    padding-bottom: 6.5rem;
+  }
+
+  #adminPanel > .page-heading {
+    margin-bottom: 0.9rem;
+  }
+
+  #adminPanel > .page-heading h2 {
+    font-size: 1.55rem;
+  }
+
+  #adminPanel > .page-heading p:not(.eyebrow) {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  #adminPanel .admin-category-section {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 1rem;
+    padding: 0.9rem;
+    border: 1px solid rgba(25, 195, 125, 0.24);
+    border-radius: 22px;
+    background:
+      linear-gradient(135deg, rgba(25, 195, 125, 0.12), rgba(20, 184, 166, 0.04) 46%, rgba(255,255,255,0.02)),
+      rgba(255,255,255,0.035);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+  }
+
+  #adminPanel .admin-category-section::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, rgba(25,195,125,0.95), rgba(20,184,166,0.25));
+    border-radius: 999px;
+  }
+
+  #adminPanel .admin-category-heading {
+    padding: 0 0 0.7rem 0.45rem;
+    margin: 0;
+    border: 0;
+  }
+
+  #adminPanel .admin-category-heading-main {
+    gap: 0.2rem;
+  }
+
+  #adminPanel .admin-category-kicker,
+  #adminPanel .admin-category-heading .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: rgba(25, 195, 125, 0.95);
+  }
+
+  #adminPanel .admin-category-heading h2 {
+    margin: 0.08rem 0 0.2rem;
+    font-size: 1.14rem;
+    line-height: 1.15;
+  }
+
+  #adminPanel .admin-category-heading p {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.38;
+    color: var(--muted, rgba(255,255,255,0.72));
+  }
+
+  #adminPanel .admin-category-body {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0;
+  }
+
+  #adminPanel .admin-category-body > .panel,
+  #adminPanel .admin-category-body > .admin-collapsible-panel {
+    margin: 0;
+    padding: 0.82rem;
+    border-radius: 18px;
+    border-color: rgba(255,255,255,0.10);
+    background: rgba(10, 16, 22, 0.42);
+    box-shadow: none;
+  }
+
+  #adminPanel .admin-category-body > .panel .panel-header {
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  #adminPanel .admin-category-body > .panel .panel-header > div:first-child {
+    min-width: 0;
+  }
+
+  #adminPanel .admin-category-body > .panel .panel-header h2 {
+    font-size: 1rem;
+    line-height: 1.18;
+    margin: 0.05rem 0 0.15rem;
+  }
+
+  #adminPanel .admin-category-body > .panel .panel-header p:not(.eyebrow) {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.8rem;
+    line-height: 1.32;
+    margin: 0;
+  }
+
+  #adminPanel .admin-category-body > .panel .panel-actions {
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+
+  #adminPanel [data-admin-toggle-panel] {
+    min-height: 34px;
+    padding: 0.38rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  #adminPanel .admin-collapsible-panel.is-collapsed {
+    padding-bottom: 0.82rem;
+  }
+
+  #adminPanel .admin-collapsible-panel.is-collapsed > :not(.panel-header) {
+    display: none !important;
+  }
+
+  #adminPanel .form-grid,
+  #adminPanel .admin-inline-form,
+  #adminPanel .filter-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem;
+  }
+
+  #adminPanel .form-actions,
+  #adminPanel .span-2 {
+    grid-column: auto !important;
+  }
+
+  #adminPanel .form-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  #adminPanel .form-actions .button,
+  #adminPanel .admin-match-actions .button,
+  #adminPanel .admin-list-item .button {
+    min-height: 36px;
+  }
+
+  #adminPanel .admin-list-item {
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 0.76rem;
+    border-radius: 15px;
+  }
+
+  #adminPanel .admin-list-item > span:first-child {
+    min-width: 0;
+  }
+
+  #adminPanel .admin-list-item > span:last-child,
+  #adminPanel .admin-match-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: flex-start;
+  }
+
+  #adminPanel .admin-subsection-block {
+    margin: 0.65rem 0;
+    padding: 0.78rem;
+    border-radius: 16px;
+  }
+
+  #adminPanel .admin-subsection-headerline {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  #adminPanel .admin-subsection-headerline h3 {
+    font-size: 0.98rem;
+  }
+
+  #adminPanel .admin-subsection-headerline .status,
+  #adminPanel .admin-subsection-headerline .badge {
+    margin-top: 0.05rem;
+    white-space: nowrap;
+  }
+
+  #adminPanel .table-wrap,
+  #adminPanel .admin-table-wrap,
+  #adminPanel .match-table-wrap,
+  #adminPanel .result-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #adminPanel table {
+    min-width: 640px;
+  }
+
+  #adminPanel input,
+  #adminPanel select,
+  #adminPanel textarea,
+  #adminPanel .input {
+    min-height: 40px;
+    font-size: 0.92rem;
+  }
+
+  #adminPanel .field-hint,
+  #adminPanel small {
+    line-height: 1.35;
+  }
+
+  #adminPanel .status,
+  #adminPanel .badge,
+  #adminPanel .source-badge,
+  #adminPanel .admin-source-badge {
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 420px) {
+  #adminPanel .admin-category-section {
+    margin-left: -0.15rem;
+    margin-right: -0.15rem;
+    padding: 0.78rem;
+    border-radius: 20px;
+  }
+
+  #adminPanel .admin-category-body > .panel,
+  #adminPanel .admin-category-body > .admin-collapsible-panel {
+    padding: 0.72rem;
+    border-radius: 16px;
+  }
+
+  #adminPanel .admin-category-body > .panel .panel-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  #adminPanel [data-admin-toggle-panel] {
+    padding-inline: 0.5rem;
+  }
+}
+
+
+/* ---- mobile-content-v148.css ---- */
+
+/* V148 - Rifiniture mobile per contenuti informativi: News, Albo, Regolamento e pagine secondarie. */
+@media (max-width: 720px) {
+  body {
+    padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .app-page[data-page="news"] .page-heading,
+  .app-page[data-page="honor"] .page-heading,
+  .app-page[data-page="regolamento"] .regulation-panel > .panel-header {
+    margin-bottom: 12px;
+    border-radius: 22px;
+    border: 1px solid rgba(34, 197, 94, 0.24);
+    background:
+      radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 42%),
+      linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.82));
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
+  }
+
+  .app-page[data-page="news"] .page-heading h2,
+  .app-page[data-page="honor"] .page-heading h2,
+  .app-page[data-page="regolamento"] .regulation-panel h2 {
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+
+  .app-page[data-page="news"] .panel,
+  .app-page[data-page="honor"] .panel,
+  .app-page[data-page="regolamento"] .panel {
+    border-radius: 22px;
+  }
+
+  .app-page[data-page="news"] .panel-header,
+  .app-page[data-page="honor"] .panel-header,
+  .app-page[data-page="regolamento"] .panel-header {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .news-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .news-card-details {
+    border: 1px solid rgba(34, 197, 94, 0.16);
+    border-radius: 20px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 244, 0.82));
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
+    overflow: hidden;
+  }
+
+  .news-card-summary {
+    min-height: 70px;
+    padding: 14px 14px 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .news-card-summary::marker {
+    content: "";
+  }
+
+  .news-card-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .news-card-summary h3 {
+    margin: 3px 0 0;
+    font-size: 1rem;
+    line-height: 1.22;
+  }
+
+  .news-card-summary small:first-child {
+    display: inline-flex;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    color: #166534;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .news-card-summary > small:last-child {
+    max-width: 86px;
+    padding-top: 2px;
+    text-align: right;
+    font-size: 0.72rem;
+    color: #64748b;
+    line-height: 1.2;
+  }
+
+  .news-card-detail-body {
+    padding: 0 14px 14px;
+    color: #1e293b;
+    font-size: 0.92rem;
+    line-height: 1.48;
+  }
+
+  .app-page[data-page="honor"] .single-panel-layout {
+    display: block;
+  }
+
+  .honor-table-wrap,
+  .fifa-ranking-table-wrap,
+  .palmares-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 18px;
+  }
+
+  .honor-table-wrap table,
+  .fifa-ranking-table-wrap table,
+  .palmares-table-wrap table {
+    min-width: 680px;
+  }
+
+  .fifa-ranking-table-wrap table,
+  .palmares-table-wrap table {
+    min-width: 360px;
+  }
+
+  .palmares-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .palmares-competition-card,
+  .app-page[data-page="honor"] .detail-section {
+    border-radius: 20px;
+    border: 1px solid rgba(34, 197, 94, 0.14);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.72));
+  }
+
+  .club-name-with-logo {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .club-name-with-logo strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .rules-inline-wrap {
+    display: block;
+  }
+
+  .rules-index {
+    position: static;
+    margin-bottom: 14px;
+    padding: 14px;
+    border-radius: 22px;
+    border: 1px solid rgba(34, 197, 94, 0.20);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.78));
+  }
+
+  .rules-index h3 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  .rules-index-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .rules-index-grid a {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.07);
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .rules-inline-content {
+    display: grid;
+    gap: 12px;
+  }
+
+  .rules-section {
+    padding: 16px 14px;
+    border: 1px solid rgba(34, 197, 94, 0.14);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96));
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+  }
+
+  .rules-section h2 {
+    font-size: 1.08rem;
+    line-height: 1.2;
+  }
+
+  .rules-section p,
+  .rules-section li {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .rules-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 16px;
+  }
+
+  .rules-table {
+    min-width: 520px;
+  }
+
+  .rules-section .eyebrow {
+    width: fit-content;
+    min-width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    color: #166534;
+  }
+
+  .mobile-bottom-sheet-v141 {
+    max-height: min(76vh, 560px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-bottom-link,
+  .mobile-more-link {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (max-width: 420px) {
+  .rules-index-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-card-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .news-card-summary > small:last-child {
+    max-width: none;
+    text-align: left;
+  }
+}
+
+
+/* ---- mobile-final-polish-v149.css ---- */
+
+/* V149 - Rifinitura finale mobile.
+   Solo UX mobile: uniforma spaziature, touch target, overflow e leggibilità.
+   Desktop invariato. */
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: rgba(61, 220, 151, 0.18);
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.is-mobile-ux .container {
+    width: min(100% - 18px, 1180px);
+  }
+
+  body.is-mobile-ux .app-main {
+    padding-top: 12px;
+  }
+
+  body.is-mobile-ux .app-page {
+    scroll-margin-top: 76px;
+  }
+
+  body.is-mobile-ux .page-heading,
+  body.is-mobile-ux .panel,
+  body.is-mobile-ux .card,
+  body.is-mobile-ux .metric-card,
+  body.is-mobile-ux .admin-category-section,
+  body.is-mobile-ux .mobile-block-card,
+  body.is-mobile-ux .mobile-transfer-card,
+  body.is-mobile-ux .mobile-teamarea-hero-v144,
+  body.is-mobile-ux .club-card,
+  body.is-mobile-ux .competition-card {
+    max-width: 100%;
+  }
+
+  body.is-mobile-ux .page-heading {
+    border-radius: 24px;
+  }
+
+  body.is-mobile-ux .page-heading h2,
+  body.is-mobile-ux .panel-header h3,
+  body.is-mobile-ux .section-title,
+  body.is-mobile-ux .admin-category-title {
+    letter-spacing: -0.02em;
+  }
+
+  body.is-mobile-ux .page-heading p,
+  body.is-mobile-ux .panel-header p,
+  body.is-mobile-ux .muted,
+  body.is-mobile-ux .helper-text {
+    line-height: 1.45;
+  }
+
+  body.is-mobile-ux button,
+  body.is-mobile-ux .button,
+  body.is-mobile-ux .btn,
+  body.is-mobile-ux .button-small,
+  body.is-mobile-ux .ghost-button,
+  body.is-mobile-ux .primary-button,
+  body.is-mobile-ux .secondary-button,
+  body.is-mobile-ux .danger-button,
+  body.is-mobile-ux .mobile-block-link,
+  body.is-mobile-ux .mobile-teamarea-action,
+  body.is-mobile-ux .mobile-bottom-link,
+  body.is-mobile-ux .mobile-more-link {
+    touch-action: manipulation;
+  }
+
+  body.is-mobile-ux button:not(.icon-button):not(.chip):not(.mobile-bottom-link),
+  body.is-mobile-ux .button,
+  body.is-mobile-ux .btn,
+  body.is-mobile-ux .primary-button,
+  body.is-mobile-ux .secondary-button,
+  body.is-mobile-ux .danger-button,
+  body.is-mobile-ux .ghost-button {
+    min-height: 38px;
+  }
+
+  body.is-mobile-ux input,
+  body.is-mobile-ux select,
+  body.is-mobile-ux textarea {
+    font-size: 16px;
+    min-height: 40px;
+  }
+
+  body.is-mobile-ux textarea {
+    line-height: 1.45;
+  }
+
+  body.is-mobile-ux .filters-row,
+  body.is-mobile-ux .actions-row,
+  body.is-mobile-ux .panel-actions,
+  body.is-mobile-ux .form-actions {
+    gap: 8px;
+  }
+
+  body.is-mobile-ux .badge,
+  body.is-mobile-ux .status-badge,
+  body.is-mobile-ux .source-badge,
+  body.is-mobile-ux .mini-badge,
+  body.is-mobile-ux .player-status,
+  body.is-mobile-ux .tag {
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux .table-wrap,
+  body.is-mobile-ux .result-table-wrap,
+  body.is-mobile-ux .match-table-wrap,
+  body.is-mobile-ux .scroll-table-wrap,
+  body.is-mobile-ux .admin-table-wrap,
+  body.is-mobile-ux .listone-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  body.is-mobile-ux table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  body.is-mobile-ux th,
+  body.is-mobile-ux td {
+    vertical-align: middle;
+  }
+
+  body.is-mobile-ux .team-logo,
+  body.is-mobile-ux .club-logo,
+  body.is-mobile-ux .match-logo,
+  body.is-mobile-ux .avatar-logo {
+    flex: 0 0 auto;
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav-v141 {
+    z-index: 1000;
+    min-height: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.is-mobile-ux .mobile-bottom-link {
+    min-width: 0;
+    min-height: 54px;
+    border-radius: 17px;
+  }
+
+  body.is-mobile-ux .mobile-bottom-link span:last-child {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux .mobile-more-sheet {
+    max-height: min(78vh, 620px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.is-mobile-ux .mobile-more-link {
+    min-height: 42px;
+  }
+
+  body.is-mobile-ux .mobile-block-grid,
+  body.is-mobile-ux .mobile-teamarea-actions-v144,
+  body.is-mobile-ux .mobile-transfer-card-list {
+    gap: 10px;
+  }
+
+  body.is-mobile-ux .mobile-block-card,
+  body.is-mobile-ux .mobile-transfer-card,
+  body.is-mobile-ux .mobile-teamarea-hero-v144,
+  body.is-mobile-ux .mobile-teamarea-action {
+    box-shadow: 0 14px 32px rgba(2, 6, 23, 0.18);
+  }
+
+  body.is-mobile-ux .mobile-block-card:active,
+  body.is-mobile-ux .mobile-transfer-card:active,
+  body.is-mobile-ux .mobile-teamarea-action:active,
+  body.is-mobile-ux .mobile-bottom-link:active {
+    transform: translateY(1px);
+  }
+
+  body.is-mobile-ux .alert,
+  body.is-mobile-ux .notice,
+  body.is-mobile-ux .empty-state {
+    border-radius: 18px;
+    line-height: 1.45;
+  }
+
+  body.is-mobile-ux .alert small,
+  body.is-mobile-ux .notice small,
+  body.is-mobile-ux .empty-state small {
+    display: block;
+    margin-top: 4px;
+    opacity: 0.82;
+  }
+
+  body.is-mobile-ux .app-footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 390px) {
+  body.is-mobile-ux .container {
+    width: min(100% - 14px, 1180px);
+  }
+
+  body.is-mobile-ux .mobile-bottom-link {
+    font-size: 0.68rem;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  body.is-mobile-ux .mobile-nav-icon {
+    font-size: 1rem;
+  }
+
+  body.is-mobile-ux .page-heading h2 {
+    font-size: clamp(1.25rem, 7vw, 1.6rem);
+  }
+}
+
+
+/* ---- mobile-hotfix-v150.css ---- */
+
+/* V150 - Hotfix mobile: leggibilita regolamento dark e partite Coppe compatte.
+   Desktop invariato. */
+
+.mobile-cup-match-list-v150 {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-wrap,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table-wrap {
+    color: #e5e7eb;
+    background:
+      radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 38%),
+      linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.94));
+    border-color: rgba(74, 222, 128, 0.24);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section p,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section li,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-list,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-note,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table td {
+    color: #e5e7eb;
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h2,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h3,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index h3,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    color: #f8fafc;
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index-grid a {
+    color: #dcfce7;
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(74, 222, 128, 0.26);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section .eyebrow {
+    color: #052e16;
+    background: #86efac;
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table {
+    background: rgba(15, 23, 42, 0.96);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    background: rgba(22, 101, 52, 0.42);
+  }
+
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table td,
+  body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    border-color: rgba(148, 163, 184, 0.22);
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-wrap,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table-wrap {
+    color: #0f172a;
+    background:
+      radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 42%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.88));
+    border-color: rgba(34, 197, 94, 0.20);
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section p,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section li,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-list,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-inline-note,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table td {
+    color: #1e293b;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h2,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-section h3,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index h3,
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table th {
+    color: #0f172a;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-index-grid a {
+    color: #166534;
+    background: rgba(34, 197, 94, 0.10);
+    border-color: rgba(34, 197, 94, 0.20);
+  }
+
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 > .table-wrap {
+    display: none;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-list-v150 {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    min-height: 42px;
+    padding: 9px 10px;
+    border: 1px solid rgba(34, 197, 94, 0.18);
+    border-radius: 16px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(240, 253, 244, 0.70));
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled {
+    border-color: rgba(59, 130, 246, 0.20);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.78));
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #0f172a;
+    font-size: 0.84rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .team-logo,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .club-logo,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .match-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .match-team-name,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 .team-name,
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-meta-v150 {
+    justify-self: end;
+    max-width: 112px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+    color: #334155;
+    font-size: 0.74rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 {
+    background: rgba(34, 197, 94, 0.14);
+    color: #166534;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled .mobile-cup-match-meta-v150 {
+    background: rgba(59, 130, 246, 0.12);
+    color: #1d4ed8;
+  }
+
+  body.is-mobile-ux #competitions .match-result-goals {
+    color: inherit;
+  }
+
+  body.is-mobile-ux #competitions .match-result-fp,
+  body.is-mobile-ux #competitions .match-result-separator {
+    display: none;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.92));
+    border-color: rgba(74, 222, 128, 0.22);
+    box-shadow: 0 10px 26px rgba(2, 6, 23, 0.32);
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled {
+    border-color: rgba(96, 165, 250, 0.28);
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.88));
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-teams-v150 {
+    color: #f8fafc;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 {
+    background: rgba(34, 197, 94, 0.18);
+    color: #bbf7d0;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled .mobile-cup-match-meta-v150 {
+    background: rgba(59, 130, 246, 0.18);
+    color: #bfdbfe;
+  }
+}
+
+@media (max-width: 380px) {
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-meta-v150 {
+    justify-self: start;
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+
+/* ---- mobile-hotfix-v151.css ---- */
+
+/* V151 - Hotfix mobile: dashboard, Coppe e Rose. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Dashboard mobile: il blocco Alert viene rimosso via JS; questa regola evita flash iniziali. */
+  body.is-mobile-ux #mobileHomeBlocks .mobile-home-card:has(.mobile-home-kicker) .mobile-home-kicker:first-child {
+    visibility: visible;
+  }
+
+  /* Coppe mobile: risultato più esplicito per partite giocate, data per partite da disputare. */
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    grid-template-columns: minmax(0, 1fr) minmax(72px, auto);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 {
+    min-width: 58px;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-scheduled .mobile-cup-match-meta-v150 {
+    min-width: 82px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-meta-v150 .match-result-goals {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 950;
+    letter-spacing: 0.01em;
+  }
+
+  /* Rose mobile: allinea rigidamente header e colonne della tabella giocatori. */
+  body.is-mobile-ux #rosterClubCards .roster-inline-table-wrap,
+  body.is-mobile-ux .team-profile-roster-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table,
+  body.is-mobile-ux table.team-profile-roster-table {
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    min-width: 660px !important;
+    width: 660px !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table:has(th:nth-child(6)),
+  body.is-mobile-ux table.team-profile-roster-table:has(th:nth-child(6)) {
+    min-width: 780px !important;
+    width: 780px !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table th,
+  body.is-mobile-ux #rosterClubCards table.roster-player-table td,
+  body.is-mobile-ux table.team-profile-roster-table th,
+  body.is-mobile-ux table.team-profile-roster-table td {
+    box-sizing: border-box !important;
+    display: table-cell !important;
+    vertical-align: middle !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table .roster-col-player,
+  body.is-mobile-ux table.team-profile-roster-table .team-profile-player-cell,
+  body.is-mobile-ux table.team-profile-roster-table th:nth-child(1) {
+    width: 230px !important;
+    min-width: 230px !important;
+    max-width: 230px !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table .roster-col-role,
+  body.is-mobile-ux table.team-profile-roster-table .team-profile-role-cell,
+  body.is-mobile-ux table.team-profile-roster-table th:nth-child(2) {
+    width: 112px !important;
+    min-width: 112px !important;
+    max-width: 112px !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table .roster-col-team,
+  body.is-mobile-ux table.team-profile-roster-table .team-profile-team-cell,
+  body.is-mobile-ux table.team-profile-roster-table th:nth-child(3) {
+    width: 76px !important;
+    min-width: 76px !important;
+    max-width: 76px !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table .roster-col-cost,
+  body.is-mobile-ux table.team-profile-roster-table .team-profile-cost-cell,
+  body.is-mobile-ux table.team-profile-roster-table th:nth-child(4) {
+    width: 82px !important;
+    min-width: 82px !important;
+    max-width: 82px !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table .roster-col-qta,
+  body.is-mobile-ux table.team-profile-roster-table .team-profile-qta-cell,
+  body.is-mobile-ux table.team-profile-roster-table th:nth-child(5) {
+    width: 82px !important;
+    min-width: 82px !important;
+    max-width: 82px !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table th:nth-child(6),
+  body.is-mobile-ux #rosterClubCards table.roster-player-table td:nth-child(6),
+  body.is-mobile-ux table.team-profile-roster-table th:nth-child(6),
+  body.is-mobile-ux table.team-profile-roster-table td:nth-child(6) {
+    width: 116px !important;
+    min-width: 116px !important;
+    max-width: 116px !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table th .table-sort,
+  body.is-mobile-ux table.team-profile-roster-table th .table-sort {
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards table.roster-player-table .roster-col-player .table-sort,
+  body.is-mobile-ux table.team-profile-roster-table th:nth-child(1) .table-sort {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 380px) {
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150 {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ---- mobile-hotfix-v152.css ---- */
+
+/* V152 - Hotfix mobile: Rose e Coppe. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Rose mobile: rimuove la linea verticale verde sulle righe, che può disallineare le colonne. */
+  body.is-mobile-ux #rosterClubCards .roster-team-row::before,
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody tr::before,
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody td::before,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr::before,
+  body.is-mobile-ux table.team-profile-roster-table tbody td::before,
+  body.is-mobile-ux .team-profile-roster-wrap tbody tr::before,
+  body.is-mobile-ux .team-profile-roster-wrap tbody td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row,
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody tr,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr,
+  body.is-mobile-ux .team-profile-roster-wrap tbody tr {
+    border-left: 0 !important;
+    box-shadow: none;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody td:first-child,
+  body.is-mobile-ux .team-profile-roster-wrap tbody td:first-child {
+    border-left: 0 !important;
+  }
+
+  /* Coppe mobile: forza la lista compatta e nasconde la tabella desktop dentro la sezione Coppe. */
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .match-table-wrap,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 > .table-wrap {
+    display: none !important;
+  }
+
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .mobile-cup-match-list-v150 {
+    display: grid !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 {
+    min-width: 54px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 .match-result-goals {
+    display: inline-block;
+    color: inherit;
+    font-size: 0.86rem;
+    font-weight: 950;
+    line-height: 1;
+  }
+}
+
+
+/* ---- mobile-hotfix-v153.css ---- */
+
+/* V153 - Hotfix mobile: Coppe con squadre su due righe, data e risultato. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux #competitions .mobile-cup-match-list-v153 {
+    gap: 10px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v153 {
+    grid-template-columns: minmax(0, 1fr) minmax(88px, auto) !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 10px 10px !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-v153 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+    align-content: center;
+    min-width: 0;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.84rem;
+    font-weight: 850;
+    line-height: 1.15;
+    color: #0f172a;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 .club-name-with-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 .static-competition-team-name {
+    min-width: 0;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 .team-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 .club-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 .match-logo {
+    width: 21px !important;
+    height: 21px !important;
+    flex: 0 0 21px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 span:not(.team-logo):not(.club-logo):not(.match-logo),
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v153 strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-meta-v153 {
+    justify-self: end;
+    align-self: center;
+    min-width: 88px !important;
+    max-width: 108px !important;
+    display: grid !important;
+    gap: 5px;
+    padding: 6px 7px !important;
+    border-radius: 14px !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-date-v153 {
+    display: block;
+    color: #64748b;
+    font-size: 0.68rem;
+    font-weight: 850;
+    line-height: 1.05;
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-v153 {
+    display: block;
+    color: #14532d;
+    font-size: 0.85rem;
+    font-weight: 950;
+    line-height: 1.05;
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-v153.is-pending {
+    color: #1d4ed8;
+    font-size: 0.68rem;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-team-line-v153 {
+    color: #e5e7eb;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-date-v153 {
+    color: #cbd5e1;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-result-v153 {
+    color: #bbf7d0;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-result-v153.is-pending {
+    color: #bfdbfe;
+  }
+}
+
+
+/* ---- mobile-hotfix-v154.css ---- */
+
+/* V154 - Mobile: Competizioni e pagina singola competizione con tabella compatta Partita/Data/Risultato. */
+.mobile-cup-match-table-v154,
+.competition-page-mobile-match-table-v154 {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .match-table-wrap,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 > .table-wrap,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .mobile-cup-match-list-v150,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .mobile-cup-match-list-v153 {
+    display: none !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-table-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 {
+    display: grid !important;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.03);
+  }
+
+  body.is-mobile-ux .competition-page-desktop-match-table-v154,
+  body.is-mobile-ux .competition-page-match-table-wrap.competition-page-desktop-match-table-v154 {
+    display: none !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) 82px 74px;
+    align-items: center;
+    gap: 0;
+    min-height: 34px;
+    background: rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span {
+    padding: 8px 8px;
+    color: #334155;
+    font-size: 0.66rem;
+    font-weight: 950;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) 82px 74px;
+    align-items: stretch;
+    min-height: 58px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v154:last-child,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154:last-child {
+    border-bottom: 0;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154 {
+    min-width: 0;
+    padding: 8px 8px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(148, 163, 184, 0.14);
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-cell-v154:last-child,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154:last-child {
+    border-right: 0;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-teams-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-teams-cell-v154 {
+    display: grid;
+    align-content: center;
+    gap: 5px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #0f172a;
+    font-size: 0.78rem;
+    font-weight: 850;
+    line-height: 1.15;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .club-name-with-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .static-competition-team-name,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .competition-page-match-team,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .club-name-with-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .static-competition-team-name,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .competition-page-match-team {
+    min-width: 0;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .team-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .club-logo,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 .match-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .team-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .club-logo,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 .match-logo {
+    width: 20px !important;
+    height: 20px !important;
+    flex: 0 0 20px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 strong,
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154 span:not(.team-logo):not(.club-logo):not(.match-logo),
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 strong,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 span:not(.team-logo):not(.club-logo):not(.match-logo) {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-date-cell-v154,
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-date-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 {
+    justify-content: center;
+    text-align: center;
+    color: #334155;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1.12;
+    font-variant-numeric: tabular-nums;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 {
+    color: #14532d;
+    font-size: 0.8rem;
+    font-weight: 950;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154 .match-result-goals,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-goals {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154 .match-result-fp,
+  body.is-mobile-ux #competitions .mobile-cup-result-cell-v154 .match-result-separator,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-fp,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-separator {
+    display: none;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-table-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 {
+    background: rgba(15, 23, 42, 0.92);
+    border-color: rgba(148, 163, 184, 0.24);
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-head-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 {
+    background: rgba(15, 23, 42, 0.92);
+    border-color: rgba(148, 163, 184, 0.22);
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-match-head-v154 span,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span {
+    color: #e5e7eb;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-team-line-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 {
+    color: #f8fafc;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-date-cell-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-date-cell-v154 {
+    color: #cbd5e1;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux #competitions .mobile-cup-result-cell-v154,
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 {
+    color: #bbf7d0;
+  }
+}
+
+@media (max-width: 380px) {
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154,
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154 {
+    grid-template-columns: minmax(0, 1.45fr) 74px 62px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux #competitions .mobile-cup-match-cell-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154 {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-team-line-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-team-line-v154 {
+    font-size: 0.72rem;
+  }
+}
+
+
+/* ---- mobile-hotfix-v155.css ---- */
+
+/* V155 - Mobile Competizioni: lista a blocchi cliccabili. Desktop invariato. */
+.mobile-competition-blocks-v155 {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  #competitionsList .desktop-competition-list-v155 {
+    display: none !important;
+  }
+
+  #competitionsList .mobile-competition-blocks-v155 {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .mobile-competition-block-v155 {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(52, 211, 153, 0.34);
+    border-radius: 22px;
+    padding: 0.95rem;
+    background:
+      linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(59, 130, 246, 0.05)),
+      rgba(15, 23, 42, 0.88);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+  }
+
+  .mobile-competition-block-v155:active {
+    transform: translateY(1px);
+  }
+
+  .mobile-competition-block-v155.is-active {
+    border-color: rgba(52, 211, 153, 0.58);
+    box-shadow: 0 18px 36px rgba(16, 185, 129, 0.12);
+  }
+
+  .mobile-competition-block-head-v155 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.7rem;
+  }
+
+  .mobile-competition-block-head-v155 h3 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .mobile-competition-block-head-v155 .status {
+    flex: 0 0 auto;
+    margin-top: 0.05rem;
+    font-size: 0.66rem;
+    padding: 0.28rem 0.48rem;
+  }
+
+  .mobile-competition-block-next-v155 {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+    padding-top: 0.72rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+  }
+
+  .mobile-competition-next-label-v155 {
+    color: var(--muted, #94a3b8);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .mobile-competition-next-teams-v155 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.28rem;
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  .mobile-competition-next-teams-v155 .team-name-with-logo,
+  .mobile-competition-next-teams-v155 .team-name-inline,
+  .mobile-competition-next-teams-v155 .team-with-logo,
+  .mobile-competition-next-teams-v155 .match-team-name {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .mobile-competition-next-date-v155 {
+    width: max-content;
+    max-width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 999px;
+    padding: 0.25rem 0.52rem;
+    background: rgba(15, 23, 42, 0.72);
+    color: var(--text, #e5e7eb);
+    font-size: 0.76rem;
+    font-weight: 750;
+  }
+
+  .mobile-competition-open-v155 {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.82rem;
+    color: #6ee7b7;
+    font-size: 0.82rem;
+    font-weight: 850;
+  }
+}
+
+
+/* ---- mobile-hotfix-v156.css ---- */
+
+/* V156 - Mobile: date compatte e rose a blocchi. Desktop invariato. */
+.mobile-roster-selector-v156 {
+  display: none;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux #rosterClubCards.roster-table-container-v156 {
+    display: block;
+  }
+
+  body.is-mobile-ux #rosterClubCards .desktop-roster-table-v156 {
+    display: none !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards .mobile-roster-selector-v156 {
+    display: block;
+  }
+
+  body.is-mobile-ux .mobile-roster-selector-head-v156 {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .mobile-roster-selector-head-v156 strong {
+    color: var(--text);
+    font-size: 0.92rem;
+  }
+
+  body.is-mobile-ux .mobile-roster-grid-v156 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156 {
+    appearance: none;
+    border: 1px solid rgba(61, 220, 151, 0.22);
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at top right, rgba(61, 220, 151, 0.16), transparent 45%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.94));
+    color: var(--text);
+    min-height: 118px;
+    padding: 12px 10px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    align-items: center;
+    gap: 7px;
+    text-align: center;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156.is-selected {
+    border-color: rgba(61, 220, 151, 0.62);
+    box-shadow: 0 18px 40px rgba(16, 185, 129, 0.14);
+  }
+
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .team-logo,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .club-logo,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 img,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .team-logo-fallback {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-name-v156 {
+    width: 100%;
+    min-width: 0;
+    color: var(--text);
+    font-size: 0.86rem;
+    font-weight: 900;
+    line-height: 1.12;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-meta-v156 {
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  body.is-mobile-ux .mobile-roster-empty-hint-v156 {
+    margin: 8px 0 0;
+    padding: 12px;
+    border: 1px dashed rgba(148, 163, 184, 0.22);
+    border-radius: 16px;
+    text-align: center;
+    font-size: 0.86rem;
+  }
+
+  body.is-mobile-ux .mobile-roster-selected-v156 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    border: 1px solid rgba(61, 220, 151, 0.24);
+    border-radius: 22px;
+    background: rgba(8, 13, 24, 0.66);
+    padding: 12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 h3 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 p {
+    margin: 3px 0 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.25;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-stats-v156 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-stats-v156 span {
+    display: block;
+    min-width: 0;
+    padding: 9px 8px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.035);
+    text-align: center;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-stats-v156 strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text);
+    font-size: 0.84rem;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-stats-v156 small {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-inline-table-wrap {
+    margin: 0;
+    border-radius: 18px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table {
+    min-width: 540px;
+  }
+}
+
+
+/* ---- mobile-hotfix-v158.css ---- */
+
+/* V158 - Mobile: sezioni senza titolo e rose scrollabili. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Nasconde solo su mobile i titoli principali delle sezioni: Dashboard, Rose, Competizioni, ecc. */
+  body.is-mobile-ux main.app-main > section.app-page > .page-heading,
+  body.is-mobile-ux .app-page > .page-heading,
+  body.is-mobile-ux .competition-page-main > .page-heading {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .app-page {
+    padding-top: 6px;
+  }
+
+  /* Nella selezione rose mobile il blocco stesso è il controllo: niente tasti Espandi/Riduci/Chiudi. */
+  body.is-mobile-ux #rosterClubCards .desktop-roster-table-v156 {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 {
+    grid-template-columns: auto 1fr !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 button,
+  body.is-mobile-ux .mobile-roster-detail-head-v156 .button,
+  body.is-mobile-ux .mobile-roster-detail-head-v156 [data-toggle-roster-club],
+  body.is-mobile-ux #rosterClubCards .details-toggle-label {
+    display: none !important;
+  }
+
+  /* La rosa espansa deve permettere lo scroll orizzontale della tabella giocatori. */
+  body.is-mobile-ux .mobile-roster-selected-v156,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    overflow: visible !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .table-wrap,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux .mobile-roster-selected-v156 .table-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 table,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table,
+  body.is-mobile-ux .mobile-roster-selected-v156 table,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table {
+    min-width: 720px !important;
+    width: max-content !important;
+    max-width: none !important;
+    table-layout: auto !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td {
+    white-space: nowrap !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td:first-child {
+    min-width: 190px !important;
+    max-width: 220px !important;
+    white-space: normal !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v159.css ---- */
+
+/* V159 - Mobile: selezione rose sempre completa e dettaglio scrollabile. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* I blocchi della griglia Rose devono essere card informative, non bottoni Espandi/Riduci. */
+  body.is-mobile-ux .mobile-roster-select-block-v156 {
+    position: relative;
+    min-height: 124px !important;
+    padding: 12px 8px 10px !important;
+    display: grid !important;
+    grid-template-rows: auto auto auto auto !important;
+    align-content: center !important;
+    justify-items: center !important;
+    gap: 6px !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156::before,
+  body.is-mobile-ux .mobile-roster-select-block-v156::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156 > span,
+  body.is-mobile-ux .mobile-roster-select-logo-v156,
+  body.is-mobile-ux .mobile-roster-select-name-v156,
+  body.is-mobile-ux .mobile-roster-select-meta-v156 {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-width: 100% !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-logo-v156 {
+    line-height: 0 !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .team-logo,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .club-logo,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 img,
+  body.is-mobile-ux .mobile-roster-select-logo-v156 .team-logo-fallback {
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-name-v156 {
+    color: var(--text) !important;
+    font-size: 0.78rem !important;
+    font-weight: 900 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-meta-v156 {
+    color: var(--muted) !important;
+    font-size: 0.62rem !important;
+    font-weight: 800 !important;
+    line-height: 1.12 !important;
+    white-space: normal !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-select-block-v156.is-selected {
+    border-color: rgba(61, 220, 151, 0.72) !important;
+    box-shadow: 0 18px 42px rgba(16, 185, 129, 0.18) !important;
+  }
+
+  /* Nella scheda della squadra selezionata non serve un secondo tasto Chiudi/Riduci. */
+  body.is-mobile-ux .mobile-roster-detail-head-v156 [data-toggle-roster-club],
+  body.is-mobile-ux .mobile-roster-detail-head-v156 button {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 {
+    grid-template-columns: auto 1fr !important;
+  }
+
+  /* Il dettaglio rosa deve permettere lo scroll orizzontale della tabella giocatori. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .table-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x pan-y !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table {
+    min-width: 760px !important;
+    width: max-content !important;
+    max-width: none !important;
+    table-layout: auto !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v160.css ---- */
+
+/* V160 - Mobile: rose piu compatte, movimenti FM e titolo competizione. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Rosa aperta: riduce molto la colonna Giocatore per rendere visibili piu colonne nello scroll. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table {
+    min-width: 620px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table .roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table .roster-col-player {
+    width: 104px !important;
+    min-width: 104px !important;
+    max-width: 112px !important;
+    white-space: normal !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-cell,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .mobile-roster-cell,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-cell,
+  body.is-mobile-ux .mobile-roster-selected-v156 .mobile-roster-cell {
+    max-width: 104px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-col-player .link-button,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-col-player .link-button {
+    max-width: 92px !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+  }
+
+  /* Movimenti: Budget/Iniziale su due righe e colonna piu compatta. */
+  body.is-mobile-ux #movementsList .movement-type-badge,
+  body.is-mobile-ux .team-profile-movements-table .movement-type-badge {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    line-height: 1.02 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    max-width: 82px !important;
+  }
+
+  body.is-mobile-ux #movementsList td[data-label="Tipo"],
+  body.is-mobile-ux #movementsList th:nth-child(3) {
+    width: 78px !important;
+    min-width: 78px !important;
+    max-width: 82px !important;
+  }
+
+  /* Pagina singola competizione: titolo e azioni visibili da mobile anche se l'heading desktop e nascosto. */
+  body.is-mobile-ux .competition-mobile-heading-v160 {
+    display: block !important;
+    margin: 8px 0 14px !important;
+    padding: 14px !important;
+    border: 1px solid rgba(61, 220, 151, 0.24) !important;
+    border-radius: 22px !important;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(6, 78, 59, 0.30)) !important;
+    box-shadow: 0 14px 36px rgba(2, 6, 23, 0.24) !important;
+  }
+
+  body.is-mobile-ux .competition-mobile-heading-v160 h1 {
+    margin: 4px 0 12px !important;
+    font-size: 1.55rem !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  body.is-mobile-ux .competition-mobile-actions-v160 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  body.is-mobile-ux .competition-mobile-actions-v160 .button {
+    width: 100% !important;
+    min-height: 40px !important;
+    justify-content: center !important;
+    border-radius: 999px !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .competition-mobile-heading-v160 {
+    display: none !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v161.css ---- */
+
+/* V161 - Mobile: colonna Giocatore rosa piu compatta e label Ris. nelle tabelle partite. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Rosa aperta: la colonna Giocatore deve restare compatta e la tabella deve scorrere. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-inline-table-wrap {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-width: 100% !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table {
+    width: max-content !important;
+    min-width: 460px !important;
+    table-layout: fixed !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-player,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-player,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player {
+    width: 54px !important;
+    min-width: 54px !important;
+    max-width: 54px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player .link-button,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player .link-button,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player .link-button {
+    display: inline-block !important;
+    max-width: 44px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    vertical-align: bottom !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-role,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-role,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-role,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-role,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-role,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-role {
+    width: 82px !important;
+    min-width: 82px !important;
+    max-width: 82px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-team,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-team,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-team,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-team,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-team,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-team {
+    width: 50px !important;
+    min-width: 50px !important;
+    max-width: 50px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-qta,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-qta,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-qta,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-qta,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-cost,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-cost,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-qta,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-qta {
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v162.css ---- */
+
+/* V162 - Mobile: rose, albo/palmares, competizioni e bottom nav nelle pagine singole. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Rose: ripristina la colonna Giocatore e compatta R(RM), che era la colonna che sforava. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table {
+    width: max-content !important;
+    min-width: 430px !important;
+    table-layout: fixed !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-player,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-player,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player {
+    width: 118px !important;
+    min-width: 118px !important;
+    max-width: 118px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player .link-button,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player .link-button,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player .link-button {
+    max-width: 96px !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    vertical-align: bottom !important;
+    text-align: left !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-role,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-role,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-role,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-role,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-role,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-role {
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-team,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-team,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-team,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-team,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-team,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-team {
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-qta,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-qta,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-cost,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-qta,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-qta,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-cost,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-cost,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-qta,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-qta {
+    width: 46px !important;
+    min-width: 46px !important;
+    max-width: 46px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th:nth-child(6),
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td:nth-child(6),
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th:nth-child(6),
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td:nth-child(6) {
+    width: 72px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+  }
+
+  /* Singola competizione: contenitore meno largo e risultato + fantapunti su due righe. */
+  body.is-mobile-ux .competition-page-match-groups,
+  body.is-mobile-ux .competition-page-stage-group,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body.is-mobile-ux .competition-page-stage-group {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154 {
+    grid-template-columns: minmax(0, 1fr) 62px 66px !important;
+  }
+
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154 {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    line-height: 1.05 !important;
+  }
+
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-separator {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-fp {
+    display: block !important;
+    font-size: 0.62rem !important;
+    font-weight: 850 !important;
+    color: #94a3b8 !important;
+    white-space: nowrap !important;
+  }
+
+  html[data-theme="dark"] body.is-mobile-ux .competition-page-mobile-match-table-v154 .mobile-cup-result-cell-v154 .match-result-fp {
+    color: #cbd5e1 !important;
+  }
+
+  /* Bottom nav visibile anche nella pagina singola competizione. */
+  body.competition-detail-page-v162 {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  body.competition-detail-page-v162 .mobile-bottom-nav-v141 {
+    display: grid !important;
+  }
+
+  body.competition-detail-page-v162 .mobile-bottom-link.is-current {
+    color: #bbf7d0 !important;
+    border-color: rgba(61, 220, 151, 0.55) !important;
+    background: rgba(6, 78, 59, 0.72) !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v163.css ---- */
+
+/* V163 - Mobile: Albo leggibile, Rose piu bilanciate e competizioni centrate. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Albo d'Oro / Palmares: evita grigio su grigio in tema scuro. */
+  body.is-mobile-ux #honor .palmares-grid,
+  body.is-mobile-ux #honor .palmares-competition-card,
+  body.is-mobile-ux #honor .palmares-table-wrap,
+  body.is-mobile-ux #honor .honor-table-wrap,
+  body.is-mobile-ux #honor .fifa-ranking-wrap {
+    color: #e5e7eb !important;
+  }
+
+  body.is-mobile-ux #honor .palmares-competition-card,
+  body.is-mobile-ux #honor .palmares-table-wrap,
+  body.is-mobile-ux #honor .honor-table-wrap {
+    background: rgba(15, 23, 42, 0.92) !important;
+    border-color: rgba(148, 163, 184, 0.34) !important;
+  }
+
+  body.is-mobile-ux #honor .palmares-table,
+  body.is-mobile-ux #honor .palmares-table th,
+  body.is-mobile-ux #honor .palmares-table td,
+  body.is-mobile-ux #honor .honor-table-wrap table,
+  body.is-mobile-ux #honor .honor-table-wrap th,
+  body.is-mobile-ux #honor .honor-table-wrap td,
+  body.is-mobile-ux #honor .fifa-ranking-wrap table,
+  body.is-mobile-ux #honor .fifa-ranking-wrap th,
+  body.is-mobile-ux #honor .fifa-ranking-wrap td {
+    color: #f8fafc !important;
+    background-color: transparent !important;
+  }
+
+  body.is-mobile-ux #honor .palmares-table th,
+  body.is-mobile-ux #honor .honor-table-wrap th,
+  body.is-mobile-ux #honor .fifa-ranking-wrap th {
+    color: #bbf7d0 !important;
+    background: rgba(15, 23, 42, 0.96) !important;
+  }
+
+  body.is-mobile-ux #honor .palmares-table td,
+  body.is-mobile-ux #honor .honor-table-wrap td,
+  body.is-mobile-ux #honor .fifa-ranking-wrap td {
+    border-color: rgba(148, 163, 184, 0.26) !important;
+  }
+
+  body.is-mobile-ux #honor .palmares-table .muted,
+  body.is-mobile-ux #honor .honor-table-wrap .muted,
+  body.is-mobile-ux #honor .fifa-ranking-wrap .muted {
+    color: #cbd5e1 !important;
+  }
+
+  /* Rose: Giocatore +10%, R(RM) -15% rispetto a V162. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table {
+    min-width: 433px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-player,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-player,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-player,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player {
+    width: 130px !important;
+    min-width: 130px !important;
+    max-width: 130px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-player .link-button,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-player .link-button,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player a,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-player .link-button {
+    max-width: 108px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th.roster-col-role,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td.roster-col-role,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th.roster-col-role,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td.roster-col-role,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table th.roster-col-role,
+  body.is-mobile-ux #rosterClubCards .roster-detail-row .roster-player-table td.roster-col-role {
+    width: 49px !important;
+    min-width: 49px !important;
+    max-width: 49px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+
+  /* Il pulsante Riduci deve restare visibile nella scheda della rosa aperta. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .mobile-roster-detail-head-v156 [data-toggle-roster-club] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 34px !important;
+    padding: 6px 12px !important;
+    white-space: nowrap !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    scroll-margin-top: 12px !important;
+  }
+
+  /* Singola competizione: classifica e partite centrate e larghe come il titolo. */
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-main,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-mobile-heading-v160,
+  body.is-mobile-ux.competition-detail-page-v162 #competitionPageContent,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-match-groups,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-stage-group {
+    width: min(100%, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-stage-group {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-result-table-wrap,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154 {
+    grid-template-columns: minmax(0, 1fr) 58px 62px !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v164.css ---- */
+
+/* V164 - Mobile: competizioni KO con podio e contenitori standardizzati. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Singola competizione: stessa larghezza per titolo, classifica/podio e partite. */
+  body.is-mobile-ux.competition-detail-page-v162 {
+    overflow-x: hidden !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-main,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-mobile-heading-v160,
+  body.is-mobile-ux.competition-detail-page-v162 #competitionPageContent,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-match-groups,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-stage-group {
+    width: min(100%, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-stage-group {
+    padding: 10px 8px !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-section,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-match-stage-details,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-result-table-wrap,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Colonna Partita leggermente più stretta: spazio recuperato per Data e Ris. */
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-row-v154 {
+    grid-template-columns: minmax(0, 1fr) 68px 72px !important;
+    column-gap: 0 !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-cell-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-head-v154 span {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-teams-cell-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-teams-cell-v154 {
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .competition-page-match-team strong,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .competition-page-match-team strong {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  /* Coppa Italia / Champions / Playoff: da mobile non tabella-classifica, ma podio. */
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-podium-v164 {
+    display: grid !important;
+    gap: 8px !important;
+    margin-top: 8px !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card.is-podium-only-mobile-v164 .competition-page-result-table-wrap {
+    display: none !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 {
+    display: grid !important;
+    grid-template-columns: 88px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 10px !important;
+    border: 1px solid rgba(148, 163, 184, 0.28) !important;
+    border-radius: 16px !important;
+    background: rgba(15, 23, 42, 0.74) !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 > span:first-child {
+    color: #bbf7d0 !important;
+    font-size: 0.72rem !important;
+    font-weight: 950 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 .club-name-with-logo {
+    min-width: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 .club-name-with-logo strong {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (min-width: 901px) and (hover: hover), (min-width: 901px) and (pointer: fine) {
+  .competition-page-mobile-podium-v164 {
+    display: none !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v165.css ---- */
+
+/* V165 - Mobile: dettaglio rose piu usabile e Palmarès scuro. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Rose: tasto Riduci in alto a destra della scheda aperta. */
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    position: relative !important;
+    scroll-margin-top: 12px !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 {
+    position: relative !important;
+    min-height: 68px !important;
+    padding-right: 88px !important;
+    align-items: center !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 > .club-logo,
+  body.is-mobile-ux .mobile-roster-detail-head-v156 .club-name-with-logo > .club-logo {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    border-radius: 18px !important;
+    font-size: 1rem !important;
+    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.28) !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 [data-toggle-roster-club] {
+    display: inline-flex !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    min-width: 68px !important;
+    min-height: 34px !important;
+    padding: 7px 10px !important;
+    border-radius: 999px !important;
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 3 !important;
+  }
+
+  /* Palmarès: tema scuro coerente con il resto della mobile UI. */
+  body.is-mobile-ux #honorSummary .palmares-grid,
+  body.is-mobile-ux #honorSummary .palmares-competition-card,
+  body.is-mobile-ux #honorSummary .palmares-table-wrap,
+  body.is-mobile-ux #honorSummary .palmares-table,
+  body.is-mobile-ux #honorSummary .palmares-table thead,
+  body.is-mobile-ux #honorSummary .palmares-table tbody,
+  body.is-mobile-ux #honorSummary .palmares-table tr,
+  body.is-mobile-ux #honorSummary .palmares-table th,
+  body.is-mobile-ux #honorSummary .palmares-table td {
+    color: #f8fafc !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-competition-card {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.96)) !important;
+    border: 1px solid rgba(34, 197, 94, 0.28) !important;
+    box-shadow: 0 18px 38px rgba(2, 6, 23, 0.34) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-competition-card h4,
+  body.is-mobile-ux #honorSummary .palmares-competition-card h3,
+  body.is-mobile-ux #honorSummary .palmares-competition-card strong {
+    color: #ffffff !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-competition-card p,
+  body.is-mobile-ux #honorSummary .palmares-competition-card small,
+  body.is-mobile-ux #honorSummary .palmares-competition-card .muted {
+    color: #cbd5e1 !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table-wrap {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border: 1px solid rgba(148, 163, 184, 0.24) !important;
+    border-radius: 16px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table {
+    width: 100% !important;
+    min-width: 0 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table thead th {
+    background: rgba(2, 6, 23, 0.98) !important;
+    color: #bbf7d0 !important;
+    font-size: 0.68rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.28) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table tbody td {
+    background: rgba(15, 23, 42, 0.94) !important;
+    color: #f8fafc !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table tbody tr:nth-child(even) td {
+    background: rgba(30, 41, 59, 0.72) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table .club-name-with-logo strong,
+  body.is-mobile-ux #honorSummary .palmares-table a,
+  body.is-mobile-ux #honorSummary .palmares-table button {
+    color: #ffffff !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v166.css ---- */
+
+/* V166 - Rifiniture mobile: header, Altro, Squadra, News/Palmares, competizioni. */
+@media (max-width: 760px) {
+  body.is-mobile-ux {
+    --mobile-section-width-v166: min(100%, calc(100vw - 24px));
+  }
+
+  /* Header mobile: stagione su riga propria, azioni account compatte in una riga. */
+  body.is-mobile-ux .app-header .header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  body.is-mobile-ux .app-header .season-switcher {
+    flex: 0 0 100%;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  body.is-mobile-ux .app-header #themeToggleBtn,
+  body.is-mobile-ux .app-header #openLoginBtn,
+  body.is-mobile-ux .app-header #logoutBtn {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 36px;
+    padding: 0 8px;
+    font-size: 0.76rem;
+    line-height: 1;
+    white-space: nowrap;
+    justify-content: center;
+  }
+
+  body.is-mobile-ux .app-header #themeToggleBtn .theme-toggle-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body.is-mobile-ux .app-header #refreshBtn:not(.hidden) {
+    flex: 0 0 100%;
+    height: 34px;
+  }
+
+  /* Menu Altro con icone. */
+  body.is-mobile-ux .mobile-more-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  body.is-mobile-ux .mobile-more-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(49, 211, 110, 0.12);
+    border: 1px solid rgba(49, 211, 110, 0.25);
+    flex: 0 0 28px;
+    font-size: 1rem;
+  }
+
+  /* Area squadra: Utente / Ruolo / Stato su una singola riga. */
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .user-request-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .metric-card {
+    min-width: 0;
+    padding: 9px 6px;
+    border-radius: 14px;
+  }
+
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .metric-card .metric-label {
+    font-size: 0.63rem;
+    letter-spacing: 0.03em;
+  }
+
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .metric-card strong {
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1.15;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Larghezze coerenti con il blocco titolo per pannelli e card principali mobile. */
+  body.is-mobile-ux .app-page > .panel,
+  body.is-mobile-ux .app-page .panel,
+  body.is-mobile-ux .mobile-block-dashboard,
+  body.is-mobile-ux .mobile-home-blocks,
+  body.is-mobile-ux .mobile-teamarea-hub-v144,
+  body.is-mobile-ux .mobile-competition-blocks-v155,
+  body.is-mobile-ux .mobile-roster-selector-v156,
+  body.is-mobile-ux .team-profile-page-body > .panel,
+  body.is-mobile-ux .team-profile-page-body > .detail-section {
+    width: var(--mobile-section-width-v166);
+    max-width: var(--mobile-section-width-v166);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  body.is-mobile-ux .app-page .grid-two,
+  body.is-mobile-ux .app-page .cards-grid,
+  body.is-mobile-ux .app-page .user-actions-grid {
+    width: var(--mobile-section-width-v166);
+    max-width: var(--mobile-section-width-v166);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  /* Scheda squadra: dettagli direttamente nel blocco principale, senza effetto card-nella-card. */
+  body.is-mobile-ux .team-profile-page-body .team-profile-hero-panel {
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.94));
+    border: 1px solid rgba(49, 211, 110, 0.28);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  }
+
+  body.is-mobile-ux .team-profile-page-body .team-profile-header,
+  body.is-mobile-ux .team-profile-page-body .team-profile-page-hero {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body.is-mobile-ux .team-profile-page-body .team-profile-title-block {
+    min-width: 0;
+  }
+
+  body.is-mobile-ux .team-profile-page-body .team-profile-title-block h3,
+  body.is-mobile-ux .team-profile-page-body .team-profile-title-block .team-profile-meta-line {
+    color: #f8fafc !important;
+  }
+
+  body.is-mobile-ux .team-profile-roster-table th:first-child,
+  body.is-mobile-ux .team-profile-roster-table td:first-child,
+  body.is-mobile-ux .team-profile-roster-table .team-profile-player-cell {
+    width: 111px !important;
+    min-width: 111px !important;
+    max-width: 111px !important;
+  }
+
+  body.is-mobile-ux .team-profile-roster-table .team-profile-player-cell strong,
+  body.is-mobile-ux .team-profile-roster-table .team-profile-player-cell a {
+    display: inline-block;
+    max-width: 104px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+
+  /* News: blocchi scuri con titolo bianco. */
+  body.is-mobile-ux [data-page="news"] .panel,
+  body.is-mobile-ux [data-page="news"] details,
+  body.is-mobile-ux [data-page="news"] article,
+  body.is-mobile-ux #newsList .news-card,
+  body.is-mobile-ux #newsList details {
+    background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.92)) !important;
+    border: 1px solid rgba(49, 211, 110, 0.24) !important;
+    color: #f8fafc !important;
+  }
+
+  body.is-mobile-ux [data-page="news"] h2,
+  body.is-mobile-ux [data-page="news"] h3,
+  body.is-mobile-ux [data-page="news"] summary,
+  body.is-mobile-ux #newsList h2,
+  body.is-mobile-ux #newsList h3,
+  body.is-mobile-ux #newsList summary {
+    color: #ffffff !important;
+  }
+
+  body.is-mobile-ux [data-page="news"] p,
+  body.is-mobile-ux [data-page="news"] small,
+  body.is-mobile-ux [data-page="news"] .muted,
+  body.is-mobile-ux #newsList p,
+  body.is-mobile-ux #newsList small,
+  body.is-mobile-ux #newsList .muted {
+    color: rgba(248, 250, 252, 0.84) !important;
+  }
+
+  /* Palmarès per competizioni: blocchi e tabelle scuri, coerenti con il resto. */
+  body.is-mobile-ux #honorSummary .palmares-grid,
+  body.is-mobile-ux #honorSummary .palmares-competition-card,
+  body.is-mobile-ux #honorSummary .palmares-table-wrap,
+  body.is-mobile-ux #honorSummary .palmares-table,
+  body.is-mobile-ux #honorSummary .palmares-table tr,
+  body.is-mobile-ux #honorSummary .palmares-table th,
+  body.is-mobile-ux #honorSummary .palmares-table td {
+    background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.94)) !important;
+    color: #f8fafc !important;
+    border-color: rgba(49, 211, 110, 0.18) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-competition-card h3,
+  body.is-mobile-ux #honorSummary .palmares-competition-card h4,
+  body.is-mobile-ux #honorSummary .palmares-competition-card strong,
+  body.is-mobile-ux #honorSummary .palmares-table th,
+  body.is-mobile-ux #honorSummary .palmares-table .club-name-with-logo strong {
+    color: #ffffff !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-competition-card p,
+  body.is-mobile-ux #honorSummary .palmares-competition-card small,
+  body.is-mobile-ux #honorSummary .palmares-competition-card .muted,
+  body.is-mobile-ux #honorSummary .palmares-table td {
+    color: rgba(248, 250, 252, 0.86) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table tbody tr:nth-child(even) td {
+    background: rgba(15, 23, 42, 0.82) !important;
+  }
+
+  /* Singola competizione: tasto sempre visibile per tornare in alto. */
+  body.is-mobile-ux .competition-scroll-top-v166,
+  .competition-detail-page-v162 .competition-scroll-top-v166 {
+    position: fixed;
+    top: max(10px, env(safe-area-inset-top));
+    left: 10px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(49, 211, 110, 0.42);
+    background: rgba(9, 19, 32, 0.92);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (min-width: 761px) {
+  .competition-scroll-top-v166 {
+    display: none !important;
+  }
+}
+
+
+/* ---- mobile-hotfix-v167.css ---- */
+
+/* V167 - mobile only: squadra summary, palmares contrast, team profile roster columns. */
+@media (max-width: 720px) {
+  /* Area squadra: i dettagli principali vivono nel blocco Area squadra. */
+  [data-page="teamarea"] .team-area-summary-panel {
+    display: none !important;
+  }
+
+  [data-page="teamarea"] .mobile-teamarea-hero-v167 {
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  [data-page="teamarea"] .mobile-teamarea-hero-v167 h3 {
+    margin-bottom: 0.1rem;
+  }
+
+  [data-page="teamarea"] .mobile-teamarea-president-v167 {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86) !important;
+    font-size: 0.86rem;
+    line-height: 1.25;
+  }
+
+  [data-page="teamarea"] .mobile-teamarea-open-profile-v167 {
+    margin-top: 0.45rem;
+    min-height: 34px;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+
+  [data-page="teamarea"] .mobile-teamarea-actions-v144 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Palmarès per competizione: sfondo scuro e testi leggibili. */
+  [data-page="honor"] .palmares-competitions-section-v167,
+  [data-page="honor"] .palmares-competitions-section-v167 .compact-card,
+  [data-page="honor"] .palmares-competitions-section-v167 .table-wrap,
+  [data-page="honor"] .palmares-competitions-section-v167 table,
+  [data-page="honor"] .palmares-competitions-section-v167 thead,
+  [data-page="honor"] .palmares-competitions-section-v167 tbody,
+  [data-page="honor"] .palmares-competitions-section-v167 tr,
+  [data-page="honor"] .palmares-competitions-section-v167 th,
+  [data-page="honor"] .palmares-competitions-section-v167 td {
+    background: rgba(7, 17, 29, 0.96) !important;
+    color: #f8fafc !important;
+  }
+
+  [data-page="honor"] .palmares-competitions-section-v167 {
+    border: 1px solid rgba(34, 197, 94, 0.26) !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  [data-page="honor"] .palmares-competitions-section-v167 > h3,
+  [data-page="honor"] .palmares-competitions-section-v167 h3,
+  [data-page="honor"] .palmares-competitions-section-v167 strong {
+    color: #ffffff !important;
+  }
+
+  [data-page="honor"] .palmares-competitions-section-v167 .muted,
+  [data-page="honor"] .palmares-competitions-section-v167 small,
+  [data-page="honor"] .palmares-competitions-section-v167 p {
+    color: rgba(226, 232, 240, 0.82) !important;
+  }
+
+  [data-page="honor"] .palmares-competitions-section-v167 th {
+    color: #bbf7d0 !important;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.22) !important;
+  }
+
+  [data-page="honor"] .palmares-competitions-section-v167 td {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18) !important;
+  }
+
+  [data-page="honor"] .palmares-competitions-section-v167 .club-name-with-logo strong,
+  [data-page="honor"] .palmares-competitions-section-v167 .club-name-with-logo span {
+    color: #ffffff !important;
+  }
+
+  /* Pagina squadra: compatta le colonne R(RM), Sq e Qt.A del 30% circa. */
+  .team-profile-roster-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .team-profile-roster-table {
+    min-width: 360px !important;
+    width: max-content !important;
+    table-layout: fixed !important;
+  }
+
+  .team-profile-roster-table th:nth-child(1),
+  .team-profile-roster-table td:nth-child(1) {
+    width: 130px !important;
+    min-width: 130px !important;
+    max-width: 130px !important;
+  }
+
+  .team-profile-roster-table th:nth-child(2),
+  .team-profile-roster-table td:nth-child(2) {
+    width: 34px !important;
+    min-width: 34px !important;
+    max-width: 34px !important;
+  }
+
+  .team-profile-roster-table th:nth-child(3),
+  .team-profile-roster-table td:nth-child(3) {
+    width: 31px !important;
+    min-width: 31px !important;
+    max-width: 31px !important;
+  }
+
+  .team-profile-roster-table th:nth-child(4),
+  .team-profile-roster-table td:nth-child(4) {
+    width: 46px !important;
+    min-width: 46px !important;
+    max-width: 46px !important;
+  }
+
+  .team-profile-roster-table th:nth-child(5),
+  .team-profile-roster-table td:nth-child(5) {
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+  }
+
+  .team-profile-roster-table th:nth-child(6),
+  .team-profile-roster-table td:nth-child(6) {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+  }
+
+  .team-profile-roster-table th,
+  .team-profile-roster-table td {
+    padding-left: 0.32rem !important;
+    padding-right: 0.32rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .team-profile-roster-table .player-name-link,
+  .team-profile-roster-table td:first-child a,
+  .team-profile-roster-table td:first-child strong,
+  .team-profile-roster-table td:first-child span {
+    max-width: 118px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+    vertical-align: bottom;
+  }
+}
+
+
+/* V171 - Keep admin account controls on one mobile row. */
+@media (max-width: 760px) {
+  body.is-mobile-ux .app-header #themeToggleBtn,
+  body.is-mobile-ux .app-header #openLoginBtn,
+  body.is-mobile-ux .app-header #logoutBtn {
+    flex: 1 1 0;
+    max-width: none;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #themeToggleBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #openLoginBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #logoutBtn:not(.hidden) {
+    flex-basis: 0;
+  }
+}
+
+/* V173 - Mobile snapshot buttons: keep update date readable under the label. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .snapshot-actions-grid .snapshot-action-button {
+    align-items: flex-start;
+    text-align: left;
+    min-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .snapshot-button-date {
+    font-size: 0.72rem;
+  }
+}
+
+/* V175 - Mobile Listone: fixed "Su" button. Desktop invariato. */
+.listone-scroll-top-v175 {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-scroll-top-v175 {
+    position: fixed;
+    top: max(10px, env(safe-area-inset-top));
+    left: 10px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(49, 211, 110, 0.42);
+    background: rgba(9, 19, 32, 0.92);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (min-width: 761px) {
+  .listone-scroll-top-v175 {
+    display: none !important;
+  }
+}
+
+/* V181 - Mobile containment for admin preflight/deploy reports.
+   Keeps generated report tables centered inside their card on narrow screens. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .public-preflight-report-v179,
+  body.is-mobile-ux .deploy-checklist-report-v180 {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 .table-scroll,
+  body.is-mobile-ux .deploy-checklist-report-v180 .table-scroll {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    margin: 0 auto;
+    padding-bottom: 4px;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.68rem !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table thead,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table thead {
+    display: table-header-group !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table tbody,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table tbody {
+    display: table-row-group !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table tr,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table tr {
+    display: table-row !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td {
+    display: table-cell !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    width: auto !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    padding: 7px 5px !important;
+    line-height: 1.15 !important;
+    vertical-align: top !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(1) {
+    width: 34% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(2) {
+    width: 18% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(3) {
+    width: 34% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(4),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(4) {
+    width: 14% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(1) {
+    width: 34% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(2) {
+    width: 18% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(3) {
+    width: 48% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 small,
+  body.is-mobile-ux .deploy-checklist-report-v180 small,
+  body.is-mobile-ux .public-preflight-report-v179 .muted,
+  body.is-mobile-ux .deploy-checklist-report-v180 .muted {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* V182 - Report table long-value wrapping.
+   Long URLs, cache-buster lists and diagnostics stay inside their table cell. */
+.public-preflight-report-v179 table.admin-table,
+.deploy-checklist-report-v180 table.admin-table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+
+.public-preflight-report-v179 table.admin-table th,
+.public-preflight-report-v179 table.admin-table td,
+.deploy-checklist-report-v180 table.admin-table th,
+.deploy-checklist-report-v180 table.admin-table td {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  hyphens: auto;
+}
+
+.public-preflight-report-v179 table.admin-table small,
+.public-preflight-report-v179 table.admin-table code,
+.deploy-checklist-report-v180 table.admin-table small,
+.deploy-checklist-report-v180 table.admin-table code {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .public-preflight-report-v179 .table-scroll,
+  body.is-mobile-ux .deploy-checklist-report-v180 .table-scroll {
+    overflow-x: hidden !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td {
+    max-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+}
+
+/* V183 - Mobile fix for preflight/deploy report first-column overflow.
+   Overrides generic compact-table mobile rules that could let the label paint into the status column. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .public-preflight-report-v179 .table-scroll,
+  body.is-mobile-ux .deploy-checklist-report-v180 .table-scroll {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    line-break: anywhere !important;
+    text-overflow: clip !important;
+    padding: 7px 5px !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(1) {
+    width: 30% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(2) {
+    width: 18% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(3) {
+    width: 36% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table th:nth-child(4),
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table td:nth-child(4) {
+    width: 16% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(1),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(1) {
+    width: 31% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(2),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(2) {
+    width: 20% !important;
+  }
+
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table th:nth-child(3),
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table td:nth-child(3) {
+    width: 49% !important;
+  }
+
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table strong,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table small,
+  body.is-mobile-ux .public-preflight-report-v179 table.admin-table code,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table strong,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table small,
+  body.is-mobile-ux .deploy-checklist-report-v180 table.admin-table code {
+    display: block !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    line-break: anywhere !important;
+  }
+}
+
+/* V184 - Mobile: Honor page FIFA ranking dark block and palmares title spacing. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux [data-page="honor"] .palmares-competitions-section-v167 {
+    padding: 1rem !important;
+    border-radius: 18px !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .palmares-competitions-section-v167 > h3 {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 {
+    padding: 1rem !important;
+    border: 1px solid rgba(34, 197, 94, 0.26) !important;
+    border-radius: 18px !important;
+    background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.94)) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24) !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 h3,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 strong,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 .club-name-with-logo strong,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 .club-name-with-logo span {
+    color: #ffffff !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 .muted,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 p,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 small {
+    color: rgba(226, 232, 240, 0.84) !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 .fifa-ranking-table-wrap {
+    border-color: rgba(34, 197, 94, 0.22) !important;
+    background: rgba(7, 17, 29, 0.72) !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 table,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 thead,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 tbody,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 tr,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 th,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 td {
+    background: transparent !important;
+    color: #f8fafc !important;
+    border-color: rgba(148, 163, 184, 0.18) !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 th {
+    color: #bbf7d0 !important;
+    background: rgba(15, 23, 42, 0.96) !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 tbody tr:nth-child(even) td {
+    background: rgba(15, 23, 42, 0.46) !important;
+  }
+
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 .fifa-ranking-table-wrap table th:first-child,
+  body.is-mobile-ux [data-page="honor"] .fifa-ranking-section-v184 .fifa-ranking-table-wrap table td:first-child {
+    background: rgba(15, 23, 42, 0.99) !important;
+    color: #f8fafc !important;
+  }
+}
+
+/* V185 - Mobile admin header: Dark/Light, Aggiorna dati, Account and Logout on one row. */
+@media (max-width: 760px) {
+  body.is-mobile-ux.is-admin-authenticated .app-header .header-actions {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    align-items: stretch !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header .season-switcher {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #themeToggleBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #refreshBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #openLoginBtn:not(.hidden),
+  body.is-mobile-ux.is-admin-authenticated .app-header #logoutBtn:not(.hidden) {
+    flex: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 36px !important;
+    padding: 0 5px !important;
+    font-size: 0.68rem !important;
+    line-height: 1.05 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #refreshBtn:not(.hidden) {
+    grid-column: auto !important;
+    flex-basis: auto !important;
+  }
+
+  body.is-mobile-ux.is-admin-authenticated .app-header #themeToggleBtn .theme-toggle-text,
+  body.is-mobile-ux.is-admin-authenticated .app-header #refreshBtn,
+  body.is-mobile-ux.is-admin-authenticated .app-header #openLoginBtn,
+  body.is-mobile-ux.is-admin-authenticated .app-header #logoutBtn {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  body.is-mobile-ux .snapshot-actions-grid .button,
+  body.is-mobile-ux .snapshot-actions-grid .snapshot-action-button {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux .admin-help-grid-v185 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  body.is-mobile-ux .admin-help-grid-v185 article {
+    padding: 11px !important;
+  }
+}

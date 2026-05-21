@@ -7,13 +7,15 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=132" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=132" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=132" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=132" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=132" />
+  <link rel="stylesheet" href="./assets/styles.css?v=169" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=169" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=169" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=169" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=169" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=169" />
 </head>
-<body>
+<body class="is-mobile-ux competition-detail-page-v162">
+  <button id="competitionScrollTopBtnV166" class="competition-scroll-top-v166" type="button" aria-label="Torna sopra">↑ Su</button>
   <main class="container app-main competition-page-main">
     <section class="page-heading">
       <div>
@@ -27,15 +29,77 @@
       </div>
     </section>
 
+    <section class="competition-mobile-heading-v160" aria-label="Navigazione competizione mobile">
+      <p class="eyebrow">Competizione</p>
+      <h1 id="competitionMobileTitleV160">Calendario competizione</h1>
+      <div class="competition-mobile-actions-v160">
+        <a class="button button-secondary button-small" href="./#competitions">Torna a tutte le competizioni</a>
+        <a class="button button-secondary button-small" href="./#dashboard">Torna alla Home</a>
+      </div>
+    </section>
+
     <section id="competitionPageError" class="notice notice-error hidden"></section>
     <section id="competitionPageContent" class="competition-page-grid">
       <article class="panel competition-page-empty"><p class="muted">Caricamento...</p></article>
     </section>
   </main>
 
+  <div id="mobileMoreBackdrop" class="mobile-more-backdrop hidden" aria-hidden="true"></div>
+  <nav id="mobileMoreSheet" class="mobile-more-sheet hidden" aria-label="Altre sezioni mobile">
+    <div class="mobile-more-header">
+      <strong>Altre sezioni</strong>
+      <button id="mobileMoreClose" class="mobile-icon-button" type="button" aria-label="Chiudi menu">×</button>
+    </div>
+    <a href="./#news" class="mobile-more-link"><span class="mobile-more-icon">📰</span><span>News</span></a>
+    <a href="./#clubs" class="mobile-more-link"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
+    <a href="./#honor" class="mobile-more-link"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
+    <a href="./#regolamento" class="mobile-more-link"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
+    <a href="./#fantamercato" class="mobile-more-link"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
+    <a href="./#listone" class="mobile-more-link"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
+    <a href="./#admin" class="mobile-more-link"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
+  </nav>
+
+  <nav class="mobile-bottom-nav mobile-bottom-nav-v141" aria-label="Navigazione principale mobile">
+    <a href="./#dashboard" class="mobile-bottom-link"><span class="mobile-nav-icon">⌂</span><span>Home</span></a>
+    <a href="./#teamarea" class="mobile-bottom-link"><span class="mobile-nav-icon">👥</span><span>Squadra</span></a>
+    <a href="./#fantamercato" class="mobile-bottom-link"><span class="mobile-nav-icon">🔁</span><span>Mercato</span></a>
+    <a href="./#competitions" class="mobile-bottom-link active is-current"><span class="mobile-nav-icon">🏆</span><span>Coppe</span></a>
+    <button id="mobileMoreBtn" class="mobile-bottom-link" type="button" aria-expanded="false" aria-controls="mobileMoreSheet"><span class="mobile-nav-icon">☰</span><span>Altro</span></button>
+  </nav>
+
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V132 pulizia finale refactor · Ultimo aggiornamento 20/05/2026</p>
+    <p>ZonaOrientale Salerno · V169 refactor helper rose mobile · Ultimo aggiornamento 21/05/2026</p>
   </footer>
+
+  <script>
+    (function setupCompetitionMobileNavV162() {
+      function closeMore() {
+        document.getElementById('mobileMoreSheet')?.classList.add('hidden');
+        document.getElementById('mobileMoreBackdrop')?.classList.add('hidden');
+        const btn = document.getElementById('mobileMoreBtn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+      function openMore() {
+        document.getElementById('mobileMoreSheet')?.classList.remove('hidden');
+        document.getElementById('mobileMoreBackdrop')?.classList.remove('hidden');
+        const btn = document.getElementById('mobileMoreBtn');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+      document.addEventListener('click', function(event) {
+        const moreBtn = event.target.closest && event.target.closest('#mobileMoreBtn');
+        if (moreBtn) {
+          event.preventDefault();
+          const isOpen = moreBtn.getAttribute('aria-expanded') === 'true';
+          if (isOpen) closeMore();
+          else openMore();
+          return;
+        }
+        if (event.target.closest && (event.target.closest('#mobileMoreClose') || event.target.closest('#mobileMoreBackdrop') || event.target.closest('#mobileMoreSheet a'))) {
+          closeMore();
+        }
+      }, true);
+    })();
+  </script>
 
   <script type="module">
     const params = new URLSearchParams(window.location.search);
@@ -46,10 +110,41 @@
     const requestedSlug = params.get("slug") || "";
 
     const titleEl = document.getElementById("competitionPageTitle");
+    const mobileTitleElV160 = document.getElementById("competitionMobileTitleV160");
     const subtitleEl = document.getElementById("competitionPageSubtitle");
     const metaEl = document.getElementById("competitionPageMeta");
     const contentEl = document.getElementById("competitionPageContent");
     const errorEl = document.getElementById("competitionPageError");
+
+    function formatCompactMobileDateV156(value) {
+      const text = String(value ?? "");
+      return text
+        .replace(/\b(\d{4})-(\d{2})-(\d{2})\b/g, (_, year, month, day) => `${day}-${month}-${String(year).slice(-2)}`)
+        .replace(/\b(\d{2})\/(\d{2})\/(\d{4})\b/g, (_, day, month, year) => `${day}-${month}-${String(year).slice(-2)}`);
+    }
+
+    function isMobileDateFormattingEnabledV156() {
+      return window.matchMedia?.("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+    }
+
+    function applyMobileCompactDatesV156(root = document.body) {
+      if (!root || !isMobileDateFormattingEnabledV156()) return;
+      const skipTags = new Set(["SCRIPT", "STYLE", "TEXTAREA", "INPUT", "SELECT", "OPTION", "PRE", "CODE"]);
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || skipTags.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+          if (!/\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4}/.test(node.nodeValue || "")) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach((node) => {
+        const next = formatCompactMobileDateV156(node.nodeValue);
+        if (next !== node.nodeValue) node.nodeValue = next;
+      });
+    }
 
     function escapeHtml(value) {
       return String(value ?? "")
@@ -351,6 +446,22 @@
         </span>`;
     }
 
+    function renderMobileMatchTeamsV154(match, seasonTeams = [], teams = []) {
+      const homeName = getTeamName(match, "home", seasonTeams, teams);
+      const awayName = getTeamName(match, "away", seasonTeams, teams);
+      return `
+        <div class="mobile-cup-team-line-v154 mobile-cup-team-home-v154">
+          <span class="competition-page-match-team">${renderTeamLogo(homeName, getTeamLogo(match, "home", seasonTeams, teams))}<strong>${escapeHtml(homeName)}</strong></span>
+        </div>
+        <div class="mobile-cup-team-line-v154 mobile-cup-team-away-v154">
+          <span class="competition-page-match-team">${renderTeamLogo(awayName, getTeamLogo(match, "away", seasonTeams, teams))}<strong>${escapeHtml(awayName)}</strong></span>
+        </div>`;
+    }
+
+    function getMobileMatchDateV154(match) {
+      return String(match?.matchDate || match?.date || match?.scheduledDate || match?.playDate || "").trim() || "-";
+    }
+
     function formatNumber(value) {
       if (value === null || value === undefined || value === "") return "";
       const number = Number(value);
@@ -387,6 +498,44 @@
         competition?.competitionType,
         competition?.formula
       ].filter(Boolean).join(" "));
+    }
+
+    function isPodiumOnlyCompetitionV164(competition) {
+      const text = getCompetitionKindText(competition);
+      return /COPPA\s*ITALIA|CHAMPIONS|CHAMPION|PLAYOFF|PLAY\s*OFF/.test(text);
+    }
+
+    function getResultPositionNumberV164(result) {
+      const value = Number(result?.position ?? result?.pos ?? result?.rank ?? result?.place);
+      return Number.isFinite(value) ? value : 999;
+    }
+
+    function getResultByPositionV164(results = [], position) {
+      return (results || []).find((result) => getResultPositionNumberV164(result) === position) || null;
+    }
+
+    function renderPodiumResultLineV164(label, result, seasonTeams = [], teams = []) {
+      if (!result) {
+        return `<div class="competition-page-podium-row-v164"><span>${escapeHtml(label)}</span><strong>-</strong></div>`;
+      }
+      const seasonTeam = findResultSeasonTeam(result, seasonTeams, teams);
+      const name = getResultTeamName(result, seasonTeams, teams);
+      const logo = getLogoForSeasonTeam(seasonTeam, teams, name);
+      return `
+        <div class="competition-page-podium-row-v164">
+          <span>${escapeHtml(label)}</span>
+          ${renderTeamNameWithLogo(name, logo)}
+        </div>`;
+    }
+
+    function renderMobilePodiumResultsV164(results = [], seasonTeams = [], teams = []) {
+      const winner = getResultByPositionV164(results, 1);
+      const runnerUp = getResultByPositionV164(results, 2);
+      return `
+        <div class="competition-page-mobile-podium-v164" aria-label="Vincitore e secondo posto">
+          ${renderPodiumResultLineV164("Vincitore", winner, seasonTeams, teams)}
+          ${renderPodiumResultLineV164("Secondo posto", runnerUp, seasonTeams, teams)}
+        </div>`;
     }
 
     function isLeagueCompetition(competition) {
@@ -531,13 +680,15 @@
       return result.teamName || result.name || result.team || result.clubName || seasonTeam?.name || team?.name || team?.canonicalName || result.seasonTeamId || result.teamId || "-";
     }
 
-    function renderResults(results, seasonTeams = [], teams = []) {
+    function renderResults(results, seasonTeams = [], teams = [], competition = null) {
       if (!results.length) return "";
       const sorted = [...results].sort((a, b) => Number(a.position || a.pos || 999) - Number(b.position || b.pos || 999));
+      const podiumOnlyMobile = isPodiumOnlyCompetitionV164(competition);
       return `
-        <article class="competition-card competition-page-results-card">
+        <article class="competition-card competition-page-results-card ${podiumOnlyMobile ? "is-podium-only-mobile-v164" : ""}">
           <div class="detail-section compact-detail-section competition-page-results-section">
-            <h4>Classifica / piazzamenti</h4>
+            <h4>${podiumOnlyMobile ? "Vincitore e secondo posto" : "Classifica / piazzamenti"}</h4>
+            ${podiumOnlyMobile ? renderMobilePodiumResultsV164(sorted, seasonTeams, teams) : ""}
             <div class="table-wrap compact-table result-table-wrap competition-page-result-table-wrap">
               <table class="competition-page-results-table">
                 <thead>
@@ -570,9 +721,22 @@
     function renderMatchRows(matches, seasonTeams = [], teams = []) {
       if (!matches.length) return `<p class="muted">Nessuna partita inserita.</p>`;
       return `
-        <div class="table-wrap match-table-wrap competition-page-match-table-wrap">
+        <div class="competition-page-mobile-match-table-v154 mobile-cup-match-table-v154" role="table" aria-label="Partite mobile">
+          <div class="mobile-cup-match-head-v154" role="row">
+            <span role="columnheader">Partita</span>
+            <span role="columnheader">Data</span>
+            <span role="columnheader">Ris.</span>
+          </div>
+          ${matches.map((match) => `
+            <div class="mobile-cup-match-row-v154" role="row">
+              <div class="mobile-cup-match-cell-v154 mobile-cup-match-teams-cell-v154" role="cell" data-label="Partita">${renderMobileMatchTeamsV154(match, seasonTeams, teams)}</div>
+              <div class="mobile-cup-match-cell-v154 mobile-cup-date-cell-v154" role="cell" data-label="Data">${escapeHtml(getMobileMatchDateV154(match))}</div>
+              <div class="mobile-cup-match-cell-v154 mobile-cup-result-cell-v154" role="cell" data-label="Ris.">${renderMatchResultHtml(match)}</div>
+            </div>`).join("")}
+        </div>
+        <div class="table-wrap match-table-wrap competition-page-match-table-wrap competition-page-desktop-match-table-v154">
           <table class="competition-page-match-table">
-            <thead><tr><th>Partita</th><th>G. lega</th><th>G. Serie A</th><th>Data</th><th class="number">Risultato</th></tr></thead>
+            <thead><tr><th>Partita</th><th>G. lega</th><th>G. Serie A</th><th>Data</th><th class="number">Ris.</th></tr></thead>
             <tbody>
               ${matches.map((match) => `
                 <tr>
@@ -580,7 +744,7 @@
                   <td data-label="G. lega">${escapeHtml(match.leagueMatchday || "-")}</td>
                   <td data-label="G. Serie A">${escapeHtml(match.serieAMatchday || "-")}</td>
                   <td data-label="Data">${escapeHtml(match.matchDate || "-")}</td>
-                  <td data-label="Risultato" class="number">${renderMatchResultHtml(match)}</td>
+                  <td data-label="Ris." class="number">${renderMatchResultHtml(match)}</td>
                 </tr>`).join("")}
             </tbody>
           </table>
@@ -608,6 +772,15 @@
       errorEl.classList.remove("hidden");
     }
 
+    function normalizeMobileMatchResultLabelsV162(root = document.body) {
+      if (!root) return;
+      root.querySelectorAll("th, [role='columnheader']").forEach((node) => {
+        const text = node.textContent?.trim().toLowerCase() || "";
+        if (text === "risultato") node.textContent = "Ris.";
+      });
+      root.querySelectorAll('[data-label="Risultato"]').forEach((node) => node.setAttribute("data-label", "Ris."));
+    }
+
     function renderPayload(payload) {
       if (!payload) {
         showError("Competizione non trovata né nei JSON statici né nello snapshot Firebase della stagione.");
@@ -620,6 +793,7 @@
       const sourceClass = payload.source === "static" ? "static-source-badge" : "firebase-source-badge";
       const title = competition.name || competition.competitionName || competition.label || competition.type || "Competizione";
       titleEl.textContent = title;
+      if (mobileTitleElV160) mobileTitleElV160.textContent = title;
       subtitleEl.textContent = competition.notes || `Calendario completo della stagione ${competition.seasonId || requestedSeasonId || ""}.`;
       metaEl.innerHTML = `
         <span class="${sourceClass}">${sourceLabel}</span>
@@ -627,7 +801,8 @@
         ${payload.sourceFile ? `<span class="muted small">Fonte: ${escapeHtml(payload.sourceFile)}</span>` : ""}
         <span class="muted small">${payload.matches.length} partite</span>
       `;
-      contentEl.innerHTML = `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [])}${renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || [])}`;
+      contentEl.innerHTML = `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [], competition)}${renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || [])}`;
+      window.requestAnimationFrame(() => { applyMobileCompactDatesV156(document.body); normalizeMobileMatchResultLabelsV162(document.body); });
     }
 
     async function main() {
@@ -644,6 +819,11 @@
       console.error(error);
       showError(error.message || "Errore durante il caricamento della competizione.");
       contentEl.innerHTML = "";
+    });
+  </script>
+  <script>
+    document.getElementById('competitionScrollTopBtnV166')?.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -1,0 +1,1174 @@
+{
+  "id": "2013-2014",
+  "seasonId": "2013-2014",
+  "generatedAt": "2026-05-21T12:31:45.665Z",
+  "teams": [
+    {
+      "id": "WMdzHRRpUP8lHvsdwM7W",
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "logo": "./assets/logos/acmilan.png",
+      "createdAt": {
+        "seconds": 1778833655,
+        "nanoseconds": 22000000
+      },
+      "canonicalName": "Ac Milan",
+      "updatedAt": {
+        "seconds": 1778954300,
+        "nanoseconds": 877000000
+      }
+    },
+    {
+      "id": "lvn8MgLzGcNCY9ev0sgX",
+      "notes": "",
+      "isCurrent": false,
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778833917,
+        "nanoseconds": 315000000
+      },
+      "currentPresidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "canonicalName": "AS Longobarda",
+      "updatedAt": {
+        "seconds": 1778834075,
+        "nanoseconds": 573000000
+      }
+    },
+    {
+      "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "notes": "",
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      },
+      "logo": "./assets/logos/due_fratelli.png",
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "canonicalName": "Due Fratelli Fc 2005",
+      "updatedAt": {
+        "seconds": 1778954398,
+        "nanoseconds": 258000000
+      }
+    },
+    {
+      "id": "fYQViaVoCqDPmikgwS2F",
+      "notes": "",
+      "isCurrent": false,
+      "updatedAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "canonicalName": "Real Gremo",
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "createdAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "logo": ""
+    }
+  ],
+  "presidents": [
+    {
+      "id": "iAcJUOTNENihne0XzhuR",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      },
+      "name": "Alessandro Liguori",
+      "isActive": false,
+      "createdAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      }
+    },
+    {
+      "id": "KuWF4jNk1I97Jdk44gyK",
+      "isActive": false,
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "name": "Bartolomeo Greco",
+      "notes": ""
+    },
+    {
+      "id": "kjxSsudO432wf4zEnDjg",
+      "notes": "",
+      "name": "Giosuè Vicinanza",
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "createdAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "isActive": true
+    },
+    {
+      "id": "9pAjdkP5bPc5ldLlbfPP",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "name": "Michele D'Isanto",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      }
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "name": "Ac Milan",
+      "updatedAt": {
+        "seconds": 1778849095,
+        "nanoseconds": 524000000
+      },
+      "presidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "seasonId": "2013-2014",
+      "createdAt": {
+        "seconds": 1778849095,
+        "nanoseconds": 524000000
+      },
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "logo": "",
+      "isHistorical": false
+    },
+    {
+      "id": "2013-2014_lvn8mglzgcncy9ev0sgx",
+      "name": "AS Longobarda",
+      "updatedAt": {
+        "seconds": 1778849105,
+        "nanoseconds": 384000000
+      },
+      "presidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "seasonId": "2013-2014",
+      "createdAt": {
+        "seconds": 1778849105,
+        "nanoseconds": 384000000
+      },
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
+      "logo": "",
+      "isHistorical": false
+    },
+    {
+      "id": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "seasonId": "2013-2014",
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "name": "Due Fratelli Fc 2005",
+      "updatedAt": {
+        "seconds": 1778849111,
+        "nanoseconds": 147000000
+      },
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778849111,
+        "nanoseconds": 147000000
+      },
+      "isHistorical": false
+    },
+    {
+      "id": "2013-2014_fyqviavocqdpmikgws2f",
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778849101,
+        "nanoseconds": 73000000
+      },
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "logo": "",
+      "seasonId": "2013-2014",
+      "updatedAt": {
+        "seconds": 1778849101,
+        "nanoseconds": 73000000
+      },
+      "name": "Real Gremo",
+      "presidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ]
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2013-2014_campionato",
+      "format": "CLASSIFICA",
+      "createdAt": {
+        "seconds": 1778848825,
+        "nanoseconds": 195000000
+      },
+      "status": "CONCLUSA",
+      "type": "CAMPIONATO",
+      "seasonId": "2013-2014",
+      "name": "Campionato",
+      "notes": "",
+      "knockoutPhases": [],
+      "updatedAt": {
+        "seconds": 1778848836,
+        "nanoseconds": 870000000
+      }
+    },
+    {
+      "id": "2013-2014_champions-league",
+      "format": "GIRONI_KO",
+      "createdAt": {
+        "seconds": 1778848825,
+        "nanoseconds": 230000000
+      },
+      "status": "CONCLUSA",
+      "type": "CHAMPIONS_LEAGUE",
+      "name": "Champion's League",
+      "seasonId": "2013-2014",
+      "notes": "",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778849169,
+        "nanoseconds": 434000000
+      }
+    },
+    {
+      "id": "2013-2014_coppa-italia",
+      "format": "GIRONI_KO",
+      "name": "Coppa Italia",
+      "seasonId": "2013-2014",
+      "createdAt": {
+        "seconds": 1778848825,
+        "nanoseconds": 269000000
+      },
+      "status": "CONCLUSA",
+      "type": "COPPA_ITALIA",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778848840,
+        "nanoseconds": 617000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ]
+    },
+    {
+      "id": "2013-2014_playoff",
+      "createdAt": {
+        "seconds": 1778848825,
+        "nanoseconds": 306000000
+      },
+      "status": "NON_DISPUTATA",
+      "type": "PLAYOFF",
+      "seasonId": "2013-2014",
+      "name": "Playoff",
+      "format": "GIRONI_KO",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778849173,
+        "nanoseconds": 391000000
+      },
+      "notes": ""
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2013-2014-campionato_1",
+      "points": null,
+      "played": null,
+      "createdAt": {
+        "seconds": 1778849143,
+        "nanoseconds": 596000000
+      },
+      "seasonId": "2013-2014",
+      "position": 1,
+      "competitionId": "2013-2014_campionato",
+      "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f",
+      "updatedAt": {
+        "seconds": 1778849143,
+        "nanoseconds": 596000000
+      },
+      "fantapoints": null
+    },
+    {
+      "id": "2013-2014-campionato_2",
+      "played": null,
+      "points": null,
+      "seasonId": "2013-2014",
+      "createdAt": {
+        "seconds": 1778849143,
+        "nanoseconds": 656000000
+      },
+      "competitionId": "2013-2014_campionato",
+      "position": 2,
+      "updatedAt": {
+        "seconds": 1778849143,
+        "nanoseconds": 656000000
+      },
+      "fantapoints": null,
+      "seasonTeamId": "2013-2014_lvn8mglzgcncy9ev0sgx"
+    },
+    {
+      "id": "2013-2014-campionato_3",
+      "points": null,
+      "played": null,
+      "createdAt": {
+        "seconds": 1778849143,
+        "nanoseconds": 723000000
+      },
+      "seasonId": "2013-2014",
+      "position": 3,
+      "competitionId": "2013-2014_campionato",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778849143,
+        "nanoseconds": 723000000
+      }
+    },
+    {
+      "id": "2013-2014-champions-league_1",
+      "seasonId": "2013-2014",
+      "createdAt": {
+        "seconds": 1778849182,
+        "nanoseconds": 333000000
+      },
+      "played": null,
+      "points": null,
+      "updatedAt": {
+        "seconds": 1778849182,
+        "nanoseconds": 333000000
+      },
+      "fantapoints": null,
+      "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f",
+      "competitionId": "2013-2014_champions-league",
+      "position": 1
+    },
+    {
+      "id": "2013-2014-coppa-italia_1",
+      "competitionId": "2013-2014_coppa-italia",
+      "position": 1,
+      "updatedAt": {
+        "seconds": 1778849152,
+        "nanoseconds": 965000000
+      },
+      "fantapoints": null,
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "played": null,
+      "points": null,
+      "seasonId": "2013-2014",
+      "createdAt": {
+        "seconds": 1778849152,
+        "nanoseconds": 965000000
+      }
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_0",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Montipò",
+      "realTeam": "VER",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_1",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Okoye",
+      "realTeam": "UDI",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_2",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Romagnoli",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_3",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Mancini",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_4",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "N'Dicka",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_5",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Angelino",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_6",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gutierrez",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_7",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pongracic",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_8",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Tavares N.",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_9",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Dodò",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_10",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belghali",
+      "realTeam": "VER",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_11",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Zaccagni",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_12",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rabiot",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 30,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_13",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Harrison",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_14",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Aebischer",
+      "realTeam": "PIS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_15",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gudmundsson A.",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 37,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_16",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Baldanzi",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_17",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Thorstvedt",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_18",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Perrone",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_19",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rowe",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_20",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Jashari",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_21",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belotti",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_22",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pinamonti",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_23",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Vardy",
+      "realTeam": "CRE",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_24",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Moreo",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_25",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Malen",
+      "realTeam": "ROM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 46,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_26",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Borrelli",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_27",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Krstovic",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_wmdzhrrpup8lhvsdwm7w_28",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gimenez",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 142,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_0",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gollini",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_1",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Svilar",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_2",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Mina",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_3",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Lazaro",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_4",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Celik",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_5",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Delprato",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_6",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Norton-Cuffy",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_7",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Ahanor",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_8",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Britschgi",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_9",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Pellegrini Lo.",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_10",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sottil",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_11",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gaetano",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_12",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Fagioli",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_13",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Elmas",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_14",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Vlasic",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_15",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Volpato",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_16",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Oristanio",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_17",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Isaksen",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 18,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_18",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Zaragoza",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 29,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_19",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Paz N.",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_20",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Venturino",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_21",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sucic P.",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_22",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Santos A.",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_23",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Scamacca",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 95,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_24",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Colombo",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_25",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "De Ketelaere",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 81,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_26",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Addai",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_27",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Kilicsoy",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_28",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Frigan",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2013-2014_y3vmcdwvut0u1tlsg4qc_29",
+      "seasonId": "2013-2014",
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Durosinmi",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 4,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}
