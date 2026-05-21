@@ -1,0 +1,113 @@
+/* V155 - Mobile Competizioni: lista a blocchi cliccabili. Desktop invariato. */
+.mobile-competition-blocks-v155 {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  #competitionsList .desktop-competition-list-v155 {
+    display: none !important;
+  }
+
+  #competitionsList .mobile-competition-blocks-v155 {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .mobile-competition-block-v155 {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(52, 211, 153, 0.34);
+    border-radius: 22px;
+    padding: 0.95rem;
+    background:
+      linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(59, 130, 246, 0.05)),
+      rgba(15, 23, 42, 0.88);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+  }
+
+  .mobile-competition-block-v155:active {
+    transform: translateY(1px);
+  }
+
+  .mobile-competition-block-v155.is-active {
+    border-color: rgba(52, 211, 153, 0.58);
+    box-shadow: 0 18px 36px rgba(16, 185, 129, 0.12);
+  }
+
+  .mobile-competition-block-head-v155 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.7rem;
+  }
+
+  .mobile-competition-block-head-v155 h3 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .mobile-competition-block-head-v155 .status {
+    flex: 0 0 auto;
+    margin-top: 0.05rem;
+    font-size: 0.66rem;
+    padding: 0.28rem 0.48rem;
+  }
+
+  .mobile-competition-block-next-v155 {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+    padding-top: 0.72rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+  }
+
+  .mobile-competition-next-label-v155 {
+    color: var(--muted, #94a3b8);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .mobile-competition-next-teams-v155 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.28rem;
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  .mobile-competition-next-teams-v155 .team-name-with-logo,
+  .mobile-competition-next-teams-v155 .team-name-inline,
+  .mobile-competition-next-teams-v155 .team-with-logo,
+  .mobile-competition-next-teams-v155 .match-team-name {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .mobile-competition-next-date-v155 {
+    width: max-content;
+    max-width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 999px;
+    padding: 0.25rem 0.52rem;
+    background: rgba(15, 23, 42, 0.72);
+    color: var(--text, #e5e7eb);
+    font-size: 0.76rem;
+    font-weight: 750;
+  }
+
+  .mobile-competition-open-v155 {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.82rem;
+    color: #6ee7b7;
+    font-size: 0.82rem;
+    font-weight: 850;
+  }
+}

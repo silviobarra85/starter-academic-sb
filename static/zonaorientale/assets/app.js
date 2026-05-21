@@ -13341,3 +13341,125 @@ renderMobileCupMatchCardsV150 = function renderMobileCupMatchTableV154(matches, 
       }).join("")}
     </div>`;
 };
+
+/* V155 - Mobile Competizioni: schermata a blocchi cliccabili, desktop invariato. */
+function isMobileCompetitionStatusActiveV155(competition) {
+  return String(competition?.status || "").trim().toUpperCase() === "ATTIVA";
+}
+
+function getCompetitionMatchesForMobileBlockV155(competition) {
+  if (!competition) return [];
+  if (typeof getCompetitionMatches === "function") {
+    const matches = getCompetitionMatches(competition.id) || [];
+    if (matches.length) return matches;
+  }
+  if (Array.isArray(competition.matches)) return competition.matches;
+  if (Array.isArray(competition.calendar)) return competition.calendar;
+  return [];
+}
+
+function getMobileCompetitionNextScheduledMatchV155(competition) {
+  const matches = getCompetitionMatchesForMobileBlockV155(competition)
+    .filter((match) => match && !(typeof isCancelledMatchV151 === "function" && isCancelledMatchV151(match)))
+    .filter((match) => !(typeof isPlayedMatchV152 === "function" ? isPlayedMatchV152(match) : isPlayedMatchV150(match)));
+
+  if (!matches.length) return null;
+
+  return [...matches].sort((a, b) => {
+    const aDate = typeof parseMatchDateMsV151 === "function" ? parseMatchDateMsV151(a) : Date.parse(a?.matchDate || a?.date || "");
+    const bDate = typeof parseMatchDateMsV151 === "function" ? parseMatchDateMsV151(b) : Date.parse(b?.matchDate || b?.date || "");
+    const aFinite = Number.isFinite(aDate);
+    const bFinite = Number.isFinite(bDate);
+    if (aFinite && bFinite && aDate !== bDate) return aDate - bDate;
+    if (aFinite && !bFinite) return -1;
+    if (!aFinite && bFinite) return 1;
+
+    const aMatchday = typeof getMatchdaySortValueV151 === "function" ? getMatchdaySortValueV151(a) : Number(a?.leagueMatchday || a?.serieAMatchday || 9999);
+    const bMatchday = typeof getMatchdaySortValueV151 === "function" ? getMatchdaySortValueV151(b) : Number(b?.leagueMatchday || b?.serieAMatchday || 9999);
+    if (Number.isFinite(aMatchday) && Number.isFinite(bMatchday) && aMatchday !== bMatchday) return aMatchday - bMatchday;
+    return String(a?.id || "").localeCompare(String(b?.id || ""));
+  })[0] || null;
+}
+
+function getMobileCompetitionMatchDateV155(match) {
+  const raw = typeof getMatchDateRawV151 === "function"
+    ? getMatchDateRawV151(match)
+    : String(match?.matchDate || match?.date || match?.scheduledDate || match?.playDate || "").trim();
+  return raw || "Data da definire";
+}
+
+function renderMobileCompetitionNextMatchV155(competition) {
+  if (!isMobileCompetitionStatusActiveV155(competition)) return "";
+  const match = getMobileCompetitionNextScheduledMatchV155(competition);
+  if (!match) {
+    return `<p class="mobile-competition-block-next-v155 muted">Nessuna prossima partita programmata.</p>`;
+  }
+  return `
+    <div class="mobile-competition-block-next-v155">
+      <span class="mobile-competition-next-label-v155">Prossima partita</span>
+      <span class="mobile-competition-next-teams-v155">
+        ${renderStaticMatchTeamNameV101(match, "home", { strong: false })}
+        <span class="match-separator">-</span>
+        ${renderStaticMatchTeamNameV101(match, "away", { strong: false })}
+      </span>
+      <span class="mobile-competition-next-date-v155">${escapeHtml(getMobileCompetitionMatchDateV155(match))}</span>
+    </div>`;
+}
+
+function renderMobileCompetitionBlockV155(competition) {
+  const name = typeof getCompetitionDisplayNameV111 === "function"
+    ? getCompetitionDisplayNameV111(competition)
+    : (competition?.name || competition?.competitionName || "Competizione");
+  const statusText = getLabel(COMPETITION_STATUSES, competition?.status) || competition?.status || "-";
+  const url = typeof getCompetitionOpenUrlV111 === "function" ? getCompetitionOpenUrlV111(competition) : "./competition.html";
+  const activeClass = isMobileCompetitionStatusActiveV155(competition) ? " is-active" : "";
+  return `
+    <a class="mobile-competition-block-v155${activeClass}" href="${escapeHtml(url)}" aria-label="Apri ${escapeHtml(name)}">
+      <div class="mobile-competition-block-head-v155">
+        <h3>${escapeHtml(name)}</h3>
+        <span class="status ${getCompetitionStatusClass(competition?.status)}">${escapeHtml(statusText)}</span>
+      </div>
+      ${renderMobileCompetitionNextMatchV155(competition)}
+      <span class="mobile-competition-open-v155">Apri competizione →</span>
+    </a>`;
+}
+
+function renderDesktopCompetitionCardV155(competition) {
+  return `
+    <article class="competition-card${hasStaticCompetitionSourceV102(competition) ? " competition-card-static-source" : " competition-card-firebase-source"}">
+      <div class="competition-card-header competition-card-header-with-actions">
+        <div>
+          <h3>${escapeHtml(getCompetitionDisplayNameV111(competition))} ${getCompetitionSourceBadgeV111(competition)}</h3>
+        </div>
+        <div class="competition-card-actions">
+          ${renderOpenCompetitionButtonV111(competition)}
+          <span class="status ${getCompetitionStatusClass(competition.status)}">${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status))}</span>
+        </div>
+      </div>
+      ${renderStaticCompetitionSourceLineV102(competition)}
+      ${competition.notes ? `<p>${escapeHtml(competition.notes)}</p>` : ""}
+      ${renderCompetitionResultsPublic(competition)}
+      ${renderCompetitionMatchesPublic(competition)}
+    </article>`;
+}
+
+renderCompetitionsPublic = function renderCompetitionsPublicV155() {
+  const list = document.getElementById("competitionsList");
+  if (!list) return;
+
+  const seasonId = getCurrentSeasonId();
+  const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+
+  if (!competitions.length) {
+    list.innerHTML = `<p class="muted">Nessuna competizione inserita per ${escapeHtml(seasonId || "la stagione selezionata")}.</p>`;
+    return;
+  }
+
+  list.innerHTML = `
+    <div class="mobile-competition-blocks-v155" aria-label="Competizioni mobile">
+      ${competitions.map((competition) => renderMobileCompetitionBlockV155(competition)).join("")}
+    </div>
+    <div class="desktop-competition-list-v155">
+      ${competitions.map((competition) => renderDesktopCompetitionCardV155(competition)).join("")}
+    </div>`;
+};
