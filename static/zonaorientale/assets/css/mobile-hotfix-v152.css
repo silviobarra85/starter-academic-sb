@@ -1,0 +1,52 @@
+/* V152 - Hotfix mobile: Rose e Coppe. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Rose mobile: rimuove la linea verticale verde sulle righe, che può disallineare le colonne. */
+  body.is-mobile-ux #rosterClubCards .roster-team-row::before,
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody tr::before,
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody td::before,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr::before,
+  body.is-mobile-ux table.team-profile-roster-table tbody td::before,
+  body.is-mobile-ux .team-profile-roster-wrap tbody tr::before,
+  body.is-mobile-ux .team-profile-roster-wrap tbody td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-team-row,
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody tr,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr,
+  body.is-mobile-ux .team-profile-roster-wrap tbody tr {
+    border-left: 0 !important;
+    box-shadow: none;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody td:first-child,
+  body.is-mobile-ux .team-profile-roster-wrap tbody td:first-child {
+    border-left: 0 !important;
+  }
+
+  /* Coppe mobile: forza la lista compatta e nasconde la tabella desktop dentro la sezione Coppe. */
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .match-table-wrap,
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 > .table-wrap {
+    display: none !important;
+  }
+
+  body.is-mobile-ux #competitions .competition-match-responsive-pack-v150 .mobile-cup-match-list-v150 {
+    display: grid !important;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 {
+    min-width: 54px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.is-mobile-ux #competitions .mobile-cup-match-row-v150.is-played .mobile-cup-match-meta-v150 .match-result-goals {
+    display: inline-block;
+    color: inherit;
+    font-size: 0.86rem;
+    font-weight: 950;
+    line-height: 1;
+  }
+}
