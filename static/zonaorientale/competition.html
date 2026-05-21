@@ -7,13 +7,13 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=154" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=154" />
+  <link rel="stylesheet" href="./assets/styles.css?v=156" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=156" />
   <link rel="stylesheet" href="./assets/css/admin-v130.css?v=154" />
   <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=154" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=154" />
-  <link rel="stylesheet" href="./assets/css/mobile-competitions-v145.css?v=154" />
-  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v154.css?v=154" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=156" />
+  <link rel="stylesheet" href="./assets/css/mobile-competitions-v145.css?v=156" />
+  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v154.css?v=156" />
 </head>
 <body class="is-mobile-ux">
   <main class="container app-main competition-page-main">
@@ -36,7 +36,7 @@
   </main>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V154 mobile competizioni in tabella · Ultimo aggiornamento 20/05/2026</p>
+    <p>ZonaOrientale Salerno · V156 mobile date compatte · Ultimo aggiornamento 21/05/2026</p>
   </footer>
 
   <script type="module">
@@ -52,6 +52,36 @@
     const metaEl = document.getElementById("competitionPageMeta");
     const contentEl = document.getElementById("competitionPageContent");
     const errorEl = document.getElementById("competitionPageError");
+
+    function formatCompactMobileDateV156(value) {
+      const text = String(value ?? "");
+      return text
+        .replace(/\b(\d{4})-(\d{2})-(\d{2})\b/g, (_, year, month, day) => `${day}-${month}-${String(year).slice(-2)}`)
+        .replace(/\b(\d{2})\/(\d{2})\/(\d{4})\b/g, (_, day, month, year) => `${day}-${month}-${String(year).slice(-2)}`);
+    }
+
+    function isMobileDateFormattingEnabledV156() {
+      return window.matchMedia?.("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+    }
+
+    function applyMobileCompactDatesV156(root = document.body) {
+      if (!root || !isMobileDateFormattingEnabledV156()) return;
+      const skipTags = new Set(["SCRIPT", "STYLE", "TEXTAREA", "INPUT", "SELECT", "OPTION", "PRE", "CODE"]);
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || skipTags.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+          if (!/\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4}/.test(node.nodeValue || "")) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach((node) => {
+        const next = formatCompactMobileDateV156(node.nodeValue);
+        if (next !== node.nodeValue) node.nodeValue = next;
+      });
+    }
 
     function escapeHtml(value) {
       return String(value ?? "")
@@ -659,6 +689,7 @@
         <span class="muted small">${payload.matches.length} partite</span>
       `;
       contentEl.innerHTML = `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [])}${renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || [])}`;
+      window.requestAnimationFrame(() => applyMobileCompactDatesV156(document.body));
     }
 
     async function main() {
