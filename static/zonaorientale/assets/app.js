@@ -12919,3 +12919,73 @@ renderAll = function renderAllV142() {
   renderMobileBlockDashboardV142();
   return result;
 };
+
+
+/* V144 - Area squadra mobile operativa: hub azioni rapide e ritocchi solo mobile. */
+function renderMobileTeamAreaHubV144(approved) {
+  if (!approved?.seasonTeamId) return "";
+  const teamName = getSeasonTeamDisplayName(approved.seasonTeamId) || approved.teamName || "La mia squadra";
+  const rosterCount = typeof getRosterCountV119 === "function" ? getRosterCountV119(approved.seasonTeamId) : 0;
+  const fmBalance = typeof getTeamFmBalance === "function" ? getTeamFmBalance(approved.seasonTeamId) : null;
+  const pendingSent = (state.raw?.transferNegotiations || []).filter((item) => item.fromSeasonTeamId === approved.seasonTeamId && String(item.status || "PENDING").toUpperCase() === "PENDING").length;
+  const pendingReceived = (state.raw?.transferNegotiations || []).filter((item) => item.toSeasonTeamId === approved.seasonTeamId && String(item.status || "PENDING").toUpperCase() === "PENDING").length;
+  const listings = typeof getActiveTransferListingsV119 === "function" ? getActiveTransferListingsV119(getCurrentSeasonId()).filter((item) => item.seasonTeamId === approved.seasonTeamId).length : 0;
+
+  return `
+    <section id="mobileTeamAreaHubV144" class="mobile-teamarea-hub-v144" aria-label="Azioni rapide area squadra">
+      <div class="mobile-teamarea-hero-v144">
+        <span class="mobile-teamarea-kicker-v144">Area squadra</span>
+        <h3>${escapeHtml(teamName)}</h3>
+        <p>${escapeHtml(`${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}`)}</p>
+      </div>
+      <div class="mobile-teamarea-stats-v144">
+        <span><strong>${escapeHtml(String(listings))}</strong><small>in vendita</small></span>
+        <span><strong>${escapeHtml(String(pendingSent))}</strong><small>inviate</small></span>
+        <span><strong>${escapeHtml(String(pendingReceived))}</strong><small>ricevute</small></span>
+      </div>
+      <div class="mobile-teamarea-actions-v144">
+        <button class="mobile-teamarea-action-v144" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}"><span>👕</span><strong>La mia rosa</strong><small>scheda completa</small></button>
+        <a class="mobile-teamarea-action-v144" href="#clubs" data-page-link="clubs"><span>👥</span><strong>Tutte le rose</strong><small>lega</small></a>
+        <a class="mobile-teamarea-action-v144" href="#fantamercato" data-page-link="fantamercato"><span>🔁</span><strong>Mercato</strong><small>trasferibili</small></a>
+        <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll=".trade-proposal-panel"><span>✍️</span><strong>Proposta</strong><small>nuova trattativa</small></button>
+        <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll=".trade-list-panel"><span>🤝</span><strong>Trattative</strong><small>storico</small></button>
+        <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll="#teamNewsRequestForm"><span>📰</span><strong>Comunicato</strong><small>squadra</small></button>
+      </div>
+    </section>`;
+}
+
+function enhanceTeamAreaMobileV144() {
+  const target = document.getElementById("teamAreaBody");
+  if (!target) return;
+  const old = document.getElementById("mobileTeamAreaHubV144");
+  if (old) old.remove();
+  const approved = getApprovedTeamUser?.();
+  if (!state.user || !approved?.seasonTeamId) return;
+  const summary = target.querySelector(".team-area-summary-panel");
+  if (!summary) return;
+  summary.insertAdjacentHTML("afterend", renderMobileTeamAreaHubV144(approved));
+}
+
+const renderUserAreaBeforeV144 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV144() {
+  const result = renderUserAreaBeforeV144?.();
+  enhanceTeamAreaMobileV144();
+  return result;
+};
+
+const renderAllBeforeV144 = renderAll;
+renderAll = function renderAllV144() {
+  const result = renderAllBeforeV144();
+  enhanceTeamAreaMobileV144();
+  return result;
+};
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest?.("[data-mobile-teamarea-scroll]");
+  if (!button) return;
+  event.preventDefault();
+  const selector = button.dataset.mobileTeamareaScroll;
+  const node = selector ? document.querySelector(selector) : null;
+  if (!node) return;
+  node.scrollIntoView({ behavior: "smooth", block: "start" });
+}, true);
