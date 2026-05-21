@@ -1,0 +1,262 @@
+/* V148 - Rifiniture mobile per contenuti informativi: News, Albo, Regolamento e pagine secondarie. */
+@media (max-width: 720px) {
+  body {
+    padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .app-page[data-page="news"] .page-heading,
+  .app-page[data-page="honor"] .page-heading,
+  .app-page[data-page="regolamento"] .regulation-panel > .panel-header {
+    margin-bottom: 12px;
+    border-radius: 22px;
+    border: 1px solid rgba(34, 197, 94, 0.24);
+    background:
+      radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 42%),
+      linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.82));
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
+  }
+
+  .app-page[data-page="news"] .page-heading h2,
+  .app-page[data-page="honor"] .page-heading h2,
+  .app-page[data-page="regolamento"] .regulation-panel h2 {
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+
+  .app-page[data-page="news"] .panel,
+  .app-page[data-page="honor"] .panel,
+  .app-page[data-page="regolamento"] .panel {
+    border-radius: 22px;
+  }
+
+  .app-page[data-page="news"] .panel-header,
+  .app-page[data-page="honor"] .panel-header,
+  .app-page[data-page="regolamento"] .panel-header {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .news-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .news-card-details {
+    border: 1px solid rgba(34, 197, 94, 0.16);
+    border-radius: 20px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 244, 0.82));
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
+    overflow: hidden;
+  }
+
+  .news-card-summary {
+    min-height: 70px;
+    padding: 14px 14px 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .news-card-summary::marker {
+    content: "";
+  }
+
+  .news-card-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .news-card-summary h3 {
+    margin: 3px 0 0;
+    font-size: 1rem;
+    line-height: 1.22;
+  }
+
+  .news-card-summary small:first-child {
+    display: inline-flex;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    color: #166534;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .news-card-summary > small:last-child {
+    max-width: 86px;
+    padding-top: 2px;
+    text-align: right;
+    font-size: 0.72rem;
+    color: #64748b;
+    line-height: 1.2;
+  }
+
+  .news-card-detail-body {
+    padding: 0 14px 14px;
+    color: #1e293b;
+    font-size: 0.92rem;
+    line-height: 1.48;
+  }
+
+  .app-page[data-page="honor"] .single-panel-layout {
+    display: block;
+  }
+
+  .honor-table-wrap,
+  .fifa-ranking-table-wrap,
+  .palmares-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 18px;
+  }
+
+  .honor-table-wrap table,
+  .fifa-ranking-table-wrap table,
+  .palmares-table-wrap table {
+    min-width: 680px;
+  }
+
+  .fifa-ranking-table-wrap table,
+  .palmares-table-wrap table {
+    min-width: 360px;
+  }
+
+  .palmares-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .palmares-competition-card,
+  .app-page[data-page="honor"] .detail-section {
+    border-radius: 20px;
+    border: 1px solid rgba(34, 197, 94, 0.14);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.72));
+  }
+
+  .club-name-with-logo {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .club-name-with-logo strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .rules-inline-wrap {
+    display: block;
+  }
+
+  .rules-index {
+    position: static;
+    margin-bottom: 14px;
+    padding: 14px;
+    border-radius: 22px;
+    border: 1px solid rgba(34, 197, 94, 0.20);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.78));
+  }
+
+  .rules-index h3 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  .rules-index-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .rules-index-grid a {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.07);
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .rules-inline-content {
+    display: grid;
+    gap: 12px;
+  }
+
+  .rules-section {
+    padding: 16px 14px;
+    border: 1px solid rgba(34, 197, 94, 0.14);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96));
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+  }
+
+  .rules-section h2 {
+    font-size: 1.08rem;
+    line-height: 1.2;
+  }
+
+  .rules-section p,
+  .rules-section li {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .rules-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 16px;
+  }
+
+  .rules-table {
+    min-width: 520px;
+  }
+
+  .rules-section .eyebrow {
+    width: fit-content;
+    min-width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    color: #166534;
+  }
+
+  .mobile-bottom-sheet-v141 {
+    max-height: min(76vh, 560px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-bottom-link,
+  .mobile-more-link {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (max-width: 420px) {
+  .rules-index-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-card-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .news-card-summary > small:last-child {
+    max-width: none;
+    text-align: left;
+  }
+}
