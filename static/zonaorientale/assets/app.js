@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=173";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=174";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -14328,5 +14328,132 @@ attachAdminHandlers = function attachAdminHandlersV173() {
   document.getElementById("adminDownloadStaticHonorSnapshot")?.addEventListener("click", downloadStaticHonorSnapshotV173);
 };
 
+
+/* V174 - Explicit admin data collections.
+   Admin full-load no longer uses the mutable COLLECTIONS array directly.
+   This prevents read-only/public snapshot collections, especially
+   publicTeamSnapshots, from being read on every admin login. Manual Firebase
+   backup still uses an explicit backup list and can include snapshots. */
+const ADMIN_FULL_LOAD_COLLECTIONS_V174 = Object.freeze([
+  "leagueSettings",
+  "seasons",
+  "presidents",
+  "teams",
+  "seasonTeams",
+  "stadiums",
+  "competitions",
+  "competitionMatches",
+  "competitionResults",
+  "honorRoll",
+  "fifaRankings",
+  "rosterEntries",
+  "fmMovements",
+  "news",
+  "pendingUsers",
+  "teamUsers",
+  "teamRequests"
+]);
+
+const ADMIN_BACKUP_COLLECTIONS_V174 = Object.freeze([
+  ...ADMIN_FULL_LOAD_COLLECTIONS_V174,
+  "publicTeamSnapshots"
+]);
+
+const ADMIN_FULL_LOAD_EXCLUDED_COLLECTIONS_V174 = Object.freeze([
+  "publicTeamSnapshots",
+  "publicSeasonSnapshots",
+  "publicSnapshots",
+  "transferListings",
+  "transferNegotiations"
+]);
+
+function uniqueCollectionNamesV174(names) {
+  return [...new Set((names || []).map((name) => String(name || "").trim()).filter(Boolean))];
+}
+
+function getAdminFullLoadCollectionsV174() {
+  return uniqueCollectionNamesV174(ADMIN_FULL_LOAD_COLLECTIONS_V174)
+    .filter((name) => !ADMIN_FULL_LOAD_EXCLUDED_COLLECTIONS_V174.includes(name));
+}
+
+function getFirebaseBackupCollectionsV174() {
+  return uniqueCollectionNamesV174(ADMIN_BACKUP_COLLECTIONS_V174);
+}
+
+async function loadCollectionEntriesV174(collectionNames) {
+  const names = uniqueCollectionNamesV174(collectionNames);
+  return Promise.all(names.map(async (name) => [name, await loadCollection(name)]));
+}
+
+function buildRawFromEntriesV174(entries) {
+  return Object.assign(makeEmptyRawDataV34(), Object.fromEntries(entries || []));
+}
+
+function markFullAdminDataLoadedV174() {
+  state.hasFullData = true;
+  state.usedPublicSnapshots = false;
+}
+
+loadFullDataV32 = async function loadFullDataV174(options = {}) {
+  const { render = true } = options;
+  const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  await loadListoniData();
+  await loadRostersData();
+  sortData();
+  if (render) renderAll();
+};
+
+loadFullDataStableV100 = async function loadFullDataStableV174(requestId, options = {}) {
+  const { render = true } = options;
+  const selectedSeasonBefore = state.selectedSeasonId;
+  const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
+  await loadListoniData();
+  await loadRostersData();
+  await loadStaticCompetitionCalendarsV101();
+  if (!isLatestDataLoadV100(requestId)) return false;
+
+  state.raw = buildRawFromEntriesV174(entries);
+  markFullAdminDataLoadedV174();
+  state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
+  mergeStaticCompetitionCalendarsForSeasonV101(state.selectedSeasonId);
+  sortData();
+  if (render) renderAll();
+  setError("");
+  return true;
+};
+
+renderBackupAdminPanel = function renderBackupAdminPanelV174() {
+  const backupCollections = getFirebaseBackupCollectionsV174();
+  const adminLoadCollections = getAdminFullLoadCollectionsV174();
+  return renderAdminPanel("adminBackupPanel", "Backup", "Download dati Firebase", "Scarica uno snapshot JSON delle raccolte Firestore usate dal sito.", `
+    <div class="form-actions">
+      <button id="adminDownloadFirebaseBackup" class="button button-primary" type="button">Scarica backup Firebase</button>
+      <span id="adminBackupStatus" class="form-status"></span>
+    </div>
+    <small class="field-hint">Il backup include: ${escapeHtml(backupCollections.join(", "))}.</small>
+    <small class="field-hint">Il caricamento admin iniziale legge solo: ${escapeHtml(adminLoadCollections.join(", "))}. Gli snapshot squadra non vengono caricati automaticamente.</small>
+  `);
+};
+
+downloadFirebaseBackup = async function downloadFirebaseBackupV174() {
+  try {
+    showMessage("adminBackupStatus", "Preparazione backup...");
+    const collections = {};
+    for (const collectionName of getFirebaseBackupCollectionsV174()) {
+      const snapshot = await getDocs(collection(db, collectionName));
+      collections[collectionName] = snapshot.docs.map((documentSnapshot) => ({
+        id: documentSnapshot.id,
+        ...documentSnapshot.data()
+      }));
+    }
+    downloadJson({ exportedAt: new Date().toISOString(), collections }, `zonaorientale-firebase-backup-${getTodayIsoDate()}.json`);
+    showMessage("adminBackupStatus", "Backup scaricato.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminBackupStatus", "Errore durante il backup Firebase.", true);
+  }
+};
 
 startZonaOrientaleAppV173();
