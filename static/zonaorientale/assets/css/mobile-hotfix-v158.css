@@ -1,0 +1,80 @@
+/* V158 - Mobile: sezioni senza titolo e rose scrollabili. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Nasconde solo su mobile i titoli principali delle sezioni: Dashboard, Rose, Competizioni, ecc. */
+  body.is-mobile-ux main.app-main > section.app-page > .page-heading,
+  body.is-mobile-ux .app-page > .page-heading,
+  body.is-mobile-ux .competition-page-main > .page-heading {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .app-page {
+    padding-top: 6px;
+  }
+
+  /* Nella selezione rose mobile il blocco stesso è il controllo: niente tasti Espandi/Riduci/Chiudi. */
+  body.is-mobile-ux #rosterClubCards .desktop-roster-table-v156 {
+    display: none !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 {
+    grid-template-columns: auto 1fr !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-head-v156 button,
+  body.is-mobile-ux .mobile-roster-detail-head-v156 .button,
+  body.is-mobile-ux .mobile-roster-detail-head-v156 [data-toggle-roster-club],
+  body.is-mobile-ux #rosterClubCards .details-toggle-label {
+    display: none !important;
+  }
+
+  /* La rosa espansa deve permettere lo scroll orizzontale della tabella giocatori. */
+  body.is-mobile-ux .mobile-roster-selected-v156,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 {
+    overflow: visible !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .table-wrap,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-inline-table-wrap,
+  body.is-mobile-ux .mobile-roster-selected-v156 .table-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 table,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table,
+  body.is-mobile-ux .mobile-roster-selected-v156 table,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table {
+    min-width: 720px !important;
+    width: max-content !important;
+    max-width: none !important;
+    table-layout: auto !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td {
+    white-space: nowrap !important;
+  }
+
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td:first-child {
+    min-width: 190px !important;
+    max-width: 220px !important;
+    white-space: normal !important;
+  }
+}
