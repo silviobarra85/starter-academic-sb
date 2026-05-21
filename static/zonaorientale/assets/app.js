@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=173";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -8194,11 +8194,13 @@ initializeAppUi = async function initializeAppUiV100() {
   if (loginHelpText) loginHelpText.textContent = "Accedi con l'utente creato in Firebase Authentication.";
 };
 
-initializeAppUi().then(() => {
-  setupThemeToggleV89();
-  injectDisplayModeToggle();
-  updateMobileUxClass();
-});
+function startZonaOrientaleAppV173() {
+  return initializeAppUi().then(() => {
+    setupThemeToggleV89();
+    injectDisplayModeToggle();
+    updateMobileUxClass();
+  });
+}
 
 /* V110 - Nomi competizione da JSON statico come fonte primaria. */
 function getCompetitionStaticDisplayNameV110(competition) {
@@ -13951,7 +13953,7 @@ if (renderPublicSnapshotsAdminPanelBeforeV171) {
   renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV171() {
     let html = renderPublicSnapshotsAdminPanelBeforeV171();
     if (!html.includes('id="adminDownloadPublicConfig"')) {
-      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', '  <button id="adminDownloadPublicConfig" class="button button-secondary" type="button">Scarica config pubblica</button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"');
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', `  <button id="adminDownloadPublicConfig" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica config pubblica</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(publicSnapshotAdminHelpersV129.getSnapshotDateText(state.publicConfigV171?.generatedAt || ""))}</span></button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"`);
       html = html.replace('Comunicati, competizioni e classifiche della stagione sono dentro', 'La config pubblica statica va salvata in <code>assets/public/config.json</code>. Comunicati, competizioni e classifiche della stagione sono dentro');
     }
     return html;
@@ -14150,7 +14152,7 @@ if (renderPublicSnapshotsAdminPanelBeforeV172) {
   renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV172() {
     let html = renderPublicSnapshotsAdminPanelBeforeV172();
     if (!html.includes('id="adminDownloadStaticSeasonSnapshots"')) {
-      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', '  <button id="adminDownloadSelectedStaticSeasonSnapshot" class="button button-secondary" type="button">Scarica snapshot stagione JSON</button>\n        <button id="adminDownloadStaticSeasonSnapshots" class="button button-secondary" type="button">Scarica overlay snapshot stagioni</button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"');
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', `  <button id="adminDownloadSelectedStaticSeasonSnapshot" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica snapshot stagione JSON</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(getStaticSeasonSnapshotDateTextV173(getCurrentSeasonId()))}</span></button>\n        <button id="adminDownloadStaticSeasonSnapshots" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica overlay snapshot stagioni</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(getStaticSeasonSnapshotsManifestDateTextV173())}</span></button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"`);
       html = html.replace('La config pubblica statica va salvata in <code>assets/public/config.json</code>.', 'La config pubblica statica va salvata in <code>assets/public/config.json</code>. Gli snapshot stagione statici vanno salvati in <code>assets/snapshots/seasons/</code>.');
     }
     return html;
@@ -14212,3 +14214,119 @@ document.addEventListener("click", (event) => {
 
 window.addEventListener("hashchange", scheduleMobilePageTopV172);
 
+
+
+/* V173 - Static honor snapshot and snapshot button dates.
+   Albo/FIFA can now be served from assets/snapshots/honor.json before
+   Firestore fallback. Admin snapshot buttons show their latest known update
+   directly under the button label, especially on mobile. */
+const STATIC_HONOR_SNAPSHOT_URL_V173 = "assets/snapshots/honor.json";
+state.staticHonorSnapshotV173 = state.staticHonorSnapshotV173 || null;
+state.publicHonorSnapshotSourceV173 = state.publicHonorSnapshotSourceV173 || "";
+
+function normalizeStaticHonorSnapshotV173(payload) {
+  const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+  if (!snapshot || typeof snapshot !== "object") return null;
+  const hasHonorData = (Array.isArray(snapshot.honorRows) && snapshot.honorRows.length)
+    || (Array.isArray(snapshot.palmares) && snapshot.palmares.length)
+    || (Array.isArray(snapshot.fifaRanking) && snapshot.fifaRanking.length);
+  if (!hasHonorData) return null;
+  return {
+    ...snapshot,
+    generatedAt: snapshot.generatedAt || payload?.generatedAt || "",
+    snapshotVersion: snapshot.snapshotVersion || snapshot.version || payload?.version || 1
+  };
+}
+
+async function loadStaticHonorSnapshotV173() {
+  if (state.staticHonorSnapshotV173) return state.staticHonorSnapshotV173;
+  try {
+    const response = await fetch(STATIC_HONOR_SNAPSHOT_URL_V173, { cache: "no-store" });
+    if (!response.ok) return null;
+    const payload = await response.json();
+    const snapshot = normalizeStaticHonorSnapshotV173(payload);
+    if (!snapshot) return null;
+    state.staticHonorSnapshotV173 = snapshot;
+    state.publicHonorSnapshotSourceV173 = "static";
+    return snapshot;
+  } catch (error) {
+    console.warn("Snapshot honor statico non disponibile", error);
+    return null;
+  }
+}
+
+const loadPublicHonorSnapshotBeforeV173 = loadPublicHonorSnapshotV32;
+loadPublicHonorSnapshotV32 = async function loadPublicHonorSnapshotV173() {
+  if (state.publicHonorSnapshot) return state.publicHonorSnapshot;
+  const staticSnapshot = await loadStaticHonorSnapshotV173();
+  if (staticSnapshot) {
+    state.publicHonorSnapshot = staticSnapshot;
+    return staticSnapshot;
+  }
+  const firebaseSnapshot = await loadPublicHonorSnapshotBeforeV173();
+  if (firebaseSnapshot) state.publicHonorSnapshotSourceV173 = "firebase";
+  return firebaseSnapshot;
+};
+
+function getSnapshotDateTextV173(value) {
+  return publicSnapshotAdminHelpersV129.getSnapshotDateText(value || "");
+}
+
+function getStaticSeasonSnapshotDateTextV173(seasonId) {
+  const target = String(seasonId || getCurrentSeasonId() || "");
+  const entry = (state.staticSeasonSnapshotsManifestV172?.snapshots || [])
+    .find((item) => String(item?.seasonId || item?.id || "") === target);
+  return getSnapshotDateTextV173(entry?.generatedAt || state.publicSeasonSnapshots?.[target]?.generatedAt || "");
+}
+
+function getStaticSeasonSnapshotsManifestDateTextV173() {
+  return getSnapshotDateTextV173(state.staticSeasonSnapshotsManifestV172?.generatedAt || "");
+}
+
+function getStaticHonorSnapshotDateTextV173() {
+  return getSnapshotDateTextV173(state.staticHonorSnapshotV173?.generatedAt || state.publicHonorSnapshot?.generatedAt || "");
+}
+
+function buildStaticHonorSnapshotPayloadV173() {
+  const snapshot = buildHonorSnapshotV32();
+  return {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    snapshot
+  };
+}
+
+async function downloadStaticHonorSnapshotV173() {
+  try {
+    showMessage("adminPublicSnapshotsStatus", "Genero honor snapshot statico...");
+    if (!state.hasFullData) await loadFullDataV32({ render: false });
+    const payload = buildStaticHonorSnapshotPayloadV173();
+    downloadJson(payload, "honor.json");
+    showMessage("adminPublicSnapshotsStatus", "Honor snapshot scaricato. Salvalo in assets/snapshots/honor.json e pubblicalo su GitHub.");
+  } catch (error) {
+    console.error(error);
+    showMessage("adminPublicSnapshotsStatus", error.message || "Errore durante la generazione honor snapshot statico.", true);
+  }
+}
+
+const renderPublicSnapshotsAdminPanelBeforeV173 = typeof renderPublicSnapshotsAdminPanelV114 === "function" ? renderPublicSnapshotsAdminPanelV114 : null;
+if (renderPublicSnapshotsAdminPanelBeforeV173) {
+  renderPublicSnapshotsAdminPanelV114 = function renderPublicSnapshotsAdminPanelV173() {
+    let html = renderPublicSnapshotsAdminPanelBeforeV173();
+    if (!html.includes('id="adminDownloadStaticHonorSnapshot"')) {
+      html = html.replace('</div>\n      <p id="adminPublicSnapshotsStatus"', `  <button id="adminDownloadStaticHonorSnapshot" class="button button-secondary snapshot-action-button" type="button"><span class="snapshot-button-title">Scarica honor JSON</span><span class="snapshot-button-date">Ultimo: ${escapeHtml(getStaticHonorSnapshotDateTextV173())}</span></button>\n      </div>\n      <p id="adminPublicSnapshotsStatus"`);
+      html = html.replace('Gli snapshot stagione statici vanno salvati in <code>assets/snapshots/seasons/</code>.', 'Gli snapshot stagione statici vanno salvati in <code>assets/snapshots/seasons/</code>. L\'honor snapshot statico va salvato in <code>assets/snapshots/honor.json</code>.');
+    }
+    return html;
+  };
+  renderPublicSnapshotsAdminPanel = renderPublicSnapshotsAdminPanelV114;
+}
+
+const attachAdminHandlersBeforeV173 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV173() {
+  attachAdminHandlersBeforeV173?.();
+  document.getElementById("adminDownloadStaticHonorSnapshot")?.addEventListener("click", downloadStaticHonorSnapshotV173);
+};
+
+
+startZonaOrientaleAppV173();

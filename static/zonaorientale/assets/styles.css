@@ -13191,3 +13191,28 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
     justify-content: flex-end !important;
   }
 }
+
+/* V173 - Snapshot public admin buttons show latest update dates inside the button. */
+.snapshot-actions-grid .snapshot-action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 58px;
+  white-space: normal;
+  line-height: 1.18;
+  text-align: center;
+}
+
+.snapshot-button-title {
+  display: block;
+  font-weight: 800;
+}
+
+.snapshot-button-date {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  opacity: 0.78;
+}

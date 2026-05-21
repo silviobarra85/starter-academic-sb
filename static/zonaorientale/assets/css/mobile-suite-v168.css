@@ -4711,3 +4711,18 @@
     flex-basis: 0;
   }
 }
+
+/* V173 - Mobile snapshot buttons: keep update date readable under the label. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .snapshot-actions-grid .snapshot-action-button {
+    align-items: flex-start;
+    text-align: left;
+    min-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .snapshot-button-date {
+    font-size: 0.72rem;
+  }
+}

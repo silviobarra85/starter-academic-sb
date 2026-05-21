@@ -35,17 +35,47 @@ export function createPublicSnapshotAdminHelpersV129({
     return state.publicHonorSnapshot?.generatedAt || state.publicHonorSnapshot?.updatedAt || state.publicHonorSnapshot?.createdAt || "";
   }
 
+  function getLatestTeamSnapshotGeneratedAt() {
+    const snapshots = Object.values(state.teamSnapshotCache || {});
+    const dates = snapshots
+      .map((snapshot) => snapshot?.generatedAt || snapshot?.updatedAt || snapshot?.createdAt || "")
+      .filter(Boolean)
+      .map((value) => {
+        try {
+          const date = typeof value?.toDate === "function"
+            ? value.toDate()
+            : typeof value?.seconds === "number"
+              ? new Date(value.seconds * 1000)
+              : new Date(value);
+          return Number.isNaN(date.getTime()) ? null : date;
+        } catch (error) {
+          return null;
+        }
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.getTime() - a.getTime());
+    return dates[0]?.toISOString() || "";
+  }
+
+  function renderSnapshotActionButton({ id, variant = "button-secondary", title, dateText, type = "button" }) {
+    return `<button id="${escapeHtml(id)}" class="button ${escapeHtml(variant)} snapshot-action-button" type="${escapeHtml(type)}">
+      <span class="snapshot-button-title">${escapeHtml(title)}</span>
+      <span class="snapshot-button-date">Ultimo: ${escapeHtml(dateText || "non trovato")}</span>
+    </button>`;
+  }
+
   function renderBasePanel() {
     const seasonId = getCurrentSeasonId();
-    const seasonGenerated = formatSnapshotTimestamp(getCurrentSeasonSnapshotGeneratedAt());
-    const honorGenerated = formatSnapshotTimestamp(getHonorSnapshotGeneratedAt());
+    const seasonGenerated = getSnapshotDateText(getCurrentSeasonSnapshotGeneratedAt());
+    const honorGenerated = getSnapshotDateText(getHonorSnapshotGeneratedAt());
+    const teamGenerated = getSnapshotDateText(getLatestTeamSnapshotGeneratedAt());
     return renderAdminPanel("adminPublicSnapshotsPanel", "Ottimizzazione", "Snapshot pubblici", "Genera documenti leggeri. Il sito pubblico legge questi snapshot invece delle raccolte complete.", `
       <div class="snapshot-actions-grid">
-        <button id="adminGenerateSelectedSeasonSnapshot" class="button button-primary" type="button">Aggiorna stagione selezionata (${escapeHtml(seasonId || "-")})</button>
-        <button id="adminGenerateAllSeasonSnapshots" class="button button-secondary" type="button">Aggiorna tutte le stagioni</button>
-        <button id="adminGenerateHonorSnapshot" class="button button-secondary" type="button">Aggiorna Albo/FIFA</button>
-        <button id="adminGenerateTeamSnapshots" class="button button-secondary" type="button">Aggiorna schede squadra</button>
-        <button id="adminGenerateEverythingSnapshots" class="button button-primary" type="button">Aggiorna tutto</button>
+        ${renderSnapshotActionButton({ id: "adminGenerateSelectedSeasonSnapshot", variant: "button-primary", title: `Aggiorna stagione selezionata (${seasonId || "-"})`, dateText: seasonGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateAllSeasonSnapshots", title: "Aggiorna tutte le stagioni", dateText: seasonGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateHonorSnapshot", title: "Aggiorna Albo/FIFA", dateText: honorGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateTeamSnapshots", title: "Aggiorna schede squadra", dateText: teamGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateEverythingSnapshots", variant: "button-primary", title: "Aggiorna tutto", dateText: `Stagione ${seasonGenerated} · Albo ${honorGenerated}` })}
       </div>
       <p id="adminPublicSnapshotsStatus" class="form-status"></p>
       <div class="snapshot-last-updates">
@@ -60,6 +90,7 @@ export function createPublicSnapshotAdminHelpersV129({
     const seasonSnapshot = seasonId ? state.publicSeasonSnapshots?.[seasonId] : null;
     const seasonGenerated = getSnapshotDateText(seasonSnapshot?.generatedAt || seasonSnapshot?.updatedAt || seasonSnapshot?.createdAt || "");
     const honorGenerated = getSnapshotDateText(getHonorSnapshotGeneratedAt());
+    const teamGenerated = getSnapshotDateText(getLatestTeamSnapshotGeneratedAt());
 
     if (state.isAdmin && typeof scheduleLoadPublicSnapshotDates === "function") {
       setTimeout(() => scheduleLoadPublicSnapshotDates(seasonId), 0);
@@ -67,13 +98,13 @@ export function createPublicSnapshotAdminHelpersV129({
 
     return renderAdminPanel("adminPublicSnapshotsPanel", "Ottimizzazione", "Snapshot pubblici", "Genera documenti leggeri. Il sito pubblico legge questi snapshot invece delle raccolte complete.", `
       <div class="snapshot-actions-grid">
-        <button id="adminGenerateSelectedSeasonSnapshot" class="button button-primary" type="button">Aggiorna stagione selezionata (${escapeHtml(seasonId || "-")})</button>
-        <button id="adminGenerateNewsSnapshot" class="button button-secondary" type="button">Aggiorna comunicati</button>
-        <button id="adminGenerateCompetitionDataSnapshot" class="button button-secondary" type="button">Aggiorna competizioni e classifiche</button>
-        <button id="adminGenerateAllSeasonSnapshots" class="button button-secondary" type="button">Aggiorna tutte le stagioni</button>
-        <button id="adminGenerateHonorSnapshot" class="button button-secondary" type="button">Aggiorna Albo/FIFA</button>
-        <button id="adminGenerateTeamSnapshots" class="button button-secondary" type="button">Aggiorna schede squadra</button>
-        <button id="adminGenerateEverythingSnapshots" class="button button-primary" type="button">Aggiorna tutto</button>
+        ${renderSnapshotActionButton({ id: "adminGenerateSelectedSeasonSnapshot", variant: "button-primary", title: `Aggiorna stagione selezionata (${seasonId || "-"})`, dateText: seasonGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateNewsSnapshot", title: "Aggiorna comunicati", dateText: seasonGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateCompetitionDataSnapshot", title: "Aggiorna competizioni e classifiche", dateText: seasonGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateAllSeasonSnapshots", title: "Aggiorna tutte le stagioni", dateText: seasonGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateHonorSnapshot", title: "Aggiorna Albo/FIFA", dateText: honorGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateTeamSnapshots", title: "Aggiorna schede squadra", dateText: teamGenerated })}
+        ${renderSnapshotActionButton({ id: "adminGenerateEverythingSnapshots", variant: "button-primary", title: "Aggiorna tutto", dateText: `Stagione ${seasonGenerated} · Albo ${honorGenerated}` })}
       </div>
       <p id="adminPublicSnapshotsStatus" class="form-status"></p>
       <div class="snapshot-last-updates">
@@ -88,6 +119,7 @@ export function createPublicSnapshotAdminHelpersV129({
     getSnapshotDateText,
     getCurrentSeasonSnapshotGeneratedAt,
     renderBasePanel,
-    renderFullPanel
+    renderFullPanel,
+    renderSnapshotActionButton
   };
 }
