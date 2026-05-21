@@ -12395,7 +12395,7 @@ loadTransferMarketCollectionsV119 = async function loadTransferMarketCollections
 };
 
 
-ensureTransferMarketDataV119();
+// V170: fantamercato lazy; non caricare le raccolte mercato al bootstrap pubblico.
 
 /* V125 - Loghi robusti nelle competizioni statiche e nomi squadra con fallback logo.
    Helper puri spostati in assets/js/domain/team-logos.js in V127. */
@@ -13649,3 +13649,142 @@ window.addEventListener("load", () => {
 
 
 /* V164 - Mobile competition detail refinements live in competition.html/CSS. */
+
+/* V170 - Fantamercato lazy per ridurre le letture Firebase pubbliche. */
+state.transferMarketPromiseV170 = null;
+state.transferMarketLastLoadReasonV170 = state.transferMarketLastLoadReasonV170 || "";
+
+function resetTransferMarketCacheV170() {
+  state.transferMarketLoadedV119 = false;
+  state.transferMarketLoadingV119 = false;
+  state.transferMarketPromiseV170 = null;
+  if (state.raw) {
+    state.raw.transferListings = [];
+    state.raw.transferNegotiations = [];
+  }
+}
+
+function getHashPageV170() {
+  return String(window.location.hash || "").replace("#", "") || "dashboard";
+}
+
+function shouldLoadTransferMarketForPageV170(pageName = state.currentPage || getHashPageV170()) {
+  const page = String(pageName || "dashboard");
+  if (page === "fantamercato") return true;
+  if (page === "teamarea") return Boolean(state.user || state.isAdmin);
+  if (page === "teamprofile") {
+    const activeTeamId = state.activeTeamProfileSeasonTeamId || "";
+    return Boolean(state.user && activeTeamId && typeof isOwnSeasonTeamV119 === "function" && isOwnSeasonTeamV119(activeTeamId));
+  }
+  return false;
+}
+
+function renderTransferMarketDeferredStateV170() {
+  if (state.transferMarketLoadedV119 || state.transferMarketLoadingV119) return;
+  const tableBody = document.getElementById("transferMarketTableBody");
+  if (tableBody) {
+    tableBody.innerHTML = `<tr><td colspan="7" class="muted center">Apri il Fantamercato per caricare i trasferibili.</td></tr>`;
+  }
+  const mobileCards = document.getElementById("transferMarketMobileCardsV141");
+  if (mobileCards) {
+    mobileCards.innerHTML = '<p class="muted center">Apri il Fantamercato per caricare i trasferibili.</p>';
+  }
+}
+
+async function ensureTransferMarketDataV170(options = {}) {
+  const { force = false, reason = "" } = options || {};
+  if (state.transferMarketLoadedV119) return state.raw?.transferListings || [];
+  if (state.transferMarketPromiseV170) return state.transferMarketPromiseV170;
+  if (!force && !shouldLoadTransferMarketForPageV170()) {
+    renderTransferMarketDeferredStateV170();
+    return null;
+  }
+
+  state.transferMarketLastLoadReasonV170 = reason || state.currentPage || getHashPageV170();
+  state.transferMarketPromiseV170 = loadTransferMarketCollectionsV119()
+    .then(() => {
+      renderTransferMarketPageV119?.();
+      renderUserAreaV34?.();
+      renderTeamsTable?.();
+      return state.raw?.transferListings || [];
+    })
+    .catch((error) => {
+      console.warn("Fantamercato non caricato", error);
+      return null;
+    })
+    .finally(() => {
+      state.transferMarketPromiseV170 = null;
+    });
+
+  renderTransferMarketPageV119?.();
+  renderUserAreaV34?.();
+  return state.transferMarketPromiseV170;
+}
+
+ensureTransferMarketDataV119 = ensureTransferMarketDataV170;
+
+const renderTransferMarketPageBeforeV170 = renderTransferMarketPageV119;
+renderTransferMarketPageV119 = function renderTransferMarketPageV170() {
+  if (!state.transferMarketLoadedV119 && !state.transferMarketLoadingV119 && shouldLoadTransferMarketForPageV170()) {
+    ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170() });
+  }
+  const result = renderTransferMarketPageBeforeV170?.();
+  if (!state.transferMarketLoadedV119 && !state.transferMarketLoadingV119 && !shouldLoadTransferMarketForPageV170()) {
+    renderTransferMarketDeferredStateV170();
+  }
+  return result;
+};
+
+if (loadDataForCurrentAuthBeforeV119) {
+  loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV170(options = {}) {
+    resetTransferMarketCacheV170();
+    const result = await loadDataForCurrentAuthBeforeV119(options);
+    if (shouldLoadTransferMarketForPageV170()) {
+      await ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170() });
+    } else if (options.render) {
+      renderTransferMarketDeferredStateV170();
+    }
+    return result;
+  };
+  loadData = async function loadDataV170() {
+    return loadDataForCurrentAuthV100({ render: true });
+  };
+}
+
+const setAppPageBeforeV170 = typeof setAppPageV42 === "function" ? setAppPageV42 : null;
+if (setAppPageBeforeV170) {
+  setAppPageV42 = function setAppPageV170(pageName) {
+    const result = setAppPageBeforeV170(pageName);
+    if (shouldLoadTransferMarketForPageV170(pageName)) {
+      ensureTransferMarketDataV119({ force: true, reason: pageName || "navigation" });
+    }
+    return result;
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('[data-page-link="fantamercato"], [data-v42-page-link="fantamercato"], [data-page-link="teamarea"], [data-v42-page-link="teamarea"]');
+  if (!link) return;
+  const page = link.dataset.pageLink || link.dataset.v42PageLink || "";
+  window.setTimeout(() => {
+    if (shouldLoadTransferMarketForPageV170(page)) {
+      ensureTransferMarketDataV119({ force: true, reason: page || "click" });
+    }
+  }, 0);
+}, true);
+
+window.addEventListener("hashchange", () => {
+  const page = getHashPageV170();
+  if (shouldLoadTransferMarketForPageV170(page)) {
+    ensureTransferMarketDataV119({ force: true, reason: page });
+  }
+});
+
+window.addEventListener("load", () => {
+  if (shouldLoadTransferMarketForPageV170()) {
+    ensureTransferMarketDataV119({ force: true, reason: state.currentPage || getHashPageV170() });
+  } else {
+    renderTransferMarketDeferredStateV170();
+  }
+});
+
