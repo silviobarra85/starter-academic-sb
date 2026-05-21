@@ -1,71 +1,70 @@
 {
   "id": "2014-2015",
   "seasonId": "2014-2015",
-  "generatedAt": "2026-05-21T12:31:45.665Z",
+  "generatedAt": "2026-05-21T19:55:52.586Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "notes": "",
+      "canonicalName": "Ac Milan",
       "isCurrent": true,
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "logo": "./assets/logos/acmilan.png",
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
       },
-      "canonicalName": "Ac Milan",
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "notes": "",
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
-      }
+      },
+      "logo": "./assets/logos/acmilan.png"
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "notes": "",
       "isCurrent": true,
       "createdAt": {
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
+      "canonicalName": "FC DueFratelli2005",
+      "updatedAt": {
+        "seconds": 1779377884,
+        "nanoseconds": 912000000
+      },
+      "notes": "",
       "logo": "./assets/logos/due_fratelli.png",
       "currentPresidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "canonicalName": "Due Fratelli Fc 2005",
-      "updatedAt": {
-        "seconds": 1778954398,
-        "nanoseconds": 258000000
-      }
+      ]
     },
     {
       "id": "GDisIDfbuSeLVm64PSR3",
-      "notes": "",
+      "canonicalName": "Olympic Salerno FC",
       "isCurrent": true,
-      "canonicalName": "Olympic Salerno",
-      "updatedAt": {
-        "seconds": 1778960995,
-        "nanoseconds": 776000000
+      "createdAt": {
+        "seconds": 1778833581,
+        "nanoseconds": 658000000
       },
       "currentPresidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
       ],
-      "logo": "./assets/logos/olympic_salerno.png",
-      "createdAt": {
-        "seconds": 1778833581,
-        "nanoseconds": 658000000
-      }
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1779377921,
+        "nanoseconds": 533000000
+      },
+      "logo": "./assets/logos/olympic_salerno.png"
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
-      "notes": "",
-      "isCurrent": false,
+      "logo": "",
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
-      "canonicalName": "Real Gremo",
+      "notes": "",
       "currentPresidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
@@ -73,22 +72,23 @@
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
-      "logo": ""
+      "isCurrent": false,
+      "canonicalName": "Real Gremo"
     }
   ],
   "presidents": [
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
-      "isActive": false,
       "createdAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
+      "name": "Bartolomeo Greco",
       "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "name": "Bartolomeo Greco",
+      "isActive": false,
       "notes": ""
     },
     {
@@ -97,118 +97,118 @@
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
-      "isActive": true,
       "name": "Fabio Gatto",
       "updatedAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
+      "isActive": true,
       "notes": ""
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
-      "notes": "",
       "name": "Giosuè Vicinanza",
       "updatedAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
+      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
-      },
-      "isActive": true
+      }
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
       "notes": "",
       "updatedAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "name": "Michele D'Isanto",
       "isActive": true,
-      "createdAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      }
+      "name": "Michele D'Isanto"
     }
   ],
   "seasonTeams": [
     {
       "id": "2014-2015_wmdzhrrpup8lhvsdwm7w",
-      "isHistorical": false,
       "createdAt": {
-        "seconds": 1778848585,
-        "nanoseconds": 422000000
-      },
-      "teamId": "WMdzHRRpUP8lHvsdwM7W",
-      "logo": "",
-      "name": "Ac Milan",
-      "updatedAt": {
         "seconds": 1778848585,
         "nanoseconds": 422000000
       },
       "presidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
-      "seasonId": "2014-2015"
+      "updatedAt": {
+        "seconds": 1778848585,
+        "nanoseconds": 422000000
+      },
+      "logo": "",
+      "name": "Ac Milan",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "seasonId": "2014-2015",
+      "isHistorical": false
     },
     {
       "id": "2014-2015_y3vmcdwvut0u1tlsg4qc",
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "logo": "",
       "createdAt": {
         "seconds": 1778848607,
         "nanoseconds": 554000000
       },
-      "seasonId": "2014-2015",
       "presidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
-      "name": "Due Fratelli Fc 2005",
       "updatedAt": {
-        "seconds": 1778848607,
-        "nanoseconds": 554000000
+        "seconds": 1779379896,
+        "nanoseconds": 127000000
       },
-      "isHistorical": false
+      "logo": "",
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "name": "FC DueFratelli2005",
+      "isHistorical": false,
+      "seasonId": "2014-2015"
     },
     {
       "id": "2014-2015_gdisidfbuselvm64psr3",
-      "name": "Olympic Salerno",
+      "seasonId": "2014-2015",
+      "isHistorical": false,
+      "name": "Olympic Salerno FC",
+      "teamId": "GDisIDfbuSeLVm64PSR3",
+      "logo": "",
       "updatedAt": {
+        "seconds": 1779379902,
+        "nanoseconds": 669000000
+      },
+      "createdAt": {
         "seconds": 1778848596,
         "nanoseconds": 844000000
       },
       "presidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
-      ],
-      "seasonId": "2014-2015",
-      "createdAt": {
-        "seconds": 1778848596,
-        "nanoseconds": 844000000
-      },
-      "teamId": "GDisIDfbuSeLVm64PSR3",
-      "logo": "",
-      "isHistorical": false
+      ]
     },
     {
       "id": "2014-2015_fyqviavocqdpmikgws2f",
-      "seasonId": "2014-2015",
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
-      "name": "Real Gremo",
+      "createdAt": {
+        "seconds": 1778848887,
+        "nanoseconds": 781000000
+      },
       "updatedAt": {
         "seconds": 1778848887,
         "nanoseconds": 781000000
       },
-      "createdAt": {
-        "seconds": 1778848887,
-        "nanoseconds": 781000000
-      },
       "logo": "",
+      "name": "Real Gremo",
       "teamId": "fYQViaVoCqDPmikgwS2F",
+      "seasonId": "2014-2015",
       "isHistorical": false
     }
   ],
@@ -216,25 +216,27 @@
   "competitions": [
     {
       "id": "2014-2015_campionato",
-      "format": "CLASSIFICA",
-      "status": "CONCLUSA",
-      "type": "CAMPIONATO",
       "createdAt": {
         "seconds": 1778848627,
         "nanoseconds": 230000000
       },
-      "name": "Campionato",
-      "seasonId": "2014-2015",
-      "notes": "",
-      "knockoutPhases": [],
+      "status": "CONCLUSA",
+      "format": "CLASSIFICA",
       "updatedAt": {
         "seconds": 1778848638,
         "nanoseconds": 971000000
-      }
+      },
+      "notes": "",
+      "seasonId": "2014-2015",
+      "knockoutPhases": [],
+      "name": "Campionato",
+      "type": "CAMPIONATO"
     },
     {
       "id": "2014-2015_champions-league",
-      "notes": "",
+      "name": "Champion's League",
+      "type": "CHAMPIONS_LEAGUE",
+      "seasonId": "2014-2015",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
@@ -244,49 +246,41 @@
         "seconds": 1778848643,
         "nanoseconds": 122000000
       },
-      "format": "GIRONI_KO",
+      "notes": "",
       "status": "CONCLUSA",
-      "type": "CHAMPIONS_LEAGUE",
+      "format": "GIRONI_KO",
       "createdAt": {
         "seconds": 1778848627,
         "nanoseconds": 256000000
-      },
-      "name": "Champion's League",
-      "seasonId": "2014-2015"
+      }
     },
     {
       "id": "2014-2015_coppa-italia",
-      "format": "GIRONI_KO",
-      "status": "CONCLUSA",
+      "name": "Coppa Italia",
       "type": "COPPA_ITALIA",
+      "status": "CONCLUSA",
+      "format": "GIRONI_KO",
       "createdAt": {
         "seconds": 1778848627,
         "nanoseconds": 300000000
       },
-      "name": "Coppa Italia",
-      "seasonId": "2014-2015",
-      "notes": "",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
+      "seasonId": "2014-2015",
       "updatedAt": {
         "seconds": 1778848646,
         "nanoseconds": 921000000
-      }
+      },
+      "notes": ""
     },
     {
       "id": "2014-2015_playoff",
       "name": "Playoff",
-      "seasonId": "2014-2015",
-      "createdAt": {
-        "seconds": 1778848627,
-        "nanoseconds": 328000000
-      },
-      "status": "NON_DISPUTATA",
       "type": "PLAYOFF",
-      "format": "GIRONI_KO",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778848650,
         "nanoseconds": 692000000
@@ -296,100 +290,106 @@
         "SEMIFINALI",
         "FINALE"
       ],
-      "notes": ""
+      "seasonId": "2014-2015",
+      "createdAt": {
+        "seconds": 1778848627,
+        "nanoseconds": 328000000
+      },
+      "status": "NON_DISPUTATA",
+      "format": "GIRONI_KO"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2014-2015-campionato_1",
-      "position": 1,
-      "competitionId": "2014-2015_campionato",
-      "seasonTeamId": "2014-2015_fyqviavocqdpmikgws2f",
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778848679,
-        "nanoseconds": 50000000
-      },
       "points": null,
-      "played": null,
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778848679,
         "nanoseconds": 50000000
       },
-      "seasonId": "2014-2015"
+      "seasonTeamId": "2014-2015_fyqviavocqdpmikgws2f",
+      "seasonId": "2014-2015",
+      "played": null,
+      "updatedAt": {
+        "seconds": 1778848679,
+        "nanoseconds": 50000000
+      },
+      "competitionId": "2014-2015_campionato",
+      "position": 1
     },
     {
       "id": "2014-2015-campionato_2",
       "points": null,
-      "played": null,
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778848679,
         "nanoseconds": 94000000
       },
       "seasonId": "2014-2015",
-      "position": 2,
-      "competitionId": "2014-2015_campionato",
       "seasonTeamId": "2014-2015_wmdzhrrpup8lhvsdwm7w",
+      "played": null,
       "updatedAt": {
         "seconds": 1778848679,
         "nanoseconds": 94000000
       },
-      "fantapoints": null
+      "competitionId": "2014-2015_campionato",
+      "position": 2
     },
     {
       "id": "2014-2015-campionato_3",
-      "seasonId": "2014-2015",
-      "createdAt": {
-        "seconds": 1778848679,
-        "nanoseconds": 115000000
-      },
-      "played": null,
       "points": null,
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778848679,
         "nanoseconds": 115000000
       },
       "fantapoints": null,
+      "played": null,
       "seasonTeamId": "2014-2015_gdisidfbuselvm64psr3",
+      "seasonId": "2014-2015",
+      "updatedAt": {
+        "seconds": 1778848679,
+        "nanoseconds": 115000000
+      },
       "competitionId": "2014-2015_campionato",
       "position": 3
     },
     {
       "id": "2014-2015-champions-league_1",
       "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778848711,
-        "nanoseconds": 826000000
-      },
-      "seasonTeamId": "2014-2015_fyqviavocqdpmikgws2f",
-      "competitionId": "2014-2015_champions-league",
-      "position": 1,
-      "seasonId": "2014-2015",
       "createdAt": {
         "seconds": 1778848711,
         "nanoseconds": 826000000
       },
+      "points": null,
+      "updatedAt": {
+        "seconds": 1778848711,
+        "nanoseconds": 826000000
+      },
+      "competitionId": "2014-2015_champions-league",
+      "seasonTeamId": "2014-2015_fyqviavocqdpmikgws2f",
+      "seasonId": "2014-2015",
       "played": null,
-      "points": null
+      "position": 1
     },
     {
       "id": "2014-2015-coppa-italia_1",
-      "createdAt": {
-        "seconds": 1778848698,
-        "nanoseconds": 130000000
-      },
-      "seasonId": "2014-2015",
-      "points": null,
-      "played": null,
+      "position": 1,
       "seasonTeamId": "2014-2015_y3vmcdwvut0u1tlsg4qc",
-      "fantapoints": null,
+      "seasonId": "2014-2015",
+      "played": null,
       "updatedAt": {
         "seconds": 1778848698,
         "nanoseconds": 130000000
       },
-      "position": 1,
-      "competitionId": "2014-2015_coppa-italia"
+      "competitionId": "2014-2015_coppa-italia",
+      "points": null,
+      "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778848698,
+        "nanoseconds": 130000000
+      }
     }
   ],
   "rosterEntries": [

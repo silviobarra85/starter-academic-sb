@@ -1,139 +1,138 @@
 {
   "id": "2017-2018",
   "seasonId": "2017-2018",
-  "generatedAt": "2026-05-21T12:31:45.663Z",
+  "generatedAt": "2026-05-21T19:55:52.583Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "notes": "",
+      "canonicalName": "Ac Milan",
       "isCurrent": true,
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "logo": "./assets/logos/acmilan.png",
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
       },
-      "canonicalName": "Ac Milan",
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "notes": "",
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
-      }
+      },
+      "logo": "./assets/logos/acmilan.png"
     },
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
       "canonicalName": "Afc Severgas Baronissi",
-      "updatedAt": {
-        "seconds": 1778954328,
-        "nanoseconds": 573000000
-      },
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
-      "logo": "./assets/logos/baronissi.png",
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
-      "notes": "",
-      "isCurrent": true
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "logo": "./assets/logos/baronissi.png",
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "notes": ""
     },
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
-      "updatedAt": {
-        "seconds": 1778954349,
-        "nanoseconds": 563000000
-      },
       "canonicalName": "As Paperopoli",
-      "currentPresidentIds": [
-        "JaSqcnTZUYHtjHXghADS"
-      ],
-      "logo": "./assets/logos/paperopoli.png",
       "createdAt": {
         "seconds": 1778833666,
         "nanoseconds": 871000000
       },
-      "notes": "",
-      "isCurrent": true
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "logo": "./assets/logos/paperopoli.png",
+      "updatedAt": {
+        "seconds": 1778954349,
+        "nanoseconds": 563000000
+      },
+      "notes": ""
     },
     {
       "id": "jy2dst1rXfQv6eLW89DS",
-      "notes": "",
+      "canonicalName": "Atletico Cadaveri",
       "isCurrent": false,
-      "currentPresidentIds": [
-        "f37y6IZln56uPDZqKg4N"
-      ],
       "createdAt": {
         "seconds": 1778833933,
         "nanoseconds": 281000000
       },
-      "logo": "",
-      "canonicalName": "Atletico Cadaveri",
+      "currentPresidentIds": [
+        "f37y6IZln56uPDZqKg4N"
+      ],
+      "notes": "",
       "updatedAt": {
         "seconds": 1778833933,
         "nanoseconds": 281000000
-      }
+      },
+      "logo": ""
     },
     {
       "id": "team_002",
+      "canonicalName": "Beetlejuice",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "notes": "",
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
       },
-      "canonicalName": "Beetlejuice",
-      "logo": "./assets/logos/beetlejuice.png",
-      "currentPresidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ],
-      "isCurrent": true,
-      "notes": ""
+      "logo": "./assets/logos/beetlejuice.png"
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "notes": "",
       "isCurrent": true,
       "createdAt": {
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
+      "canonicalName": "FC DueFratelli2005",
+      "updatedAt": {
+        "seconds": 1779377884,
+        "nanoseconds": 912000000
+      },
+      "notes": "",
       "logo": "./assets/logos/due_fratelli.png",
       "currentPresidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "canonicalName": "Due Fratelli Fc 2005",
-      "updatedAt": {
-        "seconds": 1778954398,
-        "nanoseconds": 258000000
-      }
+      ]
     },
     {
       "id": "GDisIDfbuSeLVm64PSR3",
-      "notes": "",
+      "canonicalName": "Olympic Salerno FC",
       "isCurrent": true,
-      "canonicalName": "Olympic Salerno",
-      "updatedAt": {
-        "seconds": 1778960995,
-        "nanoseconds": 776000000
+      "createdAt": {
+        "seconds": 1778833581,
+        "nanoseconds": 658000000
       },
       "currentPresidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
       ],
-      "logo": "./assets/logos/olympic_salerno.png",
-      "createdAt": {
-        "seconds": 1778833581,
-        "nanoseconds": 658000000
-      }
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1779377921,
+        "nanoseconds": 533000000
+      },
+      "logo": "./assets/logos/olympic_salerno.png"
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
-      "notes": "",
-      "isCurrent": false,
+      "logo": "",
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
-      "canonicalName": "Real Gremo",
+      "notes": "",
       "currentPresidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
@@ -141,87 +140,88 @@
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
-      "logo": ""
+      "isCurrent": false,
+      "canonicalName": "Real Gremo"
     },
     {
       "id": "FT1tqdqI18iUh3l1lakQ",
       "notes": "",
-      "isCurrent": true,
-      "createdAt": {
-        "seconds": 1778833596,
-        "nanoseconds": 670000000
+      "updatedAt": {
+        "seconds": 1778954461,
+        "nanoseconds": 197000000
       },
       "logo": "./assets/logos/real_mappine.png",
       "currentPresidentIds": [
         "2yHHP653ChQrYxnQHMk3"
       ],
-      "updatedAt": {
-        "seconds": 1778954461,
-        "nanoseconds": 197000000
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833596,
+        "nanoseconds": 670000000
       },
       "canonicalName": "real mappine"
     },
     {
       "id": "ULwTIMBi3dyYrq0SoEsx",
-      "updatedAt": {
-        "seconds": 1778954524,
-        "nanoseconds": 667000000
-      },
       "canonicalName": "River Plaid",
       "createdAt": {
         "seconds": 1778833556,
         "nanoseconds": 33000000
       },
-      "logo": "./assets/logos/river_plaid.png",
+      "isCurrent": true,
       "currentPresidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
       ],
+      "logo": "./assets/logos/river_plaid.png",
       "notes": "",
-      "isCurrent": true
+      "updatedAt": {
+        "seconds": 1778954524,
+        "nanoseconds": 667000000
+      }
     }
   ],
   "presidents": [
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
-      "isActive": false,
       "createdAt": {
-        "seconds": 1778833068,
-        "nanoseconds": 684000000
-      },
-      "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
       "name": "Bartolomeo Greco",
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "isActive": false,
       "notes": ""
     },
     {
       "id": "6UBSv1GUTCxSNrRb8dZr",
-      "name": "Claudio D'Isanto",
+      "isActive": true,
       "updatedAt": {
         "seconds": 1778832834,
         "nanoseconds": 979000000
       },
+      "notes": "",
+      "name": "Claudio D'Isanto",
       "createdAt": {
         "seconds": 1778832834,
         "nanoseconds": 979000000
-      },
-      "isActive": true,
-      "notes": ""
+      }
     },
     {
       "id": "f37y6IZln56uPDZqKg4N",
-      "isActive": false,
       "createdAt": {
-        "seconds": 1778833076,
-        "nanoseconds": 991000000
-      },
-      "updatedAt": {
         "seconds": 1778833076,
         "nanoseconds": 991000000
       },
       "name": "Emanuele Schiavone",
+      "updatedAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      },
+      "isActive": false,
       "notes": ""
     },
     {
@@ -230,74 +230,72 @@
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
-      "isActive": true,
       "name": "Fabio Gatto",
       "updatedAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
+      "isActive": true,
       "notes": ""
     },
     {
       "id": "7KbTM1lnzIThNWcF0NKL",
-      "notes": "",
+      "createdAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
       "name": "Gaetano Alfinito",
       "updatedAt": {
         "seconds": 1778832829,
         "nanoseconds": 62000000
       },
-      "createdAt": {
-        "seconds": 1778832829,
-        "nanoseconds": 62000000
-      },
-      "isActive": true
-    },
-    {
-      "id": "JaSqcnTZUYHtjHXghADS",
-      "name": "Gaetano Caparrotti",
-      "updatedAt": {
-        "seconds": 1778832849,
-        "nanoseconds": 508000000
-      },
-      "createdAt": {
-        "seconds": 1778832849,
-        "nanoseconds": 508000000
-      },
       "isActive": true,
       "notes": ""
     },
     {
-      "id": "Mw12sFS1OoS8V5uzBLLw",
+      "id": "JaSqcnTZUYHtjHXghADS",
+      "createdAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "updatedAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "isActive": true,
       "notes": "",
+      "name": "Gaetano Caparrotti"
+    },
+    {
+      "id": "Mw12sFS1OoS8V5uzBLLw",
       "createdAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "isActive": true,
-      "name": "Gianluca Caparrotti",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
-      }
+      },
+      "isActive": true,
+      "name": "Gianluca Caparrotti"
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
-      "notes": "",
       "name": "Giosuè Vicinanza",
       "updatedAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
+      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
-      },
-      "isActive": true
+      }
     },
     {
       "id": "2yHHP653ChQrYxnQHMk3",
-      "notes": "",
-      "isActive": true,
       "createdAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
@@ -306,94 +304,96 @@
         "seconds": 1778832813,
         "nanoseconds": 937000000
       },
+      "isActive": true,
+      "notes": "",
       "name": "Mario Guariglia"
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
       "notes": "",
       "updatedAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "name": "Michele D'Isanto",
       "isActive": true,
-      "createdAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      }
+      "name": "Michele D'Isanto"
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
-      "notes": "",
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
       "name": "Zio Dino",
-      "isActive": true,
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
-      }
+      },
+      "isActive": true,
+      "notes": ""
     }
   ],
   "seasonTeams": [
     {
       "id": "2017-2018_wmdzhrrpup8lhvsdwm7w",
-      "seasonId": "2017-2018",
+      "createdAt": {
+        "seconds": 1778852430,
+        "nanoseconds": 799000000
+      },
       "presidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
+      "seasonId": "2017-2018",
+      "isHistorical": false,
       "name": "Ac Milan",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "logo": "",
       "updatedAt": {
         "seconds": 1778852430,
         "nanoseconds": 799000000
-      },
-      "teamId": "WMdzHRRpUP8lHvsdwM7W",
-      "logo": "",
-      "createdAt": {
-        "seconds": 1778852430,
-        "nanoseconds": 799000000
-      },
-      "isHistorical": false
+      }
     },
     {
       "id": "2017-2018_7bx0cegbxtf4fwh6t0pi",
-      "seasonId": "2017-2018",
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778852439,
         "nanoseconds": 668000000
       },
-      "name": "As Paperopoli",
       "presidentIds": [
         "JaSqcnTZUYHtjHXghADS"
       ],
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778852439,
         "nanoseconds": 668000000
       },
-      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
       "logo": "",
-      "isHistorical": false
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "name": "As Paperopoli",
+      "isHistorical": false,
+      "seasonId": "2017-2018"
     },
     {
       "id": "2017-2018_jy2dst1rxfqv6elw89ds",
-      "isHistorical": false,
       "seasonId": "2017-2018",
-      "presidentIds": [
-        "f37y6IZln56uPDZqKg4N"
-      ],
+      "isHistorical": false,
+      "teamId": "jy2dst1rXfQv6eLW89DS",
       "name": "Atletico Cadaveri",
+      "logo": "",
       "updatedAt": {
         "seconds": 1778852444,
         "nanoseconds": 265000000
       },
-      "logo": "",
-      "teamId": "jy2dst1rXfQv6eLW89DS",
       "createdAt": {
         "seconds": 1778852444,
         "nanoseconds": 265000000
-      }
+      },
+      "presidentIds": [
+        "f37y6IZln56uPDZqKg4N"
+      ]
     },
     {
       "id": "2017-2018_team-002",
@@ -401,385 +401,385 @@
         "seconds": 1778852449,
         "nanoseconds": 639000000
       },
-      "teamId": "team_002",
-      "logo": "",
-      "seasonId": "2017-2018",
-      "updatedAt": {
-        "seconds": 1778852449,
-        "nanoseconds": 639000000
-      },
-      "name": "Beetlejuice",
       "presidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ],
-      "isHistorical": false
+      "seasonId": "2017-2018",
+      "isHistorical": false,
+      "teamId": "team_002",
+      "name": "Beetlejuice",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778852449,
+        "nanoseconds": 639000000
+      }
     },
     {
       "id": "2017-2018_y3vmcdwvut0u1tlsg4qc",
-      "name": "Due Fratelli Fc 2005",
+      "logo": "",
       "updatedAt": {
+        "seconds": 1779379994,
+        "nanoseconds": 946000000
+      },
+      "seasonId": "2017-2018",
+      "isHistorical": false,
+      "name": "FC DueFratelli2005",
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "createdAt": {
         "seconds": 1778852434,
         "nanoseconds": 867000000
       },
       "presidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "seasonId": "2017-2018",
-      "createdAt": {
-        "seconds": 1778852434,
-        "nanoseconds": 867000000
-      },
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "logo": "",
-      "isHistorical": false
+      ]
     },
     {
       "id": "2017-2018_gdisidfbuselvm64psr3",
-      "seasonId": "2017-2018",
-      "presidentIds": [
-        "cbA5rKY8ItVmgRqhUasz"
-      ],
-      "name": "Olympic Salerno",
       "updatedAt": {
-        "seconds": 1778852464,
-        "nanoseconds": 263000000
+        "seconds": 1779380002,
+        "nanoseconds": 281000000
       },
       "logo": "",
       "teamId": "GDisIDfbuSeLVm64PSR3",
+      "name": "Olympic Salerno FC",
+      "seasonId": "2017-2018",
+      "isHistorical": false,
       "createdAt": {
         "seconds": 1778852464,
         "nanoseconds": 263000000
       },
-      "isHistorical": false
+      "presidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ]
     },
     {
       "id": "2017-2018_fyqviavocqdpmikgws2f",
-      "seasonId": "2017-2018",
+      "createdAt": {
+        "seconds": 1778852467,
+        "nanoseconds": 488000000
+      },
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
-      "name": "Real Gremo",
       "updatedAt": {
         "seconds": 1778852467,
         "nanoseconds": 488000000
       },
       "logo": "",
       "teamId": "fYQViaVoCqDPmikgwS2F",
-      "createdAt": {
-        "seconds": 1778852467,
-        "nanoseconds": 488000000
-      },
+      "name": "Real Gremo",
+      "seasonId": "2017-2018",
       "isHistorical": false
     },
     {
       "id": "2017-2018_ft1tqdqi18iuh3l1lakq",
-      "seasonId": "2017-2018",
+      "createdAt": {
+        "seconds": 1778852460,
+        "nanoseconds": 457000000
+      },
       "presidentIds": [
         "2yHHP653ChQrYxnQHMk3"
       ],
       "name": "real mappine",
+      "teamId": "FT1tqdqI18iUh3l1lakQ",
+      "seasonId": "2017-2018",
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778852460,
         "nanoseconds": 457000000
       },
-      "teamId": "FT1tqdqI18iUh3l1lakQ",
-      "logo": "",
-      "createdAt": {
-        "seconds": 1778852460,
-        "nanoseconds": 457000000
-      },
-      "isHistorical": false
+      "logo": ""
     },
     {
       "id": "2017-2018_ulwtimbi3dyyrq0soesx",
-      "isHistorical": false,
-      "createdAt": {
+      "logo": "",
+      "updatedAt": {
         "seconds": 1778852427,
         "nanoseconds": 59000000
       },
-      "teamId": "ULwTIMBi3dyYrq0SoEsx",
-      "logo": "",
+      "seasonId": "2017-2018",
+      "isHistorical": false,
       "name": "River Plaid",
-      "updatedAt": {
+      "teamId": "ULwTIMBi3dyYrq0SoEsx",
+      "createdAt": {
         "seconds": 1778852427,
         "nanoseconds": 59000000
       },
       "presidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
-      ],
-      "seasonId": "2017-2018"
+      ]
     },
     {
       "id": "2017-2018_kbjri4liu4iuq6ajfnml",
-      "logo": "",
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
-      "createdAt": {
-        "seconds": 1778852455,
-        "nanoseconds": 385000000
-      },
-      "seasonId": "2017-2018",
-      "presidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
       "name": "Us Baronissi Cavaliers",
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "seasonId": "2017-2018",
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1779196078,
         "nanoseconds": 41000000
       },
-      "isHistorical": false
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778852455,
+        "nanoseconds": 385000000
+      },
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ]
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2017-2018_campionato",
-      "name": "Campionato",
-      "seasonId": "2017-2018",
       "createdAt": {
         "seconds": 1778852473,
         "nanoseconds": 95000000
       },
-      "status": "CONCLUSA",
-      "type": "CAMPIONATO",
       "format": "CLASSIFICA",
+      "status": "CONCLUSA",
       "updatedAt": {
         "seconds": 1778852496,
         "nanoseconds": 35000000
       },
+      "notes": "",
       "knockoutPhases": [],
-      "notes": ""
+      "seasonId": "2017-2018",
+      "type": "CAMPIONATO",
+      "name": "Campionato"
     },
     {
       "id": "2017-2018_champions-league",
-      "name": "Champion's League",
+      "updatedAt": {
+        "seconds": 1778852499,
+        "nanoseconds": 76000000
+      },
+      "notes": "",
       "seasonId": "2017-2018",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
       "createdAt": {
         "seconds": 1778852473,
         "nanoseconds": 137000000
       },
       "status": "CONCLUSA",
-      "type": "CHAMPIONS_LEAGUE",
       "format": "GIRONI_KO",
-      "updatedAt": {
-        "seconds": 1778852499,
-        "nanoseconds": 76000000
-      },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "notes": ""
+      "name": "Champion's League",
+      "type": "CHAMPIONS_LEAGUE"
     },
     {
       "id": "2017-2018_coppa-italia",
-      "format": "GIRONI_KO",
-      "seasonId": "2017-2018",
-      "name": "Coppa Italia",
-      "status": "CONCLUSA",
       "type": "COPPA_ITALIA",
+      "name": "Coppa Italia",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
       "createdAt": {
         "seconds": 1778852473,
         "nanoseconds": 183000000
       },
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778852507,
-        "nanoseconds": 472000000
-      },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ]
-    },
-    {
-      "id": "2017-2018_playoff",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
+      "seasonId": "2017-2018",
       "updatedAt": {
-        "seconds": 1778852510,
-        "nanoseconds": 746000000
+        "seconds": 1778852507,
+        "nanoseconds": 472000000
       },
-      "notes": "",
+      "notes": ""
+    },
+    {
+      "id": "2017-2018_playoff",
+      "type": "PLAYOFF",
+      "name": "Playoff",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
       "createdAt": {
         "seconds": 1778852473,
         "nanoseconds": 209000000
       },
-      "status": "CONCLUSA",
-      "type": "PLAYOFF",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
       "seasonId": "2017-2018",
-      "name": "Playoff",
-      "format": "GIRONI_KO"
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778852510,
+        "nanoseconds": 746000000
+      }
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2017-2018-campionato_1",
-      "seasonId": "2017-2018",
+      "points": null,
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778852536,
         "nanoseconds": 933000000
       },
+      "seasonTeamId": "2017-2018_ulwtimbi3dyyrq0soesx",
+      "seasonId": "2017-2018",
       "played": null,
-      "points": null,
       "updatedAt": {
         "seconds": 1778852536,
         "nanoseconds": 933000000
       },
-      "fantapoints": null,
-      "seasonTeamId": "2017-2018_ulwtimbi3dyyrq0soesx",
       "competitionId": "2017-2018_campionato",
       "position": 1
     },
     {
       "id": "2017-2018-campionato_2",
-      "seasonId": "2017-2018",
-      "createdAt": {
-        "seconds": 1778852536,
-        "nanoseconds": 974000000
-      },
       "played": null,
-      "points": null,
+      "seasonTeamId": "2017-2018_wmdzhrrpup8lhvsdwm7w",
+      "seasonId": "2017-2018",
+      "competitionId": "2017-2018_campionato",
       "updatedAt": {
         "seconds": 1778852536,
         "nanoseconds": 974000000
       },
+      "points": null,
+      "createdAt": {
+        "seconds": 1778852536,
+        "nanoseconds": 974000000
+      },
       "fantapoints": null,
-      "seasonTeamId": "2017-2018_wmdzhrrpup8lhvsdwm7w",
-      "competitionId": "2017-2018_campionato",
       "position": 2
     },
     {
       "id": "2017-2018-campionato_3",
-      "fantapoints": null,
+      "competitionId": "2017-2018_campionato",
       "updatedAt": {
         "seconds": 1778852536,
         "nanoseconds": 998000000
       },
+      "played": null,
       "seasonTeamId": "2017-2018_y3vmcdwvut0u1tlsg4qc",
-      "competitionId": "2017-2018_campionato",
-      "position": 3,
       "seasonId": "2017-2018",
       "createdAt": {
         "seconds": 1778852536,
         "nanoseconds": 998000000
       },
-      "played": null,
-      "points": null
+      "fantapoints": null,
+      "points": null,
+      "position": 3
     },
     {
       "id": "2017-2018-champions-league_1",
-      "seasonTeamId": "2017-2018_wmdzhrrpup8lhvsdwm7w",
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778852552,
-        "nanoseconds": 363000000
-      },
       "position": 1,
-      "competitionId": "2017-2018_champions-league",
+      "points": null,
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778852552,
         "nanoseconds": 363000000
       },
+      "played": null,
       "seasonId": "2017-2018",
-      "points": null,
-      "played": null
+      "seasonTeamId": "2017-2018_wmdzhrrpup8lhvsdwm7w",
+      "updatedAt": {
+        "seconds": 1778852552,
+        "nanoseconds": 363000000
+      },
+      "competitionId": "2017-2018_champions-league"
     },
     {
       "id": "2017-2018-champions-league_2",
-      "seasonId": "2017-2018",
-      "createdAt": {
-        "seconds": 1778852552,
-        "nanoseconds": 401000000
-      },
+      "position": 2,
       "played": null,
-      "points": null,
+      "seasonId": "2017-2018",
+      "seasonTeamId": "2017-2018_y3vmcdwvut0u1tlsg4qc",
       "updatedAt": {
         "seconds": 1778852552,
         "nanoseconds": 401000000
       },
-      "fantapoints": null,
-      "seasonTeamId": "2017-2018_y3vmcdwvut0u1tlsg4qc",
       "competitionId": "2017-2018_champions-league",
-      "position": 2
+      "points": null,
+      "createdAt": {
+        "seconds": 1778852552,
+        "nanoseconds": 401000000
+      },
+      "fantapoints": null
     },
     {
       "id": "2017-2018-coppa-italia_1",
-      "updatedAt": {
-        "seconds": 1778852564,
-        "nanoseconds": 556000000
-      },
-      "fantapoints": null,
-      "seasonTeamId": "2017-2018_7bx0cegbxtf4fwh6t0pi",
-      "competitionId": "2017-2018_coppa-italia",
       "position": 1,
-      "seasonId": "2017-2018",
       "createdAt": {
         "seconds": 1778852564,
         "nanoseconds": 556000000
       },
+      "fantapoints": null,
+      "points": null,
+      "updatedAt": {
+        "seconds": 1778852564,
+        "nanoseconds": 556000000
+      },
+      "competitionId": "2017-2018_coppa-italia",
       "played": null,
-      "points": null
+      "seasonId": "2017-2018",
+      "seasonTeamId": "2017-2018_7bx0cegbxtf4fwh6t0pi"
     },
     {
       "id": "2017-2018-coppa-italia_2",
-      "played": null,
-      "points": null,
-      "seasonId": "2017-2018",
       "createdAt": {
+        "seconds": 1778852564,
+        "nanoseconds": 613000000
+      },
+      "fantapoints": null,
+      "points": null,
+      "updatedAt": {
         "seconds": 1778852564,
         "nanoseconds": 613000000
       },
       "competitionId": "2017-2018_coppa-italia",
-      "position": 2,
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778852564,
-        "nanoseconds": 613000000
-      },
-      "seasonTeamId": "2017-2018_jy2dst1rxfqv6elw89ds"
+      "seasonId": "2017-2018",
+      "seasonTeamId": "2017-2018_jy2dst1rxfqv6elw89ds",
+      "played": null,
+      "position": 2
     },
     {
       "id": "2017-2018-playoff_1",
-      "points": null,
-      "played": null,
+      "position": 1,
       "createdAt": {
         "seconds": 1778852576,
         "nanoseconds": 738000000
       },
-      "seasonId": "2017-2018",
-      "position": 1,
-      "competitionId": "2017-2018_playoff",
-      "seasonTeamId": "2017-2018_team-002",
       "fantapoints": null,
+      "points": null,
       "updatedAt": {
         "seconds": 1778852576,
         "nanoseconds": 738000000
-      }
+      },
+      "competitionId": "2017-2018_playoff",
+      "played": null,
+      "seasonTeamId": "2017-2018_team-002",
+      "seasonId": "2017-2018"
     },
     {
       "id": "2017-2018-playoff_2",
-      "competitionId": "2017-2018_playoff",
-      "position": 2,
       "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778852576,
+        "nanoseconds": 784000000
+      },
+      "points": null,
       "updatedAt": {
         "seconds": 1778852576,
         "nanoseconds": 784000000
       },
-      "seasonTeamId": "2017-2018_kbjri4liu4iuq6ajfnml",
+      "competitionId": "2017-2018_playoff",
       "played": null,
-      "points": null,
+      "seasonTeamId": "2017-2018_kbjri4liu4iuq6ajfnml",
       "seasonId": "2017-2018",
-      "createdAt": {
-        "seconds": 1778852576,
-        "nanoseconds": 784000000
-      }
+      "position": 2
     }
   ],
   "rosterEntries": [
