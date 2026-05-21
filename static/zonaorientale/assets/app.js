@@ -13741,3 +13741,6 @@ window.addEventListener("load", () => {
     normalizeMobileMatchResultLabelsV162(document.querySelector("main") || document.body);
   });
 });
+
+
+/* V164 - Mobile competition detail refinements live in competition.html/CSS. */

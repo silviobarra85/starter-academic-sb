@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./assets/css/mobile-hotfix-v161.css?v=161" />
   <link rel="stylesheet" href="./assets/css/mobile-hotfix-v162.css?v=162" />
   <link rel="stylesheet" href="./assets/css/mobile-hotfix-v163.css?v=163" />
+  <link rel="stylesheet" href="./assets/css/mobile-hotfix-v164.css?v=164" />
 </head>
 <body class="is-mobile-ux competition-detail-page-v162">
   <main class="container app-main competition-page-main">
@@ -73,7 +74,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V163 mobile rose e competizioni · Ultimo aggiornamento 21/05/2026</p>
+    <p>ZonaOrientale Salerno · V164 mobile competizioni compatte · Ultimo aggiornamento 21/05/2026</p>
   </footer>
 
   <script>
@@ -505,6 +506,44 @@
       ].filter(Boolean).join(" "));
     }
 
+    function isPodiumOnlyCompetitionV164(competition) {
+      const text = getCompetitionKindText(competition);
+      return /COPPA\s*ITALIA|CHAMPIONS|CHAMPION|PLAYOFF|PLAY\s*OFF/.test(text);
+    }
+
+    function getResultPositionNumberV164(result) {
+      const value = Number(result?.position ?? result?.pos ?? result?.rank ?? result?.place);
+      return Number.isFinite(value) ? value : 999;
+    }
+
+    function getResultByPositionV164(results = [], position) {
+      return (results || []).find((result) => getResultPositionNumberV164(result) === position) || null;
+    }
+
+    function renderPodiumResultLineV164(label, result, seasonTeams = [], teams = []) {
+      if (!result) {
+        return `<div class="competition-page-podium-row-v164"><span>${escapeHtml(label)}</span><strong>-</strong></div>`;
+      }
+      const seasonTeam = findResultSeasonTeam(result, seasonTeams, teams);
+      const name = getResultTeamName(result, seasonTeams, teams);
+      const logo = getLogoForSeasonTeam(seasonTeam, teams, name);
+      return `
+        <div class="competition-page-podium-row-v164">
+          <span>${escapeHtml(label)}</span>
+          ${renderTeamNameWithLogo(name, logo)}
+        </div>`;
+    }
+
+    function renderMobilePodiumResultsV164(results = [], seasonTeams = [], teams = []) {
+      const winner = getResultByPositionV164(results, 1);
+      const runnerUp = getResultByPositionV164(results, 2);
+      return `
+        <div class="competition-page-mobile-podium-v164" aria-label="Vincitore e secondo posto">
+          ${renderPodiumResultLineV164("Vincitore", winner, seasonTeams, teams)}
+          ${renderPodiumResultLineV164("Secondo posto", runnerUp, seasonTeams, teams)}
+        </div>`;
+    }
+
     function isLeagueCompetition(competition) {
       const text = getCompetitionKindText(competition);
       return /CAMPIONATO|REGULAR\s*SEASON|REGULAR|LEGA|LEAGUE\s*TABLE/.test(text) && !/CHAMPIONS|CHAMPION|COPPA|PLAYOFF|PLAY\s*OFF|SUPERCOPPA|FINAL|KNOCK/.test(text);
@@ -647,13 +686,15 @@
       return result.teamName || result.name || result.team || result.clubName || seasonTeam?.name || team?.name || team?.canonicalName || result.seasonTeamId || result.teamId || "-";
     }
 
-    function renderResults(results, seasonTeams = [], teams = []) {
+    function renderResults(results, seasonTeams = [], teams = [], competition = null) {
       if (!results.length) return "";
       const sorted = [...results].sort((a, b) => Number(a.position || a.pos || 999) - Number(b.position || b.pos || 999));
+      const podiumOnlyMobile = isPodiumOnlyCompetitionV164(competition);
       return `
-        <article class="competition-card competition-page-results-card">
+        <article class="competition-card competition-page-results-card ${podiumOnlyMobile ? "is-podium-only-mobile-v164" : ""}">
           <div class="detail-section compact-detail-section competition-page-results-section">
-            <h4>Classifica / piazzamenti</h4>
+            <h4>${podiumOnlyMobile ? "Vincitore e secondo posto" : "Classifica / piazzamenti"}</h4>
+            ${podiumOnlyMobile ? renderMobilePodiumResultsV164(sorted, seasonTeams, teams) : ""}
             <div class="table-wrap compact-table result-table-wrap competition-page-result-table-wrap">
               <table class="competition-page-results-table">
                 <thead>
@@ -766,7 +807,7 @@
         ${payload.sourceFile ? `<span class="muted small">Fonte: ${escapeHtml(payload.sourceFile)}</span>` : ""}
         <span class="muted small">${payload.matches.length} partite</span>
       `;
-      contentEl.innerHTML = `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [])}${renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || [])}`;
+      contentEl.innerHTML = `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [], competition)}${renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || [])}`;
       window.requestAnimationFrame(() => { applyMobileCompactDatesV156(document.body); normalizeMobileMatchResultLabelsV162(document.body); });
     }
 

@@ -1,0 +1,115 @@
+/* V164 - Mobile: competizioni KO con podio e contenitori standardizzati. Desktop invariato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* Singola competizione: stessa larghezza per titolo, classifica/podio e partite. */
+  body.is-mobile-ux.competition-detail-page-v162 {
+    overflow-x: hidden !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-main,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-mobile-heading-v160,
+  body.is-mobile-ux.competition-detail-page-v162 #competitionPageContent,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-match-groups,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-stage-group {
+    width: min(100%, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-stage-group {
+    padding: 10px 8px !important;
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-section,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-match-stage-details,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-result-table-wrap,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Colonna Partita leggermente più stretta: spazio recuperato per Data e Ris. */
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-row-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-head-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-row-v154 {
+    grid-template-columns: minmax(0, 1fr) 68px 72px !important;
+    column-gap: 0 !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-cell-v154,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-head-v154 span,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-cell-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-head-v154 span {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .mobile-cup-match-teams-cell-v154,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .mobile-cup-match-teams-cell-v154 {
+    overflow: hidden !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-match-table-v154 .competition-page-match-team strong,
+  body.is-mobile-ux .mobile-cup-match-table-v154 .competition-page-match-team strong {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  /* Coppa Italia / Champions / Playoff: da mobile non tabella-classifica, ma podio. */
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-mobile-podium-v164 {
+    display: grid !important;
+    gap: 8px !important;
+    margin-top: 8px !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-results-card.is-podium-only-mobile-v164 .competition-page-result-table-wrap {
+    display: none !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 {
+    display: grid !important;
+    grid-template-columns: 88px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 10px !important;
+    border: 1px solid rgba(148, 163, 184, 0.28) !important;
+    border-radius: 16px !important;
+    background: rgba(15, 23, 42, 0.74) !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 > span:first-child {
+    color: #bbf7d0 !important;
+    font-size: 0.72rem !important;
+    font-weight: 950 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 .club-name-with-logo {
+    min-width: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-podium-row-v164 .club-name-with-logo strong {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (min-width: 901px) and (hover: hover), (min-width: 901px) and (pointer: fine) {
+  .competition-page-mobile-podium-v164 {
+    display: none !important;
+  }
+}
