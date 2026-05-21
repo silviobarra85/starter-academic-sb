@@ -1,0 +1,3478 @@
+{
+  "id": "2020-2021",
+  "seasonId": "2020-2021",
+  "generatedAt": "2026-05-21T12:31:45.662Z",
+  "teams": [
+    {
+      "id": "WMdzHRRpUP8lHvsdwM7W",
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "logo": "./assets/logos/acmilan.png",
+      "createdAt": {
+        "seconds": 1778833655,
+        "nanoseconds": 22000000
+      },
+      "canonicalName": "Ac Milan",
+      "updatedAt": {
+        "seconds": 1778954300,
+        "nanoseconds": 877000000
+      }
+    },
+    {
+      "id": "h6saeK7uRQIQNmiZTRT7",
+      "canonicalName": "Afc Severgas Baronissi",
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "logo": "./assets/logos/baronissi.png",
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
+      "notes": "",
+      "isCurrent": true
+    },
+    {
+      "id": "lvn8MgLzGcNCY9ev0sgX",
+      "notes": "",
+      "isCurrent": false,
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778833917,
+        "nanoseconds": 315000000
+      },
+      "currentPresidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "canonicalName": "AS Longobarda",
+      "updatedAt": {
+        "seconds": 1778834075,
+        "nanoseconds": 573000000
+      }
+    },
+    {
+      "id": "7Bx0ceGBXtF4FwH6T0PI",
+      "updatedAt": {
+        "seconds": 1778954349,
+        "nanoseconds": 563000000
+      },
+      "canonicalName": "As Paperopoli",
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "logo": "./assets/logos/paperopoli.png",
+      "createdAt": {
+        "seconds": 1778833666,
+        "nanoseconds": 871000000
+      },
+      "notes": "",
+      "isCurrent": true
+    },
+    {
+      "id": "jy2dst1rXfQv6eLW89DS",
+      "notes": "",
+      "isCurrent": false,
+      "currentPresidentIds": [
+        "f37y6IZln56uPDZqKg4N"
+      ],
+      "createdAt": {
+        "seconds": 1778833933,
+        "nanoseconds": 281000000
+      },
+      "logo": "",
+      "canonicalName": "Atletico Cadaveri",
+      "updatedAt": {
+        "seconds": 1778833933,
+        "nanoseconds": 281000000
+      }
+    },
+    {
+      "id": "team_002",
+      "updatedAt": {
+        "seconds": 1778954366,
+        "nanoseconds": 223000000
+      },
+      "canonicalName": "Beetlejuice",
+      "logo": "./assets/logos/beetlejuice.png",
+      "currentPresidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "isCurrent": true,
+      "notes": ""
+    },
+    {
+      "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "notes": "",
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      },
+      "logo": "./assets/logos/due_fratelli.png",
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "canonicalName": "Due Fratelli Fc 2005",
+      "updatedAt": {
+        "seconds": 1778954398,
+        "nanoseconds": 258000000
+      }
+    },
+    {
+      "id": "GDisIDfbuSeLVm64PSR3",
+      "notes": "",
+      "isCurrent": true,
+      "canonicalName": "Olympic Salerno",
+      "updatedAt": {
+        "seconds": 1778960995,
+        "nanoseconds": 776000000
+      },
+      "currentPresidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
+      "logo": "./assets/logos/olympic_salerno.png",
+      "createdAt": {
+        "seconds": 1778833581,
+        "nanoseconds": 658000000
+      }
+    },
+    {
+      "id": "FT1tqdqI18iUh3l1lakQ",
+      "notes": "",
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833596,
+        "nanoseconds": 670000000
+      },
+      "logo": "./assets/logos/real_mappine.png",
+      "currentPresidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
+      "updatedAt": {
+        "seconds": 1778954461,
+        "nanoseconds": 197000000
+      },
+      "canonicalName": "real mappine"
+    },
+    {
+      "id": "ULwTIMBi3dyYrq0SoEsx",
+      "updatedAt": {
+        "seconds": 1778954524,
+        "nanoseconds": 667000000
+      },
+      "canonicalName": "River Plaid",
+      "createdAt": {
+        "seconds": 1778833556,
+        "nanoseconds": 33000000
+      },
+      "logo": "./assets/logos/river_plaid.png",
+      "currentPresidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ],
+      "notes": "",
+      "isCurrent": true
+    }
+  ],
+  "presidents": [
+    {
+      "id": "iAcJUOTNENihne0XzhuR",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      },
+      "name": "Alessandro Liguori",
+      "isActive": false,
+      "createdAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      }
+    },
+    {
+      "id": "6UBSv1GUTCxSNrRb8dZr",
+      "name": "Claudio D'Isanto",
+      "updatedAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      },
+      "createdAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      },
+      "isActive": true,
+      "notes": ""
+    },
+    {
+      "id": "f37y6IZln56uPDZqKg4N",
+      "isActive": false,
+      "createdAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      },
+      "updatedAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      },
+      "name": "Emanuele Schiavone",
+      "notes": ""
+    },
+    {
+      "id": "cbA5rKY8ItVmgRqhUasz",
+      "createdAt": {
+        "seconds": 1778832819,
+        "nanoseconds": 357000000
+      },
+      "isActive": true,
+      "name": "Fabio Gatto",
+      "updatedAt": {
+        "seconds": 1778832819,
+        "nanoseconds": 357000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "7KbTM1lnzIThNWcF0NKL",
+      "notes": "",
+      "name": "Gaetano Alfinito",
+      "updatedAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
+      "createdAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
+      "isActive": true
+    },
+    {
+      "id": "JaSqcnTZUYHtjHXghADS",
+      "name": "Gaetano Caparrotti",
+      "updatedAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "createdAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "isActive": true,
+      "notes": ""
+    },
+    {
+      "id": "Mw12sFS1OoS8V5uzBLLw",
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "isActive": true,
+      "name": "Gianluca Caparrotti",
+      "updatedAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      }
+    },
+    {
+      "id": "kjxSsudO432wf4zEnDjg",
+      "notes": "",
+      "name": "Giosuè Vicinanza",
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "createdAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "isActive": true
+    },
+    {
+      "id": "2yHHP653ChQrYxnQHMk3",
+      "notes": "",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832813,
+        "nanoseconds": 937000000
+      },
+      "updatedAt": {
+        "seconds": 1778832813,
+        "nanoseconds": 937000000
+      },
+      "name": "Mario Guariglia"
+    },
+    {
+      "id": "9pAjdkP5bPc5ldLlbfPP",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "name": "Michele D'Isanto",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      }
+    },
+    {
+      "id": "Hm25jirYQUj1biv6VFpJ",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      },
+      "name": "Zio Dino",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      }
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "logo": "",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "createdAt": {
+        "seconds": 1778851865,
+        "nanoseconds": 582000000
+      },
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "name": "Ac Milan",
+      "updatedAt": {
+        "seconds": 1778851865,
+        "nanoseconds": 582000000
+      },
+      "isHistorical": false
+    },
+    {
+      "id": "2020-2021_lvn8mglzgcncy9ev0sgx",
+      "isHistorical": false,
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "name": "AS Longobarda",
+      "updatedAt": {
+        "seconds": 1778851847,
+        "nanoseconds": 647000000
+      },
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778851847,
+        "nanoseconds": 647000000
+      }
+    },
+    {
+      "id": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "logo": "",
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "createdAt": {
+        "seconds": 1778851843,
+        "nanoseconds": 41000000
+      },
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "name": "As Paperopoli",
+      "updatedAt": {
+        "seconds": 1778851843,
+        "nanoseconds": 41000000
+      },
+      "isHistorical": false
+    },
+    {
+      "id": "2020-2021_jy2dst1rxfqv6elw89ds",
+      "teamId": "jy2dst1rXfQv6eLW89DS",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778851861,
+        "nanoseconds": 409000000
+      },
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "f37y6IZln56uPDZqKg4N"
+      ],
+      "name": "Atletico Cadaveri",
+      "updatedAt": {
+        "seconds": 1778851861,
+        "nanoseconds": 409000000
+      },
+      "isHistorical": false
+    },
+    {
+      "id": "2020-2021_team-002",
+      "createdAt": {
+        "seconds": 1778851871,
+        "nanoseconds": 227000000
+      },
+      "teamId": "team_002",
+      "logo": "",
+      "name": "Beetlejuice",
+      "updatedAt": {
+        "seconds": 1778851871,
+        "nanoseconds": 227000000
+      },
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "seasonId": "2020-2021",
+      "isHistorical": false
+    },
+    {
+      "id": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "isHistorical": false,
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778851856,
+        "nanoseconds": 80000000
+      },
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "name": "Due Fratelli Fc 2005",
+      "updatedAt": {
+        "seconds": 1778851856,
+        "nanoseconds": 80000000
+      }
+    },
+    {
+      "id": "2020-2021_gdisidfbuselvm64psr3",
+      "teamId": "GDisIDfbuSeLVm64PSR3",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778851832,
+        "nanoseconds": 178000000
+      },
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
+      "name": "Olympic Salerno",
+      "updatedAt": {
+        "seconds": 1778851832,
+        "nanoseconds": 178000000
+      },
+      "isHistorical": false
+    },
+    {
+      "id": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
+      "name": "real mappine",
+      "updatedAt": {
+        "seconds": 1778851827,
+        "nanoseconds": 857000000
+      },
+      "teamId": "FT1tqdqI18iUh3l1lakQ",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778851827,
+        "nanoseconds": 857000000
+      },
+      "isHistorical": false
+    },
+    {
+      "id": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "teamId": "ULwTIMBi3dyYrq0SoEsx",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778851851,
+        "nanoseconds": 532000000
+      },
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ],
+      "name": "River Plaid",
+      "updatedAt": {
+        "seconds": 1778851851,
+        "nanoseconds": 532000000
+      },
+      "isHistorical": false
+    },
+    {
+      "id": "2020-2021_kbjri4liu4iuq6ajfnml",
+      "seasonId": "2020-2021",
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "name": "Us Baronissi Cavaliers",
+      "updatedAt": {
+        "seconds": 1779196126,
+        "nanoseconds": 283000000
+      },
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778851838,
+        "nanoseconds": 242000000
+      },
+      "isHistorical": false
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2020-2021_campionato",
+      "notes": "",
+      "knockoutPhases": [],
+      "updatedAt": {
+        "seconds": 1778851889,
+        "nanoseconds": 325000000
+      },
+      "format": "CLASSIFICA",
+      "type": "CAMPIONATO",
+      "status": "CONCLUSA",
+      "createdAt": {
+        "seconds": 1778851885,
+        "nanoseconds": 3000000
+      },
+      "name": "Campionato",
+      "seasonId": "2020-2021"
+    },
+    {
+      "id": "2020-2021_champions-league",
+      "createdAt": {
+        "seconds": 1778851885,
+        "nanoseconds": 43000000
+      },
+      "status": "NON_DISPUTATA",
+      "type": "CHAMPIONS_LEAGUE",
+      "name": "Champion's League",
+      "seasonId": "2020-2021",
+      "format": "GIRONI_KO",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778851894,
+        "nanoseconds": 357000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "2020-2021_coppa-italia",
+      "format": "GIRONI_KO",
+      "name": "Coppa Italia",
+      "seasonId": "2020-2021",
+      "type": "COPPA_ITALIA",
+      "status": "CONCLUSA",
+      "createdAt": {
+        "seconds": 1778851885,
+        "nanoseconds": 87000000
+      },
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778851898,
+        "nanoseconds": 78000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ]
+    },
+    {
+      "id": "2020-2021_playoff",
+      "updatedAt": {
+        "seconds": 1778851902,
+        "nanoseconds": 545000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "notes": "",
+      "name": "Playoff",
+      "seasonId": "2020-2021",
+      "type": "PLAYOFF",
+      "status": "CONCLUSA",
+      "createdAt": {
+        "seconds": 1778851885,
+        "nanoseconds": 111000000
+      },
+      "format": "GIRONI_KO"
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2020-2021-campionato_1",
+      "position": 1,
+      "competitionId": "2020-2021_campionato",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778851927,
+        "nanoseconds": 299000000
+      },
+      "points": null,
+      "played": null,
+      "createdAt": {
+        "seconds": 1778851927,
+        "nanoseconds": 299000000
+      },
+      "seasonId": "2020-2021"
+    },
+    {
+      "id": "2020-2021-campionato_2",
+      "played": null,
+      "points": null,
+      "seasonId": "2020-2021",
+      "createdAt": {
+        "seconds": 1778851927,
+        "nanoseconds": 348000000
+      },
+      "competitionId": "2020-2021_campionato",
+      "position": 2,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778851927,
+        "nanoseconds": 348000000
+      },
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3"
+    },
+    {
+      "id": "2020-2021-campionato_3",
+      "competitionId": "2020-2021_campionato",
+      "position": 3,
+      "updatedAt": {
+        "seconds": 1778851927,
+        "nanoseconds": 395000000
+      },
+      "fantapoints": null,
+      "seasonTeamId": "2020-2021_kbjri4liu4iuq6ajfnml",
+      "played": null,
+      "points": null,
+      "seasonId": "2020-2021",
+      "createdAt": {
+        "seconds": 1778851927,
+        "nanoseconds": 395000000
+      }
+    },
+    {
+      "id": "2020-2021-coppa-italia_1",
+      "createdAt": {
+        "seconds": 1778851943,
+        "nanoseconds": 685000000
+      },
+      "seasonId": "2020-2021",
+      "points": null,
+      "played": null,
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "updatedAt": {
+        "seconds": 1778851943,
+        "nanoseconds": 685000000
+      },
+      "fantapoints": null,
+      "position": 1,
+      "competitionId": "2020-2021_coppa-italia"
+    },
+    {
+      "id": "2020-2021-coppa-italia_2",
+      "played": null,
+      "points": null,
+      "seasonId": "2020-2021",
+      "createdAt": {
+        "seconds": 1778851943,
+        "nanoseconds": 731000000
+      },
+      "competitionId": "2020-2021_coppa-italia",
+      "position": 2,
+      "updatedAt": {
+        "seconds": 1778851943,
+        "nanoseconds": 731000000
+      },
+      "fantapoints": null,
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3"
+    },
+    {
+      "id": "2020-2021-playoff_1",
+      "competitionId": "2020-2021_playoff",
+      "position": 1,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778851955,
+        "nanoseconds": 87000000
+      },
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "played": null,
+      "points": null,
+      "seasonId": "2020-2021",
+      "createdAt": {
+        "seconds": 1778851955,
+        "nanoseconds": 87000000
+      }
+    },
+    {
+      "id": "2020-2021-playoff_2",
+      "points": null,
+      "played": null,
+      "createdAt": {
+        "seconds": 1778851955,
+        "nanoseconds": 153000000
+      },
+      "seasonId": "2020-2021",
+      "position": 2,
+      "competitionId": "2020-2021_playoff",
+      "seasonTeamId": "2020-2021_lvn8mglzgcncy9ev0sgx",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778851955,
+        "nanoseconds": 153000000
+      }
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_0",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Montipò",
+      "realTeam": "VER",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_1",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Okoye",
+      "realTeam": "UDI",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_2",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Romagnoli",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_3",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Mancini",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_4",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "N'Dicka",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_5",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Angelino",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_6",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gutierrez",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_7",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pongracic",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_8",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Tavares N.",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_9",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Dodò",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_10",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belghali",
+      "realTeam": "VER",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_11",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Zaccagni",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_12",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rabiot",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 30,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_13",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Harrison",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_14",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Aebischer",
+      "realTeam": "PIS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_15",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gudmundsson A.",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 37,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_16",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Baldanzi",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_17",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Thorstvedt",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_18",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Perrone",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_19",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rowe",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_20",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Jashari",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_21",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belotti",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_22",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pinamonti",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_23",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Vardy",
+      "realTeam": "CRE",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_24",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Moreo",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_25",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Malen",
+      "realTeam": "ROM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 46,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_26",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Borrelli",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_27",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Krstovic",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_wmdzhrrpup8lhvsdwm7w_28",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gimenez",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 142,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_0",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Perin",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_1",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Muric",
+      "realTeam": "SAS",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_2",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Corvi",
+      "realTeam": "PAR",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_3",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Djimsiti",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_4",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Miranda J.",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_5",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Winter",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_6",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Lucumì",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_7",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Vitik",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_8",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fortini",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_9",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Idrissi R.",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_10",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Heggem",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_11",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Bernasconi",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_12",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Freuler",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_13",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Bruyne",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 60,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_14",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Saelemaekers",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_15",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Maldini",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 27,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_16",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Musah",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_17",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Ellertsson",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_18",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Sulemana I.",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_19",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Pisilli",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_20",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fabbian",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_21",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Anjorin",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_22",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Keita M.",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_23",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Orban G.",
+      "realTeam": "VER",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_24",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Noslin",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_25",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Castro S.",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_26",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Dallinga",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_27",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Douvikas",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_28",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kuhn",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 35,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_7bx0cegbxtf4fwh6t0pi_29",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kulenovic",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_0",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Milinkovic-Savic V.",
+      "realTeam": "NAP",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_1",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Di Gregorio",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_2",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Butez",
+      "realTeam": "COM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_3",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Luperto",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_4",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Gosens",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 31,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_5",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Caracciolo A.",
+      "realTeam": "PIS",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_6",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Kabasele",
+      "realTeam": "UDI",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_7",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Baschirotto",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_8",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Carlos Augusto",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_9",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Beukema",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_10",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Coco",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_11",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Kempf",
+      "realTeam": "COM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_12",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Tiago Gabriel",
+      "realTeam": "LEC",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_13",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Locatelli",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_14",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Pasalic",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_15",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Odgaard",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_16",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Zambo Anguissa",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_17",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Thorsby",
+      "realTeam": "CRE",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_18",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "McTominay",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 25,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_19",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Ricci S.",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_20",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Basic",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_21",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Konè I.",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_22",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Neres",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 61,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_23",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Pedro",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_24",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Piccoli",
+      "realTeam": "FIO",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_25",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Leao",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_26",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Nzola",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_27",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Banda",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_28",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Hojlund",
+      "realTeam": "NAP",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 108,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_team-002_29",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_team-002",
+      "playerName": "Ratkov",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_0",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gollini",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_1",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Svilar",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_2",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Mina",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_3",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Lazaro",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_4",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Celik",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_5",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Delprato",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_6",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Norton-Cuffy",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_7",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Ahanor",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_8",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Britschgi",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_9",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Pellegrini Lo.",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_10",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sottil",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_11",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gaetano",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_12",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Fagioli",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_13",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Elmas",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_14",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Vlasic",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_15",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Volpato",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_16",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Oristanio",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_17",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Isaksen",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 18,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_18",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Zaragoza",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 29,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_19",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Paz N.",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_20",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Venturino",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_21",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sucic P.",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_22",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Santos A.",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_23",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Scamacca",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 95,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_24",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Colombo",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_25",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "De Ketelaere",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 81,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_26",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Addai",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_27",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Kilicsoy",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_28",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Frigan",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_y3vmcdwvut0u1tlsg4qc_29",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Durosinmi",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_0",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Meret",
+      "realTeam": "NAP",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_1",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Audero",
+      "realTeam": "CRE",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_2",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Carnesecchi",
+      "realTeam": "ATA",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_3",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Bremer",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_4",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Gabbia",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_5",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Rrahmani",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_6",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Pavlovic",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 19,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_7",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Scalvini",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_8",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Hien",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_9",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Kristensen T.",
+      "realTeam": "UDI",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_10",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Marcandalli",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_11",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Palestra",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_12",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Joao Mario",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 19,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_13",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Zaniolo",
+      "realTeam": "UDI",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_14",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Adopo",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_15",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Samardzic",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_16",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Konè M.",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_17",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Koopmeiners",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 22,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_18",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Frendrup",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_19",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Bernabè",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 47,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_20",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Ondrejka",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_21",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Baturina",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 46,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_22",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Taylor K.",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_23",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Kean",
+      "realTeam": "FIO",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_24",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Vlahovic",
+      "realTeam": "JUV",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 41,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_25",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Yildiz",
+      "realTeam": "JUV",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_26",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Camarda",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_27",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Diao",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 40,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_28",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Pellegrino M.",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 38,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_gdisidfbuselvm64psr3_29",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+      "playerName": "Esposito F.P.",
+      "realTeam": "INT",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 41,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_0",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Terracciano",
+      "realTeam": "MIL",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_1",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Maignan",
+      "realTeam": "MIL",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_2",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Torriani",
+      "realTeam": "MIL",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_3",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Bastoni",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_4",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Hermoso",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_5",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Kalulu",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_6",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Tsimikas",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_7",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Terracciano F.",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_8",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Cabal",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_9",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Bisseck",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_10",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Kelly L.",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_11",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Canestrelli",
+      "realTeam": "PIS",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_12",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Muharemovic",
+      "realTeam": "SAS",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_13",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Mandragora",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_14",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Brescianini",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_15",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "McKennie",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_16",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Thuram K.",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 40,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_17",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Zhegrova",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 39,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_18",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Helgason",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_19",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Berisha M.",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_20",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Atta",
+      "realTeam": "UDI",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_21",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Tourè I.",
+      "realTeam": "PIS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_22",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Sanabria",
+      "realTeam": "CRE",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_23",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Nkunku",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 83,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_24",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Ekuban",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_25",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "David",
+      "realTeam": "JUV",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 95,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_26",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Vitinha O.",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_27",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Dovbyk",
+      "realTeam": "ROM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 143,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_28",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Ekhator",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ft1tqdqi18iuh3l1lakq_29",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Stulic",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_0",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Falcone",
+      "realTeam": "LEC",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 25,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_1",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "De Gea",
+      "realTeam": "FIO",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_2",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Bijlow",
+      "realTeam": "GEN",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_3",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Dimarco",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_4",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Zappacosta",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_5",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Ranieri L.",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_6",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Maripan",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_7",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Bellanova",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 25,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_8",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Vojvoda",
+      "realTeam": "COM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_9",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Vasquez",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_10",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Holm",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_11",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Ramon",
+      "realTeam": "COM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_12",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Floriani Mussolini",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_13",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Cataldi",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_14",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Politano",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 26,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_15",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Calhanoglu",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 29,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_16",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Modric",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_17",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Lobotka",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_18",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Nicolussi Caviglia",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_19",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Caqueret",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_20",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Gilmour",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_21",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Lovric",
+      "realTeam": "VER",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_22",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Dele-Bashiru",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_23",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Vergara",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_24",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Zapata D.",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 54,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_25",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Simeone",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_26",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Lukaku",
+      "realTeam": "NAP",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_27",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Thuram",
+      "realTeam": "INT",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 59,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_28",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Davis K.",
+      "realTeam": "UDI",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2020-2021_ulwtimbi3dyyrq0soesx_29",
+      "seasonId": "2020-2021",
+      "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+      "playerName": "Bonny",
+      "realTeam": "INT",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 10,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}

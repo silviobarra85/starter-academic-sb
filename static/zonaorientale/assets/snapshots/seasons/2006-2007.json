@@ -1,0 +1,1096 @@
+{
+  "id": "2006-2007",
+  "seasonId": "2006-2007",
+  "generatedAt": "2026-05-21T12:31:45.667Z",
+  "teams": [
+    {
+      "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "notes": "",
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      },
+      "logo": "./assets/logos/due_fratelli.png",
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "canonicalName": "Due Fratelli Fc 2005",
+      "updatedAt": {
+        "seconds": 1778954398,
+        "nanoseconds": 258000000
+      }
+    },
+    {
+      "id": "fYQViaVoCqDPmikgwS2F",
+      "notes": "",
+      "isCurrent": false,
+      "updatedAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "canonicalName": "Real Gremo",
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "createdAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "logo": ""
+    },
+    {
+      "id": "team_001",
+      "isCurrent": true,
+      "notes": "",
+      "logo": "./assets/logos/real_pisistrius.png",
+      "currentPresidentIds": [
+        "ueJtI9xTYmZhDmWrZDzZ"
+      ],
+      "canonicalName": "Real Pisistrius",
+      "updatedAt": {
+        "seconds": 1778954495,
+        "nanoseconds": 409000000
+      }
+    }
+  ],
+  "presidents": [
+    {
+      "id": "KuWF4jNk1I97Jdk44gyK",
+      "isActive": false,
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "name": "Bartolomeo Greco",
+      "notes": ""
+    },
+    {
+      "id": "9pAjdkP5bPc5ldLlbfPP",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "name": "Michele D'Isanto",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      }
+    },
+    {
+      "id": "ueJtI9xTYmZhDmWrZDzZ",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832793,
+        "nanoseconds": 929000000
+      },
+      "updatedAt": {
+        "seconds": 1778832793,
+        "nanoseconds": 929000000
+      },
+      "name": "Silvio Barra",
+      "notes": ""
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "isHistorical": false,
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778850446,
+        "nanoseconds": 342000000
+      },
+      "seasonId": "2006-2007",
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "name": "Due Fratelli Fc 2005",
+      "updatedAt": {
+        "seconds": 1778850446,
+        "nanoseconds": 342000000
+      }
+    },
+    {
+      "id": "2006-2007_fyqviavocqdpmikgws2f",
+      "createdAt": {
+        "seconds": 1778850435,
+        "nanoseconds": 450000000
+      },
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "logo": "",
+      "seasonId": "2006-2007",
+      "updatedAt": {
+        "seconds": 1778850435,
+        "nanoseconds": 450000000
+      },
+      "name": "Real Gremo",
+      "presidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "isHistorical": false
+    },
+    {
+      "id": "2006-2007_team-001",
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778850441,
+        "nanoseconds": 169000000
+      },
+      "teamId": "team_001",
+      "logo": "",
+      "seasonId": "2006-2007",
+      "updatedAt": {
+        "seconds": 1778850441,
+        "nanoseconds": 169000000
+      },
+      "name": "Real Pisistrius",
+      "presidentIds": [
+        "ueJtI9xTYmZhDmWrZDzZ"
+      ]
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2006-2007_campionato",
+      "updatedAt": {
+        "seconds": 1778850457,
+        "nanoseconds": 489000000
+      },
+      "knockoutPhases": [],
+      "notes": "",
+      "name": "Campionato",
+      "seasonId": "2006-2007",
+      "createdAt": {
+        "seconds": 1778850450,
+        "nanoseconds": 900000000
+      },
+      "status": "CONCLUSA",
+      "type": "CAMPIONATO",
+      "format": "CLASSIFICA"
+    },
+    {
+      "id": "2006-2007_champions-league",
+      "createdAt": {
+        "seconds": 1778850450,
+        "nanoseconds": 955000000
+      },
+      "status": "NON_DISPUTATA",
+      "type": "CHAMPIONS_LEAGUE",
+      "name": "Champion's League",
+      "seasonId": "2006-2007",
+      "format": "GIRONI_KO",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778850461,
+        "nanoseconds": 645000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "2006-2007_coppa-italia",
+      "name": "Coppa Italia",
+      "seasonId": "2006-2007",
+      "createdAt": {
+        "seconds": 1778850450,
+        "nanoseconds": 999000000
+      },
+      "type": "COPPA_ITALIA",
+      "status": "NON_DISPUTATA",
+      "format": "GIRONI_KO",
+      "updatedAt": {
+        "seconds": 1778850464,
+        "nanoseconds": 975000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2006-2007_playoff",
+      "updatedAt": {
+        "seconds": 1778850468,
+        "nanoseconds": 387000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "notes": "",
+      "name": "Playoff",
+      "seasonId": "2006-2007",
+      "createdAt": {
+        "seconds": 1778850451,
+        "nanoseconds": 59000000
+      },
+      "status": "NON_DISPUTATA",
+      "type": "PLAYOFF",
+      "format": "GIRONI_KO"
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2006-2007-campionato_1",
+      "position": 1,
+      "competitionId": "2006-2007_campionato",
+      "seasonTeamId": "2006-2007_fyqviavocqdpmikgws2f",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778850501,
+        "nanoseconds": 751000000
+      },
+      "points": null,
+      "played": null,
+      "createdAt": {
+        "seconds": 1778850501,
+        "nanoseconds": 751000000
+      },
+      "seasonId": "2006-2007"
+    },
+    {
+      "id": "2006-2007-campionato_2",
+      "competitionId": "2006-2007_campionato",
+      "position": 2,
+      "updatedAt": {
+        "seconds": 1778850501,
+        "nanoseconds": 788000000
+      },
+      "fantapoints": null,
+      "seasonTeamId": "2006-2007_team-001",
+      "played": null,
+      "points": null,
+      "seasonId": "2006-2007",
+      "createdAt": {
+        "seconds": 1778850501,
+        "nanoseconds": 788000000
+      }
+    },
+    {
+      "id": "2006-2007-campionato_3",
+      "played": null,
+      "points": null,
+      "seasonId": "2006-2007",
+      "createdAt": {
+        "seconds": 1778850501,
+        "nanoseconds": 859000000
+      },
+      "competitionId": "2006-2007_campionato",
+      "position": 3,
+      "updatedAt": {
+        "seconds": 1778850501,
+        "nanoseconds": 859000000
+      },
+      "fantapoints": null,
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc"
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_0",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gollini",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_1",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Svilar",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_2",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Mina",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_3",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Lazaro",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_4",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Celik",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_5",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Delprato",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_6",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Norton-Cuffy",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_7",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Ahanor",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_8",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Britschgi",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_9",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Pellegrini Lo.",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_10",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sottil",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_11",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gaetano",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_12",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Fagioli",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_13",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Elmas",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_14",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Vlasic",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_15",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Volpato",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_16",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Oristanio",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_17",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Isaksen",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 18,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_18",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Zaragoza",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 29,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_19",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Paz N.",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_20",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Venturino",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_21",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sucic P.",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_22",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Santos A.",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_23",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Scamacca",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 95,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_24",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Colombo",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_25",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "De Ketelaere",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 81,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_26",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Addai",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_27",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Kilicsoy",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_28",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Frigan",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_y3vmcdwvut0u1tlsg4qc_29",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Durosinmi",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_0",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Provedel",
+      "realTeam": "LAZ",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_1",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Paleari",
+      "realTeam": "TOR",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_2",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Israel",
+      "realTeam": "TOR",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 22,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_3",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Marusic",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_4",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Martin",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_5",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Buongiorno",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 21,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_6",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Kamara H.",
+      "realTeam": "UDI",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_7",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Valeri",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_8",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Bartesaghi",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_9",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Solet",
+      "realTeam": "UDI",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_10",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Ndiaye",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_11",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Athekame",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_12",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "De Roon",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_13",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Zielinski",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_14",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Loftus-Cheek",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_15",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Malinovskyi",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_16",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Fofana Y.",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_17",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Tramoni M.",
+      "realTeam": "PIS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_18",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Sohm",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_19",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Zalewski",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_20",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Coulibaly L.",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_21",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Fadera",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_22",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Vandeputte",
+      "realTeam": "CRE",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_23",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Dybala",
+      "realTeam": "ROM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 49,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_24",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Raspadori",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 26,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_25",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Cancellieri",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_26",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Sulemana K.",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_27",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Laurientè",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_28",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Adams C.",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2006-2007_team-001_29",
+      "seasonId": "2006-2007",
+      "seasonTeamId": "2006-2007_team-001",
+      "playerName": "Giovane",
+      "realTeam": "NAP",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 3,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}
