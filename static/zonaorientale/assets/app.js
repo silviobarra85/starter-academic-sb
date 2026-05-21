@@ -5969,7 +5969,8 @@ document.addEventListener("click", (event) => {
   event.stopImmediatePropagation();
   const id = button.dataset.toggleRosterClub;
   if (!id) return;
-  if (state.expandedRosterClubIds.has(id)) {
+  const wasExpanded = state.expandedRosterClubIds.has(id);
+  if (wasExpanded) {
     state.expandedRosterClubIds.delete(id);
   } else {
     const isMobileLike = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
@@ -5981,6 +5982,14 @@ document.addEventListener("click", (event) => {
     }
   }
   renderTeamsTable();
+  if (!wasExpanded) {
+    window.requestAnimationFrame(() => {
+      const escapedId = window.CSS?.escape ? CSS.escape(id) : id.replace(/"/g, '\"');
+      const openedButton = document.querySelector(`[data-toggle-roster-club="${escapedId}"][aria-expanded="true"]`);
+      const detail = openedButton?.closest?.(".mobile-roster-detail-card-v156, .roster-detail-row") || document.querySelector(".mobile-roster-detail-card-v156");
+      detail?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    });
+  }
 }, true);
 
 
@@ -13535,7 +13544,7 @@ function renderMobileRosterSelectedDetailsV156(seasonTeams, teamsById) {
             <h3>${escapeHtml(name)}</h3>
             <p>${escapeHtml(presidentNames || "Presidente da assegnare")}</p>
           </div>
-          <button class="button button-secondary button-small" type="button" data-toggle-roster-club="${escapeHtml(seasonTeam.id)}" aria-expanded="true">Chiudi</button>
+          <button class="button button-secondary button-small" type="button" data-toggle-roster-club="${escapeHtml(seasonTeam.id)}" aria-expanded="true">Riduci</button>
         </div>
         <div class="mobile-roster-detail-stats-v156">
           <span><strong>${escapeHtml(formatFm(balance))}</strong><small>FM</small></span>
