@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=189";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=190";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV189";
-const DEPLOY_EXPECTED_VERSION_V181 = "189";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV190";
+const DEPLOY_EXPECTED_VERSION_V181 = "190";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -16319,5 +16319,291 @@ renderAdminHelpPanelV185 = function renderAdminHelpPanelV189() {
 };
 
 
-/* V188 - Final startup remains centralized here. */
+/* V190 - Stato pubblicazione Firebase/JSON con semafori.
+   This admin-only panel summarizes whether static JSON assets are reachable,
+   whether local admin publication reminders are still pending, and whether the
+   current session is in lightweight/full admin mode. It does not write to
+   Firebase and is designed to be readable on mobile without wide tables. */
+const PUBLICATION_STATUS_STORAGE_KEY_V190 = "zonaOrientalePublicationStatusV190";
+
+function getPublicationStatusBadgeV190(status) {
+  if (status === "ok") return "Verde";
+  if (status === "warn") return "Giallo";
+  return "Rosso";
+}
+
+function getPublicationStatusTitleV190(status) {
+  if (status === "ok") return "OK";
+  if (status === "warn") return "Attenzione";
+  return "Intervento richiesto";
+}
+
+function getPublicationStatusDotV190(status) {
+  const clean = status === "ok" || status === "warn" || status === "error" ? status : "warn";
+  return `<span class="publication-status-dot-v190 is-${escapeHtml(clean)}" aria-hidden="true"></span>`;
+}
+
+function findPublicationPreflightResultV190(preflight, key) {
+  const results = preflight?.results || [];
+  return results.find((item) => item.key === key) || null;
+}
+
+function rowFromPreflightAssetV190(preflight, key, fallbackLabel) {
+  const item = findPublicationPreflightResultV190(preflight, key);
+  if (!item) {
+    return {
+      id: key,
+      title: fallbackLabel,
+      status: "warn",
+      detail: "Non controllato. Premi Aggiorna stato pubblicazione.",
+      action: "Esegui il controllo asset pubblici o la checklist online finale."
+    };
+  }
+  return {
+    id: key,
+    title: item.label || fallbackLabel,
+    status: item.status === "error" ? "error" : (item.status === "warn" ? "warn" : "ok"),
+    detail: item.detail || `HTTP ${item.httpStatus || "n/d"}`,
+    action: item.status === "ok" ? "Nessuna azione richiesta." : `Verifica ${item.url || "il file statico"} nella repo/GitHub.`
+  };
+}
+
+function buildPublicationStatusRowsV190(preflight) {
+  const reminders = typeof readAdminPublicationRemindersV189 === "function" ? readAdminPublicationRemindersV189() : [];
+  const mode = typeof getAdminStartupModeLabelV178 === "function" ? getAdminStartupModeLabelV178() : (state.isAdmin ? "admin" : "pubblico");
+  const readSummary = window.ZonaOrientaleFirebaseReads?.summary?.() || null;
+  const readTotal = Number(readSummary?.total || 0);
+  const rows = [
+    {
+      id: "pending-reminders",
+      title: "Modifiche da pubblicare",
+      status: reminders.length ? "warn" : "ok",
+      detail: reminders.length ? `${reminders.length} promemoria locale in sospeso.` : "Nessun promemoria locale in sospeso.",
+      action: reminders.length ? "Completa Aggiorna tutto, scarica i JSON richiesti, commit/push, poi usa Segna come pubblicato." : "Nessuna azione richiesta."
+    },
+    {
+      id: "admin-mode",
+      title: "Modalita admin",
+      status: mode === "admin completo" ? "warn" : "ok",
+      detail: `Sessione corrente: ${mode}.`,
+      action: mode === "admin completo" ? "Normale se stai modificando dati; per navigazione pubblica basta refresh/logout." : "Admin leggero: non carica tutte le collection all'avvio."
+    },
+    rowFromPreflightAssetV190(preflight, "config", "Config pubblica"),
+    rowFromPreflightAssetV190(preflight, "seasonSnapshotsManifest", "Snapshot stagioni statici"),
+    rowFromPreflightAssetV190(preflight, "honor", "Honor/Palmares/FIFA statico"),
+    rowFromPreflightAssetV190(preflight, "rose", "Manifest rose"),
+    rowFromPreflightAssetV190(preflight, "listoni", "Manifest listoni"),
+    rowFromPreflightAssetV190(preflight, "competitions", "Manifest competizioni")
+  ];
+
+  rows.push({
+    id: "reads",
+    title: "Letture Firebase sessione",
+    status: readTotal > 100 ? "warn" : "ok",
+    detail: `${readTotal} letture stimate nella sessione corrente.`,
+    action: readTotal > 100 ? "Verifica di non aver premuto Carica dati amministrazione per errore prima del controllo pubblico." : "Valore compatibile con flusso leggero/statico."
+  });
+  return rows;
+}
+
+function summarizePublicationStatusRowsV190(rows) {
+  const total = rows.length;
+  const ok = rows.filter((item) => item.status === "ok").length;
+  const warn = rows.filter((item) => item.status === "warn").length;
+  const error = rows.filter((item) => item.status === "error").length;
+  return { total, ok, warn, error, passed: error === 0 && warn === 0 };
+}
+
+function renderPublicationStatusRowsV190(rows) {
+  return rows.map((item) => `
+    <article class="publication-status-card-v190 is-${escapeHtml(item.status)}">
+      <div class="publication-status-card-head-v190">
+        ${getPublicationStatusDotV190(item.status)}
+        <div>
+          <h4>${escapeHtml(item.title)}</h4>
+          <strong>${escapeHtml(getPublicationStatusTitleV190(item.status))}</strong>
+        </div>
+      </div>
+      <p>${escapeHtml(item.detail || "")}</p>
+      <small>${escapeHtml(item.action || "")}</small>
+    </article>`).join("");
+}
+
+function renderPublicationStatusHtmlV190(payload = null) {
+  const checkedAt = payload?.checkedAt ? normalizePreflightDateV179(payload.checkedAt) : "non ancora eseguito";
+  const rows = payload?.rows || [];
+  const summary = payload?.summary || { total: 0, ok: 0, warn: 0, error: 0 };
+  const hasRows = rows.length > 0;
+  return `
+    <section class="panel publication-status-v190" aria-labelledby="publicationStatusTitleV190">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Pubblicazione dati</p>
+          <h3 id="publicationStatusTitleV190">Stato Firebase / JSON</h3>
+          <p>Semaforo operativo: controlla se i JSON statici sono presenti e se ci sono modifiche admin da pubblicare.</p>
+        </div>
+      </div>
+      <div class="publication-status-summary-v190">
+        <span><strong>${escapeHtml(String(summary.ok))}</strong> OK</span>
+        <span><strong>${escapeHtml(String(summary.warn))}</strong> attenzioni</span>
+        <span><strong>${escapeHtml(String(summary.error))}</strong> errori</span>
+        <small>Ultimo controllo: ${escapeHtml(checkedAt)}</small>
+      </div>
+      <div class="form-actions publication-status-actions-v190">
+        <button class="button button-primary" type="button" data-run-publication-status-v190>Aggiorna stato pubblicazione</button>
+        <button class="button button-secondary" type="button" data-run-public-preflight-v179="publicationStatusPreflightReportV190">Controlla solo asset pubblici</button>
+      </div>
+      <div id="publicationStatusReportV190" class="publication-status-grid-v190">
+        ${hasRows ? renderPublicationStatusRowsV190(rows) : `<p class="muted">Premi Aggiorna stato pubblicazione per leggere i JSON statici e aggiornare i semafori.</p>`}
+      </div>
+      <div id="publicationStatusPreflightReportV190" class="publication-status-preflight-v190"></div>
+    </section>`;
+}
+
+function readPublicationStatusV190() {
+  try {
+    const raw = sessionStorage.getItem(PUBLICATION_STATUS_STORAGE_KEY_V190);
+    if (!raw) return state.publicationStatusV190 || null;
+    return JSON.parse(raw);
+  } catch (error) {
+    return state.publicationStatusV190 || null;
+  }
+}
+
+function writePublicationStatusV190(payload) {
+  state.publicationStatusV190 = payload;
+  try {
+    sessionStorage.setItem(PUBLICATION_STATUS_STORAGE_KEY_V190, JSON.stringify(payload));
+  } catch (error) {
+    console.warn("Impossibile salvare lo stato pubblicazione", error);
+  }
+}
+
+async function runPublicationStatusV190(options = {}) {
+  const targetId = options.targetId || "publicationStatusReportV190";
+  const target = document.getElementById(targetId);
+  if (target && !options.silent) target.innerHTML = `<p class="muted">Aggiornamento stato pubblicazione...</p>`;
+  let preflight = null;
+  try {
+    preflight = await runPublicAssetsPreflightV179({ silent: true });
+  } catch (error) {
+    console.warn("Preflight asset per stato pubblicazione non completato", error);
+  }
+  const rows = buildPublicationStatusRowsV190(preflight);
+  const payload = { checkedAt: new Date().toISOString(), summary: summarizePublicationStatusRowsV190(rows), rows, preflightSummary: preflight?.summary || null };
+  writePublicationStatusV190(payload);
+  if (!options.silent) {
+    renderPublicationStatusPanelV190(payload);
+    console.info(`[ZonaOrientale] Stato pubblicazione: ${payload.summary.ok}/${payload.summary.total} OK, ${payload.summary.warn} attenzioni, ${payload.summary.error} errori`);
+  }
+  return payload;
+}
+
+function renderPublicationStatusPanelV190(payload = readPublicationStatusV190()) {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+  let holder = adminPanel.querySelector("#publicationStatusMountV190");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "publicationStatusMountV190";
+    const reminder = adminPanel.querySelector("#adminPublicationReminderMountV189");
+    if (reminder) reminder.insertAdjacentElement("afterend", holder);
+    else adminPanel.insertAdjacentElement("afterbegin", holder);
+  }
+  holder.innerHTML = renderPublicationStatusHtmlV190(payload);
+}
+
+const renderAdminAreaBeforeV190 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV190() {
+  const result = renderAdminAreaBeforeV190?.();
+  renderPublicationStatusPanelV190();
+  return result;
+};
+
+const renderAdminLightGateBeforeV190 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV190) {
+  renderAdminLightGateV178 = function renderAdminLightGateV190() {
+    const html = renderAdminLightGateBeforeV190() || "";
+    if (html.includes("publicationStatusMountV190")) return html;
+    return `<div id="publicationStatusMountV190">${renderPublicationStatusHtmlV190(readPublicationStatusV190())}</div>${html}`;
+  };
+}
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("[data-run-publication-status-v190]");
+  if (!button) return;
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.textContent = "Aggiornamento...";
+  try {
+    await runPublicationStatusV190();
+  } finally {
+    button.disabled = false;
+    button.textContent = previousText || "Aggiorna stato pubblicazione";
+  }
+});
+
+function injectPublicationStatusStylesV190() {
+  if (document.getElementById("publicationStatusStylesV190")) return;
+  const style = document.createElement("style");
+  style.id = "publicationStatusStylesV190";
+  style.textContent = `
+    .publication-status-v190 { border: 1px solid rgba(59, 130, 246, .25); background: rgba(59, 130, 246, .055); }
+    .publication-status-summary-v190 { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; margin: .85rem 0 1rem; }
+    .publication-status-summary-v190 span { display: inline-flex; gap: .3rem; align-items: center; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .32rem .65rem; background: rgba(15,23,42,.45); }
+    .publication-status-summary-v190 small { color: var(--muted); overflow-wrap: anywhere; }
+    .publication-status-actions-v190 { gap: .6rem; flex-wrap: wrap; }
+    .publication-status-grid-v190 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+    .publication-status-card-v190 { border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .8rem; background: rgba(15,23,42,.58); min-width: 0; }
+    .publication-status-card-v190.is-ok { border-color: rgba(34,197,94,.35); }
+    .publication-status-card-v190.is-warn { border-color: rgba(245,158,11,.42); }
+    .publication-status-card-v190.is-error { border-color: rgba(239,68,68,.48); }
+    .publication-status-card-head-v190 { display: flex; gap: .55rem; align-items: flex-start; min-width: 0; }
+    .publication-status-card-head-v190 h4 { margin: 0; overflow-wrap: anywhere; }
+    .publication-status-card-head-v190 strong { display: block; font-size: .78rem; color: var(--muted); margin-top: .12rem; }
+    .publication-status-card-v190 p { margin: .55rem 0 .35rem; overflow-wrap: anywhere; }
+    .publication-status-card-v190 small { display: block; color: var(--muted); overflow-wrap: anywhere; }
+    .publication-status-dot-v190 { width: .75rem; height: .75rem; border-radius: 999px; margin-top: .22rem; flex: 0 0 auto; box-shadow: 0 0 0 3px rgba(255,255,255,.06); }
+    .publication-status-dot-v190.is-ok { background: #22c55e; }
+    .publication-status-dot-v190.is-warn { background: #f59e0b; }
+    .publication-status-dot-v190.is-error { background: #ef4444; }
+    .publication-status-preflight-v190 .import-report { margin-top: .85rem; }
+    @media (max-width: 760px) {
+      .publication-status-v190 { margin-inline: 0; }
+      .publication-status-grid-v190 { grid-template-columns: 1fr; }
+      .publication-status-actions-v190 { flex-direction: column; align-items: stretch; }
+      .publication-status-actions-v190 .button { width: 100%; }
+      .publication-status-summary-v190 { align-items: stretch; }
+      .publication-status-summary-v190 span, .publication-status-summary-v190 small { width: 100%; justify-content: center; text-align: center; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectPublicationStatusStylesV190();
+
+const renderAdminHelpPanelBeforeV190 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV190() {
+  let html = renderAdminHelpPanelBeforeV190?.() || "";
+  if (html && !html.includes("Stato Firebase / JSON")) {
+    html = html.replace("<article>\n          <h4>Avvisi pubblicazione</h4>", "<article>\n          <h4>Stato Firebase / JSON</h4>\n          <p>Mostra semafori per asset statici, promemoria pendenti, modalita admin e letture stimate, cosi sai cosa pubblicare prima del deploy.</p>\n        </article>\n        <article>\n          <h4>Avvisi pubblicazione</h4>");
+  }
+  return html;
+};
+
+window.ZonaOrientalePublicationStatus = {
+  check(options = {}) {
+    return runPublicationStatusV190({ ...options, silent: options.silent ?? false });
+  },
+  last() {
+    return readPublicationStatusV190();
+  },
+  rows() {
+    return readPublicationStatusV190()?.rows || [];
+  }
+};
+
+
+/* V190 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
