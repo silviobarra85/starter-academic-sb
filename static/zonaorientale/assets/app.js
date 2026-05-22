@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=195";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=196";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "195";
+const DEPLOY_EXPECTED_VERSION_V181 = "196";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18090,5 +18090,338 @@ window.ZonaOrientaleTeamCompare = {
   direct: getDirectMatchesV195
 };
 
-/* V195 - Final startup remains centralized here. */
+
+
+/* V196 - Archivio stagioni evoluto.
+   Pagina pubblica mobile-first che permette di consultare una stagione
+   completa senza introdurre nuove letture Firebase: usa solo state.raw gia'
+   popolato da JSON statici, snapshot pubblici o fallback esistenti. */
+const SEASON_ARCHIVE_STORAGE_KEY_V196 = "zonaOrientaleArchiveSeasonV196";
+
+function getSeasonArchiveSortedSeasonsV196() {
+  return [...(state.raw.seasons || [])].sort((a, b) => getSeasonSortValueV193(b.id) - getSeasonSortValueV193(a.id));
+}
+
+function getSeasonArchiveSeasonIdV196() {
+  const seasons = getSeasonArchiveSortedSeasonsV196();
+  if (!seasons.length) return "";
+  const validIds = new Set(seasons.map((season) => season.id));
+  const saved = localStorage.getItem(SEASON_ARCHIVE_STORAGE_KEY_V196) || "";
+  const current = state.archiveSeasonIdV196 || saved || getCurrentSeasonId();
+  const selected = validIds.has(current) ? current : seasons[0].id;
+  state.archiveSeasonIdV196 = selected;
+  return selected;
+}
+
+function setSeasonArchiveSeasonIdV196(seasonId) {
+  state.archiveSeasonIdV196 = seasonId || getSeasonArchiveSeasonIdV196();
+  try { localStorage.setItem(SEASON_ARCHIVE_STORAGE_KEY_V196, state.archiveSeasonIdV196); } catch (_) {}
+  renderSeasonArchiveV196();
+}
+
+function getCompetitionNameV196(competition) {
+  return competition?.name || competition?.label || getLabel(COMPETITION_TYPES, competition?.type) || competition?.type || "Competizione";
+}
+
+function getSeasonArchiveHonorTitlesV196(row) {
+  if (!row) return [];
+  return HISTORICAL_COMPETITIONS_V193.map((competition) => {
+    const seasonTeamId = row[competition.field];
+    if (!seasonTeamId) return null;
+    return {
+      key: competition.key,
+      label: competition.label,
+      seasonTeamId,
+      teamName: getSeasonTeamDisplayName(seasonTeamId)
+    };
+  }).filter(Boolean);
+}
+
+function getSeasonArchiveMatchResultPartsV196(match) {
+  const candidates = [
+    [match.homeGoals, match.awayGoals],
+    [match.homeScore, match.awayScore],
+    [match.homePoints, match.awayPoints],
+    [match.homeResult, match.awayResult]
+  ];
+  for (const pair of candidates) {
+    const [home, away] = pair;
+    if (home !== undefined && home !== null && home !== "" && away !== undefined && away !== null && away !== "") {
+      const homeNum = Number(String(home).replace(",", "."));
+      const awayNum = Number(String(away).replace(",", "."));
+      return {
+        home,
+        away,
+        homeNum: Number.isFinite(homeNum) ? homeNum : null,
+        awayNum: Number.isFinite(awayNum) ? awayNum : null
+      };
+    }
+  }
+  return { home: null, away: null, homeNum: null, awayNum: null };
+}
+
+function buildSeasonArchiveV196(seasonId = getSeasonArchiveSeasonIdV196()) {
+  const season = state.raw.seasons.find((item) => item.id === seasonId) || { id: seasonId, name: seasonId };
+  const seasonTeams = getSeasonTeamsForSeason(seasonId).sort((a, b) => String(getSeasonTeamDisplayName(a.id)).localeCompare(String(getSeasonTeamDisplayName(b.id)), "it", { sensitivity: "base" }));
+  const competitions = (state.raw.competitions || []).filter((item) => item.seasonId === seasonId);
+  const competitionIds = new Set(competitions.map((item) => item.id));
+  const matches = (state.raw.competitionMatches || []).filter((match) => competitionIds.has(match.competitionId));
+  const results = (state.raw.competitionResults || []).filter((result) => competitionIds.has(result.competitionId));
+  const honor = (state.raw.honorRoll || []).find((row) => (row.seasonId || row.id) === seasonId) || null;
+  const honorTitles = getSeasonArchiveHonorTitlesV196(honor);
+  const rosterEntries = (state.raw.rosterEntries || []).filter((entry) => seasonTeams.some((team) => team.id === entry.seasonTeamId));
+  const movements = (state.raw.fmMovements || []).filter((item) => seasonTeams.some((team) => team.id === item.seasonTeamId));
+  const news = (state.raw.news || []).filter((item) => !item.seasonId || item.seasonId === seasonId).slice(0, 8);
+  const stadiumsBySeasonTeamId = new Map((state.raw.stadiums || []).map((item) => [item.seasonTeamId, item]));
+  const rosterCountBySeasonTeamId = rosterEntries.reduce((map, entry) => {
+    const key = entry.seasonTeamId || "";
+    map.set(key, (map.get(key) || 0) + 1);
+    return map;
+  }, new Map());
+  const movementCountBySeasonTeamId = movements.reduce((map, entry) => {
+    const key = entry.seasonTeamId || "";
+    map.set(key, (map.get(key) || 0) + 1);
+    return map;
+  }, new Map());
+  const recentMatches = [...matches].sort(compareMatchesForDisplay).slice(-8).reverse();
+  const goals = matches.reduce((sum, match) => {
+    const score = getSeasonArchiveMatchResultPartsV196(match);
+    if (score.homeNum === null || score.awayNum === null) return sum;
+    return sum + score.homeNum + score.awayNum;
+  }, 0);
+  return { season, seasonTeams, competitions, matches, results, honor, honorTitles, rosterEntries, movements, news, stadiumsBySeasonTeamId, rosterCountBySeasonTeamId, movementCountBySeasonTeamId, recentMatches, goals };
+}
+
+function renderSeasonArchiveMetricV196(label, value, note = "") {
+  return `<article class="season-archive-metric-v196"><span>${escapeHtml(label)}</span><strong>${escapeHtml(String(value ?? "-"))}</strong>${note ? `<small>${escapeHtml(note)}</small>` : ""}</article>`;
+}
+
+function renderSeasonArchiveControlsV196(seasons, selectedId) {
+  const options = seasons.map((season) => `<option value="${escapeHtml(season.id)}" ${season.id === selectedId ? "selected" : ""}>${escapeHtml(getSeasonLabelV193(season.id))}</option>`).join("");
+  return `
+    <label><span>Stagione</span><select id="seasonArchiveSelectV196" class="input">${options}</select></label>
+    <button id="seasonArchiveSyncCurrentV196" class="button button-secondary" type="button">Usa stagione corrente</button>
+    <p>Archivio consultivo: nessuna scrittura e nessuna lettura Firebase extra.</p>`;
+}
+
+function renderSeasonArchiveTeamsV196(archive) {
+  if (!archive.seasonTeams.length) return `<p class="muted">Nessuna squadra trovata per questa stagione.</p>`;
+  return `<div class="season-archive-teams-v196">${archive.seasonTeams.map((seasonTeam) => {
+    const stadium = archive.stadiumsBySeasonTeamId.get(seasonTeam.id) || {};
+    const rosterCount = archive.rosterCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const movementCount = archive.movementCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const logo = getSeasonTeamLogo(seasonTeam);
+    const name = getSeasonTeamDisplayName(seasonTeam.id);
+    return `
+      <article class="season-archive-team-card-v196">
+        <div class="season-archive-team-head-v196">${renderTeamLogo(name, logo)}<div><strong>${escapeHtml(name)}</strong><small>${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</small></div></div>
+        <dl>
+          <div><dt>Saldo</dt><dd>${escapeHtml(formatFm(seasonTeam.fmBalance || 0))}</dd></div>
+          <div><dt>Rosa</dt><dd>${escapeHtml(String(rosterCount || "-"))}</dd></div>
+          <div><dt>Movimenti</dt><dd>${escapeHtml(String(movementCount || "-"))}</dd></div>
+          <div><dt>Stadio</dt><dd>${escapeHtml(stadium.name || seasonTeam.stadiumName || "-")}</dd></div>
+        </dl>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderSeasonArchiveCompetitionsV196(archive) {
+  if (!archive.competitions.length) return `<p class="muted">Nessuna competizione trovata per questa stagione.</p>`;
+  return `<div class="season-archive-competition-grid-v196">${archive.competitions.map((competition) => {
+    const matches = archive.matches.filter((match) => match.competitionId === competition.id);
+    const results = archive.results.filter((result) => result.competitionId === competition.id).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+    const winner = results[0]?.seasonTeamId ? getSeasonTeamDisplayName(results[0].seasonTeamId) : (competition.winnerSeasonTeamId ? getSeasonTeamDisplayName(competition.winnerSeasonTeamId) : "-");
+    return `
+      <article class="season-archive-competition-card-v196">
+        <div><strong>${escapeHtml(getCompetitionNameV196(competition))}</strong><small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type) || competition.type || "Competizione")}</small></div>
+        <div class="season-archive-chip-row-v196">
+          <span>${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "Stato n.d.")}</span>
+          <span>${matches.length} partite</span>
+          <span>${results.length} righe classifica</span>
+        </div>
+        <p><strong>Vincitore/Classifica:</strong> ${escapeHtml(winner)}</p>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderSeasonArchiveHonorV196(archive) {
+  if (!archive.honorTitles.length) return `<p class="muted">Nessun dato Albo d'Oro collegato a questa stagione.</p>`;
+  return `<div class="season-archive-honor-v196">${archive.honorTitles.map((title) => `
+    <article><span>${escapeHtml(title.label)}</span>${renderSeasonTeamNameWithLogo(title.seasonTeamId, { strong: true })}</article>
+  `).join("")}</div>`;
+}
+
+function renderSeasonArchiveMatchesV196(archive) {
+  if (!archive.recentMatches.length) return `<p class="muted">Nessuna partita caricata per questa stagione.</p>`;
+  return `<div class="season-archive-match-list-v196">${archive.recentMatches.map((match) => {
+    const competition = archive.competitions.find((item) => item.id === match.competitionId);
+    const homeName = match.homeTeamName || getSeasonTeamDisplayName(match.homeSeasonTeamId);
+    const awayName = match.awayTeamName || getSeasonTeamDisplayName(match.awaySeasonTeamId);
+    return `
+      <article>
+        <span>${escapeHtml(match.matchDate || formatMatchStage(match) || "-")}</span>
+        <strong>${escapeHtml(homeName)} - ${escapeHtml(awayName)}</strong>
+        <small>${escapeHtml(formatMatchResult(match))} · ${escapeHtml(getCompetitionNameV196(competition))}</small>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderSeasonArchiveTimelineV196(archive) {
+  const items = [];
+  archive.honorTitles.forEach((title) => items.push({ icon: "🏆", label: title.label, text: title.teamName }));
+  archive.competitions.slice(0, 6).forEach((competition) => items.push({ icon: "📌", label: getCompetitionNameV196(competition), text: getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "competizione" }));
+  archive.news.slice(0, 4).forEach((item) => items.push({ icon: "📰", label: item.title || item.topic || "Comunicazione", text: item.date || item.createdAt || "news" }));
+  if (!items.length) return `<p class="muted">Timeline non disponibile per questa stagione.</p>`;
+  return `<div class="season-archive-timeline-v196">${items.slice(0, 12).map((item) => `
+    <article><span>${escapeHtml(item.icon)}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.text || "-")}</small></div></article>
+  `).join("")}</div>`;
+}
+
+function renderSeasonArchiveV196() {
+  const controlsTarget = document.getElementById("seasonArchiveControlsV196");
+  const contentTarget = document.getElementById("seasonArchiveContentV196");
+  if (!controlsTarget || !contentTarget) return;
+  const seasons = getSeasonArchiveSortedSeasonsV196();
+  if (!seasons.length) {
+    controlsTarget.innerHTML = `<p class="muted">Nessuna stagione disponibile.</p>`;
+    contentTarget.innerHTML = `<p class="muted">Carica config.json o fallback Firebase per visualizzare l'archivio.</p>`;
+    return;
+  }
+  const selectedId = getSeasonArchiveSeasonIdV196();
+  const archive = buildSeasonArchiveV196(selectedId);
+  controlsTarget.innerHTML = renderSeasonArchiveControlsV196(seasons, selectedId);
+  const select = document.getElementById("seasonArchiveSelectV196");
+  select?.addEventListener("change", () => setSeasonArchiveSeasonIdV196(select.value));
+  document.getElementById("seasonArchiveSyncCurrentV196")?.addEventListener("click", () => setSeasonArchiveSeasonIdV196(getCurrentSeasonId()));
+  const completedMatches = archive.matches.filter((match) => String(match.status || "").toUpperCase() === "PLAYED" || formatMatchResult(match) !== "-").length;
+  contentTarget.innerHTML = `
+    <article class="panel season-archive-hero-v196">
+      <div>
+        <p class="eyebrow">${escapeHtml(archive.season.id || "Stagione")}</p>
+        <h3>${escapeHtml(archive.season.name || getSeasonLabelV193(archive.season.id))}</h3>
+        <p>Riepilogo completo della stagione selezionata, utile per consultazione storica e controllo dati pubblicati.</p>
+      </div>
+      <div class="season-archive-metrics-v196">
+        ${renderSeasonArchiveMetricV196("Squadre", archive.seasonTeams.length, "partecipanti")}
+        ${renderSeasonArchiveMetricV196("Competizioni", archive.competitions.length, "caricate")}
+        ${renderSeasonArchiveMetricV196("Partite", archive.matches.length, `${completedMatches} con risultato`)}
+        ${renderSeasonArchiveMetricV196("Giocatori", archive.rosterEntries.length || "-", "da rosterEntries")}
+      </div>
+    </article>
+    <div class="season-archive-grid-v196">
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>👥</span><div><h3>Squadre della stagione</h3><p>Nomi storici, presidenti, saldo, rosa e stadio.</p></div></div>
+        ${renderSeasonArchiveTeamsV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196">
+        <div class="season-archive-card-heading-v196"><span>🏆</span><div><h3>Albo della stagione</h3><p>Vincitori principali collegati ad honor.json/snapshot.</p></div></div>
+        ${renderSeasonArchiveHonorV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196">
+        <div class="season-archive-card-heading-v196"><span>🗓️</span><div><h3>Partite recenti</h3><p>Ultime partite disponibili nella stagione.</p></div></div>
+        ${renderSeasonArchiveMatchesV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori/classifiche delle competizioni.</p></div></div>
+        ${renderSeasonArchiveCompetitionsV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>🧭</span><div><h3>Timeline dati</h3><p>Riepilogo rapido di titoli, competizioni e comunicazioni collegate.</p></div></div>
+        ${renderSeasonArchiveTimelineV196(archive)}
+      </article>
+    </div>`;
+}
+
+function injectSeasonArchiveStylesV196() {
+  if (document.getElementById("seasonArchiveStylesV196")) return;
+  const style = document.createElement("style");
+  style.id = "seasonArchiveStylesV196";
+  style.textContent = `
+    .season-archive-page-v196, .season-archive-content-v196 { display: grid; gap: 1rem; }
+    .season-archive-controls-v196 { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .75rem; align-items: end; margin-bottom: 1rem; }
+    .season-archive-controls-v196 label { display: grid; gap: .35rem; min-width: 0; }
+    .season-archive-controls-v196 label span { color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+    .season-archive-controls-v196 p { grid-column: 1 / -1; color: var(--muted); margin: 0; overflow-wrap: anywhere; }
+    .season-archive-hero-v196 { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: 1rem; align-items: center; border: 1px solid rgba(251,191,36,.25); background: linear-gradient(135deg, rgba(15,23,42,.97), rgba(88,28,28,.65)); }
+    .season-archive-hero-v196 h3 { margin: .1rem 0; color: #fff7ed; overflow-wrap: anywhere; }
+    .season-archive-hero-v196 p { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+    .season-archive-metrics-v196 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6rem; }
+    .season-archive-metric-v196 { border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .8rem; background: rgba(2,6,23,.38); min-width: 0; }
+    .season-archive-metric-v196 span, .season-archive-metric-v196 small { display: block; color: var(--muted); overflow-wrap: anywhere; }
+    .season-archive-metric-v196 strong { display: block; margin: .2rem 0; font-size: 1.35rem; color: #fff7ed; overflow-wrap: anywhere; }
+    .season-archive-grid-v196 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .season-archive-card-v196, .season-archive-panel-v196 { min-width: 0; overflow: hidden; }
+    .season-archive-card-wide-v196 { grid-column: span 2; }
+    .season-archive-card-heading-v196 { display: flex; gap: .75rem; align-items: flex-start; margin-bottom: .9rem; }
+    .season-archive-card-heading-v196 > span { width: 2.25rem; height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; border-radius: .85rem; background: rgba(255,255,255,.08); flex: 0 0 auto; }
+    .season-archive-card-heading-v196 h3 { margin: 0; color: #fff7ed; overflow-wrap: anywhere; }
+    .season-archive-card-heading-v196 p { margin: .15rem 0 0; color: var(--muted); overflow-wrap: anywhere; }
+    .season-archive-teams-v196 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .season-archive-team-card-v196 { border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; padding: .8rem; background: rgba(255,255,255,.04); min-width: 0; }
+    .season-archive-team-head-v196 { display: flex; align-items: center; gap: .65rem; min-width: 0; margin-bottom: .6rem; }
+    .season-archive-team-head-v196 > div { min-width: 0; }
+    .season-archive-team-head-v196 strong, .season-archive-team-head-v196 small { display: block; overflow-wrap: anywhere; }
+    .season-archive-team-head-v196 small { color: var(--muted); }
+    .season-archive-team-card-v196 dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; margin: 0; }
+    .season-archive-team-card-v196 dl div { min-width: 0; border-top: 1px solid rgba(255,255,255,.08); padding-top: .4rem; }
+    .season-archive-team-card-v196 dt { color: var(--muted); font-size: .78rem; }
+    .season-archive-team-card-v196 dd { margin: 0; font-weight: 800; overflow-wrap: anywhere; }
+    .season-archive-competition-grid-v196 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .season-archive-competition-card-v196 { border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; padding: .85rem; background: rgba(255,255,255,.04); min-width: 0; display: grid; gap: .55rem; }
+    .season-archive-competition-card-v196 strong, .season-archive-competition-card-v196 small, .season-archive-competition-card-v196 p { overflow-wrap: anywhere; }
+    .season-archive-competition-card-v196 small { color: var(--muted); display: block; }
+    .season-archive-competition-card-v196 p { margin: 0; color: var(--muted); }
+    .season-archive-chip-row-v196 { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .season-archive-chip-row-v196 span { border: 1px solid rgba(251,191,36,.22); background: rgba(251,191,36,.08); color: #fde68a; border-radius: 999px; padding: .18rem .52rem; font-size: .78rem; overflow-wrap: anywhere; }
+    .season-archive-honor-v196, .season-archive-match-list-v196, .season-archive-timeline-v196 { display: grid; gap: .55rem; }
+    .season-archive-honor-v196 article, .season-archive-match-list-v196 article, .season-archive-timeline-v196 article { border: 1px solid rgba(255,255,255,.09); border-radius: .9rem; padding: .65rem; background: rgba(255,255,255,.035); min-width: 0; }
+    .season-archive-honor-v196 article { display: grid; gap: .3rem; }
+    .season-archive-honor-v196 span:first-child, .season-archive-match-list-v196 span, .season-archive-timeline-v196 small { color: var(--muted); }
+    .season-archive-match-list-v196 strong, .season-archive-match-list-v196 small, .season-archive-match-list-v196 span, .season-archive-timeline-v196 strong, .season-archive-timeline-v196 small { display: block; overflow-wrap: anywhere; }
+    .season-archive-timeline-v196 article { display: flex; gap: .6rem; align-items: flex-start; }
+    .season-archive-timeline-v196 article > span { flex: 0 0 auto; }
+    .season-archive-timeline-v196 article > div { min-width: 0; }
+    @media (max-width: 900px) {
+      .season-archive-hero-v196, .season-archive-grid-v196 { grid-template-columns: 1fr; }
+      .season-archive-card-wide-v196 { grid-column: auto; }
+      .season-archive-metrics-v196, .season-archive-teams-v196, .season-archive-competition-grid-v196 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .season-archive-controls-v196 { grid-template-columns: 1fr; align-items: stretch; }
+      .season-archive-controls-v196 .button { width: 100%; }
+      .season-archive-metrics-v196, .season-archive-teams-v196, .season-archive-competition-grid-v196 { grid-template-columns: 1fr; }
+      .season-archive-team-card-v196 dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 390px) {
+      .season-archive-team-card-v196 dl { grid-template-columns: 1fr; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectSeasonArchiveStylesV196();
+
+const renderAllBeforeV196 = renderAll;
+renderAll = function renderAllV196() {
+  const result = renderAllBeforeV196?.();
+  renderSeasonArchiveV196();
+  return result;
+};
+
+const renderAdminHelpPanelBeforeV196 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV196() {
+  let html = renderAdminHelpPanelBeforeV196?.() || "";
+  if (html && !html.includes("Archivio stagioni")) {
+    html = html.replace("</div>\n    </section>", "        <article>\n          <h4>Archivio stagioni</h4>\n          <p>Pagina pubblica per consultare una stagione completa: squadre, competizioni, albo, partite recenti, rose e movimenti. Usa solo dati gia' caricati da JSON/snapshot e resta ottimizzata per mobile.</p>\n        </article>\n      </div>\n    </section>");
+  }
+  return html;
+};
+
+window.ZonaOrientaleSeasonArchive = {
+  build: buildSeasonArchiveV196,
+  render: renderSeasonArchiveV196,
+  setSeason: setSeasonArchiveSeasonIdV196
+};
+
+/* V196 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();

@@ -21,12 +21,12 @@
   <meta name="twitter:title" content="Inizio Playoff - ZonaOrientale Salerno" />
   <meta name="twitter:description" content="COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA - In occasione dell’inizio dei playoff, augurio a tutte le squadre partecipanti per una grande giornata di fantacampionato." />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=195" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=195" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=195" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=195" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=195" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=195" />
+  <link rel="stylesheet" href="./assets/styles.css?v=196" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=196" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=196" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=196" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=196" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=196" />
 </head>
 <body>
   <header class="app-header">
@@ -57,6 +57,7 @@
       <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
       <a href="#stats" class="nav-link" data-page-link="stats">Statistiche</a>
+      <a href="#archive" class="nav-link" data-page-link="archive">Archivio</a>
       <a href="#compare" class="nav-link" data-page-link="compare">Confronta</a>
       <a href="#regolamento" class="nav-link" data-page-link="regolamento">Regolamento</a>
       <a id="adminNavLink" href="#admin" class="nav-link nav-link-admin hidden" data-page-link="admin">Admin</a>
@@ -377,6 +378,35 @@
       </section>
     </section>
 
+
+
+
+    <section class="app-page" data-page="archive" aria-labelledby="archiveTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Archivio storico</p>
+          <h2 id="archiveTitle">Archivio stagioni</h2>
+          <p>Consulta una stagione completa: squadre, competizioni, albo, partite recenti, rose e movimenti usando dati gia' caricati da JSON/snapshot.</p>
+        </div>
+      </div>
+
+      <section class="single-panel-layout season-archive-page-v196">
+        <article class="panel season-archive-panel-v196">
+          <div class="panel-header compact">
+            <div>
+              <h2>Esplora stagione</h2>
+              <p>Seleziona una stagione per aprire una scheda storica completa, ottimizzata anche da mobile.</p>
+            </div>
+          </div>
+          <div id="seasonArchiveControlsV196" class="season-archive-controls-v196">
+            <p class="muted">Caricamento stagioni...</p>
+          </div>
+          <div id="seasonArchiveContentV196" class="season-archive-content-v196">
+            <p class="muted">Seleziona una stagione per consultare l'archivio.</p>
+          </div>
+        </article>
+      </section>
+    </section>
 
     <section class="app-page" data-page="compare" aria-labelledby="compareTitle">
       <div class="page-heading">
@@ -1583,6 +1613,7 @@
     <a href="#clubs" class="mobile-more-link" data-page-link="clubs"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
     <a href="#honor" class="mobile-more-link" data-page-link="honor"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
     <a href="#stats" class="mobile-more-link" data-page-link="stats"><span class="mobile-more-icon">📊</span><span>Statistiche storiche</span></a>
+    <a href="#archive" class="mobile-more-link" data-page-link="archive"><span class="mobile-more-icon">🗂️</span><span>Archivio stagioni</span></a>
     <a href="#compare" class="mobile-more-link" data-page-link="compare"><span class="mobile-more-icon">⚔️</span><span>Confronta squadre</span></a>
     <a href="#regolamento" class="mobile-more-link" data-page-link="regolamento"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
     <a href="#fantamercato" class="mobile-more-link" data-page-link="fantamercato"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
@@ -1599,11 +1630,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V195 confronta squadre · Ultimo aggiornamento 22/05/2026</p>
+    <p>ZonaOrientale Salerno · V196 archivio stagioni evoluto · Ultimo aggiornamento 22/05/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=195"></script>
+  <script type="module" src="./assets/app.js?v=196"></script>
 </body>
 </html>
 
