@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=190";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=192";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "191";
+const DEPLOY_EXPECTED_VERSION_V181 = "192";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -16948,5 +16948,274 @@ window.ZonaOrientalePublishWizard = {
 };
 
 
-/* V191 - Final startup remains centralized here. */
+/* V192 - Dashboard Presidente evoluta: riepilogo operativo in Area squadra.
+   Non aggiunge letture Firebase all'avvio: usa solo i dati gia presenti in memoria
+   e mantiene il Fantamercato lazy finche il presidente non apre Mercato. */
+function getPresidentDashboardDateValueV192(value) {
+  if (!value) return 0;
+  if (typeof value === "number") return value;
+  if (typeof value === "string") {
+    const parsed = Date.parse(value);
+    return Number.isNaN(parsed) ? 0 : parsed;
+  }
+  if (typeof value?.seconds === "number") return value.seconds * 1000;
+  if (typeof value?.toDate === "function") {
+    try { return value.toDate().getTime(); } catch (error) { return 0; }
+  }
+  return 0;
+}
+
+function formatPresidentDashboardDateV192(value) {
+  const timestamp = getPresidentDashboardDateValueV192(value);
+  if (!timestamp) return "-";
+  try {
+    return new Intl.DateTimeFormat("it-IT", { day: "2-digit", month: "2-digit", year: "2-digit" }).format(new Date(timestamp));
+  } catch (error) {
+    return String(value || "-");
+  }
+}
+
+function getPresidentDashboardSeasonTeamV192(approved) {
+  if (!approved?.seasonTeamId) return null;
+  return typeof getSeasonTeamById === "function" ? getSeasonTeamById(approved.seasonTeamId) : null;
+}
+
+function getPresidentDashboardRosterV192(approved) {
+  const seasonTeam = getPresidentDashboardSeasonTeamV192(approved);
+  if (!seasonTeam) return [];
+  try {
+    const roster = typeof getRosterForSeasonTeam === "function" ? getRosterForSeasonTeam(seasonTeam) : [];
+    return Array.isArray(roster) ? roster : [];
+  } catch (error) {
+    console.warn("Dashboard presidente: rosa non disponibile", error);
+    return [];
+  }
+}
+
+function getPresidentDashboardRecentMovementsV192(seasonTeamId, limit = 5) {
+  const seasonId = typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "";
+  return (state.raw?.fmMovements || [])
+    .filter((item) => item.seasonTeamId === seasonTeamId && (!seasonId || item.seasonId === seasonId))
+    .sort((a, b) => getPresidentDashboardDateValueV192(b.date || b.createdAt || b.updatedAt) - getPresidentDashboardDateValueV192(a.date || a.createdAt || a.updatedAt))
+    .slice(0, limit);
+}
+
+function getPresidentDashboardRecentNewsV192(seasonTeamId, limit = 3) {
+  const seasonId = typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "";
+  return (state.raw?.news || [])
+    .filter((item) => (!seasonId || !item.seasonId || item.seasonId === seasonId) && item.seasonTeamId === seasonTeamId)
+    .sort((a, b) => getPresidentDashboardDateValueV192((typeof getNewsRawDateValueV79 === "function" ? getNewsRawDateValueV79(b) : b.date) || b.createdAt) - getPresidentDashboardDateValueV192((typeof getNewsRawDateValueV79 === "function" ? getNewsRawDateValueV79(a) : a.date) || a.createdAt))
+    .slice(0, limit);
+}
+
+function getPresidentDashboardCompetitionNameV192(competitionId) {
+  const competition = (state.raw?.competitions || []).find((item) => item.id === competitionId);
+  if (!competition) return "Competizione";
+  if (typeof getCompetitionPublicDisplayNameV110 === "function") return getCompetitionPublicDisplayNameV110(competition);
+  if (typeof getCompetitionDisplayNameV111 === "function") return getCompetitionDisplayNameV111(competition);
+  return competition.name || competition.code || "Competizione";
+}
+
+function getPresidentDashboardMatchesV192(seasonTeamId, limit = 4) {
+  const seasonId = typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "";
+  return (state.raw?.competitionMatches || [])
+    .filter((match) => (!seasonId || !match.seasonId || match.seasonId === seasonId) && (match.homeSeasonTeamId === seasonTeamId || match.awaySeasonTeamId === seasonTeamId))
+    .sort((a, b) => getPresidentDashboardDateValueV192(b.matchDate || b.date || b.updatedAt || b.createdAt) - getPresidentDashboardDateValueV192(a.matchDate || a.date || a.updatedAt || a.createdAt))
+    .slice(0, limit);
+}
+
+function renderPresidentDashboardMetricV192(label, value, hint = "") {
+  return `
+    <article class="president-dashboard-metric-v192">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+      ${hint ? `<small>${escapeHtml(hint)}</small>` : ""}
+    </article>`;
+}
+
+function renderPresidentDashboardMovementsV192(movements) {
+  if (!movements.length) return `<p class="muted">Nessun movimento FM recente.</p>`;
+  return `
+    <div class="president-dashboard-list-v192">
+      ${movements.map((movement) => `
+        <article>
+          <strong>${escapeHtml(movement.playerName || movement.description || "Movimento FM")}</strong>
+          <span>${escapeHtml(formatPresidentDashboardDateV192(movement.date || movement.createdAt))} · ${escapeHtml(movement.type || "FM")} · ${escapeHtml(typeof formatFm === "function" ? formatFm(movement.amount || 0) : String(movement.amount || 0))}</span>
+        </article>`).join("")}
+    </div>`;
+}
+
+function renderPresidentDashboardMatchesV192(matches, seasonTeamId) {
+  if (!matches.length) return `<p class="muted">Nessuna partita recente o programmata trovata.</p>`;
+  return `
+    <div class="president-dashboard-list-v192">
+      ${matches.map((match) => {
+        const home = typeof getSeasonTeamDisplayName === "function" ? getSeasonTeamDisplayName(match.homeSeasonTeamId) : (match.homeTeamName || "Casa");
+        const away = typeof getSeasonTeamDisplayName === "function" ? getSeasonTeamDisplayName(match.awaySeasonTeamId) : (match.awayTeamName || "Trasferta");
+        const result = (typeof hasMatchGoalsV114 === "function" && hasMatchGoalsV114(match) && typeof renderMatchResultHtmlV114 === "function")
+          ? renderMatchResultHtmlV114(match)
+          : escapeHtml(formatPresidentDashboardDateV192(match.matchDate || match.date));
+        const ownSide = match.homeSeasonTeamId === seasonTeamId ? "Casa" : "Trasferta";
+        return `
+          <article>
+            <strong>${escapeHtml(home || "Casa")} - ${escapeHtml(away || "Trasferta")}</strong>
+            <span>${escapeHtml(getPresidentDashboardCompetitionNameV192(match.competitionId))} · ${escapeHtml(ownSide)} · ${result}</span>
+          </article>`;
+      }).join("")}
+    </div>`;
+}
+
+function renderPresidentDashboardNewsV192(news) {
+  if (!news.length) return `<p class="muted">Nessun comunicato squadra recente.</p>`;
+  return `
+    <div class="president-dashboard-list-v192">
+      ${news.map((item) => {
+        const rawDate = typeof getNewsRawDateValueV79 === "function" ? getNewsRawDateValueV79(item) : (item.date || item.createdAt);
+        const formatted = typeof formatNewsDateTimeV79 === "function" ? formatNewsDateTimeV79(rawDate) : formatPresidentDashboardDateV192(rawDate);
+        return `
+          <article>
+            <strong>${escapeHtml(item.title || "Comunicato squadra")}</strong>
+            <span>${escapeHtml(formatted || "-")}</span>
+          </article>`;
+      }).join("")}
+    </div>`;
+}
+
+function renderPresidentDashboardV192(approved) {
+  if (!approved?.seasonTeamId) return "";
+  const seasonTeam = getPresidentDashboardSeasonTeamV192(approved);
+  const teamName = (typeof getSeasonTeamDisplayName === "function" ? getSeasonTeamDisplayName(approved.seasonTeamId) : "") || approved.teamName || "La mia squadra";
+  const roster = getPresidentDashboardRosterV192(approved);
+  const fmBalance = typeof getTeamFmBalance === "function" ? getTeamFmBalance(approved.seasonTeamId) : null;
+  const marketLoaded = Boolean(state.transferMarketLoadedV119 || state.transferMarketLoadedV170);
+  const seasonId = typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "";
+  const listings = (marketLoaded && typeof getActiveTransferListingsV119 === "function")
+    ? getActiveTransferListingsV119(seasonId).filter((item) => item.seasonTeamId === approved.seasonTeamId).length
+    : null;
+  const negotiations = marketLoaded
+    ? (state.raw?.transferNegotiations || []).filter((item) => item.seasonId === seasonId && (item.fromSeasonTeamId === approved.seasonTeamId || item.toSeasonTeamId === approved.seasonTeamId) && String(item.status || "PENDING").toUpperCase() === "PENDING").length
+    : null;
+  const movements = getPresidentDashboardRecentMovementsV192(approved.seasonTeamId, 5);
+  const matches = getPresidentDashboardMatchesV192(approved.seasonTeamId, 4);
+  const news = getPresidentDashboardRecentNewsV192(approved.seasonTeamId, 3);
+  const presidentNames = typeof getSeasonTeamPresidentNames === "function" ? getSeasonTeamPresidentNames(seasonTeam) : (approved.presidentName || getCurrentUserDisplayName());
+
+  return `
+    <section id="presidentDashboardV192" class="panel president-dashboard-v192" aria-labelledby="presidentDashboardTitleV192">
+      <div class="panel-header compact president-dashboard-header-v192">
+        <div>
+          <p class="eyebrow">Dashboard presidente</p>
+          <h2 id="presidentDashboardTitleV192">${escapeHtml(teamName)}</h2>
+          <p>${escapeHtml(presidentNames || "-")} · ${escapeHtml(seasonId || "Stagione corrente")}</p>
+        </div>
+        <div class="president-dashboard-actions-v192">
+          <button class="button button-secondary button-small" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}">Pagina squadra</button>
+          <button class="button button-secondary button-small" type="button" data-v42-page-link="clubs">Tutte le rose</button>
+          <button class="button button-primary button-small" type="button" data-v42-page-link="fantamercato">Mercato</button>
+        </div>
+      </div>
+      <div class="president-dashboard-metrics-v192">
+        ${renderPresidentDashboardMetricV192("Saldo FM", fmBalance !== null && fmBalance !== undefined ? formatFm(fmBalance) : "-", "saldo squadra")}
+        ${renderPresidentDashboardMetricV192("Rosa", `${roster.length}/30`, roster.length > 30 ? "oltre limite" : "giocatori")}
+        ${renderPresidentDashboardMetricV192("In vendita", listings === null ? "lazy" : String(listings), listings === null ? "apri Mercato per caricare" : "giocatori")}
+        ${renderPresidentDashboardMetricV192("Trattative", negotiations === null ? "lazy" : String(negotiations), negotiations === null ? "caricate nel Mercato" : "aperte")}
+      </div>
+      <div class="president-dashboard-content-v192">
+        <article>
+          <div class="president-dashboard-card-title-v192"><span>💰</span><h3>Ultimi movimenti FM</h3></div>
+          ${renderPresidentDashboardMovementsV192(movements)}
+        </article>
+        <article>
+          <div class="president-dashboard-card-title-v192"><span>🏆</span><h3>Partite squadra</h3></div>
+          ${renderPresidentDashboardMatchesV192(matches, approved.seasonTeamId)}
+        </article>
+        <article>
+          <div class="president-dashboard-card-title-v192"><span>📰</span><h3>Comunicati squadra</h3></div>
+          ${renderPresidentDashboardNewsV192(news)}
+        </article>
+      </div>
+      <p class="muted president-dashboard-note-v192">La dashboard non aggiunge letture Firebase all'avvio: il mercato resta lazy e viene caricato solo quando apri Mercato o Area squadra operativa.</p>
+    </section>`;
+}
+
+function injectPresidentDashboardV192() {
+  const target = document.getElementById("teamAreaBody");
+  const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+  const existing = document.getElementById("presidentDashboardV192");
+  if (existing) existing.remove();
+  if (!target || !state.user || !approved?.seasonTeamId) return;
+  const summary = target.querySelector(".team-area-summary-panel") || target.querySelector(".panel");
+  if (!summary) return;
+  summary.insertAdjacentHTML("afterend", renderPresidentDashboardV192(approved));
+}
+
+const renderUserAreaBeforeV192 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV192() {
+  const result = renderUserAreaBeforeV192?.();
+  injectPresidentDashboardV192();
+  return result;
+};
+
+const renderAllBeforeV192 = renderAll;
+renderAll = function renderAllV192() {
+  const result = renderAllBeforeV192?.();
+  injectPresidentDashboardV192();
+  return result;
+};
+
+function injectPresidentDashboardStylesV192() {
+  if (document.getElementById("presidentDashboardStylesV192")) return;
+  const style = document.createElement("style");
+  style.id = "presidentDashboardStylesV192";
+  style.textContent = `
+    .president-dashboard-v192 { border: 1px solid rgba(59,130,246,.28); background: linear-gradient(135deg, rgba(15,23,42,.92), rgba(30,41,59,.78)); }
+    .president-dashboard-header-v192 { gap: 1rem; align-items: flex-start; }
+    .president-dashboard-actions-v192 { display: flex; flex-wrap: wrap; gap: .55rem; justify-content: flex-end; }
+    .president-dashboard-metrics-v192 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0; }
+    .president-dashboard-metric-v192 { min-width: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .85rem; background: rgba(2,6,23,.45); }
+    .president-dashboard-metric-v192 span, .president-dashboard-metric-v192 small { display: block; color: var(--muted); overflow-wrap: anywhere; }
+    .president-dashboard-metric-v192 strong { display: block; margin: .22rem 0; font-size: 1.35rem; overflow-wrap: anywhere; }
+    .president-dashboard-content-v192 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; }
+    .president-dashboard-content-v192 > article { min-width: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .9rem; background: rgba(15,23,42,.58); }
+    .president-dashboard-card-title-v192 { display: flex; align-items: center; gap: .45rem; margin-bottom: .7rem; }
+    .president-dashboard-card-title-v192 h3 { margin: 0; font-size: 1rem; }
+    .president-dashboard-list-v192 { display: grid; gap: .55rem; }
+    .president-dashboard-list-v192 article { border-radius: .8rem; padding: .65rem; background: rgba(255,255,255,.055); min-width: 0; }
+    .president-dashboard-list-v192 strong, .president-dashboard-list-v192 span { display: block; overflow-wrap: anywhere; }
+    .president-dashboard-list-v192 span { color: var(--muted); font-size: .88rem; margin-top: .15rem; }
+    .president-dashboard-note-v192 { margin-top: .85rem; }
+    @media (max-width: 980px) {
+      .president-dashboard-metrics-v192 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .president-dashboard-content-v192 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .president-dashboard-v192 { margin-inline: 0; }
+      .president-dashboard-header-v192 { align-items: stretch; }
+      .president-dashboard-actions-v192 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+      .president-dashboard-actions-v192 .button { width: 100%; min-width: 0; padding-inline: .45rem; }
+      .president-dashboard-metrics-v192 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+      .president-dashboard-metric-v192 { padding: .72rem; }
+      .president-dashboard-metric-v192 strong { font-size: 1.12rem; }
+    }
+    @media (max-width: 420px) {
+      .president-dashboard-actions-v192 { grid-template-columns: 1fr; }
+      .president-dashboard-metrics-v192 { grid-template-columns: 1fr; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectPresidentDashboardStylesV192();
+
+const renderAdminHelpPanelBeforeV192 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV192() {
+  let html = renderAdminHelpPanelBeforeV192?.() || "";
+  if (html && !html.includes("Dashboard presidente")) {
+    html = html.replace("</div>\n    </section>", "        <article>\n          <h4>Dashboard presidente</h4>\n          <p>Riepilogo operativo per presidenti: saldo FM, rosa, mercato lazy, trattative, movimenti, partite e comunicati squadra. Mobile-first e senza letture Firebase aggiuntive all'avvio.</p>\n        </article>\n      </div>\n    </section>");
+  }
+  return html;
+};
+
+
+/* V192 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
