@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=192";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=193";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "192";
+const DEPLOY_EXPECTED_VERSION_V181 = "193";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -17217,5 +17217,335 @@ renderAdminHelpPanelV185 = function renderAdminHelpPanelV192() {
 };
 
 
-/* V192 - Final startup remains centralized here. */
+/* V193 - Statistiche storiche / Hall of Fame.
+   Public, mobile-first page that reuses data already loaded from JSON/static
+   snapshots. It must not trigger additional Firebase reads. */
+const HISTORICAL_COMPETITIONS_V193 = [
+  { key: "CAMPIONATO", label: "Campionato", field: "championItalySeasonTeamId", medal: "oro" },
+  { key: "COPPA_ITALIA", label: "Coppa Italia", field: "coppaItaliaWinnerSeasonTeamId", medal: "coppa" },
+  { key: "CHAMPIONS_LEAGUE", label: "Champions League", field: "championsLeagueWinnerSeasonTeamId", medal: "champions" },
+  { key: "PLAYOFF", label: "Playoff", field: "playoffWinnerSeasonTeamId", medal: "playoff" }
+];
+
+function getSeasonSortValueV193(seasonId) {
+  const match = String(seasonId || "").match(/\d{4}/);
+  return match ? Number(match[0]) : 0;
+}
+
+function getSeasonLabelV193(seasonId) {
+  const season = state.raw.seasons.find((item) => item.id === seasonId) || { id: seasonId, name: seasonId };
+  return typeof formatSeasonShortLabel === "function" ? formatSeasonShortLabel(season) : (season.name || season.id || "-");
+}
+
+function getSeasonTeamRecordV193(seasonTeamId) {
+  const seasonTeam = getSeasonTeamById(seasonTeamId);
+  if (!seasonTeam) return null;
+  const team = getTeamById(seasonTeam.teamId) || {};
+  return {
+    seasonTeam,
+    team,
+    teamId: seasonTeam.teamId || seasonTeam.id || seasonTeamId,
+    displayName: seasonTeam.name || team.canonicalName || team.name || seasonTeamId,
+    canonicalName: team.canonicalName || team.name || seasonTeam.name || seasonTeamId,
+    logo: getSeasonTeamLogo(seasonTeam)
+  };
+}
+
+function ensureStatsTeamBucketV193(map, record) {
+  const key = record.teamId || record.displayName;
+  const current = map.get(key) || {
+    teamId: record.teamId,
+    displayName: record.canonicalName || record.displayName,
+    latestName: record.displayName,
+    logo: record.logo,
+    totalTitles: 0,
+    titlesByType: Object.fromEntries(HISTORICAL_COMPETITIONS_V193.map((item) => [item.key, 0])),
+    podiums: { first: 0, second: 0, third: 0, total: 0 },
+    seasons: []
+  };
+  current.latestName = record.displayName || current.latestName;
+  if (record.logo) current.logo = record.logo;
+  map.set(key, current);
+  return current;
+}
+
+function getPresidentsForSeasonTeamV193(seasonTeam) {
+  const ids = Array.isArray(seasonTeam?.presidentIds) ? seasonTeam.presidentIds : (seasonTeam?.presidentId ? [seasonTeam.presidentId] : []);
+  const { presidentsById } = buildMaps();
+  return ids.map((id) => presidentsById.get(id)).filter(Boolean);
+}
+
+function buildHistoricalStatsV193() {
+  const teamBuckets = new Map();
+  const presidentBuckets = new Map();
+  const timeline = [];
+  const rows = [...(state.raw.honorRoll || [])].sort((a, b) => getSeasonSortValueV193(b.seasonId || b.id) - getSeasonSortValueV193(a.seasonId || a.id));
+
+  function addPresidentWin(president, title) {
+    if (!president?.id) return;
+    const current = presidentBuckets.get(president.id) || {
+      presidentId: president.id,
+      name: president.name || president.id,
+      totalTitles: 0,
+      titlesByType: Object.fromEntries(HISTORICAL_COMPETITIONS_V193.map((item) => [item.key, 0])),
+      seasons: []
+    };
+    current.totalTitles += 1;
+    current.titlesByType[title.type] = (current.titlesByType[title.type] || 0) + 1;
+    current.seasons.push(title);
+    presidentBuckets.set(president.id, current);
+  }
+
+  function addPodium(seasonId, seasonTeamId, place) {
+    const record = getSeasonTeamRecordV193(seasonTeamId);
+    if (!record) return;
+    const bucket = ensureStatsTeamBucketV193(teamBuckets, record);
+    bucket.podiums[place] += 1;
+    bucket.podiums.total += 1;
+    bucket.seasons.push({ seasonId, type: "PODIO", label: place, teamName: record.displayName });
+  }
+
+  rows.forEach((row) => {
+    const seasonId = row.seasonId || row.id || "";
+    HISTORICAL_COMPETITIONS_V193.forEach((competition) => {
+      const seasonTeamId = row[competition.field];
+      const record = getSeasonTeamRecordV193(seasonTeamId);
+      if (!record) return;
+      const bucket = ensureStatsTeamBucketV193(teamBuckets, record);
+      const title = {
+        seasonId,
+        type: competition.key,
+        label: competition.label,
+        teamName: record.displayName
+      };
+      bucket.totalTitles += 1;
+      bucket.titlesByType[competition.key] = (bucket.titlesByType[competition.key] || 0) + 1;
+      bucket.seasons.push(title);
+      timeline.push(title);
+      getPresidentsForSeasonTeamV193(record.seasonTeam).forEach((president) => addPresidentWin(president, title));
+    });
+
+    addPodium(seasonId, row.championItalySeasonTeamId, "first");
+    addPodium(seasonId, row.secondPlaceSeasonTeamId, "second");
+    addPodium(seasonId, row.thirdPlaceSeasonTeamId, "third");
+  });
+
+  const teamRanking = Array.from(teamBuckets.values()).sort((a, b) =>
+    b.totalTitles - a.totalTitles ||
+    b.podiums.total - a.podiums.total ||
+    String(a.latestName || a.displayName).localeCompare(String(b.latestName || b.displayName), "it")
+  );
+  const podiumRanking = Array.from(teamBuckets.values()).filter((item) => item.podiums.total > 0).sort((a, b) =>
+    b.podiums.first - a.podiums.first ||
+    b.podiums.second - a.podiums.second ||
+    b.podiums.third - a.podiums.third ||
+    String(a.latestName || a.displayName).localeCompare(String(b.latestName || b.displayName), "it")
+  );
+  const presidentRanking = Array.from(presidentBuckets.values()).sort((a, b) =>
+    b.totalTitles - a.totalTitles || String(a.name).localeCompare(String(b.name), "it")
+  );
+  const latestTitles = timeline.sort((a, b) => getSeasonSortValueV193(b.seasonId) - getSeasonSortValueV193(a.seasonId)).slice(0, 10);
+  const fifaTop = [...(state.raw.fifaRankings || [])].sort((a, b) => Number(b.score || 0) - Number(a.score || 0)).slice(0, 10);
+  const seasonsCount = new Set((state.raw.seasons || []).map((item) => item.id).filter(Boolean)).size;
+  const totalTitles = teamRanking.reduce((sum, item) => sum + item.totalTitles, 0);
+  return { rows, teamRanking, podiumRanking, presidentRanking, latestTitles, fifaTop, seasonsCount, totalTitles };
+}
+
+function renderHistoricalMetricV193(label, value, note = "") {
+  return `
+    <article class="historical-stat-metric-v193">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(String(value ?? "-"))}</strong>
+      ${note ? `<small>${escapeHtml(note)}</small>` : ""}
+    </article>`;
+}
+
+function renderHistoricalTeamNameV193(item) {
+  const name = item.latestName || item.displayName || item.teamName || "-";
+  const logo = item.logo || "";
+  return `<span class="historical-stat-team-v193">${renderTeamLogo(name, logo)}<strong>${escapeHtml(name)}</strong></span>`;
+}
+
+function renderHistoricalTitleBreakdownV193(item) {
+  const entries = HISTORICAL_COMPETITIONS_V193
+    .map((competition) => ({ label: competition.label, count: Number(item.titlesByType?.[competition.key] || 0) }))
+    .filter((entry) => entry.count > 0);
+  if (!entries.length) return `<span class="muted">Nessun titolo</span>`;
+  return entries.map((entry) => `<span>${escapeHtml(entry.label)} <strong>${entry.count}</strong></span>`).join("");
+}
+
+function renderHistoricalRankingV193(items, options = {}) {
+  const { empty = "Nessun dato disponibile.", limit = 8, type = "titles" } = options;
+  const visible = items.slice(0, limit);
+  if (!visible.length) return `<p class="muted">${escapeHtml(empty)}</p>`;
+  return `<div class="historical-ranking-v193">${visible.map((item, index) => {
+    const value = type === "podiums"
+      ? `${item.podiums.first}-${item.podiums.second}-${item.podiums.third}`
+      : String(item.totalTitles || 0);
+    const caption = type === "podiums"
+      ? `Oro ${item.podiums.first} · Argento ${item.podiums.second} · Bronzo ${item.podiums.third}`
+      : `${item.podiums?.total || 0} podi campionato`;
+    return `
+      <article class="historical-ranking-row-v193">
+        <span class="historical-rank-v193">${index + 1}</span>
+        <div>
+          ${renderHistoricalTeamNameV193(item)}
+          <small>${escapeHtml(caption)}</small>
+          <div class="historical-chip-row-v193">${renderHistoricalTitleBreakdownV193(item)}</div>
+        </div>
+        <strong>${escapeHtml(value)}</strong>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderHistoricalPresidentRankingV193(items) {
+  const visible = items.slice(0, 8);
+  if (!visible.length) return `<p class="muted">Nessun presidente vincente ancora calcolabile.</p>`;
+  return `<div class="historical-ranking-v193">${visible.map((item, index) => `
+    <article class="historical-ranking-row-v193">
+      <span class="historical-rank-v193">${index + 1}</span>
+      <div>
+        <strong>${escapeHtml(item.name || "-")}</strong>
+        <small>${escapeHtml(item.seasons.slice(0, 3).map((season) => `${getSeasonLabelV193(season.seasonId)} ${season.label}`).join(" · ") || "Titoli storici")}</small>
+        <div class="historical-chip-row-v193">${renderHistoricalTitleBreakdownV193(item)}</div>
+      </div>
+      <strong>${escapeHtml(String(item.totalTitles || 0))}</strong>
+    </article>`).join("")}</div>`;
+}
+
+function renderHistoricalTimelineV193(items) {
+  if (!items.length) return `<p class="muted">Nessun titolo ancora inserito.</p>`;
+  return `<div class="historical-timeline-v193">${items.map((item) => `
+    <article>
+      <span>${escapeHtml(getSeasonLabelV193(item.seasonId))}</span>
+      <strong>${escapeHtml(item.teamName || "-")}</strong>
+      <small>${escapeHtml(item.label || "Titolo")}</small>
+    </article>`).join("")}</div>`;
+}
+
+function renderHistoricalFifaTopV193(items) {
+  if (!items.length) return `<p class="muted">FIFA Ranking non disponibile.</p>`;
+  return `<div class="historical-ranking-v193">${items.map((item, index) => {
+    const team = getTeamById(item.teamId) || {};
+    const name = team.canonicalName || team.name || item.teamName || item.teamId || "-";
+    return `
+      <article class="historical-ranking-row-v193">
+        <span class="historical-rank-v193">${index + 1}</span>
+        <div>${renderTeamNameWithLogo(team.id ? team : { canonicalName: name })}<small>${escapeHtml(item.notes || "Ranking FIFA")}</small></div>
+        <strong>${escapeHtml(String(item.score ?? item.points ?? "-"))}</strong>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderHistoricalStatsV193() {
+  const summaryTarget = document.getElementById("historicalStatsSummaryV193");
+  const contentTarget = document.getElementById("historicalStatsContentV193");
+  if (!summaryTarget || !contentTarget) return;
+  const stats = buildHistoricalStatsV193();
+  const decoratedTeams = stats.teamRanking.filter((item) => item.totalTitles > 0).length;
+  summaryTarget.innerHTML = `
+    ${renderHistoricalMetricV193("Stagioni", stats.seasonsCount, "archiviate nel sito")}
+    ${renderHistoricalMetricV193("Titoli", stats.totalTitles, "competizioni principali")}
+    ${renderHistoricalMetricV193("Club vincitori", decoratedTeams, "almeno un titolo")}
+    ${renderHistoricalMetricV193("Ranking FIFA", stats.fifaTop.length, "prime posizioni disponibili")}`;
+
+  contentTarget.innerHTML = `
+    <article class="panel historical-card-v193 historical-card-primary-v193">
+      <div class="historical-card-heading-v193"><span>🏆</span><div><h3>Club più vincenti</h3><p>Somma Campionato, Coppa Italia, Champions League e Playoff.</p></div></div>
+      ${renderHistoricalRankingV193(stats.teamRanking.filter((item) => item.totalTitles > 0), { empty: "Nessun titolo ancora inserito.", type: "titles" })}
+    </article>
+    <article class="panel historical-card-v193">
+      <div class="historical-card-heading-v193"><span>🥇</span><div><h3>Podi Campionato</h3><p>Oro, secondo e terzo posto nell'Albo d'Oro.</p></div></div>
+      ${renderHistoricalRankingV193(stats.podiumRanking, { empty: "Nessun podio campionato ancora inserito.", type: "podiums" })}
+    </article>
+    <article class="panel historical-card-v193">
+      <div class="historical-card-heading-v193"><span>👔</span><div><h3>Presidenti vincenti</h3><p>Titoli collegati ai presidenti delle squadre stagione.</p></div></div>
+      ${renderHistoricalPresidentRankingV193(stats.presidentRanking)}
+    </article>
+    <article class="panel historical-card-v193">
+      <div class="historical-card-heading-v193"><span>🕰️</span><div><h3>Ultimi titoli assegnati</h3><p>Cronologia delle vittorie più recenti.</p></div></div>
+      ${renderHistoricalTimelineV193(stats.latestTitles)}
+    </article>
+    <article class="panel historical-card-v193 historical-card-wide-v193">
+      <div class="historical-card-heading-v193"><span>🌍</span><div><h3>Top FIFA Ranking</h3><p>Classifica manuale già presente nella sezione Albo.</p></div></div>
+      ${renderHistoricalFifaTopV193(stats.fifaTop)}
+    </article>`;
+}
+
+const renderAllBeforeV193 = renderAll;
+renderAll = function renderAllV193() {
+  const result = renderAllBeforeV193?.();
+  renderHistoricalStatsV193();
+  return result;
+};
+
+function injectHistoricalStatsStylesV193() {
+  if (document.getElementById("historicalStatsStylesV193")) return;
+  const style = document.createElement("style");
+  style.id = "historicalStatsStylesV193";
+  style.textContent = `
+    .historical-stats-page-v193 { display: grid; gap: 1rem; }
+    .historical-stats-hero-v193 { border: 1px solid rgba(251,191,36,.25); background: linear-gradient(135deg, rgba(15,23,42,.96), rgba(58,22,26,.72)); }
+    .historical-stats-summary-v193 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; }
+    .historical-stat-metric-v193 { min-width: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .95rem; background: rgba(2,6,23,.42); }
+    .historical-stat-metric-v193 span, .historical-stat-metric-v193 small { display: block; color: var(--muted); overflow-wrap: anywhere; }
+    .historical-stat-metric-v193 strong { display: block; margin: .2rem 0; font-size: 1.55rem; overflow-wrap: anywhere; }
+    .historical-stats-content-v193 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .historical-card-v193 { min-width: 0; }
+    .historical-card-primary-v193, .historical-card-wide-v193 { grid-column: span 2; }
+    .historical-card-heading-v193 { display: flex; align-items: flex-start; gap: .7rem; margin-bottom: .9rem; }
+    .historical-card-heading-v193 > span { width: 2.25rem; height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; border-radius: .9rem; background: rgba(255,255,255,.08); flex: 0 0 auto; }
+    .historical-card-heading-v193 h3 { margin: 0; }
+    .historical-card-heading-v193 p { margin: .15rem 0 0; color: var(--muted); }
+    .historical-ranking-v193 { display: grid; gap: .65rem; }
+    .historical-ranking-row-v193 { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .75rem; align-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: .95rem; padding: .75rem; background: rgba(255,255,255,.045); min-width: 0; }
+    .historical-ranking-row-v193 > div { min-width: 0; }
+    .historical-ranking-row-v193 strong, .historical-ranking-row-v193 small, .historical-ranking-row-v193 span { overflow-wrap: anywhere; }
+    .historical-rank-v193 { width: 2rem; height: 2rem; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: rgba(251,191,36,.16); color: #facc15; font-weight: 800; }
+    .historical-stat-team-v193 { display: inline-flex; align-items: center; gap: .5rem; min-width: 0; max-width: 100%; }
+    .historical-stat-team-v193 strong { min-width: 0; overflow-wrap: anywhere; }
+    .historical-chip-row-v193 { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .35rem; }
+    .historical-chip-row-v193 span { border: 1px solid rgba(255,255,255,.1); border-radius: 999px; padding: .12rem .48rem; font-size: .78rem; color: var(--muted); background: rgba(255,255,255,.035); }
+    .historical-timeline-v193 { display: grid; gap: .55rem; }
+    .historical-timeline-v193 article { display: grid; grid-template-columns: minmax(4.5rem, .45fr) minmax(0, 1fr) minmax(5rem, .75fr); gap: .5rem; align-items: center; border-bottom: 1px solid rgba(255,255,255,.08); padding: .45rem 0; }
+    .historical-timeline-v193 strong, .historical-timeline-v193 span, .historical-timeline-v193 small { overflow-wrap: anywhere; }
+    @media (max-width: 900px) {
+      .historical-stats-summary-v193 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .historical-stats-content-v193 { grid-template-columns: 1fr; }
+      .historical-card-primary-v193, .historical-card-wide-v193 { grid-column: auto; }
+    }
+    @media (max-width: 560px) {
+      .historical-stats-summary-v193 { grid-template-columns: 1fr; gap: .6rem; }
+      .historical-stat-metric-v193 { padding: .8rem; }
+      .historical-stat-metric-v193 strong { font-size: 1.25rem; }
+      .historical-ranking-row-v193 { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+      .historical-ranking-row-v193 > strong { grid-column: 2; justify-self: start; }
+      .historical-timeline-v193 article { grid-template-columns: 1fr; gap: .15rem; border: 1px solid rgba(255,255,255,.08); border-radius: .8rem; padding: .65rem; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectHistoricalStatsStylesV193();
+
+const renderAdminHelpPanelBeforeV193 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV193() {
+  let html = renderAdminHelpPanelBeforeV193?.() || "";
+  if (html && !html.includes("Statistiche storiche")) {
+    html = html.replace("</div>\n    </section>", "        <article>\n          <h4>Statistiche storiche</h4>\n          <p>Nuova pagina pubblica Hall of Fame: calcola titoli, podi, presidenti vincenti, timeline e Top FIFA dai dati gia' caricati da JSON/snapshot, senza letture Firebase extra e con layout mobile-first.</p>\n        </article>\n      </div>\n    </section>");
+  }
+  return html;
+};
+
+window.ZonaOrientaleHistoricalStats = {
+  build() {
+    return buildHistoricalStatsV193();
+  },
+  render() {
+    return renderHistoricalStatsV193();
+  }
+};
+
+
+/* V193 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();

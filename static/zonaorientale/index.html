@@ -21,12 +21,12 @@
   <meta name="twitter:title" content="Inizio Playoff - ZonaOrientale Salerno" />
   <meta name="twitter:description" content="COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA - In occasione dell’inizio dei playoff, augurio a tutte le squadre partecipanti per una grande giornata di fantacampionato." />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=192" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=192" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=192" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=192" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=192" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=192" />
+  <link rel="stylesheet" href="./assets/styles.css?v=193" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=193" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=193" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=193" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=193" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=193" />
 </head>
 <body>
   <header class="app-header">
@@ -56,6 +56,7 @@
       <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
       <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
+      <a href="#stats" class="nav-link" data-page-link="stats">Statistiche</a>
       <a href="#regolamento" class="nav-link" data-page-link="regolamento">Regolamento</a>
       <a id="adminNavLink" href="#admin" class="nav-link nav-link-admin hidden" data-page-link="admin">Admin</a>
     </nav>
@@ -345,6 +346,34 @@
         </article>
       </section>
       <div id="honorHistory" class="hidden" aria-hidden="true"></div>
+    </section>
+
+
+
+    <section class="app-page" data-page="stats" aria-labelledby="statsTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Hall of Fame</p>
+          <h2 id="statsTitle">Statistiche storiche</h2>
+          <p>Record, titoli, podi e protagonisti della storia ZonaOrientale. Usa solo dati gia' caricati da JSON statici o snapshot, senza letture Firebase aggiuntive.</p>
+        </div>
+      </div>
+      <section class="single-panel-layout historical-stats-page-v193">
+        <article class="panel historical-stats-hero-v193">
+          <div class="panel-header compact">
+            <div>
+              <h2>Hall of Fame della Lega</h2>
+              <p>Una vista sintetica per consultare la storia della lega da desktop e smartphone.</p>
+            </div>
+          </div>
+          <div id="historicalStatsSummaryV193" class="historical-stats-summary-v193">
+            <p class="muted">Caricamento statistiche...</p>
+          </div>
+        </article>
+        <div id="historicalStatsContentV193" class="historical-stats-content-v193">
+          <p class="muted">Caricamento statistiche...</p>
+        </div>
+      </section>
     </section>
 
     <section class="app-page" data-page="regolamento" aria-label="Regolamento">
@@ -1524,6 +1553,7 @@
     <a href="#news" class="mobile-more-link" data-page-link="news"><span class="mobile-more-icon">📰</span><span>News</span></a>
     <a href="#clubs" class="mobile-more-link" data-page-link="clubs"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
     <a href="#honor" class="mobile-more-link" data-page-link="honor"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
+    <a href="#stats" class="mobile-more-link" data-page-link="stats"><span class="mobile-more-icon">📊</span><span>Statistiche storiche</span></a>
     <a href="#regolamento" class="mobile-more-link" data-page-link="regolamento"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
     <a href="#fantamercato" class="mobile-more-link" data-page-link="fantamercato"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
     <a href="#listone" class="mobile-more-link" data-page-link="listone"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
@@ -1539,11 +1569,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V192 dashboard presidente · Ultimo aggiornamento 21/05/2026</p>
+    <p>ZonaOrientale Salerno · V193 statistiche storiche · Ultimo aggiornamento 22/05/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=192"></script>
+  <script type="module" src="./assets/app.js?v=193"></script>
 </body>
 </html>
 
