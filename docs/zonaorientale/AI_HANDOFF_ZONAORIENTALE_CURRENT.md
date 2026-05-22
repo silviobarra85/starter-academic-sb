@@ -259,3 +259,22 @@ git add -f static/zonaorientale/assets/snapshots/seasons/*.json
 - Non rimuovere fallback Firebase: servono se un JSON statico manca o non e aggiornato.
 - Non far partire full-load admin all'avvio: e stato il principale punto di riduzione letture.
 - Ogni nuova versione deve aggiornare footer, cache-buster e expected version della checklist.
+
+
+---
+
+## Addendum operativo post V186
+
+- Branch di lavoro nuovo consigliato: `feature/zonaorientale-v187-next`.
+- V187 ha introdotto il convertitore rose Excel -> JSON statico + manifest.
+- V188 ha corretto il convertitore rose: i nomi squadra dell'Excel vengono preservati, senza normalizzazione o mapping automatico.
+- Il flusso dati pubblico resta: JSON statici GitHub -> snapshot Firebase fallback -> collection Firebase granulari solo Admin su richiesta.
+- Per ogni overlay futuro del sito aggiornare sempre anche la Version nel footer e i cache-buster.
+- Per avviare in locale, da `static/zonaorientale` usare:
+
+```bash
+cd ..
+python3 -m http.server 1313 --bind 0.0.0.0
+```
+
+Aprire poi `http://localhost:1313/zonaorientale/`.
