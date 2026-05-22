@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=188";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=189";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV188";
-const DEPLOY_EXPECTED_VERSION_V181 = "188";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV189";
+const DEPLOY_EXPECTED_VERSION_V181 = "189";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -15995,6 +15995,329 @@ renderAdminHelpPanelV185 = function renderAdminHelpPanelV187() {
   }
   return html;
 };
+
+/* V189 - Admin publication reminders.
+   Tracks admin data changes and shows a mobile-friendly reminder explaining
+   which public snapshots/static JSON files must be regenerated and committed
+   before the change is durable after refresh/logout. */
+const ADMIN_PUBLICATION_REMINDERS_KEY_V189 = "zonaOrientaleAdminPublicationRemindersV189";
+
+const ADMIN_PUBLICATION_RULES_V189 = {
+  adminSeasonForm: {
+    title: "Stagioni/config pubblica modificata",
+    impacts: ["config", "seasonSnapshots"],
+    details: "Aggiorna snapshot pubblici, poi scarica config pubblica e overlay snapshot stagioni."
+  },
+  adminPresidentForm: {
+    title: "Presidenti modificati",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Se il presidente compare in storico, aggiorna anche honor.json."
+  },
+  adminTeamForm: {
+    title: "Squadre anagrafiche modificate",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "I nomi/loghi possono comparire in stagione e Albo/Palmares."
+  },
+  adminSeasonTeamForm: {
+    title: "Squadre per stagione modificate",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Scarica overlay snapshot stagioni; se il nome compare in Albo/Palmares scarica anche honor.json."
+  },
+  adminStadiumForm: {
+    title: "Stadi modificati",
+    impacts: ["seasonSnapshots"],
+    details: "Gli stadi sono nello snapshot stagione e nelle schede squadra."
+  },
+  adminCompetitionForm: {
+    title: "Competizioni modificate",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Risultati e competizioni possono influire anche su Albo/Palmares."
+  },
+  adminCompetitionMatchesForm: {
+    title: "Partite competizioni modificate",
+    impacts: ["seasonSnapshots"],
+    details: "Aggiorna e scarica overlay snapshot stagioni."
+  },
+  adminCompetitionResultsForm: {
+    title: "Classifiche/risultati modificati",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Le classifiche sono nello snapshot stagione; eventuali vincitori sono anche in honor.json."
+  },
+  adminFifaRankingForm: {
+    title: "FIFA Ranking modificato",
+    impacts: ["honor"],
+    details: "Scarica honor.json dopo Aggiorna tutto."
+  },
+  adminFmMovementForm: {
+    title: "Movimenti FM modificati",
+    impacts: ["seasonSnapshots"],
+    details: "Movimenti e saldi sono nello snapshot stagione."
+  },
+  adminNewsForm: {
+    title: "Comunicati modificati",
+    impacts: ["seasonSnapshots"],
+    details: "I comunicati pubblici sono nello snapshot stagione."
+  },
+  adminImportStaticRostersForm: {
+    title: "Rose importate da file statico",
+    impacts: ["seasonSnapshots"],
+    details: "Dopo l'import in Firebase aggiorna e scarica overlay snapshot stagioni."
+  },
+  adminStaticRosterConverterForm: {
+    title: "Overlay rose generato",
+    impacts: ["rosters"],
+    details: "Applica lo zip rose nella repo, commit/push, poi inizializza rose dal file statico se vuoi aggiornare Firebase."
+  },
+  adminListoneConverterForm: {
+    title: "Overlay listone generato",
+    impacts: ["listone"],
+    details: "Applica lo zip listone nella repo e fai commit/push."
+  },
+  adminStaticCompetitionImportForm: {
+    title: "Competizione statica generata",
+    impacts: ["competitions"],
+    details: "Applica overlay competizioni nella repo e fai commit/push."
+  }
+};
+
+const ADMIN_COLLECTION_PUBLICATION_RULES_V189 = {
+  seasons: ADMIN_PUBLICATION_RULES_V189.adminSeasonForm,
+  presidents: ADMIN_PUBLICATION_RULES_V189.adminPresidentForm,
+  teams: ADMIN_PUBLICATION_RULES_V189.adminTeamForm,
+  seasonTeams: ADMIN_PUBLICATION_RULES_V189.adminSeasonTeamForm,
+  stadiums: ADMIN_PUBLICATION_RULES_V189.adminStadiumForm,
+  competitions: ADMIN_PUBLICATION_RULES_V189.adminCompetitionForm,
+  competitionMatches: ADMIN_PUBLICATION_RULES_V189.adminCompetitionMatchesForm,
+  competitionResults: ADMIN_PUBLICATION_RULES_V189.adminCompetitionResultsForm,
+  fifaRankings: ADMIN_PUBLICATION_RULES_V189.adminFifaRankingForm,
+  fmMovements: ADMIN_PUBLICATION_RULES_V189.adminFmMovementForm,
+  news: ADMIN_PUBLICATION_RULES_V189.adminNewsForm,
+  rosterEntries: ADMIN_PUBLICATION_RULES_V189.adminImportStaticRostersForm,
+  honorRoll: { title: "Albo d'Oro/Palmares modificato", impacts: ["honor"], details: "Scarica honor.json dopo Aggiorna tutto." }
+};
+
+function readAdminPublicationRemindersV189() {
+  try {
+    const raw = localStorage.getItem(ADMIN_PUBLICATION_REMINDERS_KEY_V189);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((item) => item && item.id) : [];
+  } catch (error) {
+    console.warn("Impossibile leggere gli avvisi pubblicazione admin", error);
+    return [];
+  }
+}
+
+function writeAdminPublicationRemindersV189(items) {
+  const clean = Array.isArray(items) ? items.slice(0, 12) : [];
+  try {
+    localStorage.setItem(ADMIN_PUBLICATION_REMINDERS_KEY_V189, JSON.stringify(clean));
+  } catch (error) {
+    console.warn("Impossibile salvare gli avvisi pubblicazione admin", error);
+  }
+  state.adminPublicationRemindersV189 = clean;
+  renderAdminPublicationReminderPanelV189();
+}
+
+function buildAdminPublicationReminderIdV189(rule) {
+  return (rule.impacts || []).slice().sort().join("-") || safeFileName(rule.title || "admin-change");
+}
+
+function addAdminPublicationReminderV189(rule, source = "admin") {
+  if (!state.isAdmin || !rule) return;
+  const now = new Date().toISOString();
+  const id = buildAdminPublicationReminderIdV189(rule);
+  const existing = readAdminPublicationRemindersV189().filter((item) => item.id !== id);
+  existing.unshift({
+    id,
+    title: rule.title || "Dati admin modificati",
+    impacts: Array.isArray(rule.impacts) ? rule.impacts : [],
+    details: rule.details || "Aggiorna snapshot pubblici e JSON statici prima del deploy.",
+    source,
+    createdAt: now,
+    updatedAt: now
+  });
+  writeAdminPublicationRemindersV189(existing);
+}
+
+function getAdminPublicationActionsV189(items) {
+  const impacts = new Set((items || []).flatMap((item) => item.impacts || []));
+  const actions = [];
+  if (impacts.has("config") || impacts.has("seasonSnapshots") || impacts.has("honor")) {
+    actions.push("Admin → Snapshot pubblici → Aggiorna tutto");
+  }
+  if (impacts.has("config")) actions.push("Scarica config pubblica");
+  if (impacts.has("seasonSnapshots")) actions.push("Scarica overlay snapshot stagioni");
+  if (impacts.has("honor")) actions.push("Scarica honor JSON");
+  if (impacts.has("rosters")) actions.push("Applica overlay rose e committa assets/rose");
+  if (impacts.has("listone")) actions.push("Applica overlay listone e committa assets/listoni");
+  if (impacts.has("competitions")) actions.push("Applica overlay competizioni e committa assets/competitions");
+  if (actions.length) actions.push("Commit + push del branch, poi merge su master quando vuoi pubblicare");
+  return actions;
+}
+
+function formatAdminReminderDateV189(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleString("it-IT", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+}
+
+function renderAdminPublicationReminderHtmlV189() {
+  const items = readAdminPublicationRemindersV189();
+  if (!items.length) {
+    return `
+      <section class="panel admin-publication-reminder-v189 is-clear" aria-labelledby="adminPublicationReminderTitleV189">
+        <div class="panel-header compact">
+          <div>
+            <p class="eyebrow">Pubblicazione dati</p>
+            <h3 id="adminPublicationReminderTitleV189">Nessun aggiornamento statico in sospeso</h3>
+            <p>I dati pubblici risultano senza avvisi locali pendenti. Se modifichi dati admin, qui comparira cosa rigenerare.</p>
+          </div>
+        </div>
+      </section>`;
+  }
+  const actions = getAdminPublicationActionsV189(items);
+  return `
+    <section class="panel admin-publication-reminder-v189" aria-labelledby="adminPublicationReminderTitleV189">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Pubblicazione dati</p>
+          <h3 id="adminPublicationReminderTitleV189">Aggiornamenti da pubblicare</h3>
+          <p>Hai modifiche admin che dopo refresh/logout potrebbero richiedere JSON statici aggiornati su GitHub.</p>
+        </div>
+      </div>
+      <div class="admin-publication-grid-v189">
+        <div>
+          <h4>Azioni consigliate</h4>
+          <ol>${actions.map((action) => `<li>${escapeHtml(action)}</li>`).join("")}</ol>
+        </div>
+        <div>
+          <h4>Modifiche rilevate</h4>
+          <ul>${items.map((item) => `
+            <li>
+              <strong>${escapeHtml(item.title)}</strong>
+              <span>${escapeHtml(item.details)}</span>
+              <small>Ultimo avviso: ${escapeHtml(formatAdminReminderDateV189(item.updatedAt || item.createdAt))}</small>
+            </li>`).join("")}</ul>
+        </div>
+      </div>
+      <div class="form-actions admin-publication-actions-v189">
+        <button class="button button-secondary" type="button" data-clear-admin-publication-reminders-v189>Segna come pubblicato</button>
+        <small class="muted">Usalo dopo aver applicato/committato i JSON statici richiesti.</small>
+      </div>
+    </section>`;
+}
+
+function renderAdminPublicationReminderPanelV189() {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+  let holder = adminPanel.querySelector("#adminPublicationReminderMountV189");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "adminPublicationReminderMountV189";
+    adminPanel.insertAdjacentElement("afterbegin", holder);
+  }
+  holder.innerHTML = renderAdminPublicationReminderHtmlV189();
+}
+
+function getAdminPublicationRuleFromFormV189(form) {
+  if (!form || !form.id) return null;
+  return ADMIN_PUBLICATION_RULES_V189[form.id] || null;
+}
+
+function getAdminPublicationRuleFromDeleteButtonV189(button) {
+  if (!button?.dataset) return null;
+  const map = [
+    ["adminDeleteSeason", "seasons"],
+    ["adminDeletePresident", "presidents"],
+    ["adminDeleteTeam", "teams"],
+    ["adminDeleteSeasonTeam", "seasonTeams"],
+    ["adminDeleteStadium", "stadiums"],
+    ["adminDeleteCompetition", "competitions"],
+    ["adminDeleteMatch", "competitionMatches"],
+    ["adminDeleteFifa", "fifaRankings"],
+    ["adminDeleteFmMovement", "fmMovements"],
+    ["adminDeleteNews", "news"],
+    ["adminSoftDeleteMatch", "competitionMatches"],
+    ["adminRestoreMatch", "competitionMatches"]
+  ];
+  const found = map.find(([key]) => button.dataset[key] !== undefined);
+  return found ? ADMIN_COLLECTION_PUBLICATION_RULES_V189[found[1]] : null;
+}
+
+(function installAdminPublicationReminderEventsV189() {
+  document.addEventListener("submit", (event) => {
+    const rule = getAdminPublicationRuleFromFormV189(event.target);
+    if (!rule) return;
+    window.setTimeout(() => addAdminPublicationReminderV189(rule, event.target.id), 700);
+  }, true);
+
+  document.addEventListener("click", (event) => {
+    const clearButton = event.target.closest?.("[data-clear-admin-publication-reminders-v189]");
+    if (clearButton) {
+      writeAdminPublicationRemindersV189([]);
+      return;
+    }
+    const deleteButton = event.target.closest?.("[data-admin-delete-season], [data-admin-delete-president], [data-admin-delete-team], [data-admin-delete-season-team], [data-admin-delete-stadium], [data-admin-delete-competition], [data-admin-delete-match], [data-admin-delete-fifa], [data-admin-delete-fm-movement], [data-admin-delete-news], [data-admin-soft-delete-match], [data-admin-restore-match]");
+    const rule = getAdminPublicationRuleFromDeleteButtonV189(deleteButton);
+    if (!rule) return;
+    window.setTimeout(() => addAdminPublicationReminderV189(rule, "delete"), 1200);
+  }, true);
+})();
+
+const renderAdminAreaBeforeV189 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV189() {
+  const result = renderAdminAreaBeforeV189?.();
+  renderAdminPublicationReminderPanelV189();
+  return result;
+};
+
+const renderAdminLightGateBeforeV189 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV189) {
+  renderAdminLightGateV178 = function renderAdminLightGateV189() {
+    const html = renderAdminLightGateBeforeV189() || "";
+    if (html.includes("adminPublicationReminderMountV189")) return html;
+    return `<div id="adminPublicationReminderMountV189">${renderAdminPublicationReminderHtmlV189()}</div>${html}`;
+  };
+}
+
+function injectAdminPublicationReminderStylesV189() {
+  if (document.getElementById("adminPublicationReminderStylesV189")) return;
+  const style = document.createElement("style");
+  style.id = "adminPublicationReminderStylesV189";
+  style.textContent = `
+    .admin-publication-reminder-v189 { border: 1px solid rgba(245, 158, 11, .35); background: rgba(245, 158, 11, .08); }
+    .admin-publication-reminder-v189.is-clear { border-color: rgba(34, 197, 94, .25); background: rgba(34, 197, 94, .06); }
+    .admin-publication-grid-v189 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+    .admin-publication-grid-v189 h4 { margin: 0 0 .5rem; }
+    .admin-publication-grid-v189 ol, .admin-publication-grid-v189 ul { margin: 0; padding-left: 1.15rem; }
+    .admin-publication-grid-v189 li { margin-bottom: .45rem; overflow-wrap: anywhere; }
+    .admin-publication-grid-v189 li span, .admin-publication-grid-v189 li small { display: block; }
+    .admin-publication-actions-v189 { align-items: center; gap: .65rem; }
+    @media (max-width: 760px) {
+      .admin-publication-reminder-v189 { margin-inline: 0; }
+      .admin-publication-grid-v189 { grid-template-columns: 1fr; gap: .8rem; }
+      .admin-publication-actions-v189 { flex-direction: column; align-items: stretch; }
+      .admin-publication-actions-v189 .button { width: 100%; }
+      .admin-publication-actions-v189 small { text-align: center; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectAdminPublicationReminderStylesV189();
+
+const renderAdminHelpPanelBeforeV189 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV189() {
+  let html = renderAdminHelpPanelBeforeV189?.() || "";
+  if (html && !html.includes("Avvisi pubblicazione")) {
+    html = html.replace("<article>\n          <h4>Snapshot pubblici</h4>", "<article>\n          <h4>Avvisi pubblicazione</h4>\n          <p>Dopo modifiche admin segnala quali JSON statici scaricare e committare, cosi i dati restano corretti dopo refresh/logout.</p>\n        </article>\n        <article>\n          <h4>Snapshot pubblici</h4>");
+  }
+  return html;
+};
+
 
 /* V188 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
