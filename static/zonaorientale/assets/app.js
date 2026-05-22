@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "199";
+const DEPLOY_EXPECTED_VERSION_V181 = "200";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -19093,5 +19093,184 @@ window.ZonaOrientaleHistoricalStats = {
   fifaRows: getHistoricalFifaRowsV199
 };
 
-/* V197 - Final startup remains centralized here. */
+
+/* V200 - Confronta squadre da honor snapshot statico.
+   V195 calcolava titoli, podi e FIFA Ranking da state.raw.honorRoll e
+   state.raw.fifaRankings. In caricamento pubblico leggero quei dati sono
+   serviti soprattutto da assets/snapshots/honor.json dentro
+   state.publicHonorSnapshot. Questo override arricchisce i profili Confronta
+   con honorRows/palmares/fifaRanking gia' caricati, senza nuove letture
+   Firebase e senza duplicare quando l'admin ha gia' caricato i dati completi. */
+function buildCompareLookupV200(profiles) {
+  const byTeamId = new Map();
+  const bySeasonTeamId = new Map();
+  const byName = new Map();
+  profiles.forEach((profile) => {
+    if (!profile) return;
+    if (profile.teamId) byTeamId.set(String(profile.teamId), profile);
+    (profile.seasonTeamIds || new Set()).forEach((id) => {
+      if (id) bySeasonTeamId.set(String(id), profile);
+    });
+    [profile.latestName, profile.displayName].forEach((name) => {
+      const key = normalizeKey(String(name || ""));
+      if (key && !byName.has(key)) byName.set(key, profile);
+    });
+    (profile.seasonTeams || []).forEach((seasonTeam) => {
+      const key = normalizeKey(String(seasonTeam?.name || ""));
+      if (key && !byName.has(key)) byName.set(key, profile);
+    });
+  });
+  return { byTeamId, bySeasonTeamId, byName };
+}
+
+function findCompareProfileForSnapshotCellV200(cell, lookup) {
+  if (!cell || cell.kind === "empty" || cell.kind === "status") return null;
+  if (cell.teamId && lookup.byTeamId.has(String(cell.teamId))) return lookup.byTeamId.get(String(cell.teamId));
+  if (cell.seasonTeamId && lookup.bySeasonTeamId.has(String(cell.seasonTeamId))) return lookup.bySeasonTeamId.get(String(cell.seasonTeamId));
+  const labelKey = normalizeKey(String(cell.label || cell.teamName || cell.name || ""));
+  if (labelKey && lookup.byName.has(labelKey)) return lookup.byName.get(labelKey);
+  return null;
+}
+
+function getCompareSeasonIdFromSnapshotRowV200(row) {
+  return row?.seasonId || row?.id || row?.seasonLabel || "";
+}
+
+const COMPARE_SNAPSHOT_TITLE_FIELDS_V200 = [
+  { key: "CAMPIONATO", label: "Campionato", cellField: "championItaly" },
+  { key: "COPPA_ITALIA", label: "Coppa Italia", cellField: "coppaItalia" },
+  { key: "CHAMPIONS_LEAGUE", label: "Champions League", cellField: "championsLeague" },
+  { key: "PLAYOFF", label: "Playoff", cellField: "playoff" }
+];
+
+function addCompareSnapshotTitleV200(profile, seasonId, competition, cell) {
+  if (!profile) return;
+  const duplicate = (profile.titles || []).some((title) =>
+    title.seasonId === seasonId && title.type === competition.key
+  );
+  if (duplicate) return;
+  profile.titles.push({
+    seasonId,
+    label: competition.label,
+    type: competition.key,
+    source: "honor-snapshot-v200"
+  });
+  if (seasonId) profile.seasons.add(seasonId);
+  if (cell?.logo && !profile.logo) profile.logo = cell.logo;
+  if (cell?.label) profile.latestName = profile.latestName || cell.label;
+}
+
+function addCompareSnapshotPodiumV200(profile, seasonId, place, cell) {
+  if (!profile) return;
+  profile.__podiumKeysV200 = profile.__podiumKeysV200 || new Set();
+  const key = `${seasonId}|${place}`;
+  if (profile.__podiumKeysV200.has(key)) return;
+  profile.__podiumKeysV200.add(key);
+  profile.podiums[place] += 1;
+  profile.podiums.total += 1;
+  if (seasonId) profile.seasons.add(seasonId);
+  if (cell?.logo && !profile.logo) profile.logo = cell.logo;
+}
+
+function augmentCompareProfilesFromHonorRowsV200(profiles) {
+  const rows = Array.isArray(state.publicHonorSnapshot?.honorRows) ? state.publicHonorSnapshot.honorRows : [];
+  if (!rows.length || (state.raw.honorRoll || []).length) return profiles;
+  const lookup = buildCompareLookupV200(profiles);
+  rows.forEach((row) => {
+    const seasonId = getCompareSeasonIdFromSnapshotRowV200(row);
+    COMPARE_SNAPSHOT_TITLE_FIELDS_V200.forEach((competition) => {
+      const cell = row[competition.cellField];
+      const profile = findCompareProfileForSnapshotCellV200(cell, lookup);
+      addCompareSnapshotTitleV200(profile, seasonId, competition, cell);
+    });
+    [
+      [row.championItaly, "first"],
+      [row.secondPlace, "second"],
+      [row.thirdPlace, "third"]
+    ].forEach(([cell, place]) => {
+      const profile = findCompareProfileForSnapshotCellV200(cell, lookup);
+      addCompareSnapshotPodiumV200(profile, seasonId, place, cell);
+    });
+  });
+  return profiles;
+}
+
+function augmentCompareProfilesFromPalmaresSnapshotV200(profiles) {
+  const hasAnyTitle = Array.from(profiles.values()).some((profile) => (profile.titles || []).length > 0);
+  const palmares = state.publicHonorSnapshot?.palmares || null;
+  if (hasAnyTitle || !palmares || typeof palmares !== "object") return profiles;
+  const lookup = buildCompareLookupV200(profiles);
+  Object.entries(palmares).forEach(([type, items]) => {
+    const competition = HISTORICAL_COMPETITIONS_V193.find((item) => item.key === type) || {
+      key: String(type || "ALTRO"),
+      label: String(type || "Titolo")
+    };
+    (items || []).forEach((item) => {
+      const cell = {
+        kind: "team",
+        teamId: item.teamId || "",
+        label: item.teamName || item.name || item.label || "",
+        logo: item.logo || ""
+      };
+      const profile = findCompareProfileForSnapshotCellV200(cell, lookup);
+      if (!profile) return;
+      const count = Number(item.wins || item.count || item.titles || 0);
+      const wins = Number.isFinite(count) && count > 0 ? count : 0;
+      for (let index = 0; index < wins; index += 1) {
+        profile.titles.push({
+          seasonId: "",
+          label: competition.label,
+          type: competition.key,
+          source: "palmares-snapshot-v200"
+        });
+      }
+      if (cell.logo && !profile.logo) profile.logo = cell.logo;
+    });
+  });
+  return profiles;
+}
+
+function augmentCompareProfilesFromFifaSnapshotV200(profiles) {
+  const rows = Array.isArray(state.publicHonorSnapshot?.fifaRanking) ? state.publicHonorSnapshot.fifaRanking : [];
+  if (!rows.length) return profiles;
+  const lookup = buildCompareLookupV200(profiles);
+  rows.forEach((item) => {
+    const cell = {
+      kind: "team",
+      teamId: item.teamId || "",
+      label: item.teamName || item.name || item.label || "",
+      logo: item.logo || ""
+    };
+    const profile = findCompareProfileForSnapshotCellV200(cell, lookup);
+    if (!profile || profile.fifa) return;
+    const score = item.score ?? item.points ?? "-";
+    const position = item.position ? `#${item.position}` : "";
+    profile.fifa = {
+      score,
+      position: item.position || "",
+      notes: position ? `${position} posizione FIFA` : (item.notes || "Ranking FIFA")
+    };
+    if (item.logo && !profile.logo) profile.logo = item.logo;
+  });
+  return profiles;
+}
+
+const getCompareProfileMapBeforeV200 = getCompareProfileMapV195;
+getCompareProfileMapV195 = function getCompareProfileMapV200() {
+  const profiles = getCompareProfileMapBeforeV200?.() || new Map();
+  augmentCompareProfilesFromHonorRowsV200(profiles);
+  augmentCompareProfilesFromPalmaresSnapshotV200(profiles);
+  augmentCompareProfilesFromFifaSnapshotV200(profiles);
+  return profiles;
+};
+
+window.ZonaOrientaleTeamCompare = {
+  profiles: getCompareProfilesV195,
+  render: renderTeamCompareV195,
+  buildMap: getCompareProfileMapV195,
+  honorRows: () => state.publicHonorSnapshot?.honorRows || [],
+  fifaRows: () => state.publicHonorSnapshot?.fifaRanking || []
+};
+
+/* V200 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
