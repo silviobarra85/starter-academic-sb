@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "198";
+const DEPLOY_EXPECTED_VERSION_V181 = "199";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18886,6 +18886,211 @@ window.ZonaOrientaleCommunicationGenerator = {
   render: renderCommunicationGeneratorPanelV197,
   insert: insertCommunicationDraftIntoNewsFormV197,
   copy: copyCommunicationDraftV197
+};
+
+
+/* V199 - Statistiche storiche da honor snapshot statico.
+   V193 calcolava Hall of Fame da state.raw.honorRoll/fifaRankings: in
+   caricamento pubblico leggero questi array restano vuoti perché Albo e FIFA
+   vengono serviti da assets/snapshots/honor.json in state.publicHonorSnapshot.
+   Questo blocco riusa lo snapshot già caricato, senza aggiungere letture
+   Firebase, e mantiene il fallback ai dati granulari quando l'admin ha caricato
+   i dati completi. */
+function getHistoricalHonorSnapshotRowsV199() {
+  const snapshotRows = Array.isArray(state.publicHonorSnapshot?.honorRows) ? state.publicHonorSnapshot.honorRows : [];
+  if (snapshotRows.length) return snapshotRows;
+  return (state.raw.honorRoll || []).map((row) => ({
+    seasonId: row.seasonId || row.id || "",
+    championItaly: row.championItalySeasonTeamId ? { kind: "team", seasonTeamId: row.championItalySeasonTeamId, label: getSeasonTeamDisplayName(row.championItalySeasonTeamId) } : { kind: "empty" },
+    secondPlace: row.secondPlaceSeasonTeamId ? { kind: "team", seasonTeamId: row.secondPlaceSeasonTeamId, label: getSeasonTeamDisplayName(row.secondPlaceSeasonTeamId) } : { kind: "empty" },
+    thirdPlace: row.thirdPlaceSeasonTeamId ? { kind: "team", seasonTeamId: row.thirdPlaceSeasonTeamId, label: getSeasonTeamDisplayName(row.thirdPlaceSeasonTeamId) } : { kind: "empty" },
+    coppaItalia: row.coppaItaliaWinnerSeasonTeamId ? { kind: "team", seasonTeamId: row.coppaItaliaWinnerSeasonTeamId, label: getSeasonTeamDisplayName(row.coppaItaliaWinnerSeasonTeamId) } : { kind: "empty" },
+    championsLeague: row.championsLeagueWinnerSeasonTeamId ? { kind: "team", seasonTeamId: row.championsLeagueWinnerSeasonTeamId, label: getSeasonTeamDisplayName(row.championsLeagueWinnerSeasonTeamId) } : { kind: "empty" },
+    playoff: row.playoffWinnerSeasonTeamId ? { kind: "team", seasonTeamId: row.playoffWinnerSeasonTeamId, label: getSeasonTeamDisplayName(row.playoffWinnerSeasonTeamId) } : { kind: "empty" }
+  }));
+}
+
+function getHistoricalFifaRowsV199() {
+  const snapshotRows = Array.isArray(state.publicHonorSnapshot?.fifaRanking) ? state.publicHonorSnapshot.fifaRanking : [];
+  if (snapshotRows.length) return snapshotRows;
+  return state.raw.fifaRankings || [];
+}
+
+function getHistoricalSnapshotTeamKeyV199(cell) {
+  if (!cell || cell.kind !== "team") return "";
+  return String(cell.teamId || cell.seasonTeamId || cell.label || "").trim().toLowerCase();
+}
+
+function ensureHistoricalSnapshotBucketV199(map, cell) {
+  if (!cell || cell.kind !== "team") return null;
+  const key = getHistoricalSnapshotTeamKeyV199(cell);
+  if (!key) return null;
+  const name = cell.label || cell.teamName || cell.teamId || cell.seasonTeamId || "-";
+  const current = map.get(key) || {
+    teamId: cell.teamId || "",
+    seasonTeamId: cell.seasonTeamId || "",
+    displayName: name,
+    latestName: name,
+    logo: cell.logo || "",
+    totalTitles: 0,
+    titlesByType: Object.fromEntries(HISTORICAL_COMPETITIONS_V193.map((item) => [item.key, 0])),
+    podiums: { first: 0, second: 0, third: 0, total: 0 },
+    seasons: []
+  };
+  current.latestName = name || current.latestName;
+  if (cell.logo) current.logo = cell.logo;
+  if (cell.teamId) current.teamId = cell.teamId;
+  if (cell.seasonTeamId) current.seasonTeamId = cell.seasonTeamId;
+  map.set(key, current);
+  return current;
+}
+
+function getHistoricalSeasonIdFromSnapshotRowV199(row) {
+  return row?.seasonId || row?.id || row?.seasonLabel || "";
+}
+
+const HISTORICAL_SNAPSHOT_TITLE_FIELDS_V199 = [
+  { key: "CAMPIONATO", label: "Campionato", cellField: "championItaly" },
+  { key: "COPPA_ITALIA", label: "Coppa Italia", cellField: "coppaItalia" },
+  { key: "CHAMPIONS_LEAGUE", label: "Champions League", cellField: "championsLeague" },
+  { key: "PLAYOFF", label: "Playoff", cellField: "playoff" }
+];
+
+function addHistoricalPresidentFromGranularV199(presidentBuckets, cell, title) {
+  const record = cell?.seasonTeamId ? getSeasonTeamRecordV193(cell.seasonTeamId) : null;
+  if (!record?.seasonTeam) return;
+  getPresidentsForSeasonTeamV193(record.seasonTeam).forEach((president) => {
+    if (!president?.id) return;
+    const current = presidentBuckets.get(president.id) || {
+      presidentId: president.id,
+      name: president.name || president.id,
+      totalTitles: 0,
+      titlesByType: Object.fromEntries(HISTORICAL_COMPETITIONS_V193.map((item) => [item.key, 0])),
+      seasons: []
+    };
+    current.totalTitles += 1;
+    current.titlesByType[title.type] = (current.titlesByType[title.type] || 0) + 1;
+    current.seasons.push(title);
+    presidentBuckets.set(president.id, current);
+  });
+}
+
+buildHistoricalStatsV193 = function buildHistoricalStatsV199() {
+  const teamBuckets = new Map();
+  const presidentBuckets = new Map();
+  const timeline = [];
+  const rows = getHistoricalHonorSnapshotRowsV199().sort((a, b) => getSeasonSortValueV193(getHistoricalSeasonIdFromSnapshotRowV199(b)) - getSeasonSortValueV193(getHistoricalSeasonIdFromSnapshotRowV199(a)));
+
+  rows.forEach((row) => {
+    const seasonId = getHistoricalSeasonIdFromSnapshotRowV199(row);
+    HISTORICAL_SNAPSHOT_TITLE_FIELDS_V199.forEach((competition) => {
+      const cell = row[competition.cellField];
+      const bucket = ensureHistoricalSnapshotBucketV199(teamBuckets, cell);
+      if (!bucket) return;
+      const title = {
+        seasonId,
+        type: competition.key,
+        label: competition.label,
+        teamName: cell.label || bucket.latestName || bucket.displayName
+      };
+      bucket.totalTitles += 1;
+      bucket.titlesByType[competition.key] = (bucket.titlesByType[competition.key] || 0) + 1;
+      bucket.seasons.push(title);
+      timeline.push(title);
+      addHistoricalPresidentFromGranularV199(presidentBuckets, cell, title);
+    });
+
+    [
+      [row.championItaly, "first"],
+      [row.secondPlace, "second"],
+      [row.thirdPlace, "third"]
+    ].forEach(([cell, place]) => {
+      const bucket = ensureHistoricalSnapshotBucketV199(teamBuckets, cell);
+      if (!bucket) return;
+      bucket.podiums[place] += 1;
+      bucket.podiums.total += 1;
+      bucket.seasons.push({ seasonId, type: "PODIO", label: place, teamName: cell.label || bucket.latestName || bucket.displayName });
+    });
+  });
+
+  /* Fallback extra: se uno snapshot honor ha palmares aggregato ma non honorRows
+     dettagliate, riempie almeno Club piu' vincenti e totale titoli. */
+  if (!Array.from(teamBuckets.values()).some((item) => item.totalTitles > 0) && state.publicHonorSnapshot?.palmares) {
+    Object.entries(state.publicHonorSnapshot.palmares || {}).forEach(([type, items]) => {
+      (items || []).forEach((item) => {
+        const fakeCell = { kind: "team", teamId: item.teamId || "", label: item.teamName || item.name || "-", logo: item.logo || "" };
+        const bucket = ensureHistoricalSnapshotBucketV199(teamBuckets, fakeCell);
+        if (!bucket) return;
+        const wins = Number(item.wins || item.count || item.titles || 0);
+        const key = HISTORICAL_COMPETITIONS_V193.some((competition) => competition.key === type) ? type : String(type || "ALTRO");
+        bucket.totalTitles += Number.isFinite(wins) ? wins : 0;
+        bucket.titlesByType[key] = (bucket.titlesByType[key] || 0) + (Number.isFinite(wins) ? wins : 0);
+      });
+    });
+  }
+
+  const teamRanking = Array.from(teamBuckets.values()).sort((a, b) =>
+    b.totalTitles - a.totalTitles ||
+    b.podiums.total - a.podiums.total ||
+    String(a.latestName || a.displayName).localeCompare(String(b.latestName || b.displayName), "it")
+  );
+  const podiumRanking = Array.from(teamBuckets.values()).filter((item) => item.podiums.total > 0).sort((a, b) =>
+    b.podiums.first - a.podiums.first ||
+    b.podiums.second - a.podiums.second ||
+    b.podiums.third - a.podiums.third ||
+    String(a.latestName || a.displayName).localeCompare(String(b.latestName || b.displayName), "it")
+  );
+  const presidentRanking = Array.from(presidentBuckets.values()).sort((a, b) =>
+    b.totalTitles - a.totalTitles || String(a.name).localeCompare(String(b.name), "it")
+  );
+  const latestTitles = timeline.sort((a, b) => getSeasonSortValueV193(b.seasonId) - getSeasonSortValueV193(a.seasonId)).slice(0, 10);
+  const fifaTop = getHistoricalFifaRowsV199().sort((a, b) => Number(b.score ?? b.points ?? 0) - Number(a.score ?? a.points ?? 0)).slice(0, 10);
+  const seasonsFromState = new Set((state.raw.seasons || []).map((item) => item.id).filter(Boolean)).size;
+  const seasonsFromHonor = new Set(rows.map(getHistoricalSeasonIdFromSnapshotRowV199).filter(Boolean)).size;
+  const seasonsCount = Math.max(seasonsFromState, seasonsFromHonor);
+  const totalTitles = teamRanking.reduce((sum, item) => sum + item.totalTitles, 0);
+  return { rows, teamRanking, podiumRanking, presidentRanking, latestTitles, fifaTop, seasonsCount, totalTitles };
+};
+
+renderHistoricalFifaTopV193 = function renderHistoricalFifaTopV199(items) {
+  if (!items.length) return `<p class="muted">FIFA Ranking non disponibile.</p>`;
+  return `<div class="historical-ranking-v193">${items.map((item, index) => {
+    const team = getTeamById(item.teamId) || {};
+    const name = team.canonicalName || team.name || item.teamName || item.name || item.teamId || "-";
+    const logo = item.logo || team.logo || "";
+    const score = item.score ?? item.points ?? "-";
+    return `
+      <article class="historical-ranking-row-v193">
+        <span class="historical-rank-v193">${index + 1}</span>
+        <div><span class="historical-stat-team-v193">${renderTeamLogo(name, logo)}<strong>${escapeHtml(name)}</strong></span><small>${escapeHtml(item.notes || "Ranking FIFA")}</small></div>
+        <strong>${escapeHtml(String(score))}</strong>
+      </article>`;
+  }).join("")}</div>`;
+};
+
+renderHistoricalPresidentRankingV193 = function renderHistoricalPresidentRankingV199(items) {
+  const visible = items.slice(0, 8);
+  if (!visible.length) {
+    const publicSnapshotMode = !state.hasFullData && state.publicHonorSnapshot;
+    return `<p class="muted">${publicSnapshotMode ? "Presidenti vincenti disponibili dopo il caricamento dati amministrazione completo." : "Nessun presidente vincente ancora calcolabile."}</p>`;
+  }
+  return `<div class="historical-ranking-v193">${visible.map((item, index) => `
+    <article class="historical-ranking-row-v193">
+      <span class="historical-rank-v193">${index + 1}</span>
+      <div>
+        <strong>${escapeHtml(item.name || "-")}</strong>
+        <small>${escapeHtml(item.seasons.slice(0, 3).map((season) => `${getSeasonLabelV193(season.seasonId)} ${season.label}`).join(" · ") || "Titoli storici")}</small>
+        <div class="historical-chip-row-v193">${renderHistoricalTitleBreakdownV193(item)}</div>
+      </div>
+      <strong>${escapeHtml(String(item.totalTitles || 0))}</strong>
+    </article>`).join("")}</div>`;
+};
+
+window.ZonaOrientaleHistoricalStats = {
+  build: buildHistoricalStatsV193,
+  render: renderHistoricalStatsV193,
+  honorRows: getHistoricalHonorSnapshotRowsV199,
+  fifaRows: getHistoricalFifaRowsV199
 };
 
 /* V197 - Final startup remains centralized here. */
