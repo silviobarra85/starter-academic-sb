@@ -15335,8 +15335,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV190";
-const DEPLOY_EXPECTED_VERSION_V181 = "190";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
+const DEPLOY_EXPECTED_VERSION_V181 = "191";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -16605,5 +16605,348 @@ window.ZonaOrientalePublicationStatus = {
 };
 
 
-/* V190 - Final startup remains centralized here. */
+/* V191 - Procedura guidata Pubblica aggiornamenti.
+   Mobile-first panel that turns the V189 reminders and V190 status checks into
+   an operational publishing flow. It does not write to Firebase or GitHub; it
+   only guides the admin and provides copyable commands. */
+const PUBLISH_WIZARD_STORAGE_KEY_V191 = "zonaOrientalePublishWizardV191";
+
+function getPublishWizardPendingItemsV191() {
+  if (typeof readAdminPublicationRemindersV189 === "function") {
+    return readAdminPublicationRemindersV189() || [];
+  }
+  return [];
+}
+
+function getPublishWizardActionsV191(items) {
+  if (typeof getAdminPublicationActionsV189 === "function") {
+    return getAdminPublicationActionsV189(items || []);
+  }
+  return [];
+}
+
+function getPublishWizardCommandsV191() {
+  return [
+    "git status",
+    "git add -f static/zonaorientale/assets/public/config.json",
+    "git add -f static/zonaorientale/assets/snapshots/honor.json",
+    "git add -f static/zonaorientale/assets/snapshots/seasons/manifest.json",
+    "git add -f static/zonaorientale/assets/snapshots/seasons/*.json",
+    "git add -f static/zonaorientale/assets/rose/manifest.json static/zonaorientale/assets/rose/*.json",
+    "git add -f static/zonaorientale/assets/listoni/manifest.json static/zonaorientale/assets/listoni/*.json",
+    "git add -f static/zonaorientale/assets/competitions/manifest.json static/zonaorientale/assets/competitions/**/*.json",
+    "git commit -m \"Update ZonaOrientale static public data\"",
+    "git push",
+    "git checkout master",
+    "git pull --ff-only origin master",
+    "git merge --no-ff feature/zonaorientale-v187-next",
+    "git push origin master",
+    "git checkout feature/zonaorientale-v187-next"
+  ].join("\n");
+}
+
+function getPublishWizardRuntimeV191(statusPayload = null) {
+  const items = getPublishWizardPendingItemsV191();
+  const actions = getPublishWizardActionsV191(items);
+  const preflightSummary = statusPayload?.preflightSummary || null;
+  const statusSummary = statusPayload?.summary || null;
+  const hasPending = items.length > 0;
+  const needsAssets = hasPending || (statusSummary && (statusSummary.warn > 0 || statusSummary.error > 0));
+  return {
+    checkedAt: new Date().toISOString(),
+    pendingItems: items,
+    actions,
+    preflightSummary,
+    statusSummary,
+    needsAssets,
+    commands: getPublishWizardCommandsV191()
+  };
+}
+
+function formatPublishWizardDateV191(value) {
+  if (typeof normalizePreflightDateV179 === "function") return normalizePreflightDateV179(value);
+  try {
+    return new Date(value).toLocaleString("it-IT");
+  } catch (error) {
+    return "non disponibile";
+  }
+}
+
+function renderPublishWizardActionListV191(actions) {
+  if (!actions?.length) return `<li>Nessuna azione specifica pendente rilevata. Esegui comunque i controlli prima del deploy.</li>`;
+  return actions.map((action) => `<li>${escapeHtml(action)}</li>`).join("");
+}
+
+function renderPublishWizardPendingListV191(items) {
+  if (!items?.length) return `<p class="muted">Nessun promemoria admin pendente. Se hai appena modificato dati, premi Aggiorna stato pubblicazione per confermare.</p>`;
+  return `
+    <div class="publish-wizard-pending-v191">
+      ${items.map((item) => `
+        <article>
+          <strong>${escapeHtml(item.title || "Aggiornamento dati")}</strong>
+          <p>${escapeHtml(item.detail || "Dati modificati da pubblicare nei JSON statici.")}</p>
+          <small>Ultimo avviso: ${escapeHtml(formatPublishWizardDateV191(item.updatedAt || item.createdAt))}</small>
+        </article>`).join("")}
+    </div>`;
+}
+
+function renderPublishWizardCommandsV191(commands) {
+  return `<pre class="publish-wizard-code-v191"><code>${escapeHtml(commands || "")}</code></pre>`;
+}
+
+function renderPublishWizardHtmlV191(payload = null) {
+  const runtime = payload || getPublishWizardRuntimeV191(readPublicationStatusV190?.());
+  const checkedAt = runtime.checkedAt ? formatPublishWizardDateV191(runtime.checkedAt) : "non ancora generato";
+  const statusSummary = runtime.statusSummary || { ok: 0, warn: 0, error: 0 };
+  const preflightSummary = runtime.preflightSummary || null;
+  const badgeClass = runtime.needsAssets ? "is-warn" : "is-ok";
+  const badgeText = runtime.needsAssets ? "Azioni da verificare" : "Nessuna azione pendente";
+  return `
+    <section class="panel publish-wizard-v191" aria-labelledby="publishWizardTitleV191">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Pubblicazione dati</p>
+          <h3 id="publishWizardTitleV191">Procedura guidata Pubblica aggiornamenti</h3>
+          <p>Segui i passaggi dopo modifiche admin: snapshot Firebase, JSON statici, commit, push e master.</p>
+        </div>
+        <span class="publish-wizard-badge-v191 ${badgeClass}">${escapeHtml(badgeText)}</span>
+      </div>
+      <div class="publish-wizard-summary-v191">
+        <span>Promemoria: <strong>${escapeHtml(String(runtime.pendingItems?.length || 0))}</strong></span>
+        <span>Status: <strong>${escapeHtml(String(statusSummary.ok || 0))}</strong> OK / <strong>${escapeHtml(String(statusSummary.warn || 0))}</strong> warning / <strong>${escapeHtml(String(statusSummary.error || 0))}</strong> errori</span>
+        <small>Ultimo piano: ${escapeHtml(checkedAt)}</small>
+      </div>
+      <div class="form-actions publish-wizard-actions-v191">
+        <button class="button button-primary" type="button" data-run-publish-wizard-v191>Genera piano pubblicazione</button>
+        <button class="button button-secondary" type="button" data-copy-publish-wizard-v191="flow">Copia flusso</button>
+        <button class="button button-secondary" type="button" data-copy-publish-wizard-v191="commands">Copia comandi Git</button>
+      </div>
+      <div class="publish-wizard-grid-v191">
+        <article>
+          <span class="publish-wizard-step-v191">1</span>
+          <h4>Modifica e snapshot</h4>
+          <p>Carica dati amministrazione, modifica i dati, poi vai in Snapshot pubblici e premi Aggiorna tutto.</p>
+        </article>
+        <article>
+          <span class="publish-wizard-step-v191">2</span>
+          <h4>Scarica JSON statici</h4>
+          <ul>${renderPublishWizardActionListV191(runtime.actions)}</ul>
+        </article>
+        <article>
+          <span class="publish-wizard-step-v191">3</span>
+          <h4>Applica nella repo</h4>
+          <p>Estrai gli overlay dalla root della repo e sostituisci eventuali file singoli, come config.json o honor.json.</p>
+        </article>
+        <article>
+          <span class="publish-wizard-step-v191">4</span>
+          <h4>Commit, push e master</h4>
+          <p>Usa i comandi sotto, poi controlla su GitHub che il branch e master siano aggiornati.</p>
+        </article>
+      </div>
+      <div class="publish-wizard-section-v191">
+        <h4>Promemoria rilevati</h4>
+        ${renderPublishWizardPendingListV191(runtime.pendingItems)}
+      </div>
+      <div class="publish-wizard-section-v191">
+        <h4>Comandi utili</h4>
+        ${renderPublishWizardCommandsV191(runtime.commands)}
+        <p class="muted">I comandi con <code>git add -f</code> sono volutamente ampi: Git aggiunge solo i file esistenti/modificati.</p>
+      </div>
+      <div class="publish-wizard-section-v191">
+        <h4>Controllo finale</h4>
+        <p>Prima del merge su master, esegui Controlla asset pubblici e Checklist online finale. Se il preflight segnala errori, sistema i JSON prima del push master.</p>
+        <p class="muted">Asset preflight: ${escapeHtml(preflightSummary ? `${preflightSummary.ok || 0} OK, ${preflightSummary.warn || 0} warning, ${preflightSummary.error || 0} errori` : "non ancora eseguito")}</p>
+      </div>
+    </section>`;
+}
+
+function writePublishWizardPayloadV191(payload) {
+  state.publishWizardV191 = payload;
+  try {
+    sessionStorage.setItem(PUBLISH_WIZARD_STORAGE_KEY_V191, JSON.stringify(payload));
+  } catch (error) {
+    console.warn("Impossibile salvare il piano pubblicazione", error);
+  }
+}
+
+function readPublishWizardPayloadV191() {
+  try {
+    const raw = sessionStorage.getItem(PUBLISH_WIZARD_STORAGE_KEY_V191);
+    if (raw) return JSON.parse(raw);
+  } catch (error) {
+    console.warn("Impossibile leggere il piano pubblicazione", error);
+  }
+  return state.publishWizardV191 || null;
+}
+
+async function buildPublishWizardPayloadV191(options = {}) {
+  let statusPayload = null;
+  try {
+    if (typeof runPublicationStatusV190 === "function") {
+      statusPayload = await runPublicationStatusV190({ silent: true });
+    }
+  } catch (error) {
+    console.warn("Stato pubblicazione non disponibile per procedura guidata", error);
+  }
+  const payload = getPublishWizardRuntimeV191(statusPayload || readPublicationStatusV190?.());
+  writePublishWizardPayloadV191(payload);
+  if (!options.silent) renderPublishWizardPanelV191(payload);
+  return payload;
+}
+
+function getPublishWizardCopyTextV191(kind = "flow") {
+  const payload = readPublishWizardPayloadV191() || getPublishWizardRuntimeV191(readPublicationStatusV190?.());
+  if (kind === "commands") return payload.commands || getPublishWizardCommandsV191();
+  const actions = payload.actions?.length ? payload.actions.map((item, index) => `${index + 1}. ${item}`).join("\n") : "Nessuna azione specifica pendente.";
+  return [
+    "Flusso Pubblica aggiornamenti ZonaOrientale",
+    "",
+    "1. Admin > Carica dati amministrazione",
+    "2. Esegui modifiche/cancellazioni/pubblicazioni dati",
+    "3. Admin > Snapshot pubblici > Aggiorna tutto",
+    "4. Scarica i JSON/overlay richiesti:",
+    actions,
+    "5. Applica overlay/file statici nella repo",
+    "6. Commit + push branch attuale",
+    "7. Merge + push su master",
+    "",
+    "Comandi:",
+    payload.commands || getPublishWizardCommandsV191()
+  ].join("\n");
+}
+
+async function copyPublishWizardTextV191(kind, button) {
+  const text = getPublishWizardCopyTextV191(kind);
+  try {
+    await navigator.clipboard.writeText(text);
+    const original = button?.textContent;
+    if (button) {
+      button.textContent = "Copiato";
+      window.setTimeout(() => { button.textContent = original || "Copia"; }, 1200);
+    }
+  } catch (error) {
+    console.warn("Copia non riuscita", error);
+    window.prompt("Copia manualmente il testo", text);
+  }
+}
+
+function renderPublishWizardPanelV191(payload = readPublishWizardPayloadV191()) {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+  let holder = adminPanel.querySelector("#publishWizardMountV191");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "publishWizardMountV191";
+    const status = adminPanel.querySelector("#publicationStatusMountV190");
+    if (status) status.insertAdjacentElement("afterend", holder);
+    else adminPanel.insertAdjacentElement("afterbegin", holder);
+  }
+  holder.innerHTML = renderPublishWizardHtmlV191(payload);
+}
+
+const renderAdminAreaBeforeV191 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV191() {
+  const result = renderAdminAreaBeforeV191?.();
+  renderPublishWizardPanelV191();
+  return result;
+};
+
+const renderAdminLightGateBeforeV191 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV191) {
+  renderAdminLightGateV178 = function renderAdminLightGateV191() {
+    const html = renderAdminLightGateBeforeV191() || "";
+    if (html.includes("publishWizardMountV191")) return html;
+    return `<div id="publishWizardMountV191">${renderPublishWizardHtmlV191(readPublishWizardPayloadV191())}</div>${html}`;
+  };
+}
+
+document.addEventListener("click", async (event) => {
+  const runButton = event.target.closest?.("[data-run-publish-wizard-v191]");
+  if (runButton) {
+    const previous = runButton.textContent;
+    runButton.disabled = true;
+    runButton.textContent = "Generazione...";
+    try {
+      await buildPublishWizardPayloadV191();
+    } finally {
+      runButton.disabled = false;
+      runButton.textContent = previous || "Genera piano pubblicazione";
+    }
+    return;
+  }
+  const copyButton = event.target.closest?.("[data-copy-publish-wizard-v191]");
+  if (copyButton) {
+    await copyPublishWizardTextV191(copyButton.dataset.copyPublishWizardV191 || "flow", copyButton);
+  }
+});
+
+function injectPublishWizardStylesV191() {
+  if (document.getElementById("publishWizardStylesV191")) return;
+  const style = document.createElement("style");
+  style.id = "publishWizardStylesV191";
+  style.textContent = `
+    .publish-wizard-v191 { border: 1px solid rgba(16,185,129,.28); background: rgba(16,185,129,.055); }
+    .publish-wizard-badge-v191 { align-self: flex-start; border-radius: 999px; padding: .35rem .7rem; font-size: .78rem; font-weight: 800; border: 1px solid rgba(255,255,255,.14); white-space: nowrap; }
+    .publish-wizard-badge-v191.is-ok { background: rgba(34,197,94,.16); color: #bbf7d0; }
+    .publish-wizard-badge-v191.is-warn { background: rgba(245,158,11,.18); color: #fde68a; }
+    .publish-wizard-summary-v191 { display: flex; flex-wrap: wrap; gap: .55rem; margin: .85rem 0 1rem; align-items: center; }
+    .publish-wizard-summary-v191 span, .publish-wizard-summary-v191 small { border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .32rem .65rem; background: rgba(15,23,42,.45); overflow-wrap: anywhere; }
+    .publish-wizard-summary-v191 small { color: var(--muted); }
+    .publish-wizard-actions-v191 { gap: .6rem; flex-wrap: wrap; }
+    .publish-wizard-grid-v191 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+    .publish-wizard-grid-v191 article, .publish-wizard-pending-v191 article { border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .85rem; background: rgba(15,23,42,.58); min-width: 0; }
+    .publish-wizard-grid-v191 h4, .publish-wizard-section-v191 h4 { margin: .35rem 0 .45rem; overflow-wrap: anywhere; }
+    .publish-wizard-grid-v191 p, .publish-wizard-grid-v191 li, .publish-wizard-section-v191 p, .publish-wizard-section-v191 li { overflow-wrap: anywhere; }
+    .publish-wizard-grid-v191 ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+    .publish-wizard-step-v191 { display: inline-flex; align-items: center; justify-content: center; width: 1.7rem; height: 1.7rem; border-radius: 999px; background: rgba(16,185,129,.18); border: 1px solid rgba(16,185,129,.35); font-weight: 900; }
+    .publish-wizard-section-v191 { margin-top: 1rem; min-width: 0; }
+    .publish-wizard-pending-v191 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+    .publish-wizard-pending-v191 strong, .publish-wizard-pending-v191 p, .publish-wizard-pending-v191 small { overflow-wrap: anywhere; }
+    .publish-wizard-code-v191 { max-width: 100%; overflow-x: auto; white-space: pre-wrap; word-break: break-word; border: 1px solid rgba(255,255,255,.12); border-radius: .9rem; padding: .85rem; background: rgba(2,6,23,.82); }
+    .publish-wizard-code-v191 code { white-space: pre-wrap; word-break: break-word; }
+    @media (max-width: 980px) {
+      .publish-wizard-grid-v191 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .publish-wizard-v191 { margin-inline: 0; }
+      .publish-wizard-v191 .panel-header { align-items: stretch; }
+      .publish-wizard-badge-v191 { width: 100%; text-align: center; white-space: normal; }
+      .publish-wizard-summary-v191 span, .publish-wizard-summary-v191 small { width: 100%; text-align: center; }
+      .publish-wizard-actions-v191 { flex-direction: column; align-items: stretch; }
+      .publish-wizard-actions-v191 .button { width: 100%; }
+      .publish-wizard-grid-v191, .publish-wizard-pending-v191 { grid-template-columns: 1fr; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectPublishWizardStylesV191();
+
+const renderAdminHelpPanelBeforeV191 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV191() {
+  let html = renderAdminHelpPanelBeforeV191?.() || "";
+  if (html && !html.includes("Procedura guidata Pubblica aggiornamenti")) {
+    html = html.replace("<article>\n          <h4>Stato Firebase / JSON</h4>", "<article>\n          <h4>Procedura guidata Pubblica aggiornamenti</h4>\n          <p>Trasforma promemoria e semafori in passaggi operativi: aggiorna snapshot, scarica JSON statici, applica overlay, commit, push e merge su master.</p>\n        </article>\n        <article>\n          <h4>Stato Firebase / JSON</h4>");
+  }
+  return html;
+};
+
+window.ZonaOrientalePublishWizard = {
+  build(options = {}) {
+    return buildPublishWizardPayloadV191({ ...options, silent: options.silent ?? false });
+  },
+  last() {
+    return readPublishWizardPayloadV191();
+  },
+  commands() {
+    return getPublishWizardCommandsV191();
+  },
+  copy(kind = "flow") {
+    return copyPublishWizardTextV191(kind, null);
+  }
+};
+
+
+/* V191 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
