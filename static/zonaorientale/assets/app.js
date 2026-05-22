@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "193";
+const DEPLOY_EXPECTED_VERSION_V181 = "194";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -17547,5 +17547,157 @@ window.ZonaOrientaleHistoricalStats = {
 };
 
 
-/* V193 - Final startup remains centralized here. */
+
+/* V194 - Tasto Su mobile globale.
+   Estende il pulsante "Su" oltre il Listone: su smartphone compare un
+   piccolo bottone flottante nelle pagine lunghe e riporta l'utente all'inizio
+   della schermata senza aggiungere letture Firebase o nuovi dati remoti. */
+const MOBILE_GLOBAL_TOP_BUTTON_ID_V194 = "mobileGlobalTopBtnV194";
+let mobileGlobalTopTickingV194 = false;
+
+function isMobileViewportV194() {
+  return Boolean(
+    window.matchMedia?.("(max-width: 760px)")?.matches
+    || document.body?.classList?.contains("is-mobile-ux")
+  );
+}
+
+function getActivePageV194() {
+  return document.querySelector('.app-page.is-active') || document.querySelector(`[data-page="${escapeCssIdentifier(state.currentPage || "dashboard")}"]`);
+}
+
+function isMobilePageLongEnoughV194() {
+  const activePage = getActivePageV194();
+  const pageHeight = activePage?.scrollHeight || document.documentElement.scrollHeight || 0;
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+  return pageHeight > viewportHeight + 260;
+}
+
+function ensureMobileGlobalTopButtonV194() {
+  let button = document.getElementById(MOBILE_GLOBAL_TOP_BUTTON_ID_V194);
+  if (button) return button;
+  button = document.createElement("button");
+  button.id = MOBILE_GLOBAL_TOP_BUTTON_ID_V194;
+  button.className = "mobile-global-top-btn-v194";
+  button.type = "button";
+  button.hidden = true;
+  button.setAttribute("aria-label", "Torna in alto nella pagina");
+  button.innerHTML = `<span aria-hidden="true">↑</span><strong>Su</strong>`;
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    const focusTarget = getActivePageV194()?.querySelector(".page-heading h1, .page-heading h2, h1, h2") || getActivePageV194();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.setTimeout(() => {
+      if (focusTarget && typeof focusTarget.focus === "function") {
+        const previousTabIndex = focusTarget.getAttribute("tabindex");
+        if (previousTabIndex === null) focusTarget.setAttribute("tabindex", "-1");
+        focusTarget.focus({ preventScroll: true });
+        if (previousTabIndex === null) focusTarget.removeAttribute("tabindex");
+      }
+      updateMobileGlobalTopButtonV194();
+    }, 320);
+  });
+  document.body.appendChild(button);
+  return button;
+}
+
+function updateMobileGlobalTopButtonV194() {
+  const button = ensureMobileGlobalTopButtonV194();
+  const shouldShow = isMobileViewportV194()
+    && isMobilePageLongEnoughV194()
+    && (window.scrollY || document.documentElement.scrollTop || 0) > 420;
+  button.hidden = !shouldShow;
+  button.classList.toggle("is-visible", shouldShow);
+  button.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+}
+
+function scheduleMobileGlobalTopButtonUpdateV194() {
+  if (mobileGlobalTopTickingV194) return;
+  mobileGlobalTopTickingV194 = true;
+  window.requestAnimationFrame(() => {
+    mobileGlobalTopTickingV194 = false;
+    updateMobileGlobalTopButtonV194();
+  });
+}
+
+function injectMobileGlobalTopStylesV194() {
+  if (document.getElementById("mobileGlobalTopStylesV194")) return;
+  const style = document.createElement("style");
+  style.id = "mobileGlobalTopStylesV194";
+  style.textContent = `
+    .mobile-global-top-btn-v194 {
+      position: fixed;
+      left: max(1rem, env(safe-area-inset-left));
+      bottom: calc(5.15rem + env(safe-area-inset-bottom));
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      min-width: 4.8rem;
+      min-height: 2.55rem;
+      padding: .68rem .9rem;
+      border: 1px solid rgba(251, 191, 36, .35);
+      border-radius: 999px;
+      color: #fff7ed;
+      background: linear-gradient(135deg, rgba(139,0,41,.96), rgba(15,23,42,.94));
+      box-shadow: 0 16px 34px rgba(2,6,23,.42);
+      font: inherit;
+      font-weight: 800;
+      letter-spacing: .01em;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-global-top-btn-v194 span { font-size: 1rem; line-height: 1; }
+    .mobile-global-top-btn-v194 strong { font-size: .9rem; }
+    .mobile-global-top-btn-v194.is-visible { display: inline-flex; }
+    .mobile-global-top-btn-v194:focus-visible { outline: 3px solid rgba(251,191,36,.7); outline-offset: 3px; }
+    @media (min-width: 761px) {
+      .mobile-global-top-btn-v194, .mobile-global-top-btn-v194.is-visible { display: none !important; }
+    }
+    @media (max-width: 420px) {
+      .mobile-global-top-btn-v194 {
+        left: .75rem;
+        min-width: 4.35rem;
+        min-height: 2.35rem;
+        padding: .58rem .76rem;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectMobileGlobalTopStylesV194();
+ensureMobileGlobalTopButtonV194();
+window.addEventListener("scroll", scheduleMobileGlobalTopButtonUpdateV194, { passive: true });
+window.addEventListener("resize", scheduleMobileGlobalTopButtonUpdateV194);
+window.addEventListener("hashchange", () => window.setTimeout(updateMobileGlobalTopButtonV194, 120));
+document.addEventListener("click", (event) => {
+  if (event.target.closest?.("[data-page-link], [data-v42-page-link], .mobile-bottom-link, .mobile-more-link")) {
+    window.setTimeout(updateMobileGlobalTopButtonV194, 180);
+  }
+}, true);
+
+const renderAllBeforeV194 = renderAll;
+renderAll = function renderAllV194() {
+  const result = renderAllBeforeV194?.();
+  window.requestAnimationFrame(updateMobileGlobalTopButtonV194);
+  return result;
+};
+
+const renderAdminHelpPanelBeforeV194 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV194() {
+  let html = renderAdminHelpPanelBeforeV194?.() || "";
+  if (html && !html.includes("Tasto Su mobile globale")) {
+    html = html.replace("</div>\n    </section>", "        <article>\n          <h4>Tasto Su mobile globale</h4>\n          <p>Da smartphone, nelle pagine lunghe compare un pulsante flottante Su che riporta all'inizio della schermata. Non legge Firebase e non modifica dati.</p>\n        </article>\n      </div>\n    </section>");
+  }
+  return html;
+};
+
+window.ZonaOrientaleMobileTop = {
+  show: updateMobileGlobalTopButtonV194,
+  ensure: ensureMobileGlobalTopButtonV194,
+  isMobile: isMobileViewportV194
+};
+
+/* V194 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
