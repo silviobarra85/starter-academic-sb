@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=193";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=195";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "194";
+const DEPLOY_EXPECTED_VERSION_V181 = "195";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -17699,5 +17699,396 @@ window.ZonaOrientaleMobileTop = {
   isMobile: isMobileViewportV194
 };
 
-/* V194 - Final startup remains centralized here. */
+
+/* V195 - Confronta squadre.
+   Public, mobile-first comparison page. It reuses the already loaded static
+   JSON/snapshot data and must not trigger additional Firebase reads. */
+const TEAM_COMPARE_STORAGE_KEY_V195 = "zonaOrientaleTeamCompareV195";
+
+function getCompareTeamKeyV195(seasonTeam) {
+  if (!seasonTeam) return "";
+  return seasonTeam.teamId || `name:${normalizeKey(seasonTeam.name || seasonTeam.id || "")}`;
+}
+
+function getCompareProfileMapV195() {
+  const profiles = new Map();
+  const seasonTeams = [...(state.raw.seasonTeams || [])]
+    .filter((item) => item && (item.teamId || item.name || item.id))
+    .sort((a, b) => getSeasonSortValueV193(b.seasonId) - getSeasonSortValueV193(a.seasonId));
+
+  function ensureProfileFromSeasonTeam(seasonTeam) {
+    const key = getCompareTeamKeyV195(seasonTeam);
+    if (!key) return null;
+    const team = seasonTeam.teamId ? getTeamById(seasonTeam.teamId) : null;
+    const existing = profiles.get(key) || {
+      key,
+      teamId: seasonTeam.teamId || "",
+      displayName: team?.canonicalName || team?.name || seasonTeam.name || seasonTeam.id || "-",
+      latestName: seasonTeam.name || team?.canonicalName || team?.name || "-",
+      logo: getSeasonTeamLogo(seasonTeam) || team?.logo || "",
+      seasonTeamIds: new Set(),
+      seasonTeams: [],
+      seasons: new Set(),
+      presidents: new Set(),
+      titles: [],
+      podiums: { first: 0, second: 0, third: 0, total: 0 },
+      matches: { played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0 },
+      fmMovements: 0,
+      fifa: null
+    };
+    existing.teamId = existing.teamId || seasonTeam.teamId || "";
+    existing.latestName = seasonTeam.name || existing.latestName;
+    if (!existing.displayName || existing.displayName === "-") existing.displayName = existing.latestName;
+    if (!existing.logo) existing.logo = getSeasonTeamLogo(seasonTeam) || team?.logo || "";
+    existing.seasonTeamIds.add(seasonTeam.id);
+    existing.seasonTeams.push(seasonTeam);
+    if (seasonTeam.seasonId) existing.seasons.add(seasonTeam.seasonId);
+    getPresidentsForSeasonTeamV193(seasonTeam).forEach((president) => existing.presidents.add(president.name || president.id));
+    profiles.set(key, existing);
+    return existing;
+  }
+
+  seasonTeams.forEach(ensureProfileFromSeasonTeam);
+
+  const seasonTeamIdToKey = new Map();
+  profiles.forEach((profile) => {
+    profile.seasonTeamIds.forEach((id) => seasonTeamIdToKey.set(id, profile.key));
+  });
+
+  const rows = [...(state.raw.honorRoll || [])];
+  rows.forEach((row) => {
+    const seasonId = row.seasonId || row.id || "";
+    HISTORICAL_COMPETITIONS_V193.forEach((competition) => {
+      const key = seasonTeamIdToKey.get(row[competition.field]);
+      const profile = key ? profiles.get(key) : null;
+      if (!profile) return;
+      profile.titles.push({ seasonId, label: competition.label, type: competition.key });
+    });
+    [
+      [row.championItalySeasonTeamId, "first"],
+      [row.secondPlaceSeasonTeamId, "second"],
+      [row.thirdPlaceSeasonTeamId, "third"]
+    ].forEach(([seasonTeamId, place]) => {
+      const key = seasonTeamIdToKey.get(seasonTeamId);
+      const profile = key ? profiles.get(key) : null;
+      if (!profile) return;
+      profile.podiums[place] += 1;
+      profile.podiums.total += 1;
+    });
+  });
+
+  const playedMatches = (state.raw.competitionMatches || []).filter((match) =>
+    match?.status === "GIOCATA" &&
+    match.homeGoals !== "" && match.homeGoals !== null && match.homeGoals !== undefined &&
+    match.awayGoals !== "" && match.awayGoals !== null && match.awayGoals !== undefined
+  );
+  playedMatches.forEach((match) => {
+    const homeKey = seasonTeamIdToKey.get(match.homeSeasonTeamId);
+    const awayKey = seasonTeamIdToKey.get(match.awaySeasonTeamId);
+    const homeProfile = homeKey ? profiles.get(homeKey) : null;
+    const awayProfile = awayKey ? profiles.get(awayKey) : null;
+    const homeGoals = Number(match.homeGoals);
+    const awayGoals = Number(match.awayGoals);
+    if (!Number.isFinite(homeGoals) || !Number.isFinite(awayGoals)) return;
+    function addMatch(profile, goalsFor, goalsAgainst) {
+      if (!profile) return;
+      profile.matches.played += 1;
+      profile.matches.goalsFor += goalsFor;
+      profile.matches.goalsAgainst += goalsAgainst;
+      if (goalsFor > goalsAgainst) profile.matches.wins += 1;
+      else if (goalsFor < goalsAgainst) profile.matches.losses += 1;
+      else profile.matches.draws += 1;
+    }
+    addMatch(homeProfile, homeGoals, awayGoals);
+    addMatch(awayProfile, awayGoals, homeGoals);
+  });
+
+  (state.raw.fmMovements || []).forEach((movement) => {
+    const key = seasonTeamIdToKey.get(movement.seasonTeamId);
+    const profile = key ? profiles.get(key) : null;
+    if (profile) profile.fmMovements += 1;
+  });
+
+  (state.raw.fifaRankings || []).forEach((ranking) => {
+    const key = ranking.teamId || "";
+    const profile = profiles.get(key);
+    if (!profile) return;
+    const score = Number(ranking.score ?? ranking.points ?? 0);
+    profile.fifa = {
+      score: Number.isFinite(score) ? score : ranking.score ?? ranking.points ?? "-",
+      notes: ranking.notes || "Ranking FIFA"
+    };
+  });
+
+  return profiles;
+}
+
+function getCompareProfilesV195() {
+  return Array.from(getCompareProfileMapV195().values()).sort((a, b) =>
+    String(a.latestName || a.displayName).localeCompare(String(b.latestName || b.displayName), "it", { numeric: true, sensitivity: "base" })
+  );
+}
+
+function getTeamCompareSelectionV195(profiles) {
+  const keys = profiles.map((item) => item.key);
+  let saved = [];
+  try {
+    saved = JSON.parse(localStorage.getItem(TEAM_COMPARE_STORAGE_KEY_V195) || "[]");
+  } catch (error) {
+    saved = [];
+  }
+  const current = Array.isArray(state.teamCompareSelectionV195) ? state.teamCompareSelectionV195 : [];
+  const first = current[0] || saved[0] || keys[0] || "";
+  let second = current[1] || saved[1] || keys.find((key) => key !== first) || "";
+  if (second === first) second = keys.find((key) => key !== first) || "";
+  state.teamCompareSelectionV195 = [first, second];
+  return state.teamCompareSelectionV195;
+}
+
+function setTeamCompareSelectionV195(first, second) {
+  if (first && second && first === second) {
+    const alternative = getCompareProfilesV195().find((item) => item.key !== first)?.key || "";
+    second = alternative;
+  }
+  state.teamCompareSelectionV195 = [first || "", second || ""];
+  try {
+    localStorage.setItem(TEAM_COMPARE_STORAGE_KEY_V195, JSON.stringify(state.teamCompareSelectionV195));
+  } catch (error) {
+    // localStorage can be unavailable in private contexts; selection still works in memory.
+  }
+  renderTeamCompareV195();
+}
+
+function renderCompareMetricV195(label, value, note = "") {
+  return `
+    <article class="team-compare-metric-v195">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(String(value ?? "-"))}</strong>
+      ${note ? `<small>${escapeHtml(note)}</small>` : ""}
+    </article>`;
+}
+
+function renderCompareProfileHeaderV195(profile) {
+  const name = profile.latestName || profile.displayName || "-";
+  return `
+    <div class="team-compare-profile-head-v195">
+      ${renderTeamLogo(name, profile.logo || "")}
+      <div>
+        <h3>${escapeHtml(name)}</h3>
+        <p>${escapeHtml(profile.displayName && profile.displayName !== name ? profile.displayName : "Profilo storico club")}</p>
+      </div>
+    </div>`;
+}
+
+function renderCompareProfileCardV195(profile) {
+  if (!profile) return `<article class="panel team-compare-profile-v195"><p class="muted">Squadra non disponibile.</p></article>`;
+  const seasons = Array.from(profile.seasons).sort((a, b) => getSeasonSortValueV193(b) - getSeasonSortValueV193(a));
+  const lastTitles = [...profile.titles].sort((a, b) => getSeasonSortValueV193(b.seasonId) - getSeasonSortValueV193(a.seasonId)).slice(0, 4);
+  const titleBreakdown = HISTORICAL_COMPETITIONS_V193.map((competition) => {
+    const count = profile.titles.filter((title) => title.type === competition.key).length;
+    return count ? `<span>${escapeHtml(competition.label)} <strong>${count}</strong></span>` : "";
+  }).join("") || `<span class="muted">Nessun titolo</span>`;
+  return `
+    <article class="panel team-compare-profile-v195">
+      ${renderCompareProfileHeaderV195(profile)}
+      <div class="team-compare-metrics-v195">
+        ${renderCompareMetricV195("Titoli", profile.titles.length, "competizioni principali")}
+        ${renderCompareMetricV195("Podi campionato", `${profile.podiums.first}-${profile.podiums.second}-${profile.podiums.third}`, "oro-argento-bronzo")}
+        ${renderCompareMetricV195("Stagioni", seasons.length, seasons[0] ? `ultima ${getSeasonLabelV193(seasons[0])}` : "")}
+        ${renderCompareMetricV195("FIFA", profile.fifa?.score ?? "-", profile.fifa?.notes || "ranking")}
+        ${renderCompareMetricV195("Partite", profile.matches.played, `${profile.matches.wins}V ${profile.matches.draws}N ${profile.matches.losses}P`)}
+        ${renderCompareMetricV195("Gol", `${profile.matches.goalsFor}-${profile.matches.goalsAgainst}`, "fatti-subiti")}
+      </div>
+      <div class="team-compare-chip-row-v195">${titleBreakdown}</div>
+      <div class="team-compare-detail-v195">
+        <strong>Presidenti storici</strong>
+        <p>${escapeHtml(Array.from(profile.presidents).slice(0, 6).join(", ") || "Non disponibili")}</p>
+      </div>
+      <div class="team-compare-detail-v195">
+        <strong>Ultimi titoli</strong>
+        <p>${lastTitles.length ? lastTitles.map((title) => `${getSeasonLabelV193(title.seasonId)} ${title.label}`).join(" · ") : "Nessun titolo registrato"}</p>
+      </div>
+    </article>`;
+}
+
+function getDirectMatchesV195(left, right) {
+  if (!left || !right) return { played: 0, leftWins: 0, rightWins: 0, draws: 0, leftGoals: 0, rightGoals: 0, recent: [] };
+  const leftIds = left.seasonTeamIds || new Set();
+  const rightIds = right.seasonTeamIds || new Set();
+  const stats = { played: 0, leftWins: 0, rightWins: 0, draws: 0, leftGoals: 0, rightGoals: 0, recent: [] };
+  (state.raw.competitionMatches || []).forEach((match) => {
+    const homeIsLeft = leftIds.has(match.homeSeasonTeamId);
+    const awayIsLeft = leftIds.has(match.awaySeasonTeamId);
+    const homeIsRight = rightIds.has(match.homeSeasonTeamId);
+    const awayIsRight = rightIds.has(match.awaySeasonTeamId);
+    if (!((homeIsLeft && awayIsRight) || (homeIsRight && awayIsLeft))) return;
+    const homeGoals = Number(match.homeGoals);
+    const awayGoals = Number(match.awayGoals);
+    if (!Number.isFinite(homeGoals) || !Number.isFinite(awayGoals)) return;
+    const leftGoals = homeIsLeft ? homeGoals : awayGoals;
+    const rightGoals = homeIsRight ? homeGoals : awayGoals;
+    stats.played += 1;
+    stats.leftGoals += leftGoals;
+    stats.rightGoals += rightGoals;
+    if (leftGoals > rightGoals) stats.leftWins += 1;
+    else if (rightGoals > leftGoals) stats.rightWins += 1;
+    else stats.draws += 1;
+    stats.recent.push({
+      seasonId: getSeasonTeamById(match.homeSeasonTeamId)?.seasonId || getSeasonTeamById(match.awaySeasonTeamId)?.seasonId || "",
+      competition: getCompetitionShortCode?.(buildMaps().competitionsById.get(match.competitionId)) || match.competitionId || "Competizione",
+      date: match.matchDate || "",
+      leftGoals,
+      rightGoals
+    });
+  });
+  stats.recent.sort((a, b) => getSeasonSortValueV193(b.seasonId) - getSeasonSortValueV193(a.seasonId) || String(b.date || "").localeCompare(String(a.date || "")));
+  stats.recent = stats.recent.slice(0, 6);
+  return stats;
+}
+
+function renderDirectCompareV195(left, right) {
+  const direct = getDirectMatchesV195(left, right);
+  const leftName = left?.latestName || left?.displayName || "Squadra 1";
+  const rightName = right?.latestName || right?.displayName || "Squadra 2";
+  return `
+    <article class="panel team-compare-direct-v195">
+      <div class="team-compare-section-title-v195"><span>⚔️</span><div><h3>Scontri diretti</h3><p>Partite giocate trovate tra le due squadre nelle competizioni caricate.</p></div></div>
+      <div class="team-compare-direct-score-v195">
+        <div><strong>${escapeHtml(String(direct.leftWins))}</strong><span>${escapeHtml(leftName)}</span></div>
+        <div><strong>${escapeHtml(String(direct.draws))}</strong><span>Pareggi</span></div>
+        <div><strong>${escapeHtml(String(direct.rightWins))}</strong><span>${escapeHtml(rightName)}</span></div>
+      </div>
+      <p class="muted center">${escapeHtml(String(direct.played))} partite · Gol ${escapeHtml(String(direct.leftGoals))}-${escapeHtml(String(direct.rightGoals))}</p>
+      <div class="team-compare-direct-list-v195">
+        ${direct.recent.length ? direct.recent.map((match) => `
+          <article>
+            <span>${escapeHtml(getSeasonLabelV193(match.seasonId))}</span>
+            <strong>${escapeHtml(match.leftGoals)}-${escapeHtml(match.rightGoals)}</strong>
+            <small>${escapeHtml(match.competition)}${match.date ? ` · ${escapeHtml(match.date)}` : ""}</small>
+          </article>`).join("") : `<p class="muted">Nessuno scontro diretto trovato nei dati caricati.</p>`}
+      </div>
+    </article>`;
+}
+
+function renderCompareControlsV195(profiles, leftKey, rightKey) {
+  const options = profiles.map((profile) => `<option value="${escapeHtml(profile.key)}">${escapeHtml(profile.latestName || profile.displayName || profile.key)}</option>`).join("");
+  return `
+    <label><span>Squadra 1</span><select id="teamCompareLeftV195" class="input">${options}</select></label>
+    <button id="teamCompareSwapV195" class="button button-secondary" type="button" aria-label="Scambia squadre">↔ Scambia</button>
+    <label><span>Squadra 2</span><select id="teamCompareRightV195" class="input">${options}</select></label>
+    <p class="team-compare-note-v195">Usa dati gia' caricati da JSON/snapshot. Nessuna lettura Firebase aggiuntiva.</p>`;
+}
+
+function bindTeamCompareControlsV195(leftKey, rightKey) {
+  const leftSelect = document.getElementById("teamCompareLeftV195");
+  const rightSelect = document.getElementById("teamCompareRightV195");
+  const swapBtn = document.getElementById("teamCompareSwapV195");
+  if (leftSelect) leftSelect.value = leftKey || "";
+  if (rightSelect) rightSelect.value = rightKey || "";
+  leftSelect?.addEventListener("change", () => setTeamCompareSelectionV195(leftSelect.value, rightSelect?.value || ""));
+  rightSelect?.addEventListener("change", () => setTeamCompareSelectionV195(leftSelect?.value || "", rightSelect.value));
+  swapBtn?.addEventListener("click", () => setTeamCompareSelectionV195(rightSelect?.value || "", leftSelect?.value || ""));
+}
+
+function renderTeamCompareV195() {
+  const controlsTarget = document.getElementById("teamCompareControlsV195");
+  const contentTarget = document.getElementById("teamCompareContentV195");
+  if (!controlsTarget || !contentTarget) return;
+  const profiles = getCompareProfilesV195();
+  if (profiles.length < 2) {
+    controlsTarget.innerHTML = `<p class="muted">Servono almeno due squadre per il confronto.</p>`;
+    contentTarget.innerHTML = `<p class="muted">Dati squadre non sufficienti.</p>`;
+    return;
+  }
+  const [leftKey, rightKey] = getTeamCompareSelectionV195(profiles);
+  const byKey = new Map(profiles.map((profile) => [profile.key, profile]));
+  const left = byKey.get(leftKey) || profiles[0];
+  const right = byKey.get(rightKey) || profiles.find((profile) => profile.key !== left.key) || profiles[1];
+  controlsTarget.innerHTML = renderCompareControlsV195(profiles, left.key, right.key);
+  bindTeamCompareControlsV195(left.key, right.key);
+  contentTarget.innerHTML = `
+    <div class="team-compare-profiles-v195">
+      ${renderCompareProfileCardV195(left)}
+      ${renderCompareProfileCardV195(right)}
+    </div>
+    ${renderDirectCompareV195(left, right)}`;
+}
+
+function injectTeamCompareStylesV195() {
+  if (document.getElementById("teamCompareStylesV195")) return;
+  const style = document.createElement("style");
+  style.id = "teamCompareStylesV195";
+  style.textContent = `
+    .team-compare-page-v195, .team-compare-content-v195 { display: grid; gap: 1rem; }
+    .team-compare-controls-v195 { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: .75rem; align-items: end; margin-bottom: 1rem; }
+    .team-compare-controls-v195 label { display: grid; gap: .35rem; min-width: 0; }
+    .team-compare-controls-v195 label span { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 800; }
+    .team-compare-note-v195 { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: .88rem; }
+    .team-compare-profiles-v195 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .team-compare-profile-v195 { display: grid; gap: .9rem; align-content: start; overflow: hidden; }
+    .team-compare-profile-head-v195 { display: flex; align-items: center; gap: .85rem; min-width: 0; }
+    .team-compare-profile-head-v195 .team-logo, .team-compare-profile-head-v195 img { flex: 0 0 auto; }
+    .team-compare-profile-head-v195 h3 { margin: 0; color: #fff7ed; overflow-wrap: anywhere; }
+    .team-compare-profile-head-v195 p { margin: .15rem 0 0; color: var(--muted); overflow-wrap: anywhere; }
+    .team-compare-metrics-v195 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; }
+    .team-compare-metric-v195 { border: 1px solid rgba(148,163,184,.18); border-radius: 1rem; padding: .7rem; background: rgba(15,23,42,.28); min-width: 0; }
+    .team-compare-metric-v195 span, .team-compare-metric-v195 small { display: block; color: var(--muted); font-size: .78rem; overflow-wrap: anywhere; }
+    .team-compare-metric-v195 strong { display: block; margin-top: .2rem; color: #fff7ed; font-size: 1.12rem; overflow-wrap: anywhere; }
+    .team-compare-chip-row-v195 { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .team-compare-chip-row-v195 span { border: 1px solid rgba(251,191,36,.24); background: rgba(251,191,36,.09); color: #fde68a; border-radius: 999px; padding: .28rem .55rem; font-size: .8rem; overflow-wrap: anywhere; }
+    .team-compare-detail-v195 { display: grid; gap: .22rem; min-width: 0; }
+    .team-compare-detail-v195 strong { color: #fff7ed; }
+    .team-compare-detail-v195 p { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+    .team-compare-direct-v195 { display: grid; gap: .9rem; }
+    .team-compare-section-title-v195 { display: flex; gap: .75rem; align-items: center; }
+    .team-compare-section-title-v195 span { font-size: 1.5rem; }
+    .team-compare-section-title-v195 h3 { margin: 0; color: #fff7ed; }
+    .team-compare-section-title-v195 p { margin: .15rem 0 0; color: var(--muted); }
+    .team-compare-direct-score-v195 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; text-align: center; }
+    .team-compare-direct-score-v195 div { border-radius: 1.1rem; padding: .85rem .65rem; background: rgba(15,23,42,.35); border: 1px solid rgba(148,163,184,.16); min-width: 0; }
+    .team-compare-direct-score-v195 strong { display: block; color: #fde68a; font-size: 1.7rem; }
+    .team-compare-direct-score-v195 span { color: var(--muted); font-size: .82rem; overflow-wrap: anywhere; }
+    .team-compare-direct-list-v195 { display: grid; gap: .5rem; }
+    .team-compare-direct-list-v195 article { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.2fr); gap: .55rem; align-items: center; border-top: 1px solid rgba(148,163,184,.13); padding-top: .5rem; }
+    .team-compare-direct-list-v195 span, .team-compare-direct-list-v195 small { color: var(--muted); overflow-wrap: anywhere; }
+    .team-compare-direct-list-v195 strong { color: #fff7ed; }
+    @media (max-width: 760px) {
+      .team-compare-controls-v195 { grid-template-columns: 1fr; align-items: stretch; }
+      .team-compare-controls-v195 .button { width: 100%; }
+      .team-compare-profiles-v195 { grid-template-columns: 1fr; }
+      .team-compare-metrics-v195 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .team-compare-direct-list-v195 article { grid-template-columns: 1fr; text-align: left; }
+    }
+    @media (max-width: 420px) {
+      .team-compare-metrics-v195, .team-compare-direct-score-v195 { grid-template-columns: 1fr; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectTeamCompareStylesV195();
+
+const renderAllBeforeV195 = renderAll;
+renderAll = function renderAllV195() {
+  const result = renderAllBeforeV195?.();
+  renderTeamCompareV195();
+  return result;
+};
+
+const renderAdminHelpPanelBeforeV195 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV195() {
+  let html = renderAdminHelpPanelBeforeV195?.() || "";
+  if (html && !html.includes("Confronta squadre")) {
+    html = html.replace("</div>\n    </section>", "        <article>\n          <h4>Confronta squadre</h4>\n          <p>Pagina pubblica mobile-first per confrontare due club su titoli, podi, ranking FIFA, partite e scontri diretti usando solo dati gia' caricati da JSON/snapshot.</p>\n        </article>\n      </div>\n    </section>");
+  }
+  return html;
+};
+
+window.ZonaOrientaleTeamCompare = {
+  render: renderTeamCompareV195,
+  profiles: getCompareProfilesV195,
+  direct: getDirectMatchesV195
+};
+
+/* V195 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
