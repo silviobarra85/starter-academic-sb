@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "200";
+const DEPLOY_EXPECTED_VERSION_V181 = "201";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -19272,5 +19272,211 @@ window.ZonaOrientaleTeamCompare = {
   fifaRows: () => state.publicHonorSnapshot?.fifaRanking || []
 };
 
-/* V200 - Final startup remains centralized here. */
+
+/* V201 - Area squadra: conteggio rosa da snapshot/static rosters.
+   Dopo il passaggio ai JSON statici, l'Area squadra non deve dipendere solo
+   da state.raw.rosterEntries o dai dati admin completi. Questa patch cerca la
+   rosa del presidente in questo ordine: raw applicato, publicSeasonSnapshots
+   gia' caricati, JSON rose statici. Non aggiunge letture Firebase. */
+function getTeamNameKeysV201(value) {
+  const text = String(value || "").trim();
+  if (!text) return [];
+  const compact = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+  const withoutCommon = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\b(a\.s\.|as|a\.f\.c\.|afc|f\.c\.|fc|ssd|asd)\b/g, "").replace(/[^a-z0-9]/g, "");
+  return [
+    typeof normalizeKey === "function" ? normalizeKey(text) : text.toLowerCase(),
+    typeof normalizeRosterKey === "function" ? normalizeRosterKey(text) : "",
+    compact,
+    withoutCommon
+  ].filter(Boolean);
+}
+
+function getTeamKeysFromRecordV201(record) {
+  const keys = new Set();
+  [record?.name, record?.teamName, record?.seasonTeamName, record?.displayName, record?.canonicalName, record?.fantasyRoster, record?.rosterName].forEach((value) => {
+    getTeamNameKeysV201(value).forEach((key) => keys.add(key));
+  });
+  return keys;
+}
+
+function findSeasonTeamForRosterV201(seasonTeamId, approved = null) {
+  if (!seasonTeamId && !approved?.seasonTeamId) return null;
+  const targetId = String(seasonTeamId || approved?.seasonTeamId || "");
+  const direct = typeof getSeasonTeamById === "function" ? getSeasonTeamById(targetId) : null;
+  if (direct) return direct;
+
+  const raw = Array.isArray(state.raw?.seasonTeams) ? state.raw.seasonTeams : [];
+  const fromRaw = raw.find((team) => String(team.id || "") === targetId);
+  if (fromRaw) return fromRaw;
+
+  const snapshots = Object.values(state.publicSeasonSnapshots || {}).filter(Boolean);
+  for (const snapshot of snapshots) {
+    const fromSnapshot = (snapshot.seasonTeams || []).find((team) => String(team.id || "") === targetId);
+    if (fromSnapshot) return fromSnapshot;
+  }
+
+  if (approved) {
+    return {
+      id: targetId,
+      seasonId: approved.seasonId || (typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : ""),
+      name: approved.teamName || approved.seasonTeamName || approved.displayName || targetId,
+      teamName: approved.teamName || ""
+    };
+  }
+  return { id: targetId, seasonId: typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "", name: targetId };
+}
+
+function dedupeRosterPlayersV201(players) {
+  const seen = new Set();
+  return (players || []).filter((player) => {
+    const key = String(player.id || player.playerId || player.playerName || player.name || "").trim().toLowerCase();
+    if (!key) return true;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function collectRosterEntriesFromSnapshotV201(seasonTeamId, seasonTeam) {
+  const targetId = String(seasonTeamId || seasonTeam?.id || "");
+  const seasonId = String(seasonTeam?.seasonId || (typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : ""));
+  const sources = [];
+  if (Array.isArray(state.raw?.rosterEntries)) sources.push(state.raw.rosterEntries);
+  const currentSnapshot = state.publicSeasonSnapshots?.[seasonId];
+  if (Array.isArray(currentSnapshot?.rosterEntries)) sources.push(currentSnapshot.rosterEntries);
+  Object.entries(state.publicSeasonSnapshots || {}).forEach(([snapshotSeasonId, snapshot]) => {
+    if (String(snapshotSeasonId) !== seasonId && Array.isArray(snapshot?.rosterEntries)) sources.push(snapshot.rosterEntries);
+  });
+
+  const allEntries = sources.flat().filter(Boolean);
+  const activeEntries = allEntries.filter((entry) => String(entry.status || "ACTIVE").toUpperCase() !== "REMOVED");
+  const exact = activeEntries.filter((entry) => String(entry.seasonTeamId || "") === targetId);
+  if (exact.length) return dedupeRosterPlayersV201(exact);
+
+  const teamKeys = getTeamKeysFromRecordV201(seasonTeam);
+  if (!teamKeys.size) return [];
+  const byName = activeEntries.filter((entry) => {
+    const entryKeys = getTeamKeysFromRecordV201(entry);
+    return [...entryKeys].some((key) => teamKeys.has(key));
+  });
+  return dedupeRosterPlayersV201(byName);
+}
+
+function collectStaticRosterPlayersV201(seasonTeam, approved = null) {
+  const seasonId = String(seasonTeam?.seasonId || approved?.seasonId || (typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : ""));
+  const snapshots = Array.isArray(state.rosters) ? state.rosters : [];
+  const rosterSnapshot = snapshots.find((snapshot) => String(snapshot.seasonId || snapshot.meta?.seasonId || "") === seasonId) || snapshots[0] || null;
+  if (!rosterSnapshot) return [];
+
+  const targetKeys = new Set([
+    ...getTeamKeysFromRecordV201(seasonTeam),
+    ...getTeamNameKeysV201(approved?.teamName),
+    ...getTeamNameKeysV201(approved?.seasonTeamName)
+  ]);
+  if (!targetKeys.size) return [];
+
+  const staticRoster = (rosterSnapshot.rosters || []).find((roster) => {
+    const rosterKeys = getTeamKeysFromRecordV201(roster);
+    return [...rosterKeys].some((key) => targetKeys.has(key));
+  });
+  if (!staticRoster) return [];
+
+  const targetId = seasonTeam?.id || approved?.seasonTeamId || "";
+  if (typeof mapStaticRosterPlayers === "function") {
+    return mapStaticRosterPlayers(staticRoster, seasonId, targetId) || [];
+  }
+  return (staticRoster.players || []).map((player) => ({
+    ...player,
+    seasonId,
+    seasonTeamId: targetId,
+    playerName: player.playerName || player.name || ""
+  }));
+}
+
+function getRosterPlayersForSeasonTeamV201(seasonTeamId, approved = null) {
+  const seasonTeam = findSeasonTeamForRosterV201(seasonTeamId, approved);
+  if (!seasonTeam) return [];
+  const snapshotEntries = collectRosterEntriesFromSnapshotV201(seasonTeam.id || seasonTeamId, seasonTeam);
+  if (snapshotEntries.length) return snapshotEntries;
+  return collectStaticRosterPlayersV201(seasonTeam, approved);
+}
+
+const getRosterForSeasonTeamBeforeV201 = typeof getRosterForSeasonTeam === "function" ? getRosterForSeasonTeam : null;
+getRosterForSeasonTeam = function getRosterForSeasonTeamV201(seasonTeam) {
+  const players = getRosterPlayersForSeasonTeamV201(seasonTeam?.id, null);
+  if (players.length) {
+    return {
+      id: seasonTeam?.id || "",
+      name: seasonTeam?.name || seasonTeam?.teamName || "",
+      playerCount: players.length,
+      players
+    };
+  }
+  const fallback = getRosterForSeasonTeamBeforeV201?.(seasonTeam);
+  if (fallback) return fallback;
+  return { id: seasonTeam?.id || "", name: seasonTeam?.name || "", playerCount: 0, players: [] };
+};
+
+if (typeof getPresidentDashboardRosterV192 === "function") {
+  getPresidentDashboardRosterV192 = function getPresidentDashboardRosterV201(approved) {
+    const players = getRosterPlayersForSeasonTeamV201(approved?.seasonTeamId, approved);
+    if (players.length) return players;
+    const seasonTeam = findSeasonTeamForRosterV201(approved?.seasonTeamId, approved);
+    try {
+      const roster = seasonTeam && typeof getRosterForSeasonTeamBeforeV201 === "function" ? getRosterForSeasonTeamBeforeV201(seasonTeam) : null;
+      return Array.isArray(roster?.players) ? roster.players : [];
+    } catch (error) {
+      console.warn("Dashboard presidente: rosa non disponibile", error);
+      return [];
+    }
+  };
+}
+
+if (typeof renderMobileTeamAreaHubV144 === "function") {
+  renderMobileTeamAreaHubV144 = function renderMobileTeamAreaHubV201(approved) {
+    if (!approved?.seasonTeamId) return "";
+    const seasonTeam = findSeasonTeamForRosterV201(approved.seasonTeamId, approved);
+    const teamName = (typeof getSeasonTeamDisplayName === "function" ? getSeasonTeamDisplayName(approved.seasonTeamId) : "") || seasonTeam?.name || approved.teamName || "La mia squadra";
+    const presidentNames = typeof getSeasonTeamPresidentNames === "function" ? getSeasonTeamPresidentNames(seasonTeam) : (approved.presidentName || approved.displayName || "-");
+    const rosterCount = getRosterPlayersForSeasonTeamV201(approved.seasonTeamId, approved).length;
+    const fmBalance = typeof getTeamFmBalance === "function" ? getTeamFmBalance(approved.seasonTeamId) : null;
+    const pendingSent = (state.raw?.transferNegotiations || []).filter((item) => item.fromSeasonTeamId === approved.seasonTeamId && String(item.status || "PENDING").toUpperCase() === "PENDING").length;
+    const pendingReceived = (state.raw?.transferNegotiations || []).filter((item) => item.toSeasonTeamId === approved.seasonTeamId && String(item.status || "PENDING").toUpperCase() === "PENDING").length;
+    const listings = (state.transferMarketLoadedV119 || state.transferMarketLoadedV170) && typeof getActiveTransferListingsV119 === "function"
+      ? getActiveTransferListingsV119(getCurrentSeasonId()).filter((item) => item.seasonTeamId === approved.seasonTeamId).length
+      : 0;
+
+    return `
+      <section id="mobileTeamAreaHubV144" class="mobile-teamarea-hub-v144" aria-label="Azioni rapide area squadra">
+        <div class="mobile-teamarea-hero-v144 mobile-teamarea-hero-v167">
+          <span class="mobile-teamarea-kicker-v144">Area squadra</span>
+          <h3>${escapeHtml(teamName)}</h3>
+          <p class="mobile-teamarea-president-v167">${escapeHtml(presidentNames || "-")}</p>
+          <p>${escapeHtml(`${rosterCount}/30 giocatori${fmBalance !== null ? ` · ${formatFm(fmBalance)}` : ""}`)}</p>
+          <button class="button button-secondary button-small mobile-teamarea-open-profile-v167" type="button" data-open-team-profile="${escapeHtml(approved.seasonTeamId)}">Apri pagina squadra</button>
+        </div>
+        <div class="mobile-teamarea-stats-v144">
+          <span><strong>${escapeHtml(String(listings))}</strong><small>in vendita</small></span>
+          <span><strong>${escapeHtml(String(pendingSent))}</strong><small>inviate</small></span>
+          <span><strong>${escapeHtml(String(pendingReceived))}</strong><small>ricevute</small></span>
+        </div>
+        <div class="mobile-teamarea-actions-v144">
+          <a class="mobile-teamarea-action-v144" href="#clubs" data-page-link="clubs"><span>👥</span><strong>Tutte le rose</strong><small>lega</small></a>
+          <a class="mobile-teamarea-action-v144" href="#fantamercato" data-page-link="fantamercato"><span>🔁</span><strong>Mercato</strong><small>trasferibili</small></a>
+          <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll=".trade-proposal-panel"><span>✍️</span><strong>Proposta</strong><small>nuova trattativa</small></button>
+          <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll=".trade-list-panel"><span>🤝</span><strong>Trattative</strong><small>storico</small></button>
+          <button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll="#teamNewsRequestForm"><span>📰</span><strong>Comunicato</strong><small>squadra</small></button>
+        </div>
+      </section>`;
+  };
+}
+
+window.ZonaOrientaleRosterDebug = {
+  playersForTeam: getRosterPlayersForSeasonTeamV201,
+  seasonTeam: findSeasonTeamForRosterV201,
+  keys: getTeamNameKeysV201
+};
+
+
+/* V201 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
