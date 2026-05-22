@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "201";
+const DEPLOY_EXPECTED_VERSION_V181 = "202";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -19477,6 +19477,389 @@ window.ZonaOrientaleRosterDebug = {
   keys: getTeamNameKeysV201
 };
 
+/* V202 - Dashboard Presidente naming, season-aware team profiles and honor links.
+   - teamarea remains the internal route for requests/operations, but the UI label is Dashboard Presidente.
+   - team profiles are resolved against the selected season when the global season changes.
+   - honor cells link only when the referenced club actually has a seasonTeam in that row/season. */
+const ZO_RELEASE_VERSION_V202 = "202";
 
-/* V201 - Final startup remains centralized here. */
+function getSeasonLabelV202(seasonId) {
+  const season = (state.raw?.seasons || []).find((item) => String(item.id || item.seasonId || "") === String(seasonId || ""));
+  if (season && typeof formatSeasonShortLabel === "function") return formatSeasonShortLabel(season);
+  return season?.name || seasonId || "stagione selezionata";
+}
+
+function getAllKnownSeasonTeamsV202(seasonId = "") {
+  const targetSeasonId = String(seasonId || "");
+  const byId = new Map();
+  const addMany = (items) => (items || []).forEach((item) => {
+    if (!item?.id) return;
+    if (targetSeasonId && String(item.seasonId || "") !== targetSeasonId) return;
+    byId.set(String(item.id), item);
+  });
+  addMany(state.raw?.seasonTeams || []);
+  Object.values(state.publicSeasonSnapshots || {}).forEach((snapshot) => addMany(snapshot?.seasonTeams || []));
+  return [...byId.values()];
+}
+
+function getKnownSeasonTeamByIdV202(seasonTeamId) {
+  const target = String(seasonTeamId || "");
+  if (!target) return null;
+  if (typeof getSeasonTeamById === "function") {
+    const direct = getSeasonTeamById(target);
+    if (direct) return direct;
+  }
+  return getAllKnownSeasonTeamsV202().find((item) => String(item.id || "") === target) || null;
+}
+
+function getSeasonTeamNameKeysV202(record) {
+  const values = [
+    record?.name,
+    record?.teamName,
+    record?.canonicalName,
+    record?.label,
+    record?.displayName
+  ];
+  const keys = new Set();
+  values.forEach((value) => {
+    if (typeof getTeamNameKeysV201 === "function") getTeamNameKeysV201(value).forEach((key) => keys.add(key));
+    else {
+      const key = typeof normalizeKey === "function" ? normalizeKey(value || "") : String(value || "").trim().toLowerCase();
+      if (key) keys.add(key);
+    }
+  });
+  return keys;
+}
+
+function getSeasonTeamCanonicalRecordV202(seasonTeam) {
+  if (!seasonTeam) return null;
+  const team = (state.raw?.teams || []).find((item) => String(item.id || "") === String(seasonTeam.teamId || ""));
+  return { ...seasonTeam, canonicalName: team?.canonicalName || team?.name || seasonTeam.canonicalName || "" };
+}
+
+function findSeasonTeamForClubInSeasonV202(sourceSeasonTeamOrName, seasonId) {
+  const targetSeasonId = String(seasonId || "");
+  if (!targetSeasonId) return null;
+  const source = typeof sourceSeasonTeamOrName === "string"
+    ? { name: sourceSeasonTeamOrName, teamName: sourceSeasonTeamOrName }
+    : (sourceSeasonTeamOrName || null);
+  if (!source) return null;
+
+  const candidates = getAllKnownSeasonTeamsV202(targetSeasonId);
+  const sourceTeamId = String(source.teamId || "");
+  if (sourceTeamId) {
+    const byTeamId = candidates.find((item) => String(item.teamId || "") === sourceTeamId);
+    if (byTeamId) return byTeamId;
+  }
+
+  const sourceKeys = getSeasonTeamNameKeysV202(getSeasonTeamCanonicalRecordV202(source) || source);
+  if (!sourceKeys.size) return null;
+  return candidates.find((candidate) => {
+    const candidateKeys = getSeasonTeamNameKeysV202(getSeasonTeamCanonicalRecordV202(candidate) || candidate);
+    return [...candidateKeys].some((key) => sourceKeys.has(key));
+  }) || null;
+}
+
+async function ensureSeasonSnapshotForProfileV202(seasonId) {
+  const target = String(seasonId || "");
+  if (!target) return null;
+  if (state.publicSeasonSnapshots?.[target]) return state.publicSeasonSnapshots[target];
+  if (typeof loadPublicSeasonSnapshotV32 === "function") {
+    const snapshot = await loadPublicSeasonSnapshotV32(target).catch((error) => {
+      console.warn("Profilo squadra: snapshot stagione non disponibile", error);
+      return null;
+    });
+    if (snapshot) return snapshot;
+  }
+  return null;
+}
+
+function buildTeamSnapshotFromSeasonSnapshotV202(seasonTeam, snapshot) {
+  if (!seasonTeam || !snapshot) return null;
+  const seasonTeamId = String(seasonTeam.id || "");
+  const seasonId = String(seasonTeam.seasonId || snapshot.seasonId || snapshot.id || "");
+  const teamId = String(seasonTeam.teamId || "");
+  const team = (snapshot.teams || []).find((item) => String(item.id || "") === teamId) || {};
+  const presidentNames = (seasonTeam.presidentIds || [])
+    .map((presidentId) => (snapshot.presidents || []).find((item) => String(item.id || "") === String(presidentId)))
+    .filter(Boolean)
+    .map((president) => president.name || president.displayName || president.email || "")
+    .filter(Boolean)
+    .join(", ");
+  const competitions = snapshot.competitions || [];
+  const competitionsById = new Map(competitions.map((item) => [String(item.id || ""), item]));
+  const recentMatches = (snapshot.competitionMatches || [])
+    .filter((match) => String(match.homeSeasonTeamId || "") === seasonTeamId || String(match.awaySeasonTeamId || "") === seasonTeamId)
+    .sort((a, b) => {
+      if (typeof compareMatchesForDisplay === "function") return compareMatchesForDisplay(a, b);
+      return String(b.date || b.matchDate || "").localeCompare(String(a.date || a.matchDate || ""));
+    })
+    .slice(0, 12)
+    .map((match) => ({
+      ...match,
+      competitionCode: typeof getCompetitionShortCode === "function" ? getCompetitionShortCode(competitionsById.get(String(match.competitionId || ""))) : ""
+    }));
+
+  const rosterEntries = (snapshot.rosterEntries || []).filter((entry) => String(entry.seasonTeamId || "") === seasonTeamId && String(entry.status || "ACTIVE").toUpperCase() !== "REMOVED");
+  const recentMovements = (snapshot.fmMovements || []).filter((item) => String(item.seasonTeamId || "") === seasonTeamId).sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""))).slice(0, 15);
+  const stadium = (snapshot.stadiums || []).find((item) => String(item.seasonTeamId || "") === seasonTeamId) || null;
+  return {
+    id: `${seasonId}_${teamId || seasonTeamId}`,
+    seasonId,
+    teamId,
+    seasonTeamId,
+    teamName: seasonTeam.name || seasonTeam.teamName || team.canonicalName || team.name || "Squadra",
+    canonicalName: team.canonicalName || team.name || "",
+    logo: seasonTeam.logo || team.logo || "",
+    presidents: presidentNames || seasonTeam.presidentName || seasonTeam.presidents || "-",
+    stadium,
+    fmBalance: Number(seasonTeam.fmBalance ?? seasonTeam.balance ?? 0),
+    rosterEntries,
+    rosterUnavailableForSeasonV202: rosterEntries.length === 0,
+    recentMovements,
+    recentNews: (snapshot.news || []).filter((news) => String(news.seasonTeamId || "") === seasonTeamId || String(news.teamId || "") === teamId).slice(0, 10),
+    palmares: [],
+    recentMatches
+  };
+}
+
+function buildUnavailableTeamProfileV202(sourceSeasonTeam, seasonId) {
+  const teamName = sourceSeasonTeam?.name || sourceSeasonTeam?.teamName || sourceSeasonTeam?.canonicalName || "Squadra";
+  return {
+    teamUnavailableForSeasonV202: true,
+    seasonId,
+    teamName,
+    sourceTeamName: teamName,
+    seasonTeamId: sourceSeasonTeam?.id || ""
+  };
+}
+
+async function resolveTeamProfileSnapshotV202(seasonTeamId, options = {}) {
+  const requested = getKnownSeasonTeamByIdV202(seasonTeamId);
+  const selectedSeasonId = typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "";
+  let targetSeasonTeam = requested;
+  let targetSeasonId = String(options.profileSeasonId || "");
+
+  if (options.useSelectedSeason) {
+    targetSeasonId = selectedSeasonId || targetSeasonId || requested?.seasonId || "";
+    await ensureSeasonSnapshotForProfileV202(targetSeasonId);
+    targetSeasonTeam = findSeasonTeamForClubInSeasonV202(requested || seasonTeamId, targetSeasonId);
+    if (!targetSeasonTeam) return buildUnavailableTeamProfileV202(requested || { name: seasonTeamId }, targetSeasonId);
+  } else if (targetSeasonId) {
+    await ensureSeasonSnapshotForProfileV202(targetSeasonId);
+    targetSeasonTeam = findSeasonTeamForClubInSeasonV202(requested || seasonTeamId, targetSeasonId);
+    if (!targetSeasonTeam) return buildUnavailableTeamProfileV202(requested || { name: seasonTeamId }, targetSeasonId);
+  } else if (requested?.seasonId) {
+    targetSeasonId = requested.seasonId;
+    await ensureSeasonSnapshotForProfileV202(targetSeasonId);
+  }
+
+  if (!targetSeasonTeam) return null;
+  const snapshotId = `${targetSeasonTeam.seasonId}_${targetSeasonTeam.teamId}`;
+  if (state.teamSnapshotCache?.[snapshotId]) return state.teamSnapshotCache[snapshotId];
+
+  let snapshot = null;
+  if (typeof loadTeamSnapshotV34 === "function") snapshot = await loadTeamSnapshotV34(targetSeasonTeam.id).catch(() => null);
+  if (!snapshot) {
+    const seasonSnapshot = await ensureSeasonSnapshotForProfileV202(targetSeasonTeam.seasonId);
+    snapshot = buildTeamSnapshotFromSeasonSnapshotV202(targetSeasonTeam, seasonSnapshot);
+  }
+  if (snapshot) {
+    state.teamSnapshotCache = state.teamSnapshotCache || {};
+    state.teamSnapshotCache[snapshotId] = snapshot;
+  }
+  return snapshot;
+}
+
+function renderUnavailableTeamProfileV202(snapshot) {
+  const seasonText = getSeasonLabelV202(snapshot?.seasonId || (typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : ""));
+  return `
+    <section class="panel team-profile-unavailable-v202">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Profilo squadra</p>
+          <h3>${escapeHtml(snapshot?.teamName || "Squadra")}</h3>
+          <p>Rosa non disponibile per la stagione selezionata.</p>
+        </div>
+      </div>
+      <p class="muted">La squadra selezionata non risulta iscritta o non ha una rosa pubblicata nella stagione ${escapeHtml(seasonText)}. Cambia stagione o seleziona una squadra presente in quella stagione.</p>
+    </section>`;
+}
+
+function injectRosterUnavailableMessageV202(html, snapshot) {
+  if (!snapshot?.rosterUnavailableForSeasonV202) return html;
+  const seasonText = getSeasonLabelV202(snapshot.seasonId);
+  const replacement = `<section class="panel detail-section team-profile-roster-unavailable-v202"><h3>Rosa</h3><p class="muted">Rosa non disponibile per la stagione selezionata (${escapeHtml(seasonText)}).</p></section>`;
+  return String(html || "").replace(/<section class="panel detail-section"><h3>Rosa<\/h3>[\s\S]*?<\/section>\s*(?=<section class="panel detail-section"><h3>Palmarès squadra<\/h3>)/, replacement);
+}
+
+const renderTeamProfileContentBeforeV202 = renderTeamProfileContentV42;
+renderTeamProfileContentV42 = function renderTeamProfileContentV202(snapshot) {
+  if (snapshot?.teamUnavailableForSeasonV202) return renderUnavailableTeamProfileV202(snapshot);
+  const html = renderTeamProfileContentBeforeV202?.(snapshot) || "";
+  return injectRosterUnavailableMessageV202(html, snapshot);
+};
+
+openTeamProfilePageV42 = async function openTeamProfilePageV202(seasonTeamId, options = {}) {
+  ensureTeamProfilePageV42?.();
+  const selectedSeasonTeamId = seasonTeamId || getCurrentUserSeasonTeamIdV42?.() || "";
+  if (!selectedSeasonTeamId) {
+    setError?.("Nessuna squadra selezionata.");
+    return;
+  }
+  const title = document.getElementById("teamProfilePageTitle");
+  const body = document.getElementById("teamProfilePageBody");
+  if (!body) return;
+
+  activateTeamProfilePageV43?.(selectedSeasonTeamId, options);
+  if (title) title.textContent = getSeasonTeamDisplayName?.(selectedSeasonTeamId) || "Profilo squadra";
+  body.innerHTML = `<section class="panel"><p class="muted">Caricamento profilo squadra...</p></section>`;
+
+  const snapshot = await resolveTeamProfileSnapshotV202(selectedSeasonTeamId, options);
+  if (!snapshot) {
+    body.innerHTML = `<section class="panel"><p class="muted">Scheda squadra non ancora generata o non disponibile per la stagione selezionata.</p></section>`;
+    return;
+  }
+  state.activeTeamProfileSeasonTeamId = snapshot.teamUnavailableForSeasonV202 ? selectedSeasonTeamId : (snapshot.seasonTeamId || selectedSeasonTeamId);
+  if (title) title.textContent = snapshot?.teamName || getSeasonTeamDisplayName?.(state.activeTeamProfileSeasonTeamId) || "Profilo squadra";
+  body.innerHTML = renderTeamProfileContentV42(snapshot);
+};
+
+openTeamProfileV34 = function openTeamProfileV202(seasonTeamId) {
+  openTeamProfilePageV42(seasonTeamId, { pushHash: true }).catch((error) => {
+    console.error(error);
+    setError?.(`Non riesco ad aprire la pagina squadra. ${error?.message || error}`);
+  });
+};
+openTeamProfile = openTeamProfileV34;
+
+function findSeasonTeamIdForTeamNameInSeasonV202(teamName, seasonId) {
+  const seasonTeam = findSeasonTeamForClubInSeasonV202(teamName, seasonId);
+  return seasonTeam?.id || "";
+}
+
+function getHonorRowSeasonIdFromDomV202(row, rowIndex) {
+  const snapshotRow = state.publicHonorSnapshot?.honorRows?.[rowIndex];
+  if (snapshotRow?.seasonId) return snapshotRow.seasonId;
+  const rawSeason = (state.raw?.seasons || [])[rowIndex];
+  if (rawSeason?.id) return rawSeason.id;
+  const label = row?.querySelector?.("td")?.textContent?.trim?.() || "";
+  return (state.raw?.seasons || []).find((season) => {
+    const candidates = [season.id, season.name, typeof formatSeasonShortLabel === "function" ? formatSeasonShortLabel(season) : ""].map((item) => String(item || "").trim());
+    return candidates.includes(label);
+  })?.id || "";
+}
+
+const HONOR_CELL_FIELDS_V202 = ["season", "championItaly", "secondPlace", "thirdPlace", "coppaItalia", "championsLeague", "playoff"];
+function getHonorCellSeasonTeamIdV202(rowIndex, cellIndex, fallbackName, seasonId) {
+  const field = HONOR_CELL_FIELDS_V202[cellIndex];
+  const snapshotCell = field && state.publicHonorSnapshot?.honorRows?.[rowIndex]?.[field];
+  if (snapshotCell?.seasonTeamId) return snapshotCell.seasonTeamId;
+  const rawHonor = (state.raw?.honorRoll || []).find((item) => String(item.seasonId || item.id || "") === String(seasonId || ""));
+  const rawFieldMap = {
+    championItaly: "championItalySeasonTeamId",
+    secondPlace: "secondPlaceSeasonTeamId",
+    thirdPlace: "thirdPlaceSeasonTeamId",
+    coppaItalia: "coppaItaliaWinnerSeasonTeamId",
+    championsLeague: "championsLeagueWinnerSeasonTeamId",
+    playoff: "playoffWinnerSeasonTeamId"
+  };
+  const rawId = rawHonor?.[rawFieldMap[field]];
+  if (rawId) return rawId;
+  return findSeasonTeamIdForTeamNameInSeasonV202(fallbackName, seasonId);
+}
+
+function makeClubNameNodeClickableV202(node, seasonTeamId) {
+  const wrapper = node.closest?.(".team-profile-link");
+  if (!seasonTeamId) {
+    if (wrapper && wrapper.parentElement) wrapper.replaceWith(node);
+    node.classList.add("team-profile-link-disabled-v202");
+    node.setAttribute("aria-disabled", "true");
+    return;
+  }
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "team-profile-link honor-team-profile-link";
+  button.dataset.openTeamProfile = seasonTeamId;
+  if (wrapper && wrapper.parentElement) wrapper.replaceWith(button);
+  else node.replaceWith(button);
+  button.appendChild(node);
+}
+
+makeHonorTeamNamesClickableV90 = function makeHonorTeamNamesClickableV202() {
+  const root = document.getElementById("honorSummary");
+  if (!root) return;
+  const honorTable = root.querySelector(".honor-table-wrap table");
+  honorTable?.querySelectorAll("tbody tr").forEach((row, rowIndex) => {
+    const seasonId = getHonorRowSeasonIdFromDomV202(row, rowIndex);
+    row.querySelectorAll("td .club-name-with-logo").forEach((node) => {
+      const cell = node.closest("td");
+      const cellIndex = cell ? Array.from(row.children).indexOf(cell) : -1;
+      const teamName = node.querySelector("strong")?.textContent?.trim() || node.textContent?.trim() || "";
+      const seasonTeamId = getHonorCellSeasonTeamIdV202(rowIndex, cellIndex, teamName, seasonId);
+      makeClubNameNodeClickableV202(node, seasonTeamId);
+    });
+  });
+
+  root.querySelectorAll(".palmares-table-wrap tbody .club-name-with-logo, .fifa-ranking-table-wrap tbody .club-name-with-logo").forEach((node) => {
+    const teamName = node.querySelector("strong")?.textContent?.trim() || node.textContent?.trim() || "";
+    const seasonTeamId = findSeasonTeamIdForTeamNameInSeasonV202(teamName, typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "");
+    makeClubNameNodeClickableV202(node, seasonTeamId);
+  });
+};
+
+function refreshVisibleTeamProfileForSeasonV202() {
+  if (state.currentPage !== "teamprofile" || !state.activeTeamProfileSeasonTeamId) return;
+  window.setTimeout(() => {
+    openTeamProfilePageV42(state.activeTeamProfileSeasonTeamId, { pushHash: false, scroll: false, useSelectedSeason: true }).catch((error) => {
+      console.warn("Profilo squadra non aggiornato dopo cambio stagione", error);
+    });
+  }, 0);
+}
+
+document.addEventListener("change", (event) => {
+  if (event.target?.id === "globalSeasonSelect") refreshVisibleTeamProfileForSeasonV202();
+}, true);
+
+function applyDashboardPresidentLabelsV202() {
+  document.querySelectorAll('[data-page-link="teamarea"], [data-v42-page-link="teamarea"]').forEach((link) => {
+    const text = (link.textContent || "").trim().toLowerCase();
+    if (!text || text.includes("richieste") || text.includes("area squadra") || text.includes("squadra") || text.includes("trattative")) {
+      if (link.classList.contains("mobile-bottom-link")) {
+        link.innerHTML = '<span class="mobile-nav-icon">👤</span><span>Presidente</span>';
+      } else {
+        link.textContent = "Dashboard Presidente";
+      }
+    }
+  });
+  const title = document.getElementById("teamAreaTitle");
+  if (title) title.textContent = "Dashboard Presidente";
+  const section = document.querySelector('[data-page="teamarea"] .page-heading p:last-child');
+  if (section) section.textContent = "Riepilogo, richieste operative, comunicati e movimenti proposti dal presidente approvato.";
+  document.querySelectorAll(".mobile-teamarea-kicker-v144").forEach((node) => { node.textContent = "Dashboard presidente"; });
+}
+
+const renderAllBeforeV202 = renderAll;
+renderAll = function renderAllV202() {
+  const result = renderAllBeforeV202?.();
+  applyDashboardPresidentLabelsV202();
+  makeHonorTeamNamesClickableV90?.();
+  return result;
+};
+
+const updateUserVisibilityBeforeV202 = updateUserVisibilityV34;
+updateUserVisibilityV34 = function updateUserVisibilityV202() {
+  const result = updateUserVisibilityBeforeV202?.();
+  applyDashboardPresidentLabelsV202();
+  return result;
+};
+
+window.ZonaOrientaleTeamProfileV202 = {
+  resolve: resolveTeamProfileSnapshotV202,
+  findInSeason: findSeasonTeamForClubInSeasonV202,
+  refreshForSeason: refreshVisibleTeamProfileForSeasonV202
+};
+
+
+/* V202 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
