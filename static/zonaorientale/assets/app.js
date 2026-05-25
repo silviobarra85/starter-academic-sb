@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "203";
+const DEPLOY_EXPECTED_VERSION_V181 = "204";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -19961,5 +19961,381 @@ if (window.ZonaOrientalePublicationStatus) {
   };
 }
 
-/* V203 - Final startup remains centralized here. */
+
+/* V204 - Archivio stagioni da snapshot statici selezionati.
+   V196 costruiva l'Archivio quasi solo da state.raw. Dopo il refresh pubblico,
+   state.raw contiene spesso solo configurazione/stagione corrente mentre le
+   stagioni storiche vivono nei JSON statici assets/snapshots/seasons/*.json.
+   Questa patch carica lo snapshot della stagione selezionata prima del render
+   e costruisce partecipanti, vincitori, competizioni, partite e rose da quello
+   snapshot, senza introdurre nuove letture Firebase quando il JSON statico e'
+   presente. */
+const ZO_RELEASE_VERSION_V204 = "204";
+state.seasonArchiveLoadingV204 = state.seasonArchiveLoadingV204 || {};
+state.seasonArchiveLoadAttemptedV204 = state.seasonArchiveLoadAttemptedV204 || {};
+
+function getSeasonArchiveSnapshotV204(seasonId) {
+  const target = String(seasonId || "").trim();
+  if (!target) return null;
+  return state.publicSeasonSnapshots?.[target] || null;
+}
+
+async function ensureSeasonArchiveSnapshotV204(seasonId) {
+  const target = String(seasonId || "").trim();
+  if (!target) return null;
+  if (state.publicSeasonSnapshots?.[target]) return state.publicSeasonSnapshots[target];
+  if (state.seasonArchiveLoadingV204[target]) return state.seasonArchiveLoadingV204[target];
+  state.seasonArchiveLoadAttemptedV204[target] = true;
+  const promise = (typeof loadPublicSeasonSnapshotV32 === "function"
+    ? loadPublicSeasonSnapshotV32(target)
+    : Promise.resolve(null))
+    .then((snapshot) => {
+      if (snapshot) state.publicSeasonSnapshots[target] = snapshot;
+      return snapshot || null;
+    })
+    .catch((error) => {
+      console.warn(`Archivio: snapshot stagione non caricato per ${target}`, error);
+      return null;
+    })
+    .finally(() => {
+      delete state.seasonArchiveLoadingV204[target];
+    });
+  state.seasonArchiveLoadingV204[target] = promise;
+  return promise;
+}
+
+function getSeasonArchiveSnapshotArrayV204(snapshot, key) {
+  return Array.isArray(snapshot?.[key]) ? snapshot[key].filter(Boolean) : [];
+}
+
+function getSeasonArchiveSourceArrayV204(snapshot, key, rawFilter = null) {
+  const fromSnapshot = getSeasonArchiveSnapshotArrayV204(snapshot, key);
+  if (fromSnapshot.length) return fromSnapshot;
+  const raw = Array.isArray(state.raw?.[key]) ? state.raw[key] : [];
+  return typeof rawFilter === "function" ? raw.filter(rawFilter) : raw;
+}
+
+function getSeasonArchiveIdV204(item, prefix, index) {
+  return String(item?.id || item?.docId || item?.seasonTeamId || item?.teamId || `${prefix}-${index}`);
+}
+
+function buildSeasonArchiveMapByIdV204(items, prefix) {
+  const map = new Map();
+  (items || []).forEach((item, index) => {
+    const id = getSeasonArchiveIdV204(item, prefix, index);
+    if (id) map.set(id, item);
+  });
+  return map;
+}
+
+function getArchiveTeamNameKeysV204(value) {
+  if (typeof getTeamNameKeysV201 === "function") return getTeamNameKeysV201(value);
+  const text = String(value || "").trim();
+  if (!text) return [];
+  return [typeof normalizeKey === "function" ? normalizeKey(text) : text.toLowerCase()];
+}
+
+function getArchiveSeasonTeamNameV204(archive, seasonTeamOrId) {
+  const seasonTeam = typeof seasonTeamOrId === "string"
+    ? archive.seasonTeamsById?.get(seasonTeamOrId)
+    : seasonTeamOrId;
+  if (!seasonTeam) return "-";
+  const team = archive.teamsById?.get(String(seasonTeam.teamId || "")) || {};
+  return seasonTeam.name || seasonTeam.teamName || seasonTeam.displayName || team.canonicalName || team.name || seasonTeam.id || "-";
+}
+
+function getArchiveSeasonTeamLogoV204(archive, seasonTeamOrId) {
+  const seasonTeam = typeof seasonTeamOrId === "string"
+    ? archive.seasonTeamsById?.get(seasonTeamOrId)
+    : seasonTeamOrId;
+  if (!seasonTeam) return "";
+  const team = archive.teamsById?.get(String(seasonTeam.teamId || "")) || {};
+  return seasonTeam.logo || team.logo || "";
+}
+
+function getArchiveSeasonTeamPresidentNamesV204(archive, seasonTeam) {
+  if (!seasonTeam) return "-";
+  if (seasonTeam.presidentName) return seasonTeam.presidentName;
+  if (seasonTeam.presidentNames) return Array.isArray(seasonTeam.presidentNames) ? seasonTeam.presidentNames.join(", ") : String(seasonTeam.presidentNames);
+  const ids = [];
+  if (Array.isArray(seasonTeam.presidentIds)) ids.push(...seasonTeam.presidentIds);
+  [seasonTeam.presidentId, seasonTeam.primaryPresidentId, seasonTeam.coachPresidentId].forEach((id) => { if (id) ids.push(id); });
+  const names = ids.map((id) => archive.presidentsById?.get(String(id))?.name).filter(Boolean);
+  return names.length ? names.join(", ") : "-";
+}
+
+function renderArchiveSeasonTeamNameWithLogoV204(archive, seasonTeamId, options = {}) {
+  const name = getArchiveSeasonTeamNameV204(archive, seasonTeamId);
+  const logo = getArchiveSeasonTeamLogoV204(archive, seasonTeamId);
+  const text = options.strong === false
+    ? `<span>${escapeHtml(name)}</span>`
+    : `<strong>${escapeHtml(name)}</strong>`;
+  return `<span class="club-name-with-logo">${renderTeamLogo(name, logo)}${text}</span>`;
+}
+
+function findArchiveSeasonTeamBySnapshotCellV204(archive, cell) {
+  if (!cell || cell.kind === "empty" || cell.kind === "status") return null;
+  if (cell.seasonTeamId && archive.seasonTeamsById?.has(String(cell.seasonTeamId))) {
+    return archive.seasonTeamsById.get(String(cell.seasonTeamId));
+  }
+  if (cell.teamId) {
+    const byTeam = archive.seasonTeams.find((item) => String(item.teamId || "") === String(cell.teamId));
+    if (byTeam) return byTeam;
+  }
+  const targetKeys = new Set(getArchiveTeamNameKeysV204(cell.label || cell.teamName || cell.name));
+  if (!targetKeys.size) return null;
+  return archive.seasonTeams.find((seasonTeam) => {
+    const keys = new Set([
+      ...getArchiveTeamNameKeysV204(seasonTeam.name),
+      ...getArchiveTeamNameKeysV204(seasonTeam.teamName),
+      ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.name),
+      ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.canonicalName)
+    ]);
+    return [...keys].some((key) => targetKeys.has(key));
+  }) || null;
+}
+
+function getSeasonArchiveHonorRowV204(seasonId) {
+  const target = String(seasonId || "");
+  const snapshotRows = Array.isArray(state.publicHonorSnapshot?.honorRows) ? state.publicHonorSnapshot.honorRows : [];
+  const snapshotRow = snapshotRows.find((row) => String(row?.seasonId || row?.id || row?.seasonLabel || "") === target);
+  if (snapshotRow) return snapshotRow;
+  return (state.raw.honorRoll || []).find((row) => String(row.seasonId || row.id || "") === target) || null;
+}
+
+function getSeasonArchiveHonorTitlesV204(row, archive) {
+  if (!row) return [];
+  const snapshotFields = [
+    { key: "CAMPIONATO", label: "Campionato", cellField: "championItaly", rawField: "championItalySeasonTeamId" },
+    { key: "COPPA_ITALIA", label: "Coppa Italia", cellField: "coppaItalia", rawField: "coppaItaliaWinnerSeasonTeamId" },
+    { key: "CHAMPIONS_LEAGUE", label: "Champions League", cellField: "championsLeague", rawField: "championsLeagueWinnerSeasonTeamId" },
+    { key: "PLAYOFF", label: "Playoff", cellField: "playoff", rawField: "playoffWinnerSeasonTeamId" }
+  ];
+  return snapshotFields.map((competition) => {
+    const cell = row[competition.cellField];
+    const fromCell = findArchiveSeasonTeamBySnapshotCellV204(archive, cell);
+    const rawId = row[competition.rawField];
+    const fromRaw = rawId ? archive.seasonTeamsById?.get(String(rawId)) : null;
+    const seasonTeam = fromCell || fromRaw;
+    if (!seasonTeam) return null;
+    return {
+      key: competition.key,
+      label: competition.label,
+      seasonTeamId: seasonTeam.id,
+      teamName: getArchiveSeasonTeamNameV204(archive, seasonTeam)
+    };
+  }).filter(Boolean);
+}
+
+function buildArchiveRosterCountMapV204(archive, rosterEntries) {
+  const map = new Map();
+  const active = (rosterEntries || []).filter((entry) => String(entry.status || "ACTIVE").toUpperCase() !== "REMOVED");
+  active.forEach((entry) => {
+    const id = String(entry.seasonTeamId || "");
+    if (id) map.set(id, (map.get(id) || 0) + 1);
+  });
+  const entriesWithoutId = active.filter((entry) => !entry.seasonTeamId);
+  if (entriesWithoutId.length) {
+    const lookup = new Map();
+    archive.seasonTeams.forEach((seasonTeam) => {
+      const keys = [
+        ...getArchiveTeamNameKeysV204(seasonTeam.name),
+        ...getArchiveTeamNameKeysV204(seasonTeam.teamName),
+        ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.name),
+        ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.canonicalName)
+      ];
+      keys.forEach((key) => { if (key && !lookup.has(key)) lookup.set(key, seasonTeam.id); });
+    });
+    entriesWithoutId.forEach((entry) => {
+      const keys = [
+        ...getArchiveTeamNameKeysV204(entry.teamName),
+        ...getArchiveTeamNameKeysV204(entry.seasonTeamName),
+        ...getArchiveTeamNameKeysV204(entry.rosterName)
+      ];
+      const id = keys.map((key) => lookup.get(key)).find(Boolean);
+      if (id) map.set(id, (map.get(id) || 0) + 1);
+    });
+  }
+  return map;
+}
+
+function buildArchiveMovementCountMapV204(movements) {
+  return (movements || []).reduce((map, item) => {
+    const id = String(item.seasonTeamId || "");
+    if (id) map.set(id, (map.get(id) || 0) + 1);
+    return map;
+  }, new Map());
+}
+
+buildSeasonArchiveV196 = function buildSeasonArchiveV204(seasonId = getSeasonArchiveSeasonIdV196()) {
+  const snapshot = getSeasonArchiveSnapshotV204(seasonId);
+  const season = (state.raw.seasons || []).find((item) => item.id === seasonId) || { id: seasonId, name: seasonId };
+  const teams = getSeasonArchiveSourceArrayV204(snapshot, "teams");
+  const presidents = getSeasonArchiveSourceArrayV204(snapshot, "presidents");
+  const seasonTeams = getSeasonArchiveSourceArrayV204(snapshot, "seasonTeams", (item) => item.seasonId === seasonId)
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .sort((a, b) => String(a.name || a.teamName || "").localeCompare(String(b.name || b.teamName || ""), "it", { sensitivity: "base" }));
+  const competitions = getSeasonArchiveSourceArrayV204(snapshot, "competitions", (item) => item.seasonId === seasonId)
+    .filter((item) => !item.seasonId || item.seasonId === seasonId);
+  const competitionIds = new Set(competitions.map((item) => item.id).filter(Boolean));
+  const matches = getSeasonArchiveSourceArrayV204(snapshot, "competitionMatches", (match) => competitionIds.has(match.competitionId))
+    .filter((match) => !competitionIds.size || competitionIds.has(match.competitionId));
+  const results = getSeasonArchiveSourceArrayV204(snapshot, "competitionResults", (result) => competitionIds.has(result.competitionId))
+    .filter((result) => !competitionIds.size || competitionIds.has(result.competitionId));
+  const rosterEntries = getSeasonArchiveSourceArrayV204(snapshot, "rosterEntries", (entry) => seasonTeams.some((team) => team.id === entry.seasonTeamId));
+  const movements = getSeasonArchiveSourceArrayV204(snapshot, "fmMovements", (item) => seasonTeams.some((team) => team.id === item.seasonTeamId));
+  const news = getSeasonArchiveSourceArrayV204(snapshot, "news", (item) => !item.seasonId || item.seasonId === seasonId)
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .slice(0, 8);
+  const stadiums = getSeasonArchiveSourceArrayV204(snapshot, "stadiums");
+  const archive = {
+    season,
+    snapshot,
+    teams,
+    presidents,
+    seasonTeams,
+    competitions,
+    matches,
+    results,
+    rosterEntries,
+    movements,
+    news,
+    teamsById: buildSeasonArchiveMapByIdV204(teams, "team"),
+    presidentsById: buildSeasonArchiveMapByIdV204(presidents, "president"),
+    seasonTeamsById: buildSeasonArchiveMapByIdV204(seasonTeams, "seasonTeam"),
+    stadiumsBySeasonTeamId: new Map(stadiums.map((item) => [String(item.seasonTeamId || item.id || ""), item]).filter(([key]) => key))
+  };
+  const honor = getSeasonArchiveHonorRowV204(seasonId);
+  const honorTitles = getSeasonArchiveHonorTitlesV204(honor, archive);
+  const recentMatches = [...matches].sort(compareMatchesForDisplay).slice(-8).reverse();
+  const goals = matches.reduce((sum, match) => {
+    const score = getSeasonArchiveMatchResultPartsV196(match);
+    if (score.homeNum === null || score.awayNum === null) return sum;
+    return sum + score.homeNum + score.awayNum;
+  }, 0);
+  return {
+    ...archive,
+    honor,
+    honorTitles,
+    rosterCountBySeasonTeamId: buildArchiveRosterCountMapV204(archive, rosterEntries),
+    movementCountBySeasonTeamId: buildArchiveMovementCountMapV204(movements),
+    recentMatches,
+    goals
+  };
+};
+
+renderSeasonArchiveTeamsV196 = function renderSeasonArchiveTeamsV204(archive) {
+  if (!archive.seasonTeams.length) return `<p class="muted">Nessuna squadra trovata per questa stagione. Verifica che lo snapshot statico della stagione sia presente in <code>assets/snapshots/seasons</code>.</p>`;
+  return `<div class="season-archive-teams-v196">${archive.seasonTeams.map((seasonTeam) => {
+    const stadium = archive.stadiumsBySeasonTeamId.get(String(seasonTeam.id || "")) || {};
+    const rosterCount = archive.rosterCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const movementCount = archive.movementCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const logo = getArchiveSeasonTeamLogoV204(archive, seasonTeam);
+    const name = getArchiveSeasonTeamNameV204(archive, seasonTeam);
+    return `
+      <article class="season-archive-team-card-v196">
+        <div class="season-archive-team-head-v196">${renderTeamLogo(name, logo)}<div><strong>${escapeHtml(name)}</strong><small>${escapeHtml(getArchiveSeasonTeamPresidentNamesV204(archive, seasonTeam))}</small></div></div>
+        <dl>
+          <div><dt>Saldo</dt><dd>${escapeHtml(formatFm(seasonTeam.fmBalance || 0))}</dd></div>
+          <div><dt>Rosa</dt><dd>${escapeHtml(String(rosterCount || "-"))}</dd></div>
+          <div><dt>Movimenti</dt><dd>${escapeHtml(String(movementCount || "-"))}</dd></div>
+          <div><dt>Stadio</dt><dd>${escapeHtml(stadium.name || seasonTeam.stadiumName || "-")}</dd></div>
+        </dl>
+      </article>`;
+  }).join("")}</div>`;
+};
+
+renderSeasonArchiveHonorV196 = function renderSeasonArchiveHonorV204(archive) {
+  if (!archive.honorTitles.length) return `<p class="muted">Nessun dato Albo d'Oro collegato a questa stagione nello snapshot honor.</p>`;
+  return `<div class="season-archive-honor-v196">${archive.honorTitles.map((title) => `
+    <article><span>${escapeHtml(title.label)}</span>${renderArchiveSeasonTeamNameWithLogoV204(archive, title.seasonTeamId, { strong: true })}</article>
+  `).join("")}</div>`;
+};
+
+renderSeasonArchiveCompetitionsV196 = function renderSeasonArchiveCompetitionsV204(archive) {
+  if (!archive.competitions.length) return `<p class="muted">Nessuna competizione trovata per questa stagione nello snapshot selezionato.</p>`;
+  return `<div class="season-archive-competition-grid-v196">${archive.competitions.map((competition) => {
+    const matches = archive.matches.filter((match) => match.competitionId === competition.id);
+    const results = archive.results.filter((result) => result.competitionId === competition.id).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+    const winnerId = results[0]?.seasonTeamId || competition.winnerSeasonTeamId || competition.winnerId || "";
+    const winner = winnerId ? getArchiveSeasonTeamNameV204(archive, String(winnerId)) : (competition.winnerName || "-");
+    return `
+      <article class="season-archive-competition-card-v196">
+        <div><strong>${escapeHtml(getCompetitionNameV196(competition))}</strong><small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type) || competition.type || "Competizione")}</small></div>
+        <div class="season-archive-chip-row-v196">
+          <span>${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "Stato n.d.")}</span>
+          <span>${matches.length} partite</span>
+          <span>${results.length} righe classifica</span>
+        </div>
+        <p><strong>Vincitore/Classifica:</strong> ${escapeHtml(winner)}</p>
+      </article>`;
+  }).join("")}</div>`;
+};
+
+renderSeasonArchiveMatchesV196 = function renderSeasonArchiveMatchesV204(archive) {
+  if (!archive.recentMatches.length) return `<p class="muted">Nessuna partita caricata per questa stagione.</p>`;
+  return `<div class="season-archive-match-list-v196">${archive.recentMatches.map((match) => {
+    const competition = archive.competitions.find((item) => item.id === match.competitionId);
+    const homeName = match.homeTeamName || getArchiveSeasonTeamNameV204(archive, match.homeSeasonTeamId);
+    const awayName = match.awayTeamName || getArchiveSeasonTeamNameV204(archive, match.awaySeasonTeamId);
+    return `
+      <article>
+        <span>${escapeHtml(match.matchDate || formatMatchStage(match) || "-")}</span>
+        <strong>${escapeHtml(homeName)} - ${escapeHtml(awayName)}</strong>
+        <small>${escapeHtml(formatMatchResult(match))} · ${escapeHtml(getCompetitionNameV196(competition))}</small>
+      </article>`;
+  }).join("")}</div>`;
+};
+
+renderSeasonArchiveTimelineV196 = function renderSeasonArchiveTimelineV204(archive) {
+  const items = [];
+  archive.honorTitles.forEach((title) => items.push({ icon: "🏆", label: title.label, text: title.teamName }));
+  archive.competitions.slice(0, 6).forEach((competition) => items.push({ icon: "📌", label: getCompetitionNameV196(competition), text: getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "competizione" }));
+  archive.news.slice(0, 4).forEach((item) => items.push({ icon: "📰", label: item.title || item.topic || "Comunicazione", text: item.date || item.createdAt || "news" }));
+  if (!items.length) return `<p class="muted">Timeline non disponibile per questa stagione.</p>`;
+  return `<div class="season-archive-timeline-v196">${items.slice(0, 12).map((item) => `
+    <article><span>${escapeHtml(item.icon)}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.text || "-")}</small></div></article>
+  `).join("")}</div>`;
+};
+
+function renderSeasonArchiveLoadingV204(seasonId) {
+  const controlsTarget = document.getElementById("seasonArchiveControlsV196");
+  const contentTarget = document.getElementById("seasonArchiveContentV196");
+  const seasons = getSeasonArchiveSortedSeasonsV196();
+  if (controlsTarget) controlsTarget.innerHTML = renderSeasonArchiveControlsV196(seasons, seasonId);
+  const select = document.getElementById("seasonArchiveSelectV196");
+  if (select) {
+    select.value = seasonId || "";
+    select.addEventListener("change", () => setSeasonArchiveSeasonIdV196(select.value));
+  }
+  document.getElementById("seasonArchiveSyncCurrentV196")?.addEventListener("click", () => setSeasonArchiveSeasonIdV196(getCurrentSeasonId()));
+  if (contentTarget) {
+    contentTarget.innerHTML = `<article class="panel"><h3>Caricamento archivio stagione</h3><p class="muted">Sto caricando lo snapshot statico della stagione ${escapeHtml(getSeasonLabelV193(seasonId))}. Nessuna scrittura su Firebase.</p></article>`;
+  }
+}
+
+const renderSeasonArchiveBeforeV204 = renderSeasonArchiveV196;
+renderSeasonArchiveV196 = function renderSeasonArchiveV204() {
+  const seasonId = getSeasonArchiveSeasonIdV196();
+  const hasSnapshot = Boolean(getSeasonArchiveSnapshotV204(seasonId));
+  const attempted = Boolean(state.seasonArchiveLoadAttemptedV204?.[seasonId]);
+  if (!hasSnapshot && !attempted && typeof loadPublicSeasonSnapshotV32 === "function") {
+    renderSeasonArchiveLoadingV204(seasonId);
+    ensureSeasonArchiveSnapshotV204(seasonId).then(() => {
+      renderSeasonArchiveBeforeV204?.();
+    });
+    return;
+  }
+  renderSeasonArchiveBeforeV204?.();
+};
+
+window.ZonaOrientaleSeasonArchive = {
+  build: buildSeasonArchiveV196,
+  render: renderSeasonArchiveV196,
+  setSeason: setSeasonArchiveSeasonIdV196,
+  ensureSnapshot: ensureSeasonArchiveSnapshotV204,
+  snapshot: getSeasonArchiveSnapshotV204
+};
+
+/* V204 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
