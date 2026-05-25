@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V225
+# AI Handoff ZonaOrientale - Current V226
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V225**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, statistiche storiche rinforzate e primo ciclo refactor tecnico V220-V225 chiuso.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V226**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, statistiche storiche rinforzate, hotfix V226 sui nomi storici e primo ciclo refactor tecnico V220-V225 chiuso.
 
 ## Posizione e struttura progetto
 
@@ -55,17 +55,17 @@ http://localhost:1313/zonaorientale/
 
 ## Versione corrente codice
 
-Versione sito: **V225 stabilizzazione post-refactor**.
+Versione sito: **V226 hotfix statistiche storiche**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V225 stabilizzazione post-refactor · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V226 hotfix statistiche storiche · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=225`.
+Cache-buster HTML principali attesi: `?v=226`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `225`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `226`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 
@@ -105,12 +105,24 @@ Stato effettivo:
 
 - **V209 live-data/archive**: attivo. Gestisce comunicati live, mercato/trattative live/lazy e Archivio stagioni.
 - **V210 generatore comunicati admin**: attivo. Compila bozze comunicati da dati gia presenti; non deve scrivere automaticamente su Firebase.
-- **V211 statistiche/confronta**: presente e, dopo V218/V219, installato realmente nel bootstrap. In V224 esclude `NON_DISPUTATA` dai titoli e pre-carica snapshot statici per calcolare i presidenti vincenti su tutte le stagioni. Gestisce `#stats` e `#compare`.
+- **V211 statistiche/confronta**: presente e, dopo V218/V219, installato realmente nel bootstrap. In V224 esclude `NON_DISPUTATA` dai titoli e pre-carica snapshot statici per calcolare i presidenti vincenti su tutte le stagioni. In V226 legge sempre lo snapshot honor statico normalizzato quando disponibile, cosi Club piu vincenti, Podi Campionato e Ultimi titoli assegnati mostrano i nomi storici invece di `-`; inoltre Top FIFA Ranking non stampa piu la nota ripetitiva `FIFA Ranking` su ogni riga. Gestisce `#stats` e `#compare`.
 - **V212 dashboard presidente/rose**: attivo. Gestisce dashboard presidente, helper rose e hub mobile presidente.
 - **V213 admin-publication-workflow**: file presente ma **non reinserire nel bootstrap senza test browser**. Era stato disattivato in V214 perche poteva bloccare la visualizzazione dei dati. Se ripreso, installarlo lazy/con try-catch e verificare tutto il bootstrap.
 - **V225 refactor-stability**: attivo. Espone `window.ZonaOrientaleRefactorStatus` con controlli runtime leggeri sui moduli V220-V224; non cambia UI/dati e non blocca il bootstrap.
 
 ## Stato funzionale recente
+
+### V226 - Hotfix statistiche storiche
+
+V226 corregge regressioni visive nella pagina `#stats` dopo V224/V225:
+
+- `Club più vincenti` non deve mostrare solo `-`;
+- `Podi Campionato` non deve mostrare solo `-`;
+- `Ultimi titoli assegnati` deve mostrare i vincitori storici, non solo quelli dell'ultima stagione;
+- `Top FIFA Ranking` non deve ripetere `FIFA Ranking` accanto a ogni squadra.
+
+Causa tecnica: in alcuni flussi `state.publicHonorSnapshot` poteva arrivare da Firebase/raw senza `honorRows` normalizzati, facendo ricadere le statistiche su `raw.honorRoll` con soli ID `seasonTeamId`; per le stagioni storiche non ancora caricate il nome non era risolvibile e veniva visualizzato `-`. Il modulo ora preferisce sempre lo snapshot honor statico normalizzato (`assets/snapshots/honor.json`, anche in forma wrapper `{ snapshot: ... }`) quando disponibile.
+
 
 ### V225 - Stabilizzazione finale post-refactor
 
@@ -434,4 +446,4 @@ assets/css/mobile-chrome-v223.css
 
 Il file assorbe i blocchi duplicati V218 relativi a pulsante `Su`, vecchi pulsanti `listone/competition` e guard desktop del bottom menu. I blocchi corrispondenti sono stati rimossi da `assets/styles.css` e `assets/css/mobile-suite-v168.css` per iniziare la pulizia CSS senza alterare il layout.
 
-Versione runtime attesa: **225**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
+Versione runtime attesa: **226**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.

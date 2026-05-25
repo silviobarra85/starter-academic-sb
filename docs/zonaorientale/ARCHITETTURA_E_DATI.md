@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V225.
+Stato: V226.
 
 ## Tipo applicazione
 
@@ -400,3 +400,12 @@ window.ZonaOrientaleRefactorStatus
 ```
 
 Non blocca il bootstrap e non modifica il comportamento visibile: in caso di dipendenze mancanti produce solo un warning console.
+
+## Note statistiche storiche V226
+
+V226 rende piu robusto `assets/js/refactor/historical-stats-compare-v211.js`:
+
+- `getHonorRows()` e `getFifaRows()` leggono lo snapshot honor normalizzato anche quando il JSON statico e' caricato come wrapper `{ snapshot: ... }`;
+- se `state.publicHonorSnapshot` non contiene `honorRows`, il modulo usa `state.staticHonorSnapshotV173` prima di ricadere su `raw.honorRoll`;
+- le celle Albo usano `label/teamName/name` dello snapshot come fallback primario per evitare nomi `-` nei ranking storici;
+- Top FIFA Ranking mostra solo eventuali note reali, non la stringa generica `FIFA Ranking` per ogni squadra.

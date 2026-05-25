@@ -1,3 +1,13 @@
+## V226 - Hotfix statistiche storiche
+
+Correzione mirata della pagina `#stats` dopo segnalazione utente:
+
+- ripristinati i nomi in `Club più vincenti`;
+- ripristinati i nomi in `Podi Campionato`;
+- `Ultimi titoli assegnati` usa i nomi storici dallo snapshot honor statico quando disponibili;
+- `Top FIFA Ranking` non mostra piu la nota ripetitiva `FIFA Ranking` accanto a ogni squadra;
+- footer/cache-buster e `DEPLOY_EXPECTED_VERSION_V181` aggiornati a V226.
+
 # Changelog consolidato ZonaOrientale
 
 Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.

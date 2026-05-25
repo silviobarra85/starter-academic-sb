@@ -50,6 +50,59 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
     return snapshots;
   }
 
+  function getHonorSnapshotRoot(snapshot) {
+    if (!snapshot || typeof snapshot !== "object") return null;
+    return snapshot.snapshot && typeof snapshot.snapshot === "object" ? snapshot.snapshot : snapshot;
+  }
+
+  function getActiveHonorSnapshotRoot() {
+    const candidates = [
+      state.publicHonorSnapshot,
+      state.staticHonorSnapshotV173,
+      state.publicHonorSnapshot?.snapshot,
+      state.staticHonorSnapshotV173?.snapshot
+    ]
+      .map(getHonorSnapshotRoot)
+      .filter(Boolean);
+    return candidates.find((snapshot) => Array.isArray(snapshot.honorRows) && snapshot.honorRows.length)
+      || candidates.find((snapshot) => Array.isArray(snapshot.fifaRanking) && snapshot.fifaRanking.length)
+      || null;
+  }
+
+  function getUsableTeamLabel(value) {
+    const label = String(value || "").trim();
+    if (!label) return "";
+    const normalized = safeNormalize(label);
+    if (NON_TEAM_HONOR_LABELS.has(normalized)) return "";
+    if (normalized === "squadra") return "";
+    return label;
+  }
+
+  function getCellTeamLabel(cell) {
+    return getUsableTeamLabel(cell?.label)
+      || getUsableTeamLabel(cell?.teamName)
+      || getUsableTeamLabel(cell?.name)
+      || "";
+  }
+
+  function getHonorSnapshotCells() {
+    const rows = Array.isArray(getActiveHonorSnapshotRoot()?.honorRows) ? getActiveHonorSnapshotRoot().honorRows : [];
+    return rows.flatMap((row) => [
+      row?.championItaly,
+      row?.secondPlace,
+      row?.thirdPlace,
+      row?.coppaItalia,
+      row?.championsLeague,
+      row?.playoff
+    ]).filter(isHonorTeamCell);
+  }
+
+  function findHonorCellForSeasonTeamId(seasonTeamId) {
+    if (!seasonTeamId) return null;
+    const id = String(seasonTeamId);
+    return getHonorSnapshotCells().find((cell) => String(cell?.seasonTeamId || "") === id) || null;
+  }
+
   function collectSeasonTeams() {
     const byId = new Map();
     (state.raw?.seasonTeams || []).forEach((item) => {
@@ -138,17 +191,20 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
   function makeCellFromRaw(seasonTeamId) {
     if (!seasonTeamId) return { kind: "empty" };
     const record = getSeasonTeamRecord(seasonTeamId);
+    const snapshotCell = findHonorCellForSeasonTeamId(seasonTeamId);
+    const snapshotLabel = getCellTeamLabel(snapshotCell);
     return {
       kind: "team",
       seasonTeamId,
-      teamId: record?.teamId || "",
-      label: record?.displayName || (typeof getSeasonTeamDisplayName === "function" ? getSeasonTeamDisplayName(seasonTeamId) : seasonTeamId),
-      logo: record?.logo || ""
+      teamId: record?.teamId || snapshotCell?.teamId || "",
+      label: getUsableTeamLabel(record?.displayName) || snapshotLabel || (typeof getSeasonTeamDisplayName === "function" ? getUsableTeamLabel(getSeasonTeamDisplayName(seasonTeamId)) : "") || seasonTeamId,
+      logo: record?.logo || snapshotCell?.logo || ""
     };
   }
 
   function getHonorRows() {
-    const snapshotRows = Array.isArray(state.publicHonorSnapshot?.honorRows) ? state.publicHonorSnapshot.honorRows : [];
+    const activeSnapshot = getActiveHonorSnapshotRoot();
+    const snapshotRows = Array.isArray(activeSnapshot?.honorRows) ? activeSnapshot.honorRows : [];
     if (snapshotRows.length) return snapshotRows;
     return (state.raw?.honorRoll || []).map((row) => ({
       seasonId: row.seasonId || row.id || "",
@@ -162,7 +218,8 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
   }
 
   function getFifaRows() {
-    const snapshotRows = Array.isArray(state.publicHonorSnapshot?.fifaRanking) ? state.publicHonorSnapshot.fifaRanking : [];
+    const activeSnapshot = getActiveHonorSnapshotRoot();
+    const snapshotRows = Array.isArray(activeSnapshot?.fifaRanking) ? activeSnapshot.fifaRanking : [];
     if (snapshotRows.length) return snapshotRows;
     return state.raw?.fifaRankings || [];
   }
@@ -181,37 +238,51 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
 
   function recordFromSnapshotCell(cell) {
     if (!isHonorTeamCell(cell)) return null;
+    const cellLabel = getCellTeamLabel(cell);
     if (cell.seasonTeamId) {
       const record = getSeasonTeamRecord(cell.seasonTeamId);
-      if (record) return record;
+      if (record) {
+        const displayName = getUsableTeamLabel(record.displayName) || cellLabel || getUsableTeamLabel(record.canonicalName) || String(cell.seasonTeamId);
+        const canonicalName = getUsableTeamLabel(record.canonicalName) || displayName;
+        return {
+          ...record,
+          teamId: record.teamId || cell.teamId || "",
+          displayName,
+          canonicalName,
+          logo: record.logo || cell.logo || ""
+        };
+      }
     }
     const team = cell.teamId ? getTeamFromId(cell.teamId) : null;
-    const label = cell.label || cell.teamName || cell.name || team?.canonicalName || team?.name || "Squadra";
+    const label = cellLabel || getUsableTeamLabel(team?.canonicalName) || getUsableTeamLabel(team?.name);
+    if (!label && !cell.teamId) return null;
     return {
       seasonTeam: null,
       team: team || {},
       teamId: cell.teamId || `name:${safeNormalize(label)}`,
-      displayName: label,
-      canonicalName: team?.canonicalName || team?.name || label,
+      displayName: label || String(cell.teamId || ""),
+      canonicalName: getUsableTeamLabel(team?.canonicalName) || getUsableTeamLabel(team?.name) || label || String(cell.teamId || ""),
       logo: cell.logo || team?.logo || ""
     };
   }
 
   function ensureTeamBucket(map, record) {
     if (!record) return null;
-    const key = record.teamId ? `team:${record.teamId}` : `name:${safeNormalize(record.displayName)}`;
+    const displayName = getUsableTeamLabel(record.displayName) || getUsableTeamLabel(record.canonicalName) || "-";
+    const canonicalName = getUsableTeamLabel(record.canonicalName) || displayName;
+    const key = record.teamId ? `team:${record.teamId}` : `name:${safeNormalize(displayName)}`;
     const current = map.get(key) || {
       key,
       teamId: record.teamId || "",
-      displayName: record.canonicalName || record.displayName || "-",
-      latestName: record.displayName || record.canonicalName || "-",
+      displayName: canonicalName,
+      latestName: displayName,
       logo: record.logo || "",
       totalTitles: 0,
       titlesByType: Object.fromEntries(HISTORICAL_COMPETITIONS.map((item) => [item.key, 0])),
       podiums: { first: 0, second: 0, third: 0, total: 0 },
       seasons: []
     };
-    current.latestName = record.displayName || current.latestName;
+    if (displayName !== "-") current.latestName = displayName;
     if (!current.logo && record.logo) current.logo = record.logo;
     map.set(key, current);
     return current;
@@ -253,7 +324,7 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
       const record = recordFromSnapshotCell(cell);
       const bucket = ensureTeamBucket(teamBuckets, record);
       if (!bucket) return;
-      const title = { seasonId, type: competition.key, label: competition.label, teamName: record.displayName };
+      const title = { seasonId, type: competition.key, label: competition.label, teamName: getUsableTeamLabel(record.displayName) || getUsableTeamLabel(record.canonicalName) || "-" };
       bucket.totalTitles += 1;
       bucket.titlesByType[competition.key] = (bucket.titlesByType[competition.key] || 0) + 1;
       bucket.seasons.push(title);
@@ -268,7 +339,7 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
       if (!bucket) return;
       bucket.podiums[place] += 1;
       bucket.podiums.total += 1;
-      bucket.seasons.push({ seasonId, type: "PODIO", label: place, teamName: record.displayName });
+      bucket.seasons.push({ seasonId, type: "PODIO", label: place, teamName: getUsableTeamLabel(record.displayName) || getUsableTeamLabel(record.canonicalName) || "-" });
     }
 
     rows.forEach((row) => {
@@ -376,10 +447,12 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
     return `<div class="historical-ranking-v193">${items.map((item, index) => {
       const name = item.teamName || item.name || item.label || (item.teamId ? getTeamFromId(item.teamId)?.name : "") || "Squadra";
       const score = item.score ?? item.points ?? "-";
+      const note = String(item.notes || "").trim();
+      const visibleNote = note && safeNormalize(note) !== "fifa ranking" ? note : "";
       return `
         <article class="historical-ranking-row-v193">
           <span class="historical-rank-v193">${item.position || index + 1}</span>
-          <div>${safeLogo(name, item.logo || "")}<strong>${safeEscape(name)}</strong><small>${safeEscape(item.notes || "Ranking FIFA")}</small></div>
+          <div>${safeLogo(name, item.logo || "")}<strong>${safeEscape(name)}</strong>${visibleNote ? `<small>${safeEscape(visibleNote)}</small>` : ""}</div>
           <strong>${safeEscape(String(score))}</strong>
         </article>`;
     }).join("")}</div>`;

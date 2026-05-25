@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V225.
+Stato: V226.
 
 ## Regola d'oro dati
 
@@ -265,3 +265,14 @@ window.ZonaOrientaleRefactorStatus
 ```
 
 Il campo `ok` deve essere `true`. Se `ok` e' `false`, leggere `checks` per capire quale modulo refactor non risulta disponibile. Questo controllo non sostituisce i test manuali, ma aiuta a intercettare subito regressioni da cache o helper mancanti.
+
+## Nota V226 statistiche storiche
+
+Dopo deploy V226 verificare in `#stats`:
+
+- `Club più vincenti`: nomi club visibili, non solo trattini;
+- `Podi Campionato`: nomi club visibili, non solo trattini;
+- `Ultimi titoli assegnati`: nomi storici visibili per piu stagioni;
+- `Top FIFA Ranking`: nessuna nota generica `FIFA Ranking` ripetuta vicino alle squadre.
+
+Se ricompaiono trattini, controllare che `assets/snapshots/honor.json` sia pubblicato e che venga normalizzato come `snapshot.honorRows`.
