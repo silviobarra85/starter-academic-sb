@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V223.
+Stato: V224.
 
 ## Regola d'oro dati
 
@@ -242,3 +242,15 @@ git commit -m "fix: descrizione coerente"
 ## Comandi Git per applicare questa riorganizzazione docs
 
 Questa riorganizzazione sostituisce molti vecchi file con pochi documenti canonici. Per eliminare davvero i vecchi docs dalla repo, usare `git rm` come indicato nella risposta di consegna della patch.
+
+## Nota V224 statistiche storiche
+
+Se in Albo una competizione risulta `NON_DISPUTATA`, quella cella non deve essere conteggiata come titolo ne' comparire tra i club piu vincenti.
+
+La sottosezione `Presidenti piu vincenti` dipende dagli snapshot stagione statici per recuperare `seasonTeams.presidenteIds` e `presidents` storici. Dopo modifiche storiche ad Albo, squadre stagionali o presidenti, rigenerare e pubblicare sia:
+
+```text
+honor.json
+snapshot stagioni statici
+```
+

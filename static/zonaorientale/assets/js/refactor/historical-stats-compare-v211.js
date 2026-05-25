@@ -12,6 +12,7 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
     formatSeasonShortLabel,
     buildMaps,
     formatMatchResult,
+    loadStaticPublicSeasonSnapshot,
     logger = console
   } = deps;
 
@@ -22,6 +23,8 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
     ? normalizeKey
     : (value) => String(value || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
   const safeLogo = typeof renderTeamLogo === "function" ? renderTeamLogo : (name) => `<span class="team-logo-fallback">${safeEscape(String(name || "-").slice(0, 2).toUpperCase())}</span>`;
+  const NON_TEAM_HONOR_STATUSES = new Set(["NON_DISPUTATA", "NOT_DISPUTED", "ANNULLATA", "CANCELLED", "EMPTY"]);
+  const NON_TEAM_HONOR_LABELS = new Set(["", "-", "non disputata", "not disputed", "annullata", "cancelled", "nessun vincitore"]);
 
   const HISTORICAL_COMPETITIONS = [
     { key: "CAMPIONATO", label: "Campionato", field: "championItalySeasonTeamId", cellField: "championItaly", medal: "oro" },
@@ -71,6 +74,29 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
       });
     });
     return byId;
+  }
+
+  function collectPresidents() {
+    const byId = new Map();
+    (state.raw?.presidents || []).forEach((item) => {
+      if (item?.id) byId.set(String(item.id), item);
+    });
+    getAllSeasonSnapshots().forEach((snapshot) => {
+      (snapshot.presidents || []).forEach((item) => {
+        if (item?.id && !byId.has(String(item.id))) byId.set(String(item.id), item);
+      });
+    });
+    return byId;
+  }
+
+  function isHonorTeamCell(cell) {
+    if (!cell || cell.kind === "empty") return false;
+    const status = String(cell.status || "").trim().toUpperCase();
+    if (status && NON_TEAM_HONOR_STATUSES.has(status)) return false;
+    if (cell.kind && cell.kind !== "team") return false;
+    const label = String(cell.label || cell.teamName || cell.name || "").trim();
+    if (NON_TEAM_HONOR_LABELS.has(safeNormalize(label))) return false;
+    return Boolean(cell.teamId || cell.seasonTeamId || label);
   }
 
   function getTeamFromId(teamId) {
@@ -154,7 +180,7 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
   }
 
   function recordFromSnapshotCell(cell) {
-    if (!cell || cell.kind === "empty") return null;
+    if (!isHonorTeamCell(cell)) return null;
     if (cell.seasonTeamId) {
       const record = getSeasonTeamRecord(cell.seasonTeamId);
       if (record) return record;
@@ -194,7 +220,10 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
   function getPresidentsForSeasonTeam(seasonTeam) {
     const ids = Array.isArray(seasonTeam?.presidentIds) ? seasonTeam.presidentIds : (seasonTeam?.presidentId ? [seasonTeam.presidentId] : []);
     const maps = typeof buildMaps === "function" ? buildMaps() : { presidentsById: new Map() };
-    return ids.map((id) => maps.presidentsById?.get(id)).filter(Boolean);
+    const snapshotPresidentsById = collectPresidents();
+    return ids
+      .map((id) => maps.presidentsById?.get(String(id)) || snapshotPresidentsById.get(String(id)) || null)
+      .filter(Boolean);
   }
 
   function addPresidentWin(presidentBuckets, president, title) {
@@ -319,7 +348,7 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
 
   function renderHistoricalPresidentRanking(items) {
     const visible = items.slice(0, 8);
-    if (!visible.length) return `<p class="muted">Presidenti non calcolabili dai soli snapshot pubblici. Carica i dati amministrativi completi per questa vista.</p>`;
+    if (!visible.length) return `<p class="muted">Nessun presidente vincente calcolabile dai dati storici caricati.</p>`;
     return `<div class="historical-ranking-v193">${visible.map((item, index) => `
       <article class="historical-ranking-row-v193">
         <span class="historical-rank-v193">${index + 1}</span>
@@ -370,7 +399,7 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
     contentTarget.innerHTML = `
       <article class="panel historical-stat-card-v193"><h3>Club più vincenti</h3>${renderHistoricalRanking(stats.teamRanking.filter((item) => item.totalTitles > 0), { empty: "Nessun titolo ancora inserito.", type: "titles" })}</article>
       <article class="panel historical-stat-card-v193"><h3>Podi Campionato</h3>${renderHistoricalRanking(stats.podiumRanking, { empty: "Nessun podio campionato ancora inserito.", type: "podiums" })}</article>
-      <article class="panel historical-stat-card-v193"><h3>Presidenti vincenti</h3>${renderHistoricalPresidentRanking(stats.presidentRanking)}</article>
+      <article class="panel historical-stat-card-v193"><h3>Presidenti più vincenti</h3>${renderHistoricalPresidentRanking(stats.presidentRanking)}</article>
       <article class="panel historical-stat-card-v193"><h3>Ultimi titoli assegnati</h3>${renderHistoricalTimeline(stats.latestTitles)}</article>
       <article class="panel historical-stat-card-v193"><h3>Top FIFA Ranking</h3>${renderHistoricalFifaTop(stats.fifaTop)}</article>`;
   }
@@ -431,7 +460,7 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
   }
 
   function findCompareProfileForCell(cell, lookup) {
-    if (!cell || cell.kind === "empty") return null;
+    if (!isHonorTeamCell(cell)) return null;
     if (cell.teamId && lookup.byTeamId.has(String(cell.teamId))) return lookup.byTeamId.get(String(cell.teamId));
     if (cell.seasonTeamId && lookup.bySeasonTeamId.has(String(cell.seasonTeamId))) return lookup.bySeasonTeamId.get(String(cell.seasonTeamId));
     const record = cell.seasonTeamId ? getSeasonTeamRecord(cell.seasonTeamId) : null;
@@ -751,9 +780,60 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
     });
   }
 
+  let historicalSnapshotsLoadedV224 = false;
+  let historicalSnapshotsPromiseV224 = null;
+
+  function getHistoricalSnapshotSeasonIdsV224() {
+    return Array.from(new Set(getHonorRows().map(getSeasonIdFromHonorRow).filter(Boolean)));
+  }
+
+  function ensureHistoricalStaticSnapshotsLoadedV224() {
+    if (historicalSnapshotsLoadedV224) return Promise.resolve(false);
+    if (historicalSnapshotsPromiseV224) return historicalSnapshotsPromiseV224;
+    if (typeof loadStaticPublicSeasonSnapshot !== "function") {
+      historicalSnapshotsLoadedV224 = true;
+      return Promise.resolve(false);
+    }
+    const missingSeasonIds = getHistoricalSnapshotSeasonIdsV224()
+      .filter((seasonId) => !state.publicSeasonSnapshots?.[seasonId]);
+    if (!missingSeasonIds.length) {
+      historicalSnapshotsLoadedV224 = true;
+      return Promise.resolve(false);
+    }
+    historicalSnapshotsPromiseV224 = Promise.all(missingSeasonIds.map(async (seasonId) => {
+      try {
+        const snapshot = await loadStaticPublicSeasonSnapshot(seasonId);
+        if (!snapshot) return false;
+        state.publicSeasonSnapshots = state.publicSeasonSnapshots || {};
+        if (!state.publicSeasonSnapshots[seasonId]) {
+          state.publicSeasonSnapshots[seasonId] = snapshot;
+          return true;
+        }
+      } catch (error) {
+        logger.warn?.(`Snapshot storico statico non disponibile per ${seasonId}`, error);
+      }
+      return false;
+    }))
+      .then((results) => {
+        historicalSnapshotsLoadedV224 = true;
+        return results.some(Boolean);
+      })
+      .finally(() => {
+        historicalSnapshotsPromiseV224 = null;
+      });
+    return historicalSnapshotsPromiseV224;
+  }
+
   function renderAllSurfaces() {
     renderHistoricalStats();
     renderTeamCompare();
+    ensureHistoricalStaticSnapshotsLoadedV224()
+      .then((changed) => {
+        if (!changed) return;
+        renderHistoricalStats();
+        renderTeamCompare();
+      })
+      .catch((error) => logger.warn?.("Statistiche storiche: preload snapshot statici non riuscito", error));
   }
 
   return {
@@ -762,6 +842,9 @@ export function installHistoricalStatsCompareRefactorV211(deps = {}) {
     getSeasonLabel,
     getSeasonTeamRecord,
     getPresidentsForSeasonTeam,
+    collectPresidents,
+    isHonorTeamCell,
+    ensureHistoricalStaticSnapshotsLoadedV224,
     buildHistoricalStats,
     renderHistoricalStats,
     getCompareProfileMap,

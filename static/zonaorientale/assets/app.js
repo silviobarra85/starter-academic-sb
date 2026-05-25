@@ -134,7 +134,7 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=220";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=224";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
@@ -15365,7 +15365,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "223";
+const DEPLOY_EXPECTED_VERSION_V181 = "224";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18343,6 +18343,7 @@ const historicalStatsCompareV218 = installHistoricalStatsCompareRefactorV211({
   formatSeasonShortLabel,
   buildMaps,
   formatMatchResult,
+  loadStaticPublicSeasonSnapshot: typeof loadStaticPublicSeasonSnapshotV172 === "function" ? loadStaticPublicSeasonSnapshotV172 : null,
   logger: console
 });
 historicalStatsCompareV218.injectStyles?.();
@@ -18384,3 +18385,8 @@ window.addEventListener("load", () => {
 
 /* V209 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
+
+
+/* V224 - Historical stats hardening.
+   Non disputata/status honor cells are excluded from title rankings, and
+   historical static season snapshots are preloaded for president title totals. */

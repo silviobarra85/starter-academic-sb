@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V223.
+Stato: V224.
 
 ## Tipo applicazione
 
@@ -362,3 +362,12 @@ Questo e' un refactor strutturale, non funzionale: gli override storici continua
 - guard desktop per bottom menu, sheet mobile e subnav mobile.
 
 Non spostare altre regole in questo file senza test mobile/desktop.
+
+## Note statistiche storiche V224
+
+La pagina `#stats` usa `assets/js/refactor/historical-stats-compare-v211.js`. In V224 il modulo:
+
+- esclude celle Albo di stato, per esempio `NON_DISPUTATA`, dai conteggi titoli/podi;
+- pre-carica gli snapshot stagione statici mancanti tramite `loadStaticPublicSeasonSnapshotV172` per calcolare i presidenti vincenti su tutte le stagioni archiviate;
+- non deve introdurre letture Firebase extra per le statistiche storiche pubbliche.
+

@@ -2,6 +2,16 @@
 
 Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.
 
+## V224 - Hardening statistiche storiche
+
+Correzioni funzionali e refactor prudente:
+
+- le celle Albo con stato `NON_DISPUTATA`/status non-team non vengono piu conteggiate come titoli;
+- `Non disputata` non puo piu comparire tra i club piu vincenti;
+- la classifica `Presidenti piu vincenti` pre-carica gli snapshot stagione statici mancanti, cosi usa presidenti e squadre storiche di tutte le stagioni archiviate e non solo l'ultima stagione caricata;
+- `historical-stats-compare-v211.js` resta il modulo storico, ma viene rinforzato senza cambiare UI generale o schema dati;
+- footer/cache-buster aggiornati a V224.
+
 ## Linea storica fino a V188
 
 Le versioni V127-V188 hanno costruito la base del sito: refactor progressivi, UI mobile, componenti admin, asset pubblici, checklist e stabilizzazione. I dettagli granulari sono stati accorpati e non vanno piu mantenuti come file separati salvo recupero storico da Git.

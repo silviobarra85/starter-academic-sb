@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V223
+# AI Handoff ZonaOrientale - Current V224
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V223**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati e primo cleanup CSS mobile completato.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V224**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati e statistiche storiche rinforzate.
 
 ## Posizione e struttura progetto
 
@@ -55,17 +55,17 @@ http://localhost:1313/zonaorientale/
 
 ## Versione corrente codice
 
-Versione sito: **V222 data repository facade**.
+Versione sito: **V224 statistiche storiche hardening**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V222 data repository facade · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V224 statistiche storiche hardening · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=222`.
+Cache-buster HTML principali attesi: `?v=224`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` puo risultare storicamente ferma a un valore precedente. Se si lavora sulla checklist di deploy, allinearla alla versione corrente.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `224`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 
@@ -104,11 +104,41 @@ Stato effettivo:
 
 - **V209 live-data/archive**: attivo. Gestisce comunicati live, mercato/trattative live/lazy e Archivio stagioni.
 - **V210 generatore comunicati admin**: attivo. Compila bozze comunicati da dati gia presenti; non deve scrivere automaticamente su Firebase.
-- **V211 statistiche/confronta**: presente e, dopo V218/V219, installato realmente nel bootstrap. Gestisce `#stats` e `#compare`.
+- **V211 statistiche/confronta**: presente e, dopo V218/V219, installato realmente nel bootstrap. In V224 esclude `NON_DISPUTATA` dai titoli e pre-carica snapshot statici per calcolare i presidenti vincenti su tutte le stagioni. Gestisce `#stats` e `#compare`.
 - **V212 dashboard presidente/rose**: attivo. Gestisce dashboard presidente, helper rose e hub mobile presidente.
 - **V213 admin-publication-workflow**: file presente ma **non reinserire nel bootstrap senza test browser**. Era stato disattivato in V214 perche poteva bloccare la visualizzazione dei dati. Se ripreso, installarlo lazy/con try-catch e verificare tutto il bootstrap.
 
 ## Stato funzionale recente
+
+
+### V224 - Hardening statistiche storiche
+
+V224 corregge due problemi reali della pagina `#stats`:
+
+- `Non disputata` non deve essere trattata come club vincitore. Le celle Albo con `kind: "status"`, `status: "NON_DISPUTATA"` o label equivalente vengono ignorate nei conteggi titoli/podi.
+- `Presidenti piu vincenti` non deve limitarsi all'ultima stagione. Il modulo ora pre-carica gli snapshot stagione statici mancanti, recuperando `seasonTeams` e `presidents` storici per calcolare i titoli dei presidenti su tutto l'archivio.
+
+File toccati lato codice:
+
+```text
+assets/app.js
+assets/js/refactor/historical-stats-compare-v211.js
+index.html
+competition.html
+player.html
+```
+
+Test specifico consigliato:
+
+```text
+Home -> Statistiche
+- Club piu vincenti: Non disputata non deve comparire.
+- Presidenti piu vincenti: devono comparire presidenti di tutte le stagioni storiche, non solo quelli dell'ultima stagione.
+Home -> Confronta
+- La pagina deve continuare a caricarsi.
+Archivio
+- Le stagioni devono continuare a vedersi.
+```
 
 ### V216/V217 - Classifica campionato completa
 

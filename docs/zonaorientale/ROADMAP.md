@@ -12,13 +12,13 @@ V220 safety refactor mobile chrome - fatto
 V221 separazione public/admin rendering - fatto
 V222 data repository unico per JSON/Firebase - fatto
 V223 CSS cleanup progressivo - fatto
-V224 rimozione legacy/overlay storici solo dopo test completi
+V224 hardening statistiche storiche + avvio rimozione legacy - fatto
 V225 stabilizzazione finale post-refactor
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.
 
-Nota V223: il cleanup CSS e' iniziato spostando solo il chrome mobile globale. Mancano V224 per rimozione legacy controllata e V225 per stabilizzazione/test finale.
+Nota V224: la rimozione legacy pesante resta da fare solo dopo stabilizzazione; V224 ha dato priorita a hardening statistiche storiche e sicurezza dati. Resta V225 per stabilizzazione/test finale.
 
 ## Priorita alta
 
@@ -236,4 +236,4 @@ master aggiornato
 
 ## Stato refactor corrente
 
-V222 completata: il repository dati e' ora presente come facciata sicura per raccolte Firebase, config pubblica e asset statici. Il prossimo passo consigliato e' V223 CSS cleanup progressivo, mantenendo invariato il comportamento visibile.
+V224 completata: statistiche storiche rinforzate e V220-V223 tecnici completati. Il prossimo passo consigliato e' V225 stabilizzazione finale post-refactor con test browser completo prima di qualsiasi rimozione legacy pesante.
