@@ -129,7 +129,7 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=196";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
 
 
@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "204";
+const DEPLOY_EXPECTED_VERSION_V181 = "205";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20337,5 +20337,178 @@ window.ZonaOrientaleSeasonArchive = {
   snapshot: getSeasonArchiveSnapshotV204
 };
 
-/* V204 - Final startup remains centralized here. */
+
+
+/* V205 - Dati live Firebase per comunicati/fantamercato e Archivio senza Partite recenti.
+   Strategia dati aggiornata:
+   - JSON/snapshot statici restano la sorgente principale per dati storici e pesanti.
+   - Comunicati e Fantamercato sono dati operativi/live e vengono letti da Firebase.
+   - Archivio rimuove la card Partite recenti perché non necessaria nella consultazione sintetica. */
+const ZO_RELEASE_VERSION_V205 = "205";
+state.liveCollectionsV205 = state.liveCollectionsV205 || {
+  newsLoadedAt: "",
+  newsLoading: false,
+  marketRequestedAt: ""
+};
+
+function sortLiveNewsRowsV205(rows) {
+  return [...(Array.isArray(rows) ? rows : [])].sort((a, b) => {
+    const getTime = (item) => {
+      const raw = typeof getNewsRawDateValueV79 === "function" ? getNewsRawDateValueV79(item) : (item?.publishedAt || item?.createdAt || item?.date || "");
+      const date = typeof timestampToDateV79 === "function" ? timestampToDateV79(raw) : new Date(raw);
+      return date && !Number.isNaN(date.getTime()) ? date.getTime() : 0;
+    };
+    return getTime(b) - getTime(a);
+  });
+}
+
+async function loadLiveNewsFromFirebaseV205(options = {}) {
+  const { reason = "live-news", render = true } = options || {};
+  if (!state.raw) state.raw = makeEmptyRawDataV34();
+  if (state.liveCollectionsV205.newsLoading) return state.raw.news || [];
+  state.liveCollectionsV205.newsLoading = true;
+  try {
+    const rows = await loadCollection("news");
+    state.raw.news = sortLiveNewsRowsV205(rows);
+    state.liveCollectionsV205.newsLoadedAt = new Date().toISOString();
+    state.liveCollectionsV205.newsReason = reason;
+    if (render) renderLiveNewsSurfacesV205();
+    return state.raw.news;
+  } catch (error) {
+    console.warn("Comunicati live Firebase non disponibili, mantengo fallback snapshot/statico.", error);
+    return state.raw.news || [];
+  } finally {
+    state.liveCollectionsV205.newsLoading = false;
+  }
+}
+
+function renderLiveNewsSurfacesV205() {
+  try { renderNewsPublicV34?.(); } catch (error) { console.warn("Render comunicati live non riuscito", error); }
+  try {
+    if (typeof renderDashboardNewsV42 === "function") renderDashboardNewsV42();
+  } catch (error) {
+    console.warn("Render dashboard comunicati non riuscito", error);
+  }
+  try { injectPresidentDashboardV192?.(); } catch (error) { console.warn("Render Dashboard Presidente dopo comunicati live non riuscito", error); }
+  try { refreshVisibleTeamProfileV120?.(); } catch (_) {}
+}
+
+function shouldEnsureLiveMarketForPresidentV205() {
+  const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+  if (!state.user || !approved?.seasonTeamId) return false;
+  const page = String(state.currentPage || getHashPageV170?.() || window.location.hash.replace("#", "") || "dashboard");
+  return page === "teamarea" || page === "dashboard" || page === "fantamercato";
+}
+
+function ensureLiveTransferMarketForPresidentV205(reason = "president-live-market") {
+  if (!shouldEnsureLiveMarketForPresidentV205()) return;
+  if (state.transferMarketLoadedV119 || state.transferMarketLoadingV119 || state.transferMarketPromiseV170) return;
+  state.liveCollectionsV205.marketRequestedAt = new Date().toISOString();
+  ensureTransferMarketDataV119?.({ force: true, reason });
+}
+
+const loadPublicDataForSelectedSeasonBeforeV205 = loadPublicDataForSelectedSeasonV100;
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV205(requestId, options = {}) {
+  const result = await loadPublicDataForSelectedSeasonBeforeV205(requestId, options);
+  await loadLiveNewsFromFirebaseV205({ reason: "public-load", render: Boolean(options?.render) });
+  ensureLiveTransferMarketForPresidentV205("public-load");
+  return result;
+};
+
+const renderUserAreaBeforeV205 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV205() {
+  const result = renderUserAreaBeforeV205?.();
+  ensureLiveTransferMarketForPresidentV205("dashboard-presidente");
+  return result;
+};
+
+const renderAllBeforeV205 = renderAll;
+renderAll = function renderAllV205() {
+  const result = renderAllBeforeV205?.();
+  ensureLiveTransferMarketForPresidentV205("render-all");
+  return result;
+};
+
+if (typeof getActiveTransferListingsV119 === "function") {
+  const getActiveTransferListingsBeforeV205 = getActiveTransferListingsV119;
+  getActiveTransferListingsV119 = function getActiveTransferListingsV205(seasonId = getCurrentSeasonId?.()) {
+    if (!state.transferMarketLoadedV119 && !state.transferMarketLoadedV170) return [];
+    return getActiveTransferListingsBeforeV205(seasonId);
+  };
+}
+
+renderSeasonArchiveV196 = function renderSeasonArchiveV205() {
+  const controlsTarget = document.getElementById("seasonArchiveControlsV196");
+  const contentTarget = document.getElementById("seasonArchiveContentV196");
+  if (!controlsTarget || !contentTarget) return;
+  const seasons = getSeasonArchiveSortedSeasonsV196();
+  if (!seasons.length) {
+    controlsTarget.innerHTML = `<p class="muted">Nessuna stagione disponibile.</p>`;
+    contentTarget.innerHTML = `<p class="muted">Carica config.json o fallback Firebase per visualizzare l'archivio.</p>`;
+    return;
+  }
+  const selectedId = getSeasonArchiveSeasonIdV196();
+  const hasSnapshot = Boolean(typeof getSeasonArchiveSnapshotV204 === "function" && getSeasonArchiveSnapshotV204(selectedId));
+  const attempted = Boolean(state.seasonArchiveLoadAttemptedV204?.[selectedId]);
+  if (!hasSnapshot && !attempted && typeof loadPublicSeasonSnapshotV32 === "function") {
+    renderSeasonArchiveLoadingV204(selectedId);
+    ensureSeasonArchiveSnapshotV204(selectedId).then(() => renderSeasonArchiveV196?.());
+    return;
+  }
+
+  const archive = buildSeasonArchiveV196(selectedId);
+  controlsTarget.innerHTML = renderSeasonArchiveControlsV196(seasons, selectedId);
+  const select = document.getElementById("seasonArchiveSelectV196");
+  select?.addEventListener("change", () => setSeasonArchiveSeasonIdV196(select.value));
+  document.getElementById("seasonArchiveSyncCurrentV196")?.addEventListener("click", () => setSeasonArchiveSeasonIdV196(getCurrentSeasonId()));
+  const completedMatches = archive.matches.filter((match) => String(match.status || "").toUpperCase() === "PLAYED" || formatMatchResult(match) !== "-").length;
+  contentTarget.innerHTML = `
+    <article class="panel season-archive-hero-v196">
+      <div>
+        <p class="eyebrow">${escapeHtml(archive.season.id || "Stagione")}</p>
+        <h3>${escapeHtml(archive.season.name || getSeasonLabelV193(archive.season.id))}</h3>
+        <p>Riepilogo completo della stagione selezionata, utile per consultazione storica e controllo dati pubblicati.</p>
+      </div>
+      <div class="season-archive-metrics-v196">
+        ${renderSeasonArchiveMetricV196("Squadre", archive.seasonTeams.length, "partecipanti")}
+        ${renderSeasonArchiveMetricV196("Competizioni", archive.competitions.length, "caricate")}
+        ${renderSeasonArchiveMetricV196("Partite", archive.matches.length, `${completedMatches} con risultato`)}
+        ${renderSeasonArchiveMetricV196("Giocatori", archive.rosterEntries.length || "-", "da rosterEntries")}
+      </div>
+    </article>
+    <div class="season-archive-grid-v196">
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>👥</span><div><h3>Squadre della stagione</h3><p>Nomi storici, presidenti, saldo, rosa e stadio.</p></div></div>
+        ${renderSeasonArchiveTeamsV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196">
+        <div class="season-archive-card-heading-v196"><span>🏆</span><div><h3>Albo della stagione</h3><p>Vincitori principali collegati ad honor.json/snapshot.</p></div></div>
+        ${renderSeasonArchiveHonorV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori/classifiche delle competizioni.</p></div></div>
+        ${renderSeasonArchiveCompetitionsV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>🧭</span><div><h3>Timeline dati</h3><p>Riepilogo rapido di titoli, competizioni e comunicazioni live.</p></div></div>
+        ${renderSeasonArchiveTimelineV196(archive)}
+      </article>
+    </div>`;
+};
+
+window.ZonaOrientaleLiveData = {
+  loadNews: loadLiveNewsFromFirebaseV205,
+  ensureMarket: ensureLiveTransferMarketForPresidentV205,
+  status: () => ({ ...state.liveCollectionsV205, marketLoaded: Boolean(state.transferMarketLoadedV119 || state.transferMarketLoadedV170), newsCount: state.raw?.news?.length || 0 })
+};
+
+window.ZonaOrientaleSeasonArchive = {
+  build: buildSeasonArchiveV196,
+  render: renderSeasonArchiveV196,
+  setSeason: setSeasonArchiveSeasonIdV196,
+  ensureSnapshot: ensureSeasonArchiveSnapshotV204,
+  snapshot: getSeasonArchiveSnapshotV204
+};
+
+/* V205 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
