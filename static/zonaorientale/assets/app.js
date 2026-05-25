@@ -42,7 +42,7 @@ import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=218";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=219";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -130,10 +130,10 @@ import {
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=218";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=219";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=218";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=219";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 
 
@@ -9787,7 +9787,7 @@ function getCompetitionDisplayNameV111(competition) {
 
 function getCompetitionOpenUrlV111(competition) {
   const params = new URLSearchParams();
-  params.set("v", "218");
+  params.set("v", "219");
   const seasonId = competition?.seasonId || getCurrentSeasonId();
   if (seasonId) params.set("seasonId", seasonId);
   if (competition?.id) params.set("competitionId", competition.id);
@@ -17509,6 +17509,35 @@ if (window.ZonaOrientalePublicationStatus) {
     if (typeof renderPublicationStatusPanelV190 === "function") renderPublicationStatusPanelV190(null);
     return true;
   };
+}
+
+
+/* V219 - Hotfix helper archivio stagioni.
+   La V218 richiama renderSeasonArchiveV196 dal ciclo renderAll, ma il bundle
+   non esponeva gli helper V193 usati dall'ordinamento e dalle etichette
+   stagione. Li ripristiniamo in forma difensiva prima del blocco V196. */
+const HISTORICAL_COMPETITIONS_V193 = [
+  { key: "CAMPIONATO", label: "Campionato", field: "championItalySeasonTeamId", cellField: "championItaly", medal: "oro" },
+  { key: "COPPA_ITALIA", label: "Coppa Italia", field: "coppaItaliaWinnerSeasonTeamId", cellField: "coppaItalia", medal: "coppa" },
+  { key: "CHAMPIONS_LEAGUE", label: "Champions League", field: "championsLeagueWinnerSeasonTeamId", cellField: "championsLeague", medal: "champions" },
+  { key: "PLAYOFF", label: "Playoff", field: "playoffWinnerSeasonTeamId", cellField: "playoff", medal: "playoff" }
+];
+
+function getSeasonSortValueV193(seasonId) {
+  const normalized = String(seasonId || "").trim();
+  const yearMatch = normalized.match(/(?:^|\D)(\d{4})(?:\D|$)/);
+  if (yearMatch) return Number(yearMatch[1]);
+  const compactMatch = normalized.match(/(\d{2})\D?(\d{2})/);
+  if (compactMatch) {
+    const first = Number(compactMatch[1]);
+    return first >= 70 ? 1900 + first : 2000 + first;
+  }
+  return 0;
+}
+
+function getSeasonLabelV193(seasonId) {
+  const season = (state.raw?.seasons || []).find((item) => String(item?.id || "") === String(seasonId || "")) || { id: seasonId, name: seasonId };
+  return typeof formatSeasonShortLabel === "function" ? formatSeasonShortLabel(season) : (season.name || season.id || "-");
 }
 
 
