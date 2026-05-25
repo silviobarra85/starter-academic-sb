@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V220
+# AI Handoff ZonaOrientale - Current V221
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V220**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V221**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
 
 ## Posizione e struttura progetto
 
@@ -55,15 +55,15 @@ http://localhost:1313/zonaorientale/
 
 ## Versione corrente codice
 
-Versione sito: **V220 safety refactor mobile chrome**.
+Versione sito: **V221 separazione rendering public/admin**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V220 safety refactor mobile chrome · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V221 separazione rendering public/admin · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=220`.
+Cache-buster HTML principali attesi: `?v=221`.
 
 Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` puo risultare storicamente ferma a un valore precedente. Se si lavora sulla checklist di deploy, allinearla alla versione corrente.
 
@@ -96,6 +96,7 @@ assets/js/refactor/admin-communication-generator-v210.js
 assets/js/refactor/historical-stats-compare-v211.js
 assets/js/refactor/president-dashboard-rosters-v212.js
 assets/js/refactor/admin-publication-workflow-v213.js
+assets/js/refactor/public-admin-render-orchestrator-v221.js
 ```
 
 Stato effettivo:
@@ -136,6 +137,39 @@ Compatibilita: molte funzioni leggono anche alias legacy, quindi non rompere que
 
 V217 ha aggiunto cache-buster agli import critici, in particolare `admin-competitions.js?v=219` nella versione corrente, per evitare cache vecchia del modulo Admin.
 
+
+
+### V221 - Separazione rendering public/admin
+
+V221 e' il secondo overlay tecnico del percorso di refactor. Non cambia UI, dati, Firebase o flussi Admin.
+
+Cosa e' stato fatto:
+
+```text
+assets/js/refactor/public-admin-render-orchestrator-v221.js
+```
+
+Il nuovo modulo centralizza il ciclo di rendering principale in tre gruppi:
+
+```text
+publicRenderers  -> header, selettori, dashboard, competizioni, placeholder, squadre, stadi
+adminRenderers   -> area Admin
+afterRenderers   -> sezioni collassabili e post-render
+```
+
+In `app.js`, il `renderAll()` base non chiama piu direttamente ogni renderer uno per uno, ma delega all'orchestratore V221. Gli override storici successivi restano compatibili perche continuano ad agganciarsi a `renderAll` come prima.
+
+Test minimi dopo V221:
+
+```text
+Home pubblica
+Admin visibile solo per admin
+Dashboard e competizioni
+Archivio, Statistiche, Confronta
+Classifica campionato completa
+Mobile bottom menu e pulsante Su
+competition.html e player.html
+```
 
 ### V220 - Safety refactor mobile chrome
 

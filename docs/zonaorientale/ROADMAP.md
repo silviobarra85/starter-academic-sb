@@ -9,7 +9,7 @@ Percorso consigliato dopo V219/V220:
 
 ```text
 V220 safety refactor mobile chrome - fatto
-V221 separazione public/admin rendering
+V221 separazione public/admin rendering - fatto
 V222 data repository unico per JSON/Firebase
 V223 CSS cleanup progressivo
 V224 rimozione legacy/overlay storici solo dopo test completi
@@ -230,3 +230,7 @@ master aggiornato
 4. Dashboard Presidente migliorata
 5. Validatore JSON statici potenziato
 6. Hall of Fame / statistiche storiche avanzate
+
+## Stato refactor corrente
+
+V221 completata: il rendering principale e' ora orchestrato per gruppi public/admin/after tramite modulo dedicato. Il prossimo passo consigliato resta V222, cioe' un data repository unico per rendere meno fragile il caricamento da JSON statici, snapshot e Firebase.

@@ -220,6 +220,28 @@ Aggiornati `app.js`, `competition.html` e `player.html` per usare il nuovo modul
 
 Cache-buster e footer portati a V220.
 
+## V221 - Separazione rendering public/admin
+
+Secondo overlay tecnico del percorso di pulizia codice. Nessuna nuova feature e nessun cambio dati.
+
+Aggiunto:
+
+```text
+assets/js/refactor/public-admin-render-orchestrator-v221.js
+```
+
+Il `renderAll()` base di `app.js` e' stato riorganizzato in gruppi:
+
+```text
+publicRenderers
+adminRenderers
+afterRenderers
+```
+
+Obiettivo: iniziare la separazione tra rendering pubblico e rendering Admin senza cambiare comportamento visibile e senza toccare i dati.
+
+Aggiornati footer e cache-buster a V221.
+
 ## Docs consolidation - 25/05/2026
 
 Ridotta la documentazione da molti file storici a pochi documenti canonici:

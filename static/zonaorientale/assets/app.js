@@ -136,6 +136,7 @@ import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archi
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
 import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=220";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -738,16 +739,26 @@ function renderDashboardCompetitionSummary(competition) {
 
 
 
+const publicAdminRenderOrchestratorV221 = createPublicAdminRenderOrchestratorV221();
+
 function renderAll() {
-  renderLeagueHeader();
-  renderSeasonSelectors();
-  renderDashboard();
-  renderCompetitionsPublic();
-  renderPlaceholderPages();
-  renderTeamsTable();
-  renderStadiumsPublic();
-  renderAdminArea();
-  setupCollapsibleSections();
+  return publicAdminRenderOrchestratorV221.renderAll({
+    publicRenderers: [
+      renderLeagueHeader,
+      renderSeasonSelectors,
+      renderDashboard,
+      renderCompetitionsPublic,
+      renderPlaceholderPages,
+      renderTeamsTable,
+      renderStadiumsPublic
+    ],
+    adminRenderers: [
+      renderAdminArea
+    ],
+    afterRenderers: [
+      setupCollapsibleSections
+    ]
+  });
 }
 
 function renderLeagueHeader() {
@@ -18321,6 +18332,10 @@ window.ZonaOrientaleSeasonArchive = {
 /* V215 - Hotfix archivio bootstrap.
    Ripristina gli helper base V196 dellArchivio prima degli override V204/V209.
    Senza questi helper, il modulo ES interrompeva lavvio con buildSeasonArchiveV196 non definita. */
+
+/* V221 - Separazione ciclo rendering public/admin.
+   Estrae l orchestrazione del render principale in public-admin-render-orchestrator-v221.js.
+   Non cambia UI, dati o flussi Firebase. */
 
 /* V218 - UI mobile globale e pagine storiche.
    - Installa realmente il refactor V211 per Statistiche e Confronta.

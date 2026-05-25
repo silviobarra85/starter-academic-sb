@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V220.
+Stato: V221.
 
 ## Tipo applicazione
 
@@ -104,6 +104,7 @@ assets/js/refactor/admin-communication-generator-v210.js
 assets/js/refactor/historical-stats-compare-v211.js
 assets/js/refactor/president-dashboard-rosters-v212.js
 assets/js/refactor/admin-publication-workflow-v213.js
+assets/js/refactor/public-admin-render-orchestrator-v221.js
 ```
 
 ## Ordine di lettura dati pubblici
@@ -304,3 +305,21 @@ Admin pubblicazione:
 V190/V191/V203 logiche storiche inline
 V213 modulo estratto ma disattivato in V214
 ```
+
+## Orchestrazione rendering V221
+
+Da V221 il ciclo base `renderAll()` e' organizzato tramite:
+
+```text
+assets/js/refactor/public-admin-render-orchestrator-v221.js
+```
+
+Il modulo riceve renderer gia definiti in `app.js` e li esegue in gruppi logici:
+
+```text
+publicRenderers
+adminRenderers
+afterRenderers
+```
+
+Questo e' un refactor strutturale, non funzionale: gli override storici continuano ad agganciarsi a `renderAll`, quindi non rimuovere il wrapper finale senza verificare Archivio, Statistiche e Confronta.
