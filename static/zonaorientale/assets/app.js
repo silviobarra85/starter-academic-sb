@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "205";
+const DEPLOY_EXPECTED_VERSION_V181 = "206";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20510,5 +20510,86 @@ window.ZonaOrientaleSeasonArchive = {
   snapshot: getSeasonArchiveSnapshotV204
 };
 
-/* V205 - Final startup remains centralized here. */
+
+/* V206 - Hotfix caricamento iniziale dopo live Firebase.
+   V205 aveva reso i comunicati live una lettura awaited dentro il caricamento pubblico.
+   Se Firebase live e' lento/non raggiungibile, l'avvio puo' sembrare bloccato.
+   Da V206 i dati statici/snapshot renderizzano sempre prima; comunicati e mercato live
+   vengono aggiornati in background, senza impedire il primo render. */
+const ZO_RELEASE_VERSION_V206 = "206";
+
+function getHashPageSafeV206() {
+  try {
+    if (typeof getHashPageV170 === "function") return getHashPageV170();
+  } catch (_) {}
+  return String(window.location.hash || "#dashboard").replace("#", "") || "dashboard";
+}
+
+function callOptionalV206(name, ...args) {
+  try {
+    const fn = typeof window !== "undefined" ? window[name] : null;
+    if (typeof fn === "function") return fn(...args);
+  } catch (_) {}
+  try {
+    // Some project helpers are module-scoped and not exposed on window.
+    // The switch keeps references guarded by typeof so an absent helper never blocks startup.
+    switch (name) {
+      case "renderNewsPublicV34": if (typeof renderNewsPublicV34 === "function") return renderNewsPublicV34(...args); break;
+      case "renderDashboardNewsV42": if (typeof renderDashboardNewsV42 === "function") return renderDashboardNewsV42(...args); break;
+      case "injectPresidentDashboardV192": if (typeof injectPresidentDashboardV192 === "function") return injectPresidentDashboardV192(...args); break;
+      case "refreshVisibleTeamProfileV120": if (typeof refreshVisibleTeamProfileV120 === "function") return refreshVisibleTeamProfileV120(...args); break;
+      case "ensureTransferMarketDataV119": if (typeof ensureTransferMarketDataV119 === "function") return ensureTransferMarketDataV119(...args); break;
+    }
+  } catch (error) {
+    console.warn(`[ZonaOrientale V206] Helper opzionale non riuscito: ${name}`, error);
+  }
+  return null;
+}
+
+renderLiveNewsSurfacesV205 = function renderLiveNewsSurfacesV206() {
+  callOptionalV206("renderNewsPublicV34");
+  callOptionalV206("renderDashboardNewsV42");
+  callOptionalV206("injectPresidentDashboardV192");
+  callOptionalV206("refreshVisibleTeamProfileV120");
+};
+
+shouldEnsureLiveMarketForPresidentV205 = function shouldEnsureLiveMarketForPresidentV206() {
+  let approved = null;
+  try { if (typeof getApprovedTeamUser === "function") approved = getApprovedTeamUser(); } catch (_) {}
+  if (!state.user || !approved?.seasonTeamId) return false;
+  const page = String(state.currentPage || getHashPageSafeV206() || "dashboard");
+  return page === "teamarea" || page === "dashboard" || page === "fantamercato";
+};
+
+ensureLiveTransferMarketForPresidentV205 = function ensureLiveTransferMarketForPresidentV206(reason = "president-live-market") {
+  if (!shouldEnsureLiveMarketForPresidentV205()) return;
+  if (state.transferMarketLoadedV119 || state.transferMarketLoadingV119 || state.transferMarketPromiseV170) return;
+  state.liveCollectionsV205.marketRequestedAt = new Date().toISOString();
+  callOptionalV206("ensureTransferMarketDataV119", { force: true, reason });
+};
+
+function scheduleLiveNewsRefreshV206(reason = "background-live-news") {
+  window.setTimeout(() => {
+    loadLiveNewsFromFirebaseV205({ reason, render: true }).catch((error) => {
+      console.warn("Comunicati live Firebase non disponibili in background; mantengo dati snapshot/statici.", error);
+    });
+  }, 0);
+}
+
+// Ripristina il caricamento pubblico non bloccante: prima render statici/snapshot, poi live news in background.
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV206(requestId, options = {}) {
+  const result = await loadPublicDataForSelectedSeasonBeforeV205(requestId, options);
+  scheduleLiveNewsRefreshV206("public-load-background");
+  ensureLiveTransferMarketForPresidentV205("public-load-background");
+  return result;
+};
+
+window.ZonaOrientaleLiveData = Object.assign({}, window.ZonaOrientaleLiveData || {}, {
+  loadNews: loadLiveNewsFromFirebaseV205,
+  refreshNewsBackground: scheduleLiveNewsRefreshV206,
+  ensureMarket: ensureLiveTransferMarketForPresidentV205,
+  status: () => ({ ...state.liveCollectionsV205, marketLoaded: Boolean(state.transferMarketLoadedV119 || state.transferMarketLoadedV170), newsCount: state.raw?.news?.length || 0 })
+});
+
+/* V206 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
