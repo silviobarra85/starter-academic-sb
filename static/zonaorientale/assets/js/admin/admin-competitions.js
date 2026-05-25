@@ -1,3 +1,4 @@
+/* V217: included in patch and cache-busted by app.js import so Admin results uses the complete standings editor. */
 export function createAdminCompetitionHelpersV131({
   state,
   escapeHtml,

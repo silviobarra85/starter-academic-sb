@@ -130,7 +130,7 @@ import {
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=217";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
 import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js";
@@ -337,6 +337,8 @@ function getCompetitionResults(competitionId) {
     .sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
 }
 
+/* V217 note: app import for admin-competitions now has an explicit cache-buster;
+   opened competition pages also receive ?v=217 to avoid stale competition.html. */
 function getStandingResultValueV216(result, keys = [], fallback = "-") {
   for (const key of keys) {
     const value = result?.[key];
@@ -9783,6 +9785,7 @@ function getCompetitionDisplayNameV111(competition) {
 
 function getCompetitionOpenUrlV111(competition) {
   const params = new URLSearchParams();
+  params.set("v", "217");
   const seasonId = competition?.seasonId || getCurrentSeasonId();
   if (seasonId) params.set("seasonId", seasonId);
   if (competition?.id) params.set("competitionId", competition.id);

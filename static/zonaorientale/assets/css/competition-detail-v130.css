@@ -587,3 +587,13 @@ body.is-mobile-ux .competition-page-match-table-wrap table {
   width: 78px !important;
   min-width: 78px !important;
 }
+
+/* V217 - Pagina singola competizione: forza la classifica completa anche con CSS mobile legacy in cache. */
+.competition-page-result-table-wrap table.competition-standing-table-v216 th,
+.competition-page-result-table-wrap table.competition-standing-table-v216 td {
+  display: table-cell;
+}
+
+body.is-mobile-ux .competition-page-result-table-wrap table.competition-standing-table-v216 {
+  min-width: 920px !important;
+}

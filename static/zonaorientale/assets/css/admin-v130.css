@@ -59,3 +59,13 @@
   min-width: 72px;
   text-align: right;
 }
+
+/* V217 - Admin risultati: input classifica completi sempre scrollabili e leggibili. */
+.result-admin-standing-wrap-v216 {
+  max-width: 100%;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-input-v216 {
+  width: 100%;
+  box-sizing: border-box;
+}

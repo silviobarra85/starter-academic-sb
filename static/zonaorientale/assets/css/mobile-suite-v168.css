@@ -5242,3 +5242,18 @@
     white-space: nowrap !important;
   }
 }
+
+/* V217 - Mobile: classifica campionato completa, senza colonne collassate/nascoste. */
+body.is-mobile-ux .competition-standing-table-v216 .standing-position-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-team-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-points-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-played-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-wins-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-draws-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-losses-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-goals-for-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-goals-against-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-goal-difference-col-v216,
+body.is-mobile-ux .competition-standing-table-v216 .standing-fantapoints-col-v216 {
+  display: table-cell !important;
+}
