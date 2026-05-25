@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V222.
+Stato: V223.
 
 ## Tipo applicazione
 
@@ -37,6 +37,7 @@ assets/css/admin-v130.css
 assets/css/transfer-market-v130.css
 assets/css/competition-detail-v130.css
 assets/css/mobile-suite-v168.css
+assets/css/mobile-chrome-v223.css
 assets/css/mobile-hotfix-v166.css
 assets/css/mobile-hotfix-v167.css
 ```
@@ -351,3 +352,13 @@ afterRenderers
 ```
 
 Questo e' un refactor strutturale, non funzionale: gli override storici continuano ad agganciarsi a `renderAll`, quindi non rimuovere il wrapper finale senza verificare Archivio, Statistiche e Confronta.
+
+### CSS V223
+
+`assets/css/mobile-chrome-v223.css` e' il primo estratto del cleanup CSS. Contiene esclusivamente regole globali di chrome mobile:
+
+- pulsante `Su` globale `zo-scroll-top-v218`;
+- nascondimento vecchi pulsanti `listone-scroll-top-v175` e `competition-scroll-top-v166`;
+- guard desktop per bottom menu, sheet mobile e subnav mobile.
+
+Non spostare altre regole in questo file senza test mobile/desktop.

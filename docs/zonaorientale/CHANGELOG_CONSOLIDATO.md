@@ -276,3 +276,14 @@ firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V124C.rules
 ```
 
 I vecchi handoff/refactor per versione non vanno piu ricreati automaticamente: usare questo changelog e l'handoff current.
+
+## V223 - CSS cleanup progressivo
+
+Overlay tecnico senza cambio funzionale visibile.
+
+- creato `assets/css/mobile-chrome-v223.css`;
+- spostate nel nuovo file le regole globali del pulsante `Su` e del guard desktop bottom menu;
+- rimossi i blocchi V218 duplicati da `assets/styles.css` e `assets/css/mobile-suite-v168.css`;
+- aggiornati footer/cache-buster a V223 e runtime expected version a 223.
+
+Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.

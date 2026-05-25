@@ -15365,7 +15365,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "222";
+const DEPLOY_EXPECTED_VERSION_V181 = "223";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18313,6 +18313,9 @@ window.ZonaOrientaleSeasonArchive = {
 /* V215 - Hotfix archivio bootstrap.
    Ripristina gli helper base V196 dellArchivio prima degli override V204/V209.
    Senza questi helper, il modulo ES interrompeva lavvio con buildSeasonArchiveV196 non definita. */
+
+/* V223 - CSS cleanup progressivo.
+   Il chrome mobile globale viene centralizzato in assets/css/mobile-chrome-v223.css. */
 
 /* V222 - Data repository facade.
    Introduce assets/js/data/repository-v222.js come facciata unica per raccolte Firebase,

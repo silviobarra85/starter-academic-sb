@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V222
+# AI Handoff ZonaOrientale - Current V223
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V222**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V223**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati e primo cleanup CSS mobile completato.
 
 ## Posizione e struttura progetto
 
@@ -358,3 +358,15 @@ git status
 git add ...
 git commit -m "messaggio coerente"
 ```
+
+## Stato refactor V223
+
+La V223 e' un overlay tecnico senza cambi funzionali visibili. Ha centralizzato il chrome mobile globale nel nuovo file:
+
+```text
+assets/css/mobile-chrome-v223.css
+```
+
+Il file assorbe i blocchi duplicati V218 relativi a pulsante `Su`, vecchi pulsanti `listone/competition` e guard desktop del bottom menu. I blocchi corrispondenti sono stati rimossi da `assets/styles.css` e `assets/css/mobile-suite-v168.css` per iniziare la pulizia CSS senza alterare il layout.
+
+Versione runtime attesa: **223**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
