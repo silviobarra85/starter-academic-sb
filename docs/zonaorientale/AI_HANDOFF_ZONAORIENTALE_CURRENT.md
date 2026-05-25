@@ -1,30 +1,41 @@
-# AI Handoff ZonaOrientale - V214
+# AI Handoff ZonaOrientale - Current V215
 
-## Stato
-V214 e un hotfix di stabilizzazione dopo V213.
+## Stato corrente
 
-## Motivazione
-Il refactor V213 del workflow pubblicazione admin poteva impedire la visualizzazione dei dati. V214 rimuove il nuovo modulo V213 dal bootstrap e ripristina la logica inline stabile presente fino a V212/V203.
+Versione corrente: V215.
 
-## File chiave
-- static/zonaorientale/index.html
-- static/zonaorientale/assets/app.js
-- static/zonaorientale/assets/js/refactor/president-dashboard-rosters-v212.js
+V215 è un hotfix di stabilità: ripristina gli helper base V196 dell'Archivio rimossi/lasciati mancanti dal refactor, correggendo l'errore `buildSeasonArchiveV196 is not defined` che bloccava l'intero bootstrap.
 
-## Refactor attivi da mantenere
-- assets/js/refactor/live-data-archive-v209.js
-- assets/js/refactor/admin-communication-generator-v210.js
-- assets/js/refactor/historical-stats-compare-v211.js
-- assets/js/refactor/president-dashboard-rosters-v212.js
+## Regole operative
 
-## Attenzione
-Non reintrodurre il modulo `admin-publication-workflow-v213.js` senza testare il bootstrap in browser. Se si riprende quel refactor, farlo con installazione lazy e try/catch, senza bloccare `startZonaOrientaleAppV173()`.
+- Aggiornare sempre `Version` nel footer e cache-buster ad ogni overlay.
+- Includere sempre un handoff AI per ogni overlay.
+- Verificare sempre da mobile le nuove funzionalità.
+- Per lanciare in locale, se ci si trova in `static/zonaorientale`:
 
-## Test consigliati
-- Dashboard pubblica
-- Albo
-- Statistiche
-- Confronta
-- Archivio con cambio stagione
-- Dashboard Presidente
-- Admin: Stato Firebase/JSON, Procedura guidata, Checklist online
+```bash
+cd ..
+python3 -m http.server 1313 --bind 0.0.0.0
+```
+
+Poi aprire:
+
+```text
+http://localhost:1313/zonaorientale/
+```
+
+## Architettura dati
+
+- Dati storici/pesanti: JSON statici e snapshot stagione.
+- Comunicati/news: Firebase live in background.
+- Fantamercato/trattative: Firebase live/lazy.
+- Admin completo: caricato solo su richiesta.
+
+## Refactor recenti attivi
+
+- V209: modulo live data / archivio.
+- V210: generatore comunicati admin.
+- V211: statistiche storiche e confronta squadre.
+- V212: dashboard presidente e helper rose.
+- V213: workflow pubblicazione admin, disattivato in V214 per stabilità.
+- V215: ripristino helper Archivio V196 necessari agli override V204/V209.
