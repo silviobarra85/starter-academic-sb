@@ -2,6 +2,18 @@
 
 Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.
 
+
+## V228 - Comunicati condivisibili WhatsApp
+
+- aggiunto `assets/js/domain/news-share-v228.js`;
+- aggiunto `tools/generate-news-share-pages.mjs`;
+- generate pagine statiche in `comunicati/*.html` per i comunicati presenti negli snapshot;
+- `news.html` ora contiene i meta Open Graph dell'ultimo comunicato e reindirizza alla relativa news;
+- `index.html` riceve meta Open Graph aggiornati all'ultimo comunicato dal generatore;
+- News pubbliche e Admin mostrano pulsanti `Copia link WhatsApp`;
+- Admin permette anche di scaricare l'HTML preview di un singolo comunicato;
+- aggiornati footer/cache-buster a V228.
+
 ## V227 - Hotfix FM Archivio
 
 - Corretto Archivio -> Squadre della stagione: il saldo FM non viene piu' letto solo da `seasonTeams.fmBalance`.

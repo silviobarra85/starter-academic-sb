@@ -13487,3 +13487,54 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
 .competition-standing-table-v216 .standing-fantapoints-col-v216 {
   display: table-cell;
 }
+
+/* V228 - Comunicati condivisibili WhatsApp */
+.news-share-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .9rem;
+}
+
+.news-share-actions .button {
+  min-height: 2.15rem;
+}
+
+.news-share-path {
+  display: block;
+  flex-basis: 100%;
+  word-break: break-all;
+}
+
+.admin-news-actions {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+
+.admin-news-actions .news-share-actions {
+  justify-content: flex-end;
+  margin-top: .15rem;
+}
+
+.admin-news-share-note {
+  margin: .75rem 0 1rem;
+}
+
+@media (max-width: 720px) {
+  .news-share-actions,
+  .admin-news-actions,
+  .admin-news-actions .news-share-actions {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .news-share-actions .button,
+  .admin-news-actions .button {
+    justify-content: center;
+    width: 100%;
+  }
+}

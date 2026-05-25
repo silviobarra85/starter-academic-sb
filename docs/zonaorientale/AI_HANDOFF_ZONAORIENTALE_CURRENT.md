@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V227
+# AI Handoff ZonaOrientale - Current V228
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V227**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, statistiche storiche rinforzate, hotfix V226 sui nomi storici, hotfix V227 sui saldi FM in Archivio e primo ciclo refactor tecnico V220-V225 chiuso.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V228**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e pagine statiche per anteprime WhatsApp dei comunicati.
 
 ## Posizione e struttura progetto
 
@@ -54,6 +54,36 @@ http://localhost:1313/zonaorientale/
 ```
 
 
+
+## Fix V228 - Comunicati condivisibili WhatsApp
+
+V228 introduce pagine statiche dedicate ai comunicati per risolvere le anteprime WhatsApp. WhatsApp non esegue il JavaScript della webapp: legge solo i meta tag Open Graph presenti nell'HTML scaricato.
+
+File/parti rilevanti:
+
+```text
+assets/js/domain/news-share-v228.js
+tools/generate-news-share-pages.mjs
+comunicati/*.html
+news.html
+```
+
+Flusso corretto dopo un nuovo comunicato:
+
+```bash
+cd static/zonaorientale
+node tools/generate-news-share-pages.mjs
+cd ../..
+
+git add static/zonaorientale/news.html static/zonaorientale/comunicati static/zonaorientale/index.html
+git commit -m "data: aggiorna anteprime comunicati whatsapp"
+git push
+```
+
+Il pannello Admin mostra per ogni comunicato il pulsante `Copia link WhatsApp`, che punta a `https://www.silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>`. Le pagine `comunicati/*.html` contengono `og:title`, `og:description`, `og:image`, `og:url` e poi reindirizzano alla news nella webapp.
+
+Nota: se il comunicato e' stato salvato solo su Firebase ma non sono stati rigenerati/deployati snapshot e pagine statiche, WhatsApp continuera a vedere la preview precedente o generica.
+
 ## Fix V227 - FM Archivio
 
 Il bug rilevato in Archivio era causato dal rendering delle card squadra: veniva letto solo `seasonTeam.fmBalance`, ma gli snapshot pubblici non salvano quel campo dentro `seasonTeams`.
@@ -68,15 +98,15 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V227 hotfix FM archivio**.
+Versione sito: **V228 comunicati condivisibili WhatsApp**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V227 hotfix FM archivio · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V228 comunicati condivisibili WhatsApp · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=227`.
+Cache-buster HTML principali attesi: `?v=228`.
 
 Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `227`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
