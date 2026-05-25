@@ -1,3 +1,12 @@
+## V231 - Preview WhatsApp comunicati dinamica Netlify
+
+- Sostituito il flusso operativo basato su pagine statiche `comunicati/*.html` con una Netlify Function.
+- Nuovo endpoint condivisibile: `https://silviobarra.com/zonaorientale/share/news/<id-comunicato>`.
+- Il pulsante `Copia link WhatsApp` usa subito l'ID Firebase del comunicato, senza generare file HTML in repo.
+- Aggiunta redirect Netlify in `netlify.toml` verso `netlify/functions/news-share.js`.
+- L'Admin ora chiarisce che non serve piu' rigenerare/committare preview statiche dopo ogni comunicato.
+- Aggiornati footer/cache-buster a V231.
+
 ## V230 - Hotfix link WhatsApp comunicati
 
 - Corretto dominio hardcoded dei link comunicati da `www.silviobarra.com` a `silviobarra.com`.

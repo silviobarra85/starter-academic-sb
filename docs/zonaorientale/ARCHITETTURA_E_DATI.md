@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V230.
+Stato: V231.
 
 ## Tipo applicazione
 
@@ -423,7 +423,7 @@ La V227 calcola il saldo con priorita':
 Quando nessuna sorgente contiene il saldo, visualizzare `-`, non `0 FM`.
 
 
-## V228 - Anteprime comunicati WhatsApp
+## Legacy V228 - Anteprime comunicati WhatsApp statiche
 
 WhatsApp e gli altri crawler social non attendono il rendering JavaScript della webapp. Per questo i comunicati condivisibili usano pagine HTML statiche dedicate:
 
@@ -434,11 +434,11 @@ static/zonaorientale/news.html
 
 Il modulo browser `assets/js/domain/news-share-v228.js` centralizza slug, URL e HTML preview. Il generatore Node `tools/generate-news-share-pages.mjs` legge `assets/snapshots/seasons/*.json`, genera una pagina per ogni comunicato e aggiorna `news.html` e i meta Open Graph della home sull'ultimo comunicato disponibile negli snapshot.
 
-Il sito pubblico e l'Admin mostrano pulsanti `Copia link WhatsApp`; questi link devono puntare alle pagine statiche in `comunicati/`, non all'hash `#news`, per evitare cache/preview errate.
+Da V231 il sito pubblico e l'Admin mostrano pulsanti `Copia link WhatsApp` che puntano all'endpoint dinamico `/zonaorientale/share/news/<id>`. Le pagine statiche in `comunicati/` restano legacy.
 
 
 
-## V230 - Hotfix URL comunicati condivisibili
+## Legacy V230 - Hotfix URL comunicati condivisibili statici
 
 V230 corregge i link WhatsApp/preview che andavano in 404 per dominio errato. Le anteprime devono usare:
 
@@ -465,3 +465,21 @@ openPresidentDashboardFromHeaderV229
 ```
 
 CSS in `assets/styles.css`: blocco `V229 - Header account presidente`.
+
+## V231 - Preview comunicati dinamica con Netlify Function
+
+Da V231 i link WhatsApp dei comunicati non richiedono piu' pagine statiche generate in repo. Il link prodotto dal sito e':
+
+```text
+https://silviobarra.com/zonaorientale/share/news/<id-comunicato>
+```
+
+`netlify.toml` intercetta questo path e lo inoltra a:
+
+```text
+/.netlify/functions/news-share?id=<id-comunicato>
+```
+
+La funzione `netlify/functions/news-share.js` legge il documento `news/<id>` da Firestore tramite REST API pubblica, costruisce un HTML con tag Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) e poi reindirizza il browser alla news nella webapp (`/zonaorientale/#news-<id>`).
+
+Questo sostituisce il flusso V228/V230 con `tools/generate-news-share-pages.mjs` e `comunicati/*.html`, che resta legacy ma non deve piu' essere usato per nuovi comunicati.

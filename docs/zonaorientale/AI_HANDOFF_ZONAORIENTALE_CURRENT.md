@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V230
+# AI Handoff ZonaOrientale - Current V231
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V230**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e pagine statiche per anteprime WhatsApp dei comunicati e pulsante account presidente personalizzato in header e hotfix V230 sui link comunicati/WhatsApp.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V231**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function e pulsante account presidente personalizzato in header.
 
 ## Posizione e struttura progetto
 
@@ -56,17 +56,38 @@ http://localhost:1313/zonaorientale/
 
 
 
-## Hotfix V230 - Link WhatsApp/preview comunicati
+
+## V231 - Comunicati WhatsApp dinamici Netlify
+
+V231 supera il flusso statico V228/V230. I comunicati condivisibili non devono piu' essere generati come file HTML in `comunicati/` dopo ogni pubblicazione.
+
+Endpoint attivo:
+
+```text
+/zonaorientale/share/news/<id-comunicato>
+```
+
+`netlify.toml` lo riscrive verso:
+
+```text
+/.netlify/functions/news-share?id=<id-comunicato>
+```
+
+La funzione `netlify/functions/news-share.js` legge `news/<id>` da Firestore, genera HTML con meta Open Graph e reindirizza il browser a `/zonaorientale/#news-<id>`. Il pulsante `Copia link WhatsApp` ora usa questo endpoint dinamico e il comunicato e' condivisibile subito dopo il salvataggio.
+
+Il vecchio generatore `tools/generate-news-share-pages.mjs` e la cartella `comunicati/` restano legacy: non usarli per il flusso ordinario.
+
+## Legacy V230 - Link WhatsApp/preview comunicati statici
 
 V230 corregge i 404 dei link WhatsApp/preview comunicati introdotti dalla V228. La causa era l'uso hardcoded del dominio `https://www.silviobarra.com/zonaorientale/`, mentre il sito pubblico corretto usa `https://silviobarra.com/zonaorientale/` senza `www`.
 
-Regole V230:
+Regole V230 legacy:
 
 - `NEWS_SHARE_DEFAULT_BASE_URL_V228` ora punta a `https://silviobarra.com/zonaorientale/`;
 - i link copiati dal browser non usano piu' un host fisso: `getNewsShareBaseUrlV230()` calcola la base dal path corrente;
 - le pagine statiche `comunicati/*.html` hanno canonical/OG non-`www`;
 - le pagine statiche reindirizzano con path relativo (`../#news-id` o `./#news-id`) per evitare 404 se cambia host;
-- dopo un nuovo comunicato bisogna sempre rigenerare e committare `news.html`, `index.html` e `comunicati/*.html`.
+- da V231 non bisogna piu' rigenerare e committare `news.html`, `index.html` e `comunicati/*.html` per ogni comunicato.
 
 ## Fix V229 - Account presidente in header
 
@@ -93,7 +114,7 @@ openPresidentDashboardFromHeaderV229
 
 CSS in `assets/styles.css`, blocco `V229 - Header account presidente`.
 
-## Fix V228 - Comunicati condivisibili WhatsApp
+## Legacy V228 - Comunicati condivisibili WhatsApp statici
 
 V228 introduce pagine statiche dedicate ai comunicati per risolvere le anteprime WhatsApp. WhatsApp non esegue il JavaScript della webapp: legge solo i meta tag Open Graph presenti nell'HTML scaricato.
 
@@ -120,7 +141,7 @@ git push
 
 Il pannello Admin mostra per ogni comunicato il pulsante `Copia link WhatsApp`, che punta a `https://silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>`. Le pagine `comunicati/*.html` contengono `og:title`, `og:description`, `og:image`, `og:url` e poi reindirizzano alla news nella webapp.
 
-Nota: se il comunicato e' stato salvato solo su Firebase ma non sono stati rigenerati/deployati snapshot e pagine statiche, WhatsApp continuera a vedere la preview precedente o generica.
+Nota V231: questa limitazione valeva solo per il flusso statico. Con Netlify Function, il comunicato salvato su Firebase e' subito condivisibile se la funzione riesce a leggere Firestore.
 
 ## Fix V227 - FM Archivio
 
@@ -136,12 +157,12 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V230 hotfix link comunicati**.
+Versione sito: **V231 preview comunicati dinamica**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V230 hotfix link comunicati · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V231 preview comunicati dinamica · Ultimo aggiornamento 25/05/2026
 ```
 
 Cache-buster HTML principali attesi: `?v=229`.

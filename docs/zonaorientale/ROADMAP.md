@@ -237,11 +237,12 @@ master aggiornato
 
 ## Stato refactor corrente
 
-V230 completata: ciclo V220-V225 chiuso, hotfix statistiche V226, hotfix FM Archivio V227, anteprime WhatsApp V228 e account presidente in header V229 e hotfix link comunicati V230 applicati. Prossimo passo consigliato: nessuna rimozione legacy immediata; prima usare il sito per qualche ciclo reale e poi aprire un nuovo refactor mirato solo se necessario.
+V231 completata: ciclo V220-V225 chiuso, hotfix statistiche V226, hotfix FM Archivio V227, account presidente in header V229 e preview WhatsApp comunicati resa dinamica tramite Netlify Function. Prossimo passo consigliato: test reale del flusso comunicati su Netlify e poi eventuale diagnostica Admin.
 
 
-## Dopo V230
+## Dopo V231
 
 - Valutare un'immagine Open Graph dedicata ai comunicati invece dell'icona app generica.
-- Se il sito passera' a hosting serverless, sostituire le pagine statiche `comunicati/*.html` con endpoint dinamici che leggono da Firebase.
-- Aggiungere una diagnostica Admin che segnali quando esistono comunicati Firebase non ancora presenti nelle pagine statiche generate.
+- Verificare in produzione l'endpoint `/zonaorientale/share/news/<id>` dopo deploy Netlify.
+- Valutare un'immagine Open Graph dedicata ai comunicati invece dell'icona app generica.
+- Aggiungere una diagnostica Admin che controlli comunicati senza ID, Firestore non leggibile dalla funzione o preview fallback.

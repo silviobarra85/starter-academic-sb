@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=230";
+} from "./js/domain/news-share-v228.js?v=231";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=230";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=231";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=230";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=231";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -5078,9 +5078,9 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV34() {
 };
 
 
-/* V228 - Link condivisibili WhatsApp per comunicati.
-   WhatsApp legge solo i meta Open Graph presenti nell'HTML statico: i link
-   condivisibili devono puntare a pagine generate in /comunicati/*.html. */
+/* V231 - Link condivisibili WhatsApp per comunicati.
+   Le preview sono servite dinamicamente da Netlify Function su
+   /zonaorientale/share/news/:id, senza generare HTML statici in repo. */
 function getNewsByIdV228(newsId) {
   return (state.raw.news || []).find((item) => String(item.id || "") === String(newsId || "")) || null;
 }
@@ -5119,15 +5119,11 @@ function getNewsShareUrlForNewsV228(news) {
 function renderNewsShareActionsV228(news, { admin = false } = {}) {
   if (!news?.id) return "";
   const shareUrl = getNewsShareUrlForNewsV228(news);
-  const path = buildNewsSharePathV228(news);
-  const extra = admin ? `
-      <button class="button button-secondary button-small" type="button" data-download-news-share="${escapeHtml(news.id)}">Scarica HTML preview</button>` : "";
   return `
     <div class="news-share-actions">
       <button class="button button-secondary button-small" type="button" data-copy-news-share="${escapeHtml(news.id)}">Copia link WhatsApp</button>
       <a class="button button-secondary button-small" href="${escapeHtml(shareUrl)}" target="_blank" rel="noopener">Apri preview</a>
-      ${extra}
-      ${admin ? `<small class="field-hint news-share-path">File atteso: ${escapeHtml(path)}</small>` : ""}
+      ${admin ? `<small class="field-hint news-share-path">Preview dinamica Netlify: nessun file HTML da generare.</small>` : ""}
     </div>`;
 }
 
@@ -5538,7 +5534,7 @@ function renderNewsAdminPanelV48() {
     </form>
     <section class="notice notice-info admin-news-share-note">
       <strong>Anteprima WhatsApp</strong>
-      Dopo un nuovo comunicato aggiorna gli snapshot pubblici, esegui il generatore statico e committa i file in <code>comunicati/</code> e <code>news.html</code>. Usa poi “Copia link WhatsApp”: WhatsApp leggerà i meta tag della pagina dedicata.
+      I link WhatsApp sono dinamici: dopo il salvataggio puoi usare subito “Copia link WhatsApp”. Netlify genera la preview leggendo il comunicato da Firebase, senza file HTML da committare.
     </section>
     <details class="admin-edit-section" open>
       <summary><strong>Comunicati pubblicati</strong><span>Tutti · ${allNewsRowsV134.length}</span></summary>
@@ -5570,7 +5566,7 @@ async function saveAdminNewsV48(event) {
     } else {
       await addDoc(collection(db, "news"), { ...payload, createdAt: serverTimestamp(), createdBy: state.user?.uid || "" });
     }
-    if (status) status.textContent = "Comunicato salvato. Aggiorna gli snapshot pubblici e rigenera le pagine anteprima WhatsApp prima di condividere.";
+    if (status) status.textContent = "Comunicato salvato. Puoi copiare subito il link WhatsApp: la preview viene generata dinamicamente da Netlify.";
     resetAdminNewsFormV48();
     await loadFullDataV32({ render: true });
     expandAdminPanel("adminNewsPanel");
@@ -15514,7 +15510,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "230";
+const DEPLOY_EXPECTED_VERSION_V181 = "231";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18638,7 +18634,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V230",
+  version: "V231",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
