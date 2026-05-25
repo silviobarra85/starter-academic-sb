@@ -131,6 +131,7 @@ import {
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
+import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15336,7 +15337,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "208";
+const DEPLOY_EXPECTED_VERSION_V181 = "209";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20339,201 +20340,81 @@ window.ZonaOrientaleSeasonArchive = {
 
 
 
-/* V208 - Refactor dati live e archivio.
-   Consolidamento dei blocchi V205/V206/V207:
-   - comunicati live Firebase in background, mai bloccanti per il bootstrap;
-   - fantamercato live/lazy solo quando serve a presidente/dashboard/mercato;
-   - archivio senza sottosezione Partite recenti;
-   - nessuna riassegnazione di binding const del modulo Fantamercato.
-   Mantiene i nomi pubblici V205 per compatibilita' con debug e handoff precedenti. */
-const ZO_RELEASE_VERSION_V208 = "208";
-state.liveCollectionsV205 = state.liveCollectionsV205 || {
-  newsLoadedAt: "",
-  newsLoading: false,
-  marketRequestedAt: ""
-};
-
-function sortLiveNewsRowsV205(rows) {
-  return [...(Array.isArray(rows) ? rows : [])].sort((a, b) => {
-    const getTime = (item) => {
-      const raw = typeof getNewsRawDateValueV79 === "function"
-        ? getNewsRawDateValueV79(item)
-        : (item?.publishedAt || item?.createdAt || item?.date || "");
-      const date = typeof timestampToDateV79 === "function" ? timestampToDateV79(raw) : new Date(raw);
-      return date && !Number.isNaN(date.getTime()) ? date.getTime() : 0;
-    };
-    return getTime(b) - getTime(a);
-  });
-}
-
-function callOptionalV208(name, ...args) {
-  try {
-    const exposed = typeof window !== "undefined" ? window[name] : null;
-    if (typeof exposed === "function") return exposed(...args);
-  } catch (error) {
-    console.warn(`[ZonaOrientale V208] Helper window non riuscito: ${name}`, error);
+/* V209 - Refactor moduli dati live e archivio.
+   Il blocco V208 e' stato estratto in assets/js/refactor/live-data-archive-v209.js.
+   Qui restano solo wiring, override compatibili e avvio centralizzato. */
+const ZO_RELEASE_VERSION_V209 = "209";
+const liveDataArchiveV209 = createLiveDataArchiveRefactorV209({
+  state,
+  loadCollection,
+  makeEmptyRawData: makeEmptyRawDataV34,
+  getNewsRawDateValue: typeof getNewsRawDateValueV79 === "function" ? getNewsRawDateValueV79 : null,
+  timestampToDate: typeof timestampToDateV79 === "function" ? timestampToDateV79 : null,
+  getHashPage: typeof getHashPageV170 === "function" ? getHashPageV170 : null,
+  getApprovedTeamUser: typeof getApprovedTeamUser === "function" ? getApprovedTeamUser : null,
+  getCurrentSeasonId,
+  formatMatchResult,
+  escapeHtml,
+  optionalHelpers: {
+    renderNewsPublicV34: typeof renderNewsPublicV34 === "function" ? renderNewsPublicV34 : null,
+    renderDashboardNewsV42: typeof renderDashboardNewsV42 === "function" ? renderDashboardNewsV42 : null,
+    injectPresidentDashboardV192: typeof injectPresidentDashboardV192 === "function" ? injectPresidentDashboardV192 : null,
+    refreshVisibleTeamProfileV120: typeof refreshVisibleTeamProfileV120 === "function" ? refreshVisibleTeamProfileV120 : null,
+    ensureTransferMarketDataV119: typeof ensureTransferMarketDataV119 === "function" ? ensureTransferMarketDataV119 : null
+  },
+  archive: {
+    getSortedSeasons: typeof getSeasonArchiveSortedSeasonsV196 === "function" ? getSeasonArchiveSortedSeasonsV196 : null,
+    getSeasonId: typeof getSeasonArchiveSeasonIdV196 === "function" ? getSeasonArchiveSeasonIdV196 : null,
+    setSeasonId: typeof setSeasonArchiveSeasonIdV196 === "function" ? setSeasonArchiveSeasonIdV196 : null,
+    getSnapshot: typeof getSeasonArchiveSnapshotV204 === "function" ? getSeasonArchiveSnapshotV204 : null,
+    ensureSnapshot: typeof ensureSeasonArchiveSnapshotV204 === "function" ? ensureSeasonArchiveSnapshotV204 : null,
+    renderLoading: typeof renderSeasonArchiveLoadingV204 === "function" ? renderSeasonArchiveLoadingV204 : null,
+    build: typeof buildSeasonArchiveV196 === "function" ? buildSeasonArchiveV196 : null,
+    renderControls: typeof renderSeasonArchiveControlsV196 === "function" ? renderSeasonArchiveControlsV196 : null,
+    renderMetric: typeof renderSeasonArchiveMetricV196 === "function" ? renderSeasonArchiveMetricV196 : null,
+    renderTeams: typeof renderSeasonArchiveTeamsV196 === "function" ? renderSeasonArchiveTeamsV196 : null,
+    renderHonor: typeof renderSeasonArchiveHonorV196 === "function" ? renderSeasonArchiveHonorV196 : null,
+    renderCompetitions: typeof renderSeasonArchiveCompetitionsV196 === "function" ? renderSeasonArchiveCompetitionsV196 : null,
+    renderTimeline: typeof renderSeasonArchiveTimelineV196 === "function" ? renderSeasonArchiveTimelineV196 : null,
+    getSeasonLabel: typeof getSeasonLabelV193 === "function" ? getSeasonLabelV193 : null
   }
-  try {
-    switch (name) {
-      case "renderNewsPublicV34": if (typeof renderNewsPublicV34 === "function") return renderNewsPublicV34(...args); break;
-      case "renderDashboardNewsV42": if (typeof renderDashboardNewsV42 === "function") return renderDashboardNewsV42(...args); break;
-      case "injectPresidentDashboardV192": if (typeof injectPresidentDashboardV192 === "function") return injectPresidentDashboardV192(...args); break;
-      case "refreshVisibleTeamProfileV120": if (typeof refreshVisibleTeamProfileV120 === "function") return refreshVisibleTeamProfileV120(...args); break;
-      case "ensureTransferMarketDataV119": if (typeof ensureTransferMarketDataV119 === "function") return ensureTransferMarketDataV119(...args); break;
-    }
-  } catch (error) {
-    console.warn(`[ZonaOrientale V208] Helper opzionale non riuscito: ${name}`, error);
-  }
-  return null;
-}
-
-async function loadLiveNewsFromFirebaseV205(options = {}) {
-  const { reason = "live-news", render = true } = options || {};
-  if (!state.raw) state.raw = makeEmptyRawDataV34();
-  if (state.liveCollectionsV205.newsLoading) return state.raw.news || [];
-  state.liveCollectionsV205.newsLoading = true;
-  try {
-    const rows = await loadCollection("news");
-    state.raw.news = sortLiveNewsRowsV205(rows);
-    state.liveCollectionsV205.newsLoadedAt = new Date().toISOString();
-    state.liveCollectionsV205.newsReason = reason;
-    if (render) renderLiveNewsSurfacesV205();
-    return state.raw.news;
-  } catch (error) {
-    console.warn("Comunicati live Firebase non disponibili, mantengo fallback snapshot/statico.", error);
-    return state.raw.news || [];
-  } finally {
-    state.liveCollectionsV205.newsLoading = false;
-  }
-}
-
-function renderLiveNewsSurfacesV205() {
-  callOptionalV208("renderNewsPublicV34");
-  callOptionalV208("renderDashboardNewsV42");
-  callOptionalV208("injectPresidentDashboardV192");
-  callOptionalV208("refreshVisibleTeamProfileV120");
-}
-
-function getHashPageSafeV208() {
-  try {
-    if (typeof getHashPageV170 === "function") return getHashPageV170();
-  } catch (_) {}
-  return String(window.location.hash || "#dashboard").replace("#", "") || "dashboard";
-}
-
-function shouldEnsureLiveMarketForPresidentV205() {
-  let approved = null;
-  try { if (typeof getApprovedTeamUser === "function") approved = getApprovedTeamUser(); } catch (_) {}
-  if (!state.user || !approved?.seasonTeamId) return false;
-  const page = String(state.currentPage || getHashPageSafeV208() || "dashboard");
-  return page === "teamarea" || page === "dashboard" || page === "fantamercato";
-}
-
-function ensureLiveTransferMarketForPresidentV205(reason = "president-live-market") {
-  if (!shouldEnsureLiveMarketForPresidentV205()) return;
-  if (state.transferMarketLoadedV119 || state.transferMarketLoadingV119 || state.transferMarketPromiseV170) return;
-  state.liveCollectionsV205.marketRequestedAt = new Date().toISOString();
-  callOptionalV208("ensureTransferMarketDataV119", { force: true, reason });
-}
-
-function scheduleLiveNewsRefreshV208(reason = "background-live-news") {
-  window.setTimeout(() => {
-    loadLiveNewsFromFirebaseV205({ reason, render: true }).catch((error) => {
-      console.warn("Comunicati live Firebase non disponibili in background; mantengo dati snapshot/statici.", error);
-    });
-  }, 0);
-}
+});
 
 const loadPublicDataForSelectedSeasonBeforeV205 = loadPublicDataForSelectedSeasonV100;
-loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV208(requestId, options = {}) {
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV209(requestId, options = {}) {
   const result = await loadPublicDataForSelectedSeasonBeforeV205(requestId, options);
-  scheduleLiveNewsRefreshV208("public-load-background");
-  ensureLiveTransferMarketForPresidentV205("public-load-background");
+  liveDataArchiveV209.scheduleLiveNewsRefresh("public-load-background");
+  liveDataArchiveV209.ensureLiveTransferMarketForPresident("public-load-background");
   return result;
 };
 
 const renderUserAreaBeforeV205 = renderUserAreaV34;
-renderUserAreaV34 = function renderUserAreaV208() {
+renderUserAreaV34 = function renderUserAreaV209() {
   const result = renderUserAreaBeforeV205?.();
-  ensureLiveTransferMarketForPresidentV205("dashboard-presidente");
+  liveDataArchiveV209.ensureLiveTransferMarketForPresident("dashboard-presidente");
   return result;
 };
 
 const renderAllBeforeV205 = renderAll;
-renderAll = function renderAllV208() {
+renderAll = function renderAllV209() {
   const result = renderAllBeforeV205?.();
-  ensureLiveTransferMarketForPresidentV205("render-all");
+  liveDataArchiveV209.ensureLiveTransferMarketForPresident("render-all");
   return result;
 };
 
-renderSeasonArchiveV196 = function renderSeasonArchiveV208() {
-  const controlsTarget = document.getElementById("seasonArchiveControlsV196");
-  const contentTarget = document.getElementById("seasonArchiveContentV196");
-  if (!controlsTarget || !contentTarget) return;
-  const seasons = getSeasonArchiveSortedSeasonsV196();
-  if (!seasons.length) {
-    controlsTarget.innerHTML = `<p class="muted">Nessuna stagione disponibile.</p>`;
-    contentTarget.innerHTML = `<p class="muted">Carica config.json o fallback Firebase per visualizzare l'archivio.</p>`;
-    return;
-  }
-  const selectedId = getSeasonArchiveSeasonIdV196();
-  const hasSnapshot = Boolean(typeof getSeasonArchiveSnapshotV204 === "function" && getSeasonArchiveSnapshotV204(selectedId));
-  const attempted = Boolean(state.seasonArchiveLoadAttemptedV204?.[selectedId]);
-  if (!hasSnapshot && !attempted && typeof loadPublicSeasonSnapshotV32 === "function") {
-    renderSeasonArchiveLoadingV204(selectedId);
-    ensureSeasonArchiveSnapshotV204(selectedId).then(() => renderSeasonArchiveV196?.());
-    return;
-  }
-
-  const archive = buildSeasonArchiveV196(selectedId);
-  controlsTarget.innerHTML = renderSeasonArchiveControlsV196(seasons, selectedId);
-  const select = document.getElementById("seasonArchiveSelectV196");
-  select?.addEventListener("change", () => setSeasonArchiveSeasonIdV196(select.value));
-  document.getElementById("seasonArchiveSyncCurrentV196")?.addEventListener("click", () => setSeasonArchiveSeasonIdV196(getCurrentSeasonId()));
-  const completedMatches = archive.matches.filter((match) => String(match.status || "").toUpperCase() === "PLAYED" || formatMatchResult(match) !== "-").length;
-  contentTarget.innerHTML = `
-    <article class="panel season-archive-hero-v196">
-      <div>
-        <p class="eyebrow">${escapeHtml(archive.season.id || "Stagione")}</p>
-        <h3>${escapeHtml(archive.season.name || getSeasonLabelV193(archive.season.id))}</h3>
-        <p>Riepilogo completo della stagione selezionata, utile per consultazione storica e controllo dati pubblicati.</p>
-      </div>
-      <div class="season-archive-metrics-v196">
-        ${renderSeasonArchiveMetricV196("Squadre", archive.seasonTeams.length, "partecipanti")}
-        ${renderSeasonArchiveMetricV196("Competizioni", archive.competitions.length, "caricate")}
-        ${renderSeasonArchiveMetricV196("Partite", archive.matches.length, `${completedMatches} con risultato`)}
-        ${renderSeasonArchiveMetricV196("Giocatori", archive.rosterEntries.length || "-", "da rosterEntries")}
-      </div>
-    </article>
-    <div class="season-archive-grid-v196">
-      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
-        <div class="season-archive-card-heading-v196"><span>👥</span><div><h3>Squadre della stagione</h3><p>Nomi storici, presidenti, saldo, rosa e stadio.</p></div></div>
-        ${renderSeasonArchiveTeamsV196(archive)}
-      </article>
-      <article class="panel season-archive-card-v196">
-        <div class="season-archive-card-heading-v196"><span>🏆</span><div><h3>Albo della stagione</h3><p>Vincitori principali collegati ad honor.json/snapshot.</p></div></div>
-        ${renderSeasonArchiveHonorV196(archive)}
-      </article>
-      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
-        <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori/classifiche delle competizioni.</p></div></div>
-        ${renderSeasonArchiveCompetitionsV196(archive)}
-      </article>
-      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
-        <div class="season-archive-card-heading-v196"><span>🧭</span><div><h3>Timeline dati</h3><p>Riepilogo rapido di titoli, competizioni e comunicazioni live.</p></div></div>
-        ${renderSeasonArchiveTimelineV196(archive)}
-      </article>
-    </div>`;
-};
+const loadLiveNewsFromFirebaseV205 = liveDataArchiveV209.loadLiveNewsFromFirebase;
+const sortLiveNewsRowsV205 = liveDataArchiveV209.sortLiveNewsRows;
+const renderLiveNewsSurfacesV205 = liveDataArchiveV209.renderLiveNewsSurfaces;
+const scheduleLiveNewsRefreshV208 = liveDataArchiveV209.scheduleLiveNewsRefresh;
+const shouldEnsureLiveMarketForPresidentV205 = liveDataArchiveV209.shouldEnsureLiveMarketForPresident;
+const ensureLiveTransferMarketForPresidentV205 = liveDataArchiveV209.ensureLiveTransferMarketForPresident;
+renderSeasonArchiveV196 = liveDataArchiveV209.renderSeasonArchive;
 
 window.ZonaOrientaleLiveData = {
   loadNews: loadLiveNewsFromFirebaseV205,
   refreshNewsBackground: scheduleLiveNewsRefreshV208,
   ensureMarket: ensureLiveTransferMarketForPresidentV205,
-  status: () => ({
-    ...state.liveCollectionsV205,
-    marketLoaded: Boolean(state.transferMarketLoadedV119 || state.transferMarketLoadedV170),
-    newsCount: state.raw?.news?.length || 0
-  })
+  status: liveDataArchiveV209.liveStatus
 };
 
 window.ZonaOrientaleSeasonArchive = {
@@ -20544,5 +20425,5 @@ window.ZonaOrientaleSeasonArchive = {
   snapshot: getSeasonArchiveSnapshotV204
 };
 
-/* V208 - Final startup remains centralized here. */
+/* V209 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
