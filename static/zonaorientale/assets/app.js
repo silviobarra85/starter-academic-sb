@@ -137,6 +137,7 @@ import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-c
 import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=220";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -189,12 +190,9 @@ function getRosterForSeasonTeam(seasonTeam) {
 }
 
 async function loadData() {
-  const entries = await Promise.all(
-    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
-  );
-  state.raw = Object.fromEntries(entries);
-  await loadListoniData();
-  await loadRostersData();
+  const entries = await zonaDataRepositoryV222.loadCollections(COLLECTIONS);
+  state.raw = entries;
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   renderAll();
 }
@@ -738,6 +736,18 @@ function renderDashboardCompetitionSummary(competition) {
 }
 
 
+
+
+const zonaDataRepositoryV222 = createZonaDataRepositoryV222({
+  collectionNames: COLLECTIONS,
+  loadCollection,
+  loadListoniData,
+  loadRostersData,
+  loadStaticCompetitionCalendars: loadStaticCompetitionCalendarsV101,
+  logger: console
+});
+
+window.ZonaOrientaleDataRepository = zonaDataRepositoryV222;
 
 const publicAdminRenderOrchestratorV221 = createPublicAdminRenderOrchestratorV221();
 
@@ -4322,14 +4332,11 @@ function applyPublicSeasonSnapshotV32(snapshot) {
 
 async function loadFullDataV32(options = {}) {
   const { render = true } = options;
-  const entries = await Promise.all(
-    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
-  );
-  state.raw = Object.assign(makeEmptyRawDataV32(), Object.fromEntries(entries));
+  const entries = await zonaDataRepositoryV222.loadCollections(COLLECTIONS);
+  state.raw = Object.assign(makeEmptyRawDataV32(), entries);
   state.hasFullData = true;
   state.usedPublicSnapshots = false;
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   if (render) renderAll();
 }
@@ -4351,8 +4358,7 @@ async function loadPublicDataV32() {
     applyPublicSeasonSnapshotV32(seasonSnapshot);
     state.publicHonorSnapshot = honorSnapshot;
     state.hasFullData = false;
-    await loadListoniData();
-    await loadRostersData();
+    await zonaDataRepositoryV222.loadStaticAssets();
     sortData();
   }
   renderAll();
@@ -4374,8 +4380,7 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV32() {
       const snapshot = await loadPublicSeasonSnapshotV32(state.selectedSeasonId);
       if (snapshot) {
         applyPublicSeasonSnapshotV32(snapshot);
-        await loadListoniData();
-        await loadRostersData();
+        await zonaDataRepositoryV222.loadStaticAssets();
         sortData();
         renderAll();
         return;
@@ -5006,8 +5011,7 @@ async function loadPublicDataV34() {
   const seasonId = getCurrentSeasonId();
   const seasonSnapshot = await loadPublicSeasonSnapshotV32(seasonId);
   const honorSnapshot = await loadPublicHonorSnapshotV32();
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
 
   if (!seasonSnapshot || !honorSnapshot) {
     state.usedPublicSnapshots = false;
@@ -5038,8 +5042,7 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV34() {
     state.selectedListoneId = "";
     if (!state.hasFullData && !state.isAdmin) {
       const snapshot = await loadPublicSeasonSnapshotV32(state.selectedSeasonId);
-      await loadListoniData();
-      await loadRostersData();
+      await zonaDataRepositoryV222.loadStaticAssets();
       if (snapshot) {
         applyPublicSeasonSnapshotV32(snapshot);
         state.raw.news = Array.isArray(snapshot.news) ? snapshot.news : [];
@@ -7991,15 +7994,11 @@ function isLatestDataLoadV100(requestId) {
 async function loadFullDataStableV100(requestId, options = {}) {
   const { render = true } = options;
   const selectedSeasonBefore = state.selectedSeasonId;
-  const entries = await Promise.all(
-    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
-  );
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  const entries = await zonaDataRepositoryV222.loadCollections(COLLECTIONS);
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
-  state.raw = Object.assign(makeEmptyRawDataV34(), Object.fromEntries(entries));
+  state.raw = Object.assign(makeEmptyRawDataV34(), entries);
   state.hasFullData = true;
   state.usedPublicSnapshots = false;
   state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
@@ -8028,9 +8027,7 @@ async function loadPublicDataForSelectedSeasonV100(requestId, options = {}) {
     loadPublicHonorSnapshotV32()
   ]);
 
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = rawBase;
@@ -13907,19 +13904,12 @@ async function loadStaticPublicConfigV171() {
 }
 
 async function loadPublicConfigV171() {
-  const staticConfig = await loadStaticPublicConfigV171();
-  if (staticConfig) return staticConfig;
-
-  const [leagueSettings, seasons] = await Promise.all([
-    loadCollection("leagueSettings"),
-    loadCollection("seasons")
-  ]);
-  state.publicConfigSourceV171 = "firebase";
-  return {
-    leagueSettings,
-    seasons,
-    currentSeasonId: getDefaultSeasonIdFromRawV100({ leagueSettings, seasons })
-  };
+  const publicConfig = await zonaDataRepositoryV222.loadPublicConfig(
+    loadStaticPublicConfigV171,
+    getDefaultSeasonIdFromRawV100
+  );
+  state.publicConfigSourceV171 = publicConfig?.source === "static" ? "static" : "firebase";
+  return publicConfig;
 }
 
 loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV171(requestId, options = {}) {
@@ -13937,9 +13927,7 @@ loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSe
     loadPublicHonorSnapshotV32()
   ]);
 
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = rawBase;
@@ -14430,7 +14418,8 @@ function getFirebaseBackupCollectionsV174() {
 
 async function loadCollectionEntriesV174(collectionNames) {
   const names = uniqueCollectionNamesV174(collectionNames);
-  return Promise.all(names.map(async (name) => [name, await loadCollection(name)]));
+  const loaded = await zonaDataRepositoryV222.loadCollections(names);
+  return Object.entries(loaded);
 }
 
 function buildRawFromEntriesV174(entries) {
@@ -14447,8 +14436,7 @@ loadFullDataV32 = async function loadFullDataV174(options = {}) {
   const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
   state.raw = buildRawFromEntriesV174(entries);
   markFullAdminDataLoadedV174();
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   if (render) renderAll();
 };
@@ -14457,9 +14445,7 @@ loadFullDataStableV100 = async function loadFullDataStableV174(requestId, option
   const { render = true } = options;
   const selectedSeasonBefore = state.selectedSeasonId;
   const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = buildRawFromEntriesV174(entries);
@@ -14610,8 +14596,7 @@ loadFullDataV32 = async function loadFullDataV175(options = {}) {
   const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
   state.raw = buildRawFromEntriesV174(entries);
   markFullAdminDataLoadedV174();
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   if (render) renderAll();
 };
@@ -14620,9 +14605,7 @@ loadFullDataStableV100 = async function loadFullDataStableV175(requestId, option
   const { render = true } = options;
   const selectedSeasonBefore = state.selectedSeasonId;
   const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = buildRawFromEntriesV174(entries);
@@ -14962,9 +14945,7 @@ async function loadAdminFullDataForEditingV178(options = {}) {
   if (typeof resetFirebaseReadStatsV177 === "function") resetFirebaseReadStatsV177("admin-full-on-demand");
   try {
     const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
-    await loadListoniData();
-    await loadRostersData();
-    if (typeof loadStaticCompetitionCalendarsV101 === "function") await loadStaticCompetitionCalendarsV101();
+    await zonaDataRepositoryV222.loadStaticAssets();
     if (!isLatestDataLoadV100(requestId)) return false;
 
     state.raw = buildRawFromEntriesV174(entries);
@@ -15384,7 +15365,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "215";
+const DEPLOY_EXPECTED_VERSION_V181 = "222";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18332,6 +18313,11 @@ window.ZonaOrientaleSeasonArchive = {
 /* V215 - Hotfix archivio bootstrap.
    Ripristina gli helper base V196 dellArchivio prima degli override V204/V209.
    Senza questi helper, il modulo ES interrompeva lavvio con buildSeasonArchiveV196 non definita. */
+
+/* V222 - Data repository facade.
+   Introduce assets/js/data/repository-v222.js come facciata unica per raccolte Firebase,
+   config pubblica e asset statici listoni/rose/competizioni.
+   Non cambia sorgenti dati, UI o flussi Firebase: centralizza solo i punti di accesso. */
 
 /* V221 - Separazione ciclo rendering public/admin.
    Estrae l orchestrazione del render principale in public-admin-render-orchestrator-v221.js.

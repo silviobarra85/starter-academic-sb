@@ -10,12 +10,14 @@ Percorso consigliato dopo V219/V220:
 ```text
 V220 safety refactor mobile chrome - fatto
 V221 separazione public/admin rendering - fatto
-V222 data repository unico per JSON/Firebase
+V222 data repository unico per JSON/Firebase - fatto
 V223 CSS cleanup progressivo
 V224 rimozione legacy/overlay storici solo dopo test completi
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.
+
+Nota V222: il repository dati e' stato introdotto come facciata sicura, non come riscrittura completa. Il passo successivo consigliato e' proseguire con cleanup CSS o, se emergono regressioni, consolidare ulteriormente i loader dati prima di rimuovere legacy.
 
 ## Priorita alta
 
@@ -233,4 +235,4 @@ master aggiornato
 
 ## Stato refactor corrente
 
-V221 completata: il rendering principale e' ora orchestrato per gruppi public/admin/after tramite modulo dedicato. Il prossimo passo consigliato resta V222, cioe' un data repository unico per rendere meno fragile il caricamento da JSON statici, snapshot e Firebase.
+V222 completata: il repository dati e' ora presente come facciata sicura per raccolte Firebase, config pubblica e asset statici. Il prossimo passo consigliato e' V223 CSS cleanup progressivo, mantenendo invariato il comportamento visibile.

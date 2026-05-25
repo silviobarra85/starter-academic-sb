@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V221
+# AI Handoff ZonaOrientale - Current V222
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V221**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V222**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
 
 ## Posizione e struttura progetto
 
@@ -55,15 +55,15 @@ http://localhost:1313/zonaorientale/
 
 ## Versione corrente codice
 
-Versione sito: **V221 separazione rendering public/admin**.
+Versione sito: **V222 data repository facade**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V221 separazione rendering public/admin · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V222 data repository facade · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=221`.
+Cache-buster HTML principali attesi: `?v=222`.
 
 Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` puo risultare storicamente ferma a un valore precedente. Se si lavora sulla checklist di deploy, allinearla alla versione corrente.
 
@@ -97,6 +97,7 @@ assets/js/refactor/historical-stats-compare-v211.js
 assets/js/refactor/president-dashboard-rosters-v212.js
 assets/js/refactor/admin-publication-workflow-v213.js
 assets/js/refactor/public-admin-render-orchestrator-v221.js
+assets/js/data/repository-v222.js
 ```
 
 Stato effettivo:
@@ -139,6 +140,41 @@ V217 ha aggiunto cache-buster agli import critici, in particolare `admin-competi
 
 
 
+### V222 - Data repository facade
+
+V222 e' il terzo overlay tecnico del percorso di refactor. Non cambia UI, dati, Firebase o flussi Admin.
+
+Cosa e' stato fatto:
+
+```text
+assets/js/data/repository-v222.js
+```
+
+Il nuovo modulo introduce una facciata unica per:
+
+```text
+loadCollections(COLLECTIONS)
+loadLeagueConfigFromFirebase()
+loadStaticAssets() -> listoni, rose, calendari competizioni statici
+loadPublicConfig() -> config statica con fallback Firebase
+```
+
+`app.js` continua a mantenere la logica di merge, snapshot e render, ma i punti di accesso ai dati sono ora instradati da `window.ZonaOrientaleDataRepository`. Questo prepara il futuro V223/V224 senza cambiare comportamento visibile.
+
+Test minimi dopo V222:
+
+```text
+Home pubblica e selettore stagione
+Admin login e refresh dati
+Admin > Risultati competizioni
+Competizione campionato con classifica completa
+Archivio, Statistiche, Confronta
+Listone e Rose
+Mobile bottom menu e pulsante Su
+competition.html e player.html
+```
+
+
 ### V221 - Separazione rendering public/admin
 
 V221 e' il secondo overlay tecnico del percorso di refactor. Non cambia UI, dati, Firebase o flussi Admin.
@@ -147,6 +183,7 @@ Cosa e' stato fatto:
 
 ```text
 assets/js/refactor/public-admin-render-orchestrator-v221.js
+assets/js/data/repository-v222.js
 ```
 
 Il nuovo modulo centralizza il ciclo di rendering principale in tre gruppi:

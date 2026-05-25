@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V221.
+Stato: V222.
 
 ## Tipo applicazione
 
@@ -61,6 +61,7 @@ Data:
 ```text
 assets/js/data/firestore-service.js
 assets/js/data/static-files-service.js
+assets/js/data/repository-v222.js
 ```
 
 Domain:
@@ -106,6 +107,33 @@ assets/js/refactor/president-dashboard-rosters-v212.js
 assets/js/refactor/admin-publication-workflow-v213.js
 assets/js/refactor/public-admin-render-orchestrator-v221.js
 ```
+
+## Repository dati V222
+
+Da V222 esiste una facciata dati leggera:
+
+```text
+assets/js/data/repository-v222.js
+```
+
+Espone anche in browser:
+
+```text
+window.ZonaOrientaleDataRepository
+```
+
+Metodi principali:
+
+```text
+loadCollection(name)
+loadCollections(names)
+loadLeagueConfigFromFirebase()
+loadStaticAssets()
+loadPublicConfig(loadStaticPublicConfig, getDefaultSeasonIdFromRaw)
+diagnose()
+```
+
+La V222 non cambia ancora il modello dati: centralizza solo le chiamate esistenti verso Firebase e file statici. I merge di snapshot, calendari statici, Archivio e render restano in `app.js` o nei moduli refactor gia presenti.
 
 ## Ordine di lettura dati pubblici
 

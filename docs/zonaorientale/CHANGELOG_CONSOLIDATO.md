@@ -220,6 +220,25 @@ Aggiornati `app.js`, `competition.html` e `player.html` per usare il nuovo modul
 
 Cache-buster e footer portati a V220.
 
+
+## V222 - Data repository facade
+
+Creato modulo:
+
+```text
+assets/js/data/repository-v222.js
+```
+
+Scopo:
+
+- introdurre una facciata unica per letture Firebase e asset statici;
+- instradare i caricamenti statici `listoni/rose/competitions` tramite `loadStaticAssets()`;
+- instradare le raccolte Firebase tramite `loadCollections()`;
+- esporre `window.ZonaOrientaleDataRepository` per diagnostica e sviluppo futuro;
+- non cambiare UI, dati, Firebase o comportamento Admin.
+
+Questa versione prepara il refactor successivo senza rimuovere helper legacy o cambiare il ciclo di render.
+
 ## V221 - Separazione rendering public/admin
 
 Secondo overlay tecnico del percorso di pulizia codice. Nessuna nuova feature e nessun cambio dati.
