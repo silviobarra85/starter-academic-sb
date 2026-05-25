@@ -1,77 +1,77 @@
 {
   "id": "2009-2010",
   "seasonId": "2009-2010",
-  "generatedAt": "2026-05-21T19:55:52.587Z",
+  "generatedAt": "2026-05-25T13:39:18.272Z",
   "teams": [
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
-      "canonicalName": "As Paperopoli",
-      "createdAt": {
-        "seconds": 1778833666,
-        "nanoseconds": 871000000
-      },
-      "isCurrent": true,
       "currentPresidentIds": [
         "JaSqcnTZUYHtjHXghADS"
       ],
       "logo": "./assets/logos/paperopoli.png",
+      "createdAt": {
+        "seconds": 1778833666,
+        "nanoseconds": 871000000
+      },
+      "notes": "",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954349,
         "nanoseconds": 563000000
       },
-      "notes": ""
+      "canonicalName": "As Paperopoli"
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "isCurrent": true,
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "logo": "./assets/logos/due_fratelli.png",
       "createdAt": {
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "canonicalName": "FC DueFratelli2005",
+      "notes": "",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
       },
-      "notes": "",
-      "logo": "./assets/logos/due_fratelli.png",
-      "currentPresidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ]
+      "canonicalName": "FC DueFratelli2005"
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778834101,
-        "nanoseconds": 304000000
-      },
-      "notes": "",
       "currentPresidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
+      "logo": "",
       "createdAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
+      "notes": "",
       "isCurrent": false,
+      "updatedAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
       "canonicalName": "Real Gremo"
     }
   ],
   "presidents": [
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
-      "createdAt": {
-        "seconds": 1778833068,
-        "nanoseconds": 684000000
-      },
       "name": "Bartolomeo Greco",
+      "isActive": false,
       "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "isActive": false,
-      "notes": ""
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      }
     },
     {
       "id": "JaSqcnTZUYHtjHXghADS",
@@ -79,146 +79,146 @@
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
+      "notes": "",
       "updatedAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
       "isActive": true,
-      "notes": "",
       "name": "Gaetano Caparrotti"
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
-      "createdAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
       "isActive": true,
-      "name": "Michele D'Isanto"
+      "name": "Michele D'Isanto",
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "notes": ""
     }
   ],
   "seasonTeams": [
     {
       "id": "2009-2010_7bx0cegbxtf4fwh6t0pi",
-      "createdAt": {
-        "seconds": 1778849726,
-        "nanoseconds": 642000000
-      },
       "presidentIds": [
         "JaSqcnTZUYHtjHXghADS"
       ],
+      "name": "As Paperopoli",
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "seasonId": "2009-2010",
       "updatedAt": {
         "seconds": 1778849726,
         "nanoseconds": 642000000
       },
+      "createdAt": {
+        "seconds": 1778849726,
+        "nanoseconds": 642000000
+      },
       "logo": "",
-      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
-      "name": "As Paperopoli",
-      "isHistorical": false,
-      "seasonId": "2009-2010"
+      "isHistorical": false
     },
     {
       "id": "2009-2010_y3vmcdwvut0u1tlsg4qc",
-      "logo": "",
       "updatedAt": {
         "seconds": 1779379766,
         "nanoseconds": 529000000
       },
-      "seasonId": "2009-2010",
-      "isHistorical": false,
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
       "name": "FC DueFratelli2005",
       "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "seasonId": "2009-2010",
       "createdAt": {
         "seconds": 1778849722,
         "nanoseconds": 926000000
       },
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ]
+      "logo": "",
+      "isHistorical": false
     },
     {
       "id": "2009-2010_fyqviavocqdpmikgws2f",
-      "name": "Real Gremo",
-      "teamId": "fYQViaVoCqDPmikgwS2F",
-      "seasonId": "2009-2010",
-      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778849719,
         "nanoseconds": 838000000
       },
+      "seasonId": "2009-2010",
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "presidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "name": "Real Gremo",
       "logo": "",
+      "isHistorical": false,
       "createdAt": {
         "seconds": 1778849719,
         "nanoseconds": 838000000
-      },
-      "presidentIds": [
-        "KuWF4jNk1I97Jdk44gyK"
-      ]
+      }
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2009-2010_campionato",
-      "name": "Campionato",
+      "createdAt": {
+        "seconds": 1778849732,
+        "nanoseconds": 506000000
+      },
       "type": "CAMPIONATO",
       "updatedAt": {
         "seconds": 1778849738,
         "nanoseconds": 524000000
       },
-      "notes": "",
-      "knockoutPhases": [],
       "seasonId": "2009-2010",
-      "createdAt": {
-        "seconds": 1778849732,
-        "nanoseconds": 506000000
-      },
+      "format": "CLASSIFICA",
       "status": "CONCLUSA",
-      "format": "CLASSIFICA"
+      "name": "Campionato",
+      "notes": "",
+      "knockoutPhases": []
     },
     {
       "id": "2009-2010_champions-league",
+      "notes": "",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "seasonId": "2009-2010",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778849742,
-        "nanoseconds": 131000000
-      },
-      "format": "GIRONI_KO",
-      "status": "NON_DISPUTATA",
       "createdAt": {
         "seconds": 1778849732,
         "nanoseconds": 544000000
       },
       "type": "CHAMPIONS_LEAGUE",
-      "name": "Champion's League"
+      "status": "NON_DISPUTATA",
+      "name": "Champion's League",
+      "format": "GIRONI_KO",
+      "seasonId": "2009-2010",
+      "updatedAt": {
+        "seconds": 1778849742,
+        "nanoseconds": 131000000
+      }
     },
     {
       "id": "2009-2010_coppa-italia",
       "type": "COPPA_ITALIA",
-      "name": "Coppa Italia",
       "createdAt": {
         "seconds": 1778849732,
         "nanoseconds": 568000000
       },
-      "format": "GIRONI_KO",
-      "status": "CONCLUSA",
       "updatedAt": {
         "seconds": 1778849745,
         "nanoseconds": 280000000
       },
-      "notes": "",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
+      "name": "Coppa Italia",
       "seasonId": "2009-2010",
+      "notes": "",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
@@ -227,100 +227,100 @@
     },
     {
       "id": "2009-2010_playoff",
-      "name": "Playoff",
-      "type": "PLAYOFF",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "seasonId": "2009-2010",
       "notes": "",
+      "seasonId": "2009-2010",
+      "format": "GIRONI_KO",
+      "status": "NON_DISPUTATA",
+      "name": "Playoff",
       "updatedAt": {
         "seconds": 1778849749,
         "nanoseconds": 137000000
       },
-      "status": "NON_DISPUTATA",
-      "format": "GIRONI_KO",
       "createdAt": {
         "seconds": 1778849732,
         "nanoseconds": 604000000
-      }
+      },
+      "type": "PLAYOFF"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2009-2010-campionato_1",
-      "position": 1,
-      "updatedAt": {
-        "seconds": 1778849772,
-        "nanoseconds": 838000000
-      },
-      "competitionId": "2009-2010_campionato",
       "played": null,
+      "competitionId": "2009-2010_campionato",
       "seasonTeamId": "2009-2010_fyqviavocqdpmikgws2f",
-      "seasonId": "2009-2010",
-      "fantapoints": null,
       "createdAt": {
         "seconds": 1778849772,
         "nanoseconds": 838000000
       },
+      "position": 1,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 838000000
+      },
+      "seasonId": "2009-2010",
       "points": null
     },
     {
       "id": "2009-2010-campionato_2",
+      "points": null,
+      "seasonId": "2009-2010",
+      "updatedAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 877000000
+      },
+      "fantapoints": null,
       "position": 2,
       "createdAt": {
         "seconds": 1778849772,
         "nanoseconds": 877000000
       },
-      "fantapoints": null,
-      "points": null,
-      "competitionId": "2009-2010_campionato",
-      "updatedAt": {
-        "seconds": 1778849772,
-        "nanoseconds": 877000000
-      },
-      "played": null,
       "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
-      "seasonId": "2009-2010"
+      "competitionId": "2009-2010_campionato",
+      "played": null
     },
     {
       "id": "2009-2010-campionato_3",
       "position": 3,
-      "points": null,
-      "fantapoints": null,
       "createdAt": {
         "seconds": 1778849772,
         "nanoseconds": 915000000
       },
-      "played": null,
+      "fantapoints": null,
       "seasonId": "2009-2010",
-      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "points": null,
       "updatedAt": {
         "seconds": 1778849772,
         "nanoseconds": 915000000
       },
-      "competitionId": "2009-2010_campionato"
+      "played": null,
+      "competitionId": "2009-2010_campionato",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi"
     },
     {
       "id": "2009-2010-coppa-italia_1",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "competitionId": "2009-2010_coppa-italia",
+      "played": null,
+      "points": null,
+      "seasonId": "2009-2010",
       "updatedAt": {
         "seconds": 1778849782,
         "nanoseconds": 876000000
       },
-      "competitionId": "2009-2010_coppa-italia",
-      "seasonId": "2009-2010",
-      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
-      "played": null,
+      "fantapoints": null,
+      "position": 1,
       "createdAt": {
         "seconds": 1778849782,
         "nanoseconds": 876000000
-      },
-      "fantapoints": null,
-      "points": null,
-      "position": 1
+      }
     }
   ],
   "rosterEntries": [
