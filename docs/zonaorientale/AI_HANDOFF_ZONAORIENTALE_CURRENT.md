@@ -1,23 +1,46 @@
 # AI Handoff ZonaOrientale - Current V219
 
-## Stato corrente
+Ultimo aggiornamento documentale: 25/05/2026.
 
-Versione corrente: V219.
+## Stato corrente in una frase
 
-V219 uniforma la UI mobile e ripristina il rendering delle pagine storiche pubbliche. Il pulsante "Su" è ora globale, più curato, visibile solo da smartphone dopo scroll verso il basso e nascosto automaticamente quando si torna in cima. Il bottom menu è vincolato agli smartphone e non deve comparire da desktop.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V219**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
 
-V219 corregge anche Archivio, Statistiche e Confronta: il modulo V211 viene installato realmente, le superfici storiche vengono renderizzate nel ciclo `renderAll()`, e l'Archivio V196/V209 viene richiamato dopo il caricamento dati.
+## Posizione e struttura progetto
 
-La classifica delle competizioni di tipo campionato/classifica supporta e visualizza le colonne nell'ordine: POS, SQUADRA, PUNTI, PG, V, N, P, GF, GS, DR, FPT.
+Nel repository reale il sito sta sotto:
 
-## Regole operative
+```text
+static/zonaorientale/
+```
 
-- Aggiornare sempre `Version` nel footer e cache-buster ad ogni overlay.
-- Includere sempre un handoff AI per ogni overlay.
-- Consegnare un solo zip con dentro le cartelle `zonaorientale/` e `docs/`, includendo solo i file effettivamente modificati.
-- Verificare sempre da mobile le nuove funzionalità.
-- Quando si modifica un modulo importato da `app.js`, valutare anche il cache-buster nello static import.
-- Per lanciare in locale, se ci si trova in `static/zonaorientale`:
+La documentazione sta sotto:
+
+```text
+docs/zonaorientale/
+```
+
+Quando si consegna uno zip all'utente, usare invece le due radici:
+
+```text
+zonaorientale/
+docs/
+```
+
+Lo zip deve contenere **solo i file effettivamente modificati**.
+
+## Regole utente da rispettare sempre
+
+- Fornire un solo zip quando si consegnano modifiche.
+- Dentro lo zip usare le cartelle `zonaorientale/` e `docs/`.
+- Inserire solo i file modificati.
+- Dare sempre i comandi Git, con messaggio di commit coerente.
+- Dare sempre i comandi locali quando si tocca il sito.
+- Ogni modifica UI/codice del sito deve aggiornare footer `Version` e cache-buster.
+- Ogni overlay funzionale deve aggiornare l'handoff corrente e il changelog consolidato.
+- Verificare sempre mobile quando si toccano tabelle, menu, pulsanti fissi o pagine lunghe.
+
+Comandi locali richiesti dall'utente:
 
 ```bash
 cd ..
@@ -30,34 +53,205 @@ Poi aprire:
 http://localhost:1313/zonaorientale/
 ```
 
-## Architettura dati
+## Versione corrente codice
 
-- Dati storici/pesanti: JSON statici e snapshot stagione.
-- Comunicati/news: Firebase live in background.
-- Fantamercato/trattative: Firebase live/lazy.
-- Admin completo: caricato solo su richiesta.
-- I risultati classifica campionato salvano i campi canonici `points`, `played`, `wins`, `draws`, `losses`, `goalsFor`, `goalsAgainst`, `goalDifference`, `fantapoints`.
+Versione sito: **V219 hotfix archivio stagioni**.
 
-## Refactor recenti attivi
+Footer corrente atteso:
 
-- V209: modulo live data / archivio.
-- V210: generatore comunicati admin.
-- V211: statistiche storiche e confronta squadre, installato in V219 nel bootstrap reale.
-- V212: dashboard presidente e helper rose.
-- V213: workflow pubblicazione admin, disattivato in V214 per stabilità.
-- V215: ripristino helper Archivio V196 necessari agli override V204/V209.
-- V216: classifica campionato completa, con tabella mobile scrollabile e Admin risultati esteso.
-- V217: cache-buster reale per modulo Admin competizioni e pagina singola competizione.
-- V219: pulsante "Su" globale mobile-only, bottom menu solo smartphone, render Archivio/Statistiche/Confronta.
+```text
+ZonaOrientale Salerno · V219 hotfix archivio stagioni · Ultimo aggiornamento 25/05/2026
+```
 
-## Note V219
+Cache-buster HTML principali attesi: `?v=219`.
 
-- `competition.html` non deve partire più con `body.is-mobile-ux`: la classe viene assegnata a runtime solo se il viewport è smartphone.
-- Il rilevamento mobile in `assets/js/mobile/mobile-viewport.js` è basato su larghezza `<= 900px`, non su `pointer: coarse`.
-- `stats`, `archive` e `compare` sono hash statici e non devono essere trattati come slug squadra.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` puo risultare storicamente ferma a un valore precedente. Se si lavora sulla checklist di deploy, allinearla alla versione corrente.
 
+## File principali del sito
 
-## V219 - Hotfix archivio stagioni
-- Ripristinati `getSeasonSortValueV193`, `getSeasonLabelV193` e `HISTORICAL_COMPETITIONS_V193` nel bundle principale.
-- Risolve il `ReferenceError: getSeasonSortValueV193 is not defined` che impediva il rendering di Archivio dopo il richiamo introdotto in V218.
-- Aggiornati cache-buster e footer a V219.
+```text
+zonaorientale/index.html
+zonaorientale/competition.html
+zonaorientale/player.html
+zonaorientale/news.html
+zonaorientale/assets/app.js
+zonaorientale/assets/styles.css
+zonaorientale/assets/css/*.css
+zonaorientale/assets/js/**/*.js
+zonaorientale/assets/snapshots/**/*.json
+zonaorientale/assets/rose/*.json
+zonaorientale/assets/listoni/*.json
+zonaorientale/assets/competitions/**/*.json
+```
+
+`assets/app.js` e' ancora il bundle principale e contiene molta logica storica Vxxx. Non rimuovere helper storici solo perche sembrano duplicati: diversi override successivi li richiamano direttamente.
+
+## Moduli refactor attivi
+
+Questi moduli sono presenti e rilevanti:
+
+```text
+assets/js/refactor/live-data-archive-v209.js
+assets/js/refactor/admin-communication-generator-v210.js
+assets/js/refactor/historical-stats-compare-v211.js
+assets/js/refactor/president-dashboard-rosters-v212.js
+assets/js/refactor/admin-publication-workflow-v213.js
+```
+
+Stato effettivo:
+
+- **V209 live-data/archive**: attivo. Gestisce comunicati live, mercato/trattative live/lazy e Archivio stagioni.
+- **V210 generatore comunicati admin**: attivo. Compila bozze comunicati da dati gia presenti; non deve scrivere automaticamente su Firebase.
+- **V211 statistiche/confronta**: presente e, dopo V218/V219, installato realmente nel bootstrap. Gestisce `#stats` e `#compare`.
+- **V212 dashboard presidente/rose**: attivo. Gestisce dashboard presidente, helper rose e hub mobile presidente.
+- **V213 admin-publication-workflow**: file presente ma **non reinserire nel bootstrap senza test browser**. Era stato disattivato in V214 perche poteva bloccare la visualizzazione dei dati. Se ripreso, installarlo lazy/con try-catch e verificare tutto il bootstrap.
+
+## Stato funzionale recente
+
+### V216/V217 - Classifica campionato completa
+
+Le competizioni di tipo campionato/classifica devono inserire e visualizzare le colonne in questo ordine:
+
+```text
+POS, SQUADRA, PUNTI, PG, V, N, P, GF, GS, DR, FPT
+```
+
+Campi canonici salvati/attesi nei risultati:
+
+```text
+position
+teamId/teamName
+points
+played
+wins
+draws
+losses
+goalsFor
+goalsAgainst
+goalDifference
+fantapoints
+```
+
+Compatibilita: molte funzioni leggono anche alias legacy, quindi non rompere questa tolleranza.
+
+V217 ha aggiunto cache-buster agli import critici, in particolare `admin-competitions.js?v=219` nella versione corrente, per evitare cache vecchia del modulo Admin.
+
+### V218/V219 - UI mobile e pagine storiche
+
+Il pulsante globale "Su" e' mobile-only:
+
+- appare solo su smartphone;
+- appare dopo scroll verso il basso;
+- scompare in cima;
+- usa markup `#globalScrollTopBtnV218` e classe `.zo-scroll-top-v218`.
+
+Il bottom menu deve apparire solo da smartphone. Non deve comparire su desktop, nemmeno su laptop touch.
+
+`competition.html` non deve partire con `body.is-mobile-ux` gia settata: la classe mobile viene decisa a runtime.
+
+`stats`, `archive` e `compare` sono hash statici e non devono essere interpretati come slug squadra.
+
+V219 ha ripristinato gli helper mancanti necessari all'Archivio:
+
+```text
+HISTORICAL_COMPETITIONS_V193
+getSeasonSortValueV193
+getSeasonLabelV193
+```
+
+Senza questi, l'Archivio fallisce con:
+
+```text
+ReferenceError: getSeasonSortValueV193 is not defined
+```
+
+## Architettura dati in breve
+
+Ordine pubblico preferito:
+
+1. JSON statici in `assets/public`, `assets/snapshots`, `assets/rose`, `assets/listoni`, `assets/competitions`.
+2. Snapshot Firebase pubblici come fallback.
+3. Collection Firebase granulari solo Admin o live/lazy quando serve.
+
+Dati live:
+
+- comunicati/news: Firebase in background;
+- trasferibili/trattative: Firebase lazy/live quando un presidente apre mercato/dashboard;
+- admin completo: solo dopo `Admin -> Carica dati amministrazione`.
+
+Regola importante: se un dato esiste anche nei JSON statici, modificarlo solo in Firebase non basta. Dopo refresh/logout il sito puo tornare a leggere il JSON statico vecchio.
+
+## Flusso Admin dati da ricordare
+
+Dopo modifiche dati pubblici da Admin:
+
+1. salvare la modifica in Admin;
+2. `Admin -> Snapshot pubblici -> Aggiorna tutto`;
+3. scaricare gli overlay/static JSON necessari;
+4. applicarli nella repo;
+5. commit + push.
+
+Esempi:
+
+- classifiche/risultati/squadre/competizioni: aggiornare snapshot stagioni;
+- Albo/Palmares/FIFA: aggiornare `assets/snapshots/honor.json`;
+- rose Excel: aggiornare `assets/rose/*`, poi reinizializzare e rigenerare snapshot;
+- listone Excel: aggiornare `assets/listoni/*`;
+- config/stagioni: aggiornare `assets/public/config.json`.
+
+## Test minimi dopo codice
+
+Da root `static/zonaorientale` o equivalente:
+
+```bash
+find assets -name '*.js' -type f -print0 | xargs -0 -n1 node --check
+find assets -name '*.json' -type f -print0 | xargs -0 -n1 jq empty
+```
+
+Se `jq` non e' disponibile:
+
+```bash
+find assets -name '*.json' -type f -print0 | xargs -0 -n1 python3 -m json.tool >/dev/null
+```
+
+Test manuali consigliati:
+
+- home/dashboard pubblica;
+- Albo d'Oro;
+- Competizioni e pagina singola competizione;
+- classifica campionato completa da desktop e mobile;
+- `#archive` con cambio stagione;
+- `#stats`;
+- `#compare`;
+- login presidente: dashboard, rose, mercato lazy/live;
+- login admin: risultati competizioni, snapshot pubblici, checklist online;
+- mobile: bottom menu solo smartphone, pulsante Su solo dopo scroll.
+
+## Rischi noti
+
+- Cache browser/GitHub Pages: quando si modifica un modulo importato da `app.js`, aggiungere cache-buster anche nello static import.
+- Funzioni Vxxx storiche: possono sembrare morte ma essere usate da override successivi. Prima di rimuovere usare `grep` e test browser.
+- `admin-publication-workflow-v213.js`: non riattivare senza test completi.
+- Archivio: dipende dalla catena V193/V196/V204/V209/V218/V219.
+- Mobile: non usare solo `pointer: coarse`; usare anche width/viewport per evitare UI mobile su desktop touch.
+- Gli errori DevTools del tipo `A listener indicated an asynchronous response...` spesso vengono da estensioni browser, non dal sito.
+
+## Come consegnare la prossima modifica
+
+1. Applicare la modifica.
+2. Aggiornare footer/cache-buster se e' codice/UI sito.
+3. Aggiornare questi docs se cambia architettura/stato.
+4. Creare zip unico con sole modifiche:
+
+```text
+zonaorientale/...
+docs/...
+```
+
+5. Dare comandi Git:
+
+```bash
+git status
+git add ...
+git commit -m "messaggio coerente"
+```
