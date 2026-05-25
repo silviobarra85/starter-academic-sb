@@ -3,8 +3,8 @@
    These helpers keep URLs, slugs, descriptions and generated HTML consistent
    between the browser UI and the offline generator. */
 
-export const NEWS_SHARE_DEFAULT_BASE_URL_V228 = "https://www.silviobarra.com/zonaorientale/";
-export const NEWS_SHARE_DEFAULT_IMAGE_V228 = "https://www.silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png";
+export const NEWS_SHARE_DEFAULT_BASE_URL_V228 = "https://silviobarra.com/zonaorientale/";
+export const NEWS_SHARE_DEFAULT_IMAGE_V228 = "https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png";
 
 export function stripNewsMarkdownV228(value = "") {
   return String(value || "")
@@ -50,6 +50,13 @@ export function buildNewsSharePathV228(news = {}) {
   return `comunicati/${createNewsShareSlugV228(news)}.html`;
 }
 
+export function buildNewsShareRedirectUrlV230(news = {}, path = "") {
+  const newsHash = news.id ? `#news-${encodeURIComponent(String(news.id))}` : "#news";
+  const pathValue = String(path || "");
+  if (pathValue.includes("/")) return `../${newsHash}`;
+  return `./${newsHash}`;
+}
+
 export function buildNewsShareUrlV228(news = {}, options = {}) {
   const baseUrl = normalizeNewsShareBaseUrlV228(options.baseUrl || NEWS_SHARE_DEFAULT_BASE_URL_V228);
   const cacheToken = encodeURIComponent(String(news.id || news.publishedAt || Date.now()).replace(/\s+/g, "-"));
@@ -72,8 +79,7 @@ export function buildNewsSharePageHtmlV228(news = {}, options = {}) {
   const image = options.imageUrl || NEWS_SHARE_DEFAULT_IMAGE_V228;
   const path = options.path || buildNewsSharePathV228(news);
   const canonicalUrl = `${baseUrl}${path}`;
-  const newsHash = news.id ? `#news-${encodeURIComponent(String(news.id))}` : "#news";
-  const redirectUrl = options.redirectUrl || `${baseUrl}${newsHash}`;
+  const redirectUrl = options.redirectUrl || buildNewsShareRedirectUrlV230(news, path);
   const publishedAt = news.publishedAt || news.createdAt || "";
 
   return `<!doctype html>

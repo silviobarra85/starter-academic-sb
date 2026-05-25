@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V229.
+Stato: V230.
 
 ## Tipo applicazione
 
@@ -436,6 +436,19 @@ Il modulo browser `assets/js/domain/news-share-v228.js` centralizza slug, URL e 
 
 Il sito pubblico e l'Admin mostrano pulsanti `Copia link WhatsApp`; questi link devono puntare alle pagine statiche in `comunicati/`, non all'hash `#news`, per evitare cache/preview errate.
 
+
+
+## V230 - Hotfix URL comunicati condivisibili
+
+V230 corregge i link WhatsApp/preview che andavano in 404 per dominio errato. Le anteprime devono usare:
+
+```text
+https://silviobarra.com/zonaorientale/comunicati/<slug>.html
+```
+
+e non il vecchio host con `www`.
+
+In runtime `app.js` calcola la base con `getNewsShareBaseUrlV230()` a partire dall'URL corrente, cosi' il pulsante `Copia link WhatsApp` usa lo stesso host da cui l'utente sta navigando. Il generatore statico usa invece default non-`www` e redirect relativi nelle pagine HTML generate.
 
 ## V229 - Pulsante account presidente
 

@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=229";
+} from "./js/domain/news-share-v228.js?v=230";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=229";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=230";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=229";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=230";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -5094,8 +5094,26 @@ function getNewsIdFromHashV228() {
   return hash.startsWith("news-") ? hash.slice(5) : "";
 }
 
+function getNewsShareBaseUrlV230() {
+  try {
+    const current = new URL(window.location.href);
+    current.hash = "";
+    current.search = "";
+    const parts = current.pathname.split("/").filter(Boolean);
+    const siteIndex = parts.lastIndexOf("zonaorientale");
+    if (siteIndex >= 0) {
+      current.pathname = `/${parts.slice(0, siteIndex + 1).join("/")}/`;
+    } else {
+      current.pathname = current.pathname.replace(/[^/]*$/, "");
+    }
+    return current.toString();
+  } catch (error) {
+    return NEWS_SHARE_DEFAULT_BASE_URL_V228;
+  }
+}
+
 function getNewsShareUrlForNewsV228(news) {
-  return buildNewsShareUrlV228(news, { baseUrl: NEWS_SHARE_DEFAULT_BASE_URL_V228 });
+  return buildNewsShareUrlV228(news, { baseUrl: getNewsShareBaseUrlV230() });
 }
 
 function renderNewsShareActionsV228(news, { admin = false } = {}) {
@@ -5163,7 +5181,7 @@ function downloadNewsShareHtmlV228(newsId) {
   const news = getNewsByIdV228(newsId);
   if (!news) return;
   const path = buildNewsSharePathV228(news);
-  const html = buildNewsSharePageHtmlV228(news, { path, baseUrl: NEWS_SHARE_DEFAULT_BASE_URL_V228 });
+  const html = buildNewsSharePageHtmlV228(news, { path, baseUrl: getNewsShareBaseUrlV230() });
   downloadTextFileV228(html, path.split("/").pop() || "comunicato.html");
 }
 
@@ -15496,7 +15514,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "229";
+const DEPLOY_EXPECTED_VERSION_V181 = "230";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18620,7 +18638,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V229",
+  version: "V230",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,

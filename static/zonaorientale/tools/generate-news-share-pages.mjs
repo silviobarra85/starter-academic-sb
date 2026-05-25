@@ -19,8 +19,8 @@ const __filename = fileURLToPath(import.meta.url);
 const SITE_DIR = path.resolve(path.dirname(__filename), "..");
 const SNAPSHOT_DIR = path.join(SITE_DIR, "assets", "snapshots", "seasons");
 const SHARE_DIR = path.join(SITE_DIR, "comunicati");
-const BASE_URL = process.env.ZONAORIENTALE_BASE_URL || "https://www.silviobarra.com/zonaorientale/";
-const IMAGE_URL = process.env.ZONAORIENTALE_SHARE_IMAGE || "https://www.silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png";
+const BASE_URL = process.env.ZONAORIENTALE_BASE_URL || "https://silviobarra.com/zonaorientale/";
+const IMAGE_URL = process.env.ZONAORIENTALE_SHARE_IMAGE || "https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png";
 
 function stripMarkdown(value = "") {
   return String(value || "")
@@ -82,13 +82,20 @@ function buildSharePath(news = {}) {
   return `comunicati/${createSlug(news)}.html`;
 }
 
+function buildRelativeRedirectUrl(news = {}, pathName = "") {
+  const newsHash = news.id ? `#news-${encodeURIComponent(String(news.id))}` : "#news";
+  const value = String(pathName || "");
+  if (value.includes("/")) return `../${newsHash}`;
+  return `./${newsHash}`;
+}
+
 function buildSharePageHtml(news = {}, options = {}) {
   const baseUrl = normalizeBaseUrl(options.baseUrl || BASE_URL);
   const title = `${stripMarkdown(news.title || "Comunicato") || "Comunicato"} - ZonaOrientale Salerno`;
   const description = buildDescription(news);
   const pathName = options.path || buildSharePath(news);
   const canonicalUrl = `${baseUrl}${pathName}`;
-  const redirectUrl = options.redirectUrl || `${baseUrl}#news-${encodeURIComponent(String(news.id || ""))}`;
+  const redirectUrl = options.redirectUrl || buildRelativeRedirectUrl(news, pathName);
   const publishedAt = news.publishedAt || news.createdAt || "";
 
   return `<!doctype html>
@@ -187,7 +194,7 @@ async function main() {
       buildSharePageHtml(latest, {
         path: "news.html",
         baseUrl: BASE_URL,
-        redirectUrl: `${normalizeBaseUrl(BASE_URL)}#news-${encodeURIComponent(String(latest.id || ""))}`
+        redirectUrl: buildRelativeRedirectUrl(latest, "news.html")
       }),
       "utf8"
     );

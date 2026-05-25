@@ -1,3 +1,11 @@
+## V230 - Hotfix link WhatsApp comunicati
+
+- Corretto dominio hardcoded dei link comunicati da `www.silviobarra.com` a `silviobarra.com`.
+- Il pulsante `Copia link WhatsApp` calcola la base dall'URL corrente.
+- Le pagine statiche `comunicati/*.html` ora usano canonical/OG non-`www`.
+- I redirect delle preview sono relativi, cosi' non portano a 404 se cambia host.
+- Aggiornati footer/cache-buster a V230.
+
 # Changelog consolidato ZonaOrientale
 
 Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.

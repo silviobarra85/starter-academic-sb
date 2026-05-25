@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V229
+# AI Handoff ZonaOrientale - Current V230
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V229**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e pagine statiche per anteprime WhatsApp dei comunicati e pulsante account presidente personalizzato in header.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V230**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e pagine statiche per anteprime WhatsApp dei comunicati e pulsante account presidente personalizzato in header e hotfix V230 sui link comunicati/WhatsApp.
 
 ## Posizione e struttura progetto
 
@@ -54,6 +54,19 @@ http://localhost:1313/zonaorientale/
 ```
 
 
+
+
+## Hotfix V230 - Link WhatsApp/preview comunicati
+
+V230 corregge i 404 dei link WhatsApp/preview comunicati introdotti dalla V228. La causa era l'uso hardcoded del dominio `https://www.silviobarra.com/zonaorientale/`, mentre il sito pubblico corretto usa `https://silviobarra.com/zonaorientale/` senza `www`.
+
+Regole V230:
+
+- `NEWS_SHARE_DEFAULT_BASE_URL_V228` ora punta a `https://silviobarra.com/zonaorientale/`;
+- i link copiati dal browser non usano piu' un host fisso: `getNewsShareBaseUrlV230()` calcola la base dal path corrente;
+- le pagine statiche `comunicati/*.html` hanno canonical/OG non-`www`;
+- le pagine statiche reindirizzano con path relativo (`../#news-id` o `./#news-id`) per evitare 404 se cambia host;
+- dopo un nuovo comunicato bisogna sempre rigenerare e committare `news.html`, `index.html` e `comunicati/*.html`.
 
 ## Fix V229 - Account presidente in header
 
@@ -105,7 +118,7 @@ git commit -m "data: aggiorna anteprime comunicati whatsapp"
 git push
 ```
 
-Il pannello Admin mostra per ogni comunicato il pulsante `Copia link WhatsApp`, che punta a `https://www.silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>`. Le pagine `comunicati/*.html` contengono `og:title`, `og:description`, `og:image`, `og:url` e poi reindirizzano alla news nella webapp.
+Il pannello Admin mostra per ogni comunicato il pulsante `Copia link WhatsApp`, che punta a `https://silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>`. Le pagine `comunicati/*.html` contengono `og:title`, `og:description`, `og:image`, `og:url` e poi reindirizzano alla news nella webapp.
 
 Nota: se il comunicato e' stato salvato solo su Firebase ma non sono stati rigenerati/deployati snapshot e pagine statiche, WhatsApp continuera a vedere la preview precedente o generica.
 
@@ -123,12 +136,12 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V229 account presidente in header**.
+Versione sito: **V230 hotfix link comunicati**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V229 account presidente in header · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V230 hotfix link comunicati · Ultimo aggiornamento 25/05/2026
 ```
 
 Cache-buster HTML principali attesi: `?v=229`.

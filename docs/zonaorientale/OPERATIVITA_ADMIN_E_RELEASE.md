@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V229.
+Stato: V230.
 
 ## Regola d'oro dati
 
@@ -320,6 +320,17 @@ git push
 
 Se condividi un URL gia' condiviso in passato, WhatsApp puo mantenere la vecchia preview in cache. Per questo i link copiati dal sito includono `?v=<id-comunicato>`.
 
+
+
+## Nota V230 - Verifica link WhatsApp comunicati
+
+Dopo il deploy di un comunicato, il link copiato deve avere forma:
+
+```text
+https://silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>
+```
+
+Non deve contenere `www`. Se si apre `Apri preview`, la pagina deve esistere e poi reindirizzare alla webapp tramite hash `#news-...`.
 
 ## Test manuale specifico V229
 
