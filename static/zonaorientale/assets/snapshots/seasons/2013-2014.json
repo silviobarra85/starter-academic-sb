@@ -1,7 +1,7 @@
 {
   "id": "2013-2014",
   "seasonId": "2013-2014",
-  "generatedAt": "2026-05-25T13:39:18.271Z",
+  "generatedAt": "2026-05-25T16:42:10.762Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
@@ -13,152 +13,149 @@
       "currentPresidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
+      "canonicalName": "Ac Milan",
       "notes": "",
       "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
-      },
-      "canonicalName": "Ac Milan"
+      }
     },
     {
       "id": "lvn8MgLzGcNCY9ev0sgX",
-      "canonicalName": "AS Longobarda",
       "updatedAt": {
         "seconds": 1778834075,
         "nanoseconds": 573000000
       },
-      "notes": "",
-      "isCurrent": false,
+      "logo": "",
+      "currentPresidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
       "createdAt": {
         "seconds": 1778833917,
         "nanoseconds": 315000000
       },
-      "logo": "",
-      "currentPresidentIds": [
-        "iAcJUOTNENihne0XzhuR"
-      ]
+      "canonicalName": "AS Longobarda",
+      "isCurrent": false,
+      "notes": ""
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "isCurrent": true,
+      "canonicalName": "FC DueFratelli2005",
+      "notes": "",
       "currentPresidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
-      "logo": "./assets/logos/due_fratelli.png",
       "createdAt": {
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "notes": "",
-      "isCurrent": true,
+      "logo": "./assets/logos/due_fratelli.png",
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
-      },
-      "canonicalName": "FC DueFratelli2005"
+      }
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
+      "logo": "",
       "currentPresidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
-      "logo": "",
       "createdAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
       "notes": "",
       "isCurrent": false,
+      "canonicalName": "Real Gremo",
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
-      },
-      "canonicalName": "Real Gremo"
+      }
     }
   ],
   "presidents": [
     {
       "id": "iAcJUOTNENihne0XzhuR",
-      "isActive": false,
-      "updatedAt": {
+      "notes": "",
+      "createdAt": {
         "seconds": 1778833093,
         "nanoseconds": 421000000
       },
       "name": "Alessandro Liguori",
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778833093,
         "nanoseconds": 421000000
       },
-      "notes": ""
+      "isActive": false
     },
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
-      "name": "Bartolomeo Greco",
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "notes": "",
       "isActive": false,
       "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "notes": "",
-      "createdAt": {
-        "seconds": 1778833068,
-        "nanoseconds": 684000000
-      }
+      "name": "Bartolomeo Greco"
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
-      "createdAt": {
-        "seconds": 1778832889,
-        "nanoseconds": 760000000
-      },
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
       "isActive": true,
-      "name": "Giosuè Vicinanza"
+      "name": "Giosuè Vicinanza",
+      "createdAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "notes": ""
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
+      "name": "Michele D'Isanto",
+      "isActive": true,
       "updatedAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "isActive": true,
-      "name": "Michele D'Isanto",
+      "notes": "",
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
-      },
-      "notes": ""
+      }
     }
   ],
   "seasonTeams": [
     {
       "id": "2013-2014_wmdzhrrpup8lhvsdwm7w",
       "logo": "",
-      "isHistorical": false,
       "createdAt": {
         "seconds": 1778849095,
         "nanoseconds": 524000000
       },
       "seasonId": "2013-2014",
-      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "isHistorical": false,
       "presidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
-      "name": "Ac Milan",
       "updatedAt": {
         "seconds": 1778849095,
         "nanoseconds": 524000000
-      }
+      },
+      "name": "Ac Milan",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W"
     },
     {
       "id": "2013-2014_lvn8mglzgcncy9ev0sgx",
-      "seasonId": "2013-2014",
-      "teamId": "lvn8MgLzGcNCY9ev0sgX",
-      "name": "AS Longobarda",
       "presidentIds": [
         "iAcJUOTNENihne0XzhuR"
       ],
@@ -166,71 +163,74 @@
         "seconds": 1778849105,
         "nanoseconds": 384000000
       },
+      "name": "AS Longobarda",
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
+      "logo": "",
       "createdAt": {
         "seconds": 1778849105,
         "nanoseconds": 384000000
       },
-      "logo": "",
+      "seasonId": "2013-2014",
       "isHistorical": false
     },
     {
       "id": "2013-2014_y3vmcdwvut0u1tlsg4qc",
-      "name": "FC DueFratelli2005",
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "seasonId": "2013-2014",
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "updatedAt": {
         "seconds": 1779379887,
         "nanoseconds": 169000000
       },
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "name": "FC DueFratelli2005",
       "createdAt": {
         "seconds": 1778849111,
         "nanoseconds": 147000000
       },
+      "seasonId": "2013-2014",
       "logo": "",
       "isHistorical": false
     },
     {
       "id": "2013-2014_fyqviavocqdpmikgws2f",
+      "isHistorical": false,
+      "seasonId": "2013-2014",
+      "createdAt": {
+        "seconds": 1778849101,
+        "nanoseconds": 73000000
+      },
+      "logo": "",
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "name": "Real Gremo",
       "updatedAt": {
         "seconds": 1778849101,
         "nanoseconds": 73000000
       },
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
-      ],
-      "name": "Real Gremo",
-      "teamId": "fYQViaVoCqDPmikgwS2F",
-      "seasonId": "2013-2014",
-      "createdAt": {
-        "seconds": 1778849101,
-        "nanoseconds": 73000000
-      },
-      "logo": "",
-      "isHistorical": false
+      ]
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2013-2014_campionato",
-      "knockoutPhases": [],
-      "notes": "",
-      "status": "CONCLUSA",
-      "name": "Campionato",
-      "format": "CLASSIFICA",
-      "seasonId": "2013-2014",
       "updatedAt": {
         "seconds": 1778848836,
         "nanoseconds": 870000000
       },
-      "type": "CAMPIONATO",
+      "notes": "",
+      "knockoutPhases": [],
       "createdAt": {
         "seconds": 1778848825,
         "nanoseconds": 195000000
-      }
+      },
+      "type": "CAMPIONATO",
+      "name": "Campionato",
+      "format": "CLASSIFICA",
+      "seasonId": "2013-2014",
+      "status": "CONCLUSA"
     },
     {
       "id": "2013-2014_champions-league",
@@ -238,86 +238,86 @@
         "seconds": 1778849169,
         "nanoseconds": 434000000
       },
-      "name": "Champion's League",
-      "status": "CONCLUSA",
-      "format": "GIRONI_KO",
-      "seasonId": "2013-2014",
-      "type": "CHAMPIONS_LEAGUE",
+      "notes": "",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
       "createdAt": {
         "seconds": 1778848825,
         "nanoseconds": 230000000
       },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "notes": ""
+      "name": "Champion's League",
+      "type": "CHAMPIONS_LEAGUE",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
+      "seasonId": "2013-2014"
     },
     {
       "id": "2013-2014_coppa-italia",
-      "updatedAt": {
-        "seconds": 1778848840,
-        "nanoseconds": 617000000
-      },
-      "name": "Coppa Italia",
-      "status": "CONCLUSA",
-      "format": "GIRONI_KO",
-      "seasonId": "2013-2014",
+      "notes": "",
       "createdAt": {
         "seconds": 1778848825,
         "nanoseconds": 269000000
       },
-      "type": "COPPA_ITALIA",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "notes": ""
+      "updatedAt": {
+        "seconds": 1778848840,
+        "nanoseconds": 617000000
+      },
+      "format": "GIRONI_KO",
+      "seasonId": "2013-2014",
+      "status": "CONCLUSA",
+      "type": "COPPA_ITALIA",
+      "name": "Coppa Italia"
     },
     {
       "id": "2013-2014_playoff",
-      "updatedAt": {
-        "seconds": 1778849173,
-        "nanoseconds": 391000000
-      },
-      "seasonId": "2013-2014",
-      "format": "GIRONI_KO",
-      "status": "NON_DISPUTATA",
-      "name": "Playoff",
-      "type": "PLAYOFF",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
       "createdAt": {
         "seconds": 1778848825,
         "nanoseconds": 306000000
       },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "notes": ""
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778849173,
+        "nanoseconds": 391000000
+      },
+      "status": "NON_DISPUTATA",
+      "seasonId": "2013-2014",
+      "format": "GIRONI_KO",
+      "type": "PLAYOFF",
+      "name": "Playoff"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2013-2014-campionato_1",
-      "position": 1,
       "createdAt": {
         "seconds": 1778849143,
         "nanoseconds": 596000000
       },
-      "fantapoints": null,
-      "seasonId": "2013-2014",
-      "points": null,
       "updatedAt": {
         "seconds": 1778849143,
         "nanoseconds": 596000000
       },
+      "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f",
       "played": null,
       "competitionId": "2013-2014_campionato",
-      "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f"
+      "points": null,
+      "seasonId": "2013-2014",
+      "fantapoints": null,
+      "position": 1
     },
     {
       "id": "2013-2014-campionato_2",
@@ -325,56 +325,61 @@
         "seconds": 1778849143,
         "nanoseconds": 656000000
       },
-      "seasonId": "2013-2014",
-      "points": null,
-      "position": 2,
       "createdAt": {
         "seconds": 1778849143,
         "nanoseconds": 656000000
       },
       "fantapoints": null,
-      "competitionId": "2013-2014_campionato",
+      "position": 2,
+      "played": null,
       "seasonTeamId": "2013-2014_lvn8mglzgcncy9ev0sgx",
-      "played": null
+      "competitionId": "2013-2014_campionato",
+      "seasonId": "2013-2014",
+      "points": null
     },
     {
       "id": "2013-2014-campionato_3",
-      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
-      "competitionId": "2013-2014_campionato",
-      "played": null,
       "updatedAt": {
         "seconds": 1778849143,
         "nanoseconds": 723000000
       },
-      "points": null,
-      "seasonId": "2013-2014",
-      "fantapoints": null,
       "createdAt": {
         "seconds": 1778849143,
         "nanoseconds": 723000000
       },
-      "position": 3
+      "position": 3,
+      "fantapoints": null,
+      "played": null,
+      "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+      "points": null,
+      "seasonId": "2013-2014",
+      "competitionId": "2013-2014_campionato"
     },
     {
       "id": "2013-2014-champions-league_1",
-      "competitionId": "2013-2014_champions-league",
-      "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f",
-      "played": null,
-      "seasonId": "2013-2014",
-      "points": null,
-      "updatedAt": {
-        "seconds": 1778849182,
-        "nanoseconds": 333000000
-      },
-      "position": 1,
       "createdAt": {
         "seconds": 1778849182,
         "nanoseconds": 333000000
       },
-      "fantapoints": null
+      "updatedAt": {
+        "seconds": 1778849182,
+        "nanoseconds": 333000000
+      },
+      "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f",
+      "played": null,
+      "competitionId": "2013-2014_champions-league",
+      "points": null,
+      "seasonId": "2013-2014",
+      "fantapoints": null,
+      "position": 1
     },
     {
       "id": "2013-2014-coppa-italia_1",
+      "played": null,
+      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+      "competitionId": "2013-2014_coppa-italia",
+      "seasonId": "2013-2014",
+      "points": null,
       "fantapoints": null,
       "position": 1,
       "createdAt": {
@@ -384,12 +389,7 @@
       "updatedAt": {
         "seconds": 1778849152,
         "nanoseconds": 965000000
-      },
-      "points": null,
-      "seasonId": "2013-2014",
-      "played": null,
-      "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
-      "competitionId": "2013-2014_coppa-italia"
+      }
     }
   ],
   "rosterEntries": [
