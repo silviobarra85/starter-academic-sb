@@ -28,3 +28,44 @@
 .admin-subsection-headerline h3 {
   margin: 0;
 }
+
+/* V216 - Admin risultati: griglia completa classifica campionato. */
+.result-admin-standing-wrap-v216 {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.result-admin-standing-wrap-v216 .competition-results-admin-table-v216 {
+  min-width: 1120px;
+  table-layout: auto;
+}
+
+.result-admin-standing-wrap-v216 th,
+.result-admin-standing-wrap-v216 td {
+  white-space: nowrap;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-pos-v216 {
+  width: 48px;
+  min-width: 48px;
+  text-align: center;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-team-v216 {
+  min-width: 240px;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-input-v216 {
+  min-width: 72px;
+  text-align: right;
+}
+
+/* V217 - Admin risultati: input classifica completi sempre scrollabili e leggibili. */
+.result-admin-standing-wrap-v216 {
+  max-width: 100%;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-input-v216 {
+  width: 100%;
+  box-sizing: border-box;
+}

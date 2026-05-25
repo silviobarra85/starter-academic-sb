@@ -1,3 +1,4 @@
+/* V217: included in patch and cache-busted by app.js import so Admin results uses the complete standings editor. */
 export function createAdminCompetitionHelpersV131({
   state,
   escapeHtml,
@@ -151,29 +152,45 @@ export function createAdminCompetitionHelpersV131({
         </div>`;
     }
 
+    const getRankingValueV216 = (result, keys = []) => {
+      for (const key of keys) {
+        const value = result?.[key];
+        if (value !== undefined && value !== null && value !== "") return value;
+      }
+      return "";
+    };
+    const rankingInputV216 = (result, position, attr, keys, step = "1") => `
+      <input class="input standing-admin-input-v216" type="number" step="${escapeHtml(step)}" value="${escapeHtml(getRankingValueV216(result, keys))}" data-result-position="${position}" ${attr} />`;
+
     const expectedRows = Math.max(getParticipantsCount(competition.seasonId), seasonTeams.length, currentResults.length);
     const rows = Array.from({ length: expectedRows }, (_, index) => {
       const position = index + 1;
       const result = resultsByPosition.get(position) || {};
       return `
         <tr>
-          <td data-label="#" class="number">${position}</td>
-          <td data-label="Squadra">
+          <td data-label="POS" class="number standing-admin-pos-v216">${position}</td>
+          <td data-label="SQUADRA" class="standing-admin-team-v216">
             <select class="input" data-result-position="${position}" data-result-team>${teamOptions(result.seasonTeamId || "")}</select>
           </td>
-          <td data-label="Punti" class="number"><input class="input" type="number" step="0.5" value="${escapeHtml(result.points ?? "")}" data-result-position="${position}" data-result-points /></td>
-          <td data-label="G" class="number"><input class="input" type="number" step="1" value="${escapeHtml(result.played ?? "")}" data-result-position="${position}" data-result-played /></td>
-          <td data-label="FPT" class="number"><input class="input" type="number" step="0.5" value="${escapeHtml(result.fantapoints ?? "")}" data-result-position="${position}" data-result-fantapoints /></td>
+          <td data-label="PUNTI" class="number">${rankingInputV216(result, position, "data-result-points", ["points", "punti", "rankingPoints", "tablePoints", "totalPoints"], "0.5")}</td>
+          <td data-label="PG" class="number">${rankingInputV216(result, position, "data-result-played", ["played", "games", "matches", "playedMatches", "partite", "pg", "g"])}</td>
+          <td data-label="V" class="number">${rankingInputV216(result, position, "data-result-wins", ["wins", "won", "victories", "vittorie", "vinte", "v"])}</td>
+          <td data-label="N" class="number">${rankingInputV216(result, position, "data-result-draws", ["draws", "drawn", "ties", "pareggi", "pareggiate", "n"])}</td>
+          <td data-label="P" class="number">${rankingInputV216(result, position, "data-result-losses", ["losses", "lost", "defeats", "sconfitte", "perse", "p"])}</td>
+          <td data-label="GF" class="number">${rankingInputV216(result, position, "data-result-goals-for", ["goalsFor", "goals_for", "gf", "goalfatti", "goalsScored", "scoredGoals", "retiFatte"])}</td>
+          <td data-label="GS" class="number">${rankingInputV216(result, position, "data-result-goals-against", ["goalsAgainst", "goals_against", "ga", "gs", "goalSubiti", "goalsConceded", "concededGoals", "retiSubite"])}</td>
+          <td data-label="DR" class="number">${rankingInputV216(result, position, "data-result-goal-difference", ["goalDifference", "goal_difference", "diffReti", "differenzaReti", "dr", "gd", "difference"])}</td>
+          <td data-label="FPT" class="number">${rankingInputV216(result, position, "data-result-fantapoints", ["fantapoints", "fantapunti", "fpt", "fantasyPoints", "totalFantapoints", "totalFantasyPoints"], "0.5")}</td>
         </tr>`;
     }).join("");
 
     return `
-      <div class="compact-card result-editor-card">
+      <div class="compact-card result-editor-card result-editor-card-v216">
         <h3>${escapeHtml(competition.name)}</h3>
-        <p class="muted">Competizione a classifica: inserisci dal primo all'ultimo posto.</p>
-        <div class="table-wrap result-admin-table-wrap">
-          <table>
-            <thead><tr><th>#</th><th>Squadra</th><th class="number">Punti</th><th class="number">G</th><th class="number">FPT</th></tr></thead>
+        <p class="muted">Competizione a classifica: inserisci dal primo all'ultimo posto con statistiche complete di campionato.</p>
+        <div class="table-wrap result-admin-table-wrap result-admin-standing-wrap-v216">
+          <table class="competition-results-admin-table-v216">
+            <thead><tr><th>POS</th><th>SQUADRA</th><th class="number">PUNTI</th><th class="number">PG</th><th class="number">V</th><th class="number">N</th><th class="number">P</th><th class="number">GF</th><th class="number">GS</th><th class="number">DR</th><th class="number">FPT</th></tr></thead>
             <tbody>${rows}</tbody>
           </table>
         </div>

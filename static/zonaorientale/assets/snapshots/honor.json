@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-21T20:24:36.576Z",
+  "generatedAt": "2026-05-25T16:42:16.138Z",
   "snapshot": {
     "id": "honor",
-    "generatedAt": "2026-05-21T20:24:36.563Z",
+    "generatedAt": "2026-05-25T16:42:16.127Z",
     "honorRows": [
       {
         "seasonId": "2025-2026",
@@ -44,8 +44,11 @@
           "logo": "./assets/logos/prestige.png"
         },
         "playoff": {
-          "kind": "empty",
-          "label": "-"
+          "kind": "team",
+          "seasonTeamId": "2025-2026_h6saek7urqiqnmiztrt7",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Afc Severgas Baronissi",
+          "logo": "./assets/logos/baronissi.png"
         }
       },
       {
@@ -1144,6 +1147,12 @@
           "teamName": "Ac Milan",
           "wins": 1,
           "logo": "./assets/logos/acmilan.png"
+        },
+        {
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "teamName": "Afc Severgas Baronissi",
+          "wins": 1,
+          "logo": "./assets/logos/baronissi.png"
         },
         {
           "teamId": "7Bx0ceGBXtF4FwH6T0PI",

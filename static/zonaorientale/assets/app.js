@@ -42,7 +42,8 @@ import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=220";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=220";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -129,8 +130,15 @@ import {
   parseListoneSheetRows
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=188";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
+import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=227";
+import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=227";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -183,12 +191,9 @@ function getRosterForSeasonTeam(seasonTeam) {
 }
 
 async function loadData() {
-  const entries = await Promise.all(
-    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
-  );
-  state.raw = Object.fromEntries(entries);
-  await loadListoniData();
-  await loadRostersData();
+  const entries = await zonaDataRepositoryV222.loadCollections(COLLECTIONS);
+  state.raw = entries;
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   renderAll();
 }
@@ -331,6 +336,26 @@ function getCompetitionResults(competitionId) {
   return state.raw.competitionResults
     .filter((result) => result.competitionId === competitionId)
     .sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+}
+
+/* V218 note: app import for admin-competitions and opened competition pages carry current cache-busters to avoid stale assets. */
+function getStandingResultValueV216(result, keys = [], fallback = "-") {
+  for (const key of keys) {
+    const value = result?.[key];
+    if (value !== undefined && value !== null && value !== "") return value;
+  }
+  return fallback;
+}
+
+function getStandingDisplayValueV216(result, keys = [], fallback = "-") {
+  return getStandingResultValueV216(result, keys, fallback);
+}
+
+function readStandingNumberInputV216(position, selector) {
+  const input = document.querySelector(`${selector}[data-result-position="${position}"]`);
+  if (!input || input.value === "") return null;
+  const value = Number(input.value);
+  return Number.isFinite(value) ? value : null;
 }
 
 function isRankingCompetition(competition) {
@@ -713,16 +738,38 @@ function renderDashboardCompetitionSummary(competition) {
 
 
 
+
+const zonaDataRepositoryV222 = createZonaDataRepositoryV222({
+  collectionNames: COLLECTIONS,
+  loadCollection,
+  loadListoniData,
+  loadRostersData,
+  loadStaticCompetitionCalendars: loadStaticCompetitionCalendarsV101,
+  logger: console
+});
+
+window.ZonaOrientaleDataRepository = zonaDataRepositoryV222;
+
+const publicAdminRenderOrchestratorV221 = createPublicAdminRenderOrchestratorV221();
+
 function renderAll() {
-  renderLeagueHeader();
-  renderSeasonSelectors();
-  renderDashboard();
-  renderCompetitionsPublic();
-  renderPlaceholderPages();
-  renderTeamsTable();
-  renderStadiumsPublic();
-  renderAdminArea();
-  setupCollapsibleSections();
+  return publicAdminRenderOrchestratorV221.renderAll({
+    publicRenderers: [
+      renderLeagueHeader,
+      renderSeasonSelectors,
+      renderDashboard,
+      renderCompetitionsPublic,
+      renderPlaceholderPages,
+      renderTeamsTable,
+      renderStadiumsPublic
+    ],
+    adminRenderers: [
+      renderAdminArea
+    ],
+    afterRenderers: [
+      setupCollapsibleSections
+    ]
+  });
 }
 
 function renderLeagueHeader() {
@@ -839,19 +886,25 @@ function renderCompetitionResultsPublic(competition) {
   }
 
   return `
-    <div class="table-wrap compact-table result-table-wrap">
-      <table>
+    <div class="table-wrap compact-table result-table-wrap competition-standing-wrap-v216" aria-label="Classifica completa">
+      <table class="competition-standing-table-v216">
         <thead>
-          <tr><th>#</th><th>Squadra</th><th class="number">Punti</th><th class="number">G</th><th class="number">FPT</th></tr>
+          <tr><th class="number standing-position-col-v216">POS</th><th class="standing-team-col-v216">SQUADRA</th><th class="number standing-points-col-v216">PUNTI</th><th class="number standing-played-col-v216">PG</th><th class="number standing-wins-col-v216">V</th><th class="number standing-draws-col-v216">N</th><th class="number standing-losses-col-v216">P</th><th class="number standing-goals-for-col-v216">GF</th><th class="number standing-goals-against-col-v216">GS</th><th class="number standing-goal-difference-col-v216">DR</th><th class="number standing-fantapoints-col-v216">FPT</th></tr>
         </thead>
         <tbody>
           ${results.map((result) => `
             <tr>
-              <td data-label="#">${escapeHtml(result.position || "")}</td>
-              <td data-label="Squadra">${renderSeasonTeamNameWithLogo(result.seasonTeamId)}</td>
-              <td data-label="Punti" class="number">${escapeHtml(result.points ?? "-")}</td>
-              <td data-label="G" class="number">${escapeHtml(result.played ?? "-")}</td>
-              <td data-label="FPT" class="number">${escapeHtml(result.fantapoints ?? "-")}</td>
+              <td data-label="POS" class="number standing-position-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["position", "pos"], ""))}</td>
+              <td data-label="SQUADRA" class="standing-team-col-v216">${renderSeasonTeamNameWithLogo(result.seasonTeamId)}</td>
+              <td data-label="PUNTI" class="number standing-points-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["points", "punti", "rankingPoints", "tablePoints", "totalPoints"]))}</td>
+              <td data-label="PG" class="number standing-played-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["played", "games", "matches", "playedMatches", "partite", "pg", "g"]))}</td>
+              <td data-label="V" class="number standing-wins-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["wins", "won", "victories", "vittorie", "vinte", "v"]))}</td>
+              <td data-label="N" class="number standing-draws-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["draws", "drawn", "ties", "pareggi", "pareggiate", "n"]))}</td>
+              <td data-label="P" class="number standing-losses-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["losses", "lost", "defeats", "sconfitte", "perse", "p"]))}</td>
+              <td data-label="GF" class="number standing-goals-for-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["goalsFor", "goals_for", "gf", "goalfatti", "goalsScored", "scoredGoals", "retiFatte"]))}</td>
+              <td data-label="GS" class="number standing-goals-against-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["goalsAgainst", "goals_against", "ga", "gs", "goalSubiti", "goalsConceded", "concededGoals", "retiSubite"]))}</td>
+              <td data-label="DR" class="number standing-goal-difference-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["goalDifference", "goal_difference", "diffReti", "differenzaReti", "dr", "gd", "difference"]))}</td>
+              <td data-label="FPT" class="number standing-fantapoints-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["fantapoints", "fantapunti", "fpt", "fantasyPoints", "totalFantapoints", "totalFantasyPoints"]))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -2846,18 +2899,20 @@ async function saveCompetitionResults(event) {
     const seasonTeamId = select.value;
     if (!position || !seasonTeamId) return;
 
-    const pointsInput = document.querySelector(`[data-result-points][data-result-position="${position}"]`);
-    const playedInput = document.querySelector(`[data-result-played][data-result-position="${position}"]`);
-    const fantapointsInput = document.querySelector(`[data-result-fantapoints][data-result-position="${position}"]`);
-
     rows.push({
       competitionId,
       seasonId: competition.seasonId,
       seasonTeamId,
       position,
-      points: pointsInput?.value === "" || !pointsInput ? null : Number(pointsInput.value),
-      played: playedInput?.value === "" || !playedInput ? null : Number(playedInput.value),
-      fantapoints: fantapointsInput?.value === "" || !fantapointsInput ? null : Number(fantapointsInput.value),
+      points: readStandingNumberInputV216(position, "[data-result-points]"),
+      played: readStandingNumberInputV216(position, "[data-result-played]"),
+      wins: readStandingNumberInputV216(position, "[data-result-wins]"),
+      draws: readStandingNumberInputV216(position, "[data-result-draws]"),
+      losses: readStandingNumberInputV216(position, "[data-result-losses]"),
+      goalsFor: readStandingNumberInputV216(position, "[data-result-goals-for]"),
+      goalsAgainst: readStandingNumberInputV216(position, "[data-result-goals-against]"),
+      goalDifference: readStandingNumberInputV216(position, "[data-result-goal-difference]"),
+      fantapoints: readStandingNumberInputV216(position, "[data-result-fantapoints]"),
       updatedAt: serverTimestamp()
     });
   });
@@ -4278,14 +4333,11 @@ function applyPublicSeasonSnapshotV32(snapshot) {
 
 async function loadFullDataV32(options = {}) {
   const { render = true } = options;
-  const entries = await Promise.all(
-    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
-  );
-  state.raw = Object.assign(makeEmptyRawDataV32(), Object.fromEntries(entries));
+  const entries = await zonaDataRepositoryV222.loadCollections(COLLECTIONS);
+  state.raw = Object.assign(makeEmptyRawDataV32(), entries);
   state.hasFullData = true;
   state.usedPublicSnapshots = false;
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   if (render) renderAll();
 }
@@ -4307,8 +4359,7 @@ async function loadPublicDataV32() {
     applyPublicSeasonSnapshotV32(seasonSnapshot);
     state.publicHonorSnapshot = honorSnapshot;
     state.hasFullData = false;
-    await loadListoniData();
-    await loadRostersData();
+    await zonaDataRepositoryV222.loadStaticAssets();
     sortData();
   }
   renderAll();
@@ -4330,8 +4381,7 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV32() {
       const snapshot = await loadPublicSeasonSnapshotV32(state.selectedSeasonId);
       if (snapshot) {
         applyPublicSeasonSnapshotV32(snapshot);
-        await loadListoniData();
-        await loadRostersData();
+        await zonaDataRepositoryV222.loadStaticAssets();
         sortData();
         renderAll();
         return;
@@ -4962,8 +5012,7 @@ async function loadPublicDataV34() {
   const seasonId = getCurrentSeasonId();
   const seasonSnapshot = await loadPublicSeasonSnapshotV32(seasonId);
   const honorSnapshot = await loadPublicHonorSnapshotV32();
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
 
   if (!seasonSnapshot || !honorSnapshot) {
     state.usedPublicSnapshots = false;
@@ -4994,8 +5043,7 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV34() {
     state.selectedListoneId = "";
     if (!state.hasFullData && !state.isAdmin) {
       const snapshot = await loadPublicSeasonSnapshotV32(state.selectedSeasonId);
-      await loadListoniData();
-      await loadRostersData();
+      await zonaDataRepositoryV222.loadStaticAssets();
       if (snapshot) {
         applyPublicSeasonSnapshotV32(snapshot);
         state.raw.news = Array.isArray(snapshot.news) ? snapshot.news : [];
@@ -6520,6 +6568,9 @@ function isKnownStaticHashV43(hashValue) {
     'listone',
     'competitions',
     'honor',
+    'stats',
+    'archive',
+    'compare',
     'finance',
     'regolamento',
     'admin',
@@ -7944,15 +7995,11 @@ function isLatestDataLoadV100(requestId) {
 async function loadFullDataStableV100(requestId, options = {}) {
   const { render = true } = options;
   const selectedSeasonBefore = state.selectedSeasonId;
-  const entries = await Promise.all(
-    COLLECTIONS.map(async (name) => [name, await loadCollection(name)])
-  );
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  const entries = await zonaDataRepositoryV222.loadCollections(COLLECTIONS);
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
-  state.raw = Object.assign(makeEmptyRawDataV34(), Object.fromEntries(entries));
+  state.raw = Object.assign(makeEmptyRawDataV34(), entries);
   state.hasFullData = true;
   state.usedPublicSnapshots = false;
   state.selectedSeasonId = selectedSeasonBefore || state.selectedSeasonId || getDefaultSeasonId();
@@ -7981,9 +8028,7 @@ async function loadPublicDataForSelectedSeasonV100(requestId, options = {}) {
     loadPublicHonorSnapshotV32()
   ]);
 
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = rawBase;
@@ -9752,6 +9797,7 @@ function getCompetitionDisplayNameV111(competition) {
 
 function getCompetitionOpenUrlV111(competition) {
   const params = new URLSearchParams();
+  params.set("v", "219");
   const seasonId = competition?.seasonId || getCurrentSeasonId();
   if (seasonId) params.set("seasonId", seasonId);
   if (competition?.id) params.set("competitionId", competition.id);
@@ -13859,19 +13905,12 @@ async function loadStaticPublicConfigV171() {
 }
 
 async function loadPublicConfigV171() {
-  const staticConfig = await loadStaticPublicConfigV171();
-  if (staticConfig) return staticConfig;
-
-  const [leagueSettings, seasons] = await Promise.all([
-    loadCollection("leagueSettings"),
-    loadCollection("seasons")
-  ]);
-  state.publicConfigSourceV171 = "firebase";
-  return {
-    leagueSettings,
-    seasons,
-    currentSeasonId: getDefaultSeasonIdFromRawV100({ leagueSettings, seasons })
-  };
+  const publicConfig = await zonaDataRepositoryV222.loadPublicConfig(
+    loadStaticPublicConfigV171,
+    getDefaultSeasonIdFromRawV100
+  );
+  state.publicConfigSourceV171 = publicConfig?.source === "static" ? "static" : "firebase";
+  return publicConfig;
 }
 
 loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV171(requestId, options = {}) {
@@ -13889,9 +13928,7 @@ loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSe
     loadPublicHonorSnapshotV32()
   ]);
 
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = rawBase;
@@ -14382,7 +14419,8 @@ function getFirebaseBackupCollectionsV174() {
 
 async function loadCollectionEntriesV174(collectionNames) {
   const names = uniqueCollectionNamesV174(collectionNames);
-  return Promise.all(names.map(async (name) => [name, await loadCollection(name)]));
+  const loaded = await zonaDataRepositoryV222.loadCollections(names);
+  return Object.entries(loaded);
 }
 
 function buildRawFromEntriesV174(entries) {
@@ -14399,8 +14437,7 @@ loadFullDataV32 = async function loadFullDataV174(options = {}) {
   const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
   state.raw = buildRawFromEntriesV174(entries);
   markFullAdminDataLoadedV174();
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   if (render) renderAll();
 };
@@ -14409,9 +14446,7 @@ loadFullDataStableV100 = async function loadFullDataStableV174(requestId, option
   const { render = true } = options;
   const selectedSeasonBefore = state.selectedSeasonId;
   const entries = await loadCollectionEntriesV174(getAdminFullLoadCollectionsV174());
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = buildRawFromEntriesV174(entries);
@@ -14562,8 +14597,7 @@ loadFullDataV32 = async function loadFullDataV175(options = {}) {
   const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
   state.raw = buildRawFromEntriesV174(entries);
   markFullAdminDataLoadedV174();
-  await loadListoniData();
-  await loadRostersData();
+  await zonaDataRepositoryV222.loadStaticAssets();
   sortData();
   if (render) renderAll();
 };
@@ -14572,9 +14606,7 @@ loadFullDataStableV100 = async function loadFullDataStableV175(requestId, option
   const { render = true } = options;
   const selectedSeasonBefore = state.selectedSeasonId;
   const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
-  await loadListoniData();
-  await loadRostersData();
-  await loadStaticCompetitionCalendarsV101();
+  await zonaDataRepositoryV222.loadStaticAssets();
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = buildRawFromEntriesV174(entries);
@@ -14914,9 +14946,7 @@ async function loadAdminFullDataForEditingV178(options = {}) {
   if (typeof resetFirebaseReadStatsV177 === "function") resetFirebaseReadStatsV177("admin-full-on-demand");
   try {
     const entries = await loadCollectionEntriesV174(getAdminCurrentLoadCollectionsV175());
-    await loadListoniData();
-    await loadRostersData();
-    if (typeof loadStaticCompetitionCalendarsV101 === "function") await loadStaticCompetitionCalendarsV101();
+    await zonaDataRepositoryV222.loadStaticAssets();
     if (!isLatestDataLoadV100(requestId)) return false;
 
     state.raw = buildRawFromEntriesV174(entries);
@@ -15335,8 +15365,8 @@ window.ZonaOrientalePreflight = {
    Keeps the deploy check in the admin UI without touching Firebase: it reuses
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
-const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV188";
-const DEPLOY_EXPECTED_VERSION_V181 = "188";
+const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
+const DEPLOY_EXPECTED_VERSION_V181 = "227";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -15996,5 +16026,2483 @@ renderAdminHelpPanelV185 = function renderAdminHelpPanelV187() {
   return html;
 };
 
-/* V188 - Final startup remains centralized here. */
+/* V189 - Admin publication reminders.
+   Tracks admin data changes and shows a mobile-friendly reminder explaining
+   which public snapshots/static JSON files must be regenerated and committed
+   before the change is durable after refresh/logout. */
+const ADMIN_PUBLICATION_REMINDERS_KEY_V189 = "zonaOrientaleAdminPublicationRemindersV189";
+
+const ADMIN_PUBLICATION_RULES_V189 = {
+  adminSeasonForm: {
+    title: "Stagioni/config pubblica modificata",
+    impacts: ["config", "seasonSnapshots"],
+    details: "Aggiorna snapshot pubblici, poi scarica config pubblica e overlay snapshot stagioni."
+  },
+  adminPresidentForm: {
+    title: "Presidenti modificati",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Se il presidente compare in storico, aggiorna anche honor.json."
+  },
+  adminTeamForm: {
+    title: "Squadre anagrafiche modificate",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "I nomi/loghi possono comparire in stagione e Albo/Palmares."
+  },
+  adminSeasonTeamForm: {
+    title: "Squadre per stagione modificate",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Scarica overlay snapshot stagioni; se il nome compare in Albo/Palmares scarica anche honor.json."
+  },
+  adminStadiumForm: {
+    title: "Stadi modificati",
+    impacts: ["seasonSnapshots"],
+    details: "Gli stadi sono nello snapshot stagione e nelle schede squadra."
+  },
+  adminCompetitionForm: {
+    title: "Competizioni modificate",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Risultati e competizioni possono influire anche su Albo/Palmares."
+  },
+  adminCompetitionMatchesForm: {
+    title: "Partite competizioni modificate",
+    impacts: ["seasonSnapshots"],
+    details: "Aggiorna e scarica overlay snapshot stagioni."
+  },
+  adminCompetitionResultsForm: {
+    title: "Classifiche/risultati modificati",
+    impacts: ["seasonSnapshots", "honor"],
+    details: "Le classifiche sono nello snapshot stagione; eventuali vincitori sono anche in honor.json."
+  },
+  adminFifaRankingForm: {
+    title: "FIFA Ranking modificato",
+    impacts: ["honor"],
+    details: "Scarica honor.json dopo Aggiorna tutto."
+  },
+  adminFmMovementForm: {
+    title: "Movimenti FM modificati",
+    impacts: ["seasonSnapshots"],
+    details: "Movimenti e saldi sono nello snapshot stagione."
+  },
+  adminNewsForm: {
+    title: "Comunicati modificati",
+    impacts: ["seasonSnapshots"],
+    details: "I comunicati pubblici sono nello snapshot stagione."
+  },
+  adminImportStaticRostersForm: {
+    title: "Rose importate da file statico",
+    impacts: ["seasonSnapshots"],
+    details: "Dopo l'import in Firebase aggiorna e scarica overlay snapshot stagioni."
+  },
+  adminStaticRosterConverterForm: {
+    title: "Overlay rose generato",
+    impacts: ["rosters"],
+    details: "Applica lo zip rose nella repo, commit/push, poi inizializza rose dal file statico se vuoi aggiornare Firebase."
+  },
+  adminListoneConverterForm: {
+    title: "Overlay listone generato",
+    impacts: ["listone"],
+    details: "Applica lo zip listone nella repo e fai commit/push."
+  },
+  adminStaticCompetitionImportForm: {
+    title: "Competizione statica generata",
+    impacts: ["competitions"],
+    details: "Applica overlay competizioni nella repo e fai commit/push."
+  }
+};
+
+const ADMIN_COLLECTION_PUBLICATION_RULES_V189 = {
+  seasons: ADMIN_PUBLICATION_RULES_V189.adminSeasonForm,
+  presidents: ADMIN_PUBLICATION_RULES_V189.adminPresidentForm,
+  teams: ADMIN_PUBLICATION_RULES_V189.adminTeamForm,
+  seasonTeams: ADMIN_PUBLICATION_RULES_V189.adminSeasonTeamForm,
+  stadiums: ADMIN_PUBLICATION_RULES_V189.adminStadiumForm,
+  competitions: ADMIN_PUBLICATION_RULES_V189.adminCompetitionForm,
+  competitionMatches: ADMIN_PUBLICATION_RULES_V189.adminCompetitionMatchesForm,
+  competitionResults: ADMIN_PUBLICATION_RULES_V189.adminCompetitionResultsForm,
+  fifaRankings: ADMIN_PUBLICATION_RULES_V189.adminFifaRankingForm,
+  fmMovements: ADMIN_PUBLICATION_RULES_V189.adminFmMovementForm,
+  news: ADMIN_PUBLICATION_RULES_V189.adminNewsForm,
+  rosterEntries: ADMIN_PUBLICATION_RULES_V189.adminImportStaticRostersForm,
+  honorRoll: { title: "Albo d'Oro/Palmares modificato", impacts: ["honor"], details: "Scarica honor.json dopo Aggiorna tutto." }
+};
+
+function readAdminPublicationRemindersV189() {
+  try {
+    const raw = localStorage.getItem(ADMIN_PUBLICATION_REMINDERS_KEY_V189);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((item) => item && item.id) : [];
+  } catch (error) {
+    console.warn("Impossibile leggere gli avvisi pubblicazione admin", error);
+    return [];
+  }
+}
+
+function writeAdminPublicationRemindersV189(items) {
+  const clean = Array.isArray(items) ? items.slice(0, 12) : [];
+  try {
+    localStorage.setItem(ADMIN_PUBLICATION_REMINDERS_KEY_V189, JSON.stringify(clean));
+  } catch (error) {
+    console.warn("Impossibile salvare gli avvisi pubblicazione admin", error);
+  }
+  state.adminPublicationRemindersV189 = clean;
+  renderAdminPublicationReminderPanelV189();
+}
+
+function buildAdminPublicationReminderIdV189(rule) {
+  return (rule.impacts || []).slice().sort().join("-") || safeFileName(rule.title || "admin-change");
+}
+
+function addAdminPublicationReminderV189(rule, source = "admin") {
+  if (!state.isAdmin || !rule) return;
+  const now = new Date().toISOString();
+  const id = buildAdminPublicationReminderIdV189(rule);
+  const existing = readAdminPublicationRemindersV189().filter((item) => item.id !== id);
+  existing.unshift({
+    id,
+    title: rule.title || "Dati admin modificati",
+    impacts: Array.isArray(rule.impacts) ? rule.impacts : [],
+    details: rule.details || "Aggiorna snapshot pubblici e JSON statici prima del deploy.",
+    source,
+    createdAt: now,
+    updatedAt: now
+  });
+  writeAdminPublicationRemindersV189(existing);
+}
+
+function getAdminPublicationActionsV189(items) {
+  const impacts = new Set((items || []).flatMap((item) => item.impacts || []));
+  const actions = [];
+  if (impacts.has("config") || impacts.has("seasonSnapshots") || impacts.has("honor")) {
+    actions.push("Admin → Snapshot pubblici → Aggiorna tutto");
+  }
+  if (impacts.has("config")) actions.push("Scarica config pubblica");
+  if (impacts.has("seasonSnapshots")) actions.push("Scarica overlay snapshot stagioni");
+  if (impacts.has("honor")) actions.push("Scarica honor JSON");
+  if (impacts.has("rosters")) actions.push("Applica overlay rose e committa assets/rose");
+  if (impacts.has("listone")) actions.push("Applica overlay listone e committa assets/listoni");
+  if (impacts.has("competitions")) actions.push("Applica overlay competizioni e committa assets/competitions");
+  if (actions.length) actions.push("Commit + push del branch, poi merge su master quando vuoi pubblicare");
+  return actions;
+}
+
+function formatAdminReminderDateV189(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleString("it-IT", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+}
+
+function renderAdminPublicationReminderHtmlV189() {
+  const items = readAdminPublicationRemindersV189();
+  if (!items.length) {
+    return `
+      <section class="panel admin-publication-reminder-v189 is-clear" aria-labelledby="adminPublicationReminderTitleV189">
+        <div class="panel-header compact">
+          <div>
+            <p class="eyebrow">Pubblicazione dati</p>
+            <h3 id="adminPublicationReminderTitleV189">Nessun aggiornamento statico in sospeso</h3>
+            <p>I dati pubblici risultano senza avvisi locali pendenti. Se modifichi dati admin, qui comparira cosa rigenerare.</p>
+          </div>
+        </div>
+      </section>`;
+  }
+  const actions = getAdminPublicationActionsV189(items);
+  return `
+    <section class="panel admin-publication-reminder-v189" aria-labelledby="adminPublicationReminderTitleV189">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Pubblicazione dati</p>
+          <h3 id="adminPublicationReminderTitleV189">Aggiornamenti da pubblicare</h3>
+          <p>Hai modifiche admin che dopo refresh/logout potrebbero richiedere JSON statici aggiornati su GitHub.</p>
+        </div>
+      </div>
+      <div class="admin-publication-grid-v189">
+        <div>
+          <h4>Azioni consigliate</h4>
+          <ol>${actions.map((action) => `<li>${escapeHtml(action)}</li>`).join("")}</ol>
+        </div>
+        <div>
+          <h4>Modifiche rilevate</h4>
+          <ul>${items.map((item) => `
+            <li>
+              <strong>${escapeHtml(item.title)}</strong>
+              <span>${escapeHtml(item.details)}</span>
+              <small>Ultimo avviso: ${escapeHtml(formatAdminReminderDateV189(item.updatedAt || item.createdAt))}</small>
+            </li>`).join("")}</ul>
+        </div>
+      </div>
+      <div class="form-actions admin-publication-actions-v189">
+        <button class="button button-secondary" type="button" data-clear-admin-publication-reminders-v189>Segna come pubblicato</button>
+        <small class="muted">Usalo dopo aver applicato/committato i JSON statici richiesti.</small>
+      </div>
+    </section>`;
+}
+
+function renderAdminPublicationReminderPanelV189() {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+  let holder = adminPanel.querySelector("#adminPublicationReminderMountV189");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "adminPublicationReminderMountV189";
+    adminPanel.insertAdjacentElement("afterbegin", holder);
+  }
+  holder.innerHTML = renderAdminPublicationReminderHtmlV189();
+}
+
+function getAdminPublicationRuleFromFormV189(form) {
+  if (!form || !form.id) return null;
+  return ADMIN_PUBLICATION_RULES_V189[form.id] || null;
+}
+
+function getAdminPublicationRuleFromDeleteButtonV189(button) {
+  if (!button?.dataset) return null;
+  const map = [
+    ["adminDeleteSeason", "seasons"],
+    ["adminDeletePresident", "presidents"],
+    ["adminDeleteTeam", "teams"],
+    ["adminDeleteSeasonTeam", "seasonTeams"],
+    ["adminDeleteStadium", "stadiums"],
+    ["adminDeleteCompetition", "competitions"],
+    ["adminDeleteMatch", "competitionMatches"],
+    ["adminDeleteFifa", "fifaRankings"],
+    ["adminDeleteFmMovement", "fmMovements"],
+    ["adminDeleteNews", "news"],
+    ["adminSoftDeleteMatch", "competitionMatches"],
+    ["adminRestoreMatch", "competitionMatches"]
+  ];
+  const found = map.find(([key]) => button.dataset[key] !== undefined);
+  return found ? ADMIN_COLLECTION_PUBLICATION_RULES_V189[found[1]] : null;
+}
+
+(function installAdminPublicationReminderEventsV189() {
+  document.addEventListener("submit", (event) => {
+    const rule = getAdminPublicationRuleFromFormV189(event.target);
+    if (!rule) return;
+    window.setTimeout(() => addAdminPublicationReminderV189(rule, event.target.id), 700);
+  }, true);
+
+  document.addEventListener("click", (event) => {
+    const clearButton = event.target.closest?.("[data-clear-admin-publication-reminders-v189]");
+    if (clearButton) {
+      writeAdminPublicationRemindersV189([]);
+      return;
+    }
+    const deleteButton = event.target.closest?.("[data-admin-delete-season], [data-admin-delete-president], [data-admin-delete-team], [data-admin-delete-season-team], [data-admin-delete-stadium], [data-admin-delete-competition], [data-admin-delete-match], [data-admin-delete-fifa], [data-admin-delete-fm-movement], [data-admin-delete-news], [data-admin-soft-delete-match], [data-admin-restore-match]");
+    const rule = getAdminPublicationRuleFromDeleteButtonV189(deleteButton);
+    if (!rule) return;
+    window.setTimeout(() => addAdminPublicationReminderV189(rule, "delete"), 1200);
+  }, true);
+})();
+
+const renderAdminAreaBeforeV189 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV189() {
+  const result = renderAdminAreaBeforeV189?.();
+  renderAdminPublicationReminderPanelV189();
+  return result;
+};
+
+const renderAdminLightGateBeforeV189 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV189) {
+  renderAdminLightGateV178 = function renderAdminLightGateV189() {
+    const html = renderAdminLightGateBeforeV189() || "";
+    if (html.includes("adminPublicationReminderMountV189")) return html;
+    return `<div id="adminPublicationReminderMountV189">${renderAdminPublicationReminderHtmlV189()}</div>${html}`;
+  };
+}
+
+function injectAdminPublicationReminderStylesV189() {
+  if (document.getElementById("adminPublicationReminderStylesV189")) return;
+  const style = document.createElement("style");
+  style.id = "adminPublicationReminderStylesV189";
+  style.textContent = `
+    .admin-publication-reminder-v189 { border: 1px solid rgba(245, 158, 11, .35); background: rgba(245, 158, 11, .08); }
+    .admin-publication-reminder-v189.is-clear { border-color: rgba(34, 197, 94, .25); background: rgba(34, 197, 94, .06); }
+    .admin-publication-grid-v189 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+    .admin-publication-grid-v189 h4 { margin: 0 0 .5rem; }
+    .admin-publication-grid-v189 ol, .admin-publication-grid-v189 ul { margin: 0; padding-left: 1.15rem; }
+    .admin-publication-grid-v189 li { margin-bottom: .45rem; overflow-wrap: anywhere; }
+    .admin-publication-grid-v189 li span, .admin-publication-grid-v189 li small { display: block; }
+    .admin-publication-actions-v189 { align-items: center; gap: .65rem; }
+    @media (max-width: 760px) {
+      .admin-publication-reminder-v189 { margin-inline: 0; }
+      .admin-publication-grid-v189 { grid-template-columns: 1fr; gap: .8rem; }
+      .admin-publication-actions-v189 { flex-direction: column; align-items: stretch; }
+      .admin-publication-actions-v189 .button { width: 100%; }
+      .admin-publication-actions-v189 small { text-align: center; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectAdminPublicationReminderStylesV189();
+
+const renderAdminHelpPanelBeforeV189 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV189() {
+  let html = renderAdminHelpPanelBeforeV189?.() || "";
+  if (html && !html.includes("Avvisi pubblicazione")) {
+    html = html.replace("<article>\n          <h4>Snapshot pubblici</h4>", "<article>\n          <h4>Avvisi pubblicazione</h4>\n          <p>Dopo modifiche admin segnala quali JSON statici scaricare e committare, cosi i dati restano corretti dopo refresh/logout.</p>\n        </article>\n        <article>\n          <h4>Snapshot pubblici</h4>");
+  }
+  return html;
+};
+
+
+/* V190 - Stato pubblicazione Firebase/JSON con semafori.
+   This admin-only panel summarizes whether static JSON assets are reachable,
+   whether local admin publication reminders are still pending, and whether the
+   current session is in lightweight/full admin mode. It does not write to
+   Firebase and is designed to be readable on mobile without wide tables. */
+const PUBLICATION_STATUS_STORAGE_KEY_V190 = "zonaOrientalePublicationStatusV190";
+
+function getPublicationStatusBadgeV190(status) {
+  if (status === "ok") return "Verde";
+  if (status === "warn") return "Giallo";
+  return "Rosso";
+}
+
+function getPublicationStatusTitleV190(status) {
+  if (status === "ok") return "OK";
+  if (status === "warn") return "Attenzione";
+  return "Intervento richiesto";
+}
+
+function getPublicationStatusDotV190(status) {
+  const clean = status === "ok" || status === "warn" || status === "error" ? status : "warn";
+  return `<span class="publication-status-dot-v190 is-${escapeHtml(clean)}" aria-hidden="true"></span>`;
+}
+
+function findPublicationPreflightResultV190(preflight, key) {
+  const results = preflight?.results || [];
+  return results.find((item) => item.key === key) || null;
+}
+
+function rowFromPreflightAssetV190(preflight, key, fallbackLabel) {
+  const item = findPublicationPreflightResultV190(preflight, key);
+  if (!item) {
+    return {
+      id: key,
+      title: fallbackLabel,
+      status: "warn",
+      detail: "Non controllato. Premi Aggiorna stato pubblicazione.",
+      action: "Esegui il controllo asset pubblici o la checklist online finale."
+    };
+  }
+  return {
+    id: key,
+    title: item.label || fallbackLabel,
+    status: item.status === "error" ? "error" : (item.status === "warn" ? "warn" : "ok"),
+    detail: item.detail || `HTTP ${item.httpStatus || "n/d"}`,
+    action: item.status === "ok" ? "Nessuna azione richiesta." : `Verifica ${item.url || "il file statico"} nella repo/GitHub.`
+  };
+}
+
+function buildPublicationStatusRowsV190(preflight) {
+  const reminders = typeof readAdminPublicationRemindersV189 === "function" ? readAdminPublicationRemindersV189() : [];
+  const mode = typeof getAdminStartupModeLabelV178 === "function" ? getAdminStartupModeLabelV178() : (state.isAdmin ? "admin" : "pubblico");
+  const readSummary = window.ZonaOrientaleFirebaseReads?.summary?.() || null;
+  const readTotal = Number(readSummary?.total || 0);
+  const rows = [
+    {
+      id: "pending-reminders",
+      title: "Modifiche da pubblicare",
+      status: reminders.length ? "warn" : "ok",
+      detail: reminders.length ? `${reminders.length} promemoria locale in sospeso.` : "Nessun promemoria locale in sospeso.",
+      action: reminders.length ? "Completa Aggiorna tutto, scarica i JSON richiesti, commit/push, poi usa Segna come pubblicato." : "Nessuna azione richiesta."
+    },
+    {
+      id: "admin-mode",
+      title: "Modalita admin",
+      status: mode === "admin completo" ? "warn" : "ok",
+      detail: `Sessione corrente: ${mode}.`,
+      action: mode === "admin completo" ? "Normale se stai modificando dati; per navigazione pubblica basta refresh/logout." : "Admin leggero: non carica tutte le collection all'avvio."
+    },
+    rowFromPreflightAssetV190(preflight, "config", "Config pubblica"),
+    rowFromPreflightAssetV190(preflight, "seasonSnapshotsManifest", "Snapshot stagioni statici"),
+    rowFromPreflightAssetV190(preflight, "honor", "Honor/Palmares/FIFA statico"),
+    rowFromPreflightAssetV190(preflight, "rose", "Manifest rose"),
+    rowFromPreflightAssetV190(preflight, "listoni", "Manifest listoni"),
+    rowFromPreflightAssetV190(preflight, "competitions", "Manifest competizioni")
+  ];
+
+  rows.push({
+    id: "reads",
+    title: "Letture Firebase sessione",
+    status: readTotal > 100 ? "warn" : "ok",
+    detail: `${readTotal} letture stimate nella sessione corrente.`,
+    action: readTotal > 100 ? "Verifica di non aver premuto Carica dati amministrazione per errore prima del controllo pubblico." : "Valore compatibile con flusso leggero/statico."
+  });
+  return rows;
+}
+
+function summarizePublicationStatusRowsV190(rows) {
+  const total = rows.length;
+  const ok = rows.filter((item) => item.status === "ok").length;
+  const warn = rows.filter((item) => item.status === "warn").length;
+  const error = rows.filter((item) => item.status === "error").length;
+  return { total, ok, warn, error, passed: error === 0 && warn === 0 };
+}
+
+function renderPublicationStatusRowsV190(rows) {
+  return rows.map((item) => `
+    <article class="publication-status-card-v190 is-${escapeHtml(item.status)}">
+      <div class="publication-status-card-head-v190">
+        ${getPublicationStatusDotV190(item.status)}
+        <div>
+          <h4>${escapeHtml(item.title)}</h4>
+          <strong>${escapeHtml(getPublicationStatusTitleV190(item.status))}</strong>
+        </div>
+      </div>
+      <p>${escapeHtml(item.detail || "")}</p>
+      <small>${escapeHtml(item.action || "")}</small>
+    </article>`).join("");
+}
+
+function renderPublicationStatusHtmlV190(payload = null) {
+  const checkedAt = payload?.checkedAt ? normalizePreflightDateV179(payload.checkedAt) : "non ancora eseguito";
+  const rows = payload?.rows || [];
+  const summary = payload?.summary || { total: 0, ok: 0, warn: 0, error: 0 };
+  const hasRows = rows.length > 0;
+  return `
+    <section class="panel publication-status-v190" aria-labelledby="publicationStatusTitleV190">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Pubblicazione dati</p>
+          <h3 id="publicationStatusTitleV190">Stato Firebase / JSON</h3>
+          <p>Semaforo operativo: controlla se i JSON statici sono presenti e se ci sono modifiche admin da pubblicare.</p>
+        </div>
+      </div>
+      <div class="publication-status-summary-v190">
+        <span><strong>${escapeHtml(String(summary.ok))}</strong> OK</span>
+        <span><strong>${escapeHtml(String(summary.warn))}</strong> attenzioni</span>
+        <span><strong>${escapeHtml(String(summary.error))}</strong> errori</span>
+        <small>Ultimo controllo: ${escapeHtml(checkedAt)}</small>
+      </div>
+      <div class="form-actions publication-status-actions-v190">
+        <button class="button button-primary" type="button" data-run-publication-status-v190>Aggiorna stato pubblicazione</button>
+        <button class="button button-secondary" type="button" data-run-public-preflight-v179="publicationStatusPreflightReportV190">Controlla solo asset pubblici</button>
+      </div>
+      <div id="publicationStatusReportV190" class="publication-status-grid-v190">
+        ${hasRows ? renderPublicationStatusRowsV190(rows) : `<p class="muted">Premi Aggiorna stato pubblicazione per leggere i JSON statici e aggiornare i semafori.</p>`}
+      </div>
+      <div id="publicationStatusPreflightReportV190" class="publication-status-preflight-v190"></div>
+    </section>`;
+}
+
+function readPublicationStatusV190() {
+  try {
+    const raw = sessionStorage.getItem(PUBLICATION_STATUS_STORAGE_KEY_V190);
+    if (!raw) return state.publicationStatusV190 || null;
+    return JSON.parse(raw);
+  } catch (error) {
+    return state.publicationStatusV190 || null;
+  }
+}
+
+function writePublicationStatusV190(payload) {
+  state.publicationStatusV190 = payload;
+  try {
+    sessionStorage.setItem(PUBLICATION_STATUS_STORAGE_KEY_V190, JSON.stringify(payload));
+  } catch (error) {
+    console.warn("Impossibile salvare lo stato pubblicazione", error);
+  }
+}
+
+async function runPublicationStatusV190(options = {}) {
+  const targetId = options.targetId || "publicationStatusReportV190";
+  const target = document.getElementById(targetId);
+  if (target && !options.silent) target.innerHTML = `<p class="muted">Aggiornamento stato pubblicazione...</p>`;
+  let preflight = null;
+  try {
+    preflight = await runPublicAssetsPreflightV179({ silent: true });
+  } catch (error) {
+    console.warn("Preflight asset per stato pubblicazione non completato", error);
+  }
+  const rows = buildPublicationStatusRowsV190(preflight);
+  const payload = { checkedAt: new Date().toISOString(), summary: summarizePublicationStatusRowsV190(rows), rows, preflightSummary: preflight?.summary || null };
+  writePublicationStatusV190(payload);
+  if (!options.silent) {
+    renderPublicationStatusPanelV190(payload);
+    console.info(`[ZonaOrientale] Stato pubblicazione: ${payload.summary.ok}/${payload.summary.total} OK, ${payload.summary.warn} attenzioni, ${payload.summary.error} errori`);
+  }
+  return payload;
+}
+
+function renderPublicationStatusPanelV190(payload = readPublicationStatusV190()) {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+  let holder = adminPanel.querySelector("#publicationStatusMountV190");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "publicationStatusMountV190";
+    const reminder = adminPanel.querySelector("#adminPublicationReminderMountV189");
+    if (reminder) reminder.insertAdjacentElement("afterend", holder);
+    else adminPanel.insertAdjacentElement("afterbegin", holder);
+  }
+  holder.innerHTML = renderPublicationStatusHtmlV190(payload);
+}
+
+const renderAdminAreaBeforeV190 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV190() {
+  const result = renderAdminAreaBeforeV190?.();
+  renderPublicationStatusPanelV190();
+  return result;
+};
+
+const renderAdminLightGateBeforeV190 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV190) {
+  renderAdminLightGateV178 = function renderAdminLightGateV190() {
+    const html = renderAdminLightGateBeforeV190() || "";
+    if (html.includes("publicationStatusMountV190")) return html;
+    return `<div id="publicationStatusMountV190">${renderPublicationStatusHtmlV190(readPublicationStatusV190())}</div>${html}`;
+  };
+}
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("[data-run-publication-status-v190]");
+  if (!button) return;
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.textContent = "Aggiornamento...";
+  try {
+    await runPublicationStatusV190();
+  } finally {
+    button.disabled = false;
+    button.textContent = previousText || "Aggiorna stato pubblicazione";
+  }
+});
+
+function injectPublicationStatusStylesV190() {
+  if (document.getElementById("publicationStatusStylesV190")) return;
+  const style = document.createElement("style");
+  style.id = "publicationStatusStylesV190";
+  style.textContent = `
+    .publication-status-v190 { border: 1px solid rgba(59, 130, 246, .25); background: rgba(59, 130, 246, .055); }
+    .publication-status-summary-v190 { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; margin: .85rem 0 1rem; }
+    .publication-status-summary-v190 span { display: inline-flex; gap: .3rem; align-items: center; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .32rem .65rem; background: rgba(15,23,42,.45); }
+    .publication-status-summary-v190 small { color: var(--muted); overflow-wrap: anywhere; }
+    .publication-status-actions-v190 { gap: .6rem; flex-wrap: wrap; }
+    .publication-status-grid-v190 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+    .publication-status-card-v190 { border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .8rem; background: rgba(15,23,42,.58); min-width: 0; }
+    .publication-status-card-v190.is-ok { border-color: rgba(34,197,94,.35); }
+    .publication-status-card-v190.is-warn { border-color: rgba(245,158,11,.42); }
+    .publication-status-card-v190.is-error { border-color: rgba(239,68,68,.48); }
+    .publication-status-card-head-v190 { display: flex; gap: .55rem; align-items: flex-start; min-width: 0; }
+    .publication-status-card-head-v190 h4 { margin: 0; overflow-wrap: anywhere; }
+    .publication-status-card-head-v190 strong { display: block; font-size: .78rem; color: var(--muted); margin-top: .12rem; }
+    .publication-status-card-v190 p { margin: .55rem 0 .35rem; overflow-wrap: anywhere; }
+    .publication-status-card-v190 small { display: block; color: var(--muted); overflow-wrap: anywhere; }
+    .publication-status-dot-v190 { width: .75rem; height: .75rem; border-radius: 999px; margin-top: .22rem; flex: 0 0 auto; box-shadow: 0 0 0 3px rgba(255,255,255,.06); }
+    .publication-status-dot-v190.is-ok { background: #22c55e; }
+    .publication-status-dot-v190.is-warn { background: #f59e0b; }
+    .publication-status-dot-v190.is-error { background: #ef4444; }
+    .publication-status-preflight-v190 .import-report { margin-top: .85rem; }
+    @media (max-width: 760px) {
+      .publication-status-v190 { margin-inline: 0; }
+      .publication-status-grid-v190 { grid-template-columns: 1fr; }
+      .publication-status-actions-v190 { flex-direction: column; align-items: stretch; }
+      .publication-status-actions-v190 .button { width: 100%; }
+      .publication-status-summary-v190 { align-items: stretch; }
+      .publication-status-summary-v190 span, .publication-status-summary-v190 small { width: 100%; justify-content: center; text-align: center; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectPublicationStatusStylesV190();
+
+const renderAdminHelpPanelBeforeV190 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV190() {
+  let html = renderAdminHelpPanelBeforeV190?.() || "";
+  if (html && !html.includes("Stato Firebase / JSON")) {
+    html = html.replace("<article>\n          <h4>Avvisi pubblicazione</h4>", "<article>\n          <h4>Stato Firebase / JSON</h4>\n          <p>Mostra semafori per asset statici, promemoria pendenti, modalita admin e letture stimate, cosi sai cosa pubblicare prima del deploy.</p>\n        </article>\n        <article>\n          <h4>Avvisi pubblicazione</h4>");
+  }
+  return html;
+};
+
+window.ZonaOrientalePublicationStatus = {
+  check(options = {}) {
+    return runPublicationStatusV190({ ...options, silent: options.silent ?? false });
+  },
+  last() {
+    return readPublicationStatusV190();
+  },
+  rows() {
+    return readPublicationStatusV190()?.rows || [];
+  }
+};
+
+
+/* V191 - Procedura guidata Pubblica aggiornamenti.
+   Mobile-first panel that turns the V189 reminders and V190 status checks into
+   an operational publishing flow. It does not write to Firebase or GitHub; it
+   only guides the admin and provides copyable commands. */
+const PUBLISH_WIZARD_STORAGE_KEY_V191 = "zonaOrientalePublishWizardV191";
+
+function getPublishWizardPendingItemsV191() {
+  if (typeof readAdminPublicationRemindersV189 === "function") {
+    return readAdminPublicationRemindersV189() || [];
+  }
+  return [];
+}
+
+function getPublishWizardActionsV191(items) {
+  if (typeof getAdminPublicationActionsV189 === "function") {
+    return getAdminPublicationActionsV189(items || []);
+  }
+  return [];
+}
+
+function getPublishWizardCommandsV191() {
+  return [
+    "git status",
+    "git add -f static/zonaorientale/assets/public/config.json",
+    "git add -f static/zonaorientale/assets/snapshots/honor.json",
+    "git add -f static/zonaorientale/assets/snapshots/seasons/manifest.json",
+    "git add -f static/zonaorientale/assets/snapshots/seasons/*.json",
+    "git add -f static/zonaorientale/assets/rose/manifest.json static/zonaorientale/assets/rose/*.json",
+    "git add -f static/zonaorientale/assets/listoni/manifest.json static/zonaorientale/assets/listoni/*.json",
+    "git add -f static/zonaorientale/assets/competitions/manifest.json static/zonaorientale/assets/competitions/**/*.json",
+    "git commit -m \"Update ZonaOrientale static public data\"",
+    "git push",
+    "git checkout master",
+    "git pull --ff-only origin master",
+    "git merge --no-ff feature/zonaorientale-v187-next",
+    "git push origin master",
+    "git checkout feature/zonaorientale-v187-next"
+  ].join("\n");
+}
+
+function getPublishWizardRuntimeV191(statusPayload = null) {
+  const items = getPublishWizardPendingItemsV191();
+  const actions = getPublishWizardActionsV191(items);
+  const preflightSummary = statusPayload?.preflightSummary || null;
+  const statusSummary = statusPayload?.summary || null;
+  const hasPending = items.length > 0;
+  const needsAssets = hasPending || (statusSummary && (statusSummary.warn > 0 || statusSummary.error > 0));
+  return {
+    checkedAt: new Date().toISOString(),
+    pendingItems: items,
+    actions,
+    preflightSummary,
+    statusSummary,
+    needsAssets,
+    commands: getPublishWizardCommandsV191()
+  };
+}
+
+function formatPublishWizardDateV191(value) {
+  if (typeof normalizePreflightDateV179 === "function") return normalizePreflightDateV179(value);
+  try {
+    return new Date(value).toLocaleString("it-IT");
+  } catch (error) {
+    return "non disponibile";
+  }
+}
+
+function renderPublishWizardActionListV191(actions) {
+  if (!actions?.length) return `<li>Nessuna azione specifica pendente rilevata. Esegui comunque i controlli prima del deploy.</li>`;
+  return actions.map((action) => `<li>${escapeHtml(action)}</li>`).join("");
+}
+
+function renderPublishWizardPendingListV191(items) {
+  if (!items?.length) return `<p class="muted">Nessun promemoria admin pendente. Se hai appena modificato dati, premi Aggiorna stato pubblicazione per confermare.</p>`;
+  return `
+    <div class="publish-wizard-pending-v191">
+      ${items.map((item) => `
+        <article>
+          <strong>${escapeHtml(item.title || "Aggiornamento dati")}</strong>
+          <p>${escapeHtml(item.detail || "Dati modificati da pubblicare nei JSON statici.")}</p>
+          <small>Ultimo avviso: ${escapeHtml(formatPublishWizardDateV191(item.updatedAt || item.createdAt))}</small>
+        </article>`).join("")}
+    </div>`;
+}
+
+function renderPublishWizardCommandsV191(commands) {
+  return `<pre class="publish-wizard-code-v191"><code>${escapeHtml(commands || "")}</code></pre>`;
+}
+
+function renderPublishWizardHtmlV191(payload = null) {
+  const runtime = payload || getPublishWizardRuntimeV191(readPublicationStatusV190?.());
+  const checkedAt = runtime.checkedAt ? formatPublishWizardDateV191(runtime.checkedAt) : "non ancora generato";
+  const statusSummary = runtime.statusSummary || { ok: 0, warn: 0, error: 0 };
+  const preflightSummary = runtime.preflightSummary || null;
+  const badgeClass = runtime.needsAssets ? "is-warn" : "is-ok";
+  const badgeText = runtime.needsAssets ? "Azioni da verificare" : "Nessuna azione pendente";
+  return `
+    <section class="panel publish-wizard-v191" aria-labelledby="publishWizardTitleV191">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Pubblicazione dati</p>
+          <h3 id="publishWizardTitleV191">Procedura guidata Pubblica aggiornamenti</h3>
+          <p>Segui i passaggi dopo modifiche admin: snapshot Firebase, JSON statici, commit, push e master.</p>
+        </div>
+        <span class="publish-wizard-badge-v191 ${badgeClass}">${escapeHtml(badgeText)}</span>
+      </div>
+      <div class="publish-wizard-summary-v191">
+        <span>Promemoria: <strong>${escapeHtml(String(runtime.pendingItems?.length || 0))}</strong></span>
+        <span>Status: <strong>${escapeHtml(String(statusSummary.ok || 0))}</strong> OK / <strong>${escapeHtml(String(statusSummary.warn || 0))}</strong> warning / <strong>${escapeHtml(String(statusSummary.error || 0))}</strong> errori</span>
+        <small>Ultimo piano: ${escapeHtml(checkedAt)}</small>
+      </div>
+      <div class="form-actions publish-wizard-actions-v191">
+        <button class="button button-primary" type="button" data-run-publish-wizard-v191>Genera piano pubblicazione</button>
+        <button class="button button-secondary" type="button" data-copy-publish-wizard-v191="flow">Copia flusso</button>
+        <button class="button button-secondary" type="button" data-copy-publish-wizard-v191="commands">Copia comandi Git</button>
+      </div>
+      <div class="publish-wizard-grid-v191">
+        <article>
+          <span class="publish-wizard-step-v191">1</span>
+          <h4>Modifica e snapshot</h4>
+          <p>Carica dati amministrazione, modifica i dati, poi vai in Snapshot pubblici e premi Aggiorna tutto.</p>
+        </article>
+        <article>
+          <span class="publish-wizard-step-v191">2</span>
+          <h4>Scarica JSON statici</h4>
+          <ul>${renderPublishWizardActionListV191(runtime.actions)}</ul>
+        </article>
+        <article>
+          <span class="publish-wizard-step-v191">3</span>
+          <h4>Applica nella repo</h4>
+          <p>Estrai gli overlay dalla root della repo e sostituisci eventuali file singoli, come config.json o honor.json.</p>
+        </article>
+        <article>
+          <span class="publish-wizard-step-v191">4</span>
+          <h4>Commit, push e master</h4>
+          <p>Usa i comandi sotto, poi controlla su GitHub che il branch e master siano aggiornati.</p>
+        </article>
+      </div>
+      <div class="publish-wizard-section-v191">
+        <h4>Promemoria rilevati</h4>
+        ${renderPublishWizardPendingListV191(runtime.pendingItems)}
+      </div>
+      <div class="publish-wizard-section-v191">
+        <h4>Comandi utili</h4>
+        ${renderPublishWizardCommandsV191(runtime.commands)}
+        <p class="muted">I comandi con <code>git add -f</code> sono volutamente ampi: Git aggiunge solo i file esistenti/modificati.</p>
+      </div>
+      <div class="publish-wizard-section-v191">
+        <h4>Controllo finale</h4>
+        <p>Prima del merge su master, esegui Controlla asset pubblici e Checklist online finale. Se il preflight segnala errori, sistema i JSON prima del push master.</p>
+        <p class="muted">Asset preflight: ${escapeHtml(preflightSummary ? `${preflightSummary.ok || 0} OK, ${preflightSummary.warn || 0} warning, ${preflightSummary.error || 0} errori` : "non ancora eseguito")}</p>
+      </div>
+    </section>`;
+}
+
+function writePublishWizardPayloadV191(payload) {
+  state.publishWizardV191 = payload;
+  try {
+    sessionStorage.setItem(PUBLISH_WIZARD_STORAGE_KEY_V191, JSON.stringify(payload));
+  } catch (error) {
+    console.warn("Impossibile salvare il piano pubblicazione", error);
+  }
+}
+
+function readPublishWizardPayloadV191() {
+  try {
+    const raw = sessionStorage.getItem(PUBLISH_WIZARD_STORAGE_KEY_V191);
+    if (raw) return JSON.parse(raw);
+  } catch (error) {
+    console.warn("Impossibile leggere il piano pubblicazione", error);
+  }
+  return state.publishWizardV191 || null;
+}
+
+async function buildPublishWizardPayloadV191(options = {}) {
+  let statusPayload = null;
+  try {
+    if (typeof runPublicationStatusV190 === "function") {
+      statusPayload = await runPublicationStatusV190({ silent: true });
+    }
+  } catch (error) {
+    console.warn("Stato pubblicazione non disponibile per procedura guidata", error);
+  }
+  const payload = getPublishWizardRuntimeV191(statusPayload || readPublicationStatusV190?.());
+  writePublishWizardPayloadV191(payload);
+  if (!options.silent) renderPublishWizardPanelV191(payload);
+  return payload;
+}
+
+function getPublishWizardCopyTextV191(kind = "flow") {
+  const payload = readPublishWizardPayloadV191() || getPublishWizardRuntimeV191(readPublicationStatusV190?.());
+  if (kind === "commands") return payload.commands || getPublishWizardCommandsV191();
+  const actions = payload.actions?.length ? payload.actions.map((item, index) => `${index + 1}. ${item}`).join("\n") : "Nessuna azione specifica pendente.";
+  return [
+    "Flusso Pubblica aggiornamenti ZonaOrientale",
+    "",
+    "1. Admin > Carica dati amministrazione",
+    "2. Esegui modifiche/cancellazioni/pubblicazioni dati",
+    "3. Admin > Snapshot pubblici > Aggiorna tutto",
+    "4. Scarica i JSON/overlay richiesti:",
+    actions,
+    "5. Applica overlay/file statici nella repo",
+    "6. Commit + push branch attuale",
+    "7. Merge + push su master",
+    "",
+    "Comandi:",
+    payload.commands || getPublishWizardCommandsV191()
+  ].join("\n");
+}
+
+async function copyPublishWizardTextV191(kind, button) {
+  const text = getPublishWizardCopyTextV191(kind);
+  try {
+    await navigator.clipboard.writeText(text);
+    const original = button?.textContent;
+    if (button) {
+      button.textContent = "Copiato";
+      window.setTimeout(() => { button.textContent = original || "Copia"; }, 1200);
+    }
+  } catch (error) {
+    console.warn("Copia non riuscita", error);
+    window.prompt("Copia manualmente il testo", text);
+  }
+}
+
+function renderPublishWizardPanelV191(payload = readPublishWizardPayloadV191()) {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return;
+  let holder = adminPanel.querySelector("#publishWizardMountV191");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "publishWizardMountV191";
+    const status = adminPanel.querySelector("#publicationStatusMountV190");
+    if (status) status.insertAdjacentElement("afterend", holder);
+    else adminPanel.insertAdjacentElement("afterbegin", holder);
+  }
+  holder.innerHTML = renderPublishWizardHtmlV191(payload);
+}
+
+const renderAdminAreaBeforeV191 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV191() {
+  const result = renderAdminAreaBeforeV191?.();
+  renderPublishWizardPanelV191();
+  return result;
+};
+
+const renderAdminLightGateBeforeV191 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV191) {
+  renderAdminLightGateV178 = function renderAdminLightGateV191() {
+    const html = renderAdminLightGateBeforeV191() || "";
+    if (html.includes("publishWizardMountV191")) return html;
+    return `<div id="publishWizardMountV191">${renderPublishWizardHtmlV191(readPublishWizardPayloadV191())}</div>${html}`;
+  };
+}
+
+document.addEventListener("click", async (event) => {
+  const runButton = event.target.closest?.("[data-run-publish-wizard-v191]");
+  if (runButton) {
+    const previous = runButton.textContent;
+    runButton.disabled = true;
+    runButton.textContent = "Generazione...";
+    try {
+      await buildPublishWizardPayloadV191();
+    } finally {
+      runButton.disabled = false;
+      runButton.textContent = previous || "Genera piano pubblicazione";
+    }
+    return;
+  }
+  const copyButton = event.target.closest?.("[data-copy-publish-wizard-v191]");
+  if (copyButton) {
+    await copyPublishWizardTextV191(copyButton.dataset.copyPublishWizardV191 || "flow", copyButton);
+  }
+});
+
+function injectPublishWizardStylesV191() {
+  if (document.getElementById("publishWizardStylesV191")) return;
+  const style = document.createElement("style");
+  style.id = "publishWizardStylesV191";
+  style.textContent = `
+    .publish-wizard-v191 { border: 1px solid rgba(16,185,129,.28); background: rgba(16,185,129,.055); }
+    .publish-wizard-badge-v191 { align-self: flex-start; border-radius: 999px; padding: .35rem .7rem; font-size: .78rem; font-weight: 800; border: 1px solid rgba(255,255,255,.14); white-space: nowrap; }
+    .publish-wizard-badge-v191.is-ok { background: rgba(34,197,94,.16); color: #bbf7d0; }
+    .publish-wizard-badge-v191.is-warn { background: rgba(245,158,11,.18); color: #fde68a; }
+    .publish-wizard-summary-v191 { display: flex; flex-wrap: wrap; gap: .55rem; margin: .85rem 0 1rem; align-items: center; }
+    .publish-wizard-summary-v191 span, .publish-wizard-summary-v191 small { border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .32rem .65rem; background: rgba(15,23,42,.45); overflow-wrap: anywhere; }
+    .publish-wizard-summary-v191 small { color: var(--muted); }
+    .publish-wizard-actions-v191 { gap: .6rem; flex-wrap: wrap; }
+    .publish-wizard-grid-v191 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+    .publish-wizard-grid-v191 article, .publish-wizard-pending-v191 article { border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .85rem; background: rgba(15,23,42,.58); min-width: 0; }
+    .publish-wizard-grid-v191 h4, .publish-wizard-section-v191 h4 { margin: .35rem 0 .45rem; overflow-wrap: anywhere; }
+    .publish-wizard-grid-v191 p, .publish-wizard-grid-v191 li, .publish-wizard-section-v191 p, .publish-wizard-section-v191 li { overflow-wrap: anywhere; }
+    .publish-wizard-grid-v191 ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+    .publish-wizard-step-v191 { display: inline-flex; align-items: center; justify-content: center; width: 1.7rem; height: 1.7rem; border-radius: 999px; background: rgba(16,185,129,.18); border: 1px solid rgba(16,185,129,.35); font-weight: 900; }
+    .publish-wizard-section-v191 { margin-top: 1rem; min-width: 0; }
+    .publish-wizard-pending-v191 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+    .publish-wizard-pending-v191 strong, .publish-wizard-pending-v191 p, .publish-wizard-pending-v191 small { overflow-wrap: anywhere; }
+    .publish-wizard-code-v191 { max-width: 100%; overflow-x: auto; white-space: pre-wrap; word-break: break-word; border: 1px solid rgba(255,255,255,.12); border-radius: .9rem; padding: .85rem; background: rgba(2,6,23,.82); }
+    .publish-wizard-code-v191 code { white-space: pre-wrap; word-break: break-word; }
+    @media (max-width: 980px) {
+      .publish-wizard-grid-v191 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .publish-wizard-v191 { margin-inline: 0; }
+      .publish-wizard-v191 .panel-header { align-items: stretch; }
+      .publish-wizard-badge-v191 { width: 100%; text-align: center; white-space: normal; }
+      .publish-wizard-summary-v191 span, .publish-wizard-summary-v191 small { width: 100%; text-align: center; }
+      .publish-wizard-actions-v191 { flex-direction: column; align-items: stretch; }
+      .publish-wizard-actions-v191 .button { width: 100%; }
+      .publish-wizard-grid-v191, .publish-wizard-pending-v191 { grid-template-columns: 1fr; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectPublishWizardStylesV191();
+
+const renderAdminHelpPanelBeforeV191 = renderAdminHelpPanelV185;
+renderAdminHelpPanelV185 = function renderAdminHelpPanelV191() {
+  let html = renderAdminHelpPanelBeforeV191?.() || "";
+  if (html && !html.includes("Procedura guidata Pubblica aggiornamenti")) {
+    html = html.replace("<article>\n          <h4>Stato Firebase / JSON</h4>", "<article>\n          <h4>Procedura guidata Pubblica aggiornamenti</h4>\n          <p>Trasforma promemoria e semafori in passaggi operativi: aggiorna snapshot, scarica JSON statici, applica overlay, commit, push e merge su master.</p>\n        </article>\n        <article>\n          <h4>Stato Firebase / JSON</h4>");
+  }
+  return html;
+};
+
+window.ZonaOrientalePublishWizard = {
+  build(options = {}) {
+    return buildPublishWizardPayloadV191({ ...options, silent: options.silent ?? false });
+  },
+  last() {
+    return readPublishWizardPayloadV191();
+  },
+  commands() {
+    return getPublishWizardCommandsV191();
+  },
+  copy(kind = "flow") {
+    return copyPublishWizardTextV191(kind, null);
+  }
+};
+
+
+/* V212 - Refactor Dashboard Presidente e risoluzione rose.
+   Le implementazioni V192/V201 sono state estratte in
+   assets/js/refactor/president-dashboard-rosters-v212.js. Qui restano solo
+   wiring, alias compatibili per V202/V204 e hook di rendering. */
+const presidentDashboardRostersV212 = installPresidentDashboardRostersRefactorV212({
+  state,
+  escapeHtml,
+  normalizeKey,
+  normalizeRosterKey,
+  mapStaticRosterPlayers,
+  formatFm,
+  formatNewsDateTime: typeof formatNewsDateTimeV79 === "function" ? formatNewsDateTimeV79 : null,
+  getNewsRawDateValue: typeof getNewsRawDateValueV79 === "function" ? getNewsRawDateValueV79 : null,
+  getCurrentSeasonId,
+  getCurrentUserDisplayName,
+  getSeasonTeamById,
+  getSeasonTeamDisplayName,
+  getSeasonTeamPresidentNames,
+  getTeamFmBalance,
+  getActiveTransferListings: typeof getActiveTransferListingsV119 === "function" ? getActiveTransferListingsV119 : null,
+  getCompetitionPublicDisplayName: typeof getCompetitionPublicDisplayNameV110 === "function" ? getCompetitionPublicDisplayNameV110 : null,
+  getCompetitionDisplayName: typeof getCompetitionDisplayNameV111 === "function" ? getCompetitionDisplayNameV111 : null,
+  hasMatchGoals: typeof hasMatchGoalsV114 === "function" ? hasMatchGoalsV114 : null,
+  renderMatchResultHtml: typeof renderMatchResultHtmlV114 === "function" ? renderMatchResultHtmlV114 : null,
+  getRenderUserArea: () => renderUserAreaV34,
+  setRenderUserArea: (fn) => { renderUserAreaV34 = fn; },
+  getRenderAll: () => renderAll,
+  setRenderAll: (fn) => { renderAll = fn; },
+  getRenderMobileTeamAreaHub: () => (typeof renderMobileTeamAreaHubV144 === "function" ? renderMobileTeamAreaHubV144 : null),
+  setRenderMobileTeamAreaHub: (fn) => { renderMobileTeamAreaHubV144 = fn; },
+  getRenderAdminHelpPanel: () => renderAdminHelpPanelV185,
+  setRenderAdminHelpPanel: (fn) => { renderAdminHelpPanelV185 = fn; },
+  getRosterForSeasonTeam: () => (typeof getRosterForSeasonTeam === "function" ? getRosterForSeasonTeam : null),
+  setRosterForSeasonTeam: (fn) => { getRosterForSeasonTeam = fn; },
+  getApprovedTeamUser,
+  getDateValue: null
+});
+
+const getTeamNameKeysV201 = presidentDashboardRostersV212.getTeamNameKeys;
+const getTeamKeysFromRecordV201 = presidentDashboardRostersV212.getTeamKeysFromRecord;
+const findSeasonTeamForRosterV201 = presidentDashboardRostersV212.findSeasonTeamForRoster;
+const getRosterPlayersForSeasonTeamV201 = presidentDashboardRostersV212.getRosterPlayersForSeasonTeam;
+
+/* V202 - Dashboard Presidente naming, season-aware team profiles and honor links.
+   - teamarea remains the internal route for requests/operations, but the UI label is Dashboard Presidente.
+   - team profiles are resolved against the selected season when the global season changes.
+   - honor cells link only when the referenced club actually has a seasonTeam in that row/season. */
+const ZO_RELEASE_VERSION_V202 = "202";
+
+function getSeasonLabelV202(seasonId) {
+  const season = (state.raw?.seasons || []).find((item) => String(item.id || item.seasonId || "") === String(seasonId || ""));
+  if (season && typeof formatSeasonShortLabel === "function") return formatSeasonShortLabel(season);
+  return season?.name || seasonId || "stagione selezionata";
+}
+
+function getAllKnownSeasonTeamsV202(seasonId = "") {
+  const targetSeasonId = String(seasonId || "");
+  const byId = new Map();
+  const addMany = (items) => (items || []).forEach((item) => {
+    if (!item?.id) return;
+    if (targetSeasonId && String(item.seasonId || "") !== targetSeasonId) return;
+    byId.set(String(item.id), item);
+  });
+  addMany(state.raw?.seasonTeams || []);
+  Object.values(state.publicSeasonSnapshots || {}).forEach((snapshot) => addMany(snapshot?.seasonTeams || []));
+  return [...byId.values()];
+}
+
+function getKnownSeasonTeamByIdV202(seasonTeamId) {
+  const target = String(seasonTeamId || "");
+  if (!target) return null;
+  if (typeof getSeasonTeamById === "function") {
+    const direct = getSeasonTeamById(target);
+    if (direct) return direct;
+  }
+  return getAllKnownSeasonTeamsV202().find((item) => String(item.id || "") === target) || null;
+}
+
+function getSeasonTeamNameKeysV202(record) {
+  const values = [
+    record?.name,
+    record?.teamName,
+    record?.canonicalName,
+    record?.label,
+    record?.displayName
+  ];
+  const keys = new Set();
+  values.forEach((value) => {
+    if (typeof getTeamNameKeysV201 === "function") getTeamNameKeysV201(value).forEach((key) => keys.add(key));
+    else {
+      const key = typeof normalizeKey === "function" ? normalizeKey(value || "") : String(value || "").trim().toLowerCase();
+      if (key) keys.add(key);
+    }
+  });
+  return keys;
+}
+
+function getSeasonTeamCanonicalRecordV202(seasonTeam) {
+  if (!seasonTeam) return null;
+  const team = (state.raw?.teams || []).find((item) => String(item.id || "") === String(seasonTeam.teamId || ""));
+  return { ...seasonTeam, canonicalName: team?.canonicalName || team?.name || seasonTeam.canonicalName || "" };
+}
+
+function findSeasonTeamForClubInSeasonV202(sourceSeasonTeamOrName, seasonId) {
+  const targetSeasonId = String(seasonId || "");
+  if (!targetSeasonId) return null;
+  const source = typeof sourceSeasonTeamOrName === "string"
+    ? { name: sourceSeasonTeamOrName, teamName: sourceSeasonTeamOrName }
+    : (sourceSeasonTeamOrName || null);
+  if (!source) return null;
+
+  const candidates = getAllKnownSeasonTeamsV202(targetSeasonId);
+  const sourceTeamId = String(source.teamId || "");
+  if (sourceTeamId) {
+    const byTeamId = candidates.find((item) => String(item.teamId || "") === sourceTeamId);
+    if (byTeamId) return byTeamId;
+  }
+
+  const sourceKeys = getSeasonTeamNameKeysV202(getSeasonTeamCanonicalRecordV202(source) || source);
+  if (!sourceKeys.size) return null;
+  return candidates.find((candidate) => {
+    const candidateKeys = getSeasonTeamNameKeysV202(getSeasonTeamCanonicalRecordV202(candidate) || candidate);
+    return [...candidateKeys].some((key) => sourceKeys.has(key));
+  }) || null;
+}
+
+async function ensureSeasonSnapshotForProfileV202(seasonId) {
+  const target = String(seasonId || "");
+  if (!target) return null;
+  if (state.publicSeasonSnapshots?.[target]) return state.publicSeasonSnapshots[target];
+  if (typeof loadPublicSeasonSnapshotV32 === "function") {
+    const snapshot = await loadPublicSeasonSnapshotV32(target).catch((error) => {
+      console.warn("Profilo squadra: snapshot stagione non disponibile", error);
+      return null;
+    });
+    if (snapshot) return snapshot;
+  }
+  return null;
+}
+
+function buildTeamSnapshotFromSeasonSnapshotV202(seasonTeam, snapshot) {
+  if (!seasonTeam || !snapshot) return null;
+  const seasonTeamId = String(seasonTeam.id || "");
+  const seasonId = String(seasonTeam.seasonId || snapshot.seasonId || snapshot.id || "");
+  const teamId = String(seasonTeam.teamId || "");
+  const team = (snapshot.teams || []).find((item) => String(item.id || "") === teamId) || {};
+  const presidentNames = (seasonTeam.presidentIds || [])
+    .map((presidentId) => (snapshot.presidents || []).find((item) => String(item.id || "") === String(presidentId)))
+    .filter(Boolean)
+    .map((president) => president.name || president.displayName || president.email || "")
+    .filter(Boolean)
+    .join(", ");
+  const competitions = snapshot.competitions || [];
+  const competitionsById = new Map(competitions.map((item) => [String(item.id || ""), item]));
+  const recentMatches = (snapshot.competitionMatches || [])
+    .filter((match) => String(match.homeSeasonTeamId || "") === seasonTeamId || String(match.awaySeasonTeamId || "") === seasonTeamId)
+    .sort((a, b) => {
+      if (typeof compareMatchesForDisplay === "function") return compareMatchesForDisplay(a, b);
+      return String(b.date || b.matchDate || "").localeCompare(String(a.date || a.matchDate || ""));
+    })
+    .slice(0, 12)
+    .map((match) => ({
+      ...match,
+      competitionCode: typeof getCompetitionShortCode === "function" ? getCompetitionShortCode(competitionsById.get(String(match.competitionId || ""))) : ""
+    }));
+
+  const rosterEntries = (snapshot.rosterEntries || []).filter((entry) => String(entry.seasonTeamId || "") === seasonTeamId && String(entry.status || "ACTIVE").toUpperCase() !== "REMOVED");
+  const recentMovements = (snapshot.fmMovements || []).filter((item) => String(item.seasonTeamId || "") === seasonTeamId).sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""))).slice(0, 15);
+  const stadium = (snapshot.stadiums || []).find((item) => String(item.seasonTeamId || "") === seasonTeamId) || null;
+  return {
+    id: `${seasonId}_${teamId || seasonTeamId}`,
+    seasonId,
+    teamId,
+    seasonTeamId,
+    teamName: seasonTeam.name || seasonTeam.teamName || team.canonicalName || team.name || "Squadra",
+    canonicalName: team.canonicalName || team.name || "",
+    logo: seasonTeam.logo || team.logo || "",
+    presidents: presidentNames || seasonTeam.presidentName || seasonTeam.presidents || "-",
+    stadium,
+    fmBalance: Number(seasonTeam.fmBalance ?? seasonTeam.balance ?? 0),
+    rosterEntries,
+    rosterUnavailableForSeasonV202: rosterEntries.length === 0,
+    recentMovements,
+    recentNews: (snapshot.news || []).filter((news) => String(news.seasonTeamId || "") === seasonTeamId || String(news.teamId || "") === teamId).slice(0, 10),
+    palmares: [],
+    recentMatches
+  };
+}
+
+function buildUnavailableTeamProfileV202(sourceSeasonTeam, seasonId) {
+  const teamName = sourceSeasonTeam?.name || sourceSeasonTeam?.teamName || sourceSeasonTeam?.canonicalName || "Squadra";
+  return {
+    teamUnavailableForSeasonV202: true,
+    seasonId,
+    teamName,
+    sourceTeamName: teamName,
+    seasonTeamId: sourceSeasonTeam?.id || ""
+  };
+}
+
+async function resolveTeamProfileSnapshotV202(seasonTeamId, options = {}) {
+  const requested = getKnownSeasonTeamByIdV202(seasonTeamId);
+  const selectedSeasonId = typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "";
+  let targetSeasonTeam = requested;
+  let targetSeasonId = String(options.profileSeasonId || "");
+
+  if (options.useSelectedSeason) {
+    targetSeasonId = selectedSeasonId || targetSeasonId || requested?.seasonId || "";
+    await ensureSeasonSnapshotForProfileV202(targetSeasonId);
+    targetSeasonTeam = findSeasonTeamForClubInSeasonV202(requested || seasonTeamId, targetSeasonId);
+    if (!targetSeasonTeam) return buildUnavailableTeamProfileV202(requested || { name: seasonTeamId }, targetSeasonId);
+  } else if (targetSeasonId) {
+    await ensureSeasonSnapshotForProfileV202(targetSeasonId);
+    targetSeasonTeam = findSeasonTeamForClubInSeasonV202(requested || seasonTeamId, targetSeasonId);
+    if (!targetSeasonTeam) return buildUnavailableTeamProfileV202(requested || { name: seasonTeamId }, targetSeasonId);
+  } else if (requested?.seasonId) {
+    targetSeasonId = requested.seasonId;
+    await ensureSeasonSnapshotForProfileV202(targetSeasonId);
+  }
+
+  if (!targetSeasonTeam) return null;
+  const snapshotId = `${targetSeasonTeam.seasonId}_${targetSeasonTeam.teamId}`;
+  if (state.teamSnapshotCache?.[snapshotId]) return state.teamSnapshotCache[snapshotId];
+
+  let snapshot = null;
+  if (typeof loadTeamSnapshotV34 === "function") snapshot = await loadTeamSnapshotV34(targetSeasonTeam.id).catch(() => null);
+  if (!snapshot) {
+    const seasonSnapshot = await ensureSeasonSnapshotForProfileV202(targetSeasonTeam.seasonId);
+    snapshot = buildTeamSnapshotFromSeasonSnapshotV202(targetSeasonTeam, seasonSnapshot);
+  }
+  if (snapshot) {
+    state.teamSnapshotCache = state.teamSnapshotCache || {};
+    state.teamSnapshotCache[snapshotId] = snapshot;
+  }
+  return snapshot;
+}
+
+function renderUnavailableTeamProfileV202(snapshot) {
+  const seasonText = getSeasonLabelV202(snapshot?.seasonId || (typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : ""));
+  return `
+    <section class="panel team-profile-unavailable-v202">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Profilo squadra</p>
+          <h3>${escapeHtml(snapshot?.teamName || "Squadra")}</h3>
+          <p>Rosa non disponibile per la stagione selezionata.</p>
+        </div>
+      </div>
+      <p class="muted">La squadra selezionata non risulta iscritta o non ha una rosa pubblicata nella stagione ${escapeHtml(seasonText)}. Cambia stagione o seleziona una squadra presente in quella stagione.</p>
+    </section>`;
+}
+
+function injectRosterUnavailableMessageV202(html, snapshot) {
+  if (!snapshot?.rosterUnavailableForSeasonV202) return html;
+  const seasonText = getSeasonLabelV202(snapshot.seasonId);
+  const replacement = `<section class="panel detail-section team-profile-roster-unavailable-v202"><h3>Rosa</h3><p class="muted">Rosa non disponibile per la stagione selezionata (${escapeHtml(seasonText)}).</p></section>`;
+  return String(html || "").replace(/<section class="panel detail-section"><h3>Rosa<\/h3>[\s\S]*?<\/section>\s*(?=<section class="panel detail-section"><h3>Palmarès squadra<\/h3>)/, replacement);
+}
+
+const renderTeamProfileContentBeforeV202 = renderTeamProfileContentV42;
+renderTeamProfileContentV42 = function renderTeamProfileContentV202(snapshot) {
+  if (snapshot?.teamUnavailableForSeasonV202) return renderUnavailableTeamProfileV202(snapshot);
+  const html = renderTeamProfileContentBeforeV202?.(snapshot) || "";
+  return injectRosterUnavailableMessageV202(html, snapshot);
+};
+
+openTeamProfilePageV42 = async function openTeamProfilePageV202(seasonTeamId, options = {}) {
+  ensureTeamProfilePageV42?.();
+  const selectedSeasonTeamId = seasonTeamId || getCurrentUserSeasonTeamIdV42?.() || "";
+  if (!selectedSeasonTeamId) {
+    setError?.("Nessuna squadra selezionata.");
+    return;
+  }
+  const title = document.getElementById("teamProfilePageTitle");
+  const body = document.getElementById("teamProfilePageBody");
+  if (!body) return;
+
+  activateTeamProfilePageV43?.(selectedSeasonTeamId, options);
+  if (title) title.textContent = getSeasonTeamDisplayName?.(selectedSeasonTeamId) || "Profilo squadra";
+  body.innerHTML = `<section class="panel"><p class="muted">Caricamento profilo squadra...</p></section>`;
+
+  const snapshot = await resolveTeamProfileSnapshotV202(selectedSeasonTeamId, options);
+  if (!snapshot) {
+    body.innerHTML = `<section class="panel"><p class="muted">Scheda squadra non ancora generata o non disponibile per la stagione selezionata.</p></section>`;
+    return;
+  }
+  state.activeTeamProfileSeasonTeamId = snapshot.teamUnavailableForSeasonV202 ? selectedSeasonTeamId : (snapshot.seasonTeamId || selectedSeasonTeamId);
+  if (title) title.textContent = snapshot?.teamName || getSeasonTeamDisplayName?.(state.activeTeamProfileSeasonTeamId) || "Profilo squadra";
+  body.innerHTML = renderTeamProfileContentV42(snapshot);
+};
+
+openTeamProfileV34 = function openTeamProfileV202(seasonTeamId) {
+  openTeamProfilePageV42(seasonTeamId, { pushHash: true }).catch((error) => {
+    console.error(error);
+    setError?.(`Non riesco ad aprire la pagina squadra. ${error?.message || error}`);
+  });
+};
+openTeamProfile = openTeamProfileV34;
+
+function findSeasonTeamIdForTeamNameInSeasonV202(teamName, seasonId) {
+  const seasonTeam = findSeasonTeamForClubInSeasonV202(teamName, seasonId);
+  return seasonTeam?.id || "";
+}
+
+function getHonorRowSeasonIdFromDomV202(row, rowIndex) {
+  const snapshotRow = state.publicHonorSnapshot?.honorRows?.[rowIndex];
+  if (snapshotRow?.seasonId) return snapshotRow.seasonId;
+  const rawSeason = (state.raw?.seasons || [])[rowIndex];
+  if (rawSeason?.id) return rawSeason.id;
+  const label = row?.querySelector?.("td")?.textContent?.trim?.() || "";
+  return (state.raw?.seasons || []).find((season) => {
+    const candidates = [season.id, season.name, typeof formatSeasonShortLabel === "function" ? formatSeasonShortLabel(season) : ""].map((item) => String(item || "").trim());
+    return candidates.includes(label);
+  })?.id || "";
+}
+
+const HONOR_CELL_FIELDS_V202 = ["season", "championItaly", "secondPlace", "thirdPlace", "coppaItalia", "championsLeague", "playoff"];
+function getHonorCellSeasonTeamIdV202(rowIndex, cellIndex, fallbackName, seasonId) {
+  const field = HONOR_CELL_FIELDS_V202[cellIndex];
+  const snapshotCell = field && state.publicHonorSnapshot?.honorRows?.[rowIndex]?.[field];
+  if (snapshotCell?.seasonTeamId) return snapshotCell.seasonTeamId;
+  const rawHonor = (state.raw?.honorRoll || []).find((item) => String(item.seasonId || item.id || "") === String(seasonId || ""));
+  const rawFieldMap = {
+    championItaly: "championItalySeasonTeamId",
+    secondPlace: "secondPlaceSeasonTeamId",
+    thirdPlace: "thirdPlaceSeasonTeamId",
+    coppaItalia: "coppaItaliaWinnerSeasonTeamId",
+    championsLeague: "championsLeagueWinnerSeasonTeamId",
+    playoff: "playoffWinnerSeasonTeamId"
+  };
+  const rawId = rawHonor?.[rawFieldMap[field]];
+  if (rawId) return rawId;
+  return findSeasonTeamIdForTeamNameInSeasonV202(fallbackName, seasonId);
+}
+
+function makeClubNameNodeClickableV202(node, seasonTeamId) {
+  const wrapper = node.closest?.(".team-profile-link");
+  if (!seasonTeamId) {
+    if (wrapper && wrapper.parentElement) wrapper.replaceWith(node);
+    node.classList.add("team-profile-link-disabled-v202");
+    node.setAttribute("aria-disabled", "true");
+    return;
+  }
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "team-profile-link honor-team-profile-link";
+  button.dataset.openTeamProfile = seasonTeamId;
+  if (wrapper && wrapper.parentElement) wrapper.replaceWith(button);
+  else node.replaceWith(button);
+  button.appendChild(node);
+}
+
+makeHonorTeamNamesClickableV90 = function makeHonorTeamNamesClickableV202() {
+  const root = document.getElementById("honorSummary");
+  if (!root) return;
+  const honorTable = root.querySelector(".honor-table-wrap table");
+  honorTable?.querySelectorAll("tbody tr").forEach((row, rowIndex) => {
+    const seasonId = getHonorRowSeasonIdFromDomV202(row, rowIndex);
+    row.querySelectorAll("td .club-name-with-logo").forEach((node) => {
+      const cell = node.closest("td");
+      const cellIndex = cell ? Array.from(row.children).indexOf(cell) : -1;
+      const teamName = node.querySelector("strong")?.textContent?.trim() || node.textContent?.trim() || "";
+      const seasonTeamId = getHonorCellSeasonTeamIdV202(rowIndex, cellIndex, teamName, seasonId);
+      makeClubNameNodeClickableV202(node, seasonTeamId);
+    });
+  });
+
+  root.querySelectorAll(".palmares-table-wrap tbody .club-name-with-logo, .fifa-ranking-table-wrap tbody .club-name-with-logo").forEach((node) => {
+    const teamName = node.querySelector("strong")?.textContent?.trim() || node.textContent?.trim() || "";
+    const seasonTeamId = findSeasonTeamIdForTeamNameInSeasonV202(teamName, typeof getCurrentSeasonId === "function" ? getCurrentSeasonId() : "");
+    makeClubNameNodeClickableV202(node, seasonTeamId);
+  });
+};
+
+function refreshVisibleTeamProfileForSeasonV202() {
+  if (state.currentPage !== "teamprofile" || !state.activeTeamProfileSeasonTeamId) return;
+  window.setTimeout(() => {
+    openTeamProfilePageV42(state.activeTeamProfileSeasonTeamId, { pushHash: false, scroll: false, useSelectedSeason: true }).catch((error) => {
+      console.warn("Profilo squadra non aggiornato dopo cambio stagione", error);
+    });
+  }, 0);
+}
+
+document.addEventListener("change", (event) => {
+  if (event.target?.id === "globalSeasonSelect") refreshVisibleTeamProfileForSeasonV202();
+}, true);
+
+function applyDashboardPresidentLabelsV202() {
+  document.querySelectorAll('[data-page-link="teamarea"], [data-v42-page-link="teamarea"]').forEach((link) => {
+    const text = (link.textContent || "").trim().toLowerCase();
+    if (!text || text.includes("richieste") || text.includes("area squadra") || text.includes("squadra") || text.includes("trattative")) {
+      if (link.classList.contains("mobile-bottom-link")) {
+        link.innerHTML = '<span class="mobile-nav-icon">👤</span><span>Presidente</span>';
+      } else {
+        link.textContent = "Dashboard Presidente";
+      }
+    }
+  });
+  const title = document.getElementById("teamAreaTitle");
+  if (title) title.textContent = "Dashboard Presidente";
+  const section = document.querySelector('[data-page="teamarea"] .page-heading p:last-child');
+  if (section) section.textContent = "Riepilogo, richieste operative, comunicati e movimenti proposti dal presidente approvato.";
+  document.querySelectorAll(".mobile-teamarea-kicker-v144").forEach((node) => { node.textContent = "Dashboard presidente"; });
+}
+
+const renderAllBeforeV202 = renderAll;
+renderAll = function renderAllV202() {
+  const result = renderAllBeforeV202?.();
+  applyDashboardPresidentLabelsV202();
+  makeHonorTeamNamesClickableV90?.();
+  return result;
+};
+
+const updateUserVisibilityBeforeV202 = updateUserVisibilityV34;
+updateUserVisibilityV34 = function updateUserVisibilityV202() {
+  const result = updateUserVisibilityBeforeV202?.();
+  applyDashboardPresidentLabelsV202();
+  return result;
+};
+
+window.ZonaOrientaleTeamProfileV202 = {
+  resolve: resolveTeamProfileSnapshotV202,
+  findInSeason: findSeasonTeamForClubInSeasonV202,
+  refreshForSeason: refreshVisibleTeamProfileForSeasonV202
+};
+
+
+/* V203 - Publication status sync and clearer honor preflight wording.
+   The V190 publication status cards and the V179 public asset preflight both
+   check the same JSON files. Before V203, clicking "Controlla solo asset
+   pubblici" refreshed only the table below the cards, so the cards could keep
+   stale "Failed to fetch" values from a previous check. V203 synchronizes the
+   cards after a successful asset preflight and clarifies that palmares can be
+   derived from honorRows when honor.json has no dedicated palmares array. */
+const ZO_RELEASE_VERSION_V203 = "203";
+
+const validateHonorSnapshotPreflightBeforeV203 = typeof validateHonorSnapshotPreflightV179 === "function" ? validateHonorSnapshotPreflightV179 : null;
+if (validateHonorSnapshotPreflightBeforeV203) {
+  validateHonorSnapshotPreflightV179 = function validateHonorSnapshotPreflightV203(payload) {
+    const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+    const honorRows = Array.isArray(snapshot?.honorRows) ? snapshot.honorRows.length : 0;
+    const palmares = Array.isArray(snapshot?.palmares) ? snapshot.palmares.length : 0;
+    const fifaRanking = Array.isArray(snapshot?.fifaRanking) ? snapshot.fifaRanking.length : 0;
+    if (!honorRows && !palmares && !fifaRanking) {
+      return { status: "error", detail: "nessun dato honor/palmarès/FIFA trovato" };
+    }
+    const generatedAt = snapshot?.generatedAt || payload?.generatedAt || "";
+    const generatedText = generatedAt ? ` · ${normalizePreflightDateV179(generatedAt)}` : "";
+    const palmaresText = palmares
+      ? `${palmares} palmarès dedicati`
+      : (honorRows ? "palmarès calcolabile dall'albo" : "0 palmarès dedicati");
+    return {
+      status: "ok",
+      detail: `${honorRows} albo · ${palmaresText} · ${fifaRanking} ranking${generatedText}`
+    };
+  };
+}
+
+function getPublicAssetsPreflightResultForStatusV203(result) {
+  if (result?.results?.length) return result;
+  const current = state.publicAssetsPreflightV179;
+  if (current?.results?.length) return current;
+  return null;
+}
+
+function syncPublicationStatusFromPreflightV203(preflightResult) {
+  const preflight = getPublicAssetsPreflightResultForStatusV203(preflightResult);
+  if (!preflight?.results?.length || typeof buildPublicationStatusRowsV190 !== "function") return null;
+  const rows = buildPublicationStatusRowsV190(preflight);
+  const payload = {
+    checkedAt: new Date().toISOString(),
+    summary: typeof summarizePublicationStatusRowsV190 === "function" ? summarizePublicationStatusRowsV190(rows) : null,
+    rows,
+    preflightSummary: preflight.summary || (typeof getPreflightSummaryV179 === "function" ? getPreflightSummaryV179(preflight.results) : null),
+    syncedFromPreflightV203: true
+  };
+  if (typeof writePublicationStatusV190 === "function") writePublicationStatusV190(payload);
+  if (typeof renderPublicationStatusPanelV190 === "function" && document.getElementById("publicationStatusMountV190")) {
+    renderPublicationStatusPanelV190(payload);
+  }
+  return payload;
+}
+
+const runPublicAssetsPreflightBeforeV203 = typeof runPublicAssetsPreflightV179 === "function" ? runPublicAssetsPreflightV179 : null;
+if (runPublicAssetsPreflightBeforeV203) {
+  runPublicAssetsPreflightV179 = async function runPublicAssetsPreflightV203(options = {}) {
+    const result = await runPublicAssetsPreflightBeforeV203(options);
+    const targetId = options?.targetId || "";
+    const shouldSyncStatus = targetId === "publicationStatusPreflightReportV190" || options?.syncPublicationStatusV203 === true;
+    if (shouldSyncStatus) {
+      syncPublicationStatusFromPreflightV203(result);
+      const target = targetId ? document.getElementById(targetId) : null;
+      if (target && result?.results?.length) {
+        target.innerHTML = renderPreflightResultsHtmlV179(result.results);
+      }
+    }
+    return result;
+  };
+}
+
+const runPublicationStatusBeforeV203 = typeof runPublicationStatusV190 === "function" ? runPublicationStatusV190 : null;
+if (runPublicationStatusBeforeV203) {
+  runPublicationStatusV190 = async function runPublicationStatusV203(options = {}) {
+    const payload = await runPublicationStatusBeforeV203(options);
+    const hasFetchFailure = Array.isArray(payload?.rows) && payload.rows.some((row) => String(row?.detail || "").toLowerCase().includes("failed to fetch"));
+    const lastPreflight = state.publicAssetsPreflightV179;
+    const lastSummary = lastPreflight?.summary;
+    if (hasFetchFailure && lastSummary && Number(lastSummary.error || 0) === 0) {
+      return syncPublicationStatusFromPreflightV203(lastPreflight) || payload;
+    }
+    return payload;
+  };
+}
+
+if (window.ZonaOrientalePublicationStatus) {
+  window.ZonaOrientalePublicationStatus.syncFromPreflight = function syncFromPreflightV203() {
+    return syncPublicationStatusFromPreflightV203(state.publicAssetsPreflightV179);
+  };
+  window.ZonaOrientalePublicationStatus.reset = function resetPublicationStatusV203() {
+    try { localStorage.removeItem(PUBLICATION_STATUS_STORAGE_KEY_V190); } catch (_) {}
+    try { sessionStorage.removeItem(PUBLIC_ASSET_PREFLIGHT_STORAGE_KEY_V179); } catch (_) {}
+    state.publicAssetsPreflightV179 = null;
+    if (typeof renderPublicationStatusPanelV190 === "function") renderPublicationStatusPanelV190(null);
+    return true;
+  };
+}
+
+
+/* V219 - Hotfix helper archivio stagioni.
+   La V218 richiama renderSeasonArchiveV196 dal ciclo renderAll, ma il bundle
+   non esponeva gli helper V193 usati dall'ordinamento e dalle etichette
+   stagione. Li ripristiniamo in forma difensiva prima del blocco V196. */
+const HISTORICAL_COMPETITIONS_V193 = [
+  { key: "CAMPIONATO", label: "Campionato", field: "championItalySeasonTeamId", cellField: "championItaly", medal: "oro" },
+  { key: "COPPA_ITALIA", label: "Coppa Italia", field: "coppaItaliaWinnerSeasonTeamId", cellField: "coppaItalia", medal: "coppa" },
+  { key: "CHAMPIONS_LEAGUE", label: "Champions League", field: "championsLeagueWinnerSeasonTeamId", cellField: "championsLeague", medal: "champions" },
+  { key: "PLAYOFF", label: "Playoff", field: "playoffWinnerSeasonTeamId", cellField: "playoff", medal: "playoff" }
+];
+
+function getSeasonSortValueV193(seasonId) {
+  const normalized = String(seasonId || "").trim();
+  const yearMatch = normalized.match(/(?:^|\D)(\d{4})(?:\D|$)/);
+  if (yearMatch) return Number(yearMatch[1]);
+  const compactMatch = normalized.match(/(\d{2})\D?(\d{2})/);
+  if (compactMatch) {
+    const first = Number(compactMatch[1]);
+    return first >= 70 ? 1900 + first : 2000 + first;
+  }
+  return 0;
+}
+
+function getSeasonLabelV193(seasonId) {
+  const season = (state.raw?.seasons || []).find((item) => String(item?.id || "") === String(seasonId || "")) || { id: seasonId, name: seasonId };
+  return typeof formatSeasonShortLabel === "function" ? formatSeasonShortLabel(season) : (season.name || season.id || "-");
+}
+
+
+/* V196 - Archivio stagioni evoluto.
+   Pagina pubblica mobile-first che permette di consultare una stagione
+   completa senza introdurre nuove letture Firebase: usa solo state.raw gia'
+   popolato da JSON statici, snapshot pubblici o fallback esistenti. */
+const SEASON_ARCHIVE_STORAGE_KEY_V196 = "zonaOrientaleArchiveSeasonV196";
+
+function getSeasonArchiveSortedSeasonsV196() {
+  return [...(state.raw.seasons || [])].sort((a, b) => getSeasonSortValueV193(b.id) - getSeasonSortValueV193(a.id));
+}
+
+function getSeasonArchiveSeasonIdV196() {
+  const seasons = getSeasonArchiveSortedSeasonsV196();
+  if (!seasons.length) return "";
+  const validIds = new Set(seasons.map((season) => season.id));
+  const saved = localStorage.getItem(SEASON_ARCHIVE_STORAGE_KEY_V196) || "";
+  const current = state.archiveSeasonIdV196 || saved || getCurrentSeasonId();
+  const selected = validIds.has(current) ? current : seasons[0].id;
+  state.archiveSeasonIdV196 = selected;
+  return selected;
+}
+
+function setSeasonArchiveSeasonIdV196(seasonId) {
+  state.archiveSeasonIdV196 = seasonId || getSeasonArchiveSeasonIdV196();
+  try { localStorage.setItem(SEASON_ARCHIVE_STORAGE_KEY_V196, state.archiveSeasonIdV196); } catch (_) {}
+  renderSeasonArchiveV196();
+}
+
+function getCompetitionNameV196(competition) {
+  return competition?.name || competition?.label || getLabel(COMPETITION_TYPES, competition?.type) || competition?.type || "Competizione";
+}
+
+function getSeasonArchiveHonorTitlesV196(row) {
+  if (!row) return [];
+  return HISTORICAL_COMPETITIONS_V193.map((competition) => {
+    const seasonTeamId = row[competition.field];
+    if (!seasonTeamId) return null;
+    return {
+      key: competition.key,
+      label: competition.label,
+      seasonTeamId,
+      teamName: getSeasonTeamDisplayName(seasonTeamId)
+    };
+  }).filter(Boolean);
+}
+
+function getSeasonArchiveMatchResultPartsV196(match) {
+  const candidates = [
+    [match.homeGoals, match.awayGoals],
+    [match.homeScore, match.awayScore],
+    [match.homePoints, match.awayPoints],
+    [match.homeResult, match.awayResult]
+  ];
+  for (const pair of candidates) {
+    const [home, away] = pair;
+    if (home !== undefined && home !== null && home !== "" && away !== undefined && away !== null && away !== "") {
+      const homeNum = Number(String(home).replace(",", "."));
+      const awayNum = Number(String(away).replace(",", "."));
+      return {
+        home,
+        away,
+        homeNum: Number.isFinite(homeNum) ? homeNum : null,
+        awayNum: Number.isFinite(awayNum) ? awayNum : null
+      };
+    }
+  }
+  return { home: null, away: null, homeNum: null, awayNum: null };
+}
+
+function buildSeasonArchiveV196(seasonId = getSeasonArchiveSeasonIdV196()) {
+  const season = state.raw.seasons.find((item) => item.id === seasonId) || { id: seasonId, name: seasonId };
+  const seasonTeams = getSeasonTeamsForSeason(seasonId).sort((a, b) => String(getSeasonTeamDisplayName(a.id)).localeCompare(String(getSeasonTeamDisplayName(b.id)), "it", { sensitivity: "base" }));
+  const competitions = (state.raw.competitions || []).filter((item) => item.seasonId === seasonId);
+  const competitionIds = new Set(competitions.map((item) => item.id));
+  const matches = (state.raw.competitionMatches || []).filter((match) => competitionIds.has(match.competitionId));
+  const results = (state.raw.competitionResults || []).filter((result) => competitionIds.has(result.competitionId));
+  const honor = (state.raw.honorRoll || []).find((row) => (row.seasonId || row.id) === seasonId) || null;
+  const honorTitles = getSeasonArchiveHonorTitlesV196(honor);
+  const rosterEntries = (state.raw.rosterEntries || []).filter((entry) => seasonTeams.some((team) => team.id === entry.seasonTeamId));
+  const movements = (state.raw.fmMovements || []).filter((item) => seasonTeams.some((team) => team.id === item.seasonTeamId));
+  const news = (state.raw.news || []).filter((item) => !item.seasonId || item.seasonId === seasonId).slice(0, 8);
+  const stadiumsBySeasonTeamId = new Map((state.raw.stadiums || []).map((item) => [item.seasonTeamId, item]));
+  const rosterCountBySeasonTeamId = rosterEntries.reduce((map, entry) => {
+    const key = entry.seasonTeamId || "";
+    map.set(key, (map.get(key) || 0) + 1);
+    return map;
+  }, new Map());
+  const movementCountBySeasonTeamId = movements.reduce((map, entry) => {
+    const key = entry.seasonTeamId || "";
+    map.set(key, (map.get(key) || 0) + 1);
+    return map;
+  }, new Map());
+  const recentMatches = [...matches].sort(compareMatchesForDisplay).slice(-8).reverse();
+  const goals = matches.reduce((sum, match) => {
+    const score = getSeasonArchiveMatchResultPartsV196(match);
+    if (score.homeNum === null || score.awayNum === null) return sum;
+    return sum + score.homeNum + score.awayNum;
+  }, 0);
+  return { season, seasonTeams, competitions, matches, results, honor, honorTitles, rosterEntries, movements, news, stadiumsBySeasonTeamId, rosterCountBySeasonTeamId, movementCountBySeasonTeamId, recentMatches, goals };
+}
+
+function renderSeasonArchiveMetricV196(label, value, note = "") {
+  return `<article class="season-archive-metric-v196"><span>${escapeHtml(label)}</span><strong>${escapeHtml(String(value ?? "-"))}</strong>${note ? `<small>${escapeHtml(note)}</small>` : ""}</article>`;
+}
+
+function renderSeasonArchiveControlsV196(seasons, selectedId) {
+  const options = seasons.map((season) => `<option value="${escapeHtml(season.id)}" ${season.id === selectedId ? "selected" : ""}>${escapeHtml(getSeasonLabelV193(season.id))}</option>`).join("");
+  return `
+    <label><span>Stagione</span><select id="seasonArchiveSelectV196" class="input">${options}</select></label>
+    <button id="seasonArchiveSyncCurrentV196" class="button button-secondary" type="button">Usa stagione corrente</button>
+    <p>Archivio consultivo: nessuna scrittura e nessuna lettura Firebase extra.</p>`;
+}
+
+function renderSeasonArchiveTeamsV196(archive) {
+  if (!archive.seasonTeams.length) return `<p class="muted">Nessuna squadra trovata per questa stagione.</p>`;
+  return `<div class="season-archive-teams-v196">${archive.seasonTeams.map((seasonTeam) => {
+    const stadium = archive.stadiumsBySeasonTeamId.get(seasonTeam.id) || {};
+    const rosterCount = archive.rosterCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const movementCount = archive.movementCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const fmBalance = getArchiveSeasonTeamDirectFmV227(seasonTeam);
+    const logo = getSeasonTeamLogo(seasonTeam);
+    const name = getSeasonTeamDisplayName(seasonTeam.id);
+    return `
+      <article class="season-archive-team-card-v196">
+        <div class="season-archive-team-head-v196">${renderTeamLogo(name, logo)}<div><strong>${escapeHtml(name)}</strong><small>${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</small></div></div>
+        <dl>
+          <div><dt>Saldo</dt><dd>${escapeHtml(formatArchiveFmBalanceV227(fmBalance))}</dd></div>
+          <div><dt>Rosa</dt><dd>${escapeHtml(String(rosterCount || "-"))}</dd></div>
+          <div><dt>Movimenti</dt><dd>${escapeHtml(String(movementCount || "-"))}</dd></div>
+          <div><dt>Stadio</dt><dd>${escapeHtml(stadium.name || seasonTeam.stadiumName || "-")}</dd></div>
+        </dl>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderSeasonArchiveCompetitionsV196(archive) {
+  if (!archive.competitions.length) return `<p class="muted">Nessuna competizione trovata per questa stagione.</p>`;
+  return `<div class="season-archive-competition-grid-v196">${archive.competitions.map((competition) => {
+    const matches = archive.matches.filter((match) => match.competitionId === competition.id);
+    const results = archive.results.filter((result) => result.competitionId === competition.id).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+    const winner = results[0]?.seasonTeamId ? getSeasonTeamDisplayName(results[0].seasonTeamId) : (competition.winnerSeasonTeamId ? getSeasonTeamDisplayName(competition.winnerSeasonTeamId) : "-");
+    return `
+      <article class="season-archive-competition-card-v196">
+        <div><strong>${escapeHtml(getCompetitionNameV196(competition))}</strong><small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type) || competition.type || "Competizione")}</small></div>
+        <div class="season-archive-chip-row-v196">
+          <span>${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "Stato n.d.")}</span>
+          <span>${matches.length} partite</span>
+          <span>${results.length} righe classifica</span>
+        </div>
+        <p><strong>Vincitore/Classifica:</strong> ${escapeHtml(winner)}</p>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderSeasonArchiveHonorV196(archive) {
+  if (!archive.honorTitles.length) return `<p class="muted">Nessun dato Albo d'Oro collegato a questa stagione.</p>`;
+  return `<div class="season-archive-honor-v196">${archive.honorTitles.map((title) => `
+    <article><span>${escapeHtml(title.label)}</span>${renderSeasonTeamNameWithLogo(title.seasonTeamId, { strong: true })}</article>
+  `).join("")}</div>`;
+}
+
+function renderSeasonArchiveMatchesV196(archive) {
+  if (!archive.recentMatches.length) return `<p class="muted">Nessuna partita caricata per questa stagione.</p>`;
+  return `<div class="season-archive-match-list-v196">${archive.recentMatches.map((match) => {
+    const competition = archive.competitions.find((item) => item.id === match.competitionId);
+    const homeName = match.homeTeamName || getSeasonTeamDisplayName(match.homeSeasonTeamId);
+    const awayName = match.awayTeamName || getSeasonTeamDisplayName(match.awaySeasonTeamId);
+    return `
+      <article>
+        <span>${escapeHtml(match.matchDate || formatMatchStage(match) || "-")}</span>
+        <strong>${escapeHtml(homeName)} - ${escapeHtml(awayName)}</strong>
+        <small>${escapeHtml(formatMatchResult(match))} · ${escapeHtml(getCompetitionNameV196(competition))}</small>
+      </article>`;
+  }).join("")}</div>`;
+}
+
+function renderSeasonArchiveTimelineV196(archive) {
+  const items = [];
+  archive.honorTitles.forEach((title) => items.push({ icon: "🏆", label: title.label, text: title.teamName }));
+  archive.competitions.slice(0, 6).forEach((competition) => items.push({ icon: "📌", label: getCompetitionNameV196(competition), text: getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "competizione" }));
+  archive.news.slice(0, 4).forEach((item) => items.push({ icon: "📰", label: item.title || item.topic || "Comunicazione", text: item.date || item.createdAt || "news" }));
+  if (!items.length) return `<p class="muted">Timeline non disponibile per questa stagione.</p>`;
+  return `<div class="season-archive-timeline-v196">${items.slice(0, 12).map((item) => `
+    <article><span>${escapeHtml(item.icon)}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.text || "-")}</small></div></article>
+  `).join("")}</div>`;
+}
+
+function renderSeasonArchiveV196() {
+  const controlsTarget = document.getElementById("seasonArchiveControlsV196");
+  const contentTarget = document.getElementById("seasonArchiveContentV196");
+  if (!controlsTarget || !contentTarget) return;
+  const seasons = getSeasonArchiveSortedSeasonsV196();
+  if (!seasons.length) {
+    controlsTarget.innerHTML = `<p class="muted">Nessuna stagione disponibile.</p>`;
+    contentTarget.innerHTML = `<p class="muted">Carica config.json o fallback Firebase per visualizzare l'archivio.</p>`;
+    return;
+  }
+  const selectedId = getSeasonArchiveSeasonIdV196();
+  const archive = buildSeasonArchiveV196(selectedId);
+  controlsTarget.innerHTML = renderSeasonArchiveControlsV196(seasons, selectedId);
+  const select = document.getElementById("seasonArchiveSelectV196");
+  select?.addEventListener("change", () => setSeasonArchiveSeasonIdV196(select.value));
+  document.getElementById("seasonArchiveSyncCurrentV196")?.addEventListener("click", () => setSeasonArchiveSeasonIdV196(getCurrentSeasonId()));
+  const completedMatches = archive.matches.filter((match) => String(match.status || "").toUpperCase() === "PLAYED" || formatMatchResult(match) !== "-").length;
+  contentTarget.innerHTML = `
+    <article class="panel season-archive-hero-v196">
+      <div>
+        <p class="eyebrow">${escapeHtml(archive.season.id || "Stagione")}</p>
+        <h3>${escapeHtml(archive.season.name || getSeasonLabelV193(archive.season.id))}</h3>
+        <p>Riepilogo completo della stagione selezionata, utile per consultazione storica e controllo dati pubblicati.</p>
+      </div>
+      <div class="season-archive-metrics-v196">
+        ${renderSeasonArchiveMetricV196("Squadre", archive.seasonTeams.length, "partecipanti")}
+        ${renderSeasonArchiveMetricV196("Competizioni", archive.competitions.length, "caricate")}
+        ${renderSeasonArchiveMetricV196("Partite", archive.matches.length, `${completedMatches} con risultato`)}
+        ${renderSeasonArchiveMetricV196("Giocatori", archive.rosterEntries.length || "-", "da rosterEntries")}
+      </div>
+    </article>
+    <div class="season-archive-grid-v196">
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>👥</span><div><h3>Squadre della stagione</h3><p>Nomi storici, presidenti, saldo, rosa e stadio.</p></div></div>
+        ${renderSeasonArchiveTeamsV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196">
+        <div class="season-archive-card-heading-v196"><span>🏆</span><div><h3>Albo della stagione</h3><p>Vincitori principali collegati ad honor.json/snapshot.</p></div></div>
+        ${renderSeasonArchiveHonorV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196">
+        <div class="season-archive-card-heading-v196"><span>🗓️</span><div><h3>Partite recenti</h3><p>Ultime partite disponibili nella stagione.</p></div></div>
+        ${renderSeasonArchiveMatchesV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori/classifiche delle competizioni.</p></div></div>
+        ${renderSeasonArchiveCompetitionsV196(archive)}
+      </article>
+      <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
+        <div class="season-archive-card-heading-v196"><span>🧭</span><div><h3>Timeline dati</h3><p>Riepilogo rapido di titoli, competizioni e comunicazioni collegate.</p></div></div>
+        ${renderSeasonArchiveTimelineV196(archive)}
+      </article>
+    </div>`;
+}
+
+function injectSeasonArchiveStylesV196() {
+  if (document.getElementById("seasonArchiveStylesV196")) return;
+  const style = document.createElement("style");
+  style.id = "seasonArchiveStylesV196";
+  style.textContent = `
+    .season-archive-page-v196, .season-archive-content-v196 { display: grid; gap: 1rem; }
+    .season-archive-controls-v196 { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .75rem; align-items: end; margin-bottom: 1rem; }
+    .season-archive-controls-v196 label { display: grid; gap: .35rem; min-width: 0; }
+    .season-archive-controls-v196 label span { color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+    .season-archive-controls-v196 p { grid-column: 1 / -1; color: var(--muted); margin: 0; overflow-wrap: anywhere; }
+    .season-archive-hero-v196 { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: 1rem; align-items: center; border: 1px solid rgba(251,191,36,.25); background: linear-gradient(135deg, rgba(15,23,42,.97), rgba(88,28,28,.65)); }
+    .season-archive-hero-v196 h3 { margin: .1rem 0; color: #fff7ed; overflow-wrap: anywhere; }
+    .season-archive-hero-v196 p { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+    .season-archive-metrics-v196 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6rem; }
+    .season-archive-metric-v196 { border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .8rem; background: rgba(2,6,23,.38); min-width: 0; }
+    .season-archive-metric-v196 span, .season-archive-metric-v196 small { display: block; color: var(--muted); overflow-wrap: anywhere; }
+    .season-archive-metric-v196 strong { display: block; margin: .2rem 0; font-size: 1.35rem; color: #fff7ed; overflow-wrap: anywhere; }
+    .season-archive-grid-v196 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .season-archive-card-v196, .season-archive-panel-v196 { min-width: 0; overflow: hidden; }
+    .season-archive-card-wide-v196 { grid-column: span 2; }
+    .season-archive-card-heading-v196 { display: flex; gap: .75rem; align-items: flex-start; margin-bottom: .9rem; }
+    .season-archive-card-heading-v196 > span { width: 2.25rem; height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; border-radius: .85rem; background: rgba(255,255,255,.08); flex: 0 0 auto; }
+    .season-archive-card-heading-v196 h3 { margin: 0; color: #fff7ed; overflow-wrap: anywhere; }
+    .season-archive-card-heading-v196 p { margin: .15rem 0 0; color: var(--muted); overflow-wrap: anywhere; }
+    .season-archive-teams-v196 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .season-archive-team-card-v196 { border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; padding: .8rem; background: rgba(255,255,255,.04); min-width: 0; }
+    .season-archive-team-head-v196 { display: flex; align-items: center; gap: .65rem; min-width: 0; margin-bottom: .6rem; }
+    .season-archive-team-head-v196 > div { min-width: 0; }
+    .season-archive-team-head-v196 strong, .season-archive-team-head-v196 small { display: block; overflow-wrap: anywhere; }
+    .season-archive-team-head-v196 small { color: var(--muted); }
+    .season-archive-team-card-v196 dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; margin: 0; }
+    .season-archive-team-card-v196 dl div { min-width: 0; border-top: 1px solid rgba(255,255,255,.08); padding-top: .4rem; }
+    .season-archive-team-card-v196 dt { color: var(--muted); font-size: .78rem; }
+    .season-archive-team-card-v196 dd { margin: 0; font-weight: 800; overflow-wrap: anywhere; }
+    .season-archive-competition-grid-v196 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .season-archive-competition-card-v196 { border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; padding: .85rem; background: rgba(255,255,255,.04); min-width: 0; display: grid; gap: .55rem; }
+    .season-archive-competition-card-v196 strong, .season-archive-competition-card-v196 small, .season-archive-competition-card-v196 p { overflow-wrap: anywhere; }
+    .season-archive-competition-card-v196 small { color: var(--muted); display: block; }
+    .season-archive-competition-card-v196 p { margin: 0; color: var(--muted); }
+    .season-archive-chip-row-v196 { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .season-archive-chip-row-v196 span { border: 1px solid rgba(251,191,36,.22); background: rgba(251,191,36,.08); color: #fde68a; border-radius: 999px; padding: .18rem .52rem; font-size: .78rem; overflow-wrap: anywhere; }
+    .season-archive-honor-v196, .season-archive-match-list-v196, .season-archive-timeline-v196 { display: grid; gap: .55rem; }
+    .season-archive-honor-v196 article, .season-archive-match-list-v196 article, .season-archive-timeline-v196 article { border: 1px solid rgba(255,255,255,.09); border-radius: .9rem; padding: .65rem; background: rgba(255,255,255,.035); min-width: 0; }
+    .season-archive-honor-v196 article { display: grid; gap: .3rem; }
+    .season-archive-honor-v196 span:first-child, .season-archive-match-list-v196 span, .season-archive-timeline-v196 small { color: var(--muted); }
+    .season-archive-match-list-v196 strong, .season-archive-match-list-v196 small, .season-archive-match-list-v196 span, .season-archive-timeline-v196 strong, .season-archive-timeline-v196 small { display: block; overflow-wrap: anywhere; }
+    .season-archive-timeline-v196 article { display: flex; gap: .6rem; align-items: flex-start; }
+    .season-archive-timeline-v196 article > span { flex: 0 0 auto; }
+    .season-archive-timeline-v196 article > div { min-width: 0; }
+    @media (max-width: 900px) {
+      .season-archive-hero-v196, .season-archive-grid-v196 { grid-template-columns: 1fr; }
+      .season-archive-card-wide-v196 { grid-column: auto; }
+      .season-archive-metrics-v196, .season-archive-teams-v196, .season-archive-competition-grid-v196 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .season-archive-controls-v196 { grid-template-columns: 1fr; align-items: stretch; }
+      .season-archive-controls-v196 .button { width: 100%; }
+      .season-archive-metrics-v196, .season-archive-teams-v196, .season-archive-competition-grid-v196 { grid-template-columns: 1fr; }
+      .season-archive-team-card-v196 dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 390px) {
+      .season-archive-team-card-v196 dl { grid-template-columns: 1fr; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectSeasonArchiveStylesV196();
+
+
+/* V204 - Archivio stagioni da snapshot statici selezionati.
+   V196 costruiva l'Archivio quasi solo da state.raw. Dopo il refresh pubblico,
+   state.raw contiene spesso solo configurazione/stagione corrente mentre le
+   stagioni storiche vivono nei JSON statici assets/snapshots/seasons/*.json.
+   Questa patch carica lo snapshot della stagione selezionata prima del render
+   e costruisce partecipanti, vincitori, competizioni, partite e rose da quello
+   snapshot, senza introdurre nuove letture Firebase quando il JSON statico e'
+   presente. */
+const ZO_RELEASE_VERSION_V204 = "204";
+state.seasonArchiveLoadingV204 = state.seasonArchiveLoadingV204 || {};
+state.seasonArchiveLoadAttemptedV204 = state.seasonArchiveLoadAttemptedV204 || {};
+
+function getSeasonArchiveSnapshotV204(seasonId) {
+  const target = String(seasonId || "").trim();
+  if (!target) return null;
+  return state.publicSeasonSnapshots?.[target] || null;
+}
+
+async function ensureSeasonArchiveSnapshotV204(seasonId) {
+  const target = String(seasonId || "").trim();
+  if (!target) return null;
+  if (state.publicSeasonSnapshots?.[target]) return state.publicSeasonSnapshots[target];
+  if (state.seasonArchiveLoadingV204[target]) return state.seasonArchiveLoadingV204[target];
+  state.seasonArchiveLoadAttemptedV204[target] = true;
+  const promise = (typeof loadPublicSeasonSnapshotV32 === "function"
+    ? loadPublicSeasonSnapshotV32(target)
+    : Promise.resolve(null))
+    .then((snapshot) => {
+      if (snapshot) state.publicSeasonSnapshots[target] = snapshot;
+      return snapshot || null;
+    })
+    .catch((error) => {
+      console.warn(`Archivio: snapshot stagione non caricato per ${target}`, error);
+      return null;
+    })
+    .finally(() => {
+      delete state.seasonArchiveLoadingV204[target];
+    });
+  state.seasonArchiveLoadingV204[target] = promise;
+  return promise;
+}
+
+function getSeasonArchiveSnapshotArrayV204(snapshot, key) {
+  return Array.isArray(snapshot?.[key]) ? snapshot[key].filter(Boolean) : [];
+}
+
+function getSeasonArchiveSourceArrayV204(snapshot, key, rawFilter = null) {
+  const fromSnapshot = getSeasonArchiveSnapshotArrayV204(snapshot, key);
+  if (fromSnapshot.length) return fromSnapshot;
+  const raw = Array.isArray(state.raw?.[key]) ? state.raw[key] : [];
+  return typeof rawFilter === "function" ? raw.filter(rawFilter) : raw;
+}
+
+function getSeasonArchiveIdV204(item, prefix, index) {
+  return String(item?.id || item?.docId || item?.seasonTeamId || item?.teamId || `${prefix}-${index}`);
+}
+
+function buildSeasonArchiveMapByIdV204(items, prefix) {
+  const map = new Map();
+  (items || []).forEach((item, index) => {
+    const id = getSeasonArchiveIdV204(item, prefix, index);
+    if (id) map.set(id, item);
+  });
+  return map;
+}
+
+function getArchiveTeamNameKeysV204(value) {
+  if (typeof getTeamNameKeysV201 === "function") return getTeamNameKeysV201(value);
+  const text = String(value || "").trim();
+  if (!text) return [];
+  return [typeof normalizeKey === "function" ? normalizeKey(text) : text.toLowerCase()];
+}
+
+function getArchiveSeasonTeamNameV204(archive, seasonTeamOrId) {
+  const seasonTeam = typeof seasonTeamOrId === "string"
+    ? archive.seasonTeamsById?.get(seasonTeamOrId)
+    : seasonTeamOrId;
+  if (!seasonTeam) return "-";
+  const team = archive.teamsById?.get(String(seasonTeam.teamId || "")) || {};
+  return seasonTeam.name || seasonTeam.teamName || seasonTeam.displayName || team.canonicalName || team.name || seasonTeam.id || "-";
+}
+
+function getArchiveSeasonTeamLogoV204(archive, seasonTeamOrId) {
+  const seasonTeam = typeof seasonTeamOrId === "string"
+    ? archive.seasonTeamsById?.get(seasonTeamOrId)
+    : seasonTeamOrId;
+  if (!seasonTeam) return "";
+  const team = archive.teamsById?.get(String(seasonTeam.teamId || "")) || {};
+  return seasonTeam.logo || team.logo || "";
+}
+
+function getArchiveSeasonTeamPresidentNamesV204(archive, seasonTeam) {
+  if (!seasonTeam) return "-";
+  if (seasonTeam.presidentName) return seasonTeam.presidentName;
+  if (seasonTeam.presidentNames) return Array.isArray(seasonTeam.presidentNames) ? seasonTeam.presidentNames.join(", ") : String(seasonTeam.presidentNames);
+  const ids = [];
+  if (Array.isArray(seasonTeam.presidentIds)) ids.push(...seasonTeam.presidentIds);
+  [seasonTeam.presidentId, seasonTeam.primaryPresidentId, seasonTeam.coachPresidentId].forEach((id) => { if (id) ids.push(id); });
+  const names = ids.map((id) => archive.presidentsById?.get(String(id))?.name).filter(Boolean);
+  return names.length ? names.join(", ") : "-";
+}
+
+function parseArchiveFiniteNumberV227(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const parsed = Number(String(value).replace(",", "."));
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function getArchiveSeasonTeamDirectFmV227(seasonTeam) {
+  if (!seasonTeam) return null;
+  const fields = [
+    seasonTeam.fmBalance,
+    seasonTeam.balance,
+    seasonTeam.remainingCredits,
+    seasonTeam.credits,
+    seasonTeam.crediti,
+    seasonTeam.budget,
+    seasonTeam.budgetRemaining
+  ];
+  for (const value of fields) {
+    const parsed = parseArchiveFiniteNumberV227(value);
+    if (parsed !== null) return parsed;
+  }
+  return null;
+}
+
+function getArchiveSeasonTeamRosterSnapshotFmV227(archive, seasonTeam) {
+  const seasonId = String(archive?.season?.id || seasonTeam?.seasonId || "");
+  if (!seasonId || !Array.isArray(state.rosters)) return null;
+  const nameKeys = new Set([
+    ...getArchiveTeamNameKeysV204(seasonTeam?.name),
+    ...getArchiveTeamNameKeysV204(seasonTeam?.teamName),
+    ...getArchiveTeamNameKeysV204(seasonTeam?.displayName),
+    ...getArchiveTeamNameKeysV204(getArchiveSeasonTeamNameV204(archive, seasonTeam))
+  ].filter(Boolean));
+  if (!nameKeys.size) return null;
+
+  const rosterSnapshots = state.rosters
+    .filter((snapshot) => String(snapshot?.seasonId || snapshot?.meta?.seasonId || "") === seasonId && Array.isArray(snapshot.rosters))
+    .sort((a, b) => String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it"));
+
+  for (const snapshot of rosterSnapshots) {
+    const roster = snapshot.rosters.find((item) => {
+      const keys = getArchiveTeamNameKeysV204(item?.name || item?.teamName || item?.clubName);
+      return keys.some((key) => nameKeys.has(key));
+    });
+    if (!roster) continue;
+    const parsed = parseArchiveFiniteNumberV227(roster.remainingCredits ?? roster.fmBalance ?? roster.balance ?? roster.credits);
+    if (parsed !== null) return parsed;
+  }
+  return null;
+}
+
+function buildArchiveFmBalanceMapV227(archive, movements) {
+  const map = new Map();
+  (archive?.seasonTeams || []).forEach((seasonTeam) => {
+    const id = String(seasonTeam?.id || "");
+    if (!id) return;
+    const direct = getArchiveSeasonTeamDirectFmV227(seasonTeam);
+    if (direct !== null) {
+      map.set(id, direct);
+      return;
+    }
+    const rosterSnapshotBalance = getArchiveSeasonTeamRosterSnapshotFmV227(archive, seasonTeam);
+    if (rosterSnapshotBalance !== null) {
+      map.set(id, rosterSnapshotBalance);
+      return;
+    }
+    const movementRows = (movements || []).filter((movement) => {
+      const seasonTeamId = String(movement?.seasonTeamId || "");
+      const targetSeasonTeamId = String(movement?.targetSeasonTeamId || "");
+      return seasonTeamId === id || targetSeasonTeamId === id;
+    });
+    if (movementRows.length) {
+      const balance = movementRows.reduce((sum, movement) => {
+        const amount = parseArchiveFiniteNumberV227(movement?.amount);
+        return sum + (amount === null ? 0 : amount);
+      }, 0);
+      map.set(id, balance);
+    }
+  });
+  return map;
+}
+
+function getArchiveSeasonTeamFmBalanceV227(archive, seasonTeam) {
+  const id = String(seasonTeam?.id || "");
+  if (!id) return null;
+  if (archive?.fmBalanceBySeasonTeamId?.has(id)) return archive.fmBalanceBySeasonTeamId.get(id);
+  const direct = getArchiveSeasonTeamDirectFmV227(seasonTeam);
+  if (direct !== null) return direct;
+  return null;
+}
+
+function formatArchiveFmBalanceV227(value) {
+  return value === null || value === undefined ? "-" : formatFm(value);
+}
+
+function renderArchiveSeasonTeamNameWithLogoV204(archive, seasonTeamId, options = {}) {
+  const name = getArchiveSeasonTeamNameV204(archive, seasonTeamId);
+  const logo = getArchiveSeasonTeamLogoV204(archive, seasonTeamId);
+  const text = options.strong === false
+    ? `<span>${escapeHtml(name)}</span>`
+    : `<strong>${escapeHtml(name)}</strong>`;
+  return `<span class="club-name-with-logo">${renderTeamLogo(name, logo)}${text}</span>`;
+}
+
+function findArchiveSeasonTeamBySnapshotCellV204(archive, cell) {
+  if (!cell || cell.kind === "empty" || cell.kind === "status") return null;
+  if (cell.seasonTeamId && archive.seasonTeamsById?.has(String(cell.seasonTeamId))) {
+    return archive.seasonTeamsById.get(String(cell.seasonTeamId));
+  }
+  if (cell.teamId) {
+    const byTeam = archive.seasonTeams.find((item) => String(item.teamId || "") === String(cell.teamId));
+    if (byTeam) return byTeam;
+  }
+  const targetKeys = new Set(getArchiveTeamNameKeysV204(cell.label || cell.teamName || cell.name));
+  if (!targetKeys.size) return null;
+  return archive.seasonTeams.find((seasonTeam) => {
+    const keys = new Set([
+      ...getArchiveTeamNameKeysV204(seasonTeam.name),
+      ...getArchiveTeamNameKeysV204(seasonTeam.teamName),
+      ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.name),
+      ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.canonicalName)
+    ]);
+    return [...keys].some((key) => targetKeys.has(key));
+  }) || null;
+}
+
+function getSeasonArchiveHonorRowV204(seasonId) {
+  const target = String(seasonId || "");
+  const snapshotRows = Array.isArray(state.publicHonorSnapshot?.honorRows) ? state.publicHonorSnapshot.honorRows : [];
+  const snapshotRow = snapshotRows.find((row) => String(row?.seasonId || row?.id || row?.seasonLabel || "") === target);
+  if (snapshotRow) return snapshotRow;
+  return (state.raw.honorRoll || []).find((row) => String(row.seasonId || row.id || "") === target) || null;
+}
+
+function getSeasonArchiveHonorTitlesV204(row, archive) {
+  if (!row) return [];
+  const snapshotFields = [
+    { key: "CAMPIONATO", label: "Campionato", cellField: "championItaly", rawField: "championItalySeasonTeamId" },
+    { key: "COPPA_ITALIA", label: "Coppa Italia", cellField: "coppaItalia", rawField: "coppaItaliaWinnerSeasonTeamId" },
+    { key: "CHAMPIONS_LEAGUE", label: "Champions League", cellField: "championsLeague", rawField: "championsLeagueWinnerSeasonTeamId" },
+    { key: "PLAYOFF", label: "Playoff", cellField: "playoff", rawField: "playoffWinnerSeasonTeamId" }
+  ];
+  return snapshotFields.map((competition) => {
+    const cell = row[competition.cellField];
+    const fromCell = findArchiveSeasonTeamBySnapshotCellV204(archive, cell);
+    const rawId = row[competition.rawField];
+    const fromRaw = rawId ? archive.seasonTeamsById?.get(String(rawId)) : null;
+    const seasonTeam = fromCell || fromRaw;
+    if (!seasonTeam) return null;
+    return {
+      key: competition.key,
+      label: competition.label,
+      seasonTeamId: seasonTeam.id,
+      teamName: getArchiveSeasonTeamNameV204(archive, seasonTeam)
+    };
+  }).filter(Boolean);
+}
+
+function buildArchiveRosterCountMapV204(archive, rosterEntries) {
+  const map = new Map();
+  const active = (rosterEntries || []).filter((entry) => String(entry.status || "ACTIVE").toUpperCase() !== "REMOVED");
+  active.forEach((entry) => {
+    const id = String(entry.seasonTeamId || "");
+    if (id) map.set(id, (map.get(id) || 0) + 1);
+  });
+  const entriesWithoutId = active.filter((entry) => !entry.seasonTeamId);
+  if (entriesWithoutId.length) {
+    const lookup = new Map();
+    archive.seasonTeams.forEach((seasonTeam) => {
+      const keys = [
+        ...getArchiveTeamNameKeysV204(seasonTeam.name),
+        ...getArchiveTeamNameKeysV204(seasonTeam.teamName),
+        ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.name),
+        ...getArchiveTeamNameKeysV204(archive.teamsById?.get(String(seasonTeam.teamId || ""))?.canonicalName)
+      ];
+      keys.forEach((key) => { if (key && !lookup.has(key)) lookup.set(key, seasonTeam.id); });
+    });
+    entriesWithoutId.forEach((entry) => {
+      const keys = [
+        ...getArchiveTeamNameKeysV204(entry.teamName),
+        ...getArchiveTeamNameKeysV204(entry.seasonTeamName),
+        ...getArchiveTeamNameKeysV204(entry.rosterName)
+      ];
+      const id = keys.map((key) => lookup.get(key)).find(Boolean);
+      if (id) map.set(id, (map.get(id) || 0) + 1);
+    });
+  }
+  return map;
+}
+
+function buildArchiveMovementCountMapV204(movements) {
+  return (movements || []).reduce((map, item) => {
+    const id = String(item.seasonTeamId || "");
+    if (id) map.set(id, (map.get(id) || 0) + 1);
+    return map;
+  }, new Map());
+}
+
+buildSeasonArchiveV196 = function buildSeasonArchiveV204(seasonId = getSeasonArchiveSeasonIdV196()) {
+  const snapshot = getSeasonArchiveSnapshotV204(seasonId);
+  const season = (state.raw.seasons || []).find((item) => item.id === seasonId) || { id: seasonId, name: seasonId };
+  const teams = getSeasonArchiveSourceArrayV204(snapshot, "teams");
+  const presidents = getSeasonArchiveSourceArrayV204(snapshot, "presidents");
+  const seasonTeams = getSeasonArchiveSourceArrayV204(snapshot, "seasonTeams", (item) => item.seasonId === seasonId)
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .sort((a, b) => String(a.name || a.teamName || "").localeCompare(String(b.name || b.teamName || ""), "it", { sensitivity: "base" }));
+  const competitions = getSeasonArchiveSourceArrayV204(snapshot, "competitions", (item) => item.seasonId === seasonId)
+    .filter((item) => !item.seasonId || item.seasonId === seasonId);
+  const competitionIds = new Set(competitions.map((item) => item.id).filter(Boolean));
+  const matches = getSeasonArchiveSourceArrayV204(snapshot, "competitionMatches", (match) => competitionIds.has(match.competitionId))
+    .filter((match) => !competitionIds.size || competitionIds.has(match.competitionId));
+  const results = getSeasonArchiveSourceArrayV204(snapshot, "competitionResults", (result) => competitionIds.has(result.competitionId))
+    .filter((result) => !competitionIds.size || competitionIds.has(result.competitionId));
+  const rosterEntries = getSeasonArchiveSourceArrayV204(snapshot, "rosterEntries", (entry) => seasonTeams.some((team) => team.id === entry.seasonTeamId));
+  const movements = getSeasonArchiveSourceArrayV204(snapshot, "fmMovements", (item) => seasonTeams.some((team) => team.id === item.seasonTeamId));
+  const news = getSeasonArchiveSourceArrayV204(snapshot, "news", (item) => !item.seasonId || item.seasonId === seasonId)
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .slice(0, 8);
+  const stadiums = getSeasonArchiveSourceArrayV204(snapshot, "stadiums");
+  const archive = {
+    season,
+    snapshot,
+    teams,
+    presidents,
+    seasonTeams,
+    competitions,
+    matches,
+    results,
+    rosterEntries,
+    movements,
+    news,
+    teamsById: buildSeasonArchiveMapByIdV204(teams, "team"),
+    presidentsById: buildSeasonArchiveMapByIdV204(presidents, "president"),
+    seasonTeamsById: buildSeasonArchiveMapByIdV204(seasonTeams, "seasonTeam"),
+    stadiumsBySeasonTeamId: new Map(stadiums.map((item) => [String(item.seasonTeamId || item.id || ""), item]).filter(([key]) => key))
+  };
+  const honor = getSeasonArchiveHonorRowV204(seasonId);
+  const honorTitles = getSeasonArchiveHonorTitlesV204(honor, archive);
+  const recentMatches = [...matches].sort(compareMatchesForDisplay).slice(-8).reverse();
+  const goals = matches.reduce((sum, match) => {
+    const score = getSeasonArchiveMatchResultPartsV196(match);
+    if (score.homeNum === null || score.awayNum === null) return sum;
+    return sum + score.homeNum + score.awayNum;
+  }, 0);
+  return {
+    ...archive,
+    honor,
+    honorTitles,
+    rosterCountBySeasonTeamId: buildArchiveRosterCountMapV204(archive, rosterEntries),
+    movementCountBySeasonTeamId: buildArchiveMovementCountMapV204(movements),
+    fmBalanceBySeasonTeamId: buildArchiveFmBalanceMapV227(archive, movements),
+    recentMatches,
+    goals
+  };
+};
+
+renderSeasonArchiveTeamsV196 = function renderSeasonArchiveTeamsV227(archive) {
+  if (!archive.seasonTeams.length) return `<p class="muted">Nessuna squadra trovata per questa stagione. Verifica che lo snapshot statico della stagione sia presente in <code>assets/snapshots/seasons</code>.</p>`;
+  return `<div class="season-archive-teams-v196">${archive.seasonTeams.map((seasonTeam) => {
+    const stadium = archive.stadiumsBySeasonTeamId.get(String(seasonTeam.id || "")) || {};
+    const rosterCount = archive.rosterCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const movementCount = archive.movementCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const fmBalance = getArchiveSeasonTeamFmBalanceV227(archive, seasonTeam);
+    const logo = getArchiveSeasonTeamLogoV204(archive, seasonTeam);
+    const name = getArchiveSeasonTeamNameV204(archive, seasonTeam);
+    return `
+      <article class="season-archive-team-card-v196">
+        <div class="season-archive-team-head-v196">${renderTeamLogo(name, logo)}<div><strong>${escapeHtml(name)}</strong><small>${escapeHtml(getArchiveSeasonTeamPresidentNamesV204(archive, seasonTeam))}</small></div></div>
+        <dl>
+          <div><dt>Saldo</dt><dd>${escapeHtml(formatArchiveFmBalanceV227(fmBalance))}</dd></div>
+          <div><dt>Rosa</dt><dd>${escapeHtml(String(rosterCount || "-"))}</dd></div>
+          <div><dt>Movimenti</dt><dd>${escapeHtml(String(movementCount || "-"))}</dd></div>
+          <div><dt>Stadio</dt><dd>${escapeHtml(stadium.name || seasonTeam.stadiumName || "-")}</dd></div>
+        </dl>
+      </article>`;
+  }).join("")}</div>`;
+};
+
+renderSeasonArchiveHonorV196 = function renderSeasonArchiveHonorV204(archive) {
+  if (!archive.honorTitles.length) return `<p class="muted">Nessun dato Albo d'Oro collegato a questa stagione nello snapshot honor.</p>`;
+  return `<div class="season-archive-honor-v196">${archive.honorTitles.map((title) => `
+    <article><span>${escapeHtml(title.label)}</span>${renderArchiveSeasonTeamNameWithLogoV204(archive, title.seasonTeamId, { strong: true })}</article>
+  `).join("")}</div>`;
+};
+
+renderSeasonArchiveCompetitionsV196 = function renderSeasonArchiveCompetitionsV204(archive) {
+  if (!archive.competitions.length) return `<p class="muted">Nessuna competizione trovata per questa stagione nello snapshot selezionato.</p>`;
+  return `<div class="season-archive-competition-grid-v196">${archive.competitions.map((competition) => {
+    const matches = archive.matches.filter((match) => match.competitionId === competition.id);
+    const results = archive.results.filter((result) => result.competitionId === competition.id).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
+    const winnerId = results[0]?.seasonTeamId || competition.winnerSeasonTeamId || competition.winnerId || "";
+    const winner = winnerId ? getArchiveSeasonTeamNameV204(archive, String(winnerId)) : (competition.winnerName || "-");
+    return `
+      <article class="season-archive-competition-card-v196">
+        <div><strong>${escapeHtml(getCompetitionNameV196(competition))}</strong><small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type) || competition.type || "Competizione")}</small></div>
+        <div class="season-archive-chip-row-v196">
+          <span>${escapeHtml(getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "Stato n.d.")}</span>
+          <span>${matches.length} partite</span>
+          <span>${results.length} righe classifica</span>
+        </div>
+        <p><strong>Vincitore/Classifica:</strong> ${escapeHtml(winner)}</p>
+      </article>`;
+  }).join("")}</div>`;
+};
+
+renderSeasonArchiveMatchesV196 = function renderSeasonArchiveMatchesV204(archive) {
+  if (!archive.recentMatches.length) return `<p class="muted">Nessuna partita caricata per questa stagione.</p>`;
+  return `<div class="season-archive-match-list-v196">${archive.recentMatches.map((match) => {
+    const competition = archive.competitions.find((item) => item.id === match.competitionId);
+    const homeName = match.homeTeamName || getArchiveSeasonTeamNameV204(archive, match.homeSeasonTeamId);
+    const awayName = match.awayTeamName || getArchiveSeasonTeamNameV204(archive, match.awaySeasonTeamId);
+    return `
+      <article>
+        <span>${escapeHtml(match.matchDate || formatMatchStage(match) || "-")}</span>
+        <strong>${escapeHtml(homeName)} - ${escapeHtml(awayName)}</strong>
+        <small>${escapeHtml(formatMatchResult(match))} · ${escapeHtml(getCompetitionNameV196(competition))}</small>
+      </article>`;
+  }).join("")}</div>`;
+};
+
+renderSeasonArchiveTimelineV196 = function renderSeasonArchiveTimelineV204(archive) {
+  const items = [];
+  archive.honorTitles.forEach((title) => items.push({ icon: "🏆", label: title.label, text: title.teamName }));
+  archive.competitions.slice(0, 6).forEach((competition) => items.push({ icon: "📌", label: getCompetitionNameV196(competition), text: getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "competizione" }));
+  archive.news.slice(0, 4).forEach((item) => items.push({ icon: "📰", label: item.title || item.topic || "Comunicazione", text: item.date || item.createdAt || "news" }));
+  if (!items.length) return `<p class="muted">Timeline non disponibile per questa stagione.</p>`;
+  return `<div class="season-archive-timeline-v196">${items.slice(0, 12).map((item) => `
+    <article><span>${escapeHtml(item.icon)}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.text || "-")}</small></div></article>
+  `).join("")}</div>`;
+};
+
+function renderSeasonArchiveLoadingV204(seasonId) {
+  const controlsTarget = document.getElementById("seasonArchiveControlsV196");
+  const contentTarget = document.getElementById("seasonArchiveContentV196");
+  const seasons = getSeasonArchiveSortedSeasonsV196();
+  if (controlsTarget) controlsTarget.innerHTML = renderSeasonArchiveControlsV196(seasons, seasonId);
+  const select = document.getElementById("seasonArchiveSelectV196");
+  if (select) {
+    select.value = seasonId || "";
+    select.addEventListener("change", () => setSeasonArchiveSeasonIdV196(select.value));
+  }
+  document.getElementById("seasonArchiveSyncCurrentV196")?.addEventListener("click", () => setSeasonArchiveSeasonIdV196(getCurrentSeasonId()));
+  if (contentTarget) {
+    contentTarget.innerHTML = `<article class="panel"><h3>Caricamento archivio stagione</h3><p class="muted">Sto caricando lo snapshot statico della stagione ${escapeHtml(getSeasonLabelV193(seasonId))}. Nessuna scrittura su Firebase.</p></article>`;
+  }
+}
+
+const renderSeasonArchiveBeforeV204 = renderSeasonArchiveV196;
+renderSeasonArchiveV196 = function renderSeasonArchiveV204() {
+  const seasonId = getSeasonArchiveSeasonIdV196();
+  const hasSnapshot = Boolean(getSeasonArchiveSnapshotV204(seasonId));
+  const attempted = Boolean(state.seasonArchiveLoadAttemptedV204?.[seasonId]);
+  if (!hasSnapshot && !attempted && typeof loadPublicSeasonSnapshotV32 === "function") {
+    renderSeasonArchiveLoadingV204(seasonId);
+    ensureSeasonArchiveSnapshotV204(seasonId).then(() => {
+      renderSeasonArchiveBeforeV204?.();
+    });
+    return;
+  }
+  renderSeasonArchiveBeforeV204?.();
+};
+
+window.ZonaOrientaleSeasonArchive = {
+  build: buildSeasonArchiveV196,
+  render: renderSeasonArchiveV196,
+  setSeason: setSeasonArchiveSeasonIdV196,
+  ensureSnapshot: ensureSeasonArchiveSnapshotV204,
+  snapshot: getSeasonArchiveSnapshotV204
+};
+
+
+
+/* V209 - Refactor moduli dati live e archivio.
+   Il blocco V208 e' stato estratto in assets/js/refactor/live-data-archive-v209.js.
+   Qui restano solo wiring, override compatibili e avvio centralizzato. */
+const ZO_RELEASE_VERSION_V209 = "209";
+const liveDataArchiveV209 = createLiveDataArchiveRefactorV209({
+  state,
+  loadCollection,
+  makeEmptyRawData: makeEmptyRawDataV34,
+  getNewsRawDateValue: typeof getNewsRawDateValueV79 === "function" ? getNewsRawDateValueV79 : null,
+  timestampToDate: typeof timestampToDateV79 === "function" ? timestampToDateV79 : null,
+  getHashPage: typeof getHashPageV170 === "function" ? getHashPageV170 : null,
+  getApprovedTeamUser: typeof getApprovedTeamUser === "function" ? getApprovedTeamUser : null,
+  getCurrentSeasonId,
+  formatMatchResult,
+  escapeHtml,
+  optionalHelpers: {
+    renderNewsPublicV34: typeof renderNewsPublicV34 === "function" ? renderNewsPublicV34 : null,
+    renderDashboardNewsV42: typeof renderDashboardNewsV42 === "function" ? renderDashboardNewsV42 : null,
+    injectPresidentDashboardV192: typeof injectPresidentDashboardV192 === "function" ? injectPresidentDashboardV192 : null,
+    refreshVisibleTeamProfileV120: typeof refreshVisibleTeamProfileV120 === "function" ? refreshVisibleTeamProfileV120 : null,
+    ensureTransferMarketDataV119: typeof ensureTransferMarketDataV119 === "function" ? ensureTransferMarketDataV119 : null
+  },
+  archive: {
+    getSortedSeasons: typeof getSeasonArchiveSortedSeasonsV196 === "function" ? getSeasonArchiveSortedSeasonsV196 : null,
+    getSeasonId: typeof getSeasonArchiveSeasonIdV196 === "function" ? getSeasonArchiveSeasonIdV196 : null,
+    setSeasonId: typeof setSeasonArchiveSeasonIdV196 === "function" ? setSeasonArchiveSeasonIdV196 : null,
+    getSnapshot: typeof getSeasonArchiveSnapshotV204 === "function" ? getSeasonArchiveSnapshotV204 : null,
+    ensureSnapshot: typeof ensureSeasonArchiveSnapshotV204 === "function" ? ensureSeasonArchiveSnapshotV204 : null,
+    renderLoading: typeof renderSeasonArchiveLoadingV204 === "function" ? renderSeasonArchiveLoadingV204 : null,
+    build: typeof buildSeasonArchiveV196 === "function" ? buildSeasonArchiveV196 : null,
+    renderControls: typeof renderSeasonArchiveControlsV196 === "function" ? renderSeasonArchiveControlsV196 : null,
+    renderMetric: typeof renderSeasonArchiveMetricV196 === "function" ? renderSeasonArchiveMetricV196 : null,
+    renderTeams: typeof renderSeasonArchiveTeamsV196 === "function" ? renderSeasonArchiveTeamsV196 : null,
+    renderHonor: typeof renderSeasonArchiveHonorV196 === "function" ? renderSeasonArchiveHonorV196 : null,
+    renderCompetitions: typeof renderSeasonArchiveCompetitionsV196 === "function" ? renderSeasonArchiveCompetitionsV196 : null,
+    renderTimeline: typeof renderSeasonArchiveTimelineV196 === "function" ? renderSeasonArchiveTimelineV196 : null,
+    getSeasonLabel: typeof getSeasonLabelV193 === "function" ? getSeasonLabelV193 : null
+  }
+});
+
+const loadPublicDataForSelectedSeasonBeforeV205 = loadPublicDataForSelectedSeasonV100;
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV209(requestId, options = {}) {
+  const result = await loadPublicDataForSelectedSeasonBeforeV205(requestId, options);
+  liveDataArchiveV209.scheduleLiveNewsRefresh("public-load-background");
+  liveDataArchiveV209.ensureLiveTransferMarketForPresident("public-load-background");
+  return result;
+};
+
+const renderUserAreaBeforeV205 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV209() {
+  const result = renderUserAreaBeforeV205?.();
+  liveDataArchiveV209.ensureLiveTransferMarketForPresident("dashboard-presidente");
+  return result;
+};
+
+const renderAllBeforeV205 = renderAll;
+renderAll = function renderAllV209() {
+  const result = renderAllBeforeV205?.();
+  liveDataArchiveV209.ensureLiveTransferMarketForPresident("render-all");
+  return result;
+};
+
+const loadLiveNewsFromFirebaseV205 = liveDataArchiveV209.loadLiveNewsFromFirebase;
+const sortLiveNewsRowsV205 = liveDataArchiveV209.sortLiveNewsRows;
+const renderLiveNewsSurfacesV205 = liveDataArchiveV209.renderLiveNewsSurfaces;
+const scheduleLiveNewsRefreshV208 = liveDataArchiveV209.scheduleLiveNewsRefresh;
+const shouldEnsureLiveMarketForPresidentV205 = liveDataArchiveV209.shouldEnsureLiveMarketForPresident;
+const ensureLiveTransferMarketForPresidentV205 = liveDataArchiveV209.ensureLiveTransferMarketForPresident;
+renderSeasonArchiveV196 = liveDataArchiveV209.renderSeasonArchive;
+
+window.ZonaOrientaleLiveData = {
+  loadNews: loadLiveNewsFromFirebaseV205,
+  refreshNewsBackground: scheduleLiveNewsRefreshV208,
+  ensureMarket: ensureLiveTransferMarketForPresidentV205,
+  status: liveDataArchiveV209.liveStatus
+};
+
+window.ZonaOrientaleSeasonArchive = {
+  build: buildSeasonArchiveV196,
+  render: renderSeasonArchiveV196,
+  setSeason: setSeasonArchiveSeasonIdV196,
+  ensureSnapshot: ensureSeasonArchiveSnapshotV204,
+  snapshot: getSeasonArchiveSnapshotV204
+};
+
+/* V214 - Hotfix refactor sicuro.
+   V213 viene temporaneamente disattivato: il workflow pubblicazione resta nella versione inline V212/V203,
+   mentre il sito mantiene i dati visibili e il bootstrap non dipende dal modulo admin-publication-workflow. */
+
+/* V215 - Hotfix archivio bootstrap.
+   Ripristina gli helper base V196 dellArchivio prima degli override V204/V209.
+   Senza questi helper, il modulo ES interrompeva lavvio con buildSeasonArchiveV196 non definita. */
+
+/* V223 - CSS cleanup progressivo.
+   Il chrome mobile globale viene centralizzato in assets/css/mobile-chrome-v223.css. */
+
+/* V222 - Data repository facade.
+   Introduce assets/js/data/repository-v222.js come facciata unica per raccolte Firebase,
+   config pubblica e asset statici listoni/rose/competizioni.
+   Non cambia sorgenti dati, UI o flussi Firebase: centralizza solo i punti di accesso. */
+
+/* V221 - Separazione ciclo rendering public/admin.
+   Estrae l orchestrazione del render principale in public-admin-render-orchestrator-v221.js.
+   Non cambia UI, dati o flussi Firebase. */
+
+/* V218 - UI mobile globale e pagine storiche.
+   - Installa realmente il refactor V211 per Statistiche e Confronta.
+   - Richiama l'Archivio dopo il caricamento dati.
+   - Uniforma il pulsante "Su" mobile e impedisce al bottom menu di apparire da desktop. */
+const historicalStatsCompareV218 = installHistoricalStatsCompareRefactorV211({
+  state,
+  escapeHtml,
+  normalizeKey,
+  renderTeamLogo,
+  getTeamById,
+  getSeasonTeamById,
+  getSeasonTeamDisplayName,
+  getSeasonTeamLogo,
+  getCompetitionName: typeof getCompetitionPublicDisplayNameV110 === "function" ? getCompetitionPublicDisplayNameV110 : (typeof getCompetitionNameV196 === "function" ? getCompetitionNameV196 : null),
+  formatSeasonShortLabel,
+  buildMaps,
+  formatMatchResult,
+  loadStaticPublicSeasonSnapshot: typeof loadStaticPublicSeasonSnapshotV172 === "function" ? loadStaticPublicSeasonSnapshotV172 : null,
+  logger: console
+});
+historicalStatsCompareV218.injectStyles?.();
+historicalStatsCompareV218.installAdminHelpPanelHooks?.({
+  get: () => renderAdminHelpPanelV185,
+  set: (fn) => { renderAdminHelpPanelV185 = fn; }
+});
+
+const mobileChromeV220 = createMobileChromeControllerV220();
+
+function enforceSmartphoneChromeV218() {
+  mobileChromeV220.enforceSmartphoneChrome();
+}
+
+function setupGlobalScrollTopButtonV218() {
+  mobileChromeV220.setupGlobalScrollTopButton();
+}
+
+const updateMobileUxClassBeforeV218 = updateMobileUxClass;
+updateMobileUxClass = function updateMobileUxClassV218() {
+  updateMobileUxClassBeforeV218?.();
+  enforceSmartphoneChromeV218();
+};
+
+const renderAllBeforeV218 = renderAll;
+renderAll = function renderAllV218() {
+  const result = renderAllBeforeV218?.();
+  try { historicalStatsCompareV218.renderAllSurfaces?.(); } catch (error) { console.warn("Statistiche/Confronta non renderizzati", error); }
+  try { renderSeasonArchiveV196?.(); } catch (error) { console.warn("Archivio stagioni non renderizzato", error); }
+  setupGlobalScrollTopButtonV218();
+  return result;
+};
+
+document.addEventListener("DOMContentLoaded", setupGlobalScrollTopButtonV218);
+window.addEventListener("load", () => {
+  setupGlobalScrollTopButtonV218();
+  enforceSmartphoneChromeV218();
+});
+
+/* V224 - Historical stats hardening.
+   Non disputata/status honor cells are excluded from title rankings, and
+   historical static season snapshots are preloaded for president title totals. */
+
+/* V225 - Stabilizzazione finale post-refactor.
+   Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
+   pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
+runRefactorStabilityChecksV225({
+  version: "V227",
+  dataRepository: zonaDataRepositoryV222,
+  renderOrchestrator: publicAdminRenderOrchestratorV221,
+  mobileChrome: mobileChromeV220,
+  historicalStats: historicalStatsCompareV218,
+  archiveApi: {
+    build: typeof buildSeasonArchiveV196 === "function" ? buildSeasonArchiveV196 : null,
+    render: typeof renderSeasonArchiveV196 === "function" ? renderSeasonArchiveV196 : null,
+    getSortedSeasons: typeof getSeasonArchiveSortedSeasonsV196 === "function" ? getSeasonArchiveSortedSeasonsV196 : null,
+    getSnapshot: typeof getSeasonArchiveSnapshotV204 === "function" ? getSeasonArchiveSnapshotV204 : null
+  },
+  logger: console
+});
+
+/* V209 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();

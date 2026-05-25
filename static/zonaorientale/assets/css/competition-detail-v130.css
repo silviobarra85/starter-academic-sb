@@ -552,3 +552,48 @@ body.is-mobile-ux .competition-page-match-table-wrap table td:first-child {
 body.is-mobile-ux .competition-page-match-table-wrap table {
   min-width: 820px !important;
 }
+
+/* V216 - Pagina singola competizione: classifica campionato completa. */
+.competition-page-result-table-wrap table.competition-page-results-table.competition-standing-table-v216 {
+  min-width: 920px;
+}
+
+.competition-page-results-table.competition-standing-table-v216 .result-position-col {
+  width: 52px !important;
+  min-width: 52px !important;
+  max-width: 52px !important;
+  text-align: center !important;
+}
+
+.competition-page-results-table.competition-standing-table-v216 .result-team-col {
+  width: 260px !important;
+  min-width: 260px !important;
+  max-width: 260px !important;
+}
+
+.competition-page-results-table.competition-standing-table-v216 .result-points-col,
+.competition-page-results-table.competition-standing-table-v216 .result-played-col,
+.competition-page-results-table.competition-standing-table-v216 .result-wins-col,
+.competition-page-results-table.competition-standing-table-v216 .result-draws-col,
+.competition-page-results-table.competition-standing-table-v216 .result-losses-col,
+.competition-page-results-table.competition-standing-table-v216 .result-goals-for-col,
+.competition-page-results-table.competition-standing-table-v216 .result-goals-against-col,
+.competition-page-results-table.competition-standing-table-v216 .result-goal-difference-col {
+  width: 58px !important;
+  min-width: 58px !important;
+}
+
+.competition-page-results-table.competition-standing-table-v216 .result-fantapoints-col {
+  width: 78px !important;
+  min-width: 78px !important;
+}
+
+/* V217 - Pagina singola competizione: forza la classifica completa anche con CSS mobile legacy in cache. */
+.competition-page-result-table-wrap table.competition-standing-table-v216 th,
+.competition-page-result-table-wrap table.competition-standing-table-v216 td {
+  display: table-cell;
+}
+
+body.is-mobile-ux .competition-page-result-table-wrap table.competition-standing-table-v216 {
+  min-width: 920px !important;
+}
