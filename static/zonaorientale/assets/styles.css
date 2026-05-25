@@ -13538,3 +13538,49 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
     width: 100%;
   }
 }
+
+
+/* V229 - Header account presidente */
+.president-account-button-v229 {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  white-space: nowrap;
+  min-height: 2.5rem;
+  padding-inline: .75rem .95rem;
+}
+
+.president-account-button-v229 .president-account-logo-v229 {
+  width: 1.55rem;
+  height: 1.55rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .35);
+}
+
+.president-account-button-v229 .club-logo-placeholder.president-account-logo-v229 {
+  display: inline-grid;
+  place-items: center;
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.president-account-label-v229 {
+  display: inline-block;
+  max-width: 11rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+  .president-account-button-v229 {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .president-account-label-v229 {
+    max-width: 9rem;
+  }
+}

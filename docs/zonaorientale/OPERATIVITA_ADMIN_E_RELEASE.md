@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V228.
+Stato: V229.
 
 ## Regola d'oro dati
 
@@ -319,3 +319,17 @@ git push
 ```
 
 Se condividi un URL gia' condiviso in passato, WhatsApp puo mantenere la vecchia preview in cache. Per questo i link copiati dal sito includono `?v=<id-comunicato>`.
+
+
+## Test manuale specifico V229
+
+Dopo deploy o test locale:
+
+```text
+1. Login con account presidente approvato.
+2. Verificare che nel header non compaia piu `Account`.
+3. Verificare che compaia logo squadra + `Pres. Cognome`.
+4. Cliccare il pulsante e verificare apertura Dashboard Presidente.
+5. Logout e verificare ritorno del pulsante `Accedi / Registrati`.
+6. Login admin e verificare che la navigazione Admin non cambi.
+```

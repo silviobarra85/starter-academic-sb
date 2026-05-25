@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V228
+# AI Handoff ZonaOrientale - Current V229
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V228**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e pagine statiche per anteprime WhatsApp dei comunicati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V229**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e pagine statiche per anteprime WhatsApp dei comunicati e pulsante account presidente personalizzato in header.
 
 ## Posizione e struttura progetto
 
@@ -55,6 +55,31 @@ http://localhost:1313/zonaorientale/
 
 
 
+## Fix V229 - Account presidente in header
+
+Quando un presidente approvato effettua login, il pulsante `#openLoginBtn` non deve mostrare il testo generico `Account`. La V229 lo trasforma in un pulsante compatto con logo squadra e label `Pres. Cognome`, usando il presidente approvato collegato a `teamUsers/{uid}` e, quando possibile, l'anagrafica in `presidents`.
+
+Comportamento atteso:
+
+```text
+utente anonimo/non approvato -> Accedi / Registrati o Account legacy
+presidente approvato -> logo squadra + Pres. Cognome
+click presidente -> Dashboard Presidente (#teamarea)
+admin -> comportamento Admin invariato
+```
+
+Implementazione in `assets/app.js`:
+
+```text
+getPresidentNameForAccountButtonV229
+getPresidentSurnameForAccountButtonV229
+renderPresidentAccountButtonContentV229
+updatePresidentAccountButtonV229
+openPresidentDashboardFromHeaderV229
+```
+
+CSS in `assets/styles.css`, blocco `V229 - Header account presidente`.
+
 ## Fix V228 - Comunicati condivisibili WhatsApp
 
 V228 introduce pagine statiche dedicate ai comunicati per risolvere le anteprime WhatsApp. WhatsApp non esegue il JavaScript della webapp: legge solo i meta tag Open Graph presenti nell'HTML scaricato.
@@ -98,17 +123,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V228 comunicati condivisibili WhatsApp**.
+Versione sito: **V229 account presidente in header**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V228 comunicati condivisibili WhatsApp · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V229 account presidente in header · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=228`.
+Cache-buster HTML principali attesi: `?v=229`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `227`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `229`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

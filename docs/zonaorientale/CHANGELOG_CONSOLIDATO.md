@@ -2,6 +2,13 @@
 
 Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.
 
+## V229 - Account presidente in header
+
+- Quando un utente presidente approvato effettua il login, il pulsante header `Account` non viene piu mostrato.
+- Al suo posto il pulsante mostra logo squadra e label `Pres. Cognome`.
+- Il click sul pulsante porta direttamente alla Dashboard Presidente (`#teamarea`) invece di riaprire il dialog di login.
+- Per utenti non approvati resta il comportamento precedente; per admin resta la logica Admin esistente.
+- Aggiornati footer/cache-buster a V229.
 
 ## V228 - Comunicati condivisibili WhatsApp
 

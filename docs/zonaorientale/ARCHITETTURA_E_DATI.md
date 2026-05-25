@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V228.
+Stato: V229.
 
 ## Tipo applicazione
 
@@ -435,3 +435,20 @@ static/zonaorientale/news.html
 Il modulo browser `assets/js/domain/news-share-v228.js` centralizza slug, URL e HTML preview. Il generatore Node `tools/generate-news-share-pages.mjs` legge `assets/snapshots/seasons/*.json`, genera una pagina per ogni comunicato e aggiorna `news.html` e i meta Open Graph della home sull'ultimo comunicato disponibile negli snapshot.
 
 Il sito pubblico e l'Admin mostrano pulsanti `Copia link WhatsApp`; questi link devono puntare alle pagine statiche in `comunicati/`, non all'hash `#news`, per evitare cache/preview errate.
+
+
+## V229 - Pulsante account presidente
+
+La landing usa ancora `#openLoginBtn` come controllo principale di accesso. Dopo V229, quando `state.currentTeamUser` e' un presidente approvato (`status: ACTIVE`), l'ultimo override di `updateUserVisibilityV34` sostituisce il testo generico `Account` con logo squadra + `Pres. Cognome` e intercetta il click in capture phase per aprire `#teamarea`/Dashboard Presidente.
+
+Helper rilevanti in `assets/app.js`:
+
+```text
+getPresidentNameForAccountButtonV229
+getPresidentSurnameForAccountButtonV229
+renderPresidentAccountButtonContentV229
+updatePresidentAccountButtonV229
+openPresidentDashboardFromHeaderV229
+```
+
+CSS in `assets/styles.css`: blocco `V229 - Header account presidente`.
