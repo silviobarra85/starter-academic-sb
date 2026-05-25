@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V231
+# AI Handoff ZonaOrientale - Current V232
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V231**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function e pulsante account presidente personalizzato in header.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V232**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V232 per aprire i comunicati dopo redirect e pulsante account presidente personalizzato in header.
 
 ## Posizione e struttura progetto
 
@@ -56,6 +56,11 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+
+## V232 - Hotfix routing comunicati condivisi
+
+V232 corregge il comportamento post-preview della V231: la Netlify Function reindirizza a `/zonaorientale/#news-<id>`, ma il router legacy interpretava hash non statici come slug squadra. Il risultato era una pagina vuota con solo header/footer. Ora gli hash `news-<id>` attivano esplicitamente la pagina News, renderizzano i comunicati e aprono/scorrono il comunicato target.
 
 ## V231 - Comunicati WhatsApp dinamici Netlify
 
@@ -157,12 +162,12 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V231 preview comunicati dinamica**.
+Versione sito: **V232 hotfix routing comunicati**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V231 preview comunicati dinamica · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V232 hotfix routing comunicati · Ultimo aggiornamento 25/05/2026
 ```
 
 Cache-buster HTML principali attesi: `?v=229`.

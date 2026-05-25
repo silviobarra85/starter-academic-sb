@@ -1,3 +1,9 @@
+## V232 - Hotfix routing comunicati condivisi
+
+- Corretto il redirect utenti della preview dinamica comunicati: gli hash `#news-<id>` ora aprono la sezione News invece di lasciare la webapp senza pagina attiva.
+- Il comunicato target viene espanso e scrollato dopo il caricamento dati.
+- Aggiornati footer/cache-buster a V232.
+
 ## V231 - Preview WhatsApp comunicati dinamica Netlify
 
 - Sostituito il flusso operativo basato su pagine statiche `comunicati/*.html` con una Netlify Function.
