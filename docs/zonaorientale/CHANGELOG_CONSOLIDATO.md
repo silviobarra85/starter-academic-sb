@@ -1,3 +1,14 @@
+# Changelog consolidato ZonaOrientale
+
+Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.
+
+## V227 - Hotfix FM Archivio
+
+- Corretto Archivio -> Squadre della stagione: il saldo FM non viene piu' letto solo da `seasonTeams.fmBalance`.
+- Aggiunta risoluzione saldo da snapshot rose statiche (`remainingCredits`) e fallback su `fmMovements`.
+- Se il dato FM non esiste davvero per una stagione storica, viene mostrato `-` invece di un falso `0 FM`.
+- Aggiornati footer/cache-buster a V227.
+
 ## V226 - Hotfix statistiche storiche
 
 Correzione mirata della pagina `#stats` dopo segnalazione utente:
@@ -7,10 +18,6 @@ Correzione mirata della pagina `#stats` dopo segnalazione utente:
 - `Ultimi titoli assegnati` usa i nomi storici dallo snapshot honor statico quando disponibili;
 - `Top FIFA Ranking` non mostra piu la nota ripetitiva `FIFA Ranking` accanto a ogni squadra;
 - footer/cache-buster e `DEPLOY_EXPECTED_VERSION_V181` aggiornati a V226.
-
-# Changelog consolidato ZonaOrientale
-
-Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.
 
 ## V225 - Stabilizzazione finale post-refactor
 

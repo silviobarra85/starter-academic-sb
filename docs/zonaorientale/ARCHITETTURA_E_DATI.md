@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V226.
+Stato: V227.
 
 ## Tipo applicazione
 
@@ -409,3 +409,15 @@ V226 rende piu robusto `assets/js/refactor/historical-stats-compare-v211.js`:
 - se `state.publicHonorSnapshot` non contiene `honorRows`, il modulo usa `state.staticHonorSnapshotV173` prima di ricadere su `raw.honorRoll`;
 - le celle Albo usano `label/teamName/name` dello snapshot come fallback primario per evitare nomi `-` nei ranking storici;
 - Top FIFA Ranking mostra solo eventuali note reali, non la stringa generica `FIFA Ranking` per ogni squadra.
+
+## Note Archivio FM V227
+
+Le card `Archivio -> Squadre della stagione` non devono leggere solo `seasonTeams.fmBalance`, perche gli snapshot stagione storici/correnti possono non contenere quel campo.
+
+La V227 calcola il saldo con priorita':
+
+1. campi diretti su `seasonTeams` (`fmBalance`, `balance`, `remainingCredits`, ecc.);
+2. snapshot statici delle rose in `assets/rose/*.json`, usando `remainingCredits`;
+3. fallback sulla somma dei `fmMovements` della stagione.
+
+Quando nessuna sorgente contiene il saldo, visualizzare `-`, non `0 FM`.

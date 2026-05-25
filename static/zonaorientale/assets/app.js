@@ -134,11 +134,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=226";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=227";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=226";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=227";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15366,7 +15366,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "226";
+const DEPLOY_EXPECTED_VERSION_V181 = "227";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -17653,13 +17653,14 @@ function renderSeasonArchiveTeamsV196(archive) {
     const stadium = archive.stadiumsBySeasonTeamId.get(seasonTeam.id) || {};
     const rosterCount = archive.rosterCountBySeasonTeamId.get(seasonTeam.id) || 0;
     const movementCount = archive.movementCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const fmBalance = getArchiveSeasonTeamDirectFmV227(seasonTeam);
     const logo = getSeasonTeamLogo(seasonTeam);
     const name = getSeasonTeamDisplayName(seasonTeam.id);
     return `
       <article class="season-archive-team-card-v196">
         <div class="season-archive-team-head-v196">${renderTeamLogo(name, logo)}<div><strong>${escapeHtml(name)}</strong><small>${escapeHtml(getSeasonTeamPresidentNames(seasonTeam))}</small></div></div>
         <dl>
-          <div><dt>Saldo</dt><dd>${escapeHtml(formatFm(seasonTeam.fmBalance || 0))}</dd></div>
+          <div><dt>Saldo</dt><dd>${escapeHtml(formatArchiveFmBalanceV227(fmBalance))}</dd></div>
           <div><dt>Rosa</dt><dd>${escapeHtml(String(rosterCount || "-"))}</dd></div>
           <div><dt>Movimenti</dt><dd>${escapeHtml(String(movementCount || "-"))}</dd></div>
           <div><dt>Stadio</dt><dd>${escapeHtml(stadium.name || seasonTeam.stadiumName || "-")}</dd></div>
@@ -17947,6 +17948,101 @@ function getArchiveSeasonTeamPresidentNamesV204(archive, seasonTeam) {
   return names.length ? names.join(", ") : "-";
 }
 
+function parseArchiveFiniteNumberV227(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const parsed = Number(String(value).replace(",", "."));
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function getArchiveSeasonTeamDirectFmV227(seasonTeam) {
+  if (!seasonTeam) return null;
+  const fields = [
+    seasonTeam.fmBalance,
+    seasonTeam.balance,
+    seasonTeam.remainingCredits,
+    seasonTeam.credits,
+    seasonTeam.crediti,
+    seasonTeam.budget,
+    seasonTeam.budgetRemaining
+  ];
+  for (const value of fields) {
+    const parsed = parseArchiveFiniteNumberV227(value);
+    if (parsed !== null) return parsed;
+  }
+  return null;
+}
+
+function getArchiveSeasonTeamRosterSnapshotFmV227(archive, seasonTeam) {
+  const seasonId = String(archive?.season?.id || seasonTeam?.seasonId || "");
+  if (!seasonId || !Array.isArray(state.rosters)) return null;
+  const nameKeys = new Set([
+    ...getArchiveTeamNameKeysV204(seasonTeam?.name),
+    ...getArchiveTeamNameKeysV204(seasonTeam?.teamName),
+    ...getArchiveTeamNameKeysV204(seasonTeam?.displayName),
+    ...getArchiveTeamNameKeysV204(getArchiveSeasonTeamNameV204(archive, seasonTeam))
+  ].filter(Boolean));
+  if (!nameKeys.size) return null;
+
+  const rosterSnapshots = state.rosters
+    .filter((snapshot) => String(snapshot?.seasonId || snapshot?.meta?.seasonId || "") === seasonId && Array.isArray(snapshot.rosters))
+    .sort((a, b) => String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it"));
+
+  for (const snapshot of rosterSnapshots) {
+    const roster = snapshot.rosters.find((item) => {
+      const keys = getArchiveTeamNameKeysV204(item?.name || item?.teamName || item?.clubName);
+      return keys.some((key) => nameKeys.has(key));
+    });
+    if (!roster) continue;
+    const parsed = parseArchiveFiniteNumberV227(roster.remainingCredits ?? roster.fmBalance ?? roster.balance ?? roster.credits);
+    if (parsed !== null) return parsed;
+  }
+  return null;
+}
+
+function buildArchiveFmBalanceMapV227(archive, movements) {
+  const map = new Map();
+  (archive?.seasonTeams || []).forEach((seasonTeam) => {
+    const id = String(seasonTeam?.id || "");
+    if (!id) return;
+    const direct = getArchiveSeasonTeamDirectFmV227(seasonTeam);
+    if (direct !== null) {
+      map.set(id, direct);
+      return;
+    }
+    const rosterSnapshotBalance = getArchiveSeasonTeamRosterSnapshotFmV227(archive, seasonTeam);
+    if (rosterSnapshotBalance !== null) {
+      map.set(id, rosterSnapshotBalance);
+      return;
+    }
+    const movementRows = (movements || []).filter((movement) => {
+      const seasonTeamId = String(movement?.seasonTeamId || "");
+      const targetSeasonTeamId = String(movement?.targetSeasonTeamId || "");
+      return seasonTeamId === id || targetSeasonTeamId === id;
+    });
+    if (movementRows.length) {
+      const balance = movementRows.reduce((sum, movement) => {
+        const amount = parseArchiveFiniteNumberV227(movement?.amount);
+        return sum + (amount === null ? 0 : amount);
+      }, 0);
+      map.set(id, balance);
+    }
+  });
+  return map;
+}
+
+function getArchiveSeasonTeamFmBalanceV227(archive, seasonTeam) {
+  const id = String(seasonTeam?.id || "");
+  if (!id) return null;
+  if (archive?.fmBalanceBySeasonTeamId?.has(id)) return archive.fmBalanceBySeasonTeamId.get(id);
+  const direct = getArchiveSeasonTeamDirectFmV227(seasonTeam);
+  if (direct !== null) return direct;
+  return null;
+}
+
+function formatArchiveFmBalanceV227(value) {
+  return value === null || value === undefined ? "-" : formatFm(value);
+}
+
 function renderArchiveSeasonTeamNameWithLogoV204(archive, seasonTeamId, options = {}) {
   const name = getArchiveSeasonTeamNameV204(archive, seasonTeamId);
   const logo = getArchiveSeasonTeamLogoV204(archive, seasonTeamId);
@@ -18102,24 +18198,26 @@ buildSeasonArchiveV196 = function buildSeasonArchiveV204(seasonId = getSeasonArc
     honorTitles,
     rosterCountBySeasonTeamId: buildArchiveRosterCountMapV204(archive, rosterEntries),
     movementCountBySeasonTeamId: buildArchiveMovementCountMapV204(movements),
+    fmBalanceBySeasonTeamId: buildArchiveFmBalanceMapV227(archive, movements),
     recentMatches,
     goals
   };
 };
 
-renderSeasonArchiveTeamsV196 = function renderSeasonArchiveTeamsV204(archive) {
+renderSeasonArchiveTeamsV196 = function renderSeasonArchiveTeamsV227(archive) {
   if (!archive.seasonTeams.length) return `<p class="muted">Nessuna squadra trovata per questa stagione. Verifica che lo snapshot statico della stagione sia presente in <code>assets/snapshots/seasons</code>.</p>`;
   return `<div class="season-archive-teams-v196">${archive.seasonTeams.map((seasonTeam) => {
     const stadium = archive.stadiumsBySeasonTeamId.get(String(seasonTeam.id || "")) || {};
     const rosterCount = archive.rosterCountBySeasonTeamId.get(seasonTeam.id) || 0;
     const movementCount = archive.movementCountBySeasonTeamId.get(seasonTeam.id) || 0;
+    const fmBalance = getArchiveSeasonTeamFmBalanceV227(archive, seasonTeam);
     const logo = getArchiveSeasonTeamLogoV204(archive, seasonTeam);
     const name = getArchiveSeasonTeamNameV204(archive, seasonTeam);
     return `
       <article class="season-archive-team-card-v196">
         <div class="season-archive-team-head-v196">${renderTeamLogo(name, logo)}<div><strong>${escapeHtml(name)}</strong><small>${escapeHtml(getArchiveSeasonTeamPresidentNamesV204(archive, seasonTeam))}</small></div></div>
         <dl>
-          <div><dt>Saldo</dt><dd>${escapeHtml(formatFm(seasonTeam.fmBalance || 0))}</dd></div>
+          <div><dt>Saldo</dt><dd>${escapeHtml(formatArchiveFmBalanceV227(fmBalance))}</dd></div>
           <div><dt>Rosa</dt><dd>${escapeHtml(String(rosterCount || "-"))}</dd></div>
           <div><dt>Movimenti</dt><dd>${escapeHtml(String(movementCount || "-"))}</dd></div>
           <div><dt>Stadio</dt><dd>${escapeHtml(stadium.name || seasonTeam.stadiumName || "-")}</dd></div>
@@ -18392,7 +18490,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V226",
+  version: "V227",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,

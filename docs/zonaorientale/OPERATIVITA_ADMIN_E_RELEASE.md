@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V226.
+Stato: V227.
 
 ## Regola d'oro dati
 
@@ -268,7 +268,7 @@ Il campo `ok` deve essere `true`. Se `ok` e' `false`, leggere `checks` per capir
 
 ## Nota V226 statistiche storiche
 
-Dopo deploy V226 verificare in `#stats`:
+Dopo deploy V226 o successivi verificare in `#stats`:
 
 - `Club più vincenti`: nomi club visibili, non solo trattini;
 - `Podi Campionato`: nomi club visibili, non solo trattini;
@@ -276,3 +276,11 @@ Dopo deploy V226 verificare in `#stats`:
 - `Top FIFA Ranking`: nessuna nota generica `FIFA Ranking` ripetuta vicino alle squadre.
 
 Se ricompaiono trattini, controllare che `assets/snapshots/honor.json` sia pubblicato e che venga normalizzato come `snapshot.honorRows`.
+
+## Nota V227 Archivio FM
+
+Dopo deploy V227 verificare in `#archive` / Archivio stagioni, selezionando almeno la stagione corrente 2025-2026:
+
+- nelle card `Squadre della stagione`, il campo `Saldo` deve mostrare i crediti residui reali quando presenti negli snapshot rose o nei movimenti FM;
+- squadre con saldo reale zero possono mostrare `0 FM`;
+- stagioni prive di dati FM devono mostrare `-`, non un falso `0 FM` generalizzato.

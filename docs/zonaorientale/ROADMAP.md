@@ -14,7 +14,7 @@ V222 data repository unico per JSON/Firebase - fatto
 V223 CSS cleanup progressivo - fatto
 V224 hardening statistiche storiche + avvio rimozione legacy - fatto
 V225 stabilizzazione finale post-refactor - fatto
-V226 hotfix statistiche storiche - fatto
+V227 hotfix FM archivio - fatto
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.
@@ -237,4 +237,4 @@ master aggiornato
 
 ## Stato refactor corrente
 
-V226 completata: ciclo V220-V225 chiuso e hotfix statistiche storiche applicato. Prossimo passo consigliato: nessuna rimozione legacy immediata; prima usare il sito per qualche ciclo reale e poi aprire un nuovo refactor mirato solo se necessario.
+V227 completata: ciclo V220-V225 chiuso, hotfix statistiche V226 applicato e hotfix FM Archivio V227 applicato. Prossimo passo consigliato: nessuna rimozione legacy immediata; prima usare il sito per qualche ciclo reale e poi aprire un nuovo refactor mirato solo se necessario.

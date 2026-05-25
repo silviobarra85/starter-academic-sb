@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V226
+# AI Handoff ZonaOrientale - Current V227
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V226**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, statistiche storiche rinforzate, hotfix V226 sui nomi storici e primo ciclo refactor tecnico V220-V225 chiuso.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V227**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, statistiche storiche rinforzate, hotfix V226 sui nomi storici, hotfix V227 sui saldi FM in Archivio e primo ciclo refactor tecnico V220-V225 chiuso.
 
 ## Posizione e struttura progetto
 
@@ -53,19 +53,32 @@ Poi aprire:
 http://localhost:1313/zonaorientale/
 ```
 
+
+## Fix V227 - FM Archivio
+
+Il bug rilevato in Archivio era causato dal rendering delle card squadra: veniva letto solo `seasonTeam.fmBalance`, ma gli snapshot pubblici non salvano quel campo dentro `seasonTeams`.
+
+La V227 introduce una risoluzione robusta del saldo FM Archivio:
+
+1. campo diretto su `seasonTeams`, se presente (`fmBalance`, `balance`, `remainingCredits`, ecc.);
+2. snapshot statici `assets/rose/*.json`, abbinati per stagione e nome squadra, usando `remainingCredits`;
+3. somma dei `fmMovements` della stagione come fallback.
+
+Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `0 FM`.
+
 ## Versione corrente codice
 
-Versione sito: **V226 hotfix statistiche storiche**.
+Versione sito: **V227 hotfix FM archivio**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V226 hotfix statistiche storiche · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V227 hotfix FM archivio · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=226`.
+Cache-buster HTML principali attesi: `?v=227`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `226`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `227`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 
@@ -111,6 +124,18 @@ Stato effettivo:
 - **V225 refactor-stability**: attivo. Espone `window.ZonaOrientaleRefactorStatus` con controlli runtime leggeri sui moduli V220-V224; non cambia UI/dati e non blocca il bootstrap.
 
 ## Stato funzionale recente
+
+### V227 - Hotfix FM Archivio
+
+V227 corregge Archivio -> Squadre della stagione: i saldi FM non vengono piu' mostrati tutti a `0 FM` quando lo snapshot stagione non contiene `seasonTeams.fmBalance`.
+
+La risoluzione ora usa, in ordine:
+
+1. campi diretti su `seasonTeams`;
+2. `assets/rose/*.json` / `remainingCredits`, abbinati per stagione e nome squadra;
+3. somma di `fmMovements` come fallback.
+
+Se nessuna sorgente contiene il dato, viene mostrato `-` invece di un falso `0 FM`.
 
 ### V226 - Hotfix statistiche storiche
 
