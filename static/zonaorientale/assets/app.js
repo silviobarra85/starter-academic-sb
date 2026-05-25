@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "202";
+const DEPLOY_EXPECTED_VERSION_V181 = "203";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -19861,5 +19861,105 @@ window.ZonaOrientaleTeamProfileV202 = {
 };
 
 
-/* V202 - Final startup remains centralized here. */
+/* V203 - Publication status sync and clearer honor preflight wording.
+   The V190 publication status cards and the V179 public asset preflight both
+   check the same JSON files. Before V203, clicking "Controlla solo asset
+   pubblici" refreshed only the table below the cards, so the cards could keep
+   stale "Failed to fetch" values from a previous check. V203 synchronizes the
+   cards after a successful asset preflight and clarifies that palmares can be
+   derived from honorRows when honor.json has no dedicated palmares array. */
+const ZO_RELEASE_VERSION_V203 = "203";
+
+const validateHonorSnapshotPreflightBeforeV203 = typeof validateHonorSnapshotPreflightV179 === "function" ? validateHonorSnapshotPreflightV179 : null;
+if (validateHonorSnapshotPreflightBeforeV203) {
+  validateHonorSnapshotPreflightV179 = function validateHonorSnapshotPreflightV203(payload) {
+    const snapshot = payload?.snapshot && typeof payload.snapshot === "object" ? payload.snapshot : payload;
+    const honorRows = Array.isArray(snapshot?.honorRows) ? snapshot.honorRows.length : 0;
+    const palmares = Array.isArray(snapshot?.palmares) ? snapshot.palmares.length : 0;
+    const fifaRanking = Array.isArray(snapshot?.fifaRanking) ? snapshot.fifaRanking.length : 0;
+    if (!honorRows && !palmares && !fifaRanking) {
+      return { status: "error", detail: "nessun dato honor/palmarès/FIFA trovato" };
+    }
+    const generatedAt = snapshot?.generatedAt || payload?.generatedAt || "";
+    const generatedText = generatedAt ? ` · ${normalizePreflightDateV179(generatedAt)}` : "";
+    const palmaresText = palmares
+      ? `${palmares} palmarès dedicati`
+      : (honorRows ? "palmarès calcolabile dall'albo" : "0 palmarès dedicati");
+    return {
+      status: "ok",
+      detail: `${honorRows} albo · ${palmaresText} · ${fifaRanking} ranking${generatedText}`
+    };
+  };
+}
+
+function getPublicAssetsPreflightResultForStatusV203(result) {
+  if (result?.results?.length) return result;
+  const current = state.publicAssetsPreflightV179;
+  if (current?.results?.length) return current;
+  return null;
+}
+
+function syncPublicationStatusFromPreflightV203(preflightResult) {
+  const preflight = getPublicAssetsPreflightResultForStatusV203(preflightResult);
+  if (!preflight?.results?.length || typeof buildPublicationStatusRowsV190 !== "function") return null;
+  const rows = buildPublicationStatusRowsV190(preflight);
+  const payload = {
+    checkedAt: new Date().toISOString(),
+    summary: typeof summarizePublicationStatusRowsV190 === "function" ? summarizePublicationStatusRowsV190(rows) : null,
+    rows,
+    preflightSummary: preflight.summary || (typeof getPreflightSummaryV179 === "function" ? getPreflightSummaryV179(preflight.results) : null),
+    syncedFromPreflightV203: true
+  };
+  if (typeof writePublicationStatusV190 === "function") writePublicationStatusV190(payload);
+  if (typeof renderPublicationStatusPanelV190 === "function" && document.getElementById("publicationStatusMountV190")) {
+    renderPublicationStatusPanelV190(payload);
+  }
+  return payload;
+}
+
+const runPublicAssetsPreflightBeforeV203 = typeof runPublicAssetsPreflightV179 === "function" ? runPublicAssetsPreflightV179 : null;
+if (runPublicAssetsPreflightBeforeV203) {
+  runPublicAssetsPreflightV179 = async function runPublicAssetsPreflightV203(options = {}) {
+    const result = await runPublicAssetsPreflightBeforeV203(options);
+    const targetId = options?.targetId || "";
+    const shouldSyncStatus = targetId === "publicationStatusPreflightReportV190" || options?.syncPublicationStatusV203 === true;
+    if (shouldSyncStatus) {
+      syncPublicationStatusFromPreflightV203(result);
+      const target = targetId ? document.getElementById(targetId) : null;
+      if (target && result?.results?.length) {
+        target.innerHTML = renderPreflightResultsHtmlV179(result.results);
+      }
+    }
+    return result;
+  };
+}
+
+const runPublicationStatusBeforeV203 = typeof runPublicationStatusV190 === "function" ? runPublicationStatusV190 : null;
+if (runPublicationStatusBeforeV203) {
+  runPublicationStatusV190 = async function runPublicationStatusV203(options = {}) {
+    const payload = await runPublicationStatusBeforeV203(options);
+    const hasFetchFailure = Array.isArray(payload?.rows) && payload.rows.some((row) => String(row?.detail || "").toLowerCase().includes("failed to fetch"));
+    const lastPreflight = state.publicAssetsPreflightV179;
+    const lastSummary = lastPreflight?.summary;
+    if (hasFetchFailure && lastSummary && Number(lastSummary.error || 0) === 0) {
+      return syncPublicationStatusFromPreflightV203(lastPreflight) || payload;
+    }
+    return payload;
+  };
+}
+
+if (window.ZonaOrientalePublicationStatus) {
+  window.ZonaOrientalePublicationStatus.syncFromPreflight = function syncFromPreflightV203() {
+    return syncPublicationStatusFromPreflightV203(state.publicAssetsPreflightV179);
+  };
+  window.ZonaOrientalePublicationStatus.reset = function resetPublicationStatusV203() {
+    try { localStorage.removeItem(PUBLICATION_STATUS_STORAGE_KEY_V190); } catch (_) {}
+    try { sessionStorage.removeItem(PUBLIC_ASSET_PREFLIGHT_STORAGE_KEY_V179); } catch (_) {}
+    state.publicAssetsPreflightV179 = null;
+    if (typeof renderPublicationStatusPanelV190 === "function") renderPublicationStatusPanelV190(null);
+    return true;
+  };
+}
+
+/* V203 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
