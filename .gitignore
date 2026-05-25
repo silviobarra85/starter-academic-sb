@@ -21,3 +21,6 @@ static/docs_zonaorientale/
 static/zonaorientale/docs/
 static/docs/
 ZO_BACKUPS/*
+
+# Local Netlify folder
+.netlify

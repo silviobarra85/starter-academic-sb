@@ -50,6 +50,12 @@ export function buildNewsSharePathV228(news = {}) {
   return `comunicati/${createNewsShareSlugV228(news)}.html`;
 }
 
+export function buildNewsDynamicSharePathV231(news = {}) {
+  const id = String(news.id || "").trim();
+  if (!id) return "share/news";
+  return `share/news/${encodeURIComponent(id)}`;
+}
+
 export function buildNewsShareRedirectUrlV230(news = {}, path = "") {
   const newsHash = news.id ? `#news-${encodeURIComponent(String(news.id))}` : "#news";
   const pathValue = String(path || "");
@@ -60,7 +66,7 @@ export function buildNewsShareRedirectUrlV230(news = {}, path = "") {
 export function buildNewsShareUrlV228(news = {}, options = {}) {
   const baseUrl = normalizeNewsShareBaseUrlV228(options.baseUrl || NEWS_SHARE_DEFAULT_BASE_URL_V228);
   const cacheToken = encodeURIComponent(String(news.id || news.publishedAt || Date.now()).replace(/\s+/g, "-"));
-  return `${baseUrl}${buildNewsSharePathV228(news)}?v=${cacheToken}`;
+  return `${baseUrl}${buildNewsDynamicSharePathV231(news)}?v=${cacheToken}`;
 }
 
 export function escapeNewsHtmlAttributeV228(value = "") {

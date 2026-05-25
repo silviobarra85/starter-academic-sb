@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V230.
+Stato: V231.
 
 ## Regola d'oro dati
 
@@ -288,39 +288,25 @@ Dopo deploy V227 verificare in `#archive` / Archivio stagioni, selezionando alme
 
 ## Caso E - Nuovo comunicato e anteprima WhatsApp
 
-Quando pubblichi un nuovo comunicato da Admin, Firebase lo salva subito, ma WhatsApp non legge Firebase ne' il JavaScript della pagina. Per avere la preview corretta devi rigenerare e deployare le pagine statiche.
+Da V231 non serve piu' generare e committare file HTML per ogni comunicato.
 
-Flusso consigliato:
+Flusso corretto:
+
+1. Pubblica il comunicato da Admin.
+2. Dopo il salvataggio, usa `Copia link WhatsApp` sul comunicato.
+3. Il link avra' forma:
 
 ```text
-1. Admin -> Comunicazioni -> salva comunicato
-2. Admin -> Snapshot pubblici -> Aggiorna tutto
-3. Applica/committa gli snapshot statici aggiornati
-4. Genera le pagine anteprima comunicati
-5. Commit + push di news.html, index.html e comunicati/*.html
-6. Usa il pulsante "Copia link WhatsApp" del comunicato
+https://silviobarra.com/zonaorientale/share/news/<id-comunicato>?v=<id-comunicato>
 ```
 
-Comandi dalla root della repo:
+4. Netlify instrada il path alla funzione `netlify/functions/news-share.js`.
+5. La funzione legge il comunicato da Firebase/Firestore e restituisce i meta Open Graph corretti.
+6. Il browser viene poi reindirizzato alla webapp su `/#news-<id-comunicato>`.
 
-```bash
-cd static/zonaorientale
-node tools/generate-news-share-pages.mjs
-cd ../..
+Non fare piu' il vecchio flusso V228/V230 con `node tools/generate-news-share-pages.mjs`, salvo manutenzione legacy.
 
-git status
-git add static/zonaorientale/index.html \
-  static/zonaorientale/news.html \
-  static/zonaorientale/comunicati \
-  static/zonaorientale/assets/snapshots/seasons/manifest.json \
-  static/zonaorientale/assets/snapshots/seasons/*.json
-git commit -m "data: aggiorna comunicati e anteprime whatsapp"
-git push
-```
-
-Se condividi un URL gia' condiviso in passato, WhatsApp puo mantenere la vecchia preview in cache. Per questo i link copiati dal sito includono `?v=<id-comunicato>`.
-
-
+Se WhatsApp mostra ancora una preview vecchia, prova a condividere il link con il parametro `?v=<id>` appena copiato dal sito.
 
 ## Nota V230 - Verifica link WhatsApp comunicati
 
