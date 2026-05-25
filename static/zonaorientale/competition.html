@@ -7,12 +7,12 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=169" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=169" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=169" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=169" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=169" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=169" />
+  <link rel="stylesheet" href="./assets/styles.css?v=216" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=216" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=216" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=216" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=216" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=216" />
 </head>
 <body class="is-mobile-ux competition-detail-page-v162">
   <button id="competitionScrollTopBtnV166" class="competition-scroll-top-v166" type="button" aria-label="Torna sopra">↑ Su</button>
@@ -68,7 +68,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V169 refactor helper rose mobile · Ultimo aggiornamento 21/05/2026</p>
+    <p>ZonaOrientale Salerno · V216 classifica campionato completa · Ultimo aggiornamento 25/05/2026</p>
   </footer>
 
   <script>
@@ -689,15 +689,21 @@
           <div class="detail-section compact-detail-section competition-page-results-section">
             <h4>${podiumOnlyMobile ? "Vincitore e secondo posto" : "Classifica / piazzamenti"}</h4>
             ${podiumOnlyMobile ? renderMobilePodiumResultsV164(sorted, seasonTeams, teams) : ""}
-            <div class="table-wrap compact-table result-table-wrap competition-page-result-table-wrap">
-              <table class="competition-page-results-table">
+            <div class="table-wrap compact-table result-table-wrap competition-page-result-table-wrap competition-standing-wrap-v216" aria-label="Classifica completa">
+              <table class="competition-page-results-table competition-standing-table-v216">
                 <thead>
                   <tr>
-                    <th class="result-position-col">POS.</th>
-                    <th class="result-team-col">Squadra</th>
-                    <th class="number result-points-col">Punti</th>
-                    <th class="number result-played-col">G</th>
-                    <th class="number result-fantapoints-col">FPT</th>
+                    <th class="number result-position-col standing-position-col-v216">POS</th>
+                    <th class="result-team-col standing-team-col-v216">SQUADRA</th>
+                    <th class="number result-points-col standing-points-col-v216">PUNTI</th>
+                    <th class="number result-played-col standing-played-col-v216">PG</th>
+                    <th class="number result-wins-col standing-wins-col-v216">V</th>
+                    <th class="number result-draws-col standing-draws-col-v216">N</th>
+                    <th class="number result-losses-col standing-losses-col-v216">P</th>
+                    <th class="number result-goals-for-col standing-goals-for-col-v216">GF</th>
+                    <th class="number result-goals-against-col standing-goals-against-col-v216">GS</th>
+                    <th class="number result-goal-difference-col standing-goal-difference-col-v216">DR</th>
+                    <th class="number result-fantapoints-col standing-fantapoints-col-v216">FPT</th>
                   </tr>
                 </thead>
                 <tbody>${sorted.map((result) => {
@@ -705,11 +711,17 @@
                   const name = getResultTeamName(result, seasonTeams, teams);
                   const logo = getLogoForSeasonTeam(seasonTeam, teams, name);
                   return `<tr>
-                    <td data-label="POS." class="result-position-col">${escapeHtml(result.position || result.pos || "-")}</td>
-                    <td data-label="Squadra" class="result-team-col">${renderTeamNameWithLogo(name, logo)}</td>
-                    <td data-label="Punti" class="number result-points-col">${escapeHtml(getResultNumber(result, ["points", "punti", "rankingPoints", "tablePoints", "totalPoints"]))}</td>
-                    <td data-label="G" class="number result-played-col">${escapeHtml(getResultNumber(result, ["played", "games", "matches", "playedMatches", "partite", "g"]))}</td>
-                    <td data-label="FPT" class="number result-fantapoints-col">${escapeHtml(getResultNumber(result, ["fantapoints", "fantapunti", "fpt", "fantasyPoints", "totalFantapoints", "totalFantasyPoints"]))}</td>
+                    <td data-label="POS" class="number result-position-col standing-position-col-v216">${escapeHtml(result.position || result.pos || "-")}</td>
+                    <td data-label="SQUADRA" class="result-team-col standing-team-col-v216">${renderTeamNameWithLogo(name, logo)}</td>
+                    <td data-label="PUNTI" class="number result-points-col standing-points-col-v216">${escapeHtml(getResultNumber(result, ["points", "punti", "rankingPoints", "tablePoints", "totalPoints"]))}</td>
+                    <td data-label="PG" class="number result-played-col standing-played-col-v216">${escapeHtml(getResultNumber(result, ["played", "games", "matches", "playedMatches", "partite", "pg", "g"]))}</td>
+                    <td data-label="V" class="number result-wins-col standing-wins-col-v216">${escapeHtml(getResultNumber(result, ["wins", "won", "victories", "vittorie", "vinte", "v"]))}</td>
+                    <td data-label="N" class="number result-draws-col standing-draws-col-v216">${escapeHtml(getResultNumber(result, ["draws", "drawn", "ties", "pareggi", "pareggiate", "n"]))}</td>
+                    <td data-label="P" class="number result-losses-col standing-losses-col-v216">${escapeHtml(getResultNumber(result, ["losses", "lost", "defeats", "sconfitte", "perse", "p"]))}</td>
+                    <td data-label="GF" class="number result-goals-for-col standing-goals-for-col-v216">${escapeHtml(getResultNumber(result, ["goalsFor", "goals_for", "gf", "goalfatti", "goalsScored", "scoredGoals", "retiFatte"]))}</td>
+                    <td data-label="GS" class="number result-goals-against-col standing-goals-against-col-v216">${escapeHtml(getResultNumber(result, ["goalsAgainst", "goals_against", "ga", "gs", "goalSubiti", "goalsConceded", "concededGoals", "retiSubite"]))}</td>
+                    <td data-label="DR" class="number result-goal-difference-col standing-goal-difference-col-v216">${escapeHtml(getResultNumber(result, ["goalDifference", "goal_difference", "diffReti", "differenzaReti", "dr", "gd", "difference"]))}</td>
+                    <td data-label="FPT" class="number result-fantapoints-col standing-fantapoints-col-v216">${escapeHtml(getResultNumber(result, ["fantapoints", "fantapunti", "fpt", "fantasyPoints", "totalFantapoints", "totalFantasyPoints"]))}</td>
                   </tr>`;
                 }).join("")}</tbody>
               </table>

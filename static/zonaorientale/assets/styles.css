@@ -13425,3 +13425,50 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
   font-size: 0.86rem;
   line-height: 1.45;
 }
+
+/* V216 - Classifica completa competizione di campionato. */
+.competition-standing-wrap-v216 {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.competition-standing-table-v216 {
+  width: max-content;
+  min-width: 920px;
+  table-layout: auto;
+}
+
+.competition-standing-table-v216 th,
+.competition-standing-table-v216 td {
+  white-space: nowrap;
+}
+
+.competition-standing-table-v216 .standing-position-col-v216 {
+  width: 52px;
+  min-width: 52px;
+  text-align: center;
+}
+
+.competition-standing-table-v216 .standing-team-col-v216 {
+  width: 260px;
+  min-width: 260px;
+  text-align: left;
+}
+
+.competition-standing-table-v216 .standing-points-col-v216,
+.competition-standing-table-v216 .standing-played-col-v216,
+.competition-standing-table-v216 .standing-wins-col-v216,
+.competition-standing-table-v216 .standing-draws-col-v216,
+.competition-standing-table-v216 .standing-losses-col-v216,
+.competition-standing-table-v216 .standing-goals-for-col-v216,
+.competition-standing-table-v216 .standing-goals-against-col-v216,
+.competition-standing-table-v216 .standing-goal-difference-col-v216 {
+  width: 58px;
+  min-width: 58px;
+}
+
+.competition-standing-table-v216 .standing-fantapoints-col-v216 {
+  width: 78px;
+  min-width: 78px;
+}

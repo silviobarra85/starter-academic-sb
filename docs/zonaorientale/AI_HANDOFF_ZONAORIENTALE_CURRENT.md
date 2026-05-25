@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V215
+# AI Handoff ZonaOrientale - Current V216
 
 ## Stato corrente
 
-Versione corrente: V215.
+Versione corrente: V216.
 
-V215 è un hotfix di stabilità: ripristina gli helper base V196 dell'Archivio rimossi/lasciati mancanti dal refactor, correggendo l'errore `buildSeasonArchiveV196 is not defined` che bloccava l'intero bootstrap.
+V216 estende le classifiche delle competizioni a classifica/campionato: Admin, vista pubblica e pagina singola competizione supportano e visualizzano le colonne complete nell'ordine POS, SQUADRA, PUNTI, PG, V, N, P, GF, GS, DR, FPT.
 
 ## Regole operative
 
@@ -30,6 +30,7 @@ http://localhost:1313/zonaorientale/
 - Comunicati/news: Firebase live in background.
 - Fantamercato/trattative: Firebase live/lazy.
 - Admin completo: caricato solo su richiesta.
+- I risultati classifica campionato salvano i campi canonici `points`, `played`, `wins`, `draws`, `losses`, `goalsFor`, `goalsAgainst`, `goalDifference`, `fantapoints`.
 
 ## Refactor recenti attivi
 
@@ -39,3 +40,4 @@ http://localhost:1313/zonaorientale/
 - V212: dashboard presidente e helper rose.
 - V213: workflow pubblicazione admin, disattivato in V214 per stabilità.
 - V215: ripristino helper Archivio V196 necessari agli override V204/V209.
+- V216: classifica campionato completa, con tabella mobile scrollabile e Admin risultati esteso.

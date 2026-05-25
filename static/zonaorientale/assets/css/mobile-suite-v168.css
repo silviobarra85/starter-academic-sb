@@ -5138,3 +5138,107 @@
     padding: 11px !important;
   }
 }
+
+/* V216 - Mobile: classifica campionato completa con scroll orizzontale controllato. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .competition-standing-wrap-v216,
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-standing-wrap-v216,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-standing-wrap-v216,
+  body.is-mobile-ux #adminPanel .result-admin-standing-wrap-v216 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216,
+  body.is-mobile-ux .app-page[data-page="competitions"] .competition-standing-wrap-v216 table.competition-standing-table-v216,
+  body.is-mobile-ux.competition-detail-page-v162 .competition-page-result-table-wrap table.competition-standing-table-v216 {
+    display: table !important;
+    width: max-content !important;
+    min-width: 860px !important;
+    table-layout: auto !important;
+    font-size: 0.72rem !important;
+  }
+
+  body.is-mobile-ux #adminPanel .result-admin-standing-wrap-v216 .competition-results-admin-table-v216 {
+    min-width: 1120px !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 thead,
+  body.is-mobile-ux .competition-standing-table-v216 tbody {
+    display: table-header-group !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 tbody {
+    display: table-row-group !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 tr {
+    display: table-row !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 th,
+  body.is-mobile-ux .competition-standing-table-v216 td {
+    display: table-cell !important;
+    padding: 7px 8px !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 td::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 .standing-position-col-v216,
+  body.is-mobile-ux .competition-page-results-table.competition-standing-table-v216 .result-position-col {
+    width: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    text-align: center !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 .standing-team-col-v216,
+  body.is-mobile-ux .competition-page-results-table.competition-standing-table-v216 .result-team-col {
+    width: 210px !important;
+    min-width: 210px !important;
+    max-width: 210px !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 .standing-points-col-v216,
+  body.is-mobile-ux .competition-standing-table-v216 .standing-played-col-v216,
+  body.is-mobile-ux .competition-standing-table-v216 .standing-wins-col-v216,
+  body.is-mobile-ux .competition-standing-table-v216 .standing-draws-col-v216,
+  body.is-mobile-ux .competition-standing-table-v216 .standing-losses-col-v216,
+  body.is-mobile-ux .competition-standing-table-v216 .standing-goals-for-col-v216,
+  body.is-mobile-ux .competition-standing-table-v216 .standing-goals-against-col-v216,
+  body.is-mobile-ux .competition-standing-table-v216 .standing-goal-difference-col-v216 {
+    width: 52px !important;
+    min-width: 52px !important;
+    text-align: right !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 .standing-fantapoints-col-v216 {
+    width: 68px !important;
+    min-width: 68px !important;
+    text-align: right !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 .club-name-with-logo {
+    max-width: 190px !important;
+  }
+
+  body.is-mobile-ux .competition-standing-table-v216 .club-name-with-logo strong,
+  body.is-mobile-ux .competition-standing-table-v216 .club-name-with-logo span:last-child {
+    max-width: 150px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}

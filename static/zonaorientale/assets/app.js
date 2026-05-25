@@ -337,6 +337,25 @@ function getCompetitionResults(competitionId) {
     .sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
 }
 
+function getStandingResultValueV216(result, keys = [], fallback = "-") {
+  for (const key of keys) {
+    const value = result?.[key];
+    if (value !== undefined && value !== null && value !== "") return value;
+  }
+  return fallback;
+}
+
+function getStandingDisplayValueV216(result, keys = [], fallback = "-") {
+  return getStandingResultValueV216(result, keys, fallback);
+}
+
+function readStandingNumberInputV216(position, selector) {
+  const input = document.querySelector(`${selector}[data-result-position="${position}"]`);
+  if (!input || input.value === "") return null;
+  const value = Number(input.value);
+  return Number.isFinite(value) ? value : null;
+}
+
 function isRankingCompetition(competition) {
   return competition?.format === "CLASSIFICA" || competition?.type === "CAMPIONATO";
 }
@@ -843,19 +862,25 @@ function renderCompetitionResultsPublic(competition) {
   }
 
   return `
-    <div class="table-wrap compact-table result-table-wrap">
-      <table>
+    <div class="table-wrap compact-table result-table-wrap competition-standing-wrap-v216" aria-label="Classifica completa">
+      <table class="competition-standing-table-v216">
         <thead>
-          <tr><th>#</th><th>Squadra</th><th class="number">Punti</th><th class="number">G</th><th class="number">FPT</th></tr>
+          <tr><th class="number standing-position-col-v216">POS</th><th class="standing-team-col-v216">SQUADRA</th><th class="number standing-points-col-v216">PUNTI</th><th class="number standing-played-col-v216">PG</th><th class="number standing-wins-col-v216">V</th><th class="number standing-draws-col-v216">N</th><th class="number standing-losses-col-v216">P</th><th class="number standing-goals-for-col-v216">GF</th><th class="number standing-goals-against-col-v216">GS</th><th class="number standing-goal-difference-col-v216">DR</th><th class="number standing-fantapoints-col-v216">FPT</th></tr>
         </thead>
         <tbody>
           ${results.map((result) => `
             <tr>
-              <td data-label="#">${escapeHtml(result.position || "")}</td>
-              <td data-label="Squadra">${renderSeasonTeamNameWithLogo(result.seasonTeamId)}</td>
-              <td data-label="Punti" class="number">${escapeHtml(result.points ?? "-")}</td>
-              <td data-label="G" class="number">${escapeHtml(result.played ?? "-")}</td>
-              <td data-label="FPT" class="number">${escapeHtml(result.fantapoints ?? "-")}</td>
+              <td data-label="POS" class="number standing-position-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["position", "pos"], ""))}</td>
+              <td data-label="SQUADRA" class="standing-team-col-v216">${renderSeasonTeamNameWithLogo(result.seasonTeamId)}</td>
+              <td data-label="PUNTI" class="number standing-points-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["points", "punti", "rankingPoints", "tablePoints", "totalPoints"]))}</td>
+              <td data-label="PG" class="number standing-played-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["played", "games", "matches", "playedMatches", "partite", "pg", "g"]))}</td>
+              <td data-label="V" class="number standing-wins-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["wins", "won", "victories", "vittorie", "vinte", "v"]))}</td>
+              <td data-label="N" class="number standing-draws-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["draws", "drawn", "ties", "pareggi", "pareggiate", "n"]))}</td>
+              <td data-label="P" class="number standing-losses-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["losses", "lost", "defeats", "sconfitte", "perse", "p"]))}</td>
+              <td data-label="GF" class="number standing-goals-for-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["goalsFor", "goals_for", "gf", "goalfatti", "goalsScored", "scoredGoals", "retiFatte"]))}</td>
+              <td data-label="GS" class="number standing-goals-against-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["goalsAgainst", "goals_against", "ga", "gs", "goalSubiti", "goalsConceded", "concededGoals", "retiSubite"]))}</td>
+              <td data-label="DR" class="number standing-goal-difference-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["goalDifference", "goal_difference", "diffReti", "differenzaReti", "dr", "gd", "difference"]))}</td>
+              <td data-label="FPT" class="number standing-fantapoints-col-v216">${escapeHtml(getStandingDisplayValueV216(result, ["fantapoints", "fantapunti", "fpt", "fantasyPoints", "totalFantapoints", "totalFantasyPoints"]))}</td>
             </tr>`).join("")}
         </tbody>
       </table>
@@ -2850,18 +2875,20 @@ async function saveCompetitionResults(event) {
     const seasonTeamId = select.value;
     if (!position || !seasonTeamId) return;
 
-    const pointsInput = document.querySelector(`[data-result-points][data-result-position="${position}"]`);
-    const playedInput = document.querySelector(`[data-result-played][data-result-position="${position}"]`);
-    const fantapointsInput = document.querySelector(`[data-result-fantapoints][data-result-position="${position}"]`);
-
     rows.push({
       competitionId,
       seasonId: competition.seasonId,
       seasonTeamId,
       position,
-      points: pointsInput?.value === "" || !pointsInput ? null : Number(pointsInput.value),
-      played: playedInput?.value === "" || !playedInput ? null : Number(playedInput.value),
-      fantapoints: fantapointsInput?.value === "" || !fantapointsInput ? null : Number(fantapointsInput.value),
+      points: readStandingNumberInputV216(position, "[data-result-points]"),
+      played: readStandingNumberInputV216(position, "[data-result-played]"),
+      wins: readStandingNumberInputV216(position, "[data-result-wins]"),
+      draws: readStandingNumberInputV216(position, "[data-result-draws]"),
+      losses: readStandingNumberInputV216(position, "[data-result-losses]"),
+      goalsFor: readStandingNumberInputV216(position, "[data-result-goals-for]"),
+      goalsAgainst: readStandingNumberInputV216(position, "[data-result-goals-against]"),
+      goalDifference: readStandingNumberInputV216(position, "[data-result-goal-difference]"),
+      fantapoints: readStandingNumberInputV216(position, "[data-result-fantapoints]"),
       updatedAt: serverTimestamp()
     });
   });
