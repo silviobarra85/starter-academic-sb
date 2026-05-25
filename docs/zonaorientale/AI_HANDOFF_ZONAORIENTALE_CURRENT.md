@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V219
+# AI Handoff ZonaOrientale - Current V220
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V219**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V220**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata e Archivio/Statistiche/Confronta ripristinati.
 
 ## Posizione e struttura progetto
 
@@ -55,15 +55,15 @@ http://localhost:1313/zonaorientale/
 
 ## Versione corrente codice
 
-Versione sito: **V219 hotfix archivio stagioni**.
+Versione sito: **V220 safety refactor mobile chrome**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V219 hotfix archivio stagioni · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V220 safety refactor mobile chrome · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=219`.
+Cache-buster HTML principali attesi: `?v=220`.
 
 Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` puo risultare storicamente ferma a un valore precedente. Se si lavora sulla checklist di deploy, allinearla alla versione corrente.
 
@@ -135,6 +135,38 @@ fantapoints
 Compatibilita: molte funzioni leggono anche alias legacy, quindi non rompere questa tolleranza.
 
 V217 ha aggiunto cache-buster agli import critici, in particolare `admin-competitions.js?v=219` nella versione corrente, per evitare cache vecchia del modulo Admin.
+
+
+### V220 - Safety refactor mobile chrome
+
+V220 e' un overlay tecnico a basso rischio: non cambia dati, flussi Admin o UI visibile.
+
+Cosa e' stato fatto:
+
+```text
+assets/js/mobile/mobile-chrome-v220.js
+```
+
+Il nuovo modulo centralizza:
+
+- rilevamento smartphone `<= 900px` con rispetto di `zonaOrientaleDisplayMode=desktop`;
+- setup/visibilita del pulsante globale `Su`;
+- classe `body.is-mobile-ux`;
+- chiusura bottom menu/sheet quando si torna desktop.
+
+`app.js`, `competition.html` e `player.html` usano ora lo stesso helper. Sono state rimosse duplicazioni inline dalle pagine standalone, mantenendo ID/classe legacy del pulsante (`globalScrollTopBtnV218`, `zo-scroll-top-v218`) per non cambiare CSS o markup gia stabile.
+
+Test minimi dopo V220:
+
+```text
+Home desktop/mobile
+competition.html desktop/mobile
+player.html desktop/mobile
+bottom menu desktop nascosto
+pulsante Su visibile solo smartphone dopo scroll
+Archivio, Statistiche, Confronta
+Admin > Risultati competizioni
+```
 
 ### V218/V219 - UI mobile e pagine storiche
 

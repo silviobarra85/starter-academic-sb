@@ -2,6 +2,21 @@
 
 Documento consolidato dalle vecchie note sulle nuove funzionalita.
 
+
+## Roadmap refactor codice
+
+Percorso consigliato dopo V219/V220:
+
+```text
+V220 safety refactor mobile chrome - fatto
+V221 separazione public/admin rendering
+V222 data repository unico per JSON/Firebase
+V223 CSS cleanup progressivo
+V224 rimozione legacy/overlay storici solo dopo test completi
+```
+
+Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.
+
 ## Priorita alta
 
 ### 1. Avvisi post-modifica Admin

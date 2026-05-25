@@ -198,6 +198,28 @@ getSeasonLabelV193
 
 Risultato: Archivio stagioni torna visibile e V218 resta attiva.
 
+## V220 - Safety refactor mobile chrome
+
+Primo overlay tecnico del percorso di pulizia codice. Nessuna nuova feature e nessun cambio dati.
+
+Aggiunto:
+
+```text
+assets/js/mobile/mobile-chrome-v220.js
+```
+
+Centralizza il comportamento mobile condiviso da app principale e pagine standalone:
+
+- pulsante globale `Su`;
+- rilevamento smartphone;
+- `body.is-mobile-ux`;
+- chiusura bottom sheet/menu da desktop;
+- rispetto della modalita display forzata desktop.
+
+Aggiornati `app.js`, `competition.html` e `player.html` per usare il nuovo modulo condiviso, eliminando duplicazioni inline.
+
+Cache-buster e footer portati a V220.
+
 ## Docs consolidation - 25/05/2026
 
 Ridotta la documentazione da molti file storici a pochi documenti canonici:

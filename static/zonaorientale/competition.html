@@ -7,12 +7,12 @@
   <meta name="description" content="Calendario completo competizione ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=219" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=219" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=219" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=219" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=219" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=219" />
+  <link rel="stylesheet" href="./assets/styles.css?v=220" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=220" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=220" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=220" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=220" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=220" />
 </head>
 <body class="competition-detail-page-v162">
   <button id="globalScrollTopBtnV218" class="zo-scroll-top-v218" type="button" aria-label="Torna in cima alla pagina" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span><strong>Su</strong></button>
@@ -68,7 +68,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V219 hotfix archivio stagioni · Ultimo aggiornamento 25/05/2026</p>
+    <p>ZonaOrientale Salerno · V220 safety refactor mobile chrome · Ultimo aggiornamento 25/05/2026</p>
   </footer>
 
   <script>
@@ -833,37 +833,9 @@
       contentEl.innerHTML = "";
     });
   </script>
-  <script>
-    (function setupGlobalScrollTopV218() {
-      const button = document.getElementById('globalScrollTopBtnV218');
-      function isSmartphone() {
-        return Math.round(window.innerWidth || document.documentElement.clientWidth || 0) <= 900;
-      }
-      function syncMobileChrome() {
-        const enabled = isSmartphone();
-        document.body.classList.toggle('is-mobile-ux', enabled);
-        if (!enabled) {
-          document.getElementById('mobileMoreSheet')?.classList.add('hidden');
-          document.getElementById('mobileMoreBackdrop')?.classList.add('hidden');
-          document.getElementById('mobileMoreBtn')?.setAttribute('aria-expanded', 'false');
-        }
-        updateButton();
-      }
-      function updateButton() {
-        if (!button) return;
-        const show = isSmartphone() && window.scrollY > 360;
-        button.classList.toggle('is-visible', show);
-        button.setAttribute('aria-hidden', show ? 'false' : 'true');
-        button.tabIndex = show ? 0 : -1;
-      }
-      button?.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-      window.addEventListener('scroll', updateButton, { passive: true });
-      window.addEventListener('resize', syncMobileChrome, { passive: true });
-      window.addEventListener('orientationchange', syncMobileChrome, { passive: true });
-      syncMobileChrome();
-    })();
+  <script type="module">
+    import { setupMobileChromeV220 } from "./assets/js/mobile/mobile-chrome-v220.js?v=220";
+    setupMobileChromeV220();
   </script>
 </body>
 </html>

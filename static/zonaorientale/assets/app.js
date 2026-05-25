@@ -42,7 +42,8 @@ import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=219";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=220";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=220";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -130,10 +131,10 @@ import {
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=219";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=219";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=220";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 
 
@@ -18346,58 +18347,14 @@ historicalStatsCompareV218.installAdminHelpPanelHooks?.({
   set: (fn) => { renderAdminHelpPanelV185 = fn; }
 });
 
-function isSmartphoneViewportV218() {
-  const width = Math.round(window.innerWidth || document.documentElement.clientWidth || 0);
-  const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
-  return displayMode !== "desktop" && width > 0 && width <= 900;
-}
+const mobileChromeV220 = createMobileChromeControllerV220();
 
 function enforceSmartphoneChromeV218() {
-  const enabled = isSmartphoneViewportV218();
-  document.body.classList.toggle("is-mobile-ux", enabled);
-  document.body.classList.toggle("is-desktop-forced", !enabled && (localStorage.getItem("zonaOrientaleDisplayMode") || "auto") === "desktop");
-  document.querySelectorAll(".mobile-bottom-nav, .mobile-more-sheet, .mobile-more-backdrop, .mobile-page-subnav").forEach((node) => {
-    if (!enabled && (node.id === "mobileMoreSheet" || node.id === "mobileMoreBackdrop")) node.classList.add("hidden");
-  });
-  if (!enabled) document.getElementById("mobileMoreBtn")?.setAttribute("aria-expanded", "false");
-  updateGlobalScrollTopButtonV218();
-}
-
-function getOrCreateGlobalScrollTopButtonV218() {
-  let button = document.getElementById("globalScrollTopBtnV218");
-  if (!button) {
-    button = document.createElement("button");
-    button.id = "globalScrollTopBtnV218";
-    button.className = "zo-scroll-top-v218";
-    button.type = "button";
-    button.setAttribute("aria-label", "Torna in cima alla pagina");
-    button.innerHTML = '<span aria-hidden="true">↑</span><strong>Su</strong>';
-    document.body.appendChild(button);
-  }
-  return button;
-}
-
-function updateGlobalScrollTopButtonV218() {
-  const button = document.getElementById("globalScrollTopBtnV218");
-  if (!button) return;
-  const show = isSmartphoneViewportV218() && window.scrollY > 360;
-  button.classList.toggle("is-visible", show);
-  button.setAttribute("aria-hidden", show ? "false" : "true");
-  button.tabIndex = show ? 0 : -1;
+  mobileChromeV220.enforceSmartphoneChrome();
 }
 
 function setupGlobalScrollTopButtonV218() {
-  const button = getOrCreateGlobalScrollTopButtonV218();
-  if (button.dataset.boundV218 === "true") {
-    updateGlobalScrollTopButtonV218();
-    return;
-  }
-  button.dataset.boundV218 = "true";
-  button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-  window.addEventListener("scroll", updateGlobalScrollTopButtonV218, { passive: true });
-  window.addEventListener("resize", enforceSmartphoneChromeV218, { passive: true });
-  window.addEventListener("orientationchange", enforceSmartphoneChromeV218, { passive: true });
-  enforceSmartphoneChromeV218();
+  mobileChromeV220.setupGlobalScrollTopButton();
 }
 
 const updateMobileUxClassBeforeV218 = updateMobileUxClass;

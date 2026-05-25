@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V219.
+Stato: V220.
 
 ## Tipo applicazione
 
@@ -90,6 +90,7 @@ Mobile:
 
 ```text
 assets/js/mobile/mobile-viewport.js
+assets/js/mobile/mobile-chrome-v220.js
 assets/js/mobile/mobile-scrollbar.js
 assets/js/mobile/mobile-tables.js
 assets/js/mobile/mobile-rosters.js
