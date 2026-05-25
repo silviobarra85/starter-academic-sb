@@ -42,7 +42,7 @@ import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=218";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -130,10 +130,10 @@ import {
 } from "./js/admin/listone-converter.js";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=217";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=218";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=218";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 
 
@@ -337,8 +337,7 @@ function getCompetitionResults(competitionId) {
     .sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
 }
 
-/* V217 note: app import for admin-competitions now has an explicit cache-buster;
-   opened competition pages also receive ?v=217 to avoid stale competition.html. */
+/* V218 note: app import for admin-competitions and opened competition pages carry current cache-busters to avoid stale assets. */
 function getStandingResultValueV216(result, keys = [], fallback = "-") {
   for (const key of keys) {
     const value = result?.[key];
@@ -6553,6 +6552,9 @@ function isKnownStaticHashV43(hashValue) {
     'listone',
     'competitions',
     'honor',
+    'stats',
+    'archive',
+    'compare',
     'finance',
     'regolamento',
     'admin',
@@ -9785,7 +9787,7 @@ function getCompetitionDisplayNameV111(competition) {
 
 function getCompetitionOpenUrlV111(competition) {
   const params = new URLSearchParams();
-  params.set("v", "217");
+  params.set("v", "218");
   const seasonId = competition?.seasonId || getCurrentSeasonId();
   if (seasonId) params.set("seasonId", seasonId);
   if (competition?.id) params.set("competitionId", competition.id);
@@ -18289,5 +18291,106 @@ window.ZonaOrientaleSeasonArchive = {
 /* V215 - Hotfix archivio bootstrap.
    Ripristina gli helper base V196 dellArchivio prima degli override V204/V209.
    Senza questi helper, il modulo ES interrompeva lavvio con buildSeasonArchiveV196 non definita. */
+
+/* V218 - UI mobile globale e pagine storiche.
+   - Installa realmente il refactor V211 per Statistiche e Confronta.
+   - Richiama l'Archivio dopo il caricamento dati.
+   - Uniforma il pulsante "Su" mobile e impedisce al bottom menu di apparire da desktop. */
+const historicalStatsCompareV218 = installHistoricalStatsCompareRefactorV211({
+  state,
+  escapeHtml,
+  normalizeKey,
+  renderTeamLogo,
+  getTeamById,
+  getSeasonTeamById,
+  getSeasonTeamDisplayName,
+  getSeasonTeamLogo,
+  getCompetitionName: typeof getCompetitionPublicDisplayNameV110 === "function" ? getCompetitionPublicDisplayNameV110 : (typeof getCompetitionNameV196 === "function" ? getCompetitionNameV196 : null),
+  formatSeasonShortLabel,
+  buildMaps,
+  formatMatchResult,
+  logger: console
+});
+historicalStatsCompareV218.injectStyles?.();
+historicalStatsCompareV218.installAdminHelpPanelHooks?.({
+  get: () => renderAdminHelpPanelV185,
+  set: (fn) => { renderAdminHelpPanelV185 = fn; }
+});
+
+function isSmartphoneViewportV218() {
+  const width = Math.round(window.innerWidth || document.documentElement.clientWidth || 0);
+  const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
+  return displayMode !== "desktop" && width > 0 && width <= 900;
+}
+
+function enforceSmartphoneChromeV218() {
+  const enabled = isSmartphoneViewportV218();
+  document.body.classList.toggle("is-mobile-ux", enabled);
+  document.body.classList.toggle("is-desktop-forced", !enabled && (localStorage.getItem("zonaOrientaleDisplayMode") || "auto") === "desktop");
+  document.querySelectorAll(".mobile-bottom-nav, .mobile-more-sheet, .mobile-more-backdrop, .mobile-page-subnav").forEach((node) => {
+    if (!enabled && (node.id === "mobileMoreSheet" || node.id === "mobileMoreBackdrop")) node.classList.add("hidden");
+  });
+  if (!enabled) document.getElementById("mobileMoreBtn")?.setAttribute("aria-expanded", "false");
+  updateGlobalScrollTopButtonV218();
+}
+
+function getOrCreateGlobalScrollTopButtonV218() {
+  let button = document.getElementById("globalScrollTopBtnV218");
+  if (!button) {
+    button = document.createElement("button");
+    button.id = "globalScrollTopBtnV218";
+    button.className = "zo-scroll-top-v218";
+    button.type = "button";
+    button.setAttribute("aria-label", "Torna in cima alla pagina");
+    button.innerHTML = '<span aria-hidden="true">↑</span><strong>Su</strong>';
+    document.body.appendChild(button);
+  }
+  return button;
+}
+
+function updateGlobalScrollTopButtonV218() {
+  const button = document.getElementById("globalScrollTopBtnV218");
+  if (!button) return;
+  const show = isSmartphoneViewportV218() && window.scrollY > 360;
+  button.classList.toggle("is-visible", show);
+  button.setAttribute("aria-hidden", show ? "false" : "true");
+  button.tabIndex = show ? 0 : -1;
+}
+
+function setupGlobalScrollTopButtonV218() {
+  const button = getOrCreateGlobalScrollTopButtonV218();
+  if (button.dataset.boundV218 === "true") {
+    updateGlobalScrollTopButtonV218();
+    return;
+  }
+  button.dataset.boundV218 = "true";
+  button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  window.addEventListener("scroll", updateGlobalScrollTopButtonV218, { passive: true });
+  window.addEventListener("resize", enforceSmartphoneChromeV218, { passive: true });
+  window.addEventListener("orientationchange", enforceSmartphoneChromeV218, { passive: true });
+  enforceSmartphoneChromeV218();
+}
+
+const updateMobileUxClassBeforeV218 = updateMobileUxClass;
+updateMobileUxClass = function updateMobileUxClassV218() {
+  updateMobileUxClassBeforeV218?.();
+  enforceSmartphoneChromeV218();
+};
+
+const renderAllBeforeV218 = renderAll;
+renderAll = function renderAllV218() {
+  const result = renderAllBeforeV218?.();
+  try { historicalStatsCompareV218.renderAllSurfaces?.(); } catch (error) { console.warn("Statistiche/Confronta non renderizzati", error); }
+  try { renderSeasonArchiveV196?.(); } catch (error) { console.warn("Archivio stagioni non renderizzato", error); }
+  setupGlobalScrollTopButtonV218();
+  return result;
+};
+
+document.addEventListener("DOMContentLoaded", setupGlobalScrollTopButtonV218);
+window.addEventListener("load", () => {
+  setupGlobalScrollTopButtonV218();
+  enforceSmartphoneChromeV218();
+});
+
 /* V209 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();

@@ -27,10 +27,10 @@ export function setupAdaptiveMobileViewport({ getUpdateMobileUxClass, setUpdateM
     if (!body || !width || !height) return;
 
     const displayMode = localStorage.getItem("zonaOrientaleDisplayMode") || "auto";
-    const mediaMobile = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
-    const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-    const mobileUserAgent = /Android|iPhone|iPad|iPod|Mobile|SamsungBrowser/i.test(navigator.userAgent || "");
-    const isMobile = displayMode !== "desktop" && (mediaMobile || coarsePointer || mobileUserAgent || width <= 900);
+    // V218: il bottom menu deve apparire solo da smartphone/viewport stretto.
+    // Evitiamo quindi che desktop touch, laptop convertibili o finestre larghe con pointer coarse
+    // ricevano la classe is-mobile-ux.
+    const isMobile = displayMode !== "desktop" && width <= 900;
     const isLandscape = width > height;
 
     const sizeName = width <= 360 ? "xs" : width <= 430 ? "sm" : width <= 768 ? "md" : "lg";
