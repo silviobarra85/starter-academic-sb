@@ -15336,7 +15336,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "206";
+const DEPLOY_EXPECTED_VERSION_V181 = "207";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20429,13 +20429,10 @@ renderAll = function renderAllV205() {
   return result;
 };
 
-if (typeof getActiveTransferListingsV119 === "function") {
-  const getActiveTransferListingsBeforeV205 = getActiveTransferListingsV119;
-  getActiveTransferListingsV119 = function getActiveTransferListingsV205(seasonId = getCurrentSeasonId?.()) {
-    if (!state.transferMarketLoadedV119 && !state.transferMarketLoadedV170) return [];
-    return getActiveTransferListingsBeforeV205(seasonId);
-  };
-}
+/* V207 - Hotfix: non sovrascrivere getActiveTransferListingsV119.
+   Il helper nasce da una destructuring const del modulo Fantamercato, quindi riassegnarlo
+   blocca l'avvio con "Assignment to constant variable".
+   Le funzioni V205/V206 mantengono il mercato live/lazy senza patchare quel binding. */
 
 renderSeasonArchiveV196 = function renderSeasonArchiveV205() {
   const controlsTarget = document.getElementById("seasonArchiveControlsV196");
@@ -20516,7 +20513,7 @@ window.ZonaOrientaleSeasonArchive = {
    Se Firebase live e' lento/non raggiungibile, l'avvio puo' sembrare bloccato.
    Da V206 i dati statici/snapshot renderizzano sempre prima; comunicati e mercato live
    vengono aggiornati in background, senza impedire il primo render. */
-const ZO_RELEASE_VERSION_V206 = "206";
+const ZO_RELEASE_VERSION_V206 = "207";
 
 function getHashPageSafeV206() {
   try {
@@ -20591,5 +20588,6 @@ window.ZonaOrientaleLiveData = Object.assign({}, window.ZonaOrientaleLiveData ||
   status: () => ({ ...state.liveCollectionsV205, marketLoaded: Boolean(state.transferMarketLoadedV119 || state.transferMarketLoadedV170), newsCount: state.raw?.news?.length || 0 })
 });
 
+/* V207 - Hotfix avvio: rimossa riassegnazione helper Fantamercato const. */
 /* V206 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
