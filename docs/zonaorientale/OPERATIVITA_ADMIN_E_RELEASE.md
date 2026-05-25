@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V224.
+Stato: V225.
 
 ## Regola d'oro dati
 
@@ -254,3 +254,14 @@ honor.json
 snapshot stagioni statici
 ```
 
+
+
+## Nota V225 stabilizzazione
+
+Dopo i refactor V220-V224, il sito espone in console/browser:
+
+```js
+window.ZonaOrientaleRefactorStatus
+```
+
+Il campo `ok` deve essere `true`. Se `ok` e' `false`, leggere `checks` per capire quale modulo refactor non risulta disponibile. Questo controllo non sostituisce i test manuali, ma aiuta a intercettare subito regressioni da cache o helper mancanti.

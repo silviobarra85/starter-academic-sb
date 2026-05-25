@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V224
+# AI Handoff ZonaOrientale - Current V225
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V224**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati e statistiche storiche rinforzate.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V225**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, statistiche storiche rinforzate e primo ciclo refactor tecnico V220-V225 chiuso.
 
 ## Posizione e struttura progetto
 
@@ -55,17 +55,17 @@ http://localhost:1313/zonaorientale/
 
 ## Versione corrente codice
 
-Versione sito: **V224 statistiche storiche hardening**.
+Versione sito: **V225 stabilizzazione post-refactor**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V224 statistiche storiche hardening · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V225 stabilizzazione post-refactor · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=224`.
+Cache-buster HTML principali attesi: `?v=225`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `224`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `225`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 
@@ -98,6 +98,7 @@ assets/js/refactor/president-dashboard-rosters-v212.js
 assets/js/refactor/admin-publication-workflow-v213.js
 assets/js/refactor/public-admin-render-orchestrator-v221.js
 assets/js/data/repository-v222.js
+assets/js/refactor/refactor-stability-v225.js
 ```
 
 Stato effettivo:
@@ -107,8 +108,40 @@ Stato effettivo:
 - **V211 statistiche/confronta**: presente e, dopo V218/V219, installato realmente nel bootstrap. In V224 esclude `NON_DISPUTATA` dai titoli e pre-carica snapshot statici per calcolare i presidenti vincenti su tutte le stagioni. Gestisce `#stats` e `#compare`.
 - **V212 dashboard presidente/rose**: attivo. Gestisce dashboard presidente, helper rose e hub mobile presidente.
 - **V213 admin-publication-workflow**: file presente ma **non reinserire nel bootstrap senza test browser**. Era stato disattivato in V214 perche poteva bloccare la visualizzazione dei dati. Se ripreso, installarlo lazy/con try-catch e verificare tutto il bootstrap.
+- **V225 refactor-stability**: attivo. Espone `window.ZonaOrientaleRefactorStatus` con controlli runtime leggeri sui moduli V220-V224; non cambia UI/dati e non blocca il bootstrap.
 
 ## Stato funzionale recente
+
+### V225 - Stabilizzazione finale post-refactor
+
+V225 chiude il primo ciclo di refactor tecnico V220-V224 senza cambiare comportamento visibile.
+
+File toccati lato codice:
+
+```text
+assets/app.js
+assets/js/refactor/refactor-stability-v225.js
+index.html
+competition.html
+player.html
+```
+
+Cosa fa:
+
+- aggiorna footer/cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a 225;
+- aggiunge un controllo runtime non bloccante per verificare la presenza dei moduli V220-V224;
+- espone il report in `window.ZonaOrientaleRefactorStatus`;
+- non modifica dati, Firebase, UI o logiche Admin.
+
+Test specifico consigliato:
+
+```text
+Console browser:
+window.ZonaOrientaleRefactorStatus.ok deve essere true.
+Home, Archivio, Statistiche e Confronta devono continuare a caricarsi.
+Admin > Risultati competizioni deve continuare a mostrare classifica campionato completa.
+Mobile: bottom menu solo smartphone e pulsante Su solo dopo scroll.
+```
 
 
 ### V224 - Hardening statistiche storiche
@@ -178,6 +211,7 @@ Cosa e' stato fatto:
 
 ```text
 assets/js/data/repository-v222.js
+assets/js/refactor/refactor-stability-v225.js
 ```
 
 Il nuovo modulo introduce una facciata unica per:
@@ -189,7 +223,7 @@ loadStaticAssets() -> listoni, rose, calendari competizioni statici
 loadPublicConfig() -> config statica con fallback Firebase
 ```
 
-`app.js` continua a mantenere la logica di merge, snapshot e render, ma i punti di accesso ai dati sono ora instradati da `window.ZonaOrientaleDataRepository`. Questo prepara il futuro V223/V224 senza cambiare comportamento visibile.
+`app.js` continua a mantenere la logica di merge, snapshot e render, ma i punti di accesso ai dati sono ora instradati da `window.ZonaOrientaleDataRepository`. Questo prepara il per futuri refactor senza cambiare comportamento visibile.
 
 Test minimi dopo V222:
 
@@ -214,6 +248,7 @@ Cosa e' stato fatto:
 ```text
 assets/js/refactor/public-admin-render-orchestrator-v221.js
 assets/js/data/repository-v222.js
+assets/js/refactor/refactor-stability-v225.js
 ```
 
 Il nuovo modulo centralizza il ciclo di rendering principale in tre gruppi:
@@ -399,4 +434,4 @@ assets/css/mobile-chrome-v223.css
 
 Il file assorbe i blocchi duplicati V218 relativi a pulsante `Su`, vecchi pulsanti `listone/competition` e guard desktop del bottom menu. I blocchi corrispondenti sono stati rimossi da `assets/styles.css` e `assets/css/mobile-suite-v168.css` per iniziare la pulizia CSS senza alterare il layout.
 
-Versione runtime attesa: **223**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
+Versione runtime attesa: **225**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.

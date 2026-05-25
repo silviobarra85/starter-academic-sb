@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V224.
+Stato: V225.
 
 ## Tipo applicazione
 
@@ -371,3 +371,32 @@ La pagina `#stats` usa `assets/js/refactor/historical-stats-compare-v211.js`. In
 - pre-carica gli snapshot stagione statici mancanti tramite `loadStaticPublicSeasonSnapshotV172` per calcolare i presidenti vincenti su tutte le stagioni archiviate;
 - non deve introdurre letture Firebase extra per le statistiche storiche pubbliche.
 
+
+
+## Note stabilizzazione V225
+
+V225 chiude il primo ciclo di refactor tecnico V220-V224 senza cambiare UI, dati o Firebase.
+
+Nuovo modulo:
+
+```text
+assets/js/refactor/refactor-stability-v225.js
+```
+
+Il modulo esegue controlli runtime leggeri sui componenti estratti:
+
+```text
+V220 mobile chrome
+V221 public/admin render orchestrator
+V222 data repository facade
+V224 historical stats hardening
+V215/V218/V219 archive helpers
+```
+
+Il risultato viene esposto in:
+
+```js
+window.ZonaOrientaleRefactorStatus
+```
+
+Non blocca il bootstrap e non modifica il comportamento visibile: in caso di dipendenze mancanti produce solo un warning console.

@@ -138,6 +138,7 @@ import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/histori
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=225";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15365,7 +15366,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "224";
+const DEPLOY_EXPECTED_VERSION_V181 = "225";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18383,10 +18384,27 @@ window.addEventListener("load", () => {
   enforceSmartphoneChromeV218();
 });
 
-/* V209 - Final startup remains centralized here. */
-startZonaOrientaleAppV173();
-
-
 /* V224 - Historical stats hardening.
    Non disputata/status honor cells are excluded from title rankings, and
    historical static season snapshots are preloaded for president title totals. */
+
+/* V225 - Stabilizzazione finale post-refactor.
+   Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
+   pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
+runRefactorStabilityChecksV225({
+  version: "V225",
+  dataRepository: zonaDataRepositoryV222,
+  renderOrchestrator: publicAdminRenderOrchestratorV221,
+  mobileChrome: mobileChromeV220,
+  historicalStats: historicalStatsCompareV218,
+  archiveApi: {
+    build: typeof buildSeasonArchiveV196 === "function" ? buildSeasonArchiveV196 : null,
+    render: typeof renderSeasonArchiveV196 === "function" ? renderSeasonArchiveV196 : null,
+    getSortedSeasons: typeof getSeasonArchiveSortedSeasonsV196 === "function" ? getSeasonArchiveSortedSeasonsV196 : null,
+    getSnapshot: typeof getSeasonArchiveSnapshotV204 === "function" ? getSeasonArchiveSnapshotV204 : null
+  },
+  logger: console
+});
+
+/* V209 - Final startup remains centralized here. */
+startZonaOrientaleAppV173();

@@ -2,6 +2,16 @@
 
 Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.
 
+## V225 - Stabilizzazione finale post-refactor
+
+Overlay tecnico conclusivo del primo ciclo di pulizia V220-V224.
+
+- aggiunto `assets/js/refactor/refactor-stability-v225.js`;
+- il sito espone `window.ZonaOrientaleRefactorStatus` per verificare a runtime la presenza dei moduli estratti;
+- controllati repository dati V222, orchestrator V221, chrome mobile V220, statistiche storiche V224 e helper Archivio V215/V218/V219;
+- nessun cambio UI, nessun cambio dati, nessun cambio Firebase;
+- footer/cache-buster e `DEPLOY_EXPECTED_VERSION_V181` aggiornati a V225.
+
 ## V224 - Hardening statistiche storiche
 
 Correzioni funzionali e refactor prudente:

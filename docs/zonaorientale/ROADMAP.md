@@ -13,12 +13,12 @@ V221 separazione public/admin rendering - fatto
 V222 data repository unico per JSON/Firebase - fatto
 V223 CSS cleanup progressivo - fatto
 V224 hardening statistiche storiche + avvio rimozione legacy - fatto
-V225 stabilizzazione finale post-refactor
+V225 stabilizzazione finale post-refactor - fatto
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.
 
-Nota V224: la rimozione legacy pesante resta da fare solo dopo stabilizzazione; V224 ha dato priorita a hardening statistiche storiche e sicurezza dati. Resta V225 per stabilizzazione/test finale.
+Nota V225: il primo ciclo refactor tecnico e' concluso. La rimozione legacy pesante resta un lavoro futuro separato e va fatta solo con test browser completi.
 
 ## Priorita alta
 
@@ -236,4 +236,4 @@ master aggiornato
 
 ## Stato refactor corrente
 
-V224 completata: statistiche storiche rinforzate e V220-V223 tecnici completati. Il prossimo passo consigliato e' V225 stabilizzazione finale post-refactor con test browser completo prima di qualsiasi rimozione legacy pesante.
+V225 completata: ciclo V220-V225 chiuso. Prossimo passo consigliato: nessuna rimozione legacy immediata; prima usare il sito per qualche ciclo reale e poi aprire un nuovo refactor mirato solo se necessario.
