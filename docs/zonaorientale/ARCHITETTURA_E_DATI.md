@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V227.
+Stato: V230.
 
 ## Tipo applicazione
 
@@ -421,3 +421,47 @@ La V227 calcola il saldo con priorita':
 3. fallback sulla somma dei `fmMovements` della stagione.
 
 Quando nessuna sorgente contiene il saldo, visualizzare `-`, non `0 FM`.
+
+
+## V228 - Anteprime comunicati WhatsApp
+
+WhatsApp e gli altri crawler social non attendono il rendering JavaScript della webapp. Per questo i comunicati condivisibili usano pagine HTML statiche dedicate:
+
+```text
+static/zonaorientale/comunicati/<slug>.html
+static/zonaorientale/news.html
+```
+
+Il modulo browser `assets/js/domain/news-share-v228.js` centralizza slug, URL e HTML preview. Il generatore Node `tools/generate-news-share-pages.mjs` legge `assets/snapshots/seasons/*.json`, genera una pagina per ogni comunicato e aggiorna `news.html` e i meta Open Graph della home sull'ultimo comunicato disponibile negli snapshot.
+
+Il sito pubblico e l'Admin mostrano pulsanti `Copia link WhatsApp`; questi link devono puntare alle pagine statiche in `comunicati/`, non all'hash `#news`, per evitare cache/preview errate.
+
+
+
+## V230 - Hotfix URL comunicati condivisibili
+
+V230 corregge i link WhatsApp/preview che andavano in 404 per dominio errato. Le anteprime devono usare:
+
+```text
+https://silviobarra.com/zonaorientale/comunicati/<slug>.html
+```
+
+e non il vecchio host con `www`.
+
+In runtime `app.js` calcola la base con `getNewsShareBaseUrlV230()` a partire dall'URL corrente, cosi' il pulsante `Copia link WhatsApp` usa lo stesso host da cui l'utente sta navigando. Il generatore statico usa invece default non-`www` e redirect relativi nelle pagine HTML generate.
+
+## V229 - Pulsante account presidente
+
+La landing usa ancora `#openLoginBtn` come controllo principale di accesso. Dopo V229, quando `state.currentTeamUser` e' un presidente approvato (`status: ACTIVE`), l'ultimo override di `updateUserVisibilityV34` sostituisce il testo generico `Account` con logo squadra + `Pres. Cognome` e intercetta il click in capture phase per aprire `#teamarea`/Dashboard Presidente.
+
+Helper rilevanti in `assets/app.js`:
+
+```text
+getPresidentNameForAccountButtonV229
+getPresidentSurnameForAccountButtonV229
+renderPresidentAccountButtonContentV229
+updatePresidentAccountButtonV229
+openPresidentDashboardFromHeaderV229
+```
+
+CSS in `assets/styles.css`: blocco `V229 - Header account presidente`.

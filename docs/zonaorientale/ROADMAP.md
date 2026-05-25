@@ -237,4 +237,11 @@ master aggiornato
 
 ## Stato refactor corrente
 
-V227 completata: ciclo V220-V225 chiuso, hotfix statistiche V226 applicato e hotfix FM Archivio V227 applicato. Prossimo passo consigliato: nessuna rimozione legacy immediata; prima usare il sito per qualche ciclo reale e poi aprire un nuovo refactor mirato solo se necessario.
+V230 completata: ciclo V220-V225 chiuso, hotfix statistiche V226, hotfix FM Archivio V227, anteprime WhatsApp V228 e account presidente in header V229 e hotfix link comunicati V230 applicati. Prossimo passo consigliato: nessuna rimozione legacy immediata; prima usare il sito per qualche ciclo reale e poi aprire un nuovo refactor mirato solo se necessario.
+
+
+## Dopo V230
+
+- Valutare un'immagine Open Graph dedicata ai comunicati invece dell'icona app generica.
+- Se il sito passera' a hosting serverless, sostituire le pagine statiche `comunicati/*.html` con endpoint dinamici che leggono da Firebase.
+- Aggiungere una diagnostica Admin che segnali quando esistono comunicati Firebase non ancora presenti nelle pagine statiche generate.

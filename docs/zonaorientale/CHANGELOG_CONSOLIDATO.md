@@ -1,6 +1,33 @@
+## V230 - Hotfix link WhatsApp comunicati
+
+- Corretto dominio hardcoded dei link comunicati da `www.silviobarra.com` a `silviobarra.com`.
+- Il pulsante `Copia link WhatsApp` calcola la base dall'URL corrente.
+- Le pagine statiche `comunicati/*.html` ora usano canonical/OG non-`www`.
+- I redirect delle preview sono relativi, cosi' non portano a 404 se cambia host.
+- Aggiornati footer/cache-buster a V230.
+
 # Changelog consolidato ZonaOrientale
 
 Questo file sostituisce i molti `REFACTOR_Vxxx.md` e `AI_HANDOFF_ZONAORIENTALE_Vxxx.md` storici. Mantiene una vista sintetica di cosa conta davvero per proseguire lo sviluppo.
+
+## V229 - Account presidente in header
+
+- Quando un utente presidente approvato effettua il login, il pulsante header `Account` non viene piu mostrato.
+- Al suo posto il pulsante mostra logo squadra e label `Pres. Cognome`.
+- Il click sul pulsante porta direttamente alla Dashboard Presidente (`#teamarea`) invece di riaprire il dialog di login.
+- Per utenti non approvati resta il comportamento precedente; per admin resta la logica Admin esistente.
+- Aggiornati footer/cache-buster a V229.
+
+## V228 - Comunicati condivisibili WhatsApp
+
+- aggiunto `assets/js/domain/news-share-v228.js`;
+- aggiunto `tools/generate-news-share-pages.mjs`;
+- generate pagine statiche in `comunicati/*.html` per i comunicati presenti negli snapshot;
+- `news.html` ora contiene i meta Open Graph dell'ultimo comunicato e reindirizza alla relativa news;
+- `index.html` riceve meta Open Graph aggiornati all'ultimo comunicato dal generatore;
+- News pubbliche e Admin mostrano pulsanti `Copia link WhatsApp`;
+- Admin permette anche di scaricare l'HTML preview di un singolo comunicato;
+- aggiornati footer/cache-buster a V228.
 
 ## V227 - Hotfix FM Archivio
 

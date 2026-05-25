@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V227
+# AI Handoff ZonaOrientale - Current V230
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V227**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, statistiche storiche rinforzate, hotfix V226 sui nomi storici, hotfix V227 sui saldi FM in Archivio e primo ciclo refactor tecnico V220-V225 chiuso.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V230**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e pagine statiche per anteprime WhatsApp dei comunicati e pulsante account presidente personalizzato in header e hotfix V230 sui link comunicati/WhatsApp.
 
 ## Posizione e struttura progetto
 
@@ -54,6 +54,74 @@ http://localhost:1313/zonaorientale/
 ```
 
 
+
+
+## Hotfix V230 - Link WhatsApp/preview comunicati
+
+V230 corregge i 404 dei link WhatsApp/preview comunicati introdotti dalla V228. La causa era l'uso hardcoded del dominio `https://www.silviobarra.com/zonaorientale/`, mentre il sito pubblico corretto usa `https://silviobarra.com/zonaorientale/` senza `www`.
+
+Regole V230:
+
+- `NEWS_SHARE_DEFAULT_BASE_URL_V228` ora punta a `https://silviobarra.com/zonaorientale/`;
+- i link copiati dal browser non usano piu' un host fisso: `getNewsShareBaseUrlV230()` calcola la base dal path corrente;
+- le pagine statiche `comunicati/*.html` hanno canonical/OG non-`www`;
+- le pagine statiche reindirizzano con path relativo (`../#news-id` o `./#news-id`) per evitare 404 se cambia host;
+- dopo un nuovo comunicato bisogna sempre rigenerare e committare `news.html`, `index.html` e `comunicati/*.html`.
+
+## Fix V229 - Account presidente in header
+
+Quando un presidente approvato effettua login, il pulsante `#openLoginBtn` non deve mostrare il testo generico `Account`. La V229 lo trasforma in un pulsante compatto con logo squadra e label `Pres. Cognome`, usando il presidente approvato collegato a `teamUsers/{uid}` e, quando possibile, l'anagrafica in `presidents`.
+
+Comportamento atteso:
+
+```text
+utente anonimo/non approvato -> Accedi / Registrati o Account legacy
+presidente approvato -> logo squadra + Pres. Cognome
+click presidente -> Dashboard Presidente (#teamarea)
+admin -> comportamento Admin invariato
+```
+
+Implementazione in `assets/app.js`:
+
+```text
+getPresidentNameForAccountButtonV229
+getPresidentSurnameForAccountButtonV229
+renderPresidentAccountButtonContentV229
+updatePresidentAccountButtonV229
+openPresidentDashboardFromHeaderV229
+```
+
+CSS in `assets/styles.css`, blocco `V229 - Header account presidente`.
+
+## Fix V228 - Comunicati condivisibili WhatsApp
+
+V228 introduce pagine statiche dedicate ai comunicati per risolvere le anteprime WhatsApp. WhatsApp non esegue il JavaScript della webapp: legge solo i meta tag Open Graph presenti nell'HTML scaricato.
+
+File/parti rilevanti:
+
+```text
+assets/js/domain/news-share-v228.js
+tools/generate-news-share-pages.mjs
+comunicati/*.html
+news.html
+```
+
+Flusso corretto dopo un nuovo comunicato:
+
+```bash
+cd static/zonaorientale
+node tools/generate-news-share-pages.mjs
+cd ../..
+
+git add static/zonaorientale/news.html static/zonaorientale/comunicati static/zonaorientale/index.html
+git commit -m "data: aggiorna anteprime comunicati whatsapp"
+git push
+```
+
+Il pannello Admin mostra per ogni comunicato il pulsante `Copia link WhatsApp`, che punta a `https://silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>`. Le pagine `comunicati/*.html` contengono `og:title`, `og:description`, `og:image`, `og:url` e poi reindirizzano alla news nella webapp.
+
+Nota: se il comunicato e' stato salvato solo su Firebase ma non sono stati rigenerati/deployati snapshot e pagine statiche, WhatsApp continuera a vedere la preview precedente o generica.
+
 ## Fix V227 - FM Archivio
 
 Il bug rilevato in Archivio era causato dal rendering delle card squadra: veniva letto solo `seasonTeam.fmBalance`, ma gli snapshot pubblici non salvano quel campo dentro `seasonTeams`.
@@ -68,17 +136,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V227 hotfix FM archivio**.
+Versione sito: **V230 hotfix link comunicati**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V227 hotfix FM archivio · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V230 hotfix link comunicati · Ultimo aggiornamento 25/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=227`.
+Cache-buster HTML principali attesi: `?v=229`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `227`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `229`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

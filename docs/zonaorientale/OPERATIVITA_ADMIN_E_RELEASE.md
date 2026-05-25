@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V227.
+Stato: V230.
 
 ## Regola d'oro dati
 
@@ -284,3 +284,63 @@ Dopo deploy V227 verificare in `#archive` / Archivio stagioni, selezionando alme
 - nelle card `Squadre della stagione`, il campo `Saldo` deve mostrare i crediti residui reali quando presenti negli snapshot rose o nei movimenti FM;
 - squadre con saldo reale zero possono mostrare `0 FM`;
 - stagioni prive di dati FM devono mostrare `-`, non un falso `0 FM` generalizzato.
+
+
+## Caso E - Nuovo comunicato e anteprima WhatsApp
+
+Quando pubblichi un nuovo comunicato da Admin, Firebase lo salva subito, ma WhatsApp non legge Firebase ne' il JavaScript della pagina. Per avere la preview corretta devi rigenerare e deployare le pagine statiche.
+
+Flusso consigliato:
+
+```text
+1. Admin -> Comunicazioni -> salva comunicato
+2. Admin -> Snapshot pubblici -> Aggiorna tutto
+3. Applica/committa gli snapshot statici aggiornati
+4. Genera le pagine anteprima comunicati
+5. Commit + push di news.html, index.html e comunicati/*.html
+6. Usa il pulsante "Copia link WhatsApp" del comunicato
+```
+
+Comandi dalla root della repo:
+
+```bash
+cd static/zonaorientale
+node tools/generate-news-share-pages.mjs
+cd ../..
+
+git status
+git add static/zonaorientale/index.html \
+  static/zonaorientale/news.html \
+  static/zonaorientale/comunicati \
+  static/zonaorientale/assets/snapshots/seasons/manifest.json \
+  static/zonaorientale/assets/snapshots/seasons/*.json
+git commit -m "data: aggiorna comunicati e anteprime whatsapp"
+git push
+```
+
+Se condividi un URL gia' condiviso in passato, WhatsApp puo mantenere la vecchia preview in cache. Per questo i link copiati dal sito includono `?v=<id-comunicato>`.
+
+
+
+## Nota V230 - Verifica link WhatsApp comunicati
+
+Dopo il deploy di un comunicato, il link copiato deve avere forma:
+
+```text
+https://silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>
+```
+
+Non deve contenere `www`. Se si apre `Apri preview`, la pagina deve esistere e poi reindirizzare alla webapp tramite hash `#news-...`.
+
+## Test manuale specifico V229
+
+Dopo deploy o test locale:
+
+```text
+1. Login con account presidente approvato.
+2. Verificare che nel header non compaia piu `Account`.
+3. Verificare che compaia logo squadra + `Pres. Cognome`.
+4. Cliccare il pulsante e verificare apertura Dashboard Presidente.
+5. Logout e verificare ritorno del pulsante `Accedi / Registrati`.
+6. Login admin e verificare che la navigazione Admin non cambi.
+```
