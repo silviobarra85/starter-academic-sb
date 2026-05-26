@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V235
+# AI Handoff ZonaOrientale - Current V236
 
-Ultimo aggiornamento documentale: 25/05/2026.
+Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V235**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect e pulsante account presidente personalizzato in header.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V236**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header e V236 con ripristino del comunicato avvenuto scambio presidente via News + EmailJS.
 
 ## Posizione e struttura progetto
 
@@ -57,6 +57,21 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+## V236 - Ripristino comunicato avvenuto scambio presidente
+
+V236 ripristina nella Dashboard Presidente il secondo tipo di comunicato che era ancora presente in parte nel codice legacy V50/V79, ma non veniva piu' montato dopo il refactor V119 dell'area squadra.
+
+Funzionamento attuale:
+
+- `Comunicato squadra`: resta il flusso ordinario con richiesta admin `TEAM_NEWS` e approvazione.
+- `Comunicato avvenuto scambio`: nuovo pannello reinserito sotto il comunicato squadra; pubblica subito in Firebase `news` e invia EmailJS a `caparrotti86@yahoo.it`.
+- Topic News usato: `COMUNICATO_AVVENUTO_SCAMBIO`.
+- Oggetto email: `Comunicato avvenuto scambio NOME_SQUADRA`.
+- Corpo email: titolo, testo, giocatori/contropartite coinvolti e squadra coinvolta, quando compilati.
+- Mobile: l'hub Dashboard Presidente riceve anche l'azione rapida `Scambio` che scrolla al form.
+
+File toccati: `assets/app.js`, `assets/js/domain/labels.js`, footer/cache-buster HTML e documentazione canonica.
 
 ## V235 - Hotfix routing comunicati condivisi
 
@@ -162,17 +177,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V235 hotfix routing comunicati**.
+Versione sito: **V236 comunicati scambio presidente**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V235 hotfix routing comunicati · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V236 comunicati scambio presidente · Ultimo aggiornamento 26/05/2026
 ```
 
 Cache-buster HTML principali attesi: `?v=229`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `229`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `236`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 
@@ -565,7 +580,7 @@ assets/css/mobile-chrome-v223.css
 
 Il file assorbe i blocchi duplicati V218 relativi a pulsante `Su`, vecchi pulsanti `listone/competition` e guard desktop del bottom menu. I blocchi corrispondenti sono stati rimossi da `assets/styles.css` e `assets/css/mobile-suite-v168.css` per iniziare la pulizia CSS senza alterare il layout.
 
-Versione runtime attesa: **226**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
+Versione runtime attesa: **236**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
 
 
 ## Update V235
@@ -585,3 +600,10 @@ Le categorie non sono rese mutuamente esclusive a livello dati: un giocatore puo
 
 ## V235 - Stato corrente
 Hotfix Listone: le checkbox sono ora coerenti con le colonne visibili. `In listone`/`Asteriscato` operano sulla colonna Stato, `Svincolati` opera sulla colonna Rosa.
+
+## Update V236 - Comunicati scambio presidente
+
+- Ripristinato il form presidente `Comunicato avvenuto scambio` perso dal render V119.
+- Il form usa pubblicazione diretta in `news` e invio EmailJS a `caparrotti86@yahoo.it`.
+- Aggiunto topic `COMUNICATO_AVVENUTO_SCAMBIO` nelle label.
+- Aggiornati footer/cache-buster, diagnostica versione e documentazione a V236.

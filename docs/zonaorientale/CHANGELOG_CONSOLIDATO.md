@@ -1,3 +1,10 @@
+## V236 - Ripristino comunicato avvenuto scambio presidente
+- Ripristinato nella Dashboard Presidente il secondo form `Comunicato avvenuto scambio`, perso dal refactor V119 dell'area squadra.
+- Il comunicato di scambio viene pubblicato direttamente nella raccolta Firebase `news` con topic `COMUNICATO_AVVENUTO_SCAMBIO`.
+- Dopo la pubblicazione viene inviata una email tramite EmailJS a `caparrotti86@yahoo.it` con oggetto `Comunicato avvenuto scambio NOME_SQUADRA` e corpo composto da titolo, testo, giocatori/contropartite e squadra coinvolta.
+- Aggiunta scorciatoia mobile `Scambio` nell'hub azioni rapide della Dashboard Presidente.
+- Aggiornate etichette topic/richieste, footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V236.
+
 ## V235 - Hotfix filtri listone
 - Corretto definitivamente il filtro della sezione Listone:
   - `In listone` mostra i giocatori con stato esatto `In listone` / `IN_LISTONE`;

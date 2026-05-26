@@ -20,7 +20,8 @@ export function requestTypeLabel(type) {
     TEAM_NEWS: "Comunicato squadra",
     PLAYER_BUY_REQUEST: "Richiesta acquisto",
     PLAYER_RELEASE_REQUEST: "Richiesta svincolo",
-    PLAYER_TRADE_REQUEST: "Richiesta scambio"
+    PLAYER_TRADE_REQUEST: "Richiesta scambio",
+    TRANSFER_NEWS: "Comunicato avvenuto scambio"
   }[type] || type || "-";
 }
 
@@ -29,6 +30,7 @@ export function newsTopicLabelV48(topic) {
     GENERALE: "Generale",
     COMPETIZIONE: "Competizione",
     COMUNICATO_SQUADRA: "Comunicato squadra",
+    COMUNICATO_AVVENUTO_SCAMBIO: "Comunicato avvenuto scambio",
     COMUNICATO_UFFICIALE_SQUADRA: "Comunicato ufficiale squadra",
     TEAM_NEWS: "Comunicato squadra"
   };
