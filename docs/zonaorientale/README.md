@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V244**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V245**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,7 +16,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V244.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V245.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -59,10 +59,10 @@ V240 riallinea badge e storico trattative nella Dashboard Presidente: le liste v
 V241 stabilizza Admin -> Accetta utenti: i rifiuti restano come `REJECTED`, gli approvati non tornano `PENDING` al login e i vecchi duplicati pending vengono nascosti. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
 
 
-## Nota V243
+## Nota V245
 
-V243 consolida il comunicato di avvenuto scambio; V244 aggiunge il pulsante Admin per eliminare da Firebase i comunicati rifiutati: un solo form canonico, salvataggio in `teamRequests`, invio EmailJS immediato e pubblicazione News dopo approvazione Admin. Gli agganci legacy V50/V79 sono neutralizzati. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+V243 consolida il comunicato di avvenuto scambio; V244/V245 aggiungono il pulsante Admin per eliminare da Firebase i comunicati rifiutati o approvati: un solo form canonico, salvataggio in `teamRequests`, invio EmailJS immediato e pubblicazione News dopo approvazione Admin. Gli agganci legacy V50/V79 sono neutralizzati. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
 
-## Nota V244
+## Nota operativa V245
 
-Admin -> Richieste presidenti permette di eliminare da Firebase i soli comunicati rifiutati. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+Admin -> Richieste presidenti permette di eliminare da Firebase i comunicati approvati o rifiutati. La cancellazione rimuove il documento `teamRequests`; per i comunicati approvati una eventuale News gia' pubblicata resta online. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.

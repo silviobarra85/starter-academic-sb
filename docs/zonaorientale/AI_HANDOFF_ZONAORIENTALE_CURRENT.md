@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V244
+# AI Handoff ZonaOrientale - Current V245
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V244**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio e V244 con eliminazione da Firebase dei comunicati rifiutati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V245**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati e V245 con eliminazione anche dei comunicati approvati dal registro richieste.
 
 ## Posizione e struttura progetto
 
@@ -60,6 +60,10 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+## V245 - Elimina comunicati approvati da Firebase
+
+V245 estende Admin -> Richieste presidenti: il pulsante `Elimina da Firebase` compare anche sui comunicati approvati (`TEAM_NEWS` e `TRANSFER_NEWS`, inclusi topic `COMUNICATO_SQUADRA` e `COMUNICATO_AVVENUTO_SCAMBIO`), non solo sui rifiutati. La cancellazione rimuove il documento `teamRequests/{id}`; se il comunicato approvato e' gia' stato pubblicato nelle News, la news pubblicata non viene cancellata. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
 
 ## V244 - Elimina comunicati rifiutati da Firebase
 
@@ -206,17 +210,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V244 elimina comunicati rifiutati**.
+Versione sito: **V245 elimina comunicati approvati**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V244 elimina comunicati rifiutati · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V245 elimina comunicati approvati · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=244`.
+Cache-buster HTML principali attesi: `?v=245`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `244`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `245`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

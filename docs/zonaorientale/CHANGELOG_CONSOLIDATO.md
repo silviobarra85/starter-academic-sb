@@ -1,3 +1,11 @@
+## V245 - Elimina comunicati approvati da Firebase
+
+- Admin -> Richieste presidenti: il pulsante `Elimina da Firebase` ora compare anche sui comunicati gia' approvati, oltre che sui comunicati rifiutati.
+- La cancellazione resta limitata alle richieste comunicato (`TEAM_NEWS` e `TRANSFER_NEWS`, inclusi topic `COMUNICATO_SQUADRA` e `COMUNICATO_AVVENUTO_SCAMBIO`) in stato `APPROVED`/`ACCEPTED` o `REJECTED`.
+- Per i comunicati approvati la conferma chiarisce che viene cancellato solo il documento `teamRequests/{id}`: una eventuale news gia' pubblicata resta nella raccolta `news`.
+- Aggiornati footer/cache-buster/diagnostica a V245.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V244 - Elimina comunicati rifiutati da Firebase
 
 - Admin -> Richieste presidenti: quando un comunicato squadra o un comunicato avvenuto scambio viene rifiutato, compare il pulsante `Elimina da Firebase`.
