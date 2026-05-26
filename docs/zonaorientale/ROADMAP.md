@@ -257,3 +257,8 @@ V243 completata: consolidato il flusso comunicato avvenuto scambio e neutralizza
 
 
 V246 completata: la lettura degli esiti trattative viene salvata in Firebase quando il presidente mittente apre la card della proposta conclusa, con `localStorage` solo come fallback. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita. Prossimi step consigliati: checklist regressioni e pulizia mirata degli handler legacy residui.
+
+
+## Stato V247
+
+Completata la checklist regressioni canonica in `REGRESSION_TESTS.md`. Prossimo step consigliato: pulizia mirata degli handler legacy residui piu' rischiosi, senza eliminare funzionalita visibili. `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.

@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V246
+# AI Handoff ZonaOrientale - Current V247
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V246**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V247**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase e V247 con checklist regressioni canonica.
 
 ## Posizione e struttura progetto
 
@@ -61,6 +61,11 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+
+## V247 - Checklist regressioni
+
+V247 aggiunge `docs/zonaorientale/REGRESSION_TESTS.md`, checklist operativa per testare pubblico, presidente, admin, mobile, Firebase e controlli tecnici prima di merge/deploy. La release non introduce modifiche funzionali runtime oltre a footer/cache-buster/diagnostica. `FUNZIONALITA'.md` non e' stato modificato, come da regola di aggiornamento solo esplicito.
 
 ## V246 - Notifiche trattative sincronizzate su Firebase
 
@@ -215,17 +220,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V246 notifiche trattative Firebase**.
+Versione sito: **V247 checklist regressioni**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V246 notifiche trattative Firebase · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V247 checklist regressioni · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=246`.
+Cache-buster HTML principali attesi: `?v=247`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `246`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `247`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

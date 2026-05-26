@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V246.
+Stato: V247.
 
 ## Tipo applicazione
 
@@ -494,3 +494,8 @@ Nota V245: in Admin -> Richieste presidenti, i documenti `teamRequests` relativi
 
 
 Nota V246: le notifiche di esito trattativa usano come stato canonico i campi nel documento `transferNegotiations/{id}`: `outcomeSeenByFromUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid` e `outcomeSeenByUid`. Il vecchio `localStorage` resta solo fallback locale in caso di permessi Firebase insufficienti.
+
+
+## Nota V247
+
+Aggiunto `REGRESSION_TESTS.md` come checklist di regressione. Non cambia architettura runtime, sorgenti dati o schema Firebase.

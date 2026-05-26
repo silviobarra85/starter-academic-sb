@@ -1,3 +1,10 @@
+## V247 - Checklist regressioni
+
+- Aggiunto `REGRESSION_TESTS.md` come checklist operativa per test pubblico, presidente, admin, mobile, Firebase e pre-commit.
+- Aggiornati footer/cache-buster/diagnostica a V247.
+- Nessuna modifica funzionale runtime: la release serve a standardizzare i controlli prima dei merge.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V246 - Notifiche trattative sincronizzate su Firebase
 
 - Il badge esito trattativa del presidente mittente non dipende piu' solo da `localStorage`: quando si apre la card della proposta conclusa, il sito prova a marcare la lettura nel documento `transferNegotiations/{id}`.

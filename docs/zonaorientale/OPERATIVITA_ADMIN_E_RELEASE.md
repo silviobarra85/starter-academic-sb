@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V246.
+Stato: V247.
 
 ## Regola d'oro dati
 
@@ -353,3 +353,8 @@ Le notifiche degli esiti trattative sono sincronizzate su Firebase quando possib
 ```
 
 Se le rules negano l'update di lettura, il sito usa ancora `localStorage` come fallback locale e in console puo' apparire il warning `Lettura esito trattativa salvata solo localmente`.
+
+
+## Nota V247
+
+Prima di fondere un branch su `master`, usare `REGRESSION_TESTS.md` come checklist minima. La checklist include test pubblico, presidente, admin, mobile, notifiche trattative, comunicati e controlli tecnici pre-commit.

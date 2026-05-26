@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V246**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V247**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,12 +16,15 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V246.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V247.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
 
-6. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V124C.rules`  
+6. `REGRESSION_TESTS.md`  
+   Checklist operativa da usare prima di merge e deploy per ridurre il rischio regressioni.
+
+7. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V124C.rules`  
    Regole Firestore storiche/consolidate. Non e' un handoff, ma resta qui come riferimento tecnico importante.
 
 ## Regola per i prossimi aggiornamenti docs
@@ -66,3 +69,8 @@ V246 sincronizza su Firebase la lettura degli esiti trattative quando il preside
 ## Nota operativa V246
 
 Admin -> Richieste presidenti permette di eliminare da Firebase i comunicati approvati o rifiutati. La cancellazione rimuove il documento `teamRequests`; per i comunicati approvati una eventuale News gia' pubblicata resta online. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+
+
+## Nota V247
+
+V247 aggiunge `REGRESSION_TESTS.md`, una checklist di regressione per pubblico, presidente, admin, mobile e controlli tecnici pre-commit. Non introduce nuove funzionalita runtime. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
