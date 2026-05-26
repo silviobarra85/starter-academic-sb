@@ -1,3 +1,12 @@
+## V246 - Notifiche trattative sincronizzate su Firebase
+
+- Il badge esito trattativa del presidente mittente non dipende piu' solo da `localStorage`: quando si apre la card della proposta conclusa, il sito prova a marcare la lettura nel documento `transferNegotiations/{id}`.
+- Aggiunti campi di lettura esito: `outcomeSeenByFromUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid`, `outcomeSeenByUid`.
+- Quando il destinatario approva o rifiuta una trattativa, la lettura del mittente viene resettata, cosi' l'esito torna notificato.
+- `localStorage` resta fallback se le regole Firebase negano l'update, senza bloccare la UI.
+- Aggiornati footer/cache-buster/diagnostica a V246.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V245 - Elimina comunicati approvati da Firebase
 
 - Admin -> Richieste presidenti: il pulsante `Elimina da Firebase` ora compare anche sui comunicati gia' approvati, oltre che sui comunicati rifiutati.

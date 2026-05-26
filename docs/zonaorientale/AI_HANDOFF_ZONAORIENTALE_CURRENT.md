@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V245
+# AI Handoff ZonaOrientale - Current V246
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V245**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati e V245 con eliminazione anche dei comunicati approvati dal registro richieste.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V246**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase.
 
 ## Posizione e struttura progetto
 
@@ -60,6 +60,11 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+
+## V246 - Notifiche trattative sincronizzate su Firebase
+
+V246 rende piu' robusto il badge delle trattative: quando il presidente mittente apre la card di una proposta conclusa, il sito marca l'esito come letto anche nel documento `transferNegotiations/{id}` (`outcomeSeenByFromUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid`). `localStorage` resta come fallback se le regole Firebase negano l'update, ma il comportamento atteso e' la sincronizzazione tra desktop e mobile. Quando il destinatario approva o rifiuta, il flag di lettura del mittente viene resettato. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
 
 ## V245 - Elimina comunicati approvati da Firebase
 
@@ -210,17 +215,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V245 elimina comunicati approvati**.
+Versione sito: **V246 notifiche trattative Firebase**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V245 elimina comunicati approvati · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V246 notifiche trattative Firebase · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=245`.
+Cache-buster HTML principali attesi: `?v=246`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `245`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `246`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

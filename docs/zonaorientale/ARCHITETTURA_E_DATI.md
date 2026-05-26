@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V245.
+Stato: V246.
 
 ## Tipo applicazione
 
@@ -491,3 +491,6 @@ Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra 
 Nota V243: il comunicato avvenuto scambio usa un unico flusso canonico: form V243, scrittura in `teamRequests` con `TRANSFER_NEWS`, invio EmailJS immediato e pubblicazione in News solo dopo approvazione Admin. Gli handler legacy V50/V79 sono neutralizzati per evitare doppie azioni.
 
 Nota V245: in Admin -> Richieste presidenti, i documenti `teamRequests` relativi a comunicati approvati o rifiutati possono essere eliminati definitivamente da Firebase con il pulsante `Elimina da Firebase`. La cancellazione e' limitata a richieste comunicato in stato `APPROVED`/`ACCEPTED` o `REJECTED`; una eventuale news gia' pubblicata resta nella raccolta `news`.
+
+
+Nota V246: le notifiche di esito trattativa usano come stato canonico i campi nel documento `transferNegotiations/{id}`: `outcomeSeenByFromUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid` e `outcomeSeenByUid`. Il vecchio `localStorage` resta solo fallback locale in caso di permessi Firebase insufficienti.

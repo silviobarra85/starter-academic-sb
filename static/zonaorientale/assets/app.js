@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=245";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=246";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=245";
+} from "./js/domain/news-share-v228.js?v=246";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=245";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=246";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=245";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=246";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "245";
+const DEPLOY_EXPECTED_VERSION_V181 = "246";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V245",
+  version: "V246",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -20209,6 +20209,127 @@ attachAdminHandlers = function attachAdminHandlersV245() {
     button.dataset.v245Handler = '1';
     button.addEventListener('click', () => deleteCommunicationTeamRequestV245(button.dataset.deleteTeamRequestV245));
   });
+};
+
+
+/* V246 - Trattative: letto/non letto esiti sincronizzato su Firebase.
+   - Il badge esito per chi ha inviato una proposta non dipende piu' solo da localStorage.
+   - Quando il mittente apre la card della proposta conclusa, il sito prova a salvare la lettura in transferNegotiations.
+   - localStorage resta fallback locale se le regole Firebase negano l'update, senza bloccare la UI. */
+state.tradeOutcomeSeenWriteInProgressV246 = state.tradeOutcomeSeenWriteInProgressV246 || new Set();
+
+function getTradeOutcomeSeenMarkerV246(item = {}) {
+  return typeof getTradeNotificationMarkerV238 === 'function'
+    ? getTradeNotificationMarkerV238(item)
+    : `${String(item.status || 'PENDING').toUpperCase()}:${String(item.updatedAt?.seconds || item.updatedAt || item.createdAt?.seconds || item.createdAt || '')}`;
+}
+
+function isTradeOutcomeSeenInFirebaseV246(item = {}) {
+  if (!item || !item.id) return false;
+  const seen = item.outcomeSeenByFromUid === true || item.fromOutcomeSeen === true || item.outcomeSeenBySender === true;
+  if (!seen) return false;
+  const savedMarker = String(item.outcomeSeenMarkerByFromUid || item.fromOutcomeSeenMarker || item.outcomeSeenMarker || '');
+  const currentMarker = getTradeOutcomeSeenMarkerV246(item);
+  return !savedMarker || savedMarker === currentMarker;
+}
+
+const isTradeOutcomeSeenBeforeV246 = isTradeOutcomeSeenV238;
+isTradeOutcomeSeenV238 = function isTradeOutcomeSeenV246(item) {
+  return isTradeOutcomeSeenInFirebaseV246(item) || Boolean(isTradeOutcomeSeenBeforeV246?.(item));
+};
+
+function markTradeOutcomeSeenLocallyV246(item = {}) {
+  if (!item?.id) return;
+  const marker = getTradeOutcomeSeenMarkerV246(item);
+  const ack = typeof readTradeOutcomeAckV238 === 'function' ? readTradeOutcomeAckV238() : {};
+  ack[String(item.id)] = marker;
+  if (typeof writeTradeOutcomeAckV238 === 'function') writeTradeOutcomeAckV238(ack);
+  item.outcomeSeenByFromUid = true;
+  item.outcomeSeenMarkerByFromUid = marker;
+  item.outcomeSeenAtByFromUid = new Date().toISOString();
+}
+
+async function persistTradeOutcomeSeenV246(item = {}) {
+  if (!item?.id || !state.user?.uid) return;
+  const id = String(item.id);
+  if (state.tradeOutcomeSeenWriteInProgressV246.has(id)) return;
+  state.tradeOutcomeSeenWriteInProgressV246.add(id);
+  try {
+    const marker = getTradeOutcomeSeenMarkerV246(item);
+    await setDoc(doc(db, 'transferNegotiations', id), {
+      outcomeSeenByFromUid: true,
+      outcomeSeenByUid: state.user.uid,
+      outcomeSeenAtByFromUid: serverTimestamp(),
+      outcomeSeenMarkerByFromUid: marker
+    }, { merge: true });
+    const current = (state.raw?.transferNegotiations || []).find((row) => String(row.id || '') === id);
+    if (current) {
+      current.outcomeSeenByFromUid = true;
+      current.outcomeSeenByUid = state.user.uid;
+      current.outcomeSeenMarkerByFromUid = marker;
+      current.outcomeSeenAtByFromUid = new Date().toISOString();
+    }
+  } catch (error) {
+    console.warn('Lettura esito trattativa salvata solo localmente', error);
+  } finally {
+    state.tradeOutcomeSeenWriteInProgressV246.delete(id);
+  }
+}
+
+const acknowledgeSingleTradeOutcomeBeforeV246 = typeof acknowledgeSingleTradeOutcomeV239 === 'function' ? acknowledgeSingleTradeOutcomeV239 : null;
+acknowledgeSingleTradeOutcomeV239 = async function acknowledgeSingleTradeOutcomeV246(tradeId) {
+  const teamId = getTradeNotificationCurrentTeamIdV238?.();
+  if (!teamId || !tradeId) return acknowledgeSingleTradeOutcomeBeforeV246?.(tradeId);
+  const item = (state.raw?.transferNegotiations || []).find((row) => String(row.id || '') === String(tradeId));
+  if (!item || item.fromSeasonTeamId !== teamId || !isTradeOutcomeStatusV238?.(item.status)) return;
+  markTradeOutcomeSeenLocallyV246(item);
+  state.tradeNotificationLastDetailedStateV239 = getTradeNotificationStateV238?.() || state.tradeNotificationLastDetailedStateV239;
+  applyTradeNotificationBadgesV238?.();
+  await persistTradeOutcomeSeenV246(item);
+  state.tradeNotificationLastDetailedStateV239 = getTradeNotificationStateV238?.() || state.tradeNotificationLastDetailedStateV239;
+  applyTradeNotificationBadgesV238?.();
+};
+
+const acknowledgeTradeOutcomeNotificationsBeforeV246 = typeof acknowledgeTradeOutcomeNotificationsV238 === 'function' ? acknowledgeTradeOutcomeNotificationsV238 : null;
+acknowledgeTradeOutcomeNotificationsV238 = async function acknowledgeTradeOutcomeNotificationsV246() {
+  if (!state.tradeOutcomeAckFromOpenCardV239) return;
+  const teamId = getTradeNotificationCurrentTeamIdV238?.();
+  if (!teamId) return;
+  const rows = (getCurrentTradeNegotiationsV238?.() || [])
+    .filter((item) => item.fromSeasonTeamId === teamId && isTradeOutcomeStatusV238?.(item.status));
+  for (const item of rows) {
+    markTradeOutcomeSeenLocallyV246(item);
+    await persistTradeOutcomeSeenV246(item);
+  }
+  state.tradeOutcomeAckFromOpenCardV239 = false;
+  applyTradeNotificationBadgesV238?.();
+  if (!rows.length) return acknowledgeTradeOutcomeNotificationsBeforeV246?.();
+};
+
+const updateNegotiationStatusBeforeV246 = updateNegotiationStatusV119;
+updateNegotiationStatusV119 = async function updateNegotiationStatusV246(id, status) {
+  const normalized = String(status || '').toUpperCase();
+  const result = await updateNegotiationStatusBeforeV246?.(id, status);
+  if ((normalized === 'ACCEPTED' || normalized === 'REJECTED') && id) {
+    try {
+      await setDoc(doc(db, 'transferNegotiations', String(id)), {
+        outcomeSeenByFromUid: false,
+        outcomeSeenMarkerByFromUid: '',
+        outcomeSeenByUid: '',
+        outcomeResetAtV246: serverTimestamp()
+      }, { merge: true });
+      const current = (state.raw?.transferNegotiations || []).find((row) => String(row.id || '') === String(id));
+      if (current) {
+        current.outcomeSeenByFromUid = false;
+        current.outcomeSeenMarkerByFromUid = '';
+        current.outcomeSeenByUid = '';
+      }
+    } catch (error) {
+      console.warn('Reset lettura esito trattativa non salvato', error);
+    }
+  }
+  applyTradeNotificationBadgesV238?.();
+  return result;
 };
 
 /* V209 - Final startup remains centralized here. */

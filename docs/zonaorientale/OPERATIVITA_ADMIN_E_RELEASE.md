@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V245.
+Stato: V246.
 
 ## Regola d'oro dati
 
@@ -338,3 +338,18 @@ Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra 
 Nota V243: per i comunicati di avvenuto scambio il presidente non scrive direttamente in `news`; crea una richiesta `TRANSFER_NEWS`, manda EmailJS alla lega e l Admin pubblica approvando la richiesta.
 
 Nota V245: dopo aver approvato o rifiutato un comunicato in Admin -> Richieste presidenti, compare `Elimina da Firebase`. Usarlo solo quando si vuole rimuovere definitivamente il documento `teamRequests` approvato/rifiutato; se il comunicato approvato e' gia' in News, la news pubblicata non viene rimossa.
+
+
+## Nota V246
+
+Le notifiche degli esiti trattative sono sincronizzate su Firebase quando possibile. Per testare:
+
+```text
+1. Presidente A invia proposta a Presidente B
+2. Presidente B approva/rifiuta
+3. Presidente A vede badge esito
+4. Presidente A apre Dashboard Presidente -> Trattative -> card proposta
+5. Il badge sparisce anche dopo refresh o da altro dispositivo, se le rules permettono l'update su transferNegotiations
+```
+
+Se le rules negano l'update di lettura, il sito usa ancora `localStorage` come fallback locale e in console puo' apparire il warning `Lettura esito trattativa salvata solo localmente`.
