@@ -1,6 +1,6 @@
 # Regression tests ZonaOrientale
 
-Stato: V247.
+Stato: V248.
 
 Questo documento e' una checklist operativa per evitare regressioni prima di fondere un branch su `master` o prima di pubblicare una modifica rilevante. Non sostituisce `FUNZIONALITA'.md`: quel file resta il registro funzionale e va modificato solo su richiesta esplicita.
 
@@ -200,3 +200,7 @@ git diff -- static/zonaorientale/index.html static/zonaorientale/assets/app.js d
 ```
 
 Prima del merge su `master`, verificare che `FUNZIONALITA'.md` non sia cambiato salvo richiesta esplicita.
+
+## Nota V248
+
+Aggiungere al test Presidente: verificare che in DevTools `window.ZonaOrientaleLegacyCleanupV248.legacyTransferCommunicationArtifacts` sia `0` dopo apertura della Dashboard Presidente.

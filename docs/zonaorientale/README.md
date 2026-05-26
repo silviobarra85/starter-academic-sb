@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V247**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V248**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -74,3 +74,7 @@ Admin -> Richieste presidenti permette di eliminare da Firebase i comunicati app
 ## Nota V247
 
 V247 aggiunge `REGRESSION_TESTS.md`, una checklist di regressione per pubblico, presidente, admin, mobile e controlli tecnici pre-commit. Non introduce nuove funzionalita runtime. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+
+## Nota V248
+
+V248 introduce una pulizia mirata degli handler legacy del comunicato avvenuto scambio, mantenendo il flusso canonico `teamRequests/TRANSFER_NEWS` + EmailJS + approvazione Admin.

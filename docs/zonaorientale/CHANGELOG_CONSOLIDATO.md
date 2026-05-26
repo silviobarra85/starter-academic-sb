@@ -1,3 +1,11 @@
+## V248 - Pulizia handler legacy comunicato scambio
+
+- Aggiunto guard runtime per impedire che vecchi form/handler V50/V79/V237 del comunicato avvenuto scambio possano riagganciarsi al DOM.
+- Mantenuto un solo flusso canonico: `teamRequests/TRANSFER_NEWS` + EmailJS + approvazione Admin.
+- Aggiunta diagnostica leggera `window.ZonaOrientaleLegacyCleanupV248`.
+- Aggiornati footer/cache-buster/diagnostica a V248.
+- `FUNZIONALITA'.md` non modificato.
+
 ## V247 - Checklist regressioni
 
 - Aggiunto `REGRESSION_TESTS.md` come checklist operativa per test pubblico, presidente, admin, mobile, Firebase e pre-commit.

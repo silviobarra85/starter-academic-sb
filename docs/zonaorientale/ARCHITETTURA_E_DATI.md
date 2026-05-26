@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V247.
+Stato: V248.
 
 ## Tipo applicazione
 
@@ -499,3 +499,7 @@ Nota V246: le notifiche di esito trattativa usano come stato canonico i campi ne
 ## Nota V247
 
 Aggiunto `REGRESSION_TESTS.md` come checklist di regressione. Non cambia architettura runtime, sorgenti dati o schema Firebase.
+
+## Nota V248
+
+Aggiunto guard runtime per neutralizzare vecchi handler comunicato scambio V50/V79/V237. Il flusso canonico resta `teamRequests/TRANSFER_NEWS` + EmailJS + approvazione Admin.

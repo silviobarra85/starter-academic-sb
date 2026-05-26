@@ -262,3 +262,7 @@ V246 completata: la lettura degli esiti trattative viene salvata in Firebase qua
 ## Stato V247
 
 Completata la checklist regressioni canonica in `REGRESSION_TESTS.md`. Prossimo step consigliato: pulizia mirata degli handler legacy residui piu' rischiosi, senza eliminare funzionalita visibili. `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.
+
+## Stato V248
+
+Conclusa la prima pulizia mirata degli handler legacy del comunicato avvenuto scambio. Prossimo step consigliato: test regressione completo e merge controllato del branch di refactor su `master`.

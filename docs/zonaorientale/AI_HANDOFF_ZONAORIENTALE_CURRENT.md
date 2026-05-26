@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V247
+# AI Handoff ZonaOrientale - Current V248
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V247**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase e V247 con checklist regressioni canonica.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V248**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio.
 
 ## Posizione e struttura progetto
 
@@ -62,6 +62,10 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+## V248 - Pulizia handler legacy comunicato scambio
+
+V248 aggiunge un guard runtime per rimuovere eventuali vecchi form/handler V50/V79/V237 del comunicato avvenuto scambio e mantenere un solo flusso canonico V242/V243: presidente -> `teamRequests/TRANSFER_NEWS` -> EmailJS -> approvazione Admin -> News. La diagnostica e' disponibile in `window.ZonaOrientaleLegacyCleanupV248`. `FUNZIONALITA'.md` non e' stato modificato.
 
 ## V247 - Checklist regressioni
 
@@ -220,17 +224,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V247 checklist regressioni**.
+Versione sito: **V248 pulizia handler legacy**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V247 checklist regressioni · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V248 pulizia handler legacy · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=247`.
+Cache-buster HTML principali attesi: `?v=248`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `247`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `248`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

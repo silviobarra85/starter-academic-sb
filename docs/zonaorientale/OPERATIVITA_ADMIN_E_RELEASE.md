@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V247.
+Stato: V248.
 
 ## Regola d'oro dati
 
@@ -358,3 +358,7 @@ Se le rules negano l'update di lettura, il sito usa ancora `localStorage` come f
 ## Nota V247
 
 Prima di fondere un branch su `master`, usare `REGRESSION_TESTS.md` come checklist minima. La checklist include test pubblico, presidente, admin, mobile, notifiche trattative, comunicati e controlli tecnici pre-commit.
+
+## Nota V248
+
+Prima del merge verificare che `window.ZonaOrientaleLegacyCleanupV248.legacyTransferCommunicationArtifacts` sia `0` dopo apertura Dashboard Presidente. Il documento `FUNZIONALITA'.md` resta invariato.

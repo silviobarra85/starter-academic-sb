@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=247";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=248";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=247";
+} from "./js/domain/news-share-v228.js?v=248";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=247";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=248";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=247";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=248";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "247";
+const DEPLOY_EXPECTED_VERSION_V181 = "248";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V247",
+  version: "V248",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -20331,6 +20331,104 @@ updateNegotiationStatusV119 = async function updateNegotiationStatusV246(id, sta
   applyTradeNotificationBadgesV238?.();
   return result;
 };
+
+
+/* V248 - Pulizia mirata handler legacy comunicato scambio.
+   Obiettivo: impedire che vecchi form/handler V50-V79-V237 possano riagganciarsi
+   al DOM dopo un render e causare doppi submit, doppie email o tentativi di scrittura
+   diretta in news. Non rimuove funzionalita: mantiene come unico flusso canonico
+   V242/V243 -> teamRequests/TRANSFER_NEWS -> EmailJS -> approvazione Admin. */
+const TRANSFER_COMMUNICATION_CANONICAL_FORM_ID_V248 = "teamTransferCommunicationFormV242";
+const TRANSFER_COMMUNICATION_LEGACY_SELECTORS_V248 = [
+  "#teamTransferCommunicationFormV50",
+  "#teamTransferCommunicationPanelV236",
+  "[data-v237-request-publish]",
+  '[data-transfer-communication-handler="V237"]'
+];
+
+function isTransferCommunicationLegacyElementV248(node) {
+  if (!node || typeof node.matches !== "function") return false;
+  return TRANSFER_COMMUNICATION_LEGACY_SELECTORS_V248.some((selector) => {
+    try { return node.matches(selector); } catch { return false; }
+  });
+}
+
+function removeTransferCommunicationLegacyArtifactsV248() {
+  try { removeLegacyTransferCommunicationPanelsV242?.(); } catch (error) { console.warn("Cleanup legacy comunicato scambio V242 non completato", error); }
+  const legacyNodes = document.querySelectorAll(TRANSFER_COMMUNICATION_LEGACY_SELECTORS_V248.join(","));
+  legacyNodes.forEach((node) => {
+    const panel = node.closest?.("section.panel, article.panel, section, article");
+    (panel || node).remove?.();
+  });
+  document
+    .querySelectorAll('[data-mobile-teamarea-scroll="#teamTransferCommunicationFormV50"]')
+    .forEach((node) => node.remove());
+  const canonicalButtons = Array.from(document.querySelectorAll('[data-mobile-teamarea-scroll="#teamTransferCommunicationFormV242"]'));
+  canonicalButtons.slice(1).forEach((node) => node.remove());
+  updateLegacyCleanupStatusV248();
+}
+
+function updateLegacyCleanupStatusV248() {
+  window.ZonaOrientaleLegacyCleanupV248 = {
+    version: "V248",
+    canonicalTransferCommunicationForm: Boolean(document.getElementById(TRANSFER_COMMUNICATION_CANONICAL_FORM_ID_V248)),
+    legacyTransferCommunicationArtifacts: document.querySelectorAll(TRANSFER_COMMUNICATION_LEGACY_SELECTORS_V248.join(",")).length,
+    checkedAt: new Date().toISOString()
+  };
+}
+
+function routeLegacyTransferCommunicationSubmitToCanonicalV248(event) {
+  const form = event?.target;
+  if (!isTransferCommunicationLegacyElementV248(form)) return;
+  event.preventDefault?.();
+  event.stopPropagation?.();
+  event.stopImmediatePropagation?.();
+  removeTransferCommunicationLegacyArtifactsV248();
+  try { enhanceTransferCommunicationPresidentAreaV242?.(); } catch (error) { console.warn("Form canonico comunicato scambio non ripristinato", error); }
+  const canonical = document.getElementById(TRANSFER_COMMUNICATION_CANONICAL_FORM_ID_V248);
+  canonical?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+  showMessage?.("teamTransferStatusV242", "Il vecchio modulo comunicato scambio e' stato sostituito dal flusso canonico V242. Usa questo form per inviare la richiesta.", true);
+}
+
+document.addEventListener("submit", routeLegacyTransferCommunicationSubmitToCanonicalV248, true);
+
+if (typeof enhanceTransferCommunicationFormV50 === "function") {
+  enhanceTransferCommunicationFormV50 = function enhanceTransferCommunicationFormV50DisabledV248() {
+    return enhanceTransferCommunicationPresidentAreaV242?.();
+  };
+}
+
+if (typeof upgradeTransferCommunicationFormV79 === "function") {
+  upgradeTransferCommunicationFormV79 = function upgradeTransferCommunicationFormV79DisabledV248() {
+    removeTransferCommunicationLegacyArtifactsV248();
+    return enhanceTransferCommunicationPresidentAreaV242?.();
+  };
+}
+
+if (typeof enhanceTransferCommunicationPresidentAreaV237 === "function") {
+  enhanceTransferCommunicationPresidentAreaV237 = function enhanceTransferCommunicationPresidentAreaV237DisabledV248() {
+    return enhanceTransferCommunicationPresidentAreaV242?.();
+  };
+}
+
+const renderAllBeforeV248 = renderAll;
+renderAll = function renderAllV248() {
+  const result = renderAllBeforeV248?.();
+  try { removeTransferCommunicationLegacyArtifactsV248(); } catch (error) { console.warn("Cleanup legacy comunicato scambio V248 non completato", error); }
+  return result;
+};
+
+window.addEventListener("hashchange", () => {
+  window.setTimeout(() => {
+    try { removeTransferCommunicationLegacyArtifactsV248(); } catch (error) { console.warn("Cleanup legacy comunicato scambio post-hash non completato", error); }
+  }, 0);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  window.setTimeout(() => {
+    try { removeTransferCommunicationLegacyArtifactsV248(); } catch (error) { console.warn("Cleanup legacy comunicato scambio post-load non completato", error); }
+  }, 0);
+});
 
 /* V209 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
