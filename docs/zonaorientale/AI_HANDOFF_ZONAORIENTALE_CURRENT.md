@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V239
+# AI Handoff ZonaOrientale - Current V240
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V239**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header e V239 con notifiche trattative presidente + hotfix permission-denied sul comunicato scambio.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V240**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header e V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio.
 
 ## Posizione e struttura progetto
 
@@ -57,6 +57,11 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+
+## V240 - Sync live trattative presidente
+
+V240 corregge il disallineamento tra badge notifiche e sottosezione `Trattative`: il loader lazy ora rispetta `force: true`, rilegge da Firebase quando si entra nella Dashboard Presidente o si apre il riquadro Trattative da mobile, e ridisegna le liste Inviate/Ricevute con la stessa sorgente live usata dai badge. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
 
 ## V239 - Notifiche trattative presidente e hotfix permission-denied
 
@@ -187,17 +192,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V239 storico notifiche trattative**.
+Versione sito: **V240 sync trattative live**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V239 storico notifiche trattative · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V240 sync trattative live · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=239`.
+Cache-buster HTML principali attesi: `?v=240`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `238`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `240`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

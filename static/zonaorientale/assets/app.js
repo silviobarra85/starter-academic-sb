@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=239";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=240";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=239";
+} from "./js/domain/news-share-v228.js?v=240";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=239";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=240";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=239";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=240";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "239";
+const DEPLOY_EXPECTED_VERSION_V181 = "240";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V239",
+  version: "V240",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -19385,6 +19385,120 @@ window.addEventListener("load", () => {
     applyTradeNotificationBadgesV238?.();
     if (!state.isAdmin && state.user && getApprovedTeamUser?.()) refreshTradeNotificationsV238?.({ renderTeamArea: false });
   }, 700);
+});
+
+
+/* V240 - Reload live trattative presidente e sync mobile/desktop.
+   - Il loader lazy ora rispetta davvero force:true anche se il fantamercato era gia' stato caricato.
+   - Quando si entra in Dashboard Presidente o si apre il riquadro Trattative, le proposte vengono rilette da Firebase
+     e la sottosezione viene ridisegnata con la stessa sorgente live usata dai badge.
+   - Il badge del destinatario resta legato alle proposte PENDING; quello del mittente sparisce solo aprendo la card esito. */
+state.tradeListRefreshInProgressV240 = state.tradeListRefreshInProgressV240 || false;
+state.tradeListLastRefreshAtV240 = state.tradeListLastRefreshAtV240 || 0;
+state.tradeListRefreshTimerV240 = state.tradeListRefreshTimerV240 || null;
+
+function isPresidentTeamAreaActiveV240() {
+  const page = state.currentPage || (typeof getHashPageV170 === "function" ? getHashPageV170() : String(window.location.hash || "").replace("#", ""));
+  return page === "teamarea" && !state.isAdmin && Boolean(state.user && getApprovedTeamUser?.()?.seasonTeamId);
+}
+
+function scrollTradeListPanelV240() {
+  const node = document.querySelector(".trade-list-panel");
+  if (!node) return;
+  node.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+const ensureTransferMarketDataBeforeV240 = ensureTransferMarketDataV119;
+ensureTransferMarketDataV119 = async function ensureTransferMarketDataV240(options = {}) {
+  const { force = false, reason = "" } = options || {};
+  if (!force) return ensureTransferMarketDataBeforeV240?.(options);
+  if (state.transferMarketPromiseV240) return state.transferMarketPromiseV240;
+  if (state.transferMarketLoadingV119 && state.transferMarketPromiseV170) return state.transferMarketPromiseV170;
+  state.transferMarketLastLoadReasonV170 = reason || state.currentPage || (typeof getHashPageV170 === "function" ? getHashPageV170() : "force");
+  state.transferMarketPromiseV240 = loadTransferMarketCollectionsV119()
+    .then(() => {
+      renderTransferMarketPageV119?.();
+      renderTeamsTable?.();
+      applyTradeNotificationBadgesV238?.();
+      if (state.currentPage === "teamarea" || (typeof getHashPageV170 === "function" && getHashPageV170() === "teamarea")) {
+        renderUserAreaV34?.();
+      }
+      return state.raw?.transferListings || [];
+    })
+    .catch((error) => {
+      console.warn("Fantamercato non ricaricato", error);
+      return null;
+    })
+    .finally(() => {
+      state.transferMarketPromiseV240 = null;
+    });
+  return state.transferMarketPromiseV240;
+};
+
+function schedulePresidentTradeListRefreshV240(reason = "teamarea", options = {}) {
+  if (!isPresidentTeamAreaActiveV240()) return;
+  const now = Date.now();
+  const minGap = options.immediate ? 450 : 1800;
+  if (state.tradeListRefreshInProgressV240 || (now - Number(state.tradeListLastRefreshAtV240 || 0)) < minGap) return;
+  window.clearTimeout(state.tradeListRefreshTimerV240);
+  state.tradeListRefreshTimerV240 = window.setTimeout(async () => {
+    if (!isPresidentTeamAreaActiveV240() || state.tradeListRefreshInProgressV240) return;
+    state.tradeListRefreshInProgressV240 = true;
+    try {
+      await ensureTransferMarketDataV119?.({ force: true, reason });
+      state.tradeListLastRefreshAtV240 = Date.now();
+      if (options.scrollAfter) window.setTimeout(scrollTradeListPanelV240, 120);
+    } finally {
+      state.tradeListRefreshInProgressV240 = false;
+    }
+  }, options.immediate ? 0 : 220);
+}
+
+const renderUserAreaBeforeV240 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV240() {
+  const result = renderUserAreaBeforeV240?.();
+  if (isPresidentTeamAreaActiveV240()) {
+    applyTradeNotificationBadgesV238?.();
+    schedulePresidentTradeListRefreshV240("teamarea-render", { immediate: false });
+  }
+  return result;
+};
+
+const updateNegotiationStatusBeforeV240 = updateNegotiationStatusV119;
+updateNegotiationStatusV119 = async function updateNegotiationStatusV240(id, status) {
+  const result = await updateNegotiationStatusBeforeV240?.(id, status);
+  state.tradeListLastRefreshAtV240 = 0;
+  if (isPresidentTeamAreaActiveV240()) {
+    await ensureTransferMarketDataV119?.({ force: true, reason: `trade-status-${String(status || "").toLowerCase()}` });
+  }
+  applyTradeNotificationBadgesV238?.();
+  return result;
+};
+
+window.addEventListener("click", (event) => {
+  const tradeButton = event.target.closest?.('[data-mobile-teamarea-scroll=".trade-list-panel"]');
+  if (!tradeButton) return;
+  schedulePresidentTradeListRefreshV240("mobile-trade-list", { immediate: true, scrollAfter: true });
+}, true);
+
+document.addEventListener("click", (event) => {
+  const tradeCard = event.target.closest?.("details[data-trade-card-id] > summary, details[data-trade-card-id] summary *");
+  if (!tradeCard) return;
+  const card = event.target.closest?.("details[data-trade-card-id]");
+  if (!card) return;
+  window.setTimeout(() => {
+    if (card.open) acknowledgeSingleTradeOutcomeV239?.(card.dataset.tradeCardId || "");
+  }, 80);
+}, true);
+
+window.addEventListener("hashchange", () => {
+  if (isPresidentTeamAreaActiveV240()) schedulePresidentTradeListRefreshV240("teamarea-hash", { immediate: true });
+});
+
+window.addEventListener("load", () => {
+  window.setTimeout(() => {
+    if (isPresidentTeamAreaActiveV240()) schedulePresidentTradeListRefreshV240("teamarea-load", { immediate: true });
+  }, 900);
 });
 
 

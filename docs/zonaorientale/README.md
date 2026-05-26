@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V239**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V240**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,7 +16,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V239.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V240.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -48,3 +48,8 @@ Per una modifica solo documentale, e' sufficiente includere solo `docs/zonaorien
 ## Nota V239
 
 V239 aggiunge le notifiche trattative presidente e corregge il permission-denied sul submit del comunicato avvenuto scambio.
+
+
+## Nota V240
+
+V240 riallinea badge e storico trattative nella Dashboard Presidente: le liste vengono rilette live da Firebase all'apertura della sezione, anche su mobile. Il documento `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.

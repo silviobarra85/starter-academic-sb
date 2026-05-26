@@ -245,3 +245,6 @@ V239 completata: corretto il comunicato avvenuto scambio presidente con richiest
 - Valutare un'immagine Open Graph dedicata ai comunicati invece dell'icona app generica.
 - Verificare in produzione l'endpoint `/zonaorientale/share/news/<id>` dopo deploy Netlify.
 - Aggiungere una diagnostica Admin che controlli comunicati senza ID, Firestore non leggibile dalla funzione o preview fallback.
+
+
+V240 completata: corretto il sync live delle trattative presidente tra badge, dashboard desktop e mobile. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.

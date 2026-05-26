@@ -1,3 +1,11 @@
+## V240 - Sync live trattative presidente
+
+- Corretto il loader lazy del fantamercato: `force: true` ora ricarica davvero `transferListings` e `transferNegotiations` anche se erano gia' state caricate.
+- La Dashboard Presidente rilegge e ridisegna le liste Trattative quando viene aperta e quando da mobile si usa l'azione rapida Trattative.
+- Il badge del destinatario resta fino ad Approva/Rifiuta; il badge del mittente resta fino all'apertura della card con l'esito.
+- Aggiornati footer/cache-buster/diagnostica a V240.
+- `FUNZIONALITA'.md` non modificato: documento aggiornabile solo su richiesta esplicita.
+
 ## V239 - Notifiche trattative presidente e hotfix comunicato scambio
 
 ## V239 - storico e notifiche trattative persistenti
