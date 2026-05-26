@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V232.
+Stato: V235.
 
 ## Tipo applicazione
 

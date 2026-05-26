@@ -13584,3 +13584,95 @@ html[data-theme="light"] .admin-category-section > .admin-category-body > articl
     max-width: 9rem;
   }
 }
+
+
+/* V233 - Hotfix listone/mobile dashboard/light mode */
+@media (max-width: 420px) {
+  .president-dashboard-metrics-v192 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .5rem !important;
+  }
+
+  .president-dashboard-metric-v192 {
+    padding: .62rem .55rem !important;
+  }
+
+  .president-dashboard-metric-v192 span,
+  .president-dashboard-metric-v192 small {
+    font-size: .72rem !important;
+  }
+
+  .president-dashboard-metric-v192 strong {
+    font-size: 1rem !important;
+    line-height: 1.15 !important;
+  }
+}
+
+html[data-theme="light"] .season-archive-page-v196,
+html[data-theme="light"] .historical-stats-page-v193,
+html[data-theme="light"] .team-compare-page-v195,
+html[data-theme="light"] .team-compare-content-v195 {
+  color: var(--text) !important;
+}
+
+html[data-theme="light"] .season-archive-hero-v196,
+html[data-theme="light"] .season-archive-card-v196,
+html[data-theme="light"] .historical-stats-hero-v193,
+html[data-theme="light"] .historical-stat-card-v193,
+html[data-theme="light"] .historical-stat-metric-v193,
+html[data-theme="light"] .historical-ranking-row-v193,
+html[data-theme="light"] .team-compare-profile-v195,
+html[data-theme="light"] .team-compare-direct-v195,
+html[data-theme="light"] .team-compare-metric-v195,
+html[data-theme="light"] .team-compare-direct-score-v195 div,
+html[data-theme="light"] .team-compare-direct-list-v195 article {
+  background: rgba(255, 255, 255, .94) !important;
+  border-color: rgba(15, 23, 42, .13) !important;
+  color: var(--text) !important;
+}
+
+html[data-theme="light"] .season-archive-hero-v196 h2,
+html[data-theme="light"] .season-archive-card-v196 h3,
+html[data-theme="light"] .season-archive-card-v196 strong,
+html[data-theme="light"] .historical-stats-hero-v193 h2,
+html[data-theme="light"] .historical-stat-card-v193 h3,
+html[data-theme="light"] .historical-ranking-row-v193 strong,
+html[data-theme="light"] .historical-stat-metric-v193 strong,
+html[data-theme="light"] .team-compare-profile-head-v195 h3,
+html[data-theme="light"] .team-compare-metric-v195 strong,
+html[data-theme="light"] .team-compare-detail-v195 strong,
+html[data-theme="light"] .team-compare-section-title-v195 h3,
+html[data-theme="light"] .team-compare-direct-list-v195 strong {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .season-archive-hero-v196 p,
+html[data-theme="light"] .season-archive-card-v196 p,
+html[data-theme="light"] .season-archive-card-v196 span,
+html[data-theme="light"] .historical-stats-hero-v193 p,
+html[data-theme="light"] .historical-ranking-row-v193 small,
+html[data-theme="light"] .historical-ranking-row-v193 div,
+html[data-theme="light"] .historical-timeline-v193 span,
+html[data-theme="light"] .historical-timeline-v193 small,
+html[data-theme="light"] .team-compare-profile-head-v195 p,
+html[data-theme="light"] .team-compare-metric-v195 span,
+html[data-theme="light"] .team-compare-metric-v195 small,
+html[data-theme="light"] .team-compare-detail-v195 p,
+html[data-theme="light"] .team-compare-section-title-v195 p,
+html[data-theme="light"] .team-compare-direct-list-v195 span,
+html[data-theme="light"] .team-compare-direct-list-v195 small,
+html[data-theme="light"] .team-compare-direct-score-v195 span {
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .historical-chip-row-v193 span,
+html[data-theme="light"] .team-compare-chip-row-v195 span {
+  background: rgba(217, 119, 6, .10) !important;
+  border-color: rgba(217, 119, 6, .30) !important;
+  color: #78350f !important;
+}
+
+html[data-theme="light"] .historical-rank-v193,
+html[data-theme="light"] .team-compare-direct-score-v195 strong {
+  color: #166534 !important;
+}

@@ -1,3 +1,18 @@
+## V235 - Hotfix filtri listone
+- Corretto definitivamente il filtro della sezione Listone:
+  - `In listone` mostra i giocatori con stato esatto `In listone` / `IN_LISTONE`;
+  - `Asteriscato` mostra i giocatori con stato esatto `Asteriscato` / `ASTERISCATO`;
+  - `Svincolati` mostra i giocatori non presenti in nessuna rosa, indipendentemente dallo stato listone.
+- Se nessuna checkbox stato e' selezionata, il risultato e' vuoto invece di tornare implicitamente a tutti i giocatori.
+- Aggiornati footer/cache-buster a V235.
+
+## V235 - Hotfix listone, dashboard mobile e tema light
+- Corretto filtro stato nella sezione Listone: In listone, Asteriscato e Svincolati ora sono mutuamente coerenti e non si sovrappongono.
+- Rimossa duplicazione interna delle checkbox dei campi visibili del Listone.
+- Dashboard Presidente mobile: le schede Saldo/Rosa e In vendita/Trattative restano su due colonne anche sugli schermi stretti.
+- Rafforzato tema light per Archivio, Statistiche e Confronta con sfondi chiari e testi scuri.
+- Aggiornati footer/cache-buster a V235.
+
 ## V232 - Hotfix routing comunicati condivisi
 
 - Corretto il redirect utenti della preview dinamica comunicati: gli hash `#news-<id>` ora aprono la sezione News invece di lasciare la webapp senza pagina attiva.
@@ -366,3 +381,9 @@ Overlay tecnico senza cambio funzionale visibile.
 - aggiornati footer/cache-buster a V223 e runtime expected version a 223.
 
 Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
+
+
+## V235 - hotfix filtri Listone coerenti
+- `In listone` e `Asteriscato` filtrano solo la colonna Stato.
+- `Svincolati` filtra solo la colonna Rosa, includendo i giocatori senza squadra fantasy.
+- Combinazioni checkbox rese coerenti: gli svincolati vengono esclusi quando la checkbox `Svincolati` non e selezionata.
