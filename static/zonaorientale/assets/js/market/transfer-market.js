@@ -117,11 +117,24 @@ export function createTransferMarketHelpersV128(ctx) {
     return amount ? `${formatFm(amount)} FM` : "-";
   }
 
-  function renderNegotiationStatusBadge(status) {
+  function getNegotiationStatusLabel(status) {
     const normalized = String(status || "PENDING").toUpperCase();
     const labels = { PENDING: "In attesa", ACCEPTED: "Accettata", REJECTED: "Rifiutata", CANCELLED: "Annullata" };
+    return labels[normalized] || normalized;
+  }
+
+  function renderNegotiationStatusBadge(status) {
+    const normalized = String(status || "PENDING").toUpperCase();
     const cls = normalized === "ACCEPTED" ? "status-ok" : normalized === "REJECTED" || normalized === "CANCELLED" ? "status-danger" : "status-warning";
-    return `<span class="status ${cls}">${escapeHtml(labels[normalized] || normalized)}</span>`;
+    return `<span class="status ${cls}">${escapeHtml(getNegotiationStatusLabel(normalized))}</span>`;
+  }
+
+  function getNegotiationCompactSummary(item, isSent) {
+    const offered = [formatPlayerRefs(item.offeredPlayers || []), renderFmPart(item.offeredFm)].filter((value) => value && value !== "-").join(" + ") || "-";
+    const requested = [formatPlayerRefs(item.requestedPlayers || []), renderFmPart(item.requestedFm)].filter((value) => value && value !== "-").join(" + ") || "-";
+    return isSent
+      ? `Offri: ${offered} · Chiedi: ${requested}`
+      : `Ricevi: ${offered} · Cedi: ${requested}`;
   }
 
   function getNegotiationTitle(item, perspectiveTeamId) {
@@ -132,23 +145,26 @@ export function createTransferMarketHelpersV128(ctx) {
 
   function renderNegotiationCard(item, kind, currentSeasonTeamId) {
     const isSent = kind === "sent";
-    const canCancel = isSent && item.status === "PENDING";
-    const canAnswer = !isSent && item.status === "PENDING";
+    const status = String(item.status || "PENDING").toUpperCase();
+    const canCancel = isSent && status === "PENDING";
+    const canAnswer = !isSent && status === "PENDING";
+    const compactSummary = getNegotiationCompactSummary(item, isSent);
     return `
-      <details class="trade-card ${isSent ? "trade-card-sent" : "trade-card-received"}">
+      <details class="trade-card ${isSent ? "trade-card-sent" : "trade-card-received"}" data-trade-card-id="${escapeHtml(item.id || "")}" data-trade-status="${escapeHtml(status)}">
         <summary>
-          <span><strong>${escapeHtml(getNegotiationTitle(item, currentSeasonTeamId))}</strong><small>${escapeHtml(item.createdAt?.toDate ? item.createdAt.toDate().toLocaleString("it-IT") : item.createdAt || "")}</small></span>
-          ${renderNegotiationStatusBadge(item.status)}
+          <span><strong>${escapeHtml(getNegotiationTitle(item, currentSeasonTeamId))}</strong><small>${escapeHtml(item.createdAt?.toDate ? item.createdAt.toDate().toLocaleString("it-IT") : item.createdAt || "")}</small><small class="trade-card-compact-summary-v238">${escapeHtml(compactSummary)} · Esito: ${escapeHtml(getNegotiationStatusLabel(status))}</small></span>
+          ${renderNegotiationStatusBadge(status)}
         </summary>
         <div class="trade-card-body">
           <div class="trade-summary-grid">
             <div><span class="metric-label">Offerti</span><strong>${escapeHtml(formatPlayerRefs(item.offeredPlayers || []))}</strong><small>${escapeHtml(renderFmPart(item.offeredFm))}</small></div>
             <div><span class="metric-label">Richiesti</span><strong>${escapeHtml(formatPlayerRefs(item.requestedPlayers || []))}</strong><small>${escapeHtml(renderFmPart(item.requestedFm))}</small></div>
           </div>
+          <p class="trade-outcome-summary-v238"><strong>Esito:</strong> ${escapeHtml(getNegotiationStatusLabel(status))}</p>
           ${item.note ? `<p class="trade-note">${escapeHtml(item.note)}</p>` : ""}
           <div class="form-actions trade-actions">
             ${canCancel ? `<button class="button button-danger button-small" type="button" data-trade-cancel="${escapeHtml(item.id)}">Annulla proposta</button>` : ""}
-            ${canAnswer ? `<button class="button button-primary button-small" type="button" data-trade-accept="${escapeHtml(item.id)}">Accetta</button><button class="button button-danger button-small" type="button" data-trade-reject="${escapeHtml(item.id)}">Rifiuta</button>` : ""}
+            ${canAnswer ? `<button class="button button-primary button-small" type="button" data-trade-accept="${escapeHtml(item.id)}">Approva</button><button class="button button-danger button-small" type="button" data-trade-reject="${escapeHtml(item.id)}">Rifiuta</button>` : ""}
           </div>
         </div>
       </details>`;

@@ -237,10 +237,10 @@ master aggiornato
 
 ## Stato refactor corrente
 
-V236 completata: ripristinato il comunicato avvenuto scambio presidente con pubblicazione News + invio EmailJS. Restano consolidati il ciclo refactor V220-V225, hotfix statistiche V226, hotfix FM Archivio V227, account presidente in header V229 e preview WhatsApp comunicati dinamica tramite Netlify Function. Prossimo passo consigliato: test reale del flusso comunicati su Netlify e poi eventuale diagnostica Admin.
+V238 completata: corretto il comunicato avvenuto scambio presidente con richiesta approvabile, pubblicazione Admin in News e invio EmailJS immediato. Restano consolidati il ciclo refactor V220-V225, hotfix statistiche V226, hotfix FM Archivio V227, account presidente in header V229 e preview WhatsApp comunicati dinamica tramite Netlify Function. Prossimo passo consigliato: test reale del flusso comunicati su Netlify e poi eventuale diagnostica Admin.
 
 
-## Dopo V236
+## Dopo V238
 
 - Valutare un'immagine Open Graph dedicata ai comunicati invece dell'icona app generica.
 - Verificare in produzione l'endpoint `/zonaorientale/share/news/<id>` dopo deploy Netlify.

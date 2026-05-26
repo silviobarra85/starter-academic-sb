@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=238";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=237";
+} from "./js/domain/news-share-v228.js?v=238";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=237";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=238";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=237";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=238";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "237";
+const DEPLOY_EXPECTED_VERSION_V181 = "238";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V237",
+  version: "V238",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -18955,7 +18955,8 @@ function attachTransferCommunicationHandlerV237() {
       form.reset();
       const titleInput = document.getElementById("teamTransferTitleV50");
       if (titleInput) titleInput.value = "Comunicato avvenuto scambio";
-      await loadFullDataV32({ render: true });
+      if (state.isAdmin) await loadFullDataV32({ render: true });
+      applyTradeNotificationBadgesV238?.();
       showMessage("teamTransferStatusV50", finalMessage, finalMessageIsError);
     } catch (error) {
       console.error(error);
@@ -19037,6 +19038,232 @@ if (typeof getNewsTopicTextV79 === "function") {
     return news?.topic === "COMUNICATO_AVVENUTO_SCAMBIO" ? "Comunicato avvenuto scambio" : getNewsTopicTextBeforeV237(news);
   };
 }
+
+/* V238 - Notifiche trattative e hotfix submit comunicato scambio.
+   - Il submit del comunicato scambio non forza piu loadFullDataV32 per i presidenti,
+     evitando letture teamUsers non consentite dalle rules.
+   - La Dashboard Presidente e il pulsante header "Pres. Cognome" mostrano un badge
+     rosso quando ci sono proposte ricevute in attesa o esiti non ancora visti su
+     proposte inviate. */
+const TRADE_NOTIFICATION_ACK_KEY_V238 = "zonaOrientaleTradeOutcomeSeenV238";
+const TRADE_NOTIFICATION_POLL_MS_V238 = 45000;
+state.tradeNotificationTimerV238 = state.tradeNotificationTimerV238 || null;
+state.tradeNotificationLastStateV238 = state.tradeNotificationLastStateV238 || { incomingPending: 0, sentResolvedUnseen: 0, total: 0 };
+
+function injectTradeNotificationStylesV238() {
+  if (document.getElementById("tradeNotificationStylesV238")) return;
+  const style = document.createElement("style");
+  style.id = "tradeNotificationStylesV238";
+  style.textContent = `
+    .trade-notification-anchor-v238{position:relative!important;}
+    .trade-notification-badge-v238{position:absolute;top:-.42rem;right:-.42rem;z-index:6;display:inline-flex;align-items:center;justify-content:center;width:1.05rem;height:1.05rem;border-radius:999px;background:#dc2626;color:#fff;font-size:.72rem;font-weight:900;line-height:1;border:2px solid var(--surface,#fff);box-shadow:0 2px 8px rgba(0,0,0,.22);}
+    .mobile-bottom-link.trade-notification-anchor-v238 .trade-notification-badge-v238{top:.12rem;right:.42rem;}
+    .mobile-more-link.trade-notification-anchor-v238 .trade-notification-badge-v238{top:.3rem;right:.7rem;}
+    #openLoginBtn.president-account-button-v229.trade-notification-anchor-v238 .trade-notification-badge-v238{top:-.35rem;right:-.35rem;}
+    .trade-card-compact-summary-v238{display:block;margin-top:.18rem;color:var(--muted,#64748b);font-weight:500;line-height:1.35;}
+    .trade-outcome-summary-v238{margin:.65rem 0 0;color:var(--text,#0f172a);}
+  `;
+  document.head.appendChild(style);
+}
+
+function getTradeNotificationCurrentTeamIdV238() {
+  if (state.isAdmin || !state.user) return "";
+  return getApprovedSeasonTeamIdV119?.() || getApprovedTeamUser?.()?.seasonTeamId || "";
+}
+
+function normalizeTradeStatusV238(status) {
+  return String(status || "PENDING").toUpperCase();
+}
+
+function getTradeNotificationMarkerV238(item = {}) {
+  const updated = item.updatedAt?.seconds || item.updatedAt?.toMillis?.() || item.updatedAt || item.acceptedAt?.seconds || item.rejectedAt?.seconds || item.createdAt?.seconds || item.createdAt || "";
+  return `${normalizeTradeStatusV238(item.status)}:${String(updated)}`;
+}
+
+function getTradeOutcomeAckStoreKeyV238() {
+  const uid = state.user?.uid || "anonymous";
+  return `${TRADE_NOTIFICATION_ACK_KEY_V238}:${uid}`;
+}
+
+function readTradeOutcomeAckV238() {
+  try {
+    return JSON.parse(localStorage.getItem(getTradeOutcomeAckStoreKeyV238()) || "{}");
+  } catch (_) {
+    return {};
+  }
+}
+
+function writeTradeOutcomeAckV238(data) {
+  try {
+    localStorage.setItem(getTradeOutcomeAckStoreKeyV238(), JSON.stringify(data || {}));
+  } catch (_) {
+    // localStorage non disponibile: la notifica ricomparira alla prossima sessione.
+  }
+}
+
+function getCurrentTradeNegotiationsV238() {
+  const seasonId = getCurrentSeasonId?.() || "";
+  return (state.raw?.transferNegotiations || []).filter((item) => !seasonId || item.seasonId === seasonId);
+}
+
+function isTradeOutcomeStatusV238(status) {
+  const normalized = normalizeTradeStatusV238(status);
+  return normalized === "ACCEPTED" || normalized === "REJECTED";
+}
+
+function isTradeOutcomeSeenV238(item) {
+  const ack = readTradeOutcomeAckV238();
+  return ack[String(item.id || "")] === getTradeNotificationMarkerV238(item);
+}
+
+function getTradeNotificationStateV238() {
+  const teamId = getTradeNotificationCurrentTeamIdV238();
+  if (!teamId) return { incomingPending: [], sentResolvedUnseen: [], total: 0 };
+  const rows = getCurrentTradeNegotiationsV238();
+  const incomingPending = rows.filter((item) => item.toSeasonTeamId === teamId && normalizeTradeStatusV238(item.status) === "PENDING");
+  const sentResolvedUnseen = rows.filter((item) => item.fromSeasonTeamId === teamId && isTradeOutcomeStatusV238(item.status) && !isTradeOutcomeSeenV238(item));
+  return { incomingPending, sentResolvedUnseen, total: incomingPending.length + sentResolvedUnseen.length };
+}
+
+function acknowledgeTradeOutcomeNotificationsV238() {
+  const teamId = getTradeNotificationCurrentTeamIdV238();
+  if (!teamId) return;
+  const ack = readTradeOutcomeAckV238();
+  getCurrentTradeNegotiationsV238()
+    .filter((item) => item.fromSeasonTeamId === teamId && isTradeOutcomeStatusV238(item.status))
+    .forEach((item) => {
+      if (item.id) ack[String(item.id)] = getTradeNotificationMarkerV238(item);
+    });
+  writeTradeOutcomeAckV238(ack);
+  applyTradeNotificationBadgesV238();
+}
+
+function renderTradeNotificationBadgeV238(title) {
+  return `<span class="trade-notification-badge-v238" aria-label="${escapeHtml(title)}" title="${escapeHtml(title)}">!</span>`;
+}
+
+function updateTradeNotificationAnchorV238(anchor, hasAlert, title) {
+  if (!anchor) return;
+  anchor.classList.toggle("trade-notification-anchor-v238", Boolean(hasAlert));
+  anchor.querySelectorAll(".trade-notification-badge-v238").forEach((node) => node.remove());
+  if (!hasAlert) {
+    anchor.removeAttribute("data-trade-notification-v238");
+    return;
+  }
+  anchor.dataset.tradeNotificationV238 = "1";
+  anchor.insertAdjacentHTML("beforeend", renderTradeNotificationBadgeV238(title));
+}
+
+function applyTradeNotificationBadgesV238() {
+  injectTradeNotificationStylesV238();
+  const stateInfo = getTradeNotificationStateV238();
+  state.tradeNotificationLastStateV238 = {
+    incomingPending: stateInfo.incomingPending.length,
+    sentResolvedUnseen: stateInfo.sentResolvedUnseen.length,
+    total: stateInfo.total
+  };
+  const hasAlert = stateInfo.total > 0;
+  const titleParts = [];
+  if (stateInfo.incomingPending.length) titleParts.push(`${stateInfo.incomingPending.length} trattativ${stateInfo.incomingPending.length === 1 ? "a ricevuta" : "e ricevute"} in attesa`);
+  if (stateInfo.sentResolvedUnseen.length) titleParts.push(`${stateInfo.sentResolvedUnseen.length} esit${stateInfo.sentResolvedUnseen.length === 1 ? "o" : "i"} trattativ${stateInfo.sentResolvedUnseen.length === 1 ? "a" : "e"} da leggere`);
+  const title = titleParts.join(" · ") || "Nessuna nuova trattativa";
+
+  document.querySelectorAll('[data-page-link="teamarea"], [data-v42-page-link="teamarea"]').forEach((link) => {
+    updateTradeNotificationAnchorV238(link, hasAlert, title);
+  });
+
+  const accountButton = document.getElementById("openLoginBtn");
+  const approved = !state.isAdmin ? getApprovedTeamUser?.() : null;
+  updateTradeNotificationAnchorV238(accountButton, Boolean(approved && hasAlert), title);
+}
+
+function handleTeamareaNotificationVisitV238() {
+  const page = state.currentPage || String(window.location.hash || "").replace("#", "");
+  if (page !== "teamarea") return;
+  window.setTimeout(() => acknowledgeTradeOutcomeNotificationsV238(), 350);
+}
+
+async function refreshTradeNotificationsV238(options = {}) {
+  if (state.isAdmin || !state.user || !getApprovedTeamUser?.()) {
+    applyTradeNotificationBadgesV238();
+    return;
+  }
+  if (state.transferMarketLoadingV119 || state.transferMarketPromiseV170) return;
+  try {
+    await loadTransferMarketCollectionsV119?.();
+    applyTradeNotificationBadgesV238();
+    if (options.renderTeamArea && (state.currentPage === "teamarea" || getHashPageV170?.() === "teamarea")) {
+      renderUserAreaV34?.();
+    }
+  } catch (error) {
+    console.warn("Notifiche trattative non aggiornate", error);
+  }
+}
+
+function startTradeNotificationPollingV238() {
+  if (state.tradeNotificationTimerV238) window.clearInterval(state.tradeNotificationTimerV238);
+  state.tradeNotificationTimerV238 = null;
+  if (state.isAdmin || !state.user || !getApprovedTeamUser?.()) {
+    applyTradeNotificationBadgesV238();
+    return;
+  }
+  state.tradeNotificationTimerV238 = window.setInterval(() => {
+    refreshTradeNotificationsV238({ renderTeamArea: false });
+  }, TRADE_NOTIFICATION_POLL_MS_V238);
+}
+
+const loadTransferMarketCollectionsBeforeV238 = loadTransferMarketCollectionsV119;
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV238(...args) {
+  const result = await loadTransferMarketCollectionsBeforeV238?.(...args);
+  applyTradeNotificationBadgesV238();
+  return result;
+};
+
+const renderUserAreaBeforeV238 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV238() {
+  const result = renderUserAreaBeforeV238?.();
+  applyTradeNotificationBadgesV238();
+  handleTeamareaNotificationVisitV238();
+  return result;
+};
+
+const renderAllBeforeV238 = renderAll;
+renderAll = function renderAllV238() {
+  const result = renderAllBeforeV238?.();
+  applyTradeNotificationBadgesV238();
+  return result;
+};
+
+const updateUserVisibilityBeforeV238 = updateUserVisibilityV34;
+updateUserVisibilityV34 = function updateUserVisibilityV238() {
+  const result = updateUserVisibilityBeforeV238?.();
+  applyTradeNotificationBadgesV238();
+  startTradeNotificationPollingV238();
+  return result;
+};
+
+const updateNegotiationStatusBeforeV238 = updateNegotiationStatusV119;
+updateNegotiationStatusV119 = async function updateNegotiationStatusV238(id, status) {
+  const result = await updateNegotiationStatusBeforeV238?.(id, status);
+  applyTradeNotificationBadgesV238();
+  return result;
+};
+
+document.addEventListener("click", (event) => {
+  const teamAreaTarget = event.target.closest?.('[data-page-link="teamarea"], [data-v42-page-link="teamarea"], #openLoginBtn, [data-mobile-teamarea-scroll=".trade-list-panel"]');
+  if (!teamAreaTarget) return;
+  window.setTimeout(() => {
+    if (state.currentPage === "teamarea" || getHashPageV170?.() === "teamarea" || teamAreaTarget.matches?.('[data-mobile-teamarea-scroll=".trade-list-panel"]')) {
+      acknowledgeTradeOutcomeNotificationsV238();
+    }
+  }, 700);
+}, true);
+
+window.addEventListener("hashchange", () => {
+  applyTradeNotificationBadgesV238();
+  handleTeamareaNotificationVisitV238();
+});
+
 
 /* V209 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();

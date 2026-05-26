@@ -1,3 +1,17 @@
+## V238 - Notifiche trattative presidente e hotfix comunicato scambio
+
+- Corretto il submit del comunicato avvenuto scambio: dopo il salvataggio in `teamRequests` il presidente non forza piu' `loadFullDataV32`, evitando la lettura non consentita di `teamUsers`.
+- Aggiunto badge rosso con punto esclamativo bianco su `Dashboard Presidente` e sul pulsante header `Pres. Cognome` quando una squadra riceve una trattativa in attesa.
+- Quando il destinatario accetta/rifiuta, il badge sparisce al destinatario e viene mostrato al presidente mittente come esito da leggere; lo storico resta visibile in `Trattative` sotto Inviate/Ricevute.
+- Migliorati i sommari delle card trattativa con proposta compatta ed esito nel titolo della card.
+- Aggiornati footer/cache-buster/diagnostica a V238.
+
+## V237 - Hotfix comunicato scambio presidente e permessi Firebase
+
+- Corretto il flusso del pulsante "Invia comunicato di scambio": i presidenti approvati non scrivono piu' direttamente in `news`, perche' le regole Firestore consentono la scrittura news solo agli admin.
+- Il comunicato viene salvato in `teamRequests` come `TRANSFER_NEWS`, la mail EmailJS a `caparrotti86@yahoo.it` viene inviata subito e l'Admin puo' approvare la richiesta per pubblicarla in News con topic `COMUNICATO_AVVENUTO_SCAMBIO`.
+- Ripristinata la visibilita' dei `TRANSFER_NEWS` nel pannello Admin Richieste presidenti e aggiornati footer/cache-buster/diagnostica a V237.
+
 ## V236 - Ripristino comunicato avvenuto scambio presidente
 - Ripristinato nella Dashboard Presidente il secondo form `Comunicato avvenuto scambio`, perso dal refactor V119 dell'area squadra.
 - Il comunicato di scambio viene pubblicato direttamente nella raccolta Firebase `news` con topic `COMUNICATO_AVVENUTO_SCAMBIO`.
