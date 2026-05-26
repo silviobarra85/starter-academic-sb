@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=241";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=242";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=241";
+} from "./js/domain/news-share-v228.js?v=242";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=241";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=242";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=241";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=242";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "241";
+const DEPLOY_EXPECTED_VERSION_V181 = "242";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V241",
+  version: "V242",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -19684,6 +19684,177 @@ renderUserAreaV34 = function renderUserAreaV241() {
       if (text) text.textContent = "La richiesta di accesso e' stata rifiutata. Contatta l'admin se pensi sia un errore.";
     }
   }
+  return result;
+};
+
+
+/* V242 - Consolidamento comunicato avvenuto scambio.
+   Mantiene un solo flusso canonico per il presidente:
+   Dashboard Presidente -> teamRequests/TRANSFER_NEWS -> EmailJS -> approvazione Admin -> News.
+   Neutralizza gli agganci legacy V50/V79 che riusavano l'ID del form storico e potevano
+   attivare anche il vecchio tentativo di pubblicazione diretta in news. */
+const TRANSFER_COMMUNICATION_RECIPIENT_V242 = "caparrotti86@yahoo.it";
+
+function removeLegacyTransferCommunicationPanelsV242() {
+  const legacyForms = [
+    ...document.querySelectorAll("#teamTransferCommunicationFormV50, #teamTransferCommunicationPanelV236")
+  ];
+  legacyForms.forEach((node) => {
+    const panel = node.closest?.("section.panel, article.panel, section, article");
+    (panel || node).remove?.();
+  });
+  document
+    .querySelectorAll('[data-mobile-teamarea-scroll="#teamTransferCommunicationFormV50"]')
+    .forEach((node) => node.remove());
+}
+
+function renderTransferCommunicationPanelV242() {
+  return `
+    <section id="teamTransferCommunicationPanelV242" class="panel team-transfer-communication-panel-v236" data-transfer-communication-canonical="V242">
+      <div class="panel-header compact"><div><h2>Comunicato avvenuto scambio</h2><p>Invia il comunicato alla lega via email e registralo tra le richieste Admin per la pubblicazione nelle News.</p></div></div>
+      <form id="teamTransferCommunicationFormV242" class="form-grid" data-transfer-communication-handler="V242">
+        <label class="span-2">Titolo<input id="teamTransferTitleV242" class="input" type="text" value="Comunicato avvenuto scambio" required /></label>
+        <label class="span-2">Testo comunicato<textarea id="teamTransferBodyV242" class="input textarea" rows="5" required></textarea></label>
+        <label>Giocatori/contropartite coinvolti <span class="muted">(opzionale)</span><input id="teamTransferPlayersV242" class="input" type="text" /></label>
+        <label>Squadra coinvolta <span class="muted">(opzionale)</span><input id="teamTransferOtherTeamV242" class="input" type="text" /></label>
+        <div class="form-actions span-2"><button class="button button-primary" type="submit">Invia comunicato di scambio</button><span id="teamTransferStatusV242" class="form-status"></span></div>
+      </form>
+      <small class="field-hint">Flusso V242: email immediata a ${TRANSFER_COMMUNICATION_RECIPIENT_V242}; pubblicazione News dopo approvazione Admin.</small>
+    </section>`;
+}
+
+function getTransferCommunicationInputValueV242(id) {
+  return document.getElementById(id)?.value?.trim?.() || "";
+}
+
+function buildTransferCommunicationPayloadV242() {
+  const base = buildBaseTeamRequestPayloadV34("TRANSFER_NEWS");
+  const title = getTransferCommunicationInputValueV242("teamTransferTitleV242") || "Comunicato avvenuto scambio";
+  const body = document.getElementById("teamTransferBodyV242")?.value || "";
+  const players = getTransferCommunicationInputValueV242("teamTransferPlayersV242");
+  const otherTeam = getTransferCommunicationInputValueV242("teamTransferOtherTeamV242");
+  return {
+    ...base,
+    title,
+    body,
+    topic: "COMUNICATO_AVVENUTO_SCAMBIO",
+    type: "TRANSFER_NEWS",
+    status: "PENDING",
+    seasonId: base.seasonId || getCurrentSeasonId(),
+    teamId: base.teamId || "",
+    seasonTeamId: base.seasonTeamId || "",
+    teamName: base.teamName || getSeasonTeamDisplayName(base.seasonTeamId) || "",
+    authorUid: base.createdBy || state.user?.uid || "",
+    createdByName: base.createdByName || getCurrentUserDisplayName(),
+    players,
+    otherTeam,
+    emailRecipient: TRANSFER_COMMUNICATION_RECIPIENT_V242,
+    requestedPublication: true,
+    requestedAt: serverTimestamp(),
+    createdAt: serverTimestamp(),
+    createdBy: state.user?.uid || "",
+    canonicalFlow: "V242"
+  };
+}
+
+async function sendTransferCommunicationEmailV242(payload) {
+  if (typeof sendTransferCommunicationEmailV237 === "function") {
+    return sendTransferCommunicationEmailV237(payload);
+  }
+  const emailModule = await import("./emailjs.js");
+  const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
+  await emailModule.sendTransferEmail({
+    to_email: TRANSFER_COMMUNICATION_RECIPIENT_V242,
+    team_name: teamName,
+    president_name: payload.createdByName || getCurrentUserDisplayName(),
+    title: payload.title || "Comunicato avvenuto scambio",
+    message: payload.body || payload.message || "",
+    players: payload.players || "",
+    other_team: payload.otherTeam || "",
+    created_at: new Date().toLocaleString("it-IT"),
+    subject: `Comunicato avvenuto scambio ${teamName}`
+  });
+}
+
+function attachTransferCommunicationHandlerV242() {
+  const form = document.getElementById("teamTransferCommunicationFormV242");
+  if (!form || form.dataset.v242Handler === "1") return;
+  form.dataset.v242Handler = "1";
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    try {
+      showMessage("teamTransferStatusV242", "Registrazione comunicato e invio email in corso...");
+      const payload = buildTransferCommunicationPayloadV242();
+      await addDoc(collection(db, "teamRequests"), payload);
+      let finalMessage = "Comunicato registrato per l'Admin ed email inviata alla lega.";
+      let finalMessageIsError = false;
+      try {
+        await sendTransferCommunicationEmailV242(payload);
+      } catch (emailError) {
+        console.error(emailError);
+        finalMessage = `Comunicato registrato per l'Admin, ma email non inviata: ${emailError?.message || "errore EmailJS"}`;
+        finalMessageIsError = true;
+      }
+      form.reset();
+      const titleInput = document.getElementById("teamTransferTitleV242");
+      if (titleInput) titleInput.value = "Comunicato avvenuto scambio";
+      applyTradeNotificationBadgesV238?.();
+      showMessage("teamTransferStatusV242", finalMessage, finalMessageIsError);
+    } catch (error) {
+      console.error(error);
+      showMessage("teamTransferStatusV242", error?.message || "Errore durante registrazione comunicato.", true);
+    }
+  });
+}
+
+function enhanceTransferCommunicationPresidentAreaV242() {
+  const target = document.getElementById("teamAreaBody");
+  const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+  if (!target || !state.user || !approved?.seasonTeamId) return;
+  removeLegacyTransferCommunicationPanelsV242();
+  if (!document.getElementById("teamTransferCommunicationFormV242")) {
+    const newsPanel = document.getElementById("teamNewsRequestForm")?.closest("section, article");
+    if (newsPanel) newsPanel.insertAdjacentHTML("afterend", renderTransferCommunicationPanelV242());
+    else target.insertAdjacentHTML("beforeend", renderTransferCommunicationPanelV242());
+  }
+  attachTransferCommunicationHandlerV242();
+
+  const mobileActions = document.querySelector("#mobileTeamAreaHubV144 .mobile-teamarea-actions-v144");
+  if (mobileActions && !mobileActions.querySelector('[data-mobile-teamarea-scroll="#teamTransferCommunicationFormV242"]')) {
+    mobileActions.insertAdjacentHTML("beforeend", `<button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll="#teamTransferCommunicationFormV242"><span>🔁</span><strong>Scambio</strong><small>comunicato</small></button>`);
+  }
+}
+
+if (typeof enhanceTransferCommunicationFormV50 === "function") {
+  enhanceTransferCommunicationFormV50 = function enhanceTransferCommunicationFormV50DisabledV242() {
+    enhanceTransferCommunicationPresidentAreaV242();
+  };
+}
+
+if (typeof upgradeTransferCommunicationFormV79 === "function") {
+  upgradeTransferCommunicationFormV79 = function upgradeTransferCommunicationFormV79DisabledV242() {
+    return null;
+  };
+}
+
+if (typeof enhanceTransferCommunicationPresidentAreaV237 === "function") {
+  enhanceTransferCommunicationPresidentAreaV237 = function enhanceTransferCommunicationPresidentAreaV237CanonicalV242() {
+    enhanceTransferCommunicationPresidentAreaV242();
+  };
+}
+
+const renderUserAreaBeforeV242 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV242() {
+  const result = renderUserAreaBeforeV242?.();
+  enhanceTransferCommunicationPresidentAreaV242();
+  return result;
+};
+
+const renderAllBeforeV242 = renderAll;
+renderAll = function renderAllV242() {
+  const result = renderAllBeforeV242?.();
+  enhanceTransferCommunicationPresidentAreaV242();
   return result;
 };
 
