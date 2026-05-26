@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=242";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=243";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=242";
+} from "./js/domain/news-share-v228.js?v=243";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=242";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=243";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=242";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=243";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "242";
+const DEPLOY_EXPECTED_VERSION_V181 = "243";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V242",
+  version: "V243",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -19857,6 +19857,118 @@ renderAll = function renderAllV242() {
   enhanceTransferCommunicationPresidentAreaV242();
   return result;
 };
+
+
+/* V243 - Hotfix Admin richieste presidenti dopo comunicato scambio canonico.
+   La mail EmailJS parte dal browser del presidente, mentre l'Admin usa una cache/lazy-load
+   di teamRequests. Senza refresh esplicito, la richiesta appena creata puo' non comparire
+   nel pannello finche' l'admin non ricarica le collection lazy. */
+state.adminTeamRequestsRefreshingV243 = false;
+
+async function refreshAdminTeamRequestsV243(options = {}) {
+  if (!state.isAdmin || state.adminTeamRequestsRefreshingV243) return false;
+  const { render = true, expand = true } = options;
+  state.adminTeamRequestsRefreshingV243 = true;
+  document.querySelectorAll('[data-admin-refresh-team-requests-v243]').forEach((button) => {
+    button.disabled = true;
+    button.textContent = 'Aggiornamento...';
+  });
+  document.querySelectorAll('[data-admin-team-requests-status-v243]').forEach((status) => {
+    status.textContent = 'Rileggo le richieste presidenti da Firebase...';
+  });
+  try {
+    if (typeof loadAdminUserCollectionsV175 === 'function') {
+      await loadAdminUserCollectionsV175({ render, expandPanelId: 'adminTeamRequestsPanel' });
+    } else {
+      const snapshot = await getDocs(collection(db, 'teamRequests'));
+      state.raw.teamRequests = snapshot.docs.map((documentSnapshot) => ({
+        id: documentSnapshot.id,
+        ...documentSnapshot.data()
+      }));
+      if (render) renderAll?.();
+    }
+    if (expand) window.setTimeout(() => expandAdminPanel?.('adminTeamRequestsPanel'), 0);
+    return true;
+  } catch (error) {
+    console.error('Errore refresh richieste presidenti V243', error);
+    document.querySelectorAll('[data-admin-team-requests-status-v243]').forEach((status) => {
+      status.textContent = error?.message || 'Errore durante aggiornamento richieste.';
+      status.classList.add('error');
+    });
+    return false;
+  } finally {
+    state.adminTeamRequestsRefreshingV243 = false;
+    document.querySelectorAll('[data-admin-refresh-team-requests-v243]').forEach((button) => {
+      button.disabled = false;
+      button.textContent = 'Aggiorna richieste';
+    });
+  }
+}
+
+function addTeamRequestsRefreshToolbarV243(html = '') {
+  const toolbar = `
+    <div class="form-actions admin-team-requests-refresh-v243">
+      <button class="button button-secondary button-small" type="button" data-admin-refresh-team-requests-v243>Aggiorna richieste</button>
+      <span class="form-status" data-admin-team-requests-status-v243>Usa Aggiorna richieste se una richiesta appena inviata non compare.</span>
+    </div>`;
+  if (!html || html.includes('data-admin-refresh-team-requests-v243')) return html;
+  return html.replace('<div class="admin-list">', `${toolbar}<div class="admin-list">`);
+}
+
+if (typeof renderTeamRequestsAdminPanelV34 === 'function') {
+  const renderTeamRequestsAdminPanelBeforeV243 = renderTeamRequestsAdminPanelV34;
+  renderTeamRequestsAdminPanelV34 = function renderTeamRequestsAdminPanelV243() {
+    const html = renderTeamRequestsAdminPanelBeforeV243?.() || '';
+    if (!state.adminUserCollectionsLoadedV175) return html;
+    return addTeamRequestsRefreshToolbarV243(html);
+  };
+}
+
+const attachAdminHandlersBeforeV243 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV243() {
+  attachAdminHandlersBeforeV243?.();
+  document.querySelectorAll('[data-admin-refresh-team-requests-v243]').forEach((button) => {
+    if (button.dataset.v243Handler === '1') return;
+    button.dataset.v243Handler = '1';
+    button.addEventListener('click', () => refreshAdminTeamRequestsV243({ render: true, expand: true }));
+  });
+};
+
+const toggleAdminPanelBeforeV243 = toggleAdminPanel;
+toggleAdminPanel = function toggleAdminPanelV243(panelId) {
+  toggleAdminPanelBeforeV243?.(panelId);
+  if (panelId !== 'adminTeamRequestsPanel' || !state.isAdmin) return;
+  const panel = document.getElementById(panelId);
+  const isOpen = panel && !panel.classList.contains('is-collapsed');
+  if (isOpen && !state.adminUserCollectionsLoadedV175) {
+    refreshAdminTeamRequestsV243({ render: true, expand: true });
+  }
+};
+
+function normalizeTransferCommunicationPayloadForAdminV243(payload = {}) {
+  return {
+    ...payload,
+    type: 'TRANSFER_NEWS',
+    requestType: 'TRANSFER_NEWS',
+    category: 'COMMUNICATION',
+    topic: 'COMUNICATO_AVVENUTO_SCAMBIO',
+    status: payload.status || 'PENDING',
+    title: payload.title || 'Comunicato avvenuto scambio',
+    body: payload.body || payload.message || '',
+    message: payload.message || payload.body || '',
+    description: payload.description || payload.title || 'Comunicato avvenuto scambio',
+    adminVisible: true,
+    needsAdminApproval: true,
+    canonicalFlow: 'V243'
+  };
+}
+
+if (typeof buildTransferCommunicationPayloadV242 === 'function') {
+  const buildTransferCommunicationPayloadBeforeV243 = buildTransferCommunicationPayloadV242;
+  buildTransferCommunicationPayloadV242 = function buildTransferCommunicationPayloadV243() {
+    return normalizeTransferCommunicationPayloadForAdminV243(buildTransferCommunicationPayloadBeforeV243?.() || {});
+  };
+}
 
 
 /* V209 - Final startup remains centralized here. */

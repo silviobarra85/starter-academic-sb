@@ -1,3 +1,11 @@
+## V243 - Comunicato scambio canonico
+
+- Consolidato il flusso Presidente -> Comunicato avvenuto scambio con form canonico `teamTransferCommunicationFormV243`.
+- Neutralizzati gli handler legacy V50/V79 che potevano agganciare lo stesso form e tentare ancora la pubblicazione diretta in `news`.
+- Il flusso resta: `teamRequests/TRANSFER_NEWS` + EmailJS immediato + pubblicazione News dopo approvazione Admin.
+- Aggiornati footer/cache-buster/diagnostica a V243.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V241 - Accetta utenti stabile
 
 - Corretto il flusso Admin -> Accetta utenti: gli utenti rifiutati non vengono piu' cancellati da `pendingUsers`, ma marcati `REJECTED` con metadati di rifiuto.
@@ -431,3 +439,9 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - `In listone` e `Asteriscato` filtrano solo la colonna Stato.
 - `Svincolati` filtra solo la colonna Rosa, includendo i giocatori senza squadra fantasy.
 - Combinazioni checkbox rese coerenti: gli svincolati vengono esclusi quando la checkbox `Svincolati` non e selezionata.
+
+## V243 refresh richieste presidenti
+
+- Aggiunto refresh esplicito/automatico del pannello Admin → Richieste presidenti per rileggere `teamRequests` da Firebase quando una richiesta appena inviata non compare subito.
+- Normalizzato il payload del Comunicato avvenuto scambio con campi compatibili Admin (`TRANSFER_NEWS`, `requestType`, `adminVisible`, `needsAdminApproval`).
+- `FUNZIONALITA'.md` non modificato.

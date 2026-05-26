@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V241.
+Stato: V243.
 
 ## Tipo applicazione
 
@@ -486,3 +486,6 @@ Questo sostituisce il flusso V228/V230 con `tools/generate-news-share-pages.mjs`
 
 
 Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra i duplicati di utenti gia approvati, evitando ricomparse non volute in Admin.
+
+
+Nota V243: il comunicato avvenuto scambio usa un unico flusso canonico: form V243, scrittura in `teamRequests` con `TRANSFER_NEWS`, invio EmailJS immediato e pubblicazione in News solo dopo approvazione Admin. Gli handler legacy V50/V79 sono neutralizzati per evitare doppie azioni.

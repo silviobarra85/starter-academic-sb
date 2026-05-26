@@ -251,3 +251,6 @@ V240 completata: corretto il sync live delle trattative presidente tra badge, da
 
 
 V241 completata: stabilizzato il flusso Accetta utenti con rifiuto persistente, blocco rigenerazione pending e filtro duplicati gia approvati. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.
+
+
+V243 completata: consolidato il flusso comunicato avvenuto scambio e neutralizzati gli handler legacy V50/V79 per evitare doppio submit o scritture dirette in news. Prossimo refactor consigliato: notifiche trattative lette/non lette persistite in Firebase.

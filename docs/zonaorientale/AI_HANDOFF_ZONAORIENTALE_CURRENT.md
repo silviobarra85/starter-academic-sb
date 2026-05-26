@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V241
+# AI Handoff ZonaOrientale - Current V243
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V241**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, e V241 con flusso Accetta utenti stabile anti-duplicati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V243**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, e V243 con consolidamento canonico del comunicato avvenuto scambio.
 
 ## Posizione e struttura progetto
 
@@ -59,6 +59,10 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+## V243 - Comunicato scambio canonico
+
+V243 consolida il flusso Presidente -> Comunicato avvenuto scambio: viene mantenuto un solo form canonico (`teamTransferCommunicationFormV243`) che salva `teamRequests` con `type: TRANSFER_NEWS`, `topic: COMUNICATO_AVVENUTO_SCAMBIO`, invia subito EmailJS a `caparrotti86@yahoo.it` e lascia la pubblicazione in News all'approvazione Admin. Gli agganci legacy V50/V79 vengono neutralizzati per evitare doppio submit o tentativi di scrittura diretta in `news` da account presidente. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
 
 ## V241 - Accetta utenti stabile
 
@@ -197,17 +201,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V241 accetta utenti stabile**.
+Versione sito: **V243 refresh richieste presidenti**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V241 accetta utenti stabile · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V243 refresh richieste presidenti · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=241`.
+Cache-buster HTML principali attesi: `?v=243`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `241`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `242`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

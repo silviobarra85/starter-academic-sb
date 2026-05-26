@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V241.
+Stato: V243.
 
 ## Regola d'oro dati
 
@@ -333,3 +333,6 @@ Dopo deploy o test locale:
 
 
 Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra i duplicati di utenti gia approvati, evitando ricomparse non volute in Admin.
+
+
+Nota V243: per i comunicati di avvenuto scambio il presidente non scrive direttamente in `news`; crea una richiesta `TRANSFER_NEWS`, manda EmailJS alla lega e l Admin pubblica approvando la richiesta.
