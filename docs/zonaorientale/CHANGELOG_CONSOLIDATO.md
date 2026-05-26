@@ -1,10 +1,17 @@
-## V238 - Notifiche trattative presidente e hotfix comunicato scambio
+## V239 - Notifiche trattative presidente e hotfix comunicato scambio
+
+## V239 - storico e notifiche trattative persistenti
+- Dashboard Presidente: le liste Trattative Inviate/Ricevute mostrano lo storico completo in un riquadro scrollabile, con ultime 5 visibili senza scroll.
+- Notifiche trattative: il badge del destinatario resta finche' la proposta non viene approvata o rifiutata.
+- Notifiche esito: il badge del mittente resta finche' non viene aperta la card della proposta nella sottosezione Trattative.
+- Documentazione: aggiunto `FUNZIONALITA'.md` come registro funzionale da aggiornare solo su richiesta esplicita.
+
 
 - Corretto il submit del comunicato avvenuto scambio: dopo il salvataggio in `teamRequests` il presidente non forza piu' `loadFullDataV32`, evitando la lettura non consentita di `teamUsers`.
 - Aggiunto badge rosso con punto esclamativo bianco su `Dashboard Presidente` e sul pulsante header `Pres. Cognome` quando una squadra riceve una trattativa in attesa.
 - Quando il destinatario accetta/rifiuta, il badge sparisce al destinatario e viene mostrato al presidente mittente come esito da leggere; lo storico resta visibile in `Trattative` sotto Inviate/Ricevute.
 - Migliorati i sommari delle card trattativa con proposta compatta ed esito nel titolo della card.
-- Aggiornati footer/cache-buster/diagnostica a V238.
+- Aggiornati footer/cache-buster/diagnostica a V239.
 
 ## V237 - Hotfix comunicato scambio presidente e permessi Firebase
 

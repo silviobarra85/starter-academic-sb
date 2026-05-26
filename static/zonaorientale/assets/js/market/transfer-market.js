@@ -170,15 +170,30 @@ export function createTransferMarketHelpersV128(ctx) {
       </details>`;
   }
 
+  function getNegotiationSortValueV239(item) {
+    const candidates = [item.updatedAt, item.createdAt, item.acceptedAt, item.rejectedAt, item.cancelledAt].filter(Boolean);
+    const raw = candidates[0] || "";
+    if (raw?.toMillis) return raw.toMillis();
+    if (raw?.seconds) return raw.seconds * 1000;
+    const parsed = Date.parse(String(raw));
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
   function renderNegotiationsList(currentSeasonTeamId, kind) {
     const seasonId = getCurrentSeasonId();
     const sent = kind === "sent";
+    if (state.transferMarketLoadingV119 && !state.transferMarketLoadedV119) {
+      return `<p class="muted">Caricamento trattative...</p>`;
+    }
     const items = (state.raw?.transferNegotiations || [])
-      .filter((item) => item.seasonId === seasonId)
+      .filter((item) => !seasonId || !item.seasonId || item.seasonId === seasonId)
       .filter((item) => sent ? item.fromSeasonTeamId === currentSeasonTeamId : item.toSeasonTeamId === currentSeasonTeamId)
-      .sort((a, b) => String(b.createdAt?.seconds || b.createdAt || "").localeCompare(String(a.createdAt?.seconds || a.createdAt || ""), "it"));
+      .sort((a, b) => getNegotiationSortValueV239(b) - getNegotiationSortValueV239(a));
     if (!items.length) return `<p class="muted">Nessuna trattativa ${sent ? "inviata" : "ricevuta"}.</p>`;
-    return items.map((item) => renderNegotiationCard(item, kind, currentSeasonTeamId)).join("");
+    const hint = items.length > 5
+      ? `<p class="muted trade-list-hint-v239">Mostrate le ultime 5: scorri nel riquadro per vedere le altre ${items.length - 5}.</p>`
+      : `<p class="muted trade-list-hint-v239">Storico completo delle ultime ${items.length} trattativ${items.length === 1 ? "a" : "e"}.</p>`;
+    return `${hint}<div class="trade-list-scroll-v239" tabindex="0" aria-label="Storico trattative ${sent ? "inviate" : "ricevute"}">${items.map((item) => renderNegotiationCard(item, kind, currentSeasonTeamId)).join("")}</div>`;
   }
 
   function renderTradePlayerOptions(seasonTeamId, selectedKeys = []) {

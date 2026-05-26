@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V238
+# AI Handoff ZonaOrientale - Current V239
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V238**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header e V238 con notifiche trattative presidente + hotfix permission-denied sul comunicato scambio.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V239**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header e V239 con notifiche trattative presidente + hotfix permission-denied sul comunicato scambio.
 
 ## Posizione e struttura progetto
 
@@ -58,9 +58,9 @@ http://localhost:1313/zonaorientale/
 
 
 
-## V238 - Notifiche trattative presidente e hotfix permission-denied
+## V239 - Notifiche trattative presidente e hotfix permission-denied
 
-V238 corregge il permission-denied visto dal presidente sul submit del comunicato avvenuto scambio: dopo il salvataggio in `teamRequests`, il flusso non forza piu' il caricamento completo admin e quindi non tenta la lettura non consentita di `teamUsers`.
+V239 corregge il permission-denied visto dal presidente sul submit del comunicato avvenuto scambio: dopo il salvataggio in `teamRequests`, il flusso non forza piu' il caricamento completo admin e quindi non tenta la lettura non consentita di `teamUsers`.
 
 Inoltre aggiunge le notifiche trattative presidente: badge rosso con punto esclamativo bianco su `Dashboard Presidente` e sul pulsante header `Pres. Cognome` quando ci sono proposte ricevute in attesa o esiti di proposte inviate da leggere. Il riepilogo resta nella sottosezione `Trattative`, sotto Inviate/Ricevute, con proposta compatta ed esito.
 
@@ -187,15 +187,15 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V238 notifiche trattative**.
+Versione sito: **V239 storico notifiche trattative**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V238 notifiche trattative · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V239 storico notifiche trattative · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=238`.
+Cache-buster HTML principali attesi: `?v=239`.
 
 Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `238`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
@@ -614,6 +614,6 @@ Hotfix Listone: le checkbox sono ora coerenti con le colonne visibili. `In listo
 ## Update V236 - Comunicati scambio presidente
 
 - Ripristinato il form presidente `Comunicato avvenuto scambio` perso dal render V119.
-- Il form V236 tentava pubblicazione diretta in `news` e invio EmailJS a `caparrotti86@yahoo.it`; V238 corregge il problema permessi spostando la pubblicazione in approvazione Admin.
+- Il form V236 tentava pubblicazione diretta in `news` e invio EmailJS a `caparrotti86@yahoo.it`; V239 corregge il problema permessi spostando la pubblicazione in approvazione Admin.
 - Aggiunto topic `COMUNICATO_AVVENUTO_SCAMBIO` nelle label.
 - Aggiornati footer/cache-buster, diagnostica versione e documentazione a V236.
