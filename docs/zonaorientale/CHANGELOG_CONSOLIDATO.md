@@ -1,3 +1,10 @@
+## V233 - Hotfix listone, dashboard mobile e tema light
+- Corretto filtro stato nella sezione Listone: In listone, Asteriscato e Svincolati ora sono mutuamente coerenti e non si sovrappongono.
+- Rimossa duplicazione interna delle checkbox dei campi visibili del Listone.
+- Dashboard Presidente mobile: le schede Saldo/Rosa e In vendita/Trattative restano su due colonne anche sugli schermi stretti.
+- Rafforzato tema light per Archivio, Statistiche e Confronta con sfondi chiari e testi scuri.
+- Aggiornati footer/cache-buster a V233.
+
 ## V232 - Hotfix routing comunicati condivisi
 
 - Corretto il redirect utenti della preview dinamica comunicati: gli hash `#news-<id>` ora aprono la sezione News invece di lasciare la webapp senza pagina attiva.

@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V232.
+Stato: V233.
 
 ## Regola d'oro dati
 

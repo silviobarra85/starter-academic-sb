@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V232
+# AI Handoff ZonaOrientale - Current V233
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V232**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V232 per aprire i comunicati dopo redirect e pulsante account presidente personalizzato in header.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V233**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V233 per aprire i comunicati dopo redirect e pulsante account presidente personalizzato in header.
 
 ## Posizione e struttura progetto
 
@@ -58,9 +58,9 @@ http://localhost:1313/zonaorientale/
 
 
 
-## V232 - Hotfix routing comunicati condivisi
+## V233 - Hotfix routing comunicati condivisi
 
-V232 corregge il comportamento post-preview della V231: la Netlify Function reindirizza a `/zonaorientale/#news-<id>`, ma il router legacy interpretava hash non statici come slug squadra. Il risultato era una pagina vuota con solo header/footer. Ora gli hash `news-<id>` attivano esplicitamente la pagina News, renderizzano i comunicati e aprono/scorrono il comunicato target.
+V233 corregge il comportamento post-preview della V231: la Netlify Function reindirizza a `/zonaorientale/#news-<id>`, ma il router legacy interpretava hash non statici come slug squadra. Il risultato era una pagina vuota con solo header/footer. Ora gli hash `news-<id>` attivano esplicitamente la pagina News, renderizzano i comunicati e aprono/scorrono il comunicato target.
 
 ## V231 - Comunicati WhatsApp dinamici Netlify
 
@@ -162,12 +162,12 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V232 hotfix routing comunicati**.
+Versione sito: **V233 hotfix routing comunicati**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V232 hotfix routing comunicati · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V233 hotfix routing comunicati · Ultimo aggiornamento 25/05/2026
 ```
 
 Cache-buster HTML principali attesi: `?v=229`.
@@ -566,3 +566,8 @@ assets/css/mobile-chrome-v223.css
 Il file assorbe i blocchi duplicati V218 relativi a pulsante `Su`, vecchi pulsanti `listone/competition` e guard desktop del bottom menu. I blocchi corrispondenti sono stati rimossi da `assets/styles.css` e `assets/css/mobile-suite-v168.css` per iniziare la pulizia CSS senza alterare il layout.
 
 Versione runtime attesa: **226**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
+
+
+## Update V233
+- Hotfix pre-checkpoint: filtri stato Listone corretti, dashboard presidente mobile a due colonne per le metriche, tema light rafforzato su Archivio/Statistiche/Confronta.
+- Il flusso comunicati dinamici Netlify rimane quello della V231/V232 e risulta funzionante sul master.
