@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V233
+# AI Handoff ZonaOrientale - Current V235
 
 Ultimo aggiornamento documentale: 25/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V233**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V233 per aprire i comunicati dopo redirect e pulsante account presidente personalizzato in header.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V235**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect e pulsante account presidente personalizzato in header.
 
 ## Posizione e struttura progetto
 
@@ -58,9 +58,9 @@ http://localhost:1313/zonaorientale/
 
 
 
-## V233 - Hotfix routing comunicati condivisi
+## V235 - Hotfix routing comunicati condivisi
 
-V233 corregge il comportamento post-preview della V231: la Netlify Function reindirizza a `/zonaorientale/#news-<id>`, ma il router legacy interpretava hash non statici come slug squadra. Il risultato era una pagina vuota con solo header/footer. Ora gli hash `news-<id>` attivano esplicitamente la pagina News, renderizzano i comunicati e aprono/scorrono il comunicato target.
+V235 corregge il comportamento post-preview della V231: la Netlify Function reindirizza a `/zonaorientale/#news-<id>`, ma il router legacy interpretava hash non statici come slug squadra. Il risultato era una pagina vuota con solo header/footer. Ora gli hash `news-<id>` attivano esplicitamente la pagina News, renderizzano i comunicati e aprono/scorrono il comunicato target.
 
 ## V231 - Comunicati WhatsApp dinamici Netlify
 
@@ -162,12 +162,12 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V233 hotfix routing comunicati**.
+Versione sito: **V235 hotfix routing comunicati**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V233 hotfix routing comunicati · Ultimo aggiornamento 25/05/2026
+ZonaOrientale Salerno · V235 hotfix routing comunicati · Ultimo aggiornamento 25/05/2026
 ```
 
 Cache-buster HTML principali attesi: `?v=229`.
@@ -568,6 +568,20 @@ Il file assorbe i blocchi duplicati V218 relativi a pulsante `Su`, vecchi pulsan
 Versione runtime attesa: **226**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
 
 
-## Update V233
+## Update V235
 - Hotfix pre-checkpoint: filtri stato Listone corretti, dashboard presidente mobile a due colonne per le metriche, tema light rafforzato su Archivio/Statistiche/Confronta.
 - Il flusso comunicati dinamici Netlify rimane quello della V231/V232 e risulta funzionante sul master.
+
+
+## Update V235 - Hotfix filtri Listone
+
+Corretto il comportamento dei filtri stato nella sezione pubblica `#listone`. La semantica richiesta e' ora:
+
+- `In listone`: filtra solo giocatori con stato `In listone` / `IN_LISTONE`;
+- `Asteriscato`: filtra solo giocatori con stato `Asteriscato` / `ASTERISCATO`;
+- `Svincolati`: filtra solo giocatori non associati ad alcuna rosa (`fantasyRoster` vuoto o `Svincolati`).
+
+Le categorie non sono rese mutuamente esclusive a livello dati: un giocatore puo' avere stato `In listone` ed essere anche svincolato perche' non presente in alcuna rosa. I filtri funzionano quindi come unione delle categorie selezionate. Se nessun filtro stato e' selezionato, la tabella resta vuota.
+
+## V235 - Stato corrente
+Hotfix Listone: le checkbox sono ora coerenti con le colonne visibili. `In listone`/`Asteriscato` operano sulla colonna Stato, `Svincolati` opera sulla colonna Rosa.
