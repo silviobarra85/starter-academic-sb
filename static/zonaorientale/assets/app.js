@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=243";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=244";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=243";
+} from "./js/domain/news-share-v228.js?v=244";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=243";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=244";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=243";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=244";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "243";
+const DEPLOY_EXPECTED_VERSION_V181 = "244";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V243",
+  version: "V244",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -19969,6 +19969,137 @@ if (typeof buildTransferCommunicationPayloadV242 === 'function') {
     return normalizeTransferCommunicationPayloadForAdminV243(buildTransferCommunicationPayloadBeforeV243?.() || {});
   };
 }
+
+/* V244 - Admin Richieste presidenti: eliminazione definitiva comunicati rifiutati.
+   Dopo il rifiuto di un comunicato squadra o comunicato avvenuto scambio, l'Admin puo'
+   cancellare il documento da Firebase direttamente dal pannello Richieste presidenti.
+   Il pulsante compare solo per richieste comunicato in stato REJECTED. */
+function getTeamRequestStatusV244(request = {}) {
+  return String(request.status || '').trim().toUpperCase();
+}
+
+function getTeamRequestTypeV244(request = {}) {
+  return String(request.type || request.requestType || '').trim().toUpperCase();
+}
+
+function getTeamRequestTopicV244(request = {}) {
+  return String(request.topic || '').trim().toUpperCase();
+}
+
+function isCommunicationTeamRequestV244(request = {}) {
+  const type = getTeamRequestTypeV244(request);
+  const topic = getTeamRequestTopicV244(request);
+  return type === 'TEAM_NEWS'
+    || type === 'TRANSFER_NEWS'
+    || topic === 'COMUNICATO_SQUADRA'
+    || topic === 'COMUNICATO_AVVENUTO_SCAMBIO'
+    || topic === 'TEAM_NEWS'
+    || (String(request.category || '').trim().toUpperCase() === 'COMMUNICATION' && request.needsAdminApproval === true);
+}
+
+function getTeamRequestSortValueV244(value) {
+  if (!value) return 0;
+  if (typeof value?.toMillis === 'function') return value.toMillis();
+  if (typeof value?.seconds === 'number') return value.seconds * 1000;
+  const parsed = Date.parse(value);
+  return Number.isFinite(parsed) ? parsed : String(value);
+}
+
+function renderRejectedCommunicationDeleteButtonV244(request = {}) {
+  if (getTeamRequestStatusV244(request) !== 'REJECTED') return '';
+  if (!isCommunicationTeamRequestV244(request)) return '';
+  return `<button class="button button-danger button-small" type="button" data-delete-rejected-team-request-v244="${escapeHtml(request.id)}">Elimina da Firebase</button>`;
+}
+
+function renderTeamRequestActionsV244(request = {}) {
+  if (getTeamRequestStatusV244(request) === 'PENDING') {
+    return `<button class="button button-primary button-small" type="button" data-approve-request="${escapeHtml(request.id)}">Approva</button><button class="button button-danger button-small" type="button" data-reject-request="${escapeHtml(request.id)}">Rifiuta</button>`;
+  }
+  return `<span class="status status-muted">${escapeHtml(requestStatusLabel(request.status))}</span>${renderRejectedCommunicationDeleteButtonV244(request)}`;
+}
+
+async function deleteRejectedCommunicationTeamRequestV244(requestId) {
+  const request = (state.raw.teamRequests || []).find((item) => item.id === requestId);
+  if (!request) {
+    setError?.('Richiesta non trovata in memoria. Premi Aggiorna richieste e riprova.');
+    return;
+  }
+  if (getTeamRequestStatusV244(request) !== 'REJECTED' || !isCommunicationTeamRequestV244(request)) {
+    setError?.('Puoi eliminare da Firebase solo comunicati gia rifiutati.');
+    return;
+  }
+  const title = request.title || request.description || request.body || 'questo comunicato rifiutato';
+  const confirmed = window.confirm(`Eliminare definitivamente da Firebase "${title}"? L'operazione non e' reversibile.`);
+  if (!confirmed) return;
+  document.querySelectorAll(`[data-delete-rejected-team-request-v244="${(typeof CSS !== 'undefined' && CSS.escape ? CSS.escape(requestId) : String(requestId).replace(/[^a-zA-Z0-9_-]/g, '\\$&'))}"]`).forEach((button) => {
+    button.disabled = true;
+    button.textContent = 'Elimino...';
+  });
+  try {
+    await deleteDoc(doc(db, 'teamRequests', requestId));
+    state.raw.teamRequests = (state.raw.teamRequests || []).filter((item) => item.id !== requestId);
+    document.querySelectorAll('[data-admin-team-requests-status-v243]').forEach((status) => {
+      status.textContent = 'Comunicazione rifiutata eliminata da Firebase.';
+      status.classList.remove('error');
+    });
+    renderAll?.();
+    window.setTimeout(() => expandAdminPanel?.('adminTeamRequestsPanel'), 0);
+  } catch (error) {
+    console.error('Errore eliminazione comunicato rifiutato V244', error);
+    setError?.(`Non riesco a eliminare il comunicato rifiutato. ${error?.message || error}`);
+    document.querySelectorAll('[data-admin-team-requests-status-v243]').forEach((status) => {
+      status.textContent = error?.message || 'Errore durante eliminazione da Firebase.';
+      status.classList.add('error');
+    });
+  } finally {
+    document.querySelectorAll(`[data-delete-rejected-team-request-v244="${(typeof CSS !== 'undefined' && CSS.escape ? CSS.escape(requestId) : String(requestId).replace(/[^a-zA-Z0-9_-]/g, '\\$&'))}"]`).forEach((button) => {
+      button.disabled = false;
+      button.textContent = 'Elimina da Firebase';
+    });
+  }
+}
+
+if (typeof renderTeamRequestsAdminPanelV34 === 'function') {
+  renderTeamRequestsAdminPanelV34 = function renderTeamRequestsAdminPanelV244() {
+    const requests = (state.raw.teamRequests || [])
+      .slice()
+      .sort((a, b) => {
+        const left = getTeamRequestSortValueV244(a.updatedAt || a.rejectedAt || a.approvedAt || a.createdAt || a.requestedAt);
+        const right = getTeamRequestSortValueV244(b.updatedAt || b.rejectedAt || b.approvedAt || b.createdAt || b.requestedAt);
+        if (typeof left === 'number' && typeof right === 'number') return right - left;
+        return String(right || '').localeCompare(String(left || ''));
+      });
+    const rows = requests.map((request) => `
+      <div class="admin-list-item">
+        <span>
+          <strong>${escapeHtml(requestTypeLabel(request.type || request.requestType))} · ${escapeHtml(getSeasonTeamDisplayName(request.seasonTeamId))}</strong>
+          <small>${escapeHtml(request.createdByName || request.createdByEmail || request.createdBy || '')} · ${escapeHtml(requestStatusLabel(request.status))}</small>
+          <small>${escapeHtml(request.title || request.playerName || request.description || request.body || request.notes || '')}</small>
+        </span>
+        <span class="admin-request-actions-v244">
+          ${renderTeamRequestActionsV244(request)}
+        </span>
+      </div>`).join('') || `<p class="muted admin-empty-message">Nessuna richiesta presidente.</p>`;
+    const html = renderAdminPanel(
+      'adminTeamRequestsPanel',
+      'Presidenti',
+      'Richieste presidenti',
+      'Approva o rifiuta movimenti, acquisti, svincoli, comunicati squadra e comunicati di avvenuto scambio. I comunicati rifiutati possono essere eliminati definitivamente da Firebase.',
+      `<div class="admin-list">${rows}</div>`
+    );
+    return typeof addTeamRequestsRefreshToolbarV243 === 'function' ? addTeamRequestsRefreshToolbarV243(html) : html;
+  };
+}
+
+const attachAdminHandlersBeforeV244 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV244() {
+  attachAdminHandlersBeforeV244?.();
+  document.querySelectorAll('[data-delete-rejected-team-request-v244]').forEach((button) => {
+    if (button.dataset.v244Handler === '1') return;
+    button.dataset.v244Handler = '1';
+    button.addEventListener('click', () => deleteRejectedCommunicationTeamRequestV244(button.dataset.deleteRejectedTeamRequestV244));
+  });
+};
 
 
 /* V209 - Final startup remains centralized here. */

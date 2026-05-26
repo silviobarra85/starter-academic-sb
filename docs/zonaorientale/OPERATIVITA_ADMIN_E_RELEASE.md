@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V243.
+Stato: V244.
 
 ## Regola d'oro dati
 
@@ -336,3 +336,5 @@ Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra 
 
 
 Nota V243: per i comunicati di avvenuto scambio il presidente non scrive direttamente in `news`; crea una richiesta `TRANSFER_NEWS`, manda EmailJS alla lega e l Admin pubblica approvando la richiesta.
+
+Nota V244: dopo aver rifiutato un comunicato in Admin -> Richieste presidenti, compare `Elimina da Firebase`. Usarlo solo quando si vuole rimuovere definitivamente il documento `teamRequests` rifiutato.

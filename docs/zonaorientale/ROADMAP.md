@@ -254,3 +254,6 @@ V241 completata: stabilizzato il flusso Accetta utenti con rifiuto persistente, 
 
 
 V243 completata: consolidato il flusso comunicato avvenuto scambio e neutralizzati gli handler legacy V50/V79 per evitare doppio submit o scritture dirette in news. Prossimo refactor consigliato: notifiche trattative lette/non lette persistite in Firebase.
+
+
+V244 completata: aggiunto pulsante Admin `Elimina da Firebase` sui comunicati rifiutati in Richieste presidenti. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita. Prossimo refactor consigliato: notifiche trattative lette/non lette persistite in Firebase.

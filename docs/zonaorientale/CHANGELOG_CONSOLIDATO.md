@@ -1,3 +1,11 @@
+## V244 - Elimina comunicati rifiutati da Firebase
+
+- Admin -> Richieste presidenti: quando un comunicato squadra o un comunicato avvenuto scambio viene rifiutato, compare il pulsante `Elimina da Firebase`.
+- Il pulsante cancella definitivamente il documento `teamRequests/{id}` solo per richieste comunicato in stato `REJECTED`; le richieste pending o approvate non vengono rese cancellabili.
+- Dopo la cancellazione lo stato locale viene aggiornato, il pannello resta aperto e si puo' usare ancora `Aggiorna richieste` per rileggere Firebase.
+- Aggiornati footer/cache-buster/diagnostica a V244.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V243 - Comunicato scambio canonico
 
 - Consolidato il flusso Presidente -> Comunicato avvenuto scambio con form canonico `teamTransferCommunicationFormV243`.

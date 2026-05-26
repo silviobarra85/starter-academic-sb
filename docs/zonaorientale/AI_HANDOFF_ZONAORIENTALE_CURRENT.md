@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V243
+# AI Handoff ZonaOrientale - Current V244
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V243**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, e V243 con consolidamento canonico del comunicato avvenuto scambio.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V244**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio e V244 con eliminazione da Firebase dei comunicati rifiutati.
 
 ## Posizione e struttura progetto
 
@@ -59,6 +59,11 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+
+## V244 - Elimina comunicati rifiutati da Firebase
+
+V244 aggiunge in Admin -> Richieste presidenti il pulsante `Elimina da Firebase` per i soli comunicati rifiutati (`TEAM_NEWS` e `TRANSFER_NEWS`, inclusi topic `COMUNICATO_SQUADRA` e `COMUNICATO_AVVENUTO_SCAMBIO`). Il pulsante compare dopo il rifiuto, chiede conferma e cancella il documento `teamRequests/{id}`. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
 
 ## V243 - Comunicato scambio canonico
 
@@ -201,17 +206,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V243 refresh richieste presidenti**.
+Versione sito: **V244 elimina comunicati rifiutati**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V243 refresh richieste presidenti · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V244 elimina comunicati rifiutati · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=243`.
+Cache-buster HTML principali attesi: `?v=244`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `242`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `244`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

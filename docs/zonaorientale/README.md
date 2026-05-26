@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V243**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V244**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,7 +16,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V243.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V244.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -61,4 +61,8 @@ V241 stabilizza Admin -> Accetta utenti: i rifiuti restano come `REJECTED`, gli 
 
 ## Nota V243
 
-V243 consolida il comunicato di avvenuto scambio: un solo form canonico, salvataggio in `teamRequests`, invio EmailJS immediato e pubblicazione News dopo approvazione Admin. Gli agganci legacy V50/V79 sono neutralizzati. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+V243 consolida il comunicato di avvenuto scambio; V244 aggiunge il pulsante Admin per eliminare da Firebase i comunicati rifiutati: un solo form canonico, salvataggio in `teamRequests`, invio EmailJS immediato e pubblicazione News dopo approvazione Admin. Gli agganci legacy V50/V79 sono neutralizzati. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+
+## Nota V244
+
+Admin -> Richieste presidenti permette di eliminare da Firebase i soli comunicati rifiutati. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
