@@ -1,3 +1,11 @@
+## V241 - Accetta utenti stabile
+
+- Corretto il flusso Admin -> Accetta utenti: gli utenti rifiutati non vengono piu' cancellati da `pendingUsers`, ma marcati `REJECTED` con metadati di rifiuto.
+- Impedita la rigenerazione automatica di richieste `PENDING` per utenti gia' approvati in `teamUsers`, anche dopo login Google.
+- Il pannello Accetta utenti nasconde eventuali vecchi duplicati pending relativi a UID gia' approvati e mostra solo richieste realmente in attesa.
+- Aggiornati footer/cache-buster/diagnostica a V241.
+- `FUNZIONALITA'.md` non modificato: resta aggiornabile solo su richiesta esplicita.
+
 ## V240 - Sync live trattative presidente
 
 - Corretto il loader lazy del fantamercato: `force: true` ora ricarica davvero `transferListings` e `transferNegotiations` anche se erano gia' state caricate.

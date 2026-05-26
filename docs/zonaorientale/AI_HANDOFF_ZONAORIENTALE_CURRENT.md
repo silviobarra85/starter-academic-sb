@@ -1,10 +1,10 @@
-# AI Handoff ZonaOrientale - Current V240
+# AI Handoff ZonaOrientale - Current V241
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V240**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header e V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V241**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, e V241 con flusso Accetta utenti stabile anti-duplicati.
 
 ## Posizione e struttura progetto
 
@@ -58,6 +58,11 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+
+## V241 - Accetta utenti stabile
+
+V241 corregge la ricomparsa periodica in Admin -> Accetta utenti di account gia' approvati o gia' rifiutati. Il rifiuto non cancella piu' `pendingUsers/{uid}`: imposta `status: REJECTED`, con metadati `rejectedAt/rejectedBy`, cosi' lo stesso login non puo' rigenerare una nuova richiesta. Inoltre `upsertPendingUserV34` non riscrive piu' come `PENDING` un utente gia' presente in `teamUsers`, e il pannello admin nasconde eventuali vecchi duplicati pending di utenti gia' approvati. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
 
 ## V240 - Sync live trattative presidente
 
@@ -192,17 +197,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V240 sync trattative live**.
+Versione sito: **V241 accetta utenti stabile**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V240 sync trattative live · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V241 accetta utenti stabile · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=240`.
+Cache-buster HTML principali attesi: `?v=241`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `240`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `241`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

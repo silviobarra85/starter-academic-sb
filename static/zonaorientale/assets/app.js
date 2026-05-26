@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=240";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=241";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=240";
+} from "./js/domain/news-share-v228.js?v=241";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=240";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=241";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=240";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=241";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "240";
+const DEPLOY_EXPECTED_VERSION_V181 = "241";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V240",
+  version: "V241",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -19500,6 +19500,192 @@ window.addEventListener("load", () => {
     if (isPresidentTeamAreaActiveV240()) schedulePresidentTradeListRefreshV240("teamarea-load", { immediate: true });
   }, 900);
 });
+
+
+/* V241 - Accetta utenti: rifiuto persistente e anti-duplicati approvati.
+   - Un utente rifiutato resta in pendingUsers con status REJECTED, cosi' il login non rigenera una nuova richiesta.
+   - Un utente gia' presente in teamUsers non viene piu' riscritto come PENDING dal login Google/email.
+   - La lista Admin mostra come richieste solo utenti realmente in attesa, escludendo eventuali vecchi duplicati pendingUsers per uid gia' approvati. */
+function isActiveApprovedTeamUserV241(uid) {
+  if (!uid) return false;
+  const teamUser = (state.raw?.teamUsers || []).find((item) => String(item?.id || "") === String(uid));
+  if (!teamUser) return false;
+  const status = normalizeUserApprovalStatusV138?.(teamUser.status || "ACTIVE") || String(teamUser.status || "ACTIVE").toUpperCase();
+  return status !== "DISABLED" && status !== "REJECTED";
+}
+
+function isTerminalPendingUserStatusV241(status) {
+  const normalized = normalizeUserApprovalStatusV138?.(status) || String(status || "").trim().toUpperCase();
+  return normalized === "APPROVED" || isRejectedUserApprovalV138?.({ status: normalized });
+}
+
+async function getOwnTeamUserSnapshotV241(user) {
+  if (!user?.uid) return null;
+  try {
+    const snap = await getDoc(doc(db, "teamUsers", user.uid));
+    return snap?.exists?.() ? snap : null;
+  } catch (error) {
+    if (error?.code !== "permission-denied") console.warn("Controllo teamUsers utente non riuscito", error);
+    return null;
+  }
+}
+
+async function getOwnPendingUserSnapshotV241(user) {
+  if (!user?.uid) return null;
+  try {
+    const snap = await getDoc(doc(db, "pendingUsers", user.uid));
+    return snap?.exists?.() ? snap : null;
+  } catch (error) {
+    if (error?.code !== "permission-denied") console.warn("Controllo pendingUsers utente non riuscito", error);
+    return null;
+  }
+}
+
+upsertPendingUserV34 = async function upsertPendingUserV241(user, status = "PENDING") {
+  if (!user?.uid) return;
+
+  const teamSnapshot = await getOwnTeamUserSnapshotV241(user);
+  if (teamSnapshot?.exists?.()) {
+    const teamData = { id: teamSnapshot.id, ...teamSnapshot.data() };
+    const teamStatus = normalizeUserApprovalStatusV138?.(teamData.status || "ACTIVE") || String(teamData.status || "ACTIVE").toUpperCase();
+    if (teamStatus !== "DISABLED") {
+      state.currentTeamUser = teamData;
+      return;
+    }
+  }
+
+  const existing = await getOwnPendingUserSnapshotV241(user);
+  if (existing?.exists?.()) {
+    const existingData = { id: existing.id, ...existing.data() };
+    const existingStatus = normalizeUserApprovalStatusV138?.(existingData.status) || String(existingData.status || "").trim().toUpperCase();
+    if (isTerminalPendingUserStatusV241(existingStatus)) {
+      state.currentPendingUser = existingData;
+      return;
+    }
+    if (existingStatus === "PENDING" && status === "EMAIL_NOT_VERIFIED") {
+      state.currentPendingUser = existingData;
+      return;
+    }
+  }
+
+  const payload = {
+    email: user.email || "",
+    displayName: user.displayName || document.getElementById("registerDisplayName")?.value.trim() || user.email || "",
+    status,
+    providerIds: (user.providerData || []).map((provider) => provider.providerId),
+    emailVerified: Boolean(user.emailVerified),
+    updatedAt: serverTimestamp()
+  };
+  if (!existing?.exists?.()) payload.createdAt = serverTimestamp();
+  await setDoc(doc(db, "pendingUsers", user.uid), payload, { merge: true });
+  state.currentPendingUser = { id: user.uid, ...payload, updatedAt: new Date().toISOString() };
+};
+
+function getPendingUsersForAdminV241() {
+  const approvedUids = new Set((state.raw?.teamUsers || [])
+    .filter((item) => {
+      const status = normalizeUserApprovalStatusV138?.(item.status || "ACTIVE") || String(item.status || "ACTIVE").toUpperCase();
+      return status !== "DISABLED";
+    })
+    .map((item) => String(item.id || ""))
+    .filter(Boolean));
+  return (state.raw?.pendingUsers || []).filter((item) => {
+    const uid = String(item?.id || "");
+    if (!uid) return false;
+    if (approvedUids.has(uid)) return false;
+    return isPendingUserApprovalV138?.(item) && !isRejectedUserApprovalV138?.(item);
+  });
+}
+
+renderPendingUsersAdminPanelV34 = function renderPendingUsersAdminPanelV241() {
+  const allPendingUsers = state.raw.pendingUsers || [];
+  const pending = getPendingUsersForAdminV241();
+  const rejectedCount = allPendingUsers.filter((item) => isRejectedUserApprovalV138?.(item)).length;
+  const hiddenApprovedDuplicates = allPendingUsers.filter((item) => isPendingUserApprovalV138?.(item) && isActiveApprovedTeamUserV241(item.id)).length;
+  const approved = buildApprovedAdminUsersV138(allPendingUsers, state.raw.teamUsers || []);
+  const approvedCount = approved.length;
+
+  const presidentOptions = state.raw.presidents.map((president) => `<option value="${escapeHtml(president.id)}">${escapeHtml(president.name || president.id)}</option>`).join("");
+  const teamOptions = state.raw.teams.map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(team.canonicalName || team.id)}</option>`).join("");
+  const seasonTeamOptions = state.raw.seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.seasonId)} · ${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("");
+  const rows = pending.map((user) => `
+    <div class="admin-list-item admin-user-approval-item">
+      <span>
+        <strong>${escapeHtml(user.displayName || user.email || user.id)}</strong>
+        <small>${escapeHtml(user.email || "")} · ${escapeHtml(requestStatusLabel(user.status || "PENDING"))}</small>
+      </span>
+      <span class="admin-approval-controls">
+        <select class="input" id="approvePresident_${escapeHtml(user.id)}"><option value="">Presidente...</option>${presidentOptions}</select>
+        <select class="input" id="approveTeam_${escapeHtml(user.id)}"><option value="">Squadra madre...</option>${teamOptions}</select>
+        <select class="input" id="approveSeasonTeam_${escapeHtml(user.id)}"><option value="">Rosa/stagione...</option>${seasonTeamOptions}</select>
+        <button class="button button-primary button-small" type="button" data-approve-user="${escapeHtml(user.id)}">Approva</button>
+        <button class="button button-danger button-small" type="button" data-reject-user="${escapeHtml(user.id)}">Rifiuta</button>
+      </span>
+    </div>`).join("") || `<p class="muted admin-empty-message">Nessun utente in attesa.</p>`;
+  const approvedRows = approved.map(renderApprovedAdminUserRowV138).join("") || `<p class="muted admin-empty-message">Nessun utente approvato.</p>`;
+  const hygieneNotes = [
+    rejectedCount ? `${rejectedCount} rifiutat${rejectedCount === 1 ? "o" : "i"} conservat${rejectedCount === 1 ? "o" : "i"} come storico anti-rigenerazione` : "",
+    hiddenApprovedDuplicates ? `${hiddenApprovedDuplicates} vecchi duplicat${hiddenApprovedDuplicates === 1 ? "o" : "i"} pending gia' approvat${hiddenApprovedDuplicates === 1 ? "o" : "i"} nascost${hiddenApprovedDuplicates === 1 ? "o" : "i"}` : ""
+  ].filter(Boolean).join(" · ");
+
+  return renderAdminPanel("adminPendingUsersPanel", "Utenti", "Accetta utenti", `Approva i presidenti registrati e associali alla squadra/rosa corretta. Presidenti gia accettati: ${approvedCount}.`, `
+    <div class="admin-subsection-block admin-user-requests-block">
+      <div class="admin-subsection-headerline">
+        <h3>Richieste in attesa</h3>
+        <span class="status status-muted">${pending.length}</span>
+      </div>
+      <p class="muted">Da V241 il rifiuto non cancella piu' il documento: lo conserva come <code>REJECTED</code>, cosi' lo stesso login non ricrea una nuova richiesta.</p>
+      ${hygieneNotes ? `<p class="muted">${escapeHtml(hygieneNotes)}.</p>` : ""}
+      <div class="admin-list">${rows}</div>
+    </div>
+    <div class="admin-subsection-block admin-user-approved-block">
+      <div class="admin-subsection-headerline">
+        <h3>Accessi approvati</h3>
+        <span class="status status-success">${approvedCount}</span>
+      </div>
+      <p class="muted">Presidenti gia registrati e accettati. Eventuali vecchie richieste pendenti con lo stesso UID non vengono piu' mostrate tra le richieste.</p>
+      <div class="admin-list">${approvedRows}</div>
+    </div>`);
+};
+
+rejectPendingUserV34 = async function rejectPendingUserV241(uid) {
+  if (!uid) return;
+  const user = (state.raw.pendingUsers || []).find((item) => item.id === uid);
+  const label = user?.displayName || user?.email || uid;
+  if (!window.confirm(`Rifiutare l'accesso di ${label}? La richiesta restera' in Firebase come REJECTED per evitare che venga rigenerata al prossimo login.`)) return;
+  try {
+    await setDoc(doc(db, "pendingUsers", uid), {
+      status: "REJECTED",
+      rejectedAt: serverTimestamp(),
+      rejectedBy: state.user?.uid || "",
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+    state.raw.pendingUsers = (state.raw.pendingUsers || []).map((item) => (
+      item.id === uid ? { ...item, status: "REJECTED", rejectedBy: state.user?.uid || "" } : item
+    ));
+    renderAdminArea();
+    expandAdminPanel("adminPendingUsersPanel");
+    await loadAdminUserCollectionsV175?.({ render: true, expandPanelId: "adminPendingUsersPanel" });
+  } catch (error) {
+    console.error("Errore rifiuto richiesta utente", error);
+    setError?.(`Non riesco a rifiutare la richiesta utente. ${error?.message || error}`);
+  }
+};
+
+const renderUserAreaBeforeV241 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV241() {
+  const result = renderUserAreaBeforeV241?.();
+  const status = normalizeUserApprovalStatusV138?.(state.currentPendingUser?.status || "") || "";
+  if (!state.currentTeamUser && status && isRejectedUserApprovalV138?.({ status })) {
+    const body = document.getElementById("teamAreaBody");
+    const panel = body?.querySelector?.("section.panel");
+    if (panel) {
+      const text = panel.querySelector("p.muted:last-child");
+      if (text) text.textContent = "La richiesta di accesso e' stata rifiutata. Contatta l'admin se pensi sia un errore.";
+    }
+  }
+  return result;
+};
 
 
 /* V209 - Final startup remains centralized here. */

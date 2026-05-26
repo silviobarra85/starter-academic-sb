@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V240.
+Stato: V241.
 
 ## Regola d'oro dati
 
@@ -330,3 +330,6 @@ Dopo deploy o test locale:
 5. Logout e verificare ritorno del pulsante `Accedi / Registrati`.
 6. Login admin e verificare che la navigazione Admin non cambi.
 ```
+
+
+Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra i duplicati di utenti gia approvati, evitando ricomparse non volute in Admin.

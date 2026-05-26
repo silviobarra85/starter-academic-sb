@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V240.
+Stato: V241.
 
 ## Tipo applicazione
 
@@ -483,3 +483,6 @@ https://silviobarra.com/zonaorientale/share/news/<id-comunicato>
 La funzione `netlify/functions/news-share.js` legge il documento `news/<id>` da Firestore tramite REST API pubblica, costruisce un HTML con tag Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) e poi reindirizza il browser alla news nella webapp (`/zonaorientale/#news-<id>`).
 
 Questo sostituisce il flusso V228/V230 con `tools/generate-news-share-pages.mjs` e `comunicati/*.html`, che resta legacy ma non deve piu' essere usato per nuovi comunicati.
+
+
+Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra i duplicati di utenti gia approvati, evitando ricomparse non volute in Admin.

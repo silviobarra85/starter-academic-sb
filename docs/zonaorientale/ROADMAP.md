@@ -248,3 +248,6 @@ V239 completata: corretto il comunicato avvenuto scambio presidente con richiest
 
 
 V240 completata: corretto il sync live delle trattative presidente tra badge, dashboard desktop e mobile. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.
+
+
+V241 completata: stabilizzato il flusso Accetta utenti con rifiuto persistente, blocco rigenerazione pending e filtro duplicati gia approvati. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.
