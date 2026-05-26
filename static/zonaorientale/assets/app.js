@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=236";
+} from "./js/domain/news-share-v228.js?v=237";
 import {
   getListoneValue,
   compareListoneValues
@@ -140,11 +140,11 @@ import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshot
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
 import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=236";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=237";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=236";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=237";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "236";
+const DEPLOY_EXPECTED_VERSION_V181 = "237";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V236",
+  version: "V237",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -18836,26 +18836,29 @@ window.addEventListener("hashchange", () => {
 });
 
 
-/* V236 - Ripristino comunicato avvenuto scambio presidente.
-   Il refactor V119 dell'area presidente aveva scollegato il form storico V50/V79.
-   Questa patch reinserisce il secondo tipo di comunicato nella Dashboard Presidente:
-   pubblicazione immediata in News + invio EmailJS a caparrotti86@yahoo.it. */
-function renderTransferCommunicationPanelV236() {
+/* V237 - Hotfix comunicato avvenuto scambio presidente.
+   Le regole Firestore attuali consentono ai presidenti approvati di creare
+   documenti in teamRequests, ma la collection news e' scrivibile solo dagli admin.
+   V236 provava a pubblicare direttamente in news e quindi poteva generare
+   permission-denied. V237 registra il comunicato come richiesta approvabile,
+   invia comunque la mail EmailJS alla lega e aggiorna l'Admin affinche' possa
+   approvare anche i comunicati di avvenuto scambio pubblicandoli in News. */
+function renderTransferCommunicationPanelV237() {
   return `
     <section id="teamTransferCommunicationPanelV236" class="panel team-transfer-communication-panel-v236">
-      <div class="panel-header compact"><div><h2>Comunicato avvenuto scambio</h2><p>Pubblica subito il comunicato in News e invia una email alla lega. Non serve approvazione admin.</p></div></div>
-      <form id="teamTransferCommunicationFormV50" class="form-grid" data-v236-direct-publish="1">
+      <div class="panel-header compact"><div><h2>Comunicato avvenuto scambio</h2><p>Invia la comunicazione alla lega via email e crea la richiesta di pubblicazione in News.</p></div></div>
+      <form id="teamTransferCommunicationFormV50" class="form-grid" data-v237-request-publish="1">
         <label class="span-2">Titolo<input id="teamTransferTitleV50" class="input" type="text" value="Comunicato avvenuto scambio" required /></label>
         <label class="span-2">Testo comunicato<textarea id="teamTransferBodyV50" class="input textarea" rows="5" required></textarea></label>
         <label>Giocatori coinvolti <span class="muted">(opzionale)</span><input id="teamTransferPlayersV50" class="input" type="text" placeholder="Es. Rossi, Bianchi, 10 FM" /></label>
         <label>Squadra coinvolta <span class="muted">(opzionale)</span><input id="teamTransferOtherTeamV50" class="input" type="text" placeholder="Es. Olympic Salerno FC" /></label>
         <div class="form-actions span-2"><button class="button button-primary" type="submit">Invia comunicato di scambio</button><span id="teamTransferStatusV50" class="form-status"></span></div>
       </form>
-      <small class="field-hint">Il comunicato viene pubblicato direttamente nelle News e la mail viene inviata a caparrotti86@yahoo.it con oggetto: Comunicato avvenuto scambio NOME_SQUADRA.</small>
+      <small class="field-hint">La richiesta viene registrata per l'Admin; la mail viene inviata subito a caparrotti86@yahoo.it con oggetto: Comunicato avvenuto scambio NOME_SQUADRA.</small>
     </section>`;
 }
 
-function formatTransferCommunicationEmailMessageV236(payload = {}) {
+function formatTransferCommunicationEmailMessageV237(payload = {}) {
   const rows = [];
   const title = String(payload.title || "Comunicato avvenuto scambio").trim();
   const body = String(payload.body || payload.message || "").trim();
@@ -18868,7 +18871,7 @@ function formatTransferCommunicationEmailMessageV236(payload = {}) {
   return rows.join("\n").trim() || "Comunicato avvenuto scambio.";
 }
 
-async function sendTransferCommunicationEmailV236(payload) {
+async function sendTransferCommunicationEmailV237(payload) {
   const emailModule = await import("./emailjs.js");
   const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
   await emailModule.sendTransferEmail({
@@ -18876,7 +18879,7 @@ async function sendTransferCommunicationEmailV236(payload) {
     team_name: teamName,
     president_name: payload.createdByName || getCurrentUserDisplayName(),
     title: payload.title || "Comunicato avvenuto scambio",
-    message: formatTransferCommunicationEmailMessageV236(payload),
+    message: formatTransferCommunicationEmailMessageV237(payload),
     players: payload.players || "",
     other_team: payload.otherTeam || "",
     created_at: new Date().toLocaleString("it-IT"),
@@ -18884,44 +18887,69 @@ async function sendTransferCommunicationEmailV236(payload) {
   });
 }
 
-function buildTransferCommunicationPayloadV236() {
+function buildTransferCommunicationPayloadV237() {
   const base = buildBaseTeamRequestPayloadV34("TRANSFER_NEWS");
+  const title = document.getElementById("teamTransferTitleV50")?.value?.trim() || "Comunicato avvenuto scambio";
+  const body = document.getElementById("teamTransferBodyV50")?.value || "";
+  const players = document.getElementById("teamTransferPlayersV50")?.value?.trim() || "";
+  const otherTeam = document.getElementById("teamTransferOtherTeamV50")?.value?.trim() || "";
   return {
-    title: document.getElementById("teamTransferTitleV50")?.value.trim() || "Comunicato avvenuto scambio",
-    body: document.getElementById("teamTransferBodyV50")?.value || "",
+    ...base,
+    title,
+    body,
     topic: "COMUNICATO_AVVENUTO_SCAMBIO",
     type: "TRANSFER_NEWS",
+    status: "PENDING",
     seasonId: base.seasonId || getCurrentSeasonId(),
     teamId: base.teamId || "",
     seasonTeamId: base.seasonTeamId || "",
     teamName: base.teamName || getSeasonTeamDisplayName(base.seasonTeamId) || "",
     authorUid: base.createdBy || state.user?.uid || "",
     createdByName: base.createdByName || getCurrentUserDisplayName(),
-    players: document.getElementById("teamTransferPlayersV50")?.value.trim() || "",
-    otherTeam: document.getElementById("teamTransferOtherTeamV50")?.value.trim() || "",
-    publishedAt: getNowLocalDateTimeInputValueV79(),
+    players,
+    otherTeam,
+    emailRecipient: "caparrotti86@yahoo.it",
+    requestedPublication: true,
+    requestedAt: serverTimestamp(),
     createdAt: serverTimestamp(),
     createdBy: state.user?.uid || ""
   };
 }
 
-function attachTransferCommunicationHandlerV236() {
+function buildTransferNewsFromRequestV237(request = {}) {
+  return {
+    title: request.title || "Comunicato avvenuto scambio",
+    body: request.body || request.message || "",
+    topic: "COMUNICATO_AVVENUTO_SCAMBIO",
+    seasonId: request.seasonId || getCurrentSeasonId(),
+    teamId: request.teamId || "",
+    seasonTeamId: request.seasonTeamId || "",
+    authorUid: request.createdBy || request.authorUid || "",
+    createdByName: request.createdByName || "",
+    players: request.players || "",
+    otherTeam: request.otherTeam || request.other_team || "",
+    publishedAt: getNowLocalDateTimeInputValueV79(),
+    createdAt: serverTimestamp()
+  };
+}
+
+function attachTransferCommunicationHandlerV237() {
   const form = document.getElementById("teamTransferCommunicationFormV50");
-  if (!form || form.dataset.v236Handler === "1") return;
-  form.dataset.v236Handler = "1";
+  if (!form || form.dataset.v237Handler === "1") return;
+  form.dataset.v237Handler = "1";
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     try {
-      showMessage("teamTransferStatusV50", "Pubblicazione comunicato in corso...");
-      const payload = buildTransferCommunicationPayloadV236();
-      await addDoc(collection(db, "news"), payload);
-      let finalMessage = "Comunicato pubblicato nelle News ed email inviata alla lega.";
+      showMessage("teamTransferStatusV50", "Registrazione comunicato e invio email in corso...");
+      const payload = buildTransferCommunicationPayloadV237();
+      await addDoc(collection(db, "teamRequests"), payload);
+      let finalMessage = "Comunicato registrato per l'Admin ed email inviata alla lega.";
       let finalMessageIsError = false;
       try {
-        await sendTransferCommunicationEmailV236(payload);
+        await sendTransferCommunicationEmailV237(payload);
       } catch (emailError) {
         console.error(emailError);
-        finalMessage = `Comunicato pubblicato nelle News, ma email non inviata: ${emailError?.message || "errore EmailJS"}`;
+        finalMessage = `Comunicato registrato per l'Admin, ma email non inviata: ${emailError?.message || "errore EmailJS"}`;
         finalMessageIsError = true;
       }
       form.reset();
@@ -18931,21 +18959,21 @@ function attachTransferCommunicationHandlerV236() {
       showMessage("teamTransferStatusV50", finalMessage, finalMessageIsError);
     } catch (error) {
       console.error(error);
-      showMessage("teamTransferStatusV50", error?.message || "Errore durante pubblicazione comunicato.", true);
+      showMessage("teamTransferStatusV50", error?.message || "Errore durante registrazione comunicato.", true);
     }
   });
 }
 
-function enhanceTransferCommunicationPresidentAreaV236() {
+function enhanceTransferCommunicationPresidentAreaV237() {
   const target = document.getElementById("teamAreaBody");
   const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
   if (!target || !state.user || !approved?.seasonTeamId) return;
   if (!document.getElementById("teamTransferCommunicationFormV50")) {
     const newsPanel = document.getElementById("teamNewsRequestForm")?.closest("section, article");
-    if (newsPanel) newsPanel.insertAdjacentHTML("afterend", renderTransferCommunicationPanelV236());
-    else target.insertAdjacentHTML("beforeend", renderTransferCommunicationPanelV236());
+    if (newsPanel) newsPanel.insertAdjacentHTML("afterend", renderTransferCommunicationPanelV237());
+    else target.insertAdjacentHTML("beforeend", renderTransferCommunicationPanelV237());
   }
-  attachTransferCommunicationHandlerV236();
+  attachTransferCommunicationHandlerV237();
 
   const mobileActions = document.querySelector("#mobileTeamAreaHubV144 .mobile-teamarea-actions-v144");
   if (mobileActions && !mobileActions.querySelector('[data-mobile-teamarea-scroll="#teamTransferCommunicationFormV50"]')) {
@@ -18953,24 +18981,60 @@ function enhanceTransferCommunicationPresidentAreaV236() {
   }
 }
 
-const renderUserAreaBeforeV236 = renderUserAreaV34;
-renderUserAreaV34 = function renderUserAreaV236() {
-  const result = renderUserAreaBeforeV236?.();
-  enhanceTransferCommunicationPresidentAreaV236();
+const renderUserAreaBeforeV237 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV237() {
+  const result = renderUserAreaBeforeV237?.();
+  enhanceTransferCommunicationPresidentAreaV237();
   return result;
 };
 
-const renderAllBeforeV236 = renderAll;
-renderAll = function renderAllV236() {
-  const result = renderAllBeforeV236?.();
-  enhanceTransferCommunicationPresidentAreaV236();
+const renderAllBeforeV237 = renderAll;
+renderAll = function renderAllV237() {
+  const result = renderAllBeforeV237?.();
+  enhanceTransferCommunicationPresidentAreaV237();
   return result;
 };
+
+const approveTeamRequestBeforeV237 = approveTeamRequestV34;
+approveTeamRequestV34 = async function approveTeamRequestV237(requestId) {
+  const request = state.raw.teamRequests.find((item) => item.id === requestId);
+  if (!request || request.type !== "TRANSFER_NEWS") {
+    return approveTeamRequestBeforeV237?.(requestId);
+  }
+  await addDoc(collection(db, "news"), buildTransferNewsFromRequestV237(request));
+  await setDoc(doc(db, "teamRequests", requestId), {
+    status: "APPROVED",
+    approvedAt: serverTimestamp(),
+    approvedBy: state.user?.uid || "",
+    publishedToNews: true
+  }, { merge: true });
+  await loadFullDataV32({ render: true });
+  expandAdminPanel("adminTeamRequestsPanel");
+};
+
+if (typeof renderTeamRequestsAdminPanelV34 === "function") {
+  renderTeamRequestsAdminPanelV34 = function renderTeamRequestsAdminPanelV237() {
+    const requests = (state.raw.teamRequests || [])
+      .sort((a, b) => String(b.createdAt || b.requestedAt || "").localeCompare(String(a.createdAt || a.requestedAt || "")));
+    const rows = requests.map((request) => `
+      <div class="admin-list-item">
+        <span>
+          <strong>${escapeHtml(requestTypeLabel(request.type))} · ${escapeHtml(getSeasonTeamDisplayName(request.seasonTeamId))}</strong>
+          <small>${escapeHtml(request.createdByName || request.createdByEmail || request.createdBy || "")} · ${escapeHtml(requestStatusLabel(request.status))}</small>
+          <small>${escapeHtml(request.title || request.playerName || request.description || request.body || request.notes || "")}</small>
+        </span>
+        <span>
+          ${request.status === "PENDING" ? `<button class="button button-primary button-small" type="button" data-approve-request="${escapeHtml(request.id)}">Approva</button><button class="button button-danger button-small" type="button" data-reject-request="${escapeHtml(request.id)}">Rifiuta</button>` : `<span class="status status-muted">${escapeHtml(requestStatusLabel(request.status))}</span>`}
+        </span>
+      </div>`).join("") || `<p class="muted admin-empty-message">Nessuna richiesta presidente.</p>`;
+    return renderAdminPanel("adminTeamRequestsPanel", "Presidenti", "Richieste presidenti", "Approva o rifiuta movimenti, acquisti, svincoli, comunicati squadra e comunicati di avvenuto scambio.", `<div class="admin-list">${rows}</div>`);
+  };
+}
 
 if (typeof getNewsTopicTextV79 === "function") {
-  const getNewsTopicTextBeforeV236 = getNewsTopicTextV79;
-  getNewsTopicTextV79 = function getNewsTopicTextV236(news) {
-    return news?.topic === "COMUNICATO_AVVENUTO_SCAMBIO" ? "Comunicato avvenuto scambio" : getNewsTopicTextBeforeV236(news);
+  const getNewsTopicTextBeforeV237 = getNewsTopicTextV79;
+  getNewsTopicTextV79 = function getNewsTopicTextV237(news) {
+    return news?.topic === "COMUNICATO_AVVENUTO_SCAMBIO" ? "Comunicato avvenuto scambio" : getNewsTopicTextBeforeV237(news);
   };
 }
 
