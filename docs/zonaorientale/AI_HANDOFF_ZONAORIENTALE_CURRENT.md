@@ -1,11 +1,27 @@
-# AI Handoff ZonaOrientale - Current V249
+# AI Handoff ZonaOrientale - Current V253
 
-Ultimo aggiornamento documentale: 26/05/2026.
+
+## Nota V253 - Estrazione modulare Richieste presidenti
+
+V253 e' il primo estratto modulare prudente da `assets/app.js`: il pannello `Admin -> Richieste presidenti` viene installato da `assets/js/admin/team-requests-panel-v253.js`. Il blocco inline V249 resta come fallback, ma il comportamento canonico usa attributi V253 e diagnostica `window.ZonaOrientaleTeamRequestsV253`. Funzionalita preservate: Aggiorna richieste, Approva, Rifiuta, Elimina da Firebase per comunicati approvati/rifiutati. `FUNZIONALITA'.md` non e' stato modificato.
+
+## Nota V252 - Pulizia asset inutilizzati
+
+V252 e' una release di cleanup controllato: aggiunge `.gitignore` locale in `static/zonaorientale/`, marca come rimovibili i metadati macOS (`.DS_Store`, `__MACOSX`, `._*`) e i CSS `mobile-hotfix-v166.css`/`mobile-hotfix-v167.css`, gia inglobati in `mobile-suite-v168.css` e non referenziati dagli HTML. Diagnostica runtime: `window.ZonaOrientaleCleanupV252`. Le eliminazioni fisiche vanno eseguite con i comandi `git rm` della consegna V252.
+Ultimo aggiornamento documentale: 27/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V249**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V253**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati e V253 con estrazione modulare di Admin -> Richieste presidenti.
 
+
+## Nota V251 - Workflow pubblicazione Admin ripristinato
+
+In V251 il workflow pubblicazione inline V190/V191/V203 viene reso canonico senza reimportare il modulo esterno V213, evitando doppi listener. Restano attivi i pannelli Admin `Stato Firebase / JSON` e `Procedura guidata Pubblica aggiornamenti`. Il workflow non scrive su Firebase: legge preflight asset pubblici, promemoria locali e modalita admin, genera checklist e comandi Git copiabili. Diagnostica disponibile: `window.ZonaOrientalePublicationWorkflowV251`, oltre a `window.ZonaOrientalePublicationStatus` e `window.ZonaOrientalePublishWizard`.
+
+## Nota V250 - Generatore comunicati automatici ripristinato
+
+Il modulo `assets/js/refactor/admin-communication-generator-v210.js` era importato ma non installato. In V250 viene collegato esplicitamente all'area Admin tramite `installCommunicationGeneratorRefactorV210`. Il generatore prepara solo bozze locali: puo' copiare il testo o inserirlo nel form `Admin -> Comunicati`, ma non scrive direttamente su Firebase e non pubblica automaticamente news. Diagnostica disponibile: `window.ZonaOrientaleCommunicationGeneratorV250`.
 
 ## Nota V249 - Richieste presidenti canoniche
 
@@ -239,7 +255,7 @@ ZonaOrientale Salerno · V248 pulizia handler legacy · Ultimo aggiornamento 26/
 
 Cache-buster HTML principali attesi: `?v=248`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `248`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `253`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

@@ -1,3 +1,39 @@
+## V253 - Estrazione modulare Richieste presidenti Admin
+
+- Aggiunto modulo `assets/js/admin/team-requests-panel-v253.js` per installare il pannello `Admin -> Richieste presidenti` fuori da `assets/app.js`.
+- Preservate le funzionalita gia testate: Aggiorna richieste, Approva, Rifiuta, Elimina da Firebase per comunicati approvati/rifiutati.
+- Il blocco inline V249 resta disponibile come fallback, ma il render canonico usa attributi V253 per evitare doppi handler legacy.
+- Aggiunta diagnostica runtime `window.ZonaOrientaleTeamRequestsV253`.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V253.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V252 - Pulizia asset inutilizzati e file locali
+- Aggiunta `.gitignore` locale in `static/zonaorientale/` per impedire nuovi commit di `.DS_Store`, `__MACOSX` e AppleDouble `._*`.
+- Confermati come rimovibili `assets/css/mobile-hotfix-v166.css` e `assets/css/mobile-hotfix-v167.css`, perche non linkati dagli HTML e gia inglobati in `assets/css/mobile-suite-v168.css`.
+- Aggiunta diagnostica runtime `window.ZonaOrientaleCleanupV252`.
+- Nessuna modifica funzionale a pubblico, presidente o admin; cleanup controllato con rimozioni da fare via `git rm`.
+- Aggiornati footer/cache-buster/diagnostica a V252.
+
+## V251 - Workflow pubblicazione Admin ripristinato
+
+- Consolidato il workflow pubblicazione inline V190/V191/V203 come versione canonica, senza reimportare il modulo esterno V213.
+- Restano operativi e canonici i pannelli Admin `Stato Firebase / JSON` e `Procedura guidata Pubblica aggiornamenti`.
+- Il workflow resta zero-scrittura Firebase: controlla asset pubblici, promemoria locali, modalita admin e prepara comandi/checklist per pubblicazione.
+- Aggiornati i comandi suggeriti dal wizard, rimuovendo il vecchio riferimento al branch `feature/zonaorientale-v187-next`.
+- Aggiunta diagnostica `window.ZonaOrientalePublicationWorkflowV251`.
+- Aggiornati footer/cache-buster/diagnostica a V251.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V250 - Generatore comunicati automatici ripristinato
+
+- Ripristinato il modulo `admin-communication-generator-v210.js`, che era importato ma non installato.
+- Il generatore torna visibile in Admin e prepara bozze per risultati, vincitori competizione, mercato, focus squadra, Albo/Palmares e aggiornamento dati pubblici.
+- Il flusso resta sicuro: nessuna scrittura diretta su Firebase; la bozza puo' essere copiata oppure inserita nel form `Admin -> Comunicati` per revisione e salvataggio manuale.
+- Aggiunto collegamento esplicito a `expandAdminPanel` per aprire correttamente il pannello Comunicati quando si usa `Inserisci nei Comunicati`.
+- Aggiunta diagnostica `window.ZonaOrientaleCommunicationGeneratorV250`.
+- Aggiornati footer/cache-buster/diagnostica a V250.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V249 - Richieste presidenti canoniche
 
 - Consolidato `Admin -> Richieste presidenti` in un unico pannello canonico, superando le sovrapposizioni V243/V244/V245.

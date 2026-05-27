@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V249.
+Stato: V253.
 
 ## Tipo applicazione
 
@@ -38,11 +38,9 @@ assets/css/transfer-market-v130.css
 assets/css/competition-detail-v130.css
 assets/css/mobile-suite-v168.css
 assets/css/mobile-chrome-v223.css
-assets/css/mobile-hotfix-v166.css
-assets/css/mobile-hotfix-v167.css
 ```
 
-La UI mobile e' stata stratificata da molte versioni: prima di cambiare un componente mobile controllare sia `styles.css` sia `mobile-suite-v168.css`.
+La UI mobile e' stata stratificata da molte versioni: prima di cambiare un componente mobile controllare sia `styles.css` sia `mobile-suite-v168.css`. I vecchi `mobile-hotfix-v166.css` e `mobile-hotfix-v167.css` sono stati inglobati in `mobile-suite-v168.css` e in V252 sono marcati per rimozione dalla repo.
 
 ## Moduli JavaScript principali
 
@@ -508,3 +506,38 @@ Aggiunto guard runtime per neutralizzare vecchi handler comunicato scambio V50/V
 ### Admin Richieste presidenti V249
 
 Il pannello `Admin -> Richieste presidenti` e' consolidato in un render canonico V249. Il flusso supporta refresh esplicito da Firebase, approvazione/rifiuto delle richieste pendenti e cancellazione da `teamRequests/{id}` dei soli comunicati approvati o rifiutati.
+
+
+### Admin Generatore comunicati automatici V250
+
+Il generatore comunicati automatici e' installato in V250 dal modulo `assets/js/refactor/admin-communication-generator-v210.js?v=250`. Il pannello compare in area Admin e usa i dati gia' caricati in `state.raw` per preparare bozze di comunicato su risultati, vincitori, mercato, focus squadra, Albo/Palmares e aggiornamenti dati pubblici.
+
+Il generatore non effettua scritture Firebase: permette di copiare la bozza oppure inserirla nel form `Admin -> Comunicati`, dove l'admin puo' revisionare e salvare manualmente. Diagnostica runtime: `window.ZonaOrientaleCommunicationGeneratorV250`.
+
+### Workflow pubblicazione Admin V251
+
+In V251 il workflow pubblicazione inline V190/V191/V203 viene consolidato come versione canonica. Il modulo esterno `assets/js/refactor/admin-publication-workflow-v213.js` resta non importato per evitare doppi listener; il workflow canonico espone in Admin:
+
+- `Stato Firebase / JSON`: semafori per asset statici, promemoria pendenti, modalita admin e letture Firebase stimate;
+- `Procedura guidata Pubblica aggiornamenti`: checklist operativa con promemoria, preflight e comandi Git copiabili.
+
+Il workflow non effettua scritture Firebase e non modifica dati: lavora su sessionStorage/localStorage, helper di preflight pubblici e stato runtime. In V251 sono stati aggiornati i comandi del wizard rimuovendo riferimenti a branch storici. Diagnostica runtime: `window.ZonaOrientalePublicationWorkflowV251`, `window.ZonaOrientalePublicationStatus`, `window.ZonaOrientalePublishWizard`.
+## Pulizia asset V252
+
+La V252 non cambia il comportamento runtime del sito. Introduce una pulizia controllata per evitare che file locali o legacy entrino nella repo:
+
+- `.DS_Store`, `__MACOSX` e file AppleDouble `._*` sono ignorati da `static/zonaorientale/.gitignore`;
+- `assets/css/mobile-hotfix-v166.css` e `assets/css/mobile-hotfix-v167.css` sono candidati alla rimozione, perche non linkati dagli HTML e gia inglobati in `assets/css/mobile-suite-v168.css`;
+- la diagnostica `window.ZonaOrientaleCleanupV252` conferma che la release e' di solo cleanup.
+
+
+
+## Modulo Admin Richieste presidenti V253
+
+Da V253 il pannello `Admin -> Richieste presidenti` ha un modulo dedicato:
+
+```text
+assets/js/admin/team-requests-panel-v253.js
+```
+
+Il modulo installa il render/handler canonico del pannello e mantiene il blocco inline V249 come fallback. La diagnostica runtime e' `window.ZonaOrientaleTeamRequestsV253`. Il modulo preserva le azioni esistenti: refresh da Firebase, approvazione, rifiuto ed eliminazione da Firebase dei comunicati gia approvati o rifiutati.

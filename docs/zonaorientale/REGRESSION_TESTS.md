@@ -1,6 +1,6 @@
 # Regression tests ZonaOrientale
 
-Stato: V249.
+Stato: V253.
 
 Questo documento e' una checklist operativa per evitare regressioni prima di fondere un branch su `master` o prima di pubblicare una modifica rilevante. Non sostituisce `FUNZIONALITA'.md`: quel file resta il registro funzionale e va modificato solo su richiesta esplicita.
 
@@ -206,6 +206,17 @@ Prima del merge su `master`, verificare che `FUNZIONALITA'.md` non sia cambiato 
 Aggiungere al test Presidente: verificare che in DevTools `window.ZonaOrientaleLegacyCleanupV248.legacyTransferCommunicationArtifacts` sia `0` dopo apertura della Dashboard Presidente.
 
 
+
+### Admin generatore comunicati automatici V250
+
+- Aprire Admin e verificare la presenza del pannello `Generatore comunicati automatici`.
+- Scegliere tipo comunicato, stagione, eventuale competizione/squadra e tono.
+- Premere `Genera bozza` e verificare titolo/testo generati.
+- Premere `Copia testo` e verificare assenza di errori bloccanti.
+- Premere `Inserisci nei Comunicati`: deve aprirsi il pannello `Admin -> Comunicati` e i campi titolo/testo/topic devono essere compilati.
+- Salvare manualmente un comunicato solo se si sta facendo un test Firebase reale.
+- Controllare in console `window.ZonaOrientaleCommunicationGeneratorV250`.
+
 ### Admin richieste presidenti V249
 
 - Aprire `Admin -> Richieste presidenti`.
@@ -213,3 +224,30 @@ Aggiungere al test Presidente: verificare che in DevTools `window.ZonaOrientaleL
 - Su una richiesta `PENDING`, verificare che `Approva` e `Rifiuta` funzionino.
 - Su un comunicato `APPROVED` o `REJECTED`, verificare che `Elimina da Firebase` chieda conferma e rimuova solo la richiesta da `teamRequests`.
 - Controllare in console `window.ZonaOrientaleTeamRequestsV249`.
+
+### Admin workflow pubblicazione V251
+
+- Aprire Admin dopo login admin.
+- Verificare presenza del pannello `Stato Firebase / JSON`.
+- Premere `Aggiorna stato pubblicazione` e verificare che non generi errori bloccanti.
+- Verificare presenza del pannello `Procedura guidata Pubblica aggiornamenti`.
+- Premere `Aggiorna procedura` e `Copia comandi`, verificando che il testo copiato non contenga riferimenti a branch storici come `feature/zonaorientale-v187-next`.
+- Controllare in console `window.ZonaOrientalePublicationWorkflowV251`.
+
+### Cleanup asset V252
+
+- Verificare che gli HTML non linkino `assets/css/mobile-hotfix-v166.css` o `assets/css/mobile-hotfix-v167.css`.
+- Verificare che `assets/css/mobile-suite-v168.css` contenga i blocchi `mobile-hotfix-v166.css` e `mobile-hotfix-v167.css`.
+- Verificare in console `window.ZonaOrientaleCleanupV252`.
+- Dopo `git rm`, verificare `git status` e assenza di `.DS_Store` / `__MACOSX` nel commit.
+
+
+
+### Admin Richieste presidenti V253
+
+- Aprire Admin -> Richieste presidenti.
+- Verificare presenza del pulsante `Aggiorna richieste`.
+- Verificare in console `window.ZonaOrientaleTeamRequestsV253.installed` o `window.ZonaOrientaleTeamRequestsV253.api.installed`.
+- Testare Approva/Rifiuta su richiesta PENDING.
+- Testare `Elimina da Firebase` su comunicato APPROVED o REJECTED.
+- Dopo `Aggiorna richieste`, il documento eliminato non deve ricomparire.

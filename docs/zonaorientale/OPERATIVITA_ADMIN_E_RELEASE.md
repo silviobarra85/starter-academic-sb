@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V249.
+Stato: V253.
 
 ## Regola d'oro dati
 
@@ -367,3 +367,77 @@ Prima del merge verificare che `window.ZonaOrientaleLegacyCleanupV248.legacyTran
 ### Richieste presidenti V249
 
 Nel pannello `Admin -> Richieste presidenti` usare `Aggiorna richieste` per rileggere `teamRequests` da Firebase quando una richiesta appena inviata non compare. I comunicati in stato approvato o rifiutato possono essere eliminati dal registro Firebase con `Elimina da Firebase`; questa azione non cancella una news gia' pubblicata.
+
+
+### Generatore comunicati automatici V250
+
+Percorso:
+
+```text
+Admin -> Generatore comunicati automatici
+```
+
+Il pannello prepara bozze locali partendo dai dati gia' caricati: risultati, vincitori competizione, mercato, focus squadra, Albo/Palmares e aggiornamenti dati pubblici. Non pubblica direttamente e non scrive su Firebase.
+
+Flusso consigliato:
+
+```text
+1. Apri Admin.
+2. Scegli tipo comunicato, stagione, eventuale competizione/squadra e tono.
+3. Premi Genera bozza.
+4. Usa Copia testo oppure Inserisci nei Comunicati.
+5. Nel form Admin -> Comunicati controlla titolo/testo/topic.
+6. Salva manualmente il comunicato.
+7. Se necessario, aggiorna snapshot/statici e fai commit.
+```
+
+Diagnostica in console:
+
+```js
+window.ZonaOrientaleCommunicationGeneratorV250
+```
+
+## Workflow pubblicazione Admin V251
+
+In Admin sono nuovamente disponibili i pannelli:
+
+```text
+Stato Firebase / JSON
+Procedura guidata Pubblica aggiornamenti
+```
+
+Uso consigliato dopo modifiche Admin:
+
+1. premere `Aggiorna stato pubblicazione`;
+2. controllare eventuali semafori gialli/rossi;
+3. usare `Procedura guidata Pubblica aggiornamenti`;
+4. copiare la checklist o i comandi Git;
+5. scaricare/applicare i JSON statici necessari;
+6. fare commit/push secondo il branch di lavoro.
+
+Il pannello e' solo operativo: non pubblica su GitHub, non apre PR e non scrive su Firebase.
+## Cleanup repository V252
+
+Per applicare completamente la V252, dopo l'overlay eseguire anche le rimozioni Git dei file locali/legacy indicati nella consegna:
+
+```bash
+git rm -r --ignore-unmatch static/zonaorientale/.DS_Store \
+  static/zonaorientale/assets/.DS_Store \
+  static/zonaorientale/assets/css/.DS_Store \
+  static/zonaorientale/assets/js/.DS_Store \
+  static/zonaorientale/assets/snapshots/.DS_Store \
+  static/zonaorientale/assets/css/mobile-hotfix-v166.css \
+  static/zonaorientale/assets/css/mobile-hotfix-v167.css \
+  __MACOSX static/zonaorientale/__MACOSX
+
+find static/zonaorientale -name ".DS_Store" -delete
+rm -rf __MACOSX static/zonaorientale/__MACOSX
+```
+
+La rimozione dei CSS hotfix e' sicura perche il loro contenuto e' gia presente in `assets/css/mobile-suite-v168.css` e gli HTML non li linkano.
+
+
+
+## Nota operativa V253 - Richieste presidenti modulari
+
+Il pannello `Admin -> Richieste presidenti` e' installato dal modulo `assets/js/admin/team-requests-panel-v253.js`. In caso di regressione, il codice inline V249 resta come fallback nel bundle principale, ma il render atteso deve usare attributi V253 e la diagnostica `window.ZonaOrientaleTeamRequestsV253`. Prima del merge testare refresh, approvazione, rifiuto ed eliminazione da Firebase dei comunicati approvati/rifiutati.

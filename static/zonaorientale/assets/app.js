@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=248";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=253";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=248";
+} from "./js/domain/news-share-v228.js?v=253";
 import {
   getListoneValue,
   compareListoneValues
@@ -139,12 +139,13 @@ import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=248";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=253";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=253";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=253";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=248";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=253";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15532,7 +15533,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "249";
+const DEPLOY_EXPECTED_VERSION_V181 = "253";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -16831,13 +16832,13 @@ function getPublishWizardCommandsV191() {
     "git add -f static/zonaorientale/assets/rose/manifest.json static/zonaorientale/assets/rose/*.json",
     "git add -f static/zonaorientale/assets/listoni/manifest.json static/zonaorientale/assets/listoni/*.json",
     "git add -f static/zonaorientale/assets/competitions/manifest.json static/zonaorientale/assets/competitions/**/*.json",
-    "git commit -m \"Update ZonaOrientale static public data\"",
-    "git push",
+    "git commit -m \"chore: aggiorna dati pubblici ZonaOrientale\"",
+    "git push origin HEAD",
+    "# Se stai pubblicando direttamente da master:",
     "git checkout master",
     "git pull --ff-only origin master",
-    "git merge --no-ff feature/zonaorientale-v187-next",
     "git push origin master",
-    "git checkout feature/zonaorientale-v187-next"
+    "# Se stai lavorando su branch dedicato, apri/mergea la PR verso master dopo i test."
   ].join("\n");
 }
 
@@ -17141,6 +17142,20 @@ window.ZonaOrientalePublishWizard = {
   copy(kind = "flow") {
     return copyPublishWizardTextV191(kind, null);
   }
+};
+
+/* V251 - Workflow pubblicazione Admin canonico.
+   Mantiene il workflow inline V190/V191/V203, evita il doppio import del modulo esterno V213
+   e aggiorna i comandi del wizard rimuovendo riferimenti a branch storici. */
+window.ZonaOrientalePublicationWorkflowV251 = {
+  version: 'V251',
+  restored: true,
+  canonicalInlineWorkflow: true,
+  externalModuleImported: false,
+  zeroFirebaseWrites: true,
+  panels: ['Stato Firebase / JSON', 'Procedura guidata Pubblica aggiornamenti'],
+  statusApi: window.ZonaOrientalePublicationStatus,
+  wizardApi: window.ZonaOrientalePublishWizard
 };
 
 
@@ -18571,9 +18586,10 @@ window.ZonaOrientaleSeasonArchive = {
   snapshot: getSeasonArchiveSnapshotV204
 };
 
-/* V214 - Hotfix refactor sicuro.
-   V213 viene temporaneamente disattivato: il workflow pubblicazione resta nella versione inline V212/V203,
-   mentre il sito mantiene i dati visibili e il bootstrap non dipende dal modulo admin-publication-workflow. */
+/* V214/V251 - Workflow pubblicazione Admin.
+   In V214 il modulo V213 esterno resta non importato per sicurezza bootstrap.
+   In V251 il workflow inline V190/V191/V203 viene reso canonico: nessun doppio listener,
+   comandi aggiornati e diagnostica esplicita. */
 
 /* V215 - Hotfix archivio bootstrap.
    Ripristina gli helper base V196 dellArchivio prima degli override V204/V209.
@@ -18656,7 +18672,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V249",
+  version: "V251",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -20700,4 +20716,100 @@ window.ZonaOrientaleTeamRequestsV249 = {
   canonicalPanel: true,
   legacyDeleteAttributes: ['data-delete-rejected-team-request-v244', 'data-delete-team-request-v245'],
   refreshAttribute: 'data-admin-refresh-team-requests-v249'
+};
+
+/* V250 - Ripristino Generatore comunicati automatici.
+   Il modulo V210 era importato ma non installato: ora viene collegato
+   esplicitamente all'Admin, resta zero-scrittura Firebase e inserisce solo
+   bozze nel form Comunicati per revisione/salvataggio manuale. */
+const communicationGeneratorV250 = installCommunicationGeneratorRefactorV210({
+  state,
+  escapeHtml,
+  getCurrentSeasonId,
+  getSeasonSortValue: typeof getSeasonSortValueV193 === 'function' ? getSeasonSortValueV193 : null,
+  getSeasonTeamDisplayName,
+  getCompetitionName: typeof getCompetitionNameV196 === 'function' ? getCompetitionNameV196 : null,
+  formatMatchResult,
+  formatMatchStage,
+  compareMatchesForDisplay,
+  getSeasonLabel: typeof getSeasonLabelV193 === 'function' ? getSeasonLabelV193 : null,
+  getSeasonTeamById,
+  getSeasonArchiveHonorTitles: typeof getSeasonArchiveHonorTitlesV196 === 'function' ? getSeasonArchiveHonorTitlesV196 : null,
+  expandAdminPanel,
+  getRenderAdminArea: () => renderAdminArea,
+  setRenderAdminArea: (fn) => { renderAdminArea = fn; },
+  getRenderAdminLightGate: () => renderAdminLightGateV178,
+  setRenderAdminLightGate: (fn) => { renderAdminLightGateV178 = fn; },
+  getRenderAdminHelpPanel: () => renderAdminHelpPanelV185,
+  setRenderAdminHelpPanel: (fn) => { renderAdminHelpPanelV185 = fn; }
+});
+
+window.ZonaOrientaleCommunicationGeneratorV250 = {
+  version: 'V250',
+  restored: true,
+  source: 'admin-communication-generator-v210',
+  zeroFirebaseWrites: true,
+  api: communicationGeneratorV250
+};
+
+
+/* V252 - Pulizia asset inutilizzati e file locali.
+   I file mobile-hotfix-v166/v167 sono inglobati in mobile-suite-v168 e non vengono linkati dagli HTML.
+   La rimozione effettiva dei file e dei metadati macOS va eseguita via git rm/rm, vedi consegna V252. */
+
+
+/* V253 - Estrazione modulare Admin Richieste presidenti.
+   Il pannello V249 resta come fallback inline, ma il comportamento canonico
+   viene installato dal modulo assets/js/admin/team-requests-panel-v253.js. */
+const adminTeamRequestsPanelV253 = installAdminTeamRequestsPanelV253({
+  state,
+  db,
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  escapeHtml,
+  renderAdminPanel,
+  requestStatusLabel,
+  requestTypeLabel,
+  getSeasonTeamDisplayName,
+  approveTeamRequest: approveTeamRequestV34,
+  rejectTeamRequest: rejectTeamRequestV34,
+  loadAdminUserCollections: typeof loadAdminUserCollectionsV175 === 'function' ? loadAdminUserCollectionsV175 : null,
+  renderAll,
+  expandAdminPanel,
+  setError,
+  getRenderTeamRequestsAdminPanel: () => renderTeamRequestsAdminPanelV34,
+  setRenderTeamRequestsAdminPanel: (fn) => { renderTeamRequestsAdminPanelV34 = fn; },
+  getAttachAdminHandlers: () => attachAdminHandlers,
+  setAttachAdminHandlers: (fn) => { attachAdminHandlers = fn; },
+  getToggleAdminPanel: () => toggleAdminPanel,
+  setToggleAdminPanel: (fn) => { toggleAdminPanel = fn; }
+});
+
+window.ZonaOrientaleTeamRequestsV253 = {
+  version: 'V253',
+  extractedModule: 'assets/js/admin/team-requests-panel-v253.js',
+  inlineFallbackKept: true,
+  functionalityPreserved: [
+    'Aggiorna richieste',
+    'Approva richiesta presidente',
+    'Rifiuta richiesta presidente',
+    'Elimina da Firebase comunicati approvati o rifiutati'
+  ],
+  api: adminTeamRequestsPanelV253
+};
+
+window.ZonaOrientaleCleanupV252 = {
+  version: "V252",
+  cleanupOnly: true,
+  removesMacOsArtifacts: true,
+  removesUnlinkedMobileHotfixCss: true,
+  canonicalMobileCss: "assets/css/mobile-suite-v168.css",
+  ignoredPatterns: [".DS_Store", "__MACOSX", "._*"],
+  removedCssCandidates: [
+    "assets/css/mobile-hotfix-v166.css",
+    "assets/css/mobile-hotfix-v167.css"
+  ],
+  note: "Nessuna funzionalita runtime modificata: cleanup di asset e diagnostica."
 };
