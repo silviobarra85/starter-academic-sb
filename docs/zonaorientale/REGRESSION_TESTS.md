@@ -1,3 +1,7 @@
+## Nota V256 - Registro incrementale funzionalita
+
+Per verificare cosa e' stato aggiunto/consolidato tra V240 e V255 consultare `FUNZIONALITA'V240-255.md`. Il documento principale `FUNZIONALITA'.md` non viene toccato salvo richiesta esplicita.
+
 ## Comandi standard trattative V255
 
 Da DevTools Console, dopo login come presidente:

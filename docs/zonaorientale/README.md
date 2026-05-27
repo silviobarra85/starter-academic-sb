@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V255**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V256**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,7 +16,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V255.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V256.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -87,3 +87,6 @@ Nota V254: aggiunto simulatore notifiche trattative `window.ZonaOrientaleTradeSi
 
 
 Nota V255: il simulatore trattative espone `ZonaOrientaleTradeSimulatorV255.help()` e `runLocalSmokeTest()` per test ricorrenti da console browser.
+
+- `FUNZIONALITA'V240-255.md`
+  Riepilogo incrementale delle funzionalita introdotte o consolidate tra V240 e V255. Non sostituisce `FUNZIONALITA'.md`.

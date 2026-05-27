@@ -1,3 +1,7 @@
+## Nota V256 - Registro funzionalita incrementale
+
+Il file `FUNZIONALITA'V240-255.md` documenta separatamente le funzionalita introdotte o consolidate nel ciclo V240-V255. Il documento principale `FUNZIONALITA'.md` resta invariato e va aggiornato solo su richiesta esplicita.
+
 ## Comandi standard test trattative V255
 
 Il modulo `assets/js/dev/trade-notification-simulator-v255.js` installa `window.ZonaOrientaleTradeSimulatorV255` e mantiene alias V254. Le funzioni `help()` e `getTestCommands()` stampano i comandi standard; `runLocalSmokeTest()` esegue un ciclo locale senza scrivere in Firebase.

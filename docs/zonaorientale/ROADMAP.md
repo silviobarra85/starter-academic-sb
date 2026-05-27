@@ -20,6 +20,7 @@ V252 pulizia asset inutilizzati - fatto
 V253 modulo richieste presidenti - fatto
 V254 simulatore notifiche trattative - fatto
 V255 comandi test trattative - fatto
+V256 funzionalita V240-255 - fatto
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.

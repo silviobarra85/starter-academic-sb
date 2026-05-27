@@ -1,3 +1,9 @@
+## V256 - Documento funzionalita V240-255
+
+- Aggiunto `FUNZIONALITA'V240-255.md`, documento separato che traccia le funzionalita introdotte/consolidate tra V240 e V255.
+- Confermato che `FUNZIONALITA'.md` non viene modificato automaticamente e resta aggiornabile solo su richiesta esplicita.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V256.
+
 ## V255 - Comandi test trattative
 
 - Aggiornato il simulatore a `assets/js/dev/trade-notification-simulator-v255.js`.

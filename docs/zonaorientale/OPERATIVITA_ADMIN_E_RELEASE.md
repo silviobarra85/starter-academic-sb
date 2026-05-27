@@ -1,3 +1,7 @@
+## Nota operativa V256 - Funzionalita V240-255
+
+Usare `FUNZIONALITA'V240-255.md` come riepilogo incrementale delle modifiche funzionali del branch refactor V240-V255. Non sostituisce `FUNZIONALITA'.md`.
+
 ## Nota operativa V255 - Comandi trattative ricorrenti
 
 Per test ricorrenti delle notifiche trattative usare `ZonaOrientaleTradeSimulatorV255.help()` e, per un ciclo locale completo, `await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()`. Le funzioni locali non scrivono in Firebase; `createFirebaseSentProposal({ confirm: true })` scrive davvero e va usata solo per test end-to-end.
