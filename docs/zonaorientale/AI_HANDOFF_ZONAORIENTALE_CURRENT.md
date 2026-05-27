@@ -1,10 +1,15 @@
-# AI Handoff ZonaOrientale - Current V248
+# AI Handoff ZonaOrientale - Current V249
 
 Ultimo aggiornamento documentale: 26/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V248**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V249**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico.
+
+
+## Nota V249 - Richieste presidenti canoniche
+
+La sezione `Admin -> Richieste presidenti` e' stata consolidata in V249: il pannello usa un solo render canonico, un refresh dedicato da Firebase, handler dedicati per Approva/Rifiuta ed eliminazione da Firebase dei soli comunicati approvati/rifiutati. I vecchi attributi V244/V245 non vengono piu' usati dal render canonico.
 
 ## Posizione e struttura progetto
 

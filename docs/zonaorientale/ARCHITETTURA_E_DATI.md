@@ -1,6 +1,6 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V248.
+Stato: V249.
 
 ## Tipo applicazione
 
@@ -503,3 +503,8 @@ Aggiunto `REGRESSION_TESTS.md` come checklist di regressione. Non cambia archite
 ## Nota V248
 
 Aggiunto guard runtime per neutralizzare vecchi handler comunicato scambio V50/V79/V237. Il flusso canonico resta `teamRequests/TRANSFER_NEWS` + EmailJS + approvazione Admin.
+
+
+### Admin Richieste presidenti V249
+
+Il pannello `Admin -> Richieste presidenti` e' consolidato in un render canonico V249. Il flusso supporta refresh esplicito da Firebase, approvazione/rifiuto delle richieste pendenti e cancellazione da `teamRequests/{id}` dei soli comunicati approvati o rifiutati.

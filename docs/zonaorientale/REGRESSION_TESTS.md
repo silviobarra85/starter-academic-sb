@@ -1,6 +1,6 @@
 # Regression tests ZonaOrientale
 
-Stato: V248.
+Stato: V249.
 
 Questo documento e' una checklist operativa per evitare regressioni prima di fondere un branch su `master` o prima di pubblicare una modifica rilevante. Non sostituisce `FUNZIONALITA'.md`: quel file resta il registro funzionale e va modificato solo su richiesta esplicita.
 
@@ -204,3 +204,12 @@ Prima del merge su `master`, verificare che `FUNZIONALITA'.md` non sia cambiato 
 ## Nota V248
 
 Aggiungere al test Presidente: verificare che in DevTools `window.ZonaOrientaleLegacyCleanupV248.legacyTransferCommunicationArtifacts` sia `0` dopo apertura della Dashboard Presidente.
+
+
+### Admin richieste presidenti V249
+
+- Aprire `Admin -> Richieste presidenti`.
+- Cliccare `Aggiorna richieste` e verificare che la lista venga riletta senza errori.
+- Su una richiesta `PENDING`, verificare che `Approva` e `Rifiuta` funzionino.
+- Su un comunicato `APPROVED` o `REJECTED`, verificare che `Elimina da Firebase` chieda conferma e rimuova solo la richiesta da `teamRequests`.
+- Controllare in console `window.ZonaOrientaleTeamRequestsV249`.

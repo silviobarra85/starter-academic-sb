@@ -1,3 +1,13 @@
+## V249 - Richieste presidenti canoniche
+
+- Consolidato `Admin -> Richieste presidenti` in un unico pannello canonico, superando le sovrapposizioni V243/V244/V245.
+- Aggiunto refresh V249 dedicato da Firebase con status del pannello.
+- I pulsanti `Approva`, `Rifiuta` ed `Elimina da Firebase` usano attributi/handler V249 dedicati per ridurre il rischio di listener doppi legacy.
+- La cancellazione resta limitata ai comunicati approvati/rifiutati nel registro `teamRequests`; eventuali news gia' pubblicate non vengono cancellate.
+- Aggiunta diagnostica `window.ZonaOrientaleTeamRequestsV249`.
+- Aggiornati footer/cache-buster/diagnostica a V249.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V248 - Pulizia handler legacy comunicato scambio
 
 - Aggiunto guard runtime per impedire che vecchi form/handler V50/V79/V237 del comunicato avvenuto scambio possano riagganciarsi al DOM.

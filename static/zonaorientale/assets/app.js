@@ -15532,7 +15532,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "248";
+const DEPLOY_EXPECTED_VERSION_V181 = "249";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -18656,7 +18656,7 @@ window.addEventListener("load", () => {
    Esegue controlli runtime leggeri sui moduli estratti V220-V224 e
    pubblica window.ZonaOrientaleRefactorStatus per debug senza cambiare UI/dati. */
 runRefactorStabilityChecksV225({
-  version: "V248",
+  version: "V249",
   dataRepository: zonaDataRepositoryV222,
   renderOrchestrator: publicAdminRenderOrchestratorV221,
   mobileChrome: mobileChromeV220,
@@ -20437,3 +20437,267 @@ startZonaOrientaleAppV173();
 /* V247 - Checklist regressioni documentale.
    Nessuna modifica funzionale runtime: release dedicata a test di regressione e cache-buster.
 */
+
+
+/* V249 - Admin Richieste presidenti canonico.
+   Consolida le patch V243/V244/V245 in un unico pannello:
+   - refresh esplicito da Firebase;
+   - approvazione/rifiuto con handler dedicati V249;
+   - eliminazione da Firebase dei soli comunicati APPROVED/ACCEPTED/REJECTED;
+   - nessun riuso degli attributi legacy V244/V245 per evitare handler doppi. */
+state.adminTeamRequestsRefreshingV249 = false;
+state.adminTeamRequestsDeletingV249 = state.adminTeamRequestsDeletingV249 || new Set();
+
+function getTeamRequestStatusV249(request = {}) {
+  return String(request.status || '').trim().toUpperCase();
+}
+
+function getTeamRequestTypeV249(request = {}) {
+  return String(request.type || request.requestType || '').trim().toUpperCase();
+}
+
+function getTeamRequestTopicV249(request = {}) {
+  return String(request.topic || '').trim().toUpperCase();
+}
+
+function isCommunicationTeamRequestV249(request = {}) {
+  const type = getTeamRequestTypeV249(request);
+  const topic = getTeamRequestTopicV249(request);
+  const category = String(request.category || '').trim().toUpperCase();
+  return type === 'TEAM_NEWS'
+    || type === 'TRANSFER_NEWS'
+    || topic === 'COMUNICATO_SQUADRA'
+    || topic === 'COMUNICATO_AVVENUTO_SCAMBIO'
+    || topic === 'TEAM_NEWS'
+    || topic === 'TRANSFER_NEWS'
+    || (category === 'COMMUNICATION' && request.needsAdminApproval === true);
+}
+
+function isDeletableCommunicationTeamRequestV249(request = {}) {
+  const status = getTeamRequestStatusV249(request);
+  return isCommunicationTeamRequestV249(request) && (status === 'REJECTED' || status === 'APPROVED' || status === 'ACCEPTED');
+}
+
+function getTeamRequestSortValueV249(value) {
+  if (!value) return 0;
+  if (typeof value?.toMillis === 'function') return value.toMillis();
+  if (typeof value?.seconds === 'number') return value.seconds * 1000;
+  const parsed = Date.parse(value);
+  return Number.isFinite(parsed) ? parsed : String(value);
+}
+
+function getTeamRequestLastActivityV249(request = {}) {
+  return request.updatedAt || request.rejectedAt || request.approvedAt || request.createdAt || request.requestedAt || request.publishedAt || '';
+}
+
+function getTeamRequestTitleV249(request = {}) {
+  return request.title
+    || request.playerName
+    || request.description
+    || request.body
+    || request.message
+    || request.notes
+    || 'Richiesta presidente';
+}
+
+function getTeamRequestBodyPreviewV249(request = {}) {
+  const parts = [
+    request.body || request.message || '',
+    request.playersInvolved ? `Giocatori: ${request.playersInvolved}` : '',
+    request.counterpartyTeamName || request.otherTeamName ? `Squadra coinvolta: ${request.counterpartyTeamName || request.otherTeamName}` : '',
+    request.notes || ''
+  ].filter(Boolean);
+  return parts.join(' · ');
+}
+
+function renderTeamRequestActionButtonsV249(request = {}) {
+  const id = escapeHtml(request.id || '');
+  const status = getTeamRequestStatusV249(request);
+  if (status === 'PENDING') {
+    return `<button class="button button-primary button-small" type="button" data-approve-team-request-v249="${id}">Approva</button><button class="button button-danger button-small" type="button" data-reject-team-request-v249="${id}">Rifiuta</button>`;
+  }
+  const deleteButton = isDeletableCommunicationTeamRequestV249(request)
+    ? `<button class="button button-danger button-small" type="button" data-delete-team-request-v249="${id}">Elimina da Firebase</button>`
+    : '';
+  return `<span class="status status-muted">${escapeHtml(requestStatusLabel(request.status))}</span>${deleteButton}`;
+}
+
+async function refreshAdminTeamRequestsV249(options = {}) {
+  if (!state.isAdmin || state.adminTeamRequestsRefreshingV249) return false;
+  const { render = true, expand = true } = options;
+  state.adminTeamRequestsRefreshingV249 = true;
+  document.querySelectorAll('[data-admin-refresh-team-requests-v249]').forEach((button) => {
+    button.disabled = true;
+    button.textContent = 'Aggiornamento...';
+  });
+  document.querySelectorAll('[data-admin-team-requests-status-v249]').forEach((statusNode) => {
+    statusNode.textContent = 'Rileggo le richieste presidenti da Firebase...';
+    statusNode.classList.remove('error');
+  });
+  try {
+    if (typeof loadAdminUserCollectionsV175 === 'function') {
+      await loadAdminUserCollectionsV175({ render, expandPanelId: 'adminTeamRequestsPanel' });
+    } else {
+      const snapshot = await getDocs(collection(db, 'teamRequests'));
+      state.raw.teamRequests = snapshot.docs.map((documentSnapshot) => ({
+        id: documentSnapshot.id,
+        ...documentSnapshot.data()
+      }));
+      state.adminUserCollectionsLoadedV175 = true;
+      if (render) renderAll?.();
+    }
+    document.querySelectorAll('[data-admin-team-requests-status-v249]').forEach((statusNode) => {
+      statusNode.textContent = 'Richieste aggiornate da Firebase.';
+      statusNode.classList.remove('error');
+    });
+    if (expand) window.setTimeout(() => expandAdminPanel?.('adminTeamRequestsPanel'), 0);
+    return true;
+  } catch (error) {
+    console.error('Errore refresh richieste presidenti V249', error);
+    document.querySelectorAll('[data-admin-team-requests-status-v249]').forEach((statusNode) => {
+      statusNode.textContent = error?.message || 'Errore durante aggiornamento richieste.';
+      statusNode.classList.add('error');
+    });
+    return false;
+  } finally {
+    state.adminTeamRequestsRefreshingV249 = false;
+    document.querySelectorAll('[data-admin-refresh-team-requests-v249]').forEach((button) => {
+      button.disabled = false;
+      button.textContent = 'Aggiorna richieste';
+    });
+  }
+}
+
+async function deleteCommunicationTeamRequestV249(requestId) {
+  const request = (state.raw.teamRequests || []).find((item) => item.id === requestId);
+  if (!request) {
+    setError?.('Richiesta non trovata in memoria. Premi Aggiorna richieste e riprova.');
+    return;
+  }
+  if (!isDeletableCommunicationTeamRequestV249(request)) {
+    setError?.('Puoi eliminare da Firebase solo comunicati approvati o rifiutati.');
+    return;
+  }
+  if (state.adminTeamRequestsDeletingV249.has(requestId)) return;
+  const status = getTeamRequestStatusV249(request);
+  const title = getTeamRequestTitleV249(request);
+  const extra = status === 'APPROVED' || status === 'ACCEPTED'
+    ? "\n\nNota: se il comunicato e' gia stato pubblicato nelle News, questa azione elimina solo la richiesta in teamRequests e non cancella la news pubblicata."
+    : '';
+  if (!window.confirm(`Eliminare definitivamente da Firebase "${title}"? L'operazione non e' reversibile.${extra}`)) return;
+  state.adminTeamRequestsDeletingV249.add(requestId);
+  const selectorValue = (typeof CSS !== 'undefined' && CSS.escape ? CSS.escape(requestId) : String(requestId).replace(/[^a-zA-Z0-9_-]/g, '\\$&'));
+  document.querySelectorAll(`[data-delete-team-request-v249="${selectorValue}"]`).forEach((button) => {
+    button.disabled = true;
+    button.textContent = 'Elimino...';
+  });
+  try {
+    await deleteDoc(doc(db, 'teamRequests', requestId));
+    state.raw.teamRequests = (state.raw.teamRequests || []).filter((item) => item.id !== requestId);
+    document.querySelectorAll('[data-admin-team-requests-status-v249]').forEach((statusNode) => {
+      statusNode.textContent = 'Comunicazione eliminata da Firebase.';
+      statusNode.classList.remove('error');
+    });
+    renderAll?.();
+    window.setTimeout(() => expandAdminPanel?.('adminTeamRequestsPanel'), 0);
+  } catch (error) {
+    console.error('Errore eliminazione comunicato V249', error);
+    setError?.(`Non riesco a eliminare il comunicato. ${error?.message || error}`);
+    document.querySelectorAll('[data-admin-team-requests-status-v249]').forEach((statusNode) => {
+      statusNode.textContent = error?.message || 'Errore durante eliminazione da Firebase.';
+      statusNode.classList.add('error');
+    });
+  } finally {
+    state.adminTeamRequestsDeletingV249.delete(requestId);
+    document.querySelectorAll(`[data-delete-team-request-v249="${selectorValue}"]`).forEach((button) => {
+      button.disabled = false;
+      button.textContent = 'Elimina da Firebase';
+    });
+  }
+}
+
+if (typeof renderTeamRequestsAdminPanelV34 === 'function') {
+  renderTeamRequestsAdminPanelV34 = function renderTeamRequestsAdminPanelV249() {
+    const requests = (state.raw.teamRequests || [])
+      .slice()
+      .sort((a, b) => {
+        const left = getTeamRequestSortValueV249(getTeamRequestLastActivityV249(a));
+        const right = getTeamRequestSortValueV249(getTeamRequestLastActivityV249(b));
+        if (typeof left === 'number' && typeof right === 'number') return right - left;
+        return String(right || '').localeCompare(String(left || ''));
+      });
+    const rows = requests.map((request) => {
+      const typeLabel = requestTypeLabel(request.type || request.requestType);
+      const teamLabel = getSeasonTeamDisplayName(request.seasonTeamId) || request.teamName || request.seasonTeamId || 'Squadra non indicata';
+      const authorLabel = request.createdByName || request.createdByEmail || request.createdBy || 'Presidente';
+      const bodyPreview = getTeamRequestBodyPreviewV249(request);
+      return `
+      <div class="admin-list-item admin-team-request-item-v249" data-team-request-id-v249="${escapeHtml(request.id || '')}">
+        <span>
+          <strong>${escapeHtml(typeLabel)} · ${escapeHtml(teamLabel)}</strong>
+          <small>${escapeHtml(authorLabel)} · ${escapeHtml(requestStatusLabel(request.status))}</small>
+          <small>${escapeHtml(getTeamRequestTitleV249(request))}</small>
+          ${bodyPreview ? `<small>${escapeHtml(bodyPreview)}</small>` : ''}
+        </span>
+        <span class="admin-request-actions-v249">
+          ${renderTeamRequestActionButtonsV249(request)}
+        </span>
+      </div>`;
+    }).join('') || `<p class="muted admin-empty-message">Nessuna richiesta presidente.</p>`;
+    const toolbar = `
+    <div class="form-actions admin-team-requests-refresh-v249">
+      <button class="button button-secondary button-small" type="button" data-admin-refresh-team-requests-v249>Aggiorna richieste</button>
+      <span class="form-status" data-admin-team-requests-status-v249>Lista canonica V249: usa Aggiorna richieste per rileggere Firebase.</span>
+    </div>`;
+    return renderAdminPanel(
+      'adminTeamRequestsPanel',
+      'Presidenti',
+      'Richieste presidenti',
+      'Pannello consolidato V249: approva o rifiuta richieste presidente; i comunicati approvati o rifiutati possono essere eliminati dal registro teamRequests.',
+      `${toolbar}<div class="admin-list">${rows}</div>`
+    );
+  };
+}
+
+const attachAdminHandlersBeforeV249 = attachAdminHandlers;
+attachAdminHandlers = function attachAdminHandlersV249() {
+  attachAdminHandlersBeforeV249?.();
+  document.querySelectorAll('[data-admin-refresh-team-requests-v249]').forEach((button) => {
+    if (button.dataset.v249Handler === '1') return;
+    button.dataset.v249Handler = '1';
+    button.addEventListener('click', () => refreshAdminTeamRequestsV249({ render: true, expand: true }));
+  });
+  document.querySelectorAll('[data-approve-team-request-v249]').forEach((button) => {
+    if (button.dataset.v249Handler === '1') return;
+    button.dataset.v249Handler = '1';
+    button.addEventListener('click', () => approveTeamRequestV34?.(button.dataset.approveTeamRequestV249));
+  });
+  document.querySelectorAll('[data-reject-team-request-v249]').forEach((button) => {
+    if (button.dataset.v249Handler === '1') return;
+    button.dataset.v249Handler = '1';
+    button.addEventListener('click', () => rejectTeamRequestV34?.(button.dataset.rejectTeamRequestV249));
+  });
+  document.querySelectorAll('[data-delete-team-request-v249]').forEach((button) => {
+    if (button.dataset.v249Handler === '1') return;
+    button.dataset.v249Handler = '1';
+    button.addEventListener('click', () => deleteCommunicationTeamRequestV249(button.dataset.deleteTeamRequestV249));
+  });
+};
+
+const toggleAdminPanelBeforeV249 = toggleAdminPanel;
+toggleAdminPanel = function toggleAdminPanelV249(panelId) {
+  toggleAdminPanelBeforeV249?.(panelId);
+  if (panelId !== 'adminTeamRequestsPanel' || !state.isAdmin) return;
+  const panel = document.getElementById(panelId);
+  const isOpen = panel && !panel.classList.contains('is-collapsed');
+  if (isOpen && !state.adminUserCollectionsLoadedV175) {
+    refreshAdminTeamRequestsV249({ render: true, expand: true });
+  }
+};
+
+window.ZonaOrientaleTeamRequestsV249 = {
+  version: 'V249',
+  canonicalPanel: true,
+  legacyDeleteAttributes: ['data-delete-rejected-team-request-v244', 'data-delete-team-request-v245'],
+  refreshAttribute: 'data-admin-refresh-team-requests-v249'
+};

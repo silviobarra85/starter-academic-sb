@@ -1,6 +1,6 @@
 # Operativita Admin e release
 
-Stato: V248.
+Stato: V249.
 
 ## Regola d'oro dati
 
@@ -362,3 +362,8 @@ Prima di fondere un branch su `master`, usare `REGRESSION_TESTS.md` come checkli
 ## Nota V248
 
 Prima del merge verificare che `window.ZonaOrientaleLegacyCleanupV248.legacyTransferCommunicationArtifacts` sia `0` dopo apertura Dashboard Presidente. Il documento `FUNZIONALITA'.md` resta invariato.
+
+
+### Richieste presidenti V249
+
+Nel pannello `Admin -> Richieste presidenti` usare `Aggiorna richieste` per rileggere `teamRequests` da Firebase quando una richiesta appena inviata non compare. I comunicati in stato approvato o rifiutato possono essere eliminati dal registro Firebase con `Elimina da Firebase`; questa azione non cancella una news gia' pubblicata.
