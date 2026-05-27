@@ -17,7 +17,8 @@ export function installCommunicationGeneratorRefactorV210(deps = {}) {
     getRenderAdminLightGate,
     setRenderAdminLightGate,
     getRenderAdminHelpPanel,
-    setRenderAdminHelpPanel
+    setRenderAdminHelpPanel,
+    expandAdminPanel
   } = deps;
 
   if (!state) throw new Error("installCommunicationGeneratorRefactorV210 requires state");
@@ -27,6 +28,7 @@ export function installCommunicationGeneratorRefactorV210(deps = {}) {
   const getSeasonLabelV193 = typeof getSeasonLabel === "function" ? getSeasonLabel : null;
   const getSeasonArchiveHonorTitlesV196 = typeof getSeasonArchiveHonorTitles === "function" ? getSeasonArchiveHonorTitles : null;
   const safeEscapeHtml = typeof escapeHtml === "function" ? escapeHtml : (value) => String(value ?? "");
+  const expandAdminPanelV250 = typeof expandAdminPanel === "function" ? expandAdminPanel : null;
 
 const COMMUNICATION_GENERATOR_STORAGE_KEY_V197 = "zonaOrientaleCommunicationGeneratorV197";
 
@@ -368,7 +370,7 @@ function insertCommunicationDraftIntoNewsFormV197() {
   const draft = state.communicationGeneratorDraftV197 || buildCommunicationDraftV197();
   const titleValue = document.getElementById("communicationDraftTitleV197")?.value || draft.title || "Comunicato";
   const bodyValue = document.getElementById("communicationDraftBodyV197")?.value || draft.body || "";
-  if (typeof expandAdminPanel === "function") expandAdminPanel("adminNewsPanel");
+  if (expandAdminPanelV250) expandAdminPanelV250("adminNewsPanel");
   const title = document.getElementById("adminNewsTitle");
   const body = document.getElementById("adminNewsBody");
   const topic = document.getElementById("adminNewsTopic");
