@@ -1,6 +1,15 @@
 # Regression tests ZonaOrientale
 
-Stato: V253.
+
+### Simulatore notifiche trattative V254
+
+- Accedere come presidente e verificare `window.ZonaOrientaleTradeSimulatorV254`.
+- Eseguire `ZonaOrientaleTradeSimulatorV254.simulateIncomingProposal()` e verificare badge rosso e card ricevuta locale.
+- Eseguire `ZonaOrientaleTradeSimulatorV254.simulateResolvedSentProposal({ status: "ACCEPTED" })` e verificare badge esito su proposta inviata locale.
+- Eseguire `ZonaOrientaleTradeSimulatorV254.clearLocalSimulations()` e verificare rimozione simulazioni locali.
+- Usare `await ZonaOrientaleTradeSimulatorV254.createFirebaseSentProposal({ confirm: true })` solo per test reali su Firebase.
+
+Stato: V254.
 
 Questo documento e' una checklist operativa per evitare regressioni prima di fondere un branch su `master` o prima di pubblicare una modifica rilevante. Non sostituisce `FUNZIONALITA'.md`: quel file resta il registro funzionale e va modificato solo su richiesta esplicita.
 

@@ -1,3 +1,11 @@
+## V254 - Simulatore notifiche trattative
+
+- Aggiunto modulo `assets/js/dev/trade-notification-simulator-v254.js` con API console `window.ZonaOrientaleTradeSimulatorV254`.
+- Le simulazioni locali permettono di provare badge e card trattative senza scrivere in Firebase.
+- La funzione opzionale `createFirebaseSentProposal({ confirm: true })` crea una proposta reale da presidente corrente verso un'altra squadra, utile per test end-to-end se le rules lo consentono.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V254.
+- `FUNZIONALITA'.md` non modificato.
+
 ## V253 - Estrazione modulare Richieste presidenti Admin
 
 - Aggiunto modulo `assets/js/admin/team-requests-panel-v253.js` per installare il pannello `Admin -> Richieste presidenti` fuori da `assets/app.js`.

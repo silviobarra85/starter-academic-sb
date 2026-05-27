@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=253";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=254";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=253";
+} from "./js/domain/news-share-v228.js?v=254";
 import {
   getListoneValue,
   compareListoneValues
@@ -139,13 +139,14 @@ import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=253";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=253";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=253";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=254";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=254";
+import { installTradeNotificationSimulatorV254 } from "./js/dev/trade-notification-simulator-v254.js?v=254";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=254";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=253";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=254";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15533,7 +15534,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "253";
+const DEPLOY_EXPECTED_VERSION_V181 = "254";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20812,4 +20813,51 @@ window.ZonaOrientaleCleanupV252 = {
     "assets/css/mobile-hotfix-v167.css"
   ],
   note: "Nessuna funzionalita runtime modificata: cleanup di asset e diagnostica."
+};
+
+
+/* V254 - Simulatore notifiche trattative.
+   Aggiunge una API console sicura per provare badge e card trattative senza coinvolgere due account reali.
+   Le simulazioni sono locali di default; la scrittura Firebase richiede confirm:true. */
+const tradeNotificationSimulatorV254 = installTradeNotificationSimulatorV254({
+  state,
+  db,
+  collection,
+  addDoc,
+  serverTimestamp,
+  getCurrentSeasonId,
+  getApprovedTeamUser,
+  getApprovedSeasonTeamId: typeof getApprovedSeasonTeamIdV119 === 'function' ? getApprovedSeasonTeamIdV119 : null,
+  getSeasonTeamsForSeason,
+  getSeasonTeamDisplayName,
+  renderUserArea: () => renderUserAreaV34?.(),
+  renderTransferMarketPage: () => renderTransferMarketPageV119?.(),
+  applyTradeNotificationBadges: () => applyTradeNotificationBadgesV238?.(),
+  ensureTransferMarketData: typeof ensureTransferMarketDataV119 === 'function' ? ensureTransferMarketDataV119 : null,
+  loadTransferMarketCollections: typeof loadTransferMarketCollectionsV119 === 'function' ? loadTransferMarketCollectionsV119 : null,
+  acknowledgeTradeOutcomeNotifications: typeof acknowledgeTradeOutcomeNotificationsV238 === 'function' ? acknowledgeTradeOutcomeNotificationsV238 : null,
+  acknowledgeSingleTradeOutcome: typeof acknowledgeSingleTradeOutcomeV239 === 'function' ? acknowledgeSingleTradeOutcomeV239 : null,
+  setAppPage: typeof setAppPageV42 === 'function' ? setAppPageV42 : null
+});
+
+window.ZonaOrientaleTradeSimulatorV254Status = {
+  version: 'V254',
+  installed: Boolean(tradeNotificationSimulatorV254),
+  consoleApi: 'window.ZonaOrientaleTradeSimulatorV254',
+  localOnlyByDefault: true,
+  firebaseWritesRequireConfirm: true,
+  examples: [
+    'ZonaOrientaleTradeSimulatorV254.simulateIncomingProposal()',
+    'ZonaOrientaleTradeSimulatorV254.simulateResolvedSentProposal({ status: "ACCEPTED" })',
+    'ZonaOrientaleTradeSimulatorV254.clearLocalSimulations()',
+    'await ZonaOrientaleTradeSimulatorV254.createFirebaseSentProposal({ confirm: true })'
+  ]
+};
+
+const loadTransferMarketCollectionsBeforeV254 = loadTransferMarketCollectionsV119;
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV254(...args) {
+  const result = await loadTransferMarketCollectionsBeforeV254?.(...args);
+  tradeNotificationSimulatorV254?.mergeLocalSimulations?.();
+  applyTradeNotificationBadgesV238?.();
+  return result;
 };

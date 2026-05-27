@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V253**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V254**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,7 +16,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V253.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V254.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -82,3 +82,5 @@ Nota V252: aggiunta pulizia repository per file locali/macOS e CSS mobile hotfix
 
 
 Nota V253: estratto in modulo dedicato il pannello Admin -> Richieste presidenti, mantenendo fallback inline V249 e diagnostica `window.ZonaOrientaleTeamRequestsV253`.
+
+Nota V254: aggiunto simulatore notifiche trattative `window.ZonaOrientaleTradeSimulatorV254` per test locali/Firebase da console browser.

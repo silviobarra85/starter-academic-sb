@@ -1,6 +1,11 @@
 # Architettura e dati ZonaOrientale
 
-Stato: V253.
+
+## Simulatore notifiche trattative V254
+
+Il modulo `assets/js/dev/trade-notification-simulator-v254.js` installa `window.ZonaOrientaleTradeSimulatorV254`. Le funzioni locali inseriscono righe simulate in `state.raw.transferNegotiations` e ridisegnano Dashboard Presidente/badge senza scrivere in Firebase. La funzione `createFirebaseSentProposal({ confirm: true })` puo' creare una proposta reale in `transferNegotiations` dal presidente corrente verso un'altra squadra per test end-to-end.
+
+Stato: V254.
 
 ## Tipo applicazione
 

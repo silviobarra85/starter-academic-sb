@@ -1,6 +1,11 @@
 # Operativita Admin e release
 
-Stato: V253.
+
+## Nota operativa V254 - Test notifiche trattative
+
+Per testare rapidamente le notifiche da console browser, accedere come presidente e usare `window.ZonaOrientaleTradeSimulatorV254`. Le funzioni `simulateIncomingProposal()` e `simulateResolvedSentProposal()` sono locali e non persistono; `createFirebaseSentProposal({ confirm: true })` scrive invece in Firebase e va usata solo per test reali.
+
+Stato: V254.
 
 ## Regola d'oro dati
 
