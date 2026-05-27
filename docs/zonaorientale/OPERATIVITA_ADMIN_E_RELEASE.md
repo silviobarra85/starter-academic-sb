@@ -1,3 +1,7 @@
+## Nota operativa V255 - Comandi trattative ricorrenti
+
+Per test ricorrenti delle notifiche trattative usare `ZonaOrientaleTradeSimulatorV255.help()` e, per un ciclo locale completo, `await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()`. Le funzioni locali non scrivono in Firebase; `createFirebaseSentProposal({ confirm: true })` scrive davvero e va usata solo per test end-to-end.
+
 # Operativita Admin e release
 
 

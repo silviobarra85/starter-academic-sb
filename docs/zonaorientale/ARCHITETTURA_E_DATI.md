@@ -1,3 +1,7 @@
+## Comandi standard test trattative V255
+
+Il modulo `assets/js/dev/trade-notification-simulator-v255.js` installa `window.ZonaOrientaleTradeSimulatorV255` e mantiene alias V254. Le funzioni `help()` e `getTestCommands()` stampano i comandi standard; `runLocalSmokeTest()` esegue un ciclo locale senza scrivere in Firebase.
+
 # Architettura e dati ZonaOrientale
 
 

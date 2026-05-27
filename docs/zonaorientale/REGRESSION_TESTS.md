@@ -1,3 +1,31 @@
+## Comandi standard trattative V255
+
+Da DevTools Console, dopo login come presidente:
+
+```js
+ZonaOrientaleTradeSimulatorV255.help()
+ZonaOrientaleTradeSimulatorV255.getContext()
+ZonaOrientaleTradeSimulatorV255.simulateIncomingProposal()
+ZonaOrientaleTradeSimulatorV255.resolveLocalIncomingProposal("REJECTED")
+ZonaOrientaleTradeSimulatorV255.simulateResolvedSentProposal({ status: "ACCEPTED" })
+await ZonaOrientaleTradeSimulatorV255.markAllOutcomeSeen()
+ZonaOrientaleTradeSimulatorV255.clearLocalSimulations()
+```
+
+Smoke test locale completo, senza scritture Firebase:
+
+```js
+await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()
+```
+
+Test reale Firebase, da usare solo quando si vuole creare una proposta vera:
+
+```js
+await ZonaOrientaleTradeSimulatorV255.createFirebaseSentProposal({ confirm: true })
+```
+
+Alias compatibilita': i comandi `ZonaOrientaleTradeSimulatorV254.*` continuano a puntare alla stessa API V255.
+
 # Regression tests ZonaOrientale
 
 

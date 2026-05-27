@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=254";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=255";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=254";
+} from "./js/domain/news-share-v228.js?v=255";
 import {
   getListoneValue,
   compareListoneValues
@@ -139,14 +139,14 @@ import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=254";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=254";
-import { installTradeNotificationSimulatorV254 } from "./js/dev/trade-notification-simulator-v254.js?v=254";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=254";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=255";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=255";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=255";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=255";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=254";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=255";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15534,7 +15534,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "254";
+const DEPLOY_EXPECTED_VERSION_V181 = "255";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20816,10 +20816,10 @@ window.ZonaOrientaleCleanupV252 = {
 };
 
 
-/* V254 - Simulatore notifiche trattative.
-   Aggiunge una API console sicura per provare badge e card trattative senza coinvolgere due account reali.
-   Le simulazioni sono locali di default; la scrittura Firebase richiede confirm:true. */
-const tradeNotificationSimulatorV254 = installTradeNotificationSimulatorV254({
+/* V255 - Comandi standard test trattative.
+   Estende il simulatore notifiche con help(), getTestCommands() e runLocalSmokeTest().
+   Le simulazioni restano locali di default; la scrittura Firebase richiede confirm:true. */
+const tradeNotificationSimulatorV255 = installTradeNotificationSimulatorV255({
   state,
   db,
   collection,
@@ -20840,24 +20840,35 @@ const tradeNotificationSimulatorV254 = installTradeNotificationSimulatorV254({
   setAppPage: typeof setAppPageV42 === 'function' ? setAppPageV42 : null
 });
 
-window.ZonaOrientaleTradeSimulatorV254Status = {
-  version: 'V254',
-  installed: Boolean(tradeNotificationSimulatorV254),
-  consoleApi: 'window.ZonaOrientaleTradeSimulatorV254',
+window.ZonaOrientaleTradeSimulatorV255Status = {
+  version: 'V255',
+  installed: Boolean(tradeNotificationSimulatorV255),
+  consoleApi: 'window.ZonaOrientaleTradeSimulatorV255',
   localOnlyByDefault: true,
   firebaseWritesRequireConfirm: true,
   examples: [
-    'ZonaOrientaleTradeSimulatorV254.simulateIncomingProposal()',
-    'ZonaOrientaleTradeSimulatorV254.simulateResolvedSentProposal({ status: "ACCEPTED" })',
-    'ZonaOrientaleTradeSimulatorV254.clearLocalSimulations()',
-    'await ZonaOrientaleTradeSimulatorV254.createFirebaseSentProposal({ confirm: true })'
+    'ZonaOrientaleTradeSimulatorV255.help()',
+    'await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()',
+    'ZonaOrientaleTradeSimulatorV255.simulateIncomingProposal()',
+    'ZonaOrientaleTradeSimulatorV255.simulateResolvedSentProposal({ status: "ACCEPTED" })',
+    'ZonaOrientaleTradeSimulatorV255.clearLocalSimulations()',
+    'await ZonaOrientaleTradeSimulatorV255.createFirebaseSentProposal({ confirm: true })'
   ]
 };
 
-const loadTransferMarketCollectionsBeforeV254 = loadTransferMarketCollectionsV119;
-loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV254(...args) {
-  const result = await loadTransferMarketCollectionsBeforeV254?.(...args);
-  tradeNotificationSimulatorV254?.mergeLocalSimulations?.();
+
+// Alias diagnostico temporaneo: i comandi V254 continuano a puntare alla stessa API V255.
+window.ZonaOrientaleTradeSimulatorV254Status = {
+  ...window.ZonaOrientaleTradeSimulatorV255Status,
+  version: 'V255-compat',
+  consoleApi: 'window.ZonaOrientaleTradeSimulatorV254',
+  aliasOf: 'window.ZonaOrientaleTradeSimulatorV255'
+};
+
+const loadTransferMarketCollectionsBeforeV255 = loadTransferMarketCollectionsV119;
+loadTransferMarketCollectionsV119 = async function loadTransferMarketCollectionsV255(...args) {
+  const result = await loadTransferMarketCollectionsBeforeV255?.(...args);
+  tradeNotificationSimulatorV255?.mergeLocalSimulations?.();
   applyTradeNotificationBadgesV238?.();
   return result;
 };

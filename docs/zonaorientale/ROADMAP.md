@@ -19,6 +19,7 @@ V249 richieste presidenti canoniche - fatto
 V252 pulizia asset inutilizzati - fatto
 V253 modulo richieste presidenti - fatto
 V254 simulatore notifiche trattative - fatto
+V255 comandi test trattative - fatto
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.

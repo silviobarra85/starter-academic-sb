@@ -1,3 +1,10 @@
+## V255 - Comandi test trattative
+
+- Aggiornato il simulatore a `assets/js/dev/trade-notification-simulator-v255.js`.
+- Aggiunte API console `help()`, `getTestCommands()` e `runLocalSmokeTest()` per testare badge e card trattative con comandi standard.
+- Mantenuto alias temporaneo `window.ZonaOrientaleTradeSimulatorV254` per non rompere i comandi usati durante V254.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V255.
+
 ## V254 - Simulatore notifiche trattative
 
 - Aggiunto modulo `assets/js/dev/trade-notification-simulator-v254.js` con API console `window.ZonaOrientaleTradeSimulatorV254`.
