@@ -1,3 +1,126 @@
+## V257 - Firebase Rules notifiche trattative
+
+- Aggiunto file completo rules `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`.
+- Aggiunto file patch `docs/zonaorientale/firebase/FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` per integrare solo la parte `transferNegotiations`.
+- La lettura esito trattativa del mittente puo essere salvata in Firebase su campi dedicati, sincronizzando smartphone e desktop.
+- Le update non-admin su `transferNegotiations` vengono limitate a: risposta del destinatario, reset flag lettura del destinatario, lettura esito del mittente.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V257.
+
+## V256 - Documento funzionalita V240-255
+
+- Aggiunto `FUNZIONALITA'V240-255.md`, documento separato che traccia le funzionalita introdotte/consolidate tra V240 e V255.
+- Confermato che `FUNZIONALITA'.md` non viene modificato automaticamente e resta aggiornabile solo su richiesta esplicita.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V256.
+
+## V255 - Comandi test trattative
+
+- Aggiornato il simulatore a `assets/js/dev/trade-notification-simulator-v255.js`.
+- Aggiunte API console `help()`, `getTestCommands()` e `runLocalSmokeTest()` per testare badge e card trattative con comandi standard.
+- Mantenuto alias temporaneo `window.ZonaOrientaleTradeSimulatorV254` per non rompere i comandi usati durante V254.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V255.
+
+## V254 - Simulatore notifiche trattative
+
+- Aggiunto modulo `assets/js/dev/trade-notification-simulator-v254.js` con API console `window.ZonaOrientaleTradeSimulatorV254`.
+- Le simulazioni locali permettono di provare badge e card trattative senza scrivere in Firebase.
+- La funzione opzionale `createFirebaseSentProposal({ confirm: true })` crea una proposta reale da presidente corrente verso un'altra squadra, utile per test end-to-end se le rules lo consentono.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V254.
+- `FUNZIONALITA'.md` non modificato.
+
+## V253 - Estrazione modulare Richieste presidenti Admin
+
+- Aggiunto modulo `assets/js/admin/team-requests-panel-v253.js` per installare il pannello `Admin -> Richieste presidenti` fuori da `assets/app.js`.
+- Preservate le funzionalita gia testate: Aggiorna richieste, Approva, Rifiuta, Elimina da Firebase per comunicati approvati/rifiutati.
+- Il blocco inline V249 resta disponibile come fallback, ma il render canonico usa attributi V253 per evitare doppi handler legacy.
+- Aggiunta diagnostica runtime `window.ZonaOrientaleTeamRequestsV253`.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V253.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V252 - Pulizia asset inutilizzati e file locali
+- Aggiunta `.gitignore` locale in `static/zonaorientale/` per impedire nuovi commit di `.DS_Store`, `__MACOSX` e AppleDouble `._*`.
+- Confermati come rimovibili `assets/css/mobile-hotfix-v166.css` e `assets/css/mobile-hotfix-v167.css`, perche non linkati dagli HTML e gia inglobati in `assets/css/mobile-suite-v168.css`.
+- Aggiunta diagnostica runtime `window.ZonaOrientaleCleanupV252`.
+- Nessuna modifica funzionale a pubblico, presidente o admin; cleanup controllato con rimozioni da fare via `git rm`.
+- Aggiornati footer/cache-buster/diagnostica a V252.
+
+## V251 - Workflow pubblicazione Admin ripristinato
+
+- Consolidato il workflow pubblicazione inline V190/V191/V203 come versione canonica, senza reimportare il modulo esterno V213.
+- Restano operativi e canonici i pannelli Admin `Stato Firebase / JSON` e `Procedura guidata Pubblica aggiornamenti`.
+- Il workflow resta zero-scrittura Firebase: controlla asset pubblici, promemoria locali, modalita admin e prepara comandi/checklist per pubblicazione.
+- Aggiornati i comandi suggeriti dal wizard, rimuovendo il vecchio riferimento al branch `feature/zonaorientale-v187-next`.
+- Aggiunta diagnostica `window.ZonaOrientalePublicationWorkflowV251`.
+- Aggiornati footer/cache-buster/diagnostica a V251.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V250 - Generatore comunicati automatici ripristinato
+
+- Ripristinato il modulo `admin-communication-generator-v210.js`, che era importato ma non installato.
+- Il generatore torna visibile in Admin e prepara bozze per risultati, vincitori competizione, mercato, focus squadra, Albo/Palmares e aggiornamento dati pubblici.
+- Il flusso resta sicuro: nessuna scrittura diretta su Firebase; la bozza puo' essere copiata oppure inserita nel form `Admin -> Comunicati` per revisione e salvataggio manuale.
+- Aggiunto collegamento esplicito a `expandAdminPanel` per aprire correttamente il pannello Comunicati quando si usa `Inserisci nei Comunicati`.
+- Aggiunta diagnostica `window.ZonaOrientaleCommunicationGeneratorV250`.
+- Aggiornati footer/cache-buster/diagnostica a V250.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V249 - Richieste presidenti canoniche
+
+- Consolidato `Admin -> Richieste presidenti` in un unico pannello canonico, superando le sovrapposizioni V243/V244/V245.
+- Aggiunto refresh V249 dedicato da Firebase con status del pannello.
+- I pulsanti `Approva`, `Rifiuta` ed `Elimina da Firebase` usano attributi/handler V249 dedicati per ridurre il rischio di listener doppi legacy.
+- La cancellazione resta limitata ai comunicati approvati/rifiutati nel registro `teamRequests`; eventuali news gia' pubblicate non vengono cancellate.
+- Aggiunta diagnostica `window.ZonaOrientaleTeamRequestsV249`.
+- Aggiornati footer/cache-buster/diagnostica a V249.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V248 - Pulizia handler legacy comunicato scambio
+
+- Aggiunto guard runtime per impedire che vecchi form/handler V50/V79/V237 del comunicato avvenuto scambio possano riagganciarsi al DOM.
+- Mantenuto un solo flusso canonico: `teamRequests/TRANSFER_NEWS` + EmailJS + approvazione Admin.
+- Aggiunta diagnostica leggera `window.ZonaOrientaleLegacyCleanupV248`.
+- Aggiornati footer/cache-buster/diagnostica a V248.
+- `FUNZIONALITA'.md` non modificato.
+
+## V247 - Checklist regressioni
+
+- Aggiunto `REGRESSION_TESTS.md` come checklist operativa per test pubblico, presidente, admin, mobile, Firebase e pre-commit.
+- Aggiornati footer/cache-buster/diagnostica a V247.
+- Nessuna modifica funzionale runtime: la release serve a standardizzare i controlli prima dei merge.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V246 - Notifiche trattative sincronizzate su Firebase
+
+- Il badge esito trattativa del presidente mittente non dipende piu' solo da `localStorage`: quando si apre la card della proposta conclusa, il sito prova a marcare la lettura nel documento `transferNegotiations/{id}`.
+- Aggiunti campi di lettura esito: `outcomeSeenByFromUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid`, `outcomeSeenByUid`.
+- Quando il destinatario approva o rifiuta una trattativa, la lettura del mittente viene resettata, cosi' l'esito torna notificato.
+- `localStorage` resta fallback se le regole Firebase negano l'update, senza bloccare la UI.
+- Aggiornati footer/cache-buster/diagnostica a V246.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V245 - Elimina comunicati approvati da Firebase
+
+- Admin -> Richieste presidenti: il pulsante `Elimina da Firebase` ora compare anche sui comunicati gia' approvati, oltre che sui comunicati rifiutati.
+- La cancellazione resta limitata alle richieste comunicato (`TEAM_NEWS` e `TRANSFER_NEWS`, inclusi topic `COMUNICATO_SQUADRA` e `COMUNICATO_AVVENUTO_SCAMBIO`) in stato `APPROVED`/`ACCEPTED` o `REJECTED`.
+- Per i comunicati approvati la conferma chiarisce che viene cancellato solo il documento `teamRequests/{id}`: una eventuale news gia' pubblicata resta nella raccolta `news`.
+- Aggiornati footer/cache-buster/diagnostica a V245.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V244 - Elimina comunicati rifiutati da Firebase
+
+- Admin -> Richieste presidenti: quando un comunicato squadra o un comunicato avvenuto scambio viene rifiutato, compare il pulsante `Elimina da Firebase`.
+- Il pulsante cancella definitivamente il documento `teamRequests/{id}` solo per richieste comunicato in stato `REJECTED`; le richieste pending o approvate non vengono rese cancellabili.
+- Dopo la cancellazione lo stato locale viene aggiornato, il pannello resta aperto e si puo' usare ancora `Aggiorna richieste` per rileggere Firebase.
+- Aggiornati footer/cache-buster/diagnostica a V244.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
+## V243 - Comunicato scambio canonico
+
+- Consolidato il flusso Presidente -> Comunicato avvenuto scambio con form canonico `teamTransferCommunicationFormV243`.
+- Neutralizzati gli handler legacy V50/V79 che potevano agganciare lo stesso form e tentare ancora la pubblicazione diretta in `news`.
+- Il flusso resta: `teamRequests/TRANSFER_NEWS` + EmailJS immediato + pubblicazione News dopo approvazione Admin.
+- Aggiornati footer/cache-buster/diagnostica a V243.
+- `FUNZIONALITA'.md` non modificato perche' va aggiornato solo su richiesta esplicita.
+
 ## V241 - Accetta utenti stabile
 
 - Corretto il flusso Admin -> Accetta utenti: gli utenti rifiutati non vengono piu' cancellati da `pendingUsers`, ma marcati `REJECTED` con metadati di rifiuto.
@@ -431,3 +554,9 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - `In listone` e `Asteriscato` filtrano solo la colonna Stato.
 - `Svincolati` filtra solo la colonna Rosa, includendo i giocatori senza squadra fantasy.
 - Combinazioni checkbox rese coerenti: gli svincolati vengono esclusi quando la checkbox `Svincolati` non e selezionata.
+
+## V243 refresh richieste presidenti
+
+- Aggiunto refresh esplicito/automatico del pannello Admin → Richieste presidenti per rileggere `teamRequests` da Firebase quando una richiesta appena inviata non compare subito.
+- Normalizzato il payload del Comunicato avvenuto scambio con campi compatibili Admin (`TRANSFER_NEWS`, `requestType`, `adminVisible`, `needsAdminApproval`).
+- `FUNZIONALITA'.md` non modificato.

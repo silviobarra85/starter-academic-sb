@@ -1,6 +1,23 @@
+## Nota operativa V257 - Deploy Firebase Rules per notifiche trattative
+
+Per sincronizzare la lettura degli esiti trattative tra smartphone e desktop, deployare le rules V257 da `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` oppure applicare la patch `FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` alla configurazione Firestore esistente. Dopo il deploy, testare da presidente: ricezione esito, apertura card in `Dashboard Presidente -> Trattative`, refresh su secondo dispositivo. Se non compare piu il warning `Lettura esito trattativa salvata solo localmente`, la lettura e' persistita in Firebase.
+
+## Nota operativa V256 - Funzionalita V240-255
+
+Usare `FUNZIONALITA'V240-255.md` come riepilogo incrementale delle modifiche funzionali del branch refactor V240-V255. Non sostituisce `FUNZIONALITA'.md`.
+
+## Nota operativa V255 - Comandi trattative ricorrenti
+
+Per test ricorrenti delle notifiche trattative usare `ZonaOrientaleTradeSimulatorV255.help()` e, per un ciclo locale completo, `await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()`. Le funzioni locali non scrivono in Firebase; `createFirebaseSentProposal({ confirm: true })` scrive davvero e va usata solo per test end-to-end.
+
 # Operativita Admin e release
 
-Stato: V241.
+
+## Nota operativa V254 - Test notifiche trattative
+
+Per testare rapidamente le notifiche da console browser, accedere come presidente e usare `window.ZonaOrientaleTradeSimulatorV254`. Le funzioni `simulateIncomingProposal()` e `simulateResolvedSentProposal()` sono locali e non persistono; `createFirebaseSentProposal({ confirm: true })` scrive invece in Firebase e va usata solo per test reali.
+
+Stato: V254.
 
 ## Regola d'oro dati
 
@@ -333,3 +350,111 @@ Dopo deploy o test locale:
 
 
 Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra i duplicati di utenti gia approvati, evitando ricomparse non volute in Admin.
+
+
+Nota V243: per i comunicati di avvenuto scambio il presidente non scrive direttamente in `news`; crea una richiesta `TRANSFER_NEWS`, manda EmailJS alla lega e l Admin pubblica approvando la richiesta.
+
+Nota V245: dopo aver approvato o rifiutato un comunicato in Admin -> Richieste presidenti, compare `Elimina da Firebase`. Usarlo solo quando si vuole rimuovere definitivamente il documento `teamRequests` approvato/rifiutato; se il comunicato approvato e' gia' in News, la news pubblicata non viene rimossa.
+
+
+## Nota V246
+
+Le notifiche degli esiti trattative sono sincronizzate su Firebase quando possibile. Per testare:
+
+```text
+1. Presidente A invia proposta a Presidente B
+2. Presidente B approva/rifiuta
+3. Presidente A vede badge esito
+4. Presidente A apre Dashboard Presidente -> Trattative -> card proposta
+5. Il badge sparisce anche dopo refresh o da altro dispositivo, se le rules permettono l'update su transferNegotiations
+```
+
+Se le rules negano l'update di lettura, il sito usa ancora `localStorage` come fallback locale e in console puo' apparire il warning `Lettura esito trattativa salvata solo localmente`.
+
+
+## Nota V247
+
+Prima di fondere un branch su `master`, usare `REGRESSION_TESTS.md` come checklist minima. La checklist include test pubblico, presidente, admin, mobile, notifiche trattative, comunicati e controlli tecnici pre-commit.
+
+## Nota V248
+
+Prima del merge verificare che `window.ZonaOrientaleLegacyCleanupV248.legacyTransferCommunicationArtifacts` sia `0` dopo apertura Dashboard Presidente. Il documento `FUNZIONALITA'.md` resta invariato.
+
+
+### Richieste presidenti V249
+
+Nel pannello `Admin -> Richieste presidenti` usare `Aggiorna richieste` per rileggere `teamRequests` da Firebase quando una richiesta appena inviata non compare. I comunicati in stato approvato o rifiutato possono essere eliminati dal registro Firebase con `Elimina da Firebase`; questa azione non cancella una news gia' pubblicata.
+
+
+### Generatore comunicati automatici V250
+
+Percorso:
+
+```text
+Admin -> Generatore comunicati automatici
+```
+
+Il pannello prepara bozze locali partendo dai dati gia' caricati: risultati, vincitori competizione, mercato, focus squadra, Albo/Palmares e aggiornamenti dati pubblici. Non pubblica direttamente e non scrive su Firebase.
+
+Flusso consigliato:
+
+```text
+1. Apri Admin.
+2. Scegli tipo comunicato, stagione, eventuale competizione/squadra e tono.
+3. Premi Genera bozza.
+4. Usa Copia testo oppure Inserisci nei Comunicati.
+5. Nel form Admin -> Comunicati controlla titolo/testo/topic.
+6. Salva manualmente il comunicato.
+7. Se necessario, aggiorna snapshot/statici e fai commit.
+```
+
+Diagnostica in console:
+
+```js
+window.ZonaOrientaleCommunicationGeneratorV250
+```
+
+## Workflow pubblicazione Admin V251
+
+In Admin sono nuovamente disponibili i pannelli:
+
+```text
+Stato Firebase / JSON
+Procedura guidata Pubblica aggiornamenti
+```
+
+Uso consigliato dopo modifiche Admin:
+
+1. premere `Aggiorna stato pubblicazione`;
+2. controllare eventuali semafori gialli/rossi;
+3. usare `Procedura guidata Pubblica aggiornamenti`;
+4. copiare la checklist o i comandi Git;
+5. scaricare/applicare i JSON statici necessari;
+6. fare commit/push secondo il branch di lavoro.
+
+Il pannello e' solo operativo: non pubblica su GitHub, non apre PR e non scrive su Firebase.
+## Cleanup repository V252
+
+Per applicare completamente la V252, dopo l'overlay eseguire anche le rimozioni Git dei file locali/legacy indicati nella consegna:
+
+```bash
+git rm -r --ignore-unmatch static/zonaorientale/.DS_Store \
+  static/zonaorientale/assets/.DS_Store \
+  static/zonaorientale/assets/css/.DS_Store \
+  static/zonaorientale/assets/js/.DS_Store \
+  static/zonaorientale/assets/snapshots/.DS_Store \
+  static/zonaorientale/assets/css/mobile-hotfix-v166.css \
+  static/zonaorientale/assets/css/mobile-hotfix-v167.css \
+  __MACOSX static/zonaorientale/__MACOSX
+
+find static/zonaorientale -name ".DS_Store" -delete
+rm -rf __MACOSX static/zonaorientale/__MACOSX
+```
+
+La rimozione dei CSS hotfix e' sicura perche il loro contenuto e' gia presente in `assets/css/mobile-suite-v168.css` e gli HTML non li linkano.
+
+
+
+## Nota operativa V253 - Richieste presidenti modulari
+
+Il pannello `Admin -> Richieste presidenti` e' installato dal modulo `assets/js/admin/team-requests-panel-v253.js`. In caso di regressione, il codice inline V249 resta come fallback nel bundle principale, ma il render atteso deve usare attributi V253 e la diagnostica `window.ZonaOrientaleTeamRequestsV253`. Prima del merge testare refresh, approvazione, rifiuto ed eliminazione da Firebase dei comunicati approvati/rifiutati.

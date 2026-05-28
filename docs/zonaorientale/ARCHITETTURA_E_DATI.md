@@ -1,6 +1,23 @@
+## Nota V257 - Stato lettura notifiche trattative
+
+Le notifiche trattative non sono una collection separata: sono derivate da `transferNegotiations`. Da V246 il codice salva la lettura dell'esito nel documento trattativa; da V257 le Firebase Rules permettono al mittente di aggiornare solo i campi `outcomeSeenByFromUid`, `outcomeSeenByUid`, `outcomeSeenAtByFromUid` e `outcomeSeenMarkerByFromUid`. Il fallback `localStorage` resta attivo solo se le rules non sono ancora deployate o negano la scrittura.
+
+## Nota V256 - Registro funzionalita incrementale
+
+Il file `FUNZIONALITA'V240-255.md` documenta separatamente le funzionalita introdotte o consolidate nel ciclo V240-V255. Il documento principale `FUNZIONALITA'.md` resta invariato e va aggiornato solo su richiesta esplicita.
+
+## Comandi standard test trattative V255
+
+Il modulo `assets/js/dev/trade-notification-simulator-v255.js` installa `window.ZonaOrientaleTradeSimulatorV255` e mantiene alias V254. Le funzioni `help()` e `getTestCommands()` stampano i comandi standard; `runLocalSmokeTest()` esegue un ciclo locale senza scrivere in Firebase.
+
 # Architettura e dati ZonaOrientale
 
-Stato: V241.
+
+## Simulatore notifiche trattative V254
+
+Il modulo `assets/js/dev/trade-notification-simulator-v254.js` installa `window.ZonaOrientaleTradeSimulatorV254`. Le funzioni locali inseriscono righe simulate in `state.raw.transferNegotiations` e ridisegnano Dashboard Presidente/badge senza scrivere in Firebase. La funzione `createFirebaseSentProposal({ confirm: true })` puo' creare una proposta reale in `transferNegotiations` dal presidente corrente verso un'altra squadra per test end-to-end.
+
+Stato: V254.
 
 ## Tipo applicazione
 
@@ -38,11 +55,9 @@ assets/css/transfer-market-v130.css
 assets/css/competition-detail-v130.css
 assets/css/mobile-suite-v168.css
 assets/css/mobile-chrome-v223.css
-assets/css/mobile-hotfix-v166.css
-assets/css/mobile-hotfix-v167.css
 ```
 
-La UI mobile e' stata stratificata da molte versioni: prima di cambiare un componente mobile controllare sia `styles.css` sia `mobile-suite-v168.css`.
+La UI mobile e' stata stratificata da molte versioni: prima di cambiare un componente mobile controllare sia `styles.css` sia `mobile-suite-v168.css`. I vecchi `mobile-hotfix-v166.css` e `mobile-hotfix-v167.css` sono stati inglobati in `mobile-suite-v168.css` e in V252 sono marcati per rimozione dalla repo.
 
 ## Moduli JavaScript principali
 
@@ -486,3 +501,60 @@ Questo sostituisce il flusso V228/V230 con `tools/generate-news-share-pages.mjs`
 
 
 Nota V241: il flusso Accetta utenti conserva i rifiuti come `REJECTED` e filtra i duplicati di utenti gia approvati, evitando ricomparse non volute in Admin.
+
+
+Nota V243: il comunicato avvenuto scambio usa un unico flusso canonico: form V243, scrittura in `teamRequests` con `TRANSFER_NEWS`, invio EmailJS immediato e pubblicazione in News solo dopo approvazione Admin. Gli handler legacy V50/V79 sono neutralizzati per evitare doppie azioni.
+
+Nota V245: in Admin -> Richieste presidenti, i documenti `teamRequests` relativi a comunicati approvati o rifiutati possono essere eliminati definitivamente da Firebase con il pulsante `Elimina da Firebase`. La cancellazione e' limitata a richieste comunicato in stato `APPROVED`/`ACCEPTED` o `REJECTED`; una eventuale news gia' pubblicata resta nella raccolta `news`.
+
+
+Nota V246: le notifiche di esito trattativa usano come stato canonico i campi nel documento `transferNegotiations/{id}`: `outcomeSeenByFromUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid` e `outcomeSeenByUid`. Il vecchio `localStorage` resta solo fallback locale in caso di permessi Firebase insufficienti.
+
+
+## Nota V247
+
+Aggiunto `REGRESSION_TESTS.md` come checklist di regressione. Non cambia architettura runtime, sorgenti dati o schema Firebase.
+
+## Nota V248
+
+Aggiunto guard runtime per neutralizzare vecchi handler comunicato scambio V50/V79/V237. Il flusso canonico resta `teamRequests/TRANSFER_NEWS` + EmailJS + approvazione Admin.
+
+
+### Admin Richieste presidenti V249
+
+Il pannello `Admin -> Richieste presidenti` e' consolidato in un render canonico V249. Il flusso supporta refresh esplicito da Firebase, approvazione/rifiuto delle richieste pendenti e cancellazione da `teamRequests/{id}` dei soli comunicati approvati o rifiutati.
+
+
+### Admin Generatore comunicati automatici V250
+
+Il generatore comunicati automatici e' installato in V250 dal modulo `assets/js/refactor/admin-communication-generator-v210.js?v=250`. Il pannello compare in area Admin e usa i dati gia' caricati in `state.raw` per preparare bozze di comunicato su risultati, vincitori, mercato, focus squadra, Albo/Palmares e aggiornamenti dati pubblici.
+
+Il generatore non effettua scritture Firebase: permette di copiare la bozza oppure inserirla nel form `Admin -> Comunicati`, dove l'admin puo' revisionare e salvare manualmente. Diagnostica runtime: `window.ZonaOrientaleCommunicationGeneratorV250`.
+
+### Workflow pubblicazione Admin V251
+
+In V251 il workflow pubblicazione inline V190/V191/V203 viene consolidato come versione canonica. Il modulo esterno `assets/js/refactor/admin-publication-workflow-v213.js` resta non importato per evitare doppi listener; il workflow canonico espone in Admin:
+
+- `Stato Firebase / JSON`: semafori per asset statici, promemoria pendenti, modalita admin e letture Firebase stimate;
+- `Procedura guidata Pubblica aggiornamenti`: checklist operativa con promemoria, preflight e comandi Git copiabili.
+
+Il workflow non effettua scritture Firebase e non modifica dati: lavora su sessionStorage/localStorage, helper di preflight pubblici e stato runtime. In V251 sono stati aggiornati i comandi del wizard rimuovendo riferimenti a branch storici. Diagnostica runtime: `window.ZonaOrientalePublicationWorkflowV251`, `window.ZonaOrientalePublicationStatus`, `window.ZonaOrientalePublishWizard`.
+## Pulizia asset V252
+
+La V252 non cambia il comportamento runtime del sito. Introduce una pulizia controllata per evitare che file locali o legacy entrino nella repo:
+
+- `.DS_Store`, `__MACOSX` e file AppleDouble `._*` sono ignorati da `static/zonaorientale/.gitignore`;
+- `assets/css/mobile-hotfix-v166.css` e `assets/css/mobile-hotfix-v167.css` sono candidati alla rimozione, perche non linkati dagli HTML e gia inglobati in `assets/css/mobile-suite-v168.css`;
+- la diagnostica `window.ZonaOrientaleCleanupV252` conferma che la release e' di solo cleanup.
+
+
+
+## Modulo Admin Richieste presidenti V253
+
+Da V253 il pannello `Admin -> Richieste presidenti` ha un modulo dedicato:
+
+```text
+assets/js/admin/team-requests-panel-v253.js
+```
+
+Il modulo installa il render/handler canonico del pannello e mantiene il blocco inline V249 come fallback. La diagnostica runtime e' `window.ZonaOrientaleTeamRequestsV253`. Il modulo preserva le azioni esistenti: refresh da Firebase, approvazione, rifiuto ed eliminazione da Firebase dei comunicati gia approvati o rifiutati.

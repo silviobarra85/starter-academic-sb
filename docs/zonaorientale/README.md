@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V241**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V257**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,13 +16,16 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V241.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V257.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
 
-6. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V124C.rules`  
-   Regole Firestore storiche/consolidate. Non e' un handoff, ma resta qui come riferimento tecnico importante.
+6. `REGRESSION_TESTS.md`  
+   Checklist operativa da usare prima di merge e deploy per ridurre il rischio regressioni.
+
+7. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`  
+   Regole Firestore complete aggiornate per notifiche trattative multi-dispositivo. Il file patch V257 contiene solo la sezione da integrare se non vuoi sostituire tutto il file rules.
 
 ## Regola per i prossimi aggiornamenti docs
 
@@ -57,3 +60,40 @@ V240 riallinea badge e storico trattative nella Dashboard Presidente: le liste v
 ## Nota V241
 
 V241 stabilizza Admin -> Accetta utenti: i rifiuti restano come `REJECTED`, gli approvati non tornano `PENDING` al login e i vecchi duplicati pending vengono nascosti. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+
+
+## Nota V246
+
+V246 sincronizza su Firebase la lettura degli esiti trattative quando il presidente mittente apre la card della proposta conclusa. Il vecchio `localStorage` resta fallback locale se le regole Firebase negano l'update. Le precedenti V243-V245 restano attive: comunicato scambio canonico, EmailJS immediato e cancellazione da Firebase dei comunicati approvati/rifiutati in `teamRequests`. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+
+## Nota operativa V246
+
+Admin -> Richieste presidenti permette di eliminare da Firebase i comunicati approvati o rifiutati. La cancellazione rimuove il documento `teamRequests`; per i comunicati approvati una eventuale News gia' pubblicata resta online. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+
+
+## Nota V247
+
+V247 aggiunge `REGRESSION_TESTS.md`, una checklist di regressione per pubblico, presidente, admin, mobile e controlli tecnici pre-commit. Non introduce nuove funzionalita runtime. `FUNZIONALITA'.md` resta invariato salvo richiesta esplicita.
+
+## Nota V248
+
+V248 introduce una pulizia mirata degli handler legacy del comunicato avvenuto scambio, mantenendo il flusso canonico `teamRequests/TRANSFER_NEWS` + EmailJS + approvazione Admin.
+Nota V252: aggiunta pulizia repository per file locali/macOS e CSS mobile hotfix duplicati, senza modifiche funzionali al sito.
+
+
+Nota V253: estratto in modulo dedicato il pannello Admin -> Richieste presidenti, mantenendo fallback inline V249 e diagnostica `window.ZonaOrientaleTeamRequestsV253`.
+
+Nota V254: aggiunto simulatore notifiche trattative `window.ZonaOrientaleTradeSimulatorV254` per test locali/Firebase da console browser.
+
+
+Nota V255: il simulatore trattative espone `ZonaOrientaleTradeSimulatorV255.help()` e `runLocalSmokeTest()` per test ricorrenti da console browser.
+
+- `FUNZIONALITA'V240-255.md`
+  Riepilogo incrementale delle funzionalita introdotte o consolidate tra V240 e V255. Non sostituisce `FUNZIONALITA'.md`.
+
+## Firebase Rules V257
+
+Per sincronizzare le notifiche trattative tra smartphone e desktop usare:
+
+- `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` per il file completo;
+- `firebase/FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` se vuoi applicare solo la patch a `transferNegotiations`.

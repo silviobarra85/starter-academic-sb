@@ -1,3 +1,7 @@
+## Nota V257 - Rules notifiche trattative
+
+V257 chiude il punto notifiche trattative multi-dispositivo: la lettura dell'esito viene salvata in Firebase quando le rules deployate consentono l'update controllato dei campi `outcomeSeen...`.
+
 # Roadmap ZonaOrientale
 
 Documento consolidato dalle vecchie note sulle nuove funzionalita.
@@ -15,6 +19,13 @@ V223 CSS cleanup progressivo - fatto
 V224 hardening statistiche storiche + avvio rimozione legacy - fatto
 V225 stabilizzazione finale post-refactor - fatto
 V227 hotfix FM archivio - fatto
+V249 richieste presidenti canoniche - fatto
+V252 pulizia asset inutilizzati - fatto
+V253 modulo richieste presidenti - fatto
+V254 simulatore notifiche trattative - fatto
+V255 comandi test trattative - fatto
+V256 funzionalita V240-255 - fatto
+V257 rules notifiche trattative - fatto
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.
@@ -251,3 +262,18 @@ V240 completata: corretto il sync live delle trattative presidente tra badge, da
 
 
 V241 completata: stabilizzato il flusso Accetta utenti con rifiuto persistente, blocco rigenerazione pending e filtro duplicati gia approvati. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.
+
+
+V243 completata: consolidato il flusso comunicato avvenuto scambio e neutralizzati gli handler legacy V50/V79 per evitare doppio submit o scritture dirette in news. Prossimo refactor consigliato: notifiche trattative lette/non lette persistite in Firebase.
+
+
+V246 completata: la lettura degli esiti trattative viene salvata in Firebase quando il presidente mittente apre la card della proposta conclusa, con `localStorage` solo come fallback. Il documento `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita. Prossimi step consigliati: checklist regressioni e pulizia mirata degli handler legacy residui.
+
+
+## Stato V247
+
+Completata la checklist regressioni canonica in `REGRESSION_TESTS.md`. Prossimo step consigliato: pulizia mirata degli handler legacy residui piu' rischiosi, senza eliminare funzionalita visibili. `FUNZIONALITA'.md` non e' stato aggiornato perche' va modificato solo su richiesta esplicita.
+
+## Stato V248
+
+Conclusa la prima pulizia mirata degli handler legacy del comunicato avvenuto scambio. Prossimo step consigliato: test regressione completo e merge controllato del branch di refactor su `master`.

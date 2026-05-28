@@ -1,10 +1,49 @@
-# AI Handoff ZonaOrientale - Current V241
+# AI Handoff ZonaOrientale - Current V257
 
-Ultimo aggiornamento documentale: 26/05/2026.
+## Nota V257 - Firebase Rules notifiche trattative multi-dispositivo
+
+V257 aggiunge `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` e `FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules`. Le rules consentono al presidente mittente di una trattativa conclusa di aggiornare solo i campi di lettura esito (`outcomeSeenByFromUid`, `outcomeSeenByUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid`) su `transferNegotiations/{id}`. Obiettivo: se un esito viene letto da smartphone, il badge non deve riapparire da desktop. Il codice runtime V246 era gia predisposto; V257 fornisce la regola deployabile.
+
+
+## Nota V256 - Documento funzionalita V240-255
+
+V256 aggiunge `FUNZIONALITA'V240-255.md`, documento separato che riepiloga le funzionalita introdotte o consolidate tra V240 e V255. Non sostituisce e non modifica `FUNZIONALITA'.md`, che resta il registro funzionale principale da aggiornare solo su richiesta esplicita dell'utente.
+
+## Nota V255 - Comandi standard test trattative
+
+V255 aggiorna il simulatore notifiche trattative a `assets/js/dev/trade-notification-simulator-v255.js` e aggiunge `help()`, `getTestCommands()` e `runLocalSmokeTest()` sull'API `window.ZonaOrientaleTradeSimulatorV255`. Resta disponibile l'alias `window.ZonaOrientaleTradeSimulatorV254` per compatibilita' con i comandi gia' annotati. Le simulazioni locali non scrivono in Firebase; `createFirebaseSentProposal({ confirm: true })` scrive davvero in `transferNegotiations`.
+
+## Nota V254 - Simulatore notifiche trattative
+
+V254 aggiunge `assets/js/dev/trade-notification-simulator-v254.js` e l'API runtime `window.ZonaOrientaleTradeSimulatorV254`. Le funzioni locali non scrivono in Firebase e servono per simulare badge/card delle trattative da console browser; la scrittura reale e' disponibile solo con `createFirebaseSentProposal({ confirm: true })`.
+
+
+
+## Nota V253 - Estrazione modulare Richieste presidenti
+
+V253 e' il primo estratto modulare prudente da `assets/app.js`: il pannello `Admin -> Richieste presidenti` viene installato da `assets/js/admin/team-requests-panel-v253.js`. Il blocco inline V249 resta come fallback, ma il comportamento canonico usa attributi V253 e diagnostica `window.ZonaOrientaleTeamRequestsV253`. Funzionalita preservate: Aggiorna richieste, Approva, Rifiuta, Elimina da Firebase per comunicati approvati/rifiutati. `FUNZIONALITA'.md` non e' stato modificato.
+
+## Nota V252 - Pulizia asset inutilizzati
+
+V252 e' una release di cleanup controllato: aggiunge `.gitignore` locale in `static/zonaorientale/`, marca come rimovibili i metadati macOS (`.DS_Store`, `__MACOSX`, `._*`) e i CSS `mobile-hotfix-v166.css`/`mobile-hotfix-v167.css`, gia inglobati in `mobile-suite-v168.css` e non referenziati dagli HTML. Diagnostica runtime: `window.ZonaOrientaleCleanupV252`. Le eliminazioni fisiche vanno eseguite con i comandi `git rm` della consegna V252.
+Ultimo aggiornamento documentale: 27/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V241**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, e V241 con flusso Accetta utenti stabile anti-duplicati.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V257**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati, V253 con estrazione modulare di Admin -> Richieste presidenti e V254 con simulatore notifiche trattative e V255 con comandi standard/smoke test trattative e V256 con documento funzionalita V240-255 separato e V257 con Firebase Rules per notifiche trattative multi-dispositivo.
+
+
+## Nota V251 - Workflow pubblicazione Admin ripristinato
+
+In V251 il workflow pubblicazione inline V190/V191/V203 viene reso canonico senza reimportare il modulo esterno V213, evitando doppi listener. Restano attivi i pannelli Admin `Stato Firebase / JSON` e `Procedura guidata Pubblica aggiornamenti`. Il workflow non scrive su Firebase: legge preflight asset pubblici, promemoria locali e modalita admin, genera checklist e comandi Git copiabili. Diagnostica disponibile: `window.ZonaOrientalePublicationWorkflowV251`, oltre a `window.ZonaOrientalePublicationStatus` e `window.ZonaOrientalePublishWizard`.
+
+## Nota V250 - Generatore comunicati automatici ripristinato
+
+Il modulo `assets/js/refactor/admin-communication-generator-v210.js` era importato ma non installato. In V250 viene collegato esplicitamente all'area Admin tramite `installCommunicationGeneratorRefactorV210`. Il generatore prepara solo bozze locali: puo' copiare il testo o inserirlo nel form `Admin -> Comunicati`, ma non scrive direttamente su Firebase e non pubblica automaticamente news. Diagnostica disponibile: `window.ZonaOrientaleCommunicationGeneratorV250`.
+
+## Nota V249 - Richieste presidenti canoniche
+
+La sezione `Admin -> Richieste presidenti` e' stata consolidata in V249: il pannello usa un solo render canonico, un refresh dedicato da Firebase, handler dedicati per Approva/Rifiuta ed eliminazione da Firebase dei soli comunicati approvati/rifiutati. I vecchi attributi V244/V245 non vengono piu' usati dal render canonico.
 
 ## Posizione e struttura progetto
 
@@ -59,6 +98,33 @@ http://localhost:1313/zonaorientale/
 
 
 
+
+
+
+
+## V248 - Pulizia handler legacy comunicato scambio
+
+V248 aggiunge un guard runtime per rimuovere eventuali vecchi form/handler V50/V79/V237 del comunicato avvenuto scambio e mantenere un solo flusso canonico V242/V243: presidente -> `teamRequests/TRANSFER_NEWS` -> EmailJS -> approvazione Admin -> News. La diagnostica e' disponibile in `window.ZonaOrientaleLegacyCleanupV248`. `FUNZIONALITA'.md` non e' stato modificato.
+
+## V247 - Checklist regressioni
+
+V247 aggiunge `docs/zonaorientale/REGRESSION_TESTS.md`, checklist operativa per testare pubblico, presidente, admin, mobile, Firebase e controlli tecnici prima di merge/deploy. La release non introduce modifiche funzionali runtime oltre a footer/cache-buster/diagnostica. `FUNZIONALITA'.md` non e' stato modificato, come da regola di aggiornamento solo esplicito.
+
+## V246 - Notifiche trattative sincronizzate su Firebase
+
+V246 rende piu' robusto il badge delle trattative: quando il presidente mittente apre la card di una proposta conclusa, il sito marca l'esito come letto anche nel documento `transferNegotiations/{id}` (`outcomeSeenByFromUid`, `outcomeSeenAtByFromUid`, `outcomeSeenMarkerByFromUid`). `localStorage` resta come fallback se le regole Firebase negano l'update, ma il comportamento atteso e' la sincronizzazione tra desktop e mobile. Quando il destinatario approva o rifiuta, il flag di lettura del mittente viene resettato. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
+
+## V245 - Elimina comunicati approvati da Firebase
+
+V245 estende Admin -> Richieste presidenti: il pulsante `Elimina da Firebase` compare anche sui comunicati approvati (`TEAM_NEWS` e `TRANSFER_NEWS`, inclusi topic `COMUNICATO_SQUADRA` e `COMUNICATO_AVVENUTO_SCAMBIO`), non solo sui rifiutati. La cancellazione rimuove il documento `teamRequests/{id}`; se il comunicato approvato e' gia' stato pubblicato nelle News, la news pubblicata non viene cancellata. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
+
+## V244 - Elimina comunicati rifiutati da Firebase
+
+V244 aggiunge in Admin -> Richieste presidenti il pulsante `Elimina da Firebase` per i soli comunicati rifiutati (`TEAM_NEWS` e `TRANSFER_NEWS`, inclusi topic `COMUNICATO_SQUADRA` e `COMUNICATO_AVVENUTO_SCAMBIO`). Il pulsante compare dopo il rifiuto, chiede conferma e cancella il documento `teamRequests/{id}`. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
+
+## V243 - Comunicato scambio canonico
+
+V243 consolida il flusso Presidente -> Comunicato avvenuto scambio: viene mantenuto un solo form canonico (`teamTransferCommunicationFormV243`) che salva `teamRequests` con `type: TRANSFER_NEWS`, `topic: COMUNICATO_AVVENUTO_SCAMBIO`, invia subito EmailJS a `caparrotti86@yahoo.it` e lascia la pubblicazione in News all'approvazione Admin. Gli agganci legacy V50/V79 vengono neutralizzati per evitare doppio submit o tentativi di scrittura diretta in `news` da account presidente. `FUNZIONALITA'.md` non e' stato modificato in questa release, come da regola di aggiornamento solo esplicito.
 
 ## V241 - Accetta utenti stabile
 
@@ -197,17 +263,17 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V241 accetta utenti stabile**.
+Versione sito: **V248 pulizia handler legacy**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V241 accetta utenti stabile · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V248 pulizia handler legacy · Ultimo aggiornamento 26/05/2026
 ```
 
-Cache-buster HTML principali attesi: `?v=241`.
+Cache-buster HTML principali attesi: `?v=248`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `241`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `256`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 

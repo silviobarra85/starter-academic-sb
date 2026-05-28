@@ -34,6 +34,64 @@ service cloud.firestore {
         && mySeasonTeamId() == teamId;
     }
 
+    function changedKeys() {
+      return request.resource.data.diff(resource.data).affectedKeys();
+    }
+
+    function isTradeOutcomeStatus(status) {
+      return status == 'ACCEPTED' || status == 'REJECTED';
+    }
+
+    function isTradeResponseUpdateByReceiver() {
+      return isParticipantTeam(resource.data.toSeasonTeamId)
+        && resource.data.status == 'PENDING'
+        && isTradeOutcomeStatus(request.resource.data.status)
+        && (
+          (
+            request.resource.data.status == 'ACCEPTED'
+            && changedKeys().hasOnly(['status', 'updatedAt', 'acceptedAt', 'acceptedBy'])
+            && request.resource.data.acceptedBy == request.auth.uid
+          )
+          ||
+          (
+            request.resource.data.status == 'REJECTED'
+            && changedKeys().hasOnly(['status', 'updatedAt', 'rejectedAt', 'rejectedBy'])
+            && request.resource.data.rejectedBy == request.auth.uid
+          )
+        );
+    }
+
+    function isTradeOutcomeSeenUpdateBySender() {
+      return isParticipantTeam(resource.data.fromSeasonTeamId)
+        && isTradeOutcomeStatus(resource.data.status)
+        && changedKeys().hasOnly([
+          'outcomeSeenByFromUid',
+          'outcomeSeenByUid',
+          'outcomeSeenAtByFromUid',
+          'outcomeSeenMarkerByFromUid'
+        ])
+        && request.resource.data.outcomeSeenByFromUid == true
+        && request.resource.data.outcomeSeenByUid == request.auth.uid
+        && request.resource.data.outcomeSeenAtByFromUid is timestamp
+        && request.resource.data.outcomeSeenMarkerByFromUid is string
+        && request.resource.data.outcomeSeenMarkerByFromUid.size() <= 200;
+    }
+
+    function isTradeOutcomeResetUpdateByReceiver() {
+      return isParticipantTeam(resource.data.toSeasonTeamId)
+        && isTradeOutcomeStatus(resource.data.status)
+        && changedKeys().hasOnly([
+          'outcomeSeenByFromUid',
+          'outcomeSeenMarkerByFromUid',
+          'outcomeSeenByUid',
+          'outcomeResetAtV246'
+        ])
+        && request.resource.data.outcomeSeenByFromUid == false
+        && request.resource.data.outcomeSeenMarkerByFromUid == ''
+        && request.resource.data.outcomeSeenByUid == ''
+        && request.resource.data.outcomeResetAtV246 is timestamp;
+    }
+
     match /admins/{userId} {
       // Un utente loggato puo leggere solo il proprio eventuale documento admin.
       // Questo permette al frontend di verificare se e admin senza bloccare i presidenti.
@@ -43,7 +101,7 @@ service cloud.firestore {
 
     match /pendingUsers/{userId} {
       // Il presidente puo creare/leggere/aggiornare la propria richiesta.
-      // L'admin puo leggere, approvare o rifiutare; il rifiuto puo cancellare il record.
+      // L'admin puo leggere, approvare o rifiutare; dalla V241 il rifiuto resta REJECTED.
       allow create, read, update: if isSignedIn() && request.auth.uid == userId;
       allow read, write, delete: if isAdmin();
     }
@@ -95,14 +153,20 @@ service cloud.firestore {
         || isParticipantTeam(resource.data.fromSeasonTeamId)
         || isParticipantTeam(resource.data.toSeasonTeamId);
 
+      // Il presidente puo creare solo trattative dalla propria squadra.
       allow create: if isAdmin()
         || isParticipantTeam(request.resource.data.fromSeasonTeamId);
 
+      // V257: update non-admin separati per sicurezza.
+      // - Il destinatario puo accettare/rifiutare una proposta PENDING.
+      // - Il destinatario puo resettare i flag di lettura esito dopo la risposta.
+      // - Il mittente puo marcare come letto solo l'esito della propria proposta conclusa.
       allow update: if isAdmin()
-        || isParticipantTeam(resource.data.fromSeasonTeamId)
-        || isParticipantTeam(resource.data.toSeasonTeamId);
+        || isTradeResponseUpdateByReceiver()
+        || isTradeOutcomeResetUpdateByReceiver()
+        || isTradeOutcomeSeenUpdateBySender();
 
-      // Chi invia puo annullare una proposta PENDING: dalla V121 viene eliminata da Firebase.
+      // Chi invia puo annullare una proposta PENDING: viene eliminata da Firebase.
       allow delete: if isAdmin()
         || (
           isParticipantTeam(resource.data.fromSeasonTeamId)
