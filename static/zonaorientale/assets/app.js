@@ -15534,7 +15534,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "257";
+const DEPLOY_EXPECTED_VERSION_V181 = "258";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20891,4 +20891,22 @@ window.ZonaOrientaleFirebaseRulesV257 = {
     'outcomeSeenMarkerByFromUid'
   ],
   purpose: 'Sincronizzare la lettura degli esiti trattative tra smartphone e desktop.'
+};
+
+
+/* V258 - Handoff nuovo branch 260528.
+   Aggiunge documentazione operativa per eventuale nuovo assistente e roadmap delle prossime attivita. */
+window.ZonaOrientaleHandoffV258 = {
+  version: 'V258',
+  label: 'handoff nuovo branch',
+  date: '2026-05-28',
+  suggestedBranch: 'refactor/260528-zonaorientale-next',
+  assistantHandoffFile: "docs/zonaorientale/ISTRUZIONI_NUOVO_ASSISTENTE_260528.md",
+  nextActivitiesFile: "docs/zonaorientale/PROSSIME_ATTIVITA_260528.md",
+  firebaseRulesVersion: 'V257',
+  notes: [
+    'FUNZIONALITA.md canonico non modificato.',
+    'Nuovi documenti di handoff e roadmap per prosecuzione lavori.',
+    'Dopo merge/deploy pubblicare separatamente le Firebase Rules V257 se non gia fatto.'
+  ]
 };

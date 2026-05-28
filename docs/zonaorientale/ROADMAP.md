@@ -1,3 +1,7 @@
+# Roadmap V258 - Nuovo branch 260528
+
+La roadmap operativa dettagliata è in `PROSSIME_ATTIVITA_260528.md`. Le priorità immediate sono: deploy/verifica Firebase Rules V257, test regressioni completo, consolidamento modulo Admin Richieste presidenti e successiva estrazione modulare della Dashboard Presidente.
+
 ## Nota V257 - Rules notifiche trattative
 
 V257 chiude il punto notifiche trattative multi-dispositivo: la lettura dell'esito viene salvata in Firebase quando le rules deployate consentono l'update controllato dei campi `outcomeSeen...`.

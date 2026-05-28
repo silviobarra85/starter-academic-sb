@@ -1,3 +1,10 @@
+# V258 - Handoff nuovo branch 260528
+
+- Aggiunti `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md` e `PROSSIME_ATTIVITA_260528.md`.
+- Aggiornati footer/cache-buster/diagnostica runtime a V258.
+- Preparata documentazione operativa per apertura nuovo branch `refactor/260528-zonaorientale-next`.
+- Nessuna modifica a `FUNZIONALITA'.md`.
+
 ## V257 - Firebase Rules notifiche trattative
 
 - Aggiunto file completo rules `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`.

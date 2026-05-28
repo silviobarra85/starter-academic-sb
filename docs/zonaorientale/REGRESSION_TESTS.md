@@ -1,3 +1,7 @@
+# Nota V258
+
+Prima di proseguire sul nuovo branch `refactor/260528-zonaorientale-next`, eseguire almeno i test critici su comunicato avvenuto scambio, Admin -> Richieste presidenti, notifiche trattative e workflow pubblicazione. Per le notifiche usare anche `ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()`.
+
 ## Test V257 - Notifiche trattative multi-dispositivo
 
 Dopo deploy delle Firebase Rules V257:

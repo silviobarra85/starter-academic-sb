@@ -1,4 +1,8 @@
-# AI Handoff ZonaOrientale - Current V257
+# AI Handoff ZonaOrientale - Current V258
+
+## Nota V258 - Handoff nuovo branch 260528
+
+V258 aggiunge documentazione operativa per aprire e gestire il nuovo branch `refactor/260528-zonaorientale-next`. Nuovi file: `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md` con istruzioni complete per un eventuale nuovo assistente, e `PROSSIME_ATTIVITA_260528.md` con backlog ragionato di pulizia/refactor/correzioni/nuove funzionalita. Footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` sono allineati a 258. `FUNZIONALITA'.md` non e' stato modificato.
 
 ## Nota V257 - Firebase Rules notifiche trattative multi-dispositivo
 
@@ -30,7 +34,7 @@ Ultimo aggiornamento documentale: 27/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V257**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati, V253 con estrazione modulare di Admin -> Richieste presidenti e V254 con simulatore notifiche trattative e V255 con comandi standard/smoke test trattative e V256 con documento funzionalita V240-255 separato e V257 con Firebase Rules per notifiche trattative multi-dispositivo.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V258**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati, V253 con estrazione modulare di Admin -> Richieste presidenti e V254 con simulatore notifiche trattative e V255 con comandi standard/smoke test trattative e V256 con documento funzionalita V240-255 separato e V257 con Firebase Rules per notifiche trattative multi-dispositivo e V258 con handoff nuovo branch 260528 e roadmap prossime attivita.
 
 
 ## Nota V251 - Workflow pubblicazione Admin ripristinato
@@ -263,7 +267,7 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V248 pulizia handler legacy**.
+Versione sito: **V258 handoff nuovo branch**.
 
 Footer corrente atteso:
 
@@ -273,7 +277,7 @@ ZonaOrientale Salerno · V248 pulizia handler legacy · Ultimo aggiornamento 26/
 
 Cache-buster HTML principali attesi: `?v=248`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `256`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `258`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 
@@ -666,7 +670,7 @@ assets/css/mobile-chrome-v223.css
 
 Il file assorbe i blocchi duplicati V218 relativi a pulsante `Su`, vecchi pulsanti `listone/competition` e guard desktop del bottom menu. I blocchi corrispondenti sono stati rimossi da `assets/styles.css` e `assets/css/mobile-suite-v168.css` per iniziare la pulizia CSS senza alterare il layout.
 
-Versione runtime attesa: **238**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
+Versione runtime attesa: **258**. Dopo modifiche successive aggiornare sempre footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
 
 
 ## Update V235

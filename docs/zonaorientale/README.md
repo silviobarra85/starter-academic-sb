@@ -1,3 +1,12 @@
+# Nota V258 - Nuovo branch e handoff
+
+V258 aggiunge due documenti operativi:
+
+- `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md`
+- `PROSSIME_ATTIVITA_260528.md`
+
+Il branch consigliato per la nuova fase è `refactor/260528-zonaorientale-next`.
+
 # Documentazione ZonaOrientale
 
 Documentazione consolidata al 26/05/2026, stato codice sito **V257**.

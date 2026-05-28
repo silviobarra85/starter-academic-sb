@@ -1,3 +1,7 @@
+# Nota operativa V258
+
+Per la nuova fase aprire il branch `refactor/260528-zonaorientale-next` da `master` aggiornato. Dopo ogni overlay continuare ad applicare la regola: zip unico con radici `zonaorientale/` e `docs/`, test locale, commit sul branch e merge su `master` solo dopo regressioni. Le Firebase Rules V257 vanno pubblicate separatamente se non esiste pipeline Firebase CLI.
+
 ## Nota operativa V257 - Deploy Firebase Rules per notifiche trattative
 
 Per sincronizzare la lettura degli esiti trattative tra smartphone e desktop, deployare le rules V257 da `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` oppure applicare la patch `FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` alla configurazione Firestore esistente. Dopo il deploy, testare da presidente: ricezione esito, apertura card in `Dashboard Presidente -> Trattative`, refresh su secondo dispositivo. Se non compare piu il warning `Lettura esito trattativa salvata solo localmente`, la lettura e' persistita in Firebase.
