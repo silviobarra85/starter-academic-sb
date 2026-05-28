@@ -1,3 +1,7 @@
+# Roadmap V259 - Preview social home/news
+
+V259 chiude la correzione preview WhatsApp della home: home generica, news solo sui link share/comunicato. Prossimi controlli consigliati: usare il debugger/scraper di WhatsApp/Facebook se l'anteprima vecchia resta in cache, verificare link `/zonaorientale/` e `/zonaorientale/share/news/<id>`.
+
 # Roadmap V258 - Nuovo branch 260528
 
 La roadmap operativa dettagliata è in `PROSSIME_ATTIVITA_260528.md`. Le priorità immediate sono: deploy/verifica Firebase Rules V257, test regressioni completo, consolidamento modulo Admin Richieste presidenti e successiva estrazione modulare della Dashboard Presidente.

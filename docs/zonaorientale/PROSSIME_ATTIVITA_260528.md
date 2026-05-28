@@ -1,3 +1,7 @@
+# Aggiornamento V259 - Preview WhatsApp
+
+Aggiunta attivita completata: separare anteprima home da anteprime news. Restano da verificare in produzione eventuali cache WhatsApp/Meta e il corretto uso dei link `/share/news/<id>` per i comunicati.
+
 # Prossime attività ZonaOrientale - 260528
 
 Documento creato in V258 per pianificare le attività successive sul nuovo branch:

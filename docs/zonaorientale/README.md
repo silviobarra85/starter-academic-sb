@@ -1,3 +1,7 @@
+# Nota V259 - Anteprima WhatsApp della home
+
+La home `/zonaorientale/` deve avere anteprima WhatsApp generica del sito. Le anteprime specifiche dei comunicati devono comparire solo quando si condivide un link news/share, in particolare `/zonaorientale/share/news/<id>` o una pagina comunicato legacy. Il generatore statico `tools/generate-news-share-pages.mjs` e' stato aggiornato per non riscrivere piu i meta Open Graph di `index.html` con l'ultimo comunicato.
+
 # Nota V258 - Nuovo branch e handoff
 
 V258 aggiunge due documenti operativi:

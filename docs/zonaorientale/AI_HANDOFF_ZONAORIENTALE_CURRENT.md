@@ -1,4 +1,8 @@
-# AI Handoff ZonaOrientale - Current V258
+# AI Handoff ZonaOrientale - Current V259
+
+## Nota V259 - Anteprima WhatsApp home generica
+
+V259 corregge i meta tag di `index.html`: la home torna ad avere titolo/descrizione generici e non eredita piu i metadati dell'ultimo comunicato. Le anteprime specifiche delle news restano solo sui percorsi comunicato/share, in particolare `/zonaorientale/share/news/<id>` gestito da Netlify e sulle pagine legacy `comunicati/*.html`/`news.html`. Aggiornato anche `tools/generate-news-share-pages.mjs`: il generatore non deve piu scrivere meta news dentro `index.html`, ma deve preservare la preview generica della home. Versione/cache-buster/diagnostica allineati a 259.
 
 ## Nota V258 - Handoff nuovo branch 260528
 
@@ -34,7 +38,7 @@ Ultimo aggiornamento documentale: 27/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V258**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati, V253 con estrazione modulare di Admin -> Richieste presidenti e V254 con simulatore notifiche trattative e V255 con comandi standard/smoke test trattative e V256 con documento funzionalita V240-255 separato e V257 con Firebase Rules per notifiche trattative multi-dispositivo e V258 con handoff nuovo branch 260528 e roadmap prossime attivita.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V259**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati, V253 con estrazione modulare di Admin -> Richieste presidenti e V254 con simulatore notifiche trattative e V255 con comandi standard/smoke test trattative e V256 con documento funzionalita V240-255 separato e V257 con Firebase Rules per notifiche trattative multi-dispositivo e V258 con handoff nuovo branch 260528 e roadmap prossime attivita e V259 con anteprima WhatsApp generica della home.
 
 
 ## Nota V251 - Workflow pubblicazione Admin ripristinato
@@ -267,12 +271,12 @@ Se nessuna sorgente contiene il dato, l'Archivio mostra `-` invece di un falso `
 
 ## Versione corrente codice
 
-Versione sito: **V258 handoff nuovo branch**.
+Versione sito: **V259 anteprima home generica**.
 
 Footer corrente atteso:
 
 ```text
-ZonaOrientale Salerno · V248 pulizia handler legacy · Ultimo aggiornamento 26/05/2026
+ZonaOrientale Salerno · V259 anteprima home generica · Ultimo aggiornamento 28/05/2026
 ```
 
 Cache-buster HTML principali attesi: `?v=248`.

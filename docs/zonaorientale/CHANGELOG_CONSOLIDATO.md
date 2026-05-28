@@ -1,3 +1,10 @@
+# V259 - Anteprima WhatsApp home generica
+
+- Corretto `index.html`: meta description, Open Graph e Twitter Card ora sono generici della home.
+- Le anteprime news restano riservate ai percorsi news/share, non alla home.
+- Aggiornato `tools/generate-news-share-pages.mjs` per evitare regressioni: il generatore non deve piu sostituire i meta della home con l'ultimo comunicato.
+- Aggiornati footer/cache-buster/diagnostica runtime a V259.
+
 # V258 - Handoff nuovo branch 260528
 
 - Aggiunti `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md` e `PROSSIME_ATTIVITA_260528.md`.

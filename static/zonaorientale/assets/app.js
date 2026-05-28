@@ -15534,7 +15534,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "258";
+const DEPLOY_EXPECTED_VERSION_V181 = "259";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20909,4 +20909,16 @@ window.ZonaOrientaleHandoffV258 = {
     'Nuovi documenti di handoff e roadmap per prosecuzione lavori.',
     'Dopo merge/deploy pubblicare separatamente le Firebase Rules V257 se non gia fatto.'
   ]
+};
+
+
+/* V259 - Anteprima WhatsApp home generica.
+   La home non deve piu ereditare i meta tag dell'ultimo comunicato: le anteprime
+   specifiche delle news restano delegate al percorso dinamico Netlify /share/news/<id>
+   e alle pagine comunicato legacy. */
+window.ZonaOrientaleHomePreviewV259 = {
+  version: 'V259',
+  homePreview: 'generic',
+  newsPreviewOnlyOnShareRoutes: true,
+  dynamicNewsShareRoute: '/zonaorientale/share/news/<id>'
 };

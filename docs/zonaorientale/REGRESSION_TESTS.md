@@ -1,3 +1,10 @@
+# Test V259 - Anteprime WhatsApp home/news
+
+- Condividere `https://silviobarra.com/zonaorientale/`: deve uscire anteprima generica della home.
+- Condividere un link news generato dal sito, preferibilmente `/zonaorientale/share/news/<id>`: deve uscire anteprima del comunicato specifico.
+- Verificare che `index.html` contenga `og:title=ZonaOrientale Salerno` e non il titolo dell'ultima news.
+- Se WhatsApp mostra ancora la vecchia preview, considerare la cache dello scraper prima di diagnosticare un errore del codice.
+
 # Nota V258
 
 Prima di proseguire sul nuovo branch `refactor/260528-zonaorientale-next`, eseguire almeno i test critici su comunicato avvenuto scambio, Admin -> Richieste presidenti, notifiche trattative e workflow pubblicazione. Per le notifiche usare anche `ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()`.

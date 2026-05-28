@@ -1,3 +1,7 @@
+# Nota operativa V259 - Test anteprime WhatsApp
+
+Dopo deploy, condividere su WhatsApp `https://silviobarra.com/zonaorientale/`: l'anteprima deve mostrare titolo generico `ZonaOrientale Salerno` e descrizione del gestionale, non l'ultima news. Per una news usare il pulsante/link share che punta a `/zonaorientale/share/news/<id>`. WhatsApp puo mantenere in cache le anteprime: se compare ancora la vecchia news, attendere o forzare lo scraping con strumenti Meta/Facebook quando disponibile.
+
 # Nota operativa V258
 
 Per la nuova fase aprire il branch `refactor/260528-zonaorientale-next` da `master` aggiornato. Dopo ogni overlay continuare ad applicare la regola: zip unico con radici `zonaorientale/` e `docs/`, test locale, commit sul branch e merge su `master` solo dopo regressioni. Le Firebase Rules V257 vanno pubblicate separatamente se non esiste pipeline Firebase CLI.
