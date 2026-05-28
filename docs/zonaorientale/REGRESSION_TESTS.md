@@ -1,3 +1,20 @@
+## Test V257 - Notifiche trattative multi-dispositivo
+
+Dopo deploy delle Firebase Rules V257:
+
+1. Presidente A invia proposta a Presidente B.
+2. Presidente B approva o rifiuta.
+3. Presidente A vede badge rosso esito.
+4. Presidente A apre la card della proposta in `Dashboard Presidente -> Trattative` da smartphone.
+5. Verificare in console che non appaia `Lettura esito trattativa salvata solo localmente`.
+6. Aprire da desktop con lo stesso presidente A: il badge esito non deve riapparire.
+
+Comando utile dopo login presidente:
+
+```js
+await ZonaOrientaleTradeSimulatorV255.createFirebaseSentProposal({ confirm: true })
+```
+
 ## Nota V256 - Registro incrementale funzionalita
 
 Per verificare cosa e' stato aggiunto/consolidato tra V240 e V255 consultare `FUNZIONALITA'V240-255.md`. Il documento principale `FUNZIONALITA'.md` non viene toccato salvo richiesta esplicita.

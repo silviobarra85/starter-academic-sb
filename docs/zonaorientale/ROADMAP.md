@@ -1,3 +1,7 @@
+## Nota V257 - Rules notifiche trattative
+
+V257 chiude il punto notifiche trattative multi-dispositivo: la lettura dell'esito viene salvata in Firebase quando le rules deployate consentono l'update controllato dei campi `outcomeSeen...`.
+
 # Roadmap ZonaOrientale
 
 Documento consolidato dalle vecchie note sulle nuove funzionalita.
@@ -21,6 +25,7 @@ V253 modulo richieste presidenti - fatto
 V254 simulatore notifiche trattative - fatto
 V255 comandi test trattative - fatto
 V256 funzionalita V240-255 - fatto
+V257 rules notifiche trattative - fatto
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.

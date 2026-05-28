@@ -1,3 +1,7 @@
+## Nota operativa V257 - Deploy Firebase Rules per notifiche trattative
+
+Per sincronizzare la lettura degli esiti trattative tra smartphone e desktop, deployare le rules V257 da `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` oppure applicare la patch `FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` alla configurazione Firestore esistente. Dopo il deploy, testare da presidente: ricezione esito, apertura card in `Dashboard Presidente -> Trattative`, refresh su secondo dispositivo. Se non compare piu il warning `Lettura esito trattativa salvata solo localmente`, la lettura e' persistita in Firebase.
+
 ## Nota operativa V256 - Funzionalita V240-255
 
 Usare `FUNZIONALITA'V240-255.md` come riepilogo incrementale delle modifiche funzionali del branch refactor V240-V255. Non sostituisce `FUNZIONALITA'.md`.

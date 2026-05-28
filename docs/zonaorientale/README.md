@@ -1,6 +1,6 @@
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V256**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V257**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,7 +16,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V256.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V257.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -24,8 +24,8 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
 6. `REGRESSION_TESTS.md`  
    Checklist operativa da usare prima di merge e deploy per ridurre il rischio regressioni.
 
-7. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V124C.rules`  
-   Regole Firestore storiche/consolidate. Non e' un handoff, ma resta qui come riferimento tecnico importante.
+7. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`  
+   Regole Firestore complete aggiornate per notifiche trattative multi-dispositivo. Il file patch V257 contiene solo la sezione da integrare se non vuoi sostituire tutto il file rules.
 
 ## Regola per i prossimi aggiornamenti docs
 
@@ -90,3 +90,10 @@ Nota V255: il simulatore trattative espone `ZonaOrientaleTradeSimulatorV255.help
 
 - `FUNZIONALITA'V240-255.md`
   Riepilogo incrementale delle funzionalita introdotte o consolidate tra V240 e V255. Non sostituisce `FUNZIONALITA'.md`.
+
+## Firebase Rules V257
+
+Per sincronizzare le notifiche trattative tra smartphone e desktop usare:
+
+- `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` per il file completo;
+- `firebase/FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` se vuoi applicare solo la patch a `transferNegotiations`.

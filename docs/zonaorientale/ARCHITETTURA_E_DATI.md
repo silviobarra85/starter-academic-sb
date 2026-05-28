@@ -1,3 +1,7 @@
+## Nota V257 - Stato lettura notifiche trattative
+
+Le notifiche trattative non sono una collection separata: sono derivate da `transferNegotiations`. Da V246 il codice salva la lettura dell'esito nel documento trattativa; da V257 le Firebase Rules permettono al mittente di aggiornare solo i campi `outcomeSeenByFromUid`, `outcomeSeenByUid`, `outcomeSeenAtByFromUid` e `outcomeSeenMarkerByFromUid`. Il fallback `localStorage` resta attivo solo se le rules non sono ancora deployate o negano la scrittura.
+
 ## Nota V256 - Registro funzionalita incrementale
 
 Il file `FUNZIONALITA'V240-255.md` documenta separatamente le funzionalita introdotte o consolidate nel ciclo V240-V255. Il documento principale `FUNZIONALITA'.md` resta invariato e va aggiornato solo su richiesta esplicita.

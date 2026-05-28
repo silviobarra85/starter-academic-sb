@@ -1,3 +1,11 @@
+## V257 - Firebase Rules notifiche trattative
+
+- Aggiunto file completo rules `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`.
+- Aggiunto file patch `docs/zonaorientale/firebase/FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` per integrare solo la parte `transferNegotiations`.
+- La lettura esito trattativa del mittente puo essere salvata in Firebase su campi dedicati, sincronizzando smartphone e desktop.
+- Le update non-admin su `transferNegotiations` vengono limitate a: risposta del destinatario, reset flag lettura del destinatario, lettura esito del mittente.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V257.
+
 ## V256 - Documento funzionalita V240-255
 
 - Aggiunto `FUNZIONALITA'V240-255.md`, documento separato che traccia le funzionalita introdotte/consolidate tra V240 e V255.
