@@ -1,3 +1,9 @@
+# Nota V260 - Preview news e tag tecnici UI
+
+V260 rimuove il pulsante `Apri preview` dalle card/news admin e pubbliche: il link da condividere resta generato da `Copia link WhatsApp`. La home mantiene i meta generici introdotti in V259, mentre le anteprime specifiche dei comunicati restano disponibili solo sui percorsi share/news gestiti da Netlify.
+
+V260 nasconde inoltre i badge tecnici `Firebase` e `JSON` dall'interfaccia utente. La modifica e' solo di UI: non cambia le fonti dati, non rimuove Firebase, non rimuove snapshot JSON e non modifica i permessi.
+
 # Nota V259 - Anteprima WhatsApp della home
 
 La home `/zonaorientale/` deve avere anteprima WhatsApp generica del sito. Le anteprime specifiche dei comunicati devono comparire solo quando si condivide un link news/share, in particolare `/zonaorientale/share/news/<id>` o una pagina comunicato legacy. Il generatore statico `tools/generate-news-share-pages.mjs` e' stato aggiornato per non riscrivere piu i meta Open Graph di `index.html` con l'ultimo comunicato.

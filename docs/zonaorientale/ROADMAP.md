@@ -1,3 +1,7 @@
+# Roadmap V260 - Pulizia preview/tag tecnici
+
+V260 chiude due richieste UI: rimozione del pulsante `Apri preview` e rimozione/nascondimento dei badge tecnici `Firebase`/`JSON` dall'interfaccia. Prossimi controlli consigliati: verificare un link home `/zonaorientale/`, un link news `/zonaorientale/share/news/<id>` e le sezioni Admin che prima mostravano badge sorgente.
+
 # Roadmap V259 - Preview social home/news
 
 V259 chiude la correzione preview WhatsApp della home: home generica, news solo sui link share/comunicato. Prossimi controlli consigliati: usare il debugger/scraper di WhatsApp/Facebook se l'anteprima vecchia resta in cache, verificare link `/zonaorientale/` e `/zonaorientale/share/news/<id>`.

@@ -5145,7 +5145,6 @@ function renderNewsShareActionsV228(news, { admin = false } = {}) {
   return `
     <div class="news-share-actions">
       <button class="button button-secondary button-small" type="button" data-copy-news-share="${escapeHtml(news.id)}">Copia link WhatsApp</button>
-      <a class="button button-secondary button-small" href="${escapeHtml(shareUrl)}" target="_blank" rel="noopener">Apri preview</a>
       ${admin ? `<small class="field-hint news-share-path">Preview dinamica Netlify: nessun file HTML da generare.</small>` : ""}
     </div>`;
 }
@@ -15534,7 +15533,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "259";
+const DEPLOY_EXPECTED_VERSION_V181 = "260";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20922,3 +20921,80 @@ window.ZonaOrientaleHomePreviewV259 = {
   newsPreviewOnlyOnShareRoutes: true,
   dynamicNewsShareRoute: '/zonaorientale/share/news/<id>'
 };
+
+/* V260 - Pulizia anteprime news e tag tecnici UI.
+   I link news restano invariati: "Copia link WhatsApp" continua a generare
+   /zonaorientale/share/news/<id>. V260 rimuove il pulsante "Apri preview" e
+   nasconde/rimuove badge tecnici Firebase/JSON dall'interfaccia, senza cambiare
+   fonti dati, flussi Firebase o share route. */
+const TECHNICAL_TAG_TEXTS_V260 = new Set([
+  'Firebase',
+  'JSON',
+  'JSON statico',
+  'Solo JSON'
+]);
+
+function isTechnicalTagElementV260(element) {
+  if (!element || !element.textContent) return false;
+  const text = element.textContent.trim();
+  if (!TECHNICAL_TAG_TEXTS_V260.has(text)) return false;
+  const className = String(element.className || '');
+  return element.matches?.('.eyebrow, .static-source-badge, .firebase-source-badge, .admin-static-match-flag, .admin-match-source-badge, .admin-match-source-badge-json, .admin-match-source-badge-firebase, .badge, .pill, .chip, .tag, .muted')
+    || /badge|tag|pill|chip|eyebrow|source/i.test(className);
+}
+
+function scrubTechnicalSourceTagsV260(root = document) {
+  const scope = root?.querySelectorAll ? root : document;
+  const selectors = [
+    '.static-source-badge',
+    '.firebase-source-badge',
+    '.admin-static-match-flag',
+    '.admin-match-source-badge-json',
+    '.admin-match-source-badge-firebase',
+    '.eyebrow',
+    '.badge',
+    '.pill',
+    '.chip',
+    '.tag',
+    '.muted'
+  ].join(',');
+  scope.querySelectorAll(selectors).forEach((element) => {
+    if (isTechnicalTagElementV260(element)) element.remove();
+  });
+}
+
+function installTechnicalSourceTagCleanupV260() {
+  if (window.ZonaOrientaleTechnicalTagCleanupV260?.installed) return;
+  const style = document.createElement('style');
+  style.id = 'zonaorientale-technical-tag-cleanup-v260';
+  style.textContent = `
+    .static-source-badge,
+    .firebase-source-badge,
+    .admin-static-match-flag,
+    .admin-match-source-badge-json,
+    .admin-match-source-badge-firebase {
+      display: none !important;
+    }
+  `;
+  document.head.appendChild(style);
+  scrubTechnicalSourceTagsV260(document);
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      mutation.addedNodes?.forEach((node) => {
+        if (node?.nodeType === Node.ELEMENT_NODE) scrubTechnicalSourceTagsV260(node);
+      });
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  window.ZonaOrientaleTechnicalTagCleanupV260 = {
+    version: 'V260',
+    installed: true,
+    removedPreviewButton: true,
+    hiddenTechnicalTags: ['Firebase', 'JSON', 'JSON statico', 'Solo JSON'],
+    newsShareRoutePreserved: '/zonaorientale/share/news/<id>',
+    scrub: () => scrubTechnicalSourceTagsV260(document)
+  };
+}
+
+installTechnicalSourceTagCleanupV260();
+

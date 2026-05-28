@@ -1,3 +1,13 @@
+# Aggiornamento V260 - Pulizia preview/tag tecnici
+
+V260 ha rimosso `Apri preview` dalle news e ha nascosto i badge tecnici Firebase/JSON dall'interfaccia. Le fonti dati restano invariate: Firebase e JSON statici continuano a essere usati internamente.
+
+Prossime attivita suggerite:
+
+- Verificare se rimuovere definitivamente fallback inline V249 dopo ulteriore test del modulo V253.
+- Continuare estrazione modulare Dashboard Presidente.
+- Valutare una pagina Admin piu' pulita per differenziare funzioni operative da diagnostiche tecniche.
+
 # Aggiornamento V259 - Preview WhatsApp
 
 Aggiunta attivita completata: separare anteprima home da anteprime news. Restano da verificare in produzione eventuali cache WhatsApp/Meta e il corretto uso dei link `/share/news/<id>` per i comunicati.

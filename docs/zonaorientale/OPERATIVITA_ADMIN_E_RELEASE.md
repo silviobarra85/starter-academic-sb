@@ -1,3 +1,12 @@
+# Nota operativa V260 - Test preview e tag tecnici
+
+Dopo deploy:
+
+1. Aprire `/zonaorientale/` e controllare che la home non mostri anteprima news nei meta.
+2. Copiare un link news con `Copia link WhatsApp` e verificare che punti a `/zonaorientale/share/news/<id>`.
+3. Verificare che il pulsante `Apri preview` non compaia piu'.
+4. Verificare che i badge tecnici `Firebase`/`JSON` non compaiano piu' nelle card/pannelli del sito.
+
 # Nota operativa V259 - Test anteprime WhatsApp
 
 Dopo deploy, condividere su WhatsApp `https://silviobarra.com/zonaorientale/`: l'anteprima deve mostrare titolo generico `ZonaOrientale Salerno` e descrizione del gestionale, non l'ultima news. Per una news usare il pulsante/link share che punta a `/zonaorientale/share/news/<id>`. WhatsApp puo mantenere in cache le anteprime: se compare ancora la vecchia news, attendere o forzare lo scraping con strumenti Meta/Facebook quando disponibile.
@@ -341,7 +350,7 @@ Dopo il deploy di un comunicato, il link copiato deve avere forma:
 https://silviobarra.com/zonaorientale/comunicati/<slug>.html?v=<id>
 ```
 
-Non deve contenere `www`. Se si apre `Apri preview`, la pagina deve esistere e poi reindirizzare alla webapp tramite hash `#news-...`.
+Non deve contenere `www`. Il pulsante `Apri preview` non e piu presente dalla V260; per verificare manualmente la preview, incollare il link copiato in una nuova scheda o nello scraper/social debugger.
 
 ## Test manuale specifico V229
 

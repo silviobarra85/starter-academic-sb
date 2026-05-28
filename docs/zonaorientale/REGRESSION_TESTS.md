@@ -1,3 +1,17 @@
+# Test V260 - Preview news e pulizia tag tecnici
+
+## Preview
+
+- Home `/zonaorientale/`: meta generici, nessun titolo di ultima news in `og:title`.
+- News: `Copia link WhatsApp` genera ancora `/zonaorientale/share/news/<id>`.
+- Nessun pulsante `Apri preview` visibile nelle azioni news.
+
+## UI tecnica
+
+- Navigare dashboard, competizioni e admin.
+- Verificare assenza di badge/tag visibili `Firebase`, `JSON`, `JSON statico`, `Solo JSON`.
+- Confermare che i pulsanti admin che scaricano/exportano file continuino a funzionare: la pulizia e' solo sui tag/badge, non sulle funzioni.
+
 # Test V259 - Anteprime WhatsApp home/news
 
 - Condividere `https://silviobarra.com/zonaorientale/`: deve uscire anteprima generica della home.

@@ -1,3 +1,10 @@
+# V260 - Pulizia preview news e tag tecnici
+
+- Rimosso il pulsante `Apri preview` dalle azioni di condivisione news: resta `Copia link WhatsApp`.
+- Confermato il flusso share news: i link continuano a usare `/zonaorientale/share/news/<id>` e la preview specifica resta delegata alla Netlify Function.
+- Nascosti/rimossi dall'interfaccia i badge tecnici `Firebase`, `JSON`, `JSON statico` e `Solo JSON`, senza cambiare fonti dati o flussi admin.
+- Aggiornati footer/cache-buster/diagnostica runtime a V260.
+
 # V259 - Anteprima WhatsApp home generica
 
 - Corretto `index.html`: meta description, Open Graph e Twitter Card ora sono generici della home.
