@@ -1,3 +1,7 @@
+# Aggiornamento V264 - Accesso riservato pulito
+
+V264 rimuove dal form **Accesso Riservato** il campo `Nome visualizzato`, per evitare confusione: il nome/presidente viene assegnato dall'admin dal pannello amministrativo. Il pulsante `Accedi con Google` ora include il logo Google. Diagnostica runtime: `window.ZonaOrientaleLoginUiV264`. Non modifica `FUNZIONALITA'.md`.
+
 # Aggiornamento V263 - Funzionalita V256-262
 
 V263 aggiunge `FUNZIONALITA'V256-262.md`, registro incrementale delle funzionalita introdotte o consolidate tra V256 e V262. Non modifica `FUNZIONALITA'.md` e non cambia il comportamento runtime. Diagnostica: `window.ZonaOrientaleFeaturesDocV263`.

@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=263";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=264";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=263";
+} from "./js/domain/news-share-v228.js?v=264";
 import {
   getListoneValue,
   compareListoneValues
@@ -139,14 +139,14 @@ import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=263";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=263";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=263";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=263";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=264";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=264";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=264";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=264";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=263";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=264";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -4843,24 +4843,52 @@ function ensureV34Dom() {
   enhanceLoginDialogV34();
 }
 
+function ensureLoginUiV264() {
+  document.getElementById("registerDisplayName")?.closest("label")?.remove();
+  if (!document.getElementById("loginGoogleIconStyleV264")) {
+    const style = document.createElement("style");
+    style.id = "loginGoogleIconStyleV264";
+    style.textContent = `
+      #loginGoogleBtn.google-login-v264 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+      }
+      #loginGoogleBtn .google-icon-v264 {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
+        display: inline-flex;
+      }`;
+    document.head.appendChild(style);
+  }
+}
+
+function getGoogleLoginButtonMarkupV264() {
+  return `
+    <span class="google-icon-v264" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" role="img" focusable="false" aria-hidden="true">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+        <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z"></path>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06L5.84 9.9C6.71 7.3 9.14 5.38 12 5.38z"></path>
+      </svg>
+    </span>
+    <span>Accedi con Google</span>`;
+}
+
 function enhanceLoginDialogV34() {
   const loginForm = document.getElementById("loginForm");
   if (!loginForm || loginForm.dataset.v34Enhanced) return;
   loginForm.dataset.v34Enhanced = "true";
-  const passwordLabel = document.getElementById("loginPassword")?.closest("label");
-  if (passwordLabel) {
-    passwordLabel.insertAdjacentHTML("beforebegin", `
-      <label>
-        Nome visualizzato <span class="muted">(solo registrazione)</span>
-        <input id="registerDisplayName" class="input" type="text" autocomplete="name" placeholder="Es. Mario Rossi" />
-      </label>`);
-  }
+  ensureLoginUiV264();
   const submitButton = loginForm.querySelector('button[type="submit"]');
   submitButton?.insertAdjacentHTML("afterend", `
     <button id="registerEmailBtn" class="button button-secondary full-width" type="button">Registrati con email</button>
     <button id="sendVerificationAgainBtn" class="button button-secondary full-width" type="button">Invia di nuovo verifica email</button>
-    <button id="loginGoogleBtn" class="button button-secondary full-width" type="button">Accedi con Google</button>
-    <small class="field-hint">Gli utenti presidenti vengono approvati dall'admin prima di poter inviare richieste squadra.</small>`);
+    <button id="loginGoogleBtn" class="button button-secondary full-width google-login-v264" type="button">${getGoogleLoginButtonMarkupV264()}</button>
+    <small class="field-hint">Gli utenti presidenti vengono approvati dall'admin prima di poter inviare richieste squadra. Il nome presidente viene assegnato dall'admin.</small>`);
 }
 
 function updateUserVisibilityV34() {
@@ -4878,7 +4906,7 @@ async function upsertPendingUserV34(user, status = "PENDING") {
   if (!user?.uid) return;
   const payload = {
     email: user.email || "",
-    displayName: user.displayName || document.getElementById("registerDisplayName")?.value.trim() || user.email || "",
+    displayName: user.displayName || user.email || "",
     status,
     providerIds: (user.providerData || []).map((provider) => provider.providerId),
     emailVerified: Boolean(user.emailVerified),
@@ -4921,7 +4949,7 @@ setupAuth = function setupAuthV34() {
   document.getElementById("registerEmailBtn")?.addEventListener("click", async () => {
     const email = document.getElementById("loginEmail")?.value.trim();
     const password = document.getElementById("loginPassword")?.value;
-    const displayName = document.getElementById("registerDisplayName")?.value.trim() || email;
+    const displayName = email;
     if (!email || !password) {
       showMessage("loginStatus", "Inserisci email e password per registrarti.", true);
       return;
@@ -8295,7 +8323,7 @@ setupAuth = function setupAuthV100() {
   document.getElementById("registerEmailBtn")?.addEventListener("click", async () => {
     const email = document.getElementById("loginEmail")?.value.trim();
     const password = document.getElementById("loginPassword")?.value;
-    const displayName = document.getElementById("registerDisplayName")?.value.trim() || email;
+    const displayName = email;
     if (!email || !password) {
       showMessage("loginStatus", "Inserisci email e password per registrarti.", true);
       return;
@@ -15533,7 +15561,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "263";
+const DEPLOY_EXPECTED_VERSION_V181 = "264";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -19586,7 +19614,7 @@ upsertPendingUserV34 = async function upsertPendingUserV241(user, status = "PEND
 
   const payload = {
     email: user.email || "",
-    displayName: user.displayName || document.getElementById("registerDisplayName")?.value.trim() || user.email || "",
+    displayName: user.displayName || user.email || "",
     status,
     providerIds: (user.providerData || []).map((provider) => provider.providerId),
     emailVerified: Boolean(user.emailVerified),
@@ -21284,4 +21312,14 @@ window.ZonaOrientaleFeaturesDocV263 = {
     "Tracciati V257 rules notifiche, V259/V260 share preview, V261 Svincola Giocatori e V262 audit",
     "Nessuna modifica funzionale runtime"
   ]
+};
+
+
+/* V264 - Accesso riservato pulito.
+   Rimuove il campo Nome visualizzato dal form login/registrazione e aggiunge il logo Google al pulsante di accesso Google. */
+window.ZonaOrientaleLoginUiV264 = {
+  version: "V264",
+  displayNameFieldRemoved: true,
+  googleLogoButton: true,
+  adminAssignsPresidentName: true
 };
