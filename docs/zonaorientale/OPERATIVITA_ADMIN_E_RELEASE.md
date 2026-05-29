@@ -1,3 +1,7 @@
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
 ## Nota operativa V261 - Svincola Giocatori
 
 Per testare la nuova informativa presidente: login presidente -> Dashboard Presidente -> Svincola Giocatori -> selezionare uno o piu giocatori -> verificare preview corpo email -> Invio informativa. Il flusso usa EmailJS e non crea richieste Admin/Firebase. Verificare che l'oggetto rispetti `<Nome Squadra> - Svincolo giocatori - <Data odierna>` e che il corpo riporti il listone da cui sono state recuperate le quotazioni.

@@ -1,3 +1,7 @@
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
 ## V261 - Svincola Giocatori in Dashboard Presidente
 
 - Aggiunta terza sottosezione presidente `Svincola Giocatori` dopo `Invia comunicato squadra` e `Comunicato avvenuto scambio`.

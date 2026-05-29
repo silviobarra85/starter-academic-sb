@@ -1,3 +1,7 @@
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
 ## Nota V261 - Svincolo giocatori presidente
 
 Aggiunta funzionalita presidente `Svincola Giocatori` con invio email EmailJS e quotazioni da listone recente. Prossimo miglioramento possibile: decidere se registrare anche uno storico in Firebase/Admin oppure mantenere il flusso solo email.
