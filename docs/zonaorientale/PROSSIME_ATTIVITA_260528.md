@@ -1,3 +1,13 @@
+# Aggiornamento V261 - Svincola Giocatori
+
+V261 aggiunge in Dashboard Presidente il flusso `Svincola Giocatori`: selezione multipla dalla rosa, generazione testo email con quotazioni da listone recente e invio EmailJS a `caparrotti86@yahoo.it`.
+
+Attivita future collegate:
+
+- Valutare se creare anche uno storico Firebase/Admin delle informative svincolo inviate.
+- Valutare un export o snapshot degli svincoli comunicati.
+- Verificare se lo svincolo dovra in futuro modificare automaticamente rose/listone oppure restare solo informativa email.
+
 # Aggiornamento V260 - Pulizia preview/tag tecnici
 
 V260 ha rimosso `Apri preview` dalle news e ha nascosto i badge tecnici Firebase/JSON dall'interfaccia. Le fonti dati restano invariate: Firebase e JSON statici continuano a essere usati internamente.

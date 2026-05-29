@@ -1,3 +1,7 @@
+## Nota V261 - Informativa svincolo giocatori
+
+Il flusso `Dashboard Presidente -> Svincola Giocatori` non introduce nuove collection Firebase. Legge la rosa del presidente dalle fonti gia caricate, cerca la Qt.A nei listoni della stagione corrente ordinati dal piu recente, genera una preview testuale e invia EmailJS a `caparrotti86@yahoo.it`. Diagnostica runtime: `window.ZonaOrientalePlayerReleaseV261`.
+
 ## Nota V257 - Stato lettura notifiche trattative
 
 Le notifiche trattative non sono una collection separata: sono derivate da `transferNegotiations`. Da V246 il codice salva la lettura dell'esito nel documento trattativa; da V257 le Firebase Rules permettono al mittente di aggiornare solo i campi `outcomeSeenByFromUid`, `outcomeSeenByUid`, `outcomeSeenAtByFromUid` e `outcomeSeenMarkerByFromUid`. Il fallback `localStorage` resta attivo solo se le rules non sono ancora deployate o negano la scrittura.

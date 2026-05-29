@@ -15533,7 +15533,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "260";
+const DEPLOY_EXPECTED_VERSION_V181 = "261";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20998,3 +20998,254 @@ function installTechnicalSourceTagCleanupV260() {
 
 installTechnicalSourceTagCleanupV260();
 
+
+
+/* V261 - Dashboard Presidente: informativa svincolo giocatori.
+   Aggiunge una terza sottosezione comunicati senza scritture Firebase:
+   il presidente seleziona uno o piu' giocatori della propria rosa e invia
+   una mail EmailJS a caparrotti86@yahoo.it con quotazioni recuperate dal
+   listone piu' recente disponibile per ciascun giocatore. */
+const PLAYER_RELEASE_RECIPIENT_V261 = "caparrotti86@yahoo.it";
+
+function getPlayerReleaseSeasonTeamIdV261() {
+  return getApprovedSeasonTeamIdV119?.() || getApprovedTeamUser?.()?.seasonTeamId || "";
+}
+
+function getPlayerReleasePresidentNameV261() {
+  const approved = getApprovedTeamUser?.() || {};
+  return String(approved.presidentName || approved.displayName || approved.name || getCurrentUserDisplayName?.() || "Presidente").trim() || "Presidente";
+}
+
+function getPlayerReleaseRosterPlayersV261() {
+  const seasonTeamId = getPlayerReleaseSeasonTeamIdV261();
+  if (!seasonTeamId) return [];
+  const roster = getRosterForSeasonTeam?.(getSeasonTeamById?.(seasonTeamId));
+  const players = Array.isArray(roster?.players) ? roster.players : [];
+  const sorted = typeof sortRosterPlayersForDisplay === "function" ? sortRosterPlayersForDisplay(players) : players;
+  return sorted.map((player) => ({ ...player, seasonTeamId }));
+}
+
+function getPlayerReleaseKeyV261(player) {
+  if (typeof getPlayerMarketKeyV119 === "function") return getPlayerMarketKeyV119(player);
+  return [normalizePlayerName?.(player?.playerName || player?.name || "") || "", normalizeKey?.(player?.realTeam || "") || ""].filter(Boolean).join("__");
+}
+
+function getPlayerReleaseListoniV261() {
+  if (typeof getListoniForCurrentSeason === "function") return getListoniForCurrentSeason() || [];
+  const seasonId = getCurrentSeasonId?.() || "";
+  const listoni = (state.listoni || []).filter((listone) => String(listone.seasonId || listone.meta?.seasonId || "") === String(seasonId));
+  if (typeof compareListoniByDateDescV99 === "function") return listoni.sort(compareListoniByDateDescV99);
+  return listoni.sort((a, b) => String(b.loadedAt || b.meta?.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.meta?.loadedAt || a.id || ""), "it"));
+}
+
+function getPlayerReleaseListoneLabelV261(listone) {
+  return String(listone?.loadedAt || listone?.meta?.loadedAt || listone?.label || listone?.id || "listone non identificato").trim();
+}
+
+function getPlayerReleaseQuotationFromListoniV261(player) {
+  const targetName = normalizePlayerName?.(player?.playerName || player?.name || "") || "";
+  const targetTeam = normalizeKey?.(player?.realTeam || "") || "";
+  if (!targetName) return { quotation: "", listone: null, listoneLabel: "" };
+  const listoni = getPlayerReleaseListoniV261();
+  for (const listone of listoni) {
+    const rows = Array.isArray(listone?.players) ? listone.players : [];
+    const match = rows.find((row) => {
+      const sameName = (normalizePlayerName?.(row.playerName || row.name || "") || "") === targetName;
+      if (!sameName) return false;
+      const rowTeam = normalizeKey?.(row.realTeam || row.team || row.squadra || "") || "";
+      return !targetTeam || !rowTeam || rowTeam === targetTeam;
+    });
+    const quotation = match?.quotationCurrent ?? match?.quotation_current ?? match?.qtA ?? match?.qta ?? match?.quotazioneAttuale ?? "";
+    if (quotation !== undefined && quotation !== null && quotation !== "") {
+      return { quotation, listone, listoneLabel: getPlayerReleaseListoneLabelV261(listone) };
+    }
+  }
+  const fallback = getRosterPlayerQuotationCurrent?.(player) ?? "";
+  return { quotation: fallback, listone: null, listoneLabel: "" };
+}
+
+function getSelectedPlayerReleaseKeysV261() {
+  const select = document.getElementById("teamPlayerReleaseSelectV261");
+  return select ? Array.from(select.selectedOptions || []).map((option) => option.value).filter(Boolean) : [];
+}
+
+function getSelectedPlayerReleaseItemsV261() {
+  const selected = new Set(getSelectedPlayerReleaseKeysV261());
+  const rosterPlayers = getPlayerReleaseRosterPlayersV261();
+  return rosterPlayers
+    .filter((player) => selected.has(getPlayerReleaseKeyV261(player)))
+    .map((player) => {
+      const quotationData = getPlayerReleaseQuotationFromListoniV261(player);
+      return {
+        player,
+        playerName: player.playerName || player.name || "Giocatore",
+        realTeam: player.realTeam || "",
+        quotation: quotationData.quotation,
+        listoneLabel: quotationData.listoneLabel
+      };
+    });
+}
+
+function formatPlayerReleaseQuotationV261(value) {
+  if (value === undefined || value === null || value === "") return "n.d.";
+  if (typeof formatListoneNumber === "function") return formatListoneNumber(value);
+  return String(value);
+}
+
+function getPlayerReleaseDateLabelV261(date = new Date()) {
+  return date.toLocaleDateString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric" });
+}
+
+function buildPlayerReleaseMailDraftV261({ requireSelection = true } = {}) {
+  const items = getSelectedPlayerReleaseItemsV261();
+  if (requireSelection && !items.length) throw new Error("Seleziona almeno un giocatore da svincolare.");
+  const presidentName = getPlayerReleasePresidentNameV261();
+  const teamName = getSeasonTeamDisplayName?.(getPlayerReleaseSeasonTeamIdV261()) || getApprovedTeamUser?.()?.teamName || "Squadra";
+  const listoneLabels = [...new Set(items.map((item) => item.listoneLabel).filter(Boolean))];
+  const playerLines = items.length
+    ? items.map((item) => `- ${item.playerName}${item.realTeam ? ` (${item.realTeam})` : ""} (Qt.A: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n")
+    : "- [seleziona uno o piu' giocatori dalla rosa]";
+  const sourceLine = listoneLabels.length === 1
+    ? `Il listone da cui e' stata recuperata la quotazione attuale e' ${listoneLabels[0]}.`
+    : listoneLabels.length > 1
+      ? `I listoni da cui sono state recuperate le quotazioni attuali sono ${listoneLabels.join(", ")}.`
+      : "Non e' stato possibile individuare un listone con quotazione attuale per tutti i giocatori selezionati.";
+  const body = [
+    "Presidente Caparrotti, con la presente comunico i giocatori che intendo svincolare:",
+    "",
+    playerLines,
+    "",
+    sourceLine,
+    "",
+    "Cordiali Saluti",
+    presidentName
+  ].join("\n");
+  return {
+    subject: `${teamName} - Svincolo giocatori - ${getPlayerReleaseDateLabelV261()}`,
+    body,
+    teamName,
+    presidentName,
+    items,
+    listoneLabels
+  };
+}
+
+function renderPlayerReleaseOptionsV261() {
+  const rosterPlayers = getPlayerReleaseRosterPlayersV261();
+  if (!rosterPlayers.length) return `<option value="" disabled>Rosa non disponibile</option>`;
+  return rosterPlayers.map((player) => {
+    const quotation = getPlayerReleaseQuotationFromListoniV261(player).quotation;
+    const labelParts = [
+      player.playerName || player.name || "Giocatore",
+      player.realTeam || "-",
+      `Qt.A ${formatPlayerReleaseQuotationV261(quotation)}`
+    ];
+    return `<option value="${escapeHtml(getPlayerReleaseKeyV261(player))}">${escapeHtml(labelParts.join(" · "))}</option>`;
+  }).join("");
+}
+
+function renderPlayerReleasePanelV261() {
+  return `
+    <section id="teamPlayerReleasePanelV261" class="panel team-player-release-panel-v261">
+      <div class="panel-header compact"><div><h2>Svincola Giocatori</h2><p>Seleziona uno o piu' giocatori dalla tua rosa e invia l'informativa via email alla lega.</p></div></div>
+      <form id="teamPlayerReleaseFormV261" class="form-grid" data-player-release-handler="V261">
+        <label class="span-2">Giocatori da svincolare
+          <select id="teamPlayerReleaseSelectV261" class="input" multiple size="9" required>${renderPlayerReleaseOptionsV261()}</select>
+          <small class="field-hint">Tieni premuto Ctrl/Cmd per selezionare piu' giocatori. La quotazione viene cercata a partire dal listone piu' recente.</small>
+        </label>
+        <label class="span-2">Corpo email generato
+          <textarea id="teamPlayerReleaseBodyPreviewV261" class="input textarea" rows="11" readonly></textarea>
+        </label>
+        <div class="form-actions span-2"><button class="button button-primary" type="submit">Invia informativa</button><span id="teamPlayerReleaseStatusV261" class="form-status"></span></div>
+      </form>
+      <small class="field-hint">Oggetto email: &lt;Nome Squadra&gt; - Svincolo giocatori - &lt;Data odierna&gt;. Destinatario: ${PLAYER_RELEASE_RECIPIENT_V261}.</small>
+    </section>`;
+}
+
+function updatePlayerReleasePreviewV261() {
+  const textarea = document.getElementById("teamPlayerReleaseBodyPreviewV261");
+  if (!textarea) return;
+  try {
+    textarea.value = buildPlayerReleaseMailDraftV261({ requireSelection: false }).body;
+  } catch (error) {
+    textarea.value = "";
+  }
+}
+
+async function sendPlayerReleaseEmailV261(draft) {
+  const emailModule = await import("./emailjs.js");
+  await emailModule.sendTransferEmail({
+    to_email: PLAYER_RELEASE_RECIPIENT_V261,
+    team_name: draft.teamName,
+    president_name: draft.presidentName,
+    title: "Svincolo giocatori",
+    message: draft.body,
+    players: draft.items.map((item) => `${item.playerName} (Qt.A: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n"),
+    other_team: "",
+    created_at: new Date().toLocaleString("it-IT"),
+    subject: draft.subject
+  });
+}
+
+function attachPlayerReleaseHandlerV261() {
+  const form = document.getElementById("teamPlayerReleaseFormV261");
+  if (!form || form.dataset.v261Handler === "1") return;
+  form.dataset.v261Handler = "1";
+  document.getElementById("teamPlayerReleaseSelectV261")?.addEventListener("change", updatePlayerReleasePreviewV261);
+  updatePlayerReleasePreviewV261();
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    try {
+      showMessage("teamPlayerReleaseStatusV261", "Invio informativa svincolo in corso...");
+      const draft = buildPlayerReleaseMailDraftV261({ requireSelection: true });
+      await sendPlayerReleaseEmailV261(draft);
+      form.reset();
+      updatePlayerReleasePreviewV261();
+      showMessage("teamPlayerReleaseStatusV261", "Informativa svincolo inviata alla lega.");
+    } catch (error) {
+      console.error(error);
+      showMessage("teamPlayerReleaseStatusV261", error?.message || "Errore durante l'invio dell'informativa.", true);
+    }
+  });
+}
+
+function enhancePlayerReleasePresidentAreaV261() {
+  const target = document.getElementById("teamAreaBody");
+  const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+  if (!target || !state.user || !approved?.seasonTeamId) return;
+  if (!document.getElementById("teamPlayerReleasePanelV261")) {
+    const transferPanel = document.getElementById("teamTransferCommunicationPanelV242");
+    const newsPanel = document.getElementById("teamNewsRequestForm")?.closest("section, article");
+    const anchor = transferPanel || newsPanel;
+    if (anchor) anchor.insertAdjacentHTML("afterend", renderPlayerReleasePanelV261());
+    else target.insertAdjacentHTML("beforeend", renderPlayerReleasePanelV261());
+  }
+  attachPlayerReleaseHandlerV261();
+
+  const mobileActions = document.querySelector("#mobileTeamAreaHubV144 .mobile-teamarea-actions-v144");
+  if (mobileActions && !mobileActions.querySelector('[data-mobile-teamarea-scroll="#teamPlayerReleaseFormV261"]')) {
+    mobileActions.insertAdjacentHTML("beforeend", `<button class="mobile-teamarea-action-v144" type="button" data-mobile-teamarea-scroll="#teamPlayerReleaseFormV261"><span>✂️</span><strong>Svincoli</strong><small>email</small></button>`);
+  }
+}
+
+const renderUserAreaBeforeV261 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV261() {
+  const result = renderUserAreaBeforeV261?.();
+  enhancePlayerReleasePresidentAreaV261();
+  return result;
+};
+
+const renderAllBeforeV261 = renderAll;
+renderAll = function renderAllV261() {
+  const result = renderAllBeforeV261?.();
+  enhancePlayerReleasePresidentAreaV261();
+  return result;
+};
+
+window.ZonaOrientalePlayerReleaseV261 = {
+  version: "V261",
+  recipient: PLAYER_RELEASE_RECIPIENT_V261,
+  buildDraft: () => buildPlayerReleaseMailDraftV261({ requireSelection: false }),
+  refresh: enhancePlayerReleasePresidentAreaV261
+};

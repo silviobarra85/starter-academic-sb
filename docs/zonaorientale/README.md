@@ -1,25 +1,6 @@
-# Nota V260 - Preview news e tag tecnici UI
-
-V260 rimuove il pulsante `Apri preview` dalle card/news admin e pubbliche: il link da condividere resta generato da `Copia link WhatsApp`. La home mantiene i meta generici introdotti in V259, mentre le anteprime specifiche dei comunicati restano disponibili solo sui percorsi share/news gestiti da Netlify.
-
-V260 nasconde inoltre i badge tecnici `Firebase` e `JSON` dall'interfaccia utente. La modifica e' solo di UI: non cambia le fonti dati, non rimuove Firebase, non rimuove snapshot JSON e non modifica i permessi.
-
-# Nota V259 - Anteprima WhatsApp della home
-
-La home `/zonaorientale/` deve avere anteprima WhatsApp generica del sito. Le anteprime specifiche dei comunicati devono comparire solo quando si condivide un link news/share, in particolare `/zonaorientale/share/news/<id>` o una pagina comunicato legacy. Il generatore statico `tools/generate-news-share-pages.mjs` e' stato aggiornato per non riscrivere piu i meta Open Graph di `index.html` con l'ultimo comunicato.
-
-# Nota V258 - Nuovo branch e handoff
-
-V258 aggiunge due documenti operativi:
-
-- `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md`
-- `PROSSIME_ATTIVITA_260528.md`
-
-Il branch consigliato per la nuova fase è `refactor/260528-zonaorientale-next`.
-
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V257**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V261**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -35,7 +16,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V257.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V261.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -45,6 +26,9 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
 
 7. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`  
    Regole Firestore complete aggiornate per notifiche trattative multi-dispositivo. Il file patch V257 contiene solo la sezione da integrare se non vuoi sostituire tutto il file rules.
+
+8. `PROSSIME_ATTIVITA_260528.md`  
+   Backlog e note operative del branch `refactor/260528-zonaorientale-next`, aggiornato fino alla V261.
 
 ## Regola per i prossimi aggiornamenti docs
 

@@ -1,23 +1,11 @@
-# V260 - Pulizia preview news e tag tecnici
+## V261 - Svincola Giocatori in Dashboard Presidente
 
-- Rimosso il pulsante `Apri preview` dalle azioni di condivisione news: resta `Copia link WhatsApp`.
-- Confermato il flusso share news: i link continuano a usare `/zonaorientale/share/news/<id>` e la preview specifica resta delegata alla Netlify Function.
-- Nascosti/rimossi dall'interfaccia i badge tecnici `Firebase`, `JSON`, `JSON statico` e `Solo JSON`, senza cambiare fonti dati o flussi admin.
-- Aggiornati footer/cache-buster/diagnostica runtime a V260.
-
-# V259 - Anteprima WhatsApp home generica
-
-- Corretto `index.html`: meta description, Open Graph e Twitter Card ora sono generici della home.
-- Le anteprime news restano riservate ai percorsi news/share, non alla home.
-- Aggiornato `tools/generate-news-share-pages.mjs` per evitare regressioni: il generatore non deve piu sostituire i meta della home con l'ultimo comunicato.
-- Aggiornati footer/cache-buster/diagnostica runtime a V259.
-
-# V258 - Handoff nuovo branch 260528
-
-- Aggiunti `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md` e `PROSSIME_ATTIVITA_260528.md`.
-- Aggiornati footer/cache-buster/diagnostica runtime a V258.
-- Preparata documentazione operativa per apertura nuovo branch `refactor/260528-zonaorientale-next`.
-- Nessuna modifica a `FUNZIONALITA'.md`.
+- Aggiunta terza sottosezione presidente `Svincola Giocatori` dopo `Invia comunicato squadra` e `Comunicato avvenuto scambio`.
+- Il presidente puo selezionare uno o piu giocatori dalla propria rosa.
+- Il corpo email viene generato automaticamente con elenco giocatori e Qt.A recuperata dal listone piu recente disponibile per ciascun giocatore.
+- Invio EmailJS a `caparrotti86@yahoo.it` con oggetto `<Nome Squadra> - Svincolo giocatori - <Data odierna>`.
+- Nessuna scrittura Firebase: e' una sola informativa email.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V261.
 
 ## V257 - Firebase Rules notifiche trattative
 

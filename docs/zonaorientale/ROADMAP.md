@@ -1,14 +1,6 @@
-# Roadmap V260 - Pulizia preview/tag tecnici
+## Nota V261 - Svincolo giocatori presidente
 
-V260 chiude due richieste UI: rimozione del pulsante `Apri preview` e rimozione/nascondimento dei badge tecnici `Firebase`/`JSON` dall'interfaccia. Prossimi controlli consigliati: verificare un link home `/zonaorientale/`, un link news `/zonaorientale/share/news/<id>` e le sezioni Admin che prima mostravano badge sorgente.
-
-# Roadmap V259 - Preview social home/news
-
-V259 chiude la correzione preview WhatsApp della home: home generica, news solo sui link share/comunicato. Prossimi controlli consigliati: usare il debugger/scraper di WhatsApp/Facebook se l'anteprima vecchia resta in cache, verificare link `/zonaorientale/` e `/zonaorientale/share/news/<id>`.
-
-# Roadmap V258 - Nuovo branch 260528
-
-La roadmap operativa dettagliata è in `PROSSIME_ATTIVITA_260528.md`. Le priorità immediate sono: deploy/verifica Firebase Rules V257, test regressioni completo, consolidamento modulo Admin Richieste presidenti e successiva estrazione modulare della Dashboard Presidente.
+Aggiunta funzionalita presidente `Svincola Giocatori` con invio email EmailJS e quotazioni da listone recente. Prossimo miglioramento possibile: decidere se registrare anche uno storico in Firebase/Admin oppure mantenere il flusso solo email.
 
 ## Nota V257 - Rules notifiche trattative
 
@@ -38,6 +30,7 @@ V254 simulatore notifiche trattative - fatto
 V255 comandi test trattative - fatto
 V256 funzionalita V240-255 - fatto
 V257 rules notifiche trattative - fatto
+V261 svincolo giocatori presidente - fatto
 ```
 
 Regola: ogni step deve preservare il comportamento visibile della versione precedente, salvo richiesta esplicita di nuova feature.

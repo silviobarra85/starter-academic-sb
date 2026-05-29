@@ -1,27 +1,20 @@
-# Test V260 - Preview news e pulizia tag tecnici
+## Test V261 - Svincola Giocatori
 
-## Preview
+1. Login come presidente approvato.
+2. Aprire `Dashboard Presidente`.
+3. Verificare la presenza della terza sottosezione `Svincola Giocatori`.
+4. Selezionare uno o piu giocatori dalla rosa.
+5. Verificare che il corpo email includa testo standard, lista giocatori e Qt.A tra parentesi.
+6. Verificare che la chiusura riporti il listone usato per le quotazioni e la firma del presidente.
+7. Cliccare `Invia informativa` e verificare ricezione EmailJS a `caparrotti86@yahoo.it`.
+8. Verificare che non venga creata una richiesta in `Admin -> Richieste presidenti`, perche il flusso V261 e' solo email.
 
-- Home `/zonaorientale/`: meta generici, nessun titolo di ultima news in `og:title`.
-- News: `Copia link WhatsApp` genera ancora `/zonaorientale/share/news/<id>`.
-- Nessun pulsante `Apri preview` visibile nelle azioni news.
+Diagnostica console:
 
-## UI tecnica
-
-- Navigare dashboard, competizioni e admin.
-- Verificare assenza di badge/tag visibili `Firebase`, `JSON`, `JSON statico`, `Solo JSON`.
-- Confermare che i pulsanti admin che scaricano/exportano file continuino a funzionare: la pulizia e' solo sui tag/badge, non sulle funzioni.
-
-# Test V259 - Anteprime WhatsApp home/news
-
-- Condividere `https://silviobarra.com/zonaorientale/`: deve uscire anteprima generica della home.
-- Condividere un link news generato dal sito, preferibilmente `/zonaorientale/share/news/<id>`: deve uscire anteprima del comunicato specifico.
-- Verificare che `index.html` contenga `og:title=ZonaOrientale Salerno` e non il titolo dell'ultima news.
-- Se WhatsApp mostra ancora la vecchia preview, considerare la cache dello scraper prima di diagnosticare un errore del codice.
-
-# Nota V258
-
-Prima di proseguire sul nuovo branch `refactor/260528-zonaorientale-next`, eseguire almeno i test critici su comunicato avvenuto scambio, Admin -> Richieste presidenti, notifiche trattative e workflow pubblicazione. Per le notifiche usare anche `ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()`.
+```js
+window.ZonaOrientalePlayerReleaseV261
+window.ZonaOrientalePlayerReleaseV261.buildDraft()
+```
 
 ## Test V257 - Notifiche trattative multi-dispositivo
 
