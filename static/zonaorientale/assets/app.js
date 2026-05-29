@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=262";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=263";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=262";
+} from "./js/domain/news-share-v228.js?v=263";
 import {
   getListoneValue,
   compareListoneValues
@@ -139,14 +139,14 @@ import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=262";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=262";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=262";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=262";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=263";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=263";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=263";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=263";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=262";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=263";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15533,7 +15533,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "262";
+const DEPLOY_EXPECTED_VERSION_V181 = "263";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -21270,4 +21270,18 @@ window.ZonaOrientalePlayerReleaseV261 = {
   recipient: PLAYER_RELEASE_RECIPIENT_V261,
   buildDraft: () => buildPlayerReleaseMailDraftV261({ requireSelection: false }),
   refresh: enhancePlayerReleasePresidentAreaV261
+};
+
+
+/* V263 - Documento funzionalita V256-262.
+   Non cambia il comportamento applicativo: registra solo l'allineamento documentale
+   delle funzionalita introdotte o consolidate nel ramo 260528. */
+window.ZonaOrientaleFeaturesDocV263 = {
+  version: "V263",
+  document: "docs/zonaorientale/FUNZIONALITA'V256-262.md",
+  notes: [
+    "Aggiunto registro funzionalita V256-262 senza modificare FUNZIONALITA'.md",
+    "Tracciati V257 rules notifiche, V259/V260 share preview, V261 Svincola Giocatori e V262 audit",
+    "Nessuna modifica funzionale runtime"
+  ]
 };
