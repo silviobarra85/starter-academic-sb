@@ -10,7 +10,7 @@
 - Webapp: `static/zonaorientale/`.
 - Documentazione: `docs/zonaorientale/`.
 - Branch di lavoro corrente: `refactor/260528-zonaorientale-next`.
-- Versione runtime recente: `V278 export modifiche listone`.
+- Versione runtime recente: `V280 semplifica listone`.
 - Branch di produzione/deploy: `master`.
 
 ## 2. Regole operative obbligatorie
@@ -750,3 +750,12 @@ Queste modifiche non rimuovono funzioni: aggiungono diagnostica Admin e un filtr
 
 Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
 
+
+
+## V280 - UI Listone semplificata
+
+- La sezione pubblica `Storico listoni` e' stata rimossa/nascosta dalla UI.
+- Le logiche V269-V278 restano preservate per colonna `Modifica`, filtro `Modifiche`, usciti storici ed export CSV.
+- Documento tecnico: `docs/zonaorientale/listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
+- Audit grafico iniziale: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md`.
+- Prossima uscita consigliata: contrasto e leggibilita mobile in modalita Light.

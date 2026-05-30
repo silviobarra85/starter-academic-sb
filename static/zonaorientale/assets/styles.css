@@ -13676,3 +13676,15 @@ html[data-theme="light"] .historical-rank-v193,
 html[data-theme="light"] .team-compare-direct-score-v195 strong {
   color: #166534 !important;
 }
+
+
+/* V280 - Semplificazione UI Storico listoni.
+ * Il pannello Storico listoni viene nascosto dalla UI pubblica, ma le logiche
+ * V269-V278 restano disponibili per Modifica, filtro Modifiche, usciti storici
+ * ed export CSV.
+ */
+.listone-history-panel-v269,
+.listone-history-search-toggle-v269,
+.listone-export-note-v278 {
+  display: none !important;
+}

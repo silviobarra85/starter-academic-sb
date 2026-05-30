@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=278";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=280";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=278";
+} from "./js/domain/news-share-v228.js?v=280";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=278";
+} from "./js/admin/listone-converter.js?v=280";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=278";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=278";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=278";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=278";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=280";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=280";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=280";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=280";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=278";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=280";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "278";
+const DEPLOY_EXPECTED_VERSION_V181 = "280";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23034,5 +23034,84 @@ window.setTimeout(() => {
     if (document.querySelector('[data-page="listone"]')) renderListonePublic();
   } catch (error) {
     console.warn("Refresh V278 export modifiche listone non completato", error);
+  }
+}, 0);
+
+
+/* V280 - Semplificazione UI Listone: nasconde il pannello Storico listoni.
+ * Le logiche storiche V269-V278 restano disponibili per colonna Modifica,
+ * filtro Modifiche, usciti storici ed export CSV. Cambia solo la UI pubblica:
+ * non viene piu' montato il pannello dedicato allo storico automatico.
+ */
+function removeListoneHistoryPublicChromeV280() {
+  document.getElementById("listoneHistoryPanelV269")?.remove();
+  document.getElementById("listoneSearchAllListoniV269")?.closest("label")?.remove();
+}
+
+function ensureListoneCompactControlsV280() {
+  const filterRow = document.querySelector(".listone-filter-row");
+  if (!filterRow) return;
+
+  removeListoneHistoryPublicChromeV280();
+
+  if (!document.getElementById("listoneShowHistoricalRemovedV270")) {
+    const label = document.createElement("label");
+    label.className = "checkbox-label listone-historical-removed-toggle-v280";
+    label.innerHTML = `<input id="listoneShowHistoricalRemovedV270" type="checkbox" checked /> Mostra usciti storici`;
+    filterRow.appendChild(label);
+  }
+
+  if (!document.getElementById("listoneChangeFilterV277") && typeof LISTONE_CHANGE_FILTER_OPTIONS_V277 !== "undefined") {
+    const label = document.createElement("label");
+    label.className = "field listone-change-filter-v277";
+    label.innerHTML = `
+      <span>Modifiche</span>
+      <select id="listoneChangeFilterV277">
+        ${LISTONE_CHANGE_FILTER_OPTIONS_V277.map(([value, labelText]) => `<option value="${escapeHtml(value)}">${escapeHtml(labelText)}</option>`).join("")}
+      </select>`;
+    filterRow.appendChild(label);
+  }
+
+  if (!document.getElementById("listoneExportChangesV278")) {
+    const button = document.createElement("button");
+    button.id = "listoneExportChangesV278";
+    button.className = "button button-secondary button-small listone-export-changes-v278";
+    button.type = "button";
+    button.textContent = "Esporta modifiche CSV";
+    filterRow.appendChild(button);
+  }
+}
+
+const ensureListoneHistoryUiBeforeV280 = ensureListoneHistoryUiV269;
+ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV280() {
+  ensureListoneCompactControlsV280();
+};
+
+const renderListoneHistoryPanelBeforeV280 = renderListoneHistoryPanelV269;
+renderListoneHistoryPanelV269 = function renderListoneHistoryPanelV280() {
+  ensureListoneCompactControlsV280();
+  removeListoneHistoryPublicChromeV280();
+};
+
+window.ZonaOrientaleListoneUiV280 = {
+  version: "V280",
+  label: "storico listoni nascosto dalla UI pubblica",
+  historyPanelVisible: false,
+  preserves: ["Modifica", "Modifiche", "Usciti storici", "Export CSV"],
+  refresh: () => {
+    ensureListoneCompactControlsV280();
+    removeListoneHistoryPublicChromeV280();
+    return true;
+  }
+};
+
+window.setTimeout(() => {
+  try {
+    if (document.querySelector('[data-page="listone"]')) {
+      ensureListoneCompactControlsV280();
+      removeListoneHistoryPublicChromeV280();
+    }
+  } catch (error) {
+    console.warn("Refresh V280 UI listone non completato", error);
   }
 }, 0);

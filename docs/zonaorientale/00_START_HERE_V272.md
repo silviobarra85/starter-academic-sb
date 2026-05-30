@@ -68,3 +68,11 @@ I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il siste
 
 - V276: pannello Admin `Diagnostica dati`.
 - V277: filtro `Modifiche` nel Listone.
+
+
+## V280 - UI Listone semplificata
+
+- La sezione pubblica `Storico listoni` e' nascosta/rimossa dalla UI.
+- Restano attive le logiche di confronto storico usate da colonna `Modifica`, filtro `Modifiche`, usciti storici ed export CSV.
+- Nuovo documento: `listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
+- Primo audit contrasto mobile Light: `audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md`.

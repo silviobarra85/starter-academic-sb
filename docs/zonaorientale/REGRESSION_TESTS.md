@@ -432,3 +432,21 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 ## V278 - Export modifiche listone
 
 Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
+
+
+## Test V280 - UI Listone semplificata
+
+- Listone pubblico: il pannello `Storico listoni` non deve essere visibile.
+- Listone pubblico: il toggle `Cerca anche negli altri listoni` non deve essere visibile.
+- Listone pubblico: la tabella deve caricarsi regolarmente.
+- Listone pubblico: filtro `Modifiche` funzionante.
+- Listone pubblico: colonna `Modifica` attivabile dai campi visibili.
+- Listone pubblico: `Mostra usciti storici` funzionante.
+- Listone pubblico: `Esporta modifiche CSV` funzionante.
+- Console: `window.ZonaOrientaleListoneUiV280.historyPanelVisible` deve essere `false`.
+
+## Audit V280 - Mobile Light
+
+- Tema Light su smartphone: controllare Home, Listone, Competizioni, Archivio, Statistiche, Dashboard Presidente e Admin.
+- Verificare leggibilita di testi secondari, badge, celle tabella, bottoni secondari e intestazioni sticky.
+- Usare `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md` come base per la prossima patch grafica.

@@ -659,3 +659,13 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 ## V278 - Export modifiche listone
 
 Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
+
+
+## V280 - UI Listone semplificata
+
+- Rimossa/nascosta dalla UI pubblica la sezione `Storico listoni`.
+- Rimosso dalla UI il toggle `Cerca anche negli altri listoni`.
+- Preservate le logiche storiche usate da colonna `Modifica`, filtro `Modifiche`, usciti storici ed export CSV.
+- Aggiunta diagnostica `window.ZonaOrientaleListoneUiV280`.
+- Aggiunto documento tecnico `docs/zonaorientale/listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
+- Aggiunto audit `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md` per pianificare la prossima patch sulla leggibilita mobile in Light.
