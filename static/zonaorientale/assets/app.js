@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=280";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=281";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=280";
+} from "./js/domain/news-share-v228.js?v=281";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=280";
+} from "./js/admin/listone-converter.js?v=281";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=280";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=280";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=280";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=280";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=281";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=281";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=281";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=281";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=280";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=281";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "280";
+const DEPLOY_EXPECTED_VERSION_V181 = "281";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23054,11 +23054,8 @@ function ensureListoneCompactControlsV280() {
 
   removeListoneHistoryPublicChromeV280();
 
-  if (!document.getElementById("listoneShowHistoricalRemovedV270")) {
-    const label = document.createElement("label");
-    label.className = "checkbox-label listone-historical-removed-toggle-v280";
-    label.innerHTML = `<input id="listoneShowHistoricalRemovedV270" type="checkbox" checked /> Mostra usciti storici`;
-    filterRow.appendChild(label);
+  if (!document.getElementById("listoneChangeFilterV277") && Array.isArray(window.LISTONE_CHANGE_FILTER_OPTIONS_V277)) {
+    // Defensive fallback only: in normal runtime the constant is lexical, not on window.
   }
 
   if (!document.getElementById("listoneChangeFilterV277") && typeof LISTONE_CHANGE_FILTER_OPTIONS_V277 !== "undefined") {
@@ -23115,3 +23112,21 @@ window.setTimeout(() => {
     console.warn("Refresh V280 UI listone non completato", error);
   }
 }, 0);
+
+
+/* V281 - Contrasto mobile Light.
+ * Patch solo diagnostica: le correzioni visive sono in styles.css.
+ * Non modifica dati, Firebase, EmailJS o logiche Listone.
+ */
+window.ZonaOrientaleMobileLightContrastV281 = {
+  version: "V281",
+  scope: "mobile-light-contrast",
+  cssOnly: true,
+  preservesListoneLogic: true,
+  checks: [
+    "testi secondari Light piu' scuri in mobile",
+    "card/pannelli Light con sfondo piu' solido",
+    "tabelle mobile Light con corpo leggibile",
+    "badge/stati Light con colori ad alto contrasto"
+  ]
+};

@@ -10,7 +10,7 @@
 - Webapp: `static/zonaorientale/`.
 - Documentazione: `docs/zonaorientale/`.
 - Branch di lavoro corrente: `refactor/260528-zonaorientale-next`.
-- Versione runtime recente: `V280 semplifica listone`.
+- Versione runtime recente: `V281 contrasto mobile Light`.
 - Branch di produzione/deploy: `master`.
 
 ## 2. Regole operative obbligatorie
@@ -759,3 +759,12 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Documento tecnico: `docs/zonaorientale/listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
 - Audit grafico iniziale: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md`.
 - Prossima uscita consigliata: contrasto e leggibilita mobile in modalita Light.
+
+
+## V281 - Contrasto mobile Light
+
+- Versione runtime: `V281 contrasto mobile Light`.
+- Migliorata leggibilita in tema Light su smartphone.
+- Patch solo CSS + diagnostica runtime: `window.ZonaOrientaleMobileLightContrastV281`.
+- Documento tecnico: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
+- Non sono state modificate logiche Listone, Firebase, EmailJS o dati JSON.

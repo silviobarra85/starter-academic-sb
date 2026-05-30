@@ -76,3 +76,11 @@ I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il siste
 - Restano attive le logiche di confronto storico usate da colonna `Modifica`, filtro `Modifiche`, usciti storici ed export CSV.
 - Nuovo documento: `listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
 - Primo audit contrasto mobile Light: `audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md`.
+
+
+## V281 - Contrasto mobile Light
+
+- Patch grafica mirata per migliorare la leggibilita in tema Light da smartphone.
+- Intervento solo CSS + diagnostica runtime, senza modifiche a Firebase, EmailJS o dati JSON.
+- Nuovo documento: `audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
+- Diagnostica: `window.ZonaOrientaleMobileLightContrastV281`.

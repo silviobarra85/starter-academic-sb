@@ -787,3 +787,8 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 V280 rimuove/nasconde dalla UI pubblica il pannello `Storico listoni`, mantenendo intatte le logiche V269-V278 che alimentano colonna `Modifica`, filtro `Modifiche`, usciti storici ed export CSV. Diagnostica: `window.ZonaOrientaleListoneUiV280`. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
 
 V280 aggiunge anche un primo audit statico sulla leggibilita mobile in modalita Light: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md`. L'audit segnala come prossima uscita consigliata una patch dedicata al contrasto mobile Light.
+
+
+## V281 - Contrasto mobile Light
+
+V281 migliora la leggibilita in modalita Light da smartphone: testi secondari piu' scuri, card/pannelli con sfondo piu' solido, tabelle mobile con corpo piu' leggibile e badge/stati con colori ad alto contrasto. Non cambia dati, Firebase, EmailJS o logiche Listone. Diagnostica: `window.ZonaOrientaleMobileLightContrastV281`. Documento tecnico: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.

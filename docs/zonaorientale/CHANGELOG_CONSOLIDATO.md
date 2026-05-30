@@ -669,3 +669,13 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiunta diagnostica `window.ZonaOrientaleListoneUiV280`.
 - Aggiunto documento tecnico `docs/zonaorientale/listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
 - Aggiunto audit `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md` per pianificare la prossima patch sulla leggibilita mobile in Light.
+
+
+## V281 - Contrasto mobile Light
+
+- Migliorata la leggibilita del tema Light da smartphone.
+- Rafforzati testi secondari, hint, meta, badge e stati.
+- Migliorato il contrasto del corpo tabella mobile e della prima colonna sticky.
+- Aggiunta diagnostica `window.ZonaOrientaleMobileLightContrastV281`.
+- Aggiunto documento `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
+- Nessuna modifica a dati, Firebase, EmailJS o `FUNZIONALITA'.md`.

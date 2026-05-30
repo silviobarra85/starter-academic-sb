@@ -450,3 +450,16 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Tema Light su smartphone: controllare Home, Listone, Competizioni, Archivio, Statistiche, Dashboard Presidente e Admin.
 - Verificare leggibilita di testi secondari, badge, celle tabella, bottoni secondari e intestazioni sticky.
 - Usare `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md` come base per la prossima patch grafica.
+
+
+## Test V281 - Contrasto mobile Light
+
+- Attivare tema Light.
+- Verificare da smartphone reale o viewport mobile.
+- Home: testi secondari e card leggibili.
+- Listone: filtro `Modifiche`, `Mostra usciti storici`, export CSV e tabella leggibili.
+- Competizioni: calendario/classifiche leggibili, intestazioni sticky corrette.
+- Archivio/Statistiche/Confronta: testi secondari leggibili su card chiare.
+- Presidente: dashboard e trattative leggibili in Light.
+- Admin: Diagnostica dati e Richieste presidenti leggibili in Light.
+- Console: `window.ZonaOrientaleMobileLightContrastV281.cssOnly` deve essere `true`.
