@@ -1,3 +1,41 @@
+# Aggiornamento V272 - Checklist pre-merge
+
+Prima del merge su `master`, usare anche `audit/VERIFICA_FUNZIONALITA_V272.md` e `release/PUSH_MASTER_E_RITORNO_BRANCH_V272.md`. Test minimi: Home, News/share, Dashboard Presidente, Svincola Giocatori, Trattative/notifiche, Admin Richieste presidenti, Admin Converti listone Excel, Listone con colonna Modifica, Competizioni e Archivio.
+
+# Aggiornamento V266 - Email deliverability EmailJS
+
+V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.
+
+# Aggiornamento V265 - Pulizia asset sicuri
+
+V265 e' una pulizia fisica controllata: rimuove dai comandi di release i duplicati/inutilizzati sicuri gia' identificati nell'audit, mantiene come canonico il simulatore trattative `assets/js/dev/trade-notification-simulator-v255.js` e aggiunge/rafforza `.gitignore` per impedire il ritorno di file macOS. Non modifica `FUNZIONALITA'.md` e non cambia comportamento runtime. Diagnostica: `window.ZonaOrientaleCleanupV265`.
+
+# Aggiornamento V263 - Funzionalita V256-262
+
+V263 aggiunge `FUNZIONALITA'V256-262.md`, registro incrementale delle funzionalita introdotte o consolidate tra V256 e V262. Non modifica `FUNZIONALITA'.md` e non cambia il comportamento runtime. Diagnostica: `window.ZonaOrientaleFeaturesDocV263`.
+
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
+## Test V261 - Svincola Giocatori
+
+1. Login come presidente approvato.
+2. Aprire `Dashboard Presidente`.
+3. Verificare la presenza della terza sottosezione `Svincola Giocatori`.
+4. Selezionare uno o piu giocatori dalla rosa.
+5. Verificare che il corpo email includa testo standard, lista giocatori e Qt.A tra parentesi.
+6. Verificare che la chiusura riporti il listone usato per le quotazioni e la firma del presidente.
+7. Cliccare `Invia informativa` e verificare ricezione EmailJS a `caparrotti86@yahoo.it`.
+8. Verificare che non venga creata una richiesta in `Admin -> Richieste presidenti`, perche il flusso V261 e' solo email.
+
+Diagnostica console:
+
+```js
+window.ZonaOrientalePlayerReleaseV261
+window.ZonaOrientalePlayerReleaseV261.buildDraft()
+```
+
 ## Test V257 - Notifiche trattative multi-dispositivo
 
 Dopo deploy delle Firebase Rules V257:
@@ -309,3 +347,57 @@ Aggiungere al test Presidente: verificare che in DevTools `window.ZonaOrientaleL
 - Testare Approva/Rifiuta su richiesta PENDING.
 - Testare `Elimina da Firebase` su comunicato APPROVED o REJECTED.
 - Dopo `Aggiorna richieste`, il documento eliminato non deve ricomparire.
+
+
+## Test rapido Accesso Riservato V264
+
+- Aprire `Accedi / Registrati`.
+- Verificare che il campo `Nome visualizzato` non sia presente.
+- Verificare che il pulsante `Accedi con Google` mostri il logo Google e resti cliccabile.
+- Registrazione email: usare solo email/password; il nome presidente va assegnato dall'admin.
+- Console: `window.ZonaOrientaleLoginUiV264.displayNameFieldRemoved` deve essere `true`.
+
+## Test aggiuntivi V267 - Competizioni
+
+Prima di rimuovere o rifattorizzare codice competizioni, verificare:
+
+```text
+[ ] Dashboard pubblica: competizioni correnti visibili.
+[ ] Sezione Competizioni: elenco, stato, vincitore e link corretti.
+[ ] competition.html: calendario, risultati e classifiche visibili.
+[ ] Archivio: competizioni storiche consultabili.
+[ ] Mobile: card/blocchi competizioni leggibili.
+[ ] Admin -> Competizioni: pannello apribile senza errori console.
+[ ] Console: window.ZonaOrientaleCompetitionsAuditV267 presente.
+```
+
+
+## Test aggiuntivi V268 - Convertitore listone Excel
+
+```text
+[ ] Admin -> Converti listone Excel apribile.
+[ ] Conversione formato storico Tutti/Ceduti restituisce giocatori > 0.
+[ ] Conversione formato Classic Lista calciatori restituisce giocatori > 0.
+[ ] La colonna QUOT. viene mappata come quotazione attuale.
+[ ] La colonna Fuori lista valorizzata produce status ASTERISCATO.
+[ ] Il report mostra formato riconosciuto e fogli usati.
+[ ] Console: window.ZonaOrientaleListoneConverterV268 presente.
+```
+
+
+## V269 - Storico e confronto listoni
+
+- Aggiunto confronto automatico tra listone selezionato e listone precedente della stessa stagione.
+- Il convertitore listone arricchisce il JSON generato con campi `previous`, `diff`, `previousQuotationCurrent`, `quotationDiffFromPrevious`, `statusChange` e riepilogo `history`.
+- La sezione pubblica `Listone` mostra un pannello `Storico listoni` con nuovi, usciti, variazioni quotazione e ricerca negli altri listoni.
+- Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
+- Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
+- Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## Addendum V271 - test listone storico
+
+- Listone: abilitare colonna `Modifica` da `Campi visibili`.
+- Listone: attivare `Mostra usciti storici`.
+- Listone: cercare un giocatore presente solo in un listone precedente.
+- Admin: convertire un file Excel formato Classic `Lista calciatori`.
+- Admin: verificare report con formato riconosciuto e confronto, se disponibile.

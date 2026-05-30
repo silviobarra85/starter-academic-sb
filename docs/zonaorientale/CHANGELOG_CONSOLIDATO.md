@@ -1,3 +1,35 @@
+# Aggiornamento V272 - Handoff e verifica pre-merge
+
+- Aggiunti documenti organizzati per handoff, audit funzionalita, audit file legacy, pianificazione e procedura merge master.
+- Aggiornati footer/cache-buster/diagnostica a V272.
+- Confermato che `FUNZIONALITA'.md` non viene modificato.
+- Preparata procedura Git per merge su `master` e ritorno al branch `refactor/260528-zonaorientale-next`.
+
+# Aggiornamento V266 - Email deliverability EmailJS
+
+V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.
+
+# Aggiornamento V265 - Pulizia asset sicuri
+
+V265 e' una pulizia fisica controllata: rimuove dai comandi di release i duplicati/inutilizzati sicuri gia' identificati nell'audit, mantiene come canonico il simulatore trattative `assets/js/dev/trade-notification-simulator-v255.js` e aggiunge/rafforza `.gitignore` per impedire il ritorno di file macOS. Non modifica `FUNZIONALITA'.md` e non cambia comportamento runtime. Diagnostica: `window.ZonaOrientaleCleanupV265`.
+
+# Aggiornamento V263 - Funzionalita V256-262
+
+V263 aggiunge `FUNZIONALITA'V256-262.md`, registro incrementale delle funzionalita introdotte o consolidate tra V256 e V262. Non modifica `FUNZIONALITA'.md` e non cambia il comportamento runtime. Diagnostica: `window.ZonaOrientaleFeaturesDocV263`.
+
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
+## V261 - Svincola Giocatori in Dashboard Presidente
+
+- Aggiunta terza sottosezione presidente `Svincola Giocatori` dopo `Invia comunicato squadra` e `Comunicato avvenuto scambio`.
+- Il presidente puo selezionare uno o piu giocatori dalla propria rosa.
+- Il corpo email viene generato automaticamente con elenco giocatori e Qt.A recuperata dal listone piu recente disponibile per ciascun giocatore.
+- Invio EmailJS a `caparrotti86@yahoo.it` con oggetto `<Nome Squadra> - Svincolo giocatori - <Data odierna>`.
+- Nessuna scrittura Firebase: e' una sola informativa email.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V261.
+
 ## V257 - Firebase Rules notifiche trattative
 
 - Aggiunto file completo rules `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`.
@@ -560,3 +592,41 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - Aggiunto refresh esplicito/automatico del pannello Admin → Richieste presidenti per rileggere `teamRequests` da Firebase quando una richiesta appena inviata non compare subito.
 - Normalizzato il payload del Comunicato avvenuto scambio con campi compatibili Admin (`TRANSFER_NEWS`, `requestType`, `adminVisible`, `needsAdminApproval`).
 - `FUNZIONALITA'.md` non modificato.
+
+## V267 - Audit competizioni
+
+- Aggiunto audit documentale e runtime per la sezione Competizioni.
+- Aggiornata la guida per un eventuale nuovo assistente AI.
+- Nessuna rimozione di funzionalita o asset competizioni.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a `267`.
+
+
+## V268 - Convertitore listone flessibile
+
+- Corretto il convertitore listone Excel che produceva 0 giocatori con file Classic a foglio singolo.
+- Conservato il formato storico `Tutti`/`Ceduti`.
+- Aggiunto riconoscimento automatico del foglio con colonna `Nome`.
+- Aggiunta mappatura `QUOT.` -> quotazione attuale e `Fuori lista` -> asteriscato.
+
+
+## V269 - Storico e confronto listoni
+
+- Aggiunto confronto automatico tra listone selezionato e listone precedente della stessa stagione.
+- Il convertitore listone arricchisce il JSON generato con campi `previous`, `diff`, `previousQuotationCurrent`, `quotationDiffFromPrevious`, `statusChange` e riepilogo `history`.
+- La sezione pubblica `Listone` mostra un pannello `Storico listoni` con nuovi, usciti, variazioni quotazione e ricerca negli altri listoni.
+- Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
+- Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
+- Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## V270 - modifica listone visibile
+
+- Aggiunta colonna opzionale `Modifica` nel Listone pubblico.
+- La colonna mostra nuovi giocatori, usciti, variazioni di quotazione, cambi stato, squadra e ruolo.
+- Aggiunto toggle `Mostra usciti storici` per includere in tabella i giocatori presenti nei listoni precedenti ma non nel listone selezionato.
+- Per i giocatori usciti viene indicato l'ultimo listone in cui erano presenti.
+
+## V271 - funzionalita V263-270
+
+- Aggiunto `FUNZIONALITA'V263-270.md` come registro incrementale delle modifiche V263-V270.
+- Tracciate le funzionalita' di accesso riservato, deliverability EmailJS, audit competizioni, convertitore listone flessibile, storico listoni e colonna `Modifica`.
+- Nessuna modifica funzionale diretta al runtime oltre alla diagnostica `window.ZonaOrientaleFunctionLedgerV271`.

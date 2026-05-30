@@ -1,6 +1,26 @@
+# Aggiornamento V272 - Documentazione organizzata e pre-merge
+
+La documentazione operativa V272 introduce un punto di ingresso ordinato: `00_START_HERE_V272.md`. I nuovi documenti sono organizzati in `handoff/`, `audit/`, `pianificazione/` e `release/`. Il file storico `FUNZIONALITA'.md` resta invariato e va modificato solo su richiesta esplicita.
+
+# Aggiornamento V266 - Email deliverability EmailJS
+
+V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.
+
+# Aggiornamento V265 - Pulizia asset sicuri
+
+V265 e' una pulizia fisica controllata: rimuove dai comandi di release i duplicati/inutilizzati sicuri gia' identificati nell'audit, mantiene come canonico il simulatore trattative `assets/js/dev/trade-notification-simulator-v255.js` e aggiunge/rafforza `.gitignore` per impedire il ritorno di file macOS. Non modifica `FUNZIONALITA'.md` e non cambia comportamento runtime. Diagnostica: `window.ZonaOrientaleCleanupV265`.
+
+# Aggiornamento V263 - Funzionalita V256-262
+
+V263 aggiunge `FUNZIONALITA'V256-262.md`, registro incrementale delle funzionalita introdotte o consolidate tra V256 e V262. Non modifica `FUNZIONALITA'.md` e non cambia il comportamento runtime. Diagnostica: `window.ZonaOrientaleFeaturesDocV263`.
+
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
 # Documentazione ZonaOrientale
 
-Documentazione consolidata al 26/05/2026, stato codice sito **V257**.
+Documentazione consolidata al 26/05/2026, stato codice sito **V262**.
 
 Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIENTALE_Vxxx.md`, `REFACTOR_Vxxx.md`, release note e archivi storici sparsi. Da ora la documentazione operativa va mantenuta in pochi file canonici.
 
@@ -16,7 +36,7 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
    Flussi pratici per modifiche dati, snapshot, JSON statici, test, overlay, cache-buster, comandi locali e Git.
 
 4. `CHANGELOG_CONSOLIDATO.md`  
-   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V257.
+   Riassunto cronologico delle versioni storiche e delle patch recenti fino a V261.
 
 5. `ROADMAP.md`  
    Idee e priorita future, accorpate dal vecchio documento sulle nuove funzionalita.
@@ -26,6 +46,9 @@ Questa cartella sostituisce la vecchia struttura con molti `AI_HANDOFF_ZONAORIEN
 
 7. `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules`  
    Regole Firestore complete aggiornate per notifiche trattative multi-dispositivo. Il file patch V257 contiene solo la sezione da integrare se non vuoi sostituire tutto il file rules.
+
+8. `PROSSIME_ATTIVITA_260528.md`  
+   Backlog e note operative del branch `refactor/260528-zonaorientale-next`, aggiornato fino alla V261.
 
 ## Regola per i prossimi aggiornamenti docs
 
@@ -97,3 +120,26 @@ Per sincronizzare le notifiche trattative tra smartphone e desktop usare:
 
 - `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` per il file completo;
 - `firebase/FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` se vuoi applicare solo la patch a `transferNegotiations`.
+
+## Nota V267
+
+La V267 aggiunge un audit prudente delle competizioni. Il modulo `assets/js/domain/competitions.js` e' stato classificato come file sotto osservazione, non da eliminare senza test. La guida per un nuovo assistente AI e' stata aggiornata a V267.
+
+
+## Nota V268
+
+Il convertitore `Admin -> Converti listone Excel` supporta ora sia il formato storico con fogli `Tutti`/`Ceduti`, sia il formato Classic a foglio singolo con colonna `Nome` e quotazione `QUOT.`. Dettagli in `LISTONE_CONVERTER_V268.md`.
+
+
+## V269 - Storico e confronto listoni
+
+- Aggiunto confronto automatico tra listone selezionato e listone precedente della stessa stagione.
+- Il convertitore listone arricchisce il JSON generato con campi `previous`, `diff`, `previousQuotationCurrent`, `quotationDiffFromPrevious`, `statusChange` e riepilogo `history`.
+- La sezione pubblica `Listone` mostra un pannello `Storico listoni` con nuovi, usciti, variazioni quotazione e ricerca negli altri listoni.
+- Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
+- Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
+- Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+### V271 - Registro funzionalita V263-V270
+
+Aggiunto `FUNZIONALITA'V263-270.md` come registro incrementale delle modifiche introdotte nel branch `refactor/260528-zonaorientale-next` tra V263 e V270.

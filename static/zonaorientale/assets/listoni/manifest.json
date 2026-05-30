@@ -13,6 +13,20 @@
       "rosterLoadedAt": "2026-05-12",
       "rosteredRows": 299,
       "freeAgentRows": 362
+    }, 
+    {
+      "id": "2026-05-30",
+      "seasonId": "2025-2026",
+      "label": "Listone 2026-05-30",
+      "loadedAt": "2026-05-30",
+      "file": "2026-05-30.json",
+      "rows": 663,
+      "activeRows": 532,
+      "asteriskRows": 131,
+      "detectedFormat": "Fantacalcio Classic a foglio singolo",
+      "sourceSheets": [
+        "Lista calciatori"
+      ]
     }
   ]
 }

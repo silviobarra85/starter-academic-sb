@@ -1,3 +1,27 @@
+# Aggiornamento V272 - Merge master e ritorno branch
+
+La procedura Git aggiornata per fondere `refactor/260528-zonaorientale-next` su `master` e poi tornare al branch e' in `release/PUSH_MASTER_E_RITORNO_BRANCH_V272.md`. Ricordare che le Firebase Rules V257 non vengono pubblicate automaticamente da Netlify/GitHub.
+
+# Aggiornamento V266 - Email deliverability EmailJS
+
+V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.
+
+# Aggiornamento V265 - Pulizia asset sicuri
+
+V265 e' una pulizia fisica controllata: rimuove dai comandi di release i duplicati/inutilizzati sicuri gia' identificati nell'audit, mantiene come canonico il simulatore trattative `assets/js/dev/trade-notification-simulator-v255.js` e aggiunge/rafforza `.gitignore` per impedire il ritorno di file macOS. Non modifica `FUNZIONALITA'.md` e non cambia comportamento runtime. Diagnostica: `window.ZonaOrientaleCleanupV265`.
+
+# Aggiornamento V263 - Funzionalita V256-262
+
+V263 aggiunge `FUNZIONALITA'V256-262.md`, registro incrementale delle funzionalita introdotte o consolidate tra V256 e V262. Non modifica `FUNZIONALITA'.md` e non cambia il comportamento runtime. Diagnostica: `window.ZonaOrientaleFeaturesDocV263`.
+
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
+## Nota operativa V261 - Svincola Giocatori
+
+Per testare la nuova informativa presidente: login presidente -> Dashboard Presidente -> Svincola Giocatori -> selezionare uno o piu giocatori -> verificare preview corpo email -> Invio informativa. Il flusso usa EmailJS e non crea richieste Admin/Firebase. Verificare che l'oggetto rispetti `<Nome Squadra> - Svincolo giocatori - <Data odierna>` e che il corpo riporti il listone da cui sono state recuperate le quotazioni.
+
 ## Nota operativa V257 - Deploy Firebase Rules per notifiche trattative
 
 Per sincronizzare la lettura degli esiti trattative tra smartphone e desktop, deployare le rules V257 da `docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` oppure applicare la patch `FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` alla configurazione Firestore esistente. Dopo il deploy, testare da presidente: ricezione esito, apertura card in `Dashboard Presidente -> Trattative`, refresh su secondo dispositivo. Se non compare piu il warning `Lettura esito trattativa salvata solo localmente`, la lettura e' persistita in Firebase.
@@ -458,3 +482,47 @@ La rimozione dei CSS hotfix e' sicura perche il loro contenuto e' gia presente i
 ## Nota operativa V253 - Richieste presidenti modulari
 
 Il pannello `Admin -> Richieste presidenti` e' installato dal modulo `assets/js/admin/team-requests-panel-v253.js`. In caso di regressione, il codice inline V249 resta come fallback nel bundle principale, ma il render atteso deve usare attributi V253 e la diagnostica `window.ZonaOrientaleTeamRequestsV253`. Prima del merge testare refresh, approvazione, rifiuto ed eliminazione da Firebase dei comunicati approvati/rifiutati.
+
+## Verifica release V267
+
+Dopo applicazione overlay, controllare:
+
+```text
+Footer: V267 audit competizioni
+Console: window.ZonaOrientaleCompetitionsAuditV267
+Competizioni pubbliche visibili
+competition.html raggiungibile
+Admin -> Competizioni apribile
+```
+
+La V267 non richiede deploy Firebase Rules.
+
+
+## Verifica release V268
+
+Controllare in Admin -> Converti listone Excel:
+
+```text
+1. caricare un vecchio Excel con fogli Tutti/Ceduti;
+2. verificare che i giocatori siano > 0;
+3. caricare un Excel Classic con foglio Lista calciatori;
+4. verificare che i giocatori siano > 0;
+5. verificare nel report formato riconosciuto e fogli usati;
+6. controllare console: window.ZonaOrientaleListoneConverterV268.
+```
+
+La V268 non richiede deploy Firebase Rules.
+
+
+## V269 - Storico e confronto listoni
+
+- Aggiunto confronto automatico tra listone selezionato e listone precedente della stessa stagione.
+- Il convertitore listone arricchisce il JSON generato con campi `previous`, `diff`, `previousQuotationCurrent`, `quotationDiffFromPrevious`, `statusChange` e riepilogo `history`.
+- La sezione pubblica `Listone` mostra un pannello `Storico listoni` con nuovi, usciti, variazioni quotazione e ricerca negli altri listoni.
+- Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
+- Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
+- Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## Nota V271
+
+Prima di pubblicare su master, verificare la checklist listone V268-V270 e il documento `FUNZIONALITA'V263-270.md`.

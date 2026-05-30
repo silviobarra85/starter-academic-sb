@@ -1,4 +1,28 @@
-# AI Handoff ZonaOrientale - Current V257
+# Aggiornamento V272 - Handoff, audit funzionalita e preparazione merge master
+
+V272 aggiorna lo stato corrente del branch `refactor/260528-zonaorientale-next`, aggiunge una documentazione organizzata in sottocartelle (`handoff`, `audit`, `pianificazione`, `release`) e registra i controlli statici sulle funzionalita a rischio regressione. Non modifica `FUNZIONALITA'.md`. Diagnostica runtime: `window.ZonaOrientalePreMergeAuditV272`.
+
+# Aggiornamento V266 - Email deliverability EmailJS
+
+V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.
+
+# Aggiornamento V265 - Pulizia asset sicuri
+
+V265 e' una pulizia fisica controllata: rimuove dai comandi di release i duplicati/inutilizzati sicuri gia' identificati nell'audit, mantiene come canonico il simulatore trattative `assets/js/dev/trade-notification-simulator-v255.js` e aggiunge/rafforza `.gitignore` per impedire il ritorno di file macOS. Non modifica `FUNZIONALITA'.md` e non cambia comportamento runtime. Diagnostica: `window.ZonaOrientaleCleanupV265`.
+
+# Aggiornamento V263 - Funzionalita V256-262
+
+V263 aggiunge `FUNZIONALITA'V256-262.md`, registro incrementale delle funzionalita introdotte o consolidate tra V256 e V262. Non modifica `FUNZIONALITA'.md` e non cambia il comportamento runtime. Diagnostica: `window.ZonaOrientaleFeaturesDocV263`.
+
+# Aggiornamento V262 - Audit pulizia codice
+
+V262 aggiunge `AUDIT_CODICE_260528_V262.md` e una `.gitignore` locale in `static/zonaorientale/`. Non cambia funzionalita': fotografa file duplicati/non importati, file macOS e candidati a pulizia controllata. Diagnostica runtime: `window.ZonaOrientaleAuditV262`.
+
+# AI Handoff ZonaOrientale - Current V264
+
+## Nota V261 - Svincola Giocatori presidente
+
+V261 aggiunge in `Dashboard Presidente` la sottosezione `Svincola Giocatori`. Il presidente seleziona uno o piu giocatori dalla propria rosa; il sistema costruisce una email indirizzata a `caparrotti86@yahoo.it` con testo standard, elenco giocatori e Qt.A tra parentesi. La quotazione viene cercata partendo dal listone piu recente della stagione corrente che contiene il giocatore. Il flusso non scrive su Firebase e usa EmailJS dal browser. Diagnostica: `window.ZonaOrientalePlayerReleaseV261`.
 
 ## Nota V257 - Firebase Rules notifiche trattative multi-dispositivo
 
@@ -30,7 +54,7 @@ Ultimo aggiornamento documentale: 27/05/2026.
 
 ## Stato corrente in una frase
 
-Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V257**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati, V253 con estrazione modulare di Admin -> Richieste presidenti e V254 con simulatore notifiche trattative e V255 con comandi standard/smoke test trattative e V256 con documento funzionalita V240-255 separato e V257 con Firebase Rules per notifiche trattative multi-dispositivo.
+Il sito ZonaOrientale e' una webapp statica HTML/CSS/JS puro, attualmente funzionante in **V264**, con dati pubblici prioritariamente serviti da JSON statici, Firebase usato per live/fallback/admin, UI mobile uniformata, Archivio/Statistiche/Confronta ripristinati, hotfix V227 sui saldi FM in Archivio, primo ciclo refactor tecnico V220-V225 chiuso e preview WhatsApp dinamica dei comunicati via Netlify Function, hotfix routing V235 per aprire i comunicati dopo redirect, pulsante account presidente personalizzato in header V240 con sync live trattative presidente, notifiche persistenti e hotfix permission-denied sul comunicato scambio, V241 con flusso Accetta utenti stabile anti-duplicati, V243 con consolidamento canonico del comunicato avvenuto scambio, V244 con eliminazione da Firebase dei comunicati rifiutati, V245 con eliminazione anche dei comunicati approvati dal registro richieste e V246 con lettura esiti trattative sincronizzata su Firebase, V247 con checklist regressioni canonica e V248 con pulizia handler legacy del comunicato scambio e V249 con pannello Admin Richieste presidenti canonico e V250 con ripristino del Generatore comunicati automatici in Admin e V251 con ripristino del workflow pubblicazione Admin V213, V252 con pulizia asset inutilizzati, V253 con estrazione modulare di Admin -> Richieste presidenti e V254 con simulatore notifiche trattative e V255 con comandi standard/smoke test trattative e V256 con documento funzionalita V240-255 separato e V257 con Firebase Rules per notifiche trattative multi-dispositivo, V259/V260 con anteprima home generica e pulizia preview/tag tecnici, V261 con informativa svincolo giocatori in Dashboard Presidente.
 
 
 ## Nota V251 - Workflow pubblicazione Admin ripristinato
@@ -273,7 +297,7 @@ ZonaOrientale Salerno · V248 pulizia handler legacy · Ultimo aggiornamento 26/
 
 Cache-buster HTML principali attesi: `?v=248`.
 
-Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `256`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
+Nota tecnica: in `assets/app.js` la costante diagnostica `DEPLOY_EXPECTED_VERSION_V181` e allineata a `265`. Dopo ogni overlay codice/UI va aggiornata insieme a footer e cache-buster.
 
 ## File principali del sito
 
@@ -693,3 +717,42 @@ Hotfix Listone: le checkbox sono ora coerenti con le colonne visibili. `In listo
 - Il form V236 tentava pubblicazione diretta in `news` e invio EmailJS a `caparrotti86@yahoo.it`; V239 corregge il problema permessi spostando la pubblicazione in approvazione Admin.
 - Aggiunto topic `COMUNICATO_AVVENUTO_SCAMBIO` nelle label.
 - Aggiornati footer/cache-buster, diagnostica versione e documentazione a V236.
+
+## V267 - Audit competizioni
+
+- Versione runtime: `V267 audit competizioni`.
+- Aggiunto `docs/zonaorientale/AUDIT_COMPETIZIONI_V267.md`.
+- Aggiornata la guida `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md`.
+- Nessuna funzionalita rimossa e nessun file competizioni eliminato.
+- Diagnostica: `window.ZonaOrientaleCompetitionsAuditV267`.
+- Il modulo `assets/js/domain/competitions.js` resta sotto osservazione: sembra legacy/scollegato, ma non va rimosso senza test di Dashboard, Competizioni, `competition.html`, Archivio e Admin Competizioni.
+
+
+## V268 - Convertitore listone flessibile
+
+- Versione runtime: `V268 convertitore listone flessibile`.
+- `Admin -> Converti listone Excel` mantiene il formato storico con fogli `Tutti`/`Ceduti`.
+- Aggiunto supporto al formato Classic a foglio singolo, per esempio `Lista calciatori` con colonne `Nome`, `Fuori lista`, `Sq.`, `R.`, `R.MANTRA`, `QUOT.`, `FVM/1000`.
+- Il report Admin mostra formato riconosciuto e fogli usati.
+- Diagnostica: `window.ZonaOrientaleListoneConverterV268`.
+- Dettagli: `docs/zonaorientale/LISTONE_CONVERTER_V268.md`.
+
+
+## V269 - Storico e confronto listoni
+
+- Aggiunto confronto automatico tra listone selezionato e listone precedente della stessa stagione.
+- Il convertitore listone arricchisce il JSON generato con campi `previous`, `diff`, `previousQuotationCurrent`, `quotationDiffFromPrevious`, `statusChange` e riepilogo `history`.
+- La sezione pubblica `Listone` mostra un pannello `Storico listoni` con nuovi, usciti, variazioni quotazione e ricerca negli altri listoni.
+- Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
+- Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
+- Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## V271 - funzionalita V263-270
+
+Versione corrente documentata: V271 funzionalita V263-270.
+
+Nuovo documento rilevante:
+
+- `docs/zonaorientale/FUNZIONALITA'V263-270.md`
+
+Il documento principale `FUNZIONALITA'.md` non e' stato modificato.
