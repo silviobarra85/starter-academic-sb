@@ -1,15 +1,3 @@
-## Test V280 - Confronto manuale listoni
-
-1. Aprire `Listone`.
-2. Aprire il pannello `Storico listoni`.
-3. Verificare la presenza di `Confronto manuale tra due listoni`.
-4. Selezionare due listoni diversi della stessa stagione.
-5. Verificare riepilogo nuovi, usciti, Qt. +, Qt. -, cambi stato e cambi squadra/ruolo.
-6. Verificare la tabella differenze con colonne `Modifica`, `Giocatore`, `Qt.A`, `Qt.A confronto` e `Diff.`.
-7. Invertire i due listoni e verificare che nuovi/usciti si comportino coerentemente.
-8. Verificare che restino funzionanti ricerca, ruoli, stato, filtro `Modifiche`, `Mostra usciti storici` ed export CSV V278.
-9. Console: `window.ZonaOrientaleListoneManualCompareV280.getRows()` deve restituire un array.
-
 ## Test V275 - Verifica registro funzionale recente
 
 1. Controllare footer `V275 funzionalita V271-274`.

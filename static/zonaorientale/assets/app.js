@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=280";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=278";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=280";
+} from "./js/domain/news-share-v228.js?v=278";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=280";
+} from "./js/admin/listone-converter.js?v=278";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=280";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=280";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=280";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=280";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=278";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=278";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=278";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=278";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=280";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=278";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "280";
+const DEPLOY_EXPECTED_VERSION_V181 = "278";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23034,240 +23034,5 @@ window.setTimeout(() => {
     if (document.querySelector('[data-page="listone"]')) renderListonePublic();
   } catch (error) {
     console.warn("Refresh V278 export modifiche listone non completato", error);
-  }
-}, 0);
-
-/* V280 - Confronto manuale tra due listoni.
- * Estende il pannello Storico listoni con una comparazione arbitraria tra due snapshot
- * della stessa stagione, senza scritture Firebase e senza alterare il confronto automatico V269.
- */
-function getListoneByIdentityV280(identity) {
-  const target = String(identity || "").trim();
-  if (!target) return null;
-  return getListoniForCurrentSeason().find((listone) => {
-    const id = typeof getListoneIdentityV270 === "function"
-      ? getListoneIdentityV270(listone)
-      : String(listone.id || listone.meta?.id || "");
-    const date = typeof getListoneDateKeyV269 === "function" ? getListoneDateKeyV269(listone) : "";
-    return id === target || date === target;
-  }) || null;
-}
-
-function getListoneManualCompareIdentityV280(listone = {}) {
-  if (!listone) return "";
-  if (typeof getListoneIdentityV270 === "function") return getListoneIdentityV270(listone);
-  return String(listone?.id || listone?.meta?.id || listone?.loadedAt || "").trim();
-}
-
-function getListoneManualCompareLabelV280(listone = {}) {
-  if (!listone) return "-";
-  return typeof getListoneDisplayLabelV269 === "function"
-    ? getListoneDisplayLabelV269(listone)
-    : String(listone.label || listone.loadedAt || listone.id || "Listone");
-}
-
-function getDefaultManualCompareReferenceV280(currentListone, available = []) {
-  if (!currentListone) return null;
-  const previous = typeof getPreviousListoneForDateV269 === "function"
-    ? getPreviousListoneForDateV269(currentListone, currentListone.seasonId || currentListone.meta?.seasonId || getCurrentSeasonId())
-    : null;
-  if (previous) return previous;
-  const currentId = getListoneManualCompareIdentityV280(currentListone);
-  return available.find((listone) => getListoneManualCompareIdentityV280(listone) !== currentId) || null;
-}
-
-function getManualListoneCompareSelectionV280(baseListone = null) {
-  const available = getListoniForCurrentSeason();
-  if (available.length < 2) {
-    return { available, currentListone: baseListone || available[0] || null, referenceListone: null };
-  }
-
-  const baseId = baseListone ? getListoneManualCompareIdentityV280(baseListone) : "";
-  let currentListone = getListoneByIdentityV280(state.listoneManualCompareCurrentIdV280) || getListoneByIdentityV280(baseId) || available[0];
-  let referenceListone = getListoneByIdentityV280(state.listoneManualCompareReferenceIdV280);
-
-  if (!referenceListone || getListoneManualCompareIdentityV280(referenceListone) === getListoneManualCompareIdentityV280(currentListone)) {
-    referenceListone = getDefaultManualCompareReferenceV280(currentListone, available);
-  }
-
-  state.listoneManualCompareCurrentIdV280 = getListoneManualCompareIdentityV280(currentListone);
-  state.listoneManualCompareReferenceIdV280 = referenceListone ? getListoneManualCompareIdentityV280(referenceListone) : "";
-
-  return { available, currentListone, referenceListone };
-}
-
-function renderManualListoneCompareOptionsV280(available = [], selectedId = "") {
-  return available.map((listone) => {
-    const id = getListoneManualCompareIdentityV280(listone);
-    return `<option value="${escapeHtml(id)}" ${id === selectedId ? "selected" : ""}>${escapeHtml(getListoneManualCompareLabelV280(listone))}</option>`;
-  }).join("");
-}
-
-function getManualListoneCompareRowsV280(comparison = {}, referenceListone = null) {
-  const referenceLabel = getListoneManualCompareLabelV280(referenceListone);
-  const changedRows = (comparison.enrichedPlayers || []).filter((player) => {
-    const status = typeof getHistoryChangeStatusV270 === "function"
-      ? getHistoryChangeStatusV270(player)
-      : (player.historyChange || player.statusChange || player.diff?.status || "UNCHANGED");
-    const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
-    return status !== "UNCHANGED" || (quoteDiff !== null && quoteDiff !== 0);
-  });
-
-  const removedRows = (comparison.removedPlayers || []).map((player) => ({
-    ...player,
-    fantasyRoster: player.fantasyRoster || "Non presente",
-    status: "Uscito",
-    statusCode: "REMOVED",
-    statusChange: "REMOVED",
-    historyChange: "REMOVED",
-    isHistoricalRemovedV270: true,
-    previousQuotationCurrent: getComparableQuotationV269(player) ?? player.quotationCurrent ?? "",
-    historyLastSeenListoneLabel: referenceLabel,
-    historyLastSeenListoneId: getListoneManualCompareIdentityV280(referenceListone)
-  }));
-
-  return changedRows.concat(removedRows);
-}
-
-function renderManualListoneCompareTableV280(rows = []) {
-  const preview = rows.slice(0, 80);
-  if (!rows.length) return `<p class="muted">Nessuna differenza rilevata tra i due listoni selezionati.</p>`;
-  return `
-    <div class="table-wrap listone-manual-compare-table-wrap-v280">
-      <table class="listone-manual-compare-table-v280">
-        <thead>
-          <tr>
-            <th>Modifica</th>
-            <th>Giocatore</th>
-            <th>Ruolo</th>
-            <th>Sq</th>
-            <th class="number">Qt.A</th>
-            <th class="number">Qt.A confronto</th>
-            <th class="number">Diff.</th>
-            <th>Stato</th>
-          </tr>
-        </thead>
-        <tbody>${preview.map((player) => {
-          const previous = player.previous || {};
-          const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
-          const previousQuotation = player.previousQuotationCurrent ?? previous.quotationCurrent ?? (player.isHistoricalRemovedV270 ? player.quotationCurrent : "");
-          return `
-            <tr>
-              <td data-label="Modifica">${typeof renderListoneModificationCellV270 === "function" ? renderListoneModificationCellV270(player) : escapeHtml(player.historyChange || player.statusChange || "-")}</td>
-              <td data-label="Giocatore"><strong>${escapeHtml(player.playerName || "-")}</strong></td>
-              <td data-label="Ruolo">${escapeHtml(player.classicRole || "-")}</td>
-              <td data-label="Sq"><span class="team-code">${escapeHtml(player.realTeam || "-")}</span></td>
-              <td data-label="Qt.A" class="number">${player.isHistoricalRemovedV270 ? "-" : formatListoneNumber(player.quotationCurrent)}</td>
-              <td data-label="Qt.A confronto" class="number">${formatListoneNumber(previousQuotation)}</td>
-              <td data-label="Diff." class="number">${quoteDiff === null ? "-" : `${quoteDiff > 0 ? "+" : ""}${formatListoneNumber(quoteDiff)}`}</td>
-              <td data-label="Stato">${escapeHtml(player.isHistoricalRemovedV270 ? "Uscito" : (player.status || player.statusCode || "-"))}</td>
-            </tr>`;
-        }).join("")}</tbody>
-      </table>
-    </div>
-    ${rows.length > preview.length ? `<p class="muted">Mostrate le prime ${preview.length} differenze su ${rows.length}. Usa i filtri del Listone o una ricerca piu' specifica per ridurre il risultato.</p>` : ""}`;
-}
-
-function renderManualListoneComparePanelV280(listone) {
-  const target = document.getElementById("listoneHistoryContentV269");
-  if (!target || !listone) return;
-  const { available, currentListone, referenceListone } = getManualListoneCompareSelectionV280(listone);
-  const currentId = getListoneManualCompareIdentityV280(currentListone);
-  const referenceId = getListoneManualCompareIdentityV280(referenceListone);
-
-  if (available.length < 2 || !currentListone || !referenceListone) {
-    target.insertAdjacentHTML("beforeend", `
-      <details class="admin-edit-section listone-manual-compare-v280">
-        <summary><strong>Confronto manuale tra due listoni</strong><span>Non disponibile</span></summary>
-        <p class="muted">Servono almeno due listoni nella stagione corrente per usare il confronto manuale.</p>
-      </details>`);
-    return;
-  }
-
-  const sameSelection = currentId && referenceId && currentId === referenceId;
-  const comparison = sameSelection ? null : buildListoneComparisonV269(currentListone, referenceListone);
-  const rows = comparison ? getManualListoneCompareRowsV280(comparison, referenceListone) : [];
-  const summary = comparison?.summary || {};
-
-  target.insertAdjacentHTML("beforeend", `
-    <details class="admin-edit-section listone-manual-compare-v280" open>
-      <summary><strong>Confronto manuale tra due listoni</strong><span>${sameSelection ? "Seleziona due listoni" : `${rows.length} differenze`}</span></summary>
-      <div class="listone-manual-compare-controls-v280">
-        <label class="field">
-          <span>Listone da analizzare</span>
-          <select id="listoneManualCompareCurrentV280" class="input">
-            ${renderManualListoneCompareOptionsV280(available, currentId)}
-          </select>
-        </label>
-        <label class="field">
-          <span>Confronta con</span>
-          <select id="listoneManualCompareReferenceV280" class="input">
-            ${renderManualListoneCompareOptionsV280(available, referenceId)}
-          </select>
-        </label>
-      </div>
-      ${sameSelection ? `<p class="notice notice-warning">Seleziona due listoni diversi per calcolare le differenze.</p>` : `
-        <div class="metrics-grid compact metrics-grid-v269 listone-manual-compare-metrics-v280">
-          <article class="metric-card"><span>Base</span><strong>${escapeHtml(getListoneManualCompareLabelV280(currentListone))}</strong></article>
-          <article class="metric-card"><span>Confronto</span><strong>${escapeHtml(getListoneManualCompareLabelV280(referenceListone))}</strong></article>
-          <article class="metric-card"><span>Nuovi</span><strong>${summary.newPlayers || 0}</strong></article>
-          <article class="metric-card"><span>Usciti</span><strong>${summary.removedPlayers || 0}</strong></article>
-          <article class="metric-card"><span>Qt. +</span><strong>${summary.quotationUp || 0}</strong></article>
-          <article class="metric-card"><span>Qt. -</span><strong>${summary.quotationDown || 0}</strong></article>
-          <article class="metric-card"><span>Stato</span><strong>${summary.statusChanged || 0}</strong></article>
-          <article class="metric-card"><span>Squadra/Ruolo</span><strong>${(summary.teamChanged || 0) + (summary.roleChanged || 0)}</strong></article>
-        </div>
-        ${renderManualListoneCompareTableV280(rows)}
-      `}
-    </details>`);
-}
-
-const renderListoneHistoryPanelBeforeV280 = renderListoneHistoryPanelV269;
-renderListoneHistoryPanelV269 = function renderListoneHistoryPanelV280(listone) {
-  renderListoneHistoryPanelBeforeV280?.(listone);
-  try {
-    renderManualListoneComparePanelV280(listone);
-  } catch (error) {
-    console.warn("Confronto manuale listoni V280 non disponibile", error);
-  }
-};
-
-document.addEventListener("change", (event) => {
-  if (event.target?.id === "listoneManualCompareCurrentV280") {
-    state.listoneManualCompareCurrentIdV280 = event.target.value || "";
-    const currentListone = getListoneByIdentityV280(state.listoneManualCompareCurrentIdV280);
-    const referenceListone = getListoneByIdentityV280(state.listoneManualCompareReferenceIdV280);
-    if (!referenceListone || getListoneManualCompareIdentityV280(referenceListone) === getListoneManualCompareIdentityV280(currentListone)) {
-      state.listoneManualCompareReferenceIdV280 = getListoneManualCompareIdentityV280(getDefaultManualCompareReferenceV280(currentListone, getListoniForCurrentSeason()));
-    }
-    renderListonePublic();
-  }
-  if (event.target?.id === "listoneManualCompareReferenceV280") {
-    state.listoneManualCompareReferenceIdV280 = event.target.value || "";
-    renderListonePublic();
-  }
-});
-
-window.ZonaOrientaleListoneManualCompareV280 = {
-  version: "V280",
-  label: "confronto manuale tra due listoni",
-  getSelection: () => getManualListoneCompareSelectionV280(getSelectedListone()),
-  getRows: () => {
-    const { currentListone, referenceListone } = getManualListoneCompareSelectionV280(getSelectedListone());
-    if (!currentListone || !referenceListone) return [];
-    return getManualListoneCompareRowsV280(buildListoneComparisonV269(currentListone, referenceListone), referenceListone);
-  },
-  buildComparison: (currentId, referenceId) => {
-    const currentListone = getListoneByIdentityV280(currentId) || getSelectedListone();
-    const referenceListone = getListoneByIdentityV280(referenceId) || getDefaultManualCompareReferenceV280(currentListone, getListoniForCurrentSeason());
-    return currentListone && referenceListone ? buildListoneComparisonV269(currentListone, referenceListone) : null;
-  }
-};
-
-window.setTimeout(() => {
-  try {
-    if (document.querySelector('[data-page="listone"]')) renderListonePublic();
-  } catch (error) {
-    console.warn("Refresh V280 confronto manuale listoni non completato", error);
   }
 }, 0);

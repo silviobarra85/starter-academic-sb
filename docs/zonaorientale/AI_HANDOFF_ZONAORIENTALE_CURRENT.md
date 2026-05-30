@@ -1,7 +1,3 @@
-## Nota V280 - Confronto manuale listoni
-
-V280 aggiunge nella sezione pubblica `Listone`, dentro `Storico listoni`, un confronto manuale tra due snapshot listone qualsiasi della stagione corrente. Il confronto mostra nuovi, usciti, variazioni quotazione, cambi stato e cambi squadra/ruolo, usando le logiche V269/V270 e la normalizzazione squadre V274. Non scrive su Firebase e non cambia il formato JSON dei listoni. Diagnostica: `window.ZonaOrientaleListoneManualCompareV280`. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_CONFRONTO_MANUALE_V280.md`.
-
 ## Nota V275 - Registro funzionalita V271-V274
 
 V275 aggiunge `docs/zonaorientale/FUNZIONALITA'V271-274.md`, registro funzionale aggiuntivo per le modifiche recenti: handoff/pre-merge V272, test reale listone V273 e codici squadra canonici V274. Nessuna modifica funzionale al runtime; diagnostica `window.ZonaOrientaleFunctionLedgerV275`.

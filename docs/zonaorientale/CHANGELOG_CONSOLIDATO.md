@@ -1,12 +1,3 @@
-## V280 - Confronto manuale listoni
-
-- Aggiunto nel pannello pubblico `Storico listoni` il confronto manuale tra due snapshot listone qualsiasi della stagione corrente.
-- Il confronto mostra riepilogo nuovi, usciti, aumenti/diminuzioni quotazione, cambi stato e cambi squadra/ruolo.
-- Aggiunta tabella differenze con anteprima fino a 80 righe.
-- La funzione usa le logiche V269/V270/V274 gia' esistenti, non scrive su Firebase e non cambia il formato JSON dei listoni.
-- Diagnostica: `window.ZonaOrientaleListoneManualCompareV280`.
-- Documento tecnico: `docs/zonaorientale/listoni/LISTONE_CONFRONTO_MANUALE_V280.md`.
-
 ## V275 - Funzionalita V271-V274
 
 - Aggiunto `docs/zonaorientale/FUNZIONALITA'V271-274.md`.

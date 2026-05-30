@@ -1,7 +1,3 @@
-## Aggiornamento V280
-
-Versione runtime corrente: `V280 confronto manuale listoni`. Dopo i documenti V278 leggere anche `listoni/LISTONE_CONFRONTO_MANUALE_V280.md`. Il Listone pubblico ora consente di confrontare manualmente due snapshot qualsiasi della stagione corrente dal pannello `Storico listoni`.
-
 ## Aggiornamento V275
 
 Versione corrente: V275 funzionalita V271-274. Dopo i documenti V272 leggere anche `FUNZIONALITA'V271-274.md`, `listoni/LISTONE_TEST_REALE_V273.md` e `listoni/LISTONE_CODICI_SQUADRA_V274.md`.
