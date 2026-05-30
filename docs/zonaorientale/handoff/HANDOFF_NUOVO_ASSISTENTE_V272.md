@@ -1,3 +1,7 @@
+## Aggiornamento V273
+
+Il test end-to-end del Listone con Excel reale e' documentato in `docs/zonaorientale/listoni/LISTONE_TEST_REALE_V273.md`. Esito: formato Classic riconosciuto, 663 giocatori convertibili, confronto con `2026-05-15` funzionante, normalizzazione squadre aggiunta per evitare falsi cambi squadra.
+
 # Handoff nuovo assistente AI - ZonaOrientale V272
 
 Questo documento contiene le istruzioni da dare a un eventuale nuovo assistente AI per ripartire dal punto corrente senza perdere funzionalita.
@@ -49,7 +53,7 @@ refactor/260528-zonaorientale-next
 Versione runtime corrente dopo questo overlay:
 
 ```text
-V272 handoff e verifica pre-merge
+V274 codici squadre listone
 ```
 
 ## 3. Regole dell'utente da rispettare
@@ -139,3 +143,8 @@ V266 ha migliorato oggetto, firma, mittente logico e Reply-To, ma la deliverabil
 - test Admin -> Richieste presidenti.
 - test Admin -> Converti listone Excel con file reale.
 - controllo footer/cache-buster/versione.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.

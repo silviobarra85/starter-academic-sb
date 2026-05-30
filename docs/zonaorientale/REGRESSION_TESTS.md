@@ -1,3 +1,13 @@
+## Test V273 - Listone Excel reale
+
+1. Admin -> Converti listone Excel.
+2. Caricare `lista_calciatori_lista calciatori_classic_zonaorientale-salerno.xlsx`.
+3. Verificare report: formato Classic a foglio singolo, 663 giocatori, 532 in listone, 131 asteriscati.
+4. Aprire Listone pubblico.
+5. Abilitare colonna `Modifica`.
+6. Verificare che le differenze quotazione siano visibili e che non compaiano falsi cambi squadra di massa.
+7. Controllare console: `window.ZonaOrientaleListoneE2ETestV273`.
+
 # Aggiornamento V272 - Checklist pre-merge
 
 Prima del merge su `master`, usare anche `audit/VERIFICA_FUNZIONALITA_V272.md` e `release/PUSH_MASTER_E_RITORNO_BRANCH_V272.md`. Test minimi: Home, News/share, Dashboard Presidente, Svincola Giocatori, Trattative/notifiche, Admin Richieste presidenti, Admin Converti listone Excel, Listone con colonna Modifica, Competizioni e Archivio.
@@ -401,3 +411,8 @@ Prima di rimuovere o rifattorizzare codice competizioni, verificare:
 - Listone: cercare un giocatore presente solo in un listone precedente.
 - Admin: convertire un file Excel formato Classic `Lista calciatori`.
 - Admin: verificare report con formato riconosciuto e confronto, se disponibile.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

@@ -2,7 +2,7 @@
 
 Data: 30/05/2026  
 Branch: `refactor/260528-zonaorientale-next`  
-Versione runtime: `V272 handoff e verifica pre-merge`
+Versione runtime: `V274 codici squadre listone`
 
 ## Esito sintetico
 
@@ -69,3 +69,8 @@ Non modificare `FUNZIONALITA'.md` senza richiesta esplicita. Se l'utente chiede 
 - Colonna Modifica e usciti storici.
 - Migliorie EmailJS/deliverability.
 - Login senza Nome visualizzato e con logo Google.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.

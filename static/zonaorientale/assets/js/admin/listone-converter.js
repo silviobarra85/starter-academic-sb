@@ -21,8 +21,56 @@ export function loadXlsxLibrary() {
   });
 }
 
+const REAL_TEAM_CANONICAL_CODES_V274 = Object.freeze({
+  ata: "ATA", atalanta: "ATA",
+  bol: "BOL", bologna: "BOL",
+  cag: "CAG", cagliari: "CAG",
+  com: "COM", como: "COM",
+  cre: "CRE", cremonese: "CRE",
+  emp: "EMP", empoli: "EMP",
+  fio: "FIO", fiorentina: "FIO",
+  gen: "GEN", genoa: "GEN",
+  int: "INT", inter: "INT", internazionale: "INT",
+  juv: "JUV", juventus: "JUV", juve: "JUV",
+  laz: "LAZ", lazio: "LAZ",
+  lec: "LEC", lecce: "LEC",
+  mil: "MIL", milan: "MIL", acmilan: "MIL", ac: "MIL",
+  mon: "MON", monza: "MON",
+  nap: "NAP", napoli: "NAP",
+  par: "PAR", parma: "PAR",
+  pis: "PIS", pisa: "PIS",
+  rom: "ROM", roma: "ROM",
+  sas: "SAS", sassuolo: "SAS",
+  tor: "TOR", torino: "TOR",
+  udi: "UDI", udinese: "UDI",
+  ven: "VEN", venezia: "VEN",
+  ver: "VER", verona: "VER", hellasverona: "VER", hellas: "VER",
+  sal: "SAL", salernitana: "SAL",
+  sam: "SAM", sampdoria: "SAM",
+  spe: "SPE", spezia: "SPE"
+});
+
+function normalizeRealTeamKeyV274(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+export function getCanonicalRealTeamCodeV274(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  const normalized = normalizeRealTeamKeyV274(raw);
+  const direct = REAL_TEAM_CANONICAL_CODES_V274[normalized];
+  if (direct) return direct;
+  const compact = raw.replace(/[^A-Za-z0-9]/g, "");
+  if (/^[A-Za-z]{2,4}$/.test(compact)) return compact.slice(0, 3).toUpperCase();
+  return raw.slice(0, 3).toUpperCase();
+}
+
 export function abbreviateRealTeam(value) {
-  return String(value || "").trim().slice(0, 3).toUpperCase();
+  return getCanonicalRealTeamCodeV274(value);
 }
 
 function toNumberOrValue(value) {
@@ -107,6 +155,7 @@ export function parseListoneSheetRows(rows, sourceSheet, status, statusCode) {
       mantraRoles: String(cell(row, idx.mantra) || ""),
       playerName: String(cell(row, idx.name) || ""),
       realTeam: abbreviateRealTeam(cell(row, idx.team)),
+      realTeamOriginal: String(cell(row, idx.team) || ""),
       quotationCurrent: toNumberOrValue(cell(row, idx.qta)),
       quotationInitial: toNumberOrValue(cell(row, idx.qti)),
       quotationDiff: toNumberOrValue(cell(row, idx.diff)),
@@ -159,6 +208,7 @@ function parseClassicSingleSheetRows(rows, sourceSheet) {
         mantraRoles: String(cell(row, idx.mantra) || ""),
         playerName: String(cell(row, idx.name) || ""),
         realTeam: abbreviateRealTeam(cell(row, idx.team)),
+        realTeamOriginal: String(cell(row, idx.team) || ""),
         quotationCurrent: toNumberOrValue(cell(row, idx.quotation)),
         quotationInitial: "",
         quotationDiff: "",
@@ -206,7 +256,7 @@ export function parseListoneWorkbook(workbook, XLSX) {
     const players = [...activePlayers, ...asteriskPlayers];
     if (players.length) {
       return {
-        parserVersion: "V269",
+        parserVersion: "V274",
         format: "LEGACY_TUTTI_CEDUTI",
         formatLabel: "Fantacalcio storico: fogli Tutti/Ceduti",
         sourceSheets: [tuttiSheetName, cedutiSheetName].filter(Boolean),
@@ -237,7 +287,7 @@ export function parseListoneWorkbook(workbook, XLSX) {
   }
 
   return {
-    parserVersion: "V269",
+    parserVersion: "V274",
     format: "CLASSIC_SINGLE_SHEET",
     formatLabel: "Fantacalcio Classic a foglio singolo",
     sourceSheets: best?.sheetName ? [best.sheetName] : [],

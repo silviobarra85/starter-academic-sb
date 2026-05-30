@@ -1,6 +1,10 @@
+## Aggiornamento V273 per nuovo assistente
+
+Prima di modificare ancora il Listone, leggere `docs/zonaorientale/listoni/LISTONE_TEST_REALE_V273.md`. Il test reale ha confermato il supporto Excel Classic e ha introdotto normalizzazione squadre per evitare falsi `TEAM_CHANGED`. Non rimuovere le funzioni V268-V270 senza ripetere il test con Excel reale.
+
 # Aggiornamento V272 - Istruzioni aggiornate
 
-Leggere prima `00_START_HERE_V272.md` e `handoff/HANDOFF_NUOVO_ASSISTENTE_V272.md`. La versione corrente e' `V272 handoff e verifica pre-merge`; branch `refactor/260528-zonaorientale-next`. Il documento storico sotto resta valido, ma alcune parti possono citare versioni precedenti.
+Leggere prima `00_START_HERE_V272.md` e `handoff/HANDOFF_NUOVO_ASSISTENTE_V272.md`. La versione corrente e' `V274 codici squadre listone`; branch `refactor/260528-zonaorientale-next`. Il documento storico sotto resta valido, ma alcune parti possono citare versioni precedenti.
 
 # Istruzioni per nuovo assistente - ZonaOrientale 260528
 
@@ -323,3 +327,8 @@ Leggere anche:
 - `docs/zonaorientale/FUNZIONALITA'V263-270.md`
 
 Questo documento traccia le funzionalita' aggiunte o consolidate da V263 a V270, in particolare il lavoro sul listone: formato Classic, storico, ricerca globale e colonna `Modifica`.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

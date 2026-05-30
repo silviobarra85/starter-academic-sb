@@ -1,3 +1,7 @@
+## Nota V274 - Test end-to-end listone reale
+
+V274 verifica il nuovo flusso listoni con il file Excel reale `lista_calciatori_lista calciatori_classic_zonaorientale-salerno.xlsx`. Esito: 663 giocatori convertibili, 532 in listone, 131 asteriscati, 299 con FantaSquadra, confronto con `2026-05-15` con 2 nuovi, 0 usciti, 96 aumenti e 120 diminuzioni di quotazione. V274 corregge anche i falsi cambi squadra nel confronto tra sigle storiche (`ATA`, `BOL`, ...) e nomi estesi del nuovo Excel (`Atalanta`, `Bologna`, ...). Diagnostica: `window.ZonaOrientaleListoneE2ETestV274`.
+
 # Aggiornamento V272 - Handoff, audit funzionalita e preparazione merge master
 
 V272 aggiorna lo stato corrente del branch `refactor/260528-zonaorientale-next`, aggiunge una documentazione organizzata in sottocartelle (`handoff`, `audit`, `pianificazione`, `release`) e registra i controlli statici sulle funzionalita a rischio regressione. Non modifica `FUNZIONALITA'.md`. Diagnostica runtime: `window.ZonaOrientalePreMergeAuditV272`.
@@ -756,3 +760,8 @@ Nuovo documento rilevante:
 - `docs/zonaorientale/FUNZIONALITA'V263-270.md`
 
 Il documento principale `FUNZIONALITA'.md` non e' stato modificato.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

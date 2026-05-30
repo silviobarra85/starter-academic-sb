@@ -1,3 +1,7 @@
+## Aggiornamento V273
+
+Test end-to-end listone reale completato. Restano consigliati: test browser del download JSON generato, audit EmailJS reale, audit `domain/competitions.js`, audit `admin-publication-workflow-v213.js`.
+
 # Aggiornamento V272 - Backlog riorganizzato
 
 Il backlog aggiornato e organizzato si trova in `pianificazione/PROSSIME_ATTIVITA_V272.md`. Restano prioritarie: test end-to-end listoni V268-V270, verifica EmailJS/deliverability, conferma deploy Firebase Rules V257, audit `domain/competitions.js` e audit `admin-publication-workflow-v213.js`.
@@ -436,3 +440,8 @@ Verificare in produzione:
 3. Audit mirato di `admin-publication-workflow-v213.js` prima di eventuale archiviazione o rimozione.
 4. Audit mirato di `domain/competitions.js` prima di eventuale rimozione.
 5. Test completo di regressione prima del merge su `master`.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

@@ -1,3 +1,7 @@
+## Nota operativa V273 - Test listone reale
+
+Per verificare il listone: Admin -> Converti listone Excel -> caricare il file Classic reale -> controllare che il report indichi 663 giocatori e formato `Lista calciatori`. Dopo conversione verificare Listone pubblico con colonna `Modifica`.
+
 # Aggiornamento V272 - Merge master e ritorno branch
 
 La procedura Git aggiornata per fondere `refactor/260528-zonaorientale-next` su `master` e poi tornare al branch e' in `release/PUSH_MASTER_E_RITORNO_BRANCH_V272.md`. Ricordare che le Firebase Rules V257 non vengono pubblicate automaticamente da Netlify/GitHub.
@@ -526,3 +530,8 @@ La V268 non richiede deploy Firebase Rules.
 ## Nota V271
 
 Prima di pubblicare su master, verificare la checklist listone V268-V270 e il documento `FUNZIONALITA'V263-270.md`.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

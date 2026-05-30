@@ -71,7 +71,7 @@ git push origin refactor/260528-zonaorientale-next
 Controllare:
 
 ```text
-Footer: V272 handoff e verifica pre-merge
+Footer: V274 codici squadre listone
 Home preview generica
 News link WhatsApp /zonaorientale/share/news/<id>
 Listone con colonna Modifica
@@ -82,3 +82,8 @@ Dashboard Presidente -> comunicati e Svincola Giocatori
 ## 9. Firebase Rules
 
 Il push su master non pubblica automaticamente le Firebase Rules, salvo pipeline dedicata. Le rules V257 vanno pubblicate da Firebase Console o CLI se non sono gia attive.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.
