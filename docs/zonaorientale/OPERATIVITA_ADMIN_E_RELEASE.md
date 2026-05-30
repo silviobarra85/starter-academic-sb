@@ -492,3 +492,19 @@ Admin -> Competizioni apribile
 ```
 
 La V267 non richiede deploy Firebase Rules.
+
+
+## Verifica release V268
+
+Controllare in Admin -> Converti listone Excel:
+
+```text
+1. caricare un vecchio Excel con fogli Tutti/Ceduti;
+2. verificare che i giocatori siano > 0;
+3. caricare un Excel Classic con foglio Lista calciatori;
+4. verificare che i giocatori siano > 0;
+5. verificare nel report formato riconosciuto e fogli usati;
+6. controllare console: window.ZonaOrientaleListoneConverterV268.
+```
+
+La V268 non richiede deploy Firebase Rules.

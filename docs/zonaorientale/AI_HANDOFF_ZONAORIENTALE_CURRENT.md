@@ -722,3 +722,13 @@ Hotfix Listone: le checkbox sono ora coerenti con le colonne visibili. `In listo
 - Nessuna funzionalita rimossa e nessun file competizioni eliminato.
 - Diagnostica: `window.ZonaOrientaleCompetitionsAuditV267`.
 - Il modulo `assets/js/domain/competitions.js` resta sotto osservazione: sembra legacy/scollegato, ma non va rimosso senza test di Dashboard, Competizioni, `competition.html`, Archivio e Admin Competizioni.
+
+
+## V268 - Convertitore listone flessibile
+
+- Versione runtime: `V268 convertitore listone flessibile`.
+- `Admin -> Converti listone Excel` mantiene il formato storico con fogli `Tutti`/`Ceduti`.
+- Aggiunto supporto al formato Classic a foglio singolo, per esempio `Lista calciatori` con colonne `Nome`, `Fuori lista`, `Sq.`, `R.`, `R.MANTRA`, `QUOT.`, `FVM/1000`.
+- Il report Admin mostra formato riconosciuto e fogli usati.
+- Diagnostica: `window.ZonaOrientaleListoneConverterV268`.
+- Dettagli: `docs/zonaorientale/LISTONE_CONVERTER_V268.md`.

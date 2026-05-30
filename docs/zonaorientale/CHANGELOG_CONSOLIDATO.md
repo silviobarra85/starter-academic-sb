@@ -592,3 +592,11 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - Aggiornata la guida per un eventuale nuovo assistente AI.
 - Nessuna rimozione di funzionalita o asset competizioni.
 - Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a `267`.
+
+
+## V268 - Convertitore listone flessibile
+
+- Corretto il convertitore listone Excel che produceva 0 giocatori con file Classic a foglio singolo.
+- Conservato il formato storico `Tutti`/`Ceduti`.
+- Aggiunto riconoscimento automatico del foglio con colonna `Nome`.
+- Aggiunta mappatura `QUOT.` -> quotazione attuale e `Fuori lista` -> asteriscato.

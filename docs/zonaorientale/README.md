@@ -120,3 +120,8 @@ Per sincronizzare le notifiche trattative tra smartphone e desktop usare:
 ## Nota V267
 
 La V267 aggiunge un audit prudente delle competizioni. Il modulo `assets/js/domain/competitions.js` e' stato classificato come file sotto osservazione, non da eliminare senza test. La guida per un nuovo assistente AI e' stata aggiornata a V267.
+
+
+## Nota V268
+
+Il convertitore `Admin -> Converti listone Excel` supporta ora sia il formato storico con fogli `Tutti`/`Ceduti`, sia il formato Classic a foglio singolo con colonna `Nome` e quotazione `QUOT.`. Dettagli in `LISTONE_CONVERTER_V268.md`.

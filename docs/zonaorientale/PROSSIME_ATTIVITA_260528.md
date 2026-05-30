@@ -392,3 +392,15 @@ Prossime attivita collegate:
 - Decidere destino di assets/js/domain/competitions.js.
 - Audit successivo consigliato: admin-publication-workflow-v213.js.
 ```
+
+
+# Aggiornamento V268 - Convertitore listone Excel
+
+La V268 risolve il problema del file Classic a foglio singolo che veniva convertito con 0 giocatori.
+
+Prossimi miglioramenti possibili:
+
+- aggiungere validazione visiva delle colonne riconosciute prima del download JSON;
+- mostrare le prime 5 righe convertite come anteprima;
+- generare uno zip con JSON + manifest aggiornato invece del solo JSON;
+- integrare un controllo duplicati per `fantacalcioId` e `playerName`.

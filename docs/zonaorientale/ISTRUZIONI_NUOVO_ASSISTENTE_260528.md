@@ -283,3 +283,21 @@ se Firebase/EmailJS e' coinvolto
 ```
 
 Poi proporre overlay piccolo, testabile e con comandi Git.
+
+
+## Aggiornamento V268 per nuovo assistente
+
+Il convertitore listone Excel e' stato esteso. Non rimuovere il supporto al formato storico `Tutti`/`Ceduti`: la V268 aggiunge il formato Classic a foglio singolo senza sostituire il precedente.
+
+File da leggere se si lavora sui listoni:
+
+```text
+docs/zonaorientale/LISTONE_CONVERTER_V268.md
+static/zonaorientale/assets/js/admin/listone-converter.js
+```
+
+Diagnostica runtime:
+
+```js
+window.ZonaOrientaleListoneConverterV268
+```

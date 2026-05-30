@@ -366,3 +366,16 @@ Prima di rimuovere o rifattorizzare codice competizioni, verificare:
 [ ] Admin -> Competizioni: pannello apribile senza errori console.
 [ ] Console: window.ZonaOrientaleCompetitionsAuditV267 presente.
 ```
+
+
+## Test aggiuntivi V268 - Convertitore listone Excel
+
+```text
+[ ] Admin -> Converti listone Excel apribile.
+[ ] Conversione formato storico Tutti/Ceduti restituisce giocatori > 0.
+[ ] Conversione formato Classic Lista calciatori restituisce giocatori > 0.
+[ ] La colonna QUOT. viene mappata come quotazione attuale.
+[ ] La colonna Fuori lista valorizzata produce status ASTERISCATO.
+[ ] Il report mostra formato riconosciuto e fogli usati.
+[ ] Console: window.ZonaOrientaleListoneConverterV268 presente.
+```

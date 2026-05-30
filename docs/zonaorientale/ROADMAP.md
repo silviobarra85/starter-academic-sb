@@ -305,3 +305,10 @@ Conclusa la prima pulizia mirata degli handler legacy del comunicato avvenuto sc
 2. Decidere se `assets/js/domain/competitions.js` va riattivato come modulo canonico, lasciato legacy o rimosso.
 3. Audit mirato di `assets/js/refactor/admin-publication-workflow-v213.js`.
 4. Aggiornare il registro funzionalita incrementale se emergono nuove funzioni da V263 in poi.
+
+
+## Roadmap post V268
+
+- Aggiungere anteprima righe convertite nel convertitore listone.
+- Valutare generazione overlay zip per listoni con manifest aggiornato.
+- Continuare audit prudenti prima di rimuovere moduli legacy.

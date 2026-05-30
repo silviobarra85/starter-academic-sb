@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=267";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=268";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=267";
+} from "./js/domain/news-share-v228.js?v=268";
 import {
   getListoneValue,
   compareListoneValues
@@ -133,20 +133,20 @@ import {
 import {
   loadXlsxLibrary,
   abbreviateRealTeam,
-  parseListoneSheetRows
-} from "./js/admin/listone-converter.js";
+  parseListoneWorkbook
+} from "./js/admin/listone-converter.js?v=268";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=267";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=267";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=267";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=267";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=268";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=268";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=268";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=268";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=267";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=268";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -3369,13 +3369,10 @@ async function handleListoneConverterSubmit(event) {
     const XLSX = await loadXlsxLibrary();
     const buffer = await file.arrayBuffer();
     const workbook = XLSX.read(buffer, { type: "array" });
-    const rowsFromSheet = (name) => workbook.Sheets[name]
-      ? XLSX.utils.sheet_to_json(workbook.Sheets[name], { header: 1, defval: "" })
-      : [];
-
-    const activePlayers = parseListoneSheetRows(rowsFromSheet("Tutti"), "Tutti", "In listone", "IN_LISTONE");
-    const asteriskPlayers = parseListoneSheetRows(rowsFromSheet("Ceduti"), "Ceduti", "asteriscato", "ASTERISCATO");
-    const players = [...activePlayers, ...asteriskPlayers];
+    const parsedListone = parseListoneWorkbook(workbook, XLSX);
+    const activePlayers = parsedListone.activePlayers;
+    const asteriskPlayers = parsedListone.asteriskPlayers;
+    const players = parsedListone.players;
 
     const seasonId = document.getElementById("adminListoneSeasonId")?.value || getCurrentSeasonId();
     const loadedAt = document.getElementById("adminListoneDate")?.value || getTodayIsoDate();
@@ -3391,7 +3388,10 @@ async function handleListoneConverterSubmit(event) {
         rows: players.length,
         activeRows: activePlayers.length,
         asteriskRows: asteriskPlayers.length,
-        fields: LISTONE_COLUMNS.map((column) => column.key).concat(["fantacalcioId"])
+        fields: LISTONE_COLUMNS.map((column) => column.key).concat(["fantacalcioId"]),
+        parserVersion: "V268",
+        detectedFormat: parsedListone.formatLabel,
+        sourceSheets: parsedListone.sourceSheets
       },
       players
     };
@@ -3405,7 +3405,9 @@ async function handleListoneConverterSubmit(event) {
       file: `${safeFileName(id)}.json`,
       rows: players.length,
       activeRows: activePlayers.length,
-      asteriskRows: asteriskPlayers.length
+      asteriskRows: asteriskPlayers.length,
+      detectedFormat: parsedListone.formatLabel,
+      sourceSheets: parsedListone.sourceSheets
     };
 
     const report = document.getElementById("adminListoneConverterReport");
@@ -3413,7 +3415,10 @@ async function handleListoneConverterSubmit(event) {
       report.classList.remove("hidden");
       report.innerHTML = `
         <h3>JSON generato</h3>
+        <p>Formato riconosciuto: <strong>${escapeHtml(parsedListone.formatLabel)}</strong>.</p>
+        <p>Fogli usati: <strong>${escapeHtml((parsedListone.sourceSheets || []).join(", ") || "-")}</strong>.</p>
         <p>Giocatori: <strong>${players.length}</strong> (${activePlayers.length} in listone, ${asteriskPlayers.length} asteriscati).</p>
+        ${parsedListone.warnings?.length ? `<p class="text-danger">Avvisi: ${escapeHtml(parsedListone.warnings.join("; "))}</p>` : ""}
         <p>Aggiungi il file scaricato in <code>static/zonaorientale/assets/listoni/</code> e aggiorna <code>manifest.json</code> con questa voce:</p>
         <pre>${escapeHtml(JSON.stringify(manifestEntry, null, 2))}</pre>`;
     }
@@ -15561,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "267";
+const DEPLOY_EXPECTED_VERSION_V181 = "268";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -21487,4 +21492,19 @@ window.ZonaOrientaleCompetitionsAuditV267 = {
     "Statistiche/Albo collegate a competizioni"
   ],
   recommendedNextStep: "V268: audit mirato del modulo admin-publication-workflow-v213 oppure test runtime competizioni prima di qualunque rimozione."
+};
+
+
+/* V268 - Convertitore listone flessibile.
+   Mantiene il formato storico Fantacalcio con fogli Tutti/Ceduti e aggiunge
+   il supporto al formato Classic a foglio singolo, per esempio Lista calciatori
+   con colonne Nome, Fuori lista, Sq., R., R.MANTRA, QUOT., FVM/1000. */
+window.ZonaOrientaleListoneConverterV268 = {
+  version: "V268",
+  supportsLegacySheets: ["Tutti", "Ceduti"],
+  supportsClassicSingleSheet: true,
+  classicRequiredColumn: "Nome",
+  classicQuotationAliases: ["QUOT.", "Qt.A", "Quotazione"],
+  statusColumn: "Fuori lista",
+  note: "Admin > Converti listone Excel riconosce sia il vecchio formato Tutti/Ceduti sia il formato Classic a foglio singolo."
 };
