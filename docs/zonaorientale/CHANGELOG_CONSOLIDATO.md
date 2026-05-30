@@ -600,3 +600,13 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - Conservato il formato storico `Tutti`/`Ceduti`.
 - Aggiunto riconoscimento automatico del foglio con colonna `Nome`.
 - Aggiunta mappatura `QUOT.` -> quotazione attuale e `Fuori lista` -> asteriscato.
+
+
+## V269 - Storico e confronto listoni
+
+- Aggiunto confronto automatico tra listone selezionato e listone precedente della stessa stagione.
+- Il convertitore listone arricchisce il JSON generato con campi `previous`, `diff`, `previousQuotationCurrent`, `quotationDiffFromPrevious`, `statusChange` e riepilogo `history`.
+- La sezione pubblica `Listone` mostra un pannello `Storico listoni` con nuovi, usciti, variazioni quotazione e ricerca negli altri listoni.
+- Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
+- Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
+- Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.

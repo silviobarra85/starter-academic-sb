@@ -206,7 +206,7 @@ export function parseListoneWorkbook(workbook, XLSX) {
     const players = [...activePlayers, ...asteriskPlayers];
     if (players.length) {
       return {
-        parserVersion: "V268",
+        parserVersion: "V269",
         format: "LEGACY_TUTTI_CEDUTI",
         formatLabel: "Fantacalcio storico: fogli Tutti/Ceduti",
         sourceSheets: [tuttiSheetName, cedutiSheetName].filter(Boolean),
@@ -237,7 +237,7 @@ export function parseListoneWorkbook(workbook, XLSX) {
   }
 
   return {
-    parserVersion: "V268",
+    parserVersion: "V269",
     format: "CLASSIC_SINGLE_SHEET",
     formatLabel: "Fantacalcio Classic a foglio singolo",
     sourceSheets: best?.sheetName ? [best.sheetName] : [],

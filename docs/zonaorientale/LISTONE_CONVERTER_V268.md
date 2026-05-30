@@ -81,3 +81,8 @@ La conversione resta browser-only:
 5. Verificare righe > 0.
 6. Verificare report formato e fogli usati.
 7. Scaricare JSON e aprirlo per controllare `players`.
+
+
+## Aggiornamento V269
+
+Il convertitore resta compatibile con i formati V268, ma quando e' disponibile un listone precedente arricchisce il JSON con storico e confronto. Dettagli in `LISTONE_STORICO_V269.md`.
