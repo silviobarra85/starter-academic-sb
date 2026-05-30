@@ -1,3 +1,7 @@
+# Aggiornamento V272 - Handoff, audit funzionalita e preparazione merge master
+
+V272 aggiorna lo stato corrente del branch `refactor/260528-zonaorientale-next`, aggiunge una documentazione organizzata in sottocartelle (`handoff`, `audit`, `pianificazione`, `release`) e registra i controlli statici sulle funzionalita a rischio regressione. Non modifica `FUNZIONALITA'.md`. Diagnostica runtime: `window.ZonaOrientalePreMergeAuditV272`.
+
 # Aggiornamento V266 - Email deliverability EmailJS
 
 V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.

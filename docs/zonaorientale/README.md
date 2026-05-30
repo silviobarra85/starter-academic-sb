@@ -1,3 +1,7 @@
+# Aggiornamento V272 - Documentazione organizzata e pre-merge
+
+La documentazione operativa V272 introduce un punto di ingresso ordinato: `00_START_HERE_V272.md`. I nuovi documenti sono organizzati in `handoff/`, `audit/`, `pianificazione/` e `release/`. Il file storico `FUNZIONALITA'.md` resta invariato e va modificato solo su richiesta esplicita.
+
 # Aggiornamento V266 - Email deliverability EmailJS
 
 V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.

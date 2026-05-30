@@ -1,3 +1,7 @@
+# Aggiornamento V272 - Istruzioni aggiornate
+
+Leggere prima `00_START_HERE_V272.md` e `handoff/HANDOFF_NUOVO_ASSISTENTE_V272.md`. La versione corrente e' `V272 handoff e verifica pre-merge`; branch `refactor/260528-zonaorientale-next`. Il documento storico sotto resta valido, ma alcune parti possono citare versioni precedenti.
+
 # Istruzioni per nuovo assistente - ZonaOrientale 260528
 
 Documento aggiornato in **V267** per permettere a un nuovo assistente AI di ripartire dal punto esatto raggiunto nello sviluppo del sito del fantacalcio **ZonaOrientale Salerno**.

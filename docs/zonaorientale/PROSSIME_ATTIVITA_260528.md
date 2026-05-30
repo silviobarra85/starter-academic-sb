@@ -1,3 +1,7 @@
+# Aggiornamento V272 - Backlog riorganizzato
+
+Il backlog aggiornato e organizzato si trova in `pianificazione/PROSSIME_ATTIVITA_V272.md`. Restano prioritarie: test end-to-end listoni V268-V270, verifica EmailJS/deliverability, conferma deploy Firebase Rules V257, audit `domain/competitions.js` e audit `admin-publication-workflow-v213.js`.
+
 # Aggiornamento V266 - Email deliverability EmailJS
 
 V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.

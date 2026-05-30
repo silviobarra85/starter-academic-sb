@@ -1,3 +1,7 @@
+# Aggiornamento V272 - Roadmap corrente
+
+Le prossime attivita sono riorganizzate in `pianificazione/PROSSIME_ATTIVITA_V272.md`. La roadmap tecnica resta prudente: prima test e audit mirati, poi eventuali rimozioni/refactor.
+
 # Aggiornamento V266 - Email deliverability EmailJS
 
 V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.
