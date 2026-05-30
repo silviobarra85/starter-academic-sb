@@ -411,8 +411,3 @@ Prima di rimuovere o rifattorizzare codice competizioni, verificare:
 - Listone: cercare un giocatore presente solo in un listone precedente.
 - Admin: convertire un file Excel formato Classic `Lista calciatori`.
 - Admin: verificare report con formato riconosciuto e confronto, se disponibile.
-
-
-## V274 - Codici squadra canonici nel Listone
-
-Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

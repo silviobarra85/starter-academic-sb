@@ -9,7 +9,7 @@ refactor/260528-zonaorientale-next
 Versione runtime attesa dopo l'overlay:
 
 ```text
-V274 codici squadre listone
+V273 test listone reale
 ```
 
 ## Documenti principali da leggere
@@ -54,8 +54,3 @@ docs/ -> docs/
 
 
 Nota V273: leggere anche `listoni/LISTONE_TEST_REALE_V273.md` per l'esito dei test Listone con Excel reale.
-
-
-## V274 - Codici squadra canonici nel Listone
-
-I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.

@@ -440,8 +440,3 @@ Verificare in produzione:
 3. Audit mirato di `admin-publication-workflow-v213.js` prima di eventuale archiviazione o rimozione.
 4. Audit mirato di `domain/competitions.js` prima di eventuale rimozione.
 5. Test completo di regressione prima del merge su `master`.
-
-
-## V274 - Codici squadra canonici nel Listone
-
-Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

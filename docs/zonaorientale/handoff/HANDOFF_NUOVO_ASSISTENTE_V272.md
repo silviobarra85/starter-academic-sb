@@ -53,7 +53,7 @@ refactor/260528-zonaorientale-next
 Versione runtime corrente dopo questo overlay:
 
 ```text
-V274 codici squadre listone
+V273 test listone reale
 ```
 
 ## 3. Regole dell'utente da rispettare
@@ -143,8 +143,3 @@ V266 ha migliorato oggetto, firma, mittente logico e Reply-To, ma la deliverabil
 - test Admin -> Richieste presidenti.
 - test Admin -> Converti listone Excel con file reale.
 - controllo footer/cache-buster/versione.
-
-
-## V274 - Codici squadra canonici nel Listone
-
-I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.

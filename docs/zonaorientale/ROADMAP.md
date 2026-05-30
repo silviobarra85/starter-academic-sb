@@ -334,8 +334,3 @@ Conclusa la prima pulizia mirata degli handler legacy del comunicato avvenuto sc
 ## V271
 
 Registro incrementale funzioni V263-V270 completato. Prossimo passo suggerito: test end-to-end listone e audit moduli legacy prima di merge.
-
-
-## V274 - Codici squadra canonici nel Listone
-
-Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

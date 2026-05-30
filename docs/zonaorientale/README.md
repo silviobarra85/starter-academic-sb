@@ -147,8 +147,3 @@ Il convertitore `Admin -> Converti listone Excel` supporta ora sia il formato st
 ### V271 - Registro funzionalita V263-V270
 
 Aggiunto `FUNZIONALITA'V263-270.md` come registro incrementale delle modifiche introdotte nel branch `refactor/260528-zonaorientale-next` tra V263 e V270.
-
-
-## V274 - Codici squadra canonici nel Listone
-
-Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
