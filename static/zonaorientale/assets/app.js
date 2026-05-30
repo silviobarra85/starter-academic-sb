@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=275";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=277";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=275";
+} from "./js/domain/news-share-v228.js?v=277";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=275";
+} from "./js/admin/listone-converter.js?v=277";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=275";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=275";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=275";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=275";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=277";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=277";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=277";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=277";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=275";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=277";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "275";
+const DEPLOY_EXPECTED_VERSION_V181 = "277";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -22627,3 +22627,249 @@ window.ZonaOrientaleFunctionLedgerV275 = {
     "V274 codici squadra canonici nel listone"
   ]
 };
+
+
+/* V276 - Diagnostica dati Admin.
+ * Aggiunge un pannello non distruttivo in Admin per verificare le principali
+ * sorgenti dati e ridurre il rischio di perdere funzionalita prima di deploy/merge.
+ */
+function getDiagnosticStatusClassV276(status) {
+  if (status === "OK") return "status-ok";
+  if (status === "ERRORE") return "status-danger";
+  return "status-warning";
+}
+
+function renderDiagnosticBadgeV276(status) {
+  return `<span class="status ${getDiagnosticStatusClassV276(status)}">${escapeHtml(status)}</span>`;
+}
+
+function countRosterPlayersV276() {
+  return (state.rosters || []).reduce((total, snapshot) => {
+    return total + (snapshot.rosters || []).reduce((sum, roster) => sum + (roster.players || []).length, 0);
+  }, 0);
+}
+
+function getLatestListoneV276() {
+  const seasonId = getCurrentSeasonId();
+  const listoni = (state.listoni || [])
+    .filter((item) => String(item.seasonId || item.meta?.seasonId || "") === String(seasonId || ""))
+    .sort(compareListoniByDateDescV99);
+  return listoni[0] || getSelectedListone() || null;
+}
+
+function getAdminDataDiagnosticsV276() {
+  const listone = getLatestListoneV276();
+  const listonePlayers = listone?.players?.length || 0;
+  const listonePrevious = listone && typeof getPreviousListoneForDateV269 === "function"
+    ? getPreviousListoneForDateV269(listone, listone.seasonId || listone.meta?.seasonId || getCurrentSeasonId())
+    : null;
+  const rosterPlayers = countRosterPlayersV276();
+  const raw = state.raw || {};
+  const versionInfo = typeof getRuntimeAssetsVersionInfoV180 === "function" ? getRuntimeAssetsVersionInfoV180() : null;
+  const versionOk = versionInfo
+    ? versionInfo.footerVersion === String(DEPLOY_EXPECTED_VERSION_V181) && versionInfo.uniqueVersions.includes(String(DEPLOY_EXPECTED_VERSION_V181))
+    : false;
+  const emailReady = Boolean(window.ZonaOrientaleEmailJsDeliverabilityV266 || typeof sendTransferCommunicationEmailCanonicalV242 === "function" || typeof sendReleasePlayersEmailV261 === "function");
+  const listoneHistoryReady = Boolean(window.ZonaOrientaleListoneChangesV270 && typeof getHistoryChangeLabelV270 === "function");
+  const adminRequestsReady = Boolean(window.ZonaOrientaleTeamRequestsV253 || window.ZonaOrientaleTeamRequestsV249);
+
+  return [
+    {
+      area: "Versione deploy",
+      status: versionOk ? "OK" : "ATTENZIONE",
+      details: versionInfo ? `Footer V${versionInfo.footerVersion}; asset ${versionInfo.uniqueVersions.join(", ") || "non rilevati"}; atteso V${DEPLOY_EXPECTED_VERSION_V181}.` : "Runtime version non disponibile."
+    },
+    {
+      area: "Listoni",
+      status: listonePlayers > 0 && listoneHistoryReady ? "OK" : "ATTENZIONE",
+      details: listone ? `${escapeHtml(getListoneDisplayLabelV269?.(listone) || listone.id || "listone")} · ${listonePlayers} giocatori · precedente ${listonePrevious ? getListoneDisplayLabelV269(listonePrevious) : "non trovato"}.` : "Nessun listone disponibile in memoria."
+    },
+    {
+      area: "Rose",
+      status: rosterPlayers > 0 ? "OK" : "ATTENZIONE",
+      details: `${(state.rosters || []).length} snapshot rose · ${rosterPlayers} giocatori aggregati.`
+    },
+    {
+      area: "Competizioni",
+      status: (raw.competitions || []).length > 0 ? "OK" : "ATTENZIONE",
+      details: `${(raw.competitions || []).length} competizioni Firebase/snapshot · ${(state.competitionCalendars || []).length} calendari statici.`
+    },
+    {
+      area: "News",
+      status: (raw.news || []).length > 0 ? "OK" : "ATTENZIONE",
+      details: `${(raw.news || []).length} comunicati disponibili · share route /zonaorientale/share/news/<id> preservata.`
+    },
+    {
+      area: "Richieste presidenti",
+      status: adminRequestsReady ? "OK" : "ATTENZIONE",
+      details: `${(raw.teamRequests || []).length} richieste in memoria · pannello canonico ${adminRequestsReady ? "presente" : "non rilevato"}.`
+    },
+    {
+      area: "Trattative",
+      status: typeof installTradeNotificationSimulatorV255 === "function" || window.ZonaOrientaleTradeSimulatorV255 ? "OK" : "ATTENZIONE",
+      details: `Simulator V255 ${window.ZonaOrientaleTradeSimulatorV255 ? "attivo" : "non ancora inizializzato"}; rules V257 da verificare in Firebase Console.`
+    },
+    {
+      area: "EmailJS",
+      status: emailReady ? "OK" : "ATTENZIONE",
+      details: `Flussi comunicato scambio/svincolo ${emailReady ? "rilevati" : "non rilevati"}. Deliverability dipende da template EmailJS e DNS mittente.`
+    }
+  ];
+}
+
+function renderAdminDataDiagnosticsPanelV276() {
+  const rows = getAdminDataDiagnosticsV276();
+  const body = `
+    <div class="admin-form-grid">
+      <div class="form-actions full-span">
+        <button class="button button-secondary" type="button" data-refresh-diagnostics-v276>Aggiorna diagnostica</button>
+        <small class="field-hint">Controllo locale non distruttivo: non scrive su Firebase.</small>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Area</th><th>Stato</th><th>Dettagli</th></tr></thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td><strong>${escapeHtml(row.area)}</strong></td>
+              <td>${renderDiagnosticBadgeV276(row.status)}</td>
+              <td>${row.details}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+  return renderAdminPanel(
+    "adminDataDiagnosticsPanelV276",
+    "Controlli pre-deploy",
+    "Diagnostica dati",
+    "Semafori rapidi su dati, versioni e moduli chiave. Serve a intercettare regressioni prima del deploy.",
+    body
+  );
+}
+
+function injectAdminDataDiagnosticsPanelV276() {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel || document.getElementById("adminDataDiagnosticsPanelV276")) return;
+  adminPanel.insertAdjacentHTML("beforeend", renderAdminDataDiagnosticsPanelV276());
+}
+
+const renderAdminAreaBeforeV276 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV276() {
+  const result = renderAdminAreaBeforeV276?.();
+  try { injectAdminDataDiagnosticsPanelV276(); } catch (error) { console.warn("Diagnostica dati V276 non renderizzata", error); }
+  return result;
+};
+
+document.addEventListener("click", (event) => {
+  if (!event.target?.closest?.("[data-refresh-diagnostics-v276]")) return;
+  const panel = document.getElementById("adminDataDiagnosticsPanelV276");
+  if (!panel) return;
+  panel.outerHTML = renderAdminDataDiagnosticsPanelV276();
+});
+
+window.ZonaOrientaleAdminDiagnosticsV276 = {
+  version: "V276",
+  label: "diagnostica dati admin",
+  getRows: getAdminDataDiagnosticsV276,
+  refresh: () => {
+    const panel = document.getElementById("adminDataDiagnosticsPanelV276");
+    if (panel) panel.outerHTML = renderAdminDataDiagnosticsPanelV276();
+    else injectAdminDataDiagnosticsPanelV276();
+    return getAdminDataDiagnosticsV276();
+  }
+};
+
+
+/* V277 - Filtro Solo modificati nel Listone.
+ * Aggiunge un filtro operativo sulla colonna Modifica senza eliminare le righe/colonne esistenti.
+ */
+const LISTONE_CHANGE_FILTER_OPTIONS_V277 = Object.freeze([
+  ["all", "Tutte le modifiche"],
+  ["changed", "Solo modificati"],
+  ["new", "Solo nuovi"],
+  ["removed", "Solo usciti"],
+  ["quotation-up", "Solo aumentati"],
+  ["quotation-down", "Solo diminuiti"],
+  ["status", "Solo cambi stato"],
+  ["team", "Solo cambi squadra"],
+  ["role", "Solo cambi ruolo"]
+]);
+
+function getSelectedListoneChangeFilterV277() {
+  return document.getElementById("listoneChangeFilterV277")?.value || "all";
+}
+
+function getListoneChangeCategoryV277(player = {}) {
+  const status = typeof getHistoryChangeStatusV270 === "function" ? getHistoryChangeStatusV270(player) : (player.historyChange || player.statusChange || "UNCHANGED");
+  const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
+  return { status, quoteDiff };
+}
+
+function matchesListoneChangeFilterV277(player = {}) {
+  const filter = getSelectedListoneChangeFilterV277();
+  if (filter === "all") return true;
+  const { status, quoteDiff } = getListoneChangeCategoryV277(player);
+  if (filter === "changed") return status !== "UNCHANGED" || (quoteDiff !== null && quoteDiff !== 0);
+  if (filter === "new") return status === "NEW";
+  if (filter === "removed") return status === "REMOVED";
+  if (filter === "quotation-up") return quoteDiff !== null && quoteDiff > 0;
+  if (filter === "quotation-down") return quoteDiff !== null && quoteDiff < 0;
+  if (filter === "status") return status === "STATUS_CHANGED" || status === "MULTIPLE_CHANGED";
+  if (filter === "team") return status === "TEAM_CHANGED" || status === "MULTIPLE_CHANGED" || player.diff?.realTeamChanged === true;
+  if (filter === "role") return status === "ROLE_CHANGED" || status === "MULTIPLE_CHANGED" || player.diff?.roleChanged === true;
+  return true;
+}
+
+const shouldShowHistoricalRemovedRowsBeforeV277 = shouldShowHistoricalRemovedRowsV270;
+shouldShowHistoricalRemovedRowsV270 = function shouldShowHistoricalRemovedRowsV277() {
+  const filter = getSelectedListoneChangeFilterV277();
+  if (filter === "removed" || filter === "changed") return true;
+  return shouldShowHistoricalRemovedRowsBeforeV277?.() ?? true;
+};
+
+const getFilteredListonePlayersBeforeV277 = getFilteredListonePlayers;
+getFilteredListonePlayers = function getFilteredListonePlayersV277(listone) {
+  const rows = getFilteredListonePlayersBeforeV277(listone);
+  const filter = getSelectedListoneChangeFilterV277();
+  if (filter === "all") return rows;
+  return rows.filter(matchesListoneChangeFilterV277);
+};
+
+const ensureListoneHistoryUiBeforeV277 = ensureListoneHistoryUiV269;
+ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV277() {
+  ensureListoneHistoryUiBeforeV277?.();
+  const filterRow = document.querySelector(".listone-filter-row");
+  if (!filterRow || document.getElementById("listoneChangeFilterV277")) return;
+  const label = document.createElement("label");
+  label.className = "field listone-change-filter-v277";
+  label.innerHTML = `
+    <span>Modifiche</span>
+    <select id="listoneChangeFilterV277">
+      ${LISTONE_CHANGE_FILTER_OPTIONS_V277.map(([value, labelText]) => `<option value="${escapeHtml(value)}">${escapeHtml(labelText)}</option>`).join("")}
+    </select>`;
+  filterRow.appendChild(label);
+};
+
+document.addEventListener("change", (event) => {
+  if (event.target?.id === "listoneChangeFilterV277") renderListonePublic();
+});
+
+window.ZonaOrientaleListoneChangeFilterV277 = {
+  version: "V277",
+  label: "filtro modifiche listone",
+  options: LISTONE_CHANGE_FILTER_OPTIONS_V277.map(([value, label]) => ({ value, label })),
+  getSelected: getSelectedListoneChangeFilterV277,
+  getVisibleRows: () => getFilteredListonePlayers(getSelectedListone()),
+  matches: matchesListoneChangeFilterV277
+};
+
+window.setTimeout(() => {
+  try {
+    if (document.querySelector('[data-page="listone"]')) renderListonePublic();
+    if (document.querySelector('[data-page="admin"]')) injectAdminDataDiagnosticsPanelV276();
+  } catch (error) {
+    console.warn("Refresh V276/V277 non completato", error);
+  }
+}, 0);

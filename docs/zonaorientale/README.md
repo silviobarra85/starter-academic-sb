@@ -156,3 +156,8 @@ Aggiunto `FUNZIONALITA'V263-270.md` come registro incrementale delle modifiche i
 ## V274 - Codici squadra canonici nel Listone
 
 Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+### V276-V277
+
+- Admin: pannello `Diagnostica dati` per controlli pre-deploy.
+- Listone: filtro `Modifiche` per isolare nuovi, usciti e variazioni.

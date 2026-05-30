@@ -152,3 +152,7 @@ V266 ha migliorato oggetto, firma, mittente logico e Reply-To, ma la deliverabil
 ## V274 - Codici squadra canonici nel Listone
 
 I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.
+
+## Aggiornamento V276-V277
+
+Controllare `Admin -> Diagnostica dati` e `Listone -> Modifiche` nei test di regressione. Non eliminare i moduli listone storico senza audit.

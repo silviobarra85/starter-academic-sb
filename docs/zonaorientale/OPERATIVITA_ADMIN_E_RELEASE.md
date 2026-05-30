@@ -539,3 +539,12 @@ Prima di pubblicare su master, verificare la checklist listone V268-V270 e il do
 ## V274 - Codici squadra canonici nel Listone
 
 Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+## Controlli operativi V276-V277
+
+Prima del deploy verificare:
+
+1. Admin -> Diagnostica dati.
+2. Listone -> filtro Modifiche.
+3. Listone -> Campi visibili -> colonna Modifica.
+4. Footer/versione V277.

@@ -423,3 +423,8 @@ Prima di rimuovere o rifattorizzare codice competizioni, verificare:
 ## V274 - Codici squadra canonici nel Listone
 
 Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+## Test V276-V277
+
+- Admin -> Diagnostica dati: il pannello si apre, mostra righe e il pulsante `Aggiorna diagnostica` non genera errori.
+- Listone -> campo `Modifiche`: ogni opzione filtra la tabella senza rompere ricerca, ruoli, stato, colonna `Modifica` e usciti storici.

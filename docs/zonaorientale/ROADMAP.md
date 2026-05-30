@@ -343,3 +343,9 @@ Registro incrementale funzioni V263-V270 completato. Prossimo passo suggerito: t
 ## V274 - Codici squadra canonici nel Listone
 
 Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+## Dopo V277
+
+- Export CSV/JSON delle differenze listone.
+- Audit EmailJS reale e possibile migrazione futura a funzione server-side.
+- Audit e pulizia controllata di moduli legacy ancora non rimossi.

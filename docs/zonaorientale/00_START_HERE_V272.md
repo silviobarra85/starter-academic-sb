@@ -63,3 +63,8 @@ Nota V273: leggere anche `listoni/LISTONE_TEST_REALE_V273.md` per l'esito dei te
 ## V274 - Codici squadra canonici nel Listone
 
 I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.
+
+## V276-V277
+
+- V276: pannello Admin `Diagnostica dati`.
+- V277: filtro `Modifiche` nel Listone.

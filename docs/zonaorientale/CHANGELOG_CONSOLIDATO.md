@@ -650,3 +650,8 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 ## V274 - Codici squadra canonici nel Listone
 
 Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+## V276-V277
+
+- V276: aggiunto pannello Admin `Diagnostica dati` con semafori pre-deploy su listoni, rose, competizioni, news, richieste presidenti, trattative, EmailJS e versione runtime.
+- V277: aggiunto filtro `Modifiche` nel Listone per isolare nuovi, usciti, variazioni quotazione, cambi stato, squadra e ruolo.
