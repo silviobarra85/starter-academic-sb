@@ -548,3 +548,7 @@ Prima del deploy verificare:
 2. Listone -> filtro Modifiche.
 3. Listone -> Campi visibili -> colonna Modifica.
 4. Footer/versione V277.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

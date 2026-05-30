@@ -655,3 +655,7 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 
 - V276: aggiunto pannello Admin `Diagnostica dati` con semafori pre-deploy su listoni, rose, competizioni, news, richieste presidenti, trattative, EmailJS e versione runtime.
 - V277: aggiunto filtro `Modifiche` nel Listone per isolare nuovi, usciti, variazioni quotazione, cambi stato, squadra e ruolo.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

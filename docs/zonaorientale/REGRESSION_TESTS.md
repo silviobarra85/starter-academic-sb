@@ -428,3 +428,7 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 
 - Admin -> Diagnostica dati: il pannello si apre, mostra righe e il pulsante `Aggiorna diagnostica` non genera errori.
 - Listone -> campo `Modifiche`: ogni opzione filtra la tabella senza rompere ricerca, ruoli, stato, colonna `Modifica` e usciti storici.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

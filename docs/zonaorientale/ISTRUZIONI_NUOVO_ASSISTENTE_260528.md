@@ -345,3 +345,7 @@ Leggere anche:
 - `docs/zonaorientale/listoni/LISTONE_FILTRO_MODIFICHE_V277.md`
 
 Queste modifiche non rimuovono funzioni: aggiungono diagnostica Admin e un filtro Listone.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

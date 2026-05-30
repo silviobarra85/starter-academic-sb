@@ -349,3 +349,7 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 - Export CSV/JSON delle differenze listone.
 - Audit EmailJS reale e possibile migrazione futura a funzione server-side.
 - Audit e pulizia controllata di moduli legacy ancora non rimossi.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

@@ -776,3 +776,7 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 - V277 introduce il filtro `Modifiche` nella sezione Listone.
 - Non sono state rimosse funzionalita'.
 - Restano da preservare: ricerca storica listoni, colonna Modifica, usciti storici, normalizzazione squadre V274.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

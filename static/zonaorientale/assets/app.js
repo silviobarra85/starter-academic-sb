@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=277";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=278";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=277";
+} from "./js/domain/news-share-v228.js?v=278";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=277";
+} from "./js/admin/listone-converter.js?v=278";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=277";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=277";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=277";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=277";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=278";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=278";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=278";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=278";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=277";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=278";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "277";
+const DEPLOY_EXPECTED_VERSION_V181 = "278";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -22871,5 +22871,168 @@ window.setTimeout(() => {
     if (document.querySelector('[data-page="admin"]')) injectAdminDataDiagnosticsPanelV276();
   } catch (error) {
     console.warn("Refresh V276/V277 non completato", error);
+  }
+}, 0);
+
+
+/* V278 - Export modifiche listone.
+ * Aggiunge un export CSV non distruttivo delle differenze del listone selezionato.
+ * Usa i dati gia' calcolati da V269/V270/V277 e non modifica Firebase o JSON statici.
+ */
+function csvEscapeV278(value) {
+  const text = String(value ?? "");
+  return /[";\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function getListoneChangeLabelForExportV278(player = {}) {
+  if (typeof getHistoryChangeLabelV270 === "function") return getHistoryChangeLabelV270(player);
+  const status = player.historyChange || player.statusChange || player.diff?.status || "UNCHANGED";
+  return status === "REMOVED" ? "Uscito" : status === "NEW" ? "Nuovo" : status === "UNCHANGED" ? "Invariato" : status;
+}
+
+function isListoneRowChangedForExportV278(player = {}) {
+  const status = typeof getHistoryChangeStatusV270 === "function"
+    ? getHistoryChangeStatusV270(player)
+    : (player.historyChange || player.statusChange || player.diff?.status || "UNCHANGED");
+  const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
+  return status !== "UNCHANGED" || (quoteDiff !== null && quoteDiff !== 0);
+}
+
+function getListoneRowsForChangeExportV278() {
+  const listone = getSelectedListone?.();
+  if (!listone) return [];
+  const rows = typeof getFilteredListonePlayers === "function" ? getFilteredListonePlayers(listone) : (listone.players || []);
+  const selectedFilter = typeof getSelectedListoneChangeFilterV277 === "function" ? getSelectedListoneChangeFilterV277() : "all";
+  if (selectedFilter && selectedFilter !== "all") return rows;
+  return rows.filter(isListoneRowChangedForExportV278);
+}
+
+function buildListoneChangeExportRowsV278() {
+  const listone = getSelectedListone?.();
+  const listoneLabel = listone ? (typeof getListoneDisplayLabelV269 === "function" ? getListoneDisplayLabelV269(listone) : (listone.label || listone.loadedAt || listone.id || "Listone")) : "";
+  return getListoneRowsForChangeExportV278().map((player) => {
+    const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
+    const previous = player.previous || {};
+    return {
+      listone: listoneLabel,
+      modifica: getListoneChangeLabelForExportV278(player),
+      giocatore: player.playerName || "",
+      ruolo: player.classicRole || "",
+      squadra: player.realTeam || "",
+      stato: player.isHistoricalRemovedV270 ? "Uscito" : (player.status || player.statusCode || ""),
+      quotazioneAttuale: player.isHistoricalRemovedV270 ? "" : (player.quotationCurrent ?? ""),
+      quotazionePrecedente: player.previousQuotationCurrent ?? previous.quotationCurrent ?? (player.isHistoricalRemovedV270 ? player.quotationCurrent : ""),
+      differenzaQuotazione: quoteDiff === null ? "" : quoteDiff,
+      ultimoListone: player.historyLastSeenListoneLabel || player.previousListoneId || previous.listoneId || player.diff?.previousListoneId || "",
+      fantaSquadra: player.fantasyRoster || "",
+      costo: player.rosterCost ?? "",
+      fantacalcioId: player.fantacalcioId || ""
+    };
+  });
+}
+
+function buildListoneChangeExportCsvV278() {
+  const rows = buildListoneChangeExportRowsV278();
+  const headers = [
+    ["listone", "Listone"],
+    ["modifica", "Modifica"],
+    ["giocatore", "Giocatore"],
+    ["ruolo", "Ruolo"],
+    ["squadra", "Squadra"],
+    ["stato", "Stato"],
+    ["quotazioneAttuale", "Qt.A"],
+    ["quotazionePrecedente", "Qt.A precedente"],
+    ["differenzaQuotazione", "Diff Qt.A"],
+    ["ultimoListone", "Ultimo/precedente listone"],
+    ["fantaSquadra", "FantaSquadra"],
+    ["costo", "Costo"],
+    ["fantacalcioId", "Fantacalcio ID"]
+  ];
+  const lines = [headers.map(([, label]) => csvEscapeV278(label)).join(";")];
+  rows.forEach((row) => {
+    lines.push(headers.map(([key]) => csvEscapeV278(row[key])).join(";"));
+  });
+  return { csv: `\ufeff${lines.join("\n")}`, rows };
+}
+
+function downloadTextFileV278(filename, content, mimeType = "text/csv;charset=utf-8") {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function getListoneChangeExportFilenameV278() {
+  const listone = getSelectedListone?.();
+  const id = String(listone?.id || listone?.loadedAt || listone?.meta?.id || "listone").replace(/[^a-zA-Z0-9_-]+/g, "-");
+  const stamp = new Date().toISOString().slice(0, 10);
+  return `zonaorientale-modifiche-listone-${id}-${stamp}.csv`;
+}
+
+function exportListoneChangesCsvV278() {
+  const { csv, rows } = buildListoneChangeExportCsvV278();
+  if (!rows.length) {
+    showToast?.("Nessuna modifica da esportare con i filtri correnti.");
+    return { exported: 0 };
+  }
+  downloadTextFileV278(getListoneChangeExportFilenameV278(), csv);
+  showToast?.(`Esportate ${rows.length} righe modifiche listone.`);
+  return { exported: rows.length };
+}
+
+const ensureListoneHistoryUiBeforeV278 = ensureListoneHistoryUiV269;
+ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV278() {
+  ensureListoneHistoryUiBeforeV278?.();
+  const filterRow = document.querySelector(".listone-filter-row");
+  if (!filterRow || document.getElementById("listoneExportChangesV278")) return;
+  const button = document.createElement("button");
+  button.id = "listoneExportChangesV278";
+  button.className = "button button-secondary button-small listone-export-changes-v278";
+  button.type = "button";
+  button.textContent = "Esporta modifiche CSV";
+  filterRow.appendChild(button);
+};
+
+document.addEventListener("click", (event) => {
+  if (event.target?.id === "listoneExportChangesV278") {
+    event.preventDefault();
+    try {
+      exportListoneChangesCsvV278();
+    } catch (error) {
+      console.error("Export modifiche listone V278 non riuscito", error);
+      showToast?.("Export modifiche listone non riuscito.");
+    }
+  }
+});
+
+const renderListoneHistoryPanelBeforeV278 = renderListoneHistoryPanelV269;
+renderListoneHistoryPanelV269 = function renderListoneHistoryPanelV278(listone) {
+  renderListoneHistoryPanelBeforeV278?.(listone);
+  const target = document.getElementById("listoneHistoryContentV269");
+  if (!target || target.querySelector(".listone-export-note-v278")) return;
+  const rows = buildListoneChangeExportRowsV278();
+  target.insertAdjacentHTML("beforeend", `
+    <p class="muted listone-export-note-v278">Export modifiche CSV: ${rows.length} righe disponibili con i filtri correnti. Usa il pulsante nella barra filtri del Listone.</p>
+  `);
+};
+
+window.ZonaOrientaleListoneExportV278 = {
+  version: "V278",
+  label: "export modifiche listone",
+  getRows: buildListoneChangeExportRowsV278,
+  buildCsv: buildListoneChangeExportCsvV278,
+  exportCsv: exportListoneChangesCsvV278
+};
+
+window.setTimeout(() => {
+  try {
+    if (document.querySelector('[data-page="listone"]')) renderListonePublic();
+  } catch (error) {
+    console.warn("Refresh V278 export modifiche listone non completato", error);
   }
 }, 0);

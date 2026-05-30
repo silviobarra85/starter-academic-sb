@@ -455,3 +455,7 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 - Testare il pannello Admin `Diagnostica dati` dopo ogni deploy.
 - Testare il filtro `Modifiche` del Listone con un listone reale e un listone precedente.
 - Prossime attivita' suggerite: export differenze listone, audit EmailJS reale, audit `domain/competitions.js`, refactor prudente del Listone in moduli dedicati.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
