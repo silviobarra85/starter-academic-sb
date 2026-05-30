@@ -1,3 +1,11 @@
+## Nota operativa V275
+
+Prima di merge o deploy verificare anche `FUNZIONALITA'V271-274.md` e i documenti in `docs/zonaorientale/listoni/`, soprattutto dopo modifiche a convertitore, ricerca storica o colonna `Modifica`.
+
+## Nota operativa V273 - Test listone reale
+
+Per verificare il listone: Admin -> Converti listone Excel -> caricare il file Classic reale -> controllare che il report indichi 663 giocatori e formato `Lista calciatori`. Dopo conversione verificare Listone pubblico con colonna `Modifica`.
+
 # Aggiornamento V272 - Merge master e ritorno branch
 
 La procedura Git aggiornata per fondere `refactor/260528-zonaorientale-next` su `master` e poi tornare al branch e' in `release/PUSH_MASTER_E_RITORNO_BRANCH_V272.md`. Ricordare che le Firebase Rules V257 non vengono pubblicate automaticamente da Netlify/GitHub.
@@ -526,3 +534,21 @@ La V268 non richiede deploy Firebase Rules.
 ## Nota V271
 
 Prima di pubblicare su master, verificare la checklist listone V268-V270 e il documento `FUNZIONALITA'V263-270.md`.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+## Controlli operativi V276-V277
+
+Prima del deploy verificare:
+
+1. Admin -> Diagnostica dati.
+2. Listone -> filtro Modifiche.
+3. Listone -> Campi visibili -> colonna Modifica.
+4. Footer/versione V277.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

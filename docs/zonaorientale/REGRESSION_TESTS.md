@@ -1,3 +1,20 @@
+## Test V275 - Verifica registro funzionale recente
+
+1. Controllare footer `V275 funzionalita V271-274`.
+2. Verificare console: `window.ZonaOrientaleFunctionLedgerV275`.
+3. Verificare presenza di `docs/zonaorientale/FUNZIONALITA'V271-274.md`.
+4. Ripetere test Listone V273/V274 se vengono toccati convertitore, colonne o ricerca storica.
+
+## Test V273 - Listone Excel reale
+
+1. Admin -> Converti listone Excel.
+2. Caricare `lista_calciatori_lista calciatori_classic_zonaorientale-salerno.xlsx`.
+3. Verificare report: formato Classic a foglio singolo, 663 giocatori, 532 in listone, 131 asteriscati.
+4. Aprire Listone pubblico.
+5. Abilitare colonna `Modifica`.
+6. Verificare che le differenze quotazione siano visibili e che non compaiano falsi cambi squadra di massa.
+7. Controllare console: `window.ZonaOrientaleListoneE2ETestV273`.
+
 # Aggiornamento V272 - Checklist pre-merge
 
 Prima del merge su `master`, usare anche `audit/VERIFICA_FUNZIONALITA_V272.md` e `release/PUSH_MASTER_E_RITORNO_BRANCH_V272.md`. Test minimi: Home, News/share, Dashboard Presidente, Svincola Giocatori, Trattative/notifiche, Admin Richieste presidenti, Admin Converti listone Excel, Listone con colonna Modifica, Competizioni e Archivio.
@@ -401,3 +418,17 @@ Prima di rimuovere o rifattorizzare codice competizioni, verificare:
 - Listone: cercare un giocatore presente solo in un listone precedente.
 - Admin: convertire un file Excel formato Classic `Lista calciatori`.
 - Admin: verificare report con formato riconosciuto e confronto, se disponibile.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+## Test V276-V277
+
+- Admin -> Diagnostica dati: il pannello si apre, mostra righe e il pulsante `Aggiorna diagnostica` non genera errori.
+- Listone -> campo `Modifiche`: ogni opzione filtra la tabella senza rompere ricerca, ruoli, stato, colonna `Modifica` e usciti storici.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=272";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=278";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=272";
+} from "./js/domain/news-share-v228.js?v=278";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=272";
+} from "./js/admin/listone-converter.js?v=278";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=272";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=272";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=272";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=272";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=278";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=278";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=278";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=278";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=272";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=278";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "272";
+const DEPLOY_EXPECTED_VERSION_V181 = "278";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -22284,3 +22284,755 @@ window.ZonaOrientalePreMergeAuditV272 = {
     mergeGuide: "docs/zonaorientale/release/PUSH_MASTER_E_RITORNO_BRANCH_V272.md"
   }
 };
+
+
+/* V273 - Test end-to-end listone reale e normalizzazione squadre.
+ * Esito test con file reale `lista_calciatori_lista calciatori_classic_zonaorientale-salerno.xlsx`:
+ * - formato riconosciuto: Classic a foglio singolo (`Lista calciatori`)
+ * - righe giocatore convertibili: 663
+ * - in listone: 532
+ * - asteriscati: 131
+ * - presenti in rosa/FantaSquadra: 299
+ * - confronto con listone statico 2026-05-15: 2 nuovi, 0 usciti, 661 comuni
+ * - variazioni quotazione: 96 aumenti, 120 diminuzioni, 445 invariati
+ * - bug rilevato e corretto: falsi cambi squadra causati da nomi estesi
+ *   (es. Atalanta) confrontati con sigle storiche (es. ATA).
+ */
+const LISTONE_REAL_TEAM_ALIASES_V273 = Object.freeze({
+  atalanta: "ata",
+  ata: "ata",
+  bologna: "bol",
+  bol: "bol",
+  cagliari: "cag",
+  cag: "cag",
+  como: "com",
+  com: "com",
+  cremonese: "cre",
+  cre: "cre",
+  empoli: "emp",
+  emp: "emp",
+  fiorentina: "fio",
+  fio: "fio",
+  genoa: "gen",
+  gen: "gen",
+  inter: "int",
+  internazionale: "int",
+  int: "int",
+  juventus: "juv",
+  juve: "juv",
+  juv: "juv",
+  lazio: "laz",
+  laz: "laz",
+  lecce: "lec",
+  lec: "lec",
+  milan: "mil",
+  acmilan: "mil",
+  mil: "mil",
+  monza: "mon",
+  mon: "mon",
+  napoli: "nap",
+  nap: "nap",
+  parma: "par",
+  par: "par",
+  pisa: "pis",
+  pis: "pis",
+  roma: "rom",
+  rom: "rom",
+  sassuolo: "sas",
+  sas: "sas",
+  torino: "tor",
+  tor: "tor",
+  udinese: "udi",
+  udi: "udi",
+  venezia: "ven",
+  ven: "ven",
+  verona: "ver",
+  hellasverona: "ver",
+  ver: "ver"
+});
+
+function normalizeListoneRealTeamComparableV273(value) {
+  const normalized = normalizeListoneSearchKeyV269(value);
+  return LISTONE_REAL_TEAM_ALIASES_V273[normalized] || normalized;
+}
+
+function areListoneRealTeamsEquivalentV273(a, b) {
+  return normalizeListoneRealTeamComparableV273(a) === normalizeListoneRealTeamComparableV273(b);
+}
+
+getPlayerChangeStatusV269 = function getPlayerChangeStatusV273(player = {}, previous = null) {
+  if (!previous) return "NEW";
+  const changes = [];
+  const currentQuotation = getComparableQuotationV269(player);
+  const previousQuotation = getComparableQuotationV269(previous);
+  if (currentQuotation !== null && previousQuotation !== null && currentQuotation !== previousQuotation) changes.push("QUOTATION_CHANGED");
+  if (normalizeListoneStatusValue(player) !== normalizeListoneStatusValue(previous)) changes.push("STATUS_CHANGED");
+  if (!areListoneRealTeamsEquivalentV273(player.realTeam, previous.realTeam)) changes.push("TEAM_CHANGED");
+  if (normalizeListoneSearchKeyV269(player.classicRole) !== normalizeListoneSearchKeyV269(previous.classicRole)) changes.push("ROLE_CHANGED");
+  if (!changes.length) return "UNCHANGED";
+  return changes.length === 1 ? changes[0] : "MULTIPLE_CHANGED";
+};
+
+buildListoneComparisonV269 = function buildListoneComparisonV273(currentListone = {}, previousListone = null) {
+  const previousIndex = buildListonePlayerIndexV269(previousListone || {});
+  const currentIndex = buildListonePlayerIndexV269(currentListone || {});
+  const removedPlayers = [];
+  const changedPlayers = [];
+  const summary = {
+    comparedWith: previousListone ? (previousListone.id || previousListone.meta?.id || getListoneDateKeyV269(previousListone)) : "",
+    comparedWithLabel: previousListone ? getListoneDisplayLabelV269(previousListone) : "",
+    newPlayers: 0,
+    removedPlayers: 0,
+    quotationUp: 0,
+    quotationDown: 0,
+    quotationChanged: 0,
+    statusChanged: 0,
+    teamChanged: 0,
+    roleChanged: 0,
+    unchanged: 0
+  };
+
+  const enrichedPlayers = (currentListone.players || []).map((player) => {
+    const previous = findMatchingListonePlayerV269(player, previousIndex);
+    const currentQuotation = getComparableQuotationV269(player);
+    const previousQuotation = previous ? getComparableQuotationV269(previous) : null;
+    const quotationDiff = currentQuotation !== null && previousQuotation !== null ? currentQuotation - previousQuotation : null;
+    const statusChange = getPlayerChangeStatusV269(player, previous);
+    const realTeamChanged = Boolean(previous && !areListoneRealTeamsEquivalentV273(player.realTeam, previous.realTeam));
+    const roleChanged = Boolean(previous && normalizeListoneSearchKeyV269(player.classicRole) !== normalizeListoneSearchKeyV269(previous.classicRole));
+
+    if (!previous) summary.newPlayers += 1;
+    else if (statusChange === "UNCHANGED") summary.unchanged += 1;
+    if (quotationDiff !== null && quotationDiff !== 0) {
+      summary.quotationChanged += 1;
+      if (quotationDiff > 0) summary.quotationUp += 1;
+      if (quotationDiff < 0) summary.quotationDown += 1;
+    }
+    if (previous && normalizeListoneStatusValue(player) !== normalizeListoneStatusValue(previous)) summary.statusChanged += 1;
+    if (realTeamChanged) summary.teamChanged += 1;
+    if (roleChanged) summary.roleChanged += 1;
+
+    const enriched = {
+      ...player,
+      previousListoneId: previousListone ? (previousListone.id || previousListone.meta?.id || "") : "",
+      previousQuotationCurrent: previousQuotation === null ? "" : previousQuotation,
+      quotationDiffFromPrevious: quotationDiff === null ? "" : quotationDiff,
+      previousStatus: previous ? (previous.status || previous.statusCode || "") : "",
+      statusChange,
+      isNewInListone: !previous,
+      previous: previous ? {
+        listoneId: previousListone?.id || previousListone?.meta?.id || "",
+        quotationCurrent: previousQuotation === null ? "" : previousQuotation,
+        realTeam: previous.realTeam || "",
+        classicRole: previous.classicRole || "",
+        status: previous.status || previous.statusCode || "",
+        playerName: previous.playerName || ""
+      } : null,
+      diff: {
+        quotationCurrent: quotationDiff === null ? "" : quotationDiff,
+        status: statusChange,
+        realTeamChanged,
+        roleChanged
+      }
+    };
+    if (statusChange !== "UNCHANGED") changedPlayers.push(enriched);
+    return enriched;
+  });
+
+  if (previousListone) {
+    (previousListone.players || []).forEach((previousPlayer) => {
+      if (findMatchingListonePlayerV269(previousPlayer, currentIndex)) return;
+      removedPlayers.push({
+        ...previousPlayer,
+        removedFromListoneId: currentListone.id || currentListone.meta?.id || "",
+        previousListoneId: previousListone.id || previousListone.meta?.id || "",
+        statusChange: "REMOVED"
+      });
+    });
+  }
+  summary.removedPlayers = removedPlayers.length;
+
+  return { enrichedPlayers, removedPlayers, changedPlayers, summary, previousListone };
+};
+
+window.ZonaOrientaleListoneE2ETestV273 = {
+  version: "V273",
+  label: "test listone reale",
+  testedFile: "lista_calciatori_lista calciatori_classic_zonaorientale-salerno.xlsx",
+  recognizedFormat: "Fantacalcio Classic a foglio singolo",
+  testedSheet: "Lista calciatori",
+  result: {
+    convertedPlayers: 663,
+    activePlayers: 532,
+    asteriskPlayers: 131,
+    rosteredPlayers: 299,
+    comparedWith: "2026-05-15",
+    commonPlayers: 661,
+    newPlayers: 2,
+    removedPlayers: 0,
+    quotationUp: 96,
+    quotationDown: 120,
+    quotationUnchanged: 445,
+    statusChanged: 1,
+    teamChangedAfterNormalization: 0,
+    roleChanged: 0
+  },
+  fixedInV273: [
+    "normalizzazione nomi squadra reale nel confronto listoni, per evitare falsi TEAM_CHANGED tra sigle storiche e nomi estesi"
+  ],
+  normalizeRealTeam: normalizeListoneRealTeamComparableV273
+};
+
+
+/* V274 - Codici squadra reale canonici nel listone.
+ * I listoni futuri possono arrivare con sigle (ATA, BOL, INT) oppure nomi estesi
+ * (Atalanta, Bologna, Inter). Il sistema ora accetta entrambi in confronto/ricerca,
+ * ma visualizza e salva come valore principale la sigla canonica a 3 lettere.
+ */
+const LISTONE_REAL_TEAM_CANONICAL_CODES_V274 = Object.freeze({
+  ata: "ATA", atalanta: "ATA",
+  bol: "BOL", bologna: "BOL",
+  cag: "CAG", cagliari: "CAG",
+  com: "COM", como: "COM",
+  cre: "CRE", cremonese: "CRE",
+  emp: "EMP", empoli: "EMP",
+  fio: "FIO", fiorentina: "FIO",
+  gen: "GEN", genoa: "GEN",
+  int: "INT", inter: "INT", internazionale: "INT",
+  juv: "JUV", juventus: "JUV", juve: "JUV",
+  laz: "LAZ", lazio: "LAZ",
+  lec: "LEC", lecce: "LEC",
+  mil: "MIL", milan: "MIL", acmilan: "MIL", ac: "MIL",
+  mon: "MON", monza: "MON",
+  nap: "NAP", napoli: "NAP",
+  par: "PAR", parma: "PAR",
+  pis: "PIS", pisa: "PIS",
+  rom: "ROM", roma: "ROM",
+  sas: "SAS", sassuolo: "SAS",
+  tor: "TOR", torino: "TOR",
+  udi: "UDI", udinese: "UDI",
+  ven: "VEN", venezia: "VEN",
+  ver: "VER", verona: "VER", hellasverona: "VER", hellas: "VER",
+  sal: "SAL", salernitana: "SAL",
+  sam: "SAM", sampdoria: "SAM",
+  spe: "SPE", spezia: "SPE"
+});
+
+function normalizeRealTeamKeyV274(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function getCanonicalRealTeamCodeV274(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  const normalized = normalizeRealTeamKeyV274(raw);
+  const direct = LISTONE_REAL_TEAM_CANONICAL_CODES_V274[normalized];
+  if (direct) return direct;
+  const v273 = typeof LISTONE_REAL_TEAM_ALIASES_V273 !== "undefined" ? LISTONE_REAL_TEAM_ALIASES_V273[normalized] : "";
+  if (v273 && LISTONE_REAL_TEAM_CANONICAL_CODES_V274[v273]) return LISTONE_REAL_TEAM_CANONICAL_CODES_V274[v273];
+  const compact = raw.replace(/[^A-Za-z0-9]/g, "");
+  if (/^[A-Za-z]{2,4}$/.test(compact)) return compact.slice(0, 3).toUpperCase();
+  return raw.slice(0, 3).toUpperCase();
+}
+
+function renderCanonicalRealTeamCodeV274(player = {}) {
+  const original = String(player.realTeamOriginal || player.real_team_original || player.realTeam || player.real_team || player.team || "").trim();
+  const code = getCanonicalRealTeamCodeV274(player.realTeam || player.real_team || player.team || original);
+  const title = original && normalizeRealTeamKeyV274(original) !== normalizeRealTeamKeyV274(code) ? ` title="${escapeHtml(original)}"` : "";
+  return `<span class="team-code"${title}>${escapeHtml(code || "-")}</span>`;
+}
+
+const getListonePlayerKeysBeforeV274 = getListonePlayerKeysV269;
+getListonePlayerKeysV269 = function getListonePlayerKeysV274(player = {}) {
+  const name = normalizeListoneSearchKeyV269(player.playerName || player.player_name || player.name);
+  const team = normalizeListoneSearchKeyV269(getCanonicalRealTeamCodeV274(player.realTeam || player.real_team || player.team || player.realTeamOriginal));
+  const role = normalizeListoneSearchKeyV269(player.classicRole || player.role || player.rosterRole);
+  const id = String(player.fantacalcioId || player.fantacalcio_id || player.idFantacalcio || "").trim();
+  const keys = [];
+  if (id) keys.push(`id:${id}`);
+  if (name && team) keys.push(`name-team:${name}|${team}`);
+  if (name && role) keys.push(`name-role:${name}|${role}`);
+  if (name) keys.push(`name:${name}`);
+  return keys.length ? keys : getListonePlayerKeysBeforeV274(player);
+};
+
+const normalizeListoneRealTeamComparableBeforeV274 = normalizeListoneRealTeamComparableV273;
+normalizeListoneRealTeamComparableV273 = function normalizeListoneRealTeamComparableV274(value) {
+  return normalizeListoneSearchKeyV269(getCanonicalRealTeamCodeV274(value)) || normalizeListoneRealTeamComparableBeforeV274(value);
+};
+
+const renderListoneCellBeforeV274 = renderListoneCell;
+renderListoneCell = function renderListoneCellV274(player, column) {
+  if (column?.key === "realTeam") return renderCanonicalRealTeamCodeV274(player);
+  return renderListoneCellBeforeV274(player, column);
+};
+
+const getListoneSearchHaystackBeforeV274 = typeof getListoneSearchHaystackV270 === "function" ? getListoneSearchHaystackV270 : null;
+getListoneSearchHaystackV270 = function getListoneSearchHaystackV274(player = {}) {
+  const base = getListoneSearchHaystackBeforeV274 ? getListoneSearchHaystackBeforeV274(player) : "";
+  return [
+    base,
+    getCanonicalRealTeamCodeV274(player.realTeam || player.realTeamOriginal),
+    player.realTeamOriginal,
+    player.realTeam
+  ].map((value) => normalizeListoneSearchKeyV269(value)).join(" ");
+};
+
+const buildFantacalcioPlayerUrlBeforeV274 = buildFantacalcioPlayerUrl;
+buildFantacalcioPlayerUrl = function buildFantacalcioPlayerUrlV274(player) {
+  const normalizedPlayer = {
+    ...player,
+    realTeam: getCanonicalRealTeamCodeV274(player?.realTeam || player?.realTeamOriginal || player?.real_team || player?.team)
+  };
+  return buildFantacalcioPlayerUrlBeforeV274(normalizedPlayer);
+};
+
+window.ZonaOrientaleListoneTeamCodesV274 = {
+  version: "V274",
+  label: "codici squadra canonici listone",
+  canonicalDisplay: "sigla a 3 lettere",
+  acceptsInputs: ["sigle storiche", "nomi estesi Fantacalcio Classic"],
+  examples: {
+    Atalanta: getCanonicalRealTeamCodeV274("Atalanta"),
+    ATA: getCanonicalRealTeamCodeV274("ATA"),
+    Inter: getCanonicalRealTeamCodeV274("Inter"),
+    HellasVerona: getCanonicalRealTeamCodeV274("Hellas Verona")
+  },
+  normalize: getCanonicalRealTeamCodeV274
+};
+
+window.setTimeout(() => {
+  try { if (document.querySelector('[data-page="listone"]')) renderListonePublic(); } catch (error) { console.warn("Refresh listone V274 non completato", error); }
+}, 0);
+
+
+/* V275 - Registro funzionalita V271-V274.
+ * Documento aggiunto: docs/zonaorientale/FUNZIONALITA'V271-274.md.
+ * Nessuna modifica funzionale al runtime.
+ */
+window.ZonaOrientaleFunctionLedgerV275 = {
+  version: "V275",
+  label: "funzionalita V271-274",
+  document: "docs/zonaorientale/FUNZIONALITA'V271-274.md",
+  functionalChanges: false,
+  covers: ["V271", "V272", "V273", "V274"],
+  notes: [
+    "V271 registro funzionalita V263-V270",
+    "V272 handoff e verifica pre-merge",
+    "V273 test listone reale e normalizzazione confronto squadre",
+    "V274 codici squadra canonici nel listone"
+  ]
+};
+
+
+/* V276 - Diagnostica dati Admin.
+ * Aggiunge un pannello non distruttivo in Admin per verificare le principali
+ * sorgenti dati e ridurre il rischio di perdere funzionalita prima di deploy/merge.
+ */
+function getDiagnosticStatusClassV276(status) {
+  if (status === "OK") return "status-ok";
+  if (status === "ERRORE") return "status-danger";
+  return "status-warning";
+}
+
+function renderDiagnosticBadgeV276(status) {
+  return `<span class="status ${getDiagnosticStatusClassV276(status)}">${escapeHtml(status)}</span>`;
+}
+
+function countRosterPlayersV276() {
+  return (state.rosters || []).reduce((total, snapshot) => {
+    return total + (snapshot.rosters || []).reduce((sum, roster) => sum + (roster.players || []).length, 0);
+  }, 0);
+}
+
+function getLatestListoneV276() {
+  const seasonId = getCurrentSeasonId();
+  const listoni = (state.listoni || [])
+    .filter((item) => String(item.seasonId || item.meta?.seasonId || "") === String(seasonId || ""))
+    .sort(compareListoniByDateDescV99);
+  return listoni[0] || getSelectedListone() || null;
+}
+
+function getAdminDataDiagnosticsV276() {
+  const listone = getLatestListoneV276();
+  const listonePlayers = listone?.players?.length || 0;
+  const listonePrevious = listone && typeof getPreviousListoneForDateV269 === "function"
+    ? getPreviousListoneForDateV269(listone, listone.seasonId || listone.meta?.seasonId || getCurrentSeasonId())
+    : null;
+  const rosterPlayers = countRosterPlayersV276();
+  const raw = state.raw || {};
+  const versionInfo = typeof getRuntimeAssetsVersionInfoV180 === "function" ? getRuntimeAssetsVersionInfoV180() : null;
+  const versionOk = versionInfo
+    ? versionInfo.footerVersion === String(DEPLOY_EXPECTED_VERSION_V181) && versionInfo.uniqueVersions.includes(String(DEPLOY_EXPECTED_VERSION_V181))
+    : false;
+  const emailReady = Boolean(window.ZonaOrientaleEmailJsDeliverabilityV266 || typeof sendTransferCommunicationEmailCanonicalV242 === "function" || typeof sendReleasePlayersEmailV261 === "function");
+  const listoneHistoryReady = Boolean(window.ZonaOrientaleListoneChangesV270 && typeof getHistoryChangeLabelV270 === "function");
+  const adminRequestsReady = Boolean(window.ZonaOrientaleTeamRequestsV253 || window.ZonaOrientaleTeamRequestsV249);
+
+  return [
+    {
+      area: "Versione deploy",
+      status: versionOk ? "OK" : "ATTENZIONE",
+      details: versionInfo ? `Footer V${versionInfo.footerVersion}; asset ${versionInfo.uniqueVersions.join(", ") || "non rilevati"}; atteso V${DEPLOY_EXPECTED_VERSION_V181}.` : "Runtime version non disponibile."
+    },
+    {
+      area: "Listoni",
+      status: listonePlayers > 0 && listoneHistoryReady ? "OK" : "ATTENZIONE",
+      details: listone ? `${escapeHtml(getListoneDisplayLabelV269?.(listone) || listone.id || "listone")} · ${listonePlayers} giocatori · precedente ${listonePrevious ? getListoneDisplayLabelV269(listonePrevious) : "non trovato"}.` : "Nessun listone disponibile in memoria."
+    },
+    {
+      area: "Rose",
+      status: rosterPlayers > 0 ? "OK" : "ATTENZIONE",
+      details: `${(state.rosters || []).length} snapshot rose · ${rosterPlayers} giocatori aggregati.`
+    },
+    {
+      area: "Competizioni",
+      status: (raw.competitions || []).length > 0 ? "OK" : "ATTENZIONE",
+      details: `${(raw.competitions || []).length} competizioni Firebase/snapshot · ${(state.competitionCalendars || []).length} calendari statici.`
+    },
+    {
+      area: "News",
+      status: (raw.news || []).length > 0 ? "OK" : "ATTENZIONE",
+      details: `${(raw.news || []).length} comunicati disponibili · share route /zonaorientale/share/news/<id> preservata.`
+    },
+    {
+      area: "Richieste presidenti",
+      status: adminRequestsReady ? "OK" : "ATTENZIONE",
+      details: `${(raw.teamRequests || []).length} richieste in memoria · pannello canonico ${adminRequestsReady ? "presente" : "non rilevato"}.`
+    },
+    {
+      area: "Trattative",
+      status: typeof installTradeNotificationSimulatorV255 === "function" || window.ZonaOrientaleTradeSimulatorV255 ? "OK" : "ATTENZIONE",
+      details: `Simulator V255 ${window.ZonaOrientaleTradeSimulatorV255 ? "attivo" : "non ancora inizializzato"}; rules V257 da verificare in Firebase Console.`
+    },
+    {
+      area: "EmailJS",
+      status: emailReady ? "OK" : "ATTENZIONE",
+      details: `Flussi comunicato scambio/svincolo ${emailReady ? "rilevati" : "non rilevati"}. Deliverability dipende da template EmailJS e DNS mittente.`
+    }
+  ];
+}
+
+function renderAdminDataDiagnosticsPanelV276() {
+  const rows = getAdminDataDiagnosticsV276();
+  const body = `
+    <div class="admin-form-grid">
+      <div class="form-actions full-span">
+        <button class="button button-secondary" type="button" data-refresh-diagnostics-v276>Aggiorna diagnostica</button>
+        <small class="field-hint">Controllo locale non distruttivo: non scrive su Firebase.</small>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Area</th><th>Stato</th><th>Dettagli</th></tr></thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td><strong>${escapeHtml(row.area)}</strong></td>
+              <td>${renderDiagnosticBadgeV276(row.status)}</td>
+              <td>${row.details}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+  return renderAdminPanel(
+    "adminDataDiagnosticsPanelV276",
+    "Controlli pre-deploy",
+    "Diagnostica dati",
+    "Semafori rapidi su dati, versioni e moduli chiave. Serve a intercettare regressioni prima del deploy.",
+    body
+  );
+}
+
+function injectAdminDataDiagnosticsPanelV276() {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel || document.getElementById("adminDataDiagnosticsPanelV276")) return;
+  adminPanel.insertAdjacentHTML("beforeend", renderAdminDataDiagnosticsPanelV276());
+}
+
+const renderAdminAreaBeforeV276 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV276() {
+  const result = renderAdminAreaBeforeV276?.();
+  try { injectAdminDataDiagnosticsPanelV276(); } catch (error) { console.warn("Diagnostica dati V276 non renderizzata", error); }
+  return result;
+};
+
+document.addEventListener("click", (event) => {
+  if (!event.target?.closest?.("[data-refresh-diagnostics-v276]")) return;
+  const panel = document.getElementById("adminDataDiagnosticsPanelV276");
+  if (!panel) return;
+  panel.outerHTML = renderAdminDataDiagnosticsPanelV276();
+});
+
+window.ZonaOrientaleAdminDiagnosticsV276 = {
+  version: "V276",
+  label: "diagnostica dati admin",
+  getRows: getAdminDataDiagnosticsV276,
+  refresh: () => {
+    const panel = document.getElementById("adminDataDiagnosticsPanelV276");
+    if (panel) panel.outerHTML = renderAdminDataDiagnosticsPanelV276();
+    else injectAdminDataDiagnosticsPanelV276();
+    return getAdminDataDiagnosticsV276();
+  }
+};
+
+
+/* V277 - Filtro Solo modificati nel Listone.
+ * Aggiunge un filtro operativo sulla colonna Modifica senza eliminare le righe/colonne esistenti.
+ */
+const LISTONE_CHANGE_FILTER_OPTIONS_V277 = Object.freeze([
+  ["all", "Tutte le modifiche"],
+  ["changed", "Solo modificati"],
+  ["new", "Solo nuovi"],
+  ["removed", "Solo usciti"],
+  ["quotation-up", "Solo aumentati"],
+  ["quotation-down", "Solo diminuiti"],
+  ["status", "Solo cambi stato"],
+  ["team", "Solo cambi squadra"],
+  ["role", "Solo cambi ruolo"]
+]);
+
+function getSelectedListoneChangeFilterV277() {
+  return document.getElementById("listoneChangeFilterV277")?.value || "all";
+}
+
+function getListoneChangeCategoryV277(player = {}) {
+  const status = typeof getHistoryChangeStatusV270 === "function" ? getHistoryChangeStatusV270(player) : (player.historyChange || player.statusChange || "UNCHANGED");
+  const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
+  return { status, quoteDiff };
+}
+
+function matchesListoneChangeFilterV277(player = {}) {
+  const filter = getSelectedListoneChangeFilterV277();
+  if (filter === "all") return true;
+  const { status, quoteDiff } = getListoneChangeCategoryV277(player);
+  if (filter === "changed") return status !== "UNCHANGED" || (quoteDiff !== null && quoteDiff !== 0);
+  if (filter === "new") return status === "NEW";
+  if (filter === "removed") return status === "REMOVED";
+  if (filter === "quotation-up") return quoteDiff !== null && quoteDiff > 0;
+  if (filter === "quotation-down") return quoteDiff !== null && quoteDiff < 0;
+  if (filter === "status") return status === "STATUS_CHANGED" || status === "MULTIPLE_CHANGED";
+  if (filter === "team") return status === "TEAM_CHANGED" || status === "MULTIPLE_CHANGED" || player.diff?.realTeamChanged === true;
+  if (filter === "role") return status === "ROLE_CHANGED" || status === "MULTIPLE_CHANGED" || player.diff?.roleChanged === true;
+  return true;
+}
+
+const shouldShowHistoricalRemovedRowsBeforeV277 = shouldShowHistoricalRemovedRowsV270;
+shouldShowHistoricalRemovedRowsV270 = function shouldShowHistoricalRemovedRowsV277() {
+  const filter = getSelectedListoneChangeFilterV277();
+  if (filter === "removed" || filter === "changed") return true;
+  return shouldShowHistoricalRemovedRowsBeforeV277?.() ?? true;
+};
+
+const getFilteredListonePlayersBeforeV277 = getFilteredListonePlayers;
+getFilteredListonePlayers = function getFilteredListonePlayersV277(listone) {
+  const rows = getFilteredListonePlayersBeforeV277(listone);
+  const filter = getSelectedListoneChangeFilterV277();
+  if (filter === "all") return rows;
+  return rows.filter(matchesListoneChangeFilterV277);
+};
+
+const ensureListoneHistoryUiBeforeV277 = ensureListoneHistoryUiV269;
+ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV277() {
+  ensureListoneHistoryUiBeforeV277?.();
+  const filterRow = document.querySelector(".listone-filter-row");
+  if (!filterRow || document.getElementById("listoneChangeFilterV277")) return;
+  const label = document.createElement("label");
+  label.className = "field listone-change-filter-v277";
+  label.innerHTML = `
+    <span>Modifiche</span>
+    <select id="listoneChangeFilterV277">
+      ${LISTONE_CHANGE_FILTER_OPTIONS_V277.map(([value, labelText]) => `<option value="${escapeHtml(value)}">${escapeHtml(labelText)}</option>`).join("")}
+    </select>`;
+  filterRow.appendChild(label);
+};
+
+document.addEventListener("change", (event) => {
+  if (event.target?.id === "listoneChangeFilterV277") renderListonePublic();
+});
+
+window.ZonaOrientaleListoneChangeFilterV277 = {
+  version: "V277",
+  label: "filtro modifiche listone",
+  options: LISTONE_CHANGE_FILTER_OPTIONS_V277.map(([value, label]) => ({ value, label })),
+  getSelected: getSelectedListoneChangeFilterV277,
+  getVisibleRows: () => getFilteredListonePlayers(getSelectedListone()),
+  matches: matchesListoneChangeFilterV277
+};
+
+window.setTimeout(() => {
+  try {
+    if (document.querySelector('[data-page="listone"]')) renderListonePublic();
+    if (document.querySelector('[data-page="admin"]')) injectAdminDataDiagnosticsPanelV276();
+  } catch (error) {
+    console.warn("Refresh V276/V277 non completato", error);
+  }
+}, 0);
+
+
+/* V278 - Export modifiche listone.
+ * Aggiunge un export CSV non distruttivo delle differenze del listone selezionato.
+ * Usa i dati gia' calcolati da V269/V270/V277 e non modifica Firebase o JSON statici.
+ */
+function csvEscapeV278(value) {
+  const text = String(value ?? "");
+  return /[";\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function getListoneChangeLabelForExportV278(player = {}) {
+  if (typeof getHistoryChangeLabelV270 === "function") return getHistoryChangeLabelV270(player);
+  const status = player.historyChange || player.statusChange || player.diff?.status || "UNCHANGED";
+  return status === "REMOVED" ? "Uscito" : status === "NEW" ? "Nuovo" : status === "UNCHANGED" ? "Invariato" : status;
+}
+
+function isListoneRowChangedForExportV278(player = {}) {
+  const status = typeof getHistoryChangeStatusV270 === "function"
+    ? getHistoryChangeStatusV270(player)
+    : (player.historyChange || player.statusChange || player.diff?.status || "UNCHANGED");
+  const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
+  return status !== "UNCHANGED" || (quoteDiff !== null && quoteDiff !== 0);
+}
+
+function getListoneRowsForChangeExportV278() {
+  const listone = getSelectedListone?.();
+  if (!listone) return [];
+  const rows = typeof getFilteredListonePlayers === "function" ? getFilteredListonePlayers(listone) : (listone.players || []);
+  const selectedFilter = typeof getSelectedListoneChangeFilterV277 === "function" ? getSelectedListoneChangeFilterV277() : "all";
+  if (selectedFilter && selectedFilter !== "all") return rows;
+  return rows.filter(isListoneRowChangedForExportV278);
+}
+
+function buildListoneChangeExportRowsV278() {
+  const listone = getSelectedListone?.();
+  const listoneLabel = listone ? (typeof getListoneDisplayLabelV269 === "function" ? getListoneDisplayLabelV269(listone) : (listone.label || listone.loadedAt || listone.id || "Listone")) : "";
+  return getListoneRowsForChangeExportV278().map((player) => {
+    const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
+    const previous = player.previous || {};
+    return {
+      listone: listoneLabel,
+      modifica: getListoneChangeLabelForExportV278(player),
+      giocatore: player.playerName || "",
+      ruolo: player.classicRole || "",
+      squadra: player.realTeam || "",
+      stato: player.isHistoricalRemovedV270 ? "Uscito" : (player.status || player.statusCode || ""),
+      quotazioneAttuale: player.isHistoricalRemovedV270 ? "" : (player.quotationCurrent ?? ""),
+      quotazionePrecedente: player.previousQuotationCurrent ?? previous.quotationCurrent ?? (player.isHistoricalRemovedV270 ? player.quotationCurrent : ""),
+      differenzaQuotazione: quoteDiff === null ? "" : quoteDiff,
+      ultimoListone: player.historyLastSeenListoneLabel || player.previousListoneId || previous.listoneId || player.diff?.previousListoneId || "",
+      fantaSquadra: player.fantasyRoster || "",
+      costo: player.rosterCost ?? "",
+      fantacalcioId: player.fantacalcioId || ""
+    };
+  });
+}
+
+function buildListoneChangeExportCsvV278() {
+  const rows = buildListoneChangeExportRowsV278();
+  const headers = [
+    ["listone", "Listone"],
+    ["modifica", "Modifica"],
+    ["giocatore", "Giocatore"],
+    ["ruolo", "Ruolo"],
+    ["squadra", "Squadra"],
+    ["stato", "Stato"],
+    ["quotazioneAttuale", "Qt.A"],
+    ["quotazionePrecedente", "Qt.A precedente"],
+    ["differenzaQuotazione", "Diff Qt.A"],
+    ["ultimoListone", "Ultimo/precedente listone"],
+    ["fantaSquadra", "FantaSquadra"],
+    ["costo", "Costo"],
+    ["fantacalcioId", "Fantacalcio ID"]
+  ];
+  const lines = [headers.map(([, label]) => csvEscapeV278(label)).join(";")];
+  rows.forEach((row) => {
+    lines.push(headers.map(([key]) => csvEscapeV278(row[key])).join(";"));
+  });
+  return { csv: `\ufeff${lines.join("\n")}`, rows };
+}
+
+function downloadTextFileV278(filename, content, mimeType = "text/csv;charset=utf-8") {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function getListoneChangeExportFilenameV278() {
+  const listone = getSelectedListone?.();
+  const id = String(listone?.id || listone?.loadedAt || listone?.meta?.id || "listone").replace(/[^a-zA-Z0-9_-]+/g, "-");
+  const stamp = new Date().toISOString().slice(0, 10);
+  return `zonaorientale-modifiche-listone-${id}-${stamp}.csv`;
+}
+
+function exportListoneChangesCsvV278() {
+  const { csv, rows } = buildListoneChangeExportCsvV278();
+  if (!rows.length) {
+    showToast?.("Nessuna modifica da esportare con i filtri correnti.");
+    return { exported: 0 };
+  }
+  downloadTextFileV278(getListoneChangeExportFilenameV278(), csv);
+  showToast?.(`Esportate ${rows.length} righe modifiche listone.`);
+  return { exported: rows.length };
+}
+
+const ensureListoneHistoryUiBeforeV278 = ensureListoneHistoryUiV269;
+ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV278() {
+  ensureListoneHistoryUiBeforeV278?.();
+  const filterRow = document.querySelector(".listone-filter-row");
+  if (!filterRow || document.getElementById("listoneExportChangesV278")) return;
+  const button = document.createElement("button");
+  button.id = "listoneExportChangesV278";
+  button.className = "button button-secondary button-small listone-export-changes-v278";
+  button.type = "button";
+  button.textContent = "Esporta modifiche CSV";
+  filterRow.appendChild(button);
+};
+
+document.addEventListener("click", (event) => {
+  if (event.target?.id === "listoneExportChangesV278") {
+    event.preventDefault();
+    try {
+      exportListoneChangesCsvV278();
+    } catch (error) {
+      console.error("Export modifiche listone V278 non riuscito", error);
+      showToast?.("Export modifiche listone non riuscito.");
+    }
+  }
+});
+
+const renderListoneHistoryPanelBeforeV278 = renderListoneHistoryPanelV269;
+renderListoneHistoryPanelV269 = function renderListoneHistoryPanelV278(listone) {
+  renderListoneHistoryPanelBeforeV278?.(listone);
+  const target = document.getElementById("listoneHistoryContentV269");
+  if (!target || target.querySelector(".listone-export-note-v278")) return;
+  const rows = buildListoneChangeExportRowsV278();
+  target.insertAdjacentHTML("beforeend", `
+    <p class="muted listone-export-note-v278">Export modifiche CSV: ${rows.length} righe disponibili con i filtri correnti. Usa il pulsante nella barra filtri del Listone.</p>
+  `);
+};
+
+window.ZonaOrientaleListoneExportV278 = {
+  version: "V278",
+  label: "export modifiche listone",
+  getRows: buildListoneChangeExportRowsV278,
+  buildCsv: buildListoneChangeExportCsvV278,
+  exportCsv: exportListoneChangesCsvV278
+};
+
+window.setTimeout(() => {
+  try {
+    if (document.querySelector('[data-page="listone"]')) renderListonePublic();
+  } catch (error) {
+    console.warn("Refresh V278 export modifiche listone non completato", error);
+  }
+}, 0);

@@ -251,3 +251,160 @@
 ### Versioning operativo
 - Footer e cache-buster devono essere aggiornati a ogni overlay funzionale.
 - Il deploy avviene tramite commit e push su branch master della repo starter-academic-sb.
+
+
+---
+
+# Aggiornamento funzionale V240-V278
+
+> Sezione aggiunta su richiesta esplicita del referente del progetto. Le sezioni precedenti del documento non sono state rimosse o sostituite.
+>
+> Scopo: incorporare nel registro principale le funzionalita' introdotte, consolidate o corrette nei cicli V240-V278, mantenendo memoria delle funzioni critiche prima di refactor o pulizie.
+
+## Utente pubblico - aggiornamenti
+
+### News, comunicati e anteprime WhatsApp
+- La home `/zonaorientale/` usa metadati Open Graph generici del sito, evitando che la condivisione della home mostri l'ultima news.
+- Le anteprime specifiche delle news restano legate ai link dedicati `/zonaorientale/share/news/<id>` gestiti dalla Netlify Function.
+- Il pulsante `Apri preview` e' stato rimosso dall'interfaccia; resta il pulsante `Copia link WhatsApp`.
+- I badge/tag tecnici `Firebase`, `JSON`, `JSON statico`, `Solo JSON` sono stati nascosti dall'interfaccia utente finale dove non utili.
+
+### Listone - storico, confronto e ricerca
+- Il Listone supporta piu' versioni/snapshot e puo' confrontare il listone selezionato con listoni precedenti della stessa stagione.
+- E' disponibile il pannello `Storico listoni` con riepilogo di nuovi, usciti, variazioni quotazione, variazioni stato, squadra e ruolo.
+- La ricerca puo' includere anche giocatori presenti in listoni diversi da quello selezionato.
+- La tabella Listone include la colonna opzionale `Modifica`, attivabile dai `Campi visibili`.
+- La colonna `Modifica` puo' indicare `Nuovo`, `Uscito`, variazione quotazione `+N`/`-N`, cambio stato, cambio squadra, cambio ruolo, piu' variazioni o invariato.
+- E' disponibile il filtro `Mostra usciti storici`, che mostra giocatori non presenti nel listone selezionato ma trovati in listoni precedenti.
+- Per i giocatori usciti viene indicato l'ultimo listone che li conteneva.
+- E' disponibile il filtro `Modifiche`, con opzioni per visualizzare solo modificati, nuovi, usciti, aumentati, diminuiti, cambi stato, cambi squadra o cambi ruolo.
+- E' disponibile il pulsante `Esporta modifiche CSV`, che esporta le modifiche del listone rispettando il filtro `Modifiche` selezionato.
+- Il Listone accetta squadre reali sia come sigle sia come nomi estesi, ma usa e visualizza il codice canonico a tre lettere.
+- Esempi di normalizzazione: `Atalanta -> ATA`, `Bologna -> BOL`, `Inter -> INT`, `Milan -> MIL`, `Hellas Verona -> VER`.
+- Il confronto storico deve usare i codici canonici per evitare falsi cambi squadra.
+
+### Accesso riservato
+- Il campo `Nome visualizzato` e' stato rimosso dall'Accesso Riservato per evitare confusione: il nome/presidente viene assegnato dall'admin.
+- Il pulsante `Accedi con Google` mostra il logo Google.
+
+## Presidente - aggiornamenti
+
+### Trattative e notifiche
+- Le trattative vengono rilette in modo piu' coerente entrando nella Dashboard Presidente e nella sottosezione `Trattative`.
+- Lo storico delle trattative inviate e ricevute resta visibile, con ultime 5 subito consultabili e le altre tramite scroll.
+- Il badge rosso con punto esclamativo segnala proposte ricevute ancora in attesa.
+- Il badge del destinatario resta visibile finche' la proposta non viene approvata o rifiutata.
+- Il badge del mittente segnala l'esito di una proposta inviata approvata/rifiutata.
+- La notifica di esito per il mittente sparisce solo dopo apertura/lettura della card relativa.
+- La lettura degli esiti puo' essere salvata su Firebase nei campi `outcomeSeen...` quando le Firebase Rules V257 sono pubblicate.
+- Se Firebase non consente l'update, resta un fallback locale tramite `localStorage`.
+
+### Comunicati presidente
+- Il flusso canonico `Comunicato avvenuto scambio` e': presidente -> `teamRequests` con tipo `TRANSFER_NEWS` -> EmailJS immediata -> approvazione Admin -> pubblicazione in News.
+- Il presidente non deve scrivere direttamente nella collection `news`.
+- La mail EmailJS dell'avvenuto scambio viene inviata a `caparrotti86@yahoo.it`.
+- Sono stati neutralizzati i vecchi handler legacy V50/V79/V237 che potevano causare doppi submit o tentativi di scrittura diretta in `news`.
+
+### Svincola Giocatori
+- In Dashboard Presidente e' presente la sottosezione `Svincola Giocatori`.
+- Il presidente puo' selezionare uno o piu' giocatori dalla propria rosa.
+- Il sistema genera automaticamente una mail indirizzata a `caparrotti86@yahoo.it`.
+- Oggetto email: `<Nome Squadra> - Svincolo giocatori - <Data odierna>`.
+- Il corpo email comunica i giocatori che il presidente intende svincolare.
+- Per ogni giocatore selezionato viene indicata l'ultima quotazione attuale recuperata dal listone piu' recente disponibile.
+- La mail indica il listone o i listoni usati per recuperare le quotazioni.
+- La mail si chiude con `Cordiali Saluti` e il nome del presidente.
+- Il flusso usa EmailJS, non crea richieste Admin e non scrive su Firebase.
+
+### Test trattative
+- E' disponibile il simulatore notifiche trattative da console browser.
+- API corrente: `window.ZonaOrientaleTradeSimulatorV255`.
+- Comando rapido: `await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()`.
+- Le simulazioni locali non scrivono su Firebase.
+
+## Admin - aggiornamenti
+
+### Accetta utenti
+- Il flusso `Accetta utenti` e' stato stabilizzato.
+- Gli utenti gia' approvati non vengono rigenerati come richieste `PENDING` al login Google/email.
+- Gli utenti rifiutati restano marcati come `REJECTED`, evitando ricomparsa automatica come nuove richieste.
+- Il pannello nasconde vecchi duplicati `pendingUsers` quando esiste gia' un utente approvato in `teamUsers`.
+
+### Richieste presidenti
+- Il pannello `Admin -> Richieste presidenti` include il pulsante `Aggiorna richieste` per rileggere `teamRequests` da Firebase.
+- Le richieste `TRANSFER_NEWS` generate dai comunicati avvenuto scambio sono visibili nel pannello.
+- Restano disponibili approvazione e rifiuto delle richieste.
+- E' disponibile `Elimina da Firebase` per comunicati rifiutati, approvati o accepted.
+- L'eliminazione cancella il documento `teamRequests/{id}` ma non cancella eventuali news gia' pubblicate.
+- Il pannello e' stato estratto nel modulo `assets/js/admin/team-requests-panel-v253.js`, mantenendo un fallback storico in `app.js`.
+
+### Comunicati Admin
+- Il Generatore comunicati automatici e' stato ripristinato.
+- Il generatore produce bozze per risultati, vincitori, mercato, focus squadra, albo/palmares e aggiornamenti dati pubblici.
+- Il generatore non scrive direttamente su Firebase.
+- Azioni disponibili: copia testo e inserisci bozza nel form Comunicati.
+
+### Diagnostica dati Admin
+- E' presente il pannello `Admin -> Diagnostica dati`.
+- Il pannello mostra controlli/semafori su versione deploy, listoni, rose, competizioni, news, richieste presidenti, trattative ed EmailJS.
+- Il pannello e' non distruttivo e non scrive su Firebase.
+
+### Converti listone Excel
+- Il convertitore listone supporta il formato storico con fogli `Tutti` e `Ceduti`.
+- Il convertitore supporta anche il formato Classic a foglio singolo, per esempio `Lista calciatori`.
+- Nel formato Classic riconosce colonne come `#`, `Nome`, `Fuori lista`, `Sq.`, `R.`, `R.MANTRA`, `FVM/1000`, `QUOT.`, `FantaSquadra`, `Costo`.
+- La colonna `Sq.` viene normalizzata a codice squadra canonico a tre lettere.
+- Il report conversione indica formato riconosciuto, fogli usati, giocatori totali, in listone e asteriscati.
+- Il convertitore puo' arricchire il JSON generato con dati di confronto storico quando trova un listone precedente.
+- Nel test reale V273 il file Excel Classic `Lista calciatori` e' stato riconosciuto con 663 giocatori convertibili, 532 in listone, 131 asteriscati e 299 con `FantaSquadra` valorizzata.
+
+### Workflow pubblicazione Admin
+- Il workflow pubblicazione Admin inline resta il flusso canonico.
+- Restano i pannelli `Stato Firebase / JSON` e `Procedura guidata Pubblica aggiornamenti`.
+- Il vecchio modulo esterno V213 resta da valutare come legacy prima di eventuale rimozione.
+
+## Sviluppo, test e manutenzione - aggiornamenti
+
+### Firebase Rules notifiche trattative
+- Sono presenti le Firebase Rules V257 per consentire al mittente di aggiornare solo i campi di lettura esito `outcomeSeen...`.
+- Le rules non vengono applicate automaticamente da Netlify: vanno pubblicate da Firebase Console o Firebase CLI.
+
+### EmailJS e deliverability
+- I flussi EmailJS attivi sono `Comunicato avvenuto scambio` e `Svincola Giocatori`.
+- Le email operative hanno oggetti piu' sobri, firma standard, mittente logico `Lega ZonaOrientale Salerno` e `reply_to` quando disponibile.
+- La deliverability reale dipende dal servizio collegato a EmailJS e dalla configurazione del dominio mittente con SPF, DKIM e DMARC.
+
+### Documentazione e handoff
+- Sono stati creati registri incrementali delle funzionalita' recenti e documenti di handoff per nuovo assistente.
+- Il nuovo handoff canonico raccomandato e' `docs/zonaorientale/handoff/HANDOFF_NUOVO_ASSISTENTE.md`.
+- La checklist di regressione resta in `REGRESSION_TESTS.md`.
+
+### Asset e pulizie
+- E' stato aggiunto/aggiornato `.gitignore` per evitare file macOS come `.DS_Store`, `__MACOSX`, `._*`.
+- Sono stati identificati/rimossi asset duplicati o obsoleti solo dopo audit, mantenendo le posizioni canoniche.
+
+## Funzionalita' e moduli da non eliminare senza audit
+
+- `assets/js/admin/listone-converter.js`.
+- Colonna `Modifica` del Listone.
+- Filtro `Mostra usciti storici`.
+- Filtro `Modifiche`.
+- Pulsante `Esporta modifiche CSV`.
+- Ricerca storica negli altri listoni.
+- Normalizzazione codici squadra V274.
+- `assets/js/domain/competitions.js`, da verificare prima di rimozione.
+- `assets/js/refactor/admin-publication-workflow-v213.js`, da verificare prima di rimozione.
+- `news.html`, `comunicati/*.html`, `tools/generate-news-share-pages.mjs`, da mantenere per compatibilita' finche' non deciso diversamente.
+- Fallback inline delle Richieste presidenti e vecchi blocchi legacy comunicato scambio, da rimuovere solo con test dedicati.
+
+## Diagnostiche runtime utili
+
+- `window.ZonaOrientaleTradeSimulatorV255`.
+- `window.ZonaOrientalePlayerReleaseV261`.
+- `window.ZonaOrientaleListoneConverterV268`.
+- `window.ZonaOrientaleListoneHistoryV269`.
+- `window.ZonaOrientaleListoneChangesV270`.
+- `window.ZonaOrientaleListoneTeamCodesV274`.
+- `window.ZonaOrientaleAdminDiagnosticsV276`.
+- `window.ZonaOrientaleListoneChangeFilterV277`.
+- `window.ZonaOrientaleListoneExportV278`.

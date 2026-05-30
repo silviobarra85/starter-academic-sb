@@ -1,3 +1,11 @@
+## Aggiornamento V275
+
+Dopo V275 le prossime attivita consigliate sono: test con un prossimo Excel reale, eventuale consolidamento dei registri funzionali recenti solo su richiesta esplicita, audit `domain/competitions.js`, audit `admin-publication-workflow-v213.js`, verifica deliverability EmailJS e valutazione futura di invio email server-side.
+
+## Aggiornamento V273
+
+Test end-to-end listone reale completato. Restano consigliati: test browser del download JSON generato, audit EmailJS reale, audit `domain/competitions.js`, audit `admin-publication-workflow-v213.js`.
+
 # Aggiornamento V272 - Backlog riorganizzato
 
 Il backlog aggiornato e organizzato si trova in `pianificazione/PROSSIME_ATTIVITA_V272.md`. Restano prioritarie: test end-to-end listoni V268-V270, verifica EmailJS/deliverability, conferma deploy Firebase Rules V257, audit `domain/competitions.js` e audit `admin-publication-workflow-v213.js`.
@@ -436,3 +444,18 @@ Verificare in produzione:
 3. Audit mirato di `admin-publication-workflow-v213.js` prima di eventuale archiviazione o rimozione.
 4. Audit mirato di `domain/competitions.js` prima di eventuale rimozione.
 5. Test completo di regressione prima del merge su `master`.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+## Aggiornamento dopo V276-V277
+
+- Testare il pannello Admin `Diagnostica dati` dopo ogni deploy.
+- Testare il filtro `Modifiche` del Listone con un listone reale e un listone precedente.
+- Prossime attivita' suggerite: export differenze listone, audit EmailJS reale, audit `domain/competitions.js`, refactor prudente del Listone in moduli dedicati.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.

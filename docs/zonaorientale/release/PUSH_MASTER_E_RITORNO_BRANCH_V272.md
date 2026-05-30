@@ -71,7 +71,7 @@ git push origin refactor/260528-zonaorientale-next
 Controllare:
 
 ```text
-Footer: V272 handoff e verifica pre-merge
+Footer: V273 test listone reale
 Home preview generica
 News link WhatsApp /zonaorientale/share/news/<id>
 Listone con colonna Modifica

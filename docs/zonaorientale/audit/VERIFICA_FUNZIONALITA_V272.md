@@ -2,7 +2,7 @@
 
 Data: 30/05/2026  
 Branch: `refactor/260528-zonaorientale-next`  
-Versione runtime: `V272 handoff e verifica pre-merge`
+Versione runtime: `V273 test listone reale`
 
 ## Esito sintetico
 

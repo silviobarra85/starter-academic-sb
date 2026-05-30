@@ -1,3 +1,7 @@
+## Aggiornamento V275
+
+Versione corrente: V275 funzionalita V271-274. Dopo i documenti V272 leggere anche `FUNZIONALITA'V271-274.md`, `listoni/LISTONE_TEST_REALE_V273.md` e `listoni/LISTONE_CODICI_SQUADRA_V274.md`.
+
 # START HERE - ZonaOrientale V272
 
 Questo file e' l'indice operativo aggiornato al ramo:
@@ -9,7 +13,7 @@ refactor/260528-zonaorientale-next
 Versione runtime attesa dopo l'overlay:
 
 ```text
-V272 handoff e verifica pre-merge
+V274 codici squadre listone
 ```
 
 ## Documenti principali da leggere
@@ -51,3 +55,16 @@ Nella repo reale:
 zonaorientale/ -> static/zonaorientale/
 docs/ -> docs/
 ```
+
+
+Nota V273: leggere anche `listoni/LISTONE_TEST_REALE_V273.md` per l'esito dei test Listone con Excel reale.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il sistema accetta entrambi, ma salva/visualizza la sigla canonica a 3 lettere e conserva l’originale come metadato quando disponibile.
+
+## V276-V277
+
+- V276: pannello Admin `Diagnostica dati`.
+- V277: filtro `Modifiche` nel Listone.

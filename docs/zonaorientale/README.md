@@ -1,3 +1,11 @@
+## Stato V275
+
+La V275 aggiunge il registro `FUNZIONALITA'V271-274.md`, dedicato alle funzionalita e verifiche recenti su handoff, test listone reale e normalizzazione codici squadra. Il file principale `FUNZIONALITA'.md` resta invariato.
+
+## Stato V273
+
+La V273 aggiunge l'esito del test end-to-end sul listone Excel reale e corregge la normalizzazione delle squadre nel confronto storico, evitando falsi cambi squadra tra sigle storiche e nomi estesi. Vedere `listoni/LISTONE_TEST_REALE_V273.md`.
+
 # Aggiornamento V272 - Documentazione organizzata e pre-merge
 
 La documentazione operativa V272 introduce un punto di ingresso ordinato: `00_START_HERE_V272.md`. I nuovi documenti sono organizzati in `handoff/`, `audit/`, `pianificazione/` e `release/`. Il file storico `FUNZIONALITA'.md` resta invariato e va modificato solo su richiesta esplicita.
@@ -143,3 +151,17 @@ Il convertitore `Admin -> Converti listone Excel` supporta ora sia il formato st
 ### V271 - Registro funzionalita V263-V270
 
 Aggiunto `FUNZIONALITA'V263-270.md` come registro incrementale delle modifiche introdotte nel branch `refactor/260528-zonaorientale-next` tra V263 e V270.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
+
+### V276-V277
+
+- Admin: pannello `Diagnostica dati` per controlli pre-deploy.
+- Listone: filtro `Modifiche` per isolare nuovi, usciti e variazioni.
+
+## V278 - Export modifiche listone
+
+Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
