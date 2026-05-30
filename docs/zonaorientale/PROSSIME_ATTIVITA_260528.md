@@ -1,3 +1,7 @@
+## Aggiornamento V275
+
+Dopo V275 le prossime attivita consigliate sono: test con un prossimo Excel reale, eventuale consolidamento dei registri funzionali recenti solo su richiesta esplicita, audit `domain/competitions.js`, audit `admin-publication-workflow-v213.js`, verifica deliverability EmailJS e valutazione futura di invio email server-side.
+
 ## Aggiornamento V273
 
 Test end-to-end listone reale completato. Restano consigliati: test browser del download JSON generato, audit EmailJS reale, audit `domain/competitions.js`, audit `admin-publication-workflow-v213.js`.
@@ -440,3 +444,8 @@ Verificare in produzione:
 3. Audit mirato di `admin-publication-workflow-v213.js` prima di eventuale archiviazione o rimozione.
 4. Audit mirato di `domain/competitions.js` prima di eventuale rimozione.
 5. Test completo di regressione prima del merge su `master`.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

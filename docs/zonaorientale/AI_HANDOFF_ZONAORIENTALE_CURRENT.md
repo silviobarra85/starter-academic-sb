@@ -1,6 +1,10 @@
-## Nota V273 - Test end-to-end listone reale
+## Nota V275 - Registro funzionalita V271-V274
 
-V273 verifica il nuovo flusso listoni con il file Excel reale `lista_calciatori_lista calciatori_classic_zonaorientale-salerno.xlsx`. Esito: 663 giocatori convertibili, 532 in listone, 131 asteriscati, 299 con FantaSquadra, confronto con `2026-05-15` con 2 nuovi, 0 usciti, 96 aumenti e 120 diminuzioni di quotazione. V273 corregge anche i falsi cambi squadra nel confronto tra sigle storiche (`ATA`, `BOL`, ...) e nomi estesi del nuovo Excel (`Atalanta`, `Bologna`, ...). Diagnostica: `window.ZonaOrientaleListoneE2ETestV273`.
+V275 aggiunge `docs/zonaorientale/FUNZIONALITA'V271-274.md`, registro funzionale aggiuntivo per le modifiche recenti: handoff/pre-merge V272, test reale listone V273 e codici squadra canonici V274. Nessuna modifica funzionale al runtime; diagnostica `window.ZonaOrientaleFunctionLedgerV275`.
+
+## Nota V274 - Test end-to-end listone reale
+
+V274 verifica il nuovo flusso listoni con il file Excel reale `lista_calciatori_lista calciatori_classic_zonaorientale-salerno.xlsx`. Esito: 663 giocatori convertibili, 532 in listone, 131 asteriscati, 299 con FantaSquadra, confronto con `2026-05-15` con 2 nuovi, 0 usciti, 96 aumenti e 120 diminuzioni di quotazione. V274 corregge anche i falsi cambi squadra nel confronto tra sigle storiche (`ATA`, `BOL`, ...) e nomi estesi del nuovo Excel (`Atalanta`, `Bologna`, ...). Diagnostica: `window.ZonaOrientaleListoneE2ETestV274`.
 
 # Aggiornamento V272 - Handoff, audit funzionalita e preparazione merge master
 
@@ -760,3 +764,8 @@ Nuovo documento rilevante:
 - `docs/zonaorientale/FUNZIONALITA'V263-270.md`
 
 Il documento principale `FUNZIONALITA'.md` non e' stato modificato.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.

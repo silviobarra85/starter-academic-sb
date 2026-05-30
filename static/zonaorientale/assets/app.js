@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=274";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=275";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=274";
+} from "./js/domain/news-share-v228.js?v=275";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=274";
+} from "./js/admin/listone-converter.js?v=275";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=274";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=274";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=274";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=274";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=275";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=275";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=275";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=275";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=274";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=275";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "274";
+const DEPLOY_EXPECTED_VERSION_V181 = "275";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -22608,3 +22608,22 @@ window.ZonaOrientaleListoneTeamCodesV274 = {
 window.setTimeout(() => {
   try { if (document.querySelector('[data-page="listone"]')) renderListonePublic(); } catch (error) { console.warn("Refresh listone V274 non completato", error); }
 }, 0);
+
+
+/* V275 - Registro funzionalita V271-V274.
+ * Documento aggiunto: docs/zonaorientale/FUNZIONALITA'V271-274.md.
+ * Nessuna modifica funzionale al runtime.
+ */
+window.ZonaOrientaleFunctionLedgerV275 = {
+  version: "V275",
+  label: "funzionalita V271-274",
+  document: "docs/zonaorientale/FUNZIONALITA'V271-274.md",
+  functionalChanges: false,
+  covers: ["V271", "V272", "V273", "V274"],
+  notes: [
+    "V271 registro funzionalita V263-V270",
+    "V272 handoff e verifica pre-merge",
+    "V273 test listone reale e normalizzazione confronto squadre",
+    "V274 codici squadra canonici nel listone"
+  ]
+};

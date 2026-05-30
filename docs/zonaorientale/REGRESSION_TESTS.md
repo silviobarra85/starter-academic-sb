@@ -1,3 +1,10 @@
+## Test V275 - Verifica registro funzionale recente
+
+1. Controllare footer `V275 funzionalita V271-274`.
+2. Verificare console: `window.ZonaOrientaleFunctionLedgerV275`.
+3. Verificare presenza di `docs/zonaorientale/FUNZIONALITA'V271-274.md`.
+4. Ripetere test Listone V273/V274 se vengono toccati convertitore, colonne o ricerca storica.
+
 ## Test V273 - Listone Excel reale
 
 1. Admin -> Converti listone Excel.
@@ -411,3 +418,8 @@ Prima di rimuovere o rifattorizzare codice competizioni, verificare:
 - Listone: cercare un giocatore presente solo in un listone precedente.
 - Admin: convertire un file Excel formato Classic `Lista calciatori`.
 - Admin: verificare report con formato riconosciuto e confronto, se disponibile.
+
+
+## V274 - Codici squadra canonici nel Listone
+
+Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, ma salva/visualizza la sigla canonica a 3 lettere. Questo evita falsi cambi squadra nei confronti storici e rende stabile la colonna `Modifica`.
