@@ -135,3 +135,7 @@ Il convertitore `Admin -> Converti listone Excel` supporta ora sia il formato st
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+### V271 - Registro funzionalita V263-V270
+
+Aggiunto `FUNZIONALITA'V263-270.md` come registro incrementale delle modifiche introdotte nel branch `refactor/260528-zonaorientale-next` tra V263 e V270.

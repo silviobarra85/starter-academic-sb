@@ -518,3 +518,7 @@ La V268 non richiede deploy Firebase Rules.
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## Nota V271
+
+Prima di pubblicare su master, verificare la checklist listone V268-V270 e il documento `FUNZIONALITA'V263-270.md`.

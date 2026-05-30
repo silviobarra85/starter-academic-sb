@@ -742,3 +742,13 @@ Hotfix Listone: le checkbox sono ora coerenti con le colonne visibili. `In listo
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## V271 - funzionalita V263-270
+
+Versione corrente documentata: V271 funzionalita V263-270.
+
+Nuovo documento rilevante:
+
+- `docs/zonaorientale/FUNZIONALITA'V263-270.md`
+
+Il documento principale `FUNZIONALITA'.md` non e' stato modificato.

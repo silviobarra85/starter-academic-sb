@@ -424,3 +424,11 @@ Verificare in produzione:
 - filtro `Mostra usciti storici`;
 - ricerca per giocatore presente solo in listoni precedenti;
 - ordinamento della colonna `Modifica`.
+
+## Dopo V271 - prossime attivita consigliate
+
+1. Testare in modo completo V268-V270 sul listone reale: formato Classic, storico, colonna `Modifica`, usciti storici e ricerca globale.
+2. Valutare se portare le voci di `FUNZIONALITA'V263-270.md` nel registro principale `FUNZIONALITA'.md`, solo su richiesta esplicita.
+3. Audit mirato di `admin-publication-workflow-v213.js` prima di eventuale archiviazione o rimozione.
+4. Audit mirato di `domain/competitions.js` prima di eventuale rimozione.
+5. Test completo di regressione prima del merge su `master`.

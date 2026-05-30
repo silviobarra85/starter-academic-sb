@@ -617,3 +617,9 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - La colonna mostra nuovi giocatori, usciti, variazioni di quotazione, cambi stato, squadra e ruolo.
 - Aggiunto toggle `Mostra usciti storici` per includere in tabella i giocatori presenti nei listoni precedenti ma non nel listone selezionato.
 - Per i giocatori usciti viene indicato l'ultimo listone in cui erano presenti.
+
+## V271 - funzionalita V263-270
+
+- Aggiunto `FUNZIONALITA'V263-270.md` come registro incrementale delle modifiche V263-V270.
+- Tracciate le funzionalita' di accesso riservato, deliverability EmailJS, audit competizioni, convertitore listone flessibile, storico listoni e colonna `Modifica`.
+- Nessuna modifica funzionale diretta al runtime oltre alla diagnostica `window.ZonaOrientaleFunctionLedgerV271`.

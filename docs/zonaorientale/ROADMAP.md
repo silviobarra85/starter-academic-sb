@@ -322,3 +322,7 @@ Conclusa la prima pulizia mirata degli handler legacy del comunicato avvenuto sc
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## V271
+
+Registro incrementale funzioni V263-V270 completato. Prossimo passo suggerito: test end-to-end listone e audit moduli legacy prima di merge.

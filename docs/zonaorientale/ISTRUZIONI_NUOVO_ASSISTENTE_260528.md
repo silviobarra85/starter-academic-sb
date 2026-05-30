@@ -311,3 +311,11 @@ window.ZonaOrientaleListoneConverterV268
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## Aggiornamento V271
+
+Leggere anche:
+
+- `docs/zonaorientale/FUNZIONALITA'V263-270.md`
+
+Questo documento traccia le funzionalita' aggiunte o consolidate da V263 a V270, in particolare il lavoro sul listone: formato Classic, storico, ricerca globale e colonna `Modifica`.

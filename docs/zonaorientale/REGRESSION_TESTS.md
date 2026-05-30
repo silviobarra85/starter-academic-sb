@@ -389,3 +389,11 @@ Prima di rimuovere o rifattorizzare codice competizioni, verificare:
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## Addendum V271 - test listone storico
+
+- Listone: abilitare colonna `Modifica` da `Campi visibili`.
+- Listone: attivare `Mostra usciti storici`.
+- Listone: cercare un giocatore presente solo in un listone precedente.
+- Admin: convertire un file Excel formato Classic `Lista calciatori`.
+- Admin: verificare report con formato riconosciuto e confronto, se disponibile.
