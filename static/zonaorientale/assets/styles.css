@@ -13676,3 +13676,49 @@ html[data-theme="light"] .historical-rank-v193,
 html[data-theme="light"] .team-compare-direct-score-v195 strong {
   color: #166534 !important;
 }
+
+/* V280 - Confronto manuale tra due listoni */
+.listone-manual-compare-v280 .listone-manual-compare-controls-v280 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 12px 0 16px;
+}
+
+.listone-manual-compare-v280 .field {
+  min-width: 0;
+}
+
+.listone-manual-compare-v280 .field select {
+  width: 100%;
+}
+
+.listone-manual-compare-metrics-v280 .metric-card strong {
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+.listone-manual-compare-table-wrap-v280 {
+  margin-top: 12px;
+}
+
+.listone-manual-compare-table-v280 th,
+.listone-manual-compare-table-v280 td {
+  white-space: nowrap;
+}
+
+.listone-manual-compare-table-v280 td:first-child,
+.listone-manual-compare-table-v280 th:first-child {
+  min-width: 140px;
+}
+
+@media (max-width: 760px) {
+  .listone-manual-compare-v280 .listone-manual-compare-controls-v280 {
+    grid-template-columns: 1fr;
+  }
+
+  .listone-manual-compare-table-v280 th,
+  .listone-manual-compare-table-v280 td {
+    white-space: normal;
+  }
+}

@@ -10,7 +10,7 @@
 - Webapp: `static/zonaorientale/`.
 - Documentazione: `docs/zonaorientale/`.
 - Branch di lavoro corrente: `refactor/260528-zonaorientale-next`.
-- Versione runtime recente: `V278 export modifiche listone`.
+- Versione runtime recente: `V280 confronto manuale listoni`.
 - Branch di produzione/deploy: `master`.
 
 ## 2. Regole operative obbligatorie
@@ -65,6 +65,7 @@ docs/zonaorientale/listoni/LISTONE_TEST_REALE_V273.md
 docs/zonaorientale/listoni/LISTONE_CODICI_SQUADRA_V274.md
 docs/zonaorientale/listoni/LISTONE_FILTRO_MODIFICHE_V277.md
 docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md
+docs/zonaorientale/listoni/LISTONE_CONFRONTO_MANUALE_V280.md
 static/zonaorientale/assets/js/admin/listone-converter.js
 ```
 
@@ -132,7 +133,7 @@ git push origin refactor/260528-zonaorientale-next
 - Link WhatsApp news via `/zonaorientale/share/news/<id>`.
 - Home con anteprima WhatsApp generica, non ultima news.
 - Rose, movimenti, fantamercato, listone, competizioni, statistiche, archivio, confronto, regolamento.
-- Listone con colonna `Modifica`, ricerca storica, usciti storici, filtro `Modifiche` ed export CSV.
+- Listone con colonna `Modifica`, ricerca storica, usciti storici, filtro `Modifiche`, export CSV e confronto manuale tra due listoni.
 
 ### Presidente
 
@@ -163,6 +164,7 @@ git push origin refactor/260528-zonaorientale-next
 - V274 normalizza la squadra reale: input accettato sia come nome esteso sia come sigla, output canonico a tre lettere.
 - V277 aggiunge filtro `Modifiche`.
 - V278 aggiunge export CSV delle modifiche del listone.
+- V280 aggiunge confronto manuale tra due listoni qualsiasi della stagione corrente.
 
 Non rimuovere queste logiche senza ripetere test con Excel reale.
 
@@ -212,7 +214,7 @@ Motivo: possono essere legacy o fallback, ma alcune funzioni potrebbero essere a
 - Test Admin -> Richieste presidenti.
 - Test Admin -> Converti listone Excel con file reale.
 - Test Admin -> Diagnostica dati.
-- Test Listone -> filtro Modifiche ed Export CSV.
+- Test Listone -> filtro Modifiche, Export CSV e confronto manuale tra due listoni.
 - Controllo footer/cache-buster/versione.
 
 ## 13. Quando l'utente segnala un bug
@@ -750,3 +752,7 @@ Queste modifiche non rimuovono funzioni: aggiungono diagnostica Admin e un filtr
 
 Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
 
+
+## V280 - Confronto manuale listoni
+
+Il pannello pubblico `Listone -> Storico listoni` include ora una sezione `Confronto manuale tra due listoni`. L'utente sceglie un listone base e un listone di confronto della stessa stagione; il sito mostra riepilogo e tabella differenze. La funzione usa le logiche V269/V270/V274, non scrive su Firebase e non cambia il formato JSON dei listoni. Diagnostica: `window.ZonaOrientaleListoneManualCompareV280`.
