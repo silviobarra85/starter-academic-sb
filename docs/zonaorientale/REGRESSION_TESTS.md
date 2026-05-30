@@ -1,6 +1,10 @@
-# Aggiornamento V264 - Accesso riservato pulito
+# Aggiornamento V266 - Email deliverability EmailJS
 
-V264 rimuove dal form **Accesso Riservato** il campo `Nome visualizzato`, per evitare confusione: il nome/presidente viene assegnato dall'admin dal pannello amministrativo. Il pulsante `Accedi con Google` ora include il logo Google. Diagnostica runtime: `window.ZonaOrientaleLoginUiV264`. Non modifica `FUNZIONALITA'.md`.
+V266 rende piu' pulite e coerenti le mail operative inviate via EmailJS: aggiunge parametri comuni di mittente logico (`Lega ZonaOrientale Salerno`), Reply-To dell'utente loggato quando disponibile, oggetti piu' sobri e firma standard del gestionale. I flussi aggiornati sono: comunicato avvenuto scambio e informativa svincolo giocatori. Non modifica `FUNZIONALITA'.md`. Diagnostica: `window.ZonaOrientaleEmailJsDeliverabilityV266`.
+
+# Aggiornamento V265 - Pulizia asset sicuri
+
+V265 e' una pulizia fisica controllata: rimuove dai comandi di release i duplicati/inutilizzati sicuri gia' identificati nell'audit, mantiene come canonico il simulatore trattative `assets/js/dev/trade-notification-simulator-v255.js` e aggiunge/rafforza `.gitignore` per impedire il ritorno di file macOS. Non modifica `FUNZIONALITA'.md` e non cambia comportamento runtime. Diagnostica: `window.ZonaOrientaleCleanupV265`.
 
 # Aggiornamento V263 - Funzionalita V256-262
 

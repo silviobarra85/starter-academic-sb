@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=264";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=266";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=264";
+} from "./js/domain/news-share-v228.js?v=266";
 import {
   getListoneValue,
   compareListoneValues
@@ -139,14 +139,14 @@ import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=264";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=264";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=264";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=264";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=266";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=266";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=266";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=266";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=264";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=266";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15561,7 +15561,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "264";
+const DEPLOY_EXPECTED_VERSION_V181 = "266";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -21322,4 +21322,141 @@ window.ZonaOrientaleLoginUiV264 = {
   displayNameFieldRemoved: true,
   googleLogoButton: true,
   adminAssignsPresidentName: true
+};
+
+/* V265 - Pulizia asset sicuri.
+ * Questo marker accompagna la rimozione fisica dei duplicati/inutilizzati sicuri:
+ * - assets/js/trade-notification-simulator-v255.js (duplicato non canonico)
+ * - assets/js/dev/trade-notification-simulator-v254.js (sostituito da V255 con alias V254)
+ * - assets/css/mobile-hotfix-v166.css e mobile-hotfix-v167.css (non linkati, inglobati nella suite mobile)
+ * La posizione canonica del simulatore resta assets/js/dev/trade-notification-simulator-v255.js.
+ */
+window.ZonaOrientaleCleanupV265 = {
+  version: "V265",
+  safePhysicalCleanup: true,
+  canonicalTradeSimulator: "assets/js/dev/trade-notification-simulator-v255.js",
+  removedCandidates: [
+    "assets/js/trade-notification-simulator-v255.js",
+    "assets/js/dev/trade-notification-simulator-v254.js",
+    "assets/css/mobile-hotfix-v166.css",
+    "assets/css/mobile-hotfix-v167.css"
+  ],
+  functionalityChanged: false,
+  protectedDocs: ["docs/zonaorientale/FUNZIONALITA'.md"]
+};
+
+
+/* V266 - EmailJS deliverability.
+ * Normalizza mittente logico, reply-to, oggetti e firme delle mail operative
+ * inviate via EmailJS. La configurazione reale SPF/DKIM/DMARC resta da fare
+ * nel provider email collegato a EmailJS e nel DNS del dominio mittente.
+ */
+const EMAILJS_APP_NAME_V266 = "Lega ZonaOrientale Salerno";
+const EMAILJS_DEFAULT_REPLY_TO_V266 = "";
+
+function getEmailJsReplyToV266() {
+  return String(state.user?.email || EMAILJS_DEFAULT_REPLY_TO_V266 || "").trim();
+}
+
+function getEmailJsCommonParamsV266(extra = {}) {
+  const replyTo = getEmailJsReplyToV266();
+  return {
+    from_name: EMAILJS_APP_NAME_V266,
+    sender_name: EMAILJS_APP_NAME_V266,
+    app_name: EMAILJS_APP_NAME_V266,
+    league_name: EMAILJS_APP_NAME_V266,
+    reply_to: replyTo,
+    user_email: replyTo,
+    email: replyTo,
+    mail_category: "comunicazione_operativa_lega",
+    ...extra
+  };
+}
+
+function getOperationalEmailFooterV266() {
+  return [
+    "",
+    "---",
+    EMAILJS_APP_NAME_V266,
+    "Comunicazione operativa generata automaticamente dal gestionale.",
+    "Il mittente tecnico e' quello configurato nel servizio EmailJS; usare il campo Reply-To per eventuali risposte."
+  ].join("\n");
+}
+
+function appendOperationalEmailFooterV266(body = "") {
+  const clean = String(body || "").trim();
+  if (!clean) return getOperationalEmailFooterV266().trim();
+  if (clean.includes("Comunicazione operativa generata automaticamente dal gestionale")) return clean;
+  return `${clean}${getOperationalEmailFooterV266()}`;
+}
+
+const formatTransferCommunicationEmailMessageBeforeV266 = typeof formatTransferCommunicationEmailMessageV237 === "function"
+  ? formatTransferCommunicationEmailMessageV237
+  : null;
+formatTransferCommunicationEmailMessageV237 = function formatTransferCommunicationEmailMessageV266(payload = {}) {
+  const base = formatTransferCommunicationEmailMessageBeforeV266
+    ? formatTransferCommunicationEmailMessageBeforeV266(payload)
+    : String(payload.body || payload.message || "Comunicato avvenuto scambio.").trim();
+  const presidentName = payload.createdByName || getCurrentUserDisplayName?.() || "Presidente";
+  const body = [
+    "Presidente Caparrotti,",
+    "",
+    base,
+    "",
+    "Cordiali Saluti",
+    presidentName
+  ].join("\n");
+  return appendOperationalEmailFooterV266(body);
+};
+
+sendTransferCommunicationEmailV237 = async function sendTransferCommunicationEmailV266(payload) {
+  const emailModule = await import("./emailjs.js");
+  const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
+  const today = typeof getPlayerReleaseDateLabelV261 === "function" ? getPlayerReleaseDateLabelV261() : new Date().toLocaleDateString("it-IT");
+  await emailModule.sendTransferEmail(getEmailJsCommonParamsV266({
+    to_email: "caparrotti86@yahoo.it",
+    team_name: teamName,
+    president_name: payload.createdByName || getCurrentUserDisplayName(),
+    title: payload.title || "Comunicato avvenuto scambio",
+    message: formatTransferCommunicationEmailMessageV237(payload),
+    players: payload.players || "",
+    other_team: payload.otherTeam || "",
+    created_at: new Date().toLocaleString("it-IT"),
+    subject: `${teamName} - Comunicazione avvenuto scambio - ${today}`
+  }));
+};
+
+const buildPlayerReleaseMailDraftBeforeV266 = typeof buildPlayerReleaseMailDraftV261 === "function"
+  ? buildPlayerReleaseMailDraftV261
+  : null;
+buildPlayerReleaseMailDraftV261 = function buildPlayerReleaseMailDraftV266(options = {}) {
+  const draft = buildPlayerReleaseMailDraftBeforeV266 ? buildPlayerReleaseMailDraftBeforeV266(options) : { body: "", subject: "Svincolo giocatori" };
+  return {
+    ...draft,
+    body: appendOperationalEmailFooterV266(draft.body || "")
+  };
+};
+
+sendPlayerReleaseEmailV261 = async function sendPlayerReleaseEmailV266(draft) {
+  const emailModule = await import("./emailjs.js");
+  await emailModule.sendTransferEmail(getEmailJsCommonParamsV266({
+    to_email: PLAYER_RELEASE_RECIPIENT_V261,
+    team_name: draft.teamName,
+    president_name: draft.presidentName,
+    title: "Svincolo giocatori",
+    message: appendOperationalEmailFooterV266(draft.body),
+    players: (draft.items || []).map((item) => `${item.playerName} (Qt.A: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n"),
+    other_team: "",
+    created_at: new Date().toLocaleString("it-IT"),
+    subject: draft.subject
+  }));
+};
+
+window.ZonaOrientaleEmailJsDeliverabilityV266 = {
+  version: "V266",
+  appName: EMAILJS_APP_NAME_V266,
+  commonParams: ["from_name", "sender_name", "app_name", "league_name", "reply_to", "mail_category"],
+  updatedFlows: ["comunicato_avvenuto_scambio", "svincolo_giocatori"],
+  requiresEmailJsTemplateCheck: true,
+  requiresDnsAuthentication: ["SPF", "DKIM", "DMARC"]
 };
