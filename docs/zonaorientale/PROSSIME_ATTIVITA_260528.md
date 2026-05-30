@@ -414,3 +414,13 @@ Prossimi miglioramenti possibili:
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## Dopo V270 - Listone modifiche visibili
+
+Verificare in produzione:
+
+- colonna `Modifica` nei Campi visibili;
+- righe `Uscito` con ultimo listone indicato;
+- filtro `Mostra usciti storici`;
+- ricerca per giocatore presente solo in listoni precedenti;
+- ordinamento della colonna `Modifica`.

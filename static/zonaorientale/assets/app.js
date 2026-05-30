@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=269";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=270";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=269";
+} from "./js/domain/news-share-v228.js?v=270";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=269";
+} from "./js/admin/listone-converter.js?v=270";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=269";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=269";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=269";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=269";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=270";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=270";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=270";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=270";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=269";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=270";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -3389,7 +3389,7 @@ async function handleListoneConverterSubmit(event) {
         activeRows: activePlayers.length,
         asteriskRows: asteriskPlayers.length,
         fields: LISTONE_COLUMNS.map((column) => column.key).concat(["fantacalcioId"]),
-        parserVersion: "V269",
+        parserVersion: "V270",
         detectedFormat: parsedListone.formatLabel,
         sourceSheets: parsedListone.sourceSheets
       },
@@ -15566,7 +15566,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "269";
+const DEPLOY_EXPECTED_VERSION_V181 = "270";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -21692,7 +21692,7 @@ function enrichListonePayloadWithHistoryV269(payload, previousListone) {
     ...payload,
     meta: {
       ...payload.meta,
-      parserVersion: "V269",
+      parserVersion: "V270",
       comparedWith: comparison.summary.comparedWith,
       comparedWithLabel: comparison.summary.comparedWithLabel,
       changeSummary: comparison.summary
@@ -21896,7 +21896,7 @@ handleListoneConverterSubmit = async function handleListoneConverterSubmitV269(e
         activeRows: parsedListone.activePlayers.length,
         asteriskRows: parsedListone.asteriskPlayers.length,
         fields: LISTONE_COLUMNS.map((column) => column.key).concat(["fantacalcioId"]),
-        parserVersion: "V269",
+        parserVersion: "V270",
         detectedFormat: parsedListone.formatLabel,
         sourceSheets: parsedListone.sourceSheets
       },
@@ -21967,4 +21967,274 @@ window.ZonaOrientaleListoneHistoryV269 = {
 
 window.setTimeout(() => {
   try { if (document.querySelector('[data-page="listone"]')) renderListonePublic(); } catch (error) { console.warn("Refresh listone V269 non completato", error); }
+}, 0);
+
+/* V270 - Colonna Modifica e usciti storici in tabella listone.
+ * Rende operative nella tabella principale le differenze calcolate in V269:
+ * - aggiunge una colonna opzionale "Modifica" nei campi visibili;
+ * - mostra i giocatori non presenti nel listone selezionato ma presenti nei listoni precedenti della stessa stagione;
+ * - indica l'ultimo listone che li conteneva.
+ */
+const LISTONE_CHANGE_COLUMN_V270 = { key: "historyChange", label: "Modifica", numeric: false };
+if (!LISTONE_COLUMNS.some((column) => column.key === LISTONE_CHANGE_COLUMN_V270.key)) {
+  const statusIndex = LISTONE_COLUMNS.findIndex((column) => column.key === "status");
+  LISTONE_COLUMNS.splice(statusIndex >= 0 ? statusIndex : LISTONE_COLUMNS.length, 0, LISTONE_CHANGE_COLUMN_V270);
+}
+
+function getListoneIdentityV270(listone = {}) {
+  return String(listone.id || listone.meta?.id || getListoneDateKeyV269(listone) || "").trim();
+}
+
+function getListoniBeforeSelectedV270(listone = {}) {
+  const seasonId = String(listone.seasonId || listone.meta?.seasonId || getCurrentSeasonId() || "");
+  const currentDate = getListoneDateKeyV269(listone);
+  const currentId = getListoneIdentityV270(listone);
+  return (state.listoni || [])
+    .filter((item) => String(item.seasonId || item.meta?.seasonId || "") === seasonId)
+    .filter((item) => {
+      const itemId = getListoneIdentityV270(item);
+      if (itemId && currentId && itemId === currentId) return false;
+      const itemDate = getListoneDateKeyV269(item) || itemId;
+      if (!currentDate) return true;
+      return String(itemDate).localeCompare(String(currentDate), "it") < 0;
+    })
+    .sort(compareListoniByDateDescV99);
+}
+
+function getPrimaryListonePlayerKeyV270(player = {}) {
+  return getListonePlayerKeysV269(player)[0] || normalizeListoneSearchKeyV269(player.playerName || player.name || "");
+}
+
+function buildCurrentListoneKeySetV270(listone = {}) {
+  const keySet = new Set();
+  (listone.players || []).forEach((player) => {
+    getListonePlayerKeysV269(player).forEach((key) => keySet.add(key));
+  });
+  return keySet;
+}
+
+function hasAnyListonePlayerKeyV270(player = {}, keySet = new Set()) {
+  return getListonePlayerKeysV269(player).some((key) => keySet.has(key));
+}
+
+function getHistoricalRemovedRowsV270(listone = {}) {
+  if (!listone) return [];
+  const currentKeys = buildCurrentListoneKeySetV270(listone);
+  const alreadyAdded = new Set();
+  const rows = [];
+
+  getListoniBeforeSelectedV270(listone).forEach((sourceListone) => {
+    const sourceLabel = getListoneDisplayLabelV269(sourceListone);
+    const sourceId = getListoneIdentityV270(sourceListone);
+    (sourceListone.players || []).forEach((player) => {
+      if (hasAnyListonePlayerKeyV270(player, currentKeys)) return;
+      const primaryKey = getPrimaryListonePlayerKeyV270(player);
+      if (!primaryKey || alreadyAdded.has(primaryKey)) return;
+      alreadyAdded.add(primaryKey);
+      rows.push({
+        ...player,
+        fantasyRoster: player.fantasyRoster || "Non presente",
+        status: "Uscito",
+        statusCode: "REMOVED",
+        statusChange: "REMOVED",
+        historyChange: "REMOVED",
+        isHistoricalRemovedV270: true,
+        previousListoneId: sourceId,
+        historyLastSeenListoneId: sourceId,
+        historyLastSeenListoneLabel: sourceLabel,
+        historyLastSeenListoneDate: getListoneDateKeyV269(sourceListone),
+        removedFromListoneId: getListoneIdentityV270(listone)
+      });
+    });
+  });
+
+  return rows;
+}
+
+function getRuntimeEnrichedCurrentRowsV270(listone = {}, rows = []) {
+  const previousListone = getPreviousListoneForDateV269(listone, listone.seasonId || listone.meta?.seasonId || getCurrentSeasonId());
+  if (!previousListone) {
+    return rows.map((player) => ({
+      ...player,
+      historyChange: player.historyChange || player.statusChange || player.diff?.status || "UNCHANGED"
+    }));
+  }
+  const comparison = buildListoneComparisonV269(listone, previousListone);
+  const enrichedByKey = new Map();
+  (comparison.enrichedPlayers || []).forEach((player) => {
+    getListonePlayerKeysV269(player).forEach((key) => {
+      if (!enrichedByKey.has(key)) enrichedByKey.set(key, player);
+    });
+  });
+  return rows.map((player) => {
+    const enriched = findMatchingListonePlayerV269(player, enrichedByKey);
+    const merged = enriched ? { ...player, ...enriched } : player;
+    return {
+      ...merged,
+      historyChange: merged.historyChange || merged.statusChange || merged.diff?.status || "UNCHANGED"
+    };
+  });
+}
+
+function shouldShowHistoricalRemovedRowsV270() {
+  const checkbox = document.getElementById("listoneShowHistoricalRemovedV270");
+  return checkbox ? checkbox.checked : true;
+}
+
+function getListoneSearchHaystackV270(player = {}) {
+  return [
+    player.playerName,
+    player.realTeam,
+    player.classicRole,
+    player.mantraRoles,
+    player.fantasyRoster,
+    player.status,
+    player.statusCode,
+    player.fantacalcioId,
+    player.historyChange,
+    player.statusChange,
+    player.historyLastSeenListoneLabel,
+    player.historyLastSeenListoneDate
+  ].map((value) => normalizeListoneSearchKeyV269(value)).join(" ");
+}
+
+function matchesHistoricalRemovedFiltersV270(player = {}) {
+  const selectedRoles = getCheckedListoneRoleFilters();
+  const playerRole = String(player.classicRole || "").toUpperCase();
+  if (selectedRoles.size && !selectedRoles.has(playerRole)) return false;
+
+  const search = String(document.getElementById("listoneSearch")?.value || "").trim();
+  if (!search) return true;
+  return getListoneSearchHaystackV270(player).includes(normalizeListoneSearchKeyV269(search));
+}
+
+function getHistoryChangeStatusV270(player = {}) {
+  if (player.isHistoricalRemovedV270 || player.statusChange === "REMOVED" || player.historyChange === "REMOVED") return "REMOVED";
+  if (player.isNewInListone || player.statusChange === "NEW" || player.historyChange === "NEW") return "NEW";
+  return player.historyChange || player.statusChange || player.diff?.status || "UNCHANGED";
+}
+
+function getHistoryChangeLabelV270(player = {}) {
+  const status = getHistoryChangeStatusV270(player);
+  const quoteDiff = parseDecimalValue(player.quotationDiffFromPrevious ?? player.diff?.quotationCurrent ?? "");
+  if (status === "REMOVED") return "Uscito";
+  if (status === "NEW") return "Nuovo";
+  if (quoteDiff !== null && quoteDiff !== 0) return `${quoteDiff > 0 ? "+" : ""}${formatListoneNumber(quoteDiff)}`;
+  if (status === "STATUS_CHANGED") return "Stato";
+  if (status === "TEAM_CHANGED") return "Squadra";
+  if (status === "ROLE_CHANGED") return "Ruolo";
+  if (status === "MULTIPLE_CHANGED") return "Piu' variazioni";
+  return "Invariato";
+}
+
+function renderListoneModificationCellV270(player = {}) {
+  const status = getHistoryChangeStatusV270(player);
+  const label = getHistoryChangeLabelV270(player);
+  const badge = renderListoneChangeBadgeV269(status === "QUOTATION_CHANGED" ? "QUOTATION_CHANGED" : status);
+  const shownBadge = label && !["Nuovo", "Uscito", "Stato", "Squadra", "Ruolo", "Piu' variazioni", "Invariato"].includes(label)
+    ? `<span class="status ${String(label).startsWith("-") ? "status-danger" : "status-ok"}">${escapeHtml(label)}</span>`
+    : badge;
+  const lastSeen = player.isHistoricalRemovedV270 && player.historyLastSeenListoneLabel
+    ? `<small class="muted block">Ultimo: ${escapeHtml(player.historyLastSeenListoneLabel)}</small>`
+    : "";
+  const previous = !player.isHistoricalRemovedV270 && player.previousListoneId
+    ? `<small class="muted block">Prec.: ${escapeHtml(player.previousListoneId)}</small>`
+    : "";
+  return `${shownBadge}${lastSeen}${previous}`;
+}
+
+const renderListoneCellBeforeV270 = renderListoneCell;
+renderListoneCell = function renderListoneCellV270(player, column) {
+  if (column?.key === "historyChange") return renderListoneModificationCellV270(player);
+  if (player?.isHistoricalRemovedV270 && column?.key === "status") return `<span class="status status-danger">Uscito</span>`;
+  if (player?.isHistoricalRemovedV270 && column?.key === "fantasyRoster") return `<span class="muted">Non presente</span>`;
+  return renderListoneCellBeforeV270(player, column);
+};
+
+const getFilteredListonePlayersBeforeV270 = getFilteredListonePlayers;
+getFilteredListonePlayers = function getFilteredListonePlayersV270(listone) {
+  if (!listone) return [];
+  const baseRows = getRuntimeEnrichedCurrentRowsV270(listone, getFilteredListonePlayersBeforeV270(listone));
+  const removedRows = shouldShowHistoricalRemovedRowsV270()
+    ? getHistoricalRemovedRowsV270(listone).filter(matchesHistoricalRemovedFiltersV270)
+    : [];
+  const sortColumn = LISTONE_COLUMNS.find((column) => column.key === state.listoneSort.key) || LISTONE_COLUMNS.find((column) => column.key === "playerName");
+  const direction = state.listoneSort.direction === "desc" ? -1 : 1;
+  return baseRows.concat(removedRows).sort((a, b) => direction * compareListoneValues(a, b, sortColumn));
+};
+
+const ensureListoneHistoryUiBeforeV270 = ensureListoneHistoryUiV269;
+ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV270() {
+  ensureListoneHistoryUiBeforeV270?.();
+  const filterRow = document.querySelector(".listone-filter-row");
+  if (filterRow && !document.getElementById("listoneShowHistoricalRemovedV270")) {
+    const label = document.createElement("label");
+    label.className = "checkbox-label listone-history-search-toggle-v270";
+    label.innerHTML = `<input id="listoneShowHistoricalRemovedV270" type="checkbox" checked /> Mostra usciti storici`;
+    filterRow.appendChild(label);
+  }
+};
+
+const renderListoneHistoryPanelBeforeV270 = renderListoneHistoryPanelV269;
+renderListoneHistoryPanelV269 = function renderListoneHistoryPanelV270(listone) {
+  renderListoneHistoryPanelBeforeV270?.(listone);
+  const target = document.getElementById("listoneHistoryContentV269");
+  if (!target || !listone) return;
+  const historicalRemoved = getHistoricalRemovedRowsV270(listone);
+  const preview = historicalRemoved.slice(0, 12);
+  const html = `
+    <details class="admin-edit-section listone-historical-removed-v270">
+      <summary><strong>Usciti storici inclusi nella tabella</strong><span>${historicalRemoved.length}</span></summary>
+      ${preview.length ? `
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Giocatore</th><th>Ruolo</th><th>Sq</th><th class="number">Qt.A ultima</th><th>Ultimo listone</th></tr></thead>
+            <tbody>${preview.map((player) => `
+              <tr>
+                <td>${escapeHtml(player.playerName || "-")}</td>
+                <td>${escapeHtml(player.classicRole || "-")}</td>
+                <td>${escapeHtml(player.realTeam || "-")}</td>
+                <td class="number">${formatListoneNumber(player.quotationCurrent)}</td>
+                <td>${escapeHtml(player.historyLastSeenListoneLabel || "-")}</td>
+              </tr>`).join("")}</tbody>
+          </table>
+        </div>
+        ${historicalRemoved.length > preview.length ? `<p class="muted">Mostrati i primi ${preview.length}. La tabella principale puo' mostrarli tutti con il filtro “Mostra usciti storici”.</p>` : ""}`
+        : `<p class="muted">Nessun giocatore uscito nei listoni precedenti della stagione.</p>`}
+    </details>`;
+  if (!target.querySelector(".listone-historical-removed-v270")) target.insertAdjacentHTML("beforeend", html);
+};
+
+const getListoneHistoricalSearchMatchesBeforeV270 = getListoneHistoricalSearchMatchesV269;
+getListoneHistoricalSearchMatchesV269 = function getListoneHistoricalSearchMatchesV270(query, selectedListoneId) {
+  const matches = getListoneHistoricalSearchMatchesBeforeV270(query, selectedListoneId);
+  return matches.map((entry) => ({
+    ...entry,
+    player: {
+      ...entry.player,
+      historyLastSeenListoneLabel: getListoneDisplayLabelV269(entry.listone),
+      historyLastSeenListoneId: getListoneIdentityV270(entry.listone)
+    }
+  }));
+};
+
+document.addEventListener("change", (event) => {
+  if (event.target?.id === "listoneShowHistoricalRemovedV270") renderListonePublic();
+});
+
+window.ZonaOrientaleListoneChangesV270 = {
+  version: "V270",
+  features: [
+    "colonna opzionale Modifica nel listone pubblico",
+    "giocatori usciti visibili come righe storiche",
+    "ultimo listone contenente il giocatore uscito",
+    "toggle Mostra usciti storici"
+  ],
+  getHistoricalRemovedRows: () => getHistoricalRemovedRowsV270(getSelectedListone()),
+  getVisibleRows: () => getFilteredListonePlayers(getSelectedListone()),
+  getChangeLabel: getHistoryChangeLabelV270
+};
+
+window.setTimeout(() => {
+  try { if (document.querySelector('[data-page="listone"]')) renderListonePublic(); } catch (error) { console.warn("Refresh listone V270 non completato", error); }
 }, 0);

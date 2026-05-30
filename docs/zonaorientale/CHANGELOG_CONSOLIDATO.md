@@ -610,3 +610,10 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - Il campo ricerca puo' trovare giocatori presenti in listoni passati anche quando non sono nel listone selezionato.
 - Diagnostica: `window.ZonaOrientaleListoneHistoryV269`.
 - Non sono state rimosse funzionalita' esistenti; il formato storico Tutti/Ceduti e il formato Classic a foglio singolo restano supportati.
+
+## V270 - modifica listone visibile
+
+- Aggiunta colonna opzionale `Modifica` nel Listone pubblico.
+- La colonna mostra nuovi giocatori, usciti, variazioni di quotazione, cambi stato, squadra e ruolo.
+- Aggiunto toggle `Mostra usciti storici` per includere in tabella i giocatori presenti nei listoni precedenti ma non nel listone selezionato.
+- Per i giocatori usciti viene indicato l'ultimo listone in cui erano presenti.
