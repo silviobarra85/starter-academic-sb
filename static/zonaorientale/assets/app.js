@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=266";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=267";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=266";
+} from "./js/domain/news-share-v228.js?v=267";
 import {
   getListoneValue,
   compareListoneValues
@@ -139,14 +139,14 @@ import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
 import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
 import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=266";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=266";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=266";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=266";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=267";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=267";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=267";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=267";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
 import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=266";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=267";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15561,7 +15561,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "266";
+const DEPLOY_EXPECTED_VERSION_V181 = "267";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -21459,4 +21459,32 @@ window.ZonaOrientaleEmailJsDeliverabilityV266 = {
   updatedFlows: ["comunicato_avvenuto_scambio", "svincolo_giocatori"],
   requiresEmailJsTemplateCheck: true,
   requiresDnsAuthentication: ["SPF", "DKIM", "DMARC"]
+};
+
+
+/* V267 - Audit competizioni.
+ * Non modifica il rendering delle competizioni: documenta e diagnostica il doppio binario
+ * tra funzioni inline in app.js e modulo legacy assets/js/domain/competitions.js.
+ * Obiettivo: evitare rimozioni affrettate di codice prima di test su Competizioni, competition.html e Archivio.
+ */
+window.ZonaOrientaleCompetitionsAuditV267 = {
+  version: "V267",
+  behaviorChanged: false,
+  auditedArea: "competitions",
+  inlineFunctionsDetected: [
+    "getCompetitionTypeOrderV52",
+    "compareCompetitionsForPublicDisplayV52",
+    "getSeasonCompetitionsForPublicDisplayV52"
+  ],
+  legacyModuleUnderReview: "assets/js/domain/competitions.js",
+  currentAssessment: "Il modulo domain/competitions.js esporta helper simili alle funzioni inline, ma non risulta importato dal bootstrap principale. Non rimuoverlo senza test dedicati.",
+  protectedFlows: [
+    "Dashboard pubblica - competizioni attive",
+    "Sezione Competizioni",
+    "competition.html",
+    "Archivio stagioni - competizioni storiche",
+    "Admin - gestione competizioni",
+    "Statistiche/Albo collegate a competizioni"
+  ],
+  recommendedNextStep: "V268: audit mirato del modulo admin-publication-workflow-v213 oppure test runtime competizioni prima di qualunque rimozione."
 };

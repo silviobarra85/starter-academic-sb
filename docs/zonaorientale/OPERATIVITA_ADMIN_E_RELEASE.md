@@ -478,3 +478,17 @@ La rimozione dei CSS hotfix e' sicura perche il loro contenuto e' gia presente i
 ## Nota operativa V253 - Richieste presidenti modulari
 
 Il pannello `Admin -> Richieste presidenti` e' installato dal modulo `assets/js/admin/team-requests-panel-v253.js`. In caso di regressione, il codice inline V249 resta come fallback nel bundle principale, ma il render atteso deve usare attributi V253 e la diagnostica `window.ZonaOrientaleTeamRequestsV253`. Prima del merge testare refresh, approvazione, rifiuto ed eliminazione da Firebase dei comunicati approvati/rifiutati.
+
+## Verifica release V267
+
+Dopo applicazione overlay, controllare:
+
+```text
+Footer: V267 audit competizioni
+Console: window.ZonaOrientaleCompetitionsAuditV267
+Competizioni pubbliche visibili
+competition.html raggiungibile
+Admin -> Competizioni apribile
+```
+
+La V267 non richiede deploy Firebase Rules.

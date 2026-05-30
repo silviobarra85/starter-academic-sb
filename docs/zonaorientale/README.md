@@ -116,3 +116,7 @@ Per sincronizzare le notifiche trattative tra smartphone e desktop usare:
 
 - `firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules` per il file completo;
 - `firebase/FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules` se vuoi applicare solo la patch a `transferNegotiations`.
+
+## Nota V267
+
+La V267 aggiunge un audit prudente delle competizioni. Il modulo `assets/js/domain/competitions.js` e' stato classificato come file sotto osservazione, non da eliminare senza test. La guida per un nuovo assistente AI e' stata aggiornata a V267.

@@ -352,3 +352,17 @@ Aggiungere al test Presidente: verificare che in DevTools `window.ZonaOrientaleL
 - Verificare che il pulsante `Accedi con Google` mostri il logo Google e resti cliccabile.
 - Registrazione email: usare solo email/password; il nome presidente va assegnato dall'admin.
 - Console: `window.ZonaOrientaleLoginUiV264.displayNameFieldRemoved` deve essere `true`.
+
+## Test aggiuntivi V267 - Competizioni
+
+Prima di rimuovere o rifattorizzare codice competizioni, verificare:
+
+```text
+[ ] Dashboard pubblica: competizioni correnti visibili.
+[ ] Sezione Competizioni: elenco, stato, vincitore e link corretti.
+[ ] competition.html: calendario, risultati e classifiche visibili.
+[ ] Archivio: competizioni storiche consultabili.
+[ ] Mobile: card/blocchi competizioni leggibili.
+[ ] Admin -> Competizioni: pannello apribile senza errori console.
+[ ] Console: window.ZonaOrientaleCompetitionsAuditV267 presente.
+```

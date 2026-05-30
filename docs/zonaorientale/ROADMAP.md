@@ -298,3 +298,10 @@ Completata la checklist regressioni canonica in `REGRESSION_TESTS.md`. Prossimo 
 ## Stato V248
 
 Conclusa la prima pulizia mirata degli handler legacy del comunicato avvenuto scambio. Prossimo step consigliato: test regressione completo e merge controllato del branch di refactor su `master`.
+
+## Roadmap post V267
+
+1. Test runtime completo della sezione Competizioni e di `competition.html`.
+2. Decidere se `assets/js/domain/competitions.js` va riattivato come modulo canonico, lasciato legacy o rimosso.
+3. Audit mirato di `assets/js/refactor/admin-publication-workflow-v213.js`.
+4. Aggiornare il registro funzionalita incrementale se emergono nuove funzioni da V263 in poi.

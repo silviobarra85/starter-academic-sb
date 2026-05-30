@@ -380,3 +380,15 @@ V264 - strumenti check locali JS/JSON/versioni
 ```
 
 Ogni overlay deve essere piccolo, testabile e reversibile.
+
+# Aggiornamento V267 - Audit competizioni
+
+V267 aggiunge `AUDIT_COMPETIZIONI_V267.md` e aggiorna la guida per un nuovo assistente AI. Non rimuove codice e non modifica comportamento runtime.
+
+Prossime attivita collegate:
+
+```text
+- Eseguire test completo sezione Competizioni.
+- Decidere destino di assets/js/domain/competitions.js.
+- Audit successivo consigliato: admin-publication-workflow-v213.js.
+```

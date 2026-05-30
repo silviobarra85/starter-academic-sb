@@ -585,3 +585,10 @@ Scopo: iniziare la modularizzazione CSS mantenendo invariata la UI V222.
 - Aggiunto refresh esplicito/automatico del pannello Admin → Richieste presidenti per rileggere `teamRequests` da Firebase quando una richiesta appena inviata non compare subito.
 - Normalizzato il payload del Comunicato avvenuto scambio con campi compatibili Admin (`TRANSFER_NEWS`, `requestType`, `adminVisible`, `needsAdminApproval`).
 - `FUNZIONALITA'.md` non modificato.
+
+## V267 - Audit competizioni
+
+- Aggiunto audit documentale e runtime per la sezione Competizioni.
+- Aggiornata la guida per un eventuale nuovo assistente AI.
+- Nessuna rimozione di funzionalita o asset competizioni.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a `267`.

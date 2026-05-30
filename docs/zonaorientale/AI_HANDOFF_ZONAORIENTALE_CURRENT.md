@@ -713,3 +713,12 @@ Hotfix Listone: le checkbox sono ora coerenti con le colonne visibili. `In listo
 - Il form V236 tentava pubblicazione diretta in `news` e invio EmailJS a `caparrotti86@yahoo.it`; V239 corregge il problema permessi spostando la pubblicazione in approvazione Admin.
 - Aggiunto topic `COMUNICATO_AVVENUTO_SCAMBIO` nelle label.
 - Aggiornati footer/cache-buster, diagnostica versione e documentazione a V236.
+
+## V267 - Audit competizioni
+
+- Versione runtime: `V267 audit competizioni`.
+- Aggiunto `docs/zonaorientale/AUDIT_COMPETIZIONI_V267.md`.
+- Aggiornata la guida `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md`.
+- Nessuna funzionalita rimossa e nessun file competizioni eliminato.
+- Diagnostica: `window.ZonaOrientaleCompetitionsAuditV267`.
+- Il modulo `assets/js/domain/competitions.js` resta sotto osservazione: sembra legacy/scollegato, ma non va rimosso senza test di Dashboard, Competizioni, `competition.html`, Archivio e Admin Competizioni.

@@ -1,44 +1,42 @@
 # Istruzioni per nuovo assistente - ZonaOrientale 260528
 
-Documento creato in V258 per permettere a un nuovo assistente di ripartire dal punto esatto raggiunto nello sviluppo del sito del fantacalcio **ZonaOrientale Salerno**.
+Documento aggiornato in **V267** per permettere a un nuovo assistente AI di ripartire dal punto esatto raggiunto nello sviluppo del sito del fantacalcio **ZonaOrientale Salerno**.
 
 ## 1. Contesto generale
 
-Il progetto è nella repo GitHub/Hugo:
+Repo reale:
 
 ```text
 starter-academic-sb
 ```
 
-La webapp del fantacalcio è statica e vive in:
+Webapp:
 
 ```text
 static/zonaorientale/
 ```
 
-La documentazione del progetto vive in:
+Documentazione:
 
 ```text
 docs/zonaorientale/
 ```
 
-Il sito è già online. L'utente chiede supporto per modifiche, refactor, correzioni e nuove funzionalità. L'utente vuole essere guidato per commit e push, soprattutto su `master`, ma per lavori di refactor importanti preferisce branch dedicati.
-
-Versione runtime corrente dopo questo overlay:
-
-```text
-V258 handoff nuovo branch
-```
-
-Branch consigliato da aprire per la prossima fase:
+Branch corrente della nuova fase:
 
 ```text
 refactor/260528-zonaorientale-next
 ```
 
-## 2. Regole operative da rispettare sempre
+Versione runtime corrente dopo questo overlay:
 
-1. Quando si consegna una modifica al progetto, fornire **un solo file zip**.
+```text
+V267 audit competizioni
+```
+
+## 2. Regole operative obbligatorie
+
+1. Consegnare sempre un solo zip overlay.
 2. Lo zip deve contenere le radici:
 
 ```text
@@ -46,19 +44,14 @@ zonaorientale/
 docs/
 ```
 
-3. Nella repo reale, `zonaorientale/` dello zip va copiato in:
+3. Nella repo, copiare:
 
 ```text
-static/zonaorientale/
+zonaorientale/ -> static/zonaorientale/
+docs/ -> docs/
 ```
 
-4. Nella repo reale, `docs/` dello zip va copiato in:
-
-```text
-docs/
-```
-
-5. Dopo ogni modifica a codice o UI aggiornare:
+4. Dopo ogni modifica a codice o UI aggiornare sempre:
 
 ```text
 footer Version negli HTML
@@ -66,60 +59,50 @@ cache-buster ?v=...
 DEPLOY_EXPECTED_VERSION_V181 in assets/app.js
 AI_HANDOFF_ZONAORIENTALE_CURRENT.md
 CHANGELOG_CONSOLIDATO.md
-README/ROADMAP/OPERATIVITA se utile
+README/ROADMAP/OPERATIVITA/REGRESSION_TESTS se necessario
 ```
 
-6. Il documento seguente è protetto e va modificato **solo quando l'utente lo chiede esplicitamente**:
+5. Il documento principale delle funzionalita e' protetto:
 
 ```text
 docs/zonaorientale/FUNZIONALITA'.md
 ```
 
-7. Il documento seguente contiene solo le funzioni aggiunte/consolidate tra V240 e V255:
+Va modificato solo se l'utente lo chiede esplicitamente. Per nuove funzioni incrementali, usare documenti separati come:
 
 ```text
-docs/zonaorientale/FUNZIONALITA'V240-255.md
+FUNZIONALITA'V240-255.md
+FUNZIONALITA'V256-262.md
 ```
 
-8. Non eliminare funzionalità durante refactor. Prima di rimuovere codice legacy, verificare se esiste ancora un percorso UI/runtime che lo usa.
+6. Non eliminare codice legacy senza audit e test. Questo progetto ha molte patch storiche Vxx: una funzione apparentemente vecchia puo essere ancora agganciata a UI o fallback.
 
-## 3. File da chiedere/passare a un nuovo assistente
+## 3. File da passare a un nuovo assistente
 
-L'utente dovrebbe fornire sempre questi file o zip aggiornati:
+Chiedere sempre all'utente gli zip aggiornati:
 
 ```text
 zonaorientale.zip
-```
-
-Contiene la webapp da `static/zonaorientale/`.
-
-```text
 docs.zip
 ```
 
-Contiene la documentazione da `docs/zonaorientale/`.
-
-Se si lavora su regole Firebase, passare anche il file rules più recente:
+Se si lavora su Firebase Rules, chiedere anche:
 
 ```text
 docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules
-```
-
-e, se serve solo la patch notifiche:
-
-```text
 docs/zonaorientale/firebase/FIREBASE_RULES_PATCH_V257_TRANSFER_NOTIFICATIONS.rules
 ```
 
-Per debug di errori runtime, chiedere all'utente:
+File da leggere subito:
 
 ```text
-screenshot console DevTools
-messaggio errore completo
-browser/dispositivo usato
-utente loggato: pubblico / presidente / admin
-sezione e azione esatta
-versione footer visibile
+docs/zonaorientale/AI_HANDOFF_ZONAORIENTALE_CURRENT.md
+docs/zonaorientale/PROSSIME_ATTIVITA_260528.md
+docs/zonaorientale/REGRESSION_TESTS.md
+docs/zonaorientale/FUNZIONALITA'.md
+docs/zonaorientale/FUNZIONALITA'V240-255.md
+docs/zonaorientale/FUNZIONALITA'V256-262.md
+docs/zonaorientale/AUDIT_COMPETIZIONI_V267.md
 ```
 
 ## 4. Comandi locali standard
@@ -128,11 +111,6 @@ Dalla repo:
 
 ```bash
 cd starter-academic-sb
-```
-
-Per avviare il sito locale:
-
-```bash
 cd static/zonaorientale
 cd ..
 python3 -m http.server 1313 --bind 0.0.0.0
@@ -144,18 +122,15 @@ Aprire:
 http://localhost:1313/zonaorientale/
 ```
 
-## 5. Flusso Git standard
-
-Per aprire il nuovo branch richiesto il 28/05/2026:
+## 5. Comandi Git branch corrente
 
 ```bash
 cd starter-academic-sb
-git checkout master
-git pull origin master
-git checkout -b refactor/260528-zonaorientale-next
+git checkout refactor/260528-zonaorientale-next
+git pull origin refactor/260528-zonaorientale-next
 ```
 
-Per applicare uno zip overlay:
+Applicazione overlay:
 
 ```bash
 mkdir -p /tmp/zo_overlay
@@ -164,16 +139,16 @@ rsync -av /tmp/zo_overlay/zonaorientale/ static/zonaorientale/
 rsync -av /tmp/zo_overlay/docs/ docs/
 ```
 
-Per committare:
+Commit:
 
 ```bash
 git status
 git add <file modificati>
-git commit -m "tipo: descrizione modifica"
+git commit -m "tipo: descrizione"
 git push origin refactor/260528-zonaorientale-next
 ```
 
-Per merge futuro su master, solo dopo test:
+Merge futuro su master solo dopo test completi:
 
 ```bash
 git checkout master
@@ -182,216 +157,129 @@ git merge --no-ff refactor/260528-zonaorientale-next -m "merge: integra aggiorna
 git push origin master
 ```
 
-## 6. Stato funzionale recente V240-V258
+## 6. Funzioni recenti da non perdere
 
 ### Comunicati presidente
 
-I presidenti hanno due tipi principali di comunicato:
+Flusso canonico comunicato avvenuto scambio:
 
 ```text
-COMUNICATO SQUADRA
-COMUNICATO AVVENUTO SCAMBIO
+Presidente -> Dashboard Presidente -> Comunicato avvenuto scambio
+-> teamRequests type TRANSFER_NEWS
+-> EmailJS immediata a caparrotti86@yahoo.it
+-> Admin approva in Richieste presidenti
+-> pubblicazione in News
 ```
 
-Il comunicato avvenuto scambio è stato ripristinato e consolidato nel ciclo V242-V248.
+Non deve tornare il vecchio flusso presidente -> scrittura diretta in `news`.
 
-Flusso canonico attuale:
+### Svincola Giocatori
+
+Aggiunto in V261 in Dashboard Presidente.
 
 ```text
-Presidente
-→ Dashboard Presidente
-→ Comunicato avvenuto scambio
-→ salvataggio in teamRequests con type TRANSFER_NEWS
-→ invio immediato EmailJS a caparrotti86@yahoo.it
-→ Admin approva in Richieste presidenti
-→ pubblicazione in News
+Presidente -> Svincola Giocatori
+-> selezione multipla dalla rosa
+-> quotazione da listone piu recente disponibile
+-> email EmailJS a caparrotti86@yahoo.it
 ```
 
-Non deve più esistere un vecchio flusso che scrive direttamente in `news` da presidente.
+Non scrive su Firebase e non crea richiesta Admin.
 
-### Admin - Richieste presidenti
+### Trattative e notifiche
 
-Consolidato in V249 e poi estratto parzialmente in modulo V253.
+Badge e notifiche derivano da `transferNegotiations`. Da V257, se le Firebase Rules sono pubblicate, la lettura esito e' sincronizzabile tra dispositivi. Fallback: localStorage.
+
+Comandi test console:
+
+```js
+ZonaOrientaleTradeSimulatorV255.help()
+await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()
+```
+
+### Admin -> Richieste presidenti
 
 Funzioni da preservare:
 
 ```text
 Aggiorna richieste
-Approva comunicato/richiesta
-Rifiuta comunicato/richiesta
-Elimina da Firebase comunicati APPROVED / ACCEPTED / REJECTED
+Approva
+Rifiuta
+Elimina da Firebase per comunicati APPROVED/ACCEPTED/REJECTED
 ```
 
-Il pulsante `Elimina da Firebase` elimina solo il documento in:
+Il pulsante elimina solo `teamRequests/{id}`, non cancella news gia pubblicate.
+
+### Admin -> Comunicati
+
+Generatore comunicati automatici ripristinato in V250. Deve solo generare/copiare/inserire bozze nel form Comunicati, senza scrivere direttamente su Firebase.
+
+### News / anteprime WhatsApp
+
+Home: meta generici.
+News: anteprime specifiche solo tramite:
 
 ```text
-teamRequests/{id}
+/zonaorientale/share/news/<id>
 ```
 
-Non cancella una news già pubblicata.
+Il pulsante `Apri preview` e' stato rimosso; resta `Copia link WhatsApp`.
 
-### Generatore comunicati automatici
+### EmailJS
 
-Ripristinato in V250. Deve stare in Admin e deve solo generare/copiare/inserire bozze nel form Comunicati. Non deve scrivere direttamente in Firebase.
+V266 ha normalizzato oggetti, footer, `from_name` logico e `reply_to`. La deliverability reale dipende da configurazione EmailJS/provider/DNS SPF-DKIM-DMARC.
 
-### Workflow pubblicazione Admin
+## 7. Stato audit V267 competizioni
 
-V251 ha reso canonico il workflow inline già presente in `app.js`, evitando di ricollegare il vecchio modulo V213 esterno per non creare doppi listener.
-
-### Notifiche trattative
-
-Le trattative reali sono in:
+V267 non rimuove nulla. Documenta che:
 
 ```text
-transferNegotiations
+assets/js/domain/competitions.js
 ```
 
-La notifica proposta ricevuta è calcolata da:
+sembra un modulo legacy/scollegato, ma non va eliminato senza test di:
 
 ```text
-toSeasonTeamId = squadra del presidente loggato
-status = PENDING
+Dashboard pubblica
+Sezione Competizioni
+competition.html
+Archivio stagioni
+Admin -> Competizioni
+Albo/Statistiche collegate
 ```
 
-La notifica esito per il mittente è calcolata da:
+Diagnostica:
+
+```js
+window.ZonaOrientaleCompetitionsAuditV267
+```
+
+## 8. Cose da evitare
+
+Non eliminare senza audit:
 
 ```text
-fromSeasonTeamId = squadra del presidente loggato
-status = ACCEPTED o REJECTED
-campi outcomeSeen... non ancora valorizzati
+assets/js/domain/competitions.js
+assets/js/refactor/admin-publication-workflow-v213.js
+news.html
+comunicati/*.html
+vecchi fallback inline di Richieste presidenti
+resti legacy V50/V79 dei comunicati scambio
 ```
 
-V246 ha predisposto il salvataggio della lettura su Firebase. V257 ha aggiunto le rules necessarie.
+Non modificare `FUNZIONALITA'.md` salvo richiesta esplicita dell'utente.
 
-## 7. Firebase Rules
+## 9. Quando l'utente segnala un bug
 
-Le rules correnti da usare sono:
+Chiedere sempre:
 
 ```text
-docs/zonaorientale/firebase/FIREBASE_RULES_ZONAORIENTALE_FULL_V257.rules
+versione footer visibile
+sezione esatta
+ruolo: pubblico/presidente/admin
+browser/dispositivo
+output DevTools console
+se Firebase/EmailJS e' coinvolto
 ```
 
-Nota importante: il deploy Netlify/GitHub non pubblica automaticamente le Firebase Rules, a meno che la repo non abbia una pipeline Firebase CLI configurata.
-
-Dopo merge/deploy, pubblicare manualmente da Firebase Console o Firebase CLI.
-
-Test atteso dopo deploy rules:
-
-```text
-Presidente A invia proposta a Presidente B
-Presidente B approva/rifiuta
-Presidente A vede badge esito
-Presidente A apre la card da smartphone
-Presidente A entra da desktop
-Il badge non deve tornare
-```
-
-Se compare in console:
-
-```text
-Lettura esito trattativa salvata solo localmente
-```
-
-le rules non sono state pubblicate o non concedono il permesso previsto.
-
-## 8. Comandi test notifiche trattative
-
-Dopo login presidente, aprire DevTools -> Console.
-
-Mostra guida:
-
-```js
-ZonaOrientaleTradeSimulatorV255.help()
-```
-
-Controlla contesto:
-
-```js
-ZonaOrientaleTradeSimulatorV255.getContext()
-```
-
-Smoke test locale completo:
-
-```js
-await ZonaOrientaleTradeSimulatorV255.runLocalSmokeTest()
-```
-
-Simula proposta ricevuta:
-
-```js
-ZonaOrientaleTradeSimulatorV255.simulateIncomingProposal()
-```
-
-Risolvi localmente proposta ricevuta:
-
-```js
-ZonaOrientaleTradeSimulatorV255.resolveLocalIncomingProposal("ACCEPTED")
-```
-
-oppure:
-
-```js
-ZonaOrientaleTradeSimulatorV255.resolveLocalIncomingProposal("REJECTED")
-```
-
-Simula esito su proposta inviata:
-
-```js
-ZonaOrientaleTradeSimulatorV255.simulateResolvedSentProposal({ status: "ACCEPTED" })
-```
-
-Marca esiti come letti:
-
-```js
-await ZonaOrientaleTradeSimulatorV255.markAllOutcomeSeen()
-```
-
-Pulisce simulazioni locali:
-
-```js
-ZonaOrientaleTradeSimulatorV255.clearLocalSimulations()
-```
-
-Test reale Firebase, da usare solo se si vuole scrivere davvero:
-
-```js
-await ZonaOrientaleTradeSimulatorV255.createFirebaseSentProposal({ confirm: true })
-```
-
-## 9. Diagnostiche runtime utili
-
-```js
-window.ZonaOrientaleTeamRequestsV253
-window.ZonaOrientaleTradeSimulatorV255
-window.ZonaOrientaleFirebaseRulesV257
-window.ZonaOrientaleHandoffV258
-```
-
-Per versione/cache:
-
-```js
-window.checkDeployVersionV181 && window.checkDeployVersionV181()
-```
-
-## 10. Attenzione ai punti fragili
-
-1. `assets/app.js` è ancora molto grande e stratificato.
-2. Alcuni fallback legacy sono lasciati apposta per sicurezza.
-3. Non rimuovere i fallback inline V249 finché il modulo V253 non è stato testato bene in produzione.
-4. Non cancellare pagine statiche `comunicati/*.html` senza verificare se vecchi link WhatsApp le usano ancora.
-5. Non modificare Firebase Rules senza confrontarle con il file attualmente pubblicato.
-6. Non trasformare test/dev simulator in funzionalità visibile agli utenti.
-
-## 11. Cosa chiedere all'utente prima di modifiche rischiose
-
-Chiedere conferma solo per:
-
-```text
-rimozione definitiva di codice legacy
-modifiche Firebase Rules
-modifiche a FUNZIONALITA'.md
-merge su master
-cancellazione di asset/pagine storiche
-```
-
-Per fix piccoli o overlay richiesti esplicitamente, preparare direttamente lo zip e i comandi Git.
+Poi proporre overlay piccolo, testabile e con comandi Git.
