@@ -824,3 +824,11 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiornato lo script pre-push per verificare helper e documento V295.
 - Funzionalita a rischio preservate: Listone `Modifica`/`Modifiche`/usciti storici/export CSV, Rose, Dashboard Presidente, Admin, News share WhatsApp e mobile nav.
 
+
+
+## V297 - Pulizia helper V294 obsoleto
+
+- Rimosso il vecchio `assets/js/utils/shared-helpers-v294.js` ormai sostituito da `shared-helpers-v295.js`.
+- Nessuna funzione storica rimossa da `app.js`.
+- Preservati export CSV Listone admin-only, filtri Listone, Rose, Admin, Firebase, EmailJS e mobile.
+- Diagnostica: `window.ZonaOrientaleHelperCleanupV297`.

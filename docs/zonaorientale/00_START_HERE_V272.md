@@ -148,3 +148,8 @@ I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il siste
 - Funzionalita da preservare esplicitamente: Listone, rose, Dashboard Presidente, Admin, news share, mobile chrome e Dark mode unico.
 - Documento tecnico: `refactor/APP_HELPERS_EXTRACTION_V294.md`.
 - Diagnostica: `window.ZonaOrientaleAppHelpersExtractionV294`.
+
+
+## Aggiornamento V297
+
+V297 completa la pulizia del primo helper estratto: `shared-helpers-v294.js` e' obsoleto e va rimosso con `git rm`; `shared-helpers-v295.js` resta il modulo attivo. Verificare export CSV Listone admin-only prima del push.

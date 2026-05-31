@@ -633,3 +633,13 @@ La V295 collega solo l'escape CSV dell'export modifiche Listone al modulo helper
 - Listone: verificare almeno un caso con accenti, apostrofi, virgolette o punti e virgola se disponibile nei dati.
 - Controllo rapido: Rose/pagina squadra, Dashboard Presidente, Admin -> Diagnostica dati, bottom nav e News non devono mostrare regressioni.
 
+
+
+## Test V297 - Pulizia helper V294
+
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Verificare che `shared-helpers-v294.js` sia assente.
+- Listone pubblico: export CSV non visibile.
+- Admin: export CSV modifiche visibile e funzionante.
+- Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok === true`.
+- Console: `window.ZonaOrientaleHelperCleanupV297.behaviorChange === false`.

@@ -1,3 +1,7 @@
+## Aggiornamento V296
+
+Lo script pre-push controlla anche la presenza della documentazione `refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md` e del marker runtime `ZonaOrientaleListoneExportAdminOnlyV296`. Per questa release testare anche: Listone pubblico senza pulsante export, Listone Admin con export CSV funzionante.
+
 ## Aggiornamento V292
 
 Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla ora la presenza dei CSS refactor V292 e del file conservativo `theme-light-suspended-v292.css`, oltre al documento `docs/zonaorientale/refactor/CSS_CLEANUP_V292.md`.
@@ -212,3 +216,13 @@ window.ZonaOrientaleAppHelpersExtractionV295.rewiredCallSites
 
 Il test manuale prioritario e' l'export CSV delle modifiche Listone, per assicurarsi che l'escape CSV condiviso non cambi formato o contenuto del file.
 
+
+
+## Aggiornamento V297
+
+Il controllo pre-push segnala errore se `assets/js/utils/shared-helpers-v294.js` e' ancora presente. Dopo overlay V297 eseguire:
+
+```bash
+git rm static/zonaorientale/assets/js/utils/shared-helpers-v294.js
+static/zonaorientale/tools/check-zonaorientale.sh
+```

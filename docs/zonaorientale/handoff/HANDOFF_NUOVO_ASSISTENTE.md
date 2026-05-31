@@ -853,3 +853,8 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 ## V294 - Helper puri app.js
 
 Prima estrazione prudente verso il refactor di `assets/app.js`: aggiunto `assets/js/utils/shared-helpers-v294.js`. Il modulo e' importato e diagnosticato, ma i call-site storici non sono ancora stati riscritti. Prima di usare questi helper al posto di funzioni legacy fare grep, indicare funzionalita a rischio e testare Listone, rose, Dashboard Presidente, Admin, mobile, `competition.html`, `player.html` e news share.
+
+
+## Aggiornamento V297
+
+Il vecchio helper `assets/js/utils/shared-helpers-v294.js` e' da considerare obsoleto dopo V295/V296 e viene rimosso in V297. Non rimuovere `shared-helpers-v295.js`, usato dall'export CSV modifiche Listone. Ogni refactor successivo deve dichiarare funzionalita' a rischio e test di preservazione.
