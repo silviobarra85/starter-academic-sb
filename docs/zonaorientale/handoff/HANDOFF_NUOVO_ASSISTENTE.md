@@ -4,13 +4,22 @@
 >
 > Da usare come primo file da consegnare/leggere quando un nuovo assistente AI deve subentrare nel progetto.
 
+
+## Aggiornamento V282
+
+- Aggiunto `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Lo script esegue controlli pre-push su JS, JSON, versioni/cache-buster/footer e file macOS indesiderati.
+- Documento operativo: `docs/zonaorientale/release/CONTROLLI_PRE_PUSH_V282.md`.
+- Diagnostica runtime: `window.ZonaOrientalePrePushChecksV282`.
+- Nessuna modifica a Firebase, EmailJS o dati runtime.
+
 ## 1. Stato corrente sintetico
 
 - Repo reale: `starter-academic-sb`.
 - Webapp: `static/zonaorientale/`.
 - Documentazione: `docs/zonaorientale/`.
 - Branch di lavoro corrente: `refactor/260528-zonaorientale-next`.
-- Versione runtime recente: `V281 contrasto mobile Light`.
+- Versione runtime recente: `V282 controlli pre-push`.
 - Branch di produzione/deploy: `master`.
 
 ## 2. Regole operative obbligatorie

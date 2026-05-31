@@ -1,3 +1,7 @@
+## Aggiornamento V282 - Controlli pre-push
+
+V282 aggiunge lo script `static/zonaorientale/tools/check-zonaorientale.sh` per centralizzare i controlli tecnici prima di commit/push: sintassi JS, validita JSON, footer/cache-buster/versione e file macOS indesiderati. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime. Diagnostica: `window.ZonaOrientalePrePushChecksV282`. Documento operativo: `release/CONTROLLI_PRE_PUSH_V282.md`.
+
 ## Nota V275 - Registro funzionalita V271-V274
 
 V275 aggiunge `docs/zonaorientale/FUNZIONALITA'V271-274.md`, registro funzionale aggiuntivo per le modifiche recenti: handoff/pre-merge V272, test reale listone V273 e codici squadra canonici V274. Nessuna modifica funzionale al runtime; diagnostica `window.ZonaOrientaleFunctionLedgerV275`.

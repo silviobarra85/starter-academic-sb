@@ -1,3 +1,7 @@
+## Aggiornamento V282 - Controlli pre-push
+
+Versione corrente: V282 controlli pre-push. Leggere anche `release/CONTROLLI_PRE_PUSH_V282.md`. Prima di ogni commit/push usare `static/zonaorientale/tools/check-zonaorientale.sh`.
+
 ## Aggiornamento V275
 
 Versione corrente: V275 funzionalita V271-274. Dopo i documenti V272 leggere anche `FUNZIONALITA'V271-274.md`, `listoni/LISTONE_TEST_REALE_V273.md` e `listoni/LISTONE_CODICI_SQUADRA_V274.md`.
@@ -13,7 +17,7 @@ refactor/260528-zonaorientale-next
 Versione runtime attesa dopo l'overlay:
 
 ```text
-V274 codici squadre listone
+V282 controlli pre-push
 ```
 
 ## Documenti principali da leggere
