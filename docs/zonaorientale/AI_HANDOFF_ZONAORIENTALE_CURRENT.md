@@ -1,3 +1,9 @@
+## Aggiornamento V295 - Primo collegamento helper puri app.js
+
+V295 introduce `assets/js/utils/shared-helpers-v295.js` e collega in modo minimale `csvEscapeV278` all'helper condiviso `ZonaOrientaleSharedHelpersV295.csvEscape`. Il refactor non rimuove funzioni storiche e non tocca Firebase/Auth/EmailJS, render Admin, Rose, Listone o mobile chrome. Documento tecnico: `docs/zonaorientale/refactor/APP_HELPER_REWIRE_V295.md`. Diagnostica: `window.ZonaOrientaleAppHelpersExtractionV295`.
+
+Funzionalita da verificare obbligatoriamente: Listone con `Modifica`, filtro `Modifiche`, usciti storici ed export CSV; rose e pagina squadra; Dashboard Presidente; Admin Richieste/Diagnostica/Converti listone; news share WhatsApp; bottom nav/menu Altro/pulsante Su.
+
 ## Aggiornamento V293 - Audit mirato app.js
 
 V293 aggiunge `docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md` e la diagnostica `window.ZonaOrientaleAppJsAuditV293`. Non cambia comportamento runtime e non estrae ancora codice. Prima di qualunque refactor JS futuro, verificare le funzionalita a rischio e preservare esplicitamente: Listone/Modifica/export, rose e pagina squadra, Dashboard Presidente, trattative, Admin Richieste/Diagnostica/Converti listone, Archivio/Statistiche/Confronta, news share WhatsApp, mobile nav, `competition.html` e `player.html`.

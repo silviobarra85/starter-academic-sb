@@ -1,3 +1,7 @@
+## Aggiornamento V295 - Primo collegamento helper puri app.js
+
+Versione runtime corrente: **V295 primo helper app.js**. Leggere anche `refactor/APP_HELPER_REWIRE_V295.md`. La release collega solo `csvEscapeV278` al modulo `assets/js/utils/shared-helpers-v295.js`; non sposta render, Firebase, Admin, Listone, Rose o mobile chrome. Funzionalita da preservare e testare: export CSV modifiche Listone, filtro Modifiche, usciti storici, rose/pagina squadra, Dashboard Presidente, Admin e mobile nav.
+
 ## Aggiornamento V293 - Audit mirato app.js
 
 Versione runtime corrente: **V293 audit mirato app.js**. Leggere anche `refactor/APP_JS_AUDIT_V293.md`. La release non cambia funzionalita' e non estrae ancora codice: mappa le aree sicure/rischiose di `assets/app.js` prima di una futura V294. Regola: ogni refactor JS deve dichiarare le funzionalita a rischio, come vengono preservate e i test necessari.

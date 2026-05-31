@@ -803,3 +803,14 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiornato lo script pre-push per verificare modulo e documento V294.
 - Nessuna funzione storica di `app.js` viene rimossa o ricollegata: Listone, rose, Dashboard Presidente, Admin, Firebase/EmailJS e mobile restano invariati.
 - Aggiunto documento `docs/zonaorientale/refactor/APP_HELPERS_EXTRACTION_V294.md`.
+## V295 - Primo collegamento helper puri app.js
+
+- Aggiunto `assets/js/utils/shared-helpers-v295.js`.
+- Collegato il solo `csvEscapeV278` dell'export modifiche Listone a `ZonaOrientaleSharedHelpersV295.csvEscape`.
+- Mantenuti alias diagnostici V294 verso V295 per compatibilita console.
+- Nessuna funzione storica rimossa da `assets/app.js`.
+- Nessun cambio a Firebase, Auth, EmailJS, dati JSON, render Admin, Rose o mobile chrome.
+- Aggiunto documento `docs/zonaorientale/refactor/APP_HELPER_REWIRE_V295.md`.
+- Aggiornato lo script pre-push per verificare helper e documento V295.
+- Funzionalita a rischio preservate: Listone `Modifica`/`Modifiche`/usciti storici/export CSV, Rose, Dashboard Presidente, Admin, News share WhatsApp e mobile nav.
+

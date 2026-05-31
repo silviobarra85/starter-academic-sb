@@ -612,3 +612,16 @@ La V294 introduce un modulo di helper puri senza sostituire i call-site storici.
 - `competition.html` e `player.html`.
 
 Funzionalita da non perdere: nessun flusso esistente deve essere ricollegato al nuovo helper senza un overlay dedicato e test browser.
+## Test V295 - Primo collegamento helper puri app.js
+
+La V295 collega solo l'escape CSV dell'export modifiche Listone al modulo helper condiviso. Test obbligatori:
+
+- `static/zonaorientale/tools/check-zonaorientale.sh` deve passare.
+- Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok` deve essere `true`.
+- Console: `window.ZonaOrientaleAppHelpersExtractionV295.behaviorChange` deve essere `false`.
+- Console: `window.ZonaOrientaleAppHelpersExtractionV295.rewiredCallSites` deve contenere `csvEscapeV278 -> ZonaOrientaleSharedHelpersV295.csvEscape`.
+- Listone: filtro `Modifiche` funzionante.
+- Listone: `Esporta modifiche CSV` genera un file apribile con intestazioni e righe corrette.
+- Listone: verificare almeno un caso con accenti, apostrofi, virgolette o punti e virgola se disponibile nei dati.
+- Controllo rapido: Rose/pagina squadra, Dashboard Presidente, Admin -> Diagnostica dati, bottom nav e News non devono mostrare regressioni.
+

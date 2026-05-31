@@ -193,3 +193,22 @@ Prima del push, controllare anche in console:
 window.ZonaOrientaleSharedHelpersV294.runSmokeTest().ok
 window.ZonaOrientaleAppHelpersExtractionV294.behaviorChange
 ```
+## Aggiornamento V295 - Primo collegamento helper puri app.js
+
+Lo script ora controlla anche:
+
+```text
+assets/js/utils/shared-helpers-v295.js
+docs/zonaorientale/refactor/APP_HELPER_REWIRE_V295.md
+```
+
+Dopo V295, prima del push verificare anche da console browser:
+
+```js
+window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok
+window.ZonaOrientaleAppHelpersExtractionV295.behaviorChange
+window.ZonaOrientaleAppHelpersExtractionV295.rewiredCallSites
+```
+
+Il test manuale prioritario e' l'export CSV delle modifiche Listone, per assicurarsi che l'escape CSV condiviso non cambi formato o contenuto del file.
+

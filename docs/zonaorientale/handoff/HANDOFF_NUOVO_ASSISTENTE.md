@@ -1,3 +1,7 @@
+## Aggiornamento V295 - Primo collegamento helper puri app.js
+
+Leggere anche `docs/zonaorientale/refactor/APP_HELPER_REWIRE_V295.md`. La release collega un solo call-site storico (`csvEscapeV278`) al nuovo modulo `assets/js/utils/shared-helpers-v295.js`. Non spostare altri call-site senza dichiarare funzionalita a rischio, preservazione e test. In particolare non perdere: export CSV modifiche Listone, filtro Modifiche, usciti storici, Rose, Dashboard Presidente, Admin, news share e mobile chrome.
+
 ## Aggiornamento V293 - Audit mirato app.js
 
 Leggere anche `docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md` prima di qualunque refactor di `assets/app.js`. La release non cambia funzionalita': documenta cosa non spostare subito e quali helper puri potrebbero essere estratti in una futura V294. Ogni proposta di refactor deve includere una sezione `Funzionalita a rischio e preservazione`.
