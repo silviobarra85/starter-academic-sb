@@ -162,6 +162,7 @@ if [[ -n "$DOCS_ROOT" ]]; then
   mobile_audit_doc="$DOCS_ROOT/audit/AUDIT_MOBILE_COMPLETO_V284.md"
   mobile_fix_doc="$DOCS_ROOT/audit/FIX_MOBILE_MIRATI_V285.md"
   sticky_fix_doc="$DOCS_ROOT/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md"
+  controls_fix_doc="$DOCS_ROOT/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md"
   if [[ -f "$mobile_audit_doc" ]]; then
     pass "audit mobile V284 disponibile: audit/AUDIT_MOBILE_COMPLETO_V284.md"
   else
@@ -176,6 +177,11 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "fix prima colonna V286 documentato: audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md"
   else
     warn "documento fix prima colonna V286 non trovato; se stai applicando V286 verifica docs/zonaorientale/audit"
+  fi
+  if [[ -f "$controls_fix_doc" ]]; then
+    pass "rifinitura controlli mobile V287 documentata: audit/RIFINITURA_CONTROLLI_MOBILE_V287.md"
+  else
+    warn "documento rifinitura controlli V287 non trovato; se stai applicando V287 verifica docs/zonaorientale/audit"
   fi
 else
   warn "docs non disponibili; salto controllo audit mobile"
