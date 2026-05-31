@@ -1,3 +1,13 @@
+## Aggiornamento V292 - Pulizia CSS Light sospeso
+
+- Sostituiti gli import V291 con `assets/css/refactor/mobile-controls-v292.css` e `assets/css/refactor/rosters-tables-v292.css`.
+- Spostate le regole Light recenti V285-V288 nel file conservativo non importato `assets/css/refactor/theme-light-suspended-v292.css`.
+- Mantenute attive le regole Dark/mobile necessarie per controlli, tabelle rose, pagina squadra e Dashboard Presidente.
+- Nessuna modifica a Firebase, EmailJS, JSON, Listone o logiche Rose.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V292.
+- Aggiunta diagnostica `window.ZonaOrientaleCssCleanupV292`.
+- Aggiunto documento `docs/zonaorientale/refactor/CSS_CLEANUP_V292.md`.
+
 ## Aggiornamento V291 - Refactor CSS prudente
 
 - Estratti da `assets/styles.css` i blocchi CSS recenti V285-V289, senza riscriverli, nei nuovi file `assets/css/refactor/mobile-controls-v291.css` e `assets/css/refactor/rosters-tables-v291.css`.

@@ -1,3 +1,7 @@
+## Aggiornamento V292
+
+Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla ora la presenza dei CSS refactor V292 e del file conservativo `theme-light-suspended-v292.css`, oltre al documento `docs/zonaorientale/refactor/CSS_CLEANUP_V292.md`.
+
 ## Aggiornamento V290
 
 Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza dell’audit `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md` quando la documentazione e disponibile. Prima di qualunque refactor CSS/JS consultare la sezione funzionalita a rischio del documento V290.

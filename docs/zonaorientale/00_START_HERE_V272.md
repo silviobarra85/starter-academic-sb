@@ -1,6 +1,10 @@
+## Aggiornamento V292
+
+Versione runtime corrente: **V292 pulizia CSS Light sospeso**. Leggere anche `refactor/CSS_CLEANUP_V292.md`. La release non cambia funzionalita': sposta le regole Light recenti V285-V288 fuori dai CSS attivi e le conserva in `assets/css/refactor/theme-light-suspended-v292.css`, non importato. Restano attivi Dark mode unico, controlli mobile, rose/tabelle e fix V289.
+
 ## Aggiornamento V291
 
-Versione runtime corrente: **V291 refactor CSS prudente**. Leggere anche `refactor/CSS_REFACTOR_V291.md`. La release non cambia funzionalita': sposta i blocchi CSS V285-V289 da `styles.css` in due file dedicati sotto `assets/css/refactor/`, mantenendo lo stesso ordine di override e aggiungendo controlli nello script pre-push.
+Versione runtime corrente: **V292 pulizia CSS Light sospeso**. Leggere anche `refactor/CSS_REFACTOR_V291.md`. La release non cambia funzionalita': sposta i blocchi CSS V285-V289 da `styles.css` in due file dedicati sotto `assets/css/refactor/`, mantenendo lo stesso ordine di override e aggiungendo controlli nello script pre-push.
 
 ## Aggiornamento V290 - Audit styles.css e app.js
 
@@ -53,7 +57,7 @@ refactor/260528-zonaorientale-next
 Versione runtime attesa dopo l'overlay:
 
 ```text
-V291 refactor CSS prudente
+V292 pulizia CSS Light sospeso
 ```
 
 ## Documenti principali da leggere

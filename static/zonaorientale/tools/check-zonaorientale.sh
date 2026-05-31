@@ -133,12 +133,13 @@ fi
 
 print_step "CSS refactor"
 css_refactor_files=(
-  "$SITE_ROOT/assets/css/refactor/mobile-controls-v291.css"
-  "$SITE_ROOT/assets/css/refactor/rosters-tables-v291.css"
+  "$SITE_ROOT/assets/css/refactor/mobile-controls-v292.css"
+  "$SITE_ROOT/assets/css/refactor/rosters-tables-v292.css"
+  "$SITE_ROOT/assets/css/refactor/theme-light-suspended-v292.css"
 )
 for css_refactor_file in "${css_refactor_files[@]}"; do
   if [[ -f "$css_refactor_file" ]]; then
-    pass "CSS refactor presente: ${css_refactor_file#$SITE_ROOT/}"
+    pass "CSS refactor/preservazione presente: ${css_refactor_file#$SITE_ROOT/}"
   else
     fail "CSS refactor mancante: ${css_refactor_file#$SITE_ROOT/}"
   fi
@@ -217,6 +218,7 @@ print_step "Audit refactor"
 if [[ -n "$DOCS_ROOT" ]]; then
   styles_app_audit_doc="$DOCS_ROOT/refactor/AUDIT_STYLES_APP_V290.md"
   css_refactor_doc="$DOCS_ROOT/refactor/CSS_REFACTOR_V291.md"
+  css_cleanup_doc="$DOCS_ROOT/refactor/CSS_CLEANUP_V292.md"
   if [[ -f "$styles_app_audit_doc" ]]; then
     pass "audit styles/app V290 disponibile: refactor/AUDIT_STYLES_APP_V290.md"
   else
@@ -226,6 +228,11 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "refactor CSS V291 documentato: refactor/CSS_REFACTOR_V291.md"
   else
     warn "refactor CSS V291 non documentato; verificare docs/zonaorientale/refactor/CSS_REFACTOR_V291.md"
+  fi
+  if [[ -f "$css_cleanup_doc" ]]; then
+    pass "pulizia CSS V292 documentata: refactor/CSS_CLEANUP_V292.md"
+  else
+    warn "pulizia CSS V292 non documentata; verificare docs/zonaorientale/refactor/CSS_CLEANUP_V292.md"
   fi
 else
   warn "docs non disponibili; salto controllo audit refactor"

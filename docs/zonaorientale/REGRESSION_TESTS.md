@@ -1,3 +1,13 @@
+## Checklist V292 - Pulizia CSS Light sospeso
+
+- Verificare che il sito resti in Dark mode e che il toggle tema non sia visibile.
+- Verificare Listone mobile: colonna Modifica, filtro Modifiche, usciti storici, export CSV.
+- Verificare pagina squadra -> Rosa mobile: righe compatte, prima colonna sticky e testo leggibile.
+- Verificare Dashboard Presidente: tabelle rosa e controlli touch.
+- Verificare bottom navigation, menu Altro e pulsante Su.
+- Verificare `competition.html` e `player.html` da mobile.
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+
 ## Aggiornamento V290 - Test refactor styles/app
 
 V290 non cambia comportamento runtime. Prima di procedere a refactor reali verificare che il sito resti allineato a V290 e usare `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md` come checklist di preservazione funzionale. Test minimi: Home, News/link WhatsApp, Listone con Modifiche/export, Rose/pagina squadra mobile, Competizioni, Archivio, Statistiche, Confronta, Dashboard Presidente, Admin Richieste presidenti, Diagnostica dati, Converti listone Excel, bottom navigation e pulsante Su.

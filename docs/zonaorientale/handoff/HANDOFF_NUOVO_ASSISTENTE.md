@@ -1,3 +1,7 @@
+## Aggiornamento V292
+
+La versione corrente documentata e' **V292 pulizia CSS Light sospeso**. I CSS attivi del refactor sono `assets/css/refactor/mobile-controls-v292.css` e `assets/css/refactor/rosters-tables-v292.css`. Il file `assets/css/refactor/theme-light-suspended-v292.css` conserva le patch Light recenti ma non deve essere importato finche la Light mode non viene ricostruita e testata. Prima di ulteriori refactor verificare esplicitamente che non si perdano Listone Modifica/export, rose/pagina squadra, Dashboard Presidente, bottom navigation e Dark mode unico.
+
 ## Aggiornamento V291 - Refactor CSS prudente
 
 V291 separa i blocchi CSS mobile/rose/tabelle V285-V289 da `assets/styles.css` nei file `assets/css/refactor/mobile-controls-v291.css` e `assets/css/refactor/rosters-tables-v291.css`. Il caricamento avviene dopo i CSS storici per preservare gli override. Non cambia logiche JS, Firebase, EmailJS o dati. Prima di ulteriori pulizie verificare che non si perdano: Listone Modifica/export, rose e pagina squadra, Dashboard Presidente, bottom navigation mobile e Dark mode unico V289. Documento: `docs/zonaorientale/refactor/CSS_REFACTOR_V291.md`. Diagnostica: `window.ZonaOrientaleCssRefactorV291`.
