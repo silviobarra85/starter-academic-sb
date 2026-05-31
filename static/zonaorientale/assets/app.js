@@ -42,8 +42,8 @@ import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=288";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=288";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=289";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=289";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -95,7 +95,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=288";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=289";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +119,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=288";
+} from "./js/domain/news-share-v228.js?v=289";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +134,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=288";
+} from "./js/admin/listone-converter.js?v=289";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=288";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=288";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=289";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=289";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=288";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=288";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=288";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=288";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=289";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=289";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=289";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=289";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=288";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=288";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=288";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=289";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=289";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=289";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -7713,27 +7713,29 @@ renderDashboard = function renderDashboardV87() {
 
 /* V89 - Theme switch and admin-only refresh button. */
 function applyZonaOrientaleThemeV89(theme) {
-  const finalTheme = theme === "light" ? "light" : "dark";
+  const finalTheme = "dark";
   document.documentElement.dataset.theme = finalTheme;
+  try {
+    localStorage.setItem("zonaOrientaleTheme", finalTheme);
+  } catch (error) {
+    // localStorage can be unavailable in some privacy modes; dark remains forced via dataset.
+  }
   const toggle = document.getElementById("themeToggleBtn");
   if (toggle) {
-    toggle.setAttribute("aria-pressed", finalTheme === "light" ? "true" : "false");
+    toggle.hidden = true;
+    toggle.classList.add("hidden", "theme-toggle-disabled-v289");
+    toggle.setAttribute("aria-hidden", "true");
+    toggle.setAttribute("tabindex", "-1");
+    toggle.setAttribute("aria-pressed", "false");
     const icon = toggle.querySelector(".theme-toggle-icon");
     const text = toggle.querySelector(".theme-toggle-text");
-    if (icon) icon.textContent = finalTheme === "light" ? "☀️" : "🌙";
-    if (text) text.textContent = finalTheme === "light" ? "Light" : "Dark";
+    if (icon) icon.textContent = "🌙";
+    if (text) text.textContent = "Dark";
   }
 }
 
 function setupThemeToggleV89() {
-  const savedTheme = localStorage.getItem("zonaOrientaleTheme") || "dark";
-  applyZonaOrientaleThemeV89(savedTheme);
-  document.getElementById("themeToggleBtn")?.addEventListener("click", () => {
-    const current = document.documentElement.dataset.theme === "light" ? "light" : "dark";
-    const next = current === "light" ? "dark" : "light";
-    localStorage.setItem("zonaOrientaleTheme", next);
-    applyZonaOrientaleThemeV89(next);
-  });
+  applyZonaOrientaleThemeV89("dark");
 }
 
 const updateAdminVisibilityBeforeV89 = updateAdminVisibility;
@@ -15566,7 +15568,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "288";
+const DEPLOY_EXPECTED_VERSION_V181 = "289";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23283,4 +23285,18 @@ window.ZonaOrientaleRosterMobileLightV288 = {
     "Righe rosa non eccessivamente alte",
     "Controllo rapido Listone per assenza regressioni"
   ]
+};
+
+
+/* V289 - Dark mode temporaneo e fix rose mobile.
+ * Disattiva la modalita Light dal runtime e mantiene nascosto il toggle tema.
+ * Le correzioni CSS correlate compattano le tabelle Rosa mobile e allineano al centro la prima colonna.
+ */
+window.ZonaOrientaleDarkModeOnlyV289 = {
+  version: "V289",
+  theme: "dark",
+  lightDisabled: true,
+  themeToggleHidden: true,
+  rosterRowsCompacted: true,
+  createdAt: "2026-05-31"
 };

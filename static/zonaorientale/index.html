@@ -22,14 +22,14 @@
   <meta name="twitter:title" content="ZonaOrientale Salerno" />
   <meta name="twitter:description" content="Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d&#039;oro, statistiche, archivio e comunicati." />
   <meta name="twitter:image" content="https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png" />
-  <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=288" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=288" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=288" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=288" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=288" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=288" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=288" />
+  <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
+  <link rel="stylesheet" href="./assets/styles.css?v=289" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=289" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=289" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=289" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=289" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=289" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=289" />
 </head>
 <body>
   <header class="app-header">
@@ -44,7 +44,7 @@
           <span>Stagione</span>
           <select id="globalSeasonSelect" class="input season-input" aria-label="Stagione visualizzata"></select>
         </label>
-        <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Cambia tema" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
+        <button id="themeToggleBtn" class="theme-toggle hidden" type="button" aria-label="Tema disattivato" aria-pressed="false" aria-hidden="true" tabindex="-1" hidden><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
         <button id="refreshBtn" class="button button-secondary hidden" type="button">Aggiorna dati</button>
         <button id="openLoginBtn" class="button button-primary" type="button">Area admin</button>
         <button id="logoutBtn" class="button button-danger hidden" type="button">Logout</button>
@@ -1634,11 +1634,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V288 fix rose mobile Light · Ultimo aggiornamento 31/05/2026</p>
+    <p>ZonaOrientale Salerno · V289 dark mode e rose mobile · Ultimo aggiornamento 31/05/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=288"></script>
+  <script type="module" src="./assets/app.js?v=289"></script>
 </body>
 </html>
 

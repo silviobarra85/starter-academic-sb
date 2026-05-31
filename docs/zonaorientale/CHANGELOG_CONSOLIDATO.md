@@ -1,3 +1,14 @@
+## Aggiornamento V289 - Dark mode e rose mobile
+
+- Sospesa temporaneamente la modalita Light dal sito.
+- Il bootstrap HTML e runtime JS forzano `data-theme="dark"` e aggiornano `localStorage` a `dark`.
+- Nascosto il pulsante di cambio tema in header e nella pagina giocatore standalone.
+- Corrette le tabelle Rosa da mobile in modalita Dark: righe piu' compatte, prima colonna centrata verticalmente, testo giocatore piu' leggibile.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V289.
+- Aggiunta diagnostica `window.ZonaOrientaleDarkModeOnlyV289`.
+- Aggiunto documento `docs/zonaorientale/audit/DARK_MODE_ROSE_MOBILE_V289.md`.
+- Nessuna modifica a Firebase, EmailJS, dati JSON o `FUNZIONALITA'.md`.
+
 ## Aggiornamento V288 - Fix rose mobile Light
 
 - Corretto il contrasto della prima colonna nella tabella Rosa della pagina squadra in modalita Light mobile.

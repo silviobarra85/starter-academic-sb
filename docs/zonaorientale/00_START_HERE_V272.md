@@ -1,3 +1,7 @@
+## Aggiornamento V289 - Dark mode e rose mobile
+
+V289 sospende temporaneamente la modalita Light: il sito forza il tema Dark anche se nel browser era salvato Light e il pulsante cambio tema viene nascosto. Corregge inoltre le tabelle Rosa da mobile in modalita Dark, compattando le righe e centrando verticalmente la prima colonna nelle rose pubbliche e nella pagina squadra. Documento: `docs/zonaorientale/audit/DARK_MODE_ROSE_MOBILE_V289.md`. Diagnostica: `window.ZonaOrientaleDarkModeOnlyV289`.
+
 ## Aggiornamento V288 - Fix rose mobile Light
 
 Versione corrente: V288 fix rose mobile Light. Leggere anche `audit/FIX_ROSE_MOBILE_LIGHT_V288.md`. La release corregge la prima colonna della tabella Rosa nella pagina squadra da smartphone in tema Light: testo chiaro su sfondo scuro, nome giocatore leggermente piu' grande, centratura verticale e righe piu' compatte. Intervento solo CSS/UI, senza modifiche a Firebase, EmailJS, dati JSON o logiche runtime.

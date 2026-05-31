@@ -1,3 +1,7 @@
+## Aggiornamento V289
+
+Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza del documento `docs/zonaorientale/audit/DARK_MODE_ROSE_MOBILE_V289.md` quando la documentazione e' disponibile.
+
 ## Aggiornamento V288
 
 Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza del documento `docs/zonaorientale/audit/FIX_ROSE_MOBILE_LIGHT_V288.md` quando la documentazione e' disponibile.

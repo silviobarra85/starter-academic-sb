@@ -164,6 +164,7 @@ if [[ -n "$DOCS_ROOT" ]]; then
   sticky_fix_doc="$DOCS_ROOT/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md"
   controls_fix_doc="$DOCS_ROOT/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md"
   roster_fix_doc="$DOCS_ROOT/audit/FIX_ROSE_MOBILE_LIGHT_V288.md"
+  dark_mode_doc="$DOCS_ROOT/audit/DARK_MODE_ROSE_MOBILE_V289.md"
   if [[ -f "$mobile_audit_doc" ]]; then
     pass "audit mobile V284 disponibile: audit/AUDIT_MOBILE_COMPLETO_V284.md"
   else
@@ -188,6 +189,11 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "fix rose mobile Light V288 documentato: audit/FIX_ROSE_MOBILE_LIGHT_V288.md"
   else
     warn "documento fix rose mobile Light V288 non trovato; se stai applicando V288 verifica docs/zonaorientale/audit"
+  fi
+  if [[ -f "$dark_mode_doc" ]]; then
+    pass "dark mode e rose mobile V289 documentato: audit/DARK_MODE_ROSE_MOBILE_V289.md"
+  else
+    warn "documento dark mode/rose mobile V289 non trovato; se stai applicando V289 verifica docs/zonaorientale/audit"
   fi
 else
   warn "docs non disponibili; salto controllo audit mobile"

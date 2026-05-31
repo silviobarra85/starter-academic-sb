@@ -1,3 +1,7 @@
+## Aggiornamento V289 - Test dark mode e rose mobile
+
+Dopo V289 verificare da smartphone/viewport mobile: il pulsante tema non deve comparire; anche con `localStorage.zonaOrientaleTheme = "light"` il sito deve ricaricarsi in Dark; nelle rose pubbliche e nella pagina squadra le righe della tabella Rosa devono essere compatte e il nome nella prima colonna deve essere leggibile e centrato verticalmente. Ripetere un controllo rapido su Listone, Dashboard Presidente e pagina giocatore standalone.
+
 ## Aggiornamento V288 - Test rose mobile Light
 
 Dopo V288 verificare da smartphone/viewport mobile in tema Light: pagina squadra -> tabella Rosa, prima colonna con nome giocatore chiaro su sfondo scuro, testo leggermente piu' grande, contenuto centrato verticalmente e righe non eccessivamente alte. Ripetere un controllo rapido su Listone e tema Dark per escludere regressioni.
