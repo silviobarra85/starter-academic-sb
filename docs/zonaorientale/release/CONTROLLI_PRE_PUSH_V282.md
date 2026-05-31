@@ -110,3 +110,13 @@ static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh
 ```
 
 Il controllo pre-push resta non distruttivo: segnala gli errori, ma non rimuove file automaticamente.
+
+## Aggiornamento V285
+
+In V285 lo script segnala anche la presenza della documentazione dei fix mobile mirati:
+
+```text
+docs/zonaorientale/audit/FIX_MOBILE_MIRATI_V285.md
+```
+
+Il controllo resta non distruttivo e serve solo a ricordare di mantenere allineati audit, fix UI e checklist di regressione quando si lavora su mobile.

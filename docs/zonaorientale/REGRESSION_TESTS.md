@@ -1,3 +1,15 @@
+## Test V285 - Fix mirati mobile
+
+- Attivare tema Light e verificare da smartphone reale o viewport mobile.
+- Home: card, testi secondari e menu mobile leggibili.
+- Listone: `Storico listoni` non visibile; `Modifiche`, `Mostra usciti storici` ed export CSV ancora presenti e leggibili.
+- Listone: tabella scrollabile, prima colonna sticky leggibile, badge modifica leggibili.
+- Competizioni: classifica/calendario scrollabili, intestazioni sticky leggibili.
+- Archivio, Statistiche e Confronta: card e testi secondari leggibili in Light.
+- Dashboard Presidente: card, trattative e azioni rapide leggibili in Light.
+- Admin -> Diagnostica dati e Richieste presidenti leggibili in Light.
+- Console: `window.ZonaOrientaleMobileFixesV285.cssOnly` deve essere `true`.
+
 ## Aggiornamento V284 - Audit mobile completo
 
 Prima di procedere con ulteriori fix UI/mobile, usare `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`.

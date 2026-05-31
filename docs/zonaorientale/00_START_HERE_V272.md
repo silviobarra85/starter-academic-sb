@@ -1,3 +1,7 @@
+## Aggiornamento V285 - Fix mirati mobile
+
+Versione corrente: V285 fix mirati mobile. Leggere anche `audit/FIX_MOBILE_MIRATI_V285.md`. La release applica correzioni CSS conservative per migliorare leggibilita' mobile in tema Light, tabelle scrollabili, prima colonna sticky, badge/pill/bottoni secondari e bottom navigation. Nessuna modifica funzionale a Firebase, EmailJS, dati JSON o logiche runtime.
+
 ## Aggiornamento V284 - Audit mobile completo
 
 Versione corrente: V284 audit mobile completo. Leggere anche `audit/AUDIT_MOBILE_COMPLETO_V284.md`. La release introduce una checklist operativa per verificare mobile, tema Light/Dark, tabelle, form, Dashboard Presidente e Admin prima dei prossimi fix CSS. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime.

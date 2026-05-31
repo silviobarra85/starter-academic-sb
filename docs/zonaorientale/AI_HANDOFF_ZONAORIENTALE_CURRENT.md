@@ -1,3 +1,7 @@
+## Aggiornamento V285 - Fix mirati mobile
+
+V285 applica correzioni CSS mirate alla UI mobile, soprattutto in tema Light: testi secondari piu' leggibili, pannelli piu' solidi, tabelle con indicazione `Scorri`, prima colonna sticky rafforzata, bottoni secondari/pill/badge piu' contrastati e menu mobile piu' leggibile. Non modifica dati, Firebase, EmailJS o logiche runtime. Diagnostica: `window.ZonaOrientaleMobileFixesV285`. Documento: `docs/zonaorientale/audit/FIX_MOBILE_MIRATI_V285.md`.
+
 ## Aggiornamento V284 - Audit mobile completo
 
 V284 aggiunge `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`, checklist operativa per test mobile su Home, News, Listone, Competizioni, Archivio, Statistiche, Confronta, Dashboard Presidente e Admin. Aggiorna lo script pre-push per segnalare la presenza dell'audit. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime. Diagnostica: `window.ZonaOrientaleMobileAuditV284`.

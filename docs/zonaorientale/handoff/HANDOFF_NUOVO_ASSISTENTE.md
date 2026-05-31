@@ -1,3 +1,13 @@
+## Aggiornamento V285
+
+- Versione runtime recente: `V285 fix mirati mobile`.
+- Migliorata la leggibilita' mobile in tema Light con correzioni CSS conservative.
+- Tabelle mobile: indicazione `Scorri`, corpo piu' leggibile e prima colonna sticky rafforzata.
+- Controlli, badge/pill, bottoni secondari e bottom navigation piu' contrastati.
+- Documento: `docs/zonaorientale/audit/FIX_MOBILE_MIRATI_V285.md`.
+- Diagnostica runtime: `window.ZonaOrientaleMobileFixesV285`.
+- Nessuna modifica a Firebase, EmailJS, dati JSON o logiche runtime.
+
 ## Aggiornamento V284
 
 - Versione runtime recente: `V284 audit mobile completo`.

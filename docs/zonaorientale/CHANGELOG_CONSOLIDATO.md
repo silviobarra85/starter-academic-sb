@@ -1,3 +1,13 @@
+## Aggiornamento V285 - Fix mirati mobile
+
+- Migliorata la leggibilita' mobile in tema Light.
+- Rafforzati pannelli/card, testi secondari, controlli, badge/pill e bottom navigation.
+- Migliorate tabelle mobile con bordi piu' chiari, indicazione `Scorri` e prima colonna sticky piu' leggibile.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V285.
+- Aggiunta diagnostica `window.ZonaOrientaleMobileFixesV285`.
+- Aggiunto documento `docs/zonaorientale/audit/FIX_MOBILE_MIRATI_V285.md`.
+- Nessuna modifica a Firebase, EmailJS, dati JSON o logiche runtime.
+
 ## Aggiornamento V284 - Audit mobile completo
 
 - Aggiunto `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`.
