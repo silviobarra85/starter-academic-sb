@@ -146,3 +146,20 @@ docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md
 ```
 
 Prima del push di interventi mobile, verificare tema Light su Listone e rose con scroll orizzontale.
+## Aggiornamento V291
+
+Lo script `check-zonaorientale.sh` controlla anche la presenza dei file CSS estratti:
+
+```text
+assets/css/refactor/mobile-controls-v291.css
+assets/css/refactor/rosters-tables-v291.css
+```
+
+e del documento:
+
+```text
+docs/zonaorientale/refactor/CSS_REFACTOR_V291.md
+```
+
+Questi controlli servono a evitare che gli override mobile/rose/Listone vengano staccati dagli HTML durante futuri refactor.
+

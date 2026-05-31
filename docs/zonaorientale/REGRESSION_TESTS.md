@@ -550,3 +550,20 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Dashboard Presidente/rose: nomi giocatori leggibili nella prima colonna se la tabella e' presente.
 - Tema Dark: nessuna regressione evidente su Listone e rose.
 - Console: `window.ZonaOrientaleStickyColumnContrastV286.cssOnly` deve essere `true`.
+## V291 - Verifiche refactor CSS prudente
+
+Funzionalita da non perdere durante la separazione CSS:
+
+- Listone: colonna `Modifica`, filtro `Modifiche`, `Mostra usciti storici` ed export CSV.
+- Rose e pagina squadra: prima colonna sticky leggibile, righe compatte e contenuto centrato verticalmente da mobile.
+- Dashboard Presidente: tabelle rose, controlli trattative e form leggibili da smartphone.
+- Navigazione mobile: bottom nav, menu Altro e pulsante Su.
+- Tema: Light mode resta disattivata e il toggle tema non deve comparire.
+- Pagine standalone: `competition.html` e `player.html` devono caricare i nuovi CSS V291.
+
+Controlli tecnici:
+
+```bash
+static/zonaorientale/tools/check-zonaorientale.sh
+```
+

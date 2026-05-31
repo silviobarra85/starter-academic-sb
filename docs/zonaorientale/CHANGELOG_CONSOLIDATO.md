@@ -1,3 +1,14 @@
+## Aggiornamento V291 - Refactor CSS prudente
+
+- Estratti da `assets/styles.css` i blocchi CSS recenti V285-V289, senza riscriverli, nei nuovi file `assets/css/refactor/mobile-controls-v291.css` e `assets/css/refactor/rosters-tables-v291.css`.
+- Aggiornati gli import CSS in `index.html`, `competition.html` e `player.html` con cache-buster V291.
+- `styles.css` conserva solo un commento di indirizzamento: nessuna funzionalita mobile/rose/Listone e' stata rimossa.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V291.
+- Aggiunta diagnostica `window.ZonaOrientaleCssRefactorV291`.
+- Aggiunto documento `docs/zonaorientale/refactor/CSS_REFACTOR_V291.md`.
+- Funzionalita preservate esplicitamente: Listone Modifica/export, rose/pagina squadra, Dashboard Presidente, bottom navigation e Dark mode unico.
+- Nessuna modifica a Firebase, EmailJS, dati JSON, logiche `app.js` o `FUNZIONALITA'.md`.
+
 ## Aggiornamento V290 - Audit styles.css e app.js
 
 - Aggiunto `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md`.

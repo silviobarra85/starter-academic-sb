@@ -1,3 +1,7 @@
+## Aggiornamento V291
+
+Versione runtime corrente: **V291 refactor CSS prudente**. Leggere anche `refactor/CSS_REFACTOR_V291.md`. La release non cambia funzionalita': sposta i blocchi CSS V285-V289 da `styles.css` in due file dedicati sotto `assets/css/refactor/`, mantenendo lo stesso ordine di override e aggiungendo controlli nello script pre-push.
+
 ## Aggiornamento V290 - Audit styles.css e app.js
 
 V290 aggiunge un audit conservativo di `assets/styles.css` e `assets/app.js` prima di qualunque refactor reale. Non cambia comportamento runtime: aggiorna versione/cache-buster, aggiunge diagnostica `window.ZonaOrientaleStylesAppAuditV290` e documenta funzionalita a rischio da preservare in `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md`. Regola operativa: ogni refactor successivo deve dichiarare cosa rischia di perdere e come lo preserva.
@@ -49,7 +53,7 @@ refactor/260528-zonaorientale-next
 Versione runtime attesa dopo l'overlay:
 
 ```text
-V287 rifinitura controlli mobile
+V291 refactor CSS prudente
 ```
 
 ## Documenti principali da leggere

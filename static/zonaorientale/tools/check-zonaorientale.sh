@@ -130,6 +130,20 @@ if [[ -n "$expected_version" ]]; then
   fi
 fi
 
+
+print_step "CSS refactor"
+css_refactor_files=(
+  "$SITE_ROOT/assets/css/refactor/mobile-controls-v291.css"
+  "$SITE_ROOT/assets/css/refactor/rosters-tables-v291.css"
+)
+for css_refactor_file in "${css_refactor_files[@]}"; do
+  if [[ -f "$css_refactor_file" ]]; then
+    pass "CSS refactor presente: ${css_refactor_file#$SITE_ROOT/}"
+  else
+    fail "CSS refactor mancante: ${css_refactor_file#$SITE_ROOT/}"
+  fi
+done
+
 print_step "File macOS indesiderati"
 macos_roots=("$SITE_ROOT")
 if [[ -n "$DOCS_ROOT" ]]; then
@@ -202,10 +216,16 @@ fi
 print_step "Audit refactor"
 if [[ -n "$DOCS_ROOT" ]]; then
   styles_app_audit_doc="$DOCS_ROOT/refactor/AUDIT_STYLES_APP_V290.md"
+  css_refactor_doc="$DOCS_ROOT/refactor/CSS_REFACTOR_V291.md"
   if [[ -f "$styles_app_audit_doc" ]]; then
     pass "audit styles/app V290 disponibile: refactor/AUDIT_STYLES_APP_V290.md"
   else
     warn "audit styles/app V290 non trovato; prima di refactor CSS/JS creare o aggiornare docs/zonaorientale/refactor"
+  fi
+  if [[ -f "$css_refactor_doc" ]]; then
+    pass "refactor CSS V291 documentato: refactor/CSS_REFACTOR_V291.md"
+  else
+    warn "refactor CSS V291 non documentato; verificare docs/zonaorientale/refactor/CSS_REFACTOR_V291.md"
   fi
 else
   warn "docs non disponibili; salto controllo audit refactor"
