@@ -1,3 +1,7 @@
+## Aggiornamento V287
+
+Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza del documento `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md` quando la documentazione e' disponibile.
+
 ## Aggiornamento V284
 
 Lo script `check-zonaorientale.sh` segnala anche la presenza dell'audit mobile V284 quando la cartella documentazione e' disponibile:

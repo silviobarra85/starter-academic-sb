@@ -1,3 +1,7 @@
+## Aggiornamento V287 - Rifinitura controlli mobile
+
+V287 e' una patch CSS/UI conservativa per controlli mobile: input/select/textarea a target touch piu' comodo, font-size 16px per ridurre zoom iOS, bottoni/pill/menu piu' leggibili, focus ring Light e scroll tabelle piu' fluido. Non cambia dati, Firebase, EmailJS o logiche runtime. Documento: `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`. Diagnostica: `window.ZonaOrientaleMobileControlsV287`.
+
 ## Aggiornamento V286
 
 - Versione runtime recente: `V286 fix prima colonna mobile`.

@@ -1,3 +1,13 @@
+## Aggiornamento V287 - Rifinitura controlli mobile
+
+- Migliorati target touch e leggibilita' di input, select, textarea, filtri e bottoni da smartphone.
+- Rafforzati focus ring, gruppi checkbox/radio, pill attive, bottom navigation e menu mobile in tema Light.
+- Migliorato lo scroll orizzontale delle tabelle con `-webkit-overflow-scrolling: touch`.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V287.
+- Aggiunta diagnostica `window.ZonaOrientaleMobileControlsV287`.
+- Aggiunto documento `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`.
+- Nessuna modifica a dati, Firebase, EmailJS o `FUNZIONALITA'.md`.
+
 ## Aggiornamento V285 - Fix mirati mobile
 
 - Migliorata la leggibilita' mobile in tema Light.

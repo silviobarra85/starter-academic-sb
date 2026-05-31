@@ -1,3 +1,7 @@
+## Aggiornamento V287 - Test controlli mobile
+
+Dopo V287 verificare da smartphone/viewport mobile: filtri Listone, campi visibili, filtro Modifiche, export CSV, form Dashboard Presidente, toolbar Admin, bottom navigation, menu Altro, input con focus e scroll orizzontale tabelle. Ripetere un controllo rapido in tema Dark.
+
 ## Test V285 - Fix mirati mobile
 
 - Attivare tema Light e verificare da smartphone reale o viewport mobile.

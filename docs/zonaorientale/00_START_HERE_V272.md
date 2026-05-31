@@ -1,3 +1,7 @@
+## Aggiornamento V287 - Rifinitura controlli mobile
+
+Versione corrente: V287 rifinitura controlli mobile. Leggere anche `audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`. La release applica una patch CSS/UI mirata a form, filtri, bottoni, menu e aree scrollabili da smartphone. Non modifica Firebase, EmailJS, dati JSON o logiche runtime.
+
 ## Aggiornamento V286 - Fix prima colonna mobile Light
 
 Versione corrente: V286 fix prima colonna mobile. Leggere anche `audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`. La release corregge il contrasto della prima colonna sticky in tema Light/mobile per Listone e tabelle rose, evitando il caso nome giocatore nero su sfondo scuro. Intervento solo CSS/UI, senza modifiche a Firebase, EmailJS, dati JSON o logiche runtime.
@@ -8,7 +12,7 @@ Versione corrente: V285 fix mirati mobile. Leggere anche `audit/FIX_MOBILE_MIRAT
 
 ## Aggiornamento V284 - Audit mobile completo
 
-Versione corrente: V284 audit mobile completo. Leggere anche `audit/AUDIT_MOBILE_COMPLETO_V284.md`. La release introduce una checklist operativa per verificare mobile, tema Light/Dark, tabelle, form, Dashboard Presidente e Admin prima dei prossimi fix CSS. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime.
+Versione corrente: V287 rifinitura controlli mobile. Leggere anche `audit/AUDIT_MOBILE_COMPLETO_V284.md`. La release introduce una checklist operativa per verificare mobile, tema Light/Dark, tabelle, form, Dashboard Presidente e Admin prima dei prossimi fix CSS. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime.
 
 ## Aggiornamento V283 - Pulizia file macOS/residui
 
@@ -33,7 +37,7 @@ refactor/260528-zonaorientale-next
 Versione runtime attesa dopo l'overlay:
 
 ```text
-V284 audit mobile completo
+V287 rifinitura controlli mobile
 ```
 
 ## Documenti principali da leggere

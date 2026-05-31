@@ -1,3 +1,7 @@
+## Aggiornamento V287 - Rifinitura controlli mobile
+
+V287 migliora usabilita' e leggibilita' dei controlli mobile: target touch, input/select/textarea, filtri, bottoni, pill, bottom navigation, menu mobile e aree tabellari scrollabili. Intervento solo CSS/UI, senza modifiche a dati, Firebase, EmailJS o logiche runtime. Diagnostica: `window.ZonaOrientaleMobileControlsV287`. Documento: `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`.
+
 ## Aggiornamento V286 - Fix prima colonna mobile Light
 
 V286 corregge il problema segnalato in modalita Light/mobile in cui il nome giocatore poteva apparire nero su sfondo scuro nella prima colonna sticky del Listone e delle tabelle rose. La patch e' solo CSS, piu' specifica e finale rispetto alle regole V285, e forza testo chiaro su sfondo scuro per celle, link e bottoni della prima colonna. Non modifica dati, Firebase, EmailJS o logiche runtime. Diagnostica: `window.ZonaOrientaleStickyColumnContrastV286`. Documento: `docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`.
