@@ -1,3 +1,7 @@
+## Aggiornamento V290 - Audit styles.css e app.js
+
+V290 aggiunge un audit conservativo di `assets/styles.css` e `assets/app.js` prima di qualunque refactor reale. Non cambia comportamento runtime: aggiorna versione/cache-buster, aggiunge diagnostica `window.ZonaOrientaleStylesAppAuditV290` e documenta funzionalita a rischio da preservare in `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md`. Regola operativa: ogni refactor successivo deve dichiarare cosa rischia di perdere e come lo preserva.
+
 ## Aggiornamento V289 - Dark mode e rose mobile
 
 V289 sospende temporaneamente la modalita Light: il sito forza il tema Dark anche se nel browser era salvato Light e il pulsante cambio tema viene nascosto. Corregge inoltre le tabelle Rosa da mobile in modalita Dark, compattando le righe e centrando verticalmente la prima colonna nelle rose pubbliche e nella pagina squadra. Documento: `docs/zonaorientale/audit/DARK_MODE_ROSE_MOBILE_V289.md`. Diagnostica: `window.ZonaOrientaleDarkModeOnlyV289`.

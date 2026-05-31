@@ -1,3 +1,7 @@
+## Aggiornamento V290
+
+Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza dell’audit `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md` quando la documentazione e disponibile. Prima di qualunque refactor CSS/JS consultare la sezione funzionalita a rischio del documento V290.
+
 ## Aggiornamento V289
 
 Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza del documento `docs/zonaorientale/audit/DARK_MODE_ROSE_MOBILE_V289.md` quando la documentazione e' disponibile.

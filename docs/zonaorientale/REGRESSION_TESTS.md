@@ -1,3 +1,7 @@
+## Aggiornamento V290 - Test refactor styles/app
+
+V290 non cambia comportamento runtime. Prima di procedere a refactor reali verificare che il sito resti allineato a V290 e usare `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md` come checklist di preservazione funzionale. Test minimi: Home, News/link WhatsApp, Listone con Modifiche/export, Rose/pagina squadra mobile, Competizioni, Archivio, Statistiche, Confronta, Dashboard Presidente, Admin Richieste presidenti, Diagnostica dati, Converti listone Excel, bottom navigation e pulsante Su.
+
 ## Aggiornamento V289 - Test dark mode e rose mobile
 
 Dopo V289 verificare da smartphone/viewport mobile: il pulsante tema non deve comparire; anche con `localStorage.zonaOrientaleTheme = "light"` il sito deve ricaricarsi in Dark; nelle rose pubbliche e nella pagina squadra le righe della tabella Rosa devono essere compatte e il nome nella prima colonna deve essere leggibile e centrato verticalmente. Ripetere un controllo rapido su Listone, Dashboard Presidente e pagina giocatore standalone.

@@ -199,6 +199,18 @@ else
   warn "docs non disponibili; salto controllo audit mobile"
 fi
 
+print_step "Audit refactor"
+if [[ -n "$DOCS_ROOT" ]]; then
+  styles_app_audit_doc="$DOCS_ROOT/refactor/AUDIT_STYLES_APP_V290.md"
+  if [[ -f "$styles_app_audit_doc" ]]; then
+    pass "audit styles/app V290 disponibile: refactor/AUDIT_STYLES_APP_V290.md"
+  else
+    warn "audit styles/app V290 non trovato; prima di refactor CSS/JS creare o aggiornare docs/zonaorientale/refactor"
+  fi
+else
+  warn "docs non disponibili; salto controllo audit refactor"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.\n' "$failures" "$warns" >&2

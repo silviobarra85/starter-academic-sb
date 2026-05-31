@@ -1,3 +1,11 @@
+## Aggiornamento V290 - Audit styles.css e app.js
+
+- Aggiunto `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md`.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V290.
+- Aggiunta diagnostica `window.ZonaOrientaleStylesAppAuditV290`.
+- Nessuna modifica funzionale: audit e guardrail per evitare regressioni durante la futura pulizia di `styles.css` e `app.js`.
+- Ogni prossimo refactor deve indicare esplicitamente funzionalita a rischio e verifiche di preservazione.
+
 ## Aggiornamento V289 - Dark mode e rose mobile
 
 - Sospesa temporaneamente la modalita Light dal sito.
