@@ -841,3 +841,7 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Patch solo CSS + diagnostica runtime: `window.ZonaOrientaleMobileLightContrastV281`.
 - Documento tecnico: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
 - Non sono state modificate logiche Listone, Firebase, EmailJS o dati JSON.
+
+## V294 - Helper puri app.js
+
+Prima estrazione prudente verso il refactor di `assets/app.js`: aggiunto `assets/js/utils/shared-helpers-v294.js`. Il modulo e' importato e diagnosticato, ma i call-site storici non sono ancora stati riscritti. Prima di usare questi helper al posto di funzioni legacy fare grep, indicare funzionalita a rischio e testare Listone, rose, Dashboard Presidente, Admin, mobile, `competition.html`, `player.html` e news share.

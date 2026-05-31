@@ -145,6 +145,15 @@ for css_refactor_file in "${css_refactor_files[@]}"; do
   fi
 done
 
+
+print_step "Helper JS refactor"
+helper_v294_file="$SITE_ROOT/assets/js/utils/shared-helpers-v294.js"
+if [[ -f "$helper_v294_file" ]]; then
+  pass "helper puri V294 presente: assets/js/utils/shared-helpers-v294.js"
+else
+  fail "helper puri V294 mancante: assets/js/utils/shared-helpers-v294.js"
+fi
+
 print_step "File macOS indesiderati"
 macos_roots=("$SITE_ROOT")
 if [[ -n "$DOCS_ROOT" ]]; then
@@ -220,6 +229,7 @@ if [[ -n "$DOCS_ROOT" ]]; then
   css_refactor_doc="$DOCS_ROOT/refactor/CSS_REFACTOR_V291.md"
   css_cleanup_doc="$DOCS_ROOT/refactor/CSS_CLEANUP_V292.md"
   app_js_audit_doc="$DOCS_ROOT/refactor/APP_JS_AUDIT_V293.md"
+  app_helpers_doc="$DOCS_ROOT/refactor/APP_HELPERS_EXTRACTION_V294.md"
   if [[ -f "$styles_app_audit_doc" ]]; then
     pass "audit styles/app V290 disponibile: refactor/AUDIT_STYLES_APP_V290.md"
   else
@@ -239,6 +249,11 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "audit app.js V293 documentato: refactor/APP_JS_AUDIT_V293.md"
   else
     warn "audit app.js V293 non documentato; prima di estrarre helper JS creare docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md"
+  fi
+  if [[ -f "$app_helpers_doc" ]]; then
+    pass "estrazione helper V294 documentata: refactor/APP_HELPERS_EXTRACTION_V294.md"
+  else
+    warn "estrazione helper V294 non documentata; verificare docs/zonaorientale/refactor/APP_HELPERS_EXTRACTION_V294.md"
   fi
 else
   warn "docs non disponibili; salto controllo audit refactor"

@@ -178,3 +178,18 @@ docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md
 ```
 
 Questo serve a evitare refactor di `assets/app.js` senza una mappa preventiva delle funzionalita a rischio. Prima di spostare helper JS, leggere l'audit V293 e dichiarare nel documento della release cosa si rischia di perdere e come lo si preserva.
+
+## Aggiornamento V294 - Helper puri app.js
+
+Lo script `static/zonaorientale/tools/check-zonaorientale.sh` verifica anche:
+
+- presenza di `assets/js/utils/shared-helpers-v294.js`;
+- presenza di `docs/zonaorientale/refactor/APP_HELPERS_EXTRACTION_V294.md`;
+- cache-buster/import allineati a `DEPLOY_EXPECTED_VERSION_V181`.
+
+Prima del push, controllare anche in console:
+
+```js
+window.ZonaOrientaleSharedHelpersV294.runSmokeTest().ok
+window.ZonaOrientaleAppHelpersExtractionV294.behaviorChange
+```

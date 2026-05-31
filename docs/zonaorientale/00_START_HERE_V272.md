@@ -132,3 +132,11 @@ I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il siste
 - Intervento solo CSS + diagnostica runtime, senza modifiche a Firebase, EmailJS o dati JSON.
 - Nuovo documento: `audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
 - Diagnostica: `window.ZonaOrientaleMobileLightContrastV281`.
+
+## V294 - Helper puri app.js
+
+- Aggiunto `assets/js/utils/shared-helpers-v294.js` come modulo non invasivo di helper puri.
+- Nessuna funzione storica di `app.js` viene rimossa o riscritta.
+- Funzionalita da preservare esplicitamente: Listone, rose, Dashboard Presidente, Admin, news share, mobile chrome e Dark mode unico.
+- Documento tecnico: `refactor/APP_HELPERS_EXTRACTION_V294.md`.
+- Diagnostica: `window.ZonaOrientaleAppHelpersExtractionV294`.

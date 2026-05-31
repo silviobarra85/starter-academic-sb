@@ -793,3 +793,13 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiornato lo script pre-push per verificare la presenza dell'audit V293.
 - Nessuna modifica funzionale a UI, dati, Firebase, EmailJS o logiche runtime.
 - Funzionalita da preservare esplicitamente nei prossimi refactor: Listone con Modifica/export, rose e pagina squadra, Dashboard Presidente, Admin Richieste/Diagnostica/Converti listone, mobile nav, `competition.html`, `player.html` e share WhatsApp.
+
+## V294 - Helper puri app.js
+
+- Aggiunto `assets/js/utils/shared-helpers-v294.js` come primo modulo di helper puri per il refactor di `assets/app.js`.
+- Esposti helper per normalizzazione testo, slug, numeri, CSV e deduplicazione.
+- Importato il modulo in `assets/app.js` con cache-buster `?v=294` ed esposto in `window.ZonaOrientaleSharedHelpersV294`.
+- Aggiunta diagnostica `window.ZonaOrientaleAppHelpersExtractionV294` con smoke test.
+- Aggiornato lo script pre-push per verificare modulo e documento V294.
+- Nessuna funzione storica di `app.js` viene rimossa o ricollegata: Listone, rose, Dashboard Presidente, Admin, Firebase/EmailJS e mobile restano invariati.
+- Aggiunto documento `docs/zonaorientale/refactor/APP_HELPERS_EXTRACTION_V294.md`.

@@ -840,3 +840,9 @@ V280 aggiunge anche un primo audit statico sulla leggibilita mobile in modalita 
 ## V281 - Contrasto mobile Light
 
 V281 migliora la leggibilita in modalita Light da smartphone: testi secondari piu' scuri, card/pannelli con sfondo piu' solido, tabelle mobile con corpo piu' leggibile e badge/stati con colori ad alto contrasto. Non cambia dati, Firebase, EmailJS o logiche Listone. Diagnostica: `window.ZonaOrientaleMobileLightContrastV281`. Documento tecnico: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
+
+## V294 - Helper puri app.js
+
+V294 introduce `assets/js/utils/shared-helpers-v294.js`, un modulo piccolo di helper puri per preparare il refactor di `assets/app.js`. Il modulo espone normalizzazione testo, slug, numeri, CSV e deduplicazione, ma non sostituisce ancora i call-site storici. Nessuna funzionalita runtime viene rimossa o riscritta.
+
+Funzionalita da preservare nei prossimi refactor JS: Listone con `Modifica`/export, rose e pagina squadra, Dashboard Presidente, Admin Richieste/Diagnostica/Converti listone, news share WhatsApp, mobile nav/pulsante Su, `competition.html`, `player.html` e Dark mode unico V289. Documento tecnico: `docs/zonaorientale/refactor/APP_HELPERS_EXTRACTION_V294.md`. Diagnostica: `window.ZonaOrientaleAppHelpersExtractionV294`.

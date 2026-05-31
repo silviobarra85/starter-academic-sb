@@ -38,12 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
+import { ZonaOrientaleSharedHelpersV294 } from "./js/utils/shared-helpers-v294.js?v=294";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=293";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=293";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=294";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=294";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -95,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=293";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=294";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=293";
+} from "./js/domain/news-share-v228.js?v=294";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=293";
+} from "./js/admin/listone-converter.js?v=294";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=293";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=293";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=294";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=294";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=293";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=293";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=293";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=293";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=294";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=294";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=294";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=294";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=293";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=293";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=293";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=294";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=294";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=294";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15568,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "293";
+const DEPLOY_EXPECTED_VERSION_V181 = "294";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23393,3 +23394,38 @@ window.ZonaOrientaleAppJsAuditV293 = {
   preservationRule: "Non spostare o rimuovere codice app.js senza grep, audit dipendenze e test browser delle funzionalita collegate.",
   generatedAt: "2026-05-31"
 };
+
+/* V294 - Estrazione minima helper puri.
+ * Aggiunge un modulo di utility condivise senza sostituire ancora i call-site storici.
+ * Funzionalita da preservare: Listone, rose, Admin, Dashboard Presidente, mobile chrome,
+ * news share e flussi Firebase/EmailJS restano agganciati al codice esistente.
+ */
+window.ZonaOrientaleSharedHelpersV294 = ZonaOrientaleSharedHelpersV294;
+window.ZonaOrientaleAppHelpersExtractionV294 = {
+  version: "V294",
+  label: "estrazione minima helper puri",
+  behaviorChange: false,
+  module: "assets/js/utils/shared-helpers-v294.js",
+  exportedHelpers: [
+    "normalizeWhitespace",
+    "normalizeSearchKey",
+    "slugifyText",
+    "toFiniteNumber",
+    "formatSignedNumber",
+    "csvEscape",
+    "rowsToCsv",
+    "uniqueByKey"
+  ],
+  smokeTest: ZonaOrientaleSharedHelpersV294.runSmokeTest(),
+  notRewiredYet: true,
+  preserves: [
+    "Listone con Modifica, filtro Modifiche, usciti storici ed export CSV",
+    "Rose pubbliche, pagina squadra e Dashboard Presidente",
+    "Admin Richieste presidenti, Diagnostica dati e Converti listone Excel",
+    "Mobile bottom nav, menu Altro e pulsante Su",
+    "News share WhatsApp dinamico",
+    "Firebase/Auth/EmailJS invariati"
+  ],
+  generatedAt: "2026-05-31"
+};
+

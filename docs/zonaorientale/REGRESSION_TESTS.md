@@ -595,3 +595,20 @@ La V293 non modifica comportamento runtime, ma prepara il refactor JS. Prima di 
 - Console: `window.ZonaOrientaleAppJsAuditV293.behaviorChange` deve essere `false`.
 
 Regola: se un refactor rischia di scollegare una funzionalita, la release deve dichiarare come viene preservata o rimandare la modifica.
+
+## Test V294 - Helper puri app.js
+
+La V294 introduce un modulo di helper puri senza sostituire i call-site storici. Verificare:
+
+- `static/zonaorientale/tools/check-zonaorientale.sh` deve passare.
+- Console: `window.ZonaOrientaleSharedHelpersV294.runSmokeTest().ok` deve essere `true`.
+- Console: `window.ZonaOrientaleAppHelpersExtractionV294.behaviorChange` deve essere `false`.
+- Home pubblica e navigazione mobile devono caricarsi.
+- Listone: filtro `Modifiche`, `Mostra usciti storici`, export CSV e colonna `Modifica`.
+- Rose pubbliche e pagina squadra.
+- Dashboard Presidente: rosa, trattative, comunicati e svincoli.
+- Admin: Richieste presidenti, Diagnostica dati, Converti listone Excel.
+- News/share WhatsApp dinamico.
+- `competition.html` e `player.html`.
+
+Funzionalita da non perdere: nessun flusso esistente deve essere ricollegato al nuovo helper senza un overlay dedicato e test browser.
