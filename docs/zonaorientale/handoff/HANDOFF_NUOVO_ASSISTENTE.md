@@ -1,3 +1,12 @@
+## Aggiornamento V286
+
+- Versione runtime recente: `V286 fix prima colonna mobile`.
+- Corretto contrasto della prima colonna sticky in tema Light/mobile per Listone e tabelle rose.
+- Intervento solo CSS/UI: nessuna modifica a Firebase, EmailJS, dati JSON o logiche Listone/rose.
+- Documento: `docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`.
+- Diagnostica runtime: `window.ZonaOrientaleStickyColumnContrastV286`.
+- Test prioritari: Listone e rose da smartphone in tema Light, con scroll orizzontale.
+
 ## Aggiornamento V285
 
 - Versione runtime recente: `V285 fix mirati mobile`.

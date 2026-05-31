@@ -120,3 +120,13 @@ docs/zonaorientale/audit/FIX_MOBILE_MIRATI_V285.md
 ```
 
 Il controllo resta non distruttivo e serve solo a ricordare di mantenere allineati audit, fix UI e checklist di regressione quando si lavora su mobile.
+
+## Aggiornamento V286
+
+In V286 lo script segnala anche la presenza della documentazione del fix prima colonna mobile Light:
+
+```text
+docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md
+```
+
+Prima del push di interventi mobile, verificare tema Light su Listone e rose con scroll orizzontale.

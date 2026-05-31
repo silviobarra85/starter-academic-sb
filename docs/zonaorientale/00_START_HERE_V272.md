@@ -1,3 +1,7 @@
+## Aggiornamento V286 - Fix prima colonna mobile Light
+
+Versione corrente: V286 fix prima colonna mobile. Leggere anche `audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`. La release corregge il contrasto della prima colonna sticky in tema Light/mobile per Listone e tabelle rose, evitando il caso nome giocatore nero su sfondo scuro. Intervento solo CSS/UI, senza modifiche a Firebase, EmailJS, dati JSON o logiche runtime.
+
 ## Aggiornamento V285 - Fix mirati mobile
 
 Versione corrente: V285 fix mirati mobile. Leggere anche `audit/FIX_MOBILE_MIRATI_V285.md`. La release applica correzioni CSS conservative per migliorare leggibilita' mobile in tema Light, tabelle scrollabili, prima colonna sticky, badge/pill/bottoni secondari e bottom navigation. Nessuna modifica funzionale a Firebase, EmailJS, dati JSON o logiche runtime.

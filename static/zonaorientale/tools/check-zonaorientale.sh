@@ -161,6 +161,7 @@ print_step "Audit mobile"
 if [[ -n "$DOCS_ROOT" ]]; then
   mobile_audit_doc="$DOCS_ROOT/audit/AUDIT_MOBILE_COMPLETO_V284.md"
   mobile_fix_doc="$DOCS_ROOT/audit/FIX_MOBILE_MIRATI_V285.md"
+  sticky_fix_doc="$DOCS_ROOT/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md"
   if [[ -f "$mobile_audit_doc" ]]; then
     pass "audit mobile V284 disponibile: audit/AUDIT_MOBILE_COMPLETO_V284.md"
   else
@@ -170,6 +171,11 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "fix mobile V285 documentato: audit/FIX_MOBILE_MIRATI_V285.md"
   else
     warn "documento fix mobile V285 non trovato; se stai applicando V285 verifica docs/zonaorientale/audit"
+  fi
+  if [[ -f "$sticky_fix_doc" ]]; then
+    pass "fix prima colonna V286 documentato: audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md"
+  else
+    warn "documento fix prima colonna V286 non trovato; se stai applicando V286 verifica docs/zonaorientale/audit"
   fi
 else
   warn "docs non disponibili; salto controllo audit mobile"

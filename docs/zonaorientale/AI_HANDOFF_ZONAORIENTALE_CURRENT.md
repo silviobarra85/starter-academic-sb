@@ -1,3 +1,7 @@
+## Aggiornamento V286 - Fix prima colonna mobile Light
+
+V286 corregge il problema segnalato in modalita Light/mobile in cui il nome giocatore poteva apparire nero su sfondo scuro nella prima colonna sticky del Listone e delle tabelle rose. La patch e' solo CSS, piu' specifica e finale rispetto alle regole V285, e forza testo chiaro su sfondo scuro per celle, link e bottoni della prima colonna. Non modifica dati, Firebase, EmailJS o logiche runtime. Diagnostica: `window.ZonaOrientaleStickyColumnContrastV286`. Documento: `docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`.
+
 ## Aggiornamento V285 - Fix mirati mobile
 
 V285 applica correzioni CSS mirate alla UI mobile, soprattutto in tema Light: testi secondari piu' leggibili, pannelli piu' solidi, tabelle con indicazione `Scorri`, prima colonna sticky rafforzata, bottoni secondari/pill/badge piu' contrastati e menu mobile piu' leggibile. Non modifica dati, Firebase, EmailJS o logiche runtime. Diagnostica: `window.ZonaOrientaleMobileFixesV285`. Documento: `docs/zonaorientale/audit/FIX_MOBILE_MIRATI_V285.md`.

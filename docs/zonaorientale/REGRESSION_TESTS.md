@@ -523,3 +523,14 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Presidente: dashboard e trattative leggibili in Light.
 - Admin: Diagnostica dati e Richieste presidenti leggibili in Light.
 - Console: `window.ZonaOrientaleMobileLightContrastV281.cssOnly` deve essere `true`.
+
+## Test V286 - Prima colonna mobile Light
+
+- Attivare tema Light.
+- Verificare da smartphone reale o viewport mobile.
+- Listone: durante lo scroll orizzontale la prima colonna sticky deve mostrare il nome giocatore leggibile.
+- Listone: il nome giocatore non deve mai risultare nero su sfondo nero/scuro.
+- Rose pubbliche: nomi giocatori leggibili nella prima colonna.
+- Dashboard Presidente/rose: nomi giocatori leggibili nella prima colonna se la tabella e' presente.
+- Tema Dark: nessuna regressione evidente su Listone e rose.
+- Console: `window.ZonaOrientaleStickyColumnContrastV286.cssOnly` deve essere `true`.

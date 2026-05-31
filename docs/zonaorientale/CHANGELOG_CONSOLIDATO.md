@@ -711,3 +711,13 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiunta diagnostica `window.ZonaOrientaleMobileLightContrastV281`.
 - Aggiunto documento `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
 - Nessuna modifica a dati, Firebase, EmailJS o `FUNZIONALITA'.md`.
+
+## V286 - Fix prima colonna mobile Light
+
+- Corretto contrasto della prima colonna sticky in modalita Light/mobile per Listone e tabelle rose.
+- Evitato il caso nome giocatore nero su sfondo scuro.
+- Forzato testo chiaro su sfondo scuro per celle, link e bottoni nome giocatore nella prima colonna sticky.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V286.
+- Aggiunta diagnostica `window.ZonaOrientaleStickyColumnContrastV286`.
+- Aggiunto documento `docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`.
+- Nessuna modifica a dati, Firebase, EmailJS o `FUNZIONALITA'.md`.
