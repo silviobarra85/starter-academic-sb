@@ -1,3 +1,12 @@
+## Aggiornamento V283
+
+- Versione runtime recente: `V283 pulizia file macOS`.
+- Nuovo script: `static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh`.
+- Lo script e' dry-run di default; usare `--apply` e `--git-rm` solo dopo controllo elenco.
+- Documento operativo: `docs/zonaorientale/release/PULIZIA_MACOS_V283.md`.
+- Diagnostica runtime: `window.ZonaOrientaleMacOsCleanupV283`.
+- Nessuna modifica funzionale a Firebase, EmailJS o dati JSON.
+
 # Handoff nuovo assistente AI - ZonaOrientale Salerno
 
 > File canonico creato in V279 accorpando e aggiornando `HANDOFF_NUOVO_ASSISTENTE_V272.md` e `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md`.
@@ -19,7 +28,7 @@
 - Webapp: `static/zonaorientale/`.
 - Documentazione: `docs/zonaorientale/`.
 - Branch di lavoro corrente: `refactor/260528-zonaorientale-next`.
-- Versione runtime recente: `V282 controlli pre-push`.
+- Versione runtime recente: `V283 pulizia file macOS`.
 - Branch di produzione/deploy: `master`.
 
 ## 2. Regole operative obbligatorie

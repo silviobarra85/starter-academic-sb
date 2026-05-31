@@ -1,6 +1,10 @@
+## Aggiornamento V283 - Pulizia file macOS/residui
+
+Versione corrente: V283 pulizia file macOS. Leggere anche `release/PULIZIA_MACOS_V283.md`. La release aggiunge lo script `static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh` e aggiorna i controlli pre-push V282 per riconoscere ulteriori metadata macOS. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime.
+
 ## Aggiornamento V282 - Controlli pre-push
 
-Versione corrente: V282 controlli pre-push. Leggere anche `release/CONTROLLI_PRE_PUSH_V282.md`. Prima di ogni commit/push usare `static/zonaorientale/tools/check-zonaorientale.sh`.
+Versione corrente: V283 pulizia file macOS. Leggere anche `release/CONTROLLI_PRE_PUSH_V282.md`. Prima di ogni commit/push usare `static/zonaorientale/tools/check-zonaorientale.sh`.
 
 ## Aggiornamento V275
 

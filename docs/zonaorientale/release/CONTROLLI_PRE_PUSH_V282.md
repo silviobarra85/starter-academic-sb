@@ -90,3 +90,13 @@ Verificare anche da browser:
 ```js
 window.ZonaOrientalePrePushChecksV282
 ```
+
+## Aggiornamento V283
+
+In V283 lo script e' stato aggiornato per riconoscere anche `.AppleDouble` e `.LSOverride` e per suggerire il nuovo strumento di pulizia controllata:
+
+```bash
+static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh
+```
+
+Il controllo pre-push resta non distruttivo: segnala gli errori, ma non rimuove file automaticamente.

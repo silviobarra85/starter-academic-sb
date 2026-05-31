@@ -131,16 +131,23 @@ if [[ -n "$expected_version" ]]; then
 fi
 
 print_step "File macOS indesiderati"
-macos_found="$(find "$SITE_ROOT" ${DOCS_ROOT:+"$DOCS_ROOT"} \( -name '.DS_Store' -o -name '._*' -o -name '__MACOSX' \) -print 2>/dev/null || true)"
+macos_roots=("$SITE_ROOT")
+if [[ -n "$DOCS_ROOT" ]]; then
+  macos_roots+=("$DOCS_ROOT")
+fi
+macos_found="$(find "${macos_roots[@]}" \( -name '.DS_Store' -o -name '._*' -o -name '__MACOSX' -o -name '.AppleDouble' -o -name '.LSOverride' \) -print 2>/dev/null || true)"
 if [[ -n "$macos_found" ]]; then
   printf '%s\n' "$macos_found"
   fail "trovati file macOS indesiderati nel sito/docs"
+  if [[ -x "$SCRIPT_DIR/cleanup-macos-artifacts-v283.sh" ]]; then
+    printf 'Suggerimento: esegui %s/cleanup-macos-artifacts-v283.sh per il dry-run.\n' "$SCRIPT_DIR"
+  fi
 else
   pass "nessun file macOS indesiderato trovato nel sito/docs"
 fi
 
 if [[ -n "$REPO_ROOT" ]]; then
-  tracked_macos="$(git -C "$REPO_ROOT" ls-files | grep -E '(^|/)(\.DS_Store|__MACOSX|\._)' || true)"
+  tracked_macos="$(git -C "$REPO_ROOT" ls-files | grep -E '(^|/)(\.DS_Store|__MACOSX|\._|\.AppleDouble|\.LSOverride)' || true)"
   if [[ -n "$tracked_macos" ]]; then
     printf '%s\n' "$tracked_macos"
     fail "trovati file macOS tracciati da Git"

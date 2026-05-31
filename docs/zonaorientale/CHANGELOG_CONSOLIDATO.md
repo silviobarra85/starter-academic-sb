@@ -1,3 +1,13 @@
+## Aggiornamento V283 - Pulizia file macOS/residui
+
+- Aggiunto `static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh`.
+- Lo script esegue dry-run di default e rimuove solo con `--apply` o `--git-rm`.
+- Aggiornato `check-zonaorientale.sh` per riconoscere anche `.AppleDouble` e `.LSOverride`.
+- Rafforzata `.gitignore` locale del sito per metadata macOS.
+- Aggiunta diagnostica `window.ZonaOrientaleMacOsCleanupV283`.
+- Aggiunto documento operativo `docs/zonaorientale/release/PULIZIA_MACOS_V283.md`.
+- Nessuna modifica a Firebase, EmailJS, dati JSON o `FUNZIONALITA'.md`.
+
 ## Aggiornamento V282 - Controlli pre-push
 
 V282 aggiunge lo script `static/zonaorientale/tools/check-zonaorientale.sh` per centralizzare i controlli tecnici prima di commit/push: sintassi JS, validita JSON, footer/cache-buster/versione e file macOS indesiderati. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime. Diagnostica: `window.ZonaOrientalePrePushChecksV282`. Documento operativo: `release/CONTROLLI_PRE_PUSH_V282.md`.
