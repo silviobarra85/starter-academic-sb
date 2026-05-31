@@ -1,3 +1,11 @@
+## Aggiornamento V284 - Audit mobile completo
+
+- Aggiunto `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`.
+- Aggiornato `static/zonaorientale/tools/check-zonaorientale.sh` con promemoria audit mobile.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V284.
+- Aggiunta diagnostica `window.ZonaOrientaleMobileAuditV284`.
+- Nessuna modifica funzionale a Firebase, EmailJS o dati JSON.
+
 ## Aggiornamento V283 - Pulizia file macOS/residui
 
 - Aggiunto `static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh`.

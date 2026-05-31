@@ -1,3 +1,7 @@
+## Aggiornamento V284 - Audit mobile completo
+
+V284 aggiunge `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`, checklist operativa per test mobile su Home, News, Listone, Competizioni, Archivio, Statistiche, Confronta, Dashboard Presidente e Admin. Aggiorna lo script pre-push per segnalare la presenza dell'audit. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime. Diagnostica: `window.ZonaOrientaleMobileAuditV284`.
+
 ## Aggiornamento V283 - Pulizia file macOS/residui
 
 V283 aggiunge lo script `static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh`, con dry-run di default e opzioni `--apply` / `--git-rm`, per individuare e rimuovere metadata macOS (`.DS_Store`, `._*`, `__MACOSX`, `.AppleDouble`, `.LSOverride`). Aggiorna anche `.gitignore` locale e lo script pre-push V282. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime. Diagnostica: `window.ZonaOrientaleMacOsCleanupV283`. Documento operativo: `release/PULIZIA_MACOS_V283.md`.

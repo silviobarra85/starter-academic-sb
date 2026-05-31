@@ -156,6 +156,19 @@ if [[ -n "$REPO_ROOT" ]]; then
   fi
 fi
 
+
+print_step "Audit mobile"
+if [[ -n "$DOCS_ROOT" ]]; then
+  mobile_audit_doc="$DOCS_ROOT/audit/AUDIT_MOBILE_COMPLETO_V284.md"
+  if [[ -f "$mobile_audit_doc" ]]; then
+    pass "audit mobile V284 disponibile: audit/AUDIT_MOBILE_COMPLETO_V284.md"
+  else
+    warn "audit mobile V284 non trovato; se stai lavorando su UI/mobile consulta o aggiorna docs/zonaorientale/audit"
+  fi
+else
+  warn "docs non disponibili; salto controllo audit mobile"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.\n' "$failures" "$warns" >&2

@@ -1,3 +1,29 @@
+## Aggiornamento V284 - Audit mobile completo
+
+Prima di procedere con ulteriori fix UI/mobile, usare `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`.
+
+Controlli minimi V284:
+
+```text
+Home e navigazione mobile
+News/comunicati
+Listone con Modifica, Modifiche, Usciti storici, Export CSV
+Competizioni e competition.html
+Archivio
+Statistiche
+Confronta
+Dashboard Presidente
+Admin -> Diagnostica dati e Richieste presidenti
+Tema Light e Dark
+Viewport 390x844, 430x932, 768x1024
+```
+
+Diagnostica console:
+
+```js
+window.ZonaOrientaleMobileAuditV284
+```
+
 ## Aggiornamento V283 - Pulizia file macOS/residui
 
 Test obbligatori dopo applicazione:

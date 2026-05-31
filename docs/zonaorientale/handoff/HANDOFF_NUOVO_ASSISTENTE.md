@@ -1,6 +1,14 @@
+## Aggiornamento V284
+
+- Versione runtime recente: `V284 audit mobile completo`.
+- Nuovo documento: `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`.
+- Lo script pre-push segnala la presenza dell'audit mobile.
+- Diagnostica runtime: `window.ZonaOrientaleMobileAuditV284`.
+- Nessuna modifica funzionale a Firebase, EmailJS o dati JSON.
+
 ## Aggiornamento V283
 
-- Versione runtime recente: `V283 pulizia file macOS`.
+- Versione runtime recente: `V284 audit mobile completo`.
 - Nuovo script: `static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh`.
 - Lo script e' dry-run di default; usare `--apply` e `--git-rm` solo dopo controllo elenco.
 - Documento operativo: `docs/zonaorientale/release/PULIZIA_MACOS_V283.md`.
@@ -28,7 +36,7 @@
 - Webapp: `static/zonaorientale/`.
 - Documentazione: `docs/zonaorientale/`.
 - Branch di lavoro corrente: `refactor/260528-zonaorientale-next`.
-- Versione runtime recente: `V283 pulizia file macOS`.
+- Versione runtime recente: `V284 audit mobile completo`.
 - Branch di produzione/deploy: `master`.
 
 ## 2. Regole operative obbligatorie

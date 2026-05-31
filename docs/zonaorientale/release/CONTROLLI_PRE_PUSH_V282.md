@@ -1,3 +1,13 @@
+## Aggiornamento V284
+
+Lo script `check-zonaorientale.sh` segnala anche la presenza dell'audit mobile V284 quando la cartella documentazione e' disponibile:
+
+```text
+docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md
+```
+
+Il controllo e' un promemoria operativo: non sostituisce il test manuale da browser/dispositivo.
+
 # V282 - Controlli pre-push ZonaOrientale
 
 ## Scopo
