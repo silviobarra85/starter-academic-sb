@@ -782,3 +782,14 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiunta diagnostica `window.ZonaOrientaleStickyColumnContrastV286`.
 - Aggiunto documento `docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`.
 - Nessuna modifica a dati, Firebase, EmailJS o `FUNZIONALITA'.md`.
+
+
+## V293 - Audit mirato app.js
+
+- Aggiunto `docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md`.
+- Mappate le aree di `assets/app.js` da non toccare nel primo refactor JS: bootstrap, `renderAll` e override storici, Firebase/Auth/Admin, Dashboard Presidente, trattative, Listone, Archivio/Statistiche/Confronta e news share.
+- Definiti i candidati sicuri per una futura estrazione V294: helper puri di testo, data/numero, export CSV e diagnostiche non bloccanti.
+- Aggiunta diagnostica `window.ZonaOrientaleAppJsAuditV293`.
+- Aggiornato lo script pre-push per verificare la presenza dell'audit V293.
+- Nessuna modifica funzionale a UI, dati, Firebase, EmailJS o logiche runtime.
+- Funzionalita da preservare esplicitamente nei prossimi refactor: Listone con Modifica/export, rose e pagina squadra, Dashboard Presidente, Admin Richieste/Diagnostica/Converti listone, mobile nav, `competition.html`, `player.html` e share WhatsApp.

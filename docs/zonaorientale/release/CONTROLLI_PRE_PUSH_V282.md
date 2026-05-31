@@ -167,3 +167,14 @@ docs/zonaorientale/refactor/CSS_REFACTOR_V291.md
 
 Questi controlli servono a evitare che gli override mobile/rose/Listone vengano staccati dagli HTML durante futuri refactor.
 
+
+
+## Aggiornamento V293
+
+Lo script `check-zonaorientale.sh` controlla anche la presenza del documento:
+
+```text
+docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md
+```
+
+Questo serve a evitare refactor di `assets/app.js` senza una mappa preventiva delle funzionalita a rischio. Prima di spostare helper JS, leggere l'audit V293 e dichiarare nel documento della release cosa si rischia di perdere e come lo si preserva.

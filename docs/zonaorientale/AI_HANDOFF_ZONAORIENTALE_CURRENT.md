@@ -1,3 +1,7 @@
+## Aggiornamento V293 - Audit mirato app.js
+
+V293 aggiunge `docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md` e la diagnostica `window.ZonaOrientaleAppJsAuditV293`. Non cambia comportamento runtime e non estrae ancora codice. Prima di qualunque refactor JS futuro, verificare le funzionalita a rischio e preservare esplicitamente: Listone/Modifica/export, rose e pagina squadra, Dashboard Presidente, trattative, Admin Richieste/Diagnostica/Converti listone, Archivio/Statistiche/Confronta, news share WhatsApp, mobile nav, `competition.html` e `player.html`.
+
 ## Aggiornamento V292 - Pulizia CSS Light sospeso
 
 V292 prosegue il refactor CSS senza cambiare comportamento visibile. I CSS attivi diventano `assets/css/refactor/mobile-controls-v292.css` e `assets/css/refactor/rosters-tables-v292.css`; le patch Light recenti V285-V288 vengono conservate in `assets/css/refactor/theme-light-suspended-v292.css`, non importato finche la Light mode non sara ricostruita e testata. Funzionalita da preservare: Listone Modifica/export, rose/pagina squadra, Dashboard Presidente, bottom navigation mobile e Dark mode unico V289. Documento: `docs/zonaorientale/refactor/CSS_CLEANUP_V292.md`. Diagnostica: `window.ZonaOrientaleCssCleanupV292`.

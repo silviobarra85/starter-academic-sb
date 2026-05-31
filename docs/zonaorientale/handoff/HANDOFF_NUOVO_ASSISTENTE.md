@@ -1,3 +1,7 @@
+## Aggiornamento V293 - Audit mirato app.js
+
+Leggere anche `docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md` prima di qualunque refactor di `assets/app.js`. La release non cambia funzionalita': documenta cosa non spostare subito e quali helper puri potrebbero essere estratti in una futura V294. Ogni proposta di refactor deve includere una sezione `Funzionalita a rischio e preservazione`.
+
 ## Aggiornamento V292
 
 La versione corrente documentata e' **V292 pulizia CSS Light sospeso**. I CSS attivi del refactor sono `assets/css/refactor/mobile-controls-v292.css` e `assets/css/refactor/rosters-tables-v292.css`. Il file `assets/css/refactor/theme-light-suspended-v292.css` conserva le patch Light recenti ma non deve essere importato finche la Light mode non viene ricostruita e testata. Prima di ulteriori refactor verificare esplicitamente che non si perdano Listone Modifica/export, rose/pagina squadra, Dashboard Presidente, bottom navigation e Dark mode unico.

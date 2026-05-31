@@ -1,3 +1,7 @@
+## Aggiornamento V293 - Audit mirato app.js
+
+Versione runtime corrente: **V293 audit mirato app.js**. Leggere anche `refactor/APP_JS_AUDIT_V293.md`. La release non cambia funzionalita' e non estrae ancora codice: mappa le aree sicure/rischiose di `assets/app.js` prima di una futura V294. Regola: ogni refactor JS deve dichiarare le funzionalita a rischio, come vengono preservate e i test necessari.
+
 ## Aggiornamento V292
 
 Versione runtime corrente: **V292 pulizia CSS Light sospeso**. Leggere anche `refactor/CSS_CLEANUP_V292.md`. La release non cambia funzionalita': sposta le regole Light recenti V285-V288 fuori dai CSS attivi e le conserva in `assets/css/refactor/theme-light-suspended-v292.css`, non importato. Restano attivi Dark mode unico, controlli mobile, rose/tabelle e fix V289.
@@ -57,7 +61,7 @@ refactor/260528-zonaorientale-next
 Versione runtime attesa dopo l'overlay:
 
 ```text
-V292 pulizia CSS Light sospeso
+V293 audit mirato app.js
 ```
 
 ## Documenti principali da leggere

@@ -577,3 +577,21 @@ Controlli tecnici:
 static/zonaorientale/tools/check-zonaorientale.sh
 ```
 
+
+
+## Test V293 - Audit mirato app.js
+
+La V293 non modifica comportamento runtime, ma prepara il refactor JS. Prima di qualunque estrazione da `assets/app.js`, verificare:
+
+- Home pubblica e dashboard stagione.
+- News e link WhatsApp dinamici.
+- Listone: colonna `Modifica`, filtro `Modifiche`, `Mostra usciti storici`, export CSV.
+- Rose pubbliche, pagina squadra e Dashboard Presidente.
+- Comunicati presidente, svincoli e trattative.
+- Admin: Richieste presidenti, Diagnostica dati, Converti listone Excel, workflow pubblicazione.
+- Competizioni, `competition.html`, Archivio, Statistiche, Confronta.
+- Mobile: bottom nav, menu Altro, pulsante Su.
+- `player.html`.
+- Console: `window.ZonaOrientaleAppJsAuditV293.behaviorChange` deve essere `false`.
+
+Regola: se un refactor rischia di scollegare una funzionalita, la release deve dichiarare come viene preservata o rimandare la modifica.
