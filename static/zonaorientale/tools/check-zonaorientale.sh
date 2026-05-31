@@ -154,6 +154,13 @@ else
   fail "helper puri V295 mancante: assets/js/utils/shared-helpers-v295.js"
 fi
 
+admin_only_marker="ZonaOrientaleListoneExportAdminOnlyV296"
+if grep -q "$admin_only_marker" "$app_file"; then
+  pass "export modifiche Listone admin-only V296 presente"
+else
+  fail "export modifiche Listone admin-only V296 non rilevato in assets/app.js"
+fi
+
 print_step "File macOS indesiderati"
 macos_roots=("$SITE_ROOT")
 if [[ -n "$DOCS_ROOT" ]]; then
@@ -231,6 +238,7 @@ if [[ -n "$DOCS_ROOT" ]]; then
   app_js_audit_doc="$DOCS_ROOT/refactor/APP_JS_AUDIT_V293.md"
   app_helpers_doc="$DOCS_ROOT/refactor/APP_HELPERS_EXTRACTION_V294.md"
   app_helper_rewire_doc="$DOCS_ROOT/refactor/APP_HELPER_REWIRE_V295.md"
+  app_export_admin_doc="$DOCS_ROOT/refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md"
   if [[ -f "$styles_app_audit_doc" ]]; then
     pass "audit styles/app V290 disponibile: refactor/AUDIT_STYLES_APP_V290.md"
   else
@@ -260,6 +268,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "primo collegamento helper V295 documentato: refactor/APP_HELPER_REWIRE_V295.md"
   else
     warn "primo collegamento helper V295 non documentato; verificare docs/zonaorientale/refactor/APP_HELPER_REWIRE_V295.md"
+  fi
+
+  if [[ -f "$app_export_admin_doc" ]]; then
+    pass "export modifiche admin-only V296 documentato: refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md"
+  else
+    warn "export modifiche admin-only V296 non documentato; verificare docs/zonaorientale/refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md"
   fi
 else
   warn "docs non disponibili; salto controllo audit refactor"

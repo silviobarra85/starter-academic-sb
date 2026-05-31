@@ -1,3 +1,7 @@
+## Aggiornamento V296 - Export modifiche Listone solo Admin
+
+Il pulsante `Esporta modifiche CSV` e' riservato agli Admin tramite `state.isAdmin`. Non rimuovere le funzioni V269-V278: servono ancora a colonna `Modifica`, filtro `Modifiche`, usciti storici e calcolo CSV. Documento: `docs/zonaorientale/refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md`. Diagnostica: `window.ZonaOrientaleListoneExportAdminOnlyV296`.
+
 ## Aggiornamento V295 - Primo collegamento helper puri app.js
 
 Leggere anche `docs/zonaorientale/refactor/APP_HELPER_REWIRE_V295.md`. La release collega un solo call-site storico (`csvEscapeV278`) al nuovo modulo `assets/js/utils/shared-helpers-v295.js`. Non spostare altri call-site senza dichiarare funzionalita a rischio, preservazione e test. In particolare non perdere: export CSV modifiche Listone, filtro Modifiche, usciti storici, Rose, Dashboard Presidente, Admin, news share e mobile chrome.

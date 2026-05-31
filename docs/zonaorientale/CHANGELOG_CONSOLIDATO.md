@@ -1,3 +1,13 @@
+## Aggiornamento V296 - Export modifiche Listone solo Admin
+
+- Il pulsante `Esporta modifiche CSV` nel Listone viene mostrato solo agli utenti Admin.
+- Gli utenti pubblici continuano a vedere Listone, colonna `Modifica`, filtro `Modifiche` e usciti storici, ma non possono scaricare il CSV.
+- L'export diretto e' protetto anche da guardia runtime, non solo da UI.
+- Nessuna modifica a Firebase, EmailJS, JSON, CSS, Rose, Dashboard Presidente o flussi Admin diversi dal controllo `state.isAdmin`.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V296.
+- Aggiunta diagnostica `window.ZonaOrientaleListoneExportAdminOnlyV296`.
+- Aggiunto documento `docs/zonaorientale/refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md`.
+
 ## Aggiornamento V292 - Pulizia CSS Light sospeso
 
 - Sostituiti gli import V291 con `assets/css/refactor/mobile-controls-v292.css` e `assets/css/refactor/rosters-tables-v292.css`.

@@ -1,3 +1,7 @@
+## Aggiornamento V296
+
+Versione runtime corrente: **V296 export modifiche solo admin**. Leggere anche `refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md`. Il pulsante `Esporta modifiche CSV` del Listone e' ora riservato agli Admin. La UI pubblica mantiene Listone, colonna `Modifica`, filtro `Modifiche` e usciti storici, ma non mostra il download CSV.
+
 ## Aggiornamento V295 - Primo collegamento helper puri app.js
 
 Versione runtime corrente: **V295 primo helper app.js**. Leggere anche `refactor/APP_HELPER_REWIRE_V295.md`. La release collega solo `csvEscapeV278` al modulo `assets/js/utils/shared-helpers-v295.js`; non sposta render, Firebase, Admin, Listone, Rose o mobile chrome. Funzionalita da preservare e testare: export CSV modifiche Listone, filtro Modifiche, usciti storici, rose/pagina squadra, Dashboard Presidente, Admin e mobile nav.

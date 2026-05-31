@@ -1,3 +1,11 @@
+## Aggiornamento test V296 - Export modifiche solo Admin
+
+- Pubblico/non Admin: aprire Listone e verificare che `Esporta modifiche CSV` non compaia.
+- Pubblico/non Admin: verificare che `Modifiche`, `Mostra usciti storici`, ricerca e colonna `Modifica` restino funzionanti.
+- Admin: aprire Listone e verificare che `Esporta modifiche CSV` compaia e scarichi il CSV.
+- Console: `window.ZonaOrientaleListoneExportAdminOnlyV296` deve essere disponibile.
+- Confermare assenza regressioni su rose, pagina squadra, Dashboard Presidente, bottom nav, menu Altro e news share.
+
 ## Checklist V292 - Pulizia CSS Light sospeso
 
 - Verificare che il sito resti in Dark mode e che il toggle tema non sia visibile.
