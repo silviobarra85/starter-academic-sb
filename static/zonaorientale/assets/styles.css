@@ -14517,3 +14517,68 @@ html[data-theme="light"] body.is-mobile-ux table.roster-player-table td {
     border-color: rgba(15, 23, 42, 0.20) !important;
   }
 }
+
+/* V288 - Fix rose mobile Light: prima colonna scheda squadra.
+ * Corregge il caso residuo nella pagina squadra/rose: nome giocatore nero su
+ * sfondo scuro nella prima colonna sticky in modalita Light. Migliora anche
+ * dimensione e centratura verticale del nome giocatore e compatta l'altezza riga.
+ */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table th:first-child,
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table td:first-child,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table th:first-child,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table td:first-child,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table th:first-child,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table td:first-child {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    box-shadow: 8px 0 14px rgba(15, 23, 42, 0.24) !important;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table td:first-child,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table td:first-child,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table td:first-child {
+    min-width: 108px !important;
+    max-width: 138px !important;
+    padding: 0.46rem 0.55rem !important;
+    font-size: 0.86rem !important;
+    line-height: 1.18 !important;
+    font-weight: 900 !important;
+    white-space: normal !important;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table td,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table td,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table td {
+    padding-top: 0.44rem !important;
+    padding-bottom: 0.44rem !important;
+    vertical-align: middle !important;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table td:first-child *,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table td:first-child *,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table td:first-child * {
+    color: #f8fafc !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table td:first-child a,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table td:first-child a,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table td:first-child a,
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table td:first-child .link-button,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table td:first-child .link-button,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table td:first-child .link-button {
+    color: #ffffff !important;
+    font-weight: 950 !important;
+    text-decoration-color: rgba(248, 250, 252, 0.72) !important;
+  }
+
+  html[data-theme="light"] body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table tr,
+  html[data-theme="light"] body.is-mobile-ux table.team-profile-roster-table tr,
+  html[data-theme="light"] body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table tr {
+    min-height: 44px !important;
+  }
+}

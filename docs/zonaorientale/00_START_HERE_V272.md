@@ -1,3 +1,7 @@
+## Aggiornamento V288 - Fix rose mobile Light
+
+Versione corrente: V288 fix rose mobile Light. Leggere anche `audit/FIX_ROSE_MOBILE_LIGHT_V288.md`. La release corregge la prima colonna della tabella Rosa nella pagina squadra da smartphone in tema Light: testo chiaro su sfondo scuro, nome giocatore leggermente piu' grande, centratura verticale e righe piu' compatte. Intervento solo CSS/UI, senza modifiche a Firebase, EmailJS, dati JSON o logiche runtime.
+
 ## Aggiornamento V287 - Rifinitura controlli mobile
 
 Versione corrente: V287 rifinitura controlli mobile. Leggere anche `audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`. La release applica una patch CSS/UI mirata a form, filtri, bottoni, menu e aree scrollabili da smartphone. Non modifica Firebase, EmailJS, dati JSON o logiche runtime.

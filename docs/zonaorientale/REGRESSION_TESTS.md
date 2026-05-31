@@ -1,3 +1,7 @@
+## Aggiornamento V288 - Test rose mobile Light
+
+Dopo V288 verificare da smartphone/viewport mobile in tema Light: pagina squadra -> tabella Rosa, prima colonna con nome giocatore chiaro su sfondo scuro, testo leggermente piu' grande, contenuto centrato verticalmente e righe non eccessivamente alte. Ripetere un controllo rapido su Listone e tema Dark per escludere regressioni.
+
 ## Aggiornamento V287 - Test controlli mobile
 
 Dopo V287 verificare da smartphone/viewport mobile: filtri Listone, campi visibili, filtro Modifiche, export CSV, form Dashboard Presidente, toolbar Admin, bottom navigation, menu Altro, input con focus e scroll orizzontale tabelle. Ripetere un controllo rapido in tema Dark.

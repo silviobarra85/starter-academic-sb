@@ -1,3 +1,7 @@
+## Aggiornamento V288 - Fix rose mobile Light
+
+V288 e' una patch CSS/UI puntuale per la pagina squadra/rose in tema Light mobile. Corregge il caso nome giocatore nero su sfondo scuro nella prima colonna sticky della tabella Rosa, aumenta leggermente la leggibilita' del nome, centra verticalmente il contenuto e compatta le righe. Documento: `docs/zonaorientale/audit/FIX_ROSE_MOBILE_LIGHT_V288.md`. Diagnostica: `window.ZonaOrientaleRosterMobileLightV288`.
+
 ## Aggiornamento V287 - Rifinitura controlli mobile
 
 V287 e' una patch CSS/UI conservativa per controlli mobile: input/select/textarea a target touch piu' comodo, font-size 16px per ridurre zoom iOS, bottoni/pill/menu piu' leggibili, focus ring Light e scroll tabelle piu' fluido. Non cambia dati, Firebase, EmailJS o logiche runtime. Documento: `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`. Diagnostica: `window.ZonaOrientaleMobileControlsV287`.

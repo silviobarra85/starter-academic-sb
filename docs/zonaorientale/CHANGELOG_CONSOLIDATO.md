@@ -1,3 +1,14 @@
+## Aggiornamento V288 - Fix rose mobile Light
+
+- Corretto il contrasto della prima colonna nella tabella Rosa della pagina squadra in modalita Light mobile.
+- Forzato testo chiaro su sfondo scuro per celle, link e pulsanti nella prima colonna sticky delle rose.
+- Nome giocatore leggermente piu' grande e contenuto centrato verticalmente.
+- Righe rosa mobile rese piu' compatte.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V288.
+- Aggiunta diagnostica `window.ZonaOrientaleRosterMobileLightV288`.
+- Aggiunto documento `docs/zonaorientale/audit/FIX_ROSE_MOBILE_LIGHT_V288.md`.
+- Nessuna modifica a dati, Firebase, EmailJS o `FUNZIONALITA'.md`.
+
 ## Aggiornamento V287 - Rifinitura controlli mobile
 
 - Migliorati target touch e leggibilita' di input, select, textarea, filtri e bottoni da smartphone.

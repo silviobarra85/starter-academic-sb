@@ -1,3 +1,7 @@
+## Aggiornamento V288
+
+Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza del documento `docs/zonaorientale/audit/FIX_ROSE_MOBILE_LIGHT_V288.md` quando la documentazione e' disponibile.
+
 ## Aggiornamento V287
 
 Lo script `static/zonaorientale/tools/check-zonaorientale.sh` controlla anche la presenza del documento `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md` quando la documentazione e' disponibile.

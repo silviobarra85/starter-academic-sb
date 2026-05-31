@@ -1,3 +1,7 @@
+## Aggiornamento V288 - Fix rose mobile Light
+
+V288 corregge un problema residuo nella pagina squadra/rose in modalita Light mobile: la prima colonna sticky poteva mostrare il nome giocatore nero su sfondo scuro. La patch CSS e' specifica per `team-profile-roster-table` e compatta leggermente le righe, aumentando la leggibilita' del nome e centrando verticalmente il contenuto. Non modifica Firebase, EmailJS, dati JSON o logiche runtime. Diagnostica: `window.ZonaOrientaleRosterMobileLightV288`. Documento: `docs/zonaorientale/audit/FIX_ROSE_MOBILE_LIGHT_V288.md`.
+
 ## Aggiornamento V287 - Rifinitura controlli mobile
 
 V287 migliora usabilita' e leggibilita' dei controlli mobile: target touch, input/select/textarea, filtri, bottoni, pill, bottom navigation, menu mobile e aree tabellari scrollabili. Intervento solo CSS/UI, senza modifiche a dati, Firebase, EmailJS o logiche runtime. Diagnostica: `window.ZonaOrientaleMobileControlsV287`. Documento: `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`.
