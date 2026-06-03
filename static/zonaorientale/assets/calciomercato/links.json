@@ -1,0 +1,88 @@
+{
+  "version": "V316",
+  "updatedAt": "2026-06-03",
+  "sourceMode": "automatic-rss",
+  "notes": "Config fonti Calciomercato. La Netlify Function legge i feed RSS configurati, supporta ricerca per nome, filtro fonte e range temporale; di default la UI mostra le ultime 12 ore e carica articoli piu vecchi allo scroll.",
+  "sources": [
+    {
+      "id": "tmw",
+      "name": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/rss/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 250,
+      "timeoutMs": 12000
+    },
+    {
+      "id": "sosfanta",
+      "name": "SOS Fanta",
+      "url": "https://www.sosfanta.com",
+      "feedUrls": [
+        "https://www.sosfanta.com/feed/"
+      ],
+      "enabled": true,
+      "topic": "Fantacalcio",
+      "limit": 250,
+      "timeoutMs": 12000
+    },
+    {
+      "id": "gianlucadimarzio",
+      "name": "Gianluca Di Marzio",
+      "url": "https://gianlucadimarzio.com",
+      "feedUrls": [
+        "https://gianlucadimarzio.com/rss/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 250,
+      "timeoutMs": 12000
+    },
+    {
+      "id": "fantacalcio",
+      "name": "Fantacalcio.it",
+      "url": "https://www.fantacalcio.it",
+      "feedUrls": [
+        "https://rss.fantacalcio.it/"
+      ],
+      "enabled": true,
+      "topic": "Fantacalcio",
+      "limit": 250,
+      "timeoutMs": 12000
+    },
+    {
+      "id": "calciomercato-it",
+      "name": "CalcioMercato.it",
+      "url": "https://www.calciomercato.it",
+      "feedUrls": [
+        "https://www.calciomercato.it/feed/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 250,
+      "timeoutMs": 12000
+    }
+  ],
+  "suggestedSources": [
+    {
+      "name": "Altre fonti RSS",
+      "note": "Aggiungere solo fonti con feed RSS pubblico e stabile. Evitare scraping HTML dal browser."
+    },
+    {
+      "name": "Fonti disattivabili",
+      "note": "Impostare enabled:false su una fonte se genera troppi warning o contenuti fuori tema."
+    }
+  ],
+  "articles": [],
+  "maxArticles": 500,
+  "sourceLimit": 250,
+  "maxSources": 20,
+  "defaultWindowHours": 12,
+  "olderWindowStepHours": 24,
+  "removedSourcesV316": [
+    "Virgilio Sport",
+    "La Gazzetta dello Sport"
+  ]
+}

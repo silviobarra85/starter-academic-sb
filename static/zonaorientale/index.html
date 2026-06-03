@@ -22,14 +22,17 @@
   <meta name="twitter:title" content="ZonaOrientale Salerno" />
   <meta name="twitter:description" content="Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d&#039;oro, statistiche, archivio e comunicati." />
   <meta name="twitter:image" content="https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png" />
-  <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=278" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=278" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=278" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=278" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=278" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=278" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=278" />
+  <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
+  <link rel="stylesheet" href="./assets/styles.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=317" />
 </head>
 <body>
   <header class="app-header">
@@ -44,7 +47,7 @@
           <span>Stagione</span>
           <select id="globalSeasonSelect" class="input season-input" aria-label="Stagione visualizzata"></select>
         </label>
-        <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Cambia tema" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
+        <button id="themeToggleBtn" class="theme-toggle hidden" type="button" aria-label="Tema disattivato" aria-pressed="false" aria-hidden="true" tabindex="-1" hidden><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
         <button id="refreshBtn" class="button button-secondary hidden" type="button">Aggiorna dati</button>
         <button id="openLoginBtn" class="button button-primary" type="button">Area admin</button>
         <button id="logoutBtn" class="button button-danger hidden" type="button">Logout</button>
@@ -56,6 +59,7 @@
       <a href="#news" class="nav-link" data-page-link="news">News</a>
       <a href="#clubs" class="nav-link" data-page-link="clubs">Rose</a>
       <a href="#fantamercato" class="nav-link" data-page-link="fantamercato">Fantamercato</a>
+      <a href="#calciomercato" class="nav-link" data-page-link="calciomercato">Calciomercato</a>
       <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
       <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
@@ -252,6 +256,68 @@
               <tr><td colspan="7" class="muted center">Caricamento...</td></tr>
             </tbody>
           </table>
+        </div>
+      </section>
+    </section>
+
+
+    <section class="app-page" data-page="calciomercato" aria-labelledby="calciomercatoTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Notizie Serie A</p>
+          <h2 id="calciomercatoTitle">Calciomercato</h2>
+          <p>Raccolta automatica di articoli e indiscrezioni di mercato da feed RSS configurati, organizzata per squadra, topic, stato trattativa e giocatori interessati.</p>
+          <small id="calciomercatoMetaV306" class="muted">Sezione in caricamento.</small>
+        </div>
+      </div>
+
+      <section class="panel calciomercato-panel-v306">
+        <div class="panel-header">
+          <div>
+            <h2>Articoli di mercato</h2>
+            <p>Articoli recuperati via Netlify Function da feed RSS configurati, con fallback statico JSON. Nessuna lettura Firebase e nessuno scraping dal browser.</p>
+          </div>
+          <div class="filters-row calciomercato-filters-v306">
+            <select id="calciomercatoTeamFilterV306" class="input filter-input" aria-label="Filtro squadra calciomercato">
+              <option value="all">Tutte le squadre</option>
+            </select>
+            <select id="calciomercatoTopicFilterV306" class="input filter-input" aria-label="Filtro topic calciomercato">
+              <option value="all">Tutti i topic</option>
+            </select>
+            <select id="calciomercatoSourceFilterV314" class="input filter-input" aria-label="Filtro fonte calciomercato">
+              <option value="all">Tutte le fonti</option>
+            </select>
+            <input id="calciomercatoSearchV306" class="input search-input" type="search" placeholder="Cerca giocatore, allenatore, squadra, fonte, titolo..." />
+            <label class="calciomercato-range-field-v316">
+              <span>Da</span>
+              <input id="calciomercatoFromV316" class="input filter-input" type="datetime-local" aria-label="Data e ora inizio ricerca Calciomercato" />
+            </label>
+            <label class="calciomercato-range-field-v316">
+              <span>A</span>
+              <input id="calciomercatoToV316" class="input filter-input" type="datetime-local" aria-label="Data e ora fine ricerca Calciomercato" />
+            </label>
+            <button id="calciomercatoApplyRangeV316" class="button button-small" type="button">Aggiorna risultati</button>
+            <button id="calciomercatoResetRangeV316" class="button button-secondary button-small" type="button">Ultime 12 ore</button>
+          </div>
+        </div>
+        <div id="calciomercatoArticlesV306" class="calciomercato-grid-v306">
+          <p class="muted">Caricamento articoli di mercato...</p>
+        </div>
+        <div class="calciomercato-load-more-v316">
+          <button id="calciomercatoLoadOlderV316" class="button button-secondary" type="button" hidden>Carica articoli più vecchi</button>
+          <p id="calciomercatoLoadStatusV317" class="muted calciomercato-load-status-v317" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="panel calciomercato-sources-panel-v306">
+        <div class="panel-header compact">
+          <div>
+            <h2>Fonti configurate</h2>
+            <p>Fonti RSS configurate per il recupero automatico server-side. Se la funzione non e disponibile, il sito usa il fallback statico.</p>
+          </div>
+        </div>
+        <div id="calciomercatoSourcesV306" class="calciomercato-sources-v306">
+          <p class="muted">Caricamento fonti...</p>
         </div>
       </section>
     </section>
@@ -1621,6 +1687,7 @@
     <a href="#compare" class="mobile-more-link" data-page-link="compare"><span class="mobile-more-icon">⚔️</span><span>Confronta squadre</span></a>
     <a href="#regolamento" class="mobile-more-link" data-page-link="regolamento"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
     <a href="#fantamercato" class="mobile-more-link" data-page-link="fantamercato"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
+    <a href="#calciomercato" class="mobile-more-link" data-page-link="calciomercato"><span class="mobile-more-icon">📰</span><span>Calciomercato</span></a>
     <a href="#listone" class="mobile-more-link" data-page-link="listone"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
     <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-page-link="admin"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
   </nav>
@@ -1634,11 +1701,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V278 export modifiche listone · Ultimo aggiornamento 30/05/2026</p>
+    <p>ZonaOrientale Salerno · V317 calciomercato scroll e range RSS · Ultimo aggiornamento 03/06/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=278"></script>
+  <script type="module" src="./assets/app.js?v=317"></script>
 </body>
 </html>
 

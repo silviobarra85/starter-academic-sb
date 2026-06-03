@@ -13676,3 +13676,300 @@ html[data-theme="light"] .historical-rank-v193,
 html[data-theme="light"] .team-compare-direct-score-v195 strong {
   color: #166534 !important;
 }
+
+
+/* V280 - Semplificazione UI Storico listoni.
+ * Il pannello Storico listoni viene nascosto dalla UI pubblica, ma le logiche
+ * V269-V278 restano disponibili per Modifica, filtro Modifiche, usciti storici
+ * ed export CSV.
+ */
+.listone-history-panel-v269,
+.listone-history-search-toggle-v269,
+.listone-history-search-toggle-v270,
+.listone-export-note-v278 {
+  display: none !important;
+}
+
+
+/* V281 - Contrasto mobile in modalita Light.
+ * Intervento mirato: migliora leggibilita' su smartphone senza cambiare layout,
+ * dati o logiche Listone/Firebase/Admin.
+ */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html[data-theme="light"] body {
+    color: #0f172a;
+  }
+
+  html[data-theme="light"] .metric-card,
+  html[data-theme="light"] .panel,
+  html[data-theme="light"] .page-heading,
+  html[data-theme="light"] .news-card,
+  html[data-theme="light"] .competition-card,
+  html[data-theme="light"] .compact-card,
+  html[data-theme="light"] .stack-item,
+  html[data-theme="light"] .collapse-card,
+  html[data-theme="light"] .login-card,
+  html[data-theme="light"] .dashboard-subsection,
+  html[data-theme="light"] .winner-line {
+    background: #ffffff !important;
+    border-color: rgba(15, 23, 42, 0.18) !important;
+    color: #0f172a !important;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  html[data-theme="light"] .subtitle,
+  html[data-theme="light"] .muted,
+  html[data-theme="light"] .field-hint,
+  html[data-theme="light"] .metric-label,
+  html[data-theme="light"] .panel-header p,
+  html[data-theme="light"] .dashboard-subsection summary small,
+  html[data-theme="light"] .static-source-line,
+  html[data-theme="light"] .competition-page-meta,
+  html[data-theme="light"] #listoneMetaText,
+  html[data-theme="light"] .mobile-match-meta,
+  html[data-theme="light"] .mobile-match-note,
+  html[data-theme="light"] .small,
+  html[data-theme="light"] small {
+    color: #334155 !important;
+  }
+
+  html[data-theme="light"] h1,
+  html[data-theme="light"] h2,
+  html[data-theme="light"] h3,
+  html[data-theme="light"] h4,
+  html[data-theme="light"] strong,
+  html[data-theme="light"] label,
+  html[data-theme="light"] legend {
+    color: #0f172a;
+  }
+
+  html[data-theme="light"] .input,
+  html[data-theme="light"] .search-input,
+  html[data-theme="light"] .filter-input,
+  html[data-theme="light"] select.input,
+  html[data-theme="light"] textarea.input,
+  html[data-theme="light"] code {
+    background: #ffffff !important;
+    border-color: rgba(15, 23, 42, 0.22) !important;
+    color: #0f172a !important;
+  }
+
+  html[data-theme="light"] .input::placeholder,
+  html[data-theme="light"] .search-input::placeholder,
+  html[data-theme="light"] .filter-input::placeholder,
+  html[data-theme="light"] textarea.input::placeholder {
+    color: #475569 !important;
+    opacity: 1 !important;
+  }
+
+  html[data-theme="light"] .button-secondary,
+  html[data-theme="light"] .nav-link,
+  html[data-theme="light"] .mobile-subnav-pill,
+  html[data-theme="light"] .theme-toggle,
+  html[data-theme="light"] .mobile-more-link,
+  html[data-theme="light"] .inline-checkbox-group {
+    background: #f1f5f9 !important;
+    border-color: rgba(15, 23, 42, 0.20) !important;
+    color: #0f172a !important;
+  }
+
+  html[data-theme="light"] .button-primary,
+  html[data-theme="light"] .nav-link.active,
+  html[data-theme="light"] .mobile-subnav-pill.active,
+  html[data-theme="light"] .mobile-bottom-link.active,
+  html[data-theme="light"] .mobile-more-link.active {
+    background: #15803d !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="light"] .mobile-bottom-nav,
+  html[data-theme="light"] .mobile-more-sheet:not(.hidden),
+  html[data-theme="light"] .mobile-page-subnav:not(.hidden) {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-color: rgba(15, 23, 42, 0.18) !important;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18) !important;
+  }
+
+  html[data-theme="light"] .mobile-bottom-link {
+    color: #334155 !important;
+  }
+
+  html[data-theme="light"] .table-wrap,
+  html[data-theme="light"] .mobile-tabular-wrap,
+  html[data-theme="light"] .standing-table-wrap,
+  html[data-theme="light"] .roster-dialog-table,
+  html[data-theme="light"] .honor-table-wrap,
+  html[data-theme="light"] .mobile-honor-table-wrap,
+  html[data-theme="light"] .rules-table-wrap,
+  html[data-theme="light"] .compact-table,
+  html[data-theme="light"] .listone-table-wrap,
+  html[data-theme="light"] .roster-season-table-wrap,
+  html[data-theme="light"] .roster-inline-table-wrap {
+    background: #ffffff !important;
+    border-color: rgba(15, 23, 42, 0.18) !important;
+  }
+
+  html[data-theme="light"] .table-wrap td,
+  html[data-theme="light"] .mobile-tabular-wrap td,
+  html[data-theme="light"] .standing-table-wrap td,
+  html[data-theme="light"] .roster-dialog-table td,
+  html[data-theme="light"] .honor-table-wrap td,
+  html[data-theme="light"] .mobile-honor-table-wrap td,
+  html[data-theme="light"] .rules-table-wrap td,
+  html[data-theme="light"] .compact-table td,
+  html[data-theme="light"] table.mobile-tabular td,
+  html[data-theme="light"] table.standing-table td,
+  html[data-theme="light"] table.listone-table td,
+  html[data-theme="light"] table.free-agents-table td,
+  html[data-theme="light"] table.roster-season-table td,
+  html[data-theme="light"] table.roster-player-table td,
+  html[data-theme="light"] table.mobile-standing-table td,
+  html[data-theme="light"] table.mobile-honor-table td {
+    background: #ffffff !important;
+    border-bottom-color: rgba(100, 116, 139, 0.28) !important;
+    color: #0f172a !important;
+  }
+
+  html[data-theme="light"] .table-wrap tr:nth-child(even) td,
+  html[data-theme="light"] .mobile-tabular-wrap tr:nth-child(even) td,
+  html[data-theme="light"] .standing-table-wrap tr:nth-child(even) td,
+  html[data-theme="light"] table.listone-table tr:nth-child(even) td,
+  html[data-theme="light"] table.free-agents-table tr:nth-child(even) td,
+  html[data-theme="light"] table.roster-season-table tr:nth-child(even) td,
+  html[data-theme="light"] table.roster-player-table tr:nth-child(even) td {
+    background: #f8fafc !important;
+  }
+
+  html[data-theme="light"] .table-wrap th,
+  html[data-theme="light"] .mobile-tabular-wrap th,
+  html[data-theme="light"] .standing-table-wrap th,
+  html[data-theme="light"] .roster-dialog-table th,
+  html[data-theme="light"] .honor-table-wrap th,
+  html[data-theme="light"] .mobile-honor-table-wrap th,
+  html[data-theme="light"] .rules-table-wrap th,
+  html[data-theme="light"] .compact-table th,
+  html[data-theme="light"] table.mobile-tabular th,
+  html[data-theme="light"] table.standing-table th,
+  html[data-theme="light"] table.listone-table th,
+  html[data-theme="light"] table.free-agents-table th,
+  html[data-theme="light"] table.roster-season-table th,
+  html[data-theme="light"] table.roster-player-table th,
+  html[data-theme="light"] table.mobile-standing-table th,
+  html[data-theme="light"] table.mobile-honor-table th,
+  html[data-theme="light"] .table-wrap th:first-child,
+  html[data-theme="light"] .mobile-tabular-wrap th:first-child,
+  html[data-theme="light"] .standing-table-wrap th:first-child,
+  html[data-theme="light"] table.listone-table th:first-child,
+  html[data-theme="light"] table.free-agents-table th:first-child {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-bottom-color: rgba(226, 232, 240, 0.22) !important;
+  }
+
+  html[data-theme="light"] .table-wrap th .table-sort,
+  html[data-theme="light"] .mobile-tabular-wrap th .table-sort,
+  html[data-theme="light"] .standing-table-wrap th .table-sort,
+  html[data-theme="light"] table.listone-table th .table-sort,
+  html[data-theme="light"] table.free-agents-table th .table-sort,
+  html[data-theme="light"] table.roster-player-table th .table-sort {
+    color: #f8fafc !important;
+  }
+
+  html[data-theme="light"] .table-wrap td:first-child,
+  html[data-theme="light"] .mobile-tabular-wrap td:first-child,
+  html[data-theme="light"] .standing-table-wrap td:first-child,
+  html[data-theme="light"] table.listone-table td:first-child,
+  html[data-theme="light"] table.free-agents-table td:first-child,
+  html[data-theme="light"] table.roster-season-table td:first-child,
+  html[data-theme="light"] table.roster-player-table td:first-child,
+  html[data-theme="light"] table.mobile-standing-table td:first-child,
+  html[data-theme="light"] table.mobile-honor-table td:first-child {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    box-shadow: 8px 0 14px rgba(15, 23, 42, 0.25) !important;
+  }
+
+  html[data-theme="light"] .table-wrap td:first-child a,
+  html[data-theme="light"] .mobile-tabular-wrap td:first-child a,
+  html[data-theme="light"] table.listone-table td:first-child a,
+  html[data-theme="light"] table.free-agents-table td:first-child a,
+  html[data-theme="light"] table.roster-season-table td:first-child a,
+  html[data-theme="light"] table.roster-player-table td:first-child a,
+  html[data-theme="light"] .table-wrap td:first-child .link-button,
+  html[data-theme="light"] .mobile-tabular-wrap td:first-child .link-button,
+  html[data-theme="light"] table.listone-table td:first-child .link-button,
+  html[data-theme="light"] table.free-agents-table td:first-child .link-button {
+    color: #ffffff !important;
+  }
+
+  html[data-theme="light"] .table-wrap td::before,
+  html[data-theme="light"] .mobile-tabular-wrap td::before,
+  html[data-theme="light"] .compact-table td::before {
+    color: #334155 !important;
+  }
+
+  html[data-theme="light"] .mini-badge,
+  html[data-theme="light"] .status-muted {
+    background: #e2e8f0 !important;
+    border: 1px solid rgba(71, 85, 105, 0.24) !important;
+    color: #1e293b !important;
+  }
+
+  html[data-theme="light"] .status-ok {
+    background: #dcfce7 !important;
+    border: 1px solid rgba(22, 101, 52, 0.26) !important;
+    color: #14532d !important;
+  }
+
+  html[data-theme="light"] .status-warning,
+  html[data-theme="light"] .text-warning {
+    background: #fef3c7 !important;
+    border-color: rgba(146, 64, 14, 0.26) !important;
+    color: #78350f !important;
+  }
+
+  html[data-theme="light"] .status-danger,
+  html[data-theme="light"] .text-danger {
+    background: #fee2e2 !important;
+    border-color: rgba(153, 27, 27, 0.24) !important;
+    color: #991b1b !important;
+  }
+
+  html[data-theme="light"] .link-button,
+  html[data-theme="light"] a {
+    color: #166534;
+  }
+}
+
+html[data-theme="light"] body.is-mobile-ux .metric-card,
+html[data-theme="light"] body.is-mobile-ux .panel,
+html[data-theme="light"] body.is-mobile-ux .page-heading,
+html[data-theme="light"] body.is-mobile-ux .news-card,
+html[data-theme="light"] body.is-mobile-ux .competition-card,
+html[data-theme="light"] body.is-mobile-ux .compact-card,
+html[data-theme="light"] body.is-mobile-ux .stack-item,
+html[data-theme="light"] body.is-mobile-ux .collapse-card,
+html[data-theme="light"] body.is-mobile-ux .login-card,
+html[data-theme="light"] body.is-mobile-ux .dashboard-subsection,
+html[data-theme="light"] body.is-mobile-ux .winner-line {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] body.is-mobile-ux .muted,
+html[data-theme="light"] body.is-mobile-ux .field-hint,
+html[data-theme="light"] body.is-mobile-ux .metric-label,
+html[data-theme="light"] body.is-mobile-ux .panel-header p,
+html[data-theme="light"] body.is-mobile-ux .dashboard-subsection summary small,
+html[data-theme="light"] body.is-mobile-ux #listoneMetaText,
+html[data-theme="light"] body.is-mobile-ux small {
+  color: #334155 !important;
+}
+
+/* V291 - Refactor CSS prudente.
+ * I blocchi V285-V289 sono stati estratti da styles.css e mantenuti, in ordine equivalente, in:
+ * - assets/css/refactor/mobile-controls-v291.css
+ * - assets/css/refactor/rosters-tables-v291.css
+ * Questo riduce styles.css senza rimuovere le funzionalita mobile/rose/Listone introdotte nelle versioni precedenti.
+ */

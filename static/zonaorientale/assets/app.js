@@ -38,12 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=317";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=220";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=220";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=317";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=317";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -95,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=278";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=317";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -119,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=278";
+} from "./js/domain/news-share-v228.js?v=317";
 import {
   getListoneValue,
   compareListoneValues
@@ -134,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=278";
+} from "./js/admin/listone-converter.js?v=317";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=205";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=220";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=317";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=317";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=278";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=278";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=278";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=278";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=317";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=317";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=317";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=317";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=221";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=222";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=278";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=317";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=317";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=317";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -7713,27 +7714,29 @@ renderDashboard = function renderDashboardV87() {
 
 /* V89 - Theme switch and admin-only refresh button. */
 function applyZonaOrientaleThemeV89(theme) {
-  const finalTheme = theme === "light" ? "light" : "dark";
+  const finalTheme = "dark";
   document.documentElement.dataset.theme = finalTheme;
+  try {
+    localStorage.setItem("zonaOrientaleTheme", finalTheme);
+  } catch (error) {
+    // localStorage can be unavailable in some privacy modes; dark remains forced via dataset.
+  }
   const toggle = document.getElementById("themeToggleBtn");
   if (toggle) {
-    toggle.setAttribute("aria-pressed", finalTheme === "light" ? "true" : "false");
+    toggle.hidden = true;
+    toggle.classList.add("hidden", "theme-toggle-disabled-v289");
+    toggle.setAttribute("aria-hidden", "true");
+    toggle.setAttribute("tabindex", "-1");
+    toggle.setAttribute("aria-pressed", "false");
     const icon = toggle.querySelector(".theme-toggle-icon");
     const text = toggle.querySelector(".theme-toggle-text");
-    if (icon) icon.textContent = finalTheme === "light" ? "☀️" : "🌙";
-    if (text) text.textContent = finalTheme === "light" ? "Light" : "Dark";
+    if (icon) icon.textContent = "🌙";
+    if (text) text.textContent = "Dark";
   }
 }
 
 function setupThemeToggleV89() {
-  const savedTheme = localStorage.getItem("zonaOrientaleTheme") || "dark";
-  applyZonaOrientaleThemeV89(savedTheme);
-  document.getElementById("themeToggleBtn")?.addEventListener("click", () => {
-    const current = document.documentElement.dataset.theme === "light" ? "light" : "dark";
-    const next = current === "light" ? "dark" : "light";
-    localStorage.setItem("zonaOrientaleTheme", next);
-    applyZonaOrientaleThemeV89(next);
-  });
+  applyZonaOrientaleThemeV89("dark");
 }
 
 const updateAdminVisibilityBeforeV89 = updateAdminVisibility;
@@ -15566,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "278";
+const DEPLOY_EXPECTED_VERSION_V181 = "317";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -22875,11 +22878,35 @@ window.setTimeout(() => {
 }, 0);
 
 
+/* V296 - Export modifiche Listone riservato Admin.
+ * Preserva colonna Modifica, filtro Modifiche, usciti storici e calcolo CSV,
+ * ma rende il pulsante/export accessibile solo agli admin autenticati.
+ */
+function canExportListoneChangesCsvV296() {
+  return Boolean(state?.isAdmin);
+}
+
+function syncListoneChangeExportButtonV296() {
+  const button = document.getElementById("listoneExportChangesV278");
+  if (!button) return false;
+  if (!canExportListoneChangesCsvV296()) {
+    button.remove();
+    return false;
+  }
+  button.hidden = false;
+  button.disabled = false;
+  button.setAttribute("data-admin-only", "true");
+  button.setAttribute("aria-label", "Esporta modifiche CSV del listone - solo admin");
+  return true;
+}
+
 /* V278 - Export modifiche listone.
  * Aggiunge un export CSV non distruttivo delle differenze del listone selezionato.
  * Usa i dati gia' calcolati da V269/V270/V277 e non modifica Firebase o JSON statici.
  */
 function csvEscapeV278(value) {
+  const helper = window.ZonaOrientaleSharedHelpersV295 || ZonaOrientaleSharedHelpersV295;
+  if (helper && typeof helper.csvEscape === "function") return helper.csvEscape(value);
   const text = String(value ?? "");
   return /[";\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
@@ -22948,11 +22975,16 @@ function buildListoneChangeExportCsvV278() {
     ["costo", "Costo"],
     ["fantacalcioId", "Fantacalcio ID"]
   ];
+  const helper = window.ZonaOrientaleSharedHelpersV295 || ZonaOrientaleSharedHelpersV295;
+  if (helper && typeof helper.rowsToCsv === "function") {
+    const columns = headers.map(([key, label]) => ({ key, label }));
+    return { csv: `﻿${helper.rowsToCsv(rows, columns, ";")}`, rows };
+  }
   const lines = [headers.map(([, label]) => csvEscapeV278(label)).join(";")];
   rows.forEach((row) => {
     lines.push(headers.map(([key]) => csvEscapeV278(row[key])).join(";"));
   });
-  return { csv: `\ufeff${lines.join("\n")}`, rows };
+  return { csv: `﻿${lines.join("\n")}`, rows };
 }
 
 function downloadTextFileV278(filename, content, mimeType = "text/csv;charset=utf-8") {
@@ -22975,6 +23007,11 @@ function getListoneChangeExportFilenameV278() {
 }
 
 function exportListoneChangesCsvV278() {
+  if (!canExportListoneChangesCsvV296()) {
+    showToast?.("Export modifiche CSV disponibile solo per Admin.");
+    syncListoneChangeExportButtonV296();
+    return { exported: 0, denied: true };
+  }
   const { csv, rows } = buildListoneChangeExportCsvV278();
   if (!rows.length) {
     showToast?.("Nessuna modifica da esportare con i filtri correnti.");
@@ -22989,12 +23026,15 @@ const ensureListoneHistoryUiBeforeV278 = ensureListoneHistoryUiV269;
 ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV278() {
   ensureListoneHistoryUiBeforeV278?.();
   const filterRow = document.querySelector(".listone-filter-row");
-  if (!filterRow || document.getElementById("listoneExportChangesV278")) return;
+  syncListoneChangeExportButtonV296();
+  if (!filterRow || document.getElementById("listoneExportChangesV278") || !canExportListoneChangesCsvV296()) return;
   const button = document.createElement("button");
   button.id = "listoneExportChangesV278";
   button.className = "button button-secondary button-small listone-export-changes-v278";
   button.type = "button";
   button.textContent = "Esporta modifiche CSV";
+  button.setAttribute("data-admin-only", "true");
+  button.setAttribute("aria-label", "Esporta modifiche CSV del listone - solo admin");
   filterRow.appendChild(button);
 };
 
@@ -23036,3 +23076,1899 @@ window.setTimeout(() => {
     console.warn("Refresh V278 export modifiche listone non completato", error);
   }
 }, 0);
+
+
+/* V280 - Semplificazione UI Listone: nasconde il pannello Storico listoni.
+ * Le logiche storiche V269-V278 restano disponibili per colonna Modifica,
+ * filtro Modifiche, usciti storici ed export CSV. Cambia solo la UI pubblica:
+ * non viene piu' montato il pannello dedicato allo storico automatico.
+ */
+function removeListoneHistoryPublicChromeV280() {
+  document.getElementById("listoneHistoryPanelV269")?.remove();
+  document.getElementById("listoneSearchAllListoniV269")?.closest("label")?.remove();
+}
+
+function ensureListoneCompactControlsV280() {
+  const filterRow = document.querySelector(".listone-filter-row");
+  if (!filterRow) return;
+
+  removeListoneHistoryPublicChromeV280();
+
+  if (!document.getElementById("listoneChangeFilterV277") && Array.isArray(window.LISTONE_CHANGE_FILTER_OPTIONS_V277)) {
+    // Defensive fallback only: in normal runtime the constant is lexical, not on window.
+  }
+
+  if (!document.getElementById("listoneChangeFilterV277") && typeof LISTONE_CHANGE_FILTER_OPTIONS_V277 !== "undefined") {
+    const label = document.createElement("label");
+    label.className = "field listone-change-filter-v277";
+    label.innerHTML = `
+      <span>Modifiche</span>
+      <select id="listoneChangeFilterV277">
+        ${LISTONE_CHANGE_FILTER_OPTIONS_V277.map(([value, labelText]) => `<option value="${escapeHtml(value)}">${escapeHtml(labelText)}</option>`).join("")}
+      </select>`;
+    filterRow.appendChild(label);
+  }
+
+  syncListoneChangeExportButtonV296();
+  if (!canExportListoneChangesCsvV296()) return;
+
+  if (!document.getElementById("listoneExportChangesV278")) {
+    const button = document.createElement("button");
+    button.id = "listoneExportChangesV278";
+    button.className = "button button-secondary button-small listone-export-changes-v278";
+    button.type = "button";
+    button.textContent = "Esporta modifiche CSV";
+    button.setAttribute("data-admin-only", "true");
+    button.setAttribute("aria-label", "Esporta modifiche CSV del listone - solo admin");
+    filterRow.appendChild(button);
+  }
+}
+
+const ensureListoneHistoryUiBeforeV280 = ensureListoneHistoryUiV269;
+ensureListoneHistoryUiV269 = function ensureListoneHistoryUiV280() {
+  ensureListoneCompactControlsV280();
+};
+
+const renderListoneHistoryPanelBeforeV280 = renderListoneHistoryPanelV269;
+renderListoneHistoryPanelV269 = function renderListoneHistoryPanelV280() {
+  ensureListoneCompactControlsV280();
+  removeListoneHistoryPublicChromeV280();
+};
+
+window.ZonaOrientaleListoneUiV280 = {
+  version: "V280",
+  label: "storico listoni nascosto dalla UI pubblica",
+  historyPanelVisible: false,
+  preserves: ["Modifica", "Modifiche", "Usciti storici", "Export CSV"],
+  refresh: () => {
+    ensureListoneCompactControlsV280();
+    removeListoneHistoryPublicChromeV280();
+    return true;
+  }
+};
+
+window.setTimeout(() => {
+  try {
+    if (document.querySelector('[data-page="listone"]')) {
+      ensureListoneCompactControlsV280();
+      removeListoneHistoryPublicChromeV280();
+    }
+  } catch (error) {
+    console.warn("Refresh V280 UI listone non completato", error);
+  }
+}, 0);
+
+
+/* V281 - Contrasto mobile Light.
+ * Patch solo diagnostica: le correzioni visive sono in styles.css.
+ * Non modifica dati, Firebase, EmailJS o logiche Listone.
+ */
+window.ZonaOrientaleMobileLightContrastV281 = {
+  version: "V281",
+  scope: "mobile-light-contrast",
+  cssOnly: true,
+  preservesListoneLogic: true,
+  checks: [
+    "testi secondari Light piu' scuri in mobile",
+    "card/pannelli Light con sfondo piu' solido",
+    "tabelle mobile Light con corpo leggibile",
+    "badge/stati Light con colori ad alto contrasto"
+  ]
+};
+
+/* V282 - Controlli pre-push.
+ * Espone una diagnostica non bloccante per ricordare lo script locale da usare
+ * prima dei commit sul branch di lavoro.
+ */
+window.ZonaOrientalePrePushChecksV282 = {
+  version: "V282",
+  label: "controlli pre-push",
+  toolPath: "tools/check-zonaorientale.sh",
+  checks: [
+    "Sintassi JS assets",
+    "Validita JSON assets",
+    "Footer e cache-buster allineati",
+    "DEPLOY_EXPECTED_VERSION_V181 allineato",
+    "File macOS indesiderati assenti"
+  ]
+};
+
+/* V283 - Pulizia controllata file macOS/residui.
+ * Aggiunge uno script locale dry-run/apply per individuare e rimuovere
+ * metadata macOS senza toccare moduli runtime o asset legacy.
+ */
+window.ZonaOrientaleMacOsCleanupV283 = {
+  version: "V283",
+  label: "pulizia controllata file macOS",
+  toolPath: "tools/cleanup-macos-artifacts-v283.sh",
+  destructiveByDefault: false,
+  preservesRuntime: true,
+  targets: [".DS_Store", "._*", "__MACOSX", ".AppleDouble", ".LSOverride"],
+  recommendedFlow: [
+    "eseguire dry-run",
+    "rivedere elenco file",
+    "applicare con --apply solo se coerente",
+    "ricontrollare con tools/check-zonaorientale.sh"
+  ]
+};
+
+/* V284 - Audit mobile completo.
+ * Release documentale/operativa: fotografa le aree mobile da verificare
+ * prima dei prossimi interventi CSS o refactor UI. Non modifica dati,
+ * Firebase, EmailJS o logiche runtime.
+ */
+window.ZonaOrientaleMobileAuditV284 = {
+  version: "V284",
+  label: "audit mobile completo",
+  document: "docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md",
+  runtimeChanges: false,
+  recommendedViewports: ["390x844", "430x932", "768x1024"],
+  areas: [
+    "Home e navigazione",
+    "Listone",
+    "Competizioni",
+    "Archivio",
+    "Statistiche",
+    "Confronta",
+    "Dashboard Presidente",
+    "Admin"
+  ],
+  nextSuggestedStep: "applicare fix CSS mirati solo dopo verifica su device o viewport mobile"
+};
+
+/* V285 - Fix mirati mobile.
+ * Patch CSS mirata su leggibilita' Light, tabelle scrollabili, controlli e menu mobile.
+ * Non modifica dati, Firebase, EmailJS o logiche runtime.
+ */
+window.ZonaOrientaleMobileFixesV285 = {
+  version: "V285",
+  label: "fix mirati mobile",
+  cssOnly: true,
+  preservesRuntime: true,
+  areas: [
+    "testi e meta in tema Light",
+    "tabelle mobile e indicazione scroll",
+    "prima colonna sticky",
+    "badge/pill/bottoni secondari",
+    "bottom navigation e menu mobile"
+  ],
+  recommendedChecks: [
+    "Listone in tema Light",
+    "Competizioni con classifica/calenadario da smartphone",
+    "Archivio, Statistiche e Confronta",
+    "Dashboard Presidente",
+    "Admin -> Diagnostica dati"
+  ]
+};
+
+/* V286 - Fix contrasto prima colonna sticky mobile Light.
+ * Patch CSS specifica per Listone e tabelle rose: evita testo nero su sfondo scuro
+ * nella prima colonna sticky in modalita Light/mobile.
+ */
+window.ZonaOrientaleStickyColumnContrastV286 = {
+  version: "V286",
+  label: "contrasto prima colonna sticky mobile Light",
+  cssOnly: true,
+  preservesRuntime: true,
+  affectedAreas: ["Listone", "Rose squadra", "Dialog rosa presidente/squadra"],
+  issueFixed: "nome giocatore nero su sfondo scuro nella prima colonna sticky",
+  recommendedChecks: [
+    "Listone in tema Light da smartphone",
+    "Rose squadra in tema Light da smartphone",
+    "Dashboard Presidente -> rosa in tema Light",
+    "Scorrimento orizzontale tabelle con prima colonna sticky"
+  ]
+};
+
+
+/* V287 - Rifinitura controlli mobile.
+ * Patch CSS mirata su form, filtri, bottoni, menu e aree scrollabili da smartphone.
+ * Non modifica dati, Firebase, EmailJS o logiche runtime.
+ */
+window.ZonaOrientaleMobileControlsV287 = {
+  version: "V287",
+  label: "rifinitura controlli mobile",
+  cssOnly: true,
+  preservesRuntime: true,
+  affectedAreas: [
+    "filtri e form mobile",
+    "bottoni e target touch",
+    "menu mobile e bottom navigation",
+    "tabelle e aree scrollabili",
+    "modali e pannelli admin/presidente"
+  ],
+  recommendedChecks: [
+    "Listone filtri e pulsanti in tema Light",
+    "Rose squadra e Dashboard Presidente da smartphone",
+    "Admin -> Diagnostica dati e Richieste presidenti",
+    "Modali/form con tastiera mobile aperta",
+    "Tema Dark per assenza regressioni evidenti"
+  ]
+};
+
+/* V288 - Fix rose mobile Light.
+ * Patch CSS specifica per pagina squadra/rose: prima colonna sticky leggibile,
+ * nome giocatore leggermente piu' grande, centrato verticalmente e righe piu' compatte.
+ */
+window.ZonaOrientaleRosterMobileLightV288 = {
+  version: "V288",
+  label: "fix rose mobile Light",
+  cssOnly: true,
+  preservesRuntime: true,
+  affectedAreas: [
+    "Pagina squadra -> Rosa",
+    "Tabelle rose con prima colonna sticky",
+    "Tema Light da smartphone"
+  ],
+  issueFixed: "nome giocatore nero su sfondo scuro nella prima colonna rose in modalita Light",
+  recommendedChecks: [
+    "Pagina squadra in tema Light da smartphone",
+    "Prima colonna della tabella Rosa: testo chiaro e leggibile",
+    "Nome giocatore piu' grande e centrato verticalmente",
+    "Righe rosa non eccessivamente alte",
+    "Controllo rapido Listone per assenza regressioni"
+  ]
+};
+
+
+/* V289 - Dark mode temporaneo e fix rose mobile.
+ * Disattiva la modalita Light dal runtime e mantiene nascosto il toggle tema.
+ * Le correzioni CSS correlate compattano le tabelle Rosa mobile e allineano al centro la prima colonna.
+ */
+window.ZonaOrientaleDarkModeOnlyV289 = {
+  version: "V289",
+  theme: "dark",
+  lightDisabled: true,
+  themeToggleHidden: true,
+  rosterRowsCompacted: true,
+  createdAt: "2026-05-31"
+};
+
+/* V290 - Audit styles.css e app.js.
+ * Nessun comportamento runtime modificato: questa diagnostica serve solo a tracciare
+ * il checkpoint di refactor conservativo prima di qualunque estrazione CSS/JS.
+ */
+window.ZonaOrientaleStylesAppAuditV290 = {
+  version: "V290",
+  behaviorChanged: false,
+  document: "docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md",
+  filesAudited: ["assets/styles.css", "assets/app.js"],
+  preservationRule: "Prima di ogni refactor verificare esplicitamente le funzionalita a rischio e mantenerle coperte da test/regressioni.",
+  nextSafeSteps: [
+    "estrarre CSS mobile/rose/tabelle solo dopo confronto visivo",
+    "non rimuovere helper app.js senza grep e test browser",
+    "tenere disattivata Light mode finche non viene ricostruita e testata"
+  ],
+  createdAt: "2026-05-31"
+};
+
+/* V291 - Refactor CSS prudente.
+ * Separa i blocchi CSS mobile/rose/tabelle V285-V289 in file dedicati, senza cambiare logica runtime.
+ * Funzionalita da preservare: Listone Modifica/export, rose/pagina squadra, Dashboard Presidente, bottom nav, dark mode unico.
+ */
+window.ZonaOrientaleCssRefactorV291 = {
+  version: "V291",
+  label: "refactor CSS prudente",
+  cssFiles: [
+    "assets/css/refactor/mobile-controls-v291.css",
+    "assets/css/refactor/rosters-tables-v291.css"
+  ],
+  preserves: [
+    "Listone con Modifica, filtro Modifiche, usciti storici ed export CSV",
+    "Rose pubbliche e pagina squadra con prima colonna sticky",
+    "Dashboard Presidente e tabelle rosa",
+    "Bottom navigation mobile e dark mode unico V289"
+  ],
+  behaviorChange: false,
+  generatedAt: "2026-05-31"
+};
+
+/* V292 - Pulizia CSS Light sospeso.
+ * Rimuove dalle stylesheet attive le patch Light V285-V288 e le conserva in un file parcheggiato non importato.
+ * Funzionalita da preservare: Dark mode unico, Listone, rose/pagina squadra, Dashboard Presidente e controlli mobile.
+ */
+window.ZonaOrientaleCssCleanupV292 = {
+  version: "V292",
+  label: "pulizia CSS Light sospeso",
+  activeCssFiles: [
+    "assets/css/refactor/mobile-controls-v292.css",
+    "assets/css/refactor/rosters-tables-v292.css"
+  ],
+  parkedCssFiles: [
+    "assets/css/refactor/theme-light-suspended-v292.css"
+  ],
+  lightModeStillDisabled: true,
+  behaviorChange: false,
+  preserves: [
+    "Dark mode unico V289 e toggle tema nascosto",
+    "Listone con Modifica, filtro Modifiche, usciti storici ed export CSV",
+    "Rose pubbliche, pagina squadra e Dashboard Presidente",
+    "Bottom navigation mobile, menu Altro e controlli mobile"
+  ],
+  generatedAt: "2026-05-31"
+};
+
+
+/* V293 - Audit mirato app.js.
+ * Nessun refactor runtime: mappa le aree sicure/rischiose prima di estrarre helper da app.js.
+ * Regola obbligatoria: ogni estrazione JS deve dichiarare le funzionalita a rischio e i test di preservazione.
+ */
+window.ZonaOrientaleAppJsAuditV293 = {
+  version: "V293",
+  label: "audit mirato app.js",
+  behaviorChange: false,
+  document: "docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md",
+  auditedFile: "assets/app.js",
+  safeExtractionCandidates: [
+    "helper puri di testo/normalizzazione",
+    "helper export CSV/download",
+    "diagnostiche runtime non bloccanti",
+    "formattatori data/numero senza dipendenze DOM"
+  ],
+  doNotTouchYet: [
+    "bootstrap e renderAll override storici",
+    "Firebase/Auth/Admin",
+    "Dashboard Presidente e trattative",
+    "Listone pubblico e convertitore Admin",
+    "Archivio/Statistiche/Confronta",
+    "News share WhatsApp dinamico"
+  ],
+  preservationRule: "Non spostare o rimuovere codice app.js senza grep, audit dipendenze e test browser delle funzionalita collegate.",
+  generatedAt: "2026-05-31"
+};
+
+/* V295 - Primo collegamento helper puri.
+ * Collega in modo minimale l'escape CSV dell'export modifiche Listone al modulo helper condiviso.
+ * Funzionalita da preservare: Listone, rose, Admin, Dashboard Presidente, mobile chrome,
+ * news share e flussi Firebase/EmailJS restano agganciati al codice esistente.
+ */
+window.ZonaOrientaleSharedHelpersV295 = ZonaOrientaleSharedHelpersV295;
+window.ZonaOrientaleAppHelpersExtractionV295 = {
+  version: "V295",
+  label: "primo collegamento helper puri",
+  behaviorChange: false,
+  module: "assets/js/utils/shared-helpers-v295.js",
+  exportedHelpers: [
+    "normalizeWhitespace",
+    "normalizeSearchKey",
+    "slugifyText",
+    "toFiniteNumber",
+    "formatSignedNumber",
+    "csvEscape",
+    "rowsToCsv",
+    "uniqueByKey"
+  ],
+  smokeTest: ZonaOrientaleSharedHelpersV295.runSmokeTest(),
+  rewiredCallSites: [
+    "csvEscapeV278 -> ZonaOrientaleSharedHelpersV295.csvEscape"
+  ],
+  behaviorGuard: "solo escape CSV Listone; nessun render, Firebase, Admin, Rose o mobile chrome ricollegato",
+  preserves: [
+    "Listone con Modifica, filtro Modifiche, usciti storici ed export CSV",
+    "Rose pubbliche, pagina squadra e Dashboard Presidente",
+    "Admin Richieste presidenti, Diagnostica dati e Converti listone Excel",
+    "Mobile bottom nav, menu Altro e pulsante Su",
+    "News share WhatsApp dinamico",
+    "Firebase/Auth/EmailJS invariati"
+  ],
+  generatedAt: "2026-05-31"
+};
+
+/* Alias diagnostici V294 mantenuti per compatibilita console; non importano il vecchio modulo. */
+window.ZonaOrientaleSharedHelpersV294 = window.ZonaOrientaleSharedHelpersV295;
+window.ZonaOrientaleAppHelpersExtractionV294 = window.ZonaOrientaleAppHelpersExtractionV295;
+
+
+/* V296 - Export modifiche CSV riservato Admin.
+ * Mantiene intatti calcolo righe/CSV e filtri pubblici, ma nasconde il pulsante
+ * agli utenti non admin e blocca eventuali invocazioni dirette dell'export.
+ */
+window.ZonaOrientaleListoneExportAdminOnlyV296 = {
+  version: "V296",
+  label: "export modifiche listone solo admin",
+  adminOnly: true,
+  preserves: [
+    "Listone pubblico",
+    "Colonna Modifica",
+    "Filtro Modifiche",
+    "Mostra usciti storici",
+    "Calcolo CSV V278"
+  ],
+  canExport: canExportListoneChangesCsvV296,
+  syncButton: syncListoneChangeExportButtonV296,
+  getButton: () => document.getElementById("listoneExportChangesV278")
+};
+
+window.setTimeout(() => {
+  try {
+    syncListoneChangeExportButtonV296();
+  } catch (error) {
+    console.warn("Sync export admin-only V296 non completato", error);
+  }
+}, 0);
+
+
+/* V297 - Pulizia helper V294 obsoleto.
+ * Refactor controllato: il vecchio assets/js/utils/shared-helpers-v294.js non e' piu' importato da V295
+ * e puo' essere rimosso dalla repo con git rm. Nessun call-site funzionale viene modificato.
+ */
+window.ZonaOrientaleHelperCleanupV297 = {
+  version: "V297",
+  removedCandidate: "assets/js/utils/shared-helpers-v294.js",
+  activeHelper: "assets/js/utils/shared-helpers-v295.js",
+  behaviorChange: false,
+  functionalRiskCheck: {
+    listoneExport: "preservato tramite ZonaOrientaleSharedHelpersV295.csvEscape",
+    firebase: "non toccato",
+    emailjs: "non toccato",
+    admin: "non toccato",
+    rosters: "non toccato",
+    mobile: "non toccato"
+  }
+};
+
+
+/* V298 - Audit asset/import orfani.
+ * Non rimuove asset e non modifica flussi runtime: aggiunge solo diagnostica e strumenti
+ * per individuare riferimenti mancanti o candidati orfani prima di future pulizie.
+ */
+window.ZonaOrientaleAssetImportAuditV298 = {
+  version: "V298",
+  label: "audit asset e import orfani",
+  behaviorChange: false,
+  tool: "tools/audit-assets-v298.sh",
+  preserves: [
+    "Listone, filtri, Modifica ed export CSV admin-only",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin e diagnostica dati",
+    "News share WhatsApp dinamico",
+    "Mobile bottom nav, menu Altro e pulsante Su",
+    "Dark mode unico V289"
+  ],
+  policy: "segnalare prima di rimuovere; nessuna eliminazione automatica"
+};
+
+
+/* V299 - Consolidamento CSS refactor con nomi stabili.
+ * Nessuna funzionalita runtime modificata: i CSS V292 restano equivalenti ma con nomi stabili.
+ */
+window.ZonaOrientaleCssStableRefactorV299 = {
+  version: "V299",
+  label: "consolidamento CSS refactor stabile",
+  behaviorChange: false,
+  stableCssFiles: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css",
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  activeCssFiles: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css"
+  ],
+  suspendedCssFiles: [
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  protectedFeatures: [
+    "Listone Modifica/filtro/export admin-only",
+    "Rose e prima colonna sticky",
+    "Dashboard Presidente",
+    "mobile bottom nav/menu Altro/pulsante Su",
+    "Dark mode unico V289",
+    "competition.html",
+    "player.html"
+  ]
+};
+
+/* V300 - Audit CSS e mappa pulizia styles.css.
+ * Release non distruttiva: aggiunge strumenti di audit CSS e documentazione
+ * per individuare duplicati/candidati pulizia senza rimuovere funzionalita'.
+ */
+window.ZonaOrientaleCssAuditV300 = {
+  version: "V300",
+  feature: "audit-css",
+  behaviorChange: false,
+  cssFilesModified: false,
+  removesRuntimeCss: false,
+  preserves: [
+    "Listone: Modifica, filtri, usciti storici, export CSV admin-only",
+    "Rose e pagina squadra: prima colonna sticky e righe mobile",
+    "Dashboard Presidente e tabelle rosa",
+    "Mobile: bottom navigation, menu Altro, pulsante Su",
+    "Dark mode unico V289 e Light mode sospesa",
+    "competition.html e player.html"
+  ],
+  auditTool: "tools/audit-css-v300.sh",
+  documentation: "docs/zonaorientale/refactor/CSS_AUDIT_V300.md"
+};
+
+/* V301 - Pulizia controllata CSS refactor residui.
+ * Release non distruttiva: aggiunge uno script dry-run/apply per rimuovere
+ * solo i CSS refactor versionati obsoleti V291/V292, preservando gli alias stabili V299.
+ */
+window.ZonaOrientaleCssCleanupV301 = {
+  version: "V301",
+  feature: "cleanup-css-refactor-residui",
+  behaviorChange: false,
+  removesRuntimeCss: false,
+  stableCssRequired: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css",
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  obsoleteCssCandidates: [
+    "assets/css/refactor/mobile-controls-v291.css",
+    "assets/css/refactor/rosters-tables-v291.css",
+    "assets/css/refactor/mobile-controls-v292.css",
+    "assets/css/refactor/rosters-tables-v292.css",
+    "assets/css/refactor/theme-light-suspended-v292.css"
+  ],
+  cleanupTool: "tools/cleanup-css-refactor-v301.sh",
+  preserves: [
+    "Listone: Modifica, filtri, usciti storici, export CSV admin-only",
+    "Rose e pagina squadra: prima colonna sticky e righe compatte",
+    "Dashboard Presidente e tabelle rosa",
+    "Mobile: bottom navigation, menu Altro, pulsante Su",
+    "Dark mode unico V289 e Light mode sospesa",
+    "competition.html e player.html"
+  ]
+};
+
+/* V302 - Secondo collegamento helper CSV condiviso.
+ * Collega la costruzione del CSV Listone a rowsToCsv V295, mantenendo fallback legacy,
+ * BOM UTF-8, separatore ; e restrizione export Admin-only V296.
+ */
+window.ZonaOrientaleAppHelperRewireV302 = {
+  version: "V302",
+  behaviorChange: false,
+  preservedFeatures: [
+    "Listone pubblico",
+    "Colonna Modifica",
+    "Filtro Modifiche",
+    "Usciti storici",
+    "Export CSV admin-only V296",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin",
+    "Firebase/Auth/EmailJS"
+  ],
+  rewiredCallSites: [
+    "buildListoneChangeExportCsvV278 -> ZonaOrientaleSharedHelpersV295.rowsToCsv"
+  ],
+  fallback: "csvEscapeV278 legacy path resta disponibile se helper non caricato"
+};
+
+/* V303 - Diagnostica dati Admin estesa.
+ * Aggiunge controlli non distruttivi su qualita dati Listoni, Rose, Competizioni e News.
+ * Funzionalita preservate: Listone pubblico/admin, export CSV admin-only, Rose, Dashboard Presidente,
+ * Admin esistente, Firebase/Auth/EmailJS. Nessuna scrittura e nessuna logica dati modificata.
+ */
+function normalizeDiagnosticKeyV303(value) {
+  const helper = window.ZonaOrientaleSharedHelpersV295;
+  if (helper && typeof helper.searchKey === "function") return helper.searchKey(value);
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function getListoneQualityDiagnosticsRowsV303() {
+  const listone = typeof getLatestListoneV276 === "function" ? getLatestListoneV276() : (typeof getSelectedListone === "function" ? getSelectedListone() : null);
+  const players = Array.isArray(listone?.players) ? listone.players : [];
+  if (!players.length) {
+    return [{ area: "Listoni - qualita dati", status: "ATTENZIONE", details: "Nessun giocatore disponibile nel listone corrente per i controlli qualita." }];
+  }
+
+  const seen = new Map();
+  let duplicates = 0;
+  let missingRole = 0;
+  let missingQuotation = 0;
+  let nonCanonicalTeams = 0;
+
+  players.forEach((player) => {
+    const name = normalizeDiagnosticKeyV303(player.name || player.nome || player.playerName || "");
+    const role = String(player.role || player.ruolo || player.position || player.fantasyRole || player["R."] || "").trim();
+    const team = String(player.realTeamCode || player.teamCode || player.realTeam || player.team || player.squadra || player["Sq."] || "").trim();
+    const quote = player.quotationCurrent ?? player.quotation ?? player.quote ?? player.quotazione ?? player.qtA ?? player["QUOT."] ?? "";
+    const key = `${name}|${role}|${normalizeDiagnosticKeyV303(team)}`;
+    if (name && seen.has(key)) duplicates += 1;
+    else if (name) seen.set(key, true);
+    if (!role) missingRole += 1;
+    if (quote === null || quote === undefined || String(quote).trim() === "") missingQuotation += 1;
+    if (team && team.length > 3 && !/^svincol/i.test(team) && !/^free/i.test(team)) nonCanonicalTeams += 1;
+  });
+
+  const issues = duplicates + missingRole + missingQuotation + nonCanonicalTeams;
+  return [{
+    area: "Listoni - qualita dati",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${players.length} giocatori controllati · duplicati ${duplicates} · senza ruolo ${missingRole} · senza quotazione ${missingQuotation} · squadre non canoniche ${nonCanonicalTeams}.`
+  }];
+}
+
+function getRosterQualityDiagnosticsRowsV303() {
+  const snapshots = Array.isArray(state.rosters) ? state.rosters : [];
+  let teams = 0;
+  let emptyTeams = 0;
+  let missingNames = 0;
+  let totalPlayers = 0;
+
+  snapshots.forEach((snapshot) => {
+    (snapshot.rosters || []).forEach((roster) => {
+      teams += 1;
+      const players = Array.isArray(roster.players) ? roster.players : [];
+      if (!players.length) emptyTeams += 1;
+      totalPlayers += players.length;
+      players.forEach((player) => {
+        if (!String(player.name || player.nome || player.playerName || "").trim()) missingNames += 1;
+      });
+    });
+  });
+
+  if (!snapshots.length) {
+    return [{ area: "Rose - qualita dati", status: "ATTENZIONE", details: "Nessuno snapshot rose disponibile in memoria." }];
+  }
+  const issues = emptyTeams + missingNames;
+  return [{
+    area: "Rose - qualita dati",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${snapshots.length} snapshot · ${teams} rose · ${totalPlayers} giocatori · rose vuote ${emptyTeams} · giocatori senza nome ${missingNames}.`
+  }];
+}
+
+function getCompetitionQualityDiagnosticsRowsV303() {
+  const raw = state.raw || {};
+  const competitions = Array.isArray(raw.competitions) ? raw.competitions : [];
+  const calendars = Array.isArray(state.competitionCalendars) ? state.competitionCalendars : [];
+  if (!competitions.length && !calendars.length) {
+    return [{ area: "Competizioni - completezza", status: "ATTENZIONE", details: "Nessuna competizione/calendario disponibile in memoria." }];
+  }
+  const missingName = competitions.filter((competition) => !String(competition.name || competition.title || competition.label || "").trim()).length;
+  const missingType = competitions.filter((competition) => !String(competition.type || competition.format || competition.kind || "").trim()).length;
+  const calendarsWithoutId = calendars.filter((calendar) => !String(calendar.competitionId || calendar.id || calendar.slug || "").trim()).length;
+  const issues = missingName + missingType + calendarsWithoutId;
+  return [{
+    area: "Competizioni - completezza",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${competitions.length} competizioni · ${calendars.length} calendari statici · senza nome ${missingName} · senza tipo/formato ${missingType} · calendari senza id ${calendarsWithoutId}.`
+  }];
+}
+
+function getNewsQualityDiagnosticsRowsV303() {
+  const raw = state.raw || {};
+  const news = Array.isArray(raw.news) ? raw.news : [];
+  if (!news.length) {
+    return [{ area: "News - completezza", status: "ATTENZIONE", details: "Nessun comunicato disponibile in memoria per il controllo qualita." }];
+  }
+  const missingTitle = news.filter((item) => !String(item.title || item.headline || "").trim()).length;
+  const missingBody = news.filter((item) => !String(item.body || item.content || item.text || "").trim()).length;
+  const missingTopic = news.filter((item) => !String(item.topic || item.type || "").trim()).length;
+  const issues = missingTitle + missingBody + missingTopic;
+  return [{
+    area: "News - completezza",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${news.length} comunicati · senza titolo ${missingTitle} · senza testo ${missingBody} · senza topic/tipo ${missingTopic}.`
+  }];
+}
+
+function getAdminDataDiagnosticsExtraRowsV303() {
+  return [
+    ...getListoneQualityDiagnosticsRowsV303(),
+    ...getRosterQualityDiagnosticsRowsV303(),
+    ...getCompetitionQualityDiagnosticsRowsV303(),
+    ...getNewsQualityDiagnosticsRowsV303()
+  ];
+}
+
+const getAdminDataDiagnosticsBeforeV303 = getAdminDataDiagnosticsV276;
+getAdminDataDiagnosticsV276 = function getAdminDataDiagnosticsV303() {
+  const baseRows = typeof getAdminDataDiagnosticsBeforeV303 === "function" ? getAdminDataDiagnosticsBeforeV303() : [];
+  return [...baseRows, ...getAdminDataDiagnosticsExtraRowsV303()];
+};
+
+if (window.ZonaOrientaleAdminDiagnosticsV276) {
+  window.ZonaOrientaleAdminDiagnosticsV276.getRows = getAdminDataDiagnosticsV276;
+  window.ZonaOrientaleAdminDiagnosticsV276.getExtraRowsV303 = getAdminDataDiagnosticsExtraRowsV303;
+}
+
+window.ZonaOrientaleAdminDiagnosticsV303 = {
+  version: "V303",
+  label: "diagnostica dati admin estesa",
+  behaviorChange: false,
+  firebaseWrites: false,
+  protectedFunctionalities: [
+    "Listone pubblico e admin",
+    "Export modifiche CSV solo Admin V296",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin Richieste presidenti e Diagnostica dati",
+    "Firebase/Auth/EmailJS non modificati"
+  ],
+  getRows: getAdminDataDiagnosticsV276,
+  getExtraRows: getAdminDataDiagnosticsExtraRowsV303,
+  refresh: () => {
+    const panel = document.getElementById("adminDataDiagnosticsPanelV276");
+    if (panel) panel.outerHTML = renderAdminDataDiagnosticsPanelV276();
+    else injectAdminDataDiagnosticsPanelV276();
+    return getAdminDataDiagnosticsV276();
+  }
+};
+
+
+
+/* V304 - Mobile review finale e audit pre-Calciomercato.
+ * Nessuna modifica funzionale: registra il checkpoint prima della nuova sezione Calciomercato.
+ * Funzionalita da preservare: Listone, export admin-only, rose, Admin, Presidente, mobile nav e Dark mode unico.
+ */
+window.ZonaOrientaleMobileFinalReviewV304 = {
+  version: "V304",
+  label: "mobile review finale e pre-Calciomercato",
+  behaviorChange: false,
+  featureAdded: false,
+  lightModeStillSuspended: true,
+  calciomercatoImplemented: false,
+  protectedFeatures: [
+    "Listone pubblico e Admin",
+    "colonna Modifica e filtro Modifiche",
+    "export CSV modifiche solo Admin",
+    "rose pubbliche e pagina squadra",
+    "Dashboard Presidente",
+    "Admin Diagnostica dati e Richieste presidenti",
+    "bottom navigation mobile, menu Altro e pulsante Su",
+    "Dark mode unico con toggle Light nascosto",
+    "competition.html e player.html"
+  ],
+  nextPlannedFeature: "Calciomercato",
+  docs: [
+    "docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md",
+    "docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
+  ]
+};
+
+
+/* V306 - Calciomercato giocatori interessati.
+ * Prima release isolata della sezione Calciomercato: legge un JSON statico/manuale,
+ * raggruppa articoli per squadra e mostra anteprime/link senza scraping, Netlify Function
+ * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
+ * Admin, Presidente, mobile nav e Dark mode unico.
+ */
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=317";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=317";
+const calciomercatoStateV306 = {
+  loaded: false,
+  loading: false,
+  error: "",
+  data: null,
+  search: "",
+  team: "all",
+  topic: "all",
+  source: "all",
+  sourceMode: "static",
+  generatedAt: "",
+  warnings: [],
+  rangeFrom: "",
+  rangeTo: "",
+  manualRange: false,
+  autoWindowHours: 12,
+  olderWindowStepHours: 24,
+  maxAutoWindowHours: 24 * 180,
+  loadingOlder: false,
+  lastAutomaticUrl: "",
+  lastLoadStatus: "",
+  lastOlderResult: null
+};
+
+function normalizeCalciomercatoValueV306(value) {
+  const helper = window.ZonaOrientaleSharedHelpersV295;
+  if (helper && typeof helper.searchKey === "function") return helper.searchKey(value);
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function getCalciomercatoArticlesV306() {
+  const articles = calciomercatoStateV306.data?.articles;
+  return Array.isArray(articles) ? articles : [];
+}
+
+function getCalciomercatoSourcesV306() {
+  const sources = calciomercatoStateV306.data?.sources;
+  return Array.isArray(sources) ? sources : [];
+}
+
+function getCalciomercatoTeamLabelV306(article) {
+  const teams = getCalciomercatoTeamsV308(article);
+  return teams[0] || "Generale";
+}
+
+function normalizeCalciomercatoListV308(rawValue) {
+  const raw = Array.isArray(rawValue) ? rawValue : String(rawValue || "").split(/[;,]/);
+  return Array.from(new Set(raw
+    .map((item) => {
+      if (item && typeof item === "object") return String(item.name || item.nome || item.label || item.teamName || item.squadra || "").trim();
+      return String(item || "").trim();
+    })
+    .filter(Boolean)));
+}
+
+function getCalciomercatoTeamsV308(article) {
+  const multiTeams = normalizeCalciomercatoListV308(article?.teams || article?.teamNames || article?.squadre || article?.clubs || []);
+  const singleTeam = String(article?.teamName || article?.team || article?.squadra || article?.club || "").trim();
+  if (singleTeam) multiTeams.unshift(singleTeam);
+  const seasonTeamIds = normalizeCalciomercatoListV308(article?.seasonTeamIds || article?.teamIds || []);
+  const singleSeasonTeamId = String(article?.seasonTeamId || "").trim();
+  if (singleSeasonTeamId) seasonTeamIds.unshift(singleSeasonTeamId);
+  seasonTeamIds.forEach((seasonTeamId) => {
+    const team = (state.raw?.seasonTeams || []).find((item) => String(item.id) === String(seasonTeamId));
+    multiTeams.push(team?.name || seasonTeamId);
+  });
+  const unique = Array.from(new Set(multiTeams.map((team) => String(team || "").trim()).filter(Boolean)));
+  return unique.length ? unique : ["Generale"];
+}
+
+function getCalciomercatoStatusV308(article) {
+  return String(article?.marketStatus || article?.status || article?.stato || "").trim();
+}
+
+function getCalciomercatoSourceLabelV314(article) {
+  const source = article?.sourceName || article?.source || article?.sourceLabel || article?.sourceId || article?.fonte || "Fonte";
+  return String(source || "Fonte").trim() || "Fonte";
+}
+
+function renderCalciomercatoTeamChipsV308(teams) {
+  const list = Array.isArray(teams) ? teams.filter(Boolean) : [];
+  if (!list.length) return "";
+  return list.map((team) => `<span class="status ok calciomercato-team-chip-v308">${escapeHtml(team)}</span>`).join("");
+}
+
+function renderCalciomercatoStatusChipV308(status) {
+  if (!status) return "";
+  return `<span class="status info calciomercato-status-chip-v308">${escapeHtml(status)}</span>`;
+}
+
+function getCalciomercatoTopicLabelV306(article) {
+  const topic = article?.topic || article?.category || article?.categoria || "";
+  return String(topic || "Mercato").trim() || "Mercato";
+}
+
+function getCalciomercatoArticleRawDateV311(article) {
+  return String(article?.publishedAt || article?.published_at || article?.pubDate || article?.date || article?.createdAt || "").trim();
+}
+
+function getCalciomercatoArticleDateV306(article) {
+  const raw = getCalciomercatoArticleRawDateV311(article);
+  return raw ? raw.slice(0, 10) : "";
+}
+
+function getCalciomercatoArticleTimestampV316(article) {
+  const raw = getCalciomercatoArticleRawDateV311(article);
+  if (!raw) return 0;
+  const parsed = new Date(raw).getTime();
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function padCalciomercatoDatePartV316(value) {
+  return String(value).padStart(2, "0");
+}
+
+function formatCalciomercatoDateTimeLocalInputV316(date) {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) return "";
+  return `${date.getFullYear()}-${padCalciomercatoDatePartV316(date.getMonth() + 1)}-${padCalciomercatoDatePartV316(date.getDate())}T${padCalciomercatoDatePartV316(date.getHours())}:${padCalciomercatoDatePartV316(date.getMinutes())}`;
+}
+
+function parseCalciomercatoLocalInputDateV316(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return null;
+  const parsed = new Date(raw);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
+function ensureCalciomercatoDefaultRangeV316() {
+  if (calciomercatoStateV306.rangeFrom && calciomercatoStateV306.rangeTo) return;
+  const now = new Date();
+  const from = new Date(now.getTime() - (calciomercatoStateV306.autoWindowHours || 12) * 60 * 60 * 1000);
+  calciomercatoStateV306.rangeFrom = formatCalciomercatoDateTimeLocalInputV316(from);
+  calciomercatoStateV306.rangeTo = formatCalciomercatoDateTimeLocalInputV316(now);
+  calciomercatoStateV306.manualRange = false;
+}
+
+function getCalciomercatoRangeBoundsV316() {
+  ensureCalciomercatoDefaultRangeV316();
+  const from = parseCalciomercatoLocalInputDateV316(calciomercatoStateV306.rangeFrom);
+  const to = parseCalciomercatoLocalInputDateV316(calciomercatoStateV306.rangeTo);
+  return {
+    from,
+    to,
+    fromIso: from ? from.toISOString() : "",
+    toIso: to ? to.toISOString() : ""
+  };
+}
+
+function resetCalciomercatoDefaultRangeV316() {
+  calciomercatoStateV306.autoWindowHours = 12;
+  calciomercatoStateV306.rangeFrom = "";
+  calciomercatoStateV306.rangeTo = "";
+  calciomercatoStateV306.manualRange = false;
+  ensureCalciomercatoDefaultRangeV316();
+}
+
+function buildCalciomercatoAutomaticUrlV316() {
+  const bounds = getCalciomercatoRangeBoundsV316();
+  const url = new URL(CALCIOMERCATO_AUTO_FEED_URL_V309, window.location.origin);
+  url.searchParams.set("limit", "1000");
+  url.searchParams.set("maxArticles", "1000");
+  if (calciomercatoStateV306.search) url.searchParams.set("q", calciomercatoStateV306.search);
+  if (calciomercatoStateV306.source && calciomercatoStateV306.source !== "all") url.searchParams.set("source", calciomercatoStateV306.source);
+  if (bounds.fromIso) url.searchParams.set("from", bounds.fromIso);
+  if (bounds.toIso) url.searchParams.set("to", bounds.toIso);
+  return url.pathname + url.search;
+}
+
+const CALCIOMERCATO_TIME_ZONE_V312 = "Europe/Rome";
+
+function getCalciomercatoRawDateValueV312(value) {
+  if (value && typeof value === "object" && !(value instanceof Date)) return getCalciomercatoArticleRawDateV311(value);
+  return String(value || "").trim();
+}
+
+function hasCalciomercatoTimeInfoV312(raw) {
+  return /[T\s]\d{1,2}:\d{2}/.test(String(raw || "")) || /GMT|UTC|Z$|[+-]\d{2}:?\d{2}$/i.test(String(raw || ""));
+}
+
+function formatCalciomercatoDateTimeRomeV312(value) {
+  const raw = getCalciomercatoRawDateValueV312(value);
+  if (!raw) return "";
+  const parsed = new Date(raw);
+  const includeTime = hasCalciomercatoTimeInfoV312(raw);
+  if (!Number.isNaN(parsed.getTime())) {
+    const options = {
+      timeZone: CALCIOMERCATO_TIME_ZONE_V312,
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    };
+    if (includeTime) {
+      options.hour = "2-digit";
+      options.minute = "2-digit";
+    }
+    return new Intl.DateTimeFormat("it-IT", options).format(parsed);
+  }
+  const compactIso = raw.match(/^(\d{4})-(\d{2})-(\d{2})[T\s]+(\d{2}:\d{2})/);
+  if (compactIso) return `${compactIso[3]}/${compactIso[2]}/${compactIso[1]}, ${compactIso[4]}`;
+  const compactDate = raw.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (compactDate) return `${compactDate[3]}/${compactDate[2]}/${compactDate[1]}`;
+  return raw.slice(0, 16).replace("T", " ");
+}
+
+function formatCalciomercatoArticleDateTimeV311(article) {
+  return formatCalciomercatoDateTimeRomeV312(article);
+}
+
+function getCalciomercatoPlayersV306(article) {
+  const rawPlayers = article?.players || article?.giocatori || article?.playerNames || article?.interestedPlayers || [];
+  return normalizeCalciomercatoListV308(rawPlayers);
+}
+
+function renderCalciomercatoPlayersV306(players) {
+  if (!Array.isArray(players) || !players.length) return "";
+  return `<div class="calciomercato-players-v306" aria-label="Giocatori interessati">
+    <span class="calciomercato-players-label-v306">Giocatori</span>
+    <div class="calciomercato-player-chips-v306">${players.map((player) => `<span class="calciomercato-player-chip-v306">${escapeHtml(player)}</span>`).join("")}</div>
+  </div>`;
+}
+
+function getCalciomercatoFilteredArticlesV306() {
+  const search = normalizeCalciomercatoValueV306(calciomercatoStateV306.search);
+  const selectedTeam = normalizeCalciomercatoValueV306(calciomercatoStateV306.team);
+  const selectedTopic = normalizeCalciomercatoValueV306(calciomercatoStateV306.topic);
+  const selectedSource = normalizeCalciomercatoValueV306(calciomercatoStateV306.source);
+  const bounds = getCalciomercatoRangeBoundsV316();
+  const fromTime = bounds.from ? bounds.from.getTime() : 0;
+  const toTime = bounds.to ? bounds.to.getTime() : 0;
+
+  return getCalciomercatoArticlesV306().filter((article) => {
+    const teams = getCalciomercatoTeamsV308(article).map(normalizeCalciomercatoValueV306);
+    const topic = normalizeCalciomercatoValueV306(getCalciomercatoTopicLabelV306(article));
+    const source = normalizeCalciomercatoValueV306(getCalciomercatoSourceLabelV314(article));
+    const timestamp = getCalciomercatoArticleTimestampV316(article);
+    if (selectedTeam !== "all" && !teams.includes(selectedTeam)) return false;
+    if (selectedTopic !== "all" && topic !== selectedTopic) return false;
+    if (selectedSource !== "all" && source !== selectedSource) return false;
+    if (fromTime && timestamp && timestamp < fromTime) return false;
+    if (toTime && timestamp && timestamp > toTime) return false;
+    if (!search) return true;
+    const haystack = normalizeCalciomercatoValueV306([
+      article.title,
+      article.description,
+      getCalciomercatoSourceLabelV314(article),
+      article.sourceName,
+      article.url,
+      ...getCalciomercatoTeamsV308(article),
+      getCalciomercatoTopicLabelV306(article),
+      getCalciomercatoStatusV308(article),
+      formatCalciomercatoArticleDateTimeV311(article),
+      ...getCalciomercatoPlayersV306(article),
+      ...(Array.isArray(article.tags) ? article.tags : [])
+    ].join(" "));
+    return haystack.includes(search);
+  });
+}
+
+function renderCalciomercatoSelectOptionsV306(values, selectedValue, fallbackLabel) {
+  const unique = Array.from(new Set(values.map((value) => String(value || "").trim()).filter(Boolean)))
+    .sort((a, b) => a.localeCompare(b, "it", { sensitivity: "base" }));
+  const selectedKey = normalizeCalciomercatoValueV306(selectedValue || "all");
+  return [`<option value="all">${escapeHtml(fallbackLabel)}</option>`, ...unique.map((value) => {
+    const key = normalizeCalciomercatoValueV306(value);
+    return `<option value="${escapeHtml(value)}" ${key === selectedKey ? "selected" : ""}>${escapeHtml(value)}</option>`;
+  })].join("");
+}
+
+function renderCalciomercatoTeamSelectOptionsV314(values, selectedValue) {
+  const selectedKey = normalizeCalciomercatoValueV306(selectedValue || "all");
+  const unique = Array.from(new Set(values.map((value) => String(value || "").trim()).filter(Boolean)));
+  const withoutGeneral = unique
+    .filter((value) => normalizeCalciomercatoValueV306(value) !== "generale")
+    .sort((a, b) => a.localeCompare(b, "it", { sensitivity: "base" }));
+  const ordered = ["Generale", ...withoutGeneral];
+  return [`<option value="all">Tutte le squadre</option>`, ...ordered.map((value) => {
+    const key = normalizeCalciomercatoValueV306(value);
+    return `<option value="${escapeHtml(value)}" ${key === selectedKey ? "selected" : ""}>${escapeHtml(value)}</option>`;
+  })].join("");
+}
+
+function renderCalciomercatoSourceSelectOptionsV314(values, selectedValue) {
+  return renderCalciomercatoSelectOptionsV306(values, selectedValue, "Tutte le fonti");
+}
+
+function renderCalciomercatoArticleCardV306(article) {
+  const title = String(article?.title || "Articolo di mercato").trim();
+  const url = String(article?.url || "").trim();
+  const image = String(article?.image || article?.thumbnail || "").trim();
+  const description = String(article?.description || article?.summary || "").trim();
+  const source = getCalciomercatoSourceLabelV314(article);
+  const teams = getCalciomercatoTeamsV308(article);
+  const topic = getCalciomercatoTopicLabelV306(article);
+  const status = getCalciomercatoStatusV308(article);
+  const date = formatCalciomercatoArticleDateTimeV311(article);
+  const players = getCalciomercatoPlayersV306(article);
+  const safeUrl = url && /^https?:\/\//i.test(url) ? url : "";
+  return `
+    <article class="calciomercato-card-v306 compact-card">
+      ${image ? `<a class="calciomercato-thumb-v306" href="${escapeHtml(safeUrl || '#')}" target="_blank" rel="noopener" aria-label="Apri articolo"><img src="${escapeHtml(image)}" alt="" loading="lazy" /></a>` : `<div class="calciomercato-thumb-v306 calciomercato-thumb-placeholder-v306" aria-hidden="true">📰</div>`}
+      <div class="calciomercato-card-body-v306">
+        <div class="calciomercato-card-meta-v306">
+          ${renderCalciomercatoTeamChipsV308(teams)}
+          <span class="status warning">${escapeHtml(topic)}</span>
+          ${renderCalciomercatoStatusChipV308(status)}
+        </div>
+        <h3>${safeUrl ? `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">${escapeHtml(title)}</a>` : escapeHtml(title)}</h3>
+        ${description ? `<p>${escapeHtml(description)}</p>` : `<p class="muted">Descrizione non configurata. In futuro potra essere recuperata automaticamente dalle anteprime Open Graph.</p>`}
+        ${renderCalciomercatoPlayersV306(players)}
+        <div class="calciomercato-card-footer-v306">
+          <small class="muted">${escapeHtml(source)}${date ? ` · ${escapeHtml(date)}` : ""}</small>
+          ${safeUrl ? `<a class="button button-secondary button-small" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">Apri articolo</a>` : `<span class="muted">Link non configurato</span>`}
+        </div>
+      </div>
+    </article>`;
+}
+
+
+function getCalciomercatoFeedRangeLabelV317(feedRange) {
+  if (!feedRange || typeof feedRange !== "object") return "";
+  const earliest = feedRange.earliest ? formatCalciomercatoDateTimeRomeV312(feedRange.earliest) : "";
+  const latest = feedRange.latest ? formatCalciomercatoDateTimeRomeV312(feedRange.latest) : "";
+  if (earliest && latest) return `${earliest} - ${latest}`;
+  return earliest || latest || "";
+}
+
+function setCalciomercatoLoadStatusV317(message) {
+  calciomercatoStateV306.lastLoadStatus = String(message || "");
+  const target = document.getElementById("calciomercatoLoadStatusV317");
+  if (target) target.textContent = calciomercatoStateV306.lastLoadStatus;
+}
+
+function renderCalciomercatoNoArticlesNoticeV317() {
+  const automatic = String(calciomercatoStateV306.sourceMode || "").startsWith("automatic-rss");
+  const feedRange = calciomercatoStateV306.data?.feedRange || null;
+  const rangeLabel = getCalciomercatoFeedRangeLabelV317(feedRange);
+  const query = calciomercatoStateV306.search ? ` per <strong>${escapeHtml(calciomercatoStateV306.search)}</strong>` : "";
+  if (automatic) {
+    const archiveHint = rangeLabel
+      ? ` I feed attualmente disponibili coprono circa: <strong>${escapeHtml(rangeLabel)}</strong>.`
+      : " I feed RSS espongono solo gli ultimi articoli disponibili e non sono un archivio storico completo.";
+    return `<div class="notice notice-info calciomercato-empty-v317"><strong>Nessun articolo trovato${query} nel periodo selezionato.</strong>${archiveHint} Per cercare molto indietro nel tempo servirà un indice storico o una API/search dedicata.</div>`;
+  }
+  return `<div class="notice notice-info"><strong>Sezione pronta.</strong> Configura le fonti in <code>assets/calciomercato/links.json</code>: su Netlify gli articoli vengono recuperati automaticamente tramite funzione server-side.</div>`;
+}
+
+function renderCalciomercatoSourcesV306() {
+  const target = document.getElementById("calciomercatoSourcesV306");
+  if (!target) return;
+  const sources = getCalciomercatoSourcesV306();
+  if (!sources.length) {
+    target.innerHTML = `<p class="muted">Nessuna fonte configurata. Aggiungi fonti nel file <code>assets/calciomercato/links.json</code>.</p>`;
+    return;
+  }
+  target.innerHTML = sources.map((source) => {
+    const name = String(source.name || source.label || source.id || "Fonte").trim();
+    const url = String(source.url || "").trim();
+    const safeUrl = url && /^https?:\/\//i.test(url) ? url : "";
+    const note = String(source.note || source.description || "").trim();
+    return `<div class="calciomercato-source-v306 compact-card">
+      <strong>${safeUrl ? `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">${escapeHtml(name)}</a>` : escapeHtml(name)}</strong>
+      ${note ? `<small class="muted">${escapeHtml(note)}</small>` : ""}
+    </div>`;
+  }).join("");
+}
+
+function renderCalciomercatoV306() {
+  const list = document.getElementById("calciomercatoArticlesV306");
+  const meta = document.getElementById("calciomercatoMetaV306");
+  const teamFilter = document.getElementById("calciomercatoTeamFilterV306");
+  const topicFilter = document.getElementById("calciomercatoTopicFilterV306");
+  const sourceFilter = document.getElementById("calciomercatoSourceFilterV314");
+  const searchInput = document.getElementById("calciomercatoSearchV306");
+  const fromInput = document.getElementById("calciomercatoFromV316");
+  const toInput = document.getElementById("calciomercatoToV316");
+  const loadOlder = document.getElementById("calciomercatoLoadOlderV316");
+  const loadStatus = document.getElementById("calciomercatoLoadStatusV317");
+  if (!list) return;
+
+  ensureCalciomercatoDefaultRangeV316();
+  setupCalciomercatoControlsV306();
+
+  if (!calciomercatoStateV306.loaded && !calciomercatoStateV306.loading) {
+    loadCalciomercatoDataV306();
+  }
+
+  if (calciomercatoStateV306.loading && !calciomercatoStateV306.loadingOlder) {
+    list.innerHTML = `<p class="muted">Caricamento articoli di mercato...</p>`;
+    if (meta) meta.textContent = "Caricamento fonti Calciomercato.";
+    if (loadStatus) loadStatus.textContent = calciomercatoStateV306.lastLoadStatus || "";
+    return;
+  }
+
+  if (calciomercatoStateV306.error) {
+    list.innerHTML = `<div class="notice notice-warning"><strong>Calciomercato non configurato.</strong> ${escapeHtml(calciomercatoStateV306.error)}</div>`;
+    if (meta) meta.textContent = "File statico non disponibile.";
+    renderCalciomercatoSourcesV306();
+    return;
+  }
+
+  const articles = getCalciomercatoArticlesV306();
+  const filtered = getCalciomercatoFilteredArticlesV306();
+  const teams = articles.flatMap(getCalciomercatoTeamsV308);
+  const topics = articles.map(getCalciomercatoTopicLabelV306);
+  const sourceNames = [
+    ...articles.map(getCalciomercatoSourceLabelV314),
+    ...getCalciomercatoSourcesV306().map((source) => source.name || source.label || source.id || source.url || "")
+  ];
+
+  if (teamFilter) teamFilter.innerHTML = renderCalciomercatoTeamSelectOptionsV314(teams, calciomercatoStateV306.team);
+  if (topicFilter) topicFilter.innerHTML = renderCalciomercatoSelectOptionsV306(topics, calciomercatoStateV306.topic, "Tutti i topic");
+  if (sourceFilter) sourceFilter.innerHTML = renderCalciomercatoSourceSelectOptionsV314(sourceNames, calciomercatoStateV306.source);
+  if (searchInput && searchInput.value !== calciomercatoStateV306.search) searchInput.value = calciomercatoStateV306.search;
+  if (fromInput && fromInput.value !== calciomercatoStateV306.rangeFrom) fromInput.value = calciomercatoStateV306.rangeFrom;
+  if (toInput && toInput.value !== calciomercatoStateV306.rangeTo) toInput.value = calciomercatoStateV306.rangeTo;
+  if (loadOlder) {
+    const canTryOlder = !calciomercatoStateV306.manualRange && calciomercatoStateV306.sourceMode === "automatic-rss";
+    loadOlder.hidden = !canTryOlder;
+    loadOlder.disabled = !!calciomercatoStateV306.loadingOlder;
+    loadOlder.textContent = calciomercatoStateV306.loadingOlder ? "Caricamento articoli meno recenti..." : "Carica articoli più vecchi";
+  }
+  if (loadStatus) loadStatus.textContent = calciomercatoStateV306.lastLoadStatus || "";
+  if (meta) {
+    const modeLabel = calciomercatoStateV306.sourceMode === "automatic-rss" ? "recuperati automaticamente" : "da configurazione statica";
+    const generatedLabel = formatCalciomercatoDateTimeRomeV312(calciomercatoStateV306.generatedAt);
+    const generated = generatedLabel ? ` · aggiornato ${generatedLabel}` : "";
+    const bounds = getCalciomercatoRangeBoundsV316();
+    const rangeLabel = bounds.from && bounds.to
+      ? ` · periodo ${formatCalciomercatoDateTimeRomeV312(bounds.from.toISOString())} - ${formatCalciomercatoDateTimeRomeV312(bounds.to.toISOString())}`
+      : "";
+    const olderHint = !calciomercatoStateV306.manualRange && calciomercatoStateV306.sourceMode === "automatic-rss" ? " · scorri per caricare articoli più vecchi" : "";
+    meta.textContent = `${filtered.length} articoli visibili su ${articles.length} ${modeLabel}${rangeLabel}${generated}${olderHint}.`;
+  }
+
+  if (!articles.length) {
+    list.innerHTML = `${renderCalciomercatoWarningsV309()}${renderCalciomercatoNoArticlesNoticeV317()}`;
+    renderCalciomercatoSourcesV306();
+    return;
+  }
+
+  list.innerHTML = `${renderCalciomercatoWarningsV309()}${filtered.length
+    ? filtered.map(renderCalciomercatoArticleCardV306).join("")
+    : `<div class="notice notice-info calciomercato-empty-v317"><strong>Nessun articolo corrisponde ai filtri selezionati.</strong> Prova ad ampliare il range temporale o rimuovere qualche filtro.</div>`}`;
+  renderCalciomercatoSourcesV306();
+}
+
+
+function normalizeCalciomercatoDataV309(data, mode) {
+  const sources = Array.isArray(data?.sources) ? data.sources : [];
+  const articles = Array.isArray(data?.articles) ? data.articles : [];
+  const warnings = Array.isArray(data?.warnings) ? data.warnings : [];
+  return {
+    sources,
+    articles,
+    updatedAt: data?.updatedAt || data?.generatedAt || "",
+    generatedAt: data?.generatedAt || data?.updatedAt || "",
+    sourceMode: data?.sourceMode || data?.mode || mode || "static",
+    warnings,
+    feedRange: data?.feedRange || null,
+    limits: data?.limits || null
+  };
+}
+
+async function fetchCalciomercatoJsonV309(url) {
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.json();
+}
+
+function renderCalciomercatoWarningsV309() {
+  const warnings = Array.isArray(calciomercatoStateV306.warnings) ? calciomercatoStateV306.warnings.filter(Boolean) : [];
+  if (!warnings.length) return "";
+  const shown = warnings.slice(0, 4);
+  return `<div class="notice notice-warning calciomercato-warning-v309"><strong>Fonti non complete.</strong> ${shown.map((item) => escapeHtml(String(item))).join(" · ")}${warnings.length > shown.length ? " · ..." : ""}</div>`;
+}
+
+async function loadCalciomercatoDataV306(options = {}) {
+  const preserveContent = !!options.preserveContent;
+  const restoreScrollY = Number.isFinite(options.restoreScrollY) ? options.restoreScrollY : null;
+  calciomercatoStateV306.loading = true;
+  calciomercatoStateV306.error = "";
+  calciomercatoStateV306.warnings = [];
+  if (!preserveContent) renderCalciomercatoV306();
+  let staticFallbackError = null;
+  try {
+    try {
+      const automaticUrl = buildCalciomercatoAutomaticUrlV316();
+      calciomercatoStateV306.lastAutomaticUrl = automaticUrl;
+      const automaticData = await fetchCalciomercatoJsonV309(automaticUrl);
+      calciomercatoStateV306.data = normalizeCalciomercatoDataV309(automaticData, "automatic-rss");
+      calciomercatoStateV306.generatedAt = calciomercatoStateV306.data.generatedAt || "";
+      calciomercatoStateV306.sourceMode = calciomercatoStateV306.data.sourceMode || "automatic-rss";
+      calciomercatoStateV306.warnings = calciomercatoStateV306.data.warnings || [];
+      calciomercatoStateV306.loaded = true;
+      return;
+    } catch (automaticError) {
+      staticFallbackError = automaticError;
+      const staticData = await fetchCalciomercatoJsonV309(CALCIOMERCATO_STATIC_URL_V306);
+      calciomercatoStateV306.data = normalizeCalciomercatoDataV309(staticData, "static-fallback");
+      calciomercatoStateV306.generatedAt = calciomercatoStateV306.data.generatedAt || "";
+      calciomercatoStateV306.sourceMode = "static-fallback";
+      calciomercatoStateV306.warnings = ["Recupero automatico non disponibile in questo ambiente: uso configurazione statica."];
+      calciomercatoStateV306.loaded = true;
+    }
+  } catch (error) {
+    calciomercatoStateV306.loaded = true;
+    calciomercatoStateV306.error = "Impossibile leggere le fonti automatiche e assets/calciomercato/links.json. La sezione resta isolata e non blocca il sito.";
+    console.warn("Calciomercato V309 non caricato", { automatic: staticFallbackError, fallback: error });
+  } finally {
+    calciomercatoStateV306.loading = false;
+    renderCalciomercatoV306();
+    if (restoreScrollY !== null) {
+      requestAnimationFrame(() => window.scrollTo({ top: restoreScrollY, left: 0, behavior: "auto" }));
+    }
+  }
+}
+
+function reloadCalciomercatoDataV316(options = {}) {
+  calciomercatoStateV306.loaded = false;
+  calciomercatoStateV306.error = "";
+  calciomercatoStateV306.warnings = [];
+  return loadCalciomercatoDataV306(options);
+}
+
+async function loadOlderCalciomercatoArticlesV316() {
+  if (calciomercatoStateV306.loading || calciomercatoStateV306.loadingOlder || calciomercatoStateV306.manualRange) return;
+  const currentWindow = calciomercatoStateV306.autoWindowHours || 12;
+  const nextWindow = Math.min(
+    calciomercatoStateV306.maxAutoWindowHours || (24 * 180),
+    currentWindow + (calciomercatoStateV306.olderWindowStepHours || 72)
+  );
+  if (nextWindow === currentWindow) {
+    setCalciomercatoLoadStatusV317("Limite massimo di ricerca RSS raggiunto per questa sessione.");
+    return;
+  }
+  const previousCount = getCalciomercatoArticlesV306().length;
+  const previousScrollY = window.scrollY;
+  calciomercatoStateV306.loadingOlder = true;
+  calciomercatoStateV306.lastOlderResult = null;
+  setCalciomercatoLoadStatusV317(`Caricamento articoli più vecchi: estendo il periodo da ${currentWindow} a ${nextWindow} ore...`);
+  renderCalciomercatoV306();
+  const now = parseCalciomercatoLocalInputDateV316(calciomercatoStateV306.rangeTo) || new Date();
+  const from = new Date(now.getTime() - nextWindow * 60 * 60 * 1000);
+  calciomercatoStateV306.autoWindowHours = nextWindow;
+  calciomercatoStateV306.rangeFrom = formatCalciomercatoDateTimeLocalInputV316(from);
+  calciomercatoStateV306.manualRange = false;
+  try {
+    await reloadCalciomercatoDataV316({ preserveContent: true, restoreScrollY: previousScrollY });
+  } finally {
+    const newCount = getCalciomercatoArticlesV306().length;
+    const added = Math.max(0, newCount - previousCount);
+    calciomercatoStateV306.loadingOlder = false;
+    calciomercatoStateV306.lastOlderResult = { previousCount, newCount, added, windowHours: nextWindow };
+    setCalciomercatoLoadStatusV317(added
+      ? `Caricati ${added} articoli aggiuntivi. Puoi continuare a scorrere per estendere ancora il periodo.`
+      : `Nessun articolo più vecchio trovato nei feed RSS disponibili. I feed non sono un archivio storico completo; periodo esteso a ${nextWindow} ore.`);
+    renderCalciomercatoV306();
+    requestAnimationFrame(() => window.scrollTo({ top: previousScrollY, left: 0, behavior: "auto" }));
+  }
+}
+
+function setupCalciomercatoInfiniteScrollV316() {
+  if (window.__zonaOrientaleCalciomercatoInfiniteV316) return;
+  window.__zonaOrientaleCalciomercatoInfiniteV316 = true;
+  let lastTrigger = 0;
+  window.addEventListener("scroll", () => {
+    if (location.hash !== "#calciomercato") return;
+    if (calciomercatoStateV306.manualRange || calciomercatoStateV306.loading || calciomercatoStateV306.loadingOlder) return;
+    if (calciomercatoStateV306.sourceMode !== "automatic-rss") return;
+    const now = Date.now();
+    if (now - lastTrigger < 1800) return;
+    const distanceToBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+    if (distanceToBottom < 480) {
+      lastTrigger = now;
+      loadOlderCalciomercatoArticlesV316();
+    }
+  }, { passive: true });
+}
+
+function setupCalciomercatoControlsV306() {
+  const section = document.querySelector('[data-page="calciomercato"]');
+  if (!section || section.dataset.calciomercatoBoundV306 === "true") return;
+  section.dataset.calciomercatoBoundV306 = "true";
+  section.addEventListener("input", (event) => {
+    if (event.target?.id === "calciomercatoSearchV306") {
+      calciomercatoStateV306.search = event.target.value || "";
+      renderCalciomercatoV306();
+    }
+    if (event.target?.id === "calciomercatoFromV316") {
+      calciomercatoStateV306.rangeFrom = event.target.value || "";
+      calciomercatoStateV306.manualRange = true;
+      renderCalciomercatoV306();
+    }
+    if (event.target?.id === "calciomercatoToV316") {
+      calciomercatoStateV306.rangeTo = event.target.value || "";
+      calciomercatoStateV306.manualRange = true;
+      renderCalciomercatoV306();
+    }
+  });
+  section.addEventListener("change", (event) => {
+    if (event.target?.id === "calciomercatoTeamFilterV306") {
+      calciomercatoStateV306.team = event.target.value || "all";
+      renderCalciomercatoV306();
+    }
+    if (event.target?.id === "calciomercatoTopicFilterV306") {
+      calciomercatoStateV306.topic = event.target.value || "all";
+      renderCalciomercatoV306();
+    }
+    if (event.target?.id === "calciomercatoSourceFilterV314") {
+      calciomercatoStateV306.source = event.target.value || "all";
+      reloadCalciomercatoDataV316();
+    }
+  });
+  section.addEventListener("click", (event) => {
+    if (event.target?.id === "calciomercatoApplyRangeV316") {
+      event.preventDefault();
+      calciomercatoStateV306.manualRange = true;
+      reloadCalciomercatoDataV316();
+    }
+    if (event.target?.id === "calciomercatoResetRangeV316") {
+      event.preventDefault();
+      resetCalciomercatoDefaultRangeV316();
+      reloadCalciomercatoDataV316();
+    }
+    if (event.target?.id === "calciomercatoLoadOlderV316") {
+      event.preventDefault();
+      loadOlderCalciomercatoArticlesV316();
+    }
+  });
+}
+
+const renderAllBeforeV306 = renderAll;
+renderAll = function renderAllV306() {
+  const result = renderAllBeforeV306?.();
+  setupCalciomercatoInfiniteScrollV316();
+  renderCalciomercatoV306();
+  return result;
+};
+
+window.ZonaOrientaleCalciomercatoV306 = {
+  version: "V306",
+  label: "Calciomercato con giocatori interessati",
+  behaviorChangeOutsideSection: false,
+  automaticExternalFetch: false,
+  firebaseWrites: false,
+  protectedFeatures: [
+    "Fantamercato interno esistente",
+    "Listone pubblico/Admin ed export admin-only",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin Diagnostica/Richieste/Converti listone",
+    "mobile bottom nav/menu Altro/pulsante Su",
+    "Dark mode unico e Light mode sospesa"
+  ],
+  getState: () => ({ ...calciomercatoStateV306, data: calciomercatoStateV306.data ? { ...calciomercatoStateV306.data } : null }),
+  getArticles: getCalciomercatoArticlesV306,
+  getPlayers: getCalciomercatoPlayersV306,
+  getTeams: getCalciomercatoTeamsV308,
+  getStatus: getCalciomercatoStatusV308,
+  reload: () => {
+    calciomercatoStateV306.loaded = false;
+    calciomercatoStateV306.data = null;
+    return reloadCalciomercatoDataV316();
+  }
+};
+
+/* V307 - Rinomina sezione in Calciomercato.
+ * Solo cambio naming UI/documentale: la logica statica V305/V306 resta invariata.
+ * Funzionalita preservate: articoli, giocatori interessati, ricerca, filtri, Fantamercato interno, Listone, Rose, Admin e mobile navigation.
+ */
+window.ZonaOrientaleCalciomercatoV307 = {
+  version: "V307",
+  label: "Calciomercato",
+  previousDisplayName: "Calcio mercato",
+  behaviorChangeOutsideSection: false,
+  automaticExternalFetch: false,
+  firebaseWrites: false,
+  preservesStaticV306Logic: true,
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles,
+  getPlayers: window.ZonaOrientaleCalciomercatoV306?.getPlayers,
+  getTeams: window.ZonaOrientaleCalciomercatoV306?.getTeams,
+  getStatus: window.ZonaOrientaleCalciomercatoV306?.getStatus,
+  reload: window.ZonaOrientaleCalciomercatoV306?.reload
+};
+
+/* V308 - Calciomercato squadre multiple e stato trattativa.
+ * Estende solo lo schema statico/manuale della sezione: articoli associabili a piu squadre
+ * e badge stato trattativa. Non modifica Fantamercato interno, Firebase, Listone, Rose o Admin.
+ */
+window.ZonaOrientaleCalciomercatoV308 = {
+  version: "V308",
+  label: "Calciomercato squadre multiple",
+  behaviorChangeOutsideSection: false,
+  automaticExternalFetch: false,
+  firebaseWrites: false,
+  addedFields: ["teams", "teamNames", "squadre", "marketStatus", "status", "stato"],
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles,
+  getPlayers: window.ZonaOrientaleCalciomercatoV306?.getPlayers,
+  getTeams: getCalciomercatoTeamsV308,
+  getStatus: getCalciomercatoStatusV308,
+  reload: window.ZonaOrientaleCalciomercatoV306?.reload
+};
+
+
+
+/* V309 - Calciomercato automatico da fonti RSS.
+ * La sezione prova prima la Netlify Function server-side /.netlify/functions/calciomercato-feed
+ * e usa links.json come fallback statico/manuale. Funzionalita preservate: Fantamercato interno,
+ * Listone, export CSV admin-only, Rose, Admin, Presidente, Firebase/Auth/EmailJS e mobile navigation.
+ */
+window.ZonaOrientaleCalciomercatoV309 = {
+  version: "V309",
+  label: "Calciomercato automatico RSS",
+  automaticExternalFetch: true,
+  fetchLayer: "Netlify Function + static fallback",
+  firebaseWrites: false,
+  behaviorChangeOutsideSection: false,
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  sourcesConfig: "assets/calciomercato/links.json",
+  functionUrl: CALCIOMERCATO_AUTO_FEED_URL_V309,
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles,
+  reload: window.ZonaOrientaleCalciomercatoV306?.reload
+};
+
+/* V310 - Calciomercato layout orizzontale.
+ * Modifica solo la presentazione delle card della nuova sezione Calciomercato: layout a lista orizzontale
+ * per rendere titolo, descrizione, fonte, squadre e giocatori leggibili. Non modifica feed RSS, fallback statico,
+ * Fantamercato interno, Listone, Rose, Admin, Firebase/Auth/EmailJS o mobile navigation.
+ */
+window.ZonaOrientaleCalciomercatoLayoutV310 = {
+  version: "V310",
+  label: "Calciomercato layout orizzontale",
+  behaviorChangeOutsideSection: false,
+  dataSchemaChange: false,
+  automaticExternalFetchChanged: false,
+  firebaseWrites: false,
+  layout: "horizontal-list",
+  protectedFeatures: [
+    "Calciomercato RSS automatico V309",
+    "Fallback statico links.json",
+    "Giocatori interessati V306",
+    "Squadre multiple e stato V308",
+    "Fantamercato interno",
+    "Listone pubblico/Admin",
+    "Export CSV solo Admin",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin Diagnostica/Richieste",
+    "Mobile bottom nav/menu Altro/pulsante Su"
+  ],
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles,
+  reload: window.ZonaOrientaleCalciomercatoV306?.reload
+};
+
+/* V311 - Ora di pubblicazione articoli Calciomercato.
+ * Mostra data e ora quando il feed RSS espone un timestamp completo.
+ * Non modifica recupero RSS, formato JSON, Fantamercato interno o altre sezioni. */
+window.ZonaOrientaleCalciomercatoDateTimeV311 = {
+  version: "V311",
+  label: "Calciomercato data e ora",
+  behaviorChangeOutsideSection: false,
+  preservedFeatures: [
+    "Recupero RSS automatico V309",
+    "Fallback statico links.json",
+    "Layout orizzontale V310",
+    "Giocatori interessati V306",
+    "Squadre multiple e stato V308",
+    "Fantamercato interno",
+    "Listone pubblico/Admin",
+    "Rose e Dashboard Presidente",
+    "Admin e Firebase"
+  ],
+  formatDateTime: formatCalciomercatoArticleDateTimeV311,
+  getRawDate: getCalciomercatoArticleRawDateV311,
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles
+};
+
+
+/* V312 - Fuso orario Calciomercato.
+ * Normalizza in Europe/Rome l'orario degli articoli RSS e il timestamp di aggiornamento feed.
+ * Non modifica recupero RSS, Netlify Function, formato JSON, layout, Fantamercato interno o altre sezioni. */
+window.ZonaOrientaleCalciomercatoTimeZoneV312 = {
+  version: "V312",
+  label: "Calciomercato fuso orario Europe/Rome",
+  timeZone: CALCIOMERCATO_TIME_ZONE_V312,
+  behaviorChangeOutsideSection: false,
+  feedFetchChanged: false,
+  firebaseWrites: false,
+  preservedFeatures: [
+    "Recupero RSS automatico V309",
+    "Fallback statico links.json",
+    "Layout orizzontale V310",
+    "Data e ora articolo V311",
+    "Giocatori interessati V306",
+    "Squadre multiple e stato V308",
+    "Fantamercato interno",
+    "Listone pubblico/Admin",
+    "Rose e Dashboard Presidente",
+    "Admin e Firebase"
+  ],
+  formatRomeDateTime: formatCalciomercatoDateTimeRomeV312,
+  formatArticleDateTime: formatCalciomercatoArticleDateTimeV311,
+  getRawDate: getCalciomercatoArticleRawDateV311,
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles
+};
+
+
+
+/* V313 - Admin ordinato, sezioni ridotte e checklist preservazione funzioni.
+ * Mantiene il titolo Admin sempre sopra ogni pannello informativo inserito dopo il render,
+ * imposta le sezioni Admin ridotte al primo caricamento e lascia aperto il gate
+ * "Carica dati amministrazione". Non modifica Firebase, dati, Listone, Rose o Calciomercato. */
+const ADMIN_CATEGORY_STATE_KEY_V313 = "adminCollapsedCategoriesV313";
+const ADMIN_TOP_MOUNT_IDS_V313 = [
+  "adminPublicationReminderMountV189",
+  "publicationStatusMountV190",
+  "publishWizardMountV191"
+];
+
+function getAdminCategoryStateV313() {
+  if (!state.adminCategoryCollapseV313) {
+    state.adminCategoryCollapseV313 = { applied: new Set(), expanded: new Set(), collapsed: new Set() };
+  }
+  return state.adminCategoryCollapseV313;
+}
+
+function getAdminHeadingV313(adminPanel) {
+  return adminPanel?.querySelector?.(":scope > .page-heading, .page-heading") || null;
+}
+
+function ensureAdminTopControlsMountV313(adminPanel) {
+  if (!adminPanel) return null;
+  const heading = getAdminHeadingV313(adminPanel);
+  if (!heading) return null;
+  let holder = adminPanel.querySelector("#adminTopControlsMountV313");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "adminTopControlsMountV313";
+    holder.className = "admin-top-controls-v313";
+  }
+  if (adminPanel.firstElementChild !== heading) {
+    adminPanel.insertBefore(heading, adminPanel.firstElementChild || null);
+  }
+  if (heading.nextElementSibling !== holder) {
+    heading.insertAdjacentElement("afterend", holder);
+  }
+  return holder;
+}
+
+function normalizeAdminTopLayoutV313() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel) return false;
+  const holder = ensureAdminTopControlsMountV313(adminPanel);
+  if (!holder) return false;
+  ADMIN_TOP_MOUNT_IDS_V313.forEach((id) => {
+    const node = adminPanel.querySelector(`#${id}`);
+    if (node && node.parentElement !== holder) holder.appendChild(node);
+  });
+  return true;
+}
+
+function setAdminCategoryCollapsedV313(section, collapsed) {
+  if (!section) return;
+  const id = section.id || section.getAttribute("aria-label") || "admin-category";
+  const categoryState = getAdminCategoryStateV313();
+  section.classList.toggle("is-collapsed-v313", Boolean(collapsed));
+  const body = section.querySelector(":scope > .admin-category-body");
+  if (body) body.hidden = Boolean(collapsed);
+  const button = section.querySelector("[data-admin-toggle-category-v313]");
+  if (button) {
+    button.textContent = collapsed ? "Apri" : "Riduci";
+    button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+  }
+  if (collapsed) {
+    categoryState.collapsed.add(id);
+    categoryState.expanded.delete(id);
+  } else {
+    categoryState.expanded.add(id);
+    categoryState.collapsed.delete(id);
+  }
+}
+
+function enhanceAdminCategoriesV313() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel || !state.isAdmin) return;
+  const categoryState = getAdminCategoryStateV313();
+  adminPanel.querySelectorAll(".admin-category-section").forEach((section, index) => {
+    const id = section.id || `admin-category-v313-${index}`;
+    if (!section.id) section.id = id;
+    const heading = section.querySelector(":scope > .admin-category-heading");
+    if (heading && !heading.querySelector("[data-admin-toggle-category-v313]")) {
+      const actions = document.createElement("div");
+      actions.className = "admin-category-actions-v313";
+      actions.innerHTML = `<button class="button button-secondary button-small" type="button" data-admin-toggle-category-v313="${escapeHtml(id)}" aria-controls="${escapeHtml(id)}">Apri</button>`;
+      heading.appendChild(actions);
+    }
+    const shouldCollapse = categoryState.expanded.has(id) ? false : true;
+    if (!categoryState.applied.has(id)) categoryState.applied.add(id);
+    setAdminCategoryCollapsedV313(section, shouldCollapse);
+  });
+}
+
+function ensureAdminPanelsCollapsedOnceV313() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel || !state.isAdmin) return;
+  if (!state.adminPanelInitialCollapseAppliedV313) state.adminPanelInitialCollapseAppliedV313 = new Set();
+  adminPanel.querySelectorAll(".admin-collapsible-panel[id]").forEach((panel) => {
+    const id = panel.id;
+    if (!id || state.adminPanelInitialCollapseAppliedV313.has(id)) return;
+    state.adminPanelInitialCollapseAppliedV313.add(id);
+    state.collapsedAdminPanels?.add?.(id);
+    panel.classList.add("is-collapsed");
+    const button = panel.querySelector("[data-admin-toggle-panel]");
+    if (button) button.textContent = "Ingrandisci";
+  });
+}
+
+function getStandaloneAdminPanelIdV313(panel, index) {
+  if (panel.id) return panel.id;
+  const heading = panel.querySelector("h2, h3, h4")?.textContent || "pannello";
+  const id = `admin-aux-${makeIdPart(heading)}-${index}`;
+  panel.id = id;
+  return id;
+}
+
+function setStandaloneAdminPanelCollapsedV313(panel, collapsed) {
+  if (!panel) return;
+  panel.classList.toggle("is-collapsed", Boolean(collapsed));
+  const button = panel.querySelector("[data-admin-toggle-standalone-v313]");
+  if (button) {
+    button.textContent = collapsed ? "Apri" : "Riduci";
+    button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+  }
+}
+
+function enhanceStandaloneAdminPanelsV313() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel || !state.isAdmin) return;
+  if (!state.adminStandalonePanelInitialCollapseAppliedV313) state.adminStandalonePanelInitialCollapseAppliedV313 = new Set();
+  const panels = adminPanel.querySelectorAll("#adminTopControlsMountV313 .panel, #adminPanel > .panel");
+  panels.forEach((panel, index) => {
+    if (panel.classList.contains("admin-light-gate-v178")) return;
+    if (panel.classList.contains("admin-collapsible-panel")) return;
+    const id = getStandaloneAdminPanelIdV313(panel, index);
+    const header = panel.querySelector(":scope > .panel-header");
+    if (header && !header.querySelector("[data-admin-toggle-standalone-v313]")) {
+      const actions = header.querySelector(":scope > .panel-actions") || document.createElement("div");
+      actions.classList.add("panel-actions");
+      if (!actions.parentElement) header.appendChild(actions);
+      actions.insertAdjacentHTML("beforeend", `<button class="button button-secondary button-small" type="button" data-admin-toggle-standalone-v313="${escapeHtml(id)}" aria-controls="${escapeHtml(id)}">Apri</button>`);
+    }
+    if (!state.adminStandalonePanelInitialCollapseAppliedV313.has(id)) {
+      state.adminStandalonePanelInitialCollapseAppliedV313.add(id);
+      setStandaloneAdminPanelCollapsedV313(panel, true);
+    }
+  });
+}
+
+function normalizeAdminLayoutV313() {
+  normalizeAdminTopLayoutV313();
+  ensureAdminPanelsCollapsedOnceV313();
+  enhanceAdminCategoriesV313();
+  enhanceStandaloneAdminPanelsV313();
+}
+
+const renderAdminAreaBeforeV313 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV313() {
+  const result = renderAdminAreaBeforeV313?.();
+  normalizeAdminLayoutV313();
+  return result;
+};
+
+const renderAdminLightGateBeforeV313 = typeof renderAdminLightGateV178 === "function" ? renderAdminLightGateV178 : null;
+if (renderAdminLightGateBeforeV313) {
+  renderAdminLightGateV178 = function renderAdminLightGateV313() {
+    return renderAdminLightGateBeforeV313() || "";
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest?.("[data-admin-toggle-category-v313]");
+  if (!button) return;
+  const id = button.dataset.adminToggleCategoryV313;
+  const section = id ? document.getElementById(id) : button.closest(".admin-category-section");
+  if (!section) return;
+  event.preventDefault();
+  setAdminCategoryCollapsedV313(section, !section.classList.contains("is-collapsed-v313"));
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest?.("[data-admin-toggle-standalone-v313]");
+  if (!button) return;
+  const id = button.dataset.adminToggleStandaloneV313;
+  const panel = id ? document.getElementById(id) : button.closest(".panel");
+  if (!panel) return;
+  event.preventDefault();
+  setStandaloneAdminPanelCollapsedV313(panel, !panel.classList.contains("is-collapsed"));
+});
+
+function injectAdminLayoutStylesV313() {
+  if (document.getElementById("adminLayoutStylesV313")) return;
+  const style = document.createElement("style");
+  style.id = "adminLayoutStylesV313";
+  style.textContent = `
+    #adminPanel > .page-heading { order: -100; margin-bottom: 1rem; }
+    .admin-top-controls-v313 { display: grid; gap: 1rem; margin-bottom: 1rem; }
+    .admin-top-controls-v313:empty { display: none; }
+    .admin-category-section.is-collapsed-v313 { gap: 0; }
+    .admin-category-section.is-collapsed-v313 > .admin-category-heading { padding-bottom: 0; }
+    .admin-category-section.is-collapsed-v313 > .admin-category-body { display: none !important; }
+    .admin-category-section > .admin-category-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .admin-category-actions-v313 { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-end; }
+    @media (max-width: 760px) {
+      .admin-category-section > .admin-category-heading { flex-direction: column; }
+      .admin-category-actions-v313, .admin-category-actions-v313 .button { width: 100%; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectAdminLayoutStylesV313();
+
+window.ZonaOrientaleAdminLayoutV313 = {
+  version: "V313",
+  titleAlwaysFirst: true,
+  categoriesCollapsedByDefault: true,
+  adminLightGateRemainsOpen: true,
+  behaviorChangeOutsideAdmin: false,
+  protectedFeatures: [
+    "Admin Carica dati amministrazione",
+    "Admin Richieste presidenti",
+    "Admin Diagnostica dati",
+    "Admin Converti listone Excel",
+    "Listone pubblico/Admin",
+    "Fantamercato interno",
+    "Calciomercato RSS automatico",
+    "Rose e pagina squadra",
+    "Dashboard Presidente"
+  ],
+  normalize: normalizeAdminLayoutV313
+};
+
+
+/* V314 - Calciomercato fonti e filtri.
+ * Aggiunge filtro fonte, ordina Generale subito dopo Tutte le squadre e documenta il futuro modulo AI.
+ * Funzionalita preservate: feed RSS automatici, fallback statico, giocatori interessati, squadre multiple, Fantamercato interno, Listone, Rose, Admin e mobile navigation.
+ */
+window.ZonaOrientaleCalciomercatoSourcesV314 = {
+  version: "V314",
+  label: "Calciomercato fonti e filtro fonte",
+  behaviorChangeOutsideSection: false,
+  aiSummaryImplemented: false,
+  teamFilterOrder: ["Tutte le squadre", "Generale", "lista squadre"],
+  sourceFilterId: "calciomercatoSourceFilterV314",
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles,
+  getSourceLabel: getCalciomercatoSourceLabelV314,
+  renderTeamOptions: renderCalciomercatoTeamSelectOptionsV314,
+  reload: window.ZonaOrientaleCalciomercatoV306?.reload
+};
+
+
+/* V316 - Calciomercato ricerca/range e caricamento progressivo.
+ * Nessuna AI: filtra i feed RSS per query e intervallo temporale, mostra di default le ultime 12 ore
+ * e carica articoli piu vecchi allo scroll o con pulsante dedicato.
+ * Funzionalita preservate: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin,
+ * Firebase/Auth/EmailJS, mobile navigation e feed/fallback Calciomercato esistenti.
+ */
+window.ZonaOrientaleCalciomercatoRangeV316 = {
+  version: "V316",
+  label: "Calciomercato ricerca e range RSS",
+  aiImplemented: false,
+  defaultHours: 12,
+  maxArticles: 1000,
+  removedSources: ["Virgilio Sport", "La Gazzetta dello Sport"],
+  behaviorChangeOutsideSection: false,
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  buildUrl: buildCalciomercatoAutomaticUrlV316,
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  reload: reloadCalciomercatoDataV316,
+  loadOlder: loadOlderCalciomercatoArticlesV316
+};
+
+/* V317 - Calciomercato scroll stabile e range RSS esplicito.
+ * Corregge il caricamento progressivo: non sostituisce piu la lista con il loader quando si caricano articoli piu vecchi,
+ * mantiene la posizione di scroll e chiarisce che i feed RSS non sono un archivio storico completo.
+ * Funzionalita preservate: Fantamercato interno, Listone, Rose, Admin, Presidente, Firebase/EmailJS e feed/fallback Calciomercato.
+ */
+window.ZonaOrientaleCalciomercatoScrollV317 = {
+  version: "V317",
+  label: "Calciomercato scroll stabile e range RSS",
+  aiImplemented: false,
+  preservesScrollOnOlderLoad: true,
+  rssIsNotHistoricalArchive: true,
+  defaultHours: 12,
+  olderStepHours: calciomercatoStateV306.olderWindowStepHours,
+  maxAutoWindowHours: calciomercatoStateV306.maxAutoWindowHours,
+  behaviorChangeOutsideSection: false,
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getFeedRangeLabel: () => getCalciomercatoFeedRangeLabelV317(calciomercatoStateV306.data?.feedRange),
+  loadOlder: loadOlderCalciomercatoArticlesV316,
+  reload: reloadCalciomercatoDataV316
+};

@@ -408,3 +408,338 @@
 - `window.ZonaOrientaleAdminDiagnosticsV276`.
 - `window.ZonaOrientaleListoneChangeFilterV277`.
 - `window.ZonaOrientaleListoneExportV278`.
+
+---
+
+# Aggiornamento funzionale completo V313
+
+> Sezione aggiunta su richiesta esplicita del referente del progetto. Non sostituisce le sezioni precedenti: le integra come indice funzionale completo aggiornato alla V313.
+>
+> Regola principale: ogni futura modifica, pulizia o refactor deve preservare le funzionalita elencate qui sotto, dichiarando cosa rischia di perdere e come viene testato.
+
+## Utente pubblico
+
+### Navigazione generale
+- Usa menu desktop per accedere a Dashboard, News, Rose, Fantamercato, Calciomercato, Listone, Competizioni, Albo/FIFA, Statistiche, Archivio, Confronta e Regolamento.
+- Usa bottom navigation mobile e menu `Altro`.
+- Usa pulsante globale `Su` da smartphone dopo scroll.
+- Naviga con hash/route interne senza ricaricare la webapp.
+- Usa Dark mode unico; la Light mode e' sospesa temporaneamente.
+
+### Dashboard
+- Visualizza stagione corrente.
+- Visualizza riepiloghi e metriche principali.
+- Visualizza comunicati recenti.
+- Visualizza competizioni e partite principali.
+- Usa scorciatoie rapide verso sezioni principali.
+- Usa layout mobile a card.
+
+### News e comunicati
+- Visualizza elenco comunicati pubblici.
+- Apre dettaglio comunicato.
+- Accede a comunicati tramite hash diretto.
+- Copia link WhatsApp dei comunicati.
+- Usa anteprime WhatsApp dinamiche tramite Netlify Function `/zonaorientale/share/news/<id>`.
+- La home usa anteprima generica e non l'ultima news.
+
+### Rose e squadre
+- Visualizza elenco squadre della stagione.
+- Apre pagina squadra.
+- Visualizza rosa con ruoli, squadra reale, costo, quotazioni e dati disponibili.
+- Visualizza movimenti FM collegati.
+- Consulta snapshot statici delle rose.
+- Usa tabelle scrollabili e prima colonna sticky da mobile.
+- In Dashboard Presidente e pagina squadra le tabelle rose restano leggibili e compatte.
+
+### Fantamercato interno
+- Visualizza giocatori dichiarati trasferibili.
+- Visualizza condizioni richieste dalle squadre proprietarie.
+- Filtra per squadra.
+- Cerca giocatori o squadre.
+- Usa layout desktop tabellare e mobile ottimizzato.
+- Resta distinto dalla sezione pubblica `Calciomercato`, che riguarda notizie/articoli esterni.
+
+### Calciomercato notizie
+- Accede alla sezione pubblica `Calciomercato`.
+- Recupera articoli automaticamente da fonti RSS tramite Netlify Function `calciomercato-feed`.
+- Usa fallback statico da `assets/calciomercato/links.json` se la funzione non e' disponibile.
+- Visualizza card orizzontali con immagine, fonte, titolo, descrizione, data e ora Europe/Rome.
+- Visualizza squadre coinvolte, topic, stato trattativa e giocatori interessati.
+- Filtra per squadra.
+- Filtra per topic.
+- Cerca per titolo, fonte, squadra, giocatore, topic o stato.
+- Apre l'articolo originale in nuova scheda.
+- Supporta fonti multiple configurabili con `feedUrl` o `feedUrls`.
+- Deduplica gli articoli per URL.
+
+### Listone
+- Visualizza listone giocatori.
+- Cambia versione/snapshot listone.
+- Cerca per giocatore, squadra reale, ruolo, rosa e altri campi indicizzati.
+- Filtra per ruolo.
+- Filtra per stato: in listone, asteriscato, svincolato/free agent.
+- Visualizza giocatori in rosa e svincolati.
+- Visualizza colonna opzionale `Modifica`.
+- Visualizza nuovi, usciti, aumenti/diminuzioni quotazione, cambi stato, squadra e ruolo.
+- Usa filtro `Modifiche`.
+- Usa filtro `Mostra usciti storici`.
+- Ricerca anche giocatori presenti in listoni precedenti quando previsto dalla logica storica.
+- Normalizza squadre reali a codice canonico a tre lettere.
+- Non mostra al pubblico il pulsante `Esporta modifiche CSV`, riservato agli Admin.
+
+### Competizioni
+- Visualizza competizioni della stagione corrente.
+- Consulta calendario, risultati, classifiche e stato.
+- Apre pagina dettaglio `competition.html`.
+- Visualizza classifiche campionato con POS, SQUADRA, PUNTI, PG, V, N, P, GF, GS, DR, FPT.
+- Usa layout mobile dedicato e tabelle scrollabili.
+
+### Albo d'Oro, palmares e FIFA Ranking
+- Consulta albo storico.
+- Consulta palmares.
+- Consulta FIFA Ranking.
+- Visualizza vincitori, piazzamenti, presidenti e loghi quando disponibili.
+- Esclude competizioni non disputate dai conteggi storici quando previsto.
+
+### Statistiche
+- Consulta statistiche storiche aggregate.
+- Visualizza club piu' vincenti.
+- Visualizza podi campionato.
+- Visualizza ultimi titoli assegnati.
+- Visualizza presidenti piu' vincenti.
+- Visualizza ranking storici.
+
+### Archivio
+- Seleziona stagioni storiche.
+- Consulta squadre storiche.
+- Consulta competizioni, partite e risultati storici.
+- Consulta dati albo collegati alla stagione.
+- Consulta rose e movimenti se disponibili.
+- Visualizza saldi FM storici con fallback su piu' fonti.
+
+### Confronta squadre
+- Seleziona squadre per confronto storico.
+- Confronta risultati, dati storici e snapshot disponibili.
+- Usa layout mobile dedicato.
+
+### Regolamento
+- Consulta regolamento interno della lega.
+- Consulta sezioni su partecipanti, rose, mercato, svincoli, scambi, finanze, stadio, calendario, coppe, montepremi e Oscar.
+
+## Presidente
+
+### Accesso e identita'
+- Accede con Firebase email/password.
+- Accede con Google.
+- Viene riconosciuto come presidente se approvato dall'Admin.
+- Visualizza pulsante account personalizzato con logo squadra e dicitura `Pres. Cognome`.
+- Accede alla Dashboard Presidente.
+
+### Dashboard Presidente
+- Visualizza squadra collegata.
+- Visualizza ruolo e stato account.
+- Apre pagina squadra.
+- Usa azioni rapide mobile.
+- Visualizza badge rosso per nuove trattative o esiti da leggere.
+
+### Trattative
+- Propone scambi ad altre squadre attive.
+- Seleziona giocatori offerti dalla propria rosa.
+- Seleziona giocatori richiesti dalla rosa destinataria.
+- Inserisce FM offerti o richiesti.
+- Inserisce messaggio di trattativa.
+- Invia proposta diretta o precompilata dal Fantamercato.
+- Visualizza trattative inviate e ricevute.
+- Approva o rifiuta proposte ricevute.
+- Annulla proprie proposte in attesa.
+- Visualizza storico con proposta, contropartite, FM, messaggio e stato.
+- Mantiene notifiche fino alla lettura/azione prevista.
+- Sincronizza lettura esiti su Firebase quando le rules lo permettono, con fallback localStorage.
+
+### Comunicati squadra
+- Inserisce titolo e testo comunicato squadra.
+- Invia richiesta verso Admin.
+- Il comunicato viene pubblicato nelle News dopo approvazione.
+
+### Comunicati avvenuto scambio
+- Inserisce titolo e testo comunicato scambio.
+- Inserisce giocatori/contropartite coinvolti.
+- Inserisce squadra coinvolta.
+- Invia richiesta `TRANSFER_NEWS` in `teamRequests`.
+- Invia contestualmente email tramite EmailJS a `caparrotti86@yahoo.it`.
+- Dopo approvazione Admin viene pubblicato nelle News come `COMUNICATO_AVVENUTO_SCAMBIO`.
+- Non scrive direttamente nella collection `news` da account presidente.
+
+### Svincola Giocatori
+- Seleziona uno o piu' giocatori dalla propria rosa.
+- Genera email a `caparrotti86@yahoo.it`.
+- Include quotazione recuperata dal listone piu' recente disponibile.
+- Indica il listone usato per le quotazioni.
+- Usa EmailJS.
+- Non scrive su Firebase e non crea richiesta Admin.
+
+### Fantamercato presidente
+- Mette giocatori sul mercato.
+- Modifica condizioni di trasferibilita'.
+- Rimuove giocatori dal mercato.
+- Avvia proposta dalla scheda trasferibile.
+
+## Admin
+
+### Accesso e caricamento dati
+- Accede con account Admin Firebase.
+- Usa modalita Admin leggero all'avvio.
+- Visualizza titolo `Admin` sopra tutti i pannelli.
+- Visualizza il pannello `Carica dati amministrazione` aperto finche i dati completi non vengono caricati.
+- Carica dati amministrazione solo quando servono modifiche, snapshot o backup.
+- Dopo il caricamento completo, le sezioni Admin partono ridotte e sono apribili con `Apri` / `Riduci`.
+
+### Accetta utenti
+- Visualizza richieste utenti/presidenti.
+- Approva o rifiuta utenti.
+- Evita ricomparsa automatica di utenti gia' approvati o rifiutati.
+- Nasconde duplicati pending quando esiste gia' utente approvato.
+
+### Richieste presidenti
+- Visualizza richieste presidenti.
+- Aggiorna richieste da Firebase.
+- Approva comunicati squadra.
+- Rifiuta comunicati squadra.
+- Approva comunicati avvenuto scambio.
+- Rifiuta comunicati avvenuto scambio.
+- Elimina da Firebase comunicati approvati/rifiutati/accepted dal registro `teamRequests`.
+- Non cancella news gia' pubblicate quando elimina la richiesta.
+
+### Comunicati e News
+- Crea e modifica news/comunicati.
+- Pubblica comunicati approvati nella collection News.
+- Gestisce titolo, corpo, topic e metadati.
+- Copia link WhatsApp comunicati.
+- Usa generatore comunicati automatici per bozze locali senza scrittura diretta.
+
+### Gestione stagioni
+- Crea e modifica stagioni.
+- Imposta stagione corrente.
+- Gestisce date, numero partecipanti e metadati.
+- Esegue rollover stagione quando previsto.
+
+### Presidenti, squadre e squadre stagionali
+- Gestisce anagrafica presidenti.
+- Gestisce club/squadre.
+- Gestisce squadre stagionali.
+- Collega presidenti a squadre e stagioni.
+- Gestisce loghi e note.
+
+### Stadi
+- Gestisce stadio per squadra/stagione.
+- Gestisce livelli e informazioni stadio.
+- Pubblica dati stadio nelle aree pubbliche.
+
+### Rose e movimenti FM
+- Carica e modifica rose.
+- Importa rose da Excel quando previsto.
+- Gestisce movimenti FM.
+- Genera overlay statici per GitHub.
+- Inizializza rose da snapshot statici.
+
+### Listone
+- Carica listone da Excel.
+- Converte listone in JSON statico.
+- Supporta formato storico `Tutti/Ceduti`.
+- Supporta formato Classic a foglio singolo.
+- Normalizza squadre reali a codici canonici.
+- Confronta listoni con storico e produce dati modifica.
+- Gestisce manifest listoni.
+- Integra listone con rose.
+- Esporta CSV modifiche solo per Admin.
+
+### Competizioni
+- Crea e modifica competizioni.
+- Gestisce tipo, formato, stato, vincitore e metadati.
+- Gestisce calendario.
+- Gestisce risultati.
+- Gestisce classifiche Regular Season.
+- Importa/pubblica competizioni statiche.
+- Gestisce soft delete/restore match e tombstone quando previsto.
+
+### Albo, palmares e FIFA Ranking
+- Inserisce e modifica voci albo.
+- Gestisce piazzamenti, punti, presidente, logo e note.
+- Aggiorna palmares e FIFA Ranking.
+- Genera snapshot pubblico honor.
+
+### Snapshot pubblici e pubblicazione
+- Aggiorna snapshot Firebase pubblici.
+- Scarica config pubblica.
+- Scarica honor JSON.
+- Scarica overlay snapshot stagioni.
+- Controlla asset pubblici.
+- Usa promemoria di pubblicazione.
+- Usa Stato Firebase / JSON.
+- Usa Procedura guidata Pubblica aggiornamenti.
+- Usa checklist online finale.
+
+### Backup e diagnostica
+- Esporta backup JSON delle collection Firebase.
+- Usa diagnostica dati Admin.
+- Controlla qualita' listoni, rose, competizioni e news.
+- Usa script pre-push locali.
+- Usa audit asset/import e audit CSS.
+
+## Infrastruttura
+
+### Dati statici
+- Usa `assets/public/config.json`.
+- Usa snapshot stagioni.
+- Usa snapshot honor.
+- Usa manifest listoni.
+- Usa manifest rose.
+- Usa manifest competizioni.
+- Usa asset statici sotto `static/zonaorientale`.
+
+### Firebase
+- Usa Firebase Auth.
+- Usa Firestore per news live, richieste, utenti, admin, fantamercato e trattative.
+- Usa dati statici come fonte pubblica principale e Firebase come sorgente live/fallback.
+
+### Netlify
+- Usa `netlify.toml` per redirect e funzioni.
+- Usa `news-share` per preview WhatsApp news.
+- Usa `calciomercato-feed` per feed RSS Calciomercato server-side.
+
+### Strumenti locali
+- `tools/check-zonaorientale.sh` per controlli pre-push.
+- `tools/audit-assets-v298.sh` per audit asset/import.
+- `tools/audit-css-v300.sh` per audit CSS.
+- `tools/cleanup-css-refactor-v301.sh` per pulizia CSS refactor controllata.
+- `tools/cleanup-macos-artifacts-v283.sh` per metadata macOS.
+
+## Funzionalita da non rimuovere senza audit
+
+- `assets/app.js` helper e override storici Vxxx.
+- `assets/js/admin/listone-converter.js`.
+- `assets/js/admin/team-requests-panel-v253.js`.
+- `assets/js/refactor/admin-publication-workflow-v213.js`.
+- `assets/js/domain/competitions.js`.
+- `assets/js/utils/shared-helpers-v295.js`.
+- CSS refactor `mobile-controls.css`, `rosters-tables.css`, `calciomercato.css`.
+- `news.html`, `comunicati/*.html`, `tools/generate-news-share-pages.mjs`.
+- Vecchi fallback Richieste presidenti e comunicato scambio finche non rimossi con audit dedicato.
+- Netlify Functions `news-share.js` e `calciomercato-feed.js`.
+
+## Aggiornamento funzionale V314 - Calciomercato fonti
+
+### Utente pubblico - Calciomercato
+- Filtra gli articoli per fonte tramite menu `Tutte le fonti`.
+- Nel filtro squadra visualizza `Generale` subito dopo `Tutte le squadre`, prima della lista alfabetica delle squadre.
+- Consulta articoli recuperati automaticamente da piu' fonti RSS configurate.
+- Usa ricerca combinata su titolo, descrizione, fonte, squadra, topic, stato e giocatori interessati.
+- Continua a visualizzare articoli con squadre multiple, stato trattativa, data/ora in fuso Europe/Rome e giocatori interessati.
+
+### Sviluppo futuro - AI Calciomercato
+- E' prevista come possibile evoluzione una scheda AI per riepilogare gli articoli relativi a un giocatore o a una squadra.
+- La prima implementazione dovra' essere server-side, senza chiavi AI esposte nel browser, e dovra' usare solo metadati/descrizioni RSS o contenuti autorizzati.
+
+### Funzionalita' da non perdere
+- Il nuovo Calciomercato non sostituisce il Fantamercato interno della lega.
+- Restano invariati Listone, Rose, Dashboard Presidente, Admin, Firebase, EmailJS, mobile navigation e News/share WhatsApp.

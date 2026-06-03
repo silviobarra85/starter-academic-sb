@@ -1,3 +1,128 @@
+## Test V313 - Admin ordinato e Calciomercato feed
+
+- Admin leggero: il titolo `Admin` deve comparire sopra tutti i pannelli.
+- Admin leggero: `Carica dati amministrazione` deve restare visibile e aperto.
+- Admin completo: categorie Admin ridotte al primo caricamento, apribili con pulsante `Apri`.
+- Admin completo: Richieste presidenti, Diagnostica dati, Converti listone Excel, Snapshot e Backup ancora funzionanti.
+- Calciomercato: feed RSS automatico ancora funzionante via Netlify Function.
+- Calciomercato: `/.netlify/functions/calciomercato-feed?limit=80` restituisce JSON valido.
+- Listone pubblico: export CSV non visibile.
+- Listone Admin: export CSV visibile e funzionante.
+- Rose, Dashboard Presidente, Competizioni, player.html e mobile nav invariati.
+
+## Checklist V299 - CSS refactor stabile
+
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Verificare che gli HTML importino `assets/css/refactor/mobile-controls.css` e `assets/css/refactor/rosters-tables.css`.
+- Verificare che `theme-light-suspended.css` esista ma non sia importato.
+- Verificare Listone pubblico: export CSV non visibile, `Modifiche` e `Mostra usciti storici` funzionanti.
+- Verificare Listone Admin: export CSV visibile e funzionante.
+- Verificare pagina squadra/Rose mobile: prima colonna sticky e righe compatte.
+- Verificare Dashboard Presidente, bottom nav/menu Altro/pulsante Su, `competition.html`, `player.html` e Dark mode unico.
+
+## Checklist V298 - Audit asset/import orfani
+
+- Eseguire `static/zonaorientale/tools/audit-assets-v298.sh` e verificare che non segnali riferimenti locali mancanti.
+- Trattare eventuali candidati orfani come warning: non cancellare senza grep, audit e test browser.
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Verificare Listone pubblico: export CSV non visibile per non Admin, Modifiche/usciti storici funzionanti.
+- Verificare Listone Admin: export CSV visibile e funzionante.
+- Verificare pagina squadra/Rose mobile, Dashboard Presidente, Admin, `competition.html`, `player.html`, bottom nav e Dark mode unico.
+
+## Aggiornamento test V296 - Export modifiche solo Admin
+
+- Pubblico/non Admin: aprire Listone e verificare che `Esporta modifiche CSV` non compaia.
+- Pubblico/non Admin: verificare che `Modifiche`, `Mostra usciti storici`, ricerca e colonna `Modifica` restino funzionanti.
+- Admin: aprire Listone e verificare che `Esporta modifiche CSV` compaia e scarichi il CSV.
+- Console: `window.ZonaOrientaleListoneExportAdminOnlyV296` deve essere disponibile.
+- Confermare assenza regressioni su rose, pagina squadra, Dashboard Presidente, bottom nav, menu Altro e news share.
+
+## Checklist V292 - Pulizia CSS Light sospeso
+
+- Verificare che il sito resti in Dark mode e che il toggle tema non sia visibile.
+- Verificare Listone mobile: colonna Modifica, filtro Modifiche, usciti storici, export CSV.
+- Verificare pagina squadra -> Rosa mobile: righe compatte, prima colonna sticky e testo leggibile.
+- Verificare Dashboard Presidente: tabelle rosa e controlli touch.
+- Verificare bottom navigation, menu Altro e pulsante Su.
+- Verificare `competition.html` e `player.html` da mobile.
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+
+## Aggiornamento V290 - Test refactor styles/app
+
+V290 non cambia comportamento runtime. Prima di procedere a refactor reali verificare che il sito resti allineato a V290 e usare `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md` come checklist di preservazione funzionale. Test minimi: Home, News/link WhatsApp, Listone con Modifiche/export, Rose/pagina squadra mobile, Competizioni, Archivio, Statistiche, Confronta, Dashboard Presidente, Admin Richieste presidenti, Diagnostica dati, Converti listone Excel, bottom navigation e pulsante Su.
+
+## Aggiornamento V289 - Test dark mode e rose mobile
+
+Dopo V289 verificare da smartphone/viewport mobile: il pulsante tema non deve comparire; anche con `localStorage.zonaOrientaleTheme = "light"` il sito deve ricaricarsi in Dark; nelle rose pubbliche e nella pagina squadra le righe della tabella Rosa devono essere compatte e il nome nella prima colonna deve essere leggibile e centrato verticalmente. Ripetere un controllo rapido su Listone, Dashboard Presidente e pagina giocatore standalone.
+
+## Aggiornamento V288 - Test rose mobile Light
+
+Dopo V288 verificare da smartphone/viewport mobile in tema Light: pagina squadra -> tabella Rosa, prima colonna con nome giocatore chiaro su sfondo scuro, testo leggermente piu' grande, contenuto centrato verticalmente e righe non eccessivamente alte. Ripetere un controllo rapido su Listone e tema Dark per escludere regressioni.
+
+## Aggiornamento V287 - Test controlli mobile
+
+Dopo V287 verificare da smartphone/viewport mobile: filtri Listone, campi visibili, filtro Modifiche, export CSV, form Dashboard Presidente, toolbar Admin, bottom navigation, menu Altro, input con focus e scroll orizzontale tabelle. Ripetere un controllo rapido in tema Dark.
+
+## Test V285 - Fix mirati mobile
+
+- Attivare tema Light e verificare da smartphone reale o viewport mobile.
+- Home: card, testi secondari e menu mobile leggibili.
+- Listone: `Storico listoni` non visibile; `Modifiche`, `Mostra usciti storici` ed export CSV ancora presenti e leggibili.
+- Listone: tabella scrollabile, prima colonna sticky leggibile, badge modifica leggibili.
+- Competizioni: classifica/calendario scrollabili, intestazioni sticky leggibili.
+- Archivio, Statistiche e Confronta: card e testi secondari leggibili in Light.
+- Dashboard Presidente: card, trattative e azioni rapide leggibili in Light.
+- Admin -> Diagnostica dati e Richieste presidenti leggibili in Light.
+- Console: `window.ZonaOrientaleMobileFixesV285.cssOnly` deve essere `true`.
+
+## Aggiornamento V284 - Audit mobile completo
+
+Prima di procedere con ulteriori fix UI/mobile, usare `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`.
+
+Controlli minimi V284:
+
+```text
+Home e navigazione mobile
+News/comunicati
+Listone con Modifica, Modifiche, Usciti storici, Export CSV
+Competizioni e competition.html
+Archivio
+Statistiche
+Confronta
+Dashboard Presidente
+Admin -> Diagnostica dati e Richieste presidenti
+Tema Light e Dark
+Viewport 390x844, 430x932, 768x1024
+```
+
+Diagnostica console:
+
+```js
+window.ZonaOrientaleMobileAuditV284
+```
+
+## Aggiornamento V283 - Pulizia file macOS/residui
+
+Test obbligatori dopo applicazione:
+
+```bash
+static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh
+static/zonaorientale/tools/check-zonaorientale.sh
+```
+
+Il primo comando deve poter essere eseguito in dry-run senza cancellare nulla. Il secondo deve confermare sintassi JS, JSON, versioni/cache-buster e assenza di file macOS indesiderati.
+
+Verifica browser:
+
+```js
+window.ZonaOrientaleMacOsCleanupV283
+window.ZonaOrientalePrePushChecksV282
+```
+
+## Aggiornamento V282 - Controlli pre-push
+
+V282 aggiunge lo script `static/zonaorientale/tools/check-zonaorientale.sh` per centralizzare i controlli tecnici prima di commit/push: sintassi JS, validita JSON, footer/cache-buster/versione e file macOS indesiderati. Nessuna modifica funzionale a Firebase, EmailJS o dati runtime. Diagnostica: `window.ZonaOrientalePrePushChecksV282`. Documento operativo: `release/CONTROLLI_PRE_PUSH_V282.md`.
+
 ## Test V275 - Verifica registro funzionale recente
 
 1. Controllare footer `V275 funzionalita V271-274`.
@@ -432,3 +557,270 @@ Il convertitore listone accetta sia sigle sia nomi estesi per la squadra reale, 
 ## V278 - Export modifiche listone
 
 Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
+
+
+## Test V280 - UI Listone semplificata
+
+- Listone pubblico: il pannello `Storico listoni` non deve essere visibile.
+- Listone pubblico: il toggle `Cerca anche negli altri listoni` non deve essere visibile.
+- Listone pubblico: la tabella deve caricarsi regolarmente.
+- Listone pubblico: filtro `Modifiche` funzionante.
+- Listone pubblico: colonna `Modifica` attivabile dai campi visibili.
+- Listone pubblico: `Mostra usciti storici` funzionante.
+- Listone pubblico: `Esporta modifiche CSV` funzionante.
+- Console: `window.ZonaOrientaleListoneUiV280.historyPanelVisible` deve essere `false`.
+
+## Audit V280 - Mobile Light
+
+- Tema Light su smartphone: controllare Home, Listone, Competizioni, Archivio, Statistiche, Dashboard Presidente e Admin.
+- Verificare leggibilita di testi secondari, badge, celle tabella, bottoni secondari e intestazioni sticky.
+- Usare `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md` come base per la prossima patch grafica.
+
+
+## Test V281 - Contrasto mobile Light
+
+- Attivare tema Light.
+- Verificare da smartphone reale o viewport mobile.
+- Home: testi secondari e card leggibili.
+- Listone: filtro `Modifiche`, `Mostra usciti storici`, export CSV e tabella leggibili.
+- Competizioni: calendario/classifiche leggibili, intestazioni sticky corrette.
+- Archivio/Statistiche/Confronta: testi secondari leggibili su card chiare.
+- Presidente: dashboard e trattative leggibili in Light.
+- Admin: Diagnostica dati e Richieste presidenti leggibili in Light.
+- Console: `window.ZonaOrientaleMobileLightContrastV281.cssOnly` deve essere `true`.
+
+## Test V286 - Prima colonna mobile Light
+
+- Attivare tema Light.
+- Verificare da smartphone reale o viewport mobile.
+- Listone: durante lo scroll orizzontale la prima colonna sticky deve mostrare il nome giocatore leggibile.
+- Listone: il nome giocatore non deve mai risultare nero su sfondo nero/scuro.
+- Rose pubbliche: nomi giocatori leggibili nella prima colonna.
+- Dashboard Presidente/rose: nomi giocatori leggibili nella prima colonna se la tabella e' presente.
+- Tema Dark: nessuna regressione evidente su Listone e rose.
+- Console: `window.ZonaOrientaleStickyColumnContrastV286.cssOnly` deve essere `true`.
+## V291 - Verifiche refactor CSS prudente
+
+Funzionalita da non perdere durante la separazione CSS:
+
+- Listone: colonna `Modifica`, filtro `Modifiche`, `Mostra usciti storici` ed export CSV.
+- Rose e pagina squadra: prima colonna sticky leggibile, righe compatte e contenuto centrato verticalmente da mobile.
+- Dashboard Presidente: tabelle rose, controlli trattative e form leggibili da smartphone.
+- Navigazione mobile: bottom nav, menu Altro e pulsante Su.
+- Tema: Light mode resta disattivata e il toggle tema non deve comparire.
+- Pagine standalone: `competition.html` e `player.html` devono caricare i nuovi CSS V291.
+
+Controlli tecnici:
+
+```bash
+static/zonaorientale/tools/check-zonaorientale.sh
+```
+
+
+
+## Test V293 - Audit mirato app.js
+
+La V293 non modifica comportamento runtime, ma prepara il refactor JS. Prima di qualunque estrazione da `assets/app.js`, verificare:
+
+- Home pubblica e dashboard stagione.
+- News e link WhatsApp dinamici.
+- Listone: colonna `Modifica`, filtro `Modifiche`, `Mostra usciti storici`, export CSV.
+- Rose pubbliche, pagina squadra e Dashboard Presidente.
+- Comunicati presidente, svincoli e trattative.
+- Admin: Richieste presidenti, Diagnostica dati, Converti listone Excel, workflow pubblicazione.
+- Competizioni, `competition.html`, Archivio, Statistiche, Confronta.
+- Mobile: bottom nav, menu Altro, pulsante Su.
+- `player.html`.
+- Console: `window.ZonaOrientaleAppJsAuditV293.behaviorChange` deve essere `false`.
+
+Regola: se un refactor rischia di scollegare una funzionalita, la release deve dichiarare come viene preservata o rimandare la modifica.
+
+## Test V294 - Helper puri app.js
+
+La V294 introduce un modulo di helper puri senza sostituire i call-site storici. Verificare:
+
+- `static/zonaorientale/tools/check-zonaorientale.sh` deve passare.
+- Console: `window.ZonaOrientaleSharedHelpersV294.runSmokeTest().ok` deve essere `true`.
+- Console: `window.ZonaOrientaleAppHelpersExtractionV294.behaviorChange` deve essere `false`.
+- Home pubblica e navigazione mobile devono caricarsi.
+- Listone: filtro `Modifiche`, `Mostra usciti storici`, export CSV e colonna `Modifica`.
+- Rose pubbliche e pagina squadra.
+- Dashboard Presidente: rosa, trattative, comunicati e svincoli.
+- Admin: Richieste presidenti, Diagnostica dati, Converti listone Excel.
+- News/share WhatsApp dinamico.
+- `competition.html` e `player.html`.
+
+Funzionalita da non perdere: nessun flusso esistente deve essere ricollegato al nuovo helper senza un overlay dedicato e test browser.
+## Test V295 - Primo collegamento helper puri app.js
+
+La V295 collega solo l'escape CSV dell'export modifiche Listone al modulo helper condiviso. Test obbligatori:
+
+- `static/zonaorientale/tools/check-zonaorientale.sh` deve passare.
+- Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok` deve essere `true`.
+- Console: `window.ZonaOrientaleAppHelpersExtractionV295.behaviorChange` deve essere `false`.
+- Console: `window.ZonaOrientaleAppHelpersExtractionV295.rewiredCallSites` deve contenere `csvEscapeV278 -> ZonaOrientaleSharedHelpersV295.csvEscape`.
+- Listone: filtro `Modifiche` funzionante.
+- Listone: `Esporta modifiche CSV` genera un file apribile con intestazioni e righe corrette.
+- Listone: verificare almeno un caso con accenti, apostrofi, virgolette o punti e virgola se disponibile nei dati.
+- Controllo rapido: Rose/pagina squadra, Dashboard Presidente, Admin -> Diagnostica dati, bottom nav e News non devono mostrare regressioni.
+
+
+
+## Test V297 - Pulizia helper V294
+
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Verificare che `shared-helpers-v294.js` sia assente.
+- Listone pubblico: export CSV non visibile.
+- Admin: export CSV modifiche visibile e funzionante.
+- Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok === true`.
+- Console: `window.ZonaOrientaleHelperCleanupV297.behaviorChange === false`.
+
+## Test V300 - Audit CSS
+
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Eseguire `static/zonaorientale/tools/audit-css-v300.sh`.
+- Verificare che `theme-light-suspended.css` non sia importato dagli HTML.
+- Verificare Home mobile, Listone pubblico, Listone Admin, pagina squadra -> Rosa, Dashboard Presidente, bottom navigation, `competition.html` e `player.html`.
+- Nessuna funzionalita deve cambiare: V300 e' solo audit/strumentazione.
+
+## Test V301 - Pulizia CSS refactor residui
+
+Comandi:
+
+```bash
+static/zonaorientale/tools/cleanup-css-refactor-v301.sh
+static/zonaorientale/tools/check-zonaorientale.sh
+static/zonaorientale/tools/audit-css-v300.sh
+```
+
+Test manuali:
+
+- Home mobile.
+- Listone pubblico: export CSV non visibile.
+- Listone Admin: export CSV visibile e funzionante.
+- Pagina squadra -> Rosa: prima colonna sticky e righe compatte.
+- Dashboard Presidente.
+- Bottom nav, menu Altro, pulsante Su.
+- `competition.html` e `player.html`.
+- Dark mode unico, toggle tema assente.
+
+## Test aggiuntivi V302 - Helper CSV condiviso
+
+- Pubblico -> Listone: il pulsante `Esporta modifiche CSV` non deve comparire.
+- Pubblico -> Listone: filtro `Modifiche`, colonna `Modifica` e usciti storici devono continuare a funzionare.
+- Admin -> Listone: `Esporta modifiche CSV` deve comparire e scaricare un CSV valido.
+- Console: `window.ZonaOrientaleAppHelperRewireV302.behaviorChange` deve essere `false`.
+- Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok` deve essere `true`.
+
+## Test V303 - Diagnostica Admin estesa
+
+- Login Admin -> `Admin -> Diagnostica dati`: il pannello deve aprirsi e mostrare anche righe qualità per Listoni, Rose, Competizioni e News.
+- Il pulsante `Aggiorna diagnostica` deve aggiornare il pannello senza errori console.
+- Pubblico -> Listone: export CSV non visibile, filtri e colonna `Modifica` invariati.
+- Admin -> Listone: export CSV ancora visibile e funzionante.
+- Rose/pagina squadra e Dashboard Presidente: nessuna regressione visiva o dati mancanti.
+
+
+
+## Test V304 - Mobile review finale e pre-Calciomercato
+
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Home mobile: bottom nav, menu Altro e pulsante Su.
+- Listone pubblico: export CSV non visibile, filtro `Modifiche` e colonna `Modifica` funzionanti.
+- Listone Admin: export CSV visibile e funzionante.
+- Pagina squadra -> Rosa: prima colonna sticky leggibile, righe compatte, testo centrato verticalmente.
+- Dashboard Presidente: tabelle rosa, bottoni e form senza regressioni.
+- Admin -> Diagnostica dati: controlli V303 visibili e refresh funzionante.
+- Admin -> Richieste presidenti: pannello renderizzato e azioni visibili.
+- `competition.html` e `player.html`: layout mobile e Dark mode corretti.
+- Console: `window.ZonaOrientaleMobileFinalReviewV304.behaviorChange === false`.
+
+## V305 - Test Calciomercato
+
+- Aprire `#calciomercato` da desktop.
+- Aprire `Altro -> Calciomercato` da mobile.
+- Verificare che la sezione mostri lo stato vuoto se `links.json` non contiene articoli.
+- Inserire temporaneamente un articolo in `assets/calciomercato/links.json` e verificare filtri squadra/topic, ricerca e link esterno.
+- Verificare che `#fantamercato` resti il mercato interno dei trasferibili.
+- Verificare Listone pubblico/Admin, Rose, Dashboard Presidente, Admin Diagnostica e mobile navigation.
+
+## Test V306 - Calciomercato giocatori
+
+- Aprire `Calciomercato` da desktop e mobile.
+- Verificare che gli articoli con `players`/`giocatori` mostrino chip leggibili.
+- Verificare che la ricerca trovi un articolo cercando il nome di un giocatore.
+- Verificare che il Fantamercato interno non sia stato confuso con la nuova sezione informativa.
+- Verificare Listone pubblico/Admin, Rose, Dashboard Presidente e Admin dopo la modifica.
+## Test V307 - Calciomercato nome sezione
+
+- Menu desktop: il link deve mostrare `Calciomercato`.
+- Menu mobile `Altro`: il link deve mostrare `Calciomercato`.
+- Aprire `#calciomercato`: titolo pagina `Calciomercato`.
+- Verificare che gli articoli statici e i chip giocatori V306 continuino a funzionare.
+- Verificare che `Fantamercato` interno resti invariato.
+
+
+
+## V308 - Calciomercato squadre multiple e stato trattativa
+
+- La sezione `Calciomercato` resta statica/manuale e non recupera automaticamente dati dai siti esterni.
+- Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
+- Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
+- Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.
+
+## V309 - Test Calciomercato automatico RSS
+
+- Aprire `#calciomercato` su ambiente Netlify: la sezione deve tentare il recupero da `/.netlify/functions/calciomercato-feed`.
+- In locale con `python3 -m http.server`, la funzione non e' disponibile: la pagina deve usare il fallback statico senza bloccare il sito.
+- Verificare che `links.json` resti valido JSON.
+- Verificare che Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin non cambino comportamento.
+- Console: `window.ZonaOrientaleCalciomercatoV309.getState()` deve essere disponibile.
+
+
+## Test regressione V310 - Calciomercato layout orizzontale
+
+- Aprire `#calciomercato` e verificare card articolo orizzontali leggibili.
+- Verificare titolo, descrizione, fonte, squadre, stato, giocatori e pulsante `Apri articolo`.
+- Verificare funzionamento su mobile senza colonne strette.
+- Verificare che `/.netlify/functions/calciomercato-feed` continui a restituire JSON in Netlify Dev/preview.
+- Verificare che Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin siano invariati.
+
+## Test V311 - Ora pubblicazione Calciomercato
+
+- Aprire Calciomercato con Netlify Dev o deploy Netlify.
+- Verificare che gli articoli con timestamp completo mostrino data e ora.
+- Verificare che articoli con sola data continuino a mostrarsi senza errori.
+- Verificare Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin.
+
+## Test V312 - Fuso orario Calciomercato
+
+- Aprire Calciomercato con Netlify Dev o deploy Netlify.
+- Verificare che il riepilogo `aggiornato ...` mostri l'ora italiana, non l'UTC grezza.
+- Esempio: `2026-06-03T08:51:00Z` deve apparire come `03/06/2026, 10:51`.
+- Verificare che le card articolo continuino a mostrare data/ora.
+- Verificare che Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin siano invariati.
+
+## Test aggiuntivi V314 - Calciomercato fonti
+
+- `Calciomercato`: filtro squadra mostra `Tutte le squadre`, `Generale`, poi squadre alfabetiche.
+- `Calciomercato`: filtro fonte mostra `Tutte le fonti` e le fonti recuperate/configurate.
+- `Calciomercato`: filtrare per fonte senza perdere ricerca, topic, squadre e giocatori.
+- Netlify Function: `/.netlify/functions/calciomercato-feed?limit=120` restituisce JSON valido.
+- Verificare che Fantamercato interno, Listone, Rose, Admin, Dashboard Presidente e mobile nav restino invariati.
+
+## V316 - Calciomercato ricerca e range
+
+- Rimossa l'idea di applicare ora la sintesi AI: nessuna funzione AI e nessuna chiave OpenAI richiesta.
+- Rimossi dalle fonti attive Virgilio Sport e La Gazzetta dello Sport.
+- Aggiunti ricerca per keyword e range temporale sui feed RSS Calciomercato.
+- Default UI: ultime 12 ore; scroll/pulsante caricano articoli più vecchi.
+- Limiti feed alzati a 500 articoli totali, 250 per fonte, 20 fonti.
+- Funzionalita da preservare: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.
+
+## V317 - Calciomercato scroll e range RSS
+
+V317 corregge il caricamento progressivo del Calciomercato: quando si arriva in fondo alla sezione o si clicca `Carica articoli piu vecchi`, il sito non deve tornare in alto e deve mantenere la posizione di scroll. La lista non viene piu sostituita dal loader durante il caricamento degli articoli meno recenti.
+
+La Netlify Function `calciomercato-feed` espone anche un riepilogo `feedRange`, cosi la UI puo spiegare quando un range molto vecchio non produce risultati perche i feed RSS non sono un archivio storico completo.
+
+Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export CSV solo Admin, Rose, pagina squadra, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico Calciomercato.

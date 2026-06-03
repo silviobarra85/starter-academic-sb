@@ -6,9 +6,11 @@
   <title>Scheda giocatore - ZonaOrientale Salerno</title>
   <meta name="description" content="Scheda giocatore Fantacalcio.it integrata nel gestionale ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
-  <script>document.documentElement.dataset.theme = localStorage.getItem("zonaOrientaleTheme") || "dark";</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=278" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=278" />
+  <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
+  <link rel="stylesheet" href="./assets/styles.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=317" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=317" />
 </head>
 <body>
   <header class="app-header player-page-header">
@@ -19,7 +21,7 @@
         <p class="subtitle">Scheda esterna da Fantacalcio.it caricata in una pagina del gestionale.</p>
       </div>
       <div class="header-actions">
-        <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Cambia tema" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
+        <button id="themeToggleBtn" class="theme-toggle hidden" type="button" aria-label="Tema disattivato" aria-pressed="false" aria-hidden="true" tabindex="-1" hidden><span class="theme-toggle-icon" aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span></button>
         <a class="button button-secondary" href="./#listone">Torna al Listone</a>
         <a id="openExternalPlayerLink" class="button button-primary" href="https://www.fantacalcio.it/" target="_blank" rel="noopener">Apri esterna</a>
       </div>
@@ -42,32 +44,26 @@
   </main>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V278 export modifiche listone · Ultimo aggiornamento 30/05/2026</p>
+    <p>ZonaOrientale Salerno · V317 calciomercato scroll e range RSS · Ultimo aggiornamento 03/06/2026</p>
   </footer>
 
   <script type="module">
-    import { setupMobileChromeV220 } from "./assets/js/mobile/mobile-chrome-v220.js?v=278";
+    import { setupMobileChromeV220 } from "./assets/js/mobile/mobile-chrome-v220.js?v=317";
 
-    function applyTheme(theme) {
-      const finalTheme = theme === 'light' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = finalTheme;
+    function applyTheme() {
+      document.documentElement.dataset.theme = 'dark';
+      try { localStorage.setItem('zonaOrientaleTheme', 'dark'); } catch (error) {}
       const button = document.getElementById('themeToggleBtn');
       if (button) {
-        button.setAttribute('aria-pressed', finalTheme === 'light' ? 'true' : 'false');
-        const icon = button.querySelector('.theme-toggle-icon');
-        const text = button.querySelector('.theme-toggle-text');
-        if (icon) icon.textContent = finalTheme === 'light' ? '☀️' : '🌙';
-        if (text) text.textContent = finalTheme === 'light' ? 'Light' : 'Dark';
+        button.hidden = true;
+        button.classList.add('hidden', 'theme-toggle-disabled-v289');
+        button.setAttribute('aria-hidden', 'true');
+        button.setAttribute('tabindex', '-1');
+        button.setAttribute('aria-pressed', 'false');
       }
     }
 
-    const savedTheme = localStorage.getItem('zonaOrientaleTheme') || 'dark';
-    applyTheme(savedTheme);
-    document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
-      const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
-      localStorage.setItem('zonaOrientaleTheme', next);
-      applyTheme(next);
-    });
+    applyTheme();
     setupMobileChromeV220();
 
     const params = new URLSearchParams(location.search);

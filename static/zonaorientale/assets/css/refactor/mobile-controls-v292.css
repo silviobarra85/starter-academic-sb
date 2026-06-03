@@ -1,0 +1,131 @@
+/* V292 - CSS mobile controlli generali
+ * Pulizia prudente dopo V291: mantiene solo regole mobile attive in Dark mode.
+ * Le regole Light sospese sono conservate in theme-light-suspended-v292.css e non caricate.
+ * Funzionalita da preservare: Listone, filtri Modifiche, export CSV, bottom navigation, form Admin/Presidente.
+ */
+
+/* V287 - Rifinitura controlli mobile.
+ * Migliora leggibilita' e usabilita' di form, filtri, bottoni e aree scrollabili
+ * su smartphone. La patch e' solo CSS e non cambia dati o logiche runtime.
+ */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .filters-row,
+  body.is-mobile-ux .listone-filter-row,
+  body.is-mobile-ux .panel-header .filters-row,
+  body.is-mobile-ux .admin-toolbar,
+  body.is-mobile-ux .table-toolbar,
+  body.is-mobile-ux .form-row,
+  body.is-mobile-ux .form-actions,
+  body.is-mobile-ux .button-row,
+  body.is-mobile-ux .action-row {
+    gap: 0.55rem !important;
+    align-items: stretch !important;
+  }
+
+  body.is-mobile-ux .input,
+  body.is-mobile-ux .search-input,
+  body.is-mobile-ux .filter-input,
+  body.is-mobile-ux select.input,
+  body.is-mobile-ux textarea.input,
+  body.is-mobile-ux .button-primary,
+  body.is-mobile-ux .button-secondary,
+  body.is-mobile-ux .button-ghost,
+  body.is-mobile-ux .link-button,
+  body.is-mobile-ux .filter-pill,
+  body.is-mobile-ux .mobile-subnav-pill,
+  body.is-mobile-ux .theme-toggle,
+  body.is-mobile-ux .mobile-bottom-link,
+  body.is-mobile-ux .mobile-more-link {
+    min-height: 44px !important;
+    line-height: 1.2 !important;
+    touch-action: manipulation;
+  }
+
+  body.is-mobile-ux .input,
+  body.is-mobile-ux .search-input,
+  body.is-mobile-ux .filter-input,
+  body.is-mobile-ux select.input,
+  body.is-mobile-ux textarea.input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px !important;
+    border-radius: 14px !important;
+    padding: 0.72rem 0.82rem !important;
+  }
+
+  body.is-mobile-ux textarea.input {
+    min-height: 104px !important;
+  }
+
+  body.is-mobile-ux .button-primary,
+  body.is-mobile-ux .button-secondary,
+  body.is-mobile-ux .button-ghost {
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+    border-radius: 14px !important;
+    padding: 0.72rem 0.92rem !important;
+  }
+
+  body.is-mobile-ux .filters-row > *,
+  body.is-mobile-ux .listone-filter-row > *,
+  body.is-mobile-ux .form-row > *,
+  body.is-mobile-ux .admin-toolbar > *,
+  body.is-mobile-ux .table-toolbar > * {
+    min-width: 0;
+  }
+
+  body.is-mobile-ux .inline-checkbox-group,
+  body.is-mobile-ux .checkbox-grid,
+  body.is-mobile-ux .field-group,
+  body.is-mobile-ux .filter-group,
+  body.is-mobile-ux .listone-visible-fields,
+  body.is-mobile-ux .listone-change-filter-row {
+    border-radius: 16px !important;
+    padding: 0.78rem !important;
+  }
+
+  body.is-mobile-ux .inline-checkbox-group label,
+  body.is-mobile-ux .checkbox-grid label,
+  body.is-mobile-ux .filter-group label,
+  body.is-mobile-ux .listone-visible-fields label,
+  body.is-mobile-ux .listone-change-filter-row label {
+    min-height: 34px !important;
+    line-height: 1.25 !important;
+  }
+
+  body.is-mobile-ux .table-wrap,
+  body.is-mobile-ux .mobile-tabular-wrap,
+  body.is-mobile-ux .standing-table-wrap,
+  body.is-mobile-ux .listone-table-wrap,
+  body.is-mobile-ux .roster-season-table-wrap,
+  body.is-mobile-ux .roster-inline-table-wrap,
+  body.is-mobile-ux .roster-dialog-table {
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 96px;
+    overscroll-behavior-x: contain;
+  }
+
+  body.is-mobile-ux dialog,
+  body.is-mobile-ux .modal,
+  body.is-mobile-ux .dialog-card,
+  body.is-mobile-ux .sheet-panel,
+  body.is-mobile-ux .mobile-more-sheet {
+    max-width: calc(100vw - 20px) !important;
+  }
+
+  body.is-mobile-ux .panel-header,
+  body.is-mobile-ux .section-header,
+  body.is-mobile-ux .dashboard-subsection summary {
+    gap: 0.55rem !important;
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav {
+    padding-bottom: max(0.45rem, env(safe-area-inset-bottom)) !important;
+  }
+
+  body.is-mobile-ux .mobile-bottom-link,
+  body.is-mobile-ux .mobile-more-link {
+    border-radius: 14px !important;
+  }
+}

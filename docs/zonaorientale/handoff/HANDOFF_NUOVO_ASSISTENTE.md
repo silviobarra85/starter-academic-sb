@@ -1,8 +1,103 @@
+## Aggiornamento V313 - Nuovo handoff canonico
+
+Leggere anche `docs/zonaorientale/handoff/HANDOFF_NUOVO_ASSISTENTE_V313.md` e `docs/zonaorientale/RESOCONTO_SITO_V313.md`. La versione runtime corrente e' `V313 admin ordinato e resoconto funzionale`. Da V313 l'area Admin mantiene il titolo sopra tutti i pannelli, parte con sezioni ridotte e lascia aperto `Carica dati amministrazione`. Calciomercato usa Netlify Function V313 con feed multipli/limiti configurabili. `FUNZIONALITA'.md` e' stato aggiornato su richiesta esplicita.
+
+Regola obbligatoria: ogni modifica futura deve dichiarare funzionalita a rischio, preservazione e test.
+
+## Aggiornamento V299 - CSS refactor stabile
+
+Leggere `docs/zonaorientale/refactor/CSS_REFACTOR_STABLE_V299.md` prima di ulteriori refactor CSS. I CSS refactor correnti hanno nomi stabili: `assets/css/refactor/mobile-controls.css`, `assets/css/refactor/rosters-tables.css` e `assets/css/refactor/theme-light-suspended.css`. Gli HTML devono importare solo i primi due. Il file Light resta sospeso finche la Light mode non verra' ricostruita. Non rimuovere o rinominare altri CSS senza verificare Listone, Rose, Dashboard Presidente, Admin, pagine standalone e mobile nav.
+
+## Aggiornamento V298 - Audit asset/import orfani
+
+Leggere `docs/zonaorientale/refactor/ASSET_IMPORT_AUDIT_V298.md` prima di rimuovere asset CSS/JS. Il tool `static/zonaorientale/tools/audit-assets-v298.sh` segnala import mancanti e candidati orfani ma non effettua rimozioni. Ogni file candidato va verificato con grep e test browser, preservando esplicitamente Listone, Rose, Dashboard Presidente, Admin, pagine standalone, mobile nav, Dark mode unico e helper CSV V295.
+
+## Aggiornamento V296 - Export modifiche Listone solo Admin
+
+Il pulsante `Esporta modifiche CSV` e' riservato agli Admin tramite `state.isAdmin`. Non rimuovere le funzioni V269-V278: servono ancora a colonna `Modifica`, filtro `Modifiche`, usciti storici e calcolo CSV. Documento: `docs/zonaorientale/refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md`. Diagnostica: `window.ZonaOrientaleListoneExportAdminOnlyV296`.
+
+## Aggiornamento V295 - Primo collegamento helper puri app.js
+
+Leggere anche `docs/zonaorientale/refactor/APP_HELPER_REWIRE_V295.md`. La release collega un solo call-site storico (`csvEscapeV278`) al nuovo modulo `assets/js/utils/shared-helpers-v295.js`. Non spostare altri call-site senza dichiarare funzionalita a rischio, preservazione e test. In particolare non perdere: export CSV modifiche Listone, filtro Modifiche, usciti storici, Rose, Dashboard Presidente, Admin, news share e mobile chrome.
+
+## Aggiornamento V293 - Audit mirato app.js
+
+Leggere anche `docs/zonaorientale/refactor/APP_JS_AUDIT_V293.md` prima di qualunque refactor di `assets/app.js`. La release non cambia funzionalita': documenta cosa non spostare subito e quali helper puri potrebbero essere estratti in una futura V294. Ogni proposta di refactor deve includere una sezione `Funzionalita a rischio e preservazione`.
+
+## Aggiornamento V292
+
+La versione corrente documentata e' **V292 pulizia CSS Light sospeso**. I CSS attivi del refactor sono `assets/css/refactor/mobile-controls-v292.css` e `assets/css/refactor/rosters-tables-v292.css`. Il file `assets/css/refactor/theme-light-suspended-v292.css` conserva le patch Light recenti ma non deve essere importato finche la Light mode non viene ricostruita e testata. Prima di ulteriori refactor verificare esplicitamente che non si perdano Listone Modifica/export, rose/pagina squadra, Dashboard Presidente, bottom navigation e Dark mode unico.
+
+## Aggiornamento V291 - Refactor CSS prudente
+
+V291 separa i blocchi CSS mobile/rose/tabelle V285-V289 da `assets/styles.css` nei file `assets/css/refactor/mobile-controls-v291.css` e `assets/css/refactor/rosters-tables-v291.css`. Il caricamento avviene dopo i CSS storici per preservare gli override. Non cambia logiche JS, Firebase, EmailJS o dati. Prima di ulteriori pulizie verificare che non si perdano: Listone Modifica/export, rose e pagina squadra, Dashboard Presidente, bottom navigation mobile e Dark mode unico V289. Documento: `docs/zonaorientale/refactor/CSS_REFACTOR_V291.md`. Diagnostica: `window.ZonaOrientaleCssRefactorV291`.
+
+## Aggiornamento V290 - Audit styles.css e app.js
+
+V290 aggiunge un audit conservativo di `assets/styles.css` e `assets/app.js` prima di qualunque refactor reale. Non cambia comportamento runtime: aggiorna versione/cache-buster, aggiunge diagnostica `window.ZonaOrientaleStylesAppAuditV290` e documenta funzionalita a rischio da preservare in `docs/zonaorientale/refactor/AUDIT_STYLES_APP_V290.md`. Regola operativa: ogni refactor successivo deve dichiarare cosa rischia di perdere e come lo preserva.
+
+## Aggiornamento V289 - Dark mode e rose mobile
+
+V289 sospende temporaneamente la modalita Light: il sito forza il tema Dark anche se nel browser era salvato Light e il pulsante cambio tema viene nascosto. Corregge inoltre le tabelle Rosa da mobile in modalita Dark, compattando le righe e centrando verticalmente la prima colonna nelle rose pubbliche e nella pagina squadra. Documento: `docs/zonaorientale/audit/DARK_MODE_ROSE_MOBILE_V289.md`. Diagnostica: `window.ZonaOrientaleDarkModeOnlyV289`.
+
+## Aggiornamento V288 - Fix rose mobile Light
+
+V288 e' una patch CSS/UI puntuale per la pagina squadra/rose in tema Light mobile. Corregge il caso nome giocatore nero su sfondo scuro nella prima colonna sticky della tabella Rosa, aumenta leggermente la leggibilita' del nome, centra verticalmente il contenuto e compatta le righe. Documento: `docs/zonaorientale/audit/FIX_ROSE_MOBILE_LIGHT_V288.md`. Diagnostica: `window.ZonaOrientaleRosterMobileLightV288`.
+
+## Aggiornamento V287 - Rifinitura controlli mobile
+
+V287 e' una patch CSS/UI conservativa per controlli mobile: input/select/textarea a target touch piu' comodo, font-size 16px per ridurre zoom iOS, bottoni/pill/menu piu' leggibili, focus ring Light e scroll tabelle piu' fluido. Non cambia dati, Firebase, EmailJS o logiche runtime. Documento: `docs/zonaorientale/audit/RIFINITURA_CONTROLLI_MOBILE_V287.md`. Diagnostica: `window.ZonaOrientaleMobileControlsV287`.
+
+## Aggiornamento V286
+
+- Versione runtime recente: `V286 fix prima colonna mobile`.
+- Corretto contrasto della prima colonna sticky in tema Light/mobile per Listone e tabelle rose.
+- Intervento solo CSS/UI: nessuna modifica a Firebase, EmailJS, dati JSON o logiche Listone/rose.
+- Documento: `docs/zonaorientale/audit/FIX_PRIMA_COLONNA_MOBILE_LIGHT_V286.md`.
+- Diagnostica runtime: `window.ZonaOrientaleStickyColumnContrastV286`.
+- Test prioritari: Listone e rose da smartphone in tema Light, con scroll orizzontale.
+
+## Aggiornamento V285
+
+- Versione runtime recente: `V285 fix mirati mobile`.
+- Migliorata la leggibilita' mobile in tema Light con correzioni CSS conservative.
+- Tabelle mobile: indicazione `Scorri`, corpo piu' leggibile e prima colonna sticky rafforzata.
+- Controlli, badge/pill, bottoni secondari e bottom navigation piu' contrastati.
+- Documento: `docs/zonaorientale/audit/FIX_MOBILE_MIRATI_V285.md`.
+- Diagnostica runtime: `window.ZonaOrientaleMobileFixesV285`.
+- Nessuna modifica a Firebase, EmailJS, dati JSON o logiche runtime.
+
+## Aggiornamento V284
+
+- Versione runtime recente: `V284 audit mobile completo`.
+- Nuovo documento: `docs/zonaorientale/audit/AUDIT_MOBILE_COMPLETO_V284.md`.
+- Lo script pre-push segnala la presenza dell'audit mobile.
+- Diagnostica runtime: `window.ZonaOrientaleMobileAuditV284`.
+- Nessuna modifica funzionale a Firebase, EmailJS o dati JSON.
+
+## Aggiornamento V283
+
+- Versione runtime recente: `V284 audit mobile completo`.
+- Nuovo script: `static/zonaorientale/tools/cleanup-macos-artifacts-v283.sh`.
+- Lo script e' dry-run di default; usare `--apply` e `--git-rm` solo dopo controllo elenco.
+- Documento operativo: `docs/zonaorientale/release/PULIZIA_MACOS_V283.md`.
+- Diagnostica runtime: `window.ZonaOrientaleMacOsCleanupV283`.
+- Nessuna modifica funzionale a Firebase, EmailJS o dati JSON.
+
 # Handoff nuovo assistente AI - ZonaOrientale Salerno
 
 > File canonico creato in V279 accorpando e aggiornando `HANDOFF_NUOVO_ASSISTENTE_V272.md` e `ISTRUZIONI_NUOVO_ASSISTENTE_260528.md`.
 >
 > Da usare come primo file da consegnare/leggere quando un nuovo assistente AI deve subentrare nel progetto.
+
+
+## Aggiornamento V282
+
+- Aggiunto `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Lo script esegue controlli pre-push su JS, JSON, versioni/cache-buster/footer e file macOS indesiderati.
+- Documento operativo: `docs/zonaorientale/release/CONTROLLI_PRE_PUSH_V282.md`.
+- Diagnostica runtime: `window.ZonaOrientalePrePushChecksV282`.
+- Nessuna modifica a Firebase, EmailJS o dati runtime.
 
 ## 1. Stato corrente sintetico
 
@@ -10,7 +105,7 @@
 - Webapp: `static/zonaorientale/`.
 - Documentazione: `docs/zonaorientale/`.
 - Branch di lavoro corrente: `refactor/260528-zonaorientale-next`.
-- Versione runtime recente: `V278 export modifiche listone`.
+- Versione runtime recente: `V284 audit mobile completo`.
 - Branch di produzione/deploy: `master`.
 
 ## 2. Regole operative obbligatorie
@@ -750,3 +845,124 @@ Queste modifiche non rimuovono funzioni: aggiungono diagnostica Admin e un filtr
 
 Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Esporta modifiche CSV` rispetta il filtro `Modifiche` e include nuove righe, usciti storici, variazioni quotazione/stato/squadra/ruolo. Documento tecnico: `docs/zonaorientale/listoni/LISTONE_EXPORT_MODIFICHE_V278.md`.
 
+
+
+## V280 - UI Listone semplificata
+
+- La sezione pubblica `Storico listoni` e' stata rimossa/nascosta dalla UI.
+- Le logiche V269-V278 restano preservate per colonna `Modifica`, filtro `Modifiche`, usciti storici ed export CSV.
+- Documento tecnico: `docs/zonaorientale/listoni/LISTONE_UI_SEMPLIFICATA_V280.md`.
+- Audit grafico iniziale: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V280.md`.
+- Prossima uscita consigliata: contrasto e leggibilita mobile in modalita Light.
+
+
+## V281 - Contrasto mobile Light
+
+- Versione runtime: `V281 contrasto mobile Light`.
+- Migliorata leggibilita in tema Light su smartphone.
+- Patch solo CSS + diagnostica runtime: `window.ZonaOrientaleMobileLightContrastV281`.
+- Documento tecnico: `docs/zonaorientale/audit/AUDIT_MOBILE_LIGHT_CONTRAST_V281.md`.
+- Non sono state modificate logiche Listone, Firebase, EmailJS o dati JSON.
+
+## V294 - Helper puri app.js
+
+Prima estrazione prudente verso il refactor di `assets/app.js`: aggiunto `assets/js/utils/shared-helpers-v294.js`. Il modulo e' importato e diagnosticato, ma i call-site storici non sono ancora stati riscritti. Prima di usare questi helper al posto di funzioni legacy fare grep, indicare funzionalita a rischio e testare Listone, rose, Dashboard Presidente, Admin, mobile, `competition.html`, `player.html` e news share.
+
+
+## Aggiornamento V297
+
+Il vecchio helper `assets/js/utils/shared-helpers-v294.js` e' da considerare obsoleto dopo V295/V296 e viene rimosso in V297. Non rimuovere `shared-helpers-v295.js`, usato dall'export CSV modifiche Listone. Ogni refactor successivo deve dichiarare funzionalita' a rischio e test di preservazione.
+
+## Aggiornamento V300
+
+Prima di qualunque nuova pulizia di `assets/styles.css`, eseguire `static/zonaorientale/tools/audit-css-v300.sh` e leggere `docs/zonaorientale/refactor/CSS_AUDIT_V300.md`. Non rimuovere regole che proteggono Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico V289, Admin, `competition.html` o `player.html` senza test mirati.
+
+## Aggiornamento V301
+
+Per pulire residui CSS V291/V292 usare `static/zonaorientale/tools/cleanup-css-refactor-v301.sh`. Il tool deve essere usato prima in dry-run e non sostituisce i test manuali su Listone, rose, Dashboard Presidente, mobile navigation, `competition.html` e `player.html`. I CSS stabili da mantenere sono `mobile-controls.css`, `rosters-tables.css` e `theme-light-suspended.css`.
+
+## Aggiornamento V302
+
+- `buildListoneChangeExportCsvV278` usa `ZonaOrientaleSharedHelpersV295.rowsToCsv`, con fallback legacy.
+- Non rimuovere `csvEscapeV278`: resta fallback se l'helper condiviso non fosse disponibile.
+- Export modifiche Listone resta solo Admin da V296.
+- La Light mode resta sospesa; non proporre recupero Light come prossimo step salvo nuova richiesta esplicita.
+- La futura sezione `Calciomercato` e' solo in studio: vedere `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.
+
+## Aggiornamento V303
+
+La diagnostica Admin è stata estesa in V303 con controlli non distruttivi su qualità dati Listoni, Rose, Competizioni e News. Ogni futuro refactor deve dichiarare le funzionalità a rischio e come preservarle. Non rimuovere o scollegare Listone, Rose, Dashboard Presidente, Richieste presidenti, mobile nav, Dark mode unico o export CSV admin-only senza test dedicati.
+
+
+
+## V304 - Checkpoint pre-Calciomercato
+
+Leggere `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md` prima di iniziare la nuova sezione Calciomercato. La V304 non implementa ancora la feature: chiude il ciclo mobile/refactor e ribadisce le funzionalita da non scollegare.
+
+La Light mode resta sospesa. La prossima feature va progettata per Dark mode e in modo isolato.
+
+## Aggiornamento V305 - Calciomercato
+
+Esiste una prima sezione pubblica `Calciomercato`, alimentata da `assets/calciomercato/links.json`. E' una base statica/manuale: non fare scraping e non chiamare siti terzi dal browser. La futura raccolta automatica dovra essere progettata server-side, preferibilmente con Netlify Function e caching. Non confondere questa sezione con `Fantamercato`, che resta il mercato interno dei trasferibili e trattative della lega.
+
+## V306 - Calciomercato giocatori interessati
+
+Il JSON statico `assets/calciomercato/links.json` supporta il campo `players`/`giocatori` per indicare i calciatori citati da un articolo. Il rendering mostra chip giocatore nelle card e include i nomi nella ricerca. La feature resta manuale/statica e non deve toccare il Fantamercato interno della lega. Documento: `docs/zonaorientale/calciomercato/CALCIOMERCATO_GIOCATORI_V306.md`.
+## V307 - Calciomercato nome sezione
+
+La sezione pubblica e ora denominata `Calciomercato`. Non rinominare la route tecnica `#calciomercato` e non confonderla con `Fantamercato`, che resta il mercato interno della lega. Logica dati V305/V306 invariata; documento tecnico: `docs/zonaorientale/calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md`.
+
+
+
+## V308 - Calciomercato squadre multiple e stato trattativa
+
+- La sezione `Calciomercato` resta statica/manuale e non recupera automaticamente dati dai siti esterni.
+- Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
+- Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
+- Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.
+
+## V309 - Calciomercato automatico RSS
+
+Prima di modificare Calciomercato leggere `docs/zonaorientale/calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md`. La funzione server-side canonica e' `netlify/functions/calciomercato-feed.js`; il frontend deve mantenere fallback statico su `assets/calciomercato/links.json`. Non trasformare il recupero in fetch diretto browser verso siti esterni per evitare CORS e fragilita'.
+
+
+## Aggiornamento V310 - Calciomercato layout orizzontale
+
+La sezione `Calciomercato` mantiene recupero automatico RSS/fallback statico, ma gli articoli vengono mostrati in card orizzontali/lista per evitare layout a colonne strette.
+
+Non modificare questa sezione insieme a Fantamercato interno/Listone/Rose senza test regressione: sono funzionalita' separate e vanno preservate.
+
+## Aggiornamento V311
+
+Calciomercato ora mostra data e ora pubblicazione articolo quando disponibili. Il rendering usa `formatCalciomercatoArticleDateTimeV311`; la diagnostica e disponibile in `window.ZonaOrientaleCalciomercatoDateTimeV311`. Non sono stati modificati recupero RSS, Fantamercato interno, Listone, Rose, Admin o Firebase.
+
+## Aggiornamento V312
+
+Calciomercato ora formatta timestamp articoli e `aggiornato ...` in fuso `Europe/Rome`, tramite `formatCalciomercatoDateTimeRomeV312`. La diagnostica e disponibile in `window.ZonaOrientaleCalciomercatoTimeZoneV312`. Non modificare questo formatter insieme a recupero RSS/Fantamercato interno/Listone/Rose senza test regressione.
+
+## Aggiornamento V314 - Calciomercato fonti e AI futura
+
+La sezione `Calciomercato` usa feed RSS via Netlify Function e ora include filtro fonte. Il filtro squadra deve mostrare sempre `Tutte le squadre`, poi `Generale`, poi la lista alfabetica delle squadre.
+
+Fonti RSS configurate: TMW, SOS Fanta, Gianluca Di Marzio, Fantacalcio.it, Gazzetta, Virgilio Sport, CalcioMercato.it.
+
+Il futuro modulo AI va implementato solo server-side, preferibilmente tramite Netlify Function, usando metadati RSS/articoli gia' recuperati. Non chiamare API AI dal browser e non esporre chiavi lato client.
+
+Prima di qualsiasi nuova modifica controllare che non vengano scollegati Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, mobile nav e share news.
+
+## V316 - Calciomercato ricerca e range
+
+- Rimossa l'idea di applicare ora la sintesi AI: nessuna funzione AI e nessuna chiave OpenAI richiesta.
+- Rimossi dalle fonti attive Virgilio Sport e La Gazzetta dello Sport.
+- Aggiunti ricerca per keyword e range temporale sui feed RSS Calciomercato.
+- Default UI: ultime 12 ore; scroll/pulsante caricano articoli più vecchi.
+- Limiti feed alzati a 500 articoli totali, 250 per fonte, 20 fonti.
+- Funzionalita da preservare: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.
+
+## V317 - Calciomercato scroll e range RSS
+
+V317 corregge il caricamento progressivo del Calciomercato: quando si arriva in fondo alla sezione o si clicca `Carica articoli piu vecchi`, il sito non deve tornare in alto e deve mantenere la posizione di scroll. La lista non viene piu sostituita dal loader durante il caricamento degli articoli meno recenti.
+
+La Netlify Function `calciomercato-feed` espone anche un riepilogo `feedRange`, cosi la UI puo spiegare quando un range molto vecchio non produce risultati perche i feed RSS non sono un archivio storico completo.
+
+Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export CSV solo Admin, Rose, pagina squadra, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico Calciomercato.
