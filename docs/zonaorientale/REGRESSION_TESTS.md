@@ -845,3 +845,8 @@ Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export
 - Listone pubblico: export CSV non visibile.
 - Listone Admin: export CSV visibile e funzionante.
 - Fantamercato interno, Rose, Dashboard Presidente e Admin invariati.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.

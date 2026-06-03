@@ -989,3 +989,8 @@ V319 migliora la leggibilita mobile della sezione `Calciomercato`: i filtri veng
 - La funzione Calciomercato espone `detectedTeams`, `detectedPlayers` ed `entities`.
 - La ricerca e il filtro squadra includono anche le entita rilevate automaticamente.
 - Nessuna modifica a Fantamercato interno, Listone, Rose, Admin, Presidente, Firebase/Auth/EmailJS.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.

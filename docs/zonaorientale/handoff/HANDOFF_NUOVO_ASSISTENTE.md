@@ -975,3 +975,8 @@ Preservare la nuova UI mobile del Calciomercato: filtri sotto `Articoli di merca
 ## Aggiornamento V320 - Calciomercato riconoscimento automatico
 
 La sezione Calciomercato riconosce automaticamente in modo euristico squadre, giocatori e allenatori dagli articoli RSS. Campi rilevanti: `detectedTeams`, `detectedPlayers`, `entities.teams`, `entities.people`. Il riconoscimento non e' AI e puo' avere limiti; non collegarlo al Fantamercato interno senza richiesta esplicita e audit. Preservare sempre Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.

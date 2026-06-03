@@ -633,6 +633,16 @@ else
   warn "docs non disponibili; salto controllo documento audit CSS V300"
 fi
 
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  admin_diag_fix_doc="$DOCS_ROOT/admin/ADMIN_DIAGNOSTICA_EXPAND_FIX_V321.md"
+  if [[ -f "$admin_diag_fix_doc" ]]; then
+    pass "fix espansione Diagnostica dati Admin V321 documentato: admin/ADMIN_DIAGNOSTICA_EXPAND_FIX_V321.md"
+  else
+    warn "fix espansione Diagnostica dati Admin V321 non documentato"
+  fi
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.\n' "$failures" "$warns" >&2

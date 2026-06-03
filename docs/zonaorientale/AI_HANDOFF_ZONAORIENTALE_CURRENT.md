@@ -1015,3 +1015,8 @@ La sezione `Calciomercato` e' stata rifinita per mobile: filtri sotto `Articoli 
 ## V320 - Riconoscimento automatico Calciomercato
 
 La Netlify Function `netlify/functions/calciomercato-feed.js` arricchisce gli articoli RSS con `detectedTeams`, `detectedPlayers` ed `entities`. Il frontend usa questi campi nei chip, nei filtri squadra e nella ricerca. Non usare AI in questa fase e non collegare la funzione al Fantamercato interno. Funzionalita da preservare: Fantamercato, Listone/export admin-only, Rose, Dashboard Presidente, Admin, mobile nav e fallback statico `assets/calciomercato/links.json`.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.

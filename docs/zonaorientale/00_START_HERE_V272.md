@@ -263,3 +263,8 @@ V319 aggiunge il layout mobile compatto per la sezione `Calciomercato`. La modif
 ## Aggiornamento V320 - Riconoscimento Calciomercato
 
 V320 aggiunge riconoscimento automatico prudente di squadre, giocatori e allenatori negli articoli RSS del Calciomercato. La modifica e' isolata alla sezione Calciomercato e non tocca Fantamercato interno, Listone, Rose, Admin, Presidente, Firebase/Auth/EmailJS o mobile navigation.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.
