@@ -176,7 +176,7 @@ V301 aggiunge la pulizia controllata dei CSS refactor residui tramite `tools/cle
 - Secondo micro-collegamento helper JS: `buildListoneChangeExportCsvV278` usa `ZonaOrientaleSharedHelpersV295.rowsToCsv` con fallback legacy.
 - Export modifiche Listone resta riservato agli Admin.
 - La Light mode resta sospesa; non e' previsto recupero nel ciclo corrente.
-- Studio fattibilita' futura sezione `Calcio mercato`: `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.
+- Studio fattibilita' futura sezione `Calciomercato`: `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.
 
 ## Aggiornamento V303
 
@@ -188,12 +188,16 @@ V303 estende il pannello `Admin -> Diagnostica dati` con controlli di qualita no
 
 V304 aggiunge la review mobile finale e il checkpoint pre-Calciomercato: `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md`.
 
-Prima di iniziare la nuova sezione Calcio mercato verificare: check pre-push, Listone pubblico/Admin, Rose/pagina squadra, Dashboard Presidente, Admin Diagnostica/Richieste, mobile navigation, `competition.html`, `player.html` e Dark mode unico.
+Prima di iniziare la nuova sezione Calciomercato verificare: check pre-push, Listone pubblico/Admin, Rose/pagina squadra, Dashboard Presidente, Admin Diagnostica/Richieste, mobile navigation, `competition.html`, `player.html` e Dark mode unico.
 
-## Nota V305 - Calcio mercato base statico
+## Nota V305 - Calciomercato base statico
 
-La sezione `Calcio mercato` e' stata aggiunta come base statica/manuale. I dati sono in `static/zonaorientale/assets/calciomercato/links.json`. Non recupera automaticamente articoli da siti esterni e non modifica Firebase/EmailJS. Per evoluzioni automatiche usare una futura Netlify Function o altra sorgente server-side, evitando fetch diretti dal browser verso siti terzi.
+La sezione `Calciomercato` e' stata aggiunta come base statica/manuale. I dati sono in `static/zonaorientale/assets/calciomercato/links.json`. Non recupera automaticamente articoli da siti esterni e non modifica Firebase/EmailJS. Per evoluzioni automatiche usare una futura Netlify Function o altra sorgente server-side, evitando fetch diretti dal browser verso siti terzi.
 
-## V306 - Calcio mercato giocatori
+## V306 - Calciomercato giocatori
 
-La sezione `Calcio mercato` supporta ora, per ogni articolo statico, l'elenco dei giocatori interessati tramite `players`/`giocatori`. La funzione e' solo statica/manuale: niente scraping, niente Netlify Function e niente Firebase. Preservare sempre Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin.
+La sezione `Calciomercato` supporta ora, per ogni articolo statico, l'elenco dei giocatori interessati tramite `players`/`giocatori`. La funzione e' solo statica/manuale: niente scraping, niente Netlify Function e niente Firebase. Preservare sempre Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin.
+## V307 - Calciomercato nome sezione
+
+La sezione pubblica introdotta come `Calcio mercato` viene rinominata in `Calciomercato` in UI e documentazione. La route interna resta `#calciomercato` e il file dati resta `assets/calciomercato/links.json`. Nessuna modifica a Fantamercato interno, Listone, Rose, Admin, Firebase o EmailJS.
+

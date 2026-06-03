@@ -723,19 +723,27 @@ Test manuali:
 - `competition.html` e `player.html`: layout mobile e Dark mode corretti.
 - Console: `window.ZonaOrientaleMobileFinalReviewV304.behaviorChange === false`.
 
-## V305 - Test Calcio mercato
+## V305 - Test Calciomercato
 
 - Aprire `#calciomercato` da desktop.
-- Aprire `Altro -> Calcio mercato` da mobile.
+- Aprire `Altro -> Calciomercato` da mobile.
 - Verificare che la sezione mostri lo stato vuoto se `links.json` non contiene articoli.
 - Inserire temporaneamente un articolo in `assets/calciomercato/links.json` e verificare filtri squadra/topic, ricerca e link esterno.
 - Verificare che `#fantamercato` resti il mercato interno dei trasferibili.
 - Verificare Listone pubblico/Admin, Rose, Dashboard Presidente, Admin Diagnostica e mobile navigation.
 
-## Test V306 - Calcio mercato giocatori
+## Test V306 - Calciomercato giocatori
 
-- Aprire `Calcio mercato` da desktop e mobile.
+- Aprire `Calciomercato` da desktop e mobile.
 - Verificare che gli articoli con `players`/`giocatori` mostrino chip leggibili.
 - Verificare che la ricerca trovi un articolo cercando il nome di un giocatore.
 - Verificare che il Fantamercato interno non sia stato confuso con la nuova sezione informativa.
 - Verificare Listone pubblico/Admin, Rose, Dashboard Presidente e Admin dopo la modifica.
+## Test V307 - Calciomercato nome sezione
+
+- Menu desktop: il link deve mostrare `Calciomercato`.
+- Menu mobile `Altro`: il link deve mostrare `Calciomercato`.
+- Aprire `#calciomercato`: titolo pagina `Calciomercato`.
+- Verificare che gli articoli statici e i chip giocatori V306 continuino a funzionare.
+- Verificare che `Fantamercato` interno resti invariato.
+

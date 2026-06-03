@@ -205,24 +205,31 @@ else
   fail "mobile review finale V304 non rilevata in assets/app.js"
 fi
 
-calciomercato_v305_marker="ZonaOrientaleCalciomercatoV305"
-if grep -q "$calciomercato_v305_marker" "$app_file"; then
-  pass "Calcio mercato base V305 presente"
+calciomercato_v306_marker="ZonaOrientaleCalciomercatoV306"
+if grep -q "$calciomercato_v306_marker" "$app_file" && grep -q "getCalciomercatoPlayersV306" "$app_file"; then
+  pass "Calciomercato V306 con giocatori interessati presente"
 else
-  fail "Calcio mercato base V305 non rilevato in assets/app.js"
+  fail "Calciomercato V306 con giocatori interessati non rilevato in assets/app.js"
+fi
+
+calciomercato_v307_marker="ZonaOrientaleCalciomercatoV307"
+if grep -q "$calciomercato_v307_marker" "$app_file" && grep -q "label: "Calciomercato"" "$app_file"; then
+  pass "Calciomercato V307 nome sezione presente"
+else
+  fail "Calciomercato V307 nome sezione non rilevato in assets/app.js"
 fi
 
 calciomercato_json="$SITE_ROOT/assets/calciomercato/links.json"
 if [[ -f "$calciomercato_json" ]]; then
-  pass "configurazione Calcio mercato presente: assets/calciomercato/links.json"
+  pass "configurazione Calciomercato presente: assets/calciomercato/links.json"
 else
-  fail "configurazione Calcio mercato mancante: assets/calciomercato/links.json"
+  fail "configurazione Calciomercato mancante: assets/calciomercato/links.json"
 fi
 
 if grep -q "data-page-link=\"calciomercato\"" "$SITE_ROOT/index.html" && grep -q "data-page=\"calciomercato\"" "$SITE_ROOT/index.html"; then
-  pass "pagina/nav Calcio mercato V305 presenti in index.html"
+  pass "pagina/nav Calciomercato V306 presenti in index.html"
 else
-  fail "pagina/nav Calcio mercato V305 non rilevati in index.html"
+  fail "pagina/nav Calciomercato V306 non rilevati in index.html"
 fi
 
 print_step "File macOS indesiderati"
@@ -366,15 +373,27 @@ if [[ -n "$DOCS_ROOT" ]]; then
   fi
   calciomercato_plan_doc="$DOCS_ROOT/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
   if [[ -f "$calciomercato_plan_doc" ]]; then
-    pass "studio fattibilita Calcio mercato V302 documentato: pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
+    pass "studio fattibilita Calciomercato V302 documentato: pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
   else
-    warn "studio fattibilita Calcio mercato V302 non trovato; se si pianifica la feature creare docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
+    warn "studio fattibilita Calciomercato V302 non trovato; se si pianifica la feature creare docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
   fi
   calciomercato_base_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_BASE_V305.md"
   if [[ -f "$calciomercato_base_doc" ]]; then
-    pass "Calcio mercato base V305 documentato: calciomercato/CALCIOMERCATO_BASE_V305.md"
+    pass "Calciomercato base V305 documentato: calciomercato/CALCIOMERCATO_BASE_V305.md"
   else
-    warn "Calcio mercato base V305 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_BASE_V305.md"
+    warn "Calciomercato base V305 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_BASE_V305.md"
+  fi
+  calciomercato_players_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_GIOCATORI_V306.md"
+  if [[ -f "$calciomercato_players_doc" ]]; then
+    pass "Calciomercato giocatori V306 documentato: calciomercato/CALCIOMERCATO_GIOCATORI_V306.md"
+  else
+    warn "Calciomercato giocatori V306 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_GIOCATORI_V306.md"
+  fi
+  calciomercato_nome_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md"
+  if [[ -f "$calciomercato_nome_doc" ]]; then
+    pass "Calciomercato nome sezione V307 documentato: calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md"
+  else
+    warn "Calciomercato nome sezione V307 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md"
   fi
   admin_diag_v303_doc="$DOCS_ROOT/admin/DIAGNOSTICA_DATI_V303.md"
   if [[ -f "$admin_diag_v303_doc" ]]; then

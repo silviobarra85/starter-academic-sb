@@ -881,7 +881,7 @@ Per pulire residui CSS V291/V292 usare `static/zonaorientale/tools/cleanup-css-r
 - Non rimuovere `csvEscapeV278`: resta fallback se l'helper condiviso non fosse disponibile.
 - Export modifiche Listone resta solo Admin da V296.
 - La Light mode resta sospesa; non proporre recupero Light come prossimo step salvo nuova richiesta esplicita.
-- La futura sezione `Calcio mercato` e' solo in studio: vedere `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.
+- La futura sezione `Calciomercato` e' solo in studio: vedere `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.
 
 ## Aggiornamento V303
 
@@ -891,14 +891,18 @@ La diagnostica Admin è stata estesa in V303 con controlli non distruttivi su qu
 
 ## V304 - Checkpoint pre-Calciomercato
 
-Leggere `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md` prima di iniziare la nuova sezione Calcio mercato. La V304 non implementa ancora la feature: chiude il ciclo mobile/refactor e ribadisce le funzionalita da non scollegare.
+Leggere `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md` prima di iniziare la nuova sezione Calciomercato. La V304 non implementa ancora la feature: chiude il ciclo mobile/refactor e ribadisce le funzionalita da non scollegare.
 
 La Light mode resta sospesa. La prossima feature va progettata per Dark mode e in modo isolato.
 
-## Aggiornamento V305 - Calcio mercato
+## Aggiornamento V305 - Calciomercato
 
-Esiste una prima sezione pubblica `Calcio mercato`, alimentata da `assets/calciomercato/links.json`. E' una base statica/manuale: non fare scraping e non chiamare siti terzi dal browser. La futura raccolta automatica dovra essere progettata server-side, preferibilmente con Netlify Function e caching. Non confondere questa sezione con `Fantamercato`, che resta il mercato interno dei trasferibili e trattative della lega.
+Esiste una prima sezione pubblica `Calciomercato`, alimentata da `assets/calciomercato/links.json`. E' una base statica/manuale: non fare scraping e non chiamare siti terzi dal browser. La futura raccolta automatica dovra essere progettata server-side, preferibilmente con Netlify Function e caching. Non confondere questa sezione con `Fantamercato`, che resta il mercato interno dei trasferibili e trattative della lega.
 
-## V306 - Calcio mercato giocatori interessati
+## V306 - Calciomercato giocatori interessati
 
 Il JSON statico `assets/calciomercato/links.json` supporta il campo `players`/`giocatori` per indicare i calciatori citati da un articolo. Il rendering mostra chip giocatore nelle card e include i nomi nella ricerca. La feature resta manuale/statica e non deve toccare il Fantamercato interno della lega. Documento: `docs/zonaorientale/calciomercato/CALCIOMERCATO_GIOCATORI_V306.md`.
+## V307 - Calciomercato nome sezione
+
+La sezione pubblica e ora denominata `Calciomercato`. Non rinominare la route tecnica `#calciomercato` e non confonderla con `Fantamercato`, che resta il mercato interno della lega. Logica dati V305/V306 invariata; documento tecnico: `docs/zonaorientale/calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md`.
+

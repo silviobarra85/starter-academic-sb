@@ -1,12 +1,12 @@
-# V306 - Calcio mercato: giocatori interessati
+# V306 - Calciomercato: giocatori interessati
 
 ## Scopo
 
-V306 estende la sezione pubblica `Calcio mercato` introdotta in V305 permettendo di indicare, per ogni articolo configurato nel JSON statico, i calciatori interessati dall'indiscrezione o dalla notizia.
+V306 estende la sezione pubblica `Calciomercato` introdotta in V305 permettendo di indicare, per ogni articolo configurato nel JSON statico, i calciatori interessati dall'indiscrezione o dalla notizia.
 
 ## Perimetro della modifica
 
-La modifica resta isolata alla nuova sezione `Calcio mercato`:
+La modifica resta isolata alla nuova sezione `Calciomercato`:
 
 - nessuna lettura automatica da siti esterni;
 - nessuno scraping dal browser;
@@ -52,13 +52,13 @@ Nelle card articolo, quando presenti, i calciatori vengono mostrati come chip so
 Giocatori: Nome Cognome, Altro Giocatore
 ```
 
-I nomi dei giocatori entrano anche nella ricerca della sezione `Calcio mercato`.
+I nomi dei giocatori entrano anche nella ricerca della sezione `Calciomercato`.
 
 ## Funzionalita a rischio e preservazione
 
 Funzionalita da non perdere:
 
-- sezione `Calcio mercato` V305 e caricamento JSON statico;
+- sezione `Calciomercato` V305 e caricamento JSON statico;
 - filtri squadra/topic;
 - ricerca titolo/fonte/descrizione/tag;
 - apertura articolo esterno;
@@ -75,13 +75,13 @@ Preservazione applicata:
 
 - nessuna funzione storica rimossa;
 - nessuna logica Firebase/EmailJS toccata;
-- nuova logica limitata a parsing/render dei giocatori nella sezione `Calcio mercato`;
+- nuova logica limitata a parsing/render dei giocatori nella sezione `Calciomercato`;
 - CSS isolato in `assets/css/refactor/calciomercato.css`.
 
 ## Test consigliati
 
-1. Aprire `Calcio mercato` da menu desktop.
-2. Aprire `Calcio mercato` da `Altro` mobile.
+1. Aprire `Calciomercato` da menu desktop.
+2. Aprire `Calciomercato` da `Altro` mobile.
 3. Inserire temporaneamente un articolo in `links.json` con `players` e verificare la comparsa dei chip.
 4. Cercare il nome di un giocatore e verificare che l'articolo venga filtrato.
 5. Verificare che Fantamercato interno, Listone, Rose e Admin restino invariati.

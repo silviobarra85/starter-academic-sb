@@ -866,11 +866,11 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Preservati Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico, Admin e pagine standalone.
 - Aggiunto documento `docs/zonaorientale/refactor/CSS_CLEANUP_V301.md`.
 
-## V302 - Helper CSV condiviso e studio Calcio mercato
+## V302 - Helper CSV condiviso e studio Calciomercato
 
 - Collegato il builder CSV dell'export modifiche Listone a `ZonaOrientaleSharedHelpersV295.rowsToCsv`, mantenendo fallback legacy e restrizione admin-only V296.
 - Aggiunta diagnostica `window.ZonaOrientaleAppHelperRewireV302`.
-- Documentato lo studio di fattibilita' per una futura sezione `Calcio mercato`, senza implementarla.
+- Documentato lo studio di fattibilita' per una futura sezione `Calciomercato`, senza implementarla.
 - Escluso il recupero Light mode dalla roadmap corrente: la modalita' Light resta sospesa.
 - Nessuna modifica a Firebase, EmailJS, dati JSON, rose, Dashboard Presidente o Admin.
 
@@ -886,22 +886,28 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 ## V304 - Mobile review finale e pre-Calciomercato
 
 - Aggiunto `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md`.
-- Fissata la checklist finale mobile prima della nuova funzionalita Calcio mercato.
+- Fissata la checklist finale mobile prima della nuova funzionalita Calciomercato.
 - Nessuna nuova feature implementata e nessun cambio dati/runtime intenzionale.
 - Funzionalita da preservare esplicitamente per la fase successiva: Listone pubblico/admin, export CSV solo Admin, rose/pagina squadra, Dashboard Presidente, Admin, mobile navigation, Dark mode unico, `competition.html`, `player.html` e share WhatsApp.
 - Aggiunta diagnostica `window.ZonaOrientaleMobileFinalReviewV304`.
 
-## V305 - Calcio mercato base statico
+## V305 - Calciomercato base statico
 
-- Aggiunta la sezione pubblica `Calcio mercato` con navigazione desktop e link mobile in `Altro`.
+- Aggiunta la sezione pubblica `Calciomercato` con navigazione desktop e link mobile in `Altro`.
 - Aggiunto il file statico `assets/calciomercato/links.json` per configurare manualmente fonti e articoli.
 - Aggiunte card articolo con filtri per squadra/topic e ricerca testuale.
 - Nessun recupero automatico da siti esterni, nessuna scrittura Firebase e nessuna modifica a Fantamercato/Listone/Rose/Admin.
 - Documentazione: `docs/zonaorientale/calciomercato/CALCIOMERCATO_BASE_V305.md`.
 
-## V306 - Calcio mercato: giocatori interessati
+## V306 - Calciomercato: giocatori interessati
 
-- Estesa la sezione pubblica `Calcio mercato` con il campo `players`/`giocatori` negli articoli statici.
+- Estesa la sezione pubblica `Calciomercato` con il campo `players`/`giocatori` negli articoli statici.
 - I giocatori interessati vengono mostrati come chip nelle card articolo e sono inclusi nella ricerca.
 - Nessuna lettura automatica da siti esterni, nessuno scraping, nessuna scrittura Firebase.
 - Funzionalita preservate: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, mobile navigation e Dark mode unico.
+## V307 - Calciomercato nome sezione
+
+- Rinominata la sezione pubblica da `Calcio mercato` a `Calciomercato` in menu desktop, menu mobile, titolo e messaggi runtime.
+- Preservata la route interna `#calciomercato` e il JSON statico `assets/calciomercato/links.json`.
+- Nessuna modifica a Fantamercato interno, Listone, Rose, Admin, Firebase o EmailJS.
+
