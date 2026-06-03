@@ -941,3 +941,12 @@ V307 rinomina la sezione da `Calcio mercato` a `Calciomercato`. Il cambio e solo
 ## V309 - Calciomercato automatico RSS
 
 Aggiunta Netlify Function `netlify/functions/calciomercato-feed.js` per recuperare automaticamente articoli dalle fonti configurate in `assets/calciomercato/links.json`. La sezione Calciomercato prova prima `/.netlify/functions/calciomercato-feed` e poi usa `links.json` come fallback statico. Fonti iniziali: TuttoMercatoWeb, SOS Fanta, Gianluca Di Marzio; `Fantacalcio.it` resta fonte suggerita da verificare. Funzionalita preservate: Fantamercato interno, Listone/export admin-only, Rose, Admin, Presidente, Firebase/Auth/EmailJS, mobile navigation. Diagnostica: `window.ZonaOrientaleCalciomercatoV309`.
+
+
+## V310 - Calciomercato layout orizzontale
+
+V310 migliora la leggibilita' della nuova sezione `Calciomercato`: le card articolo vengono rese orizzontali/lista, evitando card strette con testo quasi verticale.
+
+Non cambia il recupero automatico RSS V309, non cambia il formato di `assets/calciomercato/links.json` e non tocca Fantamercato interno, Listone, Rose, Admin, Presidente, Firebase o EmailJS.
+
+Documento tecnico: `docs/zonaorientale/calciomercato/CALCIOMERCATO_LAYOUT_ORIZZONTALE_V310.md`.

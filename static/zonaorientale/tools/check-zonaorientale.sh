@@ -213,7 +213,7 @@ else
 fi
 
 calciomercato_v307_marker="ZonaOrientaleCalciomercatoV307"
-if grep -q "$calciomercato_v307_marker" "$app_file" && grep -q "label: "Calciomercato"" "$app_file"; then
+if grep -q "$calciomercato_v307_marker" "$app_file" && grep -q 'label: "Calciomercato"' "$app_file"; then
   pass "Calciomercato V307 nome sezione presente"
 else
   fail "Calciomercato V307 nome sezione non rilevato in assets/app.js"
@@ -231,6 +231,13 @@ if grep -q "$calciomercato_v309_marker" "$app_file" && grep -q "CALCIOMERCATO_AU
   pass "Calciomercato automatico RSS V309 presente"
 else
   fail "Calciomercato automatico RSS V309 non rilevato in assets/app.js"
+fi
+
+calciomercato_v310_marker="ZonaOrientaleCalciomercatoLayoutV310"
+if grep -q "$calciomercato_v310_marker" "$app_file" && grep -q "horizontal-list" "$app_file"; then
+  pass "Calciomercato layout orizzontale V310 presente"
+else
+  fail "Calciomercato layout orizzontale V310 non rilevato in assets/app.js"
 fi
 
 if [[ -n "$REPO_ROOT" ]]; then
@@ -432,6 +439,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato automatico RSS V309 documentato: calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md"
   else
     warn "Calciomercato automatico RSS V309 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md"
+  fi
+  calciomercato_layout_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_LAYOUT_ORIZZONTALE_V310.md"
+  if [[ -f "$calciomercato_layout_doc" ]]; then
+    pass "Calciomercato layout orizzontale V310 documentato: calciomercato/CALCIOMERCATO_LAYOUT_ORIZZONTALE_V310.md"
+  else
+    warn "Calciomercato layout orizzontale V310 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_LAYOUT_ORIZZONTALE_V310.md"
   fi
   admin_diag_v303_doc="$DOCS_ROOT/admin/DIAGNOSTICA_DATI_V303.md"
   if [[ -f "$admin_diag_v303_doc" ]]; then

@@ -213,3 +213,11 @@ La sezione pubblica introdotta come `Calcio mercato` viene rinominata in `Calcio
 ## V309 - Nota rapida Calciomercato automatico
 
 La sezione `Calciomercato` ora puo recuperare automaticamente articoli tramite Netlify Function. Per questa release lo zip include anche la radice `netlify/` perche la funzione vive fuori da `static/zonaorientale`. Le fonti si configurano in `static/zonaorientale/assets/calciomercato/links.json`.
+
+
+## Aggiornamento V310
+
+- Versione runtime: `V310 calciomercato layout orizzontale`.
+- La sezione `Calciomercato` usa card orizzontali/lista per rendere leggibili gli articoli RSS.
+- La Netlify Function RSS V309 e il fallback statico restano invariati.
+- Funzionalita' da preservare: Fantamercato interno, Listone, Rose, Admin, Dashboard Presidente, mobile navigation.

@@ -918,3 +918,10 @@ La sezione pubblica e ora denominata `Calciomercato`. Non rinominare la route te
 ## V309 - Calciomercato automatico RSS
 
 Prima di modificare Calciomercato leggere `docs/zonaorientale/calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md`. La funzione server-side canonica e' `netlify/functions/calciomercato-feed.js`; il frontend deve mantenere fallback statico su `assets/calciomercato/links.json`. Non trasformare il recupero in fetch diretto browser verso siti esterni per evitare CORS e fragilita'.
+
+
+## Aggiornamento V310 - Calciomercato layout orizzontale
+
+La sezione `Calciomercato` mantiene recupero automatico RSS/fallback statico, ma gli articoli vengono mostrati in card orizzontali/lista per evitare layout a colonne strette.
+
+Non modificare questa sezione insieme a Fantamercato interno/Listone/Rose senza test regressione: sono funzionalita' separate e vanno preservate.

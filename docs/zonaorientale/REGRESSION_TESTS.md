@@ -763,3 +763,12 @@ Test manuali:
 - Verificare che `links.json` resti valido JSON.
 - Verificare che Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin non cambino comportamento.
 - Console: `window.ZonaOrientaleCalciomercatoV309.getState()` deve essere disponibile.
+
+
+## Test regressione V310 - Calciomercato layout orizzontale
+
+- Aprire `#calciomercato` e verificare card articolo orizzontali leggibili.
+- Verificare titolo, descrizione, fonte, squadre, stato, giocatori e pulsante `Apri articolo`.
+- Verificare funzionamento su mobile senza colonne strette.
+- Verificare che `/.netlify/functions/calciomercato-feed` continui a restituire JSON in Netlify Dev/preview.
+- Verificare che Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin siano invariati.
