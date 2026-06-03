@@ -322,6 +322,13 @@ else
   fail "Calciomercato scroll/range RSS V317 non rilevato in assets/app.js"
 fi
 
+calciomercato_v319_marker="ZonaOrientaleCalciomercatoMobileV319"
+if grep -q "$calciomercato_v319_marker" "$app_file" && grep -q "calciomercato-filters-v319" "$SITE_ROOT/index.html" && grep -q "calciomercato-card-body-v306 > p" "$SITE_ROOT/assets/css/refactor/calciomercato.css"; then
+  pass "Calciomercato mobile compatto V319 presente"
+else
+  fail "Calciomercato mobile compatto V319 non rilevato"
+fi
+
 if [[ -n "$REPO_ROOT" ]]; then
   tracked_macos="$(git -C "$REPO_ROOT" ls-files | grep -E '(^|/)(\.DS_Store|__MACOSX|\._|\.AppleDouble|\.LSOverride)' || true)"
   if [[ -n "$tracked_macos" ]]; then
@@ -529,6 +536,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato scroll/range V317 documentato: calciomercato/CALCIOMERCATO_SCROLL_RANGE_V317.md"
   else
     warn "Calciomercato scroll/range V317 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_SCROLL_RANGE_V317.md"
+  fi
+  calciomercato_mobile_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_MOBILE_COMPATTO_V319.md"
+  if [[ -f "$calciomercato_mobile_doc" ]]; then
+    pass "Calciomercato mobile compatto V319 documentato: calciomercato/CALCIOMERCATO_MOBILE_COMPATTO_V319.md"
+  else
+    warn "Calciomercato mobile compatto V319 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_MOBILE_COMPATTO_V319.md"
   fi
 
   resoconto_v313_doc="$DOCS_ROOT/RESOCONTO_SITO_V313.md"

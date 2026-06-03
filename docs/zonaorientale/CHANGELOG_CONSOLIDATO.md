@@ -977,3 +977,7 @@ V317 corregge il caricamento progressivo del Calciomercato: quando si arriva in 
 La Netlify Function `calciomercato-feed` espone anche un riepilogo `feedRange`, cosi la UI puo spiegare quando un range molto vecchio non produce risultati perche i feed RSS non sono un archivio storico completo.
 
 Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export CSV solo Admin, Rose, pagina squadra, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico Calciomercato.
+
+## V319 - Calciomercato mobile compatto
+
+V319 migliora la leggibilita mobile della sezione `Calciomercato`: i filtri vengono posizionati sotto il titolo `Articoli di mercato`, i menu `Squadre`/`Topic`/`Fonti` sono affiancati, il campo `Cerca...` usa tutta la larghezza, il range `Da/A` e' piu compatto e le card mobile mostrano immagine quadrata con titolo/metadati senza descrizione lunga. Nessuna modifica a feed RSS, Netlify Function, fallback statico, Fantamercato interno, Listone, Rose, Dashboard Presidente o Admin. Diagnostica: `window.ZonaOrientaleCalciomercatoMobileV319`.
