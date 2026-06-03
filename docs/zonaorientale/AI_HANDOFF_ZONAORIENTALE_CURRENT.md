@@ -937,3 +937,7 @@ V307 rinomina la sezione da `Calcio mercato` a `Calciomercato`. Il cambio e solo
 - Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
 - Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
 - Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.
+
+## V309 - Calciomercato automatico RSS
+
+Aggiunta Netlify Function `netlify/functions/calciomercato-feed.js` per recuperare automaticamente articoli dalle fonti configurate in `assets/calciomercato/links.json`. La sezione Calciomercato prova prima `/.netlify/functions/calciomercato-feed` e poi usa `links.json` come fallback statico. Fonti iniziali: TuttoMercatoWeb, SOS Fanta, Gianluca Di Marzio; `Fantacalcio.it` resta fonte suggerita da verificare. Funzionalita preservate: Fantamercato interno, Listone/export admin-only, Rose, Admin, Presidente, Firebase/Auth/EmailJS, mobile navigation. Diagnostica: `window.ZonaOrientaleCalciomercatoV309`.

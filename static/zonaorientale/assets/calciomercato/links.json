@@ -1,7 +1,43 @@
 {
-  "version": "V306",
+  "version": "V309",
   "updatedAt": "2026-06-03",
-  "notes": "Configurazione statica/manuale. Ogni articolo puo includere url, title, teamName, topic, sourceName, description, image, tags e players/giocatori con i nomi dei calciatori interessati.",
-  "sources": ["https://www.sosfanta.com/","https://www.tuttomercatoweb.com"],
+  "sourceMode": "automatic-rss",
+  "notes": "Configura qui le fonti del Calciomercato. Su Netlify la funzione /.netlify/functions/calciomercato-feed legge queste fonti e recupera automaticamente gli articoli dai feed RSS quando disponibili. Il campo articles resta come fallback/manuale.",
+  "sources": [
+    {
+      "id": "tmw",
+      "name": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com",
+      "feedUrl": "https://www.tuttomercatoweb.com/rss/",
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 12
+    },
+    {
+      "id": "sosfanta",
+      "name": "SOS Fanta",
+      "url": "https://www.sosfanta.com",
+      "feedUrl": "https://www.sosfanta.com/feed/",
+      "enabled": true,
+      "topic": "Fantacalcio",
+      "limit": 12
+    },
+    {
+      "id": "gianlucadimarzio",
+      "name": "Gianluca Di Marzio",
+      "url": "https://gianlucadimarzio.com",
+      "feedUrl": "https://gianlucadimarzio.com/rss/",
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 10
+    }
+  ],
+  "suggestedSources": [
+    {
+      "name": "Fantacalcio.it",
+      "url": "https://www.fantacalcio.it/news",
+      "note": "Da valutare in una release successiva se espone feed/API adatti al recupero automatico."
+    }
+  ],
   "articles": []
 }

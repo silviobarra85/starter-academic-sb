@@ -919,3 +919,7 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
 - Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
 - Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.
+
+## V309 - Calciomercato automatico RSS
+
+V309 introduce il recupero automatico degli articoli Calciomercato tramite Netlify Function `netlify/functions/calciomercato-feed.js`. Le fonti sono configurate in `assets/calciomercato/links.json`; fonti iniziali: TuttoMercatoWeb, SOS Fanta e Gianluca Di Marzio. Il browser usa la funzione server-side e ricade sul JSON statico se la funzione non e' disponibile. Non modifica Fantamercato interno, Listone, Rose, Admin, Firebase o EmailJS. Diagnostica: `window.ZonaOrientaleCalciomercatoV309`.

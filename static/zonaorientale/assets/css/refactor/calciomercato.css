@@ -194,3 +194,12 @@
     white-space: normal;
   }
 }
+
+/* V309 - Calciomercato automatico RSS */
+.calciomercato-warning-v309 {
+  margin-bottom: 1rem;
+}
+.calciomercato-source-v306 code,
+.calciomercato-card-v306 code {
+  font-size: 0.85em;
+}

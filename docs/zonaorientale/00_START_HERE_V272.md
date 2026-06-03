@@ -209,3 +209,7 @@ La sezione pubblica introdotta come `Calcio mercato` viene rinominata in `Calcio
 - Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
 - Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
 - Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.
+
+## V309 - Nota rapida Calciomercato automatico
+
+La sezione `Calciomercato` ora puo recuperare automaticamente articoli tramite Netlify Function. Per questa release lo zip include anche la radice `netlify/` perche la funzione vive fuori da `static/zonaorientale`. Le fonti si configurano in `static/zonaorientale/assets/calciomercato/links.json`.

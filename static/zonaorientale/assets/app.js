@@ -38,7 +38,7 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=308";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=309";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
@@ -15569,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "308";
+const DEPLOY_EXPECTED_VERSION_V181 = "309";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23853,7 +23853,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=308";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=309";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=309";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -23861,7 +23862,10 @@ const calciomercatoStateV306 = {
   data: null,
   search: "",
   team: "all",
-  topic: "all"
+  topic: "all",
+  sourceMode: "static",
+  generatedAt: "",
+  warnings: []
 };
 
 function normalizeCalciomercatoValueV306(value) {
@@ -24074,41 +24078,84 @@ function renderCalciomercatoV306() {
   if (teamFilter) teamFilter.innerHTML = renderCalciomercatoSelectOptionsV306(teams, calciomercatoStateV306.team, "Tutte le squadre");
   if (topicFilter) topicFilter.innerHTML = renderCalciomercatoSelectOptionsV306(topics, calciomercatoStateV306.topic, "Tutti i topic");
   if (searchInput && searchInput.value !== calciomercatoStateV306.search) searchInput.value = calciomercatoStateV306.search;
-  if (meta) meta.textContent = `${filtered.length} articoli visibili su ${articles.length} configurati.`;
+  if (meta) {
+    const modeLabel = calciomercatoStateV306.sourceMode === "automatic-rss" ? "recuperati automaticamente" : "da configurazione statica";
+    const generated = calciomercatoStateV306.generatedAt ? ` · aggiornato ${String(calciomercatoStateV306.generatedAt).slice(0, 16).replace("T", " ")}` : "";
+    meta.textContent = `${filtered.length} articoli visibili su ${articles.length} ${modeLabel}${generated}.`;
+  }
 
   if (!articles.length) {
     list.innerHTML = `
+      ${renderCalciomercatoWarningsV309()}
       <div class="notice notice-info">
-        <strong>Sezione pronta.</strong> Aggiungi manualmente articoli e fonti in <code>assets/calciomercato/links.json</code>. Il recupero automatico da siti esterni verra valutato in una release successiva con Netlify Function.
+        <strong>Sezione pronta.</strong> Configura le fonti in <code>assets/calciomercato/links.json</code>: su Netlify gli articoli vengono recuperati automaticamente tramite funzione server-side.
       </div>`;
     renderCalciomercatoSourcesV306();
     return;
   }
 
-  list.innerHTML = filtered.length
+  list.innerHTML = `${renderCalciomercatoWarningsV309()}${filtered.length
     ? filtered.map(renderCalciomercatoArticleCardV306).join("")
-    : `<p class="muted">Nessun articolo corrisponde ai filtri selezionati.</p>`;
+    : `<p class="muted">Nessun articolo corrisponde ai filtri selezionati.</p>`}`;
   renderCalciomercatoSourcesV306();
+}
+
+
+function normalizeCalciomercatoDataV309(data, mode) {
+  const sources = Array.isArray(data?.sources) ? data.sources : [];
+  const articles = Array.isArray(data?.articles) ? data.articles : [];
+  const warnings = Array.isArray(data?.warnings) ? data.warnings : [];
+  return {
+    sources,
+    articles,
+    updatedAt: data?.updatedAt || data?.generatedAt || "",
+    generatedAt: data?.generatedAt || data?.updatedAt || "",
+    sourceMode: data?.sourceMode || data?.mode || mode || "static",
+    warnings
+  };
+}
+
+async function fetchCalciomercatoJsonV309(url) {
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.json();
+}
+
+function renderCalciomercatoWarningsV309() {
+  const warnings = Array.isArray(calciomercatoStateV306.warnings) ? calciomercatoStateV306.warnings.filter(Boolean) : [];
+  if (!warnings.length) return "";
+  const shown = warnings.slice(0, 4);
+  return `<div class="notice notice-warning calciomercato-warning-v309"><strong>Fonti non complete.</strong> ${shown.map((item) => escapeHtml(String(item))).join(" · ")}${warnings.length > shown.length ? " · ..." : ""}</div>`;
 }
 
 async function loadCalciomercatoDataV306() {
   calciomercatoStateV306.loading = true;
   calciomercatoStateV306.error = "";
+  calciomercatoStateV306.warnings = [];
   renderCalciomercatoV306();
+  let staticFallbackError = null;
   try {
-    const response = await fetch(CALCIOMERCATO_STATIC_URL_V306, { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    calciomercatoStateV306.data = {
-      sources: Array.isArray(data?.sources) ? data.sources : [],
-      articles: Array.isArray(data?.articles) ? data.articles : [],
-      updatedAt: data?.updatedAt || ""
-    };
-    calciomercatoStateV306.loaded = true;
+    try {
+      const automaticData = await fetchCalciomercatoJsonV309(CALCIOMERCATO_AUTO_FEED_URL_V309);
+      calciomercatoStateV306.data = normalizeCalciomercatoDataV309(automaticData, "automatic-rss");
+      calciomercatoStateV306.generatedAt = calciomercatoStateV306.data.generatedAt || "";
+      calciomercatoStateV306.sourceMode = calciomercatoStateV306.data.sourceMode || "automatic-rss";
+      calciomercatoStateV306.warnings = calciomercatoStateV306.data.warnings || [];
+      calciomercatoStateV306.loaded = true;
+      return;
+    } catch (automaticError) {
+      staticFallbackError = automaticError;
+      const staticData = await fetchCalciomercatoJsonV309(CALCIOMERCATO_STATIC_URL_V306);
+      calciomercatoStateV306.data = normalizeCalciomercatoDataV309(staticData, "static-fallback");
+      calciomercatoStateV306.generatedAt = calciomercatoStateV306.data.generatedAt || "";
+      calciomercatoStateV306.sourceMode = "static-fallback";
+      calciomercatoStateV306.warnings = ["Recupero automatico non disponibile in questo ambiente: uso configurazione statica."];
+      calciomercatoStateV306.loaded = true;
+    }
   } catch (error) {
     calciomercatoStateV306.loaded = true;
-    calciomercatoStateV306.error = "Impossibile leggere assets/calciomercato/links.json. La sezione resta isolata e non blocca il sito.";
-    console.warn("Calciomercato V306 non caricato", error);
+    calciomercatoStateV306.error = "Impossibile leggere le fonti automatiche e assets/calciomercato/links.json. La sezione resta isolata e non blocca il sito.";
+    console.warn("Calciomercato V309 non caricato", { automatic: staticFallbackError, fallback: error });
   } finally {
     calciomercatoStateV306.loading = false;
     renderCalciomercatoV306();
@@ -24212,3 +24259,24 @@ window.ZonaOrientaleCalciomercatoV308 = {
   reload: window.ZonaOrientaleCalciomercatoV306?.reload
 };
 
+
+
+/* V309 - Calciomercato automatico da fonti RSS.
+ * La sezione prova prima la Netlify Function server-side /.netlify/functions/calciomercato-feed
+ * e usa links.json come fallback statico/manuale. Funzionalita preservate: Fantamercato interno,
+ * Listone, export CSV admin-only, Rose, Admin, Presidente, Firebase/Auth/EmailJS e mobile navigation.
+ */
+window.ZonaOrientaleCalciomercatoV309 = {
+  version: "V309",
+  label: "Calciomercato automatico RSS",
+  automaticExternalFetch: true,
+  fetchLayer: "Netlify Function + static fallback",
+  firebaseWrites: false,
+  behaviorChangeOutsideSection: false,
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  sourcesConfig: "assets/calciomercato/links.json",
+  functionUrl: CALCIOMERCATO_AUTO_FEED_URL_V309,
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles,
+  reload: window.ZonaOrientaleCalciomercatoV306?.reload
+};

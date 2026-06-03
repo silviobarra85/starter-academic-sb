@@ -226,6 +226,25 @@ else
   fail "Calciomercato V308 squadre multiple non rilevato in assets/app.js"
 fi
 
+calciomercato_v309_marker="ZonaOrientaleCalciomercatoV309"
+if grep -q "$calciomercato_v309_marker" "$app_file" && grep -q "CALCIOMERCATO_AUTO_FEED_URL_V309" "$app_file"; then
+  pass "Calciomercato automatico RSS V309 presente"
+else
+  fail "Calciomercato automatico RSS V309 non rilevato in assets/app.js"
+fi
+
+if [[ -n "$REPO_ROOT" ]]; then
+  calciomercato_function="$REPO_ROOT/netlify/functions/calciomercato-feed.js"
+  if [[ -f "$calciomercato_function" ]]; then
+    node --check "$calciomercato_function" >/dev/null
+    pass "Netlify Function Calciomercato V309 presente e valida"
+  else
+    fail "Netlify Function Calciomercato V309 mancante: netlify/functions/calciomercato-feed.js"
+  fi
+else
+  warn "repo Git non rilevata; salto controllo Netlify Function Calciomercato V309"
+fi
+
 calciomercato_json="$SITE_ROOT/assets/calciomercato/links.json"
 if [[ -f "$calciomercato_json" ]]; then
   pass "configurazione Calciomercato presente: assets/calciomercato/links.json"
@@ -407,6 +426,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato squadre multiple V308 documentato: calciomercato/CALCIOMERCATO_SQUADRE_MULTIPLE_V308.md"
   else
     warn "Calciomercato squadre multiple V308 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_SQUADRE_MULTIPLE_V308.md"
+  fi
+  calciomercato_auto_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md"
+  if [[ -f "$calciomercato_auto_doc" ]]; then
+    pass "Calciomercato automatico RSS V309 documentato: calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md"
+  else
+    warn "Calciomercato automatico RSS V309 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md"
   fi
   admin_diag_v303_doc="$DOCS_ROOT/admin/DIAGNOSTICA_DATI_V303.md"
   if [[ -f "$admin_diag_v303_doc" ]]; then

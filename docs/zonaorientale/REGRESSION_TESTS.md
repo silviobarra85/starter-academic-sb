@@ -755,3 +755,11 @@ Test manuali:
 - Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
 - Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
 - Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.
+
+## V309 - Test Calciomercato automatico RSS
+
+- Aprire `#calciomercato` su ambiente Netlify: la sezione deve tentare il recupero da `/.netlify/functions/calciomercato-feed`.
+- In locale con `python3 -m http.server`, la funzione non e' disponibile: la pagina deve usare il fallback statico senza bloccare il sito.
+- Verificare che `links.json` resti valido JSON.
+- Verificare che Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin non cambino comportamento.
+- Console: `window.ZonaOrientaleCalciomercatoV309.getState()` deve essere disponibile.

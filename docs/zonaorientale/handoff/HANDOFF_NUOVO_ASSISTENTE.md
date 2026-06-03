@@ -914,3 +914,7 @@ La sezione pubblica e ora denominata `Calciomercato`. Non rinominare la route te
 - Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
 - Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
 - Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.
+
+## V309 - Calciomercato automatico RSS
+
+Prima di modificare Calciomercato leggere `docs/zonaorientale/calciomercato/CALCIOMERCATO_AUTOMATICO_RSS_V309.md`. La funzione server-side canonica e' `netlify/functions/calciomercato-feed.js`; il frontend deve mantenere fallback statico su `assets/calciomercato/links.json`. Non trasformare il recupero in fetch diretto browser verso siti esterni per evitare CORS e fragilita'.
