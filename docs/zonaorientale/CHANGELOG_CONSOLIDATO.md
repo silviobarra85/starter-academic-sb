@@ -1,3 +1,12 @@
+## Aggiornamento V299 - CSS refactor stabile
+
+- Consolidati i CSS refactor V292 con nomi stabili: `mobile-controls.css`, `rosters-tables.css`, `theme-light-suspended.css`.
+- Aggiornati gli import HTML per usare i nuovi nomi stabili con cache-buster V299.
+- `theme-light-suspended.css` resta conservato ma non caricato: la Light mode resta sospesa.
+- Nessuna logica runtime, Firebase, EmailJS o dato JSON modificato.
+- Funzionalita da preservare e testare: Listone, export admin-only, Rose/pagina squadra, Dashboard Presidente, mobile nav, Dark mode, `competition.html`, `player.html`.
+- Aggiunta diagnostica `window.ZonaOrientaleCssStableRefactorV299` e documento `docs/zonaorientale/refactor/CSS_REFACTOR_STABLE_V299.md`.
+
 ## Aggiornamento V298 - Audit asset/import orfani
 
 - Aggiunto lo script `static/zonaorientale/tools/audit-assets-v298.sh` per individuare riferimenti locali mancanti e possibili asset CSS/JS orfani.

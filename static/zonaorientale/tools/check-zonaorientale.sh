@@ -133,17 +133,32 @@ fi
 
 print_step "CSS refactor"
 css_refactor_files=(
+  "$SITE_ROOT/assets/css/refactor/mobile-controls.css"
+  "$SITE_ROOT/assets/css/refactor/rosters-tables.css"
+  "$SITE_ROOT/assets/css/refactor/theme-light-suspended.css"
+)
+for css_refactor_file in "${css_refactor_files[@]}"; do
+  if [[ -f "$css_refactor_file" ]]; then
+    pass "CSS refactor stabile presente: ${css_refactor_file#$SITE_ROOT/}"
+  else
+    fail "CSS refactor stabile mancante: ${css_refactor_file#$SITE_ROOT/}"
+  fi
+done
+old_css_refactor_files=(
   "$SITE_ROOT/assets/css/refactor/mobile-controls-v292.css"
   "$SITE_ROOT/assets/css/refactor/rosters-tables-v292.css"
   "$SITE_ROOT/assets/css/refactor/theme-light-suspended-v292.css"
 )
-for css_refactor_file in "${css_refactor_files[@]}"; do
-  if [[ -f "$css_refactor_file" ]]; then
-    pass "CSS refactor/preservazione presente: ${css_refactor_file#$SITE_ROOT/}"
-  else
-    fail "CSS refactor mancante: ${css_refactor_file#$SITE_ROOT/}"
+for old_css_refactor_file in "${old_css_refactor_files[@]}"; do
+  if [[ -f "$old_css_refactor_file" ]]; then
+    warn "CSS refactor versionato vecchio ancora presente: ${old_css_refactor_file#$SITE_ROOT/} (rimuovere con git rm dopo V299)"
   fi
 done
+if grep -R "css/refactor/.*-v292.css" "$SITE_ROOT"/*.html >/dev/null 2>&1; then
+  fail "HTML ancora collegati a CSS refactor V292; aggiornare agli alias stabili V299"
+else
+  pass "HTML collegati ai CSS refactor stabili V299"
+fi
 
 
 print_step "Helper JS refactor"
@@ -287,6 +302,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "pulizia helper V297 documentata: refactor/APP_HELPER_CLEANUP_V297.md"
   else
     warn "pulizia helper V297 non documentata; verificare docs/zonaorientale/refactor/APP_HELPER_CLEANUP_V297.md"
+  fi
+  css_stable_doc="$DOCS_ROOT/refactor/CSS_REFACTOR_STABLE_V299.md"
+  if [[ -f "$css_stable_doc" ]]; then
+    pass "CSS refactor stabile V299 documentato: refactor/CSS_REFACTOR_STABLE_V299.md"
+  else
+    warn "CSS refactor stabile V299 non documentato; verificare docs/zonaorientale/refactor/CSS_REFACTOR_STABLE_V299.md"
   fi
 else
   warn "docs non disponibili; salto controllo audit refactor"

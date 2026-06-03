@@ -38,13 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=298";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=299";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=298";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=298";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=299";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=299";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -96,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=298";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=299";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -120,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=298";
+} from "./js/domain/news-share-v228.js?v=299";
 import {
   getListoneValue,
   compareListoneValues
@@ -135,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=298";
+} from "./js/admin/listone-converter.js?v=299";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=298";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=298";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=299";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=299";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=298";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=298";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=298";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=298";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=299";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=299";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=299";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=299";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=298";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=298";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=298";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=299";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=299";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=299";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15569,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "298";
+const DEPLOY_EXPECTED_VERSION_V181 = "299";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23542,4 +23542,35 @@ window.ZonaOrientaleAssetImportAuditV298 = {
     "Dark mode unico V289"
   ],
   policy: "segnalare prima di rimuovere; nessuna eliminazione automatica"
+};
+
+
+/* V299 - Consolidamento CSS refactor con nomi stabili.
+ * Nessuna funzionalita runtime modificata: i CSS V292 restano equivalenti ma con nomi stabili.
+ */
+window.ZonaOrientaleCssStableRefactorV299 = {
+  version: "V299",
+  label: "consolidamento CSS refactor stabile",
+  behaviorChange: false,
+  stableCssFiles: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css",
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  activeCssFiles: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css"
+  ],
+  suspendedCssFiles: [
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  protectedFeatures: [
+    "Listone Modifica/filtro/export admin-only",
+    "Rose e prima colonna sticky",
+    "Dashboard Presidente",
+    "mobile bottom nav/menu Altro/pulsante Su",
+    "Dark mode unico V289",
+    "competition.html",
+    "player.html"
+  ]
 };

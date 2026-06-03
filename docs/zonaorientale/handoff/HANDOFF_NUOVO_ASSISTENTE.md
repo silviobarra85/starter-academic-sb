@@ -1,3 +1,7 @@
+## Aggiornamento V299 - CSS refactor stabile
+
+Leggere `docs/zonaorientale/refactor/CSS_REFACTOR_STABLE_V299.md` prima di ulteriori refactor CSS. I CSS refactor correnti hanno nomi stabili: `assets/css/refactor/mobile-controls.css`, `assets/css/refactor/rosters-tables.css` e `assets/css/refactor/theme-light-suspended.css`. Gli HTML devono importare solo i primi due. Il file Light resta sospeso finche la Light mode non verra' ricostruita. Non rimuovere o rinominare altri CSS senza verificare Listone, Rose, Dashboard Presidente, Admin, pagine standalone e mobile nav.
+
 ## Aggiornamento V298 - Audit asset/import orfani
 
 Leggere `docs/zonaorientale/refactor/ASSET_IMPORT_AUDIT_V298.md` prima di rimuovere asset CSS/JS. Il tool `static/zonaorientale/tools/audit-assets-v298.sh` segnala import mancanti e candidati orfani ma non effettua rimozioni. Ogni file candidato va verificato con grep e test browser, preservando esplicitamente Listone, Rose, Dashboard Presidente, Admin, pagine standalone, mobile nav, Dark mode unico e helper CSV V295.

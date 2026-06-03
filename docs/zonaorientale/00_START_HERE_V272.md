@@ -1,3 +1,7 @@
+## Aggiornamento V299 - CSS refactor stabile
+
+Versione runtime corrente: **V299 CSS refactor stabile**. Leggere anche `refactor/CSS_REFACTOR_STABLE_V299.md`. La release consolida i CSS refactor V292 usando nomi stabili: `assets/css/refactor/mobile-controls.css`, `assets/css/refactor/rosters-tables.css` e `assets/css/refactor/theme-light-suspended.css`. I primi due sono importati dagli HTML, il file Light resta sospeso e non importato. Funzionalita da preservare: Listone con Modifica/filtro/export admin-only, Rose e prima colonna sticky, Dashboard Presidente, bottom nav/menu Altro/pulsante Su, Dark mode unico, `competition.html` e `player.html`.
+
 ## Aggiornamento V298 - Audit asset/import orfani
 
 Versione runtime corrente: **V298 audit asset/import orfani**. Leggere anche `refactor/ASSET_IMPORT_AUDIT_V298.md`. La release aggiunge lo script non distruttivo `static/zonaorientale/tools/audit-assets-v298.sh` per segnalare import/href/src/url locali mancanti, file versionati superati e possibili asset CSS/JS orfani. Non rimuove file e non cambia funzionalita'. Prima di qualsiasi `git rm` su asset CSS/JS verificare esplicitamente Listone, Rose, Dashboard Presidente, Admin, pagine standalone, mobile nav e Dark mode.

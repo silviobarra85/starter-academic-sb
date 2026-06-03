@@ -1,3 +1,13 @@
+## Checklist V299 - CSS refactor stabile
+
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Verificare che gli HTML importino `assets/css/refactor/mobile-controls.css` e `assets/css/refactor/rosters-tables.css`.
+- Verificare che `theme-light-suspended.css` esista ma non sia importato.
+- Verificare Listone pubblico: export CSV non visibile, `Modifiche` e `Mostra usciti storici` funzionanti.
+- Verificare Listone Admin: export CSV visibile e funzionante.
+- Verificare pagina squadra/Rose mobile: prima colonna sticky e righe compatte.
+- Verificare Dashboard Presidente, bottom nav/menu Altro/pulsante Su, `competition.html`, `player.html` e Dark mode unico.
+
 ## Checklist V298 - Audit asset/import orfani
 
 - Eseguire `static/zonaorientale/tools/audit-assets-v298.sh` e verificare che non segnali riferimenti locali mancanti.

@@ -1,3 +1,7 @@
+## Aggiornamento V299
+
+Lo script pre-push controlla ora i CSS refactor con nomi stabili: `assets/css/refactor/mobile-controls.css`, `assets/css/refactor/rosters-tables.css` e `assets/css/refactor/theme-light-suspended.css`. I vecchi CSS versionati V292 devono essere rimossi dopo applicazione della V299.
+
 ## Aggiornamento V298
 
 Lo script pre-push controlla la presenza di `tools/audit-assets-v298.sh` e del documento `refactor/ASSET_IMPORT_AUDIT_V298.md`. Prima di pulizie asset eseguire anche:
