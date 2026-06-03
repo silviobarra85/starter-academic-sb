@@ -894,3 +894,7 @@ La diagnostica Admin è stata estesa in V303 con controlli non distruttivi su qu
 Leggere `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md` prima di iniziare la nuova sezione Calcio mercato. La V304 non implementa ancora la feature: chiude il ciclo mobile/refactor e ribadisce le funzionalita da non scollegare.
 
 La Light mode resta sospesa. La prossima feature va progettata per Dark mode e in modo isolato.
+
+## Aggiornamento V305 - Calcio mercato
+
+Esiste una prima sezione pubblica `Calcio mercato`, alimentata da `assets/calciomercato/links.json`. E' una base statica/manuale: non fare scraping e non chiamare siti terzi dal browser. La futura raccolta automatica dovra essere progettata server-side, preferibilmente con Netlify Function e caching. Non confondere questa sezione con `Fantamercato`, che resta il mercato interno dei trasferibili e trattative della lega.

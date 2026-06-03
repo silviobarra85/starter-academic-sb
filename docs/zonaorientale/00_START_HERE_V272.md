@@ -189,3 +189,7 @@ V303 estende il pannello `Admin -> Diagnostica dati` con controlli di qualita no
 V304 aggiunge la review mobile finale e il checkpoint pre-Calciomercato: `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md`.
 
 Prima di iniziare la nuova sezione Calcio mercato verificare: check pre-push, Listone pubblico/Admin, Rose/pagina squadra, Dashboard Presidente, Admin Diagnostica/Richieste, mobile navigation, `competition.html`, `player.html` e Dark mode unico.
+
+## Nota V305 - Calcio mercato base statico
+
+La sezione `Calcio mercato` e' stata aggiunta come base statica/manuale. I dati sono in `static/zonaorientale/assets/calciomercato/links.json`. Non recupera automaticamente articoli da siti esterni e non modifica Firebase/EmailJS. Per evoluzioni automatiche usare una futura Netlify Function o altra sorgente server-side, evitando fetch diretti dal browser verso siti terzi.

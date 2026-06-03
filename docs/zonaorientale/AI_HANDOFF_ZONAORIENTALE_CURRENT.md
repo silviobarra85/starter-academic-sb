@@ -917,3 +917,7 @@ V304 chiude la fase di stabilizzazione prima di iniziare la feature Calcio merca
 La Light mode resta sospesa. Ogni prossima modifica deve dichiarare esplicitamente quali funzionalita rischia di scollegare e come le preserva. Per Calcio mercato, partire con una V1 isolata e statica/configurabile, senza scraping diretto dal browser.
 
 Funzionalita da non perdere: Listone con `Modifica`/`Modifiche`/usciti storici/export admin-only, Rose e pagina squadra, Dashboard Presidente, Admin Diagnostica/Richieste/Converti listone, mobile bottom nav/menu Altro/pulsante Su, Dark mode unico, News share, `competition.html` e `player.html`.
+
+## V305 - Calcio mercato base statico
+
+V305 introduce la prima sezione pubblica `Calcio mercato`, isolata dal Fantamercato interno. La sezione legge dati statici/manuali da `assets/calciomercato/links.json`, mostra fonti e articoli con filtri squadra/topic e ricerca. Non effettua scraping, non usa Netlify Function e non scrive su Firebase. Prima di evolvere verso recupero automatico preservare Listone, Rose, Dashboard Presidente, Admin e mobile navigation.

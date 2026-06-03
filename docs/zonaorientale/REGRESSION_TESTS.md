@@ -722,3 +722,12 @@ Test manuali:
 - Admin -> Richieste presidenti: pannello renderizzato e azioni visibili.
 - `competition.html` e `player.html`: layout mobile e Dark mode corretti.
 - Console: `window.ZonaOrientaleMobileFinalReviewV304.behaviorChange === false`.
+
+## V305 - Test Calcio mercato
+
+- Aprire `#calciomercato` da desktop.
+- Aprire `Altro -> Calcio mercato` da mobile.
+- Verificare che la sezione mostri lo stato vuoto se `links.json` non contiene articoli.
+- Inserire temporaneamente un articolo in `assets/calciomercato/links.json` e verificare filtri squadra/topic, ricerca e link esterno.
+- Verificare che `#fantamercato` resti il mercato interno dei trasferibili.
+- Verificare Listone pubblico/Admin, Rose, Dashboard Presidente, Admin Diagnostica e mobile navigation.

@@ -1,0 +1,120 @@
+/* V305 - Calcio mercato base statico.
+   CSS isolato per la nuova sezione pubblica. Non modifica Listone, Rose, Admin o mobile nav. */
+
+.calciomercato-panel-v305,
+.calciomercato-sources-panel-v305 {
+  position: relative;
+}
+
+.calciomercato-filters-v305 {
+  align-items: stretch;
+}
+
+.calciomercato-grid-v305 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.calciomercato-card-v305 {
+  display: grid;
+  grid-template-columns: minmax(96px, 132px) 1fr;
+  gap: 0.95rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.calciomercato-thumb-v305 {
+  min-height: 108px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.calciomercato-thumb-v305 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.calciomercato-thumb-placeholder-v305 {
+  font-size: 2rem;
+}
+
+.calciomercato-card-body-v305 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.calciomercato-card-body-v305 h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.calciomercato-card-body-v305 h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.calciomercato-card-body-v305 h3 a:hover,
+.calciomercato-card-body-v305 h3 a:focus-visible {
+  text-decoration: underline;
+}
+
+.calciomercato-card-body-v305 p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.calciomercato-card-meta-v305,
+.calciomercato-card-footer-v305 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.calciomercato-card-footer-v305 {
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+.calciomercato-sources-v305 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+.calciomercato-source-v305 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+@media (max-width: 720px) {
+  .calciomercato-grid-v305 {
+    grid-template-columns: 1fr;
+  }
+
+  .calciomercato-card-v305 {
+    grid-template-columns: 1fr;
+  }
+
+  .calciomercato-thumb-v305 {
+    min-height: 148px;
+  }
+
+  .calciomercato-card-footer-v305 {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

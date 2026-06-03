@@ -1,0 +1,7 @@
+{
+  "version": "V305",
+  "updatedAt": "2026-06-03",
+  "notes": "Prima configurazione statica/manuale. Aggiungere articoli in articles[] con url, title, teamName, topic, sourceName, description e image quando disponibili.",
+  "sources": [],
+  "articles": []
+}

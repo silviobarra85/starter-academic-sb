@@ -890,3 +890,11 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Nessuna nuova feature implementata e nessun cambio dati/runtime intenzionale.
 - Funzionalita da preservare esplicitamente per la fase successiva: Listone pubblico/admin, export CSV solo Admin, rose/pagina squadra, Dashboard Presidente, Admin, mobile navigation, Dark mode unico, `competition.html`, `player.html` e share WhatsApp.
 - Aggiunta diagnostica `window.ZonaOrientaleMobileFinalReviewV304`.
+
+## V305 - Calcio mercato base statico
+
+- Aggiunta la sezione pubblica `Calcio mercato` con navigazione desktop e link mobile in `Altro`.
+- Aggiunto il file statico `assets/calciomercato/links.json` per configurare manualmente fonti e articoli.
+- Aggiunte card articolo con filtri per squadra/topic e ricerca testuale.
+- Nessun recupero automatico da siti esterni, nessuna scrittura Firebase e nessuna modifica a Fantamercato/Listone/Rose/Admin.
+- Documentazione: `docs/zonaorientale/calciomercato/CALCIOMERCATO_BASE_V305.md`.
