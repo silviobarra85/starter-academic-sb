@@ -1,5 +1,5 @@
 [build]
-  command = "hugo --gc --minify -b $URL"
+  command = "bash netlify/build-hugo-0.80.sh"
   publish = "public"
   functions = "netlify/functions"
 
@@ -11,10 +11,10 @@
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "bash netlify/build-hugo-0.80.sh"
 
 [context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+  command = "bash netlify/build-hugo-0.80.sh"
 
 [[redirects]]
   from = "/zonaorientale/share/news/:id"
