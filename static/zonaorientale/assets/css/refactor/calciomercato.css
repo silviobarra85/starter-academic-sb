@@ -591,3 +591,44 @@
     height: 68px;
   }
 }
+
+/* V323 - Archivio statico giornaliero Calciomercato: strumenti solo Admin nella pagina Calciomercato. */
+.calciomercato-archive-admin-v323 {
+  margin: 0.75rem 0 1rem;
+}
+
+.calciomercato-archive-tools-card-v323 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  border-style: dashed;
+}
+
+.calciomercato-archive-tools-card-v323 h3 {
+  margin: 0.15rem 0 0.35rem;
+}
+
+.calciomercato-archive-actions-v323 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.calciomercato-archive-status-v323 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .calciomercato-archive-tools-card-v323 {
+    grid-template-columns: 1fr;
+  }
+
+  .calciomercato-archive-actions-v323,
+  .calciomercato-archive-actions-v323 .button {
+    width: 100%;
+  }
+}
+

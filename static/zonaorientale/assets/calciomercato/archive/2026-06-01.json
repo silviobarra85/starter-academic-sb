@@ -1,0 +1,209 @@
+{
+  "version": "V323",
+  "date": "2026-06-01",
+  "timezone": "Europe/Rome",
+  "generatedAt": "2026-06-03T18:36:43.578Z",
+  "sourceMode": "static-rss-archive",
+  "sources": [
+    {
+      "id": "tmw",
+      "name": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com",
+      "feedUrl": "https://www.tuttomercatoweb.com/rss/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/rss/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "sosfanta",
+      "name": "SOS Fanta",
+      "url": "https://www.sosfanta.com",
+      "feedUrl": "https://www.sosfanta.com/feed/",
+      "feedUrls": [
+        "https://www.sosfanta.com/feed/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "gianlucadimarzio",
+      "name": "Gianluca Di Marzio",
+      "url": "https://gianlucadimarzio.com",
+      "feedUrl": "https://gianlucadimarzio.com/rss/",
+      "feedUrls": [
+        "https://gianlucadimarzio.com/rss/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "fantacalcio",
+      "name": "Fantacalcio.it",
+      "url": "https://www.fantacalcio.it",
+      "feedUrl": "https://rss.fantacalcio.it/",
+      "feedUrls": [
+        "https://rss.fantacalcio.it/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "calciomercato-it",
+      "name": "CalcioMercato.it",
+      "url": "https://www.calciomercato.it",
+      "feedUrl": "https://www.calciomercato.it/feed/",
+      "feedUrls": [
+        "https://www.calciomercato.it/feed/"
+      ],
+      "enabled": true
+    }
+  ],
+  "warnings": [],
+  "feedRange": {
+    "earliest": "2026-06-01T18:00:56.000Z",
+    "latest": "2026-06-03T20:30:46.000Z",
+    "totalBeforeDateRange": 160,
+    "totalFetched": 160,
+    "totalAfterQueryBeforeDateRange": 160
+  },
+  "stats": {
+    "existingArticles": 0,
+    "fetchedArticles": 4,
+    "totalArticles": 4,
+    "duplicatesSkipped": 0
+  },
+  "articles": [
+    {
+      "id": "calciomercato-it-26-aHR0cHM6Ly93",
+      "title": "Juve, Vlahovic nel mirino del Manchester United: la situazione",
+      "url": "https://www.calciomercato.it/2026/06/01/juve-vlahovic-nel-mirino-del-manchester-united-la-situazione/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve, Vlahovic nel mirino del Manchester United: la situazione proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-01T21:38:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Vlahovic"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Vlahovic"
+        ],
+        "players": [
+          "Vlahovic"
+        ]
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/01/juve-vlahovic-nel-mirino-del-manchester-united-la-situazione"
+    },
+    {
+      "id": "calciomercato-it-27-aHR0cHM6Ly93",
+      "title": "Arthur via dalla Juve per poco meno di 7 milioni: i dettagli",
+      "url": "https://www.calciomercato.it/2026/06/01/arthur-via-dalla-juve-per-poco-meno-di-7-milioni-i-dettagli/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Arthur via dalla Juve per poco meno di 7 milioni: i dettagli proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-01T19:41:08.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/01/arthur-via-dalla-juve-per-poco-meno-di-7-milioni-i-dettagli"
+    },
+    {
+      "id": "calciomercato-it-28-aHR0cHM6Ly93",
+      "title": "Garnacho in Serie A, non solo Napoli: contatti con quattro big",
+      "url": "https://www.calciomercato.it/2026/06/01/garnacho-in-serie-a-non-solo-napoli-contatti-con-quattro-big/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Garnacho in Serie A, non solo Napoli: contatti con quattro big proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-01T19:36:19.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/01/garnacho-in-serie-a-non-solo-napoli-contatti-con-quattro-big"
+    },
+    {
+      "id": "calciomercato-it-29-aHR0cHM6Ly93",
+      "title": "Inter o Premier? La scelta di Solet: contropartita più cash &#124; CM",
+      "url": "https://www.calciomercato.it/2026/06/01/inter-o-premier-la-scelta-di-solet-contropartita-piu-cash-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Inter o Premier? La scelta di Solet: contropartita più cash | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-01T18:00:56.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Inter",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/01/inter-o-premier-la-scelta-di-solet-contropartita-piu-cash-cm"
+    }
+  ]
+}
