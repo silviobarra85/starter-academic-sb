@@ -939,3 +939,13 @@ Calciomercato ora mostra data e ora pubblicazione articolo quando disponibili. I
 ## Aggiornamento V312
 
 Calciomercato ora formatta timestamp articoli e `aggiornato ...` in fuso `Europe/Rome`, tramite `formatCalciomercatoDateTimeRomeV312`. La diagnostica e disponibile in `window.ZonaOrientaleCalciomercatoTimeZoneV312`. Non modificare questo formatter insieme a recupero RSS/Fantamercato interno/Listone/Rose senza test regressione.
+
+## Aggiornamento V314 - Calciomercato fonti e AI futura
+
+La sezione `Calciomercato` usa feed RSS via Netlify Function e ora include filtro fonte. Il filtro squadra deve mostrare sempre `Tutte le squadre`, poi `Generale`, poi la lista alfabetica delle squadre.
+
+Fonti RSS configurate: TMW, SOS Fanta, Gianluca Di Marzio, Fantacalcio.it, Gazzetta, Virgilio Sport, CalcioMercato.it.
+
+Il futuro modulo AI va implementato solo server-side, preferibilmente tramite Netlify Function, usando metadati RSS/articoli gia' recuperati. Non chiamare API AI dal browser e non esporre chiavi lato client.
+
+Prima di qualsiasi nuova modifica controllare che non vengano scollegati Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, mobile nav e share news.

@@ -799,3 +799,11 @@ Test manuali:
 - Esempio: `2026-06-03T08:51:00Z` deve apparire come `03/06/2026, 10:51`.
 - Verificare che le card articolo continuino a mostrare data/ora.
 - Verificare che Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin siano invariati.
+
+## Test aggiuntivi V314 - Calciomercato fonti
+
+- `Calciomercato`: filtro squadra mostra `Tutte le squadre`, `Generale`, poi squadre alfabetiche.
+- `Calciomercato`: filtro fonte mostra `Tutte le fonti` e le fonti recuperate/configurate.
+- `Calciomercato`: filtrare per fonte senza perdere ricerca, topic, squadre e giocatori.
+- Netlify Function: `/.netlify/functions/calciomercato-feed?limit=120` restituisce JSON valido.
+- Verificare che Fantamercato interno, Listone, Rose, Admin, Dashboard Presidente e mobile nav restino invariati.

@@ -964,3 +964,28 @@ La sezione Calciomercato visualizza data e ora di pubblicazione degli articoli q
 ## V312 - Fuso orario Calciomercato
 
 La sezione Calciomercato usa `Europe/Rome` per mostrare data/ora degli articoli RSS e del timestamp di aggiornamento feed. Diagnostica: `window.ZonaOrientaleCalciomercatoTimeZoneV312`. Funzionalita preservate: RSS automatico V309, fallback statico, layout V310, Fantamercato interno, Listone, Rose, Admin e Firebase.
+
+## V314 - Calciomercato fonti, filtro fonte e piano AI
+
+V314 aggiorna la sezione `Calciomercato` con filtro fonte, ordine corretto del filtro squadre (`Tutte le squadre`, `Generale`, poi squadre), fonti RSS aggiuntive e documentazione del futuro modulo AI.
+
+File principali:
+
+```text
+static/zonaorientale/assets/app.js
+static/zonaorientale/assets/calciomercato/links.json
+netlify/functions/calciomercato-feed.js
+docs/zonaorientale/calciomercato/CALCIOMERCATO_FONTI_AI_V314.md
+```
+
+Funzionalita' da preservare prima di ulteriori modifiche:
+
+- Calciomercato RSS automatico, fallback statico, filtro fonte, squadre multiple, giocatori interessati, data/ora Europe/Rome;
+- Fantamercato interno separato;
+- Listone pubblico/Admin ed export CSV solo Admin;
+- Rose e pagina squadra;
+- Dashboard Presidente;
+- Admin Diagnostica/Richieste/Converti listone;
+- mobile bottom nav/menu Altro/pulsante Su.
+
+Il modulo AI non e' ancora implementato: `window.ZonaOrientaleCalciomercatoSourcesV314.aiSummaryImplemented` deve essere `false`.

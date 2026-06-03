@@ -1,45 +1,100 @@
 {
-  "version": "V313",
+  "version": "V314",
   "updatedAt": "2026-06-03",
   "sourceMode": "automatic-rss",
-  "notes": "Config fonti Calciomercato. La Netlify Function legge i feed RSS configurati, supporta feedUrl singolo o feedUrls multipli per fonte, deduplica per URL e usa articles come fallback/manuale.",
+  "notes": "Config fonti Calciomercato. La Netlify Function legge i feed RSS configurati, supporta filtro fonte lato UI, feedUrl/feedUrls multipli, deduplica per URL e usa articles come fallback/manuale.",
   "sources": [
     {
       "id": "tmw",
       "name": "TuttoMercatoWeb",
       "url": "https://www.tuttomercatoweb.com",
-      "feedUrl": "https://www.tuttomercatoweb.com/rss/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/rss/"
+      ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 24
+      "limit": 36
     },
     {
       "id": "sosfanta",
       "name": "SOS Fanta",
       "url": "https://www.sosfanta.com",
-      "feedUrl": "https://www.sosfanta.com/feed/",
+      "feedUrls": [
+        "https://www.sosfanta.com/feed/"
+      ],
       "enabled": true,
       "topic": "Fantacalcio",
-      "limit": 24
+      "limit": 32
     },
     {
       "id": "gianlucadimarzio",
       "name": "Gianluca Di Marzio",
       "url": "https://gianlucadimarzio.com",
-      "feedUrl": "https://gianlucadimarzio.com/rss/",
+      "feedUrls": [
+        "https://gianlucadimarzio.com/rss/"
+      ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 18
+      "limit": 28
+    },
+    {
+      "id": "fantacalcio",
+      "name": "Fantacalcio.it",
+      "url": "https://www.fantacalcio.it",
+      "feedUrls": [
+        "https://rss.fantacalcio.it/"
+      ],
+      "enabled": true,
+      "topic": "Fantacalcio",
+      "limit": 28
+    },
+    {
+      "id": "gazzetta",
+      "name": "La Gazzetta dello Sport",
+      "url": "https://www.gazzetta.it",
+      "feedUrls": [
+        "https://www.gazzetta.it/dynamic-feed/rss/section/Calciomercato.xml",
+        "https://www.gazzetta.it/dynamic-feed/rss/section/Calcio/Serie-A.xml"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 24
+    },
+    {
+      "id": "virgilio-sport",
+      "name": "Virgilio Sport",
+      "url": "https://sport.virgilio.it",
+      "feedUrls": [
+        "https://sport.virgilio.it/feed/rss/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 24
+    },
+    {
+      "id": "calciomercato-it",
+      "name": "CalcioMercato.it",
+      "url": "https://www.calciomercato.it",
+      "feedUrls": [
+        "https://www.calciomercato.it/feed/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "limit": 24
     }
   ],
   "suggestedSources": [
     {
-      "name": "Fantacalcio.it",
-      "url": "https://www.fantacalcio.it/news",
-      "note": "Da valutare in una release successiva se espone feed/API adatti al recupero automatico."
+      "name": "Altre fonti RSS",
+      "note": "Aggiungere solo fonti con feed RSS pubblico e stabile. Evitare scraping HTML dal browser."
+    },
+    {
+      "name": "Fonti disattivabili",
+      "note": "Impostare enabled:false su una fonte se genera troppi warning o contenuti fuori tema."
     }
   ],
   "articles": [],
-  "maxArticles": 80,
-  "sourceLimit": 24
+  "maxArticles": 120,
+  "sourceLimit": 36,
+  "maxSources": 10
 }

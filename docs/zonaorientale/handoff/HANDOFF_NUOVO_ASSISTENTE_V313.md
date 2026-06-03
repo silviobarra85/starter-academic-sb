@@ -95,3 +95,16 @@ git checkout refactor/260528-zonaorientale-next
 git merge master
 git push origin refactor/260528-zonaorientale-next
 ```
+
+## Aggiornamento V314
+
+Dopo V313, la sezione `Calciomercato` e' stata aggiornata con:
+
+- filtro fonte `Tutte le fonti`;
+- ordine filtro squadra: `Tutte le squadre`, `Generale`, squadre alfabetiche;
+- fonti RSS aggiuntive in `assets/calciomercato/links.json` e fallback Netlify Function;
+- piano tecnico per futuro modulo AI di riepilogo giocatore/squadra.
+
+Documento tecnico: `docs/zonaorientale/calciomercato/CALCIOMERCATO_FONTI_AI_V314.md`.
+
+Non perdere: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, mobile navigation, Calciomercato RSS/fallback e share news.

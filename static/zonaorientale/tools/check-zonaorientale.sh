@@ -259,10 +259,10 @@ if [[ -n "$REPO_ROOT" ]]; then
   if [[ -f "$calciomercato_function" ]]; then
     node --check "$calciomercato_function" >/dev/null
     pass "Netlify Function Calciomercato presente e valida"
-    if grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V313'" "$calciomercato_function"; then
-      pass "Netlify Function Calciomercato feed multipli V313 presente"
+    if grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V314'" "$calciomercato_function"; then
+      pass "Netlify Function Calciomercato feed/fonti V314 presente"
     else
-      warn "Netlify Function Calciomercato V313 non rilevata; verificare feed multipli/limite articoli"
+      warn "Netlify Function Calciomercato V314 non rilevata; verificare feed multipli/fonti/filtro"
     fi
   else
     fail "Netlify Function Calciomercato mancante: netlify/functions/calciomercato-feed.js"
@@ -488,6 +488,13 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato feed V313 documentato: calciomercato/CALCIOMERCATO_FEED_V313.md"
   else
     warn "Calciomercato feed V313 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_FEED_V313.md"
+  fi
+
+  calciomercato_sources_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_FONTI_AI_V314.md"
+  if [[ -f "$calciomercato_sources_doc" ]]; then
+    pass "Calciomercato fonti/filtro/AI V314 documentato: calciomercato/CALCIOMERCATO_FONTI_AI_V314.md"
+  else
+    warn "Calciomercato fonti/filtro/AI V314 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_FONTI_AI_V314.md"
   fi
   resoconto_v313_doc="$DOCS_ROOT/RESOCONTO_SITO_V313.md"
   if [[ -f "$resoconto_v313_doc" ]]; then

@@ -233,3 +233,7 @@ Calciomercato mostra data e ora di pubblicazione articolo quando il feed RSS la 
 ## Aggiornamento V312
 
 Calciomercato ora formatta in modo esplicito in `Europe/Rome` sia l'orario articoli sia il timestamp `aggiornato ...` del feed RSS. Corregge il caso in cui l'ora grezza UTC risultava due ore indietro rispetto all'Italia. Nessun cambio a RSS, Netlify Function, Fantamercato interno, Listone, Rose o Admin.
+
+## V314 - Nota rapida
+
+Calciomercato aggiornato con filtro fonte, fonti RSS aggiuntive e ordine corretto del filtro squadra (`Tutte le squadre`, `Generale`, squadre). Il modulo AI di riepilogo giocatore/squadra e' solo pianificato, non implementato.

@@ -3,25 +3,67 @@ const DEFAULT_SOURCES = [
     id: 'tmw',
     name: 'TuttoMercatoWeb',
     url: 'https://www.tuttomercatoweb.com',
-    feedUrl: 'https://www.tuttomercatoweb.com/rss/',
+    feedUrls: ['https://www.tuttomercatoweb.com/rss/'],
     enabled: true,
-    topic: 'Mercato'
+    topic: 'Mercato',
+    limit: 36
   },
   {
     id: 'sosfanta',
     name: 'SOS Fanta',
     url: 'https://www.sosfanta.com',
-    feedUrl: 'https://www.sosfanta.com/feed/',
+    feedUrls: ['https://www.sosfanta.com/feed/'],
     enabled: true,
-    topic: 'Fantacalcio'
+    topic: 'Fantacalcio',
+    limit: 32
   },
   {
     id: 'gianlucadimarzio',
     name: 'Gianluca Di Marzio',
     url: 'https://gianlucadimarzio.com',
-    feedUrl: 'https://gianlucadimarzio.com/rss/',
+    feedUrls: ['https://gianlucadimarzio.com/rss/'],
     enabled: true,
-    topic: 'Mercato'
+    topic: 'Mercato',
+    limit: 28
+  },
+  {
+    id: 'fantacalcio',
+    name: 'Fantacalcio.it',
+    url: 'https://www.fantacalcio.it',
+    feedUrls: ['https://rss.fantacalcio.it/'],
+    enabled: true,
+    topic: 'Fantacalcio',
+    limit: 28
+  },
+  {
+    id: 'gazzetta',
+    name: 'La Gazzetta dello Sport',
+    url: 'https://www.gazzetta.it',
+    feedUrls: [
+      'https://www.gazzetta.it/dynamic-feed/rss/section/Calciomercato.xml',
+      'https://www.gazzetta.it/dynamic-feed/rss/section/Calcio/Serie-A.xml'
+    ],
+    enabled: true,
+    topic: 'Mercato',
+    limit: 24
+  },
+  {
+    id: 'virgilio-sport',
+    name: 'Virgilio Sport',
+    url: 'https://sport.virgilio.it',
+    feedUrls: ['https://sport.virgilio.it/feed/rss/'],
+    enabled: true,
+    topic: 'Mercato',
+    limit: 24
+  },
+  {
+    id: 'calciomercato-it',
+    name: 'CalcioMercato.it',
+    url: 'https://www.calciomercato.it',
+    feedUrls: ['https://www.calciomercato.it/feed/'],
+    enabled: true,
+    topic: 'Mercato',
+    limit: 24
   }
 ];
 
@@ -220,7 +262,7 @@ async function fetchSource(source) {
   if (!source.enabled && source.enabled !== undefined) return { source, articles: [], warning: `${source.name || source.url}: fonte disattivata` };
   const feedUrls = getSourceFeedUrls(source);
   if (!feedUrls.length) return { source, articles: [], warning: `${source.name || source.url}: feedUrl non configurato` };
-  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 24, 1, 60);
+  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 36, 1, 80);
   const settled = await Promise.allSettled(feedUrls.map(async (feedUrl) => {
     const response = await fetchWithTimeout(feedUrl, { timeoutMs: Number(source.timeoutMs || 8500) });
     if (!response.ok) throw new Error(`${source.name || feedUrl}: HTTP ${response.status}`);
@@ -248,7 +290,7 @@ exports.handler = async (event) => {
   try {
     const config = await loadConfigFromSite(event).catch(() => null);
     const configuredSources = Array.isArray(config?.sources) && config.sources.length ? config.sources : DEFAULT_SOURCES;
-    const activeSources = configuredSources.filter((source) => source && source.enabled !== false).slice(0, clampNumber(config?.maxSources, 8, 1, 12));
+    const activeSources = configuredSources.filter((source) => source && source.enabled !== false).slice(0, clampNumber(config?.maxSources, 10, 1, 14));
     const globalLimit = clampNumber(event.queryStringParameters?.limit || config?.maxArticles, 80, 1, 120);
     const results = await Promise.allSettled(activeSources.map(fetchSource));
     const warnings = [];
@@ -279,7 +321,7 @@ exports.handler = async (event) => {
       });
 
     return jsonResponse(200, {
-      version: 'V313',
+      version: 'V314',
       sourceMode: 'automatic-rss',
       generatedAt: new Date().toISOString(),
       sources,
@@ -288,7 +330,7 @@ exports.handler = async (event) => {
     });
   } catch (error) {
     return jsonResponse(200, {
-      version: 'V313',
+      version: 'V314',
       sourceMode: 'automatic-rss-error',
       generatedAt: new Date().toISOString(),
       sources: DEFAULT_SOURCES,

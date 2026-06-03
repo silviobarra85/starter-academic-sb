@@ -726,3 +726,20 @@
 - `news.html`, `comunicati/*.html`, `tools/generate-news-share-pages.mjs`.
 - Vecchi fallback Richieste presidenti e comunicato scambio finche non rimossi con audit dedicato.
 - Netlify Functions `news-share.js` e `calciomercato-feed.js`.
+
+## Aggiornamento funzionale V314 - Calciomercato fonti
+
+### Utente pubblico - Calciomercato
+- Filtra gli articoli per fonte tramite menu `Tutte le fonti`.
+- Nel filtro squadra visualizza `Generale` subito dopo `Tutte le squadre`, prima della lista alfabetica delle squadre.
+- Consulta articoli recuperati automaticamente da piu' fonti RSS configurate.
+- Usa ricerca combinata su titolo, descrizione, fonte, squadra, topic, stato e giocatori interessati.
+- Continua a visualizzare articoli con squadre multiple, stato trattativa, data/ora in fuso Europe/Rome e giocatori interessati.
+
+### Sviluppo futuro - AI Calciomercato
+- E' prevista come possibile evoluzione una scheda AI per riepilogare gli articoli relativi a un giocatore o a una squadra.
+- La prima implementazione dovra' essere server-side, senza chiavi AI esposte nel browser, e dovra' usare solo metadati/descrizioni RSS o contenuti autorizzati.
+
+### Funzionalita' da non perdere
+- Il nuovo Calciomercato non sostituisce il Fantamercato interno della lega.
+- Restano invariati Listone, Rose, Dashboard Presidente, Admin, Firebase, EmailJS, mobile navigation e News/share WhatsApp.

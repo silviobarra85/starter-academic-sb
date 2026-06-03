@@ -951,3 +951,12 @@ V309 introduce il recupero automatico degli articoli Calciomercato tramite Netli
 - Corretto il riepilogo `aggiornato ...` della sezione Calciomercato: ora non usa piu la stringa UTC grezza ma formatta in `Europe/Rome`.
 - Anche data/ora degli articoli RSS viene normalizzata con lo stesso formatter.
 - Nessuna modifica a Netlify Function, recupero RSS, fallback statico, Fantamercato interno, Listone, Rose, Admin o Firebase.
+
+## V314 - Calciomercato fonti e piano AI
+
+- Il filtro squadra della sezione `Calciomercato` ora mostra `Generale` subito dopo `Tutte le squadre`.
+- Aggiunto filtro fonte (`Tutte le fonti`) per selezionare gli articoli per testata/feed.
+- Estesa la configurazione RSS con fonti aggiuntive: Fantacalcio.it, La Gazzetta dello Sport, Virgilio Sport e CalcioMercato.it, oltre a TMW, SOS Fanta e Gianluca Di Marzio.
+- Aumentati i limiti configurabili degli articoli recuperabili dalla Netlify Function.
+- Documentata la fattibilita' del futuro modulo AI per riepiloghi per giocatore/squadra.
+- Nessuna modifica a Fantamercato interno, Firebase, EmailJS, Listone, Rose, Dashboard Presidente o Admin.
