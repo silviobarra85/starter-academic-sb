@@ -1,3 +1,11 @@
+## V313 - Admin ordinato, feed Calciomercato esteso e resoconto funzionale
+
+- Titolo Admin mantenuto sempre sopra tutti i pannelli informativi.
+- Categorie Admin e pannelli collassabili avviati ridotti; il gate `Carica dati amministrazione` resta aperto.
+- Netlify Function Calciomercato aggiornata a V313 con supporto `feedUrls` multipli, deduplica e limiti configurabili.
+- Aggiornati handoff, resoconto sito e documento principale `FUNZIONALITA'.md` su richiesta esplicita.
+- Nessuna scrittura Firebase nuova e nessuna modifica a Fantamercato interno, Listone, Rose, Presidente o dati competizioni.
+
 ## Aggiornamento V299 - CSS refactor stabile
 
 - Consolidati i CSS refactor V292 con nomi stabili: `mobile-controls.css`, `rosters-tables.css`, `theme-light-suspended.css`.
@@ -931,3 +939,15 @@ V309 introduce il recupero automatico degli articoli Calciomercato tramite Netli
 - Intervento isolato al CSS della sezione Calciomercato.
 - Nessuna modifica a feed RSS, Netlify Function, fallback statico, Fantamercato interno, Listone, Rose, Admin, Presidente o Firebase.
 - Diagnostica: `window.ZonaOrientaleCalciomercatoLayoutV310`.
+
+## V311 - Ora pubblicazione articoli Calciomercato
+
+- La card degli articoli Calciomercato mostra ora data e ora quando il feed RSS espone un timestamp completo.
+- Il fallback resta compatibile con date semplici o stringhe non parseabili.
+- Nessuna modifica a Fantamercato interno, Listone, Rose, Admin, Firebase o formato dati statico.
+
+## V312 - Fuso orario articoli Calciomercato
+
+- Corretto il riepilogo `aggiornato ...` della sezione Calciomercato: ora non usa piu la stringa UTC grezza ma formatta in `Europe/Rome`.
+- Anche data/ora degli articoli RSS viene normalizzata con lo stesso formatter.
+- Nessuna modifica a Netlify Function, recupero RSS, fallback statico, Fantamercato interno, Listone, Rose, Admin o Firebase.

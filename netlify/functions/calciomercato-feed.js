@@ -79,6 +79,19 @@ function normalizeList(value) {
   return String(value || '').split(/[;,]/).map((item) => item.trim()).filter(Boolean);
 }
 
+function clampNumber(value, fallback, min, max) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.max(min, Math.min(max, Math.round(number)));
+}
+
+function getSourceFeedUrls(source) {
+  const urls = [];
+  normalizeList(source.feedUrls || source.rssUrls || source.feeds || []).forEach((url) => urls.push(url));
+  normalizeList(source.feedUrl || source.rssUrl || source.feed || '').forEach((url) => urls.push(url));
+  return Array.from(new Set(urls.map((url) => String(url || '').trim()).filter(Boolean)));
+}
+
 async function fetchWithTimeout(url, options = {}) {
   const timeoutMs = Number(options.timeoutMs || 8500);
   const controller = new AbortController();
@@ -204,21 +217,39 @@ async function loadConfigFromSite(event) {
 }
 
 async function fetchSource(source) {
-  const feedUrl = source.feedUrl || source.rssUrl || source.feed || '';
   if (!source.enabled && source.enabled !== undefined) return { source, articles: [], warning: `${source.name || source.url}: fonte disattivata` };
-  if (!feedUrl) return { source, articles: [], warning: `${source.name || source.url}: feedUrl non configurato` };
-  const response = await fetchWithTimeout(feedUrl, { timeoutMs: Number(source.timeoutMs || 8500) });
-  if (!response.ok) return { source, articles: [], warning: `${source.name || feedUrl}: HTTP ${response.status}` };
-  const xml = await response.text();
-  const articles = parseFeed(xml, source).filter(isLikelyMarketArticle).slice(0, Number(source.limit || 12));
-  return { source, articles, warning: articles.length ? '' : `${source.name || feedUrl}: nessun articolo utile trovato` };
+  const feedUrls = getSourceFeedUrls(source);
+  if (!feedUrls.length) return { source, articles: [], warning: `${source.name || source.url}: feedUrl non configurato` };
+  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 24, 1, 60);
+  const settled = await Promise.allSettled(feedUrls.map(async (feedUrl) => {
+    const response = await fetchWithTimeout(feedUrl, { timeoutMs: Number(source.timeoutMs || 8500) });
+    if (!response.ok) throw new Error(`${source.name || feedUrl}: HTTP ${response.status}`);
+    const xml = await response.text();
+    return parseFeed(xml, { ...source, feedUrl }).filter(isLikelyMarketArticle);
+  }));
+  const warnings = [];
+  const articles = [];
+  settled.forEach((result, index) => {
+    if (result.status === 'fulfilled') articles.push(...result.value);
+    else warnings.push(result.reason?.message || `${source.name || feedUrls[index]}: feed non disponibile`);
+  });
+  const byUrl = new Map();
+  articles
+    .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')))
+    .forEach((article) => {
+      if (!byUrl.has(article.url)) byUrl.set(article.url, article);
+    });
+  const uniqueArticles = Array.from(byUrl.values()).slice(0, perSourceLimit);
+  const warning = uniqueArticles.length ? warnings.join(' | ') : (warnings.join(' | ') || `${source.name || feedUrls[0]}: nessun articolo utile trovato`);
+  return { source, articles: uniqueArticles, warning };
 }
 
 exports.handler = async (event) => {
   try {
     const config = await loadConfigFromSite(event).catch(() => null);
     const configuredSources = Array.isArray(config?.sources) && config.sources.length ? config.sources : DEFAULT_SOURCES;
-    const activeSources = configuredSources.filter((source) => source && source.enabled !== false).slice(0, 8);
+    const activeSources = configuredSources.filter((source) => source && source.enabled !== false).slice(0, clampNumber(config?.maxSources, 8, 1, 12));
+    const globalLimit = clampNumber(event.queryStringParameters?.limit || config?.maxArticles, 80, 1, 120);
     const results = await Promise.allSettled(activeSources.map(fetchSource));
     const warnings = [];
     const articles = [];
@@ -226,7 +257,8 @@ exports.handler = async (event) => {
       id: source.id || '',
       name: source.name || source.label || source.url || 'Fonte',
       url: source.url || '',
-      feedUrl: source.feedUrl || source.rssUrl || source.feed || '',
+      feedUrl: getSourceFeedUrls(source)[0] || '',
+      feedUrls: getSourceFeedUrls(source),
       enabled: source.enabled !== false
     }));
 
@@ -247,16 +279,16 @@ exports.handler = async (event) => {
       });
 
     return jsonResponse(200, {
-      version: 'V309',
+      version: 'V313',
       sourceMode: 'automatic-rss',
       generatedAt: new Date().toISOString(),
       sources,
       warnings,
-      articles: Array.from(byUrl.values()).slice(0, 40)
+      articles: Array.from(byUrl.values()).slice(0, globalLimit)
     });
   } catch (error) {
     return jsonResponse(200, {
-      version: 'V309',
+      version: 'V313',
       sourceMode: 'automatic-rss-error',
       generatedAt: new Date().toISOString(),
       sources: DEFAULT_SOURCES,

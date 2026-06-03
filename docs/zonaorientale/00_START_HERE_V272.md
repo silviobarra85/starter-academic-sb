@@ -1,3 +1,7 @@
+## Aggiornamento V313 - Admin ordinato, feed Calciomercato esteso e resoconto funzionale
+
+Versione runtime corrente: **V313 admin ordinato e resoconto funzionale**. Leggere subito `RESOCONTO_SITO_V313.md`, `admin/ADMIN_LAYOUT_V313.md`, `calciomercato/CALCIOMERCATO_FEED_V313.md` e `handoff/HANDOFF_NUOVO_ASSISTENTE_V313.md`. V313 sposta il titolo Admin sopra tutti i pannelli, fa partire le categorie Admin ridotte lasciando aperto il gate `Carica dati amministrazione`, migliora la Netlify Function Calciomercato con feed multipli/limiti configurabili e aggiorna `FUNZIONALITA'.md` su richiesta esplicita. Regola principale: nessun refactor deve perdere funzionalita esistenti.
+
 ## Aggiornamento V299 - CSS refactor stabile
 
 Versione runtime corrente: **V299 CSS refactor stabile**. Leggere anche `refactor/CSS_REFACTOR_STABLE_V299.md`. La release consolida i CSS refactor V292 usando nomi stabili: `assets/css/refactor/mobile-controls.css`, `assets/css/refactor/rosters-tables.css` e `assets/css/refactor/theme-light-suspended.css`. I primi due sono importati dagli HTML, il file Light resta sospeso e non importato. Funzionalita da preservare: Listone con Modifica/filtro/export admin-only, Rose e prima colonna sticky, Dashboard Presidente, bottom nav/menu Altro/pulsante Su, Dark mode unico, `competition.html` e `player.html`.
@@ -221,3 +225,11 @@ La sezione `Calciomercato` ora puo recuperare automaticamente articoli tramite N
 - La sezione `Calciomercato` usa card orizzontali/lista per rendere leggibili gli articoli RSS.
 - La Netlify Function RSS V309 e il fallback statico restano invariati.
 - Funzionalita' da preservare: Fantamercato interno, Listone, Rose, Admin, Dashboard Presidente, mobile navigation.
+
+## Aggiornamento V311
+
+Calciomercato mostra data e ora di pubblicazione articolo quando il feed RSS la fornisce. Nessun cambio a recupero RSS, Firebase, Listone, Rose o Fantamercato interno.
+
+## Aggiornamento V312
+
+Calciomercato ora formatta in modo esplicito in `Europe/Rome` sia l'orario articoli sia il timestamp `aggiornato ...` del feed RSS. Corregge il caso in cui l'ora grezza UTC risultava due ore indietro rispetto all'Italia. Nessun cambio a RSS, Netlify Function, Fantamercato interno, Listone, Rose o Admin.

@@ -1,3 +1,15 @@
+## Test V313 - Admin ordinato e Calciomercato feed
+
+- Admin leggero: il titolo `Admin` deve comparire sopra tutti i pannelli.
+- Admin leggero: `Carica dati amministrazione` deve restare visibile e aperto.
+- Admin completo: categorie Admin ridotte al primo caricamento, apribili con pulsante `Apri`.
+- Admin completo: Richieste presidenti, Diagnostica dati, Converti listone Excel, Snapshot e Backup ancora funzionanti.
+- Calciomercato: feed RSS automatico ancora funzionante via Netlify Function.
+- Calciomercato: `/.netlify/functions/calciomercato-feed?limit=80` restituisce JSON valido.
+- Listone pubblico: export CSV non visibile.
+- Listone Admin: export CSV visibile e funzionante.
+- Rose, Dashboard Presidente, Competizioni, player.html e mobile nav invariati.
+
 ## Checklist V299 - CSS refactor stabile
 
 - Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
@@ -771,4 +783,19 @@ Test manuali:
 - Verificare titolo, descrizione, fonte, squadre, stato, giocatori e pulsante `Apri articolo`.
 - Verificare funzionamento su mobile senza colonne strette.
 - Verificare che `/.netlify/functions/calciomercato-feed` continui a restituire JSON in Netlify Dev/preview.
+- Verificare che Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin siano invariati.
+
+## Test V311 - Ora pubblicazione Calciomercato
+
+- Aprire Calciomercato con Netlify Dev o deploy Netlify.
+- Verificare che gli articoli con timestamp completo mostrino data e ora.
+- Verificare che articoli con sola data continuino a mostrarsi senza errori.
+- Verificare Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin.
+
+## Test V312 - Fuso orario Calciomercato
+
+- Aprire Calciomercato con Netlify Dev o deploy Netlify.
+- Verificare che il riepilogo `aggiornato ...` mostri l'ora italiana, non l'UTC grezza.
+- Esempio: `2026-06-03T08:51:00Z` deve apparire come `03/06/2026, 10:51`.
+- Verificare che le card articolo continuino a mostrare data/ora.
 - Verificare che Fantamercato interno, Listone pubblico/Admin, Rose, Dashboard Presidente e Admin siano invariati.

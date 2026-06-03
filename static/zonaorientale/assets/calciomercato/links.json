@@ -1,8 +1,8 @@
 {
-  "version": "V309",
+  "version": "V313",
   "updatedAt": "2026-06-03",
   "sourceMode": "automatic-rss",
-  "notes": "Configura qui le fonti del Calciomercato. Su Netlify la funzione /.netlify/functions/calciomercato-feed legge queste fonti e recupera automaticamente gli articoli dai feed RSS quando disponibili. Il campo articles resta come fallback/manuale.",
+  "notes": "Config fonti Calciomercato. La Netlify Function legge i feed RSS configurati, supporta feedUrl singolo o feedUrls multipli per fonte, deduplica per URL e usa articles come fallback/manuale.",
   "sources": [
     {
       "id": "tmw",
@@ -11,7 +11,7 @@
       "feedUrl": "https://www.tuttomercatoweb.com/rss/",
       "enabled": true,
       "topic": "Mercato",
-      "limit": 12
+      "limit": 24
     },
     {
       "id": "sosfanta",
@@ -20,7 +20,7 @@
       "feedUrl": "https://www.sosfanta.com/feed/",
       "enabled": true,
       "topic": "Fantacalcio",
-      "limit": 12
+      "limit": 24
     },
     {
       "id": "gianlucadimarzio",
@@ -29,7 +29,7 @@
       "feedUrl": "https://gianlucadimarzio.com/rss/",
       "enabled": true,
       "topic": "Mercato",
-      "limit": 10
+      "limit": 18
     }
   ],
   "suggestedSources": [
@@ -39,5 +39,7 @@
       "note": "Da valutare in una release successiva se espone feed/API adatti al recupero automatico."
     }
   ],
-  "articles": []
+  "articles": [],
+  "maxArticles": 80,
+  "sourceLimit": 24
 }

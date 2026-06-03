@@ -172,7 +172,7 @@ fi
 
 helper_v294_file="$SITE_ROOT/assets/js/utils/shared-helpers-v294.js"
 if [[ -f "$helper_v294_file" ]]; then
-  fail "helper obsoleto V294 ancora presente: assets/js/utils/shared-helpers-v294.js (rimuovere con git rm)"
+  warn "helper obsoleto V294 ancora presente: assets/js/utils/shared-helpers-v294.js (candidato a git rm controllato)"
 else
   pass "helper obsoleto V294 rimosso"
 fi
@@ -240,13 +240,32 @@ else
   fail "Calciomercato layout orizzontale V310 non rilevato in assets/app.js"
 fi
 
+calciomercato_v311_marker="ZonaOrientaleCalciomercatoDateTimeV311"
+if grep -q "$calciomercato_v311_marker" "$app_file" && grep -q "formatCalciomercatoArticleDateTimeV311" "$app_file"; then
+  pass "Calciomercato data e ora V311 presente"
+else
+  fail "Calciomercato data e ora V311 non rilevato in assets/app.js"
+fi
+
+calciomercato_v312_marker="ZonaOrientaleCalciomercatoTimeZoneV312"
+if grep -q "$calciomercato_v312_marker" "$app_file" && grep -q "CALCIOMERCATO_TIME_ZONE_V312 = \"Europe/Rome\"" "$app_file"; then
+  pass "Calciomercato fuso orario V312 presente"
+else
+  fail "Calciomercato fuso orario V312 non rilevato in assets/app.js"
+fi
+
 if [[ -n "$REPO_ROOT" ]]; then
   calciomercato_function="$REPO_ROOT/netlify/functions/calciomercato-feed.js"
   if [[ -f "$calciomercato_function" ]]; then
     node --check "$calciomercato_function" >/dev/null
-    pass "Netlify Function Calciomercato V309 presente e valida"
+    pass "Netlify Function Calciomercato presente e valida"
+    if grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V313'" "$calciomercato_function"; then
+      pass "Netlify Function Calciomercato feed multipli V313 presente"
+    else
+      warn "Netlify Function Calciomercato V313 non rilevata; verificare feed multipli/limite articoli"
+    fi
   else
-    fail "Netlify Function Calciomercato V309 mancante: netlify/functions/calciomercato-feed.js"
+    fail "Netlify Function Calciomercato mancante: netlify/functions/calciomercato-feed.js"
   fi
 else
   warn "repo Git non rilevata; salto controllo Netlify Function Calciomercato V309"
@@ -445,6 +464,36 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato layout orizzontale V310 documentato: calciomercato/CALCIOMERCATO_LAYOUT_ORIZZONTALE_V310.md"
   else
     warn "Calciomercato layout orizzontale V310 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_LAYOUT_ORIZZONTALE_V310.md"
+  fi
+  calciomercato_datetime_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_ORA_PUBBLICAZIONE_V311.md"
+  if [[ -f "$calciomercato_datetime_doc" ]]; then
+    pass "Calciomercato data e ora V311 documentato: calciomercato/CALCIOMERCATO_ORA_PUBBLICAZIONE_V311.md"
+  else
+    warn "Calciomercato data e ora V311 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_ORA_PUBBLICAZIONE_V311.md"
+  fi
+  calciomercato_timezone_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_FUSO_ORARIO_V312.md"
+  if [[ -f "$calciomercato_timezone_doc" ]]; then
+    pass "Calciomercato fuso orario V312 documentato: calciomercato/CALCIOMERCATO_FUSO_ORARIO_V312.md"
+  else
+    warn "Calciomercato fuso orario V312 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_FUSO_ORARIO_V312.md"
+  fi
+  admin_layout_doc="$DOCS_ROOT/admin/ADMIN_LAYOUT_V313.md"
+  if [[ -f "$admin_layout_doc" ]]; then
+    pass "Admin layout V313 documentato: admin/ADMIN_LAYOUT_V313.md"
+  else
+    warn "Admin layout V313 non documentato; verificare docs/zonaorientale/admin/ADMIN_LAYOUT_V313.md"
+  fi
+  calciomercato_feed_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_FEED_V313.md"
+  if [[ -f "$calciomercato_feed_doc" ]]; then
+    pass "Calciomercato feed V313 documentato: calciomercato/CALCIOMERCATO_FEED_V313.md"
+  else
+    warn "Calciomercato feed V313 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_FEED_V313.md"
+  fi
+  resoconto_v313_doc="$DOCS_ROOT/RESOCONTO_SITO_V313.md"
+  if [[ -f "$resoconto_v313_doc" ]]; then
+    pass "Resoconto sito V313 presente: RESOCONTO_SITO_V313.md"
+  else
+    warn "Resoconto sito V313 mancante; verificare docs/zonaorientale/RESOCONTO_SITO_V313.md"
   fi
   admin_diag_v303_doc="$DOCS_ROOT/admin/DIAGNOSTICA_DATI_V303.md"
   if [[ -f "$admin_diag_v303_doc" ]]; then

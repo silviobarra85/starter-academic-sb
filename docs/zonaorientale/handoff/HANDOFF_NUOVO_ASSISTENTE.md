@@ -1,3 +1,9 @@
+## Aggiornamento V313 - Nuovo handoff canonico
+
+Leggere anche `docs/zonaorientale/handoff/HANDOFF_NUOVO_ASSISTENTE_V313.md` e `docs/zonaorientale/RESOCONTO_SITO_V313.md`. La versione runtime corrente e' `V313 admin ordinato e resoconto funzionale`. Da V313 l'area Admin mantiene il titolo sopra tutti i pannelli, parte con sezioni ridotte e lascia aperto `Carica dati amministrazione`. Calciomercato usa Netlify Function V313 con feed multipli/limiti configurabili. `FUNZIONALITA'.md` e' stato aggiornato su richiesta esplicita.
+
+Regola obbligatoria: ogni modifica futura deve dichiarare funzionalita a rischio, preservazione e test.
+
 ## Aggiornamento V299 - CSS refactor stabile
 
 Leggere `docs/zonaorientale/refactor/CSS_REFACTOR_STABLE_V299.md` prima di ulteriori refactor CSS. I CSS refactor correnti hanno nomi stabili: `assets/css/refactor/mobile-controls.css`, `assets/css/refactor/rosters-tables.css` e `assets/css/refactor/theme-light-suspended.css`. Gli HTML devono importare solo i primi due. Il file Light resta sospeso finche la Light mode non verra' ricostruita. Non rimuovere o rinominare altri CSS senza verificare Listone, Rose, Dashboard Presidente, Admin, pagine standalone e mobile nav.
@@ -925,3 +931,11 @@ Prima di modificare Calciomercato leggere `docs/zonaorientale/calciomercato/CALC
 La sezione `Calciomercato` mantiene recupero automatico RSS/fallback statico, ma gli articoli vengono mostrati in card orizzontali/lista per evitare layout a colonne strette.
 
 Non modificare questa sezione insieme a Fantamercato interno/Listone/Rose senza test regressione: sono funzionalita' separate e vanno preservate.
+
+## Aggiornamento V311
+
+Calciomercato ora mostra data e ora pubblicazione articolo quando disponibili. Il rendering usa `formatCalciomercatoArticleDateTimeV311`; la diagnostica e disponibile in `window.ZonaOrientaleCalciomercatoDateTimeV311`. Non sono stati modificati recupero RSS, Fantamercato interno, Listone, Rose, Admin o Firebase.
+
+## Aggiornamento V312
+
+Calciomercato ora formatta timestamp articoli e `aggiornato ...` in fuso `Europe/Rome`, tramite `formatCalciomercatoDateTimeRomeV312`. La diagnostica e disponibile in `window.ZonaOrientaleCalciomercatoTimeZoneV312`. Non modificare questo formatter insieme a recupero RSS/Fantamercato interno/Listone/Rose senza test regressione.

@@ -1,3 +1,9 @@
+## Aggiornamento V313 - Admin ordinato e resoconto funzionale
+
+V313 corregge l'area Admin: il titolo `Admin` viene mantenuto sopra tutti i pannelli informativi (`Avvisi pubblicazione`, `Stato Firebase / JSON`, `Procedura guidata Pubblica aggiornamenti`), le categorie Admin partono ridotte e il pannello `Carica dati amministrazione` resta aperto. La Netlify Function `calciomercato-feed.js` passa a V313 con supporto a feed multipli per fonte e limite articoli configurabile. Aggiunti `RESOCONTO_SITO_V313.md`, `admin/ADMIN_LAYOUT_V313.md`, `calciomercato/CALCIOMERCATO_FEED_V313.md` e `handoff/HANDOFF_NUOVO_ASSISTENTE_V313.md`. `FUNZIONALITA'.md` e' stato aggiornato su richiesta esplicita dell'utente. Diagnostica: `window.ZonaOrientaleAdminLayoutV313`.
+
+Funzionalita da preservare obbligatoriamente: Home, News/share WhatsApp, Rose, Fantamercato interno, Calciomercato, Listone con Modifica/filtro/export admin-only, Competizioni, Archivio/Statistiche/Confronta, Dashboard Presidente, Admin leggero/completo, Richieste presidenti, Diagnostica dati, Converti listone Excel, mobile nav e Dark mode unico.
+
 ## Aggiornamento V299 - CSS refactor stabile
 
 V299 consolida i CSS refactor introdotti in V291/V292 con nomi stabili: `assets/css/refactor/mobile-controls.css`, `assets/css/refactor/rosters-tables.css` e `assets/css/refactor/theme-light-suspended.css`. Gli HTML importano solo i primi due; il Light resta sospeso e non importato. I vecchi file versionati `mobile-controls-v292.css`, `rosters-tables-v292.css` e `theme-light-suspended-v292.css` vanno rimossi con `git rm` dopo applicazione overlay. Nessuna regola CSS intenzionalmente cambiata, nessuna logica JS spostata. Diagnostica: `window.ZonaOrientaleCssStableRefactorV299`.
@@ -950,3 +956,11 @@ V310 migliora la leggibilita' della nuova sezione `Calciomercato`: le card artic
 Non cambia il recupero automatico RSS V309, non cambia il formato di `assets/calciomercato/links.json` e non tocca Fantamercato interno, Listone, Rose, Admin, Presidente, Firebase o EmailJS.
 
 Documento tecnico: `docs/zonaorientale/calciomercato/CALCIOMERCATO_LAYOUT_ORIZZONTALE_V310.md`.
+
+## V311 - Ora pubblicazione Calciomercato
+
+La sezione Calciomercato visualizza data e ora di pubblicazione degli articoli quando disponibili dai feed RSS. Diagnostica: `window.ZonaOrientaleCalciomercatoDateTimeV311`. Funzionalita preservate: RSS automatico V309, fallback statico, layout orizzontale V310, giocatori/squadre/stato, Fantamercato interno, Listone, Rose, Admin e Firebase.
+
+## V312 - Fuso orario Calciomercato
+
+La sezione Calciomercato usa `Europe/Rome` per mostrare data/ora degli articoli RSS e del timestamp di aggiornamento feed. Diagnostica: `window.ZonaOrientaleCalciomercatoTimeZoneV312`. Funzionalita preservate: RSS automatico V309, fallback statico, layout V310, Fantamercato interno, Listone, Rose, Admin e Firebase.
