@@ -298,3 +298,10 @@ Test manuale mirato:
 
 Il controllo pre-push ora verifica anche la presenza della diagnostica Admin estesa `window.ZonaOrientaleAdminDiagnosticsV303` e del documento `docs/zonaorientale/admin/DIAGNOSTICA_DATI_V303.md`.
 
+
+
+## Aggiornamento V304
+
+Il controllo pre-push verifica anche la diagnostica `window.ZonaOrientaleMobileFinalReviewV304` e segnala la presenza del documento `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md`.
+
+Prima della feature Calcio mercato, completare la review mobile finale indicata nel documento V304.

@@ -708,3 +708,17 @@ Test manuali:
 - Admin -> Listone: export CSV ancora visibile e funzionante.
 - Rose/pagina squadra e Dashboard Presidente: nessuna regressione visiva o dati mancanti.
 
+
+
+## Test V304 - Mobile review finale e pre-Calciomercato
+
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Home mobile: bottom nav, menu Altro e pulsante Su.
+- Listone pubblico: export CSV non visibile, filtro `Modifiche` e colonna `Modifica` funzionanti.
+- Listone Admin: export CSV visibile e funzionante.
+- Pagina squadra -> Rosa: prima colonna sticky leggibile, righe compatte, testo centrato verticalmente.
+- Dashboard Presidente: tabelle rosa, bottoni e form senza regressioni.
+- Admin -> Diagnostica dati: controlli V303 visibili e refresh funzionante.
+- Admin -> Richieste presidenti: pannello renderizzato e azioni visibili.
+- `competition.html` e `player.html`: layout mobile e Dark mode corretti.
+- Console: `window.ZonaOrientaleMobileFinalReviewV304.behaviorChange === false`.

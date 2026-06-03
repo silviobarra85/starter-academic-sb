@@ -887,3 +887,10 @@ Per pulire residui CSS V291/V292 usare `static/zonaorientale/tools/cleanup-css-r
 
 La diagnostica Admin è stata estesa in V303 con controlli non distruttivi su qualità dati Listoni, Rose, Competizioni e News. Ogni futuro refactor deve dichiarare le funzionalità a rischio e come preservarle. Non rimuovere o scollegare Listone, Rose, Dashboard Presidente, Richieste presidenti, mobile nav, Dark mode unico o export CSV admin-only senza test dedicati.
 
+
+
+## V304 - Checkpoint pre-Calciomercato
+
+Leggere `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md` prima di iniziare la nuova sezione Calcio mercato. La V304 non implementa ancora la feature: chiude il ciclo mobile/refactor e ribadisce le funzionalita da non scollegare.
+
+La Light mode resta sospesa. La prossima feature va progettata per Dark mode e in modo isolato.

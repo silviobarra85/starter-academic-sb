@@ -908,3 +908,12 @@ La sezione `Calcio mercato` e' stata valutata in `docs/zonaorientale/pianificazi
 - Funzionalità protette: Listone pubblico/admin, export CSV solo Admin V296, Rose/pagina squadra, Dashboard Presidente, Richieste presidenti, mobile nav e Dark mode unico.
 - Diagnostica: `window.ZonaOrientaleAdminDiagnosticsV303`.
 
+
+
+## V304 - Mobile review finale e pre-Calciomercato
+
+V304 chiude la fase di stabilizzazione prima di iniziare la feature Calcio mercato. Non introduce funzionalita runtime: aggiunge il documento `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md` e la diagnostica `window.ZonaOrientaleMobileFinalReviewV304`.
+
+La Light mode resta sospesa. Ogni prossima modifica deve dichiarare esplicitamente quali funzionalita rischia di scollegare e come le preserva. Per Calcio mercato, partire con una V1 isolata e statica/configurabile, senza scraping diretto dal browser.
+
+Funzionalita da non perdere: Listone con `Modifica`/`Modifiche`/usciti storici/export admin-only, Rose e pagina squadra, Dashboard Presidente, Admin Diagnostica/Richieste/Converti listone, mobile bottom nav/menu Altro/pulsante Su, Dark mode unico, News share, `competition.html` e `player.html`.

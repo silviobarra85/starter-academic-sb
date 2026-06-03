@@ -182,3 +182,10 @@ V301 aggiunge la pulizia controllata dei CSS refactor residui tramite `tools/cle
 
 V303 estende il pannello `Admin -> Diagnostica dati` con controlli di qualita non distruttivi su Listoni, Rose, Competizioni e News. Non modifica Firebase, EmailJS, dati JSON o logiche runtime critiche. Prima di ulteriori refactor verificare sempre che Listone, Rose, Dashboard Presidente, Admin e mobile navigation restino agganciati.
 
+
+
+## Aggiornamento V304
+
+V304 aggiunge la review mobile finale e il checkpoint pre-Calciomercato: `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md`.
+
+Prima di iniziare la nuova sezione Calcio mercato verificare: check pre-push, Listone pubblico/Admin, Rose/pagina squadra, Dashboard Presidente, Admin Diagnostica/Richieste, mobile navigation, `competition.html`, `player.html` e Dark mode unico.

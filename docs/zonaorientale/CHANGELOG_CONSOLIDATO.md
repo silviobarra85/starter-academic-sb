@@ -881,3 +881,12 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Funzionalita da preservare esplicitamente: export modifiche CSV solo Admin, colonna `Modifica`, filtro `Modifiche`, rose/pagina squadra, Dashboard Presidente, Richieste presidenti, mobile nav e Dark mode unico.
 - Diagnostica runtime: `window.ZonaOrientaleAdminDiagnosticsV303`.
 
+
+
+## V304 - Mobile review finale e pre-Calciomercato
+
+- Aggiunto `docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md`.
+- Fissata la checklist finale mobile prima della nuova funzionalita Calcio mercato.
+- Nessuna nuova feature implementata e nessun cambio dati/runtime intenzionale.
+- Funzionalita da preservare esplicitamente per la fase successiva: Listone pubblico/admin, export CSV solo Admin, rose/pagina squadra, Dashboard Presidente, Admin, mobile navigation, Dark mode unico, `competition.html`, `player.html` e share WhatsApp.
+- Aggiunta diagnostica `window.ZonaOrientaleMobileFinalReviewV304`.

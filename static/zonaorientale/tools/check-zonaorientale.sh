@@ -197,6 +197,13 @@ else
   fail "diagnostica dati Admin estesa V303 non rilevata in assets/app.js"
 fi
 
+mobile_review_v304_marker="ZonaOrientaleMobileFinalReviewV304"
+if grep -q "$mobile_review_v304_marker" "$app_file"; then
+  pass "mobile review finale V304 presente"
+else
+  fail "mobile review finale V304 non rilevata in assets/app.js"
+fi
+
 print_step "File macOS indesiderati"
 macos_roots=("$SITE_ROOT")
 if [[ -n "$DOCS_ROOT" ]]; then
@@ -261,6 +268,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "dark mode e rose mobile V289 documentato: audit/DARK_MODE_ROSE_MOBILE_V289.md"
   else
     warn "documento dark mode/rose mobile V289 non trovato; se stai applicando V289 verifica docs/zonaorientale/audit"
+  fi
+  mobile_final_review_doc="$DOCS_ROOT/audit/MOBILE_REVIEW_FINALE_V304.md"
+  if [[ -f "$mobile_final_review_doc" ]]; then
+    pass "mobile review finale V304 documentata: audit/MOBILE_REVIEW_FINALE_V304.md"
+  else
+    warn "mobile review finale V304 non documentata; verificare docs/zonaorientale/audit/MOBILE_REVIEW_FINALE_V304.md"
   fi
 else
   warn "docs non disponibili; salto controllo audit mobile"
