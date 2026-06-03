@@ -38,13 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=302";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=303";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=302";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=302";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=303";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=303";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -96,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=302";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=303";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -120,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=302";
+} from "./js/domain/news-share-v228.js?v=303";
 import {
   getListoneValue,
   compareListoneValues
@@ -135,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=302";
+} from "./js/admin/listone-converter.js?v=303";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=302";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=302";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=303";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=303";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=302";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=302";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=302";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=302";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=303";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=303";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=303";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=303";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=302";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=302";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=302";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=303";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=303";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=303";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15569,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "302";
+const DEPLOY_EXPECTED_VERSION_V181 = "303";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23657,3 +23657,161 @@ window.ZonaOrientaleAppHelperRewireV302 = {
   ],
   fallback: "csvEscapeV278 legacy path resta disponibile se helper non caricato"
 };
+
+/* V303 - Diagnostica dati Admin estesa.
+ * Aggiunge controlli non distruttivi su qualita dati Listoni, Rose, Competizioni e News.
+ * Funzionalita preservate: Listone pubblico/admin, export CSV admin-only, Rose, Dashboard Presidente,
+ * Admin esistente, Firebase/Auth/EmailJS. Nessuna scrittura e nessuna logica dati modificata.
+ */
+function normalizeDiagnosticKeyV303(value) {
+  const helper = window.ZonaOrientaleSharedHelpersV295;
+  if (helper && typeof helper.searchKey === "function") return helper.searchKey(value);
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function getListoneQualityDiagnosticsRowsV303() {
+  const listone = typeof getLatestListoneV276 === "function" ? getLatestListoneV276() : (typeof getSelectedListone === "function" ? getSelectedListone() : null);
+  const players = Array.isArray(listone?.players) ? listone.players : [];
+  if (!players.length) {
+    return [{ area: "Listoni - qualita dati", status: "ATTENZIONE", details: "Nessun giocatore disponibile nel listone corrente per i controlli qualita." }];
+  }
+
+  const seen = new Map();
+  let duplicates = 0;
+  let missingRole = 0;
+  let missingQuotation = 0;
+  let nonCanonicalTeams = 0;
+
+  players.forEach((player) => {
+    const name = normalizeDiagnosticKeyV303(player.name || player.nome || player.playerName || "");
+    const role = String(player.role || player.ruolo || player.position || player.fantasyRole || player["R."] || "").trim();
+    const team = String(player.realTeamCode || player.teamCode || player.realTeam || player.team || player.squadra || player["Sq."] || "").trim();
+    const quote = player.quotationCurrent ?? player.quotation ?? player.quote ?? player.quotazione ?? player.qtA ?? player["QUOT."] ?? "";
+    const key = `${name}|${role}|${normalizeDiagnosticKeyV303(team)}`;
+    if (name && seen.has(key)) duplicates += 1;
+    else if (name) seen.set(key, true);
+    if (!role) missingRole += 1;
+    if (quote === null || quote === undefined || String(quote).trim() === "") missingQuotation += 1;
+    if (team && team.length > 3 && !/^svincol/i.test(team) && !/^free/i.test(team)) nonCanonicalTeams += 1;
+  });
+
+  const issues = duplicates + missingRole + missingQuotation + nonCanonicalTeams;
+  return [{
+    area: "Listoni - qualita dati",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${players.length} giocatori controllati · duplicati ${duplicates} · senza ruolo ${missingRole} · senza quotazione ${missingQuotation} · squadre non canoniche ${nonCanonicalTeams}.`
+  }];
+}
+
+function getRosterQualityDiagnosticsRowsV303() {
+  const snapshots = Array.isArray(state.rosters) ? state.rosters : [];
+  let teams = 0;
+  let emptyTeams = 0;
+  let missingNames = 0;
+  let totalPlayers = 0;
+
+  snapshots.forEach((snapshot) => {
+    (snapshot.rosters || []).forEach((roster) => {
+      teams += 1;
+      const players = Array.isArray(roster.players) ? roster.players : [];
+      if (!players.length) emptyTeams += 1;
+      totalPlayers += players.length;
+      players.forEach((player) => {
+        if (!String(player.name || player.nome || player.playerName || "").trim()) missingNames += 1;
+      });
+    });
+  });
+
+  if (!snapshots.length) {
+    return [{ area: "Rose - qualita dati", status: "ATTENZIONE", details: "Nessuno snapshot rose disponibile in memoria." }];
+  }
+  const issues = emptyTeams + missingNames;
+  return [{
+    area: "Rose - qualita dati",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${snapshots.length} snapshot · ${teams} rose · ${totalPlayers} giocatori · rose vuote ${emptyTeams} · giocatori senza nome ${missingNames}.`
+  }];
+}
+
+function getCompetitionQualityDiagnosticsRowsV303() {
+  const raw = state.raw || {};
+  const competitions = Array.isArray(raw.competitions) ? raw.competitions : [];
+  const calendars = Array.isArray(state.competitionCalendars) ? state.competitionCalendars : [];
+  if (!competitions.length && !calendars.length) {
+    return [{ area: "Competizioni - completezza", status: "ATTENZIONE", details: "Nessuna competizione/calendario disponibile in memoria." }];
+  }
+  const missingName = competitions.filter((competition) => !String(competition.name || competition.title || competition.label || "").trim()).length;
+  const missingType = competitions.filter((competition) => !String(competition.type || competition.format || competition.kind || "").trim()).length;
+  const calendarsWithoutId = calendars.filter((calendar) => !String(calendar.competitionId || calendar.id || calendar.slug || "").trim()).length;
+  const issues = missingName + missingType + calendarsWithoutId;
+  return [{
+    area: "Competizioni - completezza",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${competitions.length} competizioni · ${calendars.length} calendari statici · senza nome ${missingName} · senza tipo/formato ${missingType} · calendari senza id ${calendarsWithoutId}.`
+  }];
+}
+
+function getNewsQualityDiagnosticsRowsV303() {
+  const raw = state.raw || {};
+  const news = Array.isArray(raw.news) ? raw.news : [];
+  if (!news.length) {
+    return [{ area: "News - completezza", status: "ATTENZIONE", details: "Nessun comunicato disponibile in memoria per il controllo qualita." }];
+  }
+  const missingTitle = news.filter((item) => !String(item.title || item.headline || "").trim()).length;
+  const missingBody = news.filter((item) => !String(item.body || item.content || item.text || "").trim()).length;
+  const missingTopic = news.filter((item) => !String(item.topic || item.type || "").trim()).length;
+  const issues = missingTitle + missingBody + missingTopic;
+  return [{
+    area: "News - completezza",
+    status: issues ? "ATTENZIONE" : "OK",
+    details: `${news.length} comunicati · senza titolo ${missingTitle} · senza testo ${missingBody} · senza topic/tipo ${missingTopic}.`
+  }];
+}
+
+function getAdminDataDiagnosticsExtraRowsV303() {
+  return [
+    ...getListoneQualityDiagnosticsRowsV303(),
+    ...getRosterQualityDiagnosticsRowsV303(),
+    ...getCompetitionQualityDiagnosticsRowsV303(),
+    ...getNewsQualityDiagnosticsRowsV303()
+  ];
+}
+
+const getAdminDataDiagnosticsBeforeV303 = getAdminDataDiagnosticsV276;
+getAdminDataDiagnosticsV276 = function getAdminDataDiagnosticsV303() {
+  const baseRows = typeof getAdminDataDiagnosticsBeforeV303 === "function" ? getAdminDataDiagnosticsBeforeV303() : [];
+  return [...baseRows, ...getAdminDataDiagnosticsExtraRowsV303()];
+};
+
+if (window.ZonaOrientaleAdminDiagnosticsV276) {
+  window.ZonaOrientaleAdminDiagnosticsV276.getRows = getAdminDataDiagnosticsV276;
+  window.ZonaOrientaleAdminDiagnosticsV276.getExtraRowsV303 = getAdminDataDiagnosticsExtraRowsV303;
+}
+
+window.ZonaOrientaleAdminDiagnosticsV303 = {
+  version: "V303",
+  label: "diagnostica dati admin estesa",
+  behaviorChange: false,
+  firebaseWrites: false,
+  protectedFunctionalities: [
+    "Listone pubblico e admin",
+    "Export modifiche CSV solo Admin V296",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin Richieste presidenti e Diagnostica dati",
+    "Firebase/Auth/EmailJS non modificati"
+  ],
+  getRows: getAdminDataDiagnosticsV276,
+  getExtraRows: getAdminDataDiagnosticsExtraRowsV303,
+  refresh: () => {
+    const panel = document.getElementById("adminDataDiagnosticsPanelV276");
+    if (panel) panel.outerHTML = renderAdminDataDiagnosticsPanelV276();
+    else injectAdminDataDiagnosticsPanelV276();
+    return getAdminDataDiagnosticsV276();
+  }
+};
+

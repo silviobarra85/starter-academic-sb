@@ -190,6 +190,13 @@ else
   fail "secondo collegamento helper CSV V302 non rilevato in assets/app.js"
 fi
 
+admin_diagnostics_v303_marker="ZonaOrientaleAdminDiagnosticsV303"
+if grep -q "$admin_diagnostics_v303_marker" "$app_file"; then
+  pass "diagnostica dati Admin estesa V303 presente"
+else
+  fail "diagnostica dati Admin estesa V303 non rilevata in assets/app.js"
+fi
+
 print_step "File macOS indesiderati"
 macos_roots=("$SITE_ROOT")
 if [[ -n "$DOCS_ROOT" ]]; then
@@ -328,6 +335,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "studio fattibilita Calcio mercato V302 documentato: pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
   else
     warn "studio fattibilita Calcio mercato V302 non trovato; se si pianifica la feature creare docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
+  fi
+  admin_diag_v303_doc="$DOCS_ROOT/admin/DIAGNOSTICA_DATI_V303.md"
+  if [[ -f "$admin_diag_v303_doc" ]]; then
+    pass "diagnostica dati Admin V303 documentata: admin/DIAGNOSTICA_DATI_V303.md"
+  else
+    warn "diagnostica dati Admin V303 non documentata; verificare docs/zonaorientale/admin/DIAGNOSTICA_DATI_V303.md"
   fi
 else
   warn "docs non disponibili; salto controllo audit refactor"

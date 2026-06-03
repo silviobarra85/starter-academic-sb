@@ -177,3 +177,8 @@ V301 aggiunge la pulizia controllata dei CSS refactor residui tramite `tools/cle
 - Export modifiche Listone resta riservato agli Admin.
 - La Light mode resta sospesa; non e' previsto recupero nel ciclo corrente.
 - Studio fattibilita' futura sezione `Calcio mercato`: `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.
+
+## Aggiornamento V303
+
+V303 estende il pannello `Admin -> Diagnostica dati` con controlli di qualita non distruttivi su Listoni, Rose, Competizioni e News. Non modifica Firebase, EmailJS, dati JSON o logiche runtime critiche. Prima di ulteriori refactor verificare sempre che Listone, Rose, Dashboard Presidente, Admin e mobile navigation restino agganciati.
+

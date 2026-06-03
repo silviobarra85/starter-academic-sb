@@ -293,3 +293,8 @@ Test manuale mirato:
 - Listone Admin: export CSV visibile e funzionante.
 - Console: `window.ZonaOrientaleAppHelperRewireV302.behaviorChange === false`.
 - Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok === true`.
+
+## Aggiornamento V303
+
+Il controllo pre-push ora verifica anche la presenza della diagnostica Admin estesa `window.ZonaOrientaleAdminDiagnosticsV303` e del documento `docs/zonaorientale/admin/DIAGNOSTICA_DATI_V303.md`.
+

@@ -873,3 +873,11 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Documentato lo studio di fattibilita' per una futura sezione `Calcio mercato`, senza implementarla.
 - Escluso il recupero Light mode dalla roadmap corrente: la modalita' Light resta sospesa.
 - Nessuna modifica a Firebase, EmailJS, dati JSON, rose, Dashboard Presidente o Admin.
+
+## V303 - Diagnostica dati Admin estesa
+
+- Estesa `Admin -> Diagnostica dati` con controlli non distruttivi su qualita di Listoni, Rose, Competizioni e News.
+- Nessuna scrittura Firebase, nessuna modifica ai dati JSON e nessuna logica Listone/Rose/Admin spostata.
+- Funzionalita da preservare esplicitamente: export modifiche CSV solo Admin, colonna `Modifica`, filtro `Modifiche`, rose/pagina squadra, Dashboard Presidente, Richieste presidenti, mobile nav e Dark mode unico.
+- Diagnostica runtime: `window.ZonaOrientaleAdminDiagnosticsV303`.
+

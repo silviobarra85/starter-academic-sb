@@ -899,3 +899,12 @@ Funzionalita' a rischio preservate: Listone pubblico, colonna `Modifica`, filtro
 La Light mode resta sospesa; il piano di recupero Light non fa parte della roadmap corrente.
 
 La sezione `Calcio mercato` e' stata valutata in `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`, ma non implementata.
+
+## V303 - Diagnostica dati Admin estesa
+
+- Versione runtime: `V303 diagnostica admin dati`.
+- `Admin -> Diagnostica dati` aggiunge controlli su qualità Listoni, Rose, Competizioni e News.
+- La diagnostica è solo lettura: nessuna scrittura Firebase e nessuna modifica ai dati.
+- Funzionalità protette: Listone pubblico/admin, export CSV solo Admin V296, Rose/pagina squadra, Dashboard Presidente, Richieste presidenti, mobile nav e Dark mode unico.
+- Diagnostica: `window.ZonaOrientaleAdminDiagnosticsV303`.
+

@@ -882,3 +882,8 @@ Per pulire residui CSS V291/V292 usare `static/zonaorientale/tools/cleanup-css-r
 - Export modifiche Listone resta solo Admin da V296.
 - La Light mode resta sospesa; non proporre recupero Light come prossimo step salvo nuova richiesta esplicita.
 - La futura sezione `Calcio mercato` e' solo in studio: vedere `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.
+
+## Aggiornamento V303
+
+La diagnostica Admin è stata estesa in V303 con controlli non distruttivi su qualità dati Listoni, Rose, Competizioni e News. Ogni futuro refactor deve dichiarare le funzionalità a rischio e come preservarle. Non rimuovere o scollegare Listone, Rose, Dashboard Presidente, Richieste presidenti, mobile nav, Dark mode unico o export CSV admin-only senza test dedicati.
+

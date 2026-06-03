@@ -699,3 +699,12 @@ Test manuali:
 - Admin -> Listone: `Esporta modifiche CSV` deve comparire e scaricare un CSV valido.
 - Console: `window.ZonaOrientaleAppHelperRewireV302.behaviorChange` deve essere `false`.
 - Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok` deve essere `true`.
+
+## Test V303 - Diagnostica Admin estesa
+
+- Login Admin -> `Admin -> Diagnostica dati`: il pannello deve aprirsi e mostrare anche righe qualità per Listoni, Rose, Competizioni e News.
+- Il pulsante `Aggiorna diagnostica` deve aggiornare il pannello senza errori console.
+- Pubblico -> Listone: export CSV non visibile, filtri e colonna `Modifica` invariati.
+- Admin -> Listone: export CSV ancora visibile e funzionante.
+- Rose/pagina squadra e Dashboard Presidente: nessuna regressione visiva o dati mancanti.
+
