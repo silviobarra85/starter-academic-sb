@@ -92,9 +92,15 @@ section "Vecchi CSS refactor versionati"
 old_found="$(find "$SITE_ROOT/assets/css/refactor" -maxdepth 1 -type f \( -name '*-v291.css' -o -name '*-v292.css' \) -print 2>/dev/null || true)"
 if [[ -n "$old_found" ]]; then
   printf '%s\n' "$old_found"
-  warn "trovati CSS refactor versionati vecchi; rimuoverli solo dopo verifica git diff e test mobile"
+  warn "trovati CSS refactor versionati vecchi; usare tools/cleanup-css-refactor-v301.sh in dry-run prima di rimuovere"
 else
   ok "nessun CSS refactor V291/V292 residuo trovato"
+fi
+cleanup_tool="$SITE_ROOT/tools/cleanup-css-refactor-v301.sh"
+if [[ -x "$cleanup_tool" ]]; then
+  ok "tool pulizia CSS V301 disponibile"
+else
+  warn "tool pulizia CSS V301 non disponibile; se ci sono residui usare overlay V301"
 fi
 
 section "Light mode sospesa"
