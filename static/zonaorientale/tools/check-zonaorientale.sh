@@ -641,6 +641,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
   else
     warn "fix espansione Diagnostica dati Admin V321 non documentato"
   fi
+  listone_role_fix_doc="$DOCS_ROOT/admin/DIAGNOSTICA_LISTONE_RUOLI_V322.md"
+  if [[ -f "$listone_role_fix_doc" ]]; then
+    pass "fix diagnostica ruoli Listone V322 documentato: admin/DIAGNOSTICA_LISTONE_RUOLI_V322.md"
+  else
+    warn "fix diagnostica ruoli Listone V322 non documentato"
+  fi
 fi
 
 print_step "Riepilogo"

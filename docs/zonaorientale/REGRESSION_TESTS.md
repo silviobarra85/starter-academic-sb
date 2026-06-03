@@ -850,3 +850,15 @@ Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export
 ## V321 - Fix espansione Diagnostica dati Admin
 
 Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.
+
+
+## Test V322 - Fix diagnostica ruoli Listone
+
+- Login Admin.
+- Aprire `Admin -> Diagnostica dati`.
+- Espandere il pannello se chiuso.
+- Cliccare `Aggiorna diagnostica`.
+- Verificare che `Listoni - qualita dati` non segnali piu tutti i giocatori come `senza ruolo`.
+- Verificare che Listone pubblico e Listone Admin continuino a funzionare.
+- Verificare che colonna `Modifica`, filtro `Modifiche`, `Mostra usciti storici` ed export CSV solo Admin restino invariati.
+- Verificare che Calciomercato, Fantamercato interno, Rose, Dashboard Presidente e Admin non siano regressi.
