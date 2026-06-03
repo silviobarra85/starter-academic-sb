@@ -1,3 +1,11 @@
+## Aggiornamento V298 - Audit asset/import orfani
+
+- Aggiunto lo script `static/zonaorientale/tools/audit-assets-v298.sh` per individuare riferimenti locali mancanti e possibili asset CSS/JS orfani.
+- Aggiornato `check-zonaorientale.sh` per verificare la presenza del tool e della documentazione V298.
+- Aggiunta diagnostica runtime `window.ZonaOrientaleAssetImportAuditV298`.
+- Nessun asset rimosso, nessuna logica runtime modificata, nessun dato JSON/Firebase/EmailJS toccato.
+- Funzionalita da preservare prima di pulizie future: Listone, Rose, Dashboard Presidente, Admin, pagine standalone, mobile nav, Dark mode e helper CSV V295.
+
 ## Aggiornamento V296 - Export modifiche Listone solo Admin
 
 - Il pulsante `Esporta modifiche CSV` nel Listone viene mostrato solo agli utenti Admin.

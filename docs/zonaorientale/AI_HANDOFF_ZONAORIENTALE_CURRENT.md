@@ -1,3 +1,7 @@
+## Aggiornamento V298 - Audit asset/import orfani
+
+V298 aggiunge `static/zonaorientale/tools/audit-assets-v298.sh` e `docs/zonaorientale/refactor/ASSET_IMPORT_AUDIT_V298.md`. Il tool e' solo diagnostico: segnala riferimenti locali mancanti e candidati orfani, ma non autorizza cancellazioni automatiche. Prima di rimuovere asset verificare sempre le funzionalita a rischio: CSS mobile/rose/tabelle V292, Dark mode unico V289, Listone con Modifica/filtro/export admin-only, helper CSV V295, `competition.html`, `player.html`, Admin, Presidente e news share. Diagnostica: `window.ZonaOrientaleAssetImportAuditV298`.
+
 ## Aggiornamento V296 - Export modifiche Listone solo Admin
 
 V296 rende il pulsante `Esporta modifiche CSV` disponibile solo per utenti Admin. Il Listone pubblico conserva colonna `Modifica`, filtro `Modifiche`, usciti storici, ricerca e visualizzazione; cambia solo la disponibilita' del download CSV. Il calcolo CSV V278 e l'escape helper V295 restano invariati. Diagnostica: `window.ZonaOrientaleListoneExportAdminOnlyV296`. Documento tecnico: `docs/zonaorientale/refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md`.

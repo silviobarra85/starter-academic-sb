@@ -1,3 +1,13 @@
+## Aggiornamento V298
+
+Lo script pre-push controlla la presenza di `tools/audit-assets-v298.sh` e del documento `refactor/ASSET_IMPORT_AUDIT_V298.md`. Prima di pulizie asset eseguire anche:
+
+```bash
+static/zonaorientale/tools/audit-assets-v298.sh
+```
+
+I candidati orfani sono warning operativi, non indicazioni automatiche di cancellazione.
+
 ## Aggiornamento V296
 
 Lo script pre-push controlla anche la presenza della documentazione `refactor/LISTONE_EXPORT_ADMIN_ONLY_V296.md` e del marker runtime `ZonaOrientaleListoneExportAdminOnlyV296`. Per questa release testare anche: Listone pubblico senza pulsante export, Listone Admin con export CSV funzionante.

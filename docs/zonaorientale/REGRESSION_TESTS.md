@@ -1,3 +1,12 @@
+## Checklist V298 - Audit asset/import orfani
+
+- Eseguire `static/zonaorientale/tools/audit-assets-v298.sh` e verificare che non segnali riferimenti locali mancanti.
+- Trattare eventuali candidati orfani come warning: non cancellare senza grep, audit e test browser.
+- Eseguire `static/zonaorientale/tools/check-zonaorientale.sh`.
+- Verificare Listone pubblico: export CSV non visibile per non Admin, Modifiche/usciti storici funzionanti.
+- Verificare Listone Admin: export CSV visibile e funzionante.
+- Verificare pagina squadra/Rose mobile, Dashboard Presidente, Admin, `competition.html`, `player.html`, bottom nav e Dark mode unico.
+
 ## Aggiornamento test V296 - Export modifiche solo Admin
 
 - Pubblico/non Admin: aprire Listone e verificare che `Esporta modifiche CSV` non compaia.

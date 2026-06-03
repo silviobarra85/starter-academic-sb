@@ -292,6 +292,26 @@ else
   warn "docs non disponibili; salto controllo audit refactor"
 fi
 
+
+
+print_step "Audit asset/import"
+asset_audit_tool="$SCRIPT_DIR/audit-assets-v298.sh"
+if [[ -x "$asset_audit_tool" ]]; then
+  pass "tool audit asset/import V298 presente: tools/audit-assets-v298.sh"
+else
+  fail "tool audit asset/import V298 mancante o non eseguibile: tools/audit-assets-v298.sh"
+fi
+if [[ -n "$DOCS_ROOT" ]]; then
+  asset_audit_doc="$DOCS_ROOT/refactor/ASSET_IMPORT_AUDIT_V298.md"
+  if [[ -f "$asset_audit_doc" ]]; then
+    pass "audit asset/import V298 documentato: refactor/ASSET_IMPORT_AUDIT_V298.md"
+  else
+    warn "audit asset/import V298 non documentato; verificare docs/zonaorientale/refactor/ASSET_IMPORT_AUDIT_V298.md"
+  fi
+else
+  warn "docs non disponibili; salto controllo documento audit asset/import V298"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.\n' "$failures" "$warns" >&2
