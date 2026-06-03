@@ -970,3 +970,8 @@ Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export
 ## V319 - Calciomercato mobile compatto
 
 Preservare la nuova UI mobile del Calciomercato: filtri sotto `Articoli di mercato`, select `Squadre`/`Topic`/`Fonti` affiancate, ricerca a tutta larghezza, range `Da/A` affiancato e card compatte con immagine quadrata. La modifica non riguarda feed RSS, Fantamercato interno, Listone, Rose, Admin o Firebase.
+
+
+## Aggiornamento V320 - Calciomercato riconoscimento automatico
+
+La sezione Calciomercato riconosce automaticamente in modo euristico squadre, giocatori e allenatori dagli articoli RSS. Campi rilevanti: `detectedTeams`, `detectedPlayers`, `entities.teams`, `entities.people`. Il riconoscimento non e' AI e puo' avere limiti; non collegarlo al Fantamercato interno senza richiesta esplicita e audit. Preservare sempre Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.

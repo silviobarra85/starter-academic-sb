@@ -274,10 +274,12 @@ if [[ -n "$REPO_ROOT" ]]; then
   if [[ -f "$calciomercato_function" ]]; then
     node --check "$calciomercato_function" >/dev/null
     pass "Netlify Function Calciomercato presente e valida"
-    if grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V317'" "$calciomercato_function"; then
-      pass "Netlify Function Calciomercato scroll/range V317 presente"
+    if grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V320'" "$calciomercato_function" && grep -q "inferPeople" "$calciomercato_function"; then
+      pass "Netlify Function Calciomercato riconoscimento V320 presente"
+    elif grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V317'" "$calciomercato_function"; then
+      warn "Netlify Function Calciomercato ferma a V317; applicare V320 per riconoscimento automatico"
     else
-      warn "Netlify Function Calciomercato V317 non rilevata; verificare scroll/range/limiti"
+      warn "Netlify Function Calciomercato V320 non rilevata; verificare scroll/range/riconoscimento"
     fi
   else
     fail "Netlify Function Calciomercato mancante: netlify/functions/calciomercato-feed.js"
@@ -327,6 +329,13 @@ if grep -q "$calciomercato_v319_marker" "$app_file" && grep -q "calciomercato-fi
   pass "Calciomercato mobile compatto V319 presente"
 else
   fail "Calciomercato mobile compatto V319 non rilevato"
+fi
+
+calciomercato_v320_marker="ZonaOrientaleCalciomercatoRecognitionV320"
+if grep -q "$calciomercato_v320_marker" "$app_file" && grep -q "detectedPlayers" "$app_file"; then
+  pass "Calciomercato riconoscimento automatico V320 presente"
+else
+  fail "Calciomercato riconoscimento automatico V320 non rilevato"
 fi
 
 if [[ -n "$REPO_ROOT" ]]; then
@@ -542,6 +551,13 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato mobile compatto V319 documentato: calciomercato/CALCIOMERCATO_MOBILE_COMPATTO_V319.md"
   else
     warn "Calciomercato mobile compatto V319 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_MOBILE_COMPATTO_V319.md"
+  fi
+
+  calciomercato_recognition_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_RICONOSCIMENTO_V320.md"
+  if [[ -f "$calciomercato_recognition_doc" ]]; then
+    pass "Calciomercato riconoscimento V320 documentato: calciomercato/CALCIOMERCATO_RICONOSCIMENTO_V320.md"
+  else
+    warn "Calciomercato riconoscimento V320 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_RICONOSCIMENTO_V320.md"
   fi
 
   resoconto_v313_doc="$DOCS_ROOT/RESOCONTO_SITO_V313.md"

@@ -835,3 +835,13 @@ Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export
 - Desktop -> layout Calciomercato ancora leggibile.
 - Verificare che ricerca, filtri, range e caricamento articoli piu vecchi funzionino.
 - Verificare che Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin non siano regressi.
+
+
+## Test V320 - Riconoscimento Calciomercato
+
+- Calciomercato: aprire con Netlify Dev e verificare chip squadre/giocatori rilevati.
+- Calciomercato: cercare una squadra e un giocatore/allenatore presente nei titoli RSS.
+- Calciomercato: filtri squadra/topic/fonte ancora funzionanti.
+- Listone pubblico: export CSV non visibile.
+- Listone Admin: export CSV visibile e funzionante.
+- Fantamercato interno, Rose, Dashboard Presidente e Admin invariati.

@@ -38,13 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=319";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=320";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=319";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=319";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=320";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=320";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -96,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=319";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=320";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -120,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=319";
+} from "./js/domain/news-share-v228.js?v=320";
 import {
   getListoneValue,
   compareListoneValues
@@ -135,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=319";
+} from "./js/admin/listone-converter.js?v=320";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=319";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=319";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=320";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=320";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=319";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=319";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=319";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=319";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=320";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=320";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=320";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=320";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=319";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=319";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=319";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=320";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=320";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=320";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15569,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "319";
+const DEPLOY_EXPECTED_VERSION_V181 = "320";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23853,8 +23853,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=319";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=319";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=320";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=320";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -23916,6 +23916,7 @@ function normalizeCalciomercatoListV308(rawValue) {
 
 function getCalciomercatoTeamsV308(article) {
   const multiTeams = normalizeCalciomercatoListV308(article?.teams || article?.teamNames || article?.squadre || article?.clubs || []);
+  normalizeCalciomercatoListV308(article?.detectedTeams || article?.recognizedTeams || article?.inferredTeams || article?.entities?.teams || []).forEach((team) => multiTeams.push(team));
   const singleTeam = String(article?.teamName || article?.team || article?.squadra || article?.club || "").trim();
   if (singleTeam) multiTeams.unshift(singleTeam);
   const seasonTeamIds = normalizeCalciomercatoListV308(article?.seasonTeamIds || article?.teamIds || []);
@@ -23925,7 +23926,16 @@ function getCalciomercatoTeamsV308(article) {
     const team = (state.raw?.seasonTeams || []).find((item) => String(item.id) === String(seasonTeamId));
     multiTeams.push(team?.name || seasonTeamId);
   });
-  const unique = Array.from(new Set(multiTeams.map((team) => String(team || "").trim()).filter(Boolean)));
+  const seen = new Set();
+  const unique = multiTeams
+    .map((team) => String(team || "").trim())
+    .filter(Boolean)
+    .filter((team) => {
+      const key = normalizeCalciomercatoValueV306(team);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
   return unique.length ? unique : ["Generale"];
 }
 
@@ -24068,14 +24078,31 @@ function formatCalciomercatoArticleDateTimeV311(article) {
 }
 
 function getCalciomercatoPlayersV306(article) {
-  const rawPlayers = article?.players || article?.giocatori || article?.playerNames || article?.interestedPlayers || [];
-  return normalizeCalciomercatoListV308(rawPlayers);
+  const rawPlayers = [
+    ...normalizeCalciomercatoListV308(article?.players || article?.giocatori || article?.playerNames || article?.interestedPlayers || []),
+    ...normalizeCalciomercatoListV308(article?.detectedPlayers || article?.recognizedPlayers || article?.inferredPlayers || article?.people || article?.entities?.players || article?.entities?.people || [])
+  ];
+  const seen = new Set();
+  return rawPlayers
+    .map((player) => String(player || "").trim())
+    .filter(Boolean)
+    .filter((player) => {
+      const key = normalizeCalciomercatoValueV306(player);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 }
 
-function renderCalciomercatoPlayersV306(players) {
+function hasCalciomercatoDetectedPeopleV320(article) {
+  return normalizeCalciomercatoListV308(article?.detectedPlayers || article?.recognizedPlayers || article?.inferredPlayers || article?.people || article?.entities?.players || article?.entities?.people || []).length > 0;
+}
+
+function renderCalciomercatoPlayersV306(players, article = null) {
   if (!Array.isArray(players) || !players.length) return "";
-  return `<div class="calciomercato-players-v306" aria-label="Giocatori interessati">
-    <span class="calciomercato-players-label-v306">Giocatori</span>
+  const label = article && hasCalciomercatoDetectedPeopleV320(article) ? "Giocatori/allenatori" : "Giocatori";
+  return `<div class="calciomercato-players-v306" aria-label="${escapeHtml(label)} interessati">
+    <span class="calciomercato-players-label-v306">${escapeHtml(label)}</span>
     <div class="calciomercato-player-chips-v306">${players.map((player) => `<span class="calciomercato-player-chip-v306">${escapeHtml(player)}</span>`).join("")}</div>
   </div>`;
 }
@@ -24167,7 +24194,7 @@ function renderCalciomercatoArticleCardV306(article) {
         </div>
         <h3>${safeUrl ? `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">${escapeHtml(title)}</a>` : escapeHtml(title)}</h3>
         ${description ? `<p>${escapeHtml(description)}</p>` : `<p class="muted">Descrizione non configurata. In futuro potra essere recuperata automaticamente dalle anteprime Open Graph.</p>`}
-        ${renderCalciomercatoPlayersV306(players)}
+        ${renderCalciomercatoPlayersV306(players, article)}
         <div class="calciomercato-card-footer-v306">
           <small class="muted">${escapeHtml(source)}${date ? ` · ${escapeHtml(date)}` : ""}</small>
           ${safeUrl ? `<a class="button button-secondary button-small" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">Apri articolo</a>` : `<span class="muted">Link non configurato</span>`}
@@ -25001,5 +25028,36 @@ window.ZonaOrientaleCalciomercatoMobileV319 = {
     "Mobile bottom nav/menu Altro/pulsante Su"
   ],
   getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  reload: window.ZonaOrientaleCalciomercatoV306?.reload
+};
+
+/* V320 - Riconoscimento automatico giocatori/squadre Calciomercato.
+ * Estende solo la sezione Calciomercato: usa le entita rilevate dalla Netlify Function RSS
+ * e le combina con i campi manuali gia supportati. Non modifica Fantamercato interno,
+ * Listone, Rose, Admin, Presidente, Firebase/Auth/EmailJS o mobile navigation.
+ */
+window.ZonaOrientaleCalciomercatoRecognitionV320 = {
+  version: "V320",
+  label: "Calciomercato riconoscimento automatico",
+  behaviorChangeOutsideSection: false,
+  aiImplemented: false,
+  feedFunctionVersion: "V320",
+  detectedFields: ["detectedTeams", "detectedPlayers", "entities.teams", "entities.people"],
+  preservedFeatures: [
+    "Feed RSS automatico e fallback statico",
+    "Range temporale e caricamento progressivo articoli",
+    "Filtri squadra/topic/fonte",
+    "Layout mobile compatto V319",
+    "Fantamercato interno",
+    "Listone pubblico/Admin ed export admin-only",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin e diagnostica dati",
+    "Firebase/Auth/EmailJS non modificati"
+  ],
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getArticles: window.ZonaOrientaleCalciomercatoV306?.getArticles,
+  getTeams: getCalciomercatoTeamsV308,
+  getPeople: getCalciomercatoPlayersV306,
   reload: window.ZonaOrientaleCalciomercatoV306?.reload
 };
