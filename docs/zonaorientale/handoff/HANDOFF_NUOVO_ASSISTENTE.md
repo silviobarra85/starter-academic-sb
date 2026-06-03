@@ -898,3 +898,7 @@ La Light mode resta sospesa. La prossima feature va progettata per Dark mode e i
 ## Aggiornamento V305 - Calcio mercato
 
 Esiste una prima sezione pubblica `Calcio mercato`, alimentata da `assets/calciomercato/links.json`. E' una base statica/manuale: non fare scraping e non chiamare siti terzi dal browser. La futura raccolta automatica dovra essere progettata server-side, preferibilmente con Netlify Function e caching. Non confondere questa sezione con `Fantamercato`, che resta il mercato interno dei trasferibili e trattative della lega.
+
+## V306 - Calcio mercato giocatori interessati
+
+Il JSON statico `assets/calciomercato/links.json` supporta il campo `players`/`giocatori` per indicare i calciatori citati da un articolo. Il rendering mostra chip giocatore nelle card e include i nomi nella ricerca. La feature resta manuale/statica e non deve toccare il Fantamercato interno della lega. Documento: `docs/zonaorientale/calciomercato/CALCIOMERCATO_GIOCATORI_V306.md`.

@@ -898,3 +898,10 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiunte card articolo con filtri per squadra/topic e ricerca testuale.
 - Nessun recupero automatico da siti esterni, nessuna scrittura Firebase e nessuna modifica a Fantamercato/Listone/Rose/Admin.
 - Documentazione: `docs/zonaorientale/calciomercato/CALCIOMERCATO_BASE_V305.md`.
+
+## V306 - Calcio mercato: giocatori interessati
+
+- Estesa la sezione pubblica `Calcio mercato` con il campo `players`/`giocatori` negli articoli statici.
+- I giocatori interessati vengono mostrati come chip nelle card articolo e sono inclusi nella ricerca.
+- Nessuna lettura automatica da siti esterni, nessuno scraping, nessuna scrittura Firebase.
+- Funzionalita preservate: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, mobile navigation e Dark mode unico.

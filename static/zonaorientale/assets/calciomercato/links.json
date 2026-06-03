@@ -1,7 +1,7 @@
 {
-  "version": "V305",
+  "version": "V306",
   "updatedAt": "2026-06-03",
-  "notes": "Prima configurazione statica/manuale. Aggiungere articoli in articles[] con url, title, teamName, topic, sourceName, description e image quando disponibili.",
+  "notes": "Configurazione statica/manuale. Ogni articolo puo includere url, title, teamName, topic, sourceName, description, image, tags e players/giocatori con i nomi dei calciatori interessati.",
   "sources": [],
   "articles": []
 }

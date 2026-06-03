@@ -193,3 +193,7 @@ Prima di iniziare la nuova sezione Calcio mercato verificare: check pre-push, Li
 ## Nota V305 - Calcio mercato base statico
 
 La sezione `Calcio mercato` e' stata aggiunta come base statica/manuale. I dati sono in `static/zonaorientale/assets/calciomercato/links.json`. Non recupera automaticamente articoli da siti esterni e non modifica Firebase/EmailJS. Per evoluzioni automatiche usare una futura Netlify Function o altra sorgente server-side, evitando fetch diretti dal browser verso siti terzi.
+
+## V306 - Calcio mercato giocatori
+
+La sezione `Calcio mercato` supporta ora, per ogni articolo statico, l'elenco dei giocatori interessati tramite `players`/`giocatori`. La funzione e' solo statica/manuale: niente scraping, niente Netlify Function e niente Firebase. Preservare sempre Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin.

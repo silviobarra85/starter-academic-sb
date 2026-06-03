@@ -731,3 +731,11 @@ Test manuali:
 - Inserire temporaneamente un articolo in `assets/calciomercato/links.json` e verificare filtri squadra/topic, ricerca e link esterno.
 - Verificare che `#fantamercato` resti il mercato interno dei trasferibili.
 - Verificare Listone pubblico/Admin, Rose, Dashboard Presidente, Admin Diagnostica e mobile navigation.
+
+## Test V306 - Calcio mercato giocatori
+
+- Aprire `Calcio mercato` da desktop e mobile.
+- Verificare che gli articoli con `players`/`giocatori` mostrino chip leggibili.
+- Verificare che la ricerca trovi un articolo cercando il nome di un giocatore.
+- Verificare che il Fantamercato interno non sia stato confuso con la nuova sezione informativa.
+- Verificare Listone pubblico/Admin, Rose, Dashboard Presidente e Admin dopo la modifica.

@@ -921,3 +921,7 @@ Funzionalita da non perdere: Listone con `Modifica`/`Modifiche`/usciti storici/e
 ## V305 - Calcio mercato base statico
 
 V305 introduce la prima sezione pubblica `Calcio mercato`, isolata dal Fantamercato interno. La sezione legge dati statici/manuali da `assets/calciomercato/links.json`, mostra fonti e articoli con filtri squadra/topic e ricerca. Non effettua scraping, non usa Netlify Function e non scrive su Firebase. Prima di evolvere verso recupero automatico preservare Listone, Rose, Dashboard Presidente, Admin e mobile navigation.
+
+## V306 - Calcio mercato: giocatori interessati
+
+V306 estende `Calcio mercato` aggiungendo il campo `players`/`giocatori` agli articoli statici in `assets/calciomercato/links.json`. I nomi vengono mostrati come chip nelle card e inclusi nella ricerca. Non introduce recupero automatico da siti esterni e non tocca Firebase, EmailJS, Fantamercato interno, Listone, Rose, Admin o Dashboard Presidente. Documento tecnico: `docs/zonaorientale/calciomercato/CALCIOMERCATO_GIOCATORI_V306.md`.
