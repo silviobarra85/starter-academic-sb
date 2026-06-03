@@ -47,6 +47,7 @@ pass() {
 
 print_step "Contesto"
 printf 'Sito: %s\n' "$SITE_ROOT"
+app_file="$SITE_ROOT/assets/app.js"
 calciomercato_v317_marker="ZonaOrientaleCalciomercatoScrollV317"
 if grep -q "$calciomercato_v317_marker" "$app_file" && grep -q "renderCalciomercatoNoArticlesNoticeV317" "$app_file"; then
   pass "Calciomercato scroll/range RSS V317 presente"

@@ -1,85 +1,74 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SITE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-
-if git -C "$SITE_ROOT" rev-parse --show-toplevel >/dev/null 2>&1; then
-  ROOT="$(git -C "$SITE_ROOT" rev-parse --show-toplevel)"
-else
-  ROOT="$SITE_ROOT"
-fi
-
-APPLY=0
-GIT_RM=0
-
-usage() {
-  cat <<USAGE
-Uso: $0 [--apply] [--git-rm]
-
-Senza opzioni esegue solo un dry-run.
---apply   rimuove fisicamente i file/cartelle macOS trovati nella working tree.
---git-rm  rimuove dall'indice Git eventuali file macOS gia tracciati.
-
-Eseguire sempre prima senza opzioni e controllare l'elenco.
-USAGE
-}
+apply=0
+git_rm=0
 
 for arg in "$@"; do
   case "$arg" in
-    --apply) APPLY=1 ;;
-    --git-rm) GIT_RM=1 ;;
-    -h|--help) usage; exit 0 ;;
-    *) echo "Opzione non riconosciuta: $arg" >&2; usage; exit 2 ;;
+    --apply)
+      apply=1
+      ;;
+    --git-rm)
+      git_rm=1
+      ;;
+    -h|--help)
+      echo "Uso: $0 [--apply] [--git-rm]"
+      exit 0
+      ;;
+    *)
+      echo "Argomento non riconosciuto: $arg" >&2
+      exit 2
+      ;;
   esac
 done
 
-printf 'Root controllo: %s\n' "$ROOT"
-printf 'Modalita: %s\n' "$([[ "$APPLY" -eq 1 ]] && echo apply || echo dry-run)"
-if [[ "$GIT_RM" -eq 1 ]]; then
-  printf 'Git rm: attivo\n'
-fi
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+cd "$repo_root"
 
-mapfile -d '' found < <(find "$ROOT" \
-  -path "$ROOT/.git" -prune -o \
-  -path "$ROOT/node_modules" -prune -o \
-  \( -name '.DS_Store' -o -name '._*' -o -name '__MACOSX' -o -name '.AppleDouble' -o -name '.LSOverride' \) \
-  -print0)
+echo "Root controllo: $repo_root"
 
-printf '\n== File/cartelle macOS trovati ==\n'
-if [[ "${#found[@]}" -eq 0 ]]; then
-  printf 'Nessun file macOS trovato.\n'
+if [ "$apply" -eq 1 ] || [ "$git_rm" -eq 1 ]; then
+  echo "Modalita: apply"
 else
-  printf '%s\n' "${found[@]}"
+  echo "Modalita: dry-run"
 fi
 
-if [[ "$APPLY" -eq 1 && "${#found[@]}" -gt 0 ]]; then
-  printf '\n== Rimozione working tree ==\n'
-  for item in "${found[@]}"; do
-    rm -rf -- "$item"
-    printf 'Rimosso: %s\n' "$item"
-  done
-fi
+tmp_file="$(mktemp)"
+trap 'rm -f "$tmp_file"' EXIT
 
-if [[ "$GIT_RM" -eq 1 ]]; then
-  if git -C "$ROOT" rev-parse --show-toplevel >/dev/null 2>&1; then
-    mapfile -d '' tracked < <(git -C "$ROOT" ls-files -z | while IFS= read -r -d '' path; do
-      case "/$path" in
-        */.DS_Store|*/__MACOSX/*|*/._*|*/.AppleDouble/*|*/.LSOverride) printf '%s\0' "$path" ;;
-      esac
-    done)
-    printf '\n== File macOS tracciati da Git ==\n'
-    if [[ "${#tracked[@]}" -eq 0 ]]; then
-      printf 'Nessun file macOS tracciato.\n'
-    else
-      printf '%s\n' "${tracked[@]}"
-      git -C "$ROOT" rm -r --ignore-unmatch -- "${tracked[@]}"
-    fi
+find static/zonaorientale docs/zonaorientale \
+  \( -name ".DS_Store" -o -name "._*" -o -name "__MACOSX" -o -name ".AppleDouble" -o -name ".LSOverride" \) \
+  -print > "$tmp_file"
+
+if [ ! -s "$tmp_file" ]; then
+  echo "OK: nessun file macOS indesiderato trovato."
+else
+  echo "File macOS indesiderati trovati:"
+  cat "$tmp_file"
+
+  if [ "$apply" -eq 1 ]; then
+    while IFS= read -r path; do
+      if [ -d "$path" ]; then
+        rm -rf "$path"
+      else
+        rm -f "$path"
+      fi
+    done < "$tmp_file"
+    echo "OK: file macOS indesiderati rimossi dalla working tree."
   else
-    echo "Non sono dentro una repo Git: impossibile usare --git-rm." >&2
-    exit 1
+    echo "Dry-run: usa --apply per rimuovere i file non tracciati."
   fi
 fi
 
-printf '\nComando consigliato dopo eventuale pulizia:\n'
-printf '  static/zonaorientale/tools/check-zonaorientale.sh\n'
+if [ "$git_rm" -eq 1 ]; then
+  echo "Controllo file macOS tracciati da Git..."
+  git ls-files static/zonaorientale docs/zonaorientale | while IFS= read -r tracked; do
+    base="$(basename "$tracked")"
+    case "$base" in
+      .DS_Store|._*|__MACOSX|.AppleDouble|.LSOverride)
+        git rm -r -- "$tracked"
+        ;;
+    esac
+  done
+fi
