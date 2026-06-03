@@ -849,3 +849,11 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Nessuna funzione storica rimossa da `app.js`.
 - Preservati export CSV Listone admin-only, filtri Listone, Rose, Admin, Firebase, EmailJS e mobile.
 - Diagnostica: `window.ZonaOrientaleHelperCleanupV297`.
+
+## V300 - Audit CSS e pulizia controllata styles.css
+
+- Aggiunto `static/zonaorientale/tools/audit-css-v300.sh`.
+- Aggiunto `docs/zonaorientale/refactor/CSS_AUDIT_V300.md`.
+- Aggiornato `check-zonaorientale.sh` per verificare lo script e la documentazione V300.
+- Nessuna regola CSS viene rimossa in questa release.
+- Funzionalita a rischio esplicitamente preservate: Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico, Admin e pagine standalone.

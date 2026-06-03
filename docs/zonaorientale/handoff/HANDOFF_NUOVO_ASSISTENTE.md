@@ -866,3 +866,7 @@ Prima estrazione prudente verso il refactor di `assets/app.js`: aggiunto `assets
 ## Aggiornamento V297
 
 Il vecchio helper `assets/js/utils/shared-helpers-v294.js` e' da considerare obsoleto dopo V295/V296 e viene rimosso in V297. Non rimuovere `shared-helpers-v295.js`, usato dall'export CSV modifiche Listone. Ogni refactor successivo deve dichiarare funzionalita' a rischio e test di preservazione.
+
+## Aggiornamento V300
+
+Prima di qualunque nuova pulizia di `assets/styles.css`, eseguire `static/zonaorientale/tools/audit-css-v300.sh` e leggere `docs/zonaorientale/refactor/CSS_AUDIT_V300.md`. Non rimuovere regole che proteggono Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico V289, Admin, `competition.html` o `player.html` senza test mirati.

@@ -873,3 +873,7 @@ Funzionalita da preservare nei prossimi refactor JS: Listone con `Modifica`/expo
 ## V297 - Pulizia helper V294 obsoleto
 
 V297 rimuove il file helper non piu' importato `assets/js/utils/shared-helpers-v294.js`. Il file attivo resta `assets/js/utils/shared-helpers-v295.js`. Prima e dopo la rimozione verificare sempre che l'export CSV modifiche Listone resti admin-only e funzionante. Nessuna logica Firebase, EmailJS, Rose, Admin o mobile viene toccata.
+
+## V300 - Audit CSS e pulizia controllata styles.css
+
+V300 aggiunge `tools/audit-css-v300.sh` e il documento `docs/zonaorientale/refactor/CSS_AUDIT_V300.md`. La release non rimuove CSS e non cambia UI: serve a individuare import, residui e duplicati potenziali prima di qualunque pulizia di `assets/styles.css`. Funzionalita da preservare in ogni futura pulizia CSS: Listone con `Modifica`/export admin-only, rose e pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico V289, `competition.html`, `player.html` e Admin.

@@ -240,3 +240,20 @@ Il controllo pre-push segnala errore se `assets/js/utils/shared-helpers-v294.js`
 git rm static/zonaorientale/assets/js/utils/shared-helpers-v294.js
 static/zonaorientale/tools/check-zonaorientale.sh
 ```
+
+## Aggiornamento V300 - Audit CSS
+
+Il controllo pre-push verifica la presenza di:
+
+```text
+static/zonaorientale/tools/audit-css-v300.sh
+docs/zonaorientale/refactor/CSS_AUDIT_V300.md
+```
+
+Prima di ogni futura pulizia CSS eseguire anche:
+
+```bash
+static/zonaorientale/tools/audit-css-v300.sh
+```
+
+Lo script segnala possibili residui e duplicati, ma non autorizza cancellazioni automatiche.

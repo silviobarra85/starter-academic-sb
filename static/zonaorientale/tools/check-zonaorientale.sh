@@ -333,6 +333,26 @@ else
   warn "docs non disponibili; salto controllo documento audit asset/import V298"
 fi
 
+
+
+print_step "Audit CSS"
+css_audit_tool="$SCRIPT_DIR/audit-css-v300.sh"
+if [[ -x "$css_audit_tool" ]]; then
+  pass "tool audit CSS V300 presente: tools/audit-css-v300.sh"
+else
+  fail "tool audit CSS V300 mancante o non eseguibile: tools/audit-css-v300.sh"
+fi
+if [[ -n "$DOCS_ROOT" ]]; then
+  css_audit_doc="$DOCS_ROOT/refactor/CSS_AUDIT_V300.md"
+  if [[ -f "$css_audit_doc" ]]; then
+    pass "audit CSS V300 documentato: refactor/CSS_AUDIT_V300.md"
+  else
+    warn "audit CSS V300 non documentato; verificare docs/zonaorientale/refactor/CSS_AUDIT_V300.md"
+  fi
+else
+  warn "docs non disponibili; salto controllo documento audit CSS V300"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.\n' "$failures" "$warns" >&2

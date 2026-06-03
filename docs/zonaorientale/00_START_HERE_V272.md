@@ -161,3 +161,7 @@ I listoni possono arrivare con sigle o nomi estesi delle squadre reali. Il siste
 ## Aggiornamento V297
 
 V297 completa la pulizia del primo helper estratto: `shared-helpers-v294.js` e' obsoleto e va rimosso con `git rm`; `shared-helpers-v295.js` resta il modulo attivo. Verificare export CSV Listone admin-only prima del push.
+
+## Aggiornamento V300
+
+V300 introduce l'audit CSS non distruttivo `tools/audit-css-v300.sh` e il documento `refactor/CSS_AUDIT_V300.md`. Prima di pulire `styles.css`, verificare sempre le funzionalita a rischio: Listone, rose, Dashboard Presidente, mobile navigation, Dark mode unico, Admin, `competition.html` e `player.html`.
