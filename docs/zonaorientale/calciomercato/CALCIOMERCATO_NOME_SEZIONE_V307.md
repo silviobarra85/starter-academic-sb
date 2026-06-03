@@ -51,3 +51,8 @@ window.ZonaOrientaleCalciomercatoV307.label === "Calciomercato"
 window.ZonaOrientaleCalciomercatoV307.behaviorChangeOutsideSection === false
 window.ZonaOrientaleCalciomercatoV307.preservesStaticV306Logic === true
 ```
+
+
+## Nota V308
+
+Gli articoli Calciomercato possono ora dichiarare piu squadre coinvolte (`teams`, `teamNames`, `squadre`) e uno stato trattativa (`marketStatus`, `status`, `stato`). La route e il file dati restano invariati.

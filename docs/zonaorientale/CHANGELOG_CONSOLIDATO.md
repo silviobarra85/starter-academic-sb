@@ -911,3 +911,11 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Preservata la route interna `#calciomercato` e il JSON statico `assets/calciomercato/links.json`.
 - Nessuna modifica a Fantamercato interno, Listone, Rose, Admin, Firebase o EmailJS.
 
+
+
+## V308 - Calciomercato squadre multiple e stato trattativa
+
+- La sezione `Calciomercato` resta statica/manuale e non recupera automaticamente dati dai siti esterni.
+- Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
+- Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
+- Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.

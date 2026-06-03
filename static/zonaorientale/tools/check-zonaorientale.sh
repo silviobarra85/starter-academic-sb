@@ -219,6 +219,13 @@ else
   fail "Calciomercato V307 nome sezione non rilevato in assets/app.js"
 fi
 
+calciomercato_v308_marker="ZonaOrientaleCalciomercatoV308"
+if grep -q "$calciomercato_v308_marker" "$app_file" && grep -q "getCalciomercatoTeamsV308" "$app_file"; then
+  pass "Calciomercato V308 squadre multiple presente"
+else
+  fail "Calciomercato V308 squadre multiple non rilevato in assets/app.js"
+fi
+
 calciomercato_json="$SITE_ROOT/assets/calciomercato/links.json"
 if [[ -f "$calciomercato_json" ]]; then
   pass "configurazione Calciomercato presente: assets/calciomercato/links.json"
@@ -394,6 +401,12 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato nome sezione V307 documentato: calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md"
   else
     warn "Calciomercato nome sezione V307 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md"
+  fi
+  calciomercato_teams_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_SQUADRE_MULTIPLE_V308.md"
+  if [[ -f "$calciomercato_teams_doc" ]]; then
+    pass "Calciomercato squadre multiple V308 documentato: calciomercato/CALCIOMERCATO_SQUADRE_MULTIPLE_V308.md"
+  else
+    warn "Calciomercato squadre multiple V308 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_SQUADRE_MULTIPLE_V308.md"
   fi
   admin_diag_v303_doc="$DOCS_ROOT/admin/DIAGNOSTICA_DATI_V303.md"
   if [[ -f "$admin_diag_v303_doc" ]]; then

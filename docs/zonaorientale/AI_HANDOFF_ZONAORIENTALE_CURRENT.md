@@ -929,3 +929,11 @@ V306 estende `Calciomercato` aggiungendo il campo `players`/`giocatori` agli art
 
 V307 rinomina la sezione da `Calcio mercato` a `Calciomercato`. Il cambio e solo UI/documentale: resta invariata la logica statica V305/V306, inclusi articoli, fonti, filtri e giocatori interessati. La route interna resta `#calciomercato`. Documento: `docs/zonaorientale/calciomercato/CALCIOMERCATO_NOME_SEZIONE_V307.md`.
 
+
+
+## V308 - Calciomercato squadre multiple e stato trattativa
+
+- La sezione `Calciomercato` resta statica/manuale e non recupera automaticamente dati dai siti esterni.
+- Ogni articolo puo essere collegato a piu squadre tramite `teams`, `teamNames` o `squadre`.
+- Ogni articolo puo mostrare uno stato trattativa tramite `marketStatus`, `status` o `stato`.
+- Funzionalita preservate: Fantamercato interno, Listone, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e Dark mode unico.

@@ -92,3 +92,8 @@ Preservazione applicata:
 window.ZonaOrientaleCalciomercatoV306
 window.ZonaOrientaleCalciomercatoV306.getPlayers({ players: ['A', 'B'] })
 ```
+
+
+## Nota V308
+
+Gli articoli Calciomercato possono ora dichiarare piu squadre coinvolte (`teams`, `teamNames`, `squadre`) e uno stato trattativa (`marketStatus`, `status`, `stato`). La route e il file dati restano invariati.
