@@ -2,6 +2,6 @@
   "version": "V306",
   "updatedAt": "2026-06-03",
   "notes": "Configurazione statica/manuale. Ogni articolo puo includere url, title, teamName, topic, sourceName, description, image, tags e players/giocatori con i nomi dei calciatori interessati.",
-  "sources": [],
+  "sources": ["https://www.sosfanta.com/","https://www.tuttomercatoweb.com"],
   "articles": []
 }
