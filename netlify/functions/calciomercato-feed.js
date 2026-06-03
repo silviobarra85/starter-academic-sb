@@ -241,7 +241,7 @@ async function fetchSource(source) {
   if (!source.enabled && source.enabled !== undefined) return { source, articles: [], warning: `${source.name || source.url}: fonte disattivata` };
   const feedUrls = getSourceFeedUrls(source);
   if (!feedUrls.length) return { source, articles: [], warning: `${source.name || source.url}: feedUrl non configurato` };
-  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 250, 1, 500);
+  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 500, 1, 1000);
   const settled = await Promise.allSettled(feedUrls.map(async (feedUrl) => {
     const response = await fetchWithTimeout(feedUrl, { timeoutMs: Number(source.timeoutMs || 12000) });
     if (!response.ok) throw new Error(`${source.name || feedUrl}: HTTP ${response.status}`);
@@ -300,10 +300,24 @@ function articleMatchesQuery(article, query) {
 function articleMatchesDateRange(article, fromDate, toDate) {
   if (!fromDate && !toDate) return true;
   const timestamp = article.publishedAt ? new Date(article.publishedAt).getTime() : 0;
-  if (!timestamp || !Number.isFinite(timestamp)) return true;
+  if (!timestamp || !Number.isFinite(timestamp)) return false;
   if (fromDate && timestamp < fromDate.getTime()) return false;
   if (toDate && timestamp > toDate.getTime()) return false;
   return true;
+}
+
+function getFeedRange(articles) {
+  const timestamps = (Array.isArray(articles) ? articles : [])
+    .map((article) => article && article.publishedAt ? new Date(article.publishedAt).getTime() : 0)
+    .filter((timestamp) => timestamp && Number.isFinite(timestamp));
+  if (!timestamps.length) {
+    return { earliest: '', latest: '', totalBeforeDateRange: Array.isArray(articles) ? articles.length : 0 };
+  }
+  return {
+    earliest: new Date(Math.min(...timestamps)).toISOString(),
+    latest: new Date(Math.max(...timestamps)).toISOString(),
+    totalBeforeDateRange: Array.isArray(articles) ? articles.length : 0
+  };
 }
 
 function articleMatchesSource(article, sourceFilter) {
@@ -324,8 +338,8 @@ exports.handler = async (event) => {
     const activeSources = configuredSources
       .filter((source) => source && source.enabled !== false)
       .filter((source) => articleMatchesSource({ sourceName: source.name || source.label || '', sourceId: source.id || '' }, sourceFilter))
-      .slice(0, clampNumber(config?.maxSources, 20, 1, 20));
-    const globalLimit = clampNumber(params.limit || params.maxArticles || config?.maxArticles, 500, 1, 500);
+      .slice(0, clampNumber(config?.maxSources, 50, 1, 50));
+    const globalLimit = clampNumber(params.limit || params.maxArticles || config?.maxArticles, 1000, 1, 1000);
     const results = await Promise.allSettled(activeSources.map(fetchSource));
     const warnings = [];
     const articles = [];
@@ -354,14 +368,21 @@ exports.handler = async (event) => {
         if (!byUrl.has(article.url)) byUrl.set(article.url, article);
       });
 
-    const filteredArticles = Array.from(byUrl.values())
+    const uniqueArticles = Array.from(byUrl.values())
       .filter((article) => articleMatchesSource(article, sourceFilter))
-      .filter((article) => articleMatchesQuery(article, query))
+      .filter((article) => articleMatchesQuery(article, query));
+    const feedRange = getFeedRange(uniqueArticles);
+    const filteredArticles = uniqueArticles
       .filter((article) => articleMatchesDateRange(article, fromDate, toDate))
       .slice(0, globalLimit);
 
+    const rangeWarnings = [];
+    if ((fromDate || toDate) && !filteredArticles.length && uniqueArticles.length) {
+      rangeWarnings.push('Nessun articolo nel range richiesto: i feed RSS espongono solo gli ultimi articoli disponibili, non un archivio storico completo.');
+    }
+
     return jsonResponse(200, {
-      version: 'V316',
+      version: 'V317',
       sourceMode: 'automatic-rss',
       generatedAt: new Date().toISOString(),
       query,
@@ -372,15 +393,20 @@ exports.handler = async (event) => {
       limits: {
         maxArticles: globalLimit,
         maxSources: activeSources.length,
-        perSourceMax: 500
+        perSourceMax: 1000
       },
       sources,
-      warnings,
+      warnings: [...warnings, ...rangeWarnings],
+      feedRange: {
+        ...feedRange,
+        totalFetched: Array.from(byUrl.values()).length,
+        totalAfterQueryBeforeDateRange: uniqueArticles.length
+      },
       articles: filteredArticles
     });
   } catch (error) {
     return jsonResponse(200, {
-      version: 'V316',
+      version: 'V317',
       sourceMode: 'automatic-rss-error',
       generatedAt: new Date().toISOString(),
       sources: DEFAULT_SOURCES,

@@ -47,6 +47,13 @@ pass() {
 
 print_step "Contesto"
 printf 'Sito: %s\n' "$SITE_ROOT"
+calciomercato_v317_marker="ZonaOrientaleCalciomercatoScrollV317"
+if grep -q "$calciomercato_v317_marker" "$app_file" && grep -q "renderCalciomercatoNoArticlesNoticeV317" "$app_file"; then
+  pass "Calciomercato scroll/range RSS V317 presente"
+else
+  fail "Calciomercato scroll/range RSS V317 non rilevato in assets/app.js"
+fi
+
 if [[ -n "$REPO_ROOT" ]]; then
   printf 'Repo: %s\n' "$REPO_ROOT"
 else
@@ -254,15 +261,22 @@ else
   fail "Calciomercato fuso orario V312 non rilevato in assets/app.js"
 fi
 
+calciomercato_v317_marker="ZonaOrientaleCalciomercatoScrollV317"
+if grep -q "$calciomercato_v317_marker" "$app_file" && grep -q "renderCalciomercatoNoArticlesNoticeV317" "$app_file"; then
+  pass "Calciomercato scroll/range RSS V317 presente"
+else
+  fail "Calciomercato scroll/range RSS V317 non rilevato in assets/app.js"
+fi
+
 if [[ -n "$REPO_ROOT" ]]; then
   calciomercato_function="$REPO_ROOT/netlify/functions/calciomercato-feed.js"
   if [[ -f "$calciomercato_function" ]]; then
     node --check "$calciomercato_function" >/dev/null
     pass "Netlify Function Calciomercato presente e valida"
-    if grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V314'" "$calciomercato_function"; then
-      pass "Netlify Function Calciomercato feed/fonti V314 presente"
+    if grep -q "getSourceFeedUrls" "$calciomercato_function" && grep -q "version: 'V317'" "$calciomercato_function"; then
+      pass "Netlify Function Calciomercato scroll/range V317 presente"
     else
-      warn "Netlify Function Calciomercato V314 non rilevata; verificare feed multipli/fonti/filtro"
+      warn "Netlify Function Calciomercato V317 non rilevata; verificare scroll/range/limiti"
     fi
   else
     fail "Netlify Function Calciomercato mancante: netlify/functions/calciomercato-feed.js"
@@ -298,6 +312,13 @@ if [[ -n "$macos_found" ]]; then
   fi
 else
   pass "nessun file macOS indesiderato trovato nel sito/docs"
+fi
+
+calciomercato_v317_marker="ZonaOrientaleCalciomercatoScrollV317"
+if grep -q "$calciomercato_v317_marker" "$app_file" && grep -q "renderCalciomercatoNoArticlesNoticeV317" "$app_file"; then
+  pass "Calciomercato scroll/range RSS V317 presente"
+else
+  fail "Calciomercato scroll/range RSS V317 non rilevato in assets/app.js"
 fi
 
 if [[ -n "$REPO_ROOT" ]]; then
@@ -496,6 +517,19 @@ if [[ -n "$DOCS_ROOT" ]]; then
   else
     warn "Calciomercato fonti/filtro/AI V314 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_FONTI_AI_V314.md"
   fi
+  calciomercato_range_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_RICERCA_RANGE_V316.md"
+  if [[ -f "$calciomercato_range_doc" ]]; then
+    pass "Calciomercato ricerca/range V316 documentato: calciomercato/CALCIOMERCATO_RICERCA_RANGE_V316.md"
+  else
+    warn "Calciomercato ricerca/range V316 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_RICERCA_RANGE_V316.md"
+  fi
+  calciomercato_scroll_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_SCROLL_RANGE_V317.md"
+  if [[ -f "$calciomercato_scroll_doc" ]]; then
+    pass "Calciomercato scroll/range V317 documentato: calciomercato/CALCIOMERCATO_SCROLL_RANGE_V317.md"
+  else
+    warn "Calciomercato scroll/range V317 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_SCROLL_RANGE_V317.md"
+  fi
+
   resoconto_v313_doc="$DOCS_ROOT/RESOCONTO_SITO_V313.md"
   if [[ -f "$resoconto_v313_doc" ]]; then
     pass "Resoconto sito V313 presente: RESOCONTO_SITO_V313.md"

@@ -351,3 +351,21 @@
     width: 100%;
   }
 }
+
+/* V317 - Stato caricamento progressivo e messaggi range RSS. */
+.calciomercato-load-more-v316 {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.calciomercato-load-status-v317 {
+  min-height: 1.2rem;
+  margin: 0;
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+.calciomercato-empty-v317 {
+  margin-bottom: 1rem;
+}

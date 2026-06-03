@@ -38,13 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=316";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=317";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=316";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=316";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=317";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=317";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -96,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=316";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=317";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -120,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=316";
+} from "./js/domain/news-share-v228.js?v=317";
 import {
   getListoneValue,
   compareListoneValues
@@ -135,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=316";
+} from "./js/admin/listone-converter.js?v=317";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=316";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=316";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=317";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=317";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=316";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=316";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=316";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=316";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=317";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=317";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=317";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=317";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=316";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=316";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=316";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=317";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=317";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=317";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15569,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "316";
+const DEPLOY_EXPECTED_VERSION_V181 = "317";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23853,8 +23853,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=316";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=316";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=317";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=317";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -23872,9 +23872,11 @@ const calciomercatoStateV306 = {
   manualRange: false,
   autoWindowHours: 12,
   olderWindowStepHours: 24,
-  maxAutoWindowHours: 24 * 45,
+  maxAutoWindowHours: 24 * 180,
   loadingOlder: false,
-  lastAutomaticUrl: ""
+  lastAutomaticUrl: "",
+  lastLoadStatus: "",
+  lastOlderResult: null
 };
 
 function normalizeCalciomercatoValueV306(value) {
@@ -24016,8 +24018,8 @@ function resetCalciomercatoDefaultRangeV316() {
 function buildCalciomercatoAutomaticUrlV316() {
   const bounds = getCalciomercatoRangeBoundsV316();
   const url = new URL(CALCIOMERCATO_AUTO_FEED_URL_V309, window.location.origin);
-  url.searchParams.set("limit", "500");
-  url.searchParams.set("maxArticles", "500");
+  url.searchParams.set("limit", "1000");
+  url.searchParams.set("maxArticles", "1000");
   if (calciomercatoStateV306.search) url.searchParams.set("q", calciomercatoStateV306.search);
   if (calciomercatoStateV306.source && calciomercatoStateV306.source !== "all") url.searchParams.set("source", calciomercatoStateV306.source);
   if (bounds.fromIso) url.searchParams.set("from", bounds.fromIso);
@@ -24174,6 +24176,35 @@ function renderCalciomercatoArticleCardV306(article) {
     </article>`;
 }
 
+
+function getCalciomercatoFeedRangeLabelV317(feedRange) {
+  if (!feedRange || typeof feedRange !== "object") return "";
+  const earliest = feedRange.earliest ? formatCalciomercatoDateTimeRomeV312(feedRange.earliest) : "";
+  const latest = feedRange.latest ? formatCalciomercatoDateTimeRomeV312(feedRange.latest) : "";
+  if (earliest && latest) return `${earliest} - ${latest}`;
+  return earliest || latest || "";
+}
+
+function setCalciomercatoLoadStatusV317(message) {
+  calciomercatoStateV306.lastLoadStatus = String(message || "");
+  const target = document.getElementById("calciomercatoLoadStatusV317");
+  if (target) target.textContent = calciomercatoStateV306.lastLoadStatus;
+}
+
+function renderCalciomercatoNoArticlesNoticeV317() {
+  const automatic = String(calciomercatoStateV306.sourceMode || "").startsWith("automatic-rss");
+  const feedRange = calciomercatoStateV306.data?.feedRange || null;
+  const rangeLabel = getCalciomercatoFeedRangeLabelV317(feedRange);
+  const query = calciomercatoStateV306.search ? ` per <strong>${escapeHtml(calciomercatoStateV306.search)}</strong>` : "";
+  if (automatic) {
+    const archiveHint = rangeLabel
+      ? ` I feed attualmente disponibili coprono circa: <strong>${escapeHtml(rangeLabel)}</strong>.`
+      : " I feed RSS espongono solo gli ultimi articoli disponibili e non sono un archivio storico completo.";
+    return `<div class="notice notice-info calciomercato-empty-v317"><strong>Nessun articolo trovato${query} nel periodo selezionato.</strong>${archiveHint} Per cercare molto indietro nel tempo servirà un indice storico o una API/search dedicata.</div>`;
+  }
+  return `<div class="notice notice-info"><strong>Sezione pronta.</strong> Configura le fonti in <code>assets/calciomercato/links.json</code>: su Netlify gli articoli vengono recuperati automaticamente tramite funzione server-side.</div>`;
+}
+
 function renderCalciomercatoSourcesV306() {
   const target = document.getElementById("calciomercatoSourcesV306");
   if (!target) return;
@@ -24204,6 +24235,7 @@ function renderCalciomercatoV306() {
   const fromInput = document.getElementById("calciomercatoFromV316");
   const toInput = document.getElementById("calciomercatoToV316");
   const loadOlder = document.getElementById("calciomercatoLoadOlderV316");
+  const loadStatus = document.getElementById("calciomercatoLoadStatusV317");
   if (!list) return;
 
   ensureCalciomercatoDefaultRangeV316();
@@ -24213,9 +24245,10 @@ function renderCalciomercatoV306() {
     loadCalciomercatoDataV306();
   }
 
-  if (calciomercatoStateV306.loading) {
+  if (calciomercatoStateV306.loading && !calciomercatoStateV306.loadingOlder) {
     list.innerHTML = `<p class="muted">Caricamento articoli di mercato...</p>`;
-    if (meta) meta.textContent = "Caricamento dati statici.";
+    if (meta) meta.textContent = "Caricamento fonti Calciomercato.";
+    if (loadStatus) loadStatus.textContent = calciomercatoStateV306.lastLoadStatus || "";
     return;
   }
 
@@ -24242,10 +24275,12 @@ function renderCalciomercatoV306() {
   if (fromInput && fromInput.value !== calciomercatoStateV306.rangeFrom) fromInput.value = calciomercatoStateV306.rangeFrom;
   if (toInput && toInput.value !== calciomercatoStateV306.rangeTo) toInput.value = calciomercatoStateV306.rangeTo;
   if (loadOlder) {
-    loadOlder.hidden = calciomercatoStateV306.manualRange || calciomercatoStateV306.loading || !articles.length;
+    const canTryOlder = !calciomercatoStateV306.manualRange && calciomercatoStateV306.sourceMode === "automatic-rss";
+    loadOlder.hidden = !canTryOlder;
     loadOlder.disabled = !!calciomercatoStateV306.loadingOlder;
     loadOlder.textContent = calciomercatoStateV306.loadingOlder ? "Caricamento articoli meno recenti..." : "Carica articoli più vecchi";
   }
+  if (loadStatus) loadStatus.textContent = calciomercatoStateV306.lastLoadStatus || "";
   if (meta) {
     const modeLabel = calciomercatoStateV306.sourceMode === "automatic-rss" ? "recuperati automaticamente" : "da configurazione statica";
     const generatedLabel = formatCalciomercatoDateTimeRomeV312(calciomercatoStateV306.generatedAt);
@@ -24259,18 +24294,14 @@ function renderCalciomercatoV306() {
   }
 
   if (!articles.length) {
-    list.innerHTML = `
-      ${renderCalciomercatoWarningsV309()}
-      <div class="notice notice-info">
-        <strong>Sezione pronta.</strong> Configura le fonti in <code>assets/calciomercato/links.json</code>: su Netlify gli articoli vengono recuperati automaticamente tramite funzione server-side.
-      </div>`;
+    list.innerHTML = `${renderCalciomercatoWarningsV309()}${renderCalciomercatoNoArticlesNoticeV317()}`;
     renderCalciomercatoSourcesV306();
     return;
   }
 
   list.innerHTML = `${renderCalciomercatoWarningsV309()}${filtered.length
     ? filtered.map(renderCalciomercatoArticleCardV306).join("")
-    : `<p class="muted">Nessun articolo corrisponde ai filtri selezionati.</p>`}`;
+    : `<div class="notice notice-info calciomercato-empty-v317"><strong>Nessun articolo corrisponde ai filtri selezionati.</strong> Prova ad ampliare il range temporale o rimuovere qualche filtro.</div>`}`;
   renderCalciomercatoSourcesV306();
 }
 
@@ -24285,7 +24316,9 @@ function normalizeCalciomercatoDataV309(data, mode) {
     updatedAt: data?.updatedAt || data?.generatedAt || "",
     generatedAt: data?.generatedAt || data?.updatedAt || "",
     sourceMode: data?.sourceMode || data?.mode || mode || "static",
-    warnings
+    warnings,
+    feedRange: data?.feedRange || null,
+    limits: data?.limits || null
   };
 }
 
@@ -24302,11 +24335,13 @@ function renderCalciomercatoWarningsV309() {
   return `<div class="notice notice-warning calciomercato-warning-v309"><strong>Fonti non complete.</strong> ${shown.map((item) => escapeHtml(String(item))).join(" · ")}${warnings.length > shown.length ? " · ..." : ""}</div>`;
 }
 
-async function loadCalciomercatoDataV306() {
+async function loadCalciomercatoDataV306(options = {}) {
+  const preserveContent = !!options.preserveContent;
+  const restoreScrollY = Number.isFinite(options.restoreScrollY) ? options.restoreScrollY : null;
   calciomercatoStateV306.loading = true;
   calciomercatoStateV306.error = "";
   calciomercatoStateV306.warnings = [];
-  renderCalciomercatoV306();
+  if (!preserveContent) renderCalciomercatoV306();
   let staticFallbackError = null;
   try {
     try {
@@ -24335,34 +24370,53 @@ async function loadCalciomercatoDataV306() {
   } finally {
     calciomercatoStateV306.loading = false;
     renderCalciomercatoV306();
+    if (restoreScrollY !== null) {
+      requestAnimationFrame(() => window.scrollTo({ top: restoreScrollY, left: 0, behavior: "auto" }));
+    }
   }
 }
 
-function reloadCalciomercatoDataV316() {
+function reloadCalciomercatoDataV316(options = {}) {
   calciomercatoStateV306.loaded = false;
   calciomercatoStateV306.error = "";
   calciomercatoStateV306.warnings = [];
-  return loadCalciomercatoDataV306();
+  return loadCalciomercatoDataV306(options);
 }
 
 async function loadOlderCalciomercatoArticlesV316() {
   if (calciomercatoStateV306.loading || calciomercatoStateV306.loadingOlder || calciomercatoStateV306.manualRange) return;
+  const currentWindow = calciomercatoStateV306.autoWindowHours || 12;
   const nextWindow = Math.min(
-    calciomercatoStateV306.maxAutoWindowHours || (24 * 45),
-    (calciomercatoStateV306.autoWindowHours || 12) + (calciomercatoStateV306.olderWindowStepHours || 24)
+    calciomercatoStateV306.maxAutoWindowHours || (24 * 180),
+    currentWindow + (calciomercatoStateV306.olderWindowStepHours || 72)
   );
-  if (nextWindow === calciomercatoStateV306.autoWindowHours) return;
+  if (nextWindow === currentWindow) {
+    setCalciomercatoLoadStatusV317("Limite massimo di ricerca RSS raggiunto per questa sessione.");
+    return;
+  }
+  const previousCount = getCalciomercatoArticlesV306().length;
+  const previousScrollY = window.scrollY;
   calciomercatoStateV306.loadingOlder = true;
+  calciomercatoStateV306.lastOlderResult = null;
+  setCalciomercatoLoadStatusV317(`Caricamento articoli più vecchi: estendo il periodo da ${currentWindow} a ${nextWindow} ore...`);
+  renderCalciomercatoV306();
   const now = parseCalciomercatoLocalInputDateV316(calciomercatoStateV306.rangeTo) || new Date();
   const from = new Date(now.getTime() - nextWindow * 60 * 60 * 1000);
   calciomercatoStateV306.autoWindowHours = nextWindow;
   calciomercatoStateV306.rangeFrom = formatCalciomercatoDateTimeLocalInputV316(from);
   calciomercatoStateV306.manualRange = false;
   try {
-    await reloadCalciomercatoDataV316();
+    await reloadCalciomercatoDataV316({ preserveContent: true, restoreScrollY: previousScrollY });
   } finally {
+    const newCount = getCalciomercatoArticlesV306().length;
+    const added = Math.max(0, newCount - previousCount);
     calciomercatoStateV306.loadingOlder = false;
+    calciomercatoStateV306.lastOlderResult = { previousCount, newCount, added, windowHours: nextWindow };
+    setCalciomercatoLoadStatusV317(added
+      ? `Caricati ${added} articoli aggiuntivi. Puoi continuare a scorrere per estendere ancora il periodo.`
+      : `Nessun articolo più vecchio trovato nei feed RSS disponibili. I feed non sono un archivio storico completo; periodo esteso a ${nextWindow} ore.`);
     renderCalciomercatoV306();
+    requestAnimationFrame(() => window.scrollTo({ top: previousScrollY, left: 0, behavior: "auto" }));
   }
 }
 
@@ -24887,7 +24941,7 @@ window.ZonaOrientaleCalciomercatoRangeV316 = {
   label: "Calciomercato ricerca e range RSS",
   aiImplemented: false,
   defaultHours: 12,
-  maxArticles: 500,
+  maxArticles: 1000,
   removedSources: ["Virgilio Sport", "La Gazzetta dello Sport"],
   behaviorChangeOutsideSection: false,
   protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
@@ -24895,4 +24949,26 @@ window.ZonaOrientaleCalciomercatoRangeV316 = {
   getState: window.ZonaOrientaleCalciomercatoV306?.getState,
   reload: reloadCalciomercatoDataV316,
   loadOlder: loadOlderCalciomercatoArticlesV316
+};
+
+/* V317 - Calciomercato scroll stabile e range RSS esplicito.
+ * Corregge il caricamento progressivo: non sostituisce piu la lista con il loader quando si caricano articoli piu vecchi,
+ * mantiene la posizione di scroll e chiarisce che i feed RSS non sono un archivio storico completo.
+ * Funzionalita preservate: Fantamercato interno, Listone, Rose, Admin, Presidente, Firebase/EmailJS e feed/fallback Calciomercato.
+ */
+window.ZonaOrientaleCalciomercatoScrollV317 = {
+  version: "V317",
+  label: "Calciomercato scroll stabile e range RSS",
+  aiImplemented: false,
+  preservesScrollOnOlderLoad: true,
+  rssIsNotHistoricalArchive: true,
+  defaultHours: 12,
+  olderStepHours: calciomercatoStateV306.olderWindowStepHours,
+  maxAutoWindowHours: calciomercatoStateV306.maxAutoWindowHours,
+  behaviorChangeOutsideSection: false,
+  protectedFeatures: window.ZonaOrientaleCalciomercatoV306?.protectedFeatures || [],
+  getState: window.ZonaOrientaleCalciomercatoV306?.getState,
+  getFeedRangeLabel: () => getCalciomercatoFeedRangeLabelV317(calciomercatoStateV306.data?.feedRange),
+  loadOlder: loadOlderCalciomercatoArticlesV316,
+  reload: reloadCalciomercatoDataV316
 };
