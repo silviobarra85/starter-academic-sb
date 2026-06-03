@@ -23,16 +23,16 @@
   <meta name="twitter:description" content="Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d&#039;oro, statistiche, archivio e comunicati." />
   <meta name="twitter:image" content="https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png" />
   <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=314" />
-  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=314" />
+  <link rel="stylesheet" href="./assets/styles.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=316" />
+  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=316" />
 </head>
 <body>
   <header class="app-header">
@@ -287,11 +287,24 @@
             <select id="calciomercatoSourceFilterV314" class="input filter-input" aria-label="Filtro fonte calciomercato">
               <option value="all">Tutte le fonti</option>
             </select>
-            <input id="calciomercatoSearchV306" class="input search-input" type="search" placeholder="Cerca squadra, giocatore, fonte, titolo, topic..." />
+            <input id="calciomercatoSearchV306" class="input search-input" type="search" placeholder="Cerca giocatore, allenatore, squadra, fonte, titolo..." />
+            <label class="calciomercato-range-field-v316">
+              <span>Da</span>
+              <input id="calciomercatoFromV316" class="input filter-input" type="datetime-local" aria-label="Data e ora inizio ricerca Calciomercato" />
+            </label>
+            <label class="calciomercato-range-field-v316">
+              <span>A</span>
+              <input id="calciomercatoToV316" class="input filter-input" type="datetime-local" aria-label="Data e ora fine ricerca Calciomercato" />
+            </label>
+            <button id="calciomercatoApplyRangeV316" class="button button-small" type="button">Aggiorna risultati</button>
+            <button id="calciomercatoResetRangeV316" class="button button-secondary button-small" type="button">Ultime 12 ore</button>
           </div>
         </div>
         <div id="calciomercatoArticlesV306" class="calciomercato-grid-v306">
           <p class="muted">Caricamento articoli di mercato...</p>
+        </div>
+        <div class="calciomercato-load-more-v316">
+          <button id="calciomercatoLoadOlderV316" class="button button-secondary" type="button" hidden>Carica articoli più vecchi</button>
         </div>
       </section>
 
@@ -1687,11 +1700,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V314 calciomercato fonti e pulizia · Ultimo aggiornamento 03/06/2026</p>
+    <p>ZonaOrientale Salerno · V316 calciomercato ricerca e range · Ultimo aggiornamento 03/06/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=314"></script>
+  <script type="module" src="./assets/app.js?v=316"></script>
 </body>
 </html>
 

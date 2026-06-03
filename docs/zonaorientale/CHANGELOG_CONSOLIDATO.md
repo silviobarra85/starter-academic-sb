@@ -960,3 +960,12 @@ V309 introduce il recupero automatico degli articoli Calciomercato tramite Netli
 - Aumentati i limiti configurabili degli articoli recuperabili dalla Netlify Function.
 - Documentata la fattibilita' del futuro modulo AI per riepiloghi per giocatore/squadra.
 - Nessuna modifica a Fantamercato interno, Firebase, EmailJS, Listone, Rose, Dashboard Presidente o Admin.
+
+## V316 - Calciomercato ricerca e range
+
+- Rimossa l'idea di applicare ora la sintesi AI: nessuna funzione AI e nessuna chiave OpenAI richiesta.
+- Rimossi dalle fonti attive Virgilio Sport e La Gazzetta dello Sport.
+- Aggiunti ricerca per keyword e range temporale sui feed RSS Calciomercato.
+- Default UI: ultime 12 ore; scroll/pulsante caricano articoli più vecchi.
+- Limiti feed alzati a 500 articoli totali, 250 per fonte, 20 fonti.
+- Funzionalita da preservare: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.

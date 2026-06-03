@@ -6,7 +6,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://www.tuttomercatoweb.com/rss/'],
     enabled: true,
     topic: 'Mercato',
-    limit: 36
+    limit: 250
   },
   {
     id: 'sosfanta',
@@ -15,7 +15,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://www.sosfanta.com/feed/'],
     enabled: true,
     topic: 'Fantacalcio',
-    limit: 32
+    limit: 250
   },
   {
     id: 'gianlucadimarzio',
@@ -24,7 +24,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://gianlucadimarzio.com/rss/'],
     enabled: true,
     topic: 'Mercato',
-    limit: 28
+    limit: 250
   },
   {
     id: 'fantacalcio',
@@ -33,28 +33,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://rss.fantacalcio.it/'],
     enabled: true,
     topic: 'Fantacalcio',
-    limit: 28
-  },
-  {
-    id: 'gazzetta',
-    name: 'La Gazzetta dello Sport',
-    url: 'https://www.gazzetta.it',
-    feedUrls: [
-      'https://www.gazzetta.it/dynamic-feed/rss/section/Calciomercato.xml',
-      'https://www.gazzetta.it/dynamic-feed/rss/section/Calcio/Serie-A.xml'
-    ],
-    enabled: true,
-    topic: 'Mercato',
-    limit: 24
-  },
-  {
-    id: 'virgilio-sport',
-    name: 'Virgilio Sport',
-    url: 'https://sport.virgilio.it',
-    feedUrls: ['https://sport.virgilio.it/feed/rss/'],
-    enabled: true,
-    topic: 'Mercato',
-    limit: 24
+    limit: 250
   },
   {
     id: 'calciomercato-it',
@@ -63,7 +42,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://www.calciomercato.it/feed/'],
     enabled: true,
     topic: 'Mercato',
-    limit: 24
+    limit: 250
   }
 ];
 
@@ -135,7 +114,7 @@ function getSourceFeedUrls(source) {
 }
 
 async function fetchWithTimeout(url, options = {}) {
-  const timeoutMs = Number(options.timeoutMs || 8500);
+  const timeoutMs = Number(options.timeoutMs || 12000);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -262,9 +241,9 @@ async function fetchSource(source) {
   if (!source.enabled && source.enabled !== undefined) return { source, articles: [], warning: `${source.name || source.url}: fonte disattivata` };
   const feedUrls = getSourceFeedUrls(source);
   if (!feedUrls.length) return { source, articles: [], warning: `${source.name || source.url}: feedUrl non configurato` };
-  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 36, 1, 80);
+  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 250, 1, 500);
   const settled = await Promise.allSettled(feedUrls.map(async (feedUrl) => {
-    const response = await fetchWithTimeout(feedUrl, { timeoutMs: Number(source.timeoutMs || 8500) });
+    const response = await fetchWithTimeout(feedUrl, { timeoutMs: Number(source.timeoutMs || 12000) });
     if (!response.ok) throw new Error(`${source.name || feedUrl}: HTTP ${response.status}`);
     const xml = await response.text();
     return parseFeed(xml, { ...source, feedUrl }).filter(isLikelyMarketArticle);
@@ -286,12 +265,67 @@ async function fetchSource(source) {
   return { source, articles: uniqueArticles, warning };
 }
 
+function parseDateParam(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return null;
+  const parsed = new Date(raw);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
+function normalizeSearch(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+function articleMatchesQuery(article, query) {
+  const q = normalizeSearch(query);
+  if (!q) return true;
+  const haystack = normalizeSearch([
+    article.title,
+    article.description,
+    article.sourceName,
+    article.url,
+    article.topic,
+    article.marketStatus,
+    ...(Array.isArray(article.teams) ? article.teams : []),
+    ...(Array.isArray(article.players) ? article.players : []),
+    ...(Array.isArray(article.tags) ? article.tags : [])
+  ].join(' '));
+  return haystack.includes(q);
+}
+
+function articleMatchesDateRange(article, fromDate, toDate) {
+  if (!fromDate && !toDate) return true;
+  const timestamp = article.publishedAt ? new Date(article.publishedAt).getTime() : 0;
+  if (!timestamp || !Number.isFinite(timestamp)) return true;
+  if (fromDate && timestamp < fromDate.getTime()) return false;
+  if (toDate && timestamp > toDate.getTime()) return false;
+  return true;
+}
+
+function articleMatchesSource(article, sourceFilter) {
+  const source = normalizeSearch(sourceFilter);
+  if (!source || source === 'all') return true;
+  return normalizeSearch(article.sourceName) === source || normalizeSearch(article.sourceId) === source;
+}
+
 exports.handler = async (event) => {
   try {
     const config = await loadConfigFromSite(event).catch(() => null);
     const configuredSources = Array.isArray(config?.sources) && config.sources.length ? config.sources : DEFAULT_SOURCES;
-    const activeSources = configuredSources.filter((source) => source && source.enabled !== false).slice(0, clampNumber(config?.maxSources, 10, 1, 14));
-    const globalLimit = clampNumber(event.queryStringParameters?.limit || config?.maxArticles, 80, 1, 120);
+    const params = event.queryStringParameters || {};
+    const query = String(params.q || params.query || '').trim();
+    const fromDate = parseDateParam(params.from || params.dateFrom || params.start);
+    const toDate = parseDateParam(params.to || params.dateTo || params.end);
+    const sourceFilter = String(params.source || '').trim();
+    const activeSources = configuredSources
+      .filter((source) => source && source.enabled !== false)
+      .filter((source) => articleMatchesSource({ sourceName: source.name || source.label || '', sourceId: source.id || '' }, sourceFilter))
+      .slice(0, clampNumber(config?.maxSources, 20, 1, 20));
+    const globalLimit = clampNumber(params.limit || params.maxArticles || config?.maxArticles, 500, 1, 500);
     const results = await Promise.allSettled(activeSources.map(fetchSource));
     const warnings = [];
     const articles = [];
@@ -320,17 +354,33 @@ exports.handler = async (event) => {
         if (!byUrl.has(article.url)) byUrl.set(article.url, article);
       });
 
+    const filteredArticles = Array.from(byUrl.values())
+      .filter((article) => articleMatchesSource(article, sourceFilter))
+      .filter((article) => articleMatchesQuery(article, query))
+      .filter((article) => articleMatchesDateRange(article, fromDate, toDate))
+      .slice(0, globalLimit);
+
     return jsonResponse(200, {
-      version: 'V314',
+      version: 'V316',
       sourceMode: 'automatic-rss',
       generatedAt: new Date().toISOString(),
+      query,
+      range: {
+        from: fromDate ? fromDate.toISOString() : '',
+        to: toDate ? toDate.toISOString() : ''
+      },
+      limits: {
+        maxArticles: globalLimit,
+        maxSources: activeSources.length,
+        perSourceMax: 500
+      },
       sources,
       warnings,
-      articles: Array.from(byUrl.values()).slice(0, globalLimit)
+      articles: filteredArticles
     });
   } catch (error) {
     return jsonResponse(200, {
-      version: 'V314',
+      version: 'V316',
       sourceMode: 'automatic-rss-error',
       generatedAt: new Date().toISOString(),
       sources: DEFAULT_SOURCES,

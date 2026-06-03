@@ -237,3 +237,12 @@ Calciomercato ora formatta in modo esplicito in `Europe/Rome` sia l'orario artic
 ## V314 - Nota rapida
 
 Calciomercato aggiornato con filtro fonte, fonti RSS aggiuntive e ordine corretto del filtro squadra (`Tutte le squadre`, `Generale`, squadre). Il modulo AI di riepilogo giocatore/squadra e' solo pianificato, non implementato.
+
+## V316 - Calciomercato ricerca e range
+
+- Rimossa l'idea di applicare ora la sintesi AI: nessuna funzione AI e nessuna chiave OpenAI richiesta.
+- Rimossi dalle fonti attive Virgilio Sport e La Gazzetta dello Sport.
+- Aggiunti ricerca per keyword e range temporale sui feed RSS Calciomercato.
+- Default UI: ultime 12 ore; scroll/pulsante caricano articoli più vecchi.
+- Limiti feed alzati a 500 articoli totali, 250 per fonte, 20 fonti.
+- Funzionalita da preservare: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.

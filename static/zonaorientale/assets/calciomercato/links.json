@@ -1,8 +1,8 @@
 {
-  "version": "V314",
+  "version": "V316",
   "updatedAt": "2026-06-03",
   "sourceMode": "automatic-rss",
-  "notes": "Config fonti Calciomercato. La Netlify Function legge i feed RSS configurati, supporta filtro fonte lato UI, feedUrl/feedUrls multipli, deduplica per URL e usa articles come fallback/manuale.",
+  "notes": "Config fonti Calciomercato. La Netlify Function legge i feed RSS configurati, supporta ricerca per nome, filtro fonte e range temporale; di default la UI mostra le ultime 12 ore e carica articoli piu vecchi allo scroll.",
   "sources": [
     {
       "id": "tmw",
@@ -13,7 +13,8 @@
       ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 36
+      "limit": 250,
+      "timeoutMs": 12000
     },
     {
       "id": "sosfanta",
@@ -24,7 +25,8 @@
       ],
       "enabled": true,
       "topic": "Fantacalcio",
-      "limit": 32
+      "limit": 250,
+      "timeoutMs": 12000
     },
     {
       "id": "gianlucadimarzio",
@@ -35,7 +37,8 @@
       ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 28
+      "limit": 250,
+      "timeoutMs": 12000
     },
     {
       "id": "fantacalcio",
@@ -46,30 +49,8 @@
       ],
       "enabled": true,
       "topic": "Fantacalcio",
-      "limit": 28
-    },
-    {
-      "id": "gazzetta",
-      "name": "La Gazzetta dello Sport",
-      "url": "https://www.gazzetta.it",
-      "feedUrls": [
-        "https://www.gazzetta.it/dynamic-feed/rss/section/Calciomercato.xml",
-        "https://www.gazzetta.it/dynamic-feed/rss/section/Calcio/Serie-A.xml"
-      ],
-      "enabled": true,
-      "topic": "Mercato",
-      "limit": 24
-    },
-    {
-      "id": "virgilio-sport",
-      "name": "Virgilio Sport",
-      "url": "https://sport.virgilio.it",
-      "feedUrls": [
-        "https://sport.virgilio.it/feed/rss/"
-      ],
-      "enabled": true,
-      "topic": "Mercato",
-      "limit": 24
+      "limit": 250,
+      "timeoutMs": 12000
     },
     {
       "id": "calciomercato-it",
@@ -80,7 +61,8 @@
       ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 24
+      "limit": 250,
+      "timeoutMs": 12000
     }
   ],
   "suggestedSources": [
@@ -94,7 +76,13 @@
     }
   ],
   "articles": [],
-  "maxArticles": 120,
-  "sourceLimit": 36,
-  "maxSources": 10
+  "maxArticles": 500,
+  "sourceLimit": 250,
+  "maxSources": 20,
+  "defaultWindowHours": 12,
+  "olderWindowStepHours": 24,
+  "removedSourcesV316": [
+    "Virgilio Sport",
+    "La Gazzetta dello Sport"
+  ]
 }

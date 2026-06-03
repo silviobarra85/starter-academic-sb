@@ -807,3 +807,12 @@ Test manuali:
 - `Calciomercato`: filtrare per fonte senza perdere ricerca, topic, squadre e giocatori.
 - Netlify Function: `/.netlify/functions/calciomercato-feed?limit=120` restituisce JSON valido.
 - Verificare che Fantamercato interno, Listone, Rose, Admin, Dashboard Presidente e mobile nav restino invariati.
+
+## V316 - Calciomercato ricerca e range
+
+- Rimossa l'idea di applicare ora la sintesi AI: nessuna funzione AI e nessuna chiave OpenAI richiesta.
+- Rimossi dalle fonti attive Virgilio Sport e La Gazzetta dello Sport.
+- Aggiunti ricerca per keyword e range temporale sui feed RSS Calciomercato.
+- Default UI: ultime 12 ore; scroll/pulsante caricano articoli più vecchi.
+- Limiti feed alzati a 500 articoli totali, 250 per fonte, 20 fonti.
+- Funzionalita da preservare: Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.

@@ -316,3 +316,38 @@
     overflow: hidden;
   }
 }
+
+
+/* V316 - Ricerca e range temporale Calciomercato. */
+.calciomercato-range-field-v316 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.calciomercato-range-field-v316 .input {
+  min-width: 190px;
+}
+
+.calciomercato-load-more-v316 {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 720px) {
+  .calciomercato-range-field-v316 {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .calciomercato-range-field-v316 .input,
+  #calciomercatoApplyRangeV316,
+  #calciomercatoResetRangeV316 {
+    width: 100%;
+  }
+}
