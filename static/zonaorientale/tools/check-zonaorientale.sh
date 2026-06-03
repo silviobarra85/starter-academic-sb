@@ -183,6 +183,13 @@ else
   fail "export modifiche Listone admin-only V296 non rilevato in assets/app.js"
 fi
 
+helper_rewire_v302_marker="ZonaOrientaleAppHelperRewireV302"
+if grep -q "$helper_rewire_v302_marker" "$app_file" && grep -q "rowsToCsv(rows, columns" "$app_file"; then
+  pass "secondo collegamento helper CSV V302 presente"
+else
+  fail "secondo collegamento helper CSV V302 non rilevato in assets/app.js"
+fi
+
 print_step "File macOS indesiderati"
 macos_roots=("$SITE_ROOT")
 if [[ -n "$DOCS_ROOT" ]]; then
@@ -309,6 +316,19 @@ if [[ -n "$DOCS_ROOT" ]]; then
   else
     warn "CSS refactor stabile V299 non documentato; verificare docs/zonaorientale/refactor/CSS_REFACTOR_STABLE_V299.md"
   fi
+
+  app_helper_rewire_v302_doc="$DOCS_ROOT/refactor/APP_HELPER_REWIRE_V302.md"
+  if [[ -f "$app_helper_rewire_v302_doc" ]]; then
+    pass "secondo collegamento helper V302 documentato: refactor/APP_HELPER_REWIRE_V302.md"
+  else
+    warn "secondo collegamento helper V302 non documentato; verificare docs/zonaorientale/refactor/APP_HELPER_REWIRE_V302.md"
+  fi
+  calciomercato_plan_doc="$DOCS_ROOT/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
+  if [[ -f "$calciomercato_plan_doc" ]]; then
+    pass "studio fattibilita Calcio mercato V302 documentato: pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
+  else
+    warn "studio fattibilita Calcio mercato V302 non trovato; se si pianifica la feature creare docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md"
+  fi
 else
   warn "docs non disponibili; salto controllo audit refactor"
 fi
@@ -341,6 +361,23 @@ if [[ -x "$css_audit_tool" ]]; then
   pass "tool audit CSS V300 presente: tools/audit-css-v300.sh"
 else
   fail "tool audit CSS V300 mancante o non eseguibile: tools/audit-css-v300.sh"
+fi
+
+cleanup_css_tool="$SCRIPT_DIR/cleanup-css-refactor-v301.sh"
+if [[ -x "$cleanup_css_tool" ]]; then
+  pass "tool pulizia CSS refactor V301 presente: tools/cleanup-css-refactor-v301.sh"
+else
+  fail "tool pulizia CSS refactor V301 mancante o non eseguibile: tools/cleanup-css-refactor-v301.sh"
+fi
+if [[ -n "$DOCS_ROOT" ]]; then
+  css_cleanup_doc="$DOCS_ROOT/refactor/CSS_CLEANUP_V301.md"
+  if [[ -f "$css_cleanup_doc" ]]; then
+    pass "pulizia CSS refactor V301 documentata: refactor/CSS_CLEANUP_V301.md"
+  else
+    warn "pulizia CSS refactor V301 non documentata; verificare docs/zonaorientale/refactor/CSS_CLEANUP_V301.md"
+  fi
+else
+  warn "docs non disponibili; salto controllo documento pulizia CSS V301"
 fi
 if [[ -n "$DOCS_ROOT" ]]; then
   css_audit_doc="$DOCS_ROOT/refactor/CSS_AUDIT_V300.md"

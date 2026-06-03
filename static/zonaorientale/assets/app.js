@@ -38,13 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=300";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=302";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=300";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=300";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=302";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=302";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -96,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=300";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=302";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -120,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=300";
+} from "./js/domain/news-share-v228.js?v=302";
 import {
   getListoneValue,
   compareListoneValues
@@ -135,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=300";
+} from "./js/admin/listone-converter.js?v=302";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=300";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=300";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=302";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=302";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=300";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=300";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=300";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=300";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=302";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=302";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=302";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=302";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=300";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=300";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=300";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=302";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=302";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=302";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15569,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "300";
+const DEPLOY_EXPECTED_VERSION_V181 = "302";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -22975,11 +22975,16 @@ function buildListoneChangeExportCsvV278() {
     ["costo", "Costo"],
     ["fantacalcioId", "Fantacalcio ID"]
   ];
+  const helper = window.ZonaOrientaleSharedHelpersV295 || ZonaOrientaleSharedHelpersV295;
+  if (helper && typeof helper.rowsToCsv === "function") {
+    const columns = headers.map(([key, label]) => ({ key, label }));
+    return { csv: `﻿${helper.rowsToCsv(rows, columns, ";")}`, rows };
+  }
   const lines = [headers.map(([, label]) => csvEscapeV278(label)).join(";")];
   rows.forEach((row) => {
     lines.push(headers.map(([key]) => csvEscapeV278(row[key])).join(";"));
   });
-  return { csv: `\ufeff${lines.join("\n")}`, rows };
+  return { csv: `﻿${lines.join("\n")}`, rows };
 }
 
 function downloadTextFileV278(filename, content, mimeType = "text/csv;charset=utf-8") {
@@ -23595,4 +23600,60 @@ window.ZonaOrientaleCssAuditV300 = {
   ],
   auditTool: "tools/audit-css-v300.sh",
   documentation: "docs/zonaorientale/refactor/CSS_AUDIT_V300.md"
+};
+
+/* V301 - Pulizia controllata CSS refactor residui.
+ * Release non distruttiva: aggiunge uno script dry-run/apply per rimuovere
+ * solo i CSS refactor versionati obsoleti V291/V292, preservando gli alias stabili V299.
+ */
+window.ZonaOrientaleCssCleanupV301 = {
+  version: "V301",
+  feature: "cleanup-css-refactor-residui",
+  behaviorChange: false,
+  removesRuntimeCss: false,
+  stableCssRequired: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css",
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  obsoleteCssCandidates: [
+    "assets/css/refactor/mobile-controls-v291.css",
+    "assets/css/refactor/rosters-tables-v291.css",
+    "assets/css/refactor/mobile-controls-v292.css",
+    "assets/css/refactor/rosters-tables-v292.css",
+    "assets/css/refactor/theme-light-suspended-v292.css"
+  ],
+  cleanupTool: "tools/cleanup-css-refactor-v301.sh",
+  preserves: [
+    "Listone: Modifica, filtri, usciti storici, export CSV admin-only",
+    "Rose e pagina squadra: prima colonna sticky e righe compatte",
+    "Dashboard Presidente e tabelle rosa",
+    "Mobile: bottom navigation, menu Altro, pulsante Su",
+    "Dark mode unico V289 e Light mode sospesa",
+    "competition.html e player.html"
+  ]
+};
+
+/* V302 - Secondo collegamento helper CSV condiviso.
+ * Collega la costruzione del CSV Listone a rowsToCsv V295, mantenendo fallback legacy,
+ * BOM UTF-8, separatore ; e restrizione export Admin-only V296.
+ */
+window.ZonaOrientaleAppHelperRewireV302 = {
+  version: "V302",
+  behaviorChange: false,
+  preservedFeatures: [
+    "Listone pubblico",
+    "Colonna Modifica",
+    "Filtro Modifiche",
+    "Usciti storici",
+    "Export CSV admin-only V296",
+    "Rose e pagina squadra",
+    "Dashboard Presidente",
+    "Admin",
+    "Firebase/Auth/EmailJS"
+  ],
+  rewiredCallSites: [
+    "buildListoneChangeExportCsvV278 -> ZonaOrientaleSharedHelpersV295.rowsToCsv"
+  ],
+  fallback: "csvEscapeV278 legacy path resta disponibile se helper non caricato"
 };

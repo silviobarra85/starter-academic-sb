@@ -877,3 +877,25 @@ V297 rimuove il file helper non piu' importato `assets/js/utils/shared-helpers-v
 ## V300 - Audit CSS e pulizia controllata styles.css
 
 V300 aggiunge `tools/audit-css-v300.sh` e il documento `docs/zonaorientale/refactor/CSS_AUDIT_V300.md`. La release non rimuove CSS e non cambia UI: serve a individuare import, residui e duplicati potenziali prima di qualunque pulizia di `assets/styles.css`. Funzionalita da preservare in ogni futura pulizia CSS: Listone con `Modifica`/export admin-only, rose e pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico V289, `competition.html`, `player.html` e Admin.
+
+## V301 - Pulizia controllata CSS refactor residui
+
+V301 aggiunge `static/zonaorientale/tools/cleanup-css-refactor-v301.sh` e `docs/zonaorientale/refactor/CSS_CLEANUP_V301.md`. Lo script rimuove solo vecchi CSS refactor versionati V291/V292, e solo dopo aver verificato che non siano referenziati dagli HTML principali o da `assets/app.js`. Non cambia UI o runtime.
+
+Funzionalita da preservare in ogni pulizia CSS: Listone con `Modifica`/export admin-only, rose e pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico V289, Admin, `competition.html` e `player.html`.
+
+## V302 - Helper CSV condiviso e Calcio mercato messo in backlog
+
+V302 collega il CSV export del Listone a `ZonaOrientaleSharedHelpersV295.rowsToCsv`, preservando fallback legacy, BOM UTF-8, separatore `;` e restrizione Admin-only V296.
+
+Diagnostica:
+
+```js
+window.ZonaOrientaleAppHelperRewireV302
+```
+
+Funzionalita' a rischio preservate: Listone pubblico, colonna `Modifica`, filtro `Modifiche`, usciti storici, export CSV solo Admin, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS.
+
+La Light mode resta sospesa; il piano di recupero Light non fa parte della roadmap corrente.
+
+La sezione `Calcio mercato` e' stata valutata in `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`, ma non implementata.

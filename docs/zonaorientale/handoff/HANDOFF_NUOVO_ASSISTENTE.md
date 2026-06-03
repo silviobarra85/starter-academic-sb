@@ -870,3 +870,15 @@ Il vecchio helper `assets/js/utils/shared-helpers-v294.js` e' da considerare obs
 ## Aggiornamento V300
 
 Prima di qualunque nuova pulizia di `assets/styles.css`, eseguire `static/zonaorientale/tools/audit-css-v300.sh` e leggere `docs/zonaorientale/refactor/CSS_AUDIT_V300.md`. Non rimuovere regole che proteggono Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico V289, Admin, `competition.html` o `player.html` senza test mirati.
+
+## Aggiornamento V301
+
+Per pulire residui CSS V291/V292 usare `static/zonaorientale/tools/cleanup-css-refactor-v301.sh`. Il tool deve essere usato prima in dry-run e non sostituisce i test manuali su Listone, rose, Dashboard Presidente, mobile navigation, `competition.html` e `player.html`. I CSS stabili da mantenere sono `mobile-controls.css`, `rosters-tables.css` e `theme-light-suspended.css`.
+
+## Aggiornamento V302
+
+- `buildListoneChangeExportCsvV278` usa `ZonaOrientaleSharedHelpersV295.rowsToCsv`, con fallback legacy.
+- Non rimuovere `csvEscapeV278`: resta fallback se l'helper condiviso non fosse disponibile.
+- Export modifiche Listone resta solo Admin da V296.
+- La Light mode resta sospesa; non proporre recupero Light come prossimo step salvo nuova richiesta esplicita.
+- La futura sezione `Calcio mercato` e' solo in studio: vedere `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.

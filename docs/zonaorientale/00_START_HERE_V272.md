@@ -165,3 +165,15 @@ V297 completa la pulizia del primo helper estratto: `shared-helpers-v294.js` e' 
 ## Aggiornamento V300
 
 V300 introduce l'audit CSS non distruttivo `tools/audit-css-v300.sh` e il documento `refactor/CSS_AUDIT_V300.md`. Prima di pulire `styles.css`, verificare sempre le funzionalita a rischio: Listone, rose, Dashboard Presidente, mobile navigation, Dark mode unico, Admin, `competition.html` e `player.html`.
+
+## Aggiornamento V301
+
+V301 aggiunge la pulizia controllata dei CSS refactor residui tramite `tools/cleanup-css-refactor-v301.sh` e il documento `refactor/CSS_CLEANUP_V301.md`. Prima di rimuovere vecchi CSS V291/V292, eseguire sempre il dry-run e verificare che Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico, `competition.html` e `player.html` restino collegati.
+
+## Aggiornamento V302
+
+- Versione runtime: `V302 helper CSV condiviso`.
+- Secondo micro-collegamento helper JS: `buildListoneChangeExportCsvV278` usa `ZonaOrientaleSharedHelpersV295.rowsToCsv` con fallback legacy.
+- Export modifiche Listone resta riservato agli Admin.
+- La Light mode resta sospesa; non e' previsto recupero nel ciclo corrente.
+- Studio fattibilita' futura sezione `Calcio mercato`: `docs/zonaorientale/pianificazione/CALCIOMERCATO_AGGREGATORE_V302.md`.

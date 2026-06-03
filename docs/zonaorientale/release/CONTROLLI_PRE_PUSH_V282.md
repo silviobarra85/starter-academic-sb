@@ -257,3 +257,39 @@ static/zonaorientale/tools/audit-css-v300.sh
 ```
 
 Lo script segnala possibili residui e duplicati, ma non autorizza cancellazioni automatiche.
+
+## Aggiornamento V301 - Pulizia CSS refactor residui
+
+Prima del push, se sono presenti vecchi CSS refactor versionati V291/V292, eseguire:
+
+```bash
+static/zonaorientale/tools/cleanup-css-refactor-v301.sh
+```
+
+Solo dopo il dry-run e i test manuali, rimuovere con:
+
+```bash
+static/zonaorientale/tools/cleanup-css-refactor-v301.sh --git-rm
+```
+
+Poi eseguire sempre:
+
+```bash
+static/zonaorientale/tools/check-zonaorientale.sh
+static/zonaorientale/tools/audit-css-v300.sh
+```
+
+## Controlli aggiunti V302
+
+Prima del push V302 verificare:
+
+```bash
+static/zonaorientale/tools/check-zonaorientale.sh
+```
+
+Test manuale mirato:
+
+- Listone pubblico: export CSV non visibile.
+- Listone Admin: export CSV visibile e funzionante.
+- Console: `window.ZonaOrientaleAppHelperRewireV302.behaviorChange === false`.
+- Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok === true`.

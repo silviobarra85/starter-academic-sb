@@ -857,3 +857,19 @@ Aggiunto export CSV non distruttivo delle modifiche del Listone. Il pulsante `Es
 - Aggiornato `check-zonaorientale.sh` per verificare lo script e la documentazione V300.
 - Nessuna regola CSS viene rimossa in questa release.
 - Funzionalita a rischio esplicitamente preservate: Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico, Admin e pagine standalone.
+
+## V301 - Pulizia controllata CSS refactor residui
+
+- Aggiunto `static/zonaorientale/tools/cleanup-css-refactor-v301.sh`.
+- Lo script individua e rimuove solo in modalita controllata i vecchi CSS refactor versionati V291/V292, dopo verifica che non siano piu' referenziati.
+- Nessuna regola CSS attiva viene modificata.
+- Preservati Listone, rose/pagina squadra, Dashboard Presidente, mobile navigation, Dark mode unico, Admin e pagine standalone.
+- Aggiunto documento `docs/zonaorientale/refactor/CSS_CLEANUP_V301.md`.
+
+## V302 - Helper CSV condiviso e studio Calcio mercato
+
+- Collegato il builder CSV dell'export modifiche Listone a `ZonaOrientaleSharedHelpersV295.rowsToCsv`, mantenendo fallback legacy e restrizione admin-only V296.
+- Aggiunta diagnostica `window.ZonaOrientaleAppHelperRewireV302`.
+- Documentato lo studio di fattibilita' per una futura sezione `Calcio mercato`, senza implementarla.
+- Escluso il recupero Light mode dalla roadmap corrente: la modalita' Light resta sospesa.
+- Nessuna modifica a Firebase, EmailJS, dati JSON, rose, Dashboard Presidente o Admin.

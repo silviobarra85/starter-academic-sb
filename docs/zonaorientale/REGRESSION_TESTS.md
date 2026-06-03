@@ -670,3 +670,32 @@ La V295 collega solo l'escape CSV dell'export modifiche Listone al modulo helper
 - Verificare che `theme-light-suspended.css` non sia importato dagli HTML.
 - Verificare Home mobile, Listone pubblico, Listone Admin, pagina squadra -> Rosa, Dashboard Presidente, bottom navigation, `competition.html` e `player.html`.
 - Nessuna funzionalita deve cambiare: V300 e' solo audit/strumentazione.
+
+## Test V301 - Pulizia CSS refactor residui
+
+Comandi:
+
+```bash
+static/zonaorientale/tools/cleanup-css-refactor-v301.sh
+static/zonaorientale/tools/check-zonaorientale.sh
+static/zonaorientale/tools/audit-css-v300.sh
+```
+
+Test manuali:
+
+- Home mobile.
+- Listone pubblico: export CSV non visibile.
+- Listone Admin: export CSV visibile e funzionante.
+- Pagina squadra -> Rosa: prima colonna sticky e righe compatte.
+- Dashboard Presidente.
+- Bottom nav, menu Altro, pulsante Su.
+- `competition.html` e `player.html`.
+- Dark mode unico, toggle tema assente.
+
+## Test aggiuntivi V302 - Helper CSV condiviso
+
+- Pubblico -> Listone: il pulsante `Esporta modifiche CSV` non deve comparire.
+- Pubblico -> Listone: filtro `Modifiche`, colonna `Modifica` e usciti storici devono continuare a funzionare.
+- Admin -> Listone: `Esporta modifiche CSV` deve comparire e scaricare un CSV valido.
+- Console: `window.ZonaOrientaleAppHelperRewireV302.behaviorChange` deve essere `false`.
+- Console: `window.ZonaOrientaleSharedHelpersV295.runSmokeTest().ok` deve essere `true`.
