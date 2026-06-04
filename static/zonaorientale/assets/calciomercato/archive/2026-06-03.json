@@ -1,8 +1,8 @@
 {
-  "version": "V323",
+  "version": "V324",
   "date": "2026-06-03",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-03T18:37:03.505Z",
+  "generatedAt": "2026-06-04T06:56:24.780Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -58,19 +58,401 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-06-01T18:00:56.000Z",
-    "latest": "2026-06-03T20:30:46.000Z",
+    "earliest": "2026-06-02T06:55:12.000Z",
+    "latest": "2026-06-04T08:27:51.000Z",
     "totalBeforeDateRange": 160,
     "totalFetched": 160,
     "totalAfterQueryBeforeDateRange": 160
   },
   "stats": {
-    "existingArticles": 0,
-    "fetchedArticles": 109,
-    "totalArticles": 109,
-    "duplicatesSkipped": 0
+    "existingArticles": 109,
+    "fetchedArticles": 92,
+    "totalArticles": 125,
+    "duplicatesSkipped": 76
   },
   "articles": [
+    {
+      "id": "gianlucadimarzio-4-aHR0cHM6Ly93",
+      "title": "Sampdoria, Americo Branco sarà il nuovo ds",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/sampdoria-americo-branco-sara-il-nuovo-ds-493073",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Dopo l'addio di Mancini la Sampdoria &egrave; pronta ad accogliere Americo Branco come nuovo direttore sportivo. Dopo le valutazioni di questi giorni la scelta della societ&agrave; e del Ceo Sport Fredberg &egrave; quindi ricaduta su di lui.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/9b/9ba0ffcbfbe6a77535e518d8f5cfa04f-44434-672o0o2076o1404z1038.jpeg",
+      "publishedAt": "2026-06-03T21:59:34.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/sampdoria-americo-branco-sara-il-nuovo-ds-493073"
+    },
+    {
+      "id": "gianlucadimarzio-5-aHR0cHM6Ly93",
+      "title": "Juan Jesus, si avvicina l'ipotesi Sporting CP: il brasiliano è in scadenza e lascerà il Napoli",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/juan-jesus-si-avvicina-l-ipotesi-sporting-cp-il-brasiliano-e-in-scadenza-e-lascera-il-napoli-493071",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Juan Jesus&nbsp;lascer&agrave; la Serie A. Il brasiliano, infatti, dopo cinque stagioni con il Napoli, &egrave; in scadenza: su di lui c'&egrave; lo Sporting CP.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/43/43f6a9908f6b4be450bb8934ca7bf6e6-74911-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:57:14.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/juan-jesus-si-avvicina-l-ipotesi-sporting-cp-il-brasiliano-e-in-scadenza-e-lascera-il-napoli-493071"
+    },
+    {
+      "id": "gianlucadimarzio-6-aHR0cHM6Ly93",
+      "title": "Udinese, piace Ravaglia se Okoye dovesse partire",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/udinese-piace-ravaglia-se-okoye-dovesse-partire-493067",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "All'Udinese piace Federico Ravaglia come possibile sostituto di Maduka Okoye. I friulani, infatti, potrebbero affondare il colpo sul portiere del Bologna se il nigeriano dovesse lasciare il club nel corso di questa sessione di calciomercato.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/a0/a0dc695caf1013cc4ecadd51a78ec99c-51775-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:51:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Bologna",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Ravaglia",
+        "Federico Ravaglia",
+        "All'Udinese"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Udinese"
+        ],
+        "people": [
+          "Ravaglia",
+          "Federico Ravaglia",
+          "All'Udinese"
+        ],
+        "players": [
+          "Ravaglia",
+          "Federico Ravaglia",
+          "All'Udinese"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/udinese-piace-ravaglia-se-okoye-dovesse-partire-493067"
+    },
+    {
+      "id": "gianlucadimarzio-7-aHR0cHM6Ly93",
+      "title": "Bournemouth, interesse per Tiago Gabriel del Lecce",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/bournemouth-interesse-per-tiago-gabriel-del-lecce-493063",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Resta vivo l'interesse del Bournemouth per il difensore del Lecce Tiago Gabriel, tra&nbsp;protagonisti della salvezza dei salentini.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/2e/2ec6ec58cdceae854a9d234f1352b392-70198-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:50:18.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Tiago Gabriel"
+      ],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [
+          "Tiago Gabriel"
+        ],
+        "players": [
+          "Tiago Gabriel"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/bournemouth-interesse-per-tiago-gabriel-del-lecce-493063"
+    },
+    {
+      "id": "sosfanta-4-aHR0cHM6Ly93",
+      "title": "Baldini: “L’Italia non deve perdere Pio Esposito. Sul record di esordienti e il futuro…”",
+      "url": "https://www.sosfanta.com/news/baldini-litalia-non-deve-perdere-pio-esposito-sul-record-di-esordienti-e-il-futuro/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Silvio Baldini, CT ad interim della Nazionale italiana, ha parlato ai microfoni della Rai e Sky Sport in occasione della vittoria per 1-0 dell’Italia sul Lussemburgo. Queste le sue parole riportate da TMW. PARTITA – “Sono molto...",
+      "image": "",
+      "publishedAt": "2026-06-03T21:45:15.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/baldini-litalia-non-deve-perdere-pio-esposito-sul-record-di-esordienti-e-il-futuro"
+    },
+    {
+      "id": "calciomercato-it-3-aHR0cHM6Ly93",
+      "title": "Sergino Dest nel mirino del Bayern Monaco, nuova idea per i tedeschi",
+      "url": "https://www.calciomercato.it/2026/06/03/sergino-dest-nel-mirino-del-bayern-monaco-nuova-idea-per-i-tedeschi/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Sergino Dest nel mirino del Bayern Monaco, nuova idea per i tedeschi proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T21:39:28.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Sergino Dest",
+        "L'articolo Sergino Dest"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Sergino Dest",
+          "L'articolo Sergino Dest"
+        ],
+        "players": [
+          "Sergino Dest",
+          "L'articolo Sergino Dest"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/sergino-dest-nel-mirino-del-bayern-monaco-nuova-idea-per-i-tedeschi"
+    },
+    {
+      "id": "gianlucadimarzio-8-aHR0cHM6Ly93",
+      "title": "Primi sondaggi del Barcellona per Cambiaso: i dettagli",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/primi-sondaggi-del-barcellona-per-cambiaso-i-dettagli-493065",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Il Barcellona pensa ad Andrea Cambiaso per rinforzare la corsia esterna. Il club blaugrana, infatti, si &egrave; gi&agrave; mosso per il terzino della Juventus, e ci sono stati i primi sondaggi per lui.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/ea/ea84474dd88e501170522e60970c90e4-57054-397o60o1506o1168z0c3b.jpeg",
+      "publishedAt": "2026-06-03T21:32:58.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Cambiaso"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Cambiaso"
+        ],
+        "players": [
+          "Cambiaso"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/primi-sondaggi-del-barcellona-per-cambiaso-i-dettagli-493065"
+    },
+    {
+      "id": "gianlucadimarzio-9-aHR0cHM6Ly93",
+      "title": "Il Como ci prova per Gonzalo Garcia: la situazione",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/il-como-ci-prova-per-gonzalo-garcia-la-situazione-493069",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Il Como si muove anche in attacco per rinforzare la rosa in vista della prossima stagione, in cui la squadra di Fabregas prender&agrave; parte alla Champions League.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/01/01c2e4535905dccd1933eb0e408a0a3c-12863-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:31:46.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gonzalo Garcia"
+      ],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [
+          "Gonzalo Garcia"
+        ],
+        "players": [
+          "Gonzalo Garcia"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/il-como-ci-prova-per-gonzalo-garcia-la-situazione-493069"
+    },
+    {
+      "id": "sosfanta-5-aHR0cHM6Ly93",
+      "title": "Totti: “Mai alcun attrito tra me e DDR. La 10 a Dybala? Roma non è Torino. Mi pento del calcio a Balotelli”",
+      "url": "https://www.sosfanta.com/news/totti-mai-alcun-attrito-tra-me-e-ddr-la-10-a-dybala-roma-non-e-torino-mi-pento-del-calcio-a-balotelli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Francesco Totti è stato tra i protagonisti del format “Totti contro Tutti”, promosso da Betsson Sport, occasione nella quale ha chiarito anche le voci su una presunta frizione con Daniele De Rossi, oggi allenatore del Genoa: “Non...",
+      "image": "",
+      "publishedAt": "2026-06-03T21:30:50.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Genoa",
+        "Roma",
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Roma",
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Mai"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Roma",
+          "Torino"
+        ],
+        "people": [
+          "Mai"
+        ],
+        "players": [
+          "Mai"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/totti-mai-alcun-attrito-tra-me-e-ddr-la-10-a-dybala-roma-non-e-torino-mi-pento-del-calcio-a-balotelli"
+    },
+    {
+      "id": "fantacalcio-16-aHR0cHM6Ly93",
+      "title": "Juventus, Chiellini: \"A queste cifre Vlahovic non rimarrà in Italia\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/juventus-chiellini-a-queste-cifre-vlahovic-non-rimarra-in-italia-493762",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del dirigente bianconero sull'addio dell'attaccante serbo",
+      "image": "",
+      "publishedAt": "2026-06-03T20:52:50.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/juventus-chiellini-a-queste-cifre-vlahovic-non-rimarra-in-italia-493762"
+    },
+    {
+      "id": "calciomercato-it-4-aHR0cHM6Ly93",
+      "title": "PAGELLE E TABELLINO Lussemburgo-Italia 0-1: Pio Esposito guida gli Under di Baldini",
+      "url": "https://www.calciomercato.it/2026/06/03/pagelle-e-tabellino-lussemburgo-italia-0-1-pio-esposito-guida-gli-under-di-baldini/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo PAGELLE E TABELLINO Lussemburgo-Italia 0-1: Pio Esposito guida gli Under di Baldini proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T20:43:29.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Notizie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/pagelle-e-tabellino-lussemburgo-italia-0-1-pio-esposito-guida-gli-under-di-baldini"
+    },
     {
       "id": "fantacalcio-0-aHR0cHM6Ly93",
       "title": "LIVE - Lussemburgo-Italia: manca poco al fischio d'inizio",
@@ -96,6 +478,58 @@
         "Fantacalcio"
       ],
       "canonicalKey": "url:fantacalcio.it/news/calcio-estero/nazionali/03_06_2026/amichevole-lussemburgo-italia-cronaca-tabellino-493755"
+    },
+    {
+      "id": "sosfanta-6-aHR0cHM6Ly93",
+      "title": "Ministro Sport: “Prossimo ct dell’Italia? Vi rispondo così! Su Mancini e il presidente FIGC…”",
+      "url": "https://www.sosfanta.com/news/ministro-sport-prossimo-ct-dellitalia-vi-rispondo-cosi-su-mancini-e-il-presidente-figc/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il Ministro dello Sport, Andrea Abodi, è intervenuto a margine del Premio De Sanctis parlando del futuro del calcio italiano, dal tema del commissario tecnico al prossimo presidente federale. Queste le sue parole riportate da TMW. PROSSIMO CT –...",
+      "image": "",
+      "publishedAt": "2026-06-03T20:30:13.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/ministro-sport-prossimo-ct-dellitalia-vi-rispondo-cosi-su-mancini-e-il-presidente-figc"
+    },
+    {
+      "id": "sosfanta-7-aHR0cHM6Ly93",
+      "title": "Cutrone: “A gennaio avevo accettato una proposta dalla Serie A! Ecco com’è andata”",
+      "url": "https://www.sosfanta.com/news/cutrone-a-gennaio-avevo-accettato-una-proposta-dalla-serie-a-eccome-come-andata/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Patrick Cutrone ha raccontato a Cronache di Spogliatoio un retroscena sulla scorsa sessione di calciomercato invernale. Riporta le sue parole Tmw: “A gennaio stavo per firmare con un’altra squadra in Serie A. Era tutto fatto, poi è...",
+      "image": "",
+      "publishedAt": "2026-06-03T20:00:42.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/cutrone-a-gennaio-avevo-accettato-una-proposta-dalla-serie-a-eccome-come-andata"
     },
     {
       "id": "fantacalcio-1-aHR0cHM6Ly93",
@@ -188,6 +622,70 @@
       "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/lazio-romagnoli-ai-saluti-accordo-imminente-con-l-al-sadd-493760"
     },
     {
+      "id": "sosfanta-9-aHR0cHM6Ly93",
+      "title": "Inter, Dumfries ha già sostenuto le visite mediche in Olanda: tutto pronto per il trasferimento al Real",
+      "url": "https://www.sosfanta.com/news/inter-dumfries-ha-gia-sostenuto-le-visite-mediche-in-olanda-tutto-pronto-per-il-trasferimento-al-real/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Tutto pronto per i saluti di Denzel Dumfries, il difensore olandese lascia l’Inter e si prepara per il Real Madrid. Come riportato da Fabrizio Romano, il club spagnolo ha inviato la documentazione ufficiale all’Inter per attivare la...",
+      "image": "",
+      "publishedAt": "2026-06-03T19:30:04.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/inter-dumfries-ha-gia-sostenuto-le-visite-mediche-in-olanda-tutto-pronto-per-il-trasferimento-al-real"
+    },
+    {
+      "id": "calciomercato-it-5-aHR0cHM6Ly93",
+      "title": "Idea Dragusin in Serie A, Paratici può portarlo alla Fiorentina",
+      "url": "https://www.calciomercato.it/2026/06/03/idea-dragusin-in-serie-a-paratici-puo-portarlo-alla-fiorentina/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Idea Dragusin in Serie A, Paratici può portarlo alla Fiorentina proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T19:08:20.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Fiorentina",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/idea-dragusin-in-serie-a-paratici-puo-portarlo-alla-fiorentina"
+    },
+    {
       "id": "fantacalcio-4-aHR0cHM6Ly93",
       "title": "Genoa, si lavora al riscatto di Baldanzi: le ultime",
       "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/genoa-si-lavora-al-riscatto-di-baldanzi-le-ultime-493759",
@@ -218,6 +716,38 @@
         "Fantacalcio"
       ],
       "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/genoa-si-lavora-al-riscatto-di-baldanzi-le-ultime-493759"
+    },
+    {
+      "id": "sosfanta-11-aHR0cHM6Ly93",
+      "title": "Zielinski: “Arabia? Per due giorni ci ho pensato, ma volevo stare in Europa. All’Inter…”",
+      "url": "https://www.sosfanta.com/news/zielinski-arabia-per-due-giorni-ci-ho-pensato-ma-volevo-stare-in-europa-allinter/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Piotr Zielinski, intervistato da Prawda Futbolu, ha parlato così della possibilità di approdare in Arabia avuta nel corso della sua carriera: “Nel corso della mia carriera ho avuto due o tre occasioni per lasciare l’Italia, ma ho...",
+      "image": "",
+      "publishedAt": "2026-06-03T19:00:31.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/zielinski-arabia-per-due-giorni-ci-ho-pensato-ma-volevo-stare-in-europa-allinter"
     },
     {
       "id": "fantacalcio-5-aHR0cHM6Ly93",
