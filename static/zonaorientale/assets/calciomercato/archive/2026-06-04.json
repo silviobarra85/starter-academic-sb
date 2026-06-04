@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-04",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-04T06:56:25.290Z",
+  "generatedAt": "2026-06-04T15:07:18.065Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -58,19 +58,2249 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-06-02T06:55:12.000Z",
-    "latest": "2026-06-04T08:27:51.000Z",
+    "earliest": "2026-06-02T15:00:46.000Z",
+    "latest": "2026-06-04T15:42:39.000Z",
     "totalBeforeDateRange": 160,
     "totalFetched": 160,
     "totalAfterQueryBeforeDateRange": 160
   },
   "stats": {
-    "existingArticles": 0,
-    "fetchedArticles": 47,
-    "totalArticles": 47,
-    "duplicatesSkipped": 0
+    "existingArticles": 47,
+    "fetchedArticles": 96,
+    "totalArticles": 119,
+    "duplicatesSkipped": 24
   },
   "articles": [
+    {
+      "id": "fantacalcio-0-aHR0cHM6Ly93",
+      "title": "Napoli, De Laurentiis: \"Presenterò l'allenatore quando i regolamenti me lo concedono\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/04_06_2026/napoli-de-laurentiis-presentero-l-allenatore-quando-i-regolamenti-me-lo-concedono-493790",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del patron azzurro",
+      "image": "",
+      "publishedAt": "2026-06-04T15:42:39.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/04_06_2026/napoli-de-laurentiis-presentero-l-allenatore-quando-i-regolamenti-me-lo-concedono-493790"
+    },
+    {
+      "id": "fantacalcio-1-aHR0cHM6Ly93",
+      "title": "Italia, tegola per Baldini: Palestra lascia il ritiro",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/nazionali/04_06_2026/italia-tegola-per-baldini-palestra-lascia-il-ritiro-493789",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "L'esterno azzurro lascia il ritiro",
+      "image": "",
+      "publishedAt": "2026-06-04T15:23:43.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Baldini"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Baldini"
+        ],
+        "players": [
+          "Baldini"
+        ]
+      },
+      "tags": [
+        "Nazionali",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/nazionali/04_06_2026/italia-tegola-per-baldini-palestra-lascia-il-ritiro-493789"
+    },
+    {
+      "id": "fantacalcio-2-aHR0cHM6Ly93",
+      "title": "Inter, Koeman e Reijnders 'annunciano' il passaggio di Dumfries al Real Madrid",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/inter-koeman-e-reijnders-annunciano-il-passaggio-di-dumfries-al-real-madrid-493788",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Doppio annuncio dal ritiro dell'Olanda",
+      "image": "",
+      "publishedAt": "2026-06-04T15:17:55.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Dumfries"
+      ],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [
+          "Dumfries"
+        ],
+        "players": [
+          "Dumfries"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/inter-koeman-e-reijnders-annunciano-il-passaggio-di-dumfries-al-real-madrid-493788"
+    },
+    {
+      "id": "calciomercato-it-0-aHR0cHM6Ly93",
+      "title": "Napoli, a centrocampo spunta un nome da urlo: clausola da 100 milioni",
+      "url": "https://www.calciomercato.it/2026/06/04/napoli-a-centrocampo-spunta-un-nome-da-urlo-clausola-da-100-milioni/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Napoli, a centrocampo spunta un nome da urlo: clausola da 100 milioni proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-04T15:00:51.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/04/napoli-a-centrocampo-spunta-un-nome-da-urlo-clausola-da-100-milioni"
+    },
+    {
+      "id": "sosfanta-0-aHR0cHM6Ly93",
+      "title": "De Laurentiis, frecciata a Spalletti: “Ho vinto con chi aveva trionfato solo in Russia, con altri valori”",
+      "url": "https://www.sosfanta.com/squadra/napoli/de-laurentiis-frecciata-a-spalletti-ho-vinto-con-chi-aveva-trionfato-solo-in-russia-con-altri-valori/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Durante la presentazione dei due ritiri estivi del Napoli, il presidente De Laurentiis ha tirato anche una frecciata all’attuale tecnico della Juve Luciano Spalletti: “Io ho vinto il tricolore anche con un altro allenatore che in...",
+      "image": "",
+      "publishedAt": "2026-06-04T15:00:03.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Juventus",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus",
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/napoli",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/napoli/de-laurentiis-frecciata-a-spalletti-ho-vinto-con-chi-aveva-trionfato-solo-in-russia-con-altri-valori"
+    },
+    {
+      "id": "tmw-0-aHR0cHM6Ly93",
+      "title": "La grande favorita Francia: squadra a caccia di record che non sembra avere punti deboli",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/la-grande-favorita-francia-squadra-a-caccia-di-record-che-non-sembra-avere-punti-deboli-2241044",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "FRANCIA - Girone I con Senegal (16 giugno, New York), Iraq (22 giugno, Filadelfia), Norvegia (26 giugno, Boston).",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/20/20b476349deb4850290ffe89a92fe782-73560-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T15:00:01.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mondiali 2026",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/la-grande-favorita-francia-squadra-a-caccia-di-record-che-non-sembra-avere-punti-deboli-2241044"
+    },
+    {
+      "id": "tmw-1-aHR0cHM6Ly93",
+      "title": "Magnanelli appoggia le idee del Sassuolo: \"Aquilani e Abate profili giusti per la panchina\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/magnanelli-appoggia-le-idee-del-sassuolo-aquilani-e-abate-profili-giusti-per-la-panchina-2241144",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Francesco Magnanelli è reduce dalla stagione al Milan in cui ha vestito i panni del collaboratore tecnico di Massimiliano Allegri.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/a9/a9f844b344d8763cdd68efb5feb3fdec-77685-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:53:23.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan",
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Milan",
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan",
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/magnanelli-appoggia-le-idee-del-sassuolo-aquilani-e-abate-profili-giusti-per-la-panchina-2241144"
+    },
+    {
+      "id": "tmw-2-aHR0cHM6Ly93",
+      "title": "Alessandro Lucarelli pronto a tornare in pista. Primi sondaggi per l'ex dirigente del Parma",
+      "url": "https://www.tuttomercatoweb.com/serie-d/alessandro-lucarelli-pronto-a-tornare-in-pista-primi-sondaggi-per-l-ex-dirigente-del-parma-2241146",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Con il via alla programmazione in vista della nuova stagione sportiva, torna alla ribalta il nome di Alessandro Lucarelli, dirigente con alle spalle un'importante avventura a Parma.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/ba/ba6d71d712518d87e0cab306b8c28c9e-26046-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:50:30.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Parma"
+      ],
+      "detectedTeams": [
+        "Parma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Parma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie D",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-d/alessandro-lucarelli-pronto-a-tornare-in-pista-primi-sondaggi-per-l-ex-dirigente-del-parma-2241146"
+    },
+    {
+      "id": "fantacalcio-3-aHR0cHM6Ly93",
+      "title": "Udinese, occhi su Ravaglia se parte Okoye",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/udinese-occhi-su-ravaglia-se-parte-okoye-493787",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "L'Udinese sulle tracce del portiere classe '99",
+      "image": "",
+      "publishedAt": "2026-06-04T14:46:44.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Ravaglia"
+      ],
+      "entities": {
+        "teams": [
+          "Udinese"
+        ],
+        "people": [
+          "Ravaglia"
+        ],
+        "players": [
+          "Ravaglia"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/udinese-occhi-su-ravaglia-se-parte-okoye-493787"
+    },
+    {
+      "id": "tmw-3-aHR0cHM6Ly93",
+      "title": "Euro U17, il Belgio è la prima finalista. Alle 19 tocca all'Italia di Franceschini",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/euro-u17-il-belgio-e-la-prima-finalista-alle-19-tocca-all-italia-di-franceschini-2241145",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il Belgio è la prima finalista degli Europei Under 17 che si stanno disputando in Estonia.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/46/466c7e7f06de0db22f961f5138a24ca9-35656-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:46:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Altre Notizie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/euro-u17-il-belgio-e-la-prima-finalista-alle-19-tocca-all-italia-di-franceschini-2241145"
+    },
+    {
+      "id": "tmw-4-aHR0cHM6Ly93",
+      "title": "Juventus, Perin va verso il rinnovo di contratto. Non c'è l'intenzione di perderlo a zero",
+      "url": "https://www.tuttomercatoweb.com/serie-a/juventus-perin-va-verso-il-rinnovo-di-contratto-non-c-e-l-intenzione-di-perderlo-a-zero-2241116",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "La Juventus hai intenzione di rinnovare il contratto di Mattia Perin.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/32/3209c0e5deb9ea676fa10830780adcc4-52038-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:45:27.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/juventus-perin-va-verso-il-rinnovo-di-contratto-non-c-e-l-intenzione-di-perderlo-a-zero-2241116"
+    },
+    {
+      "id": "tmw-5-aHR0cHM6Ly93",
+      "title": "Il caso Suarez e le difficoltà per Bielsa: non è il solito Uruguay, che però non muore mai",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/il-caso-suarez-e-le-difficolta-per-bielsa-non-e-il-solito-uruguay-che-pero-non-muore-mai-2240978",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "URUGUAY - Nel Gruppo H con Arabia Saudita (16 giugno, Miami Gardens), Capo Verde (22 giugno, Miami Gardens) e Spagna (27 giugno, Zapopan).",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/39/39bdf4fd5a0dd49fcc40519e49027981-66162-348o102o1182o936z0a08.jpeg",
+      "publishedAt": "2026-06-04T14:45:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Bielsa"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Bielsa"
+        ],
+        "players": [
+          "Bielsa"
+        ]
+      },
+      "tags": [
+        "Mondiali 2026",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/il-caso-suarez-e-le-difficolta-per-bielsa-non-e-il-solito-uruguay-che-pero-non-muore-mai-2240978"
+    },
+    {
+      "id": "tmw-6-aHR0cHM6Ly93",
+      "title": "Lazio, Cagni: \"Una sfida per Gattuso. Tecnicamente squadra che vale\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/lazio-cagni-una-sfida-per-gattuso-tecnicamente-squadra-che-vale-2241136",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Alla radio di Tuttomercatoweb.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/20/2048d19ed83fc5e18f91e97281fdb7b3-36332-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:38:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gattuso. Tecnicamente"
+      ],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [
+          "Gattuso. Tecnicamente"
+        ],
+        "players": [
+          "Gattuso. Tecnicamente"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/lazio-cagni-una-sfida-per-gattuso-tecnicamente-squadra-che-vale-2241136"
+    },
+    {
+      "id": "fantacalcio-4-aHR0cHM6Ly93",
+      "title": "FantAffari & FantAllenatore - Speciale flop 11 della stagione",
+      "url": "https://www.fantacalcio.it/rubriche/fantaffari/04_06_2026/fantaffari-fantallenatore-speciale-flop-11-della-stagione-493758",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Dopo una lunga stagione è arrivato il momento di tirare le somme. Vediamo quali sono i peggiori FantAffari della stagione.",
+      "image": "",
+      "publishedAt": "2026-06-04T14:30:46.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Fantaffari",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/rubriche/fantaffari/04_06_2026/fantaffari-fantallenatore-speciale-flop-11-della-stagione-493758"
+    },
+    {
+      "id": "sosfanta-1-aHR0cHM6Ly93",
+      "title": "Ag. Spinazzola: “Ha ricevuto offerte importanti, ma vuole solo il Napoli. Le novità sul rinnovo”",
+      "url": "https://www.sosfanta.com/squadra/napoli/ag-spinazzola-ha-ricevuto-offerte-importanti-ma-vuole-solo-il-napoli-le-novita-sul-rinnovo/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "L’agente dell’esterno del Napoli, Spinazzola, ha parlato ai microfoni di Stile Tv. Queste le dichiarazioni di Davide Lippi, riportate da Napoli Network: “Rinnovo? Abbiamo un accordo, non c’è ancora la firma sul contratto ma...",
+      "image": "",
+      "publishedAt": "2026-06-04T14:30:28.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/napoli",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/napoli/ag-spinazzola-ha-ricevuto-offerte-importanti-ma-vuole-solo-il-napoli-le-novita-sul-rinnovo"
+    },
+    {
+      "id": "tmw-7-aHR0cHM6Ly93",
+      "title": "Da Mancini a Renard fino a Donis: l'Arabia Saudita al Mondiale nel segno dei cambiamenti",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/da-mancini-a-renard-fino-a-donis-l-arabia-saudita-al-mondiale-nel-segno-dei-cambiamenti-2241052",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "ARABIA SAUDITA - Girone H con Uruguay (15 giugno, Miami), Spagna (21 giugno, Atlanta), Capo Verde (26 giugno, Houston).",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1a/1a2e94de7b2debd2fb1663f842919c4a-02156-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:30:01.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Arabia Saudita"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Arabia Saudita"
+        ],
+        "players": [
+          "Arabia Saudita"
+        ]
+      },
+      "tags": [
+        "Mondiali 2026",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/da-mancini-a-renard-fino-a-donis-l-arabia-saudita-al-mondiale-nel-segno-dei-cambiamenti-2241052"
+    },
+    {
+      "id": "fantacalcio-5-aHR0cHM6Ly93",
+      "title": "Napoli, l'agente di Spinazzola sul rinnovo: \"Abbiamo un accordo\"",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/napoli-l-agente-di-spinazzola-sul-rinnovo-abbiamo-un-accordo-493786",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole dell'agente di Spinazzola",
+      "image": "",
+      "publishedAt": "2026-06-04T14:27:58.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/napoli-l-agente-di-spinazzola-sul-rinnovo-abbiamo-un-accordo-493786"
+    },
+    {
+      "id": "tmw-8-aHR0cHM6Ly93",
+      "title": "Real Madrid, il candidato alla presidenza Riquelme punta su Klopp per la panchina",
+      "url": "https://www.tuttomercatoweb.com/calcio-estero/real-madrid-il-candidato-alla-presidenza-riquelme-punta-su-klopp-per-la-panchina-2241143",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Nella lunga intervista concessa ad As, il candidato alla presidenza del Real Madrid, Enrique Riquelme, ha affrontato anche il tema del prossimo allenatore dei blancos, confermando l'interesse per Jurgen Klopp.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/76/765bad39476ccfc95c2261cb402e95bf-29619-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:26:17.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Klopp",
+        "Jurgen Klopp."
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Klopp",
+          "Jurgen Klopp."
+        ],
+        "players": [
+          "Klopp",
+          "Jurgen Klopp."
+        ]
+      },
+      "tags": [
+        "Calcio estero",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/calcio-estero/real-madrid-il-candidato-alla-presidenza-riquelme-punta-su-klopp-per-la-panchina-2241143"
+    },
+    {
+      "id": "tmw-9-aHR0cHM6Ly93",
+      "title": "River Plate all'assalto di Simeone: il Cholito è il primo nome per il club argentino",
+      "url": "https://www.tuttomercatoweb.com/serie-a/river-plate-all-assalto-di-simeone-il-cholito-e-il-primo-nome-per-il-club-argentino-2241139",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il Torino sta decidendo proprio in queste ore la direzione per la panchina del futuro, con i nomi di Aquilani e soprattutto Abate che restano in cima alle preferenze granata.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/63/63c6b2add7d06a96ca1e60f51ca280d7-69681-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:22:11.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "River Plate"
+      ],
+      "entities": {
+        "teams": [
+          "Torino"
+        ],
+        "people": [
+          "River Plate"
+        ],
+        "players": [
+          "River Plate"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/river-plate-all-assalto-di-simeone-il-cholito-e-il-primo-nome-per-il-club-argentino-2241139"
+    },
+    {
+      "id": "fantacalcio-6-aHR0cHM6Ly93",
+      "title": "Roma, Malen: \"in giallorosso gioco da centravanti, è lì che preferisco giocare\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/04_06_2026/roma-malen-in-giallorosso-gioco-da-centravanti-e-li-che-preferisco-giocare-493785",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole dell'attaccante olandese",
+      "image": "",
+      "publishedAt": "2026-06-04T14:20:57.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/04_06_2026/roma-malen-in-giallorosso-gioco-da-centravanti-e-li-che-preferisco-giocare-493785"
+    },
+    {
+      "id": "tmw-10-aHR0cHM6Ly93",
+      "title": "4000 chilometri quadrati di storia: Stopira traccia la via per il miracolo Capo Verde",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/4000-chilometri-quadrati-di-storia-stopira-traccia-la-via-per-il-miracolo-capo-verde-2240917",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "CAPO VERDE – Girone H con Spagna (15 Giugno, Atlanta), Uruguay (21 Giugno, Miami), Arabia Saudita (26 Giugno, Houston)&#13; &#13; Una delle tante favole del primo Mondiale a 48 Nazionali trova terreno fertile nell'arcipelago di dieci isole vulcaniche a 500 chilometri...",
+      "image": "",
+      "publishedAt": "2026-06-04T14:15:24.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mondiali 2026",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/4000-chilometri-quadrati-di-storia-stopira-traccia-la-via-per-il-miracolo-capo-verde-2240917"
+    },
+    {
+      "id": "gianlucadimarzio-0-aHR0cHM6Ly93",
+      "title": "Inacio: \"Brasile? Mi sento italiano. Il mio obiettivo è vincere il Mondiale in azzurro\"",
+      "url": "https://www.gianlucadimarzio.com/interviste-e-storie/inacio-brasile-mi-sento-italiano-il-mio-obiettivo-e-vincere-il-mondiale-in-azzurro-493092",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "In un'intervista rilasciata a gianlucadimarzio.com dopo Lussemburgo-Italia, la stellina italo-brasiliana Samuele Inacio ha raccontato i mesi che gli hanno cambiato la vita.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/a6/a6b55df5104e92eae12817cb0bc7dc20-10903-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:15:00.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Interviste e Storie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/interviste-e-storie/inacio-brasile-mi-sento-italiano-il-mio-obiettivo-e-vincere-il-mondiale-in-azzurro-493092"
+    },
+    {
+      "id": "tmw-11-aHR0cHM6Ly93",
+      "title": "Manchester United, Heaton non viene schierato da 3 anni. Ma firma il rinnovo",
+      "url": "https://www.tuttomercatoweb.com/calcio-estero/manchester-united-heaton-non-viene-schierato-da-3-anni-ma-firma-il-rinnovo-2241140",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il Manchester United rende noto il rinnovo di Tom Heaton.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/fd/fda65b596eaa4621a410f568fcf7f0e8-11732-2039o743o2867o1571z1c34.jpeg",
+      "publishedAt": "2026-06-04T14:12:00.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio estero",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/calcio-estero/manchester-united-heaton-non-viene-schierato-da-3-anni-ma-firma-il-rinnovo-2241140"
+    },
+    {
+      "id": "tmw-12-aHR0cHM6Ly93",
+      "title": "Napoli, De Laurentiis: \"KDB e Lukaku? Se devono andare andranno, che problema c'è\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/napoli-de-laurentiis-kdb-e-lukaku-se-devono-andare-andranno-che-problema-c-e-2241132",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Nel corso della conferenza stampa di oggi, Aurelio De Laurentiis ha parlato delle recenti dichiarazioni di Kevin De Bruyne e Romelu Lukaku, prossimi ai Mondiali con la maglia del Belgio:\"Hanno fatto delle affermazioni che possono essere accettabili o...",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9a/9a846b1b69b615c0bae868cba26388a4-40023-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:10:07.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/napoli-de-laurentiis-kdb-e-lukaku-se-devono-andare-andranno-che-problema-c-e-2241132"
+    },
+    {
+      "id": "tmw-13-aHR0cHM6Ly93",
+      "title": "Lazio, Bezzi: \"La scelta di Gattuso non solo per sfida ma...\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/lazio-bezzi-la-scelta-di-gattuso-non-solo-per-sfida-ma-2241135",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il giornalista Gianni Bezzi ha parlato ai microfoni della radio di Tuttomercatoweb.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/5b/5bf9344b478cb92127f0c98c893e398d-30895-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:05:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/lazio-bezzi-la-scelta-di-gattuso-non-solo-per-sfida-ma-2241135"
+    },
+    {
+      "id": "tmw-14-aHR0cHM6Ly93",
+      "title": "Ostiamare, una delegazione della società in Vaticano da Papa Leone XIV",
+      "url": "https://www.tuttomercatoweb.com/serie-c/ostiamare-una-delegazione-della-societa-in-vaticano-da-papa-leone-xiv-2241138",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Una delegazione dell'Ostiamare è stata ricevuta questa mattina in Vaticano da Papa Leone XIV, a cui è stata consegnata una maglia con il numero 14.",
+      "image": "",
+      "publishedAt": "2026-06-04T14:01:53.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie C",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/ostiamare-una-delegazione-della-societa-in-vaticano-da-papa-leone-xiv-2241138"
+    },
+    {
+      "id": "sosfanta-2-aHR0cHM6Ly93",
+      "title": "Sky – Lecce, su Tiago Gabriel interesse di un club della Premier: presto potrebbe arrivare un’offerta",
+      "url": "https://www.sosfanta.com/squadra/lecce/sky-lecce-su-tiago-gabriel-interesse-di-un-club-della-premier-presto-potrebbe-arrivare-unofferta/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "L’ottima stagione disputata da Tiago Gabriel con il Lecce ha attirato le attenzioni di alcuni club sul difensore. Queste le ultime novità riportate da Sky Sport: “Resta vivo l’interesse del Bournemouth per il difensore del...",
+      "image": "",
+      "publishedAt": "2026-06-04T14:00:25.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Tiago Gabriel"
+      ],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [
+          "Tiago Gabriel"
+        ],
+        "players": [
+          "Tiago Gabriel"
+        ]
+      },
+      "tags": [
+        "/squadra/lecce",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/lecce/sky-lecce-su-tiago-gabriel-interesse-di-un-club-della-premier-presto-potrebbe-arrivare-unofferta"
+    },
+    {
+      "id": "tmw-15-aHR0cHM6Ly93",
+      "title": "La Spagna giovane e sfrontata di De La Fuente: è trionfo della Masia, assente il Real Madrid",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/la-spagna-giovane-e-sfrontata-di-de-la-fuente-e-trionfo-della-masia-assente-il-real-madrid-2241056",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "SPAGNA - Girone H con Capo Verde (15 giugno, Atlanta), Arabia Saudita (21 giugno, Atlanta), Uruguay (26 giugno, Guadalajara).",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/e8/e8610bc68ab9342579ec093f5b5e5756-40742-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T14:00:01.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mondiali 2026",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/la-spagna-giovane-e-sfrontata-di-de-la-fuente-e-trionfo-della-masia-assente-il-real-madrid-2241056"
+    },
+    {
+      "id": "tmw-17-aHR0cHM6Ly93",
+      "title": "Italia U19, stage verso l’Europeo a Tirrenia: i convocati del tecnico Alberto Bollini",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/italia-u19-stage-verso-l-europeo-a-tirrenia-i-convocati-del-tecnico-alberto-bollini-2241137",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "La strada verso il Galles passa da Tirrenia.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/30/303e904a4fcfb25ce9077be26b4706f0-62761-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T13:59:37.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Altre Notizie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/italia-u19-stage-verso-l-europeo-a-tirrenia-i-convocati-del-tecnico-alberto-bollini-2241137"
+    },
+    {
+      "id": "tmw-18-aHR0cHM6Ly93",
+      "title": "De Laurentiis e le tournée estere: \"Stillitano mi offre 5-6 milioni per andare in culo al mondo\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/de-laurentiis-e-le-tournee-estere-stillitano-mi-offre-5-6-milioni-per-andare-in-culo-al-mondo-2241131",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Nel corso della conferenza stampa di oggi, legata alla presentazione dei due ritiri estivi (Dimaro e Castel di Sangro) del Napoli, Aurelio De Laurentiis ha parlato anche della possibilità di fare tournée all’estero, a cui non ha mai voluto pensare: \"C'è...",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/38/38ba61f6ed2aeaf3e7d7fd7af782eab2-99061-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T13:55:35.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/de-laurentiis-e-le-tournee-estere-stillitano-mi-offre-5-6-milioni-per-andare-in-culo-al-mondo-2241131"
+    },
+    {
+      "id": "tmw-19-aHR0cHM6Ly93",
+      "title": "Il 1° luglio si avvicina, ecco i potenziali svincolati. Quanti big, da Vlahovic a Lewandowski",
+      "url": "https://www.tuttomercatoweb.com/serie-a/il-1-luglio-si-avvicina-ecco-i-potenziali-svincolati-quanti-big-da-vlahovic-a-lewandowski-2241134",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il 1° luglio si avvicina, questo significa che molti giocatori saranno svincolati.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/94/94128969595a0e020a26609c3e4273c0-12454-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T13:53:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/il-1-luglio-si-avvicina-ecco-i-potenziali-svincolati-quanti-big-da-vlahovic-a-lewandowski-2241134"
+    },
+    {
+      "id": "sosfanta-3-aHR0cHM6Ly93",
+      "title": "De Laurentiis: “Lukaku e De Bruyne? Vedremo col nuovo allenatore, poi se dovranno andar via andranno via”",
+      "url": "https://www.sosfanta.com/squadra/napoli/de-laurentiis-lukaku-e-kdb-vedremo-col-nuovo-allenatore-poi-se-dovranno-andar-via-andranno-via/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il presidente Aurelio De Laurentiis ha parlato del nuovo tecnico che prenderà il posto di Conte e anche del futuro di De Bruyne e Lukaku",
+      "image": "",
+      "publishedAt": "2026-06-04T13:50:36.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/napoli",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/napoli/de-laurentiis-lukaku-e-kdb-vedremo-col-nuovo-allenatore-poi-se-dovranno-andar-via-andranno-via"
+    },
+    {
+      "id": "sosfanta-4-aHR0cHM6Ly93",
+      "title": "Novità Juve: non solo Kolo Muani, interesse confermato anche per Sorloth! La situazione per Diaz",
+      "url": "https://www.sosfanta.com/squadra/juventus/novita-juve-non-solo-kolo-muani-interesse-confermato-anche-per-sorloth-la-situazione-per-diaz/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Con l'addio a Vlahovic, alla Juve potrebbe non bastare arrivare a Kolo Muani e si muove per l'attaccante dell'Atletico Madrid",
+      "image": "",
+      "publishedAt": "2026-06-04T13:45:58.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Sorloth",
+        "Diaz. Con"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Sorloth",
+          "Diaz. Con"
+        ],
+        "players": [
+          "Sorloth",
+          "Diaz. Con"
+        ]
+      },
+      "tags": [
+        "/squadra/juventus",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/juventus/novita-juve-non-solo-kolo-muani-interesse-confermato-anche-per-sorloth-la-situazione-per-diaz"
+    },
+    {
+      "id": "calciomercato-it-1-aHR0cHM6Ly93",
+      "title": "Leao-Arsenal, colpo di scena improvviso: la verità",
+      "url": "https://www.calciomercato.it/2026/06/04/leao-arsenal-colpo-di-scena-improvviso-la-verita/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Leao-Arsenal, colpo di scena improvviso: la verità proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-04T13:30:30.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/04/leao-arsenal-colpo-di-scena-improvviso-la-verita"
+    },
+    {
+      "id": "sosfanta-5-aHR0cHM6Ly93",
+      "title": "UFFICIALE – Italia, l’elenco dei convocati per la gara contro la Grecia: la scelta su Palestra",
+      "url": "https://www.sosfanta.com/nazionale/ufficiale-italia-lelenco-dei-convocati-per-la-gara-contro-la-grecia-la-scelta-su-palestra/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "All’indomani del successo nell’amichevole con il Lussemburgo, la Nazionale è rientrata a Coverciano e nel pomeriggio tornerà a svolgere al Centro Tecnico Federale una seduta di allenamento a porte chiuse in vista della seconda amichevole con...",
+      "image": "",
+      "publishedAt": "2026-06-04T13:30:21.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra. All’indomani"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Palestra. All’indomani"
+        ],
+        "players": [
+          "Palestra. All’indomani"
+        ]
+      },
+      "tags": [
+        "/nazionale",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/nazionale/ufficiale-italia-lelenco-dei-convocati-per-la-gara-contro-la-grecia-la-scelta-su-palestra"
+    },
+    {
+      "id": "gianlucadimarzio-1-aHR0cHM6Ly93",
+      "title": "Fiorentina, idea Bento dell'Al-Nassr se parte De Gea",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/fiorentina-idea-bento-dell-al-nassr-se-parte-de-gea-493089",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "In casa Fiorentina si guarda gi&agrave; al futuro tra i pali, con l&rsquo;ipotesi di un possibile cambio in caso di addio di David De Gea.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/c4/c429fb0502741bf5ee7d60588a0dab4b-44660-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T13:25:08.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/fiorentina-idea-bento-dell-al-nassr-se-parte-de-gea-493089"
+    },
+    {
+      "id": "fantacalcio-7-aHR0cHM6Ly93",
+      "title": "UFFICIALE - Napoli, risolto il contratto di Conte",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/04_06_2026/ufficiale-napoli-risolto-il-contratto-di-conte-493784",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Ufficiale il divorzio col tecnico leccese",
+      "image": "",
+      "publishedAt": "2026-06-04T13:19:04.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/04_06_2026/ufficiale-napoli-risolto-il-contratto-di-conte-493784"
+    },
+    {
+      "id": "sosfanta-6-aHR0cHM6Ly93",
+      "title": "Garcia, Ct Belgio: “Lukaku? Pensavo peggio, ma non sarà titolare! De Bruyne e i problemi a Napoli non sono…”",
+      "url": "https://www.sosfanta.com/squadra/napoli/garcia-ct-belgio-lukaku-pensavo-peggio-ma-non-sara-titolare-de-bruyne-e-i-problemi-a-napoli-non-sono/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Intervistato da La Gazzetta dello Sport, il ct del Belgio Rudi Garcia ha fatto il punto sugli \"italiani\" in rosa per il Mondiale",
+      "image": "",
+      "publishedAt": "2026-06-04T13:15:28.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/napoli",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/napoli/garcia-ct-belgio-lukaku-pensavo-peggio-ma-non-sara-titolare-de-bruyne-e-i-problemi-a-napoli-non-sono"
+    },
+    {
+      "id": "sosfanta-7-aHR0cHM6Ly93",
+      "title": "Roma, accelerata per Greenwood: la richiesta del Marsiglia e la probabile proposta dei giallorossi",
+      "url": "https://www.sosfanta.com/squadra/roma/roma-accelerata-per-greenwood-la-richiesta-del-marsiglia-e-la-probabile-proposta-dei-giallorossi/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Uno degli obiettivi della Roma per la prossima stagione è Mason Greenwood del Marsiglia. Questi gli aggiornamenti sulla trattativa riportati da La Gazzetta dello Sport: “L’OM ha fretta di ottenere plusvalenze e per l’attaccante chiede...",
+      "image": "",
+      "publishedAt": "2026-06-04T13:00:35.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Greenwood"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Greenwood"
+        ],
+        "players": [
+          "Greenwood"
+        ]
+      },
+      "tags": [
+        "/squadra/roma",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/roma/roma-accelerata-per-greenwood-la-richiesta-del-marsiglia-e-la-probabile-proposta-dei-giallorossi"
+    },
+    {
+      "id": "fantacalcio-8-aHR0cHM6Ly93",
+      "title": "Bologna, due olandesi nel mirino: c'è anche il fratello di Koopmeiners",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/bologna-due-olandesi-nel-mirino-c-e-anche-il-fratello-di-koopmeiners-493783",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Caccia ai primi colpi per Tedesco",
+      "image": "",
+      "publishedAt": "2026-06-04T12:47:01.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Bologna"
+      ],
+      "detectedTeams": [
+        "Bologna"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Tedesco"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna"
+        ],
+        "people": [
+          "Tedesco"
+        ],
+        "players": [
+          "Tedesco"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/bologna-due-olandesi-nel-mirino-c-e-anche-il-fratello-di-koopmeiners-493783"
+    },
+    {
+      "id": "gianlucadimarzio-2-aHR0cHM6Ly93",
+      "title": "Napoli, De Laurentiis: \"Lukaku e De Bruyne? Vedremo cosa penserà il nuovo allenatore\"",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/napoli-de-laurentiis-lukaku-e-de-bruyne-vedremo-cosa-pensera-il-nuovo-allenatore-493093",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "\"Se punteremo pi&ugrave; allo Scudetto o all'Europa? L'uno non esclude l'altro\": Aurelio De Laurentiis non ha dubbi e si esprime cos&igrave; in vista della prossima stagione, senza nascondere la sua ambizione sia per il campiona ...",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/5d/5d4ee309cbe41107b2fcfc2d86a5e1c4-82637-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T12:30:55.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/napoli-de-laurentiis-lukaku-e-de-bruyne-vedremo-cosa-pensera-il-nuovo-allenatore-493093"
+    },
+    {
+      "id": "sosfanta-8-aHR0cHM6Ly93",
+      "title": "Sky – Bologna, Ravaglia può partire: c’è una richiesta da questo club di Serie A",
+      "url": "https://www.sosfanta.com/squadra/udinese/sky-udinese-ravaglia-possibile-sostituto-di-okoye-le-ultime-sulla-trattativa-per-il-portiere/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "In casa Udinese si ragiona sul portiere per la prossima stagione. Queste le novità sulle trattative per la porta secondo quanto riporta Sky Sport: “All’Udinese piace Federico Ravaglia come possibile sostituto di Maduka Okoye. I...",
+      "image": "",
+      "publishedAt": "2026-06-04T12:30:45.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Bologna",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Federico Ravaglia",
+        "All’Udinese"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Udinese"
+        ],
+        "people": [
+          "Federico Ravaglia",
+          "All’Udinese"
+        ],
+        "players": [
+          "Federico Ravaglia",
+          "All’Udinese"
+        ]
+      },
+      "tags": [
+        "/squadra/udinese",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/udinese/sky-udinese-ravaglia-possibile-sostituto-di-okoye-le-ultime-sulla-trattativa-per-il-portiere"
+    },
+    {
+      "id": "fantacalcio-9-aHR0cHM6Ly93",
+      "title": "Napoli, idea Norton-Cuffy come vice Di Lorenzo",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/napoli-idea-norton-cuffy-come-vice-di-lorenzo-493781",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il Napoli sull'esterno inglese",
+      "image": "",
+      "publishedAt": "2026-06-04T12:15:19.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/napoli-idea-norton-cuffy-come-vice-di-lorenzo-493781"
+    },
+    {
+      "id": "sosfanta-9-aHR0cHM6Ly93",
+      "title": "Dumfries: “Real? Non posso dire nulla. Concentrato sul Mondiale, poi vedremo cosa succederà”",
+      "url": "https://www.sosfanta.com/squadra/inter/dumfries-real-non-posso-dire-nulla-concentrato-sul-mondiale-poi-vedremo-cosa-succedera/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Denzel Dumfries vestirà la maglia del Real Madrid che pagherà la clausola di 20 mln all’Inter. L’esterno ha parlato dal ritiro dell’Olanda al De Telegraaf , come riportato da Fcinter1908: “Il Real Madrid? No, dai,...",
+      "image": "",
+      "publishedAt": "2026-06-04T12:00:40.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Olanda"
+      ],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [
+          "Olanda"
+        ],
+        "players": [
+          "Olanda"
+        ]
+      },
+      "tags": [
+        "/squadra/inter",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/inter/dumfries-real-non-posso-dire-nulla-concentrato-sul-mondiale-poi-vedremo-cosa-succedera"
+    },
+    {
+      "id": "gianlucadimarzio-3-aHR0cHM6Ly93",
+      "title": "Calciomercato LIVE: tutte le notizie di giornata",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-live-tutte-le-notizie-di-giornata-493076",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Serie A, Serie B e calcio internazionale: tutte le notizie di calciomercato di gioved&igrave; 4 giugno 2026 in costante aggiornamento LIVE.&nbsp;&#13; &#13; 16:30 -&nbsp;Manchester United, Heaton rinnova per un anno.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/9f/9fdce4ffa22975d5811f31faa230bc29-33014-384o0o1158o774z090c.jpeg",
+      "publishedAt": "2026-06-04T12:00:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Heaton"
+      ],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [
+          "Heaton"
+        ],
+        "players": [
+          "Heaton"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/calciomercato-live-tutte-le-notizie-di-giornata-493076"
+    },
+    {
+      "id": "fantacalcio-10-aHR0cHM6Ly93",
+      "title": "Torino-Sassuolo, oggi la svolta per Abate e Aquilani",
+      "url": "https://www.fantacalcio.it/calciomercato/01_06_2026/torino-sassuolo-sfida-per-il-prossimo-allenatore-due-i-nomi-su-tutti-493675",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Duello tra i due club per la panchina",
+      "image": "",
+      "publishedAt": "2026-06-04T11:51:46.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Sassuolo",
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Sassuolo",
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Abate"
+      ],
+      "entities": {
+        "teams": [
+          "Sassuolo",
+          "Torino"
+        ],
+        "people": [
+          "Abate"
+        ],
+        "players": [
+          "Abate"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/01_06_2026/torino-sassuolo-sfida-per-il-prossimo-allenatore-due-i-nomi-su-tutti-493675"
+    },
+    {
+      "id": "gianlucadimarzio-4-aHR0cHM6Ly93",
+      "title": "Fiorentina, si attende il rinnovo del difensore Mirko Elia",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/fiorentina-si-attende-il-rinnovo-del-difensore-mirko-elia-493090",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Arrivano novit&agrave; sul mercato in casa Fiorentina: oggi, 4 giugno, &egrave; il giorno del rinnovo di Mirko Elia.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/b9/b98068d3ad1fdcf1f4c5d3df4391b71f-22546-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T11:50:17.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/fiorentina-si-attende-il-rinnovo-del-difensore-mirko-elia-493090"
+    },
+    {
+      "id": "sosfanta-10-aHR0cHM6Ly93",
+      "title": "Florentino Perez: “Paz al Real? Rispondo così, lo vogliono i top club”. Ecco le sue condizioni per il Mondiale",
+      "url": "https://www.sosfanta.com/squadra/como/florentino-perez-paz-al-real-rispondo-cosi-lo-vogliono-i-top-club-ecco-le-sue-condizioni-per-il-mondiale/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Durante la serata di ieri il (candidato) presidente del Real Madrid, Florentino Perez, ha parlato così di Nico Paz. Novità anche sulle sue condizioni fisiche.",
+      "image": "",
+      "publishedAt": "2026-06-04T11:45:55.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Paz"
+      ],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [
+          "Paz"
+        ],
+        "players": [
+          "Paz"
+        ]
+      },
+      "tags": [
+        "/squadra/como",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/como/florentino-perez-paz-al-real-rispondo-cosi-lo-vogliono-i-top-club-ecco-le-sue-condizioni-per-il-mondiale"
+    },
+    {
+      "id": "calciomercato-it-2-aHR0cHM6Ly93",
+      "title": "Juve, è Sorloth l&#8217;erede di Vlahovic: trattativa caldissima",
+      "url": "https://www.calciomercato.it/2026/06/04/juve-e-sorloth-lerede-di-vlahovic-trattativa-caldissima/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve, è Sorloth l&#8217;erede di Vlahovic: trattativa caldissima proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-04T11:45:05.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/04/juve-e-sorloth-lerede-di-vlahovic-trattativa-caldissima"
+    },
+    {
+      "id": "fantacalcio-11-aHR0cHM6Ly93",
+      "title": "Florentino Perez: \"Mourinho e Konaté al Real Madrid!\", poi l'annuncio su Nico Paz",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/04_06_2026/florentino-perez-mourinho-e-konate-al-real-madrid-poi-l-annuncio-su-nico-paz-493780",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del presidente del Real Madrid",
+      "image": "",
+      "publishedAt": "2026-06-04T11:30:32.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Nico Paz. Le",
+        "Konaté"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Nico Paz. Le",
+          "Konaté"
+        ],
+        "players": [
+          "Nico Paz. Le",
+          "Konaté"
+        ]
+      },
+      "tags": [
+        "Calcio estero",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/04_06_2026/florentino-perez-mourinho-e-konate-al-real-madrid-poi-l-annuncio-su-nico-paz-493780"
+    },
+    {
+      "id": "sosfanta-11-aHR0cHM6Ly93",
+      "title": "UFFICIALE – Napoli, addio ad Antonio Conte: contratto risolto consensualmente. Il comunicato",
+      "url": "https://www.sosfanta.com/squadra/napoli/ufficiale-napoli-addio-ad-antonio-conte-contratto-risolto-consensualmente-il-comunicato/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "La storia tra Antonio Conte e il Napoli è terminata dopo due stagione. Ecco il comunicato del club partenopeo tramite i canali ufficiali: “La SSC Napoli comunica di aver risolto consensualmente ed in anticipo rispetto alla naturale scadenza...",
+      "image": "",
+      "publishedAt": "2026-06-04T11:30:23.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/napoli",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/napoli/ufficiale-napoli-addio-ad-antonio-conte-contratto-risolto-consensualmente-il-comunicato"
+    },
+    {
+      "id": "gianlucadimarzio-5-aHR0cHM6Ly93",
+      "title": "Tecnica, estro e gol: chi è César Palacios, talento del Real che incanta la Serie A",
+      "url": "https://www.gianlucadimarzio.com/interviste-e-storie/tecnica-estro-e-gol-chi-e-cesar-palacios-talento-del-real-che-incanta-la-serie-a-493087",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "La&nbsp;F&aacute;brica del Real Madrid sforna un nuovo talento: C&eacute;sar Palacios.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/09/097670ced58ac55375d63b2daac68849-74840-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T11:30:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Interviste e Storie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/interviste-e-storie/tecnica-estro-e-gol-chi-e-cesar-palacios-talento-del-real-che-incanta-la-serie-a-493087"
+    },
+    {
+      "id": "gianlucadimarzio-6-aHR0cHM6Ly93",
+      "title": "Inter, Chivu in sede: attesa la firma sul rinnovo | VIDEO",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/inter-chivu-in-sede-attesa-la-firma-sul-rinnovo-video-493088",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Tempo di programmazione del futuro in casa Inter dopo la stagione appena conclusa che ha aggiunto alla bacheca nerazzurra uno Scudetto e una Coppa Italia.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/a7/a7cb40454fae9194be0aa163b1a52c8f-45653-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T11:22:59.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/inter-chivu-in-sede-attesa-la-firma-sul-rinnovo-video-493088"
+    },
+    {
+      "id": "gianlucadimarzio-7-aHR0cHM6Ly93",
+      "title": "Napoli, arriva la risoluzione consensuale con Antonio Conte: la nota",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/napoli-arriva-la-risoluzione-consensuale-con-antonio-conte-la-nota-493086",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Adesso &egrave; ufficiale: Antonio Conte non &egrave; pi&ugrave; l&rsquo;allenatore del Napoli.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/9d/9d083a168a9ba29ae885d9603a63b14e-08319-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T11:15:25.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/napoli-arriva-la-risoluzione-consensuale-con-antonio-conte-la-nota-493086"
+    },
+    {
+      "id": "fantacalcio-12-aHR0cHM6Ly93",
+      "title": "Inter, Zielinski: \"Spero di restare qui a lungo. Su Dumfries e Palestra...\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/04_06_2026/inter-zielinski-spero-di-restare-qui-a-lungo-su-dumfries-e-palestra-493779",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del polacco",
+      "image": "",
+      "publishedAt": "2026-06-04T11:02:12.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/04_06_2026/inter-zielinski-spero-di-restare-qui-a-lungo-su-dumfries-e-palestra-493779"
+    },
+    {
+      "id": "sosfanta-12-aHR0cHM6Ly93",
+      "title": "Sky – Juve, per il dopo Vlahovic non c’è solo Kolo Muani. Incontro per un altro colpo in attacco",
+      "url": "https://www.sosfanta.com/squadra/juventus/juve-per-il-dopo-vlahovic-spalletti-vuole-un-doppio-colpo-due-nomi-oltre-a-kolo-muani/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Dusan Vlahovic non proseguirà la sua carriera alla Juventus. Così il club bianconero dovrà mettersi alla ricerca di un attaccante, queste le ultime novità secondo Sky Sport: “C’è stato un incontro tra l’entourage di Sorloth e la...",
+      "image": "",
+      "publishedAt": "2026-06-04T11:00:29.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/juventus",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/juventus/juve-per-il-dopo-vlahovic-spalletti-vuole-un-doppio-colpo-due-nomi-oltre-a-kolo-muani"
+    },
+    {
+      "id": "gianlucadimarzio-8-aHR0cHM6Ly93",
+      "title": "Dumfries: \"Concentrato sul Mondiale. Futuro? Più avanti vedremo\"",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/dumfries-concentrato-sul-mondiale-futuro-piu-avanti-vedremo-493094",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Denzel Dumfries parla e lo fa dal ritiro della sua Olanda, che si sta preparando per l'inizio del Mondiale.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/41/41da77ef793c6d1b3a8a71599eb17c18-31375-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T11:00:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/dumfries-concentrato-sul-mondiale-futuro-piu-avanti-vedremo-493094"
+    },
+    {
+      "id": "calciomercato-it-3-aHR0cHM6Ly93",
+      "title": "Prove di scambio con la Roma: assalto Napoli",
+      "url": "https://www.calciomercato.it/2026/06/04/prove-di-scambio-con-la-roma-assalto-napoli/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Prove di scambio con la Roma: assalto Napoli proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-04T10:56:34.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Napoli",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/04/prove-di-scambio-con-la-roma-assalto-napoli"
+    },
+    {
+      "id": "gianlucadimarzio-9-aHR0cHM6Ly93",
+      "title": "Nazionale, Fortini: “Scarsi a chi? Che umiltà Gigio. Pio può ripercorrere le orme di Toni e Vieri\"",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/nazionale-fortini-scarsi-a-chi-che-umilta-gigio-pio-puo-ripercorrere-le-orme-di-toni-e-vieri-493085",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Niccol&ograve; Fortini ha parlato a gianlucadimarzio.com dopo il suo debutto in Nazionale.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/c1/c18a64c0605e233c63f820a0d86f1366-81501-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T10:45:40.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/nazionale-fortini-scarsi-a-chi-che-umilta-gigio-pio-puo-ripercorrere-le-orme-di-toni-e-vieri-493085"
+    },
+    {
+      "id": "fantacalcio-13-aHR0cHM6Ly93",
+      "title": "Europa League 2026/27: possibili fasce di sorteggio",
+      "url": "https://www.fantacalcio.it/approfondimenti/04_06_2026/europa-league-2026-27-possibili-fasce-di-sorteggio-493763",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "JUVENTUS E MILAN TESTE DI SERIE E FRA LE FAVORITE",
+      "image": "",
+      "publishedAt": "2026-06-04T10:45:06.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus",
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Juventus",
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus",
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Approfondimenti",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/approfondimenti/04_06_2026/europa-league-2026-27-possibili-fasce-di-sorteggio-493763"
+    },
+    {
+      "id": "sosfanta-13-aHR0cHM6Ly93",
+      "title": "Romano – Inter, cosa c’è di vero su Mancini. Priorità Roma, lo scenario più probabile",
+      "url": "https://www.sosfanta.com/squadra/inter/romano-inter-cosa-ce-di-vero-su-mancini-priorita-roma-lo-scenario-piu-probabile/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Tra le tante piste per la difesa dell’Inter c’è anche quella che porterebbe a Mancini della Roma. Per il momento non c’è nessuna trattativa, anzi lo scenario più probabile porta al rinnovo coi giallorossi come spiega Fabrizio...",
+      "image": "",
+      "publishedAt": "2026-06-04T10:30:54.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Inter",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Mancini. Priorità Roma"
+      ],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Roma"
+        ],
+        "people": [
+          "Mancini. Priorità Roma"
+        ],
+        "players": [
+          "Mancini. Priorità Roma"
+        ]
+      },
+      "tags": [
+        "/squadra/inter",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/inter/romano-inter-cosa-ce-di-vero-su-mancini-priorita-roma-lo-scenario-piu-probabile"
+    },
+    {
+      "id": "fantacalcio-14-aHR0cHM6Ly93",
+      "title": "Belgio, Rudi Garcia: \"Esclusione Openda dolorosa. Su Lukaku e De Bruyne...\"",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/mondiali/04_06_2026/belgio-rudi-garcia-esclusione-openda-dolorosa-su-lukaku-e-de-bruyne-493778",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del CT belga",
+      "image": "",
+      "publishedAt": "2026-06-04T10:15:05.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mondiali",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/mondiali/04_06_2026/belgio-rudi-garcia-esclusione-openda-dolorosa-su-lukaku-e-de-bruyne-493778"
+    },
+    {
+      "id": "sosfanta-14-aHR0cHM6Ly93",
+      "title": "Milan, contatti tra Leao e l’Arsenal: ecco la cifra sotto la quale il club non vuole scendere",
+      "url": "https://www.sosfanta.com/squadra/milan/milan-contatti-tra-leao-e-larsenal-ecco-la-cifra-sotto-la-quale-il-club-non-vuole-scendere/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il futuro di Rafael Leao è lontano dal Milan. Ad annunciarlo ci ha pensato proprio il giocatore qualche giorno fa. Queste le ultime novità riportate da La Gazzetta dello Sport: “Il Milan ha una posizione chiara in merito: se Leao vuole...",
+      "image": "",
+      "publishedAt": "2026-06-04T10:00:17.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/milan",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/milan/milan-contatti-tra-leao-e-larsenal-ecco-la-cifra-sotto-la-quale-il-club-non-vuole-scendere"
+    },
+    {
+      "id": "sosfanta-16-aHR0cHM6Ly93",
+      "title": "Inter, rilancio per Palestra: l’offerta all’Atalanta, c’è una contropartita. Le cifre per il giocatore",
+      "url": "https://www.sosfanta.com/squadra/inter/inter-rilancio-per-palestra-lofferta-allatalanta-ce-una-contropartita-le-cifre-per-il-giocatore/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Perso Dumfries che andrà al Real Madrid, l’Inter ha individuato in Marco Palestra il suo sostituto e sta trattando col Cagliari per trovare un accordo. Come sottolinea La Gazzetta dello Sport: “L’Inter ha ragionato insieme alla...",
+      "image": "",
+      "publishedAt": "2026-06-04T09:30:50.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Atalanta",
+        "Cagliari",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Cagliari",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Cagliari",
+          "Inter"
+        ],
+        "people": [
+          "Palestra"
+        ],
+        "players": [
+          "Palestra"
+        ]
+      },
+      "tags": [
+        "/squadra/inter",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/inter/inter-rilancio-per-palestra-lofferta-allatalanta-ce-una-contropartita-le-cifre-per-il-giocatore"
+    },
+    {
+      "id": "fantacalcio-15-aHR0cHM6Ly93",
+      "title": "Napoli, a breve l'ufficialità di Allegri: c'è l'accordo col Milan",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/04_06_2026/napoli-a-breve-l-ufficialita-di-allegri-c-e-l-accordo-col-milan-493777",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "L'annuncio di Tuttosport",
+      "image": "",
+      "publishedAt": "2026-06-04T09:10:16.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Milan",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Milan",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan",
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/04_06_2026/napoli-a-breve-l-ufficialita-di-allegri-c-e-l-accordo-col-milan-493777"
+    },
+    {
+      "id": "calciomercato-it-4-aHR0cHM6Ly93",
+      "title": "Occhi su Laurienté, il Milan pensa al dopo Leao",
+      "url": "https://www.calciomercato.it/2026/06/04/occhi-su-laurentie-il-milan-pensa-al-dopo-leao/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Occhi su Laurienté, il Milan pensa al dopo Leao proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-04T09:04:29.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Laurienté"
+      ],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [
+          "Laurienté"
+        ],
+        "players": [
+          "Laurienté"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/04/occhi-su-laurentie-il-milan-pensa-al-dopo-leao"
+    },
+    {
+      "id": "sosfanta-17-aHR0cHM6Ly93",
+      "title": "Romano – Juve, Cambiaso può partire: è una della tre opzioni per un top club europeo",
+      "url": "https://www.sosfanta.com/squadra/juventus/romano-juve-cambiaso-puo-partire-e-una-della-tre-opzioni-per-un-top-club-europeo/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Tra le possibili partenze in casa Juventus c’è anche l’ipotesi della cessione di Andrea Cambiaso. Secondo Fabrizio Romano, infatti, tra le possibili destinazioni dell’esterno bianconero ci sarebbe anche il Barcellona. Cambiaso...",
+      "image": "",
+      "publishedAt": "2026-06-04T09:00:18.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/juventus",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/juventus/romano-juve-cambiaso-puo-partire-e-una-della-tre-opzioni-per-un-top-club-europeo"
+    },
+    {
+      "id": "sosfanta-18-aHR0cHM6Ly93",
+      "title": "Romano: “Chiellini chiaro su Vlahovic e il possibile approdo in un’altra squadra di Serie A”",
+      "url": "https://www.sosfanta.com/squadra/juventus/romano-chiellini-chiaro-su-vlahovic-e-il-possibile-approdo-in-unaltra-squadra-di-serie-a/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il futuro di Dusan Vlahovic non sarà alla Juve. Interrotte le trattative per il rinnovo del contratto dell’attaccante che ora cerca una nuova destinazione. Queste le ultime riportate da Fabrizio Romano sul suo canale...",
+      "image": "",
+      "publishedAt": "2026-06-04T08:30:49.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Vlahovic"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Vlahovic"
+        ],
+        "players": [
+          "Vlahovic"
+        ]
+      },
+      "tags": [
+        "/squadra/juventus",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/juventus/romano-chiellini-chiaro-su-vlahovic-e-il-possibile-approdo-in-unaltra-squadra-di-serie-a"
+    },
     {
       "id": "fantacalcio-0-aHR0cHM6Ly93",
       "title": "Scarica FantaMondiale Dazn, il gioco e concorso a premi di Fantacalcio® dei Mondiali 2026",
@@ -134,6 +2364,79 @@
         "Fantacalcio"
       ],
       "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/napoli-da-rios-a-dodo-tutti-gli-obiettivi-di-manna-e-allegri-493776"
+    },
+    {
+      "id": "calciomercato-it-5-aHR0cHM6Ly93",
+      "title": "Juve, possibile colpo a zero dal Napoli: lo sponsor è Spalletti",
+      "url": "https://www.calciomercato.it/2026/06/04/juve-possibile-colpo-a-zero-dal-napoli-lo-sponsor-e-spalletti/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve, possibile colpo a zero dal Napoli: lo sponsor è Spalletti proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-04T08:10:30.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Juventus",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus",
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/04/juve-possibile-colpo-a-zero-dal-napoli-lo-sponsor-e-spalletti"
+    },
+    {
+      "id": "sosfanta-19-aHR0cHM6Ly93",
+      "title": "Romano: “Tre offerte per Juan Jesus. Decisione presa per il difensore del Napoli”",
+      "url": "https://www.sosfanta.com/squadra/napoli/romano-tre-offerte-per-juan-jesus-decisione-presa-per-il-difensore-del-napoli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il futuro di Juan Jesus non sarà più al Napoli. Il brasiliano ha scelto di continuare altrove la sua carriera, come spiega Fabrizio Romano nel suo canale Whatsapp: “Zero dubbi sul futuro di Juan Jesus: andrà via dal Napoli a parametro...",
+      "image": "",
+      "publishedAt": "2026-06-04T08:00:17.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Juan Jesus. Decisione"
+      ],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [
+          "Juan Jesus. Decisione"
+        ],
+        "players": [
+          "Juan Jesus. Decisione"
+        ]
+      },
+      "tags": [
+        "/squadra/napoli",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/napoli/romano-tre-offerte-per-juan-jesus-decisione-presa-per-il-difensore-del-napoli"
     },
     {
       "id": "fantacalcio-2-aHR0cHM6Ly93",
@@ -215,6 +2518,38 @@
       "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/napoli-contatti-per-vlahovic-manna-vuole-accontentare-allegri-493746"
     },
     {
+      "id": "sosfanta-21-aHR0cHM6Ly93",
+      "title": "Romano: “Dumfries, tutto definito col Real. Presto Perez svelerà il nuovo acquisto”",
+      "url": "https://www.sosfanta.com/squadra/inter/romano-dumfries-tutto-definito-col-real-preso-perez-svelera-il-nuovo-acquisto/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Denzel Dumfries sarà uno dei prossimi acquisti del Real Madrid. Tutto definito per il passaggio dell’esterno dall’Inter alle merengues, come conferma Fabrizio Romano: “Florentino Perez presto svelerà Dumfries come nuovo...",
+      "image": "",
+      "publishedAt": "2026-06-04T07:30:27.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/inter",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/inter/romano-dumfries-tutto-definito-col-real-preso-perez-svelera-il-nuovo-acquisto"
+    },
+    {
       "id": "fantacalcio-4-aHR0cHM6Ly93",
       "title": "Napoli, Juan Jesus ai saluti: è pronto per la sua nuova squadra",
       "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/napoli-juan-jesus-ai-saluti-e-pronto-per-la-sua-nuova-squadra-493774",
@@ -277,6 +2612,32 @@
         "Fantacalcio"
       ],
       "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/inter-si-avvicina-provedel-i-costi-dell-operazione-493773"
+    },
+    {
+      "id": "sosfanta-22-aHR0cHM6Ly93",
+      "title": "De Rossi: “Questo giocatore ci consente di fare 6-7 cambi! Non fa mai gol o assist ma…”",
+      "url": "https://www.sosfanta.com/news/de-rossi-elogia-un-suo-giocatore-ci-consente-di-fare-6-7-cambi-non-fa-mai-gol-o-assist-ma/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Che elogi da Daniele De Rossi a Mikael Ellertsson. Ecco le parole del tecnico rossoblu riprese dal Secolo XIX: “Premesso che tutti sono protagonisti e premesso che non fa mai un gol o un assist, quindi nel tabellino non ci entra mai, finora...",
+      "image": "",
+      "publishedAt": "2026-06-04T07:00:46.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/de-rossi-elogia-un-suo-giocatore-ci-consente-di-fare-6-7-cambi-non-fa-mai-gol-o-assist-ma"
     },
     {
       "id": "tmw-0-aHR0cHM6Ly93",

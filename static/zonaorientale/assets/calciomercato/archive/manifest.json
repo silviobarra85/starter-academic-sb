@@ -2,7 +2,7 @@
   "version": "V324",
   "timezone": "Europe/Rome",
   "startDate": "2026-06-01",
-  "updatedAt": "2026-06-04T06:56:25.737Z",
+  "updatedAt": "2026-06-04T15:07:18.289Z",
   "sourceMode": "static-rss-archive-manifest",
   "availableDays": [
     "2026-06-01",
@@ -14,7 +14,7 @@
     "2026-06-01": 4,
     "2026-06-02": 47,
     "2026-06-03": 125,
-    "2026-06-04": 47
+    "2026-06-04": 119
   },
-  "totalArticles": 223
+  "totalArticles": 295
 }
