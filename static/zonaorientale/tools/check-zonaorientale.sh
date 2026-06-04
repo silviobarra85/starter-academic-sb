@@ -338,13 +338,6 @@ else
   fail "Calciomercato riconoscimento automatico V320 non rilevato"
 fi
 
-calciomercato_v323_marker="ZonaOrientaleCalciomercatoEntityCardV323"
-if grep -q "$calciomercato_v323_marker" "$app_file" && grep -q "calciomercatoEntityPanelV323" "$SITE_ROOT/index.html"; then
-  pass "Calciomercato scheda entita V323 presente"
-else
-  warn "Calciomercato scheda entita V323 non rilevata"
-fi
-
 if [[ -n "$REPO_ROOT" ]]; then
   tracked_macos="$(git -C "$REPO_ROOT" ls-files | grep -E '(^|/)(\.DS_Store|__MACOSX|\._|\.AppleDouble|\.LSOverride)' || true)"
   if [[ -n "$tracked_macos" ]]; then
@@ -565,13 +558,6 @@ if [[ -n "$DOCS_ROOT" ]]; then
     pass "Calciomercato riconoscimento V320 documentato: calciomercato/CALCIOMERCATO_RICONOSCIMENTO_V320.md"
   else
     warn "Calciomercato riconoscimento V320 non documentato; verificare docs/zonaorientale/calciomercato/CALCIOMERCATO_RICONOSCIMENTO_V320.md"
-  fi
-
-  calciomercato_entity_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_ENTITY_CARD_V323.md"
-  if [[ -f "$calciomercato_entity_doc" ]]; then
-    pass "Calciomercato scheda entita V323 documentato: calciomercato/CALCIOMERCATO_ENTITY_CARD_V323.md"
-  else
-    warn "Calciomercato scheda entita V323 non documentato"
   fi
 
   resoconto_v313_doc="$DOCS_ROOT/RESOCONTO_SITO_V313.md"

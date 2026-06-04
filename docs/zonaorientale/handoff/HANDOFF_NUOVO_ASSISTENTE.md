@@ -985,8 +985,3 @@ Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler d
 ## V322 - Fix diagnostica ruoli Listone
 
 Corretto il falso positivo nel pannello `Admin -> Diagnostica dati`, riga `Listoni - qualita dati`, che poteva segnalare `senza ruolo 663` nonostante i ruoli fossero presenti nei JSON Listone. La diagnostica ora riconosce anche `classicRole`, `rosterRole`, `mantraRoles`, `roleClassic`, `roleMantra`, `R`, `R.` e `R.MANTRA`. Nessun JSON, rendering Listone, convertitore, Firebase, EmailJS, Calciomercato o Fantamercato interno e' stato modificato.
-
-
-## Aggiornamento V323
-
-Calciomercato: aggiunta scheda rapida per giocatori/allenatori e squadre citati negli articoli RSS. I chip nelle card sono cliccabili e aprono un riepilogo con fonti e ultimi articoli. Funzione non-AI e senza scritture Firebase.
