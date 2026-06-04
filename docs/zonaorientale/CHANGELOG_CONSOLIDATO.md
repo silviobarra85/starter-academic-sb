@@ -1,3 +1,32 @@
+## V327 - Fix Solo Admin Calciomercato
+
+- Calciomercato Solo Admin: rimosso dal label il testo non destinato alla UI, lasciando soltanto `Solo Admin`.
+- Calciomercato Solo Admin: il pulsante `Espandi`/`Riduci` ora aggiorna direttamente stato, attributo `aria-expanded`, corpo del pannello e classe collapsed.
+- CSS Calciomercato: aggiunta protezione esplicita per nascondere davvero il body del pannello quando ridotto.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V327.
+- Nessuna modifica a Netlify Functions, Firebase, dati statici Calciomercato/Listone o `FUNZIONALITA'.md`.
+- Diagnostica: `window.ZonaOrientaleCalciomercatoAdminToggleV327`.
+
+## V326 - Rifiniture UI Calciomercato/Listone/mobile
+
+- Calciomercato: ogni articolo senza immagine di anteprima usa ora una tile immagine della fonte, non solo gli articoli da archivio statico.
+- Calciomercato desktop: `Cerca`, `Da` e `A` sono allineati sulla stessa riga per compattare il blocco filtri.
+- Calciomercato Solo Admin: il pannello archivio statico e' espandibile/riducibile con pulsante in alto a destra.
+- Mobile: rimosso il toggle per passare da vista mobile a vista desktop; il menu `Altro` normalizza le icone anche sui link dinamici.
+- Listone: il menu `Modifiche` usa le classi standard dei controlli (`input filter-input`).
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V326.
+- Nessuna modifica a Netlify Functions, Firebase, dati statici Calciomercato/Listone o `FUNZIONALITA'.md`.
+- Diagnostica: `window.ZonaOrientaleRifinitureUiV326`.
+
+## V325 - Anteprime Calciomercato complete e fallback fonte archivio statico
+
+- Le descrizioni nelle schede Calciomercato ora occupano tutta la larghezza disponibile e non vengono piu' nascoste o troncate su mobile.
+- Rimossa dalla visualizzazione delle card la sottosezione `Giocatori/Allenatori`, conservando pero' le funzioni dati per ricerca e diagnostica.
+- Gli articoli statici caricati da `assets/calciomercato/archive/` senza immagine propria mostrano una tile immagine della fonte.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V325.
+- Nessuna modifica a feed Netlify, JSON archivio, `links.json`, Firebase, EmailJS, Fantamercato interno, Listone, Rose, Dashboard Presidente o Admin generale.
+- Aggiunti i documenti `calciomercato/CALCIOMERCATO_ANTEPRIME_CARD_V325.md` e `release/RELEASE_V325_ANTEPRIME_CALCIOMERCATO.md`.
+
 ## V313 - Admin ordinato, feed Calciomercato esteso e resoconto funzionale
 
 - Titolo Admin mantenuto sempre sopra tutti i pannelli informativi.

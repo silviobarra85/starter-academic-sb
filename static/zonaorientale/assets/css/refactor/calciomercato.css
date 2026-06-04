@@ -119,7 +119,8 @@
   }
 }
 
-/* V306 - Giocatori interessati negli articoli Calcio mercato. */
+/* V306 - Giocatori interessati negli articoli Calcio mercato.
+   V325: il blocco non viene piu' renderizzato nelle schede pubbliche, ma lo stile resta conservato per compatibilita diagnostica. */
 .calciomercato-players-v306 {
   display: flex;
   flex-direction: column;
@@ -228,6 +229,12 @@
   max-height: 210px;
 }
 
+.calciomercato-thumb-source-v325 img {
+  object-fit: contain;
+  padding: 0.65rem;
+  background: #0f172a;
+}
+
 .calciomercato-card-body-v306 {
   justify-content: flex-start;
 }
@@ -238,7 +245,8 @@
 }
 
 .calciomercato-card-body-v306 > p {
-  max-width: 72ch;
+  width: 100%;
+  max-width: none;
   color: var(--text);
 }
 
@@ -310,10 +318,10 @@
   }
 
   .calciomercato-card-body-v306 > p {
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: initial;
+    overflow: visible;
   }
 }
 
@@ -516,6 +524,11 @@
     object-fit: cover;
   }
 
+  .calciomercato-thumb-source-v325 img {
+    object-fit: contain;
+    padding: 0.35rem;
+  }
+
   .calciomercato-card-body-v306 {
     gap: 0.38rem;
   }
@@ -526,7 +539,8 @@
   }
 
   .calciomercato-card-body-v306 > p {
-    display: none !important;
+    display: block !important;
+    overflow: visible;
   }
 
   .calciomercato-card-meta-v306 {
@@ -632,6 +646,12 @@
   }
 }
 
+
+/* V325 - Schede Calciomercato: anteprime complete e fallback immagine fonte per archivio statico. */
+.calciomercato-card-body-v306 > p {
+  overflow: visible;
+  text-overflow: clip;
+}
 
 /* V324 - Diagnostica archivio Calciomercato solo Admin. */
 .calciomercato-archive-tools-card-v324 {
@@ -753,4 +773,89 @@
   .calciomercato-archive-metrics-v324 {
     grid-template-columns: 1fr;
   }
+}
+
+/* V326 - Rifiniture Calciomercato desktop e box Solo Admin comprimibile. */
+@media (min-width: 901px) {
+  .calciomercato-filters-v319 {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) minmax(180px, 0.58fr) minmax(180px, 0.58fr) auto;
+    align-items: end;
+    gap: 0.7rem;
+  }
+
+  .calciomercato-select-row-v319 {
+    grid-column: 1 / -1;
+  }
+
+  .calciomercato-search-field-v319 {
+    grid-column: 1 / 2;
+    flex-basis: auto;
+  }
+
+  .calciomercato-date-row-v319 {
+    grid-column: 2 / 4;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+  }
+
+  .calciomercato-actions-row-v319 {
+    grid-column: 4 / 5;
+    align-self: end;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
+}
+
+.calciomercato-archive-tools-card-v326 {
+  display: block;
+}
+
+.calciomercato-archive-head-v326 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.calciomercato-archive-head-v326 h3 {
+  margin: 0.15rem 0 0.35rem;
+}
+
+.calciomercato-archive-toggle-v326 {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.calciomercato-archive-body-v326 {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.9rem;
+}
+
+.calciomercato-archive-body-v326 > p {
+  margin: 0;
+}
+
+.calciomercato-archive-tools-card-v326.is-collapsed {
+  border-style: dashed;
+}
+
+@media (max-width: 760px) {
+  .calciomercato-archive-head-v326 {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .calciomercato-archive-toggle-v326 {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+/* V327 - garantisce che il body del box Solo Admin resti davvero nascosto quando ridotto. */
+.calciomercato-archive-body-v326[hidden] {
+  display: none !important;
 }

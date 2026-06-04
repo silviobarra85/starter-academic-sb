@@ -129,3 +129,24 @@
     border-radius: 14px !important;
   }
 }
+
+/* V326 - Mobile: rimuove il toggle vista mobile/desktop e stabilizza icone menu Altro. */
+[data-display-mode-toggle],
+#floatingDisplayModeToggle {
+  display: none !important;
+}
+
+body.is-mobile-ux .mobile-more-link .mobile-more-icon {
+  flex: 0 0 28px;
+  width: 28px;
+  min-width: 28px;
+}
+
+body.is-mobile-ux .mobile-more-link > span:not(.mobile-more-icon) {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+body.is-mobile-ux .listone-change-filter-v277 select.input.filter-input {
+  min-height: 44px !important;
+}
