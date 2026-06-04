@@ -992,3 +992,7 @@ Corretto il falso positivo nel pannello `Admin -> Diagnostica dati`, riga `Listo
 - Rimosso dalla UI delle card Calciomercato il riquadro visuale `Giocatori/Allenatori`, mantenendo il riconoscimento interno per ricerca e filtri futuri.
 - Allargata l'anteprima descrittiva desktop degli articoli eliminando il limite di larghezza che causava a capo anticipati.
 - Funzionalita' da preservare: feed RSS, fallback JSON, download JSON, filtri Squadre/Topic/Fonti, range temporale, caricamento articoli piu' vecchi, Fantamercato interno, Listone, Rose, Admin e Dashboard Presidente.
+
+
+## Nota V325
+La sezione Calciomercato ha vista Lista di default e Timeline opzionale. I download JSON filtrati/completi sono funzionalita da preservare. Le schede entita V323 non sono gradite e non vanno riproposte senza progettazione esplicita.

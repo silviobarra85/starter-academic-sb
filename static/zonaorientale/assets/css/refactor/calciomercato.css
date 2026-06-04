@@ -609,3 +609,77 @@
 .calciomercato-players-v306 {
   display: none !important;
 }
+
+/* V325 - Timeline Calciomercato e download JSON protetto.
+   Vista opzionale: la lista resta default. Non modifica feed, filtri, range o download esistenti. */
+.calciomercato-view-actions-v325 {
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.calciomercato-view-actions-v325 .button {
+  white-space: normal;
+}
+
+.calciomercato-timeline-v325 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.calciomercato-timeline-day-v325 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.calciomercato-timeline-heading-v325 {
+  position: sticky;
+  top: 0.5rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.calciomercato-timeline-heading-v325 h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.calciomercato-timeline-list-v325 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .calciomercato-view-actions-v325 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .calciomercato-view-actions-v325 .button {
+    width: 100%;
+    justify-content: center;
+    min-height: 2.65rem;
+    font-size: 0.82rem;
+  }
+
+  .calciomercato-timeline-heading-v325 {
+    top: 0.25rem;
+    padding: 0.58rem 0.7rem;
+  }
+
+  .calciomercato-timeline-heading-v325 h3 {
+    font-size: 0.95rem;
+  }
+}
