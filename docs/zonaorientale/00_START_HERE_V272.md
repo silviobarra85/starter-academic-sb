@@ -258,3 +258,18 @@ Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export
 ## Aggiornamento V319
 
 V319 aggiunge il layout mobile compatto per la sezione `Calciomercato`. La modifica e' solo UI/CSS/markup: nessun cambio a RSS, Netlify Function, dati, Firebase o funzioni storiche. Prima di nuove modifiche alla sezione testare filtri, ricerca, range, caricamento progressivo e mobile.
+
+
+## Aggiornamento V320 - Riconoscimento Calciomercato
+
+V320 aggiunge riconoscimento automatico prudente di squadre, giocatori e allenatori negli articoli RSS del Calciomercato. La modifica e' isolata alla sezione Calciomercato e non tocca Fantamercato interno, Listone, Rose, Admin, Presidente, Firebase/Auth/EmailJS o mobile navigation.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.
+
+
+## V322 - Fix diagnostica ruoli Listone
+
+Corretto il falso positivo nel pannello `Admin -> Diagnostica dati`, riga `Listoni - qualita dati`, che poteva segnalare `senza ruolo 663` nonostante i ruoli fossero presenti nei JSON Listone. La diagnostica ora riconosce anche `classicRole`, `rosterRole`, `mantraRoles`, `roleClassic`, `roleMantra`, `R`, `R.` e `R.MANTRA`. Nessun JSON, rendering Listone, convertitore, Firebase, EmailJS, Calciomercato o Fantamercato interno e' stato modificato.

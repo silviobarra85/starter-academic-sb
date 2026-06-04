@@ -970,3 +970,18 @@ Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export
 ## V319 - Calciomercato mobile compatto
 
 Preservare la nuova UI mobile del Calciomercato: filtri sotto `Articoli di mercato`, select `Squadre`/`Topic`/`Fonti` affiancate, ricerca a tutta larghezza, range `Da/A` affiancato e card compatte con immagine quadrata. La modifica non riguarda feed RSS, Fantamercato interno, Listone, Rose, Admin o Firebase.
+
+
+## Aggiornamento V320 - Calciomercato riconoscimento automatico
+
+La sezione Calciomercato riconosce automaticamente in modo euristico squadre, giocatori e allenatori dagli articoli RSS. Campi rilevanti: `detectedTeams`, `detectedPlayers`, `entities.teams`, `entities.people`. Il riconoscimento non e' AI e puo' avere limiti; non collegarlo al Fantamercato interno senza richiesta esplicita e audit. Preservare sempre Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, mobile navigation e fallback statico.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.
+
+
+## V322 - Fix diagnostica ruoli Listone
+
+Corretto il falso positivo nel pannello `Admin -> Diagnostica dati`, riga `Listoni - qualita dati`, che poteva segnalare `senza ruolo 663` nonostante i ruoli fossero presenti nei JSON Listone. La diagnostica ora riconosce anche `classicRole`, `rosterRole`, `mantraRoles`, `roleClassic`, `roleMantra`, `R`, `R.` e `R.MANTRA`. Nessun JSON, rendering Listone, convertitore, Firebase, EmailJS, Calciomercato o Fantamercato interno e' stato modificato.

@@ -46,11 +46,35 @@ const DEFAULT_SOURCES = [
   }
 ];
 
-const SERIE_A_TEAMS = [
-  'Atalanta', 'Bologna', 'Cagliari', 'Como', 'Cremonese', 'Fiorentina', 'Genoa',
-  'Inter', 'Juventus', 'Lazio', 'Lecce', 'Milan', 'Napoli', 'Parma', 'Pisa',
-  'Roma', 'Sassuolo', 'Torino', 'Udinese', 'Verona', 'Hellas Verona'
+const SERIE_A_TEAM_ALIASES = [
+  { name: 'Atalanta', aliases: ['Atalanta', 'Dea'] },
+  { name: 'Bologna', aliases: ['Bologna'] },
+  { name: 'Cagliari', aliases: ['Cagliari'] },
+  { name: 'Como', aliases: ['Como'] },
+  { name: 'Cremonese', aliases: ['Cremonese'] },
+  { name: 'Fiorentina', aliases: ['Fiorentina', 'Viola'] },
+  { name: 'Genoa', aliases: ['Genoa'] },
+  { name: 'Inter', aliases: ['Inter', 'Internazionale', 'Nerazzurri'] },
+  { name: 'Juventus', aliases: ['Juventus', 'Juve', 'Bianconeri'] },
+  { name: 'Lazio', aliases: ['Lazio', 'Biancocelesti'] },
+  { name: 'Lecce', aliases: ['Lecce'] },
+  { name: 'Milan', aliases: ['Milan', 'Rossoneri'] },
+  { name: 'Napoli', aliases: ['Napoli', 'Partenopei', 'Azzurri'] },
+  { name: 'Parma', aliases: ['Parma'] },
+  { name: 'Pisa', aliases: ['Pisa'] },
+  { name: 'Roma', aliases: ['Roma', 'Giallorossi'] },
+  { name: 'Sassuolo', aliases: ['Sassuolo'] },
+  { name: 'Torino', aliases: ['Torino', 'Toro', 'Granata'] },
+  { name: 'Udinese', aliases: ['Udinese'] },
+  { name: 'Verona', aliases: ['Verona', 'Hellas Verona', 'Hellas'] }
 ];
+
+const CALCIOMERCATO_PERSON_STOPWORDS = new Set([
+  'Serie A', 'Serie B', 'Champions League', 'Europa League', 'Conference League',
+  'Calciomercato', 'Fantacalcio', 'TuttoMercatoWeb', 'SOS Fanta', 'Gianluca Di Marzio',
+  'La Gazzetta', 'Sport', 'Mercato', 'Ufficiale', 'Esclusiva', 'Live', 'Video',
+  'Italia', 'Italiano', 'Europeo', 'Mondiale', 'Coppa Italia', 'Supercoppa'
+]);
 
 const MARKET_KEYWORDS = [
   'mercato', 'calciomercato', 'trattativa', 'trattative', 'interesse', 'obiettivo',
@@ -161,10 +185,71 @@ function extractImage(block) {
   return '';
 }
 
+function normalizeEntityKey(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function hasEntityMatch(text, alias) {
+  const haystack = ` ${normalizeEntityKey(text)} `;
+  const needle = normalizeEntityKey(alias);
+  return !!needle && haystack.includes(` ${needle} `);
+}
+
+function uniqueEntities(values, limit = 12) {
+  const seen = new Set();
+  return (Array.isArray(values) ? values : [])
+    .map((value) => String(value || '').replace(/\s+/g, ' ').trim())
+    .filter(Boolean)
+    .filter((value) => {
+      const key = normalizeEntityKey(value);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, limit);
+}
+
 function inferTeams(text) {
-  const haystack = ` ${String(text || '').toLowerCase()} `;
-  const teams = SERIE_A_TEAMS.filter((team) => haystack.includes(` ${team.toLowerCase()} `));
-  return Array.from(new Set(teams.map((team) => (team === 'Hellas Verona' ? 'Verona' : team))));
+  const teams = [];
+  SERIE_A_TEAM_ALIASES.forEach((team) => {
+    if ((team.aliases || []).some((alias) => hasEntityMatch(text, alias))) teams.push(team.name);
+  });
+  return uniqueEntities(teams, 8);
+}
+
+function isLikelyPersonName(value, teams = []) {
+  const raw = String(value || '').replace(/[.,:;!?()\[\]{}]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!raw || raw.length < 3 || raw.length > 42) return false;
+  if (/^\d+$/.test(raw)) return false;
+  const words = raw.split(' ').filter(Boolean);
+  if (!words.length || words.length > 4) return false;
+  if (CALCIOMERCATO_PERSON_STOPWORDS.has(raw)) return false;
+  const key = normalizeEntityKey(raw);
+  if (!key || key.length < 3) return false;
+  const teamKeys = teams.map(normalizeEntityKey);
+  if (teamKeys.includes(key)) return false;
+  if (['serie', 'calcio', 'mercato', 'fantacalcio', 'diretta', 'ufficiale', 'ultime', 'news'].includes(key)) return false;
+  return words.every((word) => /^[A-ZÀ-ÖØ-Ý][A-Za-zÀ-ÖØ-öø-ÿ'’.-]{1,}$/.test(word));
+}
+
+function inferPeople(text, teams = []) {
+  const rawText = String(text || '').replace(/\s+/g, ' ').trim();
+  if (!rawText) return [];
+  const candidates = [];
+  const signalPatterns = [
+    /(?:per|su|segue|piace|obiettivo|tratta|offerta per|rilancio per|contatti per|sondaggio per|accordo con|firma|ufficiale)\s+([A-ZÀ-ÖØ-Ý][A-Za-zÀ-ÖØ-öø-ÿ'’.-]+(?:\s+[A-ZÀ-ÖØ-Ý][A-Za-zÀ-ÖØ-öø-ÿ'’.-]+){0,3})/g,
+    /([A-ZÀ-ÖØ-Ý][A-Za-zÀ-ÖØ-öø-ÿ'’.-]+(?:\s+[A-ZÀ-ÖØ-Ý][A-Za-zÀ-ÖØ-öø-ÿ'’.-]+){0,3})\s+(?:verso|al|alla|alla corte|nel mirino|piace|firma|rinnova|saluta)/g
+  ];
+  signalPatterns.forEach((pattern) => {
+    let match;
+    while ((match = pattern.exec(rawText))) candidates.push(match[1]);
+  });
+  return uniqueEntities(candidates.filter((candidate) => isLikelyPersonName(candidate, teams)), 10);
 }
 
 function inferTopic(text, fallback) {
@@ -201,8 +286,10 @@ function parseFeed(xml, source) {
     const category = extractTag(block, 'category');
     const text = `${title} ${description} ${category}`;
     const teams = inferTeams(text);
+    const people = inferPeople(`${title}. ${description}`, teams);
     const topic = inferTopic(text, source.topic || category || 'Mercato');
     const marketStatus = inferMarketStatus(text);
+    const sourceDefaultTeams = normalizeList(source.defaultTeams || source.defaultTeam || []);
     return {
       id: `${source.id || source.name || 'source'}-${index}-${Buffer.from(link || title).toString('base64').slice(0, 12)}`,
       title,
@@ -214,8 +301,15 @@ function parseFeed(xml, source) {
       publishedAt: date ? new Date(date).toISOString() : '',
       topic,
       marketStatus,
-      teams: teams.length ? teams : normalizeList(source.defaultTeams || source.defaultTeam || []),
+      teams: teams.length ? teams : sourceDefaultTeams,
+      detectedTeams: teams,
       players: [],
+      detectedPlayers: people,
+      entities: {
+        teams,
+        people,
+        players: people
+      },
       tags: [category, source.topic].filter(Boolean)
     };
   }).filter((article) => article.url && article.title);
@@ -292,6 +386,8 @@ function articleMatchesQuery(article, query) {
     article.marketStatus,
     ...(Array.isArray(article.teams) ? article.teams : []),
     ...(Array.isArray(article.players) ? article.players : []),
+    ...(Array.isArray(article.detectedPlayers) ? article.detectedPlayers : []),
+    ...(Array.isArray(article.detectedTeams) ? article.detectedTeams : []),
     ...(Array.isArray(article.tags) ? article.tags : [])
   ].join(' '));
   return haystack.includes(q);
@@ -382,7 +478,7 @@ exports.handler = async (event) => {
     }
 
     return jsonResponse(200, {
-      version: 'V317',
+      version: 'V320',
       sourceMode: 'automatic-rss',
       generatedAt: new Date().toISOString(),
       query,
@@ -406,7 +502,7 @@ exports.handler = async (event) => {
     });
   } catch (error) {
     return jsonResponse(200, {
-      version: 'V317',
+      version: 'V320',
       sourceMode: 'automatic-rss-error',
       generatedAt: new Date().toISOString(),
       sources: DEFAULT_SOURCES,

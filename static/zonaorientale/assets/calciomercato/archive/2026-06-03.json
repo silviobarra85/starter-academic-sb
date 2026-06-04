@@ -1,0 +1,4264 @@
+{
+  "version": "V324",
+  "date": "2026-06-03",
+  "timezone": "Europe/Rome",
+  "generatedAt": "2026-06-04T06:56:24.780Z",
+  "sourceMode": "static-rss-archive",
+  "sources": [
+    {
+      "id": "tmw",
+      "name": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com",
+      "feedUrl": "https://www.tuttomercatoweb.com/rss/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/rss/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "sosfanta",
+      "name": "SOS Fanta",
+      "url": "https://www.sosfanta.com",
+      "feedUrl": "https://www.sosfanta.com/feed/",
+      "feedUrls": [
+        "https://www.sosfanta.com/feed/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "gianlucadimarzio",
+      "name": "Gianluca Di Marzio",
+      "url": "https://gianlucadimarzio.com",
+      "feedUrl": "https://gianlucadimarzio.com/rss/",
+      "feedUrls": [
+        "https://gianlucadimarzio.com/rss/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "fantacalcio",
+      "name": "Fantacalcio.it",
+      "url": "https://www.fantacalcio.it",
+      "feedUrl": "https://rss.fantacalcio.it/",
+      "feedUrls": [
+        "https://rss.fantacalcio.it/"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "calciomercato-it",
+      "name": "CalcioMercato.it",
+      "url": "https://www.calciomercato.it",
+      "feedUrl": "https://www.calciomercato.it/feed/",
+      "feedUrls": [
+        "https://www.calciomercato.it/feed/"
+      ],
+      "enabled": true
+    }
+  ],
+  "warnings": [],
+  "feedRange": {
+    "earliest": "2026-06-02T06:55:12.000Z",
+    "latest": "2026-06-04T08:27:51.000Z",
+    "totalBeforeDateRange": 160,
+    "totalFetched": 160,
+    "totalAfterQueryBeforeDateRange": 160
+  },
+  "stats": {
+    "existingArticles": 109,
+    "fetchedArticles": 92,
+    "totalArticles": 125,
+    "duplicatesSkipped": 76
+  },
+  "articles": [
+    {
+      "id": "gianlucadimarzio-4-aHR0cHM6Ly93",
+      "title": "Sampdoria, Americo Branco sarà il nuovo ds",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/sampdoria-americo-branco-sara-il-nuovo-ds-493073",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Dopo l'addio di Mancini la Sampdoria &egrave; pronta ad accogliere Americo Branco come nuovo direttore sportivo. Dopo le valutazioni di questi giorni la scelta della societ&agrave; e del Ceo Sport Fredberg &egrave; quindi ricaduta su di lui.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/9b/9ba0ffcbfbe6a77535e518d8f5cfa04f-44434-672o0o2076o1404z1038.jpeg",
+      "publishedAt": "2026-06-03T21:59:34.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/sampdoria-americo-branco-sara-il-nuovo-ds-493073"
+    },
+    {
+      "id": "gianlucadimarzio-5-aHR0cHM6Ly93",
+      "title": "Juan Jesus, si avvicina l'ipotesi Sporting CP: il brasiliano è in scadenza e lascerà il Napoli",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/juan-jesus-si-avvicina-l-ipotesi-sporting-cp-il-brasiliano-e-in-scadenza-e-lascera-il-napoli-493071",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Juan Jesus&nbsp;lascer&agrave; la Serie A. Il brasiliano, infatti, dopo cinque stagioni con il Napoli, &egrave; in scadenza: su di lui c'&egrave; lo Sporting CP.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/43/43f6a9908f6b4be450bb8934ca7bf6e6-74911-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:57:14.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/juan-jesus-si-avvicina-l-ipotesi-sporting-cp-il-brasiliano-e-in-scadenza-e-lascera-il-napoli-493071"
+    },
+    {
+      "id": "gianlucadimarzio-6-aHR0cHM6Ly93",
+      "title": "Udinese, piace Ravaglia se Okoye dovesse partire",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/udinese-piace-ravaglia-se-okoye-dovesse-partire-493067",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "All'Udinese piace Federico Ravaglia come possibile sostituto di Maduka Okoye. I friulani, infatti, potrebbero affondare il colpo sul portiere del Bologna se il nigeriano dovesse lasciare il club nel corso di questa sessione di calciomercato.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/a0/a0dc695caf1013cc4ecadd51a78ec99c-51775-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:51:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Bologna",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Ravaglia",
+        "Federico Ravaglia",
+        "All'Udinese"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Udinese"
+        ],
+        "people": [
+          "Ravaglia",
+          "Federico Ravaglia",
+          "All'Udinese"
+        ],
+        "players": [
+          "Ravaglia",
+          "Federico Ravaglia",
+          "All'Udinese"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/udinese-piace-ravaglia-se-okoye-dovesse-partire-493067"
+    },
+    {
+      "id": "gianlucadimarzio-7-aHR0cHM6Ly93",
+      "title": "Bournemouth, interesse per Tiago Gabriel del Lecce",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/bournemouth-interesse-per-tiago-gabriel-del-lecce-493063",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Resta vivo l'interesse del Bournemouth per il difensore del Lecce Tiago Gabriel, tra&nbsp;protagonisti della salvezza dei salentini.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/2e/2ec6ec58cdceae854a9d234f1352b392-70198-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:50:18.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Tiago Gabriel"
+      ],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [
+          "Tiago Gabriel"
+        ],
+        "players": [
+          "Tiago Gabriel"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/bournemouth-interesse-per-tiago-gabriel-del-lecce-493063"
+    },
+    {
+      "id": "sosfanta-4-aHR0cHM6Ly93",
+      "title": "Baldini: “L’Italia non deve perdere Pio Esposito. Sul record di esordienti e il futuro…”",
+      "url": "https://www.sosfanta.com/news/baldini-litalia-non-deve-perdere-pio-esposito-sul-record-di-esordienti-e-il-futuro/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Silvio Baldini, CT ad interim della Nazionale italiana, ha parlato ai microfoni della Rai e Sky Sport in occasione della vittoria per 1-0 dell’Italia sul Lussemburgo. Queste le sue parole riportate da TMW. PARTITA – “Sono molto...",
+      "image": "",
+      "publishedAt": "2026-06-03T21:45:15.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/baldini-litalia-non-deve-perdere-pio-esposito-sul-record-di-esordienti-e-il-futuro"
+    },
+    {
+      "id": "calciomercato-it-3-aHR0cHM6Ly93",
+      "title": "Sergino Dest nel mirino del Bayern Monaco, nuova idea per i tedeschi",
+      "url": "https://www.calciomercato.it/2026/06/03/sergino-dest-nel-mirino-del-bayern-monaco-nuova-idea-per-i-tedeschi/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Sergino Dest nel mirino del Bayern Monaco, nuova idea per i tedeschi proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T21:39:28.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Sergino Dest",
+        "L'articolo Sergino Dest"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Sergino Dest",
+          "L'articolo Sergino Dest"
+        ],
+        "players": [
+          "Sergino Dest",
+          "L'articolo Sergino Dest"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/sergino-dest-nel-mirino-del-bayern-monaco-nuova-idea-per-i-tedeschi"
+    },
+    {
+      "id": "gianlucadimarzio-8-aHR0cHM6Ly93",
+      "title": "Primi sondaggi del Barcellona per Cambiaso: i dettagli",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/primi-sondaggi-del-barcellona-per-cambiaso-i-dettagli-493065",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Il Barcellona pensa ad Andrea Cambiaso per rinforzare la corsia esterna. Il club blaugrana, infatti, si &egrave; gi&agrave; mosso per il terzino della Juventus, e ci sono stati i primi sondaggi per lui.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/ea/ea84474dd88e501170522e60970c90e4-57054-397o60o1506o1168z0c3b.jpeg",
+      "publishedAt": "2026-06-03T21:32:58.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Cambiaso"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Cambiaso"
+        ],
+        "players": [
+          "Cambiaso"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/primi-sondaggi-del-barcellona-per-cambiaso-i-dettagli-493065"
+    },
+    {
+      "id": "gianlucadimarzio-9-aHR0cHM6Ly93",
+      "title": "Il Como ci prova per Gonzalo Garcia: la situazione",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/il-como-ci-prova-per-gonzalo-garcia-la-situazione-493069",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Il Como si muove anche in attacco per rinforzare la rosa in vista della prossima stagione, in cui la squadra di Fabregas prender&agrave; parte alla Champions League.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/01/01c2e4535905dccd1933eb0e408a0a3c-12863-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T21:31:46.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gonzalo Garcia"
+      ],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [
+          "Gonzalo Garcia"
+        ],
+        "players": [
+          "Gonzalo Garcia"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/il-como-ci-prova-per-gonzalo-garcia-la-situazione-493069"
+    },
+    {
+      "id": "sosfanta-5-aHR0cHM6Ly93",
+      "title": "Totti: “Mai alcun attrito tra me e DDR. La 10 a Dybala? Roma non è Torino. Mi pento del calcio a Balotelli”",
+      "url": "https://www.sosfanta.com/news/totti-mai-alcun-attrito-tra-me-e-ddr-la-10-a-dybala-roma-non-e-torino-mi-pento-del-calcio-a-balotelli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Francesco Totti è stato tra i protagonisti del format “Totti contro Tutti”, promosso da Betsson Sport, occasione nella quale ha chiarito anche le voci su una presunta frizione con Daniele De Rossi, oggi allenatore del Genoa: “Non...",
+      "image": "",
+      "publishedAt": "2026-06-03T21:30:50.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Genoa",
+        "Roma",
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Roma",
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Mai"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Roma",
+          "Torino"
+        ],
+        "people": [
+          "Mai"
+        ],
+        "players": [
+          "Mai"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/totti-mai-alcun-attrito-tra-me-e-ddr-la-10-a-dybala-roma-non-e-torino-mi-pento-del-calcio-a-balotelli"
+    },
+    {
+      "id": "fantacalcio-16-aHR0cHM6Ly93",
+      "title": "Juventus, Chiellini: \"A queste cifre Vlahovic non rimarrà in Italia\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/juventus-chiellini-a-queste-cifre-vlahovic-non-rimarra-in-italia-493762",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del dirigente bianconero sull'addio dell'attaccante serbo",
+      "image": "",
+      "publishedAt": "2026-06-03T20:52:50.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/juventus-chiellini-a-queste-cifre-vlahovic-non-rimarra-in-italia-493762"
+    },
+    {
+      "id": "calciomercato-it-4-aHR0cHM6Ly93",
+      "title": "PAGELLE E TABELLINO Lussemburgo-Italia 0-1: Pio Esposito guida gli Under di Baldini",
+      "url": "https://www.calciomercato.it/2026/06/03/pagelle-e-tabellino-lussemburgo-italia-0-1-pio-esposito-guida-gli-under-di-baldini/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo PAGELLE E TABELLINO Lussemburgo-Italia 0-1: Pio Esposito guida gli Under di Baldini proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T20:43:29.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Notizie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/pagelle-e-tabellino-lussemburgo-italia-0-1-pio-esposito-guida-gli-under-di-baldini"
+    },
+    {
+      "id": "fantacalcio-0-aHR0cHM6Ly93",
+      "title": "LIVE - Lussemburgo-Italia: manca poco al fischio d'inizio",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/nazionali/03_06_2026/amichevole-lussemburgo-italia-cronaca-tabellino-493755",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "La diretta testuale di Lussemburgo-Italia",
+      "image": "",
+      "publishedAt": "2026-06-03T20:30:46.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Nazionali",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/nazionali/03_06_2026/amichevole-lussemburgo-italia-cronaca-tabellino-493755"
+    },
+    {
+      "id": "sosfanta-6-aHR0cHM6Ly93",
+      "title": "Ministro Sport: “Prossimo ct dell’Italia? Vi rispondo così! Su Mancini e il presidente FIGC…”",
+      "url": "https://www.sosfanta.com/news/ministro-sport-prossimo-ct-dellitalia-vi-rispondo-cosi-su-mancini-e-il-presidente-figc/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il Ministro dello Sport, Andrea Abodi, è intervenuto a margine del Premio De Sanctis parlando del futuro del calcio italiano, dal tema del commissario tecnico al prossimo presidente federale. Queste le sue parole riportate da TMW. PROSSIMO CT –...",
+      "image": "",
+      "publishedAt": "2026-06-03T20:30:13.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/ministro-sport-prossimo-ct-dellitalia-vi-rispondo-cosi-su-mancini-e-il-presidente-figc"
+    },
+    {
+      "id": "sosfanta-7-aHR0cHM6Ly93",
+      "title": "Cutrone: “A gennaio avevo accettato una proposta dalla Serie A! Ecco com’è andata”",
+      "url": "https://www.sosfanta.com/news/cutrone-a-gennaio-avevo-accettato-una-proposta-dalla-serie-a-eccome-come-andata/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Patrick Cutrone ha raccontato a Cronache di Spogliatoio un retroscena sulla scorsa sessione di calciomercato invernale. Riporta le sue parole Tmw: “A gennaio stavo per firmare con un’altra squadra in Serie A. Era tutto fatto, poi è...",
+      "image": "",
+      "publishedAt": "2026-06-03T20:00:42.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/cutrone-a-gennaio-avevo-accettato-una-proposta-dalla-serie-a-eccome-come-andata"
+    },
+    {
+      "id": "fantacalcio-1-aHR0cHM6Ly93",
+      "title": "Genoa, incontro positivo per il rinnovo di Messias: le ultime",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/genoa-incontro-positivo-per-il-rinnovo-di-messias-le-ultime-493761",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il brasiliano destinato ancora a vestire la maglia rossoblu",
+      "image": "",
+      "publishedAt": "2026-06-03T20:00:21.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/genoa-incontro-positivo-per-il-rinnovo-di-messias-le-ultime-493761"
+    },
+    {
+      "id": "fantacalcio-2-aHR0cHM6Ly93",
+      "title": "Lussemburgo-Italia: le formazioni ufficiali",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/nazionali/03_06_2026/lussemburgo-italia-le-formazioni-ufficiali-493754",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le scelte di Strasser e Baldini",
+      "image": "",
+      "publishedAt": "2026-06-03T19:42:05.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Nazionali",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/nazionali/03_06_2026/lussemburgo-italia-le-formazioni-ufficiali-493754"
+    },
+    {
+      "id": "fantacalcio-3-aHR0cHM6Ly93",
+      "title": "Lazio, Romagnoli ai saluti: accordo imminente con l’Al-Sadd",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/lazio-romagnoli-ai-saluti-accordo-imminente-con-l-al-sadd-493760",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il difensore lascia il Fantacalcio",
+      "image": "",
+      "publishedAt": "2026-06-03T19:35:31.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/lazio-romagnoli-ai-saluti-accordo-imminente-con-l-al-sadd-493760"
+    },
+    {
+      "id": "sosfanta-9-aHR0cHM6Ly93",
+      "title": "Inter, Dumfries ha già sostenuto le visite mediche in Olanda: tutto pronto per il trasferimento al Real",
+      "url": "https://www.sosfanta.com/news/inter-dumfries-ha-gia-sostenuto-le-visite-mediche-in-olanda-tutto-pronto-per-il-trasferimento-al-real/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Tutto pronto per i saluti di Denzel Dumfries, il difensore olandese lascia l’Inter e si prepara per il Real Madrid. Come riportato da Fabrizio Romano, il club spagnolo ha inviato la documentazione ufficiale all’Inter per attivare la...",
+      "image": "",
+      "publishedAt": "2026-06-03T19:30:04.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/inter-dumfries-ha-gia-sostenuto-le-visite-mediche-in-olanda-tutto-pronto-per-il-trasferimento-al-real"
+    },
+    {
+      "id": "calciomercato-it-5-aHR0cHM6Ly93",
+      "title": "Idea Dragusin in Serie A, Paratici può portarlo alla Fiorentina",
+      "url": "https://www.calciomercato.it/2026/06/03/idea-dragusin-in-serie-a-paratici-puo-portarlo-alla-fiorentina/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Idea Dragusin in Serie A, Paratici può portarlo alla Fiorentina proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T19:08:20.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Fiorentina",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/idea-dragusin-in-serie-a-paratici-puo-portarlo-alla-fiorentina"
+    },
+    {
+      "id": "fantacalcio-4-aHR0cHM6Ly93",
+      "title": "Genoa, si lavora al riscatto di Baldanzi: le ultime",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/genoa-si-lavora-al-riscatto-di-baldanzi-le-ultime-493759",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il fantasista vuole soltanto il Genoa, si tratta sulla cifra",
+      "image": "",
+      "publishedAt": "2026-06-03T19:07:29.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/genoa-si-lavora-al-riscatto-di-baldanzi-le-ultime-493759"
+    },
+    {
+      "id": "sosfanta-11-aHR0cHM6Ly93",
+      "title": "Zielinski: “Arabia? Per due giorni ci ho pensato, ma volevo stare in Europa. All’Inter…”",
+      "url": "https://www.sosfanta.com/news/zielinski-arabia-per-due-giorni-ci-ho-pensato-ma-volevo-stare-in-europa-allinter/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Piotr Zielinski, intervistato da Prawda Futbolu, ha parlato così della possibilità di approdare in Arabia avuta nel corso della sua carriera: “Nel corso della mia carriera ho avuto due o tre occasioni per lasciare l’Italia, ma ho...",
+      "image": "",
+      "publishedAt": "2026-06-03T19:00:31.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/zielinski-arabia-per-due-giorni-ci-ho-pensato-ma-volevo-stare-in-europa-allinter"
+    },
+    {
+      "id": "fantacalcio-5-aHR0cHM6Ly93",
+      "title": "Argentina, Nico Paz a rischio per i Mondiali: la situazione",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/mondiali/03_06_2026/argentina-nico-paz-a-rischio-per-i-mondiali-la-situazione-493757",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Apprensione per le condizioni di Nico Paz",
+      "image": "",
+      "publishedAt": "2026-06-03T18:46:35.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mondiali",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/mondiali/03_06_2026/argentina-nico-paz-a-rischio-per-i-mondiali-la-situazione-493757"
+    },
+    {
+      "id": "tmw-0-aHR0cHM6Ly93",
+      "title": "Pontedera, fase delicata di riorganizzazione del club: ma si vuole la C. La nota societaria",
+      "url": "https://www.tuttomercatoweb.com/serie-d/pontedera-fase-delicata-di-riorganizzazione-del-club-ma-si-vuole-la-c-la-nota-societaria-2240906",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il lungo silenzio sta preoccupando da tempo la città, per di più dopo la retrocessione in Serie D, ma adesso - solo mediante una nota e no una conferenza - il Pontedera esce allo scoperto, e conferma una fase delicata di riorganizzazione finanziaria,...",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/40/40133afbaf30cba7a18e3032e30bada1-74107-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:32:18.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie D",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-d/pontedera-fase-delicata-di-riorganizzazione-del-club-ma-si-vuole-la-c-la-nota-societaria-2240906"
+    },
+    {
+      "id": "sosfanta-0-aHR0cHM6Ly93",
+      "title": "Romano: “Juventus, novità sul futuro Kolo Muani. Il punto con il PSG e cosa manca”",
+      "url": "https://www.sosfanta.com/news/romano-juventus-novita-sul-futuro-kolo-muani-il-punto-con-il-psg-e-cosa-manca/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Emergono novità sul mercato della Juve, a parlarne è Fabrizio Romano sul suo canale YouTube. Queste le ultime novità su Kolo Muani: “Manteniamo assolutamente il nome di Kolo Muani per la Juventus che ci sta lavorando e continua a parlare...",
+      "image": "",
+      "publishedAt": "2026-06-03T18:30:59.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Kolo Muani"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Kolo Muani"
+        ],
+        "players": [
+          "Kolo Muani"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/romano-juventus-novita-sul-futuro-kolo-muani-il-punto-con-il-psg-e-cosa-manca"
+    },
+    {
+      "id": "tmw-1-aHR0cHM6Ly93",
+      "title": "Quale sarà la destinazione di Rafa Leao? In Inghilterra lo accostano all'Arsenal",
+      "url": "https://www.tuttomercatoweb.com/serie-a/quale-sara-la-destinazione-di-rafa-leao-in-inghilterra-lo-accostano-all-arsenal-2240901",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Rafa Leao lascerà con ogni probabilità il Milan in questa finestra di mercato e le sue parole alla tv portoghese non lasciano spazio all'interpretazione: \"Penso di aver dato al Milan tutto quello che potevo dare.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/58/5843f57042518a9f25494813fe8f8a79-57266-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:30:00.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/quale-sara-la-destinazione-di-rafa-leao-in-inghilterra-lo-accostano-all-arsenal-2240901"
+    },
+    {
+      "id": "tmw-2-aHR0cHM6Ly93",
+      "title": "Colonia, ecco il primo colpo dell'estate: riscattato Kaminski dal Wolfsburg",
+      "url": "https://www.tuttomercatoweb.com/calcio-estero/colonia-ecco-il-primo-colpo-dell-estate-riscattato-kaminski-dal-wolfsburg-2240897",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "L'avventura di Jakub Kaminski con la maglia del Colonia proseguirà anche nelle prossime stagioni.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/c6/c666a3e3e7c5305e9ed8a53adb5671c5-56157-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:26:33.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio estero",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/calcio-estero/colonia-ecco-il-primo-colpo-dell-estate-riscattato-kaminski-dal-wolfsburg-2240897"
+    },
+    {
+      "id": "fantacalcio-6-aHR0cHM6Ly93",
+      "title": "Genoa, Bijlow blindato fino al 2029",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/genoa-bijlow-blindato-fino-al-2029-493756",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il portiere olandese resta in rossoblu",
+      "image": "",
+      "publishedAt": "2026-06-03T18:23:59.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/genoa-bijlow-blindato-fino-al-2029-493756"
+    },
+    {
+      "id": "tmw-3-aHR0cHM6Ly93",
+      "title": "Il Genoa investe sul futuro: visite mediche e firme per Marcelo Vaz e Mor Kaire Ndao",
+      "url": "https://www.tuttomercatoweb.com/serie-a/il-genoa-investe-sul-futuro-visite-mediche-e-firme-per-marcelo-vaz-e-mor-kaire-ndao-2240902",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Nuovo investimento sul futuro per il Genoa.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/50/5092695903a5e37d2129f9e80be4752f-01438-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:23:04.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Marcelo Vaz"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [
+          "Marcelo Vaz"
+        ],
+        "players": [
+          "Marcelo Vaz"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/il-genoa-investe-sul-futuro-visite-mediche-e-firme-per-marcelo-vaz-e-mor-kaire-ndao-2240902"
+    },
+    {
+      "id": "tmw-4-aHR0cHM6Ly93",
+      "title": "Union Brescia, Corini parla di mancanza di lucidità. Tomei vede invece il Dna del suo Ascoli",
+      "url": "https://www.tuttomercatoweb.com/serie-c/union-brescia-corini-parla-di-mancanza-di-lucidita-tomei-vede-invece-il-dna-del-suo-ascoli-2240903",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Dopo la sospensione al 61' dovuta al nubifragio che ha colpito la Lombardia, si è conclusa oggi la finale di andata dei playoff di Serie C, che ha visto Union Brescia e Ascoli chiudere i primi 90' di una doppio confronto sull'1-1: si deciderà quindi tutto...",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/df/df8023ce4c069cb870371aab4f915832-23717-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:20:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie C",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/union-brescia-corini-parla-di-mancanza-di-lucidita-tomei-vede-invece-il-dna-del-suo-ascoli-2240903"
+    },
+    {
+      "id": "tmw-5-aHR0cHM6Ly93",
+      "title": "Italia U17, Franceschini alla vigilia della semifinale con la Spagna: \"Voglio spensieratezza\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/italia-u17-franceschini-alla-vigilia-della-semifinale-con-la-spagna-voglio-spensieratezza-2240900",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "La finale è a un passo e l'Italia Under 17 non vuole smettere di sognare.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/b1/b16981fb27042650192e2cec0073435e-68441-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:15:34.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Franceschini"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Franceschini"
+        ],
+        "players": [
+          "Franceschini"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/italia-u17-franceschini-alla-vigilia-della-semifinale-con-la-spagna-voglio-spensieratezza-2240900"
+    },
+    {
+      "id": "tmw-6-aHR0cHM6Ly93",
+      "title": "Yeremay, rinnovo automatico col Deportivo dopo la promozione in Liga: la clausola è monstre",
+      "url": "https://www.tuttomercatoweb.com/calcio-estero/yeremay-rinnovo-automatico-col-deportivo-dopo-la-promozione-in-liga-la-clausola-e-monstre-2240888",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "La promozione in Liga ha cambiato molte cose in casa Deportivo La Coruña, a partire dalla posizione di uno dei suoi giocatori simbolo: Yeremay Hernández.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/93/93660ec988fc228aac0fa323bfead5a1-00045-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:11:51.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio estero",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/calcio-estero/yeremay-rinnovo-automatico-col-deportivo-dopo-la-promozione-in-liga-la-clausola-e-monstre-2240888"
+    },
+    {
+      "id": "tmw-7-aHR0cHM6Ly93",
+      "title": "Abodi sposa l'Italia dei giovani: \"Strada che sottoscrivo, sarò incollato alla tv\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/abodi-sposa-l-italia-dei-giovani-strada-che-sottoscrivo-saro-incollato-alla-tv-2240884",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il Ministro per lo Sport Andrea Abodi ha parlato a margine della consegna del Premio De Santis a Roma: \"Un premio che è partito come letterario e poi si è trasformato in altre forme.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/8952ebe9343086daf5e7427f15016684-34428-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:07:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/abodi-sposa-l-italia-dei-giovani-strada-che-sottoscrivo-saro-incollato-alla-tv-2240884"
+    },
+    {
+      "id": "tmw-8-aHR0cHM6Ly93",
+      "title": "Catania, Pelligra guarda al futuro: \"Grella nostro uomo di fiducia. La Serie B rimane l'obiettivo\"",
+      "url": "https://www.tuttomercatoweb.com/serie-c/catania-pelligra-guarda-al-futuro-grella-nostro-uomo-di-fiducia-la-serie-b-rimane-l-obiettivo-2240890",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il centro sportivo di Torre del Grifo torna finalmente a essere totalmente a disposizione del Catania, e questo pomeriggio, a margine della presentazione dello stesso, il presidente rossazzurro Ross Pelligra si è intrattenuto con la stampa, per un punto...",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/68/682a42d9f1babd5aa716619504f33466-62948-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:04:03.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie C",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/catania-pelligra-guarda-al-futuro-grella-nostro-uomo-di-fiducia-la-serie-b-rimane-l-obiettivo-2240890"
+    },
+    {
+      "id": "sosfanta-1-aHR0cHM6Ly93",
+      "title": "Genoa, sempre più vicino l’accordo sul rinnovo di Messias. Per il riscatto di Baldanzi…",
+      "url": "https://www.sosfanta.com/calciomercato/genoa-sempre-piu-vicino-laccordo-sul-rinnovo-di-messias-per-baldanzi/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Secondo quanto riportato da SkySport, si avvicina sempre di più l’intesa per il rinnovo di contratto di Junior Messias. Le parti stanno lavorando per definire gli ultimi dettagli, con segnali positivi che lasciano filtrare un cauto ottimismo...",
+      "image": "",
+      "publishedAt": "2026-06-03T18:00:09.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/genoa-sempre-piu-vicino-laccordo-sul-rinnovo-di-messias-per-baldanzi"
+    },
+    {
+      "id": "tmw-9-aHR0cHM6Ly93",
+      "title": "Inter, tutto su Palestra. Napoli, l’ipotesi Rabiot",
+      "url": "https://www.tuttomercatoweb.com/serie-a/inter-tutto-su-palestra-napoli-l-ipotesi-rabiot-2240847",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Nel corso del TMW News di oggi spazio a tutte le considerazioni sul mercato delle panchine e sui rinforzi a cui stanno pensando le big.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/0c/0ced62b4b49a546e7ff44f68610bab82-20827-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T18:00:04.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra. Napoli"
+      ],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Napoli"
+        ],
+        "people": [
+          "Palestra. Napoli"
+        ],
+        "players": [
+          "Palestra. Napoli"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/inter-tutto-su-palestra-napoli-l-ipotesi-rabiot-2240847"
+    },
+    {
+      "id": "tmw-10-aHR0cHM6Ly93",
+      "title": "Lussemburgo-Italia, formazioni ufficiali: ecco l'undici sperimentale di Baldini",
+      "url": "https://www.tuttomercatoweb.com/serie-a/lussemburgo-italia-formazioni-ufficiali-ecco-l-undici-sperimentale-di-baldini-2240891",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Di seguito le formazioni ufficiali di Lussemburgo-Italia, amichevole internazionale:&#13; &#13; LUSSEMBURGO (4-5-1): Moris; Jans, Korac, Carlson, Mica Pinto; V.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4c/4ca475190f2a1c0769e141e307fe2a3c-78636-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:53:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/lussemburgo-italia-formazioni-ufficiali-ecco-l-undici-sperimentale-di-baldini-2240891"
+    },
+    {
+      "id": "tmw-11-aHR0cHM6Ly93",
+      "title": "Nella Torres del futuro c'è un rinnovato Vanni Sanna: al via i lavori al manto erboso dello stadio",
+      "url": "https://www.tuttomercatoweb.com/serie-c/nella-torres-del-futuro-c-e-un-rinnovato-vanni-sanna-al-via-i-lavori-al-manto-erboso-dello-stadio-2240882",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Non solo calciomercato e struttura dirigenziale, la Torres del futuro ripartirà anche da uno stadio, il Vanni Sanna, rinnovato: prenderanno infatti il via a breve i tanto attesi lavori di ripristino e miglioramento del manto erboso.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/39/39d509677382c745dba9365bffee988c-64135-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:49:39.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie C",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/nella-torres-del-futuro-c-e-un-rinnovato-vanni-sanna-al-via-i-lavori-al-manto-erboso-dello-stadio-2240882"
+    },
+    {
+      "id": "sosfanta-2-aHR0cHM6Ly93",
+      "title": "ULTIM’ORA – Lazio, c’è l’accordo per la cessione di Romagnoli: si trasferirà all’estero",
+      "url": "https://www.sosfanta.com/calciomercato/ultimora-lazio-ce-laccordo-per-la-cessione-di-romagnoli-si-trasferira-allestero/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Secondo quanto appreso da SkySport, Alessio Romagnoli è ormai vicino all’addio alla Lazio. Il difensore biancoceleste è destinato a proseguire la sua carriera all’Al-Sadd.",
+      "image": "",
+      "publishedAt": "2026-06-03T17:45:31.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/ultimora-lazio-ce-laccordo-per-la-cessione-di-romagnoli-si-trasferira-allestero"
+    },
+    {
+      "id": "tmw-12-aHR0cHM6Ly93",
+      "title": "Romagnoli-Lazio, finisce qui dopo 4 anni. E sei mesi di ritardo",
+      "url": "https://www.tuttomercatoweb.com/serie-a/romagnoli-lazio-finisce-qui-dopo-4-anni-e-sei-mesi-di-ritardo-2240886",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Un'altra bandiera sta per essere ammainata.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/52/5290aaa55b6be48ee256d5d7461ee355-28059-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:45:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/romagnoli-lazio-finisce-qui-dopo-4-anni-e-sei-mesi-di-ritardo-2240886"
+    },
+    {
+      "id": "calciomercato-it-0-aHR0cHM6Ly93",
+      "title": "Calafiori nel mirino del Real Madrid, richiesta di Mourinho",
+      "url": "https://www.calciomercato.it/2026/06/03/calafiori-nel-mirino-del-real-madrid-richiesta-di-mourinho/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Calafiori nel mirino del Real Madrid, richiesta di Mourinho proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T17:44:41.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Calafiori",
+        "Mourinho. L'articolo Calafiori"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Calafiori",
+          "Mourinho. L'articolo Calafiori"
+        ],
+        "players": [
+          "Calafiori",
+          "Mourinho. L'articolo Calafiori"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/calafiori-nel-mirino-del-real-madrid-richiesta-di-mourinho"
+    },
+    {
+      "id": "tmw-13-aHR0cHM6Ly93",
+      "title": "Francia, Deschamps: \"Saliba il più triste dopo la Champions. Mbappé? Sta benissimo\"",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/francia-deschamps-saliba-il-piu-triste-dopo-la-champions-mbappe-sta-benissimo-2240878",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "La Francia ha già iniziato a respirare l'atmosfera del Mondiale e Didier Deschamps vuole evitare qualsiasi distrazione.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/f4/f4275df7746f4311c0e4e6c3a3c893a2-90940-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:41:13.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mondiali 2026",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/francia-deschamps-saliba-il-piu-triste-dopo-la-champions-mbappe-sta-benissimo-2240878"
+    },
+    {
+      "id": "tmw-14-aHR0cHM6Ly93",
+      "title": "Mondiali a rischio per Nico Paz? Lui prova a rassicurare sui social: \"Non vedo l'ora di recuperare\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/mondiali-a-rischio-per-nico-paz-lui-prova-a-rassicurare-sui-social-non-vedo-l-ora-di-recuperare-2240883",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "\"Ultimi giorni di convalescenza.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/25/25fc3a3be08332fda0a15bc49e9890a2-05787-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:40:20.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Nico Paz"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Nico Paz"
+        ],
+        "players": [
+          "Nico Paz"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/mondiali-a-rischio-per-nico-paz-lui-prova-a-rassicurare-sui-social-non-vedo-l-ora-di-recuperare-2240883"
+    },
+    {
+      "id": "gianlucadimarzio-0-aHR0cHM6Ly93",
+      "title": "Lussemburgo-Italia, le formazioni ufficiali",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/lussemburgo-italia-le-formazioni-ufficiali-493053",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "L'Italia&nbsp;&egrave; pronta a scendere in campo per la prima delle due amichevoli internazionali, contro il&nbsp;Lussemburgo.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/99/9921032cca799ad99cd036b9b9836b14-03932-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:40:07.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/lussemburgo-italia-le-formazioni-ufficiali-493053"
+    },
+    {
+      "id": "gianlucadimarzio-1-aHR0cHM6Ly93",
+      "title": "Genoa-Messias, rinnovo in dirittura d'arrivo",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/genoa-messias-rinnovo-in-dirittura-d-arrivo-493054",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Junior Messias e il Genoa sono sempre pi&ugrave; vicini a proseguire insieme.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/c4/c4c556f3325953eb46d8e0ef40a49eda-79652-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:35:39.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/genoa-messias-rinnovo-in-dirittura-d-arrivo-493054"
+    },
+    {
+      "id": "tmw-15-aHR0cHM6Ly93",
+      "title": "Non cambia il risultato di ieri: Union Brescia-Ascoli finisce 1-1. Tutto rimandato alla finale di ritorno",
+      "url": "https://www.tuttomercatoweb.com/serie-c/non-cambia-il-risultato-di-ieri-union-brescia-ascoli-finisce-1-1-tutto-rimandato-alla-finale-di-ritorno-2240880",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Tutto è rimandato a domenica 7 giugno allo stadio Del Duca, quando si giocherà (fischio di inizio alle ore 18:00) la finalissima di ritorno dei playoff di Serie C: Union Brescia e Ascoli, infatti, hanno chiuso la partita di andata sul punteggio di 1-1....",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/d4/d4809ffc7b0ef3b900e39f2e7c3afe14-64001-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:34:18.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Serie C",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/non-cambia-il-risultato-di-ieri-union-brescia-ascoli-finisce-1-1-tutto-rimandato-alla-finale-di-ritorno-2240880"
+    },
+    {
+      "id": "gianlucadimarzio-2-aHR0cHM6Ly93",
+      "title": "Genoa, visite e firme per Marcelo Vaz e Mor Kaire Ndao",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/genoa-visite-e-firme-per-marcelo-vaz-e-mor-kaire-ndao-493057",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Marcelo Vaz e Mor Kaire Ndao hanno svolto le visite mediche e firmato con il Genoa: i due giocatori arrivano dalla Serie D e sono pronti a cominciare la loro avventura con il club rossobl&ugrave;.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/b5/b562a1c2aa40fd79bc5be785397b1826-55610-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:33:29.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Marcelo Vaz"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [
+          "Marcelo Vaz"
+        ],
+        "players": [
+          "Marcelo Vaz"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/genoa-visite-e-firme-per-marcelo-vaz-e-mor-kaire-ndao-493057"
+    },
+    {
+      "id": "gianlucadimarzio-3-aHR0cHM6Ly93",
+      "title": "Il Genoa continua a lavorare con la Roma per il riscatto di Baldanzi",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/il-genoa-continua-a-lavorare-con-la-roma-per-il-riscatto-di-baldanzi-493056",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Il Genoa continua a lavorare sul mercato in vista della prossima stagione. Tra i nomi gi&agrave; in rosa che il club ligure vuole confermare c'&egrave; quello di&nbsp;Tommaso Baldanzi.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/54/540b05719f5326ada4343c4625e35497-71397-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:32:14.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/il-genoa-continua-a-lavorare-con-la-roma-per-il-riscatto-di-baldanzi-493056"
+    },
+    {
+      "id": "sosfanta-3-aHR0cHM6Ly93",
+      "title": "Italia, la formazione ufficiale col Lussemburgo: la scelta su Pio Esposito, Ndour, Bartesaghi e Pisilli",
+      "url": "https://www.sosfanta.com/nazionale/italia-la-formazione-ufficiale-col-lussemburgo-la-scelta-su-pio-esposito-ndour-bartesaghi-e-pisilli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Alle 20:45 l'Italia di Silvio Baldini scende in campo per l'amichevole contro il Lussemburgo con una sperimentale formazione under-21: l'Italia affronterà la partita con l'età media più bassa mai registrata (20 anni e 6 mesi).",
+      "image": "",
+      "publishedAt": "2026-06-03T17:30:40.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Pio Esposito"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Pio Esposito"
+        ],
+        "players": [
+          "Pio Esposito"
+        ]
+      },
+      "tags": [
+        "/nazionale",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/nazionale/italia-la-formazione-ufficiale-col-lussemburgo-la-scelta-su-pio-esposito-ndour-bartesaghi-e-pisilli"
+    },
+    {
+      "id": "tmw-16-aHR0cHM6Ly93",
+      "title": "Corvino saluta il Lecce. Sticchi Damiani sul futuro è chiaro: \"Affronteremo subito il nodo ds\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/corvino-saluta-il-lecce-sticchi-damiani-sul-futuro-e-chiaro-affronteremo-subito-il-nodo-ds-2240876",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "\"Corvino mi lascia una patata bollente\".",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/86/86e5cc8d98237767e22a5b874ea50fc5-15822-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:30:01.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Corvino"
+      ],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [
+          "Corvino"
+        ],
+        "players": [
+          "Corvino"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/corvino-saluta-il-lecce-sticchi-damiani-sul-futuro-e-chiaro-affronteremo-subito-il-nodo-ds-2240876"
+    },
+    {
+      "id": "tmw-17-aHR0cHM6Ly93",
+      "title": "Bernardi saluta il Carpi: il Direttore Sportivo ha risolto il contratto con il club emiliano",
+      "url": "https://www.tuttomercatoweb.com/serie-c/bernardi-saluta-il-carpi-il-direttore-sportivo-ha-risolto-il-contratto-con-il-club-emiliano-2240875",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "La notizia era già nell'aria, con la Reggiana sullo sfondo, ora arriva l'ufficialità, perché, intanto, Marco Bernardi non è più il Direttore Sportivo del Carpi: il club biancorosso ha appena comunicato la risoluzione consensuale del rapporto che legava...",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1a/1a45cfaf4c3e6f237d759cd86c3e37f3-59072-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:28:00.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Bernardi"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Bernardi"
+        ],
+        "players": [
+          "Bernardi"
+        ]
+      },
+      "tags": [
+        "Serie C",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/bernardi-saluta-il-carpi-il-direttore-sportivo-ha-risolto-il-contratto-con-il-club-emiliano-2240875"
+    },
+    {
+      "id": "tmw-18-aHR0cHM6Ly93",
+      "title": "Un ex Inter alla guida del Celtic? Gli scozzesi trattano con Robbie Kean se O'Neill lascia",
+      "url": "https://www.tuttomercatoweb.com/calcio-estero/un-ex-inter-alla-guida-del-celtic-gli-scozzesi-trattano-con-robbie-kean-se-o-neill-lascia-2240874",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il Celtic continua la ricerca del nuovo allenatore e il nome di Robbie Keane resta tra i più caldi per raccogliere l'eredità lasciata sulla panchina degli Hoops.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/ee/ee1520a82a2bb76760c40d6610ad2e70-36588-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:26:00.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio estero",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/calcio-estero/un-ex-inter-alla-guida-del-celtic-gli-scozzesi-trattano-con-robbie-kean-se-o-neill-lascia-2240874"
+    },
+    {
+      "id": "tmw-19-aHR0cHM6Ly93",
+      "title": "Torino, niente riscatto per Obrador. Il Benfica lo mette in vendita intorno ai 10 milioni",
+      "url": "https://www.tuttomercatoweb.com/serie-a/torino-niente-riscatto-per-obrador-il-benfica-lo-mette-in-vendita-intorno-ai-10-milioni-2240834",
+      "sourceId": "tmw",
+      "sourceName": "TuttoMercatoWeb",
+      "description": "Il Torino ha deciso di non riscattare Rafael Obrador, difensore di proprietà del Benfica che ha giocato per sei mesi in granata.",
+      "image": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:22:57.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Obrador. Il Benfica"
+      ],
+      "entities": {
+        "teams": [
+          "Torino"
+        ],
+        "people": [
+          "Obrador. Il Benfica"
+        ],
+        "players": [
+          "Obrador. Il Benfica"
+        ]
+      },
+      "tags": [
+        "Serie A",
+        "Mercato"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/torino-niente-riscatto-per-obrador-il-benfica-lo-mette-in-vendita-intorno-ai-10-milioni-2240834"
+    },
+    {
+      "id": "sosfanta-4-aHR0cHM6Ly93",
+      "title": "BREAKING – Napoli, definito il futuro di Elmas: scelta fatta da parte della società",
+      "url": "https://www.sosfanta.com/news/breaking-napoli-definito-il-futuro-di-elmas-scelta-fatta-da-parte-della-societa/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Dal canale Whatsapp di Fabrizio Romano arriva una novità di mercato per il Napoli.",
+      "image": "",
+      "publishedAt": "2026-06-03T17:15:09.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/breaking-napoli-definito-il-futuro-di-elmas-scelta-fatta-da-parte-della-societa"
+    },
+    {
+      "id": "gianlucadimarzio-4-aHR0cHM6Ly93",
+      "title": "Romagnoli lascerà la Lazio: accordo raggiunto con l'Al-Sadd",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/romagnoli-lascera-la-lazio-accordo-raggiunto-con-l-al-sadd-493055",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Alessio&nbsp;Romagnoli&nbsp;lascia la&nbsp;Lazio:&nbsp;il difensore biancoceleste&nbsp;si trasferir&agrave; all'Al-Sadd, squadra del campionato qatariota attualmente allenata da Roberto&nbsp;Mancini,&nbsp;che gi&agrave; a gennaio era stata molto ...",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/fc/fc2eb84a721bfb46b5564eff1a686c8d-87920-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T17:05:20.000Z",
+      "topic": "Mercato",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/romagnoli-lascera-la-lazio-accordo-raggiunto-con-l-al-sadd-493055"
+    },
+    {
+      "id": "sosfanta-5-aHR0cHM6Ly93",
+      "title": "Zanetti stupito da Lautaro: “La verità è che ha superato le nostre aspettative: vi spiego perché”",
+      "url": "https://www.sosfanta.com/squadra/inter/anche-zanetti-stupito-da-lautaro-la-verita-e-che-ha-superato-le-nostre-aspettative-vi-spiego-perche/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Intervistato da Fabrizio Romano sul suo canale YouTube in italiano, il vicepresidente dell’Inter Javier Zanetti ha parlato così della crescita esponenziale di Lautaro Martinez. “Parli con uno che Lauti l’ha visto crescere e...",
+      "image": "",
+      "publishedAt": "2026-06-03T17:00:43.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/inter",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/inter/anche-zanetti-stupito-da-lautaro-la-verita-e-che-ha-superato-le-nostre-aspettative-vi-spiego-perche"
+    },
+    {
+      "id": "sosfanta-6-aHR0cHM6Ly93",
+      "title": "As.com: “Nico Paz in dubbio per il Mondiale: infortunio più grave del previsto”. Ma l’argentino sui social…",
+      "url": "https://www.sosfanta.com/news/as-com-nico-paz-in-dubbio-per-il-mondiale-infortunio-piu-grave-del-previsto-cosa-filtra/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Preoccupazione in casa Argentina per Nico Paz. Il centrocampista del Como è alle prese con un problema al ginocchio che lo rende attualmente in dubbio per il prossimo Mondiale.",
+      "image": "",
+      "publishedAt": "2026-06-03T16:45:12.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Nico Paz. Il"
+      ],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [
+          "Nico Paz. Il"
+        ],
+        "players": [
+          "Nico Paz. Il"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/as-com-nico-paz-in-dubbio-per-il-mondiale-infortunio-piu-grave-del-previsto-cosa-filtra"
+    },
+    {
+      "id": "sosfanta-7-aHR0cHM6Ly93",
+      "title": "Lazaro: “Non resterò al Torino! Ecco il mio rimpianto all’Inter, sul futuro in Italia…”",
+      "url": "https://www.sosfanta.com/news/lazaro-non-restero-al-torino-ecco-il-mio-rimpianto-allinter-sul-futuro-in-italia/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "L’esterno del Torino, Valentino Lazaro, annuncia la decisione per il proprio futuro in una intervista rilasciata a Tuttosport. Di seguito le sue parole. FUTURO – “Non resterò al Torino, lo confermo. Italia o estero? Non posso...",
+      "image": "",
+      "publishedAt": "2026-06-03T16:30:03.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Torino"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/lazaro-non-restero-al-torino-ecco-il-mio-rimpianto-allinter-sul-futuro-in-italia"
+    },
+    {
+      "id": "gianlucadimarzio-5-aHR0cHM6Ly93",
+      "title": "Real Madrid, Florentino Perez: \"Giovedì annuncerò il primo grande acquisto\"",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/real-madrid-florentino-perez-giovedi-annuncero-il-primo-grande-acquisto-493052",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Denzel Dumfries &egrave; sempre pi&ugrave; vicino a diventare un nuovo giocatore del Real Madrid.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/06/06a3a9ae49f346ae4e774f94680141b1-46521-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T16:20:53.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/real-madrid-florentino-perez-giovedi-annuncero-il-primo-grande-acquisto-493052"
+    },
+    {
+      "id": "sosfanta-8-aHR0cHM6Ly93",
+      "title": "Monza neopromosso in Serie A: ecco sei nomi per il fantacalcio, non solo Pessina",
+      "url": "https://www.sosfanta.com/asta-fantacalcio/monza-neopromosso-in-serie-a-ecco-sei-nomi-per-il-fantacalcio-non-solo-pessina/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il Monza è la terza neopromossa, torna in Serie A dopo appena una stagione dall'ultima volta: ecco sei nomi da tenere d'occhio per la prossima asta del fantacalcio.",
+      "image": "",
+      "publishedAt": "2026-06-03T16:15:40.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/asta-fantacalcio",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/asta-fantacalcio/monza-neopromosso-in-serie-a-ecco-sei-nomi-per-il-fantacalcio-non-solo-pessina"
+    },
+    {
+      "id": "calciomercato-it-1-aHR0cHM6Ly93",
+      "title": "Rivoluzione Lazio, Lotito ne caccia tre: ecco cosa cambierà",
+      "url": "https://www.calciomercato.it/2026/06/03/rivoluzione-lazio-lotito-ne-caccia-tre-ecco-cosa-cambiera/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Rivoluzione Lazio, Lotito ne caccia tre: ecco cosa cambierà proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T16:15:24.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Lazio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/rivoluzione-lazio-lotito-ne-caccia-tre-ecco-cosa-cambiera"
+    },
+    {
+      "id": "sosfanta-9-aHR0cHM6Ly93",
+      "title": "Genoa, avanti tutta per il riscatto di Baldanzi: ecco le cifre. Rinnovato Bijlow, i dettagli e la durata",
+      "url": "https://www.sosfanta.com/news/genoa-avanti-tutta-per-il-riscatto-di-baldanzi-ecco-le-cifre-rinnovato-bijlow-i-dettagli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Prende forma il nuovo Genoa targato Daniele De Rossi, con la priorità che risiede nel riscatto di Tommaso Baldanzi dalla Roma. Spiega il Secolo XIX: “I contatti con la Roma sono costanti, anche se per avere l’accelerazione giusta...",
+      "image": "",
+      "publishedAt": "2026-06-03T16:00:59.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Genoa",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/genoa-avanti-tutta-per-il-riscatto-di-baldanzi-ecco-le-cifre-rinnovato-bijlow-i-dettagli"
+    },
+    {
+      "id": "sosfanta-10-aHR0cHM6Ly93",
+      "title": "Chi ha vinto il fantacalcio 2025-26? La maglia celebrativa di SOS Fanta si acquista qui",
+      "url": "https://www.sosfanta.com/news/le-maglie-celebrative-di-sos-fanta-sono-online-ecco-dove-acquistarle-e-le-novita-2024-25/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il fantacalcio 2025-2026 è terminato, chi ha vinto il fantacalcio? Anche quest'anno non possono mancare, a grande richiesta, le nostre maglie celebrative, esclusive di SOS Fanta.",
+      "image": "",
+      "publishedAt": "2026-06-03T15:45:42.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/le-maglie-celebrative-di-sos-fanta-sono-online-ecco-dove-acquistarle-e-le-novita-2024-25"
+    },
+    {
+      "id": "fantacalcio-7-aHR0cHM6Ly93",
+      "title": "Roma, offerta del Chelsea per Svilar: la decisione del club giallorossa",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/roma-offerta-del-chelsea-per-svilar-la-decisione-del-club-giallorossa-493753",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Occhio al futuro del portiere dei capitolini",
+      "image": "",
+      "publishedAt": "2026-06-03T15:39:52.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Svilar",
+        "Occhio"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Svilar",
+          "Occhio"
+        ],
+        "players": [
+          "Svilar",
+          "Occhio"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/roma-offerta-del-chelsea-per-svilar-la-decisione-del-club-giallorossa-493753"
+    },
+    {
+      "id": "gianlucadimarzio-6-aHR0cHM6Ly93",
+      "title": "il Genoa ha esercitato l'opzione di rinnovo per Bijlow fino al 2029",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/il-genoa-ha-esercitato-l-opzione-di-rinnovo-per-bijlow-fino-al-2029-493051",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Arrivato a gennaio e subito titolare, Justin&nbsp;Bijlow&nbsp;sar&agrave; un portiere del&nbsp;Genoa&nbsp;fino al 2029.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/cf/cf5672043942d319bcc034e0f6b6589c-12246-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T15:38:18.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Bijlow"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [
+          "Bijlow"
+        ],
+        "players": [
+          "Bijlow"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/calciomercato/il-genoa-ha-esercitato-l-opzione-di-rinnovo-per-bijlow-fino-al-2029-493051"
+    },
+    {
+      "id": "sosfanta-11-aHR0cHM6Ly93",
+      "title": "Fiorentina, da Dodò e De Gea a Kean e Gosens: chi può partire in estate sul mercato",
+      "url": "https://www.sosfanta.com/news/fiorentina-da-dodo-e-de-gea-a-kean-e-gosens-chi-puo-partire-in-estate-sul-mercato/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "La Fiorentina attende di formalizzare Fabio Grosso come nuovo allenatore ma intanto sta pianificando le mosse da attuare sul mercato. La prima può essere l’addio di Dodò, come spiega il Corriere Fiorentino: “La stagione passata senza...",
+      "image": "",
+      "publishedAt": "2026-06-03T15:30:40.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/fiorentina-da-dodo-e-de-gea-a-kean-e-gosens-chi-puo-partire-in-estate-sul-mercato"
+    },
+    {
+      "id": "sosfanta-12-aHR0cHM6Ly93",
+      "title": "NEWS – Palestra, novità tra Inter e infortunio! Isaksen, Paz, Muharemovic e la verità su Cambiaso-Chelsea",
+      "url": "https://www.sosfanta.com/calciomercato/news-palestra-novita-tra-inter-e-infortunio-isaksen-paz-muharemovic-e-la-verita-su-cambiaso-chelsea/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Importanti notizie in chiave mercato e verso il fantacalcio 26/27 in questi giorni dopo il termine del campionato: ecco le ultimissime.",
+      "image": "",
+      "publishedAt": "2026-06-03T15:15:58.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Cambiaso-Chelsea. Importanti"
+      ],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [
+          "Cambiaso-Chelsea. Importanti"
+        ],
+        "players": [
+          "Cambiaso-Chelsea. Importanti"
+        ]
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/news-palestra-novita-tra-inter-e-infortunio-isaksen-paz-muharemovic-e-la-verita-su-cambiaso-chelsea"
+    },
+    {
+      "id": "sosfanta-13-aHR0cHM6Ly93",
+      "title": "Romano: “Ederson, questa squadra italiana si è informata a marzo. Ma non avrebbe mai speso 45 milioni”",
+      "url": "https://www.sosfanta.com/news/romano-ederson-questa-squadra-italiana-si-e-informata-a-marzo-ma-non-avrebbe-mai-speso-45-milioni/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Ederson va al Manchester United, è fatta: ma c’è un retroscena di mercato riguardante un club italiano. Secondo Fabrizio Romano, la squadra italiana che si era interessata di più era l’Inter, intorno al mese di marzo aveva chiesto...",
+      "image": "",
+      "publishedAt": "2026-06-03T15:00:47.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/romano-ederson-questa-squadra-italiana-si-e-informata-a-marzo-ma-non-avrebbe-mai-speso-45-milioni"
+    },
+    {
+      "id": "calciomercato-it-2-aHR0cHM6Ly93",
+      "title": "Juve costretta a vendere, Spalletti saluta due top",
+      "url": "https://www.calciomercato.it/2026/06/03/juve-costretta-a-vendere-spalletti-saluta-due-top/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve costretta a vendere, Spalletti saluta due top proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T15:00:26.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Spalletti"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Spalletti"
+        ],
+        "players": [
+          "Spalletti"
+        ]
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/juve-costretta-a-vendere-spalletti-saluta-due-top"
+    },
+    {
+      "id": "fantacalcio-8-aHR0cHM6Ly93",
+      "title": "Scarica FantaMondiale Dazn, il gioco e concorso a premi di Fantacalcio® dei Mondiali 2026",
+      "url": "https://www.fantacalcio.it/news/redazionali/26_05_2026/scarica-fantamondiale-dazn-gioco-concorso-premi-di-fantacalcio-mondiali-calcio-2026-493309",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "FantaMondiale Dazn, disponibile gratuitamente su App Store, Play Store e Huawei Store, ti permette anche di sfidare i tuoi amici in appassionanti Leghe private",
+      "image": "",
+      "publishedAt": "2026-06-03T15:00:00.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "App Store"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "App Store"
+        ],
+        "players": [
+          "App Store"
+        ]
+      },
+      "tags": [
+        "Redazionali",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/redazionali/26_05_2026/scarica-fantamondiale-dazn-gioco-concorso-premi-di-fantacalcio-mondiali-calcio-2026-493309"
+    },
+    {
+      "id": "fantacalcio-9-aHR0cHM6Ly93",
+      "title": "Fiorentina, obiettivo Ekkelenkamp a centrocampo: i dettagli",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/fiorentina-obiettivo-ekkelenkamp-a-centrocampo-i-dettagli-493752",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Occhio al possibile cambio di maglia del calciatore dell'Udinese",
+      "image": "",
+      "publishedAt": "2026-06-03T14:50:46.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Fiorentina",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Fiorentina",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Ekkelenkamp",
+        "Occhio"
+      ],
+      "entities": {
+        "teams": [
+          "Fiorentina",
+          "Udinese"
+        ],
+        "people": [
+          "Ekkelenkamp",
+          "Occhio"
+        ],
+        "players": [
+          "Ekkelenkamp",
+          "Occhio"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/fiorentina-obiettivo-ekkelenkamp-a-centrocampo-i-dettagli-493752"
+    },
+    {
+      "id": "fantacalcio-10-aHR0cHM6Ly93",
+      "title": "Lazio, Zaccagni si allena a Formello: le sue condizioni e i tempi di recupero",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/lazio-zaccagni-si-allena-a-formello-le-sue-condizioni-e-i-tempi-di-recupero-493751",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Gli aggiornamenti sul capitano biancoceleste",
+      "image": "",
+      "publishedAt": "2026-06-03T14:33:02.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/lazio-zaccagni-si-allena-a-formello-le-sue-condizioni-e-i-tempi-di-recupero-493751"
+    },
+    {
+      "id": "sosfanta-14-aHR0cHM6Ly93",
+      "title": "Corsport – Roma, Svilar è incedibile: rifiutata quest’offerta top dalla Premier League",
+      "url": "https://www.sosfanta.com/calciomercato/corsport-roma-svilar-e-incedibile-rifiutata-questofferta-top-dalla-premier-league/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "La Roma alza il muro per Mile Svilar, considerato intoccabile da società e Gasperini. Come svela il Corriere dello Sport, “«No, Mile non lo vendiamo», si sono sentiti rispondere gli intermediari del Chelsea che nei giorni scorsi hanno...",
+      "image": "",
+      "publishedAt": "2026-06-03T14:30:59.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Mile Svilar",
+        "Premier League. La Roma"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Mile Svilar",
+          "Premier League. La Roma"
+        ],
+        "players": [
+          "Mile Svilar",
+          "Premier League. La Roma"
+        ]
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/corsport-roma-svilar-e-incedibile-rifiutata-questofferta-top-dalla-premier-league"
+    },
+    {
+      "id": "gianlucadimarzio-7-aHR0cHM6Ly93",
+      "title": "Vlahovic e la Juventus: quattro anni e mezzo tra gol, attese e rimpianti",
+      "url": "https://www.gianlucadimarzio.com/interviste-e-storie/vlahovic-e-la-juventus-quattro-anni-e-mezzo-tra-gol-attese-e-rimpianti-493048",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "&Egrave; finita tra la Juventus e Dusan Vlahovic. L'attaccante serbo dal primo luglio non sar&agrave; pi&ugrave; un giocatore bianconero e sar&agrave; libero di firmare per un'altra squadra a parametro zero.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/f4/f480ce5e328d17b2ac5e7fb576486fe8-83962-385o12o1420o1047z0b30.jpeg",
+      "publishedAt": "2026-06-03T14:30:21.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Interviste e Storie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/interviste-e-storie/vlahovic-e-la-juventus-quattro-anni-e-mezzo-tra-gol-attese-e-rimpianti-493048"
+    },
+    {
+      "id": "fantacalcio-11-aHR0cHM6Ly93",
+      "title": "Juventus-Vlahovic, è finita: niente rinnovo, sarà addio",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/juventus-vlahovic-e-finita-niente-rinnovo-sara-addio-493750",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "L'attaccante serbo saluterà il club bianconero: rimarrà al Fantacalcio?",
+      "image": "",
+      "publishedAt": "2026-06-03T14:21:13.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/juventus-vlahovic-e-finita-niente-rinnovo-sara-addio-493750"
+    },
+    {
+      "id": "sosfanta-15-aHR0cHM6Ly93",
+      "title": "ULTIM’ORA – È finita tra Vlahovic e la Juve: niente accordo, ecco cos’è successo",
+      "url": "https://www.sosfanta.com/squadra/juventus/ultimora-e-finita-tra-vlahovic-e-la-juve-niente-accordo-ecco-cose-successo/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "E' finita tra la Juventus e Dusan Vlahovic: il centravanti serbo non ha accettato l'offerta dei bianconeri per il rinnovo e lascerà quindi Torino a fine contratto.",
+      "image": "",
+      "publishedAt": "2026-06-03T14:15:15.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Juventus",
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Juventus",
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus",
+          "Torino"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/juventus",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/juventus/ultimora-e-finita-tra-vlahovic-e-la-juve-niente-accordo-ecco-cose-successo"
+    },
+    {
+      "id": "sosfanta-16-aHR0cHM6Ly93",
+      "title": "Juve, la verità sulle voci su Cambiaso al Chelsea: può partire in caso di offerte ma…",
+      "url": "https://www.sosfanta.com/calciomercato/juve-la-verita-sulle-voci-su-cambiaso-al-chelsea-puo-partire-in-caso-di-offerte-ma/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il Chelsea non si è mosso per Andrea Cambiaso: come spiega Fabrizio Romano sul suo canale WhatsApp, il club inglese smentisce le voci dall’Italia. Cambiaso può partire in caso di buone offerte, il Barcellona lo ha fatto seguire ma ad oggi...",
+      "image": "",
+      "publishedAt": "2026-06-03T14:00:29.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Cambiaso",
+        "Andrea Cambiaso"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Cambiaso",
+          "Andrea Cambiaso"
+        ],
+        "players": [
+          "Cambiaso",
+          "Andrea Cambiaso"
+        ]
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/juve-la-verita-sulle-voci-su-cambiaso-al-chelsea-puo-partire-in-caso-di-offerte-ma"
+    },
+    {
+      "id": "calciomercato-it-3-aHR0cHM6Ly93",
+      "title": "Monza subito in azione: rinnova anche l&#8217;ex Milan, doppio colpo in attacco &#124; CM",
+      "url": "https://www.calciomercato.it/2026/06/03/monza-subito-in-azione-rinnova-anche-lex-milan-doppio-colpo-in-attacco-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Monza subito in azione: rinnova anche l&#8217;ex Milan, doppio colpo in attacco | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T13:36:47.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/monza-subito-in-azione-rinnova-anche-lex-milan-doppio-colpo-in-attacco-cm"
+    },
+    {
+      "id": "calciomercato-it-4-aHR0cHM6Ly93",
+      "title": "Mateta con Glasner, ritorno di fiamma in casa Milan",
+      "url": "https://www.calciomercato.it/2026/06/03/mateta-con-glasner-ritorno-di-fiamma-in-casa-milan/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Mateta con Glasner, ritorno di fiamma in casa Milan proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T13:30:58.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/mateta-con-glasner-ritorno-di-fiamma-in-casa-milan"
+    },
+    {
+      "id": "sosfanta-17-aHR0cHM6Ly93",
+      "title": "Baturina: “Cresciuto molto nel primo anno al Como! La Champions, il Mondiale e su Modric…”",
+      "url": "https://www.sosfanta.com/news/baturina-cresciuto-molto-nel-primo-anno-al-como-la-champions-il-mondiale-e-su-modric/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Martin Baturina, centrocampista del Como, ha rilasciato un’intervista ai microfoni de La Gazzetta dello Sport. Ecco le sue parole verso il Mondiale che giocherà con la Croazia: “Credo che ogni calciatore professionista sogni di...",
+      "image": "",
+      "publishedAt": "2026-06-03T13:30:45.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Modric"
+      ],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [
+          "Modric"
+        ],
+        "players": [
+          "Modric"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/baturina-cresciuto-molto-nel-primo-anno-al-como-la-champions-il-mondiale-e-su-modric"
+    },
+    {
+      "id": "gianlucadimarzio-8-aHR0cHM6Ly93",
+      "title": "Spagna, De La Fuente: \"Possiamo puntare alla vittoria del Mondiale\"",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/spagna-de-la-fuente-possiamo-puntare-alla-vittoria-del-mondiale-493047",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Luis De la Fuente guarda avanti e punta con decisione il prossimo grande obiettivo. Il commissario tecnico della Spagna si prepara infatti a guidare la&nbsp;\"Roja\" ai Mondiali del 2026, in programma tra Stati Uniti, Canada e Messico.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/d8/d853fccb42fb03f0ea70a1c5ef27b34b-32584-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T13:18:49.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/spagna-de-la-fuente-possiamo-puntare-alla-vittoria-del-mondiale-493047"
+    },
+    {
+      "id": "sosfanta-18-aHR0cHM6Ly93",
+      "title": "BREAKING – Napoli, ufficiale il riscatto di Hojlund: il comunicato e le cifre finali dell’operazione",
+      "url": "https://www.sosfanta.com/squadra/napoli/breaking-napoli-ufficiale-il-riscatto-di-hojlund-il-comunicato-e-le-cifre-finali-delloperazione/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Rasmus Hojlund è a tutti gli effetti un calciatore del Napoli: si è attivato il riscatto per il club azzurro per l'attaccante dal Manchester United.",
+      "image": "",
+      "publishedAt": "2026-06-03T13:15:11.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/napoli",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/napoli/breaking-napoli-ufficiale-il-riscatto-di-hojlund-il-comunicato-e-le-cifre-finali-delloperazione"
+    },
+    {
+      "id": "sosfanta-19-aHR0cHM6Ly93",
+      "title": "Como, cosa risulta sulla pista Muharemovic. Piace Yan Couto: chi è e i dettagli",
+      "url": "https://www.sosfanta.com/news/como-cosa-risulta-sulla-pista-muharemovic-piace-yan-couto-chi-e-e-i-dettagli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il Como si sta muovendo sul mercato per costruire la rosa che giocherà la Champions League il prossimo anno. La prima novità riguarda Yan Couto: secondo Matteo Moretto, il terzino del 2002 del Borussia Dortmund è sulla lista dei lariani, piace...",
+      "image": "",
+      "publishedAt": "2026-06-03T13:00:15.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/como-cosa-risulta-sulla-pista-muharemovic-piace-yan-couto-chi-e-e-i-dettagli"
+    },
+    {
+      "id": "gianlucadimarzio-9-aHR0cHM6Ly93",
+      "title": "Supercoppa di Francia 2026-2027: il sorteggio premia il Lens, si gioca al Bollaert-Delelis",
+      "url": "https://www.gianlucadimarzio.com/news-calcio/supercoppa-di-francia-2026-2027-il-sorteggio-premia-il-lens-si-gioca-al-bollaert-delelis-493046",
+      "sourceId": "gianlucadimarzio",
+      "sourceName": "Gianluca Di Marzio",
+      "description": "Sar&agrave; lo stadio \"Bollaert-Delelis\"&nbsp;il teatro della Supercoppa di Francia 2026-2027.",
+      "image": "https://net-storage.tcccdn.com/storage/gianlucadimarzio.com/img_notizie/thumb3/d3/d334cbb79e8e074c52256af0153804a6-30475-oooz0000.jpeg",
+      "publishedAt": "2026-06-03T12:54:20.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "News Calcio",
+        "Mercato"
+      ],
+      "canonicalKey": "url:gianlucadimarzio.com/news-calcio/supercoppa-di-francia-2026-2027-il-sorteggio-premia-il-lens-si-gioca-al-bollaert-delelis-493046"
+    },
+    {
+      "id": "sosfanta-20-aHR0cHM6Ly93",
+      "title": "Moretto – Inter-Palestra può accendersi: il suo agente è a Milano e questo significa che…",
+      "url": "https://www.sosfanta.com/calciomercato/moretto-inter-palestra-puo-accendersi-il-suo-agente-e-a-milano-e-questo-significa-che/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Dopo l’addio imminente di Dumfries in direzione Real Madrid, l’Inter ora punta tutto su Marco Palestra. Le novità da Matteo Moretto: ” Palestra è il primissimo nome per l’Inter, che ci lavora da settimane: bisogna capire...",
+      "image": "",
+      "publishedAt": "2026-06-03T12:30:19.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Marco Palestra. Le"
+      ],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [
+          "Marco Palestra. Le"
+        ],
+        "players": [
+          "Marco Palestra. Le"
+        ]
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/moretto-inter-palestra-puo-accendersi-il-suo-agente-e-a-milano-e-questo-significa-che"
+    },
+    {
+      "id": "fantacalcio-12-aHR0cHM6Ly93",
+      "title": "UFFICIALE - Napoli, riscattato Hojlund dal Manchester United",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/ufficiale-napoli-riscattato-hojlund-dal-manchester-united-493749",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il comunicato del Napoli",
+      "image": "",
+      "publishedAt": "2026-06-03T12:26:55.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/ufficiale-napoli-riscattato-hojlund-dal-manchester-united-493749"
+    },
+    {
+      "id": "fantacalcio-13-aHR0cHM6Ly93",
+      "title": "UFFICIALE - Napoli, i saluti di Conte: \"Due anni di emozioni e vittorie\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/ufficiale-napoli-i-saluti-di-conte-due-anni-di-emozioni-e-vittorie-493748",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "L'ufficialità dell'addio di Conte",
+      "image": "",
+      "publishedAt": "2026-06-03T12:18:29.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/ufficiale-napoli-i-saluti-di-conte-due-anni-di-emozioni-e-vittorie-493748"
+    },
+    {
+      "id": "sosfanta-21-aHR0cHM6Ly93",
+      "title": "Freuler: “Futuro? E’ ancora incerto, non ho ancora deciso: nei prossimi giorni parleremo e…”",
+      "url": "https://www.sosfanta.com/news/freuler-futuro-e-ancora-incerto-non-ho-ancora-deciso-nei-prossimi-giorni-parleremo-e/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "E’ ancora da decidere il futuro di Remo Freuler, in scadenza col Bologna il prossimo 30 giugno. Lo svizzero ha parlato così ai microfoni di RSI: “Il mio futuro? E’ ancora incerto. Come ho detto anche l’ultima volta che ho parlato...",
+      "image": "",
+      "publishedAt": "2026-06-03T12:00:13.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Bologna"
+      ],
+      "detectedTeams": [
+        "Bologna"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Bologna"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/freuler-futuro-e-ancora-incerto-non-ho-ancora-deciso-nei-prossimi-giorni-parleremo-e"
+    },
+    {
+      "id": "calciomercato-it-5-aHR0cHM6Ly93",
+      "title": "Juventus, fumata nera e addio Vlahovic: ecco il sostituto &#124; CM",
+      "url": "https://www.calciomercato.it/2026/06/03/juventus-fumata-nera-e-addio-vlahovic-ecco-il-sostituto-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juventus, fumata nera e addio Vlahovic: ecco il sostituto | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T11:48:08.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/juventus-fumata-nera-e-addio-vlahovic-ecco-il-sostituto-cm"
+    },
+    {
+      "id": "sosfanta-22-aHR0cHM6Ly93",
+      "title": "Corvino dà l’addio al Lecce: “Vi spiego perché! Su Di Francesco, Siebert e a chi mi detesta dico…”",
+      "url": "https://www.sosfanta.com/squadra/lecce/corvino-da-laddio-al-lecce-vi-spiego-perche-su-di-francesco-siebert-e-a-chi-mi-detesta-dico/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Pantaleo Corvino ha dato l'addio al Lecce in conferenza stampa: ecco le dichiarazioni del dirigente oggi ai media presenti.",
+      "image": "",
+      "publishedAt": "2026-06-03T11:45:19.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/lecce",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/lecce/corvino-da-laddio-al-lecce-vi-spiego-perche-su-di-francesco-siebert-e-a-chi-mi-detesta-dico"
+    },
+    {
+      "id": "fantacalcio-14-aHR0cHM6Ly93",
+      "title": "Corvino saluta il Lecce: \"Lascio un club in salute\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/corvino-saluta-il-lecce-lascio-un-club-in-salute-493747",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del dirigente salentino",
+      "image": "",
+      "publishedAt": "2026-06-03T11:44:24.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Corvino"
+      ],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [
+          "Corvino"
+        ],
+        "players": [
+          "Corvino"
+        ]
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/corvino-saluta-il-lecce-lascio-un-club-in-salute-493747"
+    },
+    {
+      "id": "sosfanta-23-aHR0cHM6Ly93",
+      "title": "Atalanta, ecco la decisione del club su Scamacca sul mercato dopo le voci sulla Roma",
+      "url": "https://www.sosfanta.com/news/atalanta-ecco-la-decisione-del-club-su-scamacca-sul-mercato-dopo-le-voci-sulla-roma/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il futuro di Gianluca Scamacca sarà ancora all’Atalanta. E’ quello che risulta al Corriere di Bergamo: secondo il quotidiano, l’attaccante è definitivamente fuori dal mercato. Per la società resta al centro del progetto...",
+      "image": "",
+      "publishedAt": "2026-06-03T11:30:27.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Scamacca"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Roma"
+        ],
+        "people": [
+          "Scamacca"
+        ],
+        "players": [
+          "Scamacca"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/atalanta-ecco-la-decisione-del-club-su-scamacca-sul-mercato-dopo-le-voci-sulla-roma"
+    },
+    {
+      "id": "calciomercato-it-6-aHR0cHM6Ly93",
+      "title": "Napoli, è ufficiale: acquisto a titolo definitivo per 44 milioni",
+      "url": "https://www.calciomercato.it/2026/06/03/napoli-e-ufficiale-acquisto-a-titolo-definitivo-per-44-milioni/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Napoli, è ufficiale: acquisto a titolo definitivo per 44 milioni proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T11:01:45.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/napoli-e-ufficiale-acquisto-a-titolo-definitivo-per-44-milioni"
+    },
+    {
+      "id": "sosfanta-24-aHR0cHM6Ly93",
+      "title": "Lazio, Zaccagni è al lavoro in questi giorni a Formello: allenamenti specifici per tornare per…",
+      "url": "https://www.sosfanta.com/news/lazio-zaccagni-e-al-lavoro-in-questi-giorni-a-formello-allenamenti-specifici-per-tornare-per/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Mattia Zaccagni non è in vacanza, ma a lavorare a Formello in questi giorni. Come riporta il Corriere dello Sport, “il capitano lavora in palestra, deve cancellare un anno di tormenti e infortuni. Vari stiramenti dopo l’operazione per la...",
+      "image": "",
+      "publishedAt": "2026-06-03T11:00:20.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/lazio-zaccagni-e-al-lavoro-in-questi-giorni-a-formello-allenamenti-specifici-per-tornare-per"
+    },
+    {
+      "id": "fantacalcio-15-aHR0cHM6Ly93",
+      "title": "Napoli, contatti per Vlahovic: Manna vuole accontentare Allegri",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/napoli-contatti-per-vlahovic-manna-vuole-accontentare-allegri-493746",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le ultime di mercato",
+      "image": "",
+      "publishedAt": "2026-06-03T10:45:59.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Vlahovic"
+      ],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [
+          "Vlahovic"
+        ],
+        "players": [
+          "Vlahovic"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/napoli-contatti-per-vlahovic-manna-vuole-accontentare-allegri-493746"
+    },
+    {
+      "id": "fantacalcio-16-aHR0cHM6Ly93",
+      "title": "Le classifiche del quinquennio di Serie A, Premier, Liga e Bundesliga",
+      "url": "https://www.fantacalcio.it/approfondimenti/03_06_2026/le-classifiche-del-quinquennio-di-serie-a-premier-liga-e-bundesliga-493595",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "MANTENGONO IL PRIMO POSTO INTER, MANCHESTER CITY, REAL MADRID E BAYERN MONACO",
+      "image": "",
+      "publishedAt": "2026-06-03T10:45:34.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Approfondimenti",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/approfondimenti/03_06_2026/le-classifiche-del-quinquennio-di-serie-a-premier-liga-e-bundesliga-493595"
+    },
+    {
+      "id": "sosfanta-25-aHR0cHM6Ly93",
+      "title": "Conte saluta il Napoli: “Due anni vincenti di forti emozioni e grande passione: grazie di cuore”",
+      "url": "https://www.sosfanta.com/news/conte-saluta-il-napoli-due-anni-vincenti-di-forti-emozioni-e-grande-passione-grazie-di-cuore/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Antonio Conte ha lasciato il Napoli. E sui social ha voluto rivolgere un ultimo saluto ai tifosi partenopei, ecco il suo messaggio su Instagram: Due anni vincenti di forti emozioni e grande passione!!! Semplicemente grazie di cuore Napoli”.",
+      "image": "",
+      "publishedAt": "2026-06-03T10:30:10.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Instagram",
+        "Conte"
+      ],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [
+          "Instagram",
+          "Conte"
+        ],
+        "players": [
+          "Instagram",
+          "Conte"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/conte-saluta-il-napoli-due-anni-vincenti-di-forti-emozioni-e-grande-passione-grazie-di-cuore"
+    },
+    {
+      "id": "fantacalcio-17-aHR0cHM6Ly93",
+      "title": "Como, Baturina: \"Che sogno il Mondiale! Su Modric...\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/como-baturina-che-sogno-il-mondiale-su-modric-493745",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del croato",
+      "image": "",
+      "publishedAt": "2026-06-03T10:29:22.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/como-baturina-che-sogno-il-mondiale-su-modric-493745"
+    },
+    {
+      "id": "fantacalcio-18-aHR0cHM6Ly93",
+      "title": "Genoa, piace Koleosho: c'è anche una neopromossa sul 2004",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/genoa-piace-koleosho-c-e-anche-una-neopromossa-sul-2004-493744",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le ultime di mercato",
+      "image": "",
+      "publishedAt": "2026-06-03T10:25:22.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Koleosho"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [
+          "Koleosho"
+        ],
+        "players": [
+          "Koleosho"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/genoa-piace-koleosho-c-e-anche-una-neopromossa-sul-2004-493744"
+    },
+    {
+      "id": "fantacalcio-19-aHR0cHM6Ly93",
+      "title": "Grosso alla Fiorentina, ci siamo: a breve l'annuncio ufficiale",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/grosso-alla-fiorentina-ci-siamo-a-breve-l-annuncio-ufficiale-493743",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Tutto pronto per Grosso alla Fiorentina",
+      "image": "",
+      "publishedAt": "2026-06-03T10:19:48.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Grosso"
+      ],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [
+          "Grosso"
+        ],
+        "players": [
+          "Grosso"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/grosso-alla-fiorentina-ci-siamo-a-breve-l-annuncio-ufficiale-493743"
+    },
+    {
+      "id": "fantacalcio-20-aHR0cHM6Ly93",
+      "title": "Media spettatori in Serie A: dominano Milan e Inter",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/media-spettatori-in-serie-a-dominano-milan-e-inter-493694",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "La top 7 delle squadre con più tifosi in media allo stadio",
+      "image": "",
+      "publishedAt": "2026-06-03T10:02:44.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/media-spettatori-in-serie-a-dominano-milan-e-inter-493694"
+    },
+    {
+      "id": "fantacalcio-21-aHR0cHM6Ly93",
+      "title": "Roma, Greenwood la priorità per l'attacco di Gasperini",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/roma-greenwood-la-priorita-per-l-attacco-di-gasperini-493742",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le ultime di mercato",
+      "image": "",
+      "publishedAt": "2026-06-03T10:01:37.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/roma-greenwood-la-priorita-per-l-attacco-di-gasperini-493742"
+    },
+    {
+      "id": "sosfanta-26-aHR0cHM6Ly93",
+      "title": "Roma, Gasperini impazzisce per Greenwood: ecco perché il Marsiglia parte da 50 milioni",
+      "url": "https://www.sosfanta.com/news/roma-gasperini-impazzisce-per-greenwood-ecco-perche-il-marsiglia-parte-da-50-milioni/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "La Roma resta su Mason Greenwood per l’attacco. Ecco le novità da Fabrizio Romano: “Sono partiti i contatti, è un pallino di Gasperini, che impazzisce per lui. La Roma ha iniziato a lavorarci, si parte da 50 milioni: il Marsiglia...",
+      "image": "",
+      "publishedAt": "2026-06-03T10:00:31.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Greenwood",
+        "Mason Greenwood"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Greenwood",
+          "Mason Greenwood"
+        ],
+        "players": [
+          "Greenwood",
+          "Mason Greenwood"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/roma-gasperini-impazzisce-per-greenwood-ecco-perche-il-marsiglia-parte-da-50-milioni"
+    },
+    {
+      "id": "sosfanta-27-aHR0cHM6Ly93",
+      "title": "Sky – Occhio al futuro di El Shaarawy: c’è un possibile ritorno, contatti per l’affare a zero",
+      "url": "https://www.sosfanta.com/squadra/genoa/sky-occhio-al-futuro-di-el-shaarawy-ce-un-possibile-ritorno-contatti-per-laffare-a-zero/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Stephan El Shaarawy ha salutato la Roma ed è pronto ad una nuova avventura. E spunta l'ipotesi di un ritorno romatico.",
+      "image": "",
+      "publishedAt": "2026-06-03T09:45:39.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Genoa",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Occhio"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Roma"
+        ],
+        "people": [
+          "Occhio"
+        ],
+        "players": [
+          "Occhio"
+        ]
+      },
+      "tags": [
+        "/squadra/genoa",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/genoa/sky-occhio-al-futuro-di-el-shaarawy-ce-un-possibile-ritorno-contatti-per-laffare-a-zero"
+    },
+    {
+      "id": "calciomercato-it-7-aHR0cHM6Ly93",
+      "title": "Che intreccio tra Juve e Atletico: poker di nomi per Nico Gonzalez &#124; CM",
+      "url": "https://www.calciomercato.it/2026/06/03/che-intreccio-tra-juve-e-atletico-poker-di-nomi-per-nico-gonzalez-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Che intreccio tra Juve e Atletico: poker di nomi per Nico Gonzalez | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T09:36:30.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Nico Gonzalez"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Nico Gonzalez"
+        ],
+        "players": [
+          "Nico Gonzalez"
+        ]
+      },
+      "tags": [
+        "Estero",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/che-intreccio-tra-juve-e-atletico-poker-di-nomi-per-nico-gonzalez-cm"
+    },
+    {
+      "id": "sosfanta-28-aHR0cHM6Ly93",
+      "title": "Lazio, Isaksen ha deciso: si opererà nei prossimi giorni per la pubalgia. Cosa filtra",
+      "url": "https://www.sosfanta.com/news/lazio-isaksen-ha-deciso-si-operera-nei-prossimi-giorni-per-la-pubalgia-cosa-filtra/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Gustav Isaksen ha deciso: si opererà per risolvere la pubalgia nei prossimi giorni senza perdere altro tempo ed essere già pronto a correre in ritiro dal 13 luglio. Lo spiega Il Messaggero: “La Lazio vorrebbe che l’intervento di...",
+      "image": "",
+      "publishedAt": "2026-06-03T09:30:51.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/lazio-isaksen-ha-deciso-si-operera-nei-prossimi-giorni-per-la-pubalgia-cosa-filtra"
+    },
+    {
+      "id": "fantacalcio-22-aHR0cHM6Ly93",
+      "title": "Serie A, la classifica se contassero solo i gol italiani: scudetto alla Fiorentina, Bologna secondo",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/serie-a-la-classifica-se-contassero-solo-i-gol-italiani-scudetto-alla-fiorentina-bologna-secondo-493733",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Se segnassero solo gli azzurri? Graduatoria stravolta",
+      "image": "",
+      "publishedAt": "2026-06-03T09:00:24.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Bologna",
+        "Fiorentina",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Fiorentina",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Fiorentina",
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/serie-a-la-classifica-se-contassero-solo-i-gol-italiani-scudetto-alla-fiorentina-bologna-secondo-493733"
+    },
+    {
+      "id": "sosfanta-29-aHR0cHM6Ly93",
+      "title": "Romano – Nico Paz, il Como aspetta e spera: lui vorrebbe restare un altro anno, il Real…",
+      "url": "https://www.sosfanta.com/calciomercato/romano-nico-paz-il-como-aspetta-e-spera-lui-vorrebbe-restare-un-altro-anno-il-real/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Sono settimane importanti per definire il futuro di Nico Paz, che verrà riacquistato dal Real Madrid. Come spiega Fabrizio Romano, il Como resta in attesa: lui vorrebbe restare un altro anno da titolare assoluto ma al momento tutto passa dal...",
+      "image": "",
+      "publishedAt": "2026-06-03T09:00:06.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/romano-nico-paz-il-como-aspetta-e-spera-lui-vorrebbe-restare-un-altro-anno-il-real"
+    },
+    {
+      "id": "sosfanta-30-aHR0cHM6Ly93",
+      "title": "FLASH – Inter, ora l’assalto a Palestra: le ultime e occhio a Cocchi! E per la difesa interessa Mancini",
+      "url": "https://www.sosfanta.com/squadra/inter/flash-inter-ora-lassalto-a-palestra-le-ultime-e-occhio-a-cocchi-e-per-la-difesa-interessa-mancini/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Nome nuovo per l'Inter per quanto riguarda la difesa: Mancini. E il punto su Palestra.",
+      "image": "",
+      "publishedAt": "2026-06-03T08:45:31.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra."
+      ],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [
+          "Palestra."
+        ],
+        "players": [
+          "Palestra."
+        ]
+      },
+      "tags": [
+        "/squadra/inter",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/inter/flash-inter-ora-lassalto-a-palestra-le-ultime-e-occhio-a-cocchi-e-per-la-difesa-interessa-mancini"
+    },
+    {
+      "id": "sosfanta-31-aHR0cHM6Ly93",
+      "title": "Juve, giornata importante per Vlahovic: verrà dato ultimatum per il rinnovo, i dettagli",
+      "url": "https://www.sosfanta.com/news/juve-giornata-importante-per-vlahovic-verra-dato-ultimatum-per-il-rinnovo-i-dettagli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Vero e proprio dentro o fuori per Dusan Vlahovic, che deve decidere se rinnovare con la Juventus o cambiare aria, visto il contratto in scadenza al 30 giugno. E oggi, secondo La Gazzetta dello Sport, è una giornata molto importante:...",
+      "image": "",
+      "publishedAt": "2026-06-03T08:30:27.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Vlahovic",
+        "Dusan Vlahovic"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Vlahovic",
+          "Dusan Vlahovic"
+        ],
+        "players": [
+          "Vlahovic",
+          "Dusan Vlahovic"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/juve-giornata-importante-per-vlahovic-verra-dato-ultimatum-per-il-rinnovo-i-dettagli"
+    },
+    {
+      "id": "fantacalcio-23-aHR0cHM6Ly93",
+      "title": "Italiani in rosa per squadra di Serie A: solo Fiorentina e Cagliari ne hanno più della metà",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/03_06_2026/italiani-in-rosa-per-squadra-di-serie-a-solo-fiorentina-e-cagliari-ne-hanno-piu-della-meta-493732",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Ecco chi è più 'azzurro' nel nostro campionato",
+      "image": "",
+      "publishedAt": "2026-06-03T08:00:34.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari",
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Cagliari",
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Cagliari",
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/03_06_2026/italiani-in-rosa-per-squadra-di-serie-a-solo-fiorentina-e-cagliari-ne-hanno-piu-della-meta-493732"
+    },
+    {
+      "id": "sosfanta-32-aHR0cHM6Ly93",
+      "title": "Italia, la probabile formazione per oggi: stop per Palestra, il motivo! Da Esposito a Koleosho e Ndour",
+      "url": "https://www.sosfanta.com/news/italia-la-probabile-formazione-per-oggi-stop-per-palestra-il-motivo-da-esposito-a-koleosho-e-ndour/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Stasera scende in campo l’Italia in amichevole contro il Lussemburgo. Baldini dovrà fare a meno di Marco Palestra per un piccolo stop, come spiega La Gazzetta dello Sport: “La linea difensiva ha perso ieri Palestra per un problema...",
+      "image": "",
+      "publishedAt": "2026-06-03T08:00:02.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Palestra"
+        ],
+        "players": [
+          "Palestra"
+        ]
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/italia-la-probabile-formazione-per-oggi-stop-per-palestra-il-motivo-da-esposito-a-koleosho-e-ndour"
+    },
+    {
+      "id": "sosfanta-33-aHR0cHM6Ly93",
+      "title": "Inter, retroscena Dumfries: ecco perché la clausola rescissoria a “soli” 20 milioni",
+      "url": "https://www.sosfanta.com/news/inter-retroscena-dumfries-ecco-perche-la-clausola-rescissoria-a-soli-20-milioni/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Perché l’Inter ha inserito nel contratto di Denzel Dumfries una clausola di “solo” 20 milioni? Risponde Fabrizio Romano sul suo canale WhatsApp: “L’Inter lo avrebbe perso a costo zero nel 2025, a scadenza; per evitarlo, a...",
+      "image": "",
+      "publishedAt": "2026-06-03T07:30:47.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/inter-retroscena-dumfries-ecco-perche-la-clausola-rescissoria-a-soli-20-milioni"
+    },
+    {
+      "id": "calciomercato-it-8-aHR0cHM6Ly93",
+      "title": "Juve forte su Brahim Diaz, la posizione di Mourinho e del Real Madrid",
+      "url": "https://www.calciomercato.it/2026/06/03/juve-forte-su-brahim-diaz-la-posizione-di-mourinho-e-del-real-madrid/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve forte su Brahim Diaz, la posizione di Mourinho e del Real Madrid proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T07:27:54.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Brahim Diaz"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Brahim Diaz"
+        ],
+        "players": [
+          "Brahim Diaz"
+        ]
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/juve-forte-su-brahim-diaz-la-posizione-di-mourinho-e-del-real-madrid"
+    },
+    {
+      "id": "fantacalcio-24-aHR0cHM6Ly93",
+      "title": "Genoa, contatti per El Shaarawy",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/genoa-contatti-per-el-shaarawy-493740",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Per l'ex Roma offerte anche da Qatar e Arabia Saudita",
+      "image": "",
+      "publishedAt": "2026-06-03T07:25:58.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Genoa",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "El Shaarawy. Per"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Roma"
+        ],
+        "people": [
+          "El Shaarawy. Per"
+        ],
+        "players": [
+          "El Shaarawy. Per"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/genoa-contatti-per-el-shaarawy-493740"
+    },
+    {
+      "id": "fantacalcio-25-aHR0cHM6Ly93",
+      "title": "Como, idea Muharemovic",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/como-idea-muharemovic-493739",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il rinforzo per la difesa può arrivare dal Sassuolo",
+      "image": "",
+      "publishedAt": "2026-06-03T07:14:53.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Como",
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Como",
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como",
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/como-idea-muharemovic-493739"
+    },
+    {
+      "id": "calciomercato-it-9-aHR0cHM6Ly93",
+      "title": "Pellegrino nel mirino della Fiorentina, primo nome in caso di addio di Kean &#124; CM",
+      "url": "https://www.calciomercato.it/2026/06/03/pellegrino-nel-mirino-della-fiorentina-primo-nome-in-caso-di-addio-di-kean-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Pellegrino nel mirino della Fiorentina, primo nome in caso di addio di Kean | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T07:00:28.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Pellegrino",
+        "CM. L'articolo Pellegrino"
+      ],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [
+          "Pellegrino",
+          "CM. L'articolo Pellegrino"
+        ],
+        "players": [
+          "Pellegrino",
+          "CM. L'articolo Pellegrino"
+        ]
+      },
+      "tags": [
+        "Fiorentina",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/pellegrino-nel-mirino-della-fiorentina-primo-nome-in-caso-di-addio-di-kean-cm"
+    },
+    {
+      "id": "sosfanta-34-aHR0cHM6Ly93",
+      "title": "Romano – Sassuolo, Aquilani in pole per sostituire Grosso in panchina: le ultime",
+      "url": "https://www.sosfanta.com/news/romano-sassuolo-aquilani-in-pole-per-sostituire-grosso-in-panchina-le-ultime/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Il Sassuolo, con l’ormai imminente addio di Fabio Grosso, è alla ricerca del nuovo allenatore: e sembra essere Alberto Aquilani il prescelto dei neroverdi. Come spiega Fabrizio Romano sul suo canale WhatsApp, ci sono stati nuovi contatti...",
+      "image": "",
+      "publishedAt": "2026-06-03T07:00:10.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/romano-sassuolo-aquilani-in-pole-per-sostituire-grosso-in-panchina-le-ultime"
+    },
+    {
+      "id": "fantacalcio-26-aHR0cHM6Ly93",
+      "title": "La Roma fa sul serio per Greenwood: ecco la richiesta del Marsiglia",
+      "url": "https://www.fantacalcio.it/calciomercato/03_06_2026/la-roma-fa-sul-serio-per-greenwood-ecco-la-richiesta-del-marsiglia-493738",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Rinforzo top in attacco per Gasperini?",
+      "image": "",
+      "publishedAt": "2026-06-03T06:58:29.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Greenwood",
+        "Gasperini"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Greenwood",
+          "Gasperini"
+        ],
+        "players": [
+          "Greenwood",
+          "Gasperini"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/03_06_2026/la-roma-fa-sul-serio-per-greenwood-ecco-la-richiesta-del-marsiglia-493738"
+    },
+    {
+      "id": "sosfanta-35-aHR0cHM6Ly93",
+      "title": "ULTIM’ORA – È fatta per la cessione di Ederson al Manchester United: ecco cifre e dettagli",
+      "url": "https://www.sosfanta.com/squadra/atalanta/ultimora-e-fatta-per-la-cessione-di-ederson-al-manchester-united-ecco-cifre-e-dettagli/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "E' fatta per l'addio di Ederson all'Atalanta: l'operazione è stata chiusa in questi minuti con il Manchester United, col brasiliano che vola in Premier League.",
+      "image": "",
+      "publishedAt": "2026-06-03T06:30:45.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Ederson"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [
+          "Ederson"
+        ],
+        "players": [
+          "Ederson"
+        ]
+      },
+      "tags": [
+        "/squadra/atalanta",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/atalanta/ultimora-e-fatta-per-la-cessione-di-ederson-al-manchester-united-ecco-cifre-e-dettagli"
+    },
+    {
+      "id": "sosfanta-36-aHR0cHM6Ly93",
+      "title": "Sky – Sassuolo, Muharemovic ha una nuova pretendente in Serie A ma i costi sono troppo alti",
+      "url": "https://www.sosfanta.com/news/sky-como-tentazione-muharemovic-per-la-difesa-ma-la-trattativa-e-in-standby-il-motivo/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Tentazione Tarik Muharemovic in difesa per il Como, che sta valutando il profilo del centrale bosniaco per la prossima stagione. Secondo Sky, “al momento la trattativa si trova in una fase di standby a causa dei costi...",
+      "image": "",
+      "publishedAt": "2026-06-03T06:00:50.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Como",
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Como",
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como",
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/sky-como-tentazione-muharemovic-per-la-difesa-ma-la-trattativa-e-in-standby-il-motivo"
+    },
+    {
+      "id": "calciomercato-it-10-aHR0cHM6Ly93",
+      "title": "Juve, firma in arrivo per Kalulu: le cifre",
+      "url": "https://www.calciomercato.it/2026/06/03/juve-firma-in-arrivo-per-kalulu-le-cifre/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve, firma in arrivo per Kalulu: le cifre proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T05:22:32.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Kalulu"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Kalulu"
+        ],
+        "players": [
+          "Kalulu"
+        ]
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/juve-firma-in-arrivo-per-kalulu-le-cifre"
+    },
+    {
+      "id": "calciomercato-it-11-aHR0cHM6Ly93",
+      "title": "Juve, l&#8217;ultima idea a centrocampo si chiama Koke: la situazione",
+      "url": "https://www.calciomercato.it/2026/06/03/juve-lultima-idea-a-centrocampo-si-chiama-koke-la-situazione/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve, l&#8217;ultima idea a centrocampo si chiama Koke: la situazione proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-03T03:55:26.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/03/juve-lultima-idea-a-centrocampo-si-chiama-koke-la-situazione"
+    },
+    {
+      "id": "fantacalcio-27-aHR0cHM6Ly93",
+      "title": "Pochettino non smentisce il Milan: l'ammissione prima del Mondiale",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/02_06_2026/pochettino-non-smentisce-il-milan-l-ammissione-prima-del-mondiale-493736",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del CT degli USA",
+      "image": "",
+      "publishedAt": "2026-06-02T22:54:04.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/02_06_2026/pochettino-non-smentisce-il-milan-l-ammissione-prima-del-mondiale-493736"
+    },
+    {
+      "id": "fantacalcio-28-aHR0cHM6Ly93",
+      "title": "Inter, è fatta per Dumfries al Real Madrid",
+      "url": "https://www.fantacalcio.it/calciomercato/02_06_2026/inter-e-fatta-per-dumfries-al-real-madrid-493737",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le ultime di mercato",
+      "image": "",
+      "publishedAt": "2026-06-02T22:49:54.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Dumfries"
+      ],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [
+          "Dumfries"
+        ],
+        "players": [
+          "Dumfries"
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/02_06_2026/inter-e-fatta-per-dumfries-al-real-madrid-493737"
+    },
+    {
+      "id": "fantacalcio-29-aHR0cHM6Ly93",
+      "title": "Italia, Baldini: \"Questi ragazzi saranno il futuro. Sul Lussemburgo...\"",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/02_06_2026/italia-baldini-questi-ragazzi-saranno-il-futuro-sul-lussemburgo-493735",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le parole del CT ad interim",
+      "image": "",
+      "publishedAt": "2026-06-02T22:22:14.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/02_06_2026/italia-baldini-questi-ragazzi-saranno-il-futuro-sul-lussemburgo-493735"
+    }
+  ]
+}

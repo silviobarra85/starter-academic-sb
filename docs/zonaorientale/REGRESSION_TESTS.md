@@ -835,3 +835,30 @@ Funzionalita da preservare: Fantamercato interno, Listone pubblico/Admin, export
 - Desktop -> layout Calciomercato ancora leggibile.
 - Verificare che ricerca, filtri, range e caricamento articoli piu vecchi funzionino.
 - Verificare che Fantamercato interno, Listone, Rose, Dashboard Presidente e Admin non siano regressi.
+
+
+## Test V320 - Riconoscimento Calciomercato
+
+- Calciomercato: aprire con Netlify Dev e verificare chip squadre/giocatori rilevati.
+- Calciomercato: cercare una squadra e un giocatore/allenatore presente nei titoli RSS.
+- Calciomercato: filtri squadra/topic/fonte ancora funzionanti.
+- Listone pubblico: export CSV non visibile.
+- Listone Admin: export CSV visibile e funzionante.
+- Fantamercato interno, Rose, Dashboard Presidente e Admin invariati.
+
+
+## V321 - Fix espansione Diagnostica dati Admin
+
+Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler delegato limitato al solo pannello diagnostica. Nessuna modifica a Firebase, Listone, Rose, Calciomercato o Dashboard Presidente.
+
+
+## Test V322 - Fix diagnostica ruoli Listone
+
+- Login Admin.
+- Aprire `Admin -> Diagnostica dati`.
+- Espandere il pannello se chiuso.
+- Cliccare `Aggiorna diagnostica`.
+- Verificare che `Listoni - qualita dati` non segnali piu tutti i giocatori come `senza ruolo`.
+- Verificare che Listone pubblico e Listone Admin continuino a funzionare.
+- Verificare che colonna `Modifica`, filtro `Modifiche`, `Mostra usciti storici` ed export CSV solo Admin restino invariati.
+- Verificare che Calciomercato, Fantamercato interno, Rose, Dashboard Presidente e Admin non siano regressi.
