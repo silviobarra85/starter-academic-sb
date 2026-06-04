@@ -592,165 +592,192 @@
   }
 }
 
-/* V323 - Archivio statico giornaliero Calciomercato: strumenti solo Admin nella pagina Calciomercato. */
-.calciomercato-archive-admin-v323 {
-  margin: 0.75rem 0 1rem;
+/* V323 - Schede giocatore/squadra Calciomercato */
+.calciomercato-entity-panel-v323 {
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.52);
 }
 
-.calciomercato-archive-tools-card-v323 {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  align-items: center;
-  border-style: dashed;
-}
-
-.calciomercato-archive-tools-card-v323 h3 {
-  margin: 0.15rem 0 0.35rem;
-}
-
-.calciomercato-archive-actions-v323 {
+.calciomercato-entity-head-v323 {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: flex-end;
-}
-
-.calciomercato-archive-status-v323 {
-  grid-column: 1 / -1;
-  margin: 0;
-}
-
-@media (max-width: 760px) {
-  .calciomercato-archive-tools-card-v323 {
-    grid-template-columns: 1fr;
-  }
-
-  .calciomercato-archive-actions-v323,
-  .calciomercato-archive-actions-v323 .button {
-    width: 100%;
-  }
-}
-
-
-/* V324 - Diagnostica archivio Calciomercato solo Admin. */
-.calciomercato-archive-tools-card-v324 {
-  align-items: start;
-}
-
-.calciomercato-archive-diagnostics-v324 {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 0.85rem;
-}
-
-.calciomercato-archive-diagnostics-head-v324 {
-  display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
 }
 
-.calciomercato-archive-diagnostics-head-v324 h4 {
-  margin: 0 0 0.25rem;
+.calciomercato-entity-head-v323 h3 {
+  margin: 0.05rem 0 0.25rem;
 }
 
-.calciomercato-archive-metrics-v324 {
+.calciomercato-entity-controls-v323 {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.6rem;
+  grid-template-columns: minmax(140px, 0.8fr) minmax(220px, 2fr) auto;
+  gap: 0.75rem;
+  align-items: end;
+  margin-bottom: 0.9rem;
 }
 
-.calciomercato-archive-metric-v324 {
+.calciomercato-entity-search-v323 {
   min-width: 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.85rem;
-  padding: 0.65rem;
-  background: rgba(255, 255, 255, 0.035);
 }
 
-.calciomercato-archive-metric-v324 span,
-.calciomercato-archive-metric-v324 strong,
-.calciomercato-archive-metric-v324 small {
-  display: block;
-  overflow-wrap: anywhere;
+.calciomercato-entity-actions-v323 {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
-.calciomercato-archive-metric-v324 span,
-.calciomercato-archive-metric-v324 small {
-  color: var(--muted);
+.calciomercato-entity-chip-v323,
+.calciomercato-entity-suggestion-v323,
+.calciomercato-player-chip-v306.calciomercato-entity-chip-v323 {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
 }
 
-.calciomercato-archive-metric-v324 strong {
-  font-size: 1.15rem;
-  margin: 0.12rem 0;
+.calciomercato-entity-chip-v323:hover,
+.calciomercato-entity-suggestion-v323:hover,
+.calciomercato-player-chip-v306.calciomercato-entity-chip-v323:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
 }
 
-.calciomercato-archive-missing-v324,
-.calciomercato-archive-ok-v324,
-.calciomercato-archive-sources-block-v324 {
-  border-radius: 0.9rem;
-  padding: 0.7rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.calciomercato-entity-suggestions-v323 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
 }
 
-.calciomercato-archive-missing-v324 {
+.calciomercato-entity-suggestions-v323 > div {
   display: grid;
   gap: 0.45rem;
 }
 
-.calciomercato-archive-missing-v324 span {
+.calciomercato-entity-suggestions-v323 > div > div,
+.calciomercato-entity-chips-line-v323 {
   display: flex;
+  gap: 0.4rem;
   flex-wrap: wrap;
+}
+
+.calciomercato-entity-suggestion-v323 {
+  display: inline-flex;
   gap: 0.35rem;
-}
-
-.calciomercato-archive-missing-v324 code {
+  align-items: center;
   border-radius: 999px;
-  padding: 0.12rem 0.45rem;
-  background: rgba(251, 191, 36, 0.12);
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  padding: 0.32rem 0.65rem;
+  background: rgba(59, 130, 246, 0.18);
+  color: #dbeafe;
+  border: 1px solid rgba(96, 165, 250, 0.25);
 }
 
-.calciomercato-archive-ok-v324 {
-  margin: 0;
-  color: #bbf7d0;
+.calciomercato-entity-suggestion-v323 small {
+  color: #93c5fd;
 }
 
-.calciomercato-archive-sources-block-v324 {
+.calciomercato-entity-card-v323 {
   display: grid;
+  gap: 0.8rem;
+}
+
+.calciomercato-entity-card-head-v323 {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.calciomercato-entity-card-head-v323 h4 {
+  margin: 0.1rem 0 0.25rem;
+  font-size: 1.35rem;
+}
+
+.calciomercato-entity-card-head-v323 p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.calciomercato-entity-stats-v323 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.5rem;
 }
 
-.calciomercato-archive-sources-v324 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+.calciomercato-entity-stats-v323 span {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.65rem;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.18);
 }
 
-.calciomercato-archive-sources-v324 span {
-  border-radius: 999px;
-  padding: 0.22rem 0.55rem;
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  overflow-wrap: anywhere;
+.calciomercato-entity-stats-v323 strong {
+  font-size: 1.15rem;
 }
 
-@media (max-width: 760px) {
-  .calciomercato-archive-diagnostics-head-v324 {
+.calciomercato-entity-stats-v323 small {
+  color: var(--muted);
+}
+
+.calciomercato-entity-articles-v323 {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.calciomercato-entity-articles-v323 li {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.62rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.calciomercato-entity-articles-v323 a {
+  color: #f8fafc;
+  text-decoration: none;
+}
+
+.calciomercato-entity-articles-v323 a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .calciomercato-entity-panel-v323 {
+    padding: 0.82rem;
+  }
+
+  .calciomercato-entity-controls-v323 {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .calciomercato-entity-actions-v323 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .calciomercato-entity-actions-v323 .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .calciomercato-entity-suggestions-v323 {
+    grid-template-columns: 1fr;
+  }
+
+  .calciomercato-entity-card-head-v323 {
     flex-direction: column;
   }
 
-  .calciomercato-archive-metrics-v324 {
+  .calciomercato-entity-stats-v323 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 520px) {
-  .calciomercato-archive-metrics-v324 {
-    grid-template-columns: 1fr;
   }
 }

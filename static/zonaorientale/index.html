@@ -23,16 +23,16 @@
   <meta name="twitter:description" content="Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d&#039;oro, statistiche, archivio e comunicati." />
   <meta name="twitter:image" content="https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png" />
   <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=324" />
-  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=324" />
+  <link rel="stylesheet" href="./assets/styles.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=323" />
+  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=323" />
 </head>
 <body>
   <header class="app-header">
@@ -318,7 +318,37 @@
             <button id="calciomercatoResetRangeV316" class="button button-secondary button-small" type="button">Ultime 12 ore</button>
           </div>
         </div>
-        <div id="calciomercatoArchiveAdminToolsV323" class="calciomercato-archive-admin-v323 hidden" aria-live="polite"></div>
+        <section id="calciomercatoEntityPanelV323" class="calciomercato-entity-panel-v323 compact-card" aria-labelledby="calciomercatoEntityTitleV323">
+          <div class="calciomercato-entity-head-v323">
+            <div>
+              <p class="eyebrow">Schede mercato</p>
+              <h3 id="calciomercatoEntityTitleV323">Giocatori e squadre citati</h3>
+              <p class="muted">Apri una scheda rapida per raccogliere le notizie disponibili su un giocatore, allenatore o squadra.</p>
+            </div>
+          </div>
+          <div class="calciomercato-entity-controls-v323">
+            <label class="calciomercato-filter-field-v319">
+              <span>Tipo</span>
+              <select id="calciomercatoEntityTypeV323" class="input filter-input" aria-label="Tipo scheda Calciomercato">
+                <option value="people">Giocatore/allenatore</option>
+                <option value="team">Squadra</option>
+              </select>
+            </label>
+            <label class="calciomercato-filter-field-v319 calciomercato-entity-search-v323">
+              <span>Nome</span>
+              <input id="calciomercatoEntityInputV323" class="input search-input" type="search" list="calciomercatoEntitySuggestionsV323" placeholder="Es. Lookman, Conte, Napoli..." />
+              <datalist id="calciomercatoEntitySuggestionsV323"></datalist>
+            </label>
+            <div class="calciomercato-entity-actions-v323">
+              <button id="calciomercatoEntityOpenV323" class="button button-small" type="button">Apri scheda</button>
+              <button id="calciomercatoEntityClearV323" class="button button-secondary button-small" type="button">Chiudi</button>
+            </div>
+          </div>
+          <div id="calciomercatoEntitySummaryV323" class="calciomercato-entity-summary-v323">
+            <p class="muted">Seleziona un chip negli articoli oppure inserisci un nome per vedere una scheda riepilogativa.</p>
+          </div>
+        </section>
+
         <div id="calciomercatoArticlesV306" class="calciomercato-grid-v306">
           <p class="muted">Caricamento articoli di mercato...</p>
         </div>
@@ -1720,11 +1750,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V324 diagnostica archivio Calciomercato · Ultimo aggiornamento 03/06/2026</p>
+    <p>ZonaOrientale Salerno · V323 scheda entita calciomercato · Ultimo aggiornamento 03/06/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=324"></script>
+  <script type="module" src="./assets/app.js?v=323"></script>
 </body>
 </html>
 
