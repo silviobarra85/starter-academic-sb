@@ -862,3 +862,10 @@ Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler d
 - Verificare che Listone pubblico e Listone Admin continuino a funzionare.
 - Verificare che colonna `Modifica`, filtro `Modifiche`, `Mostra usciti storici` ed export CSV solo Admin restino invariati.
 - Verificare che Calciomercato, Fantamercato interno, Rose, Dashboard Presidente e Admin non siano regressi.
+
+
+## V324 - Test regressione Calciomercato card pulite
+
+- Rimosso dalla UI delle card Calciomercato il riquadro visuale `Giocatori/Allenatori`, mantenendo il riconoscimento interno per ricerca e filtri futuri.
+- Allargata l'anteprima descrittiva desktop degli articoli eliminando il limite di larghezza che causava a capo anticipati.
+- Funzionalita' da preservare: feed RSS, fallback JSON, download JSON, filtri Squadre/Topic/Fonti, range temporale, caricamento articoli piu' vecchi, Fantamercato interno, Listone, Rose, Admin e Dashboard Presidente.
