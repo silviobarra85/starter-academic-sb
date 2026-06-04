@@ -649,19 +649,6 @@ if [[ -n "$DOCS_ROOT" ]]; then
   fi
 fi
 
-
-calciomercato_timeline_doc="$DOCS_ROOT/calciomercato/CALCIOMERCATO_TIMELINE_V325.md"
-if [[ -f "$calciomercato_timeline_doc" ]]; then
-  pass "Calciomercato Timeline V325 documentato: calciomercato/CALCIOMERCATO_TIMELINE_V325.md"
-else
-  warn "Calciomercato Timeline V325 non documentato"
-fi
-if grep -q "ZonaOrientaleCalciomercatoTimelineV325" "$app_file" && grep -q "downloadCalciomercatoJsonV325" "$app_file"; then
-  pass "Calciomercato Timeline e download JSON V325 presenti"
-else
-  fail "Calciomercato Timeline/download JSON V325 non rilevati in assets/app.js"
-fi
-
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.\n' "$failures" "$warns" >&2
