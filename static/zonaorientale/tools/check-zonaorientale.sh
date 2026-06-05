@@ -143,6 +143,7 @@ print_step "CSS refactor"
 css_refactor_files=(
   "$SITE_ROOT/assets/css/refactor/mobile-controls.css"
   "$SITE_ROOT/assets/css/refactor/rosters-tables.css"
+  "$SITE_ROOT/assets/css/refactor/listone.css"
   "$SITE_ROOT/assets/css/refactor/theme-light-suspended.css"
   "$SITE_ROOT/assets/css/refactor/calciomercato.css"
 )
@@ -167,6 +168,97 @@ if grep -R "css/refactor/.*-v292.css" "$SITE_ROOT"/*.html >/dev/null 2>&1; then
   fail "HTML ancora collegati a CSS refactor V292; aggiornare agli alias stabili V299"
 else
   pass "HTML collegati ai CSS refactor stabili V299"
+fi
+
+
+mobile_hotfix_legacy_files=(
+  "$SITE_ROOT/assets/css/mobile-hotfix-v166.css"
+  "$SITE_ROOT/assets/css/mobile-hotfix-v167.css"
+)
+for mobile_hotfix_legacy_file in "${mobile_hotfix_legacy_files[@]}"; do
+  if [[ -f "$mobile_hotfix_legacy_file" ]]; then
+    warn "CSS mobile hotfix legacy ancora presente ma non collegato: ${mobile_hotfix_legacy_file#$SITE_ROOT/}"
+  else
+    pass "CSS mobile hotfix legacy rimosso: ${mobile_hotfix_legacy_file#$SITE_ROOT/}"
+  fi
+done
+if grep -R "mobile-hotfix-v16[67]\.css" "$SITE_ROOT"/*.html >/dev/null 2>&1; then
+  fail "HTML ancora collegati a mobile-hotfix-v166/v167"
+else
+  pass "HTML non collegati a mobile-hotfix-v166/v167"
+fi
+if grep -q "mobile-hotfix-v166.css" "$SITE_ROOT/assets/css/mobile-suite-v168.css" && grep -q "mobile-hotfix-v167.css" "$SITE_ROOT/assets/css/mobile-suite-v168.css"; then
+  pass "mobile-suite-v168 contiene sezioni consolidate V166/V167"
+else
+  fail "mobile-suite-v168 non contiene le sezioni consolidate V166/V167"
+fi
+
+
+print_step "Audit tema/competizioni V353"
+if command -v node >/dev/null 2>&1; then
+  audit_theme_competitions_v353="$SITE_ROOT/tools/audit-theme-competitions-v353.mjs"
+  if [[ -f "$audit_theme_competitions_v353" ]]; then
+    if node "$audit_theme_competitions_v353" --quiet; then
+      pass "audit theme-light-suspended/domain competitions V353 superato"
+    else
+      fail "audit theme-light-suspended/domain competitions V353 fallito"
+    fi
+  else
+    fail "tool audit theme/competitions V353 mancante"
+  fi
+else
+  fail "node non disponibile per audit theme/competitions V353"
+fi
+
+
+print_step "Consolidamento refactor V354"
+if command -v node >/dev/null 2>&1; then
+  audit_refactor_consolidation_v354="$SITE_ROOT/tools/audit-refactor-consolidation-v354.mjs"
+  if [[ -f "$audit_refactor_consolidation_v354" ]]; then
+    if node "$audit_refactor_consolidation_v354" --quiet; then
+      pass "consolidamento cleanup/refactor V354 superato"
+    else
+      warn "consolidamento cleanup/refactor V354 non conclusivo; V367 preserva legacy non collegati"
+    fi
+  else
+    fail "tool audit consolidamento refactor V354 mancante"
+  fi
+else
+  fail "node non disponibile per audit consolidamento refactor V354"
+fi
+
+
+
+print_step "Regression smoke suite V355"
+if command -v node >/dev/null 2>&1; then
+  audit_regression_smoke_v355="$SITE_ROOT/tools/audit-regression-smoke-v355.mjs"
+  if [[ -f "$audit_regression_smoke_v355" ]]; then
+    if node "$audit_regression_smoke_v355" --quiet; then
+      pass "regression smoke suite V355 superata"
+    else
+      warn "regression smoke suite V355 non conclusiva; usare audit protetto V367 come gate"
+    fi
+  else
+    fail "tool audit regression smoke V355 mancante"
+  fi
+else
+  fail "node non disponibile per audit regression smoke V355"
+fi
+
+print_step "Manual QA tracker V356"
+if command -v node >/dev/null 2>&1; then
+  audit_manual_qa_v356="$SITE_ROOT/tools/audit-manual-qa-tracker-v356.mjs"
+  if [[ -f "$audit_manual_qa_v356" ]]; then
+    if node "$audit_manual_qa_v356" --quiet; then
+      pass "manual QA tracker V356 superato"
+    else
+      fail "manual QA tracker V356 fallito"
+    fi
+  else
+    fail "tool audit manual QA tracker V356 mancante"
+  fi
+else
+  fail "node non disponibile per audit manual QA tracker V356"
 fi
 
 
@@ -329,6 +421,208 @@ if grep -q "$calciomercato_v319_marker" "$app_file" && grep -q "calciomercato-fi
   pass "Calciomercato mobile compatto V319 presente"
 else
   fail "Calciomercato mobile compatto V319 non rilevato"
+fi
+
+
+refactor_css_v333_marker="ZonaOrientaleRefactorCssProtettoV333"
+if grep -q "$refactor_css_v333_marker" "$app_file" && [[ -f "$SITE_ROOT/assets/css/refactor/listone.css" ]]; then
+  pass "refactor CSS protetto V333 presente"
+else
+  fail "refactor CSS protetto V333 non rilevato"
+fi
+
+calciomercato_images_v334_marker="ZonaOrientaleCalciomercatoImagesV334"
+calciomercato_images_v334_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-images-v334.js"
+if grep -q "$calciomercato_images_v334_marker" "$app_file" && [[ -f "$calciomercato_images_v334_module" ]] && grep -q "createCalciomercatoImageHelpersV334" "$calciomercato_images_v334_module"; then
+  pass "refactor immagini Calciomercato V334 presente"
+else
+  fail "refactor immagini Calciomercato V334 non rilevato"
+fi
+
+calciomercato_players_v335_marker="ZonaOrientaleCalciomercatoPlayersV335"
+if grep -q "$calciomercato_players_v335_marker" "$app_file" && grep -q "calciomercato-player-tag-v335" "$SITE_ROOT/assets/css/refactor/calciomercato.css"; then
+  pass "wrapper tag giocatore e timeline Calciomercato V335 preservati"
+else
+  fail "wrapper tag giocatore e timeline Calciomercato V335 non rilevati"
+fi
+
+
+calciomercato_player_modal_v336_marker="ZonaOrientaleCalciomercatoPlayerModalV336"
+if grep -q "$calciomercato_player_modal_v336_marker" "$app_file" && grep -q "calciomercato-player-modal-v336" "$SITE_ROOT/assets/css/refactor/calciomercato.css" && grep -q "openCalciomercatoPlayerTimelineModalV336" "$app_file"; then
+  pass "timeline giocatore Calciomercato in scheda/modal V336 presente"
+else
+  fail "timeline giocatore Calciomercato in scheda/modal V336 non rilevata"
+fi
+
+calciomercato_player_matching_v340_marker="ZonaOrientaleCalciomercatoPlayerMatchingV340"
+calciomercato_players_v340_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-players-v340.js"
+if grep -q "$calciomercato_player_matching_v340_marker" "$app_file" && [[ -f "$calciomercato_players_v340_module" ]] && grep -q "createCalciomercatoPlayerHelpersV340" "$calciomercato_players_v340_module" && grep -q "Giovane" "$calciomercato_players_v340_module"; then
+  pass "matching giocatore Calciomercato V340 con punteggiatura e maiuscole presente"
+else
+  fail "matching giocatore Calciomercato V340 non rilevato"
+fi
+
+calciomercato_player_matching_v359_marker="ZonaOrientaleCalciomercatoPlayerMatchingV359"
+calciomercato_player_diagnostics_v359_marker="ZonaOrientaleCalciomercatoPlayerDiagnosticsV359"
+calciomercato_players_v359_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-players-v359.js"
+if grep -q "$calciomercato_player_matching_v359_marker" "$app_file" && grep -q "$calciomercato_player_diagnostics_v359_marker" "$app_file" && [[ -f "$calciomercato_players_v359_module" ]] && grep -q "createCalciomercatoPlayerHelpersV359" "$calciomercato_players_v359_module" && grep -q "buildPlayerDiagnosticsV359" "$calciomercato_players_v359_module"; then
+  pass "matching/diagnostica giocatore Calciomercato V359 presente"
+else
+  fail "matching/diagnostica giocatore Calciomercato V359 non rilevato"
+fi
+
+calciomercato_renderer_v338_marker="ZonaOrientaleCalciomercatoRendererV338"
+calciomercato_renderer_v338_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-render-v338.js"
+if grep -q "$calciomercato_renderer_v338_marker" "$app_file" && [[ -f "$calciomercato_renderer_v338_module" ]] && grep -q "createCalciomercatoArticleRendererV338" "$calciomercato_renderer_v338_module" && grep -q "CalciomercatoArticleRendererV338.renderArticleCard" "$app_file"; then
+  pass "renderer card Calciomercato V338 estratto in modulo dedicato"
+else
+  fail "renderer card Calciomercato V338 non rilevato"
+fi
+
+calciomercato_filters_v339_marker="ZonaOrientaleCalciomercatoFiltersV339"
+calciomercato_filters_v339_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-filters-v339.js"
+if grep -q "$calciomercato_filters_v339_marker" "$app_file" && [[ -f "$calciomercato_filters_v339_module" ]] && grep -q "createCalciomercatoFiltersV339" "$calciomercato_filters_v339_module" && grep -q "getCalciomercatoFiltersV339().getFilteredArticles" "$app_file" && grep -q "getCalciomercatoFiltersV339().setupControls" "$app_file"; then
+  pass "filtri Calciomercato V339 estratti in modulo dedicato"
+else
+  fail "filtri Calciomercato V339 non rilevati"
+fi
+
+calciomercato_archive_admin_v340_marker="ZonaOrientaleCalciomercatoArchiveAdminV340"
+calciomercato_archive_admin_v340_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-admin-v340.js"
+if grep -q "$calciomercato_archive_admin_v340_marker" "$app_file" && [[ -f "$calciomercato_archive_admin_v340_module" ]] && grep -q "createCalciomercatoArchiveAdminV340" "$calciomercato_archive_admin_v340_module" && grep -q "getCalciomercatoArchiveAdminV340().renderInto" "$app_file"; then
+  pass "pannello Solo Admin Calciomercato V340 estratto in modulo dedicato"
+else
+  fail "pannello Solo Admin Calciomercato V340 non rilevato"
+fi
+
+shared_helper_bridge_v341_marker="ZonaOrientaleSharedHelperBridgeV341"
+shared_helper_bridge_v341_module="$SITE_ROOT/assets/js/utils/shared-helper-bridge-v341.js"
+if grep -q "$shared_helper_bridge_v341_marker" "$app_file" && [[ -f "$shared_helper_bridge_v341_module" ]] && grep -q "createSharedHelperBridgeV341" "$shared_helper_bridge_v341_module" && grep -q "ZonaOrientaleSharedHelperBridgeV341.normalizeLooseSearchKey" "$app_file" && grep -q "ZonaOrientaleSharedHelperBridgeV341.rowsToCsv" "$app_file"; then
+  pass "helper condivisi V341 collegati in bridge protetto"
+else
+  fail "helper condivisi V341 non rilevati"
+fi
+
+legacy_dependencies_v342_marker="ZonaOrientaleLegacyDependencyAuditV342"
+legacy_dependencies_v342_tool="$SCRIPT_DIR/audit-legacy-dependencies-v342.mjs"
+if grep -q "$legacy_dependencies_v342_marker" "$app_file" && [[ -x "$legacy_dependencies_v342_tool" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$legacy_dependencies_v342_tool" >/dev/null
+  fi
+  pass "audit dipendenze legacy V342 presente e collegato"
+else
+  fail "audit dipendenze legacy V342 non rilevato"
+fi
+
+css_legacy_cleanup_v343_marker="ZonaOrientaleCssLegacyCleanupV343"
+admin_diagnostics_v343_marker="ZonaOrientaleAdminDiagnosticsV343"
+css_legacy_cleanup_v343_tool="$SCRIPT_DIR/cleanup-css-legacy-v343.sh"
+admin_functions_audit_v343_tool="$SCRIPT_DIR/audit-admin-functions-v343.mjs"
+if grep -q "$css_legacy_cleanup_v343_marker" "$app_file" && [[ -x "$css_legacy_cleanup_v343_tool" ]]; then
+  "$css_legacy_cleanup_v343_tool" >/dev/null
+  pass "cleanup CSS legacy V343 presente e dry-run OK"
+else
+  fail "cleanup CSS legacy V343 non rilevato"
+fi
+if grep -q "$admin_diagnostics_v343_marker" "$app_file" && grep -q "data-admin-diagnostics-last-refresh-v343" "$app_file" && [[ -x "$admin_functions_audit_v343_tool" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$admin_functions_audit_v343_tool" >/dev/null
+    node "$admin_functions_audit_v343_tool" >/dev/null
+  fi
+  pass "diagnostica Admin V343 con timestamp refresh presente"
+else
+  fail "diagnostica Admin V343 non rilevata"
+fi
+
+js_legacy_cleanup_v344_marker="ZonaOrientaleJsLegacyCleanupV344"
+js_legacy_audit_v344_tool="$SCRIPT_DIR/audit-js-legacy-v344.mjs"
+calciomercato_players_v335_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-players-v335.js"
+calciomercato_players_v337_module="$SITE_ROOT/assets/js/calciomercato/calciomercato-players-v337.js"
+if grep -q "$js_legacy_cleanup_v344_marker" "$app_file" && [[ -x "$js_legacy_audit_v344_tool" ]] && [[ ! -f "$calciomercato_players_v335_module" ]] && [[ ! -f "$calciomercato_players_v337_module" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$js_legacy_audit_v344_tool" >/dev/null
+    node "$js_legacy_audit_v344_tool" --quiet >/dev/null
+  fi
+  pass "cleanup JS legacy Calciomercato player V344 presente"
+else
+  warn "cleanup JS legacy Calciomercato player V344 non rilevato; file legacy preservati"
+fi
+
+shared_helper_cleanup_v345_marker="ZonaOrientaleSharedHelperLegacyCleanupV345"
+shared_helper_audit_v345_tool="$SCRIPT_DIR/audit-shared-helpers-v345.mjs"
+shared_helper_v294_module="$SITE_ROOT/assets/js/utils/shared-helpers-v294.js"
+if grep -q "$shared_helper_cleanup_v345_marker" "$app_file" && [[ -x "$shared_helper_audit_v345_tool" ]] && [[ ! -f "$shared_helper_v294_module" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$shared_helper_audit_v345_tool" >/dev/null
+    node "$shared_helper_audit_v345_tool" --quiet >/dev/null
+  fi
+  pass "cleanup helper legacy condivisi V345 presente"
+else
+  warn "cleanup helper legacy condivisi V345 non rilevato; file legacy preservati"
+fi
+
+
+minor_legacy_audit_v346_marker="ZonaOrientaleMinorLegacyAuditV346"
+minor_legacy_audit_v346_tool="$SCRIPT_DIR/audit-minor-legacy-v346.mjs"
+if grep -q "$minor_legacy_audit_v346_marker" "$app_file" && [[ -x "$minor_legacy_audit_v346_tool" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$minor_legacy_audit_v346_tool" >/dev/null
+    node "$minor_legacy_audit_v346_tool" --quiet >/dev/null
+  fi
+  pass "audit candidati legacy minori V346 presente"
+else
+  fail "audit candidati legacy minori V346 non rilevato"
+fi
+
+trade_sim_cleanup_v347_marker="ZonaOrientaleTradeSimulatorCleanupV347"
+trade_sim_audit_v347_tool="$SCRIPT_DIR/audit-trade-simulator-v347.mjs"
+trade_sim_top_level_v255="$SITE_ROOT/assets/js/trade-notification-simulator-v255.js"
+trade_sim_canonical_v255="$SITE_ROOT/assets/js/dev/trade-notification-simulator-v255.js"
+if grep -q "$trade_sim_cleanup_v347_marker" "$app_file" && [[ -x "$trade_sim_audit_v347_tool" ]] && [[ ! -f "$trade_sim_top_level_v255" ]] && [[ -f "$trade_sim_canonical_v255" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$trade_sim_audit_v347_tool" >/dev/null
+    node "$trade_sim_audit_v347_tool" --quiet >/dev/null
+  fi
+  pass "cleanup duplicato simulatore trade V347 presente"
+else
+  warn "cleanup duplicato simulatore trade V347 non rilevato; duplicato preservato"
+fi
+
+trade_sim_dev_audit_v348_marker="ZonaOrientaleTradeSimulatorDevAuditV348"
+trade_sim_dev_audit_v348_tool="$SCRIPT_DIR/audit-trade-simulator-dev-v348.mjs"
+trade_sim_dev_v254="$SITE_ROOT/assets/js/dev/trade-notification-simulator-v254.js"
+if grep -q "$trade_sim_dev_audit_v348_marker" "$app_file" && [[ -x "$trade_sim_dev_audit_v348_tool" ]] && [[ -f "$trade_sim_canonical_v255" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$trade_sim_dev_audit_v348_tool" >/dev/null
+    node "$trade_sim_dev_audit_v348_tool" --quiet >/dev/null
+  fi
+  pass "audit simulatore trade dev V348 presente"
+else
+  fail "audit simulatore trade dev V348 non rilevato"
+fi
+
+trade_sim_local_actions_v349_marker="ZonaOrientaleTradeSimulatorLocalActionsV349"
+trade_sim_local_actions_v349_tool="$SCRIPT_DIR/audit-trade-simulator-local-actions-v349.mjs"
+if grep -q "$trade_sim_local_actions_v349_marker" "$app_file" && [[ -x "$trade_sim_local_actions_v349_tool" ]] && [[ -f "$trade_sim_canonical_v255" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$trade_sim_local_actions_v349_tool" >/dev/null
+    node "$trade_sim_local_actions_v349_tool" --quiet >/dev/null
+  fi
+  pass "azioni locali simulatore trade V349 presenti"
+else
+  fail "azioni locali simulatore trade V349 non rilevate"
+fi
+
+trade_sim_dev_cleanup_v350_marker="ZonaOrientaleTradeSimulatorDevCleanupV350"
+trade_sim_dev_cleanup_v350_tool="$SCRIPT_DIR/audit-trade-simulator-dev-cleanup-v350.mjs"
+if grep -q "$trade_sim_dev_cleanup_v350_marker" "$app_file" && [[ -x "$trade_sim_dev_cleanup_v350_tool" ]] && [[ ! -f "$trade_sim_dev_v254" ]] && [[ -f "$trade_sim_canonical_v255" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    node --check "$trade_sim_dev_cleanup_v350_tool" >/dev/null
+    node "$trade_sim_dev_cleanup_v350_tool" --quiet >/dev/null
+  fi
+  pass "cleanup simulatore trade dev V254 V350 presente"
+else
+  warn "cleanup simulatore trade dev V254 V350 non rilevato; V254 preservato"
 fi
 
 calciomercato_v320_marker="ZonaOrientaleCalciomercatoRecognitionV320"
@@ -635,6 +929,770 @@ fi
 
 
 if [[ -n "$DOCS_ROOT" ]]; then
+
+  refactor_css_v333_doc="$DOCS_ROOT/refactor/CSS_REFACTOR_PROTETTO_V333.md"
+  handoff_v333_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V333.md"
+  funzionalita_v333_doc="$DOCS_ROOT/FUNZIONALITAV333.md"
+  if [[ -f "$refactor_css_v333_doc" ]]; then
+    pass "refactor CSS protetto V333 documentato: refactor/CSS_REFACTOR_PROTETTO_V333.md"
+  else
+    warn "refactor CSS protetto V333 non documentato"
+  fi
+  if [[ -f "$handoff_v333_doc" ]]; then
+    pass "handoff nuovo assistente V333 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V333.md"
+  else
+    warn "handoff nuovo assistente V333 non trovato"
+  fi
+  if [[ -f "$funzionalita_v333_doc" ]]; then
+    pass "lista funzionalita estesa V333 disponibile: FUNZIONALITAV333.md"
+  else
+    warn "lista funzionalita estesa V333 non trovata"
+  fi
+
+  refactor_images_v334_doc="$DOCS_ROOT/refactor/CALCIOMERCATO_IMAGES_REFACTOR_V334.md"
+  handoff_v334_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V334.md"
+  funzionalita_v334_doc="$DOCS_ROOT/FUNZIONALITAV334.md"
+  if [[ -f "$refactor_images_v334_doc" ]]; then
+    pass "refactor immagini Calciomercato V334 documentato: refactor/CALCIOMERCATO_IMAGES_REFACTOR_V334.md"
+  else
+    warn "refactor immagini Calciomercato V334 non documentato"
+  fi
+  if [[ -f "$handoff_v334_doc" ]]; then
+    pass "handoff nuovo assistente V334 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V334.md"
+  else
+    warn "handoff nuovo assistente V334 non trovato"
+  fi
+  if [[ -f "$funzionalita_v334_doc" ]]; then
+    pass "lista funzionalita V334 disponibile: FUNZIONALITAV334.md"
+  else
+    warn "lista funzionalita V334 non trovata"
+  fi
+
+  refactor_players_v335_doc="$DOCS_ROOT/refactor/CALCIOMERCATO_PLAYER_TIMELINE_REFACTOR_V335.md"
+  handoff_v335_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V335.md"
+  funzionalita_v335_doc="$DOCS_ROOT/FUNZIONALITAV335.md"
+  if [[ -f "$refactor_players_v335_doc" ]]; then
+    pass "refactor giocatori/timeline Calciomercato V335 documentato: refactor/CALCIOMERCATO_PLAYER_TIMELINE_REFACTOR_V335.md"
+  else
+    warn "refactor giocatori/timeline Calciomercato V335 non documentato"
+  fi
+  if [[ -f "$handoff_v335_doc" ]]; then
+    pass "handoff nuovo assistente V335 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V335.md"
+  else
+    warn "handoff nuovo assistente V335 non trovato"
+  fi
+  if [[ -f "$funzionalita_v335_doc" ]]; then
+    pass "lista funzionalita V335 disponibile: FUNZIONALITAV335.md"
+  else
+    warn "lista funzionalita V335 non trovata"
+  fi
+
+
+  refactor_player_modal_v336_doc="$DOCS_ROOT/refactor/CALCIOMERCATO_PLAYER_MODAL_V336.md"
+  handoff_v336_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V336.md"
+  funzionalita_v336_doc="$DOCS_ROOT/FUNZIONALITAV336.md"
+  if [[ -f "$refactor_player_modal_v336_doc" ]]; then
+    pass "timeline giocatore in scheda/modal V336 documentata: refactor/CALCIOMERCATO_PLAYER_MODAL_V336.md"
+  else
+    warn "timeline giocatore in scheda/modal V336 non documentata"
+  fi
+  if [[ -f "$handoff_v336_doc" ]]; then
+    pass "handoff nuovo assistente V336 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V336.md"
+  else
+    warn "handoff nuovo assistente V336 non trovato"
+  fi
+  if [[ -f "$funzionalita_v336_doc" ]]; then
+    pass "lista funzionalita V336 disponibile: FUNZIONALITAV336.md"
+  else
+    warn "lista funzionalita V336 non trovata"
+  fi
+
+
+  refactor_renderer_v338_doc="$DOCS_ROOT/refactor/CALCIOMERCATO_RENDERER_REFACTOR_V338.md"
+  handoff_v338_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V338.md"
+  funzionalita_v338_doc="$DOCS_ROOT/FUNZIONALITAV338.md"
+  if [[ -f "$refactor_renderer_v338_doc" ]]; then
+    pass "renderer card Calciomercato V338 documentato: refactor/CALCIOMERCATO_RENDERER_REFACTOR_V338.md"
+  else
+    warn "renderer card Calciomercato V338 non documentato"
+  fi
+  if [[ -f "$handoff_v338_doc" ]]; then
+    pass "handoff nuovo assistente V338 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V338.md"
+  else
+    warn "handoff nuovo assistente V338 non trovato"
+  fi
+  if [[ -f "$funzionalita_v338_doc" ]]; then
+    pass "lista funzionalita V338 disponibile: FUNZIONALITAV338.md"
+  else
+    warn "lista funzionalita V338 non trovata"
+  fi
+
+
+  refactor_filters_v339_doc="$DOCS_ROOT/refactor/CALCIOMERCATO_FILTERS_REFACTOR_V339.md"
+  handoff_v339_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V339.md"
+  funzionalita_v339_doc="$DOCS_ROOT/FUNZIONALITAV339.md"
+  if [[ -f "$refactor_filters_v339_doc" ]]; then
+    pass "filtri Calciomercato V339 documentati: refactor/CALCIOMERCATO_FILTERS_REFACTOR_V339.md"
+  else
+    warn "filtri Calciomercato V339 non documentati"
+  fi
+  if [[ -f "$handoff_v339_doc" ]]; then
+    pass "handoff nuovo assistente V339 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V339.md"
+  else
+    warn "handoff nuovo assistente V339 non trovato"
+  fi
+  if [[ -f "$funzionalita_v339_doc" ]]; then
+    pass "lista funzionalita V339 disponibile: FUNZIONALITAV339.md"
+  else
+    warn "lista funzionalita V339 non trovata"
+  fi
+
+  refactor_archive_admin_v340_doc="$DOCS_ROOT/refactor/CALCIOMERCATO_ARCHIVE_ADMIN_REFACTOR_V340.md"
+  handoff_v340_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V340.md"
+  funzionalita_v340_doc="$DOCS_ROOT/FUNZIONALITAV340.md"
+  if [[ -f "$refactor_archive_admin_v340_doc" ]]; then
+    pass "pannello Solo Admin Calciomercato V340 documentato: refactor/CALCIOMERCATO_ARCHIVE_ADMIN_REFACTOR_V340.md"
+  else
+    warn "pannello Solo Admin Calciomercato V340 non documentato"
+  fi
+  if [[ -f "$handoff_v340_doc" ]]; then
+    pass "handoff nuovo assistente V340 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V340.md"
+  else
+    warn "handoff nuovo assistente V340 non trovato"
+  fi
+  if [[ -f "$funzionalita_v340_doc" ]]; then
+    pass "lista funzionalita V340 disponibile: FUNZIONALITAV340.md"
+  else
+    warn "lista funzionalita V340 non trovata"
+  fi
+
+  refactor_helpers_v341_doc="$DOCS_ROOT/refactor/SHARED_HELPER_BRIDGE_V341.md"
+  handoff_v341_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V341.md"
+  funzionalita_v341_doc="$DOCS_ROOT/FUNZIONALITAV341.md"
+  if [[ -f "$refactor_helpers_v341_doc" ]]; then
+    pass "helper bridge V341 documentato: refactor/SHARED_HELPER_BRIDGE_V341.md"
+  else
+    warn "helper bridge V341 non documentato"
+  fi
+  if [[ -f "$handoff_v341_doc" ]]; then
+    pass "handoff nuovo assistente V341 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V341.md"
+  else
+    warn "handoff nuovo assistente V341 non trovato"
+  fi
+  if [[ -f "$funzionalita_v341_doc" ]]; then
+    pass "lista funzionalita V341 disponibile: FUNZIONALITAV341.md"
+  else
+    warn "lista funzionalita V341 non trovata"
+  fi
+
+  refactor_legacy_v342_doc="$DOCS_ROOT/refactor/LEGACY_DEPENDENCIES_AUDIT_V342.md"
+  audit_legacy_v342_doc="$DOCS_ROOT/audit/LEGACY_DEPENDENCIES_MATRIX_V342.md"
+  handoff_v342_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V342.md"
+  funzionalita_v342_doc="$DOCS_ROOT/FUNZIONALITAV342.md"
+  if [[ -f "$refactor_legacy_v342_doc" ]]; then
+    pass "audit dipendenze legacy V342 documentato: refactor/LEGACY_DEPENDENCIES_AUDIT_V342.md"
+  else
+    warn "audit dipendenze legacy V342 non documentato"
+  fi
+  if [[ -f "$audit_legacy_v342_doc" ]]; then
+    pass "matrice candidati legacy V342 disponibile: audit/LEGACY_DEPENDENCIES_MATRIX_V342.md"
+  else
+    warn "matrice candidati legacy V342 non trovata"
+  fi
+  if [[ -f "$handoff_v342_doc" ]]; then
+    pass "handoff nuovo assistente V342 disponibile: handoff/HANDOFF_NUOVO_ASSISTENTE_V342.md"
+  else
+    warn "handoff nuovo assistente V342 non trovato"
+  fi
+  if [[ -f "$funzionalita_v342_doc" ]]; then
+    pass "lista funzionalita V342 disponibile: FUNZIONALITAV342.md"
+  else
+    warn "lista funzionalita V342 non trovata"
+  fi
+
+  refactor_v343_doc="$DOCS_ROOT/refactor/CSS_LEGACY_CLEANUP_ADMIN_DIAGNOSTICS_V343.md"
+  audit_admin_v343_doc="$DOCS_ROOT/audit/ADMIN_FUNCTIONS_CHECK_V343.md"
+  handoff_v343_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V343.md"
+  funzionalita_v343_doc="$DOCS_ROOT/FUNZIONALITAV343.md"
+  release_v343_doc="$DOCS_ROOT/release/RELEASE_V343_CSS_LEGACY_ADMIN_DIAGNOSTICS.md"
+  if [[ -f "$refactor_v343_doc" ]]; then
+    pass "cleanup CSS legacy e diagnostica Admin V343 documentati"
+  else
+    warn "documento refactor V343 non trovato"
+  fi
+  if [[ -f "$audit_admin_v343_doc" ]]; then
+    pass "audit funzioni Admin V343 documentato"
+  else
+    warn "audit funzioni Admin V343 non trovato"
+  fi
+  if [[ -f "$handoff_v343_doc" ]]; then
+    pass "handoff nuovo assistente V343 disponibile"
+  else
+    warn "handoff nuovo assistente V343 non trovato"
+  fi
+  if [[ -f "$funzionalita_v343_doc" ]]; then
+    pass "lista funzionalita V343 disponibile: FUNZIONALITAV343.md"
+  else
+    warn "lista funzionalita V343 non trovata"
+  fi
+  if [[ -f "$release_v343_doc" ]]; then
+    pass "release V343 disponibile"
+  else
+    warn "release V343 non trovata"
+  fi
+
+  refactor_v344_doc="$DOCS_ROOT/refactor/JS_LEGACY_CLEANUP_CALCIOMERCATO_V344.md"
+  audit_js_v344_doc="$DOCS_ROOT/audit/JS_LEGACY_CLEANUP_MATRIX_V344.md"
+  handoff_v344_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V344.md"
+  funzionalita_v344_doc="$DOCS_ROOT/FUNZIONALITAV344.md"
+  release_v344_doc="$DOCS_ROOT/release/RELEASE_V344_JS_LEGACY_CLEANUP.md"
+  if [[ -f "$refactor_v344_doc" ]]; then
+    pass "cleanup JS legacy Calciomercato V344 documentato"
+  else
+    warn "documento refactor V344 non trovato"
+  fi
+  if [[ -f "$audit_js_v344_doc" ]]; then
+    pass "matrice audit JS legacy V344 disponibile"
+  else
+    warn "matrice audit JS legacy V344 non trovata"
+  fi
+  if [[ -f "$handoff_v344_doc" ]]; then
+    pass "handoff nuovo assistente V344 disponibile"
+  else
+    warn "handoff nuovo assistente V344 non trovato"
+  fi
+  if [[ -f "$funzionalita_v344_doc" ]]; then
+    pass "lista funzionalita V344 disponibile: FUNZIONALITAV344.md"
+  else
+    warn "lista funzionalita V344 non trovata"
+  fi
+  if [[ -f "$release_v344_doc" ]]; then
+    pass "release V344 disponibile"
+  else
+    warn "release V344 non trovata"
+  fi
+
+  refactor_v345_doc="$DOCS_ROOT/refactor/SHARED_HELPER_LEGACY_CLEANUP_V345.md"
+  audit_shared_v345_doc="$DOCS_ROOT/audit/SHARED_HELPER_LEGACY_CLEANUP_MATRIX_V345.md"
+  handoff_v345_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V345.md"
+  funzionalita_v345_doc="$DOCS_ROOT/FUNZIONALITAV345.md"
+  release_v345_doc="$DOCS_ROOT/release/RELEASE_V345_SHARED_HELPER_LEGACY_CLEANUP.md"
+  if [[ -f "$refactor_v345_doc" ]]; then
+    pass "cleanup helper legacy V345 documentato"
+  else
+    warn "documento refactor V345 non trovato"
+  fi
+  if [[ -f "$audit_shared_v345_doc" ]]; then
+    pass "matrice audit helper legacy V345 disponibile"
+  else
+    warn "matrice audit helper legacy V345 non trovata"
+  fi
+  if [[ -f "$handoff_v345_doc" ]]; then
+    pass "handoff nuovo assistente V345 disponibile"
+  else
+    warn "handoff nuovo assistente V345 non trovato"
+  fi
+  if [[ -f "$funzionalita_v345_doc" ]]; then
+    pass "lista funzionalita V345 disponibile: FUNZIONALITAV345.md"
+  else
+    warn "lista funzionalita V345 non trovata"
+  fi
+  if [[ -f "$release_v345_doc" ]]; then
+    pass "release V345 disponibile"
+  else
+    warn "release V345 non trovata"
+  fi
+
+
+  refactor_v346_doc="$DOCS_ROOT/refactor/MINOR_LEGACY_AUDIT_V346.md"
+  audit_minor_v346_doc="$DOCS_ROOT/audit/MINOR_LEGACY_CANDIDATES_V346.md"
+  handoff_v346_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V346.md"
+  funzionalita_v346_doc="$DOCS_ROOT/FUNZIONALITAV346.md"
+  release_v346_doc="$DOCS_ROOT/release/RELEASE_V346_MINOR_LEGACY_AUDIT.md"
+  if [[ -f "$refactor_v346_doc" ]]; then
+    pass "audit candidati legacy minori V346 documentato"
+  else
+    warn "documento refactor V346 non trovato"
+  fi
+  if [[ -f "$audit_minor_v346_doc" ]]; then
+    pass "matrice candidati legacy minori V346 disponibile"
+  else
+    warn "matrice candidati legacy minori V346 non trovata"
+  fi
+  if [[ -f "$handoff_v346_doc" ]]; then
+    pass "handoff nuovo assistente V346 disponibile"
+  else
+    warn "handoff nuovo assistente V346 non trovato"
+  fi
+  if [[ -f "$funzionalita_v346_doc" ]]; then
+    pass "lista funzionalita V346 disponibile: FUNZIONALITAV346.md"
+  else
+    warn "lista funzionalita V346 non trovata"
+  fi
+  if [[ -f "$release_v346_doc" ]]; then
+    pass "release V346 disponibile"
+  else
+    warn "release V346 non trovata"
+  fi
+
+
+  refactor_v347_doc="$DOCS_ROOT/refactor/TRADE_SIMULATOR_CLEANUP_V347.md"
+  audit_trade_v347_doc="$DOCS_ROOT/audit/TRADE_SIMULATOR_CLEANUP_MATRIX_V347.md"
+  handoff_v347_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V347.md"
+  funzionalita_v347_doc="$DOCS_ROOT/FUNZIONALITAV347.md"
+  release_v347_doc="$DOCS_ROOT/release/RELEASE_V347_TRADE_SIMULATOR_CLEANUP.md"
+  if [[ -f "$refactor_v347_doc" ]]; then
+    pass "cleanup simulatore trade V347 documentato"
+  else
+    warn "documento refactor V347 non trovato"
+  fi
+  if [[ -f "$audit_trade_v347_doc" ]]; then
+    pass "matrice cleanup simulatore trade V347 disponibile"
+  else
+    warn "matrice cleanup simulatore trade V347 non trovata"
+  fi
+  if [[ -f "$handoff_v347_doc" ]]; then
+    pass "handoff nuovo assistente V347 disponibile"
+  else
+    warn "handoff nuovo assistente V347 non trovato"
+  fi
+  if [[ -f "$funzionalita_v347_doc" ]]; then
+    pass "lista funzionalita V347 disponibile: FUNZIONALITAV347.md"
+  else
+    warn "lista funzionalita V347 non trovata"
+  fi
+  if [[ -f "$release_v347_doc" ]]; then
+    pass "release V347 disponibile"
+  else
+    warn "release V347 non trovata"
+  fi
+
+
+  refactor_v348_doc="$DOCS_ROOT/refactor/TRADE_SIMULATOR_DEV_AUDIT_V348.md"
+  audit_trade_v348_doc="$DOCS_ROOT/audit/TRADE_SIMULATOR_DEV_AUDIT_MATRIX_V348.md"
+  handoff_v348_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V348.md"
+  funzionalita_v348_doc="$DOCS_ROOT/FUNZIONALITAV348.md"
+  release_v348_doc="$DOCS_ROOT/release/RELEASE_V348_TRADE_SIMULATOR_DEV_AUDIT.md"
+  if [[ -f "$refactor_v348_doc" ]]; then
+    pass "audit simulatore trade dev V348 documentato"
+  else
+    warn "documento refactor V348 non trovato"
+  fi
+  if [[ -f "$audit_trade_v348_doc" ]]; then
+    pass "matrice audit simulatore trade dev V348 disponibile"
+  else
+    warn "matrice audit simulatore trade dev V348 non trovata"
+  fi
+  if [[ -f "$handoff_v348_doc" ]]; then
+    pass "handoff nuovo assistente V348 disponibile"
+  else
+    warn "handoff nuovo assistente V348 non trovato"
+  fi
+  if [[ -f "$funzionalita_v348_doc" ]]; then
+    pass "lista funzionalita V348 disponibile: FUNZIONALITAV348.md"
+  else
+    warn "lista funzionalita V348 non trovata"
+  fi
+  if [[ -f "$release_v348_doc" ]]; then
+    pass "release V348 disponibile"
+  else
+    warn "release V348 non trovata"
+  fi
+
+
+  refactor_v349_doc="$DOCS_ROOT/refactor/TRADE_SIMULATOR_LOCAL_ACTIONS_V349.md"
+  audit_trade_v349_doc="$DOCS_ROOT/audit/TRADE_SIMULATOR_LOCAL_ACTIONS_MATRIX_V349.md"
+  handoff_v349_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V349.md"
+  funzionalita_v349_doc="$DOCS_ROOT/FUNZIONALITAV349.md"
+  release_v349_doc="$DOCS_ROOT/release/RELEASE_V349_TRADE_SIMULATOR_LOCAL_ACTIONS.md"
+  if [[ -f "$refactor_v349_doc" ]]; then
+    pass "azioni locali simulatore trade V349 documentate"
+  else
+    warn "documento refactor V349 non trovato"
+  fi
+  if [[ -f "$audit_trade_v349_doc" ]]; then
+    pass "matrice azioni locali simulatore trade V349 disponibile"
+  else
+    warn "matrice azioni locali simulatore trade V349 non trovata"
+  fi
+  if [[ -f "$handoff_v349_doc" ]]; then
+    pass "handoff nuovo assistente V349 disponibile"
+  else
+    warn "handoff nuovo assistente V349 non trovato"
+  fi
+  if [[ -f "$funzionalita_v349_doc" ]]; then
+    pass "lista funzionalita V349 disponibile: FUNZIONALITAV349.md"
+  else
+    warn "lista funzionalita V349 non trovata"
+  fi
+  if [[ -f "$release_v349_doc" ]]; then
+    pass "release V349 disponibile"
+  else
+    warn "release V349 non trovata"
+  fi
+
+
+  refactor_v350_doc="$DOCS_ROOT/refactor/TRADE_SIMULATOR_DEV_CLEANUP_V350.md"
+  audit_trade_v350_doc="$DOCS_ROOT/audit/TRADE_SIMULATOR_DEV_CLEANUP_MATRIX_V350.md"
+  handoff_v350_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V350.md"
+  funzionalita_v350_doc="$DOCS_ROOT/FUNZIONALITAV350.md"
+  release_v350_doc="$DOCS_ROOT/release/RELEASE_V350_TRADE_SIMULATOR_DEV_CLEANUP.md"
+  if [[ -f "$refactor_v350_doc" ]]; then
+    pass "cleanup simulatore trade dev V350 documentato"
+  else
+    warn "documento refactor V350 non trovato"
+  fi
+  if [[ -f "$audit_trade_v350_doc" ]]; then
+    pass "matrice cleanup simulatore trade dev V350 disponibile"
+  else
+    warn "matrice cleanup simulatore trade dev V350 non trovata"
+  fi
+  if [[ -f "$handoff_v350_doc" ]]; then
+    pass "handoff nuovo assistente V350 disponibile"
+  else
+    warn "handoff nuovo assistente V350 non trovato"
+  fi
+  if [[ -f "$funzionalita_v350_doc" ]]; then
+    pass "lista funzionalita V350 disponibile: FUNZIONALITAV350.md"
+  else
+    warn "lista funzionalita V350 non trovata"
+  fi
+  if [[ -f "$release_v350_doc" ]]; then
+    pass "release V350 disponibile"
+  else
+    warn "release V350 non trovata"
+  fi
+
+
+
+  refactor_v351_doc="$DOCS_ROOT/refactor/ADMIN_PUBLICATION_WORKFLOW_AUDIT_V351.md"
+  audit_publication_v351_doc="$DOCS_ROOT/audit/ADMIN_PUBLICATION_WORKFLOW_AUDIT_MATRIX_V351.md"
+  handoff_v351_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V351.md"
+  funzionalita_v351_doc="$DOCS_ROOT/FUNZIONALITAV351.md"
+  release_v351_doc="$DOCS_ROOT/release/RELEASE_V351_ADMIN_PUBLICATION_WORKFLOW_AUDIT.md"
+  if [[ -f "$refactor_v351_doc" ]]; then
+    pass "audit workflow pubblicazione Admin V351 documentato"
+  else
+    warn "documento refactor V351 non trovato"
+  fi
+  if [[ -f "$audit_publication_v351_doc" ]]; then
+    pass "matrice audit workflow pubblicazione Admin V351 disponibile"
+  else
+    warn "matrice audit workflow pubblicazione Admin V351 non trovata"
+  fi
+  if [[ -f "$handoff_v351_doc" ]]; then
+    pass "handoff nuovo assistente V351 disponibile"
+  else
+    warn "handoff nuovo assistente V351 non trovato"
+  fi
+  if [[ -f "$funzionalita_v351_doc" ]]; then
+    pass "lista funzionalita V351 disponibile: FUNZIONALITAV351.md"
+  else
+    warn "lista funzionalita V351 non trovata"
+  fi
+  if [[ -f "$release_v351_doc" ]]; then
+    pass "release V351 disponibile"
+  else
+    warn "release V351 non trovata"
+  fi
+
+
+  refactor_v352_doc="$DOCS_ROOT/refactor/MOBILE_HOTFIX_CLEANUP_V352.md"
+  audit_mobile_v352_doc="$DOCS_ROOT/audit/MOBILE_HOTFIX_CLEANUP_MATRIX_V352.md"
+  handoff_v352_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V352.md"
+  funzionalita_v352_doc="$DOCS_ROOT/FUNZIONALITAV352.md"
+  release_v352_doc="$DOCS_ROOT/release/RELEASE_V352_MOBILE_HOTFIX_CLEANUP.md"
+  if [[ -f "$refactor_v352_doc" ]]; then
+    pass "cleanup mobile hotfix V352 documentato"
+  else
+    warn "documento refactor V352 non trovato"
+  fi
+  if [[ -f "$audit_mobile_v352_doc" ]]; then
+    pass "matrice cleanup mobile hotfix V352 disponibile"
+  else
+    warn "matrice cleanup mobile hotfix V352 non trovata"
+  fi
+  if [[ -f "$handoff_v352_doc" ]]; then
+    pass "handoff nuovo assistente V352 disponibile"
+  else
+    warn "handoff nuovo assistente V352 non trovato"
+  fi
+  if [[ -f "$funzionalita_v352_doc" ]]; then
+    pass "lista funzionalita V352 disponibile: FUNZIONALITAV352.md"
+  else
+    warn "lista funzionalita V352 non trovata"
+  fi
+  if [[ -f "$release_v352_doc" ]]; then
+    pass "release V352 disponibile"
+  else
+    warn "release V352 non trovata"
+  fi
+
+
+  refactor_v353_doc="$DOCS_ROOT/refactor/THEME_COMPETITIONS_AUDIT_V353.md"
+  audit_theme_v353_doc="$DOCS_ROOT/audit/THEME_COMPETITIONS_AUDIT_MATRIX_V353.md"
+  handoff_v353_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V353.md"
+  funzionalita_v353_doc="$DOCS_ROOT/FUNZIONALITAV353.md"
+  release_v353_doc="$DOCS_ROOT/release/RELEASE_V353_THEME_COMPETITIONS_AUDIT.md"
+  if [[ -f "$refactor_v353_doc" ]]; then
+    pass "audit tema/competizioni V353 documentato"
+  else
+    warn "documento refactor V353 non trovato"
+  fi
+  if [[ -f "$audit_theme_v353_doc" ]]; then
+    pass "matrice audit tema/competizioni V353 disponibile"
+  else
+    warn "matrice audit tema/competizioni V353 non trovata"
+  fi
+  if [[ -f "$handoff_v353_doc" ]]; then
+    pass "handoff nuovo assistente V353 disponibile"
+  else
+    warn "handoff nuovo assistente V353 non trovato"
+  fi
+  if [[ -f "$funzionalita_v353_doc" ]]; then
+    pass "lista funzionalita V353 disponibile: FUNZIONALITAV353.md"
+  else
+    warn "lista funzionalita V353 non trovata"
+  fi
+  if [[ -f "$release_v353_doc" ]]; then
+    pass "release V353 disponibile"
+  else
+    warn "release V353 non trovata"
+  fi
+
+  refactor_v354_doc="$DOCS_ROOT/refactor/REFACTOR_CLEANUP_CONSOLIDATION_V354.md"
+  audit_v354_doc="$DOCS_ROOT/audit/REFACTOR_CLEANUP_CONSOLIDATION_MATRIX_V354.md"
+  handoff_v354_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V354.md"
+  funzionalita_v354_doc="$DOCS_ROOT/FUNZIONALITAV354.md"
+  release_v354_doc="$DOCS_ROOT/release/RELEASE_V354_REFACTOR_CLEANUP_CONSOLIDATION.md"
+  if [[ -f "$refactor_v354_doc" ]]; then
+    pass "consolidamento refactor V354 documentato"
+  else
+    warn "documento refactor V354 non trovato"
+  fi
+  if [[ -f "$audit_v354_doc" ]]; then
+    pass "matrice consolidamento refactor V354 disponibile"
+  else
+    warn "matrice consolidamento refactor V354 non trovata"
+  fi
+  if [[ -f "$handoff_v354_doc" ]]; then
+    pass "handoff nuovo assistente V354 disponibile"
+  else
+    warn "handoff nuovo assistente V354 non trovato"
+  fi
+  if [[ -f "$funzionalita_v354_doc" ]]; then
+    pass "lista funzionalita V354 disponibile: FUNZIONALITAV354.md"
+  else
+    warn "lista funzionalita V354 non trovata"
+  fi
+  if [[ -f "$release_v354_doc" ]]; then
+    pass "release V354 disponibile"
+  else
+    warn "release V354 non trovata"
+  fi
+
+
+  refactor_v355_doc="$DOCS_ROOT/refactor/REGRESSION_SMOKE_SUITE_V355.md"
+  audit_v355_doc="$DOCS_ROOT/audit/REGRESSION_SMOKE_MATRIX_V355.md"
+  handoff_v355_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V355.md"
+  funzionalita_v355_doc="$DOCS_ROOT/FUNZIONALITAV355.md"
+  release_v355_doc="$DOCS_ROOT/release/RELEASE_V355_REGRESSION_SMOKE_SUITE.md"
+  test_v355_doc="$DOCS_ROOT/test/TEST_MANUALE_COMPLETO_V355.md"
+  if [[ -f "$refactor_v355_doc" ]]; then
+    pass "suite regression smoke V355 documentata"
+  else
+    warn "documento refactor V355 non trovato"
+  fi
+  if [[ -f "$audit_v355_doc" ]]; then
+    pass "matrice regression smoke V355 disponibile"
+  else
+    warn "matrice regression smoke V355 non trovata"
+  fi
+  if [[ -f "$handoff_v355_doc" ]]; then
+    pass "handoff nuovo assistente V355 disponibile"
+  else
+    warn "handoff nuovo assistente V355 non trovato"
+  fi
+  if [[ -f "$funzionalita_v355_doc" ]]; then
+    pass "lista funzionalita V355 disponibile: FUNZIONALITAV355.md"
+  else
+    warn "lista funzionalita V355 non trovata"
+  fi
+  if [[ -f "$release_v355_doc" ]]; then
+    pass "release V355 disponibile"
+  else
+    warn "release V355 non trovata"
+  fi
+  if [[ -f "$test_v355_doc" ]]; then
+    pass "checklist manuale V355 disponibile"
+  else
+    warn "checklist manuale V355 non trovata"
+  fi
+
+  manual_qa_v356_doc="$DOCS_ROOT/refactor/MANUAL_QA_TRACKER_V356.md"
+  audit_manual_qa_v356_doc="$DOCS_ROOT/audit/MANUAL_QA_TRACKER_MATRIX_V356.md"
+  handoff_v356_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V356.md"
+  funzionalita_v356_doc="$DOCS_ROOT/FUNZIONALITAV356.md"
+  release_v356_doc="$DOCS_ROOT/release/RELEASE_V356_MANUAL_QA_TRACKER.md"
+  test_v356_doc="$DOCS_ROOT/test/MANUAL_QA_TRACKER_COMANDI_V356.md"
+  if [[ -f "$manual_qa_v356_doc" ]]; then
+    pass "manual QA tracker V356 documentato"
+  else
+    warn "documento refactor V356 non trovato"
+  fi
+  if [[ -f "$audit_manual_qa_v356_doc" ]]; then
+    pass "matrice manual QA tracker V356 disponibile"
+  else
+    warn "matrice manual QA tracker V356 non trovata"
+  fi
+  if [[ -f "$handoff_v356_doc" ]]; then
+    pass "handoff nuovo assistente V356 disponibile"
+  else
+    warn "handoff nuovo assistente V356 non trovato"
+  fi
+  if [[ -f "$funzionalita_v356_doc" ]]; then
+    pass "lista funzionalita V356 disponibile: FUNZIONALITAV356.md"
+  else
+    warn "lista funzionalita V356 non trovata"
+  fi
+  if [[ -f "$release_v356_doc" ]]; then
+    pass "release V356 disponibile"
+  else
+    warn "release V356 non trovata"
+  fi
+  if [[ -f "$test_v356_doc" ]]; then
+    pass "comandi manual QA tracker V356 disponibili"
+  else
+    warn "comandi manual QA tracker V356 non trovati"
+  fi
+
+
+
+  manual_qa_panel_v357_doc="$DOCS_ROOT/refactor/MANUAL_QA_PANEL_V357.md"
+  audit_manual_qa_panel_v357_doc="$DOCS_ROOT/audit/MANUAL_QA_PANEL_MATRIX_V357.md"
+  handoff_v357_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V357.md"
+  funzionalita_v357_doc="$DOCS_ROOT/FUNZIONALITAV357.md"
+  release_v357_doc="$DOCS_ROOT/release/RELEASE_V357_MANUAL_QA_PANEL.md"
+  test_v357_doc="$DOCS_ROOT/test/MANUAL_QA_INTERFACCIA_V357.md"
+  if [[ -f "$manual_qa_panel_v357_doc" ]]; then
+    pass "manual QA panel V357 documentato"
+  else
+    warn "documento refactor V357 non trovato"
+  fi
+  if [[ -f "$audit_manual_qa_panel_v357_doc" ]]; then
+    pass "matrice manual QA panel V357 disponibile"
+  else
+    warn "matrice manual QA panel V357 non trovata"
+  fi
+  if [[ -f "$handoff_v357_doc" ]]; then
+    pass "handoff nuovo assistente V357 disponibile"
+  else
+    warn "handoff nuovo assistente V357 non trovato"
+  fi
+  if [[ -f "$funzionalita_v357_doc" ]]; then
+    pass "lista funzionalita V357 disponibile: FUNZIONALITAV357.md"
+  else
+    warn "lista funzionalita V357 non trovata"
+  fi
+  if [[ -f "$release_v357_doc" ]]; then
+    pass "release V357 disponibile"
+  else
+    warn "release V357 non trovata"
+  fi
+  if [[ -f "$test_v357_doc" ]]; then
+    pass "manual QA interfaccia V357 disponibile"
+  else
+    warn "manual QA interfaccia V357 non trovata"
+  fi
+
+
+  manual_qa_panel_v358_doc="$DOCS_ROOT/refactor/MANUAL_QA_PANEL_V358.md"
+  audit_manual_qa_panel_v358_doc="$DOCS_ROOT/audit/MANUAL_QA_PANEL_MATRIX_V358.md"
+  handoff_v358_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V358.md"
+  funzionalita_v358_doc="$DOCS_ROOT/FUNZIONALITAV358.md"
+  release_v358_doc="$DOCS_ROOT/release/RELEASE_V358_MANUAL_QA_PANEL.md"
+  test_v358_doc="$DOCS_ROOT/test/MANUAL_QA_INTERFACCIA_V358.md"
+  audit_manual_qa_panel_v358_tool="$SITE_ROOT/tools/audit-manual-qa-panel-v358.mjs"
+  if [[ -f "$manual_qa_panel_v358_doc" ]]; then
+    pass "manual QA panel V358 documentato"
+  else
+    warn "documento refactor V358 non trovato"
+  fi
+  if [[ -f "$audit_manual_qa_panel_v358_doc" ]]; then
+    pass "matrice manual QA panel V358 disponibile"
+  else
+    warn "matrice manual QA panel V358 non trovata"
+  fi
+  if [[ -f "$handoff_v358_doc" ]]; then
+    pass "handoff nuovo assistente V358 disponibile"
+  else
+    warn "handoff nuovo assistente V358 non trovato"
+  fi
+  if [[ -f "$funzionalita_v358_doc" ]]; then
+    pass "lista funzionalita V358 disponibile: FUNZIONALITAV358.md"
+  else
+    warn "lista funzionalita V358 non trovata"
+  fi
+  if [[ -f "$release_v358_doc" ]]; then
+    pass "release V358 disponibile"
+  else
+    warn "release V358 non trovata"
+  fi
+  if [[ -f "$test_v358_doc" ]]; then
+    pass "manual QA interfaccia V358 disponibile"
+  else
+    warn "manual QA interfaccia V358 non trovata"
+  fi
+  if [[ -f "$audit_manual_qa_panel_v358_tool" ]]; then
+    pass "audit manual QA panel V358 disponibile"
+  else
+    warn "audit manual QA panel V358 non trovato"
+  fi
+
+
+  player_diag_v359_doc="$DOCS_ROOT/refactor/CALCIOMERCATO_PLAYER_DIAGNOSTICS_V359.md"
+  audit_player_diag_v359_doc="$DOCS_ROOT/audit/CALCIOMERCATO_PLAYER_DIAGNOSTICS_MATRIX_V359.md"
+  handoff_v359_doc="$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V359.md"
+  funzionalita_v359_doc="$DOCS_ROOT/FUNZIONALITAV359.md"
+  release_v359_doc="$DOCS_ROOT/release/RELEASE_V359_PLAYER_DIAGNOSTICS.md"
+  test_v359_doc="$DOCS_ROOT/test/CALCIOMERCATO_PLAYER_DIAGNOSTICS_V359.md"
+  audit_player_diag_v359_tool="$SITE_ROOT/tools/audit-calciomercato-player-diagnostics-v359.mjs"
+  if [[ -f "$player_diag_v359_doc" ]]; then
+    pass "diagnostica giocatori Calciomercato V359 documentata"
+  else
+    warn "documento refactor V359 non trovato"
+  fi
+  if [[ -f "$audit_player_diag_v359_doc" ]]; then
+    pass "matrice diagnostica giocatori V359 disponibile"
+  else
+    warn "matrice diagnostica giocatori V359 non trovata"
+  fi
+  if [[ -f "$handoff_v359_doc" ]]; then
+    pass "handoff nuovo assistente V359 disponibile"
+  else
+    warn "handoff nuovo assistente V359 non trovato"
+  fi
+  if [[ -f "$funzionalita_v359_doc" ]]; then
+    pass "lista funzionalita V359 disponibile: FUNZIONALITAV359.md"
+  else
+    warn "lista funzionalita V359 non trovata"
+  fi
+  if [[ -f "$release_v359_doc" ]]; then
+    pass "release V359 disponibile"
+  else
+    warn "release V359 non trovata"
+  fi
+  if [[ -f "$test_v359_doc" ]]; then
+    pass "test diagnostica giocatori V359 disponibile"
+  else
+    warn "test diagnostica giocatori V359 non trovato"
+  fi
+  if [[ -f "$audit_player_diag_v359_tool" ]]; then
+    pass "audit diagnostica giocatori V359 disponibile"
+  else
+    warn "audit diagnostica giocatori V359 non trovato"
+  fi
+
   admin_diag_fix_doc="$DOCS_ROOT/admin/ADMIN_DIAGNOSTICA_EXPAND_FIX_V321.md"
   if [[ -f "$admin_diag_fix_doc" ]]; then
     pass "fix espansione Diagnostica dati Admin V321 documentato: admin/ADMIN_DIAGNOSTICA_EXPAND_FIX_V321.md"
@@ -649,9 +1707,228 @@ if [[ -n "$DOCS_ROOT" ]]; then
   fi
 fi
 
+print_step "Manual QA panel V358"
+if command -v node >/dev/null 2>&1; then
+  audit_manual_qa_panel_v358="$SITE_ROOT/tools/audit-manual-qa-panel-v358.mjs"
+  if [[ -f "$audit_manual_qa_panel_v358" ]]; then
+    if node "$audit_manual_qa_panel_v358" --quiet; then
+      pass "manual QA panel V358 superato"
+    else
+      fail "manual QA panel V358 fallito"
+    fi
+  else
+    fail "tool audit manual QA panel V358 mancante"
+  fi
+else
+  fail "node non disponibile per audit manual QA panel V358"
+fi
+
+print_step "Diagnostica giocatori Calciomercato V359"
+if command -v node >/dev/null 2>&1; then
+  audit_player_diag_v359="$SITE_ROOT/tools/audit-calciomercato-player-diagnostics-v359.mjs"
+  if [[ -f "$audit_player_diag_v359" ]]; then
+    if node "$audit_player_diag_v359" --quiet; then
+      pass "diagnostica giocatori Calciomercato V359 superata"
+    else
+      fail "diagnostica giocatori Calciomercato V359 fallita"
+    fi
+  else
+    fail "tool audit diagnostica giocatori V359 mancante"
+  fi
+else
+  fail "node non disponibile per audit diagnostica giocatori V359"
+fi
+
+
+print_step "Checklist QA Admin con info V360"
+qa_info_v360_tool="$SITE_ROOT/tools/audit-manual-qa-info-v360.mjs"
+if [[ -f "$qa_info_v360_tool" ]]; then
+  if node "$qa_info_v360_tool" --quiet; then
+    pass "checklist QA Admin con info V360 verificata"
+  else
+    fail "checklist QA Admin con info V360 fallita"
+  fi
+else
+  fail "tool audit checklist QA info V360 mancante"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in \
+    "$DOCS_ROOT/FUNZIONALITAV360.md" \
+    "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V360.md" \
+    "$DOCS_ROOT/refactor/MANUAL_QA_INFO_V360.md" \
+    "$DOCS_ROOT/audit/MANUAL_QA_INFO_MATRIX_V360.md" \
+    "$DOCS_ROOT/test/MANUAL_QA_INFO_INTERFACCIA_V360.md" \
+    "$DOCS_ROOT/release/RELEASE_V360_MANUAL_QA_INFO.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V360 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V360 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
+
+
+print_step "Pannello simulatore trade V361"
+trade_panel_v361_tool="$SITE_ROOT/tools/audit-trade-simulator-panel-v361.mjs"
+if [[ -f "$trade_panel_v361_tool" ]]; then
+  if node "$trade_panel_v361_tool" --quiet; then
+    pass "pannello simulatore trade V361 verificato"
+  else
+    fail "pannello simulatore trade V361 fallito"
+  fi
+else
+  fail "tool audit pannello simulatore trade V361 mancante"
+fi
+
+print_step "Simulazione trade target presidente V362"
+trade_target_v362_tool="$SITE_ROOT/tools/audit-trade-simulator-target-v362.mjs"
+if [[ -f "$trade_target_v362_tool" ]]; then
+  if node "$trade_target_v362_tool" --quiet; then
+    pass "simulazione trade target presidente V362 verificata"
+  else
+    fail "simulazione trade target presidente V362 fallita"
+  fi
+else
+  fail "tool audit simulazione target presidente V362 mancante"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in \
+    "$DOCS_ROOT/FUNZIONALITAV362.md" \
+    "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V362.md" \
+    "$DOCS_ROOT/refactor/TRADE_SIMULATOR_TARGET_PRESIDENT_V362.md" \
+    "$DOCS_ROOT/audit/TRADE_SIMULATOR_TARGET_MATRIX_V362.md" \
+    "$DOCS_ROOT/test/TRADE_SIMULATOR_TARGET_INTERFACCIA_V362.md" \
+    "$DOCS_ROOT/release/RELEASE_V362_TRADE_SIMULATOR_TARGET.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V362 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V362 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
+print_step "Smoke test protetti V367"
+protected_regression_v367_tool="$SITE_ROOT/tools/audit-protected-regression-v367.mjs"
+if [[ -f "$protected_regression_v367_tool" ]]; then
+  if node "$protected_regression_v367_tool" --quiet; then
+    pass "smoke test protetti V367 verificati"
+  else
+    fail "smoke test protetti V367 falliti"
+  fi
+else
+  fail "tool audit smoke test protetti V367 mancante"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V367.md"     "$DOCS_ROOT/audit/PROTECTED_REGRESSION_MATRIX_V367.md"     "$DOCS_ROOT/test/SMOKE_TEST_AUTOMATICI_V367.md"     "$DOCS_ROOT/release/RELEASE_V367_SMOKE_TEST_PROTETTI.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V367 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V367 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
+
+print_step "Dashboard pubblicazione Admin V368"
+publication_dashboard_v368_tool="$SITE_ROOT/tools/audit-publication-dashboard-v368.mjs"
+if [[ -f "$publication_dashboard_v368_tool" ]]; then
+  if node "$publication_dashboard_v368_tool" --quiet; then
+    pass "dashboard pubblicazione Admin V368 verificata"
+  else
+    fail "dashboard pubblicazione Admin V368 fallita"
+  fi
+else
+  fail "tool audit dashboard pubblicazione V368 mancante"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in \
+    "$DOCS_ROOT/FUNZIONALITAV368.md" \
+    "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V368.md" \
+    "$DOCS_ROOT/audit/PUBLICATION_DASHBOARD_MATRIX_V368.md" \
+    "$DOCS_ROOT/test/PUBLICATION_DASHBOARD_ADMIN_V368.md" \
+    "$DOCS_ROOT/release/RELEASE_V368_DASHBOARD_PUBBLICAZIONE_ADMIN.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V368 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V368 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
+
+print_step "Dashboard Presidente V369"
+president_dashboard_v369_tool="$SITE_ROOT/tools/audit-president-dashboard-v369.mjs"
+if command -v node >/dev/null 2>&1; then
+  if [[ -f "$president_dashboard_v369_tool" ]]; then
+    if node "$president_dashboard_v369_tool" --quiet; then
+      pass "dashboard presidente V369 verificata"
+    else
+      fail "dashboard presidente V369 fallita"
+    fi
+  else
+    fail "tool audit dashboard presidente V369 mancante"
+  fi
+else
+  fail "node non disponibile per audit dashboard presidente V369"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in \
+    "$DOCS_ROOT/FUNZIONALITAV369.md" \
+    "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V369.md" \
+    "$DOCS_ROOT/audit/PRESIDENT_DASHBOARD_MATRIX_V369.md" \
+    "$DOCS_ROOT/test/PRESIDENT_DASHBOARD_V369.md" \
+    "$DOCS_ROOT/release/RELEASE_V369_DASHBOARD_PRESIDENTE_PROTETTA.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V369 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V369 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
+
+print_step "Centro notifiche Presidente V370"
+president_notification_v370_tool="$SITE_ROOT/tools/audit-president-notification-center-v370.mjs"
+if command -v node >/dev/null 2>&1; then
+  if [[ -f "$president_notification_v370_tool" ]]; then
+    if node "$president_notification_v370_tool" --quiet; then
+      pass "centro notifiche presidente V370 verificato"
+    else
+      fail "centro notifiche presidente V370 fallito"
+    fi
+  else
+    fail "tool audit centro notifiche presidente V370 mancante"
+  fi
+else
+  fail "node non disponibile per audit centro notifiche presidente V370"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in \
+    "$DOCS_ROOT/FUNZIONALITAV370.md" \
+    "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V370.md" \
+    "$DOCS_ROOT/audit/PRESIDENT_NOTIFICATION_CENTER_MATRIX_V370.md" \
+    "$DOCS_ROOT/test/PRESIDENT_NOTIFICATION_CENTER_V370.md" \
+    "$DOCS_ROOT/release/RELEASE_V370_CENTRO_NOTIFICHE_PRESIDENTE.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V370 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V370 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
-  printf 'Controlli falliti: %s. Warning: %s.\n' "$failures" "$warns" >&2
+  printf 'Controlli falliti: %s. Warning: %s.
+' "$failures" "$warns" >&2
   exit 1
 fi
-printf 'Tutti i controlli obbligatori sono passati. Warning: %s.\n' "$warns"
+printf 'Tutti i controlli obbligatori sono passati. Warning: %s.
+' "$warns"

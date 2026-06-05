@@ -1,3 +1,118 @@
+# V360 - Checklist QA Admin con informazioni
+
+- Aggiunta una icona informativa `i` a ogni test della Checklist QA Admin.
+- Ogni test ora spiega cosa controllare manualmente, senza dover usare la console o consultare docs separati.
+- L export Markdown include la colonna `Cosa controllare`.
+- Aggiunto `static/zonaorientale/tools/audit-manual-qa-info-v360.mjs`.
+- Nessuna modifica a Firebase, Netlify Functions, Calciomercato, Listone, Fantamercato reale, Admin reale o `FUNZIONALITA'.md`.
+- Aggiornati footer, cache-buster, `DEPLOY_EXPECTED_VERSION_V181`, audit e documentazione a V360.
+
+## V359 - Diagnostica giocatori Calciomercato
+
+- Aggiunto `assets/js/calciomercato/calciomercato-players-v359.js` come evoluzione protetta del matching V340.
+- Preservato il matching conservativo e aggiunti alias sicuri, forma compatta per nomi con apostrofi/spazi e diagnostica articoli associati/non associati.
+- Aggiunto controllo `calciomercato-player-diagnostics` nella Checklist QA Admin.
+- Aggiunti `window.ZonaOrientaleCalciomercatoPlayerMatchingV359` e `window.ZonaOrientaleCalciomercatoPlayerDiagnosticsV359`.
+- Nessuna modifica a Firebase, Netlify Functions, `links.json`, archivi JSON, JSON Listone o `FUNZIONALITA'.md`.
+- Aggiornati footer, cache-buster, `DEPLOY_EXPECTED_VERSION_V181`, audit e documentazione a V359.
+
+## V353 - Audit tema Light sospeso e dominio competizioni
+
+- Aggiunto audit mirato per `assets/css/refactor/theme-light-suspended.css` e `assets/js/domain/competitions.js`.
+- Confermato che il CSS Light resta conservato ma non importato dagli HTML.
+- Confermato che il modulo `domain/competitions.js` resta conservato/non importato; le funzioni competizione canoniche restano inline in `assets/app.js`.
+- Nessuna rimozione in V353.
+- Aggiunti `audit-theme-competitions-v353.mjs`, `FUNZIONALITAV353.md`, handoff, matrice audit, refactor doc e release doc.
+- Aggiornati footer, cache-buster, `DEPLOY_EXPECTED_VERSION_V181` e `check-zonaorientale.sh` a V353.
+
+
+## V351 - Audit workflow pubblicazione Admin
+
+- Aggiunto audit mirato per `assets/js/refactor/admin-publication-workflow-v213.js`.
+- Confermato che il workflow Admin pubblicazione attivo resta inline in `assets/app.js`.
+- Nessuna rimozione e nessun cambio comportamento.
+
+## V348 - Audit simulatore trade dev (05/06/2026)
+
+- Aggiunto audit mirato per `assets/js/dev/trade-notification-simulator-v254.js`.
+- Confermato che il runtime resta su `assets/js/dev/trade-notification-simulator-v255.js`.
+- Verificato che V255 mantiene alias console V254 e comandi diagnostici.
+- Nessun file rimosso; V254 resta candidato review per una futura V dedicata.
+- Aggiornati footer, cache-buster, `DEPLOY_EXPECTED_VERSION_V181`, check e documentazione.
+
+
+## V346 - Audit candidati legacy minori
+
+- Aggiunto `static/zonaorientale/tools/audit-minor-legacy-v346.mjs` per classificare i candidati legacy minori rimasti dopo V343-V345.
+- La release e' audit-only: nessun file e' stato rimosso.
+- Aggiunta diagnostica `window.ZonaOrientaleMinorLegacyAuditV346` con smoke test runtime.
+- Candidati monitorati: simulatori trade legacy/duplicati, workflow Admin storico V213, hotfix mobile V166/V167, tema light sospeso e modulo dominio competizioni.
+- Aggiornato `check-zonaorientale.sh` per verificare tool, marker e documentazione V346.
+- Aggiunti `FUNZIONALITAV346.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V346.md`, `refactor/MINOR_LEGACY_AUDIT_V346.md`, `audit/MINOR_LEGACY_CANDIDATES_V346.md`, `release/RELEASE_V346_MINOR_LEGACY_AUDIT.md`.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin generale.
+
+## V344 - Cleanup JS legacy Calciomercato player
+
+- Rimossi dal pacchetto i moduli legacy `assets/js/calciomercato/calciomercato-players-v335.js` e `assets/js/calciomercato/calciomercato-players-v337.js`, superati dal modulo attivo `calciomercato-players-v340.js`.
+- Preservati in `assets/app.js` i wrapper pubblici con suffissi storici V335/V337 per non scollegare renderer card, tag giocatore e timeline modal.
+- Aggiunto tool `static/zonaorientale/tools/audit-js-legacy-v344.mjs`.
+- Aggiunta diagnostica runtime `window.ZonaOrientaleJsLegacyCleanupV344`.
+- Aggiornati cache-buster, footer, `DEPLOY_EXPECTED_VERSION_V181` e `check-zonaorientale.sh` a V344.
+- Nessuna modifica a Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, CSS, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin generale.
+
+## V343 - Cleanup CSS legacy e Diagnostica Admin
+
+- Aggiunto feedback visibile al bottone Admin `Aggiorna diagnostica`: vicino al tasto compare data/ora italiana dell'ultimo refresh nella sessione corrente.
+- Aggiunta diagnostica runtime `window.ZonaOrientaleAdminDiagnosticsV343` con smoke test e stato funzioni Admin principali.
+- Aggiunto tool `static/zonaorientale/tools/audit-admin-functions-v343.mjs` per verificare wiring Admin/Diagnostica/Richieste/Convertitore/Calciomercato Solo Admin.
+- Aggiunto tool `static/zonaorientale/tools/cleanup-css-legacy-v343.sh` per dry-run/apply della pulizia controllata dei CSS refactor V291/V292.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V343.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin generale.
+
+# Aggiornamento V336 - Timeline giocatore Calciomercato in scheda
+
+- Il tag giocatore degli articoli Calciomercato apre ora una scheda/modal sovrapposta invece di una pagina dedicata.
+- Rimossi dalla timeline i tasti `Torna agli articoli` e `Torna al Calciomercato`, che in alcune condizioni non funzionavano correttamente.
+- La scheda si chiude con X, click sullo sfondo o Escape.
+- Il matching giocatore V335 resta invariato: ultimo listone della stagione selezionata, nome completo o cognome univoco.
+- La timeline continua a usare articoli caricati + archivio statico disponibile, con deduplica.
+- Compatibilita mantenuta con hash legacy `#calciomercato-player-*`: apre il modal invece della pagina.
+- Nessuna modifica a Netlify Functions, `links.json`, JSON archivio, JSON Listone, Firebase/Auth/EmailJS, Rose, Fantamercato, Dashboard Presidente, Admin o `FUNZIONALITA'.md`.
+- Aggiornati footer, cache-buster, `DEPLOY_EXPECTED_VERSION_V181` e `check-zonaorientale.sh` a V336.
+- Documenti aggiunti: `FUNZIONALITAV336.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V336.md`, `refactor/CALCIOMERCATO_PLAYER_MODAL_V336.md`, `release/RELEASE_V336_PLAYER_TIMELINE_MODAL.md`.
+
+# Aggiornamento V335 - Tag giocatore e timeline Calciomercato
+
+- Aggiunto il modulo puro `assets/js/calciomercato/calciomercato-players-v335.js` per associare articoli ai giocatori dell'ultimo listone della stagione selezionata.
+- Le card Calciomercato mostrano un tag giocatore cliccabile accanto a squadra/topic/status, sopra il titolo.
+- Il click apre la route interna `#calciomercato-player-<slug>` con una timeline degli articoli collegati al giocatore.
+- Il matching resta conservativo: nome completo o cognome univoco nel listone, per ridurre falsi positivi.
+- La timeline usa gli articoli gia caricati e, quando disponibile, anche l'archivio statico Calciomercato.
+- Nessuna modifica a Netlify Functions, `links.json`, JSON archivio, JSON Listone, Firebase/Auth/EmailJS, Rose, Fantamercato, Dashboard Presidente, Admin o `FUNZIONALITA'.md`.
+- Aggiornati footer, cache-buster, `DEPLOY_EXPECTED_VERSION_V181` e `check-zonaorientale.sh` a V335.
+- Documenti aggiunti: `FUNZIONALITAV335.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V335.md`, `refactor/CALCIOMERCATO_PLAYER_TIMELINE_REFACTOR_V335.md`, `release/RELEASE_V335_PLAYER_TIMELINE_CALCIOMERCATO.md`.
+
+# Aggiornamento V334 - Refactor immagini Calciomercato protetto
+
+- Estratti da `assets/app.js` gli helper immagini/testi Calciomercato nel nuovo modulo `assets/js/calciomercato/calciomercato-images-v334.js`.
+- Collegato il modulo con import ES module e cache-buster V334.
+- Mantenuti in `app.js` wrapper/alias con i nomi storici V325/V328/V330 per preservare compatibilita e diagnostiche.
+- Aggiunta diagnostica `window.ZonaOrientaleCalciomercatoImagesV334`.
+- Aggiornato `check-zonaorientale.sh` per verificare marker, modulo e documentazione V334.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V334.
+- Nessuna modifica a Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, CSS card, CSS Listone, Firebase/Auth/EmailJS, Rose, Fantamercato, Presidente, Admin o `FUNZIONALITA'.md`.
+- Documenti aggiunti: `FUNZIONALITAV334.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V334.md`, `refactor/CALCIOMERCATO_IMAGES_REFACTOR_V334.md`, `release/RELEASE_V334_CALCIOMERCATO_IMAGES_REFACTOR.md`.
+
+## V331 - Card Calciomercato compatte e Listone uniforme
+
+- Le card articolo Calciomercato non renderizzano piu' l'anteprima/testo descrittivo, sia desktop sia mobile.
+- Da mobile il pulsante `Apri articolo` viene nascosto: restano cliccabili il titolo e l'immagine articolo.
+- Fonte, data, topic, status e chip squadra restano visibili nelle card.
+- Listone: l'etichetta `Modifiche` del filtro usa stile coerente con gli altri controlli.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V331.
+- Nessuna modifica a Netlify Functions, `links.json`, archivio Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Rose, Fantamercato interno, Dashboard Presidente, Admin generale o `FUNZIONALITA'.md`.
+- Diagnostica: `window.ZonaOrientaleCalciomercatoListoneUiV331`.
+
 ## V328 - Card Calciomercato mobile e favicon fonte
 
 - Da mobile le card Calciomercato nascondono la descrizione/anteprima lunga: restano titolo, metadati, fonte/data e link.
@@ -1055,3 +1170,195 @@ Corretto il falso positivo nel pannello `Admin -> Diagnostica dati`, riga `Listo
 - Gli eventuali JSON archivio gia generati con `image` uguale a `teamLogoUrl` vengono trattati come mancanti e mostrano comunque la nuova tile testuale.
 - `links.json` usa `fallbackImageMode: tmw-team-text` per le 20 fonti TMW squadra.
 - Restano invariati limiti download V329, parser RSS/HTML, fallback favicon/tile per fonti non TMW, mobile card V328, toggle Solo Admin V327 e rifiniture UI V326.
+
+## V332 - Card Calciomercato piu compatte
+
+- Ridotto l'ingombro delle schede articolo nella sezione `Calciomercato`, intervenendo soprattutto sulla dimensione dell'immagine di anteprima.
+- Su desktop le card usano una colonna immagine piu stretta e meno alta, mantenendo titolo, metadati, fonte/data e link articolo.
+- Su mobile l'immagine scende a una miniatura piu compatta, mantenendo titolo cliccabile e metadati essenziali.
+- Restano invariati feed, archivio statico, fallback favicon/TMW, Netlify Function, Listone, Rose, Fantamercato interno, Dashboard Presidente e Admin.
+
+
+## V333 - Refactor CSS protetto Listone
+
+- Creato `assets/css/refactor/listone.css` per ospitare le regole specifiche del Listone, iniziando la pulizia del CSS senza cambiare comportamento runtime.
+- Spostate da `mobile-controls.css` solo le regole del filtro `Modifiche` Listone, mantenendo invariati classi, ID DOM, export CSV e logiche JS.
+- Collegato `listone.css?v=333` in `index.html`; `competition.html` e `player.html` restano senza CSS Listone per non caricare asset non necessari.
+- Aggiunta diagnostica `window.ZonaOrientaleRefactorCssProtettoV333`.
+- Aggiornato `check-zonaorientale.sh` per verificare file CSS V333 e documentazione dedicata.
+- Aggiunti `FUNZIONALITAV333.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V333.md`, `refactor/CSS_REFACTOR_PROTETTO_V333.md` e `release/RELEASE_V333_REFACTOR_CSS_PROTETTO.md`.
+- Non modificato `FUNZIONALITA'.md`.
+- Funzionalita preservate: Calciomercato V332/V330/V329, Listone con filtro Modifiche e export CSV solo Admin, Rose, Fantamercato interno, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, News/share WhatsApp, mobile navigation, `competition.html` e `player.html`.
+
+## V337 - Matching giocatore Calciomercato migliorato
+
+- Creato `assets/js/calciomercato/calciomercato-players-v337.js` come evoluzione protetta del modulo V335.
+- Il matching articolo -> giocatore ora rimuove sempre punteggiatura, apostrofi, tag HTML, separatori e spazi multipli prima del confronto.
+- Corretto il caso di titoli come `Kalulu, ...`, che ora riconoscono `Kalulu` se presente nell'ultimo listone della stagione selezionata.
+- La policy resta conservativa: nome completo o cognome univoco; nessun matching fuzzy aggressivo.
+- La timeline giocatore resta in modal V336, chiudibile con X/sfondo/Escape.
+- Aggiunta diagnostica `window.ZonaOrientaleCalciomercatoPlayerMatchingV337` con smoke test runtime.
+- Aggiornato `check-zonaorientale.sh` per verificare il modulo V337.
+- Aggiunti `FUNZIONALITAV337.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V337.md`, `refactor/CALCIOMERCATO_PLAYER_MATCHING_V337.md`, `release/RELEASE_V337_PLAYER_MATCHING.md`.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin.
+## V338 - Renderer card Calciomercato protetto
+
+- Creato `assets/js/calciomercato/calciomercato-render-v338.js` per isolare il rendering HTML delle card articolo Calciomercato.
+- `renderCalciomercatoArticleCardV306(article)` resta in `assets/app.js` come wrapper storico verso il renderer V338.
+- Il markup equivalente preserva card compatte V332, tag giocatore V335-V337, modal timeline V336, fallback immagini V334/V328/V330, titolo/immagine cliccabili e metadati fonte/data.
+- Aggiunta diagnostica `window.ZonaOrientaleCalciomercatoRendererV338`.
+- Aggiornato `check-zonaorientale.sh` per verificare modulo e delega V338.
+- Aggiunti `FUNZIONALITAV338.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V338.md`, `refactor/CALCIOMERCATO_RENDERER_REFACTOR_V338.md`, `release/RELEASE_V338_CALCIOMERCATO_RENDERER_REFACTOR.md`.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, CSS card, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin.
+
+## V339 - Filtri Calciomercato protetti
+
+- Creato `assets/js/calciomercato/calciomercato-filters-v339.js` per isolare ricerca, filtri select e binding controlli della sezione Calciomercato.
+- I wrapper storici in `assets/app.js` restano attivi e delegano al modulo V339: `getCalciomercatoFilteredArticlesV306`, `renderCalciomercatoSelectOptionsV306`, `renderCalciomercatoTeamSelectOptionsV314`, `renderCalciomercatoSourceSelectOptionsV314`, `setupCalciomercatoControlsV306`.
+- Preservati filtri `Cerca`, squadra, topic, fonte, range `Da/A`, reset/applica periodo e caricamento articoli piu vecchi.
+- Aggiunta diagnostica `window.ZonaOrientaleCalciomercatoFiltersV339`.
+- Aggiornato `check-zonaorientale.sh` per verificare modulo/delega/documentazione V339.
+- Aggiunti `FUNZIONALITAV339.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V339.md`, `refactor/CALCIOMERCATO_FILTERS_REFACTOR_V339.md`, `release/RELEASE_V339_CALCIOMERCATO_FILTERS_REFACTOR.md`.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, CSS, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin.
+
+
+## V340 - Archivio Admin Calciomercato e matching giocatore protetti
+
+- Creato `assets/js/calciomercato/calciomercato-admin-v340.js` per isolare il rendering/toggle del pannello `Solo Admin` della sezione Calciomercato.
+- `renderCalciomercatoArchiveAdminToolsV323()` resta wrapper storico in `assets/app.js` e delega al modulo V340.
+- `setCalciomercatoArchiveAdminExpandedV327()` resta disponibile e delega al modulo V340.
+- Creato `assets/js/calciomercato/calciomercato-players-v340.js` come evoluzione del matching V337.
+- Il matching ora distingue alias singoli capitalizzati: `Giovane, ...` viene riconosciuto come giocatore, mentre `giovane` minuscolo come aggettivo non genera match.
+- Aggiunte diagnostiche `window.ZonaOrientaleCalciomercatoArchiveAdminV340` e `window.ZonaOrientaleCalciomercatoPlayerMatchingV340`.
+- Aggiornato `check-zonaorientale.sh` per verificare modulo Admin V340, matching V340 e documentazione V340.
+- Aggiunti `FUNZIONALITAV340.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V340.md`, `refactor/CALCIOMERCATO_ARCHIVE_ADMIN_REFACTOR_V340.md`, `release/RELEASE_V340_ARCHIVE_ADMIN_PLAYER_MATCHING.md`.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin generale.
+
+
+## V341 - Shared helper bridge protetto
+
+- Creato `assets/js/utils/shared-helper-bridge-v341.js` per centralizzare helper puri gia usati dal sito senza cambiare comportamento pubblico.
+- Ricollegati in modo conservativo i wrapper storici `csvEscapeV278`, `buildListoneChangeExportCsvV278`, `normalizeListoneSearchKeyV269`, `normalizeDiagnosticKeyV303` e `normalizeCalciomercatoValueV306`.
+- Il bridge usa `ZonaOrientaleSharedHelpersV295` quando disponibile e mantiene fallback locali per CSV e normalizzazioni.
+- Aggiunta diagnostica `window.ZonaOrientaleSharedHelperBridgeV341` con smoke test runtime.
+- Aggiornato `check-zonaorientale.sh` per verificare modulo/delega/documentazione V341.
+- Aggiunti `FUNZIONALITAV341.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V341.md`, `refactor/SHARED_HELPER_BRIDGE_V341.md`, `release/RELEASE_V341_SHARED_HELPER_BRIDGE.md`.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin generale.
+## V342 - Audit dipendenze legacy protetto
+
+- Creato `static/zonaorientale/tools/audit-legacy-dependencies-v342.mjs` per individuare riferimenti locali mancanti, file versionati superati e JS/CSS non referenziati direttamente.
+- La release e' audit-only: nessun file legacy e' stato rimosso.
+- Aggiunta diagnostica `window.ZonaOrientaleLegacyDependencyAuditV342`.
+- Documentata la matrice candidati in `docs/zonaorientale/audit/LEGACY_DEPENDENCIES_MATRIX_V342.md`.
+- Aggiornato `check-zonaorientale.sh` per verificare tool, marker e documentazione V342.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V342.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin generale.
+
+
+## V345 - Cleanup helper legacy condivisi
+
+- Rimosso in modo controllato `assets/js/utils/shared-helpers-v294.js`, gia sostituito da `shared-helpers-v295.js` e dal bridge `shared-helper-bridge-v341.js`.
+- Nessun call-site funzionale viene scollegato: restano attivi i wrapper storici `csvEscapeV278`, `buildListoneChangeExportCsvV278`, `normalizeListoneSearchKeyV269`, `normalizeDiagnosticKeyV303` e `normalizeCalciomercatoValueV306`.
+- Aggiunto `static/zonaorientale/tools/audit-shared-helpers-v345.mjs` per verificare assenza del file V294, presenza degli helper attivi e wiring runtime V345.
+- Aggiunta diagnostica `window.ZonaOrientaleSharedHelperLegacyCleanupV345` con smoke test runtime.
+- Aggiornato `check-zonaorientale.sh` per verificare tool, marker e documentazione V345.
+- Aggiunti `FUNZIONALITAV345.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V345.md`, `refactor/SHARED_HELPER_LEGACY_CLEANUP_V345.md`, `audit/SHARED_HELPER_LEGACY_CLEANUP_MATRIX_V345.md`, `release/RELEASE_V345_SHARED_HELPER_LEGACY_CLEANUP.md`.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, `links.json`, archivi Calciomercato, JSON Listone, Firebase/Auth/EmailJS, Listone runtime, Rose, Fantamercato interno, Dashboard Presidente o Admin generale.
+
+## V347 - Cleanup duplicato simulatore trade
+
+- Rimosso in modo controllato `assets/js/trade-notification-simulator-v255.js`, duplicato top-level non importato dal runtime.
+- Preservato il modulo canonico `assets/js/dev/trade-notification-simulator-v255.js`, ancora importato da `assets/app.js?v=347`.
+- Aggiunto tool `static/zonaorientale/tools/audit-trade-simulator-v347.mjs` per verificare assenza del duplicato, presenza del modulo canonico e assenza di link HTML al file rimosso.
+- Aggiunto marker runtime `window.ZonaOrientaleTradeSimulatorCleanupV347`.
+- Aggiornato `check-zonaorientale.sh` per includere controllo V347 e documentazione dedicata.
+- Aggiunti `FUNZIONALITAV347.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V347.md`, `refactor/TRADE_SIMULATOR_CLEANUP_V347.md`, `audit/TRADE_SIMULATOR_CLEANUP_MATRIX_V347.md`, `release/RELEASE_V347_TRADE_SIMULATOR_CLEANUP.md`.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V347.
+- Non modificati `FUNZIONALITA'.md`, Netlify Functions, Calciomercato, Listone, Rose, Dashboard Presidente, Admin, Firebase/Auth/EmailJS, Fantamercato interno o mobile navigation.
+
+## V349 - Azioni locali simulatore trade
+
+- Corretto il comportamento delle trattative simulate create da `ZonaOrientaleTradeSimulatorV255.simulateIncomingProposal()`.
+- I pulsanti `Accetta` / `Rifiuta` su righe `localOnly` non chiamano piu Firebase e non generano `Missing or Insufficient permissions`.
+- Aggiunto wrapper conservativo `updateNegotiationStatusV349`: le trattative simulate aggiornano solo stato locale, mentre le trattative reali delegano al flusso storico Firebase.
+- Dopo un'azione locale vengono aggiornati area presidente, pagina Fantamercato e badge notifiche.
+- Aggiunto tool `tools/audit-trade-simulator-local-actions-v349.mjs`.
+- Aggiunto marker runtime `window.ZonaOrientaleTradeSimulatorLocalActionsV349`.
+- Aggiunti `FUNZIONALITAV349.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V349.md`, `refactor/TRADE_SIMULATOR_LOCAL_ACTIONS_V349.md`, `audit/TRADE_SIMULATOR_LOCAL_ACTIONS_MATRIX_V349.md`, `release/RELEASE_V349_TRADE_SIMULATOR_LOCAL_ACTIONS.md`.
+- Non modificati `FUNZIONALITA'.md`, Calciomercato, Listone, Rose, Admin generale, Firebase/Auth/EmailJS, Netlify Functions o navigazione mobile.
+
+## V350 - Cleanup simulatore trade dev legacy
+
+- Rimosso in modo controllato `assets/js/dev/trade-notification-simulator-v254.js`, gia non importato dal runtime.
+- Preservato il modulo canonico `assets/js/dev/trade-notification-simulator-v255.js` e l'alias console storico `ZonaOrientaleTradeSimulatorV254`.
+- Preservate le azioni locali V349 su trattative simulate: `Accetta` / `Rifiuta` non scrivono su Firebase.
+- Aggiornato l'audit V348 per restare compatibile con il cleanup successivo.
+- Aggiunto `tools/audit-trade-simulator-dev-cleanup-v350.mjs`.
+- Aggiunto marker runtime `window.ZonaOrientaleTradeSimulatorDevCleanupV350`.
+- Aggiunti `FUNZIONALITAV350.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V350.md`, `refactor/TRADE_SIMULATOR_DEV_CLEANUP_V350.md`, `audit/TRADE_SIMULATOR_DEV_CLEANUP_MATRIX_V350.md`, `release/RELEASE_V350_TRADE_SIMULATOR_DEV_CLEANUP.md`.
+- Non modificati `FUNZIONALITA'.md`, Calciomercato, Listone, Rose, Admin generale, Firebase/Auth/EmailJS, Netlify Functions o navigazione mobile.
+## V352 - Cleanup mobile hotfix legacy
+
+- Rimossi i file CSS sciolti `mobile-hotfix-v166.css` e `mobile-hotfix-v167.css`, gia consolidati in `mobile-suite-v168.css`.
+- Aggiunto audit `audit-mobile-hotfix-v352.mjs`.
+- Aggiornati footer, cache-buster e controlli obbligatori a V352.
+- Preservate navigazione mobile, menu Altro, tabelle mobile, card Calciomercato e tema light/dark.
+
+## V354 - Consolidamento finale ciclo cleanup/refactor
+
+- Aggiunto consolidamento documentale e audit del ciclo V333-V353.
+- Nessuna rimozione e nessun cambio funzionale intenzionale.
+- Aggiunto marker runtime `window.ZonaOrientaleRefactorConsolidationV354`.
+- Aggiunto tool `static/zonaorientale/tools/audit-refactor-consolidation-v354.mjs`.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V354.
+- Aggiornato `check-zonaorientale.sh` con controllo consolidamento V354 e documentazione dedicata.
+- Aggiunti `FUNZIONALITAV354.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V354.md`, `refactor/REFACTOR_CLEANUP_CONSOLIDATION_V354.md`, `audit/REFACTOR_CLEANUP_CONSOLIDATION_MATRIX_V354.md`, `release/RELEASE_V354_REFACTOR_CLEANUP_CONSOLIDATION.md`.
+- Non modificato `FUNZIONALITA'.md`.
+- Prossimo step consigliato: test manuale funzionale completo; solo dopo valutare cleanup separati di `domain/competitions.js`, `theme-light-suspended.css`, `admin-publication-workflow-v213.js`.
+
+
+## V355 - Suite regressione/smoke post cleanup
+
+- Aggiunto audit statico `static/zonaorientale/tools/audit-regression-smoke-v355.mjs`.
+- Aggiunto marker runtime `window.ZonaOrientaleRegressionSmokeSuiteV355`.
+- Aggiunta checklist manuale completa `docs/zonaorientale/test/TEST_MANUALE_COMPLETO_V355.md`.
+- Aggiunti documenti `FUNZIONALITAV355.md`, `handoff/HANDOFF_NUOVO_ASSISTENTE_V355.md`, `refactor/REGRESSION_SMOKE_SUITE_V355.md`, `audit/REGRESSION_SMOKE_MATRIX_V355.md`, `release/RELEASE_V355_REGRESSION_SMOKE_SUITE.md`.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V355.
+- Nessun cambio funzionale e nessuna rimozione di file.
+
+## V356 - Manual QA tracker post-refactor
+
+- Aggiunto marker runtime `ZonaOrientaleManualQaTrackerV356`.
+- Aggiunti comandi console per tracciare test manuali, note, riepilogo ed export Markdown.
+- Aggiunto audit `audit-manual-qa-tracker-v356.mjs` e controlli in `check-zonaorientale.sh`.
+- Aggiornati footer, cache-buster e versione runtime a V356.
+- Nessuna modifica funzionale, nessuna rimozione, nessuna scrittura Firebase/Netlify.
+
+## V357 - Checklist QA da interfaccia Admin
+
+- Aggiunta bottom area grafica **Checklist QA Admin**, visibile solo agli admin.
+- Stati QA salvati localmente e compatibili con tracker V356.
+- Pulsanti rapidi per aprire sezioni e simulare una proposta trade.
+- Export riepilogo Markdown.
+- Nessuna rimozione file e nessun cambio funzionale ai flussi esistenti.
+
+
+## V358 - Manual QA panel migliorato
+
+- Migliorata la checklist QA Admin da interfaccia con gruppi, filtri, reset per area, auto-check e copia riepilogo.
+- Nessuna rimozione e nessun cambio ai flussi core.
+
+## V361 - Simulatore notifiche trade da interfaccia Admin
+
+- Aggiunto `window.ZonaOrientaleTradeSimulatorPanelV361`.
+- Aggiunto pannello simulazioni trade nella Checklist QA Admin.
+- Aggiunti pulsanti: Simula ricevuta, Esito accettato, Esito rifiutato, Aggiorna badge, Pulisci simulazioni.
+- Le azioni restano local-only e non scrivono su Firebase.
+- Aggiunti documenti e audit V361.
+
+## V362 - Simulazione notifica trade verso presidente da Admin
+
+- Aggiunto menu destinatario nella Checklist QA Admin per simulare una proposta ricevuta da uno specifico presidente/squadra.
+- Le simulazioni restano local-only e vengono salvate nel browser per testare il passaggio al profilo presidente.
+- Aggiunto audit `audit-trade-simulator-target-v362.mjs`.
+- Nessuna modifica a Firebase, Netlify o trattative reali.

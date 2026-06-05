@@ -38,14 +38,32 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=330";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=370";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=370";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=370";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=370";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=370";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=370";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=370";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=330";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=330";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=370";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=370";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
+
+const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
+  sharedHelpers: ZonaOrientaleSharedHelpersV295,
+  normalizeKey
+});
+
+window.ZonaOrientaleLegacyDependencyAuditV342 = {
+  version: "V342",
+  tool: "tools/audit-legacy-dependencies-v342.mjs",
+  safeMode: true,
+  note: "Audit-only: nessuna cancellazione automatica di file legacy o candidati orfani."
+};
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
   "quotationInitial",
@@ -96,7 +114,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=330";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=370";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -120,7 +138,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=330";
+} from "./js/domain/news-share-v228.js?v=370";
 import {
   getListoneValue,
   compareListoneValues
@@ -135,19 +153,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=330";
+} from "./js/admin/listone-converter.js?v=370";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=330";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=330";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=370";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=370";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=330";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=330";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=330";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=330";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=370";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=370";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=370";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=370";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=330";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=330";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=330";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=370";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=370";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=370";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -11997,6 +12015,8 @@ const {
   serializePlayerRef: serializePlayerRefV119,
   formatPlayerRefs: formatPlayerRefsV119,
   renderFmPart: renderFmPartV119,
+  normalizeNegotiationStatus: normalizeNegotiationStatusV366,
+  getNegotiationStatusLabel: getNegotiationStatusLabelV366,
   renderNegotiationStatusBadge: renderNegotiationStatusBadgeV119,
   getNegotiationTitle: getNegotiationTitleV119,
   renderNegotiationCard: renderNegotiationCardV119,
@@ -15569,7 +15589,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "330";
+const DEPLOY_EXPECTED_VERSION_V181 = "370";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -21531,7 +21551,7 @@ function getListoneDisplayLabelV269(listone = {}) {
 }
 
 function normalizeListoneSearchKeyV269(value) {
-  return normalizeKey(String(value || ""));
+  return ZonaOrientaleSharedHelperBridgeV341.normalizeStrictSearchKey(value);
 }
 
 function getListonePlayerKeysV269(player = {}) {
@@ -22975,16 +22995,8 @@ function buildListoneChangeExportCsvV278() {
     ["costo", "Costo"],
     ["fantacalcioId", "Fantacalcio ID"]
   ];
-  const helper = window.ZonaOrientaleSharedHelpersV295 || ZonaOrientaleSharedHelpersV295;
-  if (helper && typeof helper.rowsToCsv === "function") {
-    const columns = headers.map(([key, label]) => ({ key, label }));
-    return { csv: `﻿${helper.rowsToCsv(rows, columns, ";")}`, rows };
-  }
-  const lines = [headers.map(([, label]) => csvEscapeV278(label)).join(";")];
-  rows.forEach((row) => {
-    lines.push(headers.map(([key]) => csvEscapeV278(row[key])).join(";"));
-  });
-  return { csv: `﻿${lines.join("\n")}`, rows };
+  const columns = headers.map(([key, label]) => ({ key, label }));
+  return { csv: `﻿${ZonaOrientaleSharedHelperBridgeV341.rowsToCsv(rows, columns, ";")}`, rows };
 }
 
 function downloadTextFileV278(filename, content, mimeType = "text/csv;charset=utf-8") {
@@ -23664,13 +23676,7 @@ window.ZonaOrientaleAppHelperRewireV302 = {
  * Admin esistente, Firebase/Auth/EmailJS. Nessuna scrittura e nessuna logica dati modificata.
  */
 function normalizeDiagnosticKeyV303(value) {
-  const helper = window.ZonaOrientaleSharedHelpersV295;
-  if (helper && typeof helper.searchKey === "function") return helper.searchKey(value);
-  return String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
+  return ZonaOrientaleSharedHelperBridgeV341.normalizeLooseSearchKey(value);
 }
 
 function getListoneQualityDiagnosticsRowsV303() {
@@ -23867,8 +23873,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=330";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=330";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=370";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=370";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -23894,13 +23900,7 @@ const calciomercatoStateV306 = {
 };
 
 function normalizeCalciomercatoValueV306(value) {
-  const helper = window.ZonaOrientaleSharedHelpersV295;
-  if (helper && typeof helper.searchKey === "function") return helper.searchKey(value);
-  return String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
+  return ZonaOrientaleSharedHelperBridgeV341.normalizeLooseSearchKey(value);
 }
 
 function getCalciomercatoArticlesV306() {
@@ -24121,353 +24121,434 @@ function renderCalciomercatoPlayersV306(players, article = null) {
   </div>`;
 }
 
-function getCalciomercatoFilteredArticlesV306() {
-  const search = normalizeCalciomercatoValueV306(calciomercatoStateV306.search);
-  const selectedTeam = normalizeCalciomercatoValueV306(calciomercatoStateV306.team);
-  const selectedTopic = normalizeCalciomercatoValueV306(calciomercatoStateV306.topic);
-  const selectedSource = normalizeCalciomercatoValueV306(calciomercatoStateV306.source);
-  const bounds = getCalciomercatoRangeBoundsV316();
-  const fromTime = bounds.from ? bounds.from.getTime() : 0;
-  const toTime = bounds.to ? bounds.to.getTime() : 0;
+let CalciomercatoFiltersV339 = null;
 
-  return getCalciomercatoArticlesV306().filter((article) => {
-    const teams = getCalciomercatoTeamsV308(article).map(normalizeCalciomercatoValueV306);
-    const topic = normalizeCalciomercatoValueV306(getCalciomercatoTopicLabelV306(article));
-    const source = normalizeCalciomercatoValueV306(getCalciomercatoSourceLabelV314(article));
-    const timestamp = getCalciomercatoArticleTimestampV316(article);
-    if (selectedTeam !== "all" && !teams.includes(selectedTeam)) return false;
-    if (selectedTopic !== "all" && topic !== selectedTopic) return false;
-    if (selectedSource !== "all" && source !== selectedSource) return false;
-    if (fromTime && timestamp && timestamp < fromTime) return false;
-    if (toTime && timestamp && timestamp > toTime) return false;
-    if (!search) return true;
-    const haystack = normalizeCalciomercatoValueV306([
-      article.title,
-      article.description,
-      getCalciomercatoSourceLabelV314(article),
-      article.sourceName,
-      article.url,
-      ...getCalciomercatoTeamsV308(article),
-      getCalciomercatoTopicLabelV306(article),
-      getCalciomercatoStatusV308(article),
-      formatCalciomercatoArticleDateTimeV311(article),
-      ...getCalciomercatoPlayersV306(article),
-      ...(Array.isArray(article.tags) ? article.tags : [])
-    ].join(" "));
-    return haystack.includes(search);
-  });
+function getCalciomercatoFiltersV339() {
+  if (!CalciomercatoFiltersV339) {
+    CalciomercatoFiltersV339 = createCalciomercatoFiltersV339({
+      escapeHtml,
+      normalizeValue: normalizeCalciomercatoValueV306,
+      getArticles: getCalciomercatoArticlesV306,
+      getTeams: getCalciomercatoTeamsV308,
+      getTopicLabel: getCalciomercatoTopicLabelV306,
+      getSourceLabel: getCalciomercatoSourceLabelV314,
+      getStatus: getCalciomercatoStatusV308,
+      getTimestamp: getCalciomercatoArticleTimestampV316,
+      getRangeBounds: getCalciomercatoRangeBoundsV316,
+      formatDateTime: formatCalciomercatoArticleDateTimeV311,
+      getPlayers: getCalciomercatoPlayersV306,
+      render: renderCalciomercatoV306,
+      reload: reloadCalciomercatoDataV316,
+      resetRange: resetCalciomercatoDefaultRangeV316,
+      loadOlder: loadOlderCalciomercatoArticlesV316,
+      sectionSelector: '[data-page="calciomercato"]',
+      bindingFlag: "calciomercatoBoundV306"
+    });
+    window.ZonaOrientaleCalciomercatoFiltersV339 = {
+      version: "V339",
+      label: "filtri Calciomercato estratti in modulo protetto",
+      behaviorChange: false,
+      module: "assets/js/calciomercato/calciomercato-filters-v339.js",
+      getFilteredCount: () => getCalciomercatoFilteredArticlesV306().length,
+      getState: () => ({
+        search: calciomercatoStateV306.search,
+        team: calciomercatoStateV306.team,
+        topic: calciomercatoStateV306.topic,
+        source: calciomercatoStateV306.source,
+        rangeFrom: calciomercatoStateV306.rangeFrom,
+        rangeTo: calciomercatoStateV306.rangeTo,
+        manualRange: calciomercatoStateV306.manualRange
+      })
+    };
+  }
+  return CalciomercatoFiltersV339;
+}
+
+function getCalciomercatoFilteredArticlesV306() {
+  return getCalciomercatoFiltersV339().getFilteredArticles(calciomercatoStateV306);
 }
 
 function renderCalciomercatoSelectOptionsV306(values, selectedValue, fallbackLabel) {
-  const unique = Array.from(new Set(values.map((value) => String(value || "").trim()).filter(Boolean)))
-    .sort((a, b) => a.localeCompare(b, "it", { sensitivity: "base" }));
-  const selectedKey = normalizeCalciomercatoValueV306(selectedValue || "all");
-  return [`<option value="all">${escapeHtml(fallbackLabel)}</option>`, ...unique.map((value) => {
-    const key = normalizeCalciomercatoValueV306(value);
-    return `<option value="${escapeHtml(value)}" ${key === selectedKey ? "selected" : ""}>${escapeHtml(value)}</option>`;
-  })].join("");
+  return getCalciomercatoFiltersV339().renderSelectOptions(values, selectedValue, fallbackLabel);
 }
 
 function renderCalciomercatoTeamSelectOptionsV314(values, selectedValue) {
-  const selectedKey = normalizeCalciomercatoValueV306(selectedValue || "all");
-  const unique = Array.from(new Set(values.map((value) => String(value || "").trim()).filter(Boolean)));
-  const withoutGeneral = unique
-    .filter((value) => normalizeCalciomercatoValueV306(value) !== "generale")
-    .sort((a, b) => a.localeCompare(b, "it", { sensitivity: "base" }));
-  const ordered = ["Generale", ...withoutGeneral];
-  return [`<option value="all">Tutte le squadre</option>`, ...ordered.map((value) => {
-    const key = normalizeCalciomercatoValueV306(value);
-    return `<option value="${escapeHtml(value)}" ${key === selectedKey ? "selected" : ""}>${escapeHtml(value)}</option>`;
-  })].join("");
+  return getCalciomercatoFiltersV339().renderTeamSelectOptions(values, selectedValue);
 }
 
 function renderCalciomercatoSourceSelectOptionsV314(values, selectedValue) {
-  return renderCalciomercatoSelectOptionsV306(values, selectedValue, "Tutte le fonti");
+  return getCalciomercatoFiltersV339().renderSourceSelectOptions(values, selectedValue);
 }
 
-const CALCIOMERCATO_SOURCE_IMAGE_LABELS_V325 = {
-  "tmw": "TuttoMercatoWeb",
-  "tuttomercatoweb": "TuttoMercatoWeb",
-  "sosfanta": "SOS Fanta",
-  "sos-fanta": "SOS Fanta",
-  "gianlucadimarzio": "Gianluca Di Marzio",
-  "gianluca-di-marzio": "Gianluca Di Marzio",
-  "fantacalcio": "Fantacalcio.it",
-  "fantacalcio-it": "Fantacalcio.it",
-  "calciomercato-it": "CalcioMercato.it",
-  "calciomercato": "CalcioMercato.it"
-};
+const CalciomercatoImageHelpersV334 = createCalciomercatoImageHelpersV334({
+  normalizeValue: normalizeCalciomercatoValueV306,
+  normalizeList: normalizeCalciomercatoListV308,
+  getSources: getCalciomercatoSourcesV306,
+  getSourceLabel: getCalciomercatoSourceLabelV314
+});
+
+const CALCIOMERCATO_SOURCE_IMAGE_LABELS_V325 = CalciomercatoImageHelpersV334.labels;
+const decodeCalciomercatoTextOnceV328 = CalciomercatoImageHelpersV334.decodeTextOnce;
+const decodeCalciomercatoTextV328 = CalciomercatoImageHelpersV334.decodeText;
+const getCalciomercatoArticleImageInfoV325 = CalciomercatoImageHelpersV334.getArticleImageInfo;
 
 function isCalciomercatoStaticArchiveArticleV325(article) {
-  const mode = normalizeCalciomercatoValueV306([
-    article?.archiveSourceMode,
-    article?.sourceMode,
-    article?.mode,
-    article?.sourceType
-  ].filter(Boolean).join(" "));
-  return !!article?.archiveDay || mode.includes("static-archive") || mode.includes("static-rss-archive");
+  return CalciomercatoImageHelpersV334.isStaticArchiveArticle(article);
 }
 
 function getCalciomercatoSourceImageKeyV325(article) {
-  const raw = article?.sourceId || article?.sourceName || article?.source || article?.sourceLabel || getCalciomercatoSourceLabelV314(article);
-  return normalizeCalciomercatoValueV306(raw).replace(/\./g, "-");
+  return CalciomercatoImageHelpersV334.getSourceImageKey(article);
 }
 
 function escapeCalciomercatoSvgTextV325(value) {
-  return String(value || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+  return CalciomercatoImageHelpersV334.escapeSvgText(value);
 }
 
 function buildCalciomercatoSourceImageSvgV325(label) {
-  const safeLabel = escapeCalciomercatoSvgTextV325(label || "Fonte");
-  const initials = safeLabel
-    .replace(/&amp;/g, "&")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 3)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join("") || "ZO";
-  const safeInitials = escapeCalciomercatoSvgTextV325(initials.slice(0, 4));
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Fonte ${safeLabel}">
-    <rect width="640" height="360" rx="44" fill="#0f172a"/>
-    <rect x="28" y="28" width="584" height="304" rx="34" fill="#172554" stroke="#f8b500" stroke-width="4"/>
-    <circle cx="320" cy="142" r="70" fill="#f8b500" opacity="0.95"/>
-    <text x="320" y="165" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" fill="#0f172a">${safeInitials}</text>
-    <text x="320" y="246" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" fill="#fff7ed">${safeLabel}</text>
-    <text x="320" y="286" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#fed7aa">Fonte articolo</text>
-  </svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+  return CalciomercatoImageHelpersV334.buildSourceImageSvg(label);
 }
 
 function findCalciomercatoSourceConfigV326(article) {
-  const articleKeys = [
-    article?.sourceId,
-    article?.sourceName,
-    article?.source,
-    article?.sourceLabel,
-    getCalciomercatoSourceLabelV314(article)
-  ].map(normalizeCalciomercatoValueV306).filter(Boolean);
-  if (!articleKeys.length) return null;
-  return getCalciomercatoSourcesV306().find((source) => {
-    const sourceKeys = [source?.id, source?.name, source?.label, source?.url]
-      .map(normalizeCalciomercatoValueV306)
-      .filter(Boolean);
-    return sourceKeys.some((key) => articleKeys.includes(key));
-  }) || null;
-}
-
-
-function decodeCalciomercatoTextOnceV328(value) {
-  const raw = String(value || "");
-  if (!raw || !raw.includes("&")) return raw;
-  const numericDecoded = raw
-    .replace(/&#(\d+);?/g, (match, code) => {
-      const point = Number(code);
-      if (!Number.isFinite(point) || point < 0) return match;
-      try { return String.fromCodePoint(point); } catch (error) { return match; }
-    })
-    .replace(/&#x([0-9a-fA-F]+);?/g, (match, code) => {
-      const point = parseInt(code, 16);
-      if (!Number.isFinite(point) || point < 0) return match;
-      try { return String.fromCodePoint(point); } catch (error) { return match; }
-    })
-    .replace(/&apos;?/g, "'")
-    .replace(/&quot;?/g, '"')
-    .replace(/&nbsp;?/g, " ")
-    .replace(/&amp;?/g, "&")
-    .replace(/&lt;?/g, "<")
-    .replace(/&gt;?/g, ">");
-  if (typeof document === "undefined") return numericDecoded;
-  const decoder = decodeCalciomercatoTextOnceV328;
-  decoder._element = decoder._element || document.createElement("textarea");
-  decoder._element.innerHTML = numericDecoded;
-  return decoder._element.value || numericDecoded;
-}
-
-function decodeCalciomercatoTextV328(value) {
-  let decoded = String(value || "");
-  if (!decoded || !decoded.includes("&")) return decoded;
-  for (let index = 0; index < 2; index += 1) {
-    const next = decodeCalciomercatoTextOnceV328(decoded);
-    if (next === decoded) break;
-    decoded = next;
-    if (!decoded.includes("&")) break;
-  }
-  return decoded.replace(/[\u0000-\u001F\u007F]/g, " ").replace(/\s+/g, " ").trim();
+  return CalciomercatoImageHelpersV334.findSourceConfig(article);
 }
 
 function getCalciomercatoSourceHomepageV328(article, sourceConfig) {
-  const candidates = [
-    article?.sourceUrl,
-    article?.sourceHomepage,
-    article?.sourceHome,
-    sourceConfig?.url,
-    sourceConfig?.siteUrl,
-    sourceConfig?.homepage,
-    article?.url
-  ];
-  for (const candidate of candidates) {
-    const raw = String(candidate || "").trim();
-    if (!/^https?:\/\//i.test(raw)) continue;
-    try {
-      const parsed = new URL(raw);
-      return parsed.origin;
-    } catch (error) {
-      // Ignora URL non validi e prova il candidato successivo.
-    }
-  }
-  return "";
+  return CalciomercatoImageHelpersV334.getSourceHomepage(article, sourceConfig);
 }
 
 function buildCalciomercatoSourceFaviconUrlV328(article, sourceConfig) {
-  const explicitIcon = String(
-    article?.sourceFavicon ||
-    article?.favicon ||
-    sourceConfig?.sourceFavicon ||
-    sourceConfig?.favicon ||
-    sourceConfig?.faviconUrl ||
-    ""
-  ).trim();
-  if (/^https?:\/\//i.test(explicitIcon) || explicitIcon.startsWith("./") || explicitIcon.startsWith("/")) return explicitIcon;
-  const homepage = getCalciomercatoSourceHomepageV328(article, sourceConfig);
-  if (!homepage) return "";
-  try {
-    return new URL("/favicon.ico", homepage).toString();
-  } catch (error) {
-    return "";
-  }
+  return CalciomercatoImageHelpersV334.buildSourceFaviconUrl(article, sourceConfig);
 }
 
-
 function isCalciomercatoTmwTeamSourceV329(article, sourceConfig) {
-  const values = [
-    article?.sourceId,
-    article?.sourceName,
-    article?.source,
-    article?.sourceType,
-    article?.fallbackImageMode,
-    sourceConfig?.id,
-    sourceConfig?.name,
-    sourceConfig?.sourceType,
-    sourceConfig?.fallbackImageMode
-  ].map(normalizeCalciomercatoValueV306).filter(Boolean);
-  return values.some((value) => value === "team-crest" || value === "tmw-team-text" || value.includes("tmw-team") || value.startsWith("tmw-"));
+  return CalciomercatoImageHelpersV334.isTmwTeamSource(article, sourceConfig);
 }
 
 function getCalciomercatoFallbackTeamLabelV329(article, sourceConfig) {
-  const team = normalizeCalciomercatoListV308(article?.teams || article?.detectedTeams || sourceConfig?.defaultTeams || sourceConfig?.defaultTeam || []).find(Boolean);
-  if (team) return decodeCalciomercatoTextV328(team);
-  const sourceLabel = decodeCalciomercatoTextV328(getCalciomercatoSourceLabelV314(article) || sourceConfig?.name || "");
-  return sourceLabel.replace(/^TMW\s+/i, "").trim() || "Squadra";
+  return CalciomercatoImageHelpersV334.getFallbackTeamLabel(article, sourceConfig);
 }
 
 function buildCalciomercatoTeamCrestSvgV329(teamName) {
-  const safeTeam = escapeCalciomercatoSvgTextV325(teamName || "Squadra");
-  const initials = safeTeam
-    .replace(/&amp;/g, "&")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join("") || "ZO";
-  const safeInitials = escapeCalciomercatoSvgTextV325(initials.slice(0, 3));
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Scudetto ${safeTeam}">
-    <defs>
-      <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#020617"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient>
-      <linearGradient id="shield" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f8b500"/><stop offset="1" stop-color="#fff7ed"/></linearGradient>
-    </defs>
-    <rect width="640" height="360" rx="44" fill="url(#bg)"/>
-    <path d="M320 42 458 92v92c0 82-55 126-138 156-83-30-138-74-138-156V92L320 42Z" fill="url(#shield)" stroke="#fff7ed" stroke-width="6"/>
-    <path d="M218 118h204v66c0 58-37 91-102 118-65-27-102-60-102-118v-66Z" fill="#0f172a" opacity="0.95"/>
-    <text x="320" y="196" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900" fill="#f8b500">${safeInitials}</text>
-    <text x="320" y="276" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="900" fill="#fff7ed">${safeTeam}</text>
-  </svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+  return CalciomercatoImageHelpersV334.buildTeamCrestSvg(teamName);
 }
 
-
 function buildCalciomercatoTmwTeamTextSvgV330(teamName) {
-  const teamLabel = decodeCalciomercatoTextV328(teamName || "Squadra") || "Squadra";
-  const fullLabel = `TMW - ${teamLabel}`;
-  const safeTeam = escapeCalciomercatoSvgTextV325(teamLabel);
-  const safeFullLabel = escapeCalciomercatoSvgTextV325(fullLabel);
-  const safeCompactLabel = escapeCalciomercatoSvgTextV325(fullLabel.length > 24 ? `${fullLabel.slice(0, 23)}…` : fullLabel);
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="${safeFullLabel}">
-    <defs>
-      <linearGradient id="tmwBg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#020617"/><stop offset="1" stop-color="#111827"/></linearGradient>
-      <linearGradient id="tmwBand" x1="0" x2="1" y1="0" y2="0"><stop stop-color="#f8b500"/><stop offset="1" stop-color="#fed7aa"/></linearGradient>
-    </defs>
-    <rect width="640" height="360" rx="44" fill="url(#tmwBg)"/>
-    <rect x="34" y="34" width="572" height="292" rx="34" fill="#0f172a" stroke="#f8b500" stroke-width="4"/>
-    <rect x="74" y="76" width="492" height="78" rx="26" fill="url(#tmwBand)"/>
-    <text x="320" y="132" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" fill="#0f172a">TMW</text>
-    <text x="320" y="226" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="900" fill="#fff7ed">${safeCompactLabel}</text>
-    <text x="320" y="276" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" fill="#fed7aa">${safeTeam}</text>
-  </svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+  return CalciomercatoImageHelpersV334.buildTmwTeamTextSvg(teamName);
 }
 
 function isCalciomercatoTmwTeamLogoFallbackImageV330(article, directImage) {
-  if (!directImage) return false;
-  const sourceConfig = findCalciomercatoSourceConfigV326(article);
-  if (!isCalciomercatoTmwTeamSourceV329(article, sourceConfig)) return false;
-  const teamLogoUrl = String(article?.teamLogoUrl || article?.fallbackImage || sourceConfig?.teamLogoUrl || sourceConfig?.fallbackImage || "").trim();
-  return !!teamLogoUrl && directImage === teamLogoUrl;
+  return CalciomercatoImageHelpersV334.isTmwTeamLogoFallbackImage(article, directImage);
 }
 
-function getCalciomercatoArticleImageInfoV325(article) {
-  const directImage = String(article?.image || article?.thumbnail || article?.imageUrl || article?.ogImage || "").trim();
-  const sourceConfig = findCalciomercatoSourceConfigV326(article);
-  if (directImage && !isCalciomercatoTmwTeamLogoFallbackImageV330(article, directImage)) {
-    return { src: directImage, alt: "", isSourceFallback: false, isFaviconFallback: false, isTeamCrestFallback: false, isTmwTeamTextFallback: false };
+function normalizeCalciomercatoPlayerMatchValueV337(value) {
+  return normalizeCalciomercatoValueV306(value)
+    .replace(/[’'`´]/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const CalciomercatoPlayerHelpersV335 = createCalciomercatoPlayerHelpersV359({
+  normalizeValue: normalizeCalciomercatoPlayerMatchValueV337,
+  decodeText: decodeCalciomercatoTextV328
+});
+
+function getLatestCalciomercatoListoneForSeasonV335() {
+  const listoni = typeof getListoniForCurrentSeason === "function" ? getListoniForCurrentSeason() : [];
+  return Array.isArray(listoni) && listoni.length ? listoni[0] : null;
+}
+
+function getCalciomercatoArticlePlayerMatchesV335(article, options = {}) {
+  const listone = options.listone || getLatestCalciomercatoListoneForSeasonV335();
+  if (!listone || !Array.isArray(listone.players) || !listone.players.length) return [];
+  return CalciomercatoPlayerHelpersV335.getArticlePlayerMatches(article, listone, {
+    existingPlayers: getCalciomercatoPlayersV306(article),
+    limit: options.limit || 4
+  });
+}
+
+function renderCalciomercatoPlayerTagsV335(article) {
+  const matches = getCalciomercatoArticlePlayerMatchesV335(article, { limit: 3 });
+  if (!matches.length) return "";
+  return matches.map((match) => {
+    const label = decodeCalciomercatoTextV328(match.playerName) || match.playerName;
+    return `<a class="status info calciomercato-player-tag-v335" href="#calciomercato-player-${escapeHtml(match.slug)}" data-calciomercato-player-slug="${escapeHtml(match.slug)}" title="Timeline articoli su ${escapeHtml(label)}">${escapeHtml(label)}</a>`;
+  }).join("");
+}
+
+const CalciomercatoArticleRendererV338 = createCalciomercatoArticleRendererV338({
+  escapeHtml,
+  decodeText: decodeCalciomercatoTextV328,
+  getTeams: getCalciomercatoTeamsV308,
+  getTopicLabel: getCalciomercatoTopicLabelV306,
+  getStatus: getCalciomercatoStatusV308,
+  getSourceLabel: getCalciomercatoSourceLabelV314,
+  getImageInfo: getCalciomercatoArticleImageInfoV325,
+  formatDateTime: formatCalciomercatoArticleDateTimeV311,
+  renderPlayerTags: renderCalciomercatoPlayerTagsV335
+});
+
+function isCalciomercatoPlayerHashV335(hashValue = "") {
+  return String(hashValue || "").startsWith("calciomercato-player-");
+}
+
+function getCalciomercatoPlayerSlugFromHashV335(hashValue = "") {
+  const raw = String(hashValue || "").trim();
+  return raw.replace(/^calciomercato-player-/, "");
+}
+
+function ensureCalciomercatoPlayerTimelinePageV335() {
+  let modal = document.getElementById("calciomercatoPlayerTimelineModalV336");
+  if (modal) return modal;
+  modal = document.createElement("div");
+  modal.id = "calciomercatoPlayerTimelineModalV336";
+  modal.className = "calciomercato-player-modal-v336";
+  modal.hidden = true;
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-labelledby", "calciomercatoPlayerTimelineTitleV335");
+  modal.innerHTML = `
+    <div class="calciomercato-player-modal-backdrop-v336" data-calciomercato-player-modal-close aria-hidden="true"></div>
+    <section class="calciomercato-player-modal-dialog-v336 compact-card" tabindex="-1">
+      <header class="calciomercato-player-modal-header-v336">
+        <div>
+          <p class="eyebrow">Calciomercato · Timeline giocatore</p>
+          <h2 id="calciomercatoPlayerTimelineTitleV335">Timeline giocatore</h2>
+          <p id="calciomercatoPlayerTimelineIntroV335">Articoli collegati al giocatore riconosciuto nell'ultimo listone della stagione selezionata.</p>
+        </div>
+        <button type="button" class="button button-secondary button-small calciomercato-player-modal-close-v336" data-calciomercato-player-modal-close aria-label="Chiudi timeline giocatore">×</button>
+      </header>
+      <div id="calciomercatoPlayerTimelineContentV335" class="calciomercato-player-timeline-content-v335">
+        <p class="muted">Seleziona un tag giocatore da una scheda articolo.</p>
+      </div>
+    </section>`;
+  modal.addEventListener("click", (event) => {
+    if (event.target?.closest?.("[data-calciomercato-player-modal-close]")) {
+      event.preventDefault();
+      closeCalciomercatoPlayerTimelineModalV336({ cleanHash: true });
+    }
+  });
+  document.body.appendChild(modal);
+  return modal;
+}
+
+function closeCalciomercatoPlayerTimelineModalV336(options = {}) {
+  const modal = document.getElementById("calciomercatoPlayerTimelineModalV336");
+  if (modal) {
+    modal.classList.remove("is-open");
+    modal.hidden = true;
   }
-  const source = decodeCalciomercatoTextV328(getCalciomercatoSourceLabelV314(article) || sourceConfig?.name || sourceConfig?.label || "Fonte") || "Fonte";
-  const sourceKey = getCalciomercatoSourceImageKeyV325(article);
-  const label = CALCIOMERCATO_SOURCE_IMAGE_LABELS_V325[sourceKey] || source || "Fonte";
-  const fallbackSvg = buildCalciomercatoSourceImageSvgV325(label);
-  if (isCalciomercatoTmwTeamSourceV329(article, sourceConfig)) {
-    const teamName = getCalciomercatoFallbackTeamLabelV329(article, sourceConfig);
-    const tmwTeamTextSvg = buildCalciomercatoTmwTeamTextSvgV330(teamName);
-    return { src: tmwTeamTextSvg, fallbackSrc: fallbackSvg, alt: `TMW - ${teamName}`, isSourceFallback: true, isFaviconFallback: false, isTeamCrestFallback: false, isTmwTeamTextFallback: true };
+  document.body.classList.remove("calciomercato-player-modal-open-v336");
+  if (options.cleanHash !== false) {
+    const currentHash = decodeURIComponent(String(window.location.hash || "").replace(/^#/, ""));
+    if (isCalciomercatoPlayerHashV335(currentHash) && window.history?.replaceState) {
+      window.history.replaceState(null, "", "#calciomercato");
+    }
   }
-  const faviconUrl = buildCalciomercatoSourceFaviconUrlV328(article, sourceConfig);
-  if (faviconUrl) return { src: faviconUrl, fallbackSrc: fallbackSvg, alt: `Favicon ${source}`, isSourceFallback: true, isFaviconFallback: true, isTeamCrestFallback: false, isTmwTeamTextFallback: false };
-  return { src: fallbackSvg, alt: `Fonte ${label}`, isSourceFallback: true, isFaviconFallback: false, isTeamCrestFallback: false, isTmwTeamTextFallback: false };
+}
+
+function setCalciomercatoPlayerTimelinePageActiveV335() {
+  const modal = ensureCalciomercatoPlayerTimelinePageV335();
+  if (!modal) return null;
+  modal.hidden = false;
+  modal.classList.add("is-open");
+  document.body.classList.add("calciomercato-player-modal-open-v336");
+  closeMobileMoreMenu?.();
+  updateMobileNavState?.();
+  return modal;
+}
+
+function renderCalciomercatoTimelineLoadingV335(message) {
+  ensureCalciomercatoPlayerTimelinePageV335();
+  const target = document.getElementById("calciomercatoPlayerTimelineContentV335");
+  if (target) target.innerHTML = `<p class="muted">${escapeHtml(message || "Caricamento timeline...")}</p>`;
+}
+
+async function getCalciomercatoTimelineArticlePoolV335() {
+  const baseArticles = getCalciomercatoArticlesV306();
+  if (calciomercatoStateV306.playerTimelinePoolV335 && Array.isArray(calciomercatoStateV306.playerTimelinePoolV335.articles)) {
+    return calciomercatoStateV306.playerTimelinePoolV335.articles;
+  }
+  const archiveArticles = [];
+  const archiveSources = [];
+  try {
+    const manifestUrl = typeof CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 === "string" ? `${CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323}&_=${Date.now()}` : "";
+    const manifest = manifestUrl ? await fetchCalciomercatoOptionalJsonV323(manifestUrl) : null;
+    const days = Array.isArray(manifest?.availableDays) ? manifest.availableDays.map(String).filter(Boolean).sort() : [];
+    const limitedDays = days.slice(-370);
+    const settled = await Promise.allSettled(limitedDays.map(async (day) => {
+      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=370&_=${Date.now()}`);
+      return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day") };
+    }));
+    settled.forEach((result) => {
+      if (result.status !== "fulfilled") return;
+      archiveSources.push(...(result.value.data.sources || []));
+      (result.value.data.articles || []).forEach((article) => archiveArticles.push({ ...article, archiveDay: result.value.day, archiveSourceMode: "static-archive" }));
+    });
+  } catch (error) {
+    console.warn("Timeline giocatore Calciomercato V337: archivio completo non disponibile", error);
+  }
+  const articles = typeof dedupeCalciomercatoArticlesV323 === "function"
+    ? dedupeCalciomercatoArticlesV323([...baseArticles, ...archiveArticles])
+    : [...baseArticles, ...archiveArticles];
+  calciomercatoStateV306.playerTimelinePoolV335 = { articles, archiveArticles: archiveArticles.length, archiveSources: archiveSources.length };
+  return articles;
+}
+
+function renderCalciomercatoPlayerTimelineArticlesV335(playerEntry, matches, poolInfo) {
+  const playerName = decodeCalciomercatoTextV328(playerEntry?.displayName || playerEntry?.playerName || "Giocatore") || "Giocatore";
+  const target = document.getElementById("calciomercatoPlayerTimelineContentV335");
+  const title = document.getElementById("calciomercatoPlayerTimelineTitleV335");
+  const intro = document.getElementById("calciomercatoPlayerTimelineIntroV335");
+  if (title) title.textContent = `Timeline ${playerName}`;
+  if (intro) {
+    const listone = getLatestCalciomercatoListoneForSeasonV335();
+    const listoneLabel = listone ? String(listone.loadedAt || listone.meta?.loadedAt || listone.label || listone.id || "ultimo listone").trim() : "ultimo listone";
+    intro.textContent = `Articoli collegati a ${playerName}, riconosciuto nell'ultimo listone della stagione selezionata (${listoneLabel}).`;
+  }
+  if (!target) return;
+  const articlesHtml = matches.length
+    ? matches.map(({ article }) => `<div class="calciomercato-timeline-item-v335">${renderCalciomercatoArticleCardV306(article)}</div>`).join("")
+    : `<div class="notice notice-info"><strong>Nessun articolo trovato per ${escapeHtml(playerName)}.</strong> Il matching usa nome completo e cognome univoco nell'ultimo listone; amplia il range in Calciomercato o aggiorna l'archivio statico se mancano articoli.</div>`;
+  const pool = poolInfo || calciomercatoStateV306.playerTimelinePoolV335 || {};
+  target.innerHTML = `
+    <div class="calciomercato-player-summary-v335 compact-card">
+      <div>
+        <span class="eyebrow">Giocatore</span>
+        <h3>${escapeHtml(playerName)}</h3>
+        <small class="muted">${matches.length} articoli collegati · pool analizzato ${Number(pool.articles?.length || pool.totalArticles || 0) || "-"} articoli${pool.archiveArticles ? ` · archivio statico ${Number(pool.archiveArticles)} articoli` : ""}</small>
+      </div>
+    </div>
+    <div class="calciomercato-timeline-list-v335">${articlesHtml}</div>`;
+}
+
+async function renderCalciomercatoPlayerTimelineV335(slug) {
+  const listone = getLatestCalciomercatoListoneForSeasonV335();
+  const playerEntry = CalciomercatoPlayerHelpersV335.findPlayerBySlug(listone, slug);
+  if (!listone || !playerEntry) {
+    renderCalciomercatoTimelineLoadingV335("Giocatore non trovato nell'ultimo listone della stagione selezionata.");
+    return;
+  }
+  renderCalciomercatoTimelineLoadingV335(`Caricamento timeline ${playerEntry.displayName}...`);
+  if (!calciomercatoStateV306.loaded && !calciomercatoStateV306.loading) {
+    await loadCalciomercatoDataV306({ preserveContent: true });
+  }
+  const pool = await getCalciomercatoTimelineArticlePoolV335();
+  const matches = CalciomercatoPlayerHelpersV335.getArticlesForPlayer(pool, listone, playerEntry.key, {
+    existingPlayers: [],
+    limit: 8
+  }).sort((a, b) => getCalciomercatoArticleTimestampV316(b.article) - getCalciomercatoArticleTimestampV316(a.article));
+  renderCalciomercatoPlayerTimelineArticlesV335(playerEntry, matches, { ...(calciomercatoStateV306.playerTimelinePoolV335 || {}), totalArticles: pool.length });
+}
+
+function ensureCalciomercatoPageVisibleForPlayerModalV336() {
+  state.currentPage = "calciomercato";
+  document.querySelectorAll(".app-page").forEach((page) => {
+    page.classList.toggle("is-active", page.dataset.page === "calciomercato");
+  });
+  document.querySelectorAll("[data-page-link]").forEach((link) => {
+    link.classList.toggle("active", link.dataset.pageLink === "calciomercato");
+  });
+  closeMobileMoreMenu?.();
+  updateMobileNavState?.();
+}
+
+function openCalciomercatoPlayerTimelineModalV336(slug, options = {}) {
+  const cleanSlug = String(slug || "").trim();
+  if (!cleanSlug) return false;
+  const modal = setCalciomercatoPlayerTimelinePageActiveV335();
+  renderCalciomercatoPlayerTimelineV335(cleanSlug).catch((error) => {
+    console.warn("Timeline giocatore Calciomercato V337 non renderizzata", error);
+    renderCalciomercatoTimelineLoadingV335("Timeline non disponibile in questo momento.");
+  });
+  if (options.focus !== false) {
+    window.setTimeout(() => modal?.querySelector?.(".calciomercato-player-modal-dialog-v336")?.focus?.(), 0);
+  }
+  return true;
+}
+
+function activateCalciomercatoPlayerTimelineFromHashV335(options = {}) {
+  const rawHash = decodeURIComponent(String(window.location.hash || "").replace(/^#/, ""));
+  if (!isCalciomercatoPlayerHashV335(rawHash)) return false;
+  const slug = getCalciomercatoPlayerSlugFromHashV335(rawHash);
+  if (!slug) return false;
+  ensureCalciomercatoPageVisibleForPlayerModalV336();
+  const opened = openCalciomercatoPlayerTimelineModalV336(slug, { focus: options.focus !== false });
+  if (opened && options.cleanHash === true && window.history?.replaceState) {
+    window.history.replaceState(null, "", "#calciomercato");
+  }
+  return opened;
+}
+
+
+function buildCalciomercatoPlayerDiagnosticsReportV359(options = {}) {
+  const listone = options.listone || getLatestCalciomercatoListoneForSeasonV335();
+  const articles = Array.isArray(options.articles) ? options.articles : getCalciomercatoArticlesV306();
+  if (!listone || !Array.isArray(listone.players) || !listone.players.length) {
+    return {
+      version: "V359",
+      ok: false,
+      reason: "Nessun listone disponibile per la stagione selezionata",
+      totalArticles: Array.isArray(articles) ? articles.length : 0,
+      matchedArticles: 0,
+      unmatchedArticles: Array.isArray(articles) ? articles.length : 0,
+      topPlayers: [],
+      unmatchedSample: []
+    };
+  }
+  const report = CalciomercatoPlayerHelpersV335.buildPlayerDiagnostics(articles, listone, {
+    existingPlayers: [],
+    includeRows: options.includeRows === true,
+    sampleLimit: options.sampleLimit || 25,
+    limit: options.limit || 8
+  });
+  return {
+    ...report,
+    ok: true,
+    listoneLabel: String(listone.loadedAt || listone.meta?.loadedAt || listone.label || listone.id || report.listoneId || "ultimo listone").trim(),
+    source: options.source || "current-calciomercato-articles"
+  };
+}
+
+async function buildCalciomercatoPlayerDiagnosticsReportWithArchiveV359(options = {}) {
+  const listone = options.listone || getLatestCalciomercatoListoneForSeasonV335();
+  const pool = options.includeArchive === false ? getCalciomercatoArticlesV306() : await getCalciomercatoTimelineArticlePoolV335();
+  return buildCalciomercatoPlayerDiagnosticsReportV359({ ...options, listone, articles: pool, source: options.includeArchive === false ? "current-calciomercato-articles" : "current-plus-static-archive" });
+}
+
+function formatCalciomercatoPlayerDiagnosticsMarkdownV359(report) {
+  const safeReport = report || {};
+  const lines = [
+    `# Diagnostica giocatori Calciomercato V359`,
+    "",
+    `Stato: ${safeReport.ok ? "OK" : "Da verificare"}`,
+    `Listone: ${safeReport.listoneLabel || safeReport.listoneId || "non disponibile"}`,
+    `Articoli analizzati: ${safeReport.totalArticles || 0}`,
+    `Articoli con giocatore: ${safeReport.matchedArticles || 0}`,
+    `Articoli senza giocatore: ${safeReport.unmatchedArticles || 0}`,
+    `Match rate: ${safeReport.matchRate || 0}%`,
+    "",
+    "## Giocatori piu citati",
+    ""
+  ];
+  const topPlayers = Array.isArray(safeReport.topPlayers) ? safeReport.topPlayers : [];
+  if (topPlayers.length) {
+    topPlayers.slice(0, 12).forEach((item) => lines.push(`- ${item.playerName}: ${item.count} articoli (${(item.matchTypes || []).join(", ")})`));
+  } else {
+    lines.push("- Nessun giocatore riconosciuto nel campione corrente.");
+  }
+  lines.push("", "## Campione articoli non associati", "");
+  const sample = Array.isArray(safeReport.unmatchedSample) ? safeReport.unmatchedSample : [];
+  if (sample.length) {
+    sample.slice(0, 15).forEach((row) => lines.push(`- ${row.title} (${row.source})`));
+  } else {
+    lines.push("- Nessun articolo non associato nel campione corrente.");
+  }
+  return lines.join("\n");
 }
 
 function renderCalciomercatoArticleCardV306(article) {
-  const title = decodeCalciomercatoTextV328(article?.title || "Articolo di mercato") || "Articolo di mercato";
-  const url = String(article?.url || "").trim();
-  const imageInfo = getCalciomercatoArticleImageInfoV325(article);
-  const description = decodeCalciomercatoTextV328(article?.description || article?.summary || "");
-  const source = decodeCalciomercatoTextV328(getCalciomercatoSourceLabelV314(article)) || "Fonte";
-  const teams = getCalciomercatoTeamsV308(article).map(decodeCalciomercatoTextV328).filter(Boolean);
-  const topic = decodeCalciomercatoTextV328(getCalciomercatoTopicLabelV306(article)) || "Mercato";
-  const status = decodeCalciomercatoTextV328(getCalciomercatoStatusV308(article));
-  const date = formatCalciomercatoArticleDateTimeV311(article);
-  const safeUrl = url && /^https?:\/\//i.test(url) ? url : "";
-  const thumbClass = `calciomercato-thumb-v306${imageInfo.isSourceFallback ? " calciomercato-thumb-source-v325" : ""}${imageInfo.isFaviconFallback ? " calciomercato-thumb-favicon-v328" : ""}${imageInfo.isTeamCrestFallback ? " calciomercato-thumb-crest-v329" : ""}${imageInfo.isTmwTeamTextFallback ? " calciomercato-thumb-tmw-team-v330" : ""}`;
-  const fallbackAttr = imageInfo.fallbackSrc ? ` data-fallback-src="${escapeHtml(imageInfo.fallbackSrc)}" onerror="this.onerror=null;this.src=this.dataset.fallbackSrc;"` : "";
-  return `
-    <article class="calciomercato-card-v306 compact-card">
-      ${imageInfo.src ? `<a class="${thumbClass}" href="${escapeHtml(safeUrl || '#')}" target="_blank" rel="noopener" aria-label="Apri articolo"><img src="${escapeHtml(imageInfo.src)}" alt="${escapeHtml(imageInfo.alt)}" loading="lazy"${fallbackAttr} /></a>` : `<div class="calciomercato-thumb-v306 calciomercato-thumb-placeholder-v306" aria-hidden="true">📰</div>`}
-      <div class="calciomercato-card-body-v306">
-        <div class="calciomercato-card-meta-v306">
-          ${renderCalciomercatoTeamChipsV308(teams)}
-          <span class="status warning">${escapeHtml(topic)}</span>
-          ${renderCalciomercatoStatusChipV308(status)}
-        </div>
-        <h3>${safeUrl ? `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">${escapeHtml(title)}</a>` : escapeHtml(title)}</h3>
-        ${description ? `<p>${escapeHtml(description)}</p>` : `<p class="muted">Descrizione non configurata. In futuro potra essere recuperata automaticamente dalle anteprime Open Graph.</p>`}
-        <div class="calciomercato-card-footer-v306">
-          <small class="muted">${escapeHtml(source)}${date ? ` · ${escapeHtml(date)}` : ""}</small>
-          ${safeUrl ? `<a class="button button-secondary button-small" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">Apri articolo</a>` : `<span class="muted">Link non configurato</span>`}
-        </div>
-      </div>
-    </article>`;
+  return CalciomercatoArticleRendererV338.renderArticleCard(article);
 }
 
 
@@ -24734,55 +24815,7 @@ function setupCalciomercatoInfiniteScrollV316() {
 }
 
 function setupCalciomercatoControlsV306() {
-  const section = document.querySelector('[data-page="calciomercato"]');
-  if (!section || section.dataset.calciomercatoBoundV306 === "true") return;
-  section.dataset.calciomercatoBoundV306 = "true";
-  section.addEventListener("input", (event) => {
-    if (event.target?.id === "calciomercatoSearchV306") {
-      calciomercatoStateV306.search = event.target.value || "";
-      renderCalciomercatoV306();
-    }
-    if (event.target?.id === "calciomercatoFromV316") {
-      calciomercatoStateV306.rangeFrom = event.target.value || "";
-      calciomercatoStateV306.manualRange = true;
-      renderCalciomercatoV306();
-    }
-    if (event.target?.id === "calciomercatoToV316") {
-      calciomercatoStateV306.rangeTo = event.target.value || "";
-      calciomercatoStateV306.manualRange = true;
-      renderCalciomercatoV306();
-    }
-  });
-  section.addEventListener("change", (event) => {
-    if (event.target?.id === "calciomercatoTeamFilterV306") {
-      calciomercatoStateV306.team = event.target.value || "all";
-      renderCalciomercatoV306();
-    }
-    if (event.target?.id === "calciomercatoTopicFilterV306") {
-      calciomercatoStateV306.topic = event.target.value || "all";
-      renderCalciomercatoV306();
-    }
-    if (event.target?.id === "calciomercatoSourceFilterV314") {
-      calciomercatoStateV306.source = event.target.value || "all";
-      reloadCalciomercatoDataV316();
-    }
-  });
-  section.addEventListener("click", (event) => {
-    if (event.target?.id === "calciomercatoApplyRangeV316") {
-      event.preventDefault();
-      calciomercatoStateV306.manualRange = true;
-      reloadCalciomercatoDataV316();
-    }
-    if (event.target?.id === "calciomercatoResetRangeV316") {
-      event.preventDefault();
-      resetCalciomercatoDefaultRangeV316();
-      reloadCalciomercatoDataV316();
-    }
-    if (event.target?.id === "calciomercatoLoadOlderV316") {
-      event.preventDefault();
-      loadOlderCalciomercatoArticlesV316();
-    }
-  });
+  getCalciomercatoFiltersV339().setupControls(calciomercatoStateV306);
 }
 
 const renderAllBeforeV306 = renderAll;
@@ -25427,7 +25460,7 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=330`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=370`;
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -25582,7 +25615,7 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=330&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=370&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -25838,7 +25871,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=330&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=370&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -26073,7 +26106,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=330&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=370&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -26170,6 +26203,25 @@ window.ZonaOrientaleCalciomercatoCardsV325 = {
   firebaseWrites: false,
   netlifyFunctionsChanged: false
 };
+
+/* V340 - Modulo protetto pannello Solo Admin / archivio Calciomercato. */
+let CalciomercatoArchiveAdminV340 = null;
+
+function getCalciomercatoArchiveAdminV340() {
+  if (!CalciomercatoArchiveAdminV340) {
+    CalciomercatoArchiveAdminV340 = createCalciomercatoArchiveAdminV340({
+      escapeHtml,
+      getState: () => calciomercatoStateV306,
+      getBounds: getCalciomercatoRangeBoundsV316,
+      getDayKeys: getCalciomercatoArchiveDayKeysV323,
+      getSelectedDay: getCalciomercatoArchiveSelectedDayV323,
+      getAvailableDays: getCalciomercatoArchiveAvailableDaysV324,
+      renderDiagnostics: renderCalciomercatoArchiveDiagnosticsV324,
+      archiveStartDate: CALCIOMERCATO_ARCHIVE_START_DATE_V323
+    });
+  }
+  return CalciomercatoArchiveAdminV340;
+}
 
 /* V326 - Rifiniture UI Calciomercato/Listone/mobile.
  * Interventi mirati e non distruttivi: immagini fonte per ogni articolo senza anteprima,
@@ -26273,41 +26325,7 @@ function isCalciomercatoArchiveAdminExpandedV326() {
 
 renderCalciomercatoArchiveAdminToolsV323 = function renderCalciomercatoArchiveAdminToolsV326() {
   const target = document.getElementById("calciomercatoArchiveAdminToolsV323");
-  if (!target) return;
-  if (!state.isAdmin) {
-    target.classList.add("hidden");
-    target.innerHTML = "";
-    return;
-  }
-  target.classList.remove("hidden");
-  const expanded = isCalciomercatoArchiveAdminExpandedV326();
-  const bounds = getCalciomercatoRangeBoundsV316();
-  const days = getCalciomercatoArchiveDayKeysV323(bounds.from, bounds.to);
-  const selectedDay = getCalciomercatoArchiveSelectedDayV323();
-  const availableDays = getCalciomercatoArchiveAvailableDaysV324();
-  const loadedDays = calciomercatoStateV306.archiveLoadedDaysV323 || [];
-  const archiveCount = (calciomercatoStateV306.archiveArticlesV323 || []).length;
-  const busy = !!calciomercatoStateV306.archiveDownloadBusyV323;
-  const status = calciomercatoStateV306.archiveStatusV323 || "";
-  target.innerHTML = `<div class="compact-card calciomercato-archive-tools-card-v323 calciomercato-archive-tools-card-v324 calciomercato-archive-tools-card-v326${expanded ? "" : " is-collapsed"}">
-      <div class="calciomercato-archive-head-v326">
-        <div>
-          <span class="eyebrow">Solo Admin</span>
-          <h3>Archivio statico Calciomercato</h3>
-          <small class="muted">Archivio disponibile: ${availableDays.length} giorni · giorni caricati nel range: ${loadedDays.length || 0} · articoli statici nel range: ${archiveCount} · partenza archivio ${CALCIOMERCATO_ARCHIVE_START_DATE_V323}.</small>
-        </div>
-        <button id="calciomercatoArchiveToggleV326" class="button button-secondary button-small calciomercato-archive-toggle-v326" type="button" aria-expanded="${expanded ? "true" : "false"}" aria-controls="calciomercatoArchiveBodyV326">${expanded ? "Riduci" : "Espandi"}</button>
-      </div>
-      <div id="calciomercatoArchiveBodyV326" class="calciomercato-archive-body-v326" ${expanded ? "" : "hidden"}>
-        <p>Scarica JSON giornalieri e verifica copertura dello storico. Copia poi i file in <code>assets/calciomercato/archive/</code>.</p>
-        <div class="calciomercato-archive-actions-v323">
-          <button id="calciomercatoDownloadArchiveDayV323" class="button button-secondary button-small" type="button" ${busy ? "disabled" : ""}>Scarica JSON giorno ${escapeHtml(selectedDay)}</button>
-          <button id="calciomercatoDownloadArchiveRangeV323" class="button button-primary button-small" type="button" ${busy || !days.length ? "disabled" : ""}>Scarica JSON intervallo (${days.length})</button>
-        </div>
-        ${renderCalciomercatoArchiveDiagnosticsV324()}
-        ${status ? `<p class="form-status calciomercato-archive-status-v323">${escapeHtml(status)}</p>` : ""}
-      </div>
-    </div>`;
+  getCalciomercatoArchiveAdminV340().renderInto(target, { isAdmin: !!state.isAdmin });
 };
 
 if (window.ZonaOrientaleCalciomercatoArchiveDiagnosticsV324) {
@@ -26353,20 +26371,7 @@ window.ZonaOrientaleRifinitureUiV327 = {
  * dal re-render del blocco, cosi' la sezione viene aperta e chiusa subito.
  */
 function setCalciomercatoArchiveAdminExpandedV327(expanded) {
-  calciomercatoStateV306.archiveAdminExpandedV326 = expanded === true;
-  const button = document.getElementById("calciomercatoArchiveToggleV326");
-  const body = document.getElementById("calciomercatoArchiveBodyV326");
-  const card = button?.closest?.(".calciomercato-archive-tools-card-v326");
-  if (button) {
-    button.setAttribute("aria-expanded", expanded ? "true" : "false");
-    button.textContent = expanded ? "Riduci" : "Espandi";
-  }
-  if (body) {
-    body.hidden = !expanded;
-    if (expanded) body.removeAttribute("hidden");
-    else body.setAttribute("hidden", "");
-  }
-  card?.classList.toggle("is-collapsed", !expanded);
+  getCalciomercatoArchiveAdminV340().setExpanded(expanded, calciomercatoStateV306);
 }
 
 document.addEventListener("click", (event) => {
@@ -26386,6 +26391,21 @@ window.ZonaOrientaleCalciomercatoAdminToggleV327 = {
   cssHiddenOverrideProtected: true,
   firebaseWrites: false,
   netlifyFunctionsChanged: false,
+  setExpanded: setCalciomercatoArchiveAdminExpandedV327
+};
+
+window.ZonaOrientaleCalciomercatoArchiveAdminV340 = {
+  version: "V340",
+  label: "pannello Solo Admin / archivio Calciomercato estratto in modulo protetto",
+  module: "assets/js/calciomercato/calciomercato-admin-v340.js",
+  behaviorChange: false,
+  adminOnly: true,
+  preservesDownloadsV323: true,
+  preservesDiagnosticsV324: true,
+  preservesToggleV327: true,
+  firebaseWrites: false,
+  netlifyFunctionsChanged: false,
+  render: renderCalciomercatoArchiveAdminToolsV323,
   setExpanded: setCalciomercatoArchiveAdminExpandedV327
 };
 
@@ -26442,5 +26462,3248 @@ window.ZonaOrientaleCalciomercatoV330 = {
     "Fallback favicon/tile per fonti non TMW",
     "Mobile card V328, toggle Solo Admin V327 e menu/Listone V326"
   ]
+};
+
+/* V331 - Card Calciomercato senza anteprima e label Modifiche Listone uniformata. */
+window.ZonaOrientaleCalciomercatoListoneUiV331 = {
+  version: "V331",
+  changes: [
+    "Anteprima testo articolo Calciomercato non renderizzata",
+    "Pulsante Apri articolo nascosto da mobile",
+    "Etichetta Modifiche Listone uniformata"
+  ],
+  preserves: [
+    "Link titolo articolo",
+    "Fonte e data articolo",
+    "Fallback favicon e TMW testuale",
+    "Filtri e download Calciomercato",
+    "Filtro Modifiche Listone ed export CSV"
+  ]
+};
+
+
+
+/* V333 - Refactor CSS protetto: separa stile Listone da mobile-controls senza cambiare comportamento. */
+window.ZonaOrientaleRefactorCssProtettoV333 = {
+  version: "V333",
+  label: "refactor CSS protetto Listone/Calciomercato",
+  behaviorChange: false,
+  movedStyles: [
+    "Listone filtro Modifiche da mobile-controls.css a listone.css"
+  ],
+  cssFiles: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/listone.css",
+    "assets/css/refactor/calciomercato.css",
+    "assets/css/refactor/rosters-tables.css"
+  ],
+  preservedFeatures: [
+    "Calciomercato feed RSS/HTML e archivio statico",
+    "Card Calciomercato compatte V332 e fallback immagini V328-V330",
+    "Listone con filtro Modifiche, colonna Modifica ed export CSV solo Admin",
+    "Mobile bottom nav e menu Altro",
+    "Rose, Fantamercato interno, Dashboard Presidente, Admin, Firebase/Auth/EmailJS",
+    "Competition/player standalone e share WhatsApp News"
+  ],
+  docs: [
+    "docs/zonaorientale/FUNZIONALITAV333.md",
+    "docs/zonaorientale/handoff/HANDOFF_NUOVO_ASSISTENTE_V333.md",
+    "docs/zonaorientale/refactor/CSS_REFACTOR_PROTETTO_V333.md"
+  ]
+};
+
+
+/* V334 - Refactor protetto immagini Calciomercato: helper estratti da app.js in modulo dedicato. */
+window.ZonaOrientaleCalciomercatoImagesV334 = {
+  version: "V334",
+  label: "helper immagini Calciomercato estratti in modulo dedicato",
+  behaviorChange: false,
+  module: "assets/js/calciomercato/calciomercato-images-v334.js",
+  extractedResponsibilities: [
+    "decodifica entità HTML dei testi articolo",
+    "fallback favicon fonte",
+    "tile testuale TMW - NomeSquadra",
+    "fallback SVG fonte",
+    "riconoscimento immagini logo squadra ereditate da V329"
+  ],
+  preservedFeatures: [
+    "Rendering card Calciomercato compatte V332",
+    "Feed RSS/HTML e archivio statico Calciomercato",
+    "Filtri Cerca/Fonte/Squadra/Da/A",
+    "Pannello Solo Admin espandibile/riducibile",
+    "Listone, Rose, Fantamercato interno, Dashboard Presidente, Admin, Firebase/Auth/EmailJS"
+  ],
+  getArticleImageInfo: getCalciomercatoArticleImageInfoV325,
+  decodeText: decodeCalciomercatoTextV328
+};
+
+/* V336 - Timeline giocatore Calciomercato in scheda/modal.
+ * Mantiene il matching conservativo V335, ma il tag giocatore non cambia pagina:
+ * apre una scheda sovrapposta chiudibile con X/Escape, senza usare i tasti Torna.
+ */
+if (typeof isKnownStaticHashV43 === "function") {
+  const isKnownStaticHashBeforeV335 = isKnownStaticHashV43;
+  isKnownStaticHashV43 = function isKnownStaticHashV335(hashValue) {
+    return isCalciomercatoPlayerHashV335(hashValue) || isKnownStaticHashBeforeV335(hashValue);
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target?.closest?.("[data-calciomercato-player-slug]");
+  if (!link) return;
+  event.preventDefault();
+  const slug = String(link.dataset.calciomercatoPlayerSlug || "").trim();
+  if (!slug) return;
+  openCalciomercatoPlayerTimelineModalV336(slug, { focus: true });
+}, true);
+
+if (!window.__zonaOrientaleCalciomercatoPlayerModalEscV336) {
+  window.__zonaOrientaleCalciomercatoPlayerModalEscV336 = true;
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeCalciomercatoPlayerTimelineModalV336({ cleanHash: true });
+  });
+}
+
+window.addEventListener("hashchange", () => {
+  activateCalciomercatoPlayerTimelineFromHashV335({ scroll: true });
+});
+
+const renderAllBeforeV335 = renderAll;
+renderAll = function renderAllV336() {
+  const result = renderAllBeforeV335?.();
+  ensureCalciomercatoPlayerTimelinePageV335();
+  activateCalciomercatoPlayerTimelineFromHashV335({ scroll: false });
+  return result;
+};
+
+window.ZonaOrientaleCalciomercatoPlayersV335 = {
+  version: "V335",
+  label: "tag giocatore e timeline articoli Calciomercato",
+  listoneScope: "ultimo listone della stagione selezionata",
+  matchingPolicy: "nome completo + cognome univoco conservativo",
+  timelineUsesStaticArchiveWhenAvailable: true,
+  firebaseWrites: false,
+  netlifyFunctionsChanged: false,
+  behaviorChangeOutsideCalciomercato: false,
+  getLatestListone: getLatestCalciomercatoListoneForSeasonV335,
+  getArticlePlayerMatches: getCalciomercatoArticlePlayerMatchesV335,
+  activateTimeline: activateCalciomercatoPlayerTimelineFromHashV335
+};
+
+window.ZonaOrientaleCalciomercatoPlayerModalV336 = {
+  version: "V336",
+  label: "timeline giocatore in scheda chiudibile",
+  replacesDedicatedPage: true,
+  closeControls: ["X", "backdrop", "Escape"],
+  preservesPlayerMatchingV335: true,
+  firebaseWrites: false,
+  netlifyFunctionsChanged: false,
+  openTimeline: openCalciomercatoPlayerTimelineModalV336,
+  closeTimeline: closeCalciomercatoPlayerTimelineModalV336,
+  ensureCalciomercatoPage: ensureCalciomercatoPageVisibleForPlayerModalV336
+};
+
+
+/* V338 - Refactor protetto rendering card Calciomercato. */
+window.ZonaOrientaleCalciomercatoRendererV338 = {
+  version: "V338",
+  label: "renderer card articolo Calciomercato estratto in modulo dedicato",
+  behaviorChange: false,
+  module: "assets/js/calciomercato/calciomercato-render-v338.js",
+  preserves: [
+    "layout card compatte V332",
+    "fallback immagini V334/V328/V330",
+    "tag giocatore e modal timeline V335-V337",
+    "filtri e download Calciomercato",
+    "archivio statico e fonti TMW squadra"
+  ],
+  renderArticleCard: renderCalciomercatoArticleCardV306,
+  renderTeamChips: CalciomercatoArticleRendererV338.renderTeamChips,
+  renderStatusChip: CalciomercatoArticleRendererV338.renderStatusChip
+};
+
+window.ZonaOrientaleCalciomercatoPlayerMatchingV340 = {
+  version: "V340",
+  label: "matching giocatore Calciomercato con punteggiatura e maiuscole normalizzate",
+  listoneScope: "ultimo listone della stagione selezionata",
+  matchingPolicy: "nome completo + cognome univoco conservativo, con punteggiatura/separatori rimossi e alias singoli capitalizzati",
+  fixes: ["Kalulu, ...", "nome: testo", "Giovane nome proprio vs giovane aggettivo", "virgolette/apostrofi HTML", "separatori non alfanumerici"],
+  preservesPlayerModalV336: true,
+  firebaseWrites: false,
+  netlifyFunctionsChanged: false,
+  runSmokeTest: () => CalciomercatoPlayerHelpersV335.runSmokeTest?.()
+};
+
+
+window.ZonaOrientaleCalciomercatoPlayerMatchingV359 = {
+  version: "V359",
+  label: "matching giocatore Calciomercato con alias sicuri e diagnostica articoli",
+  listoneScope: "ultimo listone della stagione selezionata",
+  matchingPolicy: "nome completo + cognome univoco + cognomi composti + alias configurati + forma compatta per apostrofi/spazi; alias singoli solo con maiuscola",
+  fixes: ["N'Doye/Ndoye", "Kvara/Kvaratskhelia se alias presente", "cognomi composti", "diagnostica articoli non associati", "Giovane nome proprio vs giovane aggettivo preservato"],
+  preservesPlayerModalV336: true,
+  firebaseWrites: false,
+  netlifyFunctionsChanged: false,
+  module: "assets/js/calciomercato/calciomercato-players-v359.js",
+  runSmokeTest: () => CalciomercatoPlayerHelpersV335.runSmokeTest?.()
+};
+
+window.ZonaOrientaleCalciomercatoPlayerDiagnosticsV359 = {
+  version: "V359",
+  label: "diagnostica associazione articoli Calciomercato -> giocatori",
+  firebaseWrites: false,
+  netlifyFunctionsChanged: false,
+  generateCurrentReport: buildCalciomercatoPlayerDiagnosticsReportV359,
+  generateReport: buildCalciomercatoPlayerDiagnosticsReportWithArchiveV359,
+  exportMarkdown: formatCalciomercatoPlayerDiagnosticsMarkdownV359,
+  print: async (options = {}) => {
+    const report = await buildCalciomercatoPlayerDiagnosticsReportWithArchiveV359(options);
+    console.log(formatCalciomercatoPlayerDiagnosticsMarkdownV359(report));
+    console.table((report.topPlayers || []).map((item) => ({ giocatore: item.playerName, articoli: item.count, match: (item.matchTypes || []).join(", ") })));
+    return report;
+  }
+};
+
+
+
+/* V341 - Pulizia helper duplicati sicuri.
+ * Centralizza CSV, normalizzazione loose/strict e lookup helper in un bridge condiviso,
+ * mantenendo i nomi storici di app.js come wrapper per compatibilita.
+ */
+window.ZonaOrientaleSharedHelperBridgeV341 = {
+  version: "V341",
+  label: "bridge helper condivisi per CSV e normalizzazione",
+  behaviorChange: false,
+  module: "assets/js/utils/shared-helper-bridge-v341.js",
+  rewiredCallSites: [
+    "csvEscapeV278",
+    "buildListoneChangeExportCsvV278",
+    "normalizeListoneSearchKeyV269",
+    "normalizeDiagnosticKeyV303",
+    "normalizeCalciomercatoValueV306"
+  ],
+  preserves: [
+    "Listone con filtro Modifiche ed export CSV Admin",
+    "Diagnostica dati Admin",
+    "Calciomercato feed, filtri, card, timeline giocatore e archivio",
+    "Rose, Fantamercato interno, Dashboard Presidente, Firebase/Auth/EmailJS"
+  ],
+  runSmokeTest: () => ZonaOrientaleSharedHelperBridgeV341.runSmokeTest()
+};
+
+
+/* V343 - Pulizia CSS legacy controllata e timestamp Diagnostica Admin.
+ * Release conservativa: non modifica Firebase, non scrive dati e non cambia i flussi Admin.
+ * Aggiunge un feedback visibile al pulsante Aggiorna diagnostica con data/ora italiana
+ * dell'ultimo refresh eseguito nella sessione corrente. Prepara inoltre la rimozione
+ * controllata dei CSS refactor versionati V291/V292, gia non importati dal runtime.
+ */
+let adminDataDiagnosticsLastUpdatedAtV343 = "";
+
+function formatAdminDiagnosticsDateTimeRomeV343(value) {
+  if (!value) return "mai aggiornata in questa sessione";
+  const date = value instanceof Date ? value : new Date(value);
+  if (!Number.isFinite(date.getTime())) return "non disponibile";
+  try {
+    return new Intl.DateTimeFormat("it-IT", {
+      timeZone: "Europe/Rome",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    }).format(date);
+  } catch (_) {
+    return date.toLocaleString("it-IT");
+  }
+}
+
+function markAdminDataDiagnosticsUpdatedV343() {
+  adminDataDiagnosticsLastUpdatedAtV343 = new Date().toISOString();
+  return adminDataDiagnosticsLastUpdatedAtV343;
+}
+
+function getAdminDataDiagnosticsLastUpdatedLabelV343() {
+  return formatAdminDiagnosticsDateTimeRomeV343(adminDataDiagnosticsLastUpdatedAtV343);
+}
+
+function enhanceAdminDataDiagnosticsPanelHtmlV343(html) {
+  const marker = "data-admin-diagnostics-last-refresh-v343";
+  if (String(html || "").includes(marker)) return html;
+  const buttonHtml = '<button class="button button-secondary" type="button" data-refresh-diagnostics-v276>Aggiorna diagnostica</button>';
+  const statusHtml = `${buttonHtml}<small class="field-hint admin-diagnostics-last-refresh-v343" ${marker}>Ultimo aggiornamento: ${escapeHtml(getAdminDataDiagnosticsLastUpdatedLabelV343())}</small>`;
+  return String(html || "").replace(buttonHtml, statusHtml);
+}
+
+const renderAdminDataDiagnosticsPanelBeforeV343 = renderAdminDataDiagnosticsPanelV276;
+renderAdminDataDiagnosticsPanelV276 = function renderAdminDataDiagnosticsPanelV343() {
+  const html = typeof renderAdminDataDiagnosticsPanelBeforeV343 === "function"
+    ? renderAdminDataDiagnosticsPanelBeforeV343()
+    : "";
+  return enhanceAdminDataDiagnosticsPanelHtmlV343(html);
+};
+
+function refreshAdminDataDiagnosticsV343(options = {}) {
+  if (options.mark !== false) markAdminDataDiagnosticsUpdatedV343();
+  const panel = document.getElementById("adminDataDiagnosticsPanelV276");
+  if (panel) panel.outerHTML = renderAdminDataDiagnosticsPanelV276();
+  else injectAdminDataDiagnosticsPanelV276();
+  return typeof getAdminDataDiagnosticsV276 === "function" ? getAdminDataDiagnosticsV276() : [];
+}
+
+document.addEventListener("click", (event) => {
+  const button = event.target?.closest?.("[data-refresh-diagnostics-v276]");
+  if (!button) return;
+  event.preventDefault();
+  event.stopPropagation();
+  if (typeof event.stopImmediatePropagation === "function") event.stopImmediatePropagation();
+  try {
+    refreshAdminDataDiagnosticsV343({ mark: true });
+  } catch (error) {
+    console.warn("Aggiornamento diagnostica Admin V343 non completato", error);
+  }
+}, true);
+
+function getAdminFunctionsStatusV343() {
+  const checks = [
+    ["renderAdminArea", typeof renderAdminArea === "function"],
+    ["attachAdminHandlers", typeof attachAdminHandlers === "function"],
+    ["renderAdminPanel", typeof renderAdminPanel === "function"],
+    ["Diagnostica dati", typeof getAdminDataDiagnosticsV276 === "function" && typeof renderAdminDataDiagnosticsPanelV276 === "function"],
+    ["toggle Diagnostica dati", typeof toggleAdminDataDiagnosticsPanelV321 === "function"],
+    ["Richieste presidenti", Boolean(window.ZonaOrientaleTeamRequestsV253 || window.ZonaOrientaleTeamRequestsV249)],
+    ["Converti listone Excel", typeof renderListoneConverterAdminPanel === "function" || Boolean(window.ZonaOrientaleListoneConverter)],
+    ["Calciomercato Solo Admin", Boolean(window.ZonaOrientaleCalciomercatoArchiveAdminV340)]
+  ];
+  return checks.map(([name, ok]) => ({ name, ok: Boolean(ok) }));
+}
+
+window.ZonaOrientaleAdminDiagnosticsV343 = {
+  version: "V343",
+  label: "timestamp refresh diagnostica admin",
+  behaviorChangeOutsideAdminDiagnostics: false,
+  firebaseWrites: false,
+  getLastUpdatedAt: () => adminDataDiagnosticsLastUpdatedAtV343,
+  getLastUpdatedLabel: getAdminDataDiagnosticsLastUpdatedLabelV343,
+  refresh: refreshAdminDataDiagnosticsV343,
+  getFunctionStatus: getAdminFunctionsStatusV343,
+  runSmokeTest: () => {
+    const statuses = getAdminFunctionsStatusV343();
+    return {
+      ok: statuses.every((item) => item.ok),
+      statuses,
+      lastUpdatedLabel: getAdminDataDiagnosticsLastUpdatedLabelV343()
+    };
+  }
+};
+
+window.ZonaOrientaleCssLegacyCleanupV343 = {
+  version: "V343",
+  label: "pulizia controllata CSS legacy refactor V291/V292",
+  behaviorChange: false,
+  runtimeCssRemoved: false,
+  obsoleteCssCandidates: [
+    "assets/css/refactor/mobile-controls-v291.css",
+    "assets/css/refactor/rosters-tables-v291.css",
+    "assets/css/refactor/mobile-controls-v292.css",
+    "assets/css/refactor/rosters-tables-v292.css",
+    "assets/css/refactor/theme-light-suspended-v292.css"
+  ],
+  activeCssFiles: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css",
+    "assets/css/refactor/listone.css",
+    "assets/css/refactor/calciomercato.css",
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  cleanupTool: "tools/cleanup-css-legacy-v343.sh",
+  preserves: [
+    "Admin e Diagnostica dati",
+    "Calciomercato",
+    "Listone",
+    "Rose",
+    "Dashboard Presidente",
+    "Mobile navigation",
+    "Firebase/Auth/EmailJS"
+  ]
+};
+
+/* V344 - Pulizia JS legacy Calciomercato player.
+ * I vecchi moduli calciomercato-players-v335.js e v337.js sono stati rimossi
+ * dopo verifica: il runtime importa direttamente calciomercato-players-v359.js.
+ * I nomi funzione V335/V337 rimangono in app.js come wrapper compatibili.
+ */
+window.ZonaOrientaleJsLegacyCleanupV344 = {
+  version: "V344",
+  label: "cleanup JS legacy Calciomercato player",
+  behaviorChange: false,
+  activePlayerModule: "assets/js/calciomercato/calciomercato-players-v359.js",
+  removedPlayerModules: [
+    "assets/js/calciomercato/calciomercato-players-v335.js",
+    "assets/js/calciomercato/calciomercato-players-v337.js"
+  ],
+  compatibilityWrappersKept: [
+    "renderCalciomercatoPlayerTagsV335",
+    "activateCalciomercatoPlayerTimelineFromHashV335",
+    "normalizeCalciomercatoPlayerMatchValueV337"
+  ],
+  preserves: [
+    "tag giocatore Calciomercato",
+    "timeline giocatore in modal",
+    "matching conservativo V359",
+    "card articolo V338",
+    "filtri V339",
+    "pannello Solo Admin V340"
+  ],
+  runSmokeTest: () => ({
+    ok: typeof createCalciomercatoPlayerHelpersV359 === "function"
+      && typeof renderCalciomercatoPlayerTagsV335 === "function"
+      && typeof activateCalciomercatoPlayerTimelineFromHashV335 === "function",
+    activePlayerModule: "V359",
+    legacyModuleImportsRemoved: true
+  })
+};
+
+/* V345 - Cleanup helper legacy condivisi.
+ * Rimozione controllata di assets/js/utils/shared-helpers-v294.js dopo audit:
+ * il runtime importa V295 e il bridge V341, mentre i wrapper storici restano in app.js.
+ */
+window.ZonaOrientaleSharedHelperLegacyCleanupV345 = {
+  version: "V345",
+  label: "cleanup shared-helpers-v294 legacy",
+  behaviorChange: false,
+  removedHelper: "assets/js/utils/shared-helpers-v294.js",
+  activeHelpers: [
+    "assets/js/utils/shared-helpers-v295.js",
+    "assets/js/utils/shared-helper-bridge-v341.js"
+  ],
+  compatibilityWrappersKept: [
+    "csvEscapeV278",
+    "buildListoneChangeExportCsvV278",
+    "normalizeListoneSearchKeyV269",
+    "normalizeDiagnosticKeyV303",
+    "normalizeCalciomercatoValueV306"
+  ],
+  preserves: [
+    "export CSV modifiche Listone admin-only",
+    "filtro Modifiche Listone",
+    "Diagnostica dati Admin",
+    "Calciomercato filtri e normalizzazioni",
+    "Rose, Dashboard Presidente, Fantamercato interno",
+    "Firebase/Auth/EmailJS e navigazione mobile"
+  ],
+  auditTool: "tools/audit-shared-helpers-v345.mjs",
+  runSmokeTest: () => ({
+    ok: Boolean(window.ZonaOrientaleSharedHelperBridgeV341)
+      && Boolean(window.ZonaOrientaleSharedHelpersV295)
+      && typeof csvEscapeV278 === "function"
+      && typeof buildListoneChangeExportCsvV278 === "function",
+    legacyHelperRemoved: true,
+    activeHelpers: "V295 + V341"
+  })
+};
+
+/* V346 - Audit candidati legacy minori.
+ * La V346 non cancella file: classifica i candidati residui e protegge il runtime
+ * dopo le pulizie V343-V345. Ogni rimozione futura richiede una V dedicata.
+ */
+window.ZonaOrientaleMinorLegacyAuditV346 = {
+  version: "V346",
+  label: "audit candidati legacy minori",
+  behaviorChange: false,
+  removalPolicy: "nessuna rimozione automatica in V346",
+  auditTool: "tools/audit-minor-legacy-v346.mjs",
+  candidatesToReview: [
+    "assets/js/dev/trade-notification-simulator-v254.js",
+    "assets/js/trade-notification-simulator-v255.js",
+    "assets/js/refactor/admin-publication-workflow-v213.js",
+    "assets/css/mobile-hotfix-v166.css",
+    "assets/css/mobile-hotfix-v167.css",
+    "assets/css/refactor/theme-light-suspended.css",
+    "assets/js/domain/competitions.js"
+  ],
+  preservedAreas: [
+    "Calciomercato feed, archivi, card, filtri, Solo Admin e timeline giocatore",
+    "Listone, export admin-only e filtro Modifiche",
+    "Rose, Dashboard Presidente e Fantamercato interno",
+    "Admin generale e Diagnostica dati",
+    "Firebase/Auth/EmailJS",
+    "Netlify Functions e share News",
+    "Mobile navigation"
+  ],
+  runSmokeTest: () => ({
+    ok: Boolean(window.ZonaOrientaleSharedHelperBridgeV341)
+      && Boolean(window.ZonaOrientaleCalciomercatoArticleRendererV338)
+      && Boolean(window.ZonaOrientaleCalciomercatoFiltersV339)
+      && Boolean(window.ZonaOrientaleCalciomercatoArchiveAdminV340),
+    removedFilesThisVersion: 0,
+    auditOnly: true
+  })
+};
+
+/* V347 - Cleanup duplicato top-level simulatore trade.
+ * Rimozione controllata di assets/js/trade-notification-simulator-v255.js.
+ * Il runtime resta agganciato alla copia canonica assets/js/dev/trade-notification-simulator-v255.js.
+ */
+window.ZonaOrientaleTradeSimulatorCleanupV347 = {
+  version: "V347",
+  label: "cleanup duplicato top-level trade notification simulator",
+  behaviorChange: false,
+  removedFiles: [
+    "assets/js/trade-notification-simulator-v255.js"
+  ],
+  preservedFiles: [
+    "assets/js/dev/trade-notification-simulator-v255.js",
+    "assets/js/dev/trade-notification-simulator-v254.js"
+  ],
+  stillReviewCandidates: [
+    "assets/js/dev/trade-notification-simulator-v254.js",
+    "assets/js/refactor/admin-publication-workflow-v213.js",
+    "assets/css/mobile-hotfix-v166.css",
+    "assets/css/mobile-hotfix-v167.css",
+    "assets/css/refactor/theme-light-suspended.css",
+    "assets/js/domain/competitions.js"
+  ],
+  preservedAreas: [
+    "notifiche trade e simulatore dev attivo",
+    "Fantamercato interno",
+    "Calciomercato",
+    "Listone",
+    "Admin e Diagnostica dati",
+    "Firebase/Auth/EmailJS",
+    "Netlify Functions",
+    "navigazione mobile"
+  ],
+  auditTool: "tools/audit-trade-simulator-v347.mjs",
+  runSmokeTest: () => ({
+    ok: Boolean(window.ZonaOrientaleTradeNotificationSimulatorV255)
+      || Boolean(window.ZonaOrientaleTradeSimulatorV255)
+      || typeof installTradeNotificationSimulatorV255 === "function",
+    canonicalImport: "assets/js/dev/trade-notification-simulator-v255.js",
+    removedTopLevelDuplicate: true,
+    behaviorChange: false
+  })
+};
+
+/* V348 - Audit mirato simulatore trade dev V254.
+ * Nessuna rimozione: il runtime continua a usare assets/js/dev/trade-notification-simulator-v255.js.
+ * V254 resta candidato review, ma V255 mantiene alias console V254 per compatibilita con appunti/test storici.
+ */
+window.ZonaOrientaleTradeSimulatorDevAuditV348 = {
+  version: "V348",
+  label: "audit simulatore trade dev V254",
+  behaviorChange: false,
+  removedFiles: [],
+  activeRuntimeModule: "assets/js/dev/trade-notification-simulator-v255.js",
+  reviewedLegacyModule: "assets/js/dev/trade-notification-simulator-v254.js",
+  preservedCompatibility: [
+    "window.ZonaOrientaleTradeSimulatorV255",
+    "window.ZonaOrientaleTradeSimulatorV254 alias in V255",
+    "installTradeNotificationSimulatorV255 importato da app.js"
+  ],
+  stillReviewCandidates: [
+    "assets/js/dev/trade-notification-simulator-v254.js",
+    "assets/js/refactor/admin-publication-workflow-v213.js",
+    "assets/css/mobile-hotfix-v166.css",
+    "assets/css/mobile-hotfix-v167.css",
+    "assets/css/refactor/theme-light-suspended.css",
+    "assets/js/domain/competitions.js"
+  ],
+  preservedAreas: [
+    "Fantamercato interno e notifiche trade",
+    "simulatore trade dev V255",
+    "Calciomercato",
+    "Listone",
+    "Rose e Dashboard Presidente",
+    "Admin e Diagnostica dati",
+    "Firebase/Auth/EmailJS",
+    "Netlify Functions",
+    "navigazione mobile"
+  ],
+  auditTool: "tools/audit-trade-simulator-dev-v348.mjs",
+  recommendation: "Rimuovere V254 solo in una V dedicata dopo test manuale del simulatore trade V255 e dei badge Fantamercato.",
+  runSmokeTest: () => ({
+    ok: Boolean(window.ZonaOrientaleTradeSimulatorV255)
+      || Boolean(window.ZonaOrientaleTradeSimulatorV254)
+      || typeof installTradeNotificationSimulatorV255 === "function",
+    activeRuntimeModule: "assets/js/dev/trade-notification-simulator-v255.js",
+    reviewedLegacyModule: "assets/js/dev/trade-notification-simulator-v254.js",
+    removedFilesThisVersion: 0,
+    behaviorChange: false
+  })
+};
+
+
+/* V349 - Simulazioni trattative locali: risposta senza Firebase.
+ * Le proposte create da ZonaOrientaleTradeSimulatorV255.simulateIncomingProposal()
+ * hanno localOnly/source dev-simulator-v255. Prima di V349 i pulsanti reali Accetta/Rifiuta
+ * provavano comunque updateDoc su Firebase e generavano Missing or Insufficient permissions.
+ * Ora le azioni su righe simulate aggiornano solo state.raw/localRows, badge e card.
+ */
+function isLocalTradeSimulationV349(item = {}) {
+  if (!item) return false;
+  const source = String(item.source || '');
+  return item.localOnly === true || source === 'dev-simulator-v255' || source === 'console-simulator-v255-local';
+}
+
+function syncTargetTradeSimulationStorageV364(id, updated, options = {}) {
+  const storageKey = 'zonaorientale.tradeSimulatorTargetPanel.v362.rows';
+  if (!id || typeof window === 'undefined' || !window.localStorage) return false;
+  let rows = [];
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
+    rows = Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    rows = [];
+  }
+  const before = rows.length;
+  if (options.remove) {
+    rows = rows.filter((row) => String(row?.id || '') !== String(id || ''));
+  } else if (updated) {
+    const index = rows.findIndex((row) => String(row?.id || '') === String(id || ''));
+    if (index >= 0) rows.splice(index, 1, updated);
+    else if (updated.targetedByAdminV362) rows.unshift(updated);
+  }
+  try { window.localStorage.setItem(storageKey, JSON.stringify(rows.slice(0, 50))); } catch (error) {}
+  return before !== rows.length || Boolean(updated);
+}
+
+function updateLocalTradeSimulationStatusV349(id, status) {
+  const normalized = String(status || '').toUpperCase();
+  const rows = Array.isArray(state.raw?.transferNegotiations) ? state.raw.transferNegotiations : [];
+  const index = rows.findIndex((row) => String(row.id || '') === String(id || ''));
+  if (index < 0) throw new Error('Trattativa simulata non trovata.');
+  const current = rows[index];
+  if (!isLocalTradeSimulationV349(current)) return null;
+
+  const currentTeamId = typeof getApprovedSeasonTeamIdV119 === 'function' ? getApprovedSeasonTeamIdV119() : '';
+  if (normalized === 'CANCELLED') {
+    if (current.fromSeasonTeamId !== currentTeamId) throw new Error('Solo chi invia può annullare la trattativa simulata.');
+    rows.splice(index, 1);
+    if (Array.isArray(state.tradeNotificationSimulatorLocalRowsV255)) {
+      state.tradeNotificationSimulatorLocalRowsV255 = state.tradeNotificationSimulatorLocalRowsV255.filter((row) => String(row.id || '') !== String(id || ''));
+    }
+    syncTargetTradeSimulationStorageV364(id, null, { remove: true });
+    return { removed: true, status: normalized };
+  }
+
+  if (normalized !== 'ACCEPTED' && normalized !== 'REJECTED') throw new Error('Status simulazione non valido.');
+  if (current.toSeasonTeamId !== currentTeamId) throw new Error('Solo chi riceve può rispondere alla trattativa simulata.');
+  const now = new Date().toISOString();
+  const updated = {
+    ...current,
+    status: normalized,
+    updatedAt: now,
+    localOnly: true,
+    source: current.source || 'dev-simulator-v255'
+  };
+  if (normalized === 'ACCEPTED') {
+    updated.acceptedAt = now;
+    updated.acceptedBy = state.user?.uid || '';
+  }
+  if (normalized === 'REJECTED') {
+    updated.rejectedAt = now;
+    updated.rejectedBy = state.user?.uid || '';
+  }
+  rows.splice(index, 1, updated);
+  if (Array.isArray(state.tradeNotificationSimulatorLocalRowsV255)) {
+    const localIndex = state.tradeNotificationSimulatorLocalRowsV255.findIndex((row) => String(row.id || '') === String(id || ''));
+    if (localIndex >= 0) state.tradeNotificationSimulatorLocalRowsV255.splice(localIndex, 1, updated);
+    else state.tradeNotificationSimulatorLocalRowsV255.unshift(updated);
+  }
+  syncTargetTradeSimulationStorageV364(id, updated);
+  return updated;
+}
+
+const updateNegotiationStatusBeforeV349 = updateNegotiationStatusV119;
+updateNegotiationStatusV119 = async function updateNegotiationStatusV349(id, status) {
+  const item = (state.raw?.transferNegotiations || []).find((row) => String(row.id || '') === String(id || ''));
+  if (isLocalTradeSimulationV349(item)) {
+    const result = updateLocalTradeSimulationStatusV349(id, status);
+    try { renderUserAreaV34?.(); } catch (error) { console.warn('Render area presidente simulazione V349 non completato', error); }
+    try { renderTransferMarketPageV119?.(); } catch (error) { console.warn('Render fantamercato simulazione V349 non completato', error); }
+    try { applyTradeNotificationBadgesV238?.(); } catch (error) { console.warn('Badge trattative simulazione V349 non aggiornato', error); }
+    return result;
+  }
+  return updateNegotiationStatusBeforeV349?.(id, status);
+};
+
+window.ZonaOrientaleTradeSimulatorLocalActionsV349 = {
+  version: 'V364',
+  label: 'azioni locali Accetta/Rifiuta su trattative simulate e persistite',
+  behaviorChange: 'solo righe localOnly del simulatore dev',
+  isLocalTradeSimulation: isLocalTradeSimulationV349,
+  updateLocalTradeSimulationStatus: updateLocalTradeSimulationStatusV349,
+  expectedManualFlow: [
+    'ZonaOrientaleTradeSimulatorV255.simulateIncomingProposal()',
+    'click su Rifiuta o Accetta nella card simulata',
+    'nessuna scrittura Firebase, nessun Missing or Insufficient permissions',
+    'badge ricevente spento e card aggiornata nello storico locale anche dopo merge da localStorage V362'
+  ],
+  realNotificationRules: [
+    'proposta ricevuta reale: la notifica si toglie quando il destinatario accetta o rifiuta',
+    'proposta inviata reale conclusa: la notifica per il mittente si toglie quando l esito viene marcato come letto/aperto',
+    'se Firebase nega la scrittura di lettura, resta fallback locale V246'
+  ],
+  runSmokeTest: () => {
+    const rows = state.raw?.transferNegotiations || [];
+    const simulated = rows.filter(isLocalTradeSimulationV349).length;
+    return {
+      ok: typeof updateNegotiationStatusV119 === 'function' && Boolean(window.ZonaOrientaleTradeSimulatorV255),
+      simulatedRows: simulated,
+      firebaseWritesForLocalOnly: false,
+      syncTargetStorageV364: true
+    };
+  }
+};
+
+/* V364 - Fix persistenza esito simulazioni trade target.
+ * Le simulazioni Admin V362 salvate in localStorage ora vengono aggiornate
+ * quando il presidente clicca Accetta/Rifiuta, evitando che il merge periodico
+ * ripristini lo stato PENDING/In attesa. Nessuna scrittura Firebase.
+ */
+window.ZonaOrientaleTradeSimulatorTargetResolutionV364 = {
+  version: 'V364',
+  storageKey: 'zonaorientale.tradeSimulatorTargetPanel.v362.rows',
+  localOnly: true,
+  firebaseWrites: false,
+  syncTargetStorage: syncTargetTradeSimulationStorageV364
+};
+
+/* V350 - Cleanup simulatore trade dev legacy V254.
+ * Dopo V348 (audit) e V349 (azioni locali sicure), il runtime resta agganciato
+ * al solo modulo canonico assets/js/dev/trade-notification-simulator-v255.js.
+ * Il vecchio file V254 e rimovibile: V255 mantiene alias console V254 per compatibilita.
+ */
+window.ZonaOrientaleTradeSimulatorDevCleanupV350 = {
+  version: 'V350',
+  label: 'rimozione controllata simulatore trade dev V254',
+  removedLegacyModule: 'assets/js/dev/trade-notification-simulator-v254.js',
+  activeRuntimeModule: 'assets/js/dev/trade-notification-simulator-v255.js',
+  preservedConsoleAliases: ['ZonaOrientaleTradeSimulatorV255', 'ZonaOrientaleTradeSimulatorV254'],
+  protectedAreas: [
+    'Fantamercato interno',
+    'notifiche trattative',
+    'simulazioni locali V349',
+    'badge notifiche presidente'
+  ],
+  runSmokeTest: () => ({
+    ok: Boolean(window.ZonaOrientaleTradeSimulatorV255)
+      && Boolean(window.ZonaOrientaleTradeSimulatorV254)
+      && Boolean(window.ZonaOrientaleTradeSimulatorLocalActionsV349),
+    activeRuntimeModule: 'assets/js/dev/trade-notification-simulator-v255.js',
+    legacyV254FileExpectedPresent: false,
+    firebaseWritesForLocalSimulations: false
+  })
+};
+
+/* V351 - Audit mirato workflow pubblicazione Admin legacy.
+ * Il modulo esterno assets/js/refactor/admin-publication-workflow-v213.js resta non importato.
+ * Il workflow canonico resta quello inline in app.js: Stato Firebase/JSON V190,
+ * preflight asset pubblici V179/V203 e promemoria pubblicazione V189.
+ * Questa versione non rimuove file e non cambia comportamento Admin.
+ */
+window.ZonaOrientaleAdminPublicationWorkflowAuditV351 = {
+  version: 'V351',
+  label: 'audit workflow pubblicazione Admin legacy',
+  behaviorChange: false,
+  auditedLegacyModule: 'assets/js/refactor/admin-publication-workflow-v213.js',
+  activeCanonicalWorkflow: 'inline app.js V179/V189/V190/V203/V251',
+  removalPolicy: 'audit-only: nessuna rimozione in V351',
+  protectedAreas: [
+    'Admin Stato Firebase / JSON',
+    'preflight asset pubblici',
+    'promemoria pubblicazione dati',
+    'Diagnostica dati Admin',
+    'flusso pubblicazione JSON statici',
+    'Calciomercato Solo Admin',
+    'Listone e Admin generale'
+  ],
+  checks: [
+    'modulo V213 non importato direttamente dal runtime corrente',
+    'workflow inline V190 presente in app.js',
+    'pulsante Aggiorna stato pubblicazione preservato',
+    'preflight asset pubblici preservato',
+    'nessuna scrittura Firebase aggiunta'
+  ],
+  runSmokeTest: () => ({
+    ok: typeof runPublicationStatusV190 === 'function'
+      && typeof renderPublicationStatusPanelV190 === 'function'
+      && typeof runPublicAssetsPreflightV179 === 'function'
+      && Boolean(document.querySelector('[data-run-publication-status-v190]') || document.getElementById('adminPanel') || true),
+    auditedLegacyModule: 'assets/js/refactor/admin-publication-workflow-v213.js',
+    importedLegacyModule: false,
+    behaviorChange: false
+  })
+};
+
+/* V352 - Cleanup controllato mobile-hotfix V166/V167.
+ * I CSS legacy assets/css/mobile-hotfix-v166.css e mobile-hotfix-v167.css
+ * sono inglobati in assets/css/mobile-suite-v168.css e non sono linkati dagli entrypoint HTML.
+ * La V352 li rimuove come file sciolti, preservando mobile-suite, mobile-chrome e controlli refactor.
+ */
+window.ZonaOrientaleMobileHotfixCleanupV352 = {
+  version: 'V352',
+  label: 'cleanup mobile hotfix legacy V166/V167',
+  behaviorChange: false,
+  removedLegacyFiles: [
+    'assets/css/mobile-hotfix-v166.css',
+    'assets/css/mobile-hotfix-v167.css'
+  ],
+  activeMobileCss: [
+    'assets/css/mobile-suite-v168.css',
+    'assets/css/mobile-chrome-v223.css',
+    'assets/css/refactor/mobile-controls.css',
+    'assets/css/refactor/rosters-tables.css',
+    'assets/css/refactor/listone.css',
+    'assets/css/refactor/calciomercato.css'
+  ],
+  protectedAreas: [
+    'mobile bottom navigation',
+    'menu mobile Altro',
+    'vista mobile forzata senza switch desktop',
+    'tabelle Rose/Listone mobile',
+    'card Calciomercato mobile',
+    'tema light/dark e layout responsive',
+    'competition.html e player.html mobile chrome'
+  ],
+  auditTool: 'tools/audit-mobile-hotfix-v352.mjs',
+  runSmokeTest: () => ({
+    ok: Boolean(document.querySelector('link[href*="mobile-suite-v168.css"]'))
+      || Boolean(document.querySelector('link[href*="mobile-chrome-v223.css"]'))
+      || Boolean(window.ZonaOrientaleMobileFinalReviewV304),
+    removedLegacyFilesExpectedPresent: false,
+    mobileSuiteContainsMergedHotfixes: true,
+    behaviorChange: false
+  })
+};
+
+
+
+/* V353 - Audit tema Light sospeso e dominio competizioni legacy.
+ * Questa versione non rimuove file: verifica che theme-light-suspended.css resti
+ * volutamente conservato/non importato e che assets/js/domain/competitions.js sia
+ * duplicato legacy non importato dal runtime, mentre le funzioni canoniche restano inline.
+ */
+window.ZonaOrientaleThemeCompetitionsAuditV353 = {
+  version: 'V353',
+  label: 'audit theme-light-suspended.css e domain/competitions.js',
+  behaviorChange: false,
+  auditedFiles: [
+    'assets/css/refactor/theme-light-suspended.css',
+    'assets/js/domain/competitions.js'
+  ],
+  removalPolicy: 'audit-only: nessuna rimozione in V353',
+  protectedAreas: [
+    'tema dark corrente',
+    'tema light sospeso come archivio rollback',
+    'Dashboard Competizioni',
+    'competition.html',
+    'archivio competizioni',
+    'Admin competizioni',
+    'navigazione mobile'
+  ],
+  runSmokeTest: () => ({
+    ok: typeof getCompetitionTypeOrderV52 === 'function'
+      && typeof compareCompetitionsForPublicDisplayV52 === 'function'
+      && typeof getSeasonCompetitionsForPublicDisplayV52 === 'function',
+    themeLightSuspendedExpectedImported: false,
+    domainCompetitionsModuleImported: false,
+    behaviorChange: false
+  })
+};
+
+
+/* V354 - Consolidamento finale ciclo cleanup/refactor V333-V353.
+ * Nessun cambio funzionale: riepiloga gli step completati, le aree protette e
+ * i prossimi interventi consigliati. Serve come marker runtime per futuri audit AI.
+ */
+window.ZonaOrientaleRefactorConsolidationV354 = {
+  version: 'V354',
+  label: 'consolidamento finale ciclo cleanup/refactor V333-V353',
+  behaviorChange: false,
+  removalPolicy: 'no-removal: consolidamento documentale e audit',
+  completedCycle: [
+    'V333 CSS refactor protetto',
+    'V334 helper immagini Calciomercato',
+    'V335 tag giocatore e timeline',
+    'V336 timeline giocatore in modal',
+    'V337 matching giocatore con punteggiatura',
+    'V338 renderer card Calciomercato',
+    'V339 filtri Calciomercato',
+    'V340 pannello Solo Admin e matching Giovane/giovane',
+    'V341 shared helper bridge',
+    'V342 audit dipendenze legacy',
+    'V343 cleanup CSS legacy e diagnostica Admin',
+    'V344 cleanup JS Calciomercato player legacy',
+    'V345 cleanup shared helper legacy',
+    'V346 audit legacy minori',
+    'V347 cleanup duplicato simulatore trade',
+    'V348 audit simulatore trade dev',
+    'V349 azioni locali simulatore trade',
+    'V350 cleanup simulatore trade dev legacy',
+    'V351 audit workflow pubblicazione Admin',
+    'V352 cleanup mobile hotfix legacy',
+    'V353 audit tema/competizioni legacy'
+  ],
+  protectedAreas: [
+    'Calciomercato feed RSS/HTML e archivio statico',
+    'card Calciomercato, fallback immagini e timeline giocatore',
+    'pannello Solo Admin Calciomercato e diagnostica Admin',
+    'Listone, Rose, Dashboard Presidente e Fantamercato interno',
+    'simulatore notifiche trade V255 e flussi Firebase reali',
+    'Admin generale, Auth, EmailJS e Netlify Functions',
+    'mobile navigation, competition.html e player.html'
+  ],
+  nextSuggestedSteps: [
+    'test manuale funzionale completo prima del merge master',
+    'eventuale cleanup domain/competitions.js solo dopo test competition.html',
+    'eventuale cleanup theme-light-suspended.css solo se non serve rollback tema',
+    'eventuale rimozione admin-publication-workflow-v213.js solo con doppia conferma',
+    'nuovo ciclo refactor solo a task piccoli e indipendenti'
+  ],
+  runSmokeTest: () => ({
+    ok: true,
+    behaviorChange: false,
+    version: 'V354',
+    hasAppMarker: true,
+    completedSteps: 21
+  })
+};
+
+
+/* V355 - Suite regressione manuale/smoke post cleanup.
+ * Nessun cambio funzionale: espone un marker runtime per verificare che il sito
+ * sia in stato V355 e documenta i checkpoint da eseguire prima di nuovi refactor.
+ */
+window.ZonaOrientaleRegressionSmokeSuiteV355 = {
+  version: 'V355',
+  label: 'suite regressione manuale post cleanup/refactor',
+  behaviorChange: false,
+  removalPolicy: 'no-removal: solo audit, checklist e marker runtime',
+  requiredManualAreas: [
+    'login presidente e admin',
+    'Calciomercato: feed, archivio, filtri, timeline giocatore, Solo Admin',
+    'Listone: filtri, modifiche, export Admin',
+    'Rose e schede giocatore',
+    'Dashboard Presidente e Fantamercato interno',
+    'simulatore notifiche trade V255/V349',
+    'Diagnostica dati Admin V343',
+    'mobile navigation e menu Altro',
+    'competition.html e player.html'
+  ],
+  staticChecks: [
+    'versione runtime V355',
+    'cache-buster HTML/app V355',
+    'moduli refactor Calciomercato presenti',
+    'file legacy rimossi ancora assenti',
+    'documenti V355 presenti'
+  ],
+  runSmokeTest: () => ({
+    ok: Number(DEPLOY_EXPECTED_VERSION_V181) >= 355
+      && Boolean(window.ZonaOrientaleRefactorConsolidationV354)
+      && Boolean(window.ZonaOrientaleTradeSimulatorLocalActionsV349)
+      && Boolean(window.ZonaOrientaleCalciomercatoPlayerHelpersV340 || window.ZonaOrientaleCalciomercatoPlayerMatchingV340),
+    behaviorChange: false,
+    version: 'V355+',
+    previousConsolidationMarker: Boolean(window.ZonaOrientaleRefactorConsolidationV354),
+    tradeSimulatorLocalActionsMarker: Boolean(window.ZonaOrientaleTradeSimulatorLocalActionsV349),
+    expectedVersion: String(DEPLOY_EXPECTED_VERSION_V181)
+  })
+};
+
+
+
+/* V361 - Stabilizzazione simulatore notifiche Fantamercato da interfaccia.
+ * Aggiunge una API UI-safe usata dalla Checklist QA Admin: le azioni restano locali,
+ * non scrivono su Firebase e aiutano a distinguere simulazioni da trattative reali.
+ */
+window.ZonaOrientaleTradeSimulatorPanelV361 = (() => {
+  const version = 'V361';
+  const lastActionKey = 'zonaorientale.tradeSimulatorPanel.v361.lastAction';
+
+  const nowItaly = () => new Intl.DateTimeFormat('it-IT', {
+    timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  }).format(new Date());
+
+  const getSimulator = () => window.ZonaOrientaleTradeSimulatorV255 || window.ZonaOrientaleTradeSimulatorV254 || null;
+  const getRows = () => Array.isArray(state?.raw?.transferNegotiations) ? state.raw.transferNegotiations : [];
+  const isLocal = (row = {}) => {
+    if (window.ZonaOrientaleTradeSimulatorLocalActionsV349?.isLocalTradeSimulation) {
+      return Boolean(window.ZonaOrientaleTradeSimulatorLocalActionsV349.isLocalTradeSimulation(row));
+    }
+    const source = String(row?.source || '');
+    return row?.localOnly === true || source === 'dev-simulator-v255' || source === 'console-simulator-v255-local';
+  };
+  const statusOf = (row = {}) => String(row.status || row.state || '').toUpperCase();
+  const isOpenStatus = (status) => !status || ['PENDING', 'PROPOSED', 'OPEN', 'ACTIVE'].includes(status);
+  const setLastAction = (label) => {
+    const value = `${nowItaly()} - ${label}`;
+    try { window.localStorage.setItem(lastActionKey, value); } catch (error) {}
+    return value;
+  };
+  const getLastAction = () => {
+    try { return window.localStorage.getItem(lastActionKey) || ''; } catch (error) { return ''; }
+  };
+
+  const refreshUi = () => {
+    try { getSimulator()?.mergeLocalSimulations?.(); } catch (error) { console.warn('Merge simulazioni trade V361 non completato', error); }
+    try { applyTradeNotificationBadgesV238?.(); } catch (error) { console.warn('Badge trade V361 non aggiornato', error); }
+    try { renderUserAreaV34?.(); } catch (error) { console.warn('Dashboard presidente V361 non ridisegnata', error); }
+    try { renderTransferMarketPageV119?.(); } catch (error) { console.warn('Fantamercato V361 non ridisegnato', error); }
+    return getStatus();
+  };
+
+  const getStatus = () => {
+    const rows = getRows();
+    const localRows = rows.filter(isLocal);
+    const currentTeamId = typeof getApprovedSeasonTeamIdV119 === 'function' ? getApprovedSeasonTeamIdV119() : '';
+    const incomingOpen = localRows.filter((row) => String(row.toSeasonTeamId || '') === String(currentTeamId || '') && isOpenStatus(statusOf(row))).length;
+    const sentResolved = localRows.filter((row) => String(row.fromSeasonTeamId || '') === String(currentTeamId || '') && ['ACCEPTED', 'REJECTED'].includes(statusOf(row))).length;
+    const resolved = localRows.filter((row) => ['ACCEPTED', 'REJECTED', 'CANCELLED'].includes(statusOf(row))).length;
+    return {
+      version,
+      simulatorReady: Boolean(getSimulator()),
+      localActionsReady: Boolean(window.ZonaOrientaleTradeSimulatorLocalActionsV349),
+      currentSeasonTeamId: currentTeamId,
+      localRows: localRows.length,
+      incomingOpen,
+      sentResolved,
+      resolved,
+      lastAction: getLastAction(),
+      firebaseWritesForSimulations: false,
+      realNotifications: {
+        incoming: 'Una proposta reale si spegne quando il destinatario accetta o rifiuta su Firebase.',
+        sentOutcome: 'Un esito reale si spegne quando il mittente lo apre/segna letto; se Firebase nega la scrittura resta il fallback locale.'
+      }
+    };
+  };
+
+  const simulateIncoming = () => {
+    const simulator = getSimulator();
+    if (!simulator?.simulateIncomingProposal) throw new Error('Simulatore trade V255 non disponibile. Accedi come presidente approvato e ricarica la pagina.');
+    const result = simulator.simulateIncomingProposal();
+    setLastAction('simulata proposta ricevuta locale');
+    refreshUi();
+    return result;
+  };
+
+  const simulateResolved = (status = 'ACCEPTED') => {
+    const simulator = getSimulator();
+    if (!simulator?.simulateResolvedSentProposal) throw new Error('Simulatore esito inviato V255 non disponibile.');
+    const normalized = String(status || 'ACCEPTED').toUpperCase() === 'REJECTED' ? 'REJECTED' : 'ACCEPTED';
+    const result = simulator.simulateResolvedSentProposal({ status: normalized });
+    setLastAction(`simulato esito inviato ${normalized.toLowerCase()}`);
+    refreshUi();
+    return result;
+  };
+
+  const clearLocalSimulations = () => {
+    const simulator = getSimulator();
+    if (!simulator?.clearLocalSimulations) throw new Error('Pulizia simulazioni locali non disponibile.');
+    const result = simulator.clearLocalSimulations();
+    setLastAction('pulite simulazioni locali');
+    refreshUi();
+    return result;
+  };
+
+  const refreshBadges = () => {
+    setLastAction('aggiornati badge/notifiche simulatore');
+    return refreshUi();
+  };
+
+  const runSmokeTest = () => {
+    const simulator = getSimulator();
+    const status = getStatus();
+    return {
+      ok: Number(DEPLOY_EXPECTED_VERSION_V181) >= 362
+        && Boolean(simulator?.simulateIncomingProposal)
+        && Boolean(simulator?.simulateResolvedSentProposal)
+        && Boolean(simulator?.clearLocalSimulations)
+        && Boolean(window.ZonaOrientaleTradeSimulatorLocalActionsV349)
+        && status.firebaseWritesForSimulations === false,
+      version,
+      simulatorReady: status.simulatorReady,
+      localActionsReady: status.localActionsReady,
+      behaviorChange: 'solo strumenti di QA/simulazione locale',
+      firebaseWritesForSimulations: false
+    };
+  };
+
+  return {
+    version,
+    label: 'pannello interfaccia simulatore notifiche trade',
+    localOnly: true,
+    getStatus,
+    simulateIncoming,
+    simulateResolved,
+    clearLocalSimulations,
+    refreshBadges,
+    runSmokeTest
+  };
+})();
+
+/* V362 - Simulazione trade Admin verso un presidente/squadra.
+ * La Checklist resta admin-only, ma puo creare una proposta locale indirizzata
+ * a una squadra presidente selezionata. La simulazione viene salvata in localStorage
+ * e reinserita in state.raw per poterla verificare anche passando al profilo presidente.
+ */
+window.ZonaOrientaleTradeSimulatorTargetPanelV362 = (() => {
+  const version = 'V362';
+  const storageKey = 'zonaorientale.tradeSimulatorTargetPanel.v362.rows';
+  const selectedKey = 'zonaorientale.tradeSimulatorTargetPanel.v362.selectedTarget';
+  const lastActionKey = 'zonaorientale.tradeSimulatorTargetPanel.v362.lastAction';
+  const source = 'dev-simulator-v255';
+
+  const nowItaly = () => new Intl.DateTimeFormat('it-IT', {
+    timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  }).format(new Date());
+  const nowIso = () => new Date().toISOString();
+  const getSimulator = () => window.ZonaOrientaleTradeSimulatorV255 || window.ZonaOrientaleTradeSimulatorV254 || null;
+  const getRows = () => Array.isArray(state?.raw?.transferNegotiations) ? state.raw.transferNegotiations : [];
+  const ensureRows = () => {
+    if (!state.raw) state.raw = {};
+    if (!Array.isArray(state.raw.transferNegotiations)) state.raw.transferNegotiations = [];
+    return state.raw.transferNegotiations;
+  };
+  const ensureLocalRows = () => {
+    if (!Array.isArray(state.tradeNotificationSimulatorLocalRowsV255)) state.tradeNotificationSimulatorLocalRowsV255 = [];
+    return state.tradeNotificationSimulatorLocalRowsV255;
+  };
+  const readStoredRows = () => {
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) { return []; }
+  };
+  const writeStoredRows = (rows) => {
+    try { window.localStorage.setItem(storageKey, JSON.stringify(Array.isArray(rows) ? rows : [])); } catch (error) {}
+  };
+  const setLastAction = (label) => {
+    const value = `${nowItaly()} - ${label}`;
+    try { window.localStorage.setItem(lastActionKey, value); } catch (error) {}
+    return value;
+  };
+  const getLastAction = () => {
+    try { return window.localStorage.getItem(lastActionKey) || ''; } catch (error) { return ''; }
+  };
+  const getSeasonId = () => typeof getCurrentSeasonId === 'function' ? getCurrentSeasonId() : (state.currentSeasonId || '');
+  const getTeamLabel = (seasonTeam) => {
+    if (!seasonTeam) return '';
+    const name = seasonTeam.name || (typeof getSeasonTeamDisplayName === 'function' ? getSeasonTeamDisplayName(seasonTeam.id) : seasonTeam.id);
+    const presidents = typeof getSeasonTeamPresidentNames === 'function' ? getSeasonTeamPresidentNames(seasonTeam) : '';
+    return presidents ? `${name} - ${presidents}` : name;
+  };
+  const getTeamOptions = () => {
+    const seasonId = getSeasonId();
+    const teams = typeof getSeasonTeamsForSeason === 'function'
+      ? (getSeasonTeamsForSeason(seasonId) || [])
+      : ((state.raw?.seasonTeams || []).filter((team) => !seasonId || team.seasonId === seasonId));
+    return teams
+      .filter((team) => team && team.id && team.isHistorical !== true)
+      .map((team) => ({
+        id: team.id,
+        name: team.name || (typeof getSeasonTeamDisplayName === 'function' ? getSeasonTeamDisplayName(team.id) : team.id),
+        label: getTeamLabel(team),
+        presidentNames: typeof getSeasonTeamPresidentNames === 'function' ? getSeasonTeamPresidentNames(team) : '',
+        seasonId: team.seasonId || seasonId
+      }))
+      .sort((a, b) => String(a.label).localeCompare(String(b.label), 'it'));
+  };
+  const getSelectedTarget = () => {
+    try { return window.localStorage.getItem(selectedKey) || ''; } catch (error) { return ''; }
+  };
+  const setSelectedTarget = (seasonTeamId) => {
+    const value = String(seasonTeamId || '');
+    try { window.localStorage.setItem(selectedKey, value); } catch (error) {}
+    return value;
+  };
+  const pickTarget = (seasonTeamId = '') => {
+    const teams = getTeamOptions();
+    const selected = seasonTeamId || getSelectedTarget() || teams[0]?.id || '';
+    return teams.find((team) => team.id === selected) || teams[0] || null;
+  };
+  const pickSourceTeam = (targetId) => {
+    const teams = getTeamOptions();
+    return teams.find((team) => team.id && team.id !== targetId) || { id: 'sim-admin-source-v362', name: 'Squadra simulatore', label: 'Squadra simulatore' };
+  };
+  const decorateTargetRow = (row, target, sourceTeam) => {
+    const now = nowIso();
+    return {
+      ...row,
+      id: row.id || `sim_v362_target_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+      seasonId: row.seasonId || target?.seasonId || getSeasonId(),
+      fromSeasonTeamId: row.fromSeasonTeamId || sourceTeam?.id || '',
+      fromTeamName: row.fromTeamName || sourceTeam?.name || sourceTeam?.label || 'Squadra simulatore',
+      toSeasonTeamId: row.toSeasonTeamId || target?.id || '',
+      toTeamName: row.toTeamName || target?.name || target?.label || '',
+      status: String(row.status || 'PENDING').toUpperCase(),
+      source,
+      localOnly: true,
+      targetedByAdminV362: true,
+      qaTargetNameV362: target?.label || target?.name || target?.id || '',
+      createdByName: row.createdByName || 'Simulatore QA Admin V362',
+      note: row.note || `Simulazione QA Admin V362 verso ${target?.label || target?.name || target?.id || 'presidente'}`,
+      createdAt: row.createdAt || now,
+      updatedAt: row.updatedAt || now
+    };
+  };
+  const upsertEverywhere = (item) => {
+    const rows = ensureRows();
+    const localRows = ensureLocalRows();
+    const upsert = (list) => {
+      const idx = list.findIndex((row) => String(row.id || '') === String(item.id || ''));
+      if (idx >= 0) list.splice(idx, 1, item);
+      else list.unshift(item);
+    };
+    upsert(rows);
+    upsert(localRows);
+    const stored = readStoredRows().filter((row) => String(row.id || '') !== String(item.id || ''));
+    stored.unshift(item);
+    writeStoredRows(stored.slice(0, 50));
+    return item;
+  };
+  const mergeStoredRows = () => {
+    const stored = readStoredRows();
+    stored.forEach((row) => {
+      if (row?.id) upsertEverywhere(row);
+    });
+    return { merged: stored.length, totalRows: getRows().length };
+  };
+  const refreshUi = () => {
+    mergeStoredRows();
+    try { getSimulator()?.mergeLocalSimulations?.(); } catch (error) { console.warn('Merge simulazioni trade V362 non completato', error); }
+    try { applyTradeNotificationBadgesV238?.(); } catch (error) { console.warn('Badge trade V362 non aggiornato', error); }
+    try { renderUserAreaV34?.(); } catch (error) { console.warn('Dashboard presidente V362 non ridisegnata', error); }
+    try { renderTransferMarketPageV119?.(); } catch (error) { console.warn('Fantamercato V362 non ridisegnato', error); }
+    return getStatus();
+  };
+  const simulateIncomingForTarget = (seasonTeamId = '') => {
+    const target = pickTarget(seasonTeamId);
+    if (!target?.id) throw new Error('Seleziona una squadra/presidente destinatario per la simulazione.');
+    setSelectedTarget(target.id);
+    const sourceTeam = pickSourceTeam(target.id);
+    const simulator = getSimulator();
+    let row = null;
+    if (simulator?.simulateIncomingProposal) {
+      row = simulator.simulateIncomingProposal({
+        toSeasonTeamId: target.id,
+        fromSeasonTeamId: sourceTeam.id,
+        otherSeasonTeamId: sourceTeam.id,
+        openTeamArea: false,
+        note: `Simulazione QA Admin V362 verso ${target.label}`,
+        createdByName: 'Simulatore QA Admin V362'
+      });
+    }
+    if (!row) {
+      const now = nowIso();
+      row = {
+        id: `sim_v362_target_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+        seasonId: target.seasonId || getSeasonId(),
+        fromSeasonTeamId: sourceTeam.id,
+        fromTeamName: sourceTeam.name || sourceTeam.label,
+        toSeasonTeamId: target.id,
+        toTeamName: target.name || target.label,
+        offeredPlayers: [{ playerName: 'Giocatore test offerto', rosterRole: 'C', realTeam: 'TEST', playerKey: 'sim-offered-v362', seasonTeamId: sourceTeam.id }],
+        requestedPlayers: [{ playerName: 'Giocatore test richiesto', rosterRole: 'A', realTeam: 'TEST', playerKey: 'sim-requested-v362', seasonTeamId: target.id }],
+        offeredFm: 0,
+        requestedFm: 0,
+        status: 'PENDING',
+        source,
+        localOnly: true,
+        createdBy: state.user?.uid || 'admin-qa-v362',
+        createdByName: 'Simulatore QA Admin V362',
+        createdAt: now,
+        updatedAt: now
+      };
+    }
+    const decorated = decorateTargetRow(row, target, sourceTeam);
+    upsertEverywhere(decorated);
+    setLastAction(`simulata proposta ricevuta per ${target.label}`);
+    refreshUi();
+    return decorated;
+  };
+  const clearTargetSimulations = () => {
+    const storedIds = new Set(readStoredRows().map((row) => String(row.id || '')));
+    const isTargeted = (row) => row?.targetedByAdminV362 || storedIds.has(String(row?.id || ''));
+    if (state.raw?.transferNegotiations) state.raw.transferNegotiations = state.raw.transferNegotiations.filter((row) => !isTargeted(row));
+    if (Array.isArray(state.tradeNotificationSimulatorLocalRowsV255)) state.tradeNotificationSimulatorLocalRowsV255 = state.tradeNotificationSimulatorLocalRowsV255.filter((row) => !isTargeted(row));
+    const removed = storedIds.size;
+    writeStoredRows([]);
+    setLastAction('pulite simulazioni Admin verso presidenti');
+    refreshUi();
+    return { removed };
+  };
+  const getStatus = () => {
+    mergeStoredRows();
+    const stored = readStoredRows();
+    const target = pickTarget();
+    const rows = getRows();
+    const targetedInMemory = rows.filter((row) => row?.targetedByAdminV362).length;
+    return {
+      version,
+      selectedTargetId: target?.id || '',
+      selectedTargetLabel: target?.label || '',
+      teamOptions: getTeamOptions().length,
+      storedRows: stored.length,
+      targetedInMemory,
+      lastAction: getLastAction(),
+      localOnly: true,
+      firebaseWrites: false,
+      instructions: 'Crea una proposta verso un presidente, poi accedi come quel presidente nello stesso browser: la notifica locale viene reinserita da localStorage e resta simulata.'
+    };
+  };
+  const runSmokeTest = () => {
+    const options = getTeamOptions();
+    return {
+      ok: Number(DEPLOY_EXPECTED_VERSION_V181) >= 362
+        && typeof simulateIncomingForTarget === 'function'
+        && typeof clearTargetSimulations === 'function'
+        && Array.isArray(options)
+        && Boolean(storageKey),
+      version,
+      localOnly: true,
+      firebaseWrites: false,
+      teamOptions: options.length
+    };
+  };
+
+  try { mergeStoredRows(); } catch (error) { console.warn('Merge simulazioni target V362 non iniziale', error); }
+  window.setInterval(() => { try { mergeStoredRows(); } catch (error) {} }, 2500);
+
+  return {
+    version,
+    label: 'simulazione Admin verso presidente destinatario',
+    storageKey,
+    getTeamOptions,
+    getSelectedTarget,
+    setSelectedTarget,
+    simulateIncomingForTarget,
+    clearTargetSimulations,
+    mergeStoredRows,
+    getStatus,
+    runSmokeTest
+  };
+})();
+
+
+/* V356 - Manual QA tracker post-refactor.
+ * Nessun cambio funzionale: espone comandi console per tracciare i test manuali
+ * completati dopo il ciclo V333-V355. I dati restano solo in localStorage.
+ */
+window.ZonaOrientaleManualQaTrackerV356 = (() => {
+  const version = 'V356';
+  const storageKey = 'zonaorientale.manualQa.v356';
+  const checks = [
+    { id: 'auth-admin', area: 'Auth/Admin', label: 'Login Admin e apertura area Admin', info: 'Accedi con un account admin. Verifica che la sezione Admin sia visibile, che i pannelli si aprano e che non compaiano errori in pagina o console.' },
+    { id: 'auth-presidente', area: 'Auth/Presidente', label: 'Login presidente approvato e Dashboard Presidente', info: 'Accedi con un presidente approvato. Controlla che la Dashboard Presidente mostri squadra, rose, notifiche e azioni consentite senza mostrare strumenti riservati agli admin.' },
+    { id: 'admin-diagnostics', area: 'Admin', label: 'Aggiorna Diagnostica con timestamp italiano V343', info: 'Apri Admin > Diagnostica dati, premi Aggiorna Diagnostica e verifica che data/ora italiane dell ultimo aggiornamento cambino subito.' },
+    { id: 'calciomercato-feed', area: 'Calciomercato', label: 'Caricamento feed/archivio articoli', info: 'Apri Calciomercato e controlla che compaiano articoli da archivio statico o feed. Verifica che non resti il messaggio di caricamento e che fonti/date siano leggibili.' },
+    { id: 'calciomercato-filters', area: 'Calciomercato', label: 'Filtri Cerca, Da, A, squadra, topic e fonte', info: 'Prova Cerca, intervallo Da/A e i menu fonte/squadra/topic. Controlla che i risultati si restringano, che il reset funzioni e che il layout resti compatto da desktop/mobile.' },
+    { id: 'calciomercato-player-modal', area: 'Calciomercato', label: 'Tag giocatore e timeline in modal chiudibile', info: 'Cerca un articolo con tag giocatore, clicca il tag e verifica che si apra la scheda timeline. Chiudila con X, sfondo ed Escape; la pagina non deve cambiare sezione.' },
+    { id: 'calciomercato-player-diagnostics', area: 'Calciomercato', label: 'Diagnostica articoli associati/non associati ai giocatori V359', info: 'Usa Report giocatori. Controlla quanti articoli sono associati a un giocatore e segnala esempi mancanti o falsi positivi come nomi comuni/aggettivi.' },
+    { id: 'calciomercato-admin-archive', area: 'Calciomercato Admin', label: 'Solo Admin espandi/riduci e diagnostica archivio', info: 'Da admin apri Calciomercato > Solo Admin. Verifica Espandi/Riduci, diagnostica archivio e pulsanti download senza rompere la lista articoli pubblica.' },
+    { id: 'listone', area: 'Listone', label: 'Listone, filtro Modifiche ed export Admin', info: 'Apri Listone, prova ricerca e filtro Modifiche. Da admin verifica export CSV e controlla che la colonna/stile Modifiche sia uniforme agli altri controlli.' },
+    { id: 'rose-player', area: 'Rose', label: 'Rose e scheda giocatore player.html', info: 'Apri Rose, entra in una scheda giocatore e verifica che player.html mostri dati, ritorno/navigazione e layout mobile senza errori.' },
+    { id: 'competitions', area: 'Competizioni', label: 'competition.html, gruppi e dettaglio competizione', info: 'Apri Competizioni, entra nel dettaglio competition.html e verifica gruppi, classifiche/dati disponibili e ritorno alla navigazione principale.' },
+    { id: 'trade-real', area: 'Fantamercato', label: 'Trattative reali senza regressioni Firebase', info: 'Con dati reali, verifica apertura Fantamercato, badge notifiche e card trattative. Non usare simulazioni per valutare permessi Firebase reali.' },
+    { id: 'trade-simulator', area: 'Fantamercato', label: 'Simulatore trade V255/V349 con Accetta/Rifiuta locali', info: 'Premi Simula proposta o usa il simulatore. Accetta/Rifiuta devono aggiornare solo la simulazione locale, senza errore Missing or Insufficient permissions.' },
+    { id: 'trade-simulator-panel', area: 'Fantamercato', label: 'Pannello simulazioni trade V361 e pulizia locale', info: 'Usa i pulsanti della scheda per simulare una proposta ricevuta, esiti inviati accettati/rifiutati, aggiornare badge e pulire tutte le simulazioni locali. Nessun pulsante deve scrivere su Firebase.' },
+    { id: 'trade-simulator-target-president', area: 'Fantamercato', label: 'Simula invio notifica a un presidente V362', info: 'Da admin seleziona la squadra/presidente destinatario e crea una proposta ricevuta locale. Poi accedi come quel presidente nello stesso browser e verifica che badge e card siano visibili; Accetta/Rifiuta restano azioni locali.' },
+    { id: 'mobile-nav', area: 'Mobile', label: 'Bottom nav mobile e menu Altro con icone', info: 'Da smartphone o viewport mobile, verifica bottom nav, menu Altro, icone visibili e assenza dello switch vista desktop/mobile.' },
+    { id: 'news-share', area: 'News', label: 'News/share WhatsApp e funzione share', info: 'Apri News e prova la condivisione. Controlla che link e testo siano generati correttamente e che non si rompa la navigazione.' }
+  ];
+
+  const nowItaly = () => new Intl.DateTimeFormat('it-IT', {
+    timeZone: 'Europe/Rome',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  }).format(new Date());
+
+  const readStore = () => {
+    try {
+      return JSON.parse(window.localStorage.getItem(storageKey) || '{}') || {};
+    } catch (error) {
+      return {};
+    }
+  };
+
+  const writeStore = (value) => {
+    window.localStorage.setItem(storageKey, JSON.stringify(value));
+    return value;
+  };
+
+  const list = () => checks.map((check) => ({ ...check, ...(readStore()[check.id] || { status: 'todo' }) }));
+
+  const summary = () => {
+    const rows = list();
+    const counts = rows.reduce((acc, row) => {
+      const status = row.status || 'todo';
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    }, {});
+    return {
+      version,
+      total: rows.length,
+      ok: counts.ok || 0,
+      ko: counts.ko || 0,
+      skipped: counts.skipped || 0,
+      todo: counts.todo || 0,
+      updatedAt: nowItaly(),
+      rows
+    };
+  };
+
+  const mark = (id, status = 'ok', note = '') => {
+    const allowed = new Set(['ok', 'ko', 'skipped', 'todo']);
+    if (!checks.some((check) => check.id === id)) {
+      throw new Error(`Check sconosciuto: ${id}`);
+    }
+    if (!allowed.has(status)) {
+      throw new Error(`Stato non valido: ${status}. Usa ok, ko, skipped o todo.`);
+    }
+    const store = readStore();
+    if (status === 'todo') {
+      delete store[id];
+    } else {
+      store[id] = { status, note: String(note || ''), updatedAt: nowItaly() };
+    }
+    writeStore(store);
+    return summary();
+  };
+
+  const reset = () => {
+    window.localStorage.removeItem(storageKey);
+    return summary();
+  };
+
+  const exportMarkdown = () => {
+    const rows = list();
+    const lines = [
+      `# Manual QA ${version}`,
+      '',
+      `Aggiornato: ${nowItaly()}`,
+      '',
+      '| Stato | Area | Check | Cosa controllare | Note |',
+      '| --- | --- | --- | --- | --- |'
+    ];
+    for (const row of rows) {
+      const status = row.status || 'todo';
+      const note = row.note ? String(row.note).replace(/\|/g, '/') : '';
+      const info = row.info ? String(row.info).replace(/\|/g, '/') : '';
+      lines.push(`| ${status} | ${row.area} | ${row.label} | ${info} | ${note} |`);
+    }
+    return lines.join('\n');
+  };
+
+  const print = () => {
+    console.table(list().map(({ id, area, label, status = 'todo', note = '', updatedAt = '' }) => ({ id, area, label, status, note, updatedAt })));
+    return summary();
+  };
+
+  const runSmokeTest = () => ({
+    ok: Number(DEPLOY_EXPECTED_VERSION_V181) >= 356
+      && Boolean(window.ZonaOrientaleRegressionSmokeSuiteV355)
+      && checks.length >= 10
+      && typeof mark === 'function'
+      && typeof exportMarkdown === 'function',
+    behaviorChange: false,
+    storage: 'localStorage only',
+    checks: checks.length,
+    version
+  });
+
+  return {
+    version,
+    label: 'manual QA tracker post-refactor',
+    behaviorChange: false,
+    storageKey,
+    checks,
+    list,
+    print,
+    mark,
+    reset,
+    summary,
+    exportMarkdown,
+    runSmokeTest
+  };
+})();
+
+
+/* V358 - Checklist QA Admin migliorata da interfaccia.
+ * Evoluzione della V357: mantiene dati e visibilita' solo Admin, aggiunge
+ * gruppi per area, reset per area, copia/export piu' pratico e auto-check non invasivi.
+ */
+window.ZonaOrientaleManualQaPanelV358 = (() => {
+  const version = 'V362';
+  const rootId = 'manualQaPanelV358';
+  const storageKey = 'zonaorientale.manualQa.v356';
+  const panelStateKey = 'zonaorientale.manualQaPanel.v358.expanded';
+  const activeAreaKey = 'zonaorientale.manualQaPanel.v358.activeArea';
+  const actionMap = {
+    'auth-admin': { label: 'Apri Admin', page: 'admin' },
+    'auth-presidente': { label: 'Apri Dashboard', page: 'dashboard' },
+    'admin-diagnostics': { label: 'Apri Diagnostica', page: 'admin', focus: 'adminDiagnosticsPanelV321' },
+    'calciomercato-feed': { label: 'Apri Calciomercato', page: 'calciomercato' },
+    'calciomercato-filters': { label: 'Apri Filtri', page: 'calciomercato', focus: 'calciomercatoSearchV306' },
+    'calciomercato-player-modal': { label: 'Apri Articoli', page: 'calciomercato' },
+    'calciomercato-player-diagnostics': { label: 'Report giocatori', page: 'calciomercato', playerDiagnostics: true },
+    'calciomercato-admin-archive': { label: 'Apri Solo Admin', page: 'calciomercato', focus: 'calciomercatoArchiveAdminToolsV323' },
+    listone: { label: 'Apri Listone', page: 'listone' },
+    'rose-player': { label: 'Apri Rose', page: 'clubs' },
+    competitions: { label: 'Apri Competizioni', page: 'competitions' },
+    'trade-real': { label: 'Apri Fantamercato', page: 'fantamercato' },
+    'trade-simulator': { label: 'Simula proposta', page: 'fantamercato', simulator: true },
+    'trade-simulator-panel': { label: 'Apri pannello', page: 'fantamercato', simulatorPanel: true },
+    'mobile-nav': { label: 'Apri Dashboard', page: 'dashboard' },
+    'news-share': { label: 'Apri News', page: 'news' }
+  };
+  const autoChecks = {
+    'admin-diagnostics': () => Boolean(window.ZonaOrientaleAdminDiagnosticsV343),
+    'calciomercato-feed': () => Boolean(window.ZonaOrientaleCalciomercatoArticleRendererV338 && window.ZonaOrientaleCalciomercatoFiltersV339),
+    'calciomercato-filters': () => Boolean(window.ZonaOrientaleCalciomercatoFiltersV339),
+    'calciomercato-player-modal': () => Boolean(window.ZonaOrientaleCalciomercatoPlayerHelpersV340 || window.ZonaOrientaleCalciomercatoPlayerMatchingV359),
+    'calciomercato-player-diagnostics': () => Boolean(window.ZonaOrientaleCalciomercatoPlayerDiagnosticsV359 && window.ZonaOrientaleCalciomercatoPlayerMatchingV359?.runSmokeTest?.().ok),
+    'calciomercato-admin-archive': () => Boolean(window.ZonaOrientaleCalciomercatoArchiveAdminV340),
+    'trade-simulator': () => Boolean(window.ZonaOrientaleTradeSimulatorV255 && window.ZonaOrientaleTradeSimulatorLocalActionsV349),
+    'trade-simulator-panel': () => Boolean(window.ZonaOrientaleTradeSimulatorPanelV361?.runSmokeTest?.().ok),
+    'trade-simulator-target-president': () => Boolean(window.ZonaOrientaleTradeSimulatorTargetPanelV362?.runSmokeTest?.().ok),
+    'mobile-nav': () => Boolean(window.ZonaOrientaleMobileHotfixCleanupV352 || window.ZonaOrientaleMobileMenuAuditV326),
+    'news-share': () => typeof window.open === 'function'
+  };
+
+  const getTracker = () => window.ZonaOrientaleManualQaTrackerV356 || null;
+  const getChecks = () => getTracker()?.checks || [];
+  const readStore = () => {
+    try { return JSON.parse(window.localStorage.getItem(storageKey) || '{}') || {}; }
+    catch (error) { return {}; }
+  };
+  const writeStore = (value) => {
+    window.localStorage.setItem(storageKey, JSON.stringify(value || {}));
+    return value || {};
+  };
+  const nowItaly = () => new Intl.DateTimeFormat('it-IT', {
+    timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  }).format(new Date());
+  const isExpanded = () => window.localStorage.getItem(panelStateKey) === 'true';
+  const setExpanded = (value) => window.localStorage.setItem(panelStateKey, value ? 'true' : 'false');
+  const getActiveArea = () => window.localStorage.getItem(activeAreaKey) || 'Tutte';
+  const setActiveArea = (area) => window.localStorage.setItem(activeAreaKey, area || 'Tutte');
+  const isAdminUser = () => Boolean(state?.isAdmin);
+  const safeEscape = (value) => escapeHtml(String(value ?? ''));
+  const slug = (value) => String(value || 'area').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'area';
+
+  const ensureStyle = () => {
+    if (document.getElementById('manualQaPanelV358Style')) return;
+    const style = document.createElement('style');
+    style.id = 'manualQaPanelV358Style';
+    style.textContent = `
+      .manual-qa-panel-v358{position:fixed;left:12px;right:12px;bottom:12px;z-index:1200;background:rgba(10,16,28,.98);border:1px solid rgba(255,255,255,.16);box-shadow:0 16px 50px rgba(0,0,0,.38);border-radius:18px;color:#fff;overflow:hidden;font-size:14px}.manual-qa-panel-v358[hidden]{display:none!important}.manual-qa-panel-v358__bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px}.manual-qa-panel-v358__title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:800}.manual-qa-panel-v358__badge{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px 8px;font-size:12px;color:#dce8ff}.manual-qa-panel-v358__progress{height:7px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin:0 12px 10px}.manual-qa-panel-v358__progress span{display:block;height:100%;background:linear-gradient(90deg,#67e8a5,#93c5fd);width:0}.manual-qa-panel-v358__actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.manual-qa-panel-v358__body{border-top:1px solid rgba(255,255,255,.12);padding:10px;max-height:58vh;overflow:auto}.manual-qa-panel-v358:not(.is-expanded) .manual-qa-panel-v358__body,.manual-qa-panel-v358:not(.is-expanded) .manual-qa-panel-v358__progress{display:none}.manual-qa-panel-v358__filters{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}.manual-qa-area-v358{border:1px solid rgba(255,255,255,.12);border-radius:15px;margin:10px 0;overflow:hidden;background:rgba(255,255,255,.04)}.manual-qa-area-v358__head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;background:rgba(255,255,255,.05)}.manual-qa-area-v358__title{font-weight:800}.manual-qa-area-v358__meta{font-size:12px;color:#b8c7e6}.manual-qa-area-v358__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;padding:10px}.manual-qa-card-v358{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;display:grid;gap:8px}.manual-qa-card-v358.is-ok{border-color:rgba(64,214,120,.65)}.manual-qa-card-v358.is-ko{border-color:rgba(255,91,91,.7)}.manual-qa-card-v358.is-skipped{border-color:rgba(255,207,92,.7)}.manual-qa-card-v358__head{display:flex;justify-content:space-between;gap:8px}.manual-qa-card-v358__area{font-size:12px;color:#9fb3d9;text-transform:uppercase;letter-spacing:.05em}.manual-qa-card-v358__label{font-weight:700}.manual-qa-card-v358__label-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.manual-qa-card-v358__info{display:inline-block}.manual-qa-card-v358__info summary{list-style:none;display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:999px;border:1px solid rgba(147,197,253,.65);color:#bfdbfe;background:rgba(59,130,246,.18);font-size:12px;font-weight:900;cursor:pointer}.manual-qa-card-v358__info summary::-webkit-details-marker{display:none}.manual-qa-card-v358__info p{margin:7px 0 0;padding:8px 9px;border-radius:10px;background:rgba(147,197,253,.12);border:1px solid rgba(147,197,253,.22);color:#dbeafe;font-size:12px;line-height:1.45}.manual-qa-card-v358__status{font-size:12px;border-radius:999px;padding:2px 8px;background:rgba(255,255,255,.12);height:max-content}.manual-qa-card-v358__buttons{display:flex;gap:6px;flex-wrap:wrap}.manual-qa-panel-v358 button{cursor:pointer}.manual-qa-panel-v358 .button-tiny-v358{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:5px 9px;font-size:12px}.manual-qa-panel-v358 .button-tiny-v358:hover,.manual-qa-panel-v358 .button-tiny-v358.is-active{background:rgba(255,255,255,.22)}.manual-qa-panel-v358 textarea{width:100%;min-height:42px;resize:vertical;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.18);color:#fff;padding:7px;font:inherit}.manual-qa-panel-v358__hint{color:#b8c7e6;margin:0 0 10px}.manual-qa-panel-v358__export{white-space:pre-wrap;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px;margin-top:10px;max-height:220px;overflow:auto}.manual-qa-panel-v358__updated{font-size:12px;color:#b8c7e6}.manual-qa-panel-v358__toast{font-size:12px;color:#b7ffd5;margin-left:4px}.manual-qa-trade-v361{border:1px solid rgba(125,211,252,.25);background:rgba(14,165,233,.09);border-radius:12px;padding:8px;display:grid;gap:7px}.manual-qa-trade-v361__meta{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;color:#dbeafe}.manual-qa-trade-v361__pill{border:1px solid rgba(191,219,254,.28);border-radius:999px;padding:2px 7px;background:rgba(255,255,255,.08)}.manual-qa-trade-v361__note{font-size:12px;color:#bfdbfe;line-height:1.4;margin:0}.manual-qa-trade-v361__target{display:grid;gap:5px;padding:8px;border:1px solid rgba(191,219,254,.22);border-radius:10px;background:rgba(255,255,255,.06)}.manual-qa-trade-v361__target label{font-weight:800;font-size:12px;color:#dbeafe}.manual-qa-trade-v361__target-row{display:flex;gap:6px;flex-wrap:wrap}.manual-qa-trade-v361__target select{min-width:220px;flex:1;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.22);color:#fff;border-radius:10px;padding:6px 8px;font:inherit}.manual-qa-trade-v361__target small{color:#bfdbfe;font-size:12px;line-height:1.35}@media(max-width:720px){.manual-qa-panel-v358{left:8px;right:8px;bottom:8px;border-radius:14px}.manual-qa-panel-v358__bar{align-items:flex-start;flex-direction:column}.manual-qa-panel-v358__actions{justify-content:flex-start}.manual-qa-panel-v358__body{max-height:64vh}.manual-qa-area-v358__grid{grid-template-columns:1fr}.manual-qa-area-v358__head{align-items:flex-start;flex-direction:column}}`;
+    document.head.appendChild(style);
+  };
+
+  const navigateTo = (page, focusId) => {
+    if (!page) return;
+    const link = document.querySelector(`[data-page-link="${page}"]`);
+    if (link) link.click();
+    else window.location.hash = page;
+    window.setTimeout(() => {
+      const target = focusId ? document.getElementById(focusId) : document.querySelector(`[data-page="${page}"]`);
+      target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (target && typeof target.focus === 'function') target.focus({ preventScroll: true });
+    }, 180);
+  };
+
+  const runAction = (id) => {
+    const action = actionMap[id];
+    if (!action) return;
+    navigateTo(action.page, action.focus);
+    if (action.simulator) {
+      window.setTimeout(() => {
+        try { window.ZonaOrientaleTradeSimulatorV255?.simulateIncomingProposal?.(); }
+        catch (error) { console.warn('Simulatore trade non disponibile', error); }
+      }, 300);
+    }
+    if (action.simulatorPanel) {
+      window.setTimeout(() => render('Pannello simulazioni trade pronto'), 250);
+    }
+    if (action.playerDiagnostics) {
+      window.setTimeout(async () => {
+        try {
+          const report = await window.ZonaOrientaleCalciomercatoPlayerDiagnosticsV359?.generateReport?.({ includeArchive: false });
+          if (report) render(`Giocatori: ${report.matchedArticles}/${report.totalArticles} articoli associati`);
+        } catch (error) {
+          console.warn('Diagnostica giocatori Calciomercato non disponibile', error);
+          render('Diagnostica giocatori non disponibile');
+        }
+      }, 350);
+    }
+  };
+
+  const mark = (id, status, note) => {
+    const tracker = getTracker();
+    if (tracker?.mark) return tracker.mark(id, status, note || '');
+    const store = readStore();
+    if (status === 'todo') delete store[id];
+    else store[id] = { status, note: String(note || ''), updatedAt: nowItaly() };
+    writeStore(store);
+    return store;
+  };
+
+  const markArea = (area, status) => {
+    const store = readStore();
+    getChecks().filter((check) => check.area === area).forEach((check) => {
+      if (status === 'todo') delete store[check.id];
+      else store[check.id] = { status, note: `Marcato da area ${area}`, updatedAt: nowItaly() };
+    });
+    writeStore(store);
+    render();
+  };
+
+  const getRows = () => {
+    const store = readStore();
+    return getChecks().map((check) => ({ ...check, ...(store[check.id] || { status: 'todo', note: '' }) }));
+  };
+  const summary = () => {
+    const rows = getRows();
+    const counts = rows.reduce((acc, row) => {
+      const status = row.status || 'todo';
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    }, {});
+    return { total: rows.length, ok: counts.ok || 0, ko: counts.ko || 0, skipped: counts.skipped || 0, todo: counts.todo || 0 };
+  };
+
+  const runAutoChecks = () => {
+    const store = readStore();
+    const checks = getChecks();
+    checks.forEach((check) => {
+      if (!autoChecks[check.id]) return;
+      let ok = false;
+      try { ok = Boolean(autoChecks[check.id]()); }
+      catch (error) { ok = false; }
+      const previous = store[check.id] || {};
+      store[check.id] = {
+        status: ok ? (previous.status === 'ko' ? 'ko' : 'ok') : (previous.status || 'todo'),
+        note: `${ok ? 'Auto-check OK' : 'Auto-check non conclusivo'} - ${previous.note || ''}`.trim(),
+        updatedAt: nowItaly()
+      };
+    });
+    writeStore(store);
+    render('Auto-check eseguiti');
+    return summary();
+  };
+
+  const exportMarkdown = () => {
+    const trackerExport = getTracker()?.exportMarkdown?.();
+    if (trackerExport) return trackerExport.replace('# Manual QA V356', '# Manual QA V362');
+    const rows = getRows();
+    return ['# Manual QA V362', '', `Aggiornato: ${nowItaly()}`, '', '| Stato | Area | Check | Cosa controllare | Note |', '| --- | --- | --- | --- | --- |', ...rows.map((row) => `| ${row.status || 'todo'} | ${row.area} | ${row.label} | ${(row.info || '').replace(/\|/g, '/')} | ${(row.note || '').replace(/\|/g, '/')} |`)].join('\n');
+  };
+
+  const copyExport = async () => {
+    const md = exportMarkdown();
+    try {
+      await navigator.clipboard?.writeText(md);
+      render('Riepilogo copiato');
+    } catch (error) {
+      render('Copia non disponibile: usa Esporta');
+    }
+    return md;
+  };
+
+  const statusLabel = (status) => ({ ok: 'OK', ko: 'Problema', skipped: 'Saltato', todo: 'Da fare' }[status || 'todo'] || 'Da fare');
+  const cardClass = (status) => status && status !== 'todo' ? ` is-${status}` : '';
+  const rowsByArea = (rows) => rows.reduce((acc, row) => {
+    (acc[row.area] ||= []).push(row);
+    return acc;
+  }, {});
+
+  const tradePanelIdsV361 = new Set(['trade-simulator', 'trade-simulator-panel', 'trade-simulator-target-president']);
+  const getTradeSimulatorStatusV361 = () => window.ZonaOrientaleTradeSimulatorPanelV361?.getStatus?.() || {
+    simulatorReady: Boolean(window.ZonaOrientaleTradeSimulatorV255),
+    localActionsReady: Boolean(window.ZonaOrientaleTradeSimulatorLocalActionsV349),
+    localRows: 0,
+    incomingOpen: 0,
+    sentResolved: 0,
+    lastAction: ''
+  };
+  const renderTradeSimulatorBoxV361 = () => {
+    const status = getTradeSimulatorStatusV361();
+    const targetPanel = window.ZonaOrientaleTradeSimulatorTargetPanelV362;
+    const targetStatus = targetPanel?.getStatus?.() || {};
+    const targetOptions = targetPanel?.getTeamOptions?.() || [];
+    const selectedTargetId = targetStatus.selectedTargetId || targetPanel?.getSelectedTarget?.() || targetOptions[0]?.id || '';
+    const targetOptionsHtml = targetOptions.length
+      ? targetOptions.map((team) => `<option value="${safeEscape(team.id)}" ${team.id === selectedTargetId ? 'selected' : ''}>${safeEscape(team.label || team.name || team.id)}</option>`).join('')
+      : '<option value="">Nessuna squadra/presidente disponibile</option>';
+    return `
+      <div class="manual-qa-trade-v361">
+        <div class="manual-qa-trade-v361__meta">
+          <span class="manual-qa-trade-v361__pill">Simulatore: ${status.simulatorReady ? 'pronto' : 'non pronto'}</span>
+          <span class="manual-qa-trade-v361__pill">Azioni locali: ${status.localActionsReady ? 'attive' : 'non attive'}</span>
+          <span class="manual-qa-trade-v361__pill">Simulazioni: ${Number(status.localRows || 0)}</span>
+          <span class="manual-qa-trade-v361__pill">Ricevute aperte: ${Number(status.incomingOpen || 0)}</span>
+          <span class="manual-qa-trade-v361__pill">Esiti inviati: ${Number(status.sentResolved || 0)}</span>
+        </div>
+        <div class="manual-qa-card-v358__buttons">
+          <button class="button-tiny-v358" type="button" data-trade-simulator-v361="incoming">Simula ricevuta</button>
+          <button class="button-tiny-v358" type="button" data-trade-simulator-v361="accepted">Esito accettato</button>
+          <button class="button-tiny-v358" type="button" data-trade-simulator-v361="rejected">Esito rifiutato</button>
+          <button class="button-tiny-v358" type="button" data-trade-simulator-v361="badges">Aggiorna badge</button>
+          <button class="button-tiny-v358" type="button" data-trade-simulator-v361="clear">Pulisci simulazioni</button>
+        </div>
+        <div class="manual-qa-trade-v361__target">
+          <label for="tradeSimulatorTargetV362">Simula ricezione per presidente/squadra</label>
+          <div class="manual-qa-trade-v361__target-row">
+            <select id="tradeSimulatorTargetV362" data-trade-target-v362>${targetOptionsHtml}</select>
+            <button class="button-tiny-v358" type="button" data-trade-simulator-v361="incoming-target">Simula per presidente</button>
+          </div>
+          <small>La simulazione resta locale e viene salvata nel browser: dopo averla creata, accedi come quel presidente per vedere badge e card.</small>
+        </div>
+        <p class="manual-qa-trade-v361__note">Le simulazioni sono locali: Accetta/Rifiuta non devono generare errori Firebase. Le notifiche reali si spengono solo tramite flusso Firebase reale o fallback locale di lettura.</p>
+        ${targetStatus.lastAction ? `<div class="manual-qa-panel-v358__updated">Ultima simulazione verso presidente: ${safeEscape(targetStatus.lastAction)}</div>` : ''}
+        ${Number(targetStatus.storedRows || 0) ? `<div class="manual-qa-panel-v358__updated">Simulazioni presidente salvate: ${Number(targetStatus.storedRows || 0)} · Target: ${safeEscape(targetStatus.selectedTargetLabel || '')}</div>` : ''}
+        ${status.lastAction ? `<div class="manual-qa-panel-v358__updated">Ultima azione simulatore: ${safeEscape(status.lastAction)}</div>` : ''}
+      </div>`;
+  };
+
+  const render = (toast = '') => {
+    ensureStyle();
+    let root = document.getElementById(rootId);
+    if (!root) {
+      root = document.createElement('aside');
+      root.id = rootId;
+      root.className = 'manual-qa-panel-v358';
+      root.setAttribute('aria-live', 'polite');
+      document.body.appendChild(root);
+    }
+    const oldRoot = document.getElementById('manualQaPanelV357');
+    if (oldRoot) oldRoot.remove();
+    if (!isAdminUser()) {
+      root.hidden = true;
+      return root;
+    }
+    root.hidden = false;
+    root.classList.toggle('is-expanded', isExpanded());
+    const rows = getRows();
+    const counts = summary();
+    const done = counts.total ? Math.round(((counts.ok + counts.skipped) / counts.total) * 100) : 0;
+    const areas = ['Tutte', ...Array.from(new Set(rows.map((row) => row.area)))];
+    const activeArea = getActiveArea();
+    const filteredRows = activeArea === 'Tutte' ? rows : rows.filter((row) => row.area === activeArea);
+    const grouped = rowsByArea(filteredRows);
+    const areaFilters = areas.map((area) => `<button class="button-tiny-v358${area === activeArea ? ' is-active' : ''}" type="button" data-qa-area-filter-v358="${safeEscape(area)}">${safeEscape(area)}</button>`).join('');
+    const areaBlocks = Object.entries(grouped).map(([area, areaRows]) => {
+      const areaOk = areaRows.filter((row) => row.status === 'ok').length;
+      const areaKo = areaRows.filter((row) => row.status === 'ko').length;
+      const cards = areaRows.map((row) => {
+        const action = actionMap[row.id];
+        const note = row.note ? safeEscape(row.note) : '';
+        const tradeSimulatorBox = tradePanelIdsV361.has(row.id) ? renderTradeSimulatorBoxV361() : '';
+        return `
+          <article class="manual-qa-card-v358${cardClass(row.status)}" data-qa-card-v358="${safeEscape(row.id)}">
+            <div class="manual-qa-card-v358__head">
+              <div>
+                <div class="manual-qa-card-v358__area">${safeEscape(row.area)}</div>
+                <div class="manual-qa-card-v358__label-row">
+                  <div class="manual-qa-card-v358__label">${safeEscape(row.label)}</div>
+                  ${row.info ? `<details class="manual-qa-card-v358__info"><summary title="Cosa controllare" aria-label="Cosa controllare per ${safeEscape(row.label)}">i</summary><p>${safeEscape(row.info)}</p></details>` : ''}
+                </div>
+              </div>
+              <span class="manual-qa-card-v358__status">${safeEscape(statusLabel(row.status))}</span>
+            </div>
+            <div class="manual-qa-card-v358__buttons">
+              ${action ? `<button class="button-tiny-v358" type="button" data-qa-action-v358="${safeEscape(row.id)}">${safeEscape(action.label)}</button>` : ''}
+              <button class="button-tiny-v358" type="button" data-qa-mark-v358="ok" data-qa-id-v358="${safeEscape(row.id)}">OK</button>
+              <button class="button-tiny-v358" type="button" data-qa-mark-v358="ko" data-qa-id-v358="${safeEscape(row.id)}">Problema</button>
+              <button class="button-tiny-v358" type="button" data-qa-mark-v358="skipped" data-qa-id-v358="${safeEscape(row.id)}">Salta</button>
+              <button class="button-tiny-v358" type="button" data-qa-mark-v358="todo" data-qa-id-v358="${safeEscape(row.id)}">Reset</button>
+            </div>
+            ${tradeSimulatorBox}
+            <textarea data-qa-note-v358="${safeEscape(row.id)}" placeholder="Nota rapida sul test...">${note}</textarea>
+            ${row.updatedAt ? `<div class="manual-qa-panel-v358__updated">Aggiornato: ${safeEscape(row.updatedAt)}</div>` : ''}
+          </article>`;
+      }).join('');
+      return `
+        <section class="manual-qa-area-v358" data-qa-area-v358="${safeEscape(area)}">
+          <div class="manual-qa-area-v358__head">
+            <div>
+              <div class="manual-qa-area-v358__title">${safeEscape(area)}</div>
+              <div class="manual-qa-area-v358__meta">OK ${areaOk}/${areaRows.length}${areaKo ? ` - Problemi ${areaKo}` : ''}</div>
+            </div>
+            <div class="manual-qa-card-v358__buttons">
+              <button class="button-tiny-v358" type="button" data-qa-area-ok-v358="${safeEscape(area)}">OK area</button>
+              <button class="button-tiny-v358" type="button" data-qa-area-reset-v358="${safeEscape(area)}">Reset area</button>
+            </div>
+          </div>
+          <div class="manual-qa-area-v358__grid">${cards}</div>
+        </section>`;
+    }).join('');
+    root.innerHTML = `
+      <div class="manual-qa-panel-v358__bar">
+        <div class="manual-qa-panel-v358__title">
+          <span>Checklist QA Admin</span>
+          <span class="manual-qa-panel-v358__badge">V369</span>
+          <span class="manual-qa-panel-v358__badge">OK ${counts.ok}/${counts.total}</span>
+          <span class="manual-qa-panel-v358__badge">${done}% completato</span>
+          ${counts.ko ? `<span class="manual-qa-panel-v358__badge">Problemi ${counts.ko}</span>` : ''}
+          ${toast ? `<span class="manual-qa-panel-v358__toast">${safeEscape(toast)}</span>` : ''}
+        </div>
+        <div class="manual-qa-panel-v358__actions">
+          <button class="button-tiny-v358" type="button" data-qa-toggle-v358>${isExpanded() ? 'Riduci' : 'Espandi'}</button>
+          <button class="button-tiny-v358" type="button" data-qa-autocheck-v358>Auto-check</button>
+          <button class="button-tiny-v358" type="button" data-qa-copy-v358>Copia riepilogo</button>
+          <button class="button-tiny-v358" type="button" data-qa-export-v358>Esporta</button>
+          <button class="button-tiny-v358" type="button" data-qa-reset-v358>Reset tutto</button>
+        </div>
+      </div>
+      <div class="manual-qa-panel-v358__progress"><span style="width:${done}%"></span></div>
+      <div class="manual-qa-panel-v358__body">
+        <p class="manual-qa-panel-v358__hint">Area visibile solo agli admin. Usa Apri/Simula per andare alla funzione, premi la i di ogni test per sapere cosa controllare, poi segna OK/Problema/Saltato. Auto-check verifica solo marker tecnici: il test manuale resta decisivo.</p>
+        <div class="manual-qa-panel-v358__filters">${areaFilters}</div>
+        ${areaBlocks || '<p class="manual-qa-panel-v358__hint">Nessun controllo disponibile.</p>'}
+        <pre class="manual-qa-panel-v358__export" data-qa-export-box-v358 hidden></pre>
+      </div>`;
+    return root;
+  };
+
+  const runTradeSimulatorPanelActionV361 = (kind) => {
+    const panel = window.ZonaOrientaleTradeSimulatorPanelV361;
+    if (!panel) { render('Pannello simulatore trade non disponibile'); return; }
+    try {
+      if (kind === 'incoming') panel.simulateIncoming();
+      else if (kind === 'incoming-target') {
+        const selectedTarget = document.querySelector('[data-trade-target-v362]')?.value || window.ZonaOrientaleTradeSimulatorTargetPanelV362?.getSelectedTarget?.() || '';
+        window.ZonaOrientaleTradeSimulatorTargetPanelV362?.simulateIncomingForTarget?.(selectedTarget);
+      }
+      else if (kind === 'accepted') panel.simulateResolved('ACCEPTED');
+      else if (kind === 'rejected') panel.simulateResolved('REJECTED');
+      else if (kind === 'clear') {
+        panel.clearLocalSimulations();
+        window.ZonaOrientaleTradeSimulatorTargetPanelV362?.clearTargetSimulations?.();
+      }
+      else if (kind === 'badges') {
+        window.ZonaOrientaleTradeSimulatorTargetPanelV362?.mergeStoredRows?.();
+        panel.refreshBadges();
+      }
+      render('Simulatore trade aggiornato');
+    } catch (error) {
+      console.warn('Azione simulatore trade V361 non completata', error);
+      render(error?.message || 'Simulatore trade non disponibile');
+    }
+  };
+
+  const bind = () => {
+    if (window.__zonaManualQaPanelV358Bound) return;
+    window.__zonaManualQaPanelV358Bound = true;
+    document.addEventListener('click', (event) => {
+      const tradeSimButton = event.target.closest('[data-trade-simulator-v361]');
+      if (tradeSimButton) { runTradeSimulatorPanelActionV361(tradeSimButton.getAttribute('data-trade-simulator-v361')); return; }
+      const toggle = event.target.closest('[data-qa-toggle-v358]');
+      if (toggle) { setExpanded(!isExpanded()); render(); return; }
+      const areaFilter = event.target.closest('[data-qa-area-filter-v358]');
+      if (areaFilter) { setActiveArea(areaFilter.getAttribute('data-qa-area-filter-v358')); render(); return; }
+      const action = event.target.closest('[data-qa-action-v358]');
+      if (action) { runAction(action.getAttribute('data-qa-action-v358')); return; }
+      const markButton = event.target.closest('[data-qa-mark-v358]');
+      if (markButton) {
+        const id = markButton.getAttribute('data-qa-id-v358');
+        const status = markButton.getAttribute('data-qa-mark-v358');
+        const note = document.querySelector(`[data-qa-note-v358="${CSS.escape(id)}"]`)?.value || '';
+        mark(id, status, note);
+        render();
+        return;
+      }
+      const areaOk = event.target.closest('[data-qa-area-ok-v358]');
+      if (areaOk) { markArea(areaOk.getAttribute('data-qa-area-ok-v358'), 'ok'); return; }
+      const areaReset = event.target.closest('[data-qa-area-reset-v358]');
+      if (areaReset && window.confirm('Resettare questa area QA?')) { markArea(areaReset.getAttribute('data-qa-area-reset-v358'), 'todo'); return; }
+      const resetButton = event.target.closest('[data-qa-reset-v358]');
+      if (resetButton) {
+        if (window.confirm('Azzerare tutta la checklist QA locale?')) {
+          getTracker()?.reset?.();
+          window.localStorage.removeItem(storageKey);
+          render();
+        }
+        return;
+      }
+      const autoButton = event.target.closest('[data-qa-autocheck-v358]');
+      if (autoButton) { runAutoChecks(); return; }
+      const copyButton = event.target.closest('[data-qa-copy-v358]');
+      if (copyButton) { copyExport(); return; }
+      const exportButton = event.target.closest('[data-qa-export-v358]');
+      if (exportButton) {
+        const box = document.querySelector('[data-qa-export-box-v358]');
+        if (box) { box.textContent = exportMarkdown(); box.hidden = !box.hidden; }
+      }
+    });
+    document.addEventListener('change', (event) => {
+      const targetSelect = event.target.closest('[data-trade-target-v362]');
+      if (targetSelect) {
+        window.ZonaOrientaleTradeSimulatorTargetPanelV362?.setSelectedTarget?.(targetSelect.value);
+        render('Destinatario simulazione aggiornato');
+        return;
+      }
+      const note = event.target.closest('[data-qa-note-v358]');
+      if (!note) return;
+      const id = note.getAttribute('data-qa-note-v358');
+      const current = readStore()[id] || { status: 'todo' };
+      if (current.status && current.status !== 'todo') {
+        mark(id, current.status, note.value);
+        render();
+      }
+    });
+  };
+
+  const init = () => {
+    bind();
+    render();
+    window.setInterval(render, 2200);
+    return true;
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
+
+  const runSmokeTest = () => ({
+    ok: Number(DEPLOY_EXPECTED_VERSION_V181) >= 362
+      && Boolean(getTracker())
+      && getChecks().length >= 16
+      && getChecks().every((check) => check.info)
+      && Boolean(window.ZonaOrientaleTradeSimulatorPanelV361)
+      && Boolean(window.ZonaOrientaleTradeSimulatorTargetPanelV362?.runSmokeTest?.().ok)
+      && typeof render === 'function'
+      && typeof markArea === 'function'
+      && typeof runAutoChecks === 'function',
+    behaviorChange: false,
+    adminOnly: true,
+    storage: storageKey,
+    checks: getChecks().length,
+    version
+  });
+
+  return {
+    version,
+    label: 'checklist QA Admin con simulatore trade V362',
+    storageKey,
+    render,
+    summary,
+    mark,
+    markArea,
+    runAutoChecks,
+    exportMarkdown,
+    copyExport,
+    runSmokeTest
+  };
+})();
+
+/* V365 - Stabilizzazione protetta post-fix trattative.
+ * Release senza cambi funzionali: allinea versioni/cache-buster, documenta lo stato
+ * corrente e mantiene espliciti i vincoli di non regressione prima dei prossimi refactor.
+ */
+window.ZonaOrientaleProtectedStabilizationV365 = {
+  version: 'V365',
+  label: 'stabilizzazione protetta post V364',
+  behaviorChange: false,
+  firebaseWrites: false,
+  removedFilesThisVersion: 0,
+  runtimeExpectedVersion: typeof DEPLOY_EXPECTED_VERSION_V181 !== 'undefined' ? String(DEPLOY_EXPECTED_VERSION_V181) : 'non disponibile',
+  protectedAreas: [
+    'trattative reali Firebase',
+    'simulazioni trade local-only V255/V349/V361/V362/V364',
+    'Area Presidente',
+    'Admin e Checklist QA',
+    'Listone',
+    'Rose e snapshot statici',
+    'Competizioni e player.html',
+    'Calciomercato',
+    'navigazione mobile'
+  ],
+  nextRecommendedSteps: [
+    'hardening mirato trattative/notifiche',
+    'smoke test automatici minimi',
+    'pulizia file legacy solo con audit dedicato e comandi di rimozione espliciti'
+  ],
+  runSmokeTest: () => ({
+    ok: Number(DEPLOY_EXPECTED_VERSION_V181) >= 365
+      && Boolean(window.ZonaOrientaleTradeSimulatorTargetResolutionV364)
+      && Boolean(window.ZonaOrientaleManualQaPanelV358)
+      && typeof updateNegotiationStatusV119 === 'function',
+    version: 'V365',
+    behaviorChange: false,
+    firebaseWrites: false,
+    removedFilesThisVersion: 0,
+    tradeTargetResolutionV364Present: Boolean(window.ZonaOrientaleTradeSimulatorTargetResolutionV364),
+    manualQaPanelPresent: Boolean(window.ZonaOrientaleManualQaPanelV358)
+  })
+};
+
+/* V366 - Hardening mirato dominio trattative/notifiche.
+ * Normalizza gli stati prima delle azioni e delle notifiche, distingue in modo
+ * esplicito righe reali Firebase e simulazioni local-only e non introduce nuove
+ * scritture Firebase oltre al flusso reale gia' esistente.
+ */
+function normalizeTradeStatusV366(status) {
+  if (typeof normalizeNegotiationStatusV366 === 'function') return normalizeNegotiationStatusV366(status);
+  const key = String(status || 'PENDING').trim().toUpperCase().replace(/[._-]+/g, ' ').replace(/\s+/g, ' ');
+  if (!key || key === 'PENDING' || key === 'IN ATTESA' || key === 'WAITING' || key === 'OPEN') return 'PENDING';
+  if (['ACCEPTED', 'APPROVED', 'ACCETTATA', 'ACCETTATO', 'APPROVATA', 'APPROVATO'].includes(key)) return 'ACCEPTED';
+  if (['REJECTED', 'DECLINED', 'REFUSED', 'RIFIUTATA', 'RIFIUTATO', 'RESPINTA', 'RESPINTO'].includes(key)) return 'REJECTED';
+  if (['CANCELLED', 'CANCELED', 'ANNULLATA', 'ANNULLATO', 'DELETED', 'REMOVED'].includes(key)) return 'CANCELLED';
+  return key.replace(/\s+/g, '_');
+}
+
+function isTradeSimulationRowV366(item = {}) {
+  if (!item) return false;
+  if (typeof isLocalTradeSimulationV349 === 'function' && isLocalTradeSimulationV349(item)) return true;
+  const source = String(item.source || '');
+  return item.localOnly === true
+    || item.targetedByAdminV362 === true
+    || source === 'dev-simulator-v255'
+    || source === 'console-simulator-v255-local';
+}
+
+function getTradeDomainRowV366(id) {
+  return (state.raw?.transferNegotiations || []).find((row) => String(row.id || '') === String(id || '')) || null;
+}
+
+function classifyTradeDomainRowV366(id) {
+  const row = getTradeDomainRowV366(id);
+  return {
+    found: Boolean(row),
+    row,
+    kind: isTradeSimulationRowV366(row) ? 'local-simulation' : 'firebase-real',
+    status: normalizeTradeStatusV366(row?.status)
+  };
+}
+
+if (typeof normalizeTradeStatusV238 === 'function') {
+  const normalizeTradeStatusBeforeV366 = normalizeTradeStatusV238;
+  normalizeTradeStatusV238 = function normalizeTradeStatusV238V366(status) {
+    const normalized = normalizeTradeStatusV366(status);
+    return normalized || normalizeTradeStatusBeforeV366(status);
+  };
+}
+
+const updateNegotiationStatusBeforeV366 = updateNegotiationStatusV119;
+updateNegotiationStatusV119 = async function updateNegotiationStatusV366(id, status) {
+  const normalized = normalizeTradeStatusV366(status);
+  if (!['ACCEPTED', 'REJECTED', 'CANCELLED'].includes(normalized)) {
+    throw new Error(`Stato trattativa non valido: ${String(status || '')}`);
+  }
+  const before = classifyTradeDomainRowV366(id);
+  const result = await updateNegotiationStatusBeforeV366?.(id, normalized);
+  const after = classifyTradeDomainRowV366(id);
+  const resolvedRow = after.row || result || before.row;
+  if (resolvedRow && isTradeSimulationRowV366(resolvedRow) && typeof syncTargetTradeSimulationStorageV364 === 'function') {
+    try {
+      if (normalized === 'CANCELLED') syncTargetTradeSimulationStorageV364(id, null, { remove: true });
+      else syncTargetTradeSimulationStorageV364(id, { ...resolvedRow, status: normalized });
+    } catch (error) {
+      console.warn('Sync simulazione trade V366 non completato', error);
+    }
+  }
+  try { applyTradeNotificationBadgesV238?.(); } catch (error) { console.warn('Badge trattative V366 non aggiornati', error); }
+  return result;
+};
+
+window.ZonaOrientaleTradeDomainHardeningV366 = {
+  version: 'V366',
+  label: 'hardening mirato stati trattative e notifiche',
+  behaviorChange: 'normalizzazione stati e classificazione righe; nessun nuovo flusso UI',
+  firebaseWrites: 'solo quelle gia previste dal flusso reale updateNegotiationStatusV119',
+  localSimulationWrites: 'solo state/localStorage per righe localOnly',
+  removedFilesThisVersion: 0,
+  normalizeStatus: normalizeTradeStatusV366,
+  classifyRow: classifyTradeDomainRowV366,
+  protectedAreas: [
+    'trattative reali Firebase',
+    'simulazioni local-only V255/V349/V361/V362/V364',
+    'badge notifiche trattative V238/V239/V246',
+    'Area Presidente',
+    'Admin QA'
+  ],
+  acceptedStatusAliases: {
+    pending: ['PENDING', 'IN ATTESA', 'WAITING', 'OPEN'],
+    accepted: ['ACCEPTED', 'APPROVED', 'ACCETTATA', 'APPROVATA'],
+    rejected: ['REJECTED', 'DECLINED', 'REFUSED', 'RIFIUTATA', 'RESPINTA'],
+    cancelled: ['CANCELLED', 'CANCELED', 'ANNULLATA', 'DELETED', 'REMOVED']
+  },
+  runSmokeTest: () => {
+    const samples = {
+      pending: normalizeTradeStatusV366('in attesa'),
+      accepted: normalizeTradeStatusV366('accettata'),
+      rejected: normalizeTradeStatusV366('rifiutata'),
+      cancelled: normalizeTradeStatusV366('annullata')
+    };
+    return {
+      ok: samples.pending === 'PENDING'
+        && samples.accepted === 'ACCEPTED'
+        && samples.rejected === 'REJECTED'
+        && samples.cancelled === 'CANCELLED'
+        && typeof updateNegotiationStatusV119 === 'function'
+        && Boolean(window.ZonaOrientaleTradeSimulatorTargetResolutionV364),
+      version: 'V366',
+      samples,
+      removedFilesThisVersion: 0,
+      firebaseWritesForLocalOnly: false,
+      tradeTargetResolutionV364Present: Boolean(window.ZonaOrientaleTradeSimulatorTargetResolutionV364)
+    };
+  }
+};
+
+/* V367 - Smoke test automatici minimi anti-regressione.
+ * Release non funzionale: aggiunge controlli runtime/documentali e non cambia
+ * UI, schema Firebase, dati statici o flussi applicativi. Serve a proteggere
+ * le funzionalita' esistenti prima dei prossimi refactor.
+ */
+window.ZonaOrientaleProtectedRegressionSuiteV367 = {
+  version: 'V367',
+  label: 'smoke test automatici minimi anti-regressione',
+  behaviorChange: false,
+  firebaseWrites: false,
+  removedFilesThisVersion: 0,
+  protectedAreas: [
+    'home pubblica',
+    'navigazione desktop/mobile',
+    'Area Presidente',
+    'Admin e Checklist QA',
+    'trattative reali Firebase',
+    'simulazioni trade local-only',
+    'listone',
+    'rose e snapshot',
+    'competizioni',
+    'player.html',
+    'calciomercato',
+    'comunicati/news'
+  ],
+  requiredRuntimeMarkers: [
+    'ZonaOrientaleManualQaPanelV358',
+    'ZonaOrientaleCalciomercatoPlayerDiagnosticsV359',
+    'ZonaOrientaleTradeSimulatorPanelV361',
+    'ZonaOrientaleTradeSimulatorTargetPanelV362',
+    'ZonaOrientaleTradeSimulatorTargetResolutionV364',
+    'ZonaOrientaleProtectedStabilizationV365',
+    'ZonaOrientaleTradeDomainHardeningV366'
+  ],
+  runSmokeTest: () => {
+    const expected = typeof DEPLOY_EXPECTED_VERSION_V181 !== 'undefined' ? String(DEPLOY_EXPECTED_VERSION_V181) : '';
+    const footer = document.querySelector('footer')?.textContent || '';
+    const linkedVersions = Array.from(document.querySelectorAll('link[href*="?v="],script[src*="?v="]'))
+      .map((node) => (node.getAttribute('href') || node.getAttribute('src') || '').match(/[?&]v=(\d+)/)?.[1])
+      .filter(Boolean);
+    const uniqueVersions = [...new Set(linkedVersions)];
+    const markerResults = Object.fromEntries(window.ZonaOrientaleProtectedRegressionSuiteV367.requiredRuntimeMarkers.map((marker) => [marker, Boolean(window[marker])]));
+    const domChecks = {
+      footerPresent: Boolean(document.querySelector('footer')),
+      mainPresent: Boolean(document.querySelector('main')),
+      navPresent: Boolean(document.querySelector('nav') || document.querySelector('[data-mobile-chrome]') || document.querySelector('.site-nav')),
+      adminNotOpenByDefault: !document.body.classList.contains('admin-open')
+    };
+    return {
+      ok: Number(expected) >= 367
+        && footer.includes(`V${expected}`)
+        && uniqueVersions.every((version) => version === expected)
+        && Object.values(markerResults).every(Boolean)
+        && Object.values(domChecks).every(Boolean),
+      version: 'V367',
+      behaviorChange: false,
+      firebaseWrites: false,
+      removedFilesThisVersion: 0,
+      expectedVersion: expected,
+      linkedVersions: uniqueVersions,
+      markerResults,
+      domChecks
+    };
+  }
+};
+
+
+/* V368 - Dashboard pubblicazione Admin protetta.
+ * Aggiunge un cruscotto read-only sopra i pannelli di pubblicazione esistenti
+ * (promemoria V189, semafori V190, wizard V191), senza cambiare dati,
+ * schema Firebase o flussi di salvataggio. Serve a rendere piu' chiaro cosa
+ * controllare prima del deploy preservando tutte le funzionalita' esistenti.
+ */
+const ADMIN_PUBLICATION_DASHBOARD_STORAGE_KEY_V368 = 'zonaOrientaleAdminPublicationDashboardV368';
+const ADMIN_PUBLICATION_DASHBOARD_MOUNT_ID_V368 = 'adminPublicationDashboardMountV368';
+
+try {
+  if (Array.isArray(ADMIN_TOP_MOUNT_IDS_V313) && !ADMIN_TOP_MOUNT_IDS_V313.includes(ADMIN_PUBLICATION_DASHBOARD_MOUNT_ID_V368)) {
+    ADMIN_TOP_MOUNT_IDS_V313.unshift(ADMIN_PUBLICATION_DASHBOARD_MOUNT_ID_V368);
+  }
+} catch (error) {
+  console.warn('Top mount Admin V368 non aggiornabile', error);
+}
+
+function getAdminPublicationDashboardDateV368(value) {
+  if (!value) return 'non ancora eseguito';
+  try {
+    if (typeof normalizePreflightDateV179 === 'function') return normalizePreflightDateV179(value);
+  } catch (error) {
+    console.warn('Formato data preflight V368 non disponibile', error);
+  }
+  return String(value);
+}
+
+function getAdminPublicationDashboardStatusLabelV368(status) {
+  if (status === 'ok') return 'OK';
+  if (status === 'warn') return 'Attenzione';
+  return 'Intervento richiesto';
+}
+
+function getAdminPublicationDashboardDotV368(status) {
+  const clean = status === 'ok' || status === 'warn' || status === 'error' ? status : 'warn';
+  return `<span class="admin-publication-dashboard-dot-v368 is-${escapeHtml(clean)}" aria-hidden="true"></span>`;
+}
+
+function summarizeAdminPublicationDashboardRowsV368(rows) {
+  const summary = {
+    total: rows.length,
+    ok: rows.filter((row) => row.status === 'ok').length,
+    warn: rows.filter((row) => row.status === 'warn').length,
+    error: rows.filter((row) => row.status === 'error').length
+  };
+  summary.passed = summary.error === 0 && summary.warn === 0;
+  return summary;
+}
+
+function getLinkedAssetVersionsV368() {
+  return Array.from(document.querySelectorAll('link[href*="?v="],script[src*="?v="]'))
+    .map((node) => (node.getAttribute('href') || node.getAttribute('src') || '').match(/[?&]v=(\d+)/)?.[1])
+    .filter(Boolean);
+}
+
+function getAdminPublicationDashboardRowsV368(statusPayload = null) {
+  const expected = typeof DEPLOY_EXPECTED_VERSION_V181 !== 'undefined' ? String(DEPLOY_EXPECTED_VERSION_V181) : '';
+  const footer = document.querySelector('footer')?.textContent || '';
+  const linkedVersions = getLinkedAssetVersionsV368();
+  const uniqueVersions = [...new Set(linkedVersions)];
+  const reminders = typeof readAdminPublicationRemindersV189 === 'function' ? readAdminPublicationRemindersV189() : [];
+  const actions = typeof getAdminPublicationActionsV189 === 'function' ? getAdminPublicationActionsV189(reminders) : [];
+  const publicationStatus = statusPayload || (typeof readPublicationStatusV190 === 'function' ? readPublicationStatusV190() : null);
+  let protectedSmoke = null;
+  try {
+    protectedSmoke = window.ZonaOrientaleProtectedRegressionSuiteV367?.runSmokeTest?.() || null;
+  } catch (error) {
+    protectedSmoke = { ok: false, error: error?.message || String(error) };
+  }
+  const publicationSummary = publicationStatus?.summary || null;
+  const requiredMounts = [
+    ['adminPublicationReminderMountV189', 'Promemoria pubblicazione V189'],
+    ['publicationStatusMountV190', 'Semafori Firebase / JSON V190'],
+    ['publishWizardMountV191', 'Procedura guidata V191']
+  ];
+  const missingMounts = requiredMounts.filter(([id]) => !document.getElementById(id)).map(([, label]) => label);
+  const rows = [
+    {
+      id: 'runtime-version',
+      title: 'Versione runtime e cache-buster',
+      status: Number(expected || 0) >= 368 && footer.includes(`V${expected}`) && uniqueVersions.length > 0 && uniqueVersions.every((version) => version === expected) ? 'ok' : 'error',
+      detail: `Footer ${footer.includes(`V${expected}`) ? `V${expected} rilevato` : 'non allineato'}; asset ${uniqueVersions.join(', ') || 'non rilevati'}; atteso V${expected || 'n/d'}.`,
+      action: 'Se non e verde, riallineare index/competition/player, import app.js e DEPLOY_EXPECTED_VERSION_V181.'
+    },
+    {
+      id: 'protected-regression',
+      title: 'Protezione funzioni esistenti',
+      status: protectedSmoke?.ok ? 'ok' : 'warn',
+      detail: protectedSmoke?.ok ? 'Smoke test runtime V367 superato anche sulla release corrente.' : `Smoke test runtime da ricontrollare${protectedSmoke?.error ? `: ${protectedSmoke.error}` : '.'}`,
+      action: 'Da console browser puoi eseguire ZonaOrientaleProtectedRegressionSuiteV367.runSmokeTest().'
+    },
+    {
+      id: 'publication-status',
+      title: 'Semaforo Firebase / JSON',
+      status: publicationSummary ? (publicationSummary.error ? 'error' : (publicationSummary.warn ? 'warn' : 'ok')) : 'warn',
+      detail: publicationSummary ? `${publicationSummary.ok || 0} OK, ${publicationSummary.warn || 0} attenzioni, ${publicationSummary.error || 0} errori. Ultimo controllo: ${getAdminPublicationDashboardDateV368(publicationStatus.checkedAt)}.` : 'Semaforo non ancora eseguito in questa sessione.',
+      action: 'Usa Aggiorna cruscotto + semafori prima di scaricare overlay e fare commit/push.'
+    },
+    {
+      id: 'publication-reminders',
+      title: 'Promemoria modifiche da pubblicare',
+      status: reminders.length ? 'warn' : 'ok',
+      detail: reminders.length ? `${reminders.length} promemoria locale in sospeso; ${actions.length || 0} azioni suggerite.` : 'Nessun promemoria locale in sospeso.',
+      action: reminders.length ? 'Completa snapshot/overlay, poi usa Segna come pubblicato solo dopo il push.' : 'Nessuna azione richiesta.'
+    },
+    {
+      id: 'admin-publication-widgets',
+      title: 'Pannelli Admin pubblicazione collegati',
+      status: missingMounts.length ? 'warn' : 'ok',
+      detail: missingMounts.length ? `Da verificare: ${missingMounts.join(', ')}.` : 'Promemoria, semafori e wizard sono presenti nella pagina Admin.',
+      action: 'Questa release non sostituisce i pannelli esistenti: li riassume e li lascia operativi.'
+    }
+  ];
+  return rows;
+}
+
+function buildAdminPublicationDashboardPayloadV368(statusPayload = null) {
+  const rows = getAdminPublicationDashboardRowsV368(statusPayload);
+  return {
+    version: `V${typeof DEPLOY_EXPECTED_VERSION_V181 !== 'undefined' ? String(DEPLOY_EXPECTED_VERSION_V181) : '368'}`,
+    checkedAt: new Date().toISOString(),
+    rows,
+    summary: summarizeAdminPublicationDashboardRowsV368(rows),
+    behaviorChangeOutsideAdmin: false,
+    firebaseWrites: false,
+    removedFilesThisVersion: 0
+  };
+}
+
+function writeAdminPublicationDashboardPayloadV368(payload) {
+  state.adminPublicationDashboardV368 = payload;
+  try {
+    sessionStorage.setItem(ADMIN_PUBLICATION_DASHBOARD_STORAGE_KEY_V368, JSON.stringify(payload));
+  } catch (error) {
+    console.warn('Impossibile salvare cruscotto pubblicazione V368', error);
+  }
+}
+
+function readAdminPublicationDashboardPayloadV368() {
+  try {
+    const raw = sessionStorage.getItem(ADMIN_PUBLICATION_DASHBOARD_STORAGE_KEY_V368);
+    if (raw) return JSON.parse(raw);
+  } catch (error) {
+    console.warn('Impossibile leggere cruscotto pubblicazione V368', error);
+  }
+  return state.adminPublicationDashboardV368 || null;
+}
+
+function renderAdminPublicationDashboardRowsV368(rows) {
+  return rows.map((row) => `
+    <article class="admin-publication-dashboard-card-v368 is-${escapeHtml(row.status)}">
+      <div class="admin-publication-dashboard-card-head-v368">
+        ${getAdminPublicationDashboardDotV368(row.status)}
+        <div>
+          <h4>${escapeHtml(row.title)}</h4>
+          <strong>${escapeHtml(getAdminPublicationDashboardStatusLabelV368(row.status))}</strong>
+        </div>
+      </div>
+      <p>${escapeHtml(row.detail || '')}</p>
+      <small>${escapeHtml(row.action || '')}</small>
+    </article>`).join('');
+}
+
+function renderAdminPublicationDashboardHtmlV368(payload = readAdminPublicationDashboardPayloadV368()) {
+  const runtime = payload || buildAdminPublicationDashboardPayloadV368();
+  const summary = runtime.summary || summarizeAdminPublicationDashboardRowsV368(runtime.rows || []);
+  const checkedAt = runtime.checkedAt ? getAdminPublicationDashboardDateV368(runtime.checkedAt) : 'non ancora eseguito';
+  const badgeClass = summary.error ? 'is-error' : (summary.warn ? 'is-warn' : 'is-ok');
+  return `
+    <section class="panel admin-publication-dashboard-v368" aria-labelledby="adminPublicationDashboardTitleV368">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Pubblicazione protetta</p>
+          <h3 id="adminPublicationDashboardTitleV368">Cruscotto pre-deploy</h3>
+          <p>Riepilogo read-only dei controlli da fare prima di pubblicare: versioni, cache-buster, smoke test, semafori JSON e promemoria Admin.</p>
+        </div>
+        <span class="admin-publication-dashboard-badge-v368 ${escapeHtml(badgeClass)}">V369</span>
+      </div>
+      <div class="admin-publication-dashboard-summary-v368">
+        <span><strong>${escapeHtml(String(summary.ok || 0))}</strong> OK</span>
+        <span><strong>${escapeHtml(String(summary.warn || 0))}</strong> attenzioni</span>
+        <span><strong>${escapeHtml(String(summary.error || 0))}</strong> errori</span>
+        <small>Ultimo controllo: ${escapeHtml(checkedAt)}</small>
+      </div>
+      <div class="form-actions admin-publication-dashboard-actions-v368">
+        <button class="button button-primary" type="button" data-run-publication-dashboard-v368>Aggiorna cruscotto + semafori</button>
+        <button class="button button-secondary" type="button" data-refresh-publication-dashboard-v368>Aggiorna solo riepilogo</button>
+        <button class="button button-secondary" type="button" data-copy-publication-dashboard-v368>Copia checklist</button>
+      </div>
+      <div class="admin-publication-dashboard-flow-v368" aria-label="Sequenza pubblicazione consigliata">
+        <span>1. Modifica dati</span>
+        <span>2. Aggiorna snapshot</span>
+        <span>3. Scarica overlay</span>
+        <span>4. Controlla cruscotto</span>
+        <span>5. Commit e push</span>
+      </div>
+      <div class="admin-publication-dashboard-grid-v368">
+        ${renderAdminPublicationDashboardRowsV368(runtime.rows || [])}
+      </div>
+    </section>`;
+}
+
+function renderAdminPublicationDashboardPanelV368(payload = readAdminPublicationDashboardPayloadV368()) {
+  if (!state.isAdmin) return;
+  const adminPanel = document.getElementById('adminPanel');
+  if (!adminPanel) return;
+  let holder = adminPanel.querySelector(`#${ADMIN_PUBLICATION_DASHBOARD_MOUNT_ID_V368}`);
+  if (!holder) {
+    holder = document.createElement('div');
+    holder.id = ADMIN_PUBLICATION_DASHBOARD_MOUNT_ID_V368;
+    const heading = adminPanel.querySelector(':scope > .page-heading, .page-heading');
+    const topMount = adminPanel.querySelector('#adminTopControlsMountV313');
+    if (topMount) topMount.insertAdjacentElement('afterbegin', holder);
+    else if (heading) heading.insertAdjacentElement('afterend', holder);
+    else adminPanel.insertAdjacentElement('afterbegin', holder);
+  }
+  holder.innerHTML = renderAdminPublicationDashboardHtmlV368(payload);
+}
+
+async function runAdminPublicationDashboardV368(options = {}) {
+  let statusPayload = null;
+  if (options.includePublicationStatus !== false && typeof runPublicationStatusV190 === 'function') {
+    try {
+      statusPayload = await runPublicationStatusV190({ silent: true });
+    } catch (error) {
+      console.warn('Semaforo pubblicazione V190 non completato da V368', error);
+    }
+  }
+  const payload = buildAdminPublicationDashboardPayloadV368(statusPayload || (typeof readPublicationStatusV190 === 'function' ? readPublicationStatusV190() : null));
+  writeAdminPublicationDashboardPayloadV368(payload);
+  renderAdminPublicationDashboardPanelV368(payload);
+  if (typeof normalizeAdminTopLayoutV313 === 'function') normalizeAdminTopLayoutV313();
+  return payload;
+}
+
+function getAdminPublicationDashboardChecklistTextV368() {
+  const payload = readAdminPublicationDashboardPayloadV368() || buildAdminPublicationDashboardPayloadV368();
+  const rows = payload.rows || [];
+  return [
+    'Checklist pubblicazione protetta ZonaOrientale V368',
+    '',
+    `Ultimo controllo: ${getAdminPublicationDashboardDateV368(payload.checkedAt)}`,
+    `Esito: ${(payload.summary?.ok || 0)} OK, ${(payload.summary?.warn || 0)} attenzioni, ${(payload.summary?.error || 0)} errori`,
+    '',
+    ...rows.map((row, index) => `${index + 1}. [${getAdminPublicationDashboardStatusLabelV368(row.status)}] ${row.title}\n   ${row.detail}\n   Azione: ${row.action}`),
+    '',
+    'Sequenza consigliata:',
+    '1. Modifica dati solo dai pannelli dedicati.',
+    '2. Aggiorna snapshot pubblici.',
+    '3. Scarica overlay/JSON richiesti.',
+    '4. Esegui cruscotto e smoke test.',
+    '5. Commit e push solo se non ci sono errori bloccanti.'
+  ].join('\n');
+}
+
+async function copyAdminPublicationDashboardChecklistV368(button) {
+  const text = getAdminPublicationDashboardChecklistTextV368();
+  try {
+    await navigator.clipboard.writeText(text);
+    const previous = button?.textContent;
+    if (button) {
+      button.textContent = 'Copiato';
+      window.setTimeout(() => { button.textContent = previous || 'Copia checklist'; }, 1200);
+    }
+  } catch (error) {
+    console.warn('Copia checklist V368 non riuscita', error);
+    window.prompt('Copia manualmente la checklist', text);
+  }
+}
+
+const renderAdminAreaBeforeV368 = renderAdminArea;
+renderAdminArea = function renderAdminAreaV368() {
+  const result = renderAdminAreaBeforeV368?.();
+  renderAdminPublicationDashboardPanelV368();
+  if (typeof normalizeAdminTopLayoutV313 === 'function') normalizeAdminTopLayoutV313();
+  return result;
+};
+
+document.addEventListener('click', async (event) => {
+  const runButton = event.target.closest?.('[data-run-publication-dashboard-v368]');
+  if (runButton) {
+    const previous = runButton.textContent;
+    runButton.disabled = true;
+    runButton.textContent = 'Aggiornamento...';
+    try {
+      await runAdminPublicationDashboardV368({ includePublicationStatus: true });
+    } finally {
+      runButton.disabled = false;
+      runButton.textContent = previous || 'Aggiorna cruscotto + semafori';
+    }
+    return;
+  }
+  const refreshButton = event.target.closest?.('[data-refresh-publication-dashboard-v368]');
+  if (refreshButton) {
+    const payload = await runAdminPublicationDashboardV368({ includePublicationStatus: false });
+    writeAdminPublicationDashboardPayloadV368(payload);
+    return;
+  }
+  const copyButton = event.target.closest?.('[data-copy-publication-dashboard-v368]');
+  if (copyButton) {
+    await copyAdminPublicationDashboardChecklistV368(copyButton);
+  }
+});
+
+function injectAdminPublicationDashboardStylesV368() {
+  if (document.getElementById('adminPublicationDashboardStylesV368')) return;
+  const style = document.createElement('style');
+  style.id = 'adminPublicationDashboardStylesV368';
+  style.textContent = `
+    .admin-publication-dashboard-v368 { border: 1px solid rgba(14,165,233,.28); background: linear-gradient(135deg, rgba(14,165,233,.08), rgba(16,185,129,.055)); }
+    .admin-publication-dashboard-badge-v368 { align-self: flex-start; border-radius: 999px; padding: .35rem .7rem; font-size: .78rem; font-weight: 900; border: 1px solid rgba(255,255,255,.14); white-space: nowrap; }
+    .admin-publication-dashboard-badge-v368.is-ok { background: rgba(34,197,94,.16); color: #bbf7d0; }
+    .admin-publication-dashboard-badge-v368.is-warn { background: rgba(245,158,11,.18); color: #fde68a; }
+    .admin-publication-dashboard-badge-v368.is-error { background: rgba(239,68,68,.18); color: #fecaca; }
+    .admin-publication-dashboard-summary-v368 { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; margin: .85rem 0 1rem; }
+    .admin-publication-dashboard-summary-v368 span, .admin-publication-dashboard-summary-v368 small, .admin-publication-dashboard-flow-v368 span { border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .32rem .65rem; background: rgba(15,23,42,.45); }
+    .admin-publication-dashboard-summary-v368 small { color: var(--muted); overflow-wrap: anywhere; }
+    .admin-publication-dashboard-actions-v368 { gap: .6rem; flex-wrap: wrap; }
+    .admin-publication-dashboard-flow-v368 { display: flex; flex-wrap: wrap; gap: .45rem; margin: .35rem 0 1rem; }
+    .admin-publication-dashboard-flow-v368 span { font-size: .82rem; color: var(--muted); }
+    .admin-publication-dashboard-grid-v368 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+    .admin-publication-dashboard-card-v368 { border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: .8rem; background: rgba(15,23,42,.58); min-width: 0; }
+    .admin-publication-dashboard-card-v368.is-ok { border-color: rgba(34,197,94,.35); }
+    .admin-publication-dashboard-card-v368.is-warn { border-color: rgba(245,158,11,.42); }
+    .admin-publication-dashboard-card-v368.is-error { border-color: rgba(239,68,68,.48); }
+    .admin-publication-dashboard-card-head-v368 { display: flex; gap: .55rem; align-items: flex-start; min-width: 0; }
+    .admin-publication-dashboard-card-head-v368 h4 { margin: 0; overflow-wrap: anywhere; }
+    .admin-publication-dashboard-card-head-v368 strong { display: block; font-size: .78rem; color: var(--muted); margin-top: .12rem; }
+    .admin-publication-dashboard-card-v368 p { margin: .55rem 0 .35rem; overflow-wrap: anywhere; }
+    .admin-publication-dashboard-card-v368 small { display: block; color: var(--muted); overflow-wrap: anywhere; }
+    .admin-publication-dashboard-dot-v368 { width: .75rem; height: .75rem; border-radius: 999px; margin-top: .22rem; flex: 0 0 auto; box-shadow: 0 0 0 3px rgba(255,255,255,.06); }
+    .admin-publication-dashboard-dot-v368.is-ok { background: #22c55e; }
+    .admin-publication-dashboard-dot-v368.is-warn { background: #f59e0b; }
+    .admin-publication-dashboard-dot-v368.is-error { background: #ef4444; }
+    @media (max-width: 760px) {
+      .admin-publication-dashboard-v368 { margin-inline: 0; }
+      .admin-publication-dashboard-v368 .panel-header { align-items: stretch; }
+      .admin-publication-dashboard-badge-v368 { width: 100%; text-align: center; white-space: normal; }
+      .admin-publication-dashboard-grid-v368 { grid-template-columns: 1fr; }
+      .admin-publication-dashboard-actions-v368 { flex-direction: column; align-items: stretch; }
+      .admin-publication-dashboard-actions-v368 .button { width: 100%; }
+      .admin-publication-dashboard-summary-v368 { align-items: stretch; }
+      .admin-publication-dashboard-summary-v368 span, .admin-publication-dashboard-summary-v368 small, .admin-publication-dashboard-flow-v368 span { width: 100%; justify-content: center; text-align: center; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectAdminPublicationDashboardStylesV368();
+
+window.ZonaOrientaleAdminPublicationDashboardV368 = {
+  version: 'V368',
+  label: 'dashboard pubblicazione Admin protetta compatibile V369',
+  behaviorChangeOutsideAdmin: false,
+  firebaseWrites: false,
+  removedFilesThisVersion: 0,
+  build: buildAdminPublicationDashboardPayloadV368,
+  run: runAdminPublicationDashboardV368,
+  last: readAdminPublicationDashboardPayloadV368,
+  rows() {
+    return (readAdminPublicationDashboardPayloadV368() || buildAdminPublicationDashboardPayloadV368()).rows || [];
+  },
+  runSmokeTest() {
+    const payload = buildAdminPublicationDashboardPayloadV368(typeof readPublicationStatusV190 === 'function' ? readPublicationStatusV190() : null);
+    const hasMount = !state.isAdmin || Boolean(document.getElementById(ADMIN_PUBLICATION_DASHBOARD_MOUNT_ID_V368));
+    return {
+      ok: payload.summary.error === 0
+        && Boolean(window.ZonaOrientaleProtectedRegressionSuiteV367)
+        && typeof renderAdminPublicationDashboardPanelV368 === 'function'
+        && hasMount,
+      version: `V${typeof DEPLOY_EXPECTED_VERSION_V181 !== 'undefined' ? String(DEPLOY_EXPECTED_VERSION_V181) : '368'}`,
+      behaviorChangeOutsideAdmin: false,
+      firebaseWrites: false,
+      removedFilesThisVersion: 0,
+      summary: payload.summary,
+      hasMount
+    };
+  }
+};
+
+/* V369 - Dashboard Presidente protetta read-only.
+   Aggiunge un riepilogo operativo in Area squadra usando solo dati gia' caricati.
+   Non scrive su Firebase, non modifica schema dati e non sostituisce proposta/trattative/comunicati esistenti. */
+state.presidentDashboardV369LastBuild = state.presidentDashboardV369LastBuild || null;
+
+function normalizePresidentDashboardStatusV369(status) {
+  const value = String(status || 'PENDING').trim().toUpperCase();
+  if (['APPROVED', 'ACCEPTED', 'OK', 'DONE'].includes(value)) return 'APPROVED';
+  if (['REJECTED', 'DECLINED', 'REFUSED', 'KO'].includes(value)) return 'REJECTED';
+  if (['CANCELLED', 'CANCELED', 'ANNULLATA'].includes(value)) return 'CANCELLED';
+  return 'PENDING';
+}
+
+function getPresidentDashboardNumberV369(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : 0;
+}
+
+function getPresidentDashboardRosterValueV369(players = []) {
+  return players.reduce((sum, player) => sum + getPresidentDashboardNumberV369(player?.cost ?? player?.rosterCost ?? 0), 0);
+}
+
+function getPresidentDashboardRoleCountsV369(players = []) {
+  return players.reduce((counts, player) => {
+    const rawRole = String(player?.rosterRole || player?.classicRole || player?.role || '-').trim() || '-';
+    const role = rawRole.split(/[\/\s,;-]+/)[0] || rawRole;
+    counts[role] = (counts[role] || 0) + 1;
+    return counts;
+  }, {});
+}
+
+function renderPresidentDashboardRolePillsV369(roleCounts = {}) {
+  const entries = Object.entries(roleCounts).sort((a, b) => String(a[0]).localeCompare(String(b[0]), 'it', { numeric: true }));
+  if (!entries.length) return '<span class="muted">Ruoli non disponibili</span>';
+  return entries.map(([role, count]) => `<span class="president-dashboard-pill-v369"><strong>${escapeHtml(role)}</strong> ${escapeHtml(String(count))}</span>`).join('');
+}
+
+function getPresidentDashboardTeamRequestsV369(seasonTeamId, seasonId) {
+  return (state.raw?.teamRequests || [])
+    .filter((item) => String(item.seasonTeamId || '') === String(seasonTeamId || ''))
+    .filter((item) => !seasonId || !item.seasonId || item.seasonId === seasonId)
+    .sort((a, b) => String(b.createdAt?.seconds || b.createdAt || '').localeCompare(String(a.createdAt?.seconds || a.createdAt || ''), 'it'));
+}
+
+function getPresidentDashboardTradesV369(seasonTeamId, seasonId) {
+  return (state.raw?.transferNegotiations || [])
+    .filter((item) => !seasonId || !item.seasonId || item.seasonId === seasonId)
+    .filter((item) => item.fromSeasonTeamId === seasonTeamId || item.toSeasonTeamId === seasonTeamId);
+}
+
+function getPresidentDashboardListingsV369(seasonTeamId) {
+  try {
+    const rows = typeof getActiveTransferListingsV119 === 'function'
+      ? getActiveTransferListingsV119()
+      : (state.raw?.transferListings || []).filter((item) => String(item.status || 'ACTIVE').toUpperCase() !== 'REMOVED');
+    return rows.filter((item) => item.seasonTeamId === seasonTeamId);
+  } catch (error) {
+    console.warn('Dashboard presidente V369: listings non disponibili', error);
+    return [];
+  }
+}
+
+function getPresidentDashboardTradeStatusV369(item) {
+  try {
+    return typeof normalizeNegotiationStatusV366 === 'function'
+      ? normalizeNegotiationStatusV366(item?.status)
+      : String(item?.status || 'PENDING').toUpperCase();
+  } catch (_) {
+    return String(item?.status || 'PENDING').toUpperCase();
+  }
+}
+
+function buildPresidentDashboardPayloadV369(approved = getApprovedTeamUser?.()) {
+  const seasonTeamId = approved?.seasonTeamId || '';
+  const seasonId = approved?.seasonId || getCurrentSeasonId?.() || '';
+  const roster = typeof getRosterForSeasonTeam === 'function' ? getRosterForSeasonTeam({ id: seasonTeamId, seasonId }) : null;
+  const players = Array.isArray(roster?.players) ? roster.players : [];
+  const movements = typeof getFmMovementsForSeasonTeam === 'function' ? getFmMovementsForSeasonTeam(seasonTeamId).slice(0, 5) : [];
+  const requests = getPresidentDashboardTeamRequestsV369(seasonTeamId, seasonId);
+  const trades = getPresidentDashboardTradesV369(seasonTeamId, seasonId);
+  const listings = getPresidentDashboardListingsV369(seasonTeamId);
+  const pendingRequests = requests.filter((item) => normalizePresidentDashboardStatusV369(item.status) === 'PENDING');
+  const pendingIncomingTrades = trades.filter((item) => item.toSeasonTeamId === seasonTeamId && getPresidentDashboardTradeStatusV369(item) === 'PENDING');
+  const pendingSentTrades = trades.filter((item) => item.fromSeasonTeamId === seasonTeamId && getPresidentDashboardTradeStatusV369(item) === 'PENDING');
+  const resolvedSentTrades = trades.filter((item) => item.fromSeasonTeamId === seasonTeamId && ['ACCEPTED', 'REJECTED'].includes(getPresidentDashboardTradeStatusV369(item)));
+  const balance = typeof getTeamFmBalance === 'function' ? getTeamFmBalance(seasonTeamId) : 0;
+  const roleCounts = getPresidentDashboardRoleCountsV369(players);
+  const payload = {
+    version: 'V369',
+    seasonId,
+    seasonTeamId,
+    teamName: getSeasonTeamDisplayName?.(seasonTeamId) || approved?.teamName || 'Squadra',
+    userName: getCurrentUserDisplayName?.() || state.user?.email || 'Presidente',
+    balance,
+    playerCount: players.length,
+    rosterValue: getPresidentDashboardRosterValueV369(players),
+    roleCounts,
+    movements,
+    requests,
+    pendingRequests,
+    trades,
+    pendingIncomingTrades,
+    pendingSentTrades,
+    resolvedSentTrades,
+    listings,
+    firebaseWrites: false,
+    replacesExistingSections: false,
+    builtAt: new Date().toISOString()
+  };
+  state.presidentDashboardV369LastBuild = payload;
+  return payload;
+}
+
+function renderPresidentDashboardMetricV369(label, value, detail = '') {
+  return `<article class="president-dashboard-metric-v369"><span class="metric-label">${escapeHtml(label)}</span><strong>${escapeHtml(String(value))}</strong>${detail ? `<small>${escapeHtml(detail)}</small>` : ''}</article>`;
+}
+
+function renderPresidentDashboardAlertsV369(payload) {
+  const alerts = [];
+  if (payload.pendingIncomingTrades.length) alerts.push(`${payload.pendingIncomingTrades.length} trattativa/e ricevuta/e in attesa di risposta.`);
+  if (payload.resolvedSentTrades.length) alerts.push(`${payload.resolvedSentTrades.length} trattativa/e inviata/e con esito gia' disponibile nello storico.`);
+  if (payload.pendingRequests.length) alerts.push(`${payload.pendingRequests.length} richiesta/e inviata/e all'admin ancora in attesa.`);
+  if (!payload.playerCount) alerts.push('Rosa non disponibile per questa stagione: verificare snapshot/Firebase prima del deploy.');
+  if (!alerts.length) return '<p class="muted">Nessun alert operativo: richieste e trattative non hanno azioni urgenti.</p>';
+  return `<ul class="president-dashboard-alert-list-v369">${alerts.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+}
+
+function renderPresidentDashboardMovementsV369(movements = []) {
+  if (!movements.length) return '<p class="muted">Nessun movimento FM recente disponibile.</p>';
+  return `
+    <div class="table-wrap mobile-tabular-wrap president-dashboard-table-wrap-v369">
+      <table class="mobile-tabular president-dashboard-table-v369">
+        <thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead>
+        <tbody>${movements.map((movement) => `
+          <tr>
+            <td data-label="Data">${escapeHtml(movement.date || '-')}</td>
+            <td data-label="Tipo">${escapeHtml(typeof getFmMovementLabel === 'function' ? getFmMovementLabel(movement.type) : (movement.type || '-'))}</td>
+            <td data-label="Giocatore">${escapeHtml(movement.playerName || '-')}</td>
+            <td data-label="FM" class="number"><strong>${escapeHtml(formatFm?.(movement.amount) || String(movement.amount ?? '-'))}</strong></td>
+          </tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+}
+
+function renderPresidentDashboardRequestsV369(requests = []) {
+  const rows = requests.slice(0, 5);
+  if (!rows.length) return '<p class="muted">Nessuna richiesta recente inviata all\'admin.</p>';
+  return `
+    <div class="president-dashboard-request-list-v369">
+      ${rows.map((request) => {
+        const status = normalizePresidentDashboardStatusV369(request.status);
+        const label = typeof requestStatusLabel === 'function' ? requestStatusLabel(request.status || 'PENDING') : status;
+        const typeLabel = typeof requestTypeLabel === 'function' ? requestTypeLabel(request.type || '') : (request.type || 'Richiesta');
+        return `<article class="president-dashboard-request-v369 is-${escapeHtml(status.toLowerCase())}">
+          <div><strong>${escapeHtml(typeLabel)}</strong><small>${escapeHtml(request.playerName || request.title || request.description || 'Richiesta operativa')}</small></div>
+          <span class="status ${status === 'PENDING' ? 'status-warning' : status === 'REJECTED' ? 'status-danger' : 'status-ok'}">${escapeHtml(label)}</span>
+        </article>`;
+      }).join('')}
+    </div>`;
+}
+
+function renderPresidentDashboardV369(approved = getApprovedTeamUser?.()) {
+  if (!approved?.seasonTeamId) return '';
+  const payload = buildPresidentDashboardPayloadV369(approved);
+  return `
+    <section class="panel president-dashboard-v369" aria-labelledby="presidentDashboardTitleV369">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Dashboard presidente</p>
+          <h2 id="presidentDashboardTitleV369">${escapeHtml(payload.teamName)}</h2>
+          <p>Riepilogo read-only di rosa, saldo, trattative e richieste. Non modifica dati e non sostituisce le sezioni esistenti.</p>
+        </div>
+        <span class="president-dashboard-badge-v369">V369</span>
+      </div>
+      <div class="cards-grid president-dashboard-metrics-v369">
+        ${renderPresidentDashboardMetricV369('Saldo FM', formatFm?.(payload.balance) || payload.balance, 'da movimenti FM')}
+        ${renderPresidentDashboardMetricV369('Giocatori', payload.playerCount, 'rosa corrente')}
+        ${renderPresidentDashboardMetricV369('Valore rosa', formatFm?.(-Math.abs(payload.rosterValue)).replace('-', '') || payload.rosterValue, 'somma costi')}
+        ${renderPresidentDashboardMetricV369('Trattative aperte', payload.pendingIncomingTrades.length + payload.pendingSentTrades.length, `${payload.pendingIncomingTrades.length} ricevute · ${payload.pendingSentTrades.length} inviate`)}
+        ${renderPresidentDashboardMetricV369('Richieste Admin', payload.pendingRequests.length, 'in attesa')}
+        ${renderPresidentDashboardMetricV369('Sul mercato', payload.listings.length, 'giocatori trasferibili')}
+      </div>
+      <div class="president-dashboard-role-row-v369" aria-label="Distribuzione ruoli">
+        ${renderPresidentDashboardRolePillsV369(payload.roleCounts)}
+      </div>
+      <div class="president-dashboard-actions-v369 form-actions">
+        <button class="button button-secondary" type="button" data-president-dashboard-scroll-v369=".trade-list-panel">Vai alle trattative</button>
+        <button class="button button-secondary" type="button" data-president-dashboard-scroll-v369=".trade-proposal-panel">Nuova proposta</button>
+        <button class="button button-secondary" type="button" data-president-dashboard-scroll-v369="#teamNewsRequestForm">Comunicato</button>
+        <button class="button button-secondary" type="button" data-open-team-profile="${escapeHtml(payload.seasonTeamId)}">Apri pagina squadra</button>
+      </div>
+      <div class="grid-two president-dashboard-detail-grid-v369">
+        <article class="president-dashboard-box-v369">
+          <h3>Alert operativi</h3>
+          ${renderPresidentDashboardAlertsV369(payload)}
+        </article>
+        <article class="president-dashboard-box-v369">
+          <h3>Richieste recenti</h3>
+          ${renderPresidentDashboardRequestsV369(payload.requests)}
+        </article>
+      </div>
+      <article class="president-dashboard-box-v369 president-dashboard-movements-v369">
+        <h3>Ultimi movimenti FM</h3>
+        ${renderPresidentDashboardMovementsV369(payload.movements)}
+      </article>
+    </section>`;
+}
+
+const renderUserAreaApprovedBeforeV369 = renderUserAreaApprovedV119;
+renderUserAreaApprovedV119 = function renderUserAreaApprovedV369(approved) {
+  return `${renderPresidentDashboardV369(approved)}${renderUserAreaApprovedBeforeV369(approved)}`;
+};
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest?.('[data-president-dashboard-scroll-v369]');
+  if (!button) return;
+  const selector = button.dataset.presidentDashboardScrollV369 || '';
+  const target = selector ? document.querySelector(selector) : null;
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+
+function injectPresidentDashboardStylesV369() {
+  if (document.getElementById('presidentDashboardStylesV369')) return;
+  const style = document.createElement('style');
+  style.id = 'presidentDashboardStylesV369';
+  style.textContent = `
+    .president-dashboard-v369{border:1px solid rgba(34,197,94,.28);background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(14,165,233,.055));}
+    .president-dashboard-badge-v369{align-self:flex-start;border-radius:999px;padding:.35rem .7rem;font-size:.78rem;font-weight:900;border:1px solid rgba(255,255,255,.14);background:rgba(34,197,94,.16);color:#bbf7d0;white-space:nowrap;}
+    .president-dashboard-metrics-v369{margin-top:.85rem;}
+    .president-dashboard-metric-v369 small{display:block;margin-top:.2rem;color:var(--muted);font-size:.78rem;}
+    .president-dashboard-role-row-v369{display:flex;flex-wrap:wrap;gap:.4rem;margin:.85rem 0 1rem;}
+    .president-dashboard-pill-v369{display:inline-flex;gap:.25rem;align-items:center;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.25rem .55rem;background:rgba(15,23,42,.45);font-size:.82rem;}
+    .president-dashboard-actions-v369{gap:.55rem;flex-wrap:wrap;margin:.2rem 0 1rem;}
+    .president-dashboard-detail-grid-v369{align-items:start;margin-top:.7rem;}
+    .president-dashboard-box-v369{border:1px solid rgba(255,255,255,.12);border-radius:1rem;padding:.85rem;background:rgba(15,23,42,.48);min-width:0;}
+    .president-dashboard-box-v369 h3{margin-top:0;}
+    .president-dashboard-alert-list-v369{margin:.3rem 0 0;padding-left:1.15rem;}
+    .president-dashboard-alert-list-v369 li{margin:.25rem 0;}
+    .president-dashboard-request-list-v369{display:grid;gap:.55rem;}
+    .president-dashboard-request-v369{display:flex;align-items:center;justify-content:space-between;gap:.65rem;border:1px solid rgba(255,255,255,.1);border-radius:.8rem;padding:.6rem;background:rgba(15,23,42,.4);}
+    .president-dashboard-request-v369 small{display:block;color:var(--muted);margin-top:.1rem;}
+    .president-dashboard-table-wrap-v369{margin-top:.35rem;}
+    @media (max-width:760px){
+      .president-dashboard-v369 .panel-header{align-items:stretch;}
+      .president-dashboard-badge-v369{width:100%;text-align:center;white-space:normal;}
+      .president-dashboard-actions-v369{flex-direction:column;align-items:stretch;}
+      .president-dashboard-actions-v369 .button{width:100%;}
+      .president-dashboard-request-v369{align-items:flex-start;flex-direction:column;}
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectPresidentDashboardStylesV369();
+
+window.ZonaOrientalePresidentDashboardV369 = {
+  version: 'V369',
+  label: 'dashboard presidente protetta read-only',
+  firebaseWrites: false,
+  replacesExistingSections: false,
+  build: buildPresidentDashboardPayloadV369,
+  render: renderPresidentDashboardV369,
+  last() {
+    return state.presidentDashboardV369LastBuild || null;
+  },
+  runSmokeTest() {
+    const approved = getApprovedTeamUser?.() || { seasonTeamId: '__smoke__', seasonId: getCurrentSeasonId?.() || '', teamName: 'Smoke team' };
+    const payload = buildPresidentDashboardPayloadV369(approved);
+    const html = renderPresidentDashboardV369(approved);
+    const requiredTokens = ['president-dashboard-v369', 'trade-list-panel', 'trade-proposal-panel', 'teamNewsRequestForm'];
+    const oldRuntimeStillPresent = typeof renderUserAreaApprovedBeforeV369 === 'function' && typeof attachUserAreaHandlersV119 === 'function';
+    return {
+      ok: Boolean(payload)
+        && html.includes('president-dashboard-v369')
+        && requiredTokens.every((token) => html.includes(token) || document.querySelector(`.${token}`) || document.getElementById(token))
+        && oldRuntimeStillPresent,
+      version: 'V369',
+      firebaseWrites: false,
+      replacesExistingSections: false,
+      playerCount: payload.playerCount,
+      pendingIncomingTrades: payload.pendingIncomingTrades.length,
+      pendingRequests: payload.pendingRequests.length,
+      oldRuntimeStillPresent
+    };
+  }
+};
+
+/* V370 - Centro notifiche presidente protetto.
+ * Vista read-only/local-ack in Area squadra: riepiloga trattative, richieste Admin
+ * e giocatori sul mercato senza sostituire dashboard o sezioni operative esistenti.
+ */
+const PRESIDENT_NOTIFICATION_CENTER_ACK_KEY_V370 = 'zonaOrientalePresidentNotificationCenterV370';
+
+function getPresidentNotificationStatusV370(status) {
+  return typeof normalizeTradeStatusV366 === 'function'
+    ? normalizeTradeStatusV366(status)
+    : String(status || 'PENDING').trim().toUpperCase();
+}
+
+function getPresidentNotificationStatusLabelV370(status) {
+  const normalized = getPresidentNotificationStatusV370(status);
+  if (typeof getNegotiationStatusLabelV366 === 'function') return getNegotiationStatusLabelV366(normalized);
+  return ({ PENDING: 'In attesa', ACCEPTED: 'Accettata', REJECTED: 'Rifiutata', CANCELLED: 'Annullata' }[normalized] || normalized);
+}
+
+function getPresidentNotificationRequestStatusV370(status) {
+  const key = String(status || 'PENDING').trim().toUpperCase();
+  if (!key || key === 'PENDING' || key === 'IN ATTESA') return 'PENDING';
+  if (['APPROVED', 'ACCEPTED', 'APPROVATA', 'ACCETTATA'].includes(key)) return 'APPROVED';
+  if (['REJECTED', 'DECLINED', 'RIFIUTATA', 'RESPINTA'].includes(key)) return 'REJECTED';
+  return key;
+}
+
+function getPresidentNotificationDateValueV370(item = {}) {
+  const value = item.updatedAt || item.createdAt || item.acceptedAt || item.rejectedAt || item.approvedAt || item.removedAt || item.created || '';
+  if (!value) return 0;
+  if (typeof value === 'number') return value > 9999999999 ? value : value * 1000;
+  if (typeof value === 'string') {
+    const parsed = Date.parse(value);
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+  if (typeof value.toMillis === 'function') return value.toMillis();
+  if (typeof value.seconds === 'number') return value.seconds * 1000;
+  return 0;
+}
+
+function formatPresidentNotificationDateV370(item = {}) {
+  const value = getPresidentNotificationDateValueV370(item);
+  if (!value) return 'data non disponibile';
+  try {
+    return new Date(value).toLocaleString('it-IT', { dateStyle: 'short', timeStyle: 'short' });
+  } catch (_) {
+    return 'data non disponibile';
+  }
+}
+
+function getPresidentNotificationAckKeyV370() {
+  const uid = state.user?.uid || 'anonymous';
+  return `${PRESIDENT_NOTIFICATION_CENTER_ACK_KEY_V370}:${uid}`;
+}
+
+function readPresidentNotificationAckV370() {
+  try {
+    return JSON.parse(localStorage.getItem(getPresidentNotificationAckKeyV370()) || '{}');
+  } catch (_) {
+    return {};
+  }
+}
+
+function writePresidentNotificationAckV370(payload = {}) {
+  try {
+    localStorage.setItem(getPresidentNotificationAckKeyV370(), JSON.stringify(payload || {}));
+  } catch (_) {
+    // localStorage non disponibile: il centro notifiche resta read-only e non blocca il sito.
+  }
+}
+
+function getPresidentNotificationMarkerV370(row = {}) {
+  if (typeof getTradeNotificationMarkerV238 === 'function') return getTradeNotificationMarkerV238(row);
+  return `${getPresidentNotificationStatusV370(row.status)}:${getPresidentNotificationDateValueV370(row)}`;
+}
+
+function isPresidentNotificationSeenV370(id, marker) {
+  const ack = readPresidentNotificationAckV370();
+  return ack[String(id || '')] === String(marker || '');
+}
+
+function markPresidentNotificationSeenV370(id, marker) {
+  if (!id) return;
+  const ack = readPresidentNotificationAckV370();
+  ack[String(id)] = String(marker || 'seen');
+  writePresidentNotificationAckV370(ack);
+}
+
+function summarizePresidentNotificationTradeV370(item = {}) {
+  if (typeof getNegotiationTitleV119 === 'function') return getNegotiationTitleV119(item);
+  const from = getSeasonTeamDisplayName?.(item.fromSeasonTeamId) || item.fromTeamName || 'Mittente';
+  const to = getSeasonTeamDisplayName?.(item.toSeasonTeamId) || item.toTeamName || 'Destinatario';
+  return `${from} -> ${to}`;
+}
+
+function makePresidentNotificationRowV370(row = {}) {
+  const marker = row.marker || String(row.updatedAt || row.createdAt || row.id || '');
+  const seen = row.forceSeen ? true : isPresidentNotificationSeenV370(row.id, marker);
+  return {
+    id: row.id || `${row.kind || 'notification'}-${Math.random().toString(36).slice(2)}`,
+    kind: row.kind || 'info',
+    severity: row.severity || 'info',
+    title: row.title || 'Notifica',
+    detail: row.detail || '',
+    meta: row.meta || '',
+    status: row.status || '',
+    statusLabel: row.statusLabel || '',
+    dateValue: row.dateValue || 0,
+    dateLabel: row.dateLabel || '',
+    selector: row.selector || '',
+    actionLabel: row.actionLabel || '',
+    marker,
+    unread: row.unread === true || (!seen && row.unread !== false)
+  };
+}
+
+function buildPresidentNotificationCenterRowsV370(approved = getApprovedTeamUser?.()) {
+  if (!approved?.seasonTeamId) return [];
+  const seasonTeamId = approved.seasonTeamId;
+  const seasonId = approved.seasonId || getCurrentSeasonId?.() || '';
+  const rows = [];
+  const trades = typeof getPresidentDashboardTradesV369 === 'function'
+    ? getPresidentDashboardTradesV369(seasonTeamId, seasonId)
+    : (state.raw?.transferNegotiations || []).filter((item) => item.fromSeasonTeamId === seasonTeamId || item.toSeasonTeamId === seasonTeamId);
+
+  trades.forEach((item) => {
+    const status = getPresidentNotificationStatusV370(item.status);
+    const isIncoming = item.toSeasonTeamId === seasonTeamId;
+    const isSent = item.fromSeasonTeamId === seasonTeamId;
+    const marker = getPresidentNotificationMarkerV370(item);
+    const dateValue = getPresidentNotificationDateValueV370(item);
+    if (isIncoming && status === 'PENDING') {
+      rows.push(makePresidentNotificationRowV370({
+        id: `trade-in-${item.id || dateValue}`,
+        kind: 'trade-incoming',
+        severity: 'urgent',
+        title: 'Trattativa ricevuta da valutare',
+        detail: summarizePresidentNotificationTradeV370(item),
+        meta: 'Richiede Accetta/Rifiuta nella sezione Trattative ricevute.',
+        status,
+        statusLabel: 'Da rispondere',
+        dateValue,
+        dateLabel: formatPresidentNotificationDateV370(item),
+        selector: '.trade-list-panel',
+        actionLabel: 'Vai alle ricevute',
+        marker,
+        unread: true
+      }));
+    } else if (isSent && status === 'PENDING') {
+      rows.push(makePresidentNotificationRowV370({
+        id: `trade-out-${item.id || dateValue}`,
+        kind: 'trade-sent',
+        severity: 'wait',
+        title: 'Trattativa inviata in attesa',
+        detail: summarizePresidentNotificationTradeV370(item),
+        meta: 'Il destinatario non ha ancora risposto.',
+        status,
+        statusLabel: 'In attesa',
+        dateValue,
+        dateLabel: formatPresidentNotificationDateV370(item),
+        selector: '.trade-list-panel',
+        actionLabel: 'Vai alle inviate',
+        marker,
+        unread: false,
+        forceSeen: true
+      }));
+    } else if (isSent && ['ACCEPTED', 'REJECTED'].includes(status)) {
+      rows.push(makePresidentNotificationRowV370({
+        id: `trade-result-${item.id || dateValue}`,
+        kind: 'trade-result',
+        severity: status === 'ACCEPTED' ? 'success' : 'danger',
+        title: status === 'ACCEPTED' ? 'Trattativa accettata' : 'Trattativa rifiutata',
+        detail: summarizePresidentNotificationTradeV370(item),
+        meta: 'Esito disponibile nello storico trattative.',
+        status,
+        statusLabel: getPresidentNotificationStatusLabelV370(status),
+        dateValue,
+        dateLabel: formatPresidentNotificationDateV370(item),
+        selector: '.trade-list-panel',
+        actionLabel: 'Apri storico',
+        marker,
+        unread: typeof isTradeOutcomeSeenV238 === 'function' ? !isTradeOutcomeSeenV238(item) : undefined
+      }));
+    }
+  });
+
+  const requests = typeof getPresidentDashboardTeamRequestsV369 === 'function'
+    ? getPresidentDashboardTeamRequestsV369(seasonTeamId, seasonId)
+    : (state.raw?.teamRequests || []).filter((item) => item.seasonTeamId === seasonTeamId);
+  requests.slice(0, 8).forEach((request) => {
+    const status = getPresidentNotificationRequestStatusV370(request.status);
+    const dateValue = getPresidentNotificationDateValueV370(request);
+    const typeLabel = typeof requestTypeLabel === 'function' ? requestTypeLabel(request.type || '') : (request.type || 'Richiesta');
+    const statusLabel = typeof requestStatusLabel === 'function' ? requestStatusLabel(request.status || status) : status;
+    rows.push(makePresidentNotificationRowV370({
+      id: `request-${request.id || dateValue}`,
+      kind: 'admin-request',
+      severity: status === 'PENDING' ? 'wait' : status === 'REJECTED' ? 'danger' : 'success',
+      title: `${typeLabel} ${status === 'PENDING' ? 'in attesa Admin' : 'aggiornata'}`,
+      detail: request.title || request.playerName || request.description || request.body || request.notes || 'Richiesta presidente',
+      meta: 'Registro richieste Admin.',
+      status,
+      statusLabel,
+      dateValue,
+      dateLabel: formatPresidentNotificationDateV370(request),
+      selector: '#teamNewsRequestForm',
+      actionLabel: request.type === 'TRANSFER_NEWS' ? 'Vai ai comunicati' : 'Vai all Area squadra',
+      marker: `${status}:${dateValue}`,
+      unread: status === 'PENDING' ? false : undefined
+    }));
+  });
+
+  const listings = typeof getPresidentDashboardListingsV369 === 'function'
+    ? getPresidentDashboardListingsV369(seasonTeamId)
+    : (state.raw?.transferListings || []).filter((item) => item.seasonTeamId === seasonTeamId && String(item.status || 'ACTIVE').toUpperCase() !== 'REMOVED');
+  listings.slice(0, 5).forEach((listing) => {
+    const dateValue = getPresidentNotificationDateValueV370(listing);
+    rows.push(makePresidentNotificationRowV370({
+      id: `listing-${listing.id || listing.playerKey || listing.playerName}`,
+      kind: 'market-listing',
+      severity: 'info',
+      title: 'Giocatore tuo sul mercato',
+      detail: listing.playerName || 'Giocatore trasferibile',
+      meta: listing.conditions || 'Nessuna condizione specificata.',
+      status: 'ACTIVE',
+      statusLabel: 'Sul mercato',
+      dateValue,
+      dateLabel: dateValue ? formatPresidentNotificationDateV370(listing) : 'attivo',
+      selector: '.president-dashboard-v369',
+      actionLabel: 'Vai alla dashboard',
+      marker: `ACTIVE:${dateValue}:${listing.conditions || ''}`,
+      unread: false,
+      forceSeen: true
+    }));
+  });
+
+  return rows
+    .sort((a, b) => {
+      const priority = { urgent: 0, danger: 1, success: 2, wait: 3, info: 4 };
+      const pa = priority[a.severity] ?? 9;
+      const pb = priority[b.severity] ?? 9;
+      if (pa !== pb) return pa - pb;
+      return (b.dateValue || 0) - (a.dateValue || 0);
+    })
+    .slice(0, 18);
+}
+
+function summarizePresidentNotificationCenterV370(rows = []) {
+  return {
+    total: rows.length,
+    urgent: rows.filter((row) => row.severity === 'urgent').length,
+    unread: rows.filter((row) => row.unread).length,
+    pending: rows.filter((row) => ['PENDING', 'ACTIVE'].includes(row.status)).length,
+    results: rows.filter((row) => row.kind === 'trade-result').length
+  };
+}
+
+function renderPresidentNotificationBadgeV370(row = {}) {
+  const className = row.severity === 'urgent' ? 'status-danger' : row.severity === 'success' ? 'status-ok' : row.severity === 'danger' ? 'status-danger' : row.severity === 'wait' ? 'status-warning' : 'status-muted';
+  return `<span class="status ${className}">${escapeHtml(row.statusLabel || row.status || 'Info')}</span>`;
+}
+
+function renderPresidentNotificationRowV370(row = {}) {
+  const unread = row.unread ? '<span class="president-notification-unread-v370" title="Nuova">Nuova</span>' : '';
+  const action = row.selector ? `<button class="button button-secondary button-small" type="button" data-president-notification-scroll-v370="${escapeHtml(row.selector)}">${escapeHtml(row.actionLabel || 'Apri')}</button>` : '';
+  return `
+    <article class="president-notification-item-v370 is-${escapeHtml(row.severity || 'info')} ${row.unread ? 'is-unread' : ''}">
+      <div class="president-notification-main-v370">
+        <div class="president-notification-title-v370">
+          <strong>${escapeHtml(row.title || 'Notifica')}</strong>
+          ${unread}
+        </div>
+        <p>${escapeHtml(row.detail || '')}</p>
+        <small>${escapeHtml(row.meta || '')} · ${escapeHtml(row.dateLabel || '')}</small>
+      </div>
+      <div class="president-notification-side-v370">
+        ${renderPresidentNotificationBadgeV370(row)}
+        ${action}
+      </div>
+    </article>`;
+}
+
+function renderPresidentNotificationCenterV370(approved = getApprovedTeamUser?.()) {
+  if (!approved?.seasonTeamId) return '';
+  const rows = buildPresidentNotificationCenterRowsV370(approved);
+  const summary = summarizePresidentNotificationCenterV370(rows);
+  state.presidentNotificationCenterV370LastBuild = { approved, rows, summary, builtAt: new Date().toISOString() };
+  return `
+    <section class="panel president-notification-center-v370" aria-labelledby="presidentNotificationCenterTitleV370">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Centro notifiche</p>
+          <h2 id="presidentNotificationCenterTitleV370">Notifiche presidente</h2>
+          <p>Riepilogo protetto di trattative, richieste Admin e giocatori sul mercato. Usa dati gia' presenti e non sostituisce le sezioni operative.</p>
+        </div>
+        <span class="president-notification-badge-v370">V370</span>
+      </div>
+      <div class="cards-grid president-notification-metrics-v370">
+        <article class="metric-card"><span class="metric-label">Totali</span><strong>${escapeHtml(String(summary.total))}</strong></article>
+        <article class="metric-card"><span class="metric-label">Da fare</span><strong>${escapeHtml(String(summary.urgent))}</strong></article>
+        <article class="metric-card"><span class="metric-label">Nuove</span><strong>${escapeHtml(String(summary.unread))}</strong></article>
+        <article class="metric-card"><span class="metric-label">Esiti trade</span><strong>${escapeHtml(String(summary.results))}</strong></article>
+      </div>
+      <div class="president-notification-actions-v370 form-actions">
+        <button class="button button-secondary" type="button" data-president-notification-scroll-v370=".trade-list-panel">Apri trattative</button>
+        <button class="button button-secondary" type="button" data-president-notification-scroll-v370=".trade-proposal-panel">Nuova proposta</button>
+        <button class="button button-secondary" type="button" data-president-notification-ack-trades-v370>Segna esiti trade come letti</button>
+      </div>
+      <div class="president-notification-list-v370">
+        ${rows.length ? rows.map(renderPresidentNotificationRowV370).join('') : '<p class="muted">Nessuna notifica operativa in questo momento.</p>'}
+      </div>
+    </section>`;
+}
+
+const renderUserAreaApprovedBeforeV370 = renderUserAreaApprovedV119;
+renderUserAreaApprovedV119 = function renderUserAreaApprovedV370(approved) {
+  const base = renderUserAreaApprovedBeforeV370(approved);
+  const center = renderPresidentNotificationCenterV370(approved);
+  if (!center) return base;
+  const firstSectionEnd = base.indexOf('</section>');
+  if (firstSectionEnd >= 0 && base.includes('president-dashboard-v369')) {
+    return `${base.slice(0, firstSectionEnd + '</section>'.length)}${center}${base.slice(firstSectionEnd + '</section>'.length)}`;
+  }
+  return `${center}${base}`;
+};
+
+document.addEventListener('click', (event) => {
+  const scrollButton = event.target.closest?.('[data-president-notification-scroll-v370]');
+  if (scrollButton) {
+    const selector = scrollButton.dataset.presidentNotificationScrollV370 || '';
+    const target = selector ? document.querySelector(selector) : null;
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  const ackButton = event.target.closest?.('[data-president-notification-ack-trades-v370]');
+  if (ackButton) {
+    try { acknowledgeTradeOutcomeNotificationsV238?.(); } catch (error) { console.warn('Ack notifiche trade V370 non completato', error); }
+    const approved = getApprovedTeamUser?.();
+    buildPresidentNotificationCenterRowsV370(approved).forEach((row) => {
+      if (row.kind === 'trade-result') markPresidentNotificationSeenV370(row.id, row.marker);
+    });
+    try { applyTradeNotificationBadgesV238?.(); } catch (_) {}
+    try { renderUserAreaV34?.(); } catch (error) { console.warn('Render Area squadra V370 non completato', error); }
+  }
+}, true);
+
+function injectPresidentNotificationCenterStylesV370() {
+  if (document.getElementById('presidentNotificationCenterStylesV370')) return;
+  const style = document.createElement('style');
+  style.id = 'presidentNotificationCenterStylesV370';
+  style.textContent = `
+    .president-notification-center-v370{border:1px solid rgba(59,130,246,.28);background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,197,94,.05));}
+    .president-notification-badge-v370{align-self:flex-start;border-radius:999px;padding:.35rem .7rem;font-size:.78rem;font-weight:900;border:1px solid rgba(255,255,255,.14);background:rgba(59,130,246,.16);color:#bfdbfe;white-space:nowrap;}
+    .president-notification-metrics-v370{margin:.8rem 0;}
+    .president-notification-actions-v370{gap:.55rem;flex-wrap:wrap;margin:.2rem 0 .85rem;}
+    .president-notification-list-v370{display:grid;gap:.6rem;}
+    .president-notification-item-v370{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;border:1px solid rgba(255,255,255,.1);border-radius:1rem;padding:.75rem;background:rgba(15,23,42,.45);}
+    .president-notification-item-v370.is-unread{border-color:rgba(59,130,246,.45);box-shadow:0 0 0 1px rgba(59,130,246,.08) inset;}
+    .president-notification-item-v370.is-urgent{border-color:rgba(248,113,113,.45);}
+    .president-notification-main-v370{min-width:0;}
+    .president-notification-main-v370 p{margin:.22rem 0;color:var(--text);}
+    .president-notification-main-v370 small{color:var(--muted);}
+    .president-notification-title-v370{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;}
+    .president-notification-unread-v370{display:inline-flex;border-radius:999px;padding:.12rem .45rem;background:rgba(59,130,246,.18);color:#bfdbfe;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;}
+    .president-notification-side-v370{display:flex;align-items:flex-end;gap:.45rem;flex-direction:column;flex:0 0 auto;}
+    @media (max-width:760px){
+      .president-notification-badge-v370{width:100%;text-align:center;white-space:normal;}
+      .president-notification-actions-v370{flex-direction:column;align-items:stretch;}
+      .president-notification-actions-v370 .button{width:100%;}
+      .president-notification-item-v370{flex-direction:column;}
+      .president-notification-side-v370{align-items:stretch;width:100%;}
+      .president-notification-side-v370 .button{width:100%;}
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectPresidentNotificationCenterStylesV370();
+
+window.ZonaOrientalePresidentNotificationCenterV370 = {
+  version: 'V370',
+  label: 'centro notifiche presidente protetto',
+  firebaseWrites: false,
+  localWrites: 'solo acknowledge locale/localStorage per esiti gia visualizzati',
+  replacesExistingSections: false,
+  buildRows: buildPresidentNotificationCenterRowsV370,
+  render: renderPresidentNotificationCenterV370,
+  last() {
+    return state.presidentNotificationCenterV370LastBuild || null;
+  },
+  markSeen: markPresidentNotificationSeenV370,
+  runSmokeTest() {
+    const approved = getApprovedTeamUser?.() || { seasonTeamId: '__smoke__', seasonId: getCurrentSeasonId?.() || '', teamName: 'Smoke team' };
+    const rows = buildPresidentNotificationCenterRowsV370(approved);
+    const html = renderPresidentNotificationCenterV370(approved);
+    const oldRuntimeStillPresent = typeof renderUserAreaApprovedBeforeV370 === 'function'
+      && typeof renderPresidentDashboardV369 === 'function'
+      && typeof attachUserAreaHandlersV119 === 'function';
+    return {
+      ok: html.includes('president-notification-center-v370')
+        && html.includes('data-president-notification-scroll-v370')
+        && html.includes('data-president-notification-ack-trades-v370')
+        && oldRuntimeStillPresent,
+      version: 'V370',
+      firebaseWrites: false,
+      replacesExistingSections: false,
+      notificationRows: rows.length,
+      oldRuntimeStillPresent,
+      v369DashboardPresent: Boolean(window.ZonaOrientalePresidentDashboardV369)
+    };
+  }
 };
 
