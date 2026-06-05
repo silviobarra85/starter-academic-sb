@@ -1,13 +1,41 @@
+const TMW_TEAM_SOURCES_V329 = [
+  ['atalanta', 'Atalanta', 'https://www.tuttomercatoweb.com/atalanta/'],
+  ['bologna', 'Bologna', 'https://www.tuttomercatoweb.com/bologna/'],
+  ['cagliari', 'Cagliari', 'https://www.tuttomercatoweb.com/cagliari/'],
+  ['como', 'Como', 'https://www.tuttomercatoweb.com/como/'],
+  ['fiorentina', 'Fiorentina', 'https://www.tuttomercatoweb.com/fiorentina/'],
+  ['frosinone', 'Frosinone', 'https://www.tuttomercatoweb.com/frosinone/'],
+  ['genoa', 'Genoa', 'https://www.tuttomercatoweb.com/genoa/'],
+  ['inter', 'Inter', 'https://www.tuttomercatoweb.com/inter/'],
+  ['juventus', 'Juventus', 'https://www.tuttomercatoweb.com/juventus/'],
+  ['lazio', 'Lazio', 'https://www.tuttomercatoweb.com/lazio/'],
+  ['lecce', 'Lecce', 'https://www.tuttomercatoweb.com/lecce/'],
+  ['milan', 'Milan', 'https://www.tuttomercatoweb.com/milan/'],
+  ['monza', 'Monza', 'https://www.tuttomercatoweb.com/monza/'],
+  ['napoli', 'Napoli', 'https://www.tuttomercatoweb.com/napoli/'],
+  ['parma', 'Parma', 'https://www.tuttomercatoweb.com/parma/'],
+  ['roma', 'Roma', 'https://www.tuttomercatoweb.com/roma/'],
+  ['sassuolo', 'Sassuolo', 'https://www.tuttomercatoweb.com/sassuolo/'],
+  ['torino', 'Torino', 'https://www.tuttomercatoweb.com/torino/'],
+  ['udinese', 'Udinese', 'https://www.tuttomercatoweb.com/udinese/'],
+  ['venezia', 'Venezia', 'https://www.tuttomercatoweb.com/venezia/']
+].map(([slug, team, url]) => ({
+  id: `tmw-${slug}`,
+  name: `TMW ${team}`,
+  url,
+  feedUrls: [url],
+  enabled: true,
+  topic: 'Mercato',
+  sourceType: 'tmw-team-html',
+  parseMode: 'html',
+  defaultTeams: [team],
+  fallbackImageMode: 'tmw-team-text',
+  limit: 500,
+  timeoutMs: 15000
+}));
+
 const DEFAULT_SOURCES = [
-  {
-    id: 'tmw',
-    name: 'TuttoMercatoWeb',
-    url: 'https://www.tuttomercatoweb.com',
-    feedUrls: ['https://www.tuttomercatoweb.com/rss/'],
-    enabled: true,
-    topic: 'Mercato',
-    limit: 250
-  },
+  ...TMW_TEAM_SOURCES_V329,
   {
     id: 'sosfanta',
     name: 'SOS Fanta',
@@ -15,7 +43,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://www.sosfanta.com/feed/'],
     enabled: true,
     topic: 'Fantacalcio',
-    limit: 250
+    limit: 500
   },
   {
     id: 'gianlucadimarzio',
@@ -24,7 +52,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://gianlucadimarzio.com/rss/'],
     enabled: true,
     topic: 'Mercato',
-    limit: 250
+    limit: 500
   },
   {
     id: 'fantacalcio',
@@ -33,7 +61,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://rss.fantacalcio.it/'],
     enabled: true,
     topic: 'Fantacalcio',
-    limit: 250
+    limit: 500
   },
   {
     id: 'calciomercato-it',
@@ -42,7 +70,7 @@ const DEFAULT_SOURCES = [
     feedUrls: ['https://www.calciomercato.it/feed/'],
     enabled: true,
     topic: 'Mercato',
-    limit: 250
+    limit: 500
   }
 ];
 
@@ -53,12 +81,14 @@ const SERIE_A_TEAM_ALIASES = [
   { name: 'Como', aliases: ['Como'] },
   { name: 'Cremonese', aliases: ['Cremonese'] },
   { name: 'Fiorentina', aliases: ['Fiorentina', 'Viola'] },
+  { name: 'Frosinone', aliases: ['Frosinone'] },
   { name: 'Genoa', aliases: ['Genoa'] },
   { name: 'Inter', aliases: ['Inter', 'Internazionale', 'Nerazzurri'] },
   { name: 'Juventus', aliases: ['Juventus', 'Juve', 'Bianconeri'] },
   { name: 'Lazio', aliases: ['Lazio', 'Biancocelesti'] },
   { name: 'Lecce', aliases: ['Lecce'] },
   { name: 'Milan', aliases: ['Milan', 'Rossoneri'] },
+  { name: 'Monza', aliases: ['Monza', 'Brianzoli'] },
   { name: 'Napoli', aliases: ['Napoli', 'Partenopei', 'Azzurri'] },
   { name: 'Parma', aliases: ['Parma'] },
   { name: 'Pisa', aliases: ['Pisa'] },
@@ -66,6 +96,7 @@ const SERIE_A_TEAM_ALIASES = [
   { name: 'Sassuolo', aliases: ['Sassuolo'] },
   { name: 'Torino', aliases: ['Torino', 'Toro', 'Granata'] },
   { name: 'Udinese', aliases: ['Udinese'] },
+  { name: 'Venezia', aliases: ['Venezia', 'Lagunari'] },
   { name: 'Verona', aliases: ['Verona', 'Hellas Verona', 'Hellas'] }
 ];
 
@@ -108,12 +139,23 @@ function stripCdata(value) {
 
 function decodeXml(value) {
   return stripCdata(value)
+    .replace(/&#(\d+);?/g, (match, code) => {
+      const point = Number(code);
+      if (!Number.isFinite(point) || point < 0) return match;
+      try { return String.fromCodePoint(point); } catch (_) { return match; }
+    })
+    .replace(/&#x([0-9a-fA-F]+);?/g, (match, code) => {
+      const point = parseInt(code, 16);
+      if (!Number.isFinite(point) || point < 0) return match;
+      try { return String.fromCodePoint(point); } catch (_) { return match; }
+    })
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ')
     .replace(/<[^>]*>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -315,6 +357,182 @@ function parseFeed(xml, source) {
   }).filter((article) => article.url && article.title);
 }
 
+
+function stripHtml(value) {
+  return decodeXml(String(value || '')
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]*>/g, ' '));
+}
+
+function getItalianMonthNumber(value) {
+  const key = normalizeEntityKey(value);
+  const months = {
+    gennaio: 1, febbraio: 2, marzo: 3, aprile: 4, maggio: 5, giugno: 6,
+    luglio: 7, agosto: 8, settembre: 9, ottobre: 10, novembre: 11, dicembre: 12
+  };
+  return months[key] || 0;
+}
+
+function formatIsoDay(year, month, day) {
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
+
+function getRomeOffsetForDateKey(dayKey) {
+  const month = Number(String(dayKey || '').slice(5, 7));
+  return month >= 3 && month <= 10 ? '+02:00' : '+01:00';
+}
+
+function addDaysToDateKey(dayKey, delta) {
+  const date = new Date(`${dayKey}T12:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + Number(delta || 0));
+  return formatIsoDay(date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate());
+}
+
+function getTodayRomeDateKey() {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Rome',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(new Date()).reduce((acc, part) => {
+    if (part.type !== 'literal') acc[part.type] = part.value;
+    return acc;
+  }, {});
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+function parseTmwDateLabelFromText(text, currentDayKey) {
+  const cleaned = stripHtml(text || '').toLowerCase();
+  if (/\boggi\b/.test(cleaned)) return getTodayRomeDateKey();
+  if (/\bieri\b/.test(cleaned)) return addDaysToDateKey(getTodayRomeDateKey(), -1);
+  const match = cleaned.match(/(?:lunedi|lunedì|martedi|martedì|mercoledi|mercoledì|giovedi|giovedì|venerdi|venerdì|sabato|domenica)\s+(\d{1,2})\s+([a-zà]+)/i)
+    || cleaned.match(/\b(\d{1,2})\s+(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)\b/i);
+  if (!match) return currentDayKey;
+  const day = Number(match[1]);
+  const month = getItalianMonthNumber(match[2]);
+  if (!day || !month) return currentDayKey;
+  const today = getTodayRomeDateKey();
+  let year = Number(today.slice(0, 4));
+  const candidate = formatIsoDay(year, month, day);
+  if (candidate > addDaysToDateKey(today, 7)) year -= 1;
+  return formatIsoDay(year, month, day);
+}
+
+function buildTmwPublishedAt(dayKey, timeValue) {
+  const time = String(timeValue || '').match(/\b(\d{1,2}):(\d{2})\b/);
+  if (!dayKey || !time) return '';
+  const hour = String(Math.max(0, Math.min(23, Number(time[1]) || 0))).padStart(2, '0');
+  const minute = String(Math.max(0, Math.min(59, Number(time[2]) || 0))).padStart(2, '0');
+  return `${dayKey}T${hour}:${minute}:00${getRomeOffsetForDateKey(dayKey)}`;
+}
+
+function isTmwArticleUrl(url) {
+  const raw = String(url || '').trim();
+  if (!raw) return false;
+  try {
+    const parsed = new URL(raw, 'https://www.tuttomercatoweb.com/');
+    const host = parsed.hostname.replace(/^www\./i, '').toLowerCase();
+    if (host !== 'tuttomercatoweb.com') return false;
+    if (/\/(rss|rss-lista|mobile|network|redazione|contatti|atalanta|bologna|cagliari|como|fiorentina|frosinone|genoa|inter|juventus|lazio|lecce|milan|monza|napoli|parma|roma|sassuolo|torino|udinese|venezia)\/?$/i.test(parsed.pathname)) return false;
+    return /-\d{5,}\/?$/i.test(parsed.pathname);
+  } catch (_) {
+    return false;
+  }
+}
+
+function extractImageFromHtmlFragment(fragment, baseUrl) {
+  const block = String(fragment || '');
+  const img = block.match(/<img\b[^>]*(?:src|data-src|data-original|data-lazy-src)=['"]([^'"]+)['"][^>]*>/i);
+  if (!img) return '';
+  return makeAbsoluteUrl(img[1], baseUrl || 'https://www.tuttomercatoweb.com/');
+}
+
+function extractTmwTeamImage(html, source) {
+  const explicit = String(source.teamLogoUrl || source.fallbackImage || '').trim();
+  if (explicit) return makeAbsoluteUrl(explicit, source.url || source.feedUrl || '');
+  const team = normalizeEntityKey(normalizeList(source.defaultTeams || source.defaultTeam || [])[0] || source.name || '');
+  if (!team) return '';
+  const imgRe = /<img\b[\s\S]*?>/gi;
+  let match;
+  while ((match = imgRe.exec(html))) {
+    const tag = match[0];
+    const alt = normalizeEntityKey((tag.match(/\balt=['"]([^'"]+)['"]/i) || [])[1] || '');
+    if (!alt || !alt.includes(team)) continue;
+    const src = (tag.match(/\b(?:src|data-src|data-original|data-lazy-src)=['"]([^'"]+)['"]/i) || [])[1] || '';
+    const image = makeAbsoluteUrl(src, source.url || source.feedUrl || '');
+    if (image) return image;
+  }
+  return '';
+}
+
+function parseTmwTeamPage(html, source) {
+  const sourceDefaultTeams = normalizeList(source.defaultTeams || source.defaultTeam || []);
+  const teamImage = extractTmwTeamImage(html, source);
+  const anchorRe = /<a\b([^>]*)\bhref=['"]([^'"]+)['"]([^>]*)>([\s\S]*?)<\/a>/gi;
+  const articles = [];
+  const seen = new Set();
+  let match;
+  let lastIndex = 0;
+  let currentDayKey = getTodayRomeDateKey();
+  while ((match = anchorRe.exec(html))) {
+    const between = html.slice(lastIndex, match.index);
+    currentDayKey = parseTmwDateLabelFromText(between, currentDayKey);
+    lastIndex = anchorRe.lastIndex;
+    const href = makeAbsoluteUrl(match[2], source.url || source.feedUrl || 'https://www.tuttomercatoweb.com/');
+    if (!isTmwArticleUrl(href) || seen.has(href)) continue;
+    const rawTitle = stripHtml(match[4]);
+    const title = rawTitle.replace(/^\d{1,2}:\d{2}\s*/, '').trim();
+    if (!title || title.length < 8) continue;
+    const prefix = stripHtml(html.slice(Math.max(0, match.index - 240), match.index));
+    const timeMatch = prefix.match(/(\d{1,2}:\d{2})(?![\s\S]*(\d{1,2}:\d{2}))/) || prefix.match(/\b(\d{1,2}:\d{2})\b/);
+    const publishedAt = buildTmwPublishedAt(currentDayKey, timeMatch && timeMatch[1]);
+    const text = `${title} ${sourceDefaultTeams.join(' ')}`;
+    const teams = inferTeams(text);
+    const people = inferPeople(title, teams.length ? teams : sourceDefaultTeams);
+    const image = extractImageFromHtmlFragment(match[0], href);
+    articles.push({
+      id: `${source.id || 'tmw'}-${articles.length}-${Buffer.from(href).toString('base64').slice(0, 12)}`,
+      title,
+      url: href,
+      sourceId: source.id || '',
+      sourceName: source.name || source.label || 'TuttoMercatoWeb',
+      sourceUrl: source.url || 'https://www.tuttomercatoweb.com',
+      sourceType: 'tmw-team-html',
+      fallbackImageMode: source.fallbackImageMode || 'tmw-team-text',
+      description: '',
+      image,
+      teamLogoUrl: teamImage,
+      publishedAt,
+      topic: inferTopic(text, source.topic || 'Mercato'),
+      marketStatus: inferMarketStatus(title),
+      teams: teams.length ? teams : sourceDefaultTeams,
+      detectedTeams: teams,
+      players: [],
+      detectedPlayers: people,
+      entities: {
+        teams,
+        people,
+        players: people
+      },
+      tags: [source.topic, 'TMW', 'Squadra'].filter(Boolean)
+    });
+    seen.add(href);
+  }
+  return articles.filter((article) => article.url && article.title);
+}
+
+function parseSourceContent(body, source) {
+  const mode = normalizeEntityKey(`${source.parseMode || ''} ${source.sourceType || ''}`);
+  const rssArticles = parseFeed(body, source);
+  if (rssArticles.length && !mode.includes('html')) return rssArticles;
+  if (mode.includes('tmw team html') || mode.includes('tmw') || /tuttomercatoweb\.com\/[^/]+\/?$/i.test(String(source.feedUrl || source.url || ''))) {
+    const htmlArticles = parseTmwTeamPage(body, source);
+    return htmlArticles.length ? htmlArticles : rssArticles;
+  }
+  return rssArticles;
+}
+
 function isLikelyMarketArticle(article) {
   const text = `${article.title || ''} ${article.description || ''} ${article.topic || ''} ${article.marketStatus || ''}`.toLowerCase();
   return MARKET_KEYWORDS.some((keyword) => text.includes(keyword)) || (article.teams || []).length > 0;
@@ -335,12 +553,12 @@ async function fetchSource(source) {
   if (!source.enabled && source.enabled !== undefined) return { source, articles: [], warning: `${source.name || source.url}: fonte disattivata` };
   const feedUrls = getSourceFeedUrls(source);
   if (!feedUrls.length) return { source, articles: [], warning: `${source.name || source.url}: feedUrl non configurato` };
-  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 500, 1, 1000);
+  const perSourceLimit = clampNumber(source.limit || source.sourceLimit, 500, 1, 2000);
   const settled = await Promise.allSettled(feedUrls.map(async (feedUrl) => {
     const response = await fetchWithTimeout(feedUrl, { timeoutMs: Number(source.timeoutMs || 12000) });
     if (!response.ok) throw new Error(`${source.name || feedUrl}: HTTP ${response.status}`);
-    const xml = await response.text();
-    return parseFeed(xml, { ...source, feedUrl }).filter(isLikelyMarketArticle);
+    const body = await response.text();
+    return parseSourceContent(body, { ...source, feedUrl }).filter(isLikelyMarketArticle);
   }));
   const warnings = [];
   const articles = [];
@@ -435,7 +653,7 @@ exports.handler = async (event) => {
       .filter((source) => source && source.enabled !== false)
       .filter((source) => articleMatchesSource({ sourceName: source.name || source.label || '', sourceId: source.id || '' }, sourceFilter))
       .slice(0, clampNumber(config?.maxSources, 50, 1, 50));
-    const globalLimit = clampNumber(params.limit || params.maxArticles || config?.maxArticles, 1000, 1, 1000);
+    const globalLimit = clampNumber(params.limit || params.maxArticles || config?.maxArticles, 5000, 1, 5000);
     const results = await Promise.allSettled(activeSources.map(fetchSource));
     const warnings = [];
     const articles = [];
@@ -445,7 +663,11 @@ exports.handler = async (event) => {
       url: source.url || '',
       feedUrl: getSourceFeedUrls(source)[0] || '',
       feedUrls: getSourceFeedUrls(source),
-      enabled: source.enabled !== false
+      enabled: source.enabled !== false,
+      sourceType: source.sourceType || '',
+      parseMode: source.parseMode || '',
+      defaultTeams: normalizeList(source.defaultTeams || source.defaultTeam || []),
+      fallbackImageMode: source.fallbackImageMode || ''
     }));
 
     results.forEach((result) => {
@@ -478,7 +700,7 @@ exports.handler = async (event) => {
     }
 
     return jsonResponse(200, {
-      version: 'V320',
+      version: 'V329',
       sourceMode: 'automatic-rss',
       generatedAt: new Date().toISOString(),
       query,
@@ -489,10 +711,11 @@ exports.handler = async (event) => {
       limits: {
         maxArticles: globalLimit,
         maxSources: activeSources.length,
-        perSourceMax: 1000
+        perSourceMax: 2000
       },
       sources,
       warnings: [...warnings, ...rangeWarnings],
+      removedSourcesV316: Array.isArray(config?.removedSourcesV316) ? config.removedSourcesV316 : ['TuttoMercatoWeb', 'tuttomercatoweb'],
       feedRange: {
         ...feedRange,
         totalFetched: Array.from(byUrl.values()).length,
@@ -502,7 +725,7 @@ exports.handler = async (event) => {
     });
   } catch (error) {
     return jsonResponse(200, {
-      version: 'V320',
+      version: 'V329',
       sourceMode: 'automatic-rss-error',
       generatedAt: new Date().toISOString(),
       sources: DEFAULT_SOURCES,

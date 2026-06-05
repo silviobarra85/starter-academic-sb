@@ -1,8 +1,8 @@
 {
-  "version": "V324",
+  "version": "V329",
   "timezone": "Europe/Rome",
   "startDate": "2026-06-01",
-  "updatedAt": "2026-06-04T15:07:18.289Z",
+  "updatedAt": "2026-06-04T17:54:34.320Z",
   "sourceMode": "static-rss-archive-manifest",
   "availableDays": [
     "2026-06-01",
@@ -11,10 +11,14 @@
     "2026-06-04"
   ],
   "articleCounts": {
-    "2026-06-01": 4,
-    "2026-06-02": 47,
-    "2026-06-03": 125,
-    "2026-06-04": 119
+    "2026-06-01": 77,
+    "2026-06-02": 149,
+    "2026-06-03": 234,
+    "2026-06-04": 267
   },
-  "totalArticles": 295
+  "totalArticles": 727,
+  "removedSourcesV316": [
+    "TuttoMercatoWeb",
+    "tuttomercatoweb"
+  ]
 }

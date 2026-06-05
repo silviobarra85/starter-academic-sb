@@ -27,6 +27,34 @@
       "sourceSheets": [
         "Lista calciatori"
       ]
-    }
+    }, 
+    {
+      "id": "2026-06-04",
+      "seasonId": "2025-2026",
+      "label": "Listone 2026-06-04",
+      "loadedAt": "2026-06-04",
+      "file": "2026-06-04.json",
+      "rows": 663,
+      "activeRows": 532,
+      "asteriskRows": 131,
+      "detectedFormat": "Fantacalcio Classic a foglio singolo",
+      "sourceSheets": [
+        "Lista calciatori"
+      ],
+      "comparedWith": "2026-05-30",
+      "changeSummary": {
+        "comparedWith": "2026-05-30",
+        "comparedWithLabel": "2026-05-30 · Listone 2026-05-30",
+        "newPlayers": 0,
+        "removedPlayers": 0,
+        "quotationUp": 0,
+        "quotationDown": 0,
+        "quotationChanged": 0,
+        "statusChanged": 0,
+        "teamChanged": 0,
+        "roleChanged": 0,
+        "unchanged": 663
+  }
+}
   ]
 }

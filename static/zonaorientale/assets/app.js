@@ -38,13 +38,13 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=327";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=330";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=327";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=327";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=330";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=330";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const LISTONE_MOBILE_DEFAULT_HIDDEN_COLUMNS_V82 = [
@@ -96,7 +96,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=327";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=330";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -120,7 +120,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=327";
+} from "./js/domain/news-share-v228.js?v=330";
 import {
   getListoneValue,
   compareListoneValues
@@ -135,19 +135,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=327";
+} from "./js/admin/listone-converter.js?v=330";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=327";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=327";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=330";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=330";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=327";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=327";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=327";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=327";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=330";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=330";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=330";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=330";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=327";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=327";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=327";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=330";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=330";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=330";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15569,7 +15569,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "327";
+const DEPLOY_EXPECTED_VERSION_V181 = "330";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23867,8 +23867,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=327";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=327";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=330";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=330";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -24042,8 +24042,8 @@ function resetCalciomercatoDefaultRangeV316() {
 function buildCalciomercatoAutomaticUrlV316() {
   const bounds = getCalciomercatoRangeBoundsV316();
   const url = new URL(CALCIOMERCATO_AUTO_FEED_URL_V309, window.location.origin);
-  url.searchParams.set("limit", "1000");
-  url.searchParams.set("maxArticles", "1000");
+  url.searchParams.set("limit", "5000");
+  url.searchParams.set("maxArticles", "5000");
   if (calciomercatoStateV306.search) url.searchParams.set("q", calciomercatoStateV306.search);
   if (calciomercatoStateV306.source && calciomercatoStateV306.source !== "all") url.searchParams.set("source", calciomercatoStateV306.source);
   if (bounds.fromIso) url.searchParams.set("from", bounds.fromIso);
@@ -24259,43 +24259,201 @@ function findCalciomercatoSourceConfigV326(article) {
   }) || null;
 }
 
-function getCalciomercatoArticleImageInfoV325(article) {
-  const directImage = String(article?.image || article?.thumbnail || article?.imageUrl || article?.ogImage || "").trim();
-  if (directImage) return { src: directImage, alt: "", isSourceFallback: false };
-  const sourceConfig = findCalciomercatoSourceConfigV326(article);
-  const source = getCalciomercatoSourceLabelV314(article) || sourceConfig?.name || sourceConfig?.label || "Fonte";
-  const customSourceImage = String(
-    article?.sourceImage ||
-    article?.sourceLogo ||
-    article?.sourceIcon ||
-    sourceConfig?.sourceImage ||
-    sourceConfig?.sourceLogo ||
-    sourceConfig?.sourceIcon ||
-    sourceConfig?.logo ||
-    sourceConfig?.icon ||
+
+function decodeCalciomercatoTextOnceV328(value) {
+  const raw = String(value || "");
+  if (!raw || !raw.includes("&")) return raw;
+  const numericDecoded = raw
+    .replace(/&#(\d+);?/g, (match, code) => {
+      const point = Number(code);
+      if (!Number.isFinite(point) || point < 0) return match;
+      try { return String.fromCodePoint(point); } catch (error) { return match; }
+    })
+    .replace(/&#x([0-9a-fA-F]+);?/g, (match, code) => {
+      const point = parseInt(code, 16);
+      if (!Number.isFinite(point) || point < 0) return match;
+      try { return String.fromCodePoint(point); } catch (error) { return match; }
+    })
+    .replace(/&apos;?/g, "'")
+    .replace(/&quot;?/g, '"')
+    .replace(/&nbsp;?/g, " ")
+    .replace(/&amp;?/g, "&")
+    .replace(/&lt;?/g, "<")
+    .replace(/&gt;?/g, ">");
+  if (typeof document === "undefined") return numericDecoded;
+  const decoder = decodeCalciomercatoTextOnceV328;
+  decoder._element = decoder._element || document.createElement("textarea");
+  decoder._element.innerHTML = numericDecoded;
+  return decoder._element.value || numericDecoded;
+}
+
+function decodeCalciomercatoTextV328(value) {
+  let decoded = String(value || "");
+  if (!decoded || !decoded.includes("&")) return decoded;
+  for (let index = 0; index < 2; index += 1) {
+    const next = decodeCalciomercatoTextOnceV328(decoded);
+    if (next === decoded) break;
+    decoded = next;
+    if (!decoded.includes("&")) break;
+  }
+  return decoded.replace(/[\u0000-\u001F\u007F]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function getCalciomercatoSourceHomepageV328(article, sourceConfig) {
+  const candidates = [
+    article?.sourceUrl,
+    article?.sourceHomepage,
+    article?.sourceHome,
+    sourceConfig?.url,
+    sourceConfig?.siteUrl,
+    sourceConfig?.homepage,
+    article?.url
+  ];
+  for (const candidate of candidates) {
+    const raw = String(candidate || "").trim();
+    if (!/^https?:\/\//i.test(raw)) continue;
+    try {
+      const parsed = new URL(raw);
+      return parsed.origin;
+    } catch (error) {
+      // Ignora URL non validi e prova il candidato successivo.
+    }
+  }
+  return "";
+}
+
+function buildCalciomercatoSourceFaviconUrlV328(article, sourceConfig) {
+  const explicitIcon = String(
+    article?.sourceFavicon ||
+    article?.favicon ||
+    sourceConfig?.sourceFavicon ||
+    sourceConfig?.favicon ||
+    sourceConfig?.faviconUrl ||
     ""
   ).trim();
-  if (customSourceImage) return { src: customSourceImage, alt: `Fonte ${source}`, isSourceFallback: true };
+  if (/^https?:\/\//i.test(explicitIcon) || explicitIcon.startsWith("./") || explicitIcon.startsWith("/")) return explicitIcon;
+  const homepage = getCalciomercatoSourceHomepageV328(article, sourceConfig);
+  if (!homepage) return "";
+  try {
+    return new URL("/favicon.ico", homepage).toString();
+  } catch (error) {
+    return "";
+  }
+}
+
+
+function isCalciomercatoTmwTeamSourceV329(article, sourceConfig) {
+  const values = [
+    article?.sourceId,
+    article?.sourceName,
+    article?.source,
+    article?.sourceType,
+    article?.fallbackImageMode,
+    sourceConfig?.id,
+    sourceConfig?.name,
+    sourceConfig?.sourceType,
+    sourceConfig?.fallbackImageMode
+  ].map(normalizeCalciomercatoValueV306).filter(Boolean);
+  return values.some((value) => value === "team-crest" || value === "tmw-team-text" || value.includes("tmw-team") || value.startsWith("tmw-"));
+}
+
+function getCalciomercatoFallbackTeamLabelV329(article, sourceConfig) {
+  const team = normalizeCalciomercatoListV308(article?.teams || article?.detectedTeams || sourceConfig?.defaultTeams || sourceConfig?.defaultTeam || []).find(Boolean);
+  if (team) return decodeCalciomercatoTextV328(team);
+  const sourceLabel = decodeCalciomercatoTextV328(getCalciomercatoSourceLabelV314(article) || sourceConfig?.name || "");
+  return sourceLabel.replace(/^TMW\s+/i, "").trim() || "Squadra";
+}
+
+function buildCalciomercatoTeamCrestSvgV329(teamName) {
+  const safeTeam = escapeCalciomercatoSvgTextV325(teamName || "Squadra");
+  const initials = safeTeam
+    .replace(/&amp;/g, "&")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join("") || "ZO";
+  const safeInitials = escapeCalciomercatoSvgTextV325(initials.slice(0, 3));
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Scudetto ${safeTeam}">
+    <defs>
+      <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#020617"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient>
+      <linearGradient id="shield" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f8b500"/><stop offset="1" stop-color="#fff7ed"/></linearGradient>
+    </defs>
+    <rect width="640" height="360" rx="44" fill="url(#bg)"/>
+    <path d="M320 42 458 92v92c0 82-55 126-138 156-83-30-138-74-138-156V92L320 42Z" fill="url(#shield)" stroke="#fff7ed" stroke-width="6"/>
+    <path d="M218 118h204v66c0 58-37 91-102 118-65-27-102-60-102-118v-66Z" fill="#0f172a" opacity="0.95"/>
+    <text x="320" y="196" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900" fill="#f8b500">${safeInitials}</text>
+    <text x="320" y="276" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="900" fill="#fff7ed">${safeTeam}</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+
+function buildCalciomercatoTmwTeamTextSvgV330(teamName) {
+  const teamLabel = decodeCalciomercatoTextV328(teamName || "Squadra") || "Squadra";
+  const fullLabel = `TMW - ${teamLabel}`;
+  const safeTeam = escapeCalciomercatoSvgTextV325(teamLabel);
+  const safeFullLabel = escapeCalciomercatoSvgTextV325(fullLabel);
+  const safeCompactLabel = escapeCalciomercatoSvgTextV325(fullLabel.length > 24 ? `${fullLabel.slice(0, 23)}…` : fullLabel);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="${safeFullLabel}">
+    <defs>
+      <linearGradient id="tmwBg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#020617"/><stop offset="1" stop-color="#111827"/></linearGradient>
+      <linearGradient id="tmwBand" x1="0" x2="1" y1="0" y2="0"><stop stop-color="#f8b500"/><stop offset="1" stop-color="#fed7aa"/></linearGradient>
+    </defs>
+    <rect width="640" height="360" rx="44" fill="url(#tmwBg)"/>
+    <rect x="34" y="34" width="572" height="292" rx="34" fill="#0f172a" stroke="#f8b500" stroke-width="4"/>
+    <rect x="74" y="76" width="492" height="78" rx="26" fill="url(#tmwBand)"/>
+    <text x="320" y="132" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" fill="#0f172a">TMW</text>
+    <text x="320" y="226" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="900" fill="#fff7ed">${safeCompactLabel}</text>
+    <text x="320" y="276" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" fill="#fed7aa">${safeTeam}</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function isCalciomercatoTmwTeamLogoFallbackImageV330(article, directImage) {
+  if (!directImage) return false;
+  const sourceConfig = findCalciomercatoSourceConfigV326(article);
+  if (!isCalciomercatoTmwTeamSourceV329(article, sourceConfig)) return false;
+  const teamLogoUrl = String(article?.teamLogoUrl || article?.fallbackImage || sourceConfig?.teamLogoUrl || sourceConfig?.fallbackImage || "").trim();
+  return !!teamLogoUrl && directImage === teamLogoUrl;
+}
+
+function getCalciomercatoArticleImageInfoV325(article) {
+  const directImage = String(article?.image || article?.thumbnail || article?.imageUrl || article?.ogImage || "").trim();
+  const sourceConfig = findCalciomercatoSourceConfigV326(article);
+  if (directImage && !isCalciomercatoTmwTeamLogoFallbackImageV330(article, directImage)) {
+    return { src: directImage, alt: "", isSourceFallback: false, isFaviconFallback: false, isTeamCrestFallback: false, isTmwTeamTextFallback: false };
+  }
+  const source = decodeCalciomercatoTextV328(getCalciomercatoSourceLabelV314(article) || sourceConfig?.name || sourceConfig?.label || "Fonte") || "Fonte";
   const sourceKey = getCalciomercatoSourceImageKeyV325(article);
   const label = CALCIOMERCATO_SOURCE_IMAGE_LABELS_V325[sourceKey] || source || "Fonte";
-  return { src: buildCalciomercatoSourceImageSvgV325(label), alt: `Fonte ${label}`, isSourceFallback: true };
+  const fallbackSvg = buildCalciomercatoSourceImageSvgV325(label);
+  if (isCalciomercatoTmwTeamSourceV329(article, sourceConfig)) {
+    const teamName = getCalciomercatoFallbackTeamLabelV329(article, sourceConfig);
+    const tmwTeamTextSvg = buildCalciomercatoTmwTeamTextSvgV330(teamName);
+    return { src: tmwTeamTextSvg, fallbackSrc: fallbackSvg, alt: `TMW - ${teamName}`, isSourceFallback: true, isFaviconFallback: false, isTeamCrestFallback: false, isTmwTeamTextFallback: true };
+  }
+  const faviconUrl = buildCalciomercatoSourceFaviconUrlV328(article, sourceConfig);
+  if (faviconUrl) return { src: faviconUrl, fallbackSrc: fallbackSvg, alt: `Favicon ${source}`, isSourceFallback: true, isFaviconFallback: true, isTeamCrestFallback: false, isTmwTeamTextFallback: false };
+  return { src: fallbackSvg, alt: `Fonte ${label}`, isSourceFallback: true, isFaviconFallback: false, isTeamCrestFallback: false, isTmwTeamTextFallback: false };
 }
 
 function renderCalciomercatoArticleCardV306(article) {
-  const title = String(article?.title || "Articolo di mercato").trim();
+  const title = decodeCalciomercatoTextV328(article?.title || "Articolo di mercato") || "Articolo di mercato";
   const url = String(article?.url || "").trim();
   const imageInfo = getCalciomercatoArticleImageInfoV325(article);
-  const description = String(article?.description || article?.summary || "").trim();
-  const source = getCalciomercatoSourceLabelV314(article);
-  const teams = getCalciomercatoTeamsV308(article);
-  const topic = getCalciomercatoTopicLabelV306(article);
-  const status = getCalciomercatoStatusV308(article);
+  const description = decodeCalciomercatoTextV328(article?.description || article?.summary || "");
+  const source = decodeCalciomercatoTextV328(getCalciomercatoSourceLabelV314(article)) || "Fonte";
+  const teams = getCalciomercatoTeamsV308(article).map(decodeCalciomercatoTextV328).filter(Boolean);
+  const topic = decodeCalciomercatoTextV328(getCalciomercatoTopicLabelV306(article)) || "Mercato";
+  const status = decodeCalciomercatoTextV328(getCalciomercatoStatusV308(article));
   const date = formatCalciomercatoArticleDateTimeV311(article);
   const safeUrl = url && /^https?:\/\//i.test(url) ? url : "";
-  const thumbClass = `calciomercato-thumb-v306${imageInfo.isSourceFallback ? " calciomercato-thumb-source-v325" : ""}`;
+  const thumbClass = `calciomercato-thumb-v306${imageInfo.isSourceFallback ? " calciomercato-thumb-source-v325" : ""}${imageInfo.isFaviconFallback ? " calciomercato-thumb-favicon-v328" : ""}${imageInfo.isTeamCrestFallback ? " calciomercato-thumb-crest-v329" : ""}${imageInfo.isTmwTeamTextFallback ? " calciomercato-thumb-tmw-team-v330" : ""}`;
+  const fallbackAttr = imageInfo.fallbackSrc ? ` data-fallback-src="${escapeHtml(imageInfo.fallbackSrc)}" onerror="this.onerror=null;this.src=this.dataset.fallbackSrc;"` : "";
   return `
     <article class="calciomercato-card-v306 compact-card">
-      ${imageInfo.src ? `<a class="${thumbClass}" href="${escapeHtml(safeUrl || '#')}" target="_blank" rel="noopener" aria-label="Apri articolo"><img src="${escapeHtml(imageInfo.src)}" alt="${escapeHtml(imageInfo.alt)}" loading="lazy" /></a>` : `<div class="calciomercato-thumb-v306 calciomercato-thumb-placeholder-v306" aria-hidden="true">📰</div>`}
+      ${imageInfo.src ? `<a class="${thumbClass}" href="${escapeHtml(safeUrl || '#')}" target="_blank" rel="noopener" aria-label="Apri articolo"><img src="${escapeHtml(imageInfo.src)}" alt="${escapeHtml(imageInfo.alt)}" loading="lazy"${fallbackAttr} /></a>` : `<div class="calciomercato-thumb-v306 calciomercato-thumb-placeholder-v306" aria-hidden="true">📰</div>`}
       <div class="calciomercato-card-body-v306">
         <div class="calciomercato-card-meta-v306">
           ${renderCalciomercatoTeamChipsV308(teams)}
@@ -24454,7 +24612,8 @@ function normalizeCalciomercatoDataV309(data, mode) {
     sourceMode: data?.sourceMode || data?.mode || mode || "static",
     warnings,
     feedRange: data?.feedRange || null,
-    limits: data?.limits || null
+    limits: data?.limits || null,
+    removedSourcesV316: Array.isArray(data?.removedSourcesV316) ? data.removedSourcesV316 : []
   };
 }
 
@@ -25268,7 +25427,7 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=327`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=330`;
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -25392,8 +25551,8 @@ function buildCalciomercatoArchiveFeedUrlForDayV323(dayKey) {
   if (!start) return "";
   const end = addCalciomercatoDaysV323(start, 1);
   const url = new URL(CALCIOMERCATO_AUTO_FEED_URL_V309, window.location.origin);
-  url.searchParams.set("limit", "1000");
-  url.searchParams.set("maxArticles", "1000");
+  url.searchParams.set("limit", "5000");
+  url.searchParams.set("maxArticles", "5000");
   url.searchParams.set("from", start.toISOString());
   url.searchParams.set("to", end.toISOString());
   return url.pathname + url.search;
@@ -25423,7 +25582,7 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=327&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=330&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -25641,14 +25800,20 @@ function buildCalciomercatoArchiveManifestV323(generatedFiles) {
   const availableDays = Array.from(days).filter(Boolean).sort();
   const totalArticles = Object.values(articleCounts).reduce((sum, value) => sum + (Number(value) || 0), 0);
   return {
-    version: "V324",
+    version: "V329",
     timezone: CALCIOMERCATO_TIME_ZONE_V312,
     startDate: CALCIOMERCATO_ARCHIVE_START_DATE_V323,
     updatedAt: new Date().toISOString(),
     sourceMode: "static-rss-archive-manifest",
     availableDays,
     articleCounts,
-    totalArticles
+    totalArticles,
+    removedSourcesV316: Array.from(new Set([
+      ...(Array.isArray(current.removedSourcesV316) ? current.removedSourcesV316 : []),
+      ...(Array.isArray(calciomercatoStateV306.data?.removedSourcesV316) ? calciomercatoStateV306.data.removedSourcesV316 : []),
+      "TuttoMercatoWeb",
+      "tuttomercatoweb"
+    ].filter(Boolean)))
   };
 }
 
@@ -25673,7 +25838,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=327&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=330&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -25908,7 +26073,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=327&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=330&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -26223,3 +26388,59 @@ window.ZonaOrientaleCalciomercatoAdminToggleV327 = {
   netlifyFunctionsChanged: false,
   setExpanded: setCalciomercatoArchiveAdminExpandedV327
 };
+
+/* V328 - Rifinitura card Calciomercato mobile, decodifica testi e favicon fonte. */
+window.ZonaOrientaleCalciomercatoCardV328 = {
+  version: "V328",
+  label: "card Calciomercato mobile, testi decodificati e favicon fonte",
+  mobileDescriptionHidden: true,
+  htmlEntitiesDecodedBeforeEscaping: true,
+  missingPreviewImageUsesSourceFavicon: true,
+  faviconFallbackKeepsSourceTile: true,
+  firebaseWrites: false,
+  netlifyFunctionsChanged: false,
+  protectedFeatures: [
+    "Feed RSS e archivio statico Calciomercato",
+    "Ricerca, filtri e range Calciomercato",
+    "Box Solo Admin espandibile/riducibile",
+    "Listone, Rose, Fantamercato interno, Dashboard Presidente, Admin, Firebase/Auth/EmailJS",
+    "Mobile bottom nav e menu Altro"
+  ],
+  decodeText: decodeCalciomercatoTextV328,
+  getArticleImageInfo: getCalciomercatoArticleImageInfoV325
+};
+
+
+/* V329 - Fonti TMW per squadra, limiti archivio aumentati e fallback scudetto per card senza immagine. */
+window.ZonaOrientaleCalciomercatoV329 = {
+  version: "V329",
+  label: "TMW squadre Serie A e fallback scudetto",
+  tmwTeamSources: 20,
+  genericTmwSourceRemoved: true,
+  maxArchiveDownloadArticles: 5000,
+  behaviorChangeOutsideCalciomercato: false,
+  preservedFeatures: [
+    "Feed RSS automatici esistenti non TMW",
+    "Archivio statico giornaliero Calciomercato",
+    "Filtri ricerca, fonte, squadra e range",
+    "Fallback favicon V328 per le altre fonti"
+  ]
+};
+
+/* V330 - Fallback testuale TMW squadra per articoli senza immagine. */
+window.ZonaOrientaleCalciomercatoV330 = {
+  version: "V330",
+  label: "fallback immagini TMW squadra con testo TMW - NomeSquadra",
+  tmwMissingPreviewImageUsesTextTile: true,
+  textTileFormat: "TMW - <NomeSquadra>",
+  preservesTmwTeamHtmlParser: true,
+  preservesArchiveDownloadLimitsV329: true,
+  behaviorChangeOutsideCalciomercato: false,
+  preservedFeatures: [
+    "Fonti TMW squadra V329",
+    "Parser RSS e HTML Calciomercato",
+    "Fallback favicon/tile per fonti non TMW",
+    "Mobile card V328, toggle Solo Admin V327 e menu/Listone V326"
+  ]
+};
+

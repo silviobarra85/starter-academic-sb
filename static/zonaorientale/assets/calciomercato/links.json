@@ -1,20 +1,368 @@
 {
-  "version": "V316",
-  "updatedAt": "2026-06-03",
+  "version": "V329",
+  "updatedAt": "2026-06-04",
   "sourceMode": "automatic-rss",
-  "notes": "Config fonti Calciomercato. La Netlify Function legge i feed RSS configurati, supporta ricerca per nome, filtro fonte e range temporale; di default la UI mostra le ultime 12 ore e carica articoli piu vecchi allo scroll.",
+  "notes": "Config fonti Calciomercato. V329 sostituisce il feed generale TuttoMercatoWeb con i canali HTML delle singole squadre TMW, mantiene i feed RSS pubblici delle altre fonti, aumenta i limiti di recupero e supporta il download archivio statico giornaliero via Admin.",
   "sources": [
     {
-      "id": "tmw",
-      "name": "TuttoMercatoWeb",
-      "url": "https://www.tuttomercatoweb.com",
+      "id": "tmw-atalanta",
+      "name": "TMW Atalanta",
+      "url": "https://www.tuttomercatoweb.com/atalanta/",
       "feedUrls": [
-        "https://www.tuttomercatoweb.com/rss/"
+        "https://www.tuttomercatoweb.com/atalanta/"
       ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 250,
-      "timeoutMs": 12000
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Atalanta"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-bologna",
+      "name": "TMW Bologna",
+      "url": "https://www.tuttomercatoweb.com/bologna/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/bologna/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Bologna"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-cagliari",
+      "name": "TMW Cagliari",
+      "url": "https://www.tuttomercatoweb.com/cagliari/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/cagliari/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Cagliari"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-como",
+      "name": "TMW Como",
+      "url": "https://www.tuttomercatoweb.com/como/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/como/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Como"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-fiorentina",
+      "name": "TMW Fiorentina",
+      "url": "https://www.tuttomercatoweb.com/fiorentina/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/fiorentina/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Fiorentina"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-frosinone",
+      "name": "TMW Frosinone",
+      "url": "https://www.tuttomercatoweb.com/frosinone/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/frosinone/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Frosinone"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-genoa",
+      "name": "TMW Genoa",
+      "url": "https://www.tuttomercatoweb.com/genoa/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/genoa/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Genoa"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-inter",
+      "name": "TMW Inter",
+      "url": "https://www.tuttomercatoweb.com/inter/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/inter/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Inter"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-juventus",
+      "name": "TMW Juventus",
+      "url": "https://www.tuttomercatoweb.com/juventus/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/juventus/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Juventus"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-lazio",
+      "name": "TMW Lazio",
+      "url": "https://www.tuttomercatoweb.com/lazio/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/lazio/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Lazio"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-lecce",
+      "name": "TMW Lecce",
+      "url": "https://www.tuttomercatoweb.com/lecce/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/lecce/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Lecce"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-milan",
+      "name": "TMW Milan",
+      "url": "https://www.tuttomercatoweb.com/milan/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/milan/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Milan"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-monza",
+      "name": "TMW Monza",
+      "url": "https://www.tuttomercatoweb.com/monza/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/monza/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Monza"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-napoli",
+      "name": "TMW Napoli",
+      "url": "https://www.tuttomercatoweb.com/napoli/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/napoli/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Napoli"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-parma",
+      "name": "TMW Parma",
+      "url": "https://www.tuttomercatoweb.com/parma/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/parma/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Parma"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-roma",
+      "name": "TMW Roma",
+      "url": "https://www.tuttomercatoweb.com/roma/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/roma/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Roma"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-sassuolo",
+      "name": "TMW Sassuolo",
+      "url": "https://www.tuttomercatoweb.com/sassuolo/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/sassuolo/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Sassuolo"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-torino",
+      "name": "TMW Torino",
+      "url": "https://www.tuttomercatoweb.com/torino/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/torino/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Torino"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-udinese",
+      "name": "TMW Udinese",
+      "url": "https://www.tuttomercatoweb.com/udinese/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/udinese/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Udinese"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
+    },
+    {
+      "id": "tmw-venezia",
+      "name": "TMW Venezia",
+      "url": "https://www.tuttomercatoweb.com/venezia/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/venezia/"
+      ],
+      "enabled": true,
+      "topic": "Mercato",
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Venezia"
+      ],
+      "fallbackImageMode": "tmw-team-text",
+      "limit": 500,
+      "timeoutMs": 15000
     },
     {
       "id": "sosfanta",
@@ -25,8 +373,8 @@
       ],
       "enabled": true,
       "topic": "Fantacalcio",
-      "limit": 250,
-      "timeoutMs": 12000
+      "limit": 500,
+      "timeoutMs": 15000
     },
     {
       "id": "gianlucadimarzio",
@@ -37,8 +385,8 @@
       ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 250,
-      "timeoutMs": 12000
+      "limit": 500,
+      "timeoutMs": 15000
     },
     {
       "id": "fantacalcio",
@@ -49,8 +397,8 @@
       ],
       "enabled": true,
       "topic": "Fantacalcio",
-      "limit": 250,
-      "timeoutMs": 12000
+      "limit": 500,
+      "timeoutMs": 15000
     },
     {
       "id": "calciomercato-it",
@@ -61,8 +409,8 @@
       ],
       "enabled": true,
       "topic": "Mercato",
-      "limit": 250,
-      "timeoutMs": 12000
+      "limit": 500,
+      "timeoutMs": 15000
     }
   ],
   "suggestedSources": [
@@ -76,13 +424,15 @@
     }
   ],
   "articles": [],
-  "maxArticles": 500,
-  "sourceLimit": 250,
-  "maxSources": 20,
+  "maxArticles": 5000,
+  "sourceLimit": 500,
+  "maxSources": 30,
   "defaultWindowHours": 12,
   "olderWindowStepHours": 24,
   "removedSourcesV316": [
     "Virgilio Sport",
-    "La Gazzetta dello Sport"
+    "La Gazzetta dello Sport",
+    "TuttoMercatoWeb",
+    "tuttomercatoweb"
   ]
 }

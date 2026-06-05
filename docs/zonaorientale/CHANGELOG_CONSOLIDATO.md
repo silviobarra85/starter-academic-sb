@@ -1,3 +1,12 @@
+## V328 - Card Calciomercato mobile e favicon fonte
+
+- Da mobile le card Calciomercato nascondono la descrizione/anteprima lunga: restano titolo, metadati, fonte/data e link.
+- I testi degli articoli vengono decodificati prima dell'escape del rendering, evitando la visualizzazione di entita come `&#8217;` o `&#124;`.
+- Gli articoli senza immagine di anteprima provano a usare la favicon della fonte; se la favicon non carica resta il fallback alla tile fonte.
+- Aggiornati cache-buster, footer e `DEPLOY_EXPECTED_VERSION_V181` a V328.
+- Nessuna modifica a Netlify Functions, JSON archivio, `links.json`, Firebase, EmailJS, Listone, Rose, Fantamercato interno, Dashboard Presidente o `FUNZIONALITA'.md`.
+- Diagnostica: `window.ZonaOrientaleCalciomercatoCardV328`.
+
 ## V327 - Fix Solo Admin Calciomercato
 
 - Calciomercato Solo Admin: rimosso dal label il testo non destinato alla UI, lasciando soltanto `Solo Admin`.
@@ -1028,3 +1037,21 @@ Ripristinata l'espansione del pannello `Admin -> Diagnostica dati` con handler d
 ## V322 - Fix diagnostica ruoli Listone
 
 Corretto il falso positivo nel pannello `Admin -> Diagnostica dati`, riga `Listoni - qualita dati`, che poteva segnalare `senza ruolo 663` nonostante i ruoli fossero presenti nei JSON Listone. La diagnostica ora riconosce anche `classicRole`, `rosterRole`, `mantraRoles`, `roleClassic`, `roleMantra`, `R`, `R.` e `R.MANTRA`. Nessun JSON, rendering Listone, convertitore, Firebase, EmailJS, Calciomercato o Fantamercato interno e' stato modificato.
+
+## V329 - Calciomercato fonti TMW per squadra
+
+- Sostituita la fonte generica `TuttoMercatoWeb` con 20 fonti TMW dedicate alle squadre indicate in `assets/calciomercato/links.json`.
+- La Netlify Function `calciomercato-feed` ora supporta anche pagine HTML TMW squadra, oltre ai feed RSS gia presenti.
+- Aumentati i limiti di recupero/download archivio Calciomercato a 5000 articoli globali e 500 per fonte configurata.
+- Il download Admin dell'archivio statico giornaliero usa i nuovi limiti e puo includere gli articoli TMW squadra nei JSON da copiare in `assets/calciomercato/archive/`.
+- Per gli articoli TMW squadra senza immagine anteprima viene mostrato un fallback a scudetto della squadra; per le altre fonti resta il fallback favicon/tile V328.
+- `removedSourcesV316` include anche `TuttoMercatoWeb`/`tuttomercatoweb`, per indicare che il canale generico e' stato sostituito dai canali squadra.
+- Funzionalita preservate: Calciomercato V328, toggle Solo Admin V327, menu mobile V326, archivio statico V323/V324, Netlify Function, Listone, Rose, Fantamercato interno, Dashboard Presidente, Firebase/Auth/EmailJS.
+
+## V330 - Calciomercato fallback testuale TMW squadra
+
+- Per gli articoli delle fonti TMW squadra senza immagine anteprima viene ora mostrata una tile SVG con testo `TMW - <NomeSquadra>`.
+- Il parser HTML TMW non usa piu lo scudetto/logo squadra come `image` artificiale: mantiene `teamLogoUrl` solo come metadato, cosi la UI puo distinguere le immagini articolo reali dai fallback.
+- Gli eventuali JSON archivio gia generati con `image` uguale a `teamLogoUrl` vengono trattati come mancanti e mostrano comunque la nuova tile testuale.
+- `links.json` usa `fallbackImageMode: tmw-team-text` per le 20 fonti TMW squadra.
+- Restano invariati limiti download V329, parser RSS/HTML, fallback favicon/tile per fonti non TMW, mobile card V328, toggle Solo Admin V327 e rifiniture UI V326.

@@ -859,3 +859,47 @@
 .calciomercato-archive-body-v326[hidden] {
   display: none !important;
 }
+
+/* V328 - Mobile Calciomercato: card piu snelle e favicon della fonte come fallback immagine. */
+.calciomercato-thumb-favicon-v328 img {
+  object-fit: contain;
+  padding: 1.8rem;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+@media (max-width: 720px) {
+  .calciomercato-card-body-v306 > p {
+    display: none !important;
+  }
+
+  .calciomercato-thumb-favicon-v328 img {
+    padding: 1rem;
+  }
+}
+
+
+/* V329 - Fallback scudetto per articoli TMW squadra senza immagine anteprima. */
+.calciomercato-thumb-crest-v329 img {
+  object-fit: contain;
+  padding: 0.65rem;
+  background: #020617;
+}
+
+@media (max-width: 720px) {
+  .calciomercato-thumb-crest-v329 img {
+    padding: 0.3rem;
+  }
+}
+
+/* V330 - Fallback testuale TMW - NomeSquadra per fonti squadra senza immagine. */
+.calciomercato-thumb-tmw-team-v330 img {
+  object-fit: contain;
+  padding: 0.45rem;
+  background: #020617;
+}
+
+@media (max-width: 720px) {
+  .calciomercato-thumb-tmw-team-v330 img {
+    padding: 0.25rem;
+  }
+}
