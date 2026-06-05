@@ -2,23 +2,27 @@
   "version": "V329",
   "timezone": "Europe/Rome",
   "startDate": "2026-06-01",
-  "updatedAt": "2026-06-04T17:54:34.320Z",
+  "updatedAt": "2026-06-05T03:59:22.086Z",
   "sourceMode": "static-rss-archive-manifest",
   "availableDays": [
     "2026-06-01",
     "2026-06-02",
     "2026-06-03",
-    "2026-06-04"
+    "2026-06-04",
+    "2026-06-05"
   ],
   "articleCounts": {
     "2026-06-01": 77,
     "2026-06-02": 149,
     "2026-06-03": 234,
-    "2026-06-04": 267
+    "2026-06-04": 343,
+    "2026-06-05": 25
   },
-  "totalArticles": 727,
+  "totalArticles": 828,
   "removedSourcesV316": [
     "TuttoMercatoWeb",
-    "tuttomercatoweb"
+    "tuttomercatoweb",
+    "Virgilio Sport",
+    "La Gazzetta dello Sport"
   ]
 }

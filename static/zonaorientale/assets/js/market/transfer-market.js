@@ -93,7 +93,20 @@ export function createTransferMarketHelpersV128(ctx) {
   }
 
   function getNegotiationById(id) {
-    return (state.raw?.transferNegotiations || []).find((item) => item.id === id) || null;
+    return (state.raw?.transferNegotiations || []).find((item) => String(item.id || "") === String(id || "")) || null;
+  }
+
+  function normalizeNegotiationStatus(status) {
+    const raw = String(status || "PENDING").trim();
+    const key = raw
+      .toUpperCase()
+      .replace(/[._-]+/g, " ")
+      .replace(/\s+/g, " ");
+    if (!key || key === "PENDING" || key === "IN ATTESA" || key === "WAITING" || key === "OPEN") return "PENDING";
+    if (key === "ACCEPTED" || key === "APPROVED" || key === "ACCETTATA" || key === "ACCETTATO" || key === "APPROVATA" || key === "APPROVATO") return "ACCEPTED";
+    if (key === "REJECTED" || key === "DECLINED" || key === "REFUSED" || key === "RIFIUTATA" || key === "RIFIUTATO" || key === "RESPINTA" || key === "RESPINTO") return "REJECTED";
+    if (key === "CANCELLED" || key === "CANCELED" || key === "ANNULLATA" || key === "ANNULLATO" || key === "DELETED" || key === "REMOVED") return "CANCELLED";
+    return key.replace(/\s+/g, "_");
   }
 
   function serializePlayerRef(player, seasonTeamId) {
@@ -118,13 +131,13 @@ export function createTransferMarketHelpersV128(ctx) {
   }
 
   function getNegotiationStatusLabel(status) {
-    const normalized = String(status || "PENDING").toUpperCase();
+    const normalized = normalizeNegotiationStatus(status);
     const labels = { PENDING: "In attesa", ACCEPTED: "Accettata", REJECTED: "Rifiutata", CANCELLED: "Annullata" };
     return labels[normalized] || normalized;
   }
 
   function renderNegotiationStatusBadge(status) {
-    const normalized = String(status || "PENDING").toUpperCase();
+    const normalized = normalizeNegotiationStatus(status);
     const cls = normalized === "ACCEPTED" ? "status-ok" : normalized === "REJECTED" || normalized === "CANCELLED" ? "status-danger" : "status-warning";
     return `<span class="status ${cls}">${escapeHtml(getNegotiationStatusLabel(normalized))}</span>`;
   }
@@ -145,7 +158,7 @@ export function createTransferMarketHelpersV128(ctx) {
 
   function renderNegotiationCard(item, kind, currentSeasonTeamId) {
     const isSent = kind === "sent";
-    const status = String(item.status || "PENDING").toUpperCase();
+    const status = normalizeNegotiationStatus(item.status);
     const canCancel = isSent && status === "PENDING";
     const canAnswer = !isSent && status === "PENDING";
     const compactSummary = getNegotiationCompactSummary(item, isSent);
@@ -284,6 +297,8 @@ export function createTransferMarketHelpersV128(ctx) {
     serializePlayerRef,
     formatPlayerRefs,
     renderFmPart,
+    normalizeNegotiationStatus,
+    getNegotiationStatusLabel,
     renderNegotiationStatusBadge,
     getNegotiationTitle,
     renderNegotiationCard,

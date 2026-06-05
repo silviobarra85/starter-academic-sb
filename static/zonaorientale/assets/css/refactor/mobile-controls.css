@@ -147,6 +147,3 @@ body.is-mobile-ux .mobile-more-link > span:not(.mobile-more-icon) {
   flex: 1 1 auto;
 }
 
-body.is-mobile-ux .listone-change-filter-v277 select.input.filter-input {
-  min-height: 44px !important;
-}

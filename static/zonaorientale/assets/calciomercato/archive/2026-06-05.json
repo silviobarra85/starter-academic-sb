@@ -1,0 +1,1308 @@
+{
+  "version": "V324",
+  "date": "2026-06-05",
+  "timezone": "Europe/Rome",
+  "generatedAt": "2026-06-05T03:59:20.969Z",
+  "sourceMode": "static-rss-archive",
+  "sources": [
+    {
+      "id": "tmw-atalanta",
+      "name": "TMW Atalanta",
+      "url": "https://www.tuttomercatoweb.com/atalanta/",
+      "feedUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/atalanta/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Atalanta"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-bologna",
+      "name": "TMW Bologna",
+      "url": "https://www.tuttomercatoweb.com/bologna/",
+      "feedUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/bologna/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Bologna"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-cagliari",
+      "name": "TMW Cagliari",
+      "url": "https://www.tuttomercatoweb.com/cagliari/",
+      "feedUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/cagliari/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Cagliari"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-como",
+      "name": "TMW Como",
+      "url": "https://www.tuttomercatoweb.com/como/",
+      "feedUrl": "https://www.tuttomercatoweb.com/como/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/como/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Como"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-fiorentina",
+      "name": "TMW Fiorentina",
+      "url": "https://www.tuttomercatoweb.com/fiorentina/",
+      "feedUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/fiorentina/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Fiorentina"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-frosinone",
+      "name": "TMW Frosinone",
+      "url": "https://www.tuttomercatoweb.com/frosinone/",
+      "feedUrl": "https://www.tuttomercatoweb.com/frosinone/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/frosinone/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Frosinone"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-genoa",
+      "name": "TMW Genoa",
+      "url": "https://www.tuttomercatoweb.com/genoa/",
+      "feedUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/genoa/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Genoa"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-inter",
+      "name": "TMW Inter",
+      "url": "https://www.tuttomercatoweb.com/inter/",
+      "feedUrl": "https://www.tuttomercatoweb.com/inter/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/inter/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Inter"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-juventus",
+      "name": "TMW Juventus",
+      "url": "https://www.tuttomercatoweb.com/juventus/",
+      "feedUrl": "https://www.tuttomercatoweb.com/juventus/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/juventus/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Juventus"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-lazio",
+      "name": "TMW Lazio",
+      "url": "https://www.tuttomercatoweb.com/lazio/",
+      "feedUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/lazio/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Lazio"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-lecce",
+      "name": "TMW Lecce",
+      "url": "https://www.tuttomercatoweb.com/lecce/",
+      "feedUrl": "https://www.tuttomercatoweb.com/lecce/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/lecce/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Lecce"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-milan",
+      "name": "TMW Milan",
+      "url": "https://www.tuttomercatoweb.com/milan/",
+      "feedUrl": "https://www.tuttomercatoweb.com/milan/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/milan/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Milan"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-monza",
+      "name": "TMW Monza",
+      "url": "https://www.tuttomercatoweb.com/monza/",
+      "feedUrl": "https://www.tuttomercatoweb.com/monza/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/monza/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Monza"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-napoli",
+      "name": "TMW Napoli",
+      "url": "https://www.tuttomercatoweb.com/napoli/",
+      "feedUrl": "https://www.tuttomercatoweb.com/napoli/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/napoli/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Napoli"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-parma",
+      "name": "TMW Parma",
+      "url": "https://www.tuttomercatoweb.com/parma/",
+      "feedUrl": "https://www.tuttomercatoweb.com/parma/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/parma/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Parma"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-roma",
+      "name": "TMW Roma",
+      "url": "https://www.tuttomercatoweb.com/roma/",
+      "feedUrl": "https://www.tuttomercatoweb.com/roma/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/roma/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Roma"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-sassuolo",
+      "name": "TMW Sassuolo",
+      "url": "https://www.tuttomercatoweb.com/sassuolo/",
+      "feedUrl": "https://www.tuttomercatoweb.com/sassuolo/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/sassuolo/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Sassuolo"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-torino",
+      "name": "TMW Torino",
+      "url": "https://www.tuttomercatoweb.com/torino/",
+      "feedUrl": "https://www.tuttomercatoweb.com/torino/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/torino/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Torino"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-udinese",
+      "name": "TMW Udinese",
+      "url": "https://www.tuttomercatoweb.com/udinese/",
+      "feedUrl": "https://www.tuttomercatoweb.com/udinese/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/udinese/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Udinese"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-venezia",
+      "name": "TMW Venezia",
+      "url": "https://www.tuttomercatoweb.com/venezia/",
+      "feedUrl": "https://www.tuttomercatoweb.com/venezia/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/venezia/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Venezia"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "sosfanta",
+      "name": "SOS Fanta",
+      "url": "https://www.sosfanta.com",
+      "feedUrl": "https://www.sosfanta.com/feed/",
+      "feedUrls": [
+        "https://www.sosfanta.com/feed/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    },
+    {
+      "id": "gianlucadimarzio",
+      "name": "Gianluca Di Marzio",
+      "url": "https://gianlucadimarzio.com",
+      "feedUrl": "https://gianlucadimarzio.com/rss/",
+      "feedUrls": [
+        "https://gianlucadimarzio.com/rss/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    },
+    {
+      "id": "fantacalcio",
+      "name": "Fantacalcio.it",
+      "url": "https://www.fantacalcio.it",
+      "feedUrl": "https://rss.fantacalcio.it/",
+      "feedUrls": [
+        "https://rss.fantacalcio.it/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    },
+    {
+      "id": "calciomercato-it",
+      "name": "CalcioMercato.it",
+      "url": "https://www.calciomercato.it",
+      "feedUrl": "https://www.calciomercato.it/feed/",
+      "feedUrls": [
+        "https://www.calciomercato.it/feed/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    }
+  ],
+  "warnings": [],
+  "feedRange": {
+    "earliest": "2026-05-10T21:19:00.000Z",
+    "latest": "2026-06-05T02:30:00.000Z",
+    "totalBeforeDateRange": 871,
+    "totalFetched": 871,
+    "totalAfterQueryBeforeDateRange": 871
+  },
+  "stats": {
+    "existingArticles": 0,
+    "fetchedArticles": 25,
+    "totalArticles": 25,
+    "duplicatesSkipped": 0
+  },
+  "articles": [
+    {
+      "id": "tmw-inter-1-aHR0cHM6Ly93",
+      "title": "Le partite di oggi: il programma di venerdì 5 giugno",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/i-le-partite-di-oggi-i-il-programma-di-venerdi-5-giugno-2241104",
+      "sourceId": "tmw-inter",
+      "sourceName": "TMW Inter",
+      "sourceUrl": "https://www.tuttomercatoweb.com/inter/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/24/241f3a24d2c3bac4dd4b6e925d998abc-40423-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T04:30:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/i-le-partite-di-oggi-i-il-programma-di-venerdi-5-giugno-2241104"
+    },
+    {
+      "id": "fantacalcio-0-aHR0cHM6Ly93",
+      "title": "Florentino Perez: \"Abbiamo preso Dumfries e Konaté. Pronti 150 milioni per un giovane...\"",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/04_06_2026/florentino-perez-abbiamo-preso-dumfries-e-konate-pronti-150-milioni-per-un-giovane-493812",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Criptico annuncio del presidente del Real Madrid",
+      "image": "",
+      "publishedAt": "2026-06-05T00:08:27.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio estero",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/04_06_2026/florentino-perez-abbiamo-preso-dumfries-e-konate-pronti-150-milioni-per-un-giovane-493812"
+    },
+    {
+      "id": "fantacalcio-1-aHR0cHM6Ly93",
+      "title": "Genoa, Ekkelenkamp il primo obiettivo a centrocampo: le ultime",
+      "url": "https://www.fantacalcio.it/news/calcio-italia/04_06_2026/genoa-ekkelenkamp-il-primo-obiettivo-a-centrocampo-le-ultime-493811",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Il calciatore dell'Udinese potrebbe cambiare maglia, ma rimanere in Serie A e al Fantacalcio",
+      "image": "",
+      "publishedAt": "2026-06-04T23:53:17.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Genoa",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Udinese"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calcio Italia",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-italia/04_06_2026/genoa-ekkelenkamp-il-primo-obiettivo-a-centrocampo-le-ultime-493811"
+    },
+    {
+      "id": "fantacalcio-2-aHR0cHM6Ly93",
+      "title": "La Juventus avanza per Sorloth. E occhio anche a Kolo Muani",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/la-juventus-avanza-per-sorloth-e-occhio-anche-a-kolo-muani-493810",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le ultime sul mercato dei bianconeri",
+      "image": "",
+      "publishedAt": "2026-06-04T23:26:29.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Sorloth."
+      ],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [
+          "Sorloth."
+        ],
+        "players": [
+          "Sorloth."
+        ]
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/la-juventus-avanza-per-sorloth-e-occhio-anche-a-kolo-muani-493810"
+    },
+    {
+      "id": "fantacalcio-3-aHR0cHM6Ly93",
+      "title": "Italiano al Besiktas, c'è l'accordo: contratto fino al 2028",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/italiano-al-besiktas-c-e-l-accordo-contratto-fino-al-2028-493809",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Nuova avventura per l'ex tecnico del Bologna che riparte dalla Turchia",
+      "image": "",
+      "publishedAt": "2026-06-04T23:17:03.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Bologna"
+      ],
+      "detectedTeams": [
+        "Bologna"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Bologna"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/italiano-al-besiktas-c-e-l-accordo-contratto-fino-al-2028-493809"
+    },
+    {
+      "id": "tmw-inter-2-aHR0cHM6Ly93",
+      "title": "Dumfries, Vlahovic e poi chi altro? De Laurentiis accompagna all'uscita sia De Bruyne che Lukaku e la...",
+      "url": "https://www.tuttomercatoweb.com/editoriale/dumfries-vlahovic-e-poi-chi-altro-de-laurentiis-accompagna-all-uscita-sia-de-bruyne-che-lukaku-e-la-serie-a-e-pronta-a-vivere-un-altra-estate-di-addii-2241169",
+      "sourceId": "tmw-inter",
+      "sourceName": "TMW Inter",
+      "sourceUrl": "https://www.tuttomercatoweb.com/inter/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/24/241f3a24d2c3bac4dd4b6e925d998abc-40423-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T01:10:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/editoriale/dumfries-vlahovic-e-poi-chi-altro-de-laurentiis-accompagna-all-uscita-sia-de-bruyne-che-lukaku-e-la-serie-a-e-pronta-a-vivere-un-altra-estate-di-addii-2241169"
+    },
+    {
+      "id": "fantacalcio-4-aHR0cHM6Ly93",
+      "title": "La Serie A ai Mondiali 2026: il Milan è il club più rappresentato",
+      "url": "https://www.fantacalcio.it/news/calcio-estero/mondiali/04_06_2026/la-serie-a-ai-mondiali-2026-il-milan-e-il-club-piu-rappresentato-493799",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Ecco la top 7 in classifica",
+      "image": "",
+      "publishedAt": "2026-06-04T23:04:46.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mondiali",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/news/calcio-estero/mondiali/04_06_2026/la-serie-a-ai-mondiali-2026-il-milan-e-il-club-piu-rappresentato-493799"
+    },
+    {
+      "id": "tmw-inter-3-aHR0cHM6Ly93",
+      "title": "Calciomercato no stop - Indiscrezioni, trattative e retroscena del 4 giugno",
+      "url": "https://www.tuttomercatoweb.com/serie-a/calciomercato-no-stop-indiscrezioni-trattative-e-retroscena-del-4-giugno-2241278",
+      "sourceId": "tmw-inter",
+      "sourceName": "TMW Inter",
+      "sourceUrl": "https://www.tuttomercatoweb.com/inter/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/24/241f3a24d2c3bac4dd4b6e925d998abc-40423-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T01:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/calciomercato-no-stop-indiscrezioni-trattative-e-retroscena-del-4-giugno-2241278"
+    },
+    {
+      "id": "tmw-napoli-3-aHR0cHM6Ly93",
+      "title": "Napoli, il giorno dell'avvicendamento: Conte via è ufficiale e ADL parla di Allegri (senza nominarlo)...",
+      "url": "https://www.tuttomercatoweb.com/serie-a/napoli-il-giorno-dell-avvicendamento-conte-via-e-ufficiale-e-adl-parla-di-allegri-senza-nominarlo-2241290",
+      "sourceId": "tmw-napoli",
+      "sourceName": "TMW Napoli",
+      "sourceUrl": "https://www.tuttomercatoweb.com/napoli/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/45/4567473cabde8d0b9293b38ab119d68a-88248-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:56:00+02:00",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/napoli-il-giorno-dell-avvicendamento-conte-via-e-ufficiale-e-adl-parla-di-allegri-senza-nominarlo-2241290"
+    },
+    {
+      "id": "tmw-atalanta-1-aHR0cHM6Ly93",
+      "title": "Dumfries al Real, Perez lo annuncia. L'Atalanta avvisa l'Inter: per Palestra servono 50 milioni",
+      "url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/dumfries-al-real-perez-lo-annuncia-l-atalanta-avvisa-l-inter-per-palestra-servono-50-milioni-2241212",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/5470971a5552f0151a6ec965de0a5d0c-44582-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:53:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra",
+        "Dumfries"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Inter"
+        ],
+        "people": [
+          "Palestra",
+          "Dumfries"
+        ],
+        "players": [
+          "Palestra",
+          "Dumfries"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/i-fatti-del-giorno/dumfries-al-real-perez-lo-annuncia-l-atalanta-avvisa-l-inter-per-palestra-servono-50-milioni-2241212"
+    },
+    {
+      "id": "fantacalcio-5-aHR0cHM6Ly93",
+      "title": "Torino, occhio al ritorno a sorpresa di Ventura: il suo possibile ruolo",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/torino-occhio-al-ritorno-a-sorpresa-di-ventura-il-suo-possibile-ruolo-493808",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "Le ultime in vista della prossima stagione dei granata",
+      "image": "",
+      "publishedAt": "2026-06-04T22:50:43.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Torino"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/torino-occhio-al-ritorno-a-sorpresa-di-ventura-il-suo-possibile-ruolo-493808"
+    },
+    {
+      "id": "tmw-juventus-4-aHR0cHM6Ly93",
+      "title": "Vlahovic via dalla Juventus per \"colpa\" di David. Da Kolo Muani a Sorloth, gli obiettivi",
+      "url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/vlahovic-via-dalla-juventus-per-colpa-di-david-da-kolo-muani-a-sorloth-gli-obiettivi-2241225",
+      "sourceId": "tmw-juventus",
+      "sourceName": "TMW Juventus",
+      "sourceUrl": "https://www.tuttomercatoweb.com/juventus/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/24/241f3a24d2c3bac4dd4b6e925d998abc-40423-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:49:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/i-fatti-del-giorno/vlahovic-via-dalla-juventus-per-colpa-di-david-da-kolo-muani-a-sorloth-gli-obiettivi-2241225"
+    },
+    {
+      "id": "tmw-atalanta-2-aHR0cHM6Ly93",
+      "title": "Panchine Serie A, il punto: ecco la situazione delle 20 squadre del nostro campionato",
+      "url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/panchine-serie-a-il-punto-ecco-la-situazione-delle-20-squadre-del-nostro-campionato-2241240",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/5470971a5552f0151a6ec965de0a5d0c-44582-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:41:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/i-fatti-del-giorno/panchine-serie-a-il-punto-ecco-la-situazione-delle-20-squadre-del-nostro-campionato-2241240"
+    },
+    {
+      "id": "tmw-milan-5-aHR0cHM6Ly93",
+      "title": "Sulla scia di Klopp. Iraola nuovo tecnico del Liverpool: per il Milan può essere un rimpianto",
+      "url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/sulla-scia-di-klopp-iraola-nuovo-tecnico-del-liverpool-per-il-milan-puo-essere-un-rimpianto-2241273",
+      "sourceId": "tmw-milan",
+      "sourceName": "TMW Milan",
+      "sourceUrl": "https://www.tuttomercatoweb.com/milan/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/24/241f3a24d2c3bac4dd4b6e925d998abc-40423-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:37:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/i-fatti-del-giorno/sulla-scia-di-klopp-iraola-nuovo-tecnico-del-liverpool-per-il-milan-puo-essere-un-rimpianto-2241273"
+    },
+    {
+      "id": "tmw-roma-3-aHR0cHM6Ly93",
+      "title": "Gasperini blinda Mancini e si spende ancora per Dybala. La Roma vuole tenerlo",
+      "url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/gasperini-blinda-mancini-e-si-spende-ancora-per-dybala-la-roma-vuole-tenerlo-2241292",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/34/34511e72ac826bc49587d16149c9cfa9-09089-499o221o1187o909z0b00.jpeg",
+      "publishedAt": "2026-06-05T00:34:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Dybala. La Roma"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Dybala. La Roma"
+        ],
+        "players": [
+          "Dybala. La Roma"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/i-fatti-del-giorno/gasperini-blinda-mancini-e-si-spende-ancora-per-dybala-la-roma-vuole-tenerlo-2241292"
+    },
+    {
+      "id": "sosfanta-0-aHR0cHM6Ly93",
+      "title": "Florentino Perez: “Dumfries al Real, è preso! E offriremo 150 milioni per un giovane non della Premier”",
+      "url": "https://www.sosfanta.com/calciomercato/florentino-perez-dumfries-al-real-e-preso-e-offriremo-150-milioni-per-un-giovane-non-della-premier/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Parla Florentino Perez. Intervistato da Horizonte, il presidente del Real Madrid ha annunciato l'arrivo di Denzel Dumfries e di un imminente grande colpo di mercato.",
+      "image": "",
+      "publishedAt": "2026-06-04T22:30:22.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Dumfries"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Dumfries"
+        ],
+        "players": [
+          "Dumfries"
+        ]
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/florentino-perez-dumfries-al-real-e-preso-e-offriremo-150-milioni-per-un-giovane-non-della-premier"
+    },
+    {
+      "id": "tmw-roma-4-aHR0cHM6Ly93",
+      "title": "Il TAS darà presto ragione alla Roma: in arrivo 6 milioni di euro dal Basilea. Ecco perché",
+      "url": "https://www.tuttomercatoweb.com/serie-a/il-tas-dara-presto-ragione-alla-roma-in-arrivo-6-milioni-di-euro-dal-basilea-ecco-perche-2241276",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/34/34511e72ac826bc49587d16149c9cfa9-09089-499o221o1187o909z0b00.jpeg",
+      "publishedAt": "2026-06-05T00:30:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/il-tas-dara-presto-ragione-alla-roma-in-arrivo-6-milioni-di-euro-dal-basilea-ecco-perche-2241276"
+    },
+    {
+      "id": "tmw-napoli-5-aHR0cHM6Ly93",
+      "title": "Lazzari racconta Allegri: \"Fa sentire tutti importanti. E sa adattarsi ai giocatori\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/lazzari-racconta-allegri-fa-sentire-tutti-importanti-e-sa-adattarsi-ai-giocatori-2241272",
+      "sourceId": "tmw-napoli",
+      "sourceName": "TMW Napoli",
+      "sourceUrl": "https://www.tuttomercatoweb.com/napoli/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/45/4567473cabde8d0b9293b38ab119d68a-88248-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:23:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/lazzari-racconta-allegri-fa-sentire-tutti-importanti-e-sa-adattarsi-ai-giocatori-2241272"
+    },
+    {
+      "id": "tmw-fiorentina-1-aHR0cHM6Ly93",
+      "title": "Della Rovere, sfida Fiorentina-Napoli: i viola accelerano per il talento del Bayern Monaco",
+      "url": "https://www.tuttomercatoweb.com/serie-a/della-rovere-sfida-fiorentina-napoli-i-viola-accelerano-per-il-talento-del-bayern-monaco-2241291",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/34/34511e72ac826bc49587d16149c9cfa9-09089-499o221o1187o909z0b00.jpeg",
+      "publishedAt": "2026-06-05T00:19:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Fiorentina",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina",
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/della-rovere-sfida-fiorentina-napoli-i-viola-accelerano-per-il-talento-del-bayern-monaco-2241291"
+    },
+    {
+      "id": "tmw-atalanta-3-aHR0cHM6Ly93",
+      "title": "Gasperini torna a Bergamo: \"Ho lasciato l'Atalanta nel punto più alto, ho la coscienza a posto\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/gasperini-torna-a-bergamo-ho-lasciato-l-atalanta-nel-punto-piu-alto-ho-la-coscienza-a-posto-2241293",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/5470971a5552f0151a6ec965de0a5d0c-44582-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:15:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/gasperini-torna-a-bergamo-ho-lasciato-l-atalanta-nel-punto-piu-alto-ho-la-coscienza-a-posto-2241293"
+    },
+    {
+      "id": "tmw-roma-6-aHR0cHM6Ly93",
+      "title": "Roma, dalla Turchia: Vasquez non sarà riscattato dal Besiktas, ha già lasciato Istanbul",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-dalla-turchia-vasquez-non-sara-riscattato-dal-besiktas-ha-gia-lasciato-istanbul-2241267",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/34/34511e72ac826bc49587d16149c9cfa9-09089-499o221o1187o909z0b00.jpeg",
+      "publishedAt": "2026-06-05T00:08:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-dalla-turchia-vasquez-non-sara-riscattato-dal-besiktas-ha-gia-lasciato-istanbul-2241267"
+    },
+    {
+      "id": "fantacalcio-6-aHR0cHM6Ly93",
+      "title": "UFFICIALE - Monza, ecco Foe Ondoa",
+      "url": "https://www.fantacalcio.it/calciomercato/04_06_2026/ufficiale-monza-ecco-foe-ondoa-493807",
+      "sourceId": "fantacalcio",
+      "sourceName": "Fantacalcio.it",
+      "description": "La nota del club brianzolo",
+      "image": "",
+      "publishedAt": "2026-06-04T22:02:31.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Monza"
+      ],
+      "detectedTeams": [
+        "Monza"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Monza"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:fantacalcio.it/calciomercato/04_06_2026/ufficiale-monza-ecco-foe-ondoa-493807"
+    },
+    {
+      "id": "sosfanta-1-aHR0cHM6Ly93",
+      "title": "Gasperini: “L’Inter può fare come vuole, ma Mancini non se ne va! Su Dybala e le cessioni…”",
+      "url": "https://www.sosfanta.com/squadra/roma/gasperini-linter-puo-fare-come-vuole-ma-mancini-non-se-ne-va-su-dybala-e-le-cessioni/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Gian Piero Gasperini, tecnico della Roma, ha parlato a Sky a margine di un evento a Bergamo: ecco le sue dichiarazioni sul mercato giallorosso.",
+      "image": "",
+      "publishedAt": "2026-06-04T22:00:17.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/squadra/roma",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/squadra/roma/gasperini-linter-puo-fare-come-vuole-ma-mancini-non-se-ne-va-su-dybala-e-le-cessioni"
+    },
+    {
+      "id": "tmw-inter-6-aHR0cHM6Ly93",
+      "title": "5 giugno 2012, l'aereo dell'Italia atterra a Cracovia per il primo allenamento. 13 mila tifosi",
+      "url": "https://www.tuttomercatoweb.com/accadde-oggi/5-giugno-2012-l-aereo-dell-italia-atterra-a-cracovia-per-il-primo-allenamento-13-mila-tifosi-2240757",
+      "sourceId": "tmw-inter",
+      "sourceName": "TMW Inter",
+      "sourceUrl": "https://www.tuttomercatoweb.com/inter/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/24/241f3a24d2c3bac4dd4b6e925d998abc-40423-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/accadde-oggi/5-giugno-2012-l-aereo-dell-italia-atterra-a-cracovia-per-il-primo-allenamento-13-mila-tifosi-2240757"
+    },
+    {
+      "id": "tmw-inter-7-aHR0cHM6Ly93",
+      "title": "...con Leandro Rinaudo: \"Mantova, percorso bello e difficile. Bragantini, Marras e non solo: avranno...",
+      "url": "https://www.tuttomercatoweb.com/a-tu-per-tu/con-leandro-rinaudo-mantova-percorso-bello-e-difficile-bragantini-marras-e-non-solo-avranno-mercato-pronto-a-tornare-in-pista-2241209",
+      "sourceId": "tmw-inter",
+      "sourceName": "TMW Inter",
+      "sourceUrl": "https://www.tuttomercatoweb.com/inter/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/24/241f3a24d2c3bac4dd4b6e925d998abc-40423-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T00:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/a-tu-per-tu/con-leandro-rinaudo-mantova-percorso-bello-e-difficile-bragantini-marras-e-non-solo-avranno-mercato-pronto-a-tornare-in-pista-2241209"
+    }
+  ]
+}
