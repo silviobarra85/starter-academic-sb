@@ -1,4 +1,4 @@
-/* V394-V396 - Admin-only API-Football player stats bridge for Soccer Data.
+/* V394-V397 - Admin-only API-Football player stats bridge for Soccer Data.
    Uses API-SPORTS / API-Football server-side with one explicit admin action per request.
    It does not write to Firebase: the admin UI saves the returned JSON through Firestore
    so API reads can later be exported as static JSON and reused without hitting the API. */
@@ -87,6 +87,41 @@ function readRateLimit(response) {
   };
 }
 
+function hasApiFootballErrors(errors) {
+  if (!errors) return false;
+  if (Array.isArray(errors)) return errors.length > 0;
+  if (typeof errors === 'object') return Object.keys(errors).length > 0;
+  return String(errors || '').trim() !== '';
+}
+
+function describeApiFootballErrors(errors) {
+  if (!hasApiFootballErrors(errors)) return '';
+  if (typeof errors === 'string') return errors;
+  try {
+    return JSON.stringify(errors);
+  } catch (error) {
+    return String(errors);
+  }
+}
+
+function uniqueStrings(values = []) {
+  const out = [];
+  values.forEach((value) => {
+    const clean = String(value || '').trim();
+    if (clean && !out.includes(clean)) out.push(clean);
+  });
+  return out;
+}
+
+function buildSeasonCandidates(primarySeason = '', extra = []) {
+  const year = Number(cleanSeason(primarySeason));
+  const candidates = [String(year), ...extra];
+  if (Number.isFinite(year)) {
+    candidates.push(String(year - 1), String(year + 1));
+  }
+  return uniqueStrings(candidates).filter((item) => /^20\d{2}$/.test(item)).slice(0, 4);
+}
+
 async function callApiFootball(pathname, params = {}) {
   if (!API_FOOTBALL_KEY) {
     throw new Error('API-Football key mancante: configura ZONAORIENTALE_API_FOOTBALL_KEY su Netlify.');
@@ -104,8 +139,11 @@ async function callApiFootball(pathname, params = {}) {
   const rateLimit = readRateLimit(response);
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {
-    const apiMessage = payload?.errors ? JSON.stringify(payload.errors) : '';
+    const apiMessage = describeApiFootballErrors(payload?.errors);
     throw new Error(`API-Football non disponibile (${response.status}). ${apiMessage}`.trim());
+  }
+  if (hasApiFootballErrors(payload?.errors)) {
+    throw new Error(`API-Football ha restituito errore: ${describeApiFootballErrors(payload.errors)}`);
   }
   return { payload, rateLimit, url: url.toString() };
 }
@@ -166,21 +204,78 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
     const action = String(body.action || 'stats').toLowerCase();
     const season = cleanSeason(body.season || body.seasonId || '');
+    if (action === 'status' || action === 'diagnostics') {
+      const { payload, rateLimit } = await callApiFootball('/status', {});
+      return json(200, {
+        version: 'V397',
+        provider: 'api-football',
+        action: 'status',
+        ok: true,
+        response: payload.response || null,
+        results: payload.results || 0,
+        parameters: payload.parameters || {},
+        rateLimit,
+        fetchedAt: new Date().toISOString(),
+        fetchedBy: authResult.uid || ''
+      });
+    }
     if (action === 'teams') {
       const league = cleanNumericId(body.league || body.leagueId || '135') || '135';
-      const { payload, rateLimit } = await callApiFootball('/teams', { league, season });
-      const teams = (Array.isArray(payload.response) ? payload.response : []).map(normalizeTeam);
+      const seasonCandidates = buildSeasonCandidates(season, Array.isArray(body.seasonCandidates) ? body.seasonCandidates : []);
+      const attempts = [];
+      let lastRateLimit = null;
+      for (const candidateSeason of seasonCandidates) {
+        const { payload, rateLimit, url } = await callApiFootball('/teams', { league, season: candidateSeason });
+        lastRateLimit = rateLimit;
+        const rawTeams = Array.isArray(payload.response) ? payload.response : [];
+        const teams = rawTeams.map(normalizeTeam).filter((team) => team.id && team.name);
+        attempts.push({
+          league,
+          season: candidateSeason,
+          results: payload.results || teams.length,
+          teamsCount: teams.length,
+          parameters: payload.parameters || { league, season: candidateSeason },
+          url
+        });
+        if (teams.length) {
+          return json(200, {
+            version: 'V397',
+            provider: 'api-football',
+            action: 'teams',
+            league,
+            season: candidateSeason,
+            requestedSeason: season,
+            seasonUsed: candidateSeason,
+            seasonFallbackUsed: candidateSeason !== season,
+            seasonCandidates,
+            teams,
+            response: rawTeams,
+            results: payload.results || teams.length,
+            parameters: payload.parameters || { league, season: candidateSeason },
+            attempts,
+            rateLimit,
+            fetchedAt: new Date().toISOString(),
+            fetchedBy: authResult.uid || ''
+          });
+        }
+      }
       return json(200, {
-        version: 'V396',
+        version: 'V397',
         provider: 'api-football',
         action: 'teams',
         league,
         season,
-        teams,
-        response: payload.response || [],
-        results: payload.results || teams.length,
-        parameters: payload.parameters || { league, season },
-        rateLimit,
+        requestedSeason: season,
+        seasonUsed: '',
+        seasonFallbackUsed: false,
+        seasonCandidates,
+        teams: [],
+        response: [],
+        results: 0,
+        parameters: { league, season },
+        attempts,
+        rateLimit: lastRateLimit,
+        warning: `Nessuna squadra trovata per league ${league} nelle stagioni provate: ${seasonCandidates.join(', ')}.`,
         fetchedAt: new Date().toISOString(),
         fetchedBy: authResult.uid || ''
       });
@@ -193,7 +288,7 @@ exports.handler = async (event) => {
       const team = first.team ? normalizeTeam(first.team) : { id: teamId, name: body.teamName || '' };
       const players = (Array.isArray(first.players) ? first.players : []).map(normalizeSquadPlayer);
       return json(200, {
-        version: 'V396',
+        version: 'V397',
         provider: 'api-football',
         action: 'squad',
         teamId,

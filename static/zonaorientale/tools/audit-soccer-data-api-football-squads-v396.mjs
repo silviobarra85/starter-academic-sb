@@ -16,7 +16,7 @@ const netlifyFunction = exists(functionPath) ? read(functionPath) : '';
 
 const visibleSoccerDataSection = html.slice(html.indexOf('<section class="app-page" data-page="soccerdata"'), html.indexOf('<footer'));
 const ok = [
-  html.includes('V396 Soccer Data mapping API-Football da rose'),
+  html.includes('V396 Soccer Data mapping API-Football da rose') || html.includes('V397 Soccer Data diagnostica API-Football rose'),
   html.includes('id="soccerDataFetchApiFootballSquadsV396"'),
   html.includes('id="soccerDataGenerateApiFootballMapV396"'),
   visibleSoccerDataSection.includes('Scarica rose Serie A API'),
@@ -26,10 +26,10 @@ const ok = [
   app.includes('generateSoccerDataApiFootballMappingFromSquadsV396'),
   app.includes('getSoccerDataApiFootballCandidatesFromSquadsV396'),
   app.includes('squad-cache-v396'),
-  manifest.meta?.assetLayoutVersion === 'V396',
-  manifest.stats?.version === 'V396',
+  ['V396','V397'].includes(manifest.meta?.assetLayoutVersion),
+  ['V396','V397'].includes(manifest.stats?.version),
   manifest.statsPipeline?.apiFootballV396?.leagueId === 135,
-  statsManifest.meta?.version === 'V396',
+  ['V396','V397'].includes(statsManifest.meta?.version),
   netlifyFunction.includes("action === 'teams'"),
   netlifyFunction.includes("action === 'squad'"),
   netlifyFunction.includes("callApiFootball('/teams'"),
@@ -43,7 +43,7 @@ if (!ok.every(Boolean)) {
 
 console.log(JSON.stringify({
   ok: true,
-  version: 'V396',
+  version: manifest.meta?.assetLayoutVersion || 'V396',
   scope: 'solo Soccer Data',
   publicReadOnly: true,
   adminCommands: ['Scarica rose Serie A API', 'Genera mapping da rose', 'Scarica mapping API', 'Recupera statistiche'],

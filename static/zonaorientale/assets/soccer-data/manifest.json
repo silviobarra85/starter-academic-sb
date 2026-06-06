@@ -6,8 +6,8 @@
     "readOnly": true,
     "firebaseWrites": false,
     "liveScraping": false,
-    "assetLayoutVersion": "V396",
-    "assetLayoutLabel": "Soccer Data API-Football mapping da rose Serie A + cache Firebase",
+    "assetLayoutVersion": "V397",
+    "assetLayoutLabel": "Soccer Data API-Football diagnostica rose + fallback stagioni",
     "runtimePublicAssets": true
   },
   "currentMapping": "fbref-player-map.v383.json",
@@ -32,7 +32,8 @@
     "V394 aggiunge API-Football come provider preferito per statistiche giocatore: richieste admin-only tramite Netlify Function, salvataggio/cache su Firebase, export JSON statico e colonna Aggiornato in tabella.",
     "V395 sposta il flusso operativo su API-Football: la UI admin permette di trovare/salvare l ID API del giocatore, esportare il mapping API statico e recuperare statistiche con cache Firebase.",
     "Il link profilo giocatore resta cliccabile quando disponibile, ma i comandi operativi non usano piu il fallback HTML/manuale come flusso principale.",
-    "V396 aggiunge il mapping API-Football da rose Serie A: l admin scarica squadre/rose una volta, genera associazioni playerId localmente e scarica il mapping statico, riducendo le ricerche giocatore singole."
+    "V396 aggiunge il mapping API-Football da rose Serie A: l admin scarica squadre/rose una volta, genera associazioni playerId localmente e scarica il mapping statico, riducendo le ricerche giocatore singole.",
+    "V397 corregge la gestione delle rose API-Football: mostra errori API reali, aggiunge diagnostica quota/status e prova stagioni alternative se /teams non restituisce squadre per la stagione del listone."
   ],
   "mappingAssistant": {
     "version": "V383",
@@ -68,7 +69,7 @@
     "archivedCsvDirectory": "docs/zonaorientale/archive/soccer-data/mapping-history/"
   },
   "stats": {
-    "version": "V396",
+    "version": "V397",
     "manifest": "stats/manifest.json",
     "currentSummary": "player-stats-summary-2025-2026.v001.json",
     "currentDetail": null,
@@ -84,7 +85,7 @@
     }
   },
   "publicAssets": {
-    "version": "V396",
+    "version": "V397",
     "keepInAssets": [
       "manifest.json",
       "fbref-player-map.v383.json",
@@ -97,7 +98,7 @@
     "note": "Gli storici mapping/review sono conservati nei docs archive; il runtime pubblico usa manifest, mapping corrente, stats manifest, summary statico e fallback Firebase se necessario."
   },
   "publicAccess": {
-    "version": "V396",
+    "version": "V397",
     "sectionVisibleToAll": true,
     "readOnlyForNonAdmins": true,
     "adminCommandsOnlyForAdmin": true,

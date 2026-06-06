@@ -15,7 +15,7 @@ const forbiddenVisible = ['Copia patch FBref', 'Scarica patch FBref', 'Cerca FBr
 const visibleClean = forbiddenVisible.every((token) => !visibleSoccerDataSection.includes(token));
 
 const ok = [
-  (html.includes('V395 Soccer Data mapping API-Football') || html.includes('V396 Soccer Data mapping API-Football da rose')),
+  (html.includes('V395 Soccer Data mapping API-Football') || html.includes('V396 Soccer Data mapping API-Football da rose') || html.includes('V397 Soccer Data diagnostica API-Football rose')),
   html.includes('id="soccerDataDownloadApiFootballMapV395"'),
   html.includes('<th class="soccer-data-col-player-v387">Giocatore</th>'),
   html.includes('<th class="soccer-data-col-status-v387">Stato profilo</th>'),
@@ -37,7 +37,7 @@ if (!ok.every(Boolean)) {
 
 console.log(JSON.stringify({
   ok: true,
-  version: 'V395',
+  version: manifest.meta?.assetLayoutVersion || 'V395',
   scope: 'solo Soccer Data',
   publicReadOnly: true,
   adminCommands: ['Trova ID API', 'Inserisci ID API', 'Recupera statistiche', 'Scarica mapping API', 'Scarica stats JSON'],

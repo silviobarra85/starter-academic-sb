@@ -25,8 +25,8 @@ assert(app.includes('data-soccer-data-fetch-api-football-v394'), 'pulsante riga 
 assert(app.includes('formatSoccerDataUpdatedAtV394'), 'format data aggiornamento mancante');
 assert(index.includes('soccer-data-col-updated-v394'), 'colonna Aggiornato mancante in index');
 assert(index.includes('Aggiornato'), 'testo colonna Aggiornato mancante');
-assert(index.includes('app.js?v=394') || index.includes('app.js?v=396'), 'cache buster index non aggiornato a V394/V396');
-assert(index.includes('V394 Soccer Data API-Football cache Firebase') || index.includes('V396 Soccer Data mapping API-Football da rose'), 'footer V394/V396 non aggiornato');
+assert(index.includes('app.js?v=394') || index.includes('app.js?v=396') || index.includes('app.js?v=397'), 'cache buster index non aggiornato a V394/V396');
+assert(index.includes('V394 Soccer Data API-Football cache Firebase') || index.includes('V396 Soccer Data mapping API-Football da rose') || index.includes('V397 Soccer Data diagnostica API-Football rose'), 'footer V394/V396 non aggiornato');
 assert(fn.includes('ZONAORIENTALE_API_FOOTBALL_KEY'), 'variabile ambiente Netlify API-Football mancante');
 assert(fn.includes('https://v3.football.api-sports.io'), 'endpoint API-Football non presente');
 assert(fn.includes('x-apisports-key'), 'header API-Football non presente');
