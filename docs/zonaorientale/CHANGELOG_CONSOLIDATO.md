@@ -1362,3 +1362,28 @@ Corretto il falso positivo nel pannello `Admin -> Diagnostica dati`, riga `Listo
 - Le simulazioni restano local-only e vengono salvate nel browser per testare il passaggio al profilo presidente.
 - Aggiunto audit `audit-trade-simulator-target-v362.mjs`.
 - Nessuna modifica a Firebase, Netlify o trattative reali.
+
+## V383 - Soccer Data FBref batch-11 finale
+
+- Aggiunti 31 mapping FBref confermati nel batch finale.
+- Mapping confermati totali: 531/532.
+- Balentien resta in `needs-review` per assenza di profilo FBref stabile verificabile.
+- Nessuno scraping live, nessuna scrittura Firebase, nessuna modifica a `FUNZIONALITA'.md`.
+
+## V385 - Soccer Data associazione FBref locale
+
+- Aggiunto mini flusso di associazione FBref per giocatori non mappati/needs-review.
+- La UI consente di incollare link FBref, indicare nome opzionale e preparare patch JSON locale.
+- Aggiunti pulsanti `Copia patch FBref` e `Scarica patch FBref`.
+- Mapping corrente invariato: `fbref-player-map.v383.json`.
+- Nessuna scrittura Firebase, nessuno scraping live, nessuna modifica a `FUNZIONALITA'.md`.
+
+## V386 - Soccer Data solo admin
+
+- Resa la sezione Soccer Data disponibile solo agli admin.
+- Nascosti ai non-admin i link Soccer Data desktop e mobile tramite logica `nav-link-admin`.
+- Bloccato l'accesso diretto `#soccerdata` per utenti non-admin, con ritorno alla dashboard e richiesta login.
+- Evitato il caricamento manifest/mapping Soccer Data quando l'utente non e admin.
+- Colorato in verde il link giocatore FBref nella colonna `FBref / Giocatore`.
+- Mapping corrente invariato: `fbref-player-map.v383.json`.
+- Nessuna scrittura Firebase, nessuno scraping live, nessuna modifica a `FUNZIONALITA'.md`.

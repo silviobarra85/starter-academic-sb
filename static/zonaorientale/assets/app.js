@@ -38,19 +38,19 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=370";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=370";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=370";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=370";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=370";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=370";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=370";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=386";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=386";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=386";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=386";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=386";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=386";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=386";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=370";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=370";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=386";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=386";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -114,7 +114,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=370";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=386";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -138,7 +138,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=370";
+} from "./js/domain/news-share-v228.js?v=386";
 import {
   getListoneValue,
   compareListoneValues
@@ -153,19 +153,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=370";
+} from "./js/admin/listone-converter.js?v=386";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=370";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=370";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=386";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=386";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=370";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=370";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=370";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=370";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=386";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=386";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=386";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=386";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=370";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=370";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=370";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=386";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=386";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=386";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -1445,6 +1445,36 @@ function renderPlaceholderPages() {
   renderStadiumsPublic();
 }
 
+function isAdminOnlyPageV386(pageName) {
+  return pageName === "admin" || pageName === "soccerdata";
+}
+
+function promptAdminLoginForPageV386(pageName = "admin") {
+  const dialog = document.getElementById("loginDialog");
+  if (dialog?.showModal) dialog.showModal();
+  else alert(pageName === "soccerdata" ? "Accedi come admin per aprire Soccer Data." : "Accedi come admin per continuare.");
+}
+
+function applyActivePageStateV386(pageName = "dashboard") {
+  state.currentPage = pageName || "dashboard";
+  document.querySelectorAll(".app-page").forEach((page) => {
+    page.classList.toggle("is-active", page.dataset.page === state.currentPage);
+  });
+  document.querySelectorAll("[data-page-link]").forEach((link) => {
+    link.classList.toggle("active", link.dataset.pageLink === state.currentPage);
+  });
+  closeMobileMoreMenu?.();
+  updateMobileNavState?.();
+}
+
+function redirectAdminOnlyPageIfNeededV386() {
+  if (state.isAdmin || !isAdminOnlyPageV386(state.currentPage)) return;
+  applyActivePageStateV386("dashboard");
+  if (["#soccerdata", "#admin"].includes(String(window.location.hash || ""))) {
+    window.history.replaceState(null, "", "#dashboard");
+  }
+}
+
 function setupNavigation() {
   function setPage(pageName) {
     state.currentPage = pageName || "dashboard";
@@ -1460,11 +1490,11 @@ function setupNavigation() {
     closeMobileMoreMenu();
     updateMobileNavState();
 
-    if (state.currentPage === "admin" && !state.isAdmin) {
-      const dialog = document.getElementById("loginDialog");
-      if (dialog?.showModal) dialog.showModal();
-      else alert("Accedi come admin per continuare.");
+    if (isAdminOnlyPageV386(state.currentPage) && !state.isAdmin) {
+      promptAdminLoginForPageV386(state.currentPage);
       setPage("dashboard");
+      if (window.location.hash !== "#dashboard") window.history.replaceState(null, "", "#dashboard");
+      return;
     }
   }
 
@@ -1472,7 +1502,7 @@ function setupNavigation() {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       setPage(link.dataset.pageLink);
-      window.location.hash = link.dataset.pageLink;
+      window.location.hash = state.currentPage || link.dataset.pageLink;
     });
   });
 
@@ -1612,6 +1642,8 @@ function updateAdminVisibility() {
   adminLinks.forEach((link) => {
     link.classList.toggle("hidden", !state.isAdmin);
   });
+
+  redirectAdminOnlyPageIfNeededV386();
 }
 
 
@@ -6517,7 +6549,11 @@ function ensureTeamProfilePageV42() {
 }
 
 function setAppPageV42(pageName) {
-  const targetPage = pageName || 'dashboard';
+  let targetPage = pageName || 'dashboard';
+  if (isAdminOnlyPageV386(targetPage) && !state.isAdmin) {
+    promptAdminLoginForPageV386(targetPage);
+    targetPage = 'dashboard';
+  }
   state.currentPage = targetPage;
   document.querySelectorAll('.app-page').forEach((page) => {
     page.classList.toggle('is-active', page.dataset.page === targetPage);
@@ -15589,7 +15625,7 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "370";
+const DEPLOY_EXPECTED_VERSION_V181 = "386";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -23873,8 +23909,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=370";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=370";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=386";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=386";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -24377,7 +24413,7 @@ async function getCalciomercatoTimelineArticlePoolV335() {
     const days = Array.isArray(manifest?.availableDays) ? manifest.availableDays.map(String).filter(Boolean).sort() : [];
     const limitedDays = days.slice(-370);
     const settled = await Promise.allSettled(limitedDays.map(async (day) => {
-      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=370&_=${Date.now()}`);
+      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=386&_=${Date.now()}`);
       return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day") };
     }));
     settled.forEach((result) => {
@@ -25460,7 +25496,7 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=370`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=386`;
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -25615,7 +25651,7 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=370&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=386&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -25871,7 +25907,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=370&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=386&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -26106,7 +26142,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=370&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=386&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -29703,6 +29739,1485 @@ window.ZonaOrientalePresidentNotificationCenterV370 = {
       notificationRows: rows.length,
       oldRuntimeStillPresent,
       v369DashboardPresent: Boolean(window.ZonaOrientalePresidentDashboardV369)
+    };
+  }
+};
+
+
+/* V371/V372 - Soccer Data shell protetta + mapping assistito.
+   Sezione additiva/read-only: mostra solo giocatori attivi nel listone corrente e prepara
+   il mapping manuale verso FBref senza scraping live, senza Firebase writes e senza sostituire
+   Listone, Rose, Area squadra, Admin o Calciomercato. */
+const SOCCER_DATA_MANIFEST_URL_V371 = './assets/soccer-data/manifest.json';
+const SOCCER_DATA_BASE_MAPPING_FILE_V371 = 'fbref-player-map.v383.json';
+const SOCCER_DATA_FBREF_SEARCH_BASE_V371 = 'https://fbref.com/en/search/search.fcgi?search=';
+state.soccerDataManifestV371 = state.soccerDataManifestV371 || null;
+state.soccerDataMappingV371 = state.soccerDataMappingV371 || null;
+state.soccerDataLoadingV371 = false;
+state.soccerDataRoleFilterV371 = state.soccerDataRoleFilterV371 || 'all';
+state.soccerDataTeamFilterV371 = state.soccerDataTeamFilterV371 || 'all';
+state.soccerDataMappingFilterV371 = state.soccerDataMappingFilterV371 || 'all';
+state.soccerDataSearchV371 = state.soccerDataSearchV371 || '';
+state.soccerDataLastRowsV371 = state.soccerDataLastRowsV371 || [];
+
+function slugifySoccerDataPlayerV371(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'giocatore';
+}
+
+function getSoccerDataPlayerKeyV371(player = {}) {
+  const id = String(player.fantacalcioId || player.fantacalcio_id || player.idFantacalcio || '').trim();
+  if (id) return `fc-${id}`;
+  return `${slugifySoccerDataPlayerV371(player.playerName || player.player_name)}-${String(player.realTeam || player.real_team || '').toLowerCase()}`;
+}
+
+function isSoccerDataActiveListonePlayerV371(player = {}) {
+  const code = String(player.statusCode || '').trim().toUpperCase();
+  if (code) return code === 'IN_LISTONE';
+  const label = String(player.status || '').trim().toLowerCase();
+  if (!label) return true;
+  return label.includes('in listone') && !label.includes('aster');
+}
+
+function getSoccerDataCurrentListoneV371() {
+  try { return getSelectedListone?.() || null; } catch (_) { return null; }
+}
+
+function getSoccerDataActiveListonePlayersV371() {
+  const listone = getSoccerDataCurrentListoneV371();
+  const players = Array.isArray(listone?.players) ? listone.players : [];
+  return players.filter(isSoccerDataActiveListonePlayerV371);
+}
+
+function getSoccerDataMappingEntriesV371() {
+  const entries = state.soccerDataMappingV371?.players;
+  return Array.isArray(entries) ? entries : [];
+}
+
+function getSoccerDataMappingIndexV371() {
+  const index = new Map();
+  getSoccerDataMappingEntriesV371().forEach((entry) => {
+    if (entry?.playerKey) index.set(String(entry.playerKey), entry);
+    if (entry?.fantacalcioId) index.set(`fc-${String(entry.fantacalcioId).trim()}`, entry);
+    const nameKey = `${slugifySoccerDataPlayerV371(entry?.playerName)}-${String(entry?.realTeam || '').toLowerCase()}`;
+    index.set(nameKey, entry);
+  });
+  return index;
+}
+
+async function loadSoccerDataManifestV371(options = {}) {
+  if (!state.isAdmin && !options.allowWhenLocked) return state.soccerDataManifestV371;
+  if (state.soccerDataLoadingV371) return state.soccerDataManifestV371;
+  if (!options.force && state.soccerDataManifestV371 && state.soccerDataMappingV371) return state.soccerDataManifestV371;
+  state.soccerDataLoadingV371 = true;
+  try {
+    const manifestResponse = await fetch(SOCCER_DATA_MANIFEST_URL_V371, { cache: 'no-cache' });
+    if (!manifestResponse.ok) throw new Error(`Manifest Soccer Data non disponibile (${manifestResponse.status})`);
+    const manifest = await manifestResponse.json();
+    state.soccerDataManifestV371 = manifest;
+    if (manifest?.currentMapping) {
+      const mappingResponse = await fetch(`./assets/soccer-data/${manifest.currentMapping}`, { cache: 'no-cache' });
+      if (!mappingResponse.ok) throw new Error(`Mapping Soccer Data non disponibile (${mappingResponse.status})`);
+      state.soccerDataMappingV371 = await mappingResponse.json();
+    }
+    return manifest;
+  } catch (error) {
+    console.warn('Soccer Data V371 non disponibile', error);
+    state.soccerDataManifestV371 = state.soccerDataManifestV371 || { meta: { version: 'V371', warning: String(error?.message || error) } };
+    return state.soccerDataManifestV371;
+  } finally {
+    state.soccerDataLoadingV371 = false;
+  }
+}
+
+function getSoccerDataFbrefSearchUrlV371(player = {}) {
+  const query = [player.playerName || '', player.realTeam || '', 'fbref'].filter(Boolean).join(' ');
+  return `${SOCCER_DATA_FBREF_SEARCH_BASE_V371}${encodeURIComponent(query)}`;
+}
+
+function getSoccerDataRowsV371() {
+  const mappingIndex = getSoccerDataMappingIndexV371();
+  return getSoccerDataActiveListonePlayersV371().map((player) => {
+    const playerKey = getSoccerDataPlayerKeyV371(player);
+    const fallbackKey = `${slugifySoccerDataPlayerV371(player.playerName)}-${String(player.realTeam || '').toLowerCase()}`;
+    const mapping = mappingIndex.get(playerKey) || mappingIndex.get(fallbackKey) || null;
+    const mapped = Boolean(mapping?.fbrefUrl || mapping?.fbrefId || mapping?.fbrefName);
+    return {
+      player,
+      playerKey,
+      mapping,
+      mapped,
+      fbrefName: mapping?.fbrefName || '',
+      fbrefUrl: mapping?.fbrefUrl || '',
+      matchStatus: mapping?.matchStatus || (mapped ? 'mapped' : 'unmapped'),
+      fbrefSearchQuery: mapping?.fbrefSearchQuery || '',
+      fbrefSearchUrl: mapping?.fbrefSearchUrl || '',
+      reviewBatch: mapping?.reviewBatch || '',
+      reviewPriority: mapping?.reviewPriority || '',
+      reviewScore: mapping?.reviewScore || ''
+    };
+  });
+}
+
+function getFilteredSoccerDataRowsV371() {
+  const role = state.soccerDataRoleFilterV371 || 'all';
+  const team = state.soccerDataTeamFilterV371 || 'all';
+  const mappingFilter = state.soccerDataMappingFilterV371 || 'all';
+  const search = String(state.soccerDataSearchV371 || '').trim().toLowerCase();
+  const rows = getSoccerDataRowsV371().filter((row) => {
+    const player = row.player || {};
+    if (role !== 'all' && String(player.classicRole || '').toUpperCase() !== role) return false;
+    if (team !== 'all' && String(player.realTeam || '').toUpperCase() !== team) return false;
+    if (mappingFilter === 'mapped' && !row.mapped) return false;
+    if (mappingFilter === 'unmapped' && row.mapped) return false;
+    if (!search) return true;
+    const haystack = [
+      player.playerName,
+      player.classicRole,
+      player.mantraRoles,
+      player.realTeam,
+      player.fantasyRoster,
+      player.fantacalcioId,
+      row.fbrefName,
+      row.fbrefUrl,
+      row.matchStatus
+    ].join(' ').toLowerCase();
+    return haystack.includes(search);
+  });
+  return rows.sort((a, b) => String(a.player?.playerName || '').localeCompare(String(b.player?.playerName || ''), 'it'));
+}
+
+function updateSoccerDataFilterOptionsV371() {
+  const rows = getSoccerDataRowsV371();
+  const roleSelect = document.getElementById('soccerDataRoleFilterV371');
+  const teamSelect = document.getElementById('soccerDataTeamFilterV371');
+  const currentRole = state.soccerDataRoleFilterV371 || 'all';
+  const currentTeam = state.soccerDataTeamFilterV371 || 'all';
+  const roles = Array.from(new Set(rows.map((row) => String(row.player?.classicRole || '').toUpperCase()).filter(Boolean))).sort();
+  const teams = Array.from(new Set(rows.map((row) => String(row.player?.realTeam || '').toUpperCase()).filter(Boolean))).sort();
+  if (roleSelect) {
+    roleSelect.innerHTML = `<option value="all">Tutti i ruoli</option>${roles.map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`).join('')}`;
+    roleSelect.value = roles.includes(currentRole) ? currentRole : 'all';
+    state.soccerDataRoleFilterV371 = roleSelect.value;
+  }
+  if (teamSelect) {
+    teamSelect.innerHTML = `<option value="all">Tutte le squadre</option>${teams.map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`).join('')}`;
+    teamSelect.value = teams.includes(currentTeam) ? currentTeam : 'all';
+    state.soccerDataTeamFilterV371 = teamSelect.value;
+  }
+  const mappingSelect = document.getElementById('soccerDataMappingFilterV371');
+  if (mappingSelect) mappingSelect.value = state.soccerDataMappingFilterV371 || 'all';
+  const search = document.getElementById('soccerDataSearchV371');
+  if (search && search.value !== state.soccerDataSearchV371) search.value = state.soccerDataSearchV371 || '';
+}
+
+function renderSoccerDataSummaryV371(rows = getSoccerDataRowsV371(), filteredRows = rows) {
+  const target = document.getElementById('soccerDataSummaryV371');
+  if (!target) return;
+  ensureSoccerDataAssociationDraftsLoadedV385();
+  const mapped = rows.filter((row) => row.mapped).length;
+  const unmapped = Math.max(0, rows.length - mapped);
+  const reviewBatches = new Set(rows.map((row) => row.reviewBatch).filter(Boolean)).size;
+  const draftCount = Object.keys(state.soccerDataAssociationDraftsV385 || {}).length;
+  const listone = getSoccerDataCurrentListoneV371();
+  target.innerHTML = `
+    <article class="metric-card"><span class="metric-label">In listone</span><strong>${escapeHtml(String(rows.length))}</strong></article>
+    <article class="metric-card"><span class="metric-label">Mappati FBref</span><strong>${escapeHtml(String(mapped))}</strong></article>
+    <article class="metric-card"><span class="metric-label">Da associare</span><strong>${escapeHtml(String(unmapped))}</strong></article>
+    <article class="metric-card"><span class="metric-label">Patch FBref</span><strong>${escapeHtml(String(draftCount))}</strong><small class="metric-reason muted">locale/export JSON</small></article>
+    <article class="metric-card"><span class="metric-label">Risultati filtro</span><strong>${escapeHtml(String(filteredRows.length))}</strong><small class="metric-reason muted">${escapeHtml(listone?.loadedAt || listone?.id || 'listone corrente')}</small></article>`;
+}
+
+function isSoccerDataReviewRowV384(row = {}) {
+  const status = String(row.matchStatus || row.mapping?.matchStatus || '').toLowerCase();
+  return !row.mapped || status.includes('review');
+}
+
+function getSoccerDataMappingStatusLabelV384(row = {}) {
+  const status = String(row.matchStatus || row.mapping?.matchStatus || '').toLowerCase();
+  if (status === 'confirmed') return 'Confermato';
+  if (status.includes('review')) return 'Da associare';
+  if (row.mapped) return 'Mappato';
+  return 'Da associare';
+}
+
+function renderSoccerDataFbrefCellV371(row = {}) {
+  if (row.fbrefUrl) {
+    const label = row.fbrefName || row.mapping?.fbrefId || 'Apri FBref';
+    return `<a class="soccer-data-fbref-link-v384" href="${escapeHtml(row.fbrefUrl)}" target="_blank" rel="noopener"><strong>${escapeHtml(label)}</strong><span aria-hidden="true">↗</span></a>`;
+  }
+  if (row.fbrefName || row.mapping?.fbrefId) return `<span class="status status-warning">${escapeHtml(row.fbrefName || row.mapping?.fbrefId)}</span>`;
+  return '<span class="status status-muted">Da associare</span>';
+}
+
+state.soccerDataAssociationDraftsV385 = state.soccerDataAssociationDraftsV385 || {};
+state.soccerDataAssociationDraftsListoneKeyV385 = state.soccerDataAssociationDraftsListoneKeyV385 || '';
+
+function getSoccerDataListoneKeyV385() {
+  const listone = getSoccerDataCurrentListoneV371();
+  const seasonId = listone?.seasonId || listone?.meta?.seasonId || getCurrentSeasonId?.() || 'season';
+  const listoneId = listone?.id || listone?.loadedAt || listone?.meta?.id || 'current';
+  return `${String(seasonId)}__${String(listoneId)}`;
+}
+
+function getSoccerDataAssociationStorageKeyV385() {
+  return `zonaOrientaleSoccerDataFbrefPatchV385:${getSoccerDataListoneKeyV385()}`;
+}
+
+function ensureSoccerDataAssociationDraftsLoadedV385() {
+  const listoneKey = getSoccerDataListoneKeyV385();
+  if (state.soccerDataAssociationDraftsListoneKeyV385 === listoneKey) return state.soccerDataAssociationDraftsV385 || {};
+  state.soccerDataAssociationDraftsListoneKeyV385 = listoneKey;
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(getSoccerDataAssociationStorageKeyV385()) || '{}');
+    state.soccerDataAssociationDraftsV385 = parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+  } catch (error) {
+    state.soccerDataAssociationDraftsV385 = {};
+  }
+  return state.soccerDataAssociationDraftsV385;
+}
+
+function saveSoccerDataAssociationDraftsV385() {
+  try { window.localStorage.setItem(getSoccerDataAssociationStorageKeyV385(), JSON.stringify(state.soccerDataAssociationDraftsV385 || {})); } catch (error) {}
+}
+
+function getSoccerDataAssociationDraftV385(rowOrKey = '') {
+  const key = typeof rowOrKey === 'string' ? rowOrKey : rowOrKey?.playerKey;
+  const drafts = ensureSoccerDataAssociationDraftsLoadedV385();
+  return key ? drafts[key] || null : null;
+}
+
+function getSoccerDataFbrefNameFromSlugV385(slug = '') {
+  return String(slug || '')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase())
+    .trim();
+}
+
+function parseSoccerDataFbrefPlayerUrlV385(rawUrl = '') {
+  const value = String(rawUrl || '').trim();
+  if (!value) return null;
+  try {
+    const url = new URL(value, 'https://fbref.com');
+    const host = String(url.hostname || '').replace(/^www\./, '').toLowerCase();
+    if (host !== 'fbref.com') return null;
+    const match = url.pathname.match(/^\/en\/players\/([^/]+)\/([^/]+)/i);
+    if (!match) return null;
+    const fbrefId = decodeURIComponent(match[1] || '').trim();
+    const slug = decodeURIComponent(match[2] || '').trim();
+    if (!fbrefId || !slug) return null;
+    return {
+      fbrefId,
+      fbrefName: getSoccerDataFbrefNameFromSlugV385(slug),
+      fbrefUrl: `${url.origin}/en/players/${encodeURIComponent(fbrefId)}/${encodeURIComponent(slug).replaceAll('%20', '-')}`
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+function getSoccerDataInputValueV385(attributeName, playerKey) {
+  const input = Array.from(document.querySelectorAll(`[${attributeName}]`)).find((element) => element.getAttribute(attributeName) === playerKey);
+  return String(input?.value || '').trim();
+}
+
+function buildSoccerDataAssociationDraftV385(row = {}, parsed = {}, manualName = '') {
+  const player = row.player || {};
+  const mapping = row.mapping || {};
+  return {
+    playerKey: row.playerKey || '',
+    playerName: player.playerName || '',
+    classicRole: player.classicRole || '',
+    mantraRoles: player.mantraRoles || '',
+    realTeam: player.realTeam || '',
+    fantacalcioId: String(player.fantacalcioId || ''),
+    statusCode: 'IN_LISTONE',
+    fbrefId: parsed.fbrefId || '',
+    fbrefName: manualName || parsed.fbrefName || '',
+    fbrefUrl: parsed.fbrefUrl || '',
+    fbrefSearchQuery: row.fbrefSearchQuery || mapping.fbrefSearchQuery || [player.playerName || '', player.realTeam || '', 'fbref'].filter(Boolean).join(' '),
+    fbrefSearchUrl: row.fbrefSearchUrl || mapping.fbrefSearchUrl || getSoccerDataFbrefSearchUrlV371(player),
+    reviewBatch: row.reviewBatch || mapping.reviewBatch || 'manual-v385',
+    reviewPriority: row.reviewPriority || mapping.reviewPriority || '',
+    matchStatus: 'confirmed',
+    confidence: 'manual-v385',
+    notes: 'Associazione manuale preparata dalla UI V385; verificare prima del merge nel mapping statico.',
+    preparedAt: new Date().toISOString()
+  };
+}
+
+function renderSoccerDataReviewActionsV384(row = {}, searchUrl = '') {
+  if (!isSoccerDataReviewRowV384(row)) return '';
+  const playerKey = row.playerKey || '';
+  const draft = getSoccerDataAssociationDraftV385(row);
+  return `<div class="soccer-data-association-panel-v385" data-soccer-data-association-panel-v385="${escapeHtml(playerKey)}">
+    <div class="soccer-data-inline-actions-v384 soccer-data-search-actions-v385">
+      <a class="button button-secondary button-small" href="${escapeHtml(searchUrl)}" target="_blank" rel="noopener">Cerca FBref</a>
+      <button class="button button-secondary button-small" type="button" data-soccer-data-copy-row-v372="${escapeHtml(playerKey)}">Copia dati mapping</button>
+    </div>
+    <label class="soccer-data-association-field-v385"><span>Link FBref</span><input class="input" type="url" inputmode="url" placeholder="https://fbref.com/en/players/..." value="${escapeHtml(draft?.fbrefUrl || '')}" data-soccer-data-fbref-url-input-v385="${escapeHtml(playerKey)}" /></label>
+    <label class="soccer-data-association-field-v385"><span>Nome FBref opz.</span><input class="input" type="text" placeholder="Nome visualizzato su FBref" value="${escapeHtml(draft?.fbrefName || '')}" data-soccer-data-fbref-name-input-v385="${escapeHtml(playerKey)}" /></label>
+    <div class="soccer-data-inline-actions-v384 soccer-data-draft-actions-v385">
+      <button class="button button-primary button-small" type="button" data-soccer-data-prepare-fbref-v385="${escapeHtml(playerKey)}">Prepara mapping</button>
+      ${draft ? `<button class="button button-secondary button-small" type="button" data-soccer-data-copy-draft-v385="${escapeHtml(playerKey)}">Copia patch</button><button class="button button-secondary button-small" type="button" data-soccer-data-remove-draft-v385="${escapeHtml(playerKey)}">Rimuovi patch</button>` : ''}
+    </div>
+    <small class="muted soccer-data-draft-help-v385">${draft ? `Patch pronta: ${escapeHtml(draft.fbrefName || draft.fbrefId || 'profilo FBref')}` : 'Incolla il profilo giocatore FBref, poi prepara una patch locale esportabile.'}</small>
+  </div>`;
+}
+
+function renderSoccerDataMappingStatusCellV384(row = {}) {
+  const label = getSoccerDataMappingStatusLabelV384(row);
+  const statusClass = isSoccerDataReviewRowV384(row) ? 'status-warning' : 'status-success';
+  const details = [row.reviewBatch, row.reviewPriority ? `prio ${row.reviewPriority}` : '', row.mapping?.confidence].filter(Boolean).join(' · ');
+  return `<span class="status ${statusClass}">${escapeHtml(label)}</span>${details ? `<small class="muted soccer-data-status-detail-v384">${escapeHtml(details)}</small>` : ''}`;
+}
+
+function renderSoccerDataRowV371(row = {}) {
+  const player = row.player || {};
+  const searchUrl = row.fbrefSearchUrl || row.mapping?.fbrefSearchUrl || getSoccerDataFbrefSearchUrlV371(player);
+  const queryHint = row.fbrefSearchQuery || row.mapping?.fbrefSearchQuery || [player.playerName || '', player.realTeamOriginal || player.realTeam || '', 'fbref'].filter(Boolean).join(' ');
+  const showQueryHint = isSoccerDataReviewRowV384(row) && queryHint;
+  return `
+    <tr>
+      <td data-label="FBref / Giocatore" class="soccer-data-primary-cell-v384">${renderSoccerDataFbrefCellV371(row)}<small class="muted soccer-data-listone-name-v384">Listone: ${escapeHtml(player.playerName || '-')}</small><small class="muted soccer-data-player-key-v371">${escapeHtml(row.playerKey || '')}${row.reviewBatch ? ` · ${escapeHtml(row.reviewBatch)}` : ''}</small>${showQueryHint ? `<small class="muted soccer-data-query-v372">${escapeHtml(queryHint)}</small>` : ''}${renderSoccerDataReviewActionsV384(row, searchUrl)}</td>
+      <td data-label="Ruolo">${escapeHtml(player.classicRole || '-')}${player.mantraRoles ? ` <span class="muted role-extra">(${escapeHtml(player.mantraRoles)})</span>` : ''}</td>
+      <td data-label="Squadra"><span class="team-code">${escapeHtml(player.realTeam || '-')}</span></td>
+      <td data-label="Rosa">${escapeHtml(player.fantasyRoster || 'Svincolati')}</td>
+      <td data-label="Qt.A" class="number">${formatListoneNumber(player.quotationCurrent)}</td>
+      <td data-label="FVM" class="number">${formatListoneNumber(player.fvm)}</td>
+      <td data-label="Stato mapping" class="soccer-data-status-cell-v384">${renderSoccerDataMappingStatusCellV384(row)}</td>
+    </tr>`;
+}
+
+function setSoccerDataControlsLockedV386(isLocked = false) {
+  [
+    'soccerDataRoleFilterV371',
+    'soccerDataTeamFilterV371',
+    'soccerDataMappingFilterV371',
+    'soccerDataSearchV371',
+    'soccerDataCopyCsvV371',
+    'soccerDataCopyReviewCsvV372',
+    'soccerDataDownloadMapV371',
+    'soccerDataCopyPatchV385',
+    'soccerDataDownloadPatchV385'
+  ].forEach((id) => {
+    const element = document.getElementById(id);
+    if (element) element.disabled = Boolean(isLocked);
+  });
+}
+
+function renderSoccerDataPageV371() {
+  const tbody = document.getElementById('soccerDataTableBodyV371');
+  const meta = document.getElementById('soccerDataMetaTextV371');
+  if (!tbody) return;
+  setSoccerDataControlsLockedV386(!state.isAdmin);
+  if (!state.isAdmin) {
+    const summary = document.getElementById('soccerDataSummaryV371');
+    if (summary) {
+      summary.innerHTML = `<article class="metric-card"><span class="metric-label">Accesso</span><strong>Solo admin</strong><small class="metric-reason muted">Accedi dall'Area admin per usare Soccer Data.</small></article>`;
+    }
+    if (meta) meta.textContent = 'Soccer Data e associazioni FBref sono disponibili solo per admin.';
+    state.soccerDataLastRowsV371 = [];
+    tbody.innerHTML = '<tr><td colspan="7" class="muted center">Accedi come admin per visualizzare Soccer Data.</td></tr>';
+    return;
+  }
+
+  updateSoccerDataFilterOptionsV371();
+  const allRows = getSoccerDataRowsV371();
+  const rows = getFilteredSoccerDataRowsV371();
+  state.soccerDataLastRowsV371 = rows;
+  const listone = getSoccerDataCurrentListoneV371();
+  const manifest = state.soccerDataManifestV371;
+  const mappingMeta = state.soccerDataMappingV371?.meta;
+  if (meta) {
+    const warning = manifest?.meta?.warning ? ` · warning: ${manifest.meta.warning}` : '';
+    meta.textContent = listone
+      ? `Listone ${listone.loadedAt || listone.id || '-'} · ${allRows.length} giocatori attivi IN_LISTONE · mapping ${mappingMeta?.version || manifest?.meta?.version || 'V371'}${warning}`
+      : `Nessun listone selezionato per Soccer Data${warning}`;
+  }
+  renderSoccerDataSummaryV371(allRows, rows);
+  if (!listone) {
+    tbody.innerHTML = '<tr><td colspan="7" class="muted center">Nessun listone caricato per la stagione selezionata.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.length
+    ? rows.map(renderSoccerDataRowV371).join('')
+    : '<tr><td colspan="7" class="muted center">Nessun giocatore trovato con i filtri Soccer Data.</td></tr>';
+}
+
+function getSoccerDataAssociationCsvV371(rows = getSoccerDataRowsV371()) {
+  const headers = ['reviewPriority','reviewBatch','playerKey','playerName','classicRole','mantraRoles','realTeam','fantacalcioId','fbrefSearchQuery','fbrefSearchUrl','fbrefName','fbrefUrl','matchStatus','confidence','notes'];
+  const escapeCsv = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+  const lines = rows.map((row) => {
+    const player = row.player || {};
+    const mapping = row.mapping || {};
+    return [
+      row.reviewPriority || mapping.reviewPriority || '',
+      row.reviewBatch || mapping.reviewBatch || '',
+      row.playerKey,
+      player.playerName,
+      player.classicRole,
+      player.mantraRoles,
+      player.realTeam,
+      player.fantacalcioId,
+      row.fbrefSearchQuery || mapping.fbrefSearchQuery || '',
+      row.fbrefSearchUrl || mapping.fbrefSearchUrl || getSoccerDataFbrefSearchUrlV371(player),
+      mapping.fbrefName || '',
+      mapping.fbrefUrl || '',
+      mapping.matchStatus || (row.mapped ? 'mapped' : 'needs-review'),
+      mapping.confidence || '',
+      mapping.notes || ''
+    ].map(escapeCsv).join(',');
+  });
+  return [headers.join(','), ...lines].join('\n');
+}
+
+
+function getSoccerDataReviewCsvV372(rows = getFilteredSoccerDataRowsV371()) {
+  const reviewRows = rows.filter((row) => !row.mapped || String(row.matchStatus || '').toLowerCase().includes('review'));
+  return getSoccerDataAssociationCsvV371(reviewRows.length ? reviewRows : rows);
+}
+
+function getSoccerDataRowSnippetV372(row = {}) {
+  const player = row.player || {};
+  const mapping = row.mapping || {};
+  const payload = {
+    playerKey: row.playerKey || '',
+    playerName: player.playerName || '',
+    realTeam: player.realTeam || '',
+    fantacalcioId: String(player.fantacalcioId || ''),
+    fbrefSearchQuery: row.fbrefSearchQuery || mapping.fbrefSearchQuery || '',
+    fbrefSearchUrl: row.fbrefSearchUrl || mapping.fbrefSearchUrl || getSoccerDataFbrefSearchUrlV371(player),
+    fbrefId: mapping.fbrefId || '',
+    fbrefName: mapping.fbrefName || '',
+    fbrefUrl: mapping.fbrefUrl || '',
+    matchStatus: mapping.matchStatus || (row.mapped ? 'mapped' : 'needs-review'),
+    confidence: mapping.confidence || '',
+    notes: mapping.notes || ''
+  };
+  return JSON.stringify(payload, null, 2);
+}
+
+async function copySoccerDataReviewCsvV372(button) {
+  const text = getSoccerDataReviewCsvV372();
+  try {
+    await navigator.clipboard.writeText(text);
+    const previous = button?.textContent;
+    if (button) {
+      button.textContent = 'CSV review copiato';
+      window.setTimeout(() => { button.textContent = previous || 'Copia CSV da rivedere'; }, 1200);
+    }
+  } catch (error) {
+    console.warn('Copia CSV review Soccer Data V372 non riuscita', error);
+    window.prompt('Copia manualmente il CSV review', text);
+  }
+}
+
+async function copySoccerDataRowSnippetV372(button) {
+  const key = String(button?.dataset?.soccerDataCopyRowV372 || '').trim();
+  const row = getSoccerDataRowsV371().find((item) => item.playerKey === key);
+  if (!row) return;
+  const text = getSoccerDataRowSnippetV372(row);
+  try {
+    await navigator.clipboard.writeText(text);
+    const previous = button?.textContent;
+    button.textContent = 'Copiata';
+    window.setTimeout(() => { button.textContent = previous || 'Copia riga'; }, 1200);
+  } catch (error) {
+    console.warn('Copia riga Soccer Data V372 non riuscita', error);
+    window.prompt('Copia manualmente la riga mapping', text);
+  }
+}
+
+async function copySoccerDataAssociationCsvV371(button) {
+  const text = getSoccerDataAssociationCsvV371();
+  try {
+    await navigator.clipboard.writeText(text);
+    const previous = button?.textContent;
+    if (button) {
+      button.textContent = 'CSV copiato';
+      window.setTimeout(() => { button.textContent = previous || 'Copia CSV associazioni'; }, 1200);
+    }
+  } catch (error) {
+    console.warn('Copia CSV Soccer Data V371 non riuscita', error);
+    window.prompt('Copia manualmente il CSV associazioni', text);
+  }
+}
+
+function downloadSoccerDataBaseMappingV371() {
+  const rows = getSoccerDataRowsV371();
+  const listone = getSoccerDataCurrentListoneV371();
+  const payload = {
+    meta: {
+      version: 'V383-runtime-export',
+      exportedAt: new Date().toISOString(),
+      listoneId: listone?.id || listone?.meta?.id || '',
+      seasonId: listone?.seasonId || listone?.meta?.seasonId || getCurrentSeasonId?.() || '',
+      onlyStatusCode: 'IN_LISTONE',
+      activeRows: rows.length,
+      firebaseWrites: false,
+      liveScraping: false
+    },
+    players: rows.map((row) => ({
+      playerKey: row.playerKey,
+      playerName: row.player?.playerName || '',
+      classicRole: row.player?.classicRole || '',
+      mantraRoles: row.player?.mantraRoles || '',
+      realTeam: row.player?.realTeam || '',
+      fantacalcioId: String(row.player?.fantacalcioId || ''),
+      statusCode: 'IN_LISTONE',
+      fbrefId: row.mapping?.fbrefId || '',
+      fbrefName: row.mapping?.fbrefName || '',
+      fbrefUrl: row.mapping?.fbrefUrl || '',
+      fbrefSearchQuery: row.fbrefSearchQuery || row.mapping?.fbrefSearchQuery || '',
+      fbrefSearchUrl: row.fbrefSearchUrl || row.mapping?.fbrefSearchUrl || getSoccerDataFbrefSearchUrlV371(row.player || {}),
+      reviewBatch: row.reviewBatch || row.mapping?.reviewBatch || '',
+      reviewPriority: row.reviewPriority || row.mapping?.reviewPriority || '',
+      matchStatus: row.mapping?.matchStatus || (row.mapped ? 'mapped' : 'needs-review'),
+      confidence: row.mapping?.confidence || '',
+      notes: row.mapping?.notes || ''
+    }))
+  };
+  downloadJson(payload, `soccer-data-fbref-map-${payload.meta.listoneId || 'listone'}-v373.json`);
+}
+
+function getSoccerDataAssociationPatchPayloadV385() {
+  ensureSoccerDataAssociationDraftsLoadedV385();
+  const listone = getSoccerDataCurrentListoneV371();
+  const rows = getSoccerDataRowsV371();
+  const rowOrder = new Map(rows.map((row, index) => [row.playerKey, index]));
+  const players = Object.values(state.soccerDataAssociationDraftsV385 || {})
+    .filter((entry) => entry && entry.playerKey && entry.fbrefId && entry.fbrefUrl)
+    .sort((a, b) => (rowOrder.get(a.playerKey) ?? 9999) - (rowOrder.get(b.playerKey) ?? 9999) || String(a.playerName || '').localeCompare(String(b.playerName || ''), 'it'));
+  return {
+    meta: {
+      version: 'V385-patch',
+      exportedAt: new Date().toISOString(),
+      baseMapping: state.soccerDataManifestV371?.currentMapping || SOCCER_DATA_BASE_MAPPING_FILE_V371,
+      listoneId: listone?.id || listone?.meta?.id || listone?.loadedAt || '',
+      seasonId: listone?.seasonId || listone?.meta?.seasonId || getCurrentSeasonId?.() || '',
+      records: players.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      mergeInstruction: 'Usare questa patch per creare una nuova versione statica del mapping FBref dopo verifica manuale.'
+    },
+    players
+  };
+}
+
+async function copySoccerDataAssociationPatchV385(button) {
+  const payload = getSoccerDataAssociationPatchPayloadV385();
+  const text = JSON.stringify(payload, null, 2);
+  if (!payload.players.length) {
+    window.alert?.('Nessuna patch FBref pronta. Incolla almeno un link FBref e premi Prepara mapping.');
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+    const previous = button?.textContent;
+    if (button) {
+      button.textContent = 'Patch copiata';
+      window.setTimeout(() => { button.textContent = previous || 'Copia patch FBref'; }, 1200);
+    }
+  } catch (error) {
+    console.warn('Copia patch Soccer Data V385 non riuscita', error);
+    window.prompt('Copia manualmente la patch FBref', text);
+  }
+}
+
+function downloadSoccerDataAssociationPatchV385() {
+  const payload = getSoccerDataAssociationPatchPayloadV385();
+  if (!payload.players.length) {
+    window.alert?.('Nessuna patch FBref pronta. Incolla almeno un link FBref e premi Prepara mapping.');
+    return;
+  }
+  downloadJson(payload, `soccer-data-fbref-patch-${payload.meta.listoneId || 'listone'}-v385.json`);
+}
+
+async function copySoccerDataSingleAssociationDraftV385(button) {
+  const key = String(button?.dataset?.soccerDataCopyDraftV385 || '').trim();
+  const draft = getSoccerDataAssociationDraftV385(key);
+  if (!draft) return;
+  const text = JSON.stringify(draft, null, 2);
+  try {
+    await navigator.clipboard.writeText(text);
+    const previous = button?.textContent;
+    button.textContent = 'Patch copiata';
+    window.setTimeout(() => { button.textContent = previous || 'Copia patch'; }, 1200);
+  } catch (error) {
+    console.warn('Copia patch riga Soccer Data V385 non riuscita', error);
+    window.prompt('Copia manualmente la patch riga', text);
+  }
+}
+
+function prepareSoccerDataAssociationDraftV385(button) {
+  const key = String(button?.dataset?.soccerDataPrepareFbrefV385 || '').trim();
+  const row = getSoccerDataRowsV371().find((item) => item.playerKey === key);
+  if (!row) return;
+  const rawUrl = getSoccerDataInputValueV385('data-soccer-data-fbref-url-input-v385', key);
+  const manualName = getSoccerDataInputValueV385('data-soccer-data-fbref-name-input-v385', key);
+  const parsed = parseSoccerDataFbrefPlayerUrlV385(rawUrl);
+  if (!parsed) {
+    window.alert?.('Link FBref non valido. Usa un URL profilo del tipo https://fbref.com/en/players/<id>/<nome>.');
+    return;
+  }
+  ensureSoccerDataAssociationDraftsLoadedV385();
+  state.soccerDataAssociationDraftsV385[key] = buildSoccerDataAssociationDraftV385(row, parsed, manualName);
+  saveSoccerDataAssociationDraftsV385();
+  renderSoccerDataPageV371();
+}
+
+function removeSoccerDataAssociationDraftV385(button) {
+  const key = String(button?.dataset?.soccerDataRemoveDraftV385 || '').trim();
+  ensureSoccerDataAssociationDraftsLoadedV385();
+  if (key && state.soccerDataAssociationDraftsV385?.[key]) {
+    delete state.soccerDataAssociationDraftsV385[key];
+    saveSoccerDataAssociationDraftsV385();
+    renderSoccerDataPageV371();
+  }
+}
+
+async function ensureSoccerDataLoadedAndRenderedV371(options = {}) {
+  await loadSoccerDataManifestV371(options);
+  renderSoccerDataPageV371();
+}
+
+const renderAllBeforeV371 = renderAll;
+renderAll = function renderAllV371() {
+  const result = renderAllBeforeV371?.();
+  renderSoccerDataPageV371();
+  if (state.isAdmin && !state.soccerDataManifestV371 && !state.soccerDataLoadingV371) {
+    loadSoccerDataManifestV371().then(() => renderSoccerDataPageV371()).catch(() => renderSoccerDataPageV371());
+  }
+  return result;
+};
+
+const setAppPageBeforeV371 = typeof setAppPageV42 === 'function' ? setAppPageV42 : null;
+if (setAppPageBeforeV371) {
+  setAppPageV42 = function setAppPageV371(pageName) {
+    const result = setAppPageBeforeV371(pageName);
+    if (pageName === 'soccerdata' && state.isAdmin) ensureSoccerDataLoadedAndRenderedV371().catch(console.warn);
+    return result;
+  };
+}
+
+if (typeof isKnownStaticHashV43 === 'function') {
+  const isKnownStaticHashBeforeV371 = isKnownStaticHashV43;
+  isKnownStaticHashV43 = function isKnownStaticHashV371(hashValue) {
+    return hashValue === 'soccerdata' || isKnownStaticHashBeforeV371(hashValue);
+  };
+}
+
+document.addEventListener('change', (event) => {
+  const role = event.target.closest?.('#soccerDataRoleFilterV371');
+  if (role) {
+    state.soccerDataRoleFilterV371 = role.value || 'all';
+    renderSoccerDataPageV371();
+    return;
+  }
+  const team = event.target.closest?.('#soccerDataTeamFilterV371');
+  if (team) {
+    state.soccerDataTeamFilterV371 = team.value || 'all';
+    renderSoccerDataPageV371();
+    return;
+  }
+  const mapping = event.target.closest?.('#soccerDataMappingFilterV371');
+  if (mapping) {
+    state.soccerDataMappingFilterV371 = mapping.value || 'all';
+    renderSoccerDataPageV371();
+  }
+}, true);
+
+document.addEventListener('input', (event) => {
+  const search = event.target.closest?.('#soccerDataSearchV371');
+  if (!search) return;
+  state.soccerDataSearchV371 = search.value || '';
+  renderSoccerDataPageV371();
+}, true);
+
+document.addEventListener('click', async (event) => {
+  const copyButton = event.target.closest?.('#soccerDataCopyCsvV371');
+  if (copyButton) {
+    await copySoccerDataAssociationCsvV371(copyButton);
+    return;
+  }
+  const reviewButton = event.target.closest?.('#soccerDataCopyReviewCsvV372');
+  if (reviewButton) {
+    await copySoccerDataReviewCsvV372(reviewButton);
+    return;
+  }
+  const rowCopyButton = event.target.closest?.('[data-soccer-data-copy-row-v372]');
+  if (rowCopyButton) {
+    await copySoccerDataRowSnippetV372(rowCopyButton);
+    return;
+  }
+  const prepareButtonV385 = event.target.closest?.('[data-soccer-data-prepare-fbref-v385]');
+  if (prepareButtonV385) {
+    prepareSoccerDataAssociationDraftV385(prepareButtonV385);
+    return;
+  }
+  const copyDraftButtonV385 = event.target.closest?.('[data-soccer-data-copy-draft-v385]');
+  if (copyDraftButtonV385) {
+    await copySoccerDataSingleAssociationDraftV385(copyDraftButtonV385);
+    return;
+  }
+  const removeDraftButtonV385 = event.target.closest?.('[data-soccer-data-remove-draft-v385]');
+  if (removeDraftButtonV385) {
+    removeSoccerDataAssociationDraftV385(removeDraftButtonV385);
+    return;
+  }
+  const copyPatchButtonV385 = event.target.closest?.('#soccerDataCopyPatchV385');
+  if (copyPatchButtonV385) {
+    await copySoccerDataAssociationPatchV385(copyPatchButtonV385);
+    return;
+  }
+  const downloadPatchButtonV385 = event.target.closest?.('#soccerDataDownloadPatchV385');
+  if (downloadPatchButtonV385) {
+    downloadSoccerDataAssociationPatchV385();
+    return;
+  }
+  const downloadButton = event.target.closest?.('#soccerDataDownloadMapV371');
+  if (downloadButton) {
+    downloadSoccerDataBaseMappingV371();
+  }
+}, true);
+
+window.addEventListener('hashchange', () => {
+  if (String(window.location.hash || '').replace('#', '') === 'soccerdata') {
+    if (state.isAdmin) {
+      ensureSoccerDataLoadedAndRenderedV371().catch(console.warn);
+    } else if (typeof setAppPageV42 === 'function') {
+      promptAdminLoginForPageV386('soccerdata');
+      setAppPageV42('dashboard');
+    }
+  }
+});
+
+function injectSoccerDataStylesV371() {
+  if (document.getElementById('soccerDataStylesV371')) return;
+  const style = document.createElement('style');
+  style.id = 'soccerDataStylesV371';
+  style.textContent = `
+    .soccer-data-panel-v371{border:1px solid rgba(34,197,94,.28);background:linear-gradient(135deg,rgba(34,197,94,.075),rgba(59,130,246,.055));}
+    .soccer-data-filter-row-v371{gap:.55rem;flex-wrap:wrap;}
+    .soccer-data-filter-row-v371 .input{min-width:9.5rem;}
+    .soccer-data-summary-v371{margin:.85rem 0;}
+    .soccer-data-actions-v371{gap:.55rem;flex-wrap:wrap;margin:.35rem 0 .9rem;}
+    .soccer-data-primary-cell-v384{min-width:14rem;}
+    .soccer-data-fbref-link-v384{display:inline-flex;align-items:center;gap:.22rem;text-decoration:none;color:var(--primary);font-weight:700;}
+    .soccer-data-fbref-link-v384:hover,.soccer-data-fbref-link-v384:focus{color:var(--primary-dark);text-decoration:underline;}
+    .soccer-data-listone-name-v384,.soccer-data-player-key-v371{display:block;margin-top:.16rem;font-size:.72rem;overflow-wrap:anywhere;}
+    .soccer-data-query-v372{display:block;margin-top:.18rem;font-size:.72rem;overflow-wrap:anywhere;}
+    .soccer-data-inline-actions-v384{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.35rem;}
+    .soccer-data-inline-actions-v384 .button{margin:.08rem .08rem .08rem 0;}
+    .soccer-data-association-panel-v385{margin-top:.45rem;padding:.55rem;border:1px solid rgba(148,163,184,.24);border-radius:.8rem;background:rgba(15,23,42,.18);}
+    .soccer-data-association-field-v385{display:block;margin-top:.4rem;}
+    .soccer-data-association-field-v385 span{display:block;font-size:.72rem;color:var(--muted);margin-bottom:.18rem;}
+    .soccer-data-association-field-v385 .input{width:100%;min-width:12rem;font-size:.82rem;}
+    .soccer-data-draft-help-v385{display:block;margin-top:.35rem;overflow-wrap:anywhere;}
+    .soccer-data-status-cell-v384{white-space:nowrap;}
+    .soccer-data-status-detail-v384{display:block;margin-top:.16rem;}
+    @media (max-width:760px){
+      .soccer-data-filter-row-v371{align-items:stretch;}
+      .soccer-data-filter-row-v371 .input,.soccer-data-actions-v371 .button{width:100%;}
+      .soccer-data-actions-v371{flex-direction:column;align-items:stretch;}
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+injectSoccerDataStylesV371();
+
+window.ZonaOrientaleSoccerDataV371 = {
+  version: 'V371',
+  label: 'Soccer Data shell protetta',
+  scope: 'solo giocatori con statusCode IN_LISTONE nel listone corrente',
+  firebaseWrites: false,
+  liveScraping: false,
+  replacesExistingSections: false,
+  manifestUrl: SOCCER_DATA_MANIFEST_URL_V371,
+  load: loadSoccerDataManifestV371,
+  render: renderSoccerDataPageV371,
+  rows: getSoccerDataRowsV371,
+  filteredRows: getFilteredSoccerDataRowsV371,
+  csv: getSoccerDataAssociationCsvV371,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    const section = document.querySelector('[data-page="soccerdata"]');
+    const nav = document.querySelector('[data-page-link="soccerdata"]');
+    return {
+      ok: Boolean(section)
+        && Boolean(nav)
+        && activeOnly
+        && Boolean(window.ZonaOrientalePresidentNotificationCenterV370)
+        && Boolean(window.ZonaOrientalePresidentDashboardV369)
+        && Boolean(window.ZonaOrientaleAdminPublicationDashboardV368),
+      version: 'V371',
+      activeOnly,
+      rows: rows.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v370StillPresent: Boolean(window.ZonaOrientalePresidentNotificationCenterV370),
+      v369StillPresent: Boolean(window.ZonaOrientalePresidentDashboardV369),
+      v368StillPresent: Boolean(window.ZonaOrientaleAdminPublicationDashboardV368)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataAdminGateV386 = {
+  version: 'V386',
+  label: 'Soccer Data solo admin',
+  scope: 'nasconde nav Soccer Data ai non-admin, blocca hash diretto e non carica mapping se non admin',
+  firebaseWrites: false,
+  liveScraping: false,
+  mappingChanged: false,
+  runSmokeTest() {
+    const desktopLinks = Array.from(document.querySelectorAll('[data-page-link="soccerdata"]'));
+    const navLinksLocked = desktopLinks.length > 0 && desktopLinks.every((link) => link.classList.contains('nav-link-admin'));
+    const linkStyleGreen = String(document.getElementById('soccerDataStylesV371')?.textContent || '').includes('color:var(--primary)');
+    return {
+      ok: navLinksLocked
+        && linkStyleGreen
+        && Boolean(window.ZonaOrientaleSoccerDataAssociationPatchV385)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      navLinksLocked,
+      linkStyleGreen,
+      firebaseWrites: false,
+      liveScraping: false,
+      mappingChanged: false,
+      v385PatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataAssociationPatchV385),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+window.ZonaOrientaleSoccerDataMappingAssistantV372 = {
+  version: 'V372',
+  label: 'Mapping assistito ZonaOrientale -> FBref',
+  scope: 'solo giocatori IN_LISTONE; mapping manuale/offline; nessuno scraping live',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v373.json',
+  previousMapping: 'fbref-player-map.v372.json',
+  legacyMapping: 'fbref-player-map.v371.json',
+  reviewCsv: getSoccerDataReviewCsvV372,
+  rowSnippet: getSoccerDataRowSnippetV372,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    const withSearch = rows.every((row) => Boolean(row.fbrefSearchUrl || row.mapping?.fbrefSearchUrl || getSoccerDataFbrefSearchUrlV371(row.player)));
+    const hasReviewButton = Boolean(document.getElementById('soccerDataCopyReviewCsvV372'));
+    return {
+      ok: activeOnly && withSearch && hasReviewButton && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V372',
+      rows: rows.length,
+      activeOnly,
+      withSearch,
+      hasReviewButton,
+      firebaseWrites: false,
+      liveScraping: false,
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV373 = {
+  version: 'V373',
+  label: 'Mapping FBref batch-01 Soccer Data',
+  scope: '50 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v373.json',
+  confirmedBatch: 'batch-01',
+  confirmedMappingsTarget: 50,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V373');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V373',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV374 = {
+  version: 'V374',
+  label: 'Mapping FBref batch-02 Soccer Data',
+  scope: '100 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v374.json',
+  confirmedBatch: 'batch-02',
+  confirmedMappingsTarget: 100,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch02 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V374');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 100
+        && batch02.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V374',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch02Mappings: batch02.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV375 = {
+  version: 'V375',
+  label: 'Mapping FBref batch-03 Soccer Data',
+  scope: '150 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v375.json',
+  confirmedBatch: 'batch-03',
+  confirmedMappingsTarget: 150,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch03 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V375');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 150
+        && batch03.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V375',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch03Mappings: batch03.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV376 = {
+  version: 'V376',
+  label: 'Mapping FBref batch-04 Soccer Data',
+  scope: '200 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v376.json',
+  confirmedBatch: 'batch-04',
+  confirmedMappingsTarget: 200,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch04 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V376');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 200
+        && batch04.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V376',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch04Mappings: batch04.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV377 = {
+  version: 'V377',
+  label: 'Mapping FBref batch-05 Soccer Data',
+  scope: '250 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v377.json',
+  confirmedBatch: 'batch-05',
+  confirmedMappingsTarget: 250,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch05 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V377');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 250
+        && batch05.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V377',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch05Mappings: batch05.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v376BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376),
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV378 = {
+  version: 'V378',
+  label: 'Mapping FBref batch-06 Soccer Data',
+  scope: '300 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v378.json',
+  confirmedBatch: 'batch-06',
+  confirmedMappingsTarget: 300,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch06 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V378');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 300
+        && batch06.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V378',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch06Mappings: batch06.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v377BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377),
+      v376BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376),
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV379 = {
+  version: 'V379',
+  label: 'Mapping FBref batch-07 Soccer Data',
+  scope: '350 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v379.json',
+  confirmedBatch: 'batch-07',
+  confirmedMappingsTarget: 350,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch07 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V379');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 350
+        && batch07.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V379',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch07Mappings: batch07.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v378BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378),
+      v377BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377),
+      v376BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376),
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV380 = {
+  version: 'V380',
+  label: 'Mapping FBref batch-08 Soccer Data',
+  scope: '400 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v380.json',
+  confirmedBatch: 'batch-08',
+  confirmedMappingsTarget: 400,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch08 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V380');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 400
+        && batch08.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V380',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch08Mappings: batch08.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v379BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379),
+      v378BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378),
+      v377BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377),
+      v376BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376),
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV381 = {
+  version: 'V381',
+  label: 'Mapping FBref batch-09 Soccer Data',
+  scope: '450 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v381.json',
+  confirmedBatch: 'batch-09',
+  confirmedMappingsTarget: 450,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch09 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V381');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 450
+        && batch09.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV380)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V381',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch09Mappings: batch09.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v380BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV380),
+      v379BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379),
+      v378BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378),
+      v377BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377),
+      v376BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376),
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataFbrefBatchV382 = {
+  version: 'V382',
+  label: 'Mapping FBref batch-10 Soccer Data',
+  scope: '500 associazioni confermate solo per giocatori IN_LISTONE; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v382.json',
+  confirmedBatch: 'batch-10',
+  confirmedMappingsTarget: 500,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch10 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V382');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 500
+        && batch10.length === 50
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV381)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV380)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V382',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch10Mappings: batch10.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v381BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV381),
+      v380BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV380),
+      v379BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379),
+      v378BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378),
+      v377BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377),
+      v376BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376),
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+window.ZonaOrientaleSoccerDataFbrefBatchV383 = {
+  version: 'V383',
+  label: 'Mapping FBref batch-11 finale Soccer Data',
+  scope: '531 associazioni confermate solo per giocatori IN_LISTONE; 1 caso needs-review; nessuno scraping live; nessuna scrittura Firebase',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v383.json',
+  confirmedBatch: 'batch-11',
+  confirmedMappingsTarget: 531,
+  remainingNeedsReview: 1,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const batch11 = rows.filter((row) => row.mapping?.matchStatus === 'confirmed' && row.mapping?.mappedInRelease === 'V383');
+    const needsReview = rows.filter((row) => row.mapping?.matchStatus === 'needs-review');
+    const confirmedWithUrl = confirmed.filter((row) => Boolean(row.mapping?.fbrefId && row.mapping?.fbrefName && row.mapping?.fbrefUrl));
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    return {
+      ok: activeOnly
+        && confirmed.length >= 531
+        && batch11.length === 31
+        && needsReview.length === 1
+        && confirmedWithUrl.length === confirmed.length
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV382)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV381)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV380)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374)
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V383',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      batch11Mappings: batch11.length,
+      needsReviewMappings: needsReview.length,
+      confirmedWithUrl: confirmedWithUrl.length,
+      firebaseWrites: false,
+      liveScraping: false,
+      v382BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV382),
+      v381BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV381),
+      v380BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV380),
+      v379BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV379),
+      v378BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV378),
+      v377BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV377),
+      v376BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV376),
+      v375BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV375),
+      v374BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV374),
+      v373BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV373),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+window.ZonaOrientaleSoccerDataTableCleanupV384 = {
+  version: 'V384',
+  label: 'Pulizia tabella Soccer Data',
+  scope: 'UI read-only: colonna FBref/Giocatore primaria, azioni solo sui needs-review, mapping V383 invariato',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v383.json',
+  removesExistingFunctionality: false,
+  runSmokeTest() {
+    const rows = getSoccerDataRowsV371();
+    const activeOnly = rows.every((row) => isSoccerDataActiveListonePlayerV371(row.player));
+    const confirmed = rows.filter((row) => row.mapping?.matchStatus === 'confirmed');
+    const needsReview = rows.filter((row) => row.mapping?.matchStatus === 'needs-review');
+    const table = document.querySelector('.soccer-data-table-v371');
+    const headers = Array.from(table?.querySelectorAll('thead th') || []).map((th) => th.textContent.trim());
+    const actionHeaderRemoved = !headers.includes('Azione');
+    const primaryHeaderOk = headers[0] === 'FBref / Giocatore';
+    const copyButtons = Array.from(document.querySelectorAll('[data-soccer-data-copy-row-v372]'));
+    const copyButtonsOnlyReview = copyButtons.every((button) => {
+      const key = String(button.dataset?.soccerDataCopyRowV372 || '');
+      const row = rows.find((item) => item.playerKey === key);
+      return row ? isSoccerDataReviewRowV384(row) : false;
+    });
+    return {
+      ok: activeOnly
+        && confirmed.length >= 531
+        && needsReview.length === 1
+        && actionHeaderRemoved
+        && primaryHeaderOk
+        && copyButtonsOnlyReview
+        && Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV383)
+        && Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372)
+        && Boolean(window.ZonaOrientaleSoccerDataV371),
+      version: 'V384',
+      rows: rows.length,
+      activeOnly,
+      confirmedMappings: confirmed.length,
+      needsReviewMappings: needsReview.length,
+      actionHeaderRemoved,
+      primaryHeaderOk,
+      copyButtons: copyButtons.length,
+      copyButtonsOnlyReview,
+      firebaseWrites: false,
+      liveScraping: false,
+      v383BatchStillPresent: Boolean(window.ZonaOrientaleSoccerDataFbrefBatchV383),
+      v372MappingAssistantStillPresent: Boolean(window.ZonaOrientaleSoccerDataMappingAssistantV372),
+      v371ShellStillPresent: Boolean(window.ZonaOrientaleSoccerDataV371)
+    };
+  }
+};
+
+window.ZonaOrientaleSoccerDataAssociationPatchV385 = {
+  version: 'V385',
+  label: 'Patch locale associazioni FBref',
+  scope: 'incolla link FBref per giocatori needs-review e genera JSON esportabile senza Firebase writes',
+  storage: 'localStorage only',
+  firebaseWrites: false,
+  liveScraping: false,
+  currentMapping: 'fbref-player-map.v383.json',
+  parseUrl: parseSoccerDataFbrefPlayerUrlV385,
+  getPayload: getSoccerDataAssociationPatchPayloadV385,
+  runSmokeTest() {
+    const reviewRows = getSoccerDataRowsV371().filter(isSoccerDataReviewRowV384);
+    const sampleHtml = reviewRows.length ? renderSoccerDataReviewActionsV384(reviewRows[0], reviewRows[0].fbrefSearchUrl || getSoccerDataFbrefSearchUrlV371(reviewRows[0].player || {})) : '';
+    return {
+      ok: Boolean(parseSoccerDataFbrefPlayerUrlV385('https://fbref.com/en/players/abcdef12/Nome-Giocatore'))
+        && sampleHtml.includes('Prepara mapping')
+        && sampleHtml.includes('data-soccer-data-fbref-url-input-v385')
+        && sampleHtml.includes('Copia dati mapping'),
+      version: 'V385',
+      reviewRows: reviewRows.length,
+      draftCount: Object.keys(ensureSoccerDataAssociationDraftsLoadedV385()).length,
+      firebaseWrites: false,
+      liveScraping: false
     };
   }
 };

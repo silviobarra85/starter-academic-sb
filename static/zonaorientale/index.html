@@ -23,17 +23,17 @@
   <meta name="twitter:description" content="Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d&#039;oro, statistiche, archivio e comunicati." />
   <meta name="twitter:image" content="https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png" />
   <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/refactor/listone.css?v=370" />
-  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=370" />
+  <link rel="stylesheet" href="./assets/styles.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/refactor/listone.css?v=386" />
+  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=386" />
 </head>
 <body>
   <header class="app-header">
@@ -62,6 +62,7 @@
       <a href="#fantamercato" class="nav-link" data-page-link="fantamercato">Fantamercato</a>
       <a href="#calciomercato" class="nav-link" data-page-link="calciomercato">Calciomercato</a>
       <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
+      <a href="#soccerdata" class="nav-link nav-link-admin hidden" data-page-link="soccerdata">Soccer Data</a>
       <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor">Albo d'Oro e FIFA Ranking</a>
       <a href="#stats" class="nav-link" data-page-link="stats">Statistiche</a>
@@ -392,6 +393,59 @@
     </section>
 
     </section>
+
+    <section class="app-page" data-page="soccerdata" aria-labelledby="soccerDataTitleV371">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Dati storici giocatori</p>
+          <h2 id="soccerDataTitleV371">Soccer Data</h2>
+          <p>Sezione riservata agli admin per collegare i soli giocatori attivi nel listone ai profili FBref. La patch locale V385 resta disponibile: per i giocatori da associare puoi cercare FBref, incollare il link profilo e preparare un JSON esportabile senza scritture online.</p>
+        </div>
+      </div>
+
+      <section class="panel soccer-data-panel-v371">
+        <div class="panel-header">
+          <div>
+            <h2>Giocatori a listone</h2>
+            <p>Mostra solo i giocatori con stato <strong>In listone</strong>. Gli asteriscati restano esclusi. Le ricerche FBref sono link manuali: nessuno scraping live dal sito.</p>
+            <small id="soccerDataMetaTextV371" class="muted">Caricamento mapping Soccer Data...</small>
+          </div>
+          <div class="filters-row soccer-data-filter-row-v371">
+            <select id="soccerDataRoleFilterV371" class="input filter-input" aria-label="Filtro ruolo Soccer Data"><option value="all">Tutti i ruoli</option></select>
+            <select id="soccerDataTeamFilterV371" class="input filter-input" aria-label="Filtro squadra reale Soccer Data"><option value="all">Tutte le squadre</option></select>
+            <select id="soccerDataMappingFilterV371" class="input filter-input" aria-label="Filtro mapping FBref"><option value="all">Tutti</option><option value="mapped">Mappati</option><option value="unmapped">Da associare</option></select>
+            <input id="soccerDataSearchV371" class="input search-input" type="search" placeholder="Cerca giocatore, squadra, FBref..." />
+          </div>
+        </div>
+        <div id="soccerDataSummaryV371" class="cards-grid soccer-data-summary-v371" aria-label="Riepilogo Soccer Data"></div>
+        <div class="form-actions soccer-data-actions-v371">
+          <button id="soccerDataCopyCsvV371" class="button button-secondary" type="button">Copia CSV associazioni</button>
+          <button id="soccerDataCopyReviewCsvV372" class="button button-secondary" type="button">Copia CSV da rivedere</button>
+          <button id="soccerDataDownloadMapV371" class="button button-secondary" type="button">Scarica mapping assistito</button>
+          <button id="soccerDataCopyPatchV385" class="button button-secondary" type="button">Copia patch FBref</button>
+          <button id="soccerDataDownloadPatchV385" class="button button-primary" type="button">Scarica patch FBref</button>
+        </div>
+        <div class="table-wrap mobile-tabular-wrap soccer-data-table-wrap-v371">
+          <table class="mobile-tabular soccer-data-table-v371">
+            <thead>
+              <tr>
+                <th>FBref / Giocatore</th>
+                <th>Ruolo</th>
+                <th>Squadra</th>
+                <th>Rosa</th>
+                <th class="number">Qt.A</th>
+                <th class="number">FVM</th>
+                <th>Stato mapping</th>
+              </tr>
+            </thead>
+            <tbody id="soccerDataTableBodyV371">
+              <tr><td colspan="7" class="muted center">Caricamento...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
 
     <section class="app-page" data-page="competitions" aria-labelledby="competitionsTitle">
       <div class="page-heading">
@@ -1709,6 +1763,7 @@
     <a href="#fantamercato" class="mobile-more-link" data-page-link="fantamercato"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
     <a href="#calciomercato" class="mobile-more-link" data-page-link="calciomercato"><span class="mobile-more-icon">📰</span><span>Calciomercato</span></a>
     <a href="#listone" class="mobile-more-link" data-page-link="listone"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
+    <a href="#soccerdata" class="mobile-more-link nav-link-admin hidden" data-page-link="soccerdata"><span class="mobile-more-icon">⚽</span><span>Soccer Data</span></a>
     <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-page-link="admin"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
   </nav>
 
@@ -1721,11 +1776,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V370 centro notifiche presidente protetto · Ultimo aggiornamento 05/06/2026</p>
+    <p>ZonaOrientale Salerno · V386 Soccer Data solo admin · Ultimo aggiornamento 06/06/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=370"></script>
+  <script type="module" src="./assets/app.js?v=386"></script>
 </body>
 </html>
 

@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "version": "V383",
+    "label": "Soccer Data mapping FBref batch-11 finale",
+    "createdAt": "2026-06-06",
+    "readOnly": true,
+    "firebaseWrites": false,
+    "liveScraping": false
+  },
+  "currentMapping": "fbref-player-map.v383.json",
+  "currentStats": null,
+  "listoneScope": {
+    "seasonId": "2025-2026",
+    "listoneId": "2026-06-04",
+    "onlyStatusCode": "IN_LISTONE",
+    "activeRows": 532,
+    "excludedRows": 131
+  },
+  "notes": [
+    "V383 completa il batch finale FBref con 31 nuove associazioni confermate su 32 residui.",
+    "Il totale mapping confermati sale a 531 giocatori; resta 1 caso needs-review senza profilo FBref stabile verificabile.",
+    "La UI continua a mostrare solo i giocatori attivi del listone corrente; gli asteriscati restano esclusi.",
+    "Nessun dato FBref viene recuperato live dal browser: il mapping e statico/offline.",
+    "I casi con abbreviazioni, accenti o nomi FBref diversi dal listone sono annotati nel campo notes."
+  ],
+  "mappingAssistant": {
+    "version": "V383",
+    "currentCsv": "fbref-player-map.v383.csv",
+    "reviewCsv": "fbref-review-batch.v383.csv",
+    "previousCsv": "fbref-player-map.v382.csv",
+    "reviewBatchSize": 50,
+    "reviewBatches": 11,
+    "confirmedBatch": "batch-11",
+    "confirmedMappings": 531,
+    "fieldsToComplete": [
+      "fbrefId",
+      "fbrefName",
+      "fbrefUrl",
+      "matchStatus",
+      "confidence",
+      "notes"
+    ],
+    "confirmedBatches": [
+      "batch-01",
+      "batch-02",
+      "batch-03",
+      "batch-04",
+      "batch-05",
+      "batch-06",
+      "batch-07",
+      "batch-08",
+      "batch-09",
+      "batch-10",
+      "batch-11"
+    ],
+    "remainingMappings": 1
+  }
+}

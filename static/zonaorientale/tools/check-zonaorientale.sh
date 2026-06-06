@@ -1924,6 +1924,239 @@ if [[ -n "$DOCS_ROOT" ]]; then
   done
 fi
 
+
+print_step "Soccer Data V371"
+soccer_data_v371_tool="$SITE_ROOT/tools/audit-soccer-data-v371.mjs"
+if command -v node >/dev/null 2>&1; then
+  if [[ -f "$soccer_data_v371_tool" ]]; then
+    if node "$soccer_data_v371_tool" --quiet; then
+      pass "Soccer Data V371 verificato"
+    else
+      fail "Soccer Data V371 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data V371 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data V371"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in \
+    "$DOCS_ROOT/FUNZIONALITAV371.md" \
+    "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V371.md" \
+    "$DOCS_ROOT/audit/SOCCER_DATA_MATRIX_V371.md" \
+    "$DOCS_ROOT/test/SOCCER_DATA_V371.md" \
+    "$DOCS_ROOT/release/RELEASE_V371_SOCCER_DATA_PROTETTO.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V371 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V371 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
+
+print_step "Soccer Data mapping assistito V372"
+soccer_data_v372_tool="$SITE_ROOT/tools/audit-soccer-data-mapping-v372.mjs"
+if command -v node >/dev/null 2>&1; then
+  if [[ -f "$soccer_data_v372_tool" ]]; then
+    if node "$soccer_data_v372_tool" --quiet; then
+      pass "Soccer Data mapping assistito V372 verificato"
+    else
+      fail "Soccer Data mapping assistito V372 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data mapping V372 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data mapping V372"
+fi
+
+if [[ -n "$DOCS_ROOT" ]]; then
+  for doc in     "$DOCS_ROOT/FUNZIONALITAV372.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V372.md"     "$DOCS_ROOT/audit/SOCCER_DATA_MAPPING_MATRIX_V372.md"     "$DOCS_ROOT/test/SOCCER_DATA_MAPPING_V372.md"     "$DOCS_ROOT/release/RELEASE_V372_SOCCER_DATA_MAPPING_ASSISTITO.md"; do
+    if [[ -f "$doc" ]]; then
+      pass "documento V372 presente: ${doc#$DOCS_ROOT/}"
+    else
+      warn "documento V372 non trovato: ${doc#$DOCS_ROOT/}"
+    fi
+  done
+fi
+
+
+print_step "Soccer Data FBref batch V376"
+if command -v node >/dev/null 2>&1; then
+  audit_soccer_data_fbref_batch_v376="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v376.mjs"
+  if [[ -f "$audit_soccer_data_fbref_batch_v376" ]]; then
+    if node "$audit_soccer_data_fbref_batch_v376" --quiet; then
+      pass "Soccer Data FBref batch V376 superato"
+    else
+      fail "Soccer Data FBref batch V376 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data FBref batch V376 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data FBref batch V376"
+fi
+
+for doc in     "$DOCS_ROOT/FUNZIONALITAV376.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V376.md"     "$DOCS_ROOT/audit/SOCCER_DATA_FBREF_BATCH_04_MATRIX_V376.md"     "$DOCS_ROOT/test/SOCCER_DATA_FBREF_BATCH_04_V376.md"     "$DOCS_ROOT/release/RELEASE_V376_SOCCER_DATA_FBREF_BATCH_04.md"; do
+  if [[ -f "$doc" ]]; then
+    pass "documento V376 presente: ${doc#$DOCS_ROOT/}"
+  else
+    warn "documento V376 non trovato: ${doc#$DOCS_ROOT/}"
+  fi
+done
+
+
+print_step "Soccer Data FBref batch V377"
+if command -v node >/dev/null 2>&1; then
+  audit_soccer_data_fbref_batch_v377="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v377.mjs"
+  if [[ -f "$audit_soccer_data_fbref_batch_v377" ]]; then
+    if node "$audit_soccer_data_fbref_batch_v377" --quiet; then
+      pass "Soccer Data FBref batch V377 superato"
+    else
+      fail "Soccer Data FBref batch V377 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data FBref batch V377 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data FBref batch V377"
+fi
+
+for doc in     "$DOCS_ROOT/FUNZIONALITAV377.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V377.md"     "$DOCS_ROOT/audit/SOCCER_DATA_FBREF_BATCH_05_MATRIX_V377.md"     "$DOCS_ROOT/test/SOCCER_DATA_FBREF_BATCH_05_V377.md"     "$DOCS_ROOT/release/RELEASE_V377_SOCCER_DATA_FBREF_BATCH_05.md"; do
+  if [[ -f "$doc" ]]; then
+    pass "documento V377 presente: ${doc#$DOCS_ROOT/}"
+  else
+    warn "documento V377 non trovato: ${doc#$DOCS_ROOT/}"
+  fi
+done
+
+
+print_step "Soccer Data FBref batch V378"
+if command -v node >/dev/null 2>&1; then
+  audit_soccer_data_fbref_batch_v378="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v378.mjs"
+  if [[ -f "$audit_soccer_data_fbref_batch_v378" ]]; then
+    if node "$audit_soccer_data_fbref_batch_v378" --quiet; then
+      pass "Soccer Data FBref batch V378 superato"
+    else
+      fail "Soccer Data FBref batch V378 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data FBref batch V378 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data FBref batch V378"
+fi
+
+for doc in     "$DOCS_ROOT/FUNZIONALITAV378.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V378.md"     "$DOCS_ROOT/audit/SOCCER_DATA_FBREF_BATCH_06_MATRIX_V378.md"     "$DOCS_ROOT/test/SOCCER_DATA_FBREF_BATCH_06_V378.md"     "$DOCS_ROOT/release/RELEASE_V378_SOCCER_DATA_FBREF_BATCH_06.md"; do
+  if [[ -f "$doc" ]]; then
+    pass "documento V378 presente: ${doc#$DOCS_ROOT/}"
+  else
+    warn "documento V378 non trovato: ${doc#$DOCS_ROOT/}"
+  fi
+done
+
+print_step "Soccer Data FBref batch V379"
+if command -v node >/dev/null 2>&1; then
+  audit_soccer_data_fbref_batch_v379="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v379.mjs"
+  if [[ -f "$audit_soccer_data_fbref_batch_v379" ]]; then
+    if node "$audit_soccer_data_fbref_batch_v379" --quiet; then
+      pass "Soccer Data FBref batch V379 superato"
+    else
+      fail "Soccer Data FBref batch V379 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data FBref batch V379 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data FBref batch V379"
+fi
+
+for doc in     "$DOCS_ROOT/FUNZIONALITAV379.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V379.md"     "$DOCS_ROOT/audit/SOCCER_DATA_FBREF_BATCH_07_MATRIX_V379.md"     "$DOCS_ROOT/test/SOCCER_DATA_FBREF_BATCH_07_V379.md"     "$DOCS_ROOT/release/RELEASE_V379_SOCCER_DATA_FBREF_BATCH_07.md"; do
+  if [[ -f "$doc" ]]; then
+    pass "documento V379 presente: ${doc#$DOCS_ROOT/}"
+  else
+    warn "documento V379 non trovato: ${doc#$DOCS_ROOT/}"
+  fi
+done
+
+
+print_step "Soccer Data FBref batch V380"
+if command -v node >/dev/null 2>&1; then
+  audit_soccer_data_fbref_batch_v380="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v380.mjs"
+  if [[ -f "$audit_soccer_data_fbref_batch_v380" ]]; then
+    if node "$audit_soccer_data_fbref_batch_v380" --quiet; then
+      pass "Soccer Data FBref batch V380 superato"
+    else
+      fail "Soccer Data FBref batch V380 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data FBref batch V380 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data FBref batch V380"
+fi
+
+for doc in     "$DOCS_ROOT/FUNZIONALITAV380.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V380.md"     "$DOCS_ROOT/audit/SOCCER_DATA_FBREF_BATCH_08_MATRIX_V380.md"     "$DOCS_ROOT/test/SOCCER_DATA_FBREF_BATCH_08_V380.md"     "$DOCS_ROOT/release/RELEASE_V380_SOCCER_DATA_FBREF_BATCH_08.md"; do
+  if [[ -f "$doc" ]]; then
+    pass "documento V380 presente: ${doc#$DOCS_ROOT/}"
+  else
+    warn "documento V380 non trovato: ${doc#$DOCS_ROOT/}"
+  fi
+done
+
+
+print_step "Soccer Data FBref batch V381"
+if command -v node >/dev/null 2>&1; then
+  audit_soccer_data_fbref_batch_v381="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v381.mjs"
+  if [[ -f "$audit_soccer_data_fbref_batch_v381" ]]; then
+    if node "$audit_soccer_data_fbref_batch_v381" --quiet; then
+      pass "Soccer Data FBref batch V381 superato"
+    else
+      fail "Soccer Data FBref batch V381 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data FBref batch V381 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data FBref batch V381"
+fi
+
+for doc in     "$DOCS_ROOT/FUNZIONALITAV381.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V381.md"     "$DOCS_ROOT/audit/SOCCER_DATA_FBREF_BATCH_09_MATRIX_V381.md"     "$DOCS_ROOT/test/SOCCER_DATA_FBREF_BATCH_09_V381.md"     "$DOCS_ROOT/release/RELEASE_V381_SOCCER_DATA_FBREF_BATCH_09.md"; do
+  if [[ -f "$doc" ]]; then
+    pass "documento V381 presente: ${doc#$DOCS_ROOT/}"
+  else
+    warn "documento V381 non trovato: ${doc#$DOCS_ROOT/}"
+  fi
+done
+
+
+print_step "Soccer Data FBref batch V382"
+if command -v node >/dev/null 2>&1; then
+  audit_soccer_data_fbref_batch_v382="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v382.mjs"
+  if [[ -f "$audit_soccer_data_fbref_batch_v382" ]]; then
+    if node "$audit_soccer_data_fbref_batch_v382" --quiet; then
+      pass "Soccer Data FBref batch V382 superato"
+    else
+      fail "Soccer Data FBref batch V382 fallito"
+    fi
+  else
+    fail "tool audit Soccer Data FBref batch V382 mancante"
+  fi
+else
+  fail "node non disponibile per audit Soccer Data FBref batch V382"
+fi
+
+for doc in     "$DOCS_ROOT/FUNZIONALITAV382.md"     "$DOCS_ROOT/handoff/HANDOFF_NUOVO_ASSISTENTE_V382.md"     "$DOCS_ROOT/audit/SOCCER_DATA_FBREF_BATCH_10_MATRIX_V382.md"     "$DOCS_ROOT/test/SOCCER_DATA_FBREF_BATCH_10_V382.md"     "$DOCS_ROOT/release/RELEASE_V382_SOCCER_DATA_FBREF_BATCH_10.md"; do
+  if [[ -f "$doc" ]]; then
+    pass "documento V382 presente: ${doc#$DOCS_ROOT/}"
+  else
+    warn "documento V382 non trovato: ${doc#$DOCS_ROOT/}"
+  fi
+done
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.
@@ -1932,3 +2165,5 @@ if [[ "$failures" -gt 0 ]]; then
 fi
 printf 'Tutti i controlli obbligatori sono passati. Warning: %s.
 ' "$warns"
+
+

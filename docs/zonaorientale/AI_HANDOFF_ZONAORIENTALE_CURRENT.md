@@ -1,72 +1,134 @@
-# AI Handoff ZonaOrientale Current - V370
+# Aggiornamento V386 - Soccer Data solo admin
 
-Versione corrente: V370.
+- Runtime atteso: V386.
+- Branch di lavoro: `refactor/260528-zonaorientale-next`.
+- Soccer Data e ora visibile/attivabile solo dagli admin.
+- I link desktop e mobile `Soccer Data` usano `nav-link-admin hidden`; l'accesso diretto `#soccerdata` viene bloccato ai non-admin.
+- Il manifest/mapping Soccer Data non viene caricato per utenti non-admin.
+- I link giocatore FBref nella colonna `FBref / Giocatore` sono verdi (`var(--primary)`).
+- Mapping invariato: `assets/soccer-data/fbref-player-map.v383.json`.
+- La patch locale V385 resta disponibile per gli admin.
+- Nessuna scrittura Firebase, nessuno scraping live, nessuna modifica a `FUNZIONALITA'.md`.
+- Audit principale: `node tools/audit-soccer-data-admin-only-v386.mjs`.
 
-## Stato generale
+# Aggiornamento V385 - Soccer Data associazione FBref locale
 
-La V370 segue V364, V365, V366, V367, V368 e V369. V364 ha corretto la persistenza dell'esito Accetta/Rifiuta per simulazioni target local-only; V365 ha riallineato runtime/cache-buster/documentazione; V366 ha rafforzato stati trattative/notifiche; V367 ha aggiunto smoke test automatici anti-regressione; V368 ha aggiunto un cruscotto Admin pre-deploy read-only; V369 ha aggiunto una Dashboard Presidente read-only; V370 aggiunge un Centro notifiche presidente protetto.
-
-## Vincoli fondamentali
-
-- Preservare tutte le funzionalita' esistenti.
-- Non modificare `docs/zonaorientale/FUNZIONALITA'.md` salvo richiesta esplicita.
-- Ogni release deve aggiornare footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181`.
-- Le simulazioni trade devono restare local-only; il flusso reale Firebase non va alterato se non esplicitamente richiesto.
-- Ogni rimozione di file legacy deve avere audit dedicato, elenco file e comandi di rimozione espliciti.
-- Prima di consegnare uno zip, verificare sempre che contenga sia `zonaorientale` sia `docs`.
-- Quando si indicano comandi di applicazione zip, mostrare solo le due righe `cp -R .../zonaorientale static/` e `cp -R .../docs/zonaorientale docs/`.
-
-## Marker recenti
-
-```js
-window.ZonaOrientaleManualQaPanelV358
-window.ZonaOrientaleCalciomercatoPlayerDiagnosticsV359
-window.ZonaOrientaleTradeSimulatorPanelV361
-window.ZonaOrientaleTradeSimulatorTargetPanelV362
-window.ZonaOrientaleTradeSimulatorTargetResolutionV364
-window.ZonaOrientaleProtectedStabilizationV365
-window.ZonaOrientaleTradeDomainHardeningV366
-window.ZonaOrientaleProtectedRegressionSuiteV367
-window.ZonaOrientaleAdminPublicationDashboardV368
-window.ZonaOrientalePresidentDashboardV369
-window.ZonaOrientalePresidentNotificationCenterV370
-```
-
-## Stato V370
-
-- Footer e cache-buster portati a V370 su `index.html`, `competition.html` e `player.html`.
-- `DEPLOY_EXPECTED_VERSION_V181` portato a `370`.
-- Aggiunto Centro notifiche presidente sopra le sezioni operative dell'Area squadra e dopo la Dashboard Presidente quando disponibile.
-- Il centro notifiche mostra trattative ricevute da rispondere, trattative inviate in attesa, esiti trattative, richieste Admin recenti e giocatori sul mercato.
-- La feature e' read-only rispetto a Firebase: non crea nuove collection e non modifica lo schema dati.
-- L'unica persistenza introdotta e' localStorage per acknowledge locale degli esiti trade gia' visualizzati.
-- Le sezioni esistenti di Area squadra non vengono sostituite: proposta trattativa, liste trattative, comunicato squadra e profilo squadra restano attivi.
-- Aggiunto `tools/audit-president-notification-center-v370.mjs`.
-- Aggiornato `tools/check-zonaorientale.sh` per richiamare l'audit V370.
-- Reso version-tolerant l'audit V369.
+- Runtime atteso: V385.
+- Soccer Data continua a usare `fbref-player-map.v383.json`.
+- Mapping dati invariato: 531/532 confermati e 1 needs-review (`Balentien`).
+- Per i giocatori da associare e stato aggiunto un mini flusso locale: cerca FBref, incolla link, nome opzionale, prepara mapping, copia/rimuovi patch.
+- A livello sezione sono disponibili `Copia patch FBref` e `Scarica patch FBref`.
+- La patch resta locale/export JSON; nessuna scrittura Firebase e nessuno scraping live browser.
 - `FUNZIONALITA'.md` non modificato.
 
-## Test rapidi
+---
 
-```bash
-node --check static/zonaorientale/assets/app.js
-node --check static/zonaorientale/assets/js/market/transfer-market.js
-node static/zonaorientale/tools/audit-protected-regression-v367.mjs
-node static/zonaorientale/tools/audit-publication-dashboard-v368.mjs
-node static/zonaorientale/tools/audit-president-dashboard-v369.mjs
-node static/zonaorientale/tools/audit-president-notification-center-v370.mjs
-bash static/zonaorientale/tools/check-zonaorientale.sh
-```
+# Aggiornamento V384 - Soccer Data table cleanup
 
-Da console browser:
+- Runtime atteso: V384.
+- Soccer Data continua a usare `fbref-player-map.v383.json`.
+- Mapping dati invariato: 531/532 confermati e 1 needs-review (`Balentien`).
+- La tabella mostra `FBref / Giocatore` come prima colonna.
+- Il nome listone resta un dettaglio secondario per tracciabilita.
+- La colonna `Azione` e stata rimossa; `Cerca FBref` e `Copia riga` restano solo sui needs-review/non mappati.
+- Nessuna scrittura Firebase e nessuno scraping live browser.
+- `FUNZIONALITA'.md` non modificato.
 
-```js
-ZonaOrientaleProtectedRegressionSuiteV367.runSmokeTest()
-ZonaOrientaleAdminPublicationDashboardV368.runSmokeTest()
-ZonaOrientalePresidentDashboardV369.runSmokeTest()
-ZonaOrientalePresidentNotificationCenterV370.runSmokeTest()
-```
+---
 
-## Prossimo passo consigliato
+# Aggiornamento V383 - Soccer Data FBref batch-11 finale
 
-Fermarsi e testare sul browser reale l'intera catena V364-V370. La prossima release dovrebbe essere correttiva/manutentiva in base a quello che emerge dai test, non una nuova feature ampia.
+- Runtime atteso: V383.
+- Soccer Data usa `fbref-player-map.v383.json`.
+- Mapping confermati: 531/532.
+- Batch completati: batch-01 ... batch-11 finale.
+- Residuo needs-review: Balentien, senza profilo FBref stabile verificabile.
+- Asteriscati esclusi: 131.
+- Nessuna scrittura Firebase e nessuno scraping live browser.
+- `FUNZIONALITA'.md` non modificato.
+
+---
+
+# Aggiornamento V382 - Soccer Data FBref batch-08
+
+- Runtime atteso: V382.
+- Soccer Data usa `fbref-player-map.v380.json`.
+- Mapping confermati: 400/532.
+- Batch completati: batch-01 ... batch-08.
+- Asteriscati esclusi: 131.
+- Nessuna scrittura Firebase e nessuno scraping live browser.
+- `FUNZIONALITA'.md` non modificato.
+
+---
+
+# Aggiornamento V379 - Soccer Data FBref batch-07
+
+- Runtime atteso: V379.
+- Soccer Data usa `fbref-player-map.v379.json`.
+- Mapping confermati: 350/532.
+- Batch completati: batch-01 ... batch-07.
+- Asteriscati esclusi: 131.
+- Nessuna scrittura Firebase e nessuno scraping live browser.
+- `FUNZIONALITA'.md` non modificato.
+
+---
+
+# Aggiornamento V378 - Soccer Data FBref batch-06
+
+- Runtime atteso: V378.
+- Soccer Data usa `fbref-player-map.v374.json`.
+- Mapping confermati: 100/532.
+- Batch completati: batch-01 e batch-06.
+- Asteriscati esclusi: 131.
+- Nessuna scrittura Firebase e nessuno scraping live browser.
+- `FUNZIONALITA'.md` non modificato.
+
+---
+
+# AI handoff ZonaOrientale current - V373 Soccer Data FBref batch-01
+
+## Stato
+
+La repo contiene la release V372: Soccer Data mapping assistito.
+
+## Non rompere
+
+Preservare tutte le funzionalita esistenti: Admin, Area squadra, trattative, simulazioni, dashboard presidente, centro notifiche, listone, rose, competizioni, calciomercato, player page.
+
+## Soccer Data
+
+V371 ha creato la shell. V372 aggiunge mapping assistito per associare solo i giocatori a listone con FBref.
+
+File chiave:
+
+- `static/zonaorientale/assets/soccer-data/manifest.json`
+- `static/zonaorientale/assets/soccer-data/fbref-player-map.v372.json`
+- `static/zonaorientale/assets/soccer-data/fbref-player-map.v372.csv`
+- `static/zonaorientale/assets/soccer-data/fbref-review-batch.v372.csv`
+- `static/zonaorientale/tools/audit-soccer-data-mapping-v372.mjs`
+
+## Prossimo passo
+
+V373: procedere con primo batch di associazioni FBref confermate. Non importare statistiche finche il mapping non e affidabile.
+
+
+## V373 Soccer Data FBref batch-01
+
+- Aggiunti 50 mapping FBref confermati per il batch-01.
+- Scope invariato: solo `IN_LISTONE`, nessuno scraping live, nessuna scrittura Firebase.
+- Gate: `node static/zonaorientale/tools/audit-soccer-data-fbref-batch-v373.mjs`.
+
+
+## V382 Soccer Data FBref batch-09
+
+- Mapping confermati: 450 su 532 giocatori IN_LISTONE.
+- Nessuna scrittura Firebase e nessuno scraping live.
+- Funzionalita esistenti preservate.
+
+
+## V382 Soccer Data FBref batch-10
+
+- Mapping confermati: 500 su 532 giocatori IN_LISTONE.
+- Restano 32 mapping da completare.
+- Nessuna scrittura Firebase e nessuno scraping live.
+- Funzionalita esistenti preservate.
