@@ -33414,3 +33414,68 @@ window.ZonaOrientaleSoccerDataStaticStatsV390 = {
     };
   }
 };
+
+
+/* V398 - Soccer Data rimossa dalla navigazione pubblica.
+   Manteniamo il codice legacy non eseguito per evitare regressioni su altre sezioni,
+   ma ogni accesso diretto a #soccerdata viene riportato al Listone. */
+(function disableSoccerDataSectionV398() {
+  const SOCCER_DATA_PAGE_V398 = 'soccerdata';
+  const FALLBACK_PAGE_V398 = 'listone';
+
+  function removeSoccerDataLinksV398() {
+    document.querySelectorAll('[data-page-link="soccerdata"], a[href="#soccerdata"]').forEach((element) => {
+      element.remove();
+    });
+  }
+
+  function removeSoccerDataPageV398() {
+    document.querySelector('[data-page="soccerdata"]')?.remove();
+  }
+
+  function redirectSoccerDataHashV398() {
+    const hash = String(window.location.hash || '').replace(/^#/, '');
+    if (hash !== SOCCER_DATA_PAGE_V398 && state.currentPage !== SOCCER_DATA_PAGE_V398) return;
+    state.currentPage = FALLBACK_PAGE_V398;
+    document.querySelectorAll('.app-page').forEach((page) => {
+      page.classList.toggle('is-active', page.dataset.page === FALLBACK_PAGE_V398);
+    });
+    document.querySelectorAll('[data-page-link]').forEach((link) => {
+      link.classList.toggle('active', link.dataset.pageLink === FALLBACK_PAGE_V398);
+    });
+    closeMobileMoreMenu?.();
+    updateMobileNavState?.();
+    if (window.location.hash !== `#${FALLBACK_PAGE_V398}`) {
+      window.history.replaceState(null, '', `#${FALLBACK_PAGE_V398}`);
+    }
+  }
+
+  if (typeof setAppPageV42 === 'function') {
+    const setAppPageBeforeV398 = setAppPageV42;
+    setAppPageV42 = function setAppPageV398(pageName) {
+      return setAppPageBeforeV398(pageName === SOCCER_DATA_PAGE_V398 ? FALLBACK_PAGE_V398 : pageName);
+    };
+  }
+
+  if (typeof isKnownStaticHashV43 === 'function') {
+    const isKnownStaticHashBeforeV398 = isKnownStaticHashV43;
+    isKnownStaticHashV43 = function isKnownStaticHashV398(hashValue) {
+      return hashValue === SOCCER_DATA_PAGE_V398 ? false : isKnownStaticHashBeforeV398(hashValue);
+    };
+  }
+
+  removeSoccerDataLinksV398();
+  removeSoccerDataPageV398();
+  redirectSoccerDataHashV398();
+  window.addEventListener('hashchange', redirectSoccerDataHashV398);
+  window.addEventListener('DOMContentLoaded', () => {
+    removeSoccerDataLinksV398();
+    removeSoccerDataPageV398();
+    redirectSoccerDataHashV398();
+  });
+  window.setTimeout(() => {
+    removeSoccerDataLinksV398();
+    removeSoccerDataPageV398();
+    redirectSoccerDataHashV398();
+  }, 0);
+})();
