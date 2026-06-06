@@ -6,8 +6,8 @@
     "readOnly": true,
     "firebaseWrites": false,
     "liveScraping": false,
-    "assetLayoutVersion": "V395",
-    "assetLayoutLabel": "Soccer Data API-Football mapping assistito + cache Firebase",
+    "assetLayoutVersion": "V396",
+    "assetLayoutLabel": "Soccer Data API-Football mapping da rose Serie A + cache Firebase",
     "runtimePublicAssets": true
   },
   "currentMapping": "fbref-player-map.v383.json",
@@ -31,7 +31,8 @@
     "I comandi di recupero e export restano dentro Soccer Data e sono visibili/attivi solo agli admin.",
     "V394 aggiunge API-Football come provider preferito per statistiche giocatore: richieste admin-only tramite Netlify Function, salvataggio/cache su Firebase, export JSON statico e colonna Aggiornato in tabella.",
     "V395 sposta il flusso operativo su API-Football: la UI admin permette di trovare/salvare l ID API del giocatore, esportare il mapping API statico e recuperare statistiche con cache Firebase.",
-    "Il link profilo giocatore resta cliccabile quando disponibile, ma i comandi operativi non usano piu il fallback HTML/manuale come flusso principale."
+    "Il link profilo giocatore resta cliccabile quando disponibile, ma i comandi operativi non usano piu il fallback HTML/manuale come flusso principale.",
+    "V396 aggiunge il mapping API-Football da rose Serie A: l admin scarica squadre/rose una volta, genera associazioni playerId localmente e scarica il mapping statico, riducendo le ricerche giocatore singole."
   ],
   "mappingAssistant": {
     "version": "V383",
@@ -67,11 +68,11 @@
     "archivedCsvDirectory": "docs/zonaorientale/archive/soccer-data/mapping-history/"
   },
   "stats": {
-    "version": "V395",
+    "version": "V396",
     "manifest": "stats/manifest.json",
     "currentSummary": "player-stats-summary-2025-2026.v001.json",
     "currentDetail": null,
-    "importMode": "static-first-firebase-fallback-admin-api-football-fetch-provider-map",
+    "importMode": "static-first-firebase-fallback-admin-api-football-squad-map",
     "firebaseCollection": "soccerDataPlayerStats",
     "firebaseWrites": "admin-only",
     "liveScraping": "none; statistiche via API-Football admin-only server-side",
@@ -83,7 +84,7 @@
     }
   },
   "publicAssets": {
-    "version": "V395",
+    "version": "V396",
     "keepInAssets": [
       "manifest.json",
       "fbref-player-map.v383.json",
@@ -96,7 +97,7 @@
     "note": "Gli storici mapping/review sono conservati nei docs archive; il runtime pubblico usa manifest, mapping corrente, stats manifest, summary statico e fallback Firebase se necessario."
   },
   "publicAccess": {
-    "version": "V395",
+    "version": "V396",
     "sectionVisibleToAll": true,
     "readOnlyForNonAdmins": true,
     "adminCommandsOnlyForAdmin": true,
@@ -118,10 +119,28 @@
       "scope": "admin-only per singolo giocatore tramite ID API-Football",
       "saveTarget": "soccerDataPlayerStats",
       "staticExport": "Scarica stats JSON",
-      "rateLimitStrategy": "trova ID giocatore una volta, salva mapping localmente/Firebase/export statico, poi recupera stats solo quando serve",
+      "rateLimitStrategy": "scarica squadre/rose Serie A una volta, genera mapping locale playerId, salva/export mapping statico, poi recupera stats solo quando serve",
       "envKey": "ZONAORIENTALE_API_FOOTBALL_KEY",
-      "version": "V395",
+      "version": "V396",
       "providerMap": "providers/api-football-player-map.v001.json"
+    },
+    "apiFootballV396": {
+      "enabled": true,
+      "provider": "api-football",
+      "function": "/.netlify/functions/api-football-player-stats",
+      "leagueId": 135,
+      "leagueName": "Serie A",
+      "actions": [
+        "teams",
+        "squad",
+        "search",
+        "stats"
+      ],
+      "scope": "admin-only; recupero rose Serie A e generazione mapping playerId da cache locale",
+      "apiRequestsEstimatedForFullSquads": "1 + numero squadre Serie A",
+      "staticExport": "Scarica mapping API",
+      "envKey": "ZONAORIENTALE_API_FOOTBALL_KEY",
+      "version": "V396"
     }
   },
   "providerMappings": {

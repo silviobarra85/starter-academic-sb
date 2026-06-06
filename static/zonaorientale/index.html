@@ -407,7 +407,7 @@
         <div class="panel-header">
           <div>
             <h2>Giocatori a listone</h2>
-            <p>Mostra solo i giocatori con stato <strong>In listone</strong>. Gli asteriscati restano esclusi. Il sito legge prima i JSON statici; se mancano statistiche compilate prova il fallback Firebase. L'admin usa il provider API per trovare l'ID giocatore, recuperare le statistiche, salvarle/cache su Firebase e poi scaricare il JSON statico da inserire nella repo, riducendo le richieste API.</p>
+            <p>Mostra solo i giocatori con stato <strong>In listone</strong>. Gli asteriscati restano esclusi. Il sito legge prima i JSON statici; se mancano statistiche compilate prova il fallback Firebase. L'admin usa il provider API per scaricare le rose Serie A, generare il mapping ID giocatore, recuperare le statistiche, salvarle/cache su Firebase e poi scaricare il JSON statico da inserire nella repo, riducendo le richieste API.</p>
             <small id="soccerDataMetaTextV371" class="muted">Caricamento mapping Soccer Data...</small>
           </div>
           <div class="filters-row soccer-data-filter-row-v371">
@@ -424,6 +424,8 @@
           <button id="soccerDataDownloadMapV371" class="button button-secondary" type="button">Scarica mapping assistito</button>
           <button id="soccerDataDownloadStatsTemplateV390" class="button button-secondary" type="button">Scarica template stats CSV</button>
           <button id="soccerDataDownloadStatsSummaryV390" class="button button-secondary" type="button">Scarica summary stats JSON</button>
+          <button id="soccerDataFetchApiFootballSquadsV396" class="button button-secondary" type="button">Scarica rose Serie A API</button>
+          <button id="soccerDataGenerateApiFootballMapV396" class="button button-secondary" type="button">Genera mapping da rose</button>
           <button id="soccerDataDownloadApiFootballMapV395" class="button button-secondary" type="button">Scarica mapping API</button>
           <button id="soccerDataRefreshStatsV391" class="button button-secondary" type="button">Ricarica stats</button>
           <button id="soccerDataDownloadFirebaseStatsV391" class="button button-primary" type="button">Scarica stats JSON</button>
@@ -1781,11 +1783,11 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V395 Soccer Data mapping API-Football · Ultimo aggiornamento 06/06/2026</p>
+    <p>ZonaOrientale Salerno · V396 Soccer Data mapping API-Football da rose · Ultimo aggiornamento 06/06/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/app.js?v=394"></script>
+  <script type="module" src="./assets/app.js?v=396"></script>
 </body>
 </html>
 

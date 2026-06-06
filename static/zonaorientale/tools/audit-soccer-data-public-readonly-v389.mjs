@@ -28,7 +28,7 @@ html.includes(mobileSoccerLink)
 html.includes('soccer-data-admin-controls-v389 nav-link-admin hidden')
   ? ok('comandi amministrazione Soccer Data protetti da classe admin')
   : fail('comandi amministrazione Soccer Data non protetti nel markup');
-html.includes('I comandi di associazione, patch') && html.includes('restano disponibili solo agli admin')
+html.includes('restano disponibili solo agli admin') && (html.includes('comandi API') || html.includes('I comandi di associazione, patch'))
   ? ok('testo pagina chiarisce sola lettura pubblica e comandi admin')
   : fail('testo pagina Soccer Data non aggiornato');
 
@@ -44,7 +44,7 @@ app.includes('function isAdminOnlyPageV386(pageName) {\n  return pageName === "a
 app.includes('async function loadSoccerDataManifestV371(options = {}) {\n  if (state.soccerDataLoadingV371)')
   ? ok('manifest Soccer Data caricabile anche non-admin')
   : fail('manifest Soccer Data sembra ancora bloccato per non-admin');
-app.includes("if (!state.isAdmin) return '';\n  if (!isSoccerDataReviewRowV384(row)) return '';")
+app.includes("function renderSoccerDataReviewActionsV384(row = {}, searchUrl = '') {\n  // V395: la UI operativa non mostra piu comandi di associazione profilo; il link resta solo consultabile quando gia presente.\n  return '';") || app.includes("if (!state.isAdmin) return '';\n  if (!isSoccerDataReviewRowV384(row)) return '';")
   ? ok('pannello associazione riga visibile solo admin')
   : fail('pannello associazione riga non protetto admin');
 ['soccerDataCopyCsvV371','soccerDataCopyReviewCsvV372','soccerDataDownloadMapV371','soccerDataCopyPatchV385','soccerDataDownloadPatchV385'].every((id) => app.includes(id))

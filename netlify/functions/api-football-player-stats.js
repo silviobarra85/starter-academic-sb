@@ -1,4 +1,4 @@
-/* V394 - Admin-only API-Football player stats bridge for Soccer Data.
+/* V394-V396 - Admin-only API-Football player stats bridge for Soccer Data.
    Uses API-SPORTS / API-Football server-side with one explicit admin action per request.
    It does not write to Firebase: the admin UI saves the returned JSON through Firestore
    so API reads can later be exported as static JSON and reused without hitting the API. */
@@ -74,6 +74,10 @@ function cleanPlayerId(value = '') {
   return String(value || '').replace(/[^0-9]/g, '').trim();
 }
 
+function cleanNumericId(value = '') {
+  return String(value || '').replace(/[^0-9]/g, '').trim();
+}
+
 function readRateLimit(response) {
   const header = (name) => response.headers.get(name) || response.headers.get(name.toLowerCase()) || '';
   return {
@@ -125,6 +129,35 @@ function normalizeCandidate(item = {}) {
   };
 }
 
+function normalizeTeam(item = {}) {
+  const team = item.team || item || {};
+  const venue = item.venue || {};
+  return {
+    id: team.id || '',
+    name: team.name || '',
+    code: team.code || '',
+    country: team.country || '',
+    founded: team.founded || '',
+    national: Boolean(team.national),
+    logo: team.logo || '',
+    venueName: venue.name || '',
+    venueCity: venue.city || ''
+  };
+}
+
+function normalizeSquadPlayer(player = {}) {
+  return {
+    id: player.id || '',
+    name: player.name || [player.firstname, player.lastname].filter(Boolean).join(' '),
+    firstname: player.firstname || '',
+    lastname: player.lastname || '',
+    age: player.age || '',
+    number: player.number || '',
+    position: player.position || '',
+    photo: player.photo || ''
+  };
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return json(405, { error: 'Metodo non consentito.' });
   try {
@@ -133,6 +166,47 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
     const action = String(body.action || 'stats').toLowerCase();
     const season = cleanSeason(body.season || body.seasonId || '');
+    if (action === 'teams') {
+      const league = cleanNumericId(body.league || body.leagueId || '135') || '135';
+      const { payload, rateLimit } = await callApiFootball('/teams', { league, season });
+      const teams = (Array.isArray(payload.response) ? payload.response : []).map(normalizeTeam);
+      return json(200, {
+        version: 'V396',
+        provider: 'api-football',
+        action: 'teams',
+        league,
+        season,
+        teams,
+        response: payload.response || [],
+        results: payload.results || teams.length,
+        parameters: payload.parameters || { league, season },
+        rateLimit,
+        fetchedAt: new Date().toISOString(),
+        fetchedBy: authResult.uid || ''
+      });
+    }
+    if (action === 'squad') {
+      const teamId = cleanNumericId(body.teamId || body.team || '');
+      if (!teamId) return json(400, { error: 'API-Football teamId mancante.' });
+      const { payload, rateLimit } = await callApiFootball('/players/squads', { team: teamId });
+      const first = Array.isArray(payload.response) ? payload.response[0] || {} : {};
+      const team = first.team ? normalizeTeam(first.team) : { id: teamId, name: body.teamName || '' };
+      const players = (Array.isArray(first.players) ? first.players : []).map(normalizeSquadPlayer);
+      return json(200, {
+        version: 'V396',
+        provider: 'api-football',
+        action: 'squad',
+        teamId,
+        team,
+        players,
+        response: payload.response || [],
+        results: payload.results || players.length,
+        parameters: payload.parameters || { team: teamId },
+        rateLimit,
+        fetchedAt: new Date().toISOString(),
+        fetchedBy: authResult.uid || ''
+      });
+    }
     if (action === 'search') {
       const search = String(body.search || body.playerName || '').trim();
       if (search.length < 3) return json(400, { error: 'Cerca almeno 3 caratteri per API-Football.' });
