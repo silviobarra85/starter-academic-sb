@@ -15,7 +15,7 @@ const forbiddenVisible = ['Copia patch FBref', 'Scarica patch FBref', 'Cerca FBr
 const visibleClean = forbiddenVisible.every((token) => !visibleSoccerDataSection.includes(token));
 
 const ok = [
-  html.includes('V395 Soccer Data mapping API-Football'),
+  (html.includes('V395 Soccer Data mapping API-Football') || html.includes('V396 Soccer Data mapping API-Football da rose')),
   html.includes('id="soccerDataDownloadApiFootballMapV395"'),
   html.includes('<th class="soccer-data-col-player-v387">Giocatore</th>'),
   html.includes('<th class="soccer-data-col-status-v387">Stato profilo</th>'),

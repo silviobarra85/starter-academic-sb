@@ -29763,7 +29763,7 @@ window.ZonaOrientalePresidentNotificationCenterV370 = {
 };
 
 
-/* V371-V395 - Soccer Data pubblica read-only + provider API.
+/* V371-V396 - Soccer Data pubblica read-only + provider API.
    Sezione additiva: mostra solo giocatori attivi nel listone corrente, mantiene il link profilo
    giocatore quando disponibile e usa API-Football come provider operativo per statistiche/cache. */
 const SOCCER_DATA_MANIFEST_URL_V371 = './assets/soccer-data/manifest.json';
@@ -29774,6 +29774,7 @@ const SOCCER_DATA_STATS_BASE_URL_V390 = './assets/soccer-data/stats/';
 const SOCCER_DATA_PLAYER_STATS_COLLECTION_V391 = 'soccerDataPlayerStats';
 const SOCCER_DATA_FBREF_STATS_FUNCTION_V391 = '/.netlify/functions/fbref-player-stats';
 const SOCCER_DATA_API_FOOTBALL_STATS_FUNCTION_V394 = '/.netlify/functions/api-football-player-stats';
+const SOCCER_DATA_API_FOOTBALL_SERIE_A_LEAGUE_ID_V396 = 135;
 state.soccerDataManifestV371 = state.soccerDataManifestV371 || null;
 state.soccerDataMappingV371 = state.soccerDataMappingV371 || null;
 state.soccerDataLoadingV371 = false;
@@ -29798,6 +29799,9 @@ state.soccerDataApiFootballMapLoadedV394 = state.soccerDataApiFootballMapLoadedV
 state.soccerDataApiFootballLastSearchV394 = state.soccerDataApiFootballLastSearchV394 || null;
 state.soccerDataApiFootballStaticMapV395 = state.soccerDataApiFootballStaticMapV395 || null;
 state.soccerDataApiFootballStaticMapIndexV395 = state.soccerDataApiFootballStaticMapIndexV395 || null;
+state.soccerDataApiFootballSquadsV396 = state.soccerDataApiFootballSquadsV396 || null;
+state.soccerDataApiFootballSquadsLoadedV396 = state.soccerDataApiFootballSquadsLoadedV396 || false;
+state.soccerDataApiFootballLastAutoMapV396 = state.soccerDataApiFootballLastAutoMapV396 || null;
 
 function slugifySoccerDataPlayerV371(value) {
   return String(value || '')
@@ -30078,6 +30082,337 @@ function setSoccerDataApiFootballIdV394(row = {}, apiFootballId = '', providerNa
   }, row);
   state.soccerDataApiFootballMapV394 = map;
   return saveSoccerDataApiFootballMapV394();
+}
+
+
+function getSoccerDataApiFootballSquadsStorageKeyV396(seasonId = getSoccerDataStatsSeasonIdV391()) {
+  return `zonaOrientaleSoccerDataApiFootballSquadsV396:${String(seasonId || 'season')}`;
+}
+
+function ensureSoccerDataApiFootballSquadsLoadedV396() {
+  if (state.soccerDataApiFootballSquadsLoadedV396) return state.soccerDataApiFootballSquadsV396 || null;
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(getSoccerDataApiFootballSquadsStorageKeyV396()) || 'null');
+    state.soccerDataApiFootballSquadsV396 = parsed && typeof parsed === 'object' ? parsed : null;
+  } catch (error) {
+    console.warn('Rose API-Football V396 non leggibili', error);
+    state.soccerDataApiFootballSquadsV396 = null;
+  }
+  state.soccerDataApiFootballSquadsLoadedV396 = true;
+  return state.soccerDataApiFootballSquadsV396;
+}
+
+function saveSoccerDataApiFootballSquadsV396(payload = state.soccerDataApiFootballSquadsV396) {
+  try {
+    window.localStorage.setItem(getSoccerDataApiFootballSquadsStorageKeyV396(), JSON.stringify(payload || null));
+    state.soccerDataApiFootballSquadsV396 = payload || null;
+    state.soccerDataApiFootballSquadsLoadedV396 = true;
+    return true;
+  } catch (error) {
+    console.warn('Rose API-Football V396 non salvate localmente', error);
+    return false;
+  }
+}
+
+function normalizeSoccerDataApiFootballTextV396(value = '') {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\b(fc|ac|as|ssc|us|calcio|football|club|1907|1913|1909|1910|1900)\b/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function getSoccerDataApiFootballTeamAliasesV396(code = '') {
+  const map = {
+    ATA: ['atalanta'],
+    BOL: ['bologna'],
+    CAG: ['cagliari'],
+    COM: ['como'],
+    CRE: ['cremonese', 'us cremonese'],
+    FIO: ['fiorentina'],
+    GEN: ['genoa'],
+    INT: ['inter', 'internazionale'],
+    JUV: ['juventus'],
+    LAZ: ['lazio'],
+    LEC: ['lecce'],
+    MIL: ['milan', 'ac milan'],
+    NAP: ['napoli'],
+    PAR: ['parma'],
+    PIS: ['pisa'],
+    ROM: ['roma', 'as roma'],
+    SAS: ['sassuolo'],
+    TOR: ['torino'],
+    UDI: ['udinese'],
+    VER: ['verona', 'hellas verona']
+  };
+  return map[String(code || '').trim().toUpperCase()] || [];
+}
+
+function getSoccerDataApiFootballTeamHintsV396(row = {}) {
+  const player = row.player || {};
+  return [
+    player.realTeam,
+    player.realTeamOriginal,
+    ...(getSoccerDataApiFootballTeamAliasesV396(player.realTeam) || [])
+  ].filter(Boolean).map(normalizeSoccerDataApiFootballTextV396).filter(Boolean);
+}
+
+function isSoccerDataApiFootballTeamMatchV396(row = {}, candidate = {}) {
+  const hints = getSoccerDataApiFootballTeamHintsV396(row);
+  if (!hints.length) return false;
+  const teamName = normalizeSoccerDataApiFootballTextV396(candidate.teamName || candidate.team || candidate.apiFootballTeam || '');
+  if (!teamName) return false;
+  return hints.some((hint) => hint === teamName || teamName.includes(hint) || hint.includes(teamName));
+}
+
+function getSoccerDataApiFootballNameVariantsV396(row = {}) {
+  const player = row.player || {};
+  return [
+    player.playerName,
+    row.fbrefName,
+    row.mapping?.fbrefName,
+    row.statsSummary?.apiFootballName
+  ].filter(Boolean).map(normalizeSoccerDataApiFootballTextV396).filter(Boolean);
+}
+
+function scoreSoccerDataApiFootballNameV396(row = {}, candidate = {}) {
+  const candidateName = normalizeSoccerDataApiFootballTextV396(candidate.name || candidate.apiFootballName || '');
+  if (!candidateName) return 0;
+  const candidateTokens = candidateName.split(' ').filter(Boolean);
+  let best = 0;
+  getSoccerDataApiFootballNameVariantsV396(row).forEach((variant) => {
+    if (!variant) return;
+    const variantTokens = variant.split(' ').filter(Boolean);
+    let score = 0;
+    if (variant === candidateName) score = 100;
+    else if (variant.length >= 5 && candidateName.includes(variant)) score = 88;
+    else if (candidateName.length >= 5 && variant.includes(candidateName)) score = 84;
+    const allTokensInCandidate = variantTokens.length && variantTokens.every((token) => candidateTokens.includes(token));
+    if (allTokensInCandidate) score = Math.max(score, variantTokens.length >= 2 ? 92 : 82);
+    const overlap = variantTokens.filter((token) => candidateTokens.includes(token));
+    if (overlap.length >= 2) score = Math.max(score, 76 + Math.min(12, overlap.length * 3));
+    if (variantTokens.length >= 2) {
+      const maybeInitial = variantTokens.find((token) => token.length === 1);
+      const longer = variantTokens.filter((token) => token.length > 1);
+      if (maybeInitial && longer.length && longer.every((token) => candidateTokens.includes(token)) && candidateTokens.some((token) => token.startsWith(maybeInitial))) {
+        score = Math.max(score, 94);
+      }
+    }
+    const lastCandidateToken = candidateTokens[candidateTokens.length - 1] || '';
+    if (variantTokens.length === 1 && variantTokens[0].length >= 4 && variantTokens[0] === lastCandidateToken) score = Math.max(score, 86);
+    if (variantTokens.length === 1 && variantTokens[0].length >= 4 && candidateTokens.includes(variantTokens[0])) score = Math.max(score, 78);
+    best = Math.max(best, score);
+  });
+  return best;
+}
+
+function getSoccerDataApiFootballSquadPlayersV396(payload = ensureSoccerDataApiFootballSquadsLoadedV396()) {
+  const squads = Array.isArray(payload?.squads) ? payload.squads : [];
+  return squads.flatMap((squad) => {
+    const team = squad.team || {};
+    const players = Array.isArray(squad.players) ? squad.players : [];
+    return players.map((player) => ({
+      id: String(player.id || '').replace(/[^0-9]/g, '').trim(),
+      name: player.name || [player.firstname, player.lastname].filter(Boolean).join(' '),
+      firstname: player.firstname || '',
+      lastname: player.lastname || '',
+      age: player.age || '',
+      number: player.number || '',
+      position: player.position || '',
+      photo: player.photo || '',
+      teamId: String(team.id || squad.teamId || '').replace(/[^0-9]/g, '').trim(),
+      teamName: team.name || squad.teamName || '',
+      teamCode: team.code || ''
+    })).filter((player) => player.id && player.name);
+  });
+}
+
+function getSoccerDataApiFootballCandidatesFromSquadsV396(row = {}, limit = 8) {
+  const players = getSoccerDataApiFootballSquadPlayersV396();
+  if (!players.length) return [];
+  return players.map((candidate) => {
+    const teamMatch = isSoccerDataApiFootballTeamMatchV396(row, candidate);
+    const nameScore = scoreSoccerDataApiFootballNameV396(row, candidate);
+    return {
+      ...candidate,
+      teamMatch,
+      nameScore,
+      score: nameScore + (teamMatch ? 30 : 0),
+      source: 'squad-cache-v396'
+    };
+  }).filter((candidate) => candidate.nameScore >= 55 || (candidate.teamMatch && candidate.nameScore >= 42))
+    .sort((a, b) => b.score - a.score || b.nameScore - a.nameScore)
+    .slice(0, limit);
+}
+
+function chooseSoccerDataApiFootballBestSquadMatchV396(row = {}) {
+  const candidates = getSoccerDataApiFootballCandidatesFromSquadsV396(row, 5);
+  const best = candidates[0] || null;
+  const second = candidates[1] || null;
+  if (!best) return { status: 'missing', candidates: [] };
+  const safe = best.teamMatch && best.nameScore >= 78 && (!second || best.score - second.score >= 8 || best.nameScore >= 92);
+  return {
+    status: safe ? 'confirmed' : 'review',
+    best,
+    candidates
+  };
+}
+
+function applySoccerDataApiFootballSquadMappingV396(rows = getSoccerDataRowsV371()) {
+  ensureSoccerDataApiFootballSquadsLoadedV396();
+  const map = ensureSoccerDataApiFootballMapLoadedV394();
+  const results = rows.map((row) => ({ row, match: chooseSoccerDataApiFootballBestSquadMatchV396(row) }));
+  let confirmed = 0;
+  let review = 0;
+  let missing = 0;
+  results.forEach(({ row, match }) => {
+    if (match.status === 'confirmed' && match.best?.id) {
+      const player = row.player || {};
+      map[row.playerKey] = normalizeSoccerDataApiFootballMapEntryV395({
+        playerKey: row.playerKey || '',
+        fantacalcioId: String(player.fantacalcioId || ''),
+        playerName: player.playerName || '',
+        realTeam: player.realTeam || '',
+        apiFootballId: match.best.id,
+        apiFootballName: match.best.name || '',
+        apiFootballTeam: match.best.teamName || '',
+        apiFootballTeamId: match.best.teamId || '',
+        status: 'confirmed',
+        source: 'squad-auto-v396',
+        updatedAt: new Date().toISOString()
+      }, row);
+      confirmed += 1;
+    } else if (match.status === 'review') {
+      review += 1;
+    } else {
+      missing += 1;
+    }
+  });
+  state.soccerDataApiFootballMapV394 = map;
+  saveSoccerDataApiFootballMapV394();
+  state.soccerDataApiFootballLastAutoMapV396 = {
+    version: 'V396',
+    generatedAt: new Date().toISOString(),
+    seasonId: getSoccerDataStatsSeasonIdV391(),
+    records: results.length,
+    confirmed,
+    review,
+    missing,
+    reviewExamples: results.filter((item) => item.match.status === 'review').slice(0, 20).map(({ row, match }) => ({
+      playerKey: row.playerKey,
+      playerName: row.player?.playerName || '',
+      realTeam: row.player?.realTeam || '',
+      candidates: (match.candidates || []).slice(0, 3).map((candidate) => ({ id: candidate.id, name: candidate.name, team: candidate.teamName, score: candidate.score, nameScore: candidate.nameScore }))
+    }))
+  };
+  return state.soccerDataApiFootballLastAutoMapV396;
+}
+
+async function fetchSoccerDataApiFootballSerieASquadsV396(button) {
+  if (!state.isAdmin) return;
+  const confirmed = window.confirm?.('Scaricare le rose Serie A da API-Football consuma circa 21 richieste API (1 squadre + circa 20 rose). Procedo?');
+  if (confirmed === false) return;
+  const previous = button?.textContent;
+  if (button) {
+    button.disabled = true;
+    button.textContent = 'Scarico rose...';
+  }
+  const season = getSoccerDataApiFootballSeasonV394();
+  const league = SOCCER_DATA_API_FOOTBALL_SERIE_A_LEAGUE_ID_V396;
+  try {
+    showSoccerDataStatsStatusV391(`Recupero squadre Serie A ${season}...`);
+    const teamsPayload = await callSoccerDataApiFootballFunctionV394({ action: 'teams', league, season });
+    const teams = Array.isArray(teamsPayload.teams) ? teamsPayload.teams : [];
+    if (!teams.length) throw new Error('API-Football non ha restituito squadre Serie A.');
+    const squads = [];
+    for (let index = 0; index < teams.length; index += 1) {
+      const team = teams[index];
+      showSoccerDataStatsStatusV391(`Recupero rosa ${index + 1}/${teams.length}: ${team.name || team.id}...`);
+      const squadPayload = await callSoccerDataApiFootballFunctionV394({ action: 'squad', teamId: team.id, season, league });
+      squads.push({
+        team,
+        players: Array.isArray(squadPayload.players) ? squadPayload.players : [],
+        raw: squadPayload.response || [],
+        fetchedAt: squadPayload.fetchedAt || new Date().toISOString(),
+        rateLimit: squadPayload.rateLimit || null
+      });
+      saveSoccerDataApiFootballSquadsV396({
+        meta: {
+          version: 'V396-partial',
+          provider: 'api-football',
+          league,
+          season,
+          seasonId: getSoccerDataStatsSeasonIdV391(),
+          updatedAt: new Date().toISOString(),
+          teamsCount: teams.length,
+          squadsCount: squads.length,
+          totalPlayers: squads.reduce((sum, squad) => sum + (squad.players?.length || 0), 0)
+        },
+        teams,
+        squads
+      });
+    }
+    const payload = {
+      meta: {
+        version: 'V396',
+        provider: 'api-football',
+        league,
+        leagueName: 'Serie A',
+        season,
+        seasonId: getSoccerDataStatsSeasonIdV391(),
+        updatedAt: new Date().toISOString(),
+        teamsCount: teams.length,
+        squadsCount: squads.length,
+        totalPlayers: squads.reduce((sum, squad) => sum + (squad.players?.length || 0), 0),
+        apiRequestsEstimated: 1 + teams.length,
+        note: 'Cache locale rose API-Football usata per generare mapping playerId senza cercare i giocatori uno per uno.'
+      },
+      teams,
+      squads
+    };
+    saveSoccerDataApiFootballSquadsV396(payload);
+    showSoccerDataStatsStatusV391(`Rose API salvate localmente: ${payload.meta.squadsCount} squadre, ${payload.meta.totalPlayers} giocatori. Ora premi Genera mapping da rose.`);
+  } catch (error) {
+    console.warn('Download rose API-Football V396 non riuscito', error);
+    showSoccerDataStatsStatusV391(`Errore rose API-Football: ${error?.message || error}`, true);
+    window.alert?.(`Errore download rose API-Football: ${error?.message || error}`);
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = previous || 'Scarica rose Serie A API';
+    }
+  }
+}
+
+async function generateSoccerDataApiFootballMappingFromSquadsV396(button) {
+  if (!state.isAdmin) return;
+  const squads = ensureSoccerDataApiFootballSquadsLoadedV396();
+  if (!Array.isArray(squads?.squads) || !squads.squads.length) {
+    window.alert?.('Prima scarica le rose Serie A API-Football.');
+    showSoccerDataStatsStatusV391('Rose API non ancora presenti: usa Scarica rose Serie A API.', true);
+    return;
+  }
+  const previous = button?.textContent;
+  if (button) {
+    button.disabled = true;
+    button.textContent = 'Genero mapping...';
+  }
+  try {
+    const summary = applySoccerDataApiFootballSquadMappingV396(getSoccerDataRowsV371());
+    showSoccerDataStatsStatusV391(`Mapping da rose completato: ${summary.confirmed} confermati, ${summary.review} da verificare, ${summary.missing} mancanti. Poi usa Scarica mapping API.`);
+    renderSoccerDataPageV371();
+  } catch (error) {
+    console.warn('Generazione mapping da rose V396 non riuscita', error);
+    showSoccerDataStatsStatusV391(`Errore mapping da rose: ${error?.message || error}`, true);
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = previous || 'Genera mapping da rose';
+    }
+  }
 }
 
 function getSoccerDataApiFootballDocumentIdV394(seasonId = getSoccerDataStatsSeasonIdV391(), playerKey = '', apiFootballId = '') {
@@ -30440,6 +30775,7 @@ function renderSoccerDataSummaryV371(rows = getSoccerDataRowsV371(), filteredRow
   const target = document.getElementById('soccerDataSummaryV371');
   if (!target) return;
   ensureSoccerDataAssociationDraftsLoadedV385();
+  const apiLocalMapCountV396 = state.isAdmin ? Object.keys(ensureSoccerDataApiFootballMapLoadedV394() || {}).length : 0;
   const mapped = rows.filter((row) => row.mapped).length;
   const unmapped = Math.max(0, rows.length - mapped);
   const reviewBatches = new Set(rows.map((row) => row.reviewBatch).filter(Boolean)).size;
@@ -30454,14 +30790,18 @@ function renderSoccerDataSummaryV371(rows = getSoccerDataRowsV371(), filteredRow
   const statsReady = Boolean(statsManifest.currentSummary || state.soccerDataManifestV371?.stats?.currentSummary || firebaseStatsEntries.length || localStatsEntries.length);
   const statsCompiled = statsEntries.filter(hasSoccerDataCompiledStatsV390).length;
   const apiFootballCount = statsEntries.filter((entry) => String(entry.provider || '').toLowerCase() === 'api-football' || entry.apiFootballId).length;
+  const squadsCacheV396 = ensureSoccerDataApiFootballSquadsLoadedV396();
+  const squadsCountV396 = Array.isArray(squadsCacheV396?.squads) ? squadsCacheV396.squads.length : 0;
+  const squadPlayersCountV396 = squadsCacheV396?.meta?.totalPlayers || getSoccerDataApiFootballSquadPlayersV396(squadsCacheV396).length || 0;
   const statsLabel = statsReady ? `${staticStatsEntries.length || 0} statiche · ${firebaseStatsEntries.length || 0} Firebase · ${localStatsEntries.length || 0} locali` : 'struttura pronta';
   target.innerHTML = `
     <article class="metric-card"><span class="metric-label">In listone</span><strong>${escapeHtml(String(rows.length))}</strong></article>
     <article class="metric-card"><span class="metric-label">Profili collegati</span><strong>${escapeHtml(String(mapped))}</strong></article>
     <article class="metric-card"><span class="metric-label">Da associare</span><strong>${escapeHtml(String(unmapped))}</strong></article>
-    ${state.isAdmin ? `<article class="metric-card"><span class="metric-label">Mapping API locale</span><strong>${escapeHtml(String(draftCount))}</strong><small class="metric-reason muted">export JSON</small></article>` : `<article class="metric-card"><span class="metric-label">Modalita</span><strong>Sola lettura</strong><small class="metric-reason muted">comandi admin nascosti</small></article>`}
+    ${state.isAdmin ? `<article class="metric-card"><span class="metric-label">Mapping API locale</span><strong>${escapeHtml(String(apiLocalMapCountV396))}</strong><small class="metric-reason muted">export JSON</small></article>` : `<article class="metric-card"><span class="metric-label">Modalita</span><strong>Sola lettura</strong><small class="metric-reason muted">comandi admin nascosti</small></article>`}
     <article class="metric-card"><span class="metric-label">Risultati filtro</span><strong>${escapeHtml(String(filteredRows.length))}</strong><small class="metric-reason muted">${escapeHtml(listone?.loadedAt || listone?.id || 'listone corrente')}</small></article>
-    <article class="metric-card"><span class="metric-label">Stats statiche</span><strong>${escapeHtml(statsLabel)}</strong><small class="metric-reason muted">${escapeHtml(statsVersion)} · compilati ${escapeHtml(String(statsCompiled))} · API-Football ${escapeHtml(String(apiFootballCount))} · static first</small></article>`;
+    <article class="metric-card"><span class="metric-label">Stats statiche</span><strong>${escapeHtml(statsLabel)}</strong><small class="metric-reason muted">${escapeHtml(statsVersion)} · compilati ${escapeHtml(String(statsCompiled))} · API-Football ${escapeHtml(String(apiFootballCount))} · static first</small></article>
+    <article class="metric-card"><span class="metric-label">Rose API</span><strong>${squadsCountV396 ? `${escapeHtml(String(squadsCountV396))} squadre` : 'non scaricate'}</strong><small class="metric-reason muted">${squadPlayersCountV396 ? `${escapeHtml(String(squadPlayersCountV396))} giocatori in cache locale` : 'scaricale da admin per generare il mapping'}</small></article>`;
 }
 
 function isSoccerDataReviewRowV384(row = {}) {
@@ -30635,7 +30975,7 @@ function renderSoccerDataStatsAdminActionsV391(row = {}) {
     <button class="button button-secondary button-small" type="button" data-soccer-data-search-api-football-v394="${escapeHtml(playerKey)}">Trova ID API</button>
     <button class="button button-secondary button-small" type="button" data-soccer-data-set-api-football-v394="${escapeHtml(playerKey)}">${apiFootballId ? `ID API ${escapeHtml(apiFootballId)}` : 'Inserisci ID API'}</button>
     <button class="button button-primary button-small" type="button" data-soccer-data-fetch-api-football-v394="${escapeHtml(playerKey)}">${hasStats && String(source).toLowerCase().includes('api') ? 'Aggiorna statistiche' : 'Recupera statistiche'}</button>
-    <small class="muted soccer-data-stats-source-v391">${apiFootballId ? `ID API ${escapeHtml(apiFootballId)}${apiName ? ` · ${escapeHtml(apiName)}` : ''}` : 'Premi Trova ID API: cerco i candidati e ti faccio scegliere l ID corretto.'}${hasStats ? ` · ${escapeHtml(source || 'stats disponibili')} · aggiornato ${escapeHtml(formatSoccerDataUpdatedAtV394(row.statsSummary?.updatedAt || row.statsSummary?.fetchedAt))}` : ''}</small>
+    <small class="muted soccer-data-stats-source-v391">${apiFootballId ? `ID API ${escapeHtml(apiFootballId)}${apiName ? ` · ${escapeHtml(apiName)}` : ''}` : 'Usa prima le rose Serie A: Trova ID API prova la cache locale, poi la ricerca API.'}${hasStats ? ` · ${escapeHtml(source || 'stats disponibili')} · aggiornato ${escapeHtml(formatSoccerDataUpdatedAtV394(row.statsSummary?.updatedAt || row.statsSummary?.fetchedAt))}` : ''}</small>
   </div>`;
 }
 
@@ -30665,7 +31005,9 @@ function setSoccerDataControlsLockedV386(isLocked = false) {
     'soccerDataDownloadStatsSummaryV390',
     'soccerDataRefreshStatsV391',
     'soccerDataDownloadFirebaseStatsV391',
-    'soccerDataDownloadApiFootballMapV395'
+    'soccerDataDownloadApiFootballMapV395',
+    'soccerDataFetchApiFootballSquadsV396',
+    'soccerDataGenerateApiFootballMapV396'
   ].forEach((id) => {
     const element = document.getElementById(id);
     if (element) element.disabled = Boolean(isLocked);
@@ -31402,6 +31744,20 @@ async function searchSoccerDataApiFootballIdV394(button) {
   button.textContent = 'Cerco...';
   showSoccerDataStatsStatusV391(`Cerco API-Football ID per ${row.player?.playerName || key}...`);
   try {
+    const squadCandidates = getSoccerDataApiFootballCandidatesFromSquadsV396(row, 8);
+    if (squadCandidates.length) {
+      const text = squadCandidates.map((candidate, index) => `${index + 1}) ID ${candidate.id} - ${candidate.name || '-'} - ${candidate.age || '?'} anni - ${candidate.position || '-'} - ${candidate.teamName || '-'} · score ${candidate.score}`).join('\n');
+      const chosen = window.prompt(`Candidati API-Football da rose Serie A per ${row.player?.playerName || key}:\n\n${text}\n\nInserisci l ID corretto da salvare:`, String(squadCandidates[0]?.id || ''));
+      if (!chosen) {
+        showSoccerDataStatsStatusV391('Scelta ID API annullata. Nessuna richiesta API effettuata.');
+        return;
+      }
+      const selected = squadCandidates.find((candidate) => String(candidate.id) === String(chosen).trim());
+      setSoccerDataApiFootballIdV394(row, chosen, selected?.name || '', { apiFootballTeam: selected?.teamName || '', apiFootballTeamId: selected?.teamId || '', source: 'squad-cache-v396' });
+      showSoccerDataStatsStatusV391(`ID API salvato da cache rose: ${row.player?.playerName || key} -> ${String(chosen).trim()}. Nessuna richiesta API consumata.`);
+      renderSoccerDataPageV371();
+      return;
+    }
     const payload = await callSoccerDataApiFootballFunctionV394({
       action: 'search',
       search: row.player?.playerName || row.fbrefName || '',
@@ -31411,7 +31767,7 @@ async function searchSoccerDataApiFootballIdV394(button) {
     });
     const candidates = Array.isArray(payload.candidates) ? payload.candidates.slice(0, 8) : [];
     state.soccerDataApiFootballLastSearchV394 = { rowKey: key, candidates, searchedAt: new Date().toISOString() };
-    if (!candidates.length) throw new Error('Nessun candidato trovato. Inserisci manualmente l ID API-Football.');
+    if (!candidates.length) throw new Error('Nessun candidato trovato. Scarica prima le rose Serie A API oppure inserisci manualmente l ID API-Football.');
     const text = candidates.map((candidate, index) => `${index + 1}) ID ${candidate.id} - ${candidate.name || '-'} - ${candidate.age || '?'} anni - ${candidate.nationality || '-'} - ${candidate.team || '-'} (${candidate.league || '-'})`).join('\n');
     const chosen = window.prompt(`Candidati API-Football per ${row.player?.playerName || key}:\n\n${text}\n\nInserisci l ID corretto da salvare:`, String(candidates[0]?.id || ''));
     if (!chosen) {
@@ -31634,14 +31990,16 @@ function buildSoccerDataApiFootballProviderMapV395(rows = getSoccerDataRowsV371(
   return {
     meta: {
       version: 'api-football-player-map.v001',
-      appVersion: 'V395',
+      appVersion: 'V396',
       provider: 'api-football',
       seasonId,
       exportedAt: new Date().toISOString(),
       records: players.length,
       mappedCount,
       missingCount: Math.max(0, players.length - mappedCount),
-      note: 'Mapping statico ID API-Football generato dalla UI Soccer Data. Inserire in assets/soccer-data/providers e pubblicare in repo per evitare nuove ricerche API.'
+      note: 'Mapping statico ID API-Football generato dalla UI Soccer Data. V396 puo generarlo automaticamente dalla cache rose Serie A per evitare ricerche giocatore una per una.',
+      squadCache: state.soccerDataApiFootballSquadsV396?.meta || null,
+      autoMap: state.soccerDataApiFootballLastAutoMapV396 || null
     },
     players
   };
@@ -31863,6 +32221,18 @@ document.addEventListener('click', async (event) => {
     await downloadSoccerDataFirebaseStatsJsonV391(downloadFirebaseStatsButtonV391);
     return;
   }
+  const apiSquadsButtonV396 = event.target.closest?.('#soccerDataFetchApiFootballSquadsV396');
+  if (apiSquadsButtonV396) {
+    if (!state.isAdmin) return;
+    await fetchSoccerDataApiFootballSerieASquadsV396(apiSquadsButtonV396);
+    return;
+  }
+  const apiGenerateMapButtonV396 = event.target.closest?.('#soccerDataGenerateApiFootballMapV396');
+  if (apiGenerateMapButtonV396) {
+    if (!state.isAdmin) return;
+    await generateSoccerDataApiFootballMappingFromSquadsV396(apiGenerateMapButtonV396);
+    return;
+  }
   const apiMapButtonV395 = event.target.closest?.('#soccerDataDownloadApiFootballMapV395');
   if (apiMapButtonV395) {
     if (!state.isAdmin) return;
@@ -32063,6 +32433,33 @@ window.ZonaOrientaleSoccerDataV371 = {
       v370StillPresent: Boolean(window.ZonaOrientalePresidentNotificationCenterV370),
       v369StillPresent: Boolean(window.ZonaOrientalePresidentDashboardV369),
       v368StillPresent: Boolean(window.ZonaOrientaleAdminPublicationDashboardV368)
+    };
+  }
+};
+
+
+window.ZonaOrientaleSoccerDataApiFootballSquadsMappingV396 = {
+  version: 'V396',
+  label: 'Soccer Data mapping API-Football da rose Serie A',
+  scope: 'solo Soccer Data; comandi admin per scaricare rose Serie A, generare mapping ID player e scaricare JSON statico',
+  publicReadOnly: true,
+  adminOnlyApi: true,
+  apiProvider: 'api-football',
+  leagueId: SOCCER_DATA_API_FOOTBALL_SERIE_A_LEAGUE_ID_V396,
+  firebaseWrites: 'solo stats cache admin esistente',
+  liveScraping: false,
+  runSmokeTest() {
+    const controls = ['soccerDataFetchApiFootballSquadsV396','soccerDataGenerateApiFootballMapV396','soccerDataDownloadApiFootballMapV395'];
+    const controlsPresent = controls.every((id) => Boolean(document.getElementById(id)));
+    const hasHelpers = typeof fetchSoccerDataApiFootballSerieASquadsV396 === 'function'
+      && typeof generateSoccerDataApiFootballMappingFromSquadsV396 === 'function'
+      && typeof getSoccerDataApiFootballCandidatesFromSquadsV396 === 'function';
+    return {
+      ok: controlsPresent && hasHelpers && Boolean(window.ZonaOrientaleSoccerDataV371),
+      controlsPresent,
+      hasHelpers,
+      v371StillPresent: Boolean(window.ZonaOrientaleSoccerDataV371),
+      noScraping: true
     };
   }
 };

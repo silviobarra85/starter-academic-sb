@@ -1,12 +1,12 @@
 {
   "meta": {
-    "version": "V395",
-    "label": "Soccer Data static-first + Firebase + API-Football mapping assistito",
+    "version": "V396",
+    "label": "Soccer Data static-first + Firebase + API-Football mapping da rose Serie A",
     "createdAt": "2026-06-06",
     "readOnly": true,
     "firebaseWrites": "admin-only soccerDataPlayerStats; fallback locale se rules non aggiornate",
     "liveScraping": "API-Football admin-only server-side JSON",
-    "importMode": "static-first-firebase-fallback-admin-api-football-provider-map",
+    "importMode": "static-first-firebase-fallback-admin-api-football-squad-map",
     "updatedAt": "2026-06-06"
   },
   "seasonId": "2025-2026",
@@ -56,7 +56,8 @@
     "I dati esportati vanno verificati e poi pubblicati come JSON statici nella repo.",
     "V393 aggiunge fallback locale: se Firestore restituisce Missing or insufficient permissions, il payload importato resta in browser ed entra nello stesso export JSON statico.",
     "V394 usa API-Football come sorgente preferita: una richiesta admin per giocatore, salvataggio su Firebase, export JSON statico e riuso static-first.",
-    "V395 aggiunge il mapping assistito ID API-Football: l admin trova l ID tramite ricerca API, lo salva localmente e scarica un JSON statico da pubblicare in repo."
+    "V395 aggiunge il mapping assistito ID API-Football: l admin trova l ID tramite ricerca API, lo salva localmente e scarica un JSON statico da pubblicare in repo.",
+    "V396 aggiunge il recupero rose Serie A API-Football e la generazione automatica locale del mapping playerId, cosi Trova ID API puo usare la cache senza consumare richieste singole."
   ],
   "currentSummaryCsvTemplate": "player-stats-summary-2025-2026.v001.template.csv",
   "datasets": {
@@ -98,7 +99,10 @@
     "provider": "api-football",
     "environmentVariable": "ZONAORIENTALE_API_FOOTBALL_KEY",
     "actions": [
-      "search player id",
+      "download Serie A teams",
+      "download team squads",
+      "generate provider id mapping from squads",
+      "search player id fallback",
       "save provider id mapping",
       "fetch player stats",
       "export provider map json",
@@ -107,8 +111,9 @@
     "saveTarget": "soccerDataPlayerStats",
     "staticExport": "Scarica stats JSON",
     "tableColumn": "Aggiornato",
-    "version": "V395",
-    "providerMap": "../providers/api-football-player-map.v001.json"
+    "version": "V396",
+    "providerMap": "../providers/api-football-player-map.v001.json",
+    "squadMapping": "Scarica rose Serie A API + Genera mapping da rose"
   },
   "providerMappings": {
     "apiFootball": "../providers/api-football-player-map.v001.json"
