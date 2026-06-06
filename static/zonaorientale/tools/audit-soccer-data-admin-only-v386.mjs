@@ -22,15 +22,15 @@ const docsIndex = fs.existsSync(path.join(root, '../docs/zonaorientale/FUNZIONAL
   : '';
 
 const expectedVersion = (app.match(/const DEPLOY_EXPECTED_VERSION_V181 = "(\d+)";/) || [])[1] || '';
-expectedVersion === '386' ? pass('DEPLOY_EXPECTED_VERSION_V181 allineato a V386') : fail(`runtime non V386: ${expectedVersion || 'assente'}`);
+Number(expectedVersion) >= 386 ? pass(`DEPLOY_EXPECTED_VERSION_V181 >= V386 (${expectedVersion})`) : fail(`runtime non V386+: ${expectedVersion || 'assente'}`);
 
 for (const [name, content] of [['index', html], ['competition', competition], ['player', player]]) {
-  content.includes('V386 Soccer Data solo admin') ? pass(`${name}: footer V386 presente`) : fail(`${name}: footer V386 assente`);
+  (content.includes('V386 Soccer Data solo admin') || content.includes('V387 Soccer Data mobile cleanup')) ? pass(`${name}: footer V386+ presente`) : fail(`${name}: footer V386+ assente`);
   const versions = Array.from(new Set((content.match(/\?v=\d+/g) || []).map((item) => item.replace('?v=', ''))));
-  versions.length === 1 && versions[0] === '386' ? pass(`${name}: cache-buster V386 allineato`) : fail(`${name}: cache-buster non V386 (${versions.join(', ') || 'nessuno'})`);
+  versions.length === 1 && Number(versions[0]) >= 386 ? pass(`${name}: cache-buster V386+ allineato (${versions[0]})`) : fail(`${name}: cache-buster non V386+ (${versions.join(', ') || 'nessuno'})`);
 }
 const appVersions = Array.from(new Set((app.match(/\?v=\d+/g) || []).map((item) => item.replace('?v=', ''))));
-appVersions.length === 1 && appVersions[0] === '386' ? pass('app.js: cache-buster V386 allineati') : fail(`app.js: cache-buster non V386 (${appVersions.join(', ') || 'nessuno'})`);
+appVersions.length === 1 && Number(appVersions[0]) >= 386 ? pass(`app.js: cache-buster V386+ allineati (${appVersions[0]})`) : fail(`app.js: cache-buster non V386+ (${appVersions.join(', ') || 'nessuno'})`);
 
 manifest.currentMapping === 'fbref-player-map.v383.json' ? pass('manifest mantiene mapping V383') : fail('manifest non mantiene mapping V383');
 manifest.meta?.firebaseWrites === false ? pass('manifest conferma no Firebase writes') : fail('manifest non conferma no Firebase writes');

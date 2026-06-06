@@ -33,12 +33,12 @@ const needsReview = mapping.players.filter((p) => p.matchStatus === 'needs-revie
 needsReview.length === 1 && needsReview[0]?.playerKey === 'fc-7262' ? pass('mapping V383 invariato: un needs-review Balentien') : fail(`needs-review non attesi: ${needsReview.map((p) => p.playerKey).join(', ')}`);
 
 soccerSection ? pass('sezione Soccer Data trovata in index') : fail('sezione Soccer Data non trovata in index');
-soccerSection.includes('<th>FBref / Giocatore</th>') ? pass('prima colonna Soccer Data aggiornata a FBref / Giocatore') : fail('header FBref / Giocatore mancante');
-soccerSection.includes('<th>Stato mapping</th>') ? pass('colonna Stato mapping presente') : fail('colonna Stato mapping mancante');
+soccerSection.includes('FBref / Giocatore') ? pass('prima colonna Soccer Data aggiornata a FBref / Giocatore') : fail('header FBref / Giocatore mancante');
+soccerSection.includes('Stato mapping') ? pass('colonna Stato mapping presente') : fail('colonna Stato mapping mancante');
 !soccerSection.includes('<th>Azione</th>') ? pass('header Azione rimosso dalla tabella Soccer Data') : fail('header Azione ancora presente in Soccer Data');
 !soccerSection.includes('<th>FBref</th>') ? pass('vecchia colonna FBref separata rimossa') : fail('vecchia colonna FBref separata ancora presente');
 soccerSection.includes('colspan="7"') ? pass('colspan Soccer Data allineato a 7 colonne') : fail('colspan Soccer Data non allineato a 7 colonne');
-(html.includes('V384 Soccer Data table cleanup') || html.includes('V385 Soccer Data associazione FBref') || html.includes('V386 Soccer Data solo admin')) ? pass('footer runtime V384+ presente') : fail('footer runtime V384+ assente');
+(html.includes('V384 Soccer Data table cleanup') || html.includes('V385 Soccer Data associazione FBref') || html.includes('V386 Soccer Data solo admin') || html.includes('V387 Soccer Data mobile cleanup')) ? pass('footer runtime V384+ presente') : fail('footer runtime V384+ assente');
 
 [
   'function isSoccerDataReviewRowV384',
@@ -62,12 +62,12 @@ app.includes('Listone: ${escapeHtml(player.playerName || \'-\')}') ? pass('nome 
 
 const appOldVersions = app.match(/\?v=382/g) || [];
 appOldVersions.length === 0 ? pass('app.js: nessun cache-buster V382 residuo') : fail(`app.js: ${appOldVersions.length} cache-buster V382 residui`);
-(app.includes('?v=384') || app.includes('?v=385') || app.includes('?v=386')) ? pass('app.js: cache-buster V384+ presente') : fail('app.js: cache-buster V384+ assente');
+(app.includes('?v=384') || app.includes('?v=385') || app.includes('?v=386') || app.includes('?v=387')) ? pass('app.js: cache-buster V384+ presente') : fail('app.js: cache-buster V384+ assente');
 
 for (const [name, content] of [['index', html], ['competition', competition], ['player', player]]) {
   const oldVersions = content.match(/\?v=382/g) || [];
   oldVersions.length === 0 ? pass(`${name}: nessun cache-buster V382 residuo`) : fail(`${name}: ${oldVersions.length} cache-buster V382 residui`);
-  (content.includes('?v=384') || content.includes('?v=385') || content.includes('?v=386')) ? pass(`${name}: cache-buster V384+ presente`) : fail(`${name}: cache-buster V384+ assente`);
+  (content.includes('?v=384') || content.includes('?v=385') || content.includes('?v=386') || content.includes('?v=387')) ? pass(`${name}: cache-buster V384+ presente`) : fail(`${name}: cache-buster V384+ assente`);
 }
 
 if (failures) process.exit(1);

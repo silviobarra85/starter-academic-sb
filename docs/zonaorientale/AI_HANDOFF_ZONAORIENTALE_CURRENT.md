@@ -1,3 +1,16 @@
+# Aggiornamento V389 - Soccer Data assets cleanup + stats import base
+
+- Runtime atteso: V389.
+- Branch di lavoro: `refactor/260528-zonaorientale-next`.
+- Soccer Data resta solo admin e continua a usare `assets/soccer-data/fbref-player-map.v383.json`.
+- Asset pubblici Soccer Data ridotti a `manifest.json`, `fbref-player-map.v383.json` e `stats/manifest.json`.
+- Storico mapping/review spostato in `docs/zonaorientale/archive/soccer-data/mapping-history/`.
+- Aggiunta struttura stats import per futuri JSON statici offline; nessun dato statistico reale importato in V389.
+- Nessuna scrittura Firebase, nessuno scraping live, nessuna modifica a `FUNZIONALITA'.md`.
+- Audit principale: `node tools/audit-soccer-data-assets-cleanup-v389.mjs`.
+
+---
+
 # Aggiornamento V386 - Soccer Data solo admin
 
 - Runtime atteso: V386.
