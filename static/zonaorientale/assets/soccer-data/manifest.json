@@ -1,14 +1,17 @@
 {
   "meta": {
     "version": "V383",
-    "label": "Soccer Data mapping FBref batch-11 finale",
+    "label": "Soccer Data profili giocatore + API-Football mapping",
     "createdAt": "2026-06-06",
     "readOnly": true,
     "firebaseWrites": false,
-    "liveScraping": false
+    "liveScraping": false,
+    "assetLayoutVersion": "V395",
+    "assetLayoutLabel": "Soccer Data API-Football mapping assistito + cache Firebase",
+    "runtimePublicAssets": true
   },
   "currentMapping": "fbref-player-map.v383.json",
-  "currentStats": null,
+  "currentStats": "player-stats-summary-2025-2026.v001.json",
   "listoneScope": {
     "seasonId": "2025-2026",
     "listoneId": "2026-06-04",
@@ -17,17 +20,24 @@
     "excludedRows": 131
   },
   "notes": [
-    "V383 completa il batch finale FBref con 31 nuove associazioni confermate su 32 residui.",
-    "Il totale mapping confermati sale a 531 giocatori; resta 1 caso needs-review senza profilo FBref stabile verificabile.",
+    "V383 completa il batch finale profilo giocatore con 31 nuove associazioni confermate su 32 residui.",
+    "Il totale mapping confermati sale a 531 giocatori; resta 1 caso needs-review senza profilo profilo giocatore stabile verificabile.",
     "La UI continua a mostrare solo i giocatori attivi del listone corrente; gli asteriscati restano esclusi.",
-    "Nessun dato FBref viene recuperato live dal browser: il mapping e statico/offline.",
-    "I casi con abbreviazioni, accenti o nomi FBref diversi dal listone sono annotati nel campo notes."
+    "V389 riduce gli asset pubblici Soccer Data ai soli file runtime necessari: manifest, mapping corrente V383 e manifest statistiche.",
+    "Lo storico mapping/review V371-V383 viene conservato nei docs archive per audit e rollback, non caricato dal sito.",
+    "La struttura stats e pronta per import offline/manuale di JSON statici; currentSummary resta null finche non vengono pubblicati dati verificati.",
+    "La sezione Soccer Data e consultabile pubblicamente in sola lettura.",
+    "V390 aggiunge un JSON summary e un CSV template statici per tutti i giocatori attivi del mapping corrente, con campi statistici vuoti/null da compilare offline.",
+    "I comandi di recupero e export restano dentro Soccer Data e sono visibili/attivi solo agli admin.",
+    "V394 aggiunge API-Football come provider preferito per statistiche giocatore: richieste admin-only tramite Netlify Function, salvataggio/cache su Firebase, export JSON statico e colonna Aggiornato in tabella.",
+    "V395 sposta il flusso operativo su API-Football: la UI admin permette di trovare/salvare l ID API del giocatore, esportare il mapping API statico e recuperare statistiche con cache Firebase.",
+    "Il link profilo giocatore resta cliccabile quando disponibile, ma i comandi operativi non usano piu il fallback HTML/manuale come flusso principale."
   ],
   "mappingAssistant": {
     "version": "V383",
-    "currentCsv": "fbref-player-map.v383.csv",
-    "reviewCsv": "fbref-review-batch.v383.csv",
-    "previousCsv": "fbref-player-map.v382.csv",
+    "currentCsv": null,
+    "reviewCsv": null,
+    "previousCsv": null,
     "reviewBatchSize": 50,
     "reviewBatches": 11,
     "confirmedBatch": "batch-11",
@@ -53,6 +63,68 @@
       "batch-10",
       "batch-11"
     ],
-    "remainingMappings": 1
+    "remainingMappings": 1,
+    "archivedCsvDirectory": "docs/zonaorientale/archive/soccer-data/mapping-history/"
+  },
+  "stats": {
+    "version": "V395",
+    "manifest": "stats/manifest.json",
+    "currentSummary": "player-stats-summary-2025-2026.v001.json",
+    "currentDetail": null,
+    "importMode": "static-first-firebase-fallback-admin-api-football-fetch-provider-map",
+    "firebaseCollection": "soccerDataPlayerStats",
+    "firebaseWrites": "admin-only",
+    "liveScraping": "none; statistiche via API-Football admin-only server-side",
+    "currentSummaryCsvTemplate": "player-stats-summary-2025-2026.v001.template.csv",
+    "records": 532,
+    "numericValuesCompiled": 0,
+    "providerMappings": {
+      "apiFootball": "providers/api-football-player-map.v001.json"
+    }
+  },
+  "publicAssets": {
+    "version": "V395",
+    "keepInAssets": [
+      "manifest.json",
+      "fbref-player-map.v383.json",
+      "stats/manifest.json",
+      "stats/player-stats-summary-2025-2026.v001.json",
+      "stats/player-stats-summary-2025-2026.v001.template.csv",
+      "providers/api-football-player-map.v001.json"
+    ],
+    "archivedHistory": "docs/zonaorientale/archive/soccer-data/mapping-history/",
+    "note": "Gli storici mapping/review sono conservati nei docs archive; il runtime pubblico usa manifest, mapping corrente, stats manifest, summary statico e fallback Firebase se necessario."
+  },
+  "publicAccess": {
+    "version": "V395",
+    "sectionVisibleToAll": true,
+    "readOnlyForNonAdmins": true,
+    "adminCommandsOnlyForAdmin": true,
+    "firebaseWrites": "admin-only soccerDataPlayerStats",
+    "liveScraping": "API-Football admin-only server-side"
+  },
+  "statsPipeline": {
+    "firebaseRulesV393": {
+      "required": true,
+      "collection": "soccerDataPlayerStats",
+      "read": "public read per fallback pubblico dopo import",
+      "write": "admin-only tramite funzione isAdmin()",
+      "docs": "docs/zonaorientale/firebase/FIREBASE_RULES_PATCH_V393_SOCCER_DATA_STATS.rules"
+    },
+    "apiFootballV394": {
+      "enabled": true,
+      "provider": "api-football",
+      "function": "/.netlify/functions/api-football-player-stats",
+      "scope": "admin-only per singolo giocatore tramite ID API-Football",
+      "saveTarget": "soccerDataPlayerStats",
+      "staticExport": "Scarica stats JSON",
+      "rateLimitStrategy": "trova ID giocatore una volta, salva mapping localmente/Firebase/export statico, poi recupera stats solo quando serve",
+      "envKey": "ZONAORIENTALE_API_FOOTBALL_KEY",
+      "version": "V395",
+      "providerMap": "providers/api-football-player-map.v001.json"
+    }
+  },
+  "providerMappings": {
+    "apiFootball": "providers/api-football-player-map.v001.json"
   }
 }

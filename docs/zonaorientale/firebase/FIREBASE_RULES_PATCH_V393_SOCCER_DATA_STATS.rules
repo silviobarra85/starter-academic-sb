@@ -1,0 +1,13 @@
+// V393 Soccer Data stats
+// Inserire questo blocco dentro:
+// service cloud.firestore { match /databases/{database}/documents { ... } }
+// Richiede che la funzione isAdmin() sia gia' presente nelle rules correnti.
+
+match /soccerDataPlayerStats/{docId} {
+  // Lettura pubblica: consente al sito pubblico di usare Firebase come fallback
+  // quando il JSON statico stats non e' ancora stato pubblicato.
+  allow read: if true;
+
+  // Scrittura solo admin: import HTML/FBref e aggiornamenti manuali restano protetti.
+  allow write: if isAdmin();
+}

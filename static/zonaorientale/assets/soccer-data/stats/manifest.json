@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "version": "V395",
+    "label": "Soccer Data static-first + Firebase + API-Football mapping assistito",
+    "createdAt": "2026-06-06",
+    "readOnly": true,
+    "firebaseWrites": "admin-only soccerDataPlayerStats; fallback locale se rules non aggiornate",
+    "liveScraping": "API-Football admin-only server-side JSON",
+    "importMode": "static-first-firebase-fallback-admin-api-football-provider-map",
+    "updatedAt": "2026-06-06"
+  },
+  "seasonId": "2025-2026",
+  "currentSummary": "player-stats-summary-2025-2026.v001.json",
+  "currentDetail": null,
+  "schema": {
+    "summary": {
+      "description": "Dataset leggero statico per la tabella Soccer Data. I campi numerici partono null e vanno compilati solo con dati verificati e pubblicabili.",
+      "requiredPlayerKeys": [
+        "playerKey",
+        "fbrefId",
+        "fbrefName"
+      ],
+      "recommendedColumns": [
+        "competition",
+        "matches",
+        "starts",
+        "minutes",
+        "goals",
+        "assists",
+        "xg",
+        "npxg",
+        "xa",
+        "xag",
+        "yellowCards",
+        "redCards",
+        "sourceUrl",
+        "sourceUpdatedAt",
+        "statsNotes"
+      ]
+    },
+    "detail": {
+      "description": "Dataset opzionale per future schede dettaglio giocatore. Non caricato dal runtime finche currentDetail resta null.",
+      "recommendedSections": [
+        "standard",
+        "shooting",
+        "passing",
+        "defense",
+        "possession",
+        "goalkeeping"
+      ]
+    }
+  },
+  "notes": [
+    "V391 mantiene il JSON summary statico V390 come prima fonte di lettura.",
+    "Se lo statico non contiene statistiche compilate, il sito prova a leggere la collection Firebase soccerDataPlayerStats.",
+    "I dati esportati vanno verificati e poi pubblicati come JSON statici nella repo.",
+    "V393 aggiunge fallback locale: se Firestore restituisce Missing or insufficient permissions, il payload importato resta in browser ed entra nello stesso export JSON statico.",
+    "V394 usa API-Football come sorgente preferita: una richiesta admin per giocatore, salvataggio su Firebase, export JSON statico e riuso static-first.",
+    "V395 aggiunge il mapping assistito ID API-Football: l admin trova l ID tramite ricerca API, lo salva localmente e scarica un JSON statico da pubblicare in repo."
+  ],
+  "currentSummaryCsvTemplate": "player-stats-summary-2025-2026.v001.template.csv",
+  "datasets": {
+    "summary": {
+      "version": "v001",
+      "file": "player-stats-summary-2025-2026.v001.json",
+      "csvTemplate": "player-stats-summary-2025-2026.v001.template.csv",
+      "records": 532,
+      "mappedFbrefRecords": 531,
+      "needsFbrefMappingRecords": 1,
+      "status": "template-empty",
+      "numericValuesCompiled": 0,
+      "source": "manual/offline only",
+      "providerMap": "../providers/api-football-player-map.v001.json"
+    }
+  },
+  "firebaseFallback": {
+    "enabled": true,
+    "collection": "soccerDataPlayerStats",
+    "documentId": "<seasonId>_api-football_<apiFootballId>",
+    "readOrder": [
+      "static summary JSON",
+      "Firebase fallback when static stats are empty or missing"
+    ],
+    "adminWriteOnlyFromUi": true,
+    "rulesRequired": "docs/zonaorientale/firebase/FIREBASE_RULES_PATCH_V393_SOCCER_DATA_STATS.rules"
+  },
+  "localFallbackV393": {
+    "enabled": true,
+    "adminOnly": true,
+    "trigger": "permission-denied su setDoc soccerDataPlayerStats",
+    "storage": "localStorage quando possibile, memoria sessione se localStorage pieno/non disponibile",
+    "export": "Scarica stats JSON"
+  },
+  "apiFootballV394": {
+    "enabled": true,
+    "adminOnly": true,
+    "function": "/.netlify/functions/api-football-player-stats",
+    "provider": "api-football",
+    "environmentVariable": "ZONAORIENTALE_API_FOOTBALL_KEY",
+    "actions": [
+      "search player id",
+      "save provider id mapping",
+      "fetch player stats",
+      "export provider map json",
+      "export player stats json"
+    ],
+    "saveTarget": "soccerDataPlayerStats",
+    "staticExport": "Scarica stats JSON",
+    "tableColumn": "Aggiornato",
+    "version": "V395",
+    "providerMap": "../providers/api-football-player-map.v001.json"
+  },
+  "providerMappings": {
+    "apiFootball": "../providers/api-football-player-map.v001.json"
+  }
+}

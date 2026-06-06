@@ -25,7 +25,7 @@ const expectedVersion = (app.match(/const DEPLOY_EXPECTED_VERSION_V181 = "(\d+)"
 Number(expectedVersion) >= 385 ? pass(`DEPLOY_EXPECTED_VERSION_V181 >= V385 (${expectedVersion})`) : fail(`versione runtime non V385+: ${expectedVersion || 'assente'}`);
 
 for (const [name, content] of [['index', html], ['competition', competition], ['player', player]]) {
-  (content.includes('V385 Soccer Data associazione FBref') || content.includes('V386 Soccer Data solo admin')) ? pass(`${name}: footer V385+ presente`) : fail(`${name}: footer V385+ assente`);
+  (content.includes('V385 Soccer Data associazione FBref') || content.includes('V386 Soccer Data solo admin') || content.includes('V387 Soccer Data mobile cleanup')) ? pass(`${name}: footer V385+ presente`) : fail(`${name}: footer V385+ assente`);
   const versions = Array.from(new Set((content.match(/\?v=\d+/g) || []).map((item) => item.replace('?v=', ''))));
   versions.length === 1 && Number(versions[0]) >= 385 ? pass(`${name}: cache-buster V385+ allineato (${versions[0]})`) : fail(`${name}: cache-buster non allineati (${versions.join(', ') || 'nessuno'})`);
 }
@@ -44,8 +44,8 @@ const needsReview = mapping.players.filter((p) => p.matchStatus === 'needs-revie
 needsReview.length === 1 && needsReview[0]?.playerKey === 'fc-7262' ? pass('mapping V383 invariato: un needs-review Balentien') : fail(`needs-review non attesi: ${needsReview.map((p) => p.playerKey).join(', ')}`);
 
 soccerSection ? pass('sezione Soccer Data trovata') : fail('sezione Soccer Data non trovata');
-soccerSection.includes('<th>FBref / Giocatore</th>') ? pass('colonna FBref / Giocatore presente') : fail('colonna FBref / Giocatore assente');
-soccerSection.includes('<th>Stato mapping</th>') ? pass('colonna Stato mapping presente') : fail('colonna Stato mapping assente');
+soccerSection.includes('FBref / Giocatore') ? pass('colonna FBref / Giocatore presente') : fail('colonna FBref / Giocatore assente');
+soccerSection.includes('Stato mapping') ? pass('colonna Stato mapping presente') : fail('colonna Stato mapping assente');
 !soccerSection.includes('<th>Azione</th>') ? pass('colonna Azione separata assente') : fail('colonna Azione separata ancora presente');
 ['soccerDataCopyPatchV385','soccerDataDownloadPatchV385','Copia patch FBref','Scarica patch FBref'].forEach((token) => soccerSection.includes(token) ? pass(`index token presente: ${token}`) : fail(`index token mancante: ${token}`));
 

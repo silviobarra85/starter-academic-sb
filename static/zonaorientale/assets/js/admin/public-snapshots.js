@@ -111,6 +111,7 @@ export function createPublicSnapshotAdminHelpersV129({
         <small class="field-hint"><strong>Ultimo snapshot stagione selezionata:</strong> ${escapeHtml(seasonGenerated)}.</small>
         <small class="field-hint"><strong>Ultimo snapshot Albo/FIFA:</strong> ${escapeHtml(honorGenerated)}.</small>
       </div>
+      <small class="field-hint">Per pubblicare un comunicato: salva/approva il comunicato, premi <strong>Aggiorna comunicati</strong>, poi scarica/applica lo snapshot stagione se vuoi renderlo stabile anche nei JSON statici dopo logout/refresh. Il link WhatsApp dinamico legge gia il comunicato da Firebase.</small>
       <small class="field-hint">Comunicati, competizioni e classifiche della stagione sono dentro <code>publicSeasonSnapshots/${escapeHtml(seasonId || "stagione")}</code>. Albo e FIFA sono dentro <code>publicSnapshots/honor</code>.</small>`);
   }
 
