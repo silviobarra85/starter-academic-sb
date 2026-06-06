@@ -29763,7 +29763,7 @@ window.ZonaOrientalePresidentNotificationCenterV370 = {
 };
 
 
-/* V371-V396 - Soccer Data pubblica read-only + provider API.
+/* V371-V397 - Soccer Data pubblica read-only + provider API.
    Sezione additiva: mostra solo giocatori attivi nel listone corrente, mantiene il link profilo
    giocatore quando disponibile e usa API-Football come provider operativo per statistiche/cache. */
 const SOCCER_DATA_MANIFEST_URL_V371 = './assets/soccer-data/manifest.json';
@@ -29941,6 +29941,13 @@ function getSoccerDataStatsDocumentIdV391(seasonId = getSoccerDataStatsSeasonIdV
 function getSoccerDataApiFootballSeasonV394(seasonId = getSoccerDataStatsSeasonIdV391()) {
   const match = String(seasonId || '').match(/(20\d{2})/);
   return match ? match[1] : String(new Date().getFullYear());
+}
+
+function getSoccerDataApiFootballSeasonCandidatesV397(seasonId = getSoccerDataStatsSeasonIdV391()) {
+  const primary = Number(getSoccerDataApiFootballSeasonV394(seasonId));
+  const values = [String(primary)];
+  if (Number.isFinite(primary)) values.push(String(primary - 1), String(primary + 1));
+  return [...new Set(values.filter((item) => /^20\d{2}$/.test(item)))];
 }
 
 function getSoccerDataApiFootballStorageKeyV394() {
@@ -30313,25 +30320,36 @@ function applySoccerDataApiFootballSquadMappingV396(rows = getSoccerDataRowsV371
 
 async function fetchSoccerDataApiFootballSerieASquadsV396(button) {
   if (!state.isAdmin) return;
-  const confirmed = window.confirm?.('Scaricare le rose Serie A da API-Football consuma circa 21 richieste API (1 squadre + circa 20 rose). Procedo?');
+  const confirmed = window.confirm?.('Scaricare le rose Serie A da API-Football consuma circa 21 richieste API se la stagione corretta e disponibile. Se la stagione del listone non e coperta, la V397 prova anche stagione precedente e successiva. Procedo?');
   if (confirmed === false) return;
   const previous = button?.textContent;
   if (button) {
     button.disabled = true;
     button.textContent = 'Scarico rose...';
   }
-  const season = getSoccerDataApiFootballSeasonV394();
+  const requestedSeason = getSoccerDataApiFootballSeasonV394();
+  const seasonCandidates = getSoccerDataApiFootballSeasonCandidatesV397();
   const league = SOCCER_DATA_API_FOOTBALL_SERIE_A_LEAGUE_ID_V396;
   try {
-    showSoccerDataStatsStatusV391(`Recupero squadre Serie A ${season}...`);
-    const teamsPayload = await callSoccerDataApiFootballFunctionV394({ action: 'teams', league, season });
+    showSoccerDataStatsStatusV391(`Recupero squadre Serie A ${requestedSeason} da API-Football...`);
+    const teamsPayload = await callSoccerDataApiFootballFunctionV394({ action: 'teams', league, season: requestedSeason, seasonCandidates });
     const teams = Array.isArray(teamsPayload.teams) ? teamsPayload.teams : [];
-    if (!teams.length) throw new Error('API-Football non ha restituito squadre Serie A.');
+    const seasonUsed = String(teamsPayload.seasonUsed || teamsPayload.season || requestedSeason);
+    if (!teams.length) {
+      const attempts = Array.isArray(teamsPayload.attempts)
+        ? teamsPayload.attempts.map((item) => `${item.season}: ${item.teamsCount || item.results || 0}`).join(', ')
+        : '';
+      const warning = teamsPayload.warning || `API-Football non ha restituito squadre Serie A per league ${league}.`;
+      throw new Error(`${warning}${attempts ? ` Tentativi: ${attempts}.` : ''}`);
+    }
+    if (teamsPayload.seasonFallbackUsed) {
+      showSoccerDataStatsStatusV391(`API-Football non ha dato squadre per ${requestedSeason}; uso ${seasonUsed} per scaricare le rose. Verifica il mapping prima di esportarlo.`);
+    }
     const squads = [];
     for (let index = 0; index < teams.length; index += 1) {
       const team = teams[index];
       showSoccerDataStatsStatusV391(`Recupero rosa ${index + 1}/${teams.length}: ${team.name || team.id}...`);
-      const squadPayload = await callSoccerDataApiFootballFunctionV394({ action: 'squad', teamId: team.id, season, league });
+      const squadPayload = await callSoccerDataApiFootballFunctionV394({ action: 'squad', teamId: team.id, season: seasonUsed, league });
       squads.push({
         team,
         players: Array.isArray(squadPayload.players) ? squadPayload.players : [],
@@ -30341,15 +30359,19 @@ async function fetchSoccerDataApiFootballSerieASquadsV396(button) {
       });
       saveSoccerDataApiFootballSquadsV396({
         meta: {
-          version: 'V396-partial',
+          version: 'V397-partial',
           provider: 'api-football',
           league,
-          season,
+          requestedSeason,
+          season: seasonUsed,
+          seasonUsed,
+          seasonFallbackUsed: Boolean(teamsPayload.seasonFallbackUsed),
           seasonId: getSoccerDataStatsSeasonIdV391(),
           updatedAt: new Date().toISOString(),
           teamsCount: teams.length,
           squadsCount: squads.length,
-          totalPlayers: squads.reduce((sum, squad) => sum + (squad.players?.length || 0), 0)
+          totalPlayers: squads.reduce((sum, squad) => sum + (squad.players?.length || 0), 0),
+          attempts: teamsPayload.attempts || []
         },
         teams,
         squads
@@ -30357,32 +30379,67 @@ async function fetchSoccerDataApiFootballSerieASquadsV396(button) {
     }
     const payload = {
       meta: {
-        version: 'V396',
+        version: 'V397',
         provider: 'api-football',
         league,
         leagueName: 'Serie A',
-        season,
+        requestedSeason,
+        season: seasonUsed,
+        seasonUsed,
+        seasonFallbackUsed: Boolean(teamsPayload.seasonFallbackUsed),
+        seasonCandidates,
         seasonId: getSoccerDataStatsSeasonIdV391(),
         updatedAt: new Date().toISOString(),
         teamsCount: teams.length,
         squadsCount: squads.length,
         totalPlayers: squads.reduce((sum, squad) => sum + (squad.players?.length || 0), 0),
         apiRequestsEstimated: 1 + teams.length,
-        note: 'Cache locale rose API-Football usata per generare mapping playerId senza cercare i giocatori uno per uno.'
+        attempts: teamsPayload.attempts || [],
+        note: 'Cache locale rose API-Football usata per generare mapping playerId senza cercare i giocatori uno per uno. V397 prova stagioni alternative se API-Football non restituisce team per la stagione richiesta.'
       },
       teams,
       squads
     };
     saveSoccerDataApiFootballSquadsV396(payload);
-    showSoccerDataStatsStatusV391(`Rose API salvate localmente: ${payload.meta.squadsCount} squadre, ${payload.meta.totalPlayers} giocatori. Ora premi Genera mapping da rose.`);
+    const fallbackNote = teamsPayload.seasonFallbackUsed ? ` Stagione API usata: ${seasonUsed} invece di ${requestedSeason}. Verifica i casi ambigui prima di scaricare il mapping.` : '';
+    showSoccerDataStatsStatusV391(`Rose API salvate localmente: ${payload.meta.squadsCount} squadre, ${payload.meta.totalPlayers} giocatori.${fallbackNote} Ora premi Genera mapping da rose.`);
   } catch (error) {
-    console.warn('Download rose API-Football V396 non riuscito', error);
+    console.warn('Download rose API-Football V397 non riuscito', error);
     showSoccerDataStatsStatusV391(`Errore rose API-Football: ${error?.message || error}`, true);
     window.alert?.(`Errore download rose API-Football: ${error?.message || error}`);
   } finally {
     if (button) {
       button.disabled = false;
       button.textContent = previous || 'Scarica rose Serie A API';
+    }
+  }
+}
+
+async function runSoccerDataApiFootballDiagnosticsV397(button) {
+  if (!state.isAdmin) return;
+  const previous = button?.textContent;
+  if (button) {
+    button.disabled = true;
+    button.textContent = 'Diagnostica...';
+  }
+  try {
+    const payload = await callSoccerDataApiFootballFunctionV394({ action: 'status' });
+    const requests = payload?.response?.requests || {};
+    const subscription = payload?.response?.subscription || {};
+    const used = requests.current ?? '-';
+    const limit = requests.limit_day ?? payload?.rateLimit?.limit ?? '-';
+    const plan = subscription.plan || '-';
+    const active = subscription.active === false ? 'non attiva' : 'attiva';
+    showSoccerDataStatsStatusV391(`Diagnostica API ok: piano ${plan}, sottoscrizione ${active}, richieste oggi ${used}/${limit}.`);
+    window.alert?.(`Diagnostica API-Football ok\nPiano: ${plan}\nSottoscrizione: ${active}\nRichieste oggi: ${used}/${limit}`);
+  } catch (error) {
+    console.warn('Diagnostica API-Football V397 non riuscita', error);
+    showSoccerDataStatsStatusV391(`Errore diagnostica API-Football: ${error?.message || error}`, true);
+    window.alert?.(`Errore diagnostica API-Football: ${error?.message || error}`);
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = previous || 'Diagnostica API';
     }
   }
 }
@@ -31007,7 +31064,8 @@ function setSoccerDataControlsLockedV386(isLocked = false) {
     'soccerDataDownloadFirebaseStatsV391',
     'soccerDataDownloadApiFootballMapV395',
     'soccerDataFetchApiFootballSquadsV396',
-    'soccerDataGenerateApiFootballMapV396'
+    'soccerDataGenerateApiFootballMapV396',
+    'soccerDataApiFootballDiagnosticsV397'
   ].forEach((id) => {
     const element = document.getElementById(id);
     if (element) element.disabled = Boolean(isLocked);
@@ -31990,14 +32048,14 @@ function buildSoccerDataApiFootballProviderMapV395(rows = getSoccerDataRowsV371(
   return {
     meta: {
       version: 'api-football-player-map.v001',
-      appVersion: 'V396',
+      appVersion: 'V397',
       provider: 'api-football',
       seasonId,
       exportedAt: new Date().toISOString(),
       records: players.length,
       mappedCount,
       missingCount: Math.max(0, players.length - mappedCount),
-      note: 'Mapping statico ID API-Football generato dalla UI Soccer Data. V396 puo generarlo automaticamente dalla cache rose Serie A per evitare ricerche giocatore una per una.',
+      note: 'Mapping statico ID API-Football generato dalla UI Soccer Data. V397 genera il mapping dalla cache rose Serie A e prova stagioni alternative se API-Football non restituisce squadre per la stagione richiesta.',
       squadCache: state.soccerDataApiFootballSquadsV396?.meta || null,
       autoMap: state.soccerDataApiFootballLastAutoMapV396 || null
     },
@@ -32231,6 +32289,12 @@ document.addEventListener('click', async (event) => {
   if (apiGenerateMapButtonV396) {
     if (!state.isAdmin) return;
     await generateSoccerDataApiFootballMappingFromSquadsV396(apiGenerateMapButtonV396);
+    return;
+  }
+  const apiDiagnosticsButtonV397 = event.target.closest?.('#soccerDataApiFootballDiagnosticsV397');
+  if (apiDiagnosticsButtonV397) {
+    if (!state.isAdmin) return;
+    await runSoccerDataApiFootballDiagnosticsV397(apiDiagnosticsButtonV397);
     return;
   }
   const apiMapButtonV395 = event.target.closest?.('#soccerDataDownloadApiFootballMapV395');
