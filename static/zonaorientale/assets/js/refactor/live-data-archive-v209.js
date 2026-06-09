@@ -58,6 +58,9 @@ export function createLiveDataArchiveRefactorV209(deps = {}) {
     callOptional("renderDashboardNewsV42");
     callOptional("injectPresidentDashboardV192");
     callOptional("refreshVisibleTeamProfileV120");
+    if (getHashPageSafe() === "archive") {
+      window.requestAnimationFrame(() => renderSeasonArchive());
+    }
   }
 
   async function loadLiveNewsFromFirebase(options = {}) {
@@ -162,12 +165,8 @@ export function createLiveDataArchiveRefactorV209(deps = {}) {
           <div class="season-archive-card-heading-v196"><span>👥</span><div><h3>Squadre della stagione</h3><p>Nomi storici, presidenti, saldo, rosa e stadio.</p></div></div>
           ${archive.renderTeams?.(archiveData) || ""}
         </article>
-        <article class="panel season-archive-card-v196">
-          <div class="season-archive-card-heading-v196"><span>🏆</span><div><h3>Albo della stagione</h3><p>Vincitori principali collegati ad honor.json/snapshot.</p></div></div>
-          ${archive.renderHonor?.(archiveData) || ""}
-        </article>
         <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
-          <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori/classifiche delle competizioni.</p></div></div>
+          <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori delle competizioni.</p></div></div>
           ${archive.renderCompetitions?.(archiveData) || ""}
         </article>
         <article class="panel season-archive-card-v196 season-archive-card-wide-v196">

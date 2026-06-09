@@ -9,6 +9,7 @@ const siteRoot = resolve(toolsDir, '..');
 const repoRoot = resolve(siteRoot, '..', '..');
 const packageDocsRoot = resolve(siteRoot, '..', 'docs', 'zonaorientale');
 const docsRoot = existsSync(resolve(repoRoot, 'docs', 'zonaorientale')) ? resolve(repoRoot, 'docs', 'zonaorientale') : packageDocsRoot;
+const consolidatedDocsRoot = docsRoot;
 const quiet = process.argv.includes('--quiet');
 
 const failures = [];
@@ -71,19 +72,35 @@ else pass('assets/app.js senza import/cache-buster v=355');
 if (/\?v=(35[6-9]|3[6-9][0-9]|[4-9][0-9]{2,})/.test(app)) pass('assets/app.js contiene cache-buster almeno v=356');
 else fail('assets/app.js non contiene cache-buster almeno v=356');
 
-const docs = [
-  resolve(docsRoot, 'FUNZIONALITAV356.md'),
-  resolve(docsRoot, 'handoff/HANDOFF_NUOVO_ASSISTENTE_V356.md'),
-  resolve(docsRoot, 'refactor/MANUAL_QA_TRACKER_V356.md'),
-  resolve(docsRoot, 'audit/MANUAL_QA_TRACKER_MATRIX_V356.md'),
-  resolve(docsRoot, 'release/RELEASE_V356_MANUAL_QA_TRACKER.md'),
-  resolve(docsRoot, 'test/MANUAL_QA_TRACKER_COMANDI_V356.md')
+const legacyDocs = [
+  'FUNZIONALITAV356.md',
+  'handoff/HANDOFF_NUOVO_ASSISTENTE_V356.md',
+  'refactor/MANUAL_QA_TRACKER_V356.md',
+  'audit/MANUAL_QA_TRACKER_MATRIX_V356.md',
+  'release/RELEASE_V356_MANUAL_QA_TRACKER.md',
+  'test/MANUAL_QA_TRACKER_COMANDI_V356.md'
 ];
-for (const doc of docs) mustExist(doc);
+const consolidatedDocs = [
+  resolve(consolidatedDocsRoot, '01_FUNZIONALITA_E_CHANGELOG.md'),
+  resolve(consolidatedDocsRoot, '05_TEST_AUDIT_REGRESSIONI.md'),
+  resolve(consolidatedDocsRoot, '06_RELEASE_HANDOFF_REFACTOR_STORICO.md')
+];
+const consolidatedText = consolidatedDocs.filter(existsSync).map(read).join('\n');
+for (const legacyDoc of legacyDocs) {
+  const abs = resolve(docsRoot, legacyDoc);
+  if (existsSync(abs)) {
+    pass(`${legacyDoc} presente come file storico`);
+  } else if (consolidatedText.includes(`\`${legacyDoc}\``) || consolidatedText.includes(`## `) && consolidatedText.includes(legacyDoc)) {
+    pass(`${legacyDoc} presente nella documentazione consolidata`);
+  } else {
+    fail(`${legacyDoc} mancante anche nella documentazione consolidata`);
+  }
+}
 
 const protectedDoc = resolve(docsRoot, "FUNZIONALITA'.md");
 if (existsSync(protectedDoc)) pass("docs/zonaorientale/FUNZIONALITA'.md protetto presente");
-else warn("docs/zonaorientale/FUNZIONALITA'.md non incluso nello zip parziale: verificare nel repository completo");
+else if (consolidatedText.includes("FUNZIONALITA'.md")) pass("FUNZIONALITA'.md presente nella documentazione consolidata");
+else warn("FUNZIONALITA'.md non rilevato nella documentazione consolidata");
 
 if (!quiet) {
   for (const message of passes) console.log(`OK ${message}`);

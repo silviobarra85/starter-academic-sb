@@ -147,3 +147,2022 @@ body.is-mobile-ux .mobile-more-link > span:not(.mobile-more-icon) {
   flex: 1 1 auto;
 }
 
+/* V406 - Mobile safety: micro-ottimizzazioni conservative.
+ * Non cambia routing, dati o logiche JS. Migliora leggibilita, tap target e overflow nelle viste gia esistenti. */
+@media (max-width: 820px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body.is-mobile-ux main,
+  body.is-mobile-ux .container,
+  body.is-mobile-ux .section-panel,
+  body.is-mobile-ux .dashboard-grid,
+  body.is-mobile-ux .dashboard-subsection,
+  body.is-mobile-ux .admin-panel,
+  body.is-mobile-ux .team-area-card,
+  body.is-mobile-ux .market-card,
+  body.is-mobile-ux .calciomercato-card {
+    min-width: 0;
+  }
+
+  body.is-mobile-ux .nav-card,
+  body.is-mobile-ux .panel,
+  body.is-mobile-ux .card,
+  body.is-mobile-ux .listone-player-card,
+  body.is-mobile-ux .roster-card,
+  body.is-mobile-ux .calciomercato-card,
+  body.is-mobile-ux .market-card {
+    overflow-wrap: anywhere;
+  }
+
+  body.is-mobile-ux button,
+  body.is-mobile-ux [role="button"],
+  body.is-mobile-ux .button-primary,
+  body.is-mobile-ux .button-secondary,
+  body.is-mobile-ux .button-ghost,
+  body.is-mobile-ux .link-button,
+  body.is-mobile-ux .filter-pill,
+  body.is-mobile-ux .mobile-subnav-pill,
+  body.is-mobile-ux .mobile-bottom-link,
+  body.is-mobile-ux .mobile-more-link {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  body.is-mobile-ux input,
+  body.is-mobile-ux select,
+  body.is-mobile-ux textarea {
+    font-size: 16px;
+  }
+
+  body.is-mobile-ux .table-wrap,
+  body.is-mobile-ux .mobile-tabular-wrap,
+  body.is-mobile-ux .standing-table-wrap,
+  body.is-mobile-ux .listone-table-wrap,
+  body.is-mobile-ux .roster-season-table-wrap,
+  body.is-mobile-ux .roster-inline-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  body.is-mobile-ux .mobile-bottom-nav {
+    padding-bottom: max(0.45rem, env(safe-area-inset-bottom));
+  }
+
+  body.is-mobile-ux .mobile-more-sheet,
+  body.is-mobile-ux dialog,
+  body.is-mobile-ux .modal,
+  body.is-mobile-ux .dialog-card {
+    max-width: calc(100vw - 20px);
+  }
+}
+
+
+/* V409 - Tabelle giocatori mobile piu compatte e leggibili.
+ * Limita il tap-target compatto alle sole tabelle dense Listone/Rose: i bottoni globali
+ * restano a 44px, mentre righe e link tabellari non gonfiano l'altezza delle celle. */
+@media (max-width: 820px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .listone-table-wrap,
+  body.is-mobile-ux .roster-listone-wrap-v408,
+  body.is-mobile-ux .roster-dialog-table,
+  body.is-mobile-ux .roster-season-table-wrap,
+  body.is-mobile-ux .roster-inline-table-wrap {
+    scrollbar-width: thin;
+    scroll-snap-type: x proximity;
+  }
+
+  body.is-mobile-ux .listone-table,
+  body.is-mobile-ux .free-agents-table,
+  body.is-mobile-ux .roster-listone-skin-v408,
+  body.is-mobile-ux .roster-dialog-players-table,
+  body.is-mobile-ux .roster-player-table,
+  body.is-mobile-ux .team-profile-roster-table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.is-mobile-ux .listone-table th,
+  body.is-mobile-ux .listone-table td,
+  body.is-mobile-ux .free-agents-table th,
+  body.is-mobile-ux .free-agents-table td,
+  body.is-mobile-ux .roster-listone-skin-v408 th,
+  body.is-mobile-ux .roster-listone-skin-v408 td,
+  body.is-mobile-ux .roster-dialog-players-table th,
+  body.is-mobile-ux .roster-dialog-players-table td {
+    vertical-align: middle !important;
+  }
+
+  body.is-mobile-ux .listone-player-cell .link-button,
+  body.is-mobile-ux .roster-player-cell .link-button,
+  body.is-mobile-ux .mobile-roster-cell .link-button,
+  body.is-mobile-ux .roster-listone-skin-v408 .link-button,
+  body.is-mobile-ux .roster-dialog-players-table .link-button {
+    min-height: 30px !important;
+    padding: 0 !important;
+    line-height: 1.12 !important;
+    align-items: center !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  body.is-mobile-ux .listone-player-cell,
+  body.is-mobile-ux .roster-player-cell,
+  body.is-mobile-ux .mobile-roster-cell,
+  body.is-mobile-ux .roster-col-player {
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux .listone-table .status-dot,
+  body.is-mobile-ux .free-agents-table .status-dot,
+  body.is-mobile-ux .roster-listone-skin-v408 .status-dot,
+  body.is-mobile-ux .roster-dialog-players-table .status-dot {
+    flex: 0 0 0.55rem;
+    width: 0.55rem;
+    height: 0.55rem;
+  }
+}
+
+/* V411 - Dashboard mobile piu compatta e leggibile.
+ * Intervento solo CSS: non cambia dati, routing, Firebase, auth, admin o markup.
+ * Riduce spazio verticale nella home mobile e rende piu scansionabili metriche,
+ * comunicati e pannelli principali senza toccare Listone/Rose/Calciomercato. */
+@media (max-width: 820px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="dashboard"] .section-panel,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-subsection,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-panel,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .news-card,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-card {
+    border-radius: 16px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .section-panel,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-subsection {
+    padding: 0.88rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .panel-header,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .section-header,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-panel.content-collapsible-panel > .panel-header {
+    gap: 0.48rem !important;
+    align-items: flex-start !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .panel-header h2,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .section-header h2,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-subsection summary strong {
+    font-size: 1rem !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.01em;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .panel-header p,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .section-header p,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-subsection summary small {
+    font-size: 0.78rem !important;
+    line-height: 1.28 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .cards-grid,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-grid,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .news-list,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-list {
+    gap: 0.72rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .metric-card {
+    padding: 0.82rem !important;
+    min-height: auto !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .metric-label {
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .metric-card strong {
+    font-size: 1.22rem !important;
+    line-height: 1.1 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-card.dashboard-news-details,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .news-card {
+    padding: 0.78rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-card.dashboard-news-details > .dashboard-news-summary {
+    gap: 0.45rem !important;
+    min-height: 42px !important;
+    padding: 0 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-card.dashboard-news-details > .dashboard-news-summary strong,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .news-card h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.94rem !important;
+    line-height: 1.18 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-preview,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .news-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.82rem !important;
+    line-height: 1.32 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-side,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .news-card small {
+    font-size: 0.72rem !important;
+    line-height: 1.22 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-detail-body .button-small,
+  body.is-mobile-ux .app-page[data-page="dashboard"] .dashboard-news-header-actions .button-small {
+    min-height: 38px !important;
+    padding: 0.56rem 0.72rem !important;
+  }
+}
+
+/* V412 - Menu Altro mobile compatto e stabile.
+ * Migliora l'usabilita del menu mobile senza cambiare routing o logiche JS:
+ * il foglio resta scrollabile, piu denso e adatto a schermi piccoli/safe-area.
+ */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .mobile-more-sheet:not(.hidden) {
+    max-height: min(72dvh, calc(100dvh - 128px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.78rem;
+    padding-bottom: max(0.78rem, env(safe-area-inset-bottom));
+  }
+
+  body.is-mobile-ux .mobile-more-sheet:not(.hidden) .mobile-more-header {
+    grid-column: 1 / -1;
+    margin-bottom: 0.1rem;
+  }
+
+  body.is-mobile-ux .mobile-more-link {
+    min-width: 0;
+    min-height: 42px !important;
+    justify-content: flex-start;
+    gap: 0.46rem;
+    padding: 0.58rem 0.62rem !important;
+    font-size: 0.82rem;
+    line-height: 1.12 !important;
+  }
+
+  body.is-mobile-ux .mobile-more-link .mobile-more-icon {
+    flex: 0 0 1.45rem;
+    width: 1.45rem;
+    min-width: 1.45rem;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  body.is-mobile-ux .mobile-more-link > span:not(.mobile-more-icon) {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  body.is-mobile-ux .mobile-more-sheet:not(.hidden) {
+    grid-template-columns: 1fr;
+  }
+
+  body.is-mobile-ux .mobile-more-link > span:not(.mobile-more-icon) {
+    white-space: normal;
+  }
+}
+
+/* V413 - Filtri mobile compatti per Listone e Calciomercato.
+ * Intervento solo CSS: non cambia dati, query, ordinamenti, feed o routing.
+ * Riduce ingombro verticale dei controlli frequenti e mantiene tap target leggibili
+ * dentro Listone e Calciomercato, preservando desktop e logiche JS esistenti. */
+@media (max-width: 820px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel > .panel-header,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-panel-v306 {
+    gap: 0.68rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-filter-row,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-filters-v306 {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.48rem !important;
+    width: 100% !important;
+    padding: 0.62rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+    background: rgba(15, 23, 42, 0.28) !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-filter-row > .input,
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-filter-row .search-input,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-filter-field-v319 .input,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-filter-field-v319 .search-input {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.5rem 0.68rem !important;
+    border-radius: 12px !important;
+    font-size: 0.82rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-status-filters,
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-role-filters {
+    display: grid !important;
+    align-items: stretch !important;
+    gap: 0.34rem !important;
+    padding: 0.42rem !important;
+    border-radius: 13px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-status-filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-role-filters {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-status-filters legend,
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-role-filters legend {
+    grid-column: 1 / -1;
+    margin-bottom: -0.1rem;
+    padding: 0 0.2rem;
+    font-size: 0.62rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-status-filters label,
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-role-filters label {
+    justify-content: center !important;
+    min-width: 0 !important;
+    min-height: 32px !important;
+    padding: 0.28rem 0.32rem !important;
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.045) !important;
+    font-size: 0.72rem !important;
+    line-height: 1.1 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-status-filters input,
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-role-filters input {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-select-row-v319,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-date-row-v319,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-actions-row-v319 {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.48rem !important;
+    width: 100% !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-filter-field-v319 {
+    display: grid !important;
+    gap: 0.22rem !important;
+    min-width: 0 !important;
+    font-size: 0.72rem !important;
+    line-height: 1.1 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-filter-field-v319 > span {
+    font-size: 0.66rem !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-actions-row-v319 .button {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.5rem 0.68rem !important;
+    border-radius: 12px !important;
+    font-size: 0.78rem !important;
+    line-height: 1.15 !important;
+  }
+}
+
+@media (min-width: 430px) and (max-width: 820px) {
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-select-row-v319,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-date-row-v319,
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-actions-row-v319 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="calciomercato"] .calciomercato-search-field-v319 {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 360px) {
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-status-filters {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="listone"] .listone-role-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* V414 - Area Squadra mobile compatta.
+ * Intervento solo CSS: non cambia auth, Firebase, permessi, richieste,
+ * dashboard presidente o navigazione. Riduce ingombro verticale di form,
+ * metriche e pannelli dell'Area Squadra mantenendo tap target leggibili. */
+@media (max-width: 820px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="teamarea"] .page-heading,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .panel {
+    padding: 0.88rem !important;
+    border-radius: 18px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] #teamAreaBody,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .user-actions-grid,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-detail-grid-v369 {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.72rem !important;
+    width: 100% !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .panel-header.compact {
+    gap: 0.48rem !important;
+    margin-bottom: 0.62rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .panel-header.compact h2,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-v369 h2,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-box-v369 h3 {
+    font-size: 1rem !important;
+    line-height: 1.18 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .panel-header.compact p,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-v369 .panel-header p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.78rem !important;
+    line-height: 1.28 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .user-request-grid,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-metrics-v369 {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.46rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .metric-card,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-metric-v369 {
+    min-height: auto !important;
+    padding: 0.64rem 0.52rem !important;
+    border-radius: 14px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .metric-label,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-metric-v369 small {
+    font-size: 0.66rem !important;
+    line-height: 1.12 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .metric-card strong,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-metric-v369 strong {
+    font-size: 0.98rem !important;
+    line-height: 1.12 !important;
+    overflow-wrap: anywhere;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.52rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-grid .span-2,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-grid label,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-actions {
+    grid-column: 1 / -1 !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-grid label {
+    gap: 0.24rem !important;
+    font-size: 0.76rem !important;
+    line-height: 1.12 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .input,
+  body.is-mobile-ux .app-page[data-page="teamarea"] select.input,
+  body.is-mobile-ux .app-page[data-page="teamarea"] textarea.input {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.5rem 0.68rem !important;
+    border-radius: 12px !important;
+    font-size: 0.82rem !important;
+    line-height: 1.18 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] textarea.input {
+    min-height: 88px !important;
+    resize: vertical;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.42rem !important;
+    align-items: stretch !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-actions .button,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-actions-v369 .button,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .team-area-profile-action {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.54rem 0.72rem !important;
+    border-radius: 12px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .form-status {
+    font-size: 0.74rem !important;
+    line-height: 1.24 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-v369,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-box-v369 {
+    padding: 0.78rem !important;
+    border-radius: 16px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-role-row-v369 {
+    gap: 0.32rem !important;
+    margin: 0.62rem 0 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-pill-v369 {
+    padding: 0.24rem 0.48rem !important;
+    font-size: 0.72rem !important;
+    line-height: 1.12 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-actions-v369 {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.42rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-request-v369 {
+    padding: 0.58rem !important;
+    gap: 0.38rem !important;
+    border-radius: 12px !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-table-wrap-v369 {
+    max-height: 58dvh !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 360px) {
+  body.is-mobile-ux .app-page[data-page="teamarea"] .user-request-grid,
+  body.is-mobile-ux .app-page[data-page="teamarea"] .president-dashboard-metrics-v369 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* V416 - Admin mobile compatto e piu scansionabile.
+ * Intervento solo CSS: non cambia workflow admin, Firebase, auth, permessi,
+ * pubblicazioni, import Excel, EmailJS o routing. Riduce ingombro verticale
+ * dei pannelli amministrativi e stabilizza form/liste/tabelle su smartphone. */
+@media (max-width: 820px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .app-page[data-page="admin"] {
+    gap: 0.72rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .page-heading,
+  body.is-mobile-ux .app-page[data-page="admin"] .panel,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-category,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-category-section,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-edit-section {
+    padding: 0.82rem !important;
+    border-radius: 16px !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .panel-header,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-category-heading,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-subsection-headerline,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-edit-section summary {
+    gap: 0.46rem !important;
+    align-items: flex-start !important;
+    margin-bottom: 0.58rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .panel-header h2,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-category-heading h2,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-edit-section summary,
+  body.is-mobile-ux .app-page[data-page="admin"] h3 {
+    font-size: 0.98rem !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.01em;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .panel-header p,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-category-heading p,
+  body.is-mobile-ux .app-page[data-page="admin"] .field-hint,
+  body.is-mobile-ux .app-page[data-page="admin"] .muted,
+  body.is-mobile-ux .app-page[data-page="admin"] small {
+    font-size: 0.74rem !important;
+    line-height: 1.24 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .form-grid,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-toolbar,
+  body.is-mobile-ux .app-page[data-page="admin"] .panel-actions,
+  body.is-mobile-ux .app-page[data-page="admin"] .form-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.5rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .form-grid > *,
+  body.is-mobile-ux .app-page[data-page="admin"] .form-grid .span-2,
+  body.is-mobile-ux .app-page[data-page="admin"] .form-actions,
+  body.is-mobile-ux .app-page[data-page="admin"] .panel-actions > * {
+    grid-column: 1 / -1 !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] label,
+  body.is-mobile-ux .app-page[data-page="admin"] .checkbox-label {
+    gap: 0.26rem !important;
+    font-size: 0.76rem !important;
+    line-height: 1.14 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .input,
+  body.is-mobile-ux .app-page[data-page="admin"] select.input,
+  body.is-mobile-ux .app-page[data-page="admin"] textarea.input,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-search-input {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.5rem 0.68rem !important;
+    border-radius: 12px !important;
+    font-size: 0.82rem !important;
+    line-height: 1.18 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] textarea.input {
+    min-height: 92px !important;
+    resize: vertical;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .button,
+  body.is-mobile-ux .app-page[data-page="admin"] .button-primary,
+  body.is-mobile-ux .app-page[data-page="admin"] .button-secondary,
+  body.is-mobile-ux .app-page[data-page="admin"] .button-ghost,
+  body.is-mobile-ux .app-page[data-page="admin"] .link-button {
+    width: 100%;
+    min-height: 38px !important;
+    padding: 0.54rem 0.72rem !important;
+    border-radius: 12px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.14 !important;
+    justify-content: center !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-list {
+    display: grid !important;
+    gap: 0.48rem !important;
+    max-height: min(58dvh, 560px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0.1rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-list-item,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-user-approved-item,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-subsection-block {
+    gap: 0.42rem !important;
+    padding: 0.6rem !important;
+    border-radius: 13px !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-list-item > span,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-list-item small,
+  body.is-mobile-ux .app-page[data-page="admin"] .admin-user-approved-item > * {
+    min-width: 0 !important;
+    overflow-wrap: anywhere;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .import-report,
+  body.is-mobile-ux .app-page[data-page="admin"] .manual-qa-panel-v357,
+  body.is-mobile-ux .app-page[data-page="admin"] .publication-dashboard-v368,
+  body.is-mobile-ux .app-page[data-page="admin"] .result-admin-table-wrap,
+  body.is-mobile-ux .app-page[data-page="admin"] .president-dashboard-table-wrap-v369 {
+    max-width: 100% !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .result-admin-table-wrap table,
+  body.is-mobile-ux .app-page[data-page="admin"] .competition-results-admin-table-v216 {
+    min-width: 620px !important;
+    font-size: 0.72rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .result-admin-table-wrap th,
+  body.is-mobile-ux .app-page[data-page="admin"] .result-admin-table-wrap td,
+  body.is-mobile-ux .app-page[data-page="admin"] .competition-results-admin-table-v216 th,
+  body.is-mobile-ux .app-page[data-page="admin"] .competition-results-admin-table-v216 td {
+    padding: 0.42rem 0.38rem !important;
+    line-height: 1.12 !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .logo-admin-preview {
+    min-height: 92px !important;
+    border-radius: 14px !important;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 820px) {
+  body.is-mobile-ux .app-page[data-page="admin"] .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="admin"] .form-grid .span-2,
+  body.is-mobile-ux .app-page[data-page="admin"] .form-actions,
+  body.is-mobile-ux .app-page[data-page="admin"] label.span-2 {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+
+/* V418 - Accessibilita mobile, focus e overflow controllato.
+   Guardrail CSS-only: migliora tastiera/touch e scorrimento senza cambiare routing,
+   dati, Firebase, auth, admin o logiche JS. */
+@media (max-width: 820px) {
+  body.is-mobile-ux :where(a[href], button, input, select, textarea, summary, [role="button"], [tabindex]:not([tabindex="-1"])) {
+    -webkit-tap-highlight-color: rgba(37, 99, 235, 0.18);
+    touch-action: manipulation;
+  }
+
+  body.is-mobile-ux :where(a[href], button, input, select, textarea, summary, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.58) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.14) !important;
+  }
+
+  body.is-mobile-ux .mobile-bottom-link:focus-visible,
+  body.is-mobile-ux .mobile-more-link:focus-visible,
+  body.is-mobile-ux .mobile-scroll-top:focus-visible {
+    outline-offset: -2px !important;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.72), 0 0 0 4px rgba(37, 99, 235, 0.24) !important;
+  }
+
+  body.is-mobile-ux :where(.app-shell, .app-main, .app-page, .panel, .dashboard-card, .team-card, .section-card, .mobile-home-card-v415, .calciomercato-card-v306, .team-profile-layout, .team-area-grid) {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  body.is-mobile-ux :where(.table-wrap, .table-wrapper, .responsive-table, .player-table-wrap, .listone-table-wrap, .roster-table-wrap, .team-profile-roster-wrap-v415, .result-admin-table-wrap, .president-dashboard-table-wrap-v369, .calciomercato-archive-table-wrap) {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-gutter: stable both-edges;
+  }
+
+  body.is-mobile-ux :where(img, svg, canvas, video) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  body.is-mobile-ux :where(.button, .button-primary, .button-secondary, .button-ghost, .link-button):not(.player-table *):not(.team-profile-roster-table-v415 *) {
+    min-height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.is-mobile-ux *,
+  body.is-mobile-ux *::before,
+  body.is-mobile-ux *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+
+/* V420 - Scala tipografica mobile globale.
+ * Riferimento scelto: card "Squadre della Stagione".
+ * Nome/titolo: 0.78rem; sottotesto: 0.66rem; label: 0.62rem; valore: 0.73rem.
+ * La patch normalizza card, liste, metriche, timeline e tabelle non strutturali
+ * senza cambiare dati, routing, Firebase, auth, admin o logiche JS.
+ */
+@media (max-width: 820px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux {
+    --zo-mobile-name-font-v420: 0.78rem;
+    --zo-mobile-subtext-font-v420: 0.66rem;
+    --zo-mobile-label-font-v420: 0.62rem;
+    --zo-mobile-value-font-v420: 0.73rem;
+    --zo-mobile-name-line-v420: 1.16;
+    --zo-mobile-text-line-v420: 1.24;
+    --zo-mobile-label-line-v420: 1.12;
+  }
+
+  /* Titoli/nome nelle card: stesso peso visivo di "Squadre della Stagione". */
+  body.is-mobile-ux :where(
+    .compact-card h3,
+    .news-card h3,
+    .dashboard-news-card.dashboard-news-details > .dashboard-news-summary strong,
+    .mobile-home-card h3,
+    .mobile-home-card strong,
+    .mobile-home-card-v415 h3,
+    .competition-card h3,
+    .season-archive-card-v196 h3,
+    .season-archive-team-card-v196 strong,
+    .season-archive-competition-card-v196 strong,
+    .season-archive-timeline-v196 strong,
+    .calciomercato-card-v306 h3,
+    .calciomercato-source-v306 h3,
+    .mobile-transfer-card-title strong,
+    .team-card h3,
+    .club-card h3,
+    .team-profile-card h2,
+    .team-profile-news-card h3,
+    .admin-list-item strong,
+    .admin-user-approved-item strong,
+    .president-dashboard-box-v369 h3,
+    .president-dashboard-request-v369 strong,
+    .publication-status-card-head-v190 strong,
+    .admin-publication-dashboard-card-head-v368 strong,
+    .manual-qa-card-v358__label,
+    .manual-qa-area-v358__title
+  ) {
+    font-size: var(--zo-mobile-name-font-v420) !important;
+    line-height: var(--zo-mobile-name-line-v420) !important;
+    letter-spacing: -0.005em !important;
+  }
+
+  /* Contenuti primari/valori nelle card. */
+  body.is-mobile-ux :where(
+    .compact-card p,
+    .news-card p,
+    .dashboard-news-preview,
+    .mobile-home-card p,
+    .mobile-home-card-v415 p,
+    .competition-card p,
+    .season-archive-card-v196 p,
+    .season-archive-team-card-v196 p,
+    .season-archive-competition-card-v196 p,
+    .season-archive-timeline-v196 p,
+    .calciomercato-card-v306 p,
+    .calciomercato-source-v306 p,
+    .mobile-transfer-card-conditions,
+    .team-card p,
+    .club-card p,
+    .team-profile-news-card p,
+    .admin-list-item > span,
+    .admin-user-approved-item > span,
+    .president-dashboard-request-v369 p,
+    .manual-qa-card-v358__info p,
+    .publication-status-card-v190 p,
+    .admin-publication-dashboard-card-v368 p
+  ) {
+    font-size: var(--zo-mobile-value-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  /* Sottotesti e meta. */
+  body.is-mobile-ux :where(
+    .muted,
+    .field-hint,
+    .metric-reason,
+    .dashboard-news-side,
+    .news-card small,
+    .compact-card small,
+    .mobile-home-card small,
+    .competition-card small,
+    .season-archive-card-v196 small,
+    .season-archive-team-card-v196 small,
+    .season-archive-competition-card-v196 small,
+    .calciomercato-card-v306 small,
+    .team-card small,
+    .club-card small,
+    .team-profile-news-card small,
+    .president-dashboard-v369 small,
+    .admin-list-item small,
+    .admin-user-approved-item small,
+    .manual-qa-card-v358__area,
+    .manual-qa-card-v358__status,
+    .publication-status-card-v190 small,
+    .admin-publication-dashboard-card-v368 small
+  ) {
+    font-size: var(--zo-mobile-subtext-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  /* Label/etichette. */
+  body.is-mobile-ux :where(
+    .eyebrow,
+    .metric-label,
+    .filter-group legend,
+    .listone-status-filters legend,
+    .listone-role-filters legend,
+    .calciomercato-filter-field-v319 > span,
+    label > span:first-child,
+    .field-label,
+    .status,
+    .pill,
+    .badge,
+    .tag,
+    table.mobile-tabular th,
+    .mobile-tabular th,
+    .listone-table th,
+    .roster-player-table th,
+    .team-profile-roster-table-v415 th,
+    .result-admin-table-wrap th,
+    .competition-results-admin-table-v216 th
+  ) {
+    font-size: var(--zo-mobile-label-font-v420) !important;
+    line-height: var(--zo-mobile-label-line-v420) !important;
+  }
+
+  /* Valori/metriche. */
+  body.is-mobile-ux :where(
+    .metric-card strong,
+    .president-dashboard-metric-v369 strong,
+    .season-archive-stat strong,
+    .season-archive-metric-value-v419,
+    .mobile-home-card .metric-value,
+    .admin-publication-dashboard-card-v368 strong,
+    .publication-status-card-v190 strong,
+    .manual-qa-card-v358__count,
+    .status strong,
+    table.mobile-tabular td,
+    .mobile-tabular td,
+    .result-admin-table-wrap td,
+    .competition-results-admin-table-v216 td
+  ) {
+    font-size: var(--zo-mobile-value-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  /* Tabelle dense giocatori: applicano la scala ma conservano compattezza e sticky. */
+  body.is-mobile-ux :where(
+    .listone-table,
+    .free-agents-table,
+    .roster-listone-skin-v408,
+    .team-profile-roster-table-v415,
+    .roster-dialog-players-table
+  ) th {
+    font-size: var(--zo-mobile-label-font-v420) !important;
+    line-height: 1.08 !important;
+  }
+
+  body.is-mobile-ux :where(
+    .listone-table,
+    .free-agents-table,
+    .roster-listone-skin-v408,
+    .team-profile-roster-table-v415,
+    .roster-dialog-players-table
+  ) td {
+    font-size: var(--zo-mobile-value-font-v420) !important;
+    line-height: 1.12 !important;
+  }
+
+  body.is-mobile-ux :where(
+    .listone-player-cell .link-button,
+    .roster-player-cell .link-button,
+    .mobile-roster-cell .link-button,
+    .roster-listone-skin-v408 .link-button,
+    .team-profile-roster-table-v415 .link-button,
+    .roster-dialog-players-table .link-button
+  ) {
+    font-size: var(--zo-mobile-name-font-v420) !important;
+    line-height: 1.12 !important;
+  }
+
+  /* Titoli di sezione principali restano distinguibili ma coerenti; non sono ridotti a 0.78. */
+  body.is-mobile-ux :where(.page-heading h1, .mobile-block-hero h1, .section-header h2, .panel-header h2) {
+    line-height: 1.14 !important;
+    letter-spacing: -0.012em !important;
+  }
+}
+
+
+/* V421 - Archivio mobile: sotto-card e contenuti piu compatti.
+ * Estende la scala V420 anche ai contenuti interni delle sotto-card
+ * (Albo, Competizioni, Partite, Timeline) usando come riferimento
+ * Squadre della Stagione: titolo 0.78rem, meta 0.66rem, label 0.62rem, valore 0.73rem.
+ */
+@media (max-width: 820px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux :where(
+    .season-archive-honor-v196 article,
+    .season-archive-competition-card-v196,
+    .season-archive-match-list-v196 article,
+    .season-archive-timeline-v196 article
+  ) {
+    padding: .48rem .52rem !important;
+    border-radius: .72rem !important;
+    gap: .32rem !important;
+  }
+
+  body.is-mobile-ux :where(
+    .season-archive-honor-v196,
+    .season-archive-match-list-v196,
+    .season-archive-timeline-v196,
+    .season-archive-competition-grid-v196
+  ) {
+    gap: .42rem !important;
+  }
+
+  body.is-mobile-ux :where(
+    .season-archive-honor-v196 article > span:first-child,
+    .season-archive-match-list-v196 article > span,
+    .season-archive-chip-row-v196 span,
+    .season-archive-winner-line-v419 > strong
+  ) {
+    font-size: var(--zo-mobile-label-font-v420) !important;
+    line-height: var(--zo-mobile-label-line-v420) !important;
+  }
+
+  body.is-mobile-ux :where(
+    .season-archive-honor-v196 article strong,
+    .season-archive-honor-v196 .club-name-with-logo,
+    .season-archive-match-list-v196 strong,
+    .season-archive-timeline-v196 strong,
+    .season-archive-competition-card-v196 strong
+  ) {
+    font-size: var(--zo-mobile-name-font-v420) !important;
+    line-height: var(--zo-mobile-name-line-v420) !important;
+  }
+
+  body.is-mobile-ux :where(
+    .season-archive-honor-v196 article small,
+    .season-archive-match-list-v196 small,
+    .season-archive-timeline-v196 small,
+    .season-archive-competition-card-v196 small
+  ) {
+    font-size: var(--zo-mobile-subtext-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  body.is-mobile-ux :where(
+    .season-archive-winner-line-v419,
+    .season-archive-competition-card-v196 p,
+    .season-archive-match-list-v196 article,
+    .season-archive-timeline-v196 article
+  ) {
+    font-size: var(--zo-mobile-value-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  body.is-mobile-ux .season-archive-timeline-v196 article {
+    gap: .42rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-timeline-v196 article > span:first-child {
+    width: 1.1rem;
+    flex: 0 0 1.1rem;
+    text-align: center;
+    font-size: .78rem !important;
+    line-height: 1.1 !important;
+  }
+
+  body.is-mobile-ux .season-archive-winner-line-v419 .team-logo,
+  body.is-mobile-ux .season-archive-winner-line-v419 img,
+  body.is-mobile-ux .season-archive-honor-v196 .team-logo,
+  body.is-mobile-ux .season-archive-honor-v196 img {
+    width: 1.08rem !important;
+    height: 1.08rem !important;
+  }
+}
+
+/* V422 - Scala mobile estesa e Archivio Stagioni piu compatto.
+ * Applica la scala V420 anche ai contenuti interni delle card e forza
+ * le squadre dell'Archivio in due card per riga su mobile. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux .panel .compact-card h3,
+  body.is-mobile-ux .panel .dashboard-news-card strong,
+  body.is-mobile-ux .panel .team-profile-news-card h3,
+  body.is-mobile-ux .news-card-details h3,
+  body.is-mobile-ux .calciomercato-card-title,
+  body.is-mobile-ux .season-archive-card-heading-v196 h3,
+  body.is-mobile-ux .season-archive-competition-card-v196 > div > strong,
+  body.is-mobile-ux .season-archive-honor-v196 article strong,
+  body.is-mobile-ux .season-archive-match-list-v196 strong,
+  body.is-mobile-ux .season-archive-timeline-v196 strong {
+    font-size: var(--zo-mobile-name-font-v420) !important;
+    line-height: var(--zo-mobile-name-line-v420) !important;
+    letter-spacing: normal !important;
+  }
+
+  body.is-mobile-ux .panel p,
+  body.is-mobile-ux .compact-card p,
+  body.is-mobile-ux .dashboard-news-preview,
+  body.is-mobile-ux .news-card-detail-body,
+  body.is-mobile-ux .team-profile-news-card p,
+  body.is-mobile-ux .calciomercato-card p,
+  body.is-mobile-ux .mobile-home-card p,
+  body.is-mobile-ux .season-archive-card-heading-v196 p,
+  body.is-mobile-ux .season-archive-competition-card-v196 p,
+  body.is-mobile-ux .season-archive-honor-v196 article,
+  body.is-mobile-ux .season-archive-match-list-v196 article,
+  body.is-mobile-ux .season-archive-timeline-v196 article {
+    font-size: var(--zo-mobile-value-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  body.is-mobile-ux .muted,
+  body.is-mobile-ux .panel small,
+  body.is-mobile-ux .compact-card small,
+  body.is-mobile-ux .dashboard-news-card small,
+  body.is-mobile-ux .news-card-summary small,
+  body.is-mobile-ux .calciomercato-card small,
+  body.is-mobile-ux .season-archive-card-heading-v196 small,
+  body.is-mobile-ux .season-archive-competition-card-v196 small,
+  body.is-mobile-ux .season-archive-honor-v196 span:first-child,
+  body.is-mobile-ux .season-archive-match-list-v196 span,
+  body.is-mobile-ux .season-archive-match-list-v196 small,
+  body.is-mobile-ux .season-archive-timeline-v196 small {
+    font-size: var(--zo-mobile-subtext-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-card-v196 dt,
+  body.is-mobile-ux .season-archive-metric-v196 span,
+  body.is-mobile-ux .season-archive-metric-v196 small,
+  body.is-mobile-ux .mobile-home-kicker,
+  body.is-mobile-ux .stat-label,
+  body.is-mobile-ux .metric-label,
+  body.is-mobile-ux .chip,
+  body.is-mobile-ux .pill,
+  body.is-mobile-ux .badge {
+    font-size: var(--zo-mobile-label-font-v420) !important;
+    line-height: var(--zo-mobile-label-line-v420) !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-card-v196 dd,
+  body.is-mobile-ux .mobile-home-value,
+  body.is-mobile-ux .stat-value,
+  body.is-mobile-ux .metric-value {
+    font-size: var(--zo-mobile-value-font-v420) !important;
+    line-height: var(--zo-mobile-text-line-v420) !important;
+  }
+
+  body.is-mobile-ux .season-archive-teams-v196 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .42rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-card-v196 {
+    padding: .48rem !important;
+    border-radius: .72rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-head-v196 {
+    gap: .36rem !important;
+    margin-bottom: .36rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-head-v196 .team-logo,
+  body.is-mobile-ux .season-archive-team-head-v196 img {
+    width: 1.45rem !important;
+    height: 1.45rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-head-v196 strong,
+  body.is-mobile-ux .season-archive-team-head-v196 small {
+    overflow-wrap: anywhere !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-card-v196 dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .22rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-team-card-v196 dl div {
+    padding-top: .22rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-honor-v196,
+  body.is-mobile-ux .season-archive-competition-grid-v196,
+  body.is-mobile-ux .season-archive-match-list-v196,
+  body.is-mobile-ux .season-archive-timeline-v196 {
+    gap: .4rem !important;
+  }
+
+  body.is-mobile-ux .season-archive-honor-v196 article,
+  body.is-mobile-ux .season-archive-competition-card-v196,
+  body.is-mobile-ux .season-archive-match-list-v196 article,
+  body.is-mobile-ux .season-archive-timeline-v196 article {
+    padding: .46rem !important;
+    border-radius: .72rem !important;
+  }
+}
+
+/* V423 - Scala mobile estesa a Confronta, Statistiche e tabelle Rosa.
+ * Estende il riferimento tipografico V420 a tutte le sezioni pubbliche che
+ * avevano ancora testi/card troppo grandi: Confronta Squadre, Statistiche
+ * storiche e tabelle Rosa. Intervento CSS-only: non cambia dati, routing,
+ * Firebase, auth, admin o logiche JS.
+ */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux {
+    --zo-mobile-section-title-v423: 0.98rem;
+    --zo-mobile-panel-title-v423: var(--zo-mobile-name-font-v420, 0.78rem);
+    --zo-mobile-card-pad-v423: .5rem;
+    --zo-mobile-card-gap-v423: .42rem;
+  }
+
+  /* Titoli principali: ancora riconoscibili, ma non fuori scala rispetto alle card. */
+  body.is-mobile-ux :where(.page-heading h1, .page-heading h2, .mobile-block-hero h1) {
+    font-size: var(--zo-mobile-section-title-v423) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.012em !important;
+    margin-bottom: .18rem !important;
+  }
+
+  body.is-mobile-ux :where(.page-heading p, .mobile-block-hero p, .section-header p, .panel-header p) {
+    font-size: var(--zo-mobile-subtext-font-v420, .66rem) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux :where(.panel-header h2, .panel-header h3, .section-header h2, .section-header h3, .detail-section h3) {
+    font-size: var(--zo-mobile-panel-title-v423) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+    letter-spacing: normal !important;
+  }
+
+  /* Confronta Squadre: card e metriche compatte; info affiancate quando possibile. */
+  body.is-mobile-ux :where(.team-compare-page-v195, .team-compare-content-v195, .team-compare-direct-v195) {
+    gap: .52rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-panel-v195,
+  body.is-mobile-ux .team-compare-profile-v195,
+  body.is-mobile-ux .team-compare-direct-v195 {
+    padding: .58rem !important;
+    border-radius: .82rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-controls-v195 {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: .44rem !important;
+    align-items: end !important;
+    margin-bottom: .55rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-controls-v195 .button,
+  body.is-mobile-ux .team-compare-note-v195 {
+    grid-column: 1 / -1 !important;
+  }
+
+  body.is-mobile-ux .team-compare-controls-v195 label,
+  body.is-mobile-ux .team-compare-detail-v195 {
+    gap: .22rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-controls-v195 label span,
+  body.is-mobile-ux .team-compare-metric-v195 span,
+  body.is-mobile-ux .team-compare-direct-score-v195 span,
+  body.is-mobile-ux .team-compare-direct-list-v195 span,
+  body.is-mobile-ux .team-compare-chip-row-v195 span {
+    font-size: var(--zo-mobile-label-font-v420, .62rem) !important;
+    line-height: var(--zo-mobile-label-line-v420, 1.12) !important;
+  }
+
+  body.is-mobile-ux .team-compare-profile-head-v195 {
+    gap: .42rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-profile-head-v195 h3,
+  body.is-mobile-ux .team-compare-section-title-v195 h3,
+  body.is-mobile-ux .team-compare-detail-v195 strong,
+  body.is-mobile-ux .team-compare-direct-list-v195 strong {
+    font-size: var(--zo-mobile-name-font-v420, .78rem) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+  }
+
+  body.is-mobile-ux .team-compare-profile-head-v195 p,
+  body.is-mobile-ux .team-compare-section-title-v195 p,
+  body.is-mobile-ux .team-compare-detail-v195 p,
+  body.is-mobile-ux .team-compare-note-v195,
+  body.is-mobile-ux .team-compare-direct-list-v195 small {
+    font-size: var(--zo-mobile-subtext-font-v420, .66rem) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux .team-compare-metrics-v195 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .38rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-metric-v195,
+  body.is-mobile-ux .team-compare-direct-score-v195 div {
+    padding: .46rem !important;
+    border-radius: .72rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-metric-v195 strong,
+  body.is-mobile-ux .team-compare-direct-score-v195 strong {
+    font-size: var(--zo-mobile-value-font-v420, .73rem) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+    margin-top: .1rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-direct-score-v195 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: .36rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-direct-list-v195 article {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+    gap: .36rem !important;
+    padding-top: .38rem !important;
+    text-align: left !important;
+  }
+
+  body.is-mobile-ux .team-compare-chip-row-v195 {
+    gap: .26rem !important;
+  }
+
+  body.is-mobile-ux .team-compare-chip-row-v195 span {
+    padding: .14rem .34rem !important;
+  }
+
+  /* Statistiche storiche: valori e ranking sulla stessa riga quando possibile. */
+  body.is-mobile-ux :where(.historical-stats-page-v193, .historical-stats-content-v193, .historical-ranking-v193, .historical-timeline-v193) {
+    gap: .5rem !important;
+  }
+
+  body.is-mobile-ux .historical-stats-hero-v193,
+  body.is-mobile-ux .historical-stat-card-v193,
+  body.is-mobile-ux .historical-stat-metric-v193,
+  body.is-mobile-ux .historical-ranking-row-v193,
+  body.is-mobile-ux .historical-timeline-v193 article {
+    padding: .5rem !important;
+    border-radius: .76rem !important;
+  }
+
+  body.is-mobile-ux .historical-stats-summary-v193 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .38rem !important;
+  }
+
+  body.is-mobile-ux .historical-stat-card-v193 h3,
+  body.is-mobile-ux .historical-stat-team-v193 strong,
+  body.is-mobile-ux .historical-ranking-row-v193 strong,
+  body.is-mobile-ux .historical-timeline-v193 strong {
+    font-size: var(--zo-mobile-name-font-v420, .78rem) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+  }
+
+  body.is-mobile-ux .historical-stat-metric-v193 strong {
+    font-size: var(--zo-mobile-value-font-v420, .73rem) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+    margin: .08rem 0 !important;
+  }
+
+  body.is-mobile-ux .historical-stat-metric-v193 span,
+  body.is-mobile-ux .historical-chip-row-v193 span,
+  body.is-mobile-ux .historical-rank-v193 {
+    font-size: var(--zo-mobile-label-font-v420, .62rem) !important;
+    line-height: var(--zo-mobile-label-line-v420, 1.12) !important;
+  }
+
+  body.is-mobile-ux .historical-stat-metric-v193 small,
+  body.is-mobile-ux .historical-ranking-row-v193 small,
+  body.is-mobile-ux .historical-ranking-row-v193 div,
+  body.is-mobile-ux .historical-timeline-v193 span,
+  body.is-mobile-ux .historical-timeline-v193 small {
+    font-size: var(--zo-mobile-subtext-font-v420, .66rem) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux .historical-ranking-row-v193 {
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    gap: .42rem !important;
+    align-items: center !important;
+  }
+
+  body.is-mobile-ux .historical-timeline-v193 article {
+    grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: .38rem !important;
+  }
+
+  body.is-mobile-ux .historical-rank-v193 {
+    width: 1.45rem !important;
+    height: 1.45rem !important;
+  }
+
+  body.is-mobile-ux .historical-chip-row-v193 {
+    gap: .22rem !important;
+    margin-top: .18rem !important;
+  }
+
+  body.is-mobile-ux .historical-chip-row-v193 span {
+    padding: .12rem .32rem !important;
+  }
+
+  /* Tabelle Rosa: il nome giocatore ha la stessa scala del Listone. */
+  body.is-mobile-ux :where(
+    .listone-table .listone-player-cell,
+    .listone-table .listone-player-cell .link-button,
+    .free-agents-table .listone-player-cell,
+    .free-agents-table .listone-player-cell .link-button,
+    .roster-listone-skin-v408 .roster-player-cell,
+    .roster-listone-skin-v408 .roster-player-cell .link-button,
+    .team-profile-roster-table .roster-player-cell,
+    .team-profile-roster-table .roster-player-cell .link-button,
+    .team-profile-roster-table td:first-child,
+    .team-profile-roster-table td:first-child .link-button,
+    .roster-dialog-players-table .roster-player-cell,
+    .roster-dialog-players-table .roster-player-cell .link-button
+  ) {
+    font-size: var(--zo-mobile-name-font-v420, .78rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  body.is-mobile-ux :where(.team-profile-roster-table th, .team-profile-roster-table td, .roster-listone-skin-v408 th, .roster-listone-skin-v408 td) {
+    padding-top: .34rem !important;
+    padding-bottom: .34rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  body.is-mobile-ux .team-compare-controls-v195 {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.is-mobile-ux .team-compare-direct-score-v195 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.is-mobile-ux .historical-ranking-row-v193,
+  body.is-mobile-ux .historical-timeline-v193 article {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+  }
+}
+
+/* V424 - Scala mobile uniforme sulle sezioni residue.
+ * Estende la scala V420-V423 anche a News/Comunicati, Competizioni,
+ * Albo d'Oro, Rose/Club e Fantamercato. Intervento CSS-only: non cambia
+ * dati, routing, Firebase, auth, admin, Netlify o logiche JS.
+ */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux {
+    --zo-mobile-card-title-v424: var(--zo-mobile-name-font-v420, .78rem);
+    --zo-mobile-card-text-v424: var(--zo-mobile-value-font-v420, .73rem);
+    --zo-mobile-card-meta-v424: var(--zo-mobile-subtext-font-v420, .66rem);
+    --zo-mobile-card-label-v424: var(--zo-mobile-label-font-v420, .62rem);
+    --zo-mobile-card-padding-v424: .52rem;
+    --zo-mobile-card-radius-v424: .78rem;
+    --zo-mobile-section-gap-v424: .52rem;
+  }
+
+  /* News e comunicati: stessa scala compatta di Archivio e dashboard. */
+  body.is-mobile-ux :where(.app-page[data-page="news"], .app-page[data-page="dashboard"]) .news-list,
+  body.is-mobile-ux .news-list {
+    gap: var(--zo-mobile-section-gap-v424) !important;
+  }
+
+  body.is-mobile-ux .news-card,
+  body.is-mobile-ux .dashboard-news-card,
+  body.is-mobile-ux .news-card-summary {
+    padding: var(--zo-mobile-card-padding-v424) !important;
+    border-radius: var(--zo-mobile-card-radius-v424) !important;
+  }
+
+  body.is-mobile-ux .news-card-header,
+  body.is-mobile-ux .dashboard-news-card-header,
+  body.is-mobile-ux .news-card-summary header {
+    gap: .36rem !important;
+    align-items: flex-start !important;
+  }
+
+  body.is-mobile-ux .news-card h3,
+  body.is-mobile-ux .news-card h4,
+  body.is-mobile-ux .dashboard-news-card h3,
+  body.is-mobile-ux .dashboard-news-card h4,
+  body.is-mobile-ux .news-card-summary h3,
+  body.is-mobile-ux .news-card-summary h4 {
+    font-size: var(--zo-mobile-card-title-v424) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+    margin: .12rem 0 !important;
+  }
+
+  body.is-mobile-ux .news-card p,
+  body.is-mobile-ux .dashboard-news-card p,
+  body.is-mobile-ux .news-card-summary p {
+    font-size: var(--zo-mobile-card-text-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+    margin-top: .22rem !important;
+  }
+
+  body.is-mobile-ux .news-card small,
+  body.is-mobile-ux .dashboard-news-card small,
+  body.is-mobile-ux .news-card-summary small,
+  body.is-mobile-ux .news-card .muted,
+  body.is-mobile-ux .dashboard-news-card .muted {
+    font-size: var(--zo-mobile-card-meta-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  /* Competizioni: card e sottosezioni alla stessa scala delle card squadra. */
+  body.is-mobile-ux .competition-list,
+  body.is-mobile-ux .competition-card .podium-list,
+  body.is-mobile-ux .competition-card-body,
+  body.is-mobile-ux .dashboard-competition-body,
+  body.is-mobile-ux .competition-match-groups {
+    gap: var(--zo-mobile-section-gap-v424) !important;
+  }
+
+  body.is-mobile-ux .competition-card,
+  body.is-mobile-ux .competition-detail-card,
+  body.is-mobile-ux .palmares-competition-card,
+  body.is-mobile-ux .dashboard-competition-subsection,
+  body.is-mobile-ux .competition-match-stage-details {
+    padding: var(--zo-mobile-card-padding-v424) !important;
+    border-radius: var(--zo-mobile-card-radius-v424) !important;
+  }
+
+  body.is-mobile-ux .competition-card-header,
+  body.is-mobile-ux .compact-card-header,
+  body.is-mobile-ux .competition-card-header-with-actions,
+  body.is-mobile-ux .competition-match-stage-summary {
+    gap: .38rem !important;
+  }
+
+  body.is-mobile-ux .competition-card h3,
+  body.is-mobile-ux .competition-card h4,
+  body.is-mobile-ux .competition-card-header h3,
+  body.is-mobile-ux .competition-card-header h4,
+  body.is-mobile-ux .mobile-competition-heading,
+  body.is-mobile-ux .palmares-competition-card .compact-card-header h3,
+  body.is-mobile-ux .competition-match-stage-summary h4,
+  body.is-mobile-ux .dashboard-competition-body h4 {
+    font-size: var(--zo-mobile-card-title-v424) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+    margin: .1rem 0 !important;
+  }
+
+  body.is-mobile-ux .competition-card p,
+  body.is-mobile-ux .competition-card-body p,
+  body.is-mobile-ux .palmares-competition-card .compact-card-header p,
+  body.is-mobile-ux .dashboard-competition-summary,
+  body.is-mobile-ux .competition-match-stage-details p {
+    font-size: var(--zo-mobile-card-text-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux .competition-card small,
+  body.is-mobile-ux .competition-card-header span:not(.status),
+  body.is-mobile-ux .competition-mobile-summary span,
+  body.is-mobile-ux .competition-stage-toggle-label,
+  body.is-mobile-ux .competition-source-line,
+  body.is-mobile-ux .competition-card-source-line,
+  body.is-mobile-ux .static-source-line,
+  body.is-mobile-ux .dashboard-competition-summary .muted {
+    font-size: var(--zo-mobile-card-meta-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  /* Albo d'Oro: tabelle e celle compatte senza perdere sticky/scroll. */
+  body.is-mobile-ux .honor-overall-section h3,
+  body.is-mobile-ux .honor-competition-sections h3,
+  body.is-mobile-ux .palmares-competitions-section-v167 > h3 {
+    font-size: var(--zo-mobile-card-title-v424) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+    margin: .18rem 0 .34rem !important;
+  }
+
+  body.is-mobile-ux .honor-table-wrap,
+  body.is-mobile-ux .honor-cup-content,
+  body.is-mobile-ux .mobile-honor-table-wrap {
+    gap: .38rem !important;
+  }
+
+  body.is-mobile-ux .honor-table-wrap th,
+  body.is-mobile-ux .honor-cup-content th,
+  body.is-mobile-ux table.mobile-honor-table th,
+  body.is-mobile-ux .honor-table-wrap td::before,
+  body.is-mobile-ux .honor-cup-content td::before,
+  body.is-mobile-ux table.mobile-honor-table td::before {
+    font-size: var(--zo-mobile-card-label-v424) !important;
+    line-height: var(--zo-mobile-label-line-v420, 1.12) !important;
+  }
+
+  body.is-mobile-ux .honor-table-wrap td,
+  body.is-mobile-ux .honor-cup-content td,
+  body.is-mobile-ux table.mobile-honor-table td,
+  body.is-mobile-ux .honor-table-wrap .number,
+  body.is-mobile-ux .honor-cup-content .number,
+  body.is-mobile-ux table.mobile-honor-table .number {
+    font-size: var(--zo-mobile-card-text-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+    padding-top: .34rem !important;
+    padding-bottom: .34rem !important;
+  }
+
+  body.is-mobile-ux .mobile-honor-president-cell span,
+  body.is-mobile-ux .honor-table-wrap .club-name-with-logo strong,
+  body.is-mobile-ux table.mobile-honor-table .club-name-with-logo strong {
+    font-size: var(--zo-mobile-card-title-v424) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+  }
+
+  body.is-mobile-ux .mobile-honor-president-cell small,
+  body.is-mobile-ux .honor-table-wrap small,
+  body.is-mobile-ux table.mobile-honor-table small {
+    font-size: var(--zo-mobile-card-meta-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  /* Rose/Club e Fantamercato: tabelle e liste dense alla scala del Listone. */
+  body.is-mobile-ux .roster-club-card,
+  body.is-mobile-ux .app-page[data-page="clubs"] .compact-card,
+  body.is-mobile-ux .transfer-market-panel,
+  body.is-mobile-ux .app-page[data-page="fantamercato"] .panel {
+    padding: var(--zo-mobile-card-padding-v424) !important;
+    border-radius: var(--zo-mobile-card-radius-v424) !important;
+  }
+
+  body.is-mobile-ux .roster-card-title,
+  body.is-mobile-ux .roster-card-title .club-name-with-logo,
+  body.is-mobile-ux .app-page[data-page="clubs"] .panel-header h2,
+  body.is-mobile-ux .app-page[data-page="fantamercato"] .panel-header h2,
+  body.is-mobile-ux .transfer-market-table .club-name-with-logo strong,
+  body.is-mobile-ux .transfer-market-table td:first-child,
+  body.is-mobile-ux .transfer-market-table td:first-child .link-button {
+    font-size: var(--zo-mobile-card-title-v424) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+  }
+
+  body.is-mobile-ux .roster-club-card small,
+  body.is-mobile-ux .app-page[data-page="clubs"] .panel-header p,
+  body.is-mobile-ux .app-page[data-page="fantamercato"] .panel-header p,
+  body.is-mobile-ux .transfer-market-table small,
+  body.is-mobile-ux .transfer-market-table .muted {
+    font-size: var(--zo-mobile-card-meta-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux .transfer-market-table th,
+  body.is-mobile-ux .transfer-market-table td,
+  body.is-mobile-ux .app-page[data-page="clubs"] table.roster-season-table th,
+  body.is-mobile-ux .app-page[data-page="clubs"] table.roster-season-table td,
+  body.is-mobile-ux .app-page[data-page="clubs"] table.roster-player-table th,
+  body.is-mobile-ux .app-page[data-page="clubs"] table.roster-player-table td {
+    font-size: var(--zo-mobile-card-text-v424) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+    padding-top: .34rem !important;
+    padding-bottom: .34rem !important;
+  }
+
+  body.is-mobile-ux .transfer-market-table th,
+  body.is-mobile-ux .app-page[data-page="clubs"] table.roster-season-table th,
+  body.is-mobile-ux .app-page[data-page="clubs"] table.roster-player-table th {
+    font-size: var(--zo-mobile-card-label-v424) !important;
+    line-height: var(--zo-mobile-label-line-v420, 1.12) !important;
+  }
+
+  body.is-mobile-ux .roster-club-card .club-logo,
+  body.is-mobile-ux .transfer-market-table .club-logo {
+    width: 1.35rem !important;
+    height: 1.35rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  body.is-mobile-ux .competition-card-header,
+  body.is-mobile-ux .competition-card-header-with-actions,
+  body.is-mobile-ux .news-card-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+}
+
+/* V425 - Consolidamento scala mobile globale.
+   Mantiene una scala unica su card, sottocard, contenuti compatti e tabelle
+   dense senza alterare dati, routing o navigazione. */
+@media (max-width: 760px) {
+  body.is-mobile-ux {
+    --zo-mobile-canonical-title-v425: var(--zo-mobile-name-font-v420, 0.78rem);
+    --zo-mobile-canonical-text-v425: var(--zo-mobile-value-font-v420, 0.73rem);
+    --zo-mobile-canonical-meta-v425: var(--zo-mobile-subtext-font-v420, 0.66rem);
+    --zo-mobile-canonical-label-v425: var(--zo-mobile-label-font-v420, 0.62rem);
+    --zo-mobile-compact-gap-v425: .36rem;
+    --zo-mobile-compact-padding-v425: .52rem;
+  }
+
+  body.is-mobile-ux .panel,
+  body.is-mobile-ux .card,
+  body.is-mobile-ux .compact-card,
+  body.is-mobile-ux .archive-season-card,
+  body.is-mobile-ux .archive-season-subcard,
+  body.is-mobile-ux .news-card,
+  body.is-mobile-ux .competition-card,
+  body.is-mobile-ux .honor-card,
+  body.is-mobile-ux .teamarea-card,
+  body.is-mobile-ux .admin-card {
+    gap: var(--zo-mobile-compact-gap-v425) !important;
+  }
+
+  body.is-mobile-ux .panel-header h2,
+  body.is-mobile-ux .panel-header h3,
+  body.is-mobile-ux .card-title,
+  body.is-mobile-ux .archive-season-card h3,
+  body.is-mobile-ux .archive-season-subcard h4,
+  body.is-mobile-ux .news-card-title,
+  body.is-mobile-ux .competition-card-title,
+  body.is-mobile-ux .honor-card-title,
+  body.is-mobile-ux .teamarea-card-title,
+  body.is-mobile-ux .admin-card-title {
+    font-size: var(--zo-mobile-canonical-title-v425) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+  }
+
+  body.is-mobile-ux .panel-header p,
+  body.is-mobile-ux .card-description,
+  body.is-mobile-ux .archive-season-card p,
+  body.is-mobile-ux .archive-season-subcard p,
+  body.is-mobile-ux .news-card p,
+  body.is-mobile-ux .competition-card p,
+  body.is-mobile-ux .honor-card p,
+  body.is-mobile-ux .teamarea-card p,
+  body.is-mobile-ux .admin-card p,
+  body.is-mobile-ux .muted,
+  body.is-mobile-ux .helper-text {
+    font-size: var(--zo-mobile-canonical-text-v425) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux .meta,
+  body.is-mobile-ux .card-meta,
+  body.is-mobile-ux .archive-timeline-date,
+  body.is-mobile-ux .news-card-meta,
+  body.is-mobile-ux .competition-card-meta,
+  body.is-mobile-ux small {
+    font-size: var(--zo-mobile-canonical-meta-v425) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux .stat-label,
+  body.is-mobile-ux .metric-label,
+  body.is-mobile-ux .fact-label,
+  body.is-mobile-ux .archive-season-stat-label,
+  body.is-mobile-ux .archive-team-stat-label,
+  body.is-mobile-ux .table-label,
+  body.is-mobile-ux th {
+    font-size: var(--zo-mobile-canonical-label-v425) !important;
+    line-height: var(--zo-mobile-label-line-v420, 1.12) !important;
+  }
+
+  body.is-mobile-ux .stat-value,
+  body.is-mobile-ux .metric-value,
+  body.is-mobile-ux .fact-value,
+  body.is-mobile-ux .archive-season-stat-value,
+  body.is-mobile-ux .archive-team-stat-value,
+  body.is-mobile-ux td {
+    font-size: var(--zo-mobile-canonical-text-v425) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+  }
+
+  body.is-mobile-ux .facts-grid,
+  body.is-mobile-ux .metrics-grid,
+  body.is-mobile-ux .archive-season-stats,
+  body.is-mobile-ux .archive-team-stats,
+  body.is-mobile-ux .compare-metrics-grid,
+  body.is-mobile-ux .stats-summary-grid {
+    gap: var(--zo-mobile-compact-gap-v425) !important;
+  }
+
+  body.is-mobile-ux .archive-season-subcard,
+  body.is-mobile-ux .news-card,
+  body.is-mobile-ux .competition-card,
+  body.is-mobile-ux .teamarea-card,
+  body.is-mobile-ux .admin-card {
+    padding: var(--zo-mobile-compact-padding-v425) !important;
+  }
+
+  body.is-mobile-ux table.player-table td:first-child,
+  body.is-mobile-ux table.roster-player-table td:first-child,
+  body.is-mobile-ux .roster-listone-skin td:first-child,
+  body.is-mobile-ux .team-profile-roster-table td:first-child {
+    font-size: var(--zo-mobile-canonical-title-v425) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+  }
+}
+
+/* V429 - Admin mobile: titoli leggibili con pulsante Apri/Riduci.
+   Evita che i titoli delle sotto-sezioni vengano compressi lettera per
+   lettera quando il bottone di apertura occupa spazio nello stesso header. */
+@media (max-width: 760px) {
+  body.is-mobile-ux #adminPanel .admin-category-heading,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: start !important;
+    gap: .42rem .5rem !important;
+  }
+
+  body.is-mobile-ux #adminPanel .admin-category-heading-main,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header > div:first-child,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header > div:first-child,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline > :first-child {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  body.is-mobile-ux #adminPanel .admin-category-heading h2,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header h2,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header h3,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header h2,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header h3,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline h3 {
+    max-width: 100% !important;
+    font-size: var(--zo-mobile-canonical-title-v425, .78rem) !important;
+    line-height: var(--zo-mobile-name-line-v420, 1.16) !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+  }
+
+  body.is-mobile-ux #adminPanel .admin-category-heading p,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header p:not(.eyebrow),
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header p:not(.eyebrow) {
+    font-size: var(--zo-mobile-canonical-meta-v425, .66rem) !important;
+    line-height: var(--zo-mobile-text-line-v420, 1.24) !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  body.is-mobile-ux #adminPanel .panel-actions,
+  body.is-mobile-ux #adminPanel .admin-category-actions-v313,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline .status,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline .badge {
+    justify-self: end !important;
+    align-self: start !important;
+    width: auto !important;
+    min-width: max-content !important;
+    flex: 0 0 auto !important;
+    flex-wrap: nowrap !important;
+  }
+
+  body.is-mobile-ux #adminPanel [data-admin-toggle-panel],
+  body.is-mobile-ux #adminPanel [data-admin-toggle-category-v313],
+  body.is-mobile-ux #adminPanel [data-admin-toggle-standalone-v313] {
+    min-width: 0 !important;
+    min-height: 30px !important;
+    padding: .3rem .54rem !important;
+    font-size: var(--zo-mobile-canonical-meta-v425, .66rem) !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.is-mobile-ux #adminPanel .admin-category-heading,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.is-mobile-ux #adminPanel .panel-actions,
+  body.is-mobile-ux #adminPanel .admin-category-actions-v313,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline .status,
+  body.is-mobile-ux #adminPanel .admin-subsection-headerline .badge {
+    justify-self: start !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.is-mobile-ux #adminPanel [data-admin-toggle-panel],
+  body.is-mobile-ux #adminPanel [data-admin-toggle-category-v313],
+  body.is-mobile-ux #adminPanel [data-admin-toggle-standalone-v313] {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+}
+
+/* V430 - Admin mobile: Apri/Riduci sopra il titolo.
+   La V429 proteggeva il wrapping, ma il titolo poteva ancora essere compresso
+   quando il bottone restava nella stessa riga. Da V430 il controllo viene
+   impilato in alto a sinistra e il blocco titolo usa tutta la larghezza. */
+@media (max-width: 760px) {
+  body.is-mobile-ux #adminPanel .admin-category-heading,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "admin-toggle"
+      "admin-title" !important;
+    align-items: start !important;
+    justify-items: stretch !important;
+    row-gap: .32rem !important;
+    column-gap: 0 !important;
+  }
+
+  body.is-mobile-ux #adminPanel .admin-category-heading-main,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header > div:first-child,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header > div:first-child {
+    grid-area: admin-title !important;
+    order: 2 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.is-mobile-ux #adminPanel .panel-actions,
+  body.is-mobile-ux #adminPanel .admin-category-actions-v313 {
+    grid-area: admin-toggle !important;
+    order: 1 !important;
+    justify-self: start !important;
+    align-self: start !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: .28rem !important;
+    margin: 0 !important;
+  }
+
+  body.is-mobile-ux #adminPanel [data-admin-toggle-panel],
+  body.is-mobile-ux #adminPanel [data-admin-toggle-category-v313],
+  body.is-mobile-ux #adminPanel [data-admin-toggle-standalone-v313] {
+    width: auto !important;
+    max-width: max-content !important;
+    min-width: 0 !important;
+    min-height: 28px !important;
+    padding: .28rem .58rem !important;
+    font-size: var(--zo-mobile-canonical-meta-v425, .66rem) !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+  }
+
+  body.is-mobile-ux #adminPanel .admin-category-heading h2,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header h2,
+  body.is-mobile-ux #adminPanel .admin-category-body > .panel .panel-header h3,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header h2,
+  body.is-mobile-ux #adminPanel .admin-collapsible-panel > .panel-header h3 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.is-mobile-ux #adminPanel .panel-actions,
+  body.is-mobile-ux #adminPanel .admin-category-actions-v313 {
+    width: auto !important;
+  }
+}

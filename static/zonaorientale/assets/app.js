@@ -38,19 +38,19 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=390";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=390";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=390";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=390";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=390";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=390";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=390";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=430";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=430";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=430";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=430";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=430";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=430";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=430";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=390";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=390";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=430";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=430";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -114,7 +114,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=390";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=430";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -138,7 +138,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=390";
+} from "./js/domain/news-share-v228.js?v=430";
 import {
   getListoneValue,
   compareListoneValues
@@ -153,19 +153,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=390";
+} from "./js/admin/listone-converter.js?v=430";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=390";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=390";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=430";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=430";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=390";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=390";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=390";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=390";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=430";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=430";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=430";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=430";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=390";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=390";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=390";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=430";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=430";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=430";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -1445,7 +1445,20 @@ function renderPlaceholderPages() {
   renderStadiumsPublic();
 }
 
+function getSectionRegistryV401() {
+  return window.ZonaOrientaleSectionRegistryV401 || null;
+}
+
+function normalizeAppPageV401(pageName) {
+  const registry = getSectionRegistryV401();
+  return registry?.normalizePage?.(pageName) || pageName || "dashboard";
+}
+
 function isAdminOnlyPageV386(pageName) {
+  const registry = getSectionRegistryV401();
+  if (registry?.isKnownPage?.(pageName)) {
+    return Boolean(registry.isAdminOnlyPage?.(pageName));
+  }
   return pageName === "admin";
 }
 
@@ -1662,7 +1675,7 @@ function setContentPanelCollapsed(panel, key, isCollapsed) {
   else state.collapsedContentPanels.delete(key);
 
   const button = panel.querySelector(`[data-content-toggle-panel="${CSS.escape(key)}"]`);
-  if (button) button.textContent = isCollapsed ? "Ingrandisci" : "Riduci";
+  if (button) button.textContent = isCollapsed ? "Apri" : "Riduci";
 }
 
 function toggleContentPanel(key) {
@@ -1765,7 +1778,7 @@ function renderAdminPanel(panelId, eyebrow, title, description, bodyHtml) {
         </div>
         <div class="panel-actions">
           <button class="button button-secondary button-small" type="button" data-admin-toggle-panel="${escapeHtml(panelId)}">
-            ${isCollapsed ? "Ingrandisci" : "Riduci"}
+            ${isCollapsed ? "Apri" : "Riduci"}
           </button>
         </div>
       </div>
@@ -2605,7 +2618,7 @@ function toggleAdminPanel(panelId) {
   else state.collapsedAdminPanels.delete(panelId);
 
   const button = panel.querySelector("[data-admin-toggle-panel]");
-  if (button) button.textContent = isCollapsed ? "Ingrandisci" : "Riduci";
+  if (button) button.textContent = isCollapsed ? "Apri" : "Riduci";
 }
 
 function expandAdminPanel(panelId) {
@@ -3365,6 +3378,164 @@ function resetSeasonForm() {
   showMessage("adminSeasonStatus", "");
 }
 
+/* V423 - Scala mobile estesa a tutte le sezioni pubbliche dense.
+ * CSS-only: Confronta Squadre, Statistiche storiche e tabelle Rosa usano la
+ * stessa scala compatta V420. Nessuna modifica a dati, routing, Firebase,
+ * auth, admin, Netlify o logiche JS.
+ */
+window.ZonaOrientaleMobileTypographyV423 = Object.freeze({
+  version: "V423",
+  cssOnly: true,
+  extendsScaleTo: [
+    "compare",
+    "stats",
+    "team-profile-roster",
+    "roster-listone-skin"
+  ],
+  scale: {
+    name: "0.78rem",
+    subtext: "0.66rem",
+    label: "0.62rem",
+    value: "0.73rem"
+  },
+  compactSameRowInfo: true,
+  preserveStickyFirstColumn: true,
+  preserves: [
+    "V407 home comunicati",
+    "V415 home mobile e La mia squadra",
+    "V422 Archivio Stagioni"
+  ]
+});
+
+/* V424 - Scala mobile uniforme sulle sezioni residue.
+ * CSS-only: News/Comunicati, Competizioni, Albo d'Oro, Rose/Club e Fantamercato
+ * ereditano la stessa scala compatta V420-V423. Nessuna modifica a dati,
+ * routing, Firebase, auth, admin, Netlify o logiche JS.
+ */
+window.ZonaOrientaleMobileTypographyV424 = Object.freeze({
+  version: "V424",
+  cssOnly: true,
+  extendsScaleTo: [
+    "news",
+    "competitions",
+    "honor",
+    "clubs",
+    "fantamercato"
+  ],
+  scale: {
+    name: "0.78rem",
+    subtext: "0.66rem",
+    label: "0.62rem",
+    value: "0.73rem"
+  },
+  compactCardContent: true,
+  preserveStickyTables: true,
+  preserveMobileNavigation: true
+});
+
+/* V425 - Consolidamento finale della scala mobile.
+ * CSS-only: la scala compatta V420 viene protetta come standard mobile globale
+ * per card, sottocard, tabelle dense, metadati e contenuti affiancabili.
+ * Nessuna modifica a dati, routing, Firebase, auth, admin, Netlify o logiche JS.
+ */
+window.ZonaOrientaleMobileTypographyV425 = Object.freeze({
+  version: "V425",
+  cssOnly: true,
+  canonicalScale: {
+    name: "0.78rem",
+    subtext: "0.66rem",
+    label: "0.62rem",
+    value: "0.73rem"
+  },
+  appliesTo: [
+    "dashboard",
+    "news",
+    "clubs",
+    "fantamercato",
+    "calciomercato",
+    "listone",
+    "competitions",
+    "honor",
+    "stats",
+    "archive",
+    "compare",
+    "regolamento",
+    "teamarea",
+    "teamprofile",
+    "admin"
+  ],
+  compactCardContent: true,
+  compactInlineFacts: true,
+  preserveDenseTables: true,
+  preserveMobileNavigation: true
+});
+
+/* V426 - Checklist mobile finale.
+ * Guardrail conclusivo della fase mobile V407-V425: nessun cambio a dati,
+ * routing, Firebase, auth, admin o Netlify; serve a proteggere la UX mobile
+ * prima di eventuale pulizia warning/pre-merge.
+ */
+window.ZonaOrientaleMobileChecklistV426 = Object.freeze({
+  version: "V426",
+  runtimeOnlyGuardrail: true,
+  preservesFeaturesFrom: [
+    "V407 home 4 comunicati e Calciomercato mobile senza immagini",
+    "V408 rosa stile Listone",
+    "V409 tabelle giocatori mobile compatte",
+    "V410 Calciomercato mobile compatto",
+    "V411 dashboard mobile compatta",
+    "V412 menu Altro mobile compatto",
+    "V413 filtri mobile compatti",
+    "V414 Area Squadra mobile",
+    "V415 home mobile e La mia squadra",
+    "V416 Admin mobile compatto",
+    "V417 CSS legacy cleanup",
+    "V418 accessibilita mobile",
+    "V419 Archivio Stagioni mobile",
+    "V420-V425 scala mobile globale"
+  ],
+  canonicalScale: window.ZonaOrientaleMobileTypographyV425?.canonicalScale || {
+    name: "0.78rem",
+    subtext: "0.66rem",
+    label: "0.62rem",
+    value: "0.73rem"
+  },
+  preserveMobileNavigation: true,
+  preserveStickyPlayerTables: true,
+  preserveRoleBackgrounds: true
+});
+/* V427 - Pulizia warning legacy selettiva.
+ * Nessuna nuova feature: classifica come advisory i residui storici non collegati
+ * al runtime e mantiene attivi i guardrail V407-V426 prima del pre-merge.
+ */
+window.ZonaOrientaleLegacyWarningCleanupV427 = Object.freeze({
+  version: "V427",
+  runtimeOnlyGuardrail: true,
+  noFeatureChange: true,
+  preservesMobileScale: true,
+  preservesMobileNavigation: true,
+  knownAdvisoryLegacy: [
+    "assets/css/mobile-hotfix-v166.css",
+    "assets/css/mobile-hotfix-v167.css",
+    "assets/js/utils/shared-helpers-v294.js",
+    "assets/js/trade-notification-simulator-v255.js",
+    "assets/js/dev/trade-notification-simulator-v254.js",
+    "Soccer Data V371-V382 audits storici rimossi dal gate runtime dopo rimozione Soccer Data V398"
+  ]
+});
+/* V428 - Pre-merge cleanup finale.
+ * Nessuna nuova feature: preserva la baseline mobile V407-V427 e prepara il ramo al test manuale/pre-merge.
+ */
+window.ZonaOrientalePreMergeCleanupV428 = Object.freeze({
+  version: "V428",
+  scope: "pre-merge-cleanup",
+  preservesRuntimeFeatures: true,
+  preservesMobileScale: true,
+  standaloneSectionsDisabled: true
+});
+
+
+
 function resetPresidentForm() {
   document.getElementById("adminPresidentForm")?.reset();
   const idInput = document.getElementById("adminPresidentId");
@@ -3741,8 +3912,8 @@ function renderRosterSortButton(key, label, numeric = false) {
 function renderRosterPlayerTable(players) {
   if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
   return `
-    <div class="table-wrap mobile-tabular-wrap roster-table-wrap roster-inline-table-wrap">
-      <table class="mobile-tabular roster-main-table roster-player-table">
+    <div class="table-wrap mobile-tabular-wrap listone-table-wrap roster-table-wrap roster-inline-table-wrap roster-listone-wrap-v408">
+      <table class="mobile-tabular listone-table roster-main-table roster-player-table roster-listone-skin-v408">
         <thead>
           <tr>
             <th class="roster-col-player">${renderRosterSortButton("playerName", "Giocatore")}</th>
@@ -6331,7 +6502,7 @@ function normalizeToggleLabelsV29() {
 
   document.querySelectorAll("[data-admin-toggle-panel]").forEach((button) => {
     const panel = button.closest(".admin-collapsible-panel");
-    button.textContent = panel?.classList.contains("is-collapsed") ? "Espandi" : "Riduci";
+    button.textContent = panel?.classList.contains("is-collapsed") ? "Apri" : "Riduci";
   });
 }
 
@@ -6554,7 +6725,7 @@ function ensureTeamProfilePageV42() {
 }
 
 function setAppPageV42(pageName) {
-  let targetPage = pageName || 'dashboard';
+  let targetPage = normalizeAppPageV401(pageName);
   if (isAdminOnlyPageV386(targetPage) && !state.isAdmin) {
     promptAdminLoginForPageV386(targetPage);
     targetPage = 'dashboard';
@@ -6821,6 +6992,8 @@ function getSeasonTeamIdFromSlugV43(rawSlug) {
 }
 
 function isKnownStaticHashV43(hashValue) {
+  const registry = getSectionRegistryV401();
+  if (registry?.isKnownPage?.(hashValue)) return true;
   return new Set([
     'dashboard',
     'news',
@@ -7716,7 +7889,7 @@ renderDashboardNewsV42 = function renderDashboardNewsV87() {
       <div class="panel-header compact">
         <div>
           <h2>Ultime news e comunicati</h2>
-          <p>Le ultime 3 comunicazioni pubblicate nella stagione selezionata.</p>
+          <p>Le ultime 4 comunicazioni pubblicate nella stagione selezionata.</p>
         </div>
         <div class="panel-actions dashboard-news-header-actions">
           <button class="button button-secondary button-small" type="button" data-v42-page-link="news">Vedi tutte</button>
@@ -7725,7 +7898,7 @@ renderDashboardNewsV42 = function renderDashboardNewsV87() {
       <div id="dashboardNewsList" class="dashboard-news-list"><p class="muted">Caricamento...</p></div>`;
   } else {
     const description = panel.querySelector('.panel-header p');
-    if (description) description.textContent = 'Le ultime 3 comunicazioni pubblicate nella stagione selezionata.';
+    if (description) description.textContent = 'Le ultime 4 comunicazioni pubblicate nella stagione selezionata.';
   }
 
   if (panel.nextElementSibling !== metrics) {
@@ -7734,7 +7907,7 @@ renderDashboardNewsV42 = function renderDashboardNewsV87() {
 
   const target = document.getElementById('dashboardNewsList');
   if (!target) return;
-  const rows = getVisibleNewsForSeasonV79(3);
+  const rows = getVisibleNewsForSeasonV79(4);
 
   target.innerHTML = rows.length ? rows.map((news, index) => {
     const preview = getDashboardNewsPreview(news.body || '', 220);
@@ -15644,7 +15817,37 @@ window.ZonaOrientalePreflight = {
    the static asset preflight from V179, verifies cache-busters/footer version,
    and highlights whether the current admin session is still lightweight. */
 const DEPLOY_CHECKLIST_STORAGE_KEY_V180 = "zonaOrientaleDeployChecklistV191";
-const DEPLOY_EXPECTED_VERSION_V181 = "389";
+
+
+/* V429 - Fix titoli Admin mobile.
+   Corregge la compressione dei titoli nei pannelli Admin mobile quando
+   il pulsante Apri/Riduci occupa spazio nello stesso header. */
+window.ZonaOrientaleAdminMobileHeaderFixV429 = Object.freeze({
+  version: "V429",
+  scope: "admin-mobile-panel-headings",
+  fixes: [
+    "titoli pannelli admin non spezzati lettera per lettera",
+    "azioni Apri/Riduci non comprimono il titolo",
+    "sotto-sezioni admin stackano su schermi stretti"
+  ]
+});
+
+/* V430 - Admin mobile: pulsante Apri/Riduci sopra il titolo.
+   Sposta il controllo di apertura in alto a sinistra nella view mobile,
+   lasciando ai titoli delle sotto-sezioni Admin tutta la larghezza utile. */
+window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
+  version: "V430",
+  scope: "admin-mobile-panel-headings",
+  buttonPlacement: "top-left-before-title",
+  preserves: [
+    "workflow admin",
+    "permessi e auth",
+    "Firebase e dati",
+    "collasso Apri/Riduci esistente"
+  ]
+});
+
+const DEPLOY_EXPECTED_VERSION_V181 = "430";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -17906,7 +18109,9 @@ function buildSeasonArchiveV196(seasonId = getSeasonArchiveSeasonIdV196()) {
   const honorTitles = getSeasonArchiveHonorTitlesV196(honor);
   const rosterEntries = (state.raw.rosterEntries || []).filter((entry) => seasonTeams.some((team) => team.id === entry.seasonTeamId));
   const movements = (state.raw.fmMovements || []).filter((item) => seasonTeams.some((team) => team.id === item.seasonTeamId));
-  const news = (state.raw.news || []).filter((item) => !item.seasonId || item.seasonId === seasonId).slice(0, 8);
+  const news = (state.raw.news || [])
+    .filter((item) => !item.seasonId || item.seasonId === seasonId)
+    .sort(sortSeasonArchiveNewsDescV419);
   const stadiumsBySeasonTeamId = new Map((state.raw.stadiums || []).map((item) => [item.seasonTeamId, item]));
   const rosterCountBySeasonTeamId = rosterEntries.reduce((map, entry) => {
     const key = entry.seasonTeamId || "";
@@ -17966,7 +18171,10 @@ function renderSeasonArchiveCompetitionsV196(archive) {
   return `<div class="season-archive-competition-grid-v196">${archive.competitions.map((competition) => {
     const matches = archive.matches.filter((match) => match.competitionId === competition.id);
     const results = archive.results.filter((result) => result.competitionId === competition.id).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
-    const winner = results[0]?.seasonTeamId ? getSeasonTeamDisplayName(results[0].seasonTeamId) : (competition.winnerSeasonTeamId ? getSeasonTeamDisplayName(competition.winnerSeasonTeamId) : "-");
+    const winnerId = results[0]?.seasonTeamId || competition.winnerSeasonTeamId || "";
+    const winnerHtml = winnerId
+      ? renderSeasonTeamNameWithLogo(String(winnerId), { strong: true })
+      : `<strong>${escapeHtml(competition.winnerName || "-")}</strong>`;
     return `
       <article class="season-archive-competition-card-v196">
         <div><strong>${escapeHtml(getCompetitionNameV196(competition))}</strong><small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type) || competition.type || "Competizione")}</small></div>
@@ -17975,7 +18183,7 @@ function renderSeasonArchiveCompetitionsV196(archive) {
           <span>${matches.length} partite</span>
           <span>${results.length} righe classifica</span>
         </div>
-        <p><strong>Vincitore/Classifica:</strong> ${escapeHtml(winner)}</p>
+        <p class="season-archive-winner-line-v419"><strong>Vincitore:</strong> ${winnerHtml}</p>
       </article>`;
   }).join("")}</div>`;
 }
@@ -18006,7 +18214,7 @@ function renderSeasonArchiveTimelineV196(archive) {
   const items = [];
   archive.honorTitles.forEach((title) => items.push({ icon: "🏆", label: title.label, text: title.teamName }));
   archive.competitions.slice(0, 6).forEach((competition) => items.push({ icon: "📌", label: getCompetitionNameV196(competition), text: getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "competizione" }));
-  archive.news.slice(0, 4).forEach((item) => items.push({ icon: "📰", label: item.title || item.topic || "Comunicazione", text: item.date || item.createdAt || "news" }));
+  [...(archive.news || [])].sort(sortSeasonArchiveNewsDescV419).forEach((item) => items.push({ icon: "📰", label: item.title || item.topic || "Comunicazione", text: formatSeasonArchiveNewsDateV419(item) }));
   if (!items.length) return `<p class="muted">Timeline non disponibile per questa stagione.</p>`;
   return `<div class="season-archive-timeline-v196">${items.slice(0, 12).map((item) => `
     <article><span>${escapeHtml(item.icon)}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.text || "-")}</small></div></article>
@@ -18050,15 +18258,11 @@ function renderSeasonArchiveV196() {
         ${renderSeasonArchiveTeamsV196(archive)}
       </article>
       <article class="panel season-archive-card-v196">
-        <div class="season-archive-card-heading-v196"><span>🏆</span><div><h3>Albo della stagione</h3><p>Vincitori principali collegati ad honor.json/snapshot.</p></div></div>
-        ${renderSeasonArchiveHonorV196(archive)}
-      </article>
-      <article class="panel season-archive-card-v196">
         <div class="season-archive-card-heading-v196"><span>🗓️</span><div><h3>Partite recenti</h3><p>Ultime partite disponibili nella stagione.</p></div></div>
         ${renderSeasonArchiveMatchesV196(archive)}
       </article>
       <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
-        <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori/classifiche delle competizioni.</p></div></div>
+        <div class="season-archive-card-heading-v196"><span>🏟️</span><div><h3>Competizioni</h3><p>Stato, partite e vincitori delle competizioni.</p></div></div>
         ${renderSeasonArchiveCompetitionsV196(archive)}
       </article>
       <article class="panel season-archive-card-v196 season-archive-card-wide-v196">
@@ -18128,6 +18332,36 @@ function injectSeasonArchiveStylesV196() {
       .season-archive-metrics-v196, .season-archive-teams-v196, .season-archive-competition-grid-v196 { grid-template-columns: 1fr; }
       .season-archive-team-card-v196 dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
+    .season-archive-winner-line-v419 { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
+    .season-archive-winner-line-v419 .club-name-with-logo { display: inline-flex; align-items: center; gap: .35rem; min-width: 0; }
+    .season-archive-winner-line-v419 .team-logo, .season-archive-winner-line-v419 img { width: 1.35rem; height: 1.35rem; flex: 0 0 auto; }
+    .season-archive-timeline-v419 article[data-timeline-kind="news"] { border-color: rgba(96,165,250,.22); background: rgba(59,130,246,.055); }
+    @media (max-width: 640px) {
+      .season-archive-hero-v196 { gap: .7rem; padding: .85rem; }
+      .season-archive-hero-v196 h3 { font-size: 1.05rem; line-height: 1.16; }
+      .season-archive-hero-v196 p { font-size: .82rem; line-height: 1.3; }
+      .season-archive-metrics-v196 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .42rem; }
+      .season-archive-metric-v196 { padding: .48rem .52rem; border-radius: .78rem; }
+      .season-archive-metric-v196 span, .season-archive-metric-v196 small { font-size: .68rem; line-height: 1.15; }
+      .season-archive-metric-v196 strong { font-size: 1.02rem; line-height: 1.05; margin: .08rem 0; }
+      .season-archive-teams-v196 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; }
+      .season-archive-team-card-v196 { padding: .55rem; border-radius: .78rem; }
+      .season-archive-team-head-v196 { gap: .42rem; margin-bottom: .45rem; align-items: flex-start; }
+      .season-archive-team-head-v196 .team-logo, .season-archive-team-head-v196 img { width: 1.65rem; height: 1.65rem; flex: 0 0 auto; }
+      .season-archive-team-head-v196 strong { font-size: .78rem; line-height: 1.12; }
+      .season-archive-team-head-v196 small { font-size: .66rem; line-height: 1.12; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      .season-archive-team-card-v196 dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .28rem; }
+      .season-archive-team-card-v196 dl div { padding-top: .28rem; }
+      .season-archive-team-card-v196 dt { font-size: .62rem; line-height: 1.1; }
+      .season-archive-team-card-v196 dd { font-size: .73rem; line-height: 1.12; }
+      .season-archive-competition-card-v196 { padding: .62rem; gap: .42rem; }
+      .season-archive-competition-card-v196 p { font-size: .78rem; }
+      .season-archive-timeline-v419 { gap: .42rem; }
+      .season-archive-timeline-v419 article { padding: .52rem; border-radius: .78rem; }
+    }
+    @media (max-width: 360px) {
+      .season-archive-teams-v196 { grid-template-columns: 1fr; }
+    }
     @media (max-width: 390px) {
       .season-archive-team-card-v196 dl { grid-template-columns: 1fr; }
     }
@@ -18193,6 +18427,32 @@ function getSeasonArchiveSourceArrayV204(snapshot, key, rawFilter = null) {
 
 function getSeasonArchiveIdV204(item, prefix, index) {
   return String(item?.id || item?.docId || item?.seasonTeamId || item?.teamId || `${prefix}-${index}`);
+}
+
+function getSeasonArchiveNewsIdentityV421(item, index = 0) {
+  const rawId = item?.id || item?.docId || item?.slug || item?.shareSlug || item?.url || item?.link || "";
+  if (rawId) return `id:${String(rawId).trim()}`;
+  const title = String(item?.title || item?.topic || item?.headline || "").trim().toLowerCase();
+  const date = String(item?.publishedAt || item?.date || item?.createdAt || item?.updatedAt || item?.timestamp || "").trim();
+  return `fallback:${title}:${date}:${index}`;
+}
+
+function getSeasonArchiveMergedNewsV421(snapshot, seasonId) {
+  const targetSeasonId = String(seasonId || "").trim();
+  const snapshotNews = getSeasonArchiveSnapshotArrayV204(snapshot, "news");
+  const rawNews = Array.isArray(state.raw?.news) ? state.raw.news : [];
+  const merged = [];
+  const seen = new Set();
+  [...snapshotNews, ...rawNews].forEach((item, index) => {
+    if (!item) return;
+    const itemSeasonId = String(item.seasonId || "").trim();
+    if (itemSeasonId && targetSeasonId && itemSeasonId !== targetSeasonId) return;
+    const key = getSeasonArchiveNewsIdentityV421(item, index);
+    if (seen.has(key)) return;
+    seen.add(key);
+    merged.push(item);
+  });
+  return merged.sort(sortSeasonArchiveNewsDescV419);
 }
 
 function buildSeasonArchiveMapByIdV204(items, prefix) {
@@ -18366,6 +18626,44 @@ function findArchiveSeasonTeamBySnapshotCellV204(archive, cell) {
   }) || null;
 }
 
+
+/* V419 - Archivio stagioni mobile compatto e timeline comunicati ordinata. */
+function getSeasonArchiveNewsTimestampV419(item) {
+  const candidates = [
+    item?.publishedAt,
+    item?.publishAt,
+    item?.date,
+    item?.createdAt,
+    item?.updatedAt,
+    item?.timestamp
+  ];
+  for (const value of candidates) {
+    if (!value) continue;
+    if (typeof value === "number" && Number.isFinite(value)) return value;
+    if (typeof value?.toDate === "function") {
+      const time = value.toDate().getTime();
+      if (Number.isFinite(time)) return time;
+    }
+    const parsed = Date.parse(String(value));
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+}
+
+function sortSeasonArchiveNewsDescV419(a, b) {
+  const diff = getSeasonArchiveNewsTimestampV419(b) - getSeasonArchiveNewsTimestampV419(a);
+  if (diff) return diff;
+  return String(b?.id || b?.title || "").localeCompare(String(a?.id || a?.title || ""), "it", { sensitivity: "base" });
+}
+
+function formatSeasonArchiveNewsDateV419(item) {
+  const value = item?.publishedAt || item?.publishAt || item?.date || item?.createdAt || item?.updatedAt || "";
+  if (!value) return "comunicato";
+  const date = typeof value?.toDate === "function" ? value.toDate() : new Date(value);
+  if (!Number.isFinite(date.getTime())) return String(value);
+  return date.toLocaleDateString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric" });
+}
+
 function getSeasonArchiveHonorRowV204(seasonId) {
   const target = String(seasonId || "");
   const snapshotRows = Array.isArray(state.publicHonorSnapshot?.honorRows) ? state.publicHonorSnapshot.honorRows : [];
@@ -18455,9 +18753,7 @@ buildSeasonArchiveV196 = function buildSeasonArchiveV204(seasonId = getSeasonArc
     .filter((result) => !competitionIds.size || competitionIds.has(result.competitionId));
   const rosterEntries = getSeasonArchiveSourceArrayV204(snapshot, "rosterEntries", (entry) => seasonTeams.some((team) => team.id === entry.seasonTeamId));
   const movements = getSeasonArchiveSourceArrayV204(snapshot, "fmMovements", (item) => seasonTeams.some((team) => team.id === item.seasonTeamId));
-  const news = getSeasonArchiveSourceArrayV204(snapshot, "news", (item) => !item.seasonId || item.seasonId === seasonId)
-    .filter((item) => !item.seasonId || item.seasonId === seasonId)
-    .slice(0, 8);
+  const news = getSeasonArchiveMergedNewsV421(snapshot, seasonId);
   const stadiums = getSeasonArchiveSourceArrayV204(snapshot, "stadiums");
   const archive = {
     season,
@@ -18531,7 +18827,9 @@ renderSeasonArchiveCompetitionsV196 = function renderSeasonArchiveCompetitionsV2
     const matches = archive.matches.filter((match) => match.competitionId === competition.id);
     const results = archive.results.filter((result) => result.competitionId === competition.id).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
     const winnerId = results[0]?.seasonTeamId || competition.winnerSeasonTeamId || competition.winnerId || "";
-    const winner = winnerId ? getArchiveSeasonTeamNameV204(archive, String(winnerId)) : (competition.winnerName || "-");
+    const winnerHtml = winnerId
+      ? renderArchiveSeasonTeamNameWithLogoV204(archive, String(winnerId), { strong: true })
+      : `<strong>${escapeHtml(competition.winnerName || "-")}</strong>`;
     return `
       <article class="season-archive-competition-card-v196">
         <div><strong>${escapeHtml(getCompetitionNameV196(competition))}</strong><small>${escapeHtml(getLabel(COMPETITION_TYPES, competition.type) || competition.type || "Competizione")}</small></div>
@@ -18540,7 +18838,7 @@ renderSeasonArchiveCompetitionsV196 = function renderSeasonArchiveCompetitionsV2
           <span>${matches.length} partite</span>
           <span>${results.length} righe classifica</span>
         </div>
-        <p><strong>Vincitore/Classifica:</strong> ${escapeHtml(winner)}</p>
+        <p class="season-archive-winner-line-v419"><strong>Vincitore:</strong> ${winnerHtml}</p>
       </article>`;
   }).join("")}</div>`;
 };
@@ -18560,14 +18858,54 @@ renderSeasonArchiveMatchesV196 = function renderSeasonArchiveMatchesV204(archive
   }).join("")}</div>`;
 };
 
-renderSeasonArchiveTimelineV196 = function renderSeasonArchiveTimelineV204(archive) {
+function getSeasonArchiveTimelineNewsV422(archive) {
+  const sources = [];
+  if (typeof getVisibleNewsForSeasonV79 === "function") {
+    sources.push(...getVisibleNewsForSeasonV79(4));
+  }
+  sources.push(...(archive?.news || []));
+  const seen = new Set();
+  const merged = [];
+  sources.forEach((item, index) => {
+    if (!item) return;
+    const key = typeof getSeasonArchiveNewsIdentityV421 === "function"
+      ? getSeasonArchiveNewsIdentityV421(item, index)
+      : String(item.id || item.title || index);
+    if (seen.has(key)) return;
+    seen.add(key);
+    merged.push(item);
+  });
+  return merged.sort(sortSeasonArchiveNewsDescV419).slice(0, 4);
+}
+
+renderSeasonArchiveTimelineV196 = function renderSeasonArchiveTimelineV422(archive) {
   const items = [];
-  archive.honorTitles.forEach((title) => items.push({ icon: "🏆", label: title.label, text: title.teamName }));
-  archive.competitions.slice(0, 6).forEach((competition) => items.push({ icon: "📌", label: getCompetitionNameV196(competition), text: getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "competizione" }));
-  archive.news.slice(0, 4).forEach((item) => items.push({ icon: "📰", label: item.title || item.topic || "Comunicazione", text: item.date || item.createdAt || "news" }));
+  const newsItems = getSeasonArchiveTimelineNewsV422(archive);
+  newsItems.forEach((item) => items.push({
+    icon: "📰",
+    label: item.title || item.topic || "Comunicazione",
+    text: formatSeasonArchiveNewsDateV419(item),
+    time: getSeasonArchiveNewsTimestampV419(item),
+    kind: "news"
+  }));
+  archive.competitions.slice(0, 6).forEach((competition) => items.push({
+    icon: "📌",
+    label: getCompetitionNameV196(competition),
+    text: getLabel(COMPETITION_STATUSES, competition.status) || competition.status || "competizione",
+    time: 0,
+    kind: "competition"
+  }));
+  archive.honorTitles.forEach((title) => items.push({
+    icon: "🏆",
+    label: title.label,
+    text: title.teamName,
+    time: 0,
+    kind: "honor"
+  }));
   if (!items.length) return `<p class="muted">Timeline non disponibile per questa stagione.</p>`;
-  return `<div class="season-archive-timeline-v196">${items.slice(0, 12).map((item) => `
-    <article><span>${escapeHtml(item.icon)}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.text || "-")}</small></div></article>
+  const orderedItems = items.sort((a, b) => (b.time || 0) - (a.time || 0));
+  return `<div class="season-archive-timeline-v196 season-archive-timeline-v419 season-archive-timeline-v422" data-news-count-v422="${newsItems.length}">${orderedItems.map((item) => `
+    <article data-timeline-kind="${escapeHtml(item.kind || "item")}"><span>${escapeHtml(item.icon)}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.text || "-")}</small></div></article>
   `).join("")}</div>`;
 };
 
@@ -23928,8 +24266,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=390";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=390";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=430";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=430";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -24432,7 +24770,7 @@ async function getCalciomercatoTimelineArticlePoolV335() {
     const days = Array.isArray(manifest?.availableDays) ? manifest.availableDays.map(String).filter(Boolean).sort() : [];
     const limitedDays = days.slice(-370);
     const settled = await Promise.allSettled(limitedDays.map(async (day) => {
-      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=390&_=${Date.now()}`);
+      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=430&_=${Date.now()}`);
       return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day") };
     }));
     settled.forEach((result) => {
@@ -25163,7 +25501,7 @@ function ensureAdminPanelsCollapsedOnceV313() {
     state.collapsedAdminPanels?.add?.(id);
     panel.classList.add("is-collapsed");
     const button = panel.querySelector("[data-admin-toggle-panel]");
-    if (button) button.textContent = "Ingrandisci";
+    if (button) button.textContent = "Apri";
   });
 }
 
@@ -25515,7 +25853,7 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=390`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=430`;
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -25670,7 +26008,7 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=390&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=430&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -25926,7 +26264,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=390&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=430&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -26161,7 +26499,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=390&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=430&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -33479,3 +33817,521 @@ window.ZonaOrientaleSoccerDataStaticStatsV390 = {
     redirectSoccerDataHashV398();
   }, 0);
 })();
+
+
+/* V401 - Section registry e primo passo refactor modulare.
+   Nessuna sezione viene spostata o rimossa: il registry centralizza solo
+   identita, stato e vincoli delle pagine per i prossimi batch di refactor. */
+window.ZonaOrientaleSectionRefactorV401 = {
+  version: 'V401',
+  runtimeVersion: 'V398 + registry V401',
+  scope: 'Section registry centrale; nessuna modifica a Firebase, snapshot, comunicati, listone, rose, fantamercato o competizioni.',
+  docsUpdated: true,
+  removedRuntimeFeatures: false,
+  runSmokeTest() {
+    const registry = window.ZonaOrientaleSectionRegistryV401;
+    const pages = registry?.listPages?.() || [];
+    const htmlPages = Array.from(document.querySelectorAll('[data-page]')).map((node) => node.dataset.page).filter(Boolean);
+    const activeHtmlPages = htmlPages.filter((page) => page !== 'soccerdata');
+    const registryIds = pages.map((page) => page.id);
+    const missingInRegistry = activeHtmlPages.filter((page) => !registryIds.includes(page));
+    const missingInDom = registryIds.filter((page) => {
+      if (page === 'teamprofile') return true;
+      return page === 'teamarea' || activeHtmlPages.includes(page);
+    });
+    const soccerDataLinkCount = document.querySelectorAll('[data-page-link="soccerdata"], a[href="#soccerdata"]').length;
+    return {
+      ok: Boolean(registry)
+        && pages.length >= 14
+        && missingInRegistry.length === 0
+        && soccerDataLinkCount === 0,
+      version: 'V401',
+      registeredPages: pages.length,
+      htmlPages: activeHtmlPages.length,
+      missingInRegistry,
+      dynamicOrOptionalPages: missingInDom,
+      soccerDataLinkCount,
+      docsUpdated: true,
+      removedRuntimeFeatures: false
+    };
+  }
+};
+
+
+/* V402 - Estrazione template Regolamento.
+   La sezione Regolamento e stata spostata in un modulo dedicato senza cambiare routing o dati. */
+window.ZonaOrientaleSectionRefactorV402 = {
+  version: 'V402',
+  runtimeVersion: 'V398 + registry V402 + regolamento module V402',
+  scope: 'Estrazione controllata della sezione Regolamento in assets/js/sections/regolamento-section-v402.js; nessuna modifica a Firebase, snapshot o flussi admin.',
+  docsUpdated: true,
+  removedRuntimeFeatures: false,
+  runSmokeTest() {
+    const registry = window.ZonaOrientaleSectionRegistryV401 || window.ZonaOrientaleSectionRegistryV402;
+    const page = registry?.getPage?.('regolamento');
+    const host = document.querySelector('[data-page="regolamento"]');
+    const title = document.getElementById('regolamentoDocumentoTitle');
+    const ruleSections = document.querySelectorAll('[id^="rules-"]').length;
+    return {
+      ok: Boolean(registry)
+        && Boolean(page)
+        && page.source === 'assets/js/sections/regolamento-section-v402.js'
+        && Boolean(host)
+        && host.dataset.sectionTemplate === 'regolamento-v402'
+        && Boolean(title)
+        && ruleSections >= 13,
+      version: 'V402',
+      registryVersion: registry?.version || null,
+      regolamentoSource: page?.source || null,
+      ruleSections,
+      docsUpdated: true,
+      removedRuntimeFeatures: false
+    };
+  }
+};
+
+
+/* V403 - Estrazione template Confronta.
+   La sezione Confronta squadre e stata spostata in un modulo dedicato senza cambiare routing, dati o logica head-to-head. */
+window.ZonaOrientaleSectionRefactorV403 = {
+  version: 'V403',
+  runtimeVersion: 'V398 + registry V403 + regolamento module V402 + compare module V403',
+  scope: 'Estrazione controllata della sezione Confronta in assets/js/sections/compare-section-v403.js; nessuna modifica a Firebase, snapshot, comunicati, listone, rose, fantamercato, calciomercato, competizioni o admin.',
+  docsUpdated: true,
+  removedRuntimeFeatures: false,
+  runSmokeTest() {
+    const registry = window.ZonaOrientaleSectionRegistryV403 || window.ZonaOrientaleSectionRegistryV401;
+    const page = registry?.getPage?.('compare');
+    const host = document.querySelector('[data-page="compare"]');
+    const title = document.getElementById('compareTitle');
+    const controls = document.getElementById('teamCompareControlsV195');
+    const content = document.getElementById('teamCompareContentV195');
+    return {
+      ok: Boolean(registry)
+        && Boolean(page)
+        && page.source === 'assets/js/sections/compare-section-v403.js'
+        && Boolean(host)
+        && host.dataset.sectionMounted === 'compare-v403'
+        && Boolean(title)
+        && Boolean(controls)
+        && Boolean(content),
+      version: 'V403',
+      registryVersion: registry?.version || null,
+      compareSource: page?.source || null,
+      docsUpdated: true,
+      removedRuntimeFeatures: false
+    };
+  }
+};
+
+/* V404/V406 - Evidenziazione tenue delle righe giocatore per ruolo.
+   V406 consolida la logica in un solo helper: niente asset esterni, niente secondo observer,
+   compatibilita mantenuta con window.ZonaOrientaleRoleBackgroundsV404 e classi player-role-*. */
+const PLAYER_ROLE_ROW_CLASSES_V404 = Object.freeze([
+  'player-role-gk',
+  'player-role-def',
+  'player-role-mid',
+  'player-role-fwd',
+  'zo-role-bg-v405-gk',
+  'zo-role-bg-v405-def',
+  'zo-role-bg-v405-mid',
+  'zo-role-bg-v405-fwd'
+]);
+
+function normalizePlayerRoleGroupV404(value) {
+  const raw = String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toUpperCase()
+    .replace(/[^A-Z]+/g, ' ')
+    .trim();
+  if (!raw || raw === '-') return '';
+  const tokens = raw.split(/\s+/).filter(Boolean);
+  const first = tokens[0] || '';
+  const has = (...items) => items.some((item) => tokens.includes(item));
+  if (first === 'P' || first === 'POR' || first === 'GK' || first.startsWith('PORT') || has('PORTIERE', 'GOALKEEPER')) return 'gk';
+  if (first === 'D' || first.startsWith('DC') || first.startsWith('DD') || first.startsWith('DS') || first.startsWith('DF') || first.startsWith('DIF') || has('DIFENSORE', 'DEFENDER')) return 'def';
+  if (first === 'C' || first === 'M' || first === 'E' || first === 'W' || first === 'T' || first.startsWith('MC') || first.startsWith('MID') || first.startsWith('CENT') || has('CENTROCAMPISTA', 'MIDFIELDER')) return 'mid';
+  if (first === 'A' || first === 'F' || first === 'FW' || first === 'ST' || first === 'PC' || first.startsWith('ATT') || first.startsWith('PUN') || has('ATTACCANTE', 'FORWARD', 'STRIKER')) return 'fwd';
+  return '';
+}
+
+function getRoleValueFromPlayerRowV404(row) {
+  if (!row) return '';
+  const direct = row.dataset.playerRole || row.dataset.role || row.getAttribute('data-player-role') || row.getAttribute('data-role');
+  if (direct) return direct;
+
+  const roleCell = row.querySelector([
+    '[data-player-role]',
+    '[data-role]',
+    'td[data-label="Ruolo"]',
+    'td[data-label="R (RM)"]',
+    'td[data-label="R"]',
+    '.listone-col-classicRole',
+    '.listone-col-role',
+    '.roster-col-role',
+    '.team-profile-role-cell',
+    '.soccer-data-col-role-v387'
+  ].join(','));
+  if (roleCell) return roleCell.dataset.playerRole || roleCell.dataset.role || roleCell.textContent || '';
+
+  const table = row.closest('table');
+  const cells = Array.from(row.children || []);
+  const headers = Array.from(table?.querySelectorAll('thead th') || []);
+  const headerIndex = headers.findIndex((header) => {
+    const label = String(header.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    const className = String(header.className || '').toLowerCase();
+    return label === 'ruolo'
+      || label === 'r'
+      || label.includes('r (rm)')
+      || label.includes('ruolo')
+      || className.includes('role')
+      || className.includes('classicrole');
+  });
+  if (headerIndex >= 0 && cells[headerIndex]) return cells[headerIndex].textContent || '';
+
+  return cells
+    .slice(0, 4)
+    .map((cell) => String(cell.textContent || '').trim())
+    .find((text) => normalizePlayerRoleGroupV404(text)) || '';
+}
+
+function applyPlayerRoleTableBackgroundsV404(root = document) {
+  const scope = root && root.querySelectorAll ? root : document;
+  const rows = Array.from(scope.querySelectorAll('table tbody tr'));
+  let colored = 0;
+  rows.forEach((row) => {
+    const group = normalizePlayerRoleGroupV404(getRoleValueFromPlayerRowV404(row));
+    row.classList.remove(...PLAYER_ROLE_ROW_CLASSES_V404);
+    delete row.dataset.playerRoleGroupV404;
+    if (!group) return;
+    row.classList.add(`player-role-${group}`, `zo-role-bg-v405-${group}`);
+    row.dataset.playerRoleGroupV404 = group;
+    colored += 1;
+  });
+  return colored;
+}
+
+function initPlayerRoleBackgroundsV404() {
+  const run = () => applyPlayerRoleTableBackgroundsV404(document);
+  run();
+  if (window.__zonaOrientaleRoleBackgroundObserverV404) return;
+  let scheduled = false;
+  const scheduleApply = () => {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(() => {
+      scheduled = false;
+      run();
+    });
+  };
+  const observer = new MutationObserver((mutations) => {
+    if (mutations.some((mutation) => mutation.type === 'childList' || mutation.type === 'characterData')) scheduleApply();
+  });
+  observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+  window.__zonaOrientaleRoleBackgroundObserverV404 = observer;
+  document.addEventListener('change', scheduleApply, true);
+  document.addEventListener('click', scheduleApply, true);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPlayerRoleBackgroundsV404, { once: true });
+} else {
+  initPlayerRoleBackgroundsV404();
+}
+
+window.ZonaOrientaleRoleBackgroundsV404 = Object.freeze({
+  version: 'V406-compat-V404',
+  normalize: normalizePlayerRoleGroupV404,
+  apply: applyPlayerRoleTableBackgroundsV404,
+  classes: PLAYER_ROLE_ROW_CLASSES_V404.slice()
+});
+
+/* V404 - Estrazione template Statistiche storiche e colori ruolo giocatore.
+   La sezione Statistiche e stata spostata in un modulo dedicato senza cambiare
+   gli ID runtime usati dalla logica esistente. */
+window.ZonaOrientaleSectionRefactorV404 = {
+  version: 'V404',
+  runtimeVersion: 'V398 + registry V404 + regolamento module V402 + compare module V403 + stats module V404',
+  scope: 'Estrazione controllata della sezione Statistiche storiche in assets/js/sections/stats-section-v404.js e colorazione tenue delle righe giocatore per ruolo; nessuna modifica a Firebase, snapshot, comunicati, listone, rose, fantamercato, calciomercato, competizioni o admin.',
+  docsUpdated: true,
+  removedRuntimeFeatures: false,
+  runSmokeTest() {
+    const registry = window.ZonaOrientaleSectionRegistryV404 || window.ZonaOrientaleSectionRegistryV401;
+    const page = registry?.getPage?.('stats');
+    const host = document.querySelector('[data-page="stats"]');
+    const title = document.getElementById('statsTitle');
+    const summary = document.getElementById('historicalStatsSummaryV193');
+    const content = document.getElementById('historicalStatsContentV193');
+    const roleHelper = window.ZonaOrientaleRoleBackgroundsV404;
+    return {
+      ok: Boolean(registry)
+        && Boolean(page)
+        && page.source === 'assets/js/sections/stats-section-v404.js'
+        && Boolean(host)
+        && host.dataset.sectionMounted === 'stats-v404'
+        && Boolean(title)
+        && Boolean(summary)
+        && Boolean(content)
+        && roleHelper?.normalize?.('P') === 'gk'
+        && roleHelper?.normalize?.('D') === 'def'
+        && roleHelper?.normalize?.('C') === 'mid'
+        && roleHelper?.normalize?.('A') === 'fwd',
+      version: 'V404',
+      registryVersion: registry?.version || null,
+      statsSource: page?.source || null,
+      docsUpdated: true,
+      removedRuntimeFeatures: false
+    };
+  }
+};
+
+
+/* V405 - Estrazione template Archivio stagioni.
+   La sezione Archivio e stata spostata in un modulo dedicato senza cambiare
+   gli ID runtime usati dalla logica esistente. */
+window.ZonaOrientaleSectionRefactorV405 = {
+  version: 'V405',
+  runtimeVersion: 'V398 + registry V405 + regolamento module V402 + compare module V403 + stats module V404 + archive module V405',
+  scope: 'Estrazione controllata della sezione Archivio stagioni in assets/js/sections/archive-section-v405.js; nessuna modifica a Firebase, snapshot, comunicati, listone, rose, fantamercato, calciomercato, competizioni o admin.',
+  docsUpdated: true,
+  removedRuntimeFeatures: false,
+  runSmokeTest() {
+    const registry = window.ZonaOrientaleSectionRegistryV405 || window.ZonaOrientaleSectionRegistryV401;
+    const page = registry?.getPage?.('archive');
+    const host = document.querySelector('[data-page="archive"]');
+    const title = document.getElementById('archiveTitle');
+    const controls = document.getElementById('seasonArchiveControlsV196');
+    const content = document.getElementById('seasonArchiveContentV196');
+    return {
+      ok: Boolean(registry)
+        && Boolean(page)
+        && page.source === 'assets/js/sections/archive-section-v405.js'
+        && Boolean(host)
+        && host.dataset.sectionMounted === 'archive-v405'
+        && Boolean(title)
+        && Boolean(controls)
+        && Boolean(content),
+      version: 'V405',
+      registryVersion: registry?.version || null,
+      archiveSource: page?.source || null,
+      docsUpdated: true,
+      removedRuntimeFeatures: false
+    };
+  }
+};
+
+/* V406 - Colori ruolo consolidati.
+ * La logica robusta e mantenuta nella feature V404 per compatibilita; niente asset esterni o doppio observer. */
+
+
+/* V415 - Home mobile: ultimo comunicato in cima e pagina La mia squadra con skin Listone.
+ * Intervento mobile-first e conservativo: non cambia dati, auth, Firebase, admin,
+ * routing o colonne. Riordina solo la card Comunicati dentro la home mobile e
+ * applica alla tabella Rosa della pagina squadra gli stessi token visuali del Listone. */
+function ensureMobileLatestNewsCardFirstV415(root = document) {
+  const scope = root && root.querySelector ? root : document;
+  const target = scope.getElementById?.("mobileHomeBlocks") || document.getElementById("mobileHomeBlocks");
+  if (!target) return false;
+  const newsCard = Array.from(target.querySelectorAll(".mobile-home-card")).find((card) => {
+    const kicker = card.querySelector(".mobile-home-kicker")?.textContent?.trim().toLowerCase() || "";
+    return kicker === "comunicati";
+  });
+  if (!newsCard) return false;
+  newsCard.dataset.mobileHomeFirstV415 = "true";
+  if (target.firstElementChild !== newsCard) target.insertBefore(newsCard, target.firstElementChild);
+  return true;
+}
+
+function applyTeamProfileRosterListoneSkinV415(root = document) {
+  const scope = root && root.querySelectorAll ? root : document;
+  const tables = Array.from(scope.querySelectorAll("table.team-profile-roster-table"));
+  let enhanced = 0;
+  tables.forEach((table) => {
+    table.classList.add(
+      "listone-table",
+      "roster-main-table",
+      "roster-player-table",
+      "roster-listone-skin-v408",
+      "team-profile-listone-skin-v415"
+    );
+    const wrap = table.closest(".team-profile-roster-wrap, .table-wrap, .mobile-tabular-wrap");
+    wrap?.classList.add("roster-listone-wrap-v408", "team-profile-listone-wrap-v415");
+
+    const columnClasses = [
+      "roster-col-player",
+      "roster-col-role",
+      "roster-col-team",
+      "roster-col-cost",
+      "roster-col-qta",
+      "roster-col-market"
+    ];
+    table.querySelectorAll("tr").forEach((row) => {
+      Array.from(row.children || []).forEach((cell, index) => {
+        const className = columnClasses[index];
+        if (className) cell.classList.add(className);
+      });
+    });
+    enhanced += 1;
+  });
+  return enhanced;
+}
+
+function applyMobileHomeAndTeamProfileRefinementsV415(root = document) {
+  const newsFirst = ensureMobileLatestNewsCardFirstV415(root);
+  const rosterTables = applyTeamProfileRosterListoneSkinV415(root);
+  if (typeof applyPlayerRoleTableBackgroundsV404 === "function") {
+    applyPlayerRoleTableBackgroundsV404(root && root.querySelectorAll ? root : document);
+  }
+  return { newsFirst, rosterTables };
+}
+
+const renderMobileBlockDashboardBeforeV415 = renderMobileBlockDashboardV140;
+renderMobileBlockDashboardV140 = function renderMobileBlockDashboardV415() {
+  const result = renderMobileBlockDashboardBeforeV415?.();
+  applyMobileHomeAndTeamProfileRefinementsV415(document);
+  return result;
+};
+
+const renderAllBeforeV415 = renderAll;
+renderAll = function renderAllV415() {
+  const result = renderAllBeforeV415?.();
+  window.requestAnimationFrame(() => applyMobileHomeAndTeamProfileRefinementsV415(document));
+  return result;
+};
+
+const openTeamProfilePageBeforeV415 = typeof openTeamProfilePageV42 === "function" ? openTeamProfilePageV42 : null;
+if (openTeamProfilePageBeforeV415) {
+  openTeamProfilePageV42 = async function openTeamProfilePageV415(seasonTeamId, options = {}) {
+    const result = await openTeamProfilePageBeforeV415(seasonTeamId, options);
+    window.requestAnimationFrame(() => applyMobileHomeAndTeamProfileRefinementsV415(document));
+    return result;
+  };
+}
+
+window.ZonaOrientaleMobileHomeTeamProfileV415 = Object.freeze({
+  version: "V415",
+  latestNewsFirst: true,
+  teamProfileRosterUsesListoneSkin: true,
+  preserveColumns: true,
+  apply: applyMobileHomeAndTeamProfileRefinementsV415
+});
+
+/* V417 - Pulizia CSS legacy collegata agli alias stabili.
+ * Rimuove dal pacchetto i CSS refactor versionati V291/V292 gia non caricati dal runtime.
+ * Preserva gli alias stabili mobile-controls.css, rosters-tables.css, listone.css,
+ * calciomercato.css e theme-light-suspended.css.
+ * Nessuna modifica a dati, routing, Firebase, auth, admin o funzionalita utente.
+ */
+window.ZonaOrientaleCssAssetCleanupV417 = Object.freeze({
+  version: "V417",
+  behaviorChange: false,
+  removedObsoleteCssFiles: [
+    "assets/css/refactor/mobile-controls-v291.css",
+    "assets/css/refactor/rosters-tables-v291.css",
+    "assets/css/refactor/mobile-controls-v292.css",
+    "assets/css/refactor/rosters-tables-v292.css",
+    "assets/css/refactor/theme-light-suspended-v292.css"
+  ],
+  stableCssFiles: [
+    "assets/css/refactor/mobile-controls.css",
+    "assets/css/refactor/rosters-tables.css",
+    "assets/css/refactor/listone.css",
+    "assets/css/refactor/calciomercato.css",
+    "assets/css/refactor/theme-light-suspended.css"
+  ],
+  preserves: [
+    "Dashboard mobile e comunicati V415",
+    "Listone e tabelle giocatori compatte V409",
+    "Calciomercato mobile V410/V413",
+    "Area Squadra mobile V414",
+    "Admin mobile V416"
+  ]
+});
+
+/* V418 - Accessibilita mobile e focus.
+ * Patch CSS-only con marker runtime per audit: non cambia dati, routing, Firebase,
+ * auth, admin o funzioni operative. Preserva V407-V417.
+ */
+window.ZonaOrientaleMobileAccessibilityV418 = Object.freeze({
+  version: "V418",
+  cssOnly: true,
+  focusVisible: true,
+  overflowGuards: true,
+  reducedMotionSafe: true,
+  preserves: [
+    "Home mobile V415",
+    "Admin mobile V416",
+    "Pulizia CSS legacy V417"
+  ]
+});
+
+/* V419 - Archivio stagioni mobile compatto e timeline comunicati completa.
+ * Nessuna modifica a dati, Firebase, auth, admin o routing.
+ */
+window.ZonaOrientaleArchiveMobileV419 = Object.freeze({
+  version: "V419",
+  features: [
+    "hero-metrics-2x2-mobile",
+    "season-team-cards-compact-mobile",
+    "competitions-winner-logo",
+    "timeline-news-sorted-all"
+  ],
+  preserves: [
+    "V407 comunicati home",
+    "V415 home mobile",
+    "V418 accessibilita mobile"
+  ]
+});
+
+
+/* V421 - Archivio mobile: contenuti card compatti e timeline comunicati completa. */
+window.ZonaOrientaleArchiveMobileTypographyV421 = Object.freeze({
+  version: "V421",
+  archiveCardText: "compact",
+  timelineNewsSource: "snapshot+state.raw.news",
+  timelineNewsOrder: "newest-first",
+  removesNewsSliceLimit: true
+});
+
+
+/* V420 - Scala tipografica mobile globale.
+ * Usa come riferimento la scala compatta di Squadre della Stagione:
+ * nome/titolo 0.78rem, sottotesto 0.66rem, label 0.62rem, valore 0.73rem.
+ * Patch presentazionale: non cambia dati, routing, Firebase, auth, admin o rendering logico.
+ */
+window.ZonaOrientaleMobileTypographyV420 = Object.freeze({
+  version: "V420",
+  cssOnly: true,
+  scale: {
+    name: "0.78rem",
+    subtext: "0.66rem",
+    label: "0.62rem",
+    value: "0.73rem"
+  },
+  scope: "mobile-card-table-content",
+  reference: "Squadre della Stagione",
+  preserves: [
+    "V415 home mobile e La mia squadra",
+    "V418 accessibilita mobile",
+    "V419 Archivio Stagioni"
+  ]
+});
+
+/* V422 - Scala mobile estesa e Archivio Stagioni compatto.
+ * La timeline usa gli stessi comunicati visibili della dashboard, poi li unisce
+ * ai comunicati dello snapshot della stagione senza duplicati.
+ */
+window.ZonaOrientaleArchiveMobileTypographyV422 = Object.freeze({
+  version: "V422",
+  mobileScale: {
+    name: "0.78rem",
+    subtext: "0.66rem",
+    label: "0.62rem",
+    value: "0.73rem"
+  },
+  archiveTeamsGridMobile: "2-columns",
+  timelineNewsSource: "dashboard-visible-news+archive-news",
+  timelineNewsLimit: 4,
+  liveArchiveRefresh: true
+});

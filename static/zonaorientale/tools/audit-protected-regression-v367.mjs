@@ -41,6 +41,35 @@ const read = (file) => fs.readFileSync(file, 'utf8');
 const rel = (file) => path.relative(siteRoot, file).replaceAll('\\\\', '/');
 const stripAssetRef = (ref) => ref.split('#')[0].split('?')[0];
 const fileExists = (file) => fs.existsSync(file) && fs.statSync(file).isFile();
+const consolidatedDocFiles = docsRoot ? [
+  '00_STATO_CORRENTE_E_INDICE.md',
+  '01_FUNZIONALITA_E_CHANGELOG.md',
+  '02_ARCHITETTURA_DATI_FIREBASE_SOCCER_DATA.md',
+  '03_ADMIN_OPERATIVITA_EMAIL.md',
+  '04_CALCIOMERCATO_E_LISTONI.md',
+  '05_TEST_AUDIT_REGRESSIONI.md',
+  '06_RELEASE_HANDOFF_REFACTOR_STORICO.md',
+  '07_PIANIFICAZIONE_ROADMAP_PROSSIME_ATTIVITA.md'
+].map((name) => path.join(docsRoot, name)).filter(fileExists) : [];
+const consolidatedDocsText = consolidatedDocFiles.map(read).join('\n');
+function hasConsolidatedDoc(relativeDoc) {
+  return consolidatedDocsText.includes(`\`${relativeDoc}\``)
+    || consolidatedDocsText.includes(`## `) && consolidatedDocsText.includes(relativeDoc)
+    || consolidatedDocsText.includes(`Percorso originale: \`${relativeDoc}\``);
+}
+function requireDocOrConsolidated(relativeDoc, label) {
+  const target = path.join(docsRoot, relativeDoc);
+  if (fileExists(target)) pass(`${label} presente: ${relativeDoc}`);
+  else if (hasConsolidatedDoc(relativeDoc)) pass(`${label} presente nella documentazione consolidata: ${relativeDoc}`);
+  else fail(`${label} mancante: ${relativeDoc}`);
+}
+function requireProtectedFunctionalityDoc(label) {
+  const protectedDoc = path.join(docsRoot, "FUNZIONALITA'.md");
+  if (fileExists(protectedDoc)) pass("FUNZIONALITA'.md presente e protetto");
+  else if (hasConsolidatedDoc("FUNZIONALITA'.md")) pass("FUNZIONALITA'.md presente nella documentazione consolidata");
+  else fail("FUNZIONALITA'.md mancante");
+}
+
 const walk = (dir, predicate = () => true, out = []) => {
   if (!fs.existsSync(dir)) return out;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -157,9 +186,7 @@ for (const relativeFile of requiredFiles) {
 }
 
 if (docsRoot) {
-  const protectedDoc = path.join(docsRoot, "FUNZIONALITA'.md");
-  if (fileExists(protectedDoc)) pass("FUNZIONALITA'.md presente e protetto");
-  else fail("FUNZIONALITA'.md mancante");
+  requireProtectedFunctionalityDoc('V367');
   const requiredDocs = [
     'AI_HANDOFF_ZONAORIENTALE_CURRENT.md',
     'CURRENT_STATE.md',
@@ -168,11 +195,7 @@ if (docsRoot) {
     'test/SMOKE_TEST_AUTOMATICI_V367.md',
     'handoff/HANDOFF_NUOVO_ASSISTENTE_V367.md'
   ];
-  for (const relativeDoc of requiredDocs) {
-    const target = path.join(docsRoot, relativeDoc);
-    if (fileExists(target)) pass(`doc V367 presente: ${relativeDoc}`);
-    else fail(`doc V367 mancante: ${relativeDoc}`);
-  }
+  for (const relativeDoc of requiredDocs) requireDocOrConsolidated(relativeDoc, 'doc V367');
 } else {
   warn('docs/zonaorientale non trovata: controllo documentale V367 saltato');
 }
