@@ -1,3 +1,31 @@
+## Test e audit V433
+
+- Aggiunto `tools/audit-teamarea-mobile-v433.mjs`.
+- L'audit verifica runtime/cache/footer V433, card Notifiche presidente nascosta da mobile, pannelli V242/V261 spostati in basso, azioni 2x2 e integrazione nel check principale.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V433.
+
+Comandi consigliati:
+
+```bash
+cd static/zonaorientale
+node --check assets/app.js
+node tools/audit-teamarea-mobile-v433.mjs
+bash tools/check-zonaorientale.sh
+```
+
+## Test e audit V432
+
+- Aggiunto `tools/audit-teamarea-mobile-v432.mjs`.
+- L'audit verifica runtime/cache/footer V432, selector corretto `.president-dashboard-v369`, griglia 2 colonne per metriche/azioni e pannelli collassabili V242/V261.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V432.
+- Reso l'audit V431 compatibile con runtime successivi.
+
+## Test e audit V431
+
+- Aggiunto `tools/audit-teamarea-mobile-v431.mjs`.
+- L'audit verifica runtime/footer/cache-buster V431, marker `ZonaOrientaleTeamAreaMobileCompactV431`, helper di ordinamento, classi CSS V431 e integrazione nel check principale.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V431.
+
 ## Test e audit V429
 
 - Aggiunto `tools/audit-admin-mobile-header-v429.mjs`.

@@ -1,3 +1,18 @@
+## Nota V433 su Calciomercato, Listone e tabelle
+
+- Nessuna modifica a Calciomercato, Listone, Rose, La mia squadra, colori ruolo, filtri o ordinamenti.
+- V433 riguarda solo layout mobile della sezione Area Squadra.
+
+## Nota V432 su Calciomercato, Listone e tabelle
+
+- Nessuna modifica a Calciomercato, Listone, Rose, Archivio, colori ruolo, filtri o ordinamenti.
+- V432 riguarda solo la sezione Area Squadra/Dashboard Presidente mobile.
+
+## Nota V431 su Calciomercato, Listone e tabelle
+
+- Nessuna modifica a Calciomercato, Listone, Rose, La mia squadra, colori ruolo, filtri o ordinamenti.
+- V431 riguarda solo la compattezza mobile della sezione Area Squadra/Dashboard Presidente.
+
 ## Nota V429 su Calciomercato, Listone e tabelle
 
 - Nessuna modifica a Calciomercato, Listone, Rose, La mia squadra, colori ruolo, filtri o ordinamenti.

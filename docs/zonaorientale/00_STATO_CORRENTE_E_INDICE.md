@@ -1,3 +1,24 @@
+## Aggiornamento V433 - Area Squadra mobile semplificata (09/06/2026)
+
+- Runtime avanzato a V433 con footer e cache-buster coerenti.
+- Da mobile la card Notifiche presidente viene nascosta per ridurre duplicazioni; i dati e gli handler V370 restano nel runtime.
+- Dashboard Presidente resta prima card della sezione Area Squadra; la scheda squadra e l'hub azioni restano subito dopo.
+- I pannelli Comunicato avvenuto scambio e Svincola Giocatori vengono spostati piu in basso e restano chiusi con Apri/Riduci.
+
+## Aggiornamento V432 - Area Squadra mobile ordinata (09/06/2026)
+
+- Runtime avanzato a V432 con footer e cache-buster coerenti.
+- Corretto l'ordinamento reale della Dashboard Presidente: ora il selector usa `.president-dashboard-v369` e la card viene portata effettivamente in cima ad Area Squadra mobile.
+- Da mobile la card Dashboard nasconde il badge tecnico V369, compatta metriche 2 per riga e mostra i 4 pulsanti principali in griglia 2x2.
+- I pannelli "Comunicato avvenuto scambio" e "Svincola Giocatori" restano agganciati agli stessi form/handler ma partono chiusi con pulsante Apri/Riduci.
+
+## Aggiornamento V431 - Area Squadra mobile compatta (08/06/2026)
+
+- Runtime avanzato a V431 con footer e cache-buster coerenti.
+- Da mobile la sezione Dashboard Presidente/Area Squadra viene riordinata: Dashboard Presidente in cima, Notifiche presidente subito dopo, poi scheda squadra, hub azioni e moduli operativi.
+- Le card principali sono compattate con la scala mobile consolidata, accorpando metriche e azioni su piu colonne quando lo spazio lo consente.
+- Nessuna modifica a Firebase, auth, permessi, dati o routing.
+
 ## Aggiornamento V429 - Fix titoli Admin mobile (08/06/2026)
 
 - Runtime avanzato a V429 con footer e cache-buster coerenti.

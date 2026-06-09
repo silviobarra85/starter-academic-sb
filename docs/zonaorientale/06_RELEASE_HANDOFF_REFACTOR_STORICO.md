@@ -1,3 +1,21 @@
+## Handoff V433
+
+- V433 semplifica ulteriormente Area Squadra mobile: Dashboard Presidente prima card, Notifiche presidente nascoste da mobile, pannelli Comunicazione scambio/Svincola in fondo.
+- La modifica e' presentazionale/additiva: nessun cambio a Firebase/auth/admin, permessi, dati, routing o Netlify.
+- Prima del merge verificare da mobile: Dashboard in alto, assenza card Notifiche, griglia azioni 2x2, pannelli extra chiusi e apribili.
+
+## Handoff V432
+
+- V432 corregge V431: la Dashboard Presidente ora viene trovata tramite classe `.president-dashboard-v369` e portata davvero in cima.
+- La UI mobile evita ripetizioni nascondendo il badge tecnico V369, compattando metriche/azioni e rendendo richiudibili i pannelli operativi piu lunghi.
+- Funzionalita preservate: Firebase/auth/admin, Dashboard V369, Notifiche V370, comunicato scambio V242, svincolo giocatori V261.
+
+## Handoff V431
+
+- V431 e' una correzione mobile post V430 per Area Squadra.
+- Non introduce nuove feature e non cambia dati/flussi; ordina e compatta la sezione presidente senza staccare handler.
+- Prima del merge verificare da mobile: Dashboard Presidente in cima, Notifiche presidente, scheda squadra, hub azioni, trattative e comunicati.
+
 ## Handoff V429
 
 - V429 e' una correzione puntuale post pre-merge per Admin mobile.

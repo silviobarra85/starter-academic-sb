@@ -1,3 +1,21 @@
+## Nota operativa V433
+
+- Nessuna modifica ai flussi Admin o EmailJS.
+- In Area Squadra mobile i pannelli email `Comunicato avvenuto scambio` e `Svincola Giocatori` sono piu in basso e chiusi di default, ma restano apribili e funzionanti.
+- Test manuale consigliato: login presidente mobile, apertura/riduzione pannelli, verifica pulsanti Dashboard e form senza invii reali se non necessari.
+
+## Nota operativa V432
+
+- Nessuna modifica ai flussi Admin o EmailJS.
+- I flussi email presidente restano invariati: comunicato avvenuto scambio V242 e informativa svincolo V261 vengono solo presentati chiusi da mobile.
+- Test manuale consigliato: aprire Area Squadra da smartphone, aprire/ridurre i due pannelli, inviare solo in ambiente controllato se necessario.
+
+## Nota operativa V431
+
+- Nessuna modifica ai flussi Admin o EmailJS.
+- Area Squadra mobile ora presenta Dashboard Presidente sopra a tutto e Notifiche subito dopo.
+- Test manuale consigliato: login presidente da smartphone, controllo Dashboard Presidente, Notifiche, Apri pagina squadra, nuova proposta, trattative e comunicato.
+
 ## Nota operativa V429
 
 - Corretto il problema mobile dei titoli Admin scritti una lettera sopra l'altra quando il pulsante Apri/Riduci occupava spazio nello stesso header.

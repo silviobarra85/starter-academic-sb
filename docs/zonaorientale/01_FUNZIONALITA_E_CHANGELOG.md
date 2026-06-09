@@ -1,3 +1,24 @@
+## Changelog V433 - Area Squadra mobile piu lineare
+
+- Rimossa dalla vista mobile la card separata Notifiche presidente, ritenuta non necessaria nella UI compatta.
+- Mantenuta Dashboard Presidente in alto, con metriche e azioni compatte.
+- Spostati in fondo i pannelli `Comunicato avvenuto scambio` e `Svincola Giocatori`, entrambi richiudibili.
+- Nessuna funzionalita staccata: form, pulsanti, handler e permessi restano invariati.
+
+## Changelog V432 - Riordino Area Squadra mobile
+
+- Dashboard Presidente effettivamente prima card della sezione Area Squadra mobile.
+- Metriche `Saldo FM`, `Giocatori`, `Valore rosa`, trattative/richieste/mercato organizzate in righe da 2 elementi.
+- Pulsanti `Vai alle trattative`, `Nuova proposta`, `Comunicato`, `Apri pagina squadra` organizzati in griglia 2x2.
+- Pannelli `Comunicato avvenuto scambio` e `Svincola Giocatori` chiusi di default con toggle Apri/Riduci, senza rimuovere funzionalita.
+
+## Changelog V431 - Compattazione Area Squadra mobile
+
+- Area Squadra mobile resa piu ordinata e compatta.
+- Dashboard Presidente V369 viene mantenuta sopra a tutto.
+- Centro notifiche presidente V370 e scheda con nome squadra sono compattati: metriche, badge e azioni usano griglie piu dense.
+- I form di trattative e comunicati restano agganciati agli stessi id e handler, senza perdita funzionale.
+
 ## Changelog V429 - Titoli Admin mobile leggibili
 
 - Sistemata la disposizione mobile degli header nei pannelli Admin e nelle sotto-sezioni con pulsante Apri/Riduci.
