@@ -1,3 +1,8 @@
+## Nota V434 su Calciomercato, Listone e tabelle
+
+- Nessuna modifica a Calciomercato, Listone, Rose, La mia squadra, colori ruolo, filtri o ordinamenti.
+- Il badge dispositivo e' globale ma non modifica il layout interno delle tabelle o delle card.
+
 ## Nota V433 su Calciomercato, Listone e tabelle
 
 - Nessuna modifica a Calciomercato, Listone, Rose, La mia squadra, colori ruolo, filtri o ordinamenti.

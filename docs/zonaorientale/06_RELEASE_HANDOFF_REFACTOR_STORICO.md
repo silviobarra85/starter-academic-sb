@@ -1,3 +1,9 @@
+## Handoff V434
+
+- V434 aggiunge un badge dispositivo diagnostico in alto a destra sulle pagine principali.
+- Il modello esatto dipende da cio' che il browser espone; su iOS/Safari e' normale vedere iPhone/iPad invece del modello commerciale preciso.
+- Nessuna modifica a dati, Firebase/auth/admin, Netlify o routing; prima del merge verificare da mobile che il badge non interferisca visivamente con header e bottoni.
+
 ## Handoff V433
 
 - V433 semplifica ulteriormente Area Squadra mobile: Dashboard Presidente prima card, Notifiche presidente nascoste da mobile, pannelli Comunicazione scambio/Svincola in fondo.

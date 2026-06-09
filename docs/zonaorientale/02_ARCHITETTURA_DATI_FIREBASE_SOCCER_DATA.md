@@ -1,3 +1,9 @@
+## Nota architetturale V434 - Rilevazione dispositivo locale
+
+- V434 aggiunge solo asset statici `device-badge-v434.css/js` e marker runtime in `app.js`.
+- La rilevazione dispositivo avviene interamente nel browser, senza chiamate Firebase, Netlify Functions o servizi esterni.
+- User-Agent Client Hints puo' restituire il modello su alcuni browser Android/Chromium; iOS/Safari espongono normalmente solo famiglia dispositivo.
+
 ## Nota architetturale V433 - Solo DOM/CSS mobile
 
 - V433 non modifica Firebase, auth, permessi, snapshot, Netlify Functions, Soccer Data o sorgenti dati.
