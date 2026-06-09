@@ -1,3 +1,10 @@
+## Aggiornamento V434 - Badge dispositivo diagnostico (09/06/2026)
+
+- Runtime avanzato a V434 con footer e cache-buster coerenti.
+- Aggiunto un badge fisso in alto a destra su index, competition e player per mostrare localmente il dispositivo rilevato.
+- La rilevazione e' best-effort: quando il browser non espone il modello esatto, il badge mostra famiglia/piattaforma come iPhone, iPad, Android, Mac o Windows PC.
+- Nessuna modifica a Firebase, auth, admin, dati, routing o Netlify.
+
 ## Aggiornamento V433 - Area Squadra mobile semplificata (09/06/2026)
 
 - Runtime avanzato a V433 con footer e cache-buster coerenti.

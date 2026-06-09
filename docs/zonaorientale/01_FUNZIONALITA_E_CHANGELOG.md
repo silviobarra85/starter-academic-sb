@@ -1,3 +1,10 @@
+## Changelog V434 - Badge dispositivo
+
+- Aggiunto badge diagnostico in alto a destra con modello/famiglia del dispositivo rilevato localmente.
+- Il badge usa User-Agent Client Hints quando disponibili e fallback su user-agent/viewport quando il modello esatto non e' esposto dal browser.
+- Il badge non intercetta tap/click e non invia dati a servizi esterni.
+- Nessuna funzionalita esistente viene modificata o staccata.
+
 ## Changelog V433 - Area Squadra mobile piu lineare
 
 - Rimossa dalla vista mobile la card separata Notifiche presidente, ritenuta non necessaria nella UI compatta.

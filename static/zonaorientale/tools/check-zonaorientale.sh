@@ -408,6 +408,22 @@ else
   fail "node non disponibile per audit titoli Admin mobile V429"
 fi
 
+
+print_step "Audit badge dispositivo V434"
+if command -v node >/dev/null 2>&1; then
+  if [[ -f tools/audit-device-badge-v434.mjs ]]; then
+    if node tools/audit-device-badge-v434.mjs >/dev/null 2>&1; then
+      pass "audit badge dispositivo V434 superato"
+    else
+      fail "audit badge dispositivo V434 fallito"
+    fi
+  else
+    fail "tool audit badge dispositivo V434 mancante"
+  fi
+else
+  fail "node non disponibile per audit badge dispositivo V434"
+fi
+
 print_step "CSS refactor"
 css_refactor_files=(
   "$SITE_ROOT/assets/css/refactor/mobile-controls.css"

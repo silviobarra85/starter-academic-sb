@@ -1,3 +1,18 @@
+## Test e audit V434
+
+- Aggiunto `tools/audit-device-badge-v434.mjs`.
+- L'audit verifica asset CSS/JS del badge, caricamento sulle pagine principali, marker runtime, footer/cache-buster V434 e comportamento non invasivo `pointer-events: none`.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V434.
+
+Comandi consigliati:
+
+```bash
+cd static/zonaorientale
+node --check assets/app.js
+node tools/audit-device-badge-v434.mjs
+bash tools/check-zonaorientale.sh
+```
+
 ## Test e audit V433
 
 - Aggiunto `tools/audit-teamarea-mobile-v433.mjs`.

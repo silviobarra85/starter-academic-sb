@@ -1,3 +1,9 @@
+## Nota operativa V434
+
+- Nessuna modifica ai flussi Admin, EmailJS, permessi o pubblicazioni.
+- Il badge dispositivo e' solo diagnostico e non interagisce con form o workflow.
+- Test manuale consigliato: verificare che il badge non copra pulsanti operativi in Admin e Area Squadra da mobile.
+
 ## Nota operativa V433
 
 - Nessuna modifica ai flussi Admin o EmailJS.

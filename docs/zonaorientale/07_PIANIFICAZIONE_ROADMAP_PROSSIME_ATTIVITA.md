@@ -1,3 +1,9 @@
+## Roadmap aggiornata dopo V434
+
+- Verificare su dispositivo reale il badge in alto a destra: leggibilita', posizione e assenza di interferenze con pulsanti.
+- Se il badge e' utile, mantenerlo come diagnostica; se diventa invasivo, si puo' disattivare rimuovendo i due asset V434 dagli HTML.
+- Prima del merge resta consigliato il test manuale mobile completo.
+
 ## Roadmap aggiornata dopo V433
 
 - Dopo V433 ripetere test manuale Area Squadra mobile su dispositivo reale.
