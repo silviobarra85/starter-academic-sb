@@ -19,9 +19,9 @@ const runtimeMatch = app.match(/DEPLOY_EXPECTED_VERSION_V181 = "(\d+)"/);
 const runtimeVersion = Number(runtimeMatch?.[1] || 0);
 assert(runtimeVersion >= 429, `runtime precedente a V429: ${runtimeVersion || 'non rilevato'}`);
 assert(app.includes('ZonaOrientaleAdminMobileHeaderFixV429'), 'marker ZonaOrientaleAdminMobileHeaderFixV429 mancante');
-assert(/V4(29|30)/.test(index), 'footer index V429+ mancante');
-assert(/V4(29|30)/.test(competition), 'footer competition V429+ mancante');
-assert(/V4(29|30)/.test(player), 'footer player V429+ mancante');
+assert(index.includes(`V${runtimeVersion}`), 'footer index runtime corrente mancante');
+assert(competition.includes(`V${runtimeVersion}`), 'footer competition runtime corrente mancante');
+assert(player.includes(`V${runtimeVersion}`), 'footer player runtime corrente mancante');
 for (const content of [index, competition, player, app]) {
   assert(!content.includes('?v=428'), 'cache-buster V428 ancora presente');
 }

@@ -1,3 +1,21 @@
+## Roadmap aggiornata dopo V433
+
+- Dopo V433 ripetere test manuale Area Squadra mobile su dispositivo reale.
+- Verificare che la sezione risulti meno confusionaria: Dashboard prima, Notifiche assenti, azioni compatte, pannelli email in basso.
+- Se il check passa, procedere con commit V433 e merge verso `master`.
+
+## Roadmap aggiornata dopo V432
+
+- Dopo V432 ripetere test manuale Area Squadra mobile prima del merge.
+- Verificare in particolare: Dashboard prima card, metriche 2xN, pulsanti 2x2, pannelli Comunicato scambio/Svincola chiusi e riapribili.
+- Se il check passa, procedere con commit V432 e merge verso `master`.
+
+## Roadmap aggiornata dopo V431
+
+- Dopo V431 resta consigliato un test manuale completo su dispositivo reale prima del merge verso `master`.
+- Evitare nuove feature finche non sono validati Area Squadra mobile, Admin, Archivio, Listone/Rose, Calciomercato e Dashboard.
+- Se i test passano, procedere con commit della V431 e merge del branch refactor su `master`.
+
 ## Roadmap aggiornata dopo V429
 
 - La fase mobile resta chiusa, con una correzione puntuale aggiunta per Admin.

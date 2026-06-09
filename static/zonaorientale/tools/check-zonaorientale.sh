@@ -2394,6 +2394,57 @@ else
   fail "node non disponibile per audit Admin mobile pulsante sopra V430"
 fi
 
+
+print_step "Audit Area Squadra mobile compatta V431"
+if command -v node >/dev/null 2>&1; then
+  audit_teamarea_mobile_v431="$SITE_ROOT/tools/audit-teamarea-mobile-v431.mjs"
+  if [[ -f "$audit_teamarea_mobile_v431" ]]; then
+    if node "$audit_teamarea_mobile_v431" --quiet; then
+      pass "audit Area Squadra mobile compatta V431 superato"
+    else
+      fail "audit Area Squadra mobile compatta V431 fallito"
+    fi
+  else
+    fail "tool audit Area Squadra mobile compatta V431 mancante"
+  fi
+else
+  fail "node non disponibile per audit Area Squadra mobile compatta V431"
+fi
+
+
+print_step "Audit Area Squadra mobile ordinata V432"
+if command -v node >/dev/null 2>&1; then
+  audit_teamarea_mobile_v432="$SITE_ROOT/tools/audit-teamarea-mobile-v432.mjs"
+  if [[ -f "$audit_teamarea_mobile_v432" ]]; then
+    if node "$audit_teamarea_mobile_v432" --quiet; then
+      pass "audit Area Squadra mobile ordinata V432 superato"
+    else
+      fail "audit Area Squadra mobile ordinata V432 fallito"
+    fi
+  else
+    fail "tool audit Area Squadra mobile ordinata V432 mancante"
+  fi
+else
+  fail "node non disponibile per audit Area Squadra mobile ordinata V432"
+fi
+
+
+print_step "Audit Area Squadra mobile semplificata V433"
+if command -v node >/dev/null 2>&1; then
+  audit_teamarea_mobile_v433="$SITE_ROOT/tools/audit-teamarea-mobile-v433.mjs"
+  if [[ -f "$audit_teamarea_mobile_v433" ]]; then
+    if node "$audit_teamarea_mobile_v433" --quiet; then
+      pass "audit Area Squadra mobile semplificata V433 superato"
+    else
+      fail "audit Area Squadra mobile semplificata V433 fallito"
+    fi
+  else
+    fail "tool audit Area Squadra mobile semplificata V433 mancante"
+  fi
+else
+  fail "node non disponibile per audit Area Squadra mobile semplificata V433"
+fi
+
 print_step "Soccer Data FBref batch V381"
 if command -v node >/dev/null 2>&1; then
   audit_soccer_data_fbref_batch_v381="$SITE_ROOT/tools/audit-soccer-data-fbref-batch-v381.mjs"

@@ -1,3 +1,21 @@
+## Nota architetturale V433 - Solo DOM/CSS mobile
+
+- V433 non modifica Firebase, auth, permessi, snapshot, Netlify Functions, Soccer Data o sorgenti dati.
+- La card Notifiche presidente V370 viene nascosta solo da mobile tramite classe/attributo, non rimossa dal modello dati.
+- I form canonici `teamTransferCommunicationFormV242` e `teamPlayerReleaseFormV261` restano agganciati agli stessi handler.
+
+## Nota architetturale V432 - Nessuna modifica dati
+
+- V432 e' una patch DOM/CSS mobile: non modifica Firebase, auth, permessi, snapshot, Netlify Functions, Soccer Data o sorgenti dati.
+- I form canonici restano `teamTransferCommunicationFormV242` e `teamPlayerReleaseFormV261`; vengono solo racchiusi in pannelli collassabili da mobile.
+- Gli handler esistenti di Dashboard Presidente V369, Notifiche V370, comunicato scambio V242 e svincolo V261 restano preservati.
+
+## Nota architetturale V431 - Solo layout Area Squadra
+
+- V431 non modifica Firebase, regole, snapshot, Soccer Data, Netlify Functions o sorgenti dati.
+- L'intervento aggiunge solo un helper DOM di ordinamento mobile e regole CSS per compattare Area Squadra.
+- Gli id dei form e i listener esistenti restano invariati: `teamNewsRequestForm`, `tradeProposalForm`, pannelli trattative e pulsanti Dashboard/Notifiche.
+
 ## Nota architetturale V429 - Solo layout mobile Admin
 
 - Nessuna modifica a Firebase, regole, snapshot, feed, Soccer Data, Netlify Functions o sorgenti dati.

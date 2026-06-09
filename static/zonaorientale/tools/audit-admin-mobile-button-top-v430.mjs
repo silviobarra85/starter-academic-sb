@@ -17,11 +17,11 @@ const player = read('player.html');
 
 const runtimeMatch = app.match(/DEPLOY_EXPECTED_VERSION_V181 = "(\d+)"/);
 const runtimeVersion = Number(runtimeMatch?.[1] || 0);
-assert(runtimeVersion === 430, `runtime non V430: ${runtimeVersion || 'non rilevato'}`);
+assert(runtimeVersion >= 430, `runtime precedente a V430: ${runtimeVersion || 'non rilevato'}`);
 assert(app.includes('ZonaOrientaleAdminMobileButtonTopV430'), 'marker ZonaOrientaleAdminMobileButtonTopV430 mancante');
-assert(index.includes('V430 Admin mobile pulsante sopra'), 'footer index V430 mancante');
-assert(competition.includes('V430 Admin mobile pulsante sopra'), 'footer competition V430 mancante');
-assert(player.includes('V430 Admin mobile pulsante sopra'), 'footer player V430 mancante');
+assert(index.includes(`V${runtimeVersion}`), 'footer index runtime corrente mancante');
+assert(competition.includes(`V${runtimeVersion}`), 'footer competition runtime corrente mancante');
+assert(player.includes(`V${runtimeVersion}`), 'footer player runtime corrente mancante');
 for (const content of [index, competition, player, app]) {
   assert(!content.includes('?v=429'), 'cache-buster V429 ancora presente');
 }

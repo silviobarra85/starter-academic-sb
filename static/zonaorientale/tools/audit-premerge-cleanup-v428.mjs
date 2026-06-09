@@ -26,7 +26,7 @@ assert(app.includes('ZonaOrientaleMobileChecklistV426'), 'marker V426 non preser
 assert(app.includes('ZonaOrientaleMobileTypographyV425'), 'marker V425 non preservato');
 
 for (const [name, html] of [['index.html', index], ['competition.html', competition], ['player.html', player]]) {
-  assert(/V4(28|29|30)/.test(html), `${name} footer V428+ mancante`);
+  assert(html.includes(`V${runtimeVersion}`), `${name} footer runtime corrente mancante`);
   assert(html.includes(`?v=${runtimeVersion}`) || name === 'player.html', `${name} cache-buster runtime V${runtimeVersion} mancante`);
   assert(!html.includes('?v=427'), `${name} contiene cache-buster V427 stale`);
   assert(!html.includes('?v=426'), `${name} contiene cache-buster V426 stale`);
