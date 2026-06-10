@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-26T13:50:29.691Z",
+  "generatedAt": "2026-06-10T14:43:06.234Z",
   "snapshot": {
     "id": "honor",
-    "generatedAt": "2026-05-26T13:50:29.685Z",
+    "generatedAt": "2026-06-10T14:43:06.225Z",
     "honorRows": [
       {
         "seasonId": "2025-2026",
@@ -1188,95 +1188,95 @@
     },
     "fifaRanking": [
       {
-        "teamId": "WMdzHRRpUP8lHvsdwM7W",
-        "teamName": "Ac Milan",
-        "points": 438.97,
-        "position": 1,
-        "logo": "./assets/logos/acmilan.png"
-      },
-      {
         "teamId": "FT1tqdqI18iUh3l1lakQ",
         "teamName": "real mappine",
-        "points": 424.24,
-        "position": 2,
+        "points": 467.27,
+        "position": 1,
         "logo": "./assets/logos/real_mappine.png"
+      },
+      {
+        "teamId": "WMdzHRRpUP8lHvsdwM7W",
+        "teamName": "Ac Milan",
+        "points": 465.55,
+        "position": 2,
+        "logo": "./assets/logos/acmilan.png"
       },
       {
         "teamId": "h6saeK7uRQIQNmiZTRT7",
         "teamName": "Afc Severgas Baronissi",
-        "points": 422.31,
+        "points": 455.57,
         "position": 3,
         "logo": "./assets/logos/baronissi.png"
       },
       {
-        "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-        "teamName": "FC DueFratelli2005",
-        "points": 410.46,
-        "position": 4,
-        "logo": "./assets/logos/due_fratelli.png"
-      },
-      {
-        "teamId": "7Bx0ceGBXtF4FwH6T0PI",
-        "teamName": "As Paperopoli",
-        "points": 381.71,
-        "position": 5,
-        "logo": "./assets/logos/paperopoli.png"
-      },
-      {
         "teamId": "ULwTIMBi3dyYrq0SoEsx",
         "teamName": "River Plaid",
-        "points": 373.95,
-        "position": 6,
+        "points": 454.85,
+        "position": 4,
         "logo": "./assets/logos/river_plaid.png"
       },
       {
-        "teamId": "team_002",
-        "teamName": "Beetlejuice",
-        "points": 373.4,
-        "position": 7,
-        "logo": "./assets/logos/beetlejuice.png"
+        "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+        "teamName": "FC DueFratelli2005",
+        "points": 423.63,
+        "position": 5,
+        "logo": "./assets/logos/due_fratelli.png"
       },
       {
         "teamId": "GDisIDfbuSeLVm64PSR3",
         "teamName": "Olympic Salerno FC",
-        "points": 370.15,
-        "position": 8,
+        "points": 413.45,
+        "position": 6,
         "logo": "./assets/logos/olympic_salerno.png"
+      },
+      {
+        "teamId": "team_002",
+        "teamName": "Beetlejuice",
+        "points": 403.15,
+        "position": 7,
+        "logo": "./assets/logos/beetlejuice.png"
+      },
+      {
+        "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+        "teamName": "As Paperopoli",
+        "points": 398.85,
+        "position": 8,
+        "logo": "./assets/logos/paperopoli.png"
+      },
+      {
+        "teamId": "uQSBHtctytBo7koOKndM",
+        "teamName": "Prestige Worldwide",
+        "points": 250.91,
+        "position": 9,
+        "logo": "./assets/logos/prestige.png"
       },
       {
         "teamId": "jy2dst1rXfQv6eLW89DS",
         "teamName": "Atletico Cadaveri",
         "points": 239.01,
-        "position": 9,
+        "position": 10,
         "logo": ""
       },
       {
         "teamId": "fYQViaVoCqDPmikgwS2F",
         "teamName": "Real Gremo",
         "points": 199.81,
-        "position": 10,
-        "logo": ""
-      },
-      {
-        "teamId": "uQSBHtctytBo7koOKndM",
-        "teamName": "Prestige Worldwide",
-        "points": 194.62,
         "position": 11,
-        "logo": "./assets/logos/prestige.png"
-      },
-      {
-        "teamId": "lvn8MgLzGcNCY9ev0sgX",
-        "teamName": "AS Longobarda",
-        "points": 109.82,
-        "position": 12,
         "logo": ""
       },
       {
         "teamId": "team_001",
         "teamName": "Real Pisistrius",
-        "points": 95.71,
-        "position": 13,
+        "points": 129.05,
+        "position": 12,
         "logo": "./assets/logos/real_pisistrius.png"
+      },
+      {
+        "teamId": "lvn8MgLzGcNCY9ev0sgX",
+        "teamName": "AS Longobarda",
+        "points": 109.82,
+        "position": 13,
+        "logo": ""
       },
       {
         "teamId": "JrHbTlYyGDRaWkWXRBlL",
