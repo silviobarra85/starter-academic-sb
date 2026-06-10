@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-07",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-09T08:00:13.443Z",
+  "generatedAt": "2026-06-10T03:51:22.700Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -385,16 +385,16 @@
   "warnings": [],
   "feedRange": {
     "earliest": "2026-05-14T09:21:00.000Z",
-    "latest": "2026-06-09T09:56:17.000Z",
-    "totalBeforeDateRange": 904,
-    "totalFetched": 904,
-    "totalAfterQueryBeforeDateRange": 904
+    "latest": "2026-06-09T23:46:26.000Z",
+    "totalBeforeDateRange": 893,
+    "totalFetched": 893,
+    "totalAfterQueryBeforeDateRange": 893
   },
   "stats": {
-    "existingArticles": 0,
-    "fetchedArticles": 94,
+    "existingArticles": 94,
+    "fetchedArticles": 66,
     "totalArticles": 94,
-    "duplicatesSkipped": 0
+    "duplicatesSkipped": 66
   },
   "articles": [
     {
