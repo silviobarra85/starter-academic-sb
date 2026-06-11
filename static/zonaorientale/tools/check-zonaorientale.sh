@@ -2563,6 +2563,23 @@ for doc in     "$DOCS_ROOT/FUNZIONALITAV382.md"     "$DOCS_ROOT/handoff/HANDOFF_
 done
 
 
+print_step "Audit Bilanci link WhatsApp V440"
+if command -v node >/dev/null 2>&1; then
+  audit_bilanci_whatsapp_v440="$SITE_ROOT/tools/audit-bilanci-whatsapp-v440.mjs"
+  if [[ -f "$audit_bilanci_whatsapp_v440" ]]; then
+    if node "$audit_bilanci_whatsapp_v440" --quiet; then
+      pass "audit Bilanci link WhatsApp V440 superato"
+    else
+      fail "audit Bilanci link WhatsApp V440 fallito"
+    fi
+  else
+    fail "tool audit Bilanci link WhatsApp V440 mancante"
+  fi
+else
+  fail "node non disponibile per audit Bilanci link WhatsApp V440"
+fi
+
+
 print_step "Audit menu Altro pagine standalone V439"
 if command -v node >/dev/null 2>&1; then
   audit_mobile_more_standalone_v439="$SITE_ROOT/tools/audit-mobile-more-standalone-v439.mjs"

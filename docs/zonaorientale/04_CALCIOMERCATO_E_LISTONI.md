@@ -1,3 +1,8 @@
+## Nota V440 su Bilanci e sezioni dati
+
+- Nessuna modifica a Calciomercato, Listone, Rose o filtri.
+- La patch aggiunge solo un link WhatsApp dedicato ai Bilanci; i dati continuano a provenire dagli snapshot stagione.
+
 ## Nota V435 su Bilanci, Rose e Movimenti FM
 
 - Nessuna modifica a Calciomercato, Listone, Rose, colori ruolo, filtri o ordinamenti.

@@ -1,3 +1,9 @@
+## Test e audit V440 - Link WhatsApp Bilanci
+
+- Aggiunto `tools/audit-bilanci-whatsapp-v440.mjs`.
+- L'audit verifica runtime/cache V440, pulsante `Copia link WhatsApp`, landing `bilanci.html`, metadati Open Graph specifici e redirect a `#bilanci`.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V440.
+
 ## Test e audit V439 - Menu Altro pagine standalone
 
 - Aggiunto `tools/audit-mobile-more-standalone-v439.mjs`.

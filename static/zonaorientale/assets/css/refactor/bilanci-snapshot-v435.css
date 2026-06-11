@@ -312,3 +312,38 @@
     white-space: normal;
   }
 }
+
+/* V440 - Bilanci: link WhatsApp copiabile con anteprima dedicata. */
+.bilanci-share-v440 {
+  display: grid;
+  gap: .35rem;
+  align-content: end;
+  min-width: min(100%, 12rem);
+}
+
+.bilanci-share-button-v440 {
+  width: 100%;
+  min-height: 2.6rem;
+  justify-content: center;
+}
+
+.bilanci-share-status-v440 {
+  min-height: 1rem;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.25;
+}
+
+.bilanci-share-status-v440.is-ok {
+  color: var(--success, #77d88a);
+}
+
+.bilanci-share-status-v440.is-error {
+  color: var(--danger, #ff8d8d);
+}
+
+@media (max-width: 760px) {
+  .bilanci-share-v440 {
+    width: 100%;
+  }
+}
