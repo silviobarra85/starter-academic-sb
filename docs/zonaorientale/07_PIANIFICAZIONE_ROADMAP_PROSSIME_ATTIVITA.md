@@ -1,3 +1,31 @@
+## Roadmap aggiornata dopo V439
+
+- Testare da mobile `competition.html` e `player.html`: il menu `Altro` deve mostrare tutte le voci presenti nella home.
+- Continuare a usare la V438 come riferimento estetico per la tabella Bilanci; eventuali nuove modifiche alla colonna `Voce` vanno fatte solo se richieste esplicitamente.
+- Prima di altre patch, verificare che la navigazione standalone non perda link verso Bilanci, Calciomercato, Statistiche, Archivio e Confronta.
+
+## Roadmap aggiornata dopo V438
+
+- Testare su smartphone reale la sezione Bilanci: i menu devono comparire sotto `Bilancio stagione`, la colonna `Voce` deve restare bloccata nello scroll orizzontale e le card mensili devono partire chiuse.
+- Proseguire solo con micro-rifiniture CSS se emergono problemi reali; evitare refactor della logica Bilanci finche' la vista da snapshot e' stabile.
+
+## Roadmap aggiornata dopo V437
+
+- Verificare la sezione Bilanci su smartphone reale dopo applicazione overlay: selettori sotto titolo, tabella scrollabile, colonna `Voce` sticky.
+- Proseguire solo con micro-rifiniture CSS mirate, evitando refactor JS della logica Bilanci finche' non emergono problemi funzionali.
+
+## Roadmap aggiornata dopo V436
+
+- Consolidare il flusso Admin Rose e movimenti FM con test manuale su modifica di budget, bonus, acquisti, svincoli e scambi.
+- Valutare in una patch futura un ricalcolo esplicito degli effetti rosa per modifiche avanzate, ma solo dopo audit dedicato per non staccare funzionalita esistenti.
+- Mantenere Bilanci come vista derivata dagli snapshot stagione.
+
+## Roadmap aggiornata dopo V435
+
+- Verificare la nuova sezione Bilanci su smartphone: selettori, tabella larga, sticky column e leggibilita' del dettaglio movimenti.
+- Dopo ogni modifica a budget o movimenti FM, ricordare che Bilanci si aggiorna stabilmente solo dopo `Snapshot pubblici -> Aggiorna tutto` e commit degli snapshot.
+- Prossimo intervento consigliato solo dopo test: eventuale micro-rifinitura mobile CSS della tabella Bilanci, senza cambiare la sorgente dati.
+
 ## Roadmap aggiornata dopo V434
 
 - Verificare su dispositivo reale il badge in alto a destra: leggibilita', posizione e assenza di interferenze con pulsanti.

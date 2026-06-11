@@ -1,3 +1,28 @@
+## Nota operativa V438
+
+- Nessuna variazione operativa Admin. I Bilanci continuano ad aggiornarsi stabilmente dopo `Snapshot pubblici -> Aggiorna tutto` e commit degli snapshot.
+- La patch V438 modifica solo layout e comportamento di apertura dei dettagli nella sezione pubblica Bilanci.
+
+## Nota operativa V437
+
+- Nessuna modifica operativa ad Admin.
+- Dopo modifiche a budget o movimenti FM resta valido il flusso: Snapshot pubblici -> Aggiorna tutto, scarica overlay snapshot stagioni, applica alla repo, commit e push.
+- La sezione Bilanci mostrera' i nuovi valori dopo la pubblicazione degli snapshot aggiornati.
+
+## Nota operativa V436 - Modifica movimenti FM
+
+- In Admin -> Rose e movimenti FM, ogni movimento della rosa selezionata mostra ora `Modifica` ed `Elimina`.
+- `Modifica` precompila il form; `Aggiorna movimento` salva le variazioni sul record esistente.
+- Usa l'editing per correggere data, importo, descrizione, tipo o campi del movimento senza dover cancellare e reinserire.
+- Se modifichi tipo, giocatore, rosa sorgente o rosa destinazione di un movimento che aveva gia aggiornato la rosa, controlla subito il conteggio giocatori e la rosa delle squadre coinvolte.
+- Dopo l'aggiornamento dei movimenti: Snapshot pubblici -> Aggiorna tutto, scarica overlay snapshot stagioni, applica alla repo, commit e push.
+
+## Nota operativa V435
+
+- Nessuna modifica ai flussi Admin, EmailJS, permessi, richieste presidente o pubblicazioni.
+- La nuova sezione Bilanci mostra cio' che e' gia' stato pubblicato negli snapshot: dopo cambi budget/movimenti FM va eseguito `Snapshot pubblici -> Aggiorna tutto` e poi va committato l'overlay snapshot.
+- Test manuale consigliato: dopo l'aggiornamento snapshot aprire `#bilanci`, selezionare stagione e squadra, e confrontare saldo/movimenti con la sezione Admin Rose e Movimenti FM.
+
 ## Nota operativa V434
 
 - Nessuna modifica ai flussi Admin, EmailJS, permessi o pubblicazioni.

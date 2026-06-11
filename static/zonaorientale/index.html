@@ -23,18 +23,20 @@
   <meta name="twitter:description" content="Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d&#039;oro, statistiche, archivio e comunicati." />
   <meta name="twitter:image" content="https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png" />
   <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/components-v130.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/refactor/listone.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=434" />
-  <link rel="stylesheet" href="./assets/device-badge-v434.css?v=434" />
+  <link rel="stylesheet" href="./assets/styles.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/components-v130.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/admin-v130.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/transfer-market-v130.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/competition-detail-v130.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/mobile-suite-v168.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/listone.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/calciomercato.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/bilanci-snapshot-v435.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/admin-fm-movement-edit-v436.css?v=439" />
+  <link rel="stylesheet" href="./assets/device-badge-v434.css?v=439" />
 </head>
 <body>
   <header class="app-header">
@@ -60,6 +62,7 @@
       <a href="#dashboard" class="nav-link" data-page-link="dashboard">Dashboard</a>
       <a href="#news" class="nav-link" data-page-link="news">News</a>
       <a href="#clubs" class="nav-link" data-page-link="clubs">Rose</a>
+      <a href="#bilanci" class="nav-link" data-page-link="bilanci">Bilanci</a>
       <a href="#fantamercato" class="nav-link" data-page-link="fantamercato">Fantamercato</a>
       <a href="#calciomercato" class="nav-link" data-page-link="calciomercato">Calciomercato</a>
       <a href="#listone" class="nav-link" data-page-link="listone">Listone</a>
@@ -217,6 +220,40 @@
             </tbody>
           </table>
         </div>
+      </section>
+    </section>
+
+    <section class="app-page" data-page="bilanci" aria-labelledby="bilanciTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Bilanci squadre</p>
+          <h2 id="bilanciTitle">Bilanci FM</h2>
+          <p>Seleziona stagione e squadra per consultare entrate, uscite e saldo progressivo.</p>
+        </div>
+      </div>
+      <section class="panel bilanci-panel-v435">
+        <div class="panel-header bilanci-header-v437 bilanci-header-v438">
+          <div class="bilanci-header-title-v437 bilanci-header-title-v438">
+            <h2>Bilancio stagione</h2>
+            <div class="filters-row bilanci-controls-v435 bilanci-controls-under-title-v438">
+              <label class="field-inline-v435">
+                <span>Stagione</span>
+                <select id="bilanciSeasonSelectV435" class="input filter-input" aria-label="Seleziona stagione bilanci"></select>
+              </label>
+              <label class="field-inline-v435">
+                <span>Squadra</span>
+                <select id="bilanciTeamSelectV435" class="input filter-input" aria-label="Seleziona squadra bilanci"></select>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="bilanciSummaryV435" class="bilanci-summary-v435">
+          <p class="muted">Caricamento bilanci...</p>
+        </div>
+        <div id="bilanciTableWrapV435" class="bilanci-table-shell-v435">
+          <p class="muted">Seleziona stagione e squadra.</p>
+        </div>
+        <div id="bilanciMovementsV435" class="bilanci-movements-v435"></div>
       </section>
     </section>
 
@@ -1297,6 +1334,7 @@
     </div>
     <a href="#news" class="mobile-more-link" data-page-link="news"><span class="mobile-more-icon">📰</span><span>News</span></a>
     <a href="#clubs" class="mobile-more-link" data-page-link="clubs"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
+    <a href="#bilanci" class="mobile-more-link" data-page-link="bilanci"><span class="mobile-more-icon">💰</span><span>Bilanci squadre</span></a>
     <a href="#honor" class="mobile-more-link" data-page-link="honor"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
     <a href="#stats" class="mobile-more-link" data-page-link="stats"><span class="mobile-more-icon">📊</span><span>Statistiche storiche</span></a>
     <a href="#archive" class="mobile-more-link" data-page-link="archive"><span class="mobile-more-icon">🗂️</span><span>Archivio stagioni</span></a>
@@ -1317,17 +1355,18 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V434 badge dispositivo · Ultimo aggiornamento 09/06/2026</p>
+    <p>ZonaOrientale Salerno · V439 menu Altro pagine standalone · Ultimo aggiornamento 11/06/2026</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="./assets/js/core/section-registry-v405.js?v=434"></script>
-  <script type="module" src="./assets/js/sections/regolamento-section-v402.js?v=434"></script>
-  <script type="module" src="./assets/js/sections/compare-section-v403.js?v=434"></script>
-  <script type="module" src="./assets/js/sections/stats-section-v404.js?v=434"></script>
-  <script type="module" src="./assets/js/sections/archive-section-v405.js?v=434"></script>
-  <script type="module" src="./assets/app.js?v=434"></script>
-  <script src="./assets/device-badge-v434.js?v=434" defer></script>
+  <script type="module" src="./assets/js/core/section-registry-v405.js?v=439"></script>
+  <script type="module" src="./assets/js/sections/regolamento-section-v402.js?v=439"></script>
+  <script type="module" src="./assets/js/sections/compare-section-v403.js?v=439"></script>
+  <script type="module" src="./assets/js/sections/stats-section-v404.js?v=439"></script>
+  <script type="module" src="./assets/js/sections/archive-section-v405.js?v=439"></script>
+  <script type="module" src="./assets/js/sections/bilanci-snapshot-section-v435.js?v=439"></script>
+  <script type="module" src="./assets/app.js?v=439"></script>
+  <script src="./assets/device-badge-v434.js?v=439" defer></script>
 </body>
 </html>
 

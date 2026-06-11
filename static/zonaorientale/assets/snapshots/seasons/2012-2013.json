@@ -1,145 +1,145 @@
 {
   "id": "2012-2013",
   "seasonId": "2012-2013",
-  "generatedAt": "2026-06-11T06:11:08.555Z",
+  "generatedAt": "2026-06-11T07:32:23.268Z",
   "teams": [
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "logo": "./assets/logos/baronissi.png",
       "canonicalName": "Afc Severgas Baronissi",
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
+      "notes": "",
       "isCurrent": true,
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
-      "notes": ""
+      "logo": "./assets/logos/baronissi.png"
     },
     {
       "id": "team_002",
       "canonicalName": "Beetlejuice",
+      "notes": "",
+      "isCurrent": true,
       "currentPresidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ],
       "logo": "./assets/logos/beetlejuice.png",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
-      },
-      "isCurrent": true
+      }
     },
     {
       "id": "27oaqqtPiW0W5ehFDazr",
       "isCurrent": false,
-      "updatedAt": {
-        "seconds": 1778834055,
-        "nanoseconds": 214000000
-      },
       "notes": "",
       "logo": "",
-      "createdAt": {
-        "seconds": 1778834055,
-        "nanoseconds": 214000000
-      },
-      "canonicalName": "Il Clan Divino",
       "currentPresidentIds": [
         "uvxNCO3JS0ZGPr8PCbzN",
         "4ErijLL4NEQ6J4LBBwiX",
         "uAnVBYBLy3NLLlQt1cre"
-      ]
+      ],
+      "updatedAt": {
+        "seconds": 1778834055,
+        "nanoseconds": 214000000
+      },
+      "canonicalName": "Il Clan Divino",
+      "createdAt": {
+        "seconds": 1778834055,
+        "nanoseconds": 214000000
+      }
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
-      "isCurrent": false,
+      "logo": "",
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
-      "notes": "",
-      "logo": "",
       "currentPresidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
-      "canonicalName": "Real Gremo",
+      "notes": "",
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
-      }
+      },
+      "canonicalName": "Real Gremo"
     }
   ],
   "presidents": [
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
       "name": "Bartolomeo Greco",
-      "createdAt": {
-        "seconds": 1778833068,
-        "nanoseconds": 684000000
-      },
+      "isActive": false,
+      "notes": "",
       "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "isActive": false,
-      "notes": ""
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      }
     },
     {
       "id": "uvxNCO3JS0ZGPr8PCbzN",
-      "createdAt": {
-        "seconds": 1778832855,
-        "nanoseconds": 565000000
-      },
       "name": "Davide Perruso",
+      "isActive": true,
+      "notes": "",
       "updatedAt": {
         "seconds": 1778832855,
         "nanoseconds": 565000000
       },
-      "isActive": true,
-      "notes": ""
+      "createdAt": {
+        "seconds": 1778832855,
+        "nanoseconds": 565000000
+      }
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
       "createdAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
       "name": "Gianluca Caparrotti",
-      "notes": "",
-      "isActive": true,
-      "updatedAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      }
+      "isActive": true
     },
     {
       "id": "4ErijLL4NEQ6J4LBBwiX",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778833114,
-        "nanoseconds": 385000000
-      },
-      "isActive": false,
       "createdAt": {
         "seconds": 1778833114,
         "nanoseconds": 385000000
       },
-      "name": "Roberto Corbo"
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833114,
+        "nanoseconds": 385000000
+      },
+      "name": "Roberto Corbo",
+      "isActive": false
     },
     {
       "id": "uAnVBYBLy3NLLlQt1cre",
+      "name": "Saverio Sicilia",
+      "isActive": false,
       "notes": "",
       "updatedAt": {
         "seconds": 1778833119,
         "nanoseconds": 790000000
       },
-      "isActive": false,
-      "name": "Saverio Sicilia",
       "createdAt": {
         "seconds": 1778833119,
         "nanoseconds": 790000000
@@ -147,7 +147,6 @@
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
-      "name": "Zio Dino",
       "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
@@ -156,69 +155,70 @@
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
-      "isActive": true,
-      "notes": ""
+      "notes": "",
+      "name": "Zio Dino",
+      "isActive": true
     }
   ],
   "seasonTeams": [
     {
       "id": "2012-2013_kbjri4liu4iuq6ajfnml",
+      "name": "As Baronissi",
       "seasonId": "2012-2013",
-      "updatedAt": {
-        "seconds": 1779195942,
-        "nanoseconds": 354000000
-      },
       "isHistorical": false,
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
       "presidentIds": [
         "Mw12sFS1OoS8V5uzBLLw"
       ],
       "logo": "",
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "updatedAt": {
+        "seconds": 1779195942,
+        "nanoseconds": 354000000
+      },
       "createdAt": {
         "seconds": 1778849310,
         "nanoseconds": 447000000
-      },
-      "name": "As Baronissi"
+      }
     },
     {
       "id": "2012-2013_team-002",
-      "isHistorical": false,
-      "seasonId": "2012-2013",
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778849279,
         "nanoseconds": 358000000
       },
-      "name": "Beetlejuice",
-      "createdAt": {
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "updatedAt": {
         "seconds": 1778849279,
         "nanoseconds": 358000000
       },
       "logo": "",
+      "seasonId": "2012-2013",
+      "name": "Beetlejuice",
       "teamId": "team_002",
-      "presidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ]
+      "isHistorical": false
     },
     {
       "id": "2012-2013_27oaqqtpiw0w5ehfdazr",
+      "teamId": "27oaqqtPiW0W5ehFDazr",
+      "isHistorical": false,
       "seasonId": "2012-2013",
+      "name": "Il Clan Divino",
+      "createdAt": {
+        "seconds": 1778849320,
+        "nanoseconds": 183000000
+      },
       "updatedAt": {
         "seconds": 1778849320,
         "nanoseconds": 183000000
       },
-      "isHistorical": false,
-      "teamId": "27oaqqtPiW0W5ehFDazr",
       "logo": "",
       "presidentIds": [
         "uvxNCO3JS0ZGPr8PCbzN",
         "4ErijLL4NEQ6J4LBBwiX",
         "uAnVBYBLy3NLLlQt1cre"
-      ],
-      "name": "Il Clan Divino",
-      "createdAt": {
-        "seconds": 1778849320,
-        "nanoseconds": 183000000
-      }
+      ]
     },
     {
       "id": "2012-2013_fyqviavocqdpmikgws2f",
@@ -226,104 +226,104 @@
         "seconds": 1778849282,
         "nanoseconds": 95000000
       },
-      "name": "Real Gremo",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778849282,
+        "nanoseconds": 95000000
+      },
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
       "teamId": "fYQViaVoCqDPmikgwS2F",
-      "logo": "",
       "isHistorical": false,
       "seasonId": "2012-2013",
-      "updatedAt": {
-        "seconds": 1778849282,
-        "nanoseconds": 95000000
-      }
+      "name": "Real Gremo"
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2012-2013_campionato",
-      "notes": "",
+      "type": "CAMPIONATO",
       "createdAt": {
         "seconds": 1778849338,
         "nanoseconds": 103000000
       },
-      "name": "Campionato",
-      "type": "CAMPIONATO",
-      "format": "CLASSIFICA",
+      "knockoutPhases": [],
       "updatedAt": {
         "seconds": 1778849350,
         "nanoseconds": 582000000
       },
+      "format": "CLASSIFICA",
+      "status": "CONCLUSA",
+      "name": "Campionato",
       "seasonId": "2012-2013",
-      "knockoutPhases": [],
-      "status": "CONCLUSA"
+      "notes": ""
     },
     {
       "id": "2012-2013_champions-league",
+      "type": "CHAMPIONS_LEAGUE",
+      "updatedAt": {
+        "seconds": 1778849353,
+        "nanoseconds": 991000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
       "createdAt": {
         "seconds": 1778849338,
         "nanoseconds": 167000000
       },
       "name": "Champion's League",
-      "type": "CHAMPIONS_LEAGUE",
-      "notes": "",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
+      "seasonId": "2012-2013",
       "status": "CONCLUSA",
       "format": "GIRONI_KO",
-      "updatedAt": {
-        "seconds": 1778849353,
-        "nanoseconds": 991000000
-      },
-      "seasonId": "2012-2013"
+      "notes": ""
     },
     {
       "id": "2012-2013_coppa-italia",
+      "type": "COPPA_ITALIA",
       "updatedAt": {
         "seconds": 1778849357,
         "nanoseconds": 526000000
       },
-      "format": "GIRONI_KO",
-      "seasonId": "2012-2013",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "status": "CONCLUSA",
-      "notes": "",
-      "type": "COPPA_ITALIA",
       "createdAt": {
         "seconds": 1778849338,
         "nanoseconds": 193000000
       },
-      "name": "Coppa Italia"
+      "name": "Coppa Italia",
+      "seasonId": "2012-2013",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
+      "notes": ""
     },
     {
       "id": "2012-2013_playoff",
-      "createdAt": {
-        "seconds": 1778849338,
-        "nanoseconds": 223000000
-      },
-      "name": "Playoff",
-      "type": "PLAYOFF",
-      "notes": "",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "status": "NON_DISPUTATA",
-      "seasonId": "2012-2013",
       "updatedAt": {
         "seconds": 1778849361,
         "nanoseconds": 242000000
       },
+      "createdAt": {
+        "seconds": 1778849338,
+        "nanoseconds": 223000000
+      },
+      "type": "PLAYOFF",
+      "notes": "",
+      "name": "Playoff",
+      "seasonId": "2012-2013",
+      "status": "NON_DISPUTATA",
       "format": "GIRONI_KO"
     }
   ],
@@ -331,53 +331,53 @@
   "competitionResults": [
     {
       "id": "2012-2013-campionato_1",
-      "fantapoints": null,
+      "played": null,
       "seasonTeamId": "2012-2013_team-002",
+      "competitionId": "2012-2013_campionato",
+      "seasonId": "2012-2013",
+      "points": null,
       "createdAt": {
         "seconds": 1778849377,
         "nanoseconds": 150000000
       },
       "position": 1,
-      "competitionId": "2012-2013_campionato",
-      "played": null,
-      "seasonId": "2012-2013",
       "updatedAt": {
         "seconds": 1778849377,
         "nanoseconds": 150000000
       },
-      "points": null
+      "fantapoints": null
     },
     {
       "id": "2012-2013-campionato_2",
-      "competitionId": "2012-2013_campionato",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778849377,
+        "nanoseconds": 270000000
+      },
       "position": 2,
       "createdAt": {
         "seconds": 1778849377,
         "nanoseconds": 270000000
       },
-      "seasonTeamId": "2012-2013_fyqviavocqdpmikgws2f",
-      "fantapoints": null,
       "points": null,
-      "updatedAt": {
-        "seconds": 1778849377,
-        "nanoseconds": 270000000
-      },
       "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_fyqviavocqdpmikgws2f",
+      "competitionId": "2012-2013_campionato",
       "played": null
     },
     {
       "id": "2012-2013-campionato_3",
       "seasonTeamId": "2012-2013_kbjri4liu4iuq6ajfnml",
+      "competitionId": "2012-2013_campionato",
+      "points": null,
+      "seasonId": "2012-2013",
+      "played": null,
+      "fantapoints": null,
+      "position": 3,
       "createdAt": {
         "seconds": 1778849377,
         "nanoseconds": 318000000
       },
-      "fantapoints": null,
-      "competitionId": "2012-2013_campionato",
-      "position": 3,
-      "played": null,
-      "points": null,
-      "seasonId": "2012-2013",
       "updatedAt": {
         "seconds": 1778849377,
         "nanoseconds": 318000000
@@ -385,39 +385,39 @@
     },
     {
       "id": "2012-2013-champions-league_1",
-      "competitionId": "2012-2013_champions-league",
-      "position": 1,
-      "seasonTeamId": "2012-2013_team-002",
-      "createdAt": {
-        "seconds": 1778849395,
-        "nanoseconds": 840000000
-      },
       "fantapoints": null,
-      "points": null,
       "updatedAt": {
         "seconds": 1778849395,
         "nanoseconds": 840000000
       },
+      "createdAt": {
+        "seconds": 1778849395,
+        "nanoseconds": 840000000
+      },
+      "position": 1,
+      "points": null,
       "seasonId": "2012-2013",
+      "competitionId": "2012-2013_champions-league",
+      "seasonTeamId": "2012-2013_team-002",
       "played": null
     },
     {
       "id": "2012-2013-coppa-italia_1",
-      "played": null,
-      "points": null,
-      "seasonId": "2012-2013",
-      "updatedAt": {
-        "seconds": 1778849388,
-        "nanoseconds": 324000000
-      },
       "seasonTeamId": "2012-2013_27oaqqtpiw0w5ehfdazr",
+      "competitionId": "2012-2013_coppa-italia",
+      "seasonId": "2012-2013",
+      "points": null,
+      "played": null,
+      "fantapoints": null,
+      "position": 1,
       "createdAt": {
         "seconds": 1778849388,
         "nanoseconds": 324000000
       },
-      "fantapoints": null,
-      "position": 1,
-      "competitionId": "2012-2013_coppa-italia"
+      "updatedAt": {
+        "seconds": 1778849388,
+        "nanoseconds": 324000000
+      }
     }
   ],
   "rosterEntries": [

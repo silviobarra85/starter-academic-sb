@@ -1,3 +1,9 @@
+## Nota V435 su Bilanci, Rose e Movimenti FM
+
+- Nessuna modifica a Calciomercato, Listone, Rose, colori ruolo, filtri o ordinamenti.
+- La sezione Bilanci legge i movimenti FM dagli snapshot stagione e non altera la sezione Rose ne' il pannello Admin Rose e Movimenti FM.
+- Il file listone duplicato `2026-06-07.json` non viene reinserito.
+
 ## Nota V434 su Calciomercato, Listone e tabelle
 
 - Nessuna modifica a Calciomercato, Listone, Rose, La mia squadra, colori ruolo, filtri o ordinamenti.

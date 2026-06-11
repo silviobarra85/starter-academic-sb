@@ -424,6 +424,56 @@ else
   fail "node non disponibile per audit badge dispositivo V434"
 fi
 
+
+print_step "Audit bilanci snapshot V435"
+if command -v node >/dev/null 2>&1; then
+  audit_bilanci_snapshot_v435="$SITE_ROOT/tools/audit-bilanci-snapshot-v435.mjs"
+  if [[ -f "$audit_bilanci_snapshot_v435" ]]; then
+    if node "$audit_bilanci_snapshot_v435" --quiet; then
+      pass "audit bilanci snapshot V435 superato"
+    else
+      fail "audit bilanci snapshot V435 fallito"
+    fi
+  else
+    fail "tool audit bilanci snapshot V435 mancante"
+  fi
+else
+  fail "node non disponibile per audit bilanci snapshot V435"
+fi
+
+
+print_step "Audit Bilanci mobile V438"
+if command -v node >/dev/null 2>&1; then
+  audit_bilanci_mobile_v438="$SITE_ROOT/tools/audit-bilanci-mobile-v438.mjs"
+  if [[ -f "$audit_bilanci_mobile_v438" ]]; then
+    if node "$audit_bilanci_mobile_v438" --quiet; then
+      pass "audit Bilanci mobile V438 superato"
+    else
+      fail "audit Bilanci mobile V438 fallito"
+    fi
+  else
+    fail "tool audit Bilanci mobile V438 mancante"
+  fi
+else
+  fail "node non disponibile per audit Bilanci mobile V438"
+fi
+
+print_step "Audit modifica movimenti FM V436"
+if command -v node >/dev/null 2>&1; then
+  audit_admin_fm_movement_edit_v436="$SITE_ROOT/tools/audit-admin-fm-movement-edit-v436.mjs"
+  if [[ -f "$audit_admin_fm_movement_edit_v436" ]]; then
+    if node "$audit_admin_fm_movement_edit_v436" --quiet; then
+      pass "audit modifica movimenti FM V436 superato"
+    else
+      fail "audit modifica movimenti FM V436 fallito"
+    fi
+  else
+    fail "tool audit modifica movimenti FM V436 mancante"
+  fi
+else
+  fail "node non disponibile per audit modifica movimenti FM V436"
+fi
+
 print_step "CSS refactor"
 css_refactor_files=(
   "$SITE_ROOT/assets/css/refactor/mobile-controls.css"
@@ -431,6 +481,8 @@ css_refactor_files=(
   "$SITE_ROOT/assets/css/refactor/listone.css"
   "$SITE_ROOT/assets/css/refactor/theme-light-suspended.css"
   "$SITE_ROOT/assets/css/refactor/calciomercato.css"
+  "$SITE_ROOT/assets/css/refactor/bilanci-snapshot-v435.css"
+  "$SITE_ROOT/assets/css/refactor/admin-fm-movement-edit-v436.css"
 )
 for css_refactor_file in "${css_refactor_files[@]}"; do
   if [[ -f "$css_refactor_file" ]]; then
@@ -2509,6 +2561,23 @@ for doc in     "$DOCS_ROOT/FUNZIONALITAV382.md"     "$DOCS_ROOT/handoff/HANDOFF_
     warn "documento V382 non trovato: ${doc#$DOCS_ROOT/}"
   fi
 done
+
+
+print_step "Audit menu Altro pagine standalone V439"
+if command -v node >/dev/null 2>&1; then
+  audit_mobile_more_standalone_v439="$SITE_ROOT/tools/audit-mobile-more-standalone-v439.mjs"
+  if [[ -f "$audit_mobile_more_standalone_v439" ]]; then
+    if node "$audit_mobile_more_standalone_v439" --quiet; then
+      pass "audit menu Altro pagine standalone V439 superato"
+    else
+      fail "audit menu Altro pagine standalone V439 fallito"
+    fi
+  else
+    fail "tool audit menu Altro pagine standalone V439 mancante"
+  fi
+else
+  fail "node non disponibile per audit menu Altro pagine standalone V439"
+fi
 
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then

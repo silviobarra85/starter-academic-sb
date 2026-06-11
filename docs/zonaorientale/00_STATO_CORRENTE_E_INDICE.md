@@ -1,3 +1,42 @@
+## Aggiornamento V439 - Menu Altro allineato sulle pagine standalone (11/06/2026)
+
+- Runtime avanzato a V439 con footer e cache-buster coerenti.
+- Le pagine standalone `competition.html` e `player.html` hanno ora il menu mobile `Altro` allineato alla home: News, Rose, Bilanci, Albo, Statistiche, Archivio, Confronta, Regolamento, Fantamercato, Calciomercato, Listone e Admin.
+- `player.html` riceve anche bottom nav e sheet `Altro`, cosi' chi arriva dalla scheda giocatore puo' tornare a tutte le sezioni senza passare dal solo link `Torna al Listone`.
+- Nessuna modifica a Bilanci V438, Admin, Rose/Movimenti FM, Firebase, snapshot o badge dispositivo V434.
+
+## Aggiornamento V438 - Fix mobile effettivi sezione Bilanci (11/06/2026)
+
+- Runtime avanzato a V438 con footer e cache-buster coerenti.
+- Nella sezione pubblica `Bilanci`, i selettori `Stagione` e `Squadra` sono ora inseriti strutturalmente sotto il titolo `Bilancio stagione`, cosi' il layout mobile non dipende solo da CSS di allineamento.
+- La colonna `Voce` della tabella Bilanci usa uno sticky piu' robusto con `border-collapse: separate`, `left: 0 !important` e `position: -webkit-sticky` per mobile.
+- Le card di dettaglio mensile partono chiuse e si aprono solo al tap/click.
+- Confermati: Bilanci da snapshot V435, editing movimenti FM V436, rimozione fonte V437, badge dispositivo V434, nessuna modifica a Firebase/Admin.
+
+## Aggiornamento V437 - Rifiniture sezione Bilanci (11/06/2026)
+
+- Runtime avanzato a V437 con footer e cache-buster coerenti.
+- Nella sezione pubblica `Bilanci` e' stata rimossa la card/indicazione tecnica `Fonte`, non utile all'utente finale.
+- Da mobile i selettori `Stagione` e `Squadra` sono stati posizionati sotto il titolo `Bilancio stagione`.
+- Rinforzato lo sticky mobile della prima colonna `Voce`, senza cambiare la sorgente dati: i bilanci restano derivati dagli snapshot stagione.
+- Confermati: Bilanci da snapshot V435, editing movimenti FM V436, badge dispositivo V434, nessuna modifica a Firebase/Admin.
+
+## Aggiornamento V436 - Modifica movimenti FM esistenti (11/06/2026)
+
+- Runtime avanzato a V436 con footer e cache-buster coerenti.
+- Il pannello Admin -> Rose e movimenti FM ora consente di modificare un movimento gia registrato dalla lista della squadra selezionata.
+- Il pulsante `Modifica` carica stagione, rosa, tipo, data, giocatore, squadra reale, ruolo, destinazione, FM e note nel form esistente.
+- `Annulla modifica` riporta il form in modalita nuovo inserimento.
+- La creazione dei nuovi movimenti mantiene gli effetti esistenti sulla rosa; la modifica aggiorna il record `fmMovements` senza cancellare/reinserire. Se si cambiano tipo, giocatore o squadra dopo effetti gia applicati, va verificata la rosa prima di aggiornare gli snapshot.
+- Sezione Bilanci da snapshot V435 e badge dispositivo V434 mantenuti.
+
+## Aggiornamento V435 - Bilanci squadre da snapshot (11/06/2026)
+
+- Runtime avanzato a V435 con footer e cache-buster coerenti.
+- Aggiunta sezione pubblica `Bilanci` per consultare, per stagione e squadra, i movimenti FM gia' presenti negli snapshot in `assets/snapshots/seasons/*.json`.
+- La vista calcola entrate, uscite, saldo mensile e saldo progressivo direttamente dal campo `fmMovements`, senza introdurre file o cartelle `assets/bilanci`.
+- Badge dispositivo V434 mantenuto; nessuna modifica a Firebase, auth, Admin, Rose, Movimenti FM o workflow di scrittura.
+
 ## Aggiornamento V434 - Badge dispositivo diagnostico (09/06/2026)
 
 - Runtime avanzato a V434 con footer e cache-buster coerenti.
