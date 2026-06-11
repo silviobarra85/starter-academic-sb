@@ -38,19 +38,19 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=434";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=434";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=434";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=434";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=434";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=434";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=434";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=439";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=439";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=439";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=439";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=439";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=439";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=439";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=434";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=434";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=439";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=439";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -114,7 +114,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=434";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=439";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -138,7 +138,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=434";
+} from "./js/domain/news-share-v228.js?v=439";
 import {
   getListoneValue,
   compareListoneValues
@@ -153,19 +153,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=434";
+} from "./js/admin/listone-converter.js?v=439";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=434";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=434";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=439";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=439";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=434";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=434";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=434";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=434";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=439";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=439";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=439";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=439";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=434";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=434";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=434";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=439";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=439";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=439";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -4068,6 +4068,38 @@ function getPlayersForAdminMovement(seasonId, seasonTeamId) {
   return sortRosterPlayersForDisplay(roster?.players || []);
 }
 
+
+function getAdminEditingFmMovementV436(selectedSeasonId, selectedSeasonTeamId) {
+  const editingId = String(state.editingAdminFmMovementIdV436 || "");
+  if (!editingId) return null;
+  const movement = (state.raw.fmMovements || []).find((item) => String(item.id || "") === editingId) || null;
+  if (!movement || movement.seasonId !== selectedSeasonId || movement.seasonTeamId !== selectedSeasonTeamId) {
+    state.editingAdminFmMovementIdV436 = "";
+    return null;
+  }
+  return movement;
+}
+
+function startEditFmMovementV436(movementId) {
+  const movement = (state.raw.fmMovements || []).find((item) => String(item.id || "") === String(movementId || ""));
+  if (!movement) {
+    showMessage("adminFmMovementStatus", "Movimento non trovato o non ancora caricato.", true);
+    return;
+  }
+  state.selectedAdminRosterSeasonId = movement.seasonId || state.selectedAdminRosterSeasonId || getCurrentSeasonId();
+  state.selectedAdminMovementSeasonTeamId = movement.seasonTeamId || "";
+  state.editingAdminFmMovementIdV436 = movement.id || "";
+  renderAdminArea();
+  expandAdminPanel("adminRosterMovementsPanel");
+  window.setTimeout(() => document.getElementById("adminFmMovementForm")?.scrollIntoView?.({ behavior: "smooth", block: "start" }), 80);
+}
+
+function cancelEditFmMovementV436() {
+  state.editingAdminFmMovementIdV436 = "";
+  renderAdminArea();
+  expandAdminPanel("adminRosterMovementsPanel");
+}
+
 function renderRosterMovementsAdminPanel() {
   if (!state.selectedAdminRosterSeasonId) state.selectedAdminRosterSeasonId = getCurrentSeasonId();
   const selectedSeasonId = getValidSeasonSelection("selectedAdminRosterSeasonId") || getCurrentSeasonId();
@@ -4077,8 +4109,11 @@ function renderRosterMovementsAdminPanel() {
     state.selectedAdminMovementSeasonTeamId = seasonTeams[0]?.id || "";
   }
   const selectedSeasonTeamId = state.selectedAdminMovementSeasonTeamId;
+  const editingMovement = getAdminEditingFmMovementV436(selectedSeasonId, selectedSeasonTeamId);
+  const editingMovementId = editingMovement?.id || "";
   const teamOptions = seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}" ${seasonTeam.id === selectedSeasonTeamId ? "selected" : ""}>${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("");
-  const movementOptions = FM_MOVEMENT_TYPES.map((type) => `<option value="${escapeHtml(type.value)}">${escapeHtml(type.label)}</option>`).join("");
+  const targetTeamOptions = seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}" ${editingMovement?.targetSeasonTeamId === seasonTeam.id ? "selected" : ""}>${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("");
+  const movementOptions = FM_MOVEMENT_TYPES.map((type) => `<option value="${escapeHtml(type.value)}" ${editingMovement?.type === type.value ? "selected" : ""}>${escapeHtml(type.label)}</option>`).join("");
   const rosterPlayers = getPlayersForAdminMovement(selectedSeasonId, selectedSeasonTeamId);
   const playerOptions = rosterPlayers.map((player) => `<option value="${escapeHtml(player.playerName || "")}"></option>`).join("");
   const movements = (state.raw.fmMovements || [])
@@ -4093,7 +4128,8 @@ function renderRosterMovementsAdminPanel() {
         <strong>${escapeHtml(movement.date || "-")} · ${escapeHtml(getFmMovementLabel(movement.type))} · ${escapeHtml(formatFm(movement.amount))}</strong>
         <small>${escapeHtml(getSeasonTeamDisplayName(movement.seasonTeamId))}${movement.targetSeasonTeamId ? ` → ${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}` : ""}${movement.playerName ? ` · ${escapeHtml(movement.playerName)}` : ""}${movement.description ? ` · ${escapeHtml(movement.description)}` : ""}</small>
       </span>
-      <span>
+      <span class="admin-list-actions-v436">
+        <button class="button button-secondary button-small" type="button" data-admin-edit-fm-movement="${escapeHtml(movement.id)}">Modifica</button>
         <button class="button button-danger button-small" type="button" data-admin-delete-fm-movement="${escapeHtml(movement.id)}">Elimina</button>
       </span>
     </div>`).join("") || `<p class="muted admin-empty-message">Nessun movimento FM per la rosa selezionata.</p>`;
@@ -4113,7 +4149,9 @@ function renderRosterMovementsAdminPanel() {
 
     <hr class="soft-separator" />
 
-    <form id="adminFmMovementForm" class="form-grid">
+    ${editingMovement ? `<div class="admin-editing-notice-v436 span-2" role="status"><strong>Modifica movimento FM attiva.</strong><span>Stai aggiornando il movimento del ${escapeHtml(editingMovement.date || "-")} per ${escapeHtml(getSeasonTeamDisplayName(editingMovement.seasonTeamId))}. Se cambi tipo, giocatore o squadra dopo effetti gia applicati alla rosa, verifica la rosa prima di pubblicare gli snapshot.</span></div>` : ""}
+
+    <form id="adminFmMovementForm" class="form-grid" data-editing-fm-movement-id="${escapeHtml(editingMovementId)}">
       <label>
         Stagione
         <select id="adminFmMovementSeasonId" class="input" required>${seasonOptions}</select>
@@ -4128,38 +4166,39 @@ function renderRosterMovementsAdminPanel() {
       </label>
       <label>
         Data
-        <input id="adminFmMovementDate" class="input" type="date" value="${escapeHtml(getTodayIsoDate())}" />
+        <input id="adminFmMovementDate" class="input" type="date" value="${escapeHtml(editingMovement?.date || getTodayIsoDate())}" />
       </label>
       <label class="movement-player-field">
         Giocatore
-        <input id="adminFmMovementPlayerName" class="input" type="text" placeholder="Nome giocatore" list="adminRosterPlayers" autocomplete="off" />
+        <input id="adminFmMovementPlayerName" class="input" type="text" placeholder="Nome giocatore" list="adminRosterPlayers" autocomplete="off" value="${escapeHtml(editingMovement?.playerName || "")}" />
       </label>
       <label class="movement-player-field">
         Squadra reale
-        <input id="adminFmMovementRealTeam" class="input" type="text" placeholder="Es. NAP" />
+        <input id="adminFmMovementRealTeam" class="input" type="text" placeholder="Es. NAP" value="${escapeHtml(editingMovement?.realTeam || "")}" />
       </label>
       <label class="movement-player-field">
         Ruolo
-        <input id="adminFmMovementRole" class="input" type="text" placeholder="Es. A oppure Pc" />
+        <input id="adminFmMovementRole" class="input" type="text" placeholder="Es. A oppure Pc" value="${escapeHtml(editingMovement?.rosterRole || editingMovement?.mantraRoles || "")}" />
       </label>
       <label class="movement-target-field">
         Rosa destinazione
         <select id="adminFmMovementTargetSeasonTeamId" class="input">
-          <option value="">Nessuna</option>${teamOptions}
+          <option value="" ${editingMovement?.targetSeasonTeamId ? "" : "selected"}>Nessuna</option>${targetTeamOptions}
         </select>
       </label>
       <label>
         FM
-        <input id="adminFmMovementAmount" class="input" type="text" inputmode="decimal" placeholder="Es. 50 oppure -12,5" />
+        <input id="adminFmMovementAmount" class="input" type="text" inputmode="decimal" placeholder="Es. 50 oppure -12,5" value="${escapeHtml(editingMovement ? String(editingMovement.amount ?? "") : "")}" />
         <small class="field-hint">Acquisto/penalità vengono salvati come uscita se inserisci un valore positivo.</small>
       </label>
       <label class="span-2">
         Note
-        <input id="adminFmMovementDescription" class="input" type="text" placeholder="Descrizione movimento" />
+        <input id="adminFmMovementDescription" class="input" type="text" placeholder="Descrizione movimento" value="${escapeHtml(editingMovement?.description || "")}" />
       </label>
       <datalist id="adminRosterPlayers">${playerOptions}</datalist>
       <div class="form-actions span-2">
-        <button class="button button-primary" type="submit">Salva movimento</button>
+        <button class="button button-primary" type="submit">${editingMovement ? "Aggiorna movimento" : "Salva movimento"}</button>
+        ${editingMovement ? `<button class="button button-secondary" type="button" id="adminCancelEditFmMovementV436">Annulla modifica</button>` : ""}
         <span id="adminFmMovementStatus" class="form-status"></span>
       </div>
     </form>
@@ -4323,6 +4362,7 @@ async function saveFmMovement(event) {
     if (["ACQUISTO", "PENALITA"].includes(type) && amount > 0) amount = -amount;
     if (["VENDITA", "SVINCOLO", "BONUS", "INITIAL_BUDGET"].includes(type) && amount < 0) amount = Math.abs(amount);
 
+    const editingMovementId = document.getElementById("adminFmMovementForm")?.dataset?.editingFmMovementId || "";
     const payload = {
       seasonId,
       seasonTeamId,
@@ -4334,13 +4374,25 @@ async function saveFmMovement(event) {
       realTeam: abbreviateRealTeam(document.getElementById("adminFmMovementRealTeam")?.value || ""),
       rosterRole: document.getElementById("adminFmMovementRole")?.value.trim() || "",
       mantraRoles: document.getElementById("adminFmMovementRole")?.value.trim() || "",
-      description: document.getElementById("adminFmMovementDescription")?.value.trim() || "",
-      createdAt: serverTimestamp()
+      description: document.getElementById("adminFmMovementDescription")?.value.trim() || ""
     };
 
-    await addDoc(collection(db, "fmMovements"), payload);
-    await applyRosterSideEffectForMovement(payload);
-    showMessage("adminFmMovementStatus", "Movimento salvato.");
+    if (editingMovementId) {
+      await updateDoc(doc(db, "fmMovements", editingMovementId), {
+        ...payload,
+        updatedAt: serverTimestamp()
+      });
+      state.editingAdminFmMovementIdV436 = "";
+      showMessage("adminFmMovementStatus", "Movimento aggiornato. Verifica la rosa se hai cambiato tipo, giocatore o squadra.");
+    } else {
+      const createPayload = {
+        ...payload,
+        createdAt: serverTimestamp()
+      };
+      await addDoc(collection(db, "fmMovements"), createPayload);
+      await applyRosterSideEffectForMovement(createPayload);
+      showMessage("adminFmMovementStatus", "Movimento salvato.");
+    }
     await loadData();
     expandAdminPanel("adminRosterMovementsPanel");
   } catch (error) {
@@ -4387,14 +4439,20 @@ attachAdminHandlers = function attachAdminHandlersV18() {
   document.getElementById("adminFmMovementSeasonId")?.addEventListener("change", (event) => {
     state.selectedAdminRosterSeasonId = event.target.value;
     state.selectedAdminMovementSeasonTeamId = "";
+    state.editingAdminFmMovementIdV436 = "";
     renderAdminArea();
   });
   document.getElementById("adminFmMovementSeasonTeamId")?.addEventListener("change", (event) => {
     state.selectedAdminMovementSeasonTeamId = event.target.value;
+    if (state.editingAdminFmMovementIdV436) return;
     renderAdminArea();
   });
   document.getElementById("adminFmMovementPlayerName")?.addEventListener("input", updateAdminMovementPlayerFields);
   document.getElementById("adminFmMovementPlayerName")?.addEventListener("change", updateAdminMovementPlayerFields);
+  document.querySelectorAll("[data-admin-edit-fm-movement]").forEach((button) => {
+    button.addEventListener("click", () => startEditFmMovementV436(button.dataset.adminEditFmMovement));
+  });
+  document.getElementById("adminCancelEditFmMovementV436")?.addEventListener("click", cancelEditFmMovementV436);
   document.querySelectorAll("[data-admin-delete-fm-movement]").forEach((button) => {
     button.addEventListener("click", () => deleteDocument("fmMovements", button.dataset.adminDeleteFmMovement, "movimento FM"));
   });
@@ -15855,7 +15913,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "434";
+const DEPLOY_EXPECTED_VERSION_V181 = "439";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -24274,8 +24332,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=434";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=434";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=439";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=439";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -24778,7 +24836,7 @@ async function getCalciomercatoTimelineArticlePoolV335() {
     const days = Array.isArray(manifest?.availableDays) ? manifest.availableDays.map(String).filter(Boolean).sort() : [];
     const limitedDays = days.slice(-370);
     const settled = await Promise.allSettled(limitedDays.map(async (day) => {
-      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=434&_=${Date.now()}`);
+      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=439&_=${Date.now()}`);
       return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day") };
     }));
     settled.forEach((result) => {
@@ -25861,7 +25919,7 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=434`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=439`;
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -26016,7 +26074,7 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=434&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=439&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -26272,7 +26330,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=434&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=439&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -26507,7 +26565,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=434&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=439&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -34660,3 +34718,93 @@ window.ZonaOrientaleTeamAreaMobileCompactV433 = Object.freeze({
   ]
 });
 
+
+
+/* V435 - Bilanci squadre da snapshot statici.
+ * Sezione pubblica solo-lettura: legge i movimenti FM gia' presenti in
+ * assets/snapshots/seasons/*.json e non introduce nuove collection, scritture
+ * Firebase o dataset paralleli assets/bilanci.
+ */
+window.ZonaOrientaleBilanciSnapshotRuntimeV435 = Object.freeze({
+  version: "V435",
+  scope: "bilanci-squadre-snapshot",
+  dataSource: "assets/snapshots/seasons/*.json -> fmMovements",
+  noExtraDataset: true,
+  preserves: [
+    "Firebase/auth/admin invariati",
+    "Rose e Movimenti FM esistenti preservati",
+    "Snapshot stagioni usati come unica fonte pubblica",
+    "Badge dispositivo V434 mantenuto"
+  ]
+});
+
+/* V436 - Admin: modifica movimenti FM esistenti.
+ * Il pannello Rose e movimenti FM consente di caricare un movimento nel form,
+ * aggiornarlo via updateDoc e annullare la modifica senza cancellare/reinserire.
+ */
+window.ZonaOrientaleAdminFmMovementEditRuntimeV436 = Object.freeze({
+  version: "V436",
+  scope: "admin-fm-movement-edit",
+  features: [
+    "pulsante Modifica nella lista movimenti FM",
+    "precompilazione form da movimento esistente",
+    "updateDoc su fmMovements senza cancellazione preventiva",
+    "avviso operativo per modifiche che impattano la rosa",
+    "Badge dispositivo V434 mantenuto",
+    "Bilanci da snapshot V435 mantenuti"
+  ]
+});
+
+
+
+/* V437 - Bilanci: rifiniture mobile e rimozione fonte visibile.
+ * La sezione resta solo-lettura e derivata dagli snapshot stagione, senza cambiare
+ * Admin, Movimenti FM, Firebase o dataset statici.
+ */
+window.ZonaOrientaleBilanciMobileRefinementV437 = Object.freeze({
+  version: "V437",
+  scope: "bilanci-mobile-usability",
+  changes: [
+    "rimosso indicatore Fonte dalla sezione Bilanci",
+    "controlli Stagione/Squadra sotto il titolo da mobile",
+    "prima colonna Voce sticky rafforzata su mobile"
+  ],
+  preserves: [
+    "Bilanci da snapshot V435 mantenuti",
+    "Editing movimenti FM V436 mantenuto",
+    "Badge dispositivo V434 mantenuto",
+    "nessuna modifica a Firebase/Admin/snapshot generator"
+  ]
+});
+
+
+/* V438 - Bilanci: fix mobile effettivi.
+ * Solo sezione Bilanci: controlli sotto il titolo, colonna Voce sticky robusta,
+ * dettagli mensili chiusi di default.
+ */
+window.ZonaOrientaleBilanciMobileFixV438 = Object.freeze({
+  version: "V438",
+  scope: "bilanci-mobile-fix",
+  changes: [
+    "controlli Stagione/Squadra inseriti sotto il titolo Bilancio stagione",
+    "prima colonna Voce sticky rafforzata con border-collapse separato",
+    "dettagli mensili chiusi di default"
+  ],
+  preserves: [
+    "Bilanci da snapshot V435 mantenuti",
+    "Editing movimenti FM V436 mantenuto",
+    "Rifiniture Bilanci V437 mantenute",
+    "Badge dispositivo V434 mantenuto",
+    "nessuna modifica a Firebase/Admin/snapshot generator"
+  ]
+});
+
+/* V439 - Menu Altro pagine standalone.
+ * Allinea le voci del menu mobile Altro su competition.html e player.html
+ * alla home, senza modificare routing, Admin, Bilanci o Firebase.
+ */
+window.ZonaOrientaleStandaloneMoreMenuV439 = Object.freeze({
+  version: "V439",
+  source: "standalone-html-menu-alignment",
+  pages: ["competition.html", "player.html"]
+});

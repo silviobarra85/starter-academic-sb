@@ -7,11 +7,11 @@
   <meta name="description" content="Scheda giocatore Fantacalcio.it integrata nel gestionale ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=434" />
-  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=434" />
-  <link rel="stylesheet" href="./assets/device-badge-v434.css?v=434" />
+  <link rel="stylesheet" href="./assets/styles.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=439" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=439" />
+  <link rel="stylesheet" href="./assets/device-badge-v434.css?v=439" />
 </head>
 <body>
   <header class="app-header player-page-header">
@@ -44,12 +44,70 @@
     </section>
   </main>
 
+  <div id="mobileMoreBackdrop" class="mobile-more-backdrop hidden" aria-hidden="true"></div>
+  <nav id="mobileMoreSheet" class="mobile-more-sheet hidden" aria-label="Altre sezioni mobile">
+    <div class="mobile-more-header">
+      <strong>Altre sezioni</strong>
+      <button id="mobileMoreClose" class="mobile-icon-button" type="button" aria-label="Chiudi menu">×</button>
+    </div>
+    <a href="./#news" class="mobile-more-link"><span class="mobile-more-icon">📰</span><span>News</span></a>
+    <a href="./#clubs" class="mobile-more-link"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
+    <a href="./#bilanci" class="mobile-more-link"><span class="mobile-more-icon">💰</span><span>Bilanci squadre</span></a>
+    <a href="./#honor" class="mobile-more-link"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
+    <a href="./#stats" class="mobile-more-link"><span class="mobile-more-icon">📊</span><span>Statistiche storiche</span></a>
+    <a href="./#archive" class="mobile-more-link"><span class="mobile-more-icon">🗂️</span><span>Archivio stagioni</span></a>
+    <a href="./#compare" class="mobile-more-link"><span class="mobile-more-icon">⚔️</span><span>Confronta squadre</span></a>
+    <a href="./#regolamento" class="mobile-more-link"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
+    <a href="./#fantamercato" class="mobile-more-link"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
+    <a href="./#calciomercato" class="mobile-more-link"><span class="mobile-more-icon">📰</span><span>Calciomercato</span></a>
+    <a href="./#listone" class="mobile-more-link"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
+    <a href="./#admin" class="mobile-more-link"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
+  </nav>
+
+  <nav class="mobile-bottom-nav mobile-bottom-nav-v141" aria-label="Navigazione principale mobile">
+    <a href="./#dashboard" class="mobile-bottom-link"><span class="mobile-nav-icon">⌂</span><span>Home</span></a>
+    <a href="./#teamarea" class="mobile-bottom-link"><span class="mobile-nav-icon">👥</span><span>Squadra</span></a>
+    <a href="./#fantamercato" class="mobile-bottom-link"><span class="mobile-nav-icon">🔁</span><span>Mercato</span></a>
+    <a href="./#competitions" class="mobile-bottom-link"><span class="mobile-nav-icon">🏆</span><span>Coppe</span></a>
+    <button id="mobileMoreBtn" class="mobile-bottom-link" type="button" aria-expanded="false" aria-controls="mobileMoreSheet"><span class="mobile-nav-icon">☰</span><span>Altro</span></button>
+  </nav>
+
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V434 badge dispositivo · Ultimo aggiornamento 09/06/2026</p>
+    <p>ZonaOrientale Salerno · V439 menu Altro pagine standalone · Ultimo aggiornamento 11/06/2026</p>
   </footer>
 
+  <script>
+    (function setupPlayerMobileNavV439() {
+      function closeMore() {
+        document.getElementById('mobileMoreSheet')?.classList.add('hidden');
+        document.getElementById('mobileMoreBackdrop')?.classList.add('hidden');
+        const btn = document.getElementById('mobileMoreBtn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+      function openMore() {
+        document.getElementById('mobileMoreSheet')?.classList.remove('hidden');
+        document.getElementById('mobileMoreBackdrop')?.classList.remove('hidden');
+        const btn = document.getElementById('mobileMoreBtn');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+      document.addEventListener('click', function(event) {
+        const moreBtn = event.target.closest && event.target.closest('#mobileMoreBtn');
+        if (moreBtn) {
+          event.preventDefault();
+          const isOpen = moreBtn.getAttribute('aria-expanded') === 'true';
+          if (isOpen) closeMore();
+          else openMore();
+          return;
+        }
+        if (event.target.closest && (event.target.closest('#mobileMoreClose') || event.target.closest('#mobileMoreBackdrop') || event.target.closest('#mobileMoreSheet a'))) {
+          closeMore();
+        }
+      }, true);
+    })();
+  </script>
+
   <script type="module">
-    import { setupMobileChromeV220 } from "./assets/js/mobile/mobile-chrome-v220.js?v=434";
+    import { setupMobileChromeV220 } from "./assets/js/mobile/mobile-chrome-v220.js?v=439";
 
     function applyTheme() {
       document.documentElement.dataset.theme = 'dark';
@@ -97,6 +155,6 @@
       error.classList.remove('hidden');
     }
   </script>
-  <script src="./assets/device-badge-v434.js?v=434" defer></script>
+  <script src="./assets/device-badge-v434.js?v=439" defer></script>
 </body>
 </html>

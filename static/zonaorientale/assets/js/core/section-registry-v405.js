@@ -9,6 +9,7 @@ const SECTION_REGISTRY_V405 = Object.freeze({
     dashboard: Object.freeze({ label: 'Dashboard', public: true, source: 'index.html', status: 'active', area: 'public' }),
     news: Object.freeze({ label: 'News', public: true, source: 'index.html + news.html + comunicati statici', status: 'active', area: 'public' }),
     clubs: Object.freeze({ label: 'Rose', public: true, source: 'index.html', status: 'active', area: 'public' }),
+    bilanci: Object.freeze({ label: 'Bilanci squadre', public: true, source: 'assets/js/sections/bilanci-snapshot-section-v435.js + assets/snapshots/seasons/*.json', status: 'active', area: 'public', extractedIn: 'V435' }),
     fantamercato: Object.freeze({ label: 'Fantamercato', public: true, source: 'index.html', status: 'active', area: 'presidents' }),
     calciomercato: Object.freeze({ label: 'Calciomercato', public: true, source: 'index.html', status: 'active', area: 'public' }),
     listone: Object.freeze({ label: 'Listone', public: true, source: 'index.html', status: 'active', area: 'public' }),

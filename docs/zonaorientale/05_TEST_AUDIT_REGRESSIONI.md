@@ -1,3 +1,49 @@
+## Test e audit V439 - Menu Altro pagine standalone
+
+- Aggiunto `tools/audit-mobile-more-standalone-v439.mjs`.
+- L'audit verifica runtime/cache V439 e la presenza delle stesse voci `Altro` su `index.html`, `competition.html` e `player.html`.
+- Il gate controlla anche che `player.html` abbia bottom nav e sheet `Altro`, e che il marker runtime `ZonaOrientaleStandaloneMoreMenuV439` sia presente.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V439.
+
+## Test e audit V438
+
+- Aggiunto `tools/audit-bilanci-mobile-v438.mjs`.
+- L'audit verifica runtime/cache V438, controlli sotto il titolo `Bilancio stagione`, sticky robusto della colonna `Voce`, dettagli mensili chiusi di default e mantenimento della sorgente snapshot.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V438.
+
+## Test e audit V437
+
+- Aggiunto `tools/audit-bilanci-mobile-v437.mjs`.
+- L'audit verifica runtime/cache V437, assenza della fonte tecnica visibile nella sezione Bilanci, layout header dedicato, sticky mobile rinforzato per la colonna `Voce` e mantenimento della sorgente dati snapshot.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V437.
+
+## Test e audit V436
+
+- Aggiunto `tools/audit-admin-fm-movement-edit-v436.mjs`.
+- L'audit verifica runtime V436, pulsante `Modifica`, precompilazione form tramite stato edit, uso di `updateDoc` per movimenti esistenti, mantenimento di `addDoc` e side effect per i nuovi movimenti, CSS mobile e badge V434.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V436.
+
+```bash
+node --check assets/app.js
+node tools/audit-admin-fm-movement-edit-v436.mjs
+bash tools/check-zonaorientale.sh
+```
+
+## Test e audit V435
+
+- Aggiunto `tools/audit-bilanci-snapshot-v435.mjs`.
+- L'audit verifica sezione/link Bilanci, CSS/JS dedicati, registry, uso di `assets/snapshots/seasons/*.json`, assenza di `assets/bilanci`, presenza di movimenti FM in `2025-2026.json` e badge V434 ancora collegato.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V435.
+
+Comandi consigliati:
+
+```bash
+cd static/zonaorientale
+node --check assets/js/sections/bilanci-snapshot-section-v435.js
+node tools/audit-bilanci-snapshot-v435.mjs
+bash tools/check-zonaorientale.sh
+```
+
 ## Test e audit V434
 
 - Aggiunto `tools/audit-device-badge-v434.mjs`.

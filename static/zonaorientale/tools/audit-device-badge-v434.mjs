@@ -17,7 +17,7 @@ function exists(rel) {
 function check(label, condition) {
   total += 1;
   if (!condition) {
-    console.error(`✗ ${label}`);
+    console.error(`x ${label}`);
     return;
   }
   ok += 1;
@@ -28,8 +28,9 @@ const app = read('assets/app.js');
 const css = read('assets/device-badge-v434.css');
 const js = read('assets/device-badge-v434.js');
 const checkScript = read('tools/check-zonaorientale.sh');
+const expectedVersion = app.match(/DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(\d+)"/)?.[1] || '434';
 
-check('runtime V434 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"434"/.test(app));
+check('runtime almeno V434 in app.js', Number(expectedVersion) >= 434);
 check('marker runtime V434 presente', app.includes('ZonaOrientaleDeviceBadgeRuntimeV434'));
 check('CSS badge dispositivo presente', exists('assets/device-badge-v434.css'));
 check('JS badge dispositivo presente', exists('assets/device-badge-v434.js'));
@@ -43,10 +44,10 @@ check('fallback Android presente', js.includes('extractAndroidModel'));
 check('privacy locale dichiarata', js.includes('local-only'));
 for (const page of htmlPages) {
   const html = read(page);
-  check(`${page} carica CSS badge V434`, html.includes('assets/device-badge-v434.css?v=434'));
-  check(`${page} carica JS badge V434`, html.includes('assets/device-badge-v434.js?v=434'));
-  check(`${page} footer V434`, html.includes('V434 badge dispositivo'));
-  check(`${page} cache-buster V434`, !html.includes('?v=433'));
+  check(`${page} carica CSS badge V434`, html.includes(`assets/device-badge-v434.css?v=${expectedVersion}`));
+  check(`${page} carica JS badge V434`, html.includes(`assets/device-badge-v434.js?v=${expectedVersion}`));
+  check(`${page} footer runtime attuale`, html.includes(`V${expectedVersion}`));
+  check(`${page} cache-buster non torna a V433`, !html.includes('?v=433'));
 }
 check('check principale integra audit V434', checkScript.includes('audit-device-badge-v434.mjs'));
 

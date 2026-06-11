@@ -1,3 +1,28 @@
+## Nota architetturale V438 - Bilanci resta vista da snapshot
+
+- V438 e' solo una correzione UI della sezione Bilanci: non introduce collection, non crea file `assets/bilanci` e non scrive su Firebase.
+- La fonte dei dati resta `assets/snapshots/seasons/*.json`, campo `fmMovements`.
+
+## Nota architetturale V437 - Bilanci invariati come vista da snapshot
+
+- V437 cambia solo UI/test della sezione Bilanci: nessuna nuova collection, nessun file `assets/bilanci`, nessuna scrittura Firebase.
+- La fonte dati resta `assets/snapshots/seasons/*.json`, campo `fmMovements`; viene solo rimossa l'indicazione tecnica visibile all'utente.
+
+## Nota architetturale V436 - Editing ledger FM
+
+- V436 non aggiunge collection e non cambia la struttura dati: resta centrale la collection Firebase `fmMovements`.
+- Il pannello Admin consente ora anche `updateDoc` sui movimenti esistenti.
+- Per non introdurre effetti collaterali distruttivi, l'editing aggiorna il record del movimento ma non prova a ricostruire automaticamente tutti gli effetti pregressi sulla rosa.
+- I nuovi movimenti mantengono invece il comportamento precedente: inserimento del movimento e side effect su `rosterEntries` quando previsto.
+- Dopo modifiche operative a movimenti/budget resta necessario rigenerare gli snapshot pubblici e pubblicare i JSON statici.
+
+## Nota architetturale V435 - Bilanci derivati dagli snapshot
+
+- V435 non aggiunge collection Firebase e non introduce un dataset parallelo `assets/bilanci`.
+- La sezione Bilanci e' una vista static-first e solo-lettura che carica `assets/snapshots/seasons/manifest.json` e i JSON stagione in `assets/snapshots/seasons/*.json`.
+- I dati economici vengono derivati da `fmMovements`; per renderli permanenti resta necessario il workflow gia' previsto: Admin -> Snapshot pubblici -> Aggiorna tutto -> scarica overlay snapshot stagioni -> commit/push.
+- Le sezioni Admin Rose e Movimenti FM continuano a essere la fonte operativa di scrittura; Bilanci e' solo consultazione pubblica.
+
 ## Nota architetturale V434 - Rilevazione dispositivo locale
 
 - V434 aggiunge solo asset statici `device-badge-v434.css/js` e marker runtime in `app.js`.

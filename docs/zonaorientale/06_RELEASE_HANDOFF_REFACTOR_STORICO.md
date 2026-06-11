@@ -1,3 +1,35 @@
+## Handoff V439
+
+- V439 riparte dalla V438 e corregge solo la navigazione mobile delle pagine standalone.
+- Non usare le varianti V439 precedenti legate allo sticky della colonna `Voce`: lo stile Bilanci resta quello V438.
+- File principali: `index.html`, `competition.html`, `player.html`, `assets/app.js`, `tools/audit-mobile-more-standalone-v439.mjs`, `tools/check-zonaorientale.sh`.
+- Funzionalita' preservate: Bilanci da snapshot, dettagli mensili chiusi, editing movimenti FM V436, badge dispositivo V434, Admin, Firebase e snapshot.
+
+## Handoff V438
+
+- V438 e' una patch solo Bilanci: corregge layout mobile dei selettori, sticky column `Voce` e card mensili chiuse di default.
+- Nessuna funzionalita' viene rimossa o spostata. Restano preservati Admin, Rose/Movimenti FM, snapshot, badge V434 e Bilanci da snapshot.
+
+## Handoff V437
+
+- V437 e' una patch solo Bilanci: rimuove la fonte visibile, migliora il layout mobile dei selettori e rinforza la colonna sticky `Voce`.
+- Non tocca Admin, modifica movimenti FM V436, snapshot generator, Firebase, Rose, Calciomercato o badge dispositivo V434.
+- Test manuale consigliato: aprire `#bilanci` da smartphone, cambiare stagione/squadra e scorrere orizzontalmente la tabella verificando che `Voce` resti bloccata.
+
+## Handoff V436
+
+- V436 aggiunge editing dei movimenti FM nel pannello Admin -> Rose e movimenti FM.
+- La modifica e' additiva: nessuna rimozione di funzionalita, nessun cambio a Firebase rules, auth, snapshot generator, Bilanci o badge dispositivo.
+- Da verificare manualmente: seleziona una stagione/squadra, clicca `Modifica` su un movimento, controlla precompilazione, annulla, modifica solo note/importo, salva, poi rigenera snapshot.
+- Per movimenti che impattano la rosa, verificare la rosa prima di pubblicare gli snapshot statici.
+
+## Handoff V435
+
+- V435 aggiunge la sezione pubblica Bilanci squadre derivata dagli snapshot stagione.
+- Fonte dati unica: `assets/snapshots/seasons/manifest.json` e file stagione con campo `fmMovements`; non esiste un file bilanci separato.
+- La modifica e' additiva e solo-lettura: nessuna scrittura Firebase, nessun cambio ad Admin, Rose, Movimenti FM, auth, routing dinamico o Netlify.
+- Prima del merge verificare da mobile e desktop: apertura `#bilanci`, cambio stagione, cambio squadra, tabella scrollabile e dettaglio movimenti.
+
 ## Handoff V434
 
 - V434 aggiunge un badge dispositivo diagnostico in alto a destra sulle pagine principali.

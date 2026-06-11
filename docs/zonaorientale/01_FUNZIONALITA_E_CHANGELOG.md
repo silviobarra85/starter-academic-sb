@@ -1,3 +1,41 @@
+## Changelog V439 - Menu Altro pagine standalone
+
+- Allineato il menu mobile `Altro` di `competition.html` alle voci della home, includendo anche Bilanci, Statistiche, Archivio, Confronta e Calciomercato.
+- Aggiunta navigazione mobile completa a `player.html`, con bottom nav e sheet `Altro`.
+- Preservati stile e comportamento Bilanci V438; non vengono reintrodotte le varianti V439 precedenti sullo sticky della colonna `Voce`.
+- Nessuna modifica a Firebase, Admin, Rose/Movimenti FM, snapshot generator, dati statici o badge V434.
+
+## Changelog V438 - Fix mobile Bilanci
+
+- Corretto il posizionamento mobile dei menu `Stagione` e `Squadra`: ora sono dentro il blocco titolo e quindi sotto `Bilancio stagione`.
+- Rafforzata la colonna sticky `Voce` della tabella Bilanci, con regole CSS piu' specifiche per lo scroll orizzontale.
+- Le card dei dettagli per mese sono chiuse di default e si espandono solo quando l'utente le seleziona.
+- Nessuna modifica a logica dati, Firebase, Admin, Rose, Movimenti FM o snapshot generator.
+
+## Changelog V437 - Rifiniture mobile Bilanci
+
+- Rimossa dalla sezione `Bilanci` la visualizzazione della fonte tecnica dei dati.
+- Migliorato il layout mobile: i menu `Stagione` e `Squadra` sono sotto il titolo `Bilancio stagione`.
+- Rafforzato lo sticky mobile della colonna `Voce` nella tabella mensile.
+- Nessuna modifica a logiche Admin, Rose, Movimenti FM, snapshot generator o Firebase.
+
+## Changelog V436 - Editing movimenti FM in Admin
+
+- Aggiunto il pulsante `Modifica` in Admin -> Rose e movimenti FM, nella lista dei movimenti della rosa selezionata.
+- Il movimento scelto viene caricato nel form gia esistente e puo essere aggiornato senza eliminarlo e reinserirlo.
+- L'aggiornamento usa `updateDoc` su `fmMovements`; i nuovi inserimenti restano invariati e continuano a usare `addDoc` piu side effect sulla rosa.
+- Cambiare stagione annulla l'editing pendente; la rosa sorgente puo essere corretta nel form e salvata sul movimento esistente.
+- Aggiunto avviso operativo quando si modifica un movimento che potrebbe avere effetti sulla rosa.
+- Confermati: Bilanci da snapshot V435, badge dispositivo V434 e workflow snapshot/static-first.
+
+## Changelog V435 - Bilanci squadre da snapshot
+
+- Aggiunta la sezione `Bilanci` nella navigazione desktop e nel menu mobile Altro.
+- La sezione permette di selezionare stagione e squadra e mostra una tabella Luglio-Giugno con categorie FM: disponibilita', acquisti, svincoli, vendite, scambi, premi/bonus e altri movimenti.
+- Il dettaglio sotto la tabella elenca tutti i movimenti presenti nello snapshot della stagione selezionata.
+- Nessun file bilanci separato: la fonte unica resta `assets/snapshots/seasons/*.json`, campo `fmMovements`.
+- Nessuna funzionalita esistente viene staccata o modificata.
+
 ## Changelog V434 - Badge dispositivo
 
 - Aggiunto badge diagnostico in alto a destra con modello/famiglia del dispositivo rilevato localmente.
