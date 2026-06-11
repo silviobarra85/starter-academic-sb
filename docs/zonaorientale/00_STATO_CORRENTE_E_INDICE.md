@@ -1,3 +1,11 @@
+## Aggiornamento V440 - Link WhatsApp dedicato ai Bilanci (11/06/2026)
+
+- Runtime avanzato a V440 con footer e cache-buster coerenti.
+- Nella sezione pubblica `Bilanci` e' stato aggiunto il pulsante `Copia link WhatsApp`.
+- Il link copiato punta a `https://silviobarra.com/zonaorientale/bilanci.html`, landing statica con metadati Open Graph specifici per mostrare in anteprima che si entra nei Bilanci FM.
+- La landing reindirizza automaticamente a `./#bilanci`, quindi l'utente arriva alla sezione Bilanci della home.
+- Nessuna modifica a dati, snapshot, Firebase, Admin, Rose/Movimenti FM, menu Altro V439 o badge dispositivo V434.
+
 ## Aggiornamento V439 - Menu Altro allineato sulle pagine standalone (11/06/2026)
 
 - Runtime avanzato a V439 con footer e cache-buster coerenti.

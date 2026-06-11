@@ -4,7 +4,7 @@ import path from 'node:path';
 
 const quiet = process.argv.includes('--quiet');
 const root = path.resolve(process.cwd());
-const expectedVersion = '439';
+const expectedVersions = ['439', '440'];
 const requiredHashes = [
   '#news',
   '#clubs',
@@ -31,8 +31,8 @@ function push(ok, label, details = '') {
 
 for (const file of files) {
   const html = read(file);
-  push(html.includes(`?v=${expectedVersion}`), `${file}: cache-buster V${expectedVersion}`);
-  push(html.includes(`V${expectedVersion} menu Altro pagine standalone`), `${file}: footer V${expectedVersion}`);
+  push(expectedVersions.some((version) => html.includes(`?v=${version}`)), `${file}: cache-buster V439+`);
+  push(html.includes('V439 menu Altro pagine standalone') || html.includes('V440 link WhatsApp Bilanci'), `${file}: footer V439+`);
   push(html.includes('id="mobileMoreSheet"'), `${file}: menu Altro presente`);
   push(html.includes('id="mobileMoreBtn"'), `${file}: bottone Altro presente`);
   for (const hash of requiredHashes) {
@@ -42,7 +42,7 @@ for (const file of files) {
 }
 
 const app = read('assets/app.js');
-push(app.includes('DEPLOY_EXPECTED_VERSION_V181 = "439"'), 'app.js: DEPLOY_EXPECTED_VERSION_V181 V439');
+push(/DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(439|440)"/.test(app), 'app.js: DEPLOY_EXPECTED_VERSION_V181 V439+');
 push(app.includes('ZonaOrientaleStandaloneMoreMenuV439'), 'app.js: marker V439 menu standalone');
 
 const failed = results.filter((item) => !item.ok);

@@ -1,3 +1,9 @@
+## Handoff V440
+
+- V440 aggiunge solo il link WhatsApp dedicato alla sezione Bilanci.
+- File principali: `index.html`, `bilanci.html`, `assets/js/sections/bilanci-snapshot-section-v435.js`, `assets/css/refactor/bilanci-snapshot-v435.css`, `assets/app.js`, `tools/audit-bilanci-whatsapp-v440.mjs`, `tools/check-zonaorientale.sh`.
+- Funzionalita' preservate: Bilanci da snapshot, layout Bilanci V438, menu Altro standalone V439, editing movimenti FM V436, Admin, Firebase, snapshot e badge dispositivo V434.
+
 ## Handoff V439
 
 - V439 riparte dalla V438 e corregge solo la navigazione mobile delle pagine standalone.

@@ -1,3 +1,9 @@
+## Nota architetturale V440 - Link Bilanci senza nuovi dati
+
+- V440 non introduce nuove fonti dati: i Bilanci continuano a leggere solo `assets/snapshots/seasons/*.json`, campo `fmMovements`.
+- `bilanci.html` e' una landing statica solo per anteprima social/WhatsApp e redirect alla sezione `#bilanci`; non legge ne' scrive Firebase.
+- Nessuna modifica a snapshot generator, Admin, collection Firebase o dataset paralleli.
+
 ## Nota architetturale V438 - Bilanci resta vista da snapshot
 
 - V438 e' solo una correzione UI della sezione Bilanci: non introduce collection, non crea file `assets/bilanci` e non scrive su Firebase.

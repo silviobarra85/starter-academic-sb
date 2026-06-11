@@ -38,19 +38,19 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=439";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=439";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=439";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=439";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=439";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=439";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=439";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=440";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=440";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=440";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=440";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=440";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=440";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=440";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=439";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=439";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=440";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=440";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -114,7 +114,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=439";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=440";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -138,7 +138,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=439";
+} from "./js/domain/news-share-v228.js?v=440";
 import {
   getListoneValue,
   compareListoneValues
@@ -153,19 +153,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=439";
+} from "./js/admin/listone-converter.js?v=440";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=439";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=439";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=440";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=440";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=439";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=439";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=439";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=439";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=440";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=440";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=440";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=440";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=439";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=439";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=439";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=440";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=440";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=440";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15913,7 +15913,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "439";
+const DEPLOY_EXPECTED_VERSION_V181 = "440";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -24332,8 +24332,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=439";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=439";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=440";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=440";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -24836,7 +24836,7 @@ async function getCalciomercatoTimelineArticlePoolV335() {
     const days = Array.isArray(manifest?.availableDays) ? manifest.availableDays.map(String).filter(Boolean).sort() : [];
     const limitedDays = days.slice(-370);
     const settled = await Promise.allSettled(limitedDays.map(async (day) => {
-      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=439&_=${Date.now()}`);
+      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=440&_=${Date.now()}`);
       return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day") };
     }));
     settled.forEach((result) => {
@@ -25919,7 +25919,7 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=439`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=440`;
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -26074,7 +26074,7 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=439&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=440&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -26330,7 +26330,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=439&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=440&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -26565,7 +26565,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=439&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=440&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -34807,4 +34807,23 @@ window.ZonaOrientaleStandaloneMoreMenuV439 = Object.freeze({
   version: "V439",
   source: "standalone-html-menu-alignment",
   pages: ["competition.html", "player.html"]
+});
+
+/* V440 - Bilanci: link WhatsApp con anteprima dedicata.
+ * Aggiunge una landing statica bilanci.html con metadati Open Graph specifici
+ * e un pulsante di copia link nella sezione Bilanci. La sezione resta letta
+ * dagli snapshot stagione e non introduce scritture o dataset paralleli.
+ */
+window.ZonaOrientaleBilanciWhatsappLinkV440 = Object.freeze({
+  version: "V440",
+  scope: "bilanci-whatsapp-preview-link",
+  shareUrl: "https://silviobarra.com/zonaorientale/bilanci.html",
+  preserves: [
+    "Bilanci da snapshot V435 mantenuti",
+    "Layout mobile Bilanci V438 mantenuto",
+    "Menu Altro standalone V439 mantenuto",
+    "Editing movimenti FM V436 mantenuto",
+    "Badge dispositivo V434 mantenuto",
+    "nessuna modifica a Firebase/Admin/snapshot generator"
+  ]
 });

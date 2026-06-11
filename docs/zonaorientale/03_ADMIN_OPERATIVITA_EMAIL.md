@@ -1,3 +1,9 @@
+## Nota operativa V440
+
+- Nessuna variazione operativa Admin.
+- Per condividere la sezione Bilanci su WhatsApp usare il nuovo pulsante `Copia link WhatsApp` nella pagina Bilanci.
+- Per aggiornare i valori mostrati nei Bilanci resta valido il flusso: modifiche FM in Admin, `Snapshot pubblici -> Aggiorna tutto`, overlay snapshot, commit e push.
+
 ## Nota operativa V438
 
 - Nessuna variazione operativa Admin. I Bilanci continuano ad aggiornarsi stabilmente dopo `Snapshot pubblici -> Aggiorna tutto` e commit degli snapshot.

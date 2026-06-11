@@ -140,6 +140,60 @@ function getSeasonLabelV435(seasonId) {
   return season?.name || seasonId;
 }
 
+function buildBilanciWhatsappUrlV440() {
+  return 'https://silviobarra.com/zonaorientale/bilanci.html';
+}
+
+function setBilanciCopyStatusV440(message, kind = '') {
+  const status = document.getElementById('bilanciWhatsappCopyStatusV440');
+  if (!status) return;
+  status.textContent = message || '';
+  status.classList.remove('is-ok', 'is-error');
+  if (kind) status.classList.add(kind);
+  if (message) {
+    window.clearTimeout(setBilanciCopyStatusV440.timeoutId);
+    setBilanciCopyStatusV440.timeoutId = window.setTimeout(() => {
+      status.textContent = '';
+      status.classList.remove('is-ok', 'is-error');
+    }, 3500);
+  }
+}
+
+async function copyTextToClipboardV440(text) {
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return true;
+  }
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.left = '-9999px';
+  textarea.style.top = '0';
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  const ok = document.execCommand('copy');
+  textarea.remove();
+  return ok;
+}
+
+async function copyBilanciWhatsappLinkV440() {
+  const button = document.getElementById('bilanciWhatsappCopyV440');
+  const url = buildBilanciWhatsappUrlV440();
+  try {
+    if (button) button.disabled = true;
+    const copied = await copyTextToClipboardV440(url);
+    if (!copied) throw new Error('Copia non riuscita');
+    setBilanciCopyStatusV440('Link copiato.', 'is-ok');
+  } catch (error) {
+    console.warn('Copia link WhatsApp Bilanci non disponibile', error);
+    setBilanciCopyStatusV440('Copia non riuscita: seleziona e copia il link dalla barra indirizzi.', 'is-error');
+  } finally {
+    if (button) button.disabled = false;
+  }
+}
+
 function getSeasonOptionsV435() {
   const entries = stateV435.manifest?.snapshots || [];
   return entries.map((entry) => ({ id: entry.seasonId, label: getSeasonLabelV435(entry.seasonId), file: entry.file }));
@@ -314,6 +368,11 @@ async function renderBilanciV435() {
 function bindBilanciControlsV435() {
   const seasonSelect = document.getElementById('bilanciSeasonSelectV435');
   const teamSelect = document.getElementById('bilanciTeamSelectV435');
+  const whatsappButton = document.getElementById('bilanciWhatsappCopyV440');
+  if (whatsappButton?.dataset.boundV440 !== 'true') {
+    whatsappButton.dataset.boundV440 = 'true';
+    whatsappButton.addEventListener('click', copyBilanciWhatsappLinkV440);
+  }
   if (seasonSelect?.dataset.boundV435 !== 'true') {
     seasonSelect.dataset.boundV435 = 'true';
     seasonSelect.addEventListener('change', () => {
@@ -353,8 +412,9 @@ document.addEventListener('click', (event) => {
 }, true);
 
 window.ZonaOrientaleBilanciSnapshotSectionV435 = Object.freeze({
-  version: 'V438',
+  version: 'V440',
   source: 'assets/snapshots/seasons/*.json',
   noExtraDataset: true,
+  whatsappPreviewUrl: buildBilanciWhatsappUrlV440(),
   render: renderBilanciV435
 });

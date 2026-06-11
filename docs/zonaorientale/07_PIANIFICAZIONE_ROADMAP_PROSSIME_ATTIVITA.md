@@ -1,3 +1,9 @@
+## Roadmap aggiornata dopo V440
+
+- Testare da smartphone il pulsante `Copia link WhatsApp` nella sezione Bilanci.
+- Incollare il link in WhatsApp e verificare che l'anteprima mostri `Bilanci FM · ZonaOrientale Salerno`.
+- Non usare questa patch per modificare i dati dei Bilanci: i valori restano dipendenti dagli snapshot stagione pubblicati.
+
 ## Roadmap aggiornata dopo V439
 
 - Testare da mobile `competition.html` e `player.html`: il menu `Altro` deve mostrare tutte le voci presenti nella home.

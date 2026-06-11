@@ -1,3 +1,10 @@
+## Changelog V440 - Link WhatsApp Bilanci
+
+- Aggiunto nella sezione `Bilanci` il bottone `Copia link WhatsApp`.
+- Il pulsante copia una URL pubblica dedicata alla sezione Bilanci, pensata per generare anteprima WhatsApp coerente.
+- Aggiunta la pagina `bilanci.html` con `og:title`, `og:description`, `og:image` e redirect automatico a `#bilanci`.
+- Preservati Bilanci da snapshot V435, layout Bilanci V438, menu Altro standalone V439, editing movimenti FM V436 e badge V434.
+
 ## Changelog V439 - Menu Altro pagine standalone
 
 - Allineato il menu mobile `Altro` di `competition.html` alle voci della home, includendo anche Bilanci, Statistiche, Archivio, Confronta e Calciomercato.
