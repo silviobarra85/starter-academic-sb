@@ -1,43 +1,43 @@
 {
   "id": "2008-2009",
   "seasonId": "2008-2009",
-  "generatedAt": "2026-05-26T13:49:51.555Z",
+  "generatedAt": "2026-06-11T05:47:54.861Z",
   "teams": [
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778954328,
-        "nanoseconds": 573000000
-      },
-      "logo": "./assets/logos/baronissi.png",
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
-      "canonicalName": "Afc Severgas Baronissi",
       "isCurrent": true,
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
-      }
+      },
+      "canonicalName": "Afc Severgas Baronissi",
+      "notes": "",
+      "logo": "./assets/logos/baronissi.png",
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ]
     },
     {
       "id": "lvn8MgLzGcNCY9ev0sgX",
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778833917,
         "nanoseconds": 315000000
       },
-      "isCurrent": false,
+      "canonicalName": "AS Longobarda",
+      "logo": "",
       "updatedAt": {
         "seconds": 1778834075,
         "nanoseconds": 573000000
       },
       "notes": "",
-      "logo": "",
       "currentPresidentIds": [
         "iAcJUOTNENihne0XzhuR"
-      ],
-      "canonicalName": "AS Longobarda"
+      ]
     },
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
@@ -45,114 +45,114 @@
         "seconds": 1778833666,
         "nanoseconds": 871000000
       },
-      "isCurrent": true,
       "canonicalName": "As Paperopoli",
-      "logo": "./assets/logos/paperopoli.png",
-      "currentPresidentIds": [
-        "JaSqcnTZUYHtjHXghADS"
-      ],
       "notes": "",
+      "logo": "./assets/logos/paperopoli.png",
       "updatedAt": {
         "seconds": 1778954349,
         "nanoseconds": 563000000
-      }
+      },
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "isCurrent": true
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "logo": "",
+      "canonicalName": "Real Gremo",
       "createdAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
-      "isCurrent": false,
-      "updatedAt": {
-        "seconds": 1778834101,
-        "nanoseconds": 304000000
-      },
-      "notes": "",
-      "canonicalName": "Real Gremo",
-      "logo": "",
-      "currentPresidentIds": [
-        "KuWF4jNk1I97Jdk44gyK"
-      ]
+      "isCurrent": false
     }
   ],
   "presidents": [
     {
       "id": "iAcJUOTNENihne0XzhuR",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778833093,
-        "nanoseconds": 421000000
-      },
-      "name": "Alessandro Liguori",
-      "createdAt": {
-        "seconds": 1778833093,
-        "nanoseconds": 421000000
-      },
-      "isActive": false
-    },
-    {
-      "id": "KuWF4jNk1I97Jdk44gyK",
-      "name": "Bartolomeo Greco",
       "isActive": false,
-      "createdAt": {
-        "seconds": 1778833068,
-        "nanoseconds": 684000000
+      "name": "Alessandro Liguori",
+      "updatedAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
       },
       "notes": "",
-      "updatedAt": {
-        "seconds": 1778833068,
-        "nanoseconds": 684000000
+      "createdAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
       }
     },
     {
-      "id": "JaSqcnTZUYHtjHXghADS",
+      "id": "KuWF4jNk1I97Jdk44gyK",
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "name": "Bartolomeo Greco",
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
       "notes": "",
+      "isActive": false
+    },
+    {
+      "id": "JaSqcnTZUYHtjHXghADS",
+      "isActive": true,
       "updatedAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
+      "notes": "",
       "name": "Gaetano Caparrotti",
       "createdAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
-      },
-      "isActive": true
+      }
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "name": "Gianluca Caparrotti",
       "isActive": true,
       "createdAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "notes": "",
+      "name": "Gianluca Caparrotti",
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
-      }
+      },
+      "notes": ""
     }
   ],
   "seasonTeams": [
     {
       "id": "2008-2009_lvn8mglzgcncy9ev0sgx",
-      "name": "AS Longobarda",
-      "presidentIds": [
-        "iAcJUOTNENihne0XzhuR"
-      ],
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
       "isHistorical": false,
       "createdAt": {
         "seconds": 1778849828,
         "nanoseconds": 733000000
       },
-      "teamId": "lvn8MgLzGcNCY9ev0sgX",
-      "seasonId": "2008-2009",
+      "name": "AS Longobarda",
       "logo": "",
       "updatedAt": {
         "seconds": 1778849828,
         "nanoseconds": 733000000
-      }
+      },
+      "seasonId": "2008-2009",
+      "presidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ]
     },
     {
       "id": "2008-2009_7bx0cegbxtf4fwh6t0pi",
@@ -160,218 +160,218 @@
         "seconds": 1778849831,
         "nanoseconds": 942000000
       },
-      "isHistorical": false,
-      "presidentIds": [
-        "JaSqcnTZUYHtjHXghADS"
-      ],
       "name": "As Paperopoli",
+      "logo": "",
       "updatedAt": {
         "seconds": 1778849831,
         "nanoseconds": 942000000
       },
-      "logo": "",
-      "seasonId": "2008-2009",
-      "teamId": "7Bx0ceGBXtF4FwH6T0PI"
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "isHistorical": false,
+      "presidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "seasonId": "2008-2009"
     },
     {
       "id": "2008-2009_fyqviavocqdpmikgws2f",
-      "updatedAt": {
-        "seconds": 1778849839,
-        "nanoseconds": 762000000
-      },
-      "logo": "",
       "seasonId": "2008-2009",
-      "teamId": "fYQViaVoCqDPmikgwS2F",
-      "createdAt": {
-        "seconds": 1778849839,
-        "nanoseconds": 762000000
-      },
-      "isHistorical": false,
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
-      "name": "Real Gremo"
+      "isHistorical": false,
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "updatedAt": {
+        "seconds": 1778849839,
+        "nanoseconds": 762000000
+      },
+      "logo": "",
+      "name": "Real Gremo",
+      "createdAt": {
+        "seconds": 1778849839,
+        "nanoseconds": 762000000
+      }
     },
     {
       "id": "2008-2009_kbjri4liu4iuq6ajfnml",
-      "logo": "",
-      "seasonId": "2008-2009",
-      "updatedAt": {
-        "seconds": 1779195909,
-        "nanoseconds": 140000000
-      },
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
       "createdAt": {
         "seconds": 1778849960,
         "nanoseconds": 618000000
       },
+      "name": "Us Baronissi Cavaliers",
+      "updatedAt": {
+        "seconds": 1779195909,
+        "nanoseconds": 140000000
+      },
+      "logo": "",
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "isHistorical": false,
       "presidentIds": [
         "Mw12sFS1OoS8V5uzBLLw"
       ],
-      "name": "Us Baronissi Cavaliers",
-      "isHistorical": false
+      "seasonId": "2008-2009"
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2008-2009_campionato",
-      "createdAt": {
-        "seconds": 1778849845,
-        "nanoseconds": 246000000
-      },
-      "knockoutPhases": [],
-      "type": "CAMPIONATO",
-      "status": "CONCLUSA",
-      "name": "Campionato",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778849850,
         "nanoseconds": 164000000
       },
+      "notes": "",
+      "status": "CONCLUSA",
+      "knockoutPhases": [],
       "seasonId": "2008-2009",
-      "format": "CLASSIFICA"
+      "format": "CLASSIFICA",
+      "type": "CAMPIONATO",
+      "name": "Campionato",
+      "createdAt": {
+        "seconds": 1778849845,
+        "nanoseconds": 246000000
+      }
     },
     {
       "id": "2008-2009_champions-league",
+      "name": "Champion's League",
       "type": "CHAMPIONS_LEAGUE",
       "createdAt": {
         "seconds": 1778849845,
         "nanoseconds": 282000000
       },
+      "format": "GIRONI_KO",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "name": "Champion's League",
-      "status": "NON_DISPUTATA",
-      "notes": "",
       "seasonId": "2008-2009",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778849854,
         "nanoseconds": 255000000
       },
-      "format": "GIRONI_KO"
+      "status": "NON_DISPUTATA"
     },
     {
       "id": "2008-2009_coppa-italia",
-      "name": "Coppa Italia",
       "status": "CONCLUSA",
-      "type": "COPPA_ITALIA",
+      "updatedAt": {
+        "seconds": 1778849858,
+        "nanoseconds": 255000000
+      },
+      "notes": "",
+      "seasonId": "2008-2009",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "format": "GIRONI_KO",
       "createdAt": {
         "seconds": 1778849845,
         "nanoseconds": 305000000
       },
+      "name": "Coppa Italia",
+      "type": "COPPA_ITALIA"
+    },
+    {
+      "id": "2008-2009_playoff",
+      "status": "NON_DISPUTATA",
+      "updatedAt": {
+        "seconds": 1778849861,
+        "nanoseconds": 799000000
+      },
+      "notes": "",
+      "seasonId": "2008-2009",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "notes": "",
       "format": "GIRONI_KO",
-      "seasonId": "2008-2009",
-      "updatedAt": {
-        "seconds": 1778849858,
-        "nanoseconds": 255000000
-      }
-    },
-    {
-      "id": "2008-2009_playoff",
-      "name": "Playoff",
-      "status": "NON_DISPUTATA",
-      "type": "PLAYOFF",
       "createdAt": {
         "seconds": 1778849845,
         "nanoseconds": 366000000
       },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "notes": "",
-      "format": "GIRONI_KO",
-      "seasonId": "2008-2009",
-      "updatedAt": {
-        "seconds": 1778849861,
-        "nanoseconds": 799000000
-      }
+      "type": "PLAYOFF",
+      "name": "Playoff"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2008-2009-campionato_1",
-      "played": null,
+      "seasonId": "2008-2009",
       "fantapoints": null,
-      "position": 1,
       "updatedAt": {
         "seconds": 1778849876,
         "nanoseconds": 789000000
       },
+      "competitionId": "2008-2009_campionato",
+      "points": null,
+      "played": null,
       "seasonTeamId": "2008-2009_lvn8mglzgcncy9ev0sgx",
-      "seasonId": "2008-2009",
       "createdAt": {
         "seconds": 1778849876,
         "nanoseconds": 789000000
       },
-      "points": null,
-      "competitionId": "2008-2009_campionato"
+      "position": 1
     },
     {
       "id": "2008-2009-campionato_2",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 810000000
+      },
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "played": null,
+      "position": 2,
+      "createdAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 810000000
+      },
+      "competitionId": "2008-2009_campionato",
+      "points": null
+    },
+    {
+      "id": "2008-2009-campionato_3",
       "points": null,
       "competitionId": "2008-2009_campionato",
       "createdAt": {
         "seconds": 1778849876,
-        "nanoseconds": 810000000
+        "nanoseconds": 841000000
       },
-      "seasonId": "2008-2009",
-      "updatedAt": {
-        "seconds": 1778849876,
-        "nanoseconds": 810000000
-      },
-      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
-      "position": 2,
-      "fantapoints": null,
-      "played": null
-    },
-    {
-      "id": "2008-2009-campionato_3",
       "position": 3,
-      "fantapoints": null,
       "played": null,
-      "seasonId": "2008-2009",
       "seasonTeamId": "2008-2009_kbjri4liu4iuq6ajfnml",
+      "seasonId": "2008-2009",
       "updatedAt": {
         "seconds": 1778849876,
         "nanoseconds": 841000000
       },
-      "createdAt": {
-        "seconds": 1778849876,
-        "nanoseconds": 841000000
-      },
-      "points": null,
-      "competitionId": "2008-2009_campionato"
+      "fantapoints": null
     },
     {
       "id": "2008-2009-coppa-italia_1",
-      "played": null,
-      "position": 1,
+      "seasonId": "2008-2009",
       "fantapoints": null,
       "updatedAt": {
         "seconds": 1778849886,
         "nanoseconds": 476000000
       },
+      "competitionId": "2008-2009_coppa-italia",
+      "points": null,
       "seasonTeamId": "2008-2009_fyqviavocqdpmikgws2f",
-      "seasonId": "2008-2009",
+      "played": null,
+      "position": 1,
       "createdAt": {
         "seconds": 1778849886,
         "nanoseconds": 476000000
-      },
-      "points": null,
-      "competitionId": "2008-2009_coppa-italia"
+      }
     }
   ],
   "rosterEntries": [
