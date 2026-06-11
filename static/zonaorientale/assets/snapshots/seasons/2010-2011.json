@@ -1,211 +1,211 @@
 {
   "id": "2010-2011",
   "seasonId": "2010-2011",
-  "generatedAt": "2026-06-11T05:47:54.861Z",
+  "generatedAt": "2026-06-11T06:11:08.556Z",
   "teams": [
     {
       "id": "lvn8MgLzGcNCY9ev0sgX",
-      "isCurrent": false,
+      "currentPresidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "canonicalName": "AS Longobarda",
       "createdAt": {
         "seconds": 1778833917,
         "nanoseconds": 315000000
       },
-      "canonicalName": "AS Longobarda",
       "logo": "",
+      "notes": "",
+      "isCurrent": false,
       "updatedAt": {
         "seconds": 1778834075,
         "nanoseconds": 573000000
-      },
-      "notes": "",
-      "currentPresidentIds": [
-        "iAcJUOTNENihne0XzhuR"
-      ]
+      }
     },
     {
       "id": "team_002",
-      "isCurrent": true,
       "canonicalName": "Beetlejuice",
-      "notes": "",
+      "currentPresidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
       "logo": "./assets/logos/beetlejuice.png",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
       },
-      "currentPresidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ]
+      "isCurrent": true
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "logo": "./assets/logos/due_fratelli.png",
       "currentPresidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
+      "canonicalName": "FC DueFratelli2005",
       "createdAt": {
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "canonicalName": "FC DueFratelli2005",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
       },
-      "logo": "./assets/logos/due_fratelli.png",
-      "notes": "",
-      "isCurrent": true
+      "notes": ""
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
-      "currentPresidentIds": [
-        "KuWF4jNk1I97Jdk44gyK"
-      ],
-      "notes": "",
+      "isCurrent": false,
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
+      "notes": "",
       "logo": "",
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
       "canonicalName": "Real Gremo",
       "createdAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
-      },
-      "isCurrent": false
+      }
     }
   ],
   "presidents": [
     {
       "id": "iAcJUOTNENihne0XzhuR",
-      "isActive": false,
       "name": "Alessandro Liguori",
+      "createdAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      },
       "updatedAt": {
         "seconds": 1778833093,
         "nanoseconds": 421000000
       },
-      "notes": "",
-      "createdAt": {
-        "seconds": 1778833093,
-        "nanoseconds": 421000000
-      }
+      "isActive": false,
+      "notes": ""
     },
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
+      "name": "Bartolomeo Greco",
       "createdAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "name": "Bartolomeo Greco",
       "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "notes": "",
-      "isActive": false
+      "isActive": false,
+      "notes": ""
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "notes": "",
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
-      "notes": "",
-      "name": "Michele D'Isanto",
-      "isActive": true
+      "name": "Michele D'Isanto"
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
-      "isActive": true,
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778832743,
-        "nanoseconds": 604000000
-      },
       "name": "Zio Dino",
       "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
-      }
+      },
+      "updatedAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      },
+      "isActive": true,
+      "notes": ""
     }
   ],
   "seasonTeams": [
     {
       "id": "2010-2011_lvn8mglzgcncy9ev0sgx",
-      "seasonId": "2010-2011",
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
+      "logo": "",
       "presidentIds": [
         "iAcJUOTNENihne0XzhuR"
       ],
-      "isHistorical": false,
-      "teamId": "lvn8MgLzGcNCY9ev0sgX",
       "name": "AS Longobarda",
+      "createdAt": {
+        "seconds": 1778849611,
+        "nanoseconds": 527000000
+      },
+      "seasonId": "2010-2011",
       "updatedAt": {
         "seconds": 1778849611,
         "nanoseconds": 527000000
       },
-      "logo": "",
-      "createdAt": {
-        "seconds": 1778849611,
-        "nanoseconds": 527000000
-      }
+      "isHistorical": false
     },
     {
       "id": "2010-2011_team-002",
-      "presidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ],
-      "seasonId": "2010-2011",
-      "createdAt": {
-        "seconds": 1778849607,
-        "nanoseconds": 946000000
-      },
-      "name": "Beetlejuice",
-      "logo": "",
       "updatedAt": {
         "seconds": 1778849607,
         "nanoseconds": 946000000
       },
+      "seasonId": "2010-2011",
+      "isHistorical": false,
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
       "teamId": "team_002",
-      "isHistorical": false
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778849607,
+        "nanoseconds": 946000000
+      },
+      "name": "Beetlejuice"
     },
     {
       "id": "2010-2011_y3vmcdwvut0u1tlsg4qc",
       "seasonId": "2010-2011",
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "isHistorical": false,
-      "createdAt": {
-        "seconds": 1778849601,
-        "nanoseconds": 526000000
-      },
-      "name": "FC DueFratelli2005",
       "updatedAt": {
         "seconds": 1779379856,
         "nanoseconds": 495000000
       },
-      "logo": ""
+      "isHistorical": false,
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "logo": "",
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "createdAt": {
+        "seconds": 1778849601,
+        "nanoseconds": 526000000
+      },
+      "name": "FC DueFratelli2005"
     },
     {
       "id": "2010-2011_fyqviavocqdpmikgws2f",
-      "teamId": "fYQViaVoCqDPmikgwS2F",
       "isHistorical": false,
+      "updatedAt": {
+        "seconds": 1778849604,
+        "nanoseconds": 685000000
+      },
+      "seasonId": "2010-2011",
       "createdAt": {
         "seconds": 1778849604,
         "nanoseconds": 685000000
       },
       "name": "Real Gremo",
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778849604,
-        "nanoseconds": 685000000
-      },
-      "seasonId": "2010-2011",
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
-      ]
+      ],
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "logo": ""
     }
   ],
   "stadiums": [],
@@ -213,36 +213,36 @@
     {
       "id": "2010-2011_campionato",
       "notes": "",
-      "updatedAt": {
-        "seconds": 1778849624,
-        "nanoseconds": 403000000
-      },
-      "status": "CONCLUSA",
-      "knockoutPhases": [],
-      "seasonId": "2010-2011",
-      "type": "CAMPIONATO",
-      "name": "Campionato",
       "createdAt": {
         "seconds": 1778849619,
         "nanoseconds": 448000000
       },
-      "format": "CLASSIFICA"
+      "name": "Campionato",
+      "type": "CAMPIONATO",
+      "updatedAt": {
+        "seconds": 1778849624,
+        "nanoseconds": 403000000
+      },
+      "format": "CLASSIFICA",
+      "seasonId": "2010-2011",
+      "knockoutPhases": [],
+      "status": "CONCLUSA"
     },
     {
       "id": "2010-2011_champions-league",
-      "notes": "",
+      "seasonId": "2010-2011",
       "updatedAt": {
         "seconds": 1778849627,
         "nanoseconds": 919000000
       },
+      "format": "GIRONI_KO",
       "status": "NON_DISPUTATA",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "seasonId": "2010-2011",
-      "format": "GIRONI_KO",
+      "notes": "",
       "type": "CHAMPIONS_LEAGUE",
       "name": "Champion's League",
       "createdAt": {
@@ -258,41 +258,41 @@
         "seconds": 1778849619,
         "nanoseconds": 519000000
       },
-      "format": "GIRONI_KO",
       "notes": "",
-      "updatedAt": {
-        "seconds": 1778849631,
-        "nanoseconds": 145000000
-      },
       "status": "CONCLUSA",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
+      "format": "GIRONI_KO",
+      "updatedAt": {
+        "seconds": 1778849631,
+        "nanoseconds": 145000000
+      },
       "seasonId": "2010-2011"
     },
     {
       "id": "2010-2011_playoff",
-      "format": "GIRONI_KO",
-      "createdAt": {
-        "seconds": 1778849619,
-        "nanoseconds": 565000000
-      },
-      "name": "Playoff",
-      "type": "PLAYOFF",
-      "status": "NON_DISPUTATA",
-      "notes": "",
+      "seasonId": "2010-2011",
       "updatedAt": {
         "seconds": 1778849634,
         "nanoseconds": 806000000
       },
-      "seasonId": "2010-2011",
+      "format": "GIRONI_KO",
+      "status": "NON_DISPUTATA",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
-      ]
+      ],
+      "notes": "",
+      "name": "Playoff",
+      "createdAt": {
+        "seconds": 1778849619,
+        "nanoseconds": 565000000
+      },
+      "type": "PLAYOFF"
     }
   ],
   "competitionMatches": [],
@@ -300,74 +300,74 @@
     {
       "id": "2010-2011-campionato_1",
       "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778849652,
-        "nanoseconds": 525000000
-      },
-      "seasonId": "2010-2011",
-      "played": null,
       "seasonTeamId": "2010-2011_y3vmcdwvut0u1tlsg4qc",
       "createdAt": {
         "seconds": 1778849652,
         "nanoseconds": 525000000
       },
-      "position": 1,
       "competitionId": "2010-2011_campionato",
+      "position": 1,
+      "played": null,
+      "seasonId": "2010-2011",
+      "updatedAt": {
+        "seconds": 1778849652,
+        "nanoseconds": 525000000
+      },
       "points": null
     },
     {
       "id": "2010-2011-campionato_2",
-      "seasonId": "2010-2011",
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778849652,
-        "nanoseconds": 569000000
-      },
       "competitionId": "2010-2011_campionato",
-      "points": null,
-      "played": null,
+      "position": 2,
+      "fantapoints": null,
       "seasonTeamId": "2010-2011_fyqviavocqdpmikgws2f",
       "createdAt": {
         "seconds": 1778849652,
         "nanoseconds": 569000000
       },
-      "position": 2
+      "seasonId": "2010-2011",
+      "updatedAt": {
+        "seconds": 1778849652,
+        "nanoseconds": 569000000
+      },
+      "points": null,
+      "played": null
     },
     {
       "id": "2010-2011-campionato_3",
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778849652,
         "nanoseconds": 608000000
       },
+      "seasonTeamId": "2010-2011_team-002",
+      "competitionId": "2010-2011_campionato",
       "position": 3,
       "played": null,
-      "seasonTeamId": "2010-2011_team-002",
-      "points": null,
-      "competitionId": "2010-2011_campionato",
       "updatedAt": {
         "seconds": 1778849652,
         "nanoseconds": 608000000
       },
-      "fantapoints": null,
-      "seasonId": "2010-2011"
+      "seasonId": "2010-2011",
+      "points": null
     },
     {
       "id": "2010-2011-coppa-italia_1",
-      "competitionId": "2010-2011_coppa-italia",
-      "points": null,
       "played": null,
+      "points": null,
+      "seasonId": "2010-2011",
+      "updatedAt": {
+        "seconds": 1778849662,
+        "nanoseconds": 185000000
+      },
       "seasonTeamId": "2010-2011_lvn8mglzgcncy9ev0sgx",
       "createdAt": {
         "seconds": 1778849662,
         "nanoseconds": 185000000
       },
-      "position": 1,
-      "seasonId": "2010-2011",
       "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778849662,
-        "nanoseconds": 185000000
-      }
+      "position": 1,
+      "competitionId": "2010-2011_coppa-italia"
     }
   ],
   "rosterEntries": [

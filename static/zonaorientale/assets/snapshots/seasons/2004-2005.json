@@ -1,63 +1,63 @@
 {
   "id": "2004-2005",
   "seasonId": "2004-2005",
-  "generatedAt": "2026-06-11T05:47:54.862Z",
+  "generatedAt": "2026-06-11T06:11:08.558Z",
   "teams": [
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "isCurrent": true,
+      "logo": "./assets/logos/baronissi.png",
+      "canonicalName": "Afc Severgas Baronissi",
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
-      "canonicalName": "Afc Severgas Baronissi",
-      "notes": "",
-      "logo": "./assets/logos/baronissi.png",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ]
+      "notes": ""
     },
     {
       "id": "27oaqqtPiW0W5ehFDazr",
-      "currentPresidentIds": [
-        "uvxNCO3JS0ZGPr8PCbzN",
-        "4ErijLL4NEQ6J4LBBwiX",
-        "uAnVBYBLy3NLLlQt1cre"
-      ],
-      "logo": "",
-      "notes": "",
+      "isCurrent": false,
       "updatedAt": {
         "seconds": 1778834055,
         "nanoseconds": 214000000
       },
+      "notes": "",
+      "logo": "",
       "createdAt": {
         "seconds": 1778834055,
         "nanoseconds": 214000000
       },
       "canonicalName": "Il Clan Divino",
-      "isCurrent": false
+      "currentPresidentIds": [
+        "uvxNCO3JS0ZGPr8PCbzN",
+        "4ErijLL4NEQ6J4LBBwiX",
+        "uAnVBYBLy3NLLlQt1cre"
+      ]
     },
     {
       "id": "JrHbTlYyGDRaWkWXRBlL",
-      "createdAt": {
+      "isCurrent": false,
+      "updatedAt": {
         "seconds": 1778834023,
         "nanoseconds": 658000000
       },
-      "canonicalName": "Real Sauro",
-      "logo": "",
       "notes": "",
-      "updatedAt": {
+      "logo": "",
+      "createdAt": {
         "seconds": 1778834023,
         "nanoseconds": 658000000
       },
       "currentPresidentIds": [
         "E8juYb9wKykDBnwCORcU"
       ],
-      "isCurrent": false
+      "canonicalName": "Real Sauro"
     }
   ],
   "presidents": [
@@ -72,111 +72,111 @@
         "seconds": 1778832855,
         "nanoseconds": 565000000
       },
-      "notes": "",
-      "isActive": true
+      "isActive": true,
+      "notes": ""
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "isActive": true,
       "createdAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
       "name": "Gianluca Caparrotti",
+      "notes": "",
+      "isActive": true,
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
-      },
-      "notes": ""
+      }
     },
     {
       "id": "E8juYb9wKykDBnwCORcU",
-      "isActive": false,
       "name": "Giuseppe Sauro",
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778834005,
         "nanoseconds": 578000000
       },
       "notes": "",
-      "createdAt": {
+      "isActive": false,
+      "updatedAt": {
         "seconds": 1778834005,
         "nanoseconds": 578000000
       }
     },
     {
       "id": "4ErijLL4NEQ6J4LBBwiX",
-      "name": "Roberto Corbo",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778833114,
         "nanoseconds": 385000000
       },
-      "notes": "",
+      "isActive": false,
       "createdAt": {
         "seconds": 1778833114,
         "nanoseconds": 385000000
       },
-      "isActive": false
+      "name": "Roberto Corbo"
     },
     {
       "id": "uAnVBYBLy3NLLlQt1cre",
-      "isActive": false,
-      "createdAt": {
-        "seconds": 1778833119,
-        "nanoseconds": 790000000
-      },
-      "name": "Saverio Sicilia",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778833119,
         "nanoseconds": 790000000
       },
-      "notes": ""
+      "isActive": false,
+      "name": "Saverio Sicilia",
+      "createdAt": {
+        "seconds": 1778833119,
+        "nanoseconds": 790000000
+      }
     }
   ],
   "seasonTeams": [
     {
       "id": "2004-2005_27oaqqtpiw0w5ehfdazr",
       "seasonId": "2004-2005",
+      "updatedAt": {
+        "seconds": 1778850640,
+        "nanoseconds": 360000000
+      },
+      "isHistorical": false,
       "presidentIds": [
         "uvxNCO3JS0ZGPr8PCbzN",
         "4ErijLL4NEQ6J4LBBwiX",
         "uAnVBYBLy3NLLlQt1cre"
       ],
       "teamId": "27oaqqtPiW0W5ehFDazr",
-      "isHistorical": false,
+      "logo": "",
       "createdAt": {
         "seconds": 1778850640,
         "nanoseconds": 360000000
       },
-      "name": "Il Clan Divino",
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778850640,
-        "nanoseconds": 360000000
-      }
+      "name": "Il Clan Divino"
     },
     {
       "id": "2004-2005_jrhbtlyygdrawkwxrbll",
-      "presidentIds": [
-        "E8juYb9wKykDBnwCORcU"
-      ],
-      "seasonId": "2004-2005",
       "name": "Real Sauro",
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778850636,
-        "nanoseconds": 223000000
-      },
       "createdAt": {
         "seconds": 1778850636,
         "nanoseconds": 223000000
       },
+      "teamId": "JrHbTlYyGDRaWkWXRBlL",
+      "logo": "",
+      "presidentIds": [
+        "E8juYb9wKykDBnwCORcU"
+      ],
       "isHistorical": false,
-      "teamId": "JrHbTlYyGDRaWkWXRBlL"
+      "updatedAt": {
+        "seconds": 1778850636,
+        "nanoseconds": 223000000
+      },
+      "seasonId": "2004-2005"
     },
     {
       "id": "2004-2005_h6saek7urqiqnmiztrt7",
-      "name": "Us Baronissi Cavaliers",
-      "logo": "",
+      "isHistorical": false,
+      "seasonId": "2004-2005",
       "updatedAt": {
         "seconds": 1779195833,
         "nanoseconds": 633000000
@@ -185,156 +185,156 @@
         "seconds": 1779195758,
         "nanoseconds": 583000000
       },
-      "isHistorical": false,
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "name": "Us Baronissi Cavaliers",
       "presidentIds": [
         "Mw12sFS1OoS8V5uzBLLw"
       ],
-      "seasonId": "2004-2005"
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "logo": ""
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2004-2005_campionato",
-      "status": "CONCLUSA",
       "updatedAt": {
         "seconds": 1778850649,
         "nanoseconds": 556000000
       },
-      "notes": "",
-      "seasonId": "2004-2005",
-      "knockoutPhases": [],
       "format": "CLASSIFICA",
+      "seasonId": "2004-2005",
+      "status": "CONCLUSA",
+      "knockoutPhases": [],
+      "notes": "",
+      "type": "CAMPIONATO",
+      "name": "Campionato",
       "createdAt": {
         "seconds": 1778850645,
         "nanoseconds": 475000000
-      },
-      "type": "CAMPIONATO",
-      "name": "Campionato"
+      }
     },
     {
       "id": "2004-2005_champions-league",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
+      "notes": "",
+      "type": "CHAMPIONS_LEAGUE",
+      "name": "Champion's League",
+      "createdAt": {
+        "seconds": 1778850645,
+        "nanoseconds": 521000000
+      },
       "seasonId": "2004-2005",
       "updatedAt": {
         "seconds": 1778850652,
         "nanoseconds": 550000000
       },
-      "notes": "",
-      "status": "NON_DISPUTATA",
       "format": "GIRONI_KO",
-      "name": "Champion's League",
-      "type": "CHAMPIONS_LEAGUE",
-      "createdAt": {
-        "seconds": 1778850645,
-        "nanoseconds": 521000000
-      }
-    },
-    {
-      "id": "2004-2005_coppa-italia",
       "status": "NON_DISPUTATA",
-      "updatedAt": {
-        "seconds": 1778850657,
-        "nanoseconds": 748000000
-      },
-      "notes": "",
-      "seasonId": "2004-2005",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
-      ],
-      "format": "GIRONI_KO",
+      ]
+    },
+    {
+      "id": "2004-2005_coppa-italia",
+      "name": "Coppa Italia",
       "createdAt": {
         "seconds": 1778850645,
         "nanoseconds": 551000000
       },
-      "name": "Coppa Italia",
-      "type": "COPPA_ITALIA"
-    },
-    {
-      "id": "2004-2005_playoff",
-      "seasonId": "2004-2005",
+      "type": "COPPA_ITALIA",
+      "notes": "",
+      "status": "NON_DISPUTATA",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "status": "NON_DISPUTATA",
+      "seasonId": "2004-2005",
       "updatedAt": {
-        "seconds": 1778850661,
-        "nanoseconds": 20000000
+        "seconds": 1778850657,
+        "nanoseconds": 748000000
       },
-      "notes": "",
+      "format": "GIRONI_KO"
+    },
+    {
+      "id": "2004-2005_playoff",
+      "name": "Playoff",
       "createdAt": {
         "seconds": 1778850645,
         "nanoseconds": 685000000
       },
       "type": "PLAYOFF",
-      "name": "Playoff",
-      "format": "GIRONI_KO"
+      "notes": "",
+      "status": "NON_DISPUTATA",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778850661,
+        "nanoseconds": 20000000
+      },
+      "format": "GIRONI_KO",
+      "seasonId": "2004-2005"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2004-2005-campionato_1",
-      "points": null,
-      "competitionId": "2004-2005_campionato",
-      "position": 1,
       "createdAt": {
         "seconds": 1779208577,
         "nanoseconds": 851000000
       },
-      "played": null,
       "seasonTeamId": "2004-2005_h6saek7urqiqnmiztrt7",
-      "seasonId": "2004-2005",
+      "fantapoints": null,
+      "competitionId": "2004-2005_campionato",
+      "position": 1,
+      "played": null,
+      "points": null,
       "updatedAt": {
         "seconds": 1779208577,
         "nanoseconds": 851000000
       },
-      "fantapoints": null
+      "seasonId": "2004-2005"
     },
     {
       "id": "2004-2005-campionato_2",
-      "competitionId": "2004-2005_campionato",
-      "points": null,
-      "seasonTeamId": "2004-2005_jrhbtlyygdrawkwxrbll",
-      "played": null,
-      "position": 2,
       "createdAt": {
         "seconds": 1779208577,
         "nanoseconds": 889000000
       },
-      "seasonId": "2004-2005",
+      "seasonTeamId": "2004-2005_jrhbtlyygdrawkwxrbll",
       "fantapoints": null,
+      "position": 2,
+      "competitionId": "2004-2005_campionato",
+      "played": null,
+      "points": null,
       "updatedAt": {
         "seconds": 1779208577,
         "nanoseconds": 889000000
-      }
+      },
+      "seasonId": "2004-2005"
     },
     {
       "id": "2004-2005-campionato_3",
+      "competitionId": "2004-2005_campionato",
+      "position": 3,
+      "seasonTeamId": "2004-2005_27oaqqtpiw0w5ehfdazr",
       "createdAt": {
         "seconds": 1779208577,
         "nanoseconds": 926000000
       },
-      "position": 3,
-      "played": null,
-      "seasonTeamId": "2004-2005_27oaqqtpiw0w5ehfdazr",
+      "fantapoints": null,
       "points": null,
-      "competitionId": "2004-2005_campionato",
+      "seasonId": "2004-2005",
       "updatedAt": {
         "seconds": 1779208577,
         "nanoseconds": 926000000
       },
-      "fantapoints": null,
-      "seasonId": "2004-2005"
+      "played": null
     }
   ],
   "rosterEntries": [],

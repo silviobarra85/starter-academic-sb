@@ -1,98 +1,98 @@
 {
   "id": "2006-2007",
   "seasonId": "2006-2007",
-  "generatedAt": "2026-06-11T05:47:54.862Z",
+  "generatedAt": "2026-06-11T06:11:08.557Z",
   "teams": [
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "logo": "./assets/logos/due_fratelli.png",
       "currentPresidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
+      "canonicalName": "FC DueFratelli2005",
       "createdAt": {
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "canonicalName": "FC DueFratelli2005",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
       },
-      "logo": "./assets/logos/due_fratelli.png",
-      "notes": "",
-      "isCurrent": true
+      "notes": ""
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
-      "currentPresidentIds": [
-        "KuWF4jNk1I97Jdk44gyK"
-      ],
-      "notes": "",
+      "isCurrent": false,
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
+      "notes": "",
       "logo": "",
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
       "canonicalName": "Real Gremo",
       "createdAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
-      },
-      "isCurrent": false
+      }
     },
     {
       "id": "team_001",
-      "isCurrent": true,
-      "canonicalName": "Real Pisistrius",
       "notes": "",
       "updatedAt": {
         "seconds": 1778954495,
         "nanoseconds": 409000000
       },
-      "logo": "./assets/logos/real_pisistrius.png",
+      "isCurrent": true,
+      "canonicalName": "Real Pisistrius",
       "currentPresidentIds": [
         "ueJtI9xTYmZhDmWrZDzZ"
-      ]
+      ],
+      "logo": "./assets/logos/real_pisistrius.png"
     }
   ],
   "presidents": [
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
+      "name": "Bartolomeo Greco",
       "createdAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "name": "Bartolomeo Greco",
       "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "notes": "",
-      "isActive": false
+      "isActive": false,
+      "notes": ""
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "notes": "",
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
-      "notes": "",
-      "name": "Michele D'Isanto",
-      "isActive": true
+      "name": "Michele D'Isanto"
     },
     {
       "id": "ueJtI9xTYmZhDmWrZDzZ",
-      "isActive": true,
-      "notes": "",
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778832793,
         "nanoseconds": 929000000
       },
       "name": "Silvio Barra",
-      "createdAt": {
+      "notes": "",
+      "isActive": true,
+      "updatedAt": {
         "seconds": 1778832793,
         "nanoseconds": 929000000
       }
@@ -101,75 +101,75 @@
   "seasonTeams": [
     {
       "id": "2006-2007_y3vmcdwvut0u1tlsg4qc",
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "isHistorical": false,
-      "createdAt": {
-        "seconds": 1778850446,
-        "nanoseconds": 342000000
-      },
-      "logo": "",
-      "name": "FC DueFratelli2005",
+      "seasonId": "2006-2007",
       "updatedAt": {
         "seconds": 1779379828,
         "nanoseconds": 385000000
       },
-      "seasonId": "2006-2007",
+      "isHistorical": false,
+      "logo": "",
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "presidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
-      ]
+      ],
+      "name": "FC DueFratelli2005",
+      "createdAt": {
+        "seconds": 1778850446,
+        "nanoseconds": 342000000
+      }
     },
     {
       "id": "2006-2007_fyqviavocqdpmikgws2f",
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "logo": "",
+      "presidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "name": "Real Gremo",
       "createdAt": {
         "seconds": 1778850435,
         "nanoseconds": 450000000
       },
-      "name": "Real Gremo",
-      "logo": "",
+      "seasonId": "2006-2007",
       "updatedAt": {
         "seconds": 1778850435,
         "nanoseconds": 450000000
       },
-      "teamId": "fYQViaVoCqDPmikgwS2F",
-      "isHistorical": false,
-      "presidentIds": [
-        "KuWF4jNk1I97Jdk44gyK"
-      ],
-      "seasonId": "2006-2007"
+      "isHistorical": false
     },
     {
       "id": "2006-2007_team-001",
-      "teamId": "team_001",
       "isHistorical": false,
+      "seasonId": "2006-2007",
+      "updatedAt": {
+        "seconds": 1778850441,
+        "nanoseconds": 169000000
+      },
       "createdAt": {
         "seconds": 1778850441,
         "nanoseconds": 169000000
       },
       "name": "Real Pisistrius",
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778850441,
-        "nanoseconds": 169000000
-      },
-      "seasonId": "2006-2007",
       "presidentIds": [
         "ueJtI9xTYmZhDmWrZDzZ"
-      ]
+      ],
+      "teamId": "team_001",
+      "logo": ""
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2006-2007_campionato",
-      "status": "CONCLUSA",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778850457,
         "nanoseconds": 489000000
       },
+      "format": "CLASSIFICA",
       "seasonId": "2006-2007",
       "knockoutPhases": [],
-      "format": "CLASSIFICA",
+      "status": "CONCLUSA",
+      "notes": "",
       "createdAt": {
         "seconds": 1778850450,
         "nanoseconds": 900000000
@@ -180,125 +180,125 @@
     {
       "id": "2006-2007_champions-league",
       "format": "GIRONI_KO",
+      "updatedAt": {
+        "seconds": 1778850461,
+        "nanoseconds": 645000000
+      },
+      "seasonId": "2006-2007",
+      "status": "NON_DISPUTATA",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "notes": "",
       "type": "CHAMPIONS_LEAGUE",
       "name": "Champion's League",
       "createdAt": {
         "seconds": 1778850450,
         "nanoseconds": 955000000
-      },
-      "updatedAt": {
-        "seconds": 1778850461,
-        "nanoseconds": 645000000
-      },
-      "notes": "",
-      "status": "NON_DISPUTATA",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "seasonId": "2006-2007"
+      }
     },
     {
       "id": "2006-2007_coppa-italia",
-      "createdAt": {
-        "seconds": 1778850450,
-        "nanoseconds": 999000000
-      },
-      "name": "Coppa Italia",
-      "type": "COPPA_ITALIA",
-      "format": "GIRONI_KO",
       "seasonId": "2006-2007",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "status": "NON_DISPUTATA",
       "updatedAt": {
         "seconds": 1778850464,
         "nanoseconds": 975000000
       },
-      "notes": ""
+      "format": "GIRONI_KO",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "status": "NON_DISPUTATA",
+      "notes": "",
+      "type": "COPPA_ITALIA",
+      "createdAt": {
+        "seconds": 1778850450,
+        "nanoseconds": 999000000
+      },
+      "name": "Coppa Italia"
     },
     {
       "id": "2006-2007_playoff",
-      "format": "GIRONI_KO",
+      "notes": "",
+      "name": "Playoff",
       "createdAt": {
         "seconds": 1778850451,
         "nanoseconds": 59000000
       },
       "type": "PLAYOFF",
-      "name": "Playoff",
       "seasonId": "2006-2007",
+      "updatedAt": {
+        "seconds": 1778850468,
+        "nanoseconds": 387000000
+      },
+      "format": "GIRONI_KO",
+      "status": "NON_DISPUTATA",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
-      ],
-      "status": "NON_DISPUTATA",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778850468,
-        "nanoseconds": 387000000
-      }
+      ]
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2006-2007-campionato_1",
-      "seasonTeamId": "2006-2007_fyqviavocqdpmikgws2f",
       "played": null,
-      "position": 1,
-      "createdAt": {
-        "seconds": 1778850501,
-        "nanoseconds": 751000000
-      },
-      "competitionId": "2006-2007_campionato",
-      "points": null,
-      "fantapoints": null,
       "updatedAt": {
         "seconds": 1778850501,
         "nanoseconds": 751000000
       },
-      "seasonId": "2006-2007"
+      "seasonId": "2006-2007",
+      "points": null,
+      "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778850501,
+        "nanoseconds": 751000000
+      },
+      "seasonTeamId": "2006-2007_fyqviavocqdpmikgws2f",
+      "competitionId": "2006-2007_campionato",
+      "position": 1
     },
     {
       "id": "2006-2007-campionato_2",
-      "updatedAt": {
+      "competitionId": "2006-2007_campionato",
+      "position": 2,
+      "seasonTeamId": "2006-2007_team-001",
+      "createdAt": {
         "seconds": 1778850501,
         "nanoseconds": 788000000
       },
       "fantapoints": null,
-      "seasonId": "2006-2007",
-      "createdAt": {
+      "points": null,
+      "updatedAt": {
         "seconds": 1778850501,
         "nanoseconds": 788000000
       },
-      "position": 2,
-      "played": null,
-      "seasonTeamId": "2006-2007_team-001",
-      "points": null,
-      "competitionId": "2006-2007_campionato"
+      "seasonId": "2006-2007",
+      "played": null
     },
     {
       "id": "2006-2007-campionato_3",
-      "points": null,
-      "competitionId": "2006-2007_campionato",
+      "fantapoints": null,
+      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
       "createdAt": {
         "seconds": 1778850501,
         "nanoseconds": 859000000
       },
+      "competitionId": "2006-2007_campionato",
       "position": 3,
       "played": null,
-      "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
-      "seasonId": "2006-2007",
       "updatedAt": {
         "seconds": 1778850501,
         "nanoseconds": 859000000
       },
-      "fantapoints": null
+      "seasonId": "2006-2007",
+      "points": null
     }
   ],
   "rosterEntries": [
