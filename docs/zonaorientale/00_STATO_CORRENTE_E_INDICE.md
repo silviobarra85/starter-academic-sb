@@ -2137,3 +2137,22 @@ Stato corrente aggiornato a V442: i pannelli/card che contengono filtri o contro
 ## Aggiornamento V446 - Percorsi dati statici da configurazione
 
 La preparazione multi-lega ora include `dataPaths` in `static/zonaorientale/assets/league-config.json`. I reader pubblici possono risolvere da configurazione i percorsi di config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato, mantenendo i path ZonaOrientale come fallback. Non sono stati modificati Firebase, Admin, generator snapshot, Area Squadra presidenti, Bilanci mobile V438 o badge dispositivo V434.
+
+## V449 - Firebase dedicato FantaPetillo in bootstrap protetto
+
+- ZonaOrientale resta invariato sul proprio Firebase `zonaorientale-d07af`.
+- Il clone `fantapetillomantramanager` usa ora il progetto Firebase dedicato `fantapetillomantramanager`, ma resta in stato pre-produzione.
+- Admin e Area Squadra del clone rimangono nascosti dal guard V449 finche non vengono applicate le rules Firestore e creato il primo documento `admins/{uid}`.
+
+## V450 - Admin bootstrap FantaPetillo
+
+- Il clone `fantapetillomantramanager` abilita l'accesso Admin per inizializzare i dati dopo il seed manuale di `admins/{uid}`.
+- Area Squadra presidenti resta guardata fino a dati reali e `teamUsers`.
+- Le rules consigliate passano da V449 semplificate a `firestore-rules-v450.rules`, derivate dalle rules complete ZonaOrientale V393.
+
+## V451 - Onboarding dati FantaPetillo
+
+- Il clone `fantapetillomantramanager` aggiunge una checklist Admin read-only per il primo setup dati.
+- ZonaOrientale resta invariato lato Firebase e funzionalita operative.
+- Area Squadra del clone resta protetta.
+

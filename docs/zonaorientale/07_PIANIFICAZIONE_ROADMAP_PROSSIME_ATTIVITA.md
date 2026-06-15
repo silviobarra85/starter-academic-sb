@@ -1257,3 +1257,18 @@ Verificare su mobile che i gruppi checkbox Mantra restino usabili nei pannelli L
 ## Dopo V442
 
 Verificare da desktop stretto e mobile le sezioni con molti controlli: Listone, Rose, Fantamercato, Movimenti e Bilanci. Eventuali ulteriori interventi devono restare preferibilmente CSS-only e preservare i filtri Mantra V441.
+
+## Dopo V450
+
+1. Pubblicare in Firebase le rules `static/fantapetillomantramanager/tools/firestore-rules-v450.rules`.
+2. Accedere all'Admin del clone con il primo admin creato.
+3. Inizializzare dati reali: stagioni, squadre, presidenti, rose, listoni, competizioni.
+4. Solo dopo i dati reali, preparare una patch per sbloccare Area Squadra presidenti.
+
+## Dopo V451
+
+1. Usare Admin FantaPetillo per inserire dati reali minimi.
+2. Aggiornare snapshot pubblici dal clone.
+3. Applicare overlay snapshot alla repo.
+4. Solo dopo dati e `teamUsers`, preparare sblocco controllato Area Squadra.
+

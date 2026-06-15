@@ -30,8 +30,8 @@ const sectionJs = read('assets/js/sections/bilanci-snapshot-section-v435.js');
 const sectionCss = read('assets/css/refactor/bilanci-snapshot-v435.css');
 const checkScript = read('tools/check-zonaorientale.sh');
 
-check('runtime deploy V440 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(440|441|442|443|444|445|446|447|448)"/.test(app));
-check('index cache-buster V440 per Bilanci', index.includes('bilanci-snapshot-section-v435.js?v=448') && index.includes('bilanci-snapshot-v435.css?v=448'));
+check('runtime deploy V440 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(440|441|442|443|444|445|446|447|448|449|450|451)"/.test(app));
+check('index cache-buster V440 per Bilanci', index.includes('bilanci-snapshot-section-v435.js?v=451') && index.includes('bilanci-snapshot-v435.css?v=451'));
 check('pulsante Copia link WhatsApp presente in Bilanci', index.includes('id="bilanciWhatsappCopyV440"') && index.includes('Copia link WhatsApp'));
 check('stato copia accessibile presente', index.includes('id="bilanciWhatsappCopyStatusV440"') && index.includes('role="status"'));
 check('JS copia link WhatsApp dedicato', sectionJs.includes('copyBilanciWhatsappLinkV440') && sectionJs.includes('getLeagueWhatsappBilanciUrlV443') && sectionJs.includes('https://silviobarra.com/zonaorientale/bilanci.html'));

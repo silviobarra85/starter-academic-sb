@@ -14139,3 +14139,82 @@ html[data-theme="light"] table.roster-player-table.roster-listone-skin-v408 thea
   background: #0f172a !important;
   color: #f8fafc !important;
 }
+
+
+/* V449 - Firebase bootstrap banner alias for FantaPetillo clone. */
+.sandbox-banner-v449 {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  padding: 0.55rem 0.85rem;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: rgba(251, 191, 36, 0.95);
+  color: #1f2937;
+  border-bottom: 1px solid rgba(146, 64, 14, 0.35);
+}
+
+
+/* V450 - Admin bootstrap banner alias for FantaPetillo clone. */
+.sandbox-banner-v450 {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  padding: 0.55rem 0.85rem;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: rgba(251, 191, 36, 0.95);
+  color: #1f2937;
+  border-bottom: 1px solid rgba(146, 64, 14, 0.35);
+}
+
+
+/* V451 - Admin onboarding guide for FantaPetillo clone. */
+.onboarding-panel-v451 {
+  border-color: rgba(59, 130, 246, 0.32);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+.onboarding-grid-v451 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 1rem;
+  padding: 0 1.25rem 1.25rem;
+}
+.onboarding-steps-v451 {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.15rem;
+}
+.onboarding-step-v451 {
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 0.85rem;
+  background: rgba(248, 250, 252, 0.72);
+}
+.onboarding-step-v451 .status {
+  margin-right: 0.45rem;
+}
+.onboarding-step-v451 small {
+  display: block;
+  margin-top: 0.2rem;
+  color: #64748b;
+}
+.onboarding-actions-v451 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.65rem 0;
+}
+.onboarding-highlight-v451 {
+  outline: 3px solid rgba(59, 130, 246, 0.45);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .onboarding-grid-v451 {
+    grid-template-columns: 1fr;
+    padding: 0 0.9rem 1rem;
+  }
+}

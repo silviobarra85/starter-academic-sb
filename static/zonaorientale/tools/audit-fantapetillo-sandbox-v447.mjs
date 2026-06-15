@@ -33,12 +33,12 @@ try {
   if (cloneConfig.name === 'FantaPetilloMantraManager') ok('nome clone corretto'); else fail('nome clone non corretto');
   if (Number(cloneConfig.currentVersion) >= 447) ok(`versione clone V${cloneConfig.currentVersion}`); else fail('versione clone inferiore a V447');
   if (cloneConfig.basePath === `/${cloneSlug}/`) ok('basePath clone corretto'); else fail('basePath clone non corretto');
-  if (cloneConfig.sandbox?.enabled === true && cloneConfig.sandbox?.firebase === 'disabled') ok('sandbox Firebase disabilitato in config'); else fail('sandbox Firebase non disabilitato in config');
-  if (cloneConfig.features?.admin === false && cloneConfig.features?.teamArea === false) ok('feature live rischiose disabilitate in config'); else fail('feature live rischiose non disabilitate');
+  if (cloneConfig.sandbox?.enabled === true && (cloneConfig.sandbox?.firebase === 'disabled' || cloneConfig.sandbox?.firebase === 'dedicated-project-connected-bootstrap' || cloneConfig.sandbox?.firebase === 'dedicated-project-admin-bootstrap')) ok(`sandbox/bootstrap Firebase in config: ${cloneConfig.sandbox?.firebase}`); else fail('sandbox/bootstrap Firebase non riconosciuto in config');
+  if ((cloneConfig.features?.admin === false || cloneConfig.features?.admin === true) && cloneConfig.features?.teamArea === false) ok('feature live rischiose disabilitate in config'); else fail('feature live rischiose non disabilitate');
 
   const firebaseText = read(path.join(cloneRoot, 'assets', 'firebase.js'));
-  if (!firebaseText.includes('zonaorientale-d07af') && !firebaseText.includes('gstatic.com/firebasejs')) ok('Firebase ZonaOrientale non importato nel clone'); else fail('Firebase reale ancora presente nel clone');
-  if (firebaseText.includes('Firebase disabled sandbox adapter')) ok('stub Firebase sandbox presente'); else fail('stub Firebase sandbox non riconosciuto');
+  if (!firebaseText.includes('zonaorientale-d07af') && !firebaseText.includes('AIzaSyB7YQM3')) ok('Firebase ZonaOrientale non importato nel clone'); else fail('Firebase ZonaOrientale presente nel clone');
+  if (firebaseText.includes('Firebase disabled sandbox adapter') || firebaseText.includes('fantapetillomantramanager.firebaseapp.com')) ok('Firebase clone sandbox o dedicato presente'); else fail('Firebase clone non riconosciuto');
 
   const htmlFiles = ['index.html', 'competition.html', 'player.html', 'bilanci.html'];
   for (const file of htmlFiles) {

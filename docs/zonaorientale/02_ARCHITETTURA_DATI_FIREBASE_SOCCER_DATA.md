@@ -3201,3 +3201,16 @@ Nessun impatto su Firebase, auth, schema dati, Netlify Functions o sorgenti dati
 ## Nota V441 - Ruoli Mantra
 
 I filtri Mantra usano i campi gia presenti nei listoni/snapshot, in particolare `mantraRoles` e alias equivalenti, con fallback al giocatore del listone quando la rosa contiene solo ruolo standard. Non vengono introdotti nuovi dataset o nuove collection Firebase.
+
+## V449 - Separazione Firebase multi-lega
+
+Il clone `FantaPetilloMantraManager` non usa il Firebase di ZonaOrientale. In V449 `static/fantapetillomantramanager/assets/firebase.js` punta al progetto dedicato `fantapetillomantramanager`. La separazione evita contaminazioni tra utenti, news, richieste presidenti, movimenti FM e snapshot live.
+
+La produzione del clone resta bloccata: servono rules Firestore conservative e seed manuale del primo admin prima di abilitare Admin/Area Squadra.
+
+## V450 - Rules clone derivate da ZonaOrientale
+
+Per `FantaPetilloMantraManager` non si copiano alla cieca le rules dalla console, ma si usa un file versionato nel clone: `static/fantapetillomantramanager/tools/firestore-rules-v450.rules`. Il contenuto e' derivato dalle rules complete ZonaOrientale V393 e viene pubblicato nel progetto Firebase separato `fantapetillomantramanager`.
+
+Questa scelta mantiene compatibili Admin, presidenti, trattative, snapshot pubblici, news, Soccer Data e scritture admin-only, evitando una wildcard generica troppo permissiva.
+

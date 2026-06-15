@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "448",
+  "currentVersion": "451",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -13,7 +13,7 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "sandbox-audited-v448"
+    "status": "admin-onboarding-v451"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/zonaorientale/bilanci.html",
@@ -42,7 +42,17 @@
     "cloneSandboxSlug": "fantapetillomantramanager",
     "cloneSandboxAudited": true,
     "cloneSandboxAuditVersion": "448",
-    "cloneFirebaseProjectCreatedButNotConnected": true
+    "cloneFirebaseProjectCreatedButNotConnected": true,
+    "cloneFirebaseProjectCreated": true,
+    "cloneFirebaseProjectConnected": "bootstrap-v449",
+    "cloneFirestoreRulesRequiredBeforeLiveUse": true,
+    "cloneFirebaseSeparateProjectRequired": true,
+    "cloneAdminBootstrapReady": true,
+    "cloneAdminBootstrapVersion": "450",
+    "cloneTeamAreaStillGuarded": true,
+    "cloneFirestoreRulesAlignedWithZonaOrientale": "V393-derived-v450",
+    "adminOnboardingVersion": "451",
+    "cloneAdminOnboardingReady": true
   },
   "branding": {
     "siteName": "ZonaOrientale Salerno",
@@ -166,5 +176,16 @@
     "calciomercatoLinks": "./assets/calciomercato/links.json",
     "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
     "calciomercatoArchiveBase": "./assets/calciomercato/archive/"
+  },
+  "firebaseBootstrap": {
+    "version": "451",
+    "cloneSlug": "fantapetillomantramanager",
+    "projectId": "fantapetillomantramanager",
+    "mode": "dedicated-project-admin-bootstrap",
+    "productionReady": false,
+    "rulesFile": "static/fantapetillomantramanager/tools/firestore-rules-v450.rules",
+    "adminBootstrapEnabled": true,
+    "teamAreaStillGuarded": true,
+    "adminOnboardingEnabled": true
   }
 }

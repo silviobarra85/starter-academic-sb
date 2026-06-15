@@ -61,3 +61,51 @@ bash tools/check-zonaorientale.sh
 ## Firebase dedicato
 
 Il progetto Firebase dedicato da usare in V449 e' `fantapetillomantramanager`. La configurazione web e' stata raccolta fuori dal runtime, ma non va inserita manualmente in V448: verra' applicata con una patch dedicata e audit anti-contaminazione.
+
+
+## V449 - Firebase reale dedicato
+
+Il clone ora punta al progetto Firebase dedicato `fantapetillomantramanager` tramite:
+
+```text
+static/fantapetillomantramanager/assets/firebase.js
+```
+
+Stato operativo:
+
+- Firebase reale collegato in modalita bootstrap protetta.
+- Admin e Area Squadra ancora nascosti dal guard V449.
+- Produzione non pronta: dati placeholder, noindex attivo, rules Firestore da applicare.
+- Firebase ZonaOrientale non e' importato nel clone.
+
+File rules da copiare nella console Firebase:
+
+```text
+static/fantapetillomantramanager/tools/firestore-rules-v449.rules
+```
+
+Documento operativo:
+
+```text
+docs/fantapetillomantramanager/FIREBASE_SETUP_V449.md
+```
+
+
+## V450 - Admin bootstrap
+
+Il clone ora permette l'accesso Admin per inizializzare dati e configurazione, dopo la creazione manuale dell'utente admin e del documento `admins/{uid}`.
+
+Stato operativo:
+
+- Firebase dedicato: `fantapetillomantramanager`.
+- Rules consigliate: `static/fantapetillomantramanager/tools/firestore-rules-v450.rules`.
+- Admin bootstrap: abilitato.
+- Area Squadra presidenti: ancora protetta.
+- Produzione: non pronta, dati ancora placeholder e `noindex` attivo.
+
+
+## V451 - Onboarding dati
+
+Aggiunta una checklist nell'Admin del clone per guidare il primo inserimento dati: stagione, presidenti, squadre, squadre stagione, stadi e snapshot pubblici.
+
+Il helper V451 e' read-only: non scrive su Firebase e non sblocca Area Squadra presidenti.

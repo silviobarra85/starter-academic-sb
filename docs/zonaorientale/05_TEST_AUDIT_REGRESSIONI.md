@@ -5109,3 +5109,16 @@ Aggiunto `tools/audit-panel-title-stack-v442.mjs` e integrato in `tools/check-zo
 ## Aggiornamento V446 - Percorsi dati statici da configurazione
 
 La preparazione multi-lega ora include `dataPaths` in `static/zonaorientale/assets/league-config.json`. I reader pubblici possono risolvere da configurazione i percorsi di config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato, mantenendo i path ZonaOrientale come fallback. Non sono stati modificati Firebase, Admin, generator snapshot, Area Squadra presidenti, Bilanci mobile V438 o badge dispositivo V434.
+
+## V449 - Audit Firebase clone
+
+Aggiunti controlli anti-contaminazione per verificare che ZonaOrientale continui a usare `zonaorientale-d07af` e che il clone punti solo a `fantapetillomantramanager`. Il check del clone valida anche la presenza di `tools/firestore-rules-v449.rules` e del guard runtime V449.
+
+## V450 - Audit Admin bootstrap clone
+
+Aggiunto `audit-fantapetillo-admin-bootstrap-v450.mjs` lato ZonaOrientale e `audit-admin-bootstrap-v450.mjs` lato clone. I controlli verificano: Firebase dedicato, Admin abilitato, Team Area ancora protetta, assenza di Firebase ZonaOrientale nel clone, rules V450 complete e senza wildcard generica.
+
+## V451 - Audit onboarding Admin clone
+
+Aggiunti `audit-admin-onboarding-v451.mjs` nel clone e `audit-fantapetillo-admin-onboarding-v451.mjs` lato ZonaOrientale. Verificano script onboarding, no scritture Firebase, Team Area ancora protetta e cache-buster V451.
+

@@ -1,56 +1,82 @@
-// V448 - Firebase disabled sandbox adapter for FantaPetilloMantraManager.
-// This clone must not read from or write to the ZonaOrientale Firebase project.
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-export const db = null;
-export const auth = { currentUser: null };
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-function makeSnapshot(docs = []) {
-  return {
-    docs,
-    empty: docs.length === 0,
-    forEach(callback) { docs.forEach(callback); }
-  };
-}
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-function makeDocumentSnapshot(id = '') {
-  return {
-    id,
-    exists() { return false; },
-    data() { return null; }
-  };
-}
+// V450 - Firebase reale dedicato per FantaPetilloMantraManager.
+// Non usare il progetto Firebase di ZonaOrientale in questo clone.
+const firebaseConfig = {
+  apiKey: "AIzaSyA8TbyIH-TD2gyxL4b5MP9NWkC46RN9k00",
+  authDomain: "fantapetillomantramanager.firebaseapp.com",
+  projectId: "fantapetillomantramanager",
+  storageBucket: "fantapetillomantramanager.firebasestorage.app",
+  messagingSenderId: "578603278263",
+  appId: "1:578603278263:web:df2ba2739bc2b843ccd232",
+  measurementId: "G-RT78QT84J4"
+};
 
-function sandboxError(action) {
-  return new Error(`${action} non disponibile: Firebase e' disabilitato nel clone sandbox FantaPetilloMantraManager.`);
-}
+const app = initializeApp(firebaseConfig);
 
-export function collection(_db, name) { return { sandbox: true, name: String(name || '') }; }
-export function doc(_db, name, id) { return { sandbox: true, name: String(name || ''), id: String(id || '') }; }
-export async function getDoc(ref) { return makeDocumentSnapshot(ref?.id || ''); }
-export async function getDocs() { return makeSnapshot([]); }
-export async function setDoc() { throw sandboxError('setDoc'); }
-export async function addDoc() { throw sandboxError('addDoc'); }
-export async function updateDoc() { throw sandboxError('updateDoc'); }
-export async function deleteDoc() { throw sandboxError('deleteDoc'); }
-export function query(source) { return source || { sandbox: true }; }
-export function where(field, operator, value) { return { sandbox: true, field, operator, value }; }
-export function serverTimestamp() { return new Date().toISOString(); }
-export async function createUserWithEmailAndPassword() { throw sandboxError('createUserWithEmailAndPassword'); }
-export async function sendEmailVerification() { throw sandboxError('sendEmailVerification'); }
-export async function updateProfile() { throw sandboxError('updateProfile'); }
-export class GoogleAuthProvider {}
-export async function signInWithPopup() { throw sandboxError('signInWithPopup'); }
-export async function signInWithEmailAndPassword() { throw sandboxError('signInWithEmailAndPassword'); }
-export async function signOut() { return null; }
-export function onAuthStateChanged(_auth, callback) {
-  window.setTimeout(() => callback(null), 0);
-  return () => {};
-}
+export const db = getFirestore(app);
+export const auth = getAuth(app);
 
 if (typeof window !== 'undefined') {
-  window.FantaPetilloFirebaseSandboxV448 = Object.freeze({
-    version: 'V448',
-    firebaseDisabled: true,
-    protectsZonaOrientaleFirebase: true
+  window.FantaPetilloFirebaseConfigV449 = Object.freeze({
+    version: 'V450',
+    projectId: firebaseConfig.projectId,
+    authDomain: firebaseConfig.authDomain,
+    dedicatedFirebaseProject: true,
+    zonaOrientaleFirebasePresent: false,
+    productionReady: false,
+    requiresFirestoreRulesBeforeLiveUse: false,
+    adminBootstrapEnabled: true,
+    teamAreaStillGuarded: true,
+    firestoreRulesVersion: 'V450'
   });
 }
+
+export {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  serverTimestamp,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+};

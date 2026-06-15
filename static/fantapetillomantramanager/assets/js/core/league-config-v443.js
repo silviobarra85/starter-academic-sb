@@ -71,7 +71,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'FantaPetillo',
   basePath: '/fantapetillomantramanager/',
   siteUrl: 'https://silviobarra.com/fantapetillomantramanager/',
-  currentVersion: '448',
+  currentVersion: '451',
   currentSeasonId: '2025-2026',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -115,7 +115,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=448';
+const CONFIG_URL_V443 = './assets/league-config.json?v=451';
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -182,7 +182,7 @@ let readyPromiseV443 = null;
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
   window.FantaPetilloLeagueConfigV443 = Object.freeze({
-    version: 'V448',
+    version: 'V451',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
@@ -190,6 +190,9 @@ function publishConfigV443(config, source = 'default') {
     runtimePresentationFromConfig: true,
     staticDataPathsFromConfig: true,
     cloneSandboxReady: true,
+    dedicatedFirebaseBootstrap: true,
+    adminBootstrapReady: true,
+    adminOnboardingReady: true,
     futureLeagueCandidate: cachedConfigV443.futureLeagueCandidate?.provisionalName || ''
   });
   return cachedConfigV443;
@@ -369,7 +372,7 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
     applyBrandTextV445();
     applyMobileMoreLinksV445();
     window.FantaPetilloLeagueRuntimePresentationV445 = Object.freeze({
-      version: 'V448',
+      version: 'V451',
       pageId,
       appliedAt: new Date().toISOString(),
       metadataFromConfig: true,

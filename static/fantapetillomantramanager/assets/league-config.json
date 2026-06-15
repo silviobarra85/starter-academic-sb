@@ -5,7 +5,7 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "448",
+  "currentVersion": "451",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -13,14 +13,14 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "sandbox-audited-v448"
+    "status": "admin-onboarding-v451"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
     "newsShareBase": "https://silviobarra.com/fantapetillomantramanager/share/news/"
   },
   "features": {
-    "admin": false,
+    "admin": true,
     "teamArea": false,
     "bilanci": true,
     "calciomercato": false,
@@ -29,7 +29,7 @@
   },
   "guardrails": {
     "sandboxClone": true,
-    "firebaseDisabled": true,
+    "firebaseDisabled": false,
     "requiresDedicatedFirebaseBeforeProduction": true,
     "doNotUseZonaOrientaleFirebase": true,
     "preserveMobileUx": true,
@@ -38,7 +38,22 @@
     "cloneSandboxAudited": true,
     "cloneSandboxAuditVersion": "448",
     "readyForFirebaseConfig": true,
-    "firebaseProjectCreatedButNotConnected": true
+    "firebaseProjectCreatedButNotConnected": false,
+    "dedicatedFirebaseProject": true,
+    "firebaseProjectId": "fantapetillomantramanager",
+    "firebaseConnected": "admin-bootstrap-v450",
+    "requiresFirestoreRulesBeforeProduction": true,
+    "firebaseProjectConnectedInVersion": "449",
+    "adminEntrypointsGuardedUntilRulesAndSeed": false,
+    "adminBootstrapEnabled": true,
+    "adminBootstrapVersion": "450",
+    "teamAreaEntrypointsGuardedUntilTeamUsersSeed": true,
+    "firestoreRulesVersion": "450",
+    "firestoreRulesAlignedWithZonaOrientale": "V393-derived-v450",
+    "adminOnboardingVersion": "451",
+    "cloneTeamAreaStillGuarded": true,
+    "adminOnboardingEnabled": true,
+    "adminOnboardingScript": "assets/js/core/fanta-petillo-admin-onboarding-v451.js"
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
@@ -124,15 +139,50 @@
   "sandbox": {
     "enabled": true,
     "createdInVersion": "447",
-    "status": "static-sandbox-audited-v448",
-    "firebase": "disabled",
+    "status": "admin-onboarding-v451",
+    "firebase": "dedicated-project-admin-bootstrap",
     "notes": [
       "Clone provvisorio per verificare template multi-lega.",
-      "Firebase reale non collegato in V448: il progetto Firebase dedicato e stato creato ma resta fuori dal runtime fino alla V449.",
-      "Firebase disabilitato per evitare qualunque scrittura nel progetto ZonaOrientale.",
+      "Firebase reale dedicato collegato dal progetto fantapetillomantramanager.",
+      "Admin bootstrap abilitato in V450 dopo creazione manuale del primo admins/{uid}.",
+      "V451 aggiunge una guida Admin per inizializzare dati reali e pubblicare snapshot.",
+      "Area Squadra resta nascosta/guardata finche non vengono inseriti dati reali e teamUsers.",
+      "Rules Firestore V450 derivate dalle rules complete ZonaOrientale V393, adattate al progetto Firebase separato.",
+      "Firebase ZonaOrientale non viene importato ne usato dal clone.",
       "Dati statici minimi placeholder: da sostituire prima della produzione."
     ],
-    "auditedInVersion": "448",
-    "firebaseProjectStatus": "created-but-not-connected"
+    "auditedInVersion": "451",
+    "firebaseProjectStatus": "connected-admin-bootstrap-v450"
+  },
+  "firebase": {
+    "version": "451",
+    "mode": "dedicated-project-admin-bootstrap",
+    "projectId": "fantapetillomantramanager",
+    "authDomain": "fantapetillomantramanager.firebaseapp.com",
+    "storageBucket": "fantapetillomantramanager.firebasestorage.app",
+    "messagingSenderId": "578603278263",
+    "appId": "1:578603278263:web:df2ba2739bc2b843ccd232",
+    "measurementId": "G-RT78QT84J4",
+    "productionReady": false,
+    "rulesRequired": true,
+    "rulesVersion": "450",
+    "adminBootstrapEnabled": true,
+    "teamAreaStillGuarded": true,
+    "adminOnboardingEnabled": true
+  },
+  "setup": {
+    "version": "451",
+    "status": "admin-onboarding",
+    "adminChecklist": [
+      "Verifica rules Firestore V450 pubblicate",
+      "Accedi come admin",
+      "Crea o conferma stagione corrente",
+      "Inserisci presidenti",
+      "Inserisci squadre madri",
+      "Associa squadre alla stagione",
+      "Inserisci stadi",
+      "Aggiorna snapshot pubblici",
+      "Scarica overlay snapshot e applicalo alla repo"
+    ]
   }
 }

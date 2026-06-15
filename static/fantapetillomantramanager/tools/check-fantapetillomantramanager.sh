@@ -16,13 +16,21 @@ if command -v python3 >/dev/null 2>&1; then
   pass "JSON clone validi"
 fi
 if grep -q 'zonaorientale-d07af' "$SITE_ROOT/assets/firebase.js"; then fail "firebase ZonaOrientale presente nel clone"; else pass "Firebase ZonaOrientale assente dal clone"; fi
-if grep -q 'firebaseDisabled.*true' "$SITE_ROOT/assets/league-config.json"; then pass "config sandbox Firebase disabilitato"; else fail "config sandbox non esplicita Firebase disabilitato"; fi
+if grep -q '"adminOnboardingEnabled": true' "$SITE_ROOT/assets/league-config.json"; then pass "config onboarding Admin V451"; elif grep -q '"firebaseConnected": "admin-bootstrap-v450"' "$SITE_ROOT/assets/league-config.json"; then pass "config Admin bootstrap V450"; else fail "config Firebase clone non esplicita stato sicuro"; fi
 versions="$(grep -Roh '?v=[0-9][0-9]*' "$SITE_ROOT"/*.html | sed 's/?v=//' | sort -u | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-if [[ "$versions" == "448" ]]; then pass "cache-buster clone V448"; else fail "cache-buster clone non allineati: $versions"; fi
+if [[ "$versions" == "451" ]]; then pass "cache-buster clone V451"; else fail "cache-buster clone non allineati: $versions"; fi
 if command -v node >/dev/null 2>&1; then
-  if node "$SITE_ROOT/tools/audit-clone-runtime-qa-v448.mjs" --quiet; then pass "audit clone runtime QA V448"; else fail "audit clone runtime QA V448"; fi
+  if node "$SITE_ROOT/tools/audit-admin-bootstrap-v450.mjs" --quiet; then pass "audit Admin bootstrap V450"; else fail "audit Admin bootstrap V450"; fi
 else
-  fail "node non disponibile per audit clone runtime QA V448"
+  fail "node non disponibile per audit Admin bootstrap V450"
 fi
+
+
+if command -v node >/dev/null 2>&1; then
+  if node "$SITE_ROOT/tools/audit-admin-onboarding-v451.mjs" --quiet; then pass "audit Admin onboarding V451"; else fail "audit Admin onboarding V451"; fi
+else
+  fail "node non disponibile per audit Admin onboarding V451"
+fi
+
 if [[ "$failures" -gt 0 ]]; then exit 1; fi
-printf 'Controlli clone sandbox passati.\n'
+printf 'Controlli clone Admin onboarding passati.\n'

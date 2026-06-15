@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 451,
   "generatedAt": "2026-06-15T00:00:00.000Z",
   "snapshot": {
     "id": "honor",
@@ -12,6 +12,7 @@
     ],
     "palmares": [],
     "fifaRanking": [],
-    "snapshotVersion": 447
+    "snapshotVersion": 451,
+    "setupStatus": "admin-onboarding-v451"
   }
 }

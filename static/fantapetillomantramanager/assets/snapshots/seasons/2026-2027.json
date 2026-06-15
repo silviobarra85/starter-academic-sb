@@ -1,0 +1,23 @@
+{
+  "id": "2026-2027",
+  "seasonId": "2026-2027",
+  "generatedAt": "2026-06-15T14:30:22.412Z",
+  "teams": [],
+  "presidents": [],
+  "seasonTeams": [],
+  "stadiums": [],
+  "competitions": [],
+  "competitionMatches": [],
+  "competitionResults": [],
+  "rosterEntries": [],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 10,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}

@@ -2732,6 +2732,57 @@ else
   fail "node non disponibile per audit QA clone FantaPetillo V448"
 fi
 
+
+print_step "Audit Firebase FantaPetillo V449"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_firebase_v449="$SITE_ROOT/tools/audit-fantapetillo-firebase-v449.mjs"
+  if [[ -f "$audit_fantapetillo_firebase_v449" ]]; then
+    if node "$audit_fantapetillo_firebase_v449" --quiet; then
+      pass "audit Firebase FantaPetillo V449 superato"
+    else
+      fail "audit Firebase FantaPetillo V449 fallito"
+    fi
+  else
+    fail "tool audit Firebase FantaPetillo V449 mancante"
+  fi
+else
+  fail "node non disponibile per audit Firebase FantaPetillo V449"
+fi
+
+
+print_step "Audit Admin bootstrap FantaPetillo V450"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_admin_v450="$SITE_ROOT/tools/audit-fantapetillo-admin-bootstrap-v450.mjs"
+  if [[ -f "$audit_fantapetillo_admin_v450" ]]; then
+    if node "$audit_fantapetillo_admin_v450" --quiet; then
+      pass "audit Admin bootstrap FantaPetillo V450 superato"
+    else
+      fail "audit Admin bootstrap FantaPetillo V450 fallito"
+    fi
+  else
+    fail "tool audit Admin bootstrap FantaPetillo V450 mancante"
+  fi
+else
+  fail "node non disponibile per audit Admin bootstrap FantaPetillo V450"
+fi
+
+
+print_step "Audit onboarding Admin FantaPetillo V451"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_onboarding_v451="$SITE_ROOT/tools/audit-fantapetillo-admin-onboarding-v451.mjs"
+  if [[ -f "$audit_fantapetillo_onboarding_v451" ]]; then
+    if node "$audit_fantapetillo_onboarding_v451" --quiet; then
+      pass "audit onboarding Admin FantaPetillo V451 superato"
+    else
+      fail "audit onboarding Admin FantaPetillo V451 fallito"
+    fi
+  else
+    fail "tool audit onboarding Admin FantaPetillo V451 mancante"
+  fi
+else
+  fail "node non disponibile per audit onboarding Admin FantaPetillo V451"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

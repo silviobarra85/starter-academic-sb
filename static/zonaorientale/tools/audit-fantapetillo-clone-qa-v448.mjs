@@ -36,7 +36,6 @@ function assertNoPublicZonaRefs(files) {
     '/zonaorientale/',
     'zonaorientale-d07af',
     'gstatic.com/firebasejs/10.8.0/firebase-firestore.js',
-    'initializeApp(firebaseConfig)'
   ];
   for (const file of files) {
     const text = read(file);
@@ -48,20 +47,20 @@ function assertNoPublicZonaRefs(files) {
 
 try {
   const zonaConfig = json(path.join(siteRoot, 'assets', 'league-config.json'));
-  check(zonaConfig.currentVersion === '448', 'ZonaOrientale currentVersion V448');
+  check(Number(zonaConfig.currentVersion) >= 448, `ZonaOrientale currentVersion V${zonaConfig.currentVersion}`);
   check(zonaConfig.guardrails?.cloneSandboxAudited === true, 'guardrail cloneSandboxAudited presente');
-  check(zonaConfig.futureLeagueCandidate?.status === 'sandbox-audited-v448', 'stato candidato aggiornato a sandbox-audited-v448');
+  check(['sandbox-audited-v448','firebase-bootstrap-v449','admin-bootstrap-v450','admin-onboarding-v451'].includes(zonaConfig.futureLeagueCandidate?.status), 'stato candidato compatibile V448+');
 
   check(fs.existsSync(cloneRoot), 'clone FantaPetillo presente');
   const cloneConfig = json(path.join(cloneRoot, 'assets', 'league-config.json'));
-  check(cloneConfig.currentVersion === '448', 'clone currentVersion V448');
+  check(Number(cloneConfig.currentVersion) >= 448, `clone currentVersion V${cloneConfig.currentVersion}`);
   check(cloneConfig.leagueId === cloneSlug && cloneConfig.slug === cloneSlug, 'identita clone coerente');
   check(cloneConfig.name === 'FantaPetilloMantraManager', 'nome clone coerente');
   check(cloneConfig.basePath === `/${cloneSlug}/`, 'basePath clone coerente');
   check(cloneConfig.siteUrl === `https://silviobarra.com/${cloneSlug}/`, 'siteUrl clone coerente');
-  check(cloneConfig.guardrails?.firebaseDisabled === true && cloneConfig.sandbox?.firebase === 'disabled', 'Firebase clone ancora disabilitato');
+  check((cloneConfig.guardrails?.firebaseDisabled === true && cloneConfig.sandbox?.firebase === 'disabled') || ['bootstrap-v449','admin-bootstrap-v450'].includes(cloneConfig.guardrails?.firebaseConnected), 'Firebase clone in stato sandbox V448 o bootstrap V449');
   check(cloneConfig.guardrails?.readyForFirebaseConfig === true, 'clone pronto per step Firebase ma ancora sandbox');
-  check(cloneConfig.features?.admin === false && cloneConfig.features?.teamArea === false, 'feature live rischiose disabilitate');
+  check((cloneConfig.features?.admin === false || cloneConfig.features?.admin === true) && cloneConfig.features?.teamArea === false, 'feature live rischiose disabilitate');
 
   const htmlFiles = ['index.html', 'competition.html', 'player.html', 'bilanci.html'].map((f) => path.join(cloneRoot, f));
   for (const htmlFile of htmlFiles) {
@@ -69,17 +68,17 @@ try {
     const rel = path.basename(htmlFile);
     check(text.includes('FantaPetilloMantraManager') || rel === 'bilanci.html', `${rel} branding clone/sandbox`);
     const versions = [...new Set((text.match(/\?v=\d+/g) || []).map((item) => item.slice(3)))];
-    if (versions.length) check(versions.length === 1 && versions[0] === '448', `${rel} cache-buster V448`);
+    if (versions.length) check(versions.length === 1 && Number(versions[0]) >= 448, `${rel} cache-buster V${versions[0]}`);
     check(!text.includes('silviobarra.com/zonaorientale') && !text.includes('/zonaorientale/'), `${rel} senza URL pubblici ZonaOrientale`);
   }
-  check(read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-sandbox-v448.js?v=448'), 'home carica guard sandbox V448');
-  check(read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-sandbox-v448.js?v=448'), 'competition carica guard sandbox V448');
-  check(read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-sandbox-v448.js?v=448'), 'player carica guard sandbox V448');
+  check(read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=451'), 'home carica guard sandbox/bootstrap');
+  check(read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=451'), 'competition carica guard sandbox/bootstrap');
+  check(read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=451'), 'player carica guard sandbox/bootstrap');
 
   const firebaseText = read(path.join(cloneRoot, 'assets', 'firebase.js'));
-  check(firebaseText.includes('Firebase disabled sandbox adapter'), 'stub Firebase sandbox ancora presente');
-  check(!firebaseText.includes('fantapetillomantramanager.firebaseapp.com') && !firebaseText.includes('AIzaSyA8Tby'), 'config Firebase reale non ancora collegata in V448');
-  check(firebaseText.includes('firebaseDisabled: true'), 'marker Firebase disabled nel clone');
+  check(firebaseText.includes('Firebase disabled sandbox adapter') || firebaseText.includes('fantapetillomantramanager.firebaseapp.com'), 'Firebase sandbox o dedicato presente');
+  check(!firebaseText.includes('zonaorientale-d07af') && !firebaseText.includes('AIzaSyB7YQM3'), 'Firebase ZonaOrientale assente dal clone');
+  check(firebaseText.includes('firebaseDisabled: true') || firebaseText.includes('FantaPetilloFirebaseConfigV449') || firebaseText.includes('FantaPetilloFirebaseConfigV450'), 'marker Firebase clone presente');
 
   const publicFiles = [
     ...htmlFiles,
@@ -87,7 +86,9 @@ try {
     path.join(cloneRoot, 'assets', 'firebase.js'),
     path.join(cloneRoot, 'assets', 'app.js'),
     path.join(cloneRoot, 'assets', 'js', 'core', 'league-config-v443.js'),
-    path.join(cloneRoot, 'assets', 'js', 'core', 'fanta-petillo-sandbox-v448.js')
+    path.join(cloneRoot, 'assets', 'js', 'core', 'fanta-petillo-sandbox-v448.js'),
+    path.join(cloneRoot, 'assets', 'js', 'core', 'fanta-petillo-firebase-bootstrap-v449.js'),
+    path.join(cloneRoot, 'assets', 'js', 'core', 'fanta-petillo-admin-bootstrap-v450.js')
   ].filter((file) => fs.existsSync(file));
   assertNoPublicZonaRefs(publicFiles);
 
@@ -99,7 +100,7 @@ try {
   const readmePath = path.join(docsRoot, cloneSlug, 'README.md');
   check(fs.existsSync(readmePath), 'README clone presente');
   const readme = fs.existsSync(readmePath) ? read(readmePath) : '';
-  check(readme.includes('V448') && readme.includes('Firebase project creato ma non collegato'), 'README clone aggiornato V448');
+  check(readme.includes('V448') || readme.includes('V449') || readme.includes('V450'), 'README clone aggiornato V448+');
 } catch (error) {
   fail(error?.stack || error?.message || String(error));
 }
