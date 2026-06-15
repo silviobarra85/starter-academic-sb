@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-09",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-10T03:51:23.750Z",
+  "generatedAt": "2026-06-11T16:29:08.872Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -384,17 +384,17 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-05-14T09:21:00.000Z",
-    "latest": "2026-06-09T23:46:26.000Z",
-    "totalBeforeDateRange": 893,
-    "totalFetched": 893,
-    "totalAfterQueryBeforeDateRange": 893
+    "earliest": "2026-05-17T17:19:00.000Z",
+    "latest": "2026-06-11T18:11:06.000Z",
+    "totalBeforeDateRange": 887,
+    "totalFetched": 887,
+    "totalAfterQueryBeforeDateRange": 887
   },
   "stats": {
-    "existingArticles": 82,
-    "fetchedArticles": 279,
-    "totalArticles": 297,
-    "duplicatesSkipped": 64
+    "existingArticles": 297,
+    "fetchedArticles": 101,
+    "totalArticles": 299,
+    "duplicatesSkipped": 99
   },
   "articles": [
     {
@@ -2664,6 +2664,49 @@
       "canonicalKey": "url:fantacalcio.it/calciomercato/09_06_2026/juve-adzic-in-uscita-ipotesi-prestito-in-serie-a-493979"
     },
     {
+      "id": "tmw-monza-13-aHR0cHM6Ly93",
+      "title": "La Scafatese sogna in grande dopo il ritorno in C: sondaggi per Coda e Lorenzo Insigne",
+      "url": "https://www.tuttomercatoweb.com/serie-c/scafatese-sogna-ritorno-c-sondaggi-coda-lorenzo-insigne-2242659",
+      "sourceId": "tmw-monza",
+      "sourceName": "TMW Monza",
+      "sourceUrl": "https://www.tuttomercatoweb.com/monza/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-09T20:34:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Monza"
+      ],
+      "detectedTeams": [
+        "Monza"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Coda"
+      ],
+      "entities": {
+        "teams": [
+          "Monza"
+        ],
+        "people": [
+          "Coda"
+        ],
+        "players": [
+          "Coda"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/scafatese-sogna-ritorno-c-sondaggi-coda-lorenzo-insigne-2242659"
+    },
+    {
       "id": "sosfanta-8-aHR0cHM6Ly93",
       "title": "Como, un rinforzo Champions può arrivare dal Brasile per 15 milioni. E per Yan Couto…",
       "url": "https://www.sosfanta.com/squadra/como/sky-como-il-primo-rinforzo-champions-puo-arrivare-dal-brasile-accordo-vicino-per-15-milioni/",
@@ -2892,6 +2935,46 @@
         "Squadra"
       ],
       "canonicalKey": "url:tuttomercatoweb.com/serie-a/napoli-khalaili-occhio-premier-league-club-inglesi-talento-israeliano-2242652"
+    },
+    {
+      "id": "tmw-lecce-12-aHR0cHM6Ly93",
+      "title": "Hellas Verona, si va verso la permanenza di Sogliano. Tramonta l'ipotesi Lecce",
+      "url": "https://www.tuttomercatoweb.com/serie-b/hellas-verona-permanenza-sogliano-tramonta-l-ipotesi-lecce-2242653",
+      "sourceId": "tmw-lecce",
+      "sourceName": "TMW Lecce",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lecce/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/2d/2debc4e335cf46b53ae002b2ce4efddd-06124-oooz0000.jpeg",
+      "publishedAt": "2026-06-09T20:02:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lecce",
+        "Verona"
+      ],
+      "detectedTeams": [
+        "Lecce",
+        "Verona"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lecce",
+          "Verona"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-b/hellas-verona-permanenza-sogliano-tramonta-l-ipotesi-lecce-2242653"
     },
     {
       "id": "sosfanta-10-aHR0cHM6Ly93",

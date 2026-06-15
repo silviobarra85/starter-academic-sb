@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-04",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-05T03:59:20.909Z",
+  "generatedAt": "2026-06-12T04:51:16.189Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -378,17 +378,17 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-05-10T21:19:00.000Z",
-    "latest": "2026-06-05T02:30:00.000Z",
-    "totalBeforeDateRange": 871,
-    "totalFetched": 871,
-    "totalAfterQueryBeforeDateRange": 871
+    "earliest": "2026-05-17T17:19:00.000Z",
+    "latest": "2026-06-12T06:51:02.000Z",
+    "totalBeforeDateRange": 896,
+    "totalFetched": 896,
+    "totalAfterQueryBeforeDateRange": 896
   },
   "stats": {
-    "existingArticles": 267,
-    "fetchedArticles": 282,
-    "totalArticles": 343,
-    "duplicatesSkipped": 206
+    "existingArticles": 343,
+    "fetchedArticles": 31,
+    "totalArticles": 344,
+    "duplicatesSkipped": 30
   },
   "articles": [
     {
@@ -2006,6 +2006,46 @@
         "Squadra"
       ],
       "canonicalKey": "url:tuttomercatoweb.com/serie-a/inter-chivu-nessuna-sorpresa-raggiunto-l-accordo-per-il-rinnovo-possibile-annuncio-domani-2241256"
+    },
+    {
+      "id": "tmw-lecce-28-aHR0cHM6Ly93",
+      "title": "Valzer dei DS, Angelozzi tra Lecce e Cremonese. Che valuta alternative: idea Bravo",
+      "url": "https://www.tuttomercatoweb.com/serie-a/valzer-dei-ds-angelozzi-tra-lecce-e-cremonese-che-valuta-alternative-idea-bravo-2241251",
+      "sourceId": "tmw-lecce",
+      "sourceName": "TMW Lecce",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lecce/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/fa/fa1eb9feb35692cb854b6558ed5c7202-83849-oooz0000.jpeg",
+      "publishedAt": "2026-06-04T21:35:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cremonese",
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Cremonese",
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Cremonese",
+          "Lecce"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/valzer-dei-ds-angelozzi-tra-lecce-e-cremonese-che-valuta-alternative-idea-bravo-2241251"
     },
     {
       "id": "sosfanta-7-aHR0cHM6Ly93",
