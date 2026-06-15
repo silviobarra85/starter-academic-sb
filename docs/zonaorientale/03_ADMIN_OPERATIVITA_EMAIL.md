@@ -1921,3 +1921,6 @@ ZonaOrientaleAdminPublicationDashboardV368.runSmokeTest()
 
 Nella view mobile Admin, i pulsanti Apri/Riduci dei pannelli e delle categorie sono posizionati sopra il titolo per evitare compressione e titoli spezzati lettera per lettera. Operativita Admin invariata.
 
+## Nota V441 - Area Squadra presidenti
+
+Nell Area Squadra i filtri ruolo standard/Mantra sono operativi sulle select di trattativa e sul pannello Svincola Giocatori. La modifica non cambia l invio richieste, le email o il flusso di approvazione admin.

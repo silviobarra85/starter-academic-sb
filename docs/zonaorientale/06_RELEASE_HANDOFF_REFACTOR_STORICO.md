@@ -203798,3 +203798,10 @@ Handoff: non proseguire con pagine standalone. Continuare con refactor conservat
 
 Patch conservativa successiva a V429: la soluzione precedente non bastava su alcuni pannelli, quindi il pulsante Apri/Riduci viene impilato sopra il titolo. Nessun refactor strutturale o modifica funzionale.
 
+## Release V441 - Filtri ruoli Mantra
+
+Overlay dedicato a Listone, Rose e Area Squadra presidenti: aggiunge filtri standard/Mantra senza toccare Firebase, snapshot, Admin, Bilanci V440 o badge dispositivo V434.
+
+## Release V442 - Titoli sopra filtri
+
+Overlay CSS-only per evitare che titoli e descrizioni dei pannelli vengano compressi quando la card contiene molti controlli. Baseline aggiornata a V442 con cache-buster/footer coerenti. Nessuna modifica a Firebase, snapshot, Admin, Bilanci, badge dispositivo V434 o dati statici.

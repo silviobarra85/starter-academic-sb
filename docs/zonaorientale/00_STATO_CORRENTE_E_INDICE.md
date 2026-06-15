@@ -2083,3 +2083,10 @@ Test browser:
 
 La baseline corrente passa a V430. La modifica risolve la compressione dei titoli nelle sotto-sezioni Admin mobile spostando il pulsante Apri/Riduci in alto a sinistra, sopra il titolo, lasciando ai titoli tutta la larghezza disponibile.
 
+## V441 - Filtri ruoli Mantra
+
+Stato corrente aggiornato a V441: aggiunti filtri ruolo Mantra per Listone, Rose pubbliche e Area Squadra presidenti. La modifica e solo UI/runtime, non cambia Firebase, snapshot, Bilanci V440 o badge dispositivo V434. Ordine Mantra: Por, Dc, Dd, Ds, B, E, M, C, W, T, A, Pc.
+
+## V442 - Titoli sopra filtri e controlli
+
+Stato corrente aggiornato a V442: i pannelli/card che contengono filtri o controlli laterali impilano il titolo e la descrizione sopra i filtri, evitando la compressione del blocco titolo come visto nel Listone. Intervento solo CSS/layout: non cambia dati, Firebase, snapshot, Bilanci, Listone, Rose, Area Squadra, Admin o badge dispositivo V434.

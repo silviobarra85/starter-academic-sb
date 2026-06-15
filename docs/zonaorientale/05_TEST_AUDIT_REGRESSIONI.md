@@ -5030,3 +5030,10 @@ Il gate verifica:
 
 Aggiunto `tools/audit-admin-mobile-button-top-v430.mjs`, integrato in `tools/check-zonaorientale.sh`. Il controllo verifica versione V430, cache-buster, marker runtime e CSS necessario a posizionare Apri/Riduci sopra i titoli Admin mobile.
 
+## Audit V441
+
+Aggiunto `tools/audit-mantra-role-filters-v441.mjs` e integrato in `tools/check-zonaorientale.sh`. L audit verifica ordine ruoli Mantra, filtri Listone/Rose/Area Squadra, CSS dedicato e versione deploy V441.
+
+## Audit V442
+
+Aggiunto `tools/audit-panel-title-stack-v442.mjs` e integrato in `tools/check-zonaorientale.sh`. Il controllo verifica caricamento CSS V442 su `index.html`, `competition.html` e `player.html`, presenza delle regole per header con filtri/controlli/filtri Mantra e runtime atteso V442.

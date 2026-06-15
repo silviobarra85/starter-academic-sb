@@ -2596,6 +2596,39 @@ else
   fail "node non disponibile per audit menu Altro pagine standalone V439"
 fi
 
+
+print_step "Audit filtri ruoli Mantra V441"
+if command -v node >/dev/null 2>&1; then
+  audit_mantra_role_filters_v441="$SITE_ROOT/tools/audit-mantra-role-filters-v441.mjs"
+  if [[ -f "$audit_mantra_role_filters_v441" ]]; then
+    if node "$audit_mantra_role_filters_v441" --quiet; then
+      pass "audit filtri ruoli Mantra V441 superato"
+    else
+      fail "audit filtri ruoli Mantra V441 fallito"
+    fi
+  else
+    fail "tool audit filtri ruoli Mantra V441 mancante"
+  fi
+else
+  fail "node non disponibile per audit filtri ruoli Mantra V441"
+fi
+
+print_step "Audit titoli sopra filtri V442"
+if command -v node >/dev/null 2>&1; then
+  audit_panel_title_stack_v442="$SITE_ROOT/tools/audit-panel-title-stack-v442.mjs"
+  if [[ -f "$audit_panel_title_stack_v442" ]]; then
+    if node "$audit_panel_title_stack_v442" --quiet; then
+      pass "audit titoli sopra filtri V442 superato"
+    else
+      fail "audit titoli sopra filtri V442 fallito"
+    fi
+  else
+    fail "tool audit titoli sopra filtri V442 mancante"
+  fi
+else
+  fail "node non disponibile per audit titoli sopra filtri V442"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.
