@@ -38,19 +38,19 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=440";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=440";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=440";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=440";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=440";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=440";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=440";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=442";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=442";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=442";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=442";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=442";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=442";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=442";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=440";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=440";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=442";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=442";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -114,7 +114,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=440";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=442";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -138,7 +138,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=440";
+} from "./js/domain/news-share-v228.js?v=442";
 import {
   getListoneValue,
   compareListoneValues
@@ -153,19 +153,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=440";
+} from "./js/admin/listone-converter.js?v=442";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=440";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=440";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=442";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=442";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=440";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=440";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=440";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=440";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=442";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=442";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=442";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=442";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=440";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=440";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=440";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=442";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=442";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=442";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -15913,7 +15913,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "440";
+const DEPLOY_EXPECTED_VERSION_V181 = "442";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -20961,6 +20961,346 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 0);
 });
 
+
+
+/* V441 - Filtri ruoli Mantra per Listone, Rose e Area Squadra.
+ * Aggiunge filtri separati per ruoli standard e ruoli Mantra senza cambiare dati,
+ * snapshot, Firebase o logiche di salvataggio. Ordine Mantra: Por, Dc, Dd, Ds,
+ * B, E, M, C, W, T, A, Pc.
+ */
+const STANDARD_ROLE_ORDER_V441 = Object.freeze(["P", "D", "C", "A"]);
+const MANTRA_ROLE_ORDER_V441 = Object.freeze(["Por", "Dc", "Dd", "Ds", "B", "E", "M", "C", "W", "T", "A", "Pc"]);
+const MANTRA_ROLE_MAP_V441 = Object.freeze(MANTRA_ROLE_ORDER_V441.reduce((acc, role) => {
+  acc[String(role).toUpperCase()] = role;
+  return acc;
+}, {}));
+
+state.rosterStandardRoleFiltersV441 = state.rosterStandardRoleFiltersV441 || new Set(STANDARD_ROLE_ORDER_V441);
+state.rosterMantraRoleFiltersV441 = state.rosterMantraRoleFiltersV441 || new Set(MANTRA_ROLE_ORDER_V441);
+state.teamAreaStandardRoleFiltersV441 = state.teamAreaStandardRoleFiltersV441 || new Set(STANDARD_ROLE_ORDER_V441);
+state.teamAreaMantraRoleFiltersV441 = state.teamAreaMantraRoleFiltersV441 || new Set(MANTRA_ROLE_ORDER_V441);
+
+function normalizeMantraRoleV441(value) {
+  const key = String(value || "").trim().toUpperCase();
+  return MANTRA_ROLE_MAP_V441[key] || "";
+}
+
+function extractMantraRolesFromTextV441(value) {
+  const text = String(value || "").trim();
+  if (!text) return [];
+  const rolesByLength = [...MANTRA_ROLE_ORDER_V441].sort((a, b) => b.length - a.length);
+  const matcher = new RegExp(`\\b(${rolesByLength.join("|")})\\b`, "gi");
+  const found = [];
+  let match;
+  while ((match = matcher.exec(text)) !== null) {
+    const role = normalizeMantraRoleV441(match[1]);
+    if (role && !found.includes(role)) found.push(role);
+  }
+  return found;
+}
+
+function getPlayerMantraRolesV441(player = {}) {
+  const direct = [
+    player.mantraRoles,
+    player.mantra_roles,
+    player.mantraRole,
+    player.roleMantra,
+    player.ruoliMantra,
+    player.rm
+  ].find((value) => String(value || "").trim());
+  let roles = extractMantraRolesFromTextV441(direct || "");
+  if (roles.length) return roles;
+
+  try {
+    const listonePlayer = typeof findListonePlayerForRosterPlayer === "function" ? findListonePlayerForRosterPlayer(player) : null;
+    roles = extractMantraRolesFromTextV441(listonePlayer?.mantraRoles || listonePlayer?.mantra_roles || listonePlayer?.mantraRole || "");
+    if (roles.length) return roles;
+  } catch (_) {}
+
+  return [];
+}
+
+function getPlayerStandardRoleV441(player = {}) {
+  return String(player.classicRole || player.rosterRole || player.role || player.ruolo || "").trim().toUpperCase();
+}
+
+function getCheckedRolesFromDomV441(selector, fallbackRoles) {
+  const nodes = Array.from(document.querySelectorAll(selector));
+  if (!nodes.length) return new Set(fallbackRoles);
+  const checked = nodes.filter((node) => node.checked).map((node) => node.value || node.dataset.roleValueV441 || "").filter(Boolean);
+  return new Set(checked.length ? checked : fallbackRoles);
+}
+
+function playerMatchesStandardRolesV441(player, selectedRoles) {
+  if (!selectedRoles?.size || selectedRoles.size >= STANDARD_ROLE_ORDER_V441.length) return true;
+  const role = getPlayerStandardRoleV441(player);
+  return !role || selectedRoles.has(role);
+}
+
+function playerMatchesMantraRolesV441(player, selectedRoles) {
+  if (!selectedRoles?.size || selectedRoles.size >= MANTRA_ROLE_ORDER_V441.length) return true;
+  const roles = getPlayerMantraRolesV441(player);
+  if (!roles.length) return false;
+  return roles.some((role) => selectedRoles.has(role));
+}
+
+function renderRoleCheckboxesV441({ roles, selected, datasetName, className }) {
+  const safeSelected = selected instanceof Set ? selected : new Set(roles);
+  return roles.map((role) => `
+    <label class="${escapeHtml(className || "")}"><input type="checkbox" ${escapeHtml(datasetName)}="${escapeHtml(role)}" value="${escapeHtml(role)}" ${safeSelected.has(role) ? "checked" : ""} /> ${escapeHtml(role)}</label>`).join("");
+}
+
+function ensureListoneMantraRoleControlsV441() {
+  const standardFieldset = document.querySelector(".listone-role-filters");
+  if (!standardFieldset || document.getElementById("listoneMantraRoleFiltersV441")) return;
+  standardFieldset.insertAdjacentHTML("afterend", `
+    <fieldset id="listoneMantraRoleFiltersV441" class="inline-checkbox-group listone-mantra-role-filters-v441" aria-label="Filtro ruolo Mantra listone">
+      <legend>Ruoli Mantra</legend>
+      ${renderRoleCheckboxesV441({ roles: MANTRA_ROLE_ORDER_V441, selected: getCheckedListoneMantraRoleFiltersV441(), datasetName: "data-listone-mantra-role-filter-v441" })}
+    </fieldset>`);
+}
+
+function getCheckedListoneMantraRoleFiltersV441() {
+  return getCheckedRolesFromDomV441("[data-listone-mantra-role-filter-v441]", MANTRA_ROLE_ORDER_V441);
+}
+
+const getFilteredListonePlayersBeforeV441 = getFilteredListonePlayers;
+getFilteredListonePlayers = function getFilteredListonePlayersV441(listone) {
+  const rows = getFilteredListonePlayersBeforeV441(listone) || [];
+  const mantraRoles = getCheckedListoneMantraRoleFiltersV441();
+  return rows.filter((player) => playerMatchesMantraRolesV441(player, mantraRoles));
+};
+
+const getSortedFreeAgentsBeforeV441 = getSortedFreeAgents;
+getSortedFreeAgents = function getSortedFreeAgentsV441(listone) {
+  const rows = getSortedFreeAgentsBeforeV441(listone) || [];
+  const standardRoles = getCheckedListoneRoleFilters();
+  const mantraRoles = getCheckedListoneMantraRoleFiltersV441();
+  return rows.filter((player) => playerMatchesStandardRolesV441(player, standardRoles) && playerMatchesMantraRolesV441(player, mantraRoles));
+};
+
+if (typeof matchesHistoricalRemovedFiltersV270 === "function") {
+  const matchesHistoricalRemovedFiltersBeforeV441 = matchesHistoricalRemovedFiltersV270;
+  matchesHistoricalRemovedFiltersV270 = function matchesHistoricalRemovedFiltersV441(player = {}) {
+    return matchesHistoricalRemovedFiltersBeforeV441(player) && playerMatchesMantraRolesV441(player, getCheckedListoneMantraRoleFiltersV441());
+  };
+}
+
+const renderListonePublicBeforeV441 = renderListonePublic;
+renderListonePublic = function renderListonePublicV441() {
+  ensureListoneMantraRoleControlsV441();
+  const result = renderListonePublicBeforeV441?.();
+  ensureListoneMantraRoleControlsV441();
+  return result;
+};
+
+function renderRoleFilterBlockV441({ id, label, description, standardSelector, mantraSelector, standardState, mantraState }) {
+  return `
+    <div id="${escapeHtml(id)}" class="role-filter-panel-v441" aria-label="${escapeHtml(label)}">
+      <div class="role-filter-panel-head-v441">
+        <strong>${escapeHtml(label)}</strong>
+        ${description ? `<small>${escapeHtml(description)}</small>` : ""}
+      </div>
+      <fieldset class="inline-checkbox-group role-filter-standard-v441" aria-label="Ruoli standard">
+        <legend>Ruoli standard</legend>
+        ${renderRoleCheckboxesV441({ roles: STANDARD_ROLE_ORDER_V441, selected: standardState, datasetName: standardSelector })}
+      </fieldset>
+      <fieldset class="inline-checkbox-group role-filter-mantra-v441" aria-label="Ruoli Mantra">
+        <legend>Ruoli Mantra</legend>
+        ${renderRoleCheckboxesV441({ roles: MANTRA_ROLE_ORDER_V441, selected: mantraState, datasetName: mantraSelector })}
+      </fieldset>
+    </div>`;
+}
+
+function readRosterRoleFilterStateV441() {
+  state.rosterStandardRoleFiltersV441 = getCheckedRolesFromDomV441("[data-roster-standard-role-filter-v441]", STANDARD_ROLE_ORDER_V441);
+  state.rosterMantraRoleFiltersV441 = getCheckedRolesFromDomV441("[data-roster-mantra-role-filter-v441]", MANTRA_ROLE_ORDER_V441);
+}
+
+function ensureRosterRoleFilterControlsV441() {
+  const panel = document.querySelector('[data-page="clubs"] section.panel');
+  const header = panel?.querySelector(".panel-header");
+  if (!header || document.getElementById("rosterRoleFiltersV441")) return;
+  readRosterRoleFilterStateV441();
+  const target = header.querySelector(".filters-row") || header;
+  target.insertAdjacentHTML("beforeend", renderRoleFilterBlockV441({
+    id: "rosterRoleFiltersV441",
+    label: "Filtra giocatori",
+    description: "Applica il filtro alle rose aperte.",
+    standardSelector: "data-roster-standard-role-filter-v441",
+    mantraSelector: "data-roster-mantra-role-filter-v441",
+    standardState: state.rosterStandardRoleFiltersV441,
+    mantraState: state.rosterMantraRoleFiltersV441
+  }));
+}
+
+function filterRosterPlayersForPublicV441(players = []) {
+  const standardRoles = state.rosterStandardRoleFiltersV441 instanceof Set ? state.rosterStandardRoleFiltersV441 : new Set(STANDARD_ROLE_ORDER_V441);
+  const mantraRoles = state.rosterMantraRoleFiltersV441 instanceof Set ? state.rosterMantraRoleFiltersV441 : new Set(MANTRA_ROLE_ORDER_V441);
+  return (players || []).filter((player) => playerMatchesStandardRolesV441(player, standardRoles) && playerMatchesMantraRolesV441(player, mantraRoles));
+}
+
+const renderRosterPlayerTableBeforeV441 = renderRosterPlayerTable;
+renderRosterPlayerTable = function renderRosterPlayerTableV441(players = []) {
+  const filtered = filterRosterPlayersForPublicV441(players);
+  if (players.length && !filtered.length) return `<p class="muted">Nessun giocatore in rosa con i filtri ruolo selezionati.</p>`;
+  return renderRosterPlayerTableBeforeV441(filtered);
+};
+
+const renderTeamsTableBeforeV441 = renderTeamsTable;
+renderTeamsTable = function renderTeamsTableV441() {
+  ensureRosterRoleFilterControlsV441();
+  const result = renderTeamsTableBeforeV441?.();
+  ensureRosterRoleFilterControlsV441();
+  return result;
+};
+
+function readTeamAreaRoleFilterStateV441() {
+  state.teamAreaStandardRoleFiltersV441 = getCheckedRolesFromDomV441("[data-teamarea-standard-role-filter-v441]", STANDARD_ROLE_ORDER_V441);
+  state.teamAreaMantraRoleFiltersV441 = getCheckedRolesFromDomV441("[data-teamarea-mantra-role-filter-v441]", MANTRA_ROLE_ORDER_V441);
+}
+
+function playerMatchesTeamAreaFiltersV441(player = {}) {
+  const standardRoles = state.teamAreaStandardRoleFiltersV441 instanceof Set ? state.teamAreaStandardRoleFiltersV441 : new Set(STANDARD_ROLE_ORDER_V441);
+  const mantraRoles = state.teamAreaMantraRoleFiltersV441 instanceof Set ? state.teamAreaMantraRoleFiltersV441 : new Set(MANTRA_ROLE_ORDER_V441);
+  return playerMatchesStandardRolesV441(player, standardRoles) && playerMatchesMantraRolesV441(player, mantraRoles);
+}
+
+function ensureTeamAreaRoleFilterControlsV441() {
+  if (!document.getElementById("teamAreaBody") || document.getElementById("teamAreaRoleFiltersV441")) return;
+  const tradePanel = document.querySelector(".trade-proposal-panel");
+  const releasePanel = document.getElementById("teamPlayerReleasePanelV261");
+  const anchor = tradePanel?.querySelector(".panel-header") || releasePanel?.querySelector(".panel-header") || document.querySelector(".team-area-summary-panel");
+  if (!anchor) return;
+  readTeamAreaRoleFilterStateV441();
+  anchor.insertAdjacentHTML("afterend", renderRoleFilterBlockV441({
+    id: "teamAreaRoleFiltersV441",
+    label: "Filtra giocatori per ruolo",
+    description: "Filtra liste trattativa e svincolo.",
+    standardSelector: "data-teamarea-standard-role-filter-v441",
+    mantraSelector: "data-teamarea-mantra-role-filter-v441",
+    standardState: state.teamAreaStandardRoleFiltersV441,
+    mantraState: state.teamAreaMantraRoleFiltersV441
+  }));
+}
+
+function renderTeamAreaPlayerOptionsV441(seasonTeamId, selectedKeys = []) {
+  const selected = new Set(selectedKeys || []);
+  const roster = getRosterForSeasonTeam?.(getSeasonTeamById?.(seasonTeamId));
+  const players = typeof sortRosterPlayersForDisplay === "function" ? sortRosterPlayersForDisplay(roster?.players || []) : (roster?.players || []);
+  const filtered = players.filter(playerMatchesTeamAreaFiltersV441);
+  if (!filtered.length) return `<option value="" disabled>Nessun giocatore con i filtri selezionati</option>`;
+  return filtered.map((player) => {
+    const key = typeof getPlayerMarketKeyV119 === "function" ? getPlayerMarketKeyV119(player) : [normalizePlayerName?.(player?.playerName || player?.name || "") || "", normalizeKey?.(player?.realTeam || "") || ""].filter(Boolean).join("__");
+    const mantra = getPlayerMantraRolesV441(player).join("/");
+    const role = getPlayerStandardRoleV441(player);
+    const rolePart = [role, mantra].filter(Boolean).join(" ");
+    return `<option value="${escapeHtml(key)}" ${selected.has(key) ? "selected" : ""}>${escapeHtml(player.playerName || "-")} · ${escapeHtml(player.realTeam || "-")}${rolePart ? ` · ${escapeHtml(rolePart)}` : ""}</option>`;
+  }).join("");
+}
+
+function renderTeamAreaReleaseOptionsV441(selectedKeys = []) {
+  if (typeof getPlayerReleaseRosterPlayersV261 !== "function") return "";
+  const selected = new Set(selectedKeys || []);
+  const players = getPlayerReleaseRosterPlayersV261().filter(playerMatchesTeamAreaFiltersV441);
+  if (!players.length) return `<option value="" disabled>Nessun giocatore con i filtri selezionati</option>`;
+  return players.map((player) => {
+    const quotation = typeof getPlayerReleaseQuotationFromListoniV261 === "function" ? getPlayerReleaseQuotationFromListoniV261(player).quotation : "";
+    const key = typeof getPlayerReleaseKeyV261 === "function" ? getPlayerReleaseKeyV261(player) : (typeof getPlayerMarketKeyV119 === "function" ? getPlayerMarketKeyV119(player) : "");
+    const labelParts = [
+      player.playerName || player.name || "Giocatore",
+      player.realTeam || "-",
+      `Qt.A ${typeof formatPlayerReleaseQuotationV261 === "function" ? formatPlayerReleaseQuotationV261(quotation) : String(quotation || "n.d.")}`
+    ];
+    return `<option value="${escapeHtml(key)}" ${selected.has(key) ? "selected" : ""}>${escapeHtml(labelParts.join(" · "))}</option>`;
+  }).join("");
+}
+
+function refreshTeamAreaRoleFilteredSelectsV441() {
+  if (!document.getElementById("teamAreaBody")) return;
+  readTeamAreaRoleFilterStateV441();
+  const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+  const offered = document.getElementById("tradeOfferedPlayers");
+  if (offered && approved?.seasonTeamId) {
+    const selected = Array.from(offered.selectedOptions || []).map((option) => option.value).filter(Boolean);
+    offered.innerHTML = renderTeamAreaPlayerOptionsV441(approved.seasonTeamId, selected);
+  }
+  const requested = document.getElementById("tradeRequestedPlayers");
+  const targetTeamId = document.getElementById("tradeTargetTeam")?.value || "";
+  if (requested && targetTeamId) {
+    const selected = Array.from(requested.selectedOptions || []).map((option) => option.value).filter(Boolean);
+    requested.innerHTML = renderTeamAreaPlayerOptionsV441(targetTeamId, selected);
+  }
+  const release = document.getElementById("teamPlayerReleaseSelectV261");
+  if (release) {
+    const selected = Array.from(release.selectedOptions || []).map((option) => option.value).filter(Boolean);
+    release.innerHTML = renderTeamAreaReleaseOptionsV441(selected);
+    try { updatePlayerReleasePreviewV261?.(); } catch (_) {}
+  }
+  try { validateTradeFormV119?.(); } catch (_) {}
+}
+
+function enhanceTeamAreaRoleFiltersV441() {
+  ensureTeamAreaRoleFilterControlsV441();
+  refreshTeamAreaRoleFilteredSelectsV441();
+}
+
+const renderUserAreaBeforeV441 = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV441() {
+  const result = renderUserAreaBeforeV441?.();
+  enhanceTeamAreaRoleFiltersV441();
+  return result;
+};
+
+const renderAllBeforeV441 = renderAll;
+renderAll = function renderAllV441() {
+  const result = renderAllBeforeV441?.();
+  ensureListoneMantraRoleControlsV441();
+  ensureRosterRoleFilterControlsV441();
+  enhanceTeamAreaRoleFiltersV441();
+  return result;
+};
+
+document.addEventListener("change", (event) => {
+  const target = event.target;
+  if (target?.matches?.("[data-listone-mantra-role-filter-v441]")) {
+    renderListonePublic?.();
+    return;
+  }
+  if (target?.matches?.("[data-roster-standard-role-filter-v441], [data-roster-mantra-role-filter-v441]")) {
+    readRosterRoleFilterStateV441();
+    renderTeamsTable?.();
+    return;
+  }
+  if (target?.matches?.("[data-teamarea-standard-role-filter-v441], [data-teamarea-mantra-role-filter-v441]")) {
+    refreshTeamAreaRoleFilteredSelectsV441();
+    return;
+  }
+  if (target?.id === "tradeTargetTeam") {
+    window.setTimeout(refreshTeamAreaRoleFilteredSelectsV441, 0);
+  }
+}, true);
+
+document.addEventListener("DOMContentLoaded", () => {
+  ensureListoneMantraRoleControlsV441();
+  ensureRosterRoleFilterControlsV441();
+  enhanceTeamAreaRoleFiltersV441();
+});
+
+window.ZonaOrientaleMantraRoleFiltersV441 = Object.freeze({
+  version: "V441",
+  scope: "listone-rosters-teamarea-mantra-filters",
+  mantraOrder: MANTRA_ROLE_ORDER_V441.slice(),
+  standardOrder: STANDARD_ROLE_ORDER_V441.slice(),
+  preserves: [
+    "Firebase e snapshot invariati",
+    "Listone, Rose e Area Squadra filtrano solo a livello UI",
+    "Bilanci V440 e badge dispositivo V434 mantenuti",
+    "nessuna modifica a Admin Rose e Movimenti FM"
+  ]
+});
+
+
 /* V209 - Final startup remains centralized here. */
 startZonaOrientaleAppV173();
 
@@ -24332,8 +24672,8 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=440";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=440";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=442";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=442";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -24836,7 +25176,7 @@ async function getCalciomercatoTimelineArticlePoolV335() {
     const days = Array.isArray(manifest?.availableDays) ? manifest.availableDays.map(String).filter(Boolean).sort() : [];
     const limitedDays = days.slice(-370);
     const settled = await Promise.allSettled(limitedDays.map(async (day) => {
-      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=440&_=${Date.now()}`);
+      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=442&_=${Date.now()}`);
       return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day") };
     }));
     settled.forEach((result) => {
@@ -25919,7 +26259,7 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=440`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=442`;
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -26074,7 +26414,7 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=440&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=442&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -26330,7 +26670,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=440&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=442&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -26565,7 +26905,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=440&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=442&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -34827,3 +35167,27 @@ window.ZonaOrientaleBilanciWhatsappLinkV440 = Object.freeze({
     "nessuna modifica a Firebase/Admin/snapshot generator"
   ]
 });
+
+/* V441 - Finalizzazione post-wrapper filtri Mantra.
+ * Alcuni moduli storici continuano a decorare renderUserArea/renderAll dopo lo startup:
+ * questo wrapper finale mantiene i filtri disponibili anche dopo le patch Area Squadra V431-V433.
+ */
+const renderUserAreaBeforeV441Final = renderUserAreaV34;
+renderUserAreaV34 = function renderUserAreaV441Final() {
+  const result = renderUserAreaBeforeV441Final?.();
+  try { enhanceTeamAreaRoleFiltersV441(); } catch (error) { console.warn("Filtri Mantra Area Squadra V441 non applicati", error); }
+  return result;
+};
+
+const renderAllBeforeV441Final = renderAll;
+renderAll = function renderAllV441Final() {
+  const result = renderAllBeforeV441Final?.();
+  try {
+    ensureListoneMantraRoleControlsV441();
+    ensureRosterRoleFilterControlsV441();
+    enhanceTeamAreaRoleFiltersV441();
+  } catch (error) {
+    console.warn("Filtri Mantra V441 non aggiornati", error);
+  }
+  return result;
+};

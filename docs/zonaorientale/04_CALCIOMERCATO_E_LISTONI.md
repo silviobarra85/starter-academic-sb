@@ -3975,3 +3975,6 @@ Su mobile le card del Calciomercato non mostrano piu le immagini di anteprima pe
 
 La patch V430 non cambia Calciomercato, Listone, colori ruolo o tabelle giocatori. Restano valide le ottimizzazioni mobile precedenti.
 
+## V441 - Listone e ruoli Mantra
+
+Il Listone espone ora un filtro dedicato ai ruoli Mantra nell ordine Por, Dc, Dd, Ds, B, E, M, C, W, T, A, Pc. Il filtro si somma ai ruoli standard P/D/C/A e non modifica i JSON dei listoni.

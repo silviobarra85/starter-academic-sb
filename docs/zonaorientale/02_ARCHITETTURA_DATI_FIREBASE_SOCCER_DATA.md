@@ -3157,3 +3157,6 @@ ZonaOrientaleSoccerDataV371.runSmokeTest()
 
 Nessun impatto su Firebase, auth, schema dati, Netlify Functions o sorgenti dati. La modifica e solo CSS/guardrail runtime per la view Admin mobile.
 
+## Nota V441 - Ruoli Mantra
+
+I filtri Mantra usano i campi gia presenti nei listoni/snapshot, in particolare `mantraRoles` e alias equivalenti, con fallback al giocatore del listone quando la rosa contiene solo ruolo standard. Non vengono introdotti nuovi dataset o nuove collection Firebase.

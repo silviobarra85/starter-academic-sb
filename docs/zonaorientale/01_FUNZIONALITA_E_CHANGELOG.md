@@ -7294,3 +7294,16 @@ La V395 lavora solo sulla sezione Soccer Data. Mantiene la sezione pubblica in s
 - Spostato il controllo Apri/Riduci dei pannelli Admin mobile sopra il titolo e allineato a sinistra.
 - Preservate le funzioni Admin esistenti: permessi, Firebase, workflow di pubblicazione, caricamenti, dati e routing non cambiano.
 
+## V441 - Filtri ruoli Mantra
+
+- Listone: aggiunto fieldset Ruoli Mantra accanto ai filtri standard P/D/C/A.
+- Rose: aggiunto filtro standard + Mantra applicato alle rose aperte.
+- Area Squadra presidenti: aggiunto filtro standard + Mantra per liste trattativa e svincolo.
+- Nessuna modifica a dati, snapshot, Firebase, Admin Rose e Movimenti FM.
+
+## V442 - Titoli card sopra filtri
+
+- Aggiunto `assets/css/refactor/panel-title-stack-v442.css`.
+- I pannelli con `.filters-row`, controlli colonne o filtri ruolo Mantra mettono titolo/descrizione su una riga dedicata sopra i controlli.
+- Corretto il caso Listone in cui titolo e descrizione venivano schiacciati a sinistra dai gruppi Stato/Ruoli/Ruoli Mantra/Campi visibili.
+- La modifica e solo CSS: non altera filtri, query, dati, Firebase, snapshot o flussi Admin.

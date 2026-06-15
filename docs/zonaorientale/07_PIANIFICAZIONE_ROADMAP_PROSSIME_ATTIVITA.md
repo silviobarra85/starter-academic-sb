@@ -1203,3 +1203,10 @@ Proseguire con refactor e pulizia a basso rischio:
 
 Verificare manualmente da mobile tutti i pannelli Admin con titoli lunghi. Se la correzione e confermata, riprendere solo micro-fix mirati o preparare checklist finale pre-merge.
 
+## Dopo V441
+
+Verificare su mobile che i gruppi checkbox Mantra restino usabili nei pannelli Listone, Rose e Area Squadra. Eventuali raffinamenti successivi devono restare CSS-only salvo bug funzionali.
+
+## Dopo V442
+
+Verificare da desktop stretto e mobile le sezioni con molti controlli: Listone, Rose, Fantamercato, Movimenti e Bilanci. Eventuali ulteriori interventi devono restare preferibilmente CSS-only e preservare i filtri Mantra V441.
