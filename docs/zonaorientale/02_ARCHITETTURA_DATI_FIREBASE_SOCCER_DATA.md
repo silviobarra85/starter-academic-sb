@@ -1,3 +1,11 @@
+## Nota architetturale V447 - Clone sandbox e Firebase separato
+
+- `static/fantapetillomantramanager/` nasce come clone sandbox del motore, non come seconda lega in produzione.
+- Nel clone `assets/firebase.js` e' uno stub senza import Firebase reali: le letture ritornano vuote e le scritture lanciano errore esplicito.
+- Prima della produzione bisogna creare o configurare un Firebase dedicato alla nuova lega, aggiornare `assets/firebase.js` e decidere le regole di sicurezza.
+- I dati statici placeholder vanno sostituiti con config pubblica, snapshot, listoni, rose, competizioni, loghi e feed calciomercato reali della nuova lega.
+- ZonaOrientale mantiene il proprio Firebase e i propri dati senza variazioni funzionali.
+
 ## Nota architetturale V446 - Percorsi dati statici parametrizzati
 
 - V446 aggiunge `dataPaths` in `static/zonaorientale/assets/league-config.json` per config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato.

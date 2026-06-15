@@ -1,0 +1,31 @@
+{
+  "id": "2025-2026",
+  "seasonId": "2025-2026",
+  "generatedAt": "2026-06-15T00:00:00.000Z",
+  "teams": [],
+  "presidents": [],
+  "seasonTeams": [],
+  "stadiums": [],
+  "competitions": [],
+  "competitionMatches": [],
+  "competitionResults": [],
+  "rosterEntries": [],
+  "fmMovements": [],
+  "metrics": {
+    "teams": 0,
+    "competitions": 0,
+    "matches": 0
+  },
+  "news": [
+    {
+      "id": "sandbox-v447",
+      "seasonId": "2025-2026",
+      "title": "Sandbox FantaPetilloMantraManager",
+      "topic": "Sistema",
+      "body": "Clone provvisorio creato per testare il template multi-lega. Firebase e dati reali saranno configurati in una fase successiva.",
+      "published": true,
+      "createdAt": "2026-06-15T00:00:00.000Z"
+    }
+  ],
+  "snapshotVersion": 447
+}

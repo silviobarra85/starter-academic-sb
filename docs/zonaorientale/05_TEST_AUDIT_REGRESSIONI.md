@@ -1,3 +1,15 @@
+## Test e audit V447 - Clone sandbox FantaPetillo
+
+La V447 aggiunge `tools/audit-fantapetillo-sandbox-v447.mjs` e lo integra in `tools/check-zonaorientale.sh`. L'audit verifica presenza del clone, configurazione dedicata, Firebase disabilitato, cache-buster V447, dati statici placeholder e documentazione clone.
+
+Comandi principali:
+
+```bash
+node tools/audit-fantapetillo-sandbox-v447.mjs
+bash tools/check-zonaorientale.sh
+../fantapetillomantramanager/tools/check-fantapetillomantramanager.sh
+```
+
 ## Test e audit V445 - Presentazione runtime da config
 
 - Aggiunto `tools/audit-runtime-presentation-config-v445.mjs`.

@@ -1,3 +1,12 @@
+## Changelog V447 - Clone sandbox FantaPetilloMantraManager
+
+- Aggiunta cartella `static/fantapetillomantramanager/` come sandbox multi-lega non produttivo.
+- Aggiunta configurazione dedicata della seconda lega provvisoria, con nome `FantaPetilloMantraManager` modificabile in futuro.
+- Nel clone Firebase e' bloccato da stub locale per evitare qualunque uso del progetto ZonaOrientale.
+- Aggiunti dati statici minimi placeholder per permettere il caricamento del motore senza dati reali.
+- Aggiunto audit `tools/audit-fantapetillo-sandbox-v447.mjs` nel gate ZonaOrientale.
+- Nessuna modifica a `FUNZIONALITA'.md`.
+
 ## Changelog V445 - Metadata, menu mobile Altro e share link da config
 
 - Estesa `assets/league-config.json` con blocco `branding`: nome sito, sottotitolo home, metadata per home/competition/player/bilanci, immagine pubblica e voci del menu mobile Altro.

@@ -2697,6 +2697,24 @@ else
   fail "node non disponibile per audit percorsi dati statici da config V446"
 fi
 
+
+
+print_step "Audit clone sandbox FantaPetillo V447"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_sandbox_v447="$SITE_ROOT/tools/audit-fantapetillo-sandbox-v447.mjs"
+  if [[ -f "$audit_fantapetillo_sandbox_v447" ]]; then
+    if node "$audit_fantapetillo_sandbox_v447" --quiet; then
+      pass "audit clone sandbox FantaPetillo V447 superato"
+    else
+      fail "audit clone sandbox FantaPetillo V447 fallito"
+    fi
+  else
+    fail "tool audit clone sandbox FantaPetillo V447 mancante"
+  fi
+else
+  fail "node non disponibile per audit clone sandbox FantaPetillo V447"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

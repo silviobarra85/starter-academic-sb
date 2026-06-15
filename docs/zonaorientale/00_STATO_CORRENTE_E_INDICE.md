@@ -1,3 +1,11 @@
+## Aggiornamento V447 - Clone sandbox FantaPetilloMantraManager (15/06/2026)
+
+- Creato il clone sandbox `static/fantapetillomantramanager/` a partire dal motore ZonaOrientale gia' parametrizzato.
+- Il clone usa `assets/league-config.json` con `leagueId`, `slug`, `basePath`, `siteUrl`, branding e metadata dedicati a `FantaPetilloMantraManager`.
+- Firebase e' disabilitato nel clone tramite stub `assets/firebase.js`: nessuna lettura o scrittura puo' finire nel progetto Firebase ZonaOrientale.
+- I dati del clone sono placeholder statici minimi: config pubblica, snapshot stagione 2025-2026, honor snapshot, manifest listoni/rose/competizioni/calciomercato vuoti.
+- ZonaOrientale resta funzionante e avanza a V447 senza toccare Admin, snapshot generator, Area Squadra, Bilanci mobile V438 o badge dispositivo V434.
+
 ## Aggiornamento V445 - Metadata, menu e share da config (15/06/2026)
 
 - Runtime avanzato a V445 con footer e cache-buster coerenti.

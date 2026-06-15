@@ -1,0 +1,131 @@
+{
+  "leagueId": "fantapetillomantramanager",
+  "slug": "fantapetillomantramanager",
+  "name": "FantaPetilloMantraManager",
+  "shortName": "FantaPetillo",
+  "basePath": "/fantapetillomantramanager/",
+  "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
+  "currentVersion": "447",
+  "currentSeasonId": "2025-2026",
+  "assetsBasePath": "./assets/",
+  "snapshotBasePath": "./assets/snapshots/",
+  "logosBasePath": "./assets/logos/",
+  "futureLeagueCandidate": {
+    "provisionalName": "FantaPetilloMantraManager",
+    "nameCanChange": true,
+    "status": "sandbox-created-v447"
+  },
+  "whatsapp": {
+    "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
+    "newsShareBase": "https://silviobarra.com/fantapetillomantramanager/share/news/"
+  },
+  "features": {
+    "admin": false,
+    "teamArea": false,
+    "bilanci": true,
+    "calciomercato": false,
+    "fantamercato": false,
+    "mantraFilters": true
+  },
+  "guardrails": {
+    "sandboxClone": true,
+    "firebaseDisabled": true,
+    "requiresDedicatedFirebaseBeforeProduction": true,
+    "doNotUseZonaOrientaleFirebase": true,
+    "preserveMobileUx": true,
+    "preserveDeviceBadgeV434": true,
+    "staticDataPathsFromConfig": true
+  },
+  "branding": {
+    "siteName": "FantaPetilloMantraManager",
+    "homeEyebrow": "Lega Fantacalcio sandbox",
+    "homeTitle": "FantaPetilloMantraManager",
+    "homeSubtitle": "Clone sandbox del motore multi-lega. Dati e Firebase da configurare prima della produzione.",
+    "imageUrl": "https://silviobarra.com/fantapetillomantramanager/assets/icons/android-chrome-512x512.png",
+    "pages": {
+      "home": {
+        "title": "FantaPetilloMantraManager",
+        "description": "Sandbox multi-lega del gestionale fantacalcio: motore clonato, dati minimi e Firebase disabilitato.",
+        "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/",
+        "ogType": "website"
+      },
+      "competition": {
+        "title": "Competizione - FantaPetilloMantraManager",
+        "description": "Pagina competizione sandbox per FantaPetilloMantraManager.",
+        "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/competition.html",
+        "ogType": "website"
+      },
+      "player": {
+        "title": "Scheda giocatore - FantaPetilloMantraManager",
+        "description": "Scheda giocatore sandbox per FantaPetilloMantraManager.",
+        "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/player.html",
+        "ogType": "website"
+      },
+      "bilanci": {
+        "title": "Bilanci FM - FantaPetilloMantraManager",
+        "description": "Bilanci FM sandbox per FantaPetilloMantraManager.",
+        "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
+        "ogType": "website"
+      }
+    },
+    "mobileMore": [
+      {
+        "id": "news",
+        "href": "#news",
+        "label": "News",
+        "icon": "news"
+      },
+      {
+        "id": "clubs",
+        "href": "#clubs",
+        "label": "Rose sandbox",
+        "icon": "teams"
+      },
+      {
+        "id": "bilanci",
+        "href": "#bilanci",
+        "label": "Bilanci sandbox",
+        "icon": "fm"
+      },
+      {
+        "id": "listone",
+        "href": "#listone",
+        "label": "Listone",
+        "icon": "list"
+      },
+      {
+        "id": "regolamento",
+        "href": "#regolamento",
+        "label": "Regolamento",
+        "icon": "rules"
+      }
+    ]
+  },
+  "dataPaths": {
+    "publicConfig": "./assets/public/config.json",
+    "seasonSnapshotsManifest": "./assets/snapshots/seasons/manifest.json",
+    "seasonSnapshotsBase": "./assets/snapshots/seasons/",
+    "honorSnapshot": "./assets/snapshots/honor.json",
+    "listoniManifest": "./assets/listoni/manifest.json",
+    "listoniBase": "./assets/listoni/",
+    "rostersManifest": "./assets/rose/manifest.json",
+    "rostersBase": "./assets/rose/",
+    "competitionsManifest": "./assets/competitions/manifest.json",
+    "competitionsBase": "./assets/competitions/",
+    "logosBase": "./assets/logos/",
+    "calciomercatoLinks": "./assets/calciomercato/links.json",
+    "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
+    "calciomercatoArchiveBase": "./assets/calciomercato/archive/"
+  },
+  "sandbox": {
+    "enabled": true,
+    "createdInVersion": "447",
+    "status": "static-sandbox-no-firebase",
+    "firebase": "disabled",
+    "notes": [
+      "Clone provvisorio per verificare template multi-lega.",
+      "Firebase disabilitato per evitare qualunque scrittura nel progetto ZonaOrientale.",
+      "Dati statici minimi placeholder: da sostituire prima della produzione."
+    ]
+  }
+}

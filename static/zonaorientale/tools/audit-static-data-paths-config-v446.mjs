@@ -52,7 +52,7 @@ const requiredPaths = [
   'calciomercatoArchiveBase'
 ];
 
-check('config V446 presente', config.currentVersion === '446');
+check('config V446 presente', Number(config.currentVersion) >= 446);
 check('dataPaths completi in league-config', requiredPaths.every((key) => typeof config.dataPaths?.[key] === 'string' && config.dataPaths[key].length));
 check('guardrail staticDataPathsFromConfig attivo', config.guardrails?.staticDataPathsFromConfig === true);
 check('loader espone helper path statici V446', loader.includes('DEFAULT_DATA_PATHS_V446') && loader.includes('getLeagueDataPathV446') && loader.includes('joinLeagueDataPathV446') && loader.includes('getLeagueLogoPathV446'));

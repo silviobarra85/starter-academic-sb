@@ -1,3 +1,11 @@
+## Roadmap aggiornata dopo V447
+
+- V447 ha creato il clone sandbox `FantaPetilloMantraManager`, con Firebase disabilitato e dati placeholder.
+- Prossimo passo consigliato V448: audit runtime/manuale del clone su home, menu mobile, Listone vuoto, Rose vuote, Bilanci vuoti e pagine standalone.
+- Passo successivo V449: decidere Firebase dedicato, creare configurazione credenziali separata e definire security rules della nuova lega.
+- Poi V450: sostituire i placeholder con dati reali o import iniziale della nuova lega.
+- Solo dopo questi passaggi il clone puo' diventare una seconda lega pubblica.
+
 ## Roadmap aggiornata dopo V446
 
 - La parametrizzazione dei percorsi dati statici e' stata introdotta in modo additivo con `dataPaths` in `assets/league-config.json`.
