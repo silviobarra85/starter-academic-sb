@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-08",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-10T03:51:23.217Z",
+  "generatedAt": "2026-06-11T16:29:08.818Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -384,17 +384,17 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-05-14T09:21:00.000Z",
-    "latest": "2026-06-09T23:46:26.000Z",
-    "totalBeforeDateRange": 893,
-    "totalFetched": 893,
-    "totalAfterQueryBeforeDateRange": 893
+    "earliest": "2026-05-17T17:19:00.000Z",
+    "latest": "2026-06-11T18:11:06.000Z",
+    "totalBeforeDateRange": 887,
+    "totalFetched": 887,
+    "totalAfterQueryBeforeDateRange": 887
   },
   "stats": {
     "existingArticles": 251,
-    "fetchedArticles": 122,
-    "totalArticles": 251,
-    "duplicatesSkipped": 122
+    "fetchedArticles": 57,
+    "totalArticles": 252,
+    "duplicatesSkipped": 56
   },
   "articles": [
     {
@@ -836,6 +836,43 @@
         "Mercato"
       ],
       "canonicalKey": "url:calciomercato.it/2026/06/08/pio-esposito-finisce-nel-mirino-della-premier-league-preoccupazione-inter"
+    },
+    {
+      "id": "tmw-frosinone-8-aHR0cHM6Ly93",
+      "title": "Rebic nuovamente in Italia? Dalla Croazia: sul giocatore c'è il Frosinone",
+      "url": "https://www.tuttomercatoweb.com/serie-a/rebic-nuovamente-italia-croazia-giocatore-c-e-frosinone-2242416",
+      "sourceId": "tmw-frosinone",
+      "sourceName": "TMW Frosinone",
+      "sourceUrl": "https://www.tuttomercatoweb.com/frosinone/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/ed/ed8f9ecb0bdeb32f1eaed3d1cd7609ae-33066-oooz0000.jpeg",
+      "publishedAt": "2026-06-08T23:38:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Frosinone"
+      ],
+      "detectedTeams": [
+        "Frosinone"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Frosinone"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/rebic-nuovamente-italia-croazia-giocatore-c-e-frosinone-2242416"
     },
     {
       "id": "sosfanta-6-aHR0cHM6Ly93",

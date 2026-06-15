@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-05",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-10T03:51:21.676Z",
+  "generatedAt": "2026-06-12T04:51:17.377Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -384,17 +384,17 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-05-14T09:21:00.000Z",
-    "latest": "2026-06-09T23:46:26.000Z",
-    "totalBeforeDateRange": 893,
-    "totalFetched": 893,
-    "totalAfterQueryBeforeDateRange": 893
+    "earliest": "2026-05-17T17:19:00.000Z",
+    "latest": "2026-06-12T06:51:02.000Z",
+    "totalBeforeDateRange": 896,
+    "totalFetched": 896,
+    "totalAfterQueryBeforeDateRange": 896
   },
   "stats": {
-    "existingArticles": 25,
-    "fetchedArticles": 79,
-    "totalArticles": 103,
-    "duplicatesSkipped": 1
+    "existingArticles": 103,
+    "fetchedArticles": 55,
+    "totalArticles": 104,
+    "duplicatesSkipped": 54
   },
   "articles": [
     {
@@ -3207,6 +3207,43 @@
         "Squadra"
       ],
       "canonicalKey": "url:tuttomercatoweb.com/serie-a/frosinone-la-serie-a-nel-segno-del-modello-stirpe-tra-il-rebus-prestiti-e-l-attesa-del-calendario-2241244"
+    },
+    {
+      "id": "tmw-frosinone-22-aHR0cHM6Ly93",
+      "title": "Frosinone, la Serie A nel segno del modello Stirpe: tra il rebus prestiti e l'attesa del calendario",
+      "url": "https://www.tuttomercatoweb.com/serie-a/frosinone-serie-segno-modello-stirpe-rebus-prestiti-l-attesa-calendario-2241244",
+      "sourceId": "tmw-frosinone",
+      "sourceName": "TMW Frosinone",
+      "sourceUrl": "https://www.tuttomercatoweb.com/frosinone/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/ed/ed8f9ecb0bdeb32f1eaed3d1cd7609ae-33066-oooz0000.jpeg",
+      "publishedAt": "2026-06-05T08:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Frosinone"
+      ],
+      "detectedTeams": [
+        "Frosinone"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Frosinone"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/frosinone-serie-segno-modello-stirpe-rebus-prestiti-l-attesa-calendario-2241244"
     },
     {
       "id": "tmw-sassuolo-30-aHR0cHM6Ly93",
