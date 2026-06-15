@@ -138,7 +138,7 @@ if (document.readyState === 'loading') {
 }
 
 window.FantaPetilloAdminOnboardingGuardV451 = Object.freeze({
-  version: 'V451',
+  version: 'V452',
   cloneSlug: 'fantapetillomantramanager',
   writesToFirebase: false,
   unlocksTeamArea: false,

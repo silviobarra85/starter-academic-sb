@@ -18,21 +18,21 @@ function json(file) { return JSON.parse(read(file)); }
 
 try {
   const zonaConfig = json(path.join(siteRoot, 'assets', 'league-config.json'));
-  check(zonaConfig.currentVersion === '451', 'ZonaOrientale currentVersion V451');
+  check(Number(zonaConfig.currentVersion) >= 451, 'ZonaOrientale currentVersion V451+');
   check(zonaConfig.guardrails?.cloneAdminOnboardingReady === true, 'ZonaOrientale traccia onboarding clone V451');
   const zonaFirebase = read(path.join(siteRoot, 'assets', 'firebase.js'));
   check(zonaFirebase.includes('zonaorientale-d07af'), 'Firebase ZonaOrientale invariato');
   check(!zonaFirebase.includes('fantapetillomantramanager.firebaseapp.com'), 'Firebase FantaPetillo non importato in ZonaOrientale');
 
   const cloneConfig = json(path.join(cloneRoot, 'assets', 'league-config.json'));
-  check(cloneConfig.currentVersion === '451', 'clone currentVersion V451');
+  check(Number(cloneConfig.currentVersion) >= 451, 'clone currentVersion V451+');
   check(cloneConfig.features?.admin === true, 'Admin clone ancora abilitato');
   check(cloneConfig.features?.teamArea === false, 'Team Area clone ancora protetta');
   check(cloneConfig.guardrails?.adminOnboardingEnabled === true, 'guardrail onboarding presente nel clone');
 
   const index = read(path.join(cloneRoot, 'index.html'));
-  check(index.includes('fanta-petillo-admin-onboarding-v451.js?v=451'), 'clone carica onboarding V451');
-  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=451'), 'clone mantiene guard V450 con cache V451');
+  check(index.includes('fanta-petillo-admin-onboarding-v451.js?v=452'), 'clone carica onboarding V451');
+  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'clone mantiene guard V450 con cache V451+');
 
   const onboarding = read(path.join(cloneRoot, 'assets', 'js', 'core', 'fanta-petillo-admin-onboarding-v451.js'));
   check(onboarding.includes('writesToFirebase: false') && onboarding.includes('unlocksTeamArea: false'), 'onboarding e solo guida read-only');

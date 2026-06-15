@@ -28,7 +28,7 @@ const index = read('index.html');
 const css = read('assets/css/refactor/admin-fm-movement-edit-v436.css');
 const checkScript = read('tools/check-zonaorientale.sh');
 
-check('runtime V436 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451)"/.test(app));
+check('runtime V436 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451|452)"/.test(app));
 check('marker runtime edit movimenti V436 presente', app.includes('ZonaOrientaleAdminFmMovementEditRuntimeV436'));
 check('helper start edit presente', app.includes('function startEditFmMovementV436'));
 check('helper cancel edit presente', app.includes('function cancelEditFmMovementV436'));
@@ -39,12 +39,12 @@ check('creazione movimento mantiene addDoc e side effect rosa', app.includes('ad
 check('cambio stagione annulla edit pendente', app.includes('state.editingAdminFmMovementIdV436 = "";') && app.includes('state.selectedAdminMovementSeasonTeamId = "";'));
 check('cambio rosa sorgente in editing non forza re-render', app.includes('if (state.editingAdminFmMovementIdV436) return;'));
 check('avviso operativo modifica rosa presente', app.includes('admin-editing-notice-v436') && app.includes('Verifica la rosa'));
-check('CSS edit movimenti collegato in index', /assets\/css\/refactor\/admin-fm-movement-edit-v436\.css\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451)/.test(index));
+check('CSS edit movimenti collegato in index', /assets\/css\/refactor\/admin-fm-movement-edit-v436\.css\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451|452)/.test(index));
 check('CSS edit movimenti esiste', exists('assets/css/refactor/admin-fm-movement-edit-v436.css'));
 check('CSS mobile actions presente', css.includes('@media') && css.includes('admin-list-actions-v436'));
 check('check principale integra audit V436', checkScript.includes('audit-admin-fm-movement-edit-v436.mjs'));
-check('badge V434 resta collegato', /assets\/device-badge-v434\.css\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451)/.test(index) && /assets\/device-badge-v434\.js\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451)/.test(index));
-check('bilanci da snapshot resta collegato', /assets\/js\/sections\/bilanci-snapshot-section-v435\.js\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451)/.test(index));
+check('badge V434 resta collegato', /assets\/device-badge-v434\.css\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451|452)/.test(index) && /assets\/device-badge-v434\.js\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451|452)/.test(index));
+check('bilanci da snapshot resta collegato', /assets\/js\/sections\/bilanci-snapshot-section-v435\.js\?v=(436|437|438|439|440|441|442|443|444|445|446|447|448|449|450|451|452)/.test(index));
 
 if (ok !== total) {
   console.error(`Audit edit movimenti FM V436 completato: ${ok}/${total} controlli superati.`);

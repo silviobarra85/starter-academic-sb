@@ -2156,3 +2156,7 @@ La preparazione multi-lega ora include `dataPaths` in `static/zonaorientale/asse
 - ZonaOrientale resta invariato lato Firebase e funzionalita operative.
 - Area Squadra del clone resta protetta.
 
+
+## V452 - Favicon FantaPetilloMantraManager
+
+Aggiunta favicon dedicata per il clone `FantaPetilloMantraManager`, con sigla `FPMM` e stagione `2026-2027`. La modifica e' circoscritta alle icone del clone e agli audit/documenti collegati; ZonaOrientale mantiene Firebase, Admin, dati e funzionalita' operative invariati.

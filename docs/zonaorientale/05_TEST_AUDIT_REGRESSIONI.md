@@ -5122,3 +5122,7 @@ Aggiunto `audit-fantapetillo-admin-bootstrap-v450.mjs` lato ZonaOrientale e `aud
 
 Aggiunti `audit-admin-onboarding-v451.mjs` nel clone e `audit-fantapetillo-admin-onboarding-v451.mjs` lato ZonaOrientale. Verificano script onboarding, no scritture Firebase, Team Area ancora protetta e cache-buster V451.
 
+
+## V452 - Audit favicon clone FantaPetillo
+
+Aggiunti audit `audit-favicon-v452.mjs` nel clone e `audit-fantapetillo-favicon-v452.mjs` lato ZonaOrientale. Verificano presenza di `favicon.ico`, PNG 16/32/180/192/512, sorgente SVG con `FPMM` e `2026-2027`, cache-buster V452 e assenza di contaminazioni Firebase tra ZonaOrientale e FantaPetillo.

@@ -1272,3 +1272,7 @@ Verificare da desktop stretto e mobile le sezioni con molti controlli: Listone, 
 3. Applicare overlay snapshot alla repo.
 4. Solo dopo dati e `teamUsers`, preparare sblocco controllato Area Squadra.
 
+
+## Dopo V452
+
+Dopo la favicon del clone, il prossimo passo consigliato resta il setup dati reale di FantaPetilloMantraManager: stagione 2026-2027, presidenti, squadre, associazioni stagione-squadra, stadi, budget e primi snapshot pubblici. Area Squadra resta da sbloccare solo dopo `teamUsers` e dati minimi verificati.

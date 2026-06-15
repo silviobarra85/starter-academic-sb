@@ -25,7 +25,7 @@ try {
 
   ['index.html', 'competition.html', 'player.html'].forEach((page) => {
     const text = read(page);
-    check(text.includes('fanta-petillo-sandbox-v448.js?v=448') || text.includes('fanta-petillo-firebase-bootstrap-v449.js?v=451'), `${page} carica guard V448/V449`);
+    check(text.includes('fanta-petillo-sandbox-v448.js?v=448') || text.includes('fanta-petillo-firebase-bootstrap-v449.js?v=452'), `${page} carica guard V448/V449`);
     const versions = [...new Set((text.match(/\?v=\d+/g) || []).map((m) => m.slice(3)))];
     check(versions.length === 1 && Number(versions[0]) >= 448, `${page} cache-buster V${versions[0]}`);
     check(!text.includes('/zonaorientale/') && !text.includes('silviobarra.com/zonaorientale'), `${page} senza URL pubblici ZonaOrientale`);

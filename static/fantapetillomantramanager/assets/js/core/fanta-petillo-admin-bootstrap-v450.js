@@ -83,7 +83,7 @@ if (document.readyState === 'loading') {
 }
 
 window.FantaPetilloAdminBootstrapGuardV450 = Object.freeze({
-  version: 'V451',
+  version: 'V452',
   firebaseDisabled: false,
   realFirebaseConnected: true,
   projectId: 'fantapetillomantramanager',

@@ -2783,6 +2783,22 @@ else
   fail "node non disponibile per audit onboarding Admin FantaPetillo V451"
 fi
 
+print_step "Audit favicon FantaPetillo V452"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_favicon_v452="$SITE_ROOT/tools/audit-fantapetillo-favicon-v452.mjs"
+  if [[ -f "$audit_fantapetillo_favicon_v452" ]]; then
+    if node "$audit_fantapetillo_favicon_v452" --quiet; then
+      pass "audit favicon FantaPetillo V452 superato"
+    else
+      fail "audit favicon FantaPetillo V452 fallito"
+    fi
+  else
+    fail "tool audit favicon FantaPetillo V452 mancante"
+  fi
+else
+  fail "node non disponibile per audit favicon FantaPetillo V452"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

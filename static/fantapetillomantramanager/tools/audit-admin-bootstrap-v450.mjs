@@ -34,8 +34,8 @@ try {
   });
 
   const index = read('index.html');
-  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=451'), 'index carica guard Admin bootstrap V450');
-  check(!index.includes('fanta-petillo-firebase-bootstrap-v449.js?v=451'), 'guard V449 non caricato in index');
+  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'index carica guard Admin bootstrap V450');
+  check(!index.includes('fanta-petillo-firebase-bootstrap-v449.js?v=452'), 'guard V449 non caricato in index');
 
   const guard = read('assets/js/core/fanta-petillo-admin-bootstrap-v450.js');
   check(guard.includes('hidesAdminEntrypoints: false'), 'guard non nasconde Admin');
@@ -58,7 +58,7 @@ try {
   check(!rules.includes('match /{collectionName}/{documentId}'), 'nessuna wildcard write admin generica nelle rules V450');
 
   const app = read('assets/app.js');
-  check(/DEPLOY_EXPECTED_VERSION_V181 = "(450|451)"/.test(app), 'DEPLOY_EXPECTED_VERSION clone V450');
+  check(/DEPLOY_EXPECTED_VERSION_V181 = "(450|451|452)"/.test(app), 'DEPLOY_EXPECTED_VERSION clone V450');
   check(app.includes('FantaPetilloAdminBootstrapV450'), 'marker app Admin bootstrap V450');
 } catch (error) {
   fail(error?.stack || error?.message || String(error));

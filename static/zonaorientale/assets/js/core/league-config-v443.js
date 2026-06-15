@@ -71,7 +71,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '451',
+  currentVersion: '452',
   currentSeasonId: '2025-2026',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -115,7 +115,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=451';
+const CONFIG_URL_V443 = './assets/league-config.json?v=452';
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -182,7 +182,7 @@ let readyPromiseV443 = null;
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
   window.ZonaOrientaleLeagueConfigV443 = Object.freeze({
-    version: 'V451',
+    version: 'V452',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
@@ -372,7 +372,7 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
     applyBrandTextV445();
     applyMobileMoreLinksV445();
     window.ZonaOrientaleLeagueRuntimePresentationV445 = Object.freeze({
-      version: 'V451',
+      version: 'V452',
       pageId,
       appliedAt: new Date().toISOString(),
       metadataFromConfig: true,

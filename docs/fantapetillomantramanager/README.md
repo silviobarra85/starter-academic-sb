@@ -109,3 +109,9 @@ Stato operativo:
 Aggiunta una checklist nell'Admin del clone per guidare il primo inserimento dati: stagione, presidenti, squadre, squadre stagione, stadi e snapshot pubblici.
 
 Il helper V451 e' read-only: non scrive su Firebase e non sblocca Area Squadra presidenti.
+
+## V452 - Favicon e icone stagione 2026-2027
+
+La V452 aggiorna favicon e icone PWA/social del clone con sigla `FPMM` e stagione `2026-2027`. Sono stati aggiornati `favicon.ico`, le PNG in `assets/icons/` e aggiunto il sorgente `fantapetillo-favicon-source.svg`.
+
+La modifica non tocca Firebase, Admin, rules o Area Squadra. L'Admin onboarding V451 resta attivo e Area Squadra resta guardata fino a inserimento dati reali e `teamUsers`.

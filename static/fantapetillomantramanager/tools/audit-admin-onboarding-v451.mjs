@@ -16,7 +16,7 @@ function exists(rel) { return fs.existsSync(path.join(siteRoot, rel)); }
 
 try {
   const config = json('assets/league-config.json');
-  check(config.currentVersion === '451', 'config currentVersion V451');
+  check(Number(config.currentVersion) >= 451, 'config currentVersion V451+');
   check(config.leagueId === 'fantapetillomantramanager', 'identity clone corretta');
   check(config.firebase?.projectId === 'fantapetillomantramanager', 'Firebase dedicato');
   check(config.features?.admin === true, 'Admin attivo');
@@ -25,10 +25,10 @@ try {
   check(config.guardrails?.firestoreRulesVersion === '450', 'rules restano V450');
 
   const index = read('index.html');
-  check(index.includes('fanta-petillo-admin-onboarding-v451.js?v=451'), 'index carica onboarding Admin V451');
-  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=451'), 'index mantiene guard Admin bootstrap');
+  check(index.includes('fanta-petillo-admin-onboarding-v451.js?v=452'), 'index carica onboarding Admin V451');
+  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'index mantiene guard Admin bootstrap');
   const versions = [...new Set((index.match(/\?v=\d+/g) || []).map((m) => m.slice(3)))];
-  check(versions.length === 1 && versions[0] === '451', 'index cache-buster V451');
+  check(versions.length === 1 && Number(versions[0]) >= 451, 'index cache-buster V451+');
 
   const onboarding = read('assets/js/core/fanta-petillo-admin-onboarding-v451.js');
   check(onboarding.includes('writesToFirebase: false'), 'onboarding non scrive su Firebase');
@@ -42,7 +42,7 @@ try {
   check(guard.includes('noindex,nofollow'), 'guard mantiene noindex');
 
   const app = read('assets/app.js');
-  check(app.includes('DEPLOY_EXPECTED_VERSION_V181 = "451"'), 'DEPLOY_EXPECTED_VERSION clone V451');
+  check(/DEPLOY_EXPECTED_VERSION_V181 = "(451|452)"/.test(app), 'DEPLOY_EXPECTED_VERSION clone V451+');
   check(app.includes('FantaPetilloAdminOnboardingV451'), 'marker app onboarding V451');
 
   const css = read('assets/styles.css');

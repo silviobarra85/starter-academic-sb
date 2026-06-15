@@ -5,7 +5,7 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "451",
+  "currentVersion": "452",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -13,7 +13,7 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "admin-onboarding-v451"
+    "status": "favicon-v452"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
@@ -53,7 +53,10 @@
     "adminOnboardingVersion": "451",
     "cloneTeamAreaStillGuarded": true,
     "adminOnboardingEnabled": true,
-    "adminOnboardingScript": "assets/js/core/fanta-petillo-admin-onboarding-v451.js"
+    "adminOnboardingScript": "assets/js/core/fanta-petillo-admin-onboarding-v451.js",
+    "faviconVersion": "452",
+    "faviconIncludesSeason": "2026-2027",
+    "faviconIncludesInitials": "FPMM"
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
@@ -139,23 +142,24 @@
   "sandbox": {
     "enabled": true,
     "createdInVersion": "447",
-    "status": "admin-onboarding-v451",
+    "status": "favicon-v452",
     "firebase": "dedicated-project-admin-bootstrap",
     "notes": [
       "Clone provvisorio per verificare template multi-lega.",
       "Firebase reale dedicato collegato dal progetto fantapetillomantramanager.",
       "Admin bootstrap abilitato in V450 dopo creazione manuale del primo admins/{uid}.",
       "V451 aggiunge una guida Admin per inizializzare dati reali e pubblicare snapshot.",
+      "V452 sostituisce favicon e icone PWA/social con sigla FPMM e stagione 2026-2027.",
       "Area Squadra resta nascosta/guardata finche non vengono inseriti dati reali e teamUsers.",
       "Rules Firestore V450 derivate dalle rules complete ZonaOrientale V393, adattate al progetto Firebase separato.",
       "Firebase ZonaOrientale non viene importato ne usato dal clone.",
       "Dati statici minimi placeholder: da sostituire prima della produzione."
     ],
-    "auditedInVersion": "451",
+    "auditedInVersion": "452",
     "firebaseProjectStatus": "connected-admin-bootstrap-v450"
   },
   "firebase": {
-    "version": "451",
+    "version": "452",
     "mode": "dedicated-project-admin-bootstrap",
     "projectId": "fantapetillomantramanager",
     "authDomain": "fantapetillomantramanager.firebaseapp.com",
@@ -171,7 +175,7 @@
     "adminOnboardingEnabled": true
   },
   "setup": {
-    "version": "451",
+    "version": "452",
     "status": "admin-onboarding",
     "adminChecklist": [
       "Verifica rules Firestore V450 pubblicate",
