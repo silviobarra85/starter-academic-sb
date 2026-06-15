@@ -1,3 +1,17 @@
+## Nota architetturale V446 - Percorsi dati statici parametrizzati
+
+- V446 aggiunge `dataPaths` in `static/zonaorientale/assets/league-config.json` per config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato.
+- I reader pubblici risolvono i path da config con fallback identici ai percorsi ZonaOrientale storici: non cambia il contenuto letto e non nasce ancora una seconda cartella lega.
+- Firebase, Admin, generator snapshot, Area Squadra presidenti, Bilanci mobile V438 e badge dispositivo V434 restano invariati.
+- Il clone `FantaPetilloMantraManager` puo' essere valutato dalla V447 come sandbox, preferibilmente con Firebase separato e dati minimi.
+
+## Nota architetturale V445 - Presentazione parametrica senza refactor dati
+
+- V445 sposta su config solo il layer di presentazione: metadata, titoli runtime, footer, menu mobile Altro e base URL share.
+- I path dati (`assets/public`, `assets/snapshots`, `assets/listoni`, `assets/rose`, `assets/competitions`, `assets/logos`) restano invariati e saranno affrontati in una patch successiva.
+- Firebase resta completamente invariato: nessun cambio a bootstrap, collezioni, utenti, Admin, Area Squadra, movimenti FM o snapshot generator.
+- Il clone `FantaPetilloMantraManager` resta pianificato ma non viene ancora creato: prima bisogna parametrizzare i path dati e decidere Firebase separato.
+
 ## Nota architetturale V444 - Mappa hard-coded prima del refactor multi-lega
 
 - V444 non sposta logiche e non rinomina namespace runtime: e' una patch di inventario.

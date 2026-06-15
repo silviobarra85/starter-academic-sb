@@ -1,3 +1,11 @@
+## Changelog V445 - Metadata, menu mobile Altro e share link da config
+
+- Estesa `assets/league-config.json` con blocco `branding`: nome sito, sottotitolo home, metadata per home/competition/player/bilanci, immagine pubblica e voci del menu mobile Altro.
+- Potenziato il loader additivo `assets/js/core/league-config-v443.js` con helper V445: `applyLeagueRuntimePresentationV445`, `getLeaguePageMetadataV445`, `getLeagueSiteUrlV443` e `getLeagueNewsShareBaseUrlV445`.
+- Aggiunti hook HTML non invasivi (`data-league-page`, `data-league-footer-v445`, `data-league-mobile-more`, `data-league-text-v445`) su home e standalone.
+- I link share dei comunicati e la generazione HTML comunicati possono usare nome/base URL da config mantenendo default ZonaOrientale.
+- Aggiunto audit `tools/audit-runtime-presentation-config-v445.mjs` e gate nel check principale.
+
 ## Changelog V444 - Mappa hard-coded multi-lega
 
 - Aggiunto audit osservativo `tools/audit-hardcoded-league-refs-v444.mjs`.

@@ -80,7 +80,9 @@ export function escapeNewsHtmlAttributeV228(value = "") {
 
 export function buildNewsSharePageHtmlV228(news = {}, options = {}) {
   const baseUrl = normalizeNewsShareBaseUrlV228(options.baseUrl || NEWS_SHARE_DEFAULT_BASE_URL_V228);
-  const title = `${stripNewsMarkdownV228(news.title || "Comunicato") || "Comunicato"} - ZonaOrientale Salerno`;
+  const siteName = options.siteName || "ZonaOrientale Salerno";
+  const shortName = options.shortName || "ZonaOrientale";
+  const title = `${stripNewsMarkdownV228(news.title || "Comunicato") || "Comunicato"} - ${siteName}`;
   const description = buildNewsShareDescriptionV228(news);
   const image = options.imageUrl || NEWS_SHARE_DEFAULT_IMAGE_V228;
   const path = options.path || buildNewsSharePathV228(news);
@@ -97,7 +99,7 @@ export function buildNewsSharePageHtmlV228(news = {}, options = {}) {
   <meta name="description" content="${escapeNewsHtmlAttributeV228(description)}" />
   <link rel="canonical" href="${escapeNewsHtmlAttributeV228(canonicalUrl)}" />
   <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="ZonaOrientale Salerno" />
+  <meta property="og:site_name" content="${escapeNewsHtmlAttributeV228(siteName)}" />
   <meta property="og:title" content="${escapeNewsHtmlAttributeV228(title)}" />
   <meta property="og:description" content="${escapeNewsHtmlAttributeV228(description)}" />
   <meta property="og:image" content="${escapeNewsHtmlAttributeV228(image)}" />
@@ -114,7 +116,7 @@ export function buildNewsSharePageHtmlV228(news = {}, options = {}) {
   <main>
     <h1>${escapeNewsHtmlAttributeV228(title)}</h1>
     <p>${escapeNewsHtmlAttributeV228(description)}</p>
-    <p><a href="${escapeNewsHtmlAttributeV228(redirectUrl)}">Apri il comunicato su ZonaOrientale</a></p>
+    <p><a href="${escapeNewsHtmlAttributeV228(redirectUrl)}">${escapeNewsHtmlAttributeV228(`Apri il comunicato su ${shortName}`)}</a></p>
   </main>
 </body>
 </html>

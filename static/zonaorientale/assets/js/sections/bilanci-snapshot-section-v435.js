@@ -1,10 +1,18 @@
-import { getLeagueWhatsappBilanciUrlV443, loadLeagueConfigV443 } from '../core/league-config-v443.js?v=444';
+import { getLeagueDataPathV446, getLeagueWhatsappBilanciUrlV443, joinLeagueDataPathV446, loadLeagueConfigV443 } from '../core/league-config-v443.js?v=446';
 
 const BILANCI_SNAPSHOT_V435 = Object.freeze({
   manifestUrl: './assets/snapshots/seasons/manifest.json',
   configUrl: './assets/public/config.json',
   baseUrl: './assets/snapshots/seasons/'
 });
+
+function getBilanciSnapshotPathsV446() {
+  return {
+    manifestUrl: getLeagueDataPathV446('seasonSnapshotsManifest', BILANCI_SNAPSHOT_V435.manifestUrl),
+    configUrl: getLeagueDataPathV446('publicConfig', BILANCI_SNAPSHOT_V435.configUrl),
+    baseUrl: getLeagueDataPathV446('seasonSnapshotsBase', BILANCI_SNAPSHOT_V435.baseUrl)
+  };
+}
 
 const MONTHS_V435 = [
   { id: 7, short: 'Lug', label: 'Luglio' },
@@ -120,9 +128,11 @@ async function fetchJsonV435(url) {
 
 async function ensureBootstrapV435() {
   if (stateV435.manifest && stateV435.config) return;
+  await loadLeagueConfigV443().catch(() => null);
+  const pathsV446 = getBilanciSnapshotPathsV446();
   const [manifest, config] = await Promise.all([
-    fetchJsonV435(BILANCI_SNAPSHOT_V435.manifestUrl),
-    fetchJsonV435(BILANCI_SNAPSHOT_V435.configUrl).catch(() => ({}))
+    fetchJsonV435(pathsV446.manifestUrl),
+    fetchJsonV435(pathsV446.configUrl).catch(() => ({}))
   ]);
   stateV435.manifest = manifest || { snapshots: [] };
   stateV435.config = config || {};
@@ -132,7 +142,7 @@ async function loadSeasonSnapshotV435(seasonId) {
   if (stateV435.seasons.has(seasonId)) return stateV435.seasons.get(seasonId);
   const entry = (stateV435.manifest?.snapshots || []).find((item) => item.seasonId === seasonId);
   if (!entry?.file) throw new Error(`Snapshot stagione non trovato per ${seasonId}`);
-  const snapshot = await fetchJsonV435(`${BILANCI_SNAPSHOT_V435.baseUrl}${entry.file}`);
+  const snapshot = await fetchJsonV435(joinLeagueDataPathV446('seasonSnapshotsBase', entry.file, BILANCI_SNAPSHOT_V435.baseUrl));
   stateV435.seasons.set(seasonId, snapshot);
   return snapshot;
 }

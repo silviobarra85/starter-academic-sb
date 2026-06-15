@@ -1,8 +1,14 @@
 import { state } from "../core/state.js";
+import { getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "../core/league-config-v443.js?v=446";
+
+async function ensureLeagueDataPathsV446() {
+  await loadLeagueConfigV443().catch(() => null);
+}
 
 export async function loadListoniData() {
   try {
-    const manifestResponse = await fetch("./assets/listoni/manifest.json", { cache: "no-store" });
+    await ensureLeagueDataPathsV446();
+    const manifestResponse = await fetch(getLeagueDataPathV446("listoniManifest", "./assets/listoni/manifest.json"), { cache: "no-store" });
     if (!manifestResponse.ok) {
       state.listoni = [];
       return;
@@ -13,7 +19,7 @@ export async function loadListoniData() {
 
     const loadedListoni = await Promise.all(entries.map(async (entry) => {
       try {
-        const response = await fetch(`./assets/listoni/${entry.file}`, { cache: "no-store" });
+        const response = await fetch(joinLeagueDataPathV446("listoniBase", entry.file, "./assets/listoni/"), { cache: "no-store" });
         if (!response.ok) throw new Error(`Listone non leggibile: ${entry.file}`);
         const payload = await response.json();
         return {
@@ -36,7 +42,8 @@ export async function loadListoniData() {
 
 export async function loadRostersData() {
   try {
-    const manifestResponse = await fetch("./assets/rose/manifest.json", { cache: "no-store" });
+    await ensureLeagueDataPathsV446();
+    const manifestResponse = await fetch(getLeagueDataPathV446("rostersManifest", "./assets/rose/manifest.json"), { cache: "no-store" });
     if (!manifestResponse.ok) {
       state.rosters = [];
       return;
@@ -47,7 +54,7 @@ export async function loadRostersData() {
 
     const loadedRosters = await Promise.all(entries.map(async (entry) => {
       try {
-        const response = await fetch(`./assets/rose/${entry.file}`, { cache: "no-store" });
+        const response = await fetch(joinLeagueDataPathV446("rostersBase", entry.file, "./assets/rose/"), { cache: "no-store" });
         if (!response.ok) throw new Error(`Rose non leggibili: ${entry.file}`);
         const payload = await response.json();
         return {
@@ -71,7 +78,8 @@ export async function loadRostersData() {
 
 export async function loadCompetitionCalendarData() {
   try {
-    const manifestResponse = await fetch("./assets/competitions/manifest.json", { cache: "no-store" });
+    await ensureLeagueDataPathsV446();
+    const manifestResponse = await fetch(getLeagueDataPathV446("competitionsManifest", "./assets/competitions/manifest.json"), { cache: "no-store" });
     if (!manifestResponse.ok) {
       state.competitionCalendars = [];
       return;
@@ -86,7 +94,7 @@ export async function loadCompetitionCalendarData() {
 
     const loadedCalendars = await Promise.all(entries.map(async (entry) => {
       try {
-        const response = await fetch(`./assets/competitions/${entry.file}`, { cache: "no-store" });
+        const response = await fetch(joinLeagueDataPathV446("competitionsBase", entry.file, "./assets/competitions/"), { cache: "no-store" });
         if (!response.ok) throw new Error(`Calendario competizione non leggibile: ${entry.file}`);
         const payload = await response.json();
         return {

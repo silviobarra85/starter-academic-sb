@@ -1,3 +1,11 @@
+## Aggiornamento V445 - Metadata, menu e share da config (15/06/2026)
+
+- Runtime avanzato a V445 con footer e cache-buster coerenti.
+- `assets/league-config.json` ora contiene `branding`, metadata pagina, immagine pubblica e definizione del menu mobile "Altro".
+- Il loader `league-config-v443.js` resta compatibile ma aggiunge helper V445 per applicare titoli, meta runtime, footer e voci mobile da config, con fallback ZonaOrientale.
+- I link share comunicati usano `siteUrl` da config; il link WhatsApp Bilanci continua a usare `whatsapp.bilanciUrl` con fallback storico.
+- Nessuna modifica a Firebase, Admin, snapshot loader, dati statici, routing principale, layout Bilanci mobile V438 o badge dispositivo V434.
+
 ## Aggiornamento V444 - Audit hard-coded multi-lega (15/06/2026)
 
 - Runtime avanzato a V444 con footer e cache-buster coerenti.
@@ -2108,3 +2116,8 @@ Stato corrente aggiornato a V441: aggiunti filtri ruolo Mantra per Listone, Rose
 ## V442 - Titoli sopra filtri e controlli
 
 Stato corrente aggiornato a V442: i pannelli/card che contengono filtri o controlli laterali impilano il titolo e la descrizione sopra i filtri, evitando la compressione del blocco titolo come visto nel Listone. Intervento solo CSS/layout: non cambia dati, Firebase, snapshot, Bilanci, Listone, Rose, Area Squadra, Admin o badge dispositivo V434.
+
+
+## Aggiornamento V446 - Percorsi dati statici da configurazione
+
+La preparazione multi-lega ora include `dataPaths` in `static/zonaorientale/assets/league-config.json`. I reader pubblici possono risolvere da configurazione i percorsi di config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato, mantenendo i path ZonaOrientale come fallback. Non sono stati modificati Firebase, Admin, generator snapshot, Area Squadra presidenti, Bilanci mobile V438 o badge dispositivo V434.

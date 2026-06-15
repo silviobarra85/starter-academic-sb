@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "444",
+  "currentVersion": "446",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -34,6 +34,132 @@
     "noAdminRefactor": true,
     "preserveMobileUx": true,
     "preserveDeviceBadgeV434": true,
-    "hardcodedAuditOnly": true
+    "hardcodedAuditOnly": true,
+    "runtimePresentationFromConfig": true,
+    "metadataShareOnly": true,
+    "staticDataPathsFromConfig": true
+  },
+  "branding": {
+    "siteName": "ZonaOrientale Salerno",
+    "homeEyebrow": "Lega Fantacalcio",
+    "homeTitle": "ZonaOrientale Salerno",
+    "homeSubtitle": "Dashboard operativa per club, rose, listoni, competizioni e regolamento.",
+    "imageUrl": "https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png",
+    "pages": {
+      "home": {
+        "title": "ZonaOrientale Salerno",
+        "description": "Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d'oro, statistiche, archivio e comunicati.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/",
+        "ogType": "website"
+      },
+      "competition": {
+        "title": "Competizione - ZonaOrientale Salerno",
+        "description": "Calendario completo competizione ZonaOrientale Salerno.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/competition.html",
+        "ogType": "website"
+      },
+      "player": {
+        "title": "Scheda giocatore - ZonaOrientale Salerno",
+        "description": "Scheda giocatore Fantacalcio.it integrata nel gestionale ZonaOrientale Salerno.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/player.html",
+        "ogType": "website"
+      },
+      "bilanci": {
+        "title": "Bilanci FM · ZonaOrientale Salerno",
+        "description": "Consulta i bilanci FM delle squadre ZonaOrientale: movimenti mensili, entrate, uscite e saldo progressivo per stagione e squadra.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/bilanci.html",
+        "ogType": "website"
+      }
+    },
+    "mobileMore": [
+      {
+        "id": "news",
+        "href": "#news",
+        "label": "News",
+        "icon": "📰"
+      },
+      {
+        "id": "clubs",
+        "href": "#clubs",
+        "label": "Tutte le rose",
+        "icon": "👥"
+      },
+      {
+        "id": "bilanci",
+        "href": "#bilanci",
+        "label": "Bilanci squadre",
+        "icon": "💰"
+      },
+      {
+        "id": "honor",
+        "href": "#honor",
+        "label": "Albo d'Oro e Palmarès",
+        "icon": "🏛️"
+      },
+      {
+        "id": "stats",
+        "href": "#stats",
+        "label": "Statistiche storiche",
+        "icon": "📊"
+      },
+      {
+        "id": "archive",
+        "href": "#archive",
+        "label": "Archivio stagioni",
+        "icon": "🗂️"
+      },
+      {
+        "id": "compare",
+        "href": "#compare",
+        "label": "Confronta squadre",
+        "icon": "⚔️"
+      },
+      {
+        "id": "regolamento",
+        "href": "#regolamento",
+        "label": "Regolamento",
+        "icon": "📘"
+      },
+      {
+        "id": "fantamercato",
+        "href": "#fantamercato",
+        "label": "Fantamercato",
+        "icon": "🔁"
+      },
+      {
+        "id": "calciomercato",
+        "href": "#calciomercato",
+        "label": "Calciomercato",
+        "icon": "📰"
+      },
+      {
+        "id": "listone",
+        "href": "#listone",
+        "label": "Listone",
+        "icon": "📋"
+      },
+      {
+        "id": "admin",
+        "href": "#admin",
+        "label": "Admin",
+        "icon": "⚙️"
+      }
+    ]
+  },
+  "dataPaths": {
+    "publicConfig": "./assets/public/config.json",
+    "seasonSnapshotsManifest": "./assets/snapshots/seasons/manifest.json",
+    "seasonSnapshotsBase": "./assets/snapshots/seasons/",
+    "honorSnapshot": "./assets/snapshots/honor.json",
+    "listoniManifest": "./assets/listoni/manifest.json",
+    "listoniBase": "./assets/listoni/",
+    "rostersManifest": "./assets/rose/manifest.json",
+    "rostersBase": "./assets/rose/",
+    "competitionsManifest": "./assets/competitions/manifest.json",
+    "competitionsBase": "./assets/competitions/",
+    "logosBase": "./assets/logos/",
+    "calciomercatoLinks": "./assets/calciomercato/links.json",
+    "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
+    "calciomercatoArchiveBase": "./assets/calciomercato/archive/"
   }
 }

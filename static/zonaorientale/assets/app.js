@@ -38,19 +38,20 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=444";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=444";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=444";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=444";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=444";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=444";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=444";
+import { ZonaOrientaleSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=446";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=446";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=446";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=446";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=446";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=446";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=446";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=444";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=444";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=446";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=446";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=446";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -114,7 +115,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=444";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=446";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -138,7 +139,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=444";
+} from "./js/domain/news-share-v228.js?v=446";
 import {
   getListoneValue,
   compareListoneValues
@@ -153,19 +154,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=444";
+} from "./js/admin/listone-converter.js?v=446";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=444";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=444";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=446";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=446";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=444";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=444";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=444";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=444";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=446";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=446";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=446";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=446";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=444";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=444";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=444";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=446";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=446";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=446";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -5431,6 +5432,8 @@ function getNewsIdFromHashV228() {
 }
 
 function getNewsShareBaseUrlV230() {
+  const configuredSiteUrl = getLeagueSiteUrlV443();
+  if (configuredSiteUrl) return configuredSiteUrl;
   try {
     const current = new URL(window.location.href);
     current.hash = "";
@@ -5512,7 +5515,7 @@ function downloadNewsShareHtmlV228(newsId) {
   const news = getNewsByIdV228(newsId);
   if (!news) return;
   const path = buildNewsSharePathV228(news);
-  const html = buildNewsSharePageHtmlV228(news, { path, baseUrl: getNewsShareBaseUrlV230() });
+  const html = buildNewsSharePageHtmlV228(news, { path, baseUrl: getNewsShareBaseUrlV230(), siteName: getLeagueConfigValueV443("branding.siteName", "ZonaOrientale Salerno"), shortName: getLeagueConfigValueV443("shortName", "ZonaOrientale") });
   downloadTextFileV228(html, path.split("/").pop() || "comunicato.html");
 }
 
@@ -14344,6 +14347,9 @@ window.addEventListener("load", () => {
    leagueSettings/seasons, reducing baseline reads. Admin keeps the Account
    button visible so Dark/Light, Account and Logout can sit on one mobile row. */
 const PUBLIC_CONFIG_URL_V171 = "assets/public/config.json";
+function getPublicConfigUrlV446() {
+  return getLeagueDataPathV446("publicConfig", PUBLIC_CONFIG_URL_V171);
+}
 state.publicConfigV171 = state.publicConfigV171 || null;
 state.publicConfigSourceV171 = state.publicConfigSourceV171 || "";
 
@@ -14391,7 +14397,8 @@ function normalizePublicConfigV171(payload) {
 async function loadStaticPublicConfigV171() {
   if (state.publicConfigV171) return state.publicConfigV171;
   try {
-    const response = await fetch(PUBLIC_CONFIG_URL_V171, { cache: "no-store" });
+    await loadLeagueConfigV443().catch(() => null);
+    const response = await fetch(getPublicConfigUrlV446(), { cache: "no-store" });
     if (!response.ok) return null;
     const payload = await response.json();
     const normalized = normalizePublicConfigV171(payload);
@@ -14527,6 +14534,12 @@ updateAdminVisibility = function updateAdminVisibilityV171() {
    every tab/page navigation is forced back to the top of the viewport. */
 const STATIC_SEASON_SNAPSHOTS_BASE_URL_V172 = "assets/snapshots/seasons/";
 const STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172 = `${STATIC_SEASON_SNAPSHOTS_BASE_URL_V172}manifest.json`;
+function getStaticSeasonSnapshotsBaseUrlV446() {
+  return getLeagueDataPathV446("seasonSnapshotsBase", STATIC_SEASON_SNAPSHOTS_BASE_URL_V172);
+}
+function getStaticSeasonSnapshotsManifestUrlV446() {
+  return getLeagueDataPathV446("seasonSnapshotsManifest", STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172);
+}
 state.staticSeasonSnapshotsManifestV172 = state.staticSeasonSnapshotsManifestV172 || null;
 state.publicSeasonSnapshotSourcesV172 = state.publicSeasonSnapshotSourcesV172 || {};
 
@@ -14555,7 +14568,8 @@ function getStaticSeasonSnapshotEntriesV172(manifest) {
 async function loadStaticSeasonSnapshotsManifestV172() {
   if (state.staticSeasonSnapshotsManifestV172) return state.staticSeasonSnapshotsManifestV172;
   try {
-    const response = await fetch(STATIC_SEASON_SNAPSHOTS_MANIFEST_URL_V172, { cache: "no-store" });
+    await loadLeagueConfigV443().catch(() => null);
+    const response = await fetch(getStaticSeasonSnapshotsManifestUrlV446(), { cache: "no-store" });
     if (!response.ok) {
       state.staticSeasonSnapshotsManifestV172 = { version: 1, generatedAt: "", snapshots: [] };
       return state.staticSeasonSnapshotsManifestV172;
@@ -14600,7 +14614,7 @@ async function loadStaticPublicSeasonSnapshotV172(seasonId) {
   const entry = getStaticSeasonSnapshotEntryV172(manifest, seasonId);
   if (!entry?.file) return null;
   try {
-    const response = await fetch(`${STATIC_SEASON_SNAPSHOTS_BASE_URL_V172}${entry.file}`, { cache: "no-store" });
+    const response = await fetch(joinLeagueDataPathV446("seasonSnapshotsBase", entry.file, getStaticSeasonSnapshotsBaseUrlV446()), { cache: "no-store" });
     if (!response.ok) return null;
     const payload = await response.json();
     const snapshot = normalizeStaticPublicSeasonSnapshotV172(payload, seasonId);
@@ -14764,6 +14778,9 @@ window.addEventListener("hashchange", scheduleMobilePageTopV172);
    Firestore fallback. Admin snapshot buttons show their latest known update
    directly under the button label, especially on mobile. */
 const STATIC_HONOR_SNAPSHOT_URL_V173 = "assets/snapshots/honor.json";
+function getStaticHonorSnapshotUrlV446() {
+  return getLeagueDataPathV446("honorSnapshot", STATIC_HONOR_SNAPSHOT_URL_V173);
+}
 state.staticHonorSnapshotV173 = state.staticHonorSnapshotV173 || null;
 state.publicHonorSnapshotSourceV173 = state.publicHonorSnapshotSourceV173 || "";
 
@@ -14784,7 +14801,8 @@ function normalizeStaticHonorSnapshotV173(payload) {
 async function loadStaticHonorSnapshotV173() {
   if (state.staticHonorSnapshotV173) return state.staticHonorSnapshotV173;
   try {
-    const response = await fetch(STATIC_HONOR_SNAPSHOT_URL_V173, { cache: "no-store" });
+    await loadLeagueConfigV443().catch(() => null);
+    const response = await fetch(getStaticHonorSnapshotUrlV446(), { cache: "no-store" });
     if (!response.ok) return null;
     const payload = await response.json();
     const snapshot = normalizeStaticHonorSnapshotV173(payload);
@@ -15913,7 +15931,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "444";
+const DEPLOY_EXPECTED_VERSION_V181 = "446";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -24672,8 +24690,11 @@ window.ZonaOrientaleMobileFinalReviewV304 = {
  * o scritture Firebase. Funzionalita preservate: Fantamercato interno, Listone, Rose,
  * Admin, Presidente, mobile nav e Dark mode unico.
  */
-const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json?v=444";
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=444";
+const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json";
+function getCalciomercatoStaticUrlV446() {
+  return withLeagueCacheBusterV446(getLeagueDataPathV446("calciomercatoLinks", CALCIOMERCATO_STATIC_URL_V306));
+}
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=446";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -25171,12 +25192,12 @@ async function getCalciomercatoTimelineArticlePoolV335() {
   const archiveArticles = [];
   const archiveSources = [];
   try {
-    const manifestUrl = typeof CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 === "string" ? `${CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323}&_=${Date.now()}` : "";
+    const manifestUrl = typeof CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 === "string" ? `${getCalciomercatoArchiveManifestUrlV446()}&_=${Date.now()}` : "";
     const manifest = manifestUrl ? await fetchCalciomercatoOptionalJsonV323(manifestUrl) : null;
     const days = Array.isArray(manifest?.availableDays) ? manifest.availableDays.map(String).filter(Boolean).sort() : [];
     const limitedDays = days.slice(-370);
     const settled = await Promise.allSettled(limitedDays.map(async (day) => {
-      const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=444&_=${Date.now()}`);
+      const data = await fetchCalciomercatoJsonV309(`${getCalciomercatoArchiveDayUrlV446(day)}&_=${Date.now()}`);
       return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day") };
     }));
     settled.forEach((result) => {
@@ -25531,7 +25552,7 @@ async function loadCalciomercatoDataV306(options = {}) {
       return;
     } catch (automaticError) {
       staticFallbackError = automaticError;
-      const staticData = await fetchCalciomercatoJsonV309(CALCIOMERCATO_STATIC_URL_V306);
+      const staticData = await fetchCalciomercatoJsonV309(getCalciomercatoStaticUrlV446());
       calciomercatoStateV306.data = normalizeCalciomercatoDataV309(staticData, "static-fallback");
       calciomercatoStateV306.generatedAt = calciomercatoStateV306.data.generatedAt || "";
       calciomercatoStateV306.sourceMode = "static-fallback";
@@ -26259,7 +26280,16 @@ window.ZonaOrientaleListoneDiagnosticsRoleFixV322 = {
  * modificare Fantamercato interno, Listone, Rose, Dashboard Presidente, Admin o Firebase/EmailJS.
  */
 const CALCIOMERCATO_ARCHIVE_BASE_URL_V323 = "./assets/calciomercato/archive/";
-const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json?v=444`;
+const CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323 = `${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}manifest.json`;
+function getCalciomercatoArchiveBaseUrlV446() {
+  return getLeagueDataPathV446("calciomercatoArchiveBase", CALCIOMERCATO_ARCHIVE_BASE_URL_V323);
+}
+function getCalciomercatoArchiveManifestUrlV446() {
+  return withLeagueCacheBusterV446(getLeagueDataPathV446("calciomercatoArchiveManifest", CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323));
+}
+function getCalciomercatoArchiveDayUrlV446(day) {
+  return withLeagueCacheBusterV446(joinLeagueDataPathV446("calciomercatoArchiveBase", `${day}.json`, getCalciomercatoArchiveBaseUrlV446()));
+}
 const CALCIOMERCATO_ARCHIVE_START_DATE_V323 = "2026-06-01";
 
 Object.assign(calciomercatoStateV306, {
@@ -26407,14 +26437,14 @@ async function loadCalciomercatoArchiveForCurrentRangeV323() {
   calciomercatoStateV306.archiveSourcesV323 = [];
   calciomercatoStateV306.archiveLoadedDaysV323 = [];
   calciomercatoStateV306.archiveWarningsV323 = [];
-  const manifest = await fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323}&_=${Date.now()}`);
+  const manifest = await fetchCalciomercatoOptionalJsonV323(`${getCalciomercatoArchiveManifestUrlV446()}&_=${Date.now()}`);
   calciomercatoStateV306.archiveManifestV323 = manifest || null;
   if (!manifest || !Array.isArray(manifest.availableDays) || !manifest.availableDays.length) return;
   const available = new Set(manifest.availableDays.map(String));
   const daysToLoad = selectedDays.filter((day) => available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=444&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${getCalciomercatoArchiveDayUrlV446(day)}&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -26487,7 +26517,7 @@ loadCalciomercatoDataV306 = async function loadCalciomercatoDataV323(options = {
       return;
     } catch (automaticError) {
       staticFallbackError = automaticError;
-      const staticData = await fetchCalciomercatoJsonV309(CALCIOMERCATO_STATIC_URL_V306);
+      const staticData = await fetchCalciomercatoJsonV309(getCalciomercatoStaticUrlV446());
       const normalizedStatic = normalizeCalciomercatoDataV309(staticData, "static-fallback");
       await loadCalciomercatoArchiveForCurrentRangeV323();
       calciomercatoStateV306.data = mergeCalciomercatoDataWithArchiveV323(normalizedStatic);
@@ -26670,7 +26700,7 @@ async function generateCalciomercatoArchiveDayV323(dayKey) {
   if (!feedUrl) throw new Error(`Giorno non valido: ${dayKey}`);
   const [fetchedData, existingData] = await Promise.all([
     fetchCalciomercatoJsonV309(feedUrl),
-    fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${dayKey}.json?v=444&_=${Date.now()}`)
+    fetchCalciomercatoOptionalJsonV323(`${getCalciomercatoArchiveDayUrlV446(dayKey)}&_=${Date.now()}`)
   ]);
   return { day: dayKey, file: buildCalciomercatoArchiveFileV323(dayKey, fetchedData, existingData) };
 }
@@ -26894,7 +26924,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveDayStatsV324 = {};
   calciomercatoStateV306.archiveDuplicateSkippedV324 = 0;
   calciomercatoStateV306.archiveDiagnosticsUpdatedAtV324 = new Date().toISOString();
-  const manifest = await fetchCalciomercatoOptionalJsonV323(`${CALCIOMERCATO_ARCHIVE_MANIFEST_URL_V323}&_=${Date.now()}`);
+  const manifest = await fetchCalciomercatoOptionalJsonV323(`${getCalciomercatoArchiveManifestUrlV446()}&_=${Date.now()}`);
   calciomercatoStateV306.archiveManifestV323 = manifest || null;
   if (!manifest || !Array.isArray(manifest.availableDays) || !manifest.availableDays.length) {
     calciomercatoStateV306.archiveMissingDaysV324 = selectedDays;
@@ -26905,7 +26935,7 @@ loadCalciomercatoArchiveForCurrentRangeV323 = async function loadCalciomercatoAr
   calciomercatoStateV306.archiveMissingDaysV324 = selectedDays.filter((day) => !available.has(day));
   if (!daysToLoad.length) return;
   const settled = await Promise.allSettled(daysToLoad.map(async (day) => {
-    const data = await fetchCalciomercatoJsonV309(`${CALCIOMERCATO_ARCHIVE_BASE_URL_V323}${day}.json?v=444&_=${Date.now()}`);
+    const data = await fetchCalciomercatoJsonV309(`${getCalciomercatoArchiveDayUrlV446(day)}&_=${Date.now()}`);
     return { day, data: normalizeCalciomercatoDataV309(data, "static-archive-day"), raw: data };
   }));
   const articles = [];
@@ -35157,7 +35187,7 @@ window.ZonaOrientaleStandaloneMoreMenuV439 = Object.freeze({
 window.ZonaOrientaleBilanciWhatsappLinkV440 = Object.freeze({
   version: "V440",
   scope: "bilanci-whatsapp-preview-link",
-  shareUrl: "https://silviobarra.com/zonaorientale/bilanci.html",
+  shareUrl: getLeagueConfigValueV443("whatsapp.bilanciUrl", "https://silviobarra.com/zonaorientale/bilanci.html"),
   preserves: [
     "Bilanci da snapshot V435 mantenuti",
     "Layout mobile Bilanci V438 mantenuto",
@@ -35174,11 +35204,12 @@ window.ZonaOrientaleBilanciWhatsappLinkV440 = Object.freeze({
  * Firebase, snapshot, Admin, Area Squadra, Listone, Rose, Calciomercato o routing.
  */
 window.ZonaOrientaleMultiLeagueConfigV443 = Object.freeze({
-  version: "V443",
-  scope: "additive-league-configuration",
+  version: "V446",
+  scope: "metadata-share-presentation-from-config",
   configFile: "assets/league-config.json",
   loader: "assets/js/core/league-config-v443.js",
   currentLeague: "zonaorientale",
+  metadataAndShareFromConfig: true,
   futureLeagueCandidate: "FantaPetilloMantraManager",
   behaviorChanged: false,
   preserves: [
@@ -35188,6 +35219,57 @@ window.ZonaOrientaleMultiLeagueConfigV443 = Object.freeze({
     "Area Squadra presidenti invariata",
     "Listone/Rose/Calciomercato invariati",
     "Bilanci da snapshot V435 e layout mobile V438 mantenuti",
+    "badge dispositivo V434 mantenuto"
+  ]
+});
+
+/* V445 - Metadata, menu mobile Altro e share link da league-config.
+ * Usa la configurazione di lega per presentazione runtime, titoli, footer,
+ * base URL comunicati e URL WhatsApp Bilanci, mantenendo fallback ZonaOrientale.
+ */
+window.ZonaOrientalePresentationFromConfigV445 = Object.freeze({
+  version: "V445",
+  scope: "metadata-menu-share-from-config",
+  configFile: "assets/league-config.json",
+  behaviorChanged: false,
+  preserves: [
+    "Firebase bootstrap invariato",
+    "snapshot loader invariato",
+    "Admin invariato",
+    "Area Squadra presidenti invariata",
+    "routing e dati statici invariati",
+    "Bilanci mobile V438 mantenuto",
+    "badge dispositivo V434 mantenuto"
+  ]
+});
+
+
+
+/* V446 - Percorsi dati statici da league-config.
+ * I reader pubblici possono risolvere manifest e base path da configurazione,
+ * mantenendo gli stessi file ZonaOrientale come fallback e senza cambiare Firebase/Admin.
+ */
+window.ZonaOrientaleStaticDataPathsFromConfigV446 = Object.freeze({
+  version: "V446",
+  scope: "static-data-paths-from-config",
+  configFile: "assets/league-config.json",
+  behaviorChanged: false,
+  pathsFromConfig: [
+    "assets/public/config.json",
+    "assets/snapshots/seasons/",
+    "assets/snapshots/honor.json",
+    "assets/listoni/",
+    "assets/rose/",
+    "assets/competitions/",
+    "assets/logos/",
+    "assets/calciomercato/"
+  ],
+  preserves: [
+    "fallback ZonaOrientale invariati",
+    "Firebase bootstrap invariato",
+    "Admin e generator snapshot invariati",
+    "Area Squadra presidenti invariata",
+    "Bilanci mobile V438 mantenuto",
     "badge dispositivo V434 mantenuto"
   ]
 });

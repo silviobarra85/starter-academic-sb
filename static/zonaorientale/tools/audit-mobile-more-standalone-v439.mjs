@@ -4,7 +4,7 @@ import path from 'node:path';
 
 const quiet = process.argv.includes('--quiet');
 const root = path.resolve(process.cwd());
-const expectedVersions = ['439', '440', '441', '442', '443', '444'];
+const expectedVersions = ['439', '440', '441', '442', '443', '444', '445', '446'];
 const requiredHashes = [
   '#news',
   '#clubs',
@@ -32,7 +32,7 @@ function push(ok, label, details = '') {
 for (const file of files) {
   const html = read(file);
   push(expectedVersions.some((version) => html.includes(`?v=${version}`)), `${file}: cache-buster V439+`);
-  push(html.includes('V439 menu Altro pagine standalone') || html.includes('V440 link WhatsApp Bilanci') || html.includes('V441 filtri ruoli Mantra') || html.includes('V442 titoli sopra filtri') || html.includes('V444 audit hard-coded multi-lega'), `${file}: footer V439+`);
+  push(html.includes('V439 menu Altro pagine standalone') || html.includes('V440 link WhatsApp Bilanci') || html.includes('V441 filtri ruoli Mantra') || html.includes('V442 titoli sopra filtri') || html.includes('V444 audit hard-coded multi-lega') || html.includes('V446 path dati statici da config'), `${file}: footer V439+`);
   push(html.includes('id="mobileMoreSheet"'), `${file}: menu Altro presente`);
   push(html.includes('id="mobileMoreBtn"'), `${file}: bottone Altro presente`);
   for (const hash of requiredHashes) {
@@ -42,7 +42,7 @@ for (const file of files) {
 }
 
 const app = read('assets/app.js');
-push(/DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(439|440|441|442|443|444)"/.test(app), 'app.js: DEPLOY_EXPECTED_VERSION_V181 V439+');
+push(/DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(439|440|441|442|443|444|445|446)"/.test(app), 'app.js: DEPLOY_EXPECTED_VERSION_V181 V439+');
 push(app.includes('ZonaOrientaleStandaloneMoreMenuV439'), 'app.js: marker V439 menu standalone');
 
 const failed = results.filter((item) => !item.ok);

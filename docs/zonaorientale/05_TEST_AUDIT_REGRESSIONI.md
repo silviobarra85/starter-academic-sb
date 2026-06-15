@@ -1,3 +1,10 @@
+## Test e audit V445 - Presentazione runtime da config
+
+- Aggiunto `tools/audit-runtime-presentation-config-v445.mjs`.
+- L'audit verifica config branding, metadata pagina, menu mobile Altro, hook HTML, helper loader, uso `siteUrl` per share comunicati, supporto `siteName/shortName` nei comunicati e assenza di Firebase/snapshot nel loader.
+- Integrato il gate V445 in `tools/check-zonaorientale.sh`.
+- I controlli V443 e V444 restano attivi per garantire che la config base e la mappa hard-coded continuino a esistere.
+
 ## Test e audit V444 - Mappa riferimenti hard-coded multi-lega
 
 - Aggiunto `tools/audit-hardcoded-league-refs-v444.mjs`.
@@ -5073,3 +5080,8 @@ Aggiunto `tools/audit-mantra-role-filters-v441.mjs` e integrato in `tools/check-
 ## Audit V442
 
 Aggiunto `tools/audit-panel-title-stack-v442.mjs` e integrato in `tools/check-zonaorientale.sh`. Il controllo verifica caricamento CSS V442 su `index.html`, `competition.html` e `player.html`, presenza delle regole per header con filtri/controlli/filtri Mantra e runtime atteso V442.
+
+
+## Aggiornamento V446 - Percorsi dati statici da configurazione
+
+La preparazione multi-lega ora include `dataPaths` in `static/zonaorientale/assets/league-config.json`. I reader pubblici possono risolvere da configurazione i percorsi di config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato, mantenendo i path ZonaOrientale come fallback. Non sono stati modificati Firebase, Admin, generator snapshot, Area Squadra presidenti, Bilanci mobile V438 o badge dispositivo V434.

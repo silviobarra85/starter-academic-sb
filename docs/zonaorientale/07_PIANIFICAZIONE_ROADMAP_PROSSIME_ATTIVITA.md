@@ -1,3 +1,18 @@
+## Roadmap aggiornata dopo V446
+
+- La parametrizzazione dei percorsi dati statici e' stata introdotta in modo additivo con `dataPaths` in `assets/league-config.json`.
+- Prossimo passo consigliato V447: creare un clone sandbox minimo per `FantaPetilloMantraManager`, senza ancora toccare il sito pubblico ZonaOrientale e preferendo Firebase separato.
+- Prima del clone, decidere slug/cartella provvisoria e dati minimi: nome lega, loghi, squadre, stagione corrente, config pubblica e almeno uno snapshot di test.
+- Continuare a non rinominare i namespace runtime storici `ZonaOrientale*` finche' il clone non e' verificabile.
+- Restano da parametrizzare in una fase successiva Netlify `news-share`, redirect pubblici e feed calciomercato server-side.
+
+## Roadmap aggiornata dopo V445
+
+- Prossima patch consigliata V446: parametrizzare gradualmente i percorsi dati statici da config (`assets/public/config.json`, snapshot stagioni, honor, listoni, rose, competizioni, calciomercato archive, loghi) senza cambiare i file letti da ZonaOrientale.
+- Dopo V446, valutare V447 come clone sandbox `FantaPetilloMantraManager`, preferibilmente con Firebase separato e dati minimi di prova.
+- Non rinominare ancora i namespace runtime storici `ZonaOrientale*`: prima bisogna completare path dati e share/Netlify.
+- Continuare a preservare Bilanci mobile V438, badge dispositivo V434, Admin, Area Squadra e snapshot generator.
+
 ## Roadmap aggiornata dopo V444
 
 - Prossima patch consigliata V445: usare la mappa V444 per spostare gradualmente su `assets/league-config.json` metadata, titoli pagina, nome lega, base URL e link share WhatsApp, sempre con fallback ZonaOrientale.

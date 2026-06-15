@@ -2663,6 +2663,40 @@ else
   fail "node non disponibile per audit riferimenti hard-coded multi-lega V444"
 fi
 
+
+print_step "Audit presentazione runtime da config V445"
+if command -v node >/dev/null 2>&1; then
+  audit_runtime_presentation_config_v445="$SITE_ROOT/tools/audit-runtime-presentation-config-v445.mjs"
+  if [[ -f "$audit_runtime_presentation_config_v445" ]]; then
+    if node "$audit_runtime_presentation_config_v445" --quiet; then
+      pass "audit presentazione runtime da config V445 superato"
+    else
+      fail "audit presentazione runtime da config V445 fallito"
+    fi
+  else
+    fail "tool audit presentazione runtime da config V445 mancante"
+  fi
+else
+  fail "node non disponibile per audit presentazione runtime da config V445"
+fi
+
+
+print_step "Audit percorsi dati statici da config V446"
+if command -v node >/dev/null 2>&1; then
+  audit_static_data_paths_config_v446="$SITE_ROOT/tools/audit-static-data-paths-config-v446.mjs"
+  if [[ -f "$audit_static_data_paths_config_v446" ]]; then
+    if node "$audit_static_data_paths_config_v446" --quiet; then
+      pass "audit percorsi dati statici da config V446 superato"
+    else
+      fail "audit percorsi dati statici da config V446 fallito"
+    fi
+  else
+    fail "tool audit percorsi dati statici da config V446 mancante"
+  fi
+else
+  fail "node non disponibile per audit percorsi dati statici da config V446"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

@@ -1,4 +1,5 @@
 import { escapeHtml } from "./utils.js";
+import { getLeagueLogoPathV446 } from "./league-config-v443.js?v=446";
 
 export function renderBoldMarkdown(value) {
   const escaped = escapeHtml(value || "");
@@ -77,8 +78,7 @@ export function isBase64Logo(value) {
 export function normalizeLogoPath(value) {
   const raw = String(value || "").trim();
   if (!raw || isBase64Logo(raw)) return "";
-  if (/^(https?:|\/|\.\/|\.\.\/|assets\/)/i.test(raw)) return raw;
-  return `./assets/logos/${raw}`;
+  return getLeagueLogoPathV446(raw);
 }
 
 export function getLogoPathForInput(value) {

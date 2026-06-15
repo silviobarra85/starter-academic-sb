@@ -35,13 +35,13 @@ const checkScript = read('tools/check-zonaorientale.sh');
 const manifest = json('assets/snapshots/seasons/manifest.json');
 const currentSeason = json('assets/snapshots/seasons/2025-2026.json');
 
-check('runtime deploy almeno V435 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(435|436|437|438|439|440|441|442|443|444)"/.test(app));
+check('runtime deploy almeno V435 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(435|436|437|438|439|440|441|442|443|444|445|446)"/.test(app));
 check('marker runtime bilanci V435 presente', app.includes('ZonaOrientaleBilanciSnapshotRuntimeV435'));
 check('index contiene sezione bilanci', index.includes('data-page="bilanci"') && index.includes('bilanciSeasonSelectV435'));
 check('nav desktop contiene Bilanci', index.includes('href="#bilanci" class="nav-link"'));
 check('menu mobile contiene Bilanci', index.includes('data-page-link="bilanci"') && index.includes('Bilanci squadre'));
-check('CSS bilanci collegato', /assets\/css\/refactor\/bilanci-snapshot-v435\.css\?v=(435|436|437|438|439|440|441|442|443|444)/.test(index));
-check('JS bilanci collegato', /assets\/js\/sections\/bilanci-snapshot-section-v435\.js\?v=(435|436|437|438|439|440|441|442|443|444)/.test(index));
+check('CSS bilanci collegato', /assets\/css\/refactor\/bilanci-snapshot-v435\.css\?v=(435|436|437|438|439|440|441|442|443|444|445|446)/.test(index));
+check('JS bilanci collegato', /assets\/js\/sections\/bilanci-snapshot-section-v435\.js\?v=(435|436|437|438|439|440|441|442|443|444|445|446)/.test(index));
 check('section registry conosce bilanci', registry.includes('bilanci: Object.freeze') && registry.includes('Bilanci squadre'));
 check('JS legge snapshot stagioni', sectionJs.includes('assets/snapshots/seasons/manifest.json') && sectionJs.includes('fmMovements'));
 check('JS non legge dataset assets/bilanci', !sectionJs.includes('assets/bilanci'));
@@ -50,7 +50,7 @@ check('CSS mobile/sticky presente', sectionCss.includes('position: sticky') && s
 check('manifest snapshot stagioni disponibile', Array.isArray(manifest.snapshots) && manifest.snapshots.length >= 1);
 check('stagione 2025-2026 contiene movimenti FM', Array.isArray(currentSeason.fmMovements) && currentSeason.fmMovements.length > 0);
 check('check principale integra audit V435', checkScript.includes('audit-bilanci-snapshot-v435.mjs'));
-check('badge V434 resta collegato', /assets\/device-badge-v434\.css\?v=(435|436|437|438|439|440|441|442|443|444)/.test(index) && /assets\/device-badge-v434\.js\?v=(435|436|437|438|439|440|441|442|443|444)/.test(index));
+check('badge V434 resta collegato', /assets\/device-badge-v434\.css\?v=(435|436|437|438|439|440|441|442|443|444|445|446)/.test(index) && /assets\/device-badge-v434\.js\?v=(435|436|437|438|439|440|441|442|443|444|445|446)/.test(index));
 
 if (ok !== total) {
   console.error(`Audit bilanci snapshot V435 completato: ${ok}/${total} controlli superati.`);
