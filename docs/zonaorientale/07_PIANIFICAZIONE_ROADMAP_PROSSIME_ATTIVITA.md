@@ -1276,3 +1276,8 @@ Verificare da desktop stretto e mobile le sezioni con molti controlli: Listone, 
 ## Dopo V452
 
 Dopo la favicon del clone, il prossimo passo consigliato resta il setup dati reale di FantaPetilloMantraManager: stagione 2026-2027, presidenti, squadre, associazioni stagione-squadra, stadi, budget e primi snapshot pubblici. Area Squadra resta da sbloccare solo dopo `teamUsers` e dati minimi verificati.
+
+
+## Nota V453 regolamento FantaPetillo
+
+La base multi-lega include ora una sezione Regolamento specifica per `FantaPetilloMantraManager` con PDF pubblico scaricabile. I prossimi passi restano: completare dati reali, creare `teamUsers`, verificare snapshot pubblici e solo dopo sbloccare Area Squadra.

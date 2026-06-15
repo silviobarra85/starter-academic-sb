@@ -5,7 +5,7 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "452",
+  "currentVersion": "453",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -13,7 +13,7 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "favicon-v452"
+    "status": "regolamento-v453"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
@@ -56,7 +56,10 @@
     "adminOnboardingScript": "assets/js/core/fanta-petillo-admin-onboarding-v451.js",
     "faviconVersion": "452",
     "faviconIncludesSeason": "2026-2027",
-    "faviconIncludesInitials": "FPMM"
+    "faviconIncludesInitials": "FPMM",
+    "regolamentoVersion": "453",
+    "regolamentoSeason": "2026-2027",
+    "regolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf"
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
@@ -137,14 +140,16 @@
     "logosBase": "./assets/logos/",
     "calciomercatoLinks": "./assets/calciomercato/links.json",
     "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
-    "calciomercatoArchiveBase": "./assets/calciomercato/archive/"
+    "calciomercatoArchiveBase": "./assets/calciomercato/archive/",
+    "regolamentoPdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf"
   },
   "sandbox": {
     "enabled": true,
     "createdInVersion": "447",
-    "status": "favicon-v452",
+    "status": "regolamento-v453",
     "firebase": "dedicated-project-admin-bootstrap",
     "notes": [
+      "V453 struttura la sezione Regolamento dal PDF ufficiale 2026-2027 e aggiunge download PDF.",
       "Clone provvisorio per verificare template multi-lega.",
       "Firebase reale dedicato collegato dal progetto fantapetillomantramanager.",
       "Admin bootstrap abilitato in V450 dopo creazione manuale del primo admins/{uid}.",
@@ -155,7 +160,7 @@
       "Firebase ZonaOrientale non viene importato ne usato dal clone.",
       "Dati statici minimi placeholder: da sostituire prima della produzione."
     ],
-    "auditedInVersion": "452",
+    "auditedInVersion": "453",
     "firebaseProjectStatus": "connected-admin-bootstrap-v450"
   },
   "firebase": {
@@ -175,7 +180,7 @@
     "adminOnboardingEnabled": true
   },
   "setup": {
-    "version": "452",
+    "version": "453",
     "status": "admin-onboarding",
     "adminChecklist": [
       "Verifica rules Firestore V450 pubblicate",
@@ -188,5 +193,13 @@
       "Aggiorna snapshot pubblici",
       "Scarica overlay snapshot e applicalo alla repo"
     ]
+  },
+  "regolamento": {
+    "version": "453",
+    "season": "2026-2027",
+    "title": "Fantacalcio MANTRA® Manageriale 2026-2027",
+    "pdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "structuredSection": "assets/js/sections/regolamento-section-v402.js",
+    "sourceDocument": "FANTACALCIO_MANTRA_2026_2027-4.pdf"
   }
 }

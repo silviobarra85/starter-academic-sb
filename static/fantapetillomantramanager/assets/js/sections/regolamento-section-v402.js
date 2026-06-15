@@ -1,349 +1,351 @@
-const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-panel" aria-labelledby="regolamentoDocumentoTitle">
+const FANTAPETILLO_REGOLAMENTO_PDF_V453 = './assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf';
+
+const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-panel regulation-panel-v453" aria-labelledby="regolamentoDocumentoTitle">
         <div class="panel-header compact regulation-panel-header">
           <div>
-            <h2 id="regolamentoDocumentoTitle">Regolamento 2024/2025</h2>
-            <p>Testo riorganizzato con sezioni, tabelle e indice rapido.</p>
+            <p class="eyebrow">Regolamento ufficiale</p>
+            <h2 id="regolamentoDocumentoTitle">Fantacalcio MANTRA&reg; Manageriale 2026-2027</h2>
+            <p>Struttura sintetica navigabile del regolamento FantaPetilloMantraManager. Il PDF completo resta la fonte ufficiale da scaricare e consultare.</p>
+          </div>
+          <div class="rules-actions-v453" aria-label="Azioni regolamento">
+            <a class="button button-primary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf" download>Scarica PDF</a>
+            <a class="button button-secondary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf" target="_blank" rel="noopener noreferrer">Apri PDF</a>
           </div>
         </div>
         <div class="rules-inline-wrap" aria-label="Regolamento completo">
+          <section class="rules-index rules-summary-v453" aria-labelledby="rulesSummaryTitle">
+            <h3 id="rulesSummaryTitle">In evidenza</h3>
+            <div class="rules-highlight-grid-v453">
+              <article><strong>10 Club</strong><span>Organico fissato a 10 partecipanti.</span></article>
+              <article><strong>Rosa 23-33</strong><span>Minimo 23 tesserati, massimo 33.</span></article>
+              <article><strong>250 FM</strong><span>Budget asta iniziale.</span></article>
+              <article><strong>Switch BASIC</strong><span>Switch attivo in modalita Basic.</span></article>
+              <article><strong>5 sostituzioni</strong><span>Sostituzioni Basic con panchina fino a 12.</span></article>
+              <article><strong>Fairplay +1</strong><span>Bonus se nessun ammonito/espulso tra i giocatori a voto.</span></article>
+              <article><strong>D-Factor attivo</strong><span>Modificatore difensivo Mantra con fasce dedicate.</span></article>
+              <article><strong>Montepremi 1120&euro;</strong><span>Premi regular season, playoff e Coppa Italia.</span></article>
+            </div>
+          </section>
+
           <nav class="rules-index" aria-labelledby="rulesIndexTitle">
             <h3 id="rulesIndexTitle">Indice regolamento</h3>
             <div class="rules-index-grid">
-              <a href="#rules-partecipanti">1. Partecipanti</a>
-              <a href="#rules-regole-base">2. Regole base</a>
-              <a href="#rules-rosa">3. La rosa</a>
-              <a href="#rules-mercato-sessioni">4. Mercato e sessioni</a>
-              <a href="#rules-date-mercato">5. Date mercato</a>
-              <a href="#rules-svincolo">6. Svincolo calciatori</a>
-              <a href="#rules-scambi">7. Scambi e prestiti</a>
-              <a href="#rules-finanze">8. Finanze</a>
-              <a href="#rules-stadio">9. Stadio</a>
-              <a href="#rules-calendario">10. Calendario</a>
-              <a href="#rules-coppe">11. Coppe</a>
-              <a href="#rules-montepremi">12. Montepremi</a>
-              <a href="#rules-oscar">13. Oscar</a>
+              <a href="#rules-premessa">Premessa</a>
+              <a href="#rules-definizioni">Definizioni</a>
+              <a href="#rules-organico">1. Organico</a>
+              <a href="#rules-rose-moduli">2. Rose e schieramento</a>
+              <a href="#rules-calcolo">3. Calcolo</a>
+              <a href="#rules-modificatori">4. Modificatori</a>
+              <a href="#rules-primavera">5. Primavera e Under23</a>
+              <a href="#rules-mercato">6. Mercato</a>
+              <a href="#rules-svincoli">7. Svincoli</a>
+              <a href="#rules-mercato-interno">8. Mercato interno</a>
+              <a href="#rules-finanze">9. Finanze</a>
+              <a href="#rules-stadio">10. Stadio</a>
+              <a href="#rules-calendario">11. Calendario</a>
+              <a href="#rules-competizioni">12. Competizioni</a>
+              <a href="#rules-quote">13. Quote e premi</a>
+              <a href="#rules-penalizzazioni">Penalizzazioni</a>
+              <a href="#rules-appendice">Appendice</a>
             </div>
           </nav>
+
           <div class="rules-inline-content">
 
+    <section id="rules-premessa" class="panel rules-section">
+      <p class="eyebrow">Premessa</p>
+      <h2>Validita e aggiornamenti</h2>
+      <p>Il regolamento disciplina la stagione 2026-2027 della lega FantaPetilloMantraManager. La partecipazione all'asta comporta accettazione del regolamento.</p>
+      <ul class="rules-list">
+        <li>Le proposte di modifica possono essere raccolte prima dell'inizio della stagione, il giorno dell'asta prima delle chiamate e durante la stagione.</li>
+        <li>Le modifiche deliberate dopo l'inizio della stagione valgono per la stagione successiva.</li>
+        <li>Per entrare nel regolamento, le proposte richiedono adesione del 50% + 1, cioe 6 su 10.</li>
+      </ul>
+    </section>
 
-    <section id="rules-partecipanti" class="panel rules-section">
-      <p class="eyebrow">1</p>
-      <h2>Partecipanti</h2>
-      <p>Le squadre partecipanti sono 10.</p>
+    <section id="rules-definizioni" class="panel rules-section">
+      <p class="eyebrow">Definizioni</p>
+      <h2>Glossario operativo</h2>
       <div class="rules-table-wrap">
         <table class="rules-table">
-          <thead><tr><th>#</th><th>Squadra</th><th>Presidente</th></tr></thead>
+          <thead><tr><th>Voce</th><th>Sintesi</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Ac Milan</td><td>Vicinanza</td></tr>
-            <tr><td>2</td><td>Us Polisportiva Baronissi</td><td>Caparrotti jr.</td></tr>
-            <tr><td>3</td><td>Olympic Salerno</td><td>Gatto</td></tr>
-            <tr><td>4</td><td>As Paperopoli</td><td>Caparrotti sr.</td></tr>
-            <tr><td>5</td><td>Real Mappine</td><td>Guariglia</td></tr>
-            <tr><td>6</td><td>Due Fratelli</td><td>D’isanto Michele</td></tr>
-            <tr><td>7</td><td>Beetlejuice</td><td>D’Acunto</td></tr>
-            <tr><td>8</td><td>River Plaid</td><td>D’isanto Claudio</td></tr>
-            <tr><td>9</td><td>Prestige Worldwide</td><td>Davide Perruso</td></tr>
-            <tr><td>10</td><td>Real Pisistrius</td><td>Silvio Barra</td></tr>
+            <tr><td>FM</td><td>Fantamilioni, unita monetaria del gioco.</td></tr>
+            <tr><td>Switch</td><td>Inversione campo-panchina condizionata alla mancata titolarita reale del calciatore indicato. Nel regolamento e attivo in modalita Basic.</td></tr>
+            <tr><td>Criterio UNDER</td><td>Vincolo eventuale sulla presenza di Under in rosa. Per il 2026-2027 non e attivo.</td></tr>
+            <tr><td>D-Factor</td><td>Fattore difensivo Mantra basato sulla media del reparto difensivo eleggibile.</td></tr>
+            <tr><td>Fairplay</td><td>Bonus assegnato se nessun calciatore a voto prende cartellini gialli o rossi.</td></tr>
+            <tr><td>Money Injection</td><td>FM creati dalla Lega e immessi nel sistema per premi, valorizzazioni o meccaniche di gioco.</td></tr>
           </tbody>
+        </table>
+      </div>
+      <p class="rules-inline-note">Capitano e R-Factor sono descritti nel regolamento, ma risultano non attivi nella configurazione 2026-2027.</p>
+    </section>
+
+    <section id="rules-organico" class="panel rules-section">
+      <p class="eyebrow">Art. 1</p>
+      <h2>Organico e vincoli di partecipazione</h2>
+      <ul class="rules-list">
+        <li>Il numero dei Club partecipanti e fissato tassativamente in 10.</li>
+        <li>Ogni partecipante sottoscrive un vincolo quinquennale per garantire continuita al progetto manageriale Dynasty.</li>
+        <li>In caso di recesso anticipato, il partecipante deve collaborare alla ricerca del subentrante.</li>
+        <li>Il nuovo presidente eredita titolo sportivo, rosa, finanze e stadio del Club rilevato, salvo delibera unanime per rifondazione totale.</li>
+        <li>La quota versata o deposito cauzionale puo essere trattenuta come penale in caso di abbandono anticipato.</li>
+      </ul>
+      <div class="rules-table-wrap">
+        <table class="rules-table rules-compact-table">
+          <thead><tr><th>Dato presente nel PDF</th><th>Valore</th></tr></thead>
+          <tbody><tr><td>Club depositato</td><td>Salernitana 1919 - Silvio Barra</td></tr></tbody>
         </table>
       </div>
     </section>
 
-    <section id="rules-regole-base" class="panel rules-section">
-      <p class="eyebrow">2</p>
-      <h2>Regole base</h2>
-      <h3>Tabella punti</h3>
-      <div class="rules-table-wrap">
-        <table class="rules-table rules-compact-table">
-          <thead><tr><th>Punti squadra</th><th>Gol</th></tr></thead>
-          <tbody>
-            <tr><td>Fino a 65,5</td><td>0</td></tr>
-            <tr><td>Da 66 a 71,5</td><td>1</td></tr>
-            <tr><td>Da 72 a 77,5</td><td>2</td></tr>
-            <tr><td>Da 78 a 83,5</td><td>3</td></tr>
-            <tr><td>Da 84 a 89,5</td><td>4</td></tr>
-            <tr><td>Da 90 a 95,5</td><td>5</td></tr>
-            <tr><td>Da 96 a 101,5</td><td>6</td></tr>
-            <tr><td>E così via</td><td>+1 gol ogni 6 punti</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="rules-note-list">
-        <p>Quando una squadra totalizza meno di 60 punti, si assegna 1 gol all’altra squadra anche se questa ha totalizzato meno di 66, se la differenza tra i due punti-squadra è di almeno 6 punti.</p>
-        <p>È attivo l’intorno tra fasce: una squadra può vincere se ci sono più di 4 punti di differenza pur restando entrambe nella stessa fascia, ad esempio 77,5-73.</p>
-        <p>Redazione di riferimento: <strong>Napoli</strong>.</p>
-        <p>Assist normale: <strong>+1</strong>. Assist soft: <strong>+0,5</strong>, inclusi passaggi da fermo, rimesse laterali, rimesse dal fondo e passaggi volontari in cui il procurato vantaggio abbia ridotto la propria incidenza.</p>
-      </div>
-      <h3>Modificatore della difesa</h3>
-      <p>Il modificatore della difesa si applica quando la squadra scende in campo con 4 difensori. Si considera la media dei tre migliori difensori e del portiere, senza bonus e malus.</p>
-      <div class="rules-table-wrap">
-        <table class="rules-table rules-compact-table">
-          <thead><tr><th>Media voto</th><th>Bonus</th></tr></thead>
-          <tbody>
-            <tr><td>6,00 - 6,24</td><td>+1</td></tr>
-            <tr><td>6,25 - 6,49</td><td>+1,5</td></tr>
-            <tr><td>6,50 - 6,74</td><td>+2</td></tr>
-            <tr><td>6,75 - 6,99</td><td>+2,5</td></tr>
-            <tr><td>7,00 - 7,24</td><td>+3</td></tr>
-            <tr><td>7,25 - 7,49</td><td>+3,5</td></tr>
-            <tr><td>Da 7,50 in poi</td><td>+4</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h3>Panchina</h3>
-      <p>La panchina deve essere composta da massimo 12 calciatori. Si possono portare in panchina tutti gli elementi non facenti parte dell’undici titolare.</p>
-      <p>Sono previste 3 sostituzioni senza cambio modulo. Se non sono disponibili sostituti per il ruolo necessario, o se servono più di 3 sostituzioni, il Club gioca con uno o più calciatori in meno.</p>
-      <h3>Formazione non consegnata</h3>
-      <p>In caso di mancata comunicazione della formazione, scende in campo la formazione della giornata precedente. Per nuove competizioni senza formazione precedente, la squadra prende 0.</p>
-      <p>Dalla seconda mancata consegna stagionale scatta 1 punto di penalizzazione nell’anno in corso e 1 punto nell’anno successivo per ogni mancato inserimento. Ogni presidente può non schierare la formazione una sola volta senza sanzione.</p>
-    </section>
-
-    <section id="rules-rosa" class="panel rules-section">
-      <p class="eyebrow">3</p>
-      <h2>La rosa</h2>
-      <p>La rosa di ciascun Club può avere un numero variabile di calciatori, ma deve rispettare il limite minimo e massimo previsto.</p>
+    <section id="rules-rose-moduli" class="panel rules-section">
+      <p class="eyebrow">Art. 2</p>
+      <h2>Rose, moduli e schieramento</h2>
       <div class="rules-table-wrap">
         <table class="rules-table rules-compact-table">
           <thead><tr><th>Parametro</th><th>Valore</th></tr></thead>
           <tbody>
-            <tr><td>Numero minimo calciatori</td><td>18, portieri inclusi</td></tr>
-            <tr><td>Numero massimo calciatori</td><td>30, portieri inclusi</td></tr>
+            <tr><td>Portieri</td><td>Minimo 2, massimo 5</td></tr>
+            <tr><td>Giocatori di movimento</td><td>Minimo 21, massimo 28</td></tr>
+            <tr><td>Totale tesserati</td><td>Minimo 23, massimo 33</td></tr>
+            <tr><td>Panchina</td><td>Massimo 12 calciatori, con almeno un portiere obbligatorio</td></tr>
+            <tr><td>Timeout formazione</td><td>1 minuto</td></tr>
+            <tr><td>Switch</td><td>Attivo, modalita Basic</td></tr>
+            <tr><td>Visibilita rose/formazioni</td><td>Attiva</td></tr>
+            <tr><td>Criterio Under</td><td>Non attivo</td></tr>
+            <tr><td>Sostituzioni</td><td>5, tipo Basic</td></tr>
+            <tr><td>Riserva d'ufficio</td><td>Non attiva</td></tr>
           </tbody>
         </table>
       </div>
-      <p>I controlli si applicano alla partenza del campionato e al termine di ciascuna sessione di mercato.</p>
-      <div class="rules-table-wrap">
-        <table class="rules-table">
-          <thead><tr><th>Violazione</th><th>Sanzione</th></tr></thead>
-          <tbody>
-            <tr><td>Rosa inferiore a 18</td><td>Prelievo forzato di 10 fantamilioni. Se il Club non dispone dei fantamilioni richiesti, riceve 2 punti di penalizzazione in classifica di Campionato.</td></tr>
-            <tr><td>Rosa superiore a 30</td><td>Prelievo forzato dei giocatori acquistati, con perdita dei relativi fantamilioni, partendo dall’ultimo giocatore acquistato fino al raggiungimento dei 30 calciatori.</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>Sono validi solo i ruoli e i moduli ufficiali del sistema MANTRA&reg;. L'ordine panchina e ordine di preferenza assoluta per le sostituzioni tatticamente possibili.</p>
     </section>
 
-    <section id="rules-mercato-sessioni" class="panel rules-section">
-      <p class="eyebrow">4</p>
-      <h2>Mercato e sessioni</h2>
-      <h3>Asta iniziale</h3>
+    <section id="rules-calcolo" class="panel rules-section">
+      <p class="eyebrow">Art. 3</p>
+      <h2>Calcolo</h2>
       <ul class="rules-list">
-        <li>L’asta iniziale è prevista soltanto il primo anno.</li>
-        <li>Budget: 250 fantamilioni.</li>
-        <li>Asta al rilancio suddivisa per ruoli.</li>
-        <li>Le aste live degli anni successivi sono a chiamata, senza distinzione di ruoli.</li>
+        <li>Fonte voti: Fantacalcio, per il servizio Voti Live.</li>
+        <li>Soglia primo gol: 66.</li>
+        <li>Fasce gol: fisse, con 6 punti per fascia.</li>
+        <li>Limita vittoria: non attivo.</li>
+        <li>Limita pareggio: non attivo.</li>
+        <li>Autogol: non attivo.</li>
+        <li>Ammonito senza voto: resta in campo con voto 5,5, cioe 6 d'ufficio con ammonizione.</li>
+        <li>Formazione non schierata: si usa la precedente; se non esiste una formazione precedente nella competizione, la squadra prende 0 FP.</li>
       </ul>
-      <h3>Sessioni di mercato</h3>
-      <p>Durante l’asta iniziale gli svincoli non sono possibili. Durante le sessioni di mercato è proibito lo scambio di giocatori tra Club e qualsiasi altra operazione, ad esempio cessione di fantamilioni.</p>
-      <p>L’asta è al rilancio suddivisa per ruoli tramite sito Leghe Fantacalcio o applicazione Leghe Fantacalcio.</p>
-      <h3>Sessioni Settembre, Novembre e Mercato di riparazione</h3>
-      <div class="rules-table-wrap">
-        <table class="rules-table">
-          <thead><tr><th>Fase</th><th>Descrizione</th></tr></thead>
-          <tbody>
-            <tr><td>Prima giornata</td><td>Riservata agli svincoli. Ogni Club può svincolare calciatori e recuperare fantamilioni secondo regolamento. Comunicazione entro le 19:00 del giorno precedente all’asta tramite email al presidente di Lega.</td></tr>
-            <tr><td>Seconda giornata</td><td>Riservata all’asta tramite Leghe Fantacalcio. Per aste non live, stile Ebay dalle 15:00 alle 19:00, durata asta 30 minuti per calciatore e ultima chiamata alle 18:30.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h3>Note importanti</h3>
-      <ul class="rules-list">
-        <li>Durante le sessioni mercato non è possibile svincolare giocatori, salvo nella giornata prevista.</li>
-        <li>Al termine di ogni sessione mercato si applicano le penalizzazioni per rose sotto 18 o sopra 30.</li>
-        <li>Se un calciatore viene asteriscato dopo la fine del mercato di riparazione, la squadra ha 24 ore per sostituirlo con un calciatore presente nella lista svincolati il giorno del mercato.</li>
-      </ul>
-      <h3>Mercato estivo e asta precampionato</h3>
-      <p>Ogni Club può svincolare quanti calciatori desidera, recuperando i fantamilioni previsti, comunicandolo al presidente di Lega entro le 23:59 del giorno precedente l’asta precampionato. Il presidente effettua la stessa operazione 24 ore prima.</p>
-    </section>
-
-    <section id="rules-date-mercato" class="panel rules-section">
-      <p class="eyebrow">5</p>
-      <h2>Date sessioni di mercato</h2>
       <div class="rules-table-wrap">
         <table class="rules-table rules-compact-table">
-          <thead><tr><th>Sessione</th><th>Data</th></tr></thead>
+          <thead><tr><th>Bonus</th><th>Valore</th><th>Malus</th><th>Valore</th></tr></thead>
           <tbody>
-            <tr><td>Asta precampionato 2024/2025</td><td>18/08/2024</td></tr>
-            <tr><td>Asta Settembre 2024/2025</td><td>08/09/2024</td></tr>
-            <tr><td>Asta Novembre 2024/2025</td><td>17/11/2024</td></tr>
-            <tr><td>Asta post calciomercato invernale 2024/2025 e valida per gli anni successivi</td><td>09/02/2025</td></tr>
+            <tr><td>Gol segnato</td><td>+3</td><td>Gol subito</td><td>-1</td></tr>
+            <tr><td>Rigore segnato</td><td>+3</td><td>Rigore sbagliato</td><td>-3</td></tr>
+            <tr><td>Rigore parato</td><td>+3</td><td>Ammonizione</td><td>-0,5</td></tr>
+            <tr><td>Contributo al gol</td><td>+0,5</td><td>Espulsione</td><td>-1</td></tr>
+            <tr><td>Assist soft/standard/gold</td><td>+1</td><td>Autogol</td><td>-2</td></tr>
+            <tr><td>Porta inviolata</td><td>+1</td><td>Player of the match</td><td>0</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section id="rules-svincolo" class="panel rules-section">
-      <p class="eyebrow">6</p>
-      <h2>Svincolo calciatori</h2>
-      <p>Quando un Club svincola un calciatore durante una sessione di mercato, riceve un rimborso. La sola prima giornata di ogni sessione è riservata agli svincoli con recupero di fantamilioni.</p>
+    <section id="rules-modificatori" class="panel rules-section">
+      <p class="eyebrow">Art. 4</p>
+      <h2>Modificatori</h2>
+      <h3>D-Factor attivo</h3>
+      <p>Il D-Factor attribuisce bonus/malus in base alla media voto senza bonus e malus del reparto difensivo eleggibile. Se il reparto ha piu di 5 giocatori, si considerano i 5 voti migliori con il vincolo di almeno 3 tra Dc, Dd, Ds, B.</p>
+      <div class="rules-table-wrap">
+        <table class="rules-table rules-compact-table">
+          <thead><tr><th>Media voto reparto difensivo</th><th>Bonus</th></tr></thead>
+          <tbody>
+            <tr><td>X &lt; 6</td><td>0</td></tr>
+            <tr><td>6 &lt;= X &lt; 6,25</td><td>1</td></tr>
+            <tr><td>6,25 &lt;= X &lt; 6,5</td><td>1,5</td></tr>
+            <tr><td>6,5 &lt;= X &lt; 6,75</td><td>3</td></tr>
+            <tr><td>6,75 &lt;= X &lt; 7</td><td>4,5</td></tr>
+            <tr><td>X &gt;= 7</td><td>6</td></tr>
+          </tbody>
+        </table>
+      </div>
       <ul class="rules-list">
-        <li>Il rimborso è pari alla quotazione Fantacalcio del momento, sia per calciatori ancora presenti sia per calciatori andati via.</li>
-        <li>Il 30 giugno termina ufficialmente la stagione. Il 5 luglio le società possono effettuare i primi svincoli della nuova stagione usando ancora le quotazioni dell’anno precedente.</li>
-        <li>Nessun Club è obbligato a svincolare giocatori che lasciano la Serie A. Il calciatore può restare in rosa con asterisco, inutilizzabile, occupando uno slot.</li>
-        <li>I calciatori asteriscati non possono essere oggetto di scambi o trattative fino al loro ritorno nel listone Fantacalcio.</li>
-        <li>Un giocatore non può tornare nel Club che lo ha svincolato finché non trascorre l’anno calcistico previsto dal regolamento. Eccezione: portieri acquistabili dalla seconda volta in poi a costo di quotazione Fantacalcio.</li>
-        <li>I calciatori acquistati dal 1 luglio della nuova stagione hanno valore di svincolo pari a 0 fino al luglio successivo, se lo svincolo è volontario.</li>
+        <li>Fairplay: attivo, +1 se nessun calciatore a voto prende cartellini gialli o rossi.</li>
+        <li>R-Factor: non attivo.</li>
+        <li>Fattore Capitano: non attivo.</li>
       </ul>
     </section>
 
-    <section id="rules-scambi" class="panel rules-section">
-      <p class="eyebrow">7</p>
-      <h2>Scambi, prestiti e operazioni</h2>
-      <p>Dal termine dell’asta precampionato fino al 28 febbraio dell’anno successivo sono permessi scambi, acquisti e altre operazioni tra Club.</p>
+    <section id="rules-primavera" class="panel rules-section">
+      <p class="eyebrow">Art. 5</p>
+      <h2>Primavera e Under23</h2>
+      <p>Per la stagione 2026-2027 il sistema Primavera e Under23 non e attivo. Eventuali introduzioni saranno deliberate per le stagioni successive.</p>
+    </section>
+
+    <section id="rules-mercato" class="panel rules-section">
+      <p class="eyebrow">Art. 6</p>
+      <h2>Mercato</h2>
       <ul class="rules-list">
-        <li>Nel gruppo WhatsApp dedicato i Club interessati devono specificare giocatori, fantamilioni, clausole, assicurazioni e condizioni dell’operazione.</li>
-        <li>Le parti devono inoltrare anche una mail con le condizioni dello scambio.</li>
-        <li>Il prestito dura una stagione intera, fino alla fine del campionato.</li>
-        <li>Il Club che riceve il calciatore in prestito non ne detiene il cartellino.</li>
-        <li>Se un calciatore prestato diventa asteriscato, il prestito si considera concluso e il calciatore torna al Club d’origine.</li>
-        <li>Dal 28 febbraio il mercato chiude e non sono più possibili scambi, acquisti o altre operazioni fino al termine del campionato.</li>
-        <li>Le operazioni riprendono dal 1 luglio della stagione successiva e terminano un giorno prima dell’asta precampionato.</li>
+        <li>L'anno calcistico parte il 1 luglio e termina il 30 giugno dell'anno successivo.</li>
+        <li>L'asta iniziale si svolge solo il primo anno e assegna le rose iniziali.</li>
+        <li>Budget asta iniziale: 250 FM a testa.</li>
+        <li>Modalita asta: a chiamata; ordine iniziale sorteggiato.</li>
+        <li>Per le aste successive, l'ordine di chiamata segue l'inverso della classifica del Campionato corrente.</li>
+        <li>Non e previsto vincolo di ruolo.</li>
+      </ul>
+      <div class="rules-table-wrap">
+        <table class="rules-table">
+          <thead><tr><th>Sessione</th><th>Stato date</th></tr></thead>
+          <tbody>
+            <tr><td>Asta Precampionato 26/27</td><td>Da definire, prima della prima giornata di campionato</td></tr>
+            <tr><td>Asta Settembre 26/27</td><td>Da definire, solitamente durante la pausa nazionali post mercato Serie A</td></tr>
+            <tr><td>Asta Novembre 26/27</td><td>Da definire, se confermata la pausa nazionali di novembre</td></tr>
+            <tr><td>Asta Invernale 26/27</td><td>Da definire, dopo il mercato invernale Serie A</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Le sessioni sono articolate in Fase 1, riservata a svincoli e dichiarazione stadio quando prevista, e Fase 2, dedicata all'asta.</p>
+    </section>
+
+    <section id="rules-svincoli" class="panel rules-section">
+      <p class="eyebrow">Art. 7</p>
+      <h2>Svincolo calciatori</h2>
+      <ul class="rules-list">
+        <li>Gli svincoli con recupero FM sono consentiti nella sola Fase 1 di ogni sessione di mercato.</li>
+        <li>Il rimborso e pari alla quotazione Fantacalcio del momento o all'ultima quotazione disponibile se il calciatore ha lasciato la Serie A.</li>
+        <li>Un calciatore asteriscato puo essere tenuto in rosa, ma resta inutilizzabile e occupa slot.</li>
+        <li>I calciatori asteriscati non possono essere scambiati finche non tornano disponibili nel listone.</li>
+        <li>Un giocatore non puo tornare al Club che lo ha svincolato nello stesso anno calcistico, salvo eccezione portieri dalla seconda volta in poi a quotazione.</li>
+        <li>I giocatori acquistati dal 1 luglio hanno valore di svincolo pari a 0 fino al luglio successivo in caso di svincolo volontario.</li>
+      </ul>
+    </section>
+
+    <section id="rules-mercato-interno" class="panel rules-section">
+      <p class="eyebrow">Art. 8</p>
+      <h2>Mercato interno</h2>
+      <ul class="rules-list">
+        <li>Il mercato interno e aperto dal 1 luglio fino alla fine del mercato invernale di Serie A.</li>
+        <li>E chiuso tra l'inizio della Fase 1 e la fine della Fase 2 di ogni sessione di mercato.</li>
+        <li>Gli scambi nei periodi chiusi possono essere concordati, ma hanno effetto dal 1 luglio della nuova stagione o alla riapertura del mercato interno.</li>
+        <li>Il prestito dura una stagione intera e il Club ricevente non detiene il cartellino.</li>
+        <li>Se il calciatore prestato diventa asteriscato, il prestito si chiude e il calciatore torna al Club d'origine.</li>
+        <li>Scambi, FM, clausole e assicurazioni vanno specificati nel gruppo dedicato e inoltrati anche via mail al presidente.</li>
       </ul>
     </section>
 
     <section id="rules-finanze" class="panel rules-section">
-      <p class="eyebrow">8</p>
+      <p class="eyebrow">Art. 9</p>
       <h2>Finanze</h2>
-      <p>Ogni Club gestisce le proprie finanze in fantamilioni, con entrate e uscite che formano un bilancio annuale. Il bilancio non si resetta al termine della stagione.</p>
+      <ul class="rules-list">
+        <li>Ogni Club gestisce entrate e uscite in FM con un bilancio annuale.</li>
+        <li>Il saldo FM non puo essere negativo; le operazioni che lo rendono negativo sono nulle salvo casi espressamente previsti.</li>
+        <li>Il Presidente di Lega mantiene un registro ufficiale condiviso e aggiornato dopo mercati e premi.</li>
+        <li>Ogni Club ha 48 ore per contestare errori.</li>
+      </ul>
       <div class="rules-table-wrap">
         <table class="rules-table">
-          <thead><tr><th>Voce</th><th>Descrizione</th></tr></thead>
-          <tbody>
-            <tr><td>Entrate</td><td>Cessioni di calciatori, crediti da bonus, premi competizioni, introiti stadio e altre entrate.</td></tr>
-            <tr><td>Uscite</td><td>Acquisti calciatori, debiti da bonus, costi di costruzione, costi gestione stadio e altre uscite.</td></tr>
-          </tbody>
+          <thead><tr><th>Entrate</th><th>Uscite</th></tr></thead>
+          <tbody><tr><td>Vendite, svincoli, bonus, premi competizioni, premi stadio</td><td>Acquisti, costi stadio, penalizzazioni e altre uscite regolamentari</td></tr></tbody>
         </table>
       </div>
-      <p>Al termine della stagione 2024/2025 le società ricevono 40 milioni di premio finale.</p>
-      <p>Per la Coppa Italia: vincitore 10 milioni, finalista 8, semifinalisti 6, squadre eliminate ai quarti 4, squadre eliminate alla Battle Royale 2.</p>
-      <p>Dalla stagione 2023/2024, le ultime due classificate sono escluse dalla successiva Champions League. Non c’è esclusione dalla Coppa Italia. Il costo di iscrizione resta aumentato a 120€, dieci in più degli altri.</p>
     </section>
 
     <section id="rules-stadio" class="panel rules-section">
-      <p class="eyebrow">9</p>
-      <h2>Stadio di proprietà</h2>
-      <p>Ogni Club può costruire e ampliare il proprio stadio per ottenere bonus di giornata nelle partite casalinghe e introiti in fantamilioni. Ogni Club parte dal livello stadio zero.</p>
-      <p>Ogni stagione si può costruire al massimo un livello. La costruzione è possibile solo prima dell’asta precampionato, comunicandolo al presidente di Lega entro le 19:00 di tre giorni prima dell’asta.</p>
+      <p class="eyebrow">Art. 10</p>
+      <h2>Stadio dal 2027-2028</h2>
+      <p>La costruzione dello stadio sara disponibile dalla stagione 2027-2028. Ogni Club parte dal livello zero e puo costruire al massimo un livello all'anno durante la Fase 1 del mercato, comunicandolo al presidente.</p>
       <div class="rules-table-wrap">
         <table class="rules-table">
-          <thead><tr><th>Livello</th><th>Punti per partita</th><th>Milioni per pareggio</th><th>Milioni per vittoria</th><th>Costo una tantum</th><th>Mantenimento</th></tr></thead>
+          <thead><tr><th>Livello</th><th>Punti casa</th><th>FM pareggio</th><th>FM vittoria</th><th>Costo costruzione</th><th>Manutenzione</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>+0,5</td><td>0</td><td>0,5</td><td>20</td><td>5</td></tr>
-            <tr><td>2</td><td>+1</td><td>0,5</td><td>1</td><td>30</td><td>12</td></tr>
-            <tr><td>3</td><td>+1,5</td><td>0,75</td><td>1,25</td><td>47</td><td>20</td></tr>
-            <tr><td>4</td><td>+2</td><td>1</td><td>1,5</td><td>75</td><td>35</td></tr>
+            <tr><td>Zero</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>1</td><td>0,5</td><td>0</td><td>0,5</td><td>20</td><td>5</td></tr>
+            <tr><td>2</td><td>1</td><td>0,5</td><td>1</td><td>30</td><td>12</td></tr>
+            <tr><td>3</td><td>1,5</td><td>0,75</td><td>1,25</td><td>47</td><td>20</td></tr>
+            <tr><td>4</td><td>2</td><td>1</td><td>1,5</td><td>75</td><td>35</td></tr>
           </tbody>
         </table>
       </div>
-      <h3>Coefficienti introiti fine stagione</h3>
-      <div class="rules-table-wrap">
-        <table class="rules-table rules-compact-table">
-          <thead><tr><th>Livello</th><th>Coefficiente</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td>0,15</td></tr>
-            <tr><td>2</td><td>0,25</td></tr>
-            <tr><td>3</td><td>0,35</td></tr>
-            <tr><td>4</td><td>0,45</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Se il livello comunicato per l’anno successivo è inferiore a quello dell’anno appena concluso, i livelli precedentemente costruiti sono annullati senza recupero dei fantamilioni spesi.</p>
+      <p>Gli introiti extra di fine campionato sono calcolati sui punti conquistati in casa con coefficienti 0,15, 0,25, 0,35 e 0,45 per i livelli da 1 a 4.</p>
     </section>
 
     <section id="rules-calendario" class="panel rules-section">
-      <p class="eyebrow">10</p>
+      <p class="eyebrow">Art. 11</p>
       <h2>Variazioni di calendario</h2>
-      <h3>Posticipo partite</h3>
       <ul class="rules-list">
-        <li>Se una o più partite non vengono recuperate entro una settimana dal turno ufficiale, si assegna 6 d’ufficio.</li>
-        <li>Se il recupero avviene entro la settimana dal turno ufficiale, si usano i voti reali.</li>
+        <li>Le partite posticipate sono conteggiate se disputate nel lasso tra fine turno precedente e inizio turno successivo rispetto alla giornata in corso.</li>
+        <li>Le partite fuori da questo intervallo sono considerate rinviate e assegnano 6 d'ufficio agli arruolabili, esclusi gli squalificati.</li>
+        <li>Se la Serie A viene sospesa o non conclusa, tutte le squadre sono automaticamente iscritte all'edizione successiva.</li>
       </ul>
-      <h3>Parità di punti a fine campionato</h3>
-      <ol class="rules-list numbered">
-        <li>Scontri diretti.</li>
-        <li>Differenza reti negli scontri diretti.</li>
-        <li>Somma punteggio scontri diretti.</li>
-        <li>Somma punteggio totale.</li>
-        <li>Gol fatti.</li>
-        <li>Differenza reti.</li>
-      </ol>
-      <h3>Parità negli scontri diretti di playoff o coppe</h3>
-      <ol class="rules-list numbered">
-        <li>Posizionamento in classifica in caso di playoff o in griglia nel caso di Coppa Italia.</li>
-        <li>Somma punteggio della partita, solo se la griglia ha determinato gli stessi punti o se la coppa non tiene conto di una griglia.</li>
-      </ol>
     </section>
 
-    <section id="rules-coppe" class="panel rules-section">
-      <p class="eyebrow">11</p>
-      <h2>Coppa Italia e Champions League</h2>
+    <section id="rules-competizioni" class="panel rules-section">
+      <p class="eyebrow">Art. 12</p>
+      <h2>Competizioni</h2>
+      <h3>Campionato / Regular Season</h3>
+      <p>Dalla 1 alla 36 giornata di Serie A: andata 1, ritorno 1, andata 2, ritorno 2. In caso di parita valgono nell'ordine scontri diretti, differenza reti negli scontri diretti, somma punteggio scontri diretti, somma punteggio totale, gol fatti e differenza reti.</p>
+      <h3>Playoff</h3>
+      <p>Coinvolgono le posizioni dalla 4 alla 7 dopo la 36 giornata: semifinali alla 37, finalissima alla 38. A parita passa la squadra meglio classificata in regular season; il gol fuori casa non vale doppio.</p>
       <h3>Coppa Italia</h3>
-      <p>Dalla stagione 2024/2025 le squadre partecipanti tornano a essere 10. La Battle Royale è composta da 4 giornate sorteggiate, che generano una classifica in cui le ultime 4 sono eliminate.</p>
-      <p>Seguono quarti, semifinali e finale secca, per un totale di 9 giornate sorteggiate: 3, 7, 9, 13 per la Battle Royale; 15 e 16 per i quarti; 25 e 26 per le semifinali; 35 per la finale unica.</p>
-      <div class="rules-table-wrap">
-        <table class="rules-table rules-compact-table">
-          <thead><tr><th>Uscita</th><th>Premio in milioni</th></tr></thead>
-          <tbody>
-            <tr><td>Battle Royale</td><td>2</td></tr>
-            <tr><td>Quarti</td><td>4</td></tr>
-            <tr><td>Semifinali</td><td>6</td></tr>
-            <tr><td>Finale</td><td>8</td></tr>
-            <tr><td>Vincitrice</td><td>10</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>La Coppa Italia prevede una Battle Royale su 4 giornate, con eliminazione delle ultime 4, seguita da fase finale con quarti, semifinali e finale secca.</p>
       <h3>Champions League</h3>
-      <p>Dalla stagione 2024/2025 viene ripristinata la Champions League, riservata alle prime 8 classificate della stagione precedente. Si parte dai quarti con sorteggio integrale, poi semifinali e finale unica.</p>
-      <p>Le giornate previste sono: 1 e 16 per i quarti; 24 e 31 per le semifinali; 32 per la finale.</p>
+      <p>Attiva dalla stagione 2027-2028. Per la prima edizione le qualificate derivano dai risultati 2026-2027: vincitore campionato, secondo posto, vincitore playoff, vincitore Coppa Italia se non gia qualificato e altre squadre in base alla regular season.</p>
+    </section>
+
+    <section id="rules-quote" class="panel rules-section">
+      <p class="eyebrow">Art. 13</p>
+      <h2>Quote e montepremi</h2>
       <div class="rules-table-wrap">
         <table class="rules-table rules-compact-table">
-          <thead><tr><th>Uscita</th><th>Premio in milioni</th></tr></thead>
+          <thead><tr><th>Posizione finale</th><th>Quota</th></tr></thead>
+          <tbody><tr><td>1-8</td><td>110&euro;</td></tr><tr><td>9-10</td><td>120&euro;</td></tr></tbody>
+        </table>
+      </div>
+      <div class="rules-table-wrap">
+        <table class="rules-table rules-compact-table">
+          <thead><tr><th>Premio</th><th>Importo</th></tr></thead>
           <tbody>
-            <tr><td>Quarti</td><td>1</td></tr>
-            <tr><td>Semifinali</td><td>3</td></tr>
-            <tr><td>Finale</td><td>5</td></tr>
-            <tr><td>Vincitrice</td><td>7</td></tr>
+            <tr><td>1 posto Regular Season</td><td>440&euro;</td></tr>
+            <tr><td>2 posto Regular Season</td><td>280&euro;</td></tr>
+            <tr><td>3 posto Regular Season</td><td>170&euro;</td></tr>
+            <tr><td>Playoff</td><td>100&euro;</td></tr>
+            <tr><td>Coppa Italia</td><td>130&euro;</td></tr>
+            <tr><td>Totale</td><td>1120&euro;</td></tr>
           </tbody>
         </table>
       </div>
-      <p>I premi in milioni vengono distribuiti alla fine della stagione.</p>
+      <h3>Premi in crediti</h3>
+      <ul class="rules-list">
+        <li>Partecipazione: 15 FM.</li>
+        <li>Regular Season: 15, 10, 8, 7, 6 o 5 FM secondo piazzamento.</li>
+        <li>Vincitore Playoff: 7 FM.</li>
+        <li>Vincitore Coppa Italia: 10 FM.</li>
+        <li>Vincitore Champions League: 10 FM.</li>
+        <li>Qualificazione Champions League: 5 FM.</li>
+        <li>Paracadute 9 e 10 posto: 3 FM.</li>
+      </ul>
     </section>
 
-    <section id="rules-montepremi" class="panel rules-section">
-      <p class="eyebrow">12</p>
-      <h2>Montepremi</h2>
-      <p>Montepremi totale: <strong>€ 1120</strong>.</p>
-      <div class="rules-table-wrap">
-        <table class="rules-table rules-compact-table">
-          <thead><tr><th>Piazzamento / premio</th><th>Importo</th></tr></thead>
-          <tbody>
-            <tr><td>1° classificato</td><td>440€</td></tr>
-            <tr><td>2° classificato</td><td>280€</td></tr>
-            <tr><td>3° classificato</td><td>170€</td></tr>
-            <tr><td>Playoff</td><td>100€</td></tr>
-            <tr><td>Coppa</td><td>130€</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="rules-oscar" class="panel rules-section">
-      <p class="eyebrow">13</p>
-      <h2>Oscar del fantacalcio</h2>
-      <p>Ogni anno, a partire da questa stagione, vengono istituiti i premi Oscar del fantacalcio.</p>
+    <section id="rules-penalizzazioni" class="panel rules-section">
+      <p class="eyebrow">Penalizzazioni</p>
+      <h2>Sanzioni principali</h2>
       <div class="rules-table-wrap">
         <table class="rules-table">
-          <thead><tr><th>Premio</th><th>Descrizione</th></tr></thead>
+          <thead><tr><th>Caso</th><th>Sanzione</th></tr></thead>
           <tbody>
-            <tr><td>Panchina d’Oro</td><td>Alla società che ha dimostrato di essere la più forte.</td></tr>
-            <tr><td>Limone d’Oro</td><td>Alla società più sfortunata.</td></tr>
-            <tr><td>Cucchiaio di Legno</td><td>Alla società mestamente retrocessa in ultima posizione.</td></tr>
-            <tr><td>Piangina d’Oro</td><td>Al presidente che ha pianto di più nel corso dell’anno.</td></tr>
-            <tr><td>Pacchina d’Oro</td><td>Al presidente più culone dell’anno.</td></tr>
+            <tr><td>Rosa sotto 23 tesserati al termine di un'asta</td><td>Prelievo forzato di 10 FM per ogni giocatore mancante; se i FM non bastano, -2 punti per ogni giocatore mancante.</td></tr>
+            <tr><td>Rosa sopra 33 tesserati al termine di un'asta</td><td>Eliminazione forzata degli ultimi acquisti fino al rientro nel limite, con perdita dei FM associati.</td></tr>
+            <tr><td>Seconda mancata consegna formazione</td><td>-1 punto nella stagione corrente e -1 punto nella stagione successiva.</td></tr>
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section id="rules-appendice" class="panel rules-section">
+      <p class="eyebrow">Appendice</p>
+      <h2>Tabella sostituzioni Mantra</h2>
+      <p>La tabella sostituzioni completa occupa le pagine finali del PDF e contiene le matrici per i moduli Mantra ammessi. Per consultare i dettagli di ogni modulo, scarica o apri il PDF ufficiale.</p>
+      <p><a class="button button-secondary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf" target="_blank" rel="noopener noreferrer">Apri appendice nel PDF</a></p>
     </section>
           </div>
         </div>
@@ -355,6 +357,7 @@ function mountRegolamentoSectionV402() {
   if (!host || host.dataset.sectionMounted === 'true') return false;
   host.innerHTML = REGOLAMENTO_SECTION_HTML_V402;
   host.dataset.sectionMounted = 'true';
+  host.dataset.regolamentoVersion = '453';
   return true;
 }
 
@@ -364,10 +367,14 @@ if (document.readyState === 'loading') {
   mountRegolamentoSectionV402();
 }
 
-window.FantaPetilloRegolamentoSectionV402 = Object.freeze({
-  version: 'V402',
+window.FantaPetilloRegolamentoSectionV453 = Object.freeze({
+  version: 'V453',
   section: 'regolamento',
+  season: '2026-2027',
+  pdf: FANTAPETILLO_REGOLAMENTO_PDF_V453,
   source: 'assets/js/sections/regolamento-section-v402.js',
   mountedFromTemplate: true,
   mount: mountRegolamentoSectionV402
 });
+
+window.FantaPetilloRegolamentoSectionV402 = window.FantaPetilloRegolamentoSectionV453;

@@ -25,8 +25,8 @@ try {
   check(config.guardrails?.firestoreRulesVersion === '450', 'rules restano V450');
 
   const index = read('index.html');
-  check(index.includes('fanta-petillo-admin-onboarding-v451.js?v=452'), 'index carica onboarding Admin V451');
-  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'index mantiene guard Admin bootstrap');
+  check(/fanta-petillo-admin-onboarding-v451\.js\?v=\d+/.test(index), 'index carica onboarding Admin V451 versionato');
+  check(/fanta-petillo-admin-bootstrap-v450\.js\?v=\d+/.test(index), 'index mantiene guard Admin bootstrap versionato');
   const versions = [...new Set((index.match(/\?v=\d+/g) || []).map((m) => m.slice(3)))];
   check(versions.length === 1 && Number(versions[0]) >= 451, 'index cache-buster V451+');
 
@@ -42,7 +42,7 @@ try {
   check(guard.includes('noindex,nofollow'), 'guard mantiene noindex');
 
   const app = read('assets/app.js');
-  check(/DEPLOY_EXPECTED_VERSION_V181 = "(451|452)"/.test(app), 'DEPLOY_EXPECTED_VERSION clone V451+');
+  check(/DEPLOY_EXPECTED_VERSION_V181 = \"(45[1-9]|[5-9][0-9][0-9])\"/.test(app), 'DEPLOY_EXPECTED_VERSION clone V451+');
   check(app.includes('FantaPetilloAdminOnboardingV451'), 'marker app onboarding V451');
 
   const css = read('assets/styles.css');

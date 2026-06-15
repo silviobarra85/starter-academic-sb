@@ -2799,6 +2799,23 @@ else
   fail "node non disponibile per audit favicon FantaPetillo V452"
 fi
 
+
+print_step "Audit regolamento FantaPetillo V453"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_regolamento_v453="$SITE_ROOT/tools/audit-fantapetillo-regolamento-v453.mjs"
+  if [[ -f "$audit_fantapetillo_regolamento_v453" ]]; then
+    if node "$audit_fantapetillo_regolamento_v453" --quiet; then
+      pass "audit regolamento FantaPetillo V453 superato"
+    else
+      fail "audit regolamento FantaPetillo V453 fallito"
+    fi
+  else
+    fail "tool audit regolamento FantaPetillo V453 mancante"
+  fi
+else
+  fail "node non disponibile per audit regolamento FantaPetillo V453"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

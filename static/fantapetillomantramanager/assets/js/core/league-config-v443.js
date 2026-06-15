@@ -115,7 +115,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=452';
+const CONFIG_URL_V443 = './assets/league-config.json?v=453';
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);

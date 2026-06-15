@@ -19,8 +19,8 @@ function exists(file) { return fs.existsSync(file); }
 try {
   const zonaConfig = json(path.join(siteRoot, 'assets', 'league-config.json'));
   const cloneConfig = json(path.join(cloneRoot, 'assets', 'league-config.json'));
-  check(zonaConfig.currentVersion === '452', 'ZonaOrientale currentVersion V452');
-  check(cloneConfig.currentVersion === '452', 'clone currentVersion V452');
+  check(Number(zonaConfig.currentVersion) >= 452, 'ZonaOrientale currentVersion >= V452');
+  check(Number(cloneConfig.currentVersion) >= 452, 'clone currentVersion >= V452');
   check(zonaConfig.firebase?.projectId !== cloneConfig.firebase?.projectId, 'Firebase separati invariati');
 
   const iconRoot = path.join(cloneRoot, 'assets', 'icons');

@@ -1,3 +1,11 @@
+## Aggiornamento V453 - Regolamento FantaPetilloMantraManager 2026-2027 (15/06/2026)
+
+- Runtime avanzato a V453 con footer e cache-buster coerenti su ZonaOrientale e clone.
+- Nel clone `static/fantapetillomantramanager/` e' stato aggiunto il PDF pubblico del regolamento 2026-2027 in `assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf`.
+- La sezione `/#regolamento` del clone e' stata strutturata con titolo dedicato, pulsanti `Scarica PDF`/`Apri PDF`, riepilogo dei parametri principali, indice e sezioni per gli articoli del regolamento.
+- Aggiunti audit `tools/audit-regolamento-v453.mjs` nel clone e `tools/audit-fantapetillo-regolamento-v453.mjs` lato ZonaOrientale.
+- Nessuna modifica a Firebase, Admin, rules, snapshot, Area Squadra, Bilanci mobile V438 o badge dispositivo V434.
+
 ## Aggiornamento V448 - Audit QA clone FantaPetilloMantraManager (15/06/2026)
 
 - Runtime avanzato a V448 con footer e cache-buster coerenti su ZonaOrientale e clone sandbox.

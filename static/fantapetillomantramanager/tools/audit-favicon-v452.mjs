@@ -16,7 +16,7 @@ function exists(rel) { return fs.existsSync(path.join(siteRoot, rel)); }
 
 try {
   const config = json('assets/league-config.json');
-  check(config.currentVersion === '452', 'config currentVersion V452');
+  check(Number(config.currentVersion) >= 452, 'config currentVersion >= V452');
   check(config.leagueId === 'fantapetillomantramanager', 'identity clone corretta');
 
   const required = [
@@ -39,14 +39,14 @@ try {
   check(manifest.icons?.some((icon) => icon.src === './assets/icons/android-chrome-512x512.png'), 'manifest collega icona 512');
 
   const index = read('index.html');
-  check(index.includes('href="./favicon.ico?v=452"'), 'index collega favicon.ico V452');
-  check(index.includes('favicon-32x32.png?v=452'), 'index collega favicon 32 V452');
-  check(index.includes('favicon-16x16.png?v=452'), 'index collega favicon 16 V452');
-  check(index.includes('apple-touch-icon.png?v=452'), 'index collega apple touch icon V452');
+  check(/href="\.\/favicon\.ico\?v=\d+"/.test(index), 'index collega favicon.ico versionata');
+  check(/favicon-32x32\.png\?v=\d+/.test(index), 'index collega favicon 32 versionata');
+  check(/favicon-16x16\.png\?v=\d+/.test(index), 'index collega favicon 16 versionata');
+  check(/apple-touch-icon\.png\?v=\d+/.test(index), 'index collega apple touch icon versionata');
   check(index.includes('android-chrome-512x512.png'), 'index usa icona 512 per metadata social');
 
   const versions = [...new Set((index.match(/\?v=\d+/g) || []).map((m) => m.slice(3)))];
-  check(versions.length === 1 && versions[0] === '452', 'cache-buster index V452');
+  check(versions.length === 1 && versions[0] === config.currentVersion, `cache-buster index V${config.currentVersion}`);
 } catch (error) {
   fail(error?.stack || error?.message || String(error));
 }

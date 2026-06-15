@@ -115,3 +115,17 @@ Il helper V451 e' read-only: non scrive su Firebase e non sblocca Area Squadra p
 La V452 aggiorna favicon e icone PWA/social del clone con sigla `FPMM` e stagione `2026-2027`. Sono stati aggiornati `favicon.ico`, le PNG in `assets/icons/` e aggiunto il sorgente `fantapetillo-favicon-source.svg`.
 
 La modifica non tocca Firebase, Admin, rules o Area Squadra. L'Admin onboarding V451 resta attivo e Area Squadra resta guardata fino a inserimento dati reali e `teamUsers`.
+
+
+## V453 - Regolamento 2026-2027
+
+La sezione `Regolamento` del clone e' stata sostituita con una struttura dedicata al regolamento ufficiale `Fantacalcio MANTRA® Manageriale 2026-2027`.
+
+Sono stati aggiunti:
+
+- PDF pubblico scaricabile in `assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf`;
+- pulsanti `Scarica PDF` e `Apri PDF` nella sezione `/#regolamento`;
+- riepilogo navigabile degli articoli e dei parametri principali;
+- audit `tools/audit-regolamento-v453.mjs`.
+
+La modifica non tocca Firebase, Admin, rules, snapshot o Area Squadra.

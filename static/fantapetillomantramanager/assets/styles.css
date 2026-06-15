@@ -14250,3 +14250,64 @@ html[data-theme="light"] table.roster-player-table.roster-listone-skin-v408 thea
     padding: 0 0.9rem 1rem;
   }
 }
+
+
+/* V453 - FantaPetillo regolamento PDF 2026-2027. */
+.regulation-panel-v453 .regulation-panel-header {
+  align-items: flex-start;
+  gap: 1rem;
+}
+.rules-actions-v453 {
+  display: flex;
+  gap: .65rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.rules-summary-v453 {
+  margin-bottom: 1rem;
+}
+.rules-highlight-grid-v453 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .75rem;
+}
+.rules-highlight-grid-v453 article {
+  border: 1px solid var(--border-color, rgba(148, 163, 184, .24));
+  border-radius: 14px;
+  padding: .85rem;
+  background: rgba(15, 23, 42, .32);
+}
+.rules-highlight-grid-v453 strong {
+  display: block;
+  font-size: .95rem;
+  margin-bottom: .35rem;
+}
+.rules-highlight-grid-v453 span {
+  color: var(--text-muted, #94a3b8);
+  font-size: .86rem;
+  line-height: 1.35;
+}
+html[data-theme="light"] .rules-highlight-grid-v453 article {
+  background: rgba(248, 250, 252, .86);
+}
+@media (max-width: 720px) {
+  .regulation-panel-v453 .regulation-panel-header {
+    flex-direction: column;
+  }
+  .rules-actions-v453,
+  .rules-actions-v453 .button {
+    width: 100%;
+  }
+  .rules-actions-v453 .button {
+    justify-content: center;
+  }
+  .rules-highlight-grid-v453 {
+    grid-template-columns: 1fr 1fr;
+    gap: .55rem;
+  }
+}
+@media (max-width: 380px) {
+  .rules-highlight-grid-v453 {
+    grid-template-columns: 1fr;
+  }
+}

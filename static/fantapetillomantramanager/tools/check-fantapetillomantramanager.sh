@@ -18,26 +18,14 @@ fi
 if grep -q 'zonaorientale-d07af' "$SITE_ROOT/assets/firebase.js"; then fail "firebase ZonaOrientale presente nel clone"; else pass "Firebase ZonaOrientale assente dal clone"; fi
 if grep -q '"adminOnboardingEnabled": true' "$SITE_ROOT/assets/league-config.json"; then pass "config onboarding Admin V451"; elif grep -q '"firebaseConnected": "admin-bootstrap-v450"' "$SITE_ROOT/assets/league-config.json"; then pass "config Admin bootstrap V450"; else fail "config Firebase clone non esplicita stato sicuro"; fi
 versions="$(grep -Roh '?v=[0-9][0-9]*' "$SITE_ROOT"/*.html | sed 's/?v=//' | sort -u | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-if [[ "$versions" == "452" ]]; then pass "cache-buster clone V452"; else fail "cache-buster clone non allineati: $versions"; fi
+if [[ "$versions" == "453" ]]; then pass "cache-buster clone V453"; else fail "cache-buster clone non allineati: $versions"; fi
 if command -v node >/dev/null 2>&1; then
   if node "$SITE_ROOT/tools/audit-admin-bootstrap-v450.mjs" --quiet; then pass "audit Admin bootstrap V450"; else fail "audit Admin bootstrap V450"; fi
-else
-  fail "node non disponibile per audit Admin bootstrap V450"
-fi
-
-
-if command -v node >/dev/null 2>&1; then
   if node "$SITE_ROOT/tools/audit-admin-onboarding-v451.mjs" --quiet; then pass "audit Admin onboarding V451"; else fail "audit Admin onboarding V451"; fi
-else
-  fail "node non disponibile per audit Admin onboarding V451"
-fi
-
-
-if command -v node >/dev/null 2>&1; then
   if node "$SITE_ROOT/tools/audit-favicon-v452.mjs" --quiet; then pass "audit favicon V452"; else fail "audit favicon V452"; fi
+  if node "$SITE_ROOT/tools/audit-regolamento-v453.mjs" --quiet; then pass "audit regolamento V453"; else fail "audit regolamento V453"; fi
 else
-  fail "node non disponibile per audit favicon V452"
+  fail "node non disponibile per audit runtime clone"
 fi
-
 if [[ "$failures" -gt 0 ]]; then exit 1; fi
-printf 'Controlli clone favicon V452 passati.\n'
+printf 'Controlli clone regolamento V453 passati.\n'

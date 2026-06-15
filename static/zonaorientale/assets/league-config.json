@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "452",
+  "currentVersion": "453",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -13,7 +13,7 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "favicon-v452"
+    "status": "regolamento-v453"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/zonaorientale/bilanci.html",
@@ -54,7 +54,10 @@
     "adminOnboardingVersion": "451",
     "cloneAdminOnboardingReady": true,
     "cloneFaviconVersion": "452",
-    "cloneFaviconIncludesSeason": "2026-2027"
+    "cloneFaviconIncludesSeason": "2026-2027",
+    "cloneRegolamentoVersion": "453",
+    "cloneRegolamentoSeason": "2026-2027",
+    "cloneRegolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf"
   },
   "branding": {
     "siteName": "ZonaOrientale Salerno",

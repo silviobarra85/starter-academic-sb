@@ -49,7 +49,7 @@ try {
   const zonaConfig = json(path.join(siteRoot, 'assets', 'league-config.json'));
   check(Number(zonaConfig.currentVersion) >= 448, `ZonaOrientale currentVersion V${zonaConfig.currentVersion}`);
   check(zonaConfig.guardrails?.cloneSandboxAudited === true, 'guardrail cloneSandboxAudited presente');
-  check(['sandbox-audited-v448','firebase-bootstrap-v449','admin-bootstrap-v450','admin-onboarding-v451','favicon-v452'].includes(zonaConfig.futureLeagueCandidate?.status), 'stato candidato compatibile V448+');
+  check(['sandbox-audited-v448','firebase-bootstrap-v449','admin-bootstrap-v450','admin-onboarding-v451','favicon-v452','regolamento-v453'].includes(zonaConfig.futureLeagueCandidate?.status), 'stato candidato compatibile V448+');
 
   check(fs.existsSync(cloneRoot), 'clone FantaPetillo presente');
   const cloneConfig = json(path.join(cloneRoot, 'assets', 'league-config.json'));
@@ -71,9 +71,9 @@ try {
     if (versions.length) check(versions.length === 1 && Number(versions[0]) >= 448, `${rel} cache-buster V${versions[0]}`);
     check(!text.includes('silviobarra.com/zonaorientale') && !text.includes('/zonaorientale/'), `${rel} senza URL pubblici ZonaOrientale`);
   }
-  check(read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'home carica guard sandbox/bootstrap');
-  check(read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'competition carica guard sandbox/bootstrap');
-  check(read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'player carica guard sandbox/bootstrap');
+  check(read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'index.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=453'), 'home carica guard sandbox/bootstrap');
+  check(read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'competition.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=453'), 'competition carica guard sandbox/bootstrap');
+  check(read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-sandbox-v448.js?v=448') || read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-firebase-bootstrap-v449.js?v=449') || read(path.join(cloneRoot, 'player.html')).includes('fanta-petillo-admin-bootstrap-v450.js?v=453'), 'player carica guard sandbox/bootstrap');
 
   const firebaseText = read(path.join(cloneRoot, 'assets', 'firebase.js'));
   check(firebaseText.includes('Firebase disabled sandbox adapter') || firebaseText.includes('fantapetillomantramanager.firebaseapp.com'), 'Firebase sandbox o dedicato presente');

@@ -31,8 +31,8 @@ try {
   check(cloneConfig.guardrails?.adminOnboardingEnabled === true, 'guardrail onboarding presente nel clone');
 
   const index = read(path.join(cloneRoot, 'index.html'));
-  check(index.includes('fanta-petillo-admin-onboarding-v451.js?v=452'), 'clone carica onboarding V451');
-  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=452'), 'clone mantiene guard V450 con cache V451+');
+  check(index.includes('fanta-petillo-admin-onboarding-v451.js?v=453'), 'clone carica onboarding V451');
+  check(index.includes('fanta-petillo-admin-bootstrap-v450.js?v=453'), 'clone mantiene guard V450 con cache V451+');
 
   const onboarding = read(path.join(cloneRoot, 'assets', 'js', 'core', 'fanta-petillo-admin-onboarding-v451.js'));
   check(onboarding.includes('writesToFirebase: false') && onboarding.includes('unlocksTeamArea: false'), 'onboarding e solo guida read-only');
