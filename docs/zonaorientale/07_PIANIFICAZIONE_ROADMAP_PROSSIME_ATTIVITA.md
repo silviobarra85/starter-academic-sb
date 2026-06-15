@@ -1,3 +1,19 @@
+## Roadmap aggiornata dopo V444
+
+- Prossima patch consigliata V445: usare la mappa V444 per spostare gradualmente su `assets/league-config.json` metadata, titoli pagina, nome lega, base URL e link share WhatsApp, sempre con fallback ZonaOrientale.
+- Non rinominare ancora i namespace runtime `ZonaOrientale*`: sono numerosi e collegati a funzioni storiche/wrapper; vanno lasciati stabili finche' non esiste un clone sandbox testabile.
+- Dopo V445, V446 dovra' preparare i percorsi dati statici da config (`assets/public`, `assets/snapshots`, `assets/listoni`, `assets/rose`, `assets/calciomercato`, `assets/logos`) senza cambiare i file letti da ZonaOrientale.
+- Solo dopo V445/V446 creare una cartella clone per `FantaPetilloMantraManager`, preferibilmente con Firebase separato.
+- Qualunque riduzione dei riferimenti hard-coded deve essere verificata contro la baseline V444 per evitare di perdere share link, menu, Admin, snapshot o viste pubbliche.
+
+## Roadmap aggiornata dopo V443
+
+- Non creare ancora `static/fantapetillo...`: prima completare la parametrizzazione progressiva su ZonaOrientale.
+- Prossima patch consigliata V444: audit/mappa dei riferimenti hard-coded a `zonaorientale`, `ZonaOrientale`, `silviobarra.com/zonaorientale`, `/share/news`, `bilanci.html`, path asset e `DEPLOY_EXPECTED_VERSION`.
+- Dopo V444, V445 puo' spostare gradualmente menu, metadata, share URL, titoli pagina e base URL verso la config.
+- V446 dovra' preparare i percorsi dati statici da config senza cambiare i file letti da ZonaOrientale.
+- Solo dopo queste fasi creare un clone sandbox per `FantaPetilloMantraManager` con config, dati, loghi e preferibilmente Firebase separato.
+
 ## Roadmap aggiornata dopo V440
 
 - Testare da smartphone il pulsante `Copia link WhatsApp` nella sezione Bilanci.

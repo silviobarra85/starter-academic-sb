@@ -1,3 +1,21 @@
+## Changelog V444 - Mappa hard-coded multi-lega
+
+- Aggiunto audit osservativo `tools/audit-hardcoded-league-refs-v444.mjs`.
+- Aggiunta baseline `tools/hardcoded-league-refs-v444.json` con la mappa iniziale dei riferimenti hard-coded da parametrizzare nelle prossime patch.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V444.
+- Aggiornati footer, cache-buster e `DEPLOY_EXPECTED_VERSION_V181` a V444.
+- Aggiunto marker runtime `ZonaOrientaleHardcodedLeagueRefsAuditV444` per documentare che la patch non cambia comportamento e non crea cloni.
+- Preservati: Admin, Firebase, snapshot pubblici, Area Squadra presidenti, Listone, Rose/Movimenti FM, Calciomercato, menu mobile, Bilanci mobile V438 e badge dispositivo V434.
+
+## Changelog V443 - Configurazione lega multi-lega additiva
+
+- Introdotta una configurazione pubblica di lega in `assets/league-config.json`, pensata per separare progressivamente motore, identita' lega e dati lega.
+- Aggiunto un loader JS dedicato, `assets/js/core/league-config-v443.js`, che pubblica `window.ZonaOrientaleLeagueConfigV443` e mantiene default ZonaOrientale in caso di errore di fetch.
+- La sezione Bilanci usa la config solo per il link WhatsApp, con fallback al link storico; il comportamento utente resta invariato.
+- Aggiunto audit `tools/audit-league-config-v443.mjs` e gate nel check principale.
+- Preservati: Admin, Firebase, snapshot pubblici, Area Squadra presidenti, Listone, Rose/Movimenti FM, Calciomercato, menu mobile, Bilanci mobile V438 e badge dispositivo V434.
+- Non e' stata creata la seconda lega: `FantaPetilloMantraManager` resta solo candidato/provvisorio nella config.
+
 ## Changelog V440 - Link WhatsApp Bilanci
 
 - Aggiunto nella sezione `Bilanci` il bottone `Copia link WhatsApp`.

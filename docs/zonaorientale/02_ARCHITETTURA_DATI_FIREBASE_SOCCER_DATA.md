@@ -1,3 +1,22 @@
+## Nota architetturale V444 - Mappa hard-coded prima del refactor multi-lega
+
+- V444 non sposta logiche e non rinomina namespace runtime: e' una patch di inventario.
+- La baseline `tools/hardcoded-league-refs-v444.json` fotografa dove sono ancora presenti riferimenti a `zonaorientale`, `ZonaOrientale`, URL pubblici, path share/news, landing `bilanci.html`, path `assets/logos` e guardrail `DEPLOY_EXPECTED_VERSION`.
+- La distinzione importante e':
+  - branding e metadata pubblici potranno passare a `assets/league-config.json` in V445;
+  - path dati statici e loghi potranno passare a config in V446;
+  - namespace runtime `ZonaOrientale*` vanno mantenuti finche' il clone sandbox non e' pronto, per non staccare funzioni storiche;
+  - Netlify `news-share` e redirect richiedono una parametrizzazione dedicata, idealmente dopo metadata/share.
+- La futura lega `FantaPetilloMantraManager` non deve ancora avere una cartella: prima bisogna ridurre i riferimenti hard-coded ad alto impatto.
+
+## Nota architetturale V443 - Primo layer configurazione lega
+
+- `assets/league-config.json` e' un layer descrittivo/additivo: non sostituisce ancora i loader dati esistenti e non cambia il modello dati.
+- Il sito resta `static-first`: dati statici, snapshot pubblici e Firebase mantengono gli stessi percorsi e le stesse collection di prima.
+- Il loader `assets/js/core/league-config-v443.js` non importa Firebase e non esegue letture/scritture: effettua solo fetch del JSON locale e pubblica una config normalizzata con fallback.
+- Per ora la config e' usata solo in un punto a basso rischio, il link WhatsApp Bilanci, e sempre con fallback hard-coded storico.
+- Il clone `FantaPetilloMantraManager` non va creato finche' non sono completate le prossime fasi di audit hard-coded, metadata/share e path dati statici.
+
 ## Nota architetturale V440 - Link Bilanci senza nuovi dati
 
 - V440 non introduce nuove fonti dati: i Bilanci continuano a leggere solo `assets/snapshots/seasons/*.json`, campo `fmMovements`.

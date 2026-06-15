@@ -1,3 +1,39 @@
+## Test e audit V444 - Mappa riferimenti hard-coded multi-lega
+
+- Aggiunto `tools/audit-hardcoded-league-refs-v444.mjs`.
+- Aggiunta baseline `tools/hardcoded-league-refs-v444.json`, generabile anche con `node tools/audit-hardcoded-league-refs-v444.mjs --json`.
+- L'audit e' osservativo: fallisce solo se mancano la config, la baseline o i riferimenti principali che rendono significativa la mappa; non fallisce perche' trova stringhe hard-coded.
+- Integrato il gate V444 in `tools/check-zonaorientale.sh`.
+
+Comandi consigliati:
+
+```bash
+cd static/zonaorientale
+node --check assets/app.js
+node --check assets/js/core/league-config-v443.js
+node tools/audit-league-config-v443.mjs
+node tools/audit-hardcoded-league-refs-v444.mjs
+bash tools/check-zonaorientale.sh
+```
+
+## Test e audit V443 - Configurazione lega multi-lega
+
+- Aggiunto `tools/audit-league-config-v443.mjs`.
+- L'audit verifica presenza e contenuto di `assets/league-config.json`, loader `league-config-v443.js`, caricamento in home e standalone, cache-buster/footer V443, marker runtime, integrazione Bilanci con fallback e assenza di Firebase nel loader.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V443.
+- Resi compatibili con V443 gli audit recenti V438-V442 che controllavano cache-buster/footer/runtime specifici.
+
+Comandi consigliati:
+
+```bash
+cd static/zonaorientale
+node --check assets/app.js
+node --check assets/js/core/league-config-v443.js
+node --check assets/js/sections/bilanci-snapshot-section-v435.js
+node tools/audit-league-config-v443.mjs
+bash tools/check-zonaorientale.sh
+```
+
 ## Test e audit V440 - Link WhatsApp Bilanci
 
 - Aggiunto `tools/audit-bilanci-whatsapp-v440.mjs`.

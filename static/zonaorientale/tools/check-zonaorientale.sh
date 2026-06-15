@@ -2629,6 +2629,40 @@ else
   fail "node non disponibile per audit titoli sopra filtri V442"
 fi
 
+
+print_step "Audit configurazione lega multi-lega V443"
+if command -v node >/dev/null 2>&1; then
+  audit_league_config_v443="$SITE_ROOT/tools/audit-league-config-v443.mjs"
+  if [[ -f "$audit_league_config_v443" ]]; then
+    if node "$audit_league_config_v443" --quiet; then
+      pass "audit configurazione lega multi-lega V443 superato"
+    else
+      fail "audit configurazione lega multi-lega V443 fallito"
+    fi
+  else
+    fail "tool audit configurazione lega multi-lega V443 mancante"
+  fi
+else
+  fail "node non disponibile per audit configurazione lega multi-lega V443"
+fi
+
+
+print_step "Audit riferimenti hard-coded multi-lega V444"
+if command -v node >/dev/null 2>&1; then
+  audit_hardcoded_league_refs_v444="$SITE_ROOT/tools/audit-hardcoded-league-refs-v444.mjs"
+  if [[ -f "$audit_hardcoded_league_refs_v444" ]]; then
+    if node "$audit_hardcoded_league_refs_v444" --quiet; then
+      pass "audit riferimenti hard-coded multi-lega V444 superato"
+    else
+      fail "audit riferimenti hard-coded multi-lega V444 fallito"
+    fi
+  else
+    fail "tool audit riferimenti hard-coded multi-lega V444 mancante"
+  fi
+else
+  fail "node non disponibile per audit riferimenti hard-coded multi-lega V444"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

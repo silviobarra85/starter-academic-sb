@@ -1,3 +1,21 @@
+## Aggiornamento V444 - Audit hard-coded multi-lega (15/06/2026)
+
+- Runtime avanzato a V444 con footer e cache-buster coerenti.
+- Aggiunto `tools/audit-hardcoded-league-refs-v444.mjs`, audit osservativo che mappa i riferimenti ancora legati a identita', URL pubblici, share route, landing Bilanci, path loghi e guardrail versione.
+- Aggiunta la baseline `tools/hardcoded-league-refs-v444.json` con conteggi e categorie correnti: runtime, pagine pubbliche, tools/audit, docs e Netlify.
+- La mappa rileva, tra gli altri, `zonaorientale`, `ZonaOrientale`, `silviobarra.com/zonaorientale`, `/zonaorientale/`, `share/news`, `bilanci.html`, `assets/logos` e `DEPLOY_EXPECTED_VERSION`.
+- Nessun refactor applicato su Firebase, snapshot, Admin, Area Squadra, Listone, Rose/Movimenti FM, Calciomercato, routing principale, Bilanci V438 o badge dispositivo V434.
+- Nessun clone nuova lega creato: `FantaPetilloMantraManager` resta il candidato provvisorio da usare solo dopo la parametrizzazione graduale.
+
+## Aggiornamento V443 - Configurazione lega base multi-lega (15/06/2026)
+
+- Runtime avanzato a V443 con footer e cache-buster coerenti.
+- Aggiunto `assets/league-config.json` come primo layer descrittivo della lega: id, slug, nome, URL pubblici, stagione corrente, path asset/snapshot/loghi, feature abilitate e guardrail.
+- Aggiunto `assets/js/core/league-config-v443.js`, loader leggero con default ZonaOrientale e fallback sicuro: se il JSON non e' disponibile, il sito continua a usare i valori attuali.
+- Il link WhatsApp Bilanci puo' leggere `whatsapp.bilanciUrl` dalla config, mantenendo fallback hard-coded a `https://silviobarra.com/zonaorientale/bilanci.html`.
+- Tracciato il nome provvisorio della futura seconda lega: `FantaPetilloMantraManager`; il nome puo' cambiare prima della creazione del clone.
+- Nessun clone nuova lega creato in questa patch. Nessuna modifica a Firebase bootstrap, snapshot loader, Admin, Area Squadra, Listone, Rose/Movimenti FM, Calciomercato, routing principale, Bilanci V438 o badge dispositivo V434.
+
 ## Aggiornamento V440 - Link WhatsApp dedicato ai Bilanci (11/06/2026)
 
 - Runtime avanzato a V440 con footer e cache-buster coerenti.

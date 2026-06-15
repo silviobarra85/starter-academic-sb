@@ -1,3 +1,5 @@
+import { getLeagueWhatsappBilanciUrlV443, loadLeagueConfigV443 } from '../core/league-config-v443.js?v=444';
+
 const BILANCI_SNAPSHOT_V435 = Object.freeze({
   manifestUrl: './assets/snapshots/seasons/manifest.json',
   configUrl: './assets/public/config.json',
@@ -141,7 +143,12 @@ function getSeasonLabelV435(seasonId) {
 }
 
 function buildBilanciWhatsappUrlV440() {
-  return 'https://silviobarra.com/zonaorientale/bilanci.html';
+  return getLeagueWhatsappBilanciUrlV443() || 'https://silviobarra.com/zonaorientale/bilanci.html';
+}
+
+async function buildBilanciWhatsappUrlV443() {
+  await loadLeagueConfigV443().catch(() => null);
+  return buildBilanciWhatsappUrlV440();
 }
 
 function setBilanciCopyStatusV440(message, kind = '') {
@@ -180,7 +187,7 @@ async function copyTextToClipboardV440(text) {
 
 async function copyBilanciWhatsappLinkV440() {
   const button = document.getElementById('bilanciWhatsappCopyV440');
-  const url = buildBilanciWhatsappUrlV440();
+  const url = await buildBilanciWhatsappUrlV443();
   try {
     if (button) button.disabled = true;
     const copied = await copyTextToClipboardV440(url);

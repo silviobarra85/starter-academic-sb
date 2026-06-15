@@ -26,8 +26,8 @@ const sectionJs = read('assets/js/sections/bilanci-snapshot-section-v435.js');
 const sectionCss = read('assets/css/refactor/bilanci-snapshot-v435.css');
 const checkScript = read('tools/check-zonaorientale.sh');
 
-check('runtime deploy almeno V438 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(438|439|440|441|442)"/.test(app));
-check('footer e cache-buster almeno V438 in index', (/\?v=(438|439|440|441|442)/.test(index) && (index.includes('V438 fix mobile bilanci') || index.includes('V439 menu Altro pagine standalone') || index.includes('V440 link WhatsApp Bilanci') || index.includes('V441 filtri ruoli Mantra') || index.includes('V442 titoli sopra filtri'))));
+check('runtime deploy almeno V438 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(438|439|440|441|442|443|444)"/.test(app));
+check('footer e cache-buster almeno V438 in index', (/\?v=(438|439|440|441|442|443|444)/.test(index) && (index.includes('V438 fix mobile bilanci') || index.includes('V439 menu Altro pagine standalone') || index.includes('V440 link WhatsApp Bilanci') || index.includes('V441 filtri ruoli Mantra') || index.includes('V442 titoli sopra filtri') || index.includes('V444 audit hard-coded multi-lega'))));
 check('marker runtime V438 presente', app.includes('ZonaOrientaleBilanciMobileFixV438'));
 check('sezione Bilanci non mostra fonte tecnica nel pannello', !index.includes('La tabella viene calcolata da') && !sectionJs.includes('<span>Fonte</span>') && !sectionJs.includes('bilanci-source-note-v435'));
 check('controlli Bilanci sono strutturalmente sotto il titolo', /bilanci-header-title-v437[^"]*bilanci-header-title-v438[\s\S]*<h2>Bilancio stagione<\/h2>[\s\S]*bilanci-controls-under-title-v438/.test(index));

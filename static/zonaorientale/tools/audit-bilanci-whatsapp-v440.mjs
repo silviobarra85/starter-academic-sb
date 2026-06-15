@@ -30,11 +30,11 @@ const sectionJs = read('assets/js/sections/bilanci-snapshot-section-v435.js');
 const sectionCss = read('assets/css/refactor/bilanci-snapshot-v435.css');
 const checkScript = read('tools/check-zonaorientale.sh');
 
-check('runtime deploy V440 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(440|441|442)"/.test(app));
-check('index cache-buster V440 per Bilanci', index.includes('bilanci-snapshot-section-v435.js?v=442') && index.includes('bilanci-snapshot-v435.css?v=442'));
+check('runtime deploy V440 in app.js', /DEPLOY_EXPECTED_VERSION_V181\s*=\s*"(440|441|442|443|444)"/.test(app));
+check('index cache-buster V440 per Bilanci', index.includes('bilanci-snapshot-section-v435.js?v=444') && index.includes('bilanci-snapshot-v435.css?v=444'));
 check('pulsante Copia link WhatsApp presente in Bilanci', index.includes('id="bilanciWhatsappCopyV440"') && index.includes('Copia link WhatsApp'));
 check('stato copia accessibile presente', index.includes('id="bilanciWhatsappCopyStatusV440"') && index.includes('role="status"'));
-check('JS copia link WhatsApp dedicato', sectionJs.includes('copyBilanciWhatsappLinkV440') && sectionJs.includes('https://silviobarra.com/zonaorientale/bilanci.html'));
+check('JS copia link WhatsApp dedicato', sectionJs.includes('copyBilanciWhatsappLinkV440') && sectionJs.includes('getLeagueWhatsappBilanciUrlV443') && sectionJs.includes('https://silviobarra.com/zonaorientale/bilanci.html'));
 check('CSS link WhatsApp Bilanci presente', sectionCss.includes('V440 - Bilanci: link WhatsApp') && sectionCss.includes('.bilanci-share-button-v440'));
 check('landing bilanci.html presente', exists('bilanci.html'));
 check('landing bilanci.html ha OG specifici', bilanci.includes('Bilanci FM · ZonaOrientale Salerno') && bilanci.includes('og:title') && bilanci.includes('og:url') && bilanci.includes('https://silviobarra.com/zonaorientale/bilanci.html'));
