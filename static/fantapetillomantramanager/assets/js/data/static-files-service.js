@@ -1,5 +1,5 @@
 import { state } from "../core/state.js";
-import { getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "../core/league-config-v443.js?v=447";
+import { getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "../core/league-config-v443.js?v=448";
 
 async function ensureLeagueDataPathsV446() {
   await loadLeagueConfigV443().catch(() => null);

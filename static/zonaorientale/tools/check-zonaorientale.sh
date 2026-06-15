@@ -2715,6 +2715,23 @@ else
   fail "node non disponibile per audit clone sandbox FantaPetillo V447"
 fi
 
+
+print_step "Audit QA clone FantaPetillo V448"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_clone_qa_v448="$SITE_ROOT/tools/audit-fantapetillo-clone-qa-v448.mjs"
+  if [[ -f "$audit_fantapetillo_clone_qa_v448" ]]; then
+    if node "$audit_fantapetillo_clone_qa_v448" --quiet; then
+      pass "audit QA clone FantaPetillo V448 superato"
+    else
+      fail "audit QA clone FantaPetillo V448 fallito"
+    fi
+  else
+    fail "tool audit QA clone FantaPetillo V448 mancante"
+  fi
+else
+  fail "node non disponibile per audit QA clone FantaPetillo V448"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

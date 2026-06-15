@@ -1,3 +1,11 @@
+## Aggiornamento V448 - Audit QA clone FantaPetilloMantraManager (15/06/2026)
+
+- Runtime avanzato a V448 con footer e cache-buster coerenti su ZonaOrientale e clone sandbox.
+- Aggiunto `tools/audit-fantapetillo-clone-qa-v448.mjs`, audit dedicato al clone che verifica identita', URL pubblici, cache-buster, dati placeholder, assenza di Firebase reale e documentazione.
+- Nel clone aggiunto `assets/js/core/fanta-petillo-sandbox-v448.js`, guard runtime che mantiene visibile lo stato sandbox, aggiunge `noindex,nofollow` e nasconde entrypoint rischiosi Admin/Area Squadra mentre Firebase resta disabilitato.
+- Il progetto Firebase dedicato `fantapetillomantramanager` risulta creato esternamente ma non viene ancora collegato al runtime: lo stub `assets/firebase.js` resta attivo fino alla V449.
+- Nessuna modifica a Firebase, Admin, snapshot generator, Area Squadra presidenti, Bilanci mobile V438 o badge dispositivo V434 di ZonaOrientale.
+
 ## Aggiornamento V447 - Clone sandbox FantaPetilloMantraManager (15/06/2026)
 
 - Creato il clone sandbox `static/fantapetillomantramanager/` a partire dal motore ZonaOrientale gia' parametrizzato.

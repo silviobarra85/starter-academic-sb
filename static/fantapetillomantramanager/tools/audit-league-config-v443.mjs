@@ -45,8 +45,8 @@ check('guardrail config-only attivi', config.guardrails?.configOnly === true && 
 check('loader V443 presente', exists('assets/js/core/league-config-v443.js'));
 check('loader pubblica window.ZonaOrientaleLeagueConfigV443', loader.includes('window.ZonaOrientaleLeagueConfigV443') && loader.includes('loadLeagueConfigV443'));
 check('loader espone presentazione runtime V445', loader.includes('applyLeagueRuntimePresentationV445') && loader.includes('ZonaOrientaleLeagueRuntimePresentationV445'));
-check('index carica loader V443', index.includes('league-config-v443.js?v=447'));
-check('standalone caricano loader V443', competition.includes('league-config-v443.js?v=447') && player.includes('league-config-v443.js?v=447'));
+check('index carica loader V443', index.includes('league-config-v443.js?v=448'));
+check('standalone caricano loader V443', competition.includes('league-config-v443.js?v=448') && player.includes('league-config-v443.js?v=448'));
 check('cache-buster runtime V445+', index.includes(`assets/app.js?v=${config.currentVersion}`) && !index.includes('?v=442') && !index.includes('?v=444'));
 check('footer V445 aggiornato', index.includes(`V${config.currentVersion}`) && competition.includes(`V${config.currentVersion}`) && player.includes(`V${config.currentVersion}`));
 check('DEPLOY_EXPECTED_VERSION V445', app.includes(`DEPLOY_EXPECTED_VERSION_V181 = "${config.currentVersion}"`));

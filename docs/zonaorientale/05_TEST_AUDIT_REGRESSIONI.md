@@ -1,3 +1,15 @@
+## Test e audit V448 - QA clone FantaPetillo
+
+La V448 aggiunge `tools/audit-fantapetillo-clone-qa-v448.mjs` lato ZonaOrientale e `tools/audit-clone-runtime-qa-v448.mjs` lato clone. Gli audit verificano versione, cache-buster, identita' clone, guard sandbox, assenza di Firebase reale, dati placeholder e documentazione.
+
+Comandi principali:
+
+```bash
+node tools/audit-fantapetillo-clone-qa-v448.mjs
+bash tools/check-zonaorientale.sh
+../fantapetillomantramanager/tools/check-fantapetillomantramanager.sh
+```
+
 ## Test e audit V447 - Clone sandbox FantaPetillo
 
 La V447 aggiunge `tools/audit-fantapetillo-sandbox-v447.mjs` e lo integra in `tools/check-zonaorientale.sh`. L'audit verifica presenza del clone, configurazione dedicata, Firebase disabilitato, cache-buster V447, dati statici placeholder e documentazione clone.

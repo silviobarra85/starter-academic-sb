@@ -71,7 +71,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '447',
+  currentVersion: '448',
   currentSeasonId: '2025-2026',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -115,7 +115,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=447';
+const CONFIG_URL_V443 = './assets/league-config.json?v=448';
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -182,7 +182,7 @@ let readyPromiseV443 = null;
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
   window.ZonaOrientaleLeagueConfigV443 = Object.freeze({
-    version: 'V447',
+    version: 'V448',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
@@ -190,6 +190,7 @@ function publishConfigV443(config, source = 'default') {
     runtimePresentationFromConfig: true,
     staticDataPathsFromConfig: true,
     cloneSandboxReady: true,
+    cloneSandboxAudited: true,
     futureLeagueCandidate: cachedConfigV443.futureLeagueCandidate?.provisionalName || ''
   });
   return cachedConfigV443;
@@ -338,7 +339,7 @@ function applyBrandTextV445() {
   setTextForSelectorV445('[data-league-text-v445="homeSubtitle"]', getLeagueConfigValueV443('branding.homeSubtitle', 'Dashboard operativa per club, rose, listoni, competizioni e regolamento.'));
   const footerVersion = getLeagueConfigValueV443('currentVersion', '445');
   const siteName = getLeagueConfigValueV443('branding.siteName', getLeagueConfigValueV443('name', 'ZonaOrientale Salerno'));
-  setTextForSelectorV445('[data-league-footer-v445]', `${siteName} · V${footerVersion} clone sandbox FantaPetillo · Ultimo aggiornamento 15/06/2026`);
+  setTextForSelectorV445('[data-league-footer-v445]', `${siteName} · V${footerVersion} audit clone FantaPetillo · Ultimo aggiornamento 15/06/2026`);
 }
 
 function resolveHashHrefV445(href = '#dashboard') {
@@ -369,7 +370,7 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
     applyBrandTextV445();
     applyMobileMoreLinksV445();
     window.ZonaOrientaleLeagueRuntimePresentationV445 = Object.freeze({
-      version: 'V447',
+      version: 'V448',
       pageId,
       appliedAt: new Date().toISOString(),
       metadataFromConfig: true,

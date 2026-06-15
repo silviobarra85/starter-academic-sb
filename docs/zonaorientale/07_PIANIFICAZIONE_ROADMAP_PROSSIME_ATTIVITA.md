@@ -1,3 +1,11 @@
+## Roadmap aggiornata dopo V448
+
+- V448 ha validato il clone sandbox `FantaPetilloMantraManager` con audit dedicato e guard runtime piu' esplicito.
+- Il progetto Firebase dedicato `fantapetillomantramanager` e' stato creato dall'utente, ma non e' ancora collegato al clone.
+- Prossimo passo consigliato V449: collegare `static/fantapetillomantramanager/assets/firebase.js` alla config Firebase reale, mantenendo regole Firestore inizialmente conservative e audit anti-contaminazione con ZonaOrientale.
+- Dopo V449, V450 potra' preparare dati reali/minimi della nuova lega: squadre, budget, listone, rose e snapshot stagione.
+- Prima della produzione restano da decidere nome definitivo, eventuali redirect Netlify per share news e policy di pubblicazione dati.
+
 ## Roadmap aggiornata dopo V447
 
 - V447 ha creato il clone sandbox `FantaPetilloMantraManager`, con Firebase disabilitato e dati placeholder.

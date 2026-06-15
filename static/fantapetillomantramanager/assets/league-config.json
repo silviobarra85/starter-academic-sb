@@ -5,7 +5,7 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "447",
+  "currentVersion": "448",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -13,7 +13,7 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "sandbox-created-v447"
+    "status": "sandbox-audited-v448"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
@@ -34,7 +34,11 @@
     "doNotUseZonaOrientaleFirebase": true,
     "preserveMobileUx": true,
     "preserveDeviceBadgeV434": true,
-    "staticDataPathsFromConfig": true
+    "staticDataPathsFromConfig": true,
+    "cloneSandboxAudited": true,
+    "cloneSandboxAuditVersion": "448",
+    "readyForFirebaseConfig": true,
+    "firebaseProjectCreatedButNotConnected": true
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
@@ -120,12 +124,15 @@
   "sandbox": {
     "enabled": true,
     "createdInVersion": "447",
-    "status": "static-sandbox-no-firebase",
+    "status": "static-sandbox-audited-v448",
     "firebase": "disabled",
     "notes": [
       "Clone provvisorio per verificare template multi-lega.",
+      "Firebase reale non collegato in V448: il progetto Firebase dedicato e stato creato ma resta fuori dal runtime fino alla V449.",
       "Firebase disabilitato per evitare qualunque scrittura nel progetto ZonaOrientale.",
       "Dati statici minimi placeholder: da sostituire prima della produzione."
-    ]
+    ],
+    "auditedInVersion": "448",
+    "firebaseProjectStatus": "created-but-not-connected"
   }
 }

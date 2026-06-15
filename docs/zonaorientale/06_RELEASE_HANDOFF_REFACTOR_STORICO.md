@@ -203805,3 +203805,8 @@ Overlay dedicato a Listone, Rose e Area Squadra presidenti: aggiunge filtri stan
 ## Release V442 - Titoli sopra filtri
 
 Overlay CSS-only per evitare che titoli e descrizioni dei pannelli vengano compressi quando la card contiene molti controlli. Baseline aggiornata a V442 con cache-buster/footer coerenti. Nessuna modifica a Firebase, snapshot, Admin, Bilanci, badge dispositivo V434 o dati statici.
+
+
+## Release V448 - Audit QA clone FantaPetilloMantraManager
+
+Overlay di controllo del clone sandbox: aggiunge audit dedicati, guard runtime V448 con banner/noindex e conferma che Firebase reale resta scollegato. ZonaOrientale resta invariato nelle funzioni operative: nessuna modifica a Firebase, Admin, snapshot generator, Area Squadra, Bilanci mobile V438 o badge dispositivo V434.

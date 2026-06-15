@@ -14156,3 +14156,18 @@ html[data-theme="light"] table.roster-player-table.roster-listone-skin-v408 thea
   backdrop-filter: blur(12px);
 }
 .is-sandbox-clone-v447 .sandbox-disabled-v447 { display: none !important; }
+
+
+/* V448 - FantaPetillo sandbox QA guard */
+.sandbox-banner-v448 {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  padding: 0.62rem 1rem;
+  font-weight: 800;
+  text-align: center;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(254, 243, 199, 0.98);
+  color: #7c2d12;
+}
+.is-sandbox-clone-v448 .sandbox-disabled-v448 { display: none !important; }

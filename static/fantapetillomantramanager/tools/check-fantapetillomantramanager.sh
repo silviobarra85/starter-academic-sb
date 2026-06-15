@@ -18,6 +18,11 @@ fi
 if grep -q 'zonaorientale-d07af' "$SITE_ROOT/assets/firebase.js"; then fail "firebase ZonaOrientale presente nel clone"; else pass "Firebase ZonaOrientale assente dal clone"; fi
 if grep -q 'firebaseDisabled.*true' "$SITE_ROOT/assets/league-config.json"; then pass "config sandbox Firebase disabilitato"; else fail "config sandbox non esplicita Firebase disabilitato"; fi
 versions="$(grep -Roh '?v=[0-9][0-9]*' "$SITE_ROOT"/*.html | sed 's/?v=//' | sort -u | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-if [[ "$versions" == "447" ]]; then pass "cache-buster clone V447"; else fail "cache-buster clone non allineati: $versions"; fi
+if [[ "$versions" == "448" ]]; then pass "cache-buster clone V448"; else fail "cache-buster clone non allineati: $versions"; fi
+if command -v node >/dev/null 2>&1; then
+  if node "$SITE_ROOT/tools/audit-clone-runtime-qa-v448.mjs" --quiet; then pass "audit clone runtime QA V448"; else fail "audit clone runtime QA V448"; fi
+else
+  fail "node non disponibile per audit clone runtime QA V448"
+fi
 if [[ "$failures" -gt 0 ]]; then exit 1; fi
 printf 'Controlli clone sandbox passati.\n'

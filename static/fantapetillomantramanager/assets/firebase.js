@@ -1,4 +1,4 @@
-// V447 - Firebase disabled sandbox adapter for FantaPetilloMantraManager.
+// V448 - Firebase disabled sandbox adapter for FantaPetilloMantraManager.
 // This clone must not read from or write to the ZonaOrientale Firebase project.
 
 export const db = null;
@@ -48,8 +48,8 @@ export function onAuthStateChanged(_auth, callback) {
 }
 
 if (typeof window !== 'undefined') {
-  window.FantaPetilloFirebaseSandboxV447 = Object.freeze({
-    version: 'V447',
+  window.FantaPetilloFirebaseSandboxV448 = Object.freeze({
+    version: 'V448',
     firebaseDisabled: true,
     protectsZonaOrientaleFirebase: true
   });

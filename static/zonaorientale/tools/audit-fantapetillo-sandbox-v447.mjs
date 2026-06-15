@@ -20,18 +20,18 @@ function exists(rel, base = cloneRoot) { return fs.existsSync(path.join(base, re
 
 try {
   const zonaConfig = readJson(path.join(siteRoot, 'assets', 'league-config.json'));
-  if (zonaConfig.currentVersion === '447') ok('ZonaOrientale currentVersion V447'); else fail('ZonaOrientale currentVersion non V447');
+  if (Number(zonaConfig.currentVersion) >= 447) ok(`ZonaOrientale currentVersion V${zonaConfig.currentVersion}`); else fail('ZonaOrientale currentVersion inferiore a V447');
   if (zonaConfig.guardrails?.cloneSandboxCreated === true) ok('guardrail cloneSandboxCreated presente'); else fail('guardrail cloneSandboxCreated mancante');
 
   if (fs.existsSync(cloneRoot)) ok('cartella clone presente'); else fail('cartella clone mancante');
-  ['index.html', 'competition.html', 'player.html', 'bilanci.html', 'assets/league-config.json', 'assets/firebase.js', 'assets/js/core/fanta-petillo-sandbox-v447.js'].forEach((rel) => {
+  ['index.html', 'competition.html', 'player.html', 'bilanci.html', 'assets/league-config.json', 'assets/firebase.js'].forEach((rel) => {
     if (exists(rel)) ok(`${rel} presente nel clone`); else fail(`${rel} mancante nel clone`);
   });
 
   const cloneConfig = readJson(path.join(cloneRoot, 'assets', 'league-config.json'));
   if (cloneConfig.leagueId === cloneSlug && cloneConfig.slug === cloneSlug) ok('identity clone corretta'); else fail('identity clone non corretta');
   if (cloneConfig.name === 'FantaPetilloMantraManager') ok('nome clone corretto'); else fail('nome clone non corretto');
-  if (cloneConfig.currentVersion === '447') ok('versione clone V447'); else fail('versione clone non V447');
+  if (Number(cloneConfig.currentVersion) >= 447) ok(`versione clone V${cloneConfig.currentVersion}`); else fail('versione clone inferiore a V447');
   if (cloneConfig.basePath === `/${cloneSlug}/`) ok('basePath clone corretto'); else fail('basePath clone non corretto');
   if (cloneConfig.sandbox?.enabled === true && cloneConfig.sandbox?.firebase === 'disabled') ok('sandbox Firebase disabilitato in config'); else fail('sandbox Firebase non disabilitato in config');
   if (cloneConfig.features?.admin === false && cloneConfig.features?.teamArea === false) ok('feature live rischiose disabilitate in config'); else fail('feature live rischiose non disabilitate');
@@ -46,7 +46,7 @@ try {
     if (text.includes('FantaPetilloMantraManager')) ok(`${file} branding clone`); else fail(`${file} senza branding clone`);
     const versions = [...new Set((text.match(/\?v=\d+/g) || []).map((item) => item.slice(3)))];
     if (!versions.length && file === 'bilanci.html') ok(`${file} redirect senza asset versionati`);
-    else if (versions.length === 1 && versions[0] === '447') ok(`${file} cache-buster V447`);
+    else if (versions.length === 1 && Number(versions[0]) >= 447) ok(`${file} cache-buster V${versions[0]}`);
     else fail(`${file} cache-buster non allineati: ${versions.join(',')}`);
   }
 

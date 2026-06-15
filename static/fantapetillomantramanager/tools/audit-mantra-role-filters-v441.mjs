@@ -25,7 +25,7 @@ const failures = [];
 for (const token of required) {
   if (!app.includes(token)) failures.push(`Token mancante in app.js: ${token}`);
 }
-if (!index.includes('mantra-role-filters-v441.css?v=447')) failures.push('CSS V441 non collegato in index.html');
+if (!index.includes('mantra-role-filters-v441.css?v=448')) failures.push('CSS V441 non collegato in index.html');
 if (!css.includes('listone-mantra-role-filters-v441')) failures.push('CSS V441 non contiene classi Listone');
 if (!css.includes('role-filter-panel-v441')) failures.push('CSS V441 non contiene pannello filtri');
 if (!/DEPLOY_EXPECTED_VERSION_V181 = "(442|443|444|445|446)"/.test(app)) failures.push('DEPLOY_EXPECTED_VERSION_V181 non compatibile con V441+');

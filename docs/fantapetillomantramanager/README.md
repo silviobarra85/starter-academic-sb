@@ -1,6 +1,6 @@
-# FantaPetilloMantraManager - sandbox multi-lega V447
+# FantaPetilloMantraManager - sandbox multi-lega V448
 
-Questo documento descrive il clone sandbox creato in V447.
+Questo documento descrive il clone sandbox creato in V447 e auditato in V448.
 
 ## Stato
 
@@ -49,3 +49,15 @@ Dal sito ZonaOrientale, il gate principale controlla anche il clone:
 ```bash
 bash tools/check-zonaorientale.sh
 ```
+
+
+## Aggiornamento V448
+
+- Aggiunto audit clone runtime `tools/audit-clone-runtime-qa-v448.mjs`.
+- Aggiunto guard runtime `assets/js/core/fanta-petillo-sandbox-v448.js` con banner sandbox, `noindex,nofollow` e hiding degli entrypoint Admin/Area Squadra.
+- Firebase project creato ma non collegato: il runtime continua a usare lo stub `assets/firebase.js`.
+- Nessuna credenziale/config Firebase reale e' presente nel clone V448.
+
+## Firebase dedicato
+
+Il progetto Firebase dedicato da usare in V449 e' `fantapetillomantramanager`. La configurazione web e' stata raccolta fuori dal runtime, ma non va inserita manualmente in V448: verra' applicata con una patch dedicata e audit anti-contaminazione.

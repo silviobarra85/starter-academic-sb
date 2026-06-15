@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "447",
+  "currentVersion": "448",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -13,7 +13,7 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "sandbox-created-v447"
+    "status": "sandbox-audited-v448"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/zonaorientale/bilanci.html",
@@ -39,7 +39,10 @@
     "metadataShareOnly": true,
     "staticDataPathsFromConfig": true,
     "cloneSandboxCreated": true,
-    "cloneSandboxSlug": "fantapetillomantramanager"
+    "cloneSandboxSlug": "fantapetillomantramanager",
+    "cloneSandboxAudited": true,
+    "cloneSandboxAuditVersion": "448",
+    "cloneFirebaseProjectCreatedButNotConnected": true
   },
   "branding": {
     "siteName": "ZonaOrientale Salerno",
