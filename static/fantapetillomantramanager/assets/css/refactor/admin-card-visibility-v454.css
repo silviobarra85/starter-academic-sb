@@ -1,0 +1,118 @@
+.admin-card-selector-v454 {
+  border: 1px solid var(--border, rgba(148, 163, 184, 0.28));
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-card-selector-v454__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.admin-card-selector-v454__header h3 {
+  margin: 0.1rem 0 0.3rem;
+}
+
+.admin-card-selector-v454__header p {
+  margin: 0;
+  color: var(--muted, #64748b);
+}
+
+.admin-card-selector-v454__badge {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  background: rgba(59, 130, 246, 0.14);
+  color: var(--text, #e2e8f0);
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+
+.admin-card-selector-v454__details summary {
+  cursor: pointer;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.admin-card-selector-v454__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.admin-card-selector-v454__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.admin-card-selector-v454__group {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 0.85rem;
+  padding: 0.75rem;
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.admin-card-selector-v454__group h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.9rem;
+}
+
+.admin-card-selector-v454__checks {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.admin-card-selector-v454__option,
+.admin-card-selector-v454__qa {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.25;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.admin-card-selector-v454__option input,
+.admin-card-selector-v454__qa input {
+  margin-top: 0.12rem;
+  flex: 0 0 auto;
+}
+
+.admin-card-selector-v454__qa {
+  margin-top: 0.9rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  padding-top: 0.75rem;
+  font-weight: 800;
+}
+
+.admin-card-hidden-v454,
+.admin-category-empty-v454,
+.manual-qa-panel-v358.admin-qa-hidden-v454 {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .admin-card-selector-v454 {
+    padding: 0.85rem;
+  }
+  .admin-card-selector-v454__header {
+    flex-direction: column;
+  }
+  .admin-card-selector-v454__badge,
+  .admin-card-selector-v454__actions .button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .admin-card-selector-v454__grid {
+    grid-template-columns: 1fr;
+  }
+}

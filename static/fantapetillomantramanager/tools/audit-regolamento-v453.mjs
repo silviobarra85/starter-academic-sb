@@ -14,7 +14,7 @@ function exists(rel) { return fs.existsSync(path.join(siteRoot, rel)); }
 function json(rel) { return JSON.parse(read(rel)); }
 try {
   const config = json('assets/league-config.json');
-  check(config.currentVersion === '453', 'config currentVersion V453');
+  check(Number(config.currentVersion) >= 453, 'config currentVersion >= V453');
   check(config.regolamento?.season === '2026-2027', 'config regolamento season 2026-2027');
   check(config.regolamento?.pdf === './assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf', 'config pdf regolamento collegato');
   check(exists('assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf'), 'PDF regolamento presente');
@@ -29,7 +29,7 @@ try {
   check(module.includes('D-Factor') && module.includes('Fairplay'), 'modificatori sintetizzati');
   const index = read('index.html');
   const versions = [...new Set((index.match(/\?v=\d+/g) || []).map((m) => m.slice(3)))];
-  check(versions.length === 1 && versions[0] === '453', 'cache-buster index V453');
+  check(versions.length === 1 && Number(versions[0]) >= 453, 'cache-buster index >= V453');
 } catch (error) {
   fail(error?.stack || error?.message || String(error));
 }

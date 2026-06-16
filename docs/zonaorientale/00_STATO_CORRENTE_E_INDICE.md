@@ -1,3 +1,12 @@
+## Aggiornamento V454 - Selettore card Admin e Checklist QA opzionale (15/06/2026)
+
+- Runtime avanzato a V454 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
+- Aggiunto `assets/js/core/admin-card-visibility-v454.js` su entrambe le leghe: nell'Admin inserisce sotto il titolo un menu di visibilita' per scegliere quali card/pannelli mostrare.
+- Default conservativo: tutte le card Admin sono deselezionate e quindi nascoste; l'admin puo' spuntare solo quelle che servono oppure usare `Mostra tutte`/`Nascondi tutte`.
+- La `Checklist QA Admin` in basso viene nascosta di default; resta disponibile tramite checkbox dedicata nello stesso menu Admin.
+- Aggiunto `assets/css/refactor/admin-card-visibility-v454.css` e audit `tools/audit-admin-card-visibility-v454.mjs`.
+- Nessuna modifica a Firebase, rules, dati, snapshot generator, Area Squadra, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.
+
 ## Aggiornamento V453 - Regolamento FantaPetilloMantraManager 2026-2027 (15/06/2026)
 
 - Runtime avanzato a V453 con footer e cache-buster coerenti su ZonaOrientale e clone.
@@ -2168,3 +2177,19 @@ La preparazione multi-lega ora include `dataPaths` in `static/zonaorientale/asse
 ## V452 - Favicon FantaPetilloMantraManager
 
 Aggiunta favicon dedicata per il clone `FantaPetilloMantraManager`, con sigla `FPMM` e stagione `2026-2027`. La modifica e' circoscritta alle icone del clone e agli audit/documenti collegati; ZonaOrientale mantiene Firebase, Admin, dati e funzionalita' operative invariati.
+
+## V455 - Fix selettore Admin e favicon cache-proof
+
+- Runtime corrente V455.
+- Il selettore card Admin usa `admin-card-visibility-v455.js/css` e copre anche card dinamiche e dettagli Admin.
+- FantaPetillo usa favicon con filename V455 per evitare cache persistente del browser.
+- Le funzionalita operative, Firebase, Admin e Area Squadra non cambiano.
+
+## V456 - Hotfix click selettore Admin
+
+- Runtime corrente V456.
+- Il selettore card Admin usa `admin-card-visibility-v456.js/css`.
+- I pulsanti del selettore sono sempre cliccabili e non dipendono piu da `details`.
+- Il Generatore comunicati automatici e incluso nella lista delle card selezionabili.
+- Checklist QA Admin ancora nascosta di default, visibile solo da checkbox dedicato.
+- Nessuna modifica a Firebase, rules, snapshot, Bilanci V438, badge dispositivo V434 o Area Squadra.

@@ -1,3 +1,12 @@
+## Aggiornamento V454 - Selettore card Admin e Checklist QA opzionale (15/06/2026)
+
+- Runtime avanzato a V454 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
+- Aggiunto `assets/js/core/admin-card-visibility-v454.js` su entrambe le leghe: nell'Admin inserisce sotto il titolo un menu di visibilita' per scegliere quali card/pannelli mostrare.
+- Default conservativo: tutte le card Admin sono deselezionate e quindi nascoste; l'admin puo' spuntare solo quelle che servono oppure usare `Mostra tutte`/`Nascondi tutte`.
+- La `Checklist QA Admin` in basso viene nascosta di default; resta disponibile tramite checkbox dedicata nello stesso menu Admin.
+- Aggiunto `assets/css/refactor/admin-card-visibility-v454.css` e audit `tools/audit-admin-card-visibility-v454.mjs`.
+- Nessuna modifica a Firebase, rules, dati, snapshot generator, Area Squadra, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.
+
 ## Test e audit V448 - QA clone FantaPetillo
 
 La V448 aggiunge `tools/audit-fantapetillo-clone-qa-v448.mjs` lato ZonaOrientale e `tools/audit-clone-runtime-qa-v448.mjs` lato clone. Gli audit verificano versione, cache-buster, identita' clone, guard sandbox, assenza di Firebase reale, dati placeholder e documentazione.

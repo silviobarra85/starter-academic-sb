@@ -15,8 +15,8 @@ function json(file) { return JSON.parse(read(file)); }
 try {
   const zonaConfig = json(path.join(siteRoot, 'assets', 'league-config.json'));
   const cloneConfig = json(path.join(cloneRoot, 'assets', 'league-config.json'));
-  check(zonaConfig.currentVersion === '453', 'ZonaOrientale currentVersion V453');
-  check(cloneConfig.currentVersion === '453', 'clone currentVersion V453');
+  check(Number(zonaConfig.currentVersion) >= 453, 'ZonaOrientale currentVersion >= V453');
+  check(Number(cloneConfig.currentVersion) >= 453, 'clone currentVersion >= V453');
   check(cloneConfig.regolamento?.season === '2026-2027', 'clone regolamento season 2026-2027');
   check(fs.existsSync(path.join(cloneRoot, 'assets', 'regolamento', 'regolamento-fantapetillo-mantra-manager-2026-2027.pdf')), 'PDF regolamento clone presente');
   const module = read(path.join(cloneRoot, 'assets', 'js', 'sections', 'regolamento-section-v402.js'));

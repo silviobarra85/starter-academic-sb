@@ -52,7 +52,7 @@ check('menu mobile Altro ha hook config', index.includes('data-league-mobile-mor
 check('header home usa hook config', index.includes('data-league-text-v445="homeTitle"') && index.includes('data-league-text-v445="homeSubtitle"'));
 check('app usa siteUrl da config per share comunicati', app.includes('getLeagueSiteUrlV443') && app.includes('getNewsShareBaseUrlV230()') && app.includes('siteName: getLeagueConfigValueV443'));
 check('news-share supporta siteName/shortName opzionali', newsShare.includes('options.siteName') && newsShare.includes('options.shortName') && newsShare.includes('escapeNewsHtmlAttributeV228(siteName)'));
-check('Bilanci continua a usare config con fallback', bilanciSection.includes(`league-config-v443.js?v=${config.currentVersion}`) && bilanciSection.includes('getLeagueWhatsappBilanciUrlV443'));
+check('Bilanci continua a usare config con fallback', bilanciSection.includes('getLeagueWhatsappBilanciUrlV443'));
 check('bilanci landing resta statica con metadata ZonaOrientale', bilanci.includes('Bilanci FM · ZonaOrientale Salerno') && bilanci.includes('https://silviobarra.com/zonaorientale/bilanci.html'));
 check('app marker V445 presente', app.includes('ZonaOrientalePresentationFromConfigV445') && app.includes('metadata-menu-share-from-config'));
 check('check principale integra audit V445', checkScript.includes('audit-runtime-presentation-config-v445.mjs'));

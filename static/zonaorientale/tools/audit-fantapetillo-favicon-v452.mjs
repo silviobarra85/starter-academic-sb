@@ -25,11 +25,11 @@ try {
 
   const iconRoot = path.join(cloneRoot, 'assets', 'icons');
   [
-    'favicon-16x16.png',
-    'favicon-32x32.png',
-    'apple-touch-icon.png',
-    'android-chrome-192x192.png',
-    'android-chrome-512x512.png',
+    'fantapetillo-favicon-v455-16.png',
+    'fantapetillo-favicon-v455-32.png',
+    'fantapetillo-apple-touch-icon-v455.png',
+    'fantapetillo-android-chrome-192-v455.png',
+    'fantapetillo-android-chrome-512-v455.png',
     'fantapetillo-favicon-source.svg'
   ].forEach((name) => check(exists(path.join(iconRoot, name)), `icona clone ${name} presente`));
   check(exists(path.join(cloneRoot, 'favicon.ico')), 'favicon.ico clone presente');
@@ -38,7 +38,7 @@ try {
   check(source.includes('FPMM') && source.includes('2026-2027'), 'favicon clone contiene sigla e stagione');
 
   const cloneIndex = read(path.join(cloneRoot, 'index.html'));
-  check(cloneIndex.includes('android-chrome-512x512.png'), 'metadata clone puntano a icona FantaPetillo');
+  check(cloneIndex.includes('fantapetillo-android-chrome-512-v455.png'), 'metadata clone puntano a icona FantaPetillo');
   check(!cloneIndex.includes('silviobarra.com/zonaorientale'), 'metadata clone non puntano a ZonaOrientale');
 
   const zonaFirebase = read(path.join(siteRoot, 'assets', 'firebase.js'));

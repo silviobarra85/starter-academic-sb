@@ -129,3 +129,30 @@ Sono stati aggiunti:
 - audit `tools/audit-regolamento-v453.mjs`.
 
 La modifica non tocca Firebase, Admin, rules, snapshot o Area Squadra.
+
+## V454 - Selettore card Admin e QA opzionale
+
+La V454 aggiunge nell'Admin del clone un menu di visibilita' sotto il titolo della sezione.
+
+Comportamento:
+
+- tutte le card Admin partono deselezionate e non visibili;
+- l'admin puo' mostrare solo le card necessarie;
+- sono disponibili i pulsanti `Mostra tutte` e `Nascondi tutte`;
+- la `Checklist QA Admin` in basso e' nascosta di default e si abilita dal checkbox dedicato nello stesso menu;
+- la preferenza e' salvata nel browser tramite localStorage, separata per slug della lega.
+
+La modifica non tocca Firebase, rules, dati statici, snapshot o Area Squadra presidenti.
+
+## V455 - Fix selettore Admin e favicon cache-proof
+
+- Il selettore Admin V455 sostituisce il runtime V454.
+- Nessuna card Admin e visibile di default finche non viene spuntata dal menu.
+- La Checklist QA Admin in basso resta nascosta di default e si mostra dal checkbox dedicato.
+- Le favicon ora usano file con nome V455 per aggirare la cache del browser.
+
+Documento tecnico: `ADMIN_UI_V455.md`.
+
+## V456 - Hotfix selettore card Admin
+
+Il selettore card Admin usa ora il runtime V456. I pulsanti sono sempre cliccabili e il Generatore comunicati automatici e incluso nella lista delle card selezionabili. La Checklist QA Admin resta nascosta di default e si mostra solo dal checkbox dedicato.

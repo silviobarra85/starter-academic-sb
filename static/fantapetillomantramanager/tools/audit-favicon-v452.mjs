@@ -21,11 +21,11 @@ try {
 
   const required = [
     'favicon.ico',
-    'assets/icons/favicon-16x16.png',
-    'assets/icons/favicon-32x32.png',
-    'assets/icons/apple-touch-icon.png',
-    'assets/icons/android-chrome-192x192.png',
-    'assets/icons/android-chrome-512x512.png',
+    'assets/icons/fantapetillo-favicon-v455-16.png',
+    'assets/icons/fantapetillo-favicon-v455-32.png',
+    'assets/icons/fantapetillo-apple-touch-icon-v455.png',
+    'assets/icons/fantapetillo-android-chrome-192-v455.png',
+    'assets/icons/fantapetillo-android-chrome-512-v455.png',
     'assets/icons/fantapetillo-favicon-source.svg'
   ];
   required.forEach((rel) => check(exists(rel), `${rel} presente`));
@@ -35,15 +35,15 @@ try {
   check(source.includes('2026-2027'), 'source SVG contiene stagione 2026-2027');
 
   const manifest = json('site.webmanifest');
-  check(manifest.icons?.some((icon) => icon.src === './assets/icons/android-chrome-192x192.png'), 'manifest collega icona 192');
-  check(manifest.icons?.some((icon) => icon.src === './assets/icons/android-chrome-512x512.png'), 'manifest collega icona 512');
+  check(manifest.icons?.some((icon) => icon.src === './assets/icons/fantapetillo-android-chrome-192-v455.png'), 'manifest collega icona 192');
+  check(manifest.icons?.some((icon) => icon.src === './assets/icons/fantapetillo-android-chrome-512-v455.png'), 'manifest collega icona 512');
 
   const index = read('index.html');
   check(/href="\.\/favicon\.ico\?v=\d+"/.test(index), 'index collega favicon.ico versionata');
-  check(/favicon-32x32\.png\?v=\d+/.test(index), 'index collega favicon 32 versionata');
-  check(/favicon-16x16\.png\?v=\d+/.test(index), 'index collega favicon 16 versionata');
-  check(/apple-touch-icon\.png\?v=\d+/.test(index), 'index collega apple touch icon versionata');
-  check(index.includes('android-chrome-512x512.png'), 'index usa icona 512 per metadata social');
+  check(/(favicon-32x32|fantapetillo-favicon-v455-32)\.png\?v=\d+/.test(index), 'index collega favicon 32 versionata');
+  check(/(favicon-16x16|fantapetillo-favicon-v455-16)\.png\?v=\d+/.test(index), 'index collega favicon 16 versionata');
+  check(/(apple-touch-icon|fantapetillo-apple-touch-icon-v455)\.png\?v=\d+/.test(index), 'index collega apple touch icon versionata');
+  check(index.includes('fantapetillo-android-chrome-512-v455.png'), 'index usa icona 512 per metadata social');
 
   const versions = [...new Set((index.match(/\?v=\d+/g) || []).map((m) => m.slice(3)))];
   check(versions.length === 1 && versions[0] === config.currentVersion, `cache-buster index V${config.currentVersion}`);

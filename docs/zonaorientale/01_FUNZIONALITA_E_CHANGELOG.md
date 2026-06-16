@@ -7342,3 +7342,11 @@ La V395 lavora solo sulla sezione Soccer Data. Mantiene la sezione pubblica in s
 - I pannelli con `.filters-row`, controlli colonne o filtri ruolo Mantra mettono titolo/descrizione su una riga dedicata sopra i controlli.
 - Corretto il caso Listone in cui titolo e descrizione venivano schiacciati a sinistra dai gruppi Stato/Ruoli/Ruoli Mantra/Campi visibili.
 - La modifica e solo CSS: non altera filtri, query, dati, Firebase, snapshot o flussi Admin.
+
+## V455 - Fix selettore Admin e favicon FantaPetillo cache-proof
+
+- Corretto il selettore card Admin introdotto in V454: ora copre anche card dinamiche di pubblicazione e dettagli Admin.
+- Tutte le card Admin restano nascoste di default finche non vengono selezionate.
+- La Checklist QA Admin in basso resta nascosta di default e si mostra solo tramite checkbox dal menu Admin.
+- Nel clone FantaPetillo sono stati introdotti file favicon V455 con nomi nuovi per aggirare la cache browser.
+- Nessuna modifica a Firebase, rules, snapshot, Bilanci V438, badge dispositivo V434 o `FUNZIONALITA'.md`.

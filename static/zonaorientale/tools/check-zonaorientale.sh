@@ -2816,6 +2816,38 @@ else
   fail "node non disponibile per audit regolamento FantaPetillo V453"
 fi
 
+print_step "Audit selettore card Admin V456"
+if command -v node >/dev/null 2>&1; then
+  audit_admin_card_v456="$SITE_ROOT/tools/audit-admin-card-visibility-v456.mjs"
+  if [[ -f "$audit_admin_card_v456" ]]; then
+    if node "$audit_admin_card_v456" --quiet; then
+      pass "audit selettore card Admin V456 superato"
+    else
+      fail "audit selettore card Admin V456 fallito"
+    fi
+  else
+    fail "tool audit selettore card Admin V456 mancante"
+  fi
+else
+  fail "node non disponibile per audit selettore card Admin V456"
+fi
+
+print_step "Audit favicon FantaPetillo V455"
+if command -v node >/dev/null 2>&1; then
+  audit_fantapetillo_favicon_v455="$SITE_ROOT/tools/audit-fantapetillo-favicon-v455.mjs"
+  if [[ -f "$audit_fantapetillo_favicon_v455" ]]; then
+    if node "$audit_fantapetillo_favicon_v455" --quiet; then
+      pass "audit favicon FantaPetillo V455 superato"
+    else
+      fail "audit favicon FantaPetillo V455 fallito"
+    fi
+  else
+    fail "tool audit favicon FantaPetillo V455 mancante"
+  fi
+else
+  fail "node non disponibile per audit favicon FantaPetillo V455"
+fi
+
 print_step "Riepilogo"
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.

@@ -9,7 +9,8 @@ const siteRoot = path.resolve(scriptDir, '..');
 const staticRoot = path.resolve(siteRoot, '..');
 const cloneSlug = 'fantapetillomantramanager';
 const cloneRoot = path.join(staticRoot, cloneSlug);
-const docsRoot = path.resolve(siteRoot, '..', '..', 'docs');
+let docsRoot = path.resolve(siteRoot, '..', '..', 'docs');
+if (!fs.existsSync(docsRoot)) docsRoot = path.resolve(siteRoot, '..', 'docs');
 const cloneDocs = path.join(docsRoot, cloneSlug, 'README.md');
 let failures = 0;
 function ok(message) { if (!quiet) console.log(`OK: ${message}`); }
