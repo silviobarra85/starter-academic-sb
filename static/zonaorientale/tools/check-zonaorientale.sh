@@ -68,7 +68,7 @@ advisory_node_audit() {
   if node "$tool" --quiet >/dev/null 2>&1; then
     pass "$label superato"
   else
-    warn "$label non superato nello stato V470; non blocca il gate perché è un audit legacy da riallineare"
+    warn "$label non superato nello stato V471; non blocca il gate perché è un audit legacy da riallineare"
   fi
 }
 
@@ -843,7 +843,7 @@ if grep -q "$css_legacy_cleanup_v343_marker" "$app_file" && [[ -x "$css_legacy_c
   if "$css_legacy_cleanup_v343_tool" >/dev/null 2>&1; then
     pass "cleanup CSS legacy V343 presente e dry-run OK"
   else
-    warn "cleanup CSS legacy V343 non superato nello stato V470; non blocca il gate perche' rileva riferimenti storici/duplicati fuori dal runtime ZonaOrientale"
+    warn "cleanup CSS legacy V343 non superato nello stato V471; non blocca il gate perche' rileva riferimenti storici/duplicati fuori dal runtime ZonaOrientale"
   fi
 else
   fail "cleanup CSS legacy V343 non rilevato"
@@ -2637,23 +2637,23 @@ fi
 
 
 
-print_step "Audit footer isolamento V470"
+print_step "Audit footer isolamento V471"
 if command -v node >/dev/null 2>&1; then
-  audit_footer_isolation_v470="$SITE_ROOT/tools/audit-footer-isolation-v470.mjs"
+  audit_footer_isolation_v470="$SITE_ROOT/tools/audit-footer-isolation-v471.mjs"
   if [[ -f "$audit_footer_isolation_v470" ]]; then
     if node "$audit_footer_isolation_v470"; then
-      pass "audit footer isolamento V470 superato"
+      pass "audit footer isolamento V471 superato"
     else
-      fail "audit footer isolamento V470 fallito"
+      fail "audit footer isolamento V471 fallito"
     fi
   else
-    fail "tool audit footer isolamento V470 mancante"
+    fail "tool audit footer isolamento V471 mancante"
   fi
 else
-  fail "node non disponibile per audit footer isolamento V470"
+  fail "node non disponibile per audit footer isolamento V471"
 fi
 
-print_step "Gate ZonaOrientale V470"
+print_step "Gate ZonaOrientale V471"
 pass "controlli cross-lega rimossi dal gate principale ZonaOrientale"
 pass "per il clone usare il check dedicato nella cartella della seconda lega"
 

@@ -44,15 +44,15 @@ else
 fi
 
 versions="$(grep -Roh '?v=[0-9][0-9]*' "$SITE_ROOT"/*.html | sed 's/?v=//' | sort -u | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-if [[ "$versions" == "470" ]]; then
-  pass "cache-buster clone V470"
+if [[ "$versions" == "471" ]]; then
+  pass "cache-buster clone V471"
 else
   fail "cache-buster clone non allineati: $versions"
 fi
 
 if command -v node >/dev/null 2>&1; then
-  if node "$SITE_ROOT/tools/audit-snapshot-real-standard-admin-v470.mjs" --quiet; then pass "audit snapshot reale standard Admin V470"; else fail "audit snapshot reale standard Admin V470"; fi
-  if node "$SITE_ROOT/tools/audit-footer-isolation-v470.mjs" --quiet; then pass "audit footer isolamento V470"; else fail "audit footer isolamento V470"; fi
+  if node "$SITE_ROOT/tools/audit-snapshot-real-standard-admin-v471.mjs" --quiet; then pass "audit snapshot reale standard Admin V471"; else fail "audit snapshot reale standard Admin V471"; fi
+  if node "$SITE_ROOT/tools/audit-footer-isolation-v471.mjs" --quiet; then pass "audit footer isolamento V471"; else fail "audit footer isolamento V471"; fi
   if node "$SITE_ROOT/tools/audit-admin-bootstrap-v450.mjs" --quiet; then pass "audit Admin bootstrap V450"; else fail "audit Admin bootstrap V450"; fi
   if node "$SITE_ROOT/tools/audit-admin-onboarding-v451.mjs" --quiet; then pass "audit Admin onboarding V451"; else fail "audit Admin onboarding V451"; fi
   if node "$SITE_ROOT/tools/audit-favicon-v455.mjs" --quiet; then pass "audit favicon V455"; else fail "audit favicon V455"; fi
@@ -64,4 +64,4 @@ else
 fi
 
 if [[ "$failures" -gt 0 ]]; then exit 1; fi
-printf 'Controlli clone setup standard Admin V470 passati.\n'
+printf 'Controlli clone setup standard Admin V471 passati.\n'
