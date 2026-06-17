@@ -14,8 +14,8 @@ const js = read('assets/js/core/admin-card-visibility-v455.js');
 const css = read('assets/css/refactor/admin-card-visibility-v455.css');
 const app = read('assets/app.js');
 
-check('CSS V455 collegato in index', index.includes('admin-card-visibility-v455.css?v=455'));
-check('JS V455 collegato in index', index.includes('admin-card-visibility-v455.js?v=455'));
+check('CSS V455 collegato in index', index.includes('admin-card-visibility-v455.css?v=466'));
+check('JS V455 collegato in index', index.includes('admin-card-visibility-v455.js?v=466'));
 check('script V454 non piu collegato in index', !index.includes('admin-card-visibility-v454.js'));
 check('storage nuovo V455 con default vuoto', js.includes('.adminCardVisibility.v455.selectedCards') && /readJson\(STORAGE_SELECTED, \[\]\)/.test(js));
 check('include card dashboard pubblicazione', js.includes('admin-publication-dashboard-card-v368'));

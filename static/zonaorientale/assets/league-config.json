@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "456",
+  "currentVersion": "469",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -57,7 +57,13 @@
     "cloneFaviconIncludesSeason": "2026-2027",
     "cloneRegolamentoVersion": "453",
     "cloneRegolamentoSeason": "2026-2027",
-    "cloneRegolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf"
+    "cloneRegolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "fantaPetilloRealDataValidatorVersion": "459",
+    "fantaPetilloFirestoreSeedPreviewVersion": "460",
+    "fantaPetilloFirestoreImportVersion": "461",
+    "fantaPetilloRealDataWorkflowVersion": "462",
+    "fantaPetilloPublicSnapshotBuilderVersion": "463",
+    "fantapetilloShareNetlifyVersion": "466"
   },
   "branding": {
     "siteName": "ZonaOrientale Salerno",
@@ -192,5 +198,31 @@
     "adminBootstrapEnabled": true,
     "teamAreaStillGuarded": true,
     "adminOnboardingEnabled": true
+  },
+  "status": {
+    "status": "launch-readiness-v465",
+    "lastOverlay": "V465 checklist pubblicazione FantaPetillo",
+    "notes": [
+      "V463 aggiunge nel clone FantaPetillo una card Admin per generare snapshot pubblici statici da preview Firestore V460.",
+      "Nessuna modifica funzionale a ZonaOrientale: Admin, Firebase, snapshot, Bilanci V438 e badge V434 restano invariati.",
+      "V464 aggiunge nel clone FantaPetillo una card Admin di sola lettura per verificare la readiness dello sblocco Area Squadra.",
+      "V465 aggiunge nel clone FantaPetillo una card Admin informativa di checklist pubblicazione/share senza modifiche funzionali a ZonaOrientale."
+    ]
+  },
+  "setup": {
+    "launchReadinessVersion": "465",
+    "launchReadinessCardId": "fantaPetilloLaunchReadinessV465"
+  },
+  "multiLeagueStatus": {
+    "status": "fantapetillo-real-data-workflow-v462",
+    "lastOverlay": "V462 guida operativa dati reali FantaPetillo",
+    "notes": [
+      "V462 aggiunge nel clone FantaPetillo una card Admin informativa per spiegare il workflow dati reali; nessuna modifica funzionale a ZonaOrientale."
+    ],
+    "fantaPetilloTeamAreaReadinessVersion": "464",
+    "fantaPetilloLaunchReadinessVersion": "465"
+  },
+  "multiLeague": {
+    "fantapetilloStandardAdminVersion": "467"
   }
 }

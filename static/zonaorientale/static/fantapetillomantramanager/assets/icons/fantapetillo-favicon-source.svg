@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="FantaPetilloMantraManager 2026-2027 favicon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff6700"/>
+      <stop offset="0.32" stop-color="#8b0029"/>
+      <stop offset="1" stop-color="#0c1220"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="492" height="492" rx="80" fill="url(#g)" stroke="#ffb100" stroke-width="7"/>
+  <rect x="42" y="38" width="428" height="98" rx="28" fill="#050a12" fill-opacity="0.72" stroke="#ffb100" stroke-opacity="0.75" stroke-width="4"/>
+  <text x="256" y="102" text-anchor="middle" font-family="DejaVu Sans Condensed, Arial, sans-serif" font-size="46" font-weight="700" fill="#ffb100">MANTRA</text>
+  <text x="256" y="329" text-anchor="middle" font-family="DejaVu Sans Condensed, Arial, sans-serif" font-size="151" font-weight="800" fill="#fffaf0" stroke="#140812" stroke-opacity="0.65" stroke-width="6">FPMM</text>
+  <rect x="44" y="374" width="424" height="86" rx="28" fill="#070c18" fill-opacity="0.82" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2"/>
+  <text x="256" y="432" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="54" font-weight="700" fill="#f8e2b2">2026-2027</text>
+</svg>

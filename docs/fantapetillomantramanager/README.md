@@ -156,3 +156,97 @@ Documento tecnico: `ADMIN_UI_V455.md`.
 ## V456 - Hotfix selettore card Admin
 
 Il selettore card Admin usa ora il runtime V456. I pulsanti sono sempre cliccabili e il Generatore comunicati automatici e incluso nella lista delle card selezionabili. La Checklist QA Admin resta nascosta di default e si mostra solo dal checkbox dedicato.
+
+## V457 - Dati placeholder 2026-2027
+
+La V457 porta la stagione corrente del clone a `2026-2027` e aggiunge 10 club placeholder per testare le sezioni pubbliche senza usare dati reali. I dati sono statici, marcati come placeholder e non scrivono su Firebase.
+
+File guida: `docs/fantapetillomantramanager/PLACEHOLDER_DATA_V457.md`.
+
+Area Squadra resta protetta fino a inserimento di dati reali e `teamUsers`.
+
+
+## V458 - Kit setup dati reali FantaPetillo
+
+- Aggiunto kit Admin FantaPetillo per scaricare template CSV/JSON dei dati reali 2026-2027.
+- Il kit non scrive su Firebase: serve a compilare presidenti, squadre, budget, stadi, loghi e UID prima del seed definitivo.
+- Area Squadra FantaPetillo resta protetta fino a teamUsers e snapshot reali.
+
+## V459 - Validatore dati reali
+
+Aggiunta card Admin `Validatore dati reali 2026-2027` per caricare o incollare il CSV/JSON compilato dai template V458, validarlo localmente e scaricare un seed JSON revisionabile. La card non scrive su Firebase e non sblocca Area Squadra.
+
+Documento tecnico: `REAL_DATA_VALIDATOR_V459.md`.
+
+## V460 - Preview seed Firestore
+
+Aggiunta la card Admin `Preview seed Firestore 2026-2027`, utile dopo il validatore V459. La card trasforma il seed JSON validato in una preview dei documenti Firestore e in una checklist per import manuale nel progetto Firebase `fantapetillomantramanager`. Non scrive automaticamente su Firebase.
+
+## V461 - Import controllato Firestore
+
+Aggiunta la card Admin `Import controllato Firestore 2026-2027`. La card prende in input il file `fantapetillo-firestore-seed-preview-v460.json`, verifica target, collection e login Admin, poi consente una scrittura merge-only nel Firebase dedicato `fantapetillomantramanager` dopo conferme manuali e testo `IMPORTA FANTAPETILLO`.
+
+Non vengono cancellati documenti e non viene toccato Firebase ZonaOrientale. Area Squadra resta protetta fino a verifica di dati reali, `teamUsers` e snapshot pubblici.
+
+Documento tecnico: `FIRESTORE_IMPORT_V461.md`.
+
+## V462 - Guida operativa dati reali
+
+Aggiunta nell'Admin del clone la card `Come applicare i dati reali 2026-2027`, selezionabile dal menu Admin. La card spiega l'ordine operativo per usare V458, V459, V460 e V461 quando saranno disponibili i dati reali.
+
+La card non scrive su Firebase e non sblocca Area Squadra: serve come guida per template, validazione, preview, import controllato, verifica Firestore, snapshot pubblici e sblocco successivo.
+
+Documento tecnico: `REAL_DATA_WORKFLOW_V462.md`.
+
+## V463 - Generatore snapshot pubblici
+
+La V463 aggiunge una card Admin per generare snapshot pubblici statici a partire dalla preview Firestore V460. La card produce i JSON da applicare manualmente alla repo e non scrive su Firebase. Area Squadra resta protetta.
+
+## V464 - Readiness sblocco Area Squadra
+
+Aggiunta nell'Admin del clone la card `Verifica sblocco Area Squadra 2026-2027`. La card controlla Firestore live, preview V460 o snapshot V463 per verificare se esistono 10 squadre, 10 presidenti, 10 seasonTeams e 10 teamUsers con UID/email/teamId prima dello sblocco controllato dell'Area Squadra.
+
+La card non scrive su Firebase e non sblocca ancora l'Area Squadra.
+
+Documento tecnico: `TEAM_AREA_READINESS_V464.md`.
+
+## V465 - Checklist pubblicazione e share
+
+Aggiunta nell'Admin del clone la card `Checklist pubblicazione e share 2026-2027`, selezionabile dal menu Admin. La card riepiloga cosa manca prima del go-live: dati reali, snapshot pubblici, readiness Area Squadra e configurazione share/Netlify/Open Graph.
+
+La card e' solo informativa: non scrive su Firebase, non modifica Netlify e non sblocca Area Squadra.
+
+Documento tecnico: `LAUNCH_READINESS_V465.md`.
+
+
+## V466 - Share, Netlify e Open Graph
+
+Aggiunta nell'Admin del clone la card `Share, Netlify e Open Graph 2026-2027`. La V466 include anche `netlify.toml` e `netlify/functions/news-share.js` multi-lega per preparare la preview dinamica dei comunicati FantaPetillo.
+
+La patch non sblocca Area Squadra, non rimuove noindex e non scrive su Firebase.
+
+Documento tecnico: `SHARE_NETLIFY_V466.md`.
+
+
+## V467 - Setup standard da Admin
+
+Il clone usa il metodo standard del gestionale per creare squadre, accettare utenti e generare snapshot. Gli strumenti massivi CSV/import/seed non sono più caricati nell’interfaccia Admin.
+
+## V469 - Cleanup audit e setup standard Admin
+
+La V469 riallinea il clone al flusso scelto dall'utente: inserimento dati dal normale pannello Admin, senza strumenti massivi CSV/import.
+
+Stato operativo:
+
+- il clone resta su Firebase dedicato `fantapetillomantramanager`;
+- restano attivi Admin bootstrap, onboarding, regolamento, favicon, selettore card Admin, setup standard Admin e share Netlify;
+- le card tecniche V458-V465 non vengono piu' caricate;
+- il check del clone usa `tools/audit-standard-admin-cleanup-v468.mjs`;
+- il cleanup fisico dei file tecnici si esegue con `tools/cleanup-standard-admin-v468.sh`.
+
+Comando consigliato dopo applicazione overlay:
+
+```bash
+bash static/fantapetillomantramanager/tools/cleanup-standard-admin-v468.sh
+```
+

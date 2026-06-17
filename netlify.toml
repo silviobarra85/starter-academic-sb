@@ -20,3 +20,8 @@
   from = "/zonaorientale/share/news/:id"
   to = "/.netlify/functions/news-share?id=:id"
   status = 200
+
+[[redirects]]
+  from = "/fantapetillomantramanager/share/news/:id"
+  to = "/.netlify/functions/news-share?id=:id&league=fantapetillomantramanager"
+  status = 200

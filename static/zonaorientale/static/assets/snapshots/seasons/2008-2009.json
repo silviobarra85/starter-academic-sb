@@ -1,0 +1,779 @@
+{
+  "id": "2008-2009",
+  "seasonId": "2008-2009",
+  "generatedAt": "2026-06-11T07:32:23.270Z",
+  "teams": [
+    {
+      "id": "h6saeK7uRQIQNmiZTRT7",
+      "canonicalName": "Afc Severgas Baronissi",
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "logo": "./assets/logos/baronissi.png"
+    },
+    {
+      "id": "lvn8MgLzGcNCY9ev0sgX",
+      "createdAt": {
+        "seconds": 1778833917,
+        "nanoseconds": 315000000
+      },
+      "canonicalName": "AS Longobarda",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778834075,
+        "nanoseconds": 573000000
+      },
+      "currentPresidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "notes": "",
+      "isCurrent": false
+    },
+    {
+      "id": "7Bx0ceGBXtF4FwH6T0PI",
+      "canonicalName": "As Paperopoli",
+      "createdAt": {
+        "seconds": 1778833666,
+        "nanoseconds": 871000000
+      },
+      "notes": "",
+      "isCurrent": true,
+      "logo": "./assets/logos/paperopoli.png",
+      "updatedAt": {
+        "seconds": 1778954349,
+        "nanoseconds": 563000000
+      },
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ]
+    },
+    {
+      "id": "fYQViaVoCqDPmikgwS2F",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "notes": "",
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "canonicalName": "Real Gremo"
+    }
+  ],
+  "presidents": [
+    {
+      "id": "iAcJUOTNENihne0XzhuR",
+      "name": "Alessandro Liguori",
+      "isActive": false,
+      "updatedAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      },
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      }
+    },
+    {
+      "id": "KuWF4jNk1I97Jdk44gyK",
+      "name": "Bartolomeo Greco",
+      "isActive": false,
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      }
+    },
+    {
+      "id": "JaSqcnTZUYHtjHXghADS",
+      "name": "Gaetano Caparrotti",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "updatedAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "Mw12sFS1OoS8V5uzBLLw",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "name": "Gianluca Caparrotti",
+      "isActive": true
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2008-2009_lvn8mglzgcncy9ev0sgx",
+      "updatedAt": {
+        "seconds": 1778849828,
+        "nanoseconds": 733000000
+      },
+      "logo": "",
+      "presidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "createdAt": {
+        "seconds": 1778849828,
+        "nanoseconds": 733000000
+      },
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
+      "isHistorical": false,
+      "seasonId": "2008-2009",
+      "name": "AS Longobarda"
+    },
+    {
+      "id": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "createdAt": {
+        "seconds": 1778849831,
+        "nanoseconds": 942000000
+      },
+      "presidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778849831,
+        "nanoseconds": 942000000
+      },
+      "seasonId": "2008-2009",
+      "name": "As Paperopoli",
+      "isHistorical": false,
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI"
+    },
+    {
+      "id": "2008-2009_fyqviavocqdpmikgws2f",
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "isHistorical": false,
+      "name": "Real Gremo",
+      "seasonId": "2008-2009",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778849839,
+        "nanoseconds": 762000000
+      },
+      "presidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "createdAt": {
+        "seconds": 1778849839,
+        "nanoseconds": 762000000
+      }
+    },
+    {
+      "id": "2008-2009_kbjri4liu4iuq6ajfnml",
+      "updatedAt": {
+        "seconds": 1779195909,
+        "nanoseconds": 140000000
+      },
+      "logo": "",
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "createdAt": {
+        "seconds": 1778849960,
+        "nanoseconds": 618000000
+      },
+      "isHistorical": false,
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "seasonId": "2008-2009",
+      "name": "Us Baronissi Cavaliers"
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2008-2009_campionato",
+      "format": "CLASSIFICA",
+      "status": "CONCLUSA",
+      "seasonId": "2008-2009",
+      "name": "Campionato",
+      "notes": "",
+      "type": "CAMPIONATO",
+      "createdAt": {
+        "seconds": 1778849845,
+        "nanoseconds": 246000000
+      },
+      "knockoutPhases": [],
+      "updatedAt": {
+        "seconds": 1778849850,
+        "nanoseconds": 164000000
+      }
+    },
+    {
+      "id": "2008-2009_champions-league",
+      "notes": "",
+      "status": "NON_DISPUTATA",
+      "format": "GIRONI_KO",
+      "seasonId": "2008-2009",
+      "name": "Champion's League",
+      "createdAt": {
+        "seconds": 1778849845,
+        "nanoseconds": 282000000
+      },
+      "updatedAt": {
+        "seconds": 1778849854,
+        "nanoseconds": 255000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "type": "CHAMPIONS_LEAGUE"
+    },
+    {
+      "id": "2008-2009_coppa-italia",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
+      "name": "Coppa Italia",
+      "seasonId": "2008-2009",
+      "notes": "",
+      "type": "COPPA_ITALIA",
+      "createdAt": {
+        "seconds": 1778849845,
+        "nanoseconds": 305000000
+      },
+      "updatedAt": {
+        "seconds": 1778849858,
+        "nanoseconds": 255000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ]
+    },
+    {
+      "id": "2008-2009_playoff",
+      "notes": "",
+      "seasonId": "2008-2009",
+      "name": "Playoff",
+      "status": "NON_DISPUTATA",
+      "format": "GIRONI_KO",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778849861,
+        "nanoseconds": 799000000
+      },
+      "createdAt": {
+        "seconds": 1778849845,
+        "nanoseconds": 366000000
+      },
+      "type": "PLAYOFF"
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2008-2009-campionato_1",
+      "played": null,
+      "seasonId": "2008-2009",
+      "points": null,
+      "competitionId": "2008-2009_campionato",
+      "seasonTeamId": "2008-2009_lvn8mglzgcncy9ev0sgx",
+      "updatedAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 789000000
+      },
+      "position": 1,
+      "createdAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 789000000
+      },
+      "fantapoints": null
+    },
+    {
+      "id": "2008-2009-campionato_2",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 810000000
+      },
+      "createdAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 810000000
+      },
+      "position": 2,
+      "seasonId": "2008-2009",
+      "points": null,
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "competitionId": "2008-2009_campionato",
+      "played": null
+    },
+    {
+      "id": "2008-2009-campionato_3",
+      "fantapoints": null,
+      "position": 3,
+      "createdAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 841000000
+      },
+      "updatedAt": {
+        "seconds": 1778849876,
+        "nanoseconds": 841000000
+      },
+      "seasonTeamId": "2008-2009_kbjri4liu4iuq6ajfnml",
+      "competitionId": "2008-2009_campionato",
+      "points": null,
+      "seasonId": "2008-2009",
+      "played": null
+    },
+    {
+      "id": "2008-2009-coppa-italia_1",
+      "played": null,
+      "points": null,
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_fyqviavocqdpmikgws2f",
+      "competitionId": "2008-2009_coppa-italia",
+      "updatedAt": {
+        "seconds": 1778849886,
+        "nanoseconds": 476000000
+      },
+      "position": 1,
+      "createdAt": {
+        "seconds": 1778849886,
+        "nanoseconds": 476000000
+      },
+      "fantapoints": null
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_0",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Perin",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_1",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Muric",
+      "realTeam": "SAS",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_2",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Corvi",
+      "realTeam": "PAR",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_3",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Djimsiti",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_4",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Miranda J.",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_5",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Winter",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_6",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Lucumì",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_7",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Vitik",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_8",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fortini",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_9",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Idrissi R.",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_10",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Heggem",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_11",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Bernasconi",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_12",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Freuler",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_13",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Bruyne",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 60,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_14",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Saelemaekers",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_15",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Maldini",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 27,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_16",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Musah",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_17",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Ellertsson",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_18",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Sulemana I.",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_19",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Pisilli",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_20",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fabbian",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_21",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Anjorin",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_22",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Keita M.",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_23",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Orban G.",
+      "realTeam": "VER",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_24",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Noslin",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_25",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Castro S.",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_26",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Dallinga",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_27",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Douvikas",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_28",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kuhn",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 35,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2008-2009_7bx0cegbxtf4fwh6t0pi_29",
+      "seasonId": "2008-2009",
+      "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kulenovic",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 4,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}

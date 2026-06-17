@@ -5,15 +5,15 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "456",
-  "currentSeasonId": "2025-2026",
+  "currentVersion": "469",
+  "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
   "logosBasePath": "./assets/logos/",
   "futureLeagueCandidate": {
     "provisionalName": "FantaPetilloMantraManager",
     "nameCanChange": true,
-    "status": "regolamento-v453"
+    "status": "share-netlify-v466"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
@@ -25,7 +25,8 @@
     "bilanci": true,
     "calciomercato": false,
     "fantamercato": false,
-    "mantraFilters": true
+    "mantraFilters": true,
+    "manualAdminSetup": true
   },
   "guardrails": {
     "sandboxClone": true,
@@ -59,18 +60,34 @@
     "faviconIncludesInitials": "FPMM",
     "regolamentoVersion": "453",
     "regolamentoSeason": "2026-2027",
-    "regolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf"
+    "regolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "placeholderDataVersion": "457",
+    "placeholderDataSeason": "2026-2027",
+    "setupKitVersion": "458",
+    "realDataImportTemplateVersion": "458",
+    "realDataValidatorVersion": "459",
+    "firestoreSeedPreviewVersion": "460",
+    "firestoreImportVersion": "461",
+    "firestoreImportMode": "admin-confirmed-merge-only",
+    "realDataWorkflowVersion": "462",
+    "publicSnapshotBuilderVersion": "463",
+    "publicSnapshotBuilderWritesToFirebase": false,
+    "teamAreaStillGuarded": true,
+    "teamAreaReadinessVersion": "464",
+    "shareNetlifyVersion": "466",
+    "shareNetlifyReady": "config-prepared",
+    "newsShareRedirectVersion": "466"
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
-    "homeEyebrow": "Lega Fantacalcio sandbox",
+    "homeEyebrow": "Lega Fantacalcio in configurazione",
     "homeTitle": "FantaPetilloMantraManager",
-    "homeSubtitle": "Clone sandbox del motore multi-lega. Dati e Firebase da configurare prima della produzione.",
+    "homeSubtitle": "Setup dati 2026-2027 con club placeholder: sostituisci presidenti, squadre, rose e snapshot prima della produzione.",
     "imageUrl": "https://silviobarra.com/fantapetillomantramanager/assets/icons/android-chrome-512x512.png",
     "pages": {
       "home": {
         "title": "FantaPetilloMantraManager",
-        "description": "Sandbox multi-lega del gestionale fantacalcio: motore clonato, dati minimi e Firebase disabilitato.",
+        "description": "Setup FantaPetilloMantraManager 2026-2027 con dati placeholder e Firebase dedicato.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/",
         "ogType": "website"
       },
@@ -88,7 +105,7 @@
       },
       "bilanci": {
         "title": "Bilanci FM - FantaPetilloMantraManager",
-        "description": "Bilanci FM sandbox per FantaPetilloMantraManager.",
+        "description": "Bilanci FM placeholder per FantaPetilloMantraManager 2026-2027.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
         "ogType": "website"
       }
@@ -141,26 +158,29 @@
     "calciomercatoLinks": "./assets/calciomercato/links.json",
     "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
     "calciomercatoArchiveBase": "./assets/calciomercato/archive/",
-    "regolamentoPdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf"
+    "regolamentoPdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "realDataTemplateCsv": "./assets/setup/fantapetillo-real-teams-template-v458.csv",
+    "realDataTemplateJson": "./assets/setup/fantapetillo-real-teams-template-v458.json",
+    "firestoreSeedPreviewInput": "./assets/setup/fantapetillo-real-data-seed-v459.json"
   },
   "sandbox": {
     "enabled": true,
     "createdInVersion": "447",
-    "status": "regolamento-v453",
+    "status": "share-netlify-v466",
     "firebase": "dedicated-project-admin-bootstrap",
     "notes": [
-      "V453 struttura la sezione Regolamento dal PDF ufficiale 2026-2027 e aggiunge download PDF.",
-      "Clone provvisorio per verificare template multi-lega.",
-      "Firebase reale dedicato collegato dal progetto fantapetillomantramanager.",
-      "Admin bootstrap abilitato in V450 dopo creazione manuale del primo admins/{uid}.",
-      "V451 aggiunge una guida Admin per inizializzare dati reali e pubblicare snapshot.",
-      "V452 sostituisce favicon e icone PWA/social con sigla FPMM e stagione 2026-2027.",
+      "V466 prepara redirect Netlify e funzione news-share multi-lega per preview Open Graph dei comunicati FantaPetillo.",
+      "V463 aggiunge una card Admin per generare snapshot pubblici statici da preview Firestore V460 senza scrivere su Firebase.",
+      "V462 aggiunge una card Admin informativa sul workflow dati reali: template, validazione, preview, import, snapshot e sblocco Area Squadra.",
+      "V461 aggiunge import controllato Firestore da preview V460: richiede login admin, conferme manuali e scrive solo in merge nel Firebase dedicato.",
+      "V460 aggiunge preview seed Firestore: genera documenti e checklist console senza scrivere automaticamente su Firebase.",
+      "V458 aggiunge kit Admin e template CSV/JSON per raccogliere dati reali senza scrivere automaticamente su Firebase.",
+      "V457 aggiunge dati statici placeholder per testare layout pubblico, bilanci e sezioni senza dati reali.",
+      "I placeholder non sono dati ufficiali: vanno sostituiti da Admin e snapshot prima della produzione.",
       "Area Squadra resta nascosta/guardata finche non vengono inseriti dati reali e teamUsers.",
-      "Rules Firestore V450 derivate dalle rules complete ZonaOrientale V393, adattate al progetto Firebase separato.",
-      "Firebase ZonaOrientale non viene importato ne usato dal clone.",
-      "Dati statici minimi placeholder: da sostituire prima della produzione."
+      "Firebase ZonaOrientale non viene importato ne usato dal clone."
     ],
-    "auditedInVersion": "453",
+    "auditedInVersion": "466",
     "firebaseProjectStatus": "connected-admin-bootstrap-v450"
   },
   "firebase": {
@@ -180,19 +200,72 @@
     "adminOnboardingEnabled": true
   },
   "setup": {
-    "version": "453",
-    "status": "admin-onboarding",
+    "version": "458",
+    "status": "standard-admin-v467",
     "adminChecklist": [
-      "Verifica rules Firestore V450 pubblicate",
-      "Accedi come admin",
-      "Crea o conferma stagione corrente",
-      "Inserisci presidenti",
-      "Inserisci squadre madri",
-      "Associa squadre alla stagione",
-      "Inserisci stadi",
-      "Aggiorna snapshot pubblici",
-      "Scarica overlay snapshot e applicalo alla repo"
-    ]
+      "Verifica che i placeholder pubblici siano visibili solo come dati provvisori",
+      "Inserisci presidente e squadra reali in Firebase Admin",
+      "Sostituisci Club Placeholder 01-10 con club reali",
+      "Associa presidenti e squadre alla stagione 2026-2027",
+      "Aggiorna budget/stadi reali",
+      "Aggiorna snapshot pubblici e scarica overlay",
+      "Solo dopo crea teamUsers e sblocca Area Squadra"
+    ],
+    "templates": {
+      "csv": "assets/setup/fantapetillo-real-teams-template-v458.csv",
+      "json": "assets/setup/fantapetillo-real-teams-template-v458.json"
+    },
+    "validatorVersion": "459",
+    "realDataValidator": {
+      "cardId": "fantaPetilloRealDataValidatorV459",
+      "writesToFirebase": false,
+      "downloads": {
+        "seedJson": "fantapetillo-real-data-seed-v459.json",
+        "normalizedCsv": "fantapetillo-real-data-normalized-v459.csv"
+      }
+    },
+    "firestoreSeedPreviewVersion": "460",
+    "firestoreSeedPreview": {
+      "cardId": "fantaPetilloFirestoreSeedPreviewV460",
+      "writesToFirebase": false,
+      "targetProjectId": "fantapetillomantramanager",
+      "downloads": {
+        "seedPreviewJson": "fantapetillo-firestore-seed-preview-v460.json",
+        "consoleChecklist": "fantapetillo-firestore-console-checklist-v460.md"
+      }
+    },
+    "firestoreImportVersion": "461",
+    "firestoreImport": {
+      "cardId": "fantaPetilloFirestoreImportV461",
+      "writesToFirebase": true,
+      "mergeOnly": true,
+      "requiresAdminLogin": true,
+      "requiresManualConfirmations": true,
+      "targetProjectId": "fantapetillomantramanager",
+      "input": "fantapetillo-firestore-seed-preview-v460.json",
+      "report": "fantapetillo-firestore-import-report-v461.json"
+    },
+    "realDataWorkflowVersion": "462",
+    "publicSnapshotBuilderVersion": "463",
+    "publicSnapshotBuilder": {
+      "cardId": "fantaPetilloPublicSnapshotBuilderV463",
+      "writesToFirebase": false,
+      "input": "fantapetillo-firestore-seed-preview-v460.json",
+      "outputs": [
+        "assets/public/config.json",
+        "assets/snapshots/seasons/manifest.json",
+        "assets/snapshots/seasons/2026-2027.json",
+        "assets/snapshots/honor.json",
+        "assets/rose/2026-2027-real-data-empty-rosters.json"
+      ]
+    },
+    "teamAreaReadinessVersion": "464",
+    "teamAreaReadinessCardId": "fantaPetilloTeamAreaReadinessV464",
+    "launchReadinessVersion": "465",
+    "launchReadinessCardId": "fantaPetilloLaunchReadinessV465",
+    "manualAdminFlow": true,
+    "bulkImportToolsLoaded": false,
+    "placeholderDataEnabled": false
   },
   "regolamento": {
     "version": "453",
@@ -201,5 +274,23 @@
     "pdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
     "structuredSection": "assets/js/sections/regolamento-section-v402.js",
     "sourceDocument": "FANTACALCIO_MANTRA_2026_2027-4.pdf"
+  },
+  "status": {
+    "status": "launch-readiness-v465",
+    "lastOverlay": "V465 checklist pubblicazione FantaPetillo",
+    "notes": [
+      "V463 aggiunge una card Admin per trasformare la preview Firestore V460 in file JSON statici: config pubblica, manifest snapshot, snapshot stagione, honor e rose vuote.",
+      "La card non scrive su Firebase e non sblocca Area Squadra.",
+      "I JSON generati vanno revisionati e applicati manualmente alla repo.",
+      "V464 aggiunge una card Admin che verifica se dati reali, teamUsers e snapshot sono pronti prima dello sblocco controllato dell Area Squadra.",
+      "V465 aggiunge una card Admin informativa per riepilogare cosa manca prima della pubblicazione: dati reali, snapshot, Area Squadra e share/Netlify."
+    ]
+  },
+  "notes": [],
+  "audit": {
+    "standardAdminSetupVersion": "467"
+  },
+  "multiLeague": {
+    "status": "standard-admin-v467"
   }
 }

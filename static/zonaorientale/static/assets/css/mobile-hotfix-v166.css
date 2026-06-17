@@ -1,0 +1,251 @@
+/* V166 - Rifiniture mobile: header, Altro, Squadra, News/Palmares, competizioni. */
+@media (max-width: 760px) {
+  body.is-mobile-ux {
+    --mobile-section-width-v166: min(100%, calc(100vw - 24px));
+  }
+
+  /* Header mobile: stagione su riga propria, azioni account compatte in una riga. */
+  body.is-mobile-ux .app-header .header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  body.is-mobile-ux .app-header .season-switcher {
+    flex: 0 0 100%;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  body.is-mobile-ux .app-header #themeToggleBtn,
+  body.is-mobile-ux .app-header #openLoginBtn,
+  body.is-mobile-ux .app-header #logoutBtn {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 36px;
+    padding: 0 8px;
+    font-size: 0.76rem;
+    line-height: 1;
+    white-space: nowrap;
+    justify-content: center;
+  }
+
+  body.is-mobile-ux .app-header #themeToggleBtn .theme-toggle-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body.is-mobile-ux .app-header #refreshBtn:not(.hidden) {
+    flex: 0 0 100%;
+    height: 34px;
+  }
+
+  /* Menu Altro con icone. */
+  body.is-mobile-ux .mobile-more-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  body.is-mobile-ux .mobile-more-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(49, 211, 110, 0.12);
+    border: 1px solid rgba(49, 211, 110, 0.25);
+    flex: 0 0 28px;
+    font-size: 1rem;
+  }
+
+  /* Area squadra: Utente / Ruolo / Stato su una singola riga. */
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .user-request-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .metric-card {
+    min-width: 0;
+    padding: 9px 6px;
+    border-radius: 14px;
+  }
+
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .metric-card .metric-label {
+    font-size: 0.63rem;
+    letter-spacing: 0.03em;
+  }
+
+  body.is-mobile-ux #teamAreaBody .team-area-summary-panel .metric-card strong {
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1.15;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Larghezze coerenti con il blocco titolo per pannelli e card principali mobile. */
+  body.is-mobile-ux .app-page > .panel,
+  body.is-mobile-ux .app-page .panel,
+  body.is-mobile-ux .mobile-block-dashboard,
+  body.is-mobile-ux .mobile-home-blocks,
+  body.is-mobile-ux .mobile-teamarea-hub-v144,
+  body.is-mobile-ux .mobile-competition-blocks-v155,
+  body.is-mobile-ux .mobile-roster-selector-v156,
+  body.is-mobile-ux .team-profile-page-body > .panel,
+  body.is-mobile-ux .team-profile-page-body > .detail-section {
+    width: var(--mobile-section-width-v166);
+    max-width: var(--mobile-section-width-v166);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  body.is-mobile-ux .app-page .grid-two,
+  body.is-mobile-ux .app-page .cards-grid,
+  body.is-mobile-ux .app-page .user-actions-grid {
+    width: var(--mobile-section-width-v166);
+    max-width: var(--mobile-section-width-v166);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  /* Scheda squadra: dettagli direttamente nel blocco principale, senza effetto card-nella-card. */
+  body.is-mobile-ux .team-profile-page-body .team-profile-hero-panel {
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.94));
+    border: 1px solid rgba(49, 211, 110, 0.28);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  }
+
+  body.is-mobile-ux .team-profile-page-body .team-profile-header,
+  body.is-mobile-ux .team-profile-page-body .team-profile-page-hero {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body.is-mobile-ux .team-profile-page-body .team-profile-title-block {
+    min-width: 0;
+  }
+
+  body.is-mobile-ux .team-profile-page-body .team-profile-title-block h3,
+  body.is-mobile-ux .team-profile-page-body .team-profile-title-block .team-profile-meta-line {
+    color: #f8fafc !important;
+  }
+
+  body.is-mobile-ux .team-profile-roster-table th:first-child,
+  body.is-mobile-ux .team-profile-roster-table td:first-child,
+  body.is-mobile-ux .team-profile-roster-table .team-profile-player-cell {
+    width: 111px !important;
+    min-width: 111px !important;
+    max-width: 111px !important;
+  }
+
+  body.is-mobile-ux .team-profile-roster-table .team-profile-player-cell strong,
+  body.is-mobile-ux .team-profile-roster-table .team-profile-player-cell a {
+    display: inline-block;
+    max-width: 104px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+
+  /* News: blocchi scuri con titolo bianco. */
+  body.is-mobile-ux [data-page="news"] .panel,
+  body.is-mobile-ux [data-page="news"] details,
+  body.is-mobile-ux [data-page="news"] article,
+  body.is-mobile-ux #newsList .news-card,
+  body.is-mobile-ux #newsList details {
+    background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.92)) !important;
+    border: 1px solid rgba(49, 211, 110, 0.24) !important;
+    color: #f8fafc !important;
+  }
+
+  body.is-mobile-ux [data-page="news"] h2,
+  body.is-mobile-ux [data-page="news"] h3,
+  body.is-mobile-ux [data-page="news"] summary,
+  body.is-mobile-ux #newsList h2,
+  body.is-mobile-ux #newsList h3,
+  body.is-mobile-ux #newsList summary {
+    color: #ffffff !important;
+  }
+
+  body.is-mobile-ux [data-page="news"] p,
+  body.is-mobile-ux [data-page="news"] small,
+  body.is-mobile-ux [data-page="news"] .muted,
+  body.is-mobile-ux #newsList p,
+  body.is-mobile-ux #newsList small,
+  body.is-mobile-ux #newsList .muted {
+    color: rgba(248, 250, 252, 0.84) !important;
+  }
+
+  /* Palmarès per competizioni: blocchi e tabelle scuri, coerenti con il resto. */
+  body.is-mobile-ux #honorSummary .palmares-grid,
+  body.is-mobile-ux #honorSummary .palmares-competition-card,
+  body.is-mobile-ux #honorSummary .palmares-table-wrap,
+  body.is-mobile-ux #honorSummary .palmares-table,
+  body.is-mobile-ux #honorSummary .palmares-table tr,
+  body.is-mobile-ux #honorSummary .palmares-table th,
+  body.is-mobile-ux #honorSummary .palmares-table td {
+    background: linear-gradient(135deg, rgba(9, 19, 32, 0.98), rgba(11, 33, 22, 0.94)) !important;
+    color: #f8fafc !important;
+    border-color: rgba(49, 211, 110, 0.18) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-competition-card h3,
+  body.is-mobile-ux #honorSummary .palmares-competition-card h4,
+  body.is-mobile-ux #honorSummary .palmares-competition-card strong,
+  body.is-mobile-ux #honorSummary .palmares-table th,
+  body.is-mobile-ux #honorSummary .palmares-table .club-name-with-logo strong {
+    color: #ffffff !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-competition-card p,
+  body.is-mobile-ux #honorSummary .palmares-competition-card small,
+  body.is-mobile-ux #honorSummary .palmares-competition-card .muted,
+  body.is-mobile-ux #honorSummary .palmares-table td {
+    color: rgba(248, 250, 252, 0.86) !important;
+  }
+
+  body.is-mobile-ux #honorSummary .palmares-table tbody tr:nth-child(even) td {
+    background: rgba(15, 23, 42, 0.82) !important;
+  }
+
+  /* Singola competizione: tasto sempre visibile per tornare in alto. */
+  body.is-mobile-ux .competition-scroll-top-v166,
+  .competition-detail-page-v162 .competition-scroll-top-v166 {
+    position: fixed;
+    top: max(10px, env(safe-area-inset-top));
+    left: 10px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(49, 211, 110, 0.42);
+    background: rgba(9, 19, 32, 0.92);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (min-width: 761px) {
+  .competition-scroll-top-v166 {
+    display: none !important;
+  }
+}

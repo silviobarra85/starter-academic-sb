@@ -37,16 +37,22 @@ for file in "${required_files[@]}"; do
   fi
 done
 
+# V469: questo controllo deve guardare solo il runtime di ZonaOrientale.
+# Non deve fallire per copie generate/storiche in static/assets o per il clone FantaPetillo.
 for obsolete in "${obsolete_files[@]}"; do
   rel="${obsolete#$SITE_ROOT/}"
-  if grep -R --include='*.html' --include='*.js' --include='*.css' -F "$rel" "$SITE_ROOT" >/dev/null 2>&1; then
-    refs="$(grep -R --include='*.html' --include='*.js' --include='*.css' -l -F "$rel" "$SITE_ROOT" | sed "s#^$SITE_ROOT/##" | grep -v '^tools/cleanup-css-legacy-v343.sh$' || true)"
-    blocking="$(printf '%s\n' "$refs" | grep -Ev '^(assets/app\.js|tools/cleanup-css-refactor-v301\.sh|tools/check-zonaorientale\.sh|assets/styles\.css|assets/css/refactor/.*|tools/cleanup-css-legacy-v343\.sh)$' || true)"
-    if [[ -n "$blocking" ]]; then
-      echo "FAIL: riferimento runtime inatteso a $rel" >&2
-      printf '%s\n' "$blocking" >&2
-      failures=$((failures + 1))
-    fi
+  refs="$(grep -H --include='*.html' --include='*.js' --include='*.css' -F "$rel" \
+    "$SITE_ROOT/index.html" \
+    "$SITE_ROOT/competition.html" \
+    "$SITE_ROOT/player.html" \
+    "$SITE_ROOT/assets/app.js" \
+    "$SITE_ROOT/assets/styles.css" 2>/dev/null || true)"
+  refs="$(printf '%s\n' "$refs" | sed "s#^$SITE_ROOT/##" | cut -d: -f1 | sort -u | grep -v '^tools/cleanup-css-legacy-v343.sh$' || true)"
+  blocking="$(printf '%s\n' "$refs" | grep -Ev '^(assets/app\.js|assets/styles\.css|assets/css/refactor/.*)$' || true)"
+  if [[ -n "$blocking" ]]; then
+    echo "FAIL: riferimento runtime inatteso a $rel" >&2
+    printf '%s\n' "$blocking" >&2
+    failures=$((failures + 1))
   fi
 done
 
@@ -56,7 +62,7 @@ if [[ "$failures" -gt 0 ]]; then
 fi
 
 if [[ "$APPLY" -eq 0 ]]; then
-  echo "Dry-run OK. I CSS legacy V291/V292 sono rimovibili in modo controllato."
+  echo "Dry-run OK. I CSS legacy V291/V292 sono valutati solo nel runtime ZonaOrientale."
   for file in "${obsolete_files[@]}"; do
     if [[ -f "$file" ]]; then
       echo "- rimuovibile: ${file#$SITE_ROOT/}"
@@ -77,5 +83,5 @@ done
 
 echo "Pulizia CSS legacy V343 completata."
 if [[ -n "$REPO_ROOT" ]]; then
-  echo "Consiglio Git: usa git status e includi le deletion nel commit V343."
+  echo "Consiglio Git: usa git status e includi le deletion nel commit V469."
 fi

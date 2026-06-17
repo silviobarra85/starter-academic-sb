@@ -1,0 +1,71 @@
+/* V130 - Admin refinements: sottoblocchi Accetta utenti. */
+.admin-subsection-block {
+  border: 1px solid rgba(25, 195, 125, 0.22);
+  border-radius: 18px;
+  padding: 1rem;
+  margin: 0.85rem 0;
+  background: linear-gradient(135deg, rgba(25, 195, 125, 0.08), rgba(20, 184, 166, 0.035));
+}
+
+.admin-subsection-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.admin-user-approved-item {
+  opacity: 0.96;
+}
+
+/* V138 - Header compatto per conteggio richieste/accessi approvati. */
+.admin-subsection-headerline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.admin-subsection-headerline h3 {
+  margin: 0;
+}
+
+/* V216 - Admin risultati: griglia completa classifica campionato. */
+.result-admin-standing-wrap-v216 {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.result-admin-standing-wrap-v216 .competition-results-admin-table-v216 {
+  min-width: 1120px;
+  table-layout: auto;
+}
+
+.result-admin-standing-wrap-v216 th,
+.result-admin-standing-wrap-v216 td {
+  white-space: nowrap;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-pos-v216 {
+  width: 48px;
+  min-width: 48px;
+  text-align: center;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-team-v216 {
+  min-width: 240px;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-input-v216 {
+  min-width: 72px;
+  text-align: right;
+}
+
+/* V217 - Admin risultati: input classifica completi sempre scrollabili e leggibili. */
+.result-admin-standing-wrap-v216 {
+  max-width: 100%;
+}
+
+.result-admin-standing-wrap-v216 .standing-admin-input-v216 {
+  width: 100%;
+  box-sizing: border-box;
+}

@@ -1,3 +1,11 @@
+## Aggiornamento V466 - Share/Netlify/Open Graph FantaPetillo (16/06/2026)
+
+- Runtime avanzato a V466 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
+- Aggiunta nel clone la card Admin `Share, Netlify e Open Graph 2026-2027`, utile per controllare redirect Netlify e preview comunicati.
+- Preparata `netlify/functions/news-share.js` multi-lega con mapping separato per ZonaOrientale e FantaPetillo.
+- Aggiunto redirect `/fantapetillomantramanager/share/news/:id` in `netlify.toml`, preservando il redirect storico ZonaOrientale.
+- Nessuna modifica a Firebase, rules, snapshot, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.
+
 ## Aggiornamento V454 - Selettore card Admin e Checklist QA opzionale (15/06/2026)
 
 - Runtime avanzato a V454 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
@@ -2193,3 +2201,55 @@ Aggiunta favicon dedicata per il clone `FantaPetilloMantraManager`, con sigla `F
 - Il Generatore comunicati automatici e incluso nella lista delle card selezionabili.
 - Checklist QA Admin ancora nascosta di default, visibile solo da checkbox dedicato.
 - Nessuna modifica a Firebase, rules, snapshot, Bilanci V438, badge dispositivo V434 o Area Squadra.
+
+## Aggiornamento V457 - Dati placeholder FantaPetillo 2026-2027 (16/06/2026)
+
+- Runtime avanzato a V457 con footer e cache-buster coerenti su ZonaOrientale e clone.
+- Nel clone `static/fantapetillomantramanager/` la stagione corrente diventa `2026-2027`.
+- Aggiunti dati statici placeholder per testare layout e sezioni pubbliche: 10 club, 10 presidenti, 10 squadre stagione, stadi livello 0, budget iniziali e competizioni placeholder.
+- Aggiunto `tools/fantapetillo-placeholder-seed-v457.json` come schema di riferimento: non viene importato automaticamente e non scrive su Firebase.
+- Area Squadra del clone resta protetta fino a dati reali e `teamUsers`.
+- Nessuna modifica a Firebase ZonaOrientale, Admin ZonaOrientale, rules, snapshot generator, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.
+
+
+## V458 - Kit setup dati reali FantaPetillo
+
+- Aggiunto kit Admin FantaPetillo per scaricare template CSV/JSON dei dati reali 2026-2027.
+- Il kit non scrive su Firebase: serve a compilare presidenti, squadre, budget, stadi, loghi e UID prima del seed definitivo.
+- Area Squadra FantaPetillo resta protetta fino a teamUsers e snapshot reali.
+
+### V459 - Stato multi-lega
+
+FantaPetilloMantraManager include ora un validatore Admin per dati reali 2026-2027. Il validatore produce seed JSON/CSV normalizzati senza scrivere su Firebase. Area Squadra del clone resta protetta.
+
+## Stato V460
+
+FantaPetilloMantraManager dispone ora di un flusso Admin completo fino alla preview del seed Firestore: template dati reali, validatore CSV/JSON e preview documenti Firestore. Il clone resta non produttivo finche' non vengono importati dati reali, generati snapshot pubblici e sbloccata Area Squadra.
+
+## Stato V461
+
+La V461 aggiunge al clone FantaPetilloMantraManager la card Admin `Import controllato Firestore 2026-2027`, utile per importare nel Firebase dedicato il seed preview V460 in modalita merge-only e con conferme obbligatorie. ZonaOrientale resta invariato funzionalmente: Firebase, Admin, snapshot, Bilanci mobile V438 e badge dispositivo V434 non sono stati modificati.
+
+## Aggiornamento V463
+
+V463 aggiunge nel clone `FantaPetilloMantraManager` il generatore snapshot pubblici statici 2026-2027 da preview Firestore V460. ZonaOrientale resta invariato funzionalmente.
+
+## Aggiornamento V464 - Readiness sblocco Area Squadra FantaPetillo (16/06/2026)
+
+- Runtime avanzato a V464 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
+- Nel clone e' stata aggiunta la card Admin `Verifica sblocco Area Squadra 2026-2027`.
+- La card controlla dati reali, `teamUsers`, UID Authentication, assenza di placeholder e assenza di riferimenti a ZonaOrientale.
+- La card e' di sola lettura: non scrive su Firebase, non modifica rules, non sblocca Area Squadra.
+- Area Squadra FantaPetillo resta disabilitata fino a patch successiva dedicata.
+
+## Aggiornamento V465 - Checklist pubblicazione FantaPetillo (16/06/2026)
+
+- Runtime avanzato a V465 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
+- Aggiunta nel clone FantaPetillo la card Admin `Checklist pubblicazione e share 2026-2027`.
+- La card e' informativa: non scrive su Firebase, non modifica Netlify, non sblocca Area Squadra e non tocca le funzionalita' operative di ZonaOrientale.
+- Area Squadra FantaPetillo resta protetta fino a dati reali, snapshot iniziali e readiness V464 positiva.
+
+
+### V467 - FantaPetillo setup standard Admin
+
+FantaPetilloMantraManager torna al flusso standard Admin per dati reali: creazione squadre, registrazione/accettazione utenti, associazione squadra-presidente e snapshot pubblici. I placeholder statici V457 sono neutralizzati e gli strumenti massivi V458-V464 non vengono più caricati nell’interfaccia.
