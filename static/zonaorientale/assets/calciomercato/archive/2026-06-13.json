@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-13",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-17T13:47:25.776Z",
+  "generatedAt": "2026-06-15T05:50:24.286Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -384,17 +384,17 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-05-22T12:15:00.000Z",
-    "latest": "2026-06-17T15:20:17.000Z",
-    "totalBeforeDateRange": 913,
-    "totalFetched": 913,
-    "totalAfterQueryBeforeDateRange": 913
+    "earliest": "2026-05-18T10:13:00.000Z",
+    "latest": "2026-06-15T07:46:24.000Z",
+    "totalBeforeDateRange": 936,
+    "totalFetched": 936,
+    "totalAfterQueryBeforeDateRange": 936
   },
   "stats": {
-    "existingArticles": 123,
-    "fetchedArticles": 47,
-    "totalArticles": 124,
-    "duplicatesSkipped": 46
+    "existingArticles": 0,
+    "fetchedArticles": 124,
+    "totalArticles": 123,
+    "duplicatesSkipped": 1
   },
   "articles": [
     {
@@ -3845,46 +3845,6 @@
         "Squadra"
       ],
       "canonicalKey": "url:tuttomercatoweb.com/serie-a/fiorentina-daniele-galloppa-lascia-club-viola-saluto-commisso-comunicato-2243765"
-    },
-    {
-      "id": "tmw-frosinone-11-aHR0cHM6Ly93",
-      "title": "Frosinone, Alvini: \"Pronto per la Serie A. Juve alla prima? Non poteva esserci esordio migliore\"",
-      "url": "https://www.tuttomercatoweb.com/serie-a/frosinone-alvini-pronto-serie-a-juve-prima-poteva-esserci-esordio-migliore-2243764",
-      "sourceId": "tmw-frosinone",
-      "sourceName": "TMW Frosinone",
-      "sourceUrl": "https://www.tuttomercatoweb.com/frosinone/",
-      "sourceType": "tmw-team-html",
-      "fallbackImageMode": "tmw-team-text",
-      "description": "",
-      "image": "",
-      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/46/46dd8bbe009ab3482b5c2040fdf502f8-35396-oooz0000.webp",
-      "publishedAt": "2026-06-13T12:15:00+02:00",
-      "topic": "Mercato",
-      "marketStatus": "",
-      "teams": [
-        "Frosinone",
-        "Juventus"
-      ],
-      "detectedTeams": [
-        "Frosinone",
-        "Juventus"
-      ],
-      "players": [],
-      "detectedPlayers": [],
-      "entities": {
-        "teams": [
-          "Frosinone",
-          "Juventus"
-        ],
-        "people": [],
-        "players": []
-      },
-      "tags": [
-        "Mercato",
-        "TMW",
-        "Squadra"
-      ],
-      "canonicalKey": "url:tuttomercatoweb.com/serie-a/frosinone-alvini-pronto-serie-a-juve-prima-poteva-esserci-esordio-migliore-2243764"
     },
     {
       "id": "tmw-atalanta-18-aHR0cHM6Ly93",

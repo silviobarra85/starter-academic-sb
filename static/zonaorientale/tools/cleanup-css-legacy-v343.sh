@@ -37,7 +37,7 @@ for file in "${required_files[@]}"; do
   fi
 done
 
-# V469: questo controllo deve guardare solo il runtime di ZonaOrientale.
+# V470: questo controllo deve guardare solo il runtime di ZonaOrientale.
 # Non deve fallire per copie generate/storiche in static/assets o per il clone FantaPetillo.
 for obsolete in "${obsolete_files[@]}"; do
   rel="${obsolete#$SITE_ROOT/}"
@@ -83,5 +83,5 @@ done
 
 echo "Pulizia CSS legacy V343 completata."
 if [[ -n "$REPO_ROOT" ]]; then
-  echo "Consiglio Git: usa git status e includi le deletion nel commit V469."
+  echo "Consiglio Git: usa git status e includi le deletion nel commit V470."
 fi

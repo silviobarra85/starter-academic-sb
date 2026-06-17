@@ -232,9 +232,9 @@ Documento tecnico: `SHARE_NETLIFY_V466.md`.
 
 Il clone usa il metodo standard del gestionale per creare squadre, accettare utenti e generare snapshot. Gli strumenti massivi CSV/import/seed non sono più caricati nell’interfaccia Admin.
 
-## V469 - Cleanup audit e setup standard Admin
+## V470 - Cleanup audit e setup standard Admin
 
-La V469 riallinea il clone al flusso scelto dall'utente: inserimento dati dal normale pannello Admin, senza strumenti massivi CSV/import.
+La V470 riallinea il clone al flusso scelto dall'utente: inserimento dati dal normale pannello Admin, senza strumenti massivi CSV/import.
 
 Stato operativo:
 

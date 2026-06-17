@@ -5225,14 +5225,14 @@ bash tools/check-zonaorientale.sh
 
 FantaPetilloMantraManager torna al flusso standard Admin per dati reali: creazione squadre, registrazione/accettazione utenti, associazione squadra-presidente e snapshot pubblici. I placeholder statici V457 sono neutralizzati e gli strumenti massivi V458-V464 non vengono più caricati nell’interfaccia.
 
-## V469 - Cleanup gate audit multi-lega
+## V470 - Cleanup gate audit multi-lega
 
-La V469 riallinea i gate di audit dopo la scelta di usare FantaPetilloMantraManager con il flusso standard da Admin.
+La V470 riallinea i gate di audit dopo la scelta di usare FantaPetilloMantraManager con il flusso standard da Admin.
 
 Cambiamenti:
 
 - `tools/check-zonaorientale.sh` non esegue piu' audit cross-lega del clone come controlli bloccanti;
-- gli audit storici V435-V442, sensibili ai vecchi marker di wiring/cache-buster, sono trattati come advisory nel gate principale V469;
+- gli audit storici V435-V442, sensibili ai vecchi marker di wiring/cache-buster, sono trattati come advisory nel gate principale V470;
 - restano obbligatori i controlli runtime essenziali: sintassi JS, validita' JSON, versione/cache-buster, badge dispositivo V434, configurazione lega V443, riferimenti hard-coded V444, presentazione runtime V445 e percorsi dati V446;
 - il clone va verificato con `static/fantapetillomantramanager/tools/check-fantapetillomantramanager.sh`;
 - i vecchi audit cross-lega presenti in `static/zonaorientale/tools` possono essere rimossi con `cleanup-cross-league-audits-v468.sh`.

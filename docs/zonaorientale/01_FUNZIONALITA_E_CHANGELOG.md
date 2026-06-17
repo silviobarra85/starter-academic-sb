@@ -7420,7 +7420,7 @@ Non vengono modificate funzioni operative di ZonaOrientale e l'Area Squadra Fant
 
 FantaPetilloMantraManager torna al flusso standard Admin per dati reali: creazione squadre, registrazione/accettazione utenti, associazione squadra-presidente e snapshot pubblici. I placeholder statici V457 sono neutralizzati e gli strumenti massivi V458-V464 non vengono più caricati nell’interfaccia.
 
-## V469 - Cleanup audit multi-lega
+## V470 - Cleanup audit multi-lega
 
 - Riallineato il gate `tools/check-zonaorientale.sh` allo stato attuale: ZonaOrientale controlla solo se stessa e non blocca piu' per audit transitori del clone FantaPetilloMantraManager.
 - Gli audit storici V435-V442 restano richiamabili ma non bloccano il gate principale quando intercettano marker legacy non piu' coerenti con la configurazione multi-lega.
