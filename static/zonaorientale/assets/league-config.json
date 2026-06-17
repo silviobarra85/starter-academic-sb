@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "471",
+  "currentVersion": "472",
   "currentSeasonId": "2025-2026",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -63,7 +63,9 @@
     "fantaPetilloFirestoreImportVersion": "461",
     "fantaPetilloRealDataWorkflowVersion": "462",
     "fantaPetilloPublicSnapshotBuilderVersion": "463",
-    "fantapetilloShareNetlifyVersion": "466"
+    "fantapetilloShareNetlifyVersion": "466",
+    "footerRuntimeConfigVersion": "472",
+    "footerNewsIsolationVersion": "472"
   },
   "branding": {
     "siteName": "ZonaOrientale Salerno",
@@ -170,7 +172,9 @@
         "label": "Admin",
         "icon": "⚙️"
       }
-    ]
+    ],
+    "footerLastUpdated": "17/06/2026",
+    "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}"
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -201,8 +205,9 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V465 checklist pubblicazione FantaPetillo",
+    "lastOverlay": "V472 footer runtime da config e news statiche isolate",
     "notes": [
+      "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaPetillo dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
       "V463 aggiunge nel clone FantaPetillo una card Admin per generare snapshot pubblici statici da preview Firestore V460.",
       "Nessuna modifica funzionale a ZonaOrientale: Admin, Firebase, snapshot, Bilanci V438 e badge V434 restano invariati.",
       "V464 aggiunge nel clone FantaPetillo una card Admin di sola lettura per verificare la readiness dello sblocco Area Squadra.",

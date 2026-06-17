@@ -5,7 +5,7 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "471",
+  "currentVersion": "472",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -76,7 +76,9 @@
     "teamAreaReadinessVersion": "464",
     "shareNetlifyVersion": "466",
     "shareNetlifyReady": "config-prepared",
-    "newsShareRedirectVersion": "466"
+    "newsShareRedirectVersion": "466",
+    "footerRuntimeConfigVersion": "472",
+    "footerNewsIsolationVersion": "472"
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
@@ -141,7 +143,9 @@
         "label": "Regolamento",
         "icon": "rules"
       }
-    ]
+    ],
+    "footerLastUpdated": "17/06/2026",
+    "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}"
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -180,7 +184,7 @@
       "Area Squadra resta nascosta/guardata finche non vengono inseriti dati reali e teamUsers.",
       "Firebase ZonaOrientale non viene importato ne usato dal clone."
     ],
-    "auditedInVersion": "466",
+    "auditedInVersion": "472",
     "firebaseProjectStatus": "connected-admin-bootstrap-v450"
   },
   "firebase": {
@@ -277,8 +281,9 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V465 checklist pubblicazione FantaPetillo",
+    "lastOverlay": "V472 footer runtime da config e news statiche isolate",
     "notes": [
+      "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaPetillo dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
       "V463 aggiunge una card Admin per trasformare la preview Firestore V460 in file JSON statici: config pubblica, manifest snapshot, snapshot stagione, honor e rose vuote.",
       "La card non scrive su Firebase e non sblocca Area Squadra.",
       "I JSON generati vanno revisionati e applicati manualmente alla repo.",

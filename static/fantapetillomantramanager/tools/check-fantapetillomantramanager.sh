@@ -44,24 +44,24 @@ else
 fi
 
 versions="$(grep -Roh '?v=[0-9][0-9]*' "$SITE_ROOT"/*.html | sed 's/?v=//' | sort -u | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-if [[ "$versions" == "471" ]]; then
-  pass "cache-buster clone V471"
+if [[ "$versions" == "472" ]]; then
+  pass "cache-buster clone V472"
 else
   fail "cache-buster clone non allineati: $versions"
 fi
 
 if command -v node >/dev/null 2>&1; then
   if node "$SITE_ROOT/tools/audit-snapshot-real-standard-admin-v471.mjs" --quiet; then pass "audit snapshot reale standard Admin V471"; else fail "audit snapshot reale standard Admin V471"; fi
-  if node "$SITE_ROOT/tools/audit-footer-isolation-v471.mjs" --quiet; then pass "audit footer isolamento V471"; else fail "audit footer isolamento V471"; fi
+  if node "$SITE_ROOT/tools/audit-footer-news-isolation-v472.mjs" --quiet; then pass "audit footer/news isolamento V472"; else fail "audit footer/news isolamento V472"; fi
   if node "$SITE_ROOT/tools/audit-admin-bootstrap-v450.mjs" --quiet; then pass "audit Admin bootstrap V450"; else fail "audit Admin bootstrap V450"; fi
   if node "$SITE_ROOT/tools/audit-admin-onboarding-v451.mjs" --quiet; then pass "audit Admin onboarding V451"; else fail "audit Admin onboarding V451"; fi
-  if node "$SITE_ROOT/tools/audit-favicon-v455.mjs" --quiet; then pass "audit favicon V455"; else fail "audit favicon V455"; fi
+  if (cd "$SITE_ROOT" && node tools/audit-favicon-v455.mjs --quiet); then pass "audit favicon V455"; else fail "audit favicon V455"; fi
   if node "$SITE_ROOT/tools/audit-regolamento-v453.mjs" --quiet; then pass "audit regolamento V453"; else fail "audit regolamento V453"; fi
-  if node "$SITE_ROOT/tools/audit-admin-card-visibility-v456.mjs" --quiet; then pass "audit selettore card Admin V456 compatibile"; else fail "audit selettore card Admin V456 compatibile"; fi
+  if (cd "$SITE_ROOT" && node tools/audit-admin-card-visibility-v456.mjs --quiet); then pass "audit selettore card Admin V456 compatibile"; else fail "audit selettore card Admin V456 compatibile"; fi
   if node "$SITE_ROOT/tools/audit-share-netlify-v466.mjs" --quiet; then pass "audit share Netlify V466"; else fail "audit share Netlify V466"; fi
 else
   fail "node non disponibile per audit runtime clone"
 fi
 
 if [[ "$failures" -gt 0 ]]; then exit 1; fi
-printf 'Controlli clone setup standard Admin V471 passati.\n'
+printf 'Controlli clone setup standard Admin V472 passati.\n'

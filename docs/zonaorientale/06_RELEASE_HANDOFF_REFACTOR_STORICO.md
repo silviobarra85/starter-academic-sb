@@ -203810,3 +203810,7 @@ Overlay CSS-only per evitare che titoli e descrizioni dei pannelli vengano compr
 ## Release V448 - Audit QA clone FantaPetilloMantraManager
 
 Overlay di controllo del clone sandbox: aggiunge audit dedicati, guard runtime V448 con banner/noindex e conferma che Firebase reale resta scollegato. ZonaOrientale resta invariato nelle funzioni operative: nessuna modifica a Firebase, Admin, snapshot generator, Area Squadra, Bilanci mobile V438 o badge dispositivo V434.
+
+## Handoff V472 - Footer/news isolamento multi-lega
+
+V472 documentata in `HANDOFF_V472_FOOTER_NEWS_ISOLATION.md`. La patch mantiene il motore comune, sposta il footer su config per lega e impedisce a `news.html` FantaPetillo/generator statico di riusare contenuti ZonaOrientale. Nessuna funzionalita' rimossa.

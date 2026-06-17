@@ -2637,23 +2637,23 @@ fi
 
 
 
-print_step "Audit footer isolamento V471"
+print_step "Audit footer/news isolamento V472"
 if command -v node >/dev/null 2>&1; then
-  audit_footer_isolation_v470="$SITE_ROOT/tools/audit-footer-isolation-v471.mjs"
-  if [[ -f "$audit_footer_isolation_v470" ]]; then
-    if node "$audit_footer_isolation_v470"; then
-      pass "audit footer isolamento V471 superato"
+  audit_footer_news_isolation_v472="$SITE_ROOT/tools/audit-footer-news-isolation-v472.mjs"
+  if [[ -f "$audit_footer_news_isolation_v472" ]]; then
+    if node "$audit_footer_news_isolation_v472" --quiet; then
+      pass "audit footer/news isolamento V472 superato"
     else
-      fail "audit footer isolamento V471 fallito"
+      fail "audit footer/news isolamento V472 fallito"
     fi
   else
-    fail "tool audit footer isolamento V471 mancante"
+    fail "tool audit footer/news isolamento V472 mancante"
   fi
 else
-  fail "node non disponibile per audit footer isolamento V471"
+  fail "node non disponibile per audit footer/news isolamento V472"
 fi
 
-print_step "Gate ZonaOrientale V471"
+print_step "Gate ZonaOrientale V472"
 pass "controlli cross-lega rimossi dal gate principale ZonaOrientale"
 pass "per il clone usare il check dedicato nella cartella della seconda lega"
 

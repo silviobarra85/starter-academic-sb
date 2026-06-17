@@ -19,8 +19,10 @@ const __filename = fileURLToPath(import.meta.url);
 const SITE_DIR = path.resolve(path.dirname(__filename), "..");
 const SNAPSHOT_DIR = path.join(SITE_DIR, "assets", "snapshots", "seasons");
 const SHARE_DIR = path.join(SITE_DIR, "comunicati");
-const BASE_URL = process.env.ZONAORIENTALE_BASE_URL || "https://silviobarra.com/zonaorientale/";
-const IMAGE_URL = process.env.ZONAORIENTALE_SHARE_IMAGE || "https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png";
+const SITE_NAME = "FantaPetilloMantraManager";
+const SITE_SHORT_NAME = "FantaPetillo";
+const BASE_URL = process.env.FANTAPETILLO_BASE_URL || "https://silviobarra.com/fantapetillomantramanager/";
+const IMAGE_URL = process.env.FANTAPETILLO_SHARE_IMAGE || "https://silviobarra.com/fantapetillomantramanager/assets/icons/fantapetillo-android-chrome-512-v455.png";
 
 function stripMarkdown(value = "") {
   return String(value || "")
@@ -73,7 +75,7 @@ function getSortTime(news = {}) {
 }
 
 function buildDescription(news = {}, maxLength = 180) {
-  const text = stripMarkdown(news.body || news.description || news.title || "Comunicato ZonaOrientale Salerno");
+  const text = stripMarkdown(news.body || news.description || news.title || `${SITE_NAME} comunicato`);
   if (text.length <= maxLength) return text;
   return `${text.slice(0, Math.max(0, maxLength - 1)).trim()}…`;
 }
@@ -91,7 +93,7 @@ function buildRelativeRedirectUrl(news = {}, pathName = "") {
 
 function buildSharePageHtml(news = {}, options = {}) {
   const baseUrl = normalizeBaseUrl(options.baseUrl || BASE_URL);
-  const title = `${stripMarkdown(news.title || "Comunicato") || "Comunicato"} - ZonaOrientale Salerno`;
+  const title = `${stripMarkdown(news.title || "Comunicato") || "Comunicato"} - ${SITE_NAME}`;
   const description = buildDescription(news);
   const pathName = options.path || buildSharePath(news);
   const canonicalUrl = `${baseUrl}${pathName}`;
@@ -107,7 +109,7 @@ function buildSharePageHtml(news = {}, options = {}) {
   <meta name="description" content="${escapeHtml(description)}" />
   <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
   <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="ZonaOrientale Salerno" />
+  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:image" content="${escapeHtml(IMAGE_URL)}" />
@@ -124,7 +126,45 @@ function buildSharePageHtml(news = {}, options = {}) {
   <main>
     <h1>${escapeHtml(title)}</h1>
     <p>${escapeHtml(description)}</p>
-    <p><a href="${escapeHtml(redirectUrl)}">Apri il comunicato su ZonaOrientale</a></p>
+    <p><a href="${escapeHtml(redirectUrl)}">Apri il comunicato su ${escapeHtml(SITE_SHORT_NAME)}</a></p>
+  </main>
+</body>
+</html>
+`;
+}
+
+function buildNoNewsHtml() {
+  const baseUrl = normalizeBaseUrl(BASE_URL);
+  const title = `Comunicati - ${SITE_NAME}`;
+  const description = `Pagina comunicati ${SITE_NAME}: i comunicati saranno pubblicati qui quando saranno disponibili per la stagione 2026-2027.`;
+  const canonicalUrl = `${baseUrl}news.html`;
+  const redirectUrl = './#news';
+  return `<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${escapeHtml(title)}</title>
+  <meta name="description" content="${escapeHtml(description)}" />
+  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />
+  <meta property="og:title" content="${escapeHtml(title)}" />
+  <meta property="og:description" content="${escapeHtml(description)}" />
+  <meta property="og:image" content="${escapeHtml(IMAGE_URL)}" />
+  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeHtml(title)}" />
+  <meta name="twitter:description" content="${escapeHtml(description)}" />
+  <meta name="twitter:image" content="${escapeHtml(IMAGE_URL)}" />
+  <meta http-equiv="refresh" content="0; url=${escapeHtml(redirectUrl)}" />
+  <script>window.location.replace(${JSON.stringify(redirectUrl)});</script>
+</head>
+<body>
+  <main>
+    <h1>${escapeHtml(title)}</h1>
+    <p>Nessun comunicato ${escapeHtml(SITE_SHORT_NAME)} e' stato ancora pubblicato per la stagione 2026-2027.</p>
+    <p><a href="${escapeHtml(redirectUrl)}">Apri la sezione comunicati su ${escapeHtml(SITE_SHORT_NAME)}</a></p>
   </main>
 </body>
 </html>
@@ -142,7 +182,7 @@ function replaceMetaContent(html, attributeName, attributeValue, content) {
 async function updateIndexOpenGraph(latestNews) {
   const indexPath = path.join(SITE_DIR, "index.html");
   let html = await fs.readFile(indexPath, "utf8");
-  const title = `${stripMarkdown(latestNews.title || "Comunicato") || "Comunicato"} - ZonaOrientale Salerno`;
+  const title = `${stripMarkdown(latestNews.title || "Comunicato") || "Comunicato"} - ${SITE_NAME}`;
   const description = buildDescription(latestNews);
   const latestPath = buildSharePath(latestNews);
   const latestUrl = `${normalizeBaseUrl(BASE_URL)}${latestPath}`;

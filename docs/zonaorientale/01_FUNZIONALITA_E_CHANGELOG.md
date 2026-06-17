@@ -1,3 +1,11 @@
+## Aggiornamento V472 - Footer da config e news FantaPetillo isolate (17/06/2026)
+
+- Runtime avanzato a V472: footer generato da `league-config-v443.js` tramite `branding.footerTemplate` e `branding.footerLastUpdated`, senza testo hard-coded `vecchia etichetta tecnica del clone`.
+- Footer separati e attesi: `ZonaOrientale Salerno · V472 · Ultimo aggiornamento 17/06/2026` e `FantaPetilloMantraManager · V472 · Ultimo aggiornamento 17/06/2026`.
+- `static/fantapetillomantramanager/news.html` non riusa piu' il comunicato playoff ZonaOrientale: diventa fallback comunicati dedicato FantaPetillo finche' non ci sono news reali.
+- Il generator statico news del clone FantaPetillo usa default FantaPetillo e gestisce `news: []`.
+- Nessuna funzionalita' rimossa: Admin, Firebase dedicati, snapshot, Bilanci, regolamento, mobile UX, badge dispositivo V434 e redirect Netlify V466 restano invariati.
+
 ## Changelog V447 - Clone sandbox FantaPetilloMantraManager
 
 - Aggiunta cartella `static/fantapetillomantramanager/` come sandbox multi-lega non produttivo.

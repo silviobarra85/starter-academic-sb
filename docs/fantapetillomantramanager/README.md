@@ -250,3 +250,15 @@ Comando consigliato dopo applicazione overlay:
 bash static/fantapetillomantramanager/tools/cleanup-standard-admin-v468.sh
 ```
 
+## V472 - Footer e news isolate
+
+La V472 corregge due contaminazioni del clone:
+
+- il footer non viene piu' riscritto dal runtime con `vecchia etichetta tecnica del clone con data 15/06/2026`;
+- `news.html` non contiene piu' il comunicato playoff ZonaOrientale e resta un fallback dedicato finche' non esistono comunicati FantaPetillo reali.
+
+Documenti tecnici:
+
+- `FOOTER_NEWS_ISOLATION_V472.md`;
+- `HANDOFF_V472_FOOTER_NEWS_ISOLATION.md`.
+

@@ -5246,3 +5246,13 @@ cd static/zonaorientale && bash tools/check-zonaorientale.sh
 cd ../fantapetillomantramanager && bash tools/check-fantapetillomantramanager.sh
 ```
 
+## Audit V472 - Footer/news isolamento multi-lega
+
+Comandi consigliati:
+
+```bash
+node tools/audit-footer-news-isolation-v472.mjs --quiet
+```
+
+Il check principale richiama l'audit V472 e verifica footer puliti per entrambe le leghe, loader senza hard-code `vecchia etichetta tecnica del clone`, `currentVersion = 472`, `news.html` FantaPetillo senza contenuti ZonaOrientale e generator statico FantaPetillo con fallback no-news.
+
