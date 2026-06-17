@@ -1,3 +1,44 @@
+## Nota architetturale V447 - Clone sandbox e Firebase separato
+
+- `static/fantapetillomantramanager/` nasce come clone sandbox del motore, non come seconda lega in produzione.
+- Nel clone `assets/firebase.js` e' uno stub senza import Firebase reali: le letture ritornano vuote e le scritture lanciano errore esplicito.
+- Prima della produzione bisogna creare o configurare un Firebase dedicato alla nuova lega, aggiornare `assets/firebase.js` e decidere le regole di sicurezza.
+- I dati statici placeholder vanno sostituiti con config pubblica, snapshot, listoni, rose, competizioni, loghi e feed calciomercato reali della nuova lega.
+- ZonaOrientale mantiene il proprio Firebase e i propri dati senza variazioni funzionali.
+
+## Nota architetturale V446 - Percorsi dati statici parametrizzati
+
+- V446 aggiunge `dataPaths` in `static/zonaorientale/assets/league-config.json` per config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato.
+- I reader pubblici risolvono i path da config con fallback identici ai percorsi ZonaOrientale storici: non cambia il contenuto letto e non nasce ancora una seconda cartella lega.
+- Firebase, Admin, generator snapshot, Area Squadra presidenti, Bilanci mobile V438 e badge dispositivo V434 restano invariati.
+- Il clone `FantaPetilloMantraManager` puo' essere valutato dalla V447 come sandbox, preferibilmente con Firebase separato e dati minimi.
+
+## Nota architetturale V445 - Presentazione parametrica senza refactor dati
+
+- V445 sposta su config solo il layer di presentazione: metadata, titoli runtime, footer, menu mobile Altro e base URL share.
+- I path dati (`assets/public`, `assets/snapshots`, `assets/listoni`, `assets/rose`, `assets/competitions`, `assets/logos`) restano invariati e saranno affrontati in una patch successiva.
+- Firebase resta completamente invariato: nessun cambio a bootstrap, collezioni, utenti, Admin, Area Squadra, movimenti FM o snapshot generator.
+- Il clone `FantaPetilloMantraManager` resta pianificato ma non viene ancora creato: prima bisogna parametrizzare i path dati e decidere Firebase separato.
+
+## Nota architetturale V444 - Mappa hard-coded prima del refactor multi-lega
+
+- V444 non sposta logiche e non rinomina namespace runtime: e' una patch di inventario.
+- La baseline `tools/hardcoded-league-refs-v444.json` fotografa dove sono ancora presenti riferimenti a `zonaorientale`, `ZonaOrientale`, URL pubblici, path share/news, landing `bilanci.html`, path `assets/logos` e guardrail `DEPLOY_EXPECTED_VERSION`.
+- La distinzione importante e':
+  - branding e metadata pubblici potranno passare a `assets/league-config.json` in V445;
+  - path dati statici e loghi potranno passare a config in V446;
+  - namespace runtime `ZonaOrientale*` vanno mantenuti finche' il clone sandbox non e' pronto, per non staccare funzioni storiche;
+  - Netlify `news-share` e redirect richiedono una parametrizzazione dedicata, idealmente dopo metadata/share.
+- La futura lega `FantaPetilloMantraManager` non deve ancora avere una cartella: prima bisogna ridurre i riferimenti hard-coded ad alto impatto.
+
+## Nota architetturale V443 - Primo layer configurazione lega
+
+- `assets/league-config.json` e' un layer descrittivo/additivo: non sostituisce ancora i loader dati esistenti e non cambia il modello dati.
+- Il sito resta `static-first`: dati statici, snapshot pubblici e Firebase mantengono gli stessi percorsi e le stesse collection di prima.
+- Il loader `assets/js/core/league-config-v443.js` non importa Firebase e non esegue letture/scritture: effettua solo fetch del JSON locale e pubblica una config normalizzata con fallback.
+- Per ora la config e' usata solo in un punto a basso rischio, il link WhatsApp Bilanci, e sempre con fallback hard-coded storico.
+- Il clone `FantaPetilloMantraManager` non va creato finche' non sono completate le prossime fasi di audit hard-coded, metadata/share e path dati statici.
+
 ## Nota architetturale V440 - Link Bilanci senza nuovi dati
 
 - V440 non introduce nuove fonti dati: i Bilanci continuano a leggere solo `assets/snapshots/seasons/*.json`, campo `fmMovements`.
@@ -3160,3 +3201,16 @@ Nessun impatto su Firebase, auth, schema dati, Netlify Functions o sorgenti dati
 ## Nota V441 - Ruoli Mantra
 
 I filtri Mantra usano i campi gia presenti nei listoni/snapshot, in particolare `mantraRoles` e alias equivalenti, con fallback al giocatore del listone quando la rosa contiene solo ruolo standard. Non vengono introdotti nuovi dataset o nuove collection Firebase.
+
+## V449 - Separazione Firebase multi-lega
+
+Il clone `FantaPetilloMantraManager` non usa il Firebase di ZonaOrientale. In V449 `static/fantapetillomantramanager/assets/firebase.js` punta al progetto dedicato `fantapetillomantramanager`. La separazione evita contaminazioni tra utenti, news, richieste presidenti, movimenti FM e snapshot live.
+
+La produzione del clone resta bloccata: servono rules Firestore conservative e seed manuale del primo admin prima di abilitare Admin/Area Squadra.
+
+## V450 - Rules clone derivate da ZonaOrientale
+
+Per `FantaPetilloMantraManager` non si copiano alla cieca le rules dalla console, ma si usa un file versionato nel clone: `static/fantapetillomantramanager/tools/firestore-rules-v450.rules`. Il contenuto e' derivato dalle rules complete ZonaOrientale V393 e viene pubblicato nel progetto Firebase separato `fantapetillomantramanager`.
+
+Questa scelta mantiene compatibili Admin, presidenti, trattative, snapshot pubblici, news, Soccer Data e scritture admin-only, evitando una wildcard generica troppo permissiva.
+

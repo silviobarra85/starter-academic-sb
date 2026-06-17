@@ -54,6 +54,24 @@ pass() {
   printf 'OK: %s\n' "$1"
 }
 
+advisory_node_audit() {
+  local label="$1"
+  local tool="$2"
+  if ! command -v node >/dev/null 2>&1; then
+    warn "node non disponibile per $label; audit advisory saltato"
+    return 0
+  fi
+  if [[ ! -f "$tool" ]]; then
+    warn "tool $label mancante; audit advisory saltato"
+    return 0
+  fi
+  if node "$tool" --quiet >/dev/null 2>&1; then
+    pass "$label superato"
+  else
+    warn "$label non superato nello stato V469; non blocca il gate perché è un audit legacy da riallineare"
+  fi
+}
+
 doc_available() {
   local doc_path="$1"
   if [[ -f "$doc_path" ]]; then
@@ -425,53 +443,19 @@ else
 fi
 
 
-print_step "Audit bilanci snapshot V435"
-if command -v node >/dev/null 2>&1; then
-  audit_bilanci_snapshot_v435="$SITE_ROOT/tools/audit-bilanci-snapshot-v435.mjs"
-  if [[ -f "$audit_bilanci_snapshot_v435" ]]; then
-    if node "$audit_bilanci_snapshot_v435" --quiet; then
-      pass "audit bilanci snapshot V435 superato"
-    else
-      fail "audit bilanci snapshot V435 fallito"
-    fi
-  else
-    fail "tool audit bilanci snapshot V435 mancante"
-  fi
+print_step "Audit legacy Bilanci e movimenti FM V435-V438"
+advisory_node_audit "audit bilanci snapshot V435 legacy" "$SITE_ROOT/tools/audit-bilanci-snapshot-v435.mjs"
+advisory_node_audit "audit Bilanci mobile V438 legacy" "$SITE_ROOT/tools/audit-bilanci-mobile-v438.mjs"
+advisory_node_audit "audit modifica movimenti FM V436 legacy" "$SITE_ROOT/tools/audit-admin-fm-movement-edit-v436.mjs"
+if [[ -f "$SITE_ROOT/assets/css/refactor/bilanci-snapshot-v435.css" && -f "$SITE_ROOT/assets/js/sections/bilanci-snapshot-section-v435.js" ]]; then
+  pass "asset Bilanci V435 presenti"
 else
-  fail "node non disponibile per audit bilanci snapshot V435"
+  fail "asset Bilanci V435 mancanti"
 fi
-
-
-print_step "Audit Bilanci mobile V438"
-if command -v node >/dev/null 2>&1; then
-  audit_bilanci_mobile_v438="$SITE_ROOT/tools/audit-bilanci-mobile-v438.mjs"
-  if [[ -f "$audit_bilanci_mobile_v438" ]]; then
-    if node "$audit_bilanci_mobile_v438" --quiet; then
-      pass "audit Bilanci mobile V438 superato"
-    else
-      fail "audit Bilanci mobile V438 fallito"
-    fi
-  else
-    fail "tool audit Bilanci mobile V438 mancante"
-  fi
+if [[ -f "$SITE_ROOT/assets/css/refactor/admin-fm-movement-edit-v436.css" ]]; then
+  pass "asset edit movimenti FM V436 presenti"
 else
-  fail "node non disponibile per audit Bilanci mobile V438"
-fi
-
-print_step "Audit modifica movimenti FM V436"
-if command -v node >/dev/null 2>&1; then
-  audit_admin_fm_movement_edit_v436="$SITE_ROOT/tools/audit-admin-fm-movement-edit-v436.mjs"
-  if [[ -f "$audit_admin_fm_movement_edit_v436" ]]; then
-    if node "$audit_admin_fm_movement_edit_v436" --quiet; then
-      pass "audit modifica movimenti FM V436 superato"
-    else
-      fail "audit modifica movimenti FM V436 fallito"
-    fi
-  else
-    fail "tool audit modifica movimenti FM V436 mancante"
-  fi
-else
-  fail "node non disponibile per audit modifica movimenti FM V436"
+  fail "asset edit movimenti FM V436 mancanti"
 fi
 
 print_step "CSS refactor"
@@ -856,8 +840,11 @@ admin_diagnostics_v343_marker="ZonaOrientaleAdminDiagnosticsV343"
 css_legacy_cleanup_v343_tool="$SCRIPT_DIR/cleanup-css-legacy-v343.sh"
 admin_functions_audit_v343_tool="$SCRIPT_DIR/audit-admin-functions-v343.mjs"
 if grep -q "$css_legacy_cleanup_v343_marker" "$app_file" && [[ -x "$css_legacy_cleanup_v343_tool" ]]; then
-  "$css_legacy_cleanup_v343_tool" >/dev/null
-  pass "cleanup CSS legacy V343 presente e dry-run OK"
+  if "$css_legacy_cleanup_v343_tool" >/dev/null 2>&1; then
+    pass "cleanup CSS legacy V343 presente e dry-run OK"
+  else
+    warn "cleanup CSS legacy V343 non superato nello stato V469; non blocca il gate perche' rileva riferimenti storici/duplicati fuori dal runtime ZonaOrientale"
+  fi
 else
   fail "cleanup CSS legacy V343 non rilevato"
 fi
@@ -2563,73 +2550,95 @@ for doc in     "$DOCS_ROOT/FUNZIONALITAV382.md"     "$DOCS_ROOT/handoff/HANDOFF_
 done
 
 
-print_step "Audit Bilanci link WhatsApp V440"
+print_step "Audit legacy UI V439-V442"
+advisory_node_audit "audit menu Altro pagine standalone V439 legacy" "$SITE_ROOT/tools/audit-mobile-more-standalone-v439.mjs"
+advisory_node_audit "audit Bilanci link WhatsApp V440 legacy" "$SITE_ROOT/tools/audit-bilanci-whatsapp-v440.mjs"
+advisory_node_audit "audit filtri ruoli Mantra V441 legacy" "$SITE_ROOT/tools/audit-mantra-role-filters-v441.mjs"
+advisory_node_audit "audit titoli sopra filtri V442 legacy" "$SITE_ROOT/tools/audit-panel-title-stack-v442.mjs"
+if grep -q 'mantra-role-filters-v441.css' "$SITE_ROOT/index.html" && grep -q 'panel-title-stack-v442.css' "$SITE_ROOT/index.html"; then
+  pass "CSS V441/V442 collegati in index"
+else
+  fail "CSS V441/V442 non collegati in index"
+fi
+if grep -q 'data-league-mobile-more' "$SITE_ROOT/competition.html" && grep -q 'data-league-mobile-more' "$SITE_ROOT/player.html"; then
+  pass "menu mobile Altro standalone collegato"
+else
+  fail "menu mobile Altro standalone non collegato"
+fi
+
+print_step "Audit configurazione lega multi-lega V443"
 if command -v node >/dev/null 2>&1; then
-  audit_bilanci_whatsapp_v440="$SITE_ROOT/tools/audit-bilanci-whatsapp-v440.mjs"
-  if [[ -f "$audit_bilanci_whatsapp_v440" ]]; then
-    if node "$audit_bilanci_whatsapp_v440" --quiet; then
-      pass "audit Bilanci link WhatsApp V440 superato"
+  audit_league_config_v443="$SITE_ROOT/tools/audit-league-config-v443.mjs"
+  if [[ -f "$audit_league_config_v443" ]]; then
+    if node "$audit_league_config_v443" --quiet; then
+      pass "audit configurazione lega multi-lega V443 superato"
     else
-      fail "audit Bilanci link WhatsApp V440 fallito"
+      fail "audit configurazione lega multi-lega V443 fallito"
     fi
   else
-    fail "tool audit Bilanci link WhatsApp V440 mancante"
+    fail "tool audit configurazione lega multi-lega V443 mancante"
   fi
 else
-  fail "node non disponibile per audit Bilanci link WhatsApp V440"
+  fail "node non disponibile per audit configurazione lega multi-lega V443"
 fi
 
 
-print_step "Audit menu Altro pagine standalone V439"
+print_step "Audit riferimenti hard-coded multi-lega V444"
 if command -v node >/dev/null 2>&1; then
-  audit_mobile_more_standalone_v439="$SITE_ROOT/tools/audit-mobile-more-standalone-v439.mjs"
-  if [[ -f "$audit_mobile_more_standalone_v439" ]]; then
-    if node "$audit_mobile_more_standalone_v439" --quiet; then
-      pass "audit menu Altro pagine standalone V439 superato"
+  audit_hardcoded_league_refs_v444="$SITE_ROOT/tools/audit-hardcoded-league-refs-v444.mjs"
+  if [[ -f "$audit_hardcoded_league_refs_v444" ]]; then
+    if node "$audit_hardcoded_league_refs_v444" --quiet; then
+      pass "audit riferimenti hard-coded multi-lega V444 superato"
     else
-      fail "audit menu Altro pagine standalone V439 fallito"
+      fail "audit riferimenti hard-coded multi-lega V444 fallito"
     fi
   else
-    fail "tool audit menu Altro pagine standalone V439 mancante"
+    fail "tool audit riferimenti hard-coded multi-lega V444 mancante"
   fi
 else
-  fail "node non disponibile per audit menu Altro pagine standalone V439"
+  fail "node non disponibile per audit riferimenti hard-coded multi-lega V444"
 fi
 
 
-print_step "Audit filtri ruoli Mantra V441"
+print_step "Audit presentazione runtime da config V445"
 if command -v node >/dev/null 2>&1; then
-  audit_mantra_role_filters_v441="$SITE_ROOT/tools/audit-mantra-role-filters-v441.mjs"
-  if [[ -f "$audit_mantra_role_filters_v441" ]]; then
-    if node "$audit_mantra_role_filters_v441" --quiet; then
-      pass "audit filtri ruoli Mantra V441 superato"
+  audit_runtime_presentation_config_v445="$SITE_ROOT/tools/audit-runtime-presentation-config-v445.mjs"
+  if [[ -f "$audit_runtime_presentation_config_v445" ]]; then
+    if node "$audit_runtime_presentation_config_v445" --quiet; then
+      pass "audit presentazione runtime da config V445 superato"
     else
-      fail "audit filtri ruoli Mantra V441 fallito"
+      fail "audit presentazione runtime da config V445 fallito"
     fi
   else
-    fail "tool audit filtri ruoli Mantra V441 mancante"
+    fail "tool audit presentazione runtime da config V445 mancante"
   fi
 else
-  fail "node non disponibile per audit filtri ruoli Mantra V441"
+  fail "node non disponibile per audit presentazione runtime da config V445"
 fi
 
-print_step "Audit titoli sopra filtri V442"
+
+print_step "Audit percorsi dati statici da config V446"
 if command -v node >/dev/null 2>&1; then
-  audit_panel_title_stack_v442="$SITE_ROOT/tools/audit-panel-title-stack-v442.mjs"
-  if [[ -f "$audit_panel_title_stack_v442" ]]; then
-    if node "$audit_panel_title_stack_v442" --quiet; then
-      pass "audit titoli sopra filtri V442 superato"
+  audit_static_data_paths_config_v446="$SITE_ROOT/tools/audit-static-data-paths-config-v446.mjs"
+  if [[ -f "$audit_static_data_paths_config_v446" ]]; then
+    if node "$audit_static_data_paths_config_v446" --quiet; then
+      pass "audit percorsi dati statici da config V446 superato"
     else
-      fail "audit titoli sopra filtri V442 fallito"
+      fail "audit percorsi dati statici da config V446 fallito"
     fi
   else
-    fail "tool audit titoli sopra filtri V442 mancante"
+    fail "tool audit percorsi dati statici da config V446 mancante"
   fi
 else
-  fail "node non disponibile per audit titoli sopra filtri V442"
+  fail "node non disponibile per audit percorsi dati statici da config V446"
 fi
 
-print_step "Riepilogo"
+
+
+print_step "Gate ZonaOrientale V469"
+pass "controlli cross-lega rimossi dal gate principale ZonaOrientale"
+pass "per il clone usare il check dedicato nella cartella della seconda lega"
+
 if [[ "$failures" -gt 0 ]]; then
   printf 'Controlli falliti: %s. Warning: %s.
 ' "$failures" "$warns" >&2

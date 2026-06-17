@@ -1,3 +1,12 @@
+## Aggiornamento V454 - Selettore card Admin e Checklist QA opzionale (15/06/2026)
+
+- Runtime avanzato a V454 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
+- Aggiunto `assets/js/core/admin-card-visibility-v454.js` su entrambe le leghe: nell'Admin inserisce sotto il titolo un menu di visibilita' per scegliere quali card/pannelli mostrare.
+- Default conservativo: tutte le card Admin sono deselezionate e quindi nascoste; l'admin puo' spuntare solo quelle che servono oppure usare `Mostra tutte`/`Nascondi tutte`.
+- La `Checklist QA Admin` in basso viene nascosta di default; resta disponibile tramite checkbox dedicata nello stesso menu Admin.
+- Aggiunto `assets/css/refactor/admin-card-visibility-v454.css` e audit `tools/audit-admin-card-visibility-v454.mjs`.
+- Nessuna modifica a Firebase, rules, dati, snapshot generator, Area Squadra, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.
+
 ## Nota operativa V440
 
 - Nessuna variazione operativa Admin.
@@ -1924,3 +1933,34 @@ Nella view mobile Admin, i pulsanti Apri/Riduci dei pannelli e delle categorie s
 ## Nota V441 - Area Squadra presidenti
 
 Nell Area Squadra i filtri ruolo standard/Mantra sono operativi sulle select di trattativa e sul pannello Svincola Giocatori. La modifica non cambia l invio richieste, le email o il flusso di approvazione admin.
+
+---
+
+## V455 - Fix selettore card Admin
+
+La V455 sostituisce il selettore V454 con `admin-card-visibility-v455.js` e `admin-card-visibility-v455.css`.
+
+Correzioni principali:
+
+- default realmente vuoto: nessuna card Admin visibile se non selezionata;
+- incluse le card dinamiche della pubblicazione dati;
+- incluse le sezioni `details.admin-edit-section`;
+- Checklist QA Admin nascosta di default e mostrabile solo da checkbox nel menu Admin;
+- preferenze separate per slug lega tramite localStorage V455.
+
+La modifica e solo di visibilita/interfaccia: non cambia Firebase, rules, salvataggi, snapshot, Area Squadra o dati pubblici.
+
+## V456 - Hotfix click selettore card Admin
+
+La V456 sostituisce il runtime V455 con `admin-card-visibility-v456.js` e `admin-card-visibility-v456.css`.
+
+Correzioni:
+
+- menu selettore sempre cliccabile, senza `details`/summary;
+- pulsanti `Mostra tutte` e `Nascondi tutte` gestiti in capture phase;
+- checkbox card e Checklist QA gestite con listener dedicati V456;
+- Generatore comunicati automatici incluso tra le card selezionabili;
+- card Pubblicazione dati e `details.admin-edit-section` ancora coperte;
+- Checklist QA Admin nascosta di default e visibile solo dal checkbox del selettore.
+
+Invarianti: nessuna modifica a Firebase, rules, salvataggi Admin, snapshot generator, Area Squadra, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.

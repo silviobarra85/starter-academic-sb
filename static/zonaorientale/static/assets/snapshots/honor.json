@@ -1,0 +1,1304 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-10T14:43:06.234Z",
+  "snapshot": {
+    "id": "honor",
+    "generatedAt": "2026-06-10T14:43:06.225Z",
+    "honorRows": [
+      {
+        "seasonId": "2025-2026",
+        "seasonLabel": "2025-26",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2025-2026_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2025-2026_uqsbhtctytbo7kookndm",
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "label": "Prestige Worldwide",
+          "logo": "./assets/logos/prestige.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2025-2026_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2025-2026_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2025-2026_uqsbhtctytbo7kookndm",
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "label": "Prestige Worldwide",
+          "logo": "./assets/logos/prestige.png"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2025-2026_h6saek7urqiqnmiztrt7",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Afc Severgas Baronissi",
+          "logo": "./assets/logos/baronissi.png"
+        }
+      },
+      {
+        "seasonId": "2024-2025",
+        "seasonLabel": "2024-25",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2024-2025_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2024-2025_h6saek7urqiqnmiztrt7",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2024-2025_uqsbhtctytbo7kookndm",
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "label": "Prestige Worldwide",
+          "logo": "./assets/logos/prestige.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2024-2025_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2024-2025_uqsbhtctytbo7kookndm",
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "label": "Prestige Worldwide",
+          "logo": "./assets/logos/prestige.png"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2024-2025_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        }
+      },
+      {
+        "seasonId": "2023-2024",
+        "seasonLabel": "2023-24",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2023-2024_uqsbhtctytbo7kookndm",
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "label": "Prestige Worldwide",
+          "logo": "./assets/logos/prestige.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2023-2024_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2023-2024_kbjri4liu4iuq6ajfnml",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2023-2024_kbjri4liu4iuq6ajfnml",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2023-2024_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        }
+      },
+      {
+        "seasonId": "2022-2023",
+        "seasonLabel": "2022-23",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2022-2023_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2022-2023_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2022-2023_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2022-2023_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2022-2023_uqsbhtctytbo7kookndm",
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "label": "Prestige Worldwide",
+          "logo": "./assets/logos/prestige.png"
+        }
+      },
+      {
+        "seasonId": "2021-2022",
+        "seasonLabel": "2021-22",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2021-2022_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2021-2022_uqsbhtctytbo7kookndm",
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "label": "Prestige Worldwide",
+          "logo": "./assets/logos/prestige.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2021-2022_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        }
+      },
+      {
+        "seasonId": "2020-2021",
+        "seasonLabel": "2020-21",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2020-2021_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2020-2021_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2020-2021_kbjri4liu4iuq6ajfnml",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2020-2021_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2020-2021_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        }
+      },
+      {
+        "seasonId": "2019-2020",
+        "seasonLabel": "2019-20",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2019-2020_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        }
+      },
+      {
+        "seasonId": "2018-2019",
+        "seasonLabel": "2018-19",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2018-2019_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2018-2019_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2018-2019_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2018-2019_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2018-2019_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        }
+      },
+      {
+        "seasonId": "2017-2018",
+        "seasonLabel": "2017-18",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2017-2018_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2017-2018_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2017-2018_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2017-2018_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2017-2018_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2017-2018_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        }
+      },
+      {
+        "seasonId": "2016-2017",
+        "seasonLabel": "2016-17",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2016-2017_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2016-2017_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2016-2017_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2016-2017_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2016-2017_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "playoff": {
+          "kind": "team",
+          "seasonTeamId": "2016-2017_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        }
+      },
+      {
+        "seasonId": "2015-2016",
+        "seasonLabel": "2015-16",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2015-2016_jy2dst1rxfqv6elw89ds",
+          "teamId": "jy2dst1rXfQv6eLW89DS",
+          "label": "Atletico Cadaveri",
+          "logo": ""
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2015-2016_ft1tqdqi18iuh3l1lakq",
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "label": "real mappine",
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2015-2016_ulwtimbi3dyyrq0soesx",
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "label": "River Plaid",
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2015-2016_jy2dst1rxfqv6elw89ds",
+          "teamId": "jy2dst1rXfQv6eLW89DS",
+          "label": "Atletico Cadaveri",
+          "logo": ""
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2015-2016_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2014-2015",
+        "seasonLabel": "2014-15",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2014-2015_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2014-2015_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2014-2015_gdisidfbuselvm64psr3",
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "label": "Olympic Salerno FC",
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2014-2015_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2014-2015_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2013-2014",
+        "seasonLabel": "2013-14",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2013-2014_lvn8mglzgcncy9ev0sgx",
+          "teamId": "lvn8MgLzGcNCY9ev0sgX",
+          "label": "AS Longobarda",
+          "logo": ""
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2013-2014_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2013-2014_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2013-2014_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2012-2013",
+        "seasonLabel": "2012-13",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2012-2013_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2012-2013_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2012-2013_kbjri4liu4iuq6ajfnml",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "As Baronissi",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2012-2013_27oaqqtpiw0w5ehfdazr",
+          "teamId": "27oaqqtPiW0W5ehFDazr",
+          "label": "Il Clan Divino",
+          "logo": ""
+        },
+        "championsLeague": {
+          "kind": "team",
+          "seasonTeamId": "2012-2013_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2011-2012",
+        "seasonLabel": "2011-12",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2011-2012_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2011-2012_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2011-2012_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2010-2011",
+        "seasonLabel": "2010-11",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2010-2011_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2010-2011_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2010-2011_team-002",
+          "teamId": "team_002",
+          "label": "Beetlejuice",
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2010-2011_lvn8mglzgcncy9ev0sgx",
+          "teamId": "lvn8MgLzGcNCY9ev0sgX",
+          "label": "AS Longobarda",
+          "logo": ""
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2009-2010",
+        "seasonLabel": "2009-10",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2009-2010_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2008-2009",
+        "seasonLabel": "2008-09",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2008-2009_lvn8mglzgcncy9ev0sgx",
+          "teamId": "lvn8MgLzGcNCY9ev0sgX",
+          "label": "AS Longobarda",
+          "logo": ""
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2008-2009_7bx0cegbxtf4fwh6t0pi",
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "label": "As Paperopoli",
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2008-2009_kbjri4liu4iuq6ajfnml",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2008-2009_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2007-2008",
+        "seasonLabel": "2007-08",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "label": "Ac Milan",
+          "logo": "./assets/logos/acmilan.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2007-2008_kbjri4liu4iuq6ajfnml",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8",
+          "teamId": "X6tlCRXPPRWyIj8xkaq8",
+          "label": "AFC Satanese",
+          "logo": ""
+        },
+        "coppaItalia": {
+          "kind": "team",
+          "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8",
+          "teamId": "X6tlCRXPPRWyIj8xkaq8",
+          "label": "AFC Satanese",
+          "logo": ""
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2006-2007",
+        "seasonLabel": "2006-07",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2006-2007_fyqviavocqdpmikgws2f",
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "label": "Real Gremo",
+          "logo": ""
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2006-2007_team-001",
+          "teamId": "team_001",
+          "label": "Real Pisistrius",
+          "logo": "./assets/logos/real_pisistrius.png"
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2006-2007_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "coppaItalia": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2005-2006",
+        "seasonLabel": "2005-06",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2005-2006_kbjri4liu4iuq6ajfnml",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2005-2006_jrhbtlyygdrawkwxrbll",
+          "teamId": "JrHbTlYyGDRaWkWXRBlL",
+          "label": "Real Sauro",
+          "logo": ""
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "label": "FC DueFratelli2005",
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        "coppaItalia": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      },
+      {
+        "seasonId": "2004-2005",
+        "seasonLabel": "2004-05",
+        "championItaly": {
+          "kind": "team",
+          "seasonTeamId": "2004-2005_h6saek7urqiqnmiztrt7",
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "label": "Us Baronissi Cavaliers",
+          "logo": "./assets/logos/baronissi.png"
+        },
+        "secondPlace": {
+          "kind": "team",
+          "seasonTeamId": "2004-2005_jrhbtlyygdrawkwxrbll",
+          "teamId": "JrHbTlYyGDRaWkWXRBlL",
+          "label": "Real Sauro",
+          "logo": ""
+        },
+        "thirdPlace": {
+          "kind": "team",
+          "seasonTeamId": "2004-2005_27oaqqtpiw0w5ehfdazr",
+          "teamId": "27oaqqtPiW0W5ehFDazr",
+          "label": "Il Clan Divino",
+          "logo": ""
+        },
+        "coppaItalia": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "championsLeague": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        },
+        "playoff": {
+          "kind": "status",
+          "status": "NON_DISPUTATA",
+          "label": "Non disputata"
+        }
+      }
+    ],
+    "palmares": {
+      "CAMPIONATO": [
+        {
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "teamName": "Real Gremo",
+          "wins": 4,
+          "logo": ""
+        },
+        {
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "teamName": "Ac Milan",
+          "wins": 3,
+          "logo": "./assets/logos/acmilan.png"
+        },
+        {
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "teamName": "River Plaid",
+          "wins": 3,
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        {
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "teamName": "Afc Severgas Baronissi",
+          "wins": 2,
+          "logo": "./assets/logos/baronissi.png"
+        },
+        {
+          "teamId": "team_002",
+          "teamName": "Beetlejuice",
+          "wins": 2,
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        {
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "teamName": "FC DueFratelli2005",
+          "wins": 2,
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        {
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "teamName": "real mappine",
+          "wins": 2,
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        {
+          "teamId": "lvn8MgLzGcNCY9ev0sgX",
+          "teamName": "AS Longobarda",
+          "wins": 1,
+          "logo": ""
+        },
+        {
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "teamName": "As Paperopoli",
+          "wins": 1,
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        {
+          "teamId": "jy2dst1rXfQv6eLW89DS",
+          "teamName": "Atletico Cadaveri",
+          "wins": 1,
+          "logo": ""
+        },
+        {
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "teamName": "Prestige Worldwide",
+          "wins": 1,
+          "logo": "./assets/logos/prestige.png"
+        }
+      ],
+      "COPPA_ITALIA": [
+        {
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "teamName": "As Paperopoli",
+          "wins": 4,
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        {
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "teamName": "River Plaid",
+          "wins": 3,
+          "logo": "./assets/logos/river_plaid.png"
+        },
+        {
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "teamName": "Ac Milan",
+          "wins": 2,
+          "logo": "./assets/logos/acmilan.png"
+        },
+        {
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "teamName": "real mappine",
+          "wins": 2,
+          "logo": "./assets/logos/real_mappine.png"
+        },
+        {
+          "teamId": "X6tlCRXPPRWyIj8xkaq8",
+          "teamName": "AFC Satanese",
+          "wins": 1,
+          "logo": ""
+        },
+        {
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "teamName": "Afc Severgas Baronissi",
+          "wins": 1,
+          "logo": "./assets/logos/baronissi.png"
+        },
+        {
+          "teamId": "lvn8MgLzGcNCY9ev0sgX",
+          "teamName": "AS Longobarda",
+          "wins": 1,
+          "logo": ""
+        },
+        {
+          "teamId": "jy2dst1rXfQv6eLW89DS",
+          "teamName": "Atletico Cadaveri",
+          "wins": 1,
+          "logo": ""
+        },
+        {
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "teamName": "FC DueFratelli2005",
+          "wins": 1,
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        {
+          "teamId": "27oaqqtPiW0W5ehFDazr",
+          "teamName": "Il Clan Divino",
+          "wins": 1,
+          "logo": ""
+        },
+        {
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "teamName": "Olympic Salerno FC",
+          "wins": 1,
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        {
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "teamName": "Real Gremo",
+          "wins": 1,
+          "logo": ""
+        }
+      ],
+      "CHAMPIONS_LEAGUE": [
+        {
+          "teamId": "fYQViaVoCqDPmikgwS2F",
+          "teamName": "Real Gremo",
+          "wins": 3,
+          "logo": ""
+        },
+        {
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "teamName": "Prestige Worldwide",
+          "wins": 2,
+          "logo": "./assets/logos/prestige.png"
+        },
+        {
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "teamName": "Ac Milan",
+          "wins": 1,
+          "logo": "./assets/logos/acmilan.png"
+        },
+        {
+          "teamId": "team_002",
+          "teamName": "Beetlejuice",
+          "wins": 1,
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        {
+          "teamId": "FT1tqdqI18iUh3l1lakQ",
+          "teamName": "real mappine",
+          "wins": 1,
+          "logo": "./assets/logos/real_mappine.png"
+        }
+      ],
+      "PLAYOFF": [
+        {
+          "teamId": "team_002",
+          "teamName": "Beetlejuice",
+          "wins": 3,
+          "logo": "./assets/logos/beetlejuice.png"
+        },
+        {
+          "teamId": "WMdzHRRpUP8lHvsdwM7W",
+          "teamName": "Ac Milan",
+          "wins": 1,
+          "logo": "./assets/logos/acmilan.png"
+        },
+        {
+          "teamId": "h6saeK7uRQIQNmiZTRT7",
+          "teamName": "Afc Severgas Baronissi",
+          "wins": 1,
+          "logo": "./assets/logos/baronissi.png"
+        },
+        {
+          "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+          "teamName": "As Paperopoli",
+          "wins": 1,
+          "logo": "./assets/logos/paperopoli.png"
+        },
+        {
+          "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+          "teamName": "FC DueFratelli2005",
+          "wins": 1,
+          "logo": "./assets/logos/due_fratelli.png"
+        },
+        {
+          "teamId": "GDisIDfbuSeLVm64PSR3",
+          "teamName": "Olympic Salerno FC",
+          "wins": 1,
+          "logo": "./assets/logos/olympic_salerno.png"
+        },
+        {
+          "teamId": "uQSBHtctytBo7koOKndM",
+          "teamName": "Prestige Worldwide",
+          "wins": 1,
+          "logo": "./assets/logos/prestige.png"
+        },
+        {
+          "teamId": "ULwTIMBi3dyYrq0SoEsx",
+          "teamName": "River Plaid",
+          "wins": 1,
+          "logo": "./assets/logos/river_plaid.png"
+        }
+      ]
+    },
+    "fifaRanking": [
+      {
+        "teamId": "FT1tqdqI18iUh3l1lakQ",
+        "teamName": "real mappine",
+        "points": 467.27,
+        "position": 1,
+        "logo": "./assets/logos/real_mappine.png"
+      },
+      {
+        "teamId": "WMdzHRRpUP8lHvsdwM7W",
+        "teamName": "Ac Milan",
+        "points": 465.55,
+        "position": 2,
+        "logo": "./assets/logos/acmilan.png"
+      },
+      {
+        "teamId": "h6saeK7uRQIQNmiZTRT7",
+        "teamName": "Afc Severgas Baronissi",
+        "points": 455.57,
+        "position": 3,
+        "logo": "./assets/logos/baronissi.png"
+      },
+      {
+        "teamId": "ULwTIMBi3dyYrq0SoEsx",
+        "teamName": "River Plaid",
+        "points": 454.85,
+        "position": 4,
+        "logo": "./assets/logos/river_plaid.png"
+      },
+      {
+        "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+        "teamName": "FC DueFratelli2005",
+        "points": 423.63,
+        "position": 5,
+        "logo": "./assets/logos/due_fratelli.png"
+      },
+      {
+        "teamId": "GDisIDfbuSeLVm64PSR3",
+        "teamName": "Olympic Salerno FC",
+        "points": 413.45,
+        "position": 6,
+        "logo": "./assets/logos/olympic_salerno.png"
+      },
+      {
+        "teamId": "team_002",
+        "teamName": "Beetlejuice",
+        "points": 403.15,
+        "position": 7,
+        "logo": "./assets/logos/beetlejuice.png"
+      },
+      {
+        "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+        "teamName": "As Paperopoli",
+        "points": 398.85,
+        "position": 8,
+        "logo": "./assets/logos/paperopoli.png"
+      },
+      {
+        "teamId": "uQSBHtctytBo7koOKndM",
+        "teamName": "Prestige Worldwide",
+        "points": 250.91,
+        "position": 9,
+        "logo": "./assets/logos/prestige.png"
+      },
+      {
+        "teamId": "jy2dst1rXfQv6eLW89DS",
+        "teamName": "Atletico Cadaveri",
+        "points": 239.01,
+        "position": 10,
+        "logo": ""
+      },
+      {
+        "teamId": "fYQViaVoCqDPmikgwS2F",
+        "teamName": "Real Gremo",
+        "points": 199.81,
+        "position": 11,
+        "logo": ""
+      },
+      {
+        "teamId": "team_001",
+        "teamName": "Real Pisistrius",
+        "points": 129.05,
+        "position": 12,
+        "logo": "./assets/logos/real_pisistrius.png"
+      },
+      {
+        "teamId": "lvn8MgLzGcNCY9ev0sgX",
+        "teamName": "AS Longobarda",
+        "points": 109.82,
+        "position": 13,
+        "logo": ""
+      },
+      {
+        "teamId": "JrHbTlYyGDRaWkWXRBlL",
+        "teamName": "Real Sauro",
+        "points": 22,
+        "position": 14,
+        "logo": ""
+      },
+      {
+        "teamId": "X6tlCRXPPRWyIj8xkaq8",
+        "teamName": "AFC Satanese",
+        "points": 12,
+        "position": 15,
+        "logo": ""
+      },
+      {
+        "teamId": "27oaqqtPiW0W5ehFDazr",
+        "teamName": "Il Clan Divino",
+        "points": 10,
+        "position": 16,
+        "logo": ""
+      }
+    ]
+  }
+}

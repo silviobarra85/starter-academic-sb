@@ -1,0 +1,1118 @@
+{
+  "id": "2009-2010",
+  "seasonId": "2009-2010",
+  "generatedAt": "2026-06-11T07:32:23.269Z",
+  "teams": [
+    {
+      "id": "7Bx0ceGBXtF4FwH6T0PI",
+      "canonicalName": "As Paperopoli",
+      "createdAt": {
+        "seconds": 1778833666,
+        "nanoseconds": 871000000
+      },
+      "notes": "",
+      "isCurrent": true,
+      "logo": "./assets/logos/paperopoli.png",
+      "updatedAt": {
+        "seconds": 1778954349,
+        "nanoseconds": 563000000
+      },
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ]
+    },
+    {
+      "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "updatedAt": {
+        "seconds": 1779377884,
+        "nanoseconds": 912000000
+      },
+      "logo": "./assets/logos/due_fratelli.png",
+      "canonicalName": "FC DueFratelli2005",
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      }
+    },
+    {
+      "id": "fYQViaVoCqDPmikgwS2F",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "notes": "",
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "canonicalName": "Real Gremo"
+    }
+  ],
+  "presidents": [
+    {
+      "id": "KuWF4jNk1I97Jdk44gyK",
+      "name": "Bartolomeo Greco",
+      "isActive": false,
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      }
+    },
+    {
+      "id": "JaSqcnTZUYHtjHXghADS",
+      "name": "Gaetano Caparrotti",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "updatedAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "9pAjdkP5bPc5ldLlbfPP",
+      "name": "Michele D'Isanto",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "notes": ""
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "name": "As Paperopoli",
+      "seasonId": "2009-2010",
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778849726,
+        "nanoseconds": 642000000
+      },
+      "presidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778849726,
+        "nanoseconds": 642000000
+      }
+    },
+    {
+      "id": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "createdAt": {
+        "seconds": 1778849722,
+        "nanoseconds": 926000000
+      },
+      "updatedAt": {
+        "seconds": 1779379766,
+        "nanoseconds": 529000000
+      },
+      "logo": "",
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "isHistorical": false,
+      "seasonId": "2009-2010",
+      "name": "FC DueFratelli2005"
+    },
+    {
+      "id": "2009-2010_fyqviavocqdpmikgws2f",
+      "seasonId": "2009-2010",
+      "name": "Real Gremo",
+      "isHistorical": false,
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "presidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778849719,
+        "nanoseconds": 838000000
+      },
+      "createdAt": {
+        "seconds": 1778849719,
+        "nanoseconds": 838000000
+      }
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2009-2010_campionato",
+      "type": "CAMPIONATO",
+      "knockoutPhases": [],
+      "updatedAt": {
+        "seconds": 1778849738,
+        "nanoseconds": 524000000
+      },
+      "createdAt": {
+        "seconds": 1778849732,
+        "nanoseconds": 506000000
+      },
+      "name": "Campionato",
+      "seasonId": "2009-2010",
+      "status": "CONCLUSA",
+      "format": "CLASSIFICA",
+      "notes": ""
+    },
+    {
+      "id": "2009-2010_champions-league",
+      "notes": "",
+      "format": "GIRONI_KO",
+      "status": "NON_DISPUTATA",
+      "name": "Champion's League",
+      "seasonId": "2009-2010",
+      "createdAt": {
+        "seconds": 1778849732,
+        "nanoseconds": 544000000
+      },
+      "updatedAt": {
+        "seconds": 1778849742,
+        "nanoseconds": 131000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "type": "CHAMPIONS_LEAGUE"
+    },
+    {
+      "id": "2009-2010_coppa-italia",
+      "status": "CONCLUSA",
+      "format": "GIRONI_KO",
+      "name": "Coppa Italia",
+      "seasonId": "2009-2010",
+      "notes": "",
+      "type": "COPPA_ITALIA",
+      "createdAt": {
+        "seconds": 1778849732,
+        "nanoseconds": 568000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778849745,
+        "nanoseconds": 280000000
+      }
+    },
+    {
+      "id": "2009-2010_playoff",
+      "notes": "",
+      "format": "GIRONI_KO",
+      "status": "NON_DISPUTATA",
+      "seasonId": "2009-2010",
+      "name": "Playoff",
+      "createdAt": {
+        "seconds": 1778849732,
+        "nanoseconds": 604000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778849749,
+        "nanoseconds": 137000000
+      },
+      "type": "PLAYOFF"
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2009-2010-campionato_1",
+      "played": null,
+      "seasonTeamId": "2009-2010_fyqviavocqdpmikgws2f",
+      "competitionId": "2009-2010_campionato",
+      "points": null,
+      "seasonId": "2009-2010",
+      "position": 1,
+      "createdAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 838000000
+      },
+      "updatedAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 838000000
+      },
+      "fantapoints": null
+    },
+    {
+      "id": "2009-2010-campionato_2",
+      "played": null,
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "competitionId": "2009-2010_campionato",
+      "points": null,
+      "seasonId": "2009-2010",
+      "position": 2,
+      "createdAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 877000000
+      },
+      "updatedAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 877000000
+      },
+      "fantapoints": null
+    },
+    {
+      "id": "2009-2010-campionato_3",
+      "position": 3,
+      "createdAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 915000000
+      },
+      "updatedAt": {
+        "seconds": 1778849772,
+        "nanoseconds": 915000000
+      },
+      "fantapoints": null,
+      "played": null,
+      "competitionId": "2009-2010_campionato",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "points": null,
+      "seasonId": "2009-2010"
+    },
+    {
+      "id": "2009-2010-coppa-italia_1",
+      "competitionId": "2009-2010_coppa-italia",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "points": null,
+      "seasonId": "2009-2010",
+      "played": null,
+      "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778849782,
+        "nanoseconds": 876000000
+      },
+      "position": 1,
+      "updatedAt": {
+        "seconds": 1778849782,
+        "nanoseconds": 876000000
+      }
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_0",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Perin",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_1",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Muric",
+      "realTeam": "SAS",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_2",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Corvi",
+      "realTeam": "PAR",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_3",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Djimsiti",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_4",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Miranda J.",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_5",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Winter",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_6",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Lucumì",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_7",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Vitik",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_8",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fortini",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_9",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Idrissi R.",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_10",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Heggem",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_11",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Bernasconi",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_12",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Freuler",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_13",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Bruyne",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 60,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_14",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Saelemaekers",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_15",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Maldini",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 27,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_16",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Musah",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_17",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Ellertsson",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_18",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Sulemana I.",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_19",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Pisilli",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_20",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fabbian",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_21",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Anjorin",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_22",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Keita M.",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_23",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Orban G.",
+      "realTeam": "VER",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_24",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Noslin",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_25",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Castro S.",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_26",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Dallinga",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_27",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Douvikas",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_28",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kuhn",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 35,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_7bx0cegbxtf4fwh6t0pi_29",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kulenovic",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_0",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gollini",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_1",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Svilar",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_2",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Mina",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_3",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Lazaro",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_4",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Celik",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_5",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Delprato",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_6",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Norton-Cuffy",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_7",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Ahanor",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_8",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Britschgi",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_9",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Pellegrini Lo.",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_10",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sottil",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_11",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gaetano",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_12",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Fagioli",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_13",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Elmas",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_14",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Vlasic",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_15",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Volpato",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_16",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Oristanio",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_17",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Isaksen",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 18,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_18",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Zaragoza",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 29,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_19",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Paz N.",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_20",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Venturino",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_21",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sucic P.",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_22",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Santos A.",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_23",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Scamacca",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 95,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_24",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Colombo",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_25",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "De Ketelaere",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 81,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_26",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Addai",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_27",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Kilicsoy",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_28",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Frigan",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2009-2010_y3vmcdwvut0u1tlsg4qc_29",
+      "seasonId": "2009-2010",
+      "seasonTeamId": "2009-2010_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Durosinmi",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 3,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}

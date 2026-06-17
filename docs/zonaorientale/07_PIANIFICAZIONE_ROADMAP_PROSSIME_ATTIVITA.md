@@ -1,3 +1,50 @@
+## Roadmap aggiornata dopo V448
+
+- V448 ha validato il clone sandbox `FantaPetilloMantraManager` con audit dedicato e guard runtime piu' esplicito.
+- Il progetto Firebase dedicato `fantapetillomantramanager` e' stato creato dall'utente, ma non e' ancora collegato al clone.
+- Prossimo passo consigliato V449: collegare `static/fantapetillomantramanager/assets/firebase.js` alla config Firebase reale, mantenendo regole Firestore inizialmente conservative e audit anti-contaminazione con ZonaOrientale.
+- Dopo V449, V450 potra' preparare dati reali/minimi della nuova lega: squadre, budget, listone, rose e snapshot stagione.
+- Prima della produzione restano da decidere nome definitivo, eventuali redirect Netlify per share news e policy di pubblicazione dati.
+
+## Roadmap aggiornata dopo V447
+
+- V447 ha creato il clone sandbox `FantaPetilloMantraManager`, con Firebase disabilitato e dati placeholder.
+- Prossimo passo consigliato V448: audit runtime/manuale del clone su home, menu mobile, Listone vuoto, Rose vuote, Bilanci vuoti e pagine standalone.
+- Passo successivo V449: decidere Firebase dedicato, creare configurazione credenziali separata e definire security rules della nuova lega.
+- Poi V450: sostituire i placeholder con dati reali o import iniziale della nuova lega.
+- Solo dopo questi passaggi il clone puo' diventare una seconda lega pubblica.
+
+## Roadmap aggiornata dopo V446
+
+- La parametrizzazione dei percorsi dati statici e' stata introdotta in modo additivo con `dataPaths` in `assets/league-config.json`.
+- Prossimo passo consigliato V447: creare un clone sandbox minimo per `FantaPetilloMantraManager`, senza ancora toccare il sito pubblico ZonaOrientale e preferendo Firebase separato.
+- Prima del clone, decidere slug/cartella provvisoria e dati minimi: nome lega, loghi, squadre, stagione corrente, config pubblica e almeno uno snapshot di test.
+- Continuare a non rinominare i namespace runtime storici `ZonaOrientale*` finche' il clone non e' verificabile.
+- Restano da parametrizzare in una fase successiva Netlify `news-share`, redirect pubblici e feed calciomercato server-side.
+
+## Roadmap aggiornata dopo V445
+
+- Prossima patch consigliata V446: parametrizzare gradualmente i percorsi dati statici da config (`assets/public/config.json`, snapshot stagioni, honor, listoni, rose, competizioni, calciomercato archive, loghi) senza cambiare i file letti da ZonaOrientale.
+- Dopo V446, valutare V447 come clone sandbox `FantaPetilloMantraManager`, preferibilmente con Firebase separato e dati minimi di prova.
+- Non rinominare ancora i namespace runtime storici `ZonaOrientale*`: prima bisogna completare path dati e share/Netlify.
+- Continuare a preservare Bilanci mobile V438, badge dispositivo V434, Admin, Area Squadra e snapshot generator.
+
+## Roadmap aggiornata dopo V444
+
+- Prossima patch consigliata V445: usare la mappa V444 per spostare gradualmente su `assets/league-config.json` metadata, titoli pagina, nome lega, base URL e link share WhatsApp, sempre con fallback ZonaOrientale.
+- Non rinominare ancora i namespace runtime `ZonaOrientale*`: sono numerosi e collegati a funzioni storiche/wrapper; vanno lasciati stabili finche' non esiste un clone sandbox testabile.
+- Dopo V445, V446 dovra' preparare i percorsi dati statici da config (`assets/public`, `assets/snapshots`, `assets/listoni`, `assets/rose`, `assets/calciomercato`, `assets/logos`) senza cambiare i file letti da ZonaOrientale.
+- Solo dopo V445/V446 creare una cartella clone per `FantaPetilloMantraManager`, preferibilmente con Firebase separato.
+- Qualunque riduzione dei riferimenti hard-coded deve essere verificata contro la baseline V444 per evitare di perdere share link, menu, Admin, snapshot o viste pubbliche.
+
+## Roadmap aggiornata dopo V443
+
+- Non creare ancora `static/fantapetillo...`: prima completare la parametrizzazione progressiva su ZonaOrientale.
+- Prossima patch consigliata V444: audit/mappa dei riferimenti hard-coded a `zonaorientale`, `ZonaOrientale`, `silviobarra.com/zonaorientale`, `/share/news`, `bilanci.html`, path asset e `DEPLOY_EXPECTED_VERSION`.
+- Dopo V444, V445 puo' spostare gradualmente menu, metadata, share URL, titoli pagina e base URL verso la config.
+- V446 dovra' preparare i percorsi dati statici da config senza cambiare i file letti da ZonaOrientale.
+- Solo dopo queste fasi creare un clone sandbox per `FantaPetilloMantraManager` con config, dati, loghi e preferibilmente Firebase separato.
+
 ## Roadmap aggiornata dopo V440
 
 - Testare da smartphone il pulsante `Copia link WhatsApp` nella sezione Bilanci.
@@ -1210,3 +1257,27 @@ Verificare su mobile che i gruppi checkbox Mantra restino usabili nei pannelli L
 ## Dopo V442
 
 Verificare da desktop stretto e mobile le sezioni con molti controlli: Listone, Rose, Fantamercato, Movimenti e Bilanci. Eventuali ulteriori interventi devono restare preferibilmente CSS-only e preservare i filtri Mantra V441.
+
+## Dopo V450
+
+1. Pubblicare in Firebase le rules `static/fantapetillomantramanager/tools/firestore-rules-v450.rules`.
+2. Accedere all'Admin del clone con il primo admin creato.
+3. Inizializzare dati reali: stagioni, squadre, presidenti, rose, listoni, competizioni.
+4. Solo dopo i dati reali, preparare una patch per sbloccare Area Squadra presidenti.
+
+## Dopo V451
+
+1. Usare Admin FantaPetillo per inserire dati reali minimi.
+2. Aggiornare snapshot pubblici dal clone.
+3. Applicare overlay snapshot alla repo.
+4. Solo dopo dati e `teamUsers`, preparare sblocco controllato Area Squadra.
+
+
+## Dopo V452
+
+Dopo la favicon del clone, il prossimo passo consigliato resta il setup dati reale di FantaPetilloMantraManager: stagione 2026-2027, presidenti, squadre, associazioni stagione-squadra, stadi, budget e primi snapshot pubblici. Area Squadra resta da sbloccare solo dopo `teamUsers` e dati minimi verificati.
+
+
+## Nota V453 regolamento FantaPetillo
+
+La base multi-lega include ora una sezione Regolamento specifica per `FantaPetilloMantraManager` con PDF pubblico scaricabile. I prossimi passi restano: completare dati reali, creare `teamUsers`, verificare snapshot pubblici e solo dopo sbloccare Area Squadra.

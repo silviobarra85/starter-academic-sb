@@ -1,0 +1,715 @@
+{
+  "id": "2007-2008",
+  "seasonId": "2007-2008",
+  "generatedAt": "2026-06-11T07:32:23.270Z",
+  "teams": [
+    {
+      "id": "WMdzHRRpUP8lHvsdwM7W",
+      "notes": "",
+      "isCurrent": true,
+      "logo": "./assets/logos/acmilan.png",
+      "updatedAt": {
+        "seconds": 1778954300,
+        "nanoseconds": 877000000
+      },
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "canonicalName": "Ac Milan",
+      "createdAt": {
+        "seconds": 1778833655,
+        "nanoseconds": 22000000
+      }
+    },
+    {
+      "id": "X6tlCRXPPRWyIj8xkaq8",
+      "createdAt": {
+        "seconds": 1778834036,
+        "nanoseconds": 272000000
+      },
+      "canonicalName": "AFC Satanese",
+      "logo": "",
+      "currentPresidentIds": [
+        "oYPGypC1HwnSQki97JTk"
+      ],
+      "updatedAt": {
+        "seconds": 1778834036,
+        "nanoseconds": 272000000
+      },
+      "isCurrent": false,
+      "notes": ""
+    },
+    {
+      "id": "h6saeK7uRQIQNmiZTRT7",
+      "canonicalName": "Afc Severgas Baronissi",
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "logo": "./assets/logos/baronissi.png"
+    }
+  ],
+  "presidents": [
+    {
+      "id": "Mw12sFS1OoS8V5uzBLLw",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "name": "Gianluca Caparrotti",
+      "isActive": true
+    },
+    {
+      "id": "kjxSsudO432wf4zEnDjg",
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "name": "Giosuè Vicinanza",
+      "isActive": true
+    },
+    {
+      "id": "oYPGypC1HwnSQki97JTk",
+      "createdAt": {
+        "seconds": 1778833101,
+        "nanoseconds": 992000000
+      },
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833101,
+        "nanoseconds": 992000000
+      },
+      "name": "Giuseppe Pellegrino",
+      "isActive": false
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "seasonId": "2007-2008",
+      "name": "Ac Milan",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "isHistorical": false,
+      "presidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "updatedAt": {
+        "seconds": 1778849982,
+        "nanoseconds": 399000000
+      },
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778849982,
+        "nanoseconds": 399000000
+      }
+    },
+    {
+      "id": "2007-2008_x6tlcrxpprwyij8xkaq8",
+      "updatedAt": {
+        "seconds": 1778850352,
+        "nanoseconds": 761000000
+      },
+      "logo": "",
+      "presidentIds": [
+        "oYPGypC1HwnSQki97JTk"
+      ],
+      "createdAt": {
+        "seconds": 1778850352,
+        "nanoseconds": 761000000
+      },
+      "teamId": "X6tlCRXPPRWyIj8xkaq8",
+      "isHistorical": false,
+      "seasonId": "2007-2008",
+      "name": "AFC Satanese"
+    },
+    {
+      "id": "2007-2008_kbjri4liu4iuq6ajfnml",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1779195892,
+        "nanoseconds": 291000000
+      },
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "createdAt": {
+        "seconds": 1778850349,
+        "nanoseconds": 590000000
+      },
+      "isHistorical": false,
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "name": "Us Baronissi Cavaliers",
+      "seasonId": "2007-2008"
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2007-2008_campionato",
+      "format": "CLASSIFICA",
+      "status": "CONCLUSA",
+      "seasonId": "2007-2008",
+      "name": "Campionato",
+      "notes": "",
+      "type": "CAMPIONATO",
+      "createdAt": {
+        "seconds": 1778850357,
+        "nanoseconds": 630000000
+      },
+      "updatedAt": {
+        "seconds": 1778850362,
+        "nanoseconds": 63000000
+      },
+      "knockoutPhases": []
+    },
+    {
+      "id": "2007-2008_champions-league",
+      "type": "CHAMPIONS_LEAGUE",
+      "createdAt": {
+        "seconds": 1778850357,
+        "nanoseconds": 683000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778850365,
+        "nanoseconds": 848000000
+      },
+      "status": "NON_DISPUTATA",
+      "format": "GIRONI_KO",
+      "name": "Champion's League",
+      "seasonId": "2007-2008",
+      "notes": ""
+    },
+    {
+      "id": "2007-2008_coppa-italia",
+      "notes": "",
+      "name": "Coppa Italia",
+      "seasonId": "2007-2008",
+      "status": "CONCLUSA",
+      "format": "GIRONI_KO",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778850372,
+        "nanoseconds": 103000000
+      },
+      "createdAt": {
+        "seconds": 1778850357,
+        "nanoseconds": 731000000
+      },
+      "type": "COPPA_ITALIA"
+    },
+    {
+      "id": "2007-2008_playoff",
+      "format": "GIRONI_KO",
+      "status": "NON_DISPUTATA",
+      "name": "Playoff",
+      "seasonId": "2007-2008",
+      "notes": "",
+      "type": "PLAYOFF",
+      "createdAt": {
+        "seconds": 1778850357,
+        "nanoseconds": 777000000
+      },
+      "updatedAt": {
+        "seconds": 1778850376,
+        "nanoseconds": 131000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ]
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2007-2008-campionato_1",
+      "played": null,
+      "seasonId": "2007-2008",
+      "points": null,
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "competitionId": "2007-2008_campionato",
+      "updatedAt": {
+        "seconds": 1778850393,
+        "nanoseconds": 899000000
+      },
+      "position": 1,
+      "createdAt": {
+        "seconds": 1778850393,
+        "nanoseconds": 899000000
+      },
+      "fantapoints": null
+    },
+    {
+      "id": "2007-2008-campionato_2",
+      "points": null,
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_kbjri4liu4iuq6ajfnml",
+      "competitionId": "2007-2008_campionato",
+      "played": null,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778850393,
+        "nanoseconds": 968000000
+      },
+      "createdAt": {
+        "seconds": 1778850393,
+        "nanoseconds": 968000000
+      },
+      "position": 2
+    },
+    {
+      "id": "2007-2008-campionato_3",
+      "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8",
+      "competitionId": "2007-2008_campionato",
+      "points": null,
+      "seasonId": "2007-2008",
+      "played": null,
+      "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778850394,
+        "nanoseconds": 4000000
+      },
+      "position": 3,
+      "updatedAt": {
+        "seconds": 1778850394,
+        "nanoseconds": 4000000
+      }
+    },
+    {
+      "id": "2007-2008-coppa-italia_1",
+      "points": null,
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8",
+      "competitionId": "2007-2008_coppa-italia",
+      "played": null,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778850399,
+        "nanoseconds": 575000000
+      },
+      "createdAt": {
+        "seconds": 1778850399,
+        "nanoseconds": 575000000
+      },
+      "position": 1
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_0",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Montipò",
+      "realTeam": "VER",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_1",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Okoye",
+      "realTeam": "UDI",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_2",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Romagnoli",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_3",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Mancini",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_4",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "N'Dicka",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_5",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Angelino",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_6",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gutierrez",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_7",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pongracic",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_8",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Tavares N.",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_9",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Dodò",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_10",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belghali",
+      "realTeam": "VER",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_11",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Zaccagni",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_12",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rabiot",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 30,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_13",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Harrison",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_14",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Aebischer",
+      "realTeam": "PIS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_15",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gudmundsson A.",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 37,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_16",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Baldanzi",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_17",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Thorstvedt",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_18",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Perrone",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_19",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rowe",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_20",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Jashari",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_21",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belotti",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_22",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pinamonti",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_23",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Vardy",
+      "realTeam": "CRE",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_24",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Moreo",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_25",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Malen",
+      "realTeam": "ROM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 46,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_26",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Borrelli",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_27",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Krstovic",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2007-2008_wmdzhrrpup8lhvsdwm7w_28",
+      "seasonId": "2007-2008",
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gimenez",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 142,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 3,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}

@@ -1,0 +1,228 @@
+{
+  "leagueId": "zonaorientale",
+  "slug": "zonaorientale",
+  "name": "ZonaOrientale Salerno",
+  "shortName": "ZonaOrientale",
+  "basePath": "/zonaorientale/",
+  "siteUrl": "https://silviobarra.com/zonaorientale/",
+  "currentVersion": "469",
+  "currentSeasonId": "2025-2026",
+  "assetsBasePath": "./assets/",
+  "snapshotBasePath": "./assets/snapshots/",
+  "logosBasePath": "./assets/logos/",
+  "futureLeagueCandidate": {
+    "provisionalName": "FantaPetilloMantraManager",
+    "nameCanChange": true,
+    "status": "regolamento-v453"
+  },
+  "whatsapp": {
+    "bilanciUrl": "https://silviobarra.com/zonaorientale/bilanci.html",
+    "newsShareBase": "https://silviobarra.com/zonaorientale/share/news/"
+  },
+  "features": {
+    "admin": true,
+    "teamArea": true,
+    "bilanci": true,
+    "calciomercato": true,
+    "fantamercato": true,
+    "mantraFilters": true
+  },
+  "guardrails": {
+    "configOnly": true,
+    "noFirebaseRefactor": true,
+    "noSnapshotRefactor": true,
+    "noAdminRefactor": true,
+    "preserveMobileUx": true,
+    "preserveDeviceBadgeV434": true,
+    "hardcodedAuditOnly": true,
+    "runtimePresentationFromConfig": true,
+    "metadataShareOnly": true,
+    "staticDataPathsFromConfig": true,
+    "cloneSandboxCreated": true,
+    "cloneSandboxSlug": "fantapetillomantramanager",
+    "cloneSandboxAudited": true,
+    "cloneSandboxAuditVersion": "448",
+    "cloneFirebaseProjectCreatedButNotConnected": true,
+    "cloneFirebaseProjectCreated": true,
+    "cloneFirebaseProjectConnected": "bootstrap-v449",
+    "cloneFirestoreRulesRequiredBeforeLiveUse": true,
+    "cloneFirebaseSeparateProjectRequired": true,
+    "cloneAdminBootstrapReady": true,
+    "cloneAdminBootstrapVersion": "450",
+    "cloneTeamAreaStillGuarded": true,
+    "cloneFirestoreRulesAlignedWithZonaOrientale": "V393-derived-v450",
+    "adminOnboardingVersion": "451",
+    "cloneAdminOnboardingReady": true,
+    "cloneFaviconVersion": "452",
+    "cloneFaviconIncludesSeason": "2026-2027",
+    "cloneRegolamentoVersion": "453",
+    "cloneRegolamentoSeason": "2026-2027",
+    "cloneRegolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "fantaPetilloRealDataValidatorVersion": "459",
+    "fantaPetilloFirestoreSeedPreviewVersion": "460",
+    "fantaPetilloFirestoreImportVersion": "461",
+    "fantaPetilloRealDataWorkflowVersion": "462",
+    "fantaPetilloPublicSnapshotBuilderVersion": "463",
+    "fantapetilloShareNetlifyVersion": "466"
+  },
+  "branding": {
+    "siteName": "ZonaOrientale Salerno",
+    "homeEyebrow": "Lega Fantacalcio",
+    "homeTitle": "ZonaOrientale Salerno",
+    "homeSubtitle": "Dashboard operativa per club, rose, listoni, competizioni e regolamento.",
+    "imageUrl": "https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png",
+    "pages": {
+      "home": {
+        "title": "ZonaOrientale Salerno",
+        "description": "Dashboard ufficiale della Lega Fantacalcio ZonaOrientale Salerno: rose, listoni, fantamercato, competizioni, albo d'oro, statistiche, archivio e comunicati.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/",
+        "ogType": "website"
+      },
+      "competition": {
+        "title": "Competizione - ZonaOrientale Salerno",
+        "description": "Calendario completo competizione ZonaOrientale Salerno.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/competition.html",
+        "ogType": "website"
+      },
+      "player": {
+        "title": "Scheda giocatore - ZonaOrientale Salerno",
+        "description": "Scheda giocatore Fantacalcio.it integrata nel gestionale ZonaOrientale Salerno.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/player.html",
+        "ogType": "website"
+      },
+      "bilanci": {
+        "title": "Bilanci FM · ZonaOrientale Salerno",
+        "description": "Consulta i bilanci FM delle squadre ZonaOrientale: movimenti mensili, entrate, uscite e saldo progressivo per stagione e squadra.",
+        "canonicalUrl": "https://silviobarra.com/zonaorientale/bilanci.html",
+        "ogType": "website"
+      }
+    },
+    "mobileMore": [
+      {
+        "id": "news",
+        "href": "#news",
+        "label": "News",
+        "icon": "📰"
+      },
+      {
+        "id": "clubs",
+        "href": "#clubs",
+        "label": "Tutte le rose",
+        "icon": "👥"
+      },
+      {
+        "id": "bilanci",
+        "href": "#bilanci",
+        "label": "Bilanci squadre",
+        "icon": "💰"
+      },
+      {
+        "id": "honor",
+        "href": "#honor",
+        "label": "Albo d'Oro e Palmarès",
+        "icon": "🏛️"
+      },
+      {
+        "id": "stats",
+        "href": "#stats",
+        "label": "Statistiche storiche",
+        "icon": "📊"
+      },
+      {
+        "id": "archive",
+        "href": "#archive",
+        "label": "Archivio stagioni",
+        "icon": "🗂️"
+      },
+      {
+        "id": "compare",
+        "href": "#compare",
+        "label": "Confronta squadre",
+        "icon": "⚔️"
+      },
+      {
+        "id": "regolamento",
+        "href": "#regolamento",
+        "label": "Regolamento",
+        "icon": "📘"
+      },
+      {
+        "id": "fantamercato",
+        "href": "#fantamercato",
+        "label": "Fantamercato",
+        "icon": "🔁"
+      },
+      {
+        "id": "calciomercato",
+        "href": "#calciomercato",
+        "label": "Calciomercato",
+        "icon": "📰"
+      },
+      {
+        "id": "listone",
+        "href": "#listone",
+        "label": "Listone",
+        "icon": "📋"
+      },
+      {
+        "id": "admin",
+        "href": "#admin",
+        "label": "Admin",
+        "icon": "⚙️"
+      }
+    ]
+  },
+  "dataPaths": {
+    "publicConfig": "./assets/public/config.json",
+    "seasonSnapshotsManifest": "./assets/snapshots/seasons/manifest.json",
+    "seasonSnapshotsBase": "./assets/snapshots/seasons/",
+    "honorSnapshot": "./assets/snapshots/honor.json",
+    "listoniManifest": "./assets/listoni/manifest.json",
+    "listoniBase": "./assets/listoni/",
+    "rostersManifest": "./assets/rose/manifest.json",
+    "rostersBase": "./assets/rose/",
+    "competitionsManifest": "./assets/competitions/manifest.json",
+    "competitionsBase": "./assets/competitions/",
+    "logosBase": "./assets/logos/",
+    "calciomercatoLinks": "./assets/calciomercato/links.json",
+    "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
+    "calciomercatoArchiveBase": "./assets/calciomercato/archive/"
+  },
+  "firebaseBootstrap": {
+    "version": "451",
+    "cloneSlug": "fantapetillomantramanager",
+    "projectId": "fantapetillomantramanager",
+    "mode": "dedicated-project-admin-bootstrap",
+    "productionReady": false,
+    "rulesFile": "static/fantapetillomantramanager/tools/firestore-rules-v450.rules",
+    "adminBootstrapEnabled": true,
+    "teamAreaStillGuarded": true,
+    "adminOnboardingEnabled": true
+  },
+  "status": {
+    "status": "launch-readiness-v465",
+    "lastOverlay": "V465 checklist pubblicazione FantaPetillo",
+    "notes": [
+      "V463 aggiunge nel clone FantaPetillo una card Admin per generare snapshot pubblici statici da preview Firestore V460.",
+      "Nessuna modifica funzionale a ZonaOrientale: Admin, Firebase, snapshot, Bilanci V438 e badge V434 restano invariati.",
+      "V464 aggiunge nel clone FantaPetillo una card Admin di sola lettura per verificare la readiness dello sblocco Area Squadra.",
+      "V465 aggiunge nel clone FantaPetillo una card Admin informativa di checklist pubblicazione/share senza modifiche funzionali a ZonaOrientale."
+    ]
+  },
+  "setup": {
+    "launchReadinessVersion": "465",
+    "launchReadinessCardId": "fantaPetilloLaunchReadinessV465"
+  },
+  "multiLeagueStatus": {
+    "status": "fantapetillo-real-data-workflow-v462",
+    "lastOverlay": "V462 guida operativa dati reali FantaPetillo",
+    "notes": [
+      "V462 aggiunge nel clone FantaPetillo una card Admin informativa per spiegare il workflow dati reali; nessuna modifica funzionale a ZonaOrientale."
+    ],
+    "fantaPetilloTeamAreaReadinessVersion": "464",
+    "fantaPetilloLaunchReadinessVersion": "465"
+  },
+  "multiLeague": {
+    "fantapetilloStandardAdminVersion": "467"
+  }
+}

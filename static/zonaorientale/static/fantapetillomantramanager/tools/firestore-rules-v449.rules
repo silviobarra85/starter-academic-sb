@@ -1,0 +1,96 @@
+// Superate da V450: usare firestore-rules-v450.rules per il clone.
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function isOwnDoc(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function isOwnResource() {
+      return signedIn()
+        && (
+          resource.data.uid == request.auth.uid
+          || resource.data.userId == request.auth.uid
+          || resource.data.createdBy == request.auth.uid
+        );
+    }
+
+    function isOwnIncoming() {
+      return signedIn()
+        && (
+          request.resource.data.uid == request.auth.uid
+          || request.resource.data.userId == request.auth.uid
+          || request.resource.data.createdBy == request.auth.uid
+        );
+    }
+
+    match /admins/{uid} {
+      allow read: if isAdmin() || isOwnDoc(uid);
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /teamUsers/{uid} {
+      allow read: if isAdmin() || isOwnDoc(uid);
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /pendingUsers/{uid} {
+      allow read: if isAdmin() || isOwnDoc(uid);
+      allow create, update: if isAdmin() || isOwnDoc(uid);
+      allow delete: if isAdmin();
+    }
+
+    match /teamRequests/{requestId} {
+      allow read: if isAdmin() || isOwnResource();
+      allow create: if signedIn() && isOwnIncoming();
+      allow update, delete: if isAdmin();
+    }
+
+    match /transferNegotiations/{documentId} {
+      allow read: if signedIn();
+      allow create, update: if signedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /transferListings/{documentId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /publicTeamSnapshots/{documentId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /publicSeasonSnapshots/{documentId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /publicSnapshots/{documentId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /news/{documentId} {
+      allow read: if true;
+      allow create: if isAdmin() || signedIn();
+      allow update, delete: if isAdmin();
+    }
+
+    match /{collectionName}/{documentId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}

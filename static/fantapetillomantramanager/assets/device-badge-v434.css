@@ -1,0 +1,82 @@
+/* V434 - Badge dispositivo diagnostico.
+   Mostra localmente una stima del dispositivo in alto a destra.
+   Non invia dati e non modifica routing, auth o funzioni del sito. */
+:root {
+  --zo-device-badge-bg-v434: rgba(15, 23, 42, 0.82);
+  --zo-device-badge-border-v434: rgba(148, 163, 184, 0.34);
+  --zo-device-badge-text-v434: rgba(248, 250, 252, 0.94);
+  --zo-device-badge-muted-v434: rgba(203, 213, 225, 0.82);
+}
+
+.zo-device-badge-v434 {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 0.38rem);
+  right: calc(env(safe-area-inset-right, 0px) + 0.42rem);
+  z-index: 2147483000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  max-width: min(48vw, 18rem);
+  padding: 0.23rem 0.45rem;
+  border: 1px solid var(--zo-device-badge-border-v434);
+  border-radius: 999px;
+  background: var(--zo-device-badge-bg-v434);
+  color: var(--zo-device-badge-text-v434);
+  box-shadow: 0 0.45rem 1.2rem rgba(2, 6, 23, 0.28);
+  font-size: 0.62rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.zo-device-badge-v434::before {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 0.13rem rgba(34, 197, 94, 0.18);
+}
+
+.zo-device-badge-label-v434 {
+  color: var(--zo-device-badge-muted-v434);
+  font-weight: 600;
+}
+
+.zo-device-badge-value-v434 {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 720px) {
+  .zo-device-badge-v434 {
+    max-width: 42vw;
+    padding: 0.2rem 0.38rem;
+    font-size: 0.6rem;
+    opacity: 0.9;
+  }
+  .zo-device-badge-label-v434 {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .zo-device-badge-v434 {
+    max-width: 38vw;
+    font-size: 0.58rem;
+  }
+}
+
+@media print {
+  .zo-device-badge-v434 {
+    display: none !important;
+  }
+}

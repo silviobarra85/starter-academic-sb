@@ -1,0 +1,3478 @@
+{
+  "id": "2019-2020",
+  "seasonId": "2019-2020",
+  "generatedAt": "2026-06-11T07:32:23.264Z",
+  "teams": [
+    {
+      "id": "WMdzHRRpUP8lHvsdwM7W",
+      "notes": "",
+      "isCurrent": true,
+      "logo": "./assets/logos/acmilan.png",
+      "updatedAt": {
+        "seconds": 1778954300,
+        "nanoseconds": 877000000
+      },
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "canonicalName": "Ac Milan",
+      "createdAt": {
+        "seconds": 1778833655,
+        "nanoseconds": 22000000
+      }
+    },
+    {
+      "id": "h6saeK7uRQIQNmiZTRT7",
+      "canonicalName": "Afc Severgas Baronissi",
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "logo": "./assets/logos/baronissi.png"
+    },
+    {
+      "id": "lvn8MgLzGcNCY9ev0sgX",
+      "createdAt": {
+        "seconds": 1778833917,
+        "nanoseconds": 315000000
+      },
+      "canonicalName": "AS Longobarda",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778834075,
+        "nanoseconds": 573000000
+      },
+      "currentPresidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "notes": "",
+      "isCurrent": false
+    },
+    {
+      "id": "7Bx0ceGBXtF4FwH6T0PI",
+      "canonicalName": "As Paperopoli",
+      "createdAt": {
+        "seconds": 1778833666,
+        "nanoseconds": 871000000
+      },
+      "notes": "",
+      "isCurrent": true,
+      "logo": "./assets/logos/paperopoli.png",
+      "updatedAt": {
+        "seconds": 1778954349,
+        "nanoseconds": 563000000
+      },
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ]
+    },
+    {
+      "id": "jy2dst1rXfQv6eLW89DS",
+      "canonicalName": "Atletico Cadaveri",
+      "createdAt": {
+        "seconds": 1778833933,
+        "nanoseconds": 281000000
+      },
+      "notes": "",
+      "isCurrent": false,
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778833933,
+        "nanoseconds": 281000000
+      },
+      "currentPresidentIds": [
+        "f37y6IZln56uPDZqKg4N"
+      ]
+    },
+    {
+      "id": "team_002",
+      "canonicalName": "Beetlejuice",
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "logo": "./assets/logos/beetlejuice.png",
+      "updatedAt": {
+        "seconds": 1778954366,
+        "nanoseconds": 223000000
+      }
+    },
+    {
+      "id": "Y3VMcdWVUT0U1Tlsg4qc",
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "updatedAt": {
+        "seconds": 1779377884,
+        "nanoseconds": 912000000
+      },
+      "logo": "./assets/logos/due_fratelli.png",
+      "canonicalName": "FC DueFratelli2005",
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      }
+    },
+    {
+      "id": "GDisIDfbuSeLVm64PSR3",
+      "createdAt": {
+        "seconds": 1778833581,
+        "nanoseconds": 658000000
+      },
+      "canonicalName": "Olympic Salerno FC",
+      "currentPresidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
+      "logo": "./assets/logos/olympic_salerno.png",
+      "updatedAt": {
+        "seconds": 1779377921,
+        "nanoseconds": 533000000
+      },
+      "isCurrent": true,
+      "notes": ""
+    },
+    {
+      "id": "FT1tqdqI18iUh3l1lakQ",
+      "currentPresidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
+      "logo": "./assets/logos/real_mappine.png",
+      "updatedAt": {
+        "seconds": 1778954461,
+        "nanoseconds": 197000000
+      },
+      "isCurrent": true,
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778833596,
+        "nanoseconds": 670000000
+      },
+      "canonicalName": "real mappine"
+    },
+    {
+      "id": "ULwTIMBi3dyYrq0SoEsx",
+      "createdAt": {
+        "seconds": 1778833556,
+        "nanoseconds": 33000000
+      },
+      "canonicalName": "River Plaid",
+      "logo": "./assets/logos/river_plaid.png",
+      "updatedAt": {
+        "seconds": 1778954524,
+        "nanoseconds": 667000000
+      },
+      "currentPresidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ],
+      "notes": "",
+      "isCurrent": true
+    }
+  ],
+  "presidents": [
+    {
+      "id": "iAcJUOTNENihne0XzhuR",
+      "name": "Alessandro Liguori",
+      "isActive": false,
+      "updatedAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      },
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778833093,
+        "nanoseconds": 421000000
+      }
+    },
+    {
+      "id": "6UBSv1GUTCxSNrRb8dZr",
+      "name": "Claudio D'Isanto",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      },
+      "updatedAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "f37y6IZln56uPDZqKg4N",
+      "createdAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      },
+      "updatedAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      },
+      "notes": "",
+      "name": "Emanuele Schiavone",
+      "isActive": false
+    },
+    {
+      "id": "cbA5rKY8ItVmgRqhUasz",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832819,
+        "nanoseconds": 357000000
+      },
+      "createdAt": {
+        "seconds": 1778832819,
+        "nanoseconds": 357000000
+      },
+      "name": "Fabio Gatto",
+      "isActive": true
+    },
+    {
+      "id": "7KbTM1lnzIThNWcF0NKL",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
+      "createdAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
+      "name": "Gaetano Alfinito",
+      "isActive": true
+    },
+    {
+      "id": "JaSqcnTZUYHtjHXghADS",
+      "name": "Gaetano Caparrotti",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "updatedAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "Mw12sFS1OoS8V5uzBLLw",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "name": "Gianluca Caparrotti",
+      "isActive": true
+    },
+    {
+      "id": "kjxSsudO432wf4zEnDjg",
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
+      "name": "Giosuè Vicinanza",
+      "isActive": true
+    },
+    {
+      "id": "2yHHP653ChQrYxnQHMk3",
+      "name": "Mario Guariglia",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832813,
+        "nanoseconds": 937000000
+      },
+      "updatedAt": {
+        "seconds": 1778832813,
+        "nanoseconds": 937000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "9pAjdkP5bPc5ldLlbfPP",
+      "name": "Michele D'Isanto",
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "notes": ""
+    },
+    {
+      "id": "Hm25jirYQUj1biv6VFpJ",
+      "createdAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      },
+      "updatedAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      },
+      "notes": "",
+      "name": "Zio Dino",
+      "isActive": true
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "createdAt": {
+        "seconds": 1778851995,
+        "nanoseconds": 279000000
+      },
+      "presidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "updatedAt": {
+        "seconds": 1778851995,
+        "nanoseconds": 279000000
+      },
+      "logo": "",
+      "seasonId": "2019-2020",
+      "name": "Ac Milan",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "isHistorical": false
+    },
+    {
+      "id": "2019-2020_lvn8mglzgcncy9ev0sgx",
+      "seasonId": "2019-2020",
+      "name": "AS Longobarda",
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778852035,
+        "nanoseconds": 655000000
+      },
+      "presidentIds": [
+        "iAcJUOTNENihne0XzhuR"
+      ],
+      "updatedAt": {
+        "seconds": 1778852035,
+        "nanoseconds": 655000000
+      },
+      "logo": ""
+    },
+    {
+      "id": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778852018,
+        "nanoseconds": 887000000
+      },
+      "presidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "createdAt": {
+        "seconds": 1778852018,
+        "nanoseconds": 887000000
+      },
+      "isHistorical": false,
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "seasonId": "2019-2020",
+      "name": "As Paperopoli"
+    },
+    {
+      "id": "2019-2020_jy2dst1rxfqv6elw89ds",
+      "presidentIds": [
+        "f37y6IZln56uPDZqKg4N"
+      ],
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778852194,
+        "nanoseconds": 880000000
+      },
+      "createdAt": {
+        "seconds": 1778852194,
+        "nanoseconds": 880000000
+      },
+      "seasonId": "2019-2020",
+      "name": "Atletico Cadaveri",
+      "teamId": "jy2dst1rXfQv6eLW89DS",
+      "isHistorical": false
+    },
+    {
+      "id": "2019-2020_team-002",
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "updatedAt": {
+        "seconds": 1778852178,
+        "nanoseconds": 376000000
+      },
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778852178,
+        "nanoseconds": 376000000
+      },
+      "seasonId": "2019-2020",
+      "name": "Beetlejuice",
+      "teamId": "team_002",
+      "isHistorical": false
+    },
+    {
+      "id": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "seasonId": "2019-2020",
+      "name": "FC DueFratelli2005",
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778852181,
+        "nanoseconds": 922000000
+      },
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "updatedAt": {
+        "seconds": 1779380029,
+        "nanoseconds": 474000000
+      },
+      "logo": ""
+    },
+    {
+      "id": "2019-2020_gdisidfbuselvm64psr3",
+      "teamId": "GDisIDfbuSeLVm64PSR3",
+      "isHistorical": false,
+      "seasonId": "2019-2020",
+      "name": "Olympic Salerno FC",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1779380035,
+        "nanoseconds": 708000000
+      },
+      "presidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
+      "createdAt": {
+        "seconds": 1778852190,
+        "nanoseconds": 580000000
+      }
+    },
+    {
+      "id": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "presidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
+      "updatedAt": {
+        "seconds": 1778852186,
+        "nanoseconds": 10000000
+      },
+      "logo": "",
+      "createdAt": {
+        "seconds": 1778852186,
+        "nanoseconds": 10000000
+      },
+      "seasonId": "2019-2020",
+      "name": "real mappine",
+      "teamId": "FT1tqdqI18iUh3l1lakQ",
+      "isHistorical": false
+    },
+    {
+      "id": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "seasonId": "2019-2020",
+      "name": "River Plaid",
+      "isHistorical": false,
+      "teamId": "ULwTIMBi3dyYrq0SoEsx",
+      "createdAt": {
+        "seconds": 1778852044,
+        "nanoseconds": 351000000
+      },
+      "presidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ],
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778852044,
+        "nanoseconds": 351000000
+      }
+    },
+    {
+      "id": "2019-2020_kbjri4liu4iuq6ajfnml",
+      "seasonId": "2019-2020",
+      "name": "Us Baronissi Cavaliers",
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778852023,
+        "nanoseconds": 289000000
+      },
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1779196111,
+        "nanoseconds": 261000000
+      }
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2019-2020_campionato",
+      "knockoutPhases": [],
+      "updatedAt": {
+        "seconds": 1778852058,
+        "nanoseconds": 918000000
+      },
+      "createdAt": {
+        "seconds": 1778852050,
+        "nanoseconds": 775000000
+      },
+      "type": "CAMPIONATO",
+      "notes": "",
+      "seasonId": "2019-2020",
+      "name": "Campionato",
+      "format": "CLASSIFICA",
+      "status": "CONCLUSA"
+    },
+    {
+      "id": "2019-2020_champions-league",
+      "notes": "",
+      "name": "Champion's League",
+      "seasonId": "2019-2020",
+      "status": "NON_DISPUTATA",
+      "format": "GIRONI_KO",
+      "updatedAt": {
+        "seconds": 1778852063,
+        "nanoseconds": 657000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "createdAt": {
+        "seconds": 1778852050,
+        "nanoseconds": 826000000
+      },
+      "type": "CHAMPIONS_LEAGUE"
+    },
+    {
+      "id": "2019-2020_coppa-italia",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
+      "name": "Coppa Italia",
+      "seasonId": "2019-2020",
+      "notes": "",
+      "type": "COPPA_ITALIA",
+      "createdAt": {
+        "seconds": 1778852050,
+        "nanoseconds": 848000000
+      },
+      "updatedAt": {
+        "seconds": 1778852067,
+        "nanoseconds": 604000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ]
+    },
+    {
+      "id": "2019-2020_playoff",
+      "notes": "",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
+      "seasonId": "2019-2020",
+      "name": "Playoff",
+      "createdAt": {
+        "seconds": 1778852050,
+        "nanoseconds": 900000000
+      },
+      "updatedAt": {
+        "seconds": 1778852071,
+        "nanoseconds": 61000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "type": "PLAYOFF"
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2019-2020-campionato_1",
+      "seasonId": "2019-2020",
+      "points": null,
+      "competitionId": "2019-2020_campionato",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "played": null,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 48000000
+      },
+      "createdAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 48000000
+      },
+      "position": 1
+    },
+    {
+      "id": "2019-2020-campionato_2",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "competitionId": "2019-2020_campionato",
+      "points": null,
+      "seasonId": "2019-2020",
+      "played": null,
+      "fantapoints": null,
+      "position": 2,
+      "createdAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 89000000
+      },
+      "updatedAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 89000000
+      }
+    },
+    {
+      "id": "2019-2020-campionato_3",
+      "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 129000000
+      },
+      "position": 3,
+      "updatedAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 129000000
+      },
+      "seasonTeamId": "2019-2020_team-002",
+      "competitionId": "2019-2020_campionato",
+      "seasonId": "2019-2020",
+      "points": null,
+      "played": null
+    },
+    {
+      "id": "2019-2020-coppa-italia_1",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778852108,
+        "nanoseconds": 939000000
+      },
+      "position": 1,
+      "createdAt": {
+        "seconds": 1778852108,
+        "nanoseconds": 939000000
+      },
+      "seasonId": "2019-2020",
+      "points": null,
+      "competitionId": "2019-2020_coppa-italia",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "played": null
+    },
+    {
+      "id": "2019-2020-coppa-italia_2",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778852108,
+        "nanoseconds": 989000000
+      },
+      "position": 2,
+      "createdAt": {
+        "seconds": 1778852108,
+        "nanoseconds": 989000000
+      },
+      "points": null,
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "competitionId": "2019-2020_coppa-italia",
+      "played": null
+    },
+    {
+      "id": "2019-2020-playoff_1",
+      "createdAt": {
+        "seconds": 1778852130,
+        "nanoseconds": 133000000
+      },
+      "position": 1,
+      "updatedAt": {
+        "seconds": 1778852130,
+        "nanoseconds": 133000000
+      },
+      "fantapoints": null,
+      "played": null,
+      "competitionId": "2019-2020_playoff",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "points": null,
+      "seasonId": "2019-2020"
+    },
+    {
+      "id": "2019-2020-playoff_2",
+      "points": null,
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_kbjri4liu4iuq6ajfnml",
+      "competitionId": "2019-2020_playoff",
+      "played": null,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778852130,
+        "nanoseconds": 175000000
+      },
+      "position": 2,
+      "createdAt": {
+        "seconds": 1778852130,
+        "nanoseconds": 175000000
+      }
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_0",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Montipò",
+      "realTeam": "VER",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_1",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Okoye",
+      "realTeam": "UDI",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_2",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Romagnoli",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_3",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Mancini",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_4",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "N'Dicka",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_5",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Angelino",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_6",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gutierrez",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_7",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pongracic",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_8",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Tavares N.",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_9",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Dodò",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_10",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belghali",
+      "realTeam": "VER",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_11",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Zaccagni",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_12",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rabiot",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 30,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_13",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Harrison",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_14",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Aebischer",
+      "realTeam": "PIS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_15",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gudmundsson A.",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 37,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_16",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Baldanzi",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_17",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Thorstvedt",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_18",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Perrone",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_19",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Rowe",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_20",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Jashari",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_21",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Belotti",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_22",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Pinamonti",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_23",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Vardy",
+      "realTeam": "CRE",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_24",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Moreo",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_25",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Malen",
+      "realTeam": "ROM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 46,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_26",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Borrelli",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_27",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Krstovic",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 28,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_wmdzhrrpup8lhvsdwm7w_28",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "playerName": "Gimenez",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 142,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_0",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Perin",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_1",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Muric",
+      "realTeam": "SAS",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_2",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Corvi",
+      "realTeam": "PAR",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_3",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Djimsiti",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_4",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Miranda J.",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_5",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Winter",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_6",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Lucumì",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_7",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Vitik",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 15,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_8",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fortini",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_9",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Idrissi R.",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_10",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Heggem",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_11",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Bernasconi",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_12",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Freuler",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_13",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "De Bruyne",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 60,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_14",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Saelemaekers",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_15",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Maldini",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 27,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_16",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Musah",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_17",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Ellertsson",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_18",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Sulemana I.",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_19",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Pisilli",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_20",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Fabbian",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_21",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Anjorin",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_22",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Keita M.",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_23",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Orban G.",
+      "realTeam": "VER",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_24",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Noslin",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_25",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Castro S.",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_26",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Dallinga",
+      "realTeam": "BOL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_27",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Douvikas",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_28",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kuhn",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 35,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_29",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Kulenovic",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_0",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Milinkovic-Savic V.",
+      "realTeam": "NAP",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_1",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Di Gregorio",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_2",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Butez",
+      "realTeam": "COM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_3",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Luperto",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_4",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Gosens",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 31,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_5",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Caracciolo A.",
+      "realTeam": "PIS",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_6",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Kabasele",
+      "realTeam": "UDI",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_7",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Baschirotto",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_8",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Carlos Augusto",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_9",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Beukema",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_10",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Coco",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_11",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Kempf",
+      "realTeam": "COM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_12",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Tiago Gabriel",
+      "realTeam": "LEC",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_13",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Locatelli",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_14",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Pasalic",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_15",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Odgaard",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_16",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Zambo Anguissa",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_17",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Thorsby",
+      "realTeam": "CRE",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_18",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "McTominay",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 25,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_19",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Ricci S.",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_20",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Basic",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_21",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Konè I.",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_22",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Neres",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 61,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_23",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Pedro",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_24",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Piccoli",
+      "realTeam": "FIO",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_25",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Leao",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_26",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Nzola",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_27",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Banda",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_28",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Hojlund",
+      "realTeam": "NAP",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 108,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_team-002_29",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_team-002",
+      "playerName": "Ratkov",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_0",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gollini",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_1",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Svilar",
+      "realTeam": "ROM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_2",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Mina",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_3",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Lazaro",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_4",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Celik",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_5",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Delprato",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_6",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Norton-Cuffy",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_7",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Ahanor",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_8",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Britschgi",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_9",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Pellegrini Lo.",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 23,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_10",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sottil",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_11",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Gaetano",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_12",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Fagioli",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_13",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Elmas",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_14",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Vlasic",
+      "realTeam": "TOR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_15",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Volpato",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_16",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Oristanio",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_17",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Isaksen",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 18,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_18",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Zaragoza",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 29,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_19",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Paz N.",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_20",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Venturino",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_21",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Sucic P.",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_22",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Santos A.",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_23",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Scamacca",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 95,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_24",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Colombo",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_25",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "De Ketelaere",
+      "realTeam": "ATA",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 81,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_26",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Addai",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_27",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Kilicsoy",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_28",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Frigan",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_29",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "Durosinmi",
+      "realTeam": "PIS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_0",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Meret",
+      "realTeam": "NAP",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_1",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Audero",
+      "realTeam": "CRE",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_2",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Carnesecchi",
+      "realTeam": "ATA",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_3",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Bremer",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_4",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Gabbia",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_5",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Rrahmani",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_6",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Pavlovic",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 19,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_7",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Scalvini",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_8",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Hien",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_9",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Kristensen T.",
+      "realTeam": "UDI",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_10",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Marcandalli",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_11",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Palestra",
+      "realTeam": "CAG",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_12",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Joao Mario",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 19,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_13",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Zaniolo",
+      "realTeam": "UDI",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_14",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Adopo",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_15",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Samardzic",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_16",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Konè M.",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_17",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Koopmeiners",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 22,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_18",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Frendrup",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_19",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Bernabè",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 47,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_20",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Ondrejka",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_21",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Baturina",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 46,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_22",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Taylor K.",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_23",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Kean",
+      "realTeam": "FIO",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_24",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Vlahovic",
+      "realTeam": "JUV",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 41,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_25",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Yildiz",
+      "realTeam": "JUV",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_26",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Camarda",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_27",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Diao",
+      "realTeam": "COM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 40,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_28",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Pellegrino M.",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 38,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_gdisidfbuselvm64psr3_29",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "playerName": "Esposito F.P.",
+      "realTeam": "INT",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 41,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_0",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Terracciano",
+      "realTeam": "MIL",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_1",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Maignan",
+      "realTeam": "MIL",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 20,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_2",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Torriani",
+      "realTeam": "MIL",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_3",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Bastoni",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 11,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_4",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Hermoso",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_5",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Kalulu",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_6",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Tsimikas",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_7",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Terracciano F.",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_8",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Cabal",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_9",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Bisseck",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_10",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Kelly L.",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_11",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Canestrelli",
+      "realTeam": "PIS",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_12",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Muharemovic",
+      "realTeam": "SAS",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_13",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Mandragora",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_14",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Brescianini",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_15",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "McKennie",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_16",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Thuram K.",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 40,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_17",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Zhegrova",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 39,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_18",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Helgason",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_19",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Berisha M.",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_20",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Atta",
+      "realTeam": "UDI",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_21",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Tourè I.",
+      "realTeam": "PIS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_22",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Sanabria",
+      "realTeam": "CRE",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_23",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Nkunku",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 83,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_24",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Ekuban",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_25",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "David",
+      "realTeam": "JUV",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 95,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_26",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Vitinha O.",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_27",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Dovbyk",
+      "realTeam": "ROM",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 143,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_28",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Ekhator",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_29",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "playerName": "Stulic",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_0",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Falcone",
+      "realTeam": "LEC",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 25,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_1",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "De Gea",
+      "realTeam": "FIO",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_2",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Bijlow",
+      "realTeam": "GEN",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_3",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Dimarco",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_4",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Zappacosta",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_5",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Ranieri L.",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_6",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Maripan",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_7",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Bellanova",
+      "realTeam": "ATA",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 25,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_8",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Vojvoda",
+      "realTeam": "COM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_9",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Vasquez",
+      "realTeam": "GEN",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_10",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Holm",
+      "realTeam": "JUV",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_11",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Ramon",
+      "realTeam": "COM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 9,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_12",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Floriani Mussolini",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_13",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Cataldi",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_14",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Politano",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 26,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_15",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Calhanoglu",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 29,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_16",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Modric",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 13,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_17",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Lobotka",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 14,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_18",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Nicolussi Caviglia",
+      "realTeam": "PAR",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 0,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_19",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Caqueret",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_20",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Gilmour",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_21",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Lovric",
+      "realTeam": "VER",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_22",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Dele-Bashiru",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_23",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Vergara",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_24",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Zapata D.",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 54,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_25",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Simeone",
+      "realTeam": "TOR",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 16,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_26",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Lukaku",
+      "realTeam": "NAP",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 10,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_27",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Thuram",
+      "realTeam": "INT",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 59,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_28",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Davis K.",
+      "realTeam": "UDI",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 12,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2019-2020_ulwtimbi3dyyrq0soesx_29",
+      "seasonId": "2019-2020",
+      "seasonTeamId": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "playerName": "Bonny",
+      "realTeam": "INT",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 17,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 10,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}

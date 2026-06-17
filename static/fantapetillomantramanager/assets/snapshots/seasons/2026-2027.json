@@ -1,0 +1,22 @@
+{
+  "id": "2026-2027",
+  "seasonId": "2026-2027",
+  "snapshotVersion": 467,
+  "generatedAt": "2026-06-17T00:00:00.000Z",
+  "setupStatus": "standard-admin-v467",
+  "teams": [],
+  "presidents": [],
+  "seasonTeams": [],
+  "stadiums": [],
+  "competitions": [],
+  "competitionMatches": [],
+  "competitionResults": [],
+  "rosterEntries": [],
+  "fmMovements": [],
+  "news": [],
+  "metrics": {
+    "teams": 0,
+    "competitions": 0,
+    "matches": 0
+  }
+}

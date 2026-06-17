@@ -7,19 +7,19 @@
   <meta name="description" content="Scheda giocatore Fantacalcio.it integrata nel gestionale ZonaOrientale Salerno." />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <script>document.documentElement.dataset.theme = "dark";try{localStorage.setItem("zonaOrientaleTheme","dark");}catch(e){}</script>
-  <link rel="stylesheet" href="./assets/styles.css?v=442" />
-  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=442" />
-  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=442" />
-  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=442" />
-  <link rel="stylesheet" href="./assets/css/refactor/panel-title-stack-v442.css?v=442" />
-  <link rel="stylesheet" href="./assets/device-badge-v434.css?v=442" />
+  <link rel="stylesheet" href="./assets/styles.css?v=469" />
+  <link rel="stylesheet" href="./assets/css/mobile-chrome-v223.css?v=469" />
+  <link rel="stylesheet" href="./assets/css/refactor/mobile-controls.css?v=469" />
+  <link rel="stylesheet" href="./assets/css/refactor/rosters-tables.css?v=469" />
+  <link rel="stylesheet" href="./assets/css/refactor/panel-title-stack-v442.css?v=469" />
+  <link rel="stylesheet" href="./assets/device-badge-v434.css?v=469" />
 </head>
-<body>
+<body data-league-page="player">
   <header class="app-header player-page-header">
     <div class="container header-grid">
       <div>
         <p class="eyebrow">Scheda giocatore</p>
-        <h1 id="playerPageTitle">ZonaOrientale Salerno</h1>
+        <h1 id="playerPageTitle" data-league-text-v445="homeTitle">ZonaOrientale Salerno</h1>
         <p class="subtitle">Scheda esterna da Fantacalcio.it caricata in una pagina del gestionale.</p>
       </div>
       <div class="header-actions">
@@ -51,18 +51,18 @@
       <strong>Altre sezioni</strong>
       <button id="mobileMoreClose" class="mobile-icon-button" type="button" aria-label="Chiudi menu">×</button>
     </div>
-    <a href="./#news" class="mobile-more-link"><span class="mobile-more-icon">📰</span><span>News</span></a>
-    <a href="./#clubs" class="mobile-more-link"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
-    <a href="./#bilanci" class="mobile-more-link"><span class="mobile-more-icon">💰</span><span>Bilanci squadre</span></a>
-    <a href="./#honor" class="mobile-more-link"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
-    <a href="./#stats" class="mobile-more-link"><span class="mobile-more-icon">📊</span><span>Statistiche storiche</span></a>
-    <a href="./#archive" class="mobile-more-link"><span class="mobile-more-icon">🗂️</span><span>Archivio stagioni</span></a>
-    <a href="./#compare" class="mobile-more-link"><span class="mobile-more-icon">⚔️</span><span>Confronta squadre</span></a>
-    <a href="./#regolamento" class="mobile-more-link"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
-    <a href="./#fantamercato" class="mobile-more-link"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
-    <a href="./#calciomercato" class="mobile-more-link"><span class="mobile-more-icon">📰</span><span>Calciomercato</span></a>
-    <a href="./#listone" class="mobile-more-link"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
-    <a href="./#admin" class="mobile-more-link"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
+    <a href="./#news" class="mobile-more-link" data-league-mobile-more="news"><span class="mobile-more-icon">📰</span><span>News</span></a>
+    <a href="./#clubs" class="mobile-more-link" data-league-mobile-more="clubs"><span class="mobile-more-icon">👥</span><span>Tutte le rose</span></a>
+    <a href="./#bilanci" class="mobile-more-link" data-league-mobile-more="bilanci"><span class="mobile-more-icon">💰</span><span>Bilanci squadre</span></a>
+    <a href="./#honor" class="mobile-more-link" data-league-mobile-more="honor"><span class="mobile-more-icon">🏛️</span><span>Albo d'Oro e Palmarès</span></a>
+    <a href="./#stats" class="mobile-more-link" data-league-mobile-more="stats"><span class="mobile-more-icon">📊</span><span>Statistiche storiche</span></a>
+    <a href="./#archive" class="mobile-more-link" data-league-mobile-more="archive"><span class="mobile-more-icon">🗂️</span><span>Archivio stagioni</span></a>
+    <a href="./#compare" class="mobile-more-link" data-league-mobile-more="compare"><span class="mobile-more-icon">⚔️</span><span>Confronta squadre</span></a>
+    <a href="./#regolamento" class="mobile-more-link" data-league-mobile-more="regolamento"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
+    <a href="./#fantamercato" class="mobile-more-link" data-league-mobile-more="fantamercato"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
+    <a href="./#calciomercato" class="mobile-more-link" data-league-mobile-more="calciomercato"><span class="mobile-more-icon">📰</span><span>Calciomercato</span></a>
+    <a href="./#listone" class="mobile-more-link" data-league-mobile-more="listone"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
+    <a href="./#admin" class="mobile-more-link" data-league-mobile-more="admin"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
   </nav>
 
   <nav class="mobile-bottom-nav mobile-bottom-nav-v141" aria-label="Navigazione principale mobile">
@@ -74,9 +74,10 @@
   </nav>
 
   <footer class="container app-footer">
-    <p>ZonaOrientale Salerno · V442 titoli sopra filtri · Ultimo aggiornamento 11/06/2026</p>
+    <p data-league-footer-v445>ZonaOrientale Salerno · V469 cleanup audit multi-lega · Ultimo aggiornamento 17/06/2026</p>
   </footer>
 
+  <script type="module" src="./assets/js/core/league-config-v443.js?v=469"></script>
   <script>
     (function setupPlayerMobileNavV439() {
       function closeMore() {
@@ -108,7 +109,7 @@
   </script>
 
   <script type="module">
-    import { setupMobileChromeV220 } from "./assets/js/mobile/mobile-chrome-v220.js?v=442";
+    import { setupMobileChromeV220 } from "./assets/js/mobile/mobile-chrome-v220.js?v=469";
 
     function applyTheme() {
       document.documentElement.dataset.theme = 'dark';
@@ -156,6 +157,6 @@
       error.classList.remove('hidden');
     }
   </script>
-  <script src="./assets/device-badge-v434.js?v=442" defer></script>
+  <script src="./assets/device-badge-v434.js?v=469" defer></script>
 </body>
 </html>

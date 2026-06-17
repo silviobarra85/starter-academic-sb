@@ -1,3 +1,79 @@
+## Aggiornamento V454 - Selettore card Admin e Checklist QA opzionale (15/06/2026)
+
+- Runtime avanzato a V454 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
+- Aggiunto `assets/js/core/admin-card-visibility-v454.js` su entrambe le leghe: nell'Admin inserisce sotto il titolo un menu di visibilita' per scegliere quali card/pannelli mostrare.
+- Default conservativo: tutte le card Admin sono deselezionate e quindi nascoste; l'admin puo' spuntare solo quelle che servono oppure usare `Mostra tutte`/`Nascondi tutte`.
+- La `Checklist QA Admin` in basso viene nascosta di default; resta disponibile tramite checkbox dedicata nello stesso menu Admin.
+- Aggiunto `assets/css/refactor/admin-card-visibility-v454.css` e audit `tools/audit-admin-card-visibility-v454.mjs`.
+- Nessuna modifica a Firebase, rules, dati, snapshot generator, Area Squadra, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.
+
+## Test e audit V448 - QA clone FantaPetillo
+
+La V448 aggiunge `tools/audit-fantapetillo-clone-qa-v448.mjs` lato ZonaOrientale e `tools/audit-clone-runtime-qa-v448.mjs` lato clone. Gli audit verificano versione, cache-buster, identita' clone, guard sandbox, assenza di Firebase reale, dati placeholder e documentazione.
+
+Comandi principali:
+
+```bash
+node tools/audit-fantapetillo-clone-qa-v448.mjs
+bash tools/check-zonaorientale.sh
+../fantapetillomantramanager/tools/check-fantapetillomantramanager.sh
+```
+
+## Test e audit V447 - Clone sandbox FantaPetillo
+
+La V447 aggiunge `tools/audit-fantapetillo-sandbox-v447.mjs` e lo integra in `tools/check-zonaorientale.sh`. L'audit verifica presenza del clone, configurazione dedicata, Firebase disabilitato, cache-buster V447, dati statici placeholder e documentazione clone.
+
+Comandi principali:
+
+```bash
+node tools/audit-fantapetillo-sandbox-v447.mjs
+bash tools/check-zonaorientale.sh
+../fantapetillomantramanager/tools/check-fantapetillomantramanager.sh
+```
+
+## Test e audit V445 - Presentazione runtime da config
+
+- Aggiunto `tools/audit-runtime-presentation-config-v445.mjs`.
+- L'audit verifica config branding, metadata pagina, menu mobile Altro, hook HTML, helper loader, uso `siteUrl` per share comunicati, supporto `siteName/shortName` nei comunicati e assenza di Firebase/snapshot nel loader.
+- Integrato il gate V445 in `tools/check-zonaorientale.sh`.
+- I controlli V443 e V444 restano attivi per garantire che la config base e la mappa hard-coded continuino a esistere.
+
+## Test e audit V444 - Mappa riferimenti hard-coded multi-lega
+
+- Aggiunto `tools/audit-hardcoded-league-refs-v444.mjs`.
+- Aggiunta baseline `tools/hardcoded-league-refs-v444.json`, generabile anche con `node tools/audit-hardcoded-league-refs-v444.mjs --json`.
+- L'audit e' osservativo: fallisce solo se mancano la config, la baseline o i riferimenti principali che rendono significativa la mappa; non fallisce perche' trova stringhe hard-coded.
+- Integrato il gate V444 in `tools/check-zonaorientale.sh`.
+
+Comandi consigliati:
+
+```bash
+cd static/zonaorientale
+node --check assets/app.js
+node --check assets/js/core/league-config-v443.js
+node tools/audit-league-config-v443.mjs
+node tools/audit-hardcoded-league-refs-v444.mjs
+bash tools/check-zonaorientale.sh
+```
+
+## Test e audit V443 - Configurazione lega multi-lega
+
+- Aggiunto `tools/audit-league-config-v443.mjs`.
+- L'audit verifica presenza e contenuto di `assets/league-config.json`, loader `league-config-v443.js`, caricamento in home e standalone, cache-buster/footer V443, marker runtime, integrazione Bilanci con fallback e assenza di Firebase nel loader.
+- Aggiornato `tools/check-zonaorientale.sh` con il gate V443.
+- Resi compatibili con V443 gli audit recenti V438-V442 che controllavano cache-buster/footer/runtime specifici.
+
+Comandi consigliati:
+
+```bash
+cd static/zonaorientale
+node --check assets/app.js
+node --check assets/js/core/league-config-v443.js
+node --check assets/js/sections/bilanci-snapshot-section-v435.js
+node tools/audit-league-config-v443.mjs
+bash tools/check-zonaorientale.sh
+```
+
 ## Test e audit V440 - Link WhatsApp Bilanci
 
 - Aggiunto `tools/audit-bilanci-whatsapp-v440.mjs`.
@@ -5037,3 +5113,136 @@ Aggiunto `tools/audit-mantra-role-filters-v441.mjs` e integrato in `tools/check-
 ## Audit V442
 
 Aggiunto `tools/audit-panel-title-stack-v442.mjs` e integrato in `tools/check-zonaorientale.sh`. Il controllo verifica caricamento CSS V442 su `index.html`, `competition.html` e `player.html`, presenza delle regole per header con filtri/controlli/filtri Mantra e runtime atteso V442.
+
+
+## Aggiornamento V446 - Percorsi dati statici da configurazione
+
+La preparazione multi-lega ora include `dataPaths` in `static/zonaorientale/assets/league-config.json`. I reader pubblici possono risolvere da configurazione i percorsi di config pubblica, snapshot stagioni, honor snapshot, listoni, rose, competizioni, loghi e calciomercato, mantenendo i path ZonaOrientale come fallback. Non sono stati modificati Firebase, Admin, generator snapshot, Area Squadra presidenti, Bilanci mobile V438 o badge dispositivo V434.
+
+## V449 - Audit Firebase clone
+
+Aggiunti controlli anti-contaminazione per verificare che ZonaOrientale continui a usare `zonaorientale-d07af` e che il clone punti solo a `fantapetillomantramanager`. Il check del clone valida anche la presenza di `tools/firestore-rules-v449.rules` e del guard runtime V449.
+
+## V450 - Audit Admin bootstrap clone
+
+Aggiunto `audit-fantapetillo-admin-bootstrap-v450.mjs` lato ZonaOrientale e `audit-admin-bootstrap-v450.mjs` lato clone. I controlli verificano: Firebase dedicato, Admin abilitato, Team Area ancora protetta, assenza di Firebase ZonaOrientale nel clone, rules V450 complete e senza wildcard generica.
+
+## V451 - Audit onboarding Admin clone
+
+Aggiunti `audit-admin-onboarding-v451.mjs` nel clone e `audit-fantapetillo-admin-onboarding-v451.mjs` lato ZonaOrientale. Verificano script onboarding, no scritture Firebase, Team Area ancora protetta e cache-buster V451.
+
+
+## V452 - Audit favicon clone FantaPetillo
+
+Aggiunti audit `audit-favicon-v452.mjs` nel clone e `audit-fantapetillo-favicon-v452.mjs` lato ZonaOrientale. Verificano presenza di `favicon.ico`, PNG 16/32/180/192/512, sorgente SVG con `FPMM` e `2026-2027`, cache-buster V452 e assenza di contaminazioni Firebase tra ZonaOrientale e FantaPetillo.
+
+## V457 - Audit dati placeholder FantaPetillo
+
+Nuovi controlli:
+
+```bash
+node tools/audit-fantapetillo-placeholder-data-v457.mjs --quiet
+```
+
+Nel clone:
+
+```bash
+node tools/audit-placeholder-data-v457.mjs --quiet
+```
+
+I check verificano stagione `2026-2027`, snapshot statico, 10 club placeholder, seed JSON e assenza di riuso Firebase ZonaOrientale.
+
+
+## V458 - Kit setup dati reali FantaPetillo
+
+- Aggiunto kit Admin FantaPetillo per scaricare template CSV/JSON dei dati reali 2026-2027.
+- Il kit non scrive su Firebase: serve a compilare presidenti, squadre, budget, stadi, loghi e UID prima del seed definitivo.
+- Area Squadra FantaPetillo resta protetta fino a teamUsers e snapshot reali.
+
+## V459 - Audit validatore dati reali FantaPetillo
+
+Aggiunti audit per verificare la presenza del validatore dati reali V459 nel clone FantaPetillo e l'allineamento dei cache-buster alla versione 459. La card e' read-only e non scrive su Firebase.
+
+## V460 - Audit preview seed Firestore FantaPetillo
+
+Controlli aggiunti:
+
+- `static/fantapetillomantramanager/tools/audit-firestore-seed-preview-v460.mjs`
+- `static/zonaorientale/tools/audit-fantapetillo-firestore-seed-preview-v460.mjs`
+
+Gli audit verificano collegamento CSS/JS della card, target Firebase dedicato, assenza di scritture dirette e registrazione nel selettore Admin V456.
+
+## V461 - Audit import controllato Firestore FantaPetillo
+
+Audit aggiunti/aggiornati:
+
+```bash
+node static/fantapetillomantramanager/tools/audit-firestore-import-v461.mjs
+node static/zonaorientale/tools/audit-fantapetillo-firestore-import-v461.mjs
+```
+
+I controlli verificano collegamento CSS/JS V461, target project `fantapetillomantramanager`, import merge-only e assenza di riferimenti al Firebase ZonaOrientale nel runtime del clone.
+
+## V463 - Audit generatore snapshot pubblici FantaPetillo
+
+Controlli aggiunti:
+
+```text
+static/fantapetillomantramanager/tools/audit-public-snapshot-builder-v463.mjs
+static/zonaorientale/tools/audit-fantapetillo-public-snapshot-builder-v463.mjs
+```
+
+Gli audit verificano che la card V463 sia collegata all'Admin del clone, sia nel selettore Admin, generi solo file statici e non contenga scritture Firestore.
+
+## Audit V464 - Readiness Area Squadra FantaPetillo
+
+Nuovi audit:
+
+- `static/fantapetillomantramanager/tools/audit-team-area-readiness-v464.mjs`
+- `static/zonaorientale/tools/audit-fantapetillo-team-area-readiness-v464.mjs`
+
+Verificano che la card V464 sia collegata, che resti di sola lettura e che l'Area Squadra del clone non venga ancora sbloccata.
+
+
+## Test e audit V466 - Share Netlify FantaPetillo
+
+La V466 aggiunge `tools/audit-fantapetillo-share-netlify-v466.mjs` lato ZonaOrientale e `tools/audit-share-netlify-v466.mjs` lato clone. Gli audit verificano card Admin, cache-buster V466, redirect Netlify FantaPetillo, preservazione del redirect ZonaOrientale e funzione `news-share` multi-lega.
+
+Comandi principali:
+
+```bash
+cd static/fantapetillomantramanager
+node tools/audit-share-netlify-v466.mjs
+bash tools/check-fantapetillomantramanager.sh
+
+cd ../zonaorientale
+node tools/audit-fantapetillo-share-netlify-v466.mjs
+bash tools/check-zonaorientale.sh
+```
+
+
+### V467 - FantaPetillo setup standard Admin
+
+FantaPetilloMantraManager torna al flusso standard Admin per dati reali: creazione squadre, registrazione/accettazione utenti, associazione squadra-presidente e snapshot pubblici. I placeholder statici V457 sono neutralizzati e gli strumenti massivi V458-V464 non vengono più caricati nell’interfaccia.
+
+## V469 - Cleanup gate audit multi-lega
+
+La V469 riallinea i gate di audit dopo la scelta di usare FantaPetilloMantraManager con il flusso standard da Admin.
+
+Cambiamenti:
+
+- `tools/check-zonaorientale.sh` non esegue piu' audit cross-lega del clone come controlli bloccanti;
+- gli audit storici V435-V442, sensibili ai vecchi marker di wiring/cache-buster, sono trattati come advisory nel gate principale V469;
+- restano obbligatori i controlli runtime essenziali: sintassi JS, validita' JSON, versione/cache-buster, badge dispositivo V434, configurazione lega V443, riferimenti hard-coded V444, presentazione runtime V445 e percorsi dati V446;
+- il clone va verificato con `static/fantapetillomantramanager/tools/check-fantapetillomantramanager.sh`;
+- i vecchi audit cross-lega presenti in `static/zonaorientale/tools` possono essere rimossi con `cleanup-cross-league-audits-v468.sh`.
+
+Comandi consigliati:
+
+```bash
+bash static/zonaorientale/tools/cleanup-cross-league-audits-v468.sh
+bash static/fantapetillomantramanager/tools/cleanup-standard-admin-v468.sh
+cd static/zonaorientale && bash tools/check-zonaorientale.sh
+cd ../fantapetillomantramanager && bash tools/check-fantapetillomantramanager.sh
+```
+

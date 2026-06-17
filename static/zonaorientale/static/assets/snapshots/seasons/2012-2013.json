@@ -1,0 +1,825 @@
+{
+  "id": "2012-2013",
+  "seasonId": "2012-2013",
+  "generatedAt": "2026-06-11T07:32:23.268Z",
+  "teams": [
+    {
+      "id": "h6saeK7uRQIQNmiZTRT7",
+      "canonicalName": "Afc Severgas Baronissi",
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "logo": "./assets/logos/baronissi.png"
+    },
+    {
+      "id": "team_002",
+      "canonicalName": "Beetlejuice",
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "logo": "./assets/logos/beetlejuice.png",
+      "updatedAt": {
+        "seconds": 1778954366,
+        "nanoseconds": 223000000
+      }
+    },
+    {
+      "id": "27oaqqtPiW0W5ehFDazr",
+      "isCurrent": false,
+      "notes": "",
+      "logo": "",
+      "currentPresidentIds": [
+        "uvxNCO3JS0ZGPr8PCbzN",
+        "4ErijLL4NEQ6J4LBBwiX",
+        "uAnVBYBLy3NLLlQt1cre"
+      ],
+      "updatedAt": {
+        "seconds": 1778834055,
+        "nanoseconds": 214000000
+      },
+      "canonicalName": "Il Clan Divino",
+      "createdAt": {
+        "seconds": 1778834055,
+        "nanoseconds": 214000000
+      }
+    },
+    {
+      "id": "fYQViaVoCqDPmikgwS2F",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "notes": "",
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "canonicalName": "Real Gremo"
+    }
+  ],
+  "presidents": [
+    {
+      "id": "KuWF4jNk1I97Jdk44gyK",
+      "name": "Bartolomeo Greco",
+      "isActive": false,
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
+      "createdAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      }
+    },
+    {
+      "id": "uvxNCO3JS0ZGPr8PCbzN",
+      "name": "Davide Perruso",
+      "isActive": true,
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832855,
+        "nanoseconds": 565000000
+      },
+      "createdAt": {
+        "seconds": 1778832855,
+        "nanoseconds": 565000000
+      }
+    },
+    {
+      "id": "Mw12sFS1OoS8V5uzBLLw",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "name": "Gianluca Caparrotti",
+      "isActive": true
+    },
+    {
+      "id": "4ErijLL4NEQ6J4LBBwiX",
+      "createdAt": {
+        "seconds": 1778833114,
+        "nanoseconds": 385000000
+      },
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833114,
+        "nanoseconds": 385000000
+      },
+      "name": "Roberto Corbo",
+      "isActive": false
+    },
+    {
+      "id": "uAnVBYBLy3NLLlQt1cre",
+      "name": "Saverio Sicilia",
+      "isActive": false,
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778833119,
+        "nanoseconds": 790000000
+      },
+      "createdAt": {
+        "seconds": 1778833119,
+        "nanoseconds": 790000000
+      }
+    },
+    {
+      "id": "Hm25jirYQUj1biv6VFpJ",
+      "createdAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      },
+      "updatedAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      },
+      "notes": "",
+      "name": "Zio Dino",
+      "isActive": true
+    }
+  ],
+  "seasonTeams": [
+    {
+      "id": "2012-2013_kbjri4liu4iuq6ajfnml",
+      "name": "As Baronissi",
+      "seasonId": "2012-2013",
+      "isHistorical": false,
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1779195942,
+        "nanoseconds": 354000000
+      },
+      "createdAt": {
+        "seconds": 1778849310,
+        "nanoseconds": 447000000
+      }
+    },
+    {
+      "id": "2012-2013_team-002",
+      "createdAt": {
+        "seconds": 1778849279,
+        "nanoseconds": 358000000
+      },
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "updatedAt": {
+        "seconds": 1778849279,
+        "nanoseconds": 358000000
+      },
+      "logo": "",
+      "seasonId": "2012-2013",
+      "name": "Beetlejuice",
+      "teamId": "team_002",
+      "isHistorical": false
+    },
+    {
+      "id": "2012-2013_27oaqqtpiw0w5ehfdazr",
+      "teamId": "27oaqqtPiW0W5ehFDazr",
+      "isHistorical": false,
+      "seasonId": "2012-2013",
+      "name": "Il Clan Divino",
+      "createdAt": {
+        "seconds": 1778849320,
+        "nanoseconds": 183000000
+      },
+      "updatedAt": {
+        "seconds": 1778849320,
+        "nanoseconds": 183000000
+      },
+      "logo": "",
+      "presidentIds": [
+        "uvxNCO3JS0ZGPr8PCbzN",
+        "4ErijLL4NEQ6J4LBBwiX",
+        "uAnVBYBLy3NLLlQt1cre"
+      ]
+    },
+    {
+      "id": "2012-2013_fyqviavocqdpmikgws2f",
+      "createdAt": {
+        "seconds": 1778849282,
+        "nanoseconds": 95000000
+      },
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778849282,
+        "nanoseconds": 95000000
+      },
+      "presidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ],
+      "teamId": "fYQViaVoCqDPmikgwS2F",
+      "isHistorical": false,
+      "seasonId": "2012-2013",
+      "name": "Real Gremo"
+    }
+  ],
+  "stadiums": [],
+  "competitions": [
+    {
+      "id": "2012-2013_campionato",
+      "type": "CAMPIONATO",
+      "createdAt": {
+        "seconds": 1778849338,
+        "nanoseconds": 103000000
+      },
+      "knockoutPhases": [],
+      "updatedAt": {
+        "seconds": 1778849350,
+        "nanoseconds": 582000000
+      },
+      "format": "CLASSIFICA",
+      "status": "CONCLUSA",
+      "name": "Campionato",
+      "seasonId": "2012-2013",
+      "notes": ""
+    },
+    {
+      "id": "2012-2013_champions-league",
+      "type": "CHAMPIONS_LEAGUE",
+      "updatedAt": {
+        "seconds": 1778849353,
+        "nanoseconds": 991000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "createdAt": {
+        "seconds": 1778849338,
+        "nanoseconds": 167000000
+      },
+      "name": "Champion's League",
+      "seasonId": "2012-2013",
+      "status": "CONCLUSA",
+      "format": "GIRONI_KO",
+      "notes": ""
+    },
+    {
+      "id": "2012-2013_coppa-italia",
+      "type": "COPPA_ITALIA",
+      "updatedAt": {
+        "seconds": 1778849357,
+        "nanoseconds": 526000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "createdAt": {
+        "seconds": 1778849338,
+        "nanoseconds": 193000000
+      },
+      "name": "Coppa Italia",
+      "seasonId": "2012-2013",
+      "format": "GIRONI_KO",
+      "status": "CONCLUSA",
+      "notes": ""
+    },
+    {
+      "id": "2012-2013_playoff",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "updatedAt": {
+        "seconds": 1778849361,
+        "nanoseconds": 242000000
+      },
+      "createdAt": {
+        "seconds": 1778849338,
+        "nanoseconds": 223000000
+      },
+      "type": "PLAYOFF",
+      "notes": "",
+      "name": "Playoff",
+      "seasonId": "2012-2013",
+      "status": "NON_DISPUTATA",
+      "format": "GIRONI_KO"
+    }
+  ],
+  "competitionMatches": [],
+  "competitionResults": [
+    {
+      "id": "2012-2013-campionato_1",
+      "played": null,
+      "seasonTeamId": "2012-2013_team-002",
+      "competitionId": "2012-2013_campionato",
+      "seasonId": "2012-2013",
+      "points": null,
+      "createdAt": {
+        "seconds": 1778849377,
+        "nanoseconds": 150000000
+      },
+      "position": 1,
+      "updatedAt": {
+        "seconds": 1778849377,
+        "nanoseconds": 150000000
+      },
+      "fantapoints": null
+    },
+    {
+      "id": "2012-2013-campionato_2",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778849377,
+        "nanoseconds": 270000000
+      },
+      "position": 2,
+      "createdAt": {
+        "seconds": 1778849377,
+        "nanoseconds": 270000000
+      },
+      "points": null,
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_fyqviavocqdpmikgws2f",
+      "competitionId": "2012-2013_campionato",
+      "played": null
+    },
+    {
+      "id": "2012-2013-campionato_3",
+      "seasonTeamId": "2012-2013_kbjri4liu4iuq6ajfnml",
+      "competitionId": "2012-2013_campionato",
+      "points": null,
+      "seasonId": "2012-2013",
+      "played": null,
+      "fantapoints": null,
+      "position": 3,
+      "createdAt": {
+        "seconds": 1778849377,
+        "nanoseconds": 318000000
+      },
+      "updatedAt": {
+        "seconds": 1778849377,
+        "nanoseconds": 318000000
+      }
+    },
+    {
+      "id": "2012-2013-champions-league_1",
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778849395,
+        "nanoseconds": 840000000
+      },
+      "createdAt": {
+        "seconds": 1778849395,
+        "nanoseconds": 840000000
+      },
+      "position": 1,
+      "points": null,
+      "seasonId": "2012-2013",
+      "competitionId": "2012-2013_champions-league",
+      "seasonTeamId": "2012-2013_team-002",
+      "played": null
+    },
+    {
+      "id": "2012-2013-coppa-italia_1",
+      "seasonTeamId": "2012-2013_27oaqqtpiw0w5ehfdazr",
+      "competitionId": "2012-2013_coppa-italia",
+      "seasonId": "2012-2013",
+      "points": null,
+      "played": null,
+      "fantapoints": null,
+      "position": 1,
+      "createdAt": {
+        "seconds": 1778849388,
+        "nanoseconds": 324000000
+      },
+      "updatedAt": {
+        "seconds": 1778849388,
+        "nanoseconds": 324000000
+      }
+    }
+  ],
+  "rosterEntries": [
+    {
+      "id": "static_2012-2013_team-002_0",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Milinkovic-Savic V.",
+      "realTeam": "NAP",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_1",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Di Gregorio",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_2",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Butez",
+      "realTeam": "COM",
+      "rosterRole": "P",
+      "classicRole": "P",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_3",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Luperto",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_4",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Gosens",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 31,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_5",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Caracciolo A.",
+      "realTeam": "PIS",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_6",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Kabasele",
+      "realTeam": "UDI",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_7",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Baschirotto",
+      "realTeam": "CRE",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_8",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Carlos Augusto",
+      "realTeam": "INT",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_9",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Beukema",
+      "realTeam": "NAP",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_10",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Coco",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 5,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_11",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Kempf",
+      "realTeam": "COM",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_12",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Tiago Gabriel",
+      "realTeam": "LEC",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_13",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Locatelli",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 7,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_14",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Pasalic",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_15",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Odgaard",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_16",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Zambo Anguissa",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_17",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Thorsby",
+      "realTeam": "CRE",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_18",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "McTominay",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 25,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_19",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Ricci S.",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_20",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Basic",
+      "realTeam": "LAZ",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 4,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_21",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Konè I.",
+      "realTeam": "SAS",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_22",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Neres",
+      "realTeam": "NAP",
+      "rosterRole": "C",
+      "classicRole": "C",
+      "mantraRoles": "",
+      "cost": 61,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_23",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Pedro",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_24",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Piccoli",
+      "realTeam": "FIO",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_25",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Leao",
+      "realTeam": "MIL",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 3,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_26",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Nzola",
+      "realTeam": "SAS",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 6,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_27",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Banda",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 2,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_28",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Hojlund",
+      "realTeam": "NAP",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 108,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    },
+    {
+      "id": "static_2012-2013_team-002_29",
+      "seasonId": "2012-2013",
+      "seasonTeamId": "2012-2013_team-002",
+      "playerName": "Ratkov",
+      "realTeam": "LAZ",
+      "rosterRole": "A",
+      "classicRole": "A",
+      "mantraRoles": "",
+      "cost": 8,
+      "status": "ACTIVE",
+      "source": "static-roster"
+    }
+  ],
+  "fmMovements": [],
+  "metrics": {
+    "clubs": 4,
+    "fm": {
+      "total": 0,
+      "average": 0
+    }
+  },
+  "news": [],
+  "snapshotVersion": 34
+}
