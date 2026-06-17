@@ -2,7 +2,7 @@
   "version": "V324",
   "date": "2026-06-14",
   "timezone": "Europe/Rome",
-  "generatedAt": "2026-06-15T05:50:25.509Z",
+  "generatedAt": "2026-06-17T13:47:27.010Z",
   "sourceMode": "static-rss-archive",
   "sources": [
     {
@@ -384,17 +384,17 @@
   ],
   "warnings": [],
   "feedRange": {
-    "earliest": "2026-05-18T10:13:00.000Z",
-    "latest": "2026-06-15T07:46:24.000Z",
-    "totalBeforeDateRange": 936,
-    "totalFetched": 936,
-    "totalAfterQueryBeforeDateRange": 936
+    "earliest": "2026-05-22T12:15:00.000Z",
+    "latest": "2026-06-17T15:20:17.000Z",
+    "totalBeforeDateRange": 913,
+    "totalFetched": 913,
+    "totalAfterQueryBeforeDateRange": 913
   },
   "stats": {
-    "existingArticles": 0,
-    "fetchedArticles": 240,
-    "totalArticles": 238,
-    "duplicatesSkipped": 2
+    "existingArticles": 238,
+    "fetchedArticles": 46,
+    "totalArticles": 239,
+    "duplicatesSkipped": 45
   },
   "articles": [
     {
@@ -1590,6 +1590,43 @@
         "Mercato"
       ],
       "canonicalKey": "url:gianlucadimarzio.com/news-calcio/uruguay-bloccato-messico-problemi-permessi-volo-493535"
+    },
+    {
+      "id": "tmw-genoa-14-aHR0cHM6Ly93",
+      "title": "Gilardino: \"In campo mi trasformo. I 20 minuti prima della partita sono il momento più bello\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/gilardino-in-campo-trasformo-20-minuti-partita-bello-2244198",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4bf82dac29e5f1ea8b894162b6c2f03b-20767-oooz0000.webp",
+      "publishedAt": "2026-06-14T21:52:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/gilardino-in-campo-trasformo-20-minuti-partita-bello-2244198"
     },
     {
       "id": "tmw-roma-10-aHR0cHM6Ly93",
