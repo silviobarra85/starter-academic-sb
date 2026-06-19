@@ -1,0 +1,372 @@
+// V479 FantaMantraManager - rules con Proposte regolamento.
+// Progetto Firebase separato: fantapetillomantramanager. Non usare rules ZonaOrientale.
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function signedInUserDoc() {
+      return get(/databases/$(database)/documents/teamUsers/$(request.auth.uid));
+    }
+
+    function hasTeamUserDoc() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/teamUsers/$(request.auth.uid));
+    }
+
+    function isApprovedTeamUser() {
+      return hasTeamUserDoc()
+        && signedInUserDoc().data.status == 'ACTIVE';
+    }
+
+    function mySeasonTeamId() {
+      return signedInUserDoc().data.seasonTeamId;
+    }
+
+
+
+    function isValidRuleProposalStatus(status) {
+      return status == 'SUBMITTED'
+        || status == 'IN_REVIEW'
+        || status == 'IN_VOTING'
+        || status == 'APPROVED'
+        || status == 'REJECTED'
+        || status == 'ARCHIVED';
+    }
+
+    function isValidRuleProposalType(type) {
+      return type == 'NEW_RULE'
+        || type == 'RULE_CHANGE'
+        || type == 'RULE_DELETE'
+        || type == 'CLARIFICATION';
+    }
+
+    function isValidRuleProposalTextFields(data) {
+      return data.title is string
+        && data.title.size() > 0
+        && data.title.size() <= 140
+        && data.type is string
+        && isValidRuleProposalType(data.type)
+        && data.articleRef is string
+        && data.articleRef.size() <= 160
+        && data.currentText is string
+        && data.currentText.size() <= 3000
+        && data.proposedText is string
+        && data.proposedText.size() > 0
+        && data.proposedText.size() <= 4000
+        && data.reason is string
+        && data.reason.size() > 0
+        && data.reason.size() <= 3000
+        && data.effectiveSeason is string
+        && data.effectiveSeason.size() <= 30
+        && data.notes is string
+        && data.notes.size() <= 2000;
+    }
+
+    function isRuleProposalOwner() {
+      return isApprovedTeamUser()
+        && resource.data.createdByUid == request.auth.uid
+        && resource.data.createdBySeasonTeamId == mySeasonTeamId();
+    }
+
+    function isParticipantTeam(teamId) {
+      return isApprovedTeamUser()
+        && mySeasonTeamId() == teamId;
+    }
+
+    function changedKeys() {
+      return request.resource.data.diff(resource.data).affectedKeys();
+    }
+
+    function isTradeOutcomeStatus(status) {
+      return status == 'ACCEPTED' || status == 'REJECTED';
+    }
+
+    function isTradeResponseUpdateByReceiver() {
+      return isParticipantTeam(resource.data.toSeasonTeamId)
+        && resource.data.status == 'PENDING'
+        && isTradeOutcomeStatus(request.resource.data.status)
+        && (
+          (
+            request.resource.data.status == 'ACCEPTED'
+            && changedKeys().hasOnly(['status', 'updatedAt', 'acceptedAt', 'acceptedBy'])
+            && request.resource.data.acceptedBy == request.auth.uid
+          )
+          ||
+          (
+            request.resource.data.status == 'REJECTED'
+            && changedKeys().hasOnly(['status', 'updatedAt', 'rejectedAt', 'rejectedBy'])
+            && request.resource.data.rejectedBy == request.auth.uid
+          )
+        );
+    }
+
+    function isTradeOutcomeSeenUpdateBySender() {
+      return isParticipantTeam(resource.data.fromSeasonTeamId)
+        && isTradeOutcomeStatus(resource.data.status)
+        && changedKeys().hasOnly([
+          'outcomeSeenByFromUid',
+          'outcomeSeenByUid',
+          'outcomeSeenAtByFromUid',
+          'outcomeSeenMarkerByFromUid'
+        ])
+        && request.resource.data.outcomeSeenByFromUid == true
+        && request.resource.data.outcomeSeenByUid == request.auth.uid
+        && request.resource.data.outcomeSeenAtByFromUid is timestamp
+        && request.resource.data.outcomeSeenMarkerByFromUid is string
+        && request.resource.data.outcomeSeenMarkerByFromUid.size() <= 200;
+    }
+
+    function isTradeOutcomeResetUpdateByReceiver() {
+      return isParticipantTeam(resource.data.toSeasonTeamId)
+        && isTradeOutcomeStatus(resource.data.status)
+        && changedKeys().hasOnly([
+          'outcomeSeenByFromUid',
+          'outcomeSeenMarkerByFromUid',
+          'outcomeSeenByUid',
+          'outcomeResetAtV246'
+        ])
+        && request.resource.data.outcomeSeenByFromUid == false
+        && request.resource.data.outcomeSeenMarkerByFromUid == ''
+        && request.resource.data.outcomeSeenByUid == ''
+        && request.resource.data.outcomeResetAtV246 is timestamp;
+    }
+
+    match /admins/{userId} {
+      // Un utente loggato puo leggere solo il proprio eventuale documento admin.
+      // Questo permette al frontend di verificare se e admin senza bloccare i presidenti.
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow write: if isAdmin();
+    }
+
+    match /pendingUsers/{userId} {
+      // Il presidente puo creare/leggere/aggiornare la propria richiesta.
+      // L'admin puo leggere, approvare o rifiutare; dalla V241 il rifiuto resta REJECTED.
+      allow create, read, update: if isSignedIn() && request.auth.uid == userId;
+      allow read, write, delete: if isAdmin();
+    }
+
+    match /teamUsers/{userId} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow write: if isAdmin();
+    }
+
+    match /teamRequests/{docId} {
+      allow create: if isApprovedTeamUser();
+      allow read: if isAdmin() || (isSignedIn() && resource.data.createdBy == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    match /ruleProposals/{proposalId} {
+      // V479: presidenti approvati leggono le proposte della lega e creano solo proposte proprie.
+      // L'admin puo cambiare stato/nota o cancellare documenti. I presidenti possono modificare
+      // solo i campi testuali delle proprie proposte finche' restano SUBMITTED.
+      allow read: if isAdmin() || isApprovedTeamUser();
+
+      allow create: if isApprovedTeamUser()
+        && request.resource.data.keys().hasOnly([
+          'leagueId',
+          'seasonId',
+          'title',
+          'type',
+          'articleRef',
+          'currentText',
+          'proposedText',
+          'reason',
+          'effectiveSeason',
+          'notes',
+          'status',
+          'createdByUid',
+          'createdBySeasonTeamId',
+          'createdByTeamName',
+          'createdByPresidentName',
+          'createdByEmail',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.leagueId == 'fantapetillomantramanager'
+        && request.resource.data.createdByUid == request.auth.uid
+        && request.resource.data.createdBySeasonTeamId == mySeasonTeamId()
+        && request.resource.data.status == 'SUBMITTED'
+        && request.resource.data.seasonId is string
+        && request.resource.data.seasonId.size() <= 30
+        && request.resource.data.createdByTeamName is string
+        && request.resource.data.createdByTeamName.size() <= 160
+        && request.resource.data.createdByPresidentName is string
+        && request.resource.data.createdByPresidentName.size() <= 160
+        && request.resource.data.createdByEmail is string
+        && request.resource.data.createdByEmail.size() <= 200
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.updatedAt is timestamp
+        && isValidRuleProposalTextFields(request.resource.data);
+
+      allow update: if isAdmin()
+        || (
+          isRuleProposalOwner()
+          && resource.data.status == 'SUBMITTED'
+          && request.resource.data.status == resource.data.status
+          && request.resource.data.createdByUid == resource.data.createdByUid
+          && request.resource.data.createdBySeasonTeamId == resource.data.createdBySeasonTeamId
+          && request.resource.data.leagueId == resource.data.leagueId
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'title',
+            'type',
+            'articleRef',
+            'currentText',
+            'proposedText',
+            'reason',
+            'effectiveSeason',
+            'notes',
+            'updatedAt'
+          ])
+          && request.resource.data.updatedAt is timestamp
+          && isValidRuleProposalTextFields(request.resource.data)
+        );
+
+      allow delete: if isAdmin();
+    }
+
+
+    match /publicSeasonSnapshots/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /publicSnapshots/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /publicTeamSnapshots/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /transferListings/{listingId} {
+      // Fantamercato pubblico: lista giocatori trasferibili.
+      allow read: if true;
+
+      allow create: if isAdmin()
+        || isParticipantTeam(request.resource.data.seasonTeamId);
+
+      allow update: if isAdmin()
+        || isParticipantTeam(resource.data.seasonTeamId)
+        || isParticipantTeam(request.resource.data.seasonTeamId);
+
+      allow delete: if isAdmin()
+        || isParticipantTeam(resource.data.seasonTeamId);
+    }
+
+    match /transferNegotiations/{negotiationId} {
+      // Trattative visibili solo ad admin, mittente e destinatario.
+      allow read: if isAdmin()
+        || isParticipantTeam(resource.data.fromSeasonTeamId)
+        || isParticipantTeam(resource.data.toSeasonTeamId);
+
+      // Il presidente puo creare solo trattative dalla propria squadra.
+      allow create: if isAdmin()
+        || isParticipantTeam(request.resource.data.fromSeasonTeamId);
+
+      // V257: update non-admin separati per sicurezza.
+      // - Il destinatario puo accettare/rifiutare una proposta PENDING.
+      // - Il destinatario puo resettare i flag di lettura esito dopo la risposta.
+      // - Il mittente puo marcare come letto solo l'esito della propria proposta conclusa.
+      allow update: if isAdmin()
+        || isTradeResponseUpdateByReceiver()
+        || isTradeOutcomeResetUpdateByReceiver()
+        || isTradeOutcomeSeenUpdateBySender();
+
+      // Chi invia puo annullare una proposta PENDING: viene eliminata da Firebase.
+      allow delete: if isAdmin()
+        || (
+          isParticipantTeam(resource.data.fromSeasonTeamId)
+          && resource.data.status == 'PENDING'
+        );
+    }
+
+    match /leagueSettings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /seasons/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /presidents/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /teams/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /seasonTeams/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /stadiums/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitions/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitionMatches/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /competitionResults/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /honorRoll/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /fifaRankings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /rosterEntries/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /fmMovements/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /news/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+
+    match /soccerDataPlayerStats/{docId} {
+      // V393 Soccer Data: lettura pubblica per fallback runtime, scrittura solo admin.
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

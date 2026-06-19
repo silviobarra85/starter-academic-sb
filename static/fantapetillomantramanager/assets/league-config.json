@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "478",
+  "currentVersion": "479",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -28,7 +28,8 @@
     "mantraFilters": true,
     "manualAdminSetup": true,
     "matchdayDrawTool": true,
-    "regolamentoPdf2026_2027": true
+    "regolamentoPdf2026_2027": true,
+    "ruleProposals": true
   },
   "guardrails": {
     "sandboxClone": true,
@@ -51,7 +52,7 @@
     "adminBootstrapEnabled": true,
     "adminBootstrapVersion": "450",
     "teamAreaEntrypointsGuardedUntilTeamUsersSeed": false,
-    "firestoreRulesVersion": "450",
+    "firestoreRulesVersion": "479",
     "firestoreRulesAlignedWithZonaOrientale": "V393-derived-v450",
     "adminOnboardingVersion": "451",
     "cloneTeamAreaStillGuarded": false,
@@ -101,7 +102,10 @@
     "enabledPresidentTools": [
       "Svincola Giocatori",
       "Comunicato avvenuto scambio"
-    ]
+    ],
+    "ruleProposalsVersion": "479",
+    "ruleProposalsCollection": "ruleProposals",
+    "ruleProposalsFirebaseRulesVersion": "479"
   },
   "branding": {
     "siteName": "FantaMantraManager",
@@ -204,6 +208,7 @@
     "status": "share-netlify-v466",
     "firebase": "dedicated-project-admin-bootstrap",
     "notes": [
+      "V479 aggiunge Proposte regolamento su Firebase per presidenti approvati e pannello Admin dedicato; richiede applicazione rules v479.",
       "V466 prepara redirect Netlify e funzione news-share multi-lega per preview Open Graph dei comunicati FantaMantra.",
       "V463 aggiunge una card Admin per generare snapshot pubblici statici da preview Firestore V460 senza scrivere su Firebase.",
       "V462 aggiunge una card Admin informativa sul workflow dati reali: template, validazione, preview, import, snapshot e sblocco Area Squadra.",
@@ -313,8 +318,11 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V478 EmailJS dedicato e card operative presidente FantaMantraManager",
+    "lastOverlay": "V479 Proposte regolamento Firebase FantaMantraManager",
     "notes": [
+      "V479 aggiunge la sezione Proposte regolamento in Area/Dashboard Presidente per i presidenti approvati, con salvataggio su Firestore nella collection ruleProposals.",
+      "V479 aggiunge il pannello Admin Proposte regolamento per aggiornare stato e nota, richiede applicazione di tools/firestore-rules-v479.rules.",
+      "V479 non tocca ZonaOrientale e mantiene le regole V477/V478: Dashboard Presidente nascosta in sessione Admin e card EmailJS operative attive.",
       "V478 riattiva solo su FantaMantraManager le card Svincola Giocatori e Comunicato avvenuto scambio, usando il service EmailJS dedicato service_ttjf7js e destinatario barra.silvio@gmail.com.",
       "V478 usa template_svkkhlr per Comunicato avvenuto scambio e mantiene il template generico template_e1o7z5e per Svincola Giocatori, perche il corpo email viene composto dal sito.",
       "V478 mantiene la regola V477: la Dashboard Presidente non viene renderizzata quando il login corrente e Admin.",
@@ -336,7 +344,7 @@
   "multiLeague": {
     "status": "standard-admin-v467"
   },
-  "version": "478",
+  "version": "479",
   "runtime": {
     "emailJsPresidentToolsVersion": "478",
     "emailJsServiceId": "service_ttjf7js",
@@ -347,6 +355,9 @@
     "enabledPresidentTools": [
       "Svincola Giocatori",
       "Comunicato avvenuto scambio"
-    ]
+    ],
+    "ruleProposalsVersion": "479",
+    "ruleProposalsCollection": "ruleProposals",
+    "firestoreRulesVersion": "479"
   }
 }

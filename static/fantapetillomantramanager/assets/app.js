@@ -38,20 +38,20 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { FantaPetilloSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=478";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=478";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=478";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=478";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=478";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=478";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=478";
+import { FantaPetilloSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=479";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=479";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=479";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=479";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=479";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=479";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=479";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=478";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=478";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=478";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=479";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=479";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=479";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const FantaPetilloSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -115,7 +115,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=478";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=479";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -139,7 +139,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=478";
+} from "./js/domain/news-share-v228.js?v=479";
 import {
   getListoneValue,
   compareListoneValues
@@ -154,19 +154,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=478";
+} from "./js/admin/listone-converter.js?v=479";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=478";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=478";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=479";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=479";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=478";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=478";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=478";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=478";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=479";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=479";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=479";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=479";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=478";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=478";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=478";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=479";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=479";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=479";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -24694,7 +24694,7 @@ const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json";
 function getCalciomercatoStaticUrlV446() {
   return withLeagueCacheBusterV446(getLeagueDataPathV446("calciomercatoLinks", CALCIOMERCATO_STATIC_URL_V306));
 }
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=478";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=479";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -35747,4 +35747,456 @@ window.FantaMantraManagerPresidentEmailJsV478 = Object.freeze({
   enabledPresidentCards: ["Svincola Giocatori", "Comunicato avvenuto scambio"],
   presidentDashboardVisibleForAdmin: false,
   touchesZonaOrientale: false
+});
+
+/* V479 - FantaMantraManager: Proposte regolamento in Firebase.
+ * Sezione accessibile solo ai presidenti approvati e pannello Admin dedicato per cambiare stato.
+ * Non modifica ZonaOrientale, non rimuove funzionalita esistenti e mantiene Dashboard Presidente nascosta in sessione Admin.
+ */
+const FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479 = "ruleProposals";
+const FANTAMANTRA_RULE_PROPOSALS_LEAGUE_ID_V479 = "fantapetillomantramanager";
+const FANTAMANTRA_RULE_PROPOSAL_STATUSES_V479 = Object.freeze([
+  ["SUBMITTED", "Inviata"],
+  ["IN_REVIEW", "In valutazione"],
+  ["IN_VOTING", "In votazione"],
+  ["APPROVED", "Approvata"],
+  ["REJECTED", "Respinta"],
+  ["ARCHIVED", "Archiviata"]
+]);
+const FANTAMANTRA_RULE_PROPOSAL_TYPES_V479 = Object.freeze([
+  ["NEW_RULE", "Nuova regola"],
+  ["RULE_CHANGE", "Modifica regola"],
+  ["RULE_DELETE", "Cancellazione regola"],
+  ["CLARIFICATION", "Chiarimento"]
+]);
+
+if (typeof COLLECTIONS !== "undefined" && !COLLECTIONS.includes(FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479)) {
+  COLLECTIONS.push(FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479);
+}
+if (typeof ADMIN_PANEL_IDS !== "undefined" && !ADMIN_PANEL_IDS.includes("adminRuleProposalsPanelV479")) {
+  ADMIN_PANEL_IDS.push("adminRuleProposalsPanelV479");
+}
+if (state?.collapsedAdminPanels?.add) state.collapsedAdminPanels.add("adminRuleProposalsPanelV479");
+state.raw = state.raw || {};
+state.raw.ruleProposals = Array.isArray(state.raw.ruleProposals) ? state.raw.ruleProposals : [];
+state.ruleProposalsLoadedV479 = Boolean(state.ruleProposalsLoadedV479);
+state.ruleProposalsLoadingV479 = false;
+state.ruleProposalEditingIdV479 = state.ruleProposalEditingIdV479 || "";
+
+function getRuleProposalStatusLabelV479(status) {
+  const value = String(status || "SUBMITTED").trim().toUpperCase();
+  return FANTAMANTRA_RULE_PROPOSAL_STATUSES_V479.find(([key]) => key === value)?.[1] || value;
+}
+
+function getRuleProposalTypeLabelV479(type) {
+  const value = String(type || "RULE_CHANGE").trim().toUpperCase();
+  return FANTAMANTRA_RULE_PROPOSAL_TYPES_V479.find(([key]) => key === value)?.[1] || value;
+}
+
+function getRuleProposalDateValueV479(item = {}) {
+  const value = item.updatedAt || item.createdAt || "";
+  if (!value) return 0;
+  if (typeof value === "number") return value > 9999999999 ? value : value * 1000;
+  if (typeof value === "string") {
+    const parsed = Date.parse(value);
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+  if (typeof value.toMillis === "function") return value.toMillis();
+  if (typeof value.seconds === "number") return value.seconds * 1000;
+  return 0;
+}
+
+function formatRuleProposalDateV479(item = {}) {
+  const value = getRuleProposalDateValueV479(item);
+  if (!value) return "data non disponibile";
+  try { return new Date(value).toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" }); }
+  catch (_) { return "data non disponibile"; }
+}
+
+function normalizeRuleProposalTextV479(value = "", max = 4000) {
+  return String(value || "").trim().slice(0, max);
+}
+
+function sortRuleProposalsV479(items = []) {
+  return [...items].sort((a, b) => getRuleProposalDateValueV479(b) - getRuleProposalDateValueV479(a));
+}
+
+async function loadRuleProposalsV479(options = {}) {
+  const { render = false, force = false } = options;
+  if (!state?.user && !state?.isAdmin) return [];
+  if (state.ruleProposalsLoadingV479) return state.raw.ruleProposals || [];
+  if (state.ruleProposalsLoadedV479 && !force) return state.raw.ruleProposals || [];
+  state.ruleProposalsLoadingV479 = true;
+  try {
+    const snapshot = await getDocs(collection(db, FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479));
+    state.raw.ruleProposals = sortRuleProposalsV479(snapshot.docs.map((documentSnapshot) => ({
+      id: documentSnapshot.id,
+      ...documentSnapshot.data()
+    })));
+    state.ruleProposalsLoadedV479 = true;
+  } catch (error) {
+    if (error?.code !== "permission-denied") console.warn("Proposte regolamento V479 non caricate", error);
+  } finally {
+    state.ruleProposalsLoadingV479 = false;
+  }
+  if (render) {
+    try { renderUserAreaV34?.(); } catch (error) { console.warn("Render proposte regolamento presidente V479 non completato", error); }
+    try { if (state?.isAdmin) renderAdminArea?.(); } catch (error) { console.warn("Render proposte regolamento admin V479 non completato", error); }
+  }
+  return state.raw.ruleProposals || [];
+}
+
+function ensureRuleProposalsLoadedV479() {
+  if (state.ruleProposalsLoadedV479 || state.ruleProposalsLoadingV479) return;
+  window.setTimeout(() => loadRuleProposalsV479({ render: true }), 0);
+}
+
+function getCurrentRuleProposalEditingV479(approved = getApprovedTeamUser?.()) {
+  const id = state.ruleProposalEditingIdV479 || "";
+  if (!id) return null;
+  const item = (state.raw.ruleProposals || []).find((proposal) => proposal.id === id);
+  if (!item) return null;
+  if (item.createdByUid !== state.user?.uid) return null;
+  if (String(item.status || "SUBMITTED").toUpperCase() !== "SUBMITTED") return null;
+  if (approved?.seasonTeamId && item.createdBySeasonTeamId !== approved.seasonTeamId) return null;
+  return item;
+}
+
+function renderRuleProposalSelectOptionsV479(entries, selected) {
+  const value = String(selected || "").toUpperCase();
+  return entries.map(([key, label]) => `<option value="${escapeHtml(key)}" ${key === value ? "selected" : ""}>${escapeHtml(label)}</option>`).join("");
+}
+
+function renderRuleProposalFormV479(approved = getApprovedTeamUser?.()) {
+  const editing = getCurrentRuleProposalEditingV479(approved);
+  const submitLabel = editing ? "Salva modifica" : "Invia proposta";
+  const formTitle = editing ? "Modifica proposta inviata" : "Nuova proposta";
+  return `
+    <form id="ruleProposalFormV479" class="form-grid rule-proposal-form-v479" data-editing-rule-proposal-v479="${escapeHtml(editing?.id || "")}">
+      <div class="span-2 rule-proposal-form-heading-v479">
+        <h3>${escapeHtml(formTitle)}</h3>
+        ${editing ? `<button class="button button-secondary button-small" type="button" data-rule-proposal-cancel-edit-v479>Annulla modifica</button>` : ""}
+      </div>
+      <label class="span-2">Titolo proposta<input id="ruleProposalTitleV479" class="input" type="text" maxlength="140" value="${escapeHtml(editing?.title || "")}" required /></label>
+      <label>Tipo proposta<select id="ruleProposalTypeV479" class="input" required>${renderRuleProposalSelectOptionsV479(FANTAMANTRA_RULE_PROPOSAL_TYPES_V479, editing?.type || "RULE_CHANGE")}</select></label>
+      <label>Stagione di applicazione<input id="ruleProposalEffectiveSeasonV479" class="input" type="text" maxlength="30" value="${escapeHtml(editing?.effectiveSeason || "2027-2028")}" placeholder="Es. 2027-2028" /></label>
+      <label class="span-2">Articolo o sezione interessata<input id="ruleProposalArticleRefV479" class="input" type="text" maxlength="160" value="${escapeHtml(editing?.articleRef || "")}" placeholder="Es. Art. 12.3 Coppa Italia" /></label>
+      <label class="span-2">Testo attuale, facoltativo<textarea id="ruleProposalCurrentTextV479" class="input textarea" rows="3" maxlength="3000" placeholder="Incolla il testo della regola attuale, se serve.">${escapeHtml(editing?.currentText || "")}</textarea></label>
+      <label class="span-2">Testo proposto<textarea id="ruleProposalProposedTextV479" class="input textarea" rows="5" maxlength="4000" required>${escapeHtml(editing?.proposedText || "")}</textarea></label>
+      <label class="span-2">Motivazione<textarea id="ruleProposalReasonV479" class="input textarea" rows="3" maxlength="3000" required>${escapeHtml(editing?.reason || "")}</textarea></label>
+      <label class="span-2">Note aggiuntive<textarea id="ruleProposalNotesV479" class="input textarea" rows="2" maxlength="2000">${escapeHtml(editing?.notes || "")}</textarea></label>
+      <div class="form-actions span-2">
+        <button class="button button-primary" type="submit">${escapeHtml(submitLabel)}</button>
+        <span id="ruleProposalStatusV479" class="form-status"></span>
+      </div>
+    </form>`;
+}
+
+function renderRuleProposalCardV479(proposal = {}, options = {}) {
+  const { admin = false, own = false } = options;
+  const status = String(proposal.status || "SUBMITTED").toUpperCase();
+  const canEdit = own && status === "SUBMITTED" && proposal.createdByUid === state.user?.uid;
+  const adminControls = admin ? `
+    <div class="rule-proposal-admin-controls-v479">
+      <label>Stato<select class="input" data-rule-proposal-admin-status-v479="${escapeHtml(proposal.id || "")}">${renderRuleProposalSelectOptionsV479(FANTAMANTRA_RULE_PROPOSAL_STATUSES_V479, status)}</select></label>
+      <label>Nota admin<textarea class="input textarea" rows="2" data-rule-proposal-admin-note-v479="${escapeHtml(proposal.id || "")}">${escapeHtml(proposal.adminNote || "")}</textarea></label>
+      <button class="button button-secondary button-small" type="button" data-rule-proposal-admin-save-v479="${escapeHtml(proposal.id || "")}">Aggiorna stato</button>
+    </div>` : "";
+  return `
+    <article class="rule-proposal-card-v479 is-${escapeHtml(status.toLowerCase().replace(/_/g, "-"))}">
+      <div class="rule-proposal-card-head-v479">
+        <div>
+          <strong>${escapeHtml(proposal.title || "Proposta regolamento")}</strong>
+          <small>${escapeHtml(getRuleProposalTypeLabelV479(proposal.type))} · ${escapeHtml(proposal.articleRef || "Nessun articolo indicato")}</small>
+        </div>
+        <span class="status ${status === "APPROVED" ? "status-ok" : status === "REJECTED" ? "status-danger" : status === "IN_VOTING" ? "status-warning" : "status-muted"}">${escapeHtml(getRuleProposalStatusLabelV479(status))}</span>
+      </div>
+      <div class="rule-proposal-meta-v479">
+        <span>${escapeHtml(proposal.createdByTeamName || proposal.createdByPresidentName || "Presidente")}</span>
+        <span>${escapeHtml(formatRuleProposalDateV479(proposal))}</span>
+        ${proposal.effectiveSeason ? `<span>Da: ${escapeHtml(proposal.effectiveSeason)}</span>` : ""}
+      </div>
+      ${proposal.proposedText ? `<div class="rule-proposal-text-v479"><h4>Testo proposto</h4><p>${escapeHtml(proposal.proposedText)}</p></div>` : ""}
+      ${proposal.reason ? `<div class="rule-proposal-text-v479"><h4>Motivazione</h4><p>${escapeHtml(proposal.reason)}</p></div>` : ""}
+      ${proposal.adminNote ? `<div class="rule-proposal-admin-note-v479"><strong>Nota admin</strong><p>${escapeHtml(proposal.adminNote)}</p></div>` : ""}
+      <div class="rule-proposal-actions-v479">
+        ${canEdit ? `<button class="button button-secondary button-small" type="button" data-rule-proposal-edit-v479="${escapeHtml(proposal.id || "")}">Modifica proposta</button>` : ""}
+      </div>
+      ${adminControls}
+    </article>`;
+}
+
+function renderRuleProposalsListV479(proposals = [], options = {}) {
+  if (state.ruleProposalsLoadingV479 && !state.ruleProposalsLoadedV479) return `<p class="muted">Caricamento proposte da Firebase...</p>`;
+  if (!proposals.length) return `<p class="muted">Nessuna proposta regolamento presente.</p>`;
+  return `<div class="rule-proposal-list-v479">${proposals.map((proposal) => renderRuleProposalCardV479(proposal, options)).join("")}</div>`;
+}
+
+function renderRuleProposalsPresidentSectionV479(approved = getApprovedTeamUser?.()) {
+  if (!approved?.seasonTeamId || state?.isAdmin) return "";
+  ensureRuleProposalsLoadedV479();
+  const proposals = sortRuleProposalsV479(state.raw.ruleProposals || []);
+  const ownProposals = proposals.filter((proposal) => proposal.createdByUid === state.user?.uid || proposal.createdBySeasonTeamId === approved.seasonTeamId);
+  return `
+    <section class="panel rule-proposals-panel-v479" id="ruleProposalsPanelV479" aria-labelledby="ruleProposalsTitleV479">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Regolamento</p>
+          <h2 id="ruleProposalsTitleV479">Proposte regolamento</h2>
+          <p>Proponi nuove regole, modifiche o chiarimenti. Le proposte vengono salvate in Firebase e restano visibili ai presidenti della lega.</p>
+        </div>
+        <span class="president-dashboard-badge-v369">V479</span>
+      </div>
+      ${renderRuleProposalFormV479(approved)}
+      <div class="grid-two rule-proposals-columns-v479">
+        <article class="rule-proposals-column-v479">
+          <h3>Le mie proposte</h3>
+          ${renderRuleProposalsListV479(ownProposals, { own: true })}
+        </article>
+        <article class="rule-proposals-column-v479">
+          <h3>Tutte le proposte della lega</h3>
+          ${renderRuleProposalsListV479(proposals, { own: false })}
+        </article>
+      </div>
+    </section>`;
+}
+
+const renderUserAreaApprovedBeforeV479 = typeof renderUserAreaApprovedV119 === "function" ? renderUserAreaApprovedV119 : null;
+if (renderUserAreaApprovedBeforeV479) {
+  renderUserAreaApprovedV119 = function renderUserAreaApprovedV479(approved) {
+    return `${renderUserAreaApprovedBeforeV479(approved)}${renderRuleProposalsPresidentSectionV479(approved)}`;
+  };
+}
+
+function addRuleProposalDashboardActionV479() {
+  if (state?.isAdmin) return;
+  const actions = document.querySelector(".president-dashboard-actions-v369");
+  if (!actions || actions.querySelector("[data-rule-proposal-scroll-v479]")) return;
+  actions.insertAdjacentHTML("beforeend", `<button class="button button-secondary" type="button" data-rule-proposal-scroll-v479>Proposte regolamento</button>`);
+}
+
+function renderAdminRuleProposalsPanelV479() {
+  ensureRuleProposalsLoadedV479();
+  const proposals = sortRuleProposalsV479(state.raw.ruleProposals || []);
+  const body = `
+    <div class="admin-top-controls-v313">
+      <button class="button button-secondary button-small" type="button" data-rule-proposals-refresh-v479>Aggiorna da Firebase</button>
+      <span class="form-status">${escapeHtml(String(proposals.length))} proposta/e caricate.</span>
+    </div>
+    ${renderRuleProposalsListV479(proposals, { admin: true })}`;
+  return renderAdminPanel(
+    "adminRuleProposalsPanelV479",
+    "Regolamento",
+    "Proposte regolamento",
+    "Leggi le proposte dei presidenti e aggiorna lo stato del flusso senza modificare direttamente il regolamento ufficiale.",
+    body
+  );
+}
+
+function injectAdminRuleProposalsPanelV479() {
+  if (!state?.isAdmin) return;
+  const adminPanel = document.getElementById("adminPanel");
+  if (!adminPanel || document.getElementById("adminRuleProposalsPanelV479")) return;
+  const communicationCategory = [...adminPanel.querySelectorAll(".admin-category, .admin-category-section")].find((section) => normalizeKey(section.textContent || "").includes("utenti") && normalizeKey(section.textContent || "").includes("comunicazioni"));
+  if (communicationCategory) {
+    const body = communicationCategory.querySelector(".admin-category-body, .admin-category-section-body") || communicationCategory;
+    body.insertAdjacentHTML("beforeend", renderAdminRuleProposalsPanelV479());
+  } else {
+    adminPanel.insertAdjacentHTML("beforeend", renderAdminRuleProposalsPanelV479());
+  }
+}
+
+const renderAdminAreaBeforeV479 = typeof renderAdminArea === "function" ? renderAdminArea : null;
+if (renderAdminAreaBeforeV479) {
+  renderAdminArea = function renderAdminAreaV479() {
+    const result = renderAdminAreaBeforeV479?.();
+    try { injectAdminRuleProposalsPanelV479(); } catch (error) { console.warn("Pannello admin proposte regolamento V479 non renderizzato", error); }
+    try { if (typeof normalizeAdminLayoutV313 === "function") normalizeAdminLayoutV313(); } catch (_) {}
+    return result;
+  };
+}
+
+async function handleRuleProposalPresidentSubmitV479(form) {
+  const approved = getApprovedTeamUser?.();
+  if (!state?.user || !approved?.seasonTeamId || state?.isAdmin) {
+    showMessage("ruleProposalStatusV479", "Accedi come presidente approvato per inviare una proposta.", true);
+    return;
+  }
+  const editingId = form?.dataset?.editingRuleProposalV479 || "";
+  const payload = {
+    leagueId: FANTAMANTRA_RULE_PROPOSALS_LEAGUE_ID_V479,
+    seasonId: approved.seasonId || getCurrentSeasonId?.() || "2026-2027",
+    title: normalizeRuleProposalTextV479(document.getElementById("ruleProposalTitleV479")?.value, 140),
+    type: normalizeRuleProposalTextV479(document.getElementById("ruleProposalTypeV479")?.value || "RULE_CHANGE", 40),
+    articleRef: normalizeRuleProposalTextV479(document.getElementById("ruleProposalArticleRefV479")?.value, 160),
+    currentText: normalizeRuleProposalTextV479(document.getElementById("ruleProposalCurrentTextV479")?.value, 3000),
+    proposedText: normalizeRuleProposalTextV479(document.getElementById("ruleProposalProposedTextV479")?.value, 4000),
+    reason: normalizeRuleProposalTextV479(document.getElementById("ruleProposalReasonV479")?.value, 3000),
+    effectiveSeason: normalizeRuleProposalTextV479(document.getElementById("ruleProposalEffectiveSeasonV479")?.value || "2027-2028", 30),
+    notes: normalizeRuleProposalTextV479(document.getElementById("ruleProposalNotesV479")?.value, 2000),
+    updatedAt: serverTimestamp()
+  };
+  if (!payload.title || !payload.proposedText || !payload.reason) {
+    showMessage("ruleProposalStatusV479", "Titolo, testo proposto e motivazione sono obbligatori.", true);
+    return;
+  }
+  try {
+    showMessage("ruleProposalStatusV479", editingId ? "Salvataggio modifica..." : "Invio proposta...");
+    if (editingId) {
+      const current = getCurrentRuleProposalEditingV479(approved);
+      if (!current || current.id !== editingId) throw new Error("Questa proposta non e' piu' modificabile.");
+      await updateDoc(doc(db, FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479, editingId), payload);
+      state.ruleProposalEditingIdV479 = "";
+    } else {
+      await addDoc(collection(db, FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479), {
+        ...payload,
+        status: "SUBMITTED",
+        createdByUid: state.user.uid,
+        createdBySeasonTeamId: approved.seasonTeamId,
+        createdByTeamName: getSeasonTeamDisplayName?.(approved.seasonTeamId) || approved.teamName || "Squadra",
+        createdByPresidentName: getCurrentUserDisplayName?.() || state.user.email || "Presidente",
+        createdByEmail: state.user.email || "",
+        createdAt: serverTimestamp()
+      });
+    }
+    state.ruleProposalsLoadedV479 = false;
+    await loadRuleProposalsV479({ force: true, render: true });
+    showMessage("ruleProposalStatusV479", editingId ? "Modifica salvata." : "Proposta inviata.");
+  } catch (error) {
+    console.error(error);
+    showMessage("ruleProposalStatusV479", `Errore salvataggio proposta. ${error?.message || error}`, true);
+  }
+}
+
+document.addEventListener("submit", (event) => {
+  const form = event.target?.closest?.("#ruleProposalFormV479");
+  if (!form) return;
+  event.preventDefault();
+  handleRuleProposalPresidentSubmitV479(form);
+});
+
+document.addEventListener("click", async (event) => {
+  const scrollButton = event.target?.closest?.("[data-rule-proposal-scroll-v479]");
+  if (scrollButton) {
+    document.getElementById("ruleProposalsPanelV479")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+  const editButton = event.target?.closest?.("[data-rule-proposal-edit-v479]");
+  if (editButton) {
+    state.ruleProposalEditingIdV479 = editButton.dataset.ruleProposalEditV479 || "";
+    renderUserAreaV34?.();
+    window.setTimeout(() => document.getElementById("ruleProposalsPanelV479")?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+    return;
+  }
+  if (event.target?.closest?.("[data-rule-proposal-cancel-edit-v479]")) {
+    state.ruleProposalEditingIdV479 = "";
+    renderUserAreaV34?.();
+    return;
+  }
+  const refreshButton = event.target?.closest?.("[data-rule-proposals-refresh-v479]");
+  if (refreshButton) {
+    refreshButton.disabled = true;
+    const old = refreshButton.textContent;
+    refreshButton.textContent = "Aggiornamento...";
+    try { await loadRuleProposalsV479({ force: true, render: true }); }
+    finally { refreshButton.disabled = false; refreshButton.textContent = old || "Aggiorna da Firebase"; }
+    return;
+  }
+  const adminSaveButton = event.target?.closest?.("[data-rule-proposal-admin-save-v479]");
+  if (adminSaveButton) {
+    const id = adminSaveButton.dataset.ruleProposalAdminSaveV479 || "";
+    if (!id || !state?.isAdmin) return;
+    const statusInput = document.querySelector(`[data-rule-proposal-admin-status-v479="${CSS.escape(id)}"]`);
+    const noteInput = document.querySelector(`[data-rule-proposal-admin-note-v479="${CSS.escape(id)}"]`);
+    adminSaveButton.disabled = true;
+    const old = adminSaveButton.textContent;
+    adminSaveButton.textContent = "Salvataggio...";
+    try {
+      await updateDoc(doc(db, FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479, id), {
+        status: normalizeRuleProposalTextV479(statusInput?.value || "IN_REVIEW", 40),
+        adminNote: normalizeRuleProposalTextV479(noteInput?.value || "", 2000),
+        reviewedByUid: state.user?.uid || "",
+        reviewedByName: state.user?.displayName || state.user?.email || "Admin",
+        updatedAt: serverTimestamp()
+      });
+      state.ruleProposalsLoadedV479 = false;
+      await loadRuleProposalsV479({ force: true, render: true });
+    } catch (error) {
+      console.error("Aggiornamento proposta regolamento V479 fallito", error);
+      window.alert(`Errore aggiornamento proposta: ${error?.message || error}`);
+    } finally {
+      adminSaveButton.disabled = false;
+      adminSaveButton.textContent = old || "Aggiorna stato";
+    }
+  }
+}, true);
+
+const renderUserAreaBeforeV479 = typeof renderUserAreaV34 === "function" ? renderUserAreaV34 : null;
+if (renderUserAreaBeforeV479) {
+  renderUserAreaV34 = function renderUserAreaV479() {
+    const result = renderUserAreaBeforeV479?.();
+    try { addRuleProposalDashboardActionV479(); } catch (_) {}
+    return result;
+  };
+}
+
+function injectRuleProposalsStylesV479() {
+  if (document.getElementById("ruleProposalsStylesV479")) return;
+  const style = document.createElement("style");
+  style.id = "ruleProposalsStylesV479";
+  style.textContent = `
+    .rule-proposals-panel-v479{border:1px solid rgba(168,85,247,.26);background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(14,165,233,.045));}
+    .rule-proposal-form-v479{margin:1rem 0;padding:1rem;border:1px solid rgba(255,255,255,.12);border-radius:1rem;background:rgba(15,23,42,.42);}
+    .rule-proposal-form-heading-v479{display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
+    .rule-proposal-form-heading-v479 h3{margin:0;}
+    .rule-proposals-columns-v479{align-items:start;}
+    .rule-proposals-column-v479{min-width:0;}
+    .rule-proposal-list-v479{display:grid;gap:.7rem;}
+    .rule-proposal-card-v479{display:grid;gap:.55rem;border:1px solid rgba(255,255,255,.12);border-radius:1rem;padding:.85rem;background:rgba(15,23,42,.48);}
+    .rule-proposal-card-v479.is-approved{border-color:rgba(34,197,94,.35);}
+    .rule-proposal-card-v479.is-rejected{border-color:rgba(248,113,113,.35);}
+    .rule-proposal-card-v479.is-in-voting{border-color:rgba(250,204,21,.35);}
+    .rule-proposal-card-head-v479{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;}
+    .rule-proposal-card-head-v479 small{display:block;color:var(--muted);margin-top:.12rem;}
+    .rule-proposal-meta-v479{display:flex;flex-wrap:wrap;gap:.45rem;color:var(--muted);font-size:.82rem;}
+    .rule-proposal-meta-v479 span{display:inline-flex;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:.18rem .45rem;background:rgba(255,255,255,.04);}
+    .rule-proposal-text-v479 h4{margin:.2rem 0;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;}
+    .rule-proposal-text-v479 p,.rule-proposal-admin-note-v479 p{white-space:pre-wrap;margin:.15rem 0 0;}
+    .rule-proposal-admin-note-v479{border-left:3px solid rgba(59,130,246,.5);padding-left:.7rem;color:var(--text);}
+    .rule-proposal-admin-controls-v479{display:grid;gap:.6rem;margin-top:.25rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.1);}
+    .rule-proposal-actions-v479:empty{display:none;}
+    @media(max-width:760px){
+      .rule-proposal-form-heading-v479,.rule-proposal-card-head-v479{flex-direction:column;align-items:stretch;}
+      .rule-proposal-form-v479 .button,.rule-proposal-admin-controls-v479 .button{width:100%;}
+    }`;
+  document.head.appendChild(style);
+}
+
+["DOMContentLoaded", "load", "hashchange"].forEach((eventName) => {
+  window.addEventListener(eventName, () => {
+    window.setTimeout(() => {
+      injectRuleProposalsStylesV479();
+      addRuleProposalDashboardActionV479();
+      if (state?.isAdmin) injectAdminRuleProposalsPanelV479();
+    }, 0);
+  });
+});
+injectRuleProposalsStylesV479();
+window.setTimeout(() => {
+  addRuleProposalDashboardActionV479();
+  if (state?.isAdmin) injectAdminRuleProposalsPanelV479();
+}, 1000);
+
+window.FantaMantraManagerRuleProposalsV479 = Object.freeze({
+  version: "V479",
+  scope: "fantamantramanager-only",
+  collection: FANTAMANTRA_RULE_PROPOSALS_COLLECTION_V479,
+  leagueId: FANTAMANTRA_RULE_PROPOSALS_LEAGUE_ID_V479,
+  presidentAccess: "approved-teamUsers-only",
+  adminPanel: "adminRuleProposalsPanelV479",
+  adminCanChangeStatus: true,
+  presidentCanEditOnlySubmittedOwnProposal: true,
+  requiresFirestoreRules: "tools/firestore-rules-v479.rules",
+  touchesZonaOrientale: false,
+  preservesExistingFunctionality: true
 });

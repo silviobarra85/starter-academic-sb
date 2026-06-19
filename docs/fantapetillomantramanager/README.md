@@ -339,3 +339,10 @@ Documenti tecnici:
 
 - `EMAILJS_PRESIDENT_TOOLS_V478.md`
 - `HANDOFF_V478_EMAILJS_PRESIDENT_TOOLS.md`
+
+## V479 - Proposte regolamento Firebase
+- Aggiunta sezione presidente `Proposte regolamento` in Area/Dashboard Presidente.
+- Aggiunto pannello Admin `Proposte regolamento` per cambio stato/nota.
+- Nuova collection Firestore: `ruleProposals`.
+- Rules dedicate: `static/fantapetillomantramanager/tools/firestore-rules-v479.rules`.
+- Nessuna modifica a ZonaOrientale; dashboard presidente resta non visibile in sessione Admin.
