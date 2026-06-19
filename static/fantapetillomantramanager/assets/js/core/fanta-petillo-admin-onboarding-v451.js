@@ -1,4 +1,4 @@
-/* V451 - FantaPetillo Admin onboarding.
+/* V451 - FantaMantra Admin onboarding.
  * Read-only setup guide injected in the clone Admin page after admin login.
  * It does not write to Firebase and does not unlock Team Area.
  */
@@ -13,7 +13,7 @@ const SETUP_STEPS_V451 = [
   { id: 'snapshots', label: 'Snapshot pubblici', hint: 'Admin -> Snapshot pubblici -> Aggiorna tutto, poi scarica overlay.' }
 ];
 
-function getFantaPetilloAdminCountsV451() {
+function getFantaMantraAdminCountsV451() {
   const text = document.getElementById('adminPanel')?.innerText || '';
   const extract = (label) => {
     const pattern = new RegExp(`${label}[^0-9]*(\\d+)`, 'i');
@@ -29,7 +29,7 @@ function getFantaPetilloAdminCountsV451() {
   };
 }
 
-function isFantaPetilloAdminReadyForOnboardingV451(adminPanel) {
+function isFantaMantraAdminReadyForOnboardingV451(adminPanel) {
   if (!adminPanel) return false;
   const text = adminPanel.innerText || '';
   if (text.includes('Accedi come amministratore')) return false;
@@ -60,7 +60,7 @@ function scrollToAdminPanelV451(panelId) {
   window.setTimeout(() => target.classList.remove('onboarding-highlight-v451'), 1800);
 }
 
-function bindFantaPetilloOnboardingActionsV451(panel) {
+function bindFantaMantraOnboardingActionsV451(panel) {
   panel.querySelectorAll('[data-onboarding-scroll-v451]').forEach((button) => {
     if (button.dataset.boundOnboardingV451 === 'true') return;
     button.dataset.boundOnboardingV451 = 'true';
@@ -68,11 +68,11 @@ function bindFantaPetilloOnboardingActionsV451(panel) {
   });
 }
 
-function renderFantaPetilloAdminOnboardingV451() {
+function renderFantaMantraAdminOnboardingV451() {
   const adminPanel = document.getElementById('adminPanel');
-  if (!isFantaPetilloAdminReadyForOnboardingV451(adminPanel)) return;
+  if (!isFantaMantraAdminReadyForOnboardingV451(adminPanel)) return;
   let panel = document.getElementById(ONBOARDING_PANEL_ID_V451);
-  const counts = getFantaPetilloAdminCountsV451();
+  const counts = getFantaMantraAdminCountsV451();
   const rows = SETUP_STEPS_V451.map((step) => {
     const state = getStepStateV451(step, counts);
     const css = state === 'done' ? 'status-ok' : state === 'manual' ? 'status-warning' : 'status-muted';
@@ -82,7 +82,7 @@ function renderFantaPetilloAdminOnboardingV451() {
     <div class="panel-header">
       <div>
         <p class="eyebrow">Setup nuova lega</p>
-        <h2>Checklist FantaPetilloMantraManager</h2>
+        <h2>Checklist FantaMantraManager</h2>
         <p>Guida veloce per inizializzare i dati reali. Il pannello e' solo informativo: non scrive su Firebase.</p>
       </div>
     </div>
@@ -116,28 +116,28 @@ function renderFantaPetilloAdminOnboardingV451() {
     panel.innerHTML = html;
     panel.dataset.renderedHtmlV451 = html;
   }
-  bindFantaPetilloOnboardingActionsV451(panel);
+  bindFantaMantraOnboardingActionsV451(panel);
   document.body.classList.add('has-fantapetillo-onboarding-v451');
 }
 
-function initFantaPetilloAdminOnboardingV451() {
-  renderFantaPetilloAdminOnboardingV451();
-  if (window.__FantaPetilloAdminOnboardingObserverV451) return;
-  const observer = new MutationObserver(() => renderFantaPetilloAdminOnboardingV451());
+function initFantaMantraAdminOnboardingV451() {
+  renderFantaMantraAdminOnboardingV451();
+  if (window.__FantaMantraAdminOnboardingObserverV451) return;
+  const observer = new MutationObserver(() => renderFantaMantraAdminOnboardingV451());
   observer.observe(document.documentElement, { childList: true, subtree: true });
-  window.__FantaPetilloAdminOnboardingObserverV451 = observer;
-  window.setTimeout(renderFantaPetilloAdminOnboardingV451, 300);
-  window.setTimeout(renderFantaPetilloAdminOnboardingV451, 1200);
-  window.setTimeout(renderFantaPetilloAdminOnboardingV451, 2500);
+  window.__FantaMantraAdminOnboardingObserverV451 = observer;
+  window.setTimeout(renderFantaMantraAdminOnboardingV451, 300);
+  window.setTimeout(renderFantaMantraAdminOnboardingV451, 1200);
+  window.setTimeout(renderFantaMantraAdminOnboardingV451, 2500);
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFantaPetilloAdminOnboardingV451, { once: true });
+  document.addEventListener('DOMContentLoaded', initFantaMantraAdminOnboardingV451, { once: true });
 } else {
-  initFantaPetilloAdminOnboardingV451();
+  initFantaMantraAdminOnboardingV451();
 }
 
-window.FantaPetilloAdminOnboardingGuardV451 = Object.freeze({
+window.FantaMantraAdminOnboardingGuardV451 = Object.freeze({
   version: 'V452',
   cloneSlug: 'fantapetillomantramanager',
   writesToFirebase: false,

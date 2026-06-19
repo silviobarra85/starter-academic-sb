@@ -146,7 +146,7 @@ function buildResultsAnnouncementDraftV197({ seasonId, competitionId, teamId, to
   const matches = getCommunicationGeneratorCompletedMatchesV197(seasonId, competitionId).slice(0, 6);
   const title = competition ? `Risultati ${getCommunicationGeneratorCompetitionLabelV197(competition)}` : `Risultati ${seasonLabel}`;
   const intro = tone === "celebrativo"
-    ? `La FantaPetillo si accende ancora: ecco il riepilogo aggiornato dei risultati della ${seasonLabel}.`
+    ? `La FantaMantra si accende ancora: ecco il riepilogo aggiornato dei risultati della ${seasonLabel}.`
     : tone === "ironico"
       ? `Altro giro, altre sentenze: la ${seasonLabel} consegna nuovi verdetti e qualche inevitabile mal di pancia.`
       : `Pubblichiamo il riepilogo aggiornato dei risultati relativi alla ${seasonLabel}.`;
@@ -170,7 +170,7 @@ function buildWinnerAnnouncementDraftV197({ seasonId, competitionId, teamId, ton
     : tone === "celebrativo"
       ? `${winner} entra nella storia della ${seasonLabel}: ${competitionName} e' sua.`
       : `${winner} si aggiudica ${competitionName} nella ${seasonLabel}.`;
-  const body = `${opener}\n\n${podium ? `Podio ufficiale:\n${podium}\n\n` : ""}Complimenti alla societa' vincitrice e appuntamento ai prossimi impegni della FantaPetillo.`;
+  const body = `${opener}\n\n${podium ? `Podio ufficiale:\n${podium}\n\n` : ""}Complimenti alla societa' vincitrice e appuntamento ai prossimi impegni della FantaMantra.`;
   return { title, body, topic: "COMPETIZIONE", seasonId, seasonTeamId: winnerId || teamId || "" };
 }
 
@@ -493,7 +493,7 @@ const api = {
 };
 
 if (typeof window !== "undefined") {
-  window.FantaPetilloCommunicationGenerator = api;
+  window.FantaMantraCommunicationGenerator = api;
 }
 
 return api;

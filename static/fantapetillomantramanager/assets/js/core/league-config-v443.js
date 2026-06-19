@@ -1,8 +1,8 @@
 /* V443/V445 - League config loader.
  * Additive helper for the multi-league transition: it exposes a safe config
- * object with FantaPetillo defaults and never blocks existing runtime flows.
+ * object with FantaMantra defaults and never blocks existing runtime flows.
  * V445 adds presentation helpers for metadata, titles, mobile More labels and
- * share base URLs, still with FantaPetillo fallbacks and no data/Firebase refactor.
+ * share base URLs, still with FantaMantra fallbacks and no data/Firebase refactor.
  */
 
 const DEFAULT_DATA_PATHS_V446 = Object.freeze({
@@ -39,26 +39,26 @@ const DEFAULT_MOBILE_MORE_V445 = Object.freeze([
 
 const DEFAULT_LEAGUE_PAGES_V445 = Object.freeze({
   home: Object.freeze({
-    title: 'FantaPetilloMantraManager',
-    description: "Dashboard ufficiale della Lega Fantacalcio FantaPetilloMantraManager: rose, listoni, fantamercato, competizioni, albo d'oro, statistiche, archivio e comunicati.",
+    title: 'FantaMantraManager',
+    description: "Dashboard ufficiale della Lega Fantacalcio FantaMantraManager: rose, listoni, fantamercato, competizioni, albo d'oro, statistiche, archivio e comunicati.",
     canonicalUrl: 'https://silviobarra.com/fantapetillomantramanager/',
     ogType: 'website'
   }),
   competition: Object.freeze({
-    title: 'Competizione - FantaPetilloMantraManager',
-    description: 'Calendario completo competizione FantaPetilloMantraManager.',
+    title: 'Competizione - FantaMantraManager',
+    description: 'Calendario completo competizione FantaMantraManager.',
     canonicalUrl: 'https://silviobarra.com/fantapetillomantramanager/competition.html',
     ogType: 'website'
   }),
   player: Object.freeze({
-    title: 'Scheda giocatore - FantaPetilloMantraManager',
-    description: 'Scheda giocatore Fantacalcio.it integrata nel gestionale FantaPetilloMantraManager.',
+    title: 'Scheda giocatore - FantaMantraManager',
+    description: 'Scheda giocatore Fantacalcio.it integrata nel gestionale FantaMantraManager.',
     canonicalUrl: 'https://silviobarra.com/fantapetillomantramanager/player.html',
     ogType: 'website'
   }),
   bilanci: Object.freeze({
-    title: 'Bilanci FM · FantaPetilloMantraManager',
-    description: 'Consulta i bilanci FM delle squadre FantaPetillo: movimenti mensili, entrate, uscite e saldo progressivo per stagione e squadra.',
+    title: 'Bilanci FM · FantaMantraManager',
+    description: 'Consulta i bilanci FM delle squadre FantaMantra: movimenti mensili, entrate, uscite e saldo progressivo per stagione e squadra.',
     canonicalUrl: 'https://silviobarra.com/fantapetillomantramanager/bilanci.html',
     ogType: 'website'
   })
@@ -67,8 +67,8 @@ const DEFAULT_LEAGUE_PAGES_V445 = Object.freeze({
 const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   leagueId: 'fantapetillomantramanager',
   slug: 'fantapetillomantramanager',
-  name: 'FantaPetilloMantraManager',
-  shortName: 'FantaPetillo',
+  name: 'FantaMantraManager',
+  shortName: 'FantaMantra',
   basePath: '/fantapetillomantramanager/',
   siteUrl: 'https://silviobarra.com/fantapetillomantramanager/',
   currentVersion: '452',
@@ -78,7 +78,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   logosBasePath: './assets/logos/',
   dataPaths: DEFAULT_DATA_PATHS_V446,
   futureLeagueCandidate: Object.freeze({
-    provisionalName: 'FantaPetilloMantraManager',
+    provisionalName: 'FantaMantraManager',
     nameCanChange: true,
     status: 'planned-after-template-hardening'
   }),
@@ -87,9 +87,9 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     newsShareBase: 'https://silviobarra.com/fantapetillomantramanager/share/news/'
   }),
   branding: Object.freeze({
-    siteName: 'FantaPetilloMantraManager',
+    siteName: 'FantaMantraManager',
     homeEyebrow: 'Lega Fantacalcio',
-    homeTitle: 'FantaPetilloMantraManager',
+    homeTitle: 'FantaMantraManager',
     homeSubtitle: 'Clone sandbox del motore multi-lega. Dati e Firebase da configurare prima della produzione.',
     imageUrl: 'https://silviobarra.com/fantapetillomantramanager/assets/icons/android-chrome-512x512.png',
     pages: DEFAULT_LEAGUE_PAGES_V445,
@@ -115,7 +115,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=457';
+const CONFIG_URL_V443 = './assets/league-config.json?v=475';
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -181,8 +181,8 @@ let readyPromiseV443 = null;
 
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
-  window.FantaPetilloLeagueConfigV443 = Object.freeze({
-    version: 'V452',
+  window.FantaMantraLeagueConfigV443 = Object.freeze({
+    version: 'V475',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
@@ -337,10 +337,10 @@ function setTextForSelectorV445(selector, text) {
 
 function applyBrandTextV445() {
   setTextForSelectorV445('[data-league-text-v445="homeEyebrow"]', getLeagueConfigValueV443('branding.homeEyebrow', 'Lega Fantacalcio'));
-  setTextForSelectorV445('[data-league-text-v445="homeTitle"]', getLeagueConfigValueV443('branding.homeTitle', getLeagueConfigValueV443('name', 'FantaPetilloMantraManager')));
+  setTextForSelectorV445('[data-league-text-v445="homeTitle"]', getLeagueConfigValueV443('branding.homeTitle', getLeagueConfigValueV443('name', 'FantaMantraManager')));
   setTextForSelectorV445('[data-league-text-v445="homeSubtitle"]', getLeagueConfigValueV443('branding.homeSubtitle', 'Dashboard operativa per club, rose, listoni, competizioni e regolamento.'));
   const footerVersion = getLeagueConfigValueV443('currentVersion', '445');
-  const siteName = getLeagueConfigValueV443('branding.siteName', getLeagueConfigValueV443('name', 'FantaPetilloMantraManager'));
+  const siteName = getLeagueConfigValueV443('branding.siteName', getLeagueConfigValueV443('name', 'FantaMantraManager'));
   const footerLastUpdated = getLeagueConfigValueV443('branding.footerLastUpdated', '19/06/2026');
   const footerTemplate = getLeagueConfigValueV443('branding.footerTemplate', '{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}');
   const footerText = String(footerTemplate || '{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}')
@@ -377,15 +377,15 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
     applyMetaTagsV445(pageId);
     applyBrandTextV445();
     applyMobileMoreLinksV445();
-    window.FantaPetilloLeagueRuntimePresentationV445 = Object.freeze({
-      version: 'V452',
+    window.FantaMantraLeagueRuntimePresentationV445 = Object.freeze({
+      version: 'V475',
       pageId,
       appliedAt: new Date().toISOString(),
       metadataFromConfig: true,
       mobileMoreFromConfig: true,
       shareBaseFromConfig: true,
       preserves: [
-        'valori FantaPetillo invariati come fallback',
+        'valori FantaMantra invariati come fallback',
         'nessuna modifica a Firebase/Admin/snapshot loader',
         'nessuna modifica a routing principale o dati statici',
         'badge dispositivo V434 mantenuto'
@@ -405,14 +405,14 @@ export function loadLeagueConfigV443(options = {}) {
     })
     .then((json) => publishConfigV443(json, CONFIG_URL_V443))
     .catch((error) => {
-      console.warn('League config V443/V445 non disponibile, uso default FantaPetillo.', error);
+      console.warn('League config V443/V445 non disponibile, uso default FantaMantra.', error);
       return publishConfigV443(DEFAULT_LEAGUE_CONFIG_V443, 'default-fallback');
     })
     .then((config) => {
       applyLeagueRuntimePresentationV445();
       return config;
     });
-  window.FantaPetilloLeagueConfigReadyV443 = readyPromiseV443;
+  window.FantaMantraLeagueConfigReadyV443 = readyPromiseV443;
   return readyPromiseV443;
 }
 

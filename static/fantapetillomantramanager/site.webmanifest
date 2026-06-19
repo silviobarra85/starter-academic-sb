@@ -1,19 +1,19 @@
 {
-  "name": "FantaPetilloMantraManager",
-  "short_name": "FantaPetillo",
+  "name": "FantaMantraManager",
+  "short_name": "FantaMantra",
   "icons": [
     {
-      "src": "./assets/icons/fantapetillo-android-chrome-192-v455.png",
+      "src": "./assets/icons/fantamantramanager-android-chrome-192-v475.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./assets/icons/fantapetillo-android-chrome-512-v455.png",
+      "src": "./assets/icons/fantamantramanager-android-chrome-512-v475.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#8b0029",
+  "theme_color": "#0f3551",
   "background_color": "#0f172a",
   "display": "standalone"
 }

@@ -5,7 +5,7 @@ const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-pa
           <div>
             <p class="eyebrow">Regolamento ufficiale</p>
             <h2 id="regolamentoDocumentoTitle">Fantacalcio MANTRA&reg; Manageriale 2026-2027</h2>
-            <p>Struttura sintetica navigabile del regolamento FantaPetilloMantraManager aggiornato al 19 giugno 2026. Il PDF completo resta la fonte ufficiale da scaricare e consultare.</p>
+            <p>Struttura sintetica navigabile del regolamento FantaMantraManager aggiornato al 19 giugno 2026. Il PDF completo resta la fonte ufficiale da scaricare e consultare.</p>
           </div>
           <div class="rules-actions-v474" aria-label="Azioni regolamento">
             <a class="button button-primary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf" download>Scarica PDF</a>
@@ -55,7 +55,7 @@ const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-pa
     <section id="rules-premessa" class="panel rules-section">
       <p class="eyebrow">Premessa</p>
       <h2>Validita e aggiornamenti</h2>
-      <p>Il regolamento disciplina la stagione 2026-2027 della lega FantaPetilloMantraManager. La partecipazione all'asta comporta accettazione del regolamento.</p>
+      <p>Il regolamento disciplina la stagione 2026-2027 della lega FantaMantraManager. La partecipazione all'asta comporta accettazione del regolamento.</p>
       <ul class="rules-list">
         <li>Le proposte di modifica possono essere raccolte prima dell'inizio della stagione, il giorno dell'asta prima delle chiamate e durante la stagione.</li>
         <li>Le modifiche deliberate dopo l'inizio della stagione valgono per la stagione successiva.</li>
@@ -367,7 +367,7 @@ if (document.readyState === 'loading') {
   mountRegolamentoSectionV402();
 }
 
-window.FantaPetilloRegolamentoSectionV474 = Object.freeze({
+window.FantaMantraRegolamentoSectionV474 = Object.freeze({
   version: 'V474',
   section: 'regolamento',
   season: '2026-2027',
@@ -377,5 +377,5 @@ window.FantaPetilloRegolamentoSectionV474 = Object.freeze({
   mount: mountRegolamentoSectionV402
 });
 
-window.FantaPetilloRegolamentoSectionV453 = window.FantaPetilloRegolamentoSectionV474;
-window.FantaPetilloRegolamentoSectionV402 = window.FantaPetilloRegolamentoSectionV474;
+window.FantaMantraRegolamentoSectionV453 = window.FantaMantraRegolamentoSectionV474;
+window.FantaMantraRegolamentoSectionV402 = window.FantaMantraRegolamentoSectionV474;

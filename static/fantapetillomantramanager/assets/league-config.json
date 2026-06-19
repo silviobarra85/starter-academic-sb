@@ -1,19 +1,19 @@
 {
   "leagueId": "fantapetillomantramanager",
   "slug": "fantapetillomantramanager",
-  "name": "FantaPetilloMantraManager",
-  "shortName": "FantaPetillo",
+  "name": "FantaMantraManager",
+  "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "474",
+  "currentVersion": "475",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
   "logosBasePath": "./assets/logos/",
   "futureLeagueCandidate": {
-    "provisionalName": "FantaPetilloMantraManager",
-    "nameCanChange": true,
-    "status": "share-netlify-v466"
+    "provisionalName": "FantaMantraManager",
+    "nameCanChange": false,
+    "status": "renamed-v475"
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
@@ -57,7 +57,7 @@
     "cloneTeamAreaStillGuarded": true,
     "adminOnboardingEnabled": true,
     "adminOnboardingScript": "assets/js/core/fanta-petillo-admin-onboarding-v451.js",
-    "faviconVersion": "452",
+    "faviconVersion": "475",
     "faviconIncludesSeason": "2026-2027",
     "faviconIncludesInitials": "FPMM",
     "regolamentoVersion": "474",
@@ -84,36 +84,40 @@
     "matchdayDrawToolVersion": "473",
     "preserveExistingFunctionality": true,
     "regolamentoSourceDocument": "FANTACALCIO_MANTRA_2026_2027-2.pdf",
-    "regolamentoPdfHashSha256": "150dc0f9980f0e40b6a2657779a05d1c7de84d397d7b26088aee35e62e7bccf9"
+    "regolamentoPdfHashSha256": "150dc0f9980f0e40b6a2657779a05d1c7de84d397d7b26088aee35e62e7bccf9",
+    "brandRenameVersion": "475",
+    "displayName": "FantaMantraManager",
+    "folderSlugPreserved": "fantapetillomantramanager",
+    "faviconIncludesLogo": true
   },
   "branding": {
-    "siteName": "FantaPetilloMantraManager",
-    "homeEyebrow": "Lega Fantacalcio in configurazione",
-    "homeTitle": "FantaPetilloMantraManager",
-    "homeSubtitle": "Setup dati 2026-2027 con club placeholder: sostituisci presidenti, squadre, rose e snapshot prima della produzione.",
-    "imageUrl": "https://silviobarra.com/fantapetillomantramanager/assets/icons/android-chrome-512x512.png",
+    "siteName": "FantaMantraManager",
+    "homeEyebrow": "Lega Fantacalcio",
+    "homeTitle": "FantaMantraManager",
+    "homeSubtitle": "Dashboard operativa per club, rose, listoni, competizioni, sorteggi e regolamento.",
+    "imageUrl": "https://silviobarra.com/fantapetillomantramanager/assets/icons/fantamantramanager-android-chrome-512-v475.png",
     "pages": {
       "home": {
-        "title": "FantaPetilloMantraManager",
-        "description": "Setup FantaPetilloMantraManager 2026-2027 con dati placeholder e Firebase dedicato.",
+        "title": "FantaMantraManager",
+        "description": "Dashboard ufficiale della Lega Fantacalcio FantaMantraManager: rose, listoni, fantamercato, competizioni, sorteggi, regolamento e comunicati.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/",
         "ogType": "website"
       },
       "competition": {
-        "title": "Competizione - FantaPetilloMantraManager",
-        "description": "Pagina competizione sandbox per FantaPetilloMantraManager.",
+        "title": "Competizione - FantaMantraManager",
+        "description": "Calendario completo competizione FantaMantraManager.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/competition.html",
         "ogType": "website"
       },
       "player": {
-        "title": "Scheda giocatore - FantaPetilloMantraManager",
-        "description": "Scheda giocatore sandbox per FantaPetilloMantraManager.",
+        "title": "Scheda giocatore - FantaMantraManager",
+        "description": "Scheda giocatore Fantacalcio.it integrata nel gestionale FantaMantraManager.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/player.html",
         "ogType": "website"
       },
       "bilanci": {
-        "title": "Bilanci FM - FantaPetilloMantraManager",
-        "description": "Bilanci FM placeholder per FantaPetilloMantraManager 2026-2027.",
+        "title": "Bilanci FM - FantaMantraManager",
+        "description": "Bilanci FM per FantaMantraManager 2026-2027.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
         "ogType": "website"
       }
@@ -157,7 +161,8 @@
       }
     ],
     "footerLastUpdated": "19/06/2026",
-    "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}"
+    "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
+    "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png"
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -177,7 +182,8 @@
     "regolamentoPdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf",
     "realDataTemplateCsv": "./assets/setup/fantapetillo-real-teams-template-v458.csv",
     "realDataTemplateJson": "./assets/setup/fantapetillo-real-teams-template-v458.json",
-    "firestoreSeedPreviewInput": "./assets/setup/fantapetillo-real-data-seed-v459.json"
+    "firestoreSeedPreviewInput": "./assets/setup/fantapetillo-real-data-seed-v459.json",
+    "brandLogo": "./assets/logos/fantamantramanager-logo-v475.png"
   },
   "sandbox": {
     "enabled": true,
@@ -185,7 +191,7 @@
     "status": "share-netlify-v466",
     "firebase": "dedicated-project-admin-bootstrap",
     "notes": [
-      "V466 prepara redirect Netlify e funzione news-share multi-lega per preview Open Graph dei comunicati FantaPetillo.",
+      "V466 prepara redirect Netlify e funzione news-share multi-lega per preview Open Graph dei comunicati FantaMantra.",
       "V463 aggiunge una card Admin per generare snapshot pubblici statici da preview Firestore V460 senza scrivere su Firebase.",
       "V462 aggiunge una card Admin informativa sul workflow dati reali: template, validazione, preview, import, snapshot e sblocco Area Squadra.",
       "V461 aggiunge import controllato Firestore da preview V460: richiede login admin, conferme manuali e scrive solo in merge nel Firebase dedicato.",
@@ -294,11 +300,11 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V474 regolamento FantaPetillo 2026-2027 aggiornato",
+    "lastOverlay": "V474 regolamento FantaMantra 2026-2027 aggiornato",
     "notes": [
-      "V474 aggiorna solo FantaPetilloMantraManager: nuovo PDF regolamento 2026-2027, link download/apri PDF e sintesi quote/montepremi in crediti allineata al documento del 19/06/2026.",
+      "V474 aggiorna solo FantaMantraManager: nuovo PDF regolamento 2026-2027, link download/apri PDF e sintesi quote/montepremi in crediti allineata al documento del 19/06/2026.",
       "V473 aggiunge il tool pubblico Sorteggio giornate con range 1-38, esclusioni e seed/JSON riproducibile; nessuna scrittura su Firebase e nessuna rimozione di funzionalita esistenti.",
-      "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaPetillo dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
+      "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaMantra dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
       "V463 aggiunge una card Admin per trasformare la preview Firestore V460 in file JSON statici: config pubblica, manifest snapshot, snapshot stagione, honor e rose vuote.",
       "La card non scrive su Firebase e non sblocca Area Squadra.",
       "I JSON generati vanno revisionati e applicati manualmente alla repo.",

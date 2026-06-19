@@ -23,11 +23,11 @@
     section.id = CARD_ID;
     section.className = "panel fpm-admin-standard-setup-v467";
     section.dataset.adminCardVisibilityKeyV456 = "admin-setup-standard-da-admin-fantapetillo-v467";
-    section.setAttribute("aria-label", "Setup standard da Admin FantaPetillo 2026-2027");
+    section.setAttribute("aria-label", "Setup standard da Admin FantaMantra 2026-2027");
     section.innerHTML = `
       <div class="panel-header">
         <div>
-          <p class="eyebrow">FantaPetillo · V${safeText(VERSION)}</p>
+          <p class="eyebrow">FantaMantra · V${safeText(VERSION)}</p>
           <h3>Setup standard da Admin 2026-2027</h3>
           <p>Usa il flusso normale del gestionale: crea squadre, fai registrare i presidenti, associa gli utenti e poi genera gli snapshot pubblici.</p>
         </div>
@@ -77,7 +77,7 @@
 
   function downloadMemo() {
     const content = [
-      "# Setup standard da Admin - FantaPetilloMantraManager V467",
+      "# Setup standard da Admin - FantaMantraManager V467",
       "",
       "1. Verifica o crea la stagione 2026-2027.",
       "2. Crea le squadre reali dalla card Squadre.",
@@ -124,5 +124,5 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 
-  window.FantaPetilloAdminStandardSetupV467 = Object.freeze({ version: `V${VERSION}`, install: installCard });
+  window.FantaMantraAdminStandardSetupV467 = Object.freeze({ version: `V${VERSION}`, install: installCard });
 })();

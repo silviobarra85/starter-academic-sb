@@ -19,10 +19,10 @@ const __filename = fileURLToPath(import.meta.url);
 const SITE_DIR = path.resolve(path.dirname(__filename), "..");
 const SNAPSHOT_DIR = path.join(SITE_DIR, "assets", "snapshots", "seasons");
 const SHARE_DIR = path.join(SITE_DIR, "comunicati");
-const SITE_NAME = "FantaPetilloMantraManager";
-const SITE_SHORT_NAME = "FantaPetillo";
+const SITE_NAME = "FantaMantraManager";
+const SITE_SHORT_NAME = "FantaMantra";
 const BASE_URL = process.env.FANTAPETILLO_BASE_URL || "https://silviobarra.com/fantapetillomantramanager/";
-const IMAGE_URL = process.env.FANTAPETILLO_SHARE_IMAGE || "https://silviobarra.com/fantapetillomantramanager/assets/icons/fantapetillo-android-chrome-512-v455.png";
+const IMAGE_URL = process.env.FANTAPETILLO_SHARE_IMAGE || "https://silviobarra.com/fantapetillomantramanager/assets/icons/fantamantramanager-android-chrome-512-v475.png";
 
 function stripMarkdown(value = "") {
   return String(value || "")

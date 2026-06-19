@@ -4,7 +4,7 @@
    between the browser UI and the offline generator. */
 
 export const NEWS_SHARE_DEFAULT_BASE_URL_V228 = "https://silviobarra.com/fantapetillomantramanager/";
-export const NEWS_SHARE_DEFAULT_IMAGE_V228 = "https://silviobarra.com/fantapetillomantramanager/assets/icons/android-chrome-512x512.png";
+export const NEWS_SHARE_DEFAULT_IMAGE_V228 = "https://silviobarra.com/fantapetillomantramanager/assets/icons/fantamantramanager-android-chrome-512-v475.png";
 
 export function stripNewsMarkdownV228(value = "") {
   return String(value || "")
@@ -36,7 +36,7 @@ export function createNewsShareSlugV228(news = {}) {
 }
 
 export function buildNewsShareDescriptionV228(news = {}, maxLength = 180) {
-  const text = stripNewsMarkdownV228(news.body || news.description || news.title || "Comunicato FantaPetilloMantraManager");
+  const text = stripNewsMarkdownV228(news.body || news.description || news.title || "Comunicato FantaMantraManager");
   if (text.length <= maxLength) return text;
   return `${text.slice(0, Math.max(0, maxLength - 1)).trim()}…`;
 }
@@ -80,8 +80,8 @@ export function escapeNewsHtmlAttributeV228(value = "") {
 
 export function buildNewsSharePageHtmlV228(news = {}, options = {}) {
   const baseUrl = normalizeNewsShareBaseUrlV228(options.baseUrl || NEWS_SHARE_DEFAULT_BASE_URL_V228);
-  const siteName = options.siteName || "FantaPetilloMantraManager";
-  const shortName = options.shortName || "FantaPetillo";
+  const siteName = options.siteName || "FantaMantraManager";
+  const shortName = options.shortName || "FantaMantra";
   const title = `${stripNewsMarkdownV228(news.title || "Comunicato") || "Comunicato"} - ${siteName}`;
   const description = buildNewsShareDescriptionV228(news);
   const image = options.imageUrl || NEWS_SHARE_DEFAULT_IMAGE_V228;

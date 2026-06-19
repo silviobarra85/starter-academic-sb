@@ -3,7 +3,7 @@ const STATS_SECTION_HTML_V404 = `    <section class="app-page" data-page="stats"
         <div>
           <p class="eyebrow">Hall of Fame</p>
           <h2 id="statsTitle">Statistiche storiche</h2>
-          <p>Record, titoli, podi e protagonisti della storia FantaPetillo. Usa solo dati gia' caricati da JSON statici o snapshot, senza letture Firebase aggiuntive.</p>
+          <p>Record, titoli, podi e protagonisti della storia FantaMantra. Usa solo dati gia' caricati da JSON statici o snapshot, senza letture Firebase aggiuntive.</p>
         </div>
       </div>
       <section class="single-panel-layout historical-stats-page-v193">
@@ -43,7 +43,7 @@ if (document.readyState === 'loading') {
   window.setTimeout(mountStatsSectionV404, 0);
 }
 
-window.FantaPetilloStatsSectionV404 = Object.freeze({
+window.FantaMantraStatsSectionV404 = Object.freeze({
   version: 'V404',
   template: 'stats-v404',
   mount: mountStatsSectionV404

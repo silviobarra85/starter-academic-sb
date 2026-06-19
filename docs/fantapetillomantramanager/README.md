@@ -1,4 +1,4 @@
-# FantaPetilloMantraManager - sandbox multi-lega V448
+# FantaMantraManager - sandbox multi-lega V448
 
 Questo documento descrive il clone sandbox creato in V447 e auditato in V448.
 
@@ -6,7 +6,7 @@ Questo documento descrive il clone sandbox creato in V447 e auditato in V448.
 
 - Percorso sito: `static/fantapetillomantramanager/`
 - Percorso docs: `docs/fantapetillomantramanager/`
-- Nome provvisorio: `FantaPetilloMantraManager`
+- Nome provvisorio: `FantaMantraManager`
 - Il nome puo' cambiare.
 - Stato: sandbox statico, non produzione.
 
@@ -166,11 +166,11 @@ File guida: `docs/fantapetillomantramanager/PLACEHOLDER_DATA_V457.md`.
 Area Squadra resta protetta fino a inserimento di dati reali e `teamUsers`.
 
 
-## V458 - Kit setup dati reali FantaPetillo
+## V458 - Kit setup dati reali FantaMantra
 
-- Aggiunto kit Admin FantaPetillo per scaricare template CSV/JSON dei dati reali 2026-2027.
+- Aggiunto kit Admin FantaMantra per scaricare template CSV/JSON dei dati reali 2026-2027.
 - Il kit non scrive su Firebase: serve a compilare presidenti, squadre, budget, stadi, loghi e UID prima del seed definitivo.
-- Area Squadra FantaPetillo resta protetta fino a teamUsers e snapshot reali.
+- Area Squadra FantaMantra resta protetta fino a teamUsers e snapshot reali.
 
 ## V459 - Validatore dati reali
 
@@ -221,7 +221,7 @@ Documento tecnico: `LAUNCH_READINESS_V465.md`.
 
 ## V466 - Share, Netlify e Open Graph
 
-Aggiunta nell'Admin del clone la card `Share, Netlify e Open Graph 2026-2027`. La V466 include anche `netlify.toml` e `netlify/functions/news-share.js` multi-lega per preparare la preview dinamica dei comunicati FantaPetillo.
+Aggiunta nell'Admin del clone la card `Share, Netlify e Open Graph 2026-2027`. La V466 include anche `netlify.toml` e `netlify/functions/news-share.js` multi-lega per preparare la preview dinamica dei comunicati FantaMantra.
 
 La patch non sblocca Area Squadra, non rimuove noindex e non scrive su Firebase.
 
@@ -255,7 +255,7 @@ bash static/fantapetillomantramanager/tools/cleanup-standard-admin-v468.sh
 La V472 corregge due contaminazioni del clone:
 
 - il footer non viene piu' riscritto dal runtime con `vecchia etichetta tecnica del clone con data 15/06/2026`;
-- `news.html` non contiene piu' il comunicato playoff ZonaOrientale e resta un fallback dedicato finche' non esistono comunicati FantaPetillo reali.
+- `news.html` non contiene piu' il comunicato playoff ZonaOrientale e resta un fallback dedicato finche' non esistono comunicati FantaMantra reali.
 
 Documenti tecnici:
 
@@ -265,7 +265,7 @@ Documenti tecnici:
 
 
 ## V473 - Tool sorteggio giornate
-- Aggiunto tool pubblico `#sorteggio` anche al clone FantaPetilloMantraManager.
+- Aggiunto tool pubblico `#sorteggio` anche al clone FantaMantraManager.
 - Il tool e locale/client-side: non scrive su Firebase e non usa dati ZonaOrientale.
 - Output riproducibile tramite seed e JSON.
 
@@ -279,7 +279,7 @@ Modifiche operative:
 - link `Scarica PDF`, `Apri PDF` e `Apri appendice nel PDF` puntano al PDF V474;
 - sezione `#regolamento` aggiornata nei punti sintetici che erano diversi dal nuovo PDF, in particolare montepremi in crediti;
 - `assets/league-config.json` aggiornato a `currentVersion: 474` e `regolamento.version: 474`;
-- cache-buster e footer fallback FantaPetillo aggiornati a V474.
+- cache-buster e footer fallback FantaMantra aggiornati a V474.
 
 ZonaOrientale non viene modificato.
 
@@ -287,3 +287,11 @@ Documenti tecnici:
 
 - `REGOLAMENTO_V474.md`;
 - `HANDOFF_V474_REGOLAMENTO_FANTAPETILLO.md`.
+
+
+## V475 - Rename pubblico e logo FantaMantraManager
+- Nome pubblico aggiornato da FantaPetilloMantraManager a FantaMantraManager.
+- Slug, cartella, URL e progetto Firebase restano `fantapetillomantramanager` per non rompere link, redirect, dati e configurazioni.
+- Dashboard: logo ufficiale accanto al titolo e rimozione della dicitura `Lega Fantacalcio in configurazione`.
+- Favicon, manifest e immagini social puntano al nuovo logo.
+- Modifica limitata a FantaMantraManager: nessun file ZonaOrientale incluso nell'overlay.

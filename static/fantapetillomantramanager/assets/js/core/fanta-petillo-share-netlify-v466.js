@@ -28,19 +28,19 @@
   }
 
   function buildChecklistMarkdown() {
-    return `# Share, Netlify e Open Graph FantaPetilloMantraManager ${SEASON_ID}\n\n` +
+    return `# Share, Netlify e Open Graph FantaMantraManager ${SEASON_ID}\n\n` +
 `## Obiettivo V${VERSION}\n\n` +
-`Preparare la preview dinamica dei comunicati FantaPetillo senza intaccare ZonaOrientale.\n\n` +
+`Preparare la preview dinamica dei comunicati FantaMantra senza intaccare ZonaOrientale.\n\n` +
 `## File da applicare\n\n` +
 `- \`netlify.toml\`: contiene il redirect \`/fantapetillomantramanager/share/news/:id\`.\n` +
-`- \`netlify/functions/news-share.js\`: funzione multi-lega con mapping separato per ZonaOrientale e FantaPetillo.\n\n` +
+`- \`netlify/functions/news-share.js\`: funzione multi-lega con mapping separato per ZonaOrientale e FantaMantra.\n\n` +
 `## Verifiche dopo deploy branch\n\n` +
 `1. Aprire \`https://silviobarra.com/fantapetillomantramanager/share/news/test\`.\n` +
 `2. Verificare che non venga usato il Firebase ZonaOrientale.\n` +
 `3. Verificare tag \`og:site_name\`, \`og:title\`, \`og:image\` e redirect verso \`/fantapetillomantramanager/#news-test\`.\n` +
 `4. Verificare che \`/zonaorientale/share/news/:id\` continui a funzionare.\n\n` +
 `## Stato pre-produzione\n\n` +
-`FantaPetillo resta noindex e l'Area Squadra resta protetta: questa patch prepara solo share/preview.\n`;
+`FantaMantra resta noindex e l'Area Squadra resta protetta: questa patch prepara solo share/preview.\n`;
   }
 
   function row(title, text, status) {
@@ -59,7 +59,7 @@
     section.innerHTML = `
       <div class="panel-header">
         <div>
-          <p class="eyebrow">FantaPetillo · Share V${safeText(VERSION)}</p>
+          <p class="eyebrow">FantaMantra · Share V${safeText(VERSION)}</p>
           <h3 id="fantaPetilloShareNetlifyTitleV466">Share, Netlify e Open Graph 2026-2027</h3>
           <p class="muted">Promemoria operativo per preview comunicati, redirect Netlify e metadati social del clone.</p>
         </div>
@@ -73,14 +73,14 @@
           <h4>File Netlify inclusi nell'overlay</h4>
           <ul>
             ${row("netlify.toml", "Aggiunge il redirect <code>/fantapetillomantramanager/share/news/:id</code> verso <code>news-share</code> con parametro lega.", "ok")}
-            ${row("news-share.js", "La funzione riconosce ZonaOrientale e FantaPetillo, usando progetto Firebase, nome lega e immagine OG separati.", "ok")}
+            ${row("news-share.js", "La funzione riconosce ZonaOrientale e FantaMantra, usando progetto Firebase, nome lega e immagine OG separati.", "ok")}
             ${row("Compatibilita' ZonaOrientale", "Il redirect storico <code>/zonaorientale/share/news/:id</code> resta supportato.", "ok")}
           </ul>
         </article>
         <article>
           <h4>Da testare dopo deploy</h4>
           <ul>
-            ${row("Preview FantaPetillo", "Apri un link share comunicato FantaPetillo e controlla i meta tag Open Graph.", "todo")}
+            ${row("Preview FantaMantra", "Apri un link share comunicato FantaMantra e controlla i meta tag Open Graph.", "todo")}
             ${row("Preview ZonaOrientale", "Verifica che un vecchio link share ZonaOrientale continui a generare anteprima corretta.", "todo")}
             ${row("No go-live", "Noindex e Area Squadra protetta restano attivi fino alla patch finale.", "wait")}
           </ul>
@@ -137,7 +137,7 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 
-  window.FantaPetilloShareNetlifyV466 = Object.freeze({
+  window.FantaMantraShareNetlifyV466 = Object.freeze({
     version: `V${VERSION}`,
     seasonId: SEASON_ID,
     writesToFirebase: false,
