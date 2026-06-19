@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "475",
+  "currentVersion": "476",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -21,7 +21,7 @@
   },
   "features": {
     "admin": true,
-    "teamArea": false,
+    "teamArea": true,
     "bilanci": true,
     "calciomercato": false,
     "fantamercato": false,
@@ -50,11 +50,11 @@
     "adminEntrypointsGuardedUntilRulesAndSeed": false,
     "adminBootstrapEnabled": true,
     "adminBootstrapVersion": "450",
-    "teamAreaEntrypointsGuardedUntilTeamUsersSeed": true,
+    "teamAreaEntrypointsGuardedUntilTeamUsersSeed": false,
     "firestoreRulesVersion": "450",
     "firestoreRulesAlignedWithZonaOrientale": "V393-derived-v450",
     "adminOnboardingVersion": "451",
-    "cloneTeamAreaStillGuarded": true,
+    "cloneTeamAreaStillGuarded": false,
     "adminOnboardingEnabled": true,
     "adminOnboardingScript": "assets/js/core/fanta-petillo-admin-onboarding-v451.js",
     "faviconVersion": "475",
@@ -74,7 +74,7 @@
     "realDataWorkflowVersion": "462",
     "publicSnapshotBuilderVersion": "463",
     "publicSnapshotBuilderWritesToFirebase": false,
-    "teamAreaStillGuarded": true,
+    "teamAreaStillGuarded": false,
     "teamAreaReadinessVersion": "464",
     "shareNetlifyVersion": "466",
     "shareNetlifyReady": "config-prepared",
@@ -88,7 +88,9 @@
     "brandRenameVersion": "475",
     "displayName": "FantaMantraManager",
     "folderSlugPreserved": "fantapetillomantramanager",
-    "faviconIncludesLogo": true
+    "faviconIncludesLogo": true,
+    "teamAreaUnlockVersion": "476",
+    "adminBootstrapBannerRemovedVersion": "476"
   },
   "branding": {
     "siteName": "FantaMantraManager",
@@ -199,7 +201,7 @@
       "V458 aggiunge kit Admin e template CSV/JSON per raccogliere dati reali senza scrivere automaticamente su Firebase.",
       "V457 aggiunge dati statici placeholder per testare layout pubblico, bilanci e sezioni senza dati reali.",
       "I placeholder non sono dati ufficiali: vanno sostituiti da Admin e snapshot prima della produzione.",
-      "Area Squadra resta nascosta/guardata finche non vengono inseriti dati reali e teamUsers.",
+      "Area Squadra e visibile da V476; le operazioni interne continuano a rispettare login e account presidente esistenti.",
       "Firebase ZonaOrientale non viene importato ne usato dal clone."
     ],
     "auditedInVersion": "473",
@@ -218,7 +220,7 @@
     "rulesRequired": true,
     "rulesVersion": "450",
     "adminBootstrapEnabled": true,
-    "teamAreaStillGuarded": true,
+    "teamAreaStillGuarded": false,
     "adminOnboardingEnabled": true
   },
   "setup": {
@@ -231,7 +233,7 @@
       "Associa presidenti e squadre alla stagione 2026-2027",
       "Aggiorna budget/stadi reali",
       "Aggiorna snapshot pubblici e scarica overlay",
-      "Solo dopo crea teamUsers e sblocca Area Squadra"
+      "Da V476 Area Squadra e visibile; crea teamUsers per abilitare gli account presidente reali"
     ],
     "templates": {
       "csv": "assets/setup/fantapetillo-real-teams-template-v458.csv",
@@ -300,16 +302,16 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V474 regolamento FantaMantra 2026-2027 aggiornato",
+    "lastOverlay": "V476 header bootstrap rimosso e Area Squadra visibile",
     "notes": [
-      "V474 aggiorna solo FantaMantraManager: nuovo PDF regolamento 2026-2027, link download/apri PDF e sintesi quote/montepremi in crediti allineata al documento del 19/06/2026.",
+      "V476 rimuove il banner tecnico Admin bootstrap e rende visibili gli entrypoint Area Squadra solo su FantaMantraManager, senza toccare ZonaOrientale.",
       "V473 aggiunge il tool pubblico Sorteggio giornate con range 1-38, esclusioni e seed/JSON riproducibile; nessuna scrittura su Firebase e nessuna rimozione di funzionalita esistenti.",
       "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaMantra dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
       "V463 aggiunge una card Admin per trasformare la preview Firestore V460 in file JSON statici: config pubblica, manifest snapshot, snapshot stagione, honor e rose vuote.",
-      "La card non scrive su Firebase e non sblocca Area Squadra.",
+      "La card non scrive su Firebase; Area Squadra e gia visibile da V476, mentre gli account presidente restano gestiti da login/teamUsers.",
       "I JSON generati vanno revisionati e applicati manualmente alla repo.",
       "V464 aggiunge una card Admin che verifica se dati reali, teamUsers e snapshot sono pronti prima dello sblocco controllato dell Area Squadra.",
-      "V465 aggiunge una card Admin informativa per riepilogare cosa manca prima della pubblicazione: dati reali, snapshot, Area Squadra e share/Netlify."
+      "V465 aggiunge una card Admin informativa per riepilogare cosa manca prima della pubblicazione: dati reali, snapshot e share/Netlify; Area Squadra e visibile da V476."
     ]
   },
   "notes": [],

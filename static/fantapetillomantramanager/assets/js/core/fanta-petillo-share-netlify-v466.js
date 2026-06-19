@@ -40,7 +40,7 @@
 `3. Verificare tag \`og:site_name\`, \`og:title\`, \`og:image\` e redirect verso \`/fantapetillomantramanager/#news-test\`.\n` +
 `4. Verificare che \`/zonaorientale/share/news/:id\` continui a funzionare.\n\n` +
 `## Stato pre-produzione\n\n` +
-`FantaMantra resta noindex e l'Area Squadra resta protetta: questa patch prepara solo share/preview.\n`;
+`FantaMantra resta noindex; da V476 l'Area Squadra e visibile, mentre le operazioni interne rispettano login e account presidente.\n`;
   }
 
   function row(title, text, status) {
@@ -66,7 +66,7 @@
         <button type="button" class="button button-secondary button-small" data-fpmm-download-share-netlify-v466>Scarica checklist</button>
       </div>
       <div class="fpmm-share-netlify-v466__notice">
-        La V466 prepara <strong>redirect e funzione Netlify multi-lega</strong>. La card non scrive su Firebase e non sblocca l'Area Squadra.
+        La V466 prepara <strong>redirect e funzione Netlify multi-lega</strong>. La card non scrive su Firebase. Da V476 l'Area Squadra e visibile; gli account presidente restano gestiti dai flussi login/teamUsers.
       </div>
       <div class="fpmm-share-netlify-v466__grid">
         <article>
@@ -82,7 +82,7 @@
           <ul>
             ${row("Preview FantaMantra", "Apri un link share comunicato FantaMantra e controlla i meta tag Open Graph.", "todo")}
             ${row("Preview ZonaOrientale", "Verifica che un vecchio link share ZonaOrientale continui a generare anteprima corretta.", "todo")}
-            ${row("No go-live", "Noindex e Area Squadra protetta restano attivi fino alla patch finale.", "wait")}
+            ${row("No go-live", "Noindex resta attivo; Area Squadra e visibile da V476 e usa i flussi login/teamUsers esistenti.", "wait")}
           </ul>
         </article>
       </div>

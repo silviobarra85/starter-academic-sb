@@ -101,7 +101,7 @@ function renderFantaMantraAdminOnboardingV451() {
           <button class="button button-secondary button-small" type="button" data-onboarding-scroll-v451="adminStadiumsPanel">Stadi</button>
           <button class="button button-primary button-small" type="button" data-onboarding-scroll-v451="adminPublicSnapshotsPanel">Snapshot pubblici</button>
         </div>
-        <p class="muted small">Dopo lo snapshot: scarica overlay snapshot, applicalo alla repo, fai test e commit. Area Squadra resta nascosta finche non avremo utenti presidente e dati veri.</p>
+        <p class="muted small">Dopo lo snapshot: scarica overlay snapshot, applicalo alla repo, fai test e commit. Area Squadra e visibile da V476; gli account presidente reali restano gestiti tramite login e teamUsers.</p>
       </div>
     </div>`;
   if (!panel) {
@@ -141,7 +141,7 @@ window.FantaMantraAdminOnboardingGuardV451 = Object.freeze({
   version: 'V452',
   cloneSlug: 'fantapetillomantramanager',
   writesToFirebase: false,
-  unlocksTeamArea: false,
+  unlocksTeamArea: true,
   requiresAdminPanel: true,
   checklistOnly: true
 });

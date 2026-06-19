@@ -21,7 +21,7 @@ const SECTION_REGISTRY_V405 = Object.freeze({
     sorteggio: Object.freeze({ label: 'Sorteggio giornate', public: true, source: 'assets/js/sections/matchday-draw-tool-v473.js + index.html', status: 'active', area: 'public', addedIn: 'V473' }),
     regolamento: Object.freeze({ label: 'Regolamento', public: true, source: 'assets/js/sections/regolamento-section-v402.js', status: 'active', area: 'public', extractedIn: 'V402' }),
     admin: Object.freeze({ label: 'Admin', public: false, adminOnly: true, source: 'index.html', status: 'active', area: 'admin' }),
-    teamarea: Object.freeze({ label: 'Area squadra', public: false, requiresApprovedUser: true, source: 'dynamic', status: 'active', area: 'presidents' }),
+    teamarea: Object.freeze({ label: 'Area squadra', public: false, requiresApprovedUser: true, source: 'dynamic', status: 'active', area: 'presidents', entrypointUnlockedIn: 'V476', bootstrapHidden: false }),
     teamprofile: Object.freeze({ label: 'Scheda squadra', public: true, source: 'dynamic', status: 'active', area: 'public' })
   })
 });

@@ -71,7 +71,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'FantaMantra',
   basePath: '/fantapetillomantramanager/',
   siteUrl: 'https://silviobarra.com/fantapetillomantramanager/',
-  currentVersion: '452',
+  currentVersion: '476',
   currentSeasonId: '2025-2026',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -115,7 +115,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=475';
+const CONFIG_URL_V443 = './assets/league-config.json?v=476';
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -182,7 +182,7 @@ let readyPromiseV443 = null;
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
   window.FantaMantraLeagueConfigV443 = Object.freeze({
-    version: 'V475',
+    version: 'V476',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
@@ -378,7 +378,7 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
     applyBrandTextV445();
     applyMobileMoreLinksV445();
     window.FantaMantraLeagueRuntimePresentationV445 = Object.freeze({
-      version: 'V475',
+      version: 'V476',
       pageId,
       appliedAt: new Date().toISOString(),
       metadataFromConfig: true,

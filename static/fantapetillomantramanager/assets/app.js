@@ -38,20 +38,20 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { FantaPetilloSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=472";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=472";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=472";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=472";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=472";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=472";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=472";
+import { FantaPetilloSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=476";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=476";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=476";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=476";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=476";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=476";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=476";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=472";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=472";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=472";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=476";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=476";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=476";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const FantaPetilloSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -115,7 +115,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=472";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=476";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -139,7 +139,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=472";
+} from "./js/domain/news-share-v228.js?v=476";
 import {
   getListoneValue,
   compareListoneValues
@@ -154,19 +154,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=472";
+} from "./js/admin/listone-converter.js?v=476";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=472";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=472";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=476";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=476";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=472";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=472";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=472";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=472";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=476";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=476";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=476";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=476";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=472";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=472";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=472";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=476";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=476";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=476";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -24694,7 +24694,7 @@ const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json";
 function getCalciomercatoStaticUrlV446() {
   return withLeagueCacheBusterV446(getLeagueDataPathV446("calciomercatoLinks", CALCIOMERCATO_STATIC_URL_V306));
 }
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=472";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=476";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -35322,19 +35322,19 @@ window.FantaPetilloFirebaseBootstrapV449 = Object.freeze({
   productionReady: false,
   requiresFirestoreRulesBeforeLiveUse: true,
   adminEntrypointsGuarded: true,
-  teamAreaEntrypointsGuarded: true
+  teamAreaEntrypointsGuarded: false
 });
 
 
 // V450 - FantaPetillo Admin bootstrap marker.
 window.FantaPetilloAdminBootstrapV450 = Object.freeze({
-  version: 'V450',
+  version: 'V476',
   projectId: 'fantapetillomantramanager',
   dedicatedFirebaseProject: true,
   zonaOrientaleFirebasePresent: false,
   productionReady: false,
   adminBootstrapEnabled: true,
-  teamAreaStillGuarded: true,
+  teamAreaStillGuarded: false,
   rulesAlignedWithZonaOrientaleV393: true
 });
 
@@ -35345,7 +35345,7 @@ window.FantaPetilloAdminOnboardingV451 = Object.freeze({
   scope: 'clone-admin-onboarding',
   cloneSlug: 'fantapetillomantramanager',
   adminOnboardingEnabled: true,
-  teamAreaStillGuarded: true,
+  teamAreaStillGuarded: false,
   firebaseProjectId: 'fantapetillomantramanager',
   zonaOrientaleFirebaseRefactor: false,
   adminRefactor: false,
@@ -35386,4 +35386,46 @@ window.LeagueAdminCardVisibilityReleaseV454 = Object.freeze({
   qaChecklistDefaultVisible: false,
   behavior: 'admin-card-selector-and-qa-toggle',
   preservesFirebaseFlows: true
+});
+
+/* V476 - FantaMantraManager: Area Squadra visibile anche fuori dalla vecchia guardia bootstrap.
+ * Mantiene i flussi operativi gia esistenti: senza login/account presidente la sezione mostra il messaggio di accesso/attesa.
+ */
+function unlockFantaMantraManagerTeamAreaEntrypointsV476() {
+  document
+    .querySelectorAll('[data-page-link="teamarea"], [data-v42-page-link="teamarea"], [href="#teamarea"]')
+    .forEach((node) => {
+      node.classList.remove('hidden', 'sandbox-disabled-v450', 'sandbox-disabled-v449', 'sandbox-disabled-v448', 'sandbox-disabled-v447');
+      node.removeAttribute('aria-hidden');
+      if (node.getAttribute('tabindex') === '-1') node.removeAttribute('tabindex');
+      node.removeAttribute('data-admin-bootstrap-teamarea-disabled-v450');
+      node.removeAttribute('data-firebase-bootstrap-disabled-v449');
+      node.removeAttribute('data-sandbox-disabled-v448');
+      node.removeAttribute('data-sandbox-disabled-v447');
+    });
+  document.getElementById('fantaPetilloAdminBootstrapBannerV450')?.remove();
+}
+
+const updateUserVisibilityBeforeV476 = typeof updateUserVisibilityV34 === 'function' ? updateUserVisibilityV34 : null;
+if (updateUserVisibilityBeforeV476) {
+  updateUserVisibilityV34 = function updateUserVisibilityV476() {
+    const result = updateUserVisibilityBeforeV476?.();
+    unlockFantaMantraManagerTeamAreaEntrypointsV476();
+    return result;
+  };
+}
+
+['DOMContentLoaded', 'load', 'hashchange'].forEach((eventName) => {
+  window.addEventListener(eventName, () => window.setTimeout(unlockFantaMantraManagerTeamAreaEntrypointsV476, 0));
+});
+window.setTimeout(unlockFantaMantraManagerTeamAreaEntrypointsV476, 250);
+window.setTimeout(unlockFantaMantraManagerTeamAreaEntrypointsV476, 1000);
+
+window.FantaMantraManagerTeamAreaUnlockAppV476 = Object.freeze({
+  version: 'V476',
+  scope: 'fantamantramanager-only',
+  removesAdminBootstrapBanner: true,
+  unlocksTeamAreaEntrypoints: true,
+  preservesLoginAndPresidentChecks: true,
+  touchesZonaOrientale: false
 });

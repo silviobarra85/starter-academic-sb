@@ -1,6 +1,6 @@
-/* V450 - FantaPetillo Admin bootstrap guard.
- * Firebase reale dedicato + primo admin creato: Admin puo essere usato per inizializzare dati.
- * Il clone resta pre-produzione: noindex e Team Area presidenti restano protetti fino ai dati reali.
+/* V476 - FantaMantraManager Admin bootstrap unlock.
+ * Admin resta disponibile, ma il banner tecnico viene rimosso e gli entrypoint Area Squadra non vengono piu nascosti dal bootstrap.
+ * Le operazioni interne dell'Area Squadra continuano a usare le regole esistenti di login/account presidente.
  */
 const ADMIN_BOOTSTRAP_BANNER_ID_V450 = 'fantaPetilloAdminBootstrapBannerV450';
 const TEAM_AREA_SELECTORS_V450 = [
@@ -18,27 +18,25 @@ function ensureNoIndexMetaV450() {
   document.head.appendChild(meta);
 }
 
-function injectFantaPetilloAdminBootstrapBannerV450() {
-  if (document.getElementById(ADMIN_BOOTSTRAP_BANNER_ID_V450)) return;
-  const banner = document.createElement('div');
-  banner.id = ADMIN_BOOTSTRAP_BANNER_ID_V450;
-  banner.className = 'sandbox-banner-v450 sandbox-banner-v449 sandbox-banner-v448 sandbox-banner-v447';
-  banner.setAttribute('role', 'status');
-  banner.textContent = 'FantaPetilloMantraManager - Admin bootstrap attivo. Area Squadra resta protetta fino ai dati reali e teamUsers.';
-  document.body.prepend(banner);
+function removeFantaMantraManagerAdminBootstrapBannerV476() {
+  document.getElementById(ADMIN_BOOTSTRAP_BANNER_ID_V450)?.remove();
+  document.querySelectorAll('.sandbox-banner-v450').forEach((node) => node.remove());
 }
 
-function disableTeamAreaNodeV450(node) {
-  if (node.closest?.('#adminPanel')) return;
-  node.classList.add('hidden', 'sandbox-disabled-v450', 'sandbox-disabled-v449', 'sandbox-disabled-v448', 'sandbox-disabled-v447');
-  node.setAttribute('aria-hidden', 'true');
-  node.setAttribute('tabindex', '-1');
-  node.setAttribute('data-admin-bootstrap-teamarea-disabled-v450', 'true');
+function unlockTeamAreaNodeV476(node) {
+  if (!node || node.closest?.('#adminPanel')) return;
+  node.classList.remove('hidden', 'sandbox-disabled-v450', 'sandbox-disabled-v449', 'sandbox-disabled-v448', 'sandbox-disabled-v447');
+  node.removeAttribute('aria-hidden');
+  if (node.getAttribute('tabindex') === '-1') node.removeAttribute('tabindex');
+  node.removeAttribute('data-admin-bootstrap-teamarea-disabled-v450');
+  node.removeAttribute('data-firebase-bootstrap-disabled-v449');
+  node.removeAttribute('data-sandbox-disabled-v448');
+  node.removeAttribute('data-sandbox-disabled-v447');
 }
 
-function hideFantaPetilloTeamAreaEntrypointsV450() {
-  document.querySelectorAll(TEAM_AREA_SELECTORS_V450).forEach(disableTeamAreaNodeV450);
-  document.body.classList.add('is-admin-bootstrap-clone-v450', 'is-firebase-bootstrap-clone-v449', 'is-sandbox-clone-v448', 'is-sandbox-clone-v447');
+function unlockFantaMantraManagerTeamAreaEntrypointsV476() {
+  document.querySelectorAll(TEAM_AREA_SELECTORS_V450).forEach(unlockTeamAreaNodeV476);
+  document.body.classList.remove('is-admin-bootstrap-clone-v450');
 }
 
 function ensureAdminEntrypointsAvailableV450() {
@@ -55,11 +53,12 @@ function ensureAdminEntrypointsAvailableV450() {
   });
 }
 
-function installFantaPetilloAdminBootstrapObserverV450() {
+function installFantaMantraManagerAdminBootstrapObserverV476() {
   if (window.__FantaPetilloAdminBootstrapObserverV450) return;
   const observer = new MutationObserver(() => {
+    removeFantaMantraManagerAdminBootstrapBannerV476();
     ensureAdminEntrypointsAvailableV450();
-    hideFantaPetilloTeamAreaEntrypointsV450();
+    unlockFantaMantraManagerTeamAreaEntrypointsV476();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
   window.__FantaPetilloAdminBootstrapObserverV450 = observer;
@@ -67,13 +66,13 @@ function installFantaPetilloAdminBootstrapObserverV450() {
 
 function initFantaPetilloAdminBootstrapGuardV450() {
   ensureNoIndexMetaV450();
-  injectFantaPetilloAdminBootstrapBannerV450();
+  removeFantaMantraManagerAdminBootstrapBannerV476();
   ensureAdminEntrypointsAvailableV450();
-  hideFantaPetilloTeamAreaEntrypointsV450();
-  installFantaPetilloAdminBootstrapObserverV450();
-  window.setTimeout(() => { ensureAdminEntrypointsAvailableV450(); hideFantaPetilloTeamAreaEntrypointsV450(); }, 250);
-  window.setTimeout(() => { ensureAdminEntrypointsAvailableV450(); hideFantaPetilloTeamAreaEntrypointsV450(); }, 1000);
-  window.setTimeout(() => { ensureAdminEntrypointsAvailableV450(); hideFantaPetilloTeamAreaEntrypointsV450(); }, 2500);
+  unlockFantaMantraManagerTeamAreaEntrypointsV476();
+  installFantaMantraManagerAdminBootstrapObserverV476();
+  window.setTimeout(() => { removeFantaMantraManagerAdminBootstrapBannerV476(); ensureAdminEntrypointsAvailableV450(); unlockFantaMantraManagerTeamAreaEntrypointsV476(); }, 250);
+  window.setTimeout(() => { removeFantaMantraManagerAdminBootstrapBannerV476(); ensureAdminEntrypointsAvailableV450(); unlockFantaMantraManagerTeamAreaEntrypointsV476(); }, 1000);
+  window.setTimeout(() => { removeFantaMantraManagerAdminBootstrapBannerV476(); ensureAdminEntrypointsAvailableV450(); unlockFantaMantraManagerTeamAreaEntrypointsV476(); }, 2500);
 }
 
 if (document.readyState === 'loading') {
@@ -83,7 +82,7 @@ if (document.readyState === 'loading') {
 }
 
 window.FantaPetilloAdminBootstrapGuardV450 = Object.freeze({
-  version: 'V452',
+  version: 'V476',
   firebaseDisabled: false,
   realFirebaseConnected: true,
   projectId: 'fantapetillomantramanager',
@@ -92,8 +91,19 @@ window.FantaPetilloAdminBootstrapGuardV450 = Object.freeze({
   adminBootstrapEnabled: true,
   hidesAdminEntrypoints: false,
   hidesLoginEntrypoint: false,
-  hidesTeamAreaEntrypoints: true,
+  hidesTeamAreaEntrypoints: false,
   addsNoIndex: true,
   firestoreRulesVersion: 'V450',
-  adminOnboardingVersion: 'V451'
+  adminOnboardingVersion: 'V451',
+  bannerRemoved: true,
+  teamAreaEntrypointsUnlockedIn: 'V476'
+});
+
+window.FantaMantraManagerTeamAreaUnlockV476 = Object.freeze({
+  version: 'V476',
+  scope: 'fantamantramanager-only',
+  removesAdminBootstrapBanner: true,
+  unlocksTeamAreaEntrypoints: true,
+  touchesZonaOrientale: false,
+  preservesExistingLoginAndPresidentFlows: true
 });

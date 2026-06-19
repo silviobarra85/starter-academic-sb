@@ -295,3 +295,15 @@ Documenti tecnici:
 - Dashboard: logo ufficiale accanto al titolo e rimozione della dicitura `Lega Fantacalcio in configurazione`.
 - Favicon, manifest e immagini social puntano al nuovo logo.
 - Modifica limitata a FantaMantraManager: nessun file ZonaOrientale incluso nell'overlay.
+
+## V476 - Banner Admin bootstrap rimosso e Area Squadra visibile
+
+- Rimosso il banner/header tecnico `FantaPetilloMantraManager - Admin bootstrap attivo. Area Squadra resta protetta fino ai dati reali e teamUsers.`
+- Area Squadra resa visibile negli entrypoint del sito FantaMantraManager.
+- I flussi operativi interni restano conservativi: login, account presidente e `teamUsers` non vengono rimossi.
+- Modifica limitata a FantaMantraManager: nessun file ZonaOrientale incluso nell'overlay.
+
+Documenti tecnici:
+
+- `TEAMAREA_UNLOCK_V476.md`
+- `HANDOFF_V476_TEAMAREA_UNLOCK.md`
