@@ -7435,3 +7435,9 @@ FantaPetilloMantraManager torna al flusso standard Admin per dati reali: creazio
 - Aggiunto cleanup dedicato per rimuovere da `static/zonaorientale/tools` gli audit cross-lega non piu' necessari nel gate principale.
 - Nessuna modifica funzionale a Firebase, Admin, Bilanci, Area Squadra, badge dispositivo V434 o dati reali.
 
+
+
+### V473 - Tool sorteggio giornate
+- Nuova sezione pubblica `Sorteggio giornate` con range 1-38, esclusioni e seed riproducibile.
+- Implementazione multi-lega conservativa: stessi file funzionali in ZonaOrientale e FantaPetilloMantraManager, configurazione separata per lega.
+- Audit dedicato `tools/audit-matchday-draw-tool-v473.mjs`.

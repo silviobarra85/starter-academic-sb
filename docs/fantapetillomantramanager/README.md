@@ -262,3 +262,9 @@ Documenti tecnici:
 - `FOOTER_NEWS_ISOLATION_V472.md`;
 - `HANDOFF_V472_FOOTER_NEWS_ISOLATION.md`.
 
+
+
+## V473 - Tool sorteggio giornate
+- Aggiunto tool pubblico `#sorteggio` anche al clone FantaPetilloMantraManager.
+- Il tool e locale/client-side: non scrive su Firebase e non usa dati ZonaOrientale.
+- Output riproducibile tramite seed e JSON.

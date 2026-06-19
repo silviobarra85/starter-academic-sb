@@ -18,6 +18,7 @@ const SECTION_REGISTRY_V405 = Object.freeze({
     stats: Object.freeze({ label: 'Statistiche', public: true, source: 'assets/js/sections/stats-section-v404.js', status: 'active', area: 'public', extractedIn: 'V404' }),
     archive: Object.freeze({ label: 'Archivio', public: true, source: 'assets/js/sections/archive-section-v405.js', status: 'active', area: 'public', extractedIn: 'V405' }),
     compare: Object.freeze({ label: 'Confronta', public: true, source: 'assets/js/sections/compare-section-v403.js', status: 'active', area: 'public', extractedIn: 'V403' }),
+    sorteggio: Object.freeze({ label: 'Sorteggio giornate', public: true, source: 'assets/js/sections/matchday-draw-tool-v473.js + index.html', status: 'active', area: 'public', addedIn: 'V473' }),
     regolamento: Object.freeze({ label: 'Regolamento', public: true, source: 'assets/js/sections/regolamento-section-v402.js', status: 'active', area: 'public', extractedIn: 'V402' }),
     admin: Object.freeze({ label: 'Admin', public: false, adminOnly: true, source: 'index.html', status: 'active', area: 'admin' }),
     teamarea: Object.freeze({ label: 'Area squadra', public: false, requiresApprovedUser: true, source: 'dynamic', status: 'active', area: 'presidents' }),

@@ -2261,3 +2261,10 @@ V463 aggiunge nel clone `FantaPetilloMantraManager` il generatore snapshot pubbl
 ### V467 - FantaPetillo setup standard Admin
 
 FantaPetilloMantraManager torna al flusso standard Admin per dati reali: creazione squadre, registrazione/accettazione utenti, associazione squadra-presidente e snapshot pubblici. I placeholder statici V457 sono neutralizzati e gli strumenti massivi V458-V464 non vengono più caricati nell’interfaccia.
+
+
+## Aggiornamento V473 - Tool sorteggio giornate
+- Aggiunto tool pubblico `#sorteggio` a ZonaOrientale e FantaPetilloMantraManager.
+- Input: numero giornate, esclusioni, slider range 1-38, seed.
+- Output: giornate sorteggiate e JSON riproducibile.
+- Nessuna cancellazione funzionale: Firebase, Admin, snapshot, listoni, news e footer isolati V472 restano invariati.

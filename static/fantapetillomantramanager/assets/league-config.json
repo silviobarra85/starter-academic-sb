@@ -5,7 +5,7 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "472",
+  "currentVersion": "473",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -26,7 +26,8 @@
     "calciomercato": false,
     "fantamercato": false,
     "mantraFilters": true,
-    "manualAdminSetup": true
+    "manualAdminSetup": true,
+    "matchdayDrawTool": true
   },
   "guardrails": {
     "sandboxClone": true,
@@ -78,7 +79,9 @@
     "shareNetlifyReady": "config-prepared",
     "newsShareRedirectVersion": "466",
     "footerRuntimeConfigVersion": "472",
-    "footerNewsIsolationVersion": "472"
+    "footerNewsIsolationVersion": "472",
+    "matchdayDrawToolVersion": "473",
+    "preserveExistingFunctionality": true
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
@@ -138,13 +141,19 @@
         "icon": "list"
       },
       {
+        "id": "sorteggio",
+        "href": "#sorteggio",
+        "label": "Sorteggio giornate",
+        "icon": "🎲"
+      },
+      {
         "id": "regolamento",
         "href": "#regolamento",
         "label": "Regolamento",
         "icon": "rules"
       }
     ],
-    "footerLastUpdated": "17/06/2026",
+    "footerLastUpdated": "19/06/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}"
   },
   "dataPaths": {
@@ -184,7 +193,7 @@
       "Area Squadra resta nascosta/guardata finche non vengono inseriti dati reali e teamUsers.",
       "Firebase ZonaOrientale non viene importato ne usato dal clone."
     ],
-    "auditedInVersion": "472",
+    "auditedInVersion": "473",
     "firebaseProjectStatus": "connected-admin-bootstrap-v450"
   },
   "firebase": {
@@ -281,8 +290,9 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V472 footer runtime da config e news statiche isolate",
+    "lastOverlay": "V473 tool sorteggio giornate riproducibile",
     "notes": [
+      "V473 aggiunge il tool pubblico Sorteggio giornate con range 1-38, esclusioni e seed/JSON riproducibile; nessuna scrittura su Firebase e nessuna rimozione di funzionalita esistenti.",
       "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaPetillo dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
       "V463 aggiunge una card Admin per trasformare la preview Firestore V460 in file JSON statici: config pubblica, manifest snapshot, snapshot stagione, honor e rose vuote.",
       "La card non scrive su Firebase e non sblocca Area Squadra.",

@@ -341,7 +341,7 @@ function applyBrandTextV445() {
   setTextForSelectorV445('[data-league-text-v445="homeSubtitle"]', getLeagueConfigValueV443('branding.homeSubtitle', 'Dashboard operativa per club, rose, listoni, competizioni e regolamento.'));
   const footerVersion = getLeagueConfigValueV443('currentVersion', '445');
   const siteName = getLeagueConfigValueV443('branding.siteName', getLeagueConfigValueV443('name', 'FantaPetilloMantraManager'));
-  const footerLastUpdated = getLeagueConfigValueV443('branding.footerLastUpdated', '17/06/2026');
+  const footerLastUpdated = getLeagueConfigValueV443('branding.footerLastUpdated', '19/06/2026');
   const footerTemplate = getLeagueConfigValueV443('branding.footerTemplate', '{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}');
   const footerText = String(footerTemplate || '{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}')
     .replace(/\{siteName\}/g, siteName)
