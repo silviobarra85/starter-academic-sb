@@ -1,29 +1,31 @@
 {
   "id": "2026-2027",
   "seasonId": "2026-2027",
-  "generatedAt": "2026-06-19T05:53:28.260Z",
+  "generatedAt": "2026-06-19T07:47:30.783Z",
   "teams": [
     {
       "id": "2r8cCCyLXkBqbkwP5zn1",
-      "canonicalName": "Salernitana 1919",
-      "logo": "assets/logos/salernitana1919.png",
+      "notes": "",
+      "isCurrent": true,
       "updatedAt": {
-        "seconds": 1781713490,
-        "nanoseconds": 791000000
+        "seconds": 1781855224,
+        "nanoseconds": 443000000
       },
+      "canonicalName": "Salernitana 1919",
+      "currentPresidentIds": [
+        "n61B3QrmE8Y4kTQuGCp0"
+      ],
+      "logo": "assets/logos/salernitana1919.png",
       "createdAt": {
         "seconds": 1781697525,
         "nanoseconds": 497000000
-      },
-      "isCurrent": true,
-      "currentPresidentIds": [],
-      "notes": ""
+      }
     }
   ],
   "presidents": [
     {
       "id": "n61B3QrmE8Y4kTQuGCp0",
-      "notes": "",
+      "name": "Silvio Barra",
       "isActive": true,
       "createdAt": {
         "seconds": 1781712998,
@@ -33,28 +35,28 @@
         "seconds": 1781712998,
         "nanoseconds": 300000000
       },
-      "name": "Silvio Barra"
+      "notes": ""
     }
   ],
   "seasonTeams": [
     {
       "id": "2026-2027_2r8cccylxkbqbkwp5zn1",
-      "seasonId": "2026-2027",
-      "presidentIds": [
-        "n61B3QrmE8Y4kTQuGCp0"
-      ],
+      "name": "Salernitana 1919",
       "createdAt": {
         "seconds": 1781713002,
         "nanoseconds": 778000000
       },
+      "seasonId": "2026-2027",
+      "logo": "",
       "isHistorical": false,
       "updatedAt": {
         "seconds": 1781713002,
         "nanoseconds": 778000000
       },
-      "logo": "",
       "teamId": "2r8cCCyLXkBqbkwP5zn1",
-      "name": "Salernitana 1919"
+      "presidentIds": [
+        "n61B3QrmE8Y4kTQuGCp0"
+      ]
     }
   ],
   "stadiums": [],
@@ -65,25 +67,25 @@
   "fmMovements": [
     {
       "id": "p8hVUm9qIorsWrFiCAuG",
-      "seasonTeamId": "2026-2027_2r8cccylxkbqbkwp5zn1",
-      "description": "Budget Iniziale",
-      "rosterRole": "",
-      "targetSeasonTeamId": "",
-      "realTeam": "",
+      "amount": 250,
       "createdAt": {
         "seconds": 1781698564,
         "nanoseconds": 496000000
       },
-      "playerName": "",
-      "type": "INITIAL_BUDGET",
-      "date": "2026-07-01",
       "updatedAt": {
         "seconds": 1781699400,
         "nanoseconds": 743000000
       },
-      "mantraRoles": "",
+      "description": "Budget Iniziale",
+      "type": "INITIAL_BUDGET",
+      "date": "2026-07-01",
+      "seasonTeamId": "2026-2027_2r8cccylxkbqbkwp5zn1",
       "seasonId": "2026-2027",
-      "amount": 250
+      "rosterRole": "",
+      "targetSeasonTeamId": "",
+      "realTeam": "",
+      "playerName": "",
+      "mantraRoles": ""
     }
   ],
   "metrics": {
