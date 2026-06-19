@@ -38,20 +38,20 @@ import {
 import { state } from "./js/core/state.js";
 import { $, $$ } from "./js/core/dom.js";
 import { escapeHtml, byText, normalizeKey, downloadJson } from "./js/core/utils.js";
-import { FantaPetilloSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=477";
-import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=477";
-import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=477";
-import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=477";
-import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=477";
-import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=477";
-import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=477";
+import { FantaPetilloSharedHelpersV295 } from "./js/utils/shared-helpers-v295.js?v=478";
+import { createSharedHelperBridgeV341 } from "./js/utils/shared-helper-bridge-v341.js?v=478";
+import { createCalciomercatoImageHelpersV334 } from "./js/calciomercato/calciomercato-images-v334.js?v=478";
+import { createCalciomercatoPlayerHelpersV359 } from "./js/calciomercato/calciomercato-players-v359.js?v=478";
+import { createCalciomercatoArticleRendererV338 } from "./js/calciomercato/calciomercato-render-v338.js?v=478";
+import { createCalciomercatoFiltersV339 } from "./js/calciomercato/calciomercato-filters-v339.js?v=478";
+import { createCalciomercatoArchiveAdminV340 } from "./js/calciomercato/calciomercato-admin-v340.js?v=478";
 import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "./js/mobile/mobile-tables.js";
-import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=477";
-import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=477";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=477";
+import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=478";
+import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=478";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=478";
 import { createMobileRosterHelpersV169 } from "./js/mobile/mobile-rosters.js";
 
 const FantaPetilloSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -115,7 +115,7 @@ import {
   guessTeamLogoByName as guessTeamLogoByNameV125,
   getSeasonTeamNameCandidates as getSeasonTeamNameCandidatesV125
 } from "./js/domain/team-logos.js";
-import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=477";
+import { createTransferMarketHelpersV128 } from "./js/market/transfer-market.js?v=478";
 import {
   normalizePlayerName,
   normalizeRosterKey,
@@ -139,7 +139,7 @@ import {
   buildNewsSharePageHtmlV228,
   buildNewsSharePathV228,
   buildNewsShareUrlV228
-} from "./js/domain/news-share-v228.js?v=477";
+} from "./js/domain/news-share-v228.js?v=478";
 import {
   getListoneValue,
   compareListoneValues
@@ -154,19 +154,19 @@ import {
   loadXlsxLibrary,
   abbreviateRealTeam,
   parseListoneWorkbook
-} from "./js/admin/listone-converter.js?v=477";
+} from "./js/admin/listone-converter.js?v=478";
 import { createAdminUserApprovalHelpersV129 } from "./js/admin/admin-users.js";
-import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=477";
-import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=477";
+import { createPublicSnapshotAdminHelpersV129 } from "./js/admin/public-snapshots.js?v=478";
+import { createAdminCompetitionHelpersV131 } from "./js/admin/admin-competitions.js?v=478";
 import { createLiveDataArchiveRefactorV209 } from "./js/refactor/live-data-archive-v209.js";
-import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=477";
-import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=477";
-import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=477";
-import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=477";
+import { installCommunicationGeneratorRefactorV210 } from "./js/refactor/admin-communication-generator-v210.js?v=478";
+import { installAdminTeamRequestsPanelV253 } from "./js/admin/team-requests-panel-v253.js?v=478";
+import { installTradeNotificationSimulatorV255 } from "./js/dev/trade-notification-simulator-v255.js?v=478";
+import { installHistoricalStatsCompareRefactorV211 } from "./js/refactor/historical-stats-compare-v211.js?v=478";
 import { installPresidentDashboardRostersRefactorV212 } from "./js/refactor/president-dashboard-rosters-v212.js";
-import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=477";
-import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=477";
-import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=477";
+import { createPublicAdminRenderOrchestratorV221 } from "./js/refactor/public-admin-render-orchestrator-v221.js?v=478";
+import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=478";
+import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=478";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -5515,7 +5515,7 @@ function downloadNewsShareHtmlV228(newsId) {
   const news = getNewsByIdV228(newsId);
   if (!news) return;
   const path = buildNewsSharePathV228(news);
-  const html = buildNewsSharePageHtmlV228(news, { path, baseUrl: getNewsShareBaseUrlV230(), siteName: getLeagueConfigValueV443("branding.siteName", "FantaPetilloMantraManager"), shortName: getLeagueConfigValueV443("shortName", "FantaPetillo") });
+  const html = buildNewsSharePageHtmlV228(news, { path, baseUrl: getNewsShareBaseUrlV230(), siteName: getLeagueConfigValueV443("branding.siteName", "FantaMantraManager"), shortName: getLeagueConfigValueV443("shortName", "FantaPetillo") });
   downloadTextFileV228(html, path.split("/").pop() || "comunicato.html");
 }
 
@@ -7428,7 +7428,7 @@ setupAdaptiveMobileViewport({
     const emailModule = await import("./emailjs.js");
     const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
     await emailModule.sendTransferEmail({
-      to_email: "caparrotti86@yahoo.it",
+      to_email: "barra.silvio@gmail.com",
       team_name: teamName,
       president_name: payload.createdByName || getCurrentUserDisplayName(),
       title: payload.title || "Comunicato avvenuto scambio",
@@ -7453,7 +7453,7 @@ setupAdaptiveMobileViewport({
           <label>Squadra coinvolta <span class="muted">(opzionale)</span><input id="teamTransferOtherTeamV50" class="input" type="text" /></label>
           <div class="form-actions span-2"><button class="button button-primary" type="submit">Invia comunicato di scambio</button><span id="teamTransferStatusV50" class="form-status"></span></div>
         </form>
-        <small class="field-hint">La mail viene inviata a caparrotti86@yahoo.it con oggetto: Comunicato avvenuto scambio NOME_SQUADRA.</small>
+        <small class="field-hint">La mail viene inviata a barra.silvio@gmail.com con oggetto: Comunicato avvenuto scambio NOME_SQUADRA.</small>
       </section>`;
     if (newsPanel) newsPanel.insertAdjacentHTML("afterend", html);
     else target.insertAdjacentHTML("beforeend", html);
@@ -7468,7 +7468,7 @@ setupAdaptiveMobileViewport({
           body: document.getElementById("teamTransferBodyV50")?.value || "",
           players: document.getElementById("teamTransferPlayersV50")?.value || "",
           otherTeam: document.getElementById("teamTransferOtherTeamV50")?.value || "",
-          emailTo: "caparrotti86@yahoo.it"
+          emailTo: "barra.silvio@gmail.com"
         };
         await addDoc(collection(db, "teamRequests"), payload);
         await sendTransferCommunicationEmailV50(payload);
@@ -7739,7 +7739,7 @@ async function sendTransferCommunicationEmailV79(payload) {
   const emailModule = await import("./emailjs.js");
   const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
   await emailModule.sendTransferEmail({
-    to_email: "caparrotti86@yahoo.it",
+    to_email: "barra.silvio@gmail.com",
     team_name: teamName,
     president_name: payload.createdByName || getCurrentUserDisplayName(),
     title: payload.title || "Comunicato avvenuto scambio",
@@ -7755,7 +7755,7 @@ function upgradeTransferCommunicationFormV79() {
   const panelText = form.closest("section")?.querySelector(".panel-header p");
   if (panelText) panelText.textContent = "Pubblica subito il comunicato in News e invia una email alla lega. Non serve approvazione admin.";
   const hint = form.closest("section")?.querySelector(".field-hint");
-  if (hint) hint.textContent = "Il comunicato viene pubblicato direttamente nelle News e inviato via email a caparrotti86@yahoo.it.";
+  if (hint) hint.textContent = "Il comunicato viene pubblicato direttamente nelle News e inviato via email a barra.silvio@gmail.com.";
   const cleanForm = form.cloneNode(true);
   cleanForm.dataset.v79DirectPublish = "1";
   form.replaceWith(cleanForm);
@@ -16481,7 +16481,7 @@ function renderStaticRosterConverterAdminFormV187() {
       </label>
       <label class="span-2">
         Label
-        <input id="adminStaticRosterLabel" class="input" type="text" placeholder="Es. Rose FantaPetilloMantraManager 2025/26" />
+        <input id="adminStaticRosterLabel" class="input" type="text" placeholder="Es. Rose FantaMantraManager 2025/26" />
       </label>
       <label class="span-2">
         File Excel rose
@@ -16515,7 +16515,7 @@ async function handleStaticRosterConverterSubmitV187(event) {
     const loadedAt = dateInput?.value || parsed.detectedDate || getTodayIsoDate();
     if (dateInput && parsed.detectedDate && !dateInput.dataset.userChangedV187) dateInput.value = parsed.detectedDate;
     const label = cleanStaticRosterTextV187(document.getElementById("adminStaticRosterLabel")?.value)
-      || `Rose FantaPetilloMantraManager ${formatSeasonShortLabel(seasonId)}`;
+      || `Rose FantaMantraManager ${formatSeasonShortLabel(seasonId)}`;
     const id = `${seasonId}-${loadedAt}`;
     const fileName = `${safeFileName(id)}.json`;
     const players = parsed.rosters.reduce((sum, roster) => sum + (roster.players || []).length, 0);
@@ -19403,7 +19403,7 @@ function renderTransferCommunicationPanelV237() {
         <label>Squadra coinvolta <span class="muted">(opzionale)</span><input id="teamTransferOtherTeamV50" class="input" type="text" placeholder="Es. Olympic Salerno FC" /></label>
         <div class="form-actions span-2"><button class="button button-primary" type="submit">Invia comunicato di scambio</button><span id="teamTransferStatusV50" class="form-status"></span></div>
       </form>
-      <small class="field-hint">La richiesta viene registrata per l'Admin; la mail viene inviata subito a caparrotti86@yahoo.it con oggetto: Comunicato avvenuto scambio NOME_SQUADRA.</small>
+      <small class="field-hint">La richiesta viene registrata per l'Admin; la mail viene inviata subito a barra.silvio@gmail.com con oggetto: Comunicato avvenuto scambio NOME_SQUADRA.</small>
     </section>`;
 }
 
@@ -19424,7 +19424,7 @@ async function sendTransferCommunicationEmailV237(payload) {
   const emailModule = await import("./emailjs.js");
   const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
   await emailModule.sendTransferEmail({
-    to_email: "caparrotti86@yahoo.it",
+    to_email: "barra.silvio@gmail.com",
     team_name: teamName,
     president_name: payload.createdByName || getCurrentUserDisplayName(),
     title: payload.title || "Comunicato avvenuto scambio",
@@ -19457,7 +19457,7 @@ function buildTransferCommunicationPayloadV237() {
     createdByName: base.createdByName || getCurrentUserDisplayName(),
     players,
     otherTeam,
-    emailRecipient: "caparrotti86@yahoo.it",
+    emailRecipient: "barra.silvio@gmail.com",
     requestedPublication: true,
     requestedAt: serverTimestamp(),
     createdAt: serverTimestamp(),
@@ -20242,7 +20242,7 @@ renderUserAreaV34 = function renderUserAreaV241() {
    Dashboard Presidente -> teamRequests/TRANSFER_NEWS -> EmailJS -> approvazione Admin -> News.
    Neutralizza gli agganci legacy V50/V79 che riusavano l'ID del form storico e potevano
    attivare anche il vecchio tentativo di pubblicazione diretta in news. */
-const TRANSFER_COMMUNICATION_RECIPIENT_V242 = "caparrotti86@yahoo.it";
+const TRANSFER_COMMUNICATION_RECIPIENT_V242 = "barra.silvio@gmail.com";
 
 function removeLegacyTransferCommunicationPanelsV242() {
   const legacyForms = [
@@ -21876,9 +21876,9 @@ installTechnicalSourceTagCleanupV260();
 /* V261 - Dashboard Presidente: informativa svincolo giocatori.
    Aggiunge una terza sottosezione comunicati senza scritture Firebase:
    il presidente seleziona uno o piu' giocatori della propria rosa e invia
-   una mail EmailJS a caparrotti86@yahoo.it con quotazioni recuperate dal
+   una mail EmailJS a barra.silvio@gmail.com con quotazioni recuperate dal
    listone piu' recente disponibile per ciascun giocatore. */
-const PLAYER_RELEASE_RECIPIENT_V261 = "caparrotti86@yahoo.it";
+const PLAYER_RELEASE_RECIPIENT_V261 = "barra.silvio@gmail.com";
 
 function getPlayerReleaseSeasonTeamIdV261() {
   return getApprovedSeasonTeamIdV119?.() || getApprovedTeamUser?.()?.seasonTeamId || "";
@@ -21984,7 +21984,7 @@ function buildPlayerReleaseMailDraftV261({ requireSelection = true } = {}) {
       ? `I listoni da cui sono state recuperate le quotazioni attuali sono ${listoneLabels.join(", ")}.`
       : "Non e' stato possibile individuare un listone con quotazione attuale per tutti i giocatori selezionati.";
   const body = [
-    "Presidente Caparrotti, con la presente comunico i giocatori che intendo svincolare:",
+    "Presidente, con la presente comunico i giocatori che intendo svincolare:",
     "",
     playerLines,
     "",
@@ -22196,7 +22196,7 @@ window.FantaPetilloCleanupV265 = {
  * inviate via EmailJS. La configurazione reale SPF/DKIM/DMARC resta da fare
  * nel provider email collegato a EmailJS e nel DNS del dominio mittente.
  */
-const EMAILJS_APP_NAME_V266 = "Lega FantaPetilloMantraManager";
+const EMAILJS_APP_NAME_V266 = "Lega FantaMantraManager";
 const EMAILJS_DEFAULT_REPLY_TO_V266 = "";
 
 function getEmailJsReplyToV266() {
@@ -22244,7 +22244,7 @@ formatTransferCommunicationEmailMessageV237 = function formatTransferCommunicati
     : String(payload.body || payload.message || "Comunicato avvenuto scambio.").trim();
   const presidentName = payload.createdByName || getCurrentUserDisplayName?.() || "Presidente";
   const body = [
-    "Presidente Caparrotti,",
+    "Presidente,",
     "",
     base,
     "",
@@ -22259,7 +22259,7 @@ sendTransferCommunicationEmailV237 = async function sendTransferCommunicationEma
   const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
   const today = typeof getPlayerReleaseDateLabelV261 === "function" ? getPlayerReleaseDateLabelV261() : new Date().toLocaleDateString("it-IT");
   await emailModule.sendTransferEmail(getEmailJsCommonParamsV266({
-    to_email: "caparrotti86@yahoo.it",
+    to_email: "barra.silvio@gmail.com",
     team_name: teamName,
     president_name: payload.createdByName || getCurrentUserDisplayName(),
     title: payload.title || "Comunicato avvenuto scambio",
@@ -24694,7 +24694,7 @@ const CALCIOMERCATO_STATIC_URL_V306 = "./assets/calciomercato/links.json";
 function getCalciomercatoStaticUrlV446() {
   return withLeagueCacheBusterV446(getLeagueDataPathV446("calciomercatoLinks", CALCIOMERCATO_STATIC_URL_V306));
 }
-const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=477";
+const CALCIOMERCATO_AUTO_FEED_URL_V309 = "/.netlify/functions/calciomercato-feed?v=478";
 const calciomercatoStateV306 = {
   loaded: false,
   loading: false,
@@ -35210,7 +35210,7 @@ window.FantaPetilloMultiLeagueConfigV443 = Object.freeze({
   loader: "assets/js/core/league-config-v443.js",
   currentLeague: "fantapetillomantramanager",
   metadataAndShareFromConfig: true,
-  futureLeagueCandidate: "FantaPetilloMantraManager",
+  futureLeagueCandidate: "FantaMantraManager",
   behaviorChanged: false,
   preserves: [
     "Firebase bootstrap invariato",
@@ -35307,7 +35307,7 @@ window.FantaPetilloHardcodedLeagueRefsAuditV444 = Object.freeze({
   scope: "multi-league-hardcoded-reference-map",
   audit: "tools/audit-hardcoded-league-refs-v444.mjs",
   baseline: "tools/hardcoded-league-refs-v444.json",
-  futureLeagueCandidate: "FantaPetilloMantraManager",
+  futureLeagueCandidate: "FantaMantraManager",
   behaviorChanged: false,
   cloneCreated: false
 });
@@ -35352,7 +35352,7 @@ window.FantaPetilloAdminOnboardingV451 = Object.freeze({
   snapshotRefactor: false
 });
 
-// V452 - FantaPetilloMantraManager favicon marker.
+// V452 - FantaMantraManager favicon marker.
 window.FantaPetilloFaviconV452 = Object.freeze({
   version: '452',
   initials: 'FPMM',
@@ -35550,5 +35550,201 @@ window.FantaMantraManagerPresidentAreaRulesV477 = Object.freeze({
   removesDomIfLegacyCodeInjected: true,
   preservesTeamAreaEntrypoint: true,
   preservesLoginTeamUsersAndAdminFlows: true,
+  touchesZonaOrientale: false
+});
+
+/* V478 - FantaMantraManager: riattiva Svincola Giocatori e Comunicato avvenuto scambio con EmailJS dedicato.
+   Scope solo FantaMantraManager: usa il service EmailJS service_ttjf7js, il template specifico
+   template_svkkhlr per il comunicato di scambio e il template generico esistente per lo svincolo.
+   Mantiene la regola V477: la Dashboard Presidente non viene mostrata quando la sessione e Admin. */
+const FANTAMANTRA_MANAGER_EMAIL_RECIPIENT_V478 = "barra.silvio@gmail.com";
+const FANTAMANTRA_MANAGER_EMAILJS_SERVICE_ID_V478 = "service_ttjf7js";
+const FANTAMANTRA_MANAGER_TRANSFER_TEMPLATE_ID_V478 = "template_svkkhlr";
+const FANTAMANTRA_MANAGER_RELEASE_TEMPLATE_ID_V478 = "template_e1o7z5e";
+const FANTAMANTRA_MANAGER_APP_NAME_V478 = "Lega FantaMantraManager";
+
+if (typeof removeFantaMantraManagerDisabledPresidentToolsV477 === "function") {
+  removeFantaMantraManagerDisabledPresidentToolsV477 = function removeFantaMantraManagerDisabledPresidentToolsV478() {
+    return false;
+  };
+}
+
+if (typeof applyFantaMantraManagerPresidentAreaRulesV477 === "function") {
+  applyFantaMantraManagerPresidentAreaRulesV477 = function applyFantaMantraManagerPresidentAreaRulesV478() {
+    removeFantaMantraManagerPresidentDashboardForAdminV477?.();
+    refreshFantaMantraManagerPresidentToolLabelsV478();
+  };
+}
+
+function getFantaMantraManagerEmailJsReplyToV478() {
+  return String(state?.user?.email || "").trim();
+}
+
+function getFantaMantraManagerCommonEmailParamsV478(extra = {}) {
+  const replyTo = getFantaMantraManagerEmailJsReplyToV478();
+  return {
+    from_name: FANTAMANTRA_MANAGER_APP_NAME_V478,
+    sender_name: FANTAMANTRA_MANAGER_APP_NAME_V478,
+    app_name: FANTAMANTRA_MANAGER_APP_NAME_V478,
+    league_name: FANTAMANTRA_MANAGER_APP_NAME_V478,
+    to_email: FANTAMANTRA_MANAGER_EMAIL_RECIPIENT_V478,
+    reply_to: replyTo,
+    user_email: replyTo,
+    email: replyTo,
+    mail_category: "comunicazione_operativa_lega",
+    ...extra
+  };
+}
+
+if (typeof getEmailJsCommonParamsV266 === "function") {
+  getEmailJsCommonParamsV266 = function getEmailJsCommonParamsV478(extra = {}) {
+    return getFantaMantraManagerCommonEmailParamsV478(extra);
+  };
+}
+
+function getFantaMantraManagerEmailFooterV478() {
+  return [
+    "",
+    "---",
+    FANTAMANTRA_MANAGER_APP_NAME_V478,
+    "Comunicazione operativa generata automaticamente dal gestionale.",
+    "Il mittente tecnico e' quello configurato nel servizio EmailJS; usare il campo Reply-To per eventuali risposte."
+  ].join("\n");
+}
+
+function appendFantaMantraManagerEmailFooterV478(body = "") {
+  const clean = String(body || "").trim();
+  if (!clean) return getFantaMantraManagerEmailFooterV478().trim();
+  if (clean.includes("Comunicazione operativa generata automaticamente dal gestionale")) return clean;
+  return `${clean}${getFantaMantraManagerEmailFooterV478()}`;
+}
+
+const buildPlayerReleaseMailDraftBeforeV478 = typeof buildPlayerReleaseMailDraftV261 === "function"
+  ? buildPlayerReleaseMailDraftV261
+  : null;
+if (buildPlayerReleaseMailDraftBeforeV478) {
+  buildPlayerReleaseMailDraftV261 = function buildPlayerReleaseMailDraftV478(options = {}) {
+    const draft = buildPlayerReleaseMailDraftBeforeV478(options);
+    const body = String(draft.body || "").replace(/Presidente,?\s*/i, "Presidente,\n");
+    return {
+      ...draft,
+      body: appendFantaMantraManagerEmailFooterV478(body)
+    };
+  };
+}
+
+sendTransferCommunicationEmailV237 = async function sendTransferCommunicationEmailV478(payload = {}) {
+  const emailModule = await import("./emailjs.js");
+  const teamName = getSeasonTeamDisplayName(payload.seasonTeamId) || payload.teamName || "Squadra";
+  const today = typeof getPlayerReleaseDateLabelV261 === "function" ? getPlayerReleaseDateLabelV261() : new Date().toLocaleDateString("it-IT");
+  const baseMessage = typeof formatTransferCommunicationEmailMessageV237 === "function"
+    ? formatTransferCommunicationEmailMessageV237(payload)
+    : String(payload.body || payload.message || "Comunicato avvenuto scambio.").trim();
+  await emailModule.sendTransferEmail(getFantaMantraManagerCommonEmailParamsV478({
+    __service_id: FANTAMANTRA_MANAGER_EMAILJS_SERVICE_ID_V478,
+    __template_id: FANTAMANTRA_MANAGER_TRANSFER_TEMPLATE_ID_V478,
+    __emailjs_flow: "comunicato_avvenuto_scambio_v478",
+    team_name: teamName,
+    president_name: payload.createdByName || getCurrentUserDisplayName?.() || "Presidente",
+    title: payload.title || "Comunicato avvenuto scambio",
+    message: appendFantaMantraManagerEmailFooterV478(baseMessage),
+    players: payload.players || "",
+    other_team: payload.otherTeam || "",
+    created_at: new Date().toLocaleString("it-IT"),
+    subject: `${teamName} - Comunicazione avvenuto scambio - ${today}`
+  }));
+};
+
+sendTransferCommunicationEmailV242 = async function sendTransferCommunicationEmailV478Alias(payload = {}) {
+  return sendTransferCommunicationEmailV237(payload);
+};
+
+sendPlayerReleaseEmailV261 = async function sendPlayerReleaseEmailV478(draft = {}) {
+  const emailModule = await import("./emailjs.js");
+  await emailModule.sendTransferEmail(getFantaMantraManagerCommonEmailParamsV478({
+    __service_id: FANTAMANTRA_MANAGER_EMAILJS_SERVICE_ID_V478,
+    __template_id: FANTAMANTRA_MANAGER_RELEASE_TEMPLATE_ID_V478,
+    __emailjs_flow: "svincola_giocatori_v478",
+    team_name: draft.teamName || "Squadra",
+    president_name: draft.presidentName || getCurrentUserDisplayName?.() || "Presidente",
+    title: "Svincola Giocatori",
+    message: appendFantaMantraManagerEmailFooterV478(draft.body || ""),
+    players: (draft.items || []).map((item) => `${item.playerName} (Qt.A: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n"),
+    other_team: "",
+    created_at: new Date().toLocaleString("it-IT"),
+    subject: draft.subject || "Svincola Giocatori"
+  }));
+};
+
+if (typeof enhanceTransferCommunicationPresidentAreaBeforeV477 === "function") {
+  enhanceTransferCommunicationPresidentAreaV242 = function enhanceTransferCommunicationPresidentAreaV478() {
+    const result = enhanceTransferCommunicationPresidentAreaBeforeV477?.();
+    refreshFantaMantraManagerPresidentToolLabelsV478();
+    return result;
+  };
+}
+
+if (typeof enhancePlayerReleasePresidentAreaBeforeV477 === "function") {
+  enhancePlayerReleasePresidentAreaV261 = function enhancePlayerReleasePresidentAreaV478() {
+    const result = enhancePlayerReleasePresidentAreaBeforeV477?.();
+    refreshFantaMantraManagerPresidentToolLabelsV478();
+    return result;
+  };
+}
+
+function refreshFantaMantraManagerPresidentToolLabelsV478() {
+  const transferHint = document.querySelector("#teamTransferCommunicationPanelV242 .field-hint");
+  if (transferHint) {
+    transferHint.textContent = `Flusso V478: email immediata a ${FANTAMANTRA_MANAGER_EMAIL_RECIPIENT_V478}; pubblicazione News dopo approvazione Admin.`;
+  }
+  const releaseHint = document.querySelector("#teamPlayerReleasePanelV261 .field-hint:last-child");
+  if (releaseHint) {
+    releaseHint.textContent = `Oggetto email: <Nome Squadra> - Svincolo giocatori - <Data odierna>. Destinatario: ${FANTAMANTRA_MANAGER_EMAIL_RECIPIENT_V478}.`;
+  }
+}
+
+function reapplyFantaMantraManagerPresidentToolsV478() {
+  if (isFantaMantraManagerAdminSessionV477?.()) {
+    removeFantaMantraManagerPresidentDashboardForAdminV477?.();
+    return;
+  }
+  enhanceTransferCommunicationPresidentAreaV242?.();
+  enhancePlayerReleasePresidentAreaV261?.();
+  refreshFantaMantraManagerPresidentToolLabelsV478();
+}
+
+const renderUserAreaBeforeV478 = typeof renderUserAreaV34 === "function" ? renderUserAreaV34 : null;
+if (renderUserAreaBeforeV478) {
+  renderUserAreaV34 = function renderUserAreaV478() {
+    const result = renderUserAreaBeforeV478?.();
+    reapplyFantaMantraManagerPresidentToolsV478();
+    return result;
+  };
+}
+
+const renderAllBeforeV478 = typeof renderAll === "function" ? renderAll : null;
+if (renderAllBeforeV478) {
+  renderAll = function renderAllV478() {
+    const result = renderAllBeforeV478?.();
+    reapplyFantaMantraManagerPresidentToolsV478();
+    return result;
+  };
+}
+
+["DOMContentLoaded", "load", "hashchange"].forEach((eventName) => {
+  window.addEventListener(eventName, () => window.setTimeout(reapplyFantaMantraManagerPresidentToolsV478, 0));
+});
+window.setTimeout(reapplyFantaMantraManagerPresidentToolsV478, 250);
+window.setTimeout(reapplyFantaMantraManagerPresidentToolsV478, 1000);
+
+window.FantaMantraManagerPresidentEmailJsV478 = Object.freeze({
+  version: "V478",
+  scope: "fantamantramanager-only",
+  recipient: FANTAMANTRA_MANAGER_EMAIL_RECIPIENT_V478,
+  serviceId: FANTAMANTRA_MANAGER_EMAILJS_SERVICE_ID_V478,
+  transferTemplateId: FANTAMANTRA_MANAGER_TRANSFER_TEMPLATE_ID_V478,
+  releaseTemplateId: FANTAMANTRA_MANAGER_RELEASE_TEMPLATE_ID_V478,
+  enabledPresidentCards: ["Svincola Giocatori", "Comunicato avvenuto scambio"],
+  presidentDashboardVisibleForAdmin: false,
   touchesZonaOrientale: false
 });

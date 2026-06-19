@@ -320,3 +320,22 @@ Modifica solo FantaMantraManager:
 - login, `teamUsers`, Admin, Firebase e dati esistenti non vengono rimossi.
 
 Audit dedicato: `static/fantapetillomantramanager/tools/audit-president-area-v477.mjs`.
+
+## V478 - EmailJS dedicato e card operative presidente
+
+Modifica solo FantaMantraManager:
+
+- riattivate le card presidente `Svincola Giocatori` e `Comunicato avvenuto scambio`;
+- EmailJS usa il service dedicato FantaMantraManager `service_ttjf7js`;
+- destinatario operativo aggiornato a `barra.silvio@gmail.com`;
+- `Comunicato avvenuto scambio` usa il template specifico `template_svkkhlr`;
+- `Svincola Giocatori` mantiene il template generico `template_e1o7z5e`, perche il corpo email viene composto dal sito;
+- resta valida la regola V477: la Dashboard Presidente non viene mostrata quando il login corrente e Admin;
+- nessun file ZonaOrientale coinvolto.
+
+Audit dedicato: `static/fantapetillomantramanager/tools/audit-emailjs-president-tools-v478.mjs`.
+
+Documenti tecnici:
+
+- `EMAILJS_PRESIDENT_TOOLS_V478.md`
+- `HANDOFF_V478_EMAILJS_PRESIDENT_TOOLS.md`

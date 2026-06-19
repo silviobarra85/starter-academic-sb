@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "477",
+  "currentVersion": "478",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -92,9 +92,13 @@
     "teamAreaUnlockVersion": "476",
     "adminBootstrapBannerRemovedVersion": "476",
     "presidentDashboardAdminHiddenVersion": "477",
-    "playerReleaseHiddenVersion": "477",
-    "transferCommunicationHiddenVersion": "477",
-    "disabledPresidentTools": [
+    "disabledPresidentTools": [],
+    "emailJsPresidentToolsVersion": "478",
+    "emailJsServiceId": "service_ttjf7js",
+    "emailJsRecipient": "barra.silvio@gmail.com",
+    "transferCommunicationTemplateId": "template_svkkhlr",
+    "playerReleaseTemplateId": "template_e1o7z5e",
+    "enabledPresidentTools": [
       "Svincola Giocatori",
       "Comunicato avvenuto scambio"
     ]
@@ -309,9 +313,11 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V477 dashboard presidente FantaMantraManager allineata al regolamento",
+    "lastOverlay": "V478 EmailJS dedicato e card operative presidente FantaMantraManager",
     "notes": [
-      "V477 nasconde in Area Squadra/Dashboard presidente le card Svincola Giocatori e Comunicato avvenuto scambio per FantaMantraManager, perche non previste.",
+      "V478 riattiva solo su FantaMantraManager le card Svincola Giocatori e Comunicato avvenuto scambio, usando il service EmailJS dedicato service_ttjf7js e destinatario barra.silvio@gmail.com.",
+      "V478 usa template_svkkhlr per Comunicato avvenuto scambio e mantiene il template generico template_e1o7z5e per Svincola Giocatori, perche il corpo email viene composto dal sito.",
+      "V478 mantiene la regola V477: la Dashboard Presidente non viene renderizzata quando il login corrente e Admin.",
       "V477 impedisce la visualizzazione della Dashboard Presidente quando la sessione corrente e Admin, mantenendo visibile Area Squadra e senza toccare login, teamUsers o flussi Admin.",
       "V476 rimuove il banner tecnico Admin bootstrap e rende visibili gli entrypoint Area Squadra solo su FantaMantraManager, senza toccare ZonaOrientale.",
       "V473 aggiunge il tool pubblico Sorteggio giornate con range 1-38, esclusioni e seed/JSON riproducibile; nessuna scrittura su Firebase e nessuna rimozione di funzionalita esistenti.",
@@ -329,5 +335,18 @@
   },
   "multiLeague": {
     "status": "standard-admin-v467"
+  },
+  "version": "478",
+  "runtime": {
+    "emailJsPresidentToolsVersion": "478",
+    "emailJsServiceId": "service_ttjf7js",
+    "emailJsRecipient": "barra.silvio@gmail.com",
+    "transferCommunicationTemplateId": "template_svkkhlr",
+    "playerReleaseTemplateId": "template_e1o7z5e",
+    "disabledPresidentTools": [],
+    "enabledPresidentTools": [
+      "Svincola Giocatori",
+      "Comunicato avvenuto scambio"
+    ]
   }
 }
