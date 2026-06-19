@@ -307,3 +307,16 @@ Documenti tecnici:
 
 - `TEAMAREA_UNLOCK_V476.md`
 - `HANDOFF_V476_TEAMAREA_UNLOCK.md`
+
+
+## V477 - Dashboard presidente FantaMantraManager
+
+Modifica solo FantaMantraManager:
+
+- nascoste le card presidente `Svincola Giocatori` e `Comunicato avvenuto scambio`, perche non previste dal flusso di questa lega;
+- la Dashboard Presidente V369 non viene renderizzata quando la sessione corrente e Admin;
+- il Centro notifiche presidente non viene mostrato all'Admin insieme alla dashboard presidente;
+- Area Squadra resta visibile come da V476;
+- login, `teamUsers`, Admin, Firebase e dati esistenti non vengono rimossi.
+
+Audit dedicato: `static/fantapetillomantramanager/tools/audit-president-area-v477.mjs`.

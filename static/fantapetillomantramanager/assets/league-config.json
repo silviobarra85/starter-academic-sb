@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "476",
+  "currentVersion": "477",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -90,7 +90,14 @@
     "folderSlugPreserved": "fantapetillomantramanager",
     "faviconIncludesLogo": true,
     "teamAreaUnlockVersion": "476",
-    "adminBootstrapBannerRemovedVersion": "476"
+    "adminBootstrapBannerRemovedVersion": "476",
+    "presidentDashboardAdminHiddenVersion": "477",
+    "playerReleaseHiddenVersion": "477",
+    "transferCommunicationHiddenVersion": "477",
+    "disabledPresidentTools": [
+      "Svincola Giocatori",
+      "Comunicato avvenuto scambio"
+    ]
   },
   "branding": {
     "siteName": "FantaMantraManager",
@@ -302,8 +309,10 @@
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V476 header bootstrap rimosso e Area Squadra visibile",
+    "lastOverlay": "V477 dashboard presidente FantaMantraManager allineata al regolamento",
     "notes": [
+      "V477 nasconde in Area Squadra/Dashboard presidente le card Svincola Giocatori e Comunicato avvenuto scambio per FantaMantraManager, perche non previste.",
+      "V477 impedisce la visualizzazione della Dashboard Presidente quando la sessione corrente e Admin, mantenendo visibile Area Squadra e senza toccare login, teamUsers o flussi Admin.",
       "V476 rimuove il banner tecnico Admin bootstrap e rende visibili gli entrypoint Area Squadra solo su FantaMantraManager, senza toccare ZonaOrientale.",
       "V473 aggiunge il tool pubblico Sorteggio giornate con range 1-38, esclusioni e seed/JSON riproducibile; nessuna scrittura su Firebase e nessuna rimozione di funzionalita esistenti.",
       "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaMantra dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
