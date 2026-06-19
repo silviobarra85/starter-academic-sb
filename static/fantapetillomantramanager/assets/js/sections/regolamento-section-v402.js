@@ -1,21 +1,21 @@
-const FANTAPETILLO_REGOLAMENTO_PDF_V453 = './assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf';
+const FANTAPETILLO_REGOLAMENTO_PDF_V474 = './assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf';
 
-const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-panel regulation-panel-v453" aria-labelledby="regolamentoDocumentoTitle">
+const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-panel regulation-panel-v474" aria-labelledby="regolamentoDocumentoTitle">
         <div class="panel-header compact regulation-panel-header">
           <div>
             <p class="eyebrow">Regolamento ufficiale</p>
             <h2 id="regolamentoDocumentoTitle">Fantacalcio MANTRA&reg; Manageriale 2026-2027</h2>
-            <p>Struttura sintetica navigabile del regolamento FantaPetilloMantraManager. Il PDF completo resta la fonte ufficiale da scaricare e consultare.</p>
+            <p>Struttura sintetica navigabile del regolamento FantaPetilloMantraManager aggiornato al 19 giugno 2026. Il PDF completo resta la fonte ufficiale da scaricare e consultare.</p>
           </div>
-          <div class="rules-actions-v453" aria-label="Azioni regolamento">
-            <a class="button button-primary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf" download>Scarica PDF</a>
-            <a class="button button-secondary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf" target="_blank" rel="noopener noreferrer">Apri PDF</a>
+          <div class="rules-actions-v474" aria-label="Azioni regolamento">
+            <a class="button button-primary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf" download>Scarica PDF</a>
+            <a class="button button-secondary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf" target="_blank" rel="noopener noreferrer">Apri PDF</a>
           </div>
         </div>
         <div class="rules-inline-wrap" aria-label="Regolamento completo">
-          <section class="rules-index rules-summary-v453" aria-labelledby="rulesSummaryTitle">
+          <section class="rules-index rules-summary-v474" aria-labelledby="rulesSummaryTitle">
             <h3 id="rulesSummaryTitle">In evidenza</h3>
-            <div class="rules-highlight-grid-v453">
+            <div class="rules-highlight-grid-v474">
               <article><strong>10 Club</strong><span>Organico fissato a 10 partecipanti.</span></article>
               <article><strong>Rosa 23-33</strong><span>Minimo 23 tesserati, massimo 33.</span></article>
               <article><strong>250 FM</strong><span>Budget asta iniziale.</span></article>
@@ -23,7 +23,7 @@ const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-pa
               <article><strong>5 sostituzioni</strong><span>Sostituzioni Basic con panchina fino a 12.</span></article>
               <article><strong>Fairplay +1</strong><span>Bonus se nessun ammonito/espulso tra i giocatori a voto.</span></article>
               <article><strong>D-Factor attivo</strong><span>Modificatore difensivo Mantra con fasce dedicate.</span></article>
-              <article><strong>Montepremi 1120&euro;</strong><span>Premi regular season, playoff e Coppa Italia.</span></article>
+              <article><strong>Montepremi 1120&euro;</strong><span>Premi regular season, playoff, Coppa Italia e crediti FM aggiornati.</span></article>
             </div>
           </section>
 
@@ -287,7 +287,7 @@ const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-pa
       <h3>Playoff</h3>
       <p>Coinvolgono le posizioni dalla 4 alla 7 dopo la 36 giornata: semifinali alla 37, finalissima alla 38. A parita passa la squadra meglio classificata in regular season; il gol fuori casa non vale doppio.</p>
       <h3>Coppa Italia</h3>
-      <p>La Coppa Italia prevede una Battle Royale su 4 giornate, con eliminazione delle ultime 4, seguita da fase finale con quarti, semifinali e finale secca.</p>
+      <p>La Coppa Italia prevede una Battle Royale su 4 giornate, con eliminazione delle ultime 4, seguita da una fase finale: quarti di andata/ritorno, semifinali di andata/ritorno contro 1 e 2 della Battle Royale, e finale secca.</p>
       <h3>Champions League</h3>
       <p>Attiva dalla stagione 2027-2028. Per la prima edizione le qualificate derivano dai risultati 2026-2027: vincitore campionato, secondo posto, vincitore playoff, vincitore Coppa Italia se non gia qualificato e altre squadre in base alla regular season.</p>
     </section>
@@ -316,13 +316,13 @@ const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-pa
       </div>
       <h3>Premi in crediti</h3>
       <ul class="rules-list">
-        <li>Partecipazione: 15 FM.</li>
-        <li>Regular Season: 15, 10, 8, 7, 6 o 5 FM secondo piazzamento.</li>
-        <li>Vincitore Playoff: 7 FM.</li>
-        <li>Vincitore Coppa Italia: 10 FM.</li>
-        <li>Vincitore Champions League: 10 FM.</li>
-        <li>Qualificazione Champions League: 5 FM.</li>
-        <li>Paracadute 9 e 10 posto: 3 FM.</li>
+        <li>Partecipazione: 40 FM.</li>
+        <li>Regular Season: 12 FM al 1 posto, 10 FM al 2 posto, 8 FM dal 3 al 4, 7 FM dal 5 al 6, 6 FM dal 7 all'8, 5 FM dal 9 al 10.</li>
+        <li>Vincitore Playoff: 6 FM.</li>
+        <li>Vincitore Coppa Italia: 8 FM.</li>
+        <li>Vincitore Champions League: 9 FM.</li>
+        <li>Qualificazione Champions League: 3 FM.</li>
+        <li>Paracadute retrocessione per 9 e 10 posto della Regular Season: 3 FM.</li>
       </ul>
     </section>
 
@@ -345,7 +345,7 @@ const REGOLAMENTO_SECTION_HTML_V402 = `      <section class="panel regulation-pa
       <p class="eyebrow">Appendice</p>
       <h2>Tabella sostituzioni Mantra</h2>
       <p>La tabella sostituzioni completa occupa le pagine finali del PDF e contiene le matrici per i moduli Mantra ammessi. Per consultare i dettagli di ogni modulo, scarica o apri il PDF ufficiale.</p>
-      <p><a class="button button-secondary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf" target="_blank" rel="noopener noreferrer">Apri appendice nel PDF</a></p>
+      <p><a class="button button-secondary" href="./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf" target="_blank" rel="noopener noreferrer">Apri appendice nel PDF</a></p>
     </section>
           </div>
         </div>
@@ -357,7 +357,7 @@ function mountRegolamentoSectionV402() {
   if (!host || host.dataset.sectionMounted === 'true') return false;
   host.innerHTML = REGOLAMENTO_SECTION_HTML_V402;
   host.dataset.sectionMounted = 'true';
-  host.dataset.regolamentoVersion = '453';
+  host.dataset.regolamentoVersion = '474';
   return true;
 }
 
@@ -367,14 +367,15 @@ if (document.readyState === 'loading') {
   mountRegolamentoSectionV402();
 }
 
-window.FantaPetilloRegolamentoSectionV453 = Object.freeze({
-  version: 'V453',
+window.FantaPetilloRegolamentoSectionV474 = Object.freeze({
+  version: 'V474',
   section: 'regolamento',
   season: '2026-2027',
-  pdf: FANTAPETILLO_REGOLAMENTO_PDF_V453,
+  pdf: FANTAPETILLO_REGOLAMENTO_PDF_V474,
   source: 'assets/js/sections/regolamento-section-v402.js',
   mountedFromTemplate: true,
   mount: mountRegolamentoSectionV402
 });
 
-window.FantaPetilloRegolamentoSectionV402 = window.FantaPetilloRegolamentoSectionV453;
+window.FantaPetilloRegolamentoSectionV453 = window.FantaPetilloRegolamentoSectionV474;
+window.FantaPetilloRegolamentoSectionV402 = window.FantaPetilloRegolamentoSectionV474;

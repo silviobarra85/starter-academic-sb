@@ -268,3 +268,22 @@ Documenti tecnici:
 - Aggiunto tool pubblico `#sorteggio` anche al clone FantaPetilloMantraManager.
 - Il tool e locale/client-side: non scrive su Firebase e non usa dati ZonaOrientale.
 - Output riproducibile tramite seed e JSON.
+
+## V474 - Regolamento ufficiale 2026-2027 aggiornato
+
+La V474 aggiorna solo `static/fantapetillomantramanager` con il nuovo PDF ufficiale `FANTACALCIO_MANTRA_2026_2027-2.pdf` caricato il 19/06/2026.
+
+Modifiche operative:
+
+- nuovo PDF pubblico versionato: `assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf`;
+- link `Scarica PDF`, `Apri PDF` e `Apri appendice nel PDF` puntano al PDF V474;
+- sezione `#regolamento` aggiornata nei punti sintetici che erano diversi dal nuovo PDF, in particolare montepremi in crediti;
+- `assets/league-config.json` aggiornato a `currentVersion: 474` e `regolamento.version: 474`;
+- cache-buster e footer fallback FantaPetillo aggiornati a V474.
+
+ZonaOrientale non viene modificato.
+
+Documenti tecnici:
+
+- `REGOLAMENTO_V474.md`;
+- `HANDOFF_V474_REGOLAMENTO_FANTAPETILLO.md`.

@@ -5,7 +5,7 @@
   "shortName": "FantaPetillo",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "473",
+  "currentVersion": "474",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -27,7 +27,8 @@
     "fantamercato": false,
     "mantraFilters": true,
     "manualAdminSetup": true,
-    "matchdayDrawTool": true
+    "matchdayDrawTool": true,
+    "regolamentoPdf2026_2027": true
   },
   "guardrails": {
     "sandboxClone": true,
@@ -59,9 +60,9 @@
     "faviconVersion": "452",
     "faviconIncludesSeason": "2026-2027",
     "faviconIncludesInitials": "FPMM",
-    "regolamentoVersion": "453",
+    "regolamentoVersion": "474",
     "regolamentoSeason": "2026-2027",
-    "regolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "regolamentoPdf": "assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf",
     "placeholderDataVersion": "457",
     "placeholderDataSeason": "2026-2027",
     "setupKitVersion": "458",
@@ -81,7 +82,9 @@
     "footerRuntimeConfigVersion": "472",
     "footerNewsIsolationVersion": "472",
     "matchdayDrawToolVersion": "473",
-    "preserveExistingFunctionality": true
+    "preserveExistingFunctionality": true,
+    "regolamentoSourceDocument": "FANTACALCIO_MANTRA_2026_2027-2.pdf",
+    "regolamentoPdfHashSha256": "150dc0f9980f0e40b6a2657779a05d1c7de84d397d7b26088aee35e62e7bccf9"
   },
   "branding": {
     "siteName": "FantaPetilloMantraManager",
@@ -171,7 +174,7 @@
     "calciomercatoLinks": "./assets/calciomercato/links.json",
     "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
     "calciomercatoArchiveBase": "./assets/calciomercato/archive/",
-    "regolamentoPdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "regolamentoPdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf",
     "realDataTemplateCsv": "./assets/setup/fantapetillo-real-teams-template-v458.csv",
     "realDataTemplateJson": "./assets/setup/fantapetillo-real-teams-template-v458.json",
     "firestoreSeedPreviewInput": "./assets/setup/fantapetillo-real-data-seed-v459.json"
@@ -281,17 +284,19 @@
     "placeholderDataEnabled": false
   },
   "regolamento": {
-    "version": "453",
+    "version": "474",
     "season": "2026-2027",
     "title": "Fantacalcio MANTRA® Manageriale 2026-2027",
-    "pdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027.pdf",
+    "pdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf",
     "structuredSection": "assets/js/sections/regolamento-section-v402.js",
-    "sourceDocument": "FANTACALCIO_MANTRA_2026_2027-4.pdf"
+    "sourceDocument": "FANTACALCIO_MANTRA_2026_2027-2.pdf",
+    "updatedAt": "2026-06-19"
   },
   "status": {
     "status": "launch-readiness-v465",
-    "lastOverlay": "V473 tool sorteggio giornate riproducibile",
+    "lastOverlay": "V474 regolamento FantaPetillo 2026-2027 aggiornato",
     "notes": [
+      "V474 aggiorna solo FantaPetilloMantraManager: nuovo PDF regolamento 2026-2027, link download/apri PDF e sintesi quote/montepremi in crediti allineata al documento del 19/06/2026.",
       "V473 aggiunge il tool pubblico Sorteggio giornate con range 1-38, esclusioni e seed/JSON riproducibile; nessuna scrittura su Firebase e nessuna rimozione di funzionalita esistenti.",
       "V472 rimuove dal runtime footer le etichette hard-coded del clone e isola news.html FantaPetillo dai comunicati ZonaOrientale, senza cancellare funzionalita esistenti.",
       "V463 aggiunge una card Admin per trasformare la preview Firestore V460 in file JSON statici: config pubblica, manifest snapshot, snapshot stagione, honor e rose vuote.",
