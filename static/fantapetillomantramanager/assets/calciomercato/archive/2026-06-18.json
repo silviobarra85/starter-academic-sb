@@ -1,0 +1,5477 @@
+{
+  "version": "V324",
+  "date": "2026-06-18",
+  "timezone": "Europe/Rome",
+  "generatedAt": "2026-06-20T08:17:27.026Z",
+  "sourceMode": "static-rss-archive",
+  "sources": [
+    {
+      "id": "tmw-atalanta",
+      "name": "TMW Atalanta",
+      "url": "https://www.tuttomercatoweb.com/atalanta/",
+      "feedUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/atalanta/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Atalanta"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-bologna",
+      "name": "TMW Bologna",
+      "url": "https://www.tuttomercatoweb.com/bologna/",
+      "feedUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/bologna/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Bologna"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-cagliari",
+      "name": "TMW Cagliari",
+      "url": "https://www.tuttomercatoweb.com/cagliari/",
+      "feedUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/cagliari/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Cagliari"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-como",
+      "name": "TMW Como",
+      "url": "https://www.tuttomercatoweb.com/como/",
+      "feedUrl": "https://www.tuttomercatoweb.com/como/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/como/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Como"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-fiorentina",
+      "name": "TMW Fiorentina",
+      "url": "https://www.tuttomercatoweb.com/fiorentina/",
+      "feedUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/fiorentina/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Fiorentina"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-frosinone",
+      "name": "TMW Frosinone",
+      "url": "https://www.tuttomercatoweb.com/frosinone/",
+      "feedUrl": "https://www.tuttomercatoweb.com/frosinone/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/frosinone/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Frosinone"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-genoa",
+      "name": "TMW Genoa",
+      "url": "https://www.tuttomercatoweb.com/genoa/",
+      "feedUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/genoa/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Genoa"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-inter",
+      "name": "TMW Inter",
+      "url": "https://www.tuttomercatoweb.com/inter/",
+      "feedUrl": "https://www.tuttomercatoweb.com/inter/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/inter/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Inter"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-juventus",
+      "name": "TMW Juventus",
+      "url": "https://www.tuttomercatoweb.com/juventus/",
+      "feedUrl": "https://www.tuttomercatoweb.com/juventus/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/juventus/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Juventus"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-lazio",
+      "name": "TMW Lazio",
+      "url": "https://www.tuttomercatoweb.com/lazio/",
+      "feedUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/lazio/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Lazio"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-lecce",
+      "name": "TMW Lecce",
+      "url": "https://www.tuttomercatoweb.com/lecce/",
+      "feedUrl": "https://www.tuttomercatoweb.com/lecce/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/lecce/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Lecce"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-milan",
+      "name": "TMW Milan",
+      "url": "https://www.tuttomercatoweb.com/milan/",
+      "feedUrl": "https://www.tuttomercatoweb.com/milan/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/milan/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Milan"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-monza",
+      "name": "TMW Monza",
+      "url": "https://www.tuttomercatoweb.com/monza/",
+      "feedUrl": "https://www.tuttomercatoweb.com/monza/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/monza/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Monza"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-napoli",
+      "name": "TMW Napoli",
+      "url": "https://www.tuttomercatoweb.com/napoli/",
+      "feedUrl": "https://www.tuttomercatoweb.com/napoli/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/napoli/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Napoli"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-parma",
+      "name": "TMW Parma",
+      "url": "https://www.tuttomercatoweb.com/parma/",
+      "feedUrl": "https://www.tuttomercatoweb.com/parma/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/parma/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Parma"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-roma",
+      "name": "TMW Roma",
+      "url": "https://www.tuttomercatoweb.com/roma/",
+      "feedUrl": "https://www.tuttomercatoweb.com/roma/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/roma/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Roma"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-sassuolo",
+      "name": "TMW Sassuolo",
+      "url": "https://www.tuttomercatoweb.com/sassuolo/",
+      "feedUrl": "https://www.tuttomercatoweb.com/sassuolo/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/sassuolo/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Sassuolo"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-torino",
+      "name": "TMW Torino",
+      "url": "https://www.tuttomercatoweb.com/torino/",
+      "feedUrl": "https://www.tuttomercatoweb.com/torino/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/torino/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Torino"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-udinese",
+      "name": "TMW Udinese",
+      "url": "https://www.tuttomercatoweb.com/udinese/",
+      "feedUrl": "https://www.tuttomercatoweb.com/udinese/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/udinese/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Udinese"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "tmw-venezia",
+      "name": "TMW Venezia",
+      "url": "https://www.tuttomercatoweb.com/venezia/",
+      "feedUrl": "https://www.tuttomercatoweb.com/venezia/",
+      "feedUrls": [
+        "https://www.tuttomercatoweb.com/venezia/"
+      ],
+      "enabled": true,
+      "sourceType": "tmw-team-html",
+      "parseMode": "html",
+      "defaultTeams": [
+        "Venezia"
+      ],
+      "fallbackImageMode": "tmw-team-text"
+    },
+    {
+      "id": "sosfanta",
+      "name": "SOS Fanta",
+      "url": "https://www.sosfanta.com",
+      "feedUrl": "https://www.sosfanta.com/feed/",
+      "feedUrls": [
+        "https://www.sosfanta.com/feed/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    },
+    {
+      "id": "gianlucadimarzio",
+      "name": "Gianluca Di Marzio",
+      "url": "https://gianlucadimarzio.com",
+      "feedUrl": "https://gianlucadimarzio.com/rss/",
+      "feedUrls": [
+        "https://gianlucadimarzio.com/rss/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    },
+    {
+      "id": "fantacalcio",
+      "name": "Fantacalcio.it",
+      "url": "https://www.fantacalcio.it",
+      "feedUrl": "https://rss.fantacalcio.it/",
+      "feedUrls": [
+        "https://rss.fantacalcio.it/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    },
+    {
+      "id": "calciomercato-it",
+      "name": "CalcioMercato.it",
+      "url": "https://www.calciomercato.it",
+      "feedUrl": "https://www.calciomercato.it/feed/",
+      "feedUrls": [
+        "https://www.calciomercato.it/feed/"
+      ],
+      "enabled": true,
+      "sourceType": "",
+      "parseMode": "",
+      "defaultTeams": [],
+      "fallbackImageMode": ""
+    }
+  ],
+  "warnings": [],
+  "feedRange": {
+    "earliest": "2026-05-26T18:41:00.000Z",
+    "latest": "2026-06-20T10:10:06.000Z",
+    "totalBeforeDateRange": 892,
+    "totalFetched": 892,
+    "totalAfterQueryBeforeDateRange": 892
+  },
+  "stats": {
+    "existingArticles": 0,
+    "fetchedArticles": 129,
+    "totalArticles": 128,
+    "duplicatesSkipped": 1
+  },
+  "articles": [
+    {
+      "id": "tmw-atalanta-19-aHR0cHM6Ly93",
+      "title": "Palestra all'Inter per 50 milioni fa discutere gli studi tv. Zenga: \"Cifre eccessive\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/palestra-all-inter-50-discutere-studi-tv-zenga-cifre-eccessive-2245533",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T23:59:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Inter"
+        ],
+        "people": [
+          "Palestra"
+        ],
+        "players": [
+          "Palestra"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/palestra-all-inter-50-discutere-studi-tv-zenga-cifre-eccessive-2245533"
+    },
+    {
+      "id": "tmw-atalanta-20-aHR0cHM6Ly93",
+      "title": "Atalanta, il Parma mostra interesse per Daniel Maldini. Dipenderà anche da Sarri",
+      "url": "https://www.tuttomercatoweb.com/serie-a/atalanta-parma-mostra-interesse-daniel-maldini-dipendera-sarri-2245547",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T23:58:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Atalanta",
+        "Parma"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Parma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Daniel Maldini. Dipenderà"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Parma"
+        ],
+        "people": [
+          "Daniel Maldini. Dipenderà"
+        ],
+        "players": [
+          "Daniel Maldini. Dipenderà"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/atalanta-parma-mostra-interesse-daniel-maldini-dipendera-sarri-2245547"
+    },
+    {
+      "id": "tmw-cagliari-8-aHR0cHM6Ly93",
+      "title": "Cagliari, c'è Daffara nel mirino oltre ad Adzic: il club sardo guarda in casa Juventus",
+      "url": "https://www.tuttomercatoweb.com/serie-a/cagliari-c-e-daffara-mirino-adzic-club-sardo-guarda-casa-juventus-2245530",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T23:55:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari",
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Cagliari",
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Daffara"
+      ],
+      "entities": {
+        "teams": [
+          "Cagliari",
+          "Juventus"
+        ],
+        "people": [
+          "Daffara"
+        ],
+        "players": [
+          "Daffara"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/cagliari-c-e-daffara-mirino-adzic-club-sardo-guarda-casa-juventus-2245530"
+    },
+    {
+      "id": "tmw-fiorentina-17-aHR0cHM6Ly93",
+      "title": "Fiorentina, è Arnau Martinez il dopo Dodô: Paratici ci prova per il classe 2003 del Girona",
+      "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-arnau-martinez-dodo-paratici-prova-classe-2003-girona-2245539",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T23:50:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/fiorentina-arnau-martinez-dodo-paratici-prova-classe-2003-girona-2245539"
+    },
+    {
+      "id": "sosfanta-46-aHR0cHM6Ly93",
+      "title": "Da Muani a Brahim Diaz: ecco le novità di mercato sulla Juve di Carnevali, il punto di Fabrizio Romano",
+      "url": "https://www.sosfanta.com/calciomercato/da-muani-a-brahim-diaz-ecco-le-novita-di-mercato-sulla-juve-di-carnevali-il-punto-di-fabrizio-romano/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Fabrizio Romano, sul suo canale YouTube, ha fatto il punto sul mercato della Juventus, soffermandosi in particolare su due profili offensivi seguiti con attenzione dalla dirigenza bianconera.",
+      "image": "",
+      "publishedAt": "2026-06-18T21:45:43.000Z",
+      "topic": "Fantacalcio",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/da-muani-a-brahim-diaz-ecco-le-novita-di-mercato-sulla-juve-di-carnevali-il-punto-di-fabrizio-romano"
+    },
+    {
+      "id": "tmw-bologna-11-aHR0cHM6Ly93",
+      "title": "Carnevali pensa al 'suo' Muharemovic per la Juventus. Distanza col Bologna per Lucumi",
+      "url": "https://www.tuttomercatoweb.com/serie-a/carnevali-pensa-suo-muharemovic-juventus-distanza-bologna-lucumi-2245540",
+      "sourceId": "tmw-bologna",
+      "sourceName": "TMW Bologna",
+      "sourceUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9f/9f2488e63b699634309f96b3f6eed147-46321-oooz0000.webp",
+      "publishedAt": "2026-06-18T23:40:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Bologna",
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Lucumi"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Juventus"
+        ],
+        "people": [
+          "Lucumi"
+        ],
+        "players": [
+          "Lucumi"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/carnevali-pensa-suo-muharemovic-juventus-distanza-bologna-lucumi-2245540"
+    },
+    {
+      "id": "tmw-genoa-11-aHR0cHM6Ly93",
+      "title": "Roma, Ekhator può essere un profilo per l'attacco. Può giocare in tutti i ruoli davanti",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-ekhator-profilo-l-attacco-giocare-ruoli-2245538",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.webp",
+      "publishedAt": "2026-06-18T23:35:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-ekhator-profilo-l-attacco-giocare-ruoli-2245538"
+    },
+    {
+      "id": "sosfanta-47-aHR0cHM6Ly93",
+      "title": "Napoli, in attesa dell’ufficialità c’è una novità sul contratto di Allegri: la durata…",
+      "url": "https://www.sosfanta.com/news/napoli-ce-una-novita-sul-contratto-di-allegri-di-cosa-si-tratta/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "L’attesa per l’annuncio ufficiale dell’arrivo di Massimiliano Allegri sulla panchina del Napoli continua. La firma non è in dubbio: si attende soltanto la risoluzione del contratto che lega ancora l’allenatore al Milan. Nel frattempo,...",
+      "image": "",
+      "publishedAt": "2026-06-18T21:30:52.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Milan",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Milan",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan",
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/napoli-ce-una-novita-sul-contratto-di-allegri-di-cosa-si-tratta"
+    },
+    {
+      "id": "calciomercato-it-18-aHR0cHM6Ly93",
+      "title": "Il Milan accelera per Zaniolo, occhio alla concorrenza del Napoli | CM",
+      "url": "https://www.calciomercato.it/2026/06/18/il-milan-accelera-per-zaniolo-occhio-alla-concorrenza-del-napoli-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Il Milan accelera per Zaniolo, occhio alla concorrenza del Napoli | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T21:23:01.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Milan",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Zaniolo"
+      ],
+      "entities": {
+        "teams": [
+          "Milan",
+          "Napoli"
+        ],
+        "people": [
+          "Zaniolo"
+        ],
+        "players": [
+          "Zaniolo"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/il-milan-accelera-per-zaniolo-occhio-alla-concorrenza-del-napoli-cm"
+    },
+    {
+      "id": "tmw-cagliari-9-aHR0cHM6Ly93",
+      "title": "Sassuolo a caccia di un terzino destro: nella short list ci sono anche Zappa e Calabria",
+      "url": "https://www.tuttomercatoweb.com/serie-a/sassuolo-caccia-terzino-destro-short-list-zappa-calabria-2245532",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T23:22:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari",
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Cagliari",
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Cagliari",
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/sassuolo-caccia-terzino-destro-short-list-zappa-calabria-2245532"
+    },
+    {
+      "id": "tmw-lazio-37-aHR0cHM6Ly93",
+      "title": "Svizzera-Bosnia Erzegovina 4-1: il tabellino della gara",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/svizzera-bosnia-erzegovina-4-1-tabellino-gara-2245527",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T23:10:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/svizzera-bosnia-erzegovina-4-1-tabellino-gara-2245527"
+    },
+    {
+      "id": "tmw-sassuolo-17-aHR0cHM6Ly93",
+      "title": "Il Mondiale per accrescere il valore, ma non per Muharemovic. Il suo può essere già finito",
+      "url": "https://www.tuttomercatoweb.com/serie-a/mondiale-accrescere-valore-muharemovic-finito-2245525",
+      "sourceId": "tmw-sassuolo",
+      "sourceName": "TMW Sassuolo",
+      "sourceUrl": "https://www.tuttomercatoweb.com/sassuolo/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/54532e29838c4f262a3d42dc0de252c4-53851-oooz0000.webp",
+      "publishedAt": "2026-06-18T23:08:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Muharemovic. Il"
+      ],
+      "entities": {
+        "teams": [
+          "Sassuolo"
+        ],
+        "people": [
+          "Muharemovic. Il"
+        ],
+        "players": [
+          "Muharemovic. Il"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/mondiale-accrescere-valore-muharemovic-finito-2245525"
+    },
+    {
+      "id": "calciomercato-it-19-aHR0cHM6Ly93",
+      "title": "Il gioiello del ‘Toro’ e il sostituto di De Vrij: l’agente incontra l’Inter | CM",
+      "url": "https://www.calciomercato.it/2026/06/18/il-gioiello-del-toro-e-il-sostituto-di-de-vrij-lagente-incontra-linter-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Il gioiello del ‘Toro’ e il sostituto di De Vrij: l’agente incontra l’Inter | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T21:06:31.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Torino"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Inter",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/il-gioiello-del-toro-e-il-sostituto-di-de-vrij-lagente-incontra-linter-cm"
+    },
+    {
+      "id": "sosfanta-48-aHR0cHM6Ly93",
+      "title": "Romano – Palestra, dall’offerta dell’Inter al Chelsea spettatore: le novità e il perché dell’incontro",
+      "url": "https://www.sosfanta.com/calciomercato/romano-palestra-dallofferta-dellinter-al-chelsea-spettatore-le-novita-e-il-perche-dellincontro/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Fabrizio Romano, sul suo canale YouTube, si è soffermato sulla situazione legata a Marco Palestra, il principale obiettivo di mercato dell’Inter in questa fase.",
+      "image": "",
+      "publishedAt": "2026-06-18T21:00:34.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/calciomercato",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/calciomercato/romano-palestra-dallofferta-dellinter-al-chelsea-spettatore-le-novita-e-il-perche-dellincontro"
+    },
+    {
+      "id": "calciomercato-it-20-aHR0cHM6Ly93",
+      "title": "PAGELLE E TABELLINO Svizzera-Bosnia Herzegovina 4-1: Manzambi e Vargas show",
+      "url": "https://www.calciomercato.it/2026/06/18/pagelle-e-tabellino-svizzera-bosnia-herzegovina-4-1-manzambi-e-vargas-show/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo PAGELLE E TABELLINO Svizzera-Bosnia Herzegovina 4-1: Manzambi e Vargas show proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T20:59:21.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Notizie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/pagelle-e-tabellino-svizzera-bosnia-herzegovina-4-1-manzambi-e-vargas-show"
+    },
+    {
+      "id": "tmw-lecce-5-aHR0cHM6Ly93",
+      "title": "Sampdoria, nome nuovo per la panchina: in salita le quotazioni di Luca Gotti",
+      "url": "https://www.tuttomercatoweb.com/serie-b/sampdoria-panchina-salita-quotazioni-luca-gotti-2245520",
+      "sourceId": "tmw-lecce",
+      "sourceName": "TMW Lecce",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lecce/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/95/95f3ac8f2d045c6fbe8bdef80c032e2f-43474-oooz0000.webp",
+      "publishedAt": "2026-06-18T22:47:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-b/sampdoria-panchina-salita-quotazioni-luca-gotti-2245520"
+    },
+    {
+      "id": "tmw-venezia-4-aHR0cHM6Ly93",
+      "title": "Svoboda a un passo dalla Premier League: Brighton pronto a pagare la clausola, i dettagli",
+      "url": "https://www.tuttomercatoweb.com/serie-a/svoboda-passo-premier-league-brighton-pronto-pagare-clausola-dettagli-2245519",
+      "sourceId": "tmw-venezia",
+      "sourceName": "TMW Venezia",
+      "sourceUrl": "https://www.tuttomercatoweb.com/venezia/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/11/11ae52f230227086b0877a388316320a-49032-oooz0000.webp",
+      "publishedAt": "2026-06-18T22:43:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Venezia"
+      ],
+      "detectedTeams": [
+        "Venezia"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Venezia"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/svoboda-passo-premier-league-brighton-pronto-pagare-clausola-dettagli-2245519"
+    },
+    {
+      "id": "tmw-fiorentina-18-aHR0cHM6Ly93",
+      "title": "Harder pronto a lasciare ancora la Fiorentina: oltre al Frosinone c'è il Modena di Galloppa",
+      "url": "https://www.tuttomercatoweb.com/serie-a/harder-pronto-lasciare-fiorentina-frosinone-c-e-modena-galloppa-2245502",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T22:36:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina",
+        "Frosinone"
+      ],
+      "detectedTeams": [
+        "Fiorentina",
+        "Frosinone"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina",
+          "Frosinone"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/harder-pronto-lasciare-fiorentina-frosinone-c-e-modena-galloppa-2245502"
+    },
+    {
+      "id": "calciomercato-it-21-aHR0cHM6Ly93",
+      "title": "Juve e Roma su Viery: dalle cifre alla concorrenza, il punto | ESCLUSIVO",
+      "url": "https://www.calciomercato.it/2026/06/18/juve-e-roma-su-viery-dalle-cifre-alla-concorrenza-il-punto-esclusivo/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve e Roma su Viery: dalle cifre alla concorrenza, il punto | ESCLUSIVO proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T20:33:02.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Juventus",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Viery"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus",
+          "Roma"
+        ],
+        "people": [
+          "Viery"
+        ],
+        "players": [
+          "Viery"
+        ]
+      },
+      "tags": [
+        "Notizie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/juve-e-roma-su-viery-dalle-cifre-alla-concorrenza-il-punto-esclusivo"
+    },
+    {
+      "id": "sosfanta-49-aHR0cHM6Ly93",
+      "title": "Juve, obiettivo 12-13 milioni di plusvalenze entro il 30 giugno: ecco chi può partire tra i big",
+      "url": "https://www.sosfanta.com/news/juve-obiettivo-12-13-milioni-di-plusvalenze-entro-il-30-giugno-ecco-chi-puo-partire-tra-i-big/",
+      "sourceId": "sosfanta",
+      "sourceName": "SOS Fanta",
+      "description": "Priorità risistemare i conti per il nuovo ad della Juventus Giovanni Carnevali: il dirigente dovrà realizzare 12-13 milioni di plusvalenze entro il 30 giugno e, secondo il Corriere dello Sport, può arrivare anche una cessione eccellente. Si...",
+      "image": "",
+      "publishedAt": "2026-06-18T20:30:31.000Z",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "/news",
+        "Fantacalcio"
+      ],
+      "canonicalKey": "url:sosfanta.com/news/juve-obiettivo-12-13-milioni-di-plusvalenze-entro-il-30-giugno-ecco-chi-puo-partire-tra-i-big"
+    },
+    {
+      "id": "tmw-bologna-12-aHR0cHM6Ly93",
+      "title": "Due squadre di Serie A su un talentino del City: Gray nel mirino di Lazio e Bologna",
+      "url": "https://www.tuttomercatoweb.com/serie-a/squadre-serie-talentino-city-gray-mirino-lazio-bologna-2245496",
+      "sourceId": "tmw-bologna",
+      "sourceName": "TMW Bologna",
+      "sourceUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9f/9f2488e63b699634309f96b3f6eed147-46321-oooz0000.webp",
+      "publishedAt": "2026-06-18T22:25:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Bologna",
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gray"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Lazio"
+        ],
+        "people": [
+          "Gray"
+        ],
+        "players": [
+          "Gray"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/squadre-serie-talentino-city-gray-mirino-lazio-bologna-2245496"
+    },
+    {
+      "id": "tmw-sassuolo-18-aHR0cHM6Ly93",
+      "title": "Koné non mette limiti al Canada: \"Vinciamo e passiamo il girone, dobbiamo essere ambiziosi\"",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/kone-mette-limiti-canada-vinciamo-passiamo-girone-dobbiamo-ambiziosi-2245486",
+      "sourceId": "tmw-sassuolo",
+      "sourceName": "TMW Sassuolo",
+      "sourceUrl": "https://www.tuttomercatoweb.com/sassuolo/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/54532e29838c4f262a3d42dc0de252c4-53851-oooz0000.webp",
+      "publishedAt": "2026-06-18T22:15:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/kone-mette-limiti-canada-vinciamo-passiamo-girone-dobbiamo-ambiziosi-2245486"
+    },
+    {
+      "id": "tmw-como-19-aHR0cHM6Ly93",
+      "title": "Inter, Chivu rinnova. Juve tra Kolo Muani e Vicario, Camarda è del Milan: le top news delle 22",
+      "url": "https://www.tuttomercatoweb.com/serie-a/inter-chivu-rinnova-juve-kolo-muani-vicario-camarda-milan-top-news-22-2245506",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T22:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como",
+        "Inter",
+        "Juventus",
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Como",
+        "Inter",
+        "Juventus",
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Chivu"
+      ],
+      "entities": {
+        "teams": [
+          "Como",
+          "Inter",
+          "Juventus",
+          "Milan"
+        ],
+        "people": [
+          "Chivu"
+        ],
+        "players": [
+          "Chivu"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/inter-chivu-rinnova-juve-kolo-muani-vicario-camarda-milan-top-news-22-2245506"
+    },
+    {
+      "id": "tmw-lazio-40-aHR0cHM6Ly93",
+      "title": "Ballotta: \"Lotito ha un grandissimo merito. Gattuso alla Lazio? Scelta ponderata\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/ballotta-lotito-grandissimo-merito-gattuso-lazio-scelta-ponderata-2245492",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T21:29:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gattuso"
+      ],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [
+          "Gattuso"
+        ],
+        "players": [
+          "Gattuso"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/ballotta-lotito-grandissimo-merito-gattuso-lazio-scelta-ponderata-2245492"
+    },
+    {
+      "id": "calciomercato-it-22-aHR0cHM6Ly93",
+      "title": "Inter, scelto l’erede di Bastoni: arriva da un’altra big di Serie A",
+      "url": "https://www.calciomercato.it/2026/06/18/inter-scelto-lerede-di-bastoni-arriva-da-unaltra-big-di-serie-a/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Inter, scelto l’erede di Bastoni: arriva da un’altra big di Serie A proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T19:10:47.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Inter",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/inter-scelto-lerede-di-bastoni-arriva-da-unaltra-big-di-serie-a"
+    },
+    {
+      "id": "tmw-atalanta-21-aHR0cHM6Ly93",
+      "title": "De Roon: \"Sento Gasperini ogni tanto, grazie a lui sono molto più forte\". Poi parla della Roma",
+      "url": "https://www.tuttomercatoweb.com/serie-a/de-roon-sento-gasperini-tanto-forte-parla-roma-2245437",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T21:10:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/de-roon-sento-gasperini-tanto-forte-parla-roma-2245437"
+    },
+    {
+      "id": "tmw-sassuolo-19-aHR0cHM6Ly93",
+      "title": "Koné: \"Ho sempre avuto talento, vi racconto come sono arrivato al Sassuolo da Marsiglia\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/kone-ho-talento-racconto-arrivato-sassuolo-marsiglia-2245483",
+      "sourceId": "tmw-sassuolo",
+      "sourceName": "TMW Sassuolo",
+      "sourceUrl": "https://www.tuttomercatoweb.com/sassuolo/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/54532e29838c4f262a3d42dc0de252c4-53851-oooz0000.webp",
+      "publishedAt": "2026-06-18T20:59:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/kone-ho-talento-racconto-arrivato-sassuolo-marsiglia-2245483"
+    },
+    {
+      "id": "tmw-roma-42-aHR0cHM6Ly93",
+      "title": "Malen: \"Voglio fare gol e vincere il Mondiale. Dieta? Più veloce se non mangio glutine\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/malen-voglio-gol-vincere-mondiale-dieta-veloce-mangio-glutine-2245470",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T20:30:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/malen-voglio-gol-vincere-mondiale-dieta-veloce-mangio-glutine-2245470"
+    },
+    {
+      "id": "tmw-lazio-41-aHR0cHM6Ly93",
+      "title": "Repubblica Ceca-Sudafrica 1-1: il tabellino della gara",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/repubblica-ceca-sudafrica-1-1-tabellino-gara-2245468",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T20:09:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/repubblica-ceca-sudafrica-1-1-tabellino-gara-2245468"
+    },
+    {
+      "id": "tmw-roma-44-aHR0cHM6Ly93",
+      "title": "Roma, le mosse per alzare l’asticella. Brasile, l’attesa per il decollo",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-mosse-alzare-l-asticella-brasile-l-attesa-decollo-2245463",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T20:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-mosse-alzare-l-asticella-brasile-l-attesa-decollo-2245463"
+    },
+    {
+      "id": "tmw-atalanta-22-aHR0cHM6Ly93",
+      "title": "Svizzera-Bosnia, le formazioni ufficiali: sette 'italiani' tra titolari e chi è in panchina",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/svizzera-bosnia-formazioni-ufficiali-italiani-titolari-panchina-2245465",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T19:58:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/svizzera-bosnia-formazioni-ufficiali-italiani-titolari-panchina-2245465"
+    },
+    {
+      "id": "tmw-genoa-12-aHR0cHM6Ly93",
+      "title": "Trento, triangolare di prestigio al Briamasco: i gialloblù sfideranno Sassuolo e Parma",
+      "url": "https://www.tuttomercatoweb.com/serie-c/trento-triangolare-prestigio-briamasco-gialloblu-sfideranno-sassuolo-parma-2245451",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.webp",
+      "publishedAt": "2026-06-18T19:52:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa",
+        "Parma",
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Parma",
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Parma",
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-c/trento-triangolare-prestigio-briamasco-gialloblu-sfideranno-sassuolo-parma-2245451"
+    },
+    {
+      "id": "calciomercato-it-23-aHR0cHM6Ly93",
+      "title": "Juve, il nuovo centrocampista arriva dalla Liga: 15 milioni",
+      "url": "https://www.calciomercato.it/2026/06/18/juve-il-nuovo-centrocampista-arriva-dalla-liga-15-milioni/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juve, il nuovo centrocampista arriva dalla Liga: 15 milioni proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T17:45:03.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/juve-il-nuovo-centrocampista-arriva-dalla-liga-15-milioni"
+    },
+    {
+      "id": "tmw-atalanta-23-aHR0cHM6Ly93",
+      "title": "50 milioni per sostituire Dumfries: con Palestra l'Inter sta cambiando filosofia sul mercato",
+      "url": "https://www.tuttomercatoweb.com/serie-a/50-sostituire-dumfries-palestra-l-inter-cambiando-filosofia-mercato-2245445",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T19:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/50-sostituire-dumfries-palestra-l-inter-cambiando-filosofia-mercato-2245445"
+    },
+    {
+      "id": "tmw-udinese-10-aHR0cHM6Ly93",
+      "title": "Larini suggerisce due protagonisti a sorpresa per l'Udinese 2026/27: \"Arizala e Miller\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/larini-suggerisce-protagonisti-sorpresa-l-udinese-2026-27-arizala-miller-2245439",
+      "sourceId": "tmw-udinese",
+      "sourceName": "TMW Udinese",
+      "sourceUrl": "https://www.tuttomercatoweb.com/udinese/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/ac/ac16768f0a624dd6581ff64e596e657b-00877-oooz0000.webp",
+      "publishedAt": "2026-06-18T19:40:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Udinese"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/larini-suggerisce-protagonisti-sorpresa-l-udinese-2026-27-arizala-miller-2245439"
+    },
+    {
+      "id": "tmw-lazio-42-aHR0cHM6Ly93",
+      "title": "Fenerbahce, colpo Muriqi! Sarà a Istanbul alle 21, domani mattina le visite mediche",
+      "url": "https://www.tuttomercatoweb.com/calcio-estero/fenerbahce-colpo-muriqi-istanbul-21-domani-mattina-visite-mediche-2245456",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T19:29:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Istanbul"
+      ],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [
+          "Istanbul"
+        ],
+        "players": [
+          "Istanbul"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/calcio-estero/fenerbahce-colpo-muriqi-istanbul-21-domani-mattina-visite-mediche-2245456"
+    },
+    {
+      "id": "tmw-cagliari-10-aHR0cHM6Ly93",
+      "title": "Sampdoria, ecco i primi test estivi: ci sono anche Cagliari e Parma. La nota",
+      "url": "https://www.tuttomercatoweb.com/serie-b/sampdoria-primi-test-estivi-cagliari-parma-nota-2245448",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T19:25:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari",
+        "Parma"
+      ],
+      "detectedTeams": [
+        "Cagliari",
+        "Parma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Cagliari",
+          "Parma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-b/sampdoria-primi-test-estivi-cagliari-parma-nota-2245448"
+    },
+    {
+      "id": "tmw-atalanta-24-aHR0cHM6Ly93",
+      "title": "Dopo la risoluzione con Bianco, il Monza stringe per Juric: attesa per l'annuncio",
+      "url": "https://www.tuttomercatoweb.com/serie-a/risoluzione-bianco-monza-stringe-juric-l-annuncio-2245452",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T19:14:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Monza"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Monza"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Juric"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Monza"
+        ],
+        "people": [
+          "Juric"
+        ],
+        "players": [
+          "Juric"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/risoluzione-bianco-monza-stringe-juric-l-annuncio-2245452"
+    },
+    {
+      "id": "tmw-roma-46-aHR0cHM6Ly93",
+      "title": "Cesena, ancora nessuna fumata bianca per Pagliuca. Oggi nuovo summit con la proprietà",
+      "url": "https://www.tuttomercatoweb.com/serie-b/cesena-fumata-bianca-pagliuca-summit-proprieta-2245446",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T19:04:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Pagliuca. Oggi"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Pagliuca. Oggi"
+        ],
+        "players": [
+          "Pagliuca. Oggi"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-b/cesena-fumata-bianca-pagliuca-summit-proprieta-2245446"
+    },
+    {
+      "id": "calciomercato-it-24-aHR0cHM6Ly93",
+      "title": "Inter, il giorno di Chivu: firma sul rinnovo e siparietto | VIDEO CM",
+      "url": "https://www.calciomercato.it/2026/06/18/inter-il-giorno-di-chivu-firma-sul-rinnovo-e-siparietto-video-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Inter, il giorno di Chivu: firma sul rinnovo e siparietto | VIDEO CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T17:02:51.000Z",
+      "topic": "Ufficiale",
+      "marketStatus": "",
+      "teams": [
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Inter",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/inter-il-giorno-di-chivu-firma-sul-rinnovo-e-siparietto-video-cm"
+    },
+    {
+      "id": "tmw-atalanta-25-aHR0cHM6Ly93",
+      "title": "De Roon: \"Lookman non fu messo fuori rosa, chiese lui di allenarsi da solo\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/de-roon-lookman-messo-rosa-chiese-allenarsi-solo-2245434",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T19:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/de-roon-lookman-messo-rosa-chiese-allenarsi-solo-2245434"
+    },
+    {
+      "id": "tmw-parma-13-aHR0cHM6Ly93",
+      "title": "Parma, nell'assetto dell'Area Sportiva 26/27 spicca la novità Crovari: sarà Football Pathway Manager",
+      "url": "https://www.tuttomercatoweb.com/serie-a/parma-nell-assetto-dell-area-sportiva-26-27-spicca-novita-crovari-football-pathway-manager-2245447",
+      "sourceId": "tmw-parma",
+      "sourceName": "TMW Parma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/parma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1b/1bbc1b53c3554d3aa7cff4da5ea772a0-40597-oooz0000.webp",
+      "publishedAt": "2026-06-18T18:59:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Parma"
+      ],
+      "detectedTeams": [
+        "Parma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Parma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/parma-nell-assetto-dell-area-sportiva-26-27-spicca-novita-crovari-football-pathway-manager-2245447"
+    },
+    {
+      "id": "tmw-como-20-aHR0cHM6Ly93",
+      "title": "Senza accordo economico, Zaniolo può lasciare l'Udinese: ci pensano Milan e Como",
+      "url": "https://www.tuttomercatoweb.com/serie-a/accordo-economico-zaniolo-lasciare-l-udinese-pensano-milan-como-2245441",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T18:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Como",
+        "Milan",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Como",
+        "Milan",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como",
+          "Milan",
+          "Udinese"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/accordo-economico-zaniolo-lasciare-l-udinese-pensano-milan-como-2245441"
+    },
+    {
+      "id": "calciomercato-it-25-aHR0cHM6Ly93",
+      "title": "Risultati partite Mondiali 2026: le classifiche aggiornate di tutti i gironi",
+      "url": "https://www.calciomercato.it/2026/06/18/risultati-partite-mondiali-2026-le-classifiche-aggiornate-di-tutti-i-gironi/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Risultati partite Mondiali 2026: le classifiche aggiornate di tutti i gironi proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T16:40:11.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Notizie",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/risultati-partite-mondiali-2026-le-classifiche-aggiornate-di-tutti-i-gironi"
+    },
+    {
+      "id": "tmw-lazio-43-aHR0cHM6Ly93",
+      "title": "L'Italia U17 campione d'Europa in FIGC e in Senato: complimenti da Gravina e La Russa",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/l-italia-u17-campione-d-europa-figc-senato-complimenti-gravina-russa-2245442",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T18:40:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/l-italia-u17-campione-d-europa-figc-senato-complimenti-gravina-russa-2245442"
+    },
+    {
+      "id": "calciomercato-it-26-aHR0cHM6Ly93",
+      "title": "Il Bologna su Miretti, Tedesco vuole il centrocampista della Juventus",
+      "url": "https://www.calciomercato.it/2026/06/18/il-bologna-su-miretti-tedesco-vuole-il-centrocampista-della-juventus/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Il Bologna su Miretti, Tedesco vuole il centrocampista della Juventus proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T16:22:28.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Bologna",
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Miretti"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Juventus"
+        ],
+        "people": [
+          "Miretti"
+        ],
+        "players": [
+          "Miretti"
+        ]
+      },
+      "tags": [
+        "Bologna",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/il-bologna-su-miretti-tedesco-vuole-il-centrocampista-della-juventus"
+    },
+    {
+      "id": "tmw-lecce-6-aHR0cHM6Ly93",
+      "title": "Tutto confermato: il Milan torna in controllo su Camarda. È stato controriscattato",
+      "url": "https://www.tuttomercatoweb.com/serie-a/confermato-milan-torna-controllo-camarda-controriscattato-2245436",
+      "sourceId": "tmw-lecce",
+      "sourceName": "TMW Lecce",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lecce/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/95/95f3ac8f2d045c6fbe8bdef80c032e2f-43474-oooz0000.webp",
+      "publishedAt": "2026-06-18T18:21:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lecce",
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Lecce",
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Camarda."
+      ],
+      "entities": {
+        "teams": [
+          "Lecce",
+          "Milan"
+        ],
+        "people": [
+          "Camarda."
+        ],
+        "players": [
+          "Camarda."
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/confermato-milan-torna-controllo-camarda-controriscattato-2245436"
+    },
+    {
+      "id": "tmw-atalanta-26-aHR0cHM6Ly93",
+      "title": "Palestra quasi da record: può diventare il 2° acquisto più oneroso della storia dell'Inter",
+      "url": "https://www.tuttomercatoweb.com/serie-a/palestra-record-2-acquisto-oneroso-storia-dell-inter-2245426",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T18:15:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/palestra-record-2-acquisto-oneroso-storia-dell-inter-2245426"
+    },
+    {
+      "id": "tmw-bologna-14-aHR0cHM6Ly93",
+      "title": "Corazza lascia di nuovo il Bologna, altro prestito in Serie B: lo aspetta il Vicenza",
+      "url": "https://www.tuttomercatoweb.com/serie-a/corazza-lascia-bologna-prestito-serie-b-aspetta-vicenza-2245433",
+      "sourceId": "tmw-bologna",
+      "sourceName": "TMW Bologna",
+      "sourceUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9f/9f2488e63b699634309f96b3f6eed147-46321-oooz0000.webp",
+      "publishedAt": "2026-06-18T18:09:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Bologna"
+      ],
+      "detectedTeams": [
+        "Bologna"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Bologna"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/corazza-lascia-bologna-prestito-serie-b-aspetta-vicenza-2245433"
+    },
+    {
+      "id": "tmw-bologna-15-aHR0cHM6Ly93",
+      "title": "Palestra si avvicina all'Inter, Chivu al rinnovo. Sergi Roberto lascia il Como: le top news delle 18",
+      "url": "https://www.tuttomercatoweb.com/serie-a/palestra-avvicina-all-inter-chivu-rinnovo-sergi-roberto-lascia-como-top-news-18-2245431",
+      "sourceId": "tmw-bologna",
+      "sourceName": "TMW Bologna",
+      "sourceUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9f/9f2488e63b699634309f96b3f6eed147-46321-oooz0000.webp",
+      "publishedAt": "2026-06-18T18:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Bologna",
+        "Como",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Como",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Chivu"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Como",
+          "Inter"
+        ],
+        "people": [
+          "Chivu"
+        ],
+        "players": [
+          "Chivu"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/palestra-avvicina-all-inter-chivu-rinnovo-sergi-roberto-lascia-como-top-news-18-2245431"
+    },
+    {
+      "id": "tmw-atalanta-27-aHR0cHM6Ly93",
+      "title": "Roma, Brambati: \"Soulè non sarebbe un sacrificio. Gasp vuole puntare al titolo\"",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/roma-brambati-soule-sacrificio-gasp-vuole-puntare-titolo-2245403",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T17:56:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/roma-brambati-soule-sacrificio-gasp-vuole-puntare-titolo-2245403"
+    },
+    {
+      "id": "tmw-genoa-14-aHR0cHM6Ly93",
+      "title": "Marcelo Vaz al Genoa, l'agente: \"Ricorda Armero, l'Inter l'ha trattato per diversi mesi\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/marcelo-vaz-genoa-l-agente-ricorda-armero-l-inter-l-ha-trattato-diversi-mesi-2245357",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.webp",
+      "publishedAt": "2026-06-18T17:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Genoa",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Marcelo Vaz"
+      ],
+      "entities": {
+        "teams": [
+          "Genoa",
+          "Inter"
+        ],
+        "people": [
+          "Marcelo Vaz"
+        ],
+        "players": [
+          "Marcelo Vaz"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/marcelo-vaz-genoa-l-agente-ricorda-armero-l-inter-l-ha-trattato-diversi-mesi-2245357"
+    },
+    {
+      "id": "tmw-roma-50-aHR0cHM6Ly93",
+      "title": "Gli 80 anni di Capello: dall'Inghilterra al Milan, è pioggia di auguri",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/80-capello-dall-inghilterra-milan-pioggia-auguri-2245424",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T17:40:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Milan",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Inghilterra"
+      ],
+      "entities": {
+        "teams": [
+          "Milan",
+          "Roma"
+        ],
+        "people": [
+          "Inghilterra"
+        ],
+        "players": [
+          "Inghilterra"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/80-capello-dall-inghilterra-milan-pioggia-auguri-2245424"
+    },
+    {
+      "id": "tmw-roma-51-aHR0cHM6Ly93",
+      "title": "Roma e una squadra da Champions. Soulé il sacrificio per arrivare a Greenwood?",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-squadra-champions-soule-sacrificio-arrivare-greenwood-2245423",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T17:35:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-squadra-champions-soule-sacrificio-arrivare-greenwood-2245423"
+    },
+    {
+      "id": "tmw-fiorentina-19-aHR0cHM6Ly93",
+      "title": "La Fiorentina punta su Comuzzo. Ma il prestito resta un'opzione percorribile",
+      "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-punta-comuzzo-prestito-resta-un-opzione-percorribile-2245417",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T17:23:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Comuzzo. Ma"
+      ],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [
+          "Comuzzo. Ma"
+        ],
+        "players": [
+          "Comuzzo. Ma"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/fiorentina-punta-comuzzo-prestito-resta-un-opzione-percorribile-2245417"
+    },
+    {
+      "id": "tmw-fiorentina-20-aHR0cHM6Ly93",
+      "title": "Italia, Soncin dopo i sorteggi: \"Mondiale è un grande sogno. Lo vogliamo con tutte noi stesse\"",
+      "url": "https://www.tuttomercatoweb.com/calcio-femminile/italia-soncin-sorteggi-mondiale-sogno-vogliamo-stesse-2245411",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T17:19:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/calcio-femminile/italia-soncin-sorteggi-mondiale-sogno-vogliamo-stesse-2245411"
+    },
+    {
+      "id": "tmw-como-22-aHR0cHM6Ly93",
+      "title": "Como, Suwarso ringrazia Sergi Roberto: \"Questa sarà sempre casa tua\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/como-suwarso-ringrazia-sergi-roberto-questa-casa-tua-2245415",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T17:17:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/como-suwarso-ringrazia-sergi-roberto-questa-casa-tua-2245415"
+    },
+    {
+      "id": "tmw-atalanta-28-aHR0cHM6Ly93",
+      "title": "Inter, Paganini: \"Palestra? La vicenda Lookman deve aver insegnato qualcosa\"",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/inter-paganini-palestra-vicenda-lookman-insegnato-qualcosa-2245396",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T17:08:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/inter-paganini-palestra-vicenda-lookman-insegnato-qualcosa-2245396"
+    },
+    {
+      "id": "calciomercato-it-27-aHR0cHM6Ly93",
+      "title": "Una freccia da 30 milioni per Juve e Roma: missione mondiale",
+      "url": "https://www.calciomercato.it/2026/06/18/una-freccia-da-30-milioni-per-juve-e-roma-missione-mondiale/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Una freccia da 30 milioni per Juve e Roma: missione mondiale proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T15:00:31.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Juventus",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Juve"
+      ],
+      "entities": {
+        "teams": [
+          "Juventus",
+          "Roma"
+        ],
+        "people": [
+          "Juve"
+        ],
+        "players": [
+          "Juve"
+        ]
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/una-freccia-da-30-milioni-per-juve-e-roma-missione-mondiale"
+    },
+    {
+      "id": "tmw-atalanta-29-aHR0cHM6Ly93",
+      "title": "Inter, Lorenzo Amoruso: \"Alla fine si chiuderà l'affare per Palestra\"",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/inter-lorenzo-amoruso-alla-chiudera-l-affare-palestra-2245395",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T16:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Palestra"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Inter"
+        ],
+        "people": [
+          "Palestra"
+        ],
+        "players": [
+          "Palestra"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/inter-lorenzo-amoruso-alla-chiudera-l-affare-palestra-2245395"
+    },
+    {
+      "id": "tmw-roma-53-aHR0cHM6Ly93",
+      "title": "Roma, nome nuovo dal Portogallo: occhi sull'attaccante Fajardo",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-portogallo-occhi-sull-attaccante-fajardo-2245406",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T16:40:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-portogallo-occhi-sull-attaccante-fajardo-2245406"
+    },
+    {
+      "id": "tmw-como-23-aHR0cHM6Ly93",
+      "title": "Como, Sergi Roberto lascia a scadenza: \"Incredibilmente orgoglioso del percorso\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/como-sergi-roberto-lascia-scadenza-incredibilmente-orgoglioso-percorso-2245402",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T16:30:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/como-sergi-roberto-lascia-scadenza-incredibilmente-orgoglioso-percorso-2245402"
+    },
+    {
+      "id": "tmw-cagliari-11-aHR0cHM6Ly93",
+      "title": "Dai 30 milioni del Milan alla Roma, sarà l'estate buona per vedere Armando Broja in Italia?",
+      "url": "https://www.tuttomercatoweb.com/serie-a/30-milan-roma-l-estate-buona-vedere-armando-broja-italia-2245400",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T16:19:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari",
+        "Milan",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Cagliari",
+        "Milan",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Cagliari",
+          "Milan",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/30-milan-roma-l-estate-buona-vedere-armando-broja-italia-2245400"
+    },
+    {
+      "id": "tmw-atalanta-30-aHR0cHM6Ly93",
+      "title": "Lazio, Bucchioni: \"Non c'è via d'uscita per Lotito che vendere il club\"",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/lazio-bucchioni-non-c-e-via-d-uscita-lotito-vendere-club-2245394",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T16:05:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Lotito"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Lazio"
+        ],
+        "people": [
+          "Lotito"
+        ],
+        "players": [
+          "Lotito"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/lazio-bucchioni-non-c-e-via-d-uscita-lotito-vendere-club-2245394"
+    },
+    {
+      "id": "tmw-fiorentina-23-aHR0cHM6Ly93",
+      "title": "Una gestione da dilettanti per il club italiano più titolato in Europa. Milan, così non va e le scuse...",
+      "url": "https://www.tuttomercatoweb.com/editoriale/gestione-dilettanti-club-italiano-titolato-europa-milan-scuse-finite-cardinale-stare-societa-parte-ibrahimovic-dirigente-giusto-2245092",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T16:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina",
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Fiorentina",
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina",
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/editoriale/gestione-dilettanti-club-italiano-titolato-europa-milan-scuse-finite-cardinale-stare-societa-parte-ibrahimovic-dirigente-giusto-2245092"
+    },
+    {
+      "id": "calciomercato-it-28-aHR0cHM6Ly93",
+      "title": "Juventus, Martinez non si sblocca: nuova pista dalla Serie A (e dal Mondiale) | CM",
+      "url": "https://www.calciomercato.it/2026/06/18/juventus-martinez-non-si-sblocca-nuova-pista-dalla-serie-a-e-dal-mondiale-cm/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Juventus, Martinez non si sblocca: nuova pista dalla Serie A (e dal Mondiale) | CM proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T13:50:38.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus"
+      ],
+      "detectedTeams": [
+        "Juventus"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Juventus",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/juventus-martinez-non-si-sblocca-nuova-pista-dalla-serie-a-e-dal-mondiale-cm"
+    },
+    {
+      "id": "tmw-fiorentina-24-aHR0cHM6Ly93",
+      "title": "Fiorentina, niente riscatto dal PAOK per Alessandro Bianco: le ultime sul suo futuro",
+      "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-riscatto-paok-alessandro-bianco-ultime-2245388",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T15:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Alessandro Bianco"
+      ],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [
+          "Alessandro Bianco"
+        ],
+        "players": [
+          "Alessandro Bianco"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/fiorentina-riscatto-paok-alessandro-bianco-ultime-2245388"
+    },
+    {
+      "id": "tmw-lazio-47-aHR0cHM6Ly93",
+      "title": "Milan, Dario Canovi: \"Ma che progetto è questo? E Ibra se ne frega\"",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/milan-dario-canovi-ma-progetto-questo-ibra-frega-2245387",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T15:35:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio",
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Lazio",
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio",
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/milan-dario-canovi-ma-progetto-questo-ibra-frega-2245387"
+    },
+    {
+      "id": "tmw-roma-56-aHR0cHM6Ly93",
+      "title": "Roma, Soulé può uscire ma Dybala e Pellegrini restano. In bilico il rinnovo di Celik",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-soule-uscire-dybala-pellegrini-restano-bilico-rinnovo-celik-2245384",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T15:34:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-soule-uscire-dybala-pellegrini-restano-bilico-rinnovo-celik-2245384"
+    },
+    {
+      "id": "tmw-como-24-aHR0cHM6Ly93",
+      "title": "L'ex Napoli e Como Crispino nuovo volto della tv: parteciperà al reality Temptation Island",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/l-ex-napoli-como-crispino-volto-tv-partecipera-reality-temptation-island-2245382",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T15:26:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Como",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como",
+          "Napoli"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/l-ex-napoli-como-crispino-volto-tv-partecipera-reality-temptation-island-2245382"
+    },
+    {
+      "id": "tmw-atalanta-31-aHR0cHM6Ly93",
+      "title": "Gasperini e D'Amico puntano l'Atalanta per rinforzare la Roma: Zappacosta supera Dodò",
+      "url": "https://www.tuttomercatoweb.com/serie-a/gasperini-d-amico-puntano-l-atalanta-rinforzare-roma-zappacosta-supera-dodo-2245380",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T15:10:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/gasperini-d-amico-puntano-l-atalanta-rinforzare-roma-zappacosta-supera-dodo-2245380"
+    },
+    {
+      "id": "tmw-lazio-48-aHR0cHM6Ly93",
+      "title": "Una piccola soddisfazione per la FIFA: il Mondiale a 48 squadre ha già regalato sorprese",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/piccola-soddisfazione-fifa-mondiale-48-squadre-regalato-sorprese-2245378",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T15:09:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/piccola-soddisfazione-fifa-mondiale-48-squadre-regalato-sorprese-2245378"
+    },
+    {
+      "id": "tmw-bologna-16-aHR0cHM6Ly93",
+      "title": "Avellino, assalto a Pyyhtia: trattativa avanzata con il Bologna per il trasferimento a titolo definitivo...",
+      "url": "https://www.tuttomercatoweb.com/serie-b/avellino-assalto-pyyhtia-trattativa-avanzata-bologna-trasferimento-definitivo-2245375",
+      "sourceId": "tmw-bologna",
+      "sourceName": "TMW Bologna",
+      "sourceUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9f/9f2488e63b699634309f96b3f6eed147-46321-oooz0000.webp",
+      "publishedAt": "2026-06-18T14:54:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Bologna"
+      ],
+      "detectedTeams": [
+        "Bologna"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Bologna"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-b/avellino-assalto-pyyhtia-trattativa-avanzata-bologna-trasferimento-definitivo-2245375"
+    },
+    {
+      "id": "tmw-atalanta-32-aHR0cHM6Ly93",
+      "title": "Atalanta su Gaetano: l'ex trequartista che nell'ultima stagione si è scoperto regista",
+      "url": "https://www.tuttomercatoweb.com/serie-a/atalanta-gaetano-l-ex-trequartista-nell-ultima-stagione-scoperto-regista-2245374",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T14:48:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gaetano"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [
+          "Gaetano"
+        ],
+        "players": [
+          "Gaetano"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/atalanta-gaetano-l-ex-trequartista-nell-ultima-stagione-scoperto-regista-2245374"
+    },
+    {
+      "id": "calciomercato-it-29-aHR0cHM6Ly93",
+      "title": "Show al Mondiale con l’Olanda e possibile futuro in Serie A: è uno dei preferiti di Gasperini",
+      "url": "https://www.calciomercato.it/2026/06/18/show-al-mondiale-con-lolanda-e-possibile-futuro-in-serie-a-e-uno-dei-preferiti-di-gasperini/",
+      "sourceId": "calciomercato-it",
+      "sourceName": "CalcioMercato.it",
+      "description": "L'articolo Show al Mondiale con l’Olanda e possibile futuro in Serie A: è uno dei preferiti di Gasperini proviene da CalcioMercato.it .",
+      "image": "",
+      "publishedAt": "2026-06-18T12:34:41.000Z",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [],
+      "detectedTeams": [],
+      "players": [],
+      "detectedPlayers": [
+        "Show",
+        "Gasperini. L'articolo Show"
+      ],
+      "entities": {
+        "teams": [],
+        "people": [
+          "Show",
+          "Gasperini. L'articolo Show"
+        ],
+        "players": [
+          "Show",
+          "Gasperini. L'articolo Show"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "Mercato"
+      ],
+      "canonicalKey": "url:calciomercato.it/2026/06/18/show-al-mondiale-con-lolanda-e-possibile-futuro-in-serie-a-e-uno-dei-preferiti-di-gasperini"
+    },
+    {
+      "id": "tmw-fiorentina-26-aHR0cHM6Ly93",
+      "title": "Avellino, linea verde confermata: nel mirino Harder e Topalovic",
+      "url": "https://www.tuttomercatoweb.com/serie-b/avellino-linea-verde-confermata-mirino-harder-topalovic-2245367",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T14:20:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-b/avellino-linea-verde-confermata-mirino-harder-topalovic-2245367"
+    },
+    {
+      "id": "tmw-lazio-49-aHR0cHM6Ly93",
+      "title": "Lotito-Reggina, trattativa ai dettagli: incontro decisivo nelle prossime ore",
+      "url": "https://www.tuttomercatoweb.com/serie-d/lotito-reggina-trattativa-dettagli-incontro-decisivo-prossime-2245366",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T14:10:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-d/lotito-reggina-trattativa-dettagli-incontro-decisivo-prossime-2245366"
+    },
+    {
+      "id": "tmw-fiorentina-27-aHR0cHM6Ly93",
+      "title": "Fiorentina, Ferrari: \"Dobbiamo limitare i sogni ed essere più concreti. Grosso ha entusiasmo\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ferrari-dobbiamo-limitare-sogni-concreti-grosso-entusiasmo-2245364",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T14:06:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/fiorentina-ferrari-dobbiamo-limitare-sogni-concreti-grosso-entusiasmo-2245364"
+    },
+    {
+      "id": "tmw-bologna-17-aHR0cHM6Ly93",
+      "title": "Bologna, ci sono anche Parma e Udinese su Ravaglia: lui attende un segnale da Tedesco",
+      "url": "https://www.tuttomercatoweb.com/serie-a/bologna-parma-udinese-ravaglia-attende-segnale-tedesco-2245363",
+      "sourceId": "tmw-bologna",
+      "sourceName": "TMW Bologna",
+      "sourceUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9f/9f2488e63b699634309f96b3f6eed147-46321-oooz0000.webp",
+      "publishedAt": "2026-06-18T14:02:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Bologna",
+        "Parma",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Bologna",
+        "Parma",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Ravaglia"
+      ],
+      "entities": {
+        "teams": [
+          "Bologna",
+          "Parma",
+          "Udinese"
+        ],
+        "people": [
+          "Ravaglia"
+        ],
+        "players": [
+          "Ravaglia"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/bologna-parma-udinese-ravaglia-attende-segnale-tedesco-2245363"
+    },
+    {
+      "id": "tmw-fiorentina-28-aHR0cHM6Ly93",
+      "title": "Kean, Dodo, Koleosho e gli altri. Paratici parla del mercato della Fiorentina, dando poche indicazioni...",
+      "url": "https://www.tuttomercatoweb.com/serie-a/kean-dodo-koleosho-altri-paratici-parla-mercato-fiorentina-dando-poche-indicazioni-2245358",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T13:53:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina"
+      ],
+      "detectedTeams": [
+        "Fiorentina"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Fiorentina"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/kean-dodo-koleosho-altri-paratici-parla-mercato-fiorentina-dando-poche-indicazioni-2245358"
+    },
+    {
+      "id": "tmw-fiorentina-29-aHR0cHM6Ly93",
+      "title": "Doumbia allo Sporting, l'agente svela tutto: \"In Italia lo volevano Fiorentina e Roma\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/doumbia-sporting-l-agente-svela-tutto-in-italia-volevano-fiorentina-roma-2245355",
+      "sourceId": "tmw-fiorentina",
+      "sourceName": "TMW Fiorentina",
+      "sourceUrl": "https://www.tuttomercatoweb.com/fiorentina/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/firenzeviola.it/img_notizie/thumb3/7f/7f78bfeef63fe24bd2dfb17e385066fa-26696-oooz0000.webp",
+      "publishedAt": "2026-06-18T13:40:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Fiorentina",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Doumbia"
+      ],
+      "entities": {
+        "teams": [
+          "Fiorentina",
+          "Roma"
+        ],
+        "people": [
+          "Doumbia"
+        ],
+        "players": [
+          "Doumbia"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/doumbia-sporting-l-agente-svela-tutto-in-italia-volevano-fiorentina-roma-2245355"
+    },
+    {
+      "id": "tmw-como-25-aHR0cHM6Ly93",
+      "title": "Marziano Messi l'ex vice di Sabella: \"È ancora il migliore. Vi racconto di quando lo vidi piangere\"",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/marziano-messi-l-ex-vice-sabella-e-migliore-racconto-vidi-piangere-2245349",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T13:37:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/marziano-messi-l-ex-vice-sabella-e-migliore-racconto-vidi-piangere-2245349"
+    },
+    {
+      "id": "tmw-atalanta-33-aHR0cHM6Ly93",
+      "title": "Prima l'idea Palladino, poi la svolta Arbeloa: il Fulham aveva pensato al tecnico italiano",
+      "url": "https://www.tuttomercatoweb.com/serie-a/l-idea-palladino-svolta-arbeloa-fulham-pensato-tecnico-italiano-2245348",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T13:12:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/l-idea-palladino-svolta-arbeloa-fulham-pensato-tecnico-italiano-2245348"
+    },
+    {
+      "id": "tmw-roma-60-aHR0cHM6Ly93",
+      "title": "Il mercato di Milan e Juve si scalda, Gravina parla di Figc e Nazionale: le top news delle 13",
+      "url": "https://www.tuttomercatoweb.com/serie-a/mercato-milan-juve-scalda-gravina-parla-figc-nazionale-top-news-13-2245343",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T13:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Juventus",
+        "Milan",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Juventus",
+        "Milan",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Juventus",
+          "Milan",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/mercato-milan-juve-scalda-gravina-parla-figc-nazionale-top-news-13-2245343"
+    },
+    {
+      "id": "tmw-cagliari-13-aHR0cHM6Ly93",
+      "title": "Tutto su Akarakiri: il Pogba inglese è la nuova scommessa green di Pisacane a Cagliari",
+      "url": "https://www.tuttomercatoweb.com/serie-a/akarakiri-pogba-inglese-nuova-scommessa-i-green-i-pisacane-cagliari-2245340",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T12:51:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari"
+      ],
+      "detectedTeams": [
+        "Cagliari"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Akarakiri"
+      ],
+      "entities": {
+        "teams": [
+          "Cagliari"
+        ],
+        "people": [
+          "Akarakiri"
+        ],
+        "players": [
+          "Akarakiri"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/akarakiri-pogba-inglese-nuova-scommessa-i-green-i-pisacane-cagliari-2245340"
+    },
+    {
+      "id": "tmw-como-26-aHR0cHM6Ly93",
+      "title": "Baturina: \"Andare al Como è stata la scelta giusta, mi ha aiutato anche per il Mondiale\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/baturina-andare-como-scelta-giusta-aiutato-mondiale-2245335",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T12:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Andare"
+      ],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [
+          "Andare"
+        ],
+        "players": [
+          "Andare"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/baturina-andare-como-scelta-giusta-aiutato-mondiale-2245335"
+    },
+    {
+      "id": "tmw-roma-61-aHR0cHM6Ly93",
+      "title": "Roma, rivoluzione nel settore giovanile: addio storico a Bruno Conti, può arrivare Margiotta",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-settore-giovanile-addio-storico-bruno-conti-arrivare-margiotta-2245333",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T12:38:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-rivoluzione-settore-giovanile-addio-storico-bruno-conti-arrivare-margiotta-2245333"
+    },
+    {
+      "id": "tmw-genoa-15-aHR0cHM6Ly93",
+      "title": "Genoa, dopo Vaz un altro giovane dalla Serie D: Mor Kaire Ndao firmerà un triennale",
+      "url": "https://www.tuttomercatoweb.com/serie-a/genoa-vaz-giovane-serie-d-mor-kaire-ndao-firmera-triennale-2245331",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.webp",
+      "publishedAt": "2026-06-18T12:35:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/genoa-vaz-giovane-serie-d-mor-kaire-ndao-firmera-triennale-2245331"
+    },
+    {
+      "id": "tmw-cagliari-14-aHR0cHM6Ly93",
+      "title": "Torino, priorità alle fasce: offerta alla Fiorentina per Fortini. E tentativo anche per Calabria",
+      "url": "https://www.tuttomercatoweb.com/serie-a/torino-priorita-fasce-offerta-fiorentina-fortini-tentativo-calabria-2245316",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T12:15:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Cagliari",
+        "Fiorentina",
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Cagliari",
+        "Fiorentina",
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Fortini.",
+        "Calabria"
+      ],
+      "entities": {
+        "teams": [
+          "Cagliari",
+          "Fiorentina",
+          "Torino"
+        ],
+        "people": [
+          "Fortini.",
+          "Calabria"
+        ],
+        "players": [
+          "Fortini.",
+          "Calabria"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/torino-priorita-fasce-offerta-fiorentina-fortini-tentativo-calabria-2245316"
+    },
+    {
+      "id": "tmw-roma-62-aHR0cHM6Ly93",
+      "title": "Aldair ripensa al terzo scudetto della Roma e si commuove: \"Mi viene da piangere, ti resta dentro\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/aldair-ripensa-scudetto-roma-commuove-mi-viene-piangere-resta-dentro-2245317",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T11:53:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/aldair-ripensa-scudetto-roma-commuove-mi-viene-piangere-resta-dentro-2245317"
+    },
+    {
+      "id": "tmw-sassuolo-23-aHR0cHM6Ly93",
+      "title": "Sassuolo, Aquilani e i suoi in ritiro a Ronzone dal 13 luglio: il programma delle amichevoli",
+      "url": "https://www.tuttomercatoweb.com/serie-a/sassuolo-aquilani-ritiro-ronzone-13-luglio-programma-amichevoli-2245312",
+      "sourceId": "tmw-sassuolo",
+      "sourceName": "TMW Sassuolo",
+      "sourceUrl": "https://www.tuttomercatoweb.com/sassuolo/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/54532e29838c4f262a3d42dc0de252c4-53851-oooz0000.webp",
+      "publishedAt": "2026-06-18T11:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Sassuolo"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/sassuolo-aquilani-ritiro-ronzone-13-luglio-programma-amichevoli-2245312"
+    },
+    {
+      "id": "tmw-lazio-50-aHR0cHM6Ly93",
+      "title": "Provedel all'Inter guadagnerà meno che alla Lazio. E i biancocelesti non lo sostituiranno",
+      "url": "https://www.tuttomercatoweb.com/serie-a/provedel-all-inter-guadagnera-lazio-biancocelesti-sostituiranno-2245307",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T11:38:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Provedel"
+      ],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Lazio"
+        ],
+        "people": [
+          "Provedel"
+        ],
+        "players": [
+          "Provedel"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/provedel-all-inter-guadagnera-lazio-biancocelesti-sostituiranno-2245307"
+    },
+    {
+      "id": "tmw-lazio-51-aHR0cHM6Ly93",
+      "title": "L'incredibile storia recente dei portieri dell'Inter: Provedel è un altro affare low cost",
+      "url": "https://www.tuttomercatoweb.com/serie-a/l-incredibile-storia-portieri-dell-inter-provedel-affare-i-low-cost-i-2245304",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T11:35:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/l-incredibile-storia-portieri-dell-inter-provedel-affare-i-low-cost-i-2245304"
+    },
+    {
+      "id": "tmw-cagliari-15-aHR0cHM6Ly93",
+      "title": "Cagliari, sirene estere per Caprile: il Besiktas si unisce al Feyenoord nella corsa al portiere",
+      "url": "https://www.tuttomercatoweb.com/serie-a/cagliari-sirene-estere-caprile-besiktas-unisce-feyenoord-corsa-portiere-2245308",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T11:34:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari"
+      ],
+      "detectedTeams": [
+        "Cagliari"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Caprile"
+      ],
+      "entities": {
+        "teams": [
+          "Cagliari"
+        ],
+        "people": [
+          "Caprile"
+        ],
+        "players": [
+          "Caprile"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/cagliari-sirene-estere-caprile-besiktas-unisce-feyenoord-corsa-portiere-2245308"
+    },
+    {
+      "id": "tmw-atalanta-34-aHR0cHM6Ly93",
+      "title": "Atalanta in pressing su Gaetano. C'è l'apertura, ora serve l'offerta per il Cagliari",
+      "url": "https://www.tuttomercatoweb.com/serie-a/atalanta-pressing-gaetano-c-e-l-apertura-serve-l-offerta-cagliari-2245303",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T11:24:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Atalanta",
+        "Cagliari"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Cagliari"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gaetano. C'è"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Cagliari"
+        ],
+        "people": [
+          "Gaetano. C'è"
+        ],
+        "players": [
+          "Gaetano. C'è"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/atalanta-pressing-gaetano-c-e-l-apertura-serve-l-offerta-cagliari-2245303"
+    },
+    {
+      "id": "tmw-frosinone-8-aHR0cHM6Ly93",
+      "title": "Frosinone internazionale: holding britannica e fondo americano, Stirpe resta presidente",
+      "url": "https://www.tuttomercatoweb.com/serie-a/frosinone-internazionale-holding-britannica-fondo-americano-stirpe-resta-presidente-2245299",
+      "sourceId": "tmw-frosinone",
+      "sourceName": "TMW Frosinone",
+      "sourceUrl": "https://www.tuttomercatoweb.com/frosinone/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/3c/3c48039ef138057f4ab1342bfe3d2709-98857-oooz0000.webp",
+      "publishedAt": "2026-06-18T11:15:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Frosinone",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Frosinone",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Frosinone",
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/frosinone-internazionale-holding-britannica-fondo-americano-stirpe-resta-presidente-2245299"
+    },
+    {
+      "id": "tmw-torino-20-aHR0cHM6Ly93",
+      "title": "Il 36enne Darmian non vuole ancora ritirarsi: ci pensa l'Udinese per il dopo-Ehizibue",
+      "url": "https://www.tuttomercatoweb.com/serie-a/36enne-darmian-vuole-ritirarsi-pensa-l-udinese-dopo-ehizibue-2245290",
+      "sourceId": "tmw-torino",
+      "sourceName": "TMW Torino",
+      "sourceUrl": "https://www.tuttomercatoweb.com/torino/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4f/4fbe2adc965b79ecf224ae3ff00084bb-27990-oooz0000.webp",
+      "publishedAt": "2026-06-18T10:55:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Torino",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Torino",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Torino",
+          "Udinese"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/36enne-darmian-vuole-ritirarsi-pensa-l-udinese-dopo-ehizibue-2245290"
+    },
+    {
+      "id": "tmw-roma-63-aHR0cHM6Ly93",
+      "title": "Asse caldo Betis-Roma: più di un sondaggio per Angelino, chieste informazioni anche per Dovbyk",
+      "url": "https://www.tuttomercatoweb.com/serie-a/asse-caldo-betis-roma-sondaggio-angelino-chieste-informazioni-dovbyk-2245285",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T10:39:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Angelino",
+        "Dovbyk"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Angelino",
+          "Dovbyk"
+        ],
+        "players": [
+          "Angelino",
+          "Dovbyk"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/asse-caldo-betis-roma-sondaggio-angelino-chieste-informazioni-dovbyk-2245285"
+    },
+    {
+      "id": "tmw-lazio-52-aHR0cHM6Ly93",
+      "title": "Lazio, operazione alla Gila: dal Real Madrid ecco il giovane Galassi. I dettagli dell'affare",
+      "url": "https://www.tuttomercatoweb.com/serie-a/lazio-operazione-gila-real-madrid-giovane-galassi-dettagli-dell-affare-2245276",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T10:22:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/lazio-operazione-gila-real-madrid-giovane-galassi-dettagli-dell-affare-2245276"
+    },
+    {
+      "id": "tmw-genoa-16-aHR0cHM6Ly93",
+      "title": "Il Genoa ai Mondiali: Ostigard a segno contro l'Iraq, la palla adesso passa a Vasquez?",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/genoa-mondiali-ostigard-segno-l-iraq-palla-passa-vasquez-2245091",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.webp",
+      "publishedAt": "2026-06-18T10:15:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/genoa-mondiali-ostigard-segno-l-iraq-palla-passa-vasquez-2245091"
+    },
+    {
+      "id": "tmw-atalanta-35-aHR0cHM6Ly93",
+      "title": "Tiribocchi: \"Intrigante il progetto Atalanta. Gimenez se resta al Milan può rilanciarsi\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/tiribocchi-intrigante-progetto-atalanta-gimenez-resta-milan-rilanciarsi-2245262",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T10:09:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Milan"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Milan"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Milan"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/tiribocchi-intrigante-progetto-atalanta-gimenez-resta-milan-rilanciarsi-2245262"
+    },
+    {
+      "id": "tmw-lazio-53-aHR0cHM6Ly93",
+      "title": "Romagnoli via, la Lazio fa muro per Gila: rifiutata l'offerta del Napoli. E spunta il Bournemouth",
+      "url": "https://www.tuttomercatoweb.com/serie-a/romagnoli-via-lazio-muro-gila-rifiutata-l-offerta-napoli-spunta-bournemouth-2245279",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T10:08:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Lazio",
+        "Napoli"
+      ],
+      "detectedTeams": [
+        "Lazio",
+        "Napoli"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Gila"
+      ],
+      "entities": {
+        "teams": [
+          "Lazio",
+          "Napoli"
+        ],
+        "people": [
+          "Gila"
+        ],
+        "players": [
+          "Gila"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/romagnoli-via-lazio-muro-gila-rifiutata-l-offerta-napoli-spunta-bournemouth-2245279"
+    },
+    {
+      "id": "tmw-torino-21-aHR0cHM6Ly93",
+      "title": "Torino-Maripan, è finita: il cileno andrà via in scadenza, ha un accordo totale con l'Internacional",
+      "url": "https://www.tuttomercatoweb.com/serie-a/torino-maripan-finita-cileno-andra-via-scadenza-accordo-totale-l-internacional-2245280",
+      "sourceId": "tmw-torino",
+      "sourceName": "TMW Torino",
+      "sourceUrl": "https://www.tuttomercatoweb.com/torino/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4f/4fbe2adc965b79ecf224ae3ff00084bb-27990-oooz0000.webp",
+      "publishedAt": "2026-06-18T10:05:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "Accordo",
+      "teams": [
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Torino"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/torino-maripan-finita-cileno-andra-via-scadenza-accordo-totale-l-internacional-2245280"
+    },
+    {
+      "id": "tmw-parma-16-aHR0cHM6Ly93",
+      "title": "Fiorentina, due possibili contropartite per Pellegrino. Ma c'è concorrenza da Premier e Bundes",
+      "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-possibili-contropartite-pellegrino-c-e-concorrenza-premier-bundes-2245275",
+      "sourceId": "tmw-parma",
+      "sourceName": "TMW Parma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/parma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1b/1bbc1b53c3554d3aa7cff4da5ea772a0-40597-oooz0000.webp",
+      "publishedAt": "2026-06-18T09:50:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Fiorentina",
+        "Parma"
+      ],
+      "detectedTeams": [
+        "Fiorentina",
+        "Parma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Pellegrino. Ma"
+      ],
+      "entities": {
+        "teams": [
+          "Fiorentina",
+          "Parma"
+        ],
+        "people": [
+          "Pellegrino. Ma"
+        ],
+        "players": [
+          "Pellegrino. Ma"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/fiorentina-possibili-contropartite-pellegrino-c-e-concorrenza-premier-bundes-2245275"
+    },
+    {
+      "id": "tmw-lazio-54-aHR0cHM6Ly93",
+      "title": "Nuova frecciata di Gravina a Lotito: \"L'insoddisfazione del popolo laziale la dice lunga...\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/nuova-frecciata-gravina-lotito-l-insoddisfazione-popolo-laziale-lunga-2245258",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T09:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/nuova-frecciata-gravina-lotito-l-insoddisfazione-popolo-laziale-lunga-2245258"
+    },
+    {
+      "id": "tmw-roma-65-aHR0cHM6Ly93",
+      "title": "Roma, dalla Uefa un assist per Greenwood: contatti positivi con il padre-agente",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-uefa-assist-greenwood-contatti-positivi-padre-agente-2245271",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T09:42:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Trattativa",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Greenwood"
+      ],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [
+          "Greenwood"
+        ],
+        "players": [
+          "Greenwood"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-uefa-assist-greenwood-contatti-positivi-padre-agente-2245271"
+    },
+    {
+      "id": "tmw-roma-66-aHR0cHM6Ly93",
+      "title": "Inter, Solet è più vicino ma rispunta anche Ndicka: affondo se parte Bastoni",
+      "url": "https://www.tuttomercatoweb.com/serie-a/inter-solet-rispunta-ndicka-affondo-bastoni-2245266",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T09:39:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Inter",
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Inter",
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Inter",
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/inter-solet-rispunta-ndicka-affondo-bastoni-2245266"
+    },
+    {
+      "id": "tmw-roma-67-aHR0cHM6Ly93",
+      "title": "Roma, servono 50 milioni di plusvalenze: da Soulé e Koné ad Angelino, i possibili partenti",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-servono-50-plusvalenze-soule-kone-angelino-possibili-partenti-2245264",
+      "sourceId": "tmw-roma",
+      "sourceName": "TMW Roma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/roma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4b/4b720ea2056c125ccf6e1c4aa20b33c1-62258-oooz0000.webp",
+      "publishedAt": "2026-06-18T09:24:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Roma"
+      ],
+      "detectedTeams": [
+        "Roma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Roma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/roma-servono-50-plusvalenze-soule-kone-angelino-possibili-partenti-2245264"
+    },
+    {
+      "id": "tmw-parma-17-aHR0cHM6Ly93",
+      "title": "Cannavaro ko all'esordio mondiale con l'Uzbekistan: \"Abbiamo dato tutto, ma questo è il livello\"",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/cannavaro-ko-all-esordio-mondiale-l-uzbekistan-abbiamo-dato-tutto-livello-2245259",
+      "sourceId": "tmw-parma",
+      "sourceName": "TMW Parma",
+      "sourceUrl": "https://www.tuttomercatoweb.com/parma/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1b/1bbc1b53c3554d3aa7cff4da5ea772a0-40597-oooz0000.webp",
+      "publishedAt": "2026-06-18T09:06:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Parma"
+      ],
+      "detectedTeams": [
+        "Parma"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Parma"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/cannavaro-ko-all-esordio-mondiale-l-uzbekistan-abbiamo-dato-tutto-livello-2245259"
+    },
+    {
+      "id": "tmw-lazio-55-aHR0cHM6Ly93",
+      "title": "Gravina: \"Mancini mi chiese di tornare, ma scelsi Gattuso. E per me Rino doveva restare\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/gravina-mancini-chiese-tornare-scelsi-gattuso-rino-doveva-restare-2245252",
+      "sourceId": "tmw-lazio",
+      "sourceName": "TMW Lazio",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lazio/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T08:39:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Lazio"
+      ],
+      "detectedTeams": [
+        "Lazio"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lazio"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/gravina-mancini-chiese-tornare-scelsi-gattuso-rino-doveva-restare-2245252"
+    },
+    {
+      "id": "tmw-udinese-15-aHR0cHM6Ly93",
+      "title": "Milan, Amorim detta la linea: Trincao per la trequarti, c'è anche Zaniolo",
+      "url": "https://www.tuttomercatoweb.com/serie-a/milan-amorim-detta-linea-trincao-trequarti-c-e-zaniolo-2245255",
+      "sourceId": "tmw-udinese",
+      "sourceName": "TMW Udinese",
+      "sourceUrl": "https://www.tuttomercatoweb.com/udinese/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/ac/ac16768f0a624dd6581ff64e596e657b-00877-oooz0000.webp",
+      "publishedAt": "2026-06-18T08:25:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Milan",
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Milan",
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Milan",
+          "Udinese"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/milan-amorim-detta-linea-trincao-trequarti-c-e-zaniolo-2245255"
+    },
+    {
+      "id": "tmw-atalanta-36-aHR0cHM6Ly93",
+      "title": "Atalanta, ricevuta un’offerta dal Newcastle per Levak: rifiutata per 10 milioni",
+      "url": "https://www.tuttomercatoweb.com/serie-a/atalanta-ricevuta-un-offerta-newcastle-levak-rifiutata-10-2245251",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T08:00:00+02:00",
+      "topic": "Trattativa",
+      "marketStatus": "Offerta",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Levak"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [
+          "Levak"
+        ],
+        "players": [
+          "Levak"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/atalanta-ricevuta-un-offerta-newcastle-levak-rifiutata-10-2245251"
+    },
+    {
+      "id": "tmw-atalanta-37-aHR0cHM6Ly93",
+      "title": "De Vrij pensa all'addio all'Inter. Palestra, resta la distanza: il punto di Gianluca Di Marzio",
+      "url": "https://www.tuttomercatoweb.com/podcast-tmw/de-vrij-pensa-all-addio-all-inter-palestra-resta-distanza-punto-gianluca-marzio-2245023",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T07:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "detectedTeams": [
+        "Atalanta",
+        "Inter"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta",
+          "Inter"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/podcast-tmw/de-vrij-pensa-all-addio-all-inter-palestra-resta-distanza-punto-gianluca-marzio-2245023"
+    },
+    {
+      "id": "tmw-torino-22-aHR0cHM6Ly93",
+      "title": "Torino, caccia al nuovo portiere: Petrachi studia diversi nomi",
+      "url": "https://www.tuttomercatoweb.com/serie-a/torino-caccia-portiere-petrachi-studia-diversi-nomi-2245246",
+      "sourceId": "tmw-torino",
+      "sourceName": "TMW Torino",
+      "sourceUrl": "https://www.tuttomercatoweb.com/torino/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/4f/4fbe2adc965b79ecf224ae3ff00084bb-27990-oooz0000.webp",
+      "publishedAt": "2026-06-18T07:38:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Torino"
+      ],
+      "detectedTeams": [
+        "Torino"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Torino"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/torino-caccia-portiere-petrachi-studia-diversi-nomi-2245246"
+    },
+    {
+      "id": "tmw-atalanta-38-aHR0cHM6Ly93",
+      "title": "Atalanta, cosa fare in attacco tra seconde punte e trequartisti? La situazione",
+      "url": "https://www.tuttomercatoweb.com/serie-a/atalanta-attacco-seconde-punte-trequartisti-situazione-2245146",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T07:23:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/atalanta-attacco-seconde-punte-trequartisti-situazione-2245146"
+    },
+    {
+      "id": "tmw-bologna-18-aHR0cHM6Ly93",
+      "title": "Mondiale, Cannavaro ko contro la Colombia: Lucumì e compagni travolgono 3-1 l'Uzbekistan",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/mondiale-cannavaro-ko-colombia-lucumi-compagni-travolgono-3-1-l-uzbekistan-2245243",
+      "sourceId": "tmw-bologna",
+      "sourceName": "TMW Bologna",
+      "sourceUrl": "https://www.tuttomercatoweb.com/bologna/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/9f/9f2488e63b699634309f96b3f6eed147-46321-oooz0000.webp",
+      "publishedAt": "2026-06-18T07:21:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Bologna"
+      ],
+      "detectedTeams": [
+        "Bologna"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Bologna"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/mondiale-cannavaro-ko-colombia-lucumi-compagni-travolgono-3-1-l-uzbekistan-2245243"
+    },
+    {
+      "id": "tmw-atalanta-39-aHR0cHM6Ly93",
+      "title": "Mondiale, il Ghana batte Panama al 95' e aggancia l'Inghilterra: 1-0, 57' per Sulemana",
+      "url": "https://www.tuttomercatoweb.com/mondiali-2026/mondiale-ghana-batte-panama-95-aggancia-l-inghilterra-1-0-57-sulemana-2245242",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T07:11:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Sulemana",
+        "Panama"
+      ],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [
+          "Sulemana",
+          "Panama"
+        ],
+        "players": [
+          "Sulemana",
+          "Panama"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/mondiali-2026/mondiale-ghana-batte-panama-95-aggancia-l-inghilterra-1-0-57-sulemana-2245242"
+    },
+    {
+      "id": "tmw-genoa-17-aHR0cHM6Ly93",
+      "title": "Genoa, De Rossi accontentato: (ri)ecco Baldanzi. Quattro prestiti non sono stati riscattati",
+      "url": "https://www.tuttomercatoweb.com/serie-a/genoa-de-rossi-accontentato-ri-ecco-baldanzi-prestiti-riscattati-2245113",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.webp",
+      "publishedAt": "2026-06-18T06:53:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/genoa-de-rossi-accontentato-ri-ecco-baldanzi-prestiti-riscattati-2245113"
+    },
+    {
+      "id": "tmw-atalanta-40-aHR0cHM6Ly93",
+      "title": "Le partite di oggi: il programma di giovedì 18 maggio",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/i-le-partite-oggi-i-programma-giovedi-18-maggio-2245134",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T04:30:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/i-le-partite-oggi-i-programma-giovedi-18-maggio-2245134"
+    },
+    {
+      "id": "tmw-atalanta-41-aHR0cHM6Ly93",
+      "title": "Ghana-Panama 1-0: il tabellino della gara",
+      "url": "https://www.tuttomercatoweb.com/altre-notizie/ghana-panama-1-0-tabellino-gara-1907441",
+      "sourceId": "tmw-atalanta",
+      "sourceName": "TMW Atalanta",
+      "sourceUrl": "https://www.tuttomercatoweb.com/atalanta/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-static.tcccdn.com/template/tuttomercatoweb.com/default/img/thumb3.png",
+      "publishedAt": "2026-06-18T03:07:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Atalanta"
+      ],
+      "detectedTeams": [
+        "Atalanta"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Atalanta"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/altre-notizie/ghana-panama-1-0-tabellino-gara-1907441"
+    },
+    {
+      "id": "tmw-cagliari-18-aHR0cHM6Ly93",
+      "title": "Calciomercato no stop - Indiscrezioni, trattative e retroscena del 17 giugno",
+      "url": "https://www.tuttomercatoweb.com/serie-a/i-calciomercato-i-stop-indiscrezioni-trattative-retroscena-17-giugno-2245198",
+      "sourceId": "tmw-cagliari",
+      "sourceName": "TMW Cagliari",
+      "sourceUrl": "https://www.tuttomercatoweb.com/cagliari/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://net-storage.tcccdn.com/storage/tuttocagliari.net/img_notizie/thumb3/40/406c612a14e0ef6c31db1eb40be4e7bb-27727-oooz0000.webp",
+      "publishedAt": "2026-06-18T01:00:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Cagliari"
+      ],
+      "detectedTeams": [
+        "Cagliari"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Cagliari"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/i-calciomercato-i-stop-indiscrezioni-trattative-retroscena-17-giugno-2245198"
+    },
+    {
+      "id": "tmw-como-27-aHR0cHM6Ly93",
+      "title": "Niente Serie A o Barça, è ufficiale: Bernardo Silva è un nuovo giocatore del Real Madrid",
+      "url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/serie-barca-ufficiale-bernardo-silva-giocatore-real-madrid-2245133",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T00:49:00+02:00",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/i-fatti-del-giorno/serie-barca-ufficiale-bernardo-silva-giocatore-real-madrid-2245133"
+    },
+    {
+      "id": "tmw-genoa-18-aHR0cHM6Ly93",
+      "title": "Chi dev'esser riscattato: il punto sui possibili acquisti a titolo definitivo in arrivo in Serie A",
+      "url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/dev-esser-riscattato-punto-possibili-acquisti-definitivo-arrivo-serie-2245128",
+      "sourceId": "tmw-genoa",
+      "sourceName": "TMW Genoa",
+      "sourceUrl": "https://www.tuttomercatoweb.com/genoa/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/89/89c7f22d72a9c4ab814f3d1623f8c8eb-34189-oooz0000.webp",
+      "publishedAt": "2026-06-18T00:45:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Genoa"
+      ],
+      "detectedTeams": [
+        "Genoa"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Genoa"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/i-fatti-del-giorno/dev-esser-riscattato-punto-possibili-acquisti-definitivo-arrivo-serie-2245128"
+    },
+    {
+      "id": "tmw-lecce-7-aHR0cHM6Ly93",
+      "title": "L'agente di Cheddira: \"Non credo che il Lecce lo riscatterà\". Piace a due club italiani",
+      "url": "https://www.tuttomercatoweb.com/serie-a/l-agente-cheddira-non-credo-lecce-riscattera-piace-club-italiani-2245229",
+      "sourceId": "tmw-lecce",
+      "sourceName": "TMW Lecce",
+      "sourceUrl": "https://www.tuttomercatoweb.com/lecce/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/95/95f3ac8f2d045c6fbe8bdef80c032e2f-43474-oooz0000.webp",
+      "publishedAt": "2026-06-18T00:30:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "Interesse",
+      "teams": [
+        "Lecce"
+      ],
+      "detectedTeams": [
+        "Lecce"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Lecce"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/l-agente-cheddira-non-credo-lecce-riscattera-piace-club-italiani-2245229"
+    },
+    {
+      "id": "tmw-udinese-16-aHR0cHM6Ly93",
+      "title": "Pasqualin: \"Non immagino Zaniolo lontano da Udine. Ma Vigorelli non insista con i Pozzo\"",
+      "url": "https://www.tuttomercatoweb.com/serie-a/pasqualin-non-immagino-zaniolo-udine-vigorelli-insista-pozzo-2245228",
+      "sourceId": "tmw-udinese",
+      "sourceName": "TMW Udinese",
+      "sourceUrl": "https://www.tuttomercatoweb.com/udinese/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/ac/ac16768f0a624dd6581ff64e596e657b-00877-oooz0000.webp",
+      "publishedAt": "2026-06-18T00:23:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Udinese"
+      ],
+      "detectedTeams": [
+        "Udinese"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Udinese"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/pasqualin-non-immagino-zaniolo-udine-vigorelli-insista-pozzo-2245228"
+    },
+    {
+      "id": "tmw-como-28-aHR0cHM6Ly93",
+      "title": "Baturina e un Mondiale per consacrarsi. Il Como si gode il colpo e proverà a resistere agli assalti",
+      "url": "https://www.tuttomercatoweb.com/serie-a/baturina-mondiale-consacrarsi-como-gode-colpo-provera-resistere-assalti-2245232",
+      "sourceId": "tmw-como",
+      "sourceName": "TMW Como",
+      "sourceUrl": "https://www.tuttomercatoweb.com/como/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/1d/1d68793e301381d9b39611b4f1108406-06436-oooz0000.webp",
+      "publishedAt": "2026-06-18T00:08:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Como"
+      ],
+      "detectedTeams": [
+        "Como"
+      ],
+      "players": [],
+      "detectedPlayers": [],
+      "entities": {
+        "teams": [
+          "Como"
+        ],
+        "people": [],
+        "players": []
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/baturina-mondiale-consacrarsi-como-gode-colpo-provera-resistere-assalti-2245232"
+    },
+    {
+      "id": "tmw-sassuolo-25-aHR0cHM6Ly93",
+      "title": "Sassuolo, niente riscatto per Ulisses Garcia: il terzino tornerà all'OM",
+      "url": "https://www.tuttomercatoweb.com/serie-a/sassuolo-riscatto-ulisses-garcia-terzino-tornera-all-om-2245225",
+      "sourceId": "tmw-sassuolo",
+      "sourceName": "TMW Sassuolo",
+      "sourceUrl": "https://www.tuttomercatoweb.com/sassuolo/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/54/54532e29838c4f262a3d42dc0de252c4-53851-oooz0000.webp",
+      "publishedAt": "2026-06-18T00:06:00+02:00",
+      "topic": "Mercato",
+      "marketStatus": "",
+      "teams": [
+        "Sassuolo"
+      ],
+      "detectedTeams": [
+        "Sassuolo"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Ulisses Garcia"
+      ],
+      "entities": {
+        "teams": [
+          "Sassuolo"
+        ],
+        "people": [
+          "Ulisses Garcia"
+        ],
+        "players": [
+          "Ulisses Garcia"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-a/sassuolo-riscatto-ulisses-garcia-terzino-tornera-all-om-2245225"
+    },
+    {
+      "id": "tmw-monza-4-aHR0cHM6Ly93",
+      "title": "Pisa, ci siamo per Bianco: ha firmato la risoluzione col Monza. Si attende l'annuncio",
+      "url": "https://www.tuttomercatoweb.com/serie-b/pisa-bianco-firmato-risoluzione-monza-attende-l-annuncio-2245231",
+      "sourceId": "tmw-monza",
+      "sourceName": "TMW Monza",
+      "sourceUrl": "https://www.tuttomercatoweb.com/monza/",
+      "sourceType": "tmw-team-html",
+      "fallbackImageMode": "tmw-team-text",
+      "description": "",
+      "image": "",
+      "teamLogoUrl": "https://tmw-storage-auto.tcccdn.com/storage/tuttomercatoweb.com/img_notizie/thumb3/0b/0b591a93a8945a45dccf39144a8029c7-72150-oooz0000.webp",
+      "publishedAt": "2026-06-18T00:04:00+02:00",
+      "topic": "Ufficiale",
+      "marketStatus": "Ufficiale",
+      "teams": [
+        "Monza",
+        "Pisa"
+      ],
+      "detectedTeams": [
+        "Monza",
+        "Pisa"
+      ],
+      "players": [],
+      "detectedPlayers": [
+        "Bianco"
+      ],
+      "entities": {
+        "teams": [
+          "Monza",
+          "Pisa"
+        ],
+        "people": [
+          "Bianco"
+        ],
+        "players": [
+          "Bianco"
+        ]
+      },
+      "tags": [
+        "Mercato",
+        "TMW",
+        "Squadra"
+      ],
+      "canonicalKey": "url:tuttomercatoweb.com/serie-b/pisa-bianco-firmato-risoluzione-monza-attende-l-annuncio-2245231"
+    }
+  ]
+}
