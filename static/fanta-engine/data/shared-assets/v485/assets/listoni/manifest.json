@@ -54,7 +54,23 @@
         "teamChanged": 0,
         "roleChanged": 0,
         "unchanged": 663
-  }
-}
+      }
+    },
+    {
+      "id": "2026-07-04",
+      "seasonId": "2026-2027",
+      "label": "listone 4 luglio 2026",
+      "loadedAt": "2026-07-04",
+      "file": "2026-07-04.json",
+      "rows": 663,
+      "activeRows": 532,
+      "asteriskRows": 131,
+      "detectedFormat": "Fantacalcio Classic a foglio singolo",
+      "sourceSheets": [
+        "Lista calciatori"
+      ],
+      "comparedWith": "",
+      "changeSummary": null
+    }
   ]
 }
