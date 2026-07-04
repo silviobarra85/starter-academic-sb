@@ -1,3 +1,11 @@
+## V565 - Logo account presidente coerente con stagione
+
+La V565 corregge il pulsante account presidente in alto su ZonaOrientale: il logo viene risolto dalla squadra della stagione selezionata, non solo dal `seasonTeamId` salvato nel documento `teamUsers`. Se il presidente guarda `2026-2027` vede il nuovo logo, mentre tornando a `2025-2026` vede il logo storico e mantiene la label `Pres. <cognome>`. La modifica non cambia login, permessi, EmailJS, Svincola Giocatori o Calciomercato disattivato. `FUNZIONALITA'.md` non e' stato modificato.
+
+## V564 - Header Svincola Giocatori allineato
+
+La V564 corregge solo il layout del pannello **Svincola Giocatori** in Area Presidente ZonaOrientale: titolo e descrizione restano a sinistra, pulsante `Apri`/`Riduci` a destra. Il runtime V563 resta invariato: selezione giocatori, anteprima email, invio EmailJS, permessi Presidente e Calciomercato disattivato sono preservati. `FUNZIONALITA'.md` non e' stato modificato.
+
 ## V560 - Boot preloader interactive-ready
 
 La V560 corregge la V559: il preloader non scompare piu' sul solo caricamento asset, ma aspetta render app, `window.load`, controlli DOM essenziali e quiet frame del main thread. La percentuale resta ferma; ruota solo l'anello esterno della rotellina. Firebase, EmailJS, Admin, Presidente, router e dati restano invariati.

@@ -1,0 +1,42 @@
+/* V564 - ZonaOrientale: header allineato per Svincola Giocatori.
+ * Solo presentazione: il titolo resta a sinistra e il pulsante Apri/Riduci a destra.
+ * Non modifica handler, EmailJS, selezione giocatori o permessi Presidente.
+ */
+#teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432,
+body.is-mobile-ux .app-page[data-page="teamarea"] #teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432 {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  column-gap: .75rem !important;
+  row-gap: .2rem !important;
+  width: 100% !important;
+}
+
+#teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432 > div:first-child,
+body.is-mobile-ux .app-page[data-page="teamarea"] #teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432 > div:first-child {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  min-width: 0 !important;
+  text-align: left !important;
+}
+
+#teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432 > .teamarea-collapse-toggle-v432,
+body.is-mobile-ux .app-page[data-page="teamarea"] #teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432 > .teamarea-collapse-toggle-v432 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  justify-self: end !important;
+  align-self: start !important;
+  margin-left: auto !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 360px) {
+  body.is-mobile-ux .app-page[data-page="teamarea"] #teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432 {
+    column-gap: .5rem !important;
+  }
+
+  body.is-mobile-ux .app-page[data-page="teamarea"] #teamPlayerReleasePanelV261 > .panel-header.teamarea-collapsible-header-v432 > .teamarea-collapse-toggle-v432 {
+    padding-left: .52rem !important;
+    padding-right: .52rem !important;
+  }
+}

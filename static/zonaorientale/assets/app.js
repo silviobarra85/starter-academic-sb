@@ -19526,6 +19526,111 @@ document.addEventListener("click", (event) => {
 
 
 
+/* V565 - Account presidente con logo coerente alla stagione selezionata.
+   Il documento teamUsers resta legato alla squadra/stagione di approvazione
+   corrente, ma il pulsante in alto deve rappresentare la stessa squadra nella
+   stagione attualmente selezionata. Cosi un cambio logo 2026-2027 non sporca
+   la vista storica 2025-2026: viene usato il seasonTeam della stagione aperta,
+   cadendo poi al documento approvato solo se non esiste una corrispondenza. */
+function normalizePresidentAccountIdV565(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function getPresidentAccountApprovedTeamIdV565(approved, directSeasonTeam = null) {
+  return approved?.teamId
+    || approved?.team?.id
+    || approved?.clubId
+    || directSeasonTeam?.teamId
+    || "";
+}
+
+function findPresidentAccountSeasonTeamByTeamV565(teamId, seasonId) {
+  const normalizedTeamId = normalizePresidentAccountIdV565(teamId);
+  const normalizedSeasonId = String(seasonId || "").trim();
+  if (!normalizedTeamId || !normalizedSeasonId) return null;
+  return (state.raw?.seasonTeams || []).find((seasonTeam) => (
+    String(seasonTeam?.seasonId || "") === normalizedSeasonId
+    && normalizePresidentAccountIdV565(seasonTeam?.teamId) === normalizedTeamId
+  )) || null;
+}
+
+function findPresidentAccountSeasonTeamByPresidentV565(presidentId, seasonId) {
+  const normalizedPresidentId = normalizePresidentAccountIdV565(presidentId);
+  const normalizedSeasonId = String(seasonId || "").trim();
+  if (!normalizedPresidentId || !normalizedSeasonId) return null;
+  return (state.raw?.seasonTeams || []).find((seasonTeam) => (
+    String(seasonTeam?.seasonId || "") === normalizedSeasonId
+    && Array.isArray(seasonTeam?.presidentIds)
+    && seasonTeam.presidentIds.some((id) => normalizePresidentAccountIdV565(id) === normalizedPresidentId)
+  )) || null;
+}
+
+function resolvePresidentAccountSeasonTeamForSelectedSeasonV565() {
+  const approved = getApprovedTeamUser?.();
+  if (!approved) return null;
+
+  const selectedSeasonId = String(getCurrentSeasonId?.() || state?.selectedSeasonId || approved?.seasonId || "").trim();
+  const directSeasonTeam = approved?.seasonTeamId && typeof getSeasonTeamById === "function"
+    ? getSeasonTeamById(approved.seasonTeamId)
+    : null;
+
+  if (directSeasonTeam && (!selectedSeasonId || String(directSeasonTeam.seasonId || "") === selectedSeasonId)) {
+    return directSeasonTeam;
+  }
+
+  const teamId = getPresidentAccountApprovedTeamIdV565(approved, directSeasonTeam);
+  const sameTeamInSelectedSeason = findPresidentAccountSeasonTeamByTeamV565(teamId, selectedSeasonId);
+  if (sameTeamInSelectedSeason) return sameTeamInSelectedSeason;
+
+  const samePresidentInSelectedSeason = findPresidentAccountSeasonTeamByPresidentV565(approved?.presidentId, selectedSeasonId);
+  if (samePresidentInSelectedSeason) return samePresidentInSelectedSeason;
+
+  return directSeasonTeam || null;
+}
+
+const getPresidentAccountSeasonTeamBeforeV565 = getPresidentAccountSeasonTeamV229;
+getPresidentAccountSeasonTeamV229 = function getPresidentAccountSeasonTeamV565() {
+  return resolvePresidentAccountSeasonTeamForSelectedSeasonV565()
+    || getPresidentAccountSeasonTeamBeforeV565?.()
+    || null;
+};
+
+function getPresidentAccountTeamNameV565(seasonTeam) {
+  const fromDisplayName = seasonTeam?.id && typeof getSeasonTeamDisplayName === "function"
+    ? getSeasonTeamDisplayName(seasonTeam.id)
+    : "";
+  if (fromDisplayName && fromDisplayName !== "-") return fromDisplayName;
+  return seasonTeam?.name || "Squadra";
+}
+
+const renderPresidentAccountButtonContentBeforeV565 = renderPresidentAccountButtonContentV229;
+renderPresidentAccountButtonContentV229 = function renderPresidentAccountButtonContentV565() {
+  const approved = getApprovedTeamUser?.();
+  if (!approved) return renderPresidentAccountButtonContentBeforeV565?.() || "Account";
+  const seasonTeam = getPresidentAccountSeasonTeamV229();
+  const teamName = getPresidentAccountTeamNameV565(seasonTeam);
+  const logo = typeof getSeasonTeamLogo === "function" ? getSeasonTeamLogo(seasonTeam) : "";
+  const surname = getPresidentSurnameForAccountButtonV229();
+  return `${renderTeamLogo(teamName, logo, "president-account-logo-v229")}<span class="president-account-label-v229">Pres. ${escapeHtml(surname)}</span>`;
+};
+
+const renderAllBeforeV565 = renderAll;
+renderAll = function renderAllV565() {
+  const result = renderAllBeforeV565?.();
+  setTimeout(() => {
+    try { updatePresidentAccountButtonV229?.(); } catch (error) { console.warn("Account presidente V565 non aggiornato", error); }
+  }, 0);
+  return result;
+};
+
+window.ZonaOrientalePresidentAccountSeasonLogoV565 = {
+  resolve: resolvePresidentAccountSeasonTeamForSelectedSeasonV565,
+  byTeam: findPresidentAccountSeasonTeamByTeamV565,
+  byPresident: findPresidentAccountSeasonTeamByPresidentV565
+};
+
+
+
 /* V232 - Hotfix routing comunicati condivisi.
    La Netlify Function V231 reindirizza gli utenti reali a /zonaorientale/#news-<id>.
    Il router legacy trattava hash non statici come slug squadra; quindi #news-<id>

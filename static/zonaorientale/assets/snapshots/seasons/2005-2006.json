@@ -1,81 +1,83 @@
 {
   "id": "2005-2006",
   "seasonId": "2005-2006",
-  "generatedAt": "2026-07-04T11:49:09.206Z",
+  "generatedAt": "2026-07-04T18:11:33.818Z",
   "teams": [
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
       "isCurrent": true,
-      "notes": "",
+      "canonicalName": "Afc Severgas Baronissi",
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
-      "canonicalName": "Afc Severgas Baronissi",
+      "logo": "./assets/logos/baronissi.png",
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
-      "logo": "./assets/logos/baronissi.png"
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "notes": ""
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "currentPresidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "isCurrent": true,
-      "notes": "",
-      "createdAt": {
-        "seconds": 1778833681,
-        "nanoseconds": 932000000
-      },
       "canonicalName": "FC DueFratelli2005",
+      "isCurrent": true,
+      "logo": "./assets/logos/due_fratelli.png",
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
       },
-      "logo": "./assets/logos/due_fratelli.png"
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      },
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "notes": ""
     },
     {
       "id": "JrHbTlYyGDRaWkWXRBlL",
-      "currentPresidentIds": [
-        "E8juYb9wKykDBnwCORcU"
-      ],
-      "notes": "",
-      "isCurrent": false,
       "canonicalName": "Real Sauro",
+      "isCurrent": false,
       "updatedAt": {
         "seconds": 1778834023,
         "nanoseconds": 658000000
       },
+      "logo": "",
       "createdAt": {
         "seconds": 1778834023,
         "nanoseconds": 658000000
       },
-      "logo": ""
+      "currentPresidentIds": [
+        "E8juYb9wKykDBnwCORcU"
+      ],
+      "notes": ""
     }
   ],
   "presidents": [
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "isActive": true,
       "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
       "name": "Gianluca Caparrotti",
-      "updatedAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      },
-      "notes": ""
+      "notes": "",
+      "isActive": true
     },
     {
       "id": "E8juYb9wKykDBnwCORcU",
       "isActive": false,
+      "name": "Giuseppe Sauro",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778834005,
         "nanoseconds": 578000000
@@ -83,23 +85,21 @@
       "createdAt": {
         "seconds": 1778834005,
         "nanoseconds": 578000000
-      },
-      "name": "Giuseppe Sauro",
-      "notes": ""
+      }
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
-      "notes": "",
-      "isActive": true,
-      "name": "Michele D'Isanto",
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      }
+      "notes": "",
+      "name": "Michele D'Isanto",
+      "isActive": true
     }
   ],
   "seasonTeams": [
@@ -109,200 +109,200 @@
         "9pAjdkP5bPc5ldLlbfPP"
       ],
       "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "isHistorical": false,
-      "logo": "",
+      "seasonId": "2005-2006",
+      "name": "FC DueFratelli2005",
       "updatedAt": {
         "seconds": 1779379274,
         "nanoseconds": 62000000
       },
-      "name": "FC DueFratelli2005",
+      "logo": "",
       "createdAt": {
         "seconds": 1778850547,
         "nanoseconds": 834000000
       },
-      "seasonId": "2005-2006"
+      "isHistorical": false
     },
     {
       "id": "2005-2006_jrhbtlyygdrawkwxrbll",
+      "name": "Real Sauro",
       "seasonId": "2005-2006",
-      "logo": "",
-      "teamId": "JrHbTlYyGDRaWkWXRBlL",
       "isHistorical": false,
-      "presidentIds": [
-        "E8juYb9wKykDBnwCORcU"
-      ],
       "createdAt": {
         "seconds": 1778850544,
         "nanoseconds": 391000000
       },
-      "name": "Real Sauro",
+      "logo": "",
       "updatedAt": {
         "seconds": 1778850544,
         "nanoseconds": 391000000
-      }
+      },
+      "presidentIds": [
+        "E8juYb9wKykDBnwCORcU"
+      ],
+      "teamId": "JrHbTlYyGDRaWkWXRBlL"
     },
     {
       "id": "2005-2006_kbjri4liu4iuq6ajfnml",
+      "name": "Us Baronissi Cavaliers",
+      "seasonId": "2005-2006",
       "createdAt": {
         "seconds": 1778850540,
         "nanoseconds": 883000000
       },
-      "name": "Us Baronissi Cavaliers",
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1779195809,
         "nanoseconds": 130000000
       },
       "logo": "",
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
-      "isHistorical": false,
       "presidentIds": [
         "Mw12sFS1OoS8V5uzBLLw"
       ],
-      "seasonId": "2005-2006"
+      "teamId": "h6saeK7uRQIQNmiZTRT7"
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2005-2006_campionato",
-      "knockoutPhases": [],
-      "format": "CLASSIFICA",
+      "status": "CONCLUSA",
       "updatedAt": {
         "seconds": 1778850567,
         "nanoseconds": 285000000
       },
+      "format": "CLASSIFICA",
+      "type": "CAMPIONATO",
+      "notes": "",
       "createdAt": {
         "seconds": 1778850555,
         "nanoseconds": 502000000
       },
       "seasonId": "2005-2006",
-      "type": "CAMPIONATO",
-      "status": "CONCLUSA",
-      "name": "Campionato",
-      "notes": ""
+      "knockoutPhases": [],
+      "name": "Campionato"
     },
     {
       "id": "2005-2006_champions-league",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "name": "Champion's League",
       "seasonId": "2005-2006",
-      "updatedAt": {
-        "seconds": 1778850570,
-        "nanoseconds": 306000000
-      },
       "createdAt": {
         "seconds": 1778850555,
         "nanoseconds": 568000000
       },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "format": "GIRONI_KO",
       "notes": "",
-      "name": "Champion's League",
       "type": "CHAMPIONS_LEAGUE",
+      "format": "GIRONI_KO",
+      "updatedAt": {
+        "seconds": 1778850570,
+        "nanoseconds": 306000000
+      },
       "status": "NON_DISPUTATA"
     },
     {
       "id": "2005-2006_coppa-italia",
-      "seasonId": "2005-2006",
-      "updatedAt": {
-        "seconds": 1778850573,
-        "nanoseconds": 376000000
-      },
       "createdAt": {
         "seconds": 1778850555,
         "nanoseconds": 615000000
       },
+      "seasonId": "2005-2006",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "format": "GIRONI_KO",
-      "notes": "",
       "name": "Coppa Italia",
+      "updatedAt": {
+        "seconds": 1778850573,
+        "nanoseconds": 376000000
+      },
+      "format": "GIRONI_KO",
       "type": "COPPA_ITALIA",
+      "notes": "",
       "status": "NON_DISPUTATA"
     },
     {
       "id": "2005-2006_playoff",
-      "seasonId": "2005-2006",
-      "createdAt": {
-        "seconds": 1778850555,
-        "nanoseconds": 672000000
-      },
+      "type": "PLAYOFF",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778850576,
         "nanoseconds": 528000000
       },
       "format": "GIRONI_KO",
+      "status": "NON_DISPUTATA",
+      "seasonId": "2005-2006",
+      "name": "Playoff",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "notes": "",
-      "name": "Playoff",
-      "status": "NON_DISPUTATA",
-      "type": "PLAYOFF"
+      "createdAt": {
+        "seconds": 1778850555,
+        "nanoseconds": 672000000
+      }
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2005-2006-campionato_1",
-      "points": null,
       "seasonId": "2005-2006",
       "competitionId": "2005-2006_campionato",
-      "updatedAt": {
-        "seconds": 1778850596,
-        "nanoseconds": 492000000
-      },
-      "played": null,
-      "seasonTeamId": "2005-2006_kbjri4liu4iuq6ajfnml",
       "createdAt": {
         "seconds": 1778850596,
         "nanoseconds": 492000000
       },
-      "position": 1,
-      "fantapoints": null
+      "seasonTeamId": "2005-2006_kbjri4liu4iuq6ajfnml",
+      "points": null,
+      "played": null,
+      "updatedAt": {
+        "seconds": 1778850596,
+        "nanoseconds": 492000000
+      },
+      "fantapoints": null,
+      "position": 1
     },
     {
       "id": "2005-2006-campionato_2",
-      "seasonId": "2005-2006",
-      "points": null,
-      "competitionId": "2005-2006_campionato",
-      "updatedAt": {
-        "seconds": 1778850596,
-        "nanoseconds": 524000000
-      },
-      "played": null,
       "seasonTeamId": "2005-2006_jrhbtlyygdrawkwxrbll",
       "createdAt": {
         "seconds": 1778850596,
         "nanoseconds": 524000000
       },
+      "seasonId": "2005-2006",
+      "competitionId": "2005-2006_campionato",
       "position": 2,
-      "fantapoints": null
+      "updatedAt": {
+        "seconds": 1778850596,
+        "nanoseconds": 524000000
+      },
+      "fantapoints": null,
+      "points": null,
+      "played": null
     },
     {
       "id": "2005-2006-campionato_3",
-      "seasonId": "2005-2006",
-      "points": null,
-      "competitionId": "2005-2006_campionato",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "updatedAt": {
         "seconds": 1778850596,
         "nanoseconds": 558000000
       },
+      "fantapoints": null,
       "played": null,
+      "points": null,
+      "position": 3,
       "createdAt": {
         "seconds": 1778850596,
         "nanoseconds": 558000000
       },
-      "position": 3,
-      "fantapoints": null
+      "competitionId": "2005-2006_campionato",
+      "seasonId": "2005-2006",
+      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc"
     }
   ],
   "rosterEntries": [

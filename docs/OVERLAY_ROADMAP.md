@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-V560 - Boot preloader interactive-ready completato.
+V565 - Logo account presidente coerente con stagione completato.
 
 ## Ultima decisione
 
@@ -47,3 +47,23 @@ Stato: completato.
 - Corregge la riattivazione V562: il pannello Svincola Giocatori viene abilitato gia nel bootstrap del registry card V497 e riagganciato dopo i render dell'Area Presidente.
 - Mantiene Calciomercato disattivato come da V561.
 - Non modifica FantaPetilloMantraManager.
+
+## V564 - Header Svincola Giocatori allineato
+
+Stato: completato.
+
+- Patch solo presentazionale su ZonaOrientale.
+- Titolo/descrizione del pannello Svincola Giocatori a sinistra.
+- Pulsante `Apri`/`Riduci` a destra.
+- Runtime V563, EmailJS, permessi Presidente e Calciomercato disattivato preservati.
+- Audit: `node static/fanta-engine/tools/audit-zona-release-header-v564.mjs`.
+
+## V565 - Logo account presidente coerente con stagione
+
+Stato: completato.
+
+- Patch runtime solo su ZonaOrientale.
+- Il pulsante account presidente in alto risolve il logo dal `seasonTeam` della stagione selezionata.
+- Se il presidente passa da `2026-2027` a `2025-2026`, il logo torna quello storico e resta visibile la label `Pres. <cognome>`.
+- V561, V563 e V564 preservate.
+- Audit: `node static/fanta-engine/tools/audit-president-account-season-logo-v565.mjs`.
