@@ -5,8 +5,8 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "561",
-  "currentSeasonId": "2025-2026",
+  "currentVersion": "562",
+  "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
   "logosBasePath": "./assets/logos/",
@@ -49,6 +49,7 @@
     "commonPresentationEngine": true,
     "featureCardRegistry": true,
     "featureCardRegistryVersion": "V497",
+    "presidentReleasePlayers": true,
     "emailJsAdapter": true,
     "emailJsAdapterVersion": "V498",
     "firebaseAdapter": true,
@@ -533,8 +534,10 @@
       {
         "id": "release-players",
         "title": "Svincola Giocatori",
-        "enabled": false,
+        "enabled": true,
         "visibility": "president",
+        "featureKey": "presidentReleasePlayers",
+        "hiddenForAdmin": true,
         "leagues": [
           "zonaorientale"
         ],
@@ -743,6 +746,12 @@
       "id": "2025-2026",
       "seasonId": "2025-2026",
       "name": "Stagione 2025-2026",
+      "current": false
+    },
+    {
+      "id": "2026-2027",
+      "seasonId": "2026-2027",
+      "name": "Stagione 2026-2027",
       "current": true
     }
   ],
@@ -750,7 +759,7 @@
     "version": "V526",
     "scope": "whole-site-multi-season-data-adapter",
     "metadataOnly": true,
-    "currentSeasonId": "2025-2026",
+    "currentSeasonId": "2026-2027",
     "sharedDataKinds": [
       "listoni",
       "calciomercato"

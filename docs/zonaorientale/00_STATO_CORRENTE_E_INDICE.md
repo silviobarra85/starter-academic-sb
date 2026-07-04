@@ -2417,3 +2417,17 @@ Overlay whole-site di recovery runtime: cache-buster V518, alias autoload V518 e
 - Gli asset/archivi Calciomercato non sono stati cancellati: la rimozione e' runtime/UI e reversibile.
 - Restano attivi News/comunicati interni, Admin, Presidente, Listone, Rose, Fantamercato, Bilanci, Competizioni e preloader V560.
 
+
+# Aggiornamento V562 - Svincola Giocatori ZonaOrientale
+
+V562 riattiva in ZonaOrientale la funzionalita' presidente `Svincola Giocatori`, gia' presente nel runtime come pannello `#teamPlayerReleasePanelV261`, tramite `features.presidentReleasePlayers: true` e card registry `release-players` abilitato.
+
+La patch non riattiva Calciomercato: restano validi i guardrail V561 su sezione rimossa, fetch articoli bloccato e Netlify Function no-op.
+
+La configurazione della lega viene allineata a `2026-2027` anche nei metadata `seasons` e `multiSeasonDataAdapterV526.currentSeasonId`.
+
+Audit di riferimento:
+
+```bash
+node static/fanta-engine/tools/audit-zona-release-players-v562.mjs
+```

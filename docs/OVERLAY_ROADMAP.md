@@ -33,3 +33,12 @@ Stato: completato.
 - Preservati News/comunicati interni, Admin, Presidente, Listone, Rose, Fantamercato e preloader V560.
 - Audit: `node static/fanta-engine/tools/audit-calciomercato-disabled-v561.mjs`.
 
+
+## V562 - Svincola Giocatori ZonaOrientale
+
+Stato: completato.
+
+- Riattivata la card presidente `Svincola Giocatori` su ZonaOrientale tramite feature registry.
+- Allineata la config ZonaOrientale a V562 e alla stagione corrente `2026-2027`.
+- Preservata la disattivazione Calciomercato V561: nessuna sezione e nessun recupero articoli.
+- Audit: `node static/fanta-engine/tools/audit-zona-release-players-v562.mjs`.

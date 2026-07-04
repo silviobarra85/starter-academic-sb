@@ -70,8 +70,8 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '561',
-  currentSeasonId: '2025-2026',
+  currentVersion: '562',
+  currentSeasonId: '2026-2027',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
   logosBasePath: './assets/logos/',
@@ -100,7 +100,8 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     bilanci: true,
     calciomercato: false,
     fantamercato: true,
-    mantraFilters: true
+    mantraFilters: true,
+    presidentReleasePlayers: true
   }),
   guardrails: Object.freeze({
     configOnly: true,
@@ -114,7 +115,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=561';
+const CONFIG_URL_V443 = './assets/league-config.json?v=562';
 
 const PRESENTATION_ENGINE_CANDIDATES_V481 = [
   '../../../../fanta-engine/js/core/league-presentation-v481.js',

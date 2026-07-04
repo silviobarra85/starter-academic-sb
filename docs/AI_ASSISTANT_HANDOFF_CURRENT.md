@@ -2,13 +2,13 @@
 
 ## Versione corrente
 
-V561 - Calciomercato disattivato e feed articoli bloccato.
+V562 - Svincola Giocatori riattivato su ZonaOrientale.
 
 ## Architettura
 
 - fanta-engine: motore comune e asset condivisi.
-- zonaorientale: lega storica.
-- fantapetillomantramanager: seconda lega.
+- zonaorientale: lega storica, stagione corrente allineata a `2026-2027`.
+- fantapetillomantramanager: seconda lega, stagione `2026-2027`.
 - _league-template: base per nuove leghe.
 
 ## Stato runtime
@@ -27,16 +27,21 @@ Il runtime ordinario usa il router locale storico ripristinato in V558. Restano 
 - application-cache-chunked-tables-v553
 - eager-data-preload-v555
 
-V560 mantiene il feedback visivo di bootstrap introdotto in V559, ma lo tara su un segnale piu' sicuro: `DOMContentLoaded`, `window.load`, evento `fanta:app-rendered-v560`, controlli DOM essenziali presenti e quiet frame. La percentuale non ruota; ruota solo l'anello esterno della rotellina.
+V560 mantiene il feedback visivo di bootstrap introdotto in V559, tarato su render app, `window.load`, controlli DOM essenziali e quiet frame. La percentuale non ruota; ruota solo l'anello esterno della rotellina.
+
+V561 disattiva Calciomercato e blocca il recupero articoli/feed.
+
+V562 riattiva su ZonaOrientale solo la card presidente `Svincola Giocatori`, gia' presente nel runtime come `#teamPlayerReleasePanelV261`, governandola tramite feature registry.
 
 ## Funzioni da preservare
 
-- Asset Listoni/Calciomercato centralizzati in `static/fanta-engine/data/shared-assets/current/`.
-- Calciomercato: live ultimi 3 giorni via Netlify Function, storico da archivio centrale.
-- Rose/Listone: stile unificato, colonna Stato nelle Rose espanse.
+- Calciomercato resta disattivato: niente sezione, niente fetch articoli, Netlify Function no-op.
+- Rose/Listone/Svincolati: stile unificato e dati preservati.
 - Regolamento: nessuna colorazione ruolo.
-- Firebase, EmailJS, Admin, Presidente invariati.
+- Firebase, EmailJS, Admin, Presidente e Area Squadra invariati.
+- Svincola Giocatori attivo su ZonaOrientale e FantaMantraManager.
 - Router locale storico e navigazione reattiva post-caricamento.
+- Badge dispositivo V434.
 
 ## Regole operative
 
