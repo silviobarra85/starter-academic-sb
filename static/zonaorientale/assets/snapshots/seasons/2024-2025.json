@@ -1,89 +1,89 @@
 {
   "id": "2024-2025",
   "seasonId": "2024-2025",
-  "generatedAt": "2026-07-04T10:02:04.396Z",
+  "generatedAt": "2026-07-04T11:34:53.928Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "notes": "",
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
       },
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "logo": "./assets/logos/acmilan.png",
+      "canonicalName": "Ac Milan",
       "isCurrent": true,
+      "logo": "./assets/logos/acmilan.png",
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
       },
-      "canonicalName": "Ac Milan"
+      "notes": ""
     },
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "logo": "./assets/logos/baronissi.png",
-      "canonicalName": "Afc Severgas Baronissi",
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
+      "notes": "",
+      "logo": "./assets/logos/baronissi.png",
       "isCurrent": true,
+      "canonicalName": "Afc Severgas Baronissi",
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
-      },
-      "notes": "",
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ]
+      }
     },
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
-      "logo": "./assets/logos/paperopoli.png",
-      "canonicalName": "As Paperopoli",
+      "isCurrent": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778833666,
         "nanoseconds": 871000000
       },
-      "isCurrent": true,
+      "logo": "./assets/logos/paperopoli.png",
+      "canonicalName": "As Paperopoli",
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
       "updatedAt": {
         "seconds": 1778954349,
         "nanoseconds": 563000000
-      },
-      "notes": "",
-      "currentPresidentIds": [
-        "JaSqcnTZUYHtjHXghADS"
-      ]
+      }
     },
     {
       "id": "team_002",
+      "logo": "./assets/logos/beetlejuice.png",
+      "notes": "",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
       },
-      "notes": "",
-      "currentPresidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ],
-      "logo": "./assets/logos/beetlejuice.png",
-      "canonicalName": "Beetlejuice",
-      "isCurrent": true
+      "canonicalName": "Beetlejuice"
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "isCurrent": true,
       "createdAt": {
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "canonicalName": "FC DueFratelli2005",
+      "notes": "",
       "logo": "./assets/logos/due_fratelli.png",
+      "isCurrent": true,
+      "canonicalName": "FC DueFratelli2005",
       "currentPresidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
-      "notes": "",
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
@@ -92,119 +92,119 @@
     {
       "id": "GDisIDfbuSeLVm64PSR3",
       "isCurrent": true,
+      "logo": "./assets/logos/olympic_salerno.png",
       "createdAt": {
         "seconds": 1778833581,
         "nanoseconds": 658000000
       },
-      "canonicalName": "Olympic Salerno FC",
-      "logo": "./assets/logos/olympic_salerno.png",
+      "notes": "",
       "currentPresidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
       ],
-      "notes": "",
       "updatedAt": {
         "seconds": 1779377921,
         "nanoseconds": 533000000
-      }
+      },
+      "canonicalName": "Olympic Salerno FC"
     },
     {
       "id": "uQSBHtctytBo7koOKndM",
+      "canonicalName": "Prestige Worldwide",
+      "currentPresidentIds": [
+        "uvxNCO3JS0ZGPr8PCbzN"
+      ],
+      "updatedAt": {
+        "seconds": 1778954439,
+        "nanoseconds": 214000000
+      },
       "isCurrent": true,
       "createdAt": {
         "seconds": 1778833571,
         "nanoseconds": 416000000
       },
-      "canonicalName": "Prestige Worldwide",
-      "logo": "./assets/logos/prestige.png",
-      "currentPresidentIds": [
-        "uvxNCO3JS0ZGPr8PCbzN"
-      ],
       "notes": "",
-      "updatedAt": {
-        "seconds": 1778954439,
-        "nanoseconds": 214000000
-      }
+      "logo": "./assets/logos/prestige.png"
     },
     {
       "id": "FT1tqdqI18iUh3l1lakQ",
-      "logo": "./assets/logos/real_mappine.png",
       "canonicalName": "real mappine",
-      "isCurrent": true,
-      "createdAt": {
-        "seconds": 1778833596,
-        "nanoseconds": 670000000
-      },
+      "currentPresidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
       "updatedAt": {
         "seconds": 1778954461,
         "nanoseconds": 197000000
       },
+      "createdAt": {
+        "seconds": 1778833596,
+        "nanoseconds": 670000000
+      },
       "notes": "",
-      "currentPresidentIds": [
-        "2yHHP653ChQrYxnQHMk3"
-      ]
+      "logo": "./assets/logos/real_mappine.png",
+      "isCurrent": true
     },
     {
       "id": "team_001",
-      "logo": "./assets/logos/real_pisistrius.png",
       "canonicalName": "Real Pisistrius",
-      "isCurrent": true,
+      "currentPresidentIds": [
+        "ueJtI9xTYmZhDmWrZDzZ"
+      ],
       "updatedAt": {
         "seconds": 1778954495,
         "nanoseconds": 409000000
       },
       "notes": "",
-      "currentPresidentIds": [
-        "ueJtI9xTYmZhDmWrZDzZ"
-      ]
+      "logo": "./assets/logos/real_pisistrius.png",
+      "isCurrent": true
     },
     {
       "id": "ULwTIMBi3dyYrq0SoEsx",
-      "logo": "./assets/logos/river_plaid.png",
-      "isCurrent": true,
-      "createdAt": {
-        "seconds": 1778833556,
-        "nanoseconds": 33000000
-      },
-      "canonicalName": "River Plaid",
-      "notes": "",
+      "currentPresidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ],
       "updatedAt": {
         "seconds": 1778954524,
         "nanoseconds": 667000000
       },
-      "currentPresidentIds": [
-        "6UBSv1GUTCxSNrRb8dZr",
-        "7KbTM1lnzIThNWcF0NKL"
-      ]
+      "canonicalName": "River Plaid",
+      "logo": "./assets/logos/river_plaid.png",
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778833556,
+        "nanoseconds": 33000000
+      },
+      "isCurrent": true
     }
   ],
   "presidents": [
     {
       "id": "6UBSv1GUTCxSNrRb8dZr",
       "notes": "",
-      "name": "Claudio D'Isanto",
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778832834,
         "nanoseconds": 979000000
       },
+      "name": "Claudio D'Isanto",
       "isActive": true,
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778832834,
         "nanoseconds": 979000000
       }
     },
     {
       "id": "uvxNCO3JS0ZGPr8PCbzN",
-      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832855,
         "nanoseconds": 565000000
       },
-      "name": "Davide Perruso",
       "updatedAt": {
         "seconds": 1778832855,
         "nanoseconds": 565000000
       },
-      "notes": ""
+      "isActive": true,
+      "name": "Davide Perruso"
     },
     {
       "id": "cbA5rKY8ItVmgRqhUasz",
@@ -212,9 +212,9 @@
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
+      "isActive": true,
       "name": "Fabio Gatto",
       "notes": "",
-      "isActive": true,
       "createdAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
@@ -226,9 +226,9 @@
         "seconds": 1778832829,
         "nanoseconds": 62000000
       },
+      "isActive": true,
       "name": "Gaetano Alfinito",
       "notes": "",
-      "isActive": true,
       "createdAt": {
         "seconds": 1778832829,
         "nanoseconds": 62000000
@@ -236,55 +236,55 @@
     },
     {
       "id": "JaSqcnTZUYHtjHXghADS",
-      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
-      "notes": "",
-      "name": "Gaetano Caparrotti",
       "updatedAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
-      }
+      },
+      "isActive": true,
+      "name": "Gaetano Caparrotti"
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "isActive": true,
-      "createdAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      },
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
       "name": "Gianluca Caparrotti",
-      "notes": ""
+      "isActive": true,
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      }
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
-      "isActive": true,
-      "createdAt": {
-        "seconds": 1778832889,
-        "nanoseconds": 760000000
-      },
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
-      "name": "Giosuè Vicinanza"
+      "isActive": true,
+      "name": "Giosuè Vicinanza",
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      }
     },
     {
       "id": "2yHHP653ChQrYxnQHMk3",
-      "notes": "",
+      "isActive": true,
+      "name": "Mario Guariglia",
       "updatedAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
       },
-      "name": "Mario Guariglia",
-      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
@@ -292,7 +292,7 @@
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
-      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
@@ -302,32 +302,32 @@
         "nanoseconds": 365000000
       },
       "name": "Michele D'Isanto",
-      "notes": ""
+      "isActive": true
     },
     {
       "id": "ueJtI9xTYmZhDmWrZDzZ",
       "notes": "",
+      "createdAt": {
+        "seconds": 1778832793,
+        "nanoseconds": 929000000
+      },
       "updatedAt": {
         "seconds": 1778832793,
         "nanoseconds": 929000000
       },
       "name": "Silvio Barra",
-      "isActive": true,
-      "createdAt": {
-        "seconds": 1778832793,
-        "nanoseconds": 929000000
-      }
+      "isActive": true
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
-      "isActive": true,
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
-      "notes": "",
+      "isActive": true,
       "name": "Zio Dino",
-      "updatedAt": {
+      "notes": "",
+      "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       }
@@ -336,52 +336,44 @@
   "seasonTeams": [
     {
       "id": "2024-2025_wmdzhrrpup8lhvsdwm7w",
-      "seasonId": "2024-2025",
       "presidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
+      "name": "Ac Milan",
       "updatedAt": {
         "seconds": 1778839015,
         "nanoseconds": 150000000
       },
-      "name": "Ac Milan",
-      "isHistorical": false,
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "seasonId": "2024-2025",
       "createdAt": {
         "seconds": 1778839015,
         "nanoseconds": 150000000
       },
       "logo": "",
-      "teamId": "WMdzHRRpUP8lHvsdwM7W"
+      "isHistorical": false
     },
     {
       "id": "2024-2025_7bx0cegbxtf4fwh6t0pi",
-      "createdAt": {
-        "seconds": 1778839058,
-        "nanoseconds": 280000000
-      },
-      "isHistorical": false,
-      "logo": "",
-      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
-      "seasonId": "2024-2025",
       "presidentIds": [
         "JaSqcnTZUYHtjHXghADS"
       ],
+      "name": "As Paperopoli",
       "updatedAt": {
         "seconds": 1778839058,
         "nanoseconds": 280000000
       },
-      "name": "As Paperopoli"
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "logo": "",
+      "isHistorical": false,
+      "seasonId": "2024-2025",
+      "createdAt": {
+        "seconds": 1778839058,
+        "nanoseconds": 280000000
+      }
     },
     {
       "id": "2024-2025_team-002",
-      "createdAt": {
-        "seconds": 1778839120,
-        "nanoseconds": 948000000
-      },
-      "isHistorical": false,
-      "logo": "",
-      "teamId": "team_002",
-      "seasonId": "2024-2025",
       "presidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ],
@@ -389,18 +381,26 @@
       "updatedAt": {
         "seconds": 1778839120,
         "nanoseconds": 948000000
-      }
+      },
+      "teamId": "team_002",
+      "createdAt": {
+        "seconds": 1778839120,
+        "nanoseconds": 948000000
+      },
+      "seasonId": "2024-2025",
+      "isHistorical": false,
+      "logo": ""
     },
     {
       "id": "2024-2025_y3vmcdwvut0u1tlsg4qc",
-      "isHistorical": false,
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "createdAt": {
         "seconds": 1778839115,
         "nanoseconds": 844000000
       },
-      "logo": "",
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "seasonId": "2024-2025",
+      "isHistorical": false,
+      "logo": "",
       "presidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
@@ -412,45 +412,52 @@
     },
     {
       "id": "2024-2025_gdisidfbuselvm64psr3",
-      "presidentIds": [
-        "cbA5rKY8ItVmgRqhUasz"
-      ],
-      "name": "Olympic Salerno FC",
       "updatedAt": {
         "seconds": 1779380250,
         "nanoseconds": 520000000
       },
-      "seasonId": "2024-2025",
+      "name": "Olympic Salerno FC",
+      "presidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
       "logo": "",
-      "teamId": "GDisIDfbuSeLVm64PSR3",
+      "isHistorical": false,
       "createdAt": {
         "seconds": 1778839106,
         "nanoseconds": 557000000
       },
-      "isHistorical": false
+      "seasonId": "2024-2025",
+      "teamId": "GDisIDfbuSeLVm64PSR3"
     },
     {
       "id": "2024-2025_uqsbhtctytbo7kookndm",
-      "teamId": "uQSBHtctytBo7koOKndM",
-      "logo": "",
-      "createdAt": {
-        "seconds": 1778839038,
-        "nanoseconds": 927000000
-      },
-      "isHistorical": false,
+      "presidentIds": [
+        "uvxNCO3JS0ZGPr8PCbzN"
+      ],
       "name": "Prestige Worldwide",
       "updatedAt": {
         "seconds": 1778839038,
         "nanoseconds": 927000000
       },
-      "presidentIds": [
-        "uvxNCO3JS0ZGPr8PCbzN"
-      ],
-      "seasonId": "2024-2025"
+      "teamId": "uQSBHtctytBo7koOKndM",
+      "logo": "",
+      "isHistorical": false,
+      "seasonId": "2024-2025",
+      "createdAt": {
+        "seconds": 1778839038,
+        "nanoseconds": 927000000
+      }
     },
     {
       "id": "2024-2025_ft1tqdqi18iuh3l1lakq",
-      "name": "real mappine",
+      "createdAt": {
+        "seconds": 1778839030,
+        "nanoseconds": 583000000
+      },
+      "seasonId": "2024-2025",
+      "logo": "",
+      "isHistorical": false,
+      "teamId": "FT1tqdqI18iUh3l1lakQ",
       "updatedAt": {
         "seconds": 1778839030,
         "nanoseconds": 583000000
@@ -458,72 +465,65 @@
       "presidentIds": [
         "2yHHP653ChQrYxnQHMk3"
       ],
-      "seasonId": "2024-2025",
-      "teamId": "FT1tqdqI18iUh3l1lakQ",
-      "logo": "",
-      "createdAt": {
-        "seconds": 1778839030,
-        "nanoseconds": 583000000
-      },
-      "isHistorical": false
+      "name": "real mappine"
     },
     {
       "id": "2024-2025_team-001",
-      "teamId": "team_001",
-      "logo": "",
-      "createdAt": {
-        "seconds": 1778839127,
-        "nanoseconds": 850000000
-      },
-      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778839127,
         "nanoseconds": 850000000
       },
-      "name": "Real Pisistrius",
       "presidentIds": [
         "ueJtI9xTYmZhDmWrZDzZ"
       ],
-      "seasonId": "2024-2025"
+      "name": "Real Pisistrius",
+      "logo": "",
+      "isHistorical": false,
+      "seasonId": "2024-2025",
+      "createdAt": {
+        "seconds": 1778839127,
+        "nanoseconds": 850000000
+      },
+      "teamId": "team_001"
     },
     {
       "id": "2024-2025_ulwtimbi3dyyrq0soesx",
-      "teamId": "ULwTIMBi3dyYrq0SoEsx",
-      "logo": "",
-      "createdAt": {
-        "seconds": 1778839098,
-        "nanoseconds": 940000000
-      },
-      "isHistorical": false,
-      "updatedAt": {
-        "seconds": 1778839098,
-        "nanoseconds": 940000000
-      },
-      "name": "River Plaid",
       "presidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
       ],
-      "seasonId": "2024-2025"
+      "name": "River Plaid",
+      "updatedAt": {
+        "seconds": 1778839098,
+        "nanoseconds": 940000000
+      },
+      "teamId": "ULwTIMBi3dyYrq0SoEsx",
+      "seasonId": "2024-2025",
+      "createdAt": {
+        "seconds": 1778839098,
+        "nanoseconds": 940000000
+      },
+      "logo": "",
+      "isHistorical": false
     },
     {
       "id": "2024-2025_h6saek7urqiqnmiztrt7",
-      "presidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
-      "updatedAt": {
-        "seconds": 1778838947,
-        "nanoseconds": 935000000
-      },
-      "name": "Us Baronissi Cavaliers",
-      "seasonId": "2024-2025",
-      "logo": "",
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
       "createdAt": {
         "seconds": 1778838947,
         "nanoseconds": 935000000
       },
-      "isHistorical": false
+      "seasonId": "2024-2025",
+      "isHistorical": false,
+      "logo": "",
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "updatedAt": {
+        "seconds": 1778838947,
+        "nanoseconds": 935000000
+      },
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "name": "Us Baronissi Cavaliers"
     }
   ],
   "stadiums": [],
@@ -534,17 +534,17 @@
         "seconds": 1778839157,
         "nanoseconds": 91000000
       },
-      "type": "CAMPIONATO",
       "seasonId": "2024-2025",
-      "knockoutPhases": [],
-      "name": "Campionato",
-      "format": "CLASSIFICA",
       "notes": "",
-      "status": "CONCLUSA",
       "updatedAt": {
         "seconds": 1778839179,
         "nanoseconds": 989000000
-      }
+      },
+      "knockoutPhases": [],
+      "status": "CONCLUSA",
+      "format": "CLASSIFICA",
+      "name": "Campionato",
+      "type": "CAMPIONATO"
     },
     {
       "id": "2024-2025_champions-league",
@@ -552,104 +552,104 @@
         "seconds": 1778839184,
         "nanoseconds": 211000000
       },
-      "status": "CONCLUSA",
-      "format": "GIRONI_KO",
-      "notes": "",
-      "name": "Champion's League",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
+      "notes": "",
       "seasonId": "2024-2025",
-      "type": "CHAMPIONS_LEAGUE",
       "createdAt": {
         "seconds": 1778839157,
         "nanoseconds": 153000000
-      }
+      },
+      "type": "CHAMPIONS_LEAGUE",
+      "name": "Champion's League",
+      "status": "CONCLUSA",
+      "format": "GIRONI_KO"
     },
     {
       "id": "2024-2025_coppa-italia",
-      "seasonId": "2024-2025",
-      "format": "GIRONI_KO",
-      "notes": "",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "name": "Coppa Italia",
       "createdAt": {
         "seconds": 1778839157,
         "nanoseconds": 205000000
       },
-      "type": "COPPA_ITALIA",
+      "seasonId": "2024-2025",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778839188,
         "nanoseconds": 282000000
       },
-      "status": "CONCLUSA"
-    },
-    {
-      "id": "2024-2025_playoff",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "name": "Playoff",
       "format": "GIRONI_KO",
-      "notes": "",
-      "seasonId": "2024-2025",
-      "type": "PLAYOFF",
-      "createdAt": {
-        "seconds": 1778839157,
-        "nanoseconds": 271000000
-      },
+      "status": "CONCLUSA",
+      "name": "Coppa Italia",
+      "type": "COPPA_ITALIA"
+    },
+    {
+      "id": "2024-2025_playoff",
       "updatedAt": {
         "seconds": 1778839193,
         "nanoseconds": 169000000
       },
-      "status": "CONCLUSA"
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "createdAt": {
+        "seconds": 1778839157,
+        "nanoseconds": 271000000
+      },
+      "seasonId": "2024-2025",
+      "notes": "",
+      "name": "Playoff",
+      "type": "PLAYOFF",
+      "status": "CONCLUSA",
+      "format": "GIRONI_KO"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2024-2025-campionato_1",
-      "seasonTeamId": "2024-2025_ft1tqdqi18iuh3l1lakq",
-      "competitionId": "2024-2025_campionato",
+      "fantapoints": 2568,
+      "played": 36,
       "points": 59,
+      "createdAt": {
+        "seconds": 1778839366,
+        "nanoseconds": 87000000
+      },
+      "seasonId": "2024-2025",
+      "position": 1,
       "updatedAt": {
         "seconds": 1778839366,
         "nanoseconds": 87000000
       },
-      "position": 1,
-      "fantapoints": 2568,
-      "seasonId": "2024-2025",
-      "played": 36,
-      "createdAt": {
-        "seconds": 1778839366,
-        "nanoseconds": 87000000
-      }
+      "seasonTeamId": "2024-2025_ft1tqdqi18iuh3l1lakq",
+      "competitionId": "2024-2025_campionato"
     },
     {
       "id": "2024-2025-campionato_2",
-      "seasonId": "2024-2025",
-      "played": 36,
-      "createdAt": {
-        "seconds": 1778839366,
-        "nanoseconds": 162000000
-      },
-      "points": 57,
-      "seasonTeamId": "2024-2025_h6saek7urqiqnmiztrt7",
-      "competitionId": "2024-2025_campionato",
       "updatedAt": {
         "seconds": 1778839366,
         "nanoseconds": 162000000
       },
-      "fantapoints": 2613.5,
-      "position": 2
+      "seasonTeamId": "2024-2025_h6saek7urqiqnmiztrt7",
+      "competitionId": "2024-2025_campionato",
+      "createdAt": {
+        "seconds": 1778839366,
+        "nanoseconds": 162000000
+      },
+      "seasonId": "2024-2025",
+      "position": 2,
+      "points": 57,
+      "played": 36,
+      "fantapoints": 2613.5
     },
     {
       "id": "2024-2025-campionato_3",
@@ -657,251 +657,251 @@
         "seconds": 1778839366,
         "nanoseconds": 220000000
       },
-      "played": 36,
       "seasonId": "2024-2025",
       "position": 3,
-      "fantapoints": 2644.5,
       "updatedAt": {
         "seconds": 1778839366,
         "nanoseconds": 220000000
       },
       "seasonTeamId": "2024-2025_uqsbhtctytbo7kookndm",
       "competitionId": "2024-2025_campionato",
+      "played": 36,
+      "fantapoints": 2644.5,
       "points": 53
     },
     {
       "id": "2024-2025-campionato_4",
-      "createdAt": {
-        "seconds": 1778839366,
-        "nanoseconds": 284000000
-      },
-      "played": 36,
-      "seasonId": "2024-2025",
-      "position": 4,
+      "points": 51,
       "fantapoints": 2540.5,
+      "played": 36,
       "updatedAt": {
         "seconds": 1778839366,
         "nanoseconds": 284000000
       },
-      "competitionId": "2024-2025_campionato",
       "seasonTeamId": "2024-2025_7bx0cegbxtf4fwh6t0pi",
-      "points": 51
+      "competitionId": "2024-2025_campionato",
+      "seasonId": "2024-2025",
+      "createdAt": {
+        "seconds": 1778839366,
+        "nanoseconds": 284000000
+      },
+      "position": 4
     },
     {
       "id": "2024-2025-campionato_5",
-      "seasonId": "2024-2025",
-      "played": 36,
-      "createdAt": {
-        "seconds": 1778839366,
-        "nanoseconds": 331000000
-      },
+      "competitionId": "2024-2025_campionato",
       "updatedAt": {
         "seconds": 1778839366,
         "nanoseconds": 331000000
       },
       "seasonTeamId": "2024-2025_wmdzhrrpup8lhvsdwm7w",
-      "competitionId": "2024-2025_campionato",
-      "points": 51,
       "position": 5,
+      "seasonId": "2024-2025",
+      "createdAt": {
+        "seconds": 1778839366,
+        "nanoseconds": 331000000
+      },
+      "points": 51,
+      "played": 36,
       "fantapoints": 2543
     },
     {
       "id": "2024-2025-campionato_6",
+      "position": 6,
+      "seasonId": "2024-2025",
       "createdAt": {
         "seconds": 1778839366,
         "nanoseconds": 397000000
       },
-      "played": 36,
-      "seasonId": "2024-2025",
-      "position": 6,
-      "fantapoints": 2546,
       "competitionId": "2024-2025_campionato",
-      "seasonTeamId": "2024-2025_ulwtimbi3dyyrq0soesx",
-      "points": 48,
       "updatedAt": {
         "seconds": 1778839366,
         "nanoseconds": 397000000
-      }
+      },
+      "seasonTeamId": "2024-2025_ulwtimbi3dyyrq0soesx",
+      "played": 36,
+      "fantapoints": 2546,
+      "points": 48
     },
     {
       "id": "2024-2025-campionato_7",
       "fantapoints": 2548,
-      "position": 7,
-      "updatedAt": {
-        "seconds": 1778839366,
-        "nanoseconds": 435000000
-      },
-      "points": 46,
-      "seasonTeamId": "2024-2025_y3vmcdwvut0u1tlsg4qc",
-      "competitionId": "2024-2025_campionato",
       "played": 36,
+      "points": 46,
+      "position": 7,
       "createdAt": {
         "seconds": 1778839366,
         "nanoseconds": 435000000
       },
-      "seasonId": "2024-2025"
+      "seasonId": "2024-2025",
+      "competitionId": "2024-2025_campionato",
+      "updatedAt": {
+        "seconds": 1778839366,
+        "nanoseconds": 435000000
+      },
+      "seasonTeamId": "2024-2025_y3vmcdwvut0u1tlsg4qc"
     },
     {
       "id": "2024-2025-campionato_8",
       "points": 43,
-      "seasonTeamId": "2024-2025_gdisidfbuselvm64psr3",
-      "competitionId": "2024-2025_campionato",
+      "fantapoints": 2620.5,
+      "played": 36,
       "updatedAt": {
         "seconds": 1778839366,
         "nanoseconds": 525000000
       },
-      "fantapoints": 2620.5,
-      "position": 8,
+      "seasonTeamId": "2024-2025_gdisidfbuselvm64psr3",
+      "competitionId": "2024-2025_campionato",
       "seasonId": "2024-2025",
-      "played": 36,
       "createdAt": {
         "seconds": 1778839366,
         "nanoseconds": 525000000
-      }
+      },
+      "position": 8
     },
     {
       "id": "2024-2025-campionato_9",
-      "updatedAt": {
-        "seconds": 1778839366,
-        "nanoseconds": 549000000
-      },
-      "points": 39,
-      "seasonTeamId": "2024-2025_team-002",
-      "competitionId": "2024-2025_campionato",
-      "fantapoints": 2535,
-      "position": 9,
       "seasonId": "2024-2025",
       "createdAt": {
         "seconds": 1778839366,
         "nanoseconds": 549000000
       },
-      "played": 36
+      "position": 9,
+      "updatedAt": {
+        "seconds": 1778839366,
+        "nanoseconds": 549000000
+      },
+      "seasonTeamId": "2024-2025_team-002",
+      "competitionId": "2024-2025_campionato",
+      "played": 36,
+      "fantapoints": 2535,
+      "points": 39
     },
     {
       "id": "2024-2025-campionato_10",
-      "updatedAt": {
-        "seconds": 1778839366,
-        "nanoseconds": 575000000
-      },
-      "competitionId": "2024-2025_campionato",
-      "seasonTeamId": "2024-2025_team-001",
+      "played": 36,
+      "fantapoints": 2444,
       "points": 36,
       "position": 10,
-      "fantapoints": 2444,
-      "seasonId": "2024-2025",
       "createdAt": {
         "seconds": 1778839366,
         "nanoseconds": 575000000
       },
-      "played": 36
+      "seasonId": "2024-2025",
+      "competitionId": "2024-2025_campionato",
+      "updatedAt": {
+        "seconds": 1778839366,
+        "nanoseconds": 575000000
+      },
+      "seasonTeamId": "2024-2025_team-001"
     },
     {
       "id": "2024-2025-champions-league_1",
-      "createdAt": {
+      "points": null,
+      "fantapoints": null,
+      "played": null,
+      "competitionId": "2024-2025_champions-league",
+      "updatedAt": {
         "seconds": 1778839465,
         "nanoseconds": 578000000
       },
-      "played": null,
-      "seasonId": "2024-2025",
-      "fantapoints": null,
-      "position": 1,
-      "points": null,
       "seasonTeamId": "2024-2025_uqsbhtctytbo7kookndm",
-      "competitionId": "2024-2025_champions-league",
-      "updatedAt": {
+      "position": 1,
+      "seasonId": "2024-2025",
+      "createdAt": {
         "seconds": 1778839465,
         "nanoseconds": 578000000
       }
     },
     {
       "id": "2024-2025-champions-league_2",
+      "updatedAt": {
+        "seconds": 1778839465,
+        "nanoseconds": 659000000
+      },
+      "seasonTeamId": "2024-2025_h6saek7urqiqnmiztrt7",
+      "competitionId": "2024-2025_champions-league",
       "createdAt": {
         "seconds": 1778839465,
         "nanoseconds": 659000000
       },
-      "played": null,
       "seasonId": "2024-2025",
       "position": 2,
-      "fantapoints": null,
-      "seasonTeamId": "2024-2025_h6saek7urqiqnmiztrt7",
-      "competitionId": "2024-2025_champions-league",
       "points": null,
-      "updatedAt": {
-        "seconds": 1778839465,
-        "nanoseconds": 659000000
-      }
+      "fantapoints": null,
+      "played": null
     },
     {
       "id": "2024-2025-coppa-italia_1",
-      "seasonId": "2024-2025",
-      "createdAt": {
-        "seconds": 1778839439,
-        "nanoseconds": 134000000
-      },
+      "points": null,
       "played": null,
+      "fantapoints": null,
+      "competitionId": "2024-2025_coppa-italia",
+      "seasonTeamId": "2024-2025_7bx0cegbxtf4fwh6t0pi",
       "updatedAt": {
         "seconds": 1778839439,
         "nanoseconds": 134000000
       },
-      "points": null,
-      "seasonTeamId": "2024-2025_7bx0cegbxtf4fwh6t0pi",
-      "competitionId": "2024-2025_coppa-italia",
-      "fantapoints": null,
-      "position": 1
+      "position": 1,
+      "seasonId": "2024-2025",
+      "createdAt": {
+        "seconds": 1778839439,
+        "nanoseconds": 134000000
+      }
     },
     {
       "id": "2024-2025-coppa-italia_2",
       "seasonId": "2024-2025",
-      "played": null,
       "createdAt": {
         "seconds": 1778839439,
         "nanoseconds": 174000000
       },
+      "position": 2,
       "updatedAt": {
         "seconds": 1778839439,
         "nanoseconds": 174000000
       },
       "seasonTeamId": "2024-2025_gdisidfbuselvm64psr3",
       "competitionId": "2024-2025_coppa-italia",
-      "points": null,
-      "position": 2,
-      "fantapoints": null
+      "fantapoints": null,
+      "played": null,
+      "points": null
     },
     {
       "id": "2024-2025-playoff_1",
-      "seasonId": "2024-2025",
       "played": null,
+      "fantapoints": null,
+      "points": null,
+      "position": 1,
+      "seasonId": "2024-2025",
       "createdAt": {
         "seconds": 1778839387,
         "nanoseconds": 779000000
       },
-      "points": null,
-      "seasonTeamId": "2024-2025_wmdzhrrpup8lhvsdwm7w",
       "competitionId": "2024-2025_playoff",
+      "seasonTeamId": "2024-2025_wmdzhrrpup8lhvsdwm7w",
       "updatedAt": {
         "seconds": 1778839387,
         "nanoseconds": 779000000
-      },
-      "fantapoints": null,
-      "position": 1
+      }
     },
     {
       "id": "2024-2025-playoff_2",
-      "seasonId": "2024-2025",
-      "played": null,
       "createdAt": {
         "seconds": 1778839387,
         "nanoseconds": 855000000
       },
-      "points": null,
-      "seasonTeamId": "2024-2025_y3vmcdwvut0u1tlsg4qc",
-      "competitionId": "2024-2025_playoff",
+      "seasonId": "2024-2025",
+      "position": 2,
       "updatedAt": {
         "seconds": 1778839387,
         "nanoseconds": 855000000
       },
+      "seasonTeamId": "2024-2025_y3vmcdwvut0u1tlsg4qc",
+      "competitionId": "2024-2025_playoff",
+      "played": null,
       "fantapoints": null,
-      "position": 2
+      "points": null
     }
   ],
   "rosterEntries": [
