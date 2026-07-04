@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '562',
+  currentVersion: '563',
   currentSeasonId: '2026-2027',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -100,8 +100,27 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     bilanci: true,
     calciomercato: false,
     fantamercato: true,
-    mantraFilters: true,
-    presidentReleasePlayers: true
+    presidentReleasePlayers: true,
+    mantraFilters: true
+  }),
+  featureCardRegistry: Object.freeze({
+    version: 'V497',
+    mode: 'metadata-first',
+    includeDefaults: true,
+    cards: Object.freeze([
+      Object.freeze({
+        id: 'release-players',
+        title: 'Svincola Giocatori',
+        enabled: true,
+        visibility: 'president',
+        featureKey: 'presidentReleasePlayers',
+        hiddenForAdmin: true,
+        leagues: Object.freeze(['zonaorientale']),
+        order: 120,
+        safeEnforce: true,
+        enforceVisibility: true
+      })
+    ])
   }),
   guardrails: Object.freeze({
     configOnly: true,
@@ -115,7 +134,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=562';
+const CONFIG_URL_V443 = './assets/league-config.json?v=563';
 
 const PRESENTATION_ENGINE_CANDIDATES_V481 = [
   '../../../../fanta-engine/js/core/league-presentation-v481.js',
@@ -174,6 +193,13 @@ function mergeConfigV443(defaults, incoming) {
   merged.dataPaths = { ...(defaults.dataPaths || DEFAULT_DATA_PATHS_V446), ...(incoming.dataPaths || {}) };
   merged.features = { ...(defaults.features || {}), ...(incoming.features || {}) };
   merged.guardrails = { ...(defaults.guardrails || {}), ...(incoming.guardrails || {}) };
+  merged.featureCardRegistry = { ...(defaults.featureCardRegistry || {}), ...(incoming.featureCardRegistry || {}) };
+  if (defaults.featureCardRegistry?.cards || incoming.featureCardRegistry?.cards) {
+    merged.featureCardRegistry.cards = [
+      ...(Array.isArray(defaults.featureCardRegistry?.cards) ? defaults.featureCardRegistry.cards : []),
+      ...(Array.isArray(incoming.featureCardRegistry?.cards) ? incoming.featureCardRegistry.cards : [])
+    ];
+  }
   merged.futureLeagueCandidate = {
     ...(defaults.futureLeagueCandidate || {}),
     ...(incoming.futureLeagueCandidate || {})
@@ -193,7 +219,26 @@ function sanitizeConfigV443(config) {
     }),
     dataPaths: Object.freeze({ ...(merged.dataPaths || DEFAULT_DATA_PATHS_V446) }),
     features: Object.freeze({ ...merged.features }),
-    guardrails: Object.freeze({ ...merged.guardrails }),
+    featureCardRegistry: Object.freeze({
+    version: 'V497',
+    mode: 'metadata-first',
+    includeDefaults: true,
+    cards: Object.freeze([
+      Object.freeze({
+        id: 'release-players',
+        title: 'Svincola Giocatori',
+        enabled: true,
+        visibility: 'president',
+        featureKey: 'presidentReleasePlayers',
+        hiddenForAdmin: true,
+        leagues: Object.freeze(['zonaorientale']),
+        order: 120,
+        safeEnforce: true,
+        enforceVisibility: true
+      })
+    ])
+  }),
+  guardrails: Object.freeze({ ...merged.guardrails }),
     futureLeagueCandidate: Object.freeze({ ...merged.futureLeagueCandidate })
   });
 }
@@ -204,7 +249,7 @@ let readyPromiseV443 = null;
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
   window.ZonaOrientaleLeagueConfigV443 = Object.freeze({
-    version: 'V547',
+    version: 'V563',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
@@ -438,7 +483,7 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
         registry: window.FantaLeagueSectionRegistryV480 || window.ZonaOrientaleSectionRegistryV480 || window.FantaMantraManagerSectionRegistryV480 || window.FantaPetilloSectionRegistryV480 || null
       });
       window.ZonaOrientaleLeagueRuntimePresentationV445 = Object.freeze({
-        version: 'V547',
+        version: 'V563',
         pageId,
         appliedAt: new Date().toISOString(),
         commonPresentationEngine: true,
@@ -548,3 +593,6 @@ if (document.readyState === 'loading') {
 /* V503 - Browser smoke tests: aggiunti script Playwright e audit statici, senza impatto runtime sulle leghe esistenti. */
 
 window.FantaEngineLeanRuntimeRestoreConfigV558 = Object.freeze({ version: 'V558', runtimeLayersDisabled: true });
+
+/* V563 - Default bootstrap abilita Svincola Giocatori per ZonaOrientale prima del fetch asincrono della config. */
+window.ZonaOrientaleReleasePlayersBootstrapV563 = Object.freeze({ version: 'V563', presidentReleasePlayersDefault: true, currentSeasonId: '2026-2027' });

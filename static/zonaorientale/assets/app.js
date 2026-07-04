@@ -26,8 +26,8 @@ import { installFeatureCardRegistryV497 } from "../../fanta-engine/js/core/featu
 import { installDashboardCardsEngineV504 } from "../../fanta-engine/js/ui/dashboard-cards-engine-v504.js?v=504";
 import { installDashboardRendererHelpersV505, renderCollapsiblePanelV505 } from "../../fanta-engine/js/ui/dashboard-renderer-helpers-v505.js?v=505";
 import { installDashboardRendererHelpersV509, renderAdminCollapsiblePanelV509, renderPresidentDashboardMetricV509 } from "../../fanta-engine/js/ui/dashboard-renderer-helpers-v509.js?v=509";
-import { installSeasonDataAdapterV526 } from "../../fanta-engine/js/core/season-data-adapter-v526.js?v=561";
-import { installSeasonPathResolverV537 } from "../../fanta-engine/js/core/season-path-resolver-v537.js?v=561";
+import { installSeasonDataAdapterV526 } from "../../fanta-engine/js/core/season-data-adapter-v526.js?v=563";
+import { installSeasonPathResolverV537 } from "../../fanta-engine/js/core/season-path-resolver-v537.js?v=563";
 
 import {
   COLLECTIONS,
@@ -108,7 +108,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=561";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=563";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -36681,3 +36681,110 @@ window.FantaEngineCalciomercatoDisabledV561 = Object.freeze({
   })
 });
 
+
+
+/* V563 - ZonaOrientale: riattiva davvero Svincola Giocatori nell'Area Presidente.
+ * V562 aveva abilitato la config statica, ma il registry card V497 nasceva prima
+ * del fetch asincrono di league-config.json e poteva mantenere il default disabilitato.
+ * Questa patch abilita il card runtime gia' nel bootstrap, reinserisce il pannello
+ * dopo i render e lascia Calciomercato disattivato come in V561. */
+const ZONA_RELEASE_PLAYERS_VERSION_V563 = "V563";
+const ZONA_RELEASE_PLAYERS_CARD_ID_V563 = "release-players";
+const ZONA_RELEASE_PLAYERS_PANEL_ID_V563 = "teamPlayerReleasePanelV261";
+
+function isZonaOrientaleRuntimeV563() {
+  return String(getLeagueConfigValueV443?.("leagueId", "zonaorientale") || "zonaorientale") === "zonaorientale";
+}
+
+function enableZonaReleasePlayersRegistryV563() {
+  if (!isZonaOrientaleRuntimeV563()) return false;
+  try {
+    const registryApi = window.FantaEngineFeatureCardRegistryRuntimeV497;
+    const cards = typeof registryApi?.getAllCards === "function" ? registryApi.getAllCards() : [];
+    let touched = false;
+    cards.forEach((card) => {
+      if (String(card?.id || "") !== ZONA_RELEASE_PLAYERS_CARD_ID_V563) return;
+      card.enabled = true;
+      card.visibility = "president";
+      card.featureKey = "presidentReleasePlayers";
+      card.hiddenForAdmin = true;
+      card.leagues = ["zonaorientale"];
+      card.safeEnforce = true;
+      card.enforceVisibility = true;
+      touched = true;
+    });
+    return touched;
+  } catch (error) {
+    console.warn("Svincola Giocatori V563: registry non aggiornato", error);
+    return false;
+  }
+}
+
+function markZonaReleasePlayersPanelVisibleV563(panel) {
+  if (!panel) return false;
+  panel.dataset.featureCardId = ZONA_RELEASE_PLAYERS_CARD_ID_V563;
+  panel.dataset.zonaReleasePlayersV563 = "active";
+  panel.hidden = false;
+  panel.removeAttribute("aria-hidden");
+  panel.classList.remove("fanta-dashboard-card-hidden-v504");
+  return true;
+}
+
+function activateZonaReleasePlayersPanelV563(source = "runtime") {
+  if (!isZonaOrientaleRuntimeV563()) return false;
+  if (state?.isAdmin) return false;
+  const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+  if (!state?.user || !approved?.seasonTeamId) return false;
+  enableZonaReleasePlayersRegistryV563();
+  try { enhancePlayerReleasePresidentAreaV261?.(); } catch (error) { console.warn("Svincola Giocatori V563: enhance fallito", error); }
+  const panel = document.getElementById(ZONA_RELEASE_PLAYERS_PANEL_ID_V563);
+  const visible = markZonaReleasePlayersPanelVisibleV563(panel);
+  try { attachPlayerReleaseHandlerV261?.(); } catch (error) { console.warn("Svincola Giocatori V563: handler non agganciato", error); }
+  try { updatePlayerReleasePreviewV261?.(); } catch (error) { console.warn("Svincola Giocatori V563: preview non aggiornata", error); }
+  try { enhanceTeamAreaRoleFiltersV441?.(); } catch (error) { console.warn("Svincola Giocatori V563: filtri ruolo non aggiornati", error); }
+  try { applyTeamAreaMobileCompactV433?.(); } catch (error) { console.warn("Svincola Giocatori V563: mobile compact non aggiornato", error); }
+  try { window.FantaEngineDashboardCardsRuntimeV504?.refresh?.({ root: document }); } catch (error) { console.warn("Svincola Giocatori V563: dashboard refresh non riuscito", error); }
+  const refreshedPanel = document.getElementById(ZONA_RELEASE_PLAYERS_PANEL_ID_V563);
+  markZonaReleasePlayersPanelVisibleV563(refreshedPanel);
+  if (refreshedPanel) refreshedPanel.dataset.zonaReleasePlayersSourceV563 = source;
+  return Boolean(refreshedPanel || visible);
+}
+
+const renderUserAreaBeforeV563 = typeof renderUserAreaV34 === "function" ? renderUserAreaV34 : null;
+if (renderUserAreaBeforeV563) {
+  renderUserAreaV34 = function renderUserAreaV563() {
+    const result = renderUserAreaBeforeV563?.();
+    activateZonaReleasePlayersPanelV563("renderUserArea");
+    return result;
+  };
+}
+
+const renderAllBeforeV563 = typeof renderAll === "function" ? renderAll : null;
+if (renderAllBeforeV563) {
+  renderAll = function renderAllV563() {
+    const result = renderAllBeforeV563?.();
+    activateZonaReleasePlayersPanelV563("renderAll");
+    return result;
+  };
+}
+
+["DOMContentLoaded", "load", "hashchange", "fanta:auth-state-changed", "fanta:dashboard-context-changed"].forEach((eventName) => {
+  window.addEventListener(eventName, () => window.setTimeout(() => activateZonaReleasePlayersPanelV563(eventName), 0), { passive: true });
+});
+window.setTimeout(() => activateZonaReleasePlayersPanelV563("timer-250"), 250);
+window.setTimeout(() => activateZonaReleasePlayersPanelV563("timer-1000"), 1000);
+window.setTimeout(() => activateZonaReleasePlayersPanelV563("timer-2000"), 2000);
+
+window.ZonaOrientalePlayerReleaseV563 = Object.freeze({
+  version: ZONA_RELEASE_PLAYERS_VERSION_V563,
+  scope: "zonaorientale-only",
+  cardId: ZONA_RELEASE_PLAYERS_CARD_ID_V563,
+  panelId: ZONA_RELEASE_PLAYERS_PANEL_ID_V563,
+  selectId: "teamPlayerReleaseSelectV261",
+  formId: "teamPlayerReleaseFormV261",
+  recipient: typeof PLAYER_RELEASE_RECIPIENT_V261 !== "undefined" ? PLAYER_RELEASE_RECIPIENT_V261 : "caparrotti86@yahoo.it",
+  runtimeRegistryPatched: true,
+  preservesCalciomercatoDisabledV561: true,
+  preservesFantaPetilloMantraManager: true,
+  activate: activateZonaReleasePlayersPanelV563
+});

@@ -2431,3 +2431,10 @@ Audit di riferimento:
 ```bash
 node static/fanta-engine/tools/audit-zona-release-players-v562.mjs
 ```
+
+## Aggiornamento V563 - Svincola Giocatori runtime fix
+- La funzione **Svincola Giocatori** e riattivata nell'Area Presidente ZonaOrientale.
+- Il pannello `teamPlayerReleasePanelV261` viene riagganciato dopo `renderUserArea`, `renderAll`, eventi auth e timer di sicurezza.
+- Il registry card V497 viene corretto a runtime per `release-players` con `enabled: true`, `visibility: president`, `featureKey: presidentReleasePlayers` e `hiddenForAdmin: true`.
+- Rimangono preservati Calciomercato disattivato V561, stagione `2026-2027`, EmailJS, Firebase, Admin, Rose, Listone, Bilanci e Competizioni.
+- Audit: `node static/fanta-engine/tools/audit-zona-release-players-v563.mjs`.

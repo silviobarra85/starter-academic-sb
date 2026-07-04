@@ -42,3 +42,8 @@ Stato: completato.
 - Allineata la config ZonaOrientale a V562 e alla stagione corrente `2026-2027`.
 - Preservata la disattivazione Calciomercato V561: nessuna sezione e nessun recupero articoli.
 - Audit: `node static/fanta-engine/tools/audit-zona-release-players-v562.mjs`.
+
+## V563 - Svincola Giocatori ZonaOrientale runtime fix
+- Corregge la riattivazione V562: il pannello Svincola Giocatori viene abilitato gia nel bootstrap del registry card V497 e riagganciato dopo i render dell'Area Presidente.
+- Mantiene Calciomercato disattivato come da V561.
+- Non modifica FantaPetilloMantraManager.
