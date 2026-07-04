@@ -1,58 +1,58 @@
 {
   "id": "2007-2008",
   "seasonId": "2007-2008",
-  "generatedAt": "2026-06-25T14:58:39.786Z",
+  "generatedAt": "2026-07-04T10:02:04.401Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "canonicalName": "Ac Milan",
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
+      "notes": "",
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
       },
-      "notes": "",
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "logo": "./assets/logos/acmilan.png",
+      "isCurrent": true,
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
       },
-      "logo": "./assets/logos/acmilan.png",
-      "isCurrent": true
+      "canonicalName": "Ac Milan"
     },
     {
       "id": "X6tlCRXPPRWyIj8xkaq8",
-      "currentPresidentIds": [
-        "oYPGypC1HwnSQki97JTk"
-      ],
       "updatedAt": {
         "seconds": 1778834036,
         "nanoseconds": 272000000
       },
+      "notes": "",
+      "currentPresidentIds": [
+        "oYPGypC1HwnSQki97JTk"
+      ],
+      "logo": "",
       "canonicalName": "AFC Satanese",
       "isCurrent": false,
-      "notes": "",
       "createdAt": {
         "seconds": 1778834036,
         "nanoseconds": 272000000
-      },
-      "logo": ""
+      }
     },
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
+      "logo": "./assets/logos/baronissi.png",
+      "canonicalName": "Afc Severgas Baronissi",
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
-      "logo": "./assets/logos/baronissi.png",
-      "notes": "",
       "isCurrent": true,
-      "canonicalName": "Afc Severgas Baronissi",
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
+      "notes": "",
       "currentPresidentIds": [
         "Mw12sFS1OoS8V5uzBLLw"
       ]
@@ -62,159 +62,159 @@
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
       "isActive": true,
-      "updatedAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      },
       "createdAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "notes": "",
-      "name": "Gianluca Caparrotti"
+      "updatedAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "name": "Gianluca Caparrotti",
+      "notes": ""
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
-      "notes": "",
-      "name": "Giosuè Vicinanza",
+      "isActive": true,
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
-      "isActive": true,
+      "notes": "",
       "updatedAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
-      }
+      },
+      "name": "Giosuè Vicinanza"
     },
     {
       "id": "oYPGypC1HwnSQki97JTk",
       "isActive": false,
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778833101,
         "nanoseconds": 992000000
       },
       "name": "Giuseppe Pellegrino",
-      "notes": "",
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778833101,
         "nanoseconds": 992000000
-      }
+      },
+      "notes": ""
     }
   ],
   "seasonTeams": [
     {
       "id": "2007-2008_wmdzhrrpup8lhvsdwm7w",
-      "isHistorical": false,
+      "presidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "name": "Ac Milan",
       "updatedAt": {
-        "seconds": 1778849982,
-        "nanoseconds": 399000000
-      },
-      "createdAt": {
         "seconds": 1778849982,
         "nanoseconds": 399000000
       },
       "seasonId": "2007-2008",
       "logo": "",
       "teamId": "WMdzHRRpUP8lHvsdwM7W",
-      "name": "Ac Milan",
-      "presidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ]
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778849982,
+        "nanoseconds": 399000000
+      }
     },
     {
       "id": "2007-2008_x6tlcrxpprwyij8xkaq8",
-      "isHistorical": false,
+      "seasonId": "2007-2008",
+      "name": "AFC Satanese",
       "updatedAt": {
         "seconds": 1778850352,
         "nanoseconds": 761000000
       },
+      "presidentIds": [
+        "oYPGypC1HwnSQki97JTk"
+      ],
       "createdAt": {
         "seconds": 1778850352,
         "nanoseconds": 761000000
       },
-      "seasonId": "2007-2008",
+      "isHistorical": false,
       "teamId": "X6tlCRXPPRWyIj8xkaq8",
-      "logo": "",
-      "name": "AFC Satanese",
-      "presidentIds": [
-        "oYPGypC1HwnSQki97JTk"
-      ]
+      "logo": ""
     },
     {
       "id": "2007-2008_kbjri4liu4iuq6ajfnml",
-      "updatedAt": {
-        "seconds": 1779195892,
-        "nanoseconds": 291000000
-      },
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "logo": "",
       "isHistorical": false,
-      "presidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
       "createdAt": {
         "seconds": 1778850349,
         "nanoseconds": 590000000
       },
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
-      "logo": "",
-      "seasonId": "2007-2008",
-      "name": "Us Baronissi Cavaliers"
+      "name": "Us Baronissi Cavaliers",
+      "updatedAt": {
+        "seconds": 1779195892,
+        "nanoseconds": 291000000
+      },
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "seasonId": "2007-2008"
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2007-2008_campionato",
+      "knockoutPhases": [],
+      "name": "Campionato",
+      "format": "CLASSIFICA",
+      "notes": "",
+      "seasonId": "2007-2008",
+      "type": "CAMPIONATO",
       "createdAt": {
         "seconds": 1778850357,
         "nanoseconds": 630000000
       },
-      "status": "CONCLUSA",
-      "seasonId": "2007-2008",
-      "format": "CLASSIFICA",
-      "notes": "",
-      "type": "CAMPIONATO",
       "updatedAt": {
         "seconds": 1778850362,
         "nanoseconds": 63000000
       },
-      "knockoutPhases": [],
-      "name": "Campionato"
+      "status": "CONCLUSA"
     },
     {
       "id": "2007-2008_champions-league",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "name": "Champion's League",
-      "format": "GIRONI_KO",
-      "notes": "",
-      "seasonId": "2007-2008",
       "status": "NON_DISPUTATA",
+      "updatedAt": {
+        "seconds": 1778850365,
+        "nanoseconds": 848000000
+      },
+      "type": "CHAMPIONS_LEAGUE",
       "createdAt": {
         "seconds": 1778850357,
         "nanoseconds": 683000000
       },
-      "type": "CHAMPIONS_LEAGUE",
-      "updatedAt": {
-        "seconds": 1778850365,
-        "nanoseconds": 848000000
-      }
-    },
-    {
-      "id": "2007-2008_coppa-italia",
-      "name": "Coppa Italia",
+      "format": "GIRONI_KO",
+      "notes": "",
+      "name": "Champion's League",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
+      "seasonId": "2007-2008"
+    },
+    {
+      "id": "2007-2008_coppa-italia",
       "notes": "",
       "format": "GIRONI_KO",
-      "status": "CONCLUSA",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "name": "Coppa Italia",
       "seasonId": "2007-2008",
+      "type": "COPPA_ITALIA",
       "createdAt": {
         "seconds": 1778850357,
         "nanoseconds": 731000000
@@ -223,104 +223,104 @@
         "seconds": 1778850372,
         "nanoseconds": 103000000
       },
-      "type": "COPPA_ITALIA"
+      "status": "CONCLUSA"
     },
     {
       "id": "2007-2008_playoff",
-      "updatedAt": {
-        "seconds": 1778850376,
-        "nanoseconds": 131000000
-      },
-      "type": "PLAYOFF",
-      "format": "GIRONI_KO",
-      "notes": "",
-      "createdAt": {
-        "seconds": 1778850357,
-        "nanoseconds": 777000000
-      },
-      "status": "NON_DISPUTATA",
-      "seasonId": "2007-2008",
-      "name": "Playoff",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
-      ]
+      ],
+      "name": "Playoff",
+      "format": "GIRONI_KO",
+      "notes": "",
+      "seasonId": "2007-2008",
+      "type": "PLAYOFF",
+      "createdAt": {
+        "seconds": 1778850357,
+        "nanoseconds": 777000000
+      },
+      "updatedAt": {
+        "seconds": 1778850376,
+        "nanoseconds": 131000000
+      },
+      "status": "NON_DISPUTATA"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2007-2008-campionato_1",
+      "played": null,
       "createdAt": {
         "seconds": 1778850393,
         "nanoseconds": 899000000
       },
       "seasonId": "2007-2008",
+      "position": 1,
+      "fantapoints": null,
       "updatedAt": {
         "seconds": 1778850393,
         "nanoseconds": 899000000
       },
+      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w",
       "competitionId": "2007-2008_campionato",
-      "fantapoints": null,
-      "played": null,
-      "position": 1,
-      "points": null,
-      "seasonTeamId": "2007-2008_wmdzhrrpup8lhvsdwm7w"
+      "points": null
     },
     {
       "id": "2007-2008-campionato_2",
-      "points": null,
-      "seasonTeamId": "2007-2008_kbjri4liu4iuq6ajfnml",
+      "seasonId": "2007-2008",
+      "played": null,
       "createdAt": {
         "seconds": 1778850393,
         "nanoseconds": 968000000
       },
-      "seasonId": "2007-2008",
-      "fantapoints": null,
+      "points": null,
+      "seasonTeamId": "2007-2008_kbjri4liu4iuq6ajfnml",
       "competitionId": "2007-2008_campionato",
       "updatedAt": {
         "seconds": 1778850393,
         "nanoseconds": 968000000
       },
-      "position": 2,
-      "played": null
+      "fantapoints": null,
+      "position": 2
     },
     {
       "id": "2007-2008-campionato_3",
-      "seasonId": "2007-2008",
-      "createdAt": {
-        "seconds": 1778850394,
-        "nanoseconds": 4000000
-      },
-      "played": null,
-      "position": 3,
       "updatedAt": {
         "seconds": 1778850394,
         "nanoseconds": 4000000
       },
+      "points": null,
+      "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8",
       "competitionId": "2007-2008_campionato",
       "fantapoints": null,
-      "points": null,
-      "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8"
+      "position": 3,
+      "seasonId": "2007-2008",
+      "played": null,
+      "createdAt": {
+        "seconds": 1778850394,
+        "nanoseconds": 4000000
+      }
     },
     {
       "id": "2007-2008-coppa-italia_1",
-      "points": null,
-      "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8",
-      "seasonId": "2007-2008",
       "createdAt": {
         "seconds": 1778850399,
         "nanoseconds": 575000000
       },
-      "position": 1,
       "played": null,
+      "seasonId": "2007-2008",
+      "position": 1,
       "fantapoints": null,
       "updatedAt": {
         "seconds": 1778850399,
         "nanoseconds": 575000000
       },
-      "competitionId": "2007-2008_coppa-italia"
+      "competitionId": "2007-2008_coppa-italia",
+      "seasonTeamId": "2007-2008_x6tlcrxpprwyij8xkaq8",
+      "points": null
     }
   ],
   "rosterEntries": [
