@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+const root=process.cwd(); let ok=0, fail=0; const failures=[];
+function abs(p){return path.join(root,p)}; function exists(p){return fs.existsSync(abs(p))}; function read(p){return fs.readFileSync(abs(p),'utf8')}; function readJson(p){return JSON.parse(read(p))};
+function check(c,l){if(c){ok++;console.log(`OK  - ${l}`)}else{fail++;failures.push(l);console.error(`FAIL - ${l}`)}};
+const engine='fanta-engine/js/ui/dashboard-cards-engine-v500.js';
+const manifest='fanta-engine/data/dashboard-cards-engine-v500.json';
+check(exists(engine),'dashboard cards engine V500 presente');
+check(exists(manifest),'manifest dashboard cards V500 presente');
+const engineText=read(engine);
+check(engineText.includes("DASHBOARD_CARDS_ENGINE_VERSION_V500 = 'V500'"),'versione engine V500 corretta');
+check(engineText.includes('createDashboardCardsEngineV500'),'factory dashboard cards presente');
+check(engineText.includes('installDashboardCardsEngineV500'),'installer dashboard cards presente');
+check(engineText.includes('observe-first'),'modalita observe-first presente');
+check(engineText.includes('MutationObserver'),'osservatore DOM presente');
+check(engineText.includes('data-dashboard-cards-engine-v500') || engineText.includes('dashboardCardsEngineV500'),'marcatura data-* presente');
+check(!engineText.includes('ZonaOrientale Salerno'),'engine senza brand Zona hardcoded');
+check(!engineText.includes('FantaMantraManager'),'engine senza brand FMM hardcoded');
+check(!engineText.includes('service_ttjf7js'),'engine senza EmailJS FMM hardcoded');
+check(!engineText.includes('service_trz4dxe'),'engine senza EmailJS Zona hardcoded');
+const man=readJson(manifest);
+check(man.version==='V500','manifest versione V500');
+check(man.mode==='observe-first','manifest mode observe-first');
+check(Array.isArray(man.guardrails) && man.guardrails.includes('non forza la rimozione di card esistenti'),'manifest guardrail no remove');
+for(const league of ['zonaorientale','fantapetillomantramanager']){
+  const cfgPath=`${league}/assets/league-config.json`;
+  const appPath=`${league}/assets/app.js`;
+  const cfg=readJson(cfgPath);
+  const app=read(appPath);
+  check(cfg.currentVersion===500,`${cfgPath} currentVersion V500`);
+  check(cfg.features?.dashboardCardsEngine===true,`${cfgPath} feature dashboardCardsEngine attiva`);
+  check(cfg.features?.dashboardCardsEngineVersion==='V500',`${cfgPath} dashboardCardsEngineVersion V500`);
+  check(cfg.guardrails?.dashboardCardsEngineObserveFirst===true,`${cfgPath} guardrail observe-first`);
+  check(cfg.guardrails?.dashboardCardsEngineNoForcedHide===true,`${cfgPath} guardrail no forced hide`);
+  check(cfg.dashboardCardsEngine?.version==='V500',`${cfgPath} config dashboard engine V500`);
+  check(cfg.dashboardCardsEngine?.mode==='observe-first',`${cfgPath} mode observe-first`);
+  check(cfg.dashboardCardsEngine?.usesFeatureCardRegistry==='V497',`${cfgPath} usa registry V497`);
+  check(cfg.dashboardCardsEngine?.selectors?.['president-dashboard']?.length>0,`${cfgPath} selettori dashboard presidente`);
+  check(cfg.dashboardCardsEngine?.selectors?.['trade-announcement']?.length>0,`${cfgPath} selettori comunicato scambio`);
+  check(app.includes('dashboard-cards-engine-v500.js?v=500'),`${appPath} importa engine V500`);
+  check(app.includes('installDashboardCardsEngineV500'),`${appPath} installa engine V500`);
+  check(app.includes('getFantaEngineDashboardContextV500'),`${appPath} context provider comune`);
+  check(app.includes('FantaEngineDashboardCardsRuntimeV500'),`${appPath} runtime window V500`);
+  check(app.includes('mode: getLeagueConfigValueV443(\'dashboardCardsEngine.mode\', \'observe-first\')'),`${appPath} mode da config con fallback`);
+}
+const fmmApp=read('fantapetillomantramanager/assets/app.js');
+check(fmmApp.includes('renderRuleProposalsPresidentSectionV479'),'FMM Proposte regolamento preservate');
+check(fmmApp.includes('Svincola Giocatori'),'FMM Svincola Giocatori preservato');
+check(fmmApp.includes('Comunicato avvenuto scambio'),'FMM Comunicato scambio preservato');
+const zonaApp=read('zonaorientale/assets/app.js');
+check(!zonaApp.includes('service_ttjf7js'),'Zona app non contiene service FMM');
+check(exists('../docs/AI_ASSISTANT_HANDOFF_V500.md'),'handoff AI V500 presente');
+check(exists('../docs/zonaorientale/DASHBOARD_CARDS_ENGINE_V500.md'),'doc Zona dashboard V500 presente');
+check(exists('../docs/fantapetillomantramanager/DASHBOARD_CARDS_ENGINE_V500.md'),'doc FMM dashboard V500 presente');
+if(fail>0){console.error(`\nAudit dashboard cards V500 fallito: ${ok} OK, ${fail} FAIL`); failures.forEach(f=>console.error(` - ${f}`)); process.exit(1)}
+console.log(`\nAudit dashboard cards V500 completato: ${ok} OK, ${fail} FAIL`);

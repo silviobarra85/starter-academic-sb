@@ -1,0 +1,37 @@
+{
+  "version": "V503",
+  "name": "Browser smoke tests Playwright",
+  "mode": "optional-runtime-check",
+  "script": "fanta-engine/tools/playwright-smoke-v503.mjs",
+  "audit": "fanta-engine/tools/audit-browser-smoke-tests-v503.mjs",
+  "defaultBaseUrl": "http://127.0.0.1:1313",
+  "environment": {
+    "FANTA_BASE_URL": "base URL del server locale o branch deploy",
+    "FANTA_SITE_PREFIX": "prefisso opzionale, per esempio /starter-academic-sb/static quando si serve dalla cartella parent"
+  },
+  "pages": [
+    "/zonaorientale/",
+    "/zonaorientale/competition.html",
+    "/zonaorientale/player.html",
+    "/fantapetillomantramanager/",
+    "/fantapetillomantramanager/competition.html",
+    "/fantapetillomantramanager/player.html",
+    "/fantapetillomantramanager/news.html",
+    "/fantapetillomantramanager/bilanci.html"
+  ],
+  "checks": [
+    "HTTP status < 400",
+    "no request failures",
+    "no console error",
+    "no pageerror",
+    "footer contains V503",
+    "page title present"
+  ],
+  "guardrails": [
+    "no login credentials required",
+    "no Firebase writes",
+    "no EmailJS sends",
+    "no production mutation",
+    "safe for local server or Netlify branch deploy"
+  ]
+}

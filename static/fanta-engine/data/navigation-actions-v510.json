@@ -1,0 +1,27 @@
+{
+  "version": "V510",
+  "purpose": "Fix navigazione pulsanti/link verso sezioni tramite event delegation comune in fanta-engine.",
+  "module": "fanta-engine/js/ui/navigation-actions-v510.js",
+  "problemDetected": {
+    "symptom": "Alcuni pulsanti dinamici non portavano alla sezione relativa.",
+    "likelyCause": "Link/pulsanti aggiunti dopo setupNavigation o con attributi legacy non sempre agganciati da listener statici.",
+    "fix": "Delegazione document-level per data-page-link e data-v42-page-link, con routing tramite setAppPageV42 locale."
+  },
+  "handledSelectors": [
+    "[data-page-link]",
+    "[data-v42-page-link]"
+  ],
+  "guardrails": [
+    "nessuna modifica Firebase",
+    "nessuna modifica EmailJS",
+    "nessuna modifica dashboard renderer",
+    "nessuna cancellazione DOM",
+    "gestione dinamica dei pulsanti creati dopo il bootstrap"
+  ],
+  "nextOverlays": [
+    "V511 report centralizzazione fanta-engine + checklist pre-merge",
+    "V512 configuratore guidato nuova lega",
+    "V513 hardening dashboard enforce",
+    "V514 adapter dati multi-season"
+  ]
+}

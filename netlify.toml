@@ -17,6 +17,11 @@
   command = "bash netlify/build-hugo-0.80.sh"
 
 [[redirects]]
+  from = "/zonaorientale/static/*"
+  to = "/zonaorientale/:splat"
+  status = 301
+
+[[redirects]]
   from = "/zonaorientale/share/news/:id"
   to = "/.netlify/functions/news-share?id=:id"
   status = 200

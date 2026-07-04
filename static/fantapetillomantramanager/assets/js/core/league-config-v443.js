@@ -10,16 +10,16 @@ const DEFAULT_DATA_PATHS_V446 = Object.freeze({
   seasonSnapshotsManifest: './assets/snapshots/seasons/manifest.json',
   seasonSnapshotsBase: './assets/snapshots/seasons/',
   honorSnapshot: './assets/snapshots/honor.json',
-  listoniManifest: './assets/listoni/manifest.json',
-  listoniBase: './assets/listoni/',
+  listoniManifest: '../fanta-engine/data/shared-assets/current/assets/listoni/manifest.json',
+  listoniBase: '../fanta-engine/data/shared-assets/current/assets/listoni/',
   rostersManifest: './assets/rose/manifest.json',
   rostersBase: './assets/rose/',
   competitionsManifest: './assets/competitions/manifest.json',
   competitionsBase: './assets/competitions/',
   logosBase: './assets/logos/',
-  calciomercatoLinks: './assets/calciomercato/links.json',
-  calciomercatoArchiveManifest: './assets/calciomercato/archive/manifest.json',
-  calciomercatoArchiveBase: './assets/calciomercato/archive/'
+  calciomercatoLinks: '../fanta-engine/data/shared-assets/current/assets/calciomercato/links.json',
+  calciomercatoArchiveManifest: '../fanta-engine/data/shared-assets/current/assets/calciomercato/archive/manifest.json',
+  calciomercatoArchiveBase: '../fanta-engine/data/shared-assets/current/assets/calciomercato/archive/',
 });
 
 const DEFAULT_MOBILE_MORE_V445 = Object.freeze([
@@ -32,7 +32,6 @@ const DEFAULT_MOBILE_MORE_V445 = Object.freeze([
   Object.freeze({ id: 'compare', href: '#compare', label: 'Confronta squadre', icon: '⚔️' }),
   Object.freeze({ id: 'regolamento', href: '#regolamento', label: 'Regolamento', icon: '📘' }),
   Object.freeze({ id: 'fantamercato', href: '#fantamercato', label: 'Fantamercato', icon: '🔁' }),
-  Object.freeze({ id: 'calciomercato', href: '#calciomercato', label: 'Calciomercato', icon: '📰' }),
   Object.freeze({ id: 'listone', href: '#listone', label: 'Listone', icon: '📋' }),
   Object.freeze({ id: 'admin', href: '#admin', label: 'Admin', icon: '⚙️' })
 ]);
@@ -71,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'FantaMantra',
   basePath: '/fantapetillomantramanager/',
   siteUrl: 'https://silviobarra.com/fantapetillomantramanager/',
-  currentVersion: '476',
+  currentVersion: '561',
   currentSeasonId: '2025-2026',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -99,7 +98,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     admin: true,
     teamArea: true,
     bilanci: true,
-    calciomercato: true,
+    calciomercato: false,
     fantamercato: true,
     mantraFilters: true
   }),
@@ -115,7 +114,29 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=476';
+const CONFIG_URL_V443 = './assets/league-config.json?v=561';
+
+const PRESENTATION_ENGINE_CANDIDATES_V481 = [
+  '../../../../fanta-engine/js/core/league-presentation-v481.js',
+  '../../../../../fanta-engine/js/core/league-presentation-v481.js'
+];
+
+async function loadPresentationEngineV481() {
+  let lastError = null;
+  for (const candidate of PRESENTATION_ENGINE_CANDIDATES_V481) {
+    try {
+      return await import(new URL(candidate, import.meta.url).href);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError || new Error('Motore presentazione V481 non disponibile.');
+}
+
+const PRESENTATION_ENGINE_V481 = await loadPresentationEngineV481().catch((error) => {
+  console.warn('Motore comune presentazione V481 non caricato, uso fallback locale V445.', error);
+  return null;
+});
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -182,13 +203,43 @@ let readyPromiseV443 = null;
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
   window.FantaMantraLeagueConfigV443 = Object.freeze({
-    version: 'V476',
+    version: 'V547',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
     configOnly: true,
     runtimePresentationFromConfig: true,
     staticDataPathsFromConfig: true,
+    commonDataPathAdapterReady: true,
+        sharedJsModulesCentralizedV491: true,
+        uiComponentsEngineV496: true,
+        featureCardRegistryV497: true,
+        dashboardCardsEngineV504: true,
+        dashboardRendererHelpersV505: true,
+        formValidatorsV506: true, leagueTemplateHardeningV507: true,
+    playwrightHardeningV508: true,
+        dashboardRendererMigrationV509: true,
+        dashboardRendererMigrationV527: true,
+        dashboardRendererExtractionV529: true,
+        dashboardSummaryExtractionV531: true,
+        quickNavigationSmokeV532: true,
+        dashboardSectionStatusExtractionV533: true,
+        dashboardRoleSmokeV530: true,
+        dashboardEnforceV528: true,
+        navigationActionsEngineV510: true,
+        navigationDataRefreshV511: true,
+        publicDataAutoloadV519: true,
+        publicDataAutoloadV521: true,
+        publicDataAutoloadV522: true,
+        navigationStabilityV523: true,
+        leagueConfiguratorV524: true,
+        fastReloadBootstrapV525: true,
+        multiSeasonDataAdapterV526: true,
+        runtimeCacheSweepV520: true,
+        centralizationStatusV521: true,
+        sharedAssetsSingleUploadV522: true,
+        fastReloadBootstrapV525: true,
+        multiSeasonDataAdapterV526: true,
     cloneSandboxReady: true,
     dedicatedFirebaseBootstrap: true,
     adminBootstrapReady: true,
@@ -374,11 +425,71 @@ function applyMobileMoreLinksV445() {
 
 export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) {
   try {
+    if (PRESENTATION_ENGINE_V481?.applyLeagueRuntimePresentationV481) {
+      const result = PRESENTATION_ENGINE_V481.applyLeagueRuntimePresentationV481({
+        pageId,
+        getValue: getLeagueConfigValueV443,
+        defaults: DEFAULT_LEAGUE_CONFIG_V443,
+        defaultMobileMore: DEFAULT_MOBILE_MORE_V445,
+        getSiteUrl: getLeagueSiteUrlV443,
+        document,
+        window,
+        registry: window.FantaLeagueSectionRegistryV480 || window.ZonaOrientaleSectionRegistryV480 || window.FantaMantraManagerSectionRegistryV480 || window.FantaPetilloSectionRegistryV480 || null
+      });
+      window.FantaMantraLeagueRuntimePresentationV445 = Object.freeze({
+        version: 'V547',
+        pageId,
+        appliedAt: new Date().toISOString(),
+        commonPresentationEngine: true,
+        metadataFromConfig: true,
+        mobileMoreFromConfig: true,
+        shareBaseFromConfig: true,
+        footerFromConfig: true,
+        commonDataPathAdapterReady: true,
+        sharedJsModulesCentralizedV491: true,
+        uiComponentsEngineV496: true,
+        featureCardRegistryV497: true,
+        dashboardCardsEngineV504: true,
+        dashboardRendererHelpersV505: true,
+        formValidatorsV506: true, leagueTemplateHardeningV507: true,
+    playwrightHardeningV508: true,
+        dashboardRendererMigrationV509: true,
+        dashboardRendererMigrationV527: true,
+        dashboardRendererExtractionV529: true,
+        dashboardSummaryExtractionV531: true,
+        quickNavigationSmokeV532: true,
+        dashboardSectionStatusExtractionV533: true,
+        dashboardRoleSmokeV530: true,
+        dashboardEnforceV528: true,
+        navigationActionsEngineV510: true,
+        navigationDataRefreshV511: true,
+        publicDataAutoloadV519: true,
+        publicDataAutoloadV521: true,
+        publicDataAutoloadV522: true,
+        navigationStabilityV523: true,
+        leagueConfiguratorV524: true,
+        fastReloadBootstrapV525: true,
+        multiSeasonDataAdapterV526: true,
+        runtimeCacheSweepV520: true,
+        centralizationStatusV521: true,
+        sharedAssetsSingleUploadV522: true,
+        fastReloadBootstrapV525: true,
+        multiSeasonDataAdapterV526: true,
+        result,
+        preserves: [
+          'valori FantaMantra invariati come fallback',
+          'nessuna modifica a Firebase/Admin/snapshot loader',
+          'nessuna modifica a routing principale o dati statici',
+          'badge dispositivo V434 mantenuto'
+        ]
+      });
+      return result;
+    }
     applyMetaTagsV445(pageId);
     applyBrandTextV445();
     applyMobileMoreLinksV445();
     window.FantaMantraLeagueRuntimePresentationV445 = Object.freeze({
-      version: 'V476',
+      version: 'V500-fallback',
       pageId,
       appliedAt: new Date().toISOString(),
       metadataFromConfig: true,
@@ -392,7 +503,7 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
       ]
     });
   } catch (error) {
-    console.warn('Presentazione da league-config V445 non applicata.', error);
+    console.warn('Presentazione da league-config V445/V481 non applicata.', error);
   }
 }
 
@@ -430,3 +541,9 @@ if (document.readyState === 'loading') {
   applyLeagueRuntimePresentationV445();
   loadLeagueConfigV443();
 }
+
+/* V501 - Tool engine comune: Sorteggio giornate usa fanta-engine/js/tools/matchday-draw-engine-v501.js con wrapper/fallback locale. */
+
+/* V503 - Browser smoke tests: aggiunti script Playwright e audit statici, senza impatto runtime sulle leghe esistenti. */
+
+window.FantaEngineLeanRuntimeRestoreConfigV558 = Object.freeze({ version: 'V558', runtimeLayersDisabled: true });

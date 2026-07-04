@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const root=process.cwd(); let ok=0, fail=0;
+const read=(r)=>fs.readFileSync(path.join(root,r),'utf8'); const exists=(r)=>fs.existsSync(path.join(root,r));
+function check(c,m){ if(c){console.log(`OK  - ${m}`); ok++;} else {console.log(`FAIL - ${m}`); fail++;}}
+const zonaCfg=JSON.parse(read('zonaorientale/assets/league-config.json'));
+const fmmCfg=JSON.parse(read('fantapetillomantramanager/assets/league-config.json'));
+check(zonaCfg.leagueId==='zonaorientale','Zona leagueId corretto');
+check(fmmCfg.leagueId==='fantapetillomantramanager','FMM leagueId corretto');
+check(zonaCfg.currentVersion===512 && fmmCfg.currentVersion===512,'entrambe le config V512');
+check(read('zonaorientale/index.html').includes('ZonaOrientale Salerno · V512'),'footer Zona V512');
+check(read('fantapetillomantramanager/index.html').includes('FantaMantraManager · V512'),'footer FMM V512');
+check(read('zonaorientale/assets/emailjs.js').includes('service_trz4dxe'),'Zona EmailJS preservato');
+check(read('fantapetillomantramanager/assets/emailjs.js').includes('service_ttjf7js'),'FMM EmailJS preservato');
+check(!read('zonaorientale/index.html').includes('FantaMantraManager · V512'),'Zona non mostra footer FMM');
+check(!read('fantapetillomantramanager/index.html').includes('ZonaOrientale Salerno · V512'),'FMM non mostra footer Zona');
+check(exists('fanta-engine/js/core/public-data-autoload-v512.js'),'engine V512 comune presente');
+check(!exists('static'),'static/static assente');
+check(!exists('zonaorientale/static'),'zonaorientale/static assente');
+console.log(`\nAudit anti-contaminazione V512: ${ok} OK, ${fail} FAIL`); if(fail) process.exit(1);

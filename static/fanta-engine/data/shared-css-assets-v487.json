@@ -1,0 +1,217 @@
+{
+  "version": "V487",
+  "createdAt": "2026-06-24",
+  "scope": "Centralizzazione prudente dei soli CSS comuni tra ZonaOrientale e FantaMantraManager",
+  "policy": {
+    "primaryRuntimePath": "fanta-engine/css/shared/v487/",
+    "localFallbackPreserved": true,
+    "localCopiesDeleted": false,
+    "jsRuntimeMoved": false,
+    "notes": "I link CSS delle pagine HTML puntano al motore comune con fallback locale tramite onerror. Le copie locali restano intatte."
+  },
+  "summary": {
+    "centralizedCssFiles": 22,
+    "localCopiesPreservedPerLeague": true,
+    "fallbackMode": "html-link-onerror-data-local-fallback"
+  },
+  "items": [
+    {
+      "path": "assets/css/admin-v130.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/admin-v130.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/admin-v130.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/admin-v130.css?v=487",
+      "localFallbackHref": "./assets/css/admin-v130.css?v=487",
+      "sha256": "2595852ef7fe4f800bcdd58e3d8fe0665ad388948138bebf5ac20657e6a632be",
+      "bytes": 1625
+    },
+    {
+      "path": "assets/css/competition-detail-v130.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/competition-detail-v130.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/competition-detail-v130.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/competition-detail-v130.css?v=487",
+      "localFallbackHref": "./assets/css/competition-detail-v130.css?v=487",
+      "sha256": "744c0c4c46ab99663438a7ce7569f828eac4b7f545af6a35500741e422c489ba",
+      "bytes": 17398
+    },
+    {
+      "path": "assets/css/components-v130.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/components-v130.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/components-v130.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/components-v130.css?v=487",
+      "localFallbackHref": "./assets/css/components-v130.css?v=487",
+      "sha256": "7beb45666874de16d60b48e7910196c18cf54159edeae27bd1196d59bf4fdba2",
+      "bytes": 2830
+    },
+    {
+      "path": "assets/css/matchday-draw-tool-v473.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/matchday-draw-tool-v473.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/matchday-draw-tool-v473.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/matchday-draw-tool-v473.css?v=487",
+      "localFallbackHref": "./assets/css/matchday-draw-tool-v473.css?v=487",
+      "sha256": "9fed4ec2cb892bf2c1a4a9e5aef6cb0120e3020c0c553a9918d6bda0aad675ec",
+      "bytes": 2055
+    },
+    {
+      "path": "assets/css/mobile-chrome-v223.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/mobile-chrome-v223.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/mobile-chrome-v223.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/mobile-chrome-v223.css?v=487",
+      "localFallbackHref": "./assets/css/mobile-chrome-v223.css?v=487",
+      "sha256": "a4a1d977a5620c057ab78b7efd4367405cd0bf32a0de43030b2c52be07e0f4ce",
+      "bytes": 2413
+    },
+    {
+      "path": "assets/css/mobile-hotfix-v166.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/mobile-hotfix-v166.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/mobile-hotfix-v166.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/mobile-hotfix-v166.css?v=487",
+      "localFallbackHref": "./assets/css/mobile-hotfix-v166.css?v=487",
+      "sha256": "f1f09e48bb428e117154fd0e6700c8ed7e6d07d1423956139634f5b5ee1388df",
+      "bytes": 8190
+    },
+    {
+      "path": "assets/css/mobile-hotfix-v167.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/mobile-hotfix-v167.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/mobile-hotfix-v167.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/mobile-hotfix-v167.css?v=487",
+      "localFallbackHref": "./assets/css/mobile-hotfix-v167.css?v=487",
+      "sha256": "6f3b1dcd11ae0f7c43f0b5bcbc1d43711cc9d77a1bd682a2b5ad5bfbed388096",
+      "bytes": 5008
+    },
+    {
+      "path": "assets/css/mobile-suite-v168.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/mobile-suite-v168.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/mobile-suite-v168.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/mobile-suite-v168.css?v=487",
+      "localFallbackHref": "./assets/css/mobile-suite-v168.css?v=487",
+      "sha256": "17b99303ee7eb0ef545abd9aa98ab72fd4ea48104cf55c89275601d5b293089f",
+      "bytes": 171064
+    },
+    {
+      "path": "assets/css/refactor/admin-card-visibility-v454.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v454.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v454.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v454.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/admin-card-visibility-v454.css?v=487",
+      "sha256": "d66ff8dbcc7b5c645451d9221fe6a6b2a16ea0cf76c00109eda249e0c17a1451",
+      "bytes": 2497
+    },
+    {
+      "path": "assets/css/refactor/admin-card-visibility-v455.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v455.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v455.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v455.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/admin-card-visibility-v455.css?v=487",
+      "sha256": "f70ace2cb8c14d28fc8481cc26fb4cffa758566f7cfda93e27da85638f6b896f",
+      "bytes": 2509
+    },
+    {
+      "path": "assets/css/refactor/admin-card-visibility-v456.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v456.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v456.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v456.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/admin-card-visibility-v456.css?v=487",
+      "sha256": "fb53261bd87074c4657656335018dc2e49d3f50c0848f4ab7d3d6f2da314553e",
+      "bytes": 2747
+    },
+    {
+      "path": "assets/css/refactor/admin-fm-movement-edit-v436.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/admin-fm-movement-edit-v436.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/admin-fm-movement-edit-v436.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/admin-fm-movement-edit-v436.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/admin-fm-movement-edit-v436.css?v=487",
+      "sha256": "357d0062153337bfb36bcaaf949cf89f657ddfaaff38b1d98ffb4ff8010c9aaf",
+      "bytes": 717
+    },
+    {
+      "path": "assets/css/refactor/bilanci-snapshot-v435.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/bilanci-snapshot-v435.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/bilanci-snapshot-v435.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/bilanci-snapshot-v435.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/bilanci-snapshot-v435.css?v=487",
+      "sha256": "1b437a2cfd30beacd31196df29bb38ce327e00c98be7ddd1e511e6deaf5d4c4a",
+      "bytes": 7088
+    },
+    {
+      "path": "assets/css/refactor/calciomercato.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/calciomercato.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/calciomercato.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/calciomercato.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/calciomercato.css?v=487",
+      "sha256": "f42425b958866aca4f898e6ffbfd4c14d60a90a21ed00abd8f2423cbfa0e0825",
+      "bytes": 26360
+    },
+    {
+      "path": "assets/css/refactor/listone.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/listone.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/listone.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/listone.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/listone.css?v=487",
+      "sha256": "501067ca90d4135d9307206d205b744380521c6b29ef5e882fd770b708738330",
+      "bytes": 773
+    },
+    {
+      "path": "assets/css/refactor/mantra-role-filters-v441.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/mantra-role-filters-v441.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/mantra-role-filters-v441.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/mantra-role-filters-v441.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/mantra-role-filters-v441.css?v=487",
+      "sha256": "b22f25407f7d7609023d4fc50bd30d39d82310dde2e5b8758da844da939f4f2c",
+      "bytes": 1562
+    },
+    {
+      "path": "assets/css/refactor/mobile-controls.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/mobile-controls.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/mobile-controls.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/mobile-controls.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/mobile-controls.css?v=487",
+      "sha256": "06797e33cbcdf2925d231b7505dca80999be272bfa641fc7c50ad333e3a5b6b4",
+      "bytes": 103640
+    },
+    {
+      "path": "assets/css/refactor/panel-title-stack-v442.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/panel-title-stack-v442.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/panel-title-stack-v442.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/panel-title-stack-v442.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/panel-title-stack-v442.css?v=487",
+      "sha256": "954179df80ead57e6c35dad23ebb88009349401a92628a6d4296749547e0d533",
+      "bytes": 3451
+    },
+    {
+      "path": "assets/css/refactor/rosters-tables.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/rosters-tables.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/rosters-tables.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/rosters-tables.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/rosters-tables.css?v=487",
+      "sha256": "cbd328af61cbaa051feedb6533f5df2e4e182449121ccc07c4d45e5502739ebe",
+      "bytes": 12438
+    },
+    {
+      "path": "assets/css/refactor/theme-light-suspended.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/refactor/theme-light-suspended.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/refactor/theme-light-suspended.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/refactor/theme-light-suspended.css?v=487",
+      "localFallbackHref": "./assets/css/refactor/theme-light-suspended.css?v=487",
+      "sha256": "2b11e90ce8dc2dbe609597393566a701667df29f639862a816bec78795a435fa",
+      "bytes": 24811
+    },
+    {
+      "path": "assets/css/transfer-market-v130.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/css/transfer-market-v130.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/css/transfer-market-v130.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/css/transfer-market-v130.css?v=487",
+      "localFallbackHref": "./assets/css/transfer-market-v130.css?v=487",
+      "sha256": "358c88499137be930975bce709e57e4d9d7b979f3cb78fde4801b07889a22592",
+      "bytes": 4343
+    },
+    {
+      "path": "assets/device-badge-v434.css",
+      "centralPath": "fanta-engine/css/shared/v487/assets/device-badge-v434.css",
+      "primaryHrefTopLevel": "../fanta-engine/css/shared/v487/assets/device-badge-v434.css?v=487",
+      "primaryHrefNestedZonaOrientale": "../../fanta-engine/css/shared/v487/assets/device-badge-v434.css?v=487",
+      "localFallbackHref": "./assets/device-badge-v434.css?v=487",
+      "sha256": "3926e70660576936b17a0dcac293e6f9b3f999e8fbcca685208d307def13b7ef",
+      "bytes": 1984
+    }
+  ]
+}

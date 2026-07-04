@@ -338,7 +338,7 @@ function getPublishWizardCommandsV191() {
     "git add -f static/fantapetillomantramanager/assets/snapshots/seasons/manifest.json",
     "git add -f static/fantapetillomantramanager/assets/snapshots/seasons/*.json",
     "git add -f static/fantapetillomantramanager/assets/rose/manifest.json static/fantapetillomantramanager/assets/rose/*.json",
-    "git add -f static/fantapetillomantramanager/assets/listoni/manifest.json static/fantapetillomantramanager/assets/listoni/*.json",
+    "git add -f static/fanta-engine/data/shared-assets/current/assets/listoni/manifest.json static/fanta-engine/data/shared-assets/current/assets/listoni/*.json",
     "git add -f static/fantapetillomantramanager/assets/competitions/manifest.json static/fantapetillomantramanager/assets/competitions/**/*.json",
     "git commit -m \"Update FantaPetillo static public data\"",
     "git push",

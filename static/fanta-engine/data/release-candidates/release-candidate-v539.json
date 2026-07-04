@@ -1,0 +1,47 @@
+{
+  "version": "V539",
+  "scope": "merge-readiness-release-candidate-whole-site",
+  "generatedAt": "2026-06-25T00:00:00.000Z",
+  "releaseCandidate": true,
+  "functionalChanges": false,
+  "wholeSiteOverlay": true,
+  "leagues": [
+    "zonaorientale",
+    "fantapetillomantramanager"
+  ],
+  "baseline": {
+    "runtimeCacheBuster": "539",
+    "previousOverlay": "V538 shared assets fallback cleanup readiness",
+    "listoniPrimaryRoot": "static/fanta-engine/data/shared-assets/current/assets/listoni",
+    "calciomercatoPrimaryRoot": "static/fanta-engine/data/shared-assets/current/assets/calciomercato",
+    "seasonPathResolver": "static/fanta-engine/js/core/season-path-resolver-v537.js",
+    "navigationPerformanceGuard": "static/fanta-engine/js/ui/navigation-performance-guard-v536.js"
+  },
+  "guardrails": {
+    "funzionalitaMdModified": false,
+    "deletesLocalFallbacks": false,
+    "movesFiles": false,
+    "firebaseChanged": false,
+    "emailjsChanged": false,
+    "adminChanged": false,
+    "presidentChanged": false,
+    "rendererReplacement": false,
+    "singleOverlayApplication": true,
+    "docsUpdated": true,
+    "handoffUpdated": true,
+    "overlayRoadmapUpdated": true
+  },
+  "requiredManualChecks": [
+    "open ZonaOrientale without console errors",
+    "open FantaPetilloMantraManager without console errors",
+    "verify footer V539 on both leagues",
+    "navigate Dashboard News Rose Bilanci Calciomercato Listone Sorteggio",
+    "verify Admin and Presidente flows",
+    "verify Listone and Calciomercato load from shared-assets/current",
+    "verify no regression in ZonaOrientale navigation performance versus V536"
+  ],
+  "decisionAfterRc": {
+    "recommended": "validate manually, then decide whether to create an explicit fallback cleanup overlay",
+    "doNotAutomaticallyDeleteFallbacks": true
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "version": "V538",
+  "scope": "whole-site-shared-assets-fallback-cleanup-readiness",
+  "generatedAt": "2026-06-25T00:00:00.000Z",
+  "readinessOnly": true,
+  "deletesLocalFallbacks": false,
+  "movesFiles": false,
+  "sharedAssetsRoot": "static/fanta-engine/data/shared-assets/current/assets",
+  "kinds": {
+    "listoni": {
+      "centralFileCount": 4,
+      "centralFiles": {
+        "2026-05-15.json": {
+          "sha256": "ae081b62a4a8219e986c807bc7d137b33d3442d28b957076c3b96ca8de136b35",
+          "bytes": 264642
+        },
+        "2026-05-30.json": {
+          "sha256": "e0e51195ec800c4e819340378c431a2e240bd1c98108c8abad32d18394fa555f",
+          "bytes": 514219
+        },
+        "2026-06-04.json": {
+          "sha256": "8bd9096ac4f6bb1815fcc65753c3a16b9f696f75a2e6c82aa2f39c1879b834a6",
+          "bytes": 927594
+        },
+        "manifest.json": {
+          "sha256": "fff48f04b196b163eccf5a0c7fd24bf6a274b730f3f8d3ebbf81a92342d8a3d4",
+          "bytes": 1581
+        }
+      },
+      "fallbacksByLeague": {
+        "zonaorientale": {
+          "localRoot": "static/zonaorientale/assets/listoni",
+          "localFileCount": 4,
+          "identicalCount": 4,
+          "differentCount": 0,
+          "missingCount": 0,
+          "extraCount": 0,
+          "cleanupCandidateCount": 4,
+          "identicalFiles": [
+            "2026-05-15.json",
+            "2026-05-30.json",
+            "2026-06-04.json",
+            "manifest.json"
+          ],
+          "differentFiles": [],
+          "missingFiles": [],
+          "extraFiles": [],
+          "cleanupReady": true,
+          "preserveUntilManualApproval": true
+        },
+        "fantapetillomantramanager": {
+          "localRoot": "static/fantapetillomantramanager/assets/listoni",
+          "localFileCount": 4,
+          "identicalCount": 4,
+          "differentCount": 0,
+          "missingCount": 0,
+          "extraCount": 0,
+          "cleanupCandidateCount": 4,
+          "identicalFiles": [
+            "2026-05-15.json",
+            "2026-05-30.json",
+            "2026-06-04.json",
+            "manifest.json"
+          ],
+          "differentFiles": [],
+          "missingFiles": [],
+          "extraFiles": [],
+          "cleanupReady": true,
+          "preserveUntilManualApproval": true
+        }
+      },
+      "cleanupReady": true,
+      "cleanupMode": "manual-after-release-candidate",
+      "recommendedAction": "keep local fallbacks through V539; remove only after manual approval and a clean release candidate"
+    },
+    "calciomercato": {
+      "centralFileCount": 26,
+      "centralFiles": {
+        "archive/2026-06-01.json": {
+          "sha256": "09fe180de20673e256f841124b6aaaba041135a189a047622a58a041c0fcfcf1",
+          "bytes": 122274
+        },
+        "archive/2026-06-02.json": {
+          "sha256": "b512a5918928f1629de4364b69204062aacf966cdbdedc2e34e3ff929902e972",
+          "bytes": 214033
+        },
+        "archive/2026-06-03.json": {
+          "sha256": "b24448d1cc563652788a63816a37ce082bf202b9acaaf80373043c9270534019",
+          "bytes": 321641
+        },
+        "archive/2026-06-04.json": {
+          "sha256": "9852d9f93eda70134d04416e0782736edfdad84082ac6ac68b36eb3f54542a3a",
+          "bytes": 465855
+        },
+        "archive/2026-06-05.json": {
+          "sha256": "8e80f6f6950de7d8bd6cef1887ef8bbd62dab2ede054f3e77a7c990254edb7ea",
+          "bytes": 147981
+        },
+        "archive/2026-06-06.json": {
+          "sha256": "d47da3b8037172979d79f41fcd904e06510fb0d85b5c7753f4e140ccd249a59b",
+          "bytes": 114632
+        },
+        "archive/2026-06-07.json": {
+          "sha256": "e2dd9bef471a30da6a5ddc6ce25986d56dd344eeb100013a9a6cd196461469a2",
+          "bytes": 134834
+        },
+        "archive/2026-06-08.json": {
+          "sha256": "916b67c60ab66b2ae240dcaadb6b64bc9a174cbbe37b9fc4ec33aa1f361c6fda",
+          "bytes": 328959
+        },
+        "archive/2026-06-09.json": {
+          "sha256": "430b23d0cbeb6288ef9b7191d7f12bfcab2ee2b92e3bf91b55a2e1a702b64bcf",
+          "bytes": 384927
+        },
+        "archive/2026-06-10.json": {
+          "sha256": "156044b3f9e52e7ddcebe19f5a275a9fccb6e24a9cb510514801071e087c764b",
+          "bytes": 230331
+        },
+        "archive/2026-06-11.json": {
+          "sha256": "2618fb044182ad5b50935510071412ca7f10f77d4bc4656c874cb44216e078b2",
+          "bytes": 366254
+        },
+        "archive/2026-06-12.json": {
+          "sha256": "7ad66ee388dd1fcd73808d72bf354f629e81b145a5bb342929ac8e1d03a8bfc0",
+          "bytes": 135608
+        },
+        "archive/2026-06-13.json": {
+          "sha256": "218f0ae4c482044e271893537c5aad3e25b2052185eb0ff480da23746bef1599",
+          "bytes": 167336
+        },
+        "archive/2026-06-14.json": {
+          "sha256": "f92f574206d2ae00105a5baa1733ff582a558caaaee79b15585caf5b603ec4d9",
+          "bytes": 305563
+        },
+        "archive/2026-06-15.json": {
+          "sha256": "fa8d6bdd1177ef505896b7d98ee029fee0e199ed9b47a07eaf8cb093ea5cc220",
+          "bytes": 51396
+        },
+        "archive/2026-06-16.json": {
+          "sha256": "988126b75df47a2db54732e9a2c9369ce25bdf87272b6d2bf9a47fe42d54ef73",
+          "bytes": 268188
+        },
+        "archive/2026-06-17.json": {
+          "sha256": "893528b070a36df44ceecd1488db75003f01985e9f749c23c9b2390595ee1aba",
+          "bytes": 307344
+        },
+        "archive/2026-06-18.json": {
+          "sha256": "aaddad6fd5767701c3cba26e0e6e671d4eab0e51abe85d88440f10a1602226db",
+          "bytes": 177082
+        },
+        "archive/2026-06-19.json": {
+          "sha256": "68c21125b0d4afe0dda87edb0f42275be32f13794c90c1b3679186718aa63d77",
+          "bytes": 335701
+        },
+        "archive/2026-06-20.json": {
+          "sha256": "9f0a6cafa4163461ce9b01a53e4d480dbda14c40c059f9a8e57463c27640a856",
+          "bytes": 183079
+        },
+        "archive/2026-06-21.json": {
+          "sha256": "b5f66f2ae228a8dc9131ef79da2a30d8f365c710ab13174d34942a9327bd84a9",
+          "bytes": 308051
+        },
+        "archive/2026-06-22.json": {
+          "sha256": "f96c0da9b7b7293e6cd747cbfe8847418573f3660b047d6971e739ee4997a51e",
+          "bytes": 167749
+        },
+        "archive/2026-06-23.json": {
+          "sha256": "0f65175f55da84c19840126304fbe3239572291cfdf889e5522047ae0d975f16",
+          "bytes": 324616
+        },
+        "archive/2026-06-24.json": {
+          "sha256": "db4b95c65cc7a49c00a8a4f76fe638f1ca2b7ace4937dd536963adec021c49ad",
+          "bytes": 72360
+        },
+        "archive/manifest.json": {
+          "sha256": "ff7fef09bc57e506f46f553f438589d3aa38d739d4bab5c6616ee6ace1288b43",
+          "bytes": 1272
+        },
+        "links.json": {
+          "sha256": "75dc6215b594ae0f597828f9ffeb19f2627737d9350a7b38dfd49c498f4b54e8",
+          "bytes": 11237
+        }
+      },
+      "fallbacksByLeague": {
+        "zonaorientale": {
+          "localRoot": "static/zonaorientale/assets/calciomercato",
+          "localFileCount": 26,
+          "identicalCount": 26,
+          "differentCount": 0,
+          "missingCount": 0,
+          "extraCount": 0,
+          "cleanupCandidateCount": 26,
+          "identicalFiles": [
+            "archive/2026-06-01.json",
+            "archive/2026-06-02.json",
+            "archive/2026-06-03.json",
+            "archive/2026-06-04.json",
+            "archive/2026-06-05.json",
+            "archive/2026-06-06.json",
+            "archive/2026-06-07.json",
+            "archive/2026-06-08.json",
+            "archive/2026-06-09.json",
+            "archive/2026-06-10.json",
+            "archive/2026-06-11.json",
+            "archive/2026-06-12.json",
+            "archive/2026-06-13.json",
+            "archive/2026-06-14.json",
+            "archive/2026-06-15.json",
+            "archive/2026-06-16.json",
+            "archive/2026-06-17.json",
+            "archive/2026-06-18.json",
+            "archive/2026-06-19.json",
+            "archive/2026-06-20.json",
+            "archive/2026-06-21.json",
+            "archive/2026-06-22.json",
+            "archive/2026-06-23.json",
+            "archive/2026-06-24.json",
+            "archive/manifest.json",
+            "links.json"
+          ],
+          "differentFiles": [],
+          "missingFiles": [],
+          "extraFiles": [],
+          "cleanupReady": true,
+          "preserveUntilManualApproval": true
+        },
+        "fantapetillomantramanager": {
+          "localRoot": "static/fantapetillomantramanager/assets/calciomercato",
+          "localFileCount": 26,
+          "identicalCount": 26,
+          "differentCount": 0,
+          "missingCount": 0,
+          "extraCount": 0,
+          "cleanupCandidateCount": 26,
+          "identicalFiles": [
+            "archive/2026-06-01.json",
+            "archive/2026-06-02.json",
+            "archive/2026-06-03.json",
+            "archive/2026-06-04.json",
+            "archive/2026-06-05.json",
+            "archive/2026-06-06.json",
+            "archive/2026-06-07.json",
+            "archive/2026-06-08.json",
+            "archive/2026-06-09.json",
+            "archive/2026-06-10.json",
+            "archive/2026-06-11.json",
+            "archive/2026-06-12.json",
+            "archive/2026-06-13.json",
+            "archive/2026-06-14.json",
+            "archive/2026-06-15.json",
+            "archive/2026-06-16.json",
+            "archive/2026-06-17.json",
+            "archive/2026-06-18.json",
+            "archive/2026-06-19.json",
+            "archive/2026-06-20.json",
+            "archive/2026-06-21.json",
+            "archive/2026-06-22.json",
+            "archive/2026-06-23.json",
+            "archive/2026-06-24.json",
+            "archive/manifest.json",
+            "links.json"
+          ],
+          "differentFiles": [],
+          "missingFiles": [],
+          "extraFiles": [],
+          "cleanupReady": true,
+          "preserveUntilManualApproval": true
+        }
+      },
+      "cleanupReady": true,
+      "cleanupMode": "manual-after-release-candidate",
+      "recommendedAction": "keep local fallbacks through V539; remove only after manual approval and a clean release candidate"
+    }
+  },
+  "leagues": [
+    "zonaorientale",
+    "fantapetillomantramanager"
+  ],
+  "summary": {
+    "centralFiles": 30,
+    "localFallbackFiles": 60,
+    "identicalFallbackFiles": 60,
+    "differentFallbackFiles": 0,
+    "missingFallbackFiles": 0,
+    "extraFallbackFiles": 0,
+    "cleanupCandidateFiles": 60
+  },
+  "guardrails": {
+    "doNotDeleteAutomatically": true,
+    "keepLocalFallbacksUntilManualApproval": true,
+    "funzionalitaMdModified": false,
+    "firebaseChanged": false,
+    "emailjsChanged": false,
+    "adminChanged": false,
+    "presidentChanged": false
+  }
+}

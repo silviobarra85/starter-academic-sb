@@ -1,0 +1,27 @@
+{
+  "version": "V524",
+  "name": "Configuratore guidato nuova lega",
+  "mode": "tooling-only-no-auto-generation",
+  "wizardScript": "static/fanta-engine/tools/create-league-wizard-v524.mjs",
+  "baseGenerator": "static/fanta-engine/tools/create-league-v507.mjs",
+  "validator": "static/fanta-engine/tools/validate-league-config-v507.mjs",
+  "templatePath": "static/_league-template",
+  "sharedAssets": {
+    "primaryBase": "static/fanta-engine/data/shared-assets/current/assets/",
+    "listoniManifest": "static/fanta-engine/data/shared-assets/current/assets/listoni/manifest.json",
+    "listoniBase": "static/fanta-engine/data/shared-assets/current/assets/listoni/",
+    "calciomercatoLinks": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/links.json",
+    "calciomercatoArchiveManifest": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/archive/manifest.json",
+    "calciomercatoArchiveBase": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/archive/"
+  },
+  "guardrails": [
+    "non crea nuove leghe durante overlay",
+    "non modifica netlify.toml automaticamente",
+    "non crea Firebase project",
+    "non crea EmailJS service/template",
+    "non tocca dati delle leghe esistenti",
+    "usa shared-assets/current come default per Listoni e Calciomercato",
+    "preserva fallback locali per sicurezza"
+  ],
+  "nextOverlay": "V525 - Adapter dati multi-season"
+}

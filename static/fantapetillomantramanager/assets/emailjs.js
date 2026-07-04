@@ -1,51 +1,43 @@
+import { createEmailJsSenderV498 } from '../../fanta-engine/js/email/emailjs-adapter-v498.js';
+
 export const EMAILJS_PUBLIC_KEY = "Rl3BRmJx1IeJEqQAH";
 export const EMAILJS_SERVICE_ID = "service_ttjf7js";
 export const EMAILJS_TEMPLATE_ID = "template_e1o7z5e";
 export const EMAILJS_TRANSFER_TEMPLATE_ID = "template_svkkhlr";
 export const EMAILJS_DEFAULT_RECIPIENT = "barra.silvio@gmail.com";
 
+const emailJsSenderV498 = createEmailJsSenderV498({
+  leagueId: 'fantapetillomantramanager',
+  publicKey: EMAILJS_PUBLIC_KEY,
+  serviceId: EMAILJS_SERVICE_ID,
+  templateId: EMAILJS_TEMPLATE_ID,
+  templates: {
+    default: EMAILJS_TEMPLATE_ID,
+    releasePlayers: EMAILJS_TEMPLATE_ID,
+    tradeAnnouncement: EMAILJS_TRANSFER_TEMPLATE_ID,
+    comunicatoAvvenutoScambio: EMAILJS_TRANSFER_TEMPLATE_ID
+  },
+  flowTemplateMap: {
+    svincola_giocatori_v478: EMAILJS_TEMPLATE_ID,
+    comunicato_avvenuto_scambio_v478: EMAILJS_TRANSFER_TEMPLATE_ID
+  },
+  defaultRecipient: EMAILJS_DEFAULT_RECIPIENT,
+  defaultFlow: 'default',
+  fallbackSubject: 'Comunicazione FantaMantraManager'
+});
+
 export function isEmailJsConfigured() {
-  return Boolean(
-    EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY" &&
-    EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
-    EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID"
-  );
+  return emailJsSenderV498.isConfigured();
 }
 
-function normalizeEmailJsPayload(templateParams = {}) {
-  const {
-    __service_id: serviceId,
-    __template_id: templateId,
-    __emailjs_flow: flow,
-    ...cleanParams
-  } = templateParams || {};
-  return {
-    serviceId: serviceId || EMAILJS_SERVICE_ID,
-    templateId: templateId || EMAILJS_TEMPLATE_ID,
-    flow: flow || "default",
-    params: cleanParams
-  };
+export function normalizeEmailJsPayload(templateParams = {}) {
+  return emailJsSenderV498.normalize(templateParams);
+}
+
+export function buildEmailJsMailtoFallback(templateParams = {}) {
+  return emailJsSenderV498.buildMailtoFallback(templateParams);
 }
 
 export async function sendTransferEmail(templateParams) {
-  if (!isEmailJsConfigured()) {
-    throw new Error("EmailJS non configurato. Inserisci public key, service ID e template ID in assets/emailjs.js.");
-  }
-
-  const payload = normalizeEmailJsPayload(templateParams);
-  const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      service_id: payload.serviceId,
-      template_id: payload.templateId,
-      user_id: EMAILJS_PUBLIC_KEY,
-      template_params: payload.params
-    })
-  });
-
-  if (!response.ok) {
-    const text = await response.text().catch(() => "");
-    throw new Error(`Invio EmailJS non riuscito (${response.status}). ${text}`.trim());
-  }
+  return emailJsSenderV498.send(templateParams);
 }

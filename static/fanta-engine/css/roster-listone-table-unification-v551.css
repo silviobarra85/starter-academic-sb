@@ -1,0 +1,162 @@
+/* V550 - Unificazione stile tabelle Listone/Rose.
+ * Scope: solo Listone, Svincolati, Rose pubbliche e Scheda squadra.
+ * Non interviene sulle tabelle Regolamento isolate in V540.
+ */
+:root {
+  --fanta-table-font-v550: 0.86rem;
+  --fanta-table-mobile-font-v550: 0.64rem;
+  --fanta-role-gk-v550: rgba(245, 158, 11, 0.34);
+  --fanta-role-def-v550: rgba(34, 197, 94, 0.32);
+  --fanta-role-mid-v550: rgba(56, 189, 248, 0.32);
+  --fanta-role-fwd-v550: rgba(248, 113, 113, 0.32);
+}
+
+/* Listone e Rose condividono densita e font. */
+table.listone-table,
+table.free-agents-table,
+table.roster-player-table.roster-listone-skin-v408,
+table.team-profile-roster-table.team-profile-listone-skin-v415 {
+  font-size: var(--fanta-table-font-v550) !important;
+}
+
+table.listone-table th,
+table.listone-table td,
+table.free-agents-table th,
+table.free-agents-table td,
+table.roster-player-table.roster-listone-skin-v408 th,
+table.roster-player-table.roster-listone-skin-v408 td,
+table.team-profile-roster-table.team-profile-listone-skin-v415 th,
+table.team-profile-roster-table.team-profile-listone-skin-v415 td {
+  font-size: inherit !important;
+  line-height: 1.14 !important;
+}
+
+/* Nuova colonna Stato nelle rose. */
+table.roster-player-table .roster-col-status,
+table.team-profile-roster-table .team-profile-status-cell,
+table.team-profile-roster-table .roster-col-status {
+  width: 104px !important;
+  min-width: 92px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+/* La prima colonna delle rose riceve lo stesso colore ruolo del Listone. */
+table.roster-player-table.roster-listone-skin-v408 tbody tr.zo-role-bg-v405-gk > td:first-child,
+table.roster-player-table.roster-listone-skin-v408 tbody tr.player-role-gk > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.zo-role-bg-v405-gk > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.player-role-gk > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-gk-v550), rgba(245, 158, 11, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(245, 158, 11, 0.82), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+table.roster-player-table.roster-listone-skin-v408 tbody tr.zo-role-bg-v405-def > td:first-child,
+table.roster-player-table.roster-listone-skin-v408 tbody tr.player-role-def > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.zo-role-bg-v405-def > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.player-role-def > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-def-v550), rgba(34, 197, 94, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(34, 197, 94, 0.78), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+table.roster-player-table.roster-listone-skin-v408 tbody tr.zo-role-bg-v405-mid > td:first-child,
+table.roster-player-table.roster-listone-skin-v408 tbody tr.player-role-mid > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.zo-role-bg-v405-mid > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.player-role-mid > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-mid-v550), rgba(59, 130, 246, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(56, 189, 248, 0.78), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+table.roster-player-table.roster-listone-skin-v408 tbody tr.zo-role-bg-v405-fwd > td:first-child,
+table.roster-player-table.roster-listone-skin-v408 tbody tr.player-role-fwd > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.zo-role-bg-v405-fwd > td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody tr.player-role-fwd > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-fwd-v550), rgba(239, 68, 68, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(248, 113, 113, 0.78), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+table.roster-player-table.roster-listone-skin-v408 tbody td:first-child,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody td:first-child {
+  color: #f8fafc !important;
+  font-weight: 900 !important;
+}
+
+table.roster-player-table.roster-listone-skin-v408 tbody td:first-child a,
+table.roster-player-table.roster-listone-skin-v408 tbody td:first-child .link-button,
+table.roster-player-table.roster-listone-skin-v408 tbody td:first-child strong,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody td:first-child a,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody td:first-child .link-button,
+table.team-profile-roster-table.team-profile-listone-skin-v415 tbody td:first-child strong {
+  color: inherit !important;
+  font-size: inherit !important;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux table.listone-table,
+  body.is-mobile-ux table.free-agents-table,
+  body.is-mobile-ux table.roster-player-table.roster-listone-skin-v408,
+  body.is-mobile-ux table.team-profile-roster-table.team-profile-listone-skin-v415 {
+    font-size: var(--fanta-table-mobile-font-v550) !important;
+  }
+
+  body.is-mobile-ux table.roster-player-table .roster-col-status,
+  body.is-mobile-ux table.team-profile-roster-table .team-profile-status-cell,
+  body.is-mobile-ux table.team-profile-roster-table .roster-col-status {
+    min-width: 82px !important;
+    width: 82px !important;
+  }
+}
+
+/* V551 - Sincronizzazione del renderer Espandi/Riduci Rose.
+ * Il dettaglio desktop/mobile delle Rose usa lo stesso renderer del Listone;
+ * questi selettori sono volutamente scoped alla sezione Rose e non toccano il Regolamento.
+ */
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table,
+.mobile-roster-detail-card-v156 .roster-player-table,
+#rosterClubCards .roster-player-table.roster-listone-skin-v408 {
+  font-size: var(--fanta-table-font-v550) !important;
+}
+
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table th,
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table td,
+.mobile-roster-detail-card-v156 .roster-player-table th,
+.mobile-roster-detail-card-v156 .roster-player-table td,
+#rosterClubCards .roster-player-table.roster-listone-skin-v408 th,
+#rosterClubCards .roster-player-table.roster-listone-skin-v408 td {
+  font-size: inherit !important;
+  line-height: 1.14 !important;
+}
+
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table tbody tr.zo-role-bg-v405-gk > td:first-child,
+.mobile-roster-detail-card-v156 .roster-player-table tbody tr.zo-role-bg-v405-gk > td:first-child,
+#rosterClubCards .roster-player-table tbody tr.zo-role-bg-v405-gk > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-gk-v550), rgba(245, 158, 11, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(245, 158, 11, 0.82), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table tbody tr.zo-role-bg-v405-def > td:first-child,
+.mobile-roster-detail-card-v156 .roster-player-table tbody tr.zo-role-bg-v405-def > td:first-child,
+#rosterClubCards .roster-player-table tbody tr.zo-role-bg-v405-def > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-def-v550), rgba(34, 197, 94, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(34, 197, 94, 0.78), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table tbody tr.zo-role-bg-v405-mid > td:first-child,
+.mobile-roster-detail-card-v156 .roster-player-table tbody tr.zo-role-bg-v405-mid > td:first-child,
+#rosterClubCards .roster-player-table tbody tr.zo-role-bg-v405-mid > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-mid-v550), rgba(59, 130, 246, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(56, 189, 248, 0.78), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table tbody tr.zo-role-bg-v405-fwd > td:first-child,
+.mobile-roster-detail-card-v156 .roster-player-table tbody tr.zo-role-bg-v405-fwd > td:first-child,
+#rosterClubCards .roster-player-table tbody tr.zo-role-bg-v405-fwd > td:first-child {
+  background: linear-gradient(90deg, var(--fanta-role-fwd-v550), rgba(239, 68, 68, 0.12)) !important;
+  box-shadow: inset 4px 0 rgba(248, 113, 113, 0.78), 8px 0 14px rgba(15, 23, 42, 0.22) !important;
+}
+
+.desktop-roster-table-v156 .roster-detail-row .roster-player-table tbody td:first-child,
+.mobile-roster-detail-card-v156 .roster-player-table tbody td:first-child,
+#rosterClubCards .roster-player-table tbody td:first-child {
+  color: #f8fafc !important;
+  font-weight: 900 !important;
+}

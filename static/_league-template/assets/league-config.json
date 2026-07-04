@@ -1,0 +1,200 @@
+{
+  "leagueId": "__LEAGUE_SLUG__",
+  "slug": "__LEAGUE_SLUG__",
+  "name": "__LEAGUE_NAME__",
+  "shortName": "__LEAGUE_SHORT_NAME__",
+  "basePath": "/__LEAGUE_SLUG__/",
+  "siteUrl": "https://silviobarra.com/__LEAGUE_SLUG__/",
+  "currentVersion": "539",
+  "currentSeasonId": "__SEASON_ID__",
+  "templateSource": "fanta-engine V524 guided configurator defaults",
+  "features": {
+    "admin": false,
+    "teamArea": false,
+    "bilanci": false,
+    "calciomercato": false,
+    "fantamercato": false,
+    "matchdayDrawTool": true,
+    "unifiedSectionRegistry": true,
+    "commonPresentationEngine": true,
+    "uiComponentsEngine": true,
+    "featureCardRegistry": true,
+    "dashboardCardsEngine": true,
+    "emailJsAdapter": false,
+    "firebaseAdapter": false,
+    "leagueTemplateHardening": true,
+    "leagueTemplateHardeningVersion": "V507",
+    "leagueTemplateValidator": true,
+    "leagueTemplateValidatorVersion": "V507",
+    "browserSmokeTests": true,
+    "sharedAssetsSingleUpload": true,
+    "sharedAssetsSingleUploadVersion": "V522",
+    "leagueConfigurator": true,
+    "leagueConfiguratorVersion": "V524",
+    "multiSeasonDataAdapter": true,
+    "multiSeasonDataAdapterVersion": "V533",
+    "wholeSiteOverlayApplicationVersion": "V539",
+    "navigationActiveSingletonVersion": "V534",
+    "navigationFluidityVersion": "V535",
+    "navigationPerformanceGuardVersion": "V536",
+    "multiSeasonPathResolver": true,
+    "multiSeasonPathResolverVersion": "V537",
+    "sharedAssetsFallbackCleanupReadiness": true,
+    "sharedAssetsFallbackCleanupReadinessVersion": "V538",
+    "mergeReadinessReleaseCandidate": true,
+    "mergeReadinessReleaseCandidateVersion": "V539"
+  },
+  "guardrails": {
+    "templateOnly": true,
+    "requiresManualReviewBeforeProduction": true,
+    "requiresDedicatedFirebase": true,
+    "requiresDedicatedEmailJs": true,
+    "requiresNetlifyRedirectReview": true,
+    "doNotReuseZonaOrientaleSecrets": true,
+    "doNotReuseFantaMantraManagerSecrets": true,
+    "requiresConfigValidatorV507": true,
+    "requiresGoLiveChecklistV507": true,
+    "doesNotAutoEditNetlify": true,
+    "staticStaticMustRemainAbsent": true,
+    "nestedZonaStaticMustRemainAbsent": true,
+    "sharedAssetsPrimaryPathRequired": true,
+    "localSharedAssetFallbacksPreserved": true,
+    "leagueConfiguratorDoesNotAutoEditNetlify": true
+  },
+  "dataPaths": {
+    "publicConfig": "./assets/public/config.json",
+    "seasonSnapshotsManifest": "./assets/snapshots/seasons/manifest.json",
+    "seasonSnapshotsBase": "./assets/snapshots/seasons/",
+    "honorSnapshot": "./assets/snapshots/honor.json",
+    "listoniManifest": "../fanta-engine/data/shared-assets/current/assets/listoni/manifest.json",
+    "listoniBase": "../fanta-engine/data/shared-assets/current/assets/listoni/",
+    "listoniManifestFallback": "./assets/listoni/manifest.json",
+    "listoniBaseFallback": "./assets/listoni/",
+    "rostersManifest": "./assets/rose/manifest.json",
+    "rostersBase": "./assets/rose/",
+    "competitionsManifest": "./assets/competitions/manifest.json",
+    "competitionsBase": "./assets/competitions/",
+    "logosBase": "./assets/logos/",
+    "calciomercatoLinks": "../fanta-engine/data/shared-assets/current/assets/calciomercato/links.json",
+    "calciomercatoArchiveManifest": "../fanta-engine/data/shared-assets/current/assets/calciomercato/archive/manifest.json",
+    "calciomercatoArchiveBase": "../fanta-engine/data/shared-assets/current/assets/calciomercato/archive/",
+    "calciomercatoLinksFallback": "./assets/calciomercato/links.json",
+    "calciomercatoArchiveManifestFallback": "./assets/calciomercato/archive/manifest.json",
+    "calciomercatoArchiveBaseFallback": "./assets/calciomercato/archive/"
+  },
+  "emailJs": {
+    "enabled": false,
+    "serviceId": "",
+    "templates": {},
+    "recipients": {}
+  },
+  "firebase": {
+    "enabled": false,
+    "projectId": ""
+  },
+  "templateHardening": {
+    "version": "V507",
+    "checklistRequired": true,
+    "validatorScript": "../fanta-engine/tools/validate-league-config-v507.mjs",
+    "goLiveMinimumChecks": [
+      "config senza placeholder",
+      "slug/basePath/siteUrl coerenti",
+      "Firebase dedicato o disabilitato",
+      "EmailJS dedicato o disabilitato",
+      "dati e asset specifici inseriti",
+      "Netlify redirect/rewrite rivisti manualmente",
+      "audit statici e smoke test browser eseguiti"
+    ]
+  },
+  "leagueConfiguratorV524": {
+    "version": "V524",
+    "defaultSharedAssetsPath": "../fanta-engine/data/shared-assets/current/assets/",
+    "requiresDedicatedBrandConfig": true,
+    "requiresManualFirebaseOrDisabled": true,
+    "requiresManualEmailJsOrDisabled": true,
+    "doesNotAutoEditNetlify": true
+  },
+  "seasons": [
+    {
+      "id": "__SEASON_ID__",
+      "seasonId": "__SEASON_ID__",
+      "name": "Stagione __SEASON_ID__",
+      "current": true
+    }
+  ],
+  "multiSeasonDataAdapterV533": {
+    "version": "V533",
+    "metadataOnly": true,
+    "sharedDataKinds": [
+      "listoni",
+      "calciomercato"
+    ],
+    "seasonScopedDataKinds": [
+      "publicConfig",
+      "rosters",
+      "competitions",
+      "seasonSnapshots",
+      "bilanci",
+      "honor"
+    ],
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true,
+    "physicalDataMigration": false
+  },
+  "navigationActiveSingletonV534": {
+    "version": "V534",
+    "enabled": true,
+    "oneActivePageTarget": true,
+    "additiveOnly": true
+  },
+  "navigationFluidityV535": {
+    "version": "V535",
+    "enabled": true,
+    "additiveOnly": true,
+    "mutatesHash": false,
+    "replacesNavigation": false
+  },
+  "navigationPerformanceGuardV536": {
+    "version": "V536",
+    "enabled": true,
+    "additiveOnly": true,
+    "mutatesHash": false,
+    "replacesNavigation": false,
+    "rendersDataDirectly": false
+  },
+  "multiSeasonPathResolverV537": {
+    "version": "V537",
+    "enabled": true,
+    "physicalMigration": false,
+    "sharedAssetsCurrentPreserved": true,
+    "localFallbacksPreserved": true,
+    "sharedDataKinds": [
+      "listoni",
+      "calciomercato"
+    ],
+    "seasonScopedDataKinds": [
+      "publicConfig",
+      "rosters",
+      "competitions",
+      "seasonSnapshots",
+      "bilanci",
+      "honor"
+    ]
+  },
+  "sharedAssetsFallbackCleanupReadinessV538": {
+    "version": "V538",
+    "mode": "readiness-only",
+    "deletesLocalFallbacks": false,
+    "sharedAssetsCurrentRequired": true,
+    "localFallbacksPreserved": true
+  },
+  "mergeReadinessReleaseCandidateV539": {
+    "version": "V539",
+    "mode": "release-candidate",
+    "wholeSiteOverlay": true,
+    "functionalChanges": false,
+    "deletesLocalFallbacks": false,
+    "sharedAssetsCurrentRequired": true,
+    "localFallbacksPreserved": true
+  }
+}

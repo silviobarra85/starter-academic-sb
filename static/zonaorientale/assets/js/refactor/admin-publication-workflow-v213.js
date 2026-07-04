@@ -338,7 +338,7 @@ function getPublishWizardCommandsV191() {
     "git add -f static/zonaorientale/assets/snapshots/seasons/manifest.json",
     "git add -f static/zonaorientale/assets/snapshots/seasons/*.json",
     "git add -f static/zonaorientale/assets/rose/manifest.json static/zonaorientale/assets/rose/*.json",
-    "git add -f static/zonaorientale/assets/listoni/manifest.json static/zonaorientale/assets/listoni/*.json",
+    "git add -f static/fanta-engine/data/shared-assets/current/assets/listoni/manifest.json static/fanta-engine/data/shared-assets/current/assets/listoni/*.json",
     "git add -f static/zonaorientale/assets/competitions/manifest.json static/zonaorientale/assets/competitions/**/*.json",
     "git commit -m \"Update ZonaOrientale static public data\"",
     "git push",

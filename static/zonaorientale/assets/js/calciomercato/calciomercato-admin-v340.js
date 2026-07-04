@@ -60,7 +60,7 @@ export function createCalciomercatoArchiveAdminV340(deps = {}) {
         <button id="calciomercatoArchiveToggleV326" class="button button-secondary button-small calciomercato-archive-toggle-v326" type="button" aria-expanded="${vm.expanded ? "true" : "false"}" aria-controls="calciomercatoArchiveBodyV326">${vm.expanded ? "Riduci" : "Espandi"}</button>
       </div>
       <div id="calciomercatoArchiveBodyV326" class="calciomercato-archive-body-v326" ${vm.expanded ? "" : "hidden"}>
-        <p>Scarica JSON giornalieri e verifica copertura dello storico. Copia poi i file in <code>assets/calciomercato/archive/</code>.</p>
+        <p>Scarica JSON giornalieri e verifica copertura dello storico. Copia poi i file una sola volta in <code>../fanta-engine/data/shared-assets/current/assets/calciomercato/archive/</code>.</p>
         <div class="calciomercato-archive-actions-v323">
           <button id="calciomercatoDownloadArchiveDayV323" class="button button-secondary button-small" type="button" ${vm.busy ? "disabled" : ""}>Scarica JSON giorno ${escapeHtml(vm.selectedDay)}</button>
           <button id="calciomercatoDownloadArchiveRangeV323" class="button button-primary button-small" type="button" ${vm.busy || !vm.days.length ? "disabled" : ""}>Scarica JSON intervallo (${escapeHtml(String(vm.days.length))})</button>

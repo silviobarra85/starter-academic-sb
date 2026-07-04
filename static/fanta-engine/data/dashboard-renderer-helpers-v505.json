@@ -1,0 +1,23 @@
+{
+  "version": "V505",
+  "purpose": "Migrazione graduale renderer dashboard: introduce helper comuni per shell panel/card e usa il renderer comune per i pannelli Admin collassabili nelle due leghe.",
+  "module": "fanta-engine/js/ui/dashboard-renderer-helpers-v505.js",
+  "runtimeUse": {
+    "adminCollapsiblePanel": "renderAdminPanel delega a renderCollapsiblePanelV505 in entrambe le leghe",
+    "presidentActionCard": "helper pronto ma non forza ancora riscrittura dei renderer Presidente",
+    "metricCard": "helper pronto per V506/V509"
+  },
+  "guardrails": [
+    "no Firebase changes",
+    "no EmailJS changes",
+    "no DOM deletion",
+    "local dashboard renderer logic still preserved",
+    "role visibility remains governed by V504 safe-enforce"
+  ],
+  "nextSteps": [
+    "V506 Tool/form validators comuni",
+    "V507 League template hardening",
+    "V508 Playwright hardening",
+    "V509 renderer Presidente/Admin graduali"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version": "V502",
+  "name": "League template engine",
+  "mode": "template-only-no-runtime-impact",
+  "templatePath": "_league-template",
+  "scriptPath": "fanta-engine/tools/create-league-v502.mjs",
+  "creates": [
+    "static/<slug>/",
+    "docs/<slug>/"
+  ],
+  "placeholders": [
+    "__LEAGUE_SLUG__",
+    "__LEAGUE_NAME__",
+    "__LEAGUE_SHORT_NAME__",
+    "__SEASON_ID__",
+    "__CACHE_VERSION__"
+  ],
+  "guardrails": [
+    "non modifica le leghe esistenti",
+    "non crea Firebase project",
+    "non crea EmailJS service/template",
+    "non aggiorna netlify.toml automaticamente",
+    "richiede revisione manuale prima del go-live",
+    "static/static accidentale deve essere assente",
+    "static/zonaorientale/static deve essere assente"
+  ],
+  "nextOverlay": "V503 - Test browser Playwright"
+}

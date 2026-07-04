@@ -1,0 +1,151 @@
+{
+  "version": "V491",
+  "createdAt": "2026-06-24",
+  "scope": "Centralizzazione selettiva moduli JS comuni senza import relativi fragili",
+  "policy": {
+    "noLocalCopyDeletion": true,
+    "doNotTouchFirebaseOrEmailJs": true,
+    "doNotTouchLeagueSpecificAppLogic": true,
+    "centralRuntimePrimaryForSafeModules": true,
+    "localCopiesRemainRollbackFallback": true
+  },
+  "summary": {
+    "centralizedModules": 12,
+    "runtimePrimaryImports": 11,
+    "notRuntimePrimaryYet": 1
+  },
+  "records": [
+    {
+      "path": "assets/js/calciomercato/calciomercato-images-v334.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/calciomercato/calciomercato-images-v334.js",
+      "sha256": "6f67c94bd7b82ff703aee2b540c2440b8f48a5bb1d1efda3e55fd34a9741a241",
+      "bytes": 13183,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v340.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/calciomercato/calciomercato-players-v340.js",
+      "sha256": "c7c392d0045c8a52c01a302e1b3ccac89005eeeb90d3915961a5d067be659550",
+      "bytes": 11786,
+      "runtimePrimary": false,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/core/constants.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/core/constants.js",
+      "sha256": "1e4b605a6c8c1803ca31237b6b623c77e8f74f655ebfaf65c7c225027fee79fe",
+      "bytes": 3837,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/core/dom.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/core/dom.js",
+      "sha256": "c55a56291d6de7b02bdb4a564b0745f5ef06e93beec02258c22f0de4370fae73",
+      "bytes": 172,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/core/utils.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/core/utils.js",
+      "sha256": "e8af11f50b1fc0f3dd2c085b89563d051ee4f463fd619c1fdb9e945e7ec10847",
+      "bytes": 941,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/domain/entities.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/domain/entities.js",
+      "sha256": "a3bf1d050161610df82f0ef27f1a291a02d493b94eb776ea3db71c52ea78f856",
+      "bytes": 427,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/domain/labels.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/domain/labels.js",
+      "sha256": "075a8db575d7fc2aff68fba4db3ee870632c1d0a074cef39d28a2f0c613ebfee",
+      "bytes": 1179,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/domain/news.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/domain/news.js",
+      "sha256": "a22d97312bda64b07f8877b2452fd8a1c49800bdbba1b409ff029d947fdf083a",
+      "bytes": 271,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/market/transfer-market.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/market/transfer-market.js",
+      "sha256": "44933e5a5472f64e9c29f12095ba4e0e3178c3a63c82baac27c65102a39f6d62",
+      "bytes": 15883,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/mobile/mobile-rosters.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js",
+      "sha256": "f529a414c550e53ab62ca145a5712c1633bee6381bc0666ef3c42b878fe9b635",
+      "bytes": 7944,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/mobile/mobile-tables.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js",
+      "sha256": "06dbad29e31fe7ea88566d8b19e53fc5bde9e81d40d03659761e3e2e51119482",
+      "bytes": 2029,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    },
+    {
+      "path": "assets/js/refactor/public-admin-render-orchestrator-v221.js",
+      "enginePath": "fanta-engine/js/shared/v491/assets/js/refactor/public-admin-render-orchestrator-v221.js",
+      "sha256": "7fbd6ff70119f176032ae0e680bceaaa6eccfc85df877e85158d91f9a56015c4",
+      "bytes": 1530,
+      "runtimePrimary": true,
+      "localCopiesKept": true,
+      "requiresFirebase": false,
+      "requiresEmailJs": false,
+      "hasStaticImports": false
+    }
+  ]
+}

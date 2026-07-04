@@ -1,0 +1,6 @@
+// Template V507 - copia questo file in assets/emailjs.js solo dopo aver creato servizio/template EmailJS dedicati.
+// Il runtime comune e' static/fanta-engine/js/email/emailjs-adapter-v498.js.
+export const emailJsTemplateStatusV507 = {
+  enabled: false,
+  todo: 'Inserire serviceId, templateId e destinatari specifici della nuova lega.'
+};

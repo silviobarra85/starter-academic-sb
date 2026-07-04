@@ -1,3 +1,66 @@
+## Test V503 - Browser smoke tests Playwright
+
+Comandi statici consigliati:
+
+```bash
+cd static
+node fanta-engine/tools/audit-browser-smoke-tests-v503.mjs
+node fanta-engine/tools/audit-runtime-regression-v503.mjs
+node fanta-engine/tools/audit-multileague-contamination-v503.mjs
+```
+
+Smoke browser opzionale con server locale:
+
+```bash
+FANTA_BASE_URL=http://127.0.0.1:1313 FANTA_SITE_PREFIX=/starter-academic-sb/static node static/fanta-engine/tools/playwright-smoke-v503.mjs
+```
+
+## V494 - Audit cleanup readiness
+
+Nuovo audit: `static/fanta-engine/tools/audit-local-duplicate-cleanup-readiness-v494.mjs`. Va eseguito insieme agli audit runtime, contaminazione e merge readiness V494.
+
+## Test V493 - Merge readiness
+
+Comandi consigliati:
+
+```bash
+cd static
+node fanta-engine/tools/audit-merge-readiness-v493.mjs
+node fanta-engine/tools/audit-runtime-regression-v493.mjs
+node fanta-engine/tools/audit-multileague-contamination-v493.mjs
+```
+
+## Test V492 - Audit regressione runtime esteso
+
+Comandi consigliati:
+
+```bash
+cd static
+node fanta-engine/tools/audit-runtime-regression-v492.mjs
+node fanta-engine/tools/audit-multileague-contamination-v492.mjs
+```
+
+
+## Aggiornamento V487 - CSS comuni nel motore centrale (24/06/2026)
+
+- Runtime avanzato a V487 con footer/cache-buster coerenti.
+- I CSS comuni identici vengono caricati dal motore centrale con fallback locale.
+- Le copie locali non sono cancellate.
+- Nessuna modifica a Firebase, EmailJS, Admin, Area Squadra, news, regolamenti, bilanci, listoni o calciomercato.
+- `FUNZIONALITA'.md` non e' stato modificato.
+
+## Test e audit V483 - Documentazione consolidata FantaMantraManager
+
+La V483 aggiunge `static/fanta-engine/tools/audit-docs-consolidation-v483.mjs`. L'audit verifica la presenza dei documenti canonici FantaMantraManager, il bump V483 e il fatto che listoni/calciomercato non siano stati ancora spostati nel motore comune.
+
+Comandi consigliati:
+
+```bash
+cd static
+node fanta-engine/tools/audit-docs-consolidation-v483.mjs
+node fanta-engine/tools/audit-multileague-contamination-v482.mjs
+```
+
 ## Aggiornamento V454 - Selettore card Admin e Checklist QA opzionale (15/06/2026)
 
 - Runtime avanzato a V454 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.
@@ -5256,3 +5319,77 @@ node tools/audit-footer-news-isolation-v472.mjs --quiet
 
 Il check principale richiama l'audit V472 e verifica footer puliti per entrambe le leghe, loader senza hard-code `vecchia etichetta tecnica del clone`, `currentVersion = 472`, `news.html` FantaPetillo senza contenuti ZonaOrientale e generator statico FantaPetillo con fallback no-news.
 
+
+## V484 - Audit asset comuni
+
+Nuovo audit osservativo:
+
+```bash
+cd static
+node fanta-engine/tools/audit-shared-assets-inventory-v484.mjs
+```
+
+Esito atteso: 42 candidati identici tra ZonaOrientale e FantaMantraManager, 0 differenze, nessuno spostamento runtime in `fanta-engine/data/listoni` o `fanta-engine/data/calciomercato`.
+
+
+## V485 - Asset comuni listone/calciomercato
+
+I 42 asset comuni listone/calciomercato sono stati copiati nel motore centrale `static/fanta-engine/data/shared-assets/v485/`. ZonaOrientale mantiene le copie locali come fallback; nessun dato locale viene cancellato. Audit dedicato: `static/fanta-engine/tools/audit-shared-assets-centralization-v485.mjs`.
+
+## V486
+
+Aggiunto audit `static/fanta-engine/tools/audit-shared-runtime-assets-inventory-v486.mjs` per verificare che gli asset CSS/JS comuni censiti restino identici e che gli asset divergenti restino esclusi dalla centralizzazione automatica.
+
+## V489 - Audit JS classici centralizzati
+
+Aggiunto audit `static/fanta-engine/tools/audit-js-classic-centralization-v489.mjs` e aggiornato audit anti-contaminazione V489.
+
+## V490 - Audit data path adapter
+
+Aggiunto audit `static/fanta-engine/tools/audit-data-path-adapter-v490.mjs` e aggiornato audit anti-contaminazione V490.
+
+## V491 - Audit centralizzazione JS
+
+Aggiunto audit `static/fanta-engine/tools/audit-js-module-centralization-v491.mjs` e aggiornato audit anti-contaminazione V491.
+
+
+## V495 - Cleanup nested static ZonaOrientale
+
+- Dismessa la copia annidata `static/zonaorientale/static` tramite `git rm` esplicito dopo overlay.
+- Audit V495 aggiornati per non dipendere più dalla copia annidata.
+- Redirect Netlify di sicurezza `/zonaorientale/static/* -> /zonaorientale/:splat`.
+
+## Audit V500
+
+Dal path `static`:
+
+```bash
+node fanta-engine/tools/audit-dashboard-cards-engine-v500.mjs
+node fanta-engine/tools/audit-runtime-regression-v500.mjs
+node fanta-engine/tools/audit-multileague-contamination-v500.mjs
+```
+
+## Aggiornamento V502 - Template nuova lega
+
+Aggiunti `static/_league-template`, `create-league-v502.mjs` e audit dedicato. Il template non modifica il runtime delle leghe esistenti e richiede revisione manuale prima di qualsiasi go-live.
+
+
+## Aggiornamento V504
+
+Dashboard cards engine comune in modalita' `safe-enforce`: il registry V497 governa la visibilita' delle card role-gated senza cancellare DOM, dati o fallback locali.
+
+
+## V518 - Audit runtime boot whole-site
+
+Comando:
+
+```bash
+node static/fanta-engine/tools/audit-runtime-boot-whole-site-v517.mjs
+```
+
+Controlla entrambe le leghe, l'allineamento degli entrypoint a `?v=518`, gli alias export V515/V518 nel modulo condiviso e la presenza di `formValidatorsV506: true`.
+
+
+## Aggiornamento V518
+
+Overlay whole-site di recovery runtime: cache-buster V518, alias autoload V518 e controllo esplicito contro residui `league-config-v443.js?v=512` su entrambe le leghe. `FUNZIONALITA'.md` non modificato.

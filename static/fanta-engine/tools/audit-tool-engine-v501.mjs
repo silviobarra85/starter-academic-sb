@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+const root=process.cwd(); let ok=0, fail=0; const failures=[];
+function abs(p){return path.join(root,p)}; function exists(p){return fs.existsSync(abs(p))}; function read(p){return fs.readFileSync(abs(p),'utf8')}; function readJson(p){return JSON.parse(read(p))};
+function check(c,l){if(c){ok++;console.log(`OK  - ${l}`)}else{fail++;failures.push(l);console.error(`FAIL - ${l}`)}};
+const engine='fanta-engine/js/tools/matchday-draw-engine-v501.js';
+const manifest='fanta-engine/data/tool-engine-v501.json';
+check(!exists('static'), 'cartella accidentale static/static assente');
+check(!exists('zonaorientale/static'), 'copia annidata zonaorientale/static assente');
+check(exists(engine),'tool engine V501 presente');
+check(exists(manifest),'manifest tool engine V501 presente');
+const e=read(engine);
+check(e.includes("TOOL_ENGINE_VERSION_V501 = 'V501'"),'versione tool engine corretta');
+check(e.includes('MATCHDAY_DRAW_ENGINE_VERSION_V501'),'matchday engine version presente');
+check(e.includes('parseMatchdayTokensV501'),'parser range comune presente');
+check(e.includes('createRngV501'),'rng deterministico comune presente');
+check(e.includes('shuffleWithSeedV501'),'shuffle seed comune presente');
+check(e.includes('buildMatchdayDrawV501'),'builder sorteggio comune presente');
+check(e.includes('initMatchdayDrawToolV501'),'init UI comune presente');
+check(!e.includes('ZonaOrientale Salerno'),'engine senza brand Zona hardcoded');
+check(!e.includes('FantaMantraManager'),'engine senza brand FMM hardcoded');
+check(!e.includes('service_ttjf7js'),'engine senza service EmailJS hardcoded');
+const m=readJson(manifest);
+check(m.version==='V501','manifest versione V501');
+check(m.primaryTool==='matchday-draw','manifest tool principale sorteggio');
+check(m.mode==='central-engine-with-local-wrapper-fallback','manifest mode fallback corretto');
+check(Array.isArray(m.guardrails) && m.guardrails.includes('static/static accidentale deve essere assente'),'manifest guardrail static/static');
+for(const league of ['zonaorientale','fantapetillomantramanager']){
+  const cfg=readJson(`${league}/assets/league-config.json`);
+  const wrapper=`${league}/assets/js/sections/matchday-draw-tool-v473.js`;
+  const app=read(wrapper);
+  check(cfg.currentVersion===501,`${league} currentVersion V501`);
+  check(cfg.features?.toolEngine===true,`${league} feature toolEngine attiva`);
+  check(cfg.features?.toolEngineVersion==='V501',`${league} toolEngineVersion V501`);
+  check(cfg.features?.matchdayDrawToolEngine==='V501',`${league} matchdayDrawToolEngine V501`);
+  check(cfg.guardrails?.toolEngineCentralizationWithLocalFallback===true,`${league} guardrail fallback tool engine`);
+  check(cfg.guardrails?.staticStaticAccidentalOverlayRemoved===true,`${league} guardrail static/static removed`);
+  check(cfg.toolEngine?.tools?.['matchday-draw']?.legacyUi==='V473',`${league} tool config preserva UI V473`);
+  check(exists(wrapper),`${wrapper} presente`);
+  check(app.includes('matchday-draw-engine-v501.js?v=501'),`${wrapper} importa motore comune V501`);
+  check(app.includes('initMatchdayDrawToolFallbackV473'),`${wrapper} fallback locale V473 presente`);
+  check(app.includes('bootstrapMatchdayDrawToolV501'),`${wrapper} bootstrap V501 presente`);
+  check(read(`${league}/index.html`).includes('matchday-draw-tool-v473.js?v=501'),`${league}/index.html script sorteggio cache V501`);
+  check(read(`${league}/assets/js/core/section-registry-v405.js`).includes('matchday-draw-engine-v501.js'),`${league} registry cita engine V501`);
+}
+check(exists('../docs/AI_ASSISTANT_HANDOFF_V501.md'),'handoff AI V501 presente');
+check(exists('../docs/STATIC_STATIC_ACCIDENTAL_OVERLAY_NOTE_V501.md'),'nota static/static presente');
+check(exists('../docs/zonaorientale/TOOL_ENGINE_V501.md'),'doc Zona tool engine presente');
+check(exists('../docs/fantapetillomantramanager/TOOL_ENGINE_V501.md'),'doc FMM tool engine presente');
+if(fail>0){console.error(`\nAudit tool engine V501 fallito: ${ok} OK, ${fail} FAIL`); failures.forEach(f=>console.error(` - ${f}`)); process.exit(1)}
+console.log(`\nAudit tool engine V501 completato: ${ok} OK, ${fail} FAIL`);

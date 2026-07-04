@@ -1,0 +1,53 @@
+/* V540 - Isolamento visuale tabelle Regolamento.
+   Le colorazioni per ruolo restano riservate a Listone/Rose.
+   Le tabelle del Regolamento non devono ereditare classi player-role-* o zo-role-bg-v405-*. */
+
+.app-page[data-page="regolamento"] .rules-table tbody tr,
+.regulation-panel .rules-table tbody tr,
+.rules-inline-wrap .rules-table tbody tr,
+.rules-section .rules-table tbody tr {
+  background: transparent !important;
+}
+
+.app-page[data-page="regolamento"] .rules-table tbody tr > td,
+.regulation-panel .rules-table tbody tr > td,
+.rules-inline-wrap .rules-table tbody tr > td,
+.rules-section .rules-table tbody tr > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.player-role-gk > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.player-role-def > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.player-role-mid > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.player-role-fwd > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.zo-role-bg-v405-gk > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.zo-role-bg-v405-def > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.zo-role-bg-v405-mid > td,
+.app-page[data-page="regolamento"] .rules-table tbody tr.zo-role-bg-v405-fwd > td,
+.regulation-panel .rules-table tbody tr.player-role-gk > td,
+.regulation-panel .rules-table tbody tr.player-role-def > td,
+.regulation-panel .rules-table tbody tr.player-role-mid > td,
+.regulation-panel .rules-table tbody tr.player-role-fwd > td,
+.regulation-panel .rules-table tbody tr.zo-role-bg-v405-gk > td,
+.regulation-panel .rules-table tbody tr.zo-role-bg-v405-def > td,
+.regulation-panel .rules-table tbody tr.zo-role-bg-v405-mid > td,
+.regulation-panel .rules-table tbody tr.zo-role-bg-v405-fwd > td {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .app-page[data-page="regolamento"] .rules-table tbody tr > td,
+html[data-theme="light"] .regulation-panel .rules-table tbody tr > td,
+html[data-theme="light"] .rules-inline-wrap .rules-table tbody tr > td,
+html[data-theme="light"] .rules-section .rules-table tbody tr > td {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table tbody tr > td,
+body.is-mobile-ux .regulation-panel .rules-table tbody tr > td {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] body.is-mobile-ux .app-page[data-page="regolamento"] .rules-table tbody tr > td,
+html[data-theme="light"] body.is-mobile-ux .regulation-panel .rules-table tbody tr > td {
+  background: #ffffff !important;
+}

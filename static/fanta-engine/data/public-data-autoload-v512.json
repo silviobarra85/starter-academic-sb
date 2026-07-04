@@ -1,0 +1,20 @@
+{
+  "version": "V512",
+  "scope": "public-data-autoload-root-fix",
+  "engine": "static/fanta-engine/js/core/public-data-autoload-v512.js",
+  "reason": "V510/V511 handled hash navigation, but public data could still remain unloaded when no auth callback/render pass populated snapshots.",
+  "fixes": [
+    "starts a no-auth public data autoload/retry pass after module evaluation",
+    "uses stricter renderable-data checks: seasons alone are not enough",
+    "activates pages on hash/click and then renders after data readiness",
+    "keeps Firebase/EmailJS/dashboard role logic unchanged"
+  ],
+  "preserves": [
+    "no Firebase writes",
+    "no EmailJS changes",
+    "no Firestore path migration",
+    "no app.js renderer deletion",
+    "static/zonaorientale/static removed",
+    "static/static removed"
+  ]
+}

@@ -1,3 +1,63 @@
+## Aggiornamento V503 - Browser smoke tests
+
+Aggiunti smoke test Playwright nel motore comune per intercettare errori console, 404 e problemi runtime reali prima dei prossimi refactor dashboard.
+
+## Aggiornamento V496
+
+Aggiunto il primo UI components engine comune in `static/fanta-engine/js/ui/components-v496.js`. Vedi `UI_COMPONENTS_ENGINE_V496.md`, `HANDOFF_V496_UI_COMPONENTS_ENGINE.md` e il documento root `docs/AI_ASSISTANT_HANDOFF_V496.md`.
+
+## Aggiornamento V494
+
+Aggiunti piano e audit per cleanup duplicati locali senza cancellazioni. Vedi `LOCAL_DUPLICATE_CLEANUP_V494.md`, `POST_V494_IMPROVEMENTS.md` e `HANDOFF_V494_LOCAL_DUPLICATE_CLEANUP_READINESS.md`.
+
+## V493 - Merge readiness
+
+Aggiunti `MERGE_BRANCH_CHECKLIST_V493.md` e `HANDOFF_V493_MERGE_READINESS.md`.
+
+## V492 - Audit regressione runtime esteso
+
+Aggiunti `RUNTIME_REGRESSION_AUDIT_V492.md` e `HANDOFF_V492_RUNTIME_REGRESSION_AUDIT.md`.
+
+# FantaMantraManager - Documentazione canonica V484
+
+La documentazione corrente va letta partendo dai file canonici:
+
+```text
+00_STATO_CORRENTE_E_INDICE.md
+01_FUNZIONALITA_E_CHANGELOG.md
+02_ARCHITETTURA_DATI_FIREBASE_EMAILJS.md
+03_ADMIN_E_PRESIDENTI.md
+04_ROADMAP_MOTORE_UNICO.md
+```
+
+I file storici V448-V482 restano conservati come archivio di dettaglio. La V483 non cancella gli storici e non modifica la logica runtime: consolida lo stato corrente, aggiorna handoff e documenta la roadmap verso il motore unico.
+
+---
+
+
+## Aggiornamento V487
+
+La V487 centralizza prudentemente i soli CSS comuni in `static/fanta-engine/css/shared/v487/`, con fallback locale sui CSS delle singole leghe. I JS runtime restano locali.
+
+Documenti chiave:
+
+```text
+SHARED_CSS_CENTRALIZATION_V487.md
+HANDOFF_V487_SHARED_CSS_CENTRALIZATION.md
+```
+
+## Aggiornamento V484
+
+La V484 aggiunge l'inventario osservativo degli asset comuni listone/calciomercato. Sono stati trovati 42 candidati identici tra le due leghe, ma nessun path runtime viene spostato e nessuna copia locale viene cancellata.
+
+Documenti chiave:
+
+```text
+SHARED_ASSETS_INVENTORY_V484.md
+HANDOFF_V484_SHARED_ASSETS_INVENTORY.md
+```
+
+
 # FantaMantraManager - sandbox multi-lega V448
 
 Questo documento descrive il clone sandbox creato in V447 e auditato in V448.
@@ -346,3 +406,86 @@ Documenti tecnici:
 - Nuova collection Firestore: `ruleProposals`.
 - Rules dedicate: `static/fantapetillomantramanager/tools/firestore-rules-v479.rules`.
 - Nessuna modifica a ZonaOrientale; dashboard presidente resta non visibile in sessione Admin.
+
+## V480 - Registro sezioni unificato e primo fanta-engine condiviso
+
+La V480 introduce il primo modulo comune in `static/fanta-engine/` senza rinominare o spostare le cartelle delle due leghe.
+
+Stato operativo:
+
+- `static/fanta-engine/js/core/unified-section-registry-v480.js` contiene la factory comune del registro sezioni.
+- FantaMantraManager continua a usare `static/fantapetillomantramanager/assets/js/core/section-registry-v405.js`, ma ora il file e' un wrapper lega-specifico che chiama il motore condiviso.
+- La compatibilita' con gli alias storici `FantaPetilloSectionRegistryV401-V405` resta preservata.
+- `assets/app.js` preferisce l'alias comune `FantaLeagueSectionRegistryV480` e usa il registro per capire quali pagine sono nella bottom nav mobile primaria.
+- Nessuna funzionalita' viene rimossa: Admin, Area Squadra, EmailJS, Proposte regolamento, Regolamento PDF, Sorteggio giornate e share Netlify restano presenti.
+
+Audit:
+
+```bash
+cd static
+node fanta-engine/tools/audit-unified-section-registry-v480.mjs
+```
+
+- V481: motore comune presentazione runtime (`fanta-engine/js/core/league-presentation-v481.js`) per metadata, branding, footer e mobile More con fallback V445.
+
+- V482: aggiunto audit anti-contaminazione multi-lega condiviso nel motore comune; nessun cambio ai flussi Firebase/Admin/EmailJS.
+
+- `SHARED_ASSETS_CENTRALIZATION_V485.md` - centralizzazione prudente asset listone/calciomercato con fallback.
+- `HANDOFF_V485_SHARED_ASSETS_CENTRALIZATION.md` - handoff centralizzazione asset comuni V485.
+
+- V486: inventario asset runtime CSS/JS comuni (`SHARED_RUNTIME_ASSETS_INVENTORY_V486.md`).
+- `SHARED_JS_DEPENDENCY_INVENTORY_V488.md` - Inventario dipendenze JS comuni e criteri di centralizzazione prudente.
+- `HANDOFF_V488_JS_DEPENDENCY_INVENTORY.md` - Handoff operativo V488.
+
+## V489 - JS classici comuni centralizzati
+
+Aggiunti `SHARED_JS_CLASSIC_CENTRALIZATION_V489.md` e `HANDOFF_V489_JS_CLASSIC_CENTRALIZATION.md`.
+
+## V490 - Data path adapter comune
+
+Aggiunti `DATA_PATH_ADAPTER_V490.md` e `HANDOFF_V490_DATA_PATH_ADAPTER.md`.
+
+## V491 - Centralizzazione moduli JS
+
+Aggiunti `JS_MODULE_CENTRALIZATION_V491.md` e `HANDOFF_V491_JS_MODULE_CENTRALIZATION.md`.
+
+
+## V495 - Cleanup nested static ZonaOrientale
+
+- Dismessa la copia annidata `static/zonaorientale/static` tramite `git rm` esplicito dopo overlay.
+- Audit V495 aggiornati per non dipendere più dalla copia annidata.
+- Redirect Netlify di sicurezza `/zonaorientale/static/* -> /zonaorientale/:splat`.
+
+
+## V497 - Feature card registry comune
+
+Introdotto il registry comune metadata-first per card/funzionalita' in `static/fanta-engine/js/core/feature-card-registry-v497.js`. Il rendering esistente resta preservato; la V500 usera' questo registry per la dashboard cards engine.
+
+
+## V498 - EmailJS adapter comune
+
+- `EMAILJS_ADAPTER_V498.md`
+- `HANDOFF_V498_EMAILJS_ADAPTER.md`
+
+
+## V499 - Firebase adapter comune
+
+- `FIREBASE_ADAPTER_V499.md`
+- `HANDOFF_V499_FIREBASE_ADAPTER.md`
+
+## V500 - Dashboard cards engine
+
+- `DASHBOARD_CARDS_ENGINE_V500.md`
+- `HANDOFF_V500_DASHBOARD_CARDS_ENGINE.md`
+
+- `TOOL_ENGINE_V501.md` - centralizzazione Sorteggio giornate nel motore comune.
+- `HANDOFF_V501_TOOL_ENGINE.md` - handoff operativo V501.
+
+## Aggiornamento V502 - Template nuova lega
+
+Aggiunti `static/_league-template`, `create-league-v502.mjs` e audit dedicato. Il template non modifica il runtime delle leghe esistenti e richiede revisione manuale prima di qualsiasi go-live.
+
+
+## Aggiornamento V504
+
+Dashboard cards engine comune in modalita' `safe-enforce`: il registry V497 governa la visibilita' delle card role-gated senza cancellare DOM, dati o fallback locali.

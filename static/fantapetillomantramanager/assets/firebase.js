@@ -1,7 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 import {
-  getFirestore,
+  createFirebaseLeagueRuntimeV499,
   collection,
   doc,
   getDoc,
@@ -12,11 +10,7 @@ import {
   deleteDoc,
   query,
   where,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-import {
-  getAuth,
+  serverTimestamp,
   createUserWithEmailAndPassword,
   sendEmailVerification,
   updateProfile,
@@ -25,28 +19,38 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js";
 
-// V450 - Firebase reale dedicato per FantaPetilloMantraManager.
-// Non usare il progetto Firebase di ZonaOrientale in questo clone.
 const firebaseConfig = {
-  apiKey: "AIzaSyA8TbyIH-TD2gyxL4b5MP9NWkC46RN9k00",
-  authDomain: "fantapetillomantramanager.firebaseapp.com",
-  projectId: "fantapetillomantramanager",
-  storageBucket: "fantapetillomantramanager.firebasestorage.app",
-  messagingSenderId: "578603278263",
-  appId: "1:578603278263:web:df2ba2739bc2b843ccd232",
-  measurementId: "G-RT78QT84J4"
+  "apiKey": "AIzaSyA8TbyIH-TD2gyxL4b5MP9NWkC46RN9k00",
+  "authDomain": "fantapetillomantramanager.firebaseapp.com",
+  "projectId": "fantapetillomantramanager",
+  "storageBucket": "fantapetillomantramanager.firebasestorage.app",
+  "messagingSenderId": "578603278263",
+  "appId": "1:578603278263:web:df2ba2739bc2b843ccd232",
+  "measurementId": "G-RT78QT84J4"
 };
 
-const app = initializeApp(firebaseConfig);
+export const firebaseLeagueRuntimeV499 = createFirebaseLeagueRuntimeV499({
+  leagueId: 'fantapetillomantramanager',
+  seasonId: '2026-2027',
+  displayName: 'FantaMantraManager',
+  firebaseConfig,
+  dataModelMode: 'flat-collections-preserved',
+  migrateToLeagueScopedPaths: false,
+  useFlatCollections: true,
+  notes: 'V499 centralizza init/helper Firebase senza cambiare path Firestore o rules.'
+});
 
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+export const db = firebaseLeagueRuntimeV499.db;
+export const auth = firebaseLeagueRuntimeV499.auth;
+export const firebaseRuntimeInfoV499 = firebaseLeagueRuntimeV499.runtimeInfo();
 
 if (typeof window !== 'undefined') {
+  window.FantaLeagueFirebaseRuntimeV499 = firebaseRuntimeInfoV499;
+
   window.FantaPetilloFirebaseConfigV449 = Object.freeze({
-    version: 'V450',
+    version: 'V499',
     projectId: firebaseConfig.projectId,
     authDomain: firebaseConfig.authDomain,
     dedicatedFirebaseProject: true,
@@ -54,8 +58,10 @@ if (typeof window !== 'undefined') {
     productionReady: false,
     requiresFirestoreRulesBeforeLiveUse: false,
     adminBootstrapEnabled: true,
-    teamAreaStillGuarded: true,
-    firestoreRulesVersion: 'V450'
+    teamAreaStillGuarded: false,
+    firestoreRulesVersion: 'V479',
+    firebaseAdapterVersion: 'V499',
+    dataModelMode: 'flat-collections-preserved'
   });
 }
 

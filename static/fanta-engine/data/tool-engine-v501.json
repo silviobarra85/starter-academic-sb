@@ -1,0 +1,26 @@
+{
+  "version": "V501",
+  "scope": "tool-engine",
+  "primaryTool": "matchday-draw",
+  "engine": "js/tools/matchday-draw-engine-v501.js",
+  "mode": "central-engine-with-local-wrapper-fallback",
+  "centralized": [
+    "parser input giornate e range",
+    "seed hash e random deterministico",
+    "shuffle riproducibile",
+    "costruzione payload JSON",
+    "inizializzazione UI del tool Sorteggio giornate"
+  ],
+  "leagueSpecific": [
+    "wrapper assets/js/sections/matchday-draw-tool-v473.js",
+    "markup index.html esistente",
+    "CSS locale come fallback"
+  ],
+  "guardrails": [
+    "nessuna scrittura Firebase",
+    "nessun dato o brand hardcoded nel motore comune",
+    "fallback locale V473 mantenuto nel wrapper",
+    "static/static accidentale deve essere assente"
+  ],
+  "next": "centralizzare altri tool e validatori form in V501+"
+}

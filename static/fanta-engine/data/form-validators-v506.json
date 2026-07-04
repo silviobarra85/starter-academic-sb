@@ -1,0 +1,32 @@
+{
+  "version": "V506",
+  "module": "fanta-engine/js/core/form-validators-v506.js",
+  "purpose": "Centralizzare validatori comuni per form e tool senza spostare logiche business locali.",
+  "exports": [
+    "normalizeTextV506",
+    "toIntegerV506",
+    "clampIntegerV506",
+    "parseIntegerTokensV506",
+    "uniqueSortedIntegersV506",
+    "validateRequiredV506",
+    "validateIntegerRangeV506",
+    "validateRangeOrderV506",
+    "buildValidationSummaryV506",
+    "escapeHtmlV506",
+    "installFormValidatorsV506"
+  ],
+  "firstRuntimeConsumer": "fanta-engine/js/tools/matchday-draw-engine-v506.js",
+  "guardrails": [
+    "no Firebase changes",
+    "no EmailJS changes",
+    "no league-specific brand",
+    "no data writes",
+    "local fallbacks preserved"
+  ],
+  "futureUse": [
+    "admin form validation",
+    "president form validation",
+    "league template config validation",
+    "tool numeric inputs"
+  ]
+}

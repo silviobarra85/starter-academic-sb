@@ -1,0 +1,38 @@
+{
+  "version": "V489",
+  "createdAt": "2026-06-24",
+  "scope": "Centralizzazione prudente dei soli script JS classici/autonomi condivisi.",
+  "policy": {
+    "preserveLocalCopies": true,
+    "centralPathPrimary": "fanta-engine/js/shared/v489/",
+    "fallbackLocalPath": "./assets/js/core/admin-card-visibility-v456.js?v=489",
+    "doNotCentralizeModulesYet": true,
+    "doNotTouchFirebaseEmailJsAdminFlows": true
+  },
+  "centralizedFiles": [
+    {
+      "path": "assets/js/core/admin-card-visibility-v454.js",
+      "centralPath": "fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v454.js",
+      "sha256": "be4f275fe239a4871c54575d97fdbc53e8a165d51f97c284d92fcce118a387ec",
+      "bytes": 11248,
+      "runtimeReferencedInHtml": false,
+      "localFallbackPreserved": true
+    },
+    {
+      "path": "assets/js/core/admin-card-visibility-v455.js",
+      "centralPath": "fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v455.js",
+      "sha256": "ca833346da177767b10a3ea498e05e7176b50832fdeee0bb9a098c67272e69a9",
+      "bytes": 14561,
+      "runtimeReferencedInHtml": false,
+      "localFallbackPreserved": true
+    },
+    {
+      "path": "assets/js/core/admin-card-visibility-v456.js",
+      "centralPath": "fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v456.js",
+      "sha256": "cd865fc34217ca64be1739d1cc25d27c125fb354f303ccc19576abde52d40562",
+      "bytes": 15894,
+      "runtimeReferencedInHtml": true,
+      "localFallbackPreserved": true
+    }
+  ]
+}

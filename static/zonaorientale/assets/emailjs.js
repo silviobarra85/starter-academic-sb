@@ -1,33 +1,35 @@
+import { createEmailJsSenderV498 } from '../../fanta-engine/js/email/emailjs-adapter-v498.js';
+
 export const EMAILJS_PUBLIC_KEY = "Rl3BRmJx1IeJEqQAH";
 export const EMAILJS_SERVICE_ID = "service_trz4dxe";
 export const EMAILJS_TEMPLATE_ID = "template_e1o7z5e";
 
+const emailJsSenderV498 = createEmailJsSenderV498({
+  leagueId: 'zonaorientale',
+  publicKey: EMAILJS_PUBLIC_KEY,
+  serviceId: EMAILJS_SERVICE_ID,
+  templateId: EMAILJS_TEMPLATE_ID,
+  templates: {
+    default: EMAILJS_TEMPLATE_ID,
+    transfer: EMAILJS_TEMPLATE_ID,
+    operational: EMAILJS_TEMPLATE_ID
+  },
+  defaultFlow: 'default',
+  fallbackSubject: 'Comunicazione ZonaOrientale Salerno'
+});
+
 export function isEmailJsConfigured() {
-  return Boolean(
-    EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY" &&
-    EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
-    EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID"
-  );
+  return emailJsSenderV498.isConfigured();
+}
+
+export function normalizeEmailJsPayload(templateParams = {}) {
+  return emailJsSenderV498.normalize(templateParams);
+}
+
+export function buildEmailJsMailtoFallback(templateParams = {}) {
+  return emailJsSenderV498.buildMailtoFallback(templateParams);
 }
 
 export async function sendTransferEmail(templateParams) {
-  if (!isEmailJsConfigured()) {
-    throw new Error("EmailJS non configurato. Inserisci public key, service ID e template ID in assets/emailjs.js.");
-  }
-
-  const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      service_id: EMAILJS_SERVICE_ID,
-      template_id: EMAILJS_TEMPLATE_ID,
-      user_id: EMAILJS_PUBLIC_KEY,
-      template_params: templateParams
-    })
-  });
-
-  if (!response.ok) {
-    const text = await response.text().catch(() => "");
-    throw new Error(`Invio EmailJS non riuscito (${response.status}). ${text}`.trim());
-  }
+  return emailJsSenderV498.send(templateParams);
 }

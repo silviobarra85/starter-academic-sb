@@ -1,0 +1,18 @@
+{
+  "version": "V511",
+  "scope": "navigation-data-refresh-and-static-first-public-data-recovery",
+  "engine": "static/fanta-engine/js/core/navigation-data-refresh-v511.js",
+  "fixes": [
+    "hash navigation to public sections schedules a render/data readiness pass",
+    "public data loader falls back to local static config/snapshots if the standard Firebase-backed path leaves pages empty",
+    "cache-busters for league-config imports are advanced to avoid stale data path modules"
+  ],
+  "preserves": [
+    "Firebase paths and rules",
+    "EmailJS settings",
+    "Admin and president role logic",
+    "local fallback copies",
+    "static/zonaorientale/static removed",
+    "static/static removed"
+  ]
+}

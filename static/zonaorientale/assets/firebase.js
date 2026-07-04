@@ -1,7 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 import {
-  getFirestore,
+  createFirebaseLeagueRuntimeV499,
   collection,
   doc,
   getDoc,
@@ -12,11 +10,7 @@ import {
   deleteDoc,
   query,
   where,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-import {
-  getAuth,
+  serverTimestamp,
   createUserWithEmailAndPassword,
   sendEmailVerification,
   updateProfile,
@@ -25,22 +19,36 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB7YQM3bNHwAqhJAUP3hOeYudwyTzioLFM",
-  authDomain: "zonaorientale-d07af.firebaseapp.com",
-  projectId: "zonaorientale-d07af",
-  storageBucket: "zonaorientale-d07af.firebasestorage.app",
-  messagingSenderId: "201153044685",
-  appId: "1:201153044685:web:b9ed4739aa94eb9029c984",
-  measurementId: "G-LCP0FE4R1B"
+  "apiKey": "AIzaSyB7YQM3bNHwAqhJAUP3hOeYudwyTzioLFM",
+  "authDomain": "zonaorientale-d07af.firebaseapp.com",
+  "projectId": "zonaorientale-d07af",
+  "storageBucket": "zonaorientale-d07af.firebasestorage.app",
+  "messagingSenderId": "201153044685",
+  "appId": "1:201153044685:web:b9ed4739aa94eb9029c984",
+  "measurementId": "G-LCP0FE4R1B"
 };
 
-const app = initializeApp(firebaseConfig);
+export const firebaseLeagueRuntimeV499 = createFirebaseLeagueRuntimeV499({
+  leagueId: 'zonaorientale',
+  seasonId: '2026-2027',
+  displayName: 'ZonaOrientale Salerno',
+  firebaseConfig,
+  dataModelMode: 'flat-collections-preserved',
+  migrateToLeagueScopedPaths: false,
+  useFlatCollections: true,
+  notes: 'V499 centralizza init/helper Firebase senza cambiare path Firestore o rules.'
+});
 
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+export const db = firebaseLeagueRuntimeV499.db;
+export const auth = firebaseLeagueRuntimeV499.auth;
+export const firebaseRuntimeInfoV499 = firebaseLeagueRuntimeV499.runtimeInfo();
+
+if (typeof window !== 'undefined') {
+  window.FantaLeagueFirebaseRuntimeV499 = firebaseRuntimeInfoV499;
+}
 
 export {
   collection,

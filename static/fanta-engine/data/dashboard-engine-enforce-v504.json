@@ -1,0 +1,33 @@
+{
+  "version": "V504",
+  "purpose": "Dashboard cards engine comune multi-lega con safe-enforce opzionale: il registry V497 governa davvero la visibilita' delle card role-gated senza rimuovere DOM o dati.",
+  "module": "fanta-engine/js/ui/dashboard-cards-engine-v504.js",
+  "previousEngine": "fanta-engine/js/ui/dashboard-cards-engine-v500.js",
+  "defaultMode": "safe-enforce",
+  "modes": [
+    "observe-first",
+    "safe-enforce",
+    "enforce"
+  ],
+  "safeEnforcePolicy": [
+    "non forza card pubbliche",
+    "gestisce solo card admin/presidente/authenticated o esplicitamente safeEnforce",
+    "non cancella elementi: applica hidden/aria-hidden e data-* runtime",
+    "mantiene alias V500 per diagnostica legacy"
+  ],
+  "guardrails": [
+    "no Firebase changes",
+    "no EmailJS changes",
+    "no Firestore path migration",
+    "no dashboard renderer migration",
+    "no local fallback deletion",
+    "no static/zonaorientale/static restore",
+    "no static/static restore"
+  ],
+  "nextSteps": [
+    "V505 Migrazione graduale renderer dashboard",
+    "V506 Tool/form validators comuni",
+    "V507 League template hardening",
+    "V508 Playwright hardening"
+  ]
+}

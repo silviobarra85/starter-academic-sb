@@ -1,0 +1,29 @@
+{
+  "version": "V507",
+  "name": "League template hardening",
+  "mode": "template-only-no-runtime-impact",
+  "templatePath": "_league-template",
+  "createScript": "fanta-engine/tools/create-league-v507.mjs",
+  "validatorScript": "fanta-engine/tools/validate-league-config-v507.mjs",
+  "previousCreateScriptPreserved": "fanta-engine/tools/create-league-v502.mjs",
+  "checks": [
+    "reserved slug",
+    "existing destination",
+    "placeholder leakage",
+    "league-config coherence",
+    "Firebase/EmailJS reuse guard",
+    "docs generated",
+    "Netlify manual review"
+  ],
+  "guardrails": [
+    "non modifica le leghe esistenti",
+    "non crea nuove leghe automaticamente",
+    "non crea Firebase project",
+    "non crea EmailJS service/template",
+    "non aggiorna netlify.toml automaticamente",
+    "richiede validator V507 prima del go-live",
+    "static/static accidentale deve essere assente",
+    "static/zonaorientale/static deve essere assente"
+  ],
+  "nextOverlay": "V508 - Playwright hardening"
+}

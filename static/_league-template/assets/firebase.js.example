@@ -1,0 +1,6 @@
+// Template V507 - copia questo file in assets/firebase.js dopo aver creato un progetto Firebase dedicato.
+// Non riusare le configurazioni di ZonaOrientale o FantaMantraManager.
+export const firebaseTemplateStatusV507 = {
+  enabled: false,
+  todo: 'Inserire config Firebase dedicata, rules e seed dati prima del go-live.'
+};

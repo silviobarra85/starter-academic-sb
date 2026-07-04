@@ -1,0 +1,16 @@
+{
+  "version": "V497",
+  "purpose": "Registry unico card/funzionalita' multi-lega; metadata-first, non forza rendering UI.",
+  "module": "fanta-engine/js/core/feature-card-registry-v497.js",
+  "guardrails": [
+    "no hardcoded brand in engine",
+    "no runtime removal",
+    "no Firebase/EmailJS changes",
+    "cards visible/enabled by league-config"
+  ],
+  "nextSteps": [
+    "V498 EmailJS adapter comune",
+    "V499 Firebase adapter comune",
+    "V500 dashboard cards engine"
+  ]
+}

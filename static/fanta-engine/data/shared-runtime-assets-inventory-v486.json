@@ -1,0 +1,691 @@
+{
+  "version": "V486",
+  "createdAt": "2026-06-24",
+  "scope": "Inventario runtime CSS/JS comuni tra ZonaOrientale e FantaMantraManager",
+  "policy": {
+    "noRuntimePathChange": true,
+    "noLocalCopyDeletion": true,
+    "purpose": "misurare quali asset JS/CSS sono identici prima di una eventuale centralizzazione prudente"
+  },
+  "summary": {
+    "zonaOrientaleRuntimeAssets": 89,
+    "fantaMantraManagerRuntimeAssets": 99,
+    "commonPaths": 89,
+    "identicalCommonPaths": 60,
+    "differentCommonPaths": 29,
+    "onlyZonaOrientale": 0,
+    "onlyFantaMantraManager": 10
+  },
+  "identicalCandidates": [
+    {
+      "path": "assets/css/admin-v130.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "2595852ef7fe4f800bcdd58e3d8fe0665ad388948138bebf5ac20657e6a632be",
+      "bytes": 1625,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/competition-detail-v130.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "744c0c4c46ab99663438a7ce7569f828eac4b7f545af6a35500741e422c489ba",
+      "bytes": 17398,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/components-v130.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "7beb45666874de16d60b48e7910196c18cf54159edeae27bd1196d59bf4fdba2",
+      "bytes": 2830,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/matchday-draw-tool-v473.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "9fed4ec2cb892bf2c1a4a9e5aef6cb0120e3020c0c553a9918d6bda0aad675ec",
+      "bytes": 2055,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/mobile-chrome-v223.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "a4a1d977a5620c057ab78b7efd4367405cd0bf32a0de43030b2c52be07e0f4ce",
+      "bytes": 2413,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/mobile-hotfix-v166.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "f1f09e48bb428e117154fd0e6700c8ed7e6d07d1423956139634f5b5ee1388df",
+      "bytes": 8190,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/mobile-hotfix-v167.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "6f3b1dcd11ae0f7c43f0b5bcbc1d43711cc9d77a1bd682a2b5ad5bfbed388096",
+      "bytes": 5008,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/mobile-suite-v168.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "17b99303ee7eb0ef545abd9aa98ab72fd4ea48104cf55c89275601d5b293089f",
+      "bytes": 171064,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/admin-card-visibility-v454.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "d66ff8dbcc7b5c645451d9221fe6a6b2a16ea0cf76c00109eda249e0c17a1451",
+      "bytes": 2497,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/admin-card-visibility-v455.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "f70ace2cb8c14d28fc8481cc26fb4cffa758566f7cfda93e27da85638f6b896f",
+      "bytes": 2509,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/admin-card-visibility-v456.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "fb53261bd87074c4657656335018dc2e49d3f50c0848f4ab7d3d6f2da314553e",
+      "bytes": 2747,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/admin-fm-movement-edit-v436.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "357d0062153337bfb36bcaaf949cf89f657ddfaaff38b1d98ffb4ff8010c9aaf",
+      "bytes": 717,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/bilanci-snapshot-v435.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "1b437a2cfd30beacd31196df29bb38ce327e00c98be7ddd1e511e6deaf5d4c4a",
+      "bytes": 7088,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/calciomercato.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "f42425b958866aca4f898e6ffbfd4c14d60a90a21ed00abd8f2423cbfa0e0825",
+      "bytes": 26360,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/listone.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "501067ca90d4135d9307206d205b744380521c6b29ef5e882fd770b708738330",
+      "bytes": 773,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/mantra-role-filters-v441.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "b22f25407f7d7609023d4fc50bd30d39d82310dde2e5b8758da844da939f4f2c",
+      "bytes": 1562,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/mobile-controls.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "06797e33cbcdf2925d231b7505dca80999be272bfa641fc7c50ad333e3a5b6b4",
+      "bytes": 103640,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/panel-title-stack-v442.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "954179df80ead57e6c35dad23ebb88009349401a92628a6d4296749547e0d533",
+      "bytes": 3451,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/rosters-tables.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "cbd328af61cbaa051feedb6533f5df2e4e182449121ccc07c4d45e5502739ebe",
+      "bytes": 12438,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/refactor/theme-light-suspended.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "2b11e90ce8dc2dbe609597393566a701667df29f639862a816bec78795a435fa",
+      "bytes": 24811,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/css/transfer-market-v130.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "358c88499137be930975bce709e57e4d9d7b979f3cb78fde4801b07889a22592",
+      "bytes": 4343,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/device-badge-v434.css",
+      "kind": "css",
+      "category": "css",
+      "sha256": "3926e70660576936b17a0dcac293e6f9b3f999e8fbcca685208d307def13b7ef",
+      "bytes": 1984,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/admin/admin-competitions.js",
+      "kind": "js",
+      "category": "admin-js",
+      "sha256": "6a9bff6faf70f740abbf8a1b2a54d01d649953d18a3ab972f9a7ba738c0d2051",
+      "bytes": 21316,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/admin/admin-users.js",
+      "kind": "js",
+      "category": "admin-js",
+      "sha256": "a3aef7b0c5661945b0d9215801ae793284869fd648d2b8281a1f81fdd53297c6",
+      "bytes": 6293,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/admin/listone-converter.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "0599e944f2690aa7daaac94e2c559d973880bc5abdc4eef1ec5ac40f1b0d0608",
+      "bytes": 11005,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/admin/public-snapshots.js",
+      "kind": "js",
+      "category": "admin-js",
+      "sha256": "85962e5ac87f64355d4fe28c54964abd24693a66180034256e8503c188436027",
+      "bytes": 7432,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/admin/team-requests-panel-v253.js",
+      "kind": "js",
+      "category": "admin-js",
+      "sha256": "4ef1cfdca0197fa3fdd53c546cd2b94809f970b8e2d235fc0d019bfea773b296",
+      "bytes": 14557,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-admin-v340.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "5c2faaf034a679bb809f912e2617f599fec8e2f131d529fea8e8c5674ee98784",
+      "bytes": 5691,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-filters-v339.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "2282fe0ab188826d455c59b18f9a36a906ea1ff11fee885f0dbf00e7a801b062",
+      "bytes": 7159,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-images-v334.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "6f67c94bd7b82ff703aee2b540c2440b8f48a5bb1d1efda3e55fd34a9741a241",
+      "bytes": 13183,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v335.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "9de2a4b273bac956a4adf1391dfd5fa50bc3054a840701fcf3167a05453aa970",
+      "bytes": 8103,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v337.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "9ee7f77e1e4fa60d78052f0c89c65bb0acf9e8b332a8c19d535b5987cb97a1a3",
+      "bytes": 9889,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v340.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "c7c392d0045c8a52c01a302e1b3ccac89005eeeb90d3915961a5d067be659550",
+      "bytes": 11786,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v359.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "4117efc54ed5f2926067faae102ea4d3acecc6117231060dffcd5b99ecaa2901",
+      "bytes": 17554,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-render-v338.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "ebf1d629c5a6c3b8c9ede94a0d8bf42f483eb8dd19163045846efc3c20beacca",
+      "bytes": 4626,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/admin-card-visibility-v454.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "be4f275fe239a4871c54575d97fdbc53e8a165d51f97c284d92fcce118a387ec",
+      "bytes": 11248,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/admin-card-visibility-v455.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "ca833346da177767b10a3ea498e05e7176b50832fdeee0bb9a098c67272e69a9",
+      "bytes": 14561,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/admin-card-visibility-v456.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "cd865fc34217ca64be1739d1cc25d27c125fb354f303ccc19576abde52d40562",
+      "bytes": 15894,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/constants.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "1e4b605a6c8c1803ca31237b6b623c77e8f74f655ebfaf65c7c225027fee79fe",
+      "bytes": 3837,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/dom.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "c55a56291d6de7b02bdb4a564b0745f5ef06e93beec02258c22f0de4370fae73",
+      "bytes": 172,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/formatters.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "4573a1633fbb65bb52ee6cc87c7568745089d6022769368540183859ad479339",
+      "bytes": 1211,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/state.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "4cc655c25ee65d0f34f2e901f726cf3ff4bee6cc32480dc2f2461f3b1c9e1c9f",
+      "bytes": 1035,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/ui.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "20be4d2a30ecb5b3020eff84d2b30784da2d945b8c1fe4b319d9bd750ab2640f",
+      "bytes": 4055,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/core/utils.js",
+      "kind": "js",
+      "category": "core-js",
+      "sha256": "e8af11f50b1fc0f3dd2c085b89563d051ee4f463fd619c1fdb9e945e7ec10847",
+      "bytes": 941,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/data/firestore-service.js",
+      "kind": "js",
+      "category": "other",
+      "sha256": "5721fd265c556286029c71cf594aad088c5ecbcaa37b22b6bb247cba26a57092",
+      "bytes": 487,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/data/static-files-service.js",
+      "kind": "js",
+      "category": "other",
+      "sha256": "73b2fd68536c39b010f20fc2874e989e47f48713b0d98b7b34e6c0e408cfa8de",
+      "bytes": 5360,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/competitions.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "3aa849887544811969790df22c751be712b3df6300b6c61fbc3ce14422695e67",
+      "bytes": 2049,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/entities.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "a3bf1d050161610df82f0ef27f1a291a02d493b94eb776ea3db71c52ea78f856",
+      "bytes": 427,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/fm-movements.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "8780c1e310fd685929b57dbd72cb9206bd90387e288a2ba6f90dce1936ec5e57",
+      "bytes": 1044,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/labels.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "075a8db575d7fc2aff68fba4db3ee870632c1d0a074cef39d28a2f0c613ebfee",
+      "bytes": 1179,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/listone.js",
+      "kind": "js",
+      "category": "listone-calciomercato-js",
+      "sha256": "d90a7463d2689306f5ddc772360336fcca657641053565e61b13e1e9cb268dd5",
+      "bytes": 682,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/matches.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "56dd74b93685b29f84523393d68f09dd7329a31e3ab186217c99285a4fc0a18f",
+      "bytes": 1339,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/news.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "a22d97312bda64b07f8877b2452fd8a1c49800bdbba1b409ff029d947fdf083a",
+      "bytes": 271,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/rosters.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "d43a12552a21a41c52abd55a3eaca7e84e09c4416728273f49965e38117441ab",
+      "bytes": 1186,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/domain/team-logos.js",
+      "kind": "js",
+      "category": "domain-js",
+      "sha256": "f6320f73da2eceefb582f07ab19d988dc9357b8977cf17333ea942875b8ccaff",
+      "bytes": 1513,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/market/transfer-market.js",
+      "kind": "js",
+      "category": "market-js",
+      "sha256": "44933e5a5472f64e9c29f12095ba4e0e3178c3a63c82baac27c65102a39f6d62",
+      "bytes": 15883,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/mobile/mobile-rosters.js",
+      "kind": "js",
+      "category": "mobile-js",
+      "sha256": "f529a414c550e53ab62ca145a5712c1633bee6381bc0666ef3c42b878fe9b635",
+      "bytes": 7944,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/mobile/mobile-tables.js",
+      "kind": "js",
+      "category": "mobile-js",
+      "sha256": "06dbad29e31fe7ea88566d8b19e53fc5bde9e81d40d03659761e3e2e51119482",
+      "bytes": 2029,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/refactor/public-admin-render-orchestrator-v221.js",
+      "kind": "js",
+      "category": "other",
+      "sha256": "7fbd6ff70119f176032ae0e680bceaaa6eccfc85df877e85158d91f9a56015c4",
+      "bytes": 1530,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    },
+    {
+      "path": "assets/js/sections/matchday-draw-tool-v473.js",
+      "kind": "js",
+      "category": "section-js",
+      "sha256": "ffcfcb8ee86ec32bb317296f79ff7b94eb9addfe17fd723630c7e95e6a4d48d6",
+      "bytes": 8678,
+      "centralizationRecommendation": "safe-copy-first; do not rewrite runtime path until dependency graph is audited"
+    }
+  ],
+  "differentSharedPaths": [
+    {
+      "path": "assets/app.js",
+      "zonaOrientaleSha256": "8293b71fc27845dfded060ad42772a25a385135a066deff525d04cf067cc6bbb",
+      "fantaMantraManagerSha256": "f231dbfafa0d674f580eb2492e318c6b118e8090bc40160d2e56770107202ceb",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/device-badge-v434.js",
+      "zonaOrientaleSha256": "b345dcc067e5ffe993346e458aa99c762bb78218c24df7c19aa20d59fba3fd29",
+      "fantaMantraManagerSha256": "76486d86f299a1e45f7a41bddfb4d8c458b9910ffc922c11349ab5c0bcd87a05",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/emailjs.js",
+      "zonaOrientaleSha256": "51c94a427b66133461502867779aa636a8bad632fe7d43db07dd060be18d9ffc",
+      "fantaMantraManagerSha256": "c99b40a1494156159836b2fcb91675a3bc8f2602a7df3a531ad99c1cee78306e",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/firebase.js",
+      "zonaOrientaleSha256": "876a80a72bc289d4f1c7484709d89116805f4df48c069a2ddeb5ef60f6513fee",
+      "fantaMantraManagerSha256": "acea951f28366526770c8b9e17e5ac4b70b97e0240578aa35810365a108632cb",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/core/league-config-v443.js",
+      "zonaOrientaleSha256": "721a3944e86fab33843a31e12ee2499e34312c80bddcdf3e5ed7ab30fd3d7287",
+      "fantaMantraManagerSha256": "5afe6004b27be5fc5dccd3a0f3cbf2d265282a9476195effd70d30c17acdf4a0",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/core/section-registry-v405.js",
+      "zonaOrientaleSha256": "b07c0daec31993c5e7e91d7da435621837df1f6293414bad6cb0420ba30fcd9d",
+      "fantaMantraManagerSha256": "0b00f7c41e03380a7cd432ad3c191b4ad41b01a1faf6ef6653bed83f03505849",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/data/repository-v222.js",
+      "zonaOrientaleSha256": "ad4dd09e7889cd86a51ab4f245c77084d7d2e4a61e41e565a906b2477b69bb12",
+      "fantaMantraManagerSha256": "d4ef8aaecaffcb9cf4a9fd8dd3052df45142215c3d81d6b5c58b4a6769a9315e",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/dev/trade-notification-simulator-v254.js",
+      "zonaOrientaleSha256": "d516dc05b67e5e3cb4c90c313372d05d3182ea1294826da56c5f3e098c18eb9a",
+      "fantaMantraManagerSha256": "973d2d21948d043e3b5d9250c7b5c8ac565f1cd31a69c5bbeaa233f29538754a",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/dev/trade-notification-simulator-v255.js",
+      "zonaOrientaleSha256": "aa9b60a59a2eb5b4a3d5b392ad267bf1d85d6712ae2e8a8f3afaa66dd3eabe21",
+      "fantaMantraManagerSha256": "5302f3973322b3d7b4c7adc37f649dc1227c827f12d14d90da1a070396caa530",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/domain/news-share-v228.js",
+      "zonaOrientaleSha256": "526c9679ea9e5f1d353f1ee692c91d7f735a0ad449aaca0bcc1ea631ea18f9e7",
+      "fantaMantraManagerSha256": "d31f125029f2703344e19116cb5bdb416b60ddcab451f3eba325c8a8e5cecbbb",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/mobile/mobile-chrome-v220.js",
+      "zonaOrientaleSha256": "5d2ef2c46e487f49f7ff44806e3f6f781561091bb3a5985d5de3290c5e15b936",
+      "fantaMantraManagerSha256": "5b650ee19150c170613fadc70e05aaab9079558673dc926a18940b6f28926a43",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/mobile/mobile-scrollbar.js",
+      "zonaOrientaleSha256": "71ffa8d6792199a1f4dd0d08792ee4e076725928a57f0604a50bcf59b7e2b3a4",
+      "fantaMantraManagerSha256": "3d840fe77c9b7fd55b53399fce655c20a54a99a579ebd2f8bd59d78596dcb0b6",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/mobile/mobile-viewport.js",
+      "zonaOrientaleSha256": "533f03eb0b04c9fb632ddeb33737054a1a42d91f91d69074dd46b39a1903017e",
+      "fantaMantraManagerSha256": "5b371093124bfab59ed7aeb862f41aa05814e9247ca4be65c87e2c0cfcebfb89",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/refactor/admin-communication-generator-v210.js",
+      "zonaOrientaleSha256": "ddf2d54d2c58f1c18256a237f329810acff353be0747e96b4f67aaa19bfaa801",
+      "fantaMantraManagerSha256": "3649c25cd57a01b38ce21cb286f9784f8471bafd0a11ba8b451cf489e585d68c",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/refactor/admin-publication-workflow-v213.js",
+      "zonaOrientaleSha256": "48c76a6e8aca294da075348f4b620904d9fc39365d55eadd9aac125b18f68c6e",
+      "fantaMantraManagerSha256": "1ed0aaeea2cde8a3193d81f6089b106b64259a21df74dfcb74837d987aad9bb7",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/refactor/historical-stats-compare-v211.js",
+      "zonaOrientaleSha256": "bfcbf762421a75c1421a307ea774df5bf08a8e843d7385f944cff402423dbf98",
+      "fantaMantraManagerSha256": "2e650800786432ef7d28989409ec76a3ff6e2f29d68daf39558c18e7fb33e2b3",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/refactor/live-data-archive-v209.js",
+      "zonaOrientaleSha256": "359644a289b5b350fa1611bf19dd05630dd9716edc42db8c8996cc8469459310",
+      "fantaMantraManagerSha256": "4c03aaa03bacb27375eb1d9fe3a627d80672d347be3f3348a2d404c39a776694",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/refactor/president-dashboard-rosters-v212.js",
+      "zonaOrientaleSha256": "96de28e28f0af331b5c84f818ab81ab675601c2b19a0e6346f67a5655d5a2ffa",
+      "fantaMantraManagerSha256": "f73a7a0afafa5d5d1adc57b0cc49fee005d4238fd8199f6f712b46170a4ab90a",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/refactor/refactor-stability-v225.js",
+      "zonaOrientaleSha256": "ec4e7e02cc484b2d28fc1bb52fa38166e3391a758d1e5021eb4f7dda348dcd4a",
+      "fantaMantraManagerSha256": "66949ee91c0826c2420d516802682194c72dc0d7e531c2a24e053bab76a23d57",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/sections/archive-section-v405.js",
+      "zonaOrientaleSha256": "cdb9487aa04dc70dfd77540e6fa91acca6959fdb7a4dfdd6ed519cc21aac9a61",
+      "fantaMantraManagerSha256": "cb6e5c223192f54ff26d9cc0c01f4469c3e3f120ec6910e5324db327d37695b6",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/sections/bilanci-snapshot-section-v435.js",
+      "zonaOrientaleSha256": "ef306171fb5fccb7ec2f1674806c5a08272e288cda1573808f2e250ce07b5ed1",
+      "fantaMantraManagerSha256": "c4e46b69131ee4b6478554bff9b7ae6c457772f68adc2caf911a5813e163c1ce",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/sections/compare-section-v403.js",
+      "zonaOrientaleSha256": "b9a6a994b5965730cfd5553e472317755b76936d5841a264eb8414a76bcec392",
+      "fantaMantraManagerSha256": "dcb9499cd5c08a237c18a7d755cb6186d80900851ffab4fe744af9a4be84ede4",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/sections/regolamento-section-v402.js",
+      "zonaOrientaleSha256": "184130b5ea74a1f29024e768f28c81a20bc88f7a0ba6bdcd8c3bc6c43b66f260",
+      "fantaMantraManagerSha256": "f4a2de7c0089d1ff7e81df0b98b401185704657d1f62a3369d61f144ae38cfb2",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/sections/stats-section-v404.js",
+      "zonaOrientaleSha256": "59f9e46c24d55cb4f9e2d0147b6eff73d55e6a39e5b09f0b21422223ec605bf9",
+      "fantaMantraManagerSha256": "924ee16d4837b9c4f89b8d2e6cda47001d2af4129a6dd1ccca4d375de1d9cf57",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/trade-notification-simulator-v255.js",
+      "zonaOrientaleSha256": "aa9b60a59a2eb5b4a3d5b392ad267bf1d85d6712ae2e8a8f3afaa66dd3eabe21",
+      "fantaMantraManagerSha256": "5302f3973322b3d7b4c7adc37f649dc1227c827f12d14d90da1a070396caa530",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/utils/shared-helper-bridge-v341.js",
+      "zonaOrientaleSha256": "ef2ad5b06d0256573d85dcbe3bf747bb2830f875e45541ae544158dab878db11",
+      "fantaMantraManagerSha256": "480f8097623f11ae1bcd3d937f399b23ff76dcdb05d4491ea1ce3237148b3323",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/utils/shared-helpers-v294.js",
+      "zonaOrientaleSha256": "4b8c3a95caa0e55997ed552619b33bd73a605a0530c9120cba8e81198b4e00ab",
+      "fantaMantraManagerSha256": "5d5abec454eb8bc35de7380d1f32b05605c46f4df5bc5b8e04d8df2f21f03884",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/js/utils/shared-helpers-v295.js",
+      "zonaOrientaleSha256": "36999290ae1a8177248bbcf6abd6f99d5b17ffaf021067cfd4a66bb8584c9949",
+      "fantaMantraManagerSha256": "4cfcaa30e09f38708e8e7a05599c33d0fb00510da09f987c9537fabb47fd03ea",
+      "note": "non centralizzare automaticamente"
+    },
+    {
+      "path": "assets/styles.css",
+      "zonaOrientaleSha256": "c5732a7949f9c9b67b6c37d1395123bc9a5c0999d9a240b569a32e11589a711d",
+      "fantaMantraManagerSha256": "8b856602f04d183d37f6a1cc17b151e728ab88bd962f9ffcc5b0c56ac94eb0fc",
+      "note": "non centralizzare automaticamente"
+    }
+  ],
+  "onlyZonaOrientale": [],
+  "onlyFantaMantraManager": [
+    "assets/css/fantamantramanager-brand-v475.css",
+    "assets/css/refactor/fanta-petillo-admin-standard-setup-v467.css",
+    "assets/css/refactor/fanta-petillo-share-netlify-v466.css",
+    "assets/js/core/fanta-petillo-admin-bootstrap-v450.js",
+    "assets/js/core/fanta-petillo-admin-onboarding-v451.js",
+    "assets/js/core/fanta-petillo-admin-standard-setup-v467.js",
+    "assets/js/core/fanta-petillo-firebase-bootstrap-v449.js",
+    "assets/js/core/fanta-petillo-sandbox-v447.js",
+    "assets/js/core/fanta-petillo-sandbox-v448.js",
+    "assets/js/core/fanta-petillo-share-netlify-v466.js"
+  ],
+  "nextRecommendedStep": "V487: centralizzazione prudente dei soli CSS comuni oppure copia in fanta-engine/runtime con fallback, senza toccare JS moduli finche le dipendenze non sono mappate."
+}

@@ -1,0 +1,23 @@
+{
+  "version": "V509",
+  "purpose": "Migrazione graduale renderer Dashboard Presidente/Admin verso helper comuni fanta-engine.",
+  "module": "fanta-engine/js/ui/dashboard-renderer-helpers-v509.js",
+  "uses": {
+    "adminPanelShell": "renderAdminPanel delega a renderAdminCollapsiblePanelV509 in entrambe le leghe",
+    "presidentMetrics": "renderPresidentDashboardMetricV369 delega a renderPresidentDashboardMetricV509 in entrambe le leghe",
+    "presidentActionCard": "helper pronto per prossime patch senza forzare renderer locali"
+  },
+  "guardrails": [
+    "nessuna modifica Firebase",
+    "nessuna modifica EmailJS",
+    "nessuna modifica ruoli o policy Dashboard Presidente",
+    "nessuna cancellazione DOM",
+    "migration graduale, una funzione alla volta"
+  ],
+  "nextOverlays": [
+    "V510 report centralizzazione fanta-engine + checklist pre-merge",
+    "V511 configuratore guidato nuova lega",
+    "V512 hardening dashboard enforce",
+    "V513 adapter dati multi-season"
+  ]
+}

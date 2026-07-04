@@ -1,3 +1,28 @@
+## Aggiornamento V503 - Browser smoke tests
+
+La V503 aggiunge test browser Playwright comuni. Il prossimo passo consigliato e' V504, dashboard engine enforce opzionale, solo dopo test browser verdi.
+
+## V494 - Dopo il ciclo motore comune
+
+Dopo V494, le copie locali duplicate restano fallback. Le migliorie consigliate sono test branch deploy, audit dinamico browser, eventuale fix Proposte regolamento FantaMantraManager, adapter EmailJS/Firebase e template nuova lega.
+
+## V493 - Chiusura ciclo branch V480-V493
+
+La V493 prepara il branch al merge con checklist e audit finale. L'unica patch successiva prevista e' una eventuale V494 per pulizia copie locali duplicate, da fare solo se richiesta esplicitamente dopo test reali.
+
+## V492 - Stabilizzazione audit
+
+Dopo la centralizzazione CSS/JS selettiva V487-V491, V492 aggiunge un audit regressione runtime esteso. La prossima patch prevista e' V493 per consolidamento finale docs e checklist merge branch.
+
+
+## Aggiornamento V487 - CSS comuni nel motore centrale (24/06/2026)
+
+- Runtime avanzato a V487 con footer/cache-buster coerenti.
+- I CSS comuni identici vengono caricati dal motore centrale con fallback locale.
+- Le copie locali non sono cancellate.
+- Nessuna modifica a Firebase, EmailJS, Admin, Area Squadra, news, regolamenti, bilanci, listoni o calciomercato.
+- `FUNZIONALITA'.md` non e' stato modificato.
+
 ## Roadmap aggiornata dopo V448
 
 - V448 ha validato il clone sandbox `FantaPetilloMantraManager` con audit dedicato e guard runtime piu' esplicito.
@@ -1281,3 +1306,80 @@ Dopo la favicon del clone, il prossimo passo consigliato resta il setup dati rea
 ## Nota V453 regolamento FantaPetillo
 
 La base multi-lega include ora una sezione Regolamento specifica per `FantaPetilloMantraManager` con PDF pubblico scaricabile. I prossimi passi restano: completare dati reali, creare `teamUsers`, verificare snapshot pubblici e solo dopo sbloccare Area Squadra.
+
+## V489 - Motore comune JS classici
+
+Centralizzati solo script classici autonomi. Prossimo passo: adapter config/data paths prima di muovere moduli JS.
+
+## V490 - Adapter path dati motore comune
+
+Introdotto adapter comune per dataPaths con fallback locale. Prossimo passo: centralizzazione selettiva dei moduli JS sicuri.
+
+## V491 - Moduli JS sicuri centralizzati
+
+Centralizzati 12 moduli JS comuni, senza cancellare copie locali. Prossimo passo: audit regressione runtime esteso V492.
+
+
+## V495 - Cleanup nested static ZonaOrientale
+
+- Dismessa la copia annidata `static/zonaorientale/static` tramite `git rm` esplicito dopo overlay.
+- Audit V495 aggiornati per non dipendere più dalla copia annidata.
+- Redirect Netlify di sicurezza `/zonaorientale/static/* -> /zonaorientale/:splat`.
+
+## Aggiornamento V500 - Dashboard cards engine
+
+La V500 aggiunge il motore comune `dashboard-cards-engine-v500.js` in `static/fanta-engine/js/ui/`.
+
+Per ora il motore e' in modalita' `observe-first`: legge il registry funzionalita' V497, marca le card esistenti e prepara il futuro governo centralizzato delle dashboard, senza cambiare il rendering o la visibilita' effettiva.
+
+Prossime tappe: V501 Tool engine comune, V502 Template nuova lega, V503 Test browser Playwright.
+
+## Aggiornamento V502 - Template nuova lega
+
+Aggiunti `static/_league-template`, `create-league-v502.mjs` e audit dedicato. Il template non modifica il runtime delle leghe esistenti e richiede revisione manuale prima di qualsiasi go-live.
+
+
+## Aggiornamento V504
+
+Dashboard cards engine comune in modalita' `safe-enforce`: il registry V497 governa la visibilita' delle card role-gated senza cancellare DOM, dati o fallback locali.
+
+## Aggiornamento V505
+
+V505 ha introdotto i dashboard renderer helpers comuni in `static/fanta-engine/js/ui/dashboard-renderer-helpers-v505.js` e ha migrato la shell `renderAdminPanel` verso il motore comune, preservando logiche locali, Firebase, EmailJS e fallback.
+
+
+
+## Aggiornamento V506 - Tool/form validators comuni
+
+La V506 aggiunge validatori comuni puri in `static/fanta-engine/js/core/form-validators-v506.js` e collega il Sorteggio giornate al motore `matchday-draw-engine-v506.js`, mantenendo fallback locale V473. Prossimi overlay previsti: V507 template hardening, V508 Playwright hardening, V509 renderer dashboard graduali, V510 report pre-merge.
+
+
+## V507 - League template hardening
+
+- Aggiunto generatore nuova lega V507 con controlli piu' severi.
+- Aggiunto validatore config V507 e checklist go-live.
+- Netlify resta manuale: nessuna modifica automatica ai redirect.
+- Nessun impatto su Firebase, EmailJS o runtime delle leghe esistenti.
+
+
+## V508 - Playwright hardening
+
+- Aggiunto smoke test browser V508 con mobile/desktop.
+- Report JSON/Markdown locale.
+- Controlli su footer, brand, asset, navigazione e riferimenti Listone/Calciomercato.
+- Nessuna mutazione Firebase/EmailJS/dati.
+
+
+## V510 - Navigation actions fix
+
+Aggiunto motore comune `fanta-engine/js/ui/navigation-actions-v510.js` per intercettare in delega pulsanti/link `[data-page-link]` e `[data-v42-page-link]`. Corregge i pulsanti dinamici che non portavano sempre alla sezione relativa. Roadmap aggiornata anche in `docs/OVERLAY_ROADMAP.md`.
+
+
+## Aggiornamento V518
+
+Hotfix runtime completato. I prossimi overlay pianificati ripartono da V518 come indicato in `docs/OVERLAY_ROADMAP.md`.
+
+
+## Aggiornamento V518
+
+Overlay whole-site di recovery runtime: cache-buster V518, alias autoload V518 e controllo esplicito contro residui `league-config-v443.js?v=512` su entrambe le leghe. `FUNZIONALITA'.md` non modificato.

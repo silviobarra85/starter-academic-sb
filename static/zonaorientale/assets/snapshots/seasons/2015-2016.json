@@ -1,72 +1,72 @@
 {
   "id": "2015-2016",
   "seasonId": "2015-2016",
-  "generatedAt": "2026-06-11T07:32:23.267Z",
+  "generatedAt": "2026-06-25T14:58:39.783Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "notes": "",
-      "isCurrent": true,
-      "logo": "./assets/logos/acmilan.png",
+      "canonicalName": "Ac Milan",
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
       },
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "canonicalName": "Ac Milan",
+      "notes": "",
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
-      }
+      },
+      "logo": "./assets/logos/acmilan.png",
+      "isCurrent": true
     },
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "canonicalName": "Afc Severgas Baronissi",
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
+      "logo": "./assets/logos/baronissi.png",
       "notes": "",
       "isCurrent": true,
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
+      "canonicalName": "Afc Severgas Baronissi",
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
-      "logo": "./assets/logos/baronissi.png"
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ]
     },
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
-      "canonicalName": "As Paperopoli",
-      "createdAt": {
-        "seconds": 1778833666,
-        "nanoseconds": 871000000
-      },
-      "notes": "",
-      "isCurrent": true,
-      "logo": "./assets/logos/paperopoli.png",
       "updatedAt": {
         "seconds": 1778954349,
         "nanoseconds": 563000000
       },
       "currentPresidentIds": [
         "JaSqcnTZUYHtjHXghADS"
-      ]
+      ],
+      "canonicalName": "As Paperopoli",
+      "isCurrent": true,
+      "logo": "./assets/logos/paperopoli.png",
+      "createdAt": {
+        "seconds": 1778833666,
+        "nanoseconds": 871000000
+      },
+      "notes": ""
     },
     {
       "id": "jy2dst1rXfQv6eLW89DS",
-      "canonicalName": "Atletico Cadaveri",
+      "logo": "",
       "createdAt": {
         "seconds": 1778833933,
         "nanoseconds": 281000000
       },
       "notes": "",
       "isCurrent": false,
-      "logo": "",
+      "canonicalName": "Atletico Cadaveri",
       "updatedAt": {
         "seconds": 1778833933,
         "nanoseconds": 281000000
@@ -77,22 +77,27 @@
     },
     {
       "id": "team_002",
-      "canonicalName": "Beetlejuice",
-      "notes": "",
-      "isCurrent": true,
       "currentPresidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ],
-      "logo": "./assets/logos/beetlejuice.png",
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
-      }
+      },
+      "canonicalName": "Beetlejuice",
+      "isCurrent": true,
+      "notes": "",
+      "logo": "./assets/logos/beetlejuice.png"
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "notes": "",
       "isCurrent": true,
+      "notes": "",
+      "logo": "./assets/logos/due_fratelli.png",
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      },
       "currentPresidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
@@ -100,175 +105,170 @@
         "seconds": 1779377884,
         "nanoseconds": 912000000
       },
-      "logo": "./assets/logos/due_fratelli.png",
-      "canonicalName": "FC DueFratelli2005",
-      "createdAt": {
-        "seconds": 1778833681,
-        "nanoseconds": 932000000
-      }
+      "canonicalName": "FC DueFratelli2005"
     },
     {
       "id": "GDisIDfbuSeLVm64PSR3",
+      "isCurrent": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778833581,
         "nanoseconds": 658000000
       },
-      "canonicalName": "Olympic Salerno FC",
+      "logo": "./assets/logos/olympic_salerno.png",
       "currentPresidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
       ],
-      "logo": "./assets/logos/olympic_salerno.png",
       "updatedAt": {
         "seconds": 1779377921,
         "nanoseconds": 533000000
       },
-      "isCurrent": true,
-      "notes": ""
+      "canonicalName": "Olympic Salerno FC"
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
       "logo": "",
+      "createdAt": {
+        "seconds": 1778834101,
+        "nanoseconds": 304000000
+      },
+      "notes": "",
+      "isCurrent": false,
+      "canonicalName": "Real Gremo",
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
       "currentPresidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
-      ],
-      "notes": "",
-      "isCurrent": false,
-      "createdAt": {
-        "seconds": 1778834101,
-        "nanoseconds": 304000000
-      },
-      "canonicalName": "Real Gremo"
+      ]
     },
     {
       "id": "FT1tqdqI18iUh3l1lakQ",
       "currentPresidentIds": [
         "2yHHP653ChQrYxnQHMk3"
       ],
-      "logo": "./assets/logos/real_mappine.png",
       "updatedAt": {
         "seconds": 1778954461,
         "nanoseconds": 197000000
       },
+      "canonicalName": "real mappine",
       "isCurrent": true,
       "notes": "",
       "createdAt": {
         "seconds": 1778833596,
         "nanoseconds": 670000000
       },
-      "canonicalName": "real mappine"
+      "logo": "./assets/logos/real_mappine.png"
     },
     {
       "id": "ULwTIMBi3dyYrq0SoEsx",
+      "isCurrent": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778833556,
         "nanoseconds": 33000000
       },
-      "canonicalName": "River Plaid",
       "logo": "./assets/logos/river_plaid.png",
-      "updatedAt": {
-        "seconds": 1778954524,
-        "nanoseconds": 667000000
-      },
       "currentPresidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
       ],
-      "notes": "",
-      "isCurrent": true
+      "updatedAt": {
+        "seconds": 1778954524,
+        "nanoseconds": 667000000
+      },
+      "canonicalName": "River Plaid"
     }
   ],
   "presidents": [
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
-      "name": "Bartolomeo Greco",
+      "updatedAt": {
+        "seconds": 1778833068,
+        "nanoseconds": 684000000
+      },
       "isActive": false,
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778833068,
-        "nanoseconds": 684000000
-      },
       "createdAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
-      }
-    },
-    {
-      "id": "6UBSv1GUTCxSNrRb8dZr",
-      "name": "Claudio D'Isanto",
-      "isActive": true,
-      "createdAt": {
-        "seconds": 1778832834,
-        "nanoseconds": 979000000
       },
-      "updatedAt": {
-        "seconds": 1778832834,
-        "nanoseconds": 979000000
-      },
+      "name": "Bartolomeo Greco",
       "notes": ""
     },
     {
-      "id": "f37y6IZln56uPDZqKg4N",
-      "createdAt": {
-        "seconds": 1778833076,
-        "nanoseconds": 991000000
+      "id": "6UBSv1GUTCxSNrRb8dZr",
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
       },
+      "name": "Claudio D'Isanto",
+      "notes": "",
+      "createdAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      }
+    },
+    {
+      "id": "f37y6IZln56uPDZqKg4N",
       "updatedAt": {
         "seconds": 1778833076,
         "nanoseconds": 991000000
       },
+      "isActive": false,
       "notes": "",
       "name": "Emanuele Schiavone",
-      "isActive": false
+      "createdAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      }
     },
     {
       "id": "cbA5rKY8ItVmgRqhUasz",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
+      "isActive": true,
+      "name": "Fabio Gatto",
+      "notes": "",
       "createdAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
-      },
-      "name": "Fabio Gatto",
-      "isActive": true
+      }
     },
     {
       "id": "7KbTM1lnzIThNWcF0NKL",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778832829,
-        "nanoseconds": 62000000
-      },
       "createdAt": {
         "seconds": 1778832829,
         "nanoseconds": 62000000
       },
+      "notes": "",
       "name": "Gaetano Alfinito",
+      "updatedAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
       "isActive": true
     },
     {
       "id": "JaSqcnTZUYHtjHXghADS",
-      "name": "Gaetano Caparrotti",
+      "updatedAt": {
+        "seconds": 1778832849,
+        "nanoseconds": 508000000
+      },
       "isActive": true,
       "createdAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
-      "updatedAt": {
-        "seconds": 1778832849,
-        "nanoseconds": 508000000
-      },
+      "name": "Gaetano Caparrotti",
       "notes": ""
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "notes": "",
+      "isActive": true,
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
@@ -277,53 +277,55 @@
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "name": "Gianluca Caparrotti",
-      "isActive": true
+      "notes": "",
+      "name": "Gianluca Caparrotti"
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
-      "updatedAt": {
-        "seconds": 1778832889,
-        "nanoseconds": 760000000
-      },
       "notes": "",
+      "name": "Giosuè Vicinanza",
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
-      "name": "Giosuè Vicinanza",
-      "isActive": true
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      }
     },
     {
       "id": "2yHHP653ChQrYxnQHMk3",
-      "name": "Mario Guariglia",
       "isActive": true,
-      "createdAt": {
-        "seconds": 1778832813,
-        "nanoseconds": 937000000
-      },
       "updatedAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
       },
-      "notes": ""
+      "notes": "",
+      "name": "Mario Guariglia",
+      "createdAt": {
+        "seconds": 1778832813,
+        "nanoseconds": 937000000
+      }
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
-      "name": "Michele D'Isanto",
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
       "isActive": true,
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
-      "notes": ""
+      "notes": "",
+      "name": "Michele D'Isanto"
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
+      "notes": "",
+      "name": "Zio Dino",
       "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
@@ -332,114 +334,112 @@
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
-      "notes": "",
-      "name": "Zio Dino",
       "isActive": true
     }
   ],
   "seasonTeams": [
     {
       "id": "2015-2016_wmdzhrrpup8lhvsdwm7w",
+      "presidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
       "createdAt": {
         "seconds": 1778852815,
         "nanoseconds": 491000000
       },
-      "presidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
+      "seasonId": "2015-2016",
       "logo": "",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "name": "Ac Milan",
       "updatedAt": {
         "seconds": 1778852815,
         "nanoseconds": 491000000
       },
-      "name": "Ac Milan",
-      "seasonId": "2015-2016",
-      "teamId": "WMdzHRRpUP8lHvsdwM7W",
       "isHistorical": false
     },
     {
       "id": "2015-2016_7bx0cegbxtf4fwh6t0pi",
-      "logo": "",
+      "isHistorical": false,
       "updatedAt": {
+        "seconds": 1778852811,
+        "nanoseconds": 563000000
+      },
+      "name": "As Paperopoli",
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "logo": "",
+      "seasonId": "2015-2016",
+      "createdAt": {
         "seconds": 1778852811,
         "nanoseconds": 563000000
       },
       "presidentIds": [
         "JaSqcnTZUYHtjHXghADS"
-      ],
-      "createdAt": {
-        "seconds": 1778852811,
-        "nanoseconds": 563000000
-      },
-      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
-      "isHistorical": false,
-      "name": "As Paperopoli",
-      "seasonId": "2015-2016"
+      ]
     },
     {
       "id": "2015-2016_jy2dst1rxfqv6elw89ds",
-      "createdAt": {
-        "seconds": 1778852797,
-        "nanoseconds": 440000000
-      },
       "presidentIds": [
         "f37y6IZln56uPDZqKg4N"
       ],
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778852797,
         "nanoseconds": 440000000
       },
       "logo": "",
+      "teamId": "jy2dst1rXfQv6eLW89DS",
       "seasonId": "2015-2016",
       "name": "Atletico Cadaveri",
-      "teamId": "jy2dst1rXfQv6eLW89DS",
+      "updatedAt": {
+        "seconds": 1778852797,
+        "nanoseconds": 440000000
+      },
       "isHistorical": false
     },
     {
       "id": "2015-2016_team-002",
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "teamId": "team_002",
+      "logo": "",
+      "seasonId": "2015-2016",
       "createdAt": {
         "seconds": 1778852837,
         "nanoseconds": 374000000
       },
-      "presidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ],
-      "logo": "",
+      "name": "Beetlejuice",
       "updatedAt": {
         "seconds": 1778852837,
         "nanoseconds": 374000000
       },
-      "seasonId": "2015-2016",
-      "name": "Beetlejuice",
-      "isHistorical": false,
-      "teamId": "team_002"
+      "isHistorical": false
     },
     {
       "id": "2015-2016_y3vmcdwvut0u1tlsg4qc",
-      "updatedAt": {
-        "seconds": 1779379918,
-        "nanoseconds": 556000000
-      },
-      "logo": "",
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
+      "name": "FC DueFratelli2005",
       "createdAt": {
         "seconds": 1778852828,
         "nanoseconds": 371000000
       },
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "isHistorical": false,
       "seasonId": "2015-2016",
-      "name": "FC DueFratelli2005"
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "logo": "",
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "isHistorical": false,
+      "updatedAt": {
+        "seconds": 1779379918,
+        "nanoseconds": 556000000
+      }
     },
     {
       "id": "2015-2016_gdisidfbuselvm64psr3",
-      "logo": "",
       "updatedAt": {
         "seconds": 1779379925,
         "nanoseconds": 271000000
       },
+      "isHistorical": false,
       "presidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
       ],
@@ -447,174 +447,174 @@
         "seconds": 1778852824,
         "nanoseconds": 506000000
       },
-      "teamId": "GDisIDfbuSeLVm64PSR3",
-      "isHistorical": false,
       "seasonId": "2015-2016",
+      "teamId": "GDisIDfbuSeLVm64PSR3",
+      "logo": "",
       "name": "Olympic Salerno FC"
     },
     {
       "id": "2015-2016_fyqviavocqdpmikgws2f",
-      "createdAt": {
-        "seconds": 1778852833,
-        "nanoseconds": 471000000
-      },
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778852833,
-        "nanoseconds": 471000000
-      },
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
+      "createdAt": {
+        "seconds": 1778852833,
+        "nanoseconds": 471000000
+      },
+      "logo": "",
       "teamId": "fYQViaVoCqDPmikgwS2F",
-      "isHistorical": false,
+      "seasonId": "2015-2016",
       "name": "Real Gremo",
-      "seasonId": "2015-2016"
+      "updatedAt": {
+        "seconds": 1778852833,
+        "nanoseconds": 471000000
+      },
+      "isHistorical": false
     },
     {
       "id": "2015-2016_ft1tqdqi18iuh3l1lakq",
-      "teamId": "FT1tqdqI18iUh3l1lakQ",
-      "isHistorical": false,
-      "seasonId": "2015-2016",
-      "name": "real mappine",
       "createdAt": {
         "seconds": 1778852800,
         "nanoseconds": 886000000
       },
+      "seasonId": "2015-2016",
+      "teamId": "FT1tqdqI18iUh3l1lakQ",
+      "logo": "",
+      "name": "real mappine",
+      "presidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778852800,
         "nanoseconds": 886000000
-      },
-      "logo": "",
-      "presidentIds": [
-        "2yHHP653ChQrYxnQHMk3"
-      ]
+      }
     },
     {
       "id": "2015-2016_ulwtimbi3dyyrq0soesx",
-      "seasonId": "2015-2016",
       "name": "River Plaid",
       "teamId": "ULwTIMBi3dyYrq0SoEsx",
-      "isHistorical": false,
+      "logo": "",
+      "seasonId": "2015-2016",
+      "createdAt": {
+        "seconds": 1778852806,
+        "nanoseconds": 82000000
+      },
       "presidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
       ],
+      "isHistorical": false,
       "updatedAt": {
-        "seconds": 1778852806,
-        "nanoseconds": 82000000
-      },
-      "logo": "",
-      "createdAt": {
         "seconds": 1778852806,
         "nanoseconds": 82000000
       }
     },
     {
       "id": "2015-2016_kbjri4liu4iuq6ajfnml",
-      "seasonId": "2015-2016",
-      "name": "Us Baronissi Cavaliers",
-      "isHistorical": false,
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
-      "createdAt": {
-        "seconds": 1778852820,
-        "nanoseconds": 304000000
-      },
-      "presidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
       "updatedAt": {
         "seconds": 1779196038,
         "nanoseconds": 99000000
       },
-      "logo": ""
+      "isHistorical": false,
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "createdAt": {
+        "seconds": 1778852820,
+        "nanoseconds": 304000000
+      },
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "logo": "",
+      "seasonId": "2015-2016",
+      "name": "Us Baronissi Cavaliers"
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2015-2016_campionato",
-      "seasonId": "2015-2016",
-      "name": "Campionato",
-      "format": "CLASSIFICA",
-      "status": "CONCLUSA",
-      "notes": "",
-      "type": "CAMPIONATO",
       "knockoutPhases": [],
-      "updatedAt": {
-        "seconds": 1778852848,
-        "nanoseconds": 375000000
-      },
+      "name": "Campionato",
+      "seasonId": "2015-2016",
+      "status": "CONCLUSA",
       "createdAt": {
         "seconds": 1778852844,
         "nanoseconds": 489000000
+      },
+      "format": "CLASSIFICA",
+      "notes": "",
+      "type": "CAMPIONATO",
+      "updatedAt": {
+        "seconds": 1778852848,
+        "nanoseconds": 375000000
       }
     },
     {
       "id": "2015-2016_champions-league",
+      "type": "CHAMPIONS_LEAGUE",
       "updatedAt": {
         "seconds": 1778852851,
         "nanoseconds": 686000000
       },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
+      "status": "CONCLUSA",
+      "seasonId": "2015-2016",
       "createdAt": {
         "seconds": 1778852844,
         "nanoseconds": 588000000
       },
-      "type": "CHAMPIONS_LEAGUE",
       "notes": "",
-      "seasonId": "2015-2016",
-      "name": "Champion's League",
       "format": "GIRONI_KO",
-      "status": "CONCLUSA"
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "name": "Champion's League"
     },
     {
       "id": "2015-2016_coppa-italia",
-      "type": "COPPA_ITALIA",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "name": "Coppa Italia",
+      "status": "CONCLUSA",
+      "seasonId": "2015-2016",
       "createdAt": {
         "seconds": 1778852844,
         "nanoseconds": 631000000
       },
+      "notes": "",
+      "format": "GIRONI_KO",
+      "type": "COPPA_ITALIA",
+      "updatedAt": {
+        "seconds": 1778852866,
+        "nanoseconds": 856000000
+      }
+    },
+    {
+      "id": "2015-2016_playoff",
+      "name": "Playoff",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "updatedAt": {
-        "seconds": 1778852866,
-        "nanoseconds": 856000000
-      },
-      "format": "GIRONI_KO",
-      "status": "CONCLUSA",
-      "seasonId": "2015-2016",
-      "name": "Coppa Italia",
-      "notes": ""
-    },
-    {
-      "id": "2015-2016_playoff",
       "updatedAt": {
         "seconds": 1778852912,
         "nanoseconds": 735000000
       },
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
+      "type": "PLAYOFF",
+      "seasonId": "2015-2016",
+      "status": "NON_DISPUTATA",
       "createdAt": {
         "seconds": 1778852844,
         "nanoseconds": 658000000
       },
-      "type": "PLAYOFF",
-      "notes": "",
-      "name": "Playoff",
-      "seasonId": "2015-2016",
-      "status": "NON_DISPUTATA",
-      "format": "GIRONI_KO"
+      "format": "GIRONI_KO",
+      "notes": ""
     }
   ],
   "competitionMatches": [],
@@ -625,125 +625,125 @@
         "seconds": 1778852887,
         "nanoseconds": 523000000
       },
-      "position": 1,
+      "seasonId": "2015-2016",
+      "competitionId": "2015-2016_campionato",
       "updatedAt": {
         "seconds": 1778852887,
         "nanoseconds": 523000000
       },
       "fantapoints": null,
       "played": null,
-      "competitionId": "2015-2016_campionato",
-      "seasonTeamId": "2015-2016_jy2dst1rxfqv6elw89ds",
+      "position": 1,
       "points": null,
-      "seasonId": "2015-2016"
+      "seasonTeamId": "2015-2016_jy2dst1rxfqv6elw89ds"
     },
     {
       "id": "2015-2016-campionato_2",
-      "played": null,
-      "competitionId": "2015-2016_campionato",
-      "seasonTeamId": "2015-2016_ft1tqdqi18iuh3l1lakq",
-      "seasonId": "2015-2016",
-      "points": null,
       "position": 2,
-      "createdAt": {
-        "seconds": 1778852887,
-        "nanoseconds": 550000000
-      },
+      "played": null,
+      "fantapoints": null,
       "updatedAt": {
         "seconds": 1778852887,
         "nanoseconds": 550000000
       },
-      "fantapoints": null
+      "competitionId": "2015-2016_campionato",
+      "seasonId": "2015-2016",
+      "createdAt": {
+        "seconds": 1778852887,
+        "nanoseconds": 550000000
+      },
+      "seasonTeamId": "2015-2016_ft1tqdqi18iuh3l1lakq",
+      "points": null
     },
     {
       "id": "2015-2016-campionato_3",
-      "seasonId": "2015-2016",
       "points": null,
-      "competitionId": "2015-2016_campionato",
       "seasonTeamId": "2015-2016_ulwtimbi3dyyrq0soesx",
+      "createdAt": {
+        "seconds": 1778852887,
+        "nanoseconds": 587000000
+      },
+      "seasonId": "2015-2016",
+      "position": 3,
       "played": null,
       "fantapoints": null,
       "updatedAt": {
         "seconds": 1778852887,
         "nanoseconds": 587000000
       },
-      "position": 3,
-      "createdAt": {
-        "seconds": 1778852887,
-        "nanoseconds": 587000000
-      }
+      "competitionId": "2015-2016_campionato"
     },
     {
       "id": "2015-2016-champions-league_1",
-      "fantapoints": null,
+      "points": null,
+      "seasonTeamId": "2015-2016_fyqviavocqdpmikgws2f",
+      "seasonId": "2015-2016",
       "createdAt": {
         "seconds": 1778852960,
         "nanoseconds": 775000000
       },
-      "position": 1,
+      "competitionId": "2015-2016_champions-league",
       "updatedAt": {
         "seconds": 1778852960,
         "nanoseconds": 775000000
       },
-      "competitionId": "2015-2016_champions-league",
-      "seasonTeamId": "2015-2016_fyqviavocqdpmikgws2f",
-      "points": null,
-      "seasonId": "2015-2016",
-      "played": null
+      "fantapoints": null,
+      "played": null,
+      "position": 1
     },
     {
       "id": "2015-2016-champions-league_2",
-      "played": null,
-      "seasonTeamId": "2015-2016_wmdzhrrpup8lhvsdwm7w",
-      "competitionId": "2015-2016_champions-league",
-      "seasonId": "2015-2016",
-      "points": null,
-      "position": 2,
       "createdAt": {
         "seconds": 1778852960,
         "nanoseconds": 842000000
       },
+      "seasonId": "2015-2016",
+      "played": null,
+      "position": 2,
       "updatedAt": {
         "seconds": 1778852960,
         "nanoseconds": 842000000
       },
-      "fantapoints": null
+      "competitionId": "2015-2016_champions-league",
+      "fantapoints": null,
+      "points": null,
+      "seasonTeamId": "2015-2016_wmdzhrrpup8lhvsdwm7w"
     },
     {
       "id": "2015-2016-coppa-italia_1",
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778852972,
-        "nanoseconds": 693000000
-      },
-      "position": 1,
+      "seasonId": "2015-2016",
       "createdAt": {
         "seconds": 1778852972,
         "nanoseconds": 693000000
       },
-      "seasonId": "2015-2016",
-      "points": null,
-      "seasonTeamId": "2015-2016_jy2dst1rxfqv6elw89ds",
       "competitionId": "2015-2016_coppa-italia",
-      "played": null
+      "updatedAt": {
+        "seconds": 1778852972,
+        "nanoseconds": 693000000
+      },
+      "fantapoints": null,
+      "played": null,
+      "position": 1,
+      "points": null,
+      "seasonTeamId": "2015-2016_jy2dst1rxfqv6elw89ds"
     },
     {
       "id": "2015-2016-coppa-italia_2",
-      "updatedAt": {
-        "seconds": 1778852972,
-        "nanoseconds": 861000000
-      },
+      "points": null,
+      "seasonTeamId": "2015-2016_ulwtimbi3dyyrq0soesx",
+      "seasonId": "2015-2016",
       "createdAt": {
         "seconds": 1778852972,
         "nanoseconds": 861000000
       },
-      "position": 2,
-      "fantapoints": null,
       "played": null,
-      "points": null,
-      "seasonId": "2015-2016",
+      "position": 2,
+      "updatedAt": {
+        "seconds": 1778852972,
+        "nanoseconds": 861000000
+      },
       "competitionId": "2015-2016_coppa-italia",
-      "seasonTeamId": "2015-2016_ulwtimbi3dyyrq0soesx"
+      "fantapoints": null
     }
   ],
   "rosterEntries": [

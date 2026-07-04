@@ -1,0 +1,749 @@
+{
+  "version": 484,
+  "generatedAt": "2026-06-24",
+  "scope": "observational inventory only: no runtime paths were moved in V484",
+  "leagues": [
+    "zonaorientale",
+    "fantapetillomantramanager"
+  ],
+  "candidateRoots": [
+    "assets/listoni",
+    "assets/calciomercato",
+    "assets/js/calciomercato",
+    "assets/js/admin/listone-converter.js",
+    "assets/js/domain/listone.js",
+    "assets/css/refactor/listone.css",
+    "assets/css/refactor/calciomercato.css"
+  ],
+  "totals": {
+    "candidateFiles": 42,
+    "identicalFiles": 42,
+    "differentOrMissingFiles": 0
+  },
+  "recommendation": {
+    "canCentralizeInNextPatch": true,
+    "suggestedNextStep": "V485: add common data paths with fallback, without deleting league-local copies",
+    "doNotDeleteLeagueLocalCopiesYet": true,
+    "highRiskNotes": [
+      "Listone JSON files may include rosterSourceFile and fantasyRoster fields; centralizing is safe only if those fields are intentionally shared by both leagues.",
+      "Move runtime paths only after loader fallback has been added and audited.",
+      "Keep ZonaOrientale nested static copy unchanged until its purpose is clarified."
+    ]
+  },
+  "files": [
+    {
+      "path": "assets/calciomercato/archive/2026-06-01.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "09fe180de20673e256f841124b6aaaba041135a189a047622a58a041c0fcfcf1",
+        "fantapetillomantramanager": "09fe180de20673e256f841124b6aaaba041135a189a047622a58a041c0fcfcf1"
+      },
+      "sizes": {
+        "zonaorientale": 122274,
+        "fantapetillomantramanager": 122274
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-02.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "b512a5918928f1629de4364b69204062aacf966cdbdedc2e34e3ff929902e972",
+        "fantapetillomantramanager": "b512a5918928f1629de4364b69204062aacf966cdbdedc2e34e3ff929902e972"
+      },
+      "sizes": {
+        "zonaorientale": 214033,
+        "fantapetillomantramanager": 214033
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-03.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "b24448d1cc563652788a63816a37ce082bf202b9acaaf80373043c9270534019",
+        "fantapetillomantramanager": "b24448d1cc563652788a63816a37ce082bf202b9acaaf80373043c9270534019"
+      },
+      "sizes": {
+        "zonaorientale": 321641,
+        "fantapetillomantramanager": 321641
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-04.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "9852d9f93eda70134d04416e0782736edfdad84082ac6ac68b36eb3f54542a3a",
+        "fantapetillomantramanager": "9852d9f93eda70134d04416e0782736edfdad84082ac6ac68b36eb3f54542a3a"
+      },
+      "sizes": {
+        "zonaorientale": 465855,
+        "fantapetillomantramanager": 465855
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-05.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "8e80f6f6950de7d8bd6cef1887ef8bbd62dab2ede054f3e77a7c990254edb7ea",
+        "fantapetillomantramanager": "8e80f6f6950de7d8bd6cef1887ef8bbd62dab2ede054f3e77a7c990254edb7ea"
+      },
+      "sizes": {
+        "zonaorientale": 147981,
+        "fantapetillomantramanager": 147981
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-06.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "d47da3b8037172979d79f41fcd904e06510fb0d85b5c7753f4e140ccd249a59b",
+        "fantapetillomantramanager": "d47da3b8037172979d79f41fcd904e06510fb0d85b5c7753f4e140ccd249a59b"
+      },
+      "sizes": {
+        "zonaorientale": 114632,
+        "fantapetillomantramanager": 114632
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-07.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "e2dd9bef471a30da6a5ddc6ce25986d56dd344eeb100013a9a6cd196461469a2",
+        "fantapetillomantramanager": "e2dd9bef471a30da6a5ddc6ce25986d56dd344eeb100013a9a6cd196461469a2"
+      },
+      "sizes": {
+        "zonaorientale": 134834,
+        "fantapetillomantramanager": 134834
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-08.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "916b67c60ab66b2ae240dcaadb6b64bc9a174cbbe37b9fc4ec33aa1f361c6fda",
+        "fantapetillomantramanager": "916b67c60ab66b2ae240dcaadb6b64bc9a174cbbe37b9fc4ec33aa1f361c6fda"
+      },
+      "sizes": {
+        "zonaorientale": 328959,
+        "fantapetillomantramanager": 328959
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-09.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "430b23d0cbeb6288ef9b7191d7f12bfcab2ee2b92e3bf91b55a2e1a702b64bcf",
+        "fantapetillomantramanager": "430b23d0cbeb6288ef9b7191d7f12bfcab2ee2b92e3bf91b55a2e1a702b64bcf"
+      },
+      "sizes": {
+        "zonaorientale": 384927,
+        "fantapetillomantramanager": 384927
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-10.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "156044b3f9e52e7ddcebe19f5a275a9fccb6e24a9cb510514801071e087c764b",
+        "fantapetillomantramanager": "156044b3f9e52e7ddcebe19f5a275a9fccb6e24a9cb510514801071e087c764b"
+      },
+      "sizes": {
+        "zonaorientale": 230331,
+        "fantapetillomantramanager": 230331
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-11.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "2618fb044182ad5b50935510071412ca7f10f77d4bc4656c874cb44216e078b2",
+        "fantapetillomantramanager": "2618fb044182ad5b50935510071412ca7f10f77d4bc4656c874cb44216e078b2"
+      },
+      "sizes": {
+        "zonaorientale": 366254,
+        "fantapetillomantramanager": 366254
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-12.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "7ad66ee388dd1fcd73808d72bf354f629e81b145a5bb342929ac8e1d03a8bfc0",
+        "fantapetillomantramanager": "7ad66ee388dd1fcd73808d72bf354f629e81b145a5bb342929ac8e1d03a8bfc0"
+      },
+      "sizes": {
+        "zonaorientale": 135608,
+        "fantapetillomantramanager": 135608
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-13.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "218f0ae4c482044e271893537c5aad3e25b2052185eb0ff480da23746bef1599",
+        "fantapetillomantramanager": "218f0ae4c482044e271893537c5aad3e25b2052185eb0ff480da23746bef1599"
+      },
+      "sizes": {
+        "zonaorientale": 167336,
+        "fantapetillomantramanager": 167336
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-14.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "f92f574206d2ae00105a5baa1733ff582a558caaaee79b15585caf5b603ec4d9",
+        "fantapetillomantramanager": "f92f574206d2ae00105a5baa1733ff582a558caaaee79b15585caf5b603ec4d9"
+      },
+      "sizes": {
+        "zonaorientale": 305563,
+        "fantapetillomantramanager": 305563
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-15.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "fa8d6bdd1177ef505896b7d98ee029fee0e199ed9b47a07eaf8cb093ea5cc220",
+        "fantapetillomantramanager": "fa8d6bdd1177ef505896b7d98ee029fee0e199ed9b47a07eaf8cb093ea5cc220"
+      },
+      "sizes": {
+        "zonaorientale": 51396,
+        "fantapetillomantramanager": 51396
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-16.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "988126b75df47a2db54732e9a2c9369ce25bdf87272b6d2bf9a47fe42d54ef73",
+        "fantapetillomantramanager": "988126b75df47a2db54732e9a2c9369ce25bdf87272b6d2bf9a47fe42d54ef73"
+      },
+      "sizes": {
+        "zonaorientale": 268188,
+        "fantapetillomantramanager": 268188
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-17.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "893528b070a36df44ceecd1488db75003f01985e9f749c23c9b2390595ee1aba",
+        "fantapetillomantramanager": "893528b070a36df44ceecd1488db75003f01985e9f749c23c9b2390595ee1aba"
+      },
+      "sizes": {
+        "zonaorientale": 307344,
+        "fantapetillomantramanager": 307344
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-18.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "aaddad6fd5767701c3cba26e0e6e671d4eab0e51abe85d88440f10a1602226db",
+        "fantapetillomantramanager": "aaddad6fd5767701c3cba26e0e6e671d4eab0e51abe85d88440f10a1602226db"
+      },
+      "sizes": {
+        "zonaorientale": 177082,
+        "fantapetillomantramanager": 177082
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-19.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "68c21125b0d4afe0dda87edb0f42275be32f13794c90c1b3679186718aa63d77",
+        "fantapetillomantramanager": "68c21125b0d4afe0dda87edb0f42275be32f13794c90c1b3679186718aa63d77"
+      },
+      "sizes": {
+        "zonaorientale": 335701,
+        "fantapetillomantramanager": 335701
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-20.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "9f0a6cafa4163461ce9b01a53e4d480dbda14c40c059f9a8e57463c27640a856",
+        "fantapetillomantramanager": "9f0a6cafa4163461ce9b01a53e4d480dbda14c40c059f9a8e57463c27640a856"
+      },
+      "sizes": {
+        "zonaorientale": 183079,
+        "fantapetillomantramanager": 183079
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-21.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "b5f66f2ae228a8dc9131ef79da2a30d8f365c710ab13174d34942a9327bd84a9",
+        "fantapetillomantramanager": "b5f66f2ae228a8dc9131ef79da2a30d8f365c710ab13174d34942a9327bd84a9"
+      },
+      "sizes": {
+        "zonaorientale": 308051,
+        "fantapetillomantramanager": 308051
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-22.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "f96c0da9b7b7293e6cd747cbfe8847418573f3660b047d6971e739ee4997a51e",
+        "fantapetillomantramanager": "f96c0da9b7b7293e6cd747cbfe8847418573f3660b047d6971e739ee4997a51e"
+      },
+      "sizes": {
+        "zonaorientale": 167749,
+        "fantapetillomantramanager": 167749
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-23.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "0f65175f55da84c19840126304fbe3239572291cfdf889e5522047ae0d975f16",
+        "fantapetillomantramanager": "0f65175f55da84c19840126304fbe3239572291cfdf889e5522047ae0d975f16"
+      },
+      "sizes": {
+        "zonaorientale": 324616,
+        "fantapetillomantramanager": 324616
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/2026-06-24.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "db4b95c65cc7a49c00a8a4f76fe638f1ca2b7ace4937dd536963adec021c49ad",
+        "fantapetillomantramanager": "db4b95c65cc7a49c00a8a4f76fe638f1ca2b7ace4937dd536963adec021c49ad"
+      },
+      "sizes": {
+        "zonaorientale": 72360,
+        "fantapetillomantramanager": 72360
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/archive/manifest.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "ff7fef09bc57e506f46f553f438589d3aa38d739d4bab5c6616ee6ace1288b43",
+        "fantapetillomantramanager": "ff7fef09bc57e506f46f553f438589d3aa38d739d4bab5c6616ee6ace1288b43"
+      },
+      "sizes": {
+        "zonaorientale": 1272,
+        "fantapetillomantramanager": 1272
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/calciomercato/links.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "75dc6215b594ae0f597828f9ffeb19f2627737d9350a7b38dfd49c498f4b54e8",
+        "fantapetillomantramanager": "75dc6215b594ae0f597828f9ffeb19f2627737d9350a7b38dfd49c498f4b54e8"
+      },
+      "sizes": {
+        "zonaorientale": 11237,
+        "fantapetillomantramanager": 11237
+      },
+      "status": "identical",
+      "category": "calciomercato-data"
+    },
+    {
+      "path": "assets/css/refactor/calciomercato.css",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "f42425b958866aca4f898e6ffbfd4c14d60a90a21ed00abd8f2423cbfa0e0825",
+        "fantapetillomantramanager": "f42425b958866aca4f898e6ffbfd4c14d60a90a21ed00abd8f2423cbfa0e0825"
+      },
+      "sizes": {
+        "zonaorientale": 26360,
+        "fantapetillomantramanager": 26360
+      },
+      "status": "identical",
+      "category": "styles"
+    },
+    {
+      "path": "assets/css/refactor/listone.css",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "501067ca90d4135d9307206d205b744380521c6b29ef5e882fd770b708738330",
+        "fantapetillomantramanager": "501067ca90d4135d9307206d205b744380521c6b29ef5e882fd770b708738330"
+      },
+      "sizes": {
+        "zonaorientale": 773,
+        "fantapetillomantramanager": 773
+      },
+      "status": "identical",
+      "category": "styles"
+    },
+    {
+      "path": "assets/js/admin/listone-converter.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "0599e944f2690aa7daaac94e2c559d973880bc5abdc4eef1ec5ac40f1b0d0608",
+        "fantapetillomantramanager": "0599e944f2690aa7daaac94e2c559d973880bc5abdc4eef1ec5ac40f1b0d0608"
+      },
+      "sizes": {
+        "zonaorientale": 11005,
+        "fantapetillomantramanager": 11005
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-admin-v340.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "5c2faaf034a679bb809f912e2617f599fec8e2f131d529fea8e8c5674ee98784",
+        "fantapetillomantramanager": "5c2faaf034a679bb809f912e2617f599fec8e2f131d529fea8e8c5674ee98784"
+      },
+      "sizes": {
+        "zonaorientale": 5691,
+        "fantapetillomantramanager": 5691
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-filters-v339.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "2282fe0ab188826d455c59b18f9a36a906ea1ff11fee885f0dbf00e7a801b062",
+        "fantapetillomantramanager": "2282fe0ab188826d455c59b18f9a36a906ea1ff11fee885f0dbf00e7a801b062"
+      },
+      "sizes": {
+        "zonaorientale": 7159,
+        "fantapetillomantramanager": 7159
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-images-v334.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "6f67c94bd7b82ff703aee2b540c2440b8f48a5bb1d1efda3e55fd34a9741a241",
+        "fantapetillomantramanager": "6f67c94bd7b82ff703aee2b540c2440b8f48a5bb1d1efda3e55fd34a9741a241"
+      },
+      "sizes": {
+        "zonaorientale": 13183,
+        "fantapetillomantramanager": 13183
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v335.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "9de2a4b273bac956a4adf1391dfd5fa50bc3054a840701fcf3167a05453aa970",
+        "fantapetillomantramanager": "9de2a4b273bac956a4adf1391dfd5fa50bc3054a840701fcf3167a05453aa970"
+      },
+      "sizes": {
+        "zonaorientale": 8103,
+        "fantapetillomantramanager": 8103
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v337.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "9ee7f77e1e4fa60d78052f0c89c65bb0acf9e8b332a8c19d535b5987cb97a1a3",
+        "fantapetillomantramanager": "9ee7f77e1e4fa60d78052f0c89c65bb0acf9e8b332a8c19d535b5987cb97a1a3"
+      },
+      "sizes": {
+        "zonaorientale": 9889,
+        "fantapetillomantramanager": 9889
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v340.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "c7c392d0045c8a52c01a302e1b3ccac89005eeeb90d3915961a5d067be659550",
+        "fantapetillomantramanager": "c7c392d0045c8a52c01a302e1b3ccac89005eeeb90d3915961a5d067be659550"
+      },
+      "sizes": {
+        "zonaorientale": 11786,
+        "fantapetillomantramanager": 11786
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-players-v359.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "4117efc54ed5f2926067faae102ea4d3acecc6117231060dffcd5b99ecaa2901",
+        "fantapetillomantramanager": "4117efc54ed5f2926067faae102ea4d3acecc6117231060dffcd5b99ecaa2901"
+      },
+      "sizes": {
+        "zonaorientale": 17554,
+        "fantapetillomantramanager": 17554
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/calciomercato/calciomercato-render-v338.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "ebf1d629c5a6c3b8c9ede94a0d8bf42f483eb8dd19163045846efc3c20beacca",
+        "fantapetillomantramanager": "ebf1d629c5a6c3b8c9ede94a0d8bf42f483eb8dd19163045846efc3c20beacca"
+      },
+      "sizes": {
+        "zonaorientale": 4626,
+        "fantapetillomantramanager": 4626
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/js/domain/listone.js",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "d90a7463d2689306f5ddc772360336fcca657641053565e61b13e1e9cb268dd5",
+        "fantapetillomantramanager": "d90a7463d2689306f5ddc772360336fcca657641053565e61b13e1e9cb268dd5"
+      },
+      "sizes": {
+        "zonaorientale": 682,
+        "fantapetillomantramanager": 682
+      },
+      "status": "identical",
+      "category": "runtime-code"
+    },
+    {
+      "path": "assets/listoni/2026-05-15.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "ae081b62a4a8219e986c807bc7d137b33d3442d28b957076c3b96ca8de136b35",
+        "fantapetillomantramanager": "ae081b62a4a8219e986c807bc7d137b33d3442d28b957076c3b96ca8de136b35"
+      },
+      "sizes": {
+        "zonaorientale": 264642,
+        "fantapetillomantramanager": 264642
+      },
+      "status": "identical",
+      "category": "listoni-data"
+    },
+    {
+      "path": "assets/listoni/2026-05-30.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "e0e51195ec800c4e819340378c431a2e240bd1c98108c8abad32d18394fa555f",
+        "fantapetillomantramanager": "e0e51195ec800c4e819340378c431a2e240bd1c98108c8abad32d18394fa555f"
+      },
+      "sizes": {
+        "zonaorientale": 514219,
+        "fantapetillomantramanager": 514219
+      },
+      "status": "identical",
+      "category": "listoni-data"
+    },
+    {
+      "path": "assets/listoni/2026-06-04.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "8bd9096ac4f6bb1815fcc65753c3a16b9f696f75a2e6c82aa2f39c1879b834a6",
+        "fantapetillomantramanager": "8bd9096ac4f6bb1815fcc65753c3a16b9f696f75a2e6c82aa2f39c1879b834a6"
+      },
+      "sizes": {
+        "zonaorientale": 927594,
+        "fantapetillomantramanager": 927594
+      },
+      "status": "identical",
+      "category": "listoni-data"
+    },
+    {
+      "path": "assets/listoni/manifest.json",
+      "exists": {
+        "zonaorientale": true,
+        "fantapetillomantramanager": true
+      },
+      "sha256": {
+        "zonaorientale": "fff48f04b196b163eccf5a0c7fd24bf6a274b730f3f8d3ebbf81a92342d8a3d4",
+        "fantapetillomantramanager": "fff48f04b196b163eccf5a0c7fd24bf6a274b730f3f8d3ebbf81a92342d8a3d4"
+      },
+      "sizes": {
+        "zonaorientale": 1581,
+        "fantapetillomantramanager": 1581
+      },
+      "status": "identical",
+      "category": "listoni-data"
+    }
+  ]
+}

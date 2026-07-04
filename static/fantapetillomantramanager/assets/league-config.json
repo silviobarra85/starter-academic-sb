@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "479",
+  "currentVersion": "561",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -29,7 +29,144 @@
     "manualAdminSetup": true,
     "matchdayDrawTool": true,
     "regolamentoPdf2026_2027": true,
-    "ruleProposals": true
+    "ruleProposals": true,
+    "unifiedSectionRegistry": true,
+    "antiContaminationAudit": true,
+    "sharedAssetsInventory": true,
+    "sharedAssetsCentralized": true,
+    "sharedCssCentralized": true,
+    "sharedRuntimeJsInventory": true,
+    "sharedJsClassicCentralized": true,
+    "commonDataPathAdapter": true,
+    "sharedJsModulesCentralized": true,
+    "sharedJsModulesCentralizedVersion": 491,
+    "runtimeRegressionAudit": true,
+    "mergeReadinessDocs": true,
+    "mergeReadinessAudit": true,
+    "localDuplicateCleanupReadiness": true,
+    "localDuplicateCleanupAudit": true,
+    "nestedZonaStaticCleanup": true,
+    "nestedZonaStaticCleanupVersion": 495,
+    "uiComponentsEngine": true,
+    "uiComponentsEngineVersion": "V501",
+    "commonPresentationEngine": true,
+    "featureCardRegistry": true,
+    "featureCardRegistryVersion": "V497",
+    "presidentReleasePlayers": true,
+    "presidentTradeAnnouncement": true,
+    "emailJsAdapter": true,
+    "emailJsAdapterVersion": "V498",
+    "firebaseAdapter": true,
+    "firebaseAdapterVersion": "V499",
+    "dashboardCardsEngine": true,
+    "dashboardCardsEngineVersion": "V504",
+    "toolEngine": true,
+    "toolEngineVersion": "V506",
+    "matchdayDrawToolEngine": "V506",
+    "leagueTemplateEngine": true,
+    "leagueTemplateEngineVersion": "V507",
+    "browserSmokeTests": true,
+    "browserSmokeTestsVersion": "V508",
+    "playwrightSmokeTests": true,
+    "playwrightSmokeTestsVersion": "V508",
+    "dashboardCardsEngineSafeEnforce": true,
+    "dashboardCardsEngineEnforceOptional": true,
+    "dashboardCardsEngineSafeEnforceVersion": "V504",
+    "dashboardRendererHelpers": true,
+    "dashboardRendererHelpersVersion": "V509",
+    "dashboardRendererAdminPanelMigrated": true,
+    "dashboardRendererAdminPanelMigratedVersion": "V505",
+    "formValidators": true,
+    "formValidatorsVersion": "V506",
+    "toolFormValidators": true,
+    "toolFormValidatorsVersion": "V506",
+    "matchdayDrawValidators": "V506",
+    "leagueTemplateHardening": true,
+    "leagueTemplateHardeningVersion": "V507",
+    "leagueTemplateValidator": true,
+    "leagueTemplateValidatorVersion": "V507",
+    "playwrightHardening": true,
+    "playwrightHardeningVersion": "V508",
+    "browserSmokeMobileDesktop": true,
+    "browserSmokeReport": true,
+    "dashboardRendererMigration": true,
+    "dashboardRendererMigrationVersion": "V527",
+    "presidentDashboardRendererHelpers": true,
+    "adminDashboardRendererHelpers": true,
+    "navigationActionsEngine": true,
+    "navigationActionsEngineVersion": "V510",
+    "delegatedPageNavigation": true,
+    "dynamicButtonNavigationFix": true,
+    "navigationDataRefresh": true,
+    "navigationDataRefreshVersion": "V511",
+    "staticFirstPublicDataRecovery": "V511",
+    "staticFirstPublicDataRecoveryVersion": "V511",
+    "publicDataAutoload": true,
+    "publicDataAutoloadVersion": "V526",
+    "runtimeBootWholeSiteFixVersion": "V520",
+    "runtimeBootReferenceErrorFixVersion": "V520",
+    "wholeSiteOverlayApplicationVersion": "V542",
+    "runtimeCacheSweep": true,
+    "runtimeCacheSweepVersion": "V520",
+    "centralizationStatus": true,
+    "centralizationStatusVersion": "V521",
+    "sharedAssetsSingleUploadCandidate": true,
+    "sharedAssetsSingleUploadCandidateVersion": "V521",
+    "centralizationRoadmapRecovery": "V521",
+    "leagueConfigurator": true,
+    "leagueConfiguratorVersion": "V524",
+    "multiSeasonDataAdapter": true,
+    "multiSeasonDataAdapterVersion": "V526",
+    "dashboardRendererPostRenderBridge": true,
+    "dashboardRendererPostRenderBridgeVersion": "V527",
+    "dashboardEnforce": true,
+    "dashboardEnforceVersion": "V528",
+    "dashboardEnforceMode": "guard-local-renderers",
+    "dashboardRendererExtraction": true,
+    "dashboardRendererExtractionVersion": "V529",
+    "dashboardRendererExtractionMode": "public-dashboard-metric-sync",
+    "dashboardRoleSmoke": true,
+    "dashboardRoleSmokeVersion": "V530",
+    "dashboardRoleSmokeMode": "static-browser-like-structural-smoke",
+    "dashboardSummaryExtraction": true,
+    "dashboardSummaryExtractionVersion": "V531",
+    "dashboardSummaryExtractionMode": "public-summary-additive-only",
+    "quickNavigationSmoke": true,
+    "quickNavigationSmokeVersion": "V532",
+    "quickNavigationSmokeMode": "observer-additive-only",
+    "dashboardSectionStatusExtraction": true,
+    "dashboardSectionStatusExtractionVersion": "V533",
+    "dashboardSectionStatusExtractionMode": "additive-only-readonly",
+    "navigationActiveSingletonVersion": "V534",
+    "navigationFluidityVersion": "V535",
+    "navigationPerformanceGuardVersion": "V536",
+    "multiSeasonPathResolver": true,
+    "multiSeasonPathResolverVersion": "V537",
+    "sharedAssetsFallbackCleanupReadiness": true,
+    "sharedAssetsFallbackCleanupReadinessVersion": "V538",
+    "mergeReadinessReleaseCandidate": true,
+    "mergeReadinessReleaseCandidateVersion": "V539",
+    "performanceConsolidation": true,
+    "performanceConsolidationVersion": "V542",
+    "performanceConsolidationMode": "audit-only-no-runtime-behavior-change",
+    "calciomercatoLiveStaticSplitV549": true,
+    "calciomercatoLiveFeedRecoveryV548": true,
+    "rosterListoneTableUnificationV550": true,
+    "productionDebugLoadingV554": true,
+    "productionDebugLoadingMode": "diagnostics-only-with-debug-flag",
+    "diagnosticStaticImportsRemovedV554": true,
+    "eagerDataPreloadV555": true,
+    "eagerDataPreloadMode": "after-first-paint-background-warm-cache",
+    "performanceOptimizationVersion": "V558",
+    "leanRuntimeRestoreV558": true,
+    "leanRuntimeRestoreMode": "disable-experimental-navigation-performance-preload-layers",
+    "navigationActiveSingletonRuntimeEnabled": false,
+    "navigationFluidityRuntimeEnabled": false,
+    "navigationPerformanceGuardRuntimeEnabled": false,
+    "performanceProfilerLazyRenderRuntimeEnabled": false,
+    "applicationCacheChunkedTablesRuntimeEnabled": false,
+    "eagerDataPreloadRuntimeEnabled": false,
+    "calciomercatoDisabledV561": true
   },
   "guardrails": {
     "sandboxClone": true,
@@ -105,7 +242,102 @@
     ],
     "ruleProposalsVersion": "479",
     "ruleProposalsCollection": "ruleProposals",
-    "ruleProposalsFirebaseRulesVersion": "479"
+    "ruleProposalsFirebaseRulesVersion": "479",
+    "unifiedSectionRegistryVersion": "480",
+    "fantaEngineVersion": "480",
+    "commonPresentationEngineV481": true,
+    "preserveLeagueSpecificData": true,
+    "sharedAssetsInventoryOnly": false,
+    "doNotMoveSharedAssetsWithoutFallback": true,
+    "preserveLeagueLocalListoniCalciomercato": true,
+    "sharedAssetsCentralizedVersion": "485",
+    "sharedAssetsCentralizedWithFallback": true,
+    "doNotDeleteLeagueLocalCopiesYet": true,
+    "sharedJsClassicCentralizedVersion": "489",
+    "sharedJsClassicCentralizedWithFallback": true,
+    "doNotDeleteLeagueLocalJsCopiesYet": true,
+    "commonDataPathAdapterVersion": "490",
+    "commonDataPathAdapterWithLocalFallback": true,
+    "doNotDeleteLeagueLocalDataCopiesYet": true,
+    "doNotCentralizeFirebaseOrEmailJs": true,
+    "sharedJsModulesLocalCopiesKept": true,
+    "centralizedJsModulesV491": [
+      "assets/js/calciomercato/calciomercato-images-v334.js",
+      "assets/js/calciomercato/calciomercato-players-v340.js",
+      "assets/js/core/constants.js",
+      "assets/js/core/dom.js",
+      "assets/js/core/utils.js",
+      "assets/js/domain/entities.js",
+      "assets/js/domain/labels.js",
+      "assets/js/domain/news.js",
+      "assets/js/market/transfer-market.js",
+      "assets/js/mobile/mobile-rosters.js",
+      "assets/js/mobile/mobile-tables.js",
+      "assets/js/refactor/public-admin-render-orchestrator-v221.js"
+    ],
+    "manualRegressionChecklistRequired": true,
+    "localFallbackCopiesRemainRequired": true,
+    "noLocalDuplicateCleanupWithoutExplicitRequest": true,
+    "localDuplicateDeletionDeferred": true,
+    "noPhysicalDeletionInV497": true,
+    "zonaNestedStaticRemoved": true,
+    "noRuntimeReferencesToNestedZonaStatic": true,
+    "dashboardCardsEngineObserveFirst": false,
+    "dashboardCardsEngineNoForcedHide": false,
+    "toolEngineCentralizationWithLocalFallback": true,
+    "matchdayDrawLocalWrapperKept": true,
+    "staticStaticAccidentalOverlayRemoved": true,
+    "leagueTemplateNoRuntimeImpact": true,
+    "leagueTemplateCreatesNoProductionLeagueAutomatically": true,
+    "newLeagueRequiresManualConfigReview": true,
+    "browserTestsNoProductionMutation": true,
+    "browserTestsRequireLocalOrBranchDeploy": true,
+    "browserTestsDoNotRequireCredentials": true,
+    "browserTestsDoNotWriteFirebase": true,
+    "dashboardCardsEngineSafeEnforce": true,
+    "dashboardCardsEngineEnforceModeIsConfigGated": true,
+    "dashboardCardsEngineDoesNotDeleteDom": true,
+    "dashboardCardsEngineNoPublicCardForceHide": true,
+    "dashboardRendererHelpersV505": true,
+    "dashboardRendererNoBusinessLogic": true,
+    "dashboardRendererNoFirebaseEmailJsMutation": true,
+    "dashboardRendererLocalLogicPreserved": true,
+    "formValidatorsNoBusinessLogic": true,
+    "formValidatorsNoFirebaseEmailJsMutation": true,
+    "matchdayToolFallbackLocalV473Preserved": true,
+    "newLeagueValidatorRequiredBeforeGoLive": true,
+    "leagueTemplateHardeningV507": true,
+    "leagueTemplateDoesNotAutoEditNetlify": true,
+    "playwrightHardeningV508": true,
+    "playwrightChecksMobileDesktop": true,
+    "playwrightReportsAreLocalOnly": true,
+    "playwrightNoLoginNoEmailNoFirebaseWrites": true,
+    "dashboardRendererMigrationGradual": true,
+    "dashboardRendererMigrationNoFirebaseWrites": true,
+    "dashboardRendererMigrationNoEmailChanges": true,
+    "dashboardRendererMigrationNoRolePolicyChanges": true,
+    "navigationDelegationEnabled": true,
+    "dynamicNavigationButtonsHandled": true,
+    "navigationFixNoFirebaseWrites": true,
+    "navigationFixNoEmailChanges": true,
+    "navigationFixNoDashboardRendererChanges": true,
+    "publicDataMustRenderAfterHashNavigation": true,
+    "staticSnapshotsFallbackBeforeFirebaseFailure": true,
+    "navigationDataRecoveryNoFirebaseWrites": true,
+    "navigationDataRecoveryNoEmailChanges": true,
+    "navigationDataRecoveryNoDashboardRoleChanges": true,
+    "publicDataMustAutoloadWithoutAuthCallback": true,
+    "seasonsOnlyDoesNotCountAsRenderableData": true,
+    "hashNavigationMustTriggerDataAndRender": true,
+    "doNotDeleteLocalSharedAssetsWithoutFallbackAudit": true,
+    "sharedAssetsUploadOnceTarget": "listoni-calciomercato-common-v521",
+    "wholeSiteOverlayOnly": true,
+    "runtimeStableBaseline": "V520",
+    "roadmapRecoveryVersion": "V521",
+    "leagueConfiguratorDoesNotAutoCreateLeagues": true,
+    "leagueConfiguratorDoesNotAutoEditNetlify": true,
+    "eagerDataPreloadDoesNotBlockInitialPaint": true,
+    "eagerDataPreloadDoesNotRenderData": true
   },
   "branding": {
     "siteName": "FantaMantraManager",
@@ -177,25 +409,26 @@
         "icon": "rules"
       }
     ],
-    "footerLastUpdated": "19/06/2026",
+    "footerLastUpdated": "04/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
-    "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png"
+    "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
+    "footerVersion": 561
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
     "seasonSnapshotsManifest": "./assets/snapshots/seasons/manifest.json",
     "seasonSnapshotsBase": "./assets/snapshots/seasons/",
     "honorSnapshot": "./assets/snapshots/honor.json",
-    "listoniManifest": "./assets/listoni/manifest.json",
-    "listoniBase": "./assets/listoni/",
+    "listoniManifest": "../fanta-engine/data/shared-assets/current/assets/listoni/manifest.json",
+    "listoniBase": "../fanta-engine/data/shared-assets/current/assets/listoni/",
     "rostersManifest": "./assets/rose/manifest.json",
     "rostersBase": "./assets/rose/",
     "competitionsManifest": "./assets/competitions/manifest.json",
     "competitionsBase": "./assets/competitions/",
     "logosBase": "./assets/logos/",
-    "calciomercatoLinks": "./assets/calciomercato/links.json",
-    "calciomercatoArchiveManifest": "./assets/calciomercato/archive/manifest.json",
-    "calciomercatoArchiveBase": "./assets/calciomercato/archive/",
+    "calciomercatoLinks": "../fanta-engine/data/shared-assets/current/assets/calciomercato/links.json",
+    "calciomercatoArchiveManifest": "../fanta-engine/data/shared-assets/current/assets/calciomercato/archive/manifest.json",
+    "calciomercatoArchiveBase": "../fanta-engine/data/shared-assets/current/assets/calciomercato/archive/",
     "regolamentoPdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf",
     "realDataTemplateCsv": "./assets/setup/fantapetillo-real-teams-template-v458.csv",
     "realDataTemplateJson": "./assets/setup/fantapetillo-real-teams-template-v458.json",
@@ -208,6 +441,7 @@
     "status": "share-netlify-v466",
     "firebase": "dedicated-project-admin-bootstrap",
     "notes": [
+      "V480 introduce il registro sezioni unificato e il primo modulo fanta-engine condiviso senza rimuovere funzionalita esistenti.",
       "V479 aggiunge Proposte regolamento su Firebase per presidenti approvati e pannello Admin dedicato; richiede applicazione rules v479.",
       "V466 prepara redirect Netlify e funzione news-share multi-lega per preview Open Graph dei comunicati FantaMantra.",
       "V463 aggiunge una card Admin per generare snapshot pubblici statici da preview Firestore V460 senza scrivere su Firebase.",
@@ -344,7 +578,7 @@
   "multiLeague": {
     "status": "standard-admin-v467"
   },
-  "version": "479",
+  "version": 547,
   "runtime": {
     "emailJsPresidentToolsVersion": "478",
     "emailJsServiceId": "service_ttjf7js",
@@ -358,6 +592,689 @@
     ],
     "ruleProposalsVersion": "479",
     "ruleProposalsCollection": "ruleProposals",
-    "firestoreRulesVersion": "479"
+    "firestoreRulesVersion": "479",
+    "sharedAssetsVersion": "485",
+    "sharedAssetsMode": "central-only",
+    "sharedCssVersion": "487",
+    "sharedCssMode": "central-css-with-local-fallback",
+    "sharedRuntimeJsMode": "local-copies-preserved",
+    "sharedRuntimeJsInventoryVersion": "488",
+    "publicDataAutoloadVersion": "V526",
+    "wholeSiteOverlayApplicationVersion": "V546",
+    "centralizationStatusVersion": "V521",
+    "sharedAssetsSingleUploadVersion": "V522",
+    "sharedAssetsSingleUploadCandidateVersion": "V522",
+    "centralizationRoadmapRecovery": "V521",
+    "localSharedAssetFallbacks": false,
+    "performanceConsolidationVersion": "V547",
+    "nativeRuntimeRestoreV558": true,
+    "publicDataAutoloadDisabledV558": true,
+    "navigationDataRefreshDisabledV558": true,
+    "dashboardMigrationWrappersDisabledV558": true
+  },
+  "metadata": {
+    "changeLog": [
+      "V481 estrae presentazione runtime comune in fanta-engine: meta, branding, footer e mobile More con fallback locale preservato."
+    ],
+    "performanceConsolidationVersion": "V546"
+  },
+  "releaseNotes": [
+    "V484 inventaria asset comuni listone/calciomercato nel motore centrale senza spostare path runtime, senza cancellare copie locali e con audit dedicato.",
+    "V483 consolida la documentazione canonica FantaMantraManager e documenta la roadmap per motore comune, senza modificare flussi runtime, Firebase, EmailJS o dati.",
+    "V482 introduce audit anti-contaminazione multi-lega e aggiorna cache-buster/footer senza modificare flussi Firebase, Admin, EmailJS o dati.",
+    "V485 centralizza prudentemente listoni e calciomercato in fanta-engine/data/shared-assets con fallback locale, senza cancellare le copie delle leghe.",
+    "V486 inventaria gli asset runtime JS/CSS comuni centralizzabili, senza cambiare path runtime e senza cancellare copie locali.",
+    "V487 centralizza prudentemente i soli CSS comuni in fanta-engine/css/shared/v487 con fallback locale, senza cancellare copie locali e senza spostare JS runtime.",
+    "V488 inventaria le dipendenze JS comuni e classifica i candidati alla centralizzazione, senza spostare JS runtime e senza cancellare copie locali.",
+    "V506 centralizza validatori comuni form/tool in fanta-engine e collega il Sorteggio giornate al motore V506 con fallback locale V473."
+  ],
+  "ui": {
+    "footerVersion": 488
+  },
+  "roadmap": {
+    "lastEngineStep": "V504 dashboard cards safe-enforce opzionale"
+  },
+  "featureCardRegistry": {
+    "version": "V497",
+    "mode": "metadata-first",
+    "includeDefaults": true,
+    "cards": [
+      {
+        "id": "president-dashboard",
+        "enabled": true,
+        "visibility": "president",
+        "hiddenForAdmin": true,
+        "leagues": [
+          "fantapetillomantramanager"
+        ],
+        "order": 110,
+        "safeEnforce": true,
+        "enforceVisibility": true
+      },
+      {
+        "id": "release-players",
+        "title": "Svincola Giocatori",
+        "enabled": true,
+        "visibility": "president",
+        "featureKey": "presidentReleasePlayers",
+        "hiddenForAdmin": true,
+        "leagues": [
+          "fantapetillomantramanager"
+        ],
+        "order": 120,
+        "safeEnforce": true,
+        "enforceVisibility": true
+      },
+      {
+        "id": "trade-announcement",
+        "title": "Comunicato avvenuto scambio",
+        "enabled": true,
+        "visibility": "president",
+        "featureKey": "presidentTradeAnnouncement",
+        "hiddenForAdmin": true,
+        "leagues": [
+          "fantapetillomantramanager"
+        ],
+        "order": 130,
+        "safeEnforce": true,
+        "enforceVisibility": true
+      },
+      {
+        "id": "rule-proposals",
+        "title": "Proposte regolamento",
+        "enabled": true,
+        "visibility": "president",
+        "featureKey": "ruleProposals",
+        "hiddenForAdmin": true,
+        "leagues": [
+          "fantapetillomantramanager"
+        ],
+        "order": 140,
+        "safeEnforce": true,
+        "enforceVisibility": true
+      },
+      {
+        "id": "bilanci",
+        "title": "Bilanci",
+        "enabled": true,
+        "visibility": "public",
+        "featureKey": "bilanci",
+        "leagues": [
+          "fantapetillomantramanager"
+        ],
+        "order": 60
+      }
+    ],
+    "notes": "Registry comune per governare card/funzionalita'. In V497 espone metadata e contesto, il rendering resta preservato nei moduli esistenti."
+  },
+  "emailJsAdapter": {
+    "version": "V498",
+    "mode": "shared-adapter-league-wrapper",
+    "serviceId": "service_ttjf7js",
+    "defaultTemplateId": "template_e1o7z5e",
+    "tradeAnnouncementTemplateId": "template_svkkhlr",
+    "defaultRecipient": "barra.silvio@gmail.com",
+    "notes": "Adapter comune in fanta-engine; template e destinatario restano specifici FantaMantraManager."
+  },
+  "firebaseAdapter": {
+    "version": "V499",
+    "mode": "shared-adapter-league-wrapper",
+    "dataModelMode": "flat-collections-preserved",
+    "migrateToLeagueScopedPaths": false,
+    "rulesMigration": false,
+    "projectId": "fantapetillomantramanager",
+    "authDomain": "fantapetillomantramanager.firebaseapp.com",
+    "seasonId": "2026-2027",
+    "notes": "Adapter comune in fanta-engine; path Firestore e rules restano invariati."
+  },
+  "dashboardCardsEngine": {
+    "version": "V504",
+    "mode": "safe-enforce",
+    "usesFeatureCardRegistry": "V497",
+    "notes": "Motore comune V504: applica hidden/aria-hidden solo su card role-gated governate dal registry V497; rendering locale e dati restano preservati.",
+    "selectors": {
+      "admin-dashboard": [
+        "#adminPanel",
+        "#adminDashboard",
+        "[data-feature-card-id=\"admin-dashboard\"]"
+      ],
+      "president-dashboard": [
+        "#teamarea",
+        "#teamArea",
+        "#teamDashboardPanelV369",
+        "[data-feature-card-id=\"president-dashboard\"]"
+      ],
+      "team-area": [
+        "#teamarea",
+        "#teamArea",
+        "[data-feature-card-id=\"team-area\"]"
+      ],
+      "release-players": [
+        "#teamPlayerReleasePanelV261",
+        "#teamPlayerReleasePanel",
+        "[data-feature-card-id=\"release-players\"]"
+      ],
+      "trade-announcement": [
+        "#teamTransferCommunicationPanelV242",
+        "#teamTransferCommunicationPanelV50",
+        "[data-feature-card-id=\"trade-announcement\"]"
+      ],
+      "rule-proposals": [
+        "#ruleProposalsPresidentSectionV479",
+        "#ruleProposalsAdminSectionV479",
+        "[data-feature-card-id=\"rule-proposals\"]"
+      ]
+    },
+    "previousVersion": "V500",
+    "safeEnforce": true,
+    "enforceVisibility": true,
+    "legacyAlias": "FantaEngineDashboardCardsRuntimeV500"
+  },
+  "toolEngine": {
+    "version": "V506",
+    "mode": "central-engine-with-local-wrapper-fallback",
+    "tools": {
+      "matchday-draw": {
+        "engine": "../fanta-engine/js/tools/matchday-draw-engine-v501.js",
+        "localWrapper": "assets/js/sections/matchday-draw-tool-v473.js",
+        "legacyUi": "V473"
+      }
+    },
+    "matchdayDrawEngine": "V506",
+    "validators": "V506"
+  },
+  "leagueTemplateEngine": {
+    "version": "V507",
+    "mode": "template-only-hardened",
+    "templatePath": "../_league-template/",
+    "createScript": "../fanta-engine/tools/create-league-v507.mjs",
+    "validatorScript": "../fanta-engine/tools/validate-league-config-v507.mjs",
+    "checks": [
+      "slug riservati e collisioni",
+      "placeholder residui",
+      "config minima",
+      "Firebase/EmailJS dedicati o disabilitati",
+      "docs generati",
+      "Netlify review obbligatoria ma non automatica"
+    ],
+    "notes": [
+      "Il template serve a generare nuove leghe, non modifica il runtime delle leghe esistenti.",
+      "Ogni nuova lega richiede revisione manuale di config, Firebase, EmailJS, dati, Netlify e docs.",
+      "V507 aggiunge validatore e checklist pre-go-live senza creare nuove leghe automaticamente."
+    ]
+  },
+  "dashboardRendererHelpers": {
+    "version": "V505",
+    "module": "../../fanta-engine/js/ui/dashboard-renderer-helpers-v505.js",
+    "migratedRenderers": [
+      "renderAdminPanel"
+    ],
+    "mode": "gradual-renderer-extraction",
+    "notes": "V505 sposta la shell comune dei pannelli Admin collassabili nel motore comune. Le logiche dei form, dati, handler e ruoli restano negli app.js locali."
+  },
+  "formValidators": {
+    "version": "V506",
+    "module": "../fanta-engine/js/core/form-validators-v506.js",
+    "consumers": [
+      "matchdayDrawTool"
+    ],
+    "mode": "shared-pure-validators-with-local-fallbacks"
+  },
+  "centralizationStatusV521": {
+    "version": "V521",
+    "mode": "roadmap-recovery-and-pre-merge-report",
+    "runtimeBaseline": "V520",
+    "listoniCalciomercato": "centralized-in-fanta-engine-v485-with-local-fallbacks",
+    "singleUploadGoal": true,
+    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard"
+  },
+  "overlayMetadata": {
+    "sharedAssetsUploadOnceTarget": "listoni-calciomercato-current-v522",
+    "sharedAssetsSingleUploadVersion": "V522",
+    "roadmapRecoveryVersion": "V521",
+    "localFallbacksPreservedV522": true,
+    "sharedAssetsFallbackCleanupVersion": "V546"
+  },
+  "sharedAssetsSingleUploadV522": {
+    "version": "V522",
+    "primaryRoot": "../fanta-engine/data/shared-assets/current/assets/",
+    "listoniManifest": "../fanta-engine/data/shared-assets/current/assets/listoni/manifest.json",
+    "calciomercatoLinks": "../fanta-engine/data/shared-assets/current/assets/calciomercato/links.json",
+    "localFallbacksPreserved": false,
+    "uploadLocalCopiesInOrdinaryWorkflow": false,
+    "notes": "Listoni e Calciomercato sono comuni: caricare una sola volta in static/fanta-engine/data/shared-assets/current/assets/. Le copie locali sono state rimosse dal workflow V546."
+  },
+  "history": [
+    "V522 introduce il workflow upload unico Listoni/Calciomercato su fanta-engine/data/shared-assets/current con fallback locali preservati e audit dedicato."
+  ],
+  "runtimeRecoveryV520": {
+    "wholeSiteOverlayApplicationVersion": "V526",
+    "publicDataAutoloadVersion": "V526",
+    "navigationStabilityVersion": "V523"
+  },
+  "navigationStabilityV523": {
+    "version": "V523",
+    "scope": "whole-site-navigation-stability",
+    "reason": "I timer ritardati di autoload pubblico non devono riattivare dashboard dopo navigazione utente verso Listone o Calciomercato.",
+    "protectedPages": [
+      "listone",
+      "calciomercato"
+    ],
+    "sharedAssetsCurrentPreserved": true,
+    "localFallbacksPreserved": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false
+  },
+  "leagueConfiguratorV524": {
+    "version": "V524",
+    "scope": "whole-site-tooling",
+    "wizardScript": "../fanta-engine/tools/create-league-wizard-v524.mjs",
+    "auditScript": "../fanta-engine/tools/audit-league-configurator-v524.mjs",
+    "createsLeagueAutomatically": false,
+    "usesSharedAssetsCurrentByDefault": true,
+    "sharedAssetsBase": "../fanta-engine/data/shared-assets/current/assets/",
+    "localFallbacksPreserved": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "netlifyAutoEdit": false
+  },
+  "fastReloadBootstrapV525": {
+    "version": "V525",
+    "scope": "whole-site-fast-reload-bootstrap",
+    "reducesDelayedBootTimers": true,
+    "modulePreloadEntrypoints": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard"
+  },
+  "seasons": [
+    {
+      "id": "2026-2027",
+      "seasonId": "2026-2027",
+      "name": "Stagione 2026-2027",
+      "current": true
+    }
+  ],
+  "multiSeasonDataAdapterV526": {
+    "version": "V526",
+    "scope": "whole-site-multi-season-data-adapter",
+    "metadataOnly": true,
+    "currentSeasonId": "2026-2027",
+    "sharedDataKinds": [
+      "listoni",
+      "calciomercato"
+    ],
+    "seasonScopedDataKinds": [
+      "publicConfig",
+      "rosters",
+      "competitions",
+      "seasonSnapshots",
+      "bilanci",
+      "honor"
+    ],
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true,
+    "physicalDataMigration": false,
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard"
+  },
+  "dashboardRendererMigrationV527": {
+    "version": "V527",
+    "scope": "whole-site-dashboard-renderer-bridge",
+    "gradualMigration": true,
+    "postRenderBridge": true,
+    "replacesLocalRenderers": false,
+    "protectsAdminPresidentCards": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false
+  },
+  "dashboardEnforceV528": {
+    "version": "V528",
+    "scope": "whole-site-dashboard-enforce",
+    "enforceOnly": true,
+    "replacesLocalRenderers": false,
+    "blocksDashboardOverride": true,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false
+  },
+  "dashboardRendererExtractionV529": {
+    "version": "V529",
+    "scope": "whole-site-dashboard-renderer-extraction",
+    "extraction": "public-dashboard-metric-sync",
+    "controlledExtraction": true,
+    "replacesLocalRenderers": false,
+    "fallbackLocalSyncAvailable": true,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false
+  },
+  "dashboardRoleSmokeV530": {
+    "version": "V530",
+    "scope": "whole-site-dashboard-role-smoke",
+    "smokeOnly": true,
+    "replacesLocalRenderers": false,
+    "touchesFirebase": false,
+    "touchesEmailJs": false,
+    "touchesData": false,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true
+  },
+  "dashboardSummaryExtractionV531": {
+    "version": "V531",
+    "scope": "whole-site-dashboard-public-summary-extraction",
+    "extraction": "public-dashboard-summary",
+    "replacesLocalRenderers": false,
+    "fallbackLocalRenderersAvailable": true,
+    "touchesFirebase": false,
+    "touchesEmailJs": false,
+    "touchesData": false,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true
+  },
+  "quickNavigationSmokeV532": {
+    "version": "V532",
+    "scope": "whole-site-quick-navigation-smoke",
+    "targets": [
+      "dashboard",
+      "listone",
+      "calciomercato"
+    ],
+    "replacesNavigation": false,
+    "mutatesHash": false,
+    "callsSetAppPage": false,
+    "replacesLocalRenderers": false,
+    "touchesFirebase": false,
+    "touchesEmailJs": false,
+    "touchesData": false,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true
+  },
+  "dashboardSectionStatusExtractionV533": {
+    "version": "V533",
+    "scope": "whole-site-dashboard-section-status-extraction",
+    "extraction": "public-dashboard-section-status",
+    "targets": [
+      "dashboard",
+      "listone",
+      "calciomercato",
+      "bilanci",
+      "fantamercato",
+      "sorteggio"
+    ],
+    "replacesLocalRenderers": false,
+    "mutatesDom": false,
+    "mutatesHash": false,
+    "callsSetAppPage": false,
+    "touchesFirebase": false,
+    "touchesEmailJs": false,
+    "touchesData": false,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true,
+    "preservesSharedAssetsCurrent": true,
+    "preservesLocalFallbacks": true
+  },
+  "navigationActiveSingletonV534": {
+    "version": "V534",
+    "scope": "navigation-active-singleton",
+    "enabled": true,
+    "oneActivePageTarget": true,
+    "fixesStaleDashboardButton": true,
+    "mutatesHash": false,
+    "callsSetAppPage": false,
+    "rendersData": false,
+    "replacesNavigation": false,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true
+  },
+  "navigationFluidityV535": {
+    "version": "V535",
+    "scope": "whole-site-navigation-fluidity",
+    "enabled": true,
+    "fasterVisualFeedback": true,
+    "prewarmsPublicData": true,
+    "renderAfterFirstPaint": true,
+    "convertsSmoothScrollDuringNavigation": true,
+    "broadMutationObserverMode": "event-frame-only",
+    "mutatesHash": false,
+    "callsSetAppPage": false,
+    "replacesNavigation": false,
+    "rendersDataDirectly": false,
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true
+  },
+  "navigationPerformanceGuardV536": {
+    "version": "V536",
+    "scope": "whole-site-navigation-performance-guard",
+    "enabled": true,
+    "keepsV535VisualFluidity": true,
+    "suppressesDuplicateHeavyRenders": true,
+    "targets": [
+      "navigation-fluidity-v535 autoload warmups",
+      "navigation-fluidity-v535 refresh runs"
+    ],
+    "mutatesHash": false,
+    "callsSetAppPage": false,
+    "replacesNavigation": false,
+    "rendersDataDirectly": false,
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "protectsAdminFlows": true,
+    "protectsPresidentFlows": true
+  },
+  "multiSeasonPathResolverV537": {
+    "version": "V537",
+    "scope": "whole-site-multiseason-path-resolver",
+    "enabled": true,
+    "usesSeasonDataAdapterV526": true,
+    "physicalMigration": false,
+    "sharedAssetsCurrentPreserved": true,
+    "localFallbacksPreserved": true,
+    "sharedDataKinds": [
+      "listoni",
+      "calciomercato"
+    ],
+    "seasonScopedDataKinds": [
+      "publicConfig",
+      "rosters",
+      "competitions",
+      "seasonSnapshots",
+      "bilanci",
+      "honor"
+    ],
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "adminChanged": false,
+    "presidentChanged": false
+  },
+  "sharedAssetsFallbackCleanupReadinessV538": {
+    "version": "V538",
+    "enabled": true,
+    "mode": "readiness-only",
+    "deletesLocalFallbacks": false,
+    "movesFiles": false,
+    "sharedAssetsCurrentRequired": true,
+    "listoniSingleUpload": true,
+    "calciomercatoSingleUpload": true,
+    "localFallbacksPreserved": false,
+    "nextStep": "V546 cleanup applicato: fallback locali duplicati rimossi dal workflow ordinario."
+  },
+  "mergeReadinessReleaseCandidateV539": {
+    "version": "V539",
+    "enabled": true,
+    "mode": "release-candidate",
+    "wholeSiteOverlay": true,
+    "functionalChanges": false,
+    "deletesLocalFallbacks": false,
+    "movesFiles": false,
+    "firebaseChanged": false,
+    "emailjsChanged": false,
+    "adminChanged": false,
+    "presidentChanged": false,
+    "sharedAssetsCurrentRequired": true,
+    "localFallbacksPreserved": true,
+    "navigationPerformanceGuardPreserved": true,
+    "multiSeasonPathResolverPreserved": true,
+    "nextStep": "manual validation; optional fallback cleanup only with explicit approval"
+  },
+  "rulesTableIsolationV540": {
+    "version": "V540",
+    "scope": "Regolamento",
+    "preventsRoleRowColorsInRules": true,
+    "listoneAndRostersRoleColorsPreserved": true,
+    "implementedInFantaEngineCss": true,
+    "localRuntimeGuard": true
+  },
+  "performanceConsolidationV542": {
+    "version": "V542",
+    "enabled": true,
+    "mode": "audit-and-inventory-only",
+    "runtimeBehaviorChanges": false,
+    "addsRuntimeImports": false,
+    "measuresLeagueWeight": true,
+    "checksEntrypointVersions": true,
+    "keepsV536PerformanceGuard": true,
+    "keepsRulesTableIsolationV540": true,
+    "sharedAssetsCurrentPreserved": true,
+    "localFallbacksPreserved": true,
+    "firebaseChanged": false,
+    "emailjsChanged": false,
+    "adminChanged": false,
+    "presidentChanged": false,
+    "nextStep": "V542 safe repository cleanup, if approved"
+  },
+  "sharedAssetsFallbackCleanupV546": {
+    "version": "V546",
+    "enabled": true,
+    "mode": "central-only-shared-assets",
+    "deletesLocalFallbacks": true,
+    "requiresManualRmCommand": true,
+    "listoniPrimaryPath": "../fanta-engine/data/shared-assets/current/assets/listoni/",
+    "calciomercatoPrimaryPath": "../fanta-engine/data/shared-assets/current/assets/calciomercato/",
+    "localFallbacksPreserved": false,
+    "ordinaryWorkflowUploadsLocalCopies": false,
+    "firebaseChanged": false,
+    "emailjsChanged": false,
+    "adminChanged": false,
+    "presidentChanged": false,
+    "nextStep": "V546 post-cleanup release validation oppure nuova roadmap."
+  },
+  "performanceConsolidationV546": {
+    "version": "V546",
+    "enabled": true,
+    "mode": "cleanup-after-readiness",
+    "runtimeBehaviorChanges": true,
+    "removesLocalSharedAssetFallbacks": true,
+    "sharedAssetsCurrentPreserved": true,
+    "firebaseChanged": false,
+    "emailjsChanged": false
+  },
+  "calciomercatoCentralFeedFixV546": {
+    "version": "V546",
+    "primaryConfigPath": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/links.json",
+    "primaryArchivePath": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/archive/manifest.json",
+    "localFallbacksRequired": false,
+    "netlifyFunctionUsesCentralConfig": true
+  },
+  "calciomercatoArchiveVisibilityV547": {
+    "version": "V547",
+    "scope": "Calciomercato central archive visibility after local fallback cleanup",
+    "localFallbacksRequired": false,
+    "alignsDefaultRangeToLoadedCentralArchive": true,
+    "sharedArchivePrimary": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/archive/manifest.json",
+    "docs": [
+      "docs/CALCIOMERCATO_ARCHIVE_VISIBILITY_V547.md",
+      "docs/AI_ASSISTANT_HANDOFF_V547.md"
+    ]
+  },
+  "calciomercatoLiveStaticSplitV549": {
+    "version": "V549",
+    "liveWindowDays": 3,
+    "liveFirstViaNetlifyFunction": true,
+    "staticArchiveForOlderArticles": true,
+    "localFallbacksRequired": false,
+    "docs": [
+      "docs/CALCIOMERCATO_LIVE_STATIC_SPLIT_V549.md",
+      "docs/AI_ASSISTANT_HANDOFF_V549.md"
+    ]
+  },
+  "calciomercatoLiveFeedRecoveryV548": {
+    "version": "V548",
+    "liveFetchThroughNetlifyFunction": true,
+    "retriesLiveFeedWithoutDateRange": true,
+    "docs": [
+      "docs/CALCIOMERCATO_LIVE_FEED_RECOVERY_V548.md",
+      "docs/AI_ASSISTANT_HANDOFF_V548.md"
+    ]
+  },
+  "rosterListoneTableUnificationV550": {
+    "version": "V550",
+    "scope": "Listone/Rose table style unification; roster status column; role color on first roster column.",
+    "sharedEngineCss": "static/fanta-engine/css/roster-listone-table-unification-v550.css",
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "docsUpdated": true,
+    "handoffUpdated": true
+  },
+  "performanceOptimizationV552": {
+    "version": "V552",
+    "scope": "Performance profiler + lazy render guard for heavier public pages",
+    "engineModule": "static/fanta-engine/js/ui/performance-profiler-lazy-render-v552.js",
+    "jsonStaticFetchCache": true,
+    "deferHeavyRefreshAfterNavigationIntent": true,
+    "contentVisibilityForInactivePages": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "docs": [
+      "docs/PERFORMANCE_OPTIMIZATION_V552.md",
+      "docs/AI_ASSISTANT_HANDOFF_V552.md"
+    ]
+  },
+  "productionDebugLoadingV554": {
+    "version": "V554",
+    "debugFlags": [
+      "?debug=1",
+      "?fantaDebug=1",
+      "sessionStorage.fantaEngineDebug=1",
+      "localStorage.fantaEngineDebug=1"
+    ],
+    "debugOnlyModules": [
+      "dashboard-renderer-extraction-v529",
+      "dashboard-summary-extraction-v531",
+      "quick-navigation-smoke-v532",
+      "dashboard-section-status-extraction-v533"
+    ],
+    "productionStaticImportsRemoved": true,
+    "productionModulePreloadsRemoved": true,
+    "firebaseWrites": false,
+    "emailjsChanged": false,
+    "runtimeBehaviorChanges": "only diagnostic module loading policy"
+  },
+  "calciomercatoDisabledV561": {
+    "version": "V561",
+    "sectionRemoved": true,
+    "automaticExternalFetch": false,
+    "staticArchiveFetch": false,
+    "netlifyFunctionDisabled": true,
+    "reason": "Rimozione sezione Calciomercato e blocco recupero articoli per alleggerire apertura sito."
   }
 }

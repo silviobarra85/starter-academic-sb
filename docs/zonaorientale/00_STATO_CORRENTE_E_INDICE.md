@@ -1,3 +1,67 @@
+## V560 - Boot preloader interactive-ready
+
+La V560 corregge la V559: il preloader non scompare piu' sul solo caricamento asset, ma aspetta render app, `window.load`, controlli DOM essenziali e quiet frame del main thread. La percentuale resta ferma; ruota solo l'anello esterno della rotellina. Firebase, EmailJS, Admin, Presidente, router e dati restano invariati.
+
+## V559 - Boot preloader multi-lega
+
+La V559 aggiunge un preloader visivo comune con rotellina e percentuale progressiva su entrambe le leghe. Il runtime resta quello nativo ripristinato in V558: nessun preload/autoload pesante viene reintrodotto, Firebase/EmailJS/Admin/Presidente non cambiano.
+
+## V496 - UI components engine comune
+
+La V496 introduce `static/fanta-engine/js/ui/components-v496.js`, primo layer UI comune usato dal presentation engine. ZonaOrientale resta separata nei dati, brand, Firebase, EmailJS e fallback locali; `FUNZIONALITA'.md` non viene modificato.
+
+## V494 - Cleanup readiness duplicati locali
+
+La V494 aggiunge piano e audit per la futura pulizia dei duplicati locali centralizzati, senza cancellare file. ZonaOrientale mantiene le copie locali come fallback.
+
+## V493 - Merge readiness multi-lega
+
+La V493 aggiunge checklist e audit finale per il branch V480-V493. ZonaOrientale mantiene brand, dati, EmailJS e fallback locali separati; `FUNZIONALITA'.md` non viene modificato.
+
+## V492 - Audit regressione runtime esteso
+
+La V492 aggiunge l'audit runtime multi-lega esteso e aggiorna footer/cache-buster/config a V492. Non modifica `FUNZIONALITA'.md` e non cambia logiche Firebase/Admin/Area Squadra.
+
+## V491 - Centralizzazione selettiva moduli JS
+
+La V491 centralizza selettivamente 12 moduli JS comuni e identici in `static/fanta-engine/js/shared/v491/`. Solo 11 moduli sono usati come import runtime primari da `assets/app.js`; `calciomercato-players-v340.js` viene copiato nel motore ma non viene ancora agganciato perché il runtime usa una versione diversa. Le copie locali restano in entrambe le leghe e nella copia annidata ZonaOrientale: non sono stati cancellati fallback/rollback locali. Firebase, EmailJS, Admin, Dashboard Presidente, Area Squadra, news, regolamenti, bilanci, listoni e calciomercato dati non sono stati modificati.
+
+
+## V490 - Data path adapter comune
+
+La V490 introduce `static/fanta-engine/js/core/data-paths-v490.js`, un adapter comune e senza dipendenze per risolvere i path dati (`dataPaths.*`) e per caricare JSON con catena primary/fallback. I loader `static-files-service.js` delle due leghe e della copia annidata ZonaOrientale usano l'adapter con import dinamico e fallback locale: se il motore comune non si carica, restano attive le funzioni locali V446/V485. Non sono stati spostati ulteriori dati e non sono state cancellate copie locali.
+
+
+## V489 - Centralizzazione JS classici comuni
+
+La V489 centralizza in `static/fanta-engine/js/shared/v489/` i soli script classici e autonomi risultati identici tra le due leghe: `admin-card-visibility-v454.js`, `admin-card-visibility-v455.js` e `admin-card-visibility-v456.js`. Le pagine `index.html` caricano ora il runtime V456 dal motore comune con fallback locale tramite `data-local-fallback`; le copie locali non vengono cancellate. Restano fuori `app.js`, Firebase, EmailJS, `league-config`, section registry e tutti i moduli ES con import relativi.
+
+
+## Aggiornamento V487 - CSS comuni nel motore centrale (24/06/2026)
+
+- Runtime avanzato a V487 con footer/cache-buster coerenti.
+- I CSS comuni identici vengono caricati dal motore centrale con fallback locale.
+- Le copie locali non sono cancellate.
+- Nessuna modifica a Firebase, EmailJS, Admin, Area Squadra, news, regolamenti, bilanci, listoni o calciomercato.
+- `FUNZIONALITA'.md` non e' stato modificato.
+
+## Aggiornamento V484 - Inventario asset comuni listone/calciomercato (24/06/2026)
+
+- Runtime avanzato a V484 con footer/cache-buster coerenti su entrambe le leghe.
+- Aggiunto inventario osservativo degli asset listone/calciomercato nel motore comune.
+- Risultato: 42 file candidati identici tra ZonaOrientale e FantaMantraManager.
+- Nessun asset runtime viene spostato e nessuna copia locale viene cancellata.
+- ZonaOrientale non riceve nuove funzionalita' e non cambia Firebase, Admin, Area Squadra, news, regolamento, listoni o calciomercato.
+- `FUNZIONALITA'.md` non e' stato modificato.
+
+## Aggiornamento V483 - Documentazione canonica FantaMantraManager e tracking multi-lega (24/06/2026)
+
+- Runtime avanzato a V483 con footer/cache-buster coerenti su entrambe le leghe.
+- La modifica principale e' documentale: consolidati i documenti canonici di FantaMantraManager in `docs/fantapetillomantramanager/00`-`04`.
+- ZonaOrientale non riceve nuove funzionalita' e non cambia dati, Firebase, Admin, Area Squadra, news, regolamento, listoni o calciomercato.
+- `FUNZIONALITA'.md` non e' stato modificato.
+- Listoni/calciomercato comuni sono annotati come possibile passo futuro del motore centrale, ma nessun asset viene spostato in V483.
+
 ## Aggiornamento V472 - Footer da config e news FantaPetillo isolate (17/06/2026)
 
 - Runtime avanzato a V472: footer generato da `league-config-v443.js` tramite `branding.footerTemplate` e `branding.footerLastUpdated`, senza testo hard-coded `vecchia etichetta tecnica del clone`.
@@ -2268,3 +2332,88 @@ FantaPetilloMantraManager torna al flusso standard Admin per dati reali: creazio
 - Input: numero giornate, esclusioni, slider range 1-38, seed.
 - Output: giornate sorteggiate e JSON riproducibile.
 - Nessuna cancellazione funzionale: Firebase, Admin, snapshot, listoni, news e footer isolati V472 restano invariati.
+
+## Aggiornamento V480 - Registro sezioni unificato e primo fanta-engine condiviso
+
+La V480 introduce il primo modulo comune `static/fanta-engine/` usato da ZonaOrientale e FantaMantraManager per costruire un registro sezioni omogeneo.
+
+Punti chiave:
+
+- `static/fanta-engine/js/core/unified-section-registry-v480.js` contiene la factory comune del registro sezioni.
+- `static/zonaorientale/assets/js/core/section-registry-v405.js` resta il wrapper ZonaOrientale e mantiene gli alias storici `ZonaOrientaleSectionRegistryV401-V405`.
+- `assets/app.js` preferisce `FantaLeagueSectionRegistryV480` ma mantiene fallback agli alias storici.
+- La bottom nav mobile viene letta dal metadata `nav.mobilePrimary`, senza cambiare le destinazioni esistenti.
+- ZonaOrientale non riceve la sezione `Proposte regolamento`, che resta specifica di FantaMantraManager.
+- Nessuna funzionalita' e' stata rimossa.
+
+Audit:
+
+```bash
+cd static
+node fanta-engine/tools/audit-unified-section-registry-v480.mjs
+```
+
+- V481: estratto motore comune presentazione in `static/fanta-engine/js/core/league-presentation-v481.js`; footer/branding/menu mobile restano guidati da config lega-specifica.
+
+- V482: aggiunto audit anti-contaminazione multi-lega in `static/fanta-engine/tools/audit-multileague-contamination-v482.mjs`; corretto anche l'aria-label della navigazione ZonaOrientale, senza toccare funzionalità.
+
+
+## V485 - Asset comuni listone/calciomercato
+
+I 42 asset comuni listone/calciomercato sono stati copiati nel motore centrale `static/fanta-engine/data/shared-assets/v485/`. ZonaOrientale mantiene le copie locali come fallback; nessun dato locale viene cancellato. Audit dedicato: `static/fanta-engine/tools/audit-shared-assets-centralization-v485.mjs`.
+
+- **V486**: inventario asset runtime CSS/JS comuni, senza spostamenti runtime e senza modifiche a FUNZIONALITA'.md.
+
+## Aggiornamento V488
+
+V488 aggiunge l'inventario delle dipendenze JS comuni (`shared-js-dependency-inventory-v488.json`) senza spostare i JS runtime e senza cancellare copie locali.
+
+
+## V495 - Cleanup nested static ZonaOrientale
+
+- Dismessa la copia annidata `static/zonaorientale/static` tramite `git rm` esplicito dopo overlay.
+- Audit V495 aggiornati per non dipendere più dalla copia annidata.
+- Redirect Netlify di sicurezza `/zonaorientale/static/* -> /zonaorientale/:splat`.
+
+
+## V497 - Feature card registry comune
+
+Introdotto il registry comune metadata-first per card/funzionalita' in `static/fanta-engine/js/core/feature-card-registry-v497.js`. Il rendering esistente resta preservato; la V500 usera' questo registry per la dashboard cards engine.
+
+
+## V498 - EmailJS adapter comune
+
+- `EMAILJS_ADAPTER_V498.md`
+- `HANDOFF_V498_EMAILJS_ADAPTER.md`
+
+
+## V499 - Firebase adapter comune
+
+- `FIREBASE_ADAPTER_V499.md`
+- `HANDOFF_V499_FIREBASE_ADAPTER.md`
+
+## Aggiornamento V500
+
+- Dashboard cards engine comune in `static/fanta-engine/js/ui/dashboard-cards-engine-v500.js`.
+- Modalita' `observe-first`, senza cambio di rendering dashboard.
+
+
+## V518 - Runtime boot whole-site export compatibility fix
+
+- Corretto il blocco runtime causato dall'import `installPublicDataAutoloadV515` non esportato dal modulo condiviso `public-data-autoload-v512.js`.
+- Aggiunti alias compatibili V515/V516/V518 nel modulo condiviso e aggiornati gli `app.js` a `?v=518`.
+- Mantenuta la correzione `formValidatorsV506: true`; footer e `currentVersion` aggiornati a V518.
+- Verifica consigliata: `node static/fanta-engine/tools/audit-runtime-boot-whole-site-v517.mjs`.
+
+
+## Aggiornamento V518
+
+Overlay whole-site di recovery runtime: cache-buster V518, alias autoload V518 e controllo esplicito contro residui `league-config-v443.js?v=512` su entrambe le leghe. `FUNZIONALITA'.md` non modificato.
+
+## Aggiornamento V561 - Calciomercato disattivato
+
+- La sezione Calciomercato non e' piu' visibile nella nav desktop/mobile e non e' presente come pagina HTML pubblica.
+- Il recupero articoli e' bloccato sia lato browser sia lato Netlify Function `calciomercato-feed`.
+- Gli asset/archivi Calciomercato non sono stati cancellati: la rimozione e' runtime/UI e reversibile.
+- Restano attivi News/comunicati interni, Admin, Presidente, Listone, Rose, Fantamercato, Bilanci, Competizioni e preloader V560.
+

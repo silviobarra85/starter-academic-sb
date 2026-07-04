@@ -1,0 +1,18 @@
+{
+  "version": "V500",
+  "purpose": "Dashboard cards engine comune multi-lega: osserva e marca le card Admin/Presidente usando il registry V497, senza riscrivere il rendering esistente.",
+  "module": "fanta-engine/js/ui/dashboard-cards-engine-v500.js",
+  "mode": "observe-first",
+  "guardrails": [
+    "non forza la rimozione di card esistenti",
+    "non migra Firebase",
+    "non modifica EmailJS",
+    "non cambia path Firestore",
+    "non sposta dashboard concrete fuori dagli app.js locali"
+  ],
+  "nextSteps": [
+    "V501 Tool engine comune",
+    "V502 Template nuova lega",
+    "V503 Test browser Playwright"
+  ]
+}

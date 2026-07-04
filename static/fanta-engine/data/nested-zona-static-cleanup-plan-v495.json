@@ -1,0 +1,43 @@
+{
+  "version": "V495",
+  "title": "Cleanup copia annidata static/zonaorientale/static",
+  "date": "2026-06-24",
+  "policy": {
+    "physicalDeletionInOverlay": false,
+    "physicalDeletionRequiredByGitRm": true,
+    "deleteCommand": "git rm -r static/zonaorientale/static",
+    "runDeleteAfterApplyingOverlay": true,
+    "runDeleteBeforeAudits": true,
+    "localFallbackCopiesRemainRequired": true,
+    "doNotDeleteLeagueLocalFallbacks": true
+  },
+  "target": {
+    "path": "static/zonaorientale/static",
+    "reason": "Copia annidata storica non referenziata dal runtime reale; il sito canonico è static/zonaorientale/.",
+    "runtimeReferenceCheck": "grep senza risultati escludendo docs/tools/audit/cleanup"
+  },
+  "netlifyRedirect": {
+    "from": "/zonaorientale/static/*",
+    "to": "/zonaorientale/:splat",
+    "status": 301,
+    "purpose": "Mitigare eventuali bookmark o vecchi link verso il path annidato."
+  },
+  "preservedRoots": [
+    "static/zonaorientale",
+    "static/fantapetillomantramanager",
+    "static/fanta-engine"
+  ],
+  "notTouched": [
+    "Firebase",
+    "EmailJS",
+    "Admin",
+    "Dashboard Presidente",
+    "Area Squadra",
+    "news",
+    "regolamenti",
+    "bilanci",
+    "listoni centralizzati",
+    "calciomercato centralizzato",
+    "docs/zonaorientale/FUNZIONALITA'.md"
+  ]
+}
