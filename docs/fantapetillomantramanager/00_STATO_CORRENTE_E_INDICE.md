@@ -1,17 +1,7 @@
-# FantaPetilloMantraManager - Stato corrente e indice
+# FantaPetilloMantraManager - Stato corrente
 
-## Stato corrente
+Versione corrente: V575.
 
-- Versione: V574.
-- Calciomercato disattivato come da V561.
-- Tabelle giocatori mobile aggiornate: Area Squadra, Rose e Listone condividono lo stile mobile del Listone.
-
-## Ultimo overlay
-
-V574 - Tabelle giocatori mobile stile Listone.
-
-## Audit
-
-```bash
-node static/fanta-engine/tools/audit-player-tables-mobile-v574.mjs
-```
+Note operative:
+- Calciomercato disattivato.
+- Tabelle giocatori mobile uniformate con classi runtime dedicate V575.

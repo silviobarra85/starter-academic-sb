@@ -1,0 +1,310 @@
+/* V575 - Mobile player tables forced, separated styles.
+   Why: Area Squadra and Rose are rendered dynamically by different templates and some legacy CSS overrides
+   the generic selectors used by V574. V575 adds explicit runtime classes and styles each table family
+   independently while keeping the same visual language as the Listone mobile table. */
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  :root {
+    --pt-v575-header-bg: rgba(15, 23, 42, 0.99);
+    --pt-v575-header-fg: #f8fafc;
+    --pt-v575-border: rgba(148, 163, 184, 0.34);
+    --pt-v575-shadow: 8px 0 14px rgba(2, 6, 23, 0.42);
+    --pt-v575-gk-bg: #fff2b3;
+    --pt-v575-def-bg: #d9f8df;
+    --pt-v575-mid-bg: #dbeafe;
+    --pt-v575-fwd-bg: #fee2e2;
+    --pt-v575-default-bg: #ffffff;
+    --pt-v575-gk-line: #d97706;
+    --pt-v575-def-line: #16a34a;
+    --pt-v575-mid-line: #2563eb;
+    --pt-v575-fwd-line: #dc2626;
+  }
+
+  html[data-theme="dark"] {
+    --pt-v575-gk-bg: #4a3612;
+    --pt-v575-def-bg: #123d27;
+    --pt-v575-mid-bg: #17345f;
+    --pt-v575-fwd-bg: #4a1d1d;
+    --pt-v575-default-bg: #111827;
+  }
+
+  .fanta-player-table-wrap-v575 {
+    max-width: 100% !important;
+    max-height: min(70vh, 620px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
+    border-radius: 14px !important;
+    position: relative !important;
+  }
+
+  table.fanta-player-table-v575 {
+    table-layout: fixed !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.68rem !important;
+  }
+
+  table.fanta-player-table-v575 th,
+  table.fanta-player-table-v575 td {
+    box-sizing: border-box !important;
+    padding: 6px 7px !important;
+    line-height: 1.18 !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+  }
+
+  table.fanta-player-table-v575 .number,
+  table.fanta-player-table-v575 th.number,
+  table.fanta-player-table-v575 td.number,
+  table.fanta-player-table-v575 .table-sort {
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+
+  table.fanta-player-table-v575 thead th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 60 !important;
+    background: var(--pt-v575-header-bg) !important;
+    color: var(--pt-v575-header-fg) !important;
+    box-shadow: 0 1px 0 rgba(148, 163, 184, 0.2) !important;
+    border-bottom: 1px solid var(--pt-v575-border) !important;
+  }
+
+  table.fanta-player-table-v575 th:first-child,
+  table.fanta-player-table-v575 td:first-child,
+  table.fanta-player-table-v575 .fanta-player-name-col-v575,
+  table.fanta-player-table-v575 .roster-col-player,
+  table.fanta-player-table-v575 .team-profile-player-cell,
+  table.fanta-player-table-v575 .listone-col-playerName {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 35 !important;
+    width: clamp(17rem, 92vw, 27rem) !important;
+    min-width: clamp(17rem, 92vw, 27rem) !important;
+    max-width: clamp(20rem, 108vw, 30rem) !important;
+    padding-left: 8px !important;
+    padding-right: 10px !important;
+    background: var(--pt-v575-default-bg) !important;
+    box-shadow: var(--pt-v575-shadow) !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    text-overflow: clip !important;
+  }
+
+  table.fanta-player-table-v575 thead th:first-child,
+  table.fanta-player-table-v575 thead .fanta-player-name-col-v575,
+  table.fanta-player-table-v575 thead .roster-col-player,
+  table.fanta-player-table-v575 thead .team-profile-player-cell,
+  table.fanta-player-table-v575 thead .listone-col-playerName {
+    top: 0 !important;
+    z-index: 80 !important;
+    background: var(--pt-v575-header-bg) !important;
+    color: var(--pt-v575-header-fg) !important;
+  }
+
+  table.fanta-player-table-v575 td:first-child a,
+  table.fanta-player-table-v575 td:first-child strong,
+  table.fanta-player-table-v575 .fanta-player-name-col-v575 a,
+  table.fanta-player-table-v575 .fanta-player-name-col-v575 strong,
+  table.fanta-player-table-v575 .roster-col-player a,
+  table.fanta-player-table-v575 .roster-col-player strong,
+  table.fanta-player-table-v575 .team-profile-player-cell a,
+  table.fanta-player-table-v575 .team-profile-player-cell strong,
+  table.fanta-player-table-v575 .listone-col-playerName a,
+  table.fanta-player-table-v575 .listone-col-playerName strong {
+    display: inline !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.16 !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Area Squadra / Dashboard Presidente: dedicated style, identical sizing to Listone. */
+  table.fanta-player-table-v575-teamarea .roster-col-role,
+  table.fanta-player-table-v575-teamarea .team-profile-role-cell,
+  table.fanta-player-table-v575-teamarea .fanta-player-role-col-v575 {
+    width: 5.375rem !important;
+    min-width: 5.375rem !important;
+    max-width: 5.375rem !important;
+    white-space: normal !important;
+  }
+
+  table.fanta-player-table-v575-teamarea .roster-col-team,
+  table.fanta-player-table-v575-teamarea .team-profile-team-cell,
+  table.fanta-player-table-v575-teamarea .fanta-player-team-col-v575 {
+    width: 3.125rem !important;
+    min-width: 3.125rem !important;
+    max-width: 3.125rem !important;
+  }
+
+  table.fanta-player-table-v575-teamarea .roster-col-status,
+  table.fanta-player-table-v575-teamarea .team-profile-status-cell,
+  table.fanta-player-table-v575-teamarea .fanta-player-status-col-v575 {
+    width: 3.25rem !important;
+    min-width: 3.25rem !important;
+    max-width: 3.25rem !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  table.fanta-player-table-v575-teamarea .roster-col-cost,
+  table.fanta-player-table-v575-teamarea .roster-col-qta,
+  table.fanta-player-table-v575-teamarea .team-profile-cost-cell,
+  table.fanta-player-table-v575-teamarea .team-profile-qta-cell,
+  table.fanta-player-table-v575-teamarea .fanta-player-cost-col-v575,
+  table.fanta-player-table-v575-teamarea .fanta-player-qta-col-v575 {
+    width: 3.75rem !important;
+    min-width: 3.75rem !important;
+    max-width: 3.75rem !important;
+    text-align: left !important;
+  }
+
+  table.fanta-player-table-v575-teamarea .roster-col-market,
+  table.fanta-player-table-v575-teamarea .team-profile-market-cell,
+  table.fanta-player-table-v575-teamarea .fanta-player-market-col-v575 {
+    width: 5.25rem !important;
+    min-width: 5.25rem !important;
+    max-width: 5.25rem !important;
+    white-space: normal !important;
+  }
+
+  /* Rose: dedicated style, identical sizing to Listone but independent from Area Squadra. */
+  table.fanta-player-table-v575-rose .roster-col-role,
+  table.fanta-player-table-v575-rose .team-profile-role-cell,
+  table.fanta-player-table-v575-rose .fanta-player-role-col-v575 {
+    width: 5.375rem !important;
+    min-width: 5.375rem !important;
+    max-width: 5.375rem !important;
+    white-space: normal !important;
+  }
+
+  table.fanta-player-table-v575-rose .roster-col-team,
+  table.fanta-player-table-v575-rose .team-profile-team-cell,
+  table.fanta-player-table-v575-rose .fanta-player-team-col-v575 {
+    width: 3.125rem !important;
+    min-width: 3.125rem !important;
+    max-width: 3.125rem !important;
+  }
+
+  table.fanta-player-table-v575-rose .roster-col-status,
+  table.fanta-player-table-v575-rose .team-profile-status-cell,
+  table.fanta-player-table-v575-rose .fanta-player-status-col-v575 {
+    width: 3.25rem !important;
+    min-width: 3.25rem !important;
+    max-width: 3.25rem !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  table.fanta-player-table-v575-rose .roster-col-cost,
+  table.fanta-player-table-v575-rose .roster-col-qta,
+  table.fanta-player-table-v575-rose .team-profile-cost-cell,
+  table.fanta-player-table-v575-rose .team-profile-qta-cell,
+  table.fanta-player-table-v575-rose .fanta-player-cost-col-v575,
+  table.fanta-player-table-v575-rose .fanta-player-qta-col-v575 {
+    width: 3.75rem !important;
+    min-width: 3.75rem !important;
+    max-width: 3.75rem !important;
+    text-align: left !important;
+  }
+
+  table.fanta-player-table-v575-rose .roster-col-market,
+  table.fanta-player-table-v575-rose .team-profile-market-cell,
+  table.fanta-player-table-v575-rose .fanta-player-market-col-v575 {
+    width: 5.25rem !important;
+    min-width: 5.25rem !important;
+    max-width: 5.25rem !important;
+    white-space: normal !important;
+  }
+
+  /* Listone: kept separate so it remains tunable on its own. */
+  table.fanta-player-table-v575-listone .listone-col-classicRole,
+  table.fanta-player-table-v575-listone .fanta-player-role-col-v575 {
+    width: 5.375rem !important;
+    min-width: 5.375rem !important;
+    max-width: 5.375rem !important;
+    white-space: normal !important;
+  }
+
+  table.fanta-player-table-v575-listone .listone-col-realTeam,
+  table.fanta-player-table-v575-listone .fanta-player-team-col-v575 {
+    width: 3.125rem !important;
+    min-width: 3.125rem !important;
+    max-width: 3.125rem !important;
+  }
+
+  table.fanta-player-table-v575-listone .listone-col-status,
+  table.fanta-player-table-v575-listone .fanta-player-status-col-v575 {
+    width: 3.25rem !important;
+    min-width: 3.25rem !important;
+    max-width: 3.25rem !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  table.fanta-player-table-v575-listone .listone-col-quotationCurrent,
+  table.fanta-player-table-v575-listone .listone-col-rosterCost,
+  table.fanta-player-table-v575-listone .listone-col-fvm,
+  table.fanta-player-table-v575-listone .fanta-player-cost-col-v575,
+  table.fanta-player-table-v575-listone .fanta-player-qta-col-v575 {
+    width: 3.75rem !important;
+    min-width: 3.75rem !important;
+    max-width: 3.75rem !important;
+    text-align: left !important;
+  }
+
+  table.fanta-player-table-v575 .status {
+    display: inline-block !important;
+    max-width: 100% !important;
+    padding: 3px 6px !important;
+    font-size: 0.62rem !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+  }
+
+  table.fanta-player-table-v575 tbody tr.fanta-role-p-v575 > td {
+    background: var(--pt-v575-gk-bg) !important;
+  }
+  table.fanta-player-table-v575 tbody tr.fanta-role-d-v575 > td {
+    background: var(--pt-v575-def-bg) !important;
+  }
+  table.fanta-player-table-v575 tbody tr.fanta-role-c-v575 > td {
+    background: var(--pt-v575-mid-bg) !important;
+  }
+  table.fanta-player-table-v575 tbody tr.fanta-role-a-v575 > td {
+    background: var(--pt-v575-fwd-bg) !important;
+  }
+
+  table.fanta-player-table-v575 tbody tr.fanta-role-p-v575 > td:first-child,
+  table.fanta-player-table-v575 tbody tr.fanta-role-p-v575 > .fanta-player-name-col-v575 {
+    background: var(--pt-v575-gk-bg) !important;
+    box-shadow: inset 4px 0 var(--pt-v575-gk-line), var(--pt-v575-shadow) !important;
+  }
+  table.fanta-player-table-v575 tbody tr.fanta-role-d-v575 > td:first-child,
+  table.fanta-player-table-v575 tbody tr.fanta-role-d-v575 > .fanta-player-name-col-v575 {
+    background: var(--pt-v575-def-bg) !important;
+    box-shadow: inset 4px 0 var(--pt-v575-def-line), var(--pt-v575-shadow) !important;
+  }
+  table.fanta-player-table-v575 tbody tr.fanta-role-c-v575 > td:first-child,
+  table.fanta-player-table-v575 tbody tr.fanta-role-c-v575 > .fanta-player-name-col-v575 {
+    background: var(--pt-v575-mid-bg) !important;
+    box-shadow: inset 4px 0 var(--pt-v575-mid-line), var(--pt-v575-shadow) !important;
+  }
+  table.fanta-player-table-v575 tbody tr.fanta-role-a-v575 > td:first-child,
+  table.fanta-player-table-v575 tbody tr.fanta-role-a-v575 > .fanta-player-name-col-v575 {
+    background: var(--pt-v575-fwd-bg) !important;
+    box-shadow: inset 4px 0 var(--pt-v575-fwd-line), var(--pt-v575-shadow) !important;
+  }
+}
