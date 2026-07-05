@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "570",
+  "currentVersion": "571",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -632,7 +632,8 @@
     "V488 inventaria le dipendenze JS comuni e classifica i candidati alla centralizzazione, senza spostare JS runtime e senza cancellare copie locali.",
     "V506 centralizza validatori comuni form/tool in fanta-engine e collega il Sorteggio giornate al motore V506 con fallback locale V473.",
     "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale.",
-    "V570 aggiunge uno strumento opzionale di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo solo con resizeTabelle=1 e stampa misure CSS in console."
+    "V570 aggiunge uno strumento opzionale di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo solo con resizeTabelle=1 e stampa misure CSS in console.",
+    "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile."
   ],
   "ui": {
     "footerVersion": 488
@@ -1301,6 +1302,7 @@
     ]
   },
   "changelog": [
+    "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
     "V568 adatta da mobile le colonne delle tabelle Rose/Area Squadra: prima colonna senza ellissi e colonna Costo ridotta al contenuto.",
     "V569 riduce da mobile la prima colonna sticky della rosa in Area Squadra al 30% circa della larghezza precedente, mantenendo sfondo opaco e testi leggibili."
   ],
@@ -1341,6 +1343,29 @@
       "Admin",
       "Presidente",
       "Calciomercato disabled V561"
+    ]
+  },
+  "tableColumnResizerV571": {
+    "version": "V571",
+    "enabledByDefault": false,
+    "activation": [
+      "?resizeTabelle=1",
+      "?tableSizer=1",
+      "FantaTableResizeV571.enable()"
+    ],
+    "targets": [
+      "Area Squadra roster table",
+      "Rose expanded roster table",
+      "Listone table"
+    ],
+    "mobile": "Visible large <> handles on column edges, touch-action none, live width badge, DevTools console output on release",
+    "preserves": [
+      "Firebase",
+      "EmailJS",
+      "Admin",
+      "Presidente",
+      "Calciomercato disabled V561",
+      "Svincola Giocatori when available"
     ]
   }
 }

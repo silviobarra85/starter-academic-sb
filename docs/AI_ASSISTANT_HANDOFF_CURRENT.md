@@ -1,39 +1,38 @@
-# AI Assistant Handoff corrente - V570
+# AI Assistant Handoff corrente - V571
 
-Baseline operativa aggiornata a **V570 - Strumento resize colonne tabelle giocatori**.
+Baseline operativa aggiornata a **V571 - Indicatori resize colonne mobile**.
 
-## Modifica V570
+## Modifica V571
 
-- Aggiunto uno strumento opzionale per ridimensionare in pagina le colonne delle tabelle giocatori.
-- Lo strumento e' caricato su entrambe le leghe ma resta inattivo per gli utenti normali.
-- Si attiva solo con query string:
+- Migliorato lo strumento opzionale V570 per ridimensionare colonne delle tabelle giocatori.
+- Lo strumento resta opt-in e inattivo per gli utenti normali.
+- Si attiva con:
   - `?resizeTabelle=1`
-  - oppure `?tableSizer=1`
-- Si disattiva con:
-  - `?resizeTabelle=0`
-  - oppure console `FantaTableResizeV570.disable()`.
+  - `?tableSizer=1`
+  - oppure console `FantaTableResizeV571.enable()`.
 - Tabelle target:
-  - Area Squadra / Dashboard Presidente: rosa squadra.
+  - Area Squadra / Dashboard Presidente: tabella rosa.
   - Rose: rosa espansa di una squadra.
   - Listone.
-- Durante il ridimensionamento compaiono maniglie sulle intestazioni delle colonne.
-- A fine drag, la console DevTools stampa:
-  - tabella coinvolta;
-  - larghezze in pixel per colonna;
-  - snippet CSS copiabile.
-- Aggiornati footer/cache-buster/config a V570 su entrambe le leghe.
+- Aggiunti indicatori visibili stile maniglia tra le colonne, con simbolo `<>`.
+- Da mobile le maniglie sono piu grandi e touch-friendly.
+- Durante il drag compare un badge con tabella, colonna e larghezza corrente.
+- Al rilascio, DevTools Console stampa larghezze e snippet CSS copiabile.
+- Mantenuto alias `FantaTableResizeV570` verso V571 per compatibilita operativa.
+- Aggiornati footer/cache-buster/config a V571 su entrambe le leghe.
 
 ## File principali
 
 ```text
-static/fanta-engine/css/table-column-resizer-v570.css
-static/fanta-engine/js/ui/table-column-resizer-v570.js
-static/fanta-engine/tools/audit-table-column-resizer-v570.mjs
+static/fanta-engine/css/table-column-resizer-v571.css
+static/fanta-engine/js/ui/table-column-resizer-v571.js
+static/fanta-engine/tools/audit-table-column-resizer-v571.mjs
 ```
 
 ## Guardrail
 
-- Il resize V570 e' opt-in: non altera layout o prestazioni in navigazione normale.
+- V571 non modifica dati, Firebase, EmailJS, Admin, Area Presidente o snapshot.
+- Il resize resta disattivato in navigazione normale.
 - Calciomercato resta disattivato come da V561.
 - Svincola Giocatori ZonaOrientale resta attivo.
 - Logo account presidente per stagione resta preservato.
@@ -43,11 +42,11 @@ static/fanta-engine/tools/audit-table-column-resizer-v570.mjs
 ## Audit
 
 ```bash
-node static/fanta-engine/tools/audit-table-column-resizer-v570.mjs
-node --check static/fanta-engine/js/ui/table-column-resizer-v570.js
+node static/fanta-engine/tools/audit-table-column-resizer-v571.mjs
+node --check static/fanta-engine/js/ui/table-column-resizer-v571.js
 ```
 
-## Uso rapido
+## Uso rapido mobile
 
 Aprire, per esempio:
 
@@ -56,4 +55,4 @@ Aprire, per esempio:
 /fantapetillomantramanager/?resizeTabelle=1#listone
 ```
 
-Poi trascinare le maniglie sulle intestazioni. Copiare dalla console i valori stampati da V570.
+Poi trascinare con il dito gli indicatori `<>` sulle intestazioni delle colonne. Al rilascio copiare dalla Console i valori stampati da V571.

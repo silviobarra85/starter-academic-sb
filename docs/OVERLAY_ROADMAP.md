@@ -119,3 +119,14 @@ Stato: completato.
 - Le misure vengono stampate in DevTools Console con snippet CSS copiabile.
 - Lo strumento e' disattivato di default e non modifica la navigazione ordinaria.
 - Audit: `node static/fanta-engine/tools/audit-table-column-resizer-v570.mjs`.
+
+## V571 - Indicatori resize colonne mobile
+
+Stato: completato.
+
+- Migliora il tool opt-in V570 con maniglie visibili `<>` sulle intestazioni delle colonne.
+- Maniglie piu grandi e touch-friendly da mobile.
+- Badge live con larghezza corrente durante il trascinamento.
+- La Console DevTools stampa ancora misure e CSS al rilascio.
+- Scope invariato: Area Squadra, Rose espanse e Listone; nessun impatto in navigazione normale.
+- Audit: `node static/fanta-engine/tools/audit-table-column-resizer-v571.mjs`.
