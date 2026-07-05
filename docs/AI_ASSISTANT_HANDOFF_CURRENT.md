@@ -1,9 +1,10 @@
 # AI Assistant Handoff Current
 
 ## Versione corrente
-V565 - Logo account presidente coerente con stagione
+V566 - Footer ZonaOrientale da config allineato
 
 ## Stato sintetico
+- V566 riallinea footer/cache-buster/config ZonaOrientale: il footer visibile viene generato a runtime da `league-config.json` e non solo dal testo hard-coded in `index.html`.
 - ZonaOrientale: stagione corrente `2026-2027`.
 - Calciomercato: disattivato come da V561.
 - Svincola Giocatori: attivo in Area Presidente ZonaOrientale con selezione giocatori, anteprima email e invio EmailJS al presidente di lega.
@@ -17,7 +18,7 @@ V565 - Logo account presidente coerente con stagione
 - Conservare mobile UX, Admin, Presidente, Firebase, EmailJS, Listone, Rose, Bilanci, Competizioni.
 - La modifica V565 non cambia permessi, login, teamUsers, EmailJS o dati Firebase: corregge solo la risoluzione visuale del logo account in base alla stagione selezionata.
 
-## Audit V565
+## Audit V566
 ```bash
-node static/fanta-engine/tools/audit-president-account-season-logo-v565.mjs
+node static/fanta-engine/tools/audit-zona-footer-config-v566.mjs
 ```

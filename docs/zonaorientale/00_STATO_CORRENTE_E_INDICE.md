@@ -1,3 +1,7 @@
+## V566 - Footer ZonaOrientale da config allineato
+
+La V566 corregge il footer ZonaOrientale: il testo visibile non dipende solo da `index.html`, perche' `assets/js/core/league-config-v443.js` sovrascrive gli elementi `data-league-footer-v445` usando `assets/league-config.json`. La config era rimasta a `currentVersion: 563`, quindi il footer online poteva mostrare `V563` anche se l'HTML statico era stato aggiornato. V566 riallinea config, fallback JS, cache-buster e footer statici a `V566`. Sono preservati Calciomercato disattivato, Svincola Giocatori, layout header e logo presidente per stagione. `FUNZIONALITA'.md` non e' stato modificato.
+
 ## V565 - Logo account presidente coerente con stagione
 
 La V565 corregge il pulsante account presidente in alto su ZonaOrientale: il logo viene risolto dalla squadra della stagione selezionata, non solo dal `seasonTeamId` salvato nel documento `teamUsers`. Se il presidente guarda `2026-2027` vede il nuovo logo, mentre tornando a `2025-2026` vede il logo storico e mantiene la label `Pres. <cognome>`. La modifica non cambia login, permessi, EmailJS, Svincola Giocatori o Calciomercato disattivato. `FUNZIONALITA'.md` non e' stato modificato.

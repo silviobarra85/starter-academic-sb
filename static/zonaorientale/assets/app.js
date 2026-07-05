@@ -26,8 +26,8 @@ import { installFeatureCardRegistryV497 } from "../../fanta-engine/js/core/featu
 import { installDashboardCardsEngineV504 } from "../../fanta-engine/js/ui/dashboard-cards-engine-v504.js?v=504";
 import { installDashboardRendererHelpersV505, renderCollapsiblePanelV505 } from "../../fanta-engine/js/ui/dashboard-renderer-helpers-v505.js?v=505";
 import { installDashboardRendererHelpersV509, renderAdminCollapsiblePanelV509, renderPresidentDashboardMetricV509 } from "../../fanta-engine/js/ui/dashboard-renderer-helpers-v509.js?v=509";
-import { installSeasonDataAdapterV526 } from "../../fanta-engine/js/core/season-data-adapter-v526.js?v=563";
-import { installSeasonPathResolverV537 } from "../../fanta-engine/js/core/season-path-resolver-v537.js?v=563";
+import { installSeasonDataAdapterV526 } from "../../fanta-engine/js/core/season-data-adapter-v526.js?v=566";
+import { installSeasonPathResolverV537 } from "../../fanta-engine/js/core/season-path-resolver-v537.js?v=566";
 
 import {
   COLLECTIONS,
@@ -108,7 +108,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=563";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=566";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16128,7 +16128,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "543";
+const DEPLOY_EXPECTED_VERSION_V181 = "566";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");

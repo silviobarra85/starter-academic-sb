@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "563",
+  "currentVersion": "566",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -409,7 +409,7 @@
     ],
     "footerLastUpdated": "04/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
-    "footerVersion": 561
+    "footerVersion": 566
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -486,7 +486,8 @@
     "V487 centralizza prudentemente i soli CSS comuni in fanta-engine/css/shared/v487 con fallback locale, senza cancellare copie locali e senza spostare JS runtime.",
     "V488 inventaria le dipendenze JS comuni e classifica i candidati alla centralizzazione, senza spostare JS runtime e senza cancellare copie locali.",
     "V506 centralizza validatori comuni form/tool in fanta-engine e collega il Sorteggio giornate al motore V506 con fallback locale V473.",
-    "V563 corregge la riattivazione runtime di Svincola Giocatori su ZonaOrientale: il registro card viene abilitato gia nel bootstrap e il pannello viene reinserito/riagganciato dopo il render dell Area Presidente."
+    "V563 corregge la riattivazione runtime di Svincola Giocatori su ZonaOrientale: il registro card viene abilitato gia nel bootstrap e il pannello viene reinserito/riagganciato dopo il render dell Area Presidente.",
+    "V566 riallinea footer/cache-buster/config ZonaOrientale: il testo data-league-footer-v445 viene sovrascritto dal runtime usando currentVersion e branding.footerLastUpdated della league-config."
   ],
   "version": 547,
   "runtime": {
@@ -1146,5 +1147,25 @@
     "recipient": "caparrotti86@yahoo.it",
     "preservesCalciomercatoDisabledV561": true,
     "preservesFantaPetilloMantraManager": true
+  },
+  "footerConfigSyncV566": {
+    "version": "V566",
+    "status": "active",
+    "scope": "zonaorientale",
+    "reason": "Il footer HTML veniva sovrascritto a runtime da league-config.json ancora fermo a V563.",
+    "files": [
+      "assets/league-config.json",
+      "assets/js/core/league-config-v443.js",
+      "index.html",
+      "competition.html",
+      "player.html",
+      "assets/app.js"
+    ],
+    "preserves": [
+      "Calciomercato disattivato V561",
+      "Svincola Giocatori V563",
+      "Header Svincola V564",
+      "Logo account presidente per stagione V565"
+    ]
   }
 }

@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '563',
+  currentVersion: '566',
   currentSeasonId: '2026-2027',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -134,7 +134,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=563';
+const CONFIG_URL_V443 = './assets/league-config.json?v=566';
 
 const PRESENTATION_ENGINE_CANDIDATES_V481 = [
   '../../../../fanta-engine/js/core/league-presentation-v481.js',
@@ -249,7 +249,7 @@ let readyPromiseV443 = null;
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);
   window.ZonaOrientaleLeagueConfigV443 = Object.freeze({
-    version: 'V563',
+    version: 'V566',
     source,
     config: cachedConfigV443,
     loadedAt: new Date().toISOString(),
@@ -483,7 +483,7 @@ export function applyLeagueRuntimePresentationV445(pageId = detectPageIdV445()) 
         registry: window.FantaLeagueSectionRegistryV480 || window.ZonaOrientaleSectionRegistryV480 || window.FantaMantraManagerSectionRegistryV480 || window.FantaPetilloSectionRegistryV480 || null
       });
       window.ZonaOrientaleLeagueRuntimePresentationV445 = Object.freeze({
-        version: 'V563',
+        version: 'V566',
         pageId,
         appliedAt: new Date().toISOString(),
         commonPresentationEngine: true,

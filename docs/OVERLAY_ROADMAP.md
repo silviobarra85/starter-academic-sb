@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-V565 - Logo account presidente coerente con stagione completato.
+V566 - Footer ZonaOrientale da config allineato completato.
 
 ## Ultima decisione
 
@@ -67,3 +67,13 @@ Stato: completato.
 - Se il presidente passa da `2026-2027` a `2025-2026`, il logo torna quello storico e resta visibile la label `Pres. <cognome>`.
 - V561, V563 e V564 preservate.
 - Audit: `node static/fanta-engine/tools/audit-president-account-season-logo-v565.mjs`.
+
+
+## V566 - Footer ZonaOrientale da config allineato
+
+Stato: completato.
+
+- Corregge il disallineamento per cui l'HTML di `index.html` riportava V565 ma il runtime sovrascriveva il footer con V563 leggendo `assets/league-config.json`.
+- Allinea `currentVersion`, fallback `league-config-v443.js`, cache-buster e footer di `index.html`, `competition.html` e `player.html` a V566.
+- Preserva Calciomercato disattivato V561, Svincola Giocatori V563, layout V564 e logo account presidente V565.
+- Audit: `node static/fanta-engine/tools/audit-zona-footer-config-v566.mjs`.
