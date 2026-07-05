@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "569",
+  "currentVersion": "570",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -492,7 +492,8 @@
     "V506 centralizza validatori comuni form/tool in fanta-engine e collega il Sorteggio giornate al motore V506 con fallback locale V473.",
     "V563 corregge la riattivazione runtime di Svincola Giocatori su ZonaOrientale: il registro card viene abilitato gia nel bootstrap e il pannello viene reinserito/riagganciato dopo il render dell Area Presidente.",
     "V566 riallinea footer/cache-buster/config ZonaOrientale: il testo data-league-footer-v445 viene sovrascritto dal runtime usando currentVersion e branding.footerLastUpdated della league-config.",
-    "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale."
+    "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale.",
+    "V570 aggiunge uno strumento opzionale di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo solo con resizeTabelle=1 e stampa misure CSS in console."
   ],
   "version": 547,
   "runtime": {

@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-V569 - Prima colonna rosa Area Squadra mobile compatta completato.
+V570 - Strumento resize colonne tabelle giocatori completato.
 
 ## Ultima decisione
 
@@ -109,3 +109,13 @@ Stato: completato.
 - Mantiene sfondo opaco/sticky e consente al nome giocatore di andare a capo senza ellissi.
 - Scope isolato: non modifica direttamente Rose espanse e Listone, che restano gestiti da V568.
 - Audit: `node static/fanta-engine/tools/audit-teamarea-roster-first-col-v569.mjs`.
+
+## V570 - Strumento resize colonne tabelle giocatori
+
+Stato: completato.
+
+- Aggiunge un tool opt-in per ridimensionare colonne in Area Squadra, Rose e Listone.
+- Attivazione: `?resizeTabelle=1`.
+- Le misure vengono stampate in DevTools Console con snippet CSS copiabile.
+- Lo strumento e' disattivato di default e non modifica la navigazione ordinaria.
+- Audit: `node static/fanta-engine/tools/audit-table-column-resizer-v570.mjs`.

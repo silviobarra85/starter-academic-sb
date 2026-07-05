@@ -1,3 +1,5 @@
+> Aggiornamento V570: aggiunto strumento opt-in `?resizeTabelle=1` per ridimensionare colonne delle tabelle giocatori in Area Squadra, Rose e Listone. Le misure vengono stampate in DevTools Console. Nessun impatto in navigazione normale.
+
 ## V569 - Prima colonna rosa Area Squadra mobile compatta
 
 La V569 applica anche a FantaMantraManager il CSS mobile separato per rendere piu' compatta la prima colonna sticky della tabella rosa in Area Squadra / profilo squadra. Rose espanse e Listone restano separati e governati da V568, cosi' le future modifiche non si influenzano a vicenda. La patch e' solo presentazionale e non modifica dati, Firebase, EmailJS, Admin, permessi o snapshot.

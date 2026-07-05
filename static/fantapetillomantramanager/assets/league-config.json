@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "569",
+  "currentVersion": "570",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -631,7 +631,8 @@
     "V487 centralizza prudentemente i soli CSS comuni in fanta-engine/css/shared/v487 con fallback locale, senza cancellare copie locali e senza spostare JS runtime.",
     "V488 inventaria le dipendenze JS comuni e classifica i candidati alla centralizzazione, senza spostare JS runtime e senza cancellare copie locali.",
     "V506 centralizza validatori comuni form/tool in fanta-engine e collega il Sorteggio giornate al motore V506 con fallback locale V473.",
-    "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale."
+    "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale.",
+    "V570 aggiunge uno strumento opzionale di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo solo con resizeTabelle=1 e stampa misure CSS in console."
   ],
   "ui": {
     "footerVersion": 488

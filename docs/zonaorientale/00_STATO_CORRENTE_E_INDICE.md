@@ -1,3 +1,5 @@
+> Aggiornamento V570: aggiunto strumento opt-in `?resizeTabelle=1` per ridimensionare colonne delle tabelle giocatori in Area Squadra, Rose e Listone. Le misure vengono stampate in DevTools Console. Nessun impatto in navigazione normale.
+
 ## V569 - Prima colonna rosa Area Squadra mobile compatta
 
 La V569 aggiunge un CSS mobile separato per ridurre la prima colonna sticky della tabella rosa in Area Squadra / profilo squadra. La colonna passa a `clamp(6.25rem, 30vw, 9rem)`, resta opaca durante lo scroll orizzontale e il nome giocatore puo' andare a capo senza ellissi. Rose espanse e Listone non vengono toccati direttamente: continuano a usare gli scope separati della V568. Sono preservati dati, snapshot, Firebase, EmailJS, Admin, permessi, Svincola Giocatori, logo presidente per stagione e Calciomercato disattivato. `FUNZIONALITA'.md` non e' stato modificato.
