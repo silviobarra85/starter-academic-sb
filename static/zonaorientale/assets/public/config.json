@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-04T18:11:29.750Z",
+  "generatedAt": "2026-07-05T07:08:18.589Z",
   "currentSeasonId": "2026-2027",
   "leagueSettings": [
     {
@@ -11,179 +11,179 @@
   "seasons": [
     {
       "id": "2026-2027",
-      "participantCount": 10,
-      "isCurrent": true,
-      "updatedAt": {
-        "seconds": 1783159617,
-        "nanoseconds": 954000000
-      },
       "createdAt": {
         "seconds": 1783158801,
         "nanoseconds": 225000000
       },
+      "isCurrent": true,
+      "participantCount": 10,
       "endsOn": "",
       "name": "Stagione 2026-2027",
-      "startsOn": ""
+      "startsOn": "",
+      "updatedAt": {
+        "seconds": 1783159617,
+        "nanoseconds": 954000000
+      }
     },
     {
       "id": "2025-2026",
-      "createdAt": {
-        "seconds": 1778833306,
-        "nanoseconds": 98000000
-      },
-      "endsOn": "2026-06-30",
       "updatedAt": {
         "seconds": 1783159617,
         "nanoseconds": 848000000
       },
-      "name": "Stagione 2025-2026",
       "startsOn": "2025-07-01",
+      "name": "Stagione 2025-2026",
+      "endsOn": "2026-06-30",
       "participantCount": 10,
-      "isCurrent": false
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778833306,
+        "nanoseconds": 98000000
+      }
     },
     {
       "id": "2024-2025",
       "endsOn": "2025-06-30",
+      "participantCount": 10,
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778833241,
         "nanoseconds": 719000000
       },
+      "startsOn": "2024-07-01",
       "updatedAt": {
         "seconds": 1778848730,
         "nanoseconds": 584000000
       },
-      "name": "Stagione 2024-2025",
-      "startsOn": "2024-07-01",
-      "isCurrent": false,
-      "participantCount": 10
+      "name": "Stagione 2024-2025"
     },
     {
       "id": "2023-2024",
-      "isCurrent": false,
       "participantCount": 10,
+      "endsOn": "2024-06-30",
       "createdAt": {
         "seconds": 1778833774,
         "nanoseconds": 379000000
       },
-      "endsOn": "2024-06-30",
+      "isCurrent": false,
+      "name": "Stagione 2023-2024",
       "updatedAt": {
         "seconds": 1778848735,
         "nanoseconds": 436000000
       },
-      "name": "Stagione 2023-2024",
       "startsOn": "2023-07-01"
     },
     {
       "id": "2022-2023",
+      "endsOn": "2023-06-30",
+      "participantCount": 10,
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778833801,
         "nanoseconds": 282000000
       },
-      "endsOn": "2023-06-30",
+      "startsOn": "2022-07-01",
       "updatedAt": {
         "seconds": 1778848739,
         "nanoseconds": 776000000
       },
-      "name": "Stagione 2022-2023",
-      "startsOn": "2022-07-01",
-      "isCurrent": false,
-      "participantCount": 10
+      "name": "Stagione 2022-2023"
     },
     {
       "id": "2021-2022",
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778833842,
         "nanoseconds": 32000000
       },
       "endsOn": "2022-06-30",
+      "participantCount": 10,
+      "startsOn": "2021-07-01",
       "updatedAt": {
         "seconds": 1778848743,
         "nanoseconds": 675000000
       },
-      "name": "Stagione 2021-2022",
-      "startsOn": "2021-07-01",
-      "isCurrent": false,
-      "participantCount": 10
+      "name": "Stagione 2021-2022"
     },
     {
       "id": "2020-2021",
       "name": "Stagione 2020-2021",
       "startsOn": "2020-07-01",
+      "updatedAt": {
+        "seconds": 1778848747,
+        "nanoseconds": 79000000
+      },
+      "participantCount": 10,
       "endsOn": "2021-06-30",
       "createdAt": {
         "seconds": 1778834387,
         "nanoseconds": 890000000
       },
-      "updatedAt": {
-        "seconds": 1778848747,
-        "nanoseconds": 79000000
-      },
-      "isCurrent": false,
-      "participantCount": 10
+      "isCurrent": false
     },
     {
       "id": "2019-2020",
-      "name": "Stagione 2019-2020",
-      "startsOn": "2019-07-01",
       "createdAt": {
         "seconds": 1778834405,
         "nanoseconds": 833000000
       },
+      "isCurrent": false,
+      "participantCount": 10,
       "endsOn": "2020-06-30",
+      "name": "Stagione 2019-2020",
+      "startsOn": "2019-07-01",
       "updatedAt": {
         "seconds": 1778848751,
         "nanoseconds": 256000000
-      },
-      "isCurrent": false,
-      "participantCount": 10
+      }
     },
     {
       "id": "2018-2019",
-      "isCurrent": false,
-      "participantCount": 10,
-      "name": "Stagione 2018-2019",
       "startsOn": "2018-07-01",
+      "updatedAt": {
+        "seconds": 1778848759,
+        "nanoseconds": 690000000
+      },
+      "name": "Stagione 2018-2019",
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778834436,
         "nanoseconds": 428000000
       },
       "endsOn": "2019-06-30",
-      "updatedAt": {
-        "seconds": 1778848759,
-        "nanoseconds": 690000000
-      }
+      "participantCount": 10
     },
     {
       "id": "2017-2018",
-      "startsOn": "2017-07-01",
-      "name": "Stagione 2017-2018",
+      "participantCount": 10,
       "endsOn": "2018-06-30",
       "createdAt": {
         "seconds": 1778834485,
         "nanoseconds": 983000000
       },
+      "isCurrent": false,
+      "name": "Stagione 2017-2018",
       "updatedAt": {
         "seconds": 1778848763,
         "nanoseconds": 923000000
       },
-      "isCurrent": false,
-      "participantCount": 10
+      "startsOn": "2017-07-01"
     },
     {
       "id": "2016-2017",
-      "endsOn": "2017-06-30",
-      "createdAt": {
-        "seconds": 1778834537,
-        "nanoseconds": 331000000
-      },
+      "startsOn": "2016-07-01",
       "updatedAt": {
         "seconds": 1778848768,
         "nanoseconds": 937000000
       },
-      "startsOn": "2016-07-01",
       "name": "Stagione 2016-2017",
+      "endsOn": "2017-06-30",
+      "participantCount": 10,
       "isCurrent": false,
-      "participantCount": 10
+      "createdAt": {
+        "seconds": 1778834537,
+        "nanoseconds": 331000000
+      }
     },
     {
       "id": "2015-2016",
@@ -191,43 +191,43 @@
         "seconds": 1778848755,
         "nanoseconds": 619000000
       },
+      "startsOn": "2015-07-01",
+      "name": "Stagione 2015-2016",
+      "endsOn": "2016-06-30",
+      "participantCount": 10,
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778834561,
         "nanoseconds": 985000000
-      },
-      "endsOn": "2016-06-30",
-      "name": "Stagione 2015-2016",
-      "startsOn": "2015-07-01",
-      "isCurrent": false,
-      "participantCount": 10
+      }
     },
     {
       "id": "2014-2015",
-      "name": "Stagione 2014-2015",
+      "endsOn": "",
+      "participantCount": 10,
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778848547,
+        "nanoseconds": 611000000
+      },
       "startsOn": "",
       "updatedAt": {
         "seconds": 1778848722,
         "nanoseconds": 126000000
       },
-      "endsOn": "",
-      "createdAt": {
-        "seconds": 1778848547,
-        "nanoseconds": 611000000
-      },
-      "isCurrent": false,
-      "participantCount": 10
+      "name": "Stagione 2014-2015"
     },
     {
       "id": "2013-2014",
-      "isCurrent": false,
-      "participantCount": 10,
-      "name": "Stagione 2013-2014",
-      "startsOn": "",
       "updatedAt": {
         "seconds": 1778848816,
         "nanoseconds": 974000000
       },
+      "startsOn": "",
+      "name": "Stagione 2013-2014",
       "endsOn": "",
+      "participantCount": 10,
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778848816,
         "nanoseconds": 974000000
@@ -235,111 +235,111 @@
     },
     {
       "id": "2012-2013",
-      "isCurrent": false,
-      "participantCount": 10,
-      "endsOn": "",
-      "createdAt": {
-        "seconds": 1778849255,
-        "nanoseconds": 284000000
-      },
+      "startsOn": "",
       "updatedAt": {
         "seconds": 1778849255,
         "nanoseconds": 284000000
       },
       "name": "Stagione 2012-2013",
-      "startsOn": ""
+      "endsOn": "",
+      "participantCount": 10,
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778849255,
+        "nanoseconds": 284000000
+      }
     },
     {
       "id": "2011-2012",
-      "name": "Stagione 2011-2012",
-      "startsOn": "",
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778849456,
         "nanoseconds": 15000000
       },
       "endsOn": "",
+      "participantCount": 10,
+      "startsOn": "",
       "updatedAt": {
         "seconds": 1778849456,
         "nanoseconds": 15000000
       },
-      "isCurrent": false,
-      "participantCount": 10
+      "name": "Stagione 2011-2012"
     },
     {
       "id": "2010-2011",
-      "isCurrent": false,
-      "participantCount": 10,
-      "endsOn": "",
-      "createdAt": {
-        "seconds": 1778849569,
-        "nanoseconds": 74000000
-      },
+      "startsOn": "",
       "updatedAt": {
         "seconds": 1778849569,
         "nanoseconds": 74000000
       },
       "name": "Stagione 2010-2011",
-      "startsOn": ""
+      "endsOn": "",
+      "participantCount": 10,
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778849569,
+        "nanoseconds": 74000000
+      }
     },
     {
       "id": "2009-2010",
       "name": "Stagione 2009-2010",
-      "startsOn": "",
       "updatedAt": {
         "seconds": 1778849704,
         "nanoseconds": 889000000
       },
-      "endsOn": "",
+      "startsOn": "",
       "createdAt": {
         "seconds": 1778849704,
         "nanoseconds": 889000000
       },
       "isCurrent": false,
-      "participantCount": 10
+      "participantCount": 10,
+      "endsOn": ""
     },
     {
       "id": "2008-2009",
-      "isCurrent": false,
-      "participantCount": 10,
       "name": "Stagione 2008-2009",
       "startsOn": "",
+      "updatedAt": {
+        "seconds": 1778849807,
+        "nanoseconds": 143000000
+      },
+      "participantCount": 10,
+      "endsOn": "",
       "createdAt": {
         "seconds": 1778849807,
         "nanoseconds": 143000000
       },
-      "endsOn": "",
-      "updatedAt": {
-        "seconds": 1778849807,
-        "nanoseconds": 143000000
-      }
+      "isCurrent": false
     },
     {
       "id": "2007-2008",
       "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778849942,
+        "nanoseconds": 831000000
+      },
+      "endsOn": "",
       "participantCount": 10,
+      "startsOn": "",
       "updatedAt": {
         "seconds": 1778849942,
         "nanoseconds": 831000000
       },
-      "createdAt": {
-        "seconds": 1778849942,
-        "nanoseconds": 831000000
-      },
-      "endsOn": "",
-      "name": "Stagione 2007-2008",
-      "startsOn": ""
+      "name": "Stagione 2007-2008"
     },
     {
       "id": "2006-2007",
-      "isCurrent": false,
-      "participantCount": 8,
-      "name": "Stagione 2006-2007",
-      "startsOn": "",
       "createdAt": {
         "seconds": 1778850416,
         "nanoseconds": 899000000
       },
+      "isCurrent": false,
+      "participantCount": 8,
       "endsOn": "",
+      "name": "Stagione 2006-2007",
+      "startsOn": "",
       "updatedAt": {
         "seconds": 1778850416,
         "nanoseconds": 899000000
@@ -347,35 +347,35 @@
     },
     {
       "id": "2005-2006",
-      "isCurrent": false,
+      "endsOn": "",
       "participantCount": 8,
-      "name": "Stagione 2005-2006",
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778850529,
+        "nanoseconds": 548000000
+      },
       "startsOn": "",
       "updatedAt": {
         "seconds": 1778850529,
         "nanoseconds": 548000000
       },
-      "endsOn": "",
-      "createdAt": {
-        "seconds": 1778850529,
-        "nanoseconds": 548000000
-      }
+      "name": "Stagione 2005-2006"
     },
     {
       "id": "2004-2005",
-      "isCurrent": false,
+      "endsOn": "",
       "participantCount": 6,
-      "name": "Stagione 2004-2005",
+      "isCurrent": false,
+      "createdAt": {
+        "seconds": 1778850611,
+        "nanoseconds": 692000000
+      },
       "startsOn": "",
       "updatedAt": {
         "seconds": 1778850611,
         "nanoseconds": 692000000
       },
-      "endsOn": "",
-      "createdAt": {
-        "seconds": 1778850611,
-        "nanoseconds": 692000000
-      }
+      "name": "Stagione 2004-2005"
     }
   ]
 }
