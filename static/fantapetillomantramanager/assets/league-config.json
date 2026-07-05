@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "568",
+  "currentVersion": "569",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -169,7 +169,8 @@
     "calciomercatoDisabledV561": true,
     "rosterStickyFirstColumnOpaque": true,
     "rosterStickyFirstColumnOpaqueVersion": "V567",
-    "rosterMobileColumnFitVersion": "V568"
+    "rosterMobileColumnFitVersion": "V568",
+    "teamareaRosterFirstColumnCompactVersion": "V569"
   },
   "guardrails": {
     "sandboxClone": true,
@@ -415,7 +416,7 @@
     "footerLastUpdated": "05/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
     "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
-    "footerVersion": 567
+    "footerVersion": 569
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -1299,7 +1300,8 @@
     ]
   },
   "changelog": [
-    "V568 adatta da mobile le colonne delle tabelle Rose/Area Squadra: prima colonna senza ellissi e colonna Costo ridotta al contenuto."
+    "V568 adatta da mobile le colonne delle tabelle Rose/Area Squadra: prima colonna senza ellissi e colonna Costo ridotta al contenuto.",
+    "V569 riduce da mobile la prima colonna sticky della rosa in Area Squadra al 30% circa della larghezza precedente, mantenendo sfondo opaco e testi leggibili."
   ],
   "rosterMobileColumnFitV568": {
     "version": "V568",
@@ -1311,6 +1313,27 @@
     "playerColumn": "auto width based on longest cell, no ellipsis",
     "costColumn": "content-sized narrow numeric column",
     "preserves": [
+      "V567 opaque sticky first column",
+      "Firebase",
+      "EmailJS",
+      "Admin",
+      "Presidente",
+      "Calciomercato disabled V561"
+    ]
+  },
+  "teamareaRosterFirstColumnCompactV569": {
+    "version": "V569",
+    "scope": [
+      "Area Squadra / profilo squadra roster table"
+    ],
+    "mobileOnly": true,
+    "firstColumnWidth": "clamp(6.25rem, 30vw, 9rem)",
+    "separateFrom": [
+      "Rose expanded tables",
+      "Listone table"
+    ],
+    "preserves": [
+      "V568 table-specific scopes",
       "V567 opaque sticky first column",
       "Firebase",
       "EmailJS",

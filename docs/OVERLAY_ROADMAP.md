@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-V568 - Colonne mobili Rose/Area Squadra adattive completato.
+V569 - Prima colonna rosa Area Squadra mobile compatta completato.
 
 ## Ultima decisione
 
@@ -87,12 +87,25 @@ Stato: completato.
 - Nessuna modifica a dati, Firebase, EmailJS, permessi, snapshot o funzioni Netlify.
 - Audit: `node static/fanta-engine/tools/audit-roster-sticky-first-col-v567.mjs`.
 
-## V568 - Colonne mobili Rose/Area Squadra adattive
+## V568 - Tabelle giocatori mobile adattive e separate
 
 Stato: completato.
 
 - Patch CSS comune mobile-only per entrambe le leghe.
-- La prima colonna `Giocatore` nelle tabelle Rose/Area Squadra non ha piu' larghezza fissa e non usa ellissi.
-- La colonna `Costo` viene ridotta alla larghezza necessaria al contenuto.
+- Regole separate per Area Squadra, Rose espanse e Listone, cosi' ogni tabella puo' essere rifinita senza influenzare le altre.
+- La prima colonna della rosa in Area Squadra mantiene sfondo sticky/opaco e non tronca piu' il nome giocatore.
+- Tutte le celle delle tabelle giocatori sono allineate a sinistra, incluse celle numeriche e pulsanti sort.
+- Le colonne usano layout automatico e larghezza guidata dal contenuto piu' lungo, con scroll orizzontale mobile.
 - V567 resta caricata per preservare la prima colonna opaca.
 - Audit: `node static/fanta-engine/tools/audit-roster-mobile-column-fit-v568.mjs`.
+
+
+## V569 - Prima colonna rosa Area Squadra mobile compatta
+
+Stato: completato.
+
+- Patch CSS comune mobile-only per entrambe le leghe.
+- Riduce la prima colonna sticky della rosa in Area Squadra / profilo squadra a `clamp(6.25rem, 30vw, 9rem)`, circa 70% piu compatta rispetto all'espansione libera di V568.
+- Mantiene sfondo opaco/sticky e consente al nome giocatore di andare a capo senza ellissi.
+- Scope isolato: non modifica direttamente Rose espanse e Listone, che restano gestiti da V568.
+- Audit: `node static/fanta-engine/tools/audit-teamarea-roster-first-col-v569.mjs`.
