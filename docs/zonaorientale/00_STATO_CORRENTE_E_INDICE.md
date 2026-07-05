@@ -1,3 +1,7 @@
+## V567 - Prima colonna Rose/Area Squadra opaca da mobile
+
+La V567 applica un CSS comune mobile-only per rendere opaca la prima colonna sticky nelle tabelle Rose e Area Squadra. Durante lo scroll orizzontale da smartphone, il nome giocatore resta leggibile e non si sovrappone visivamente alle celle sottostanti. Sono preservati Calciomercato disattivato, Svincola Giocatori, logo presidente per stagione, Firebase, EmailJS, Admin e dati. `FUNZIONALITA'.md` non e' stato modificato.
+
 ## V566 - Footer ZonaOrientale da config allineato
 
 La V566 corregge il footer ZonaOrientale: il testo visibile non dipende solo da `index.html`, perche' `assets/js/core/league-config-v443.js` sovrascrive gli elementi `data-league-footer-v445` usando `assets/league-config.json`. La config era rimasta a `currentVersion: 563`, quindi il footer online poteva mostrare `V563` anche se l'HTML statico era stato aggiornato. V566 riallinea config, fallback JS, cache-buster e footer statici a `V566`. Sono preservati Calciomercato disattivato, Svincola Giocatori, layout header e logo presidente per stagione. `FUNZIONALITA'.md` non e' stato modificato.

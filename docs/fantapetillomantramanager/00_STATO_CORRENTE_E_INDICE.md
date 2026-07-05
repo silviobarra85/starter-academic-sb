@@ -1,3 +1,7 @@
+## V567 - Prima colonna Rose/Area Squadra opaca da mobile
+
+La V567 applica anche a FantaMantraManager il CSS comune mobile-only per rendere opaca la prima colonna sticky nelle tabelle Rose e Area Squadra. L'intervento e' solo presentazionale e non modifica dati, Firebase, EmailJS, Admin, permessi o snapshot.
+
 ## V560 - Boot preloader interactive-ready
 
 La V560 corregge la V559 anche su FantaMantraManager: il preloader si chiude solo dopo render app, `window.load`, controlli DOM essenziali e quiet frame del main thread. La percentuale non ruota; ruota solo l'anello della rotellina. Firebase, EmailJS, Admin, Presidente, router e dati restano invariati.

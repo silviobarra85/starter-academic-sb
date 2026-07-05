@@ -77,3 +77,12 @@ Stato: completato.
 - Allinea `currentVersion`, fallback `league-config-v443.js`, cache-buster e footer di `index.html`, `competition.html` e `player.html` a V566.
 - Preserva Calciomercato disattivato V561, Svincola Giocatori V563, layout V564 e logo account presidente V565.
 - Audit: `node static/fanta-engine/tools/audit-zona-footer-config-v566.mjs`.
+
+## V567 - Prima colonna Rose/Area Squadra opaca da mobile
+
+Stato: completato.
+
+- Patch CSS comune mobile-only per entrambe le leghe.
+- La prima colonna sticky delle tabelle Rose e Area Squadra usa sfondi opachi, evitando la sovrapposizione visiva dei testi durante lo scroll orizzontale.
+- Nessuna modifica a dati, Firebase, EmailJS, permessi, snapshot o funzioni Netlify.
+- Audit: `node static/fanta-engine/tools/audit-roster-sticky-first-col-v567.mjs`.

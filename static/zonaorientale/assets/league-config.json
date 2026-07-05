@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "566",
+  "currentVersion": "567",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -162,7 +162,9 @@
     "performanceProfilerLazyRenderRuntimeEnabled": false,
     "applicationCacheChunkedTablesRuntimeEnabled": false,
     "eagerDataPreloadRuntimeEnabled": false,
-    "calciomercatoDisabledV561": true
+    "calciomercatoDisabledV561": true,
+    "rosterStickyFirstColumnOpaque": true,
+    "rosterStickyFirstColumnOpaqueVersion": "V567"
   },
   "guardrails": {
     "configOnly": true,
@@ -407,9 +409,9 @@
         "icon": "⚙️"
       }
     ],
-    "footerLastUpdated": "04/07/2026",
+    "footerLastUpdated": "05/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
-    "footerVersion": 566
+    "footerVersion": 567
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -487,7 +489,8 @@
     "V488 inventaria le dipendenze JS comuni e classifica i candidati alla centralizzazione, senza spostare JS runtime e senza cancellare copie locali.",
     "V506 centralizza validatori comuni form/tool in fanta-engine e collega il Sorteggio giornate al motore V506 con fallback locale V473.",
     "V563 corregge la riattivazione runtime di Svincola Giocatori su ZonaOrientale: il registro card viene abilitato gia nel bootstrap e il pannello viene reinserito/riagganciato dopo il render dell Area Presidente.",
-    "V566 riallinea footer/cache-buster/config ZonaOrientale: il testo data-league-footer-v445 viene sovrascritto dal runtime usando currentVersion e branding.footerLastUpdated della league-config."
+    "V566 riallinea footer/cache-buster/config ZonaOrientale: il testo data-league-footer-v445 viene sovrascritto dal runtime usando currentVersion e branding.footerLastUpdated della league-config.",
+    "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale."
   ],
   "version": 547,
   "runtime": {
@@ -1166,6 +1169,23 @@
       "Svincola Giocatori V563",
       "Header Svincola V564",
       "Logo account presidente per stagione V565"
+    ]
+  },
+  "rosterStickyFirstColumnV567": {
+    "version": "V567",
+    "scope": [
+      "rosterClubCards",
+      "mobileRosterDetail",
+      "teamProfileRoster"
+    ],
+    "mobileOnly": true,
+    "opaqueFirstColumn": true,
+    "preserves": [
+      "Admin",
+      "Presidente",
+      "Firebase",
+      "EmailJS",
+      "Calciomercato disabled V561"
     ]
   }
 }

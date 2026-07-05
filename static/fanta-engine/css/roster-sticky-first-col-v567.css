@@ -1,0 +1,93 @@
+/* V567 - Mobile: prima colonna rose non trasparente.
+ * Scope: Area Squadra e sezione Rose, su entrambe le leghe.
+ * Obiettivo: durante lo scroll orizzontale, la colonna sticky dei nomi resta
+ * opaca e leggibile, evitando sovrapposizione visiva con le celle sottostanti.
+ */
+:root {
+  --fanta-roster-sticky-base-v567: #0f172a;
+  --fanta-roster-sticky-head-v567: #111827;
+  --fanta-roster-sticky-gk-v567: #5b3b08;
+  --fanta-roster-sticky-def-v567: #0f3f2a;
+  --fanta-roster-sticky-mid-v567: #0c3d5a;
+  --fanta-roster-sticky-fwd-v567: #5f1f1f;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  body.is-mobile-ux #rosterClubCards .roster-player-table th:first-child,
+  body.is-mobile-ux #rosterClubCards .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table td:first-child,
+  body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table th:first-child,
+  body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table th:first-child,
+  body.is-mobile-ux table.team-profile-roster-table td:first-child,
+  body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table th:first-child,
+  body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table td:first-child {
+    position: sticky !important;
+    left: 0 !important;
+    background: var(--fanta-roster-sticky-base-v567) !important;
+    background-color: var(--fanta-roster-sticky-base-v567) !important;
+    background-image: none !important;
+    background-clip: padding-box !important;
+    color: #f8fafc !important;
+    box-shadow: 10px 0 16px rgba(0, 0, 0, 0.42) !important;
+    z-index: 9 !important;
+    isolation: isolate !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table th:first-child,
+  body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table th:first-child,
+  body.is-mobile-ux table.team-profile-roster-table th:first-child,
+  body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table th:first-child {
+    background: var(--fanta-roster-sticky-head-v567) !important;
+    background-color: var(--fanta-roster-sticky-head-v567) !important;
+    background-image: none !important;
+    z-index: 12 !important;
+  }
+
+  body.is-mobile-ux #rosterClubCards .roster-player-table tbody td:first-child *,
+  body.is-mobile-ux .mobile-roster-detail-card-v156 .roster-player-table tbody td:first-child *,
+  body.is-mobile-ux .mobile-roster-selected-v156 .roster-player-table tbody td:first-child *,
+  body.is-mobile-ux .team-profile-roster-wrap table.team-profile-roster-table tbody td:first-child *,
+  body.is-mobile-ux table.team-profile-roster-table tbody td:first-child *,
+  body.is-mobile-ux table.roster-sticky-table.team-profile-roster-table tbody td:first-child * {
+    color: #f8fafc !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.38) !important;
+  }
+
+  body.is-mobile-ux table.roster-player-table tbody tr.zo-role-bg-v405-gk > td:first-child,
+  body.is-mobile-ux table.roster-player-table tbody tr.player-role-gk > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.zo-role-bg-v405-gk > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.player-role-gk > td:first-child {
+    background: linear-gradient(90deg, var(--fanta-roster-sticky-gk-v567), #3f2b08) !important;
+    background-color: var(--fanta-roster-sticky-gk-v567) !important;
+  }
+
+  body.is-mobile-ux table.roster-player-table tbody tr.zo-role-bg-v405-def > td:first-child,
+  body.is-mobile-ux table.roster-player-table tbody tr.player-role-def > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.zo-role-bg-v405-def > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.player-role-def > td:first-child {
+    background: linear-gradient(90deg, var(--fanta-roster-sticky-def-v567), #0b2d1f) !important;
+    background-color: var(--fanta-roster-sticky-def-v567) !important;
+  }
+
+  body.is-mobile-ux table.roster-player-table tbody tr.zo-role-bg-v405-mid > td:first-child,
+  body.is-mobile-ux table.roster-player-table tbody tr.player-role-mid > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.zo-role-bg-v405-mid > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.player-role-mid > td:first-child {
+    background: linear-gradient(90deg, var(--fanta-roster-sticky-mid-v567), #082d46) !important;
+    background-color: var(--fanta-roster-sticky-mid-v567) !important;
+  }
+
+  body.is-mobile-ux table.roster-player-table tbody tr.zo-role-bg-v405-fwd > td:first-child,
+  body.is-mobile-ux table.roster-player-table tbody tr.player-role-fwd > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.zo-role-bg-v405-fwd > td:first-child,
+  body.is-mobile-ux table.team-profile-roster-table tbody tr.player-role-fwd > td:first-child {
+    background: linear-gradient(90deg, var(--fanta-roster-sticky-fwd-v567), #451818) !important;
+    background-color: var(--fanta-roster-sticky-fwd-v567) !important;
+  }
+}
