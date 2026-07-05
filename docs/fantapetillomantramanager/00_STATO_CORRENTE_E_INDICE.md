@@ -1,3 +1,5 @@
+> Aggiornamento V572: rimosso il resize colonne V570/V571 e ripulita la visualizzazione mobile delle tabelle giocatori (FantaPetilloMantraManager). Area Squadra/Dashboard Presidente, Rose e Listone ora usano `player-tables-mobile-v572.css`: righe colorate per ruolo, prima colonna e intestazione opache/sticky, nomi giocatore non troncati e link Fantagazzetta preservati.
+
 > Aggiornamento V571: il tool opzionale `?resizeTabelle=1` ora mostra indicatori `<>` grandi e touch-friendly sulle colonne di Area Squadra, Rose e Listone; al rilascio stampa ancora le misure in Console. Nessun impatto in navigazione normale.
 
 > Aggiornamento V570: aggiunto strumento opt-in `?resizeTabelle=1` per ridimensionare colonne delle tabelle giocatori in Area Squadra, Rose e Listone. Le misure vengono stampate in DevTools Console. Nessun impatto in navigazione normale.

@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "571",
+  "currentVersion": "572",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -416,7 +416,7 @@
     "footerLastUpdated": "05/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
     "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
-    "footerVersion": 569
+    "footerVersion": 572
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -623,6 +623,7 @@
     "performanceConsolidationVersion": "V546"
   },
   "releaseNotes": [
+    "V572 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
     "V484 inventaria asset comuni listone/calciomercato nel motore centrale senza spostare path runtime, senza cancellare copie locali e con audit dedicato.",
     "V483 consolida la documentazione canonica FantaMantraManager e documenta la roadmap per motore comune, senza modificare flussi runtime, Firebase, EmailJS o dati.",
     "V482 introduce audit anti-contaminazione multi-lega e aggiorna cache-buster/footer senza modificare flussi Firebase, Admin, EmailJS o dati.",
@@ -1302,6 +1303,7 @@
     ]
   },
   "changelog": [
+    "V572 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
     "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
     "V568 adatta da mobile le colonne delle tabelle Rose/Area Squadra: prima colonna senza ellissi e colonna Costo ridotta al contenuto.",
     "V569 riduce da mobile la prima colonna sticky della rosa in Area Squadra al 30% circa della larghezza precedente, mantenendo sfondo opaco e testi leggibili."
@@ -1345,27 +1347,21 @@
       "Calciomercato disabled V561"
     ]
   },
-  "tableColumnResizerV571": {
-    "version": "V571",
-    "enabledByDefault": false,
-    "activation": [
-      "?resizeTabelle=1",
-      "?tableSizer=1",
-      "FantaTableResizeV571.enable()"
+  "playerTablesMobileV572": {
+    "version": "V572",
+    "status": "enabled",
+    "scope": [
+      "teamarea",
+      "clubs-rosters",
+      "listone"
     ],
-    "targets": [
-      "Area Squadra roster table",
-      "Rose expanded roster table",
-      "Listone table"
-    ],
-    "mobile": "Visible large <> handles on column edges, touch-action none, live width badge, DevTools console output on release",
-    "preserves": [
-      "Firebase",
-      "EmailJS",
-      "Admin",
-      "Presidente",
-      "Calciomercato disabled V561",
-      "Svincola Giocatori when available"
+    "mobileOnly": true,
+    "tableResizeTool": "removed-from-runtime",
+    "features": [
+      "role-colored rows: P yellow, D green, C blue, A red",
+      "opaque sticky first column and opaque sticky header row",
+      "player names wrap instead of being truncated",
+      "separate CSS scopes for Area Squadra, Rose and Listone"
     ]
   }
 }

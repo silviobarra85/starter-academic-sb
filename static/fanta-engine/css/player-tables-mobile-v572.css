@@ -1,0 +1,343 @@
+/* V572 - Mobile player tables reset: Area Squadra, Rose, Listone.
+   Obiettivo: niente resize interattivo, lettura mobile stabile, righe per ruolo,
+   prima colonna/header opachi e nomi giocatore mai troncati. */
+
+@media (max-width: 780px) {
+  :root {
+    --player-table-v572-header-bg: #111827;
+    --player-table-v572-header-fg: #f9fafb;
+    --player-table-v572-border: rgba(148, 163, 184, 0.42);
+    --player-table-v572-gk-bg: #fff2b3;
+    --player-table-v572-def-bg: #d9f8df;
+    --player-table-v572-mid-bg: #dbeafe;
+    --player-table-v572-fwd-bg: #fee2e2;
+    --player-table-v572-default-bg: #ffffff;
+    --player-table-v572-gk-line: #d97706;
+    --player-table-v572-def-line: #16a34a;
+    --player-table-v572-mid-line: #2563eb;
+    --player-table-v572-fwd-line: #dc2626;
+  }
+
+  html[data-theme="dark"] {
+    --player-table-v572-header-bg: #0f172a;
+    --player-table-v572-header-fg: #f8fafc;
+    --player-table-v572-border: rgba(148, 163, 184, 0.38);
+    --player-table-v572-gk-bg: #4a3612;
+    --player-table-v572-def-bg: #123d27;
+    --player-table-v572-mid-bg: #17345f;
+    --player-table-v572-fwd-bg: #4a1d1d;
+    --player-table-v572-default-bg: #111827;
+  }
+
+  /* Scope separati: Area Squadra/Dashboard Presidente */
+  .roster-inline-table-wrap > table.roster-player-table,
+  #presidentDashboard table.roster-player-table,
+  #teamAreaPanel table.roster-player-table,
+  [data-page="teamarea"] table.roster-player-table,
+  [data-page="dashboard"] table.roster-player-table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    table-layout: auto !important;
+    width: max-content !important;
+    min-width: 100% !important;
+  }
+
+  /* Scope separato: Rose espanse / schede squadra */
+  .team-profile-roster-wrap > table.team-profile-roster-table,
+  .roster-table-wrap > table.roster-player-table,
+  [data-page="clubs"] table.roster-player-table,
+  [data-page="teamprofile"] table.team-profile-roster-table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    table-layout: auto !important;
+    width: max-content !important;
+    min-width: 100% !important;
+  }
+
+  /* Scope separato: Listone */
+  [data-page="listone"] table.listone-table,
+  .listone-main-panel table.listone-table,
+  .listone-table-wrap > table.listone-table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    table-layout: auto !important;
+    width: max-content !important;
+    min-width: 100% !important;
+  }
+
+  .roster-inline-table-wrap > table.roster-player-table th,
+  .roster-inline-table-wrap > table.roster-player-table td,
+  #presidentDashboard table.roster-player-table th,
+  #presidentDashboard table.roster-player-table td,
+  #teamAreaPanel table.roster-player-table th,
+  #teamAreaPanel table.roster-player-table td,
+  [data-page="teamarea"] table.roster-player-table th,
+  [data-page="teamarea"] table.roster-player-table td,
+  [data-page="dashboard"] table.roster-player-table th,
+  [data-page="dashboard"] table.roster-player-table td,
+  .team-profile-roster-wrap > table.team-profile-roster-table th,
+  .team-profile-roster-wrap > table.team-profile-roster-table td,
+  .roster-table-wrap > table.roster-player-table th,
+  .roster-table-wrap > table.roster-player-table td,
+  [data-page="clubs"] table.roster-player-table th,
+  [data-page="clubs"] table.roster-player-table td,
+  [data-page="teamprofile"] table.team-profile-roster-table th,
+  [data-page="teamprofile"] table.team-profile-roster-table td,
+  [data-page="listone"] table.listone-table th,
+  [data-page="listone"] table.listone-table td,
+  .listone-main-panel table.listone-table th,
+  .listone-main-panel table.listone-table td,
+  .listone-table-wrap > table.listone-table th,
+  .listone-table-wrap > table.listone-table td {
+    box-sizing: border-box !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .roster-inline-table-wrap > table.roster-player-table .number,
+  #presidentDashboard table.roster-player-table .number,
+  #teamAreaPanel table.roster-player-table .number,
+  [data-page="teamarea"] table.roster-player-table .number,
+  [data-page="dashboard"] table.roster-player-table .number,
+  .team-profile-roster-wrap > table.team-profile-roster-table .number,
+  .roster-table-wrap > table.roster-player-table .number,
+  [data-page="clubs"] table.roster-player-table .number,
+  [data-page="teamprofile"] table.team-profile-roster-table .number,
+  [data-page="listone"] table.listone-table .number,
+  .listone-main-panel table.listone-table .number,
+  .listone-table-wrap > table.listone-table .number {
+    text-align: left !important;
+  }
+
+  .roster-inline-table-wrap > table.roster-player-table .table-sort,
+  #presidentDashboard table.roster-player-table .table-sort,
+  #teamAreaPanel table.roster-player-table .table-sort,
+  [data-page="teamarea"] table.roster-player-table .table-sort,
+  [data-page="dashboard"] table.roster-player-table .table-sort,
+  .team-profile-roster-wrap > table.team-profile-roster-table .table-sort,
+  .roster-table-wrap > table.roster-player-table .table-sort,
+  [data-page="clubs"] table.roster-player-table .table-sort,
+  [data-page="teamprofile"] table.team-profile-roster-table .table-sort,
+  [data-page="listone"] table.listone-table .table-sort,
+  .listone-main-panel table.listone-table .table-sort,
+  .listone-table-wrap > table.listone-table .table-sort {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    white-space: nowrap !important;
+  }
+
+  /* Header/prima riga opaca e stabile. */
+  .roster-inline-table-wrap > table.roster-player-table thead th,
+  #presidentDashboard table.roster-player-table thead th,
+  #teamAreaPanel table.roster-player-table thead th,
+  [data-page="teamarea"] table.roster-player-table thead th,
+  [data-page="dashboard"] table.roster-player-table thead th,
+  .team-profile-roster-wrap > table.team-profile-roster-table thead th,
+  .roster-table-wrap > table.roster-player-table thead th,
+  [data-page="clubs"] table.roster-player-table thead th,
+  [data-page="teamprofile"] table.team-profile-roster-table thead th,
+  [data-page="listone"] table.listone-table thead th,
+  .listone-main-panel table.listone-table thead th,
+  .listone-table-wrap > table.listone-table thead th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 18 !important;
+    background: var(--player-table-v572-header-bg) !important;
+    color: var(--player-table-v572-header-fg) !important;
+    border-bottom: 1px solid var(--player-table-v572-border) !important;
+  }
+
+  /* Prima colonna sticky/opaca durante lo scroll orizzontale. */
+  .roster-inline-table-wrap > table.roster-player-table th:first-child,
+  .roster-inline-table-wrap > table.roster-player-table td:first-child,
+  #presidentDashboard table.roster-player-table th:first-child,
+  #presidentDashboard table.roster-player-table td:first-child,
+  #teamAreaPanel table.roster-player-table th:first-child,
+  #teamAreaPanel table.roster-player-table td:first-child,
+  [data-page="teamarea"] table.roster-player-table th:first-child,
+  [data-page="teamarea"] table.roster-player-table td:first-child,
+  [data-page="dashboard"] table.roster-player-table th:first-child,
+  [data-page="dashboard"] table.roster-player-table td:first-child,
+  .team-profile-roster-wrap > table.team-profile-roster-table th:first-child,
+  .team-profile-roster-wrap > table.team-profile-roster-table td:first-child,
+  .roster-table-wrap > table.roster-player-table th:first-child,
+  .roster-table-wrap > table.roster-player-table td:first-child,
+  [data-page="clubs"] table.roster-player-table th:first-child,
+  [data-page="clubs"] table.roster-player-table td:first-child,
+  [data-page="teamprofile"] table.team-profile-roster-table th:first-child,
+  [data-page="teamprofile"] table.team-profile-roster-table td:first-child,
+  [data-page="listone"] table.listone-table th:first-child,
+  [data-page="listone"] table.listone-table td:first-child,
+  .listone-main-panel table.listone-table th:first-child,
+  .listone-main-panel table.listone-table td:first-child,
+  .listone-table-wrap > table.listone-table th:first-child,
+  .listone-table-wrap > table.listone-table td:first-child {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 20 !important;
+    background: var(--player-table-v572-default-bg) !important;
+    border-right: 1px solid var(--player-table-v572-border) !important;
+    box-shadow: 6px 0 10px rgba(15, 23, 42, 0.16) !important;
+  }
+
+  .roster-inline-table-wrap > table.roster-player-table thead th:first-child,
+  #presidentDashboard table.roster-player-table thead th:first-child,
+  #teamAreaPanel table.roster-player-table thead th:first-child,
+  [data-page="teamarea"] table.roster-player-table thead th:first-child,
+  [data-page="dashboard"] table.roster-player-table thead th:first-child,
+  .team-profile-roster-wrap > table.team-profile-roster-table thead th:first-child,
+  .roster-table-wrap > table.roster-player-table thead th:first-child,
+  [data-page="clubs"] table.roster-player-table thead th:first-child,
+  [data-page="teamprofile"] table.team-profile-roster-table thead th:first-child,
+  [data-page="listone"] table.listone-table thead th:first-child,
+  .listone-main-panel table.listone-table thead th:first-child,
+  .listone-table-wrap > table.listone-table thead th:first-child {
+    z-index: 25 !important;
+    background: var(--player-table-v572-header-bg) !important;
+    color: var(--player-table-v572-header-fg) !important;
+  }
+
+  /* Nome giocatore: mai tagliato. Può andare a capo nella prima colonna. */
+  .roster-inline-table-wrap > table.roster-player-table .roster-col-player,
+  #presidentDashboard table.roster-player-table .roster-col-player,
+  #teamAreaPanel table.roster-player-table .roster-col-player,
+  [data-page="teamarea"] table.roster-player-table .roster-col-player,
+  [data-page="dashboard"] table.roster-player-table .roster-col-player,
+  .team-profile-roster-wrap > table.team-profile-roster-table .roster-col-player,
+  .team-profile-roster-wrap > table.team-profile-roster-table .team-profile-player-cell,
+  .roster-table-wrap > table.roster-player-table .roster-col-player,
+  [data-page="clubs"] table.roster-player-table .roster-col-player,
+  [data-page="teamprofile"] table.team-profile-roster-table .roster-col-player,
+  [data-page="teamprofile"] table.team-profile-roster-table .team-profile-player-cell,
+  [data-page="listone"] table.listone-table .listone-col-playerName,
+  .listone-main-panel table.listone-table .listone-col-playerName,
+  .listone-table-wrap > table.listone-table .listone-col-playerName {
+    min-width: clamp(8.5rem, 46vw, 13.5rem) !important;
+    max-width: clamp(10rem, 54vw, 15rem) !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    line-height: 1.18 !important;
+    hyphens: auto !important;
+  }
+
+  .roster-inline-table-wrap > table.roster-player-table .roster-col-player a,
+  #presidentDashboard table.roster-player-table .roster-col-player a,
+  #teamAreaPanel table.roster-player-table .roster-col-player a,
+  [data-page="teamarea"] table.roster-player-table .roster-col-player a,
+  [data-page="dashboard"] table.roster-player-table .roster-col-player a,
+  .team-profile-roster-wrap > table.team-profile-roster-table .roster-col-player a,
+  .team-profile-roster-wrap > table.team-profile-roster-table .team-profile-player-cell a,
+  .roster-table-wrap > table.roster-player-table .roster-col-player a,
+  [data-page="clubs"] table.roster-player-table .roster-col-player a,
+  [data-page="teamprofile"] table.team-profile-roster-table .roster-col-player a,
+  [data-page="teamprofile"] table.team-profile-roster-table .team-profile-player-cell a,
+  [data-page="listone"] table.listone-table .listone-col-playerName a,
+  .listone-main-panel table.listone-table .listone-col-playerName a,
+  .listone-table-wrap > table.listone-table .listone-col-playerName a {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Colori pieni delle righe giocatore per ruolo: P giallo, D verde, C blu, A rosso. */
+  table.roster-player-table tbody tr.player-role-gk > td,
+  table.roster-player-table tbody tr.zo-role-bg-v405-gk > td,
+  table.team-profile-roster-table tbody tr.player-role-gk > td,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-gk > td,
+  table.listone-table tbody tr.player-role-gk > td,
+  table.listone-table tbody tr.zo-role-bg-v405-gk > td,
+  table.free-agents-table tbody tr.player-role-gk > td,
+  table.free-agents-table tbody tr.zo-role-bg-v405-gk > td {
+    background: var(--player-table-v572-gk-bg) !important;
+  }
+
+  table.roster-player-table tbody tr.player-role-def > td,
+  table.roster-player-table tbody tr.zo-role-bg-v405-def > td,
+  table.team-profile-roster-table tbody tr.player-role-def > td,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-def > td,
+  table.listone-table tbody tr.player-role-def > td,
+  table.listone-table tbody tr.zo-role-bg-v405-def > td,
+  table.free-agents-table tbody tr.player-role-def > td,
+  table.free-agents-table tbody tr.zo-role-bg-v405-def > td {
+    background: var(--player-table-v572-def-bg) !important;
+  }
+
+  table.roster-player-table tbody tr.player-role-mid > td,
+  table.roster-player-table tbody tr.zo-role-bg-v405-mid > td,
+  table.team-profile-roster-table tbody tr.player-role-mid > td,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-mid > td,
+  table.listone-table tbody tr.player-role-mid > td,
+  table.listone-table tbody tr.zo-role-bg-v405-mid > td,
+  table.free-agents-table tbody tr.player-role-mid > td,
+  table.free-agents-table tbody tr.zo-role-bg-v405-mid > td {
+    background: var(--player-table-v572-mid-bg) !important;
+  }
+
+  table.roster-player-table tbody tr.player-role-fwd > td,
+  table.roster-player-table tbody tr.zo-role-bg-v405-fwd > td,
+  table.team-profile-roster-table tbody tr.player-role-fwd > td,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-fwd > td,
+  table.listone-table tbody tr.player-role-fwd > td,
+  table.listone-table tbody tr.zo-role-bg-v405-fwd > td,
+  table.free-agents-table tbody tr.player-role-fwd > td,
+  table.free-agents-table tbody tr.zo-role-bg-v405-fwd > td {
+    background: var(--player-table-v572-fwd-bg) !important;
+  }
+
+  table.roster-player-table tbody tr.player-role-gk > td:first-child,
+  table.roster-player-table tbody tr.zo-role-bg-v405-gk > td:first-child,
+  table.team-profile-roster-table tbody tr.player-role-gk > td:first-child,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-gk > td:first-child,
+  table.listone-table tbody tr.player-role-gk > td:first-child,
+  table.listone-table tbody tr.zo-role-bg-v405-gk > td:first-child,
+  table.free-agents-table tbody tr.player-role-gk > td:first-child,
+  table.free-agents-table tbody tr.zo-role-bg-v405-gk > td:first-child {
+    background: var(--player-table-v572-gk-bg) !important;
+    box-shadow: inset 4px 0 var(--player-table-v572-gk-line), 6px 0 10px rgba(15, 23, 42, 0.16) !important;
+  }
+
+  table.roster-player-table tbody tr.player-role-def > td:first-child,
+  table.roster-player-table tbody tr.zo-role-bg-v405-def > td:first-child,
+  table.team-profile-roster-table tbody tr.player-role-def > td:first-child,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-def > td:first-child,
+  table.listone-table tbody tr.player-role-def > td:first-child,
+  table.listone-table tbody tr.zo-role-bg-v405-def > td:first-child,
+  table.free-agents-table tbody tr.player-role-def > td:first-child,
+  table.free-agents-table tbody tr.zo-role-bg-v405-def > td:first-child {
+    background: var(--player-table-v572-def-bg) !important;
+    box-shadow: inset 4px 0 var(--player-table-v572-def-line), 6px 0 10px rgba(15, 23, 42, 0.16) !important;
+  }
+
+  table.roster-player-table tbody tr.player-role-mid > td:first-child,
+  table.roster-player-table tbody tr.zo-role-bg-v405-mid > td:first-child,
+  table.team-profile-roster-table tbody tr.player-role-mid > td:first-child,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-mid > td:first-child,
+  table.listone-table tbody tr.player-role-mid > td:first-child,
+  table.listone-table tbody tr.zo-role-bg-v405-mid > td:first-child,
+  table.free-agents-table tbody tr.player-role-mid > td:first-child,
+  table.free-agents-table tbody tr.zo-role-bg-v405-mid > td:first-child {
+    background: var(--player-table-v572-mid-bg) !important;
+    box-shadow: inset 4px 0 var(--player-table-v572-mid-line), 6px 0 10px rgba(15, 23, 42, 0.16) !important;
+  }
+
+  table.roster-player-table tbody tr.player-role-fwd > td:first-child,
+  table.roster-player-table tbody tr.zo-role-bg-v405-fwd > td:first-child,
+  table.team-profile-roster-table tbody tr.player-role-fwd > td:first-child,
+  table.team-profile-roster-table tbody tr.zo-role-bg-v405-fwd > td:first-child,
+  table.listone-table tbody tr.player-role-fwd > td:first-child,
+  table.listone-table tbody tr.zo-role-bg-v405-fwd > td:first-child,
+  table.free-agents-table tbody tr.player-role-fwd > td:first-child,
+  table.free-agents-table tbody tr.zo-role-bg-v405-fwd > td:first-child {
+    background: var(--player-table-v572-fwd-bg) !important;
+    box-shadow: inset 4px 0 var(--player-table-v572-fwd-line), 6px 0 10px rgba(15, 23, 42, 0.16) !important;
+  }
+}

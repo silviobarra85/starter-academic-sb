@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-V570 - Strumento resize colonne tabelle giocatori completato.
+V572 - Tabelle giocatori mobile pulite completato.
 
 ## Ultima decisione
 
@@ -13,6 +13,16 @@ La V559 ha introdotto il preloader multi-lega, ma poteva chiudersi quando i tast
 0 overlay previsti.
 
 Da qui procedere solo con bugfix mirati o nuova roadmap esplicita.
+
+## V572 - Tabelle giocatori mobile pulite
+
+Stato: completato.
+
+- Rimosso dal runtime lo strumento resize colonne V570/V571.
+- Sostituiti gli stili incrementali mobile V567/V568/V569 con un unico CSS V572.
+- Area Squadra/Dashboard Presidente, Rose e Listone hanno scope CSS separati.
+- Righe colorate per ruolo, prima colonna/header opachi e nomi giocatore non troncati.
+- Audit: `node static/fanta-engine/tools/audit-player-tables-mobile-v572.mjs`.
 
 ## Guardrail permanenti
 
