@@ -1,3 +1,7 @@
+## V568 - Colonne mobili Rose/Area Squadra adattive
+
+La V568 corregge il layout mobile delle tabelle Rose e Area Squadra su FantaMantraManager: la prima colonna sticky dei giocatori non viene piu' troncata a larghezza fissa e la colonna `Costo` si riduce al contenuto. La V567 resta attiva per mantenere lo sfondo opaco della prima colonna durante lo scroll orizzontale. Sono preservati dati, snapshot, Firebase, EmailJS, Admin, permessi e Calciomercato disattivato. `FUNZIONALITA'.md` non e' stato modificato.
+
 ## V567 - Prima colonna Rose/Area Squadra opaca da mobile
 
 La V567 applica anche a FantaMantraManager il CSS comune mobile-only per rendere opaca la prima colonna sticky nelle tabelle Rose e Area Squadra. L'intervento e' solo presentazionale e non modifica dati, Firebase, EmailJS, Admin, permessi o snapshot.

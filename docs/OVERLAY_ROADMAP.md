@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-V566 - Footer ZonaOrientale da config allineato completato.
+V568 - Colonne mobili Rose/Area Squadra adattive completato.
 
 ## Ultima decisione
 
@@ -86,3 +86,13 @@ Stato: completato.
 - La prima colonna sticky delle tabelle Rose e Area Squadra usa sfondi opachi, evitando la sovrapposizione visiva dei testi durante lo scroll orizzontale.
 - Nessuna modifica a dati, Firebase, EmailJS, permessi, snapshot o funzioni Netlify.
 - Audit: `node static/fanta-engine/tools/audit-roster-sticky-first-col-v567.mjs`.
+
+## V568 - Colonne mobili Rose/Area Squadra adattive
+
+Stato: completato.
+
+- Patch CSS comune mobile-only per entrambe le leghe.
+- La prima colonna `Giocatore` nelle tabelle Rose/Area Squadra non ha piu' larghezza fissa e non usa ellissi.
+- La colonna `Costo` viene ridotta alla larghezza necessaria al contenuto.
+- V567 resta caricata per preservare la prima colonna opaca.
+- Audit: `node static/fanta-engine/tools/audit-roster-mobile-column-fit-v568.mjs`.

@@ -1,3 +1,7 @@
+## V568 - Colonne mobili Rose/Area Squadra adattive
+
+La V568 corregge il layout mobile delle tabelle Rose e Area Squadra su ZonaOrientale: la prima colonna sticky dei giocatori non viene piu' troncata a larghezza fissa e la colonna `Costo` si riduce al contenuto. La V567 resta attiva per mantenere lo sfondo opaco della prima colonna durante lo scroll orizzontale. Sono preservati dati, snapshot, Firebase, EmailJS, Admin, permessi e Calciomercato disattivato. `FUNZIONALITA'.md` non e' stato modificato.
+
 ## V567 - Prima colonna Rose/Area Squadra opaca da mobile
 
 La V567 applica un CSS comune mobile-only per rendere opaca la prima colonna sticky nelle tabelle Rose e Area Squadra. Durante lo scroll orizzontale da smartphone, il nome giocatore resta leggibile e non si sovrappone visivamente alle celle sottostanti. Sono preservati Calciomercato disattivato, Svincola Giocatori, logo presidente per stagione, Firebase, EmailJS, Admin e dati. `FUNZIONALITA'.md` non e' stato modificato.

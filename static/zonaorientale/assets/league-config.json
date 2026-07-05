@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "567",
+  "currentVersion": "568",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -164,7 +164,8 @@
     "eagerDataPreloadRuntimeEnabled": false,
     "calciomercatoDisabledV561": true,
     "rosterStickyFirstColumnOpaque": true,
-    "rosterStickyFirstColumnOpaqueVersion": "V567"
+    "rosterStickyFirstColumnOpaqueVersion": "V567",
+    "rosterMobileColumnFitVersion": "V568"
   },
   "guardrails": {
     "configOnly": true,
@@ -1185,6 +1186,27 @@
       "Presidente",
       "Firebase",
       "EmailJS",
+      "Calciomercato disabled V561"
+    ]
+  },
+  "changelog": [
+    "V568 adatta da mobile le colonne delle tabelle Rose/Area Squadra: prima colonna senza ellissi e colonna Costo ridotta al contenuto."
+  ],
+  "rosterMobileColumnFitV568": {
+    "version": "V568",
+    "scope": [
+      "Area Squadra roster table",
+      "Rose expanded roster table"
+    ],
+    "mobileOnly": true,
+    "playerColumn": "auto width based on longest cell, no ellipsis",
+    "costColumn": "content-sized narrow numeric column",
+    "preserves": [
+      "V567 opaque sticky first column",
+      "Firebase",
+      "EmailJS",
+      "Admin",
+      "Presidente",
       "Calciomercato disabled V561"
     ]
   }
