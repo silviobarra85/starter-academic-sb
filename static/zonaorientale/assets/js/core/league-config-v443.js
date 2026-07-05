@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '572',
+  currentVersion: '573',
   currentSeasonId: '2026-2027',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',

@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "572",
+  "currentVersion": "573",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -413,7 +413,7 @@
     ],
     "footerLastUpdated": "05/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
-    "footerVersion": 572
+    "footerVersion": 573
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -482,7 +482,8 @@
     "performanceConsolidationVersion": "V546"
   },
   "releaseNotes": [
-    "V572 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
+    "V573 tara le colonne mobile delle tabelle giocatori: giocatore raddoppiato, Stato dimezzato, Costo e Qt.A uguali, testi allineati a sinistra.",
+    "V573 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
     "V484 inventaria asset comuni listone/calciomercato nel motore centrale senza spostare path runtime, senza cancellare copie locali e con audit dedicato.",
     "V483 consolida la documentazione canonica FantaMantraManager e documenta la roadmap per motore comune, senza modificare flussi runtime, Firebase, EmailJS o dati.",
     "V482 introduce audit anti-contaminazione multi-lega e aggiorna cache-buster/footer senza modificare flussi Firebase, Admin, EmailJS o dati.",
@@ -707,6 +708,7 @@
     "notes": "Listoni e Calciomercato sono comuni: caricare una sola volta in static/fanta-engine/data/shared-assets/current/assets/. Le copie locali sono state rimosse dal workflow V546."
   },
   "history": [
+    "V573 tara le colonne mobile delle tabelle giocatori: giocatore raddoppiato, Stato dimezzato, Costo e Qt.A uguali, testi allineati a sinistra.",
     "V522 introduce il workflow upload unico Listoni/Calciomercato su fanta-engine/data/shared-assets/current con fallback locali preservati e audit dedicato."
   ],
   "runtimeRecoveryV520": {
@@ -1194,7 +1196,8 @@
     ]
   },
   "changelog": [
-    "V572 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
+    "V573 tara le colonne mobile delle tabelle giocatori: giocatore raddoppiato, Stato dimezzato, Costo e Qt.A uguali, testi allineati a sinistra.",
+    "V573 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
     "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
     "V568 adatta da mobile le colonne delle tabelle Rose/Area Squadra: prima colonna senza ellissi e colonna Costo ridotta al contenuto.",
     "V569 riduce da mobile la prima colonna sticky della rosa in Area Squadra al 30% circa della larghezza precedente, mantenendo sfondo opaco e testi leggibili."
@@ -1238,8 +1241,8 @@
       "Calciomercato disabled V561"
     ]
   },
-  "playerTablesMobileV572": {
-    "version": "V572",
+  "playerTablesMobileV573": {
+    "version": "V573",
     "status": "enabled",
     "scope": [
       "teamarea",
@@ -1252,6 +1255,10 @@
       "role-colored rows: P yellow, D green, C blue, A red",
       "opaque sticky first column and opaque sticky header row",
       "player names wrap instead of being truncated",
+      "player column doubled vs V572",
+      "status column compacted to 3.25rem",
+      "cost and Qt.A columns unified to 3.75rem",
+      "headers and cells left-aligned",
       "separate CSS scopes for Area Squadra, Rose and Listone"
     ]
   }

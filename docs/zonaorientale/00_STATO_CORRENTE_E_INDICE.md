@@ -1,4 +1,4 @@
-> Aggiornamento V572: rimosso il resize colonne V570/V571 e ripulita la visualizzazione mobile delle tabelle giocatori (ZonaOrientale). Area Squadra/Dashboard Presidente, Rose e Listone ora usano `player-tables-mobile-v572.css`: righe colorate per ruolo, prima colonna e intestazione opache/sticky, nomi giocatore non troncati e link Fantagazzetta preservati.
+> Aggiornamento V573: rimosso il resize colonne V570/V571 e ripulita la visualizzazione mobile delle tabelle giocatori (ZonaOrientale). Area Squadra/Dashboard Presidente, Rose e Listone ora usano `player-tables-mobile-v573.css`: righe colorate per ruolo, prima colonna e intestazione opache/sticky, nomi giocatore non troncati e link Fantagazzetta preservati.
 
 > Aggiornamento V571: il tool opzionale `?resizeTabelle=1` ora mostra indicatori `<>` grandi e touch-friendly sulle colonne di Area Squadra, Rose e Listone; al rilascio stampa ancora le misure in Console. Nessun impatto in navigazione normale.
 

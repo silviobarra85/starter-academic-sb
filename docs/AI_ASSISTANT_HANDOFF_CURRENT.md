@@ -1,11 +1,11 @@
-# AI Assistant Handoff corrente - V572
+# AI Assistant Handoff corrente - V573
 
-Baseline operativa aggiornata a **V572 - Tabelle giocatori mobile pulite**.
+Baseline operativa aggiornata a **V573 - Tabelle giocatori mobile pulite**.
 
-## Modifica V572
+## Modifica V573
 
 - Rimosso dal runtime lo strumento opzionale di resize colonne V570/V571.
-- Rimosso il caricamento dei CSS incrementali V567/V568/V569 dalle home, sostituiti da un unico CSS pulito V572.
+- Rimosso il caricamento dei CSS incrementali V567/V568/V569 dalle home, sostituiti da un unico CSS pulito V573.
 - Tabelle target mobile:
   - Area Squadra / Dashboard Presidente: tabella rosa.
   - Rose: rosa espansa / scheda squadra.
@@ -19,18 +19,18 @@ Baseline operativa aggiornata a **V572 - Tabelle giocatori mobile pulite**.
 - Riga intestazione sticky/opaca.
 - Nome giocatore mai troncato: puo' andare a capo e mantiene il link a Fantagazzetta/Fantacalcio.
 - Scope CSS separati per Area Squadra, Rose e Listone.
-- Aggiornati footer/cache-buster/config a V572 su entrambe le leghe.
+- Aggiornati footer/cache-buster/config a V573 su entrambe le leghe.
 
 ## File principali
 
 ```text
-static/fanta-engine/css/player-tables-mobile-v572.css
-static/fanta-engine/tools/audit-player-tables-mobile-v572.mjs
+static/fanta-engine/css/player-tables-mobile-v573.css
+static/fanta-engine/tools/audit-player-tables-mobile-v573.mjs
 ```
 
 ## Guardrail
 
-- V572 non modifica dati, Firebase, EmailJS, Admin, Area Presidente o snapshot.
+- V573 non modifica dati, Firebase, EmailJS, Admin, Area Presidente o snapshot.
 - Calciomercato resta disattivato come da V561.
 - Svincola Giocatori ZonaOrientale resta attivo.
 - Logo account presidente per stagione resta preservato.
@@ -40,5 +40,5 @@ static/fanta-engine/tools/audit-player-tables-mobile-v572.mjs
 ## Audit
 
 ```bash
-node static/fanta-engine/tools/audit-player-tables-mobile-v572.mjs
+node static/fanta-engine/tools/audit-player-tables-mobile-v573.mjs
 ```
