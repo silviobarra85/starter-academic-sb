@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "577",
+  "currentVersion": "578",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -576,7 +576,8 @@
     ]
   },
   "notes": [
-    "V577 corregge la visualizzazione mobile delle tabelle giocatori: Area Squadra marcata a runtime e colonna Giocatore compatta per Rose/Area Squadra."
+    "V577 corregge la visualizzazione mobile delle tabelle giocatori: Area Squadra marcata a runtime e colonna Giocatore compatta per Rose/Area Squadra.",
+    "V578 dimezza ulteriormente la colonna Giocatore da mobile mantenendo gli override mobile dedicati per Area Squadra, Rose e Listone."
   ],
   "audit": {
     "standardAdminSetupVersion": "467"
