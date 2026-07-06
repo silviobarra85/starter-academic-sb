@@ -1,11 +1,17 @@
-# FantaPetilloMantraManager - Stato corrente
+# Stato corrente
 
-Versione corrente: V583.
+## Versione corrente
+V585 - Dashboard Presidente mobile compatta
 
-## Ultimo intervento
-V583 uniforma da mobile lo stile delle tre tabelle giocatori: Area Squadra, Rose e Listone. Il runtime applica una configurazione unica e deterministica, senza clone da Listone.
-
-## Stato preservato
+## Stato funzionale
+- Tabelle giocatori mobile consolidate con `player-tables-mobile-v584`.
+- Dashboard Presidente mobile compatta con `president-teamarea-mobile-v585`.
+- Quick hub mobile canonico e senza duplicati.
+- Pannelli operativi con tasto Apri/Riduci a destra e chiusi di default.
 - Calciomercato disattivato.
-- Nessuna modifica a Firebase, EmailJS, Admin o snapshot.
-- Footer/cache-buster aggiornati a V583.
+- Resize colonne V570/V571 non caricato.
+
+## Audit
+```bash
+node static/fanta-engine/tools/audit-teamarea-dashboard-v585.mjs
+```

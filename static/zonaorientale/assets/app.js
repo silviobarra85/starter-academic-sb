@@ -12644,7 +12644,7 @@ function renderUserAreaApprovedV119(approved) {
     </section>
 
     <section class="panel trade-proposal-panel">
-      <div class="panel-header compact"><div><h2>Proponi svincolo</h2><p>Avvia una trattativa con una squadra attiva: offri giocatori e/o FM e chiedi giocatori e/o FM.</p></div></div>
+      <div class="panel-header compact"><div><h2>Proponi trattativa</h2><p>Avvia una trattativa con una squadra attiva: offri giocatori e/o FM e chiedi giocatori e/o FM.</p></div></div>
       ${prefill ? `<p class="notice notice-success trade-prefill-notice">Proposta precompilata per <strong>${escapeHtml(prefill.playerName || "giocatore")}</strong> di ${escapeHtml(getSeasonTeamDisplayName(prefill.seasonTeamId))}.</p>` : ""}
       <form id="tradeProposalForm" class="form-grid trade-proposal-form">
         <label class="span-2">Squadra con cui trattare<select id="tradeTargetTeam" class="input" required>${targetOptions}</select></label>

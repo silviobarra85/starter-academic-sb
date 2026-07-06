@@ -1,21 +1,27 @@
-# AI Assistant Handoff Current
+# AI Assistant Handoff - CURRENT
 
-## Stato corrente
-V583 - Tabelle giocatori mobile: colonne Stato/Rosa/Modifica e colori coerenti.
+## Versione corrente
+V585 - Dashboard Presidente mobile compatta
 
-## Baseline funzionale
-- ZonaOrientale: Calciomercato disattivato, Svincola Giocatori attivo, logo account presidente coerente con stagione.
-- FantaPetilloMantraManager: Calciomercato disattivato.
-- Tabelle giocatori mobile gestite da `player-tables-mobile-v583`.
+## Stato operativo
+- ZonaOrientale e FantaPetilloMantraManager usano `player-tables-mobile-v584` come asset consolidato per le tabelle giocatori mobile.
+- Il resize temporaneo colonne V570/V571 resta fuori dal runtime.
+- La Dashboard Presidente mobile usa `president-teamarea-mobile-v585` per:
+  - nascondere i pulsanti duplicati nella card Dashboard Presidente;
+  - ricostruire il quick hub compatto con azioni canoniche;
+  - aggiungere il tasto `Apri/Riduci` a destra sui pannelli operativi;
+  - tenere i pannelli operativi chiusi di default.
+- La card `Proponi svincolo` e rinominata `Proponi trattativa`.
+- Calciomercato resta disattivato.
+- Svincola Giocatori resta attivo su ZonaOrientale.
+- `FUNZIONALITA'.md` non e stato toccato.
 
-## Nota per modifiche future
-Le tabelle giocatori mobile sono normalizzate da un runtime/CSS dedicato che batte gli stili legacy con `important` inline. Prima di modificare Area Squadra, Rose o Listone verificare che non vengano reintrodotti conflitti da:
+## Audit principale
+```bash
+node static/fanta-engine/tools/audit-teamarea-dashboard-v585.mjs
+```
 
-- `assets/styles.css` / `body.is-mobile-ux`;
-- `mobile-suite-v168.css`;
-- `rosters-tables.css`;
-- `roster-listone-table-unification-v551.css`;
-- badge `.status`, `.status-ok`, `.status-warning`, `.status-danger`, `.status-badge`.
-
-## Verifica prioritaria
-Da mobile: Listone, Rose espansa, Area Squadra / Dashboard Presidente.
+## Cleanup consigliato
+```bash
+bash static/fanta-engine/tools/cleanup-teamarea-dashboard-v585.sh
+```

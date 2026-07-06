@@ -1,0 +1,111 @@
+/* V585 - Dashboard Presidente mobile: azioni compatte e pannelli richiudibili.
+ * Additivo e mobile-first: sposta le azioni operative nel quick hub, nasconde
+ * i duplicati della dashboard e mantiene i pannelli operativi chiusi di default.
+ */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html body.teamarea-dashboard-mobile-v585-active .president-dashboard-actions-v369 {
+    display: none !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .team-area-profile-action {
+    display: none !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active #mobileTeamAreaHubV144.mobile-teamarea-hub-v144 {
+    margin-top: 0.85rem !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+    align-items: stretch !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .mobile-teamarea-action-v144,
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .teamarea-quick-action-v585 {
+    min-height: 3.35rem !important;
+    padding: 0.55rem 0.58rem !important;
+    border-radius: 0.85rem !important;
+    display: grid !important;
+    grid-template-columns: 1.65rem minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    column-gap: 0.42rem !important;
+    row-gap: 0 !important;
+    align-items: center !important;
+    text-align: left !important;
+    background: rgba(15, 23, 42, 0.68) !important;
+    border: 1px solid rgba(45, 212, 191, 0.28) !important;
+    color: #f8fafc !important;
+    box-shadow: none !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .mobile-teamarea-action-v144 span,
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .teamarea-quick-action-v585 span {
+    grid-row: 1 / span 2 !important;
+    grid-column: 1 !important;
+    width: 1.65rem !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .mobile-teamarea-action-v144 strong,
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .teamarea-quick-action-v585 strong {
+    grid-column: 2 !important;
+    font-size: 0.86rem !important;
+    line-height: 1.05 !important;
+    font-weight: 900 !important;
+    color: #f8fafc !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .mobile-teamarea-action-v144 small,
+  html body.teamarea-dashboard-mobile-v585-active .mobile-teamarea-actions-v144.teamarea-quick-actions-v585 .teamarea-quick-action-v585 small {
+    grid-column: 2 !important;
+    font-size: 0.74rem !important;
+    line-height: 1.05 !important;
+    color: rgba(226, 232, 240, 0.76) !important;
+    white-space: normal !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585 {
+    overflow: hidden !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585 > .panel-header,
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585 .panel-header.compact {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.75rem !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585 > .panel-header > div,
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585 .panel-header.compact > div {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-toggle-v585 {
+    margin-left: auto !important;
+    flex: 0 0 auto !important;
+    min-width: 4.35rem !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585.is-collapsed-v585 > :not(.panel-header) {
+    display: none !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585.is-collapsed-v585 {
+    padding-bottom: 0.8rem !important;
+  }
+
+  html body.teamarea-dashboard-mobile-v585-active .teamarea-panel-v585 .panel-header h2 {
+    margin-right: 0.25rem !important;
+  }
+}

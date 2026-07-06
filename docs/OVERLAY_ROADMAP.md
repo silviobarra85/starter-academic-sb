@@ -1,18 +1,24 @@
 # Overlay roadmap
 
 ## Corrente
-- V583 - Tabelle giocatori mobile: colonne Stato/Rosa/Modifica e colori coerenti.
+- V585 - Dashboard Presidente mobile compatta.
 
 ## Note operative
-- Mantenere separati i target runtime per Area Squadra, Rose e Listone, ma usare la stessa palette/font mobile.
+- Mantenere `player-tables-mobile-v584` come unico asset consolidato per le tabelle giocatori mobile.
 - Non reintrodurre resize colonne V570/V571.
-- Per ulteriori ritocchi mobile, intervenire su `player-tables-mobile-v583.css` e `player-tables-mobile-v583.js` senza toccare dati, Firebase o snapshot.
-- Le sovrapposizioni note da considerare sono `assets/styles.css`, `mobile-suite-v168.css`, `rosters-tables.css` e `roster-listone-table-unification-v551.css`.
+- Mantenere `president-teamarea-mobile-v585` come layer mobile dedicato alla Dashboard Presidente.
+- Se si modifica la Dashboard Presidente, preservare: Firebase, EmailJS, Svincola Giocatori, Comunicati, Scambio e Trattative.
+- Le sovrapposizioni CSS storiche da considerare restano `assets/styles.css`, `mobile-suite-v168.css`, `rosters-tables.css` e `roster-listone-table-unification-v551.css`.
 
-## V583
-- Forza font e testo bianco sulle tre tabelle giocatori mobile.
-- Normalizza badge Stato, righe ruolo e prima colonna sticky/opaca.
-- Area Squadra: Stato `8rem`.
-- Rose: Stato `4.75rem`.
-- Listone: Stato `5.25rem`, Rosa `6.25rem`, Modifica `6.25rem`.
-- Evidenzia `Svincolati`/`Non presente` in ambra nella colonna Rosa del Listone.
+## V584 - Cleanup tabelle giocatori mobile
+- Consolidati gli asset mobile delle tabelle giocatori in `player-tables-mobile-v584`.
+- Rimossi dal runtime gli asset sperimentali V567-V583 e resize V570/V571.
+- Preservata la documentazione storica.
+
+## V585 - Dashboard Presidente mobile compatta
+- Spostate le azioni operative duplicate dalla card Dashboard Presidente al quick hub compatto.
+- Quick hub ricostruito con azioni canoniche e funzionanti.
+- Pannelli operativi con tasto `Apri/Riduci` a destra.
+- Pannelli operativi chiusi di default.
+- `Proponi svincolo` rinominato in `Proponi trattativa`.
+- Aggiunto cleanup per residui resize V570/V571.
