@@ -1,0 +1,234 @@
+/* V579 - Mobile player tables status/color tuning.
+   Keeps the V578 mobile layout, slightly enlarges the Stato column, and
+   forces the Listone role color palette on Area Squadra, Rose and Listone.
+   The JS also writes mobile-only important inline styles as a final guard
+   against legacy overrides. */
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  html body.player-table-mobile-v579-active {
+    --pt-v579-header-bg: rgba(15, 23, 42, 0.99);
+    --pt-v579-header-fg: #f8fafc;
+    --pt-v579-border: rgba(148, 163, 184, 0.34);
+    --pt-v579-shadow: 8px 0 14px rgba(2, 6, 23, 0.42);
+    /* Palette allineata allo stile Listone legacy V550/V551. */
+    --pt-v579-gk-bg: rgba(245, 158, 11, 0.16);
+    --pt-v579-def-bg: rgba(34, 197, 94, 0.14);
+    --pt-v579-mid-bg: rgba(56, 189, 248, 0.14);
+    --pt-v579-fwd-bg: rgba(248, 113, 113, 0.14);
+    --pt-v579-default-bg: #ffffff;
+    --pt-v579-gk-first-bg: linear-gradient(90deg, rgba(245, 158, 11, 0.34), rgba(245, 158, 11, 0.16));
+    --pt-v579-def-first-bg: linear-gradient(90deg, rgba(34, 197, 94, 0.32), rgba(34, 197, 94, 0.14));
+    --pt-v579-mid-first-bg: linear-gradient(90deg, rgba(56, 189, 248, 0.32), rgba(59, 130, 246, 0.14));
+    --pt-v579-fwd-first-bg: linear-gradient(90deg, rgba(248, 113, 113, 0.32), rgba(239, 68, 68, 0.14));
+    --pt-v579-gk-line: rgba(245, 158, 11, 0.82);
+    --pt-v579-def-line: rgba(34, 197, 94, 0.78);
+    --pt-v579-mid-line: rgba(56, 189, 248, 0.78);
+    --pt-v579-fwd-line: rgba(248, 113, 113, 0.78);
+    --pt-v579-player-listone: clamp(8.5rem, 46vw, 13.5rem);
+    --pt-v579-player-listone-max: clamp(10rem, 54vw, 15rem);
+    --pt-v579-player-compact: clamp(5.25rem, 28vw, 7rem);
+    --pt-v579-player-compact-max: clamp(6rem, 32vw, 8rem);
+  }
+
+  html[data-theme="dark"] body.player-table-mobile-v579-active {
+    --pt-v579-gk-bg: rgba(245, 158, 11, 0.24);
+    --pt-v579-def-bg: rgba(34, 197, 94, 0.22);
+    --pt-v579-mid-bg: rgba(56, 189, 248, 0.22);
+    --pt-v579-fwd-bg: rgba(248, 113, 113, 0.22);
+    --pt-v579-default-bg: #111827;
+    --pt-v579-gk-first-bg: linear-gradient(90deg, rgba(245, 158, 11, 0.42), rgba(245, 158, 11, 0.20));
+    --pt-v579-def-first-bg: linear-gradient(90deg, rgba(34, 197, 94, 0.40), rgba(34, 197, 94, 0.18));
+    --pt-v579-mid-first-bg: linear-gradient(90deg, rgba(56, 189, 248, 0.40), rgba(59, 130, 246, 0.18));
+    --pt-v579-fwd-first-bg: linear-gradient(90deg, rgba(248, 113, 113, 0.40), rgba(239, 68, 68, 0.18));
+  }
+
+  html body.player-table-mobile-v579-active .fanta-player-table-wrap-v579,
+  html body.player-table-mobile-v579-active [data-player-table-wrap-v579] {
+    max-width: 100% !important;
+    max-height: min(70vh, 620px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
+    border-radius: 14px !important;
+    position: relative !important;
+  }
+
+  html body.player-table-mobile-v579-active table.fanta-player-table-v579,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] {
+    table-layout: fixed !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 0.68rem !important;
+  }
+
+  html body.player-table-mobile-v579-active table.fanta-player-table-v579 th,
+  html body.player-table-mobile-v579-active table.fanta-player-table-v579 td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] th,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] td,
+  html body.is-mobile-ux.player-table-mobile-v579-active table[data-player-table-v579="teamarea"] th,
+  html body.is-mobile-ux.player-table-mobile-v579-active table[data-player-table-v579="teamarea"] td,
+  html body.is-mobile-ux.player-table-mobile-v579-active table[data-player-table-v579="rose"] th,
+  html body.is-mobile-ux.player-table-mobile-v579-active table[data-player-table-v579="rose"] td {
+    box-sizing: border-box !important;
+    display: table-cell !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    padding: 0.42rem 0.5rem !important;
+    line-height: 1.18 !important;
+    font-size: 0.68rem !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] thead th,
+  html body.is-mobile-ux.player-table-mobile-v579-active table[data-player-table-v579] thead th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 260 !important;
+    background: var(--pt-v579-header-bg) !important;
+    color: var(--pt-v579-header-fg) !important;
+    border-bottom: 1px solid var(--pt-v579-border) !important;
+    font-weight: 800 !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579="listone"] th:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579="listone"] td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579="listone"] .fpt-v579-col-player {
+    width: var(--pt-v579-player-listone) !important;
+    min-width: var(--pt-v579-player-listone) !important;
+    max-width: var(--pt-v579-player-listone-max) !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579="teamarea"] th:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579="teamarea"] td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579="teamarea"] .fpt-v579-col-player,
+  html body.player-table-mobile-v579-active table[data-player-table-v579="rose"] th:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579="rose"] td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579="rose"] .fpt-v579-col-player,
+  html body.is-mobile-ux.player-table-mobile-v579-active #teamProfilePageBody table[data-player-table-v579="teamarea"] th:first-child,
+  html body.is-mobile-ux.player-table-mobile-v579-active #teamProfilePageBody table[data-player-table-v579="teamarea"] td:first-child,
+  html body.is-mobile-ux.player-table-mobile-v579-active .team-profile-roster-wrap table[data-player-table-v579="teamarea"] th:first-child,
+  html body.is-mobile-ux.player-table-mobile-v579-active .team-profile-roster-wrap table[data-player-table-v579="teamarea"] td:first-child {
+    width: var(--pt-v579-player-compact) !important;
+    min-width: var(--pt-v579-player-compact) !important;
+    max-width: var(--pt-v579-player-compact-max) !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] th:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-player,
+  html body.is-mobile-ux.player-table-mobile-v579-active #teamProfilePageBody table[data-player-table-v579="teamarea"] th:first-child,
+  html body.is-mobile-ux.player-table-mobile-v579-active #teamProfilePageBody table[data-player-table-v579="teamarea"] td:first-child,
+  html body.is-mobile-ux.player-table-mobile-v579-active #rosterClubCards table[data-player-table-v579="rose"] th:first-child,
+  html body.is-mobile-ux.player-table-mobile-v579-active #rosterClubCards table[data-player-table-v579="rose"] td:first-child {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 250 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    text-align: left !important;
+    background: var(--pt-v579-default-bg) !important;
+    box-shadow: var(--pt-v579-shadow) !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] thead th:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] thead .fpt-v579-col-player {
+    top: 0 !important;
+    z-index: 290 !important;
+    background: var(--pt-v579-header-bg) !important;
+    color: var(--pt-v579-header-fg) !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] td:first-child a,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-player a,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] td:first-child strong,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-player strong {
+    display: inline !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    line-height: 1.16 !important;
+    color: inherit !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-role,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .roster-col-role,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .team-profile-role-cell,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .listone-col-classicRole {
+    width: 5.375rem !important;
+    min-width: 5.375rem !important;
+    max-width: 5.375rem !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-status,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .roster-col-status,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .team-profile-status-cell,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .listone-col-status {
+    width: 3.75rem !important;
+    min-width: 3.75rem !important;
+    max-width: 3.75rem !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-team,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .roster-col-team,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .team-profile-team-cell,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .listone-col-realTeam {
+    width: 3.125rem !important;
+    min-width: 3.125rem !important;
+    max-width: 3.125rem !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-cost,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .fpt-v579-col-qta,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .roster-col-cost,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .roster-col-qta,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .team-profile-cost-cell,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .team-profile-qta-cell,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .listone-col-quotationCurrent,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .listone-col-rosterCost,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] .listone-col-fvm {
+    width: 3.75rem !important;
+    min-width: 3.75rem !important;
+    max-width: 3.75rem !important;
+    text-align: left !important;
+  }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-p > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-gk > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-gk > td { background: var(--pt-v579-gk-bg) !important; }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-d > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-def > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-def > td { background: var(--pt-v579-def-bg) !important; }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-c > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-mid > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-mid > td { background: var(--pt-v579-mid-bg) !important; }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-a > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-fwd > td,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-fwd > td { background: var(--pt-v579-fwd-bg) !important; }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-p > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-gk > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-gk > td:first-child { background: var(--pt-v579-gk-first-bg) !important; box-shadow: inset 4px 0 var(--pt-v579-gk-line), var(--pt-v579-shadow) !important; }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-d > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-def > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-def > td:first-child { background: var(--pt-v579-def-first-bg) !important; box-shadow: inset 4px 0 var(--pt-v579-def-line), var(--pt-v579-shadow) !important; }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-c > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-mid > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-mid > td:first-child { background: var(--pt-v579-mid-first-bg) !important; box-shadow: inset 4px 0 var(--pt-v579-mid-line), var(--pt-v579-shadow) !important; }
+
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.fpt-v579-role-a > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.zo-role-bg-v405-fwd > td:first-child,
+  html body.player-table-mobile-v579-active table[data-player-table-v579] tbody tr.player-role-fwd > td:first-child { background: var(--pt-v579-fwd-first-bg) !important; box-shadow: inset 4px 0 var(--pt-v579-fwd-line), var(--pt-v579-shadow) !important; }
+}

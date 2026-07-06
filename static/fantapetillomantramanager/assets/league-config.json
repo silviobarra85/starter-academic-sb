@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "578",
+  "currentVersion": "579",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -467,8 +467,8 @@
     "projectId": "fantapetillomantramanager",
     "authDomain": "fantapetillomantramanager.firebaseapp.com",
     "storageBucket": "fantapetillomantramanager.firebasestorage.app",
-    "messagingSenderId": "578603278263",
-    "appId": "1:578603278263:web:df2ba2739bc2b843ccd232",
+    "messagingSenderId": "579603278263",
+    "appId": "1:579603278263:web:df2ba2739bc2b843ccd232",
     "measurementId": "G-RT78QT84J4",
     "productionReady": false,
     "rulesRequired": true,
@@ -577,7 +577,7 @@
   },
   "notes": [
     "V577 corregge la visualizzazione mobile delle tabelle giocatori: Area Squadra marcata a runtime e colonna Giocatore compatta per Rose/Area Squadra.",
-    "V578 dimezza ulteriormente la colonna Giocatore da mobile mantenendo gli override mobile dedicati per Area Squadra, Rose e Listone."
+    "V579 dimezza ulteriormente la colonna Giocatore da mobile mantenendo gli override mobile dedicati per Area Squadra, Rose e Listone."
   ],
   "audit": {
     "standardAdminSetupVersion": "467"
@@ -638,7 +638,8 @@
     "V506 centralizza validatori comuni form/tool in fanta-engine e collega il Sorteggio giornate al motore V506 con fallback locale V473.",
     "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale.",
     "V570 aggiunge uno strumento opzionale di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo solo con resizeTabelle=1 e stampa misure CSS in console.",
-    "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile."
+    "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
+    "V579 aumenta leggermente la colonna Stato mobile e allinea i colori ruolo allo stile Listone su Area Squadra, Rose e Listone."
   ],
   "ui": {
     "footerVersion": 488
