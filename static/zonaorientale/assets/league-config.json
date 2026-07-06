@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "579",
+  "currentVersion": "580",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -497,7 +497,7 @@
     "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale.",
     "V570 aggiunge uno strumento opzionale di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo solo con resizeTabelle=1 e stampa misure CSS in console.",
     "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
-    "V579 aumenta leggermente la colonna Stato mobile e allinea i colori ruolo allo stile Listone su Area Squadra, Rose e Listone."
+    "V580 clona a runtime lo stile mobile effettivo del Listone su Area Squadra e Rose per evitare divergenze di colori/font dovute a CSS legacy."
   ],
   "version": 547,
   "runtime": {

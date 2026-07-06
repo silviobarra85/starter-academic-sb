@@ -1,14 +1,9 @@
-# AI Assistant Handoff - CURRENT
+# AI Assistant Handoff Current
 
-Baseline corrente dopo overlay V579.
+Versione corrente overlay: V580 - Tabelle giocatori mobile clonate dal Listone.
 
-## Ultimo overlay
-
-**V579 - Tabelle giocatori mobile: Stato e palette Listone**
-
-- Aumentata leggermente la colonna Stato sulle tabelle giocatori mobile.
-- Palette ruolo allineata allo stile Listone su Area Squadra, Rose e Listone.
-- Prima colonna con gradiente/indicatore Listone, sticky e opaca.
-- Resize V570/V571 non caricato.
-- Calciomercato disattivato preservato.
-- Svincola Giocatori ZonaOrientale preservato.
+- Listone resta sorgente visiva.
+- Area Squadra e Rose ricevono classi runtime dedicate e stili inline mobile-only clonati dal Listone.
+- Resize colonne V570/V571 non viene caricato.
+- Calciomercato resta disattivato.
+- Svincola Giocatori ZonaOrientale resta attivo.
