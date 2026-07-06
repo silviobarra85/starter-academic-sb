@@ -1,19 +1,20 @@
-# AI Assistant Handoff corrente
+# AI Assistant Handoff Current
 
-Baseline corrente: V581.
+## Stato corrente
+V582 - Tabelle giocatori mobile: fix font e Stati.
 
-## Stato principale
-- ZonaOrientale: V581.
-- FantaPetilloMantraManager: V581.
-- Calciomercato disattivato.
-- Svincola Giocatori attivo su ZonaOrientale.
-- Stili mobile tabelle giocatori unificati con `player-tables-mobile-v581`.
+## Baseline funzionale
+- ZonaOrientale: Calciomercato disattivato, Svincola Giocatori attivo, logo account presidente coerente con stagione.
+- FantaPetilloMantraManager: Calciomercato disattivato.
+- Tabelle giocatori mobile gestite da `player-tables-mobile-v582`.
 
-## Ultima modifica
-V581 ha risolto la divergenza di stile tra Area Squadra, Rose e Listone eliminando il clone dinamico V580 e applicando una sorgente CSS/runtime unica alle tre tabelle.
+## Nota per modifiche future
+Le tabelle giocatori mobile sono ora normalizzate da un unico runtime/CSS. Prima di modificare Area Squadra, Rose o Listone verificare che non vengano reintrodotti conflitti da:
 
-## Guardrail
-- Non riattivare V570/V571 resize tabelle.
-- Non usare piu il clone computato del Listone come sorgente runtime.
-- Mantenere stili separabili solo tramite `data-player-table-v581="teamarea|rose|listone"` se servono ritocchi futuri.
-- Non modificare `docs/zonaorientale/FUNZIONALITA'.md` senza richiesta esplicita.
+- `styles.css` ruolo V405;
+- `rosters-tables.css`;
+- `mobile-suite-v168.css`;
+- badge `.status` e `.status-badge`.
+
+## Verifica prioritaria
+Da mobile: Listone, Rose espansa, Area Squadra / Dashboard Presidente.
