@@ -1,6 +1,11 @@
 # FantaPetilloMantraManager - Stato corrente
 
-Versione corrente: V580.
+Versione corrente: V581.
 
+## Ultimo intervento
+V581 uniforma da mobile lo stile delle tre tabelle giocatori: Area Squadra, Rose e Listone. Il runtime applica una configurazione unica e deterministica, senza clone da Listone.
+
+## Stato preservato
 - Calciomercato disattivato.
-- Tabelle giocatori mobile: Area Squadra e Rose clonano lo stile effettivo del Listone.
+- Nessuna modifica a Firebase, EmailJS, Admin o snapshot.
+- Footer/cache-buster aggiornati a V581.

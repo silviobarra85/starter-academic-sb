@@ -1,9 +1,19 @@
-# AI Assistant Handoff Current
+# AI Assistant Handoff corrente
 
-Versione corrente overlay: V580 - Tabelle giocatori mobile clonate dal Listone.
+Baseline corrente: V581.
 
-- Listone resta sorgente visiva.
-- Area Squadra e Rose ricevono classi runtime dedicate e stili inline mobile-only clonati dal Listone.
-- Resize colonne V570/V571 non viene caricato.
-- Calciomercato resta disattivato.
-- Svincola Giocatori ZonaOrientale resta attivo.
+## Stato principale
+- ZonaOrientale: V581.
+- FantaPetilloMantraManager: V581.
+- Calciomercato disattivato.
+- Svincola Giocatori attivo su ZonaOrientale.
+- Stili mobile tabelle giocatori unificati con `player-tables-mobile-v581`.
+
+## Ultima modifica
+V581 ha risolto la divergenza di stile tra Area Squadra, Rose e Listone eliminando il clone dinamico V580 e applicando una sorgente CSS/runtime unica alle tre tabelle.
+
+## Guardrail
+- Non riattivare V570/V571 resize tabelle.
+- Non usare piu il clone computato del Listone come sorgente runtime.
+- Mantenere stili separabili solo tramite `data-player-table-v581="teamarea|rose|listone"` se servono ritocchi futuri.
+- Non modificare `docs/zonaorientale/FUNZIONALITA'.md` senza richiesta esplicita.
