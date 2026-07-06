@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'FantaMantra',
   basePath: '/fantapetillomantramanager/',
   siteUrl: 'https://silviobarra.com/fantapetillomantramanager/',
-  currentVersion: '583',
+  currentVersion: '584',
   currentSeasonId: '2025-2026',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',

@@ -1,12 +1,12 @@
 (function () {
   'use strict';
 
-  var VERSION = 'v583';
+  var VERSION = 'v584';
   var scheduled = false;
   var TYPES = ['teamarea', 'rose', 'listone'];
-  var TYPE_CLASSES = TYPES.map(function (type) { return 'fanta-player-table-v583-' + type; });
-  var ROLE_CLASSES = ['fpt-v583-role-p', 'fpt-v583-role-d', 'fpt-v583-role-c', 'fpt-v583-role-a'];
-  var PRIOR_VERSIONS = ['v570', 'v571', 'v572', 'v573', 'v574', 'v575', 'v576', 'v577', 'v578', 'v579', 'v580', 'v581', 'v582', 'v583'];
+  var TYPE_CLASSES = TYPES.map(function (type) { return 'fanta-player-table-v584-' + type; });
+  var ROLE_CLASSES = ['fpt-v584-role-p', 'fpt-v584-role-d', 'fpt-v584-role-c', 'fpt-v584-role-a'];
+  var PRIOR_VERSIONS = ['v567', 'v568', 'v569', 'v570', 'v571', 'v572', 'v573', 'v574', 'v575', 'v576', 'v577', 'v578', 'v579', 'v580', 'v581', 'v582', 'v583'];
   var LEGACY_ROLE_CLASSES = [
     'zo-role-bg-v405-gk', 'zo-role-bg-v405-def', 'zo-role-bg-v405-mid', 'zo-role-bg-v405-fwd',
     'player-role-gk', 'player-role-def', 'player-role-mid', 'player-role-fwd',
@@ -154,15 +154,15 @@
   function ensureWrapper(table, type) {
     var wrapper = table.closest('.table-wrap, .mobile-tabular-wrap, .listone-table-wrap, .roster-table-wrap, .team-profile-roster-wrap, .roster-inline-table-wrap');
     if (wrapper) {
-      wrapper.classList.add('fanta-player-table-wrap-v583', 'fanta-player-table-wrap-v583-' + type);
-      wrapper.setAttribute('data-player-table-wrap-v583', type);
+      wrapper.classList.add('fanta-player-table-wrap-v584', 'fanta-player-table-wrap-v584-' + type);
+      wrapper.setAttribute('data-player-table-wrap-v584', type);
       return wrapper;
     }
     var parent = table.parentNode;
     if (!parent || parent.nodeType !== 1) return null;
     var created = document.createElement('div');
-    created.className = 'fanta-player-table-wrap-v583 fanta-player-table-wrap-v583-' + type;
-    created.setAttribute('data-player-table-wrap-v583', type);
+    created.className = 'fanta-player-table-wrap-v584 fanta-player-table-wrap-v584-' + type;
+    created.setAttribute('data-player-table-wrap-v584', type);
     parent.insertBefore(created, table);
     created.appendChild(table);
     return created;
@@ -178,15 +178,15 @@
     var marketIndex = getColumnIndexByLabels(table, ['MERCATO', 'FANTAMERCATO']);
     var rosterIndex = getColumnIndexByLabels(table, ['ROSA', 'FANTASQUADRA', 'FANTA SQUADRA']);
     var changeIndex = getColumnIndexByLabels(table, ['MODIFICA', 'MODIFICHE']);
-    addColumnClassByIndex(table, playerIndex >= 0 ? playerIndex : 0, 'fpt-v583-col-player');
-    addColumnClassByIndex(table, roleIndex, 'fpt-v583-col-role');
-    addColumnClassByIndex(table, statusIndex, 'fpt-v583-col-status');
-    addColumnClassByIndex(table, teamIndex, 'fpt-v583-col-team');
-    addColumnClassByIndex(table, costIndex, 'fpt-v583-col-cost');
-    addColumnClassByIndex(table, qtaIndex, 'fpt-v583-col-qta');
-    addColumnClassByIndex(table, marketIndex, 'fpt-v583-col-market');
-    addColumnClassByIndex(table, rosterIndex, 'fpt-v583-col-roster');
-    addColumnClassByIndex(table, changeIndex, 'fpt-v583-col-change');
+    addColumnClassByIndex(table, playerIndex >= 0 ? playerIndex : 0, 'fpt-v584-col-player');
+    addColumnClassByIndex(table, roleIndex, 'fpt-v584-col-role');
+    addColumnClassByIndex(table, statusIndex, 'fpt-v584-col-status');
+    addColumnClassByIndex(table, teamIndex, 'fpt-v584-col-team');
+    addColumnClassByIndex(table, costIndex, 'fpt-v584-col-cost');
+    addColumnClassByIndex(table, qtaIndex, 'fpt-v584-col-qta');
+    addColumnClassByIndex(table, marketIndex, 'fpt-v584-col-market');
+    addColumnClassByIndex(table, rosterIndex, 'fpt-v584-col-roster');
+    addColumnClassByIndex(table, changeIndex, 'fpt-v584-col-change');
     return {
       roleIndex: roleIndex,
       playerIndex: playerIndex >= 0 ? playerIndex : 0,
@@ -204,7 +204,7 @@
     }
     if (!role && indexes.roleIndex >= 0 && row.children[indexes.roleIndex]) role = detectRoleFromText(row.children[indexes.roleIndex].textContent);
     if (!role) {
-      var roleCell = row.querySelector('.fpt-v583-col-role, .roster-col-role, .team-profile-role-cell, .listone-col-classicRole, [data-role]');
+      var roleCell = row.querySelector('.fpt-v584-col-role, .roster-col-role, .team-profile-role-cell, .listone-col-classicRole, [data-role]');
       if (roleCell) role = detectRoleFromText(roleCell.textContent || roleCell.getAttribute('data-role'));
     }
     return role;
@@ -296,14 +296,14 @@
   }
 
   function applyColumnWidths(table, type) {
-    setWidth(table.querySelectorAll('.fpt-v583-col-role, .roster-col-role, .team-profile-role-cell, .listone-col-classicRole'), WIDTHS.role);
-    setWidth(table.querySelectorAll('.fpt-v583-col-status, .roster-col-status, .team-profile-status-cell, .listone-col-status'), WIDTHS.status[type] || WIDTHS.status.default);
-    setWidth(table.querySelectorAll('.fpt-v583-col-team, .roster-col-team, .team-profile-team-cell, .listone-col-realTeam'), WIDTHS.team);
-    setWidth(table.querySelectorAll('.fpt-v583-col-cost, .fpt-v583-col-qta, .roster-col-cost, .roster-col-qta, .team-profile-cost-cell, .team-profile-qta-cell, .listone-col-quotationCurrent, .listone-col-rosterCost, .listone-col-fvm'), WIDTHS.small);
-    setWidth(table.querySelectorAll('.fpt-v583-col-market, .roster-col-market, .team-profile-market-cell'), WIDTHS.market);
+    setWidth(table.querySelectorAll('.fpt-v584-col-role, .roster-col-role, .team-profile-role-cell, .listone-col-classicRole'), WIDTHS.role);
+    setWidth(table.querySelectorAll('.fpt-v584-col-status, .roster-col-status, .team-profile-status-cell, .listone-col-status'), WIDTHS.status[type] || WIDTHS.status.default);
+    setWidth(table.querySelectorAll('.fpt-v584-col-team, .roster-col-team, .team-profile-team-cell, .listone-col-realTeam'), WIDTHS.team);
+    setWidth(table.querySelectorAll('.fpt-v584-col-cost, .fpt-v584-col-qta, .roster-col-cost, .roster-col-qta, .team-profile-cost-cell, .team-profile-qta-cell, .listone-col-quotationCurrent, .listone-col-rosterCost, .listone-col-fvm'), WIDTHS.small);
+    setWidth(table.querySelectorAll('.fpt-v584-col-market, .roster-col-market, .team-profile-market-cell'), WIDTHS.market);
     if (type === 'listone') {
-      setWidth(table.querySelectorAll('.fpt-v583-col-roster, .listone-col-fantasyRoster'), WIDTHS.listoneRoster);
-      setWidth(table.querySelectorAll('.fpt-v583-col-change, .listone-col-historyChange'), WIDTHS.listoneChange);
+      setWidth(table.querySelectorAll('.fpt-v584-col-roster, .listone-col-fantasyRoster'), WIDTHS.listoneRoster);
+      setWidth(table.querySelectorAll('.fpt-v584-col-change, .listone-col-historyChange'), WIDTHS.listoneChange);
     }
   }
 
@@ -325,7 +325,7 @@
   }
 
   function applyLinks(table) {
-    Array.prototype.forEach.call(table.querySelectorAll('td:first-child a, .fpt-v583-col-player a, td:first-child strong, .fpt-v583-col-player strong, td:first-child span, .fpt-v583-col-player span'), function (node) {
+    Array.prototype.forEach.call(table.querySelectorAll('td:first-child a, .fpt-v584-col-player a, td:first-child strong, .fpt-v584-col-player strong, td:first-child span, .fpt-v584-col-player span'), function (node) {
       important(node, 'display', 'inline');
       important(node, 'white-space', 'normal');
       important(node, 'overflow', 'visible');
@@ -339,7 +339,7 @@
   }
 
   function markFreeAgents(table, indexes) {
-    if (!table || table.getAttribute('data-player-table-v583') !== 'listone') return;
+    if (!table || table.getAttribute('data-player-table-v584') !== 'listone') return;
     var candidates = [];
     if (indexes.rosterIndex >= 0) {
       Array.prototype.forEach.call(table.querySelectorAll('tbody tr'), function (row) {
@@ -347,13 +347,13 @@
         if (cell) candidates.push(cell);
       });
     }
-    Array.prototype.forEach.call(table.querySelectorAll('.fpt-v583-col-roster, .listone-col-fantasyRoster'), function (cell) {
+    Array.prototype.forEach.call(table.querySelectorAll('.fpt-v584-col-roster, .listone-col-fantasyRoster'), function (cell) {
       if (candidates.indexOf(cell) < 0) candidates.push(cell);
     });
     candidates.forEach(function (cell) {
       var text = norm(cell.textContent);
       if (text.indexOf('SVINCOLATI') >= 0 || text.indexOf('NON PRESENTE') >= 0) {
-        cell.classList.add('fpt-v583-free-agent');
+        cell.classList.add('fpt-v584-free-agent');
         important(cell, 'color', '#fde68a');
         Array.prototype.forEach.call(cell.querySelectorAll('*'), function (node) {
           important(node, 'color', '#fde68a');
@@ -379,8 +379,8 @@
     var type = classifyTable(table);
     if (!type) return 0;
     clearPriorMarks(table);
-    table.classList.add('fanta-player-table-v583', 'fanta-player-table-v583-' + type);
-    table.setAttribute('data-player-table-v583', type);
+    table.classList.add('fanta-player-table-v584', 'fanta-player-table-v584-' + type);
+    table.setAttribute('data-player-table-v584', type);
     var wrapper = ensureWrapper(table, type);
     var indexes = markColumns(table);
 
@@ -390,17 +390,17 @@
     applyTableInline(table);
     Array.prototype.forEach.call(table.querySelectorAll('th, td'), applyCellBase);
     Array.prototype.forEach.call(table.querySelectorAll('thead th'), applyHeader);
-    Array.prototype.forEach.call(table.querySelectorAll('th:first-child, td:first-child, .fpt-v583-col-player'), function (cell) { applyPlayerCell(cell, cell.tagName === 'TH'); });
+    Array.prototype.forEach.call(table.querySelectorAll('th:first-child, td:first-child, .fpt-v584-col-player'), function (cell) { applyPlayerCell(cell, cell.tagName === 'TH'); });
     applyColumnWidths(table, type);
     Array.prototype.forEach.call(table.querySelectorAll('tbody tr'), function (row) {
       ROLE_CLASSES.forEach(function (name) { row.classList.remove(name); });
       var role = inferRoleForRow(row, indexes);
       clearLegacyRoleClassesDeep(row);
       if (role) {
-        row.classList.add('fpt-v583-role-' + role);
-        row.setAttribute('data-fpt-v583-role', role);
+        row.classList.add('fpt-v584-role-' + role);
+        row.setAttribute('data-fpt-v584-role', role);
       } else {
-        row.removeAttribute('data-fpt-v583-role');
+        row.removeAttribute('data-fpt-v584-role');
       }
       applyRoleStyle(row, role);
     });
@@ -413,7 +413,7 @@
     scheduled = false;
     if (document.body) {
       PRIOR_VERSIONS.forEach(function (ver) { document.body.classList.remove('player-table-mobile-' + ver + '-active'); });
-      document.body.classList.add('player-table-mobile-v583-active');
+      document.body.classList.add('player-table-mobile-v584-active');
     }
     var selector = [
       'section[data-page="listone"] table.listone-table',
@@ -442,7 +442,7 @@
     if (delay) window.setTimeout(runner, delay); else runner();
   }
 
-  window.FantaPlayerTablesMobileV583 = { run: run, schedule: schedule, classifyTable: classifyTable };
+  window.FantaPlayerTablesMobileV584 = { run: run, schedule: schedule, classifyTable: classifyTable };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { schedule(); }); else schedule();
   window.addEventListener('load', function () { schedule(); schedule(250); schedule(800); schedule(1600); });
   window.addEventListener('hashchange', function () { schedule(); schedule(250); schedule(800); });

@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "583",
+  "currentVersion": "584",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -639,7 +639,8 @@
     "V567 rende opaca da mobile la prima colonna sticky delle tabelle Rose e Area Squadra, evitando sovrapposizioni durante lo scroll orizzontale.",
     "V570 aggiunge uno strumento opzionale di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo solo con resizeTabelle=1 e stampa misure CSS in console.",
     "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
-    "V583 sostituisce il clone runtime con uno stile mobile unico e deterministico per Area Squadra, Rose e Listone, evitando divergenze da CSS legacy."
+    "V583 sostituisce il clone runtime con uno stile mobile unico e deterministico per Area Squadra, Rose e Listone, evitando divergenze da CSS legacy.",
+    "V584 consolida gli stili mobile delle tabelle giocatori in un solo asset attivo e rimuove i layer sperimentali/resize V567-V583 non piu caricati."
   ],
   "ui": {
     "footerVersion": 488
