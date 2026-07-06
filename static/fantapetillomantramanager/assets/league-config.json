@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "576",
+  "currentVersion": "577",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -413,7 +413,7 @@
         "icon": "rules"
       }
     ],
-    "footerLastUpdated": "05/07/2026",
+    "footerLastUpdated": "06/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
     "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
     "footerVersion": 573
@@ -575,7 +575,9 @@
       "V465 aggiunge una card Admin informativa per riepilogare cosa manca prima della pubblicazione: dati reali, snapshot e share/Netlify; Area Squadra e visibile da V476."
     ]
   },
-  "notes": [],
+  "notes": [
+    "V577 corregge la visualizzazione mobile delle tabelle giocatori: Area Squadra marcata a runtime e colonna Giocatore compatta per Rose/Area Squadra."
+  ],
   "audit": {
     "standardAdminSetupVersion": "467"
   },
