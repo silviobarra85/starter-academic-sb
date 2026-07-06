@@ -1,12 +1,13 @@
 # Overlay roadmap
 
 ## Corrente
-- V585 - Dashboard Presidente mobile compatta.
+- V586 - Rose pubbliche senza filtri ruolo + cleanup review.
 
 ## Note operative
 - Mantenere `player-tables-mobile-v584` come unico asset consolidato per le tabelle giocatori mobile.
 - Non reintrodurre resize colonne V570/V571.
 - Mantenere `president-teamarea-mobile-v585` come layer mobile dedicato alla Dashboard Presidente.
+- I filtri ruolo della sezione pubblica `Tutte le rose` sono disattivati da V586.
 - Se si modifica la Dashboard Presidente, preservare: Firebase, EmailJS, Svincola Giocatori, Comunicati, Scambio e Trattative.
 - Le sovrapposizioni CSS storiche da considerare restano `assets/styles.css`, `mobile-suite-v168.css`, `rosters-tables.css` e `roster-listone-table-unification-v551.css`.
 
@@ -22,3 +23,9 @@
 - Pannelli operativi chiusi di default.
 - `Proponi svincolo` rinominato in `Proponi trattativa`.
 - Aggiunto cleanup per residui resize V570/V571.
+
+## V586 - Rose pubbliche senza filtri ruolo + cleanup review
+- Rimosso il pannello filtri ruolo dalla sezione pubblica `Tutte le rose`.
+- Le rose espanse mostrano tutti i giocatori.
+- Listone e filtri operativi Area Squadra/Presidente restano preservati.
+- Aggiunto audit cleanup/refactor V586 e cleanup conservativo per residui tecnici.

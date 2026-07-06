@@ -37487,3 +37487,61 @@ window.FantaEngineCalciomercatoDisabledV561 = Object.freeze({
   })
 });
 
+
+/* V586 - Rimuove i filtri ruolo dalla sezione pubblica Tutte le rose.
+ * I filtri ruolo V441 restano disponibili per Listone e Area Squadra/operativita' Presidente,
+ * ma non vengono piu' inseriti ne' applicati alle rose pubbliche espanse. */
+const PUBLIC_ROSTER_ROLE_FILTERS_DISABLED_V586 = true;
+
+function removePublicRosterRoleFiltersV586() {
+  const panel = document.getElementById("rosterRoleFiltersV441");
+  if (panel) panel.remove();
+  document.querySelectorAll("[data-roster-standard-role-filter-v441], [data-roster-mantra-role-filter-v441]").forEach((input) => {
+    const wrapper = input.closest("#rosterRoleFiltersV441") || input.closest(".role-filter-panel-v441");
+    if (wrapper?.id === "rosterRoleFiltersV441") wrapper.remove();
+  });
+}
+
+if (typeof readRosterRoleFilterStateV441 === "function") {
+  readRosterRoleFilterStateV441 = function readRosterRoleFilterStateV586() {
+    state.rosterStandardRoleFiltersV441 = new Set(STANDARD_ROLE_ORDER_V441);
+    state.rosterMantraRoleFiltersV441 = new Set(MANTRA_ROLE_ORDER_V441);
+    removePublicRosterRoleFiltersV586();
+  };
+}
+
+if (typeof filterRosterPlayersForPublicV441 === "function") {
+  filterRosterPlayersForPublicV441 = function filterRosterPlayersForPublicV586(players = []) {
+    return Array.isArray(players) ? players : [];
+  };
+}
+
+if (typeof ensureRosterRoleFilterControlsV441 === "function") {
+  ensureRosterRoleFilterControlsV441 = function ensureRosterRoleFilterControlsV586() {
+    removePublicRosterRoleFiltersV586();
+    return false;
+  };
+}
+
+const renderTeamsTableBeforeV586 = typeof renderTeamsTable === "function" ? renderTeamsTable : null;
+if (renderTeamsTableBeforeV586) {
+  renderTeamsTable = function renderTeamsTableV586(...args) {
+    const result = renderTeamsTableBeforeV586.apply(this, args);
+    removePublicRosterRoleFiltersV586();
+    return result;
+  };
+}
+
+["DOMContentLoaded", "load", "hashchange", "fanta:dashboard-context-changed"].forEach((eventName) => {
+  window.addEventListener(eventName, () => window.setTimeout(removePublicRosterRoleFiltersV586, 0), { passive: true });
+});
+window.setTimeout(removePublicRosterRoleFiltersV586, 250);
+window.setTimeout(removePublicRosterRoleFiltersV586, 1000);
+
+window.FantaPublicRosterRoleFiltersV586 = Object.freeze({
+  version: "V586",
+  disabledInPublicRosters: PUBLIC_ROSTER_ROLE_FILTERS_DISABLED_V586,
+  preservesListoneRoleFilters: true,
+  preservesTeamAreaOperationalRoleFilters: true,
+  removesDomId: "rosterRoleFiltersV441"
+});

@@ -1,7 +1,7 @@
 # Stato corrente
 
 ## Versione corrente
-V585 - Dashboard Presidente mobile compatta
+V586 - Dashboard Presidente mobile compatta
 
 ## Stato funzionale
 - Tabelle giocatori mobile consolidate con `player-tables-mobile-v584`.
