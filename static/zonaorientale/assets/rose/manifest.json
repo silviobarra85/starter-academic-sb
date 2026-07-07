@@ -1,6 +1,15 @@
 {
   "rosters": [
     {
+      "id": "2025-2026-2026-07-05",
+      "seasonId": "2025-2026",
+      "label": "Rose ZonaOrientale Salerno 2026/27",
+      "loadedAt": "2026-07-05",
+      "file": "2025-2026-2026-07-05.json",
+      "teams": 10,
+      "players": 244
+    },
+    {
       "id": "2025-2026-2026-05-21",
       "seasonId": "2025-2026",
       "label": "Rose ZonaOrientale Salerno 2025/26",

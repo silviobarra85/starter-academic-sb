@@ -1,24 +1,18 @@
 {
   "meta": {
     "id": "2025-2026-2026-07-05",
-    "seasonId": "2026-2027",
+    "seasonId": "2025-2026",
     "label": "Rose ZonaOrientale Salerno 2026/27",
     "loadedAt": "2026-07-05",
-    "sourceFile": "Hand modified by me",
+    "sourceFile": "Rose_zonaorientale-salerno.xlsx",
     "teams": 10,
-    "players": 299
+    "players": 244
   },
   "rosters": [
     {
       "name": "Afc Severgas Baronissi",
-      "playerCount": 30,
+      "playerCount": 25,
       "players": [
-        {
-          "role": "P",
-          "playerName": "Sommer",
-          "realTeam": "INT",
-          "cost": 32
-        },
         {
           "role": "P",
           "playerName": "Martinez Jo.",
@@ -35,12 +29,6 @@
           "role": "D",
           "playerName": "Zortea",
           "realTeam": "BOL",
-          "cost": 1
-        },
-        {
-          "role": "D",
-          "playerName": "Moreno Alb.",
-          "realTeam": "COM",
           "cost": 1
         },
         {
@@ -93,12 +81,6 @@
         },
         {
           "role": "C",
-          "playerName": "Mkhitaryan",
-          "realTeam": "INT",
-          "cost": 1
-        },
-        {
-          "role": "C",
           "playerName": "Strefezza",
           "realTeam": "PAR",
           "cost": 7
@@ -138,18 +120,6 @@
           "playerName": "Gandelman",
           "realTeam": "LEC",
           "cost": 2
-        },
-        {
-          "role": "C",
-          "playerName": "Loyola",
-          "realTeam": "PIS",
-          "cost": 1
-        },
-        {
-          "role": "A",
-          "playerName": "Fullkrug",
-          "realTeam": "MIL",
-          "cost": 6
         },
         {
           "role": "A",
@@ -379,7 +349,7 @@
     },
     {
       "name": "FC DueFratelli2005",
-      "playerCount": 30,
+      "playerCount": 19,
       "players": [
         {
           "role": "P",
@@ -392,30 +362,6 @@
           "playerName": "Svilar",
           "realTeam": "ROM",
           "cost": 1
-        },
-        {
-          "role": "D",
-          "playerName": "Mina",
-          "realTeam": "CAG",
-          "cost": 3
-        },
-        {
-          "role": "D",
-          "playerName": "Lazaro",
-          "realTeam": "TOR",
-          "cost": 9
-        },
-        {
-          "role": "D",
-          "playerName": "Celik",
-          "realTeam": "ROM",
-          "cost": 5
-        },
-        {
-          "role": "D",
-          "playerName": "Delprato",
-          "realTeam": "PAR",
-          "cost": 12
         },
         {
           "role": "D",
@@ -443,30 +389,6 @@
         },
         {
           "role": "C",
-          "playerName": "Sottil",
-          "realTeam": "LEC",
-          "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Gaetano",
-          "realTeam": "CAG",
-          "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Fagioli",
-          "realTeam": "FIO",
-          "cost": 0
-        },
-        {
-          "role": "C",
-          "playerName": "Elmas",
-          "realTeam": "NAP",
-          "cost": 6
-        },
-        {
-          "role": "C",
           "playerName": "Vlasic",
           "realTeam": "TOR",
           "cost": 7
@@ -488,12 +410,6 @@
           "playerName": "Isaksen",
           "realTeam": "LAZ",
           "cost": 18
-        },
-        {
-          "role": "C",
-          "playerName": "Zaragoza",
-          "realTeam": "ROM",
-          "cost": 29
         },
         {
           "role": "C",
@@ -545,35 +461,17 @@
         },
         {
           "role": "A",
-          "playerName": "Kilicsoy",
-          "realTeam": "CAG",
-          "cost": 1
-        },
-        {
-          "role": "A",
           "playerName": "Frigan",
           "realTeam": "PAR",
           "cost": 1
-        },
-        {
-          "role": "A",
-          "playerName": "Durosinmi",
-          "realTeam": "PIS",
-          "cost": 4
         }
       ],
       "remainingCredits": 4
     },
     {
       "name": "As Paperopoli",
-      "playerCount": 30,
+      "playerCount": 19,
       "players": [
-        {
-          "role": "P",
-          "playerName": "Perin",
-          "realTeam": "JUV",
-          "cost": 1
-        },
         {
           "role": "P",
           "playerName": "Muric",
@@ -588,21 +486,9 @@
         },
         {
           "role": "D",
-          "playerName": "Djimsiti",
-          "realTeam": "ATA",
-          "cost": 1
-        },
-        {
-          "role": "D",
           "playerName": "Miranda J.",
           "realTeam": "BOL",
           "cost": 17
-        },
-        {
-          "role": "D",
-          "playerName": "De Winter",
-          "realTeam": "MIL",
-          "cost": 9
         },
         {
           "role": "D",
@@ -660,30 +546,6 @@
         },
         {
           "role": "C",
-          "playerName": "Maldini",
-          "realTeam": "LAZ",
-          "cost": 27
-        },
-        {
-          "role": "C",
-          "playerName": "Musah",
-          "realTeam": "ATA",
-          "cost": 4
-        },
-        {
-          "role": "C",
-          "playerName": "Ellertsson",
-          "realTeam": "GEN",
-          "cost": 2
-        },
-        {
-          "role": "C",
-          "playerName": "Sulemana I.",
-          "realTeam": "CAG",
-          "cost": 1
-        },
-        {
-          "role": "C",
           "playerName": "Pisilli",
           "realTeam": "ROM",
           "cost": 7
@@ -696,20 +558,8 @@
         },
         {
           "role": "C",
-          "playerName": "Anjorin",
-          "realTeam": "TOR",
-          "cost": 1
-        },
-        {
-          "role": "C",
           "playerName": "Keita M.",
           "realTeam": "PAR",
-          "cost": 3
-        },
-        {
-          "role": "A",
-          "playerName": "Orban G.",
-          "realTeam": "VER",
           "cost": 3
         },
         {
@@ -726,12 +576,6 @@
         },
         {
           "role": "A",
-          "playerName": "Dallinga",
-          "realTeam": "BOL",
-          "cost": 0
-        },
-        {
-          "role": "A",
           "playerName": "Douvikas",
           "realTeam": "COM",
           "cost": 9
@@ -741,19 +585,13 @@
           "playerName": "Kuhn",
           "realTeam": "COM",
           "cost": 35
-        },
-        {
-          "role": "A",
-          "playerName": "Kulenovic",
-          "realTeam": "TOR",
-          "cost": 1
         }
       ],
       "remainingCredits": 4
     },
     {
       "name": "Beetlejuice",
-      "playerCount": 30,
+      "playerCount": 18,
       "players": [
         {
           "role": "P",
@@ -763,21 +601,9 @@
         },
         {
           "role": "P",
-          "playerName": "Di Gregorio",
-          "realTeam": "JUV",
-          "cost": 3
-        },
-        {
-          "role": "P",
           "playerName": "Butez",
           "realTeam": "COM",
           "cost": 6
-        },
-        {
-          "role": "D",
-          "playerName": "Luperto",
-          "realTeam": "CRE",
-          "cost": 3
         },
         {
           "role": "D",
@@ -787,21 +613,9 @@
         },
         {
           "role": "D",
-          "playerName": "Caracciolo A.",
-          "realTeam": "PIS",
-          "cost": 1
-        },
-        {
-          "role": "D",
           "playerName": "Kabasele",
           "realTeam": "UDI",
           "cost": 1
-        },
-        {
-          "role": "D",
-          "playerName": "Baschirotto",
-          "realTeam": "CRE",
-          "cost": 3
         },
         {
           "role": "D",
@@ -813,18 +627,6 @@
           "role": "D",
           "playerName": "Beukema",
           "realTeam": "NAP",
-          "cost": 1
-        },
-        {
-          "role": "D",
-          "playerName": "Coco",
-          "realTeam": "TOR",
-          "cost": 5
-        },
-        {
-          "role": "D",
-          "playerName": "Kempf",
-          "realTeam": "COM",
           "cost": 1
         },
         {
@@ -859,12 +661,6 @@
         },
         {
           "role": "C",
-          "playerName": "Thorsby",
-          "realTeam": "CRE",
-          "cost": 4
-        },
-        {
-          "role": "C",
           "playerName": "McTominay",
           "realTeam": "NAP",
           "cost": 25
@@ -883,21 +679,9 @@
         },
         {
           "role": "C",
-          "playerName": "Konè I.",
-          "realTeam": "SAS",
-          "cost": 1
-        },
-        {
-          "role": "C",
           "playerName": "Neres",
           "realTeam": "NAP",
           "cost": 61
-        },
-        {
-          "role": "A",
-          "playerName": "Pedro",
-          "realTeam": "LAZ",
-          "cost": 2
         },
         {
           "role": "A",
@@ -913,34 +697,16 @@
         },
         {
           "role": "A",
-          "playerName": "Nzola",
-          "realTeam": "SAS",
-          "cost": 6
-        },
-        {
-          "role": "A",
-          "playerName": "Banda",
-          "realTeam": "LEC",
-          "cost": 2
-        },
-        {
-          "role": "A",
           "playerName": "Hojlund",
           "realTeam": "NAP",
           "cost": 108
-        },
-        {
-          "role": "A",
-          "playerName": "Ratkov",
-          "realTeam": "LAZ",
-          "cost": 8
         }
       ],
       "remainingCredits": 35
     },
     {
       "name": "real mappine",
-      "playerCount": 30,
+      "playerCount": 18,
       "players": [
         {
           "role": "P",
@@ -968,31 +734,7 @@
         },
         {
           "role": "D",
-          "playerName": "Hermoso",
-          "realTeam": "ROM",
-          "cost": 1
-        },
-        {
-          "role": "D",
           "playerName": "Kalulu",
-          "realTeam": "JUV",
-          "cost": 1
-        },
-        {
-          "role": "D",
-          "playerName": "Tsimikas",
-          "realTeam": "ROM",
-          "cost": 1
-        },
-        {
-          "role": "D",
-          "playerName": "Terracciano F.",
-          "realTeam": "CRE",
-          "cost": 6
-        },
-        {
-          "role": "D",
-          "playerName": "Cabal",
           "realTeam": "JUV",
           "cost": 1
         },
@@ -1010,27 +752,9 @@
         },
         {
           "role": "D",
-          "playerName": "Canestrelli",
-          "realTeam": "PIS",
-          "cost": 1
-        },
-        {
-          "role": "D",
           "playerName": "Muharemovic",
           "realTeam": "SAS",
           "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Mandragora",
-          "realTeam": "FIO",
-          "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Brescianini",
-          "realTeam": "FIO",
-          "cost": 2
         },
         {
           "role": "C",
@@ -1052,33 +776,9 @@
         },
         {
           "role": "C",
-          "playerName": "Helgason",
-          "realTeam": "LEC",
-          "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Berisha M.",
-          "realTeam": "LEC",
-          "cost": 1
-        },
-        {
-          "role": "C",
           "playerName": "Atta",
           "realTeam": "UDI",
           "cost": 6
-        },
-        {
-          "role": "C",
-          "playerName": "Tourè I.",
-          "realTeam": "PIS",
-          "cost": 1
-        },
-        {
-          "role": "A",
-          "playerName": "Sanabria",
-          "realTeam": "CRE",
-          "cost": 3
         },
         {
           "role": "A",
@@ -1115,12 +815,6 @@
           "playerName": "Ekhator",
           "realTeam": "GEN",
           "cost": 3
-        },
-        {
-          "role": "A",
-          "playerName": "Stulic",
-          "realTeam": "LEC",
-          "cost": 8
         }
       ],
       "remainingCredits": 12
@@ -1688,7 +1382,7 @@
     },
     {
       "name": "Real Pisistrius",
-      "playerCount": 30,
+      "playerCount": 26,
       "players": [
         {
           "role": "P",
@@ -1782,12 +1476,6 @@
         },
         {
           "role": "C",
-          "playerName": "Malinovskyi",
-          "realTeam": "GEN",
-          "cost": 9
-        },
-        {
-          "role": "C",
           "playerName": "Fofana Y.",
           "realTeam": "MIL",
           "cost": 5
@@ -1809,24 +1497,6 @@
           "playerName": "Zalewski",
           "realTeam": "ATA",
           "cost": 7
-        },
-        {
-          "role": "C",
-          "playerName": "Coulibaly L.",
-          "realTeam": "LEC",
-          "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Fadera",
-          "realTeam": "SAS",
-          "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Vandeputte",
-          "realTeam": "CRE",
-          "cost": 10
         },
         {
           "role": "A",
