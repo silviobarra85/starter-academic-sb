@@ -1,49 +1,51 @@
 {
   "id": "2021-2022",
   "seasonId": "2021-2022",
-  "generatedAt": "2026-07-04T18:11:33.813Z",
+  "generatedAt": "2026-07-07T07:08:23.301Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "notes": "",
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
       },
+      "notes": "",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
       },
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
       "logo": "./assets/logos/acmilan.png",
-      "isCurrent": true,
       "canonicalName": "Ac Milan"
     },
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "isCurrent": true,
       "canonicalName": "Afc Severgas Baronissi",
-      "createdAt": {
-        "seconds": 1778833643,
-        "nanoseconds": 350000000
-      },
       "logo": "./assets/logos/baronissi.png",
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
       "notes": ""
     },
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
-      "canonicalName": "As Paperopoli",
-      "isCurrent": true,
       "logo": "./assets/logos/paperopoli.png",
+      "canonicalName": "As Paperopoli",
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
       "updatedAt": {
         "seconds": 1778954349,
         "nanoseconds": 563000000
@@ -52,30 +54,30 @@
         "seconds": 1778833666,
         "nanoseconds": 871000000
       },
-      "currentPresidentIds": [
-        "JaSqcnTZUYHtjHXghADS"
-      ],
-      "notes": ""
+      "notes": "",
+      "isCurrent": true
     },
     {
       "id": "team_002",
-      "canonicalName": "Beetlejuice",
-      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
       },
-      "logo": "./assets/logos/beetlejuice.png",
+      "isCurrent": true,
       "notes": "",
+      "canonicalName": "Beetlejuice",
+      "logo": "./assets/logos/beetlejuice.png",
       "currentPresidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ]
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "canonicalName": "FC DueFratelli2005",
-      "isCurrent": true,
       "logo": "./assets/logos/due_fratelli.png",
+      "canonicalName": "FC DueFratelli2005",
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
@@ -84,203 +86,199 @@
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "currentPresidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "notes": ""
+      "notes": "",
+      "isCurrent": true
     },
     {
       "id": "GDisIDfbuSeLVm64PSR3",
+      "logo": "./assets/logos/olympic_salerno.png",
       "canonicalName": "Olympic Salerno FC",
-      "isCurrent": true,
+      "currentPresidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
       "updatedAt": {
         "seconds": 1779377921,
         "nanoseconds": 533000000
       },
-      "logo": "./assets/logos/olympic_salerno.png",
+      "notes": "",
       "createdAt": {
         "seconds": 1778833581,
         "nanoseconds": 658000000
       },
-      "currentPresidentIds": [
-        "cbA5rKY8ItVmgRqhUasz"
-      ],
-      "notes": ""
+      "isCurrent": true
     },
     {
       "id": "uQSBHtctytBo7koOKndM",
-      "notes": "",
+      "canonicalName": "Prestige Worldwide",
+      "logo": "./assets/logos/prestige.png",
       "currentPresidentIds": [
         "uvxNCO3JS0ZGPr8PCbzN"
       ],
-      "logo": "./assets/logos/prestige.png",
       "updatedAt": {
         "seconds": 1778954439,
         "nanoseconds": 214000000
       },
+      "isCurrent": true,
       "createdAt": {
         "seconds": 1778833571,
         "nanoseconds": 416000000
       },
-      "canonicalName": "Prestige Worldwide",
-      "isCurrent": true
+      "notes": ""
     },
     {
       "id": "FT1tqdqI18iUh3l1lakQ",
-      "canonicalName": "real mappine",
-      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954461,
         "nanoseconds": 197000000
       },
-      "logo": "./assets/logos/real_mappine.png",
+      "notes": "",
       "createdAt": {
         "seconds": 1778833596,
         "nanoseconds": 670000000
       },
+      "isCurrent": true,
+      "logo": "./assets/logos/real_mappine.png",
+      "canonicalName": "real mappine",
       "currentPresidentIds": [
         "2yHHP653ChQrYxnQHMk3"
-      ],
-      "notes": ""
+      ]
     },
     {
       "id": "team_001",
       "currentPresidentIds": [
         "ueJtI9xTYmZhDmWrZDzZ"
       ],
-      "notes": "",
       "logo": "./assets/logos/real_pisistrius.png",
+      "canonicalName": "Real Pisistrius",
+      "notes": "",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954495,
         "nanoseconds": 409000000
-      },
-      "canonicalName": "Real Pisistrius",
-      "isCurrent": true
+      }
     },
     {
       "id": "ULwTIMBi3dyYrq0SoEsx",
-      "isCurrent": true,
-      "canonicalName": "River Plaid",
-      "currentPresidentIds": [
-        "6UBSv1GUTCxSNrRb8dZr",
-        "7KbTM1lnzIThNWcF0NKL"
-      ],
+      "updatedAt": {
+        "seconds": 1778954524,
+        "nanoseconds": 667000000
+      },
       "notes": "",
       "createdAt": {
         "seconds": 1778833556,
         "nanoseconds": 33000000
       },
+      "isCurrent": true,
       "logo": "./assets/logos/river_plaid.png",
-      "updatedAt": {
-        "seconds": 1778954524,
-        "nanoseconds": 667000000
-      }
+      "canonicalName": "River Plaid",
+      "currentPresidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ]
     }
   ],
   "presidents": [
     {
       "id": "6UBSv1GUTCxSNrRb8dZr",
-      "updatedAt": {
-        "seconds": 1778832834,
-        "nanoseconds": 979000000
-      },
+      "isActive": true,
       "createdAt": {
         "seconds": 1778832834,
         "nanoseconds": 979000000
       },
-      "name": "Claudio D'Isanto",
       "notes": "",
-      "isActive": true
+      "updatedAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      },
+      "name": "Claudio D'Isanto"
     },
     {
       "id": "uvxNCO3JS0ZGPr8PCbzN",
       "notes": "",
-      "name": "Davide Perruso",
-      "updatedAt": {
-        "seconds": 1778832855,
-        "nanoseconds": 565000000
-      },
       "createdAt": {
         "seconds": 1778832855,
         "nanoseconds": 565000000
       },
-      "isActive": true
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832855,
+        "nanoseconds": 565000000
+      },
+      "name": "Davide Perruso"
     },
     {
       "id": "cbA5rKY8ItVmgRqhUasz",
+      "name": "Fabio Gatto",
+      "isActive": true,
       "createdAt": {
-        "seconds": 1778832819,
-        "nanoseconds": 357000000
-      },
-      "updatedAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
       "notes": "",
-      "name": "Fabio Gatto",
-      "isActive": true
+      "updatedAt": {
+        "seconds": 1778832819,
+        "nanoseconds": 357000000
+      }
     },
     {
       "id": "7KbTM1lnzIThNWcF0NKL",
-      "createdAt": {
-        "seconds": 1778832829,
-        "nanoseconds": 62000000
-      },
+      "name": "Gaetano Alfinito",
       "updatedAt": {
         "seconds": 1778832829,
         "nanoseconds": 62000000
       },
-      "name": "Gaetano Alfinito",
+      "createdAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
       "notes": "",
       "isActive": true
     },
     {
       "id": "JaSqcnTZUYHtjHXghADS",
-      "isActive": true,
+      "name": "Gaetano Caparrotti",
       "updatedAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
+      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
-      },
-      "notes": "",
-      "name": "Gaetano Caparrotti"
+      }
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "createdAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      },
+      "name": "Gianluca Caparrotti",
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "name": "Gianluca Caparrotti",
-      "notes": "",
-      "isActive": true
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "notes": ""
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
       "isActive": true,
-      "updatedAt": {
-        "seconds": 1778832889,
-        "nanoseconds": 760000000
-      },
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
       "notes": "",
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
       "name": "Giosuè Vicinanza"
     },
     {
       "id": "2yHHP653ChQrYxnQHMk3",
-      "isActive": true,
       "name": "Mario Guariglia",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
@@ -288,25 +286,26 @@
       "createdAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
-      }
-    },
-    {
-      "id": "9pAjdkP5bPc5ldLlbfPP",
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
-      "createdAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
       },
       "notes": "",
-      "name": "Michele D'Isanto",
       "isActive": true
     },
     {
-      "id": "ueJtI9xTYmZhDmWrZDzZ",
+      "id": "9pAjdkP5bPc5ldLlbfPP",
+      "name": "Michele D'Isanto",
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
       "notes": "",
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      }
+    },
+    {
+      "id": "ueJtI9xTYmZhDmWrZDzZ",
       "name": "Silvio Barra",
       "updatedAt": {
         "seconds": 1778832793,
@@ -316,42 +315,43 @@
         "seconds": 1778832793,
         "nanoseconds": 929000000
       },
+      "notes": "",
       "isActive": true
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
-      "isActive": true,
       "updatedAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
+      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
-      "name": "Zio Dino",
-      "notes": ""
+      "name": "Zio Dino"
     }
   ],
   "seasonTeams": [
     {
       "id": "2021-2022_wmdzhrrpup8lhvsdwm7w",
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778847789,
         "nanoseconds": 497000000
       },
-      "logo": "",
+      "seasonId": "2021-2022",
       "createdAt": {
         "seconds": 1778847789,
         "nanoseconds": 497000000
       },
-      "isHistorical": false,
-      "seasonId": "2021-2022",
-      "name": "Ac Milan",
+      "logo": "",
       "presidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
-      "teamId": "WMdzHRRpUP8lHvsdwM7W"
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "name": "Ac Milan"
     },
     {
       "id": "2021-2022_7bx0cegbxtf4fwh6t0pi",
@@ -359,14 +359,14 @@
         "JaSqcnTZUYHtjHXghADS"
       ],
       "teamId": "7Bx0ceGBXtF4FwH6T0PI",
-      "seasonId": "2021-2022",
       "name": "As Paperopoli",
       "logo": "",
-      "updatedAt": {
+      "seasonId": "2021-2022",
+      "createdAt": {
         "seconds": 1778847797,
         "nanoseconds": 798000000
       },
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778847797,
         "nanoseconds": 798000000
       },
@@ -374,79 +374,79 @@
     },
     {
       "id": "2021-2022_team-002",
+      "logo": "",
       "presidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ],
       "teamId": "team_002",
-      "seasonId": "2021-2022",
       "name": "Beetlejuice",
-      "logo": "",
-      "updatedAt": {
+      "createdAt": {
         "seconds": 1778847803,
         "nanoseconds": 925000000
       },
+      "seasonId": "2021-2022",
       "isHistorical": false,
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1778847803,
         "nanoseconds": 925000000
       }
     },
     {
       "id": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "updatedAt": {
         "seconds": 1779380059,
         "nanoseconds": 607000000
       },
-      "logo": "",
+      "isHistorical": false,
+      "seasonId": "2021-2022",
       "createdAt": {
         "seconds": 1778847807,
         "nanoseconds": 132000000
       },
-      "isHistorical": false,
-      "seasonId": "2021-2022",
-      "name": "FC DueFratelli2005"
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "name": "FC DueFratelli2005",
+      "logo": ""
     },
     {
       "id": "2021-2022_gdisidfbuselvm64psr3",
-      "presidentIds": [
-        "cbA5rKY8ItVmgRqhUasz"
-      ],
-      "teamId": "GDisIDfbuSeLVm64PSR3",
-      "logo": "",
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1779380065,
         "nanoseconds": 663000000
       },
+      "seasonId": "2021-2022",
       "createdAt": {
         "seconds": 1778847811,
         "nanoseconds": 284000000
       },
-      "isHistorical": false,
-      "seasonId": "2021-2022",
+      "logo": "",
+      "presidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
+      "teamId": "GDisIDfbuSeLVm64PSR3",
       "name": "Olympic Salerno FC"
     },
     {
       "id": "2021-2022_uqsbhtctytbo7kookndm",
-      "name": "Prestige Worldwide",
-      "seasonId": "2021-2022",
-      "createdAt": {
-        "seconds": 1778847815,
-        "nanoseconds": 292000000
-      },
-      "isHistorical": false,
       "logo": "",
+      "name": "Prestige Worldwide",
+      "teamId": "uQSBHtctytBo7koOKndM",
+      "presidentIds": [
+        "uvxNCO3JS0ZGPr8PCbzN"
+      ],
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778847815,
         "nanoseconds": 292000000
       },
-      "presidentIds": [
-        "uvxNCO3JS0ZGPr8PCbzN"
-      ],
-      "teamId": "uQSBHtctytBo7koOKndM"
+      "createdAt": {
+        "seconds": 1778847815,
+        "nanoseconds": 292000000
+      },
+      "seasonId": "2021-2022"
     },
     {
       "id": "2021-2022_ft1tqdqi18iuh3l1lakq",
@@ -454,61 +454,67 @@
         "2yHHP653ChQrYxnQHMk3"
       ],
       "teamId": "FT1tqdqI18iUh3l1lakQ",
+      "name": "real mappine",
+      "logo": "",
+      "seasonId": "2021-2022",
       "createdAt": {
         "seconds": 1778847822,
         "nanoseconds": 981000000
       },
-      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778847822,
         "nanoseconds": 981000000
       },
-      "logo": "",
-      "name": "real mappine",
-      "seasonId": "2021-2022"
+      "isHistorical": false
     },
     {
       "id": "2021-2022_team-001",
+      "createdAt": {
+        "seconds": 1778847827,
+        "nanoseconds": 453000000
+      },
+      "seasonId": "2021-2022",
+      "updatedAt": {
+        "seconds": 1778847827,
+        "nanoseconds": 453000000
+      },
+      "isHistorical": false,
       "presidentIds": [
         "ueJtI9xTYmZhDmWrZDzZ"
       ],
       "teamId": "team_001",
       "name": "Real Pisistrius",
-      "seasonId": "2021-2022",
-      "createdAt": {
-        "seconds": 1778847827,
-        "nanoseconds": 453000000
-      },
-      "isHistorical": false,
-      "updatedAt": {
-        "seconds": 1778847827,
-        "nanoseconds": 453000000
-      },
       "logo": ""
     },
     {
       "id": "2021-2022_ulwtimbi3dyyrq0soesx",
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778847831,
-        "nanoseconds": 10000000
-      },
-      "isHistorical": false,
       "createdAt": {
         "seconds": 1778847831,
         "nanoseconds": 10000000
       },
       "seasonId": "2021-2022",
+      "isHistorical": false,
+      "updatedAt": {
+        "seconds": 1778847831,
+        "nanoseconds": 10000000
+      },
+      "logo": "",
       "name": "River Plaid",
+      "teamId": "ULwTIMBi3dyYrq0SoEsx",
       "presidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
-      ],
-      "teamId": "ULwTIMBi3dyYrq0SoEsx"
+      ]
     },
     {
       "id": "2021-2022_kbjri4liu4iuq6ajfnml",
       "logo": "",
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "name": "Us Baronissi Cavaliers",
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1779196146,
         "nanoseconds": 701000000
@@ -517,355 +523,349 @@
         "seconds": 1778847846,
         "nanoseconds": 575000000
       },
-      "isHistorical": false,
-      "seasonId": "2021-2022",
-      "name": "Us Baronissi Cavaliers",
-      "presidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
-      "teamId": "h6saeK7uRQIQNmiZTRT7"
+      "seasonId": "2021-2022"
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2021-2022_campionato",
-      "updatedAt": {
-        "seconds": 1778848085,
-        "nanoseconds": 81000000
-      },
-      "format": "CLASSIFICA",
-      "type": "CAMPIONATO",
-      "notes": "",
       "status": "CONCLUSA",
       "createdAt": {
         "seconds": 1778848066,
         "nanoseconds": 624000000
       },
-      "seasonId": "2021-2022",
       "knockoutPhases": [],
-      "name": "Campionato"
+      "seasonId": "2021-2022",
+      "format": "CLASSIFICA",
+      "name": "Campionato",
+      "type": "CAMPIONATO",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778848085,
+        "nanoseconds": 81000000
+      }
     },
     {
       "id": "2021-2022_champions-league",
-      "notes": "",
-      "type": "CHAMPIONS_LEAGUE",
+      "status": "NON_DISPUTATA",
+      "createdAt": {
+        "seconds": 1778848066,
+        "nanoseconds": 687000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "seasonId": "2021-2022",
       "format": "GIRONI_KO",
+      "name": "Champion's League",
       "updatedAt": {
         "seconds": 1778848080,
         "nanoseconds": 880000000
       },
-      "status": "NON_DISPUTATA",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "name": "Champion's League",
-      "seasonId": "2021-2022",
-      "createdAt": {
-        "seconds": 1778848066,
-        "nanoseconds": 687000000
-      }
+      "type": "CHAMPIONS_LEAGUE",
+      "notes": ""
     },
     {
       "id": "2021-2022_coppa-italia",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
+      "updatedAt": {
+        "seconds": 1778848093,
+        "nanoseconds": 689000000
+      },
+      "notes": "",
+      "type": "COPPA_ITALIA",
       "name": "Coppa Italia",
-      "seasonId": "2021-2022",
+      "format": "GIRONI_KO",
       "createdAt": {
         "seconds": 1778848066,
         "nanoseconds": 746000000
       },
-      "status": "CONCLUSA",
-      "notes": "",
-      "type": "COPPA_ITALIA",
-      "format": "GIRONI_KO",
-      "updatedAt": {
-        "seconds": 1778848093,
-        "nanoseconds": 689000000
-      }
-    },
-    {
-      "id": "2021-2022_playoff",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "name": "Playoff",
       "seasonId": "2021-2022",
+      "status": "CONCLUSA"
+    },
+    {
+      "id": "2021-2022_playoff",
+      "name": "Playoff",
+      "format": "GIRONI_KO",
+      "type": "PLAYOFF",
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778848097,
+        "nanoseconds": 578000000
+      },
+      "status": "CONCLUSA",
       "createdAt": {
         "seconds": 1778848066,
         "nanoseconds": 800000000
       },
-      "status": "CONCLUSA",
-      "notes": "",
-      "type": "PLAYOFF",
-      "format": "GIRONI_KO",
-      "updatedAt": {
-        "seconds": 1778848097,
-        "nanoseconds": 578000000
-      }
+      "seasonId": "2021-2022",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ]
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2021-2022-campionato_1",
-      "played": 36,
-      "points": 66,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 518000000
-      },
-      "fantapoints": 2566.5,
-      "position": 1,
-      "competitionId": "2021-2022_campionato",
-      "seasonId": "2021-2022",
       "createdAt": {
         "seconds": 1778848423,
         "nanoseconds": 518000000
       },
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi"
+      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
+      "seasonId": "2021-2022",
+      "played": 36,
+      "position": 1,
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 518000000
+      },
+      "competitionId": "2021-2022_campionato",
+      "points": 66,
+      "fantapoints": 2566.5
     },
     {
       "id": "2021-2022-campionato_2",
-      "fantapoints": 2535.5,
       "updatedAt": {
         "seconds": 1778848423,
         "nanoseconds": 576000000
       },
-      "played": 36,
       "points": 60,
-      "position": 2,
+      "fantapoints": 2535.5,
+      "competitionId": "2021-2022_campionato",
+      "seasonId": "2021-2022",
+      "seasonTeamId": "2021-2022_team-002",
       "createdAt": {
         "seconds": 1778848423,
         "nanoseconds": 576000000
       },
-      "competitionId": "2021-2022_campionato",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002"
-    },
-    {
-      "id": "2021-2022-campionato_3",
-      "position": 3,
       "played": 36,
-      "points": 56,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 628000000
-      },
-      "fantapoints": 2589,
-      "seasonTeamId": "2021-2022_uqsbhtctytbo7kookndm",
-      "competitionId": "2021-2022_campionato",
-      "seasonId": "2021-2022",
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 628000000
-      }
-    },
-    {
-      "id": "2021-2022-campionato_4",
-      "competitionId": "2021-2022_campionato",
-      "seasonId": "2021-2022",
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 681000000
-      },
-      "seasonTeamId": "2021-2022_kbjri4liu4iuq6ajfnml",
-      "played": 36,
-      "points": 55,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 681000000
-      },
-      "fantapoints": 2538.5,
-      "position": 4
-    },
-    {
-      "id": "2021-2022-campionato_5",
-      "fantapoints": 2535,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 726000000
-      },
-      "played": 36,
-      "points": 49,
-      "position": 5,
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 726000000
-      },
-      "competitionId": "2021-2022_campionato",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-001"
-    },
-    {
-      "id": "2021-2022-campionato_6",
-      "points": 48,
-      "played": 36,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 773000000
-      },
-      "fantapoints": 2473.5,
-      "position": 6,
-      "seasonId": "2021-2022",
-      "competitionId": "2021-2022_campionato",
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 773000000
-      },
-      "seasonTeamId": "2021-2022_gdisidfbuselvm64psr3"
-    },
-    {
-      "id": "2021-2022-campionato_7",
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 845000000
-      },
-      "fantapoints": 2490.5,
-      "played": 36,
-      "points": 47,
-      "position": 7,
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 845000000
-      },
-      "competitionId": "2021-2022_campionato",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ulwtimbi3dyyrq0soesx"
-    },
-    {
-      "id": "2021-2022-campionato_8",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 898000000
-      },
-      "competitionId": "2021-2022_campionato",
-      "seasonId": "2021-2022",
-      "position": 8,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 898000000
-      },
-      "fantapoints": 2542,
-      "played": 36,
-      "points": 45
-    },
-    {
-      "id": "2021-2022-campionato_9",
-      "fantapoints": 2500.5,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 952000000
-      },
-      "points": 38,
-      "played": 36,
-      "position": 9,
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 952000000
-      },
-      "seasonId": "2021-2022",
-      "competitionId": "2021-2022_campionato",
-      "seasonTeamId": "2021-2022_wmdzhrrpup8lhvsdwm7w"
-    },
-    {
-      "id": "2021-2022-campionato_10",
-      "points": 32,
-      "played": 36,
-      "updatedAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 999000000
-      },
-      "fantapoints": 2407.5,
-      "position": 10,
-      "seasonId": "2021-2022",
-      "competitionId": "2021-2022_campionato",
-      "createdAt": {
-        "seconds": 1778848423,
-        "nanoseconds": 999000000
-      },
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc"
-    },
-    {
-      "id": "2021-2022-coppa-italia_1",
-      "points": null,
-      "played": null,
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778848457,
-        "nanoseconds": 770000000
-      },
-      "position": 1,
-      "seasonId": "2021-2022",
-      "competitionId": "2021-2022_coppa-italia",
-      "createdAt": {
-        "seconds": 1778848457,
-        "nanoseconds": 770000000
-      },
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi"
-    },
-    {
-      "id": "2021-2022-coppa-italia_2",
-      "createdAt": {
-        "seconds": 1778848457,
-        "nanoseconds": 804000000
-      },
-      "competitionId": "2021-2022_coppa-italia",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778848457,
-        "nanoseconds": 804000000
-      },
-      "played": null,
-      "points": null,
       "position": 2
     },
     {
-      "id": "2021-2022-playoff_1",
+      "id": "2021-2022-campionato_3",
       "createdAt": {
-        "seconds": 1778848438,
-        "nanoseconds": 833000000
+        "seconds": 1778848423,
+        "nanoseconds": 628000000
       },
-      "competitionId": "2021-2022_playoff",
+      "seasonTeamId": "2021-2022_uqsbhtctytbo7kookndm",
       "seasonId": "2021-2022",
+      "played": 36,
+      "position": 3,
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 628000000
+      },
+      "competitionId": "2021-2022_campionato",
+      "points": 56,
+      "fantapoints": 2589
+    },
+    {
+      "id": "2021-2022-campionato_4",
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 681000000
+      },
+      "points": 55,
+      "fantapoints": 2538.5,
+      "competitionId": "2021-2022_campionato",
+      "seasonId": "2021-2022",
+      "seasonTeamId": "2021-2022_kbjri4liu4iuq6ajfnml",
+      "createdAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 681000000
+      },
+      "position": 4,
+      "played": 36
+    },
+    {
+      "id": "2021-2022-campionato_5",
+      "played": 36,
+      "position": 5,
+      "seasonId": "2021-2022",
+      "seasonTeamId": "2021-2022_team-001",
+      "createdAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 726000000
+      },
+      "points": 49,
+      "fantapoints": 2535,
+      "competitionId": "2021-2022_campionato",
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 726000000
+      }
+    },
+    {
+      "id": "2021-2022-campionato_6",
+      "played": 36,
+      "position": 6,
+      "seasonId": "2021-2022",
+      "seasonTeamId": "2021-2022_gdisidfbuselvm64psr3",
+      "createdAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 773000000
+      },
+      "points": 48,
+      "fantapoints": 2473.5,
+      "competitionId": "2021-2022_campionato",
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 773000000
+      }
+    },
+    {
+      "id": "2021-2022-campionato_7",
+      "played": 36,
+      "position": 7,
       "seasonTeamId": "2021-2022_ulwtimbi3dyyrq0soesx",
+      "seasonId": "2021-2022",
+      "createdAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 845000000
+      },
+      "competitionId": "2021-2022_campionato",
+      "fantapoints": 2490.5,
+      "points": 47,
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 845000000
+      }
+    },
+    {
+      "id": "2021-2022-campionato_8",
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 898000000
+      },
+      "competitionId": "2021-2022_campionato",
+      "points": 45,
+      "fantapoints": 2542,
+      "createdAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 898000000
+      },
+      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
+      "seasonId": "2021-2022",
+      "played": 36,
+      "position": 8
+    },
+    {
+      "id": "2021-2022-campionato_9",
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 952000000
+      },
+      "competitionId": "2021-2022_campionato",
+      "points": 38,
+      "fantapoints": 2500.5,
+      "createdAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 952000000
+      },
+      "seasonTeamId": "2021-2022_wmdzhrrpup8lhvsdwm7w",
+      "seasonId": "2021-2022",
+      "played": 36,
+      "position": 9
+    },
+    {
+      "id": "2021-2022-campionato_10",
+      "position": 10,
+      "played": 36,
+      "seasonId": "2021-2022",
+      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
+      "createdAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 999000000
+      },
+      "points": 32,
+      "fantapoints": 2407.5,
+      "competitionId": "2021-2022_campionato",
+      "updatedAt": {
+        "seconds": 1778848423,
+        "nanoseconds": 999000000
+      }
+    },
+    {
+      "id": "2021-2022-coppa-italia_1",
+      "updatedAt": {
+        "seconds": 1778848457,
+        "nanoseconds": 770000000
+      },
+      "competitionId": "2021-2022_coppa-italia",
+      "fantapoints": null,
+      "points": null,
+      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
+      "seasonId": "2021-2022",
+      "createdAt": {
+        "seconds": 1778848457,
+        "nanoseconds": 770000000
+      },
+      "played": null,
+      "position": 1
+    },
+    {
+      "id": "2021-2022-coppa-italia_2",
+      "competitionId": "2021-2022_coppa-italia",
+      "points": null,
+      "fantapoints": null,
+      "updatedAt": {
+        "seconds": 1778848457,
+        "nanoseconds": 804000000
+      },
+      "played": null,
+      "position": 2,
+      "createdAt": {
+        "seconds": 1778848457,
+        "nanoseconds": 804000000
+      },
+      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
+      "seasonId": "2021-2022"
+    },
+    {
+      "id": "2021-2022-playoff_1",
+      "competitionId": "2021-2022_playoff",
+      "points": null,
       "fantapoints": null,
       "updatedAt": {
         "seconds": 1778848438,
         "nanoseconds": 833000000
       },
       "played": null,
-      "points": null,
-      "position": 1
+      "position": 1,
+      "createdAt": {
+        "seconds": 1778848438,
+        "nanoseconds": 833000000
+      },
+      "seasonTeamId": "2021-2022_ulwtimbi3dyyrq0soesx",
+      "seasonId": "2021-2022"
     },
     {
       "id": "2021-2022-playoff_2",
+      "seasonTeamId": "2021-2022_team-001",
+      "seasonId": "2021-2022",
+      "createdAt": {
+        "seconds": 1778848438,
+        "nanoseconds": 888000000
+      },
+      "played": null,
       "position": 2,
       "updatedAt": {
         "seconds": 1778848438,
         "nanoseconds": 888000000
       },
+      "competitionId": "2021-2022_playoff",
       "fantapoints": null,
-      "points": null,
-      "played": null,
-      "seasonTeamId": "2021-2022_team-001",
-      "createdAt": {
-        "seconds": 1778848438,
-        "nanoseconds": 888000000
-      },
-      "seasonId": "2021-2022",
-      "competitionId": "2021-2022_playoff"
+      "points": null
     }
   ],
   "rosterEntries": [
@@ -1250,19 +1250,6 @@
       "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_0",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Perin",
-      "realTeam": "JUV",
-      "rosterRole": "P",
-      "classicRole": "P",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_1",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Muric",
       "realTeam": "SAS",
       "rosterRole": "P",
@@ -1273,7 +1260,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_2",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_1",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Corvi",
@@ -1286,20 +1273,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_3",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Djimsiti",
-      "realTeam": "ATA",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_4",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_2",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Miranda J.",
@@ -1312,20 +1286,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_5",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "De Winter",
-      "realTeam": "MIL",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 9,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_6",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_3",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Lucumì",
@@ -1338,7 +1299,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_7",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_4",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Vitik",
@@ -1351,7 +1312,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_8",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_5",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Fortini",
@@ -1364,7 +1325,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_9",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_6",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Idrissi R.",
@@ -1377,7 +1338,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_10",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_7",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Heggem",
@@ -1390,7 +1351,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_11",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_8",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Bernasconi",
@@ -1403,7 +1364,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_12",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_9",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Freuler",
@@ -1416,7 +1377,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_13",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_10",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "De Bruyne",
@@ -1429,7 +1390,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_14",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_11",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Saelemaekers",
@@ -1442,59 +1403,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_15",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Maldini",
-      "realTeam": "LAZ",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 27,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_16",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Musah",
-      "realTeam": "ATA",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 4,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_17",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Ellertsson",
-      "realTeam": "GEN",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_18",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Sulemana I.",
-      "realTeam": "CAG",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_19",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_12",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Pisilli",
@@ -1507,7 +1416,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_20",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_13",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Fabbian",
@@ -1520,20 +1429,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_21",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Anjorin",
-      "realTeam": "TOR",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_22",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_14",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Keita M.",
@@ -1546,20 +1442,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_23",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Orban G.",
-      "realTeam": "VER",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_24",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_15",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Noslin",
@@ -1572,7 +1455,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_25",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_16",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Castro S.",
@@ -1585,20 +1468,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_26",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Dallinga",
-      "realTeam": "BOL",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 0,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_27",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_17",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Douvikas",
@@ -1611,7 +1481,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_28",
+      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_18",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Kuhn",
@@ -1620,19 +1490,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 35,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_7bx0cegbxtf4fwh6t0pi_29",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Kulenovic",
-      "realTeam": "TOR",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 1,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -1653,19 +1510,6 @@
       "id": "static_2021-2022_team-002_1",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Di Gregorio",
-      "realTeam": "JUV",
-      "rosterRole": "P",
-      "classicRole": "P",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_2",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
       "playerName": "Butez",
       "realTeam": "COM",
       "rosterRole": "P",
@@ -1676,20 +1520,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_3",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Luperto",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_4",
+      "id": "static_2021-2022_team-002_2",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Gosens",
@@ -1702,20 +1533,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_5",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Caracciolo A.",
-      "realTeam": "PIS",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_6",
+      "id": "static_2021-2022_team-002_3",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Kabasele",
@@ -1728,20 +1546,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_7",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Baschirotto",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_8",
+      "id": "static_2021-2022_team-002_4",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Carlos Augusto",
@@ -1754,7 +1559,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_9",
+      "id": "static_2021-2022_team-002_5",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Beukema",
@@ -1767,33 +1572,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_10",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Coco",
-      "realTeam": "TOR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 5,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_11",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Kempf",
-      "realTeam": "COM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_12",
+      "id": "static_2021-2022_team-002_6",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Tiago Gabriel",
@@ -1806,7 +1585,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_13",
+      "id": "static_2021-2022_team-002_7",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Locatelli",
@@ -1819,7 +1598,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_14",
+      "id": "static_2021-2022_team-002_8",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Pasalic",
@@ -1832,7 +1611,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_15",
+      "id": "static_2021-2022_team-002_9",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Odgaard",
@@ -1845,7 +1624,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_16",
+      "id": "static_2021-2022_team-002_10",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Zambo Anguissa",
@@ -1858,20 +1637,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_17",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Thorsby",
-      "realTeam": "CRE",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 4,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_18",
+      "id": "static_2021-2022_team-002_11",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "McTominay",
@@ -1884,7 +1650,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_19",
+      "id": "static_2021-2022_team-002_12",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Ricci S.",
@@ -1897,7 +1663,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_20",
+      "id": "static_2021-2022_team-002_13",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Basic",
@@ -1910,20 +1676,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_21",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Konè I.",
-      "realTeam": "SAS",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_22",
+      "id": "static_2021-2022_team-002_14",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Neres",
@@ -1936,20 +1689,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_23",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Pedro",
-      "realTeam": "LAZ",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_24",
+      "id": "static_2021-2022_team-002_15",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Piccoli",
@@ -1962,7 +1702,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_25",
+      "id": "static_2021-2022_team-002_16",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Leao",
@@ -1975,33 +1715,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-002_26",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Nzola",
-      "realTeam": "SAS",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_27",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Banda",
-      "realTeam": "LEC",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_28",
+      "id": "static_2021-2022_team-002_17",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-002",
       "playerName": "Hojlund",
@@ -2010,19 +1724,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 108,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-002_29",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-002",
-      "playerName": "Ratkov",
-      "realTeam": "LAZ",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 8,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -2056,58 +1757,6 @@
       "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_2",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Mina",
-      "realTeam": "CAG",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_3",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Lazaro",
-      "realTeam": "TOR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 9,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_4",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Celik",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 5,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_5",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Delprato",
-      "realTeam": "PAR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 12,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_6",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Norton-Cuffy",
       "realTeam": "GEN",
       "rosterRole": "D",
@@ -2118,7 +1767,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_7",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_3",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Ahanor",
@@ -2131,7 +1780,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_8",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_4",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Britschgi",
@@ -2144,7 +1793,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_9",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_5",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Pellegrini Lo.",
@@ -2157,59 +1806,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_10",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Sottil",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_11",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Gaetano",
-      "realTeam": "CAG",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_12",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Fagioli",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 0,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_13",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Elmas",
-      "realTeam": "NAP",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_14",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_6",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Vlasic",
@@ -2222,7 +1819,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_15",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_7",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Volpato",
@@ -2235,7 +1832,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_16",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_8",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Oristanio",
@@ -2248,7 +1845,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_17",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_9",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Isaksen",
@@ -2261,20 +1858,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_18",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Zaragoza",
-      "realTeam": "ROM",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 29,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_19",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_10",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Paz N.",
@@ -2287,7 +1871,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_20",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_11",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Venturino",
@@ -2300,7 +1884,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_21",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_12",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Sucic P.",
@@ -2313,7 +1897,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_22",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_13",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Santos A.",
@@ -2326,7 +1910,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_23",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_14",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Scamacca",
@@ -2339,7 +1923,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_24",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_15",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Colombo",
@@ -2352,7 +1936,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_25",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_16",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "De Ketelaere",
@@ -2365,7 +1949,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_26",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_17",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Addai",
@@ -2378,20 +1962,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_27",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Kilicsoy",
-      "realTeam": "CAG",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_28",
+      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_18",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Frigan",
@@ -2400,19 +1971,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_y3vmcdwvut0u1tlsg4qc_29",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Durosinmi",
-      "realTeam": "PIS",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 4,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -3252,19 +2810,6 @@
       "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_4",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Hermoso",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_5",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Kalulu",
       "realTeam": "JUV",
       "rosterRole": "D",
@@ -3275,46 +2820,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_6",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Tsimikas",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_7",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Terracciano F.",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_8",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Cabal",
-      "realTeam": "JUV",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_9",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_5",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Bisseck",
@@ -3327,7 +2833,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_10",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_6",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Kelly L.",
@@ -3340,20 +2846,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_11",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Canestrelli",
-      "realTeam": "PIS",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_12",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_7",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Muharemovic",
@@ -3366,33 +2859,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_13",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Mandragora",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_14",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Brescianini",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_15",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_8",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "McKennie",
@@ -3405,7 +2872,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_16",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_9",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Thuram K.",
@@ -3418,7 +2885,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_17",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_10",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Zhegrova",
@@ -3431,33 +2898,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_18",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Helgason",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_19",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Berisha M.",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_20",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_11",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Atta",
@@ -3470,33 +2911,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_21",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Tourè I.",
-      "realTeam": "PIS",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_22",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Sanabria",
-      "realTeam": "CRE",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_23",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_12",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Nkunku",
@@ -3509,7 +2924,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_24",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_13",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Ekuban",
@@ -3522,7 +2937,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_25",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_14",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "David",
@@ -3535,7 +2950,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_26",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_15",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Vitinha O.",
@@ -3548,7 +2963,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_27",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_16",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Dovbyk",
@@ -3561,7 +2976,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_28",
+      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_17",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
       "playerName": "Ekhator",
@@ -3570,19 +2985,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_ft1tqdqi18iuh3l1lakq_29",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Stulic",
-      "realTeam": "LEC",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 8,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -3785,19 +3187,6 @@
       "id": "static_2021-2022_team-001_15",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
-      "playerName": "Malinovskyi",
-      "realTeam": "GEN",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 9,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-001_16",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-001",
       "playerName": "Fofana Y.",
       "realTeam": "MIL",
       "rosterRole": "C",
@@ -3808,7 +3197,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_17",
+      "id": "static_2021-2022_team-001_16",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Tramoni M.",
@@ -3821,7 +3210,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_18",
+      "id": "static_2021-2022_team-001_17",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Sohm",
@@ -3834,7 +3223,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_19",
+      "id": "static_2021-2022_team-001_18",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Zalewski",
@@ -3847,46 +3236,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_20",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-001",
-      "playerName": "Coulibaly L.",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-001_21",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-001",
-      "playerName": "Fadera",
-      "realTeam": "SAS",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-001_22",
-      "seasonId": "2021-2022",
-      "seasonTeamId": "2021-2022_team-001",
-      "playerName": "Vandeputte",
-      "realTeam": "CRE",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 10,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2021-2022_team-001_23",
+      "id": "static_2021-2022_team-001_19",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Dybala",
@@ -3899,7 +3249,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_24",
+      "id": "static_2021-2022_team-001_20",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Raspadori",
@@ -3912,7 +3262,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_25",
+      "id": "static_2021-2022_team-001_21",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Cancellieri",
@@ -3925,7 +3275,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_26",
+      "id": "static_2021-2022_team-001_22",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Sulemana K.",
@@ -3938,7 +3288,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_27",
+      "id": "static_2021-2022_team-001_23",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Laurientè",
@@ -3951,7 +3301,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_28",
+      "id": "static_2021-2022_team-001_24",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Adams C.",
@@ -3964,7 +3314,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2021-2022_team-001_29",
+      "id": "static_2021-2022_team-001_25",
       "seasonId": "2021-2022",
       "seasonTeamId": "2021-2022_team-001",
       "playerName": "Giovane",

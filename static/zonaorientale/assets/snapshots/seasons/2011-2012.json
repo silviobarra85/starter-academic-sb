@@ -1,24 +1,24 @@
 {
   "id": "2011-2012",
   "seasonId": "2011-2012",
-  "generatedAt": "2026-07-04T18:11:33.817Z",
+  "generatedAt": "2026-07-07T07:08:23.306Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "notes": "",
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
       },
+      "notes": "",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
       },
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
       "logo": "./assets/logos/acmilan.png",
-      "isCurrent": true,
       "canonicalName": "Ac Milan"
     },
     {
@@ -26,38 +26,40 @@
       "currentPresidentIds": [
         "iAcJUOTNENihne0XzhuR"
       ],
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778834075,
-        "nanoseconds": 573000000
-      },
+      "canonicalName": "AS Longobarda",
       "logo": "",
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778833917,
         "nanoseconds": 315000000
       },
-      "canonicalName": "AS Longobarda",
-      "isCurrent": false
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778834075,
+        "nanoseconds": 573000000
+      }
     },
     {
       "id": "team_002",
-      "canonicalName": "Beetlejuice",
-      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
       },
-      "logo": "./assets/logos/beetlejuice.png",
+      "isCurrent": true,
       "notes": "",
+      "canonicalName": "Beetlejuice",
+      "logo": "./assets/logos/beetlejuice.png",
       "currentPresidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ]
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "canonicalName": "FC DueFratelli2005",
-      "isCurrent": true,
       "logo": "./assets/logos/due_fratelli.png",
+      "canonicalName": "FC DueFratelli2005",
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
@@ -66,36 +68,32 @@
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "currentPresidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "notes": ""
+      "notes": "",
+      "isCurrent": true
     },
     {
       "id": "fYQViaVoCqDPmikgwS2F",
-      "canonicalName": "Real Gremo",
-      "isCurrent": false,
-      "currentPresidentIds": [
-        "KuWF4jNk1I97Jdk44gyK"
-      ],
-      "notes": "",
-      "logo": "",
       "updatedAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
       },
+      "notes": "",
       "createdAt": {
         "seconds": 1778834101,
         "nanoseconds": 304000000
-      }
+      },
+      "isCurrent": false,
+      "logo": "",
+      "canonicalName": "Real Gremo",
+      "currentPresidentIds": [
+        "KuWF4jNk1I97Jdk44gyK"
+      ]
     }
   ],
   "presidents": [
     {
       "id": "iAcJUOTNENihne0XzhuR",
-      "isActive": false,
       "name": "Alessandro Liguori",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778833093,
         "nanoseconds": 421000000
@@ -103,11 +101,12 @@
       "createdAt": {
         "seconds": 1778833093,
         "nanoseconds": 421000000
-      }
+      },
+      "notes": "",
+      "isActive": false
     },
     {
       "id": "KuWF4jNk1I97Jdk44gyK",
-      "isActive": false,
       "updatedAt": {
         "seconds": 1778833068,
         "nanoseconds": 684000000
@@ -116,117 +115,114 @@
         "seconds": 1778833068,
         "nanoseconds": 684000000
       },
-      "name": "Bartolomeo Greco",
-      "notes": ""
+      "notes": "",
+      "isActive": false,
+      "name": "Bartolomeo Greco"
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
       "isActive": true,
-      "updatedAt": {
-        "seconds": 1778832889,
-        "nanoseconds": 760000000
-      },
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
       "notes": "",
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
       "name": "Giosuè Vicinanza"
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
+      "name": "Michele D'Isanto",
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
       "notes": "",
-      "name": "Michele D'Isanto",
-      "isActive": true
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      }
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
-      "isActive": true,
       "updatedAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
+      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
-      "name": "Zio Dino",
-      "notes": ""
+      "name": "Zio Dino"
     }
   ],
   "seasonTeams": [
     {
       "id": "2011-2012_wmdzhrrpup8lhvsdwm7w",
+      "createdAt": {
+        "seconds": 1778849469,
+        "nanoseconds": 732000000
+      },
       "seasonId": "2011-2012",
-      "name": "Ac Milan",
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778849469,
         "nanoseconds": 732000000
       },
       "logo": "",
-      "createdAt": {
-        "seconds": 1778849469,
-        "nanoseconds": 732000000
-      },
-      "isHistorical": false,
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "name": "Ac Milan",
       "presidentIds": [
         "kjxSsudO432wf4zEnDjg"
-      ],
-      "teamId": "WMdzHRRpUP8lHvsdwM7W"
+      ]
     },
     {
       "id": "2011-2012_lvn8mglzgcncy9ev0sgx",
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
+      "name": "AS Longobarda",
       "presidentIds": [
         "iAcJUOTNENihne0XzhuR"
       ],
-      "teamId": "lvn8MgLzGcNCY9ev0sgX",
-      "seasonId": "2011-2012",
-      "name": "AS Longobarda",
       "logo": "",
       "updatedAt": {
         "seconds": 1778849592,
         "nanoseconds": 777000000
       },
+      "isHistorical": false,
       "createdAt": {
         "seconds": 1778849592,
         "nanoseconds": 777000000
       },
-      "isHistorical": false
+      "seasonId": "2011-2012"
     },
     {
       "id": "2011-2012_team-002",
-      "presidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ],
-      "teamId": "team_002",
-      "seasonId": "2011-2012",
-      "name": "Beetlejuice",
-      "logo": "",
       "updatedAt": {
         "seconds": 1778849588,
         "nanoseconds": 333000000
       },
+      "isHistorical": false,
+      "seasonId": "2011-2012",
       "createdAt": {
         "seconds": 1778849588,
         "nanoseconds": 333000000
       },
-      "isHistorical": false
+      "teamId": "team_002",
+      "name": "Beetlejuice",
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
+      "logo": ""
     },
     {
       "id": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "isHistorical": false,
+      "seasonId": "2011-2012",
       "createdAt": {
         "seconds": 1778849581,
         "nanoseconds": 587000000
@@ -235,85 +231,103 @@
         "seconds": 1779379866,
         "nanoseconds": 929000000
       },
-      "logo": "",
+      "isHistorical": false,
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "name": "FC DueFratelli2005",
-      "seasonId": "2011-2012"
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "logo": ""
     },
     {
       "id": "2011-2012_fyqviavocqdpmikgws2f",
-      "name": "Real Gremo",
-      "seasonId": "2011-2012",
-      "createdAt": {
-        "seconds": 1778849585,
-        "nanoseconds": 125000000
-      },
-      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778849585,
         "nanoseconds": 125000000
       },
-      "logo": "",
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778849585,
+        "nanoseconds": 125000000
+      },
+      "seasonId": "2011-2012",
+      "name": "Real Gremo",
+      "teamId": "fYQViaVoCqDPmikgwS2F",
       "presidentIds": [
         "KuWF4jNk1I97Jdk44gyK"
       ],
-      "teamId": "fYQViaVoCqDPmikgwS2F"
+      "logo": ""
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2011-2012_campionato",
+      "createdAt": {
+        "seconds": 1778849481,
+        "nanoseconds": 510000000
+      },
+      "knockoutPhases": [],
+      "seasonId": "2011-2012",
       "status": "CONCLUSA",
-      "notes": "",
       "type": "CAMPIONATO",
-      "format": "CLASSIFICA",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778849488,
         "nanoseconds": 914000000
       },
-      "knockoutPhases": [],
       "name": "Campionato",
-      "seasonId": "2011-2012",
-      "createdAt": {
-        "seconds": 1778849481,
-        "nanoseconds": 510000000
-      }
+      "format": "CLASSIFICA"
     },
     {
       "id": "2011-2012_champions-league",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "name": "Champion's League",
-      "seasonId": "2011-2012",
       "createdAt": {
         "seconds": 1778849481,
         "nanoseconds": 562000000
       },
-      "notes": "",
-      "type": "CHAMPIONS_LEAGUE",
-      "format": "GIRONI_KO",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "seasonId": "2011-2012",
+      "status": "NON_DISPUTATA",
       "updatedAt": {
         "seconds": 1778849492,
         "nanoseconds": 762000000
       },
-      "status": "NON_DISPUTATA"
+      "type": "CHAMPIONS_LEAGUE",
+      "notes": "",
+      "format": "GIRONI_KO",
+      "name": "Champion's League"
     },
     {
       "id": "2011-2012_coppa-italia",
+      "createdAt": {
+        "seconds": 1778849481,
+        "nanoseconds": 588000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "seasonId": "2011-2012",
       "status": "CONCLUSA",
+      "type": "COPPA_ITALIA",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778849497,
         "nanoseconds": 979000000
       },
-      "format": "GIRONI_KO",
-      "type": "COPPA_ITALIA",
-      "notes": "",
+      "name": "Coppa Italia",
+      "format": "GIRONI_KO"
+    },
+    {
+      "id": "2011-2012_playoff",
       "createdAt": {
         "seconds": 1778849481,
-        "nanoseconds": 588000000
+        "nanoseconds": 612000000
       },
       "seasonId": "2011-2012",
       "knockoutPhases": [
@@ -321,29 +335,15 @@
         "SEMIFINALI",
         "FINALE"
       ],
-      "name": "Coppa Italia"
-    },
-    {
-      "id": "2011-2012_playoff",
       "status": "NON_DISPUTATA",
-      "format": "GIRONI_KO",
       "updatedAt": {
         "seconds": 1778849502,
         "nanoseconds": 112000000
       },
-      "notes": "",
       "type": "PLAYOFF",
-      "createdAt": {
-        "seconds": 1778849481,
-        "nanoseconds": 612000000
-      },
+      "notes": "",
       "name": "Playoff",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "seasonId": "2011-2012"
+      "format": "GIRONI_KO"
     }
   ],
   "competitionMatches": [],
@@ -354,53 +354,53 @@
         "seconds": 1778849516,
         "nanoseconds": 889000000
       },
-      "fantapoints": null,
+      "competitionId": "2011-2012_campionato",
       "points": null,
-      "played": null,
-      "position": 1,
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778849516,
         "nanoseconds": 889000000
       },
+      "seasonTeamId": "2011-2012_wmdzhrrpup8lhvsdwm7w",
       "seasonId": "2011-2012",
-      "competitionId": "2011-2012_campionato",
-      "seasonTeamId": "2011-2012_wmdzhrrpup8lhvsdwm7w"
+      "played": null,
+      "position": 1
     },
     {
       "id": "2011-2012-campionato_2",
+      "points": null,
       "fantapoints": null,
+      "competitionId": "2011-2012_campionato",
       "updatedAt": {
         "seconds": 1778849516,
         "nanoseconds": 924000000
       },
       "played": null,
-      "points": null,
       "position": 2,
+      "seasonId": "2011-2012",
+      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "createdAt": {
         "seconds": 1778849516,
         "nanoseconds": 924000000
-      },
-      "competitionId": "2011-2012_campionato",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc"
+      }
     },
     {
       "id": "2011-2012-campionato_3",
-      "seasonId": "2011-2012",
-      "competitionId": "2011-2012_campionato",
       "createdAt": {
         "seconds": 1778849516,
         "nanoseconds": 943000000
       },
       "seasonTeamId": "2011-2012_team-002",
-      "points": null,
+      "seasonId": "2011-2012",
+      "position": 3,
       "played": null,
       "updatedAt": {
         "seconds": 1778849516,
         "nanoseconds": 943000000
       },
-      "fantapoints": null,
-      "position": 3
+      "competitionId": "2011-2012_campionato",
+      "points": null,
+      "fantapoints": null
     },
     {
       "id": "2011-2012-coppa-italia_1",
@@ -408,17 +408,17 @@
         "seconds": 1778849524,
         "nanoseconds": 671000000
       },
+      "competitionId": "2011-2012_coppa-italia",
       "fantapoints": null,
       "points": null,
-      "played": null,
-      "position": 1,
+      "seasonTeamId": "2011-2012_wmdzhrrpup8lhvsdwm7w",
+      "seasonId": "2011-2012",
       "createdAt": {
         "seconds": 1778849524,
         "nanoseconds": 671000000
       },
-      "seasonId": "2011-2012",
-      "competitionId": "2011-2012_coppa-italia",
-      "seasonTeamId": "2011-2012_wmdzhrrpup8lhvsdwm7w"
+      "played": null,
+      "position": 1
     }
   ],
   "rosterEntries": [
@@ -816,19 +816,6 @@
       "id": "static_2011-2012_team-002_1",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Di Gregorio",
-      "realTeam": "JUV",
-      "rosterRole": "P",
-      "classicRole": "P",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_2",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
       "playerName": "Butez",
       "realTeam": "COM",
       "rosterRole": "P",
@@ -839,20 +826,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_3",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Luperto",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_4",
+      "id": "static_2011-2012_team-002_2",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Gosens",
@@ -865,20 +839,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_5",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Caracciolo A.",
-      "realTeam": "PIS",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_6",
+      "id": "static_2011-2012_team-002_3",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Kabasele",
@@ -891,20 +852,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_7",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Baschirotto",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_8",
+      "id": "static_2011-2012_team-002_4",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Carlos Augusto",
@@ -917,7 +865,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_9",
+      "id": "static_2011-2012_team-002_5",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Beukema",
@@ -930,33 +878,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_10",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Coco",
-      "realTeam": "TOR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 5,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_11",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Kempf",
-      "realTeam": "COM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_12",
+      "id": "static_2011-2012_team-002_6",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Tiago Gabriel",
@@ -969,7 +891,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_13",
+      "id": "static_2011-2012_team-002_7",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Locatelli",
@@ -982,7 +904,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_14",
+      "id": "static_2011-2012_team-002_8",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Pasalic",
@@ -995,7 +917,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_15",
+      "id": "static_2011-2012_team-002_9",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Odgaard",
@@ -1008,7 +930,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_16",
+      "id": "static_2011-2012_team-002_10",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Zambo Anguissa",
@@ -1021,20 +943,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_17",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Thorsby",
-      "realTeam": "CRE",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 4,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_18",
+      "id": "static_2011-2012_team-002_11",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "McTominay",
@@ -1047,7 +956,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_19",
+      "id": "static_2011-2012_team-002_12",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Ricci S.",
@@ -1060,7 +969,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_20",
+      "id": "static_2011-2012_team-002_13",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Basic",
@@ -1073,20 +982,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_21",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Konè I.",
-      "realTeam": "SAS",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_22",
+      "id": "static_2011-2012_team-002_14",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Neres",
@@ -1099,20 +995,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_23",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Pedro",
-      "realTeam": "LAZ",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_24",
+      "id": "static_2011-2012_team-002_15",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Piccoli",
@@ -1125,7 +1008,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_25",
+      "id": "static_2011-2012_team-002_16",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Leao",
@@ -1138,33 +1021,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_team-002_26",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Nzola",
-      "realTeam": "SAS",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_27",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Banda",
-      "realTeam": "LEC",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_28",
+      "id": "static_2011-2012_team-002_17",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_team-002",
       "playerName": "Hojlund",
@@ -1173,19 +1030,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 108,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_team-002_29",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_team-002",
-      "playerName": "Ratkov",
-      "realTeam": "LAZ",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 8,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -1219,58 +1063,6 @@
       "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_2",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Mina",
-      "realTeam": "CAG",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_3",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Lazaro",
-      "realTeam": "TOR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 9,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_4",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Celik",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 5,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_5",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Delprato",
-      "realTeam": "PAR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 12,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_6",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Norton-Cuffy",
       "realTeam": "GEN",
       "rosterRole": "D",
@@ -1281,7 +1073,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_7",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_3",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Ahanor",
@@ -1294,7 +1086,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_8",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_4",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Britschgi",
@@ -1307,7 +1099,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_9",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_5",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Pellegrini Lo.",
@@ -1320,59 +1112,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_10",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Sottil",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_11",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Gaetano",
-      "realTeam": "CAG",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_12",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Fagioli",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 0,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_13",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Elmas",
-      "realTeam": "NAP",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_14",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_6",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Vlasic",
@@ -1385,7 +1125,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_15",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_7",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Volpato",
@@ -1398,7 +1138,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_16",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_8",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Oristanio",
@@ -1411,7 +1151,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_17",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_9",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Isaksen",
@@ -1424,20 +1164,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_18",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Zaragoza",
-      "realTeam": "ROM",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 29,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_19",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_10",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Paz N.",
@@ -1450,7 +1177,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_20",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_11",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Venturino",
@@ -1463,7 +1190,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_21",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_12",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Sucic P.",
@@ -1476,7 +1203,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_22",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_13",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Santos A.",
@@ -1489,7 +1216,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_23",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_14",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Scamacca",
@@ -1502,7 +1229,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_24",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_15",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Colombo",
@@ -1515,7 +1242,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_25",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_16",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "De Ketelaere",
@@ -1528,7 +1255,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_26",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_17",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Addai",
@@ -1541,20 +1268,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_27",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Kilicsoy",
-      "realTeam": "CAG",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_28",
+      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_18",
       "seasonId": "2011-2012",
       "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Frigan",
@@ -1563,19 +1277,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2011-2012_y3vmcdwvut0u1tlsg4qc_29",
-      "seasonId": "2011-2012",
-      "seasonTeamId": "2011-2012_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Durosinmi",
-      "realTeam": "PIS",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 4,
       "status": "ACTIVE",
       "source": "static-roster"
     }

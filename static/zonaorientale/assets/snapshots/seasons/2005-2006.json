@@ -1,31 +1,33 @@
 {
   "id": "2005-2006",
   "seasonId": "2005-2006",
-  "generatedAt": "2026-07-04T18:11:33.818Z",
+  "generatedAt": "2026-07-07T07:08:23.307Z",
   "teams": [
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "isCurrent": true,
       "canonicalName": "Afc Severgas Baronissi",
-      "createdAt": {
-        "seconds": 1778833643,
-        "nanoseconds": 350000000
-      },
       "logo": "./assets/logos/baronissi.png",
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
       "notes": ""
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "canonicalName": "FC DueFratelli2005",
-      "isCurrent": true,
       "logo": "./assets/logos/due_fratelli.png",
+      "canonicalName": "FC DueFratelli2005",
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
@@ -34,50 +36,46 @@
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "currentPresidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "notes": ""
+      "notes": "",
+      "isCurrent": true
     },
     {
       "id": "JrHbTlYyGDRaWkWXRBlL",
-      "canonicalName": "Real Sauro",
-      "isCurrent": false,
-      "updatedAt": {
-        "seconds": 1778834023,
-        "nanoseconds": 658000000
-      },
+      "currentPresidentIds": [
+        "E8juYb9wKykDBnwCORcU"
+      ],
       "logo": "",
+      "canonicalName": "Real Sauro",
       "createdAt": {
         "seconds": 1778834023,
         "nanoseconds": 658000000
       },
-      "currentPresidentIds": [
-        "E8juYb9wKykDBnwCORcU"
-      ],
-      "notes": ""
+      "notes": "",
+      "isCurrent": false,
+      "updatedAt": {
+        "seconds": 1778834023,
+        "nanoseconds": 658000000
+      }
     }
   ],
   "presidents": [
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "createdAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      },
+      "name": "Gianluca Caparrotti",
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "name": "Gianluca Caparrotti",
-      "notes": "",
-      "isActive": true
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "notes": ""
     },
     {
       "id": "E8juYb9wKykDBnwCORcU",
-      "isActive": false,
       "name": "Giuseppe Sauro",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778834005,
         "nanoseconds": 578000000
@@ -85,80 +83,82 @@
       "createdAt": {
         "seconds": 1778834005,
         "nanoseconds": 578000000
-      }
+      },
+      "notes": "",
+      "isActive": false
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
+      "name": "Michele D'Isanto",
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
       "notes": "",
-      "name": "Michele D'Isanto",
-      "isActive": true
+      "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      }
     }
   ],
   "seasonTeams": [
     {
       "id": "2005-2006_y3vmcdwvut0u1tlsg4qc",
+      "name": "FC DueFratelli2005",
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "presidentIds": [
         "9pAjdkP5bPc5ldLlbfPP"
       ],
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "seasonId": "2005-2006",
-      "name": "FC DueFratelli2005",
-      "updatedAt": {
-        "seconds": 1779379274,
-        "nanoseconds": 62000000
-      },
       "logo": "",
       "createdAt": {
         "seconds": 1778850547,
         "nanoseconds": 834000000
       },
+      "seasonId": "2005-2006",
+      "updatedAt": {
+        "seconds": 1779379274,
+        "nanoseconds": 62000000
+      },
       "isHistorical": false
     },
     {
       "id": "2005-2006_jrhbtlyygdrawkwxrbll",
-      "name": "Real Sauro",
-      "seasonId": "2005-2006",
-      "isHistorical": false,
-      "createdAt": {
-        "seconds": 1778850544,
-        "nanoseconds": 391000000
-      },
       "logo": "",
+      "name": "Real Sauro",
+      "teamId": "JrHbTlYyGDRaWkWXRBlL",
+      "presidentIds": [
+        "E8juYb9wKykDBnwCORcU"
+      ],
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778850544,
         "nanoseconds": 391000000
       },
-      "presidentIds": [
-        "E8juYb9wKykDBnwCORcU"
-      ],
-      "teamId": "JrHbTlYyGDRaWkWXRBlL"
+      "createdAt": {
+        "seconds": 1778850544,
+        "nanoseconds": 391000000
+      },
+      "seasonId": "2005-2006"
     },
     {
       "id": "2005-2006_kbjri4liu4iuq6ajfnml",
-      "name": "Us Baronissi Cavaliers",
-      "seasonId": "2005-2006",
-      "createdAt": {
-        "seconds": 1778850540,
-        "nanoseconds": 883000000
-      },
       "isHistorical": false,
       "updatedAt": {
         "seconds": 1779195809,
         "nanoseconds": 130000000
       },
+      "seasonId": "2005-2006",
+      "createdAt": {
+        "seconds": 1778850540,
+        "nanoseconds": 883000000
+      },
       "logo": "",
       "presidentIds": [
         "Mw12sFS1OoS8V5uzBLLw"
       ],
-      "teamId": "h6saeK7uRQIQNmiZTRT7"
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "name": "Us Baronissi Cavaliers"
     }
   ],
   "stadiums": [],
@@ -166,125 +166,125 @@
     {
       "id": "2005-2006_campionato",
       "status": "CONCLUSA",
-      "updatedAt": {
-        "seconds": 1778850567,
-        "nanoseconds": 285000000
-      },
-      "format": "CLASSIFICA",
-      "type": "CAMPIONATO",
-      "notes": "",
       "createdAt": {
         "seconds": 1778850555,
         "nanoseconds": 502000000
       },
-      "seasonId": "2005-2006",
       "knockoutPhases": [],
-      "name": "Campionato"
+      "seasonId": "2005-2006",
+      "name": "Campionato",
+      "format": "CLASSIFICA",
+      "updatedAt": {
+        "seconds": 1778850567,
+        "nanoseconds": 285000000
+      },
+      "type": "CAMPIONATO",
+      "notes": ""
     },
     {
       "id": "2005-2006_champions-league",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "name": "Champion's League",
-      "seasonId": "2005-2006",
-      "createdAt": {
-        "seconds": 1778850555,
-        "nanoseconds": 568000000
-      },
       "notes": "",
       "type": "CHAMPIONS_LEAGUE",
-      "format": "GIRONI_KO",
       "updatedAt": {
         "seconds": 1778850570,
         "nanoseconds": 306000000
       },
+      "name": "Champion's League",
+      "format": "GIRONI_KO",
+      "createdAt": {
+        "seconds": 1778850555,
+        "nanoseconds": 568000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "seasonId": "2005-2006",
       "status": "NON_DISPUTATA"
     },
     {
       "id": "2005-2006_coppa-italia",
-      "createdAt": {
-        "seconds": 1778850555,
-        "nanoseconds": 615000000
-      },
-      "seasonId": "2005-2006",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
       "name": "Coppa Italia",
+      "format": "GIRONI_KO",
+      "type": "COPPA_ITALIA",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778850573,
         "nanoseconds": 376000000
       },
-      "format": "GIRONI_KO",
-      "type": "COPPA_ITALIA",
-      "notes": "",
-      "status": "NON_DISPUTATA"
-    },
-    {
-      "id": "2005-2006_playoff",
-      "type": "PLAYOFF",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778850576,
-        "nanoseconds": 528000000
-      },
-      "format": "GIRONI_KO",
       "status": "NON_DISPUTATA",
-      "seasonId": "2005-2006",
-      "name": "Playoff",
+      "createdAt": {
+        "seconds": 1778850555,
+        "nanoseconds": 615000000
+      },
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
+      "seasonId": "2005-2006"
+    },
+    {
+      "id": "2005-2006_playoff",
       "createdAt": {
         "seconds": 1778850555,
         "nanoseconds": 672000000
-      }
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "seasonId": "2005-2006",
+      "status": "NON_DISPUTATA",
+      "updatedAt": {
+        "seconds": 1778850576,
+        "nanoseconds": 528000000
+      },
+      "type": "PLAYOFF",
+      "notes": "",
+      "name": "Playoff",
+      "format": "GIRONI_KO"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2005-2006-campionato_1",
-      "seasonId": "2005-2006",
-      "competitionId": "2005-2006_campionato",
-      "createdAt": {
-        "seconds": 1778850596,
-        "nanoseconds": 492000000
-      },
-      "seasonTeamId": "2005-2006_kbjri4liu4iuq6ajfnml",
       "points": null,
-      "played": null,
+      "fantapoints": null,
+      "competitionId": "2005-2006_campionato",
       "updatedAt": {
         "seconds": 1778850596,
         "nanoseconds": 492000000
       },
-      "fantapoints": null,
-      "position": 1
+      "played": null,
+      "position": 1,
+      "seasonId": "2005-2006",
+      "seasonTeamId": "2005-2006_kbjri4liu4iuq6ajfnml",
+      "createdAt": {
+        "seconds": 1778850596,
+        "nanoseconds": 492000000
+      }
     },
     {
       "id": "2005-2006-campionato_2",
+      "played": null,
+      "position": 2,
       "seasonTeamId": "2005-2006_jrhbtlyygdrawkwxrbll",
+      "seasonId": "2005-2006",
       "createdAt": {
         "seconds": 1778850596,
         "nanoseconds": 524000000
       },
-      "seasonId": "2005-2006",
       "competitionId": "2005-2006_campionato",
-      "position": 2,
+      "fantapoints": null,
+      "points": null,
       "updatedAt": {
         "seconds": 1778850596,
         "nanoseconds": 524000000
-      },
-      "fantapoints": null,
-      "points": null,
-      "played": null
+      }
     },
     {
       "id": "2005-2006-campionato_3",
@@ -292,17 +292,17 @@
         "seconds": 1778850596,
         "nanoseconds": 558000000
       },
-      "fantapoints": null,
-      "played": null,
+      "competitionId": "2005-2006_campionato",
       "points": null,
-      "position": 3,
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778850596,
         "nanoseconds": 558000000
       },
-      "competitionId": "2005-2006_campionato",
+      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc"
+      "played": null,
+      "position": 3
     }
   ],
   "rosterEntries": [
@@ -336,58 +336,6 @@
       "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_2",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Mina",
-      "realTeam": "CAG",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_3",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Lazaro",
-      "realTeam": "TOR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 9,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_4",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Celik",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 5,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_5",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Delprato",
-      "realTeam": "PAR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 12,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_6",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Norton-Cuffy",
       "realTeam": "GEN",
       "rosterRole": "D",
@@ -398,7 +346,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_7",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_3",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Ahanor",
@@ -411,7 +359,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_8",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_4",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Britschgi",
@@ -424,7 +372,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_9",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_5",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Pellegrini Lo.",
@@ -437,59 +385,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_10",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Sottil",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_11",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Gaetano",
-      "realTeam": "CAG",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_12",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Fagioli",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 0,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_13",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Elmas",
-      "realTeam": "NAP",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_14",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_6",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Vlasic",
@@ -502,7 +398,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_15",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_7",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Volpato",
@@ -515,7 +411,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_16",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_8",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Oristanio",
@@ -528,7 +424,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_17",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_9",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Isaksen",
@@ -541,20 +437,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_18",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Zaragoza",
-      "realTeam": "ROM",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 29,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_19",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_10",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Paz N.",
@@ -567,7 +450,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_20",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_11",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Venturino",
@@ -580,7 +463,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_21",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_12",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Sucic P.",
@@ -593,7 +476,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_22",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_13",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Santos A.",
@@ -606,7 +489,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_23",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_14",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Scamacca",
@@ -619,7 +502,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_24",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_15",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Colombo",
@@ -632,7 +515,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_25",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_16",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "De Ketelaere",
@@ -645,7 +528,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_26",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_17",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Addai",
@@ -658,20 +541,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_27",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Kilicsoy",
-      "realTeam": "CAG",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_28",
+      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_18",
       "seasonId": "2005-2006",
       "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Frigan",
@@ -680,19 +550,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2005-2006_y3vmcdwvut0u1tlsg4qc_29",
-      "seasonId": "2005-2006",
-      "seasonTeamId": "2005-2006_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Durosinmi",
-      "realTeam": "PIS",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 4,
       "status": "ACTIVE",
       "source": "static-roster"
     }

@@ -1,42 +1,42 @@
 {
   "id": "2019-2020",
   "seasonId": "2019-2020",
-  "generatedAt": "2026-07-04T18:11:33.814Z",
+  "generatedAt": "2026-07-07T07:08:23.303Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "currentPresidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "notes": "",
       "createdAt": {
         "seconds": 1778833655,
         "nanoseconds": 22000000
       },
+      "notes": "",
+      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
       },
+      "currentPresidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
       "logo": "./assets/logos/acmilan.png",
-      "isCurrent": true,
       "canonicalName": "Ac Milan"
     },
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "isCurrent": true,
       "canonicalName": "Afc Severgas Baronissi",
-      "createdAt": {
-        "seconds": 1778833643,
-        "nanoseconds": 350000000
-      },
       "logo": "./assets/logos/baronissi.png",
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
       "updatedAt": {
         "seconds": 1778954328,
         "nanoseconds": 573000000
       },
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
+      "isCurrent": true,
+      "createdAt": {
+        "seconds": 1778833643,
+        "nanoseconds": 350000000
+      },
       "notes": ""
     },
     {
@@ -44,24 +44,26 @@
       "currentPresidentIds": [
         "iAcJUOTNENihne0XzhuR"
       ],
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778834075,
-        "nanoseconds": 573000000
-      },
+      "canonicalName": "AS Longobarda",
       "logo": "",
+      "isCurrent": false,
       "createdAt": {
         "seconds": 1778833917,
         "nanoseconds": 315000000
       },
-      "canonicalName": "AS Longobarda",
-      "isCurrent": false
+      "notes": "",
+      "updatedAt": {
+        "seconds": 1778834075,
+        "nanoseconds": 573000000
+      }
     },
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
-      "canonicalName": "As Paperopoli",
-      "isCurrent": true,
       "logo": "./assets/logos/paperopoli.png",
+      "canonicalName": "As Paperopoli",
+      "currentPresidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
       "updatedAt": {
         "seconds": 1778954349,
         "nanoseconds": 563000000
@@ -70,48 +72,48 @@
         "seconds": 1778833666,
         "nanoseconds": 871000000
       },
-      "currentPresidentIds": [
-        "JaSqcnTZUYHtjHXghADS"
-      ],
-      "notes": ""
+      "notes": "",
+      "isCurrent": true
     },
     {
       "id": "jy2dst1rXfQv6eLW89DS",
-      "isCurrent": false,
-      "canonicalName": "Atletico Cadaveri",
       "currentPresidentIds": [
         "f37y6IZln56uPDZqKg4N"
       ],
+      "logo": "",
+      "canonicalName": "Atletico Cadaveri",
       "notes": "",
       "createdAt": {
         "seconds": 1778833933,
         "nanoseconds": 281000000
       },
+      "isCurrent": false,
       "updatedAt": {
         "seconds": 1778833933,
         "nanoseconds": 281000000
-      },
-      "logo": ""
+      }
     },
     {
       "id": "team_002",
-      "canonicalName": "Beetlejuice",
-      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
       },
-      "logo": "./assets/logos/beetlejuice.png",
+      "isCurrent": true,
       "notes": "",
+      "canonicalName": "Beetlejuice",
+      "logo": "./assets/logos/beetlejuice.png",
       "currentPresidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ]
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "canonicalName": "FC DueFratelli2005",
-      "isCurrent": true,
       "logo": "./assets/logos/due_fratelli.png",
+      "canonicalName": "FC DueFratelli2005",
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
@@ -120,73 +122,69 @@
         "seconds": 1778833681,
         "nanoseconds": 932000000
       },
-      "currentPresidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "notes": ""
+      "notes": "",
+      "isCurrent": true
     },
     {
       "id": "GDisIDfbuSeLVm64PSR3",
+      "logo": "./assets/logos/olympic_salerno.png",
       "canonicalName": "Olympic Salerno FC",
-      "isCurrent": true,
+      "currentPresidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
       "updatedAt": {
         "seconds": 1779377921,
         "nanoseconds": 533000000
       },
-      "logo": "./assets/logos/olympic_salerno.png",
+      "notes": "",
       "createdAt": {
         "seconds": 1778833581,
         "nanoseconds": 658000000
       },
-      "currentPresidentIds": [
-        "cbA5rKY8ItVmgRqhUasz"
-      ],
-      "notes": ""
+      "isCurrent": true
     },
     {
       "id": "FT1tqdqI18iUh3l1lakQ",
-      "canonicalName": "real mappine",
-      "isCurrent": true,
       "updatedAt": {
         "seconds": 1778954461,
         "nanoseconds": 197000000
       },
-      "logo": "./assets/logos/real_mappine.png",
+      "notes": "",
       "createdAt": {
         "seconds": 1778833596,
         "nanoseconds": 670000000
       },
+      "isCurrent": true,
+      "logo": "./assets/logos/real_mappine.png",
+      "canonicalName": "real mappine",
       "currentPresidentIds": [
         "2yHHP653ChQrYxnQHMk3"
-      ],
-      "notes": ""
+      ]
     },
     {
       "id": "ULwTIMBi3dyYrq0SoEsx",
-      "isCurrent": true,
-      "canonicalName": "River Plaid",
-      "currentPresidentIds": [
-        "6UBSv1GUTCxSNrRb8dZr",
-        "7KbTM1lnzIThNWcF0NKL"
-      ],
+      "updatedAt": {
+        "seconds": 1778954524,
+        "nanoseconds": 667000000
+      },
       "notes": "",
       "createdAt": {
         "seconds": 1778833556,
         "nanoseconds": 33000000
       },
+      "isCurrent": true,
       "logo": "./assets/logos/river_plaid.png",
-      "updatedAt": {
-        "seconds": 1778954524,
-        "nanoseconds": 667000000
-      }
+      "canonicalName": "River Plaid",
+      "currentPresidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ]
     }
   ],
   "presidents": [
     {
       "id": "iAcJUOTNENihne0XzhuR",
-      "isActive": false,
       "name": "Alessandro Liguori",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778833093,
         "nanoseconds": 421000000
@@ -194,111 +192,111 @@
       "createdAt": {
         "seconds": 1778833093,
         "nanoseconds": 421000000
-      }
-    },
-    {
-      "id": "6UBSv1GUTCxSNrRb8dZr",
-      "updatedAt": {
-        "seconds": 1778832834,
-        "nanoseconds": 979000000
       },
-      "createdAt": {
-        "seconds": 1778832834,
-        "nanoseconds": 979000000
-      },
-      "name": "Claudio D'Isanto",
       "notes": "",
-      "isActive": true
-    },
-    {
-      "id": "f37y6IZln56uPDZqKg4N",
-      "name": "Emanuele Schiavone",
-      "notes": "",
-      "updatedAt": {
-        "seconds": 1778833076,
-        "nanoseconds": 991000000
-      },
-      "createdAt": {
-        "seconds": 1778833076,
-        "nanoseconds": 991000000
-      },
       "isActive": false
     },
     {
-      "id": "cbA5rKY8ItVmgRqhUasz",
+      "id": "6UBSv1GUTCxSNrRb8dZr",
+      "isActive": true,
       "createdAt": {
-        "seconds": 1778832819,
-        "nanoseconds": 357000000
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
       },
+      "notes": "",
       "updatedAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      },
+      "name": "Claudio D'Isanto"
+    },
+    {
+      "id": "f37y6IZln56uPDZqKg4N",
+      "createdAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      },
+      "notes": "",
+      "isActive": false,
+      "updatedAt": {
+        "seconds": 1778833076,
+        "nanoseconds": 991000000
+      },
+      "name": "Emanuele Schiavone"
+    },
+    {
+      "id": "cbA5rKY8ItVmgRqhUasz",
+      "name": "Fabio Gatto",
+      "isActive": true,
+      "createdAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
       "notes": "",
-      "name": "Fabio Gatto",
-      "isActive": true
+      "updatedAt": {
+        "seconds": 1778832819,
+        "nanoseconds": 357000000
+      }
     },
     {
       "id": "7KbTM1lnzIThNWcF0NKL",
-      "createdAt": {
-        "seconds": 1778832829,
-        "nanoseconds": 62000000
-      },
+      "name": "Gaetano Alfinito",
       "updatedAt": {
         "seconds": 1778832829,
         "nanoseconds": 62000000
       },
-      "name": "Gaetano Alfinito",
+      "createdAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
       "notes": "",
       "isActive": true
     },
     {
       "id": "JaSqcnTZUYHtjHXghADS",
-      "isActive": true,
+      "name": "Gaetano Caparrotti",
       "updatedAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
+      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
-      },
-      "notes": "",
-      "name": "Gaetano Caparrotti"
+      }
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "createdAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      },
+      "name": "Gianluca Caparrotti",
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "name": "Gianluca Caparrotti",
-      "notes": "",
-      "isActive": true
+      "isActive": true,
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "notes": ""
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
       "isActive": true,
-      "updatedAt": {
-        "seconds": 1778832889,
-        "nanoseconds": 760000000
-      },
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
       "notes": "",
+      "updatedAt": {
+        "seconds": 1778832889,
+        "nanoseconds": 760000000
+      },
       "name": "Giosuè Vicinanza"
     },
     {
       "id": "2yHHP653ChQrYxnQHMk3",
-      "isActive": true,
       "name": "Mario Guariglia",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
@@ -306,252 +304,264 @@
       "createdAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
-      }
-    },
-    {
-      "id": "9pAjdkP5bPc5ldLlbfPP",
-      "updatedAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
-      },
-      "createdAt": {
-        "seconds": 1778832840,
-        "nanoseconds": 365000000
       },
       "notes": "",
-      "name": "Michele D'Isanto",
       "isActive": true
     },
     {
-      "id": "Hm25jirYQUj1biv6VFpJ",
+      "id": "9pAjdkP5bPc5ldLlbfPP",
+      "name": "Michele D'Isanto",
+      "createdAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      },
+      "notes": "",
       "isActive": true,
+      "updatedAt": {
+        "seconds": 1778832840,
+        "nanoseconds": 365000000
+      }
+    },
+    {
+      "id": "Hm25jirYQUj1biv6VFpJ",
       "updatedAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
+      "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
-      "name": "Zio Dino",
-      "notes": ""
+      "name": "Zio Dino"
     }
   ],
   "seasonTeams": [
     {
       "id": "2019-2020_wmdzhrrpup8lhvsdwm7w",
-      "isHistorical": false,
-      "createdAt": {
-        "seconds": 1778851995,
-        "nanoseconds": 279000000
-      },
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778851995,
-        "nanoseconds": 279000000
-      },
-      "name": "Ac Milan",
-      "seasonId": "2019-2020",
       "presidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
-      "teamId": "WMdzHRRpUP8lHvsdwM7W"
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
+      "name": "Ac Milan",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1778851995,
+        "nanoseconds": 279000000
+      },
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778851995,
+        "nanoseconds": 279000000
+      },
+      "seasonId": "2019-2020"
     },
     {
       "id": "2019-2020_lvn8mglzgcncy9ev0sgx",
-      "seasonId": "2019-2020",
-      "name": "AS Longobarda",
-      "updatedAt": {
-        "seconds": 1778852035,
-        "nanoseconds": 655000000
-      },
       "logo": "",
-      "createdAt": {
-        "seconds": 1778852035,
-        "nanoseconds": 655000000
-      },
-      "isHistorical": false,
+      "name": "AS Longobarda",
+      "teamId": "lvn8MgLzGcNCY9ev0sgX",
       "presidentIds": [
         "iAcJUOTNENihne0XzhuR"
       ],
-      "teamId": "lvn8MgLzGcNCY9ev0sgX"
+      "isHistorical": false,
+      "updatedAt": {
+        "seconds": 1778852035,
+        "nanoseconds": 655000000
+      },
+      "createdAt": {
+        "seconds": 1778852035,
+        "nanoseconds": 655000000
+      },
+      "seasonId": "2019-2020"
     },
     {
       "id": "2019-2020_7bx0cegbxtf4fwh6t0pi",
+      "presidentIds": [
+        "JaSqcnTZUYHtjHXghADS"
+      ],
+      "teamId": "7Bx0ceGBXtF4FwH6T0PI",
       "name": "As Paperopoli",
-      "seasonId": "2019-2020",
-      "createdAt": {
-        "seconds": 1778852018,
-        "nanoseconds": 887000000
-      },
-      "isHistorical": false,
       "logo": "",
       "updatedAt": {
         "seconds": 1778852018,
         "nanoseconds": 887000000
       },
-      "presidentIds": [
-        "JaSqcnTZUYHtjHXghADS"
-      ],
-      "teamId": "7Bx0ceGBXtF4FwH6T0PI"
+      "isHistorical": false,
+      "seasonId": "2019-2020",
+      "createdAt": {
+        "seconds": 1778852018,
+        "nanoseconds": 887000000
+      }
     },
     {
       "id": "2019-2020_jy2dst1rxfqv6elw89ds",
-      "presidentIds": [
-        "f37y6IZln56uPDZqKg4N"
-      ],
-      "teamId": "jy2dst1rXfQv6eLW89DS",
-      "name": "Atletico Cadaveri",
-      "seasonId": "2019-2020",
-      "isHistorical": false,
-      "createdAt": {
-        "seconds": 1778852194,
-        "nanoseconds": 880000000
-      },
       "updatedAt": {
         "seconds": 1778852194,
         "nanoseconds": 880000000
       },
+      "isHistorical": false,
+      "seasonId": "2019-2020",
+      "createdAt": {
+        "seconds": 1778852194,
+        "nanoseconds": 880000000
+      },
+      "name": "Atletico Cadaveri",
+      "teamId": "jy2dst1rXfQv6eLW89DS",
+      "presidentIds": [
+        "f37y6IZln56uPDZqKg4N"
+      ],
       "logo": ""
     },
     {
       "id": "2019-2020_team-002",
       "isHistorical": false,
-      "createdAt": {
-        "seconds": 1778852178,
-        "nanoseconds": 376000000
-      },
       "updatedAt": {
         "seconds": 1778852178,
         "nanoseconds": 376000000
       },
-      "logo": "",
-      "name": "Beetlejuice",
       "seasonId": "2019-2020",
+      "createdAt": {
+        "seconds": 1778852178,
+        "nanoseconds": 376000000
+      },
+      "logo": "",
       "presidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
       ],
-      "teamId": "team_002"
+      "teamId": "team_002",
+      "name": "Beetlejuice"
     },
     {
       "id": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
-      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
+      "updatedAt": {
+        "seconds": 1779380029,
+        "nanoseconds": 474000000
+      },
       "isHistorical": false,
       "createdAt": {
         "seconds": 1778852181,
         "nanoseconds": 922000000
       },
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1779380029,
-        "nanoseconds": 474000000
-      },
+      "seasonId": "2019-2020",
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
       "name": "FC DueFratelli2005",
-      "seasonId": "2019-2020"
+      "logo": ""
     },
     {
       "id": "2019-2020_gdisidfbuselvm64psr3",
-      "seasonId": "2019-2020",
-      "name": "Olympic Salerno FC",
-      "updatedAt": {
-        "seconds": 1779380035,
-        "nanoseconds": 708000000
-      },
-      "logo": "",
-      "isHistorical": false,
       "createdAt": {
         "seconds": 1778852190,
         "nanoseconds": 580000000
       },
+      "seasonId": "2019-2020",
+      "updatedAt": {
+        "seconds": 1779380035,
+        "nanoseconds": 708000000
+      },
+      "isHistorical": false,
       "presidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
       ],
-      "teamId": "GDisIDfbuSeLVm64PSR3"
+      "teamId": "GDisIDfbuSeLVm64PSR3",
+      "name": "Olympic Salerno FC",
+      "logo": ""
     },
     {
       "id": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "logo": "",
       "name": "real mappine",
+      "teamId": "FT1tqdqI18iUh3l1lakQ",
+      "presidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
       "seasonId": "2019-2020",
-      "isHistorical": false,
       "createdAt": {
         "seconds": 1778852186,
         "nanoseconds": 10000000
       },
-      "logo": "",
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1778852186,
         "nanoseconds": 10000000
-      },
-      "presidentIds": [
-        "2yHHP653ChQrYxnQHMk3"
-      ],
-      "teamId": "FT1tqdqI18iUh3l1lakQ"
+      }
     },
     {
       "id": "2019-2020_ulwtimbi3dyyrq0soesx",
+      "updatedAt": {
+        "seconds": 1778852044,
+        "nanoseconds": 351000000
+      },
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778852044,
+        "nanoseconds": 351000000
+      },
+      "seasonId": "2019-2020",
+      "name": "River Plaid",
+      "teamId": "ULwTIMBi3dyYrq0SoEsx",
       "presidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
       ],
-      "teamId": "ULwTIMBi3dyYrq0SoEsx",
-      "name": "River Plaid",
-      "seasonId": "2019-2020",
-      "createdAt": {
-        "seconds": 1778852044,
-        "nanoseconds": 351000000
-      },
-      "isHistorical": false,
-      "logo": "",
-      "updatedAt": {
-        "seconds": 1778852044,
-        "nanoseconds": 351000000
-      }
+      "logo": ""
     },
     {
       "id": "2019-2020_kbjri4liu4iuq6ajfnml",
+      "teamId": "h6saeK7uRQIQNmiZTRT7",
+      "name": "Us Baronissi Cavaliers",
       "presidentIds": [
         "Mw12sFS1OoS8V5uzBLLw"
       ],
-      "teamId": "h6saeK7uRQIQNmiZTRT7",
-      "name": "Us Baronissi Cavaliers",
-      "seasonId": "2019-2020",
-      "createdAt": {
-        "seconds": 1778852023,
-        "nanoseconds": 289000000
-      },
-      "isHistorical": false,
       "logo": "",
       "updatedAt": {
         "seconds": 1779196111,
         "nanoseconds": 261000000
-      }
+      },
+      "isHistorical": false,
+      "createdAt": {
+        "seconds": 1778852023,
+        "nanoseconds": 289000000
+      },
+      "seasonId": "2019-2020"
     }
   ],
   "stadiums": [],
   "competitions": [
     {
       "id": "2019-2020_campionato",
+      "createdAt": {
+        "seconds": 1778852050,
+        "nanoseconds": 775000000
+      },
+      "knockoutPhases": [],
+      "seasonId": "2019-2020",
+      "status": "CONCLUSA",
+      "type": "CAMPIONATO",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778852058,
         "nanoseconds": 918000000
       },
       "format": "CLASSIFICA",
-      "type": "CAMPIONATO",
-      "notes": "",
-      "status": "CONCLUSA",
-      "createdAt": {
-        "seconds": 1778852050,
-        "nanoseconds": 775000000
-      },
-      "seasonId": "2019-2020",
-      "name": "Campionato",
-      "knockoutPhases": []
+      "name": "Campionato"
     },
     {
       "id": "2019-2020_champions-league",
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "seasonId": "2019-2020",
+      "createdAt": {
+        "seconds": 1778852050,
+        "nanoseconds": 826000000
+      },
       "status": "NON_DISPUTATA",
       "type": "CHAMPIONS_LEAGUE",
       "notes": "",
@@ -559,191 +569,181 @@
         "seconds": 1778852063,
         "nanoseconds": 657000000
       },
-      "format": "GIRONI_KO",
-      "seasonId": "2019-2020",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
       "name": "Champion's League",
-      "createdAt": {
-        "seconds": 1778852050,
-        "nanoseconds": 826000000
-      }
+      "format": "GIRONI_KO"
     },
     {
       "id": "2019-2020_coppa-italia",
-      "status": "CONCLUSA",
-      "notes": "",
-      "type": "COPPA_ITALIA",
       "format": "GIRONI_KO",
+      "name": "Coppa Italia",
       "updatedAt": {
         "seconds": 1778852067,
         "nanoseconds": 604000000
       },
-      "name": "Coppa Italia",
-      "knockoutPhases": [
-        "QUARTI",
-        "SEMIFINALI",
-        "FINALE"
-      ],
-      "seasonId": "2019-2020",
+      "type": "COPPA_ITALIA",
+      "notes": "",
+      "status": "CONCLUSA",
       "createdAt": {
         "seconds": 1778852050,
         "nanoseconds": 848000000
-      }
-    },
-    {
-      "id": "2019-2020_playoff",
-      "createdAt": {
-        "seconds": 1778852050,
-        "nanoseconds": 900000000
       },
-      "seasonId": "2019-2020",
-      "name": "Playoff",
       "knockoutPhases": [
         "QUARTI",
         "SEMIFINALI",
         "FINALE"
       ],
-      "status": "CONCLUSA",
+      "seasonId": "2019-2020"
+    },
+    {
+      "id": "2019-2020_playoff",
+      "type": "PLAYOFF",
+      "notes": "",
       "updatedAt": {
         "seconds": 1778852071,
         "nanoseconds": 61000000
       },
+      "name": "Playoff",
       "format": "GIRONI_KO",
-      "type": "PLAYOFF",
-      "notes": ""
+      "createdAt": {
+        "seconds": 1778852050,
+        "nanoseconds": 900000000
+      },
+      "knockoutPhases": [
+        "QUARTI",
+        "SEMIFINALI",
+        "FINALE"
+      ],
+      "seasonId": "2019-2020",
+      "status": "CONCLUSA"
     }
   ],
   "competitionMatches": [],
   "competitionResults": [
     {
       "id": "2019-2020-campionato_1",
+      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
+      "seasonId": "2019-2020",
+      "createdAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 48000000
+      },
       "position": 1,
-      "points": null,
       "played": null,
       "updatedAt": {
         "seconds": 1778852096,
         "nanoseconds": 48000000
       },
-      "fantapoints": null,
-      "seasonTeamId": "2019-2020_wmdzhrrpup8lhvsdwm7w",
-      "seasonId": "2019-2020",
       "competitionId": "2019-2020_campionato",
-      "createdAt": {
-        "seconds": 1778852096,
-        "nanoseconds": 48000000
-      }
+      "fantapoints": null,
+      "points": null
     },
     {
       "id": "2019-2020-campionato_2",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "createdAt": {
-        "seconds": 1778852096,
-        "nanoseconds": 89000000
-      },
-      "seasonId": "2019-2020",
-      "competitionId": "2019-2020_campionato",
-      "position": 2,
       "updatedAt": {
         "seconds": 1778852096,
         "nanoseconds": 89000000
       },
+      "competitionId": "2019-2020_campionato",
       "fantapoints": null,
       "points": null,
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "seasonId": "2019-2020",
+      "createdAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 89000000
+      },
+      "position": 2,
       "played": null
     },
     {
       "id": "2019-2020-campionato_3",
-      "fantapoints": null,
       "updatedAt": {
-        "seconds": 1778852096,
-        "nanoseconds": 129000000
-      },
-      "played": null,
-      "points": null,
-      "position": 3,
-      "createdAt": {
         "seconds": 1778852096,
         "nanoseconds": 129000000
       },
       "competitionId": "2019-2020_campionato",
+      "fantapoints": null,
+      "points": null,
+      "seasonTeamId": "2019-2020_team-002",
       "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002"
+      "createdAt": {
+        "seconds": 1778852096,
+        "nanoseconds": 129000000
+      },
+      "played": null,
+      "position": 3
     },
     {
       "id": "2019-2020-coppa-italia_1",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "createdAt": {
-        "seconds": 1778852108,
-        "nanoseconds": 939000000
-      },
-      "seasonId": "2019-2020",
-      "competitionId": "2019-2020_coppa-italia",
-      "position": 1,
       "updatedAt": {
         "seconds": 1778852108,
         "nanoseconds": 939000000
       },
-      "fantapoints": null,
+      "competitionId": "2019-2020_coppa-italia",
       "points": null,
+      "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778852108,
+        "nanoseconds": 939000000
+      },
+      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
+      "seasonId": "2019-2020",
+      "position": 1,
       "played": null
     },
     {
       "id": "2019-2020-coppa-italia_2",
-      "position": 2,
-      "fantapoints": null,
       "updatedAt": {
         "seconds": 1778852108,
         "nanoseconds": 989000000
       },
+      "competitionId": "2019-2020_coppa-italia",
       "points": null,
-      "played": null,
-      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
+      "fantapoints": null,
       "createdAt": {
         "seconds": 1778852108,
         "nanoseconds": 989000000
       },
+      "seasonTeamId": "2019-2020_gdisidfbuselvm64psr3",
       "seasonId": "2019-2020",
-      "competitionId": "2019-2020_coppa-italia"
+      "played": null,
+      "position": 2
     },
     {
       "id": "2019-2020-playoff_1",
-      "position": 1,
-      "fantapoints": null,
-      "updatedAt": {
-        "seconds": 1778852130,
-        "nanoseconds": 133000000
-      },
-      "played": null,
-      "points": null,
+      "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "createdAt": {
         "seconds": 1778852130,
         "nanoseconds": 133000000
       },
-      "competitionId": "2019-2020_playoff",
-      "seasonId": "2019-2020"
+      "played": null,
+      "position": 1,
+      "updatedAt": {
+        "seconds": 1778852130,
+        "nanoseconds": 133000000
+      },
+      "points": null,
+      "fantapoints": null,
+      "competitionId": "2019-2020_playoff"
     },
     {
       "id": "2019-2020-playoff_2",
-      "seasonTeamId": "2019-2020_kbjri4liu4iuq6ajfnml",
-      "seasonId": "2019-2020",
-      "competitionId": "2019-2020_playoff",
-      "createdAt": {
-        "seconds": 1778852130,
-        "nanoseconds": 175000000
-      },
-      "position": 2,
-      "points": null,
-      "played": null,
       "updatedAt": {
         "seconds": 1778852130,
         "nanoseconds": 175000000
       },
-      "fantapoints": null
+      "competitionId": "2019-2020_playoff",
+      "points": null,
+      "fantapoints": null,
+      "createdAt": {
+        "seconds": 1778852130,
+        "nanoseconds": 175000000
+      },
+      "seasonTeamId": "2019-2020_kbjri4liu4iuq6ajfnml",
+      "seasonId": "2019-2020",
+      "played": null,
+      "position": 2
     }
   ],
   "rosterEntries": [
@@ -1128,19 +1128,6 @@
       "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_0",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Perin",
-      "realTeam": "JUV",
-      "rosterRole": "P",
-      "classicRole": "P",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_1",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Muric",
       "realTeam": "SAS",
       "rosterRole": "P",
@@ -1151,7 +1138,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_2",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_1",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Corvi",
@@ -1164,20 +1151,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_3",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Djimsiti",
-      "realTeam": "ATA",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_4",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_2",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Miranda J.",
@@ -1190,20 +1164,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_5",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "De Winter",
-      "realTeam": "MIL",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 9,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_6",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_3",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Lucumì",
@@ -1216,7 +1177,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_7",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_4",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Vitik",
@@ -1229,7 +1190,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_8",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_5",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Fortini",
@@ -1242,7 +1203,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_9",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_6",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Idrissi R.",
@@ -1255,7 +1216,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_10",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_7",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Heggem",
@@ -1268,7 +1229,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_11",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_8",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Bernasconi",
@@ -1281,7 +1242,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_12",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_9",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Freuler",
@@ -1294,7 +1255,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_13",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_10",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "De Bruyne",
@@ -1307,7 +1268,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_14",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_11",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Saelemaekers",
@@ -1320,59 +1281,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_15",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Maldini",
-      "realTeam": "LAZ",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 27,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_16",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Musah",
-      "realTeam": "ATA",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 4,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_17",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Ellertsson",
-      "realTeam": "GEN",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_18",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Sulemana I.",
-      "realTeam": "CAG",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_19",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_12",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Pisilli",
@@ -1385,7 +1294,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_20",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_13",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Fabbian",
@@ -1398,20 +1307,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_21",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Anjorin",
-      "realTeam": "TOR",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_22",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_14",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Keita M.",
@@ -1424,20 +1320,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_23",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Orban G.",
-      "realTeam": "VER",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_24",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_15",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Noslin",
@@ -1450,7 +1333,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_25",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_16",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Castro S.",
@@ -1463,20 +1346,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_26",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Dallinga",
-      "realTeam": "BOL",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 0,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_27",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_17",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Douvikas",
@@ -1489,7 +1359,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_28",
+      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_18",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Kuhn",
@@ -1498,19 +1368,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 35,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_7bx0cegbxtf4fwh6t0pi_29",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_7bx0cegbxtf4fwh6t0pi",
-      "playerName": "Kulenovic",
-      "realTeam": "TOR",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 1,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -1531,19 +1388,6 @@
       "id": "static_2019-2020_team-002_1",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Di Gregorio",
-      "realTeam": "JUV",
-      "rosterRole": "P",
-      "classicRole": "P",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_2",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
       "playerName": "Butez",
       "realTeam": "COM",
       "rosterRole": "P",
@@ -1554,20 +1398,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_3",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Luperto",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_4",
+      "id": "static_2019-2020_team-002_2",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Gosens",
@@ -1580,20 +1411,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_5",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Caracciolo A.",
-      "realTeam": "PIS",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_6",
+      "id": "static_2019-2020_team-002_3",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Kabasele",
@@ -1606,20 +1424,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_7",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Baschirotto",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_8",
+      "id": "static_2019-2020_team-002_4",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Carlos Augusto",
@@ -1632,7 +1437,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_9",
+      "id": "static_2019-2020_team-002_5",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Beukema",
@@ -1645,33 +1450,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_10",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Coco",
-      "realTeam": "TOR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 5,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_11",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Kempf",
-      "realTeam": "COM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_12",
+      "id": "static_2019-2020_team-002_6",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Tiago Gabriel",
@@ -1684,7 +1463,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_13",
+      "id": "static_2019-2020_team-002_7",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Locatelli",
@@ -1697,7 +1476,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_14",
+      "id": "static_2019-2020_team-002_8",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Pasalic",
@@ -1710,7 +1489,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_15",
+      "id": "static_2019-2020_team-002_9",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Odgaard",
@@ -1723,7 +1502,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_16",
+      "id": "static_2019-2020_team-002_10",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Zambo Anguissa",
@@ -1736,20 +1515,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_17",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Thorsby",
-      "realTeam": "CRE",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 4,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_18",
+      "id": "static_2019-2020_team-002_11",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "McTominay",
@@ -1762,7 +1528,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_19",
+      "id": "static_2019-2020_team-002_12",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Ricci S.",
@@ -1775,7 +1541,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_20",
+      "id": "static_2019-2020_team-002_13",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Basic",
@@ -1788,20 +1554,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_21",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Konè I.",
-      "realTeam": "SAS",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_22",
+      "id": "static_2019-2020_team-002_14",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Neres",
@@ -1814,20 +1567,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_23",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Pedro",
-      "realTeam": "LAZ",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_24",
+      "id": "static_2019-2020_team-002_15",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Piccoli",
@@ -1840,7 +1580,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_25",
+      "id": "static_2019-2020_team-002_16",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Leao",
@@ -1853,33 +1593,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_team-002_26",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Nzola",
-      "realTeam": "SAS",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_27",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Banda",
-      "realTeam": "LEC",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_28",
+      "id": "static_2019-2020_team-002_17",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_team-002",
       "playerName": "Hojlund",
@@ -1888,19 +1602,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 108,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_team-002_29",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_team-002",
-      "playerName": "Ratkov",
-      "realTeam": "LAZ",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 8,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -1934,58 +1635,6 @@
       "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_2",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Mina",
-      "realTeam": "CAG",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_3",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Lazaro",
-      "realTeam": "TOR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 9,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_4",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Celik",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 5,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_5",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Delprato",
-      "realTeam": "PAR",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 12,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_6",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Norton-Cuffy",
       "realTeam": "GEN",
       "rosterRole": "D",
@@ -1996,7 +1645,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_7",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_3",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Ahanor",
@@ -2009,7 +1658,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_8",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_4",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Britschgi",
@@ -2022,7 +1671,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_9",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_5",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Pellegrini Lo.",
@@ -2035,59 +1684,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_10",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Sottil",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_11",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Gaetano",
-      "realTeam": "CAG",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_12",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Fagioli",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 0,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_13",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Elmas",
-      "realTeam": "NAP",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_14",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_6",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Vlasic",
@@ -2100,7 +1697,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_15",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_7",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Volpato",
@@ -2113,7 +1710,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_16",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_8",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Oristanio",
@@ -2126,7 +1723,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_17",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_9",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Isaksen",
@@ -2139,20 +1736,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_18",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Zaragoza",
-      "realTeam": "ROM",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 29,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_19",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_10",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Paz N.",
@@ -2165,7 +1749,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_20",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_11",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Venturino",
@@ -2178,7 +1762,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_21",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_12",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Sucic P.",
@@ -2191,7 +1775,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_22",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_13",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Santos A.",
@@ -2204,7 +1788,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_23",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_14",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Scamacca",
@@ -2217,7 +1801,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_24",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_15",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Colombo",
@@ -2230,7 +1814,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_25",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_16",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "De Ketelaere",
@@ -2243,7 +1827,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_26",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_17",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Addai",
@@ -2256,20 +1840,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_27",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Kilicsoy",
-      "realTeam": "CAG",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_28",
+      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_18",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
       "playerName": "Frigan",
@@ -2278,19 +1849,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_y3vmcdwvut0u1tlsg4qc_29",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "Durosinmi",
-      "realTeam": "PIS",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 4,
       "status": "ACTIVE",
       "source": "static-roster"
     },
@@ -2740,19 +2298,6 @@
       "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_4",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Hermoso",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_5",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Kalulu",
       "realTeam": "JUV",
       "rosterRole": "D",
@@ -2763,46 +2308,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_6",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Tsimikas",
-      "realTeam": "ROM",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_7",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Terracciano F.",
-      "realTeam": "CRE",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 6,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_8",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Cabal",
-      "realTeam": "JUV",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_9",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_5",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Bisseck",
@@ -2815,7 +2321,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_10",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_6",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Kelly L.",
@@ -2828,20 +2334,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_11",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Canestrelli",
-      "realTeam": "PIS",
-      "rosterRole": "D",
-      "classicRole": "D",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_12",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_7",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Muharemovic",
@@ -2854,33 +2347,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_13",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Mandragora",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_14",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Brescianini",
-      "realTeam": "FIO",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 2,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_15",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_8",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "McKennie",
@@ -2893,7 +2360,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_16",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_9",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Thuram K.",
@@ -2906,7 +2373,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_17",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_10",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Zhegrova",
@@ -2919,33 +2386,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_18",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Helgason",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_19",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Berisha M.",
-      "realTeam": "LEC",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_20",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_11",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Atta",
@@ -2958,33 +2399,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_21",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Tourè I.",
-      "realTeam": "PIS",
-      "rosterRole": "C",
-      "classicRole": "C",
-      "mantraRoles": "",
-      "cost": 1,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_22",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Sanabria",
-      "realTeam": "CRE",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_23",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_12",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Nkunku",
@@ -2997,7 +2412,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_24",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_13",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Ekuban",
@@ -3010,7 +2425,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_25",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_14",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "David",
@@ -3023,7 +2438,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_26",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_15",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Vitinha O.",
@@ -3036,7 +2451,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_27",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_16",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Dovbyk",
@@ -3049,7 +2464,7 @@
       "source": "static-roster"
     },
     {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_28",
+      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_17",
       "seasonId": "2019-2020",
       "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
       "playerName": "Ekhator",
@@ -3058,19 +2473,6 @@
       "classicRole": "A",
       "mantraRoles": "",
       "cost": 3,
-      "status": "ACTIVE",
-      "source": "static-roster"
-    },
-    {
-      "id": "static_2019-2020_ft1tqdqi18iuh3l1lakq_29",
-      "seasonId": "2019-2020",
-      "seasonTeamId": "2019-2020_ft1tqdqi18iuh3l1lakq",
-      "playerName": "Stulic",
-      "realTeam": "LEC",
-      "rosterRole": "A",
-      "classicRole": "A",
-      "mantraRoles": "",
-      "cost": 8,
       "status": "ACTIVE",
       "source": "static-roster"
     },
