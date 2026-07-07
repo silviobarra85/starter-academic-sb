@@ -1,31 +1,15 @@
 # Overlay roadmap
 
-## Corrente
-- V586 - Rose pubbliche senza filtri ruolo + cleanup review.
+## Stato corrente
+- V587 - Editor rose statiche Admin.
 
-## Note operative
-- Mantenere `player-tables-mobile-v584` come unico asset consolidato per le tabelle giocatori mobile.
-- Non reintrodurre resize colonne V570/V571.
-- Mantenere `president-teamarea-mobile-v585` come layer mobile dedicato alla Dashboard Presidente.
-- I filtri ruolo della sezione pubblica `Tutte le rose` sono disattivati da V586.
-- Se si modifica la Dashboard Presidente, preservare: Firebase, EmailJS, Svincola Giocatori, Comunicati, Scambio e Trattative.
-- Le sovrapposizioni CSS storiche da considerare restano `assets/styles.css`, `mobile-suite-v168.css`, `rosters-tables.css` e `roster-listone-table-unification-v551.css`.
+## Completato recentemente
+- V584 - Cleanup tabelle giocatori mobile.
+- V585 - Dashboard Presidente mobile compatta.
+- V586 - Rose pubbliche senza filtri ruolo.
+- V587 - Editor rose statiche con download JSON + manifest.
 
-## V584 - Cleanup tabelle giocatori mobile
-- Consolidati gli asset mobile delle tabelle giocatori in `player-tables-mobile-v584`.
-- Rimossi dal runtime gli asset sperimentali V567-V583 e resize V570/V571.
-- Preservata la documentazione storica.
-
-## V585 - Dashboard Presidente mobile compatta
-- Spostate le azioni operative duplicate dalla card Dashboard Presidente al quick hub compatto.
-- Quick hub ricostruito con azioni canoniche e funzionanti.
-- Pannelli operativi con tasto `Apri/Riduci` a destra.
-- Pannelli operativi chiusi di default.
-- `Proponi svincolo` rinominato in `Proponi trattativa`.
-- Aggiunto cleanup per residui resize V570/V571.
-
-## V586 - Rose pubbliche senza filtri ruolo + cleanup review
-- Rimosso il pannello filtri ruolo dalla sezione pubblica `Tutte le rose`.
-- Le rose espanse mostrano tutti i giocatori.
-- Listone e filtri operativi Area Squadra/Presidente restano preservati.
-- Aggiunto audit cleanup/refactor V586 e cleanup conservativo per residui tecnici.
+## Prossimi candidati
+- Consolidare eventuali asset CSS/JS ancora storici quando non più referenziati.
+- Migliorare validazione editor rose con controlli su numero massimo giocatori per ruolo.
+- Aggiungere download zip unico JSON + manifest se si decide di introdurre una libreria zip o una funzione dedicata.

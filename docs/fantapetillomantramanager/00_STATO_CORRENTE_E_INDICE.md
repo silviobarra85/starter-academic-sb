@@ -1,17 +1,10 @@
-# Stato corrente
+# FantaPetilloMantraManager - Stato corrente
 
-## Versione corrente
-V586 - Dashboard Presidente mobile compatta
+Versione corrente: V587.
 
-## Stato funzionale
-- Tabelle giocatori mobile consolidate con `player-tables-mobile-v584`.
-- Dashboard Presidente mobile compatta con `president-teamarea-mobile-v585`.
-- Quick hub mobile canonico e senza duplicati.
-- Pannelli operativi con tasto Apri/Riduci a destra e chiusi di default.
+## Note
 - Calciomercato disattivato.
-- Resize colonne V570/V571 non caricato.
-
-## Audit
-```bash
-node static/fanta-engine/tools/audit-teamarea-dashboard-v585.mjs
-```
+- Dashboard Presidente mobile compatta.
+- Tabelle giocatori mobile consolidate.
+- Rose pubbliche senza filtri ruolo.
+- Area Admin: editor rose statiche per modificare i JSON in `assets/rose` e scaricare manifest aggiornato.
