@@ -1,11 +1,10 @@
 # ZonaOrientale - Stato corrente
 
-Versione corrente: V587.
+Versione: V588.
 
-## Note
+- Stagione corrente: 2026-2027.
+- Rose visualizzate prima da `static/zonaorientale/assets/rose`.
+- `rosterEntries` Firestore resta fallback e puo' essere sincronizzato solo da Admin con azione esplicita.
 - Calciomercato disattivato.
-- Svincola Giocatori attivo in Area Presidente.
-- Dashboard Presidente mobile compatta.
-- Tabelle giocatori mobile consolidate.
-- Rose pubbliche senza filtri ruolo.
-- Area Admin: editor rose statiche per modificare i JSON in `assets/rose` e scaricare manifest aggiornato.
+- Svincola Giocatori attivo.
+- Dashboard Presidente mobile e tabelle giocatori mobile preservate.

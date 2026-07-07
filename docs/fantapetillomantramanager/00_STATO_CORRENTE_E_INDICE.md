@@ -1,10 +1,8 @@
 # FantaPetilloMantraManager - Stato corrente
 
-Versione corrente: V587.
+Versione: V588.
 
-## Note
+- Rose visualizzate prima da `static/fantapetillomantramanager/assets/rose`.
+- `rosterEntries` Firestore resta fallback e puo' essere sincronizzato solo da Admin con azione esplicita.
 - Calciomercato disattivato.
-- Dashboard Presidente mobile compatta.
-- Tabelle giocatori mobile consolidate.
-- Rose pubbliche senza filtri ruolo.
-- Area Admin: editor rose statiche per modificare i JSON in `assets/rose` e scaricare manifest aggiornato.
+- Tabelle giocatori mobile preservate.

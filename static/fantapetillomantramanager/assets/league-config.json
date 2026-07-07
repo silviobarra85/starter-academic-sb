@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "587",
+  "currentVersion": "588",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -643,7 +643,8 @@
     "V584 consolida gli stili mobile delle tabelle giocatori in un solo asset attivo e rimuove i layer sperimentali/resize V567-V583 non piu caricati.",
     "V585 compatta la Dashboard Presidente mobile: azioni duplicate spostate nel quick hub, pannelli operativi Apri/Riduci chiusi di default e cleanup asset resize inutili.",
     "V586 rimuove i filtri ruolo dalla sezione pubblica Tutte le rose e consolida la verifica cleanup/refactor senza cancellare documentazione storica.",
-    "V587 aggiunge in Area Admin un editor rose statiche: carica l’ultima rosa in assets/rose, aggiunge/rimuove giocatori dal listone e scarica JSON + manifest per GitHub."
+    "V587 aggiunge in Area Admin un editor rose statiche: carica l’ultima rosa in assets/rose, aggiunge/rimuove giocatori dal listone e scarica JSON + manifest per GitHub.",
+    "V588 rende assets/rose la fonte primaria per la visualizzazione delle rose e aggiunge sync Admin manuale verso rosterEntries da rosa GitHub pubblicata."
   ],
   "ui": {
     "footerVersion": 488

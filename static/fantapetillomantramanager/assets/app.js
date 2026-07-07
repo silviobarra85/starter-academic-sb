@@ -108,7 +108,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=569";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=588";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const FantaPetilloSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -37545,3 +37545,245 @@ window.FantaPublicRosterRoleFiltersV586 = Object.freeze({
   preservesTeamAreaOperationalRoleFilters: true,
   removesDomId: "rosterRoleFiltersV441"
 });
+
+/* V588 - Rose GitHub fonte primaria + sync manuale rosterEntries.
+ * assets/rose diventa la sorgente visuale principale per Rose, Area Squadra,
+ * Listone arricchito e profili squadra. Firestore rosterEntries non viene mai
+ * modificato automaticamente: la sincronizzazione e' disponibile solo con azione
+ * Admin esplicita tramite window.FantaStaticRosterGithubPrimaryV588.sync(). */
+const STATIC_ROSTERS_PRIMARY_VERSION_V588 = "V588";
+const STATIC_ROSTERS_PRIMARY_SOURCE_V588 = "static-roster-github-primary-v588";
+
+function normalizeStaticRosterSeasonIdV588(value) {
+  return String(value || "").trim();
+}
+
+function getStaticRosterSnapshotForSeasonExactV588(seasonId = getCurrentSeasonId()) {
+  const targetSeasonId = normalizeStaticRosterSeasonIdV588(seasonId);
+  if (!targetSeasonId) return null;
+  const snapshots = (state.rosters || [])
+    .filter((item) => normalizeStaticRosterSeasonIdV588(item?.seasonId || item?.meta?.seasonId) === targetSeasonId)
+    .filter((item) => Array.isArray(item?.rosters) && item.rosters.length);
+  if (!snapshots.length) return null;
+  return snapshots
+    .slice()
+    .sort((a, b) => String(b.loadedAt || b.meta?.loadedAt || b.id || b.meta?.id || "").localeCompare(String(a.loadedAt || a.meta?.loadedAt || a.id || a.meta?.id || ""), "it"))[0] || null;
+}
+
+function getStaticRosterForSeasonTeamExactV588(seasonTeam) {
+  if (!seasonTeam) return null;
+  const resolvedSeasonTeam = getSeasonTeamById?.(seasonTeam.id) || seasonTeam;
+  const snapshot = getStaticRosterSnapshotForSeasonExactV588(resolvedSeasonTeam?.seasonId || seasonTeam?.seasonId || getCurrentSeasonId());
+  if (!snapshot) return null;
+  const targetKeys = new Set(getRosterAliasKeys(resolvedSeasonTeam));
+  if (!targetKeys.size) return null;
+  return (snapshot.rosters || []).find((roster) => {
+    const rosterKeys = [normalizeKey(roster?.name), normalizeRosterKey(roster?.name)].filter(Boolean);
+    return rosterKeys.some((key) => targetKeys.has(key));
+  }) || null;
+}
+
+function getStaticRosterEntriesForSeasonTeamV588(seasonTeam) {
+  if (!seasonTeam) return [];
+  const resolvedSeasonTeam = getSeasonTeamById?.(seasonTeam.id) || seasonTeam;
+  const seasonId = resolvedSeasonTeam?.seasonId || seasonTeam?.seasonId || getCurrentSeasonId();
+  const seasonTeamId = resolvedSeasonTeam?.id || seasonTeam?.id || "";
+  const staticRoster = getStaticRosterForSeasonTeamExactV588(resolvedSeasonTeam);
+  if (!staticRoster || !Array.isArray(staticRoster.players) || !staticRoster.players.length) return [];
+  return mapStaticRosterPlayers(staticRoster, seasonId, seasonTeamId)
+    .map((entry, index) => ({
+      ...entry,
+      id: entry.id || `static_${seasonTeamId}_${index}`,
+      source: STATIC_ROSTERS_PRIMARY_SOURCE_V588,
+      staticRosterNameV588: staticRoster.name || "",
+      staticRosterPrimaryV588: true
+    }))
+    .sort((a, b) => {
+      if (typeof compareRosterPlayersV34 === "function") return compareRosterPlayersV34(a, b);
+      return String(a.playerName || "").localeCompare(String(b.playerName || ""), "it");
+    });
+}
+
+function hasStaticRosterForSeasonV588(seasonId = getCurrentSeasonId()) {
+  return Boolean(getStaticRosterSnapshotForSeasonExactV588(seasonId));
+}
+
+const getActiveRosterEntriesForSeasonTeamBeforeV588 = typeof getActiveRosterEntriesForSeasonTeam === "function" ? getActiveRosterEntriesForSeasonTeam : null;
+if (getActiveRosterEntriesForSeasonTeamBeforeV588) {
+  getActiveRosterEntriesForSeasonTeam = function getActiveRosterEntriesForSeasonTeamV588(seasonTeamId) {
+    const seasonTeam = getSeasonTeamById?.(seasonTeamId);
+    const staticEntries = getStaticRosterEntriesForSeasonTeamV588(seasonTeam || { id: seasonTeamId, seasonId: getCurrentSeasonId() });
+    if (staticEntries.length) return staticEntries;
+    return getActiveRosterEntriesForSeasonTeamBeforeV588(seasonTeamId);
+  };
+}
+
+const getRosterForSeasonTeamBeforeV588 = typeof getRosterForSeasonTeam === "function" ? getRosterForSeasonTeam : null;
+if (getRosterForSeasonTeamBeforeV588) {
+  getRosterForSeasonTeam = function getRosterForSeasonTeamV588(seasonTeam) {
+    const resolvedSeasonTeam = seasonTeam?.id ? (getSeasonTeamById?.(seasonTeam.id) || seasonTeam) : seasonTeam;
+    const staticEntries = getStaticRosterEntriesForSeasonTeamV588(resolvedSeasonTeam);
+    if (staticEntries.length) {
+      return {
+        id: resolvedSeasonTeam.id,
+        name: resolvedSeasonTeam.name,
+        playerCount: staticEntries.length,
+        players: staticEntries,
+        source: STATIC_ROSTERS_PRIMARY_SOURCE_V588
+      };
+    }
+    return getRosterForSeasonTeamBeforeV588(seasonTeam);
+  };
+}
+
+const getSnapshotRosterEntriesForSeasonTeamBeforeV588 = typeof getSnapshotRosterEntriesForSeasonTeamV37 === "function" ? getSnapshotRosterEntriesForSeasonTeamV37 : null;
+if (getSnapshotRosterEntriesForSeasonTeamBeforeV588) {
+  getSnapshotRosterEntriesForSeasonTeamV37 = function getSnapshotRosterEntriesForSeasonTeamV588(seasonTeam) {
+    const staticEntries = getStaticRosterEntriesForSeasonTeamV588(seasonTeam);
+    if (staticEntries.length) return staticEntries.map((entry) => ({ ...entry }));
+    return getSnapshotRosterEntriesForSeasonTeamBeforeV588(seasonTeam);
+  };
+}
+
+const loadTeamSnapshotBeforeV588 = typeof loadTeamSnapshotV34 === "function" ? loadTeamSnapshotV34 : null;
+if (loadTeamSnapshotBeforeV588) {
+  loadTeamSnapshotV34 = async function loadTeamSnapshotV588(seasonTeamId) {
+    const snapshot = await loadTeamSnapshotBeforeV588(seasonTeamId);
+    const seasonTeam = getSeasonTeamById?.(seasonTeamId);
+    const staticEntries = getStaticRosterEntriesForSeasonTeamV588(seasonTeam);
+    if (!snapshot || !staticEntries.length) return snapshot;
+    const patched = {
+      ...snapshot,
+      rosterEntries: staticEntries,
+      rosterSourceV588: STATIC_ROSTERS_PRIMARY_SOURCE_V588,
+      rosterUnavailableForSeasonV202: false
+    };
+    if (seasonTeam) {
+      state.teamSnapshotCache = state.teamSnapshotCache || {};
+      state.teamSnapshotCache[`${seasonTeam.seasonId}_${seasonTeam.teamId}`] = patched;
+    }
+    return patched;
+  };
+}
+
+const buildTeamSnapshotFromSeasonSnapshotBeforeV588 = typeof buildTeamSnapshotFromSeasonSnapshotV202 === "function" ? buildTeamSnapshotFromSeasonSnapshotV202 : null;
+if (buildTeamSnapshotFromSeasonSnapshotBeforeV588) {
+  buildTeamSnapshotFromSeasonSnapshotV202 = function buildTeamSnapshotFromSeasonSnapshotV588(seasonTeam, snapshot) {
+    const built = buildTeamSnapshotFromSeasonSnapshotBeforeV588(seasonTeam, snapshot);
+    const staticEntries = getStaticRosterEntriesForSeasonTeamV588(seasonTeam);
+    if (built && staticEntries.length) {
+      built.rosterEntries = staticEntries;
+      built.rosterSourceV588 = STATIC_ROSTERS_PRIMARY_SOURCE_V588;
+      built.rosterUnavailableForSeasonV202 = false;
+    }
+    return built;
+  };
+}
+
+function buildStaticRosterSyncPlanV588(seasonId = getCurrentSeasonId()) {
+  const targetSeasonId = normalizeStaticRosterSeasonIdV588(seasonId);
+  const snapshot = getStaticRosterSnapshotForSeasonExactV588(targetSeasonId);
+  if (!snapshot) throw new Error(`Nessuna rosa statica pubblicata in assets/rose per la stagione ${targetSeasonId}.`);
+  const seasonTeams = getSeasonTeamsForSeason(targetSeasonId);
+  const rows = [];
+  const matchedRosterNames = new Set();
+  seasonTeams.forEach((seasonTeam) => {
+    const staticRoster = getStaticRosterForSeasonTeamExactV588(seasonTeam);
+    if (!staticRoster) return;
+    matchedRosterNames.add(normalizeRosterKey(staticRoster.name || "") || normalizeKey(staticRoster.name || ""));
+    (staticRoster.players || []).forEach((player, index) => {
+      const playerName = String(player.playerName || "").trim();
+      if (!playerName) return;
+      const docId = `${makeIdPart(targetSeasonId)}_${makeIdPart(seasonTeam.id)}_${makeIdPart(playerName)}`;
+      rows.push({
+        docId,
+        payload: {
+          seasonId: targetSeasonId,
+          seasonTeamId: seasonTeam.id,
+          playerName,
+          realTeam: String(player.realTeam || "").trim().toUpperCase(),
+          rosterRole: String(player.role || player.rosterRole || "").trim().toUpperCase(),
+          classicRole: String(player.role || player.classicRole || "").trim().toUpperCase(),
+          mantraRoles: player.mantraRoles || "",
+          cost: player.cost ?? player.rosterCost ?? "",
+          status: "ACTIVE",
+          source: "static-roster-github-sync-v588",
+          staticRosterNameV588: staticRoster.name || "",
+          staticRosterIndexV588: index,
+          syncedAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
+        }
+      });
+    });
+  });
+  const unmatchedRosters = (snapshot.rosters || []).filter((roster) => {
+    const key = normalizeRosterKey(roster.name || "") || normalizeKey(roster.name || "");
+    return key && !matchedRosterNames.has(key);
+  });
+  return { seasonId: targetSeasonId, snapshot, seasonTeams, rows, unmatchedRosters };
+}
+
+async function syncRosterEntriesFromStaticRostersV588(options = {}) {
+  if (!state.isAdmin) throw new Error("Solo un admin puo' sincronizzare rosterEntries.");
+  if (!state.hasFullData && typeof loadFullDataV32 === "function") {
+    await loadFullDataV32({ render: false });
+  }
+  const seasonId = normalizeStaticRosterSeasonIdV588(options.seasonId || getCurrentSeasonId());
+  const plan = buildStaticRosterSyncPlanV588(seasonId);
+  if (!plan.rows.length) throw new Error(`Nessun giocatore statico associabile alle squadre della stagione ${seasonId}.`);
+  if (options.dryRun) {
+    return {
+      seasonId,
+      dryRun: true,
+      activePlayers: plan.rows.length,
+      unmatchedRosters: plan.unmatchedRosters.map((item) => item.name || "")
+    };
+  }
+  const existingActive = (state.raw.rosterEntries || [])
+    .filter((entry) => String(entry.seasonId || "") === seasonId && String(entry.status || "ACTIVE").toUpperCase() !== "REMOVED");
+  let removed = 0;
+  for (const entry of existingActive) {
+    const id = entry.id || `${makeIdPart(seasonId)}_${makeIdPart(entry.seasonTeamId)}_${makeIdPart(entry.playerName)}`;
+    if (!id) continue;
+    await setDoc(doc(db, "rosterEntries", id), {
+      ...entry,
+      status: "REMOVED",
+      source: entry.source || "rosterEntries-before-static-sync-v588",
+      removedBy: "static-roster-github-sync-v588",
+      removedAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+    removed += 1;
+  }
+  let written = 0;
+  for (const row of plan.rows) {
+    await setDoc(doc(db, "rosterEntries", row.docId), row.payload, { merge: true });
+    written += 1;
+  }
+  if (typeof loadFullDataV32 === "function") {
+    await loadFullDataV32({ render: true });
+  } else if (typeof loadData === "function") {
+    await loadData();
+  }
+  return {
+    seasonId,
+    dryRun: false,
+    removed,
+    written,
+    activePlayers: plan.rows.length,
+    unmatchedRosters: plan.unmatchedRosters.map((item) => item.name || "")
+  };
+}
+
+window.FantaStaticRosterGithubPrimaryV588 = Object.freeze({
+  version: STATIC_ROSTERS_PRIMARY_VERSION_V588,
+  visualPriority: "assets/rose -> rosterEntries fallback",
+  automaticFirestoreWrites: false,
+  source: STATIC_ROSTERS_PRIMARY_SOURCE_V588,
+  hasStaticRosterForSeason: hasStaticRosterForSeasonV588,
+  getSnapshotForSeason: getStaticRosterSnapshotForSeasonExactV588,
+  getRosterForSeasonTeam: getStaticRosterForSeasonTeamExactV588,
+  dryRun: (seasonId) => syncRosterEntriesFromStaticRostersV588({ seasonId, dryRun: true }),
+  sync: (options = {}) => syncRosterEntriesFromStaticRostersV588(options)
+});
+
