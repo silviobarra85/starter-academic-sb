@@ -347,14 +347,22 @@ function enrichListoneWithRosters(listone) {
   return {
     ...listone,
     players: (listone.players || []).map((player) => {
-      if (player.fantasyRoster) return player;
       const rosterPlayer = rosterIndex.get(normalizeKey(player.playerName));
-      if (!rosterPlayer) return { ...player, fantasyRoster: "Svincolati" };
+      if (!rosterPlayer) {
+        return {
+          ...player,
+          fantasyRoster: "Svincolati",
+          rosterRole: "",
+          rosterCost: "",
+          rosterSourceV589: "assets/rose"
+        };
+      }
       return {
         ...player,
         fantasyRoster: rosterPlayer.fantasyRoster,
         rosterRole: rosterPlayer.role || player.rosterRole || "",
-        rosterCost: rosterPlayer.cost ?? player.rosterCost ?? ""
+        rosterCost: rosterPlayer.cost ?? player.rosterCost ?? "",
+        rosterSourceV589: "assets/rose"
       };
     })
   };
