@@ -1,26 +1,18 @@
 {
+  "version": "V600",
   "current": "sudatori-data.json",
-  "version": "V599",
   "updatedAt": "2026-07-10",
-  "sourceFile": "fantacalcio_serie_a_2026_27_tmw_aggiornato_2026-07-10(1).xlsx",
-  "listoneFile": "2026-07-04.json",
+  "updateSlot": "sera",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-10_sera(1).xlsx",
   "teams": 20,
-  "players": 724,
-  "friendlies": 84,
-  "marketNotes": 50,
-  "listoneMatchedPlayers": 458,
-  "notMatchedPlayers": 266,
-  "listoneMatchMethods": {
-    "exact": 374,
-    "canon": 77,
-    "sameTeamPrefix": 1,
-    "sorted": 5,
-    "compact": 1
-  },
+  "players": 725,
+  "friendlies": 86,
+  "marketNotes": 64,
+  "teamTransferTalks": 113,
   "injuries": 6,
-  "sosFantaNews": 13,
-  "tmwMarketNews": 7,
+  "tmwMarketNews": 18,
+  "tmwEveningNews": 11,
   "formationTeams": 20,
-  "formationAdjustments": 19,
-  "formationMissingPlayers": 0
+  "formationMissingPlayers": 0,
+  "note": "V600: aggiornamento serale Excel/TMW applicato alla sezione Per i SUDATORI."
 }
