@@ -1,6 +1,6 @@
 {
   "meta": {
-    "id": "sudatori-serie-a-2026-07-10-v595",
+    "id": "sudatori-serie-a-2026-07-10-v596",
     "label": "Per i SUDATORI - Serie A 2026/27",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-10",
@@ -15,7 +15,7 @@
     "listoneMatchedPlayers": 458,
     "notMatchedPlayers": 267,
     "standalone": true,
-    "version": "V595",
+    "version": "V596",
     "listoneMatchMethods": {
       "exact": 374,
       "canon": 77,
@@ -31,8 +31,8 @@
     "formationTeams": 20,
     "formationAdjustments": 9,
     "formationMissingPlayers": 40,
-    "injuriesNote": "V595: aggiunti infortunati/monitoraggi SOS Fanta e note operative su rientri/impatto asta.",
-    "formationShapeNote": "V595: il campetto usa come forma il modulo dichiarato nel file/modulo squadra; se la fonte formazione usava un modulo diverso, moduleSourceUsed resta tracciato e moduleAdjusted=true."
+    "injuriesNote": "V596: aggiunti infortunati/monitoraggi SOS Fanta e note operative su rientri/impatto asta.",
+    "formationShapeNote": "V596: il campetto usa come forma il modulo dichiarato nel file/modulo squadra; se la fonte formazione usava un modulo diverso, moduleSourceUsed resta tracciato e moduleAdjusted=true."
   },
   "teams": [
     {

@@ -1,13 +1,13 @@
 # ZonaOrientale - Stato corrente
 
-Versione corrente: **V594**
+Versione corrente: **V596**
 
 ## Novità
 
-- Sezione standalone **Per i SUDATORI** aggiornata con listone 2026-07-04.
-- Corretto il matching dei parametri listone: Meret e gli altri presenti nel listone non risultano più `Non nel listone`.
-- Nella tabella della rosa la colonna mostra la **Rosa fantacalcio**, non la squadra Serie A.
-- Schede giocatore arricchite con mercato e probabili formazioni dal file Excel aggiornato.
+- Sezione standalone **Per i SUDATORI** attiva tramite `fanta-engine`.
+- V595 ha introdotto infortunati/monitoraggi SOS Fanta e campetto vincolato al modulo dichiarato.
+- V596 corregge la leggibilità delle card **Infortunati / SOS Fanta**, ora in stile scuro coerente con le card trattative.
+- Matching listone robusto e colonna **Rosa fantacalcio** nelle rose Sudatori restano invariati.
 
 ## Guardrail
 
@@ -15,9 +15,9 @@ Versione corrente: **V594**
 - Svincola Giocatori resta attivo.
 - La sezione Sudatori resta standalone e non modifica Firebase, rose ufficiali o listone operativo.
 
+## Cronologia recente
 
 - V593: Sudatori con campetto probabile formazione e matching listone robusto.
-
-
-### V594
-Sezione Sudatori aggiornata con trattative in corso per squadra Serie A.
+- V594: Sudatori con trattative in corso per squadra Serie A.
+- V595: Sudatori con infortunati SOS Fanta e moduli campetto vincolati.
+- V596: fix contrasto/leggibilità delle segnalazioni infortunati.
