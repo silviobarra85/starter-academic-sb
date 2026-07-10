@@ -1,6 +1,6 @@
 {
   "current": "sudatori-data.json",
-  "version": "V592",
+  "version": "V593",
   "updatedAt": "2026-07-10",
   "sourceFile": "fantacalcio_serie_a_2026_27_mercato_formazioni_2026-07-10(1).xlsx",
   "listoneFile": "2026-07-04.json",
@@ -8,6 +8,13 @@
   "players": 725,
   "friendlies": 84,
   "marketNotes": 47,
-  "listoneMatchedPlayers": 374,
-  "notMatchedPlayers": 351
+  "listoneMatchedPlayers": 458,
+  "notMatchedPlayers": 267,
+  "listoneMatchMethods": {
+    "exact": 374,
+    "canon": 77,
+    "sameTeamPrefix": 1,
+    "sorted": 5,
+    "compact": 1
+  }
 }

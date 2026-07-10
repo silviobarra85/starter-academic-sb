@@ -1,6 +1,6 @@
 # ZonaOrientale - Stato corrente
 
-Versione corrente: **V592**
+Versione corrente: **V593**
 
 ## Novità
 
@@ -14,3 +14,6 @@ Versione corrente: **V592**
 - Calciomercato resta disattivato.
 - Svincola Giocatori resta attivo.
 - La sezione Sudatori resta standalone e non modifica Firebase, rose ufficiali o listone operativo.
+
+
+- V593: Sudatori con campetto probabile formazione e matching listone robusto.

@@ -1,3 +1,4 @@
+- V593: aggiunge campetto probabile formazione in Sudatori e migliora matching listone.
 # Overlay Roadmap
 
 - V592: aggiorna Per i SUDATORI con listone corrente, rosa fantacalcio e mercato/formazioni.

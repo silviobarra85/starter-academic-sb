@@ -102,7 +102,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     fantamercato: true,
     mantraFilters: true,
     sudatoriStandaloneSection: true,
-    sudatoriStandaloneSectionVersion: 'V592'
+    sudatoriStandaloneSectionVersion: 'V593'
   }),
   guardrails: Object.freeze({
     configOnly: true,
