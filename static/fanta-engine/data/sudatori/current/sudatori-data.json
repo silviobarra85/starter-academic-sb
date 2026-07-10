@@ -1,21 +1,21 @@
 {
   "meta": {
-    "id": "sudatori-serie-a-2026-07-10-v598",
+    "id": "sudatori-serie-a-2026-07-10-v599",
     "label": "Per i SUDATORI - Serie A 2026/27",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-10",
-    "sourceFile": "fantacalcio_serie_a_2026_27_formazioni_coerenti_2026-07-10(1).xlsx",
+    "sourceFile": "fantacalcio_serie_a_2026_27_tmw_aggiornato_2026-07-10(1).xlsx",
     "listoneFile": "2026-07-04.json",
     "listoneId": "2026-07-04",
     "teams": 20,
-    "players": 725,
+    "players": 724,
     "friendlies": 84,
-    "marketNotes": 47,
+    "marketNotes": 50,
     "listonePlayers": 663,
     "listoneMatchedPlayers": 458,
-    "notMatchedPlayers": 267,
+    "notMatchedPlayers": 266,
     "standalone": true,
-    "version": "V598",
+    "version": "V599",
     "listoneMatchMethods": {
       "exact": 374,
       "canon": 77,
@@ -24,18 +24,21 @@
       "compact": 1
     },
     "listoneMatchNote": "V593: matching robusto con varianti nome/iniziale, team Serie A e ruolo; fantasyRoster delle schede Sudatori deriva dal listone 2026-07-04.",
-    "teamTransferTalks": 106,
+    "teamTransferTalks": 107,
     "transferTalksNote": "V594: aggiunte trattative in corso per squadra dal foglio Trattative_Squadre_10_07.",
     "injuries": 6,
     "sosFantaNews": 13,
     "formationTeams": 20,
-    "formationAdjustments": 18,
+    "formationAdjustments": 19,
     "formationMissingPlayers": 0,
-    "injuriesNote": "V598: dati fisici SOS Fanta mantenuti e riallineati al nuovo Excel formazioni coerenti.",
-    "formationShapeNote": "V598: il campetto usa il Modulo formazione usato del foglio Probabili_Formazioni; ogni XI ha 11 giocatori in rosa e posizioni coerenti col modulo.",
+    "injuriesNote": "V599: dati fisici SOS Fanta mantenuti; Pulisic integrato con nota TMW da monitorare.",
+    "formationShapeNote": "V599: il campetto continua a usare il Modulo formazione usato; Gila tolto dall XI Lazio e sostituito con Gigot secondo nuovo Excel.",
     "uiFixes": [
-      "V598: campo ordinato con sinistra/destra corrette, nessun badge fisico per disponibili, badge Probabile XI rimosso dalla colonna Mercato."
-    ]
+      "V598: campo ordinato con sinistra/destra corrette, nessun badge fisico per disponibili, badge Probabile XI rimosso dalla colonna Mercato.",
+      "V599: dati rigenerati dal nuovo Excel TMW aggiornato; rose, trattative, note mercato e XI Lazio riallineati."
+    ],
+    "tmwMarketNews": 7,
+    "tmwNote": "V599: aggiunto TMW come fonte operativa nel dataset Sudatori: Atta, Plizzari, Gila, Khalaili, Emiliano Martinez, Akor Adams, Pulisic."
   },
   "teams": [
     {
@@ -149,7 +152,7 @@
       "retreatEnd": "2026-07-30",
       "retreatPlace": "Viola Park; Inghilterra",
       "notes": "9-22/23 luglio al Viola Park; poi tournée/test in Inghilterra fino al 30 luglio. Formazione corretta al 2026-07-10: modulo usato 4-3-2-1; controlli in rosa/ruolo/posizione OK.",
-      "playersCount": 46,
+      "playersCount": 47,
       "friendliesCount": 6,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
@@ -254,7 +257,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-10",
-      "transferTalksCount": 12,
+      "transferTalksCount": 13,
       "transferTalksPreview": "Martinez, Vicario, Kolo Muani, Brahim Diaz, Sorloth ...",
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 4-3-3",
@@ -499,7 +502,7 @@
       "retreatEnd": "2026-08-04",
       "retreatPlace": "Centro Sportivo Bruseschi; Lienz",
       "notes": "Preparazione dal 6 luglio al Bruseschi; ritiro a Lienz dal 22 luglio al 4 agosto. Formazione corretta al 2026-07-10: modulo usato 3-5-2; controlli in rosa/ruolo/posizione OK.",
-      "playersCount": 39,
+      "playersCount": 38,
       "friendliesCount": 1,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
@@ -524,7 +527,7 @@
       "retreatEnd": "2026-07-26",
       "retreatPlace": "Falcade",
       "notes": "Ritiro a Falcade dall 11 al 26 luglio. Formazione corretta al 2026-07-10: modulo usato 3-4-2-1; controlli in rosa/ruolo/posizione OK.",
-      "playersCount": 44,
+      "playersCount": 43,
       "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
@@ -12410,6 +12413,72 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "sosFantaFlag": false
+      },
+      {
+        "id": "fiorentina-atta",
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "playerName": "Atta",
+        "role": "C",
+        "coach": "Kosta Runjaic",
+        "module": "3-5-2 / 3-4-2-1",
+        "rosterSource": "https://www.transfermarkt.it/udinese-calcio/startseite/verein/410/saison_id/2026",
+        "note": "Aggiornato 10/07/2026: disallineamento fonti su Arthur Atta, lasciato provvisoriamente in Udinese.",
+        "updatedAt": "2026-07-10",
+        "flag": "In verifica: Eurosport lo segnala verso Fiorentina; Transfermarkt non ancora allineato",
+        "marketStatus": "Acquisto aggiornato TMW",
+        "marketDetail": "TMW: arrivato dall'Udinese alla Fiorentina; contratto fino al 2031; clausola rivendita Udinese 30% riducibile al 10%.",
+        "marketSource": "https://www.tuttomercatoweb.com/serie-a/udinese-vanta-30-futura-rivendita-atta-fiorentina-farlo-10-2252036",
+        "marketNote": "Applicato nella rosa Fiorentina.",
+        "probableXi": false,
+        "formationPosition": "",
+        "formationReliability": "",
+        "formationSource": "",
+        "formationNote": "",
+        "fantasyRoster": "real mappine",
+        "listone": {
+          "fantacalcioId": "6908",
+          "playerName": "Atta",
+          "classicRole": "C",
+          "mantraRoles": "C",
+          "realTeam": "UDI",
+          "realTeamOriginal": "Udinese",
+          "fantasyRoster": "real mappine",
+          "quotationCurrent": 20,
+          "quotationInitial": "",
+          "quotationDiff": "",
+          "fvm": 85,
+          "fvmMantra": "",
+          "rosterRole": "C",
+          "rosterCost": 6,
+          "status": "In listone",
+          "statusCode": "IN_LISTONE",
+          "played": 32,
+          "average": 6.36,
+          "fantasyAverage": 6.88,
+          "under": "22",
+          "outOfList": ""
+        },
+        "listoneMatchMethod": "exact",
+        "formationLine": "",
+        "formationSlot": null,
+        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "formationPhysicalRisk": "",
+        "formationPotentialReturn": "",
+        "formationSosSource": "",
+        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
+        "injuryReturn": "",
+        "injurySource": "",
+        "injuryUpdatedAt": "2026-07-10",
+        "injuryNote": "",
+        "injuryImpact": "",
+        "formationCheck": "",
+        "formationRoleOk": "",
+        "formationModuleUsed": "",
+        "formationCorrectionNote": "",
+        "sosFantaFlag": false
       }
     ],
     "frosinone": [
@@ -20043,14 +20112,14 @@
         "updatedAt": "2026-07-10",
         "flag": "",
         "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
+        "marketDetail": "Inserito nell XI provvisorio al posto di Gila per uscita di mercato in chiusura verso Milan.",
+        "marketSource": "Controllo coerenza TMW/rosa",
         "marketNote": "",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationReliability": "",
-        "formationSource": "",
-        "formationNote": "",
+        "probableXi": true,
+        "formationPosition": "DC",
+        "formationReliability": "Media",
+        "formationSource": "TMW + controllo coerenza rosa/mercato",
+        "formationNote": "Gila tolto dall XI provvisorio per trasferimento in chiusura al Milan; Gigot inserito come centrale disponibile in rosa.",
         "fantasyRoster": "",
         "listone": {
           "fantacalcioId": "5899",
@@ -20076,8 +20145,8 @@
           "outOfList": ""
         },
         "listoneMatchMethod": "exact",
-        "formationLine": "",
-        "formationSlot": null,
+        "formationLine": "defense",
+        "formationSlot": 2,
         "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
         "formationPhysicalRisk": "",
         "formationPotentialReturn": "",
@@ -20092,9 +20161,11 @@
         "injuryImpact": "",
         "formationCheck": "",
         "formationRoleOk": "",
-        "formationModuleUsed": "",
+        "formationModuleUsed": "4-3-3",
         "formationCorrectionNote": "",
-        "sosFantaFlag": false
+        "sosFantaFlag": false,
+        "formationCorrectionSource": "TMW + controllo coerenza rosa/mercato",
+        "formationAlternative": ""
       },
       {
         "id": "lazio-gila",
@@ -20108,12 +20179,12 @@
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
         "updatedAt": "2026-07-10",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "",
-        "probableXi": true,
-        "formationPosition": "DC",
+        "marketStatus": "Cessione in chiusura verso Milan",
+        "marketDetail": "TMW: visite mediche/idoneità/firma con il Milan; operazione 25 mln + 5 bonus. Da non considerare stabile nella probabile Lazio.",
+        "marketSource": "https://www.tuttomercatoweb.com/serie-a/milan-visite-terminate-gila-idoneita-sportiva-firma-2252284",
+        "marketNote": "Tolto dall XI provvisorio Lazio.",
+        "probableXi": false,
+        "formationPosition": "",
         "formationReliability": "Media",
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-lazio",
         "formationNote": "Provedel spostato all'Inter nelle fonti ufficiali Sky; Isaksen fuori per pubalgia/sports hernia: sostituiti con Mandas e Cancellieri.",
@@ -20142,8 +20213,8 @@
           "outOfList": ""
         },
         "listoneMatchMethod": "exact",
-        "formationLine": "defense",
-        "formationSlot": 2,
+        "formationLine": "",
+        "formationSlot": null,
         "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
         "formationPhysicalRisk": "",
         "formationPotentialReturn": "",
@@ -25849,10 +25920,10 @@
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
         "updatedAt": "2026-07-10",
         "flag": "",
-        "marketStatus": "Da monitorare",
-        "marketDetail": "Resta nell XI provvisorio ma con flag fisico da monitorare.",
-        "marketSource": "https://www.sosfanta.com/squadra/milan/milan-ottimismo-per-le-condizioni-di-pulisic-primi-contatti-con-lo-staff-medico-le-ultime/",
-        "marketNote": "",
+        "marketStatus": "Da monitorare - infortunio",
+        "marketDetail": "Resta nell XI provvisorio ma con flag fisico da monitorare. | TMW segnala nuovo stop; integra la precedente nota SOS Fanta.",
+        "marketSource": "https://www.tuttomercatoweb.com/serie-a/pulisic-ferma-nuovo-ottavo-infortunio-gioca-milan-storico-2252273",
+        "marketNote": "Integra segnalazione SOS Fanta.",
         "probableXi": true,
         "formationPosition": "TQ",
         "formationReliability": "Media",
@@ -39919,72 +39990,6 @@
         "sosFantaFlag": false
       },
       {
-        "id": "udinese-atta",
-        "teamId": "udinese",
-        "teamName": "Udinese",
-        "playerName": "Atta",
-        "role": "C",
-        "coach": "Kosta Runjaic",
-        "module": "3-5-2 / 3-4-2-1",
-        "rosterSource": "https://www.transfermarkt.it/udinese-calcio/startseite/verein/410/saison_id/2026",
-        "note": "Aggiornato 10/07/2026: disallineamento fonti su Arthur Atta, lasciato provvisoriamente in Udinese.",
-        "updatedAt": "2026-07-10",
-        "flag": "In verifica: Eurosport lo segnala verso Fiorentina; Transfermarkt non ancora allineato",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationReliability": "",
-        "formationSource": "",
-        "formationNote": "",
-        "fantasyRoster": "real mappine",
-        "listone": {
-          "fantacalcioId": "6908",
-          "playerName": "Atta",
-          "classicRole": "C",
-          "mantraRoles": "C",
-          "realTeam": "UDI",
-          "realTeamOriginal": "Udinese",
-          "fantasyRoster": "real mappine",
-          "quotationCurrent": 20,
-          "quotationInitial": "",
-          "quotationDiff": "",
-          "fvm": 85,
-          "fvmMantra": "",
-          "rosterRole": "C",
-          "rosterCost": 6,
-          "status": "In listone",
-          "statusCode": "IN_LISTONE",
-          "played": 32,
-          "average": 6.36,
-          "fantasyAverage": 6.88,
-          "under": "22",
-          "outOfList": ""
-        },
-        "listoneMatchMethod": "exact",
-        "formationLine": "",
-        "formationSlot": null,
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalRisk": "",
-        "formationPotentialReturn": "",
-        "formationSosSource": "",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "sosFantaFlag": false
-      },
-      {
         "id": "udinese-ekkelenkamp",
         "teamId": "udinese",
         "teamName": "Udinese",
@@ -41152,50 +41157,6 @@
         "teamId": "venezia",
         "teamName": "Venezia",
         "playerName": "Grandi",
-        "role": "P",
-        "coach": "Giovanni Stroppa",
-        "module": "3-5-2 / 3-4-2-1",
-        "rosterSource": "https://www.transfermarkt.it/venezia-fc/startseite/verein/607/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
-        "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationReliability": "",
-        "formationSource": "",
-        "formationNote": "",
-        "fantasyRoster": "",
-        "listone": null,
-        "listoneMatchMethod": "none",
-        "formationLine": "",
-        "formationSlot": null,
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalRisk": "",
-        "formationPotentialReturn": "",
-        "formationSosSource": "",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "sosFantaFlag": false
-      },
-      {
-        "id": "venezia-plizzari",
-        "teamId": "venezia",
-        "teamName": "Venezia",
-        "playerName": "Plizzari",
         "role": "P",
         "coach": "Giovanni Stroppa",
         "module": "3-5-2 / 3-4-2-1",
@@ -44616,6 +44577,16 @@
         "updatedAt": "2026-07-10"
       }
     ],
+    "gila": [
+      {
+        "type": "Cessione in chiusura verso Milan",
+        "status": "Cessione in chiusura verso Milan",
+        "note": "Visite/idoneità/firma in corso con Milan; non stabile nell XI Lazio.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/milan-visite-terminate-gila-idoneita-sportiva-firma-2252284",
+        "team": "Lazio",
+        "updatedAt": "2026-07-10"
+      }
+    ],
     "helgason": [
       {
         "type": "Mercato da verificare",
@@ -44623,6 +44594,16 @@
         "note": "Acquisto/prestito indicato da Sky.",
         "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
         "team": "Lecce",
+        "updatedAt": "2026-07-10"
+      }
+    ],
+    "pulisic": [
+      {
+        "type": "Da monitorare - infortunio",
+        "status": "Da monitorare - infortunio",
+        "note": "Nuovo stop segnalato da TMW; resta da monitorare per amichevoli/asta.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/pulisic-ferma-nuovo-ottavo-infortunio-gioca-milan-storico-2252273",
+        "team": "Milan",
         "updatedAt": "2026-07-10"
       }
     ],
@@ -44863,6 +44844,16 @@
         "note": "Acquisto ufficiale: Acquisto/prestito indicato da Sky.",
         "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
         "team": "Venezia",
+        "updatedAt": "2026-07-10"
+      }
+    ],
+    "atta": [
+      {
+        "type": "Acquisto aggiornato TMW",
+        "status": "Acquisto aggiornato TMW",
+        "note": "Arrivato dall'Udinese; contratto fino al 2031; clausola rivendita Udinese 30% riducibile al 10%.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/udinese-vanta-30-futura-rivendita-atta-fiorentina-farlo-10-2252036",
+        "team": "Fiorentina",
         "updatedAt": "2026-07-10"
       }
     ]
@@ -47215,13 +47206,13 @@
         "sourcePosition": "DC",
         "formationLine": "defense",
         "formationSlot": 2,
-        "playerName": "Gila",
-        "playerId": "lazio-gila",
+        "playerName": "Gigot",
+        "playerId": "lazio-gigot",
         "inCurrentRoster": "SI",
         "marketStatus": "In rosa",
-        "source": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-lazio",
+        "source": "TMW + controllo coerenza rosa/mercato",
         "reliability": "Media",
-        "note": "Provedel spostato all'Inter nelle fonti ufficiali Sky; Isaksen fuori per pubalgia/sports hernia: sostituiti con Mandas e Cancellieri.",
+        "note": "Gila tolto dall XI provvisorio per trasferimento in chiusura al Milan; Gigot inserito come centrale disponibile in rosa.",
         "alternative": "",
         "moduleFile": "4-3-3 / 4-2-3-1",
         "moduleUsed": "4-3-3",
@@ -47866,7 +47857,7 @@
         "playerName": "Pulisic",
         "playerId": "milan-pulisic",
         "inCurrentRoster": "SI",
-        "marketStatus": "Da monitorare",
+        "marketStatus": "Da monitorare - infortunio",
         "source": "Controllo coerenza rosa/ruolo/modulo",
         "reliability": "Media",
         "note": "Modric non presente nella rosa file; sostituito con Leao nello spazio da trequarti/offensivo. Pulisic resta da monitorare per infortunio.",
@@ -50228,6 +50219,18 @@
       "url": "Transfermarkt - Alberto Moreno",
       "use": "https://www.transfermarkt.it/alberto-moreno/profil/spieler/207917",
       "consultedAt": "Usato per segnalare Moreno svincolato e non piu da forzare nel Como."
+    },
+    {
+      "name": "TuttoMercatoWeb Serie A",
+      "url": "https://www.tuttomercatoweb.com/serie-a/",
+      "use": "News mercato, trattative, ufficialità e aggiornamenti operativi da incrociare con Transfermarkt/Sky/Eurosport/SOS Fanta",
+      "consultedAt": "2026-07-10"
+    },
+    {
+      "name": "TuttoMercatoWeb - aggiornamenti 10/07",
+      "url": "https://www.tuttomercatoweb.com/serie-a/",
+      "use": "Fonte usata per TMW_Mercato_10_07, cessioni/acquisti in chiusura e segnalazioni infortuni/mercato",
+      "consultedAt": "2026-07-10"
     }
   ],
   "notMatchedPreview": [
@@ -50997,10 +51000,10 @@
         "roleBrief": "C",
         "role": "Centrocampista",
         "origin": "Udinese",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "source": "https://www.tuttomercatoweb.com/serie-a/udinese-vanta-30-futura-rivendita-atta-fiorentina-farlo-10-2252036",
         "updatedAt": "2026-07-10",
-        "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+        "reliability": "Alta",
+        "note": "Non più semplice trattativa: TMW lo indica come arrivato alla Fiorentina. Spostato in rosa."
       }
     ],
     "frosinone": [
@@ -51180,13 +51183,13 @@
         "teamId": "inter",
         "teamName": "Inter",
         "target": "Khalaili",
-        "roleBrief": "D",
-        "role": "Difensore",
+        "roleBrief": "D/C",
+        "role": "Esterno destro",
         "origin": "Union Saint-Gilloise",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "source": "https://www.tuttomercatoweb.com/serie-a/inter-visite-mediche-corso-anan-khalaili-firma-contratto-dettagli-2252268",
         "updatedAt": "2026-07-10",
-        "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+        "reliability": "Alta",
+        "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa."
       },
       {
         "teamId": "inter",
@@ -51345,6 +51348,18 @@
         "updatedAt": "2026-07-10",
         "reliability": "Media",
         "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Emiliano Martinez",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Aston Villa",
+        "source": "https://www.tuttomercatoweb.com/serie-a/juventus-martinez-trattative-vivo-l-aston-villa-abbassa-richieste-2251924",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media-alta",
+        "note": "Trattativa nel vivo; giocatore disponibile, distanza ridotta."
       }
     ],
     "lazio": [
@@ -51467,10 +51482,10 @@
         "roleBrief": "D",
         "role": "Difensore",
         "origin": "Lazio",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "source": "https://www.tuttomercatoweb.com/serie-a/milan-visite-terminate-gila-idoneita-sportiva-firma-2252284",
         "updatedAt": "2026-07-10",
-        "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+        "reliability": "Alta",
+        "note": "Trasferimento in chiusura: visite/idoneità/firma. Non ancora spostato in rosa Milan."
       }
     ],
     "monza": [
@@ -51939,10 +51954,10 @@
         "roleBrief": "A",
         "role": "Attaccante",
         "origin": "Siviglia",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "source": "https://www.tuttomercatoweb.com/serie-a/venezia-incontro-siviglia-akor-adams-distanza-valutazione-punto-2252027",
         "updatedAt": "2026-07-10",
         "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+        "note": "Incontro con Siviglia, distanza tra offerta e richiesta."
       }
     ]
   },
@@ -52399,6 +52414,16 @@
       "moduleUsed": "4-3-1-2",
       "source": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-torino",
       "updatedAt": "2026-07-10"
+    },
+    {
+      "teamId": "lazio",
+      "teamName": "Lazio",
+      "oldPlayer": "4-3-3",
+      "replacedWith": "DC",
+      "reason": "Gila",
+      "moduleUsed": "Gigot",
+      "source": "TMW: trasferimento in chiusura di Gila al Milan; mantenuto controllo in rosa/ruolo/posizione.",
+      "updatedAt": "2026-07-10"
     }
   ],
   "formationMissingPreview": [],
@@ -52639,6 +52664,142 @@
       "type": "Controlli finali",
       "detail": "20 squadre, 220 giocatori in XI, 0 giocatori fuori rosa, 0 incoerenze ruolo/posizione.",
       "impact": "Scheda Controlli_Formazioni_10_07."
+    }
+  ],
+  "tmwMarketNews": [
+    {
+      "teamName": "Fiorentina",
+      "playerName": "Arthur Atta",
+      "role": "C",
+      "type": "Acquisto / aggiornamento rosa",
+      "summary": "TMW considera Atta arrivato dall'Udinese alla Fiorentina; contratto fino al 2031 e clausola futura rivendita Udinese 30% riducibile al 10%.",
+      "source": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/udinese-vanta-30-futura-rivendita-atta-fiorentina-farlo-10-2252036",
+      "reliability": "Alta",
+      "action": "Applicato: spostato da Udinese a Fiorentina nella rosa.",
+      "updatedAt": "2026-07-10"
+    },
+    {
+      "teamName": "Venezia",
+      "playerName": "Alessandro Plizzari",
+      "role": "P",
+      "type": "Cessione ufficiale",
+      "summary": "TMW riporta addio ufficiale al Venezia: prestito secco al Sudtirol fino al 30 giugno 2027.",
+      "source": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/plizzari-giochera-venezia-serie-a-prossimo-sudtirol-2252242",
+      "reliability": "Alta",
+      "action": "Applicato: rimosso dalla rosa Venezia e segnato nel mercato.",
+      "updatedAt": "2026-07-10"
+    },
+    {
+      "teamName": "Milan",
+      "playerName": "Mario Gila",
+      "role": "D",
+      "type": "Trasferimento in chiusura",
+      "summary": "Visite mediche concluse/iter idoneità e firma: passaggio Lazio-Milan per 25 mln + 5 bonus, contratto fino al 2031.",
+      "source": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/milan-visite-terminate-gila-idoneita-sportiva-firma-2252284",
+      "reliability": "Molto alta",
+      "action": "Non ancora aggiunto alla rosa Milan; segnalato come in uscita Lazio e tolto dall'XI Lazio.",
+      "updatedAt": "2026-07-10"
+    },
+    {
+      "teamName": "Inter",
+      "playerName": "Anan Khalaili",
+      "role": "D/C",
+      "type": "Acquisto in chiusura / visite",
+      "summary": "Visite mediche in corso: operazione con Union Saint-Gilloise da 22,5 mln + bonus; contratto fino al 2031; sostituto di Dumfries.",
+      "source": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/inter-visite-mediche-corso-anan-khalaili-firma-contratto-dettagli-2252268",
+      "reliability": "Molto alta",
+      "action": "Segnalato in mercato/trattative; non forzato in rosa finché non allineato con fonte master.",
+      "updatedAt": "2026-07-10"
+    },
+    {
+      "teamName": "Juventus",
+      "playerName": "Emiliano Martinez",
+      "role": "P",
+      "type": "Trattativa avanzata",
+      "summary": "TMW riporta contatti intensificati con Aston Villa, disponibilità del giocatore e distanza economica ridotta.",
+      "source": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/juventus-martinez-trattative-vivo-l-aston-villa-abbassa-richieste-2251924",
+      "reliability": "Media-alta",
+      "action": "Segnalato in trattative Juventus.",
+      "updatedAt": "2026-07-10"
+    },
+    {
+      "teamName": "Venezia",
+      "playerName": "Akor Adams",
+      "role": "A",
+      "type": "Trattativa in corso",
+      "summary": "Incontro Venezia-Siviglia: offerta 10 mln + 2 bonus, Siviglia chiede almeno 15 mln; parti ancora distanti.",
+      "source": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/venezia-incontro-siviglia-akor-adams-distanza-valutazione-punto-2252027",
+      "reliability": "Media",
+      "action": "Aggiornata trattativa Venezia.",
+      "updatedAt": "2026-07-10"
+    },
+    {
+      "teamName": "Milan",
+      "playerName": "Christian Pulisic",
+      "role": "A",
+      "type": "Infortunio / da monitorare",
+      "summary": "TMW segnala nuovo stop di Pulisic; resta da monitorare insieme alla precedente fonte SOS Fanta.",
+      "source": "TuttoMercatoWeb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/pulisic-ferma-nuovo-ottavo-infortunio-gioca-milan-storico-2252273",
+      "reliability": "Media",
+      "action": "Aggiornata nota fisica/mercato in Rose.",
+      "updatedAt": "2026-07-10"
+    }
+  ],
+  "tmwUpdateLog": [
+    {
+      "area": "Fonti",
+      "change": "Aggiunto TuttoMercatoWeb come fonte operativa mercato/trattative.",
+      "sheets": "Fonti, TMW_Mercato_10_07",
+      "source": "TMW Serie A",
+      "status": "Applicato",
+      "note": "Da usare negli aggiornamenti futuri insieme a Transfermarkt/Sky/Eurosport/SOS Fanta."
+    },
+    {
+      "area": "Rose",
+      "change": "Arthur Atta spostato da Udinese a Fiorentina.",
+      "sheets": "Rose, FIO, UDI, Mercato_Giocatori, Trattative_Squadre_10_07",
+      "source": "TMW Atta",
+      "status": "Applicato",
+      "note": "Era ancora in Udinese nel file precedente."
+    },
+    {
+      "area": "Rose",
+      "change": "Alessandro Plizzari rimosso dal Venezia per prestito ufficiale al Sudtirol.",
+      "sheets": "Rose, VEN, Mercato_Giocatori",
+      "source": "TMW Plizzari",
+      "status": "Applicato",
+      "note": "Prestito secco fino al 30/06/2027."
+    },
+    {
+      "area": "Probabili formazioni",
+      "change": "Gila tolto dall XI provvisorio Lazio e sostituito con Gigot.",
+      "sheets": "Probabili_Formazioni, Rose, LAZ",
+      "source": "TMW Gila",
+      "status": "Applicato",
+      "note": "Gila in chiusura al Milan, ma non ancora inserito in rosa Milan."
+    },
+    {
+      "area": "Mercato",
+      "change": "Aggiunti/rafforzati alert mercato per Gila, Khalaili, Emiliano Martinez, Akor Adams.",
+      "sheets": "TMW_Mercato_10_07, Mercato_Giocatori, Trattative_Squadre_10_07, MIL, INT, JUV, VEN",
+      "source": "TMW",
+      "status": "Applicato",
+      "note": "Segnalati come trattative/acquisti in chiusura, non tutti ufficiali."
+    },
+    {
+      "area": "Infortuni",
+      "change": "Pulisic resta da monitorare con nuova nota TMW.",
+      "sheets": "Rose, Mercato_Giocatori, TMW_Mercato_10_07",
+      "source": "TMW Pulisic",
+      "status": "Applicato",
+      "note": "Integra le note SOS Fanta già presenti."
     }
   ]
 }
