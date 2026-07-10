@@ -1,16 +1,17 @@
-# AI Assistant Handoff corrente
+# AI Assistant Handoff Current
 
-Versione corrente: V588.
+Versione corrente: **V591 - Sezione standalone Per i SUDATORI**
+Data: 10/07/2026
 
-## Stato operativo
-- ZonaOrientale e FantaPetilloMantraManager usano `assets/rose` come fonte primaria per la visualizzazione delle rose.
-- `rosterEntries` resta preservato e non viene modificato automaticamente.
-- L'Area Admin espone un comando esplicito per sincronizzare Firestore da una rosa GitHub gia' pubblicata.
-- Calciomercato resta disattivato.
-- Svincola Giocatori resta attivo su ZonaOrientale.
-- Tabelle giocatori mobile e Dashboard Presidente mobile restano come consolidate nelle patch precedenti.
+## Baseline
 
-## Verifica principale
-```bash
-node static/fanta-engine/tools/audit-static-rosters-primary-v588.mjs
-```
+- Calciomercato disattivato.
+- Svincola Giocatori attivo su ZonaOrientale.
+- Rose statiche GitHub fonte primaria con sync manuale `rosterEntries`.
+- Sorgente Rosa del Listone centralizzata in `fanta-engine`.
+- Tabelle giocatori mobile consolidate.
+- Nuova sezione standalone `#sudatori`.
+
+## Nota V591
+
+La sezione **Per i SUDATORI** legge dati statici in `static/fanta-engine/data/sudatori/current/` e non modifica dati live.

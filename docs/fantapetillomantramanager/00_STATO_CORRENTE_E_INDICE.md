@@ -1,8 +1,8 @@
 # FantaPetilloMantraManager - Stato corrente
 
-Versione: V588.
+Versione corrente: **V591**
 
-- Rose visualizzate prima da `static/fantapetillomantramanager/assets/rose`.
-- `rosterEntries` Firestore resta fallback e puo' essere sincronizzato solo da Admin con azione esplicita.
-- Calciomercato disattivato.
-- Tabelle giocatori mobile preservate.
+## Novità
+
+- Aggiunta sezione standalone **Per i SUDATORI**, condivisa tramite `fanta-engine`.
+- Nessun impatto su dati di lega, Firebase o listone operativo.

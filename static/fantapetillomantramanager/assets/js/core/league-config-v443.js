@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'FantaMantra',
   basePath: '/fantapetillomantramanager/',
   siteUrl: 'https://silviobarra.com/fantapetillomantramanager/',
-  currentVersion: '589',
+  currentVersion: '591',
   currentSeasonId: '2025-2026',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -100,7 +100,9 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     bilanci: true,
     calciomercato: false,
     fantamercato: true,
-    mantraFilters: true
+    mantraFilters: true,
+    sudatoriStandaloneSection: true,
+    sudatoriStandaloneSectionVersion: 'V591'
   }),
   guardrails: Object.freeze({
     configOnly: true,

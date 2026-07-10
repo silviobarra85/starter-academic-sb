@@ -1,9 +1,16 @@
 # Overlay Roadmap
 
 ## Stato corrente
-- V588: Rose GitHub fonte primaria per visualizzazione + sync Admin manuale verso `rosterEntries`.
 
-## Prossime verifiche consigliate
-- Testare una rosa nuova caricata in `assets/rose` su ZonaOrientale.
-- Verificare Rose, Area Squadra, Listone e profilo squadra.
-- Usare il sync Firestore solo dopo deploy GitHub completato.
+- **V591**: aggiunta sezione standalone **Per i SUDATORI**.
+
+## Prossimi sviluppi possibili
+
+- Aggiungere un editor/manuale per note mercato giocatore.
+- Consentire upload periodico di un nuovo Excel Sudatori e rigenerazione JSON.
+- Aggiungere filtri per ruolo, squadra reale e note mercato.
+- Integrare ulteriori parametri se disponibili nei listoni futuri.
+
+## Guardrail
+
+La sezione Sudatori deve restare standalone e cancellabile senza impatti su Rose, Listone, Area Squadra o Admin.

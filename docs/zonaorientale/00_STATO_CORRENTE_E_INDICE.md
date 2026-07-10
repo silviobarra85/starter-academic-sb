@@ -1,10 +1,15 @@
 # ZonaOrientale - Stato corrente
 
-Versione: V588.
+Versione corrente: **V591**
 
-- Stagione corrente: 2026-2027.
-- Rose visualizzate prima da `static/zonaorientale/assets/rose`.
-- `rosterEntries` Firestore resta fallback e puo' essere sincronizzato solo da Admin con azione esplicita.
-- Calciomercato disattivato.
-- Svincola Giocatori attivo.
-- Dashboard Presidente mobile e tabelle giocatori mobile preservate.
+## Novità
+
+- Aggiunta sezione standalone **Per i SUDATORI**.
+- La sezione mostra rose Serie A, schede giocatore, parametri listone, ritiri, allenatori, moduli e amichevoli.
+- La sezione non modifica Firebase, rose ufficiali o listone operativo.
+
+## Guardrail
+
+- Calciomercato resta disattivato.
+- Svincola Giocatori resta attivo.
+- Rose GitHub restano fonte primaria per visualizzazione ufficiale.

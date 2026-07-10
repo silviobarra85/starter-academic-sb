@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "589",
+  "currentVersion": "591",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -170,7 +170,9 @@
     "rosterStickyFirstColumnOpaque": true,
     "rosterStickyFirstColumnOpaqueVersion": "V567",
     "rosterMobileColumnFitVersion": "V568",
-    "teamareaRosterFirstColumnCompactVersion": "V569"
+    "teamareaRosterFirstColumnCompactVersion": "V569",
+    "sudatoriStandaloneSection": true,
+    "sudatoriStandaloneSectionVersion": "V591"
   },
   "guardrails": {
     "sandboxClone": true,
@@ -413,7 +415,7 @@
         "icon": "rules"
       }
     ],
-    "footerLastUpdated": "06/07/2026",
+    "footerLastUpdated": "10/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
     "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
     "footerVersion": 573
@@ -645,7 +647,8 @@
     "V586 rimuove i filtri ruolo dalla sezione pubblica Tutte le rose e consolida la verifica cleanup/refactor senza cancellare documentazione storica.",
     "V587 aggiunge in Area Admin un editor rose statiche: carica l’ultima rosa in assets/rose, aggiunge/rimuove giocatori dal listone e scarica JSON + manifest per GitHub.",
     "V588 rende assets/rose la fonte primaria per la visualizzazione delle rose e aggiunge sync Admin manuale verso rosterEntries da rosa GitHub pubblicata.",
-    "V589 ricalcola la colonna Rosa del Listone da assets/rose e ignora fantasyRoster stale salvato nel JSON listone."
+    "V589 ricalcola la colonna Rosa del Listone da assets/rose e ignora fantasyRoster stale salvato nel JSON listone.",
+    "V590 centralizza nel fanta-engine il resolver della colonna Rosa del Listone."
   ],
   "ui": {
     "footerVersion": 488
@@ -865,7 +868,8 @@
   },
   "history": [
     "V573 tara le colonne mobile delle tabelle giocatori: giocatore raddoppiato, Stato dimezzato, Costo e Qt.A uguali, testi allineati a sinistra.",
-    "V522 introduce il workflow upload unico Listoni/Calciomercato su fanta-engine/data/shared-assets/current con fallback locali preservati e audit dedicato."
+    "V522 introduce il workflow upload unico Listoni/Calciomercato su fanta-engine/data/shared-assets/current con fallback locali preservati e audit dedicato.",
+    "V591 aggiunge sezione standalone Per i SUDATORI con rose Serie A, schede giocatore, listone, ritiri e amichevoli."
   ],
   "runtimeRecoveryV520": {
     "wholeSiteOverlayApplicationVersion": "V526",
