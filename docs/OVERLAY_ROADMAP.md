@@ -1,8 +1,13 @@
+
+## V597 - Sudatori Excel formazioni coerenti
+- Applicato il nuovo Excel aggiornato alla sezione Per i SUDATORI.
+- Il campetto usa il Modulo formazione usato e supera il controllo 20/20 XI coerenti.
+
 # Overlay Roadmap
 
 ## Stato corrente
 
-- **V596**: fix contrasto card **Infortunati / SOS Fanta** nella sezione standalone **Per i SUDATORI**.
+- **V597**: fix contrasto card **Infortunati / SOS Fanta** nella sezione standalone **Per i SUDATORI**.
 
 ## Cronologia recente
 
@@ -11,7 +16,7 @@
 - **V593**: aggiunto campetto probabile formazione in Sudatori e migliorato matching listone.
 - **V594**: aggiunte trattative in corso per ogni squadra Serie A nella sezione standalone Sudatori.
 - **V595**: aggiunti infortunati/monitoraggi SOS Fanta e corretto il campetto affinché usi il modulo dichiarato come vincolo.
-- **V596**: rese leggibili le segnalazioni infortuni con stile scuro coerente con le card trattative.
+- **V597**: rese leggibili le segnalazioni infortuni con stile scuro coerente con le card trattative.
 
 ## Prossimi sviluppi possibili
 

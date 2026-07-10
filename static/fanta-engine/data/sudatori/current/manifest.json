@@ -1,8 +1,8 @@
 {
   "current": "sudatori-data.json",
-  "version": "V596",
+  "version": "V597",
   "updatedAt": "2026-07-10",
-  "sourceFile": "fantacalcio_serie_a_2026_27_sosfanta_infortunati_2026-07-10(1).xlsx",
+  "sourceFile": "fantacalcio_serie_a_2026_27_formazioni_coerenti_2026-07-10(1).xlsx",
   "listoneFile": "2026-07-04.json",
   "teams": 20,
   "players": 725,
@@ -20,6 +20,6 @@
   "injuries": 6,
   "sosFantaNews": 13,
   "formationTeams": 20,
-  "formationAdjustments": 9,
-  "formationMissingPlayers": 40
+  "formationAdjustments": 18,
+  "formationMissingPlayers": 0
 }
