@@ -1,10 +1,10 @@
 {
   "meta": {
-    "id": "sudatori-serie-a-2026-07-10-v593",
+    "id": "sudatori-serie-a-2026-07-10-v594",
     "label": "Per i SUDATORI - Serie A 2026/27",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-10",
-    "sourceFile": "fantacalcio_serie_a_2026_27_mercato_formazioni_2026-07-10(1).xlsx",
+    "sourceFile": "fantacalcio_serie_a_2026_27_trattative_squadre_2026-07-10(1).xlsx",
     "listoneFile": "2026-07-04.json",
     "listoneId": "2026-07-04",
     "teams": 20,
@@ -15,7 +15,7 @@
     "listoneMatchedPlayers": 458,
     "notMatchedPlayers": 267,
     "standalone": true,
-    "version": "V593",
+    "version": "V594",
     "listoneMatchMethods": {
       "exact": 374,
       "canon": 77,
@@ -23,7 +23,9 @@
       "sorted": 5,
       "compact": 1
     },
-    "listoneMatchNote": "V593: matching robusto con varianti nome/iniziale, team Serie A e ruolo; fantasyRoster delle schede Sudatori deriva dal listone 2026-07-04."
+    "listoneMatchNote": "V593: matching robusto con varianti nome/iniziale, team Serie A e ruolo; fantasyRoster delle schede Sudatori deriva dal listone 2026-07-04.",
+    "teamTransferTalks": 106,
+    "transferTalksNote": "V594: aggiunte trattative in corso per squadra dal foglio Trattative_Squadre_10_07."
   },
   "teams": [
     {
@@ -41,7 +43,9 @@
       "friendliesCount": 2,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 3,
+      "transferTalksPreview": "Alajbegovic, Jashari, Favasuli"
     },
     {
       "id": "bologna",
@@ -58,7 +62,9 @@
       "friendliesCount": 6,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 5,
+      "transferTalksPreview": "Mangala, Miretti, Ugresic, Valdepenas"
     },
     {
       "id": "cagliari",
@@ -75,7 +81,9 @@
       "friendliesCount": 3,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 4,
+      "transferTalksPreview": "Calabria, Broja, Favasuli, Vojvoda"
     },
     {
       "id": "como",
@@ -92,7 +100,9 @@
       "friendliesCount": 4,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 10,
+      "transferTalksPreview": "Palacios, Gonzalo Garcia, Cambiaso, Couto"
     },
     {
       "id": "fiorentina",
@@ -109,7 +119,9 @@
       "friendliesCount": 6,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 8,
+      "transferTalksPreview": "Thorstvedt, Norton-Cuffy, Koleosho, Baroni"
     },
     {
       "id": "frosinone",
@@ -126,7 +138,9 @@
       "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 4,
+      "transferTalksPreview": "G. Calvani, Cittadini, Zerbin, Fini"
     },
     {
       "id": "genoa",
@@ -143,7 +157,9 @@
       "friendliesCount": 4,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 6,
+      "transferTalksPreview": "Obaretin, Havel, Tony, Casseres"
     },
     {
       "id": "inter",
@@ -160,7 +176,9 @@
       "friendliesCount": 4,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 6,
+      "transferTalksPreview": "Solet, Curtis Jones, Kone, Mancini"
     },
     {
       "id": "juventus",
@@ -177,7 +195,9 @@
       "friendliesCount": 6,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 12,
+      "transferTalksPreview": "Martinez, Vicario, Kolo Muani, Brahim Diaz"
     },
     {
       "id": "lazio",
@@ -194,7 +214,9 @@
       "friendliesCount": 6,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 6,
+      "transferTalksPreview": "Martinez, Galassi, Sergi Dominguez, Comuzzo"
     },
     {
       "id": "lecce",
@@ -211,7 +233,9 @@
       "friendliesCount": 0,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://uslecce.it/ritiro-precampionato-a-bad-loipersdorf/",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 1,
+      "transferTalksPreview": "Nessuna trattativa riportata"
     },
     {
       "id": "milan",
@@ -228,7 +252,9 @@
       "friendliesCount": 4,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 3,
+      "transferTalksPreview": "Hjulmand, Trincao, Gila"
     },
     {
       "id": "monza",
@@ -245,7 +271,9 @@
       "friendliesCount": 3,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 7,
+      "transferTalksPreview": "Loubao, Koleosho, Echeverri, Darmian"
     },
     {
       "id": "napoli",
@@ -262,7 +290,9 @@
       "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 3,
+      "transferTalksPreview": "Vicario, Dodo, Zeballos"
     },
     {
       "id": "parma",
@@ -279,7 +309,9 @@
       "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 2,
+      "transferTalksPreview": "Fazzini, F. Carboni"
     },
     {
       "id": "roma",
@@ -296,7 +328,9 @@
       "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 3,
+      "transferTalksPreview": "Alajbegovic, Greenwood, Dodo"
     },
     {
       "id": "sassuolo",
@@ -313,7 +347,9 @@
       "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 3,
+      "transferTalksPreview": "Darmian, Favasuli, Ugresic"
     },
     {
       "id": "torino",
@@ -330,7 +366,9 @@
       "friendliesCount": 4,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 8,
+      "transferTalksPreview": "Montipo, Ravaglia, Amatucci, Ben Nelson"
     },
     {
       "id": "udinese",
@@ -347,7 +385,9 @@
       "friendliesCount": 0,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 4,
+      "transferTalksPreview": "Palacios, Covic, Ravaglia, Darmian"
     },
     {
       "id": "venezia",
@@ -364,7 +404,9 @@
       "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-09"
+      "updatedAt": "2026-07-09",
+      "transferTalksCount": 8,
+      "transferTalksPreview": "Satriano, Fullkrug, El Shaarawy, MacNulty"
     }
   ],
   "playersByTeam": {
@@ -32919,6 +32961,11 @@
       "url": "https://www.fanpage.it/sport/live/calciomercato-news-oggi-10-luglio-2026-diretta-ultime-trattative/",
       "use": "",
       "consultedAt": ""
+    },
+    {
+      "name": "Trattative squadre 10/07",
+      "url": "https://sport.sky.it/calciomercato/tabellone",
+      "use": "Trattative_Squadre_10_07: obiettivi e trattative in corso per squadra"
     }
   ],
   "notMatchedPreview": [
@@ -33322,5 +33369,1319 @@
       "playerName": "Koutsoupias",
       "team": "Frosinone"
     }
-  ]
+  ],
+  "teamTransferTalksByTeam": {
+    "atalanta": [
+      {
+        "teamId": "atalanta",
+        "teamName": "Atalanta",
+        "target": "Alajbegovic",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Bayer Leverkusen",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "atalanta",
+        "teamName": "Atalanta",
+        "target": "Jashari",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Milan",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "atalanta",
+        "teamName": "Atalanta",
+        "target": "Favasuli",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Catanzaro",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "bologna": [
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "target": "Mangala",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Lione",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "target": "Miretti",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Juventus",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "target": "Ugresic",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Partizan",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "target": "Valdepenas",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Real Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "target": "Folorunsho",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Napoli",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "cagliari": [
+      {
+        "teamId": "cagliari",
+        "teamName": "Cagliari",
+        "target": "Calabria",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Panathinaikos",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "cagliari",
+        "teamName": "Cagliari",
+        "target": "Broja",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Burnley",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "cagliari",
+        "teamName": "Cagliari",
+        "target": "Favasuli",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Catanzaro",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "cagliari",
+        "teamName": "Cagliari",
+        "target": "Vojvoda",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Como",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "como": [
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Palacios",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Real Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Gonzalo Garcia",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Real Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Cambiaso",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Juventus",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Couto",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Borussia Dortmund",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Chalobah",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Chelsea",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Liberali",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Catanzaro",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Davinson Sanchez",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Galatasaray",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Solet",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Udinese",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Inacio",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Sporting",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "target": "Ivanovic",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Benfica",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "fiorentina": [
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Thorstvedt",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Sassuolo",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Norton-Cuffy",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Genoa",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Koleosho",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Burnley",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Baroni",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Talleres",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Arnau Martinez",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Girona",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Oulai",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Trabzonspor",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Valdepenas",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Real Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Atta",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Udinese",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "frosinone": [
+      {
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "target": "G. Calvani",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Genoa",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "target": "Cittadini",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Atalanta",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "target": "Zerbin",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Napoli",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "target": "Fini",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Genoa",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "genoa": [
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "target": "Obaretin",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Napoli",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "target": "Havel",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "LASK",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "target": "Tony",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Legnago",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "target": "Casseres",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Tolosa",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "target": "Dovbyk",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Roma",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "target": "Traore",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Marsiglia",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "inter": [
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "target": "Solet",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Udinese",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "target": "Curtis Jones",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Liverpool",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "target": "Kone",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Roma",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "target": "Mancini",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Roma",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "target": "Khalaili",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Union Saint-Gilloise",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "target": "Chalobah",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Chelsea",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "juventus": [
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Martinez",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Aston Villa",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Vicario",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Tottenham",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Kolo Muani",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "PSG",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Brahim Diaz",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Real Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Sorloth",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Atletico Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Kessie",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "svincolato",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Lucumi",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Bologna",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Elmas",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Lipsia",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Muharemovic",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Sassuolo",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Goretzka",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "svincolato",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Suzuki",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Parma",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "target": "Pellegrino",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Parma",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "lazio": [
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "target": "Martinez",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Girona",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "target": "Galassi",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Real Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "target": "Sergi Dominguez",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Dinamo Zagabria",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "target": "Comuzzo",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Fiorentina",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "target": "Piccoli",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Fiorentina",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "target": "Pinamonti",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Sassuolo",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "lecce": [
+      {
+        "teamId": "lecce",
+        "teamName": "Lecce",
+        "target": "Nessuna trattativa riportata",
+        "roleBrief": "",
+        "role": "",
+        "origin": "Nessuna trattativa in corso riportata da Sky nel tabellone consultato.",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Aggiornare se emergono nuove voci."
+      }
+    ],
+    "milan": [
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "target": "Hjulmand",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Sporting",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "target": "Trincao",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Sporting",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "target": "Gila",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Lazio",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "monza": [
+      {
+        "teamId": "monza",
+        "teamName": "Monza",
+        "target": "Loubao",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Sochaux",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "monza",
+        "teamName": "Monza",
+        "target": "Koleosho",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Burnley",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "monza",
+        "teamName": "Monza",
+        "target": "Echeverri",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Manchester City",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "monza",
+        "teamName": "Monza",
+        "target": "Darmian",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "svincolati",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "monza",
+        "teamName": "Monza",
+        "target": "Okoli",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Leicester",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "monza",
+        "teamName": "Monza",
+        "target": "Majer",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Wolfsburg",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "monza",
+        "teamName": "Monza",
+        "target": "Moreno",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Fiorentina",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "napoli": [
+      {
+        "teamId": "napoli",
+        "teamName": "Napoli",
+        "target": "Vicario",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Tottenham",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "napoli",
+        "teamName": "Napoli",
+        "target": "Dodo",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Fiorentina",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "napoli",
+        "teamName": "Napoli",
+        "target": "Zeballos",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Boca Juniors",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "parma": [
+      {
+        "teamId": "parma",
+        "teamName": "Parma",
+        "target": "Fazzini",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Fiorentina",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "parma",
+        "teamName": "Parma",
+        "target": "F. Carboni",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Inter",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "roma": [
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "target": "Alajbegovic",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Bayer Leverkusen",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "target": "Greenwood",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Marsiglia",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "target": "Dodo",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Fiorentina",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "sassuolo": [
+      {
+        "teamId": "sassuolo",
+        "teamName": "Sassuolo",
+        "target": "Darmian",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "svincolato",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "sassuolo",
+        "teamName": "Sassuolo",
+        "target": "Favasuli",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Catanzaro",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "sassuolo",
+        "teamName": "Sassuolo",
+        "target": "Ugresic",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Partizan",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "torino": [
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Montipo",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Verona",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Ravaglia",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Bologna",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Amatucci",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Fiorentina",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Ben Nelson",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Leicester",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Gill",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "San Lorenzo",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Ebosse",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Udinese",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Perri",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Leeds",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Ramsadale",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Southampton",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "udinese": [
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "target": "Palacios",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Real Madrid",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "target": "Covic",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Werder Brema",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "target": "Ravaglia",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "origin": "Bologna",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "target": "Darmian",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "svincolato",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ],
+    "venezia": [
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "Satriano",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Getafe",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "Fullkrug",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "West Ham",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "El Shaarawy",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "svincolati",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "MacNulty",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Zwolle",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "Orban",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Verona",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "Darmian",
+        "roleBrief": "D",
+        "role": "Difensore",
+        "origin": "Inter",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "Kozlowski",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "origin": "Gaziantepspor",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      },
+      {
+        "teamId": "venezia",
+        "teamName": "Venezia",
+        "target": "Akor Adams",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "origin": "Siviglia",
+        "source": "https://sport.sky.it/calciomercato/tabellone",
+        "updatedAt": "2026-07-10",
+        "reliability": "Media",
+        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale."
+      }
+    ]
+  }
 }

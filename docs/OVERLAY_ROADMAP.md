@@ -19,3 +19,8 @@
 ## Guardrail
 
 La sezione Sudatori deve restare standalone e cancellabile senza impatti su Rose, Listone, Area Squadra o Admin.
+
+
+## V594 - Sudatori: trattative squadre
+- Aggiunte trattative in corso per ogni squadra Serie A nella sezione standalone Sudatori.
+- Nessun impatto su Firebase, rosterEntries, Rose ufficiali o Listone operativo.

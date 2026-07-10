@@ -104,7 +104,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     presidentReleasePlayers: true,
     mantraFilters: true,
     sudatoriStandaloneSection: true,
-    sudatoriStandaloneSectionVersion: 'V593'
+    sudatoriStandaloneSectionVersion: 'V594'
   }),
   featureCardRegistry: Object.freeze({
     version: 'V497',

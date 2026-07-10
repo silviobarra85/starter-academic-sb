@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "593",
+  "currentVersion": "594",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -172,7 +172,7 @@
     "rosterMobileColumnFitVersion": "V568",
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
-    "sudatoriStandaloneSectionVersion": "V593"
+    "sudatoriStandaloneSectionVersion": "V594"
   },
   "guardrails": {
     "sandboxClone": true,
@@ -1324,7 +1324,8 @@
     "V573 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
     "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
     "V568 adatta da mobile le colonne delle tabelle Rose/Area Squadra: prima colonna senza ellissi e colonna Costo ridotta al contenuto.",
-    "V569 riduce da mobile la prima colonna sticky della rosa in Area Squadra al 30% circa della larghezza precedente, mantenendo sfondo opaco e testi leggibili."
+    "V569 riduce da mobile la prima colonna sticky della rosa in Area Squadra al 30% circa della larghezza precedente, mantenendo sfondo opaco e testi leggibili.",
+    "V594 aggiunge trattative in corso per squadra nella sezione Sudatori."
   ],
   "rosterMobileColumnFitV568": {
     "version": "V568",

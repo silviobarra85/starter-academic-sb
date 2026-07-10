@@ -1,6 +1,6 @@
 # ZonaOrientale - Stato corrente
 
-Versione corrente: **V593**
+Versione corrente: **V594**
 
 ## Novità
 
@@ -17,3 +17,7 @@ Versione corrente: **V593**
 
 
 - V593: Sudatori con campetto probabile formazione e matching listone robusto.
+
+
+### V594
+Sezione Sudatori aggiornata con trattative in corso per squadra Serie A.
