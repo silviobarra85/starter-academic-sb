@@ -1,6 +1,6 @@
 {
   "meta": {
-    "id": "sudatori-serie-a-2026-07-10-v597",
+    "id": "sudatori-serie-a-2026-07-10-v598",
     "label": "Per i SUDATORI - Serie A 2026/27",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-10",
@@ -15,7 +15,7 @@
     "listoneMatchedPlayers": 458,
     "notMatchedPlayers": 267,
     "standalone": true,
-    "version": "V597",
+    "version": "V598",
     "listoneMatchMethods": {
       "exact": 374,
       "canon": 77,
@@ -31,8 +31,11 @@
     "formationTeams": 20,
     "formationAdjustments": 18,
     "formationMissingPlayers": 0,
-    "injuriesNote": "V597: dati fisici SOS Fanta mantenuti e riallineati al nuovo Excel formazioni coerenti.",
-    "formationShapeNote": "V597: il campetto usa il Modulo formazione usato del foglio Probabili_Formazioni; ogni XI ha 11 giocatori in rosa e posizioni coerenti col modulo."
+    "injuriesNote": "V598: dati fisici SOS Fanta mantenuti e riallineati al nuovo Excel formazioni coerenti.",
+    "formationShapeNote": "V598: il campetto usa il Modulo formazione usato del foglio Probabili_Formazioni; ogni XI ha 11 giocatori in rosa e posizioni coerenti col modulo.",
+    "uiFixes": [
+      "V598: campo ordinato con sinistra/destra corrette, nessun badge fisico per disponibili, badge Probabile XI rimosso dalla colonna Mercato."
+    ]
   },
   "teams": [
     {

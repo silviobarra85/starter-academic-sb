@@ -1,6 +1,6 @@
 {
   "current": "sudatori-data.json",
-  "version": "V597",
+  "version": "V598",
   "updatedAt": "2026-07-10",
   "sourceFile": "fantacalcio_serie_a_2026_27_formazioni_coerenti_2026-07-10(1).xlsx",
   "listoneFile": "2026-07-04.json",
@@ -21,5 +21,10 @@
   "sosFantaNews": 13,
   "formationTeams": 20,
   "formationAdjustments": 18,
-  "formationMissingPlayers": 0
+  "formationMissingPlayers": 0,
+  "uiFixes": [
+    "pitch-side-order-left-right",
+    "pitch-hide-available-physical-badges",
+    "roster-market-remove-probable-xi-badge"
+  ]
 }
