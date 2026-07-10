@@ -1,5 +1,9 @@
 # Overlay Roadmap
 
+- V592: aggiorna Per i SUDATORI con listone corrente, rosa fantacalcio e mercato/formazioni.
+
+# Overlay Roadmap
+
 ## Stato corrente
 
 - **V591**: aggiunta sezione standalone **Per i SUDATORI**.

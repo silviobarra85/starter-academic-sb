@@ -1,8 +1,9 @@
 # FantaPetilloMantraManager - Stato corrente
 
-Versione corrente: **V591**
+Versione corrente: **V592**
 
 ## Novità
 
-- Aggiunta sezione standalone **Per i SUDATORI**, condivisa tramite `fanta-engine`.
+- Sezione standalone **Per i SUDATORI** aggiornata tramite `fanta-engine`.
+- Matching listone corretto e colonna **Rosa fantacalcio** nelle rose Sudatori.
 - Nessun impatto su dati di lega, Firebase o listone operativo.

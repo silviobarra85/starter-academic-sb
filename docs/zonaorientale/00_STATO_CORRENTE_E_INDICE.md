@@ -1,15 +1,16 @@
 # ZonaOrientale - Stato corrente
 
-Versione corrente: **V591**
+Versione corrente: **V592**
 
 ## Novità
 
-- Aggiunta sezione standalone **Per i SUDATORI**.
-- La sezione mostra rose Serie A, schede giocatore, parametri listone, ritiri, allenatori, moduli e amichevoli.
-- La sezione non modifica Firebase, rose ufficiali o listone operativo.
+- Sezione standalone **Per i SUDATORI** aggiornata con listone 2026-07-04.
+- Corretto il matching dei parametri listone: Meret e gli altri presenti nel listone non risultano più `Non nel listone`.
+- Nella tabella della rosa la colonna mostra la **Rosa fantacalcio**, non la squadra Serie A.
+- Schede giocatore arricchite con mercato e probabili formazioni dal file Excel aggiornato.
 
 ## Guardrail
 
 - Calciomercato resta disattivato.
 - Svincola Giocatori resta attivo.
-- Rose GitHub restano fonte primaria per visualizzazione ufficiale.
+- La sezione Sudatori resta standalone e non modifica Firebase, rose ufficiali o listone operativo.

@@ -1,11 +1,13 @@
 {
   "current": "sudatori-data.json",
-  "version": "V591",
+  "version": "V592",
   "updatedAt": "2026-07-10",
-  "label": "Per i SUDATORI - Serie A 2026/27",
-  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-10(1).xlsx",
+  "sourceFile": "fantacalcio_serie_a_2026_27_mercato_formazioni_2026-07-10(1).xlsx",
+  "listoneFile": "2026-07-04.json",
   "teams": 20,
   "players": 725,
   "friendlies": 84,
-  "notes": "Dati generati dal file Excel fornito; la sezione e standalone e non scrive su Firebase."
+  "marketNotes": 47,
+  "listoneMatchedPlayers": 374,
+  "notMatchedPlayers": 351
 }

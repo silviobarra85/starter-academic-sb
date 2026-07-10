@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "591",
+  "currentVersion": "592",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -168,7 +168,7 @@
     "rosterMobileColumnFitVersion": "V568",
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
-    "sudatoriStandaloneSectionVersion": "V591"
+    "sudatoriStandaloneSectionVersion": "V592"
   },
   "guardrails": {
     "configOnly": true,
@@ -1207,6 +1207,7 @@
     ]
   },
   "changelog": [
+    "V592 corregge matching listone Sudatori, rosa fantacalcio e nuove informazioni mercato/formazioni.",
     "V573 tara le colonne mobile delle tabelle giocatori: giocatore raddoppiato, Stato dimezzato, Costo e Qt.A uguali, testi allineati a sinistra.",
     "V573 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
     "V571 rende visibili e touch-friendly gli indicatori di ridimensionamento colonne per Area Squadra, Rose e Listone: attivo con resizeTabelle=1 e ottimizzato per mobile.",
