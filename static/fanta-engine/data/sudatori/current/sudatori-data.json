@@ -1,6 +1,6 @@
 {
   "meta": {
-    "id": "sudatori-serie-a-2026-07-11-v602",
+    "id": "sudatori-serie-a-2026-07-11-v603",
     "label": "Per i SUDATORI - Serie A 2026/27",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-11",
@@ -15,7 +15,7 @@
     "listoneMatchedPlayers": 455,
     "notMatchedPlayers": 269,
     "standalone": true,
-    "version": "V602",
+    "version": "V603",
     "listoneMatchMethods": {
       "exact": 371,
       "canon": 77,
@@ -32,20 +32,22 @@
     "formationTeams": 20,
     "formationAdjustments": 220,
     "formationMissingPlayers": 0,
-    "injuriesNote": "V602: dati SOS Fanta mantenuti e reintegrati nella rosa/field data dal nuovo Excel 11/07.",
-    "formationShapeNote": "V602: campetti rigenerati dal foglio Probabili_Formazioni e coerenti con il Modulo formazione usato.",
+    "injuriesNote": "V603: dati SOS Fanta mantenuti e reintegrati nella rosa/field data dal nuovo Excel 11/07.",
+    "formationShapeNote": "V603: campetti rigenerati dal foglio Probabili_Formazioni e coerenti con il Modulo formazione usato.",
     "uiFixes": [
       "V598: campo ordinato con sinistra/destra corrette, nessun badge fisico per disponibili, badge Probabile XI rimosso dalla colonna Mercato.",
       "V600: dati rigenerati dal nuovo Excel serale; applicati movimenti ufficiali TMW, nuove amichevoli e trattative serali mantenendo le correzioni UI V598.",
-      "V602: dati rigenerati dal nuovo Excel 11/07; aggiornati raduni/amichevoli, schede ritiro e rumors Transfermarkt al posto giusto nelle trattative squadra.",
-      "V602: la colonna Mercato della rosa mostra badge per qualunque segnalazione mercato collegata al giocatore, incluse le voci Transfermarkt, anche quando lo stato base era In rosa."
+      "V603: dati rigenerati dal nuovo Excel 11/07; aggiornati raduni/amichevoli, schede ritiro e rumors Transfermarkt al posto giusto nelle trattative squadra.",
+      "V603: la colonna Mercato della rosa mostra badge per qualunque segnalazione mercato collegata al giocatore, incluse le voci Transfermarkt, anche quando lo stato base era In rosa.",
+      "V603: colonna Mercato semplificata con badge unico NUOVO/RUMOR/CONFERMATO; Gaetano marcato NUOVO in Atalanta; Giovane Napoli/Atalanta disambiguati per squadra nel matching listone."
     ],
     "tmwMarketNews": 18,
-    "tmwNote": "V602: dati V601 mantenuti; fix UI per rendere visibili nella colonna Mercato anche i rumor Transfermarkt associati ai giocatori.",
+    "tmwNote": "V603: mantiene dati V602 e corregge il rendering della colonna Mercato con badge unico e matching omonimi/team-aware.",
     "updateSlot": "raduni-rumors",
     "tmwEveningNews": 11,
     "transfermarktRumors": 25,
-    "raduniRumorsUpdateLog": 8
+    "raduniRumorsUpdateLog": 8,
+    "marketBadgeMode": "V603: badge unico in colonna Mercato: NUOVO, RUMOR o CONFERMATO."
   },
   "teams": [
     {
@@ -2014,11 +2016,11 @@
         "rosterSource": "https://www.transfermarkt.it/atalanta-bergamo/startseite/verein/800/saison_id/2026",
         "note": "Aggiornato 10/07/2026: Gianluca Gaetano da Cagliari ad Atalanta. Fonte master rose Transfermarkt, controllo Sky/Eurosport; mercato aperto.",
         "updatedAt": "2026-07-10",
-        "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "",
+        "flag": "NUOVO ACQUISTO",
+        "marketStatus": "Acquisto ufficiale/riscatto",
+        "marketDetail": "Arrivo dal Cagliari a titolo definitivo; contratto fino al 2029.",
+        "marketSource": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
+        "marketNote": "Arrivo dal Cagliari a titolo definitivo; contratto fino al 2029.",
         "probableXi": true,
         "formationPosition": "CC",
         "formationReliability": "Media",
@@ -2073,8 +2075,8 @@
         "formationSourcePosition": "CC",
         "originalName": "Gaetano",
         "disambiguatedName": "Gaetano",
-        "newAcquisition": false,
-        "qualityControl": ""
+        "newAcquisition": true,
+        "qualityControl": "V603: Gaetano corretto come nuovo acquisto Atalanta; in precedenza restava In rosa perché la nota mercato era indicizzata come Gianluca Gaetano."
       },
       {
         "id": "atalanta-giovane-atalanta",
@@ -2121,9 +2123,10 @@
         "originalName": "Giovane",
         "disambiguatedName": "Giovane (Atalanta)",
         "newAcquisition": false,
-        "qualityControl": "OK - omonimo disambiguato",
+        "qualityControl": "V603: omonimo Giovane risolto come Atalanta; non associato al Giovane NAP di Real Pisistrius.",
         "listone": null,
-        "listoneMatchMethod": "none"
+        "listoneMatchMethod": "team-disambiguated-no-listone",
+        "fantasyRoster": ""
       },
       {
         "id": "atalanta-i-sulemana",
@@ -32438,9 +32441,39 @@
         "originalName": "Giovane",
         "disambiguatedName": "Giovane (Napoli)",
         "newAcquisition": false,
-        "qualityControl": "OK - omonimo disambiguato",
-        "listone": null,
-        "listoneMatchMethod": "none"
+        "qualityControl": "V603: omonimo Giovane risolto come Napoli; associato al listone NAP e alla rosa Real Pisistrius.",
+        "listone": {
+          "fantacalcioId": "7162",
+          "classicRole": "A",
+          "mantraRoles": "A",
+          "playerName": "Giovane",
+          "realTeam": "NAP",
+          "realTeamOriginal": "Napoli",
+          "quotationCurrent": 13,
+          "quotationInitial": "",
+          "quotationDiff": "",
+          "quotationCurrentMantra": "",
+          "quotationInitialMantra": "",
+          "quotationDiffMantra": "",
+          "fvm": 8,
+          "fvmMantra": "",
+          "fantasyRoster": "Real Pisistrius",
+          "rosterRole": "A",
+          "rosterCost": 8,
+          "status": "In listone",
+          "statusCode": "IN_LISTONE",
+          "sourceSheet": "Lista calciatori",
+          "sourceFormat": "CLASSIC_SINGLE_SHEET",
+          "sourceExtra": {
+            "under": "22",
+            "played": 31,
+            "average": 6,
+            "fantasyAverage": 6.45,
+            "outOfList": ""
+          }
+        },
+        "listoneMatchMethod": "team-disambiguated-original-name",
+        "fantasyRoster": "Real Pisistrius"
       },
       {
         "id": "napoli-hojlund",
@@ -53158,6 +53191,24 @@
         "note": "Entrata rumor: Club Bruges -> Roma; probabilità utenti TM -. Transfermarkt rumor: da trattare come voce, non ufficialita. Data = Ultima voce dal.",
         "source": "https://www.transfermarkt.it/serie-a/geruechte/wettbewerb/IT1",
         "team": "Roma",
+        "updatedAt": "2026-07-10"
+      }
+    ],
+    "gaetano": [
+      {
+        "type": "Acquisto ufficiale",
+        "status": "Acquisto ufficiale",
+        "note": "Arrivo dal Cagliari a titolo definitivo; contratto fino al 2029.",
+        "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
+        "team": "Atalanta",
+        "updatedAt": "2026-07-10"
+      },
+      {
+        "type": "Acquisto ufficiale",
+        "status": "Acquisto ufficiale",
+        "note": "Acquisto ufficiale: Arrivo dal Cagliari a titolo definitivo; contratto fino al 2029. (dal Cagliari)",
+        "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
+        "team": "Atalanta",
         "updatedAt": "2026-07-10"
       }
     ]

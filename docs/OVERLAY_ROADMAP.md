@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V602**: patch UI della sezione **Per i SUDATORI**. La colonna **Mercato** della tabella rosa mostra ora tutte le segnalazioni collegate al giocatore, incluse le voci Transfermarkt, anche quando lo stato base era `In rosa`.
+- **V603**: patch UI/dati della sezione **Per i SUDATORI**. La colonna **Mercato** mostra un solo badge fra `NUOVO`, `RUMOR`, `CONFERMATO`; Gaetano Atalanta e gli omonimi Giovane Napoli/Atalanta sono corretti.
 
 ## Cronologia recente
 
@@ -17,11 +17,12 @@
 - **V599**: aggiornati dati TMW e mantenuti i fix UI.
 - **V600**: aggiornato Excel serale con movimenti, amichevoli e trattative.
 - **V601**: aggiornati raduni/amichevoli e rumors Transfermarkt.
-- **V602**: badge mercato in tabella per qualunque rumor/segnalazione, compresi Transfermarkt.
+- **V602**: mostrati i rumors mercato nella colonna Mercato anche quando lo stato base era `In rosa`.
+- **V603**: badge Mercato unico `NUOVO/RUMOR/CONFERMATO`, fix Gaetano e disambiguazione Giovane.
 
 ## Prossimi sviluppi possibili
 
-- Aggiungere un filtro per mostrare solo i giocatori con segnalazioni mercato.
+- Aggiungere un filtro per mostrare solo `NUOVO`, `RUMOR` o `CONFERMATO`.
 - Aggiungere un editor/manuale per note mercato giocatore.
 - Consentire upload periodico di un nuovo Excel Sudatori e rigenerazione JSON.
 - Aggiungere filtri per ruolo, squadra reale e note mercato.

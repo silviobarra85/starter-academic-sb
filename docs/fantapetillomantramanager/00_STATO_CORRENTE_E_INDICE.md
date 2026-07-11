@@ -1,26 +1,23 @@
-# FantaPetilloMantraManager - Stato corrente
+# Stato corrente e indice
 
-Versione corrente: **V602**
+Versione corrente: **V603**
 
-## Novita
+## Sezione Per i SUDATORI
 
-- Sezione standalone **Per i SUDATORI** aggiornata tramite `fanta-engine`.
-- V602 mantiene i dati V601 del 2026-07-11, inclusi raduni/amichevoli e rumors Transfermarkt.
-- La colonna **Mercato** della lista giocatori mostra ora badge per qualunque segnalazione associata al giocatore.
-- I rumor provenienti da Transfermarkt sono indicati con badge `TM` nella colonna **Mercato**.
-- Se non ci sono rumor/segnalazioni, resta il testo neutro `In rosa`.
-- Restano attivi i fix precedenti: campo sinistra/destra corretto, badge fisico solo in caso di segnalazione, nessun badge **Probabile XI** nella colonna Mercato.
-- Nessun impatto su dati di lega, Firebase o listone operativo.
+La sezione e attiva come modulo standalone. I dati provengono da `static/fanta-engine/data/sudatori/current/` e sono condivisi fra le leghe.
 
-## Cronologia recente
+### Stato V603
 
-- V593: Sudatori con campetto probabile formazione e matching listone robusto.
-- V594: Sudatori con trattative in corso per squadra Serie A.
-- V595: Sudatori con infortunati SOS Fanta e moduli campetto vincolati.
-- V596: fix contrasto/leggibilita delle segnalazioni infortunati.
-- V597: Excel formazioni coerenti applicato alla sezione Sudatori.
-- V598: orientamento campo, badge fisici campo e colonna Mercato corretti.
-- V599: aggiornamento TMW.
-- V600: aggiornamento Excel serale.
-- V601: raduni, amichevoli e rumors Transfermarkt.
-- V602: badge mercato in tabella anche da Transfermarkt.
+- mantiene i dati dell'Excel aggiornato del 2026-07-11;
+- mantiene raduni, amichevoli, trattative, rumors Transfermarkt, infortunati e probabili formazioni;
+- corregge la colonna **Mercato** con un solo badge: `NUOVO`, `RUMOR`, `CONFERMATO`;
+- corregge Gaetano Atalanta come nuovo acquisto;
+- disambigua Giovane Napoli da Giovane Atalanta nel matching listone.
+
+## File principali
+
+- `static/fanta-engine/js/sections/sudatori-section-v603.js`
+- `static/fanta-engine/css/sudatori-section-v603.css`
+- `static/fanta-engine/data/sudatori/current/manifest.json`
+- `static/fanta-engine/data/sudatori/current/sudatori-data.json`
+- `static/fanta-engine/tools/audit-sudatori-section-v603.mjs`
