@@ -1,5 +1,5 @@
 {
-  "version": "V602",
+  "version": "V604",
   "current": "sudatori-data.json",
   "updatedAt": "2026-07-11",
   "updateSlot": "raduni-rumors",
@@ -15,5 +15,6 @@
   "transfermarktRumors": 25,
   "formationTeams": 20,
   "formationMissingPlayers": 0,
-  "note": "V602: mantiene i dati Excel 11/07 e aggiorna la colonna Mercato: i rumor/trasferimenti da qualunque fonte, inclusa Transfermarkt, sono mostrati con badge dedicati nella rosa."
+  "note": "V604: corregge i badge Mercato. La frase neutra \"Nessuna segnalazione mercato\" non produce più RUMOR; Gaetano resta NUOVO e Giovane Napoli/Atalanta resta disambiguato.",
+  "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT"
 }
