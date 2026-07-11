@@ -1,18 +1,19 @@
 {
-  "version": "V600",
+  "version": "V601",
   "current": "sudatori-data.json",
-  "updatedAt": "2026-07-10",
-  "updateSlot": "sera",
-  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-10_sera(1).xlsx",
+  "updatedAt": "2026-07-11",
+  "updateSlot": "raduni-rumors",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_raduni_rumors_2026-07-11(1).xlsx",
   "teams": 20,
-  "players": 725,
-  "friendlies": 86,
-  "marketNotes": 64,
-  "teamTransferTalks": 113,
+  "players": 724,
+  "friendlies": 89,
+  "marketNotes": 487,
+  "teamTransferTalks": 132,
   "injuries": 6,
   "tmwMarketNews": 18,
   "tmwEveningNews": 11,
+  "transfermarktRumors": 25,
   "formationTeams": 20,
   "formationMissingPlayers": 0,
-  "note": "V600: aggiornamento serale Excel/TMW applicato alla sezione Per i SUDATORI."
+  "note": "V601: aggiornamento Excel 11/07 applicato alla sezione Per i SUDATORI: raduni/amichevoli aggiornati e rumors Transfermarkt nelle trattative squadra."
 }
