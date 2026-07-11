@@ -1,6 +1,6 @@
 {
   "meta": {
-    "id": "sudatori-serie-a-2026-07-11-v601",
+    "id": "sudatori-serie-a-2026-07-11-v602",
     "label": "Per i SUDATORI - Serie A 2026/27",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-11",
@@ -15,7 +15,7 @@
     "listoneMatchedPlayers": 455,
     "notMatchedPlayers": 269,
     "standalone": true,
-    "version": "V601",
+    "version": "V602",
     "listoneMatchMethods": {
       "exact": 371,
       "canon": 77,
@@ -32,15 +32,16 @@
     "formationTeams": 20,
     "formationAdjustments": 220,
     "formationMissingPlayers": 0,
-    "injuriesNote": "V601: dati SOS Fanta mantenuti e reintegrati nella rosa/field data dal nuovo Excel 11/07.",
-    "formationShapeNote": "V601: campetti rigenerati dal foglio Probabili_Formazioni e coerenti con il Modulo formazione usato.",
+    "injuriesNote": "V602: dati SOS Fanta mantenuti e reintegrati nella rosa/field data dal nuovo Excel 11/07.",
+    "formationShapeNote": "V602: campetti rigenerati dal foglio Probabili_Formazioni e coerenti con il Modulo formazione usato.",
     "uiFixes": [
       "V598: campo ordinato con sinistra/destra corrette, nessun badge fisico per disponibili, badge Probabile XI rimosso dalla colonna Mercato.",
       "V600: dati rigenerati dal nuovo Excel serale; applicati movimenti ufficiali TMW, nuove amichevoli e trattative serali mantenendo le correzioni UI V598.",
-      "V601: dati rigenerati dal nuovo Excel 11/07; aggiornati raduni/amichevoli, schede ritiro e rumors Transfermarkt al posto giusto nelle trattative squadra."
+      "V602: dati rigenerati dal nuovo Excel 11/07; aggiornati raduni/amichevoli, schede ritiro e rumors Transfermarkt al posto giusto nelle trattative squadra.",
+      "V602: la colonna Mercato della rosa mostra badge per qualunque segnalazione mercato collegata al giocatore, incluse le voci Transfermarkt, anche quando lo stato base era In rosa."
     ],
     "tmwMarketNews": 18,
-    "tmwNote": "V601: aggiornati raduni/amichevoli con TMW e SportMediaset; aggiunti rumors Transfermarkt nella card Trattative in corso.",
+    "tmwNote": "V602: dati V601 mantenuti; fix UI per rendere visibili nella colonna Mercato anche i rumor Transfermarkt associati ai giocatori.",
     "updateSlot": "raduni-rumors",
     "tmwEveningNews": 11,
     "transfermarktRumors": 25,

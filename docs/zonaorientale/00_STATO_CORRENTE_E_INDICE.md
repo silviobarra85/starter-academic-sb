@@ -1,15 +1,15 @@
 # ZonaOrientale - Stato corrente
 
-Versione corrente: **V601**
+Versione corrente: **V602**
 
-## Novità
+## Novita
 
 - Sezione standalone **Per i SUDATORI** attiva tramite `fanta-engine`.
-- V597 mantiene il nuovo Excel con probabili formazioni coerenti e campetti allineati al modulo usato.
-- V601 corregge il campetto: ruoli con **S** a sinistra e ruoli con **D** a destra.
-- Sul campetto i giocatori disponibili non mostrano badge fisico; compare solo un badge rosso in caso di segnalazione.
-- Rimosso il badge **Probabile XI** dalla colonna **Mercato** della lista giocatori.
-- Matching listone robusto e colonna **Rosa fantacalcio** nelle rose Sudatori restano invariati.
+- V602 mantiene i dati V601 del 2026-07-11, inclusi raduni/amichevoli e rumors Transfermarkt.
+- La colonna **Mercato** della lista giocatori mostra ora badge per qualunque segnalazione associata al giocatore.
+- I rumor provenienti da Transfermarkt sono indicati con badge `TM` nella colonna **Mercato**.
+- Se non ci sono rumor/segnalazioni, resta il testo neutro `In rosa`.
+- Restano attivi i fix precedenti: campo sinistra/destra corretto, badge fisico solo in caso di segnalazione, nessun badge **Probabile XI** nella colonna Mercato.
 
 ## Guardrail
 
@@ -22,13 +22,10 @@ Versione corrente: **V601**
 - V593: Sudatori con campetto probabile formazione e matching listone robusto.
 - V594: Sudatori con trattative in corso per squadra Serie A.
 - V595: Sudatori con infortunati SOS Fanta e moduli campetto vincolati.
-- V596: fix contrasto/leggibilità delle segnalazioni infortunati.
+- V596: fix contrasto/leggibilita delle segnalazioni infortunati.
 - V597: Excel formazioni coerenti applicato alla sezione Sudatori.
-- V601: orientamento campo, badge fisici campo e colonna Mercato corretti.
-
-### V601
-Sezione Per i SUDATORI aggiornata dal nuovo Excel TMW: rose, trattative/alert mercato e probabili formazioni riallineate; mantenute correzioni campo/badge V598.
-
-
-### V601 Sudatori
-Aggiornata la sezione Per i SUDATORI con Excel serale 10/07/2026: Gila al Milan, Havel al Genoa, Luvumbo fuori Cagliari, Omar Traore Udinese, nuove amichevoli e trattative TMW.
+- V598: orientamento campo, badge fisici campo e colonna Mercato corretti.
+- V599: aggiornamento TMW.
+- V600: aggiornamento Excel serale.
+- V601: raduni, amichevoli e rumors Transfermarkt.
+- V602: badge mercato in tabella anche da Transfermarkt.

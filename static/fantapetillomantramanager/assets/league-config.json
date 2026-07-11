@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "601",
+  "currentVersion": "602",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -172,7 +172,7 @@
     "rosterMobileColumnFitVersion": "V568",
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
-    "sudatoriStandaloneSectionVersion": "V601"
+    "sudatoriStandaloneSectionVersion": "V602"
   },
   "guardrails": {
     "sandboxClone": true,
@@ -856,7 +856,7 @@
     "roadmapRecoveryVersion": "V521",
     "localFallbacksPreservedV522": true,
     "sharedAssetsFallbackCleanupVersion": "V546",
-    "lastSudatoriOverlay": "V601",
+    "lastSudatoriOverlay": "V602",
     "lastSudatoriOverlayNote": "Aggiornamento Per i SUDATORI con raduni/amichevoli 11/07 e rumors Transfermarkt."
   },
   "sharedAssetsSingleUploadV522": {

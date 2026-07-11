@@ -1,5 +1,5 @@
 {
-  "version": "V601",
+  "version": "V602",
   "current": "sudatori-data.json",
   "updatedAt": "2026-07-11",
   "updateSlot": "raduni-rumors",
@@ -15,5 +15,5 @@
   "transfermarktRumors": 25,
   "formationTeams": 20,
   "formationMissingPlayers": 0,
-  "note": "V601: aggiornamento Excel 11/07 applicato alla sezione Per i SUDATORI: raduni/amichevoli aggiornati e rumors Transfermarkt nelle trattative squadra."
+  "note": "V602: mantiene i dati Excel 11/07 e aggiorna la colonna Mercato: i rumor/trasferimenti da qualunque fonte, inclusa Transfermarkt, sono mostrati con badge dedicati nella rosa."
 }
