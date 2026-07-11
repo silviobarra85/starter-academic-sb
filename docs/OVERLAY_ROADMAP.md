@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V605**: patch UI/dati della sezione **Per i SUDATORI**. La colonna **Mercato** mostra un solo badge fra `NUOVO`, `RUMOR`, `CONFERMATO`; Gaetano Atalanta e gli omonimi Giovane Napoli/Atalanta sono corretti.
+- **V606**: patch UI/dati della sezione **Per i SUDATORI**. La colonna **Mercato** mostra un solo badge fra `NUOVO`, `RUMOR`, `CONFERMATO`; Gaetano Atalanta e gli omonimi Giovane Napoli/Atalanta sono corretti.
 
 ## Cronologia recente
 
@@ -18,7 +18,7 @@
 - **V600**: aggiornato Excel serale con movimenti, amichevoli e trattative.
 - **V601**: aggiornati raduni/amichevoli e rumors Transfermarkt.
 - **V602**: mostrati i rumors mercato nella colonna Mercato anche quando lo stato base era `In rosa`.
-- **V605**: badge Mercato unico `NUOVO/RUMOR/CONFERMATO`, fix Gaetano e disambiguazione Giovane.
+- **V606**: badge Mercato unico `NUOVO/RUMOR/CONFERMATO`, fix Gaetano e disambiguazione Giovane.
 
 ## Prossimi sviluppi possibili
 

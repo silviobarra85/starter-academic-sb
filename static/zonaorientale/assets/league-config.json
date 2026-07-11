@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "605",
+  "currentVersion": "606",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -168,7 +168,7 @@
     "rosterMobileColumnFitVersion": "V568",
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
-    "sudatoriStandaloneSectionVersion": "V605"
+    "sudatoriStandaloneSectionVersion": "V606"
   },
   "guardrails": {
     "configOnly": true,
