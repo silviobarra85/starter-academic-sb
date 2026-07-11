@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "604",
+  "currentVersion": "605",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -172,7 +172,7 @@
     "rosterMobileColumnFitVersion": "V568",
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
-    "sudatoriStandaloneSectionVersion": "V604"
+    "sudatoriStandaloneSectionVersion": "V605"
   },
   "guardrails": {
     "sandboxClone": true,
@@ -469,8 +469,8 @@
     "projectId": "fantapetillomantramanager",
     "authDomain": "fantapetillomantramanager.firebaseapp.com",
     "storageBucket": "fantapetillomantramanager.firebasestorage.app",
-    "messagingSenderId": "579604278263",
-    "appId": "1:579604278263:web:df2ba2739bc2b843ccd232",
+    "messagingSenderId": "579605278263",
+    "appId": "1:579605278263:web:df2ba2739bc2b843ccd232",
     "measurementId": "G-RT78QT84J4",
     "productionReady": false,
     "rulesRequired": true,
@@ -856,7 +856,7 @@
     "roadmapRecoveryVersion": "V521",
     "localFallbacksPreservedV522": true,
     "sharedAssetsFallbackCleanupVersion": "V546",
-    "lastSudatoriOverlay": "V604",
+    "lastSudatoriOverlay": "V605",
     "lastSudatoriOverlayNote": "Aggiornamento Per i SUDATORI con raduni/amichevoli 11/07 e rumors Transfermarkt."
   },
   "sharedAssetsSingleUploadV522": {
