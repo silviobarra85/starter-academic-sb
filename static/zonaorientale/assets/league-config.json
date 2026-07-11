@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "603",
+  "currentVersion": "602",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -168,7 +168,7 @@
     "rosterMobileColumnFitVersion": "V568",
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
-    "sudatoriStandaloneSectionVersion": "V603"
+    "sudatoriStandaloneSectionVersion": "V602"
   },
   "guardrails": {
     "configOnly": true,
@@ -707,7 +707,7 @@
     "roadmapRecoveryVersion": "V521",
     "localFallbacksPreservedV522": true,
     "sharedAssetsFallbackCleanupVersion": "V546",
-    "lastSudatoriOverlay": "V603",
+    "lastSudatoriOverlay": "V602",
     "lastSudatoriOverlayNote": "Aggiornamento Per i SUDATORI con raduni/amichevoli 11/07 e rumors Transfermarkt."
   },
   "sharedAssetsSingleUploadV522": {

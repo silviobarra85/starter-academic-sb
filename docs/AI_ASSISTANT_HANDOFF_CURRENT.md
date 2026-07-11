@@ -1,40 +1,37 @@
-# AI Assistant Handoff - V603 Sudatori
+# AI Assistant Handoff - V602 Sudatori
 
-Versione corrente: **V603**.
+Versione corrente: **V602**.
 
 ## Stato
 
-La sezione **Per i SUDATORI** mantiene i dati dell'Excel del 2026-07-11, ma corregge la colonna **Mercato** e il matching di alcuni casi ambigui.
+Overlay UI sulla sezione **Per i SUDATORI**: mantiene i dati V601 generati dall'Excel `fantacalcio_serie_a_2026_27_aggiornato_raduni_rumors_2026-07-11(1).xlsx`, ma corregge la colonna **Mercato** della tabella rosa.
 
-## Correzioni V603
+## Correzione V602
 
-1. **Badge Mercato semplificati**
-   - un solo badge per cella;
-   - valori ammessi: `NUOVO`, `RUMOR`, `CONFERMATO`;
-   - priorita: `NUOVO` > `RUMOR` > `CONFERMATO`.
+La colonna **Mercato** ora usa tutte le note mercato collegate al giocatore tramite `marketNotesByPlayer`, non solo `player.marketStatus`. Questo risolve il caso in cui un giocatore aveva `marketStatus = In rosa`, ma aveva comunque una voce/rumor presente nelle note, ad esempio da Transfermarkt.
 
-2. **Gaetano Atalanta**
-   - in V602 risultava `In rosa` perche la nota ufficiale era indicizzata come `Gianluca Gaetano`;
-   - V603 aggiunge la nota anche alla chiave `Gaetano` e marca il giocatore come nuovo acquisto Atalanta.
+Regole UI:
 
-3. **Giovane Napoli / Atalanta**
-   - il matching listone usa il nome originale e la squadra;
-   - `Giovane (Napoli)` e associato al record listone NAP e alla rosa fantacalcio `Real Pisistrius`;
-   - `Giovane (Atalanta)` non eredita il record Napoli.
+- se non ci sono segnalazioni, resta `In rosa` in tono neutro;
+- se c'e una segnalazione mercato, appare un badge;
+- se la fonte e Transfermarkt, appare un badge con prefisso `TM`;
+- vengono mostrati fino a 3 badge per giocatore, con contatore `+N` per eventuali note aggiuntive.
 
-## File modificati
+## File principali
 
-- `static/fanta-engine/js/sections/sudatori-section-v603.js`
-- `static/fanta-engine/css/sudatori-section-v603.css`
+- `static/fanta-engine/js/sections/sudatori-section-v602.js`
+- `static/fanta-engine/css/sudatori-section-v602.css`
 - `static/fanta-engine/data/sudatori/current/manifest.json`
 - `static/fanta-engine/data/sudatori/current/sudatori-data.json`
-- `static/fanta-engine/tools/audit-sudatori-section-v603.mjs`
-- index/config delle due leghe
-- documentazione V603
+- `static/fanta-engine/tools/audit-sudatori-section-v602.mjs`
 
-## Audit
+## Verifiche attese
 
 ```bash
-node static/fanta-engine/tools/audit-sudatori-section-v603.mjs
-node --check static/fanta-engine/js/sections/sudatori-section-v603.js
+node static/fanta-engine/tools/audit-sudatori-section-v602.mjs
+node --check static/fanta-engine/js/sections/sudatori-section-v602.js
 ```
+
+## Nota futura
+
+Per successivi aggiornamenti Excel, mantenere questa logica: la colonna **Mercato** deve mostrare qualunque rumor/segnalazione associata al giocatore, inclusi i record provenienti da Transfermarkt, anche quando lo stato base del giocatore e `In rosa`.
