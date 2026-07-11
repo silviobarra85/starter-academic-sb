@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V606**: patch UI/dati della sezione **Per i SUDATORI**. La colonna **Mercato** mostra un solo badge fra `NUOVO`, `RUMOR`, `CONFERMATO`; Gaetano Atalanta e gli omonimi Giovane Napoli/Atalanta sono corretti.
+- **V607**: patch UI/dati della sezione **Per i SUDATORI**. La colonna **Mercato** mostra un solo badge fra `NUOVO`, `RUMOR`, `CONFERMATO`; Gaetano Atalanta e gli omonimi Giovane Napoli/Atalanta sono corretti.
 
 ## Cronologia recente
 
@@ -18,7 +18,7 @@
 - **V600**: aggiornato Excel serale con movimenti, amichevoli e trattative.
 - **V601**: aggiornati raduni/amichevoli e rumors Transfermarkt.
 - **V602**: mostrati i rumors mercato nella colonna Mercato anche quando lo stato base era `In rosa`.
-- **V606**: badge Mercato unico `NUOVO/RUMOR/CONFERMATO`, fix Gaetano e disambiguazione Giovane.
+- **V607**: badge Mercato unico `NUOVO/RUMOR/CONFERMATO`, fix Gaetano e disambiguazione Giovane.
 
 ## Prossimi sviluppi possibili
 
@@ -31,3 +31,9 @@
 ## Guardrail
 
 La sezione Sudatori deve restare standalone e cancellabile senza impatti su Rose, Listone, Area Squadra, Admin, Firebase o dati ufficiali di lega.
+
+
+## V607 - Per i SUDATORI Excel finale 11/07
+- Aggiornato `sudatori-data.json` dal foglio finale dell'11/07.
+- Applicati controlli rose finali, trattative, rumors Transfermarkt, infortunati e probabili formazioni.
+- KPI: 713 giocatori, 89 amichevoli, 175 trattative/rumors squadra, 48 rumors TM.
