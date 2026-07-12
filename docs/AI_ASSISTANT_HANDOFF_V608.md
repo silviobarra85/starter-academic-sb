@@ -1,4 +1,4 @@
-# AI Assistant Handoff - CURRENT
+# AI Assistant Handoff - V608
 
 ## Stato
 - Versione corrente overlay: **V608**.

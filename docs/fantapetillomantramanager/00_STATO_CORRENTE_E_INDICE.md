@@ -1,12 +1,12 @@
 # Stato corrente e indice
 
-Versione corrente: **V607**
+Versione corrente: **V608**
 
 ## Sezione Per i SUDATORI
 
 La sezione e attiva come modulo standalone. I dati provengono da `static/fanta-engine/data/sudatori/current/` e sono condivisi fra le leghe.
 
-### Stato V607
+### Stato V608
 
 - mantiene i dati dell'Excel aggiornato del 2026-07-11;
 - mantiene raduni, amichevoli, trattative, rumors Transfermarkt, infortunati e probabili formazioni;
@@ -16,8 +16,13 @@ La sezione e attiva come modulo standalone. I dati provengono da `static/fanta-e
 
 ## File principali
 
-- `static/fanta-engine/js/sections/sudatori-section-v607.js`
-- `static/fanta-engine/css/sudatori-section-v607.css`
+- `static/fanta-engine/js/sections/sudatori-section-v608.js`
+- `static/fanta-engine/css/sudatori-section-v608.css`
 - `static/fanta-engine/data/sudatori/current/manifest.json`
 - `static/fanta-engine/data/sudatori/current/sudatori-data.json`
-- `static/fanta-engine/tools/audit-sudatori-section-v607.mjs`
+- `static/fanta-engine/tools/audit-sudatori-section-v608.mjs`
+
+
+## Sudatori V608
+- Sezione Per i SUDATORI aggiornata con Excel 12/07.
+- Aggiunto riepilogo ufficialità/trattative in entrata e uscita e card trattative aggregate per giocatore.
