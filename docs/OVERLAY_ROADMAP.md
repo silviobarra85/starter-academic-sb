@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V611**: rifinisce **ioSudo** con dettaglio giocatore cliccabile, colori ruolo, ricerca nascosta a squadra aperta e menu squadra sticky.
+- **V612**: colora le card squadre di ioSudo con righe ispirate ai colori sociali e testi leggibili.
 
 ## Cronologia recente
 
@@ -23,6 +23,7 @@
 - **V609**: app **ioSudo** installabile, collegata allo stesso `sudatori-data.json` corrente.
 - **V610**: logo ioSudo, barra superiore compatta e rosa ordinata da P ad A.
 - **V611**: dettaglio giocatore cliccabile, colori ruolo, ricerca nascosta quando una squadra e aperta, menu squadra sticky.
+- **V612**: card squadre ioSudo a righe con colori sociali e testi leggibili.
 
 ## Prossimi sviluppi possibili
 

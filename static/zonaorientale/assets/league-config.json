@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "611",
+  "currentVersion": "612",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -174,8 +174,9 @@
     "sudatoriMarketSummary": true,
     "sudatoriMarketSummaryVersion": "V608",
     "ioSudoPwa": true,
-    "ioSudoPwaVersion": "V611",
-    "ioSudoPwaDataSource": "static/fanta-engine/data/sudatori/current/manifest.json"
+    "ioSudoPwaVersion": "V612",
+    "ioSudoPwaDataSource": "static/fanta-engine/data/sudatori/current/manifest.json",
+    "ioSudoTeamCardColors": "V612"
   },
   "guardrails": {
     "configOnly": true,
@@ -1216,6 +1217,7 @@
     ]
   },
   "changelog": [
+    "V612 colora le card squadre di ioSudo con righe ispirate ai colori sociali e testi leggibili.",
     "V611 aggiunge ioSudo, mini app PWA installabile che legge gli stessi dati della sezione Per i SUDATORI.",
     "V599 corregge orientamento destra/sinistra del campetto Sudatori, nasconde badge OK sul campo e rimuove badge Probabile XI dalla colonna Mercato.",
     "V593 corregge matching listone Sudatori, rosa fantacalcio e nuove informazioni mercato/formazioni.",
