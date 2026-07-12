@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V610**: rifinisce **ioSudo** con logo dedicato, header compatto e ordinamento rosa P-D-C-A.
+- **V611**: rifinisce **ioSudo** con dettaglio giocatore cliccabile, colori ruolo, ricerca nascosta a squadra aperta e menu squadra sticky.
 
 ## Cronologia recente
 
@@ -22,6 +22,7 @@
 - **V608**: riepilogo mercato per squadra con ufficialita/trattative in entrata e uscita; una sola card trattativa per giocatore con fonti aggregate; ufficialita escluse dalle trattative in corso.
 - **V609**: app **ioSudo** installabile, collegata allo stesso `sudatori-data.json` corrente.
 - **V610**: logo ioSudo, barra superiore compatta e rosa ordinata da P ad A.
+- **V611**: dettaglio giocatore cliccabile, colori ruolo, ricerca nascosta quando una squadra e aperta, menu squadra sticky.
 
 ## Prossimi sviluppi possibili
 
