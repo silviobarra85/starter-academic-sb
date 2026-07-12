@@ -6,7 +6,7 @@
     "loadedAt": "2026-07-05",
     "sourceFile": "Hand modified by me",
     "teams": 10,
-    "players": 244
+    "players": 239
   },
   "rosters": [
     {
@@ -168,7 +168,7 @@
     },
     {
       "name": "Ac Milan",
-      "playerCount": 29,
+      "playerCount": 24,
       "players": [
         {
           "role": "P",
@@ -250,18 +250,6 @@
         },
         {
           "role": "C",
-          "playerName": "Harrison",
-          "realTeam": "FIO",
-          "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Aebischer",
-          "realTeam": "PIS",
-          "cost": 1
-        },
-        {
-          "role": "C",
           "playerName": "Gudmundsson A.",
           "realTeam": "FIO",
           "cost": 37
@@ -310,27 +298,9 @@
         },
         {
           "role": "A",
-          "playerName": "Vardy",
-          "realTeam": "CRE",
-          "cost": 9
-        },
-        {
-          "role": "A",
-          "playerName": "Moreo",
-          "realTeam": "PIS",
-          "cost": 1
-        },
-        {
-          "role": "A",
           "playerName": "Malen",
           "realTeam": "ROM",
           "cost": 46
-        },
-        {
-          "role": "A",
-          "playerName": "Borrelli",
-          "realTeam": "CAG",
-          "cost": 1
         },
         {
           "role": "A",
