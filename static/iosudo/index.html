@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ioSudo - Per i SUDATORI</title>
+  <meta name="description" content="Mini app mobile per consultare Per i SUDATORI: probabili XI, mercato, ufficialita, rumors, infortunati e amichevoli." />
+  <meta name="theme-color" content="#3b0618" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <link rel="stylesheet" href="../fanta-engine/css/iosudo-app-v609.css?v=609" />
+</head>
+<body>
+  <div id="iosudoApp" class="iosudo-shell" data-iosudo-version="609">
+    <header class="iosudo-hero">
+      <div class="iosudo-hero-top">
+        <a id="iosudoBackLink" class="iosudo-back" href="../zonaorientale/" aria-label="Torna al sito">Sito</a>
+        <div>
+          <p class="iosudo-eyebrow">Per i SUDATORI</p>
+          <h1>ioSudo</h1>
+        </div>
+        <button id="iosudoInstallBtn" class="iosudo-install" type="button" hidden>Installa</button>
+      </div>
+      <p class="iosudo-subtitle">Probabili XI, mercato, ufficialita, rumors, SOS e amichevoli sempre dallo stesso JSON del sito.</p>
+      <div id="iosudoStatus" class="iosudo-status">Caricamento dati...</div>
+    </header>
+
+    <main class="iosudo-main">
+      <section class="iosudo-search-card" aria-label="Ricerca ioSudo">
+        <label class="iosudo-search-label" for="iosudoSearch">Cerca squadra o giocatore</label>
+        <input id="iosudoSearch" class="iosudo-search" type="search" placeholder="Es. Gaetano, Atalanta, Pulisic" autocomplete="off" />
+        <div id="iosudoQuickFilters" class="iosudo-filter-row" aria-label="Filtri rapidi">
+          <button class="iosudo-filter is-active" type="button" data-filter="all">Tutto</button>
+          <button class="iosudo-filter" type="button" data-filter="new">Nuovi</button>
+          <button class="iosudo-filter" type="button" data-filter="rumor">Rumor</button>
+          <button class="iosudo-filter" type="button" data-filter="sos">SOS</button>
+          <button class="iosudo-filter" type="button" data-filter="xi">XI</button>
+        </div>
+      </section>
+
+      <section id="iosudoSummary" class="iosudo-summary" aria-label="Riepilogo dati"></section>
+      <section id="iosudoTeamFocus" class="iosudo-panel hidden" aria-live="polite"></section>
+      <section id="iosudoResults" class="iosudo-results" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <script src="../fanta-engine/js/apps/iosudo-app-v609.js?v=609" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>

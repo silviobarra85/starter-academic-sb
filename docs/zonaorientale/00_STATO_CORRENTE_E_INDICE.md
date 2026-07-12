@@ -1,28 +1,24 @@
 # Stato corrente e indice
 
-Versione corrente: **V608**
+Versione corrente: **V609**
+
+## ioSudo
+
+La V609 aggiunge **ioSudo**, mini app PWA installabile collegata alla sezione **Per i SUDATORI**.
+
+- URL app: `/iosudo/`
+- Redirect da lega: `/zonaorientale/iosudo/`
+- Origine dati: `static/fanta-engine/data/sudatori/current/manifest.json`
+- Dati Sudatori: invariati rispetto a V608.
 
 ## Sezione Per i SUDATORI
 
-La sezione e attiva come modulo standalone. I dati provengono da `static/fanta-engine/data/sudatori/current/` e sono condivisi fra le leghe.
-
-### Stato V608
-
-- mantiene i dati dell'Excel aggiornato del 2026-07-11;
-- mantiene raduni, amichevoli, trattative, rumors Transfermarkt, infortunati e probabili formazioni;
-- corregge la colonna **Mercato** con un solo badge: `NUOVO`, `RUMOR`, `CONFERMATO`;
-- corregge Gaetano Atalanta come nuovo acquisto;
-- disambigua Giovane Napoli da Giovane Atalanta nel matching listone.
+La sezione resta attiva come modulo standalone. I dati provengono da `static/fanta-engine/data/sudatori/current/` e sono condivisi fra le leghe.
 
 ## File principali
 
-- `static/fanta-engine/js/sections/sudatori-section-v608.js`
-- `static/fanta-engine/css/sudatori-section-v608.css`
-- `static/fanta-engine/data/sudatori/current/manifest.json`
-- `static/fanta-engine/data/sudatori/current/sudatori-data.json`
-- `static/fanta-engine/tools/audit-sudatori-section-v608.mjs`
-
-
-## Sudatori V608
-- Sezione Per i SUDATORI aggiornata con Excel 12/07.
-- Aggiunto riepilogo ufficialità/trattative in entrata e uscita e card trattative aggregate per giocatore.
+- `static/iosudo/index.html`
+- `static/fanta-engine/js/apps/iosudo-app-v609.js`
+- `static/fanta-engine/css/iosudo-app-v609.css`
+- `static/iosudo/sw.js`
+- `static/fanta-engine/tools/audit-iosudo-v609.mjs`

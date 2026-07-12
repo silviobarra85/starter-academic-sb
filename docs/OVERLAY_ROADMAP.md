@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V608**: aggiorna **Per i SUDATORI** con Excel 12/07, aggiunge riepilogo ufficialità/trattative in entrata e uscita per squadra e aggrega le card trattative per giocatore.
+- **V609**: aggiunge **ioSudo**, PWA mobile-first installabile che legge gli stessi dati correnti della sezione **Per i SUDATORI**.
 
 ## Cronologia recente
 
@@ -19,30 +19,16 @@
 - **V601**: aggiornati raduni/amichevoli e rumors Transfermarkt.
 - **V602**: mostrati i rumors mercato nella colonna Mercato anche quando lo stato base era `In rosa`.
 - **V607**: badge Mercato unico `NUOVO/RUMOR/CONFERMATO`, fix Gaetano e disambiguazione Giovane.
-
-- **V608**: riepilogo mercato per squadra con ufficialità/trattative in entrata e uscita; una sola card trattativa per giocatore con fonti aggregate; ufficialità escluse dalle trattative in corso.
+- **V608**: riepilogo mercato per squadra con ufficialita/trattative in entrata e uscita; una sola card trattativa per giocatore con fonti aggregate; ufficialita escluse dalle trattative in corso.
+- **V609**: app **ioSudo** installabile, collegata allo stesso `sudatori-data.json` corrente.
 
 ## Prossimi sviluppi possibili
 
-- Aggiungere un filtro per mostrare solo `NUOVO`, `RUMOR` o `CONFERMATO`.
-- Aggiungere un editor/manuale per note mercato giocatore.
-- Consentire upload periodico di un nuovo Excel Sudatori e rigenerazione JSON.
-- Aggiungere filtri per ruolo, squadra reale e note mercato.
-- Integrare ulteriori parametri se disponibili nei listoni futuri.
+- Aggiungere preferiti locali in ioSudo.
+- Aggiungere filtro per squadra fantacalcio nella rosa.
+- Aggiungere push/alert solo in una fase successiva, se serve un backend.
+- Aggiungere collegamento diretto dai side rail desktop del sito.
 
 ## Guardrail
 
-La sezione Sudatori deve restare standalone e cancellabile senza impatti su Rose, Listone, Area Squadra, Admin, Firebase o dati ufficiali di lega.
-
-
-## V607 - Per i SUDATORI Excel finale 11/07
-- Aggiornato `sudatori-data.json` dal foglio finale dell'11/07.
-- Applicati controlli rose finali, trattative, rumors Transfermarkt, infortunati e probabili formazioni.
-- KPI: 713 giocatori, 89 amichevoli, 175 trattative/rumors squadra, 48 rumors TM.
-
-
-## V608 - Per i SUDATORI Excel 12/07
-- Aggiornato `sudatori-data.json` da `fantacalcio_serie_a_2026_27_aggiornato_2026-07-12(1).xlsx`.
-- Aggiunto riepilogo mercato con ufficialità/trattative in entrata e uscita.
-- Card trattative aggregate per giocatore con fonti multiple.
-- KPI: 714 giocatori, 90 amichevoli, 169 card trattative aggregate, 226 ufficialità.
+La sezione Sudatori e ioSudo devono restare standalone e cancellabili senza impatti su Rose, Listone, Area Squadra, Admin, Firebase o dati ufficiali di lega. ioSudo non deve duplicare i dati Sudatori.
