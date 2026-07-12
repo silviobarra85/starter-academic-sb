@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "612",
+  "currentVersion": "613",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -178,9 +178,10 @@
     "sudatoriMarketSummary": true,
     "sudatoriMarketSummaryVersion": "V608",
     "ioSudoPwa": true,
-    "ioSudoPwaVersion": "V612",
+    "ioSudoPwaVersion": "V613",
     "ioSudoPwaDataSource": "static/fanta-engine/data/sudatori/current/manifest.json",
-    "ioSudoTeamCardColors": "V612"
+    "ioSudoTeamCardColors": "V613",
+    "ioSudoMarketSourceLinks": "V613"
   },
   "guardrails": {
     "sandboxClone": true,
@@ -423,7 +424,7 @@
         "icon": "rules"
       }
     ],
-    "footerLastUpdated": "12/07/2026",
+    "footerLastUpdated": "V613 - ioSudo fonti mercato cliccabili",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
     "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
     "footerVersion": 573
@@ -636,6 +637,7 @@
     "performanceConsolidationVersion": "V546"
   },
   "releaseNotes": [
+    "V613 rende separate e cliccabili singolarmente tutte le fonti nelle card mercato di ioSudo.",
     "V573 tara le colonne mobile delle tabelle giocatori: giocatore raddoppiato, Stato dimezzato, Costo e Qt.A uguali, testi allineati a sinistra.",
     "V573 riparte da zero con le tre tabelle giocatori mobile: rimosso il resize opt-in, stili separati per Area Squadra/Dashboard Presidente, Rose e Listone, righe colorate per ruolo, prima colonna/header opachi e nomi non troncati.",
     "V484 inventaria asset comuni listone/calciomercato nel motore centrale senza spostare path runtime, senza cancellare copie locali e con audit dedicato.",
@@ -877,6 +879,7 @@
     "notes": "Listoni e Calciomercato sono comuni: caricare una sola volta in static/fanta-engine/data/shared-assets/current/assets/. Le copie locali sono state rimosse dal workflow V546."
   },
   "history": [
+    "V613 rende separate e cliccabili singolarmente tutte le fonti nelle card mercato di ioSudo.",
     "V573 tara le colonne mobile delle tabelle giocatori: giocatore raddoppiato, Stato dimezzato, Costo e Qt.A uguali, testi allineati a sinistra.",
     "V522 introduce il workflow upload unico Listoni/Calciomercato su fanta-engine/data/shared-assets/current con fallback locali preservati e audit dedicato.",
     "V591 aggiunge sezione standalone Per i SUDATORI con rose Serie A, schede giocatore, listone, ritiri e amichevoli."
@@ -1329,7 +1332,8 @@
     ]
   },
   "changelog": [
-    "V612 colora le card squadre di ioSudo con righe ispirate ai colori sociali e testi leggibili.",
+    "V613 rende separate e cliccabili singolarmente tutte le fonti nelle card mercato di ioSudo.",
+    "V613 colora le card squadre di ioSudo con righe ispirate ai colori sociali e testi leggibili.",
     "V611 aggiunge ioSudo, mini app PWA installabile che legge gli stessi dati della sezione Per i SUDATORI.",
     "V599 corregge orientamento destra/sinistra del campetto Sudatori, nasconde badge OK sul campo e rimuove badge Probabile XI dalla colonna Mercato.",
     "V593 corregge matching listone Sudatori, rosa fantacalcio e nuove informazioni mercato/formazioni.",

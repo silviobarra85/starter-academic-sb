@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V612**: colora le card squadre di ioSudo con righe ispirate ai colori sociali e testi leggibili.
+- **V613**: fonti mercato multiple in ioSudo mostrate come chip separati e cliccabili singolarmente.
 
 ## Cronologia recente
 
@@ -24,6 +24,7 @@
 - **V610**: logo ioSudo, barra superiore compatta e rosa ordinata da P ad A.
 - **V611**: dettaglio giocatore cliccabile, colori ruolo, ricerca nascosta quando una squadra e aperta, menu squadra sticky.
 - **V612**: card squadre ioSudo a righe con colori sociali e testi leggibili.
+- **V613**: fonti mercato multiple in ioSudo separate e cliccabili singolarmente.
 
 ## Prossimi sviluppi possibili
 

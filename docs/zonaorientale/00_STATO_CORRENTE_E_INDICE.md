@@ -1,16 +1,15 @@
 # Zona Orientale - Stato corrente
 
-Versione corrente: **V612**.
+Versione corrente: **V613**.
 
 ioSudo e disponibile da `/zonaorientale/iosudo/` e reindirizza alla PWA condivisa `/iosudo/?league=zonaorientale`.
 
-Novita V612:
-- dettaglio giocatore cliccabile;
-- colori ruolo sulle card giocatore;
-- ricerca nascosta quando una squadra e aperta;
-- menu squadra sticky.
+Novita V613:
+- fonti mercato multiple mostrate come chip separati;
+- ogni fonte e cliccabile singolarmente;
+- fallback URL per fonti testuali TMW, Sky, Transfermarkt e SOS Fanta;
+- nessuna modifica ai dati Sudatori.
 
+## V613
 
-## V612
-
-Aggiornata ioSudo: card squadre colorate a righe secondo i colori sociali, senza modifiche ai dati Sudatori.
+Aggiornata ioSudo: nelle card mercato dei giocatori, le fonti aggregate sono separate e cliccabili una per una.

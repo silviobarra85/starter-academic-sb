@@ -1,26 +1,21 @@
 # AI Assistant Handoff - CURRENT
 
-## Stato
+## Stato corrente
+- Versione corrente overlay: **V613**.
+- Area interessata: **ioSudo**, mini app PWA collegata ai dati della sezione **Per i SUDATORI**.
+- Dati condivisi: `static/fanta-engine/data/sudatori/current/manifest.json` e `sudatori-data.json`.
+- JS app: `static/fanta-engine/js/apps/iosudo-app-v613.js`.
+- CSS app: `static/fanta-engine/css/iosudo-app-v613.css`.
 
-- Versione corrente overlay: **V612**.
-- App: **ioSudo PWA** collegata alla sezione **Per i SUDATORI**.
-- Dati letti dall'app: `static/fanta-engine/data/sudatori/current/manifest.json` e `sudatori-data.json`.
-- App shell: `static/iosudo/index.html`.
-- JS app: `static/fanta-engine/js/apps/iosudo-app-v612.js`.
-- CSS app: `static/fanta-engine/css/iosudo-app-v612.css`.
-- Service worker: `static/iosudo/sw.js`.
+## Modifiche V613
+- Le fonti multiple nelle card mercato dei giocatori vengono mostrate come chip separati.
+- Ogni fonte e cliccabile singolarmente.
+- Aggiunti fallback URL per TMW, Sky, Transfermarkt e SOS Fanta quando nel dataset arriva una fonte testuale senza link diretto.
+- Mantenute le feature V612: card squadra colorate, dettaglio giocatore, colori ruolo, menu squadra sticky e ricerca nascosta in apertura squadra.
 
-## Modifiche V612
-
-- Card squadre di ioSudo colorate a righe secondo i colori sociali richiesti.
-- Testi e badge leggibili con colore dedicato per squadra.
-- Mantenuti dettaglio giocatore cliccabile, colori ruolo, ricerca nascosta a squadra aperta e menu sticky.
-- Nessuna duplicazione dati: ioSudo legge ancora i JSON correnti di Sudatori.
-
-## Verifica
-
+## Verifiche
 ```bash
-node static/fanta-engine/tools/audit-iosudo-v612.mjs
-node --check static/fanta-engine/js/apps/iosudo-app-v612.js
+node static/fanta-engine/tools/audit-iosudo-v613.mjs
+node --check static/fanta-engine/js/apps/iosudo-app-v613.js
 node --check static/iosudo/sw.js
 ```
