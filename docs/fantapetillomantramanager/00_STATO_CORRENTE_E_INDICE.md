@@ -1,3 +1,8 @@
+# Aggiornamento V615 ioSudo
+
+- Corretto campetto app per moduli a quattro valori.
+- Separate le fonti aggregate nelle card mercato dell'app.
+
 # Fanta Petillo Mantra Manager - Stato corrente
 
 Versione corrente: **V613**.
@@ -13,7 +18,3 @@ Novita V613:
 ## V613
 
 Aggiornata ioSudo: nelle card mercato dei giocatori, le fonti aggregate sono separate e cliccabili una per una.
-
-
-## V614
-Aggiornata la sezione Per i SUDATORI con l'Excel `fantacalcio_serie_a_2026_27_aggiornato_2026-07-12_pulizia_ufficialita(1).xlsx`. ioSudo resta installata e legge gli stessi JSON aggiornati.
