@@ -1,0 +1,766 @@
+/* V618 - Per i SUDATORI standalone section. Remove this file and the JS/data folder to disable the feature. */
+.app-page[data-page="sudatori"] {
+  --sudatori-bg: rgba(15, 23, 42, 0.92);
+  --sudatori-card: rgba(17, 24, 39, 0.88);
+  --sudatori-card-2: rgba(30, 41, 59, 0.82);
+  --sudatori-border: rgba(148, 163, 184, 0.24);
+  --sudatori-text: #f8fafc;
+  --sudatori-muted: #cbd5e1;
+  --sudatori-accent: #fbbf24;
+  --sudatori-accent-2: #38bdf8;
+  --sudatori-danger: #fb7185;
+  --sudatori-good: #34d399;
+  color: var(--sudatori-text);
+}
+
+.sudatori-page-v618 .panel,
+.sudatori-shell-v618 {
+  background: linear-gradient(140deg, rgba(15, 23, 42, .96), rgba(30, 41, 59, .86));
+  border: 1px solid var(--sudatori-border);
+  box-shadow: 0 20px 60px rgba(0,0,0,.28);
+}
+
+.sudatori-hero-v618 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border-radius: 22px;
+  border: 1px solid var(--sudatori-border);
+  background:
+    radial-gradient(circle at top right, rgba(251, 191, 36, .16), transparent 28rem),
+    linear-gradient(135deg, rgba(127, 29, 29, .28), rgba(15, 23, 42, .6));
+  margin-bottom: 1rem;
+}
+
+.sudatori-hero-v618 h2,
+.sudatori-hero-v618 p { margin: .15rem 0; }
+.sudatori-hero-v618 .eyebrow { color: var(--sudatori-accent); letter-spacing: .08em; }
+.sudatori-hero-actions-v618 { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-end; }
+
+.sudatori-kpis-v618 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: .75rem;
+  margin: 1rem 0;
+}
+.sudatori-kpi-v618 {
+  padding: .85rem;
+  border-radius: 16px;
+  border: 1px solid var(--sudatori-border);
+  background: rgba(15, 23, 42, .7);
+}
+.sudatori-kpi-v618 span { display: block; color: var(--sudatori-muted); font-size: .78rem; }
+.sudatori-kpi-v618 strong { display: block; margin-top: .25rem; font-size: 1.45rem; }
+
+.sudatori-toolbar-v618 {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(180px, 260px) auto;
+  gap: .65rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+.sudatori-toolbar-v618 .input,
+.sudatori-toolbar-v618 input,
+.sudatori-toolbar-v618 select {
+  min-height: 42px;
+}
+
+.sudatori-grid-v618 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: .85rem;
+  margin: 1rem 0;
+}
+.sudatori-team-card-v618 {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  min-height: 100%;
+  padding: .9rem;
+  border-radius: 18px;
+  border: 1px solid var(--sudatori-border);
+  background: linear-gradient(180deg, rgba(30,41,59,.92), rgba(15,23,42,.86));
+  color: var(--sudatori-text);
+  cursor: pointer;
+  text-align: left;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+.sudatori-team-card-v618:hover,
+.sudatori-team-card-v618:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(251, 191, 36, .55);
+  outline: none;
+}
+.sudatori-team-card-v618.is-selected {
+  border-color: rgba(251, 191, 36, .9);
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, .14);
+}
+.sudatori-team-card-head-v618 { display: flex; justify-content: space-between; gap: .75rem; align-items: start; }
+.sudatori-team-card-head-v618 h3 { margin: 0; font-size: 1.05rem; }
+.sudatori-badge-v618 {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .22rem .5rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: .72rem;
+  color: #0f172a;
+  background: var(--sudatori-accent);
+  white-space: nowrap;
+}
+.sudatori-card-meta-v618 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .45rem .65rem;
+  font-size: .82rem;
+  color: var(--sudatori-muted);
+}
+.sudatori-card-meta-v618 strong { color: var(--sudatori-text); }
+.sudatori-roster-preview-v618 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-top: auto;
+}
+.sudatori-chip-v618 {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: .2rem .45rem;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  color: var(--sudatori-text);
+  background: rgba(255,255,255,.07);
+  font-size: .74rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sudatori-chip-v618[data-role="P"] { border-color: rgba(251, 191, 36, .5); }
+.sudatori-chip-v618[data-role="D"] { border-color: rgba(52, 211, 153, .5); }
+.sudatori-chip-v618[data-role="C"] { border-color: rgba(56, 189, 248, .5); }
+.sudatori-chip-v618[data-role="A"] { border-color: rgba(248, 113, 113, .5); }
+
+.sudatori-layout-v618 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
+  gap: 1rem;
+  align-items: start;
+}
+.sudatori-section-card-v618 {
+  border: 1px solid var(--sudatori-border);
+  border-radius: 20px;
+  background: rgba(15, 23, 42, .72);
+  overflow: hidden;
+}
+.sudatori-section-card-v618 > header {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  align-items: start;
+  padding: .9rem 1rem;
+  border-bottom: 1px solid var(--sudatori-border);
+  background: rgba(15, 23, 42, .84);
+}
+.sudatori-section-card-v618 h3 { margin: 0; }
+.sudatori-section-card-v618 p { margin: .2rem 0 0; color: var(--sudatori-muted); }
+
+.sudatori-table-wrap-v618 {
+  overflow: auto;
+  max-height: 70vh;
+  -webkit-overflow-scrolling: touch;
+}
+.sudatori-table-v618 {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--sudatori-text);
+  font-size: .86rem;
+}
+.sudatori-table-v618 th,
+.sudatori-table-v618 td {
+  padding: .55rem .65rem;
+  border-bottom: 1px solid rgba(148,163,184,.17);
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.sudatori-table-v618 thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(2, 6, 23, .96);
+  color: #fff;
+  font-size: .74rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.sudatori-table-v618 th:first-child,
+.sudatori-table-v618 td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  min-width: 9rem;
+  max-width: 12rem;
+  white-space: normal;
+  background: rgba(15, 23, 42, .98);
+  box-shadow: 12px 0 18px rgba(0,0,0,.22);
+}
+.sudatori-table-v618 thead th:first-child { z-index: 6; background: rgba(2, 6, 23, .98); }
+.sudatori-player-button-v618 {
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.sudatori-player-button-v618:hover { color: var(--sudatori-accent); text-decoration: underline; }
+.sudatori-role-v618 {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 1.8rem;
+  padding: .12rem .35rem;
+  border-radius: 999px;
+  font-weight: 900;
+  color: #0f172a;
+}
+.sudatori-role-v618[data-role="P"] { background: #fbbf24; }
+.sudatori-role-v618[data-role="D"] { background: #34d399; }
+.sudatori-role-v618[data-role="C"] { background: #38bdf8; }
+.sudatori-role-v618[data-role="A"] { background: #fb7185; }
+
+.sudatori-friendlies-v618 { display: grid; gap: .55rem; padding: 1rem; }
+.sudatori-friendly-v618 {
+  padding: .7rem;
+  border: 1px solid var(--sudatori-border);
+  border-radius: 14px;
+  background: rgba(30,41,59,.72);
+}
+.sudatori-friendly-v618 strong { display: block; }
+.sudatori-friendly-v618 small { color: var(--sudatori-muted); }
+
+.sudatori-player-panel-v618 {
+  position: sticky;
+  top: .75rem;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+.sudatori-player-body-v618 { padding: 1rem; display: grid; gap: .85rem; }
+.sudatori-player-empty-v618 { padding: 1rem; color: var(--sudatori-muted); }
+.sudatori-param-grid-v618 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .5rem;
+}
+.sudatori-param-v618 {
+  padding: .6rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+}
+.sudatori-param-v618 span { display:block; color: var(--sudatori-muted); font-size: .72rem; }
+.sudatori-param-v618 strong { display:block; margin-top:.15rem; color:#fff; }
+.sudatori-note-v618 {
+  padding: .7rem;
+  border-left: 3px solid var(--sudatori-accent);
+  border-radius: 12px;
+  background: rgba(251, 191, 36, .09);
+  color: #fde68a;
+}
+.sudatori-market-note-v618 {
+  padding: .7rem;
+  border-radius: 12px;
+  background: rgba(56,189,248,.09);
+  border: 1px solid rgba(56,189,248,.22);
+}
+.sudatori-sources-v618 { font-size: .78rem; color: var(--sudatori-muted); }
+.sudatori-sources-v618 a { color: var(--sudatori-accent-2); }
+
+@media (max-width: 860px) {
+  .sudatori-hero-v618,
+  .sudatori-layout-v618,
+  .sudatori-toolbar-v618 { grid-template-columns: 1fr; }
+  .sudatori-hero-actions-v618 { justify-content: stretch; }
+  .sudatori-hero-actions-v618 .button { width: 100%; }
+  .sudatori-kpis-v618 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sudatori-player-panel-v618 { position: static; max-height: none; }
+  .sudatori-table-v618 { font-size: .82rem; }
+  .sudatori-table-v618 th, .sudatori-table-v618 td { padding: .5rem .55rem; }
+  .sudatori-table-v618 th:first-child, .sudatori-table-v618 td:first-child { min-width: 8.2rem; max-width: 9.4rem; }
+}
+
+@media (max-width: 520px) {
+  .sudatori-kpis-v618 { grid-template-columns: 1fr 1fr; }
+  .sudatori-grid-v618 { grid-template-columns: 1fr; }
+  .sudatori-param-grid-v618 { grid-template-columns: 1fr; }
+}
+
+/* V618 - Probable lineup pitch, intentionally scoped to Sudatori only. */
+.sudatori-pitch-card-v618 {
+  margin: 1rem;
+  border: 1px solid rgba(148,163,184,.22);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(2, 6, 23, .42);
+}
+.sudatori-pitch-head-v618 {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  align-items: start;
+  padding: .8rem .9rem;
+  border-bottom: 1px solid rgba(148,163,184,.18);
+}
+.sudatori-pitch-head-v618 h4 { margin: 0; }
+.sudatori-pitch-head-v618 p { margin: .18rem 0 0; color: var(--sudatori-muted); }
+.sudatori-pitch-head-v618 > span {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: .25rem .55rem;
+  color: #0f172a;
+  background: var(--sudatori-accent);
+  font-size: .74rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.sudatori-pitch-v618 {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(5, minmax(70px, auto));
+  gap: .55rem;
+  min-height: 520px;
+  padding: 1rem .85rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,.08) 0 5.8rem, transparent 5.9rem),
+    linear-gradient(90deg, rgba(255,255,255,.09) 0 1px, transparent 1px),
+    linear-gradient(180deg, rgba(34, 197, 94, .88), rgba(21, 128, 61, .92));
+  background-size: auto, 50% 100%, auto;
+  border-radius: 0 0 18px 18px;
+}
+.sudatori-pitch-v618::before {
+  content: '';
+  position: absolute;
+  inset: .7rem;
+  border: 2px solid rgba(255,255,255,.22);
+  border-radius: 12px;
+  pointer-events: none;
+}
+.sudatori-pitch-v618::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: .7rem;
+  right: .7rem;
+  border-top: 2px solid rgba(255,255,255,.2);
+  pointer-events: none;
+}
+.sudatori-pitch-marking { position: absolute; pointer-events: none; }
+.sudatori-pitch-marking-box-a,
+.sudatori-pitch-marking-box-b {
+  left: 28%;
+  width: 44%;
+  height: 58px;
+  border: 2px solid rgba(255,255,255,.16);
+  border-radius: 0 0 18px 18px;
+}
+.sudatori-pitch-marking-box-a { top: .7rem; }
+.sudatori-pitch-marking-box-b { bottom: .7rem; transform: rotate(180deg); }
+.sudatori-pitch-line-v618 {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.sudatori-pitch-line-attack-v618 { grid-row: 1; }
+.sudatori-pitch-line-attackingMidfield-v618 { grid-row: 2; }
+.sudatori-pitch-line-midfield-v618 { grid-row: 3; }
+.sudatori-pitch-line-defense-v618 { grid-row: 4; }
+.sudatori-pitch-line-goalkeeper-v618 { grid-row: 5; }
+.sudatori-pitch-line-bench-v618 { grid-row: 5; align-items: end; opacity: .92; }
+.sudatori-pitch-player-v618 {
+  min-width: min(130px, 42vw);
+  max-width: 165px;
+  padding: .42rem .48rem;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, .84);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  text-align: center;
+  cursor: pointer;
+}
+.sudatori-pitch-player-v618:hover,
+.sudatori-pitch-player-v618:focus-visible {
+  outline: 2px solid rgba(251,191,36,.9);
+  outline-offset: 2px;
+}
+.sudatori-pitch-player-v618 strong {
+  display: block;
+  font-size: .78rem;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+.sudatori-pitch-player-v618 small {
+  display: block;
+  margin-top: .12rem;
+  color: #d1fae5;
+  font-size: .65rem;
+  line-height: 1.15;
+}
+.sudatori-pitch-empty-v618 {
+  margin: 1rem;
+  padding: .8rem;
+  border: 1px dashed rgba(148,163,184,.3);
+  border-radius: 14px;
+  color: var(--sudatori-muted);
+  background: rgba(15,23,42,.5);
+}
+
+@media (max-width: 860px) {
+  .sudatori-pitch-card-v618 { margin: .85rem; }
+  .sudatori-pitch-v618 { min-height: 500px; gap: .45rem; padding: .85rem .5rem; }
+  .sudatori-pitch-player-v618 { min-width: min(112px, 38vw); max-width: 138px; padding: .36rem .4rem; }
+  .sudatori-pitch-player-v618 strong { font-size: .72rem; }
+  .sudatori-pitch-player-v618 small { font-size: .6rem; }
+}
+
+/* V618 - Team transfer talks */
+.sudatori-transfer-talks-v618 {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 1rem;
+  background: rgba(15, 23, 42, .45);
+}
+.sudatori-transfer-talks-v618 > header {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  align-items: flex-start;
+  margin-bottom: .85rem;
+}
+.sudatori-transfer-talks-v618 h4 {
+  margin: 0 0 .25rem;
+  color: #f8fafc;
+}
+.sudatori-transfer-talks-v618 p {
+  margin: 0;
+  color: rgba(226, 232, 240, .78);
+}
+.sudatori-transfer-grid-v618 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .7rem;
+}
+.sudatori-transfer-card-v618 {
+  border: 1px solid rgba(148, 163, 184, .25);
+  border-radius: .85rem;
+  padding: .78rem;
+  background: rgba(2, 6, 23, .55);
+  color: #f8fafc;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, .18);
+}
+.sudatori-transfer-head-v618 {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: .45rem;
+}
+.sudatori-transfer-card-v618 strong {
+  color: #fff;
+  font-size: .98rem;
+}
+.sudatori-transfer-card-v618 p {
+  margin: 0 0 .35rem;
+  font-size: .88rem;
+}
+.sudatori-transfer-card-v618 small,
+.sudatori-transfer-card-v618 a {
+  color: rgba(226, 232, 240, .82);
+}
+.sudatori-transfer-note-v618 {
+  margin-top: .5rem;
+  padding-top: .5rem;
+  border-top: 1px solid rgba(148, 163, 184, .18);
+  color: rgba(226, 232, 240, .82);
+  font-size: .82rem;
+  line-height: 1.35;
+}
+@media (max-width: 720px) {
+  .sudatori-transfer-talks-v618 { padding: .8rem; }
+  .sudatori-transfer-talks-v618 > header { flex-direction: column; }
+  .sudatori-transfer-grid-v618 { grid-template-columns: 1fr; }
+}
+
+
+/* V618 - SOS Fanta infortuni con contrasto scuro, allineati alle card trattative. */
+.sudatori-injuries-v618 {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(248, 113, 113, .34);
+  border-radius: 1rem;
+  background:
+    radial-gradient(circle at top right, rgba(248, 113, 113, .13), transparent 18rem),
+    rgba(15, 23, 42, .45);
+}
+.sudatori-injuries-v618 > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .85rem;
+}
+.sudatori-injuries-v618 h4 {
+  margin: 0 0 .25rem;
+  color: #f8fafc;
+}
+.sudatori-injuries-v618 p {
+  margin: 0;
+  color: rgba(226, 232, 240, .82);
+}
+.sudatori-injury-grid-v618 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .8rem;
+}
+.sudatori-injury-card-v618 {
+  border: 1px solid rgba(148, 163, 184, .25);
+  border-radius: .85rem;
+  padding: .78rem;
+  background: rgba(2, 6, 23, .55);
+  color: #f8fafc;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, .18);
+}
+.sudatori-injury-head-v618 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+  margin-bottom: .45rem;
+}
+.sudatori-injury-head-v618 strong {
+  color: #fff;
+  font-size: .98rem;
+}
+.sudatori-injury-card-v618 p {
+  margin: 0 0 .35rem;
+  color: #f8fafc;
+  font-size: .88rem;
+}
+.sudatori-injury-card-v618 small,
+.sudatori-injury-card-v618 a {
+  color: rgba(226, 232, 240, .86);
+}
+.sudatori-injury-card-v618 a {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.sudatori-injury-note-v618 {
+  margin-top: .5rem;
+  padding-top: .5rem;
+  border-top: 1px solid rgba(148, 163, 184, .18);
+  color: rgba(226, 232, 240, .84);
+  background: transparent;
+  border-radius: 0;
+  font-size: .82rem;
+  line-height: 1.35;
+}
+.sudatori-physical-v618 {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  border-radius: 999px;
+  padding: .2rem .55rem;
+  font-size: .78rem;
+  font-weight: 700;
+  border: 1px solid rgba(34, 197, 94, .28);
+  background: rgba(34,197,94,.16);
+  color: #bbf7d0;
+}
+.sudatori-physical-v618.is-risk {
+  border-color: rgba(245,158,11,.34);
+  background: rgba(245,158,11,.17);
+  color: #fde68a;
+}
+.sudatori-physical-v618.is-out {
+  border-color: rgba(248,113,113,.38);
+  background: rgba(239,68,68,.18);
+  color: #fecaca;
+}
+.sudatori-pitch-player-v618.is-external {
+  opacity: .82;
+  border-style: dashed;
+}
+.sudatori-pitch-module-note-v618 {
+  margin-top: .35rem;
+  color: var(--sudatori-muted);
+  font-size: .82rem;
+}
+
+/* V618 - sul campetto mostra solo segnalazioni fisiche reali, sempre in rosso. */
+.sudatori-pitch-player-v618 .sudatori-physical-v618.is-field-alert {
+  margin-top: .3rem;
+  border-color: rgba(248, 113, 113, .55);
+  background: rgba(185, 28, 28, .92);
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.1) inset;
+}
+
+/* V618 - Market flags in roster table: one compact state per player. */
+.sudatori-market-stack-v618 {
+  display: inline-flex;
+  align-items: center;
+  gap: .28rem;
+}
+.sudatori-market-flag-v618 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.6rem;
+  border-radius: 999px;
+  padding: .22rem .58rem;
+  border: 1px solid rgba(148, 163, 184, .35);
+  background: rgba(15, 23, 42, .72);
+  color: rgba(226, 232, 240, .92);
+  font-size: .72rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sudatori-market-flag-v618.is-new {
+  border-color: rgba(34, 197, 94, .50);
+  background: rgba(22, 101, 52, .78);
+  color: #dcfce7;
+}
+.sudatori-market-flag-v618.is-rumor {
+  border-color: rgba(251, 191, 36, .55);
+  background: rgba(146, 64, 14, .80);
+  color: #fef3c7;
+}
+.sudatori-market-flag-v618.is-confirmed {
+  border-color: rgba(148, 163, 184, .30);
+  background: rgba(30, 41, 59, .72);
+  color: rgba(226, 232, 240, .82);
+}
+.sudatori-market-muted-v618,
+.sudatori-market-more-v618 {
+  color: rgba(226, 232, 240, .65);
+  font-size: .78rem;
+}
+
+
+
+
+/* V618 - Market overview by team: officialities and talks split in/out. */
+.sudatori-market-overview-v618 {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 1rem;
+  background: rgba(15, 23, 42, .42);
+}
+.sudatori-market-overview-v618 > header {
+  margin-bottom: .85rem;
+}
+.sudatori-market-overview-v618 h4 {
+  margin: 0 0 .25rem;
+  color: #f8fafc;
+}
+.sudatori-market-overview-v618 p {
+  margin: 0;
+  color: rgba(226, 232, 240, .78);
+}
+.sudatori-market-summary-grid-v618 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+.sudatori-market-summary-block-v618 {
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: .9rem;
+  background: rgba(2, 6, 23, .48);
+  padding: .8rem;
+  min-width: 0;
+}
+.sudatori-market-summary-block-v618 h5 {
+  margin: 0 0 .6rem;
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  color: #fff;
+  font-size: .9rem;
+}
+.sudatori-market-summary-block-v618 h5 span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.8rem;
+  border-radius: 999px;
+  background: rgba(251, 191, 36, .16);
+  color: #fde68a;
+  font-size: .76rem;
+}
+.sudatori-market-summary-block-v618 ul,
+.sudatori-transfer-sources-v618 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: .45rem;
+}
+.sudatori-market-summary-item-v618 {
+  padding: .5rem;
+  border-radius: .7rem;
+  background: rgba(15, 23, 42, .62);
+  border: 1px solid rgba(148, 163, 184, .14);
+}
+.sudatori-market-summary-item-v618 strong,
+.sudatori-market-summary-item-v618 small {
+  display: block;
+}
+.sudatori-market-summary-item-v618 small,
+.sudatori-market-summary-meta-v618,
+.sudatori-market-summary-meta-v618 a,
+.sudatori-market-summary-more-v618,
+.sudatori-transfer-sources-v618,
+.sudatori-transfer-sources-v618 a {
+  color: rgba(226, 232, 240, .78);
+  font-size: .78rem;
+}
+.sudatori-market-summary-meta-v618 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-top: .25rem;
+}
+.sudatori-market-summary-block-v618[data-kind="official-in"] { border-color: rgba(34, 197, 94, .34); }
+.sudatori-market-summary-block-v618[data-kind="official-out"] { border-color: rgba(248, 113, 113, .34); }
+.sudatori-market-summary-block-v618[data-kind="talk-in"] { border-color: rgba(56, 189, 248, .30); }
+.sudatori-market-summary-block-v618[data-kind="talk-out"] { border-color: rgba(251, 191, 36, .30); }
+.sudatori-transfer-sources-v618 {
+  margin-top: .5rem;
+  padding-top: .5rem;
+  border-top: 1px solid rgba(148, 163, 184, .16);
+}
+.sudatori-transfer-direction-v618 {
+  font-weight: 800;
+  color: #fde68a;
+}
+@media (max-width: 860px) {
+  .sudatori-market-summary-grid-v618 { grid-template-columns: 1fr; }
+}

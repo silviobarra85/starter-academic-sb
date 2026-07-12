@@ -1,5 +1,5 @@
 {
-  "version": "V617",
+  "version": "V618",
   "current": "sudatori-data.json",
   "updatedAt": "2026-07-12",
   "updateSlot": "excel-2026-07-12-mercato-fonti-extra-v2",
@@ -19,7 +19,7 @@
   "formationMissingPlayers": 0,
   "officialRows": 268,
   "filteredOfficialTalks": 0,
-  "note": "V617: Excel mercato/fonti extra v2; aggiunte 7 fonti, 10 righe trattative e 2 fonti di controllo ritiri/amichevoli. Per i SUDATORI e ioSudo condividono gli stessi dati; ufficialita escluse dalle trattative. Merge alias/surname card eseguito: 16 duplicati aggregati.",
+  "note": "V618: runtime live rosters. Per i SUDATORI e ioSudo leggono le assegnazioni fantacalcio da assets/rose/manifest.json della lega, mentre mercato, fonti, infortuni e probabili formazioni restano nel JSON Sudatori condiviso.",
   "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
   "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
   "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
@@ -29,5 +29,9 @@
   "extraTalkRowsAdded": 10,
   "extraControlFriendliesSourcesAdded": 2,
   "aggregatedTalkRowsV617": 4,
-  "surnameAliasCardsMergedV617": 16
+  "surnameAliasCardsMergedV617": 16,
+  "liveRosterRuntime": true,
+  "liveRosterRuntimeSource": "assets/rose/manifest.json",
+  "ioSudoLiveRosters": true,
+  "sudatoriLiveRosters": true
 }

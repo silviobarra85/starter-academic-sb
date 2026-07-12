@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "617",
+  "currentVersion": "618",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -172,18 +172,22 @@
     "rosterMobileColumnFitVersion": "V568",
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
-    "sudatoriStandaloneSectionVersion": "V617",
+    "sudatoriStandaloneSectionVersion": "V618",
     "sudatoriSection": true,
-    "sudatoriSectionVersion": "V617",
+    "sudatoriSectionVersion": "V618",
     "sudatoriMarketSummary": true,
-    "sudatoriMarketSummaryVersion": "V617",
+    "sudatoriMarketSummaryVersion": "V618",
     "ioSudoPwa": true,
-    "ioSudoPwaVersion": "V617",
+    "ioSudoPwaVersion": "V618",
     "ioSudoPwaDataSource": "static/fanta-engine/data/sudatori/current/manifest.json",
-    "ioSudoTeamCardColors": "V617",
-    "ioSudoMarketSourceLinks": "V617",
-    "ioSudoPitchSourcesFix": "V617",
-    "ioSudoSharedSudatoriDataVersion": "V617"
+    "ioSudoTeamCardColors": "V618",
+    "ioSudoMarketSourceLinks": "V618",
+    "ioSudoPitchSourcesFix": "V618",
+    "ioSudoSharedSudatoriDataVersion": "V618",
+    "sudatoriLiveRosters": "V618",
+    "sudatoriLiveRostersSource": "assets/rose/manifest.json",
+    "ioSudoLiveRosters": "V618",
+    "ioSudoTeamCardIndividualThemes": "V618"
   },
   "guardrails": {
     "sandboxClone": true,
@@ -598,7 +602,7 @@
   "multiLeague": {
     "status": "standard-admin-v467"
   },
-  "version": 547,
+  "version": 548,
   "runtime": {
     "emailJsPresidentToolsVersion": "478",
     "emailJsServiceId": "service_ttjf7js",

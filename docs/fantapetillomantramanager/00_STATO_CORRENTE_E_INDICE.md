@@ -1,3 +1,3 @@
 # Stato corrente fantapetillomantramanager
 
-V617 applica dati Sudatori aggiornati da Excel mercato/fonti extra e aggiorna ioSudo alla stessa fonte dati condivisa.
+V618 aggiorna Per i SUDATORI e ioSudo con supporto alla lettura live delle rose fantacalcio da `assets/rose` quando disponibili. I dati mercato/SOS/XI restano nel dataset Sudatori condiviso.

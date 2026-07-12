@@ -1,10 +1,12 @@
 # Overlay Roadmap
 
-## V617
-- Aggiornamento Per i SUDATORI con Excel mercato/fonti extra.
-- Aggiornamento JSON condiviso con ioSudo.
-- Bump app shell ioSudo a V617 per cache refresh.
-- Riepilogo mercato squadra mantenuto: ufficialita in/out e trattative in/out.
+## V618 - Sudatori/ioSudo live rosters
+
+- Per i SUDATORI legge a runtime le rose fantacalcio dalla stessa fonte della sezione Rose.
+- ioSudo legge a runtime le stesse rose della lega.
+- Il JSON Sudatori resta la fonte per mercato, ufficialità, rumors, infortuni, probabili XI e amichevoli.
+- Le modifiche future ai file `assets/rose` aggiornano anche Per i SUDATORI e ioSudo senza rigenerare il dataset Sudatori.
+- ioSudo differenzia le card squadra con pattern individuali anche per squadre con gli stessi colori.
 
 ## V617 - Sudatori/ioSudo mercato fonti extra v2
 

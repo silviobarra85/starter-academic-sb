@@ -21,13 +21,15 @@
     "officialOutgoing": 135,
     "officialMoves": 232,
     "filteredOfficialTalks": 0,
-    "version": "V617",
+    "version": "V618",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-    "note": "V617: Excel mercato/fonti extra v2; aggiunte 7 fonti, 10 righe trattative e 2 fonti di controllo ritiri/amichevoli. Per i SUDATORI e ioSudo condividono gli stessi dati; ufficialita escluse dalle trattative. Merge alias/surname card eseguito: 16 duplicati aggregati.",
+    "note": "V618: runtime live rosters. Per i SUDATORI e ioSudo leggono le assegnazioni fantacalcio da assets/rose/manifest.json della lega, mentre mercato, fonti, infortuni e probabili formazioni restano nel JSON Sudatori condiviso.",
     "officialRows": 268,
-    "sources": 102
+    "sources": 102,
+    "liveRosterRuntime": true,
+    "liveRosterRuntimeSource": "assets/rose/manifest.json"
   },
   "teams": [
     {
@@ -109973,5 +109975,10 @@
       "note": "Fonte alternativa utile quando TMW/SportMediaset non riportano dettagli completi su una squadra.",
       "status": "Fonte controllo"
     }
+  ],
+  "updateLogV618": [
+    "Aggiunto caricamento runtime delle rose di lega per Per i SUDATORI e ioSudo.",
+    "Le assegnazioni fantacalcio non sono piu affidate allo snapshot fantasyRoster dentro sudatori-data.json quando e disponibile assets/rose.",
+    "ioSudo: card squadra differenziate con pattern cromatici individuali anche per club con colori simili."
   ]
 }
