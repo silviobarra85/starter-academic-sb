@@ -12,3 +12,8 @@
 
 - Aggiornati i dati condivisi da Per i SUDATORI e ioSudo con il nuovo Excel.
 - Aggiunte fonti extra, nuove trattative e fonti di controllo ritiri/amichevoli senza duplicare le card giocatore.
+
+## V619 - Sudatori/ioSudo mercato fonti extra v3
+- Aggiornamento dati da Excel 12/07 v3.
+- Fonti/trattative extra aggregate senza duplicare card.
+- Live roster runtime confermato.

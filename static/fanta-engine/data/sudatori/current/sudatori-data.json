@@ -4,14 +4,14 @@
     "label": "Per i SUDATORI",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-12",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-12_mercato_fonti_extra_v2(1).xlsx",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-12_mercato_fonti_extra_v3(1).xlsx",
     "listoneFile": "2026-07-04.json",
     "listoneId": "2026-07-04",
     "teams": 20,
     "players": 714,
     "friendlies": 90,
-    "marketNotes": 445,
-    "teamTransferTalks": 171,
+    "marketNotes": 451,
+    "teamTransferTalks": 172,
     "injuries": 7,
     "formationTeams": 20,
     "formationMissingPlayers": 0,
@@ -21,15 +21,23 @@
     "officialOutgoing": 135,
     "officialMoves": 232,
     "filteredOfficialTalks": 0,
-    "version": "V618",
+    "version": "V619",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-    "note": "V618: runtime live rosters. Per i SUDATORI e ioSudo leggono le assegnazioni fantacalcio da assets/rose/manifest.json della lega, mentre mercato, fonti, infortuni e probabili formazioni restano nel JSON Sudatori condiviso.",
+    "note": "V619: aggiornamento da Excel mercato_fonti_extra_v3; aggiunte fonti extra, righe di controllo ritiri/amichevoli e nuove segnalazioni mercato aggregate senza duplicare card. Runtime live rosters V618 mantenuto.",
     "officialRows": 268,
-    "sources": 102,
+    "sources": 109,
     "liveRosterRuntime": true,
-    "liveRosterRuntimeSource": "assets/rose/manifest.json"
+    "liveRosterRuntimeSource": "assets/rose/manifest.json",
+    "extraSourcesAddedV619": 7,
+    "extraTalkRowsAddedV619": 7,
+    "extraControlFriendliesSourcesAddedV619": 3,
+    "activeTalkCardsAddedV619": 1,
+    "mergedTalkRowsV619": 4,
+    "controlOfficialRowsMergedV619": 2,
+    "ioSudoLiveRosters": true,
+    "sudatoriLiveRosters": true
   },
   "teams": [
     {
@@ -87,8 +95,8 @@
       "injuriesPreview": "",
       "officialIncomingCount": 3,
       "officialOutgoingCount": 9,
-      "talksIncomingCount": 6,
-      "talksOutgoingCount": 2
+      "talksIncomingCount": 7,
+      "talksOutgoingCount": 1
     },
     {
       "id": "cagliari",
@@ -425,7 +433,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 5,
+      "transferTalksCount": 6,
       "transferTalksPreview": "Jesper Lindstrom, Antonio Nusa, Dodo, Exequiel Zeballos, Vicario",
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 4-3-3",
@@ -436,7 +444,7 @@
       "officialIncomingCount": 7,
       "officialOutgoingCount": 2,
       "talksIncomingCount": 4,
-      "talksOutgoingCount": 1
+      "talksOutgoingCount": 2
     },
     {
       "id": "parma",
@@ -580,8 +588,8 @@
       "injuriesPreview": "Giorgi Chakvetadze",
       "officialIncomingCount": 6,
       "officialOutgoingCount": 4,
-      "talksIncomingCount": 8,
-      "talksOutgoingCount": 3
+      "talksIncomingCount": 9,
+      "talksOutgoingCount": 2
     },
     {
       "id": "venezia",
@@ -48679,6 +48687,16 @@
         "updatedAt": "2026-07-11",
         "team": "Como",
         "teamId": "como"
+      },
+      {
+        "type": "Trattativa/monitoraggio",
+        "status": "CONTROLLO",
+        "note": "ANSA cita il Como come club molto attivo e il blocco/valorizzazione di Nico Paz. Nel file esiste gia come ufficialita; riga solo di controllo valore/centralita.",
+        "source": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
+        "sourceName": "ANSA",
+        "updatedAt": "2026-07-12",
+        "team": "Como",
+        "teamId": "como"
       }
     ],
     "sergi roberto": [
@@ -51609,6 +51627,16 @@
         "updatedAt": "2026-07-12",
         "team": "Frosinone",
         "teamId": "frosinone"
+      },
+      {
+        "type": "Trattativa/monitoraggio",
+        "status": "RUMOR",
+        "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
+        "source": "https://www.sosfanta.com/calciomercato/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Frosinone",
+        "teamId": "frosinone"
       }
     ],
     "casseres": [
@@ -51811,6 +51839,16 @@
         "updatedAt": "2026-07-11",
         "team": "Inter",
         "teamId": "inter"
+      },
+      {
+        "type": "Trattativa/monitoraggio",
+        "status": "RUMOR",
+        "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
+        "source": "https://calciominuto.com/italia/serie-a/",
+        "sourceName": "CalcioMinuto",
+        "updatedAt": "2026-07-12",
+        "team": "Inter",
+        "teamId": "inter"
       }
     ],
     "guela doue": [
@@ -51915,6 +51953,16 @@
         "source": "https://www.tuttomercatoweb.com/serie-a/juventus-martinez-trattative-vivo-l-aston-villa-abbassa-richieste-2251924",
         "sourceName": "TMW",
         "updatedAt": "2026-07-10",
+        "team": "Juventus",
+        "teamId": "juventus"
+      },
+      {
+        "type": "Trattativa/monitoraggio",
+        "status": "RUMOR",
+        "note": "Fonte estera: Aston Villa disposta ad abbassare la richiesta dopo contatti con la Juventus. Da verificare su fonti italiane e club.",
+        "source": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+        "sourceName": "BWRAO",
+        "updatedAt": "2026-07-12",
         "team": "Juventus",
         "teamId": "juventus"
       }
@@ -53225,6 +53273,16 @@
         "updatedAt": "2026-07-12",
         "team": "Roma",
         "teamId": "roma"
+      },
+      {
+        "type": "Trattativa/monitoraggio",
+        "status": "RUMOR",
+        "note": "Confermata come voce da monitorare: AS parla di accordo per rinnovo annuale con opzione; resta in Trattative finche manca annuncio ufficiale.",
+        "source": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+        "sourceName": "AS",
+        "updatedAt": "2026-07-12",
+        "team": "Roma",
+        "teamId": "roma"
       }
     ],
     "mateo pellegrino": [
@@ -53237,6 +53295,18 @@
         "updatedAt": "2026-07-12",
         "team": "Juventus",
         "teamId": "juventus"
+      }
+    ],
+    "goncalo ramos": [
+      {
+        "type": "Trattativa/monitoraggio",
+        "status": "CONTROLLO",
+        "note": "ANSA richiama l investimento del Milan per Goncalo Ramos e Gila. Nel file Goncalo Ramos e gia in Ufficialita; riga di controllo per evitare duplicati.",
+        "source": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
+        "sourceName": "ANSA",
+        "updatedAt": "2026-07-12",
+        "team": "Milan",
+        "teamId": "milan"
       }
     ]
   },
@@ -58567,12 +58637,6 @@
       "consultedAt": "2026-07-10"
     },
     {
-      "name": "Fonti aggiunte per controllo formazioni coerenti",
-      "url": "",
-      "use": "",
-      "consultedAt": ""
-    },
-    {
       "name": "Probabili formazioni / mercato squadra per squadra",
       "url": "Sky Sport - pagine squadra Serie A 2026/27",
       "use": "https://sport.sky.it/calciomercato/tabellone",
@@ -58963,6 +59027,12 @@
       "consultedAt": "2026-07-12"
     },
     {
+      "name": "SOS Fanta calciomercato",
+      "url": "https://www.sosfanta.com/calciomercato/",
+      "use": "Fonte fantacalcio per impatto mercato, titolarita, ballottaggi e news utili all asta.",
+      "consultedAt": "2026-07-12"
+    },
+    {
       "name": "SOS Fanta news",
       "url": "https://www.sosfanta.com/news/",
       "use": "Fonte h24 per aggiornamenti fantacalcio: mercato, infortunati, ritiri e gerarchie provvisorie.",
@@ -58990,6 +59060,48 @@
       "name": "Corriere ritiri e amichevoli Serie A",
       "url": "https://www.corriere.it/sport/calcio/serie-a/cards/ritiri-amichevoli-serie-a-2026-2027-date-partite/",
       "use": "Fonte alternativa per date ritiri, luoghi e amichevoli estive.",
+      "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "ANSA punto calciomercato Serie A 12/07/2026",
+      "url": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
+      "use": "Fonte giornalistica generalista/autorevole per quadro Serie A: Milan e Como attive, Napoli/Juventus in stallo; utile come controllo macro.",
+      "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "Fantacalcio.it ultime calciomercato",
+      "url": "https://www.fantacalcio.it/calciomercato-ultime",
+      "use": "Fonte specifica fantacalcio con ultime mercato aggiornate minuto per minuto; utile per impatto asta, ruoli e gerarchie.",
+      "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "Fantacalcio.it calciomercato",
+      "url": "https://www.fantacalcio.it/calciomercato",
+      "use": "Pagina redazionale con news, trattative, indiscrezioni e ufficialita di Serie A ed Europa.",
+      "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "TuttoFantacalcio news fantacalcio",
+      "url": "https://www.tuttofantacalcio.it/",
+      "use": "Fonte fantasy-oriented per schede giocatore, consigli asta e aggiornamenti sui nuovi arrivi.",
+      "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "TuttoFantacalcio ritiri Serie A 26/27",
+      "url": "https://www.tuttofantacalcio.it/news-calcio/serie-a-date-ritiri-20-squadre-stagione-2026-2027-33541",
+      "use": "Fonte aggiornata al 12/07 per date, sedi dei ritiri e amichevoli fissate delle 20 squadre.",
+      "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "TMW ritiri/amichevoli aggiornamento 12/07",
+      "url": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
+      "use": "Fonte in aggiornamento per programma precampionato, raduni, ritiri e amichevoli; utile per controlli giornalieri.",
+      "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "CalcioMinuto Serie A ultime",
+      "url": "https://calciominuto.com/italia/serie-a/",
+      "use": "Aggregatore utile per intercettare rapidamente aggiornamenti su singoli casi come Khalaili e Soulé; da confermare sempre con fonte primaria.",
       "consultedAt": "2026-07-12"
     }
   ],
@@ -62712,7 +62824,7 @@
         "probability": "",
         "updatedAt": "2026-07-12",
         "reliability": "Media",
-        "note": "Fatta / visite mediche attese",
+        "note": "Fatta / visite mediche attese | SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
         "check": "",
         "rule": "",
         "sources": [
@@ -62724,6 +62836,16 @@
             "status": "Fatta / visite mediche attese",
             "updatedAt": "2026-07-12",
             "note": "",
+            "probability": ""
+          },
+          {
+            "source": "https://www.sosfanta.com/calciomercato/",
+            "url": "https://www.sosfanta.com/calciomercato/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "status": "Chiusura segnalata / da ufficializzare",
+            "updatedAt": "2026-07-12",
+            "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
             "probability": ""
           }
         ],
@@ -62749,6 +62871,28 @@
             "note": "",
             "check": "",
             "rule": ""
+          },
+          {
+            "teamId": "frosinone",
+            "teamName": "Frosinone",
+            "target": "Anouar El Azzouzi",
+            "playerName": "Anouar El Azzouzi",
+            "roleBrief": "C",
+            "role": "Centrocampista",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Chiusura segnalata / da ufficializzare",
+            "origin": "Svincolato / ultima esperienza Bologna",
+            "source": "https://www.sosfanta.com/calciomercato/",
+            "url": "https://www.sosfanta.com/calciomercato/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
         "sourcesCount": 1
@@ -63670,7 +63814,7 @@
         "probability": "",
         "updatedAt": "2026-07-12",
         "reliability": "Media",
-        "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale.",
+        "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
         "check": "Da monitorare",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -63692,6 +63836,16 @@
             "status": "Visite mediche / operazione da verificare",
             "updatedAt": "2026-07-12",
             "note": "SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale.",
+            "probability": ""
+          },
+          {
+            "source": "https://calciominuto.com/italia/serie-a/",
+            "url": "https://calciominuto.com/italia/serie-a/",
+            "sourceName": "CalcioMinuto",
+            "sourceLabel": "CalcioMinuto",
+            "status": "Visite/idoneita da approfondire",
+            "updatedAt": "2026-07-12",
+            "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
             "probability": ""
           }
         ],
@@ -63738,6 +63892,28 @@
             "reliability": "Media",
             "note": "SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale.",
             "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          },
+          {
+            "teamId": "inter",
+            "teamName": "Inter",
+            "target": "Anan Khalaili",
+            "playerName": "Anan Khalaili",
+            "roleBrief": "A",
+            "role": "Esterno/attaccante",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Visite/idoneita da approfondire",
+            "origin": "Da confermare",
+            "source": "https://calciominuto.com/italia/serie-a/",
+            "url": "https://calciominuto.com/italia/serie-a/",
+            "sourceName": "CalcioMinuto",
+            "sourceLabel": "CalcioMinuto",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
+            "check": "Da monitorare",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
@@ -64476,7 +64652,7 @@
         "probability": "",
         "updatedAt": "2026-07-10",
         "reliability": "Media",
-        "note": "Trattativa nel vivo; giocatore disponibile, distanza ridotta. | Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+        "note": "Trattativa nel vivo; giocatore disponibile, distanza ridotta. | Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale. | Fonte estera: Aston Villa disposta ad abbassare la richiesta dopo contatti con la Juventus. Da verificare su fonti italiane e club.",
         "check": "Da monitorare",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -64498,6 +64674,16 @@
             "status": "Trattativa/Interesse",
             "updatedAt": "2026-07-10",
             "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+            "url": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+            "sourceName": "BWRAO",
+            "sourceLabel": "BWRAO",
+            "status": "Contatti / richiesta in calo",
+            "updatedAt": "2026-07-12",
+            "note": "Fonte estera: Aston Villa disposta ad abbassare la richiesta dopo contatti con la Juventus. Da verificare su fonti italiane e club.",
             "probability": ""
           }
         ],
@@ -64545,6 +64731,28 @@
             "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
             "check": "Aggiornare rosa se ufficiale",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+          },
+          {
+            "teamId": "juventus",
+            "teamName": "Juventus",
+            "target": "Emiliano Martinez",
+            "playerName": "Emiliano Martinez",
+            "roleBrief": "P",
+            "role": "Portiere",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Contatti / richiesta in calo",
+            "origin": "Aston Villa",
+            "source": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+            "url": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+            "sourceName": "BWRAO",
+            "sourceLabel": "BWRAO",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Fonte estera: Aston Villa disposta ad abbassare la richiesta dopo contatti con la Juventus. Da verificare su fonti italiane e club.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
         "sourcesCount": 2
@@ -67902,6 +68110,64 @@
           }
         ],
         "sourcesCount": 1
+      },
+      {
+        "teamId": "napoli",
+        "teamName": "Napoli",
+        "target": "Rosa da sfoltire",
+        "playerName": "Rosa da sfoltire",
+        "roleBrief": "VAR",
+        "role": "Rosa",
+        "direction": "outgoing",
+        "directionLabel": "Uscita/Strategia",
+        "status": "Strategia mercato",
+        "origin": "Uscite da definire",
+        "source": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+        "url": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+        "sourceName": "AS",
+        "sourceLabel": "AS",
+        "probability": "",
+        "updatedAt": "2026-07-12",
+        "reliability": "Media",
+        "note": "De Laurentiis segnala rosa numerosa e necessita di ridurre il gruppo; utile per monitorare possibili uscite ma non associato a un singolo trasferimento.",
+        "check": "Da monitorare",
+        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+        "sources": [
+          {
+            "source": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+            "url": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+            "sourceName": "AS",
+            "sourceLabel": "AS",
+            "status": "Strategia mercato",
+            "updatedAt": "2026-07-12",
+            "note": "De Laurentiis segnala rosa numerosa e necessita di ridurre il gruppo; utile per monitorare possibili uscite ma non associato a un singolo trasferimento.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "napoli",
+            "teamName": "Napoli",
+            "target": "Rosa da sfoltire",
+            "playerName": "Rosa da sfoltire",
+            "roleBrief": "VAR",
+            "role": "Rosa",
+            "direction": "outgoing",
+            "directionLabel": "Uscita/Strategia",
+            "status": "Strategia mercato",
+            "origin": "Uscite da definire",
+            "source": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+            "url": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+            "sourceName": "AS",
+            "sourceLabel": "AS",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "De Laurentiis segnala rosa numerosa e necessita di ridurre il gruppo; utile per monitorare possibili uscite ma non associato a un singolo trasferimento.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          }
+        ]
       }
     ],
     "parma": [
@@ -68852,7 +69118,7 @@
         "probability": "",
         "updatedAt": "2026-07-12",
         "reliability": "Media",
-        "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita.",
+        "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita. | Confermata come voce da monitorare: AS parla di accordo per rinnovo annuale con opzione; resta in Trattative finche manca annuncio ufficiale.",
         "check": "Da monitorare",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
         "sources": [
@@ -68864,6 +69130,16 @@
             "status": "Accordo segnalato ma non ancora ufficiale",
             "updatedAt": "2026-07-12",
             "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita.",
+            "probability": ""
+          },
+          {
+            "source": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+            "url": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+            "sourceName": "AS",
+            "sourceLabel": "AS",
+            "status": "Accordo segnalato / attesa annuncio",
+            "updatedAt": "2026-07-12",
+            "note": "Confermata come voce da monitorare: AS parla di accordo per rinnovo annuale con opzione; resta in Trattative finche manca annuncio ufficiale.",
             "probability": ""
           }
         ],
@@ -68887,6 +69163,28 @@
             "updatedAt": "2026-07-12",
             "reliability": "Media",
             "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          },
+          {
+            "teamId": "roma",
+            "teamName": "Roma",
+            "target": "Paulo Dybala",
+            "playerName": "Paulo Dybala",
+            "roleBrief": "A",
+            "role": "Attaccante/trequartista",
+            "direction": "outgoing",
+            "directionLabel": "Permanenza",
+            "status": "Accordo segnalato / attesa annuncio",
+            "origin": "Roma",
+            "source": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+            "url": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+            "sourceName": "AS",
+            "sourceLabel": "AS",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Confermata come voce da monitorare: AS parla di accordo per rinnovo annuale con opzione; resta in Trattative finche manca annuncio ufficiale.",
             "check": "Da monitorare",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
@@ -87538,67 +87836,6 @@
             }
           ],
           "sourcesCount": 1
-        }
-      ],
-      "talksOutgoing": [
-        {
-          "teamId": "bologna",
-          "teamName": "Bologna",
-          "target": "Rowe",
-          "playerName": "Rowe",
-          "roleBrief": "A",
-          "role": "Esterno offensivo",
-          "direction": "outgoing",
-          "directionLabel": "Uscita",
-          "status": "Chelsea ancora interessato / contatti con agenti",
-          "origin": "Chelsea",
-          "source": "https://www.tuttomercatoweb.com/serie-a/",
-          "url": "https://www.tuttomercatoweb.com/serie-a/",
-          "sourceName": "TMW",
-          "sourceLabel": "TMW",
-          "probability": "",
-          "updatedAt": "2026-07-12",
-          "reliability": "Media",
-          "note": "Contatti Chelsea/agente; al momento non esiste vera trattativa.",
-          "check": "Monitorare",
-          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
-          "sources": [
-            {
-              "source": "https://www.tuttomercatoweb.com/serie-a/",
-              "url": "https://www.tuttomercatoweb.com/serie-a/",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "status": "Chelsea ancora interessato / contatti con agenti",
-              "updatedAt": "2026-07-12",
-              "note": "Contatti Chelsea/agente; al momento non esiste vera trattativa.",
-              "probability": ""
-            }
-          ],
-          "items": [
-            {
-              "teamId": "bologna",
-              "teamName": "Bologna",
-              "target": "Jonathan Rowe",
-              "playerName": "Jonathan Rowe",
-              "roleBrief": "A",
-              "role": "Esterno offensivo",
-              "direction": "outgoing",
-              "directionLabel": "Uscita",
-              "status": "Chelsea ancora interessato / contatti con agenti",
-              "origin": "Chelsea",
-              "source": "https://www.tuttomercatoweb.com/serie-a/",
-              "url": "https://www.tuttomercatoweb.com/serie-a/",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "probability": "",
-              "updatedAt": "2026-07-12",
-              "reliability": "Media",
-              "note": "Contatti Chelsea/agente; al momento non esiste vera trattativa.",
-              "check": "Monitorare",
-              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
-            }
-          ],
-          "sourcesCount": 1
         },
         {
           "teamId": "bologna",
@@ -87660,11 +87897,72 @@
           "sourcesCount": 1
         }
       ],
+      "talksOutgoing": [
+        {
+          "teamId": "bologna",
+          "teamName": "Bologna",
+          "target": "Rowe",
+          "playerName": "Rowe",
+          "roleBrief": "A",
+          "role": "Esterno offensivo",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Chelsea ancora interessato / contatti con agenti",
+          "origin": "Chelsea",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "Contatti Chelsea/agente; al momento non esiste vera trattativa.",
+          "check": "Monitorare",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Chelsea ancora interessato / contatti con agenti",
+              "updatedAt": "2026-07-12",
+              "note": "Contatti Chelsea/agente; al momento non esiste vera trattativa.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "bologna",
+              "teamName": "Bologna",
+              "target": "Jonathan Rowe",
+              "playerName": "Jonathan Rowe",
+              "roleBrief": "A",
+              "role": "Esterno offensivo",
+              "direction": "outgoing",
+              "directionLabel": "Uscita",
+              "status": "Chelsea ancora interessato / contatti con agenti",
+              "origin": "Chelsea",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Contatti Chelsea/agente; al momento non esiste vera trattativa.",
+              "check": "Monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            }
+          ],
+          "sourcesCount": 1
+        }
+      ],
       "counts": {
         "officialIncoming": 3,
         "officialOutgoing": 9,
-        "talksIncoming": 6,
-        "talksOutgoing": 2
+        "talksIncoming": 7,
+        "talksOutgoing": 1
       }
     },
     "cagliari": {
@@ -89367,7 +89665,7 @@
           "sourceLabel": "Eurosport/Sky/CalcioLecce",
           "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
           "url": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
-          "note": "",
+          "note": "ANSA cita il Como come club molto attivo e il blocco/valorizzazione di Nico Paz. Nel file esiste gia come ufficialita; riga solo di controllo valore/centralita.",
           "sources": [
             {
               "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
@@ -89378,6 +89676,16 @@
               "updatedAt": "2026-07-11",
               "note": "",
               "formula": ""
+            },
+            {
+              "source": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
+              "url": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
+              "sourceName": "ANSA",
+              "sourceLabel": "ANSA",
+              "status": "Conferma investimento / controllo",
+              "updatedAt": "2026-07-12",
+              "note": "ANSA cita il Como come club molto attivo e il blocco/valorizzazione di Nico Paz. Nel file esiste gia come ufficialita; riga solo di controllo valore/centralita.",
+              "probability": ""
             }
           ],
           "items": [
@@ -92924,7 +93232,7 @@
           "probability": "",
           "updatedAt": "2026-07-12",
           "reliability": "Media",
-          "note": "Fatta / visite mediche attese",
+          "note": "Fatta / visite mediche attese | SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
           "check": "",
           "rule": "",
           "sources": [
@@ -92936,6 +93244,16 @@
               "status": "Fatta / visite mediche attese",
               "updatedAt": "2026-07-12",
               "note": "",
+              "probability": ""
+            },
+            {
+              "source": "https://www.sosfanta.com/calciomercato/",
+              "url": "https://www.sosfanta.com/calciomercato/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "status": "Chiusura segnalata / da ufficializzare",
+              "updatedAt": "2026-07-12",
+              "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
               "probability": ""
             }
           ],
@@ -92961,6 +93279,28 @@
               "note": "",
               "check": "",
               "rule": ""
+            },
+            {
+              "teamId": "frosinone",
+              "teamName": "Frosinone",
+              "target": "Anouar El Azzouzi",
+              "playerName": "Anouar El Azzouzi",
+              "roleBrief": "C",
+              "role": "Centrocampista",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Chiusura segnalata / da ufficializzare",
+              "origin": "Svincolato / ultima esperienza Bologna",
+              "source": "https://www.sosfanta.com/calciomercato/",
+              "url": "https://www.sosfanta.com/calciomercato/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
           "sourcesCount": 1
@@ -95477,7 +95817,7 @@
           "probability": "",
           "updatedAt": "2026-07-12",
           "reliability": "Media",
-          "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale.",
+          "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
           "check": "Da monitorare",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -95499,6 +95839,16 @@
               "status": "Visite mediche / operazione da verificare",
               "updatedAt": "2026-07-12",
               "note": "SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale.",
+              "probability": ""
+            },
+            {
+              "source": "https://calciominuto.com/italia/serie-a/",
+              "url": "https://calciominuto.com/italia/serie-a/",
+              "sourceName": "CalcioMinuto",
+              "sourceLabel": "CalcioMinuto",
+              "status": "Visite/idoneita da approfondire",
+              "updatedAt": "2026-07-12",
+              "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
               "probability": ""
             }
           ],
@@ -95545,6 +95895,28 @@
               "reliability": "Media",
               "note": "SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale.",
               "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            },
+            {
+              "teamId": "inter",
+              "teamName": "Inter",
+              "target": "Anan Khalaili",
+              "playerName": "Anan Khalaili",
+              "roleBrief": "A",
+              "role": "Esterno/attaccante",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Visite/idoneita da approfondire",
+              "origin": "Da confermare",
+              "source": "https://calciominuto.com/italia/serie-a/",
+              "url": "https://calciominuto.com/italia/serie-a/",
+              "sourceName": "CalcioMinuto",
+              "sourceLabel": "CalcioMinuto",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
+              "check": "Da monitorare",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
@@ -96919,7 +97291,7 @@
           "probability": "",
           "updatedAt": "2026-07-10",
           "reliability": "Media",
-          "note": "Trattativa nel vivo; giocatore disponibile, distanza ridotta. | Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+          "note": "Trattativa nel vivo; giocatore disponibile, distanza ridotta. | Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale. | Fonte estera: Aston Villa disposta ad abbassare la richiesta dopo contatti con la Juventus. Da verificare su fonti italiane e club.",
           "check": "Da monitorare",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -96941,6 +97313,16 @@
               "status": "Trattativa/Interesse",
               "updatedAt": "2026-07-10",
               "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+              "url": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+              "sourceName": "BWRAO",
+              "sourceLabel": "BWRAO",
+              "status": "Contatti / richiesta in calo",
+              "updatedAt": "2026-07-12",
+              "note": "Fonte estera: Aston Villa disposta ad abbassare la richiesta dopo contatti con la Juventus. Da verificare su fonti italiane e club.",
               "probability": ""
             }
           ],
@@ -96988,6 +97370,28 @@
               "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
               "check": "Aggiornare rosa se ufficiale",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            },
+            {
+              "teamId": "juventus",
+              "teamName": "Juventus",
+              "target": "Emiliano Martinez",
+              "playerName": "Emiliano Martinez",
+              "roleBrief": "P",
+              "role": "Portiere",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Contatti / richiesta in calo",
+              "origin": "Aston Villa",
+              "source": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+              "url": "https://www.blackwhitereadallover.com/juventus-transfer-rumours-news/39891/emi-martinez-juventus-aston-villa-transfer-fee-2026-serie-a-premier-league-summer-transfer-rumors",
+              "sourceName": "BWRAO",
+              "sourceLabel": "BWRAO",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Fonte estera: Aston Villa disposta ad abbassare la richiesta dopo contatti con la Juventus. Da verificare su fonti italiane e club.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
           "sourcesCount": 2
@@ -99701,7 +100105,7 @@
           "sourceLabel": "Sky/TMW/CalcioLecce",
           "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
           "url": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
-          "note": "",
+          "note": "ANSA richiama l investimento del Milan per Goncalo Ramos e Gila. Nel file Goncalo Ramos e gia in Ufficialita; riga di controllo per evitare duplicati.",
           "originalPlayerName": "Goncalo Ramos",
           "sources": [
             {
@@ -99713,6 +100117,16 @@
               "updatedAt": "2026-07-11",
               "note": "",
               "formula": ""
+            },
+            {
+              "source": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
+              "url": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
+              "sourceName": "ANSA",
+              "sourceLabel": "ANSA",
+              "status": "Gia presente / controllo incrociato",
+              "updatedAt": "2026-07-12",
+              "note": "ANSA richiama l investimento del Milan per Goncalo Ramos e Gila. Nel file Goncalo Ramos e gia in Ufficialita; riga di controllo per evitare duplicati.",
+              "probability": ""
             }
           ],
           "items": [
@@ -102513,13 +102927,71 @@
             }
           ],
           "sourcesCount": 1
+        },
+        {
+          "teamId": "napoli",
+          "teamName": "Napoli",
+          "target": "Rosa da sfoltire",
+          "playerName": "Rosa da sfoltire",
+          "roleBrief": "VAR",
+          "role": "Rosa",
+          "direction": "outgoing",
+          "directionLabel": "Uscita/Strategia",
+          "status": "Strategia mercato",
+          "origin": "Uscite da definire",
+          "source": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+          "url": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+          "sourceName": "AS",
+          "sourceLabel": "AS",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "De Laurentiis segnala rosa numerosa e necessita di ridurre il gruppo; utile per monitorare possibili uscite ma non associato a un singolo trasferimento.",
+          "check": "Da monitorare",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+          "sources": [
+            {
+              "source": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+              "url": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+              "sourceName": "AS",
+              "sourceLabel": "AS",
+              "status": "Strategia mercato",
+              "updatedAt": "2026-07-12",
+              "note": "De Laurentiis segnala rosa numerosa e necessita di ridurre il gruppo; utile per monitorare possibili uscite ma non associato a un singolo trasferimento.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "napoli",
+              "teamName": "Napoli",
+              "target": "Rosa da sfoltire",
+              "playerName": "Rosa da sfoltire",
+              "roleBrief": "VAR",
+              "role": "Rosa",
+              "direction": "outgoing",
+              "directionLabel": "Uscita/Strategia",
+              "status": "Strategia mercato",
+              "origin": "Uscite da definire",
+              "source": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+              "url": "https://as.com/futbol/internacional/de-laurentiis-no-tendremos-que-comprar-a-nadie-y-tendremos-que-dar-salida-a-muchos-f202607-n/",
+              "sourceName": "AS",
+              "sourceLabel": "AS",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "De Laurentiis segnala rosa numerosa e necessita di ridurre il gruppo; utile per monitorare possibili uscite ma non associato a un singolo trasferimento.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            }
+          ]
         }
       ],
       "counts": {
         "officialIncoming": 7,
         "officialOutgoing": 2,
         "talksIncoming": 4,
-        "talksOutgoing": 1
+        "talksOutgoing": 2
       }
     },
     "parma": {
@@ -104756,7 +105228,7 @@
           "probability": "",
           "updatedAt": "2026-07-12",
           "reliability": "Media",
-          "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita.",
+          "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita. | Confermata come voce da monitorare: AS parla di accordo per rinnovo annuale con opzione; resta in Trattative finche manca annuncio ufficiale.",
           "check": "Da monitorare",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
           "sources": [
@@ -104768,6 +105240,16 @@
               "status": "Accordo segnalato ma non ancora ufficiale",
               "updatedAt": "2026-07-12",
               "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita.",
+              "probability": ""
+            },
+            {
+              "source": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+              "url": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+              "sourceName": "AS",
+              "sourceLabel": "AS",
+              "status": "Accordo segnalato / attesa annuncio",
+              "updatedAt": "2026-07-12",
+              "note": "Confermata come voce da monitorare: AS parla di accordo per rinnovo annuale con opzione; resta in Trattative finche manca annuncio ufficiale.",
               "probability": ""
             }
           ],
@@ -104791,6 +105273,28 @@
               "updatedAt": "2026-07-12",
               "reliability": "Media",
               "note": "AS: accordo per il futuro tra Dybala e Roma con rinnovo annuale e opzione; attendere annuncio ufficiale prima di registrarlo come ufficialita.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            },
+            {
+              "teamId": "roma",
+              "teamName": "Roma",
+              "target": "Paulo Dybala",
+              "playerName": "Paulo Dybala",
+              "roleBrief": "A",
+              "role": "Attaccante/trequartista",
+              "direction": "outgoing",
+              "directionLabel": "Permanenza",
+              "status": "Accordo segnalato / attesa annuncio",
+              "origin": "Roma",
+              "source": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+              "url": "https://as.com/futbol/mercado-fichajes/dybala-y-la-roma-llegan-a-un-acuerdo-para-el-futuro-f202607-n/",
+              "sourceName": "AS",
+              "sourceLabel": "AS",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Confermata come voce da monitorare: AS parla di accordo per rinnovo annuale con opzione; resta in Trattative finche manca annuncio ufficiale.",
               "check": "Da monitorare",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
@@ -108088,6 +108592,65 @@
         {
           "teamId": "udinese",
           "teamName": "Udinese",
+          "target": "Davis",
+          "playerName": "Davis",
+          "roleBrief": "A",
+          "role": "Attaccante",
+          "direction": "renewal",
+          "directionLabel": "Rinnovo/contratto",
+          "status": "Rinnovo accettato",
+          "origin": "Udinese",
+          "source": "TMW",
+          "url": "TMW",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
+          "check": "Resta in rosa",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+          "sources": [
+            {
+              "source": "TMW",
+              "url": "TMW",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Rinnovo accettato",
+              "updatedAt": "2026-07-12",
+              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "udinese",
+              "teamName": "Udinese",
+              "target": "Keinan Davis",
+              "playerName": "Keinan Davis",
+              "roleBrief": "A",
+              "role": "Attaccante",
+              "direction": "renewal",
+              "directionLabel": "Rinnovo/contratto",
+              "status": "Rinnovo accettato",
+              "origin": "Udinese",
+              "source": "TMW",
+              "url": "TMW",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
+              "check": "Resta in rosa",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            }
+          ],
+          "sourcesCount": 1
+        },
+        {
+          "teamId": "udinese",
+          "teamName": "Udinese",
           "target": "Mergim Vojvoda",
           "playerName": "Mergim Vojvoda",
           "roleBrief": "D",
@@ -108263,72 +108826,13 @@
             }
           ],
           "sourcesCount": 1
-        },
-        {
-          "teamId": "udinese",
-          "teamName": "Udinese",
-          "target": "Davis",
-          "playerName": "Davis",
-          "roleBrief": "A",
-          "role": "Attaccante",
-          "direction": "renewal",
-          "directionLabel": "Rinnovo/contratto",
-          "status": "Rinnovo accettato",
-          "origin": "Udinese",
-          "source": "TMW",
-          "url": "TMW",
-          "sourceName": "TMW",
-          "sourceLabel": "TMW",
-          "probability": "",
-          "updatedAt": "2026-07-12",
-          "reliability": "Media",
-          "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
-          "check": "Resta in rosa",
-          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
-          "sources": [
-            {
-              "source": "TMW",
-              "url": "TMW",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "status": "Rinnovo accettato",
-              "updatedAt": "2026-07-12",
-              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
-              "probability": ""
-            }
-          ],
-          "items": [
-            {
-              "teamId": "udinese",
-              "teamName": "Udinese",
-              "target": "Keinan Davis",
-              "playerName": "Keinan Davis",
-              "roleBrief": "A",
-              "role": "Attaccante",
-              "direction": "renewal",
-              "directionLabel": "Rinnovo/contratto",
-              "status": "Rinnovo accettato",
-              "origin": "Udinese",
-              "source": "TMW",
-              "url": "TMW",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "probability": "",
-              "updatedAt": "2026-07-12",
-              "reliability": "Media",
-              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
-              "check": "Resta in rosa",
-              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
-            }
-          ],
-          "sourcesCount": 1
         }
       ],
       "counts": {
         "officialIncoming": 6,
         "officialOutgoing": 4,
-        "talksIncoming": 8,
-        "talksOutgoing": 3
+        "talksIncoming": 9,
+        "talksOutgoing": 2
       }
     },
     "venezia": {
@@ -109903,7 +110407,18 @@
       }
     }
   },
-  "officialTalksFiltered": [],
+  "officialTalksFiltered": [
+    {
+      "team": "Como",
+      "playerName": "Nico Paz",
+      "reason": "control row; merged into official card"
+    },
+    {
+      "team": "Milan",
+      "playerName": "Goncalo Ramos",
+      "reason": "control row; merged into official card"
+    }
+  ],
   "updateLogV614": [
     {
       "type": "excel",
@@ -109980,5 +110495,98 @@
     "Aggiunto caricamento runtime delle rose di lega per Per i SUDATORI e ioSudo.",
     "Le assegnazioni fantacalcio non sono piu affidate allo snapshot fantasyRoster dentro sudatori-data.json quando e disponibile assets/rose.",
     "ioSudo: card squadra differenziate con pattern cromatici individuali anche per club con colori simili."
+  ],
+  "retreatFriendliesControlSourcesV619": [
+    {
+      "area": "Serie A",
+      "start": "2026-07-12",
+      "end": "2026-08-15",
+      "event": "Controllo incrociato ritiri/amichevoli",
+      "date": "2026-07-12",
+      "sourceName": "TMW ritiri/amichevoli aggiornamento 12/07",
+      "location": "Online",
+      "time": "n.d.",
+      "status": "Fonte controllo",
+      "url": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
+      "note": "TMW pubblica elenco in aggiornamento per tutte le squadre; utile come fonte primaria operativa per raduni, ritiri e amichevoli."
+    },
+    {
+      "area": "Serie A",
+      "start": "2026-07-12",
+      "end": "2026-08-15",
+      "event": "Controllo incrociato ritiri/amichevoli",
+      "date": "2026-07-12",
+      "sourceName": "TuttoFantacalcio ritiri Serie A 26/27",
+      "location": "Online",
+      "time": "n.d.",
+      "status": "Fonte controllo",
+      "url": "https://www.tuttofantacalcio.it/news-calcio/serie-a-date-ritiri-20-squadre-stagione-2026-2027-33541",
+      "note": "Fonte fantacalcio aggiornata il 12/07 con date, sedi dei ritiri e amichevoli gia fissate."
+    },
+    {
+      "area": "Serie A",
+      "start": "2026-07-12",
+      "end": "2026-08-15",
+      "event": "Controllo incrociato ritiri/amichevoli",
+      "date": "2026-07-12",
+      "sourceName": "SpazioCalcio ritiri Serie A 26/27",
+      "location": "Online",
+      "time": "n.d.",
+      "status": "Fonte controllo",
+      "url": "https://www.spaziocalcio.it/calcio-italiano/serie-a/serie-a-le-date-dei-ritiri-e-amichevoli-26-27/",
+      "note": "Fonte secondaria di controllo per calendario amichevoli e ritiri; da usare per conferma dove mancano dati da TMW/SportMediaset."
+    }
+  ],
+  "updateLogV619": [
+    {
+      "area": "Fonti",
+      "type": "Append nuove fonti",
+      "element": "7",
+      "team": "Serie A",
+      "status": "Completato",
+      "source": "ANSA/Fantacalcio.it/TuttoFantacalcio/TMW/CalcioMinuto",
+      "url": "",
+      "note": "Aggiunte fonti piu fresche e specifiche per fantacalcio, live mercato e ritiri/amichevoli."
+    },
+    {
+      "area": "Trattative",
+      "type": "Append nuove righe",
+      "element": "7",
+      "team": "FRO/INT/JUV/ROM/NAP/COM/MIL",
+      "status": "Completato",
+      "source": "SOS Fanta/CalcioMinuto/BWRAO/AS/ANSA",
+      "url": "",
+      "note": "Nuovi controlli su El Azzouzi, Khalaili, Emiliano Martinez, Dybala, strategia Napoli, Nico Paz e Goncalo Ramos."
+    },
+    {
+      "area": "Ritiri/Amichevoli",
+      "type": "Append fonti controllo",
+      "element": "3",
+      "team": "Serie A",
+      "status": "Completato",
+      "source": "TMW/TuttoFantacalcio/SpazioCalcio",
+      "url": "",
+      "note": "Aggiunte righe di controllo incrociato per fonti aggiornate del precampionato."
+    },
+    {
+      "area": "Metodo",
+      "type": "Deduplica logica",
+      "element": "Ufficialita",
+      "team": "Serie A",
+      "status": "Completato",
+      "source": "Controllo workbook",
+      "url": "",
+      "note": "Ramos e Nico Paz gia presenti nel file: aggiunte solo righe di controllo, non nuove ufficialita duplicate."
+    },
+    {
+      "area": "Metodo",
+      "type": "Stato mercato",
+      "element": "Non ufficiale",
+      "team": "Serie A",
+      "status": "Conservativo",
+      "source": "Fonti web",
+      "url": "",
+      "note": "Le notizie senza comunicato club/Sky/Transfermarkt ufficiale restano in Trattative o Controllo, non in Ufficialita."
+    }
   ]
 }

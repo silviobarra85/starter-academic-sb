@@ -1,3 +1,15 @@
+# AI Assistant Handoff Current - V619
+
+Ultimo overlay: **V619**.
+
+- Sudatori e ioSudo aggiornati con `fantacalcio_serie_a_2026_27_aggiornato_2026-07-12_mercato_fonti_extra_v3(1).xlsx`.
+- Live rosters V618 mantenuti.
+- Nuove fonti: +7; nuove righe trattative: +7; fonti controllo ritiri/amichevoli: +3.
+- Non serve reinstallare ioSudo dopo il deploy.
+
+
+---
+
 # AI Assistant Handoff V618
 
 Versione: **V618**
