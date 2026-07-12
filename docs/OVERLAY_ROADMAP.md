@@ -2,7 +2,7 @@
 
 ## Stato corrente
 
-- **V609**: aggiunge **ioSudo**, PWA mobile-first installabile che legge gli stessi dati correnti della sezione **Per i SUDATORI**.
+- **V610**: rifinisce **ioSudo** con logo dedicato, header compatto e ordinamento rosa P-D-C-A.
 
 ## Cronologia recente
 
@@ -21,6 +21,7 @@
 - **V607**: badge Mercato unico `NUOVO/RUMOR/CONFERMATO`, fix Gaetano e disambiguazione Giovane.
 - **V608**: riepilogo mercato per squadra con ufficialita/trattative in entrata e uscita; una sola card trattativa per giocatore con fonti aggregate; ufficialita escluse dalle trattative in corso.
 - **V609**: app **ioSudo** installabile, collegata allo stesso `sudatori-data.json` corrente.
+- **V610**: logo ioSudo, barra superiore compatta e rosa ordinata da P ad A.
 
 ## Prossimi sviluppi possibili
 

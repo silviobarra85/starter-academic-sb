@@ -1,26 +1,26 @@
 # AI Assistant Handoff - CURRENT
 
 ## Stato
-- Versione corrente overlay: **V609**.
-- Nuova app: **ioSudo PWA**.
+- Versione corrente overlay: **V610**.
+- App: **ioSudo PWA** collegata alla sezione **Per i SUDATORI**.
 - Dati letti dall'app: `static/fanta-engine/data/sudatori/current/manifest.json` e `sudatori-data.json`.
-- Dati Sudatori correnti invariati rispetto a V608.
+- Dati Sudatori correnti invariati rispetto a V608/V609.
 - App shell: `static/iosudo/index.html`.
-- JS app: `static/fanta-engine/js/apps/iosudo-app-v609.js`.
-- CSS app: `static/fanta-engine/css/iosudo-app-v609.css`.
+- JS app: `static/fanta-engine/js/apps/iosudo-app-v610.js`.
+- CSS app: `static/fanta-engine/css/iosudo-app-v610.css`.
 - Service worker: `static/iosudo/sw.js`.
 
-## Modifiche chiave
-- Aggiunta mini app installabile **ioSudo** per consultare solo Per i SUDATORI da mobile.
-- L'app non duplica i dati: usa il manifest e il JSON corrente della sezione Sudatori.
-- Aggiunti link `ioSudo` nelle home di `zonaorientale` e `fantapetillomantramanager`.
-- Aggiunte pagine redirect `/zonaorientale/iosudo/` e `/fantapetillomantramanager/iosudo/` verso `/iosudo/`.
-- Aggiunto service worker con app shell cache-first e dati Sudatori network-first/no-store.
-- Mantenuti i dati V608: riepilogo mercato, card trattative aggregate, infortunati e probabili XI.
+## Modifiche V610
+- Nuovo logo ioSudo: personaggio che suda pensando alla formazione del fantacalcio.
+- Header superiore reso molto piu compatto: una riga con `ioSudo - nome lega - Vai al sito`.
+- Il nome lega viene risolto dal parametro `?league=` usato dai redirect di lega.
+- La card di ricerca resta subito sotto la barra compatta.
+- Nella tab **Rosa** della scheda squadra, i giocatori sono ordinati da **P** ad **A**: P, D, C/M/W/T, A.
+- Mantenuta la lettura condivisa dei dati Sudatori: niente dati duplicati.
 
 ## Verifica
 ```bash
-node static/fanta-engine/tools/audit-iosudo-v609.mjs
-node --check static/fanta-engine/js/apps/iosudo-app-v609.js
+node static/fanta-engine/tools/audit-iosudo-v610.mjs
+node --check static/fanta-engine/js/apps/iosudo-app-v610.js
 node --check static/iosudo/sw.js
 ```
