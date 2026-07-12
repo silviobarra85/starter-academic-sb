@@ -36,3 +36,9 @@
 ## Guardrail
 
 La sezione Sudatori e ioSudo devono restare standalone e cancellabili senza impatti su Rose, Listone, Area Squadra, Admin, Firebase o dati ufficiali di lega. ioSudo non deve duplicare i dati Sudatori.
+
+
+## V614 - Sudatori pulizia ufficialità
+- Aggiornato Per i SUDATORI da `fantacalcio_serie_a_2026_27_aggiornato_2026-07-12_pulizia_ufficialita(1).xlsx`.
+- Mantenute card trattative aggregate e separazione ufficialità/trattative.
+- ioSudo usa gli stessi dati e non richiede reinstallazione.
