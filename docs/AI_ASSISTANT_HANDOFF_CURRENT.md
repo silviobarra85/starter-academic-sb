@@ -1,67 +1,39 @@
-# AI Assistant Handoff Current - V619
+# AI Assistant Handoff Current - V620
 
-Ultimo overlay: **V619**.
-
-- Sudatori e ioSudo aggiornati con `fantacalcio_serie_a_2026_27_aggiornato_2026-07-12_mercato_fonti_extra_v3(1).xlsx`.
-- Live rosters V618 mantenuti.
-- Nuove fonti: +7; nuove righe trattative: +7; fonti controllo ritiri/amichevoli: +3.
-- Non serve reinstallare ioSudo dopo il deploy.
-
-
----
-
-# AI Assistant Handoff V618
-
-Versione: **V618**
+Ultimo overlay: **V620**.
 
 ## Scopo
-V618 modifica il comportamento di **Per i SUDATORI** e **ioSudo** in modo che l'assegnazione dei giocatori alle rose fantacalcio venga letta a runtime dagli stessi file della sezione **Rose** della lega.
+V620 interviene solo su **ioSudo** e rende realmente operativi i tasti sotto la ricerca.
 
-## Modifica principale
+## Modifiche principali
 
-Prima di V618:
-
-- Per i SUDATORI leggeva `static/fanta-engine/data/sudatori/current/sudatori-data.json`.
-- ioSudo leggeva lo stesso JSON.
-- Il campo `fantasyRoster` dentro il JSON era uno snapshot generato dall'overlay.
-- Se cambiavano le rose in `assets/rose`, Sudatori e ioSudo non si aggiornavano automaticamente.
-
-Da V618:
-
-- mercato, ufficialità, rumors, fonti, infortuni, probabili formazioni e amichevoli restano nel JSON Sudatori condiviso;
-- le assegnazioni fantacalcio vengono rilette a runtime da:
-  - `static/zonaorientale/assets/rose/manifest.json` e ultimo JSON rosa 2026-2027;
-  - `static/fantapetillomantramanager/assets/rose/manifest.json` quando disponibile;
-- se la lega non ha un file rose valido, viene mantenuto il fallback allo snapshot incorporato.
-
-## Matching rose live
-
-La chiave di matching usa:
-
-- nome normalizzato;
-- varianti canoniche/compatte/sortate;
-- squadra reale normalizzata;
-- ruolo P/D/C/A.
-
-Questo evita errori noti come omonimi tra squadre diverse, per esempio casi tipo `Giovane`.
-
-## ioSudo
-
-In ioSudo V618 sono state aggiunte anche varianti grafiche squadra-per-squadra per evitare che club con gli stessi colori abbiano card identiche. Ad esempio Bologna, Cagliari e Genoa restano rosso/blu, ma usano pattern diversi.
+- Sostituiti i vecchi filtri rapidi con viste globali:
+  - **SQUADRE**: torna alla griglia squadre;
+  - **SOS**: mostra tutti i giocatori infortunati o con problemi fisici;
+  - **RUMOR**: mostra lista compatta di trattative/rumors in entrata e in uscita con fonti;
+  - **UFFICIALITÀ**: mostra tutte le ufficialità in entrata e in uscita;
+  - **AMICHEVOLI**: mostra il calendario globale delle amichevoli.
+- Ordinamento:
+  - amichevoli in ordine crescente di data;
+  - SOS, rumors e ufficialità in ordine decrescente di data.
+- La ricerca filtra anche dentro la vista rapida attiva.
+- Live rosters V618/V619 mantenute.
+- Dati mercato V619 invariati.
 
 ## File principali
 
-- `static/fanta-engine/js/sections/sudatori-section-v618.js`
-- `static/fanta-engine/js/apps/iosudo-app-v618.js`
-- `static/fanta-engine/css/iosudo-app-v618.css`
-- `static/fanta-engine/data/sudatori/current/manifest.json`
-- `static/fanta-engine/data/sudatori/current/sudatori-data.json`
+- `static/iosudo/index.html`
 - `static/iosudo/sw.js`
+- `static/fanta-engine/js/apps/iosudo-app-v620.js`
+- `static/fanta-engine/css/iosudo-app-v620.css`
+- `static/fanta-engine/tools/audit-iosudo-v620.mjs`
 
 ## Verifiche
 
-- `node static/fanta-engine/tools/audit-sudatori-section-v618.mjs`
-- `node static/fanta-engine/tools/audit-iosudo-v618.mjs`
-- `node --check static/fanta-engine/js/sections/sudatori-section-v618.js`
-- `node --check static/fanta-engine/js/apps/iosudo-app-v618.js`
-- `node --check static/iosudo/sw.js`
+```bash
+node static/fanta-engine/tools/audit-iosudo-v620.mjs
+node --check static/fanta-engine/js/apps/iosudo-app-v620.js
+node --check static/iosudo/sw.js
+```
+
+Non serve reinstallare ioSudo dopo il deploy.

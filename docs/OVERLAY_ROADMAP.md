@@ -1,5 +1,13 @@
 # Overlay Roadmap
 
+## V620 - ioSudo viste rapide globali
+
+- Sostituiti i vecchi filtri sotto la ricerca con viste globali: SQUADRE, SOS, RUMOR, UFFICIALITÀ, AMICHEVOLI.
+- SOS, rumors e ufficialità sono ordinati in modo decrescente per data.
+- Amichevoli ordinate in modo crescente per data.
+- La ricerca filtra la vista rapida attiva.
+- Dati Sudatori V619 e live rosters V618 mantenuti.
+
 ## V618 - Sudatori/ioSudo live rosters
 
 - Per i SUDATORI legge a runtime le rose fantacalcio dalla stessa fonte della sezione Rose.
