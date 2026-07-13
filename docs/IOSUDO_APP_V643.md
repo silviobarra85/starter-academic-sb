@@ -1,4 +1,4 @@
-# V643 - Aggiornamento globale v18 Per i SUDATORI e ioSudo
+# V643 - Aggiornamento globale v18 ioSudo
 
 Overlay generato dal file `fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_aggiornamento_globale_v18.xlsx`.
 
