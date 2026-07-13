@@ -1,6 +1,6 @@
 # Overlay Roadmap
 
-## V626 - Sudatori/ioSudo mercato fonti ufficialita v6
+## V627 - Sudatori/ioSudo mercato fonti ufficialita v6
 
 - Aggiornati Per i SUDATORI e ioSudo da Excel 13/07/2026 v6.
 - Aggiunte 5 fonti, processate 20 righe ufficialita e 11 righe trattative.
@@ -42,3 +42,7 @@
 - Per i SUDATORI legge a runtime le rose fantacalcio dalla stessa fonte della sezione Rose.
 - ioSudo legge a runtime le stesse rose della lega.
 - Le modifiche future ai file `assets/rose` aggiornano anche Per i SUDATORI e ioSudo senza rigenerare il dataset Sudatori.
+
+
+## V627 - Fonti articolo puntuali Sudatori/ioSudo
+- Link mercato/SOS/ritiri puntano ad articolo o pagina precisa dal nuovo Excel `fonti_articoli_v7`.

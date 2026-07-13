@@ -1,19 +1,19 @@
 # Stato corrente e indice
 
-Versione corrente: **V626**.
+Versione corrente: **V627**.
 
 Aggiornamento: Per i SUDATORI e ioSudo sono allineati all'Excel mercato/fonti/ufficialita v6 del 13/07/2026.
 
 ## Sudatori/ioSudo
 
-- Per i SUDATORI mantiene i dati condivisi correnti V626.
+- Per i SUDATORI mantiene i dati condivisi correnti V627.
 - ioSudo mantiene le viste globali: SQUADRE, GIOCATORI, SOS, RUMOR, UFFICIALITA, AMICHEVOLI.
 - Le rose fantasy sono lette live dagli stessi file usati dalla sezione Rose.
 - Nella vista GIOCATORI le card sono deduplicate e cliccabili.
 - Il click apre sempre il dettaglio giocatore, anche per giocatori virtuali presenti solo in trattative/ufficialita.
 - Il dettaglio giocatore mostra fonti/link disponibili, ufficialita, rumors, SOS/infortuni, listone e squadra fantasy live.
 
-## Conteggi V626
+## Conteggi V627
 
 - Giocatori: 714.
 - Amichevoli/eventi reali: 94.
