@@ -9,10 +9,10 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
-  <link rel="stylesheet" href="../fanta-engine/css/iosudo-app-v621.css?v=621" />
+  <link rel="stylesheet" href="../fanta-engine/css/iosudo-app-v622.css?v=622" />
 </head>
 <body>
-  <div id="iosudoApp" class="iosudo-shell" data-iosudo-version="621">
+  <div id="iosudoApp" class="iosudo-shell" data-iosudo-version="622">
     <header class="iosudo-topbar" aria-label="Barra ioSudo">
       <img class="iosudo-logo" src="./assets/icon.svg" alt="ioSudo: personaggio che suda pensando alla formazione del fantacalcio" />
       <div class="iosudo-topbar-copy">
@@ -32,12 +32,13 @@
       <section class="iosudo-search-card" aria-label="Ricerca ioSudo">
         <label class="iosudo-search-label" for="iosudoSearch">Cerca squadra o giocatore</label>
         <input id="iosudoSearch" class="iosudo-search" type="search" placeholder="Es. Gaetano, Atalanta, Pulisic" autocomplete="off" />
-        <div id="iosudoQuickFilters" class="iosudo-filter-row" aria-label="Filtri rapidi">
-          <button class="iosudo-filter is-active" type="button" data-filter="all">Tutto</button>
-          <button class="iosudo-filter" type="button" data-filter="new">Nuovi</button>
-          <button class="iosudo-filter" type="button" data-filter="rumor">Rumor</button>
-          <button class="iosudo-filter" type="button" data-filter="sos">SOS</button>
-          <button class="iosudo-filter" type="button" data-filter="xi">XI</button>
+        <div id="iosudoQuickFilters" class="iosudo-filter-row iosudo-global-nav" aria-label="Navigazione rapida ioSudo">
+          <button class="iosudo-filter is-active" type="button" data-view="teams">SQUADRE</button>
+          <button class="iosudo-filter" type="button" data-view="players">GIOCATORI</button>
+          <button class="iosudo-filter" type="button" data-view="sos">SOS</button>
+          <button class="iosudo-filter" type="button" data-view="rumor">RUMOR</button>
+          <button class="iosudo-filter" type="button" data-view="official">UFFICIALITÀ</button>
+          <button class="iosudo-filter" type="button" data-view="friendlies">AMICHEVOLI</button>
         </div>
       </section>
 
@@ -47,7 +48,7 @@
     </main>
   </div>
 
-  <script src="../fanta-engine/js/apps/iosudo-app-v621.js?v=621" defer></script>
+  <script src="../fanta-engine/js/apps/iosudo-app-v622.js?v=622" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
