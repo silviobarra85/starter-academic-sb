@@ -3,16 +3,16 @@
     "id": "sudatori-serie-a-2026-27",
     "label": "Per i SUDATORI",
     "seasonId": "2026-2027",
-    "updatedAt": "2026-07-12",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-12_mercato_fonti_extra_v3(1).xlsx",
+    "updatedAt": "2026-07-13",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_mercato_fonti_extra_v4(1).xlsx",
     "listoneFile": "2026-07-04.json",
     "listoneId": "2026-07-04",
     "teams": 20,
     "players": 714,
     "friendlies": 90,
-    "marketNotes": 451,
-    "teamTransferTalks": 172,
-    "injuries": 7,
+    "marketNotes": 489,
+    "teamTransferTalks": 176,
+    "injuries": 8,
     "formationTeams": 20,
     "formationMissingPlayers": 0,
     "transfermarktRumors": 42,
@@ -21,13 +21,13 @@
     "officialOutgoing": 135,
     "officialMoves": 232,
     "filteredOfficialTalks": 0,
-    "version": "V619",
+    "version": "V621",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-    "note": "V619: aggiornamento da Excel mercato_fonti_extra_v3; aggiunte fonti extra, righe di controllo ritiri/amichevoli e nuove segnalazioni mercato aggregate senza duplicare card. Runtime live rosters V618 mantenuto.",
+    "note": "V621: aggiornamento da Excel mercato_fonti_extra_v4 del 13/07; aggiunte 6 fonti, 12 righe trattative e 3 fonti di controllo ritiri/amichevoli. V620 global buttons ioSudo mantenuti; live rosters V618 mantenute. Israel aggiunto anche ai SOS da Trattative_Squadre per problema alla spalla.",
     "officialRows": 268,
-    "sources": 109,
+    "sources": 111,
     "liveRosterRuntime": true,
     "liveRosterRuntimeSource": "assets/rose/manifest.json",
     "extraSourcesAddedV619": 7,
@@ -37,7 +37,14 @@
     "mergedTalkRowsV619": 4,
     "controlOfficialRowsMergedV619": 2,
     "ioSudoLiveRosters": true,
-    "sudatoriLiveRosters": true
+    "sudatoriLiveRosters": true,
+    "extraSourcesAddedV621": 6,
+    "extraTalkRowsAddedV621": 12,
+    "extraControlFriendliesSourcesAddedV621": 3,
+    "talkCardsAddedV621": 4,
+    "talkRowsMergedV621": 8,
+    "injuriesAddedV621": 1,
+    "ioSudoGlobalViews": "V621"
   },
   "teams": [
     {
@@ -57,13 +64,19 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 5,
-      "transferTalksPreview": "Samuele Ricci, Alajbegovic, Favasuli, Jashari, Ederson",
+      "transferTalksPreview": [
+        "Samuele Ricci",
+        "Alajbegovic",
+        "Favasuli"
+      ],
       "formationModule": "4-3-3",
       "formationModuleSource": "4-3-3",
       "formationSourceModuleUsed": "4-3-3",
       "formationModuleAdjusted": false,
       "injuriesCount": 1,
-      "injuriesPreview": "Hien",
+      "injuriesPreview": [
+        "Hien"
+      ],
       "officialIncomingCount": 4,
       "officialOutgoingCount": 3,
       "talksIncomingCount": 4,
@@ -86,13 +99,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 8,
-      "transferTalksPreview": "Mikel Amondarain, Lasse Gunther, Mangala, Miretti, Ognjen Ugresic",
+      "transferTalksPreview": [
+        "Mikel Amondarain",
+        "Lasse Gunther",
+        "Mangala"
+      ],
       "formationModule": "4-2-3-1",
       "formationModuleSource": "3-4-2-1 / 3-4-3 / 4-2-3-1",
       "formationSourceModuleUsed": "4-2-3-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 3,
       "officialOutgoingCount": 9,
       "talksIncomingCount": 7,
@@ -115,13 +132,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 9,
-      "transferTalksPreview": "Broja, Calabria, Favasuli, Martin Palumbo, Vojvoda",
+      "transferTalksPreview": [
+        "Broja",
+        "Calabria",
+        "Favasuli"
+      ],
       "formationModule": "4-4-2",
       "formationModuleSource": "3-5-2 / 4-4-2",
       "formationSourceModuleUsed": "4-4-2",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 4,
       "officialOutgoingCount": 12,
       "talksIncomingCount": 7,
@@ -144,13 +165,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 12,
-      "transferTalksPreview": "Engelhardt, Franjo Ivanovic, Cambiaso, Chalobah, Couto",
+      "transferTalksPreview": [
+        "Engelhardt",
+        "Franjo Ivanovic",
+        "Cambiaso"
+      ],
       "formationModule": "4-2-3-1",
       "formationModuleSource": "4-2-3-1 / 4-3-3",
       "formationSourceModuleUsed": "4-2-3-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 7,
       "officialOutgoingCount": 6,
       "talksIncomingCount": 10,
@@ -173,13 +198,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 15,
-      "transferTalksPreview": "Arnau Martinez, Baroni, Koleosho, Norton-Cuffy, Oulai",
+      "transferTalksPreview": [
+        "Arnau Martinez",
+        "Baroni",
+        "Koleosho"
+      ],
       "formationModule": "4-3-2-1",
       "formationModuleSource": "4-3-3 / 4-3-2-1",
       "formationSourceModuleUsed": "4-3-2-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 7,
       "officialOutgoingCount": 8,
       "talksIncomingCount": 11,
@@ -202,13 +231,15 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 1,
-      "transferTalksPreview": "Anouar El Azzouzi",
+      "transferTalksPreview": [
+        "Anouar El Azzouzi"
+      ],
       "formationModule": "4-3-3",
       "formationModuleSource": "3-5-2 / 4-3-3",
       "formationSourceModuleUsed": "4-3-3",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 3,
       "officialOutgoingCount": 8,
       "talksIncomingCount": 1,
@@ -231,13 +262,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 10,
-      "transferTalksPreview": "Casseres, Dovbyk, Hamed Traore, Obaretin, Tony",
+      "transferTalksPreview": [
+        "Casseres",
+        "Dovbyk",
+        "Hamed Traore"
+      ],
       "formationModule": "3-5-2",
       "formationModuleSource": "3-5-2 / 3-4-2-1",
       "formationSourceModuleUsed": "3-5-2",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 10,
       "officialOutgoingCount": 9,
       "talksIncomingCount": 9,
@@ -260,13 +295,19 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 13,
-      "transferTalksPreview": "Jhon Lucumi, Chalobah, Curtis Jones, Khalaili, Kone",
+      "transferTalksPreview": [
+        "Jhon Lucumi",
+        "Chalobah",
+        "Curtis Jones"
+      ],
       "formationModule": "3-5-2",
       "formationModuleSource": "3-5-2",
       "formationSourceModuleUsed": "3-5-2",
       "formationModuleAdjusted": false,
       "injuriesCount": 1,
-      "injuriesPreview": "M. Thuram",
+      "injuriesPreview": [
+        "M. Thuram"
+      ],
       "officialIncomingCount": 3,
       "officialOutgoingCount": 6,
       "talksIncomingCount": 12,
@@ -289,13 +330,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 13,
-      "transferTalksPreview": "Randal Kolo Muani, Brahim Diaz, Emiliano Martinez, Leon Goretzka, Franck Kessie",
+      "transferTalksPreview": [
+        "Randal Kolo Muani",
+        "Brahim Diaz",
+        "Emiliano Martinez"
+      ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 4-3-3",
       "formationSourceModuleUsed": "3-4-2-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 6,
       "officialOutgoingCount": 5,
       "talksIncomingCount": 12,
@@ -317,17 +362,23 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 10,
-      "transferTalksPreview": "Luka Stojkovic, Andrea Pinamonti, Comuzzo, Galassi, Martinez",
+      "transferTalksCount": 11,
+      "transferTalksPreview": [
+        "Luka Stojkovic",
+        "Andrea Pinamonti",
+        "Comuzzo"
+      ],
       "formationModule": "4-3-3",
       "formationModuleSource": "4-3-3 / 4-2-3-1",
       "formationSourceModuleUsed": "4-3-3",
       "formationModuleAdjusted": true,
       "injuriesCount": 1,
-      "injuriesPreview": "Isaksen",
+      "injuriesPreview": [
+        "Isaksen"
+      ],
       "officialIncomingCount": 1,
       "officialOutgoingCount": 6,
-      "talksIncomingCount": 9,
+      "talksIncomingCount": 10,
       "talksOutgoingCount": 1
     },
     {
@@ -347,13 +398,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 3,
-      "transferTalksPreview": "Nessuna trattativa riportata, Walid El Bouradi, Gallo",
+      "transferTalksPreview": [
+        "Nessuna trattativa riportata",
+        "Walid El Bouradi",
+        "Gallo"
+      ],
       "formationModule": "4-3-3",
       "formationModuleSource": "4-3-3",
       "formationSourceModuleUsed": "4-3-3",
       "formationModuleAdjusted": false,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 5,
       "officialOutgoingCount": 5,
       "talksIncomingCount": 2,
@@ -375,18 +430,25 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 12,
-      "transferTalksPreview": "Ricci, Antonio Nusa, Hjulmand, Trincao, Guela Doue",
+      "transferTalksCount": 13,
+      "transferTalksPreview": [
+        "Ricci",
+        "Antonio Nusa",
+        "Hjulmand"
+      ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 3-4-3",
       "formationSourceModuleUsed": "3-4-2-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 2,
-      "injuriesPreview": "Gimenez, Pulisic",
+      "injuriesPreview": [
+        "Gimenez",
+        "Pulisic"
+      ],
       "officialIncomingCount": 4,
       "officialOutgoingCount": 3,
       "talksIncomingCount": 8,
-      "talksOutgoingCount": 4
+      "talksOutgoingCount": 5
     },
     {
       "id": "monza",
@@ -405,13 +467,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 8,
-      "transferTalksPreview": "Darmian, Echeverri, Koleosho, Loubao, Majer",
+      "transferTalksPreview": [
+        "Darmian",
+        "Echeverri",
+        "Koleosho"
+      ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 3-4-3",
       "formationSourceModuleUsed": "3-4-2-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 2,
       "officialOutgoingCount": 5,
       "talksIncomingCount": 7,
@@ -433,18 +499,22 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 6,
-      "transferTalksPreview": "Jesper Lindstrom, Antonio Nusa, Dodo, Exequiel Zeballos, Vicario",
+      "transferTalksCount": 7,
+      "transferTalksPreview": [
+        "Jesper Lindstrom",
+        "Antonio Nusa",
+        "Dodo"
+      ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 4-3-3",
       "formationSourceModuleUsed": "3-4-2-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 7,
       "officialOutgoingCount": 2,
       "talksIncomingCount": 4,
-      "talksOutgoingCount": 2
+      "talksOutgoingCount": 3
     },
     {
       "id": "parma",
@@ -463,13 +533,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 3,
-      "transferTalksPreview": "Jacopo Fazzini, Bernabe, Zion Suzuki",
+      "transferTalksPreview": [
+        "Jacopo Fazzini",
+        "Bernabe",
+        "Zion Suzuki"
+      ],
       "formationModule": "4-3-3",
       "formationModuleSource": "4-3-3 / 4-2-3-1",
       "formationSourceModuleUsed": "4-3-3",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 5,
       "officialOutgoingCount": 4,
       "talksIncomingCount": 1,
@@ -492,13 +566,19 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 11,
-      "transferTalksPreview": "Antonio Nusa, Alajbegovic, Alejandro Garnacho, Dodo, Greenwood",
+      "transferTalksPreview": [
+        "Antonio Nusa",
+        "Alajbegovic",
+        "Alejandro Garnacho"
+      ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 3-4-1-2",
       "formationSourceModuleUsed": "3-4-2-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 1,
-      "injuriesPreview": "Wesley",
+      "injuriesPreview": [
+        "Wesley"
+      ],
       "officialIncomingCount": 2,
       "officialOutgoingCount": 12,
       "talksIncomingCount": 9,
@@ -521,13 +601,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 6,
-      "transferTalksPreview": "Favasuli, Ugresic, Eman Kospo, Yanis Massolin, Lauriente",
+      "transferTalksPreview": [
+        "Favasuli",
+        "Ugresic",
+        "Eman Kospo"
+      ],
       "formationModule": "4-2-3-1",
       "formationModuleSource": "4-3-3 / 4-2-3-1",
       "formationSourceModuleUsed": "4-2-3-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 3,
       "officialOutgoingCount": 7,
       "talksIncomingCount": 4,
@@ -549,18 +633,24 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 8,
-      "transferTalksPreview": "Ben Nelson, Gill, Kristijan Jakic, Montipo, Perri",
+      "transferTalksCount": 9,
+      "transferTalksPreview": [
+        "Ben Nelson",
+        "Gill",
+        "Kristijan Jakic"
+      ],
       "formationModule": "4-3-1-2",
       "formationModuleSource": "4-3-1-2 / 3-4-2-1",
       "formationSourceModuleUsed": "4-3-1-2",
       "formationModuleAdjusted": true,
-      "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesCount": 1,
+      "injuriesPreview": [
+        "Israel"
+      ],
       "officialIncomingCount": 4,
       "officialOutgoingCount": 14,
       "talksIncomingCount": 8,
-      "talksOutgoingCount": 0
+      "talksOutgoingCount": 1
     },
     {
       "id": "udinese",
@@ -579,13 +669,19 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 11,
-      "transferTalksPreview": "Modesto, Covic, Federico Baschirotto, Palacios, Ravaglia",
+      "transferTalksPreview": [
+        "Modesto",
+        "Covic",
+        "Federico Baschirotto"
+      ],
       "formationModule": "3-5-2",
       "formationModuleSource": "3-5-2 / 3-4-2-1",
       "formationSourceModuleUsed": "3-5-2",
       "formationModuleAdjusted": true,
       "injuriesCount": 1,
-      "injuriesPreview": "Giorgi Chakvetadze",
+      "injuriesPreview": [
+        "Giorgi Chakvetadze"
+      ],
       "officialIncomingCount": 6,
       "officialOutgoingCount": 4,
       "talksIncomingCount": 9,
@@ -608,13 +704,17 @@
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
       "transferTalksCount": 8,
-      "transferTalksPreview": "Akor Adams, El Shaarawy, Kozlowski, MacNulty, Orban",
+      "transferTalksPreview": [
+        "Akor Adams",
+        "El Shaarawy",
+        "Kozlowski"
+      ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-5-2 / 3-4-2-1",
       "formationSourceModuleUsed": "3-4-2-1",
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
-      "injuriesPreview": "",
+      "injuriesPreview": [],
       "officialIncomingCount": 11,
       "officialOutgoingCount": 7,
       "talksIncomingCount": 7,
@@ -2012,12 +2112,12 @@
         "module": "4-3-3",
         "rosterSource": "https://www.transfermarkt.it/atalanta-bergamo/startseite/verein/800/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-11",
+        "updatedAt": "2026-07-12",
         "flag": "",
-        "marketStatus": "Voce in uscita ridimensionata",
-        "marketDetail": "TMW: sfumata la cessione al Manchester United; possibile ipotesi rinnovo. Voce da ridimensionare.",
-        "marketSource": "https://www.tuttomercatoweb.com/serie-a/",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "marketStatus": "Rumor",
+        "marketDetail": "SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
+        "marketSource": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+        "marketNote": "SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
         "probableXi": false,
         "formationPosition": "",
         "formationReliability": "",
@@ -26367,12 +26467,12 @@
         "module": "3-4-2-1 / 3-4-3",
         "rosterSource": "https://www.transfermarkt.it/ac-mailand/startseite/verein/5/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-12",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "marketStatus": "Rumor",
+        "marketDetail": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+        "marketSource": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+        "marketNote": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
         "probableXi": false,
         "formationPosition": "",
         "formationReliability": "",
@@ -30901,12 +31001,12 @@
         "module": "3-4-2-1 / 4-3-3",
         "rosterSource": "https://www.transfermarkt.it/ssc-neapel/startseite/verein/6195/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-12",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "marketStatus": "Rumor",
+        "marketDetail": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "marketSource": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "marketNote": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
         "probableXi": false,
         "formationPosition": "",
         "formationReliability": "",
@@ -39429,12 +39529,12 @@
         "module": "4-3-3 / 4-2-3-1",
         "rosterSource": "https://www.transfermarkt.it/us-sassuolo/startseite/verein/6574/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-12",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "marketStatus": "Rumor",
+        "marketDetail": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
+        "marketSource": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+        "marketNote": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
         "probableXi": true,
         "formationPosition": "AS",
         "formationReliability": "Media",
@@ -39971,12 +40071,12 @@
         "module": "4-3-1-2 / 3-4-2-1",
         "rosterSource": "https://www.transfermarkt.it/fc-turin/startseite/verein/416/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-12",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "marketStatus": "Rumor",
+        "marketDetail": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+        "marketSource": "https://www.sosfanta.com/squadra/torino/israel/",
+        "marketNote": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
         "probableXi": false,
         "formationPosition": "",
         "formationReliability": "",
@@ -40009,24 +40109,24 @@
         "listoneMatchMethod": "previous-snapshot",
         "formationLine": "",
         "formationSlot": null,
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalRisk": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
+        "formationPhysicalStatus": "Da monitorare",
+        "formationPhysicalRisk": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
         "formationPotentialReturn": "",
-        "formationSosSource": "",
+        "formationSosSource": "https://www.sosfanta.com/squadra/torino/israel/",
         "formationSourcePosition": "",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
+        "physicalStatus": "Da monitorare",
+        "injuryStatus": "Da monitorare",
+        "injuryDetail": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+        "injuryReturn": "Da valutare",
+        "injurySource": "https://www.sosfanta.com/squadra/torino/israel/",
+        "injuryUpdatedAt": "2026-07-12",
         "injuryNote": "",
-        "injuryImpact": "",
+        "injuryImpact": "Medio/Alto",
         "formationCheck": "",
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "sosFantaFlag": false,
+        "sosFantaFlag": true,
         "formationCorrectionSource": "",
         "formationAlternative": "",
         "originalName": "Israel",
@@ -51001,6 +51101,18 @@
         "updatedAt": "2026-07-11",
         "team": "Atalanta",
         "teamId": "atalanta"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
+        "source": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Atalanta",
+        "teamId": "atalanta",
+        "direction": "Permanenza/Uscita",
+        "origin": "Atalanta / ipotesi mercato"
       }
     ],
     "mikel amondarain": [
@@ -51189,6 +51301,18 @@
         "updatedAt": "2026-07-11",
         "team": "Cagliari",
         "teamId": "cagliari"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Cagliari",
+        "teamId": "cagliari",
+        "direction": "Entrata",
+        "origin": "Leicester"
       }
     ],
     "fazzini": [
@@ -51221,6 +51345,18 @@
         "updatedAt": "2026-07-10",
         "team": "Parma",
         "teamId": "parma"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Cagliari",
+        "teamId": "cagliari",
+        "direction": "Entrata",
+        "origin": "Fiorentina"
       }
     ],
     "engelhardt": [
@@ -51567,6 +51703,18 @@
         "updatedAt": "2026-07-11",
         "team": "Fiorentina",
         "teamId": "fiorentina"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Fiorentina",
+        "teamId": "fiorentina",
+        "direction": "Entrata",
+        "origin": "Bournemouth"
       }
     ],
     "oso martinez gauna": [
@@ -51637,6 +51785,18 @@
         "updatedAt": "2026-07-12",
         "team": "Frosinone",
         "teamId": "frosinone"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Frosinone",
+        "teamId": "frosinone",
+        "direction": "Entrata",
+        "origin": "Svincolato, ex Fortuna Dusseldorf"
       }
     ],
     "casseres": [
@@ -51673,6 +51833,18 @@
         "updatedAt": "2026-07-10",
         "team": "Genoa",
         "teamId": "genoa"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Genoa",
+        "teamId": "genoa",
+        "direction": "Entrata",
+        "origin": "Bournemouth / Marsiglia"
       }
     ],
     "obaretin": [
@@ -51709,6 +51881,18 @@
         "updatedAt": "2026-07-10",
         "team": "Genoa",
         "teamId": "genoa"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Genoa",
+        "teamId": "genoa",
+        "direction": "Entrata",
+        "origin": "Bournemouth / Marsiglia"
       }
     ],
     "ignace van der brempt": [
@@ -51803,6 +51987,18 @@
         "updatedAt": "2026-07-12",
         "team": "Inter",
         "teamId": "inter"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Inter",
+        "teamId": "inter",
+        "direction": "Entrata",
+        "origin": "Union Saint-Gilloise"
       }
     ],
     "kone": [
@@ -51849,6 +52045,18 @@
         "updatedAt": "2026-07-12",
         "team": "Inter",
         "teamId": "inter"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Inter",
+        "teamId": "inter",
+        "direction": "Entrata",
+        "origin": "Union Saint-Gilloise"
       }
     ],
     "guela doue": [
@@ -52701,6 +52909,18 @@
         "updatedAt": "2026-07-10",
         "team": "Parma",
         "teamId": "parma"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Cagliari",
+        "teamId": "cagliari",
+        "direction": "Entrata",
+        "origin": "Fiorentina"
       }
     ],
     "bernabe": [
@@ -52843,6 +53063,18 @@
         "updatedAt": "2026-07-12",
         "team": "Sassuolo",
         "teamId": "sassuolo"
+      },
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
+        "source": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Sassuolo",
+        "teamId": "sassuolo",
+        "direction": "Uscita",
+        "origin": "Besiktas"
       }
     ],
     "ben nelson": [
@@ -53307,6 +53539,384 @@
         "updatedAt": "2026-07-12",
         "team": "Milan",
         "teamId": "milan"
+      }
+    ],
+    "hamedtraore": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Genoa",
+        "teamId": "genoa",
+        "direction": "Entrata",
+        "origin": "Bournemouth / Marsiglia"
+      }
+    ],
+    "armandlauriente": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
+        "source": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Sassuolo",
+        "teamId": "sassuolo",
+        "direction": "Uscita",
+        "origin": "Besiktas"
+      }
+    ],
+    "armand lauriente": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
+        "source": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Sassuolo",
+        "teamId": "sassuolo",
+        "direction": "Uscita",
+        "origin": "Besiktas"
+      }
+    ],
+    "franco israel": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+        "source": "https://www.sosfanta.com/squadra/torino/israel/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Torino",
+        "teamId": "torino",
+        "direction": "Uscita/Infortunio",
+        "origin": "Torino"
+      }
+    ],
+    "israel": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+        "source": "https://www.sosfanta.com/squadra/torino/israel/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Torino",
+        "teamId": "torino",
+        "direction": "Uscita/Infortunio",
+        "origin": "Torino"
+      }
+    ],
+    "francoisrael": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+        "source": "https://www.sosfanta.com/squadra/torino/israel/",
+        "sourceName": "SOS Fanta",
+        "updatedAt": "2026-07-12",
+        "team": "Torino",
+        "teamId": "torino",
+        "direction": "Uscita/Infortunio",
+        "origin": "Torino"
+      }
+    ],
+    "harrywinks": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Cagliari",
+        "teamId": "cagliari",
+        "direction": "Entrata",
+        "origin": "Leicester"
+      }
+    ],
+    "winks": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Cagliari",
+        "teamId": "cagliari",
+        "direction": "Entrata",
+        "origin": "Leicester"
+      }
+    ],
+    "jacopofazzini": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Cagliari",
+        "teamId": "cagliari",
+        "direction": "Entrata",
+        "origin": "Fiorentina"
+      }
+    ],
+    "jimenez": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Fiorentina",
+        "teamId": "fiorentina",
+        "direction": "Entrata",
+        "origin": "Bournemouth"
+      }
+    ],
+    "alexjimenez": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Fiorentina",
+        "teamId": "fiorentina",
+        "direction": "Entrata",
+        "origin": "Bournemouth"
+      }
+    ],
+    "estupinan": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Milan",
+        "teamId": "milan",
+        "direction": "Uscita",
+        "origin": "Aston Villa"
+      }
+    ],
+    "pervisestupinan": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Milan",
+        "teamId": "milan",
+        "direction": "Uscita",
+        "origin": "Aston Villa"
+      }
+    ],
+    "pervis estupinan": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Milan",
+        "teamId": "milan",
+        "direction": "Uscita",
+        "origin": "Aston Villa"
+      }
+    ],
+    "mathias olivera": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Napoli",
+        "teamId": "napoli",
+        "direction": "Uscita/Entrata",
+        "origin": "Atletico Madrid"
+      }
+    ],
+    "mathiasolivera": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Napoli",
+        "teamId": "napoli",
+        "direction": "Uscita/Entrata",
+        "origin": "Atletico Madrid"
+      }
+    ],
+    "olivera": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Napoli",
+        "teamId": "napoli",
+        "direction": "Uscita/Entrata",
+        "origin": "Atletico Madrid"
+      }
+    ],
+    "nahuelmolina": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Napoli",
+        "teamId": "napoli",
+        "direction": "Uscita/Entrata",
+        "origin": "Atletico Madrid"
+      }
+    ],
+    "molina": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Napoli",
+        "teamId": "napoli",
+        "direction": "Uscita/Entrata",
+        "origin": "Atletico Madrid"
+      }
+    ],
+    "nahuel molina": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Napoli",
+        "teamId": "napoli",
+        "direction": "Uscita/Entrata",
+        "origin": "Atletico Madrid"
+      }
+    ],
+    "doekhi": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Lazio",
+        "teamId": "lazio",
+        "direction": "Entrata",
+        "origin": "Svincolato / ex Union Berlino"
+      }
+    ],
+    "danilhodoekhi": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Lazio",
+        "teamId": "lazio",
+        "direction": "Entrata",
+        "origin": "Svincolato / ex Union Berlino"
+      }
+    ],
+    "danilho doekhi": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Lazio",
+        "teamId": "lazio",
+        "direction": "Entrata",
+        "origin": "Svincolato / ex Union Berlino"
+      }
+    ],
+    "anankhalaili": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
+        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-11",
+        "team": "Inter",
+        "teamId": "inter",
+        "direction": "Entrata",
+        "origin": "Union Saint-Gilloise"
+      }
+    ],
+    "azzouzi": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Frosinone",
+        "teamId": "frosinone",
+        "direction": "Entrata",
+        "origin": "Svincolato, ex Fortuna Dusseldorf"
+      }
+    ],
+    "el azzouzi": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Frosinone",
+        "teamId": "frosinone",
+        "direction": "Entrata",
+        "origin": "Svincolato, ex Fortuna Dusseldorf"
+      }
+    ],
+    "anouarelazzouzi": [
+      {
+        "type": "Rumor/trattativa",
+        "status": "RUMOR",
+        "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+        "sourceName": "Fantacalcio.it",
+        "updatedAt": "2026-07-12",
+        "team": "Frosinone",
+        "teamId": "frosinone",
+        "direction": "Entrata",
+        "origin": "Svincolato, ex Fortuna Dusseldorf"
       }
     ]
   },
@@ -59103,6 +59713,18 @@
       "url": "https://calciominuto.com/italia/serie-a/",
       "use": "Aggregatore utile per intercettare rapidamente aggiornamenti su singoli casi come Khalaili e Soulé; da confermare sempre con fonte primaria.",
       "consultedAt": "2026-07-12"
+    },
+    {
+      "name": "Fantacalcio.it trasferimenti ufficiali",
+      "url": "https://www.fantacalcio.it/calciomercato/trasferimenti-ufficiali",
+      "use": "Fonte squadra-per-squadra per distinguere ufficialita da semplici trattative; utile per evitare doppioni tra Trattative e Ufficialita.",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "CalcioMagazine ritiri Serie A 26/27",
+      "url": "https://www.calciomagazine.net/ritiri-serie-a-2026-27-247482.html",
+      "use": "Fonte di controllo aggiuntiva per date e sedi dei ritiri estivi Serie A 2026/27.",
+      "consultedAt": "2026-07-13"
     }
   ],
   "notMatchedPreview": [
@@ -59754,16 +60376,16 @@
         "role": "Centrocampista",
         "direction": "outgoing",
         "directionLabel": "Uscita",
-        "status": "Voce ridimensionata / cessione sfumata",
-        "origin": "Manchester United",
-        "source": "https://www.tuttomercatoweb.com/serie-a/",
-        "url": "https://www.tuttomercatoweb.com/serie-a/",
-        "sourceName": "TMW",
-        "sourceLabel": "TMW",
+        "status": "Manchester United saltato / rinnovo possibile",
+        "origin": "Manchester United / Atalanta / ipotesi mercato",
+        "source": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+        "url": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+        "sourceName": "SOS Fanta",
+        "sourceLabel": "SOS Fanta",
         "probability": "",
-        "updatedAt": "2026-07-11",
+        "updatedAt": "2026-07-12",
         "reliability": "Media",
-        "note": "TMW: cessione Manchester United sfumata; possibile rinnovo. Non trattare come partente imminente. | United si ritira dopo visite mediche; Atalanta valuta rinnovo.",
+        "note": "TMW: cessione Manchester United sfumata; possibile rinnovo. Non trattare come partente imminente. | United si ritira dopo visite mediche; Atalanta valuta rinnovo. | SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
         "check": "Da monitorare",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -59785,6 +60407,16 @@
             "status": "Trattativa saltata",
             "updatedAt": "2026-07-12",
             "note": "United si ritira dopo visite mediche; Atalanta valuta rinnovo.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+            "url": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "status": "Manchester United saltato / rinnovo possibile",
+            "updatedAt": "2026-07-12",
+            "note": "SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
             "probability": ""
           }
         ],
@@ -59876,9 +60508,31 @@
             "note": "United si ritira dopo visite mediche; Atalanta valuta rinnovo.",
             "check": "Resta in rosa",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+          },
+          {
+            "teamId": "atalanta",
+            "teamName": "Atalanta",
+            "target": "Ederson",
+            "playerName": "Ederson",
+            "roleBrief": "C",
+            "role": "Centrocampista",
+            "direction": "outgoing",
+            "directionLabel": "Permanenza/Uscita",
+            "status": "Manchester United saltato / rinnovo possibile",
+            "origin": "Atalanta / ipotesi mercato",
+            "source": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+            "url": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 2
+        "sourcesCount": 3
       }
     ],
     "bologna": [
@@ -60765,7 +61419,7 @@
         "probability": "",
         "updatedAt": "2026-07-11",
         "reliability": "Media",
-        "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale.",
+        "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale. | Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
         "check": "Da monitorare/non ufficiale",
         "rule": "Aggiornare rosa solo se ufficiale.",
         "sources": [
@@ -60777,6 +61431,16 @@
             "status": "News SOS/Romano",
             "updatedAt": "2026-07-11",
             "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Affare quasi definito / visite previste",
+            "updatedAt": "2026-07-11",
+            "note": "Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
             "probability": ""
           }
         ],
@@ -60802,9 +61466,31 @@
             "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale.",
             "check": "Da monitorare/non ufficiale",
             "rule": "Aggiornare rosa solo se ufficiale."
+          },
+          {
+            "teamId": "cagliari",
+            "teamName": "Cagliari",
+            "target": "Harry Winks",
+            "playerName": "Harry Winks",
+            "roleBrief": "C",
+            "role": "Centrocampista",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Affare quasi definito / visite previste",
+            "origin": "Leicester",
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-11",
+            "reliability": "Media",
+            "note": "Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 2
       },
       {
         "teamId": "cagliari",
@@ -60824,7 +61510,7 @@
         "probability": "",
         "updatedAt": "2026-07-11",
         "reliability": "Media",
-        "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale.",
+        "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale. | Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
         "check": "",
         "rule": "",
         "sources": [
@@ -60836,6 +61522,16 @@
             "status": "Trattativa in chiusura",
             "updatedAt": "2026-07-11",
             "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Intesa raggiunta / da ufficializzare",
+            "updatedAt": "2026-07-11",
+            "note": "Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
             "probability": ""
           }
         ],
@@ -60861,9 +61557,31 @@
             "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale.",
             "check": "",
             "rule": ""
+          },
+          {
+            "teamId": "cagliari",
+            "teamName": "Cagliari",
+            "target": "Jacopo Fazzini",
+            "playerName": "Jacopo Fazzini",
+            "roleBrief": "C",
+            "role": "Mezzala/centrocampista",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Intesa raggiunta / da ufficializzare",
+            "origin": "Fiorentina",
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-11",
+            "reliability": "Media",
+            "note": "Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 2
       },
       {
         "teamId": "cagliari",
@@ -62495,7 +63213,7 @@
         "probability": "",
         "updatedAt": "2026-07-11",
         "reliability": "Media",
-        "note": "TMW: prime immagini/visite mediche alla Fiorentina; non ancora inserito in rosa. | Prestito con diritto di riscatto a 20 mln; ufficialità attesa.",
+        "note": "TMW: prime immagini/visite mediche alla Fiorentina; non ancora inserito in rosa. | Prestito con diritto di riscatto a 20 mln; ufficialità attesa. | Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
         "check": "",
         "rule": "",
         "sources": [
@@ -62517,6 +63235,16 @@
             "status": "In chiusura - visite",
             "updatedAt": "2026-07-11",
             "note": "Prestito con diritto di riscatto a 20 mln; ufficialità attesa.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Visite / trattativa definita",
+            "updatedAt": "2026-07-11",
+            "note": "Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
             "probability": ""
           }
         ],
@@ -62564,9 +63292,31 @@
             "note": "Prestito con diritto di riscatto a 20 mln; ufficialità attesa.",
             "check": "Aggiornare rosa quando ufficiale",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+          },
+          {
+            "teamId": "fiorentina",
+            "teamName": "Fiorentina",
+            "target": "Alex Jimenez",
+            "playerName": "Alex Jimenez",
+            "roleBrief": "D",
+            "role": "Esterno/terzino",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Visite / trattativa definita",
+            "origin": "Bournemouth",
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-11",
+            "reliability": "Media",
+            "note": "Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 2
+        "sourcesCount": 3
       },
       {
         "teamId": "fiorentina",
@@ -62816,7 +63566,7 @@
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Fatta / visite mediche attese",
-        "origin": "Parametro zero",
+        "origin": "Parametro zero / Svincolato, ex Fortuna Dusseldorf",
         "source": "https://www.tuttomercatoweb.com/serie-a/",
         "url": "https://www.tuttomercatoweb.com/serie-a/",
         "sourceName": "TMW",
@@ -62824,7 +63574,7 @@
         "probability": "",
         "updatedAt": "2026-07-12",
         "reliability": "Media",
-        "note": "Fatta / visite mediche attese | SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
+        "note": "Fatta / visite mediche attese | SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club. | Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
         "check": "",
         "rule": "",
         "sources": [
@@ -62846,6 +63596,16 @@
             "status": "Chiusura segnalata / da ufficializzare",
             "updatedAt": "2026-07-12",
             "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Visite mediche / da ufficializzare",
+            "updatedAt": "2026-07-12",
+            "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
             "probability": ""
           }
         ],
@@ -62893,9 +63653,31 @@
             "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
             "check": "Aggiornare rosa se ufficiale",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          },
+          {
+            "teamId": "frosinone",
+            "teamName": "Frosinone",
+            "target": "Anouar El Azzouzi",
+            "playerName": "Anouar El Azzouzi",
+            "roleBrief": "C",
+            "role": "Centrocampista centrale",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Visite mediche / da ufficializzare",
+            "origin": "Svincolato, ex Fortuna Dusseldorf",
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 3
       }
     ],
     "genoa": [
@@ -63026,16 +63808,16 @@
         "role": "Ala sinistra",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Rumor Transfermarkt",
-        "origin": "AFC Bournemouth -> Genoa (Entrata rumor; prob. utenti 61%)",
-        "source": "https://www.transfermarkt.it/calciomercato/detail/forum/154/gk_group/nationalCompetitions/gk_wettbewerb_id/IT1/page/1",
-        "url": "https://www.transfermarkt.it/calciomercato/detail/forum/154/gk_group/nationalCompetitions/gk_wettbewerb_id/IT1/page/1",
-        "sourceName": "Transfermarkt",
-        "sourceLabel": "Transfermarkt",
+        "status": "Operazione chiusa / visite programmate",
+        "origin": "AFC Bournemouth -> Genoa (Entrata rumor; prob. utenti 61%) / Bournemouth / Marsiglia",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+        "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+        "sourceName": "Fantacalcio.it",
+        "sourceLabel": "Fantacalcio.it",
         "probability": "61%",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-12",
         "reliability": "Bassa/Media",
-        "note": "Transfermarkt rumor: da trattare come voce, non ufficialita. Data = Ultima voce dal. | Accordo verbale raggiunto / quasi fatta | SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita.",
+        "note": "Transfermarkt rumor: da trattare come voce, non ufficialita. Data = Ultima voce dal. | Accordo verbale raggiunto / quasi fatta | SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita. | Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
         "check": "Da monitorare",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -63067,6 +63849,16 @@
             "status": "Trattativa avanzata",
             "updatedAt": "2026-07-12",
             "note": "SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Operazione chiusa / visite programmate",
+            "updatedAt": "2026-07-12",
+            "note": "Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
             "probability": ""
           }
         ],
@@ -63136,9 +63928,31 @@
             "note": "SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita.",
             "check": "Da monitorare",
             "rule": "Notizia live SportMediaset, non ufficialita."
+          },
+          {
+            "teamId": "genoa",
+            "teamName": "Genoa",
+            "target": "Hamed Traore",
+            "playerName": "Hamed Traore",
+            "roleBrief": "C",
+            "role": "Trequartista/centrocampista offensivo",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Operazione chiusa / visite programmate",
+            "origin": "Bournemouth / Marsiglia",
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 3
+        "sourcesCount": 4
       },
       {
         "teamId": "genoa",
@@ -63814,7 +64628,7 @@
         "probability": "",
         "updatedAt": "2026-07-12",
         "reliability": "Media",
-        "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
+        "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita. | Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
         "check": "Da monitorare",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -63846,6 +64660,16 @@
             "status": "Visite/idoneita da approfondire",
             "updatedAt": "2026-07-12",
             "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Idoneita CONI da completare",
+            "updatedAt": "2026-07-11",
+            "note": "Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
             "probability": ""
           }
         ],
@@ -63915,9 +64739,31 @@
             "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
             "check": "Da monitorare",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          },
+          {
+            "teamId": "inter",
+            "teamName": "Inter",
+            "target": "Anan Khalaili",
+            "playerName": "Anan Khalaili",
+            "roleBrief": "A",
+            "role": "Esterno/attaccante",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Idoneita CONI da completare",
+            "origin": "Union Saint-Gilloise",
+            "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+            "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-11",
+            "reliability": "Media",
+            "note": "Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 2
+        "sourcesCount": 4
       },
       {
         "teamId": "inter",
@@ -66290,6 +67136,65 @@
           }
         ],
         "sourcesCount": 1
+      },
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "target": "Danilho Doekhi",
+        "playerName": "Danilho Doekhi",
+        "roleBrief": "D",
+        "role": "Difensore centrale",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Contatti avviati",
+        "origin": "Svincolato / ex Union Berlino",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+        "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+        "sourceName": "Fantacalcio.it",
+        "sourceLabel": "Fantacalcio.it",
+        "probability": "",
+        "updatedAt": "2026-07-12",
+        "reliability": "Media",
+        "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+        "check": "Da monitorare",
+        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+        "sources": [
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Contatti avviati",
+            "updatedAt": "2026-07-12",
+            "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "lazio",
+            "teamName": "Lazio",
+            "target": "Danilho Doekhi",
+            "playerName": "Danilho Doekhi",
+            "roleBrief": "D",
+            "role": "Difensore centrale",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "status": "Contatti avviati",
+            "origin": "Svincolato / ex Union Berlino",
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          }
+        ],
+        "sourcesCount": 1
       }
     ],
     "lecce": [
@@ -67208,6 +68113,65 @@
             "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
             "check": "Da monitorare",
             "rule": "Notizia da ritiro/convocazioni."
+          }
+        ],
+        "sourcesCount": 1
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "target": "Pervis Estupinan",
+        "playerName": "Pervis Estupinan",
+        "roleBrief": "D",
+        "role": "Terzino sinistro",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Sondaggio estero",
+        "origin": "Aston Villa",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+        "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+        "sourceName": "Fantacalcio.it",
+        "sourceLabel": "Fantacalcio.it",
+        "probability": "",
+        "updatedAt": "2026-07-12",
+        "reliability": "Media",
+        "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+        "check": "Da monitorare",
+        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+        "sources": [
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Sondaggio estero",
+            "updatedAt": "2026-07-12",
+            "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "milan",
+            "teamName": "Milan",
+            "target": "Pervis Estupinan",
+            "playerName": "Pervis Estupinan",
+            "roleBrief": "D",
+            "role": "Terzino sinistro",
+            "direction": "outgoing",
+            "directionLabel": "Uscita",
+            "status": "Sondaggio estero",
+            "origin": "Aston Villa",
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
         "sourcesCount": 1
@@ -68168,6 +69132,65 @@
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ]
+      },
+      {
+        "teamId": "napoli",
+        "teamName": "Napoli",
+        "target": "Mathias Olivera / Nahuel Molina",
+        "playerName": "Mathias Olivera / Nahuel Molina",
+        "roleBrief": "D",
+        "role": "Terzini",
+        "direction": "outgoing",
+        "directionLabel": "Uscita/Entrata",
+        "status": "Interesse Atletico / ipotesi scambio",
+        "origin": "Atletico Madrid",
+        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+        "sourceName": "Fantacalcio.it",
+        "sourceLabel": "Fantacalcio.it",
+        "probability": "",
+        "updatedAt": "2026-07-12",
+        "reliability": "Media",
+        "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+        "check": "Da monitorare",
+        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+        "sources": [
+          {
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Interesse Atletico / ipotesi scambio",
+            "updatedAt": "2026-07-12",
+            "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "napoli",
+            "teamName": "Napoli",
+            "target": "Mathias Olivera / Nahuel Molina",
+            "playerName": "Mathias Olivera / Nahuel Molina",
+            "roleBrief": "D",
+            "role": "Terzini",
+            "direction": "outgoing",
+            "directionLabel": "Uscita/Entrata",
+            "status": "Interesse Atletico / ipotesi scambio",
+            "origin": "Atletico Madrid",
+            "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+            "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          }
+        ],
+        "sourcesCount": 1
       }
     ],
     "parma": [
@@ -69447,7 +70470,7 @@
         "probability": "",
         "updatedAt": "2026-07-12",
         "reliability": "Media",
-        "note": "Contatti con Besiktas, ok del giocatore",
+        "note": "Contatti con Besiktas, ok del giocatore | SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
         "check": "",
         "rule": "",
         "sources": [
@@ -69459,6 +70482,16 @@
             "status": "Contatti con Besiktas, ok del giocatore",
             "updatedAt": "2026-07-12",
             "note": "",
+            "probability": ""
+          },
+          {
+            "source": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+            "url": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "status": "Trattativa estera in corso",
+            "updatedAt": "2026-07-12",
+            "note": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
             "probability": ""
           }
         ],
@@ -69484,9 +70517,31 @@
             "note": "",
             "check": "",
             "rule": ""
+          },
+          {
+            "teamId": "sassuolo",
+            "teamName": "Sassuolo",
+            "target": "Armand Lauriente",
+            "playerName": "Armand Lauriente",
+            "roleBrief": "A",
+            "role": "Attaccante/esterno",
+            "direction": "outgoing",
+            "directionLabel": "Uscita",
+            "status": "Trattativa estera in corso",
+            "origin": "Besiktas",
+            "source": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+            "url": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
+            "check": "Da monitorare",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 2
       },
       {
         "teamId": "sassuolo",
@@ -70049,6 +71104,65 @@
             "note": "",
             "check": "",
             "rule": ""
+          }
+        ],
+        "sourcesCount": 1
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "target": "Franco Israel",
+        "playerName": "Franco Israel",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "direction": "outgoing",
+        "directionLabel": "Uscita/Infortunio",
+        "status": "Non convocato / in uscita",
+        "origin": "Torino",
+        "source": "https://www.sosfanta.com/squadra/torino/israel/",
+        "url": "https://www.sosfanta.com/squadra/torino/israel/",
+        "sourceName": "SOS Fanta",
+        "sourceLabel": "SOS Fanta",
+        "probability": "",
+        "updatedAt": "2026-07-12",
+        "reliability": "Media",
+        "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+        "check": "Aggiornare SOS/Infortunati e gerarchie",
+        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+        "sources": [
+          {
+            "source": "https://www.sosfanta.com/squadra/torino/israel/",
+            "url": "https://www.sosfanta.com/squadra/torino/israel/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "status": "Non convocato / in uscita",
+            "updatedAt": "2026-07-12",
+            "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "torino",
+            "teamName": "Torino",
+            "target": "Franco Israel",
+            "playerName": "Franco Israel",
+            "roleBrief": "P",
+            "role": "Portiere",
+            "direction": "outgoing",
+            "directionLabel": "Uscita/Infortunio",
+            "status": "Non convocato / in uscita",
+            "origin": "Torino",
+            "source": "https://www.sosfanta.com/squadra/torino/israel/",
+            "url": "https://www.sosfanta.com/squadra/torino/israel/",
+            "sourceName": "SOS Fanta",
+            "sourceLabel": "SOS Fanta",
+            "probability": "",
+            "updatedAt": "2026-07-12",
+            "reliability": "Media",
+            "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+            "check": "Aggiornare SOS/Infortunati e gerarchie",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
           }
         ],
         "sourcesCount": 1
@@ -71351,7 +72465,22 @@
       }
     ],
     "sassuolo": [],
-    "torino": [],
+    "torino": [
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "playerName": "Israel",
+        "playerId": "torino-israel",
+        "role": "P",
+        "status": "Da monitorare",
+        "injury": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+        "potentialReturn": "Da valutare",
+        "auctionImpact": "Medio/Alto",
+        "source": "https://www.sosfanta.com/squadra/torino/israel/",
+        "updatedAt": "2026-07-12",
+        "note": "Segnalazione importata dal foglio Trattative_Squadre perché indicata come Uscita/Infortunio."
+      }
+    ],
     "udinese": [
       {
         "teamId": "udinese",
@@ -71474,6 +72603,15 @@
       "url": "https://www.sosfanta.com/calciomercato/news-provedel-allinter-tutto-confermato-dybala-isaksen-fofana-jashari-okoli-muharemovic-zaniolo/",
       "updatedAt": "2026-07-10",
       "note": "Aggiornare status mercato Dybala."
+    },
+    {
+      "teamName": "Torino",
+      "teamId": "torino",
+      "playerName": "Israel",
+      "status": "Da monitorare",
+      "note": "Assente dai convocati per il ritiro, in uscita dopo aver perso titolarità con Paleari; problema alla spalla con possibile intervento.",
+      "source": "https://www.sosfanta.com/squadra/torino/israel/",
+      "updatedAt": "2026-07-12"
     }
   ],
   "sosFantaUpdateLog": [
@@ -71524,6 +72662,11 @@
       "sheets": "Probabili_Formazioni",
       "source": "https://www.sosfanta.com/lista-formazioni/probabili-formazioni-serie-a/",
       "date": "2026-07-10"
+    },
+    {
+      "updatedAt": "2026-07-13",
+      "area": "Infortunati/SOS",
+      "detail": "Aggiunta segnalazione Israel: non convocato, spalla da valutare e possibile intervento; fonte SOS Fanta nel foglio Trattative_Squadre."
     }
   ],
   "formationAdjustments": [
@@ -86604,16 +87747,16 @@
           "role": "Centrocampista",
           "direction": "outgoing",
           "directionLabel": "Uscita",
-          "status": "Voce ridimensionata / cessione sfumata",
-          "origin": "Manchester United",
-          "source": "https://www.tuttomercatoweb.com/serie-a/",
-          "url": "https://www.tuttomercatoweb.com/serie-a/",
-          "sourceName": "TMW",
-          "sourceLabel": "TMW",
+          "status": "Manchester United saltato / rinnovo possibile",
+          "origin": "Manchester United / Atalanta / ipotesi mercato",
+          "source": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+          "url": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+          "sourceName": "SOS Fanta",
+          "sourceLabel": "SOS Fanta",
           "probability": "",
-          "updatedAt": "2026-07-11",
+          "updatedAt": "2026-07-12",
           "reliability": "Media",
-          "note": "TMW: cessione Manchester United sfumata; possibile rinnovo. Non trattare come partente imminente. | United si ritira dopo visite mediche; Atalanta valuta rinnovo.",
+          "note": "TMW: cessione Manchester United sfumata; possibile rinnovo. Non trattare come partente imminente. | United si ritira dopo visite mediche; Atalanta valuta rinnovo. | SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
           "check": "Da monitorare",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -86635,6 +87778,16 @@
               "status": "Trattativa saltata",
               "updatedAt": "2026-07-12",
               "note": "United si ritira dopo visite mediche; Atalanta valuta rinnovo.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+              "url": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "status": "Manchester United saltato / rinnovo possibile",
+              "updatedAt": "2026-07-12",
+              "note": "SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
               "probability": ""
             }
           ],
@@ -86726,9 +87879,31 @@
               "note": "United si ritira dopo visite mediche; Atalanta valuta rinnovo.",
               "check": "Resta in rosa",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            },
+            {
+              "teamId": "atalanta",
+              "teamName": "Atalanta",
+              "target": "Ederson",
+              "playerName": "Ederson",
+              "roleBrief": "C",
+              "role": "Centrocampista",
+              "direction": "outgoing",
+              "directionLabel": "Permanenza/Uscita",
+              "status": "Manchester United saltato / rinnovo possibile",
+              "origin": "Atalanta / ipotesi mercato",
+              "source": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+              "url": "https://www.sosfanta.com/squadra/atalanta/atalanta-due-scenari-possibili-per-il-futuro-di-ederson-la-situazione-e-la-verita-sullinteresse-del-milan/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "SOS Fanta/Romano: operazione Man United saltata; Atalanta pronta a proposta di rinnovo, Milan apprezzamento ma nessuna trattativa avviata.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 2
+          "sourcesCount": 3
         }
       ],
       "counts": {
@@ -89124,7 +90299,7 @@
           "probability": "",
           "updatedAt": "2026-07-11",
           "reliability": "Media",
-          "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale.",
+          "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale. | Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
           "check": "Da monitorare/non ufficiale",
           "rule": "Aggiornare rosa solo se ufficiale.",
           "sources": [
@@ -89136,6 +90311,16 @@
               "status": "News SOS/Romano",
               "updatedAt": "2026-07-11",
               "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Affare quasi definito / visite previste",
+              "updatedAt": "2026-07-11",
+              "note": "Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
               "probability": ""
             }
           ],
@@ -89161,9 +90346,31 @@
               "note": "Operazione praticamente definita secondo SOS/Fabrizio Romano; atteso ok finale.",
               "check": "Da monitorare/non ufficiale",
               "rule": "Aggiornare rosa solo se ufficiale."
+            },
+            {
+              "teamId": "cagliari",
+              "teamName": "Cagliari",
+              "target": "Harry Winks",
+              "playerName": "Harry Winks",
+              "roleBrief": "C",
+              "role": "Centrocampista",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Affare quasi definito / visite previste",
+              "origin": "Leicester",
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/cagliari-colpo-a-sorpresa-per-il-centrocampo-preso-winks-dal-leicester-495207",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-11",
+              "reliability": "Media",
+              "note": "Fantacalcio: Cagliari a un passo da Winks, accordo praticamente definito; visite mediche lunedi e contratto biennale con opzione.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 1
+          "sourcesCount": 2
         },
         {
           "teamId": "cagliari",
@@ -89183,7 +90390,7 @@
           "probability": "",
           "updatedAt": "2026-07-11",
           "reliability": "Media",
-          "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale.",
+          "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale. | Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
           "check": "",
           "rule": "",
           "sources": [
@@ -89195,6 +90402,16 @@
               "status": "Trattativa in chiusura",
               "updatedAt": "2026-07-11",
               "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Intesa raggiunta / da ufficializzare",
+              "updatedAt": "2026-07-11",
+              "note": "Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
               "probability": ""
             }
           ],
@@ -89220,9 +90437,31 @@
               "note": "TMW: Fazzini a un passo dal Cagliari; non ufficiale.",
               "check": "",
               "rule": ""
+            },
+            {
+              "teamId": "cagliari",
+              "teamName": "Cagliari",
+              "target": "Jacopo Fazzini",
+              "playerName": "Jacopo Fazzini",
+              "roleBrief": "C",
+              "role": "Mezzala/centrocampista",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Intesa raggiunta / da ufficializzare",
+              "origin": "Fiorentina",
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-fazzini-non-va-al-parma-intesa-raggiunta-con-cagliari-495219",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-11",
+              "reliability": "Media",
+              "note": "Fantacalcio/Sky: Fazzini non va al Parma; intesa con Cagliari in prestito con diritto di riscatto a 8 milioni. Potenziale sostituto di Gaetano.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 1
+          "sourcesCount": 2
         }
       ],
       "talksOutgoing": [
@@ -92172,7 +93411,7 @@
           "probability": "",
           "updatedAt": "2026-07-11",
           "reliability": "Media",
-          "note": "TMW: prime immagini/visite mediche alla Fiorentina; non ancora inserito in rosa. | Prestito con diritto di riscatto a 20 mln; ufficialità attesa.",
+          "note": "TMW: prime immagini/visite mediche alla Fiorentina; non ancora inserito in rosa. | Prestito con diritto di riscatto a 20 mln; ufficialità attesa. | Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
           "check": "",
           "rule": "",
           "sources": [
@@ -92194,6 +93433,16 @@
               "status": "In chiusura - visite",
               "updatedAt": "2026-07-11",
               "note": "Prestito con diritto di riscatto a 20 mln; ufficialità attesa.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Visite / trattativa definita",
+              "updatedAt": "2026-07-11",
+              "note": "Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
               "probability": ""
             }
           ],
@@ -92241,9 +93490,31 @@
               "note": "Prestito con diritto di riscatto a 20 mln; ufficialità attesa.",
               "check": "Aggiornare rosa quando ufficiale",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            },
+            {
+              "teamId": "fiorentina",
+              "teamName": "Fiorentina",
+              "target": "Alex Jimenez",
+              "playerName": "Alex Jimenez",
+              "roleBrief": "D",
+              "role": "Esterno/terzino",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Visite / trattativa definita",
+              "origin": "Bournemouth",
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/fiorentina-arriva-jimenez-dal-bournemouth-l-esterno-e-gia-in-citta-495217",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-11",
+              "reliability": "Media",
+              "note": "Fantacalcio/Sky: Jimenez in citta per completare visite; prestito con diritto di riscatto a 20 milioni. Da capire impatto su Dodo e fascia destra.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 2
+          "sourcesCount": 3
         },
         {
           "teamId": "fiorentina",
@@ -93224,7 +94495,7 @@
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Fatta / visite mediche attese",
-          "origin": "Parametro zero",
+          "origin": "Parametro zero / Svincolato, ex Fortuna Dusseldorf",
           "source": "https://www.tuttomercatoweb.com/serie-a/",
           "url": "https://www.tuttomercatoweb.com/serie-a/",
           "sourceName": "TMW",
@@ -93232,7 +94503,7 @@
           "probability": "",
           "updatedAt": "2026-07-12",
           "reliability": "Media",
-          "note": "Fatta / visite mediche attese | SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
+          "note": "Fatta / visite mediche attese | SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club. | Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
           "check": "",
           "rule": "",
           "sources": [
@@ -93254,6 +94525,16 @@
               "status": "Chiusura segnalata / da ufficializzare",
               "updatedAt": "2026-07-12",
               "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Visite mediche / da ufficializzare",
+              "updatedAt": "2026-07-12",
+              "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
               "probability": ""
             }
           ],
@@ -93301,9 +94582,31 @@
               "note": "SOS Fanta riporta da Sky che il Frosinone avrebbe chiuso per El Azzouzi. Nel file era gia monitorato; mantenere come trattativa finche non compare comunicato ufficiale/club.",
               "check": "Aggiornare rosa se ufficiale",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            },
+            {
+              "teamId": "frosinone",
+              "teamName": "Frosinone",
+              "target": "Anouar El Azzouzi",
+              "playerName": "Anouar El Azzouzi",
+              "roleBrief": "C",
+              "role": "Centrocampista centrale",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Visite mediche / da ufficializzare",
+              "origin": "Svincolato, ex Fortuna Dusseldorf",
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/frosinone-e-fatta-per-el-azzouzi-in-arrivo-le-visite-mediche-495240",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Fantacalcio/Sky: El Azzouzi preso dal Frosinone, visite mediche come ultimo passaggio prima della firma. Riga di precisione con fonte diretta.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 1
+          "sourcesCount": 3
         }
       ],
       "talksOutgoing": [],
@@ -94491,16 +95794,16 @@
           "role": "Ala sinistra",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Rumor Transfermarkt",
-          "origin": "AFC Bournemouth -> Genoa (Entrata rumor; prob. utenti 61%)",
-          "source": "https://www.transfermarkt.it/calciomercato/detail/forum/154/gk_group/nationalCompetitions/gk_wettbewerb_id/IT1/page/1",
-          "url": "https://www.transfermarkt.it/calciomercato/detail/forum/154/gk_group/nationalCompetitions/gk_wettbewerb_id/IT1/page/1",
-          "sourceName": "Transfermarkt",
-          "sourceLabel": "Transfermarkt",
+          "status": "Operazione chiusa / visite programmate",
+          "origin": "AFC Bournemouth -> Genoa (Entrata rumor; prob. utenti 61%) / Bournemouth / Marsiglia",
+          "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+          "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+          "sourceName": "Fantacalcio.it",
+          "sourceLabel": "Fantacalcio.it",
           "probability": "61%",
-          "updatedAt": "2026-07-10",
+          "updatedAt": "2026-07-12",
           "reliability": "Bassa/Media",
-          "note": "Transfermarkt rumor: da trattare come voce, non ufficialita. Data = Ultima voce dal. | Accordo verbale raggiunto / quasi fatta | SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita.",
+          "note": "Transfermarkt rumor: da trattare come voce, non ufficialita. Data = Ultima voce dal. | Accordo verbale raggiunto / quasi fatta | SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita. | Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
           "check": "Da monitorare",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -94532,6 +95835,16 @@
               "status": "Trattativa avanzata",
               "updatedAt": "2026-07-12",
               "note": "SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Operazione chiusa / visite programmate",
+              "updatedAt": "2026-07-12",
+              "note": "Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
               "probability": ""
             }
           ],
@@ -94601,9 +95914,31 @@
               "note": "SportMediaset ora-per-ora: Genoa, raggiunto accordo con il Marsiglia per Traore. Da verificare formula e club proprietario prima di spostare in ufficialita.",
               "check": "Da monitorare",
               "rule": "Notizia live SportMediaset, non ufficialita."
+            },
+            {
+              "teamId": "genoa",
+              "teamName": "Genoa",
+              "target": "Hamed Traore",
+              "playerName": "Hamed Traore",
+              "roleBrief": "C",
+              "role": "Trequartista/centrocampista offensivo",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Operazione chiusa / visite programmate",
+              "origin": "Bournemouth / Marsiglia",
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/genoa-preso-hamed-traore-495241",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Fantacalcio/Sky: Genoa si e assicurato Traore; formula indicata prestito oneroso con diritto di riscatto, visite mediche martedi. Tenere in trattative finche manca comunicato ufficiale.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 3
+          "sourcesCount": 4
         },
         {
           "teamId": "genoa",
@@ -95817,7 +97152,7 @@
           "probability": "",
           "updatedAt": "2026-07-12",
           "reliability": "Media",
-          "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
+          "note": "Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita. | Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
           "check": "Da monitorare",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -95849,6 +97184,16 @@
               "status": "Visite/idoneita da approfondire",
               "updatedAt": "2026-07-12",
               "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Idoneita CONI da completare",
+              "updatedAt": "2026-07-11",
+              "note": "Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
               "probability": ""
             }
           ],
@@ -95918,9 +97263,31 @@
               "note": "Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita.",
               "check": "Da monitorare",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            },
+            {
+              "teamId": "inter",
+              "teamName": "Inter",
+              "target": "Anan Khalaili",
+              "playerName": "Anan Khalaili",
+              "roleBrief": "A",
+              "role": "Esterno/attaccante",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Idoneita CONI da completare",
+              "origin": "Union Saint-Gilloise",
+              "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+              "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-11",
+              "reliability": "Media",
+              "note": "Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 2
+          "sourcesCount": 4
         },
         {
           "teamId": "inter",
@@ -99308,6 +100675,65 @@
             }
           ],
           "sourcesCount": 1
+        },
+        {
+          "teamId": "lazio",
+          "teamName": "Lazio",
+          "target": "Danilho Doekhi",
+          "playerName": "Danilho Doekhi",
+          "roleBrief": "D",
+          "role": "Difensore centrale",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Contatti avviati",
+          "origin": "Svincolato / ex Union Berlino",
+          "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+          "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+          "sourceName": "Fantacalcio.it",
+          "sourceLabel": "Fantacalcio.it",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+          "check": "Da monitorare",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+          "sources": [
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Contatti avviati",
+              "updatedAt": "2026-07-12",
+              "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "lazio",
+              "teamName": "Lazio",
+              "target": "Danilho Doekhi",
+              "playerName": "Danilho Doekhi",
+              "roleBrief": "D",
+              "role": "Difensore centrale",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Contatti avviati",
+              "origin": "Svincolato / ex Union Berlino",
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            }
+          ],
+          "sourcesCount": 1
         }
       ],
       "talksOutgoing": [
@@ -99374,7 +100800,7 @@
       "counts": {
         "officialIncoming": 1,
         "officialOutgoing": 6,
-        "talksIncoming": 9,
+        "talksIncoming": 10,
         "talksOutgoing": 1
       }
     },
@@ -101216,13 +102642,72 @@
             }
           ],
           "sourcesCount": 1
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "target": "Pervis Estupinan",
+          "playerName": "Pervis Estupinan",
+          "roleBrief": "D",
+          "role": "Terzino sinistro",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Sondaggio estero",
+          "origin": "Aston Villa",
+          "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+          "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+          "sourceName": "Fantacalcio.it",
+          "sourceLabel": "Fantacalcio.it",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+          "check": "Da monitorare",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+          "sources": [
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Sondaggio estero",
+              "updatedAt": "2026-07-12",
+              "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "milan",
+              "teamName": "Milan",
+              "target": "Pervis Estupinan",
+              "playerName": "Pervis Estupinan",
+              "roleBrief": "D",
+              "role": "Terzino sinistro",
+              "direction": "outgoing",
+              "directionLabel": "Uscita",
+              "status": "Sondaggio estero",
+              "origin": "Aston Villa",
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/milan-estupinan-in-uscita-c-e-l-aston-villa-495245",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Fantacalcio/Moretto: Aston Villa ha sondato il giocatore; nessuna offerta ufficiale. Milan valuta circa 20 milioni.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            }
+          ],
+          "sourcesCount": 1
         }
       ],
       "counts": {
         "officialIncoming": 4,
         "officialOutgoing": 3,
         "talksIncoming": 8,
-        "talksOutgoing": 4
+        "talksOutgoing": 5
       }
     },
     "monza": {
@@ -102985,13 +104470,72 @@
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ]
+        },
+        {
+          "teamId": "napoli",
+          "teamName": "Napoli",
+          "target": "Mathias Olivera / Nahuel Molina",
+          "playerName": "Mathias Olivera / Nahuel Molina",
+          "roleBrief": "D",
+          "role": "Terzini",
+          "direction": "outgoing",
+          "directionLabel": "Uscita/Entrata",
+          "status": "Interesse Atletico / ipotesi scambio",
+          "origin": "Atletico Madrid",
+          "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+          "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+          "sourceName": "Fantacalcio.it",
+          "sourceLabel": "Fantacalcio.it",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+          "check": "Da monitorare",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+          "sources": [
+            {
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "status": "Interesse Atletico / ipotesi scambio",
+              "updatedAt": "2026-07-12",
+              "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "napoli",
+              "teamName": "Napoli",
+              "target": "Mathias Olivera / Nahuel Molina",
+              "playerName": "Mathias Olivera / Nahuel Molina",
+              "roleBrief": "D",
+              "role": "Terzini",
+              "direction": "outgoing",
+              "directionLabel": "Uscita/Entrata",
+              "status": "Interesse Atletico / ipotesi scambio",
+              "origin": "Atletico Madrid",
+              "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+              "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/napoli-olivera-piace-all-atletico-madrid-idea-scambio-con-molina-495247",
+              "sourceName": "Fantacalcio.it",
+              "sourceLabel": "Fantacalcio.it",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Fantacalcio/Il Roma: Olivera nella lista cedibili, Atletico interessato; ipotesi scambio con Molina, profilo gradito ad Allegri.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            }
+          ],
+          "sourcesCount": 1
         }
       ],
       "counts": {
         "officialIncoming": 7,
         "officialOutgoing": 2,
         "talksIncoming": 4,
-        "talksOutgoing": 2
+        "talksOutgoing": 3
       }
     },
     "parma": {
@@ -106088,7 +107632,7 @@
           "probability": "",
           "updatedAt": "2026-07-12",
           "reliability": "Media",
-          "note": "Contatti con Besiktas, ok del giocatore",
+          "note": "Contatti con Besiktas, ok del giocatore | SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
           "check": "",
           "rule": "",
           "sources": [
@@ -106100,6 +107644,16 @@
               "status": "Contatti con Besiktas, ok del giocatore",
               "updatedAt": "2026-07-12",
               "note": "",
+              "probability": ""
+            },
+            {
+              "source": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+              "url": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "status": "Trattativa estera in corso",
+              "updatedAt": "2026-07-12",
+              "note": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
               "probability": ""
             }
           ],
@@ -106125,9 +107679,31 @@
               "note": "",
               "check": "",
               "rule": ""
+            },
+            {
+              "teamId": "sassuolo",
+              "teamName": "Sassuolo",
+              "target": "Armand Lauriente",
+              "playerName": "Armand Lauriente",
+              "roleBrief": "A",
+              "role": "Attaccante/esterno",
+              "direction": "outgoing",
+              "directionLabel": "Uscita",
+              "status": "Trattativa estera in corso",
+              "origin": "Besiktas",
+              "source": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+              "url": "https://www.sosfanta.com/news/assalto-dallestero-per-lauriente-ce-una-trattativa-in-corso-con-il-sassuolo/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "SOS Fanta/Moretto: il Besiktas ha avuto altri contatti per Lauriente, che apre alla destinazione. Possibile uscita dalla Serie A e dal fantacalcio.",
+              "check": "Da monitorare",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
             }
           ],
-          "sourcesCount": 1
+          "sourcesCount": 2
         },
         {
           "teamId": "sassuolo",
@@ -107616,12 +109192,72 @@
           "sourcesCount": 1
         }
       ],
-      "talksOutgoing": [],
+      "talksOutgoing": [
+        {
+          "teamId": "torino",
+          "teamName": "Torino",
+          "target": "Franco Israel",
+          "playerName": "Franco Israel",
+          "roleBrief": "P",
+          "role": "Portiere",
+          "direction": "outgoing",
+          "directionLabel": "Uscita/Infortunio",
+          "status": "Non convocato / in uscita",
+          "origin": "Torino",
+          "source": "https://www.sosfanta.com/squadra/torino/israel/",
+          "url": "https://www.sosfanta.com/squadra/torino/israel/",
+          "sourceName": "SOS Fanta",
+          "sourceLabel": "SOS Fanta",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+          "check": "Aggiornare SOS/Infortunati e gerarchie",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+          "sources": [
+            {
+              "source": "https://www.sosfanta.com/squadra/torino/israel/",
+              "url": "https://www.sosfanta.com/squadra/torino/israel/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "status": "Non convocato / in uscita",
+              "updatedAt": "2026-07-12",
+              "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "torino",
+              "teamName": "Torino",
+              "target": "Franco Israel",
+              "playerName": "Franco Israel",
+              "roleBrief": "P",
+              "role": "Portiere",
+              "direction": "outgoing",
+              "directionLabel": "Uscita/Infortunio",
+              "status": "Non convocato / in uscita",
+              "origin": "Torino",
+              "source": "https://www.sosfanta.com/squadra/torino/israel/",
+              "url": "https://www.sosfanta.com/squadra/torino/israel/",
+              "sourceName": "SOS Fanta",
+              "sourceLabel": "SOS Fanta",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "SOS Fanta: Israel assente dai convocati per il ritiro, in uscita dopo aver perso titolarita con Paleari; problema alla spalla con possibile intervento.",
+              "check": "Aggiornare SOS/Infortunati e gerarchie",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            }
+          ],
+          "sourcesCount": 1
+        }
+      ],
       "counts": {
         "officialIncoming": 4,
         "officialOutgoing": 14,
         "talksIncoming": 8,
-        "talksOutgoing": 0
+        "talksOutgoing": 1
       }
     },
     "udinese": {
@@ -110587,6 +112223,86 @@
       "source": "Fonti web",
       "url": "",
       "note": "Le notizie senza comunicato club/Sky/Transfermarkt ufficiale restano in Trattative o Controllo, non in Ufficialita."
+    }
+  ],
+  "retreatFriendliesControlSourcesV621": [
+    {
+      "area": "Ritiri/Amichevoli",
+      "teamName": "Serie A",
+      "start": "2026-07-13",
+      "end": "2026-08-15",
+      "date": "2026-07-13",
+      "event": "TMW ritiri/amichevoli aggiornati",
+      "location": "Online",
+      "status": "Fonte controllo",
+      "source": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
+      "note": "TMW indica articolo aggiornato ieri 17:15 e lista club-by-club: Atalanta, Bologna, Cagliari, Como, Fiorentina, Frosinone, Genoa ecc. Utile per ordinare amichevoli in app."
+    },
+    {
+      "area": "Ritiri/Amichevoli",
+      "teamName": "Serie A",
+      "start": "2026-07-09",
+      "end": "2026-08-15",
+      "date": "2026-07-13",
+      "event": "CalcioMagazine ritiri Serie A 26/27",
+      "location": "Online",
+      "status": "Fonte controllo",
+      "source": "https://www.calciomagazine.net/ritiri-serie-a-2026-27-247482.html",
+      "note": "Fonte aggiuntiva per date/sedi ritiri, da usare come secondo controllo quando TMW o SportMediaset divergono o mancano dettagli."
+    },
+    {
+      "area": "Ritiri/Amichevoli",
+      "teamName": "Serie A",
+      "start": "2026-07-13",
+      "end": "2026-08-15",
+      "date": "2026-07-13",
+      "event": "Calcio d'Angolo calendario/amichevoli",
+      "location": "Online",
+      "status": "Fonte controllo",
+      "source": "https://calciodangolo.com/tabellone-calciomercato-estivo-serie-a-2026-2027/",
+      "note": "Fonte fantacalcio secondaria utile per tabellone mercato, come giocherebbero oggi e link a calendari amichevoli."
+    }
+  ],
+  "updateLogV621": [
+    {
+      "Aggiornamento": "v4",
+      "Data": "2026-07-13",
+      "Area": "Fonti",
+      "Righe": "6",
+      "Fonte principale": "Fantacalcio/SOS/TMW/CalcioMagazine/Calcio d'Angolo",
+      "Dettaglio": "Aggiunte fonti operative e fantacalcio-oriented",
+      "Stato": "Completato",
+      "Nota": "Fonti in Fonti!A41:D46"
+    },
+    {
+      "Aggiornamento": "v4",
+      "Data": "2026-07-13",
+      "Area": "Trattative_Squadre",
+      "Righe": "12",
+      "Fonte principale": "Fantacalcio.it e SOS Fanta",
+      "Dettaglio": "Traore, Lauriente, Ederson, Israel, Winks, Fazzini, Jimenez, Estupinan, Olivera/Molina, Doekhi, Khalaili, El Azzouzi",
+      "Stato": "Completato",
+      "Nota": "Tutto resta non-ufficiale finche manca comunicato"
+    },
+    {
+      "Aggiornamento": "v4",
+      "Data": "2026-07-13",
+      "Area": "Ritiri_Amichevoli",
+      "Righe": "3",
+      "Fonte principale": "TMW/CalcioMagazine/Calcio d'Angolo",
+      "Dettaglio": "Aggiunte righe di controllo incrociato per ritiri e amichevoli",
+      "Stato": "Completato",
+      "Nota": "Righe fonte controllo in coda"
+    },
+    {
+      "Aggiornamento": "v4",
+      "Data": "2026-07-13",
+      "Area": "Ufficialita",
+      "Righe": "0",
+      "Fonte principale": "Fantacalcio ufficialita",
+      "Dettaglio": "Nessuna nuova ufficialita inserita senza comunicato/voce consolidata",
+      "Stato": "Prudente",
+      "Nota": "Controllare Trasferimenti ufficiali prima di spostare"
     }
   ]
 }

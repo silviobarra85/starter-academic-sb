@@ -25,3 +25,7 @@
 - Aggiornamento dati da Excel 12/07 v3.
 - Fonti/trattative extra aggregate senza duplicare card.
 - Live roster runtime confermato.
+
+
+## V621 - Sudatori/ioSudo mercato fonti extra v4
+Aggiornati dati Sudatori/ioSudo da Excel 13/07/2026, mantenendo live rosters e viste globali ioSudo.

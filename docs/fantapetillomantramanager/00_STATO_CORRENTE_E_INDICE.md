@@ -12,3 +12,7 @@ V618 aggiorna Per i SUDATORI e ioSudo con supporto alla lettura live delle rose 
 - SOS, rumors e ufficialità sono ordinati dal più recente al meno recente.
 - Le amichevoli sono ordinate dalla data più vicina alla più lontana.
 - Le rose live restano collegate alla stessa fonte della sezione Rose.
+
+
+## V621 - Sudatori/ioSudo mercato fonti extra v4
+Aggiornati dati Sudatori/ioSudo da Excel 13/07/2026, mantenendo live rosters e viste globali ioSudo.
