@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "621",
+  "currentVersion": "622",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -173,7 +173,7 @@
     "teamareaRosterFirstColumnCompactVersion": "V569",
     "sudatoriStandaloneSection": true,
     "sudatoriStandaloneSectionVersion": "V621",
-    "sudatoriSection": true,
+    "sudatoriSection": "V622",
     "sudatoriSectionVersion": "V621",
     "sudatoriMarketSummary": true,
     "sudatoriMarketSummaryVersion": "V621",
@@ -184,11 +184,12 @@
     "ioSudoMarketSourceLinks": "V621",
     "ioSudoPitchSourcesFix": "V621",
     "ioSudoSharedSudatoriDataVersion": "V621",
-    "sudatoriLiveRosters": "V621",
+    "sudatoriLiveRosters": "V622",
     "sudatoriLiveRostersSource": "assets/rose/manifest.json",
-    "ioSudoLiveRosters": "V621",
+    "ioSudoLiveRosters": "V622",
     "ioSudoTeamCardIndividualThemes": "V621",
-    "ioSudoGlobalViews": "V621"
+    "ioSudoGlobalViews": "V622",
+    "ioSudoGlobalPlayers": "V622"
   },
   "guardrails": {
     "sandboxClone": true,

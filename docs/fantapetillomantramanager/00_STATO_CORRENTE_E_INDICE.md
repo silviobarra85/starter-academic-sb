@@ -1,18 +1,14 @@
-# Stato corrente - V619
+# Stato corrente - V622
 
-Aggiornato con overlay V619: Sudatori/ioSudo leggono dati mercato fonti extra v3 e rose live.
+Aggiornato con overlay V622: Per i SUDATORI e ioSudo leggono il nuovo dataset mercato/amichevoli Udinese v5 e mantengono il collegamento live alle rose fantacalcio.
 
-# Stato corrente fantapetillomantramanager
+## Sudatori/ioSudo
 
-V618 aggiorna Per i SUDATORI e ioSudo con supporto alla lettura live delle rose fantacalcio da `assets/rose` quando disponibili. I dati mercato/SOS/XI restano nel dataset Sudatori condiviso.
+- Dati mercato/SOS/XI/amichevoli aggiornati da `sudatori-data.json` V622.
+- Rose fantacalcio lette live dagli stessi file della sezione Rose.
+- ioSudo mantiene le viste globali: SQUADRE, GIOCATORI, SOS, RUMOR, UFFICIALITÀ, AMICHEVOLI.
+- La vista GIOCATORI mostra anche presenza nel listone più recente.
 
-## Aggiornamento V620 - ioSudo viste rapide globali
+## Nota operativa
 
-- ioSudo introduce i tasti globali SQUADRE, SOS, RUMOR, UFFICIALITÀ e AMICHEVOLI.
-- SOS, rumors e ufficialità sono ordinati dal più recente al meno recente.
-- Le amichevoli sono ordinate dalla data più vicina alla più lontana.
-- Le rose live restano collegate alla stessa fonte della sezione Rose.
-
-
-## V621 - Sudatori/ioSudo mercato fonti extra v4
-Aggiornati dati Sudatori/ioSudo da Excel 13/07/2026, mantenendo live rosters e viste globali ioSudo.
+Non serve reinstallare ioSudo dopo aggiornamenti dati o codice. Dopo il deploy basta chiudere e riaprire l'app; in caso di cache vecchia, fare refresh dal browser.

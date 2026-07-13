@@ -4,14 +4,14 @@
     "label": "Per i SUDATORI",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-13",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_mercato_fonti_extra_v4(1).xlsx",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_mercato_udinese_amichevoli_v5(1).xlsx",
     "listoneFile": "2026-07-04.json",
     "listoneId": "2026-07-04",
     "teams": 20,
     "players": 714,
-    "friendlies": 90,
+    "friendlies": 94,
     "marketNotes": 489,
-    "teamTransferTalks": 176,
+    "teamTransferTalks": 180,
     "injuries": 8,
     "formationTeams": 20,
     "formationMissingPlayers": 0,
@@ -21,13 +21,13 @@
     "officialOutgoing": 135,
     "officialMoves": 232,
     "filteredOfficialTalks": 0,
-    "version": "V621",
+    "version": "V622",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-    "note": "V621: aggiornamento da Excel mercato_fonti_extra_v4 del 13/07; aggiunte 6 fonti, 12 righe trattative e 3 fonti di controllo ritiri/amichevoli. V620 global buttons ioSudo mantenuti; live rosters V618 mantenute. Israel aggiunto anche ai SOS da Trattative_Squadre per problema alla spalla.",
+    "note": "V622: aggiornamento da Excel mercato_udinese_amichevoli_v5 del 13/07; aggiunte fonti Udinese/Bwin e trattative extra, amichevoli Udinese da Bwin marcate come da confermare; ioSudo aggiunge vista GIOCATORI con stato listone.",
     "officialRows": 268,
-    "sources": 111,
+    "sources": 116,
     "liveRosterRuntime": true,
     "liveRosterRuntimeSource": "assets/rose/manifest.json",
     "extraSourcesAddedV619": 7,
@@ -44,7 +44,13 @@
     "talkCardsAddedV621": 4,
     "talkRowsMergedV621": 8,
     "injuriesAddedV621": 1,
-    "ioSudoGlobalViews": "V621"
+    "ioSudoGlobalViews": "V621",
+    "updateSlot": "excel-2026-07-13-mercato-udinese-amichevoli-v5",
+    "extraSourcesAddedV622": 5,
+    "extraTalkRowsAddedV622": 8,
+    "extraFriendliesAddedV622": 4,
+    "extraControlFriendliesSourcesAddedV622": 3,
+    "ioSudoGlobalPlayersView": "V622"
   },
   "teams": [
     {
@@ -197,7 +203,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 15,
+      "transferTalksCount": 16,
       "transferTalksPreview": [
         "Arnau Martinez",
         "Baroni",
@@ -211,7 +217,7 @@
       "injuriesPreview": [],
       "officialIncomingCount": 7,
       "officialOutgoingCount": 8,
-      "talksIncomingCount": 11,
+      "talksIncomingCount": 12,
       "talksOutgoingCount": 4
     },
     {
@@ -294,7 +300,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 13,
+      "transferTalksCount": 14,
       "transferTalksPreview": [
         "Jhon Lucumi",
         "Chalobah",
@@ -310,7 +316,7 @@
       ],
       "officialIncomingCount": 3,
       "officialOutgoingCount": 6,
-      "talksIncomingCount": 12,
+      "talksIncomingCount": 13,
       "talksOutgoingCount": 1
     },
     {
@@ -343,8 +349,8 @@
       "injuriesPreview": [],
       "officialIncomingCount": 6,
       "officialOutgoingCount": 5,
-      "talksIncomingCount": 12,
-      "talksOutgoingCount": 1
+      "talksIncomingCount": 11,
+      "talksOutgoingCount": 2
     },
     {
       "id": "lazio",
@@ -447,8 +453,8 @@
       ],
       "officialIncomingCount": 4,
       "officialOutgoingCount": 3,
-      "talksIncomingCount": 8,
-      "talksOutgoingCount": 5
+      "talksIncomingCount": 7,
+      "talksOutgoingCount": 6
     },
     {
       "id": "monza",
@@ -661,14 +667,14 @@
       "benchStatus": "confermato",
       "retreatStart": "2026-07-22",
       "retreatEnd": "2026-08-04",
-      "retreatPlace": "Lienz",
-      "notes": "Ritiro a Lienz dal 22 luglio al 4 agosto; amichevoli non ancora pubblicate nelle fonti aggregate.",
+      "retreatPlace": "Lienz / Dolomiten Stadion",
+      "notes": "Ritiro a Lienz dal 22 luglio al 4 agosto. Le amichevoli Udinese sono state aggiunte da Bwin come calendario da confermare: club/Sky/Calcio d Angolo/Pazzi di Fanta indicano ancora test non ufficializzati o in attesa.",
       "playersCount": 39,
-      "friendliesCount": 1,
+      "friendliesCount": 5,
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
-      "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-      "updatedAt": "2026-07-12",
-      "transferTalksCount": 11,
+      "retreatSource": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
+      "updatedAt": "2026-07-13",
+      "transferTalksCount": 13,
       "transferTalksPreview": [
         "Modesto",
         "Covic",
@@ -684,8 +690,8 @@
       ],
       "officialIncomingCount": 6,
       "officialOutgoingCount": 4,
-      "talksIncomingCount": 9,
-      "talksOutgoingCount": 2
+      "talksIncomingCount": 10,
+      "talksOutgoingCount": 3
     },
     {
       "id": "venezia",
@@ -48089,6 +48095,54 @@
       {
         "teamId": "udinese",
         "teamName": "Udinese",
+        "date": "2026-07-24",
+        "event": "Al Hilal Saudi-Udinese",
+        "location": "Lind Stadium",
+        "venue": "Lind Stadium",
+        "time": "n.d.",
+        "status": "Riportata da Bwin - da confermare ufficialmente",
+        "source": "https://www.bwin.it/it/news/calcio/amichevoli-estive-udinese-2026",
+        "note": "Bwin indica 24 luglio Al Hilal-Udinese. Da non trattare come ufficialita definitiva: Udinese.it parla di test da comunicare, Sky/Calcio d Angolo/Pazzi di Fanta indicano non ancora ufficializzate/in attesa."
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "date": "2026-07-27",
+        "event": "Borussia Dortmund-Udinese",
+        "location": "Altach",
+        "venue": "Altach",
+        "time": "n.d.",
+        "status": "Riportata da Bwin - da confermare ufficialmente",
+        "source": "https://www.bwin.it/it/news/calcio/amichevoli-estive-udinese-2026",
+        "note": "Bwin indica 27 luglio Borussia Dortmund-Udinese ad Altach. Da verificare con comunicato club."
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "date": "2026-08-02",
+        "event": "Besiktas-Udinese",
+        "location": "n.d.",
+        "venue": "n.d.",
+        "time": "n.d.",
+        "status": "Riportata da Bwin - da confermare ufficialmente",
+        "source": "https://www.bwin.it/it/news/calcio/amichevoli-estive-udinese-2026",
+        "note": "Bwin indica 2 agosto Besiktas-Udinese. Da verificare con comunicato club."
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "date": "2026-08-08",
+        "event": "Triangolare con Nottingham Forest e Barcellona",
+        "location": "n.d.",
+        "venue": "n.d.",
+        "time": "n.d.",
+        "status": "In forse / non confermata",
+        "source": "https://www.bwin.it/it/news/calcio/amichevoli-estive-udinese-2026",
+        "note": "Bwin parla di possibile triangolare dell 8 agosto non confermato: tenere solo come alert, non come partita ufficiale."
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
         "date": "",
         "event": "Amichevoli non ancora ufficializzate",
         "location": "",
@@ -50747,6 +50801,18 @@
         "updatedAt": "2026-07-11",
         "team": "Udinese",
         "teamId": "udinese"
+      },
+      {
+        "type": "Rumor mercato",
+        "status": "Caso aperto / certificato medico",
+        "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+        "source": "https://www.tuttomercatoweb.com/juventus/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Udinese",
+        "teamId": "udinese",
+        "direction": "Uscita",
+        "origin": "Udinese / possibili interessamenti Juve-Milan"
       }
     ],
     "sava": [
@@ -51183,6 +51249,18 @@
         "updatedAt": "2026-07-10",
         "team": "Sassuolo",
         "teamId": "sassuolo"
+      },
+      {
+        "type": "Rumor mercato",
+        "status": "Offerta al Partizan",
+        "note": "TMW: dopo l uscita di Atta, l Udinese valuta Ugresic; offerta al Partizan ma concorrenza presente. Da monitorare.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Udinese",
+        "teamId": "udinese",
+        "direction": "Entrata",
+        "origin": "Partizan"
       }
     ],
     "valdepenas": [
@@ -51487,6 +51565,18 @@
         "updatedAt": "2026-07-10",
         "team": "Como",
         "teamId": "como"
+      },
+      {
+        "type": "Rumor mercato",
+        "status": "Visite mediche e firma attese",
+        "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Como",
+        "teamId": "como",
+        "direction": "Entrata",
+        "origin": "Milan"
       }
     ],
     "palacios": [
@@ -52285,6 +52375,18 @@
         "updatedAt": "2026-07-12",
         "team": "Sassuolo",
         "teamId": "sassuolo"
+      },
+      {
+        "type": "Rumor mercato",
+        "status": "Leeds accelera / anche Newcastle",
+        "note": "TMW: Serie A pronta a salutare un altro talento, Leeds accelera per Muharemovic; anche Newcastle citato nel canale Juve.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Juventus",
+        "teamId": "juventus",
+        "direction": "Uscita",
+        "origin": "Leeds/Newcastle"
       }
     ],
     "pellegrino": [
@@ -52801,6 +52903,18 @@
         "updatedAt": "2026-07-12",
         "team": "Milan",
         "teamId": "milan"
+      },
+      {
+        "type": "Rumor mercato",
+        "status": "Offerto al Wolverhampton / costo alto",
+        "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Milan",
+        "teamId": "milan",
+        "direction": "Uscita",
+        "origin": "Wolverhampton"
       }
     ],
     "echeverri": [
@@ -53833,6 +53947,18 @@
         "teamId": "lazio",
         "direction": "Entrata",
         "origin": "Svincolato / ex Union Berlino"
+      },
+      {
+        "type": "Rumor mercato",
+        "status": "Intesa verbale / da chiudere",
+        "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Lazio",
+        "teamId": "lazio",
+        "direction": "Entrata",
+        "origin": "Svincolato ex Union Berlino"
       }
     ],
     "danilhodoekhi": [
@@ -53847,6 +53973,18 @@
         "teamId": "lazio",
         "direction": "Entrata",
         "origin": "Svincolato / ex Union Berlino"
+      },
+      {
+        "type": "Rumor mercato",
+        "status": "Intesa verbale / da chiudere",
+        "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Lazio",
+        "teamId": "lazio",
+        "direction": "Entrata",
+        "origin": "Svincolato ex Union Berlino"
       }
     ],
     "danilho doekhi": [
@@ -53917,6 +54055,90 @@
         "teamId": "frosinone",
         "direction": "Entrata",
         "origin": "Svincolato, ex Fortuna Dusseldorf"
+      }
+    ],
+    "nicolozaniolo": [
+      {
+        "type": "Rumor mercato",
+        "status": "Caso aperto / certificato medico",
+        "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+        "source": "https://www.tuttomercatoweb.com/juventus/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Udinese",
+        "teamId": "udinese",
+        "direction": "Uscita",
+        "origin": "Udinese / possibili interessamenti Juve-Milan"
+      }
+    ],
+    "warrenbondo": [
+      {
+        "type": "Rumor mercato",
+        "status": "Offerto al Wolverhampton / costo alto",
+        "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Milan",
+        "teamId": "milan",
+        "direction": "Uscita",
+        "origin": "Wolverhampton"
+      }
+    ],
+    "mattialiberali": [
+      {
+        "type": "Rumor mercato",
+        "status": "Visite mediche e firma attese",
+        "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Como",
+        "teamId": "como",
+        "direction": "Entrata",
+        "origin": "Milan"
+      }
+    ],
+    "caprile": [
+      {
+        "type": "Rumor mercato",
+        "status": "Primi sondaggi",
+        "note": "TMW: Fiorentina pensa a Caprile e ha effettuato primi sondaggi.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Fiorentina",
+        "teamId": "fiorentina",
+        "direction": "Entrata",
+        "origin": "Cagliari"
+      }
+    ],
+    "stones": [
+      {
+        "type": "Rumor mercato",
+        "status": "Pista viva",
+        "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Inter",
+        "teamId": "inter",
+        "direction": "Entrata",
+        "origin": "Manchester City"
+      }
+    ],
+    "johnstones": [
+      {
+        "type": "Rumor mercato",
+        "status": "Pista viva",
+        "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Inter",
+        "teamId": "inter",
+        "direction": "Entrata",
+        "origin": "Manchester City"
       }
     ]
   },
@@ -59725,6 +59947,36 @@
       "url": "https://www.calciomagazine.net/ritiri-serie-a-2026-27-247482.html",
       "use": "Fonte di controllo aggiuntiva per date e sedi dei ritiri estivi Serie A 2026/27.",
       "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "Bwin News - amichevoli Udinese 2026",
+      "url": "https://www.bwin.it/it/news/calcio/amichevoli-estive-udinese-2026",
+      "use": "Fonte inviata dall utente: elenco amichevoli Udinese 2026; usata con stato prudente perche club/Sky risultano ancora in attesa di comunicazione.",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "Udinese.it - riparte la preparazione",
+      "url": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
+      "use": "Fonte ufficiale club: raduno 6 luglio, ritiro a Lienz dal 22 luglio al 4 agosto, test internazionali da comunicare.",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "Calcio d Angolo - amichevoli estive Serie A 2026",
+      "url": "https://calciodangolo.com/amichevoli-estive-2026-serie-a/",
+      "use": "Fonte fantacalcio per calendario amichevoli; per Udinese indica ancora in attesa di comunicazione.",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "Pazzi di Fanta - amichevoli precampionato 26/27",
+      "url": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
+      "use": "Fonte fantacalcio; per Udinese indica in attesa.",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW Fantacalcio - acquisti e consigli",
+      "url": "https://www.tuttomercatoweb.com/fantacalcio/",
+      "use": "Fonte orientata al fantacalcio: statistiche e consigli sui nuovi acquisti.",
+      "consultedAt": "2026-07-13"
     }
   ],
   "notMatchedPreview": [
@@ -62245,21 +62497,21 @@
         "target": "Liberali",
         "playerName": "Liberali",
         "roleBrief": "C",
-        "role": "Centrocampista",
+        "role": "Trequartista/centrocampista offensivo",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Trattativa/Interesse",
-        "origin": "Catanzaro",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
-        "url": "https://sport.sky.it/calciomercato/tabellone",
-        "sourceName": "Sky",
-        "sourceLabel": "Sky",
+        "status": "Visite mediche e firma attese",
+        "origin": "Milan",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "url": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
         "probability": "",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+        "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
         "check": "Aggiornare rosa se ufficiale",
-        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+        "rule": "Tenere in trattativa fino a comunicato club.",
         "sources": [
           {
             "source": "https://sport.sky.it/calciomercato/tabellone",
@@ -62269,6 +62521,16 @@
             "status": "Trattativa/Interesse",
             "updatedAt": "2026-07-10",
             "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Visite mediche e firma attese",
+            "updatedAt": "2026-07-13",
+            "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
             "probability": ""
           }
         ],
@@ -62294,9 +62556,31 @@
             "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
             "check": "Aggiornare rosa se ufficiale",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+          },
+          {
+            "teamId": "como",
+            "teamName": "Como",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "target": "Mattia Liberali",
+            "playerName": "Mattia Liberali",
+            "roleBrief": "C",
+            "role": "Trequartista/centrocampista offensivo",
+            "status": "Visite mediche e firma attese",
+            "origin": "Milan",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Tenere in trattativa fino a comunicato club.",
+            "reliability": "Media"
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 2
       },
       {
         "teamId": "como",
@@ -63550,6 +63834,65 @@
             "note": "",
             "check": "",
             "rule": ""
+          }
+        ],
+        "sourcesCount": 1
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "target": "Caprile",
+        "playerName": "Caprile",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "status": "Primi sondaggi",
+        "origin": "Cagliari",
+        "updatedAt": "2026-07-13",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "url": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "probability": "",
+        "note": "TMW: Fiorentina pensa a Caprile e ha effettuato primi sondaggi.",
+        "check": "Da monitorare",
+        "rule": "Impatto su gerarchie portieri solo se trattativa avanza.",
+        "reliability": "Media",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Primi sondaggi",
+            "updatedAt": "2026-07-13",
+            "note": "TMW: Fiorentina pensa a Caprile e ha effettuato primi sondaggi.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "fiorentina",
+            "teamName": "Fiorentina",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "target": "Caprile",
+            "playerName": "Caprile",
+            "roleBrief": "P",
+            "role": "Portiere",
+            "status": "Primi sondaggi",
+            "origin": "Cagliari",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW: Fiorentina pensa a Caprile e ha effettuato primi sondaggi.",
+            "check": "Da monitorare",
+            "rule": "Impatto su gerarchie portieri solo se trattativa avanza.",
+            "reliability": "Media"
           }
         ],
         "sourcesCount": 1
@@ -65327,6 +65670,65 @@
           }
         ],
         "sourcesCount": 1
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "target": "John Stones",
+        "playerName": "John Stones",
+        "roleBrief": "D",
+        "role": "Difensore centrale",
+        "status": "Pista viva",
+        "origin": "Manchester City",
+        "updatedAt": "2026-07-13",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "url": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "probability": "",
+        "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+        "check": "Da monitorare",
+        "rule": "Trattativa non ufficiale.",
+        "reliability": "Media",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Pista viva",
+            "updatedAt": "2026-07-13",
+            "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "inter",
+            "teamName": "Inter",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "target": "John Stones",
+            "playerName": "John Stones",
+            "roleBrief": "D",
+            "role": "Difensore centrale",
+            "status": "Pista viva",
+            "origin": "Manchester City",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+            "check": "Da monitorare",
+            "rule": "Trattativa non ufficiale.",
+            "reliability": "Media"
+          }
+        ],
+        "sourcesCount": 1
       }
     ],
     "juventus": [
@@ -65978,21 +66380,21 @@
         "target": "Muharemovic",
         "playerName": "Muharemovic",
         "roleBrief": "D",
-        "role": "Difensore",
-        "direction": "incoming",
-        "directionLabel": "Entrata",
-        "status": "Trattativa/Interesse",
-        "origin": "Sassuolo",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
-        "url": "https://sport.sky.it/calciomercato/tabellone",
-        "sourceName": "Sky",
-        "sourceLabel": "Sky",
+        "role": "Difensore centrale",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Leeds accelera / anche Newcastle",
+        "origin": "Leeds/Newcastle",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "url": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
         "probability": "",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
-        "check": "Aggiornare rosa se ufficiale",
-        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+        "note": "TMW: Serie A pronta a salutare un altro talento, Leeds accelera per Muharemovic; anche Newcastle citato nel canale Juve.",
+        "check": "Da monitorare",
+        "rule": "Tenere in uscita potenziale finche non c e accordo.",
         "sources": [
           {
             "source": "https://sport.sky.it/calciomercato/tabellone",
@@ -66002,6 +66404,16 @@
             "status": "Trattativa/Interesse",
             "updatedAt": "2026-07-10",
             "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Leeds accelera / anche Newcastle",
+            "updatedAt": "2026-07-13",
+            "note": "TMW: Serie A pronta a salutare un altro talento, Leeds accelera per Muharemovic; anche Newcastle citato nel canale Juve.",
             "probability": ""
           }
         ],
@@ -66027,9 +66439,31 @@
             "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
             "check": "Aggiornare rosa se ufficiale",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+          },
+          {
+            "teamId": "juventus",
+            "teamName": "Juventus",
+            "direction": "outgoing",
+            "directionLabel": "Uscita",
+            "target": "Muharemovic",
+            "playerName": "Muharemovic",
+            "roleBrief": "D",
+            "role": "Difensore centrale",
+            "status": "Leeds accelera / anche Newcastle",
+            "origin": "Leeds/Newcastle",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW: Serie A pronta a salutare un altro talento, Leeds accelera per Muharemovic; anche Newcastle citato nel canale Juve.",
+            "check": "Da monitorare",
+            "rule": "Tenere in uscita potenziale finche non c e accordo.",
+            "reliability": "Media"
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 2
       },
       {
         "teamId": "juventus",
@@ -67146,18 +67580,18 @@
         "role": "Difensore centrale",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Contatti avviati",
-        "origin": "Svincolato / ex Union Berlino",
-        "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
-        "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
-        "sourceName": "Fantacalcio.it",
-        "sourceLabel": "Fantacalcio.it",
+        "status": "Intesa verbale / da chiudere",
+        "origin": "Svincolato ex Union Berlino",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "url": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
         "probability": "",
-        "updatedAt": "2026-07-12",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+        "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
         "check": "Da monitorare",
-        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+        "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
         "sources": [
           {
             "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
@@ -67167,6 +67601,16 @@
             "status": "Contatti avviati",
             "updatedAt": "2026-07-12",
             "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Intesa verbale / da chiudere",
+            "updatedAt": "2026-07-13",
+            "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
             "probability": ""
           }
         ],
@@ -67192,9 +67636,31 @@
             "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
             "check": "Da monitorare",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+          },
+          {
+            "teamId": "lazio",
+            "teamName": "Lazio",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "target": "Danilho Doekhi",
+            "playerName": "Danilho Doekhi",
+            "roleBrief": "D",
+            "role": "Difensore centrale",
+            "status": "Intesa verbale / da chiudere",
+            "origin": "Svincolato ex Union Berlino",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
+            "check": "Da monitorare",
+            "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
+            "reliability": "Media"
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 2
       }
     ],
     "lecce": [
@@ -68065,20 +68531,20 @@
         "playerName": "Bondo",
         "roleBrief": "C",
         "role": "Centrocampista",
-        "direction": "incoming",
-        "directionLabel": "Varie",
-        "status": "Fuori dai convocati",
-        "origin": "Milan",
-        "source": "https://www.tuttomercatoweb.com/",
-        "url": "https://www.tuttomercatoweb.com/",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Offerto al Wolverhampton / costo alto",
+        "origin": "Wolverhampton",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "url": "https://www.tuttomercatoweb.com/serie-a/",
         "sourceName": "TMW",
         "sourceLabel": "TMW",
         "probability": "",
-        "updatedAt": "2026-07-12",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
+        "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
         "check": "Da monitorare",
-        "rule": "Notizia da ritiro/convocazioni.",
+        "rule": "Non aggiornare rosa senza accordo o ufficialita.",
         "sources": [
           {
             "source": "https://www.tuttomercatoweb.com/",
@@ -68088,6 +68554,16 @@
             "status": "Fuori dai convocati",
             "updatedAt": "2026-07-12",
             "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
+            "probability": ""
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Offerto al Wolverhampton / costo alto",
+            "updatedAt": "2026-07-13",
+            "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
             "probability": ""
           }
         ],
@@ -68113,9 +68589,31 @@
             "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
             "check": "Da monitorare",
             "rule": "Notizia da ritiro/convocazioni."
+          },
+          {
+            "teamId": "milan",
+            "teamName": "Milan",
+            "direction": "outgoing",
+            "directionLabel": "Uscita",
+            "target": "Warren Bondo",
+            "playerName": "Warren Bondo",
+            "roleBrief": "C",
+            "role": "Centrocampista",
+            "status": "Offerto al Wolverhampton / costo alto",
+            "origin": "Wolverhampton",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
+            "check": "Da monitorare",
+            "rule": "Non aggiornare rosa senza accordo o ufficialita.",
+            "reliability": "Media"
           }
         ],
-        "sourcesCount": 1
+        "sourcesCount": 2
       },
       {
         "teamId": "milan",
@@ -71814,6 +72312,124 @@
             "note": "Udinese ha il sì del giocatore e imposta la trattativa col Como.",
             "check": "Aggiornare se ufficiale",
             "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+          }
+        ],
+        "sourcesCount": 1
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "target": "Ugresic",
+        "playerName": "Ugresic",
+        "roleBrief": "D",
+        "role": "Difensore/centrale",
+        "status": "Offerta al Partizan",
+        "origin": "Partizan",
+        "updatedAt": "2026-07-13",
+        "source": "https://www.tuttomercatoweb.com/serie-a/",
+        "url": "https://www.tuttomercatoweb.com/serie-a/",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "probability": "",
+        "note": "TMW: dopo l uscita di Atta, l Udinese valuta Ugresic; offerta al Partizan ma concorrenza presente. Da monitorare.",
+        "check": "Da monitorare",
+        "rule": "Se non arriva comunicato ufficiale, mantenere in Trattative.",
+        "reliability": "Media",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Offerta al Partizan",
+            "updatedAt": "2026-07-13",
+            "note": "TMW: dopo l uscita di Atta, l Udinese valuta Ugresic; offerta al Partizan ma concorrenza presente. Da monitorare.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "udinese",
+            "teamName": "Udinese",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "target": "Ugresic",
+            "playerName": "Ugresic",
+            "roleBrief": "D",
+            "role": "Difensore/centrale",
+            "status": "Offerta al Partizan",
+            "origin": "Partizan",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/serie-a/",
+            "url": "https://www.tuttomercatoweb.com/serie-a/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW: dopo l uscita di Atta, l Udinese valuta Ugresic; offerta al Partizan ma concorrenza presente. Da monitorare.",
+            "check": "Da monitorare",
+            "rule": "Se non arriva comunicato ufficiale, mantenere in Trattative.",
+            "reliability": "Media"
+          }
+        ],
+        "sourcesCount": 1
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "target": "Nicolo Zaniolo",
+        "playerName": "Nicolo Zaniolo",
+        "roleBrief": "A",
+        "role": "Attaccante/esterno",
+        "status": "Caso aperto / certificato medico",
+        "origin": "Udinese / possibili interessamenti Juve-Milan",
+        "updatedAt": "2026-07-13",
+        "source": "https://www.tuttomercatoweb.com/juventus/",
+        "url": "https://www.tuttomercatoweb.com/juventus/",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "probability": "",
+        "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+        "check": "Da monitorare",
+        "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+        "reliability": "Media",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/juventus/",
+            "url": "https://www.tuttomercatoweb.com/juventus/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Caso aperto / certificato medico",
+            "updatedAt": "2026-07-13",
+            "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+            "probability": ""
+          }
+        ],
+        "items": [
+          {
+            "teamId": "udinese",
+            "teamName": "Udinese",
+            "direction": "outgoing",
+            "directionLabel": "Uscita",
+            "target": "Nicolo Zaniolo",
+            "playerName": "Nicolo Zaniolo",
+            "roleBrief": "A",
+            "role": "Attaccante/esterno",
+            "status": "Caso aperto / certificato medico",
+            "origin": "Udinese / possibili interessamenti Juve-Milan",
+            "updatedAt": "2026-07-13",
+            "source": "https://www.tuttomercatoweb.com/juventus/",
+            "url": "https://www.tuttomercatoweb.com/juventus/",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "probability": "",
+            "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+            "check": "Da monitorare",
+            "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+            "reliability": "Media"
           }
         ],
         "sourcesCount": 1
@@ -87151,6 +87767,8 @@
   },
   "marketSummaryByTeam": {
     "atalanta": {
+      "teamId": "atalanta",
+      "teamName": "Atalanta",
       "officialIncoming": [
         {
           "teamId": "atalanta",
@@ -87905,15 +88523,11 @@
           ],
           "sourcesCount": 3
         }
-      ],
-      "counts": {
-        "officialIncoming": 4,
-        "officialOutgoing": 3,
-        "talksIncoming": 4,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "bologna": {
+      "teamId": "bologna",
+      "teamName": "Bologna",
       "officialIncoming": [
         {
           "teamId": "bologna",
@@ -89132,15 +89746,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 3,
-        "officialOutgoing": 9,
-        "talksIncoming": 7,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "cagliari": {
+      "teamId": "cagliari",
+      "teamName": "Cagliari",
       "officialIncoming": [
         {
           "teamId": "cagliari",
@@ -90583,15 +91193,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 4,
-        "officialOutgoing": 12,
-        "talksIncoming": 7,
-        "talksOutgoing": 2
-      }
+      ]
     },
     "como": {
+      "teamId": "como",
+      "teamName": "Como",
       "officialIncoming": [
         {
           "teamId": "como",
@@ -90904,7 +91510,7 @@
           "sourceLabel": "Eurosport/Sky/CalcioLecce",
           "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
           "url": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
-          "note": "ANSA cita il Como come club molto attivo e il blocco/valorizzazione di Nico Paz. Nel file esiste gia come ufficialita; riga solo di controllo valore/centralita.",
+          "note": "",
           "sources": [
             {
               "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
@@ -90915,16 +91521,6 @@
               "updatedAt": "2026-07-11",
               "note": "",
               "formula": ""
-            },
-            {
-              "source": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
-              "url": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
-              "sourceName": "ANSA",
-              "sourceLabel": "ANSA",
-              "status": "Conferma investimento / controllo",
-              "updatedAt": "2026-07-12",
-              "note": "ANSA cita il Como come club molto attivo e il blocco/valorizzazione di Nico Paz. Nel file esiste gia come ufficialita; riga solo di controllo valore/centralita.",
-              "probability": ""
             }
           ],
           "items": [
@@ -91729,21 +92325,21 @@
           "target": "Liberali",
           "playerName": "Liberali",
           "roleBrief": "C",
-          "role": "Centrocampista",
+          "role": "Trequartista/centrocampista offensivo",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Trattativa/Interesse",
-          "origin": "Catanzaro",
-          "source": "https://sport.sky.it/calciomercato/tabellone",
-          "url": "https://sport.sky.it/calciomercato/tabellone",
-          "sourceName": "Sky",
-          "sourceLabel": "Sky",
+          "status": "Visite mediche e firma attese",
+          "origin": "Milan",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
           "probability": "",
-          "updatedAt": "2026-07-10",
+          "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+          "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
           "check": "Aggiornare rosa se ufficiale",
-          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+          "rule": "Tenere in trattativa fino a comunicato club.",
           "sources": [
             {
               "source": "https://sport.sky.it/calciomercato/tabellone",
@@ -91753,6 +92349,16 @@
               "status": "Trattativa/Interesse",
               "updatedAt": "2026-07-10",
               "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Visite mediche e firma attese",
+              "updatedAt": "2026-07-13",
+              "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
               "probability": ""
             }
           ],
@@ -91778,9 +92384,31 @@
               "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
               "check": "Aggiornare rosa se ufficiale",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            },
+            {
+              "teamId": "como",
+              "teamName": "Como",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "target": "Mattia Liberali",
+              "playerName": "Mattia Liberali",
+              "roleBrief": "C",
+              "role": "Trequartista/centrocampista offensivo",
+              "status": "Visite mediche e firma attese",
+              "origin": "Milan",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW: Liberali al Como, visite mediche a Monza e firma quinquennale attesa.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Tenere in trattativa fino a comunicato club.",
+              "reliability": "Media"
             }
           ],
-          "sourcesCount": 1
+          "sourcesCount": 2
         },
         {
           "teamId": "como",
@@ -92052,15 +92680,11 @@
           ],
           "sourcesCount": 2
         }
-      ],
-      "counts": {
-        "officialIncoming": 7,
-        "officialOutgoing": 6,
-        "talksIncoming": 10,
-        "talksOutgoing": 2
-      }
+      ]
     },
     "fiorentina": {
+      "teamId": "fiorentina",
+      "teamName": "Fiorentina",
       "officialIncoming": [
         {
           "teamId": "fiorentina",
@@ -93633,6 +94257,65 @@
             }
           ],
           "sourcesCount": 1
+        },
+        {
+          "teamId": "fiorentina",
+          "teamName": "Fiorentina",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "target": "Caprile",
+          "playerName": "Caprile",
+          "roleBrief": "P",
+          "role": "Portiere",
+          "status": "Primi sondaggi",
+          "origin": "Cagliari",
+          "updatedAt": "2026-07-13",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "note": "TMW: Fiorentina pensa a Caprile e ha effettuato primi sondaggi.",
+          "check": "Da monitorare",
+          "rule": "Impatto su gerarchie portieri solo se trattativa avanza.",
+          "reliability": "Media",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Primi sondaggi",
+              "updatedAt": "2026-07-13",
+              "note": "TMW: Fiorentina pensa a Caprile e ha effettuato primi sondaggi.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "fiorentina",
+              "teamName": "Fiorentina",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "target": "Caprile",
+              "playerName": "Caprile",
+              "roleBrief": "P",
+              "role": "Portiere",
+              "status": "Primi sondaggi",
+              "origin": "Cagliari",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW: Fiorentina pensa a Caprile e ha effettuato primi sondaggi.",
+              "check": "Da monitorare",
+              "rule": "Impatto su gerarchie portieri solo se trattativa avanza.",
+              "reliability": "Media"
+            }
+          ],
+          "sourcesCount": 1
         }
       ],
       "talksOutgoing": [
@@ -93904,15 +94587,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 7,
-        "officialOutgoing": 8,
-        "talksIncoming": 11,
-        "talksOutgoing": 4
-      }
+      ]
     },
     "frosinone": {
+      "teamId": "frosinone",
+      "teamName": "Frosinone",
       "officialIncoming": [
         {
           "teamId": "frosinone",
@@ -94609,15 +95288,11 @@
           "sourcesCount": 3
         }
       ],
-      "talksOutgoing": [],
-      "counts": {
-        "officialIncoming": 3,
-        "officialOutgoing": 8,
-        "talksIncoming": 1,
-        "talksOutgoing": 0
-      }
+      "talksOutgoing": []
     },
     "genoa": {
+      "teamId": "genoa",
+      "teamName": "Genoa",
       "officialIncoming": [
         {
           "teamId": "genoa",
@@ -96355,15 +97030,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 10,
-        "officialOutgoing": 9,
-        "talksIncoming": 9,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "inter": {
+      "teamId": "inter",
+      "teamName": "Inter",
       "officialIncoming": [
         {
           "teamId": "inter",
@@ -97792,6 +98463,65 @@
             }
           ],
           "sourcesCount": 1
+        },
+        {
+          "teamId": "inter",
+          "teamName": "Inter",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "target": "John Stones",
+          "playerName": "John Stones",
+          "roleBrief": "D",
+          "role": "Difensore centrale",
+          "status": "Pista viva",
+          "origin": "Manchester City",
+          "updatedAt": "2026-07-13",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+          "check": "Da monitorare",
+          "rule": "Trattativa non ufficiale.",
+          "reliability": "Media",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Pista viva",
+              "updatedAt": "2026-07-13",
+              "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "inter",
+              "teamName": "Inter",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "target": "John Stones",
+              "playerName": "John Stones",
+              "roleBrief": "D",
+              "role": "Difensore centrale",
+              "status": "Pista viva",
+              "origin": "Manchester City",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW: Inter a caccia di centrali, resta viva la pista Stones.",
+              "check": "Da monitorare",
+              "rule": "Trattativa non ufficiale.",
+              "reliability": "Media"
+            }
+          ],
+          "sourcesCount": 1
         }
       ],
       "talksOutgoing": [
@@ -97854,15 +98584,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 3,
-        "officialOutgoing": 6,
-        "talksIncoming": 12,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "juventus": {
+      "teamId": "juventus",
+      "teamName": "Juventus",
       "officialIncoming": [
         {
           "teamId": "juventus",
@@ -99135,65 +99861,6 @@
         {
           "teamId": "juventus",
           "teamName": "Juventus",
-          "target": "Muharemovic",
-          "playerName": "Muharemovic",
-          "roleBrief": "D",
-          "role": "Difensore",
-          "direction": "incoming",
-          "directionLabel": "Entrata",
-          "status": "Trattativa/Interesse",
-          "origin": "Sassuolo",
-          "source": "https://sport.sky.it/calciomercato/tabellone",
-          "url": "https://sport.sky.it/calciomercato/tabellone",
-          "sourceName": "Sky",
-          "sourceLabel": "Sky",
-          "probability": "",
-          "updatedAt": "2026-07-10",
-          "reliability": "Media",
-          "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
-          "check": "Aggiornare rosa se ufficiale",
-          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
-          "sources": [
-            {
-              "source": "https://sport.sky.it/calciomercato/tabellone",
-              "url": "https://sport.sky.it/calciomercato/tabellone",
-              "sourceName": "Sky",
-              "sourceLabel": "Sky",
-              "status": "Trattativa/Interesse",
-              "updatedAt": "2026-07-10",
-              "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
-              "probability": ""
-            }
-          ],
-          "items": [
-            {
-              "teamId": "juventus",
-              "teamName": "Juventus",
-              "target": "Muharemovic",
-              "playerName": "Muharemovic",
-              "roleBrief": "D",
-              "role": "Difensore",
-              "direction": "incoming",
-              "directionLabel": "Entrata",
-              "status": "Trattativa/Interesse",
-              "origin": "Sassuolo",
-              "source": "https://sport.sky.it/calciomercato/tabellone",
-              "url": "https://sport.sky.it/calciomercato/tabellone",
-              "sourceName": "Sky",
-              "sourceLabel": "Sky",
-              "probability": "",
-              "updatedAt": "2026-07-10",
-              "reliability": "Media",
-              "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
-              "check": "Aggiornare rosa se ufficiale",
-              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
-            }
-          ],
-          "sourcesCount": 1
-        },
-        {
-          "teamId": "juventus",
-          "teamName": "Juventus",
           "target": "Mateo Pellegrino",
           "playerName": "Mateo Pellegrino",
           "roleBrief": "A",
@@ -99523,6 +100190,97 @@
         {
           "teamId": "juventus",
           "teamName": "Juventus",
+          "target": "Muharemovic",
+          "playerName": "Muharemovic",
+          "roleBrief": "D",
+          "role": "Difensore centrale",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Leeds accelera / anche Newcastle",
+          "origin": "Leeds/Newcastle",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-13",
+          "reliability": "Media",
+          "note": "TMW: Serie A pronta a salutare un altro talento, Leeds accelera per Muharemovic; anche Newcastle citato nel canale Juve.",
+          "check": "Da monitorare",
+          "rule": "Tenere in uscita potenziale finche non c e accordo.",
+          "sources": [
+            {
+              "source": "https://sport.sky.it/calciomercato/tabellone",
+              "url": "https://sport.sky.it/calciomercato/tabellone",
+              "sourceName": "Sky",
+              "sourceLabel": "Sky",
+              "status": "Trattativa/Interesse",
+              "updatedAt": "2026-07-10",
+              "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Leeds accelera / anche Newcastle",
+              "updatedAt": "2026-07-13",
+              "note": "TMW: Serie A pronta a salutare un altro talento, Leeds accelera per Muharemovic; anche Newcastle citato nel canale Juve.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "juventus",
+              "teamName": "Juventus",
+              "target": "Muharemovic",
+              "playerName": "Muharemovic",
+              "roleBrief": "D",
+              "role": "Difensore",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "status": "Trattativa/Interesse",
+              "origin": "Sassuolo",
+              "source": "https://sport.sky.it/calciomercato/tabellone",
+              "url": "https://sport.sky.it/calciomercato/tabellone",
+              "sourceName": "Sky",
+              "sourceLabel": "Sky",
+              "probability": "",
+              "updatedAt": "2026-07-10",
+              "reliability": "Media",
+              "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            },
+            {
+              "teamId": "juventus",
+              "teamName": "Juventus",
+              "direction": "outgoing",
+              "directionLabel": "Uscita",
+              "target": "Muharemovic",
+              "playerName": "Muharemovic",
+              "roleBrief": "D",
+              "role": "Difensore centrale",
+              "status": "Leeds accelera / anche Newcastle",
+              "origin": "Leeds/Newcastle",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW: Serie A pronta a salutare un altro talento, Leeds accelera per Muharemovic; anche Newcastle citato nel canale Juve.",
+              "check": "Da monitorare",
+              "rule": "Tenere in uscita potenziale finche non c e accordo.",
+              "reliability": "Media"
+            }
+          ],
+          "sourcesCount": 2
+        },
+        {
+          "teamId": "juventus",
+          "teamName": "Juventus",
           "target": "Bremer",
           "playerName": "Bremer",
           "roleBrief": "D",
@@ -99579,15 +100337,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 6,
-        "officialOutgoing": 5,
-        "talksIncoming": 12,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "lazio": {
+      "teamId": "lazio",
+      "teamName": "Lazio",
       "officialIncoming": [
         {
           "teamId": "lazio",
@@ -100685,18 +101439,18 @@
           "role": "Difensore centrale",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Contatti avviati",
-          "origin": "Svincolato / ex Union Berlino",
-          "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
-          "url": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
-          "sourceName": "Fantacalcio.it",
-          "sourceLabel": "Fantacalcio.it",
+          "status": "Intesa verbale / da chiudere",
+          "origin": "Svincolato ex Union Berlino",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
           "probability": "",
-          "updatedAt": "2026-07-12",
+          "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+          "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
           "check": "Da monitorare",
-          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative.",
+          "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
           "sources": [
             {
               "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
@@ -100706,6 +101460,16 @@
               "status": "Contatti avviati",
               "updatedAt": "2026-07-12",
               "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Intesa verbale / da chiudere",
+              "updatedAt": "2026-07-13",
+              "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
               "probability": ""
             }
           ],
@@ -100731,9 +101495,31 @@
               "note": "Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
               "check": "Da monitorare",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
+            },
+            {
+              "teamId": "lazio",
+              "teamName": "Lazio",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "target": "Danilho Doekhi",
+              "playerName": "Danilho Doekhi",
+              "roleBrief": "D",
+              "role": "Difensore centrale",
+              "status": "Intesa verbale / da chiudere",
+              "origin": "Svincolato ex Union Berlino",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
+              "check": "Da monitorare",
+              "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
+              "reliability": "Media"
             }
           ],
-          "sourcesCount": 1
+          "sourcesCount": 2
         }
       ],
       "talksOutgoing": [
@@ -100796,15 +101582,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 1,
-        "officialOutgoing": 6,
-        "talksIncoming": 10,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "lecce": {
+      "teamId": "lecce",
+      "teamName": "Lecce",
       "officialIncoming": [
         {
           "teamId": "lecce",
@@ -101506,15 +102288,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 5,
-        "officialOutgoing": 5,
-        "talksIncoming": 2,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "milan": {
+      "teamId": "milan",
+      "teamName": "Milan",
       "officialIncoming": [
         {
           "teamId": "milan",
@@ -101531,7 +102309,7 @@
           "sourceLabel": "Sky/TMW/CalcioLecce",
           "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
           "url": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
-          "note": "ANSA richiama l investimento del Milan per Goncalo Ramos e Gila. Nel file Goncalo Ramos e gia in Ufficialita; riga di controllo per evitare duplicati.",
+          "note": "",
           "originalPlayerName": "Goncalo Ramos",
           "sources": [
             {
@@ -101543,16 +102321,6 @@
               "updatedAt": "2026-07-11",
               "note": "",
               "formula": ""
-            },
-            {
-              "source": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
-              "url": "https://www.ansa.it/sito/notizie/sport/2026/07/12/calciomercato-scattano-milan-e-como-stallo-per-napoli-e-juventus.-il-punto-sulle_61dee445-d97f-42cf-9343-c0d1f116e70d.html",
-              "sourceName": "ANSA",
-              "sourceLabel": "ANSA",
-              "status": "Gia presente / controllo incrociato",
-              "updatedAt": "2026-07-12",
-              "note": "ANSA richiama l investimento del Milan per Goncalo Ramos e Gila. Nel file Goncalo Ramos e gia in Ufficialita; riga di controllo per evitare duplicati.",
-              "probability": ""
             }
           ],
           "items": [
@@ -102345,65 +103113,6 @@
             }
           ],
           "sourcesCount": 2
-        },
-        {
-          "teamId": "milan",
-          "teamName": "Milan",
-          "target": "Bondo",
-          "playerName": "Bondo",
-          "roleBrief": "C",
-          "role": "Centrocampista",
-          "direction": "incoming",
-          "directionLabel": "Varie",
-          "status": "Fuori dai convocati",
-          "origin": "Milan",
-          "source": "https://www.tuttomercatoweb.com/",
-          "url": "https://www.tuttomercatoweb.com/",
-          "sourceName": "TMW",
-          "sourceLabel": "TMW",
-          "probability": "",
-          "updatedAt": "2026-07-12",
-          "reliability": "Media",
-          "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
-          "check": "Da monitorare",
-          "rule": "Notizia da ritiro/convocazioni.",
-          "sources": [
-            {
-              "source": "https://www.tuttomercatoweb.com/",
-              "url": "https://www.tuttomercatoweb.com/",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "status": "Fuori dai convocati",
-              "updatedAt": "2026-07-12",
-              "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
-              "probability": ""
-            }
-          ],
-          "items": [
-            {
-              "teamId": "milan",
-              "teamName": "Milan",
-              "target": "Bondo",
-              "playerName": "Bondo",
-              "roleBrief": "C",
-              "role": "Centrocampista",
-              "direction": "incoming",
-              "directionLabel": "Varie",
-              "status": "Fuori dai convocati",
-              "origin": "Milan",
-              "source": "https://www.tuttomercatoweb.com/",
-              "url": "https://www.tuttomercatoweb.com/",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "probability": "",
-              "updatedAt": "2026-07-12",
-              "reliability": "Media",
-              "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
-              "check": "Da monitorare",
-              "rule": "Notizia da ritiro/convocazioni."
-            }
-          ],
-          "sourcesCount": 1
         }
       ],
       "talksOutgoing": [
@@ -102646,6 +103355,97 @@
         {
           "teamId": "milan",
           "teamName": "Milan",
+          "target": "Bondo",
+          "playerName": "Bondo",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Offerto al Wolverhampton / costo alto",
+          "origin": "Wolverhampton",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-13",
+          "reliability": "Media",
+          "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
+          "check": "Da monitorare",
+          "rule": "Non aggiornare rosa senza accordo o ufficialita.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/",
+              "url": "https://www.tuttomercatoweb.com/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Fuori dai convocati",
+              "updatedAt": "2026-07-12",
+              "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
+              "probability": ""
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Offerto al Wolverhampton / costo alto",
+              "updatedAt": "2026-07-13",
+              "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "milan",
+              "teamName": "Milan",
+              "target": "Bondo",
+              "playerName": "Bondo",
+              "roleBrief": "C",
+              "role": "Centrocampista",
+              "direction": "incoming",
+              "directionLabel": "Varie",
+              "status": "Fuori dai convocati",
+              "origin": "Milan",
+              "source": "https://www.tuttomercatoweb.com/",
+              "url": "https://www.tuttomercatoweb.com/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "TMW home 12/07 segnala Bondo fuori dai convocati del ritiro. Da monitorare per motivazioni e sviluppi mercato.",
+              "check": "Da monitorare",
+              "rule": "Notizia da ritiro/convocazioni."
+            },
+            {
+              "teamId": "milan",
+              "teamName": "Milan",
+              "direction": "outgoing",
+              "directionLabel": "Uscita",
+              "target": "Warren Bondo",
+              "playerName": "Warren Bondo",
+              "roleBrief": "C",
+              "role": "Centrocampista",
+              "status": "Offerto al Wolverhampton / costo alto",
+              "origin": "Wolverhampton",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW: Bondo offerto al Wolverhampton; piace ma il costo viene considerato alto.",
+              "check": "Da monitorare",
+              "rule": "Non aggiornare rosa senza accordo o ufficialita.",
+              "reliability": "Media"
+            }
+          ],
+          "sourcesCount": 2
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
           "target": "Pervis Estupinan",
           "playerName": "Pervis Estupinan",
           "roleBrief": "D",
@@ -102702,15 +103502,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 4,
-        "officialOutgoing": 3,
-        "talksIncoming": 8,
-        "talksOutgoing": 5
-      }
+      ]
     },
     "monza": {
+      "teamId": "monza",
+      "teamName": "Monza",
       "officialIncoming": [
         {
           "teamId": "monza",
@@ -103533,15 +104329,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 2,
-        "officialOutgoing": 5,
-        "talksIncoming": 7,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "napoli": {
+      "teamId": "napoli",
+      "teamName": "Napoli",
       "officialIncoming": [
         {
           "teamId": "napoli",
@@ -104530,15 +105322,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 7,
-        "officialOutgoing": 2,
-        "talksIncoming": 4,
-        "talksOutgoing": 3
-      }
+      ]
     },
     "parma": {
+      "teamId": "parma",
+      "teamName": "Parma",
       "officialIncoming": [
         {
           "teamId": "parma",
@@ -105339,15 +106127,11 @@
           ],
           "sourcesCount": 2
         }
-      ],
-      "counts": {
-        "officialIncoming": 5,
-        "officialOutgoing": 4,
-        "talksIncoming": 1,
-        "talksOutgoing": 2
-      }
+      ]
     },
     "roma": {
+      "teamId": "roma",
+      "teamName": "Roma",
       "officialIncoming": [
         {
           "teamId": "roma",
@@ -106845,15 +107629,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 2,
-        "officialOutgoing": 12,
-        "talksIncoming": 9,
-        "talksOutgoing": 2
-      }
+      ]
     },
     "sassuolo": {
+      "teamId": "sassuolo",
+      "teamName": "Sassuolo",
       "officialIncoming": [
         {
           "teamId": "sassuolo",
@@ -107764,15 +108544,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 3,
-        "officialOutgoing": 7,
-        "talksIncoming": 4,
-        "talksOutgoing": 2
-      }
+      ]
     },
     "torino": {
+      "teamId": "torino",
+      "teamName": "Torino",
       "officialIncoming": [
         {
           "teamId": "torino",
@@ -109252,15 +110028,11 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 4,
-        "officialOutgoing": 14,
-        "talksIncoming": 8,
-        "talksOutgoing": 1
-      }
+      ]
     },
     "udinese": {
+      "teamId": "udinese",
+      "teamName": "Udinese",
       "officialIncoming": [
         {
           "teamId": "udinese",
@@ -110228,65 +111000,6 @@
         {
           "teamId": "udinese",
           "teamName": "Udinese",
-          "target": "Davis",
-          "playerName": "Davis",
-          "roleBrief": "A",
-          "role": "Attaccante",
-          "direction": "renewal",
-          "directionLabel": "Rinnovo/contratto",
-          "status": "Rinnovo accettato",
-          "origin": "Udinese",
-          "source": "TMW",
-          "url": "TMW",
-          "sourceName": "TMW",
-          "sourceLabel": "TMW",
-          "probability": "",
-          "updatedAt": "2026-07-12",
-          "reliability": "Media",
-          "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
-          "check": "Resta in rosa",
-          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
-          "sources": [
-            {
-              "source": "TMW",
-              "url": "TMW",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "status": "Rinnovo accettato",
-              "updatedAt": "2026-07-12",
-              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
-              "probability": ""
-            }
-          ],
-          "items": [
-            {
-              "teamId": "udinese",
-              "teamName": "Udinese",
-              "target": "Keinan Davis",
-              "playerName": "Keinan Davis",
-              "roleBrief": "A",
-              "role": "Attaccante",
-              "direction": "renewal",
-              "directionLabel": "Rinnovo/contratto",
-              "status": "Rinnovo accettato",
-              "origin": "Udinese",
-              "source": "TMW",
-              "url": "TMW",
-              "sourceName": "TMW",
-              "sourceLabel": "TMW",
-              "probability": "",
-              "updatedAt": "2026-07-12",
-              "reliability": "Media",
-              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
-              "check": "Resta in rosa",
-              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
-            }
-          ],
-          "sourcesCount": 1
-        },
-        {
-          "teamId": "udinese",
-          "teamName": "Udinese",
           "target": "Mergim Vojvoda",
           "playerName": "Mergim Vojvoda",
           "roleBrief": "D",
@@ -110338,6 +111051,124 @@
               "reliability": "Media",
               "note": "Udinese ha il sì del giocatore e imposta la trattativa col Como.",
               "check": "Aggiornare se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+            }
+          ],
+          "sourcesCount": 1
+        },
+        {
+          "teamId": "udinese",
+          "teamName": "Udinese",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "target": "Ugresic",
+          "playerName": "Ugresic",
+          "roleBrief": "D",
+          "role": "Difensore/centrale",
+          "status": "Offerta al Partizan",
+          "origin": "Partizan",
+          "updatedAt": "2026-07-13",
+          "source": "https://www.tuttomercatoweb.com/serie-a/",
+          "url": "https://www.tuttomercatoweb.com/serie-a/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "note": "TMW: dopo l uscita di Atta, l Udinese valuta Ugresic; offerta al Partizan ma concorrenza presente. Da monitorare.",
+          "check": "Da monitorare",
+          "rule": "Se non arriva comunicato ufficiale, mantenere in Trattative.",
+          "reliability": "Media",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Offerta al Partizan",
+              "updatedAt": "2026-07-13",
+              "note": "TMW: dopo l uscita di Atta, l Udinese valuta Ugresic; offerta al Partizan ma concorrenza presente. Da monitorare.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "udinese",
+              "teamName": "Udinese",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "target": "Ugresic",
+              "playerName": "Ugresic",
+              "roleBrief": "D",
+              "role": "Difensore/centrale",
+              "status": "Offerta al Partizan",
+              "origin": "Partizan",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/",
+              "url": "https://www.tuttomercatoweb.com/serie-a/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW: dopo l uscita di Atta, l Udinese valuta Ugresic; offerta al Partizan ma concorrenza presente. Da monitorare.",
+              "check": "Da monitorare",
+              "rule": "Se non arriva comunicato ufficiale, mantenere in Trattative.",
+              "reliability": "Media"
+            }
+          ],
+          "sourcesCount": 1
+        },
+        {
+          "teamId": "udinese",
+          "teamName": "Udinese",
+          "target": "Davis",
+          "playerName": "Davis",
+          "roleBrief": "A",
+          "role": "Attaccante",
+          "direction": "renewal",
+          "directionLabel": "Rinnovo/contratto",
+          "status": "Rinnovo accettato",
+          "origin": "Udinese",
+          "source": "TMW",
+          "url": "TMW",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-12",
+          "reliability": "Media",
+          "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
+          "check": "Resta in rosa",
+          "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+          "sources": [
+            {
+              "source": "TMW",
+              "url": "TMW",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Rinnovo accettato",
+              "updatedAt": "2026-07-12",
+              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "udinese",
+              "teamName": "Udinese",
+              "target": "Keinan Davis",
+              "playerName": "Keinan Davis",
+              "roleBrief": "A",
+              "role": "Attaccante",
+              "direction": "renewal",
+              "directionLabel": "Rinnovo/contratto",
+              "status": "Rinnovo accettato",
+              "origin": "Udinese",
+              "source": "TMW",
+              "url": "TMW",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "updatedAt": "2026-07-12",
+              "reliability": "Media",
+              "note": "Davis ha accettato il rinnovo quinquennale fino al 2031.",
+              "check": "Resta in rosa",
               "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
             }
           ],
@@ -110462,16 +111293,71 @@
             }
           ],
           "sourcesCount": 1
+        },
+        {
+          "teamId": "udinese",
+          "teamName": "Udinese",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "target": "Nicolo Zaniolo",
+          "playerName": "Nicolo Zaniolo",
+          "roleBrief": "A",
+          "role": "Attaccante/esterno",
+          "status": "Caso aperto / certificato medico",
+          "origin": "Udinese / possibili interessamenti Juve-Milan",
+          "updatedAt": "2026-07-13",
+          "source": "https://www.tuttomercatoweb.com/juventus/",
+          "url": "https://www.tuttomercatoweb.com/juventus/",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+          "check": "Da monitorare",
+          "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+          "reliability": "Media",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/juventus/",
+              "url": "https://www.tuttomercatoweb.com/juventus/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Caso aperto / certificato medico",
+              "updatedAt": "2026-07-13",
+              "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+              "probability": ""
+            }
+          ],
+          "items": [
+            {
+              "teamId": "udinese",
+              "teamName": "Udinese",
+              "direction": "outgoing",
+              "directionLabel": "Uscita",
+              "target": "Nicolo Zaniolo",
+              "playerName": "Nicolo Zaniolo",
+              "roleBrief": "A",
+              "role": "Attaccante/esterno",
+              "status": "Caso aperto / certificato medico",
+              "origin": "Udinese / possibili interessamenti Juve-Milan",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/juventus/",
+              "url": "https://www.tuttomercatoweb.com/juventus/",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+              "check": "Da monitorare",
+              "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+              "reliability": "Media"
+            }
+          ],
+          "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 6,
-        "officialOutgoing": 4,
-        "talksIncoming": 9,
-        "talksOutgoing": 2
-      }
+      ]
     },
     "venezia": {
+      "teamId": "venezia",
+      "teamName": "Venezia",
       "officialIncoming": [
         {
           "teamId": "venezia",
@@ -112034,13 +112920,7 @@
           ],
           "sourcesCount": 1
         }
-      ],
-      "counts": {
-        "officialIncoming": 11,
-        "officialOutgoing": 7,
-        "talksIncoming": 7,
-        "talksOutgoing": 1
-      }
+      ]
     }
   },
   "officialTalksFiltered": [
@@ -112303,6 +113183,151 @@
       "Dettaglio": "Nessuna nuova ufficialita inserita senza comunicato/voce consolidata",
       "Stato": "Prudente",
       "Nota": "Controllare Trasferimenti ufficiali prima di spostare"
+    }
+  ],
+  "updateLogV622": [
+    {
+      "area": "Fonti",
+      "change": "Nuova fonte",
+      "element": "Bwin News - amichevoli Udinese 2026",
+      "source": "https://www.bwin.it/it/news/calcio/amichevoli-estive-udinese-2026",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Fonti",
+      "change": "Nuova fonte",
+      "element": "Udinese.it - riparte la preparazione",
+      "source": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Fonti",
+      "change": "Nuova fonte",
+      "element": "Calcio d Angolo - amichevoli estive Serie A 2026",
+      "source": "https://calciodangolo.com/amichevoli-estive-2026-serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Fonti",
+      "change": "Nuova fonte",
+      "element": "Pazzi di Fanta - amichevoli precampionato 26/27",
+      "source": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Fonti",
+      "change": "Nuova fonte",
+      "element": "TMW Fantacalcio - acquisti e consigli",
+      "source": "https://www.tuttomercatoweb.com/fantacalcio/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "Ugresic",
+      "team": "Udinese",
+      "source": "https://www.tuttomercatoweb.com/serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "Nicolo Zaniolo",
+      "team": "Udinese",
+      "source": "https://www.tuttomercatoweb.com/juventus/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "Warren Bondo",
+      "team": "Milan",
+      "source": "https://www.tuttomercatoweb.com/serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "Mattia Liberali",
+      "team": "Como",
+      "source": "https://www.tuttomercatoweb.com/serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "Danilho Doekhi",
+      "team": "Lazio",
+      "source": "https://www.tuttomercatoweb.com/serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "Caprile",
+      "team": "Fiorentina",
+      "source": "https://www.tuttomercatoweb.com/serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "John Stones",
+      "team": "Inter",
+      "source": "https://www.tuttomercatoweb.com/serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Trattative_Squadre",
+      "change": "Nuova/aggiornata trattativa",
+      "element": "Muharemovic",
+      "team": "Juventus",
+      "source": "https://www.tuttomercatoweb.com/serie-a/",
+      "updatedAt": "2026-07-13"
+    },
+    {
+      "area": "Ritiri_Amichevoli",
+      "change": "Aggiornamento ritiro/preparazione Udinese",
+      "element": "Preparazione estiva - prima fase",
+      "team": "Udinese",
+      "source": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
+      "updatedAt": "2026-07-13",
+      "note": "Udinese.it: giocatori a Udine dal 5 luglio, allenamenti e test dal 6 luglio; prima fase per due settimane al Bruseschi."
+    },
+    {
+      "area": "Ritiri_Amichevoli",
+      "change": "Aggiornamento ritiro/preparazione Udinese",
+      "element": "Ritiro precampionato",
+      "team": "Udinese",
+      "source": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
+      "updatedAt": "2026-07-13",
+      "note": "Fonte ufficiale: ritiro a Lienz dal 22 luglio al 4 agosto; i test internazionali saranno comunicati in seguito."
+    }
+  ],
+  "retreatFriendliesControlSourcesV622": [
+    {
+      "team": "Udinese",
+      "date": "2026-07-13",
+      "event": "Verifica calendario amichevoli Udinese",
+      "source": "https://sport.sky.it/calcio/serie-a/amichevoli-estive-serie-a-date-2026",
+      "note": "Sky al 9 luglio indica Udinese: non ancora ufficializzate. Utile per segnalare divergenza con Bwin.",
+      "status": "Controllo fonti"
+    },
+    {
+      "team": "Udinese",
+      "date": "2026-07-13",
+      "event": "Verifica calendario amichevoli Udinese",
+      "source": "https://calciodangolo.com/amichevoli-estive-2026-serie-a/",
+      "note": "Calcio d Angolo al 7 luglio indica Udinese: in attesa di comunicazione.",
+      "status": "Controllo fonti"
+    },
+    {
+      "team": "Udinese",
+      "date": "2026-07-13",
+      "event": "Verifica calendario amichevoli Udinese",
+      "source": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
+      "note": "Pazzi di Fanta al 12 luglio indica Udinese: in attesa.",
+      "status": "Controllo fonti"
     }
   ]
 }

@@ -29,3 +29,10 @@
 
 ## V621 - Sudatori/ioSudo mercato fonti extra v4
 Aggiornati dati Sudatori/ioSudo da Excel 13/07/2026, mantenendo live rosters e viste globali ioSudo.
+
+## V622 - Sudatori/ioSudo mercato Udinese amichevoli + vista GIOCATORI
+
+- Aggiornati Sudatori/ioSudo da Excel 13/07/2026 v5.
+- Aggiunte fonti Udinese/Bwin e amichevoli Udinese da confermare.
+- Aggiunte nuove trattative aggregate.
+- ioSudo introduce la vista rapida GIOCATORI con badge, squadra fantasy live, ultimo aggiornamento e presenza nel listone più recente.
