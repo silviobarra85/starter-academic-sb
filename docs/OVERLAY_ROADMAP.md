@@ -1,13 +1,5 @@
 # Overlay Roadmap
 
-## V620 - ioSudo viste rapide globali
-
-- Sostituiti i vecchi filtri sotto la ricerca con viste globali: SQUADRE, SOS, RUMOR, UFFICIALITÀ, AMICHEVOLI.
-- SOS, rumors e ufficialità sono ordinati in modo decrescente per data.
-- Amichevoli ordinate in modo crescente per data.
-- La ricerca filtra la vista rapida attiva.
-- Dati Sudatori V619 e live rosters V618 mantenuti.
-
 ## V618 - Sudatori/ioSudo live rosters
 
 - Per i SUDATORI legge a runtime le rose fantacalcio dalla stessa fonte della sezione Rose.
@@ -26,13 +18,8 @@
 - Fonti/trattative extra aggregate senza duplicare card.
 - Live roster runtime confermato.
 
+## V621 - ioSudo sezione Giocatori completa
 
-## V621 - Sudatori/ioSudo mercato fonti extra v4
-Aggiornati dati Sudatori/ioSudo da Excel 13/07/2026, mantenendo live rosters e viste globali ioSudo.
-
-## V622 - Sudatori/ioSudo mercato Udinese amichevoli + vista GIOCATORI
-
-- Aggiornati Sudatori/ioSudo da Excel 13/07/2026 v5.
-- Aggiunte fonti Udinese/Bwin e amichevoli Udinese da confermare.
-- Aggiunte nuove trattative aggregate.
-- ioSudo introduce la vista rapida GIOCATORI con badge, squadra fantasy live, ultimo aggiornamento e presenza nel listone più recente.
+- Aggiunta sezione Giocatori anche senza query.
+- Inclusi proxy per giocatori coinvolti in trattative/ufficialita' in entrata.
+- Dettaglio giocatore apribile da ogni card giocatore.

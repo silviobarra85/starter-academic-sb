@@ -12,7 +12,6 @@
     allPlayers: [],
     query: '',
     filter: 'all',
-    quickView: 'teams',
     activeTeamId: '',
     activePlayerId: '',
     activeTab: 'xi',
@@ -377,6 +376,93 @@
     return false;
   }
 
+  function marketPlayerName(item) {
+    return String(item && (item.playerName || item.target || item.name || item.title) || '').trim();
+  }
+
+  function isRealMarketPlayerItem(item) {
+    const name = marketPlayerName(item);
+    if (!name) return false;
+    const text = norm(name + ' ' + (item && item.note || '') + ' ' + (item && item.status || ''));
+    if (/rosa da sfoltire|sfoltire|situazione strategica|strategia|lista esuberi|reparto|controllo fonte/.test(text)) return false;
+    if (name.length < 2) return false;
+    return true;
+  }
+
+  function marketProxyId(teamId, item, kind) {
+    return 'market-' + String(kind || 'talk') + '-' + String(teamId || item && item.teamId || 'team') + '-' + compactName(marketPlayerName(item));
+  }
+
+  function sameTargetTeamPlayer(item, teamId) {
+    const players = teamPlayers(teamId || item && item.teamId || '');
+    return players.find(function (player) { return itemMatchesPlayer(item, player); }) || null;
+  }
+
+  function marketProxyPlayer(item, teamId, kind) {
+    const name = marketPlayerName(item);
+    const team = getTeam(teamId || item.teamId || '');
+    const role = item.roleBrief || item.role || '';
+    const isOfficial = kind === 'officialIncoming';
+    return {
+      id: marketProxyId((team && team.id) || teamId || item.teamId, item, kind),
+      playerName: name,
+      originalName: name,
+      disambiguatedName: name,
+      teamId: (team && team.id) || teamId || item.teamId || '',
+      teamName: (team && team.name) || item.teamName || '',
+      realTeam: (team && team.name) || item.teamName || '',
+      role: role,
+      rosterRole: role,
+      probableXi: false,
+      marketProxy: true,
+      marketProxyKind: kind,
+      marketProxyLabel: isOfficial ? 'Nuovo acquisto' : 'Trattativa in entrata',
+      newAcquisition: isOfficial,
+      marketStatus: isOfficial ? 'Ufficialita in entrata' : 'Rumor in entrata',
+      marketDetail: [item.origin, item.formula, item.status || item.directionLabel].filter(Boolean).join(' - '),
+      marketNote: item.note || ''
+    };
+  }
+
+  function incomingMarketProxyPlayers() {
+    const summaryByTeam = state.data && state.data.marketSummaryByTeam || {};
+    const proxies = [];
+    const seen = new Set();
+    Object.keys(summaryByTeam).forEach(function (teamId) {
+      const summary = summaryByTeam[teamId] || {};
+      [
+        { kind: 'officialIncoming', items: summary.officialIncoming || [] },
+        { kind: 'talkIncoming', items: summary.talksIncoming || [] }
+      ].forEach(function (group) {
+        (group.items || []).forEach(function (item) {
+          if (!isRealMarketPlayerItem(item)) return;
+          if (sameTargetTeamPlayer(item, teamId)) return;
+          const id = marketProxyId(teamId, item, group.kind);
+          if (seen.has(id)) return;
+          seen.add(id);
+          proxies.push(marketProxyPlayer(item, teamId, group.kind));
+        });
+      });
+    });
+    return proxies;
+  }
+
+  function sortPlayersGlobal(players) {
+    return (players || []).slice().sort(function (a, b) {
+      const an = String(a.playerName || '');
+      const bn = String(b.playerName || '');
+      const byName = an.localeCompare(bn, 'it');
+      if (byName) return byName;
+      return String(a.teamName || '').localeCompare(String(b.teamName || ''), 'it');
+    });
+  }
+
+  function buildAllPlayers() {
+    const base = Object.values(state.data.playersByTeam || {}).reduce(function (acc, arr) { return acc.concat(arr || []); }, []);
+    const proxies = incomingMarketProxyPlayers();
+    return sortPlayersGlobal(base.concat(proxies));
+  }
+
   function talksForPlayer(player) {
     const summary = teamSummary(player.teamId);
     return [].concat(summary.talksIncoming || [], summary.talksOutgoing || [])
@@ -408,6 +494,12 @@
   }
 
   function marketBadgeForPlayer(player) {
+    if (player && player.marketProxyKind === 'officialIncoming') {
+      return { text: 'NUOVO', cls: 'iosudo-badge-new' };
+    }
+    if (player && player.marketProxyKind === 'talkIncoming') {
+      return { text: 'RUMOR', cls: 'iosudo-badge-rumor' };
+    }
     if (player.newAcquisition || officialIncomingForPlayer(player).length) {
       return { text: 'NUOVO', cls: 'iosudo-badge-new' };
     }
@@ -504,209 +596,6 @@
     }).join('');
   }
 
-
-  function dateValue(value, missingValue) {
-    const text = String(value || '').trim();
-    if (!text) return missingValue == null ? 0 : missingValue;
-    const parsed = Date.parse(text.length === 10 ? text + 'T00:00:00Z' : text);
-    return Number.isNaN(parsed) ? (missingValue == null ? 0 : missingValue) : parsed;
-  }
-
-  function itemUpdatedTime(item) {
-    return dateValue(item && (item.updatedAt || item.date || item.loadedAt), 0);
-  }
-
-  function itemSearchBlob(item, extra) {
-    return norm([
-      extra,
-      item && item.teamName,
-      item && item.playerName,
-      item && item.target,
-      item && item.event,
-      item && item.origin,
-      item && item.formula,
-      item && item.status,
-      item && item.direction,
-      item && item.directionLabel,
-      item && item.note,
-      item && item.sourceName,
-      item && item.sourceLabel,
-      item && item.source
-    ].filter(Boolean).join(' '));
-  }
-
-  function collectMarketRows(kind) {
-    const rows = [];
-    (state.data.teams || []).forEach(function (team) {
-      const summary = teamSummary(team.id);
-      const keys = kind === 'official'
-        ? [['officialIncoming', 'Entrata'], ['officialOutgoing', 'Uscita']]
-        : [['talksIncoming', 'Entrata'], ['talksOutgoing', 'Uscita']];
-      keys.forEach(function (pair) {
-        const key = pair[0];
-        const label = pair[1];
-        (summary[key] || []).forEach(function (item) {
-          rows.push({ team: team, item: item, key: key, label: label });
-        });
-      });
-    });
-    rows.sort(function (a, b) {
-      const diff = itemUpdatedTime(b.item) - itemUpdatedTime(a.item);
-      if (diff) return diff;
-      const an = String((a.item && (a.item.playerName || a.item.target)) || '');
-      const bn = String((b.item && (b.item.playerName || b.item.target)) || '');
-      return an.localeCompare(bn, 'it');
-    });
-    return rows;
-  }
-
-  function collectSosRows() {
-    const rows = [];
-    Object.entries(state.data.injuriesByTeam || {}).forEach(function (entry) {
-      const teamId = entry[0];
-      const team = getTeam(teamId) || { id: teamId, name: teamId };
-      (entry[1] || []).forEach(function (item) {
-        rows.push({ team: team, item: item, label: 'SOS' });
-      });
-    });
-    rows.sort(function (a, b) {
-      const diff = itemUpdatedTime(b.item) - itemUpdatedTime(a.item);
-      if (diff) return diff;
-      return String(a.item.playerName || '').localeCompare(String(b.item.playerName || ''), 'it');
-    });
-    return rows;
-  }
-
-  function collectFriendlyRows() {
-    const map = new Map();
-    Object.entries(state.data.friendliesByTeam || {}).forEach(function (entry) {
-      const teamId = entry[0];
-      const team = getTeam(teamId) || { id: teamId, name: teamId };
-      (entry[1] || []).forEach(function (item) {
-        const key = norm([item.date, item.event, item.venue || item.location].join('|'));
-        if (!map.has(key)) {
-          map.set(key, { item: Object.assign({}, item), teams: new Set(), label: 'Amichevole' });
-        }
-        map.get(key).teams.add(team.name || item.teamName || teamId);
-      });
-    });
-    return Array.from(map.values()).sort(function (a, b) {
-      const diff = dateValue(a.item && a.item.date, Number.MAX_SAFE_INTEGER) - dateValue(b.item && b.item.date, Number.MAX_SAFE_INTEGER);
-      if (diff) return diff;
-      return String(a.item.event || '').localeCompare(String(b.item.event || ''), 'it');
-    });
-  }
-
-  function rowMatchesQuery(row, q) {
-    if (!q) return true;
-    const item = row && row.item || row;
-    const teams = row && row.teams ? Array.from(row.teams).join(' ') : row && row.team && row.team.name;
-    return itemSearchBlob(item, teams).indexOf(q) !== -1;
-  }
-
-  function globalMarketItem(row, badgeText) {
-    const item = row.item || row;
-    const name = item.playerName || item.target || 'Giocatore';
-    const teamName = item.teamName || (row.team && row.team.name) || '';
-    const direction = item.directionLabel || item.direction || row.label || '';
-    const updated = formatDate(item.updatedAt);
-    const detail = [teamName, direction, item.status, updated].filter(Boolean).join(' · ');
-    const route = [item.origin, item.formula].filter(Boolean).join(' · ');
-    const note = item.note ? '<p>' + escapeHtml(item.note) + '</p>' : '';
-    const badgeCls = badgeText === 'UFFICIALE' ? 'iosudo-badge-new' : 'iosudo-badge-rumor';
-    return '<article class="iosudo-list-row iosudo-compact-row"><h4>'
-      + escapeHtml(name) + ' <span class="iosudo-badge ' + badgeCls + '">' + escapeHtml(badgeText) + '</span></h4>'
-      + (detail ? '<p>' + escapeHtml(detail) + '</p>' : '')
-      + (route ? '<p>' + escapeHtml(route) + '</p>' : '')
-      + note
-      + sourcesHtml(item)
-      + '</article>';
-  }
-
-  function globalSosItem(row) {
-    const item = row.item || row;
-    const teamName = item.teamName || (row.team && row.team.name) || '';
-    const updated = formatDate(item.updatedAt);
-    return '<article class="iosudo-list-row iosudo-compact-row"><h4>'
-      + escapeHtml(item.playerName || 'Giocatore') + ' <span class="iosudo-badge iosudo-badge-sos">SOS</span></h4>'
-      + '<p>' + escapeHtml([teamName, item.status, updated].filter(Boolean).join(' · ')) + '</p>'
-      + (item.injury ? '<p>' + escapeHtml(item.injury) + '</p>' : '')
-      + (item.potentialReturn ? '<p>Rientro: ' + escapeHtml(item.potentialReturn) + '</p>' : '')
-      + (item.note ? '<p>' + escapeHtml(item.note) + '</p>' : '')
-      + sourcesHtml(item)
-      + '</article>';
-  }
-
-  function globalFriendlyItem(row) {
-    const item = row.item || row;
-    const teams = row.teams ? Array.from(row.teams).sort().join(', ') : (item.teamName || '');
-    const when = [formatDate(item.date) || 'Data da confermare', item.time].filter(Boolean).join(' · ');
-    const result = item.result || item.score || item.finalScore || '';
-    return '<article class="iosudo-list-row iosudo-compact-row"><h4>' + escapeHtml(item.event || 'Amichevole') + '</h4>'
-      + '<p>' + escapeHtml(when) + '</p>'
-      + (teams ? '<p>Squadre: ' + escapeHtml(teams) + '</p>' : '')
-      + (result ? '<p>Risultato: ' + escapeHtml(result) + '</p>' : '')
-      + (item.status ? '<p>Stato: ' + escapeHtml(item.status) + '</p>' : '')
-      + (item.venue || item.location ? '<p>' + escapeHtml(item.venue || item.location) + '</p>' : '')
-      + sourcesHtml(item)
-      + '</article>';
-  }
-
-  function globalViewTitle(view) {
-    if (view === 'sos') return 'SOS / problemi fisici';
-    if (view === 'rumor') return 'Rumor e trattative';
-    if (view === 'official') return 'Ufficialita';
-    if (view === 'friendlies') return 'Amichevoli';
-    return 'Squadre';
-  }
-
-  function renderGlobalView(q) {
-    let rows = [];
-    let mapper = globalMarketItem;
-    let badge = 'RUMOR';
-    let empty = 'Nessuna voce trovata.';
-    let orderNote = 'Ordine decrescente per data.';
-    if (state.quickView === 'sos') {
-      rows = collectSosRows();
-      mapper = globalSosItem;
-      empty = 'Nessun giocatore SOS trovato.';
-    } else if (state.quickView === 'rumor') {
-      rows = collectMarketRows('rumor');
-      mapper = function (row) { return globalMarketItem(row, 'RUMOR'); };
-      empty = 'Nessun rumor o trattativa trovata.';
-    } else if (state.quickView === 'official') {
-      rows = collectMarketRows('official');
-      mapper = function (row) { return globalMarketItem(row, 'UFFICIALE'); };
-      empty = 'Nessuna ufficialita trovata.';
-    } else if (state.quickView === 'friendlies') {
-      rows = collectFriendlyRows();
-      mapper = globalFriendlyItem;
-      empty = 'Nessuna amichevole trovata.';
-      orderNote = 'Ordine crescente per data.';
-    }
-    rows = rows.filter(function (row) { return rowMatchesQuery(row, q); });
-    els.results.innerHTML = '<section class="iosudo-global-view"><div class="iosudo-global-head">'
-      + '<div><p class="iosudo-eyebrow">Vista rapida</p><h2 class="iosudo-card-title">' + escapeHtml(globalViewTitle(state.quickView)) + '</h2>'
-      + '<p class="iosudo-card-subtitle">' + escapeHtml(rows.length) + ' voci · ' + escapeHtml(orderNote) + '</p></div>'
-      + '</div>'
-      + (rows.length ? '<div class="iosudo-list iosudo-global-list">' + rows.map(mapper).join('') + '</div>' : '<p class="iosudo-empty">' + escapeHtml(empty) + '</p>')
-      + '</section>';
-  }
-
-  function setQuickView(view) {
-    state.quickView = view || 'teams';
-    state.filter = 'all';
-    state.activeTeamId = '';
-    state.activePlayerId = '';
-    if (els.focus) els.focus.classList.add('hidden');
-    if (els.app) els.app.classList.remove('is-team-open');
-    document.querySelectorAll('[data-view]').forEach(function (button) {
-      button.classList.toggle('is-active', (button.getAttribute('data-view') || 'teams') === state.quickView);
-    });
-    if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
-    renderResults();
-  }
-
   function teamThemeClass(team) {
     const text = norm([team && team.name, team && team.id, team && team.abbr].filter(Boolean).join(' '));
     if (/atalanta/.test(text)) return 'iosudo-team-theme-atalanta';
@@ -751,29 +640,42 @@
     const badge = marketBadgeForPlayer(player);
     const sos = playerHasSos(player) ? '<span class="iosudo-badge iosudo-badge-sos">SOS</span>' : '';
     const xi = player.probableXi ? '<span class="iosudo-pill">XI</span>' : '';
-    return '<article class="iosudo-player-card ' + escapeHtml(roleClass(player.role)) + '">'
+    const proxy = player.marketProxyLabel ? ' - ' + player.marketProxyLabel : '';
+    return '<article class="iosudo-player-card ' + escapeHtml(roleClass(player.role)) + (player.marketProxy ? ' iosudo-player-card-market-proxy' : '') + '">'
       + '<button type="button" data-player-id="' + escapeHtml(player.id) + '" data-team-id="' + escapeHtml(player.teamId) + '" aria-label="Apri dettaglio di ' + escapeHtml(player.playerName) + '">'
       + '<div class="iosudo-player-title"><div>'
       + '<h3>' + escapeHtml(player.playerName) + '</h3>'
-      + '<p class="iosudo-card-subtitle">' + escapeHtml(player.teamName || '') + ' - ' + escapeHtml(player.role || '-') + '</p>'
+      + '<p class="iosudo-card-subtitle">' + escapeHtml(player.teamName || '') + ' - ' + escapeHtml(player.role || '-') + escapeHtml(proxy) + '</p>'
       + '</div><div class="iosudo-card-meta">' + badgeHtml(badge) + sos + xi + '</div></div>'
       + '</button></article>';
   }
 
   function playerPassesFilter(player) {
-    return Boolean(player);
+    if (state.filter === 'all') return true;
+    if (state.filter === 'new') return marketBadgeForPlayer(player).text === 'NUOVO';
+    if (state.filter === 'rumor') return marketBadgeForPlayer(player).text === 'RUMOR';
+    if (state.filter === 'sos') return playerHasSos(player);
+    if (state.filter === 'xi') return Boolean(player.probableXi);
+    return true;
+  }
+
+  function playersSection(title, players) {
+    const list = sortPlayersGlobal(players || []);
+    if (!list.length) return '';
+    return '<section class="iosudo-players-section"><div class="iosudo-section-header"><h2 class="iosudo-card-title">'
+      + escapeHtml(title) + '</h2><span class="iosudo-pill">' + escapeHtml(list.length) + '</span></div>'
+      + '<div class="iosudo-player-grid">' + list.map(playerCard).join('') + '</div></section>';
   }
 
   function renderResults() {
     if (!state.data) return;
     const q = norm(state.query);
-    if (state.quickView && state.quickView !== 'teams') {
-      renderGlobalView(q);
-      return;
-    }
     if (!q) {
       const teams = (state.data.teams || []).slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
-      els.results.innerHTML = '<div class="iosudo-team-grid">' + teams.map(teamCard).join('') + '</div>';
+      const players = state.allPlayers.filter(playerPassesFilter);
+      const teamsHtml = '<section class="iosudo-teams-section"><div class="iosudo-section-header"><h2 class="iosudo-card-title">Squadre</h2><span class="iosudo-pill">' + escapeHtml(teams.length) + '</span></div><div class="iosudo-team-grid">' + teams.map(teamCard).join('') + '</div></section>';
+      const playersHtml = playersSection('Giocatori', players);
+      els.results.innerHTML = teamsHtml + playersHtml;
       bindCards();
       return;
     }
@@ -782,10 +684,10 @@
     });
     const matchingPlayers = state.allPlayers.filter(function (player) {
       return playerPassesFilter(player)
-        && (norm(player.playerName).indexOf(q) !== -1 || norm(player.teamName).indexOf(q) !== -1 || norm(fantasyRosterText(player)).indexOf(q) !== -1);
-    }).slice(0, 80);
-    const teamsHtml = matchingTeams.length ? '<h2 class="iosudo-card-title">Squadre</h2><div class="iosudo-team-grid">' + matchingTeams.map(teamCard).join('') + '</div>' : '';
-    const playersHtml = matchingPlayers.length ? '<h2 class="iosudo-card-title">Giocatori</h2><div class="iosudo-player-grid">' + matchingPlayers.map(playerCard).join('') + '</div>' : '';
+        && (norm(player.playerName).indexOf(q) !== -1 || norm(player.teamName).indexOf(q) !== -1 || norm(fantasyRosterText(player)).indexOf(q) !== -1 || norm(player.marketProxyLabel).indexOf(q) !== -1);
+    });
+    const teamsHtml = matchingTeams.length ? '<section class="iosudo-teams-section"><div class="iosudo-section-header"><h2 class="iosudo-card-title">Squadre</h2><span class="iosudo-pill">' + escapeHtml(matchingTeams.length) + '</span></div><div class="iosudo-team-grid">' + matchingTeams.map(teamCard).join('') + '</div></section>' : '';
+    const playersHtml = playersSection('Giocatori', matchingPlayers);
     els.results.innerHTML = teamsHtml + playersHtml || '<p class="iosudo-empty">Nessun risultato.</p>';
     bindCards();
   }
@@ -1120,8 +1022,6 @@
       node.addEventListener('click', function () {
         const teamId = node.getAttribute('data-team-id');
         state.activeTab = 'xi';
-        state.quickView = 'teams';
-        document.querySelectorAll('[data-view]').forEach(function (b) { b.classList.toggle('is-active', (b.getAttribute('data-view') || 'teams') === 'teams'); });
         renderTeamPanel(teamId);
         els.focus.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
@@ -1163,7 +1063,7 @@
     setStatus('Caricamento rose live della lega...');
     await loadLeagueRosters();
     applyLiveRosters();
-    state.allPlayers = Object.values(state.data.playersByTeam || {}).reduce(function (acc, arr) { return acc.concat(arr || []); }, []);
+    state.allPlayers = buildAllPlayers();
     const updated = state.manifest.updatedAt || (state.data.meta && state.data.meta.updatedAt) || '';
     setStatus('Dati aggiornati al ' + formatDate(updated) + ' - versione ' + (state.manifest.version || state.data.meta.version || 'corrente') + (state.liveRoster && state.liveRoster.active ? ' - rose live ' + state.liveRoster.source : ''));
     renderSummary();
@@ -1204,9 +1104,12 @@
         renderResults();
       });
     }
-    document.querySelectorAll('[data-view]').forEach(function (button) {
+    document.querySelectorAll('[data-filter]').forEach(function (button) {
       button.addEventListener('click', function () {
-        setQuickView(button.getAttribute('data-view') || 'teams');
+        document.querySelectorAll('[data-filter]').forEach(function (b) { b.classList.remove('is-active'); });
+        button.classList.add('is-active');
+        state.filter = button.getAttribute('data-filter') || 'all';
+        renderResults();
       });
     });
     loadData().catch(function (error) {

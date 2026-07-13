@@ -687,28 +687,32 @@ button.iosudo-pitch-player {
 }
 
 
-/* V621: tasti rapidi globali funzionanti */
-.iosudo-global-nav .iosudo-filter {
-  text-transform: uppercase;
-  letter-spacing: .04em;
-}
-.iosudo-global-view {
+/* V621: sezione Giocatori completa e proxy trattative in entrata */
+.iosudo-teams-section,
+.iosudo-players-section {
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
-.iosudo-global-head {
-  border: 1px solid var(--iosudo-border);
-  border-radius: var(--iosudo-radius);
-  padding: 14px;
-  background: var(--iosudo-card);
-  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.18);
-}
-.iosudo-global-list {
-  gap: 9px;
-}
-.iosudo-compact-row h4 {
+.iosudo-section-header {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 4px 0 0;
 }
-.iosudo-compact-row .iosudo-sources {
-  margin-top: 8px;
+.iosudo-section-header .iosudo-card-title {
+  font-size: 1.05rem;
+}
+.iosudo-player-card-market-proxy {
+  border-style: dashed;
+}
+.iosudo-player-card-market-proxy .iosudo-card-subtitle {
+  color: #fff0be;
+}
+.iosudo-player-card button:hover,
+.iosudo-player-card button:focus-visible {
+  transform: translateY(-1px);
+}
+@media (min-width: 780px) {
+  .iosudo-results { gap: 18px; }
 }

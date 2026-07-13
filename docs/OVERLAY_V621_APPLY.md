@@ -1,26 +1,40 @@
-# Overlay V621 - Sudatori/ioSudo mercato fonti extra v4
+# Overlay V621 - Applicazione
 
-Aggiornamento del 13/07/2026 basato sul file Excel `fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_mercato_fonti_extra_v4(1).xlsx`.
-
-## Contenuto
-- aggiornamento `sudatori-data.json` e `manifest.json`;
-- nuove fonti operative dal foglio `Fonti`;
-- nuove righe da `Trattative_Squadre`;
-- fonti controllo ritiri/amichevoli conservate come controllo, senza aumentare il conteggio amichevoli reali;
-- V620 ioSudo global buttons mantenuta e riallineata a V621;
-- live rosters V618 mantenute.
-
-## Applicazione
 ```bash
-cp -R ~/Downloads/fantacalcio_overlay_sudatori_iosudo_v621_mercato_fonti_extra_v4/static/* static/
-cp -R ~/Downloads/fantacalcio_overlay_sudatori_iosudo_v621_mercato_fonti_extra_v4/docs/* docs/
+cp -R ~/Downloads/fantacalcio_overlay_iosudo_v621_players_all_detail/static/* static/
+cp -R ~/Downloads/fantacalcio_overlay_iosudo_v621_players_all_detail/docs/* docs/
 ```
 
 ## Audit
+
 ```bash
-node static/fanta-engine/tools/audit-sudatori-section-v621.mjs
 node static/fanta-engine/tools/audit-iosudo-v621.mjs
-node --check static/fanta-engine/js/sections/sudatori-section-v621.js
 node --check static/fanta-engine/js/apps/iosudo-app-v621.js
 node --check static/iosudo/sw.js
+```
+
+## Push
+
+```bash
+git status
+
+git add \
+  static/iosudo/index.html \
+  static/iosudo/sw.js \
+  static/fanta-engine/css/iosudo-app-v621.css \
+  static/fanta-engine/js/apps/iosudo-app-v621.js \
+  static/fanta-engine/tools/audit-iosudo-v621.mjs \
+  static/zonaorientale/assets/league-config.json \
+  static/fantapetillomantramanager/assets/league-config.json \
+  docs/AI_ASSISTANT_HANDOFF_CURRENT.md \
+  docs/AI_ASSISTANT_HANDOFF_V621.md \
+  docs/IOSUDO_APP_V621.md \
+  docs/OVERLAY_V621_APPLY.md \
+  docs/OVERLAY_ROADMAP.md \
+  docs/zonaorientale/00_STATO_CORRENTE_E_INDICE.md \
+  docs/fantapetillomantramanager/00_STATO_CORRENTE_E_INDICE.md
+
+git commit -m "V621 mostra tutti i giocatori in ioSudo"
+
+git push origin HEAD:master
 ```

@@ -1,4 +1,4 @@
-const IOSUDO_CACHE = 'iosudo-shell-v622';
+const IOSUDO_CACHE = 'iosudo-shell-v621';
 const IOSUDO_SHELL = [
   './',
   './index.html',
@@ -6,8 +6,8 @@ const IOSUDO_SHELL = [
   './assets/icon.svg',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  '../fanta-engine/css/iosudo-app-v622.css?v=622',
-  '../fanta-engine/js/apps/iosudo-app-v622.js?v=622'
+  '../fanta-engine/css/iosudo-app-v621.css?v=621',
+  '../fanta-engine/js/apps/iosudo-app-v621.js?v=621'
 ];
 
 self.addEventListener('install', function (event) {
@@ -32,7 +32,7 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('fetch', function (event) {
   const url = new URL(event.request.url);
-  if (url.pathname.indexOf('/fanta-engine/data/sudatori/current/') !== -1 || url.pathname.indexOf('/assets/rose/') !== -1 || url.pathname.indexOf('/fanta-engine/data/shared-assets/current/assets/listoni/') !== -1) {
+  if (url.pathname.indexOf('/fanta-engine/data/sudatori/current/') !== -1 || url.pathname.indexOf('/assets/rose/') !== -1) {
     event.respondWith(fetch(event.request, { cache: 'no-store' }).catch(function () {
       return caches.match(event.request);
     }));
