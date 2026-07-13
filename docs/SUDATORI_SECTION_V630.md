@@ -1,4 +1,4 @@
-# Per i SUDATORI V630
+# Per i SUDATORI V631
 
 Aggiornamento basato sull'Excel `date_logiche_fonti_v10` del 13/07/2026.
 
@@ -8,4 +8,4 @@ Aggiornamento basato sull'Excel `date_logiche_fonti_v10` del 13/07/2026.
 - Dati: 714 giocatori, 182 trattative aggregate, 233 ufficialita, 8 SOS/infortunati.
 
 ## Audit
-`node static/fanta-engine/tools/audit-sudatori-section-v630.mjs`
+`node static/fanta-engine/tools/audit-sudatori-section-v631.mjs`

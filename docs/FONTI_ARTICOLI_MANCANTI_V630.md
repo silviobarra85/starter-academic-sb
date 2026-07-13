@@ -1,4 +1,4 @@
-# Fonti articolo mancanti V630
+# Fonti articolo mancanti V631
 
 Dopo l'Excel `date_logiche_fonti_v10`, restano **10** righe senza articolo puntuale verificato.
 
