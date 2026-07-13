@@ -1,11 +1,24 @@
-# Overlay Roadmap
+# OVERLAY ROADMAP
 
-## V641
+- V637: aggiornamento globale v14, fonti puntuali e alias fantasy ioSudo.
 
-Aggiunta automazione GitHub Actions per applicare overlay da zip caricati in `incoming/overlays/`.
 
-## Prossimi passi
+## V638
 
-- Usare il workflow per applicare gli overlay futuri da smartphone.
-- Mantenere Per i SUDATORI e ioSudo aggiornati tramite overlay dati/codice generati dall'assistente.
-- Eventuale evoluzione futura: caricamento diretto Excel e generazione dataset da GitHub Actions.
+- ioSudo: vista GIOCATORI completa da listone.
+- Alias fantasy/listone mirati.
+- Tutti i giocatori del listone compaiono, anche se non presenti nel dataset Sudatori.
+
+
+## V639
+
+- Aggiornati Per i SUDATORI e ioSudo con Excel globale v15.
+- ioSudo GIOCATORI: aggiunta sorgente giocatore nella card.
+- Tutti i giocatori del listone restano presenti nella vista GIOCATORI.
+
+
+## V640
+
+- Aggiornati Per i SUDATORI e ioSudo con Excel globale v16.
+- ioSudo GIOCATORI: aggiunta sorgente giocatore nella card.
+- Tutti i giocatori del listone restano presenti nella vista GIOCATORI.

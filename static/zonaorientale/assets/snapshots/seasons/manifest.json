@@ -1,143 +1,143 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-12T19:21:31.148Z",
+  "generatedAt": "2026-07-13T18:44:07.197Z",
   "snapshots": [
     {
       "seasonId": "2026-2027",
       "file": "2026-2027.json",
-      "generatedAt": "2026-07-12T19:21:31.136Z",
+      "generatedAt": "2026-07-13T18:44:07.178Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2025-2026",
       "file": "2025-2026.json",
-      "generatedAt": "2026-07-12T19:21:31.139Z",
+      "generatedAt": "2026-07-13T18:44:07.180Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2024-2025",
       "file": "2024-2025.json",
-      "generatedAt": "2026-07-12T19:21:31.140Z",
+      "generatedAt": "2026-07-13T18:44:07.183Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2023-2024",
       "file": "2023-2024.json",
-      "generatedAt": "2026-07-12T19:21:31.141Z",
+      "generatedAt": "2026-07-13T18:44:07.183Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2022-2023",
       "file": "2022-2023.json",
-      "generatedAt": "2026-07-12T19:21:31.141Z",
+      "generatedAt": "2026-07-13T18:44:07.184Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2021-2022",
       "file": "2021-2022.json",
-      "generatedAt": "2026-07-12T19:21:31.142Z",
+      "generatedAt": "2026-07-13T18:44:07.185Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2020-2021",
       "file": "2020-2021.json",
-      "generatedAt": "2026-07-12T19:21:31.143Z",
+      "generatedAt": "2026-07-13T18:44:07.186Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2019-2020",
       "file": "2019-2020.json",
-      "generatedAt": "2026-07-12T19:21:31.143Z",
+      "generatedAt": "2026-07-13T18:44:07.190Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2018-2019",
       "file": "2018-2019.json",
-      "generatedAt": "2026-07-12T19:21:31.144Z",
+      "generatedAt": "2026-07-13T18:44:07.191Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2017-2018",
       "file": "2017-2018.json",
-      "generatedAt": "2026-07-12T19:21:31.144Z",
+      "generatedAt": "2026-07-13T18:44:07.192Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2016-2017",
       "file": "2016-2017.json",
-      "generatedAt": "2026-07-12T19:21:31.145Z",
+      "generatedAt": "2026-07-13T18:44:07.192Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2015-2016",
       "file": "2015-2016.json",
-      "generatedAt": "2026-07-12T19:21:31.145Z",
+      "generatedAt": "2026-07-13T18:44:07.193Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2014-2015",
       "file": "2014-2015.json",
-      "generatedAt": "2026-07-12T19:21:31.146Z",
+      "generatedAt": "2026-07-13T18:44:07.194Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2013-2014",
       "file": "2013-2014.json",
-      "generatedAt": "2026-07-12T19:21:31.146Z",
+      "generatedAt": "2026-07-13T18:44:07.194Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2012-2013",
       "file": "2012-2013.json",
-      "generatedAt": "2026-07-12T19:21:31.146Z",
+      "generatedAt": "2026-07-13T18:44:07.194Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2011-2012",
       "file": "2011-2012.json",
-      "generatedAt": "2026-07-12T19:21:31.146Z",
+      "generatedAt": "2026-07-13T18:44:07.195Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2010-2011",
       "file": "2010-2011.json",
-      "generatedAt": "2026-07-12T19:21:31.147Z",
+      "generatedAt": "2026-07-13T18:44:07.195Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2009-2010",
       "file": "2009-2010.json",
-      "generatedAt": "2026-07-12T19:21:31.147Z",
+      "generatedAt": "2026-07-13T18:44:07.195Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2008-2009",
       "file": "2008-2009.json",
-      "generatedAt": "2026-07-12T19:21:31.147Z",
+      "generatedAt": "2026-07-13T18:44:07.196Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2007-2008",
       "file": "2007-2008.json",
-      "generatedAt": "2026-07-12T19:21:31.147Z",
+      "generatedAt": "2026-07-13T18:44:07.196Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2006-2007",
       "file": "2006-2007.json",
-      "generatedAt": "2026-07-12T19:21:31.147Z",
+      "generatedAt": "2026-07-13T18:44:07.196Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2005-2006",
       "file": "2005-2006.json",
-      "generatedAt": "2026-07-12T19:21:31.148Z",
+      "generatedAt": "2026-07-13T18:44:07.196Z",
       "snapshotVersion": 34
     },
     {
       "seasonId": "2004-2005",
       "file": "2004-2005.json",
-      "generatedAt": "2026-07-12T19:21:31.148Z",
+      "generatedAt": "2026-07-13T18:44:07.197Z",
       "snapshotVersion": 34
     }
   ]

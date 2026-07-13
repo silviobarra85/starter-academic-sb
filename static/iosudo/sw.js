@@ -1,4 +1,4 @@
-const IOSUDO_CACHE = 'iosudo-shell-v639';
+const IOSUDO_CACHE = 'iosudo-shell-v640';
 const IOSUDO_SHELL = [
   './',
   './index.html',
@@ -6,8 +6,8 @@ const IOSUDO_SHELL = [
   './assets/icon.svg',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  '../fanta-engine/css/iosudo-app-v639.css?v=639',
-  '../fanta-engine/js/apps/iosudo-app-v639.js?v=639'
+  '../fanta-engine/css/iosudo-app-v640.css?v=640',
+  '../fanta-engine/js/apps/iosudo-app-v640.js?v=640'
 ];
 
 self.addEventListener('install', function (event) {
