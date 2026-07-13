@@ -1,7 +1,7 @@
 {
   "meta": {
-    "id": "sudatori-2026-27-v635",
-    "label": "Per i SUDATORI V635",
+    "id": "sudatori-2026-27-v636",
+    "label": "Per i SUDATORI V636",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-13",
     "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_tmw_link_puntuali_v12(1).xlsx",
@@ -21,11 +21,11 @@
     "officialOutgoing": 136,
     "officialMoves": 233,
     "filteredOfficialTalks": 2,
-    "version": "V635",
+    "version": "V636",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-    "note": "V635: corregge ruoli e squadra attuale nella vista GIOCATORI di ioSudo usando listone recente, righe aggregate e ufficialità.",
+    "note": "V636: corregge alias/deduplica GIOCATORI in ioSudo, nasconde ufficialmente fuori Serie A e applica rose live ai giocatori virtuali.",
     "officialRows": 287,
     "sources": 152,
     "liveRosterRuntime": true,
@@ -52,7 +52,7 @@
     "extraControlFriendliesSourcesAddedV622": 3,
     "ioSudoGlobalPlayersView": "V622",
     "current": "sudatori-data.json",
-    "ioSudoSharedData": "V635",
+    "ioSudoSharedData": "V636",
     "extraSourcesAdded": 7,
     "extraTalkRowsAdded": 10,
     "extraControlFriendliesSourcesAdded": 2,
@@ -111,7 +111,14 @@
     "roleBackfilledFromListoneV635": 91,
     "roleBackfilledFromNestedSourcesV635": 14,
     "marketRowsRoleFixedV635": 105,
-    "officialOutgoingCurrentTeamResolvedV635": 135
+    "officialOutgoingCurrentTeamResolvedV635": 135,
+    "ioSudoPlayersAliasFix": "V636",
+    "ioSudoHideOfficialOutOfSerieA": "V636",
+    "ioSudoVirtualPlayerLiveRosters": "V636",
+    "marketRowsRoleFixedV636": 105,
+    "roleBackfilledFromListoneV636": 91,
+    "roleBackfilledFromNestedSourcesV636": 14,
+    "officialOutgoingCurrentTeamResolvedV636": 135
   },
   "teams": [
     {

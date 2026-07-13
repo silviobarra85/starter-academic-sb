@@ -1,5 +1,5 @@
 {
-  "version": "V635",
+  "version": "V636",
   "current": "sudatori-data.json",
   "updatedAt": "2026-07-13",
   "updateSlot": "tmw-link-puntuali-v12",
@@ -19,11 +19,11 @@
   "formationMissingPlayers": 0,
   "officialRows": 287,
   "filteredOfficialTalks": 2,
-  "note": "V635: corregge ruoli e squadra attuale nella vista GIOCATORI di ioSudo usando listone recente, righe aggregate e ufficialità.",
+  "note": "V636: corregge alias/deduplica GIOCATORI in ioSudo, nasconde ufficialmente fuori Serie A e applica rose live ai giocatori virtuali.",
   "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
   "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
   "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-  "ioSudoSharedData": "V635",
+  "ioSudoSharedData": "V636",
   "sources": 152,
   "extraSourcesAdded": 7,
   "extraTalkRowsAdded": 10,
@@ -105,5 +105,8 @@
   "roleBackfilledFromListoneV635": 91,
   "roleBackfilledFromNestedSourcesV635": 14,
   "marketRowsRoleFixedV635": 105,
-  "officialOutgoingCurrentTeamResolvedV635": 135
+  "officialOutgoingCurrentTeamResolvedV635": 135,
+  "ioSudoPlayersAliasFix": "V636",
+  "ioSudoHideOfficialOutOfSerieA": "V636",
+  "ioSudoVirtualPlayerLiveRosters": "V636"
 }
