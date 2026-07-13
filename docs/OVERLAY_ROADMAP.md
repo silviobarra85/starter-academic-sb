@@ -1,5 +1,11 @@
 # Overlay Roadmap
 
+## V623
+- ioSudo: vista GIOCATORI estesa anche ai giocatori presenti solo in trattative/ufficialita.
+- ioSudo: click sulla card giocatore sempre collegato al dettaglio.
+
+# Overlay Roadmap
+
 ## V620 - ioSudo viste rapide globali
 
 - Sostituiti i vecchi filtri sotto la ricerca con viste globali: SQUADRE, SOS, RUMOR, UFFICIALITÀ, AMICHEVOLI.
@@ -30,7 +36,7 @@
 ## V621 - Sudatori/ioSudo mercato fonti extra v4
 Aggiornati dati Sudatori/ioSudo da Excel 13/07/2026, mantenendo live rosters e viste globali ioSudo.
 
-## V622 - Sudatori/ioSudo mercato Udinese amichevoli + vista GIOCATORI
+## V623 - Sudatori/ioSudo mercato Udinese amichevoli + vista GIOCATORI
 
 - Aggiornati Sudatori/ioSudo da Excel 13/07/2026 v5.
 - Aggiunte fonti Udinese/Bwin e amichevoli Udinese da confermare.
