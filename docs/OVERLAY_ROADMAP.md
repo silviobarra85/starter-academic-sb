@@ -1,6 +1,6 @@
 # Overlay Roadmap
 
-## V629 - Sudatori/ioSudo mercato fonti ufficialita v6
+## V630 - Sudatori/ioSudo mercato fonti ufficialita v6
 
 - Aggiornati Per i SUDATORI e ioSudo da Excel 13/07/2026 v6.
 - Aggiunte 5 fonti, processate 20 righe ufficialita e 11 righe trattative.
@@ -44,9 +44,13 @@
 - Le modifiche future ai file `assets/rose` aggiornano anche Per i SUDATORI e ioSudo senza rigenerare il dataset Sudatori.
 
 
-## V629 - Fonti articolo puntuali Sudatori/ioSudo
+## V630 - Fonti articolo puntuali Sudatori/ioSudo
 - Link mercato/SOS/ritiri puntano ad articolo o pagina precisa dal nuovo Excel `fonti_articoli_v7`.
 
 
-## V629 - Fonti articolo v9 Sudatori/ioSudo
-- Aggiornati Per i SUDATORI e ioSudo con il file `fonti_articoli_v9`; link OK resi cliccabili, residui DA_VERIFICARE non cliccabili.
+## V630 - Fonti articolo v9 Sudatori/ioSudo
+- Aggiornati Per i SUDATORI e ioSudo con il file `date_logiche_fonti_v10`; link OK resi cliccabili, residui DA_VERIFICARE non cliccabili.
+
+
+## V630 - Date logiche e fonti puntuali Sudatori/ioSudo
+- Aggiornati Per i SUDATORI e ioSudo con `date_logiche_fonti_v10`; applicate solo le date legate a cambi stato/svolte reali e mantenute non cliccabili le fonti non puntuali.
