@@ -6,7 +6,7 @@
     "loadedAt": "2026-07-05",
     "sourceFile": "Hand modified by me",
     "teams": 10,
-    "players": 239
+    "players": 231
   },
   "rosters": [
     {
@@ -791,18 +791,12 @@
     },
     {
       "name": "Olympic Salerno  FC",
-      "playerCount": 30,
+      "playerCount": 26,
       "players": [
         {
           "role": "P",
           "playerName": "Meret",
           "realTeam": "NAP",
-          "cost": 3
-        },
-        {
-          "role": "P",
-          "playerName": "Audero",
-          "realTeam": "CRE",
           "cost": 3
         },
         {
@@ -855,18 +849,6 @@
         },
         {
           "role": "D",
-          "playerName": "Marcandalli",
-          "realTeam": "GEN",
-          "cost": 1
-        },
-        {
-          "role": "D",
-          "playerName": "Palestra",
-          "realTeam": "CAG",
-          "cost": 3
-        },
-        {
-          "role": "D",
           "playerName": "Joao Mario",
           "realTeam": "BOL",
           "cost": 19
@@ -876,12 +858,6 @@
           "playerName": "Zaniolo",
           "realTeam": "UDI",
           "cost": 0
-        },
-        {
-          "role": "C",
-          "playerName": "Adopo",
-          "realTeam": "CAG",
-          "cost": 1
         },
         {
           "role": "C",
@@ -1165,7 +1141,7 @@
     },
     {
       "name": "Prestige Worldwide",
-      "playerCount": 30,
+      "playerCount": 26,
       "players": [
         {
           "role": "P",
@@ -1199,12 +1175,6 @@
         },
         {
           "role": "D",
-          "playerName": "Spinazzola",
-          "realTeam": "NAP",
-          "cost": 6
-        },
-        {
-          "role": "D",
           "playerName": "Akanji",
           "realTeam": "INT",
           "cost": 15
@@ -1214,12 +1184,6 @@
           "playerName": "Tomori",
           "realTeam": "MIL",
           "cost": 8
-        },
-        {
-          "role": "D",
-          "playerName": "Dumfries",
-          "realTeam": "INT",
-          "cost": 15
         },
         {
           "role": "D",
@@ -1283,12 +1247,6 @@
         },
         {
           "role": "C",
-          "playerName": "Ederson D.S.",
-          "realTeam": "ATA",
-          "cost": 1
-        },
-        {
-          "role": "C",
           "playerName": "Miretti",
           "realTeam": "JUV",
           "cost": 5
@@ -1303,12 +1261,6 @@
           "role": "C",
           "playerName": "Ndour",
           "realTeam": "FIO",
-          "cost": 1
-        },
-        {
-          "role": "A",
-          "playerName": "Bonazzoli",
-          "realTeam": "CRE",
           "cost": 1
         },
         {
