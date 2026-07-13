@@ -13,11 +13,15 @@
   "futureLeagueCandidate": {
     "provisionalName": "FantaMantraManager",
     "nameCanChange": false,
-    "status": "renamed-v475"
+    "status": "renamed-v475",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "whatsapp": {
     "bilanciUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
-    "newsShareBase": "https://silviobarra.com/fantapetillomantramanager/share/news/"
+    "newsShareBase": "https://silviobarra.com/fantapetillomantramanager/share/news/",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "features": {
     "admin": true,
@@ -178,12 +182,12 @@
     "sudatoriMarketSummary": true,
     "sudatoriMarketSummaryVersion": "V631",
     "ioSudoPwa": true,
-    "ioSudoPwaVersion": "V638",
+    "ioSudoPwaVersion": "V639",
     "ioSudoPwaDataSource": "static/fanta-engine/data/sudatori/current/manifest.json",
     "ioSudoTeamCardColors": "V631",
     "ioSudoMarketSourceLinks": "V631",
     "ioSudoPitchSourcesFix": "V631",
-    "ioSudoSharedSudatoriDataVersion": "V638",
+    "ioSudoSharedSudatoriDataVersion": "V639",
     "sudatoriLiveRosters": "V631",
     "sudatoriLiveRostersSource": "assets/rose/manifest.json",
     "ioSudoLiveRosters": "V631",
@@ -193,7 +197,7 @@
     "ioSudoPlayersMarketEntries": "V631",
     "ioSudoPlayersUniqueCards": "V631",
     "ioSudoPlayersDetailLinks": "V631",
-    "ioSudoPlayerCurrentRealTeam": "V638",
+    "ioSudoPlayerCurrentRealTeam": "V639",
     "ioSudoGlobalPlayerCardClick": "V631",
     "ioSudoPlayerDetailFromGlobalView": "V631",
     "ioSudoArticleSourceLinks": "V631",
@@ -202,10 +206,12 @@
     "ioSudoDateLogicalUpdates": "V631",
     "iosudoPlayersRoleListoneFix": true,
     "iosudoOfficialCurrentTeamFix": true,
-    "ioSudoPlayerRoleFromListone": "V638",
-    "ioSudoListoneAbsoluteLoader": "V638",
+    "ioSudoPlayerRoleFromListone": "V639",
+    "ioSudoListoneAbsoluteLoader": "V639",
     "ioSudoListoneAllPlayersV638": true,
-    "ioSudoFantasyRosterAliasesV638": true
+    "ioSudoFantasyRosterAliasesV638": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "guardrails": {
     "sandboxClone": true,
@@ -381,7 +387,7 @@
     "sudatoriStandaloneSectionVersion": "V631",
     "sudatoriSectionVersion": "V631",
     "sudatoriMarketSummaryVersion": "V631",
-    "ioSudoPwaVersion": "V638",
+    "ioSudoPwaVersion": "V639",
     "sudatoriLiveRosters": "V631",
     "ioSudoLiveRosters": "V631",
     "ioSudoGlobalViews": "V631",
@@ -389,9 +395,11 @@
     "ioSudoPlayersMarketEntries": "V631",
     "ioSudoPlayersUniqueCards": "V631",
     "ioSudoPlayersDetailLinks": "V631",
-    "ioSudoPlayerCurrentRealTeam": "V638",
+    "ioSudoPlayerCurrentRealTeam": "V639",
     "ioSudoGlobalPlayerCardClick": "V631",
-    "ioSudoPlayerDetailFromGlobalView": "V631"
+    "ioSudoPlayerDetailFromGlobalView": "V631",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "branding": {
     "siteName": "FantaMantraManager",
@@ -404,69 +412,93 @@
         "title": "FantaMantraManager",
         "description": "Dashboard ufficiale della Lega Fantacalcio FantaMantraManager: rose, listoni, fantamercato, competizioni, sorteggi, regolamento e comunicati.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/",
-        "ogType": "website"
+        "ogType": "website",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       "competition": {
         "title": "Competizione - FantaMantraManager",
         "description": "Calendario completo competizione FantaMantraManager.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/competition.html",
-        "ogType": "website"
+        "ogType": "website",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       "player": {
         "title": "Scheda giocatore - FantaMantraManager",
         "description": "Scheda giocatore Fantacalcio.it integrata nel gestionale FantaMantraManager.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/player.html",
-        "ogType": "website"
+        "ogType": "website",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       "bilanci": {
         "title": "Bilanci FM - FantaMantraManager",
         "description": "Bilanci FM per FantaMantraManager 2026-2027.",
         "canonicalUrl": "https://silviobarra.com/fantapetillomantramanager/bilanci.html",
-        "ogType": "website"
-      }
+        "ogType": "website",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
+      },
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "mobileMore": [
       {
         "id": "news",
         "href": "#news",
         "label": "News",
-        "icon": "news"
+        "icon": "news",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "clubs",
         "href": "#clubs",
         "label": "Rose sandbox",
-        "icon": "teams"
+        "icon": "teams",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "bilanci",
         "href": "#bilanci",
         "label": "Bilanci sandbox",
-        "icon": "fm"
+        "icon": "fm",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "listone",
         "href": "#listone",
         "label": "Listone",
-        "icon": "list"
+        "icon": "list",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "sorteggio",
         "href": "#sorteggio",
         "label": "Sorteggio giornate",
-        "icon": "🎲"
+        "icon": "🎲",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "regolamento",
         "href": "#regolamento",
         "label": "Regolamento",
-        "icon": "rules"
+        "icon": "rules",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       }
     ],
     "footerLastUpdated": "V631",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
     "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
-    "footerVersion": 573
+    "footerVersion": 573,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dataPaths": {
     "publicConfig": "./assets/public/config.json",
@@ -487,7 +519,9 @@
     "realDataTemplateCsv": "./assets/setup/fantapetillo-real-teams-template-v458.csv",
     "realDataTemplateJson": "./assets/setup/fantapetillo-real-teams-template-v458.json",
     "firestoreSeedPreviewInput": "./assets/setup/fantapetillo-real-data-seed-v459.json",
-    "brandLogo": "./assets/logos/fantamantramanager-logo-v475.png"
+    "brandLogo": "./assets/logos/fantamantramanager-logo-v475.png",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "sandbox": {
     "enabled": true,
@@ -509,7 +543,9 @@
       "Firebase ZonaOrientale non viene importato ne usato dal clone."
     ],
     "auditedInVersion": "473",
-    "firebaseProjectStatus": "connected-admin-bootstrap-v450"
+    "firebaseProjectStatus": "connected-admin-bootstrap-v450",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "firebase": {
     "version": "452",
@@ -525,7 +561,9 @@
     "rulesVersion": "450",
     "adminBootstrapEnabled": true,
     "teamAreaStillGuarded": false,
-    "adminOnboardingEnabled": true
+    "adminOnboardingEnabled": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "setup": {
     "version": "458",
@@ -541,7 +579,9 @@
     ],
     "templates": {
       "csv": "assets/setup/fantapetillo-real-teams-template-v458.csv",
-      "json": "assets/setup/fantapetillo-real-teams-template-v458.json"
+      "json": "assets/setup/fantapetillo-real-teams-template-v458.json",
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "validatorVersion": "459",
     "realDataValidator": {
@@ -549,8 +589,12 @@
       "writesToFirebase": false,
       "downloads": {
         "seedJson": "fantapetillo-real-data-seed-v459.json",
-        "normalizedCsv": "fantapetillo-real-data-normalized-v459.csv"
-      }
+        "normalizedCsv": "fantapetillo-real-data-normalized-v459.csv",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
+      },
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "firestoreSeedPreviewVersion": "460",
     "firestoreSeedPreview": {
@@ -559,8 +603,12 @@
       "targetProjectId": "fantapetillomantramanager",
       "downloads": {
         "seedPreviewJson": "fantapetillo-firestore-seed-preview-v460.json",
-        "consoleChecklist": "fantapetillo-firestore-console-checklist-v460.md"
-      }
+        "consoleChecklist": "fantapetillo-firestore-console-checklist-v460.md",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
+      },
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "firestoreImportVersion": "461",
     "firestoreImport": {
@@ -571,7 +619,9 @@
       "requiresManualConfirmations": true,
       "targetProjectId": "fantapetillomantramanager",
       "input": "fantapetillo-firestore-seed-preview-v460.json",
-      "report": "fantapetillo-firestore-import-report-v461.json"
+      "report": "fantapetillo-firestore-import-report-v461.json",
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "realDataWorkflowVersion": "462",
     "publicSnapshotBuilderVersion": "463",
@@ -585,7 +635,9 @@
         "assets/snapshots/seasons/2026-2027.json",
         "assets/snapshots/honor.json",
         "assets/rose/2026-2027-real-data-empty-rosters.json"
-      ]
+      ],
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "teamAreaReadinessVersion": "464",
     "teamAreaReadinessCardId": "fantaPetilloTeamAreaReadinessV464",
@@ -593,7 +645,9 @@
     "launchReadinessCardId": "fantaPetilloLaunchReadinessV465",
     "manualAdminFlow": true,
     "bulkImportToolsLoaded": false,
-    "placeholderDataEnabled": false
+    "placeholderDataEnabled": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "regolamento": {
     "version": "474",
@@ -602,7 +656,9 @@
     "pdf": "./assets/regolamento/regolamento-fantapetillo-mantra-manager-2026-2027-v474.pdf",
     "structuredSection": "assets/js/sections/regolamento-section-v402.js",
     "sourceDocument": "FANTACALCIO_MANTRA_2026_2027-2.pdf",
-    "updatedAt": "2026-06-19"
+    "updatedAt": "2026-06-19",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "status": {
     "status": "launch-readiness-v465",
@@ -623,17 +679,23 @@
       "I JSON generati vanno revisionati e applicati manualmente alla repo.",
       "V464 aggiunge una card Admin che verifica se dati reali, teamUsers e snapshot sono pronti prima dello sblocco controllato dell Area Squadra.",
       "V465 aggiunge una card Admin informativa per riepilogare cosa manca prima della pubblicazione: dati reali, snapshot e share/Netlify; Area Squadra e visibile da V476."
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "notes": [
     "V577 corregge la visualizzazione mobile delle tabelle giocatori: Area Squadra marcata a runtime e colonna Giocatore compatta per Rose/Area Squadra.",
     "V580 dimezza ulteriormente la colonna Giocatore da mobile mantenendo gli override mobile dedicati per Area Squadra, Rose e Listone."
   ],
   "audit": {
-    "standardAdminSetupVersion": "467"
+    "standardAdminSetupVersion": "467",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "multiLeague": {
-    "status": "standard-admin-v467"
+    "status": "standard-admin-v467",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "version": 548,
   "runtime": {
@@ -667,13 +729,17 @@
     "nativeRuntimeRestoreV558": true,
     "publicDataAutoloadDisabledV558": true,
     "navigationDataRefreshDisabledV558": true,
-    "dashboardMigrationWrappersDisabledV558": true
+    "dashboardMigrationWrappersDisabledV558": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "metadata": {
     "changeLog": [
       "V481 estrae presentazione runtime comune in fanta-engine: meta, branding, footer e mobile More con fallback locale preservato."
     ],
-    "performanceConsolidationVersion": "V546"
+    "performanceConsolidationVersion": "V546",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "releaseNotes": [
     "V613 rende separate e cliccabili singolarmente tutte le fonti nelle card mercato di ioSudo.",
@@ -700,10 +766,14 @@
     "V590 centralizza nel fanta-engine il resolver della colonna Rosa del Listone."
   ],
   "ui": {
-    "footerVersion": 488
+    "footerVersion": 488,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "roadmap": {
-    "lastEngineStep": "V504 dashboard cards safe-enforce opzionale"
+    "lastEngineStep": "V504 dashboard cards safe-enforce opzionale",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "featureCardRegistry": {
     "version": "V497",
@@ -720,7 +790,9 @@
         ],
         "order": 110,
         "safeEnforce": true,
-        "enforceVisibility": true
+        "enforceVisibility": true,
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "release-players",
@@ -734,7 +806,9 @@
         ],
         "order": 120,
         "safeEnforce": true,
-        "enforceVisibility": true
+        "enforceVisibility": true,
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "trade-announcement",
@@ -748,7 +822,9 @@
         ],
         "order": 130,
         "safeEnforce": true,
-        "enforceVisibility": true
+        "enforceVisibility": true,
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "rule-proposals",
@@ -762,7 +838,9 @@
         ],
         "order": 140,
         "safeEnforce": true,
-        "enforceVisibility": true
+        "enforceVisibility": true,
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       },
       {
         "id": "bilanci",
@@ -773,10 +851,14 @@
         "leagues": [
           "fantapetillomantramanager"
         ],
-        "order": 60
+        "order": 60,
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
       }
     ],
-    "notes": "Registry comune per governare card/funzionalita'. In V497 espone metadata e contesto, il rendering resta preservato nei moduli esistenti."
+    "notes": "Registry comune per governare card/funzionalita'. In V497 espone metadata e contesto, il rendering resta preservato nei moduli esistenti.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "emailJsAdapter": {
     "version": "V498",
@@ -785,7 +867,9 @@
     "defaultTemplateId": "template_e1o7z5e",
     "tradeAnnouncementTemplateId": "template_svkkhlr",
     "defaultRecipient": "barra.silvio@gmail.com",
-    "notes": "Adapter comune in fanta-engine; template e destinatario restano specifici FantaMantraManager."
+    "notes": "Adapter comune in fanta-engine; template e destinatario restano specifici FantaMantraManager.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "firebaseAdapter": {
     "version": "V499",
@@ -796,7 +880,9 @@
     "projectId": "fantapetillomantramanager",
     "authDomain": "fantapetillomantramanager.firebaseapp.com",
     "seasonId": "2026-2027",
-    "notes": "Adapter comune in fanta-engine; path Firestore e rules restano invariati."
+    "notes": "Adapter comune in fanta-engine; path Firestore e rules restano invariati.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardCardsEngine": {
     "version": "V504",
@@ -834,12 +920,16 @@
         "#ruleProposalsPresidentSectionV479",
         "#ruleProposalsAdminSectionV479",
         "[data-feature-card-id=\"rule-proposals\"]"
-      ]
+      ],
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "previousVersion": "V500",
     "safeEnforce": true,
     "enforceVisibility": true,
-    "legacyAlias": "FantaEngineDashboardCardsRuntimeV500"
+    "legacyAlias": "FantaEngineDashboardCardsRuntimeV500",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "toolEngine": {
     "version": "V506",
@@ -848,11 +938,17 @@
       "matchday-draw": {
         "engine": "../fanta-engine/js/tools/matchday-draw-engine-v501.js",
         "localWrapper": "assets/js/sections/matchday-draw-tool-v473.js",
-        "legacyUi": "V473"
-      }
+        "legacyUi": "V473",
+        "ioSudoPlayerSourceLabelsV639": true,
+        "ioSudoListoneAllPlayersV639": true
+      },
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     },
     "matchdayDrawEngine": "V506",
-    "validators": "V506"
+    "validators": "V506",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "leagueTemplateEngine": {
     "version": "V507",
@@ -872,7 +968,9 @@
       "Il template serve a generare nuove leghe, non modifica il runtime delle leghe esistenti.",
       "Ogni nuova lega richiede revisione manuale di config, Firebase, EmailJS, dati, Netlify e docs.",
       "V507 aggiunge validatore e checklist pre-go-live senza creare nuove leghe automaticamente."
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardRendererHelpers": {
     "version": "V505",
@@ -881,7 +979,9 @@
       "renderAdminPanel"
     ],
     "mode": "gradual-renderer-extraction",
-    "notes": "V505 sposta la shell comune dei pannelli Admin collassabili nel motore comune. Le logiche dei form, dati, handler e ruoli restano negli app.js locali."
+    "notes": "V505 sposta la shell comune dei pannelli Admin collassabili nel motore comune. Le logiche dei form, dati, handler e ruoli restano negli app.js locali.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "formValidators": {
     "version": "V506",
@@ -889,7 +989,9 @@
     "consumers": [
       "matchdayDrawTool"
     ],
-    "mode": "shared-pure-validators-with-local-fallbacks"
+    "mode": "shared-pure-validators-with-local-fallbacks",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "centralizationStatusV521": {
     "version": "V521",
@@ -897,7 +999,9 @@
     "runtimeBaseline": "V520",
     "listoniCalciomercato": "centralized-in-fanta-engine-v485-with-local-fallbacks",
     "singleUploadGoal": true,
-    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard"
+    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "overlayMetadata": {
     "sharedAssetsUploadOnceTarget": "listoni-calciomercato-current-v522",
@@ -906,7 +1010,9 @@
     "localFallbacksPreservedV522": true,
     "sharedAssetsFallbackCleanupVersion": "V546",
     "lastSudatoriOverlay": "V605",
-    "lastSudatoriOverlayNote": "Aggiornamento Per i SUDATORI con raduni/amichevoli 11/07 e rumors Transfermarkt."
+    "lastSudatoriOverlayNote": "Aggiornamento Per i SUDATORI con raduni/amichevoli 11/07 e rumors Transfermarkt.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "sharedAssetsSingleUploadV522": {
     "version": "V522",
@@ -915,7 +1021,9 @@
     "calciomercatoLinks": "../fanta-engine/data/shared-assets/current/assets/calciomercato/links.json",
     "localFallbacksPreserved": false,
     "uploadLocalCopiesInOrdinaryWorkflow": false,
-    "notes": "Listoni e Calciomercato sono comuni: caricare una sola volta in static/fanta-engine/data/shared-assets/current/assets/. Le copie locali sono state rimosse dal workflow V546."
+    "notes": "Listoni e Calciomercato sono comuni: caricare una sola volta in static/fanta-engine/data/shared-assets/current/assets/. Le copie locali sono state rimosse dal workflow V546.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "history": [
     "V613 rende separate e cliccabili singolarmente tutte le fonti nelle card mercato di ioSudo.",
@@ -926,7 +1034,9 @@
   "runtimeRecoveryV520": {
     "wholeSiteOverlayApplicationVersion": "V526",
     "publicDataAutoloadVersion": "V526",
-    "navigationStabilityVersion": "V523"
+    "navigationStabilityVersion": "V523",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "navigationStabilityV523": {
     "version": "V523",
@@ -939,7 +1049,9 @@
     "sharedAssetsCurrentPreserved": true,
     "localFallbacksPreserved": true,
     "firebaseWrites": false,
-    "emailjsChanged": false
+    "emailjsChanged": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "leagueConfiguratorV524": {
     "version": "V524",
@@ -952,7 +1064,9 @@
     "localFallbacksPreserved": true,
     "firebaseWrites": false,
     "emailjsChanged": false,
-    "netlifyAutoEdit": false
+    "netlifyAutoEdit": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "fastReloadBootstrapV525": {
     "version": "V525",
@@ -963,14 +1077,18 @@
     "preservesLocalFallbacks": true,
     "firebaseWrites": false,
     "emailjsChanged": false,
-    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard"
+    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "seasons": [
     {
       "id": "2026-2027",
       "seasonId": "2026-2027",
       "name": "Stagione 2026-2027",
-      "current": true
+      "current": true,
+      "ioSudoPlayerSourceLabelsV639": true,
+      "ioSudoListoneAllPlayersV639": true
     }
   ],
   "multiSeasonDataAdapterV526": {
@@ -995,7 +1113,9 @@
     "physicalDataMigration": false,
     "firebaseWrites": false,
     "emailjsChanged": false,
-    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard"
+    "nextFunctionalOverlay": "V527 migrazione graduale renderer dashboard",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardRendererMigrationV527": {
     "version": "V527",
@@ -1007,7 +1127,9 @@
     "preservesSharedAssetsCurrent": true,
     "preservesLocalFallbacks": true,
     "firebaseWrites": false,
-    "emailjsChanged": false
+    "emailjsChanged": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardEnforceV528": {
     "version": "V528",
@@ -1020,7 +1142,9 @@
     "preservesSharedAssetsCurrent": true,
     "preservesLocalFallbacks": true,
     "firebaseWrites": false,
-    "emailjsChanged": false
+    "emailjsChanged": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardRendererExtractionV529": {
     "version": "V529",
@@ -1034,7 +1158,9 @@
     "preservesSharedAssetsCurrent": true,
     "preservesLocalFallbacks": true,
     "firebaseWrites": false,
-    "emailjsChanged": false
+    "emailjsChanged": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardRoleSmokeV530": {
     "version": "V530",
@@ -1047,7 +1173,9 @@
     "protectsAdminFlows": true,
     "protectsPresidentFlows": true,
     "preservesSharedAssetsCurrent": true,
-    "preservesLocalFallbacks": true
+    "preservesLocalFallbacks": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardSummaryExtractionV531": {
     "version": "V531",
@@ -1061,7 +1189,9 @@
     "protectsAdminFlows": true,
     "protectsPresidentFlows": true,
     "preservesSharedAssetsCurrent": true,
-    "preservesLocalFallbacks": true
+    "preservesLocalFallbacks": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "quickNavigationSmokeV532": {
     "version": "V532",
@@ -1081,7 +1211,9 @@
     "protectsAdminFlows": true,
     "protectsPresidentFlows": true,
     "preservesSharedAssetsCurrent": true,
-    "preservesLocalFallbacks": true
+    "preservesLocalFallbacks": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "dashboardSectionStatusExtractionV533": {
     "version": "V533",
@@ -1105,7 +1237,9 @@
     "protectsAdminFlows": true,
     "protectsPresidentFlows": true,
     "preservesSharedAssetsCurrent": true,
-    "preservesLocalFallbacks": true
+    "preservesLocalFallbacks": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "navigationActiveSingletonV534": {
     "version": "V534",
@@ -1118,7 +1252,9 @@
     "rendersData": false,
     "replacesNavigation": false,
     "protectsAdminFlows": true,
-    "protectsPresidentFlows": true
+    "protectsPresidentFlows": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "navigationFluidityV535": {
     "version": "V535",
@@ -1136,7 +1272,9 @@
     "firebaseWrites": false,
     "emailjsChanged": false,
     "protectsAdminFlows": true,
-    "protectsPresidentFlows": true
+    "protectsPresidentFlows": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "navigationPerformanceGuardV536": {
     "version": "V536",
@@ -1155,7 +1293,9 @@
     "firebaseWrites": false,
     "emailjsChanged": false,
     "protectsAdminFlows": true,
-    "protectsPresidentFlows": true
+    "protectsPresidentFlows": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "multiSeasonPathResolverV537": {
     "version": "V537",
@@ -1180,7 +1320,9 @@
     "firebaseWrites": false,
     "emailjsChanged": false,
     "adminChanged": false,
-    "presidentChanged": false
+    "presidentChanged": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "sharedAssetsFallbackCleanupReadinessV538": {
     "version": "V538",
@@ -1192,7 +1334,9 @@
     "listoniSingleUpload": true,
     "calciomercatoSingleUpload": true,
     "localFallbacksPreserved": false,
-    "nextStep": "V546 cleanup applicato: fallback locali duplicati rimossi dal workflow ordinario."
+    "nextStep": "V546 cleanup applicato: fallback locali duplicati rimossi dal workflow ordinario.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "mergeReadinessReleaseCandidateV539": {
     "version": "V539",
@@ -1210,7 +1354,9 @@
     "localFallbacksPreserved": true,
     "navigationPerformanceGuardPreserved": true,
     "multiSeasonPathResolverPreserved": true,
-    "nextStep": "manual validation; optional fallback cleanup only with explicit approval"
+    "nextStep": "manual validation; optional fallback cleanup only with explicit approval",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "rulesTableIsolationV540": {
     "version": "V540",
@@ -1218,7 +1364,9 @@
     "preventsRoleRowColorsInRules": true,
     "listoneAndRostersRoleColorsPreserved": true,
     "implementedInFantaEngineCss": true,
-    "localRuntimeGuard": true
+    "localRuntimeGuard": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "performanceConsolidationV542": {
     "version": "V542",
@@ -1236,7 +1384,9 @@
     "emailjsChanged": false,
     "adminChanged": false,
     "presidentChanged": false,
-    "nextStep": "V542 safe repository cleanup, if approved"
+    "nextStep": "V542 safe repository cleanup, if approved",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "sharedAssetsFallbackCleanupV546": {
     "version": "V546",
@@ -1252,7 +1402,9 @@
     "emailjsChanged": false,
     "adminChanged": false,
     "presidentChanged": false,
-    "nextStep": "V546 post-cleanup release validation oppure nuova roadmap."
+    "nextStep": "V546 post-cleanup release validation oppure nuova roadmap.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "performanceConsolidationV546": {
     "version": "V546",
@@ -1262,14 +1414,18 @@
     "removesLocalSharedAssetFallbacks": true,
     "sharedAssetsCurrentPreserved": true,
     "firebaseChanged": false,
-    "emailjsChanged": false
+    "emailjsChanged": false,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "calciomercatoCentralFeedFixV546": {
     "version": "V546",
     "primaryConfigPath": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/links.json",
     "primaryArchivePath": "static/fanta-engine/data/shared-assets/current/assets/calciomercato/archive/manifest.json",
     "localFallbacksRequired": false,
-    "netlifyFunctionUsesCentralConfig": true
+    "netlifyFunctionUsesCentralConfig": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "calciomercatoArchiveVisibilityV547": {
     "version": "V547",
@@ -1280,7 +1436,9 @@
     "docs": [
       "docs/CALCIOMERCATO_ARCHIVE_VISIBILITY_V547.md",
       "docs/AI_ASSISTANT_HANDOFF_V547.md"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "calciomercatoLiveStaticSplitV549": {
     "version": "V549",
@@ -1291,7 +1449,9 @@
     "docs": [
       "docs/CALCIOMERCATO_LIVE_STATIC_SPLIT_V549.md",
       "docs/AI_ASSISTANT_HANDOFF_V549.md"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "calciomercatoLiveFeedRecoveryV548": {
     "version": "V548",
@@ -1300,7 +1460,9 @@
     "docs": [
       "docs/CALCIOMERCATO_LIVE_FEED_RECOVERY_V548.md",
       "docs/AI_ASSISTANT_HANDOFF_V548.md"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "rosterListoneTableUnificationV550": {
     "version": "V550",
@@ -1309,7 +1471,9 @@
     "firebaseWrites": false,
     "emailjsChanged": false,
     "docsUpdated": true,
-    "handoffUpdated": true
+    "handoffUpdated": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "performanceOptimizationV552": {
     "version": "V552",
@@ -1323,7 +1487,9 @@
     "docs": [
       "docs/PERFORMANCE_OPTIMIZATION_V552.md",
       "docs/AI_ASSISTANT_HANDOFF_V552.md"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "productionDebugLoadingV554": {
     "version": "V554",
@@ -1343,7 +1509,9 @@
     "productionModulePreloadsRemoved": true,
     "firebaseWrites": false,
     "emailjsChanged": false,
-    "runtimeBehaviorChanges": "only diagnostic module loading policy"
+    "runtimeBehaviorChanges": "only diagnostic module loading policy",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "calciomercatoDisabledV561": {
     "version": "V561",
@@ -1351,7 +1519,9 @@
     "automaticExternalFetch": false,
     "staticArchiveFetch": false,
     "netlifyFunctionDisabled": true,
-    "reason": "Rimozione sezione Calciomercato e blocco recupero articoli per alleggerire apertura sito."
+    "reason": "Rimozione sezione Calciomercato e blocco recupero articoli per alleggerire apertura sito.",
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "rosterStickyFirstColumnV567": {
     "version": "V567",
@@ -1368,7 +1538,9 @@
       "Firebase",
       "EmailJS",
       "Calciomercato disabled V561"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "changelog": [
     "V617 aggiorna Per i SUDATORI e ioSudo con mercato fonti extra v2.",
@@ -1400,7 +1572,9 @@
       "Admin",
       "Presidente",
       "Calciomercato disabled V561"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "teamareaRosterFirstColumnCompactV569": {
     "version": "V569",
@@ -1421,7 +1595,9 @@
       "Admin",
       "Presidente",
       "Calciomercato disabled V561"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "playerTablesMobileV573": {
     "version": "V573",
@@ -1442,7 +1618,9 @@
       "cost and Qt.A columns unified to 3.75rem",
       "headers and cells left-aligned",
       "separate CSS scopes for Area Squadra, Rose and Listone"
-    ]
+    ],
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
   },
   "featureFlags": {
     "admin": true,
@@ -1603,7 +1781,7 @@
     "sudatoriMarketSummary": true,
     "sudatoriMarketSummaryVersion": "V631",
     "ioSudoPwa": true,
-    "ioSudoPwaVersion": "V638",
+    "ioSudoPwaVersion": "V639",
     "ioSudoPwaDataSource": "static/fanta-engine/data/sudatori/current/manifest.json",
     "ioSudoTeamCardColors": "V631",
     "ioSudoMarketSourceLinks": "V631",
@@ -1615,14 +1793,18 @@
     "ioSudoPlayersMarketEntries": "V631",
     "ioSudoPlayersUniqueCards": "V631",
     "ioSudoPlayersDetailLinks": "V631",
-    "ioSudoPlayerCurrentRealTeam": "V638",
+    "ioSudoPlayerCurrentRealTeam": "V639",
     "ioSudoGlobalPlayerCardClick": "V631",
     "ioSudoPlayerDetailFromGlobalView": "V631",
-    "ioSudoSharedSudatoriDataVersion": "V638",
+    "ioSudoSharedSudatoriDataVersion": "V639",
     "ioSudoTeamCardIndividualThemes": "V631",
     "sudatoriGlobalUpdateV637": true,
     "ioSudoAliasRulesV638": true,
     "ioSudoListoneAllPlayersV638": true,
-    "ioSudoFantasyRosterAliasesV638": true
-  }
+    "ioSudoFantasyRosterAliasesV638": true,
+    "ioSudoPlayerSourceLabelsV639": true,
+    "ioSudoListoneAllPlayersV639": true
+  },
+  "ioSudoPlayerSourceLabelsV639": true,
+  "ioSudoListoneAllPlayersV639": true
 }
