@@ -1,7 +1,13 @@
 # AI Assistant Handoff CURRENT
 
-Stato corrente: **V625**.
+Stato corrente: **V626**.
 
-La V625 corregge la vista **GIOCATORI** di ioSudo: le card dei giocatori sono ora cliccabili e aprono sempre il dettaglio con fonti/link, trattative, ufficialita e SOS quando disponibili.
+La V626 aggiorna **Per i SUDATORI** e **ioSudo** con l'Excel `fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_mercato_fonti_ufficialita_v6(1).xlsx`.
 
-Vedere: docs/AI_ASSISTANT_HANDOFF_V625.md
+Mantiene le correzioni precedenti:
+
+- rose fantasy lette live dagli stessi file della sezione Rose;
+- viste rapide ioSudo: SQUADRE, GIOCATORI, SOS, RUMOR, UFFICIALITA, AMICHEVOLI;
+- card GIOCATORI cliccabili con dettaglio giocatore e fonti/link.
+
+Vedere: docs/AI_ASSISTANT_HANDOFF_V626.md

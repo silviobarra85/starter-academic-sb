@@ -1,5 +1,12 @@
 # Overlay Roadmap
 
+## V626 - Sudatori/ioSudo mercato fonti ufficialita v6
+
+- Aggiornati Per i SUDATORI e ioSudo da Excel 13/07/2026 v6.
+- Aggiunte 5 fonti, processate 20 righe ufficialita e 11 righe trattative.
+- Deduplica confermata: ufficialita escluse dalle trattative, card mercato aggregate per giocatore.
+- Mantenuti live rosters V618 e click/dettaglio GIOCATORI V625.
+
 ## V625 - ioSudo click dettaglio GIOCATORI
 
 - La vista GIOCATORI esegue il binding dei click dopo il rendering globale.
