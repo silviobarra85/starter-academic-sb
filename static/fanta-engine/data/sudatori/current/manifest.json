@@ -1,5 +1,5 @@
 {
-  "version": "V637",
+  "version": "V638",
   "current": "sudatori-data.json",
   "updatedAt": "2026-07-13",
   "updateSlot": "aggiornamento-globale-v14",
@@ -116,5 +116,7 @@
   "injuryRowsUpdatedV637": 1,
   "extraControlFriendliesSourcesAddedV637": 1,
   "ioSudoAliasRulesV637": "Ndicka=N'Dicka; Vasquez distinct from D. Vasquez; I. Sulemana distinct from K. Sulemana",
-  "missingPreciseArticlesV637": 0
+  "missingPreciseArticlesV637": 0,
+  "ioSudoListoneAllPlayers": "V638",
+  "ioSudoFantasyRosterAliases": "V638"
 }

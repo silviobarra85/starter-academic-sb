@@ -21,11 +21,11 @@
     "officialOutgoing": 136,
     "officialMoves": 233,
     "filteredOfficialTalks": 2,
-    "version": "V637",
+    "version": "V638",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-    "note": "V636: corregge alias/deduplica GIOCATORI in ioSudo, nasconde ufficialmente fuori Serie A e applica rose live ai giocatori virtuali.",
+    "note": "V638: ioSudo GIOCATORI include tutti i giocatori del listone, applica alias mirati e aggancia le rose fantasy live anche ai listone-only.",
     "officialRows": 287,
     "sources": 164,
     "liveRosterRuntime": true,
@@ -118,7 +118,9 @@
     "marketRowsRoleFixedV636": 105,
     "roleBackfilledFromListoneV636": 91,
     "roleBackfilledFromNestedSourcesV636": 14,
-    "officialOutgoingCurrentTeamResolvedV636": 135
+    "officialOutgoingCurrentTeamResolvedV636": 135,
+    "ioSudoListoneAllPlayers": "V638",
+    "ioSudoFantasyRosterAliases": "V638"
   },
   "teams": [
     {

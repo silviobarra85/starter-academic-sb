@@ -1,4 +1,4 @@
-# AI Assistant Handoff corrente - V638
+# AI Assistant Handoff V638
 
 Overlay V638: corregge la vista **GIOCATORI** di ioSudo. La lista ora include tutti i giocatori del listone piu recente, anche se non agganciati al dataset Sudatori o se risultano usciti ufficialmente dalla Serie A.
 
