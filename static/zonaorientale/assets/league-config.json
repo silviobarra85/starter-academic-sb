@@ -174,12 +174,12 @@
     "sudatoriMarketSummary": true,
     "sudatoriMarketSummaryVersion": "V631",
     "ioSudoPwa": true,
-    "ioSudoPwaVersion": "V636",
+    "ioSudoPwaVersion": "V637",
     "ioSudoPwaDataSource": "static/fanta-engine/data/sudatori/current/manifest.json",
     "ioSudoTeamCardColors": "V631",
     "ioSudoMarketSourceLinks": "V631",
     "ioSudoPitchSourcesFix": "V631",
-    "ioSudoSharedSudatoriDataVersion": "V636",
+    "ioSudoSharedSudatoriDataVersion": "V637",
     "sudatoriLiveRosters": "V631",
     "sudatoriLiveRostersSource": "assets/rose/manifest.json",
     "ioSudoLiveRosters": "V631",
@@ -189,7 +189,7 @@
     "ioSudoPlayersMarketEntries": "V631",
     "ioSudoPlayersUniqueCards": "V631",
     "ioSudoPlayersDetailLinks": "V631",
-    "ioSudoPlayerCurrentRealTeam": "V636",
+    "ioSudoPlayerCurrentRealTeam": "V637",
     "ioSudoGlobalPlayerCardClick": "V631",
     "ioSudoPlayerDetailFromGlobalView": "V631",
     "ioSudoArticleSourceLinks": "V631",
@@ -198,8 +198,8 @@
     "ioSudoDateLogicalUpdates": "V631",
     "iosudoPlayersRoleListoneFix": true,
     "iosudoOfficialCurrentTeamFix": true,
-    "ioSudoPlayerRoleFromListone": "V636",
-    "ioSudoListoneAbsoluteLoader": "V636"
+    "ioSudoPlayerRoleFromListone": "V637",
+    "ioSudoListoneAbsoluteLoader": "V637"
   },
   "guardrails": {
     "configOnly": true,
@@ -1501,6 +1501,8 @@
     "ioSudoGlobalPlayerCardClick": "V631",
     "ioSudoPlayerDetailFromGlobalView": "V631",
     "ioSudoSharedSudatoriDataVersion": "V631",
-    "ioSudoTeamCardIndividualThemes": "V631"
+    "ioSudoTeamCardIndividualThemes": "V631",
+    "ioSudoAliasRulesV637": true,
+    "sudatoriGlobalUpdateV637": true
   }
 }

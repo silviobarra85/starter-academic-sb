@@ -4,30 +4,30 @@
     "label": "Per i SUDATORI V636",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-13",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_tmw_link_puntuali_v12(1).xlsx",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_aggiornamento_globale_v14(1).xlsx",
     "listoneFile": "2026-07-04.json",
     "listoneId": "2026-07-04",
     "teams": 20,
     "players": 714,
     "friendlies": 94,
     "marketNotes": 819,
-    "teamTransferTalks": 182,
+    "teamTransferTalks": 186,
     "injuries": 8,
     "formationTeams": 20,
     "formationMissingPlayers": 0,
     "transfermarktRumors": 42,
     "transfermarktRumorPages": 20,
-    "officialIncoming": 97,
+    "officialIncoming": 98,
     "officialOutgoing": 136,
     "officialMoves": 233,
     "filteredOfficialTalks": 2,
-    "version": "V636",
+    "version": "V637",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
     "note": "V636: corregge alias/deduplica GIOCATORI in ioSudo, nasconde ufficialmente fuori Serie A e applica rose live ai giocatori virtuali.",
     "officialRows": 287,
-    "sources": 152,
+    "sources": 164,
     "liveRosterRuntime": true,
     "liveRosterRuntimeSource": "assets/rose/manifest.json",
     "extraSourcesAddedV619": 7,
@@ -172,7 +172,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 8,
+      "transferTalksCount": 9,
       "transferTalksPreview": [
         "Orsolini",
         "Ognjen Ugresic",
@@ -187,7 +187,7 @@
       "officialIncomingCount": 3,
       "officialOutgoingCount": 9,
       "talksIncomingCount": 7,
-      "talksOutgoingCount": 1
+      "talksOutgoingCount": 2
     },
     {
       "id": "cagliari",
@@ -207,9 +207,9 @@
       "updatedAt": "2026-07-12",
       "transferTalksCount": 9,
       "transferTalksPreview": [
-        "Matteo Prati",
-        "Davide Veroli",
-        "Harry Winks"
+        "Harry Winks",
+        "Fazzini",
+        "Vojvoda"
       ],
       "formationModule": "4-4-2",
       "formationModuleSource": "3-5-2 / 4-4-2",
@@ -241,8 +241,8 @@
       "transferTalksCount": 12,
       "transferTalksPreview": [
         "Mattia Liberali",
-        "Diao",
-        "Davinson Sanchez"
+        "Davinson Sanchez",
+        "Solet"
       ],
       "formationModule": "4-2-3-1",
       "formationModuleSource": "4-2-3-1 / 4-3-3",
@@ -271,11 +271,11 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 17,
+      "transferTalksCount": 18,
       "transferTalksPreview": [
         "Oulai",
-        "Gosens/Nzola e altri esclusi",
-        "Caprile"
+        "Caprile",
+        "Alex Jimenez"
       ],
       "formationModule": "4-3-2-1",
       "formationModuleSource": "4-3-3 / 4-3-2-1",
@@ -283,10 +283,10 @@
       "formationModuleAdjusted": true,
       "injuriesCount": 0,
       "injuriesPreview": [],
-      "officialIncomingCount": 7,
+      "officialIncomingCount": 8,
       "officialOutgoingCount": 8,
       "talksIncomingCount": 12,
-      "talksOutgoingCount": 5
+      "talksOutgoingCount": 6
     },
     {
       "id": "frosinone",
@@ -339,7 +339,7 @@
       "transferTalksPreview": [
         "Hamed Traore",
         "Stroud",
-        "Alessandro Salvano"
+        "Alan Virginius"
       ],
       "formationModule": "3-5-2",
       "formationModuleSource": "3-5-2 / 3-4-2-1",
@@ -372,7 +372,7 @@
       "transferTalksPreview": [
         "Chalobah / Stones",
         "Anan Khalaili",
-        "Yanis Massolin"
+        "Rafik Belghali"
       ],
       "formationModule": "3-5-2",
       "formationModuleSource": "3-5-2",
@@ -405,9 +405,9 @@
       "updatedAt": "2026-07-12",
       "transferTalksCount": 14,
       "transferTalksPreview": [
-        "Muharemovic",
         "Mateo Pellegrino",
-        "Kolo Muani"
+        "Kolo Muani",
+        "Fikayo Tomori"
       ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 4-3-3",
@@ -473,9 +473,9 @@
       "updatedAt": "2026-07-12",
       "transferTalksCount": 3,
       "transferTalksPreview": [
-        "Antonino Gallo",
         "Walid El Bouradi",
-        "Nessuna trattativa riportata"
+        "Nessuna trattativa riportata",
+        "Antonino Gallo"
       ],
       "formationModule": "4-3-3",
       "formationModuleSource": "4-3-3",
@@ -504,11 +504,11 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 15,
+      "transferTalksCount": 16,
       "transferTalksPreview": [
-        "Warren Bondo",
-        "Rafael Leao",
-        "Adrien Rabiot"
+        "Adrien Rabiot",
+        "Noussair Mazraoui",
+        "Lorenzo Calvani (Lazio)"
       ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 3-4-3",
@@ -522,7 +522,7 @@
       "officialIncomingCount": 4,
       "officialOutgoingCount": 3,
       "talksIncomingCount": 8,
-      "talksOutgoingCount": 7
+      "talksOutgoingCount": 8
     },
     {
       "id": "monza",
@@ -542,9 +542,9 @@
       "updatedAt": "2026-07-12",
       "transferTalksCount": 8,
       "transferTalksPreview": [
-        "Paulo Azzi",
         "Okoli",
-        "Moreno"
+        "Moreno",
+        "Majer"
       ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 3-4-3",
@@ -577,7 +577,7 @@
       "transferTalksPreview": [
         "Vergara",
         "Exequiel Zeballos",
-        "Rosa da sfoltire"
+        "Vicario"
       ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 4-3-3",
@@ -608,9 +608,9 @@
       "updatedAt": "2026-07-12",
       "transferTalksCount": 3,
       "transferTalksPreview": [
+        "Fazzini",
         "Suzuki",
-        "Bernabé",
-        "Fazzini"
+        "Bernabé"
       ],
       "formationModule": "4-3-3",
       "formationModuleSource": "4-3-3 / 4-2-3-1",
@@ -641,9 +641,9 @@
       "updatedAt": "2026-07-12",
       "transferTalksCount": 11,
       "transferTalksPreview": [
-        "Matias Soulé",
         "Dybala",
-        "Diego Moreira"
+        "Diego Moreira",
+        "Mika Godts"
       ],
       "formationModule": "3-4-2-1",
       "formationModuleSource": "3-4-2-1 / 3-4-1-2",
@@ -677,8 +677,8 @@
       "transferTalksCount": 6,
       "transferTalksPreview": [
         "Yanis Massolin",
-        "Tarik Muharemovic",
-        "Armand Laurienté"
+        "Eman Kospo",
+        "Ugresic"
       ],
       "formationModule": "4-2-3-1",
       "formationModuleSource": "4-3-3 / 4-2-3-1",
@@ -709,9 +709,9 @@
       "updatedAt": "2026-07-12",
       "transferTalksCount": 9,
       "transferTalksPreview": [
-        "Franco Israel",
         "Dominik Livaković",
-        "Ravaglia"
+        "Ravaglia",
+        "Ramsadale"
       ],
       "formationModule": "4-3-1-2",
       "formationModuleSource": "4-3-1-2 / 3-4-2-1",
@@ -742,11 +742,11 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
       "updatedAt": "2026-07-13",
-      "transferTalksCount": 13,
+      "transferTalksCount": 14,
       "transferTalksPreview": [
         "Ugresic",
-        "Nicolo Zaniolo",
-        "Mergim Vojvoda"
+        "Mergim Vojvoda",
+        "Kevin Zeroli"
       ],
       "formationModule": "3-5-2",
       "formationModuleSource": "3-5-2 / 3-4-2-1",
@@ -758,7 +758,7 @@
       ],
       "officialIncomingCount": 6,
       "officialOutgoingCount": 4,
-      "talksIncomingCount": 10,
+      "talksIncomingCount": 11,
       "talksOutgoingCount": 3
     },
     {
@@ -55872,6 +55872,25 @@
     "zaniolo": [
       {
         "type": "RUMOR",
+        "status": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+        "note": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+        "source": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+        "sourceName": "Pazzi di Fanta",
+        "updatedAt": "2026-07-13",
+        "team": "Udinese",
+        "teamId": "udinese",
+        "direction": "Rinnovo/contratto",
+        "origin": "",
+        "articleUrl": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+        "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+        "href": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+        "sourceLabel": "Pazzi di Fanta",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
+      {
+        "type": "RUMOR",
         "status": "Caso aperto / certificato medico",
         "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
         "source": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
@@ -56438,6 +56457,25 @@
       }
     ],
     "alajbegovic": [
+      {
+        "type": "RUMOR",
+        "status": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+        "note": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+        "source": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "sourceName": "Alfredo Pedulla",
+        "updatedAt": "2026-07-13",
+        "team": "Atalanta",
+        "teamId": "atalanta",
+        "direction": "Entrata",
+        "origin": "Salisburgo / Bayer Leverkusen",
+        "articleUrl": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "href": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "sourceLabel": "Alfredo Pedulla",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
       {
         "type": "Rumor mercato",
         "status": "Trattativa/Interesse",
@@ -59382,6 +59420,25 @@
       }
     ],
     "khalaili": [
+      {
+        "type": "RUMOR",
+        "status": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+        "note": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Inter",
+        "teamId": "inter",
+        "direction": "Entrata",
+        "origin": "",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+        "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+        "href": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
       {
         "type": "RUMOR",
         "status": "Visite extra CONI / verdetto atteso",
@@ -63349,6 +63406,25 @@
     ],
     "ravaglia": [
       {
+        "type": "RUMOR",
+        "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+        "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Bologna",
+        "teamId": "bologna",
+        "direction": "Uscita",
+        "origin": "Torino",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
+      {
         "type": "Rumor mercato",
         "status": "Trattativa/Interesse",
         "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
@@ -64906,6 +64982,25 @@
     "doekhi": [
       {
         "type": "RUMOR",
+        "status": "Accordo raggiunto, visite e firma attese.",
+        "note": "Accordo raggiunto, visite e firma attese.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Lazio",
+        "teamId": "lazio",
+        "direction": "Entrata",
+        "origin": "Svincolato / ex Union Berlino",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+        "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+        "href": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
+      {
+        "type": "RUMOR",
         "status": "Intesa verbale / da chiudere",
         "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva.",
         "source": "https://www.fantacalcio.it/calciomercato/12_07_2026/lazio-contatti-con-doekhi-495242",
@@ -66049,6 +66144,25 @@
     "konate": [
       {
         "type": "RUMOR",
+        "status": "Visite mediche; destinazione iniziale Next Gen.",
+        "note": "Visite mediche; destinazione iniziale Next Gen.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Juventus",
+        "teamId": "juventus",
+        "direction": "Entrata",
+        "origin": "Juventus Next Gen",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+        "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+        "href": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
+      {
+        "type": "RUMOR",
         "status": "Trattativa in chiusura / visite mediche attese",
         "note": "Operazione a titolo definitivo per Juventus Next Gen; visite previste a inizio settimana.",
         "source": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
@@ -66393,6 +66507,25 @@
     "vergara": [
       {
         "type": "RUMOR",
+        "status": "Incontro rinnovo, distanza ma ottimismo.",
+        "note": "Incontro rinnovo, distanza ma ottimismo.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Napoli",
+        "teamId": "napoli",
+        "direction": "Rinnovo/contratto",
+        "origin": "",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+        "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+        "href": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
+      {
+        "type": "RUMOR",
         "status": "Giornata decisiva rinnovo / summit agente",
         "note": "Summit con agente per rinnovo: nuova svolta rispetto a monitoraggio generico.",
         "source": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
@@ -66523,6 +66656,25 @@
       }
     ],
     "garnacho": [
+      {
+        "type": "RUMOR",
+        "status": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+        "note": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Roma",
+        "teamId": "roma",
+        "direction": "Entrata",
+        "origin": "Chelsea",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+        "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+        "href": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      },
       {
         "type": "RUMOR",
         "status": "Chelsea non apre al prestito; costi da valutare",
@@ -66992,6 +67144,48 @@
         "sourceVerification": "OK_PAGINA",
         "sourceVerificationNote": "Pagina rumor TM con dettaglio per club/pagina",
         "sourceRow": 131
+      }
+    ],
+    "fofana": [
+      {
+        "type": "RUMOR",
+        "status": "Messo sul mercato, prezzo indicativo 25 mln.",
+        "note": "Messo sul mercato, prezzo indicativo 25 mln.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Milan",
+        "teamId": "milan",
+        "direction": "Uscita",
+        "origin": "Milan",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "url": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "href": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+      }
+    ],
+    "richardson": [
+      {
+        "type": "RUMOR",
+        "status": "Verso Le Havre in prestito con diritto.",
+        "note": "Verso Le Havre in prestito con diritto.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "sourceName": "TMW",
+        "updatedAt": "2026-07-13",
+        "team": "Fiorentina",
+        "teamId": "fiorentina",
+        "direction": "Uscita",
+        "origin": "Le Havre",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       }
     ]
   },
@@ -73355,6 +73549,78 @@
       "url": "https://www.alfredopedulla.com/news/top-news/",
       "use": "Fonte esterna utile per trattative con visite/rinnovi e aggiornamenti rapidi",
       "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "Alfredo Pedulla",
+      "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "Pazzi di Fanta",
+      "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+      "use": "Aggiornamento globale v14: Trattative",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "TMW",
+      "url": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+      "use": "Aggiornamento globale v14: Ufficialita",
+      "consultedAt": "2026-07-13"
+    },
+    {
+      "name": "Pazzi di Fanta",
+      "url": "https://www.pazzidifanta.com/indisponibili/udinese-frattura-chakvetadze-infortunio-tempi-recupero-457986",
+      "use": "Aggiornamento globale v14: Infortunati",
+      "consultedAt": "2026-07-11"
     }
   ],
   "notMatchedPreview": [
@@ -74153,16 +74419,16 @@
         "role": "Attaccante",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Trattativa/Interesse",
-        "origin": "Bayer Leverkusen",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
-        "url": "https://sport.sky.it/calciomercato/tabellone",
-        "sourceName": "Sky",
-        "sourceLabel": "Sky",
+        "status": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+        "origin": "Salisburgo / Bayer Leverkusen",
+        "source": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "sourceName": "Alfredo Pedulla",
+        "sourceLabel": "Alfredo Pedulla",
         "probability": "",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+        "note": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
         "check": "Aggiornare rosa se ufficiale",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -74179,6 +74445,20 @@
             "sourceType": "Tabellone aggregato",
             "sourceVerification": "OK_AGGREGATO",
             "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+          },
+          {
+            "source": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "articleUrl": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "href": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "sourceName": "Alfredo Pedulla",
+            "sourceLabel": "Alfredo Pedulla",
+            "status": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+            "updatedAt": "2026-07-13",
+            "note": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -74210,15 +74490,42 @@
             "sourceVerification": "OK_AGGREGATO",
             "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo",
             "sourceRow": 3
+          },
+          {
+            "teamId": "atalanta",
+            "teamName": "Atalanta",
+            "target": "Alajbegovic",
+            "playerName": "Alajbegovic",
+            "roleBrief": "A",
+            "role": "Attaccante",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "origin": "Salisburgo / Bayer Leverkusen",
+            "reliability": "Media",
+            "probability": "",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+            "source": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "articleUrl": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "href": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+            "sourceName": "Alfredo Pedulla",
+            "sourceLabel": "Alfredo Pedulla",
+            "status": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+            "updatedAt": "2026-07-13",
+            "note": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 1,
+        "sourcesCount": 2,
         "originalSource": "https://sport.sky.it/calciomercato/tabellone",
-        "articleUrl": "https://sport.sky.it/calciomercato/tabellone",
-        "href": "https://sport.sky.it/calciomercato/tabellone",
-        "sourceType": "Tabellone aggregato",
-        "sourceVerification": "OK_AGGREGATO",
-        "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+        "articleUrl": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "href": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       },
       {
         "teamId": "atalanta",
@@ -75039,6 +75346,52 @@
         "sourceType": "Pagina rumor Transfermarkt",
         "sourceVerification": "OK_PAGINA",
         "sourceVerificationNote": "Pagina rumor TM con dettaglio per club/pagina"
+      },
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "target": "Ravaglia",
+        "playerName": "Ravaglia",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+        "origin": "Torino",
+        "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "probability": "",
+        "updatedAt": "2026-07-13",
+        "reliability": "Media",
+        "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+        "check": "Da monitorare",
+        "rule": "Aggiornamento globale v14; non ufficiale se non presente nella sezione Ufficialita.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+            "updatedAt": "2026-07-13",
+            "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+          }
+        ],
+        "items": [],
+        "sourcesCount": 1,
+        "originalSource": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       }
     ],
     "cagliari": [
@@ -78606,6 +78959,52 @@
         "sourceType": "Tabellone aggregato",
         "sourceVerification": "OK_AGGREGATO",
         "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "target": "Richardson",
+        "playerName": "Richardson",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Verso Le Havre in prestito con diritto.",
+        "origin": "Le Havre",
+        "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "probability": "",
+        "updatedAt": "2026-07-13",
+        "reliability": "Media",
+        "note": "Verso Le Havre in prestito con diritto.",
+        "check": "Da monitorare",
+        "rule": "Aggiornamento globale v14; non ufficiale se non presente nella sezione Ufficialita.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+            "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+            "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Verso Le Havre in prestito con diritto.",
+            "updatedAt": "2026-07-13",
+            "note": "Verso Le Havre in prestito con diritto.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+          }
+        ],
+        "items": [],
+        "sourcesCount": 1,
+        "originalSource": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       }
     ],
     "frosinone": [
@@ -79942,16 +80341,16 @@
         "role": "Attaccante/esterno",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Visite extra CONI / verdetto atteso",
+        "status": "Trattativa saltata: Marotta annuncia idoneita non superata.",
         "origin": "Maccabi Haifa",
-        "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
-        "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+        "source": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+        "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
         "sourceName": "TMW",
         "sourceLabel": "TMW",
         "probability": "",
         "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Nuova fase: visite extra e verdetto atteso, con alternativa pronta. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita. | Ufficialità slittata: ulteriori approfondimenti medici CONI; possibile risposta lunedì/martedì. | Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita. | Ufficialita slittata: supplemento di esami richiesto dal CONI; non aggiornare rosa finche non e ufficiale. | Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa.",
+        "note": "Trattativa saltata: Marotta annuncia idoneita non superata.",
         "check": "Ufficializzare solo dopo idoneita e comunicato.",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -80052,6 +80451,20 @@
             "sourceType": "Articolo specifico",
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "URL articolo/live puntuale"
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "href": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+            "updatedAt": "2026-07-13",
+            "note": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -80286,15 +80699,42 @@
             "url": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250",
             "href": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250",
             "articleUrl": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250"
+          },
+          {
+            "teamId": "inter",
+            "teamName": "Inter",
+            "target": "Anan Khalaili",
+            "playerName": "Anan Khalaili",
+            "roleBrief": "A",
+            "role": "Attaccante/esterno",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "origin": "Maccabi Haifa",
+            "reliability": "Media",
+            "probability": "",
+            "check": "Ufficializzare solo dopo idoneita e comunicato.",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+            "source": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "href": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+            "updatedAt": "2026-07-13",
+            "note": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 7,
+        "sourcesCount": 8,
         "originalSource": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250",
-        "articleUrl": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
-        "href": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+        "href": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
         "sourceType": "Articolo specifico",
         "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "URL articolo/live puntuale"
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       },
       {
         "teamId": "inter",
@@ -82324,16 +82764,16 @@
         "role": "Attaccante",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Trattativa in chiusura / visite mediche attese",
-        "origin": "Empoli",
-        "source": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
-        "url": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
+        "status": "Visite mediche; destinazione iniziale Next Gen.",
+        "origin": "Juventus Next Gen",
+        "source": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+        "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
         "sourceName": "TMW",
         "sourceLabel": "TMW",
         "probability": "",
-        "updatedAt": "2026-07-11",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Operazione a titolo definitivo per Juventus Next Gen; visite previste a inizio settimana.",
+        "note": "Visite mediche; destinazione iniziale Next Gen.",
         "check": "Non inserire nella rosa prima squadra finché non registrato",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -82350,6 +82790,20 @@
             "sourceType": "Articolo specifico",
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "URL articolo/live puntuale"
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "href": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Visite mediche; destinazione iniziale Next Gen.",
+            "updatedAt": "2026-07-13",
+            "note": "Visite mediche; destinazione iniziale Next Gen.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -82381,15 +82835,42 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "URL articolo/live puntuale",
             "sourceRow": 155
+          },
+          {
+            "teamId": "juventus",
+            "teamName": "Juventus",
+            "target": "Ismael Konaté",
+            "playerName": "Ismael Konaté",
+            "roleBrief": "A",
+            "role": "Attaccante",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "origin": "Juventus Next Gen",
+            "reliability": "Media",
+            "probability": "",
+            "check": "Non inserire nella rosa prima squadra finché non registrato",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+            "source": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "href": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Visite mediche; destinazione iniziale Next Gen.",
+            "updatedAt": "2026-07-13",
+            "note": "Visite mediche; destinazione iniziale Next Gen.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 1,
+        "sourcesCount": 2,
         "originalSource": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
-        "href": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+        "href": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
         "sourceType": "Articolo specifico",
         "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "URL articolo/live puntuale"
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       },
       {
         "teamId": "juventus",
@@ -82862,16 +83343,16 @@
         "role": "Difensore centrale",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Intesa verbale / da chiudere",
-        "origin": "Svincolato ex Union Berlino",
-        "source": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
-        "url": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
-        "sourceName": "SOS Fanta",
-        "sourceLabel": "SOS Fanta",
+        "status": "Accordo raggiunto, visite e firma attese.",
+        "origin": "Svincolato / ex Union Berlino",
+        "source": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+        "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
         "probability": "",
         "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva. | Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+        "note": "Accordo raggiunto, visite e firma attese.",
         "check": "Da monitorare",
         "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
         "sources": [
@@ -82902,6 +83383,20 @@
             "sourceType": "Articolo specifico",
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "URL articolo/live puntuale"
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "href": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Accordo raggiunto, visite e firma attese.",
+            "updatedAt": "2026-07-13",
+            "note": "Accordo raggiunto, visite e firma attese.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -82963,15 +83458,42 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "URL articolo/live puntuale",
             "sourceRow": 241
+          },
+          {
+            "teamId": "lazio",
+            "teamName": "Lazio",
+            "target": "Danilho Doekhi",
+            "playerName": "Danilho Doekhi",
+            "roleBrief": "D",
+            "role": "Difensore centrale",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "origin": "Svincolato / ex Union Berlino",
+            "reliability": "Media",
+            "probability": "",
+            "check": "Da monitorare",
+            "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
+            "source": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "href": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Accordo raggiunto, visite e firma attese.",
+            "updatedAt": "2026-07-13",
+            "note": "Accordo raggiunto, visite e firma attese.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 2,
+        "sourcesCount": 3,
         "originalSource": "https://www.tuttomercatoweb.com/serie-a/",
-        "articleUrl": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
-        "href": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+        "href": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
         "sourceType": "Articolo specifico",
         "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "Articolo SOS Fanta specifico su trattativa Dominguez-Lazio."
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       },
       {
         "teamId": "lazio",
@@ -85405,6 +85927,52 @@
         "sourceType": "Pagina rumor Transfermarkt",
         "sourceVerification": "OK_PAGINA",
         "sourceVerificationNote": "Pagina rumor TM con dettaglio per club/pagina"
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "target": "Fofana",
+        "playerName": "Fofana",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Messo sul mercato, prezzo indicativo 25 mln.",
+        "origin": "Milan",
+        "source": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "url": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "probability": "",
+        "updatedAt": "2026-07-13",
+        "reliability": "Media",
+        "note": "Messo sul mercato, prezzo indicativo 25 mln.",
+        "check": "Da monitorare",
+        "rule": "Aggiornamento globale v14; non ufficiale se non presente nella sezione Ufficialita.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+            "url": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+            "href": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Messo sul mercato, prezzo indicativo 25 mln.",
+            "updatedAt": "2026-07-13",
+            "note": "Messo sul mercato, prezzo indicativo 25 mln.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+          }
+        ],
+        "items": [],
+        "sourcesCount": 1,
+        "originalSource": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "href": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       }
     ],
     "monza": [
@@ -86027,16 +86595,16 @@
         "role": "Centrocampista",
         "direction": "incoming",
         "directionLabel": "Rinnovo/contratto",
-        "status": "Giornata decisiva rinnovo / summit agente",
+        "status": "Incontro rinnovo, distanza ma ottimismo.",
         "origin": "Napoli",
-        "source": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-        "url": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-        "sourceName": "Fantacalcio.it",
-        "sourceLabel": "Fantacalcio.it",
+        "source": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+        "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
         "probability": "",
         "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Summit con agente per rinnovo: nuova svolta rispetto a monitoraggio generico.",
+        "note": "Incontro rinnovo, distanza ma ottimismo.",
         "check": "Monitorare firma/comunicato.",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -86053,6 +86621,20 @@
             "sourceType": "Articolo specifico",
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "Fantacalcio.it 13/07: articolo puntuale su summit rinnovo."
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "href": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Incontro rinnovo, distanza ma ottimismo.",
+            "updatedAt": "2026-07-13",
+            "note": "Incontro rinnovo, distanza ma ottimismo.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -86084,15 +86666,42 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "Fantacalcio.it 13/07: articolo puntuale su summit rinnovo.",
             "sourceRow": 250
+          },
+          {
+            "teamId": "napoli",
+            "teamName": "Napoli",
+            "target": "Vergara",
+            "playerName": "Vergara",
+            "roleBrief": "C",
+            "role": "Centrocampista",
+            "direction": "incoming",
+            "directionLabel": "Rinnovo/contratto",
+            "origin": "Napoli",
+            "reliability": "Media",
+            "probability": "",
+            "check": "Monitorare firma/comunicato.",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+            "source": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "href": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Incontro rinnovo, distanza ma ottimismo.",
+            "updatedAt": "2026-07-13",
+            "note": "Incontro rinnovo, distanza ma ottimismo.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 1,
+        "sourcesCount": 2,
         "originalSource": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-        "articleUrl": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-        "href": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+        "href": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
         "sourceType": "Articolo specifico",
         "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "Fantacalcio.it 13/07: articolo puntuale su summit rinnovo."
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       },
       {
         "teamId": "napoli",
@@ -87718,16 +88327,16 @@
         "role": "Esterno offensivo",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Chelsea non apre al prestito; costi da valutare",
+        "status": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
         "origin": "Chelsea",
-        "source": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
-        "url": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
+        "source": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+        "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
         "sourceName": "TMW",
         "sourceLabel": "TMW",
         "probability": "",
-        "updatedAt": "2026-07-12",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "TM pagina 1: voce aggiornata l 11/07; da monitorare, non ufficiale. | Transfermarkt rumor: da trattare come voce, non ufficialita. Data = Ultima voce dal.",
+        "note": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
         "check": "",
         "rule": "",
         "sources": [
@@ -87772,6 +88381,20 @@
             "sourceType": "Articolo specifico",
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "Articolo TMW specifico su sondaggio Roma/Chelsea per Garnacho e Moreira."
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "href": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+            "updatedAt": "2026-07-13",
+            "note": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -87864,15 +88487,42 @@
             "sourceVerificationNote": "Articolo TMW specifico su sondaggio Roma/Chelsea per Garnacho e Moreira.",
             "sourceRow": 193,
             "sourceRowRecoveryV629": 24
+          },
+          {
+            "teamId": "roma",
+            "teamName": "Roma",
+            "target": "Alejandro Garnacho",
+            "playerName": "Alejandro Garnacho",
+            "roleBrief": "A",
+            "role": "Esterno offensivo",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "origin": "Chelsea",
+            "reliability": "Media",
+            "probability": "",
+            "check": "",
+            "rule": "",
+            "source": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "href": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+            "updatedAt": "2026-07-13",
+            "note": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 3,
+        "sourcesCount": 4,
         "originalSource": "TMW",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
-        "href": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+        "href": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
         "sourceType": "Articolo specifico",
         "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "Articolo TMW specifico su sondaggio Roma/Chelsea per Garnacho e Moreira.",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale",
         "sourceRowRecoveryV629": 24
       },
       {
@@ -89005,16 +89655,16 @@
         "role": "Portiere",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Trattativa/Interesse",
+        "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
         "origin": "Bologna",
-        "source": "https://sport.sky.it/calciomercato/tabellone",
-        "url": "https://sport.sky.it/calciomercato/tabellone",
-        "sourceName": "Sky",
-        "sourceLabel": "Sky",
+        "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
         "probability": "",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-13",
         "reliability": "Media",
-        "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+        "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
         "check": "Aggiornare rosa se ufficiale",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
         "sources": [
@@ -89031,6 +89681,20 @@
             "sourceType": "Tabellone aggregato",
             "sourceVerification": "OK_AGGREGATO",
             "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+          },
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+            "updatedAt": "2026-07-13",
+            "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -89062,15 +89726,42 @@
             "sourceVerification": "OK_AGGREGATO",
             "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo",
             "sourceRow": 117
+          },
+          {
+            "teamId": "torino",
+            "teamName": "Torino",
+            "target": "Ravaglia",
+            "playerName": "Ravaglia",
+            "roleBrief": "P",
+            "role": "Portiere",
+            "direction": "incoming",
+            "directionLabel": "Entrata",
+            "origin": "Bologna",
+            "reliability": "Media",
+            "probability": "",
+            "check": "Aggiornare rosa se ufficiale",
+            "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+            "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+            "updatedAt": "2026-07-13",
+            "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 1,
+        "sourcesCount": 2,
         "originalSource": "https://sport.sky.it/calciomercato/tabellone",
-        "articleUrl": "https://sport.sky.it/calciomercato/tabellone",
-        "href": "https://sport.sky.it/calciomercato/tabellone",
-        "sourceType": "Tabellone aggregato",
-        "sourceVerification": "OK_AGGREGATO",
-        "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       },
       {
         "teamId": "torino",
@@ -89638,21 +90329,21 @@
       {
         "teamId": "udinese",
         "teamName": "Udinese",
-        "direction": "outgoing",
-        "directionLabel": "Uscita",
+        "direction": "incoming",
+        "directionLabel": "Rinnovo/contratto",
         "target": "Nicolo Zaniolo",
         "playerName": "Nicolo Zaniolo",
         "roleBrief": "A",
         "role": "Attaccante/esterno",
-        "status": "Caso aperto / certificato medico",
+        "status": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
         "origin": "Udinese / possibili interessamenti Juve-Milan",
         "updatedAt": "2026-07-13",
-        "source": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
-        "url": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
-        "sourceName": "TMW",
-        "sourceLabel": "TMW",
+        "source": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+        "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+        "sourceName": "Pazzi di Fanta",
+        "sourceLabel": "Pazzi di Fanta",
         "probability": "",
-        "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita. | Nuovo aggiornamento: accordo economico ma frizione su clausole; Juve, Milan e Bologna vigili.",
+        "note": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
         "check": "Da monitorare",
         "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
         "reliability": "Media",
@@ -89684,6 +90375,20 @@
             "sourceType": "Articolo specifico",
             "sourceVerification": "OK_ARTICOLO_ALT",
             "sourceVerificationNote": "Tuttosport 13/07: fonte alternativa puntuale sul caso Zaniolo."
+          },
+          {
+            "source": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "articleUrl": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "href": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "sourceName": "Pazzi di Fanta",
+            "sourceLabel": "Pazzi di Fanta",
+            "status": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+            "updatedAt": "2026-07-13",
+            "note": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
         "items": [
@@ -89745,15 +90450,42 @@
             "url": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
             "href": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
             "articleUrl": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1"
+          },
+          {
+            "teamId": "udinese",
+            "teamName": "Udinese",
+            "target": "Nicolo Zaniolo",
+            "playerName": "Nicolo Zaniolo",
+            "roleBrief": "A",
+            "role": "Attaccante/esterno",
+            "direction": "incoming",
+            "directionLabel": "Rinnovo/contratto",
+            "origin": "Udinese / possibili interessamenti Juve-Milan",
+            "reliability": "Media",
+            "probability": "",
+            "check": "Da monitorare",
+            "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+            "source": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "articleUrl": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "href": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+            "sourceName": "Pazzi di Fanta",
+            "sourceLabel": "Pazzi di Fanta",
+            "status": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+            "updatedAt": "2026-07-13",
+            "note": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ],
-        "sourcesCount": 2,
+        "sourcesCount": 3,
         "originalSource": "TMW",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
-        "href": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+        "articleUrl": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+        "href": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
         "sourceType": "Articolo specifico",
         "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "Articolo TMW specifico su permanenza Zaniolo-Udinese e dettagli contratto.",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale",
         "sourceRowRecoveryV629": 36
       },
       {
@@ -91613,6 +92345,20 @@
             "sourceType": "Articolo SOS Fanta",
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": ""
+          },
+          {
+            "source": "https://www.pazzidifanta.com/indisponibili/udinese-frattura-chakvetadze-infortunio-tempi-recupero-457986",
+            "url": "https://www.pazzidifanta.com/indisponibili/udinese-frattura-chakvetadze-infortunio-tempi-recupero-457986",
+            "articleUrl": "https://www.pazzidifanta.com/indisponibili/udinese-frattura-chakvetadze-infortunio-tempi-recupero-457986",
+            "href": "https://www.pazzidifanta.com/indisponibili/udinese-frattura-chakvetadze-infortunio-tempi-recupero-457986",
+            "sourceName": "Pazzi di Fanta",
+            "sourceLabel": "Pazzi di Fanta",
+            "status": "Infortunato",
+            "updatedAt": "2026-07-11",
+            "note": "Frattura terzo metatarso, iter riabilitativo.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
           }
         ]
       }
@@ -98356,6 +99102,47 @@
         "sourceVerification": "OK_ARTICOLO",
         "sourceVerificationNote": "URL articolo/live puntuale",
         "sourceRow": 63
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "direction": "incoming",
+        "playerName": "Timmermans",
+        "roleBrief": "",
+        "role": "",
+        "origin": "Fiorentina Primavera",
+        "formula": "",
+        "status": "Ufficiale",
+        "updatedAt": "2026-07-13",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "source": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+        "url": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+        "note": "Tesserato per le giovanili, contratto fino al 2029.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+            "url": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+            "href": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Ufficiale",
+            "updatedAt": "2026-07-13",
+            "note": "Tesserato per le giovanili, contratto fino al 2029.",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+          }
+        ],
+        "items": [],
+        "sourcesCount": 1,
+        "originalSource": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+        "href": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
       }
     ],
     "frosinone": [
@@ -110739,16 +111526,16 @@
           "role": "Attaccante",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Trattativa/Interesse",
-          "origin": "Bayer Leverkusen",
-          "source": "https://sport.sky.it/calciomercato/tabellone",
-          "url": "https://sport.sky.it/calciomercato/tabellone",
-          "sourceName": "Sky",
-          "sourceLabel": "Sky",
+          "status": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+          "origin": "Salisburgo / Bayer Leverkusen",
+          "source": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+          "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+          "sourceName": "Alfredo Pedulla",
+          "sourceLabel": "Alfredo Pedulla",
           "probability": "",
-          "updatedAt": "2026-07-10",
+          "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+          "note": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
           "check": "Aggiornare rosa se ufficiale",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -110765,6 +111552,20 @@
               "sourceType": "Tabellone aggregato",
               "sourceVerification": "OK_AGGREGATO",
               "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+            },
+            {
+              "source": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "articleUrl": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "href": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "sourceName": "Alfredo Pedulla",
+              "sourceLabel": "Alfredo Pedulla",
+              "status": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+              "updatedAt": "2026-07-13",
+              "note": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
           "items": [
@@ -110796,15 +111597,42 @@
               "sourceVerification": "OK_AGGREGATO",
               "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo",
               "sourceRow": 3
+            },
+            {
+              "teamId": "atalanta",
+              "teamName": "Atalanta",
+              "target": "Alajbegovic",
+              "playerName": "Alajbegovic",
+              "roleBrief": "A",
+              "role": "Attaccante",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "origin": "Bayer Leverkusen",
+              "reliability": "Media",
+              "probability": "",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+              "source": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "url": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "articleUrl": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "href": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+              "sourceName": "Alfredo Pedulla",
+              "sourceLabel": "Alfredo Pedulla",
+              "status": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+              "updatedAt": "2026-07-13",
+              "note": "Accelerata Atalanta, si di massima del giocatore e possibile proposta 20 mln + bonus.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
-          "sourcesCount": 1,
+          "sourcesCount": 2,
           "originalSource": "https://sport.sky.it/calciomercato/tabellone",
-          "articleUrl": "https://sport.sky.it/calciomercato/tabellone",
-          "href": "https://sport.sky.it/calciomercato/tabellone",
-          "sourceType": "Tabellone aggregato",
-          "sourceVerification": "OK_AGGREGATO",
-          "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+          "articleUrl": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+          "href": "https://www.alfredopedulla.com/esclusiva-alajbegovic-latalanta-corre-e-ha-gia-un-si-le-altre-italiane/",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         },
         {
           "teamId": "atalanta",
@@ -112482,13 +113310,59 @@
           "sourceVerification": "OK_ARTICOLO_ALT",
           "sourceVerificationNote": "Articolo TMW su futuro/Premier di Rowe; non trovato il pezzo specifico Chelsea del 12/07.",
           "sourceRowRecoveryV629": 10
+        },
+        {
+          "teamId": "bologna",
+          "teamName": "Bologna",
+          "target": "Ravaglia",
+          "playerName": "Ravaglia",
+          "roleBrief": "P",
+          "role": "Portiere",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+          "origin": "Torino",
+          "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-13",
+          "reliability": "Media",
+          "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+          "check": "Da monitorare",
+          "rule": "Aggiornamento globale v14; non ufficiale se non presente nella sezione Ufficialita.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+              "updatedAt": "2026-07-13",
+              "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+            }
+          ],
+          "items": [],
+          "sourcesCount": 1,
+          "originalSource": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         }
       ],
       "counts": {
         "officialIncoming": 3,
         "officialOutgoing": 9,
         "talksIncoming": 7,
-        "talksOutgoing": 1
+        "talksOutgoing": 2
       }
     },
     "cagliari": {
@@ -116988,6 +117862,47 @@
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
           "sourceRow": 55
+        },
+        {
+          "teamId": "fiorentina",
+          "teamName": "Fiorentina",
+          "direction": "incoming",
+          "playerName": "Timmermans",
+          "roleBrief": "",
+          "role": "",
+          "origin": "Fiorentina Primavera",
+          "formula": "",
+          "status": "Ufficiale",
+          "updatedAt": "2026-07-13",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "source": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+          "url": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+          "note": "Tesserato per le giovanili, contratto fino al 2029.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+              "url": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+              "href": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Ufficiale",
+              "updatedAt": "2026-07-13",
+              "note": "Tesserato per le giovanili, contratto fino al 2029.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+            }
+          ],
+          "items": [],
+          "sourcesCount": 1,
+          "originalSource": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+          "href": "https://www.tuttomercatoweb.com/serie-a/acquisto-scatenata-fiorentina-giovanili-tesserato-timmermans-2253161",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         }
       ],
       "officialOutgoing": [
@@ -119156,13 +120071,59 @@
           "sourceType": "Pagina rumor Transfermarkt",
           "sourceVerification": "OK_PAGINA",
           "sourceVerificationNote": "Pagina rumor TM con dettaglio per club/pagina"
+        },
+        {
+          "teamId": "fiorentina",
+          "teamName": "Fiorentina",
+          "target": "Richardson",
+          "playerName": "Richardson",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Verso Le Havre in prestito con diritto.",
+          "origin": "Le Havre",
+          "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+          "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-13",
+          "reliability": "Media",
+          "note": "Verso Le Havre in prestito con diritto.",
+          "check": "Da monitorare",
+          "rule": "Aggiornamento globale v14; non ufficiale se non presente nella sezione Ufficialita.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+              "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+              "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Verso Le Havre in prestito con diritto.",
+              "updatedAt": "2026-07-13",
+              "note": "Verso Le Havre in prestito con diritto.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+            }
+          ],
+          "items": [],
+          "sourcesCount": 1,
+          "originalSource": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+          "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-i-au-revoir-i-richardson-havre-prestito-diritto-riscatto-2253192",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         }
       ],
       "counts": {
-        "officialIncoming": 7,
+        "officialIncoming": 8,
         "officialOutgoing": 8,
         "talksIncoming": 12,
-        "talksOutgoing": 5
+        "talksOutgoing": 6
       }
     },
     "frosinone": {
@@ -123260,16 +124221,16 @@
           "role": "Attaccante/esterno",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Visite extra CONI / verdetto atteso",
+          "status": "Trattativa saltata: Marotta annuncia idoneita non superata.",
           "origin": "Maccabi Haifa",
-          "source": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
-          "url": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+          "source": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+          "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
           "sourceName": "TMW",
           "sourceLabel": "TMW",
           "probability": "",
           "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "Nuova fase: visite extra e verdetto atteso, con alternativa pronta. | SOS Fanta: immagini dell'arrivo a Linate e visite mediche. Da spostare in ufficialita solo dopo comunicato club/Sky/Transfermarkt ufficiale. | Aggiornamento aggregato: Inter in attesa dopo verifiche di idoneita CONI da approfondire. Non va conteggiato come acquisito fino a ufficialita. | Ufficialità slittata: ulteriori approfondimenti medici CONI; possibile risposta lunedì/martedì. | Fantacalcio: ulteriori accertamenti CONI; accordo economico gia impostato ma ufficialita rinviata finche non arriva idoneita. | Ufficialita slittata: supplemento di esami richiesto dal CONI; non aggiornare rosa finche non e ufficiale. | Visite mediche in corso; operazione chiusa ma non ancora forzata in rosa.",
+          "note": "Trattativa saltata: Marotta annuncia idoneita non superata.",
           "check": "Ufficializzare solo dopo idoneita e comunicato.",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -123370,6 +124331,20 @@
               "sourceType": "Articolo specifico",
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "URL articolo/live puntuale"
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "href": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+              "updatedAt": "2026-07-13",
+              "note": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
           "items": [
@@ -123604,15 +124579,42 @@
               "url": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250",
               "href": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250",
               "articleUrl": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250"
+            },
+            {
+              "teamId": "inter",
+              "teamName": "Inter",
+              "target": "Anan Khalaili",
+              "playerName": "Anan Khalaili",
+              "roleBrief": "A",
+              "role": "Attaccante/esterno",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "origin": "Maccabi Haifa",
+              "reliability": "Media",
+              "probability": "",
+              "check": "Ufficializzare solo dopo idoneita e comunicato.",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+              "source": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "url": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "href": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+              "updatedAt": "2026-07-13",
+              "note": "Trattativa saltata: Marotta annuncia idoneita non superata.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
-          "sourcesCount": 7,
+          "sourcesCount": 8,
           "originalSource": "https://www.fantacalcio.it/calciomercato/13_07_2026/inter-oggi-il-verdetto-delle-visite-extra-di-khalaili-pronta-l-alternativa-495250",
-          "articleUrl": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
-          "href": "https://www.fantacalcio.it/calciomercato/11_07_2026/inter-problemi-nelle-visite-di-khalaili-il-coni-ha-chiesto-ulteriori-accertamenti-495208",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
+          "href": "https://www.tuttomercatoweb.com/serie-a/inter-khalaili-annuncio-marotta-non-superato-visite-mediche-2253209",
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
-          "sourceVerificationNote": "Fantacalcio.it 13/07: visite extra Khalaili."
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         },
         {
           "teamId": "inter",
@@ -126339,16 +127341,16 @@
           "role": "Attaccante",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Trattativa in chiusura / visite mediche attese",
-          "origin": "Empoli",
-          "source": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
-          "url": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
+          "status": "Visite mediche; destinazione iniziale Next Gen.",
+          "origin": "Juventus Next Gen",
+          "source": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+          "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
           "sourceName": "TMW",
           "sourceLabel": "TMW",
           "probability": "",
-          "updatedAt": "2026-07-11",
+          "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "Operazione a titolo definitivo per Juventus Next Gen; visite previste a inizio settimana.",
+          "note": "Visite mediche; destinazione iniziale Next Gen.",
           "check": "Non inserire nella rosa prima squadra finché non registrato",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -126365,6 +127367,20 @@
               "sourceType": "Articolo specifico",
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "URL articolo/live puntuale"
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "href": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Visite mediche; destinazione iniziale Next Gen.",
+              "updatedAt": "2026-07-13",
+              "note": "Visite mediche; destinazione iniziale Next Gen.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
           "items": [
@@ -126396,15 +127412,42 @@
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "URL articolo/live puntuale",
               "sourceRow": 155
+            },
+            {
+              "teamId": "juventus",
+              "teamName": "Juventus",
+              "target": "Ismael Konaté",
+              "playerName": "Ismael Konaté",
+              "roleBrief": "A",
+              "role": "Attaccante",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "origin": "Empoli",
+              "reliability": "Media",
+              "probability": "",
+              "check": "Non inserire nella rosa prima squadra finché non registrato",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+              "source": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "url": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "href": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Visite mediche; destinazione iniziale Next Gen.",
+              "updatedAt": "2026-07-13",
+              "note": "Visite mediche; destinazione iniziale Next Gen.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
-          "sourcesCount": 1,
+          "sourcesCount": 2,
           "originalSource": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
-          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
-          "href": "https://www.tuttomercatoweb.com/serie-a/attaccante-juventus-trattativa-chiusura-empoli-konate-2252574",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
+          "href": "https://www.tuttomercatoweb.com/serie-a/arriva-attaccante-casa-juventus-visite-konate-iniziera-nextgen-2253206",
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
-          "sourceVerificationNote": "URL articolo/live puntuale"
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         },
         {
           "teamId": "juventus",
@@ -127543,16 +128586,16 @@
           "role": "Difensore centrale",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Intesa verbale / da chiudere",
-          "origin": "Svincolato ex Union Berlino",
-          "source": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
-          "url": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
-          "sourceName": "SOS Fanta",
-          "sourceLabel": "SOS Fanta",
+          "status": "Accordo raggiunto, visite e firma attese.",
+          "origin": "Svincolato / ex Union Berlino",
+          "source": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+          "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
           "probability": "",
           "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "TMW: dalla Germania si parla di intesa verbale Lazio-Doekhi; manca ancora chiusura definitiva. | Fantacalcio/Moretto: Lazio ha avviato contatti per Doekhi, centrale svincolato; resta primo obiettivo Sergi Dominguez.",
+          "note": "Accordo raggiunto, visite e firma attese.",
           "check": "Da monitorare",
           "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
           "sources": [
@@ -127583,6 +128626,20 @@
               "sourceType": "Articolo specifico",
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "URL articolo/live puntuale"
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "href": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Accordo raggiunto, visite e firma attese.",
+              "updatedAt": "2026-07-13",
+              "note": "Accordo raggiunto, visite e firma attese.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
           "items": [
@@ -127644,15 +128701,42 @@
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "URL articolo/live puntuale",
               "sourceRow": 241
+            },
+            {
+              "teamId": "lazio",
+              "teamName": "Lazio",
+              "target": "Danilho Doekhi",
+              "playerName": "Danilho Doekhi",
+              "roleBrief": "D",
+              "role": "Difensore centrale",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "origin": "Svincolato ex Union Berlino",
+              "reliability": "Media",
+              "probability": "",
+              "check": "Da monitorare",
+              "rule": "Gia presente come contatti: riga aggiorna stato a intesa verbale.",
+              "source": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "url": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "href": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Accordo raggiunto, visite e firma attese.",
+              "updatedAt": "2026-07-13",
+              "note": "Accordo raggiunto, visite e firma attese.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
-          "sourcesCount": 2,
+          "sourcesCount": 3,
           "originalSource": "https://www.tuttomercatoweb.com/serie-a/",
-          "articleUrl": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
-          "href": "https://www.sosfanta.com/squadra/lazio/lazio-non-solo-pedraza-trattativa-in-corso-per-dominguez-la-richiesta-della-dinamo-zagabria/",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
+          "href": "https://www.tuttomercatoweb.com/serie-a/lazio-batte-colpo-mercato-accordo-svincolato-danilho-doekhi-2253151",
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
-          "sourceVerificationNote": "URL articolo/live puntuale"
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         },
         {
           "teamId": "lazio",
@@ -131270,13 +132354,59 @@
           "sourceType": "Pagina rumor Transfermarkt",
           "sourceVerification": "OK_PAGINA",
           "sourceVerificationNote": "Pagina rumor TM con dettaglio per club/pagina"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "target": "Fofana",
+          "playerName": "Fofana",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Messo sul mercato, prezzo indicativo 25 mln.",
+          "origin": "Milan",
+          "source": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+          "url": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "probability": "",
+          "updatedAt": "2026-07-13",
+          "reliability": "Media",
+          "note": "Messo sul mercato, prezzo indicativo 25 mln.",
+          "check": "Da monitorare",
+          "rule": "Aggiornamento globale v14; non ufficiale se non presente nella sezione Ufficialita.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+              "url": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+              "href": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Messo sul mercato, prezzo indicativo 25 mln.",
+              "updatedAt": "2026-07-13",
+              "note": "Messo sul mercato, prezzo indicativo 25 mln.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+            }
+          ],
+          "items": [],
+          "sourcesCount": 1,
+          "originalSource": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+          "href": "https://www.tuttomercatoweb.com/serie-a/milan-fofana-finisce-mercato-25-partire-amorim-idee-2253183",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         }
       ],
       "counts": {
         "officialIncoming": 4,
         "officialOutgoing": 3,
         "talksIncoming": 8,
-        "talksOutgoing": 7
+        "talksOutgoing": 8
       }
     },
     "monza": {
@@ -132904,16 +134034,16 @@
           "role": "Centrocampista",
           "direction": "incoming",
           "directionLabel": "Rinnovo/contratto",
-          "status": "Giornata decisiva rinnovo / summit agente",
+          "status": "Incontro rinnovo, distanza ma ottimismo.",
           "origin": "Napoli",
-          "source": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-          "url": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-          "sourceName": "Fantacalcio.it",
-          "sourceLabel": "Fantacalcio.it",
+          "source": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+          "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
           "probability": "",
           "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "Summit con agente per rinnovo: nuova svolta rispetto a monitoraggio generico.",
+          "note": "Incontro rinnovo, distanza ma ottimismo.",
           "check": "Monitorare firma/comunicato.",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -132930,6 +134060,20 @@
               "sourceType": "Articolo specifico",
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "Fantacalcio.it 13/07: articolo puntuale su summit rinnovo."
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "href": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Incontro rinnovo, distanza ma ottimismo.",
+              "updatedAt": "2026-07-13",
+              "note": "Incontro rinnovo, distanza ma ottimismo.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
           "items": [
@@ -132961,15 +134105,42 @@
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "Fantacalcio.it 13/07: articolo puntuale su summit rinnovo.",
               "sourceRow": 250
+            },
+            {
+              "teamId": "napoli",
+              "teamName": "Napoli",
+              "target": "Vergara",
+              "playerName": "Vergara",
+              "roleBrief": "C",
+              "role": "Centrocampista",
+              "direction": "incoming",
+              "directionLabel": "Rinnovo/contratto",
+              "origin": "Napoli",
+              "reliability": "Media",
+              "probability": "",
+              "check": "Monitorare firma/comunicato.",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+              "source": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "url": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "href": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Incontro rinnovo, distanza ma ottimismo.",
+              "updatedAt": "2026-07-13",
+              "note": "Incontro rinnovo, distanza ma ottimismo.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
-          "sourcesCount": 1,
+          "sourcesCount": 2,
           "originalSource": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-          "articleUrl": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
-          "href": "https://www.fantacalcio.it/calciomercato/13_07_2026/napoli-vergara-giornata-decisiva-per-il-rinnovo-summit-con-l-agente-495255",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
+          "href": "https://www.tuttomercatoweb.com/serie-a/napoli-incontro-agenti-vergara-rinnovo-distanza-ottimismo-2253180",
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
-          "sourceVerificationNote": "Fantacalcio.it 13/07: articolo puntuale su summit rinnovo."
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         },
         {
           "teamId": "napoli",
@@ -136074,16 +137245,16 @@
           "role": "Esterno offensivo",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Chelsea non apre al prestito; costi da valutare",
+          "status": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
           "origin": "Chelsea",
-          "source": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
-          "url": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
+          "source": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+          "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
           "sourceName": "TMW",
           "sourceLabel": "TMW",
           "probability": "",
-          "updatedAt": "2026-07-12",
+          "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "TM pagina 1: voce aggiornata l 11/07; da monitorare, non ufficiale. | Transfermarkt rumor: da trattare come voce, non ufficialita. Data = Ultima voce dal.",
+          "note": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
           "check": "",
           "rule": "",
           "sources": [
@@ -136128,6 +137299,20 @@
               "sourceType": "Articolo specifico",
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "Articolo TMW specifico su sondaggio Roma/Chelsea per Garnacho e Moreira."
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "href": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+              "updatedAt": "2026-07-13",
+              "note": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
           "items": [
@@ -136220,15 +137405,42 @@
               "sourceVerificationNote": "Articolo TMW specifico su sondaggio Roma/Chelsea per Garnacho e Moreira.",
               "sourceRow": 193,
               "sourceRowRecoveryV629": 24
+            },
+            {
+              "teamId": "roma",
+              "teamName": "Roma",
+              "target": "Alejandro Garnacho",
+              "playerName": "Alejandro Garnacho",
+              "roleBrief": "A",
+              "role": "Esterno offensivo",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "origin": "Chelsea",
+              "reliability": "Media",
+              "probability": "",
+              "check": "",
+              "rule": "",
+              "source": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "url": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "href": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+              "updatedAt": "2026-07-13",
+              "note": "Contatti e apertura del giocatore, Chelsea chiede formula onerosa.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
-          "sourcesCount": 3,
+          "sourcesCount": 4,
           "originalSource": "TMW",
-          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
-          "href": "https://www.tuttomercatoweb.com/serie-a/roma-rivoluzione-davanti-vice-malen-piace-tresoldi-sondaggi-chelsea-garnacho-2250218",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
+          "href": "https://www.tuttomercatoweb.com/serie-a/garnacho-apre-roma-previsti-colloqui-formula-pensa-amico-2253106",
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
-          "sourceVerificationNote": "Articolo TMW specifico su sondaggio Roma/Chelsea per Garnacho e Moreira.",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale",
           "sourceRowRecoveryV629": 24
         },
         {
@@ -139313,16 +140525,16 @@
           "role": "Portiere",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "Trattativa/Interesse",
+          "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
           "origin": "Bologna",
-          "source": "https://sport.sky.it/calciomercato/tabellone",
-          "url": "https://sport.sky.it/calciomercato/tabellone",
-          "sourceName": "Sky",
-          "sourceLabel": "Sky",
+          "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
           "probability": "",
-          "updatedAt": "2026-07-10",
+          "updatedAt": "2026-07-13",
           "reliability": "Media",
-          "note": "Trattativa/interesse in entrata riportata nel tabellone Sky. Non e un acquisto ufficiale.",
+          "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
           "check": "Aggiornare rosa se ufficiale",
           "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
           "sources": [
@@ -139339,6 +140551,20 @@
               "sourceType": "Tabellone aggregato",
               "sourceVerification": "OK_AGGREGATO",
               "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+            },
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+              "updatedAt": "2026-07-13",
+              "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
           "items": [
@@ -139370,15 +140596,42 @@
               "sourceVerification": "OK_AGGREGATO",
               "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo",
               "sourceRow": 117
+            },
+            {
+              "teamId": "torino",
+              "teamName": "Torino",
+              "target": "Ravaglia",
+              "playerName": "Ravaglia",
+              "roleBrief": "P",
+              "role": "Portiere",
+              "direction": "incoming",
+              "directionLabel": "Entrata",
+              "origin": "Bologna",
+              "reliability": "Media",
+              "probability": "",
+              "check": "Aggiornare rosa se ufficiale",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+              "source": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "url": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+              "updatedAt": "2026-07-13",
+              "note": "Escluso dal ritiro Bologna, in uscita; Torino tra le piste.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
             }
           ],
-          "sourcesCount": 1,
+          "sourcesCount": 2,
           "originalSource": "https://sport.sky.it/calciomercato/tabellone",
-          "articleUrl": "https://sport.sky.it/calciomercato/tabellone",
-          "href": "https://sport.sky.it/calciomercato/tabellone",
-          "sourceType": "Tabellone aggregato",
-          "sourceVerification": "OK_AGGREGATO",
-          "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "href": "https://www.tuttomercatoweb.com/serie-a/ravaglia-convocato-tedesco-portiere-pronto-lasciare-bologna-2253178",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
         },
         {
           "teamId": "torino",
@@ -141477,6 +142730,168 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Tabellone Sky: puntuale come pagina, non articolo singolo"
+        },
+        {
+          "teamId": "udinese",
+          "teamName": "Udinese",
+          "direction": "incoming",
+          "directionLabel": "Rinnovo/contratto",
+          "target": "Nicolo Zaniolo",
+          "playerName": "Nicolo Zaniolo",
+          "roleBrief": "A",
+          "role": "Attaccante/esterno",
+          "status": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+          "origin": "Udinese / possibili interessamenti Juve-Milan",
+          "updatedAt": "2026-07-13",
+          "source": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+          "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+          "sourceName": "Pazzi di Fanta",
+          "sourceLabel": "Pazzi di Fanta",
+          "probability": "",
+          "note": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+          "check": "Da monitorare",
+          "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+          "reliability": "Media",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+              "url": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Caso aperto / certificato medico",
+              "updatedAt": "2026-07-13",
+              "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+              "probability": "",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Articolo TMW specifico su permanenza Zaniolo-Udinese e dettagli contratto."
+            },
+            {
+              "source": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
+              "url": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
+              "articleUrl": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
+              "sourceName": "Tuttosport",
+              "sourceLabel": "Tuttosport",
+              "status": "Caso aperto / clausole contratto, club vigili",
+              "updatedAt": "2026-07-13",
+              "note": "Nuovo aggiornamento: accordo economico ma frizione su clausole; Juve, Milan e Bologna vigili.",
+              "probability": "",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO_ALT",
+              "sourceVerificationNote": "Tuttosport 13/07: fonte alternativa puntuale sul caso Zaniolo."
+            },
+            {
+              "source": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "articleUrl": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "href": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "sourceName": "Pazzi di Fanta",
+              "sourceLabel": "Pazzi di Fanta",
+              "status": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+              "updatedAt": "2026-07-13",
+              "note": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+            }
+          ],
+          "items": [
+            {
+              "teamId": "udinese",
+              "teamName": "Udinese",
+              "direction": "outgoing",
+              "directionLabel": "Uscita",
+              "target": "Nicolo Zaniolo",
+              "playerName": "Nicolo Zaniolo",
+              "roleBrief": "A",
+              "role": "Attaccante/esterno",
+              "status": "Caso aperto / certificato medico",
+              "origin": "Udinese / possibili interessamenti Juve-Milan",
+              "updatedAt": "2026-07-13",
+              "source": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+              "url": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "probability": "",
+              "note": "TMW/Juve: futuro Zaniolo a rischio, Juventus e Milan seguono il caso; notizia rilevante per fantacalcio e titolarita.",
+              "check": "Da monitorare",
+              "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+              "reliability": "Media",
+              "originalSource": "TMW",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+              "href": "https://www.tuttomercatoweb.com/serie-a/zaniolo-permanenza-udinese-accordo-parti-dettagli-contratto-2251273",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Articolo TMW specifico su permanenza Zaniolo-Udinese e dettagli contratto.",
+              "sourceRow": 238,
+              "sourceRowRecoveryV629": 36
+            },
+            {
+              "teamId": "udinese",
+              "teamName": "Udinese",
+              "target": "Nicolò Zaniolo",
+              "playerName": "Nicolò Zaniolo",
+              "roleBrief": "A",
+              "role": "Attaccante/trequartista",
+              "direction": "outgoing",
+              "directionLabel": "Permanenza/Uscita",
+              "status": "Caso aperto / clausole contratto, club vigili",
+              "origin": "Udinese / possibili Juve-Milan-Bologna",
+              "updatedAt": "2026-07-13",
+              "probability": "",
+              "note": "Nuovo aggiornamento: accordo economico ma frizione su clausole; Juve, Milan e Bologna vigili.",
+              "check": "Monitorare firma/rinnovo o rottura definitiva.",
+              "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa.",
+              "originalSource": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
+              "sourceName": "Tuttosport",
+              "sourceLabel": "Tuttosport",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO_ALT",
+              "sourceVerificationNote": "Tuttosport 13/07: fonte alternativa puntuale sul caso Zaniolo.",
+              "sourceRow": 121,
+              "reliability": "Media",
+              "source": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
+              "url": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
+              "href": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
+              "articleUrl": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1"
+            },
+            {
+              "teamId": "udinese",
+              "teamName": "Udinese",
+              "target": "Nicolo Zaniolo",
+              "playerName": "Nicolo Zaniolo",
+              "roleBrief": "A",
+              "role": "Attaccante/esterno",
+              "direction": "incoming",
+              "directionLabel": "Rinnovo/contratto",
+              "origin": "Udinese / possibili interessamenti Juve-Milan",
+              "reliability": "Media",
+              "probability": "",
+              "check": "Da monitorare",
+              "rule": "Aggiornare SOS/rumor se emergono problemi fisici o rottura ufficiale.",
+              "source": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "url": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "articleUrl": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "href": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+              "sourceName": "Pazzi di Fanta",
+              "sourceLabel": "Pazzi di Fanta",
+              "status": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+              "updatedAt": "2026-07-13",
+              "note": "Caso aperto: assenza allenamenti, certificato medico e nodo contrattuale.",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale"
+            }
+          ],
+          "sourcesCount": 3,
+          "originalSource": "TMW",
+          "articleUrl": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+          "href": "https://www.pazzidifanta.com/news/udinese-zaniolo-allenamenti-assenza-news-457989",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Aggiornamento globale v14 con URL puntuale",
+          "sourceRowRecoveryV629": 36
         }
       ],
       "talksOutgoing": [
@@ -141759,7 +143174,7 @@
       "counts": {
         "officialIncoming": 6,
         "officialOutgoing": 4,
-        "talksIncoming": 10,
+        "talksIncoming": 11,
         "talksOutgoing": 3
       }
     },
@@ -145865,5 +147280,50 @@
       "sourceFile": "sudatori-data.json",
       "status": "OK"
     }
-  ]
+  ],
+  "retreatFriendliesControlSourcesV637": [
+    {
+      "scope": "Serie A",
+      "name": "Pazzi di Fanta calendario",
+      "updatedAt": "2026-07-13",
+      "note": "Aggiunta fonte di controllo su amichevoli e ritiri.",
+      "url": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
+      "sourceName": "Pazzi di Fanta"
+    }
+  ],
+  "updateLogV637": [
+    {
+      "section": "Trattative",
+      "rows": 10,
+      "addedCards": 3,
+      "updatedCards": 8,
+      "note": "Applicato foglio Agg_13_07_v14_Globale"
+    },
+    {
+      "section": "Ufficialita",
+      "rows": 1,
+      "addedRows": 1,
+      "note": "Timmermans inserito come ufficialita Fiorentina giovanili"
+    },
+    {
+      "section": "SOS/Infortunati",
+      "rows": 1,
+      "updatedRows": 1,
+      "note": "Chakvetadze aggiornato/arricchito con fonte Pazzi di Fanta"
+    },
+    {
+      "section": "Ritiri/Amichevoli",
+      "controlSources": 1,
+      "note": "Fonte di controllo aggiunta, non conteggiata come amichevole reale"
+    },
+    {
+      "section": "Alias ioSudo",
+      "rules": [
+        "Ndicka=N'Dicka",
+        "Vasquez != D. Vasquez",
+        "I. Sulemana != K. Sulemana"
+      ]
+    }
+  ],
+  "missingPreciseArticlesV637": []
 }
