@@ -1,7 +1,7 @@
 {
   "meta": {
-    "id": "sudatori-2026-27-v634",
-    "label": "Per i SUDATORI V634",
+    "id": "sudatori-2026-27-v635",
+    "label": "Per i SUDATORI V635",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-13",
     "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_tmw_link_puntuali_v12(1).xlsx",
@@ -21,11 +21,11 @@
     "officialOutgoing": 136,
     "officialMoves": 233,
     "filteredOfficialTalks": 2,
-    "version": "V634",
+    "version": "V635",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
-    "note": "V634: aggiorna dal nuovo Excel v12 con link TMW puntuali e fonti mancanti allineate al foglio Fonti.",
+    "note": "V635: corregge ruoli e squadra attuale nella vista GIOCATORI di ioSudo usando listone recente, righe aggregate e ufficialità.",
     "officialRows": 287,
     "sources": 152,
     "liveRosterRuntime": true,
@@ -52,7 +52,7 @@
     "extraControlFriendliesSourcesAddedV622": 3,
     "ioSudoGlobalPlayersView": "V622",
     "current": "sudatori-data.json",
-    "ioSudoSharedData": "V634",
+    "ioSudoSharedData": "V635",
     "extraSourcesAdded": 7,
     "extraTalkRowsAdded": 10,
     "extraControlFriendliesSourcesAdded": 2,
@@ -106,7 +106,12 @@
     "tmwPreciseLinksRowsV634": 10,
     "sourcesAddedV634": 24,
     "objectsPatchedV634": 138,
-    "missingPreciseArticlesV634": 0
+    "missingPreciseArticlesV634": 0,
+    "ioSudoRoleCurrentTeamFix": "V635",
+    "roleBackfilledFromListoneV635": 91,
+    "roleBackfilledFromNestedSourcesV635": 14,
+    "marketRowsRoleFixedV635": 105,
+    "officialOutgoingCurrentTeamResolvedV635": 135
   },
   "teams": [
     {
@@ -109981,8 +109986,8 @@
           "teamName": "Atalanta",
           "direction": "Entrata",
           "playerName": "Maldini",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Lazio",
           "formula": "",
           "status": "Ufficiale",
@@ -110034,15 +110039,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 3
+          "sourceRow": 3,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "atalanta",
           "teamName": "Atalanta",
           "direction": "Entrata",
           "playerName": "I. Sulemana",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Cagliari",
           "formula": "",
           "status": "Ufficiale",
@@ -110089,7 +110095,8 @@
             }
           ],
           "sourcesCount": 1,
-          "articleUrl": "https://www.calciolecce.it/2026/07/10/calciomercato-estivo-2026-27-il-tabellone-milan-con-gila-e-ramos-fiorentina-venezia-scatenate/"
+          "articleUrl": "https://www.calciolecce.it/2026/07/10/calciomercato-estivo-2026-27-il-tabellone-milan-con-gila-e-ramos-fiorentina-venezia-scatenate/",
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "atalanta",
@@ -110158,8 +110165,8 @@
           "teamName": "Atalanta",
           "direction": "Uscita",
           "playerName": "Godfrey",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Rangers Glasgow",
           "formula": "",
           "status": "Ufficiale",
@@ -110211,15 +110218,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 6
+          "sourceRow": 6,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Rangers Glasgow",
+          "currentTeamResolvedV635": "Rangers Glasgow"
         },
         {
           "teamId": "atalanta",
           "teamName": "Atalanta",
           "direction": "Uscita",
           "playerName": "Palestra",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Chelsea",
           "formula": "",
           "status": "Ufficiale",
@@ -110271,15 +110281,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 7
+          "sourceRow": 7,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Chelsea",
+          "currentTeamResolvedV635": "Chelsea"
         },
         {
           "teamId": "atalanta",
           "teamName": "Atalanta",
           "direction": "Uscita",
           "playerName": "Musah",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Milan",
           "formula": "",
           "status": "Ufficiale",
@@ -110331,7 +110344,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 8
+          "sourceRow": 8,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Milan",
+          "currentTeamResolvedV635": "Milan"
         }
       ],
       "talksIncoming": [
@@ -110877,8 +110893,8 @@
           "teamName": "Bologna",
           "direction": "Entrata",
           "playerName": "Luigi Caccavo",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Lumezzane",
           "formula": "",
           "status": "Ufficiale",
@@ -110962,15 +110978,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 9
+          "sourceRow": 9,
+          "roleSourceV635": "nested"
         },
         {
           "teamId": "bologna",
           "teamName": "Bologna",
           "direction": "Entrata",
           "playerName": "Holm",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Juventus",
           "formula": "",
           "status": "Ufficiale",
@@ -111022,15 +111039,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 10
+          "sourceRow": 10,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "bologna",
           "teamName": "Bologna",
           "direction": "Entrata",
           "playerName": "Pobega",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Milan",
           "formula": "",
           "status": "Ufficiale",
@@ -111082,7 +111100,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 11
+          "sourceRow": 11,
+          "roleSourceV635": "listone"
         }
       ],
       "officialOutgoing": [
@@ -111144,15 +111163,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 12
+          "sourceRow": 12,
+          "currentRealTeam": "Vicenza",
+          "currentTeamResolvedV635": "Vicenza"
         },
         {
           "teamId": "bologna",
           "teamName": "Bologna",
           "direction": "Uscita",
           "playerName": "Wisdom Amey",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Frosinone",
           "formula": "",
           "status": "Ufficiale",
@@ -111235,7 +111256,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 13
+          "sourceRow": 13,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Frosinone",
+          "currentTeamResolvedV635": "Frosinone"
         },
         {
           "teamId": "bologna",
@@ -111295,15 +111319,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 14
+          "sourceRow": 14,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "bologna",
           "teamName": "Bologna",
           "direction": "Uscita",
           "playerName": "Lykogiannis",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -111355,15 +111381,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 15
+          "sourceRow": 15,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "bologna",
           "teamName": "Bologna",
           "direction": "Uscita",
           "playerName": "Freuler",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -111446,7 +111475,10 @@
           "sourceType": "Tabellone ufficialita",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
-          "sourceRow": 282
+          "sourceRow": 282,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "bologna",
@@ -111506,15 +111538,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 17
+          "sourceRow": 17,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "bologna",
           "teamName": "Bologna",
           "direction": "Uscita",
           "playerName": "Sohm",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Fiorentina",
           "formula": "",
           "status": "Ufficiale",
@@ -111566,15 +111600,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 18
+          "sourceRow": 18,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Fiorentina",
+          "currentTeamResolvedV635": "Fiorentina"
         },
         {
           "teamId": "bologna",
           "teamName": "Bologna",
           "direction": "Uscita",
           "playerName": "Joao Mario",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Juventus",
           "formula": "",
           "status": "Ufficiale",
@@ -111626,7 +111663,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 19
+          "sourceRow": 19,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Juventus",
+          "currentTeamResolvedV635": "Juventus"
         },
         {
           "teamId": "bologna",
@@ -111686,7 +111726,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 242
+          "sourceRow": 242,
+          "currentRealTeam": "Frosinone",
+          "currentTeamResolvedV635": "Frosinone"
         }
       ],
       "talksIncoming": [
@@ -112574,8 +112616,8 @@
           "teamName": "Cagliari",
           "direction": "Entrata",
           "playerName": "Prati",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Torino",
           "formula": "",
           "status": "Ufficiale",
@@ -112635,7 +112677,8 @@
           "sourceVerification": "OK_ARTICOLO_ALT",
           "sourceVerificationNote": "Non trovato articolo Di Marzio; trovato articolo TMW puntuale su Prati-Racing Santander.",
           "sourceRow": 21,
-          "sourceRowRecoveryV629": 29
+          "sourceRowRecoveryV629": 29,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "cagliari",
@@ -112796,8 +112839,8 @@
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Gaetano",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Atalanta",
           "formula": "",
           "status": "Ufficiale",
@@ -112849,15 +112892,18 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 24
+          "sourceRow": 24,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Atalanta",
+          "currentTeamResolvedV635": "Atalanta"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Palestra",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Chelsea",
           "formula": "",
           "status": "Ufficiale",
@@ -112909,7 +112955,10 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 25
+          "sourceRow": 25,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Chelsea",
+          "currentTeamResolvedV635": "Chelsea"
         },
         {
           "teamId": "cagliari",
@@ -112969,15 +113018,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 26
+          "sourceRow": 26,
+          "currentRealTeam": "Oxford United",
+          "currentTeamResolvedV635": "Oxford United"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Pavoletti",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -113029,7 +113080,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 27
+          "sourceRow": 27,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "cagliari",
@@ -113089,15 +113143,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 28
+          "sourceRow": 28,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Belotti",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -113180,15 +113236,18 @@
           "sourceType": "Tabellone ufficialita",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
-          "sourceRow": 283
+          "sourceRow": 283,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Folorunsho",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Napoli",
           "formula": "",
           "status": "Ufficiale",
@@ -113240,15 +113299,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 30
+          "sourceRow": 30,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Napoli",
+          "currentTeamResolvedV635": "Napoli"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Dossena",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Como",
           "formula": "",
           "status": "Ufficiale",
@@ -113300,15 +113362,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 31
+          "sourceRow": 31,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Como",
+          "currentTeamResolvedV635": "Como"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Sulemana I.",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Atalanta",
           "formula": "",
           "status": "Ufficiale",
@@ -113360,7 +113425,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 32
+          "sourceRow": 32,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Atalanta",
+          "currentTeamResolvedV635": "Atalanta"
         },
         {
           "teamId": "cagliari",
@@ -113420,15 +113488,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 33
+          "sourceRow": 33,
+          "currentRealTeam": "Besiktas",
+          "currentTeamResolvedV635": "Besiktas"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Mazzitelli",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Como",
           "formula": "",
           "status": "Ufficiale",
@@ -113480,15 +113550,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 34
+          "sourceRow": 34,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Como",
+          "currentTeamResolvedV635": "Como"
         },
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
           "direction": "Uscita",
           "playerName": "Luvumbo",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Maiorca",
           "formula": "",
           "status": "Ufficiale",
@@ -113540,7 +113613,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 35
+          "sourceRow": 35,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Maiorca",
+          "currentTeamResolvedV635": "Maiorca"
         }
       ],
       "talksIncoming": [
@@ -114581,8 +114657,8 @@
           "teamName": "Como",
           "direction": "Entrata",
           "playerName": "Fadera",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Sassuolo",
           "formula": "",
           "status": "Ufficiale",
@@ -114634,15 +114710,16 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 39
+          "sourceRow": 39,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "como",
           "teamName": "Como",
           "direction": "Entrata",
           "playerName": "Dossena",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Cagliari",
           "formula": "",
           "status": "Ufficiale",
@@ -114694,15 +114771,16 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 40
+          "sourceRow": 40,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "como",
           "teamName": "Como",
           "direction": "Entrata",
           "playerName": "Mazzitelli",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Cagliari",
           "formula": "",
           "status": "Ufficiale",
@@ -114754,7 +114832,8 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 41
+          "sourceRow": 41,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "como",
@@ -114823,8 +114902,8 @@
           "teamName": "Como",
           "direction": "Uscita",
           "playerName": "Sergi Roberto",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -114876,7 +114955,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 43
+          "sourceRow": 43,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "como",
@@ -114936,15 +115018,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 44
+          "sourceRow": 44,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "como",
           "teamName": "Como",
           "direction": "Uscita",
           "playerName": "Vigorito",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -115027,7 +115111,10 @@
           "sourceType": "Tabellone ufficialita",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
-          "sourceRow": 288
+          "sourceRow": 288,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "como",
@@ -115087,15 +115174,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 46
+          "sourceRow": 46,
+          "currentRealTeam": "Internacional",
+          "currentTeamResolvedV635": "Internacional"
         },
         {
           "teamId": "como",
           "teamName": "Como",
           "direction": "Uscita",
           "playerName": "Cavlina",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "Dinamo Zagabria",
           "formula": "",
           "status": "Ufficiale",
@@ -115147,15 +115236,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 47
+          "sourceRow": 47,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Dinamo Zagabria",
+          "currentTeamResolvedV635": "Dinamo Zagabria"
         },
         {
           "teamId": "como",
           "teamName": "Como",
           "direction": "Uscita",
           "playerName": "Diego Carlos",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Fenerbahce",
           "formula": "",
           "status": "Ufficiale",
@@ -115207,7 +115299,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 48
+          "sourceRow": 48,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Fenerbahce",
+          "currentTeamResolvedV635": "Fenerbahce"
         }
       ],
       "talksIncoming": [
@@ -116455,8 +116550,8 @@
           "teamName": "Fiorentina",
           "direction": "Entrata",
           "playerName": "Sohm",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Bologna",
           "formula": "",
           "status": "Ufficiale",
@@ -116508,7 +116603,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 50
+          "sourceRow": 50,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "fiorentina",
@@ -116618,8 +116714,8 @@
           "teamName": "Fiorentina",
           "direction": "Entrata",
           "playerName": "Sottil",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Lecce",
           "formula": "",
           "status": "Ufficiale",
@@ -116671,7 +116767,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 52
+          "sourceRow": 52,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "fiorentina",
@@ -116945,15 +117042,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 56
+          "sourceRow": 56,
+          "currentRealTeam": "Deportivo La Coruna",
+          "currentTeamResolvedV635": "Deportivo La Coruna"
         },
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
           "direction": "Uscita",
           "playerName": "Beltran",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "River Plate",
           "formula": "Prestito con obbligo di riscatto",
           "status": "Ufficiale",
@@ -117005,15 +117104,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 57
+          "sourceRow": 57,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "River Plate",
+          "currentTeamResolvedV635": "River Plate"
         },
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
           "direction": "Uscita",
           "playerName": "Martinelli",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "Avellino",
           "formula": "Prestito",
           "status": "Ufficiale",
@@ -117073,15 +117175,18 @@
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "Articolo LaViola.it specifico su Martinelli-Avellino.",
           "sourceRow": 58,
-          "sourceRowRecoveryV629": 40
+          "sourceRowRecoveryV629": 40,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Avellino",
+          "currentTeamResolvedV635": "Avellino"
         },
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
           "direction": "Uscita",
           "playerName": "Kouadio",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Monza",
           "formula": "",
           "status": "Ufficiale",
@@ -117133,15 +117238,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 59
+          "sourceRow": 59,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Monza",
+          "currentTeamResolvedV635": "Monza"
         },
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
           "direction": "Uscita",
           "playerName": "Sabiri",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -117193,15 +117301,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 60
+          "sourceRow": 60,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
           "direction": "Uscita",
           "playerName": "Rugani",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Juventus",
           "formula": "",
           "status": "Ufficiale",
@@ -117253,15 +117364,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 61
+          "sourceRow": 61,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Juventus",
+          "currentTeamResolvedV635": "Juventus"
         },
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
           "direction": "Uscita",
           "playerName": "Harrison",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Leeds United",
           "formula": "",
           "status": "Ufficiale",
@@ -117313,15 +117427,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 62
+          "sourceRow": 62,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
           "direction": "Uscita",
           "playerName": "Solomon",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Tottenham",
           "formula": "",
           "status": "Ufficiale",
@@ -117373,7 +117488,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 63
+          "sourceRow": 63,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Tottenham",
+          "currentTeamResolvedV635": "Tottenham"
         }
       ],
       "talksIncoming": [
@@ -119316,7 +119434,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 66
+          "sourceRow": 66,
+          "currentRealTeam": "Vicenza",
+          "currentTeamResolvedV635": "Vicenza"
         },
         {
           "teamId": "frosinone",
@@ -119376,7 +119496,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 67
+          "sourceRow": 67,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "frosinone",
@@ -119436,7 +119558,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 68
+          "sourceRow": 68,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "frosinone",
@@ -119496,7 +119620,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 69
+          "sourceRow": 69,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "frosinone",
@@ -119556,15 +119682,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 70
+          "sourceRow": 70,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "frosinone",
           "teamName": "Frosinone",
           "direction": "Uscita",
           "playerName": "Fini",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Genoa",
           "formula": "",
           "status": "Ufficiale",
@@ -119616,7 +119744,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 71
+          "sourceRow": 71,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Genoa",
+          "currentTeamResolvedV635": "Genoa"
         },
         {
           "teamId": "frosinone",
@@ -119676,7 +119807,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 72
+          "sourceRow": 72,
+          "currentRealTeam": "Atalanta",
+          "currentTeamResolvedV635": "Atalanta"
         },
         {
           "teamId": "frosinone",
@@ -119736,7 +119869,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 73
+          "sourceRow": 73,
+          "currentRealTeam": "Genoa",
+          "currentTeamResolvedV635": "Genoa"
         }
       ],
       "talksIncoming": [
@@ -120355,8 +120490,8 @@
           "teamName": "Genoa",
           "direction": "Entrata",
           "playerName": "Fini",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Frosinone",
           "formula": "",
           "status": "Ufficiale",
@@ -120408,7 +120543,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 79
+          "sourceRow": 79,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "genoa",
@@ -120689,8 +120825,8 @@
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Jeff Ekhator",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Juventus",
           "formula": "",
           "status": "Ufficiale",
@@ -120773,15 +120909,18 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 83
+          "sourceRow": 83,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Juventus",
+          "currentTeamResolvedV635": "Juventus"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Malinovskyi",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Trabzonspor",
           "formula": "",
           "status": "Ufficiale",
@@ -120833,15 +120972,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 84
+          "sourceRow": 84,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Trabzonspor",
+          "currentTeamResolvedV635": "Trabzonspor"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Leali",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -120893,15 +121035,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 85
+          "sourceRow": 85,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Sommariva",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -120953,15 +121098,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 86
+          "sourceRow": 86,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Ekuban",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -121013,15 +121161,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 87
+          "sourceRow": 87,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Siegrist",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "Rapid",
           "formula": "",
           "status": "Ufficiale",
@@ -121073,15 +121224,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 88
+          "sourceRow": 88,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Rapid",
+          "currentTeamResolvedV635": "Rapid"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Zatterstrom",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Sheffield United",
           "formula": "",
           "status": "Ufficiale",
@@ -121133,15 +121287,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 89
+          "sourceRow": 89,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Sheffield United",
+          "currentTeamResolvedV635": "Sheffield United"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Cornet",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "West Ham",
           "formula": "",
           "status": "Ufficiale",
@@ -121193,15 +121350,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 90
+          "sourceRow": 90,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "West Ham",
+          "currentTeamResolvedV635": "West Ham"
         },
         {
           "teamId": "genoa",
           "teamName": "Genoa",
           "direction": "Uscita",
           "playerName": "Onana",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Besiktas",
           "formula": "",
           "status": "Ufficiale",
@@ -121253,7 +121413,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 91
+          "sourceRow": 91,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Besiktas",
+          "currentTeamResolvedV635": "Besiktas"
         }
       ],
       "talksIncoming": [
@@ -122527,15 +122690,17 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 95
+          "sourceRow": 95,
+          "currentRealTeam": "Real Madrid",
+          "currentTeamResolvedV635": "Real Madrid"
         },
         {
           "teamId": "inter",
           "teamName": "Inter",
           "direction": "Uscita",
           "playerName": "Franco Carboni",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Parma",
           "formula": "",
           "status": "Ufficiale",
@@ -122618,7 +122783,10 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 96
+          "sourceRow": 96,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Parma",
+          "currentTeamResolvedV635": "Parma"
         },
         {
           "teamId": "inter",
@@ -122678,7 +122846,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 97
+          "sourceRow": 97,
+          "currentRealTeam": "Panathinaikos",
+          "currentTeamResolvedV635": "Panathinaikos"
         },
         {
           "teamId": "inter",
@@ -122738,7 +122908,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 98
+          "sourceRow": 98,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "inter",
@@ -122798,7 +122970,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 99
+          "sourceRow": 99,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "inter",
@@ -122858,7 +123032,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 100
+          "sourceRow": 100,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         }
       ],
       "talksIncoming": [
@@ -124438,8 +124614,8 @@
           "teamName": "Juventus",
           "direction": "Entrata",
           "playerName": "Joao Mario",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Bologna",
           "formula": "",
           "status": "Ufficiale",
@@ -124491,15 +124667,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 102
+          "sourceRow": 102,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "juventus",
           "teamName": "Juventus",
           "direction": "Entrata",
           "playerName": "Rugani",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Fiorentina",
           "formula": "",
           "status": "Ufficiale",
@@ -124551,7 +124728,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 103
+          "sourceRow": 103,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "juventus",
@@ -124741,8 +124919,8 @@
           "teamName": "Juventus",
           "direction": "Uscita",
           "playerName": "Kostic",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -124794,15 +124972,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 107
+          "sourceRow": 107,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "juventus",
           "teamName": "Juventus",
           "direction": "Uscita",
           "playerName": "Vlahovic",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -124854,15 +125035,18 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 108
+          "sourceRow": 108,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "juventus",
           "teamName": "Juventus",
           "direction": "Uscita",
           "playerName": "Holm",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Bologna",
           "formula": "",
           "status": "Ufficiale",
@@ -124914,15 +125098,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 109
+          "sourceRow": 109,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Bologna",
+          "currentTeamResolvedV635": "Bologna"
         },
         {
           "teamId": "juventus",
           "teamName": "Juventus",
           "direction": "Uscita",
           "playerName": "Giovanni Daffara",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "Parma",
           "formula": "",
           "status": "Ufficiale",
@@ -125005,15 +125192,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 110
+          "sourceRow": 110,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Parma",
+          "currentTeamResolvedV635": "Parma"
         },
         {
           "teamId": "juventus",
           "teamName": "Juventus",
           "direction": "Uscita",
           "playerName": "David Puczka",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Genoa",
           "formula": "",
           "status": "Ufficiale",
@@ -125096,7 +125286,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 111
+          "sourceRow": 111,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Genoa",
+          "currentTeamResolvedV635": "Genoa"
         }
       ],
       "talksIncoming": [
@@ -126953,7 +127146,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 113
+          "sourceRow": 113,
+          "currentRealTeam": "Milan",
+          "currentTeamResolvedV635": "Milan"
         },
         {
           "teamId": "lazio",
@@ -127044,7 +127239,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 114
+          "sourceRow": 114,
+          "currentRealTeam": "Inter",
+          "currentTeamResolvedV635": "Inter"
         },
         {
           "teamId": "lazio",
@@ -127135,15 +127332,17 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 115
+          "sourceRow": 115,
+          "currentRealTeam": "Venezia",
+          "currentTeamResolvedV635": "Venezia"
         },
         {
           "teamId": "lazio",
           "teamName": "Lazio",
           "direction": "Uscita",
           "playerName": "Pedro",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -127195,15 +127394,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 116
+          "sourceRow": 116,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "lazio",
           "teamName": "Lazio",
           "direction": "Uscita",
           "playerName": "Hysaj",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -127255,15 +127457,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 117
+          "sourceRow": 117,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "lazio",
           "teamName": "Lazio",
           "direction": "Uscita",
           "playerName": "Maldini",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Atalanta",
           "formula": "",
           "status": "Ufficiale",
@@ -127315,7 +127520,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 118
+          "sourceRow": 118,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Atalanta",
+          "currentTeamResolvedV635": "Atalanta"
         }
       ],
       "talksIncoming": [
@@ -128470,8 +128678,8 @@
           "teamName": "Lecce",
           "direction": "Entrata",
           "playerName": "Kaba",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Nantes",
           "formula": "",
           "status": "Ufficiale",
@@ -128523,15 +128731,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 120
+          "sourceRow": 120,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "lecce",
           "teamName": "Lecce",
           "direction": "Entrata",
           "playerName": "Maleh",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Cremonese",
           "formula": "",
           "status": "Ufficiale",
@@ -128583,7 +128792,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 121
+          "sourceRow": 121,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "lecce",
@@ -128778,7 +128988,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 122
+          "sourceRow": 122,
+          "currentRealTeam": "Corum",
+          "currentTeamResolvedV635": "Corum"
         },
         {
           "teamId": "lecce",
@@ -128869,15 +129081,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 123
+          "sourceRow": 123,
+          "currentRealTeam": "Venezia",
+          "currentTeamResolvedV635": "Venezia"
         },
         {
           "teamId": "lecce",
           "teamName": "Lecce",
           "direction": "Uscita",
           "playerName": "Sottil",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Fiorentina",
           "formula": "",
           "status": "Ufficiale",
@@ -128929,15 +129143,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 124
+          "sourceRow": 124,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Fiorentina",
+          "currentTeamResolvedV635": "Fiorentina"
         },
         {
           "teamId": "lecce",
           "teamName": "Lecce",
           "direction": "Uscita",
           "playerName": "Cheddira",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Napoli",
           "formula": "",
           "status": "Ufficiale",
@@ -128989,7 +129206,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 125
+          "sourceRow": 125,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Napoli",
+          "currentTeamResolvedV635": "Napoli"
         },
         {
           "teamId": "lecce",
@@ -129049,7 +129269,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 126
+          "sourceRow": 126,
+          "currentRealTeam": "Milan",
+          "currentTeamResolvedV635": "Milan"
         }
       ],
       "talksIncoming": [
@@ -129392,8 +129614,8 @@
           "teamName": "Milan",
           "direction": "Entrata",
           "playerName": "Musah",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Atalanta",
           "formula": "",
           "status": "Ufficiale",
@@ -129445,7 +129667,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 128
+          "sourceRow": 128,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "milan",
@@ -129605,8 +129828,8 @@
           "teamName": "Milan",
           "direction": "Uscita",
           "playerName": "Modric",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -129658,15 +129881,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 131
+          "sourceRow": 131,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "milan",
           "teamName": "Milan",
           "direction": "Uscita",
           "playerName": "Fullkrug",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "West Ham",
           "formula": "",
           "status": "Ufficiale",
@@ -129718,7 +129944,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 132
+          "sourceRow": 132,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "West Ham",
+          "currentTeamResolvedV635": "West Ham"
         },
         {
           "teamId": "milan",
@@ -129778,7 +130007,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 263
+          "sourceRow": 263,
+          "currentRealTeam": "Parma",
+          "currentTeamResolvedV635": "Parma"
         }
       ],
       "talksIncoming": [
@@ -131110,8 +131341,8 @@
           "teamName": "Monza",
           "direction": "Entrata",
           "playerName": "Kouadio",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Fiorentina",
           "formula": "",
           "status": "Ufficiale",
@@ -131163,7 +131394,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 134
+          "sourceRow": 134,
+          "roleSourceV635": "listone"
         }
       ],
       "officialOutgoing": [
@@ -131172,8 +131404,8 @@
           "teamName": "Monza",
           "direction": "Uscita",
           "playerName": "Hernani",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Palermo",
           "formula": "",
           "status": "Ufficiale",
@@ -131225,7 +131457,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 135
+          "sourceRow": 135,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Palermo",
+          "currentTeamResolvedV635": "Palermo"
         },
         {
           "teamId": "monza",
@@ -131285,7 +131520,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 136
+          "sourceRow": 136,
+          "currentRealTeam": "Padova",
+          "currentTeamResolvedV635": "Padova"
         },
         {
           "teamId": "monza",
@@ -131345,15 +131582,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 137
+          "sourceRow": 137,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "monza",
           "teamName": "Monza",
           "direction": "Uscita",
           "playerName": "Alvarez",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Sassuolo",
           "formula": "",
           "status": "Ufficiale",
@@ -131405,7 +131644,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 138
+          "sourceRow": 138,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Sassuolo",
+          "currentTeamResolvedV635": "Sassuolo"
         },
         {
           "teamId": "monza",
@@ -131465,7 +131707,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 139
+          "sourceRow": 139,
+          "currentRealTeam": "Modena",
+          "currentTeamResolvedV635": "Modena"
         }
       ],
       "talksIncoming": [
@@ -132096,8 +132340,8 @@
           "teamName": "Napoli",
           "direction": "Entrata",
           "playerName": "Marianucci",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Torino",
           "formula": "",
           "status": "Ufficiale",
@@ -132149,15 +132393,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 140
+          "sourceRow": 140,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "napoli",
           "teamName": "Napoli",
           "direction": "Entrata",
           "playerName": "Folorunsho",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Cagliari",
           "formula": "",
           "status": "Ufficiale",
@@ -132209,15 +132454,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 141
+          "sourceRow": 141,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "napoli",
           "teamName": "Napoli",
           "direction": "Entrata",
           "playerName": "Cheddira",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Lecce",
           "formula": "",
           "status": "Ufficiale",
@@ -132269,15 +132515,16 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 142
+          "sourceRow": 142,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "napoli",
           "teamName": "Napoli",
           "direction": "Entrata",
           "playerName": "Zerbin",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Cremonese",
           "formula": "",
           "status": "Ufficiale",
@@ -132329,7 +132576,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 143
+          "sourceRow": 143,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "napoli",
@@ -132571,15 +132819,17 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 147
+          "sourceRow": 147,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "napoli",
           "teamName": "Napoli",
           "direction": "Uscita",
           "playerName": "Elmas",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Lipsia",
           "formula": "",
           "status": "Ufficiale",
@@ -132631,7 +132881,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 148
+          "sourceRow": 148,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Lipsia",
+          "currentTeamResolvedV635": "Lipsia"
         }
       ],
       "talksIncoming": [
@@ -133669,8 +133922,8 @@
           "teamName": "Parma",
           "direction": "Entrata",
           "playerName": "Franco Carboni",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Inter",
           "formula": "",
           "status": "Ufficiale",
@@ -133754,7 +134007,8 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 151
+          "sourceRow": 151,
+          "roleSourceV635": "nested"
         },
         {
           "teamId": "parma",
@@ -133999,7 +134253,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 154
+          "sourceRow": 154,
+          "currentRealTeam": "Palermo",
+          "currentTeamResolvedV635": "Palermo"
         },
         {
           "teamId": "parma",
@@ -134059,15 +134315,17 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 155
+          "sourceRow": 155,
+          "currentRealTeam": "Torino",
+          "currentTeamResolvedV635": "Torino"
         },
         {
           "teamId": "parma",
           "teamName": "Parma",
           "direction": "Uscita",
           "playerName": "Strefezza",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Olympiacos",
           "formula": "",
           "status": "Ufficiale",
@@ -134119,7 +134377,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 156
+          "sourceRow": 156,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Olympiacos",
+          "currentTeamResolvedV635": "Olympiacos"
         },
         {
           "teamId": "parma",
@@ -134179,7 +134440,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 227
+          "sourceRow": 227,
+          "currentRealTeam": "Ospitaletto",
+          "currentTeamResolvedV635": "Ospitaletto"
         }
       ],
       "talksIncoming": [
@@ -134696,15 +134959,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 159
+          "sourceRow": 159,
+          "currentRealTeam": "Elche",
+          "currentTeamResolvedV635": "Elche"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Abdulhamid",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Lens",
           "formula": "",
           "status": "Ufficiale",
@@ -134756,15 +135021,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 160
+          "sourceRow": 160,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Lens",
+          "currentTeamResolvedV635": "Lens"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Alessandro Romano",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Cagliari",
           "formula": "",
           "status": "Ufficiale",
@@ -134847,15 +135115,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 161
+          "sourceRow": 161,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Cagliari",
+          "currentTeamResolvedV635": "Cagliari"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "El Shaarawy",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -134907,15 +135178,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 162
+          "sourceRow": 162,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Celik",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -134967,7 +135241,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 163
+          "sourceRow": 163,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "roma",
@@ -135027,15 +135304,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 164
+          "sourceRow": 164,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Dybala",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -135087,15 +135366,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 165
+          "sourceRow": 165,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Ferguson",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Brighton",
           "formula": "",
           "status": "Ufficiale",
@@ -135147,15 +135429,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 166
+          "sourceRow": 166,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Brighton",
+          "currentTeamResolvedV635": "Brighton"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Tsimikas",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Liverpool",
           "formula": "",
           "status": "Ufficiale",
@@ -135207,15 +135492,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 167
+          "sourceRow": 167,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Liverpool",
+          "currentTeamResolvedV635": "Liverpool"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Venturino",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Genoa",
           "formula": "",
           "status": "Ufficiale",
@@ -135267,15 +135555,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 168
+          "sourceRow": 168,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Genoa",
+          "currentTeamResolvedV635": "Genoa"
         },
         {
           "teamId": "roma",
           "teamName": "Roma",
           "direction": "Uscita",
           "playerName": "Zaragoza",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Bayern Monaco",
           "formula": "",
           "status": "Ufficiale",
@@ -135327,7 +135618,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 169
+          "sourceRow": 169,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Bayern Monaco",
+          "currentTeamResolvedV635": "Bayern Monaco"
         },
         {
           "teamId": "roma",
@@ -135387,7 +135681,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 265
+          "sourceRow": 265,
+          "currentRealTeam": "Genoa",
+          "currentTeamResolvedV635": "Genoa"
         }
       ],
       "talksIncoming": [
@@ -136570,8 +136866,8 @@
           "teamName": "Sassuolo",
           "direction": "Entrata",
           "playerName": "Alvarez",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Monza",
           "formula": "",
           "status": "Ufficiale",
@@ -136623,7 +136919,8 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 170
+          "sourceRow": 170,
+          "roleSourceV635": "listone"
         },
         {
           "teamId": "sassuolo",
@@ -136783,8 +137080,8 @@
           "teamName": "Sassuolo",
           "direction": "Uscita",
           "playerName": "Satalino",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "P",
+          "role": "P",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -136836,15 +137133,18 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 173
+          "sourceRow": 173,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
           "direction": "Uscita",
           "playerName": "Romagna",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -136896,15 +137196,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 174
+          "sourceRow": 174,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
           "direction": "Uscita",
           "playerName": "Fadera",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Como",
           "formula": "",
           "status": "Ufficiale",
@@ -136956,15 +137259,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 175
+          "sourceRow": 175,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Como",
+          "currentTeamResolvedV635": "Como"
         },
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
           "direction": "Uscita",
           "playerName": "Vranckx",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Wolfsburg",
           "formula": "",
           "status": "Ufficiale",
@@ -137016,15 +137322,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 176
+          "sourceRow": 176,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Wolfsburg",
+          "currentTeamResolvedV635": "Wolfsburg"
         },
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
           "direction": "Uscita",
           "playerName": "Coulibaly",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Leicester",
           "formula": "",
           "status": "Ufficiale",
@@ -137076,15 +137385,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 177
+          "sourceRow": 177,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Leicester",
+          "currentTeamResolvedV635": "Leicester"
         },
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
           "direction": "Uscita",
           "playerName": "Nzola",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "A",
+          "role": "A",
           "origin": "Fiorentina",
           "formula": "",
           "status": "Ufficiale",
@@ -137136,15 +137448,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 178
+          "sourceRow": 178,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Fiorentina",
+          "currentTeamResolvedV635": "Fiorentina"
         },
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
           "direction": "Uscita",
           "playerName": "Garcia",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Marsiglia",
           "formula": "",
           "status": "Ufficiale",
@@ -137196,7 +137511,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 179
+          "sourceRow": 179,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Marsiglia",
+          "currentTeamResolvedV635": "Marsiglia"
         }
       ],
       "talksIncoming": [
@@ -138050,15 +138368,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 184
+          "sourceRow": 184,
+          "currentRealTeam": "Partizan Belgrado",
+          "currentTeamResolvedV635": "Partizan Belgrado"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Lazaro",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Al-Ain",
           "formula": "",
           "status": "Ufficiale",
@@ -138110,15 +138430,18 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 185
+          "sourceRow": 185,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Al-Ain",
+          "currentTeamResolvedV635": "Al-Ain"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Maripan",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Internacional",
           "formula": "",
           "status": "Ufficiale",
@@ -138170,7 +138493,10 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 186
+          "sourceRow": 186,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Internacional",
+          "currentTeamResolvedV635": "Internacional"
         },
         {
           "teamId": "torino",
@@ -138230,7 +138556,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 187
+          "sourceRow": 187,
+          "currentRealTeam": "Vicenza",
+          "currentTeamResolvedV635": "Vicenza"
         },
         {
           "teamId": "torino",
@@ -138290,7 +138618,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 188
+          "sourceRow": 188,
+          "currentRealTeam": "Ascoli",
+          "currentTeamResolvedV635": "Ascoli"
         },
         {
           "teamId": "torino",
@@ -138350,7 +138680,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 189
+          "sourceRow": 189,
+          "currentRealTeam": "Mantova",
+          "currentTeamResolvedV635": "Mantova"
         },
         {
           "teamId": "torino",
@@ -138410,15 +138742,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 190
+          "sourceRow": 190,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Tameze",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -138470,7 +138804,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 191
+          "sourceRow": 191,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "torino",
@@ -138530,15 +138867,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 192
+          "sourceRow": 192,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Ebosse",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Udinese",
           "formula": "",
           "status": "Ufficiale",
@@ -138590,15 +138929,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 193
+          "sourceRow": 193,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Udinese",
+          "currentTeamResolvedV635": "Udinese"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Marianucci",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Napoli",
           "formula": "",
           "status": "Ufficiale",
@@ -138650,15 +138992,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 194
+          "sourceRow": 194,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Napoli",
+          "currentTeamResolvedV635": "Napoli"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Prati",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "C",
+          "role": "C",
           "origin": "Cagliari",
           "formula": "",
           "status": "Ufficiale",
@@ -138710,15 +139055,18 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 195
+          "sourceRow": 195,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Cagliari",
+          "currentTeamResolvedV635": "Cagliari"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Obrador",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Benfica",
           "formula": "",
           "status": "Ufficiale",
@@ -138801,15 +139149,18 @@
           "sourceType": "Tabellone ufficialita",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
-          "sourceRow": 287
+          "sourceRow": 287,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Benfica",
+          "currentTeamResolvedV635": "Benfica"
         },
         {
           "teamId": "torino",
           "teamName": "Torino",
           "direction": "Uscita",
           "playerName": "Nkounkou",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Eintracht Francoforte",
           "formula": "",
           "status": "Ufficiale",
@@ -138861,7 +139212,10 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 197
+          "sourceRow": 197,
+          "roleSourceV635": "listone",
+          "currentRealTeam": "Eintracht Francoforte",
+          "currentTeamResolvedV635": "Eintracht Francoforte"
         }
       ],
       "talksIncoming": [
@@ -139872,8 +140226,8 @@
           "teamName": "Udinese",
           "direction": "Entrata",
           "playerName": "Ebosse",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "Torino",
           "formula": "",
           "status": "Ufficiale",
@@ -139956,7 +140310,8 @@
           "sourceType": "Tabellone ufficialita",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
-          "sourceRow": 280
+          "sourceRow": 280,
+          "roleSourceV635": "nested"
         },
         {
           "teamId": "udinese",
@@ -140086,7 +140441,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 204
+          "sourceRow": 204,
+          "currentRealTeam": "Universitatea Craiova",
+          "currentTeamResolvedV635": "Universitatea Craiova"
         },
         {
           "teamId": "udinese",
@@ -140146,7 +140503,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 205
+          "sourceRow": 205,
+          "currentRealTeam": "Arezzo",
+          "currentTeamResolvedV635": "Arezzo"
         },
         {
           "teamId": "udinese",
@@ -140237,15 +140596,17 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 206
+          "sourceRow": 206,
+          "currentRealTeam": "Fiorentina",
+          "currentTeamResolvedV635": "Fiorentina"
         },
         {
           "teamId": "udinese",
           "teamName": "Udinese",
           "direction": "Uscita",
           "playerName": "Ehizibue",
-          "roleBrief": "",
-          "role": "",
+          "roleBrief": "D",
+          "role": "D",
           "origin": "svincolato",
           "formula": "",
           "status": "Ufficiale",
@@ -140335,7 +140696,10 @@
           "sourceType": "Articolo ritiri/amichevoli",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "Pagina/articolo Calcio d'Angolo con calendario amichevoli Serie A 2026.",
-          "sourceRow": 207
+          "sourceRow": 207,
+          "roleSourceV635": "nested",
+          "currentRealTeam": "Pec Zwolle",
+          "currentTeamResolvedV635": "Pec Zwolle"
         }
       ],
       "talksIncoming": [
@@ -142373,7 +142737,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 218
+          "sourceRow": 218,
+          "currentRealTeam": "Sporting",
+          "currentTeamResolvedV635": "Sporting"
         },
         {
           "teamId": "venezia",
@@ -142433,7 +142799,9 @@
           "sourceType": "Tabellone aggregato",
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Articolo/tabellone Eurosport",
-          "sourceRow": 219
+          "sourceRow": 219,
+          "currentRealTeam": "Brighton",
+          "currentTeamResolvedV635": "Brighton"
         },
         {
           "teamId": "venezia",
@@ -142493,7 +142861,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 220
+          "sourceRow": 220,
+          "currentRealTeam": "Sudtirol",
+          "currentTeamResolvedV635": "Sudtirol"
         },
         {
           "teamId": "venezia",
@@ -142553,7 +142923,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 221
+          "sourceRow": 221,
+          "currentRealTeam": "Trento",
+          "currentTeamResolvedV635": "Trento"
         },
         {
           "teamId": "venezia",
@@ -142613,7 +142985,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 222
+          "sourceRow": 222,
+          "currentRealTeam": "Svincolato",
+          "currentTeamResolvedV635": "Svincolato"
         },
         {
           "teamId": "venezia",
@@ -142673,7 +143047,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 224
+          "sourceRow": 224,
+          "currentRealTeam": "Verona",
+          "currentTeamResolvedV635": "Verona"
         },
         {
           "teamId": "venezia",
@@ -142733,7 +143109,9 @@
           "sourceType": "Articolo specifico",
           "sourceVerification": "OK_ARTICOLO",
           "sourceVerificationNote": "URL articolo/live puntuale",
-          "sourceRow": 234
+          "sourceRow": 234,
+          "currentRealTeam": "Torino",
+          "currentTeamResolvedV635": "Torino"
         },
         {
           "teamId": "venezia",
@@ -142793,7 +143171,9 @@
           "sourceVerification": "OK_AGGREGATO",
           "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
           "sourceRow": 289,
-          "sourcesCount": 1
+          "sourcesCount": 1,
+          "currentRealTeam": "Sporting CP",
+          "currentTeamResolvedV635": "Sporting CP"
         }
       ],
       "talksIncoming": [
