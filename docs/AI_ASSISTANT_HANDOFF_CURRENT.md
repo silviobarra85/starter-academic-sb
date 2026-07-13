@@ -1,10 +1,20 @@
-# AI Assistant Handoff corrente - V639
+# AI Assistant Handoff Current
 
-Overlay V639: aggiorna Per i SUDATORI e ioSudo con il file `fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_aggiornamento_globale_v15(1).xlsx`.
+## Ultimo overlay: V641
 
-Punti principali:
-- ricostruzione aggregata di ufficialita e trattative dal workbook v15;
-- applicazione del foglio `Agg_13_07_v15_Globale`;
-- fonti puntuali aggiunte dal foglio `Fonti`;
-- in ioSudo, nella vista GIOCATORI compare la sorgente del giocatore (`Listone`, `TMW`, `SOS Fanta`, `Eurosport`, ecc.);
-- tutti i giocatori del listone restano inclusi nella vista GIOCATORI.
+La V641 aggiunge l'automazione GitHub Actions per applicare gli overlay caricati in `incoming/overlays/`.
+
+## Stato funzionale
+
+- Per i SUDATORI/ioSudo restano sui dati della V639 se la V640 non e stata applicata.
+- Da questo momento gli overlay futuri possono essere caricati da smartphone su GitHub e applicati automaticamente dal workflow `Apply Overlay`.
+
+## Uso rapido
+
+Caricare lo zip overlay in:
+
+```text
+incoming/overlays/
+```
+
+Il workflow copia `static/` e `docs/`, esegue audit e commit/push automatico.

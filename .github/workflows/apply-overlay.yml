@@ -1,0 +1,42 @@
+name: Apply Overlay
+
+on:
+  push:
+    paths:
+      - 'incoming/overlays/*.zip'
+  workflow_dispatch:
+    inputs:
+      overlay_path:
+        description: 'Percorso dello zip overlay, es. incoming/overlays/fantacalcio_overlay.zip. Se vuoto usa lo zip piu recente.'
+        required: false
+        default: ''
+      commit_message:
+        description: 'Messaggio commit. Se vuoto usa un messaggio automatico.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  apply-overlay:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[apply-overlay]')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Apply overlay zip
+        env:
+          OVERLAY_PATH: ${{ github.event.inputs.overlay_path }}
+          COMMIT_MESSAGE: ${{ github.event.inputs.commit_message }}
+        run: |
+          bash tools/apply-overlay-from-zip.sh "$OVERLAY_PATH" "$COMMIT_MESSAGE"
