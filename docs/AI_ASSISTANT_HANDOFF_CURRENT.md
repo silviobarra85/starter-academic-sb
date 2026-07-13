@@ -1,7 +1,7 @@
 # AI Assistant Handoff CURRENT
 
-Stato corrente: **V624**.
+Stato corrente: **V625**.
 
-La V624 corregge la vista **GIOCATORI** di ioSudo: ogni giocatore compare una sola volta, le trattative vengono agganciate alla scheda reale quando possibile, la card mostra squadra reale/fantasy/listone/ultimo aggiornamento e il dettaglio contiene le fonti del giocatore.
+La V625 corregge la vista **GIOCATORI** di ioSudo: le card dei giocatori sono ora cliccabili e aprono sempre il dettaglio con fonti/link, trattative, ufficialita e SOS quando disponibili.
 
-Vedere: docs/AI_ASSISTANT_HANDOFF_V624.md
+Vedere: docs/AI_ASSISTANT_HANDOFF_V625.md

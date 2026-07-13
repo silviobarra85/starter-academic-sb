@@ -1,12 +1,11 @@
 # Overlay Roadmap
 
-## V624 - ioSudo GIOCATORI deduplicati
+## V625 - ioSudo click dettaglio GIOCATORI
 
-- La vista GIOCATORI mostra ogni giocatore una sola volta.
-- Le voci mercato di giocatori gia presenti nel dataset vengono agganciate alla scheda reale del giocatore, anche se la trattativa e registrata sotto un'altra squadra.
-- Esempio guida: Muharemovic deve comparire una sola volta, come Sassuolo, con rumors/trattative collegati nel dettaglio.
-- Le card mostrano nome, ruolo, squadra reale attuale, squadra fantasy, badge, ultimo aggiornamento e presenza nel listone piu recente.
-- Il dettaglio giocatore mantiene le fonti/links relativi al giocatore.
+- La vista GIOCATORI esegue il binding dei click dopo il rendering globale.
+- Le card giocatore aprono sempre il dettaglio, sia per giocatori reali sia per giocatori virtuali generati dal mercato.
+- Il dettaglio mantiene fonti/link, trattative, ufficialita, SOS e informazioni di listone/fantasy roster.
+- Nessuna modifica ai dati Sudatori/Excel: correzione runtime dell'app.
 
 ## V623 - ioSudo GIOCATORI con voci mercato
 
