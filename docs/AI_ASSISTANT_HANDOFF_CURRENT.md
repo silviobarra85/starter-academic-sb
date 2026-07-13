@@ -1,30 +1,34 @@
-# AI Assistant Handoff V629 - Sudatori/ioSudo fonti articolo v9
+# AI Assistant Handoff Current
 
-Data: 2026-07-13
+Versione corrente: V633
 
-Overlay: `fantacalcio_overlay_sudatori_iosudo_v629_fonti_articoli_v9.zip`
+## Stato corrente
 
-## Scopo
-Aggiorna Per i SUDATORI e ioSudo con l'Excel `fantacalcio_serie_a_2026_27_aggiornato_2026-07-13_fonti_articoli_v9(1).xlsx`.
+Per i SUDATORI e ioSudo usano il dataset condiviso:
 
-## Modifiche principali
-- Versione dati e runtime portata a V629.
-- Applicati i link puntuali dal foglio `Recupero_Fonti_13_07_v9`.
-- Le righe con `DA_VERIFICARE_PRECISO` restano tracciate ma non cliccabili.
-- Conservate le funzioni precedenti: rose live, vista GIOCATORI, dettagli giocatore cliccabili, fonti articolo puntuali.
+```text
+static/fanta-engine/data/sudatori/current/sudatori-data.json
+```
 
-## Conteggi
-- Squadre: 20
-- Giocatori: 714
-- Amichevoli/eventi: 94
-- Trattative aggregate: 186
-- Ufficialita in entrata: 97
-- Ufficialita in uscita: 136
-- SOS/infortunati: 8
-- Fonti: 126
-- Righe recupero fonti v9: 43
-- Recuperi OK: 33
-- Articoli ancora mancanti: 10
+La V633 mantiene le correzioni precedenti:
 
-## Note operative
-Non serve reinstallare ioSudo. Dopo il deploy chiudere e riaprire l'app; se resta cache vecchia, aprire dal browser e fare refresh.
+- rose live da `assets/rose`;
+- vista GIOCATORI in ioSudo;
+- card giocatore cliccabili;
+- recupero ruolo da listone quando manca nel dataset;
+- squadra attuale ufficiale o `Svincolato` in ioSudo;
+- manifest Sudatori corretto con `current: sudatori-data.json`.
+
+## Novità V633
+
+- aggiunti i 10 link articolo puntuali forniti dall'utente;
+- risolte le fonti residue che risultavano ancora mancanti dopo V631;
+- `missingPreciseArticlesV633` è vuoto;
+- `resolvedPreciseArticlesV633` contiene i 10 recuperi.
+
+## Audit consigliati
+
+```bash
+node static/fanta-engine/tools/audit-sudatori-section-v633.mjs
+node static/fanta-engine/tools/audit-iosudo-v633.mjs
+```
