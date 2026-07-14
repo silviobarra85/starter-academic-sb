@@ -1,7 +1,6 @@
-# Overlay Roadmap - current
+# Overlay roadmap
 
-## V653
-
-- ioSudo: GIOCATORI include anche i giocatori presenti solo nelle righe RUMOR/UFFICIALITÀ.
-- Mantiene le ottimizzazioni V651/V652.
-- Non modifica i dati Sudatori e non riattiva la sezione pubblica Per i SUDATORI.
+- V647: sezione pubblica Per i SUDATORI disattivata.
+- V649: dati v23 e filtro amichevoli effettive.
+- V651-V653: performance liste e dettaglio giocatore; inclusione giocatori solo-rumor in GIOCATORI.
+- V654: dati v24 e badge fonte/link compatti.
