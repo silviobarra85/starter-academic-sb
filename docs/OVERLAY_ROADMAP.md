@@ -1,12 +1,5 @@
-# Overlay Roadmap
+# Overlay roadmap
 
-- V641: automazione GitHub Actions per applicazione overlay.
-- V642: fix vista GIOCATORI ioSudo dopo V640.
-- V644: aggiornamento ioSudo/Sudatori da Excel v21, fix cache-buster e riferimenti sezione Sudatori.
-
-
-## V646 - 2026-07-14
-Aggiornato dataset Sudatori/ioSudo da Excel v22, mantenendo ottimizzazioni V645.
-
-## V647 - 2026-07-14
-Disattivata la sezione pubblica `Per i SUDATORI` dalle shell delle leghe. `ioSudo` resta attivo e continua a usare il dataset centrale Sudatori.
+- V647: disattivata la sezione pubblica `Per i SUDATORI` nel sito, mantenendo i dati per ioSudo.
+- V648: corretta vista giocatori dentro schede squadra e formattazione date seriali Excel.
+- V649: aggiornato ioSudo da Excel v23, filtrate le amichevoli alle sole partite effettive e alleggerita la navigazione con event delegation/cache lazy.
