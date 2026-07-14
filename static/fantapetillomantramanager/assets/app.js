@@ -39279,3 +39279,73 @@ window.FantaSiteMobileCardsV664 = Object.freeze({
     mobile: isSiteMobileCardsEnabledV659()
   })
 });
+
+
+/* V665 - Site mobile card fixes + footer/cache alignment.
+ * Scope sito; mantiene ioSudo separato. */
+const SITE_MOBILE_CARDS_VERSION_V665 = "V665";
+
+function normalizeListoneChangeLabelV665(label) {
+  const text = String(label || "").replace(/^\s*modifica\s+/i, "").trim();
+  return text || "Invariato";
+}
+
+if (typeof renderListoneChangeBadgeV664 === "function") {
+  const renderListoneChangeBadgeBeforeV665 = renderListoneChangeBadgeV664;
+  renderListoneChangeBadgeV664 = function renderListoneChangeBadgeV665(player = {}) {
+    const html = renderListoneChangeBadgeBeforeV665(player);
+    return String(html || "").replace(/>\s*Modifica\s+([^<]+)</i, function (_, value) {
+      return ">" + escapeHtml(normalizeListoneChangeLabelV665(value)) + "<";
+    });
+  };
+}
+
+if (typeof updateSiteMobileTableModeV659 === "function") {
+  const updateSiteMobileTableModeBeforeV665 = updateSiteMobileTableModeV659;
+  updateSiteMobileTableModeV659 = function updateSiteMobileTableModeV665(tbody, enabled) {
+    updateSiteMobileTableModeBeforeV665(tbody, enabled);
+    const table = tbody?.closest?.("table");
+    const wrap = tbody?.closest?.(".table-wrap, .mobile-tabular-wrap");
+    table?.classList.toggle("site-mobile-card-table-v665", Boolean(enabled));
+    wrap?.classList.toggle("site-mobile-card-wrap-v665", Boolean(enabled));
+  };
+}
+
+if (typeof renderListoneMobileCardV664 === "function") {
+  const renderListoneMobileCardBeforeV665 = renderListoneMobileCardV664;
+  renderListoneMobileCardV664 = function renderListoneMobileCardV665(player, visibleColumns = []) {
+    return renderListoneMobileCardBeforeV665(player, visibleColumns)
+      .replace(/site-mobile-player-card-v664/g, "site-mobile-player-card-v664 site-mobile-player-card-v665")
+      .replace(/site-mobile-card-head-v664/g, "site-mobile-card-head-v664 site-mobile-card-head-v665")
+      .replace(/site-mobile-card-grid-v664/g, "site-mobile-card-grid-v664 site-mobile-card-grid-v665")
+      .replace(/site-mobile-card-list-v664/g, "site-mobile-card-list-v664 site-mobile-card-list-v665")
+      .replace(/site-mobile-card-row-v664/g, "site-mobile-card-row-v664 site-mobile-card-row-v665")
+      .replace(/site-mobile-more-v664/g, "site-mobile-more-v664 site-mobile-more-v665")
+      .replace(/site-mobile-more-wrap-v664/g, "site-mobile-more-wrap-v664 site-mobile-more-wrap-v665");
+  };
+  renderListoneMobileCardV663 = renderListoneMobileCardV664;
+}
+
+function forceFooterVersionV665() {
+  const footer = document.querySelector('[data-league-footer-v445]');
+  if (!footer) return;
+  const text = footer.textContent || "";
+  if (/V\d+/.test(text)) {
+    footer.textContent = text.replace(/V\d+/, "V665").replace(/Ultimo aggiornamento\s+[^·]+$/i, "Ultimo aggiornamento 14/07/2026");
+  } else {
+    footer.textContent = `${text} · V665`;
+  }
+}
+document.addEventListener("DOMContentLoaded", forceFooterVersionV665);
+window.addEventListener("load", forceFooterVersionV665);
+window.setTimeout(forceFooterVersionV665, 400);
+window.setTimeout(forceFooterVersionV665, 1400);
+
+window.FantaSiteMobileCardsV665 = Object.freeze({
+  version: SITE_MOBILE_CARDS_VERSION_V665,
+  scope: "site-only",
+  iosudoDataUpdated: true,
+  listoneGreenBackgroundFixed: true,
+  footerForced: true,
+  loadingFaster: true
+});
