@@ -1,0 +1,40 @@
+/* V657 - Site performance: rendering containment for public pages. */
+.app-page:not(.is-active) {
+  display: none !important;
+}
+.app-page.is-active,
+.panel,
+.stack-item,
+.roster-card,
+.roster-card-grid > *,
+.news-item,
+.mobile-tabular-wrap,
+.table-wrap,
+.dashboard-subsection {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+.app-page.is-active .panel,
+.app-page.is-active .stack-item {
+  contain: layout paint style;
+}
+.site-perf-placeholder-v657 {
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: .75rem 0;
+  opacity: .82;
+}
+.site-perf-more-row-v657 td,
+.site-perf-more-card-v657 {
+  text-align: center;
+  padding: 1rem;
+}
+@media (max-width: 900px) {
+  .app-page.is-active .mobile-tabular tbody tr:nth-child(n+81):not(.site-perf-visible-v657):not(.site-perf-more-row-v657) {
+    display: none;
+  }
+  .app-page.is-active .roster-card-grid > :nth-child(n+7):not(.site-perf-visible-v657):not(.site-perf-more-card-v657) {
+    display: none;
+  }
+}

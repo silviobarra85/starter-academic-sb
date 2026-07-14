@@ -37201,3 +37201,328 @@ window.FantaStaticRosterGithubPrimaryV588 = Object.freeze({
   sync: (options = {}) => syncRosterEntriesFromStaticRostersV588(options)
 });
 
+
+/* V657 - Site performance runtime.
+ * Applica al sito lo stesso principio usato per ioSudo: non costruire tutte le viste pesanti
+ * a ogni render. Le sezioni pesanti vengono renderizzate solo quando sono attive o richieste,
+ * preservando dati, Firebase, EmailJS, ioSudo e sezione Sudatori pubblica disattivata. */
+const SITE_PERFORMANCE_VERSION_V657 = "V657";
+const sitePerformanceStateV657 = {
+  forcePage: "",
+  renderedPages: new Set(),
+  pendingPages: new Set(),
+  renderCounts: Object.create(null),
+  lastPage: "",
+  enabled: true
+};
+
+function getHashPageV657() {
+  const raw = decodeURIComponent(String(window.location.hash || "").replace(/^#/, "")).trim();
+  if (!raw) return "dashboard";
+  if (raw === "finance") return "regolamento";
+  if (raw.startsWith("news-")) return "news";
+  if (raw.startsWith("team-")) return "teamprofile";
+  if (raw.startsWith("calciomercato-player-")) return "dashboard";
+  return raw;
+}
+
+function normalizeSitePageV657(pageName = "") {
+  const raw = String(pageName || "").trim() || getHashPageV657() || state.currentPage || "dashboard";
+  try {
+    return typeof normalizeAppPageV401 === "function" ? normalizeAppPageV401(raw) : raw;
+  } catch (_) {
+    return raw || "dashboard";
+  }
+}
+
+function getActiveSitePageV657() {
+  return normalizeSitePageV657(state.currentPage || getHashPageV657() || "dashboard");
+}
+
+function isSitePageActiveV657(pageName) {
+  const page = normalizeSitePageV657(pageName);
+  if (sitePerformanceStateV657.forcePage) return sitePerformanceStateV657.forcePage === page;
+  return getActiveSitePageV657() === page;
+}
+
+function shouldRenderSitePageV657(pageName) {
+  if (!sitePerformanceStateV657.enabled) return true;
+  const page = normalizeSitePageV657(pageName);
+  if (!page) return true;
+  if (sitePerformanceStateV657.forcePage) return sitePerformanceStateV657.forcePage === page;
+  return getActiveSitePageV657() === page;
+}
+
+function markDeferredSitePageV657(pageName) {
+  const page = normalizeSitePageV657(pageName);
+  sitePerformanceStateV657.pendingPages.add(page);
+  const host = document.querySelector(`[data-page="${CSS.escape(page)}"]`);
+  if (host && !host.querySelector(".site-perf-placeholder-v657")) {
+    const panel = host.querySelector(".panel, .page-heading")?.parentElement || host;
+    const placeholder = document.createElement("div");
+    placeholder.className = "site-perf-placeholder-v657 muted";
+    placeholder.textContent = "Sezione pronta: verrà caricata quando la apri.";
+    panel.appendChild(placeholder);
+  }
+}
+
+function clearDeferredSitePageV657(pageName) {
+  const page = normalizeSitePageV657(pageName);
+  sitePerformanceStateV657.pendingPages.delete(page);
+  document.querySelector(`[data-page="${CSS.escape(page)}"] .site-perf-placeholder-v657`)?.remove();
+}
+
+function countRenderV657(name) {
+  sitePerformanceStateV657.renderCounts[name] = (sitePerformanceStateV657.renderCounts[name] || 0) + 1;
+}
+
+function runForcedSiteRenderV657(pageName, callback) {
+  const previous = sitePerformanceStateV657.forcePage;
+  sitePerformanceStateV657.forcePage = normalizeSitePageV657(pageName);
+  try {
+    return callback?.();
+  } finally {
+    sitePerformanceStateV657.forcePage = previous;
+  }
+}
+
+const renderDashboardBeforeV657 = typeof renderDashboard === "function" ? renderDashboard : null;
+if (renderDashboardBeforeV657) {
+  renderDashboard = function renderDashboardV657(...args) {
+    if (!shouldRenderSitePageV657("dashboard")) return null;
+    countRenderV657("dashboard");
+    clearDeferredSitePageV657("dashboard");
+    return renderDashboardBeforeV657.apply(this, args);
+  };
+}
+
+const renderTeamsTableBeforeV657 = typeof renderTeamsTable === "function" ? renderTeamsTable : null;
+if (renderTeamsTableBeforeV657) {
+  renderTeamsTable = function renderTeamsTableV657(...args) {
+    if (!shouldRenderSitePageV657("clubs")) return null;
+    countRenderV657("teams");
+    clearDeferredSitePageV657("clubs");
+    return renderTeamsTableBeforeV657.apply(this, args);
+  };
+}
+
+const renderClubRostersPublicBeforeV657 = typeof renderClubRostersPublic === "function" ? renderClubRostersPublic : null;
+if (renderClubRostersPublicBeforeV657) {
+  renderClubRostersPublic = function renderClubRostersPublicV657(...args) {
+    if (!shouldRenderSitePageV657("clubs")) {
+      markDeferredSitePageV657("clubs");
+      return null;
+    }
+    countRenderV657("clubs");
+    clearDeferredSitePageV657("clubs");
+    const result = renderClubRostersPublicBeforeV657.apply(this, args);
+    scheduleSiteChunkingV657("clubs");
+    return result;
+  };
+}
+
+const renderListonePublicBeforeV657 = typeof renderListonePublic === "function" ? renderListonePublic : null;
+if (renderListonePublicBeforeV657) {
+  renderListonePublic = function renderListonePublicV657(...args) {
+    if (!shouldRenderSitePageV657("listone")) {
+      markDeferredSitePageV657("listone");
+      return null;
+    }
+    countRenderV657("listone");
+    clearDeferredSitePageV657("listone");
+    const result = renderListonePublicBeforeV657.apply(this, args);
+    scheduleSiteChunkingV657("listone");
+    return result;
+  };
+}
+
+const renderCompetitionsPublicBeforeV657 = typeof renderCompetitionsPublic === "function" ? renderCompetitionsPublic : null;
+if (renderCompetitionsPublicBeforeV657) {
+  renderCompetitionsPublic = function renderCompetitionsPublicV657(...args) {
+    if (!shouldRenderSitePageV657("competitions")) {
+      markDeferredSitePageV657("competitions");
+      return null;
+    }
+    countRenderV657("competitions");
+    clearDeferredSitePageV657("competitions");
+    return renderCompetitionsPublicBeforeV657.apply(this, args);
+  };
+}
+
+const renderHonorSummaryBeforeV657 = typeof renderHonorSummary === "function" ? renderHonorSummary : null;
+if (renderHonorSummaryBeforeV657) {
+  renderHonorSummary = function renderHonorSummaryV657(...args) {
+    if (!shouldRenderSitePageV657("honor")) {
+      markDeferredSitePageV657("honor");
+      return null;
+    }
+    countRenderV657("honor");
+    clearDeferredSitePageV657("honor");
+    return renderHonorSummaryBeforeV657.apply(this, args);
+  };
+}
+
+const renderNewsPublicBeforeV657 = typeof renderNewsPublicV34 === "function" ? renderNewsPublicV34 : null;
+if (renderNewsPublicBeforeV657) {
+  renderNewsPublicV34 = function renderNewsPublicV657(...args) {
+    if (!shouldRenderSitePageV657("news")) {
+      markDeferredSitePageV657("news");
+      return null;
+    }
+    countRenderV657("news");
+    clearDeferredSitePageV657("news");
+    return renderNewsPublicBeforeV657.apply(this, args);
+  };
+}
+
+const renderAdminAreaBeforeV657 = typeof renderAdminArea === "function" ? renderAdminArea : null;
+if (renderAdminAreaBeforeV657) {
+  renderAdminArea = function renderAdminAreaV657(...args) {
+    if (!shouldRenderSitePageV657("admin")) return null;
+    countRenderV657("admin");
+    clearDeferredSitePageV657("admin");
+    return renderAdminAreaBeforeV657.apply(this, args);
+  };
+}
+
+const renderTransferMarketPageBeforeV657 = typeof renderTransferMarketPageV119 === "function" ? renderTransferMarketPageV119 : null;
+if (renderTransferMarketPageBeforeV657) {
+  renderTransferMarketPageV119 = function renderTransferMarketPageV657(...args) {
+    if (!shouldRenderSitePageV657("fantamercato") && !shouldRenderSitePageV657("teamarea")) return null;
+    countRenderV657("fantamercato");
+    return renderTransferMarketPageBeforeV657.apply(this, args);
+  };
+}
+
+const renderSeasonArchiveBeforeV657 = typeof renderSeasonArchiveV196 === "function" ? renderSeasonArchiveV196 : null;
+if (renderSeasonArchiveBeforeV657) {
+  renderSeasonArchiveV196 = function renderSeasonArchiveV657(...args) {
+    if (!shouldRenderSitePageV657("archive")) return null;
+    countRenderV657("archive");
+    return renderSeasonArchiveBeforeV657.apply(this, args);
+  };
+}
+
+const renderSoccerDataPageBeforeV657 = typeof renderSoccerDataPageV371 === "function" ? renderSoccerDataPageV371 : null;
+if (renderSoccerDataPageBeforeV657) {
+  renderSoccerDataPageV371 = function renderSoccerDataPageV657(...args) {
+    if (!shouldRenderSitePageV657("soccerdata") && !shouldRenderSitePageV657("stats")) return null;
+    countRenderV657("stats");
+    return renderSoccerDataPageBeforeV657.apply(this, args);
+  };
+}
+
+function renderActiveSitePageV657(pageName = getActiveSitePageV657()) {
+  const page = normalizeSitePageV657(pageName);
+  if (!page) return;
+  sitePerformanceStateV657.lastPage = page;
+  runForcedSiteRenderV657(page, () => {
+    try { if (page === "dashboard") renderDashboard?.(); } catch (error) { console.warn("Dashboard V657 non renderizzata", error); }
+    try { if (page === "news") renderNewsPublicV34?.(); } catch (error) { console.warn("News V657 non renderizzata", error); }
+    try { if (page === "clubs") { renderTeamsTable?.(); renderClubRostersPublic?.(); } } catch (error) { console.warn("Rose V657 non renderizzate", error); }
+    try { if (page === "listone") renderListonePublic?.(); } catch (error) { console.warn("Listone V657 non renderizzato", error); }
+    try { if (page === "competitions") renderCompetitionsPublic?.(); } catch (error) { console.warn("Competizioni V657 non renderizzate", error); }
+    try { if (page === "honor") { renderHonorSummary?.(); renderFifaRankingPublic?.(); } } catch (error) { console.warn("Albo V657 non renderizzato", error); }
+    try { if (page === "fantamercato") { ensureTransferMarketDomV119?.(); renderTransferMarketPageV119?.(); } } catch (error) { console.warn("Fantamercato V657 non renderizzato", error); }
+    try { if (page === "archive") renderSeasonArchiveV196?.(); } catch (error) { console.warn("Archivio V657 non renderizzato", error); }
+    try { if (page === "stats" || page === "soccerdata") renderSoccerDataPageV371?.(); } catch (error) { console.warn("Statistiche V657 non renderizzate", error); }
+    try { if (page === "admin") renderAdminArea?.(); } catch (error) { console.warn("Admin V657 non renderizzata", error); }
+    try { if (page === "teamarea") renderUserAreaV34?.(); } catch (error) { console.warn("Area squadra V657 non renderizzata", error); }
+    try { setupCollapsibleSections?.(); } catch (_) {}
+    try { bindNewsShareButtonsV228?.(); } catch (_) {}
+  });
+  sitePerformanceStateV657.renderedPages.add(page);
+}
+
+function scheduleActiveSitePageRenderV657(pageName) {
+  const page = normalizeSitePageV657(pageName);
+  window.clearTimeout(sitePerformanceStateV657.pendingTimer);
+  sitePerformanceStateV657.pendingTimer = window.setTimeout(() => renderActiveSitePageV657(page), 0);
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target?.closest?.("[data-page-link], [data-v42-page-link]");
+  if (!link) return;
+  const page = link.dataset.pageLink || link.dataset.v42PageLink || String(link.getAttribute("href") || "").replace(/^#/, "");
+  if (!page || page === "admin" && !state.isAdmin) return;
+  scheduleActiveSitePageRenderV657(page);
+}, true);
+
+window.addEventListener("hashchange", () => scheduleActiveSitePageRenderV657(getHashPageV657()), { passive: true });
+document.addEventListener("DOMContentLoaded", () => scheduleActiveSitePageRenderV657(getActiveSitePageV657()), { once: true });
+
+function scheduleSiteChunkingV657(pageName) {
+  const run = () => chunkActiveSitePageV657(pageName);
+  if ("requestIdleCallback" in window) window.requestIdleCallback(run, { timeout: 600 });
+  else window.setTimeout(run, 40);
+}
+
+function chunkActiveSitePageV657(pageName) {
+  const page = normalizeSitePageV657(pageName);
+  const host = document.querySelector(`[data-page="${CSS.escape(page)}"]`);
+  if (!host || !host.classList.contains("is-active")) return;
+  const mobile = window.matchMedia?.("(max-width: 900px)")?.matches;
+  if (!mobile) return;
+  const tables = host.querySelectorAll("table.mobile-tabular tbody");
+  tables.forEach((tbody) => installTableProgressiveRevealV657(tbody, 80));
+  const rosterGrid = host.querySelector(".roster-card-grid");
+  if (rosterGrid) installCardProgressiveRevealV657(rosterGrid, 6);
+}
+
+function installTableProgressiveRevealV657(tbody, initialLimit = 80) {
+  if (!tbody || tbody.dataset.sitePerfChunkedV657 === "true") return;
+  const rows = Array.from(tbody.querySelectorAll("tr:not(.site-perf-more-row-v657)"));
+  if (rows.length <= initialLimit) return;
+  tbody.dataset.sitePerfChunkedV657 = "true";
+  let visible = initialLimit;
+  rows.forEach((row, index) => row.classList.toggle("site-perf-visible-v657", index < visible));
+  const more = document.createElement("tr");
+  more.className = "site-perf-more-row-v657";
+  const columns = rows[0]?.children?.length || 1;
+  more.innerHTML = `<td colspan="${columns}"><button type="button" class="button button-secondary button-small">Mostra altre voci (${rows.length - visible})</button></td>`;
+  more.querySelector("button")?.addEventListener("click", () => {
+    visible = Math.min(rows.length, visible + 80);
+    rows.forEach((row, index) => row.classList.toggle("site-perf-visible-v657", index < visible));
+    const remaining = rows.length - visible;
+    if (remaining <= 0) more.remove();
+    else more.querySelector("button").textContent = `Mostra altre voci (${remaining})`;
+  });
+  tbody.appendChild(more);
+}
+
+function installCardProgressiveRevealV657(grid, initialLimit = 6) {
+  if (!grid || grid.dataset.sitePerfChunkedV657 === "true") return;
+  const cards = Array.from(grid.children).filter((node) => node.nodeType === 1 && !node.classList.contains("site-perf-more-card-v657"));
+  if (cards.length <= initialLimit) return;
+  grid.dataset.sitePerfChunkedV657 = "true";
+  let visible = initialLimit;
+  cards.forEach((card, index) => card.classList.toggle("site-perf-visible-v657", index < visible));
+  const more = document.createElement("div");
+  more.className = "site-perf-more-card-v657";
+  more.innerHTML = `<button type="button" class="button button-secondary button-small">Mostra altre rose (${cards.length - visible})</button>`;
+  more.querySelector("button")?.addEventListener("click", () => {
+    visible = Math.min(cards.length, visible + 6);
+    cards.forEach((card, index) => card.classList.toggle("site-perf-visible-v657", index < visible));
+    const remaining = cards.length - visible;
+    if (remaining <= 0) more.remove();
+    else more.querySelector("button").textContent = `Mostra altre rose (${remaining})`;
+  });
+  grid.appendChild(more);
+}
+
+window.FantaSitePerformanceV657 = Object.freeze({
+  version: SITE_PERFORMANCE_VERSION_V657,
+  scope: "site-only",
+  iosudoChanged: false,
+  dataChanged: false,
+  sudatoriPublicSectionKeptDisabled: true,
+  activePageRendering: true,
+  mobileProgressiveReveal: true,
+  renderActivePage: renderActiveSitePageV657,
+  getState: () => ({
+    currentPage: getActiveSitePageV657(),
+    renderedPages: Array.from(sitePerformanceStateV657.renderedPages),
+    pendingPages: Array.from(sitePerformanceStateV657.pendingPages),
+    renderCounts: { ...sitePerformanceStateV657.renderCounts }
+  })
+});
