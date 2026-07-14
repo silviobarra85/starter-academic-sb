@@ -1,0 +1,161 @@
+/* V657 - Site performance: rendering containment for public pages. */
+.app-page:not(.is-active) {
+  display: none !important;
+}
+.app-page.is-active,
+.panel,
+.stack-item,
+.roster-card,
+.roster-card-grid > *,
+.news-item,
+.mobile-tabular-wrap,
+.table-wrap,
+.dashboard-subsection {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+.app-page.is-active .panel,
+.app-page.is-active .stack-item {
+  contain: layout paint style;
+}
+.site-perf-placeholder-v657 {
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: .75rem 0;
+  opacity: .82;
+}
+.site-perf-more-row-v657 td,
+.site-perf-more-card-v657 {
+  text-align: center;
+  padding: 1rem;
+}
+@media (max-width: 900px) {
+  .app-page.is-active .mobile-tabular tbody tr:nth-child(n+81):not(.site-perf-visible-v657):not(.site-perf-more-row-v657) {
+    display: none;
+  }
+  .app-page.is-active .roster-card-grid > :nth-child(n+7):not(.site-perf-visible-v657):not(.site-perf-more-card-v657) {
+    display: none;
+  }
+}
+
+/* V659 - Mobile card lists for Listone and Rose tables. */
+@media (max-width: 900px) {
+  .site-mobile-card-table-v659 thead {
+    display: none !important;
+  }
+  .site-mobile-card-wrap-v659 {
+    overflow: visible;
+  }
+  .site-mobile-card-table-v659,
+  .site-mobile-card-table-v659 tbody,
+  .site-mobile-card-table-v659 tr,
+  .site-mobile-card-table-v659 td {
+    display: block;
+    width: 100%;
+  }
+  .site-mobile-card-table-v659 td {
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+  .site-mobile-card-list-v659 {
+    display: grid;
+    gap: .7rem;
+    contain: layout paint style;
+  }
+  .site-mobile-player-card-v659 {
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 18px;
+    padding: .82rem;
+    background: rgba(255,255,255,.045);
+    box-shadow: 0 10px 30px rgba(0,0,0,.14);
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 150px;
+  }
+  .site-mobile-card-head-v659 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .65rem;
+    margin-bottom: .65rem;
+  }
+  .site-mobile-card-title-v659 {
+    min-width: 0;
+    font-weight: 800;
+    line-height: 1.22;
+  }
+  .site-mobile-card-title-v659 a,
+  .site-mobile-card-field-v659 a {
+    word-break: break-word;
+  }
+  .site-mobile-card-badges-v659 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: .35rem;
+    flex: 0 0 auto;
+  }
+  .site-mobile-card-badges-v659 > span,
+  .site-mobile-card-badges-v659 .status,
+  .site-mobile-card-field-v659 .status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    padding: .16rem .46rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.08);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+  .site-mobile-card-grid-v659 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+  }
+  .site-mobile-card-field-v659 {
+    border-radius: 14px;
+    background: rgba(0,0,0,.12);
+    padding: .52rem .58rem;
+    min-width: 0;
+  }
+  .site-mobile-card-field-wide-v659 {
+    grid-column: 1 / -1;
+  }
+  .site-mobile-card-field-v659 > span {
+    display: block;
+    color: var(--muted, rgba(255,255,255,.62));
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    line-height: 1.15;
+    margin-bottom: .22rem;
+    text-transform: uppercase;
+  }
+  .site-mobile-card-field-v659 > strong {
+    display: block;
+    min-width: 0;
+    font-size: .88rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+  .site-mobile-card-field-v659.is-number > strong {
+    font-variant-numeric: tabular-nums;
+  }
+  .site-mobile-more-wrap-v659 {
+    padding: .9rem .2rem .2rem;
+    text-align: center;
+  }
+  .site-mobile-more-v659 {
+    min-width: min(100%, 260px);
+  }
+  .site-mobile-roster-list-v659 {
+    margin-top: .25rem;
+  }
+  .site-mobile-roster-player-card-v659 {
+    padding: .72rem;
+  }
+}

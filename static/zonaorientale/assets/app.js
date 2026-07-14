@@ -37526,3 +37526,350 @@ window.FantaSitePerformanceV657 = Object.freeze({
     renderCounts: { ...sitePerformanceStateV657.renderCounts }
   })
 });
+
+/* V659 - Mobile card rendering for site listone and rose tables.
+ * Scope: sito pubblico. Non modifica ioSudo e non modifica i dati.
+ * Su mobile evita il rendering di migliaia di <tr>: Listone, Movimenti Rose e dettagli Rosa
+ * diventano card compatte a blocchi progressivi, con filtri esistenti ancora attivi. */
+const SITE_MOBILE_CARDS_VERSION_V659 = "V659";
+const SITE_MOBILE_CARD_INITIAL_LISTONE_V659 = 50;
+const SITE_MOBILE_CARD_STEP_LISTONE_V659 = 50;
+const SITE_MOBILE_CARD_INITIAL_MOVEMENTS_V659 = 50;
+const SITE_MOBILE_CARD_STEP_MOVEMENTS_V659 = 50;
+const SITE_MOBILE_CARD_INITIAL_ROSTER_V659 = 12;
+const SITE_MOBILE_CARD_STEP_ROSTER_V659 = 12;
+
+const siteMobileCardsStateV659 = {
+  listoneLimit: SITE_MOBILE_CARD_INITIAL_LISTONE_V659,
+  listoneSignature: "",
+  movementsLimit: SITE_MOBILE_CARD_INITIAL_MOVEMENTS_V659,
+  movementsSignature: "",
+  rosterLimits: new Map()
+};
+
+function isSiteMobileCardsEnabledV659() {
+  return Boolean(window.matchMedia?.("(max-width: 900px)")?.matches);
+}
+
+function normalizeSiteMobileTextV659(value) {
+  return String(value ?? "").trim();
+}
+
+function getSiteMobileCardSignatureV659(parts = []) {
+  return parts.map((part) => normalizeSiteMobileTextV659(part)).join("|");
+}
+
+function resetSiteMobileLimitIfNeededV659(kind, signature, initialLimit) {
+  const signatureKey = `${kind}Signature`;
+  const limitKey = `${kind}Limit`;
+  if (siteMobileCardsStateV659[signatureKey] !== signature) {
+    siteMobileCardsStateV659[signatureKey] = signature;
+    siteMobileCardsStateV659[limitKey] = initialLimit;
+  }
+}
+
+function updateSiteMobileTableModeV659(tbody, enabled) {
+  const table = tbody?.closest?.("table");
+  const wrap = tbody?.closest?.(".table-wrap, .mobile-tabular-wrap");
+  table?.classList.toggle("site-mobile-card-table-v659", Boolean(enabled));
+  wrap?.classList.toggle("site-mobile-card-wrap-v659", Boolean(enabled));
+}
+
+function renderSiteMobileEmptyRowV659(message, colspan = 1) {
+  return `<tr class="site-mobile-card-row-v659"><td colspan="${Number(colspan) || 1}" class="muted center">${escapeHtml(message || "Nessuna voce disponibile.")}</td></tr>`;
+}
+
+function renderSiteMobileMoreButtonV659(kind, remaining, label = "Mostra altre voci") {
+  if (remaining <= 0) return "";
+  return `
+    <button type="button" class="button button-secondary button-small site-mobile-more-v659" data-site-mobile-more-v659="${escapeHtml(kind)}">
+      ${escapeHtml(label)} (${escapeHtml(remaining)})
+    </button>`;
+}
+
+function renderListoneMobileCardV659(player, visibleColumns = []) {
+  const playerName = renderListoneCell(player, { key: "playerName", label: "Giocatore" });
+  const role = renderListoneCell(player, { key: "classicRole", label: "R" });
+  const realTeam = renderListoneCell(player, { key: "realTeam", label: "Sq" });
+  const status = renderListoneCell(player, { key: "status", label: "Stato" });
+  const details = visibleColumns
+    .filter((column) => column.key !== "playerName")
+    .map((column) => `
+      <div class="site-mobile-card-field-v659 listone-col-${escapeHtml(column.key)} ${column.numeric ? "is-number" : ""}">
+        <span>${escapeHtml(column.label)}</span>
+        <strong>${renderListoneCell(player, column)}</strong>
+      </div>`).join("");
+
+  return `
+    <article class="site-mobile-player-card-v659">
+      <header class="site-mobile-card-head-v659">
+        <div class="site-mobile-card-title-v659">${playerName}</div>
+        <div class="site-mobile-card-badges-v659"><span>${role}</span><span>${realTeam}</span>${status}</div>
+      </header>
+      <div class="site-mobile-card-grid-v659">${details}</div>
+    </article>`;
+}
+
+function renderListonePublicMobileCardsV659(listone, players, visibleColumns) {
+  const tbody = document.getElementById("listoneTableBody");
+  if (!tbody) return;
+  updateSiteMobileTableModeV659(tbody, true);
+  const colSpan = Math.max(visibleColumns.length, 1);
+  if (!players.length) {
+    tbody.innerHTML = renderSiteMobileEmptyRowV659("Nessun giocatore trovato con i filtri selezionati.", colSpan);
+    return;
+  }
+  const limit = Math.min(siteMobileCardsStateV659.listoneLimit, players.length);
+  const visiblePlayers = players.slice(0, limit);
+  tbody.innerHTML = `
+    <tr class="site-mobile-card-row-v659">
+      <td colspan="${colSpan}">
+        <div class="site-mobile-card-list-v659" data-site-mobile-list-v659="listone">
+          ${visiblePlayers.map((player) => renderListoneMobileCardV659(player, visibleColumns)).join("")}
+        </div>
+        <div class="site-mobile-more-wrap-v659">
+          ${renderSiteMobileMoreButtonV659("listone", players.length - limit)}
+        </div>
+      </td>
+    </tr>`;
+}
+
+const renderListonePublicBeforeV659 = typeof renderListonePublic === "function" ? renderListonePublic : null;
+if (renderListonePublicBeforeV659) {
+  renderListonePublic = function renderListonePublicV659(...args) {
+    if (!isSiteMobileCardsEnabledV659()) {
+      const tbody = document.getElementById("listoneTableBody");
+      updateSiteMobileTableModeV659(tbody, false);
+      return renderListonePublicBeforeV659.apply(this, args);
+    }
+
+    const tbody = document.getElementById("listoneTableBody");
+    const metaText = document.getElementById("listoneMetaText");
+    const listone = getSelectedListone();
+    renderListoneSelect(listone);
+    renderListoneColumnControls();
+    if (!tbody) return null;
+
+    const visibleColumns = getListoneVisibleColumns();
+    const table = tbody.closest("table");
+    const thead = table?.querySelector("thead");
+    if (thead) {
+      thead.innerHTML = `<tr>${visibleColumns.map((column) => `<th>${escapeHtml(column.label)}</th>`).join("")}</tr>`;
+    }
+
+    if (!listone) {
+      const seasonName = getSeasonName(getCurrentSeasonId()) || getCurrentSeasonId() || "selezionata";
+      updateSiteMobileTableModeV659(tbody, true);
+      tbody.innerHTML = renderSiteMobileEmptyRowV659(`Nessun listone caricato per la stagione ${seasonName}.`, visibleColumns.length || 1);
+      if (metaText) metaText.textContent = `Nessun listone caricato per la stagione ${seasonName}.`;
+      return null;
+    }
+
+    const players = getFilteredListonePlayers(listone);
+    const selectedRoles = Array.from(getCheckedListoneRoleFilters()).sort().join(",");
+    const selectedStatuses = Array.from(getCheckedListoneStatusFilters()).sort().join(",");
+    const signature = getSiteMobileCardSignatureV659([
+      listone.id,
+      getCurrentSeasonId(),
+      document.getElementById("listoneSearch")?.value || "",
+      selectedRoles,
+      selectedStatuses,
+      state.listoneSort?.key || "",
+      state.listoneSort?.direction || "",
+      visibleColumns.map((column) => column.key).join(",")
+    ]);
+    resetSiteMobileLimitIfNeededV659("listone", signature, SITE_MOBILE_CARD_INITIAL_LISTONE_V659);
+
+    const activeRows = Number(listone.activeRows ?? listone.meta?.activeRows ?? 0);
+    const asteriskRows = Number(listone.asteriskRows ?? listone.meta?.asteriskRows ?? 0);
+    const rosteredRows = Number(listone.rosteredRows ?? listone.meta?.rosteredRows ?? 0);
+    const freeAgentRows = Number(listone.freeAgentRows ?? listone.meta?.freeAgentRows ?? 0);
+    if (metaText) {
+      metaText.textContent = `Listone ${listone.loadedAt || listone.id} · ${listone.label || ""} · ${players.length} filtrati su ${listone.players.length} giocatori (${activeRows} in listone, ${asteriskRows} asteriscati, ${rosteredRows || "-"} in rosa, ${freeAgentRows || "-"} svincolati)`;
+    }
+
+    renderListonePublicMobileCardsV659(listone, players, visibleColumns);
+    return null;
+  };
+}
+
+function getSiteMovementRowsV659() {
+  const clubFilter = document.getElementById("marketClubFilter");
+  const searchInput = document.getElementById("marketSearch");
+  const seasonId = getCurrentSeasonId();
+  const seasonTeams = getSeasonTeamsForSeason(seasonId);
+  const selectedClub = state.selectedClubRosterFilter || clubFilter?.value || "all";
+  const searchTerm = normalizeKey(searchInput?.value || "");
+
+  if (clubFilter) {
+    const currentValue = selectedClub;
+    clubFilter.innerHTML = `<option value="all">Tutte le rose</option>${seasonTeams.map((seasonTeam) => `<option value="${escapeHtml(seasonTeam.id)}">${escapeHtml(seasonTeam.name || seasonTeam.id)}</option>`).join("")}`;
+    clubFilter.value = seasonTeams.some((seasonTeam) => seasonTeam.id === currentValue) ? currentValue : "all";
+  }
+
+  return (state.raw.fmMovements || [])
+    .filter((movement) => movement.seasonId === seasonId)
+    .filter((movement) => selectedClub === "all" || movement.seasonTeamId === selectedClub || movement.targetSeasonTeamId === selectedClub)
+    .filter((movement) => {
+      if (!searchTerm) return true;
+      return normalizeKey([
+        getSeasonTeamDisplayName(movement.seasonTeamId),
+        getSeasonTeamDisplayName(movement.targetSeasonTeamId),
+        getFmMovementLabel(movement.type),
+        movement.playerName,
+        movement.description
+      ].join(" ")).includes(searchTerm);
+    })
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""), "it"));
+}
+
+function renderMovementMobileCardV659(movement) {
+  const amount = Number(movement.amount || 0);
+  return `
+    <article class="site-mobile-player-card-v659 site-mobile-movement-card-v659">
+      <header class="site-mobile-card-head-v659">
+        <div>
+          <div class="site-mobile-card-title-v659">${movement.type === "INITIAL_BUDGET" ? "Budget iniziale" : escapeHtml(movement.playerName || "-")}</div>
+          <small class="muted">${escapeHtml(movement.date || "-")}</small>
+        </div>
+        <strong class="${amount >= 0 ? "text-success" : "text-danger"}">${escapeHtml(formatFm(movement.amount))}</strong>
+      </header>
+      <div class="site-mobile-card-grid-v659">
+        <div class="site-mobile-card-field-v659"><span>Rosa</span><strong>${renderSeasonTeamNameWithLogo(movement.seasonTeamId, { strong: false })}</strong></div>
+        <div class="site-mobile-card-field-v659"><span>Tipo</span><strong>${escapeHtml(getFmMovementLabel(movement.type))}</strong></div>
+        ${movement.targetSeasonTeamId ? `<div class="site-mobile-card-field-v659"><span>Destinazione</span><strong>${escapeHtml(getSeasonTeamDisplayName(movement.targetSeasonTeamId))}</strong></div>` : ""}
+        <div class="site-mobile-card-field-v659 site-mobile-card-field-wide-v659"><span>Note</span><strong>${escapeHtml(movement.description || "-")}</strong></div>
+      </div>
+    </article>`;
+}
+
+function renderClubRostersMobileMovementsV659(movements) {
+  const tableBody = document.getElementById("marketActivityTableBody");
+  if (!tableBody) return;
+  updateSiteMobileTableModeV659(tableBody, true);
+  if (!movements.length) {
+    tableBody.innerHTML = renderSiteMobileEmptyRowV659("Nessun movimento FM per questa stagione.", 6);
+    return;
+  }
+  const limit = Math.min(siteMobileCardsStateV659.movementsLimit, movements.length);
+  const visibleMovements = movements.slice(0, limit);
+  tableBody.innerHTML = `
+    <tr class="site-mobile-card-row-v659">
+      <td colspan="6">
+        <div class="site-mobile-card-list-v659" data-site-mobile-list-v659="movements">
+          ${visibleMovements.map(renderMovementMobileCardV659).join("")}
+        </div>
+        <div class="site-mobile-more-wrap-v659">
+          ${renderSiteMobileMoreButtonV659("movements", movements.length - limit)}
+        </div>
+      </td>
+    </tr>`;
+}
+
+const renderClubRostersPublicBeforeV659 = typeof renderClubRostersPublic === "function" ? renderClubRostersPublic : null;
+if (renderClubRostersPublicBeforeV659) {
+  renderClubRostersPublic = function renderClubRostersPublicV659(...args) {
+    if (!isSiteMobileCardsEnabledV659()) {
+      const tableBody = document.getElementById("marketActivityTableBody");
+      updateSiteMobileTableModeV659(tableBody, false);
+      return renderClubRostersPublicBeforeV659.apply(this, args);
+    }
+    const movements = getSiteMovementRowsV659();
+    const signature = getSiteMobileCardSignatureV659([
+      getCurrentSeasonId(),
+      state.selectedClubRosterFilter || document.getElementById("marketClubFilter")?.value || "all",
+      document.getElementById("marketSearch")?.value || "",
+      movements.length
+    ]);
+    resetSiteMobileLimitIfNeededV659("movements", signature, SITE_MOBILE_CARD_INITIAL_MOVEMENTS_V659);
+    renderClubRostersMobileMovementsV659(movements);
+    return null;
+  };
+}
+
+function getRosterCardsKeyV659(players = []) {
+  const seasonTeamId = players.find((player) => player.seasonTeamId)?.seasonTeamId || "roster";
+  const names = players.map((player) => player.playerName || player.name || "").join(",");
+  return `${seasonTeamId}|${state.rosterSort?.key || "role"}|${state.rosterSort?.direction || "asc"}|${names}`;
+}
+
+function renderRosterPlayerMobileCardV659(player, showMarketColumn, currentSeasonTeamId) {
+  const playerWithTeam = { ...player, seasonTeamId: currentSeasonTeamId };
+  const roleRawV551 = typeof getRosterRoleRawValueV551 === "function" ? getRosterRoleRawValueV551(playerWithTeam) : "";
+  const roleRowClassV551 = typeof getRosterPlayerRoleRowClassV551 === "function" ? getRosterPlayerRoleRowClassV551(playerWithTeam) : "";
+  const playerNameHtml = typeof renderPlayerNameLinkV90 === "function" ? renderPlayerNameLinkV90(playerWithTeam) : `<strong>${escapeHtml(playerWithTeam.playerName || "-")}</strong>`;
+  const marketBadge = typeof renderTransferBadgeV119 === "function" ? renderTransferBadgeV119(playerWithTeam, currentSeasonTeamId) : "";
+  return `
+    <article class="site-mobile-player-card-v659 site-mobile-roster-player-card-v659${roleRowClassV551}" data-player-role="${escapeHtml(roleRawV551)}">
+      <header class="site-mobile-card-head-v659">
+        <div class="site-mobile-card-title-v659">${playerNameHtml} ${marketBadge}</div>
+        <div class="site-mobile-card-badges-v659"><span>${escapeHtml(playerWithTeam.realTeam || "-")}</span></div>
+      </header>
+      <div class="site-mobile-card-grid-v659">
+        <div class="site-mobile-card-field-v659"><span>R (RM)</span><strong>${getRosterRoleDisplay(playerWithTeam)}</strong></div>
+        <div class="site-mobile-card-field-v659"><span>Stato</span><strong>${typeof renderRosterPlayerStatusV551 === "function" ? renderRosterPlayerStatusV551(playerWithTeam) : "-"}</strong></div>
+        <div class="site-mobile-card-field-v659"><span>Costo</span><strong>${escapeHtml(playerWithTeam.cost ?? "-")}</strong></div>
+        <div class="site-mobile-card-field-v659"><span>Qt.A</span><strong>${formatListoneNumber(getRosterPlayerQuotationCurrent(playerWithTeam))}</strong></div>
+        ${showMarketColumn && typeof renderRosterMarketActionV119 === "function" ? `<div class="site-mobile-card-field-v659 site-mobile-card-field-wide-v659"><span>Mercato</span><strong>${renderRosterMarketActionV119(playerWithTeam, currentSeasonTeamId)}</strong></div>` : ""}
+      </div>
+    </article>`;
+}
+
+const renderRosterPlayerTableBeforeV659 = typeof renderRosterPlayerTable === "function" ? renderRosterPlayerTable : null;
+if (renderRosterPlayerTableBeforeV659) {
+  renderRosterPlayerTable = function renderRosterPlayerTableV659(players = []) {
+    if (!isSiteMobileCardsEnabledV659()) return renderRosterPlayerTableBeforeV659.apply(this, arguments);
+    if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
+    const sortedPlayers = sortRosterPlayersForDisplay(players);
+    const seasonTeamId = players.find((player) => player.seasonTeamId)?.seasonTeamId || "";
+    const showMarketColumn = typeof isOwnSeasonTeamV119 === "function" ? isOwnSeasonTeamV119(seasonTeamId) : false;
+    const key = getRosterCardsKeyV659(players);
+    const currentLimit = siteMobileCardsStateV659.rosterLimits.get(key) || SITE_MOBILE_CARD_INITIAL_ROSTER_V659;
+    const limit = Math.min(currentLimit, sortedPlayers.length);
+    const visiblePlayers = sortedPlayers.slice(0, limit);
+    return `
+      <div class="site-mobile-card-list-v659 site-mobile-roster-list-v659" data-site-mobile-roster-key-v659="${escapeHtml(key)}">
+        ${visiblePlayers.map((player) => renderRosterPlayerMobileCardV659(player, showMarketColumn, player.seasonTeamId || seasonTeamId)).join("")}
+      </div>
+      <div class="site-mobile-more-wrap-v659">
+        ${sortedPlayers.length > limit ? `<button type="button" class="button button-secondary button-small site-mobile-more-v659" data-site-mobile-more-v659="roster" data-site-mobile-roster-key-v659="${escapeHtml(key)}">Mostra altri giocatori (${escapeHtml(sortedPlayers.length - limit)})</button>` : ""}
+      </div>`;
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const button = event.target?.closest?.("[data-site-mobile-more-v659]");
+  if (!button) return;
+  const kind = button.dataset.siteMobileMoreV659;
+  const scrollY = window.scrollY;
+  if (kind === "listone") {
+    siteMobileCardsStateV659.listoneLimit += SITE_MOBILE_CARD_STEP_LISTONE_V659;
+    renderListonePublic?.();
+  } else if (kind === "movements") {
+    siteMobileCardsStateV659.movementsLimit += SITE_MOBILE_CARD_STEP_MOVEMENTS_V659;
+    renderClubRostersPublic?.();
+  } else if (kind === "roster") {
+    const key = button.dataset.siteMobileRosterKeyV659 || button.closest?.("[data-site-mobile-roster-key-v659]")?.dataset?.siteMobileRosterKeyV659 || "roster";
+    const current = siteMobileCardsStateV659.rosterLimits.get(key) || SITE_MOBILE_CARD_INITIAL_ROSTER_V659;
+    siteMobileCardsStateV659.rosterLimits.set(key, current + SITE_MOBILE_CARD_STEP_ROSTER_V659);
+    renderTeamsTable?.();
+  }
+  window.requestAnimationFrame(() => window.scrollTo({ top: scrollY, left: 0, behavior: "auto" }));
+}, true);
+
+window.FantaSiteMobileCardsV659 = Object.freeze({
+  version: SITE_MOBILE_CARDS_VERSION_V659,
+  scope: "site-only",
+  iosudoChanged: false,
+  dataChanged: false,
+  mobileListoneCards: true,
+  mobileRoseCards: true,
+  filtersKept: true,
+  progressiveMore: true,
+  getState: () => ({
+    listoneLimit: siteMobileCardsStateV659.listoneLimit,
+    movementsLimit: siteMobileCardsStateV659.movementsLimit,
+    rosterCachedLimits: siteMobileCardsStateV659.rosterLimits.size,
+    mobile: isSiteMobileCardsEnabledV659()
+  })
+});
