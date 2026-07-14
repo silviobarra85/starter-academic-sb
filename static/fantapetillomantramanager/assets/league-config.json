@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "667",
+  "currentVersion": "668",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -217,7 +217,8 @@
     "ioSudoPlayerSourceLabelsV639": true,
     "ioSudoListoneAllPlayersV639": true,
     "ioSudoPlayerSourceLabelsV643": true,
-    "ioSudoListoneAllPlayersV643": true
+    "ioSudoListoneAllPlayersV643": true,
+    "siteMobileCardsVersion": "V668"
   },
   "guardrails": {
     "sandboxClone": true,

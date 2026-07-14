@@ -38824,3 +38824,174 @@ window.FantaSiteMobileCardsV667 = Object.freeze({
   iosudoHeaderDateTime: true,
   dataChanged: false
 });
+
+/* V668 - Listone/Rose mobile card alignment and filter cleanup.
+ * Keeps desktop tables intact; mobile cards use fixed field boxes.
+ */
+const SITE_MOBILE_CARDS_VERSION_V668 = "V668";
+const LISTONE_COLUMNS_REMOVED_FROM_CONTROLS_V668 = new Set([
+  "sourceSheet",
+  "rosterCost",
+  "quotationDiffMantra",
+  "rosterRole",
+  "quotationInitialMantra",
+  "quotationCurrentMantra"
+]);
+
+function normalizeListoneHiddenColumnsV668() {
+  if (!state?.hiddenListoneColumns) return;
+  LISTONE_COLUMNS_REMOVED_FROM_CONTROLS_V668.forEach((key) => state.hiddenListoneColumns.add(key));
+}
+
+normalizeListoneHiddenColumnsV668();
+
+if (typeof getListoneVisibleColumns === "function") {
+  const getListoneVisibleColumnsBeforeV668 = getListoneVisibleColumns;
+  getListoneVisibleColumns = function getListoneVisibleColumnsV668() {
+    normalizeListoneHiddenColumnsV668();
+    return getListoneVisibleColumnsBeforeV668()
+      .filter((column) => !LISTONE_COLUMNS_REMOVED_FROM_CONTROLS_V668.has(column.key));
+  };
+}
+
+if (typeof renderListoneColumnControls === "function") {
+  renderListoneColumnControls = function renderListoneColumnControlsV668() {
+    normalizeListoneHiddenColumnsV668();
+    const target = document.getElementById("listoneColumnControls");
+    if (!target) return;
+    const columns = LISTONE_COLUMNS.filter((column) => !LISTONE_COLUMNS_REMOVED_FROM_CONTROLS_V668.has(column.key));
+    target.innerHTML = `
+      <details class="column-visibility-control column-visibility-control-v668">
+        <summary><strong>Campi visibili</strong><span>Mostra/nascondi colonne principali</span></summary>
+        <div class="column-toggle-grid">
+          ${columns.map((column) => `
+            <label class="checkbox-label column-toggle-item">
+              <input type="checkbox" data-listone-column="${escapeHtml(column.key)}" ${state.hiddenListoneColumns.has(column.key) ? "" : "checked"} />
+              ${escapeHtml(column.label)}
+            </label>`).join("")}
+        </div>
+      </details>`;
+  };
+}
+
+function renderSiteMobileFixedFieldV668(label, valueHtml, options = {}) {
+  const raw = String(valueHtml ?? "").trim();
+  const isEmpty = !raw || raw === "-" || raw === "&nbsp;";
+  const keyClass = options.key ? ` listone-col-${escapeHtml(options.key)}` : "";
+  const numberClass = options.numeric ? " is-number" : "";
+  const emptyClass = isEmpty ? " is-empty" : "";
+  return `
+    <div class="site-mobile-card-field-v659 site-mobile-card-field-v662 site-mobile-card-field-v663 site-mobile-card-field-v664 site-mobile-card-field-v668${keyClass}${numberClass}${emptyClass}">
+      <span>${escapeHtml(label || "Dato")}</span>
+      <strong>${isEmpty ? "&nbsp;" : valueHtml}</strong>
+    </div>`;
+}
+
+function renderListoneFieldValueV668(player, key, columnFallback = {}) {
+  const column = LISTONE_COLUMNS.find((item) => item.key === key) || { key, label: columnFallback.label || key, numeric: Boolean(columnFallback.numeric) };
+  const html = renderListoneCell(player, column);
+  const normalized = String(html ?? "").trim();
+  return normalized && normalized !== "-" ? html : "";
+}
+
+function formatSiteMobileNumberValueV668(value) {
+  if (value === null || value === undefined || value === "") return "";
+  return escapeHtml(formatListoneNumber(value));
+}
+
+if (typeof renderListoneMobileCardV664 === "function") {
+  renderListoneMobileCardV664 = function renderListoneMobileCardV668(player, visibleColumns = []) {
+    const roleRaw = player?.classicRole || player?.role || "";
+    const roleGroup = getSiteRoleGroupV662(roleRaw);
+    const playerName = renderListoneCell(player, { key: "playerName", label: "Giocatore" });
+    const rosterLabel = getListonePlayerRosterLabelV663(player);
+    const rosterChip = renderSiteRosterChipV663(rosterLabel, { compact: true });
+    const rosterCost = getListonePlayerRosterCostV663(player);
+    const quotationCurrent = player?.quotationCurrent ?? player?.quotation_current ?? getListoneValue(player, "quotationCurrent");
+    const quotationInitial = player?.quotationInitial ?? getListoneValue(player, "quotationInitial");
+    const quotationDiff = player?.quotationDiff ?? getListoneValue(player, "quotationDiff");
+    const fvm = player?.fvm ?? getListoneValue(player, "fvm");
+    const status = renderSiteListoneStatusBadgeV663(player);
+    const changeBadge = renderListoneChangeBadgeV664(player);
+    const role = renderListoneFieldValueV668(player, "classicRole", { label: "Ruolo" });
+    const realTeam = renderListoneFieldValueV668(player, "realTeam", { label: "Squadra" });
+
+    const fields = [
+      renderSiteMobileFixedFieldV668("Ruolo", role, { key: "classicRole" }),
+      renderSiteMobileFixedFieldV668("Squadra", realTeam, { key: "realTeam" }),
+      renderSiteMobileFixedFieldV668("Stato", status, { key: "status" }),
+      renderSiteMobileFixedFieldV668("Qt.I", formatSiteMobileNumberValueV668(quotationInitial), { key: "quotationInitial", numeric: true }),
+      renderSiteMobileFixedFieldV668("Diff.", formatSiteMobileNumberValueV668(quotationDiff), { key: "quotationDiff", numeric: true }),
+      renderSiteMobileFixedFieldV668("FVM", formatSiteMobileNumberValueV668(fvm), { key: "fvm", numeric: true }),
+      renderSiteMobileFixedFieldV668("Costo", formatSiteMobileNumberValueV668(rosterCost), { key: "rosterCost", numeric: true }),
+      renderSiteMobileFixedFieldV668("Qt.A", formatSiteMobileNumberValueV668(quotationCurrent), { key: "quotationCurrent", numeric: true })
+    ].join("");
+
+    return `
+      <article class="site-mobile-player-card-v659 site-mobile-player-card-v662 site-mobile-player-card-v663 site-mobile-player-card-v664 site-mobile-player-card-v668 is-role-${escapeHtml(roleGroup)}" data-player-role="${escapeHtml(roleRaw || getSiteRoleLabelV662(roleGroup))}">
+        <header class="site-mobile-card-head-v659 site-mobile-card-head-v662 site-mobile-card-head-v663 site-mobile-card-head-v664 site-mobile-card-head-v668">
+          <div class="site-mobile-card-title-wrap-v662 site-mobile-card-title-wrap-v663 site-mobile-card-title-wrap-v664 site-mobile-card-title-wrap-v668">
+            ${renderSiteMobileTitleLineV663(playerName, rosterChip)}
+          </div>
+        </header>
+        <div class="site-mobile-card-grid-v659 site-mobile-card-grid-v662 site-mobile-card-grid-v663 site-mobile-card-grid-v664 site-mobile-card-grid-v668">${fields}</div>
+        ${changeBadge}
+      </article>`;
+  };
+  renderListoneMobileCardV663 = renderListoneMobileCardV664;
+}
+
+if (typeof renderRosterPlayerMobileCardV664 === "function") {
+  renderRosterPlayerMobileCardV664 = function renderRosterPlayerMobileCardV668(player, showMarketColumn, currentSeasonTeamId) {
+    const playerWithTeam = { ...player, seasonTeamId: currentSeasonTeamId || player?.seasonTeamId || "" };
+    const roleRaw = typeof getRosterRoleRawValueV551 === "function" ? getRosterRoleRawValueV551(playerWithTeam) : (playerWithTeam.rosterRole || playerWithTeam.classicRole || playerWithTeam.role || "");
+    const roleGroup = getSiteRoleGroupV662(roleRaw);
+    const playerNameHtml = typeof renderPlayerNameLinkV90 === "function" ? renderPlayerNameLinkV90(playerWithTeam) : `<strong>${escapeHtml(playerWithTeam.playerName || "-")}</strong>`;
+    const marketBadge = typeof renderTransferBadgeV119 === "function" ? renderTransferBadgeV119(playerWithTeam, currentSeasonTeamId) : "";
+    const statusHtml = typeof renderRosterPlayerStatusV551 === "function" ? renderRosterPlayerStatusV551(playerWithTeam) : "";
+    const marketHtml = showMarketColumn && typeof renderRosterMarketActionV119 === "function" ? renderRosterMarketActionV119(playerWithTeam, currentSeasonTeamId) : "";
+    const rosterChip = renderSiteRosterChipV663(getSeasonTeamDisplayName(playerWithTeam.seasonTeamId || currentSeasonTeamId), { compact: true });
+    const fields = [
+      renderSiteMobileFixedFieldV668("Ruolo", getRosterRoleDisplay(playerWithTeam), { key: "classicRole" }),
+      renderSiteMobileFixedFieldV668("Squadra", escapeHtml(playerWithTeam.realTeam || ""), { key: "realTeam" }),
+      renderSiteMobileFixedFieldV668("Stato", statusHtml, { key: "status" }),
+      renderSiteMobileFixedFieldV668("Mercato", marketHtml, { key: "market" }),
+      renderSiteMobileFixedFieldV668("Costo", escapeHtml(playerWithTeam.cost ?? ""), { key: "cost", numeric: true }),
+      renderSiteMobileFixedFieldV668("Qt.A", formatSiteMobileNumberValueV668(getRosterPlayerQuotationCurrent(playerWithTeam)), { key: "quotationCurrent", numeric: true })
+    ].join("");
+    return `
+      <article class="site-mobile-player-card-v659 site-mobile-player-card-v662 site-mobile-player-card-v663 site-mobile-player-card-v664 site-mobile-player-card-v668 site-mobile-roster-player-card-v659 site-mobile-roster-player-card-v662 site-mobile-roster-player-card-v663 site-mobile-roster-player-card-v664 site-mobile-roster-player-card-v668 is-role-${escapeHtml(roleGroup)}" data-player-role="${escapeHtml(roleRaw || getSiteRoleLabelV662(roleGroup))}">
+        <header class="site-mobile-card-head-v659 site-mobile-card-head-v662 site-mobile-card-head-v663 site-mobile-card-head-v664 site-mobile-card-head-v668">
+          <div class="site-mobile-card-title-wrap-v662 site-mobile-card-title-wrap-v663 site-mobile-card-title-wrap-v664 site-mobile-card-title-wrap-v668">
+            ${renderSiteMobileTitleLineV663(`${playerNameHtml} ${marketBadge}`, rosterChip)}
+          </div>
+        </header>
+        <div class="site-mobile-card-grid-v659 site-mobile-card-grid-v662 site-mobile-card-grid-v663 site-mobile-card-grid-v664 site-mobile-card-grid-v668">${fields}</div>
+      </article>`;
+  };
+  renderRosterPlayerMobileCardV663 = renderRosterPlayerMobileCardV664;
+}
+
+function forceFooterVersionV668() {
+  const footer = document.querySelector("[data-league-footer-v445]");
+  if (!footer) return;
+  const text = footer.textContent || "Fantacalcio";
+  footer.textContent = text.includes("V")
+    ? text.replace(/V\d+/, "V668")
+    : `${text} · V668`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  normalizeListoneHiddenColumnsV668();
+  forceFooterVersionV668();
+});
+window.addEventListener("load", forceFooterVersionV668);
+window.setTimeout(forceFooterVersionV668, 300);
+window.setTimeout(forceFooterVersionV668, 1200);
+
+window.FantaSiteMobileCardsV668 = Object.freeze({
+  version: SITE_MOBILE_CARDS_VERSION_V668,
+  removedListoneControls: Array.from(LISTONE_COLUMNS_REMOVED_FROM_CONTROLS_V668),
+  fixedFieldBoxes: true,
+  neutralFptCellBackground: true
+});
