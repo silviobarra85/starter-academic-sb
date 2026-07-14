@@ -38410,3 +38410,278 @@ window.FantaSiteMobileCardsV663 = Object.freeze({
     mobile: isSiteMobileCardsEnabledV659()
   })
 });
+
+/* V664 - Final mobile site card refinements.
+ * Scope: sito pubblico. Non modifica ioSudo, dati, rose JSON o listoni.
+ * Corregge duplicazioni nelle card, neutralizza contenitori colorati e porta le card anche nella scheda squadra. */
+const SITE_MOBILE_CARDS_VERSION_V664 = "V664";
+
+const updateSiteMobileTableModeBeforeV664 = typeof updateSiteMobileTableModeV659 === "function" ? updateSiteMobileTableModeV659 : null;
+if (updateSiteMobileTableModeBeforeV664) {
+  updateSiteMobileTableModeV659 = function updateSiteMobileTableModeV664(tbody, enabled) {
+    updateSiteMobileTableModeBeforeV664(tbody, enabled);
+    const table = tbody?.closest?.("table");
+    const wrap = tbody?.closest?.(".table-wrap, .mobile-tabular-wrap");
+    table?.classList.toggle("site-mobile-card-table-v664", Boolean(enabled));
+    wrap?.classList.toggle("site-mobile-card-wrap-v664", Boolean(enabled));
+  };
+}
+
+function renderSiteMobileCompactFieldV664(label, valueHtml, options = {}) {
+  const extraClass = options.wide ? " site-mobile-card-field-wide-v659" : "";
+  const keyClass = options.key ? ` listone-col-${escapeHtml(options.key)}` : "";
+  const numberClass = options.numeric ? " is-number" : "";
+  return `
+    <div class="site-mobile-card-field-v659 site-mobile-card-field-v662 site-mobile-card-field-v663 site-mobile-card-field-v664${extraClass}${keyClass}${numberClass}">
+      <span>${escapeHtml(label || "Dato")}</span>
+      <strong>${valueHtml || "-"}</strong>
+    </div>`;
+}
+
+function renderListoneChangeBadgeV664(player = {}) {
+  const label = typeof getHistoryChangeLabelV270 === "function"
+    ? String(getHistoryChangeLabelV270(player) || "").trim()
+    : String(player.historyChange || player.statusChange || player.diff?.status || "Invariato").trim();
+  if (!label) return "";
+  const status = typeof getHistoryChangeStatusV270 === "function"
+    ? String(getHistoryChangeStatusV270(player) || "").toUpperCase()
+    : String(player.historyChange || player.statusChange || "UNCHANGED").toUpperCase();
+  const numeric = label.match(/^[+-]/);
+  const kind = status.includes("REMOVED") || label.toLowerCase().includes("uscito")
+    ? "is-removed"
+    : status.includes("NEW") || label.toLowerCase().includes("nuovo")
+      ? "is-new"
+      : numeric
+        ? (label.startsWith("-") ? "is-down" : "is-up")
+        : status.includes("UNCHANGED") || label.toLowerCase().includes("invariato")
+          ? "is-unchanged"
+          : "is-changed";
+  return `<span class="site-listone-change-badge-v664 ${kind}">${escapeHtml(label)}</span>`;
+}
+
+function renderListoneMobileCardV664(player, visibleColumns = []) {
+  const roleRaw = player?.classicRole || player?.role || "";
+  const roleGroup = getSiteRoleGroupV662(roleRaw);
+  const playerName = renderListoneCell(player, { key: "playerName", label: "Giocatore" });
+  const role = renderListoneCell(player, { key: "classicRole", label: "R" });
+  const realTeam = renderListoneCell(player, { key: "realTeam", label: "Sq" });
+  const rosterLabel = getListonePlayerRosterLabelV663(player);
+  const isFreeAgent = isSiteFreeAgentRosterLabelV663(rosterLabel);
+  const rosterChip = renderSiteRosterChipV663(rosterLabel, { compact: true });
+  const rosterCost = getListonePlayerRosterCostV663(player);
+  const quotationCurrent = player?.quotationCurrent ?? player?.quotation_current ?? getListoneValue(player, "quotationCurrent");
+  const status = renderSiteListoneStatusBadgeV663(player);
+  const changeBadge = renderListoneChangeBadgeV664(player);
+
+  const excluded = new Set([
+    "playerName",
+    "classicRole",
+    "realTeam",
+    "status",
+    "fantasyRoster",
+    "rosterCost",
+    "purchaseCost",
+    "cost",
+    "quotationCurrent",
+    "historyChange"
+  ]);
+  const autoFields = [
+    !isFreeAgent && rosterCost !== "" ? renderSiteMobileCompactFieldV664("Costo", escapeHtml(formatListoneNumber(rosterCost)), { key: "rosterCost", numeric: true }) : "",
+    quotationCurrent !== "" && quotationCurrent != null ? renderSiteMobileCompactFieldV664("Qt.A", escapeHtml(formatListoneNumber(quotationCurrent)), { key: "quotationCurrent", numeric: true }) : ""
+  ].filter(Boolean);
+
+  const detailColumns = sortSiteMobileColumnsV662(
+    visibleColumns.filter((column) => !excluded.has(column.key))
+  );
+  const extraFields = detailColumns.map((column) => renderSiteMobileCompactFieldV664(
+    column.label,
+    renderListoneCell(player, column),
+    { key: column.key, numeric: column.numeric, wide: ["note", "notes", "sourceExtra"].includes(column.key) }
+  ));
+  const fields = [...autoFields, ...extraFields].join("");
+
+  return `
+    <article class="site-mobile-player-card-v659 site-mobile-player-card-v662 site-mobile-player-card-v663 site-mobile-player-card-v664 is-role-${escapeHtml(roleGroup)}" data-player-role="${escapeHtml(roleRaw || getSiteRoleLabelV662(roleGroup))}">
+      <header class="site-mobile-card-head-v659 site-mobile-card-head-v662 site-mobile-card-head-v663 site-mobile-card-head-v664">
+        <div class="site-mobile-card-title-wrap-v662 site-mobile-card-title-wrap-v663 site-mobile-card-title-wrap-v664">
+          ${renderSiteMobileTitleLineV663(playerName, rosterChip)}
+          <div class="site-mobile-card-subline-v662 site-mobile-card-subline-v663 site-mobile-card-subline-v664">
+            <span class="site-role-pill-v662 is-role-${escapeHtml(roleGroup)}">${role}</span>
+            <span class="team-code">${realTeam}</span>
+          </div>
+        </div>
+        <div class="site-mobile-card-badges-v659 site-mobile-card-badges-v662 site-mobile-card-badges-v663 site-mobile-card-badges-v664">${status}</div>
+      </header>
+      ${fields ? `<div class="site-mobile-card-grid-v659 site-mobile-card-grid-v662 site-mobile-card-grid-v663 site-mobile-card-grid-v664">${fields}</div>` : ""}
+      ${changeBadge}
+    </article>`;
+}
+
+function renderListonePublicMobileCardsV664(listone, players, visibleColumns) {
+  const tbody = document.getElementById("listoneTableBody");
+  if (!tbody) return;
+  updateSiteMobileTableModeV659(tbody, true);
+  const table = tbody.closest("table");
+  const thead = table?.querySelector("thead");
+  if (thead) thead.innerHTML = "";
+  const colSpan = Math.max(visibleColumns.length, 1);
+  if (!players.length) {
+    tbody.innerHTML = renderSiteMobileEmptyRowV659("Nessun giocatore trovato con i filtri selezionati.", colSpan);
+    return;
+  }
+  const limit = Math.min(siteMobileCardsStateV659.listoneLimit, players.length);
+  const visiblePlayers = players.slice(0, limit);
+  tbody.innerHTML = `
+    <tr class="site-mobile-card-row-v659 site-mobile-card-row-v662 site-mobile-card-row-v663 site-mobile-card-row-v664">
+      <td colspan="${colSpan}">
+        <div class="site-mobile-card-list-v659 site-mobile-card-list-v662 site-mobile-card-list-v663 site-mobile-card-list-v664" data-site-mobile-list-v659="listone" data-site-mobile-list-v662="listone" data-site-mobile-list-v663="listone" data-site-mobile-list-v664="listone">
+          ${visiblePlayers.map((player) => renderListoneMobileCardV664(player, visibleColumns)).join("")}
+        </div>
+        <div class="site-mobile-more-wrap-v659 site-mobile-more-wrap-v662 site-mobile-more-wrap-v663 site-mobile-more-wrap-v664">
+          ${renderSiteMobileMoreButtonV659("listone", players.length - limit)}
+        </div>
+      </td>
+    </tr>`;
+}
+
+if (typeof renderListoneMobileCardV663 === "function") renderListoneMobileCardV663 = renderListoneMobileCardV664;
+if (typeof renderListonePublicMobileCardsV663 === "function") renderListonePublicMobileCardsV663 = renderListonePublicMobileCardsV664;
+
+function renderRosterPlayerMobileCardV664(player, showMarketColumn, currentSeasonTeamId) {
+  const playerWithTeam = { ...player, seasonTeamId: currentSeasonTeamId || player?.seasonTeamId || "" };
+  const roleRaw = typeof getRosterRoleRawValueV551 === "function" ? getRosterRoleRawValueV551(playerWithTeam) : (playerWithTeam.rosterRole || playerWithTeam.classicRole || playerWithTeam.role || "");
+  const roleGroup = getSiteRoleGroupV662(roleRaw);
+  const playerNameHtml = typeof renderPlayerNameLinkV90 === "function" ? renderPlayerNameLinkV90(playerWithTeam) : `<strong>${escapeHtml(playerWithTeam.playerName || "-")}</strong>`;
+  const marketBadge = typeof renderTransferBadgeV119 === "function" ? renderTransferBadgeV119(playerWithTeam, currentSeasonTeamId) : "";
+  const statusHtml = typeof renderRosterPlayerStatusV551 === "function" ? renderRosterPlayerStatusV551(playerWithTeam) : "";
+  const marketHtml = showMarketColumn && typeof renderRosterMarketActionV119 === "function" ? renderRosterMarketActionV119(playerWithTeam, currentSeasonTeamId) : "";
+  const rosterChip = renderSiteRosterChipV663(getSeasonTeamDisplayName(playerWithTeam.seasonTeamId || currentSeasonTeamId), { compact: true });
+  const fields = [
+    renderSiteMobileCompactFieldV664("Costo", escapeHtml(playerWithTeam.cost ?? "-"), { key: "cost", numeric: true }),
+    renderSiteMobileCompactFieldV664("Qt.A", formatListoneNumber(getRosterPlayerQuotationCurrent(playerWithTeam)), { key: "quotationCurrent", numeric: true }),
+    marketHtml ? renderSiteMobileCompactFieldV664("Mercato", marketHtml, { key: "market", wide: true }) : ""
+  ].filter(Boolean).join("");
+  return `
+    <article class="site-mobile-player-card-v659 site-mobile-player-card-v662 site-mobile-player-card-v663 site-mobile-player-card-v664 site-mobile-roster-player-card-v659 site-mobile-roster-player-card-v662 site-mobile-roster-player-card-v663 site-mobile-roster-player-card-v664 is-role-${escapeHtml(roleGroup)}" data-player-role="${escapeHtml(roleRaw || getSiteRoleLabelV662(roleGroup))}">
+      <header class="site-mobile-card-head-v659 site-mobile-card-head-v662 site-mobile-card-head-v663 site-mobile-card-head-v664">
+        <div class="site-mobile-card-title-wrap-v662 site-mobile-card-title-wrap-v663 site-mobile-card-title-wrap-v664">
+          ${renderSiteMobileTitleLineV663(`${playerNameHtml} ${marketBadge}`, rosterChip)}
+          <div class="site-mobile-card-subline-v662 site-mobile-card-subline-v663 site-mobile-card-subline-v664">
+            <span class="site-role-pill-v662 is-role-${escapeHtml(roleGroup)}">${getRosterRoleDisplay(playerWithTeam)}</span>
+            <span class="team-code">${escapeHtml(playerWithTeam.realTeam || "-")}</span>
+          </div>
+        </div>
+        <div class="site-mobile-card-badges-v659 site-mobile-card-badges-v662 site-mobile-card-badges-v663 site-mobile-card-badges-v664">${statusHtml}</div>
+      </header>
+      <div class="site-mobile-card-grid-v659 site-mobile-card-grid-v662 site-mobile-card-grid-v663 site-mobile-card-grid-v664">${fields}</div>
+    </article>`;
+}
+
+if (typeof renderRosterPlayerMobileCardV663 === "function") renderRosterPlayerMobileCardV663 = renderRosterPlayerMobileCardV664;
+
+const renderRosterPlayerTableBeforeV664 = typeof renderRosterPlayerTable === "function" ? renderRosterPlayerTable : null;
+if (renderRosterPlayerTableBeforeV664) {
+  renderRosterPlayerTable = function renderRosterPlayerTableV664(players = []) {
+    if (!isSiteMobileCardsEnabledV659()) return renderRosterPlayerTableBeforeV664.apply(this, arguments);
+    if (!players.length) return `<p class="muted">Nessun giocatore in rosa.</p>`;
+    const sortedPlayers = sortRosterPlayersForDisplay(players);
+    const seasonTeamId = players.find((player) => player.seasonTeamId)?.seasonTeamId || "";
+    const showMarketColumn = typeof isOwnSeasonTeamV119 === "function" ? isOwnSeasonTeamV119(seasonTeamId) : false;
+    const key = `v664|${getRosterCardsKeyV659(players)}`;
+    const currentLimit = siteMobileCardsStateV659.rosterLimits.get(key) || SITE_MOBILE_CARD_INITIAL_ROSTER_V659;
+    const limit = Math.min(currentLimit, sortedPlayers.length);
+    const visiblePlayers = sortedPlayers.slice(0, limit);
+    return `
+      <div class="site-mobile-card-list-v659 site-mobile-card-list-v662 site-mobile-card-list-v663 site-mobile-card-list-v664 site-mobile-roster-list-v659 site-mobile-roster-list-v662 site-mobile-roster-list-v663 site-mobile-roster-list-v664" data-site-mobile-roster-key-v659="${escapeHtml(key)}" data-site-mobile-list-v662="roster" data-site-mobile-list-v663="roster" data-site-mobile-list-v664="roster">
+        ${visiblePlayers.map((player) => renderRosterPlayerMobileCardV664(player, showMarketColumn, player.seasonTeamId || seasonTeamId)).join("")}
+      </div>
+      <div class="site-mobile-more-wrap-v659 site-mobile-more-wrap-v662 site-mobile-more-wrap-v663 site-mobile-more-wrap-v664">
+        ${sortedPlayers.length > limit ? `<button type="button" class="button button-secondary button-small site-mobile-more-v659 site-mobile-more-v662 site-mobile-more-v663 site-mobile-more-v664" data-site-mobile-more-v659="roster" data-site-mobile-roster-key-v659="${escapeHtml(key)}">Mostra altri giocatori (${escapeHtml(sortedPlayers.length - limit)})</button>` : ""}
+      </div>`;
+  };
+}
+
+function renderTeamProfileRosterCardsV664(snapshot = {}) {
+  const seasonTeamId = snapshot.seasonTeamId || "";
+  const players = (snapshot.rosterEntries || []).map((player) => ({ ...player, seasonTeamId }));
+  if (!players.length) return `<p class="muted">Rosa non disponibile.</p>`;
+  const sortedPlayers = players.sort(compareRosterPlayersV34);
+  const key = `profile-v664|${seasonTeamId}|${sortedPlayers.map((player) => player.playerName || "").join(",")}`;
+  const currentLimit = siteMobileCardsStateV659.rosterLimits.get(key) || SITE_MOBILE_CARD_INITIAL_ROSTER_V659;
+  const limit = Math.min(currentLimit, sortedPlayers.length);
+  const visiblePlayers = sortedPlayers.slice(0, limit);
+  return `
+    <div class="site-mobile-card-list-v659 site-mobile-card-list-v662 site-mobile-card-list-v663 site-mobile-card-list-v664 team-profile-roster-cards-v664" data-site-mobile-roster-key-v659="${escapeHtml(key)}" data-site-mobile-list-v664="team-profile-roster">
+      ${visiblePlayers.map((player) => renderRosterPlayerMobileCardV664(player, false, seasonTeamId)).join("")}
+    </div>
+    <div class="site-mobile-more-wrap-v659 site-mobile-more-wrap-v662 site-mobile-more-wrap-v663 site-mobile-more-wrap-v664">
+      ${sortedPlayers.length > limit ? `<button type="button" class="button button-secondary button-small site-mobile-more-v659 site-mobile-more-v662 site-mobile-more-v663 site-mobile-more-v664" data-site-mobile-more-v659="roster" data-site-mobile-roster-key-v659="${escapeHtml(key)}">Mostra altri giocatori (${escapeHtml(sortedPlayers.length - limit)})</button>` : ""}
+    </div>`;
+}
+
+const renderTeamProfileContentBeforeV664 = typeof renderTeamProfileContentV42 === "function" ? renderTeamProfileContentV42 : null;
+if (renderTeamProfileContentBeforeV664) {
+  renderTeamProfileContentV42 = function renderTeamProfileContentV664(snapshot) {
+    if (!isSiteMobileCardsEnabledV659() || !snapshot) return renderTeamProfileContentBeforeV664(snapshot);
+
+    const rosterHtml = renderTeamProfileRosterCardsV664(snapshot);
+    const palmaresRows = (snapshot.palmares || []).map((item) => `
+      <tr><td>${escapeHtml(item.seasonLabel || item.seasonId)}</td><td>${escapeHtml(item.label)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted center">Nessun titolo/piazzamento.</td></tr>`;
+    const movementRows = (snapshot.recentMovements || []).map((movement) => `
+      <tr><td>${escapeHtml(movement.date || "-")}</td><td>${renderFmMovementTypeBadge(movement.type)}</td><td>${escapeHtml(movement.playerName || "-")}</td><td class="number">${formatFm(movement.amount || 0)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessun movimento recente.</td></tr>`;
+    const newsHtml = (snapshot.recentNews || []).map((news) => `
+      <article class="compact-card team-profile-news-card">
+        <h3>${escapeHtml(news.title || "Comunicato")}</h3>
+        <p class="news-body-preserve">${renderBoldMarkdown(news.body || "")}</p>
+        <small class="muted">${escapeHtml(formatNewsDateTimeV79(getNewsRawDateValueV79(news)))}</small>
+      </article>`).join("") || `<p class="muted">Nessun comunicato squadra.</p>`;
+    const matchesRows = (snapshot.recentMatches || []).map((match) => `
+      <tr>
+        <td>${escapeHtml(match.competitionCode || getCompetitionShortCodeById(match.competitionId))}</td>
+        <td>${escapeHtml(formatMatchStage(match))}</td>
+        <td>${escapeHtml(getSeasonTeamDisplayName(match.homeSeasonTeamId))} - ${escapeHtml(getSeasonTeamDisplayName(match.awaySeasonTeamId))}</td>
+        <td>${escapeHtml(formatMatchResult(match))}</td>
+      </tr>`).join("") || `<tr><td colspan="4" class="muted center">Nessuna partita recente.</td></tr>`;
+
+    return `
+      <section class="panel team-profile-hero-panel">
+        <div class="team-profile-header team-profile-header-stacked team-profile-page-hero">
+          ${renderTeamLogo(snapshot.teamName, snapshot.logo, "club-logo-lg")}
+          <div class="team-profile-title-block">
+            <h3>${escapeHtml(snapshot.teamName || "Squadra")}</h3>
+            <p class="muted team-profile-meta-line">Presidenti: ${escapeHtml(snapshot.presidents || "-")}</p>
+            <p class="muted team-profile-meta-line">Saldo FM: ${formatFm(snapshot.fmBalance || 0)}</p>
+            <p class="muted team-profile-meta-line">Stadio: ${escapeHtml(formatStadium(snapshot.stadium))}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel detail-section"><h3>Rosa</h3>${rosterHtml}</section>
+      <section class="panel detail-section"><h3>Palmares squadra</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-palmares-wrap"><table class="mobile-tabular team-profile-palmares-table"><thead><tr><th>Stagione</th><th>Risultato</th></tr></thead><tbody>${palmaresRows}</tbody></table></div></section>
+      <section class="panel detail-section"><h3>Ultimi movimenti</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap"><table class="mobile-tabular team-profile-movements-table"><thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th></tr></thead><tbody>${movementRows}</tbody></table></div></section>
+      <section class="panel detail-section"><h3>Ultimi comunicati</h3><div class="team-profile-news-list">${newsHtml}</div></section>
+      <section class="panel detail-section"><h3>Ultime partite</h3><div class="table-wrap mobile-tabular-wrap team-profile-table-wrap team-profile-matches-wrap"><table class="mobile-tabular team-profile-matches-table"><thead><tr><th>Comp.</th><th>Fase</th><th>Partita</th><th>Ris.</th></tr></thead><tbody>${matchesRows}</tbody></table></div></section>`;
+  };
+}
+
+window.FantaSiteMobileCardsV664 = Object.freeze({
+  version: SITE_MOBILE_CARDS_VERSION_V664,
+  scope: "site-only",
+  iosudoChanged: false,
+  dataChanged: false,
+  listoneDuplicateTeamRemoved: true,
+  rosterDuplicateRoleTeamRemoved: true,
+  neutralOuterContainer: true,
+  roleColoredCards: true,
+  listoneChangeBadgeBottomRight: true,
+  teamProfileRosterCards: true,
+  footerVersion: "V664",
+  filtersKept: true,
+  progressiveMore: true,
+  getState: () => ({
+    listoneLimit: siteMobileCardsStateV659.listoneLimit,
+    movementsLimit: siteMobileCardsStateV659.movementsLimit,
+    rosterCachedLimits: siteMobileCardsStateV659.rosterLimits.size,
+    mobile: isSiteMobileCardsEnabledV659()
+  })
+});
