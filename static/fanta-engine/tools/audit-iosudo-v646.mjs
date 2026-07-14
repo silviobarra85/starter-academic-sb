@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+const dataPath = new URL('../data/sudatori/current/sudatori-data.json', import.meta.url);
+const manifestPath = new URL('../data/sudatori/current/manifest.json', import.meta.url);
+const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+function assert(cond, msg) { if (!cond) throw new Error(msg); }
+const teams = data.teams || [];
+const players = Object.values(data.playersByTeam || {}).reduce((a,b)=>a+(b||[]).length,0);
+const official = Object.values(data.officialMovesByTeam || {}).reduce((a,b)=>a+(b||[]).length,0);
+const talks = Object.values(data.marketSummaryByTeam || {}).reduce((a,b)=>a+(b.talksIncoming||[]).length+(b.talksOutgoing||[]).length,0);
+const friendlies = Object.values(data.friendliesByTeam || {}).reduce((a,b)=>a+(b||[]).length,0);
+assert(manifest.version === 'V646', 'manifest version not V646');
+assert(data.meta && data.meta.version === 'V646', 'data meta version not V646');
+assert(teams.length === 20, 'expected 20 teams');
+assert(players === manifest.players, 'players count mismatch');
+assert(official === manifest.officialMoves, 'official count mismatch');
+assert(talks === manifest.teamTransferTalks, 'talks count mismatch');
+assert(friendlies === manifest.friendlies, 'friendlies count mismatch');
+assert(data.updateLogV646 && data.updateLogV646.length >= 18, 'missing v646 update log');
+console.log('Audit V646 OK', JSON.stringify({teams: teams.length, players, official, talks, friendlies, sources: manifest.sources}));
+const app = fs.readFileSync(new URL('../js/apps/iosudo-app-v646.js', import.meta.url), 'utf8');
+assert(app.includes('playerRowsCache'), 'missing V645 player cache');
+assert(app.includes('iosudo-pitch-fantasy'), 'missing XI fantasy display');
+console.log('Audit ioSudo V646 OK');
