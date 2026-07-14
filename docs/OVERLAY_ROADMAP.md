@@ -2,3 +2,4 @@
 
 - V641: automazione GitHub Actions per applicazione overlay.
 - V642: fix vista GIOCATORI ioSudo dopo V640.
+- V644: aggiornamento ioSudo/Sudatori da Excel v21, fix cache-buster e riferimenti sezione Sudatori.
