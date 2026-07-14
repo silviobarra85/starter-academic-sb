@@ -1,7 +1,10 @@
-# Overlay Roadmap
+# Overlay roadmap
 
-## V656
+## V658
 
-- Ripristinato tab **Rosa** nella scheda squadra di ioSudo.
-- Mantenuta la sezione globale **GIOCATORI** in modalita leggera.
-- Nessuna modifica ai dati V655/V25.
+Patch solo ioSudo:
+
+- preserva la posizione scroll dopo `Mostra altre voci`;
+- allinea card `Giocatori` al conteggio della vista GIOCATORI;
+- allinea card `Amichevoli` al conteggio filtrato/deduplicato della vista AMICHEVOLI;
+- mantiene dati e sito invariati.
