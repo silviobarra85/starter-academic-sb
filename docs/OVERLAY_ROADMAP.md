@@ -7,3 +7,6 @@
 
 ## V646 - 2026-07-14
 Aggiornato dataset Sudatori/ioSudo da Excel v22, mantenendo ottimizzazioni V645.
+
+## V647 - 2026-07-14
+Disattivata la sezione pubblica `Per i SUDATORI` dalle shell delle leghe. `ioSudo` resta attivo e continua a usare il dataset centrale Sudatori.
