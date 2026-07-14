@@ -1,5 +1,17 @@
-# Overlay roadmap
+# Overlay Roadmap
 
-- V647: disattivata la sezione pubblica `Per i SUDATORI` nel sito, mantenendo i dati per ioSudo.
-- V648: corretta vista giocatori dentro schede squadra e formattazione date seriali Excel.
-- V649: aggiornato ioSudo da Excel v23, filtrate le amichevoli alle sole partite effettive e alleggerita la navigazione con event delegation/cache lazy.
+## Stato corrente
+
+- V647: sezione pubblica Per i SUDATORI disattivata nel sito, dati mantenuti per ioSudo.
+- V648: correzione vista giocatori dentro schede squadra e date seriali Excel.
+- V649: aggiornamento dati ioSudo da Excel V23, filtro amichevoli effettive, prime ottimizzazioni navigazione.
+- V650: ottimizzazione performance ioSudo senza cambio dati.
+
+## Prossimo step se necessario
+
+Se la PWA resta lenta su smartphone datati:
+
+1. virtualizzazione reale liste lunghe;
+2. indice precompilato lato build per giocatori/mercato;
+3. separazione opzionale dei dataset per sezione;
+4. compressione JSON e riduzione campi duplicati lato app.
