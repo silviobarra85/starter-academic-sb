@@ -7,6 +7,7 @@
 - V649: aggiornamento dati ioSudo da Excel V23, filtro amichevoli effettive, prime ottimizzazioni navigazione.
 - V650: ottimizzazione performance generale ioSudo senza cambio dati.
 - V651: ottimizzazione mirata delle liste pesanti `GIOCATORI`, `RUMOR` e `UFFICIALITA`.
+- V652: ottimizzazione apertura dettaglio giocatore con cache e matching mercato diretto.
 
 ## Prossimo step se necessario
 

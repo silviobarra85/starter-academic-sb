@@ -1,31 +1,34 @@
-# AI Assistant Handoff V651
+# AI Assistant Handoff V652
 
 ## Contesto
 
-L'utente ha segnalato che ioSudo resta lento soprattutto nel caricamento di `GIOCATORI`, `RUMOR` e `UFFICIALITA`.
+Dopo V651 l'app ioSudo e diventata veloce nel passaggio tra sezioni, ma il click sul dettaglio di un giocatore risultava lento.
+
+## Diagnosi
+
+La lentezza era dovuta al fatto che V651 aveva spostato il calcolo pesante dalle liste al dettaglio. In particolare `attachMarketRowsForPlayer` scansionava tutte le righe di mercato e per ogni riga cercava il giocatore corrispondente con una ricerca globale.
 
 ## Cosa e stato fatto
 
-Creato overlay V651 solo performance, senza aggiornamento dataset.
-
-### Modifiche tecniche
-
-- Nuovo JS `iosudo-app-v651.js`.
-- Nuovo CSS `iosudo-app-v651.css`.
-- `index.html` aggiornato a V651.
-- `sw.js` aggiornato a cache `iosudo-shell-v651`.
-- Vista `GIOCATORI` trasformata in lista compatta: evita il calcolo completo di mercato/SOS per tutti i giocatori durante il primo caricamento.
-- Scheda completa del singolo giocatore mantenuta: i dettagli profondi vengono calcolati solo quando l'utente apre il giocatore.
-- `RUMOR` e `UFFICIALITA` renderizzano fonti compatte e cache HTML per le righe gia costruite.
-- Limiti iniziali ridotti: 36 card per `GIOCATORI`, 40 righe per `RUMOR`/`UFFICIALITA`.
-- Mantenuti handler delegati e `content-visibility` introdotti nelle versioni precedenti.
+- Nuovo JS `iosudo-app-v652.js`.
+- Nuovo CSS `iosudo-app-v652.css`.
+- `index.html` aggiornato a V652.
+- `sw.js` aggiornato a cache `iosudo-shell-v652`.
+- Aggiunta cache `playerDetailCache`.
+- Aggiunta cache `playerMarketRowsCache`.
+- Dettaglio giocatore calcolato una sola volta e poi riusato.
+- Matching mercato-giocatore reso diretto e leggero nel dettaglio.
 
 ## Cosa NON e stato fatto
 
-- Non sono stati modificati i dati V649/V23.
+- Non sono stati modificati i dati.
 - Non e stata riattivata la sezione pubblica Per i SUDATORI.
-- Non sono stati cambiati listoni, rose, manifest o dataset Sudatori.
+- Non sono stati rimossi dettagli dalle schede giocatore.
 
-## Possibile step futuro
+## Controlli
 
-Se anche V651 risultasse lenta su smartphone datati, il prossimo step e separare fisicamente i dati per sezione oppure precompilare un indice JSON lato build per mercato e giocatori.
+```bash
+node static/fanta-engine/tools/audit-iosudo-v652.mjs
+node --check static/fanta-engine/js/apps/iosudo-app-v652.js
+node --check static/iosudo/sw.js
+```
