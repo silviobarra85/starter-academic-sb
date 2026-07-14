@@ -1,6 +1,6 @@
 {
-  "id": "sudatori-iosudo-v665",
-  "label": "ioSudo V665",
+  "id": "sudatori-iosudo-v667",
+  "label": "ioSudo V667",
   "seasonId": "2026-2027",
   "updatedAt": "2026-07-14",
   "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-14_aggiornamento_globale_v19(1).xlsx",
@@ -17,6 +17,8 @@
   "officialOutgoing": 152,
   "officialMoves": 295,
   "sources": 275,
-  "uiVersion": 665,
-  "globalPlayersMarketOnly": false
+  "uiVersion": 667,
+  "globalPlayersMarketOnly": false,
+  "generatedAt": "2026-07-14T18:10:00+02:00",
+  "updatedAtTime": "2026-07-14T18:10:00+02:00"
 }

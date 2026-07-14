@@ -1,0 +1,859 @@
+/* V657 - Site performance: rendering containment for public pages. */
+.app-page:not(.is-active) {
+  display: none !important;
+}
+.app-page.is-active,
+.panel,
+.stack-item,
+.roster-card,
+.roster-card-grid > *,
+.news-item,
+.mobile-tabular-wrap,
+.table-wrap,
+.dashboard-subsection {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+.app-page.is-active .panel,
+.app-page.is-active .stack-item {
+  contain: layout paint style;
+}
+.site-perf-placeholder-v657 {
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: .75rem 0;
+  opacity: .82;
+}
+.site-perf-more-row-v657 td,
+.site-perf-more-card-v657 {
+  text-align: center;
+  padding: 1rem;
+}
+@media (max-width: 900px) {
+  .app-page.is-active .mobile-tabular tbody tr:nth-child(n+81):not(.site-perf-visible-v657):not(.site-perf-more-row-v657) {
+    display: none;
+  }
+  .app-page.is-active .roster-card-grid > :nth-child(n+7):not(.site-perf-visible-v657):not(.site-perf-more-card-v657) {
+    display: none;
+  }
+}
+
+/* V659 - Mobile card lists for Listone and Rose tables. */
+@media (max-width: 900px) {
+  .site-mobile-card-table-v659 thead {
+    display: none !important;
+  }
+  .site-mobile-card-wrap-v659 {
+    overflow: visible;
+  }
+  .site-mobile-card-table-v659,
+  .site-mobile-card-table-v659 tbody,
+  .site-mobile-card-table-v659 tr,
+  .site-mobile-card-table-v659 td {
+    display: block;
+    width: 100%;
+  }
+  .site-mobile-card-table-v659 td {
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+  .site-mobile-card-list-v659 {
+    display: grid;
+    gap: .7rem;
+    contain: layout paint style;
+  }
+  .site-mobile-player-card-v659 {
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 18px;
+    padding: .82rem;
+    background: rgba(255,255,255,.045);
+    box-shadow: 0 10px 30px rgba(0,0,0,.14);
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 150px;
+  }
+  .site-mobile-card-head-v659 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .65rem;
+    margin-bottom: .65rem;
+  }
+  .site-mobile-card-title-v659 {
+    min-width: 0;
+    font-weight: 800;
+    line-height: 1.22;
+  }
+  .site-mobile-card-title-v659 a,
+  .site-mobile-card-field-v659 a {
+    word-break: break-word;
+  }
+  .site-mobile-card-badges-v659 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: .35rem;
+    flex: 0 0 auto;
+  }
+  .site-mobile-card-badges-v659 > span,
+  .site-mobile-card-badges-v659 .status,
+  .site-mobile-card-field-v659 .status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    padding: .16rem .46rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.08);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+  .site-mobile-card-grid-v659 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+  }
+  .site-mobile-card-field-v659 {
+    border-radius: 14px;
+    background: rgba(0,0,0,.12);
+    padding: .52rem .58rem;
+    min-width: 0;
+  }
+  .site-mobile-card-field-wide-v659 {
+    grid-column: 1 / -1;
+  }
+  .site-mobile-card-field-v659 > span {
+    display: block;
+    color: var(--muted, rgba(255,255,255,.62));
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    line-height: 1.15;
+    margin-bottom: .22rem;
+    text-transform: uppercase;
+  }
+  .site-mobile-card-field-v659 > strong {
+    display: block;
+    min-width: 0;
+    font-size: .88rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+  .site-mobile-card-field-v659.is-number > strong {
+    font-variant-numeric: tabular-nums;
+  }
+  .site-mobile-more-wrap-v659 {
+    padding: .9rem .2rem .2rem;
+    text-align: center;
+  }
+  .site-mobile-more-v659 {
+    min-width: min(100%, 260px);
+  }
+  .site-mobile-roster-list-v659 {
+    margin-top: .25rem;
+  }
+  .site-mobile-roster-player-card-v659 {
+    padding: .72rem;
+  }
+}
+
+/* V662 - Mobile card layout piu compatto, ordinato e colorato per ruolo. */
+@media (max-width: 900px) {
+  .site-mobile-card-list-v662 {
+    gap: clamp(.38rem, 1.8vw, .58rem);
+    width: 100%;
+  }
+
+  .site-mobile-player-card-v662 {
+    --role-rgb: 148, 163, 184;
+    --role-soft: rgba(var(--role-rgb), .12);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(var(--role-rgb), .34);
+    border-left: clamp(3px, 1vw, 5px) solid rgba(var(--role-rgb), .9);
+    border-radius: clamp(12px, 3vw, 16px);
+    padding: clamp(.5rem, 2.3vw, .68rem);
+    background:
+      linear-gradient(135deg, rgba(var(--role-rgb), .14), rgba(255,255,255,.035) 45%, rgba(0,0,0,.12)),
+      rgba(255,255,255,.035);
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    contain-intrinsic-size: 1px 116px;
+  }
+
+  .site-mobile-player-card-v662.is-role-gk,
+  .site-mobile-player-card-v662[data-player-role^="P"] {
+    --role-rgb: 250, 204, 21;
+  }
+  .site-mobile-player-card-v662.is-role-def,
+  .site-mobile-player-card-v662[data-player-role^="D"] {
+    --role-rgb: 34, 197, 94;
+  }
+  .site-mobile-player-card-v662.is-role-mid,
+  .site-mobile-player-card-v662[data-player-role^="C"],
+  .site-mobile-player-card-v662[data-player-role^="M"],
+  .site-mobile-player-card-v662[data-player-role^="E"],
+  .site-mobile-player-card-v662[data-player-role^="W"],
+  .site-mobile-player-card-v662[data-player-role^="T"] {
+    --role-rgb: 59, 130, 246;
+  }
+  .site-mobile-player-card-v662.is-role-fwd,
+  .site-mobile-player-card-v662[data-player-role^="A"],
+  .site-mobile-player-card-v662[data-player-role^="F"] {
+    --role-rgb: 239, 68, 68;
+  }
+
+  .site-mobile-card-head-v662 {
+    align-items: flex-start;
+    gap: clamp(.45rem, 2vw, .65rem);
+    margin-bottom: clamp(.38rem, 1.8vw, .55rem);
+  }
+
+  .site-mobile-card-title-wrap-v662 {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: grid;
+    gap: .22rem;
+  }
+
+  .site-mobile-card-title-v662 {
+    font-size: clamp(.9rem, 4vw, 1.02rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .site-mobile-card-title-v662 .link-button,
+  .site-mobile-card-title-v662 a {
+    padding: 0;
+    min-height: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: inherit;
+    text-align: left;
+  }
+
+  .site-mobile-card-subline-v662 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .28rem;
+    color: var(--muted, rgba(255,255,255,.68));
+    font-size: clamp(.68rem, 3vw, .78rem);
+    line-height: 1.1;
+  }
+
+  .site-role-pill-v662,
+  .site-mobile-card-badges-v662 > span,
+  .site-mobile-card-badges-v662 .status,
+  .site-mobile-card-field-v662 .status {
+    min-height: 0;
+    border: 1px solid rgba(var(--role-rgb), .34);
+    border-radius: 999px;
+    padding: .14rem .42rem;
+    background: rgba(var(--role-rgb), .16);
+    color: rgba(255,255,255,.92);
+    font-size: clamp(.62rem, 2.7vw, .72rem);
+    font-weight: 850;
+    line-height: 1.1;
+    letter-spacing: .015em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .site-role-pill-v662.is-role-gk { --role-rgb: 250, 204, 21; color: #fff7c2; }
+  .site-role-pill-v662.is-role-def { --role-rgb: 34, 197, 94; color: #d8ffe7; }
+  .site-role-pill-v662.is-role-mid { --role-rgb: 59, 130, 246; color: #dbeafe; }
+  .site-role-pill-v662.is-role-fwd { --role-rgb: 239, 68, 68; color: #ffe2e2; }
+
+  .site-mobile-card-badges-v662 {
+    gap: .22rem;
+    max-width: min(42%, 10rem);
+  }
+
+  .site-mobile-card-grid-v662 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(86px, 29vw, 142px), 1fr));
+    gap: clamp(.32rem, 1.5vw, .48rem);
+    align-items: stretch;
+  }
+
+  .site-mobile-card-field-v662 {
+    border: 1px solid rgba(255,255,255,.055);
+    border-radius: clamp(9px, 2.3vw, 12px);
+    background: rgba(0,0,0,.105);
+    padding: clamp(.34rem, 1.6vw, .48rem) clamp(.42rem, 1.8vw, .56rem);
+    min-width: 0;
+  }
+
+  .site-mobile-card-field-v662 > span {
+    font-size: clamp(.56rem, 2.45vw, .66rem);
+    line-height: 1.05;
+    margin-bottom: .12rem;
+    color: var(--muted, rgba(255,255,255,.62));
+  }
+
+  .site-mobile-card-field-v662 > strong {
+    font-size: clamp(.75rem, 3.15vw, .86rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .site-mobile-card-field-v662 .team-code,
+  .site-mobile-card-subline-v662 .team-code {
+    font-weight: 850;
+  }
+
+  .site-mobile-card-field-wide-v659.site-mobile-card-field-v662 {
+    grid-column: 1 / -1;
+  }
+
+  .site-mobile-roster-player-card-v662 {
+    padding: clamp(.46rem, 2vw, .62rem);
+  }
+
+  .site-mobile-more-wrap-v662 {
+    padding: .62rem .1rem .1rem;
+  }
+
+  .site-mobile-more-v662,
+  .site-mobile-more-v659 {
+    width: min(100%, 13.5rem);
+    min-width: 0;
+    padding-block: .52rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-mobile-player-card-v662 {
+    border-radius: 12px;
+    padding: .48rem;
+  }
+  .site-mobile-card-grid-v662 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .site-mobile-card-badges-v662 {
+    max-width: 38%;
+  }
+  .site-mobile-card-title-v662 {
+    font-size: .9rem;
+  }
+  .site-mobile-card-field-v662 > strong {
+    font-size: .76rem;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 900px) {
+  .site-mobile-card-grid-v662 {
+    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  }
+  .site-mobile-player-card-v662 {
+    padding: .68rem .74rem;
+  }
+}
+
+/* V663 - rifinitura card mobile sito: colore per ruolo, card compatte, header tabella nascosta. */
+@media (max-width: 900px) {
+  .site-mobile-card-table-v659 thead,
+  .site-mobile-card-table-v659 thead tr,
+  .site-mobile-card-table-v659 thead th {
+    display: none !important;
+    height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .site-mobile-card-wrap-v659,
+  .site-mobile-card-row-v659,
+  .site-mobile-card-row-v662,
+  .site-mobile-card-row-v663,
+  .site-mobile-card-row-v659 > td,
+  .site-mobile-card-row-v662 > td,
+  .site-mobile-card-row-v663 > td {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .site-mobile-card-list-v663 {
+    width: min(100%, calc(100vw - clamp(1rem, 4vw, 2rem)));
+    max-width: 100%;
+    margin-inline: auto;
+    gap: clamp(.34rem, 1.65vw, .54rem);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-mobile-player-card-v663 {
+    --role-rgb: 148, 163, 184;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    border-width: 1px;
+    border-left-width: clamp(4px, 1.1vw, 6px);
+    border-color: rgba(var(--role-rgb), .45);
+    background:
+      linear-gradient(135deg, rgba(var(--role-rgb), .22), rgba(var(--role-rgb), .10) 45%, rgba(8, 12, 20, .20)),
+      rgba(14, 18, 28, .64);
+    padding: clamp(.42rem, 1.9vw, .58rem);
+    border-radius: clamp(10px, 2.8vw, 15px);
+    box-shadow: 0 5px 14px rgba(0,0,0,.14);
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 104px;
+  }
+
+  .site-mobile-player-card-v663.is-role-gk,
+  .site-mobile-player-card-v663[data-player-role^="P"] { --role-rgb: 250, 204, 21; }
+  .site-mobile-player-card-v663.is-role-def,
+  .site-mobile-player-card-v663[data-player-role^="D"] { --role-rgb: 34, 197, 94; }
+  .site-mobile-player-card-v663.is-role-mid,
+  .site-mobile-player-card-v663[data-player-role^="C"],
+  .site-mobile-player-card-v663[data-player-role^="M"],
+  .site-mobile-player-card-v663[data-player-role^="E"],
+  .site-mobile-player-card-v663[data-player-role^="W"],
+  .site-mobile-player-card-v663[data-player-role^="T"] { --role-rgb: 59, 130, 246; }
+  .site-mobile-player-card-v663.is-role-fwd,
+  .site-mobile-player-card-v663[data-player-role^="A"],
+  .site-mobile-player-card-v663[data-player-role^="F"] { --role-rgb: 239, 68, 68; }
+
+  .site-mobile-card-head-v663 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(.35rem, 1.6vw, .55rem);
+    margin-bottom: clamp(.28rem, 1.35vw, .42rem);
+  }
+
+  .site-mobile-card-title-wrap-v663 {
+    min-width: 0;
+    flex: 1 1 auto;
+    gap: .16rem;
+  }
+
+  .site-mobile-title-line-v663 {
+    display: flex;
+    align-items: center;
+    gap: .34rem;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  .site-mobile-card-title-v663 {
+    font-size: clamp(.86rem, 3.75vw, .98rem);
+    line-height: 1.08;
+    min-width: 0;
+  }
+
+  .site-mobile-title-roster-v663 {
+    display: inline-flex;
+    min-width: 0;
+    max-width: min(100%, 12rem);
+  }
+
+  .site-roster-chip-v663 {
+    display: inline-flex;
+    align-items: center;
+    gap: .24rem;
+    max-width: 100%;
+    min-height: 1.28rem;
+    padding: .12rem .42rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.075);
+    color: rgba(255,255,255,.92);
+    font-size: clamp(.61rem, 2.55vw, .7rem);
+    font-weight: 850;
+    line-height: 1.05;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-roster-chip-v663 .club-name-with-logo {
+    min-width: 0;
+    max-width: 100%;
+    gap: .2rem;
+  }
+
+  .site-roster-chip-v663 .club-logo,
+  .site-roster-chip-v663 .club-logo-sm,
+  .site-roster-chip-v663 img {
+    width: 1rem !important;
+    height: 1rem !important;
+    min-width: 1rem !important;
+  }
+
+  .site-roster-chip-v663.is-free-agent {
+    border-color: rgba(161, 98, 7, .58);
+    background: rgba(161, 98, 7, .34);
+    color: #fde68a;
+  }
+
+  .site-mobile-card-subline-v663 {
+    gap: .22rem;
+    font-size: clamp(.64rem, 2.65vw, .74rem);
+  }
+
+  .site-mobile-card-badges-v663 {
+    flex: 0 0 auto;
+    max-width: 8.2rem;
+    gap: .18rem;
+  }
+
+  .site-status-badge-v663,
+  .site-mobile-card-badges-v663 .status,
+  .site-mobile-card-badges-v663 > span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.28rem;
+    padding: .12rem .42rem;
+    border-radius: 999px;
+    font-size: clamp(.58rem, 2.45vw, .68rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+
+  .site-status-badge-v663.is-in-listone {
+    border-color: rgba(34, 197, 94, .48);
+    background: rgba(34, 197, 94, .22);
+    color: #dcfce7;
+  }
+
+  .site-status-badge-v663.is-asterisk {
+    border-color: rgba(250, 204, 21, .54);
+    background: rgba(250, 204, 21, .22);
+    color: #fef3c7;
+  }
+
+  .site-mobile-card-grid-v663 {
+    grid-template-columns: repeat(auto-fit, minmax(clamp(76px, 27vw, 126px), 1fr));
+    gap: clamp(.24rem, 1.2vw, .38rem);
+  }
+
+  .site-mobile-card-field-v663 {
+    padding: clamp(.28rem, 1.3vw, .4rem) clamp(.34rem, 1.45vw, .48rem);
+    border-radius: clamp(8px, 2vw, 11px);
+    background: rgba(0,0,0,.135);
+  }
+
+  .site-mobile-card-field-v663 > span {
+    font-size: clamp(.52rem, 2.22vw, .61rem);
+    margin-bottom: .08rem;
+  }
+
+  .site-mobile-card-field-v663 > strong {
+    font-size: clamp(.7rem, 2.92vw, .82rem);
+    line-height: 1.1;
+  }
+
+  .site-mobile-more-wrap-v663 {
+    padding: .52rem 0 .08rem;
+  }
+
+  .site-mobile-more-v663,
+  .site-mobile-more-v659 {
+    width: min(100%, 12.5rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .site-mobile-card-list-v663 {
+    width: min(100%, calc(100vw - .85rem));
+  }
+  .site-mobile-card-grid-v663 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .site-mobile-card-badges-v663 {
+    max-width: 6.6rem;
+  }
+  .site-roster-chip-v663 {
+    max-width: 8.2rem;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 900px) {
+  .site-mobile-card-list-v663 {
+    width: min(100%, 42rem);
+  }
+  .site-mobile-card-grid-v663 {
+    grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  }
+}
+
+/* V664 - rifinitura finale card mobile sito: contenitori neutri, dedup campi, badge modifica in basso. */
+@media (max-width: 900px) {
+  .site-mobile-card-wrap-v664,
+  .site-mobile-card-wrap-v664.table-wrap,
+  .site-mobile-card-wrap-v664.mobile-tabular-wrap,
+  .table-wrap:has(.site-mobile-card-table-v659),
+  .mobile-tabular-wrap:has(.site-mobile-card-table-v659) {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+    padding-inline: 0 !important;
+  }
+
+  .site-mobile-card-table-v659,
+  .site-mobile-card-table-v664,
+  .site-mobile-card-table-v659 tbody,
+  .site-mobile-card-table-v664 tbody,
+  .site-mobile-card-table-v659 tr,
+  .site-mobile-card-table-v664 tr,
+  .site-mobile-card-table-v659 td,
+  .site-mobile-card-table-v664 td {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  .site-mobile-card-row-v664,
+  .site-mobile-card-row-v664 > td,
+  .site-mobile-card-list-v664 {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .site-mobile-card-list-v664 {
+    width: min(100%, calc(100dvw - clamp(.75rem, 3.5vw, 1.4rem)));
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-mobile-player-card-v664 {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: clamp(.64rem, 2.8vw, .82rem);
+    background:
+      linear-gradient(135deg, rgba(var(--role-rgb), .34), rgba(var(--role-rgb), .16) 42%, rgba(8, 12, 20, .20)),
+      rgba(12, 16, 26, .74) !important;
+  }
+
+  .site-mobile-player-card-v664.is-role-gk,
+  .site-mobile-player-card-v664[data-player-role^="P"] { --role-rgb: 250, 204, 21; }
+  .site-mobile-player-card-v664.is-role-def,
+  .site-mobile-player-card-v664[data-player-role^="D"] { --role-rgb: 34, 197, 94; }
+  .site-mobile-player-card-v664.is-role-mid,
+  .site-mobile-player-card-v664[data-player-role^="C"],
+  .site-mobile-player-card-v664[data-player-role^="M"],
+  .site-mobile-player-card-v664[data-player-role^="E"],
+  .site-mobile-player-card-v664[data-player-role^="W"],
+  .site-mobile-player-card-v664[data-player-role^="T"] { --role-rgb: 59, 130, 246; }
+  .site-mobile-player-card-v664.is-role-fwd,
+  .site-mobile-player-card-v664[data-player-role^="A"],
+  .site-mobile-player-card-v664[data-player-role^="F"] { --role-rgb: 239, 68, 68; }
+
+  .site-mobile-card-grid-v664 {
+    grid-template-columns: repeat(auto-fit, minmax(clamp(82px, 28vw, 128px), 1fr));
+  }
+
+  .site-mobile-card-field-v664 {
+    background: rgba(0,0,0,.16) !important;
+  }
+
+  .site-listone-change-badge-v664 {
+    position: absolute;
+    right: .42rem;
+    bottom: .34rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.05rem;
+    max-width: calc(100% - .84rem);
+    padding: .08rem .38rem;
+    border-radius: 999px;
+    border: 1px solid rgba(96, 165, 250, .45);
+    background: rgba(37, 99, 235, .32);
+    color: #dbeafe;
+    font-size: clamp(.52rem, 2.2vw, .62rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-listone-change-badge-v664.is-new {
+    border-color: rgba(34, 197, 94, .55);
+    background: rgba(22, 163, 74, .30);
+    color: #dcfce7;
+  }
+  .site-listone-change-badge-v664.is-removed,
+  .site-listone-change-badge-v664.is-down {
+    border-color: rgba(248, 113, 113, .55);
+    background: rgba(220, 38, 38, .28);
+    color: #fee2e2;
+  }
+  .site-listone-change-badge-v664.is-up {
+    border-color: rgba(34, 197, 94, .55);
+    background: rgba(22, 163, 74, .30);
+    color: #dcfce7;
+  }
+  .site-listone-change-badge-v664.is-changed {
+    border-color: rgba(251, 191, 36, .58);
+    background: rgba(180, 83, 9, .28);
+    color: #fef3c7;
+  }
+
+  .site-mobile-card-badges-v664 .status-ok,
+  .site-mobile-card-badges-v664 .site-status-badge-v663.is-in-listone {
+    border-color: rgba(34, 197, 94, .56) !important;
+    background: rgba(34, 197, 94, .24) !important;
+    color: #dcfce7 !important;
+  }
+
+  .site-mobile-card-badges-v664 .status-warning,
+  .site-mobile-card-badges-v664 .site-status-badge-v663.is-asterisk {
+    border-color: rgba(250, 204, 21, .58) !important;
+    background: rgba(250, 204, 21, .23) !important;
+    color: #fef3c7 !important;
+  }
+
+  .team-profile-roster-cards-v664 {
+    margin-top: .25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-mobile-card-list-v664 {
+    width: min(100%, calc(100dvw - .7rem));
+  }
+  .site-mobile-card-grid-v664 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 520px) and (max-width: 900px) {
+  .site-mobile-card-list-v664 {
+    width: min(100%, 43rem);
+  }
+}
+
+
+/* V665 - Fix sfondo listone mobile e caricamento leggero. */
+@media (max-width: 900px) {
+  html body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel,
+  html body.is-mobile-ux .app-page[data-page="listone"] .listone-table-wrap,
+  html body.is-mobile-ux .app-page[data-page="listone"] .mobile-tabular-wrap.listone-table-wrap,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-wrap-v659,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-wrap-v664,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-wrap-v665,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-table-v659,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-table-v664,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-table-v665,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-table-v659 tbody,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-table-v659 tr,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-table-v659 td {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  html body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel {
+    border-color: rgba(255,255,255,.10) !important;
+  }
+
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v659,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v664,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v665 {
+    width: min(100%, calc(100dvw - clamp(.75rem, 3.5vw, 1.25rem))) !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    padding: 0 !important;
+  }
+
+  html body.is-mobile-ux .site-mobile-player-card-v665,
+  html body.is-mobile-ux .site-mobile-player-card-v664 {
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    min-inline-size: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 900px) {
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v665,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v664 {
+    width: min(100%, 43rem) !important;
+  }
+}
+
+
+/* V667 - mobile cards final polish: neutral listone surface and uppercase player names. */
+@media (max-width: 900px) {
+  html body.is-mobile-ux .app-page[data-page="listone"] .panel,
+  html body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel,
+  html body.is-mobile-ux .app-page[data-page="listone"] .listone-table-wrap,
+  html body.is-mobile-ux .app-page[data-page="listone"] .table-wrap,
+  html body.is-mobile-ux .app-page[data-page="listone"] .mobile-tabular-wrap,
+  html body.is-mobile-ux .app-page[data-page="listone"] .responsive-table,
+  html body.is-mobile-ux .app-page[data-page="listone"] table,
+  html body.is-mobile-ux .app-page[data-page="listone"] thead,
+  html body.is-mobile-ux .app-page[data-page="listone"] tbody,
+  html body.is-mobile-ux .app-page[data-page="listone"] tr,
+  html body.is-mobile-ux .app-page[data-page="listone"] td,
+  html body.is-mobile-ux .app-page[data-page="listone"] #listoneTableBody,
+  html body.is-mobile-ux .app-page[data-page="listone"] #listoneTableBody > tr,
+  html body.is-mobile-ux .app-page[data-page="listone"] #listoneTableBody > tr > td,
+  html body.is-mobile-ux .app-page[data-page="listone"] [class*="role-row"],
+  html body.is-mobile-ux .app-page[data-page="listone"] [class*="role-"]:not(.site-mobile-player-card-v659):not(.site-mobile-player-card-v662):not(.site-mobile-player-card-v663):not(.site-mobile-player-card-v664):not(.site-mobile-player-card-v665):not(.site-mobile-player-card-v667):not(.site-role-pill-v662) {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  html body.is-mobile-ux .app-page[data-page="listone"] .listone-main-panel {
+    background: rgba(12, 16, 26, .62) !important;
+    border-color: rgba(255,255,255,.10) !important;
+  }
+
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v659,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v664,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v665,
+  html body.is-mobile-ux .app-page[data-page="listone"] .site-mobile-card-list-v667 {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body.is-mobile-ux .site-mobile-player-card-v667,
+  html body.is-mobile-ux .site-mobile-player-card-v664,
+  html body.is-mobile-ux .site-mobile-player-card-v665 {
+    background:
+      linear-gradient(135deg, rgba(var(--role-rgb), .34), rgba(var(--role-rgb), .16) 42%, rgba(8, 12, 20, .20)),
+      rgba(12, 16, 26, .78) !important;
+    border-color: rgba(var(--role-rgb), .44) !important;
+  }
+
+  html body.is-mobile-ux .site-mobile-card-title-v659,
+  html body.is-mobile-ux .site-mobile-card-title-v662,
+  html body.is-mobile-ux .site-mobile-card-title-v663,
+  html body.is-mobile-ux .site-mobile-card-title-v667 {
+    text-transform: uppercase !important;
+    letter-spacing: .015em;
+  }
+
+  html body.is-mobile-ux .site-mobile-title-roster-v663,
+  html body.is-mobile-ux .site-roster-chip-v663,
+  html body.is-mobile-ux .site-mobile-card-badges-v663,
+  html body.is-mobile-ux .site-mobile-card-badges-v664 {
+    text-transform: none !important;
+    letter-spacing: normal;
+  }
+
+  html body.is-mobile-ux .site-listone-change-badge-v664 {
+    text-transform: uppercase !important;
+  }
+}

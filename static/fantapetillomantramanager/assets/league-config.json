@@ -5,7 +5,7 @@
   "shortName": "FantaMantra",
   "basePath": "/fantapetillomantramanager/",
   "siteUrl": "https://silviobarra.com/fantapetillomantramanager/",
-  "currentVersion": "665",
+  "currentVersion": "667",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -526,7 +526,7 @@
     "footerLastUpdated": "14/07/2026",
     "footerTemplate": "{siteName} · V{version} · Ultimo aggiornamento {lastUpdated}",
     "logoUrl": "./assets/logos/fantamantramanager-logo-v475.png",
-    "footerVersion": 573,
+    "footerVersion": 667,
     "ioSudoPlayerSourceLabelsV639": true,
     "ioSudoListoneAllPlayersV639": true,
     "ioSudoPlayerSourceLabelsV643": true,
@@ -829,7 +829,8 @@
     "V587 aggiunge in Area Admin un editor rose statiche: carica l’ultima rosa in assets/rose, aggiunge/rimuove giocatori dal listone e scarica JSON + manifest per GitHub.",
     "V588 rende assets/rose la fonte primaria per la visualizzazione delle rose e aggiunge sync Admin manuale verso rosterEntries da rosa GitHub pubblicata.",
     "V589 ricalcola la colonna Rosa del Listone da assets/rose e ignora fantasyRoster stale salvato nel JSON listone.",
-    "V590 centralizza nel fanta-engine il resolver della colonna Rosa del Listone."
+    "V590 centralizza nel fanta-engine il resolver della colonna Rosa del Listone.",
+    "V667 neutralizza lo sfondo del Listone mobile, mette in maiuscolo i nomi giocatore nelle card e mostra ora aggiornamento in ioSudo."
   ],
   "ui": {
     "footerVersion": 488,

@@ -38755,3 +38755,72 @@ window.FantaSiteMobileCardsV665 = Object.freeze({
   footerForced: true,
   loadingFaster: true
 });
+
+
+/* V667 - Mobile cards polish + footer/preloader sync.
+ * Scope: sito pubblico. Non modifica dati, listoni JSON o rose JSON. */
+const SITE_MOBILE_CARDS_VERSION_V667 = "V667";
+
+if (typeof updateSiteMobileTableModeV659 === "function") {
+  const updateSiteMobileTableModeBeforeV667 = updateSiteMobileTableModeV659;
+  updateSiteMobileTableModeV659 = function updateSiteMobileTableModeV667(tbody, enabled) {
+    updateSiteMobileTableModeBeforeV667(tbody, enabled);
+    const table = tbody?.closest?.("table");
+    const wrap = tbody?.closest?.(".table-wrap, .mobile-tabular-wrap");
+    table?.classList.toggle("site-mobile-card-table-v667", Boolean(enabled));
+    wrap?.classList.toggle("site-mobile-card-wrap-v667", Boolean(enabled));
+  };
+}
+
+function addSiteMobileV667Classes(html) {
+  return String(html || "")
+    .replace(/site-mobile-player-card-v665/g, "site-mobile-player-card-v665 site-mobile-player-card-v667")
+    .replace(/site-mobile-card-title-v663/g, "site-mobile-card-title-v663 site-mobile-card-title-v667")
+    .replace(/site-mobile-card-list-v665/g, "site-mobile-card-list-v665 site-mobile-card-list-v667")
+    .replace(/site-mobile-card-row-v664/g, "site-mobile-card-row-v664 site-mobile-card-row-v667")
+    .replace(/site-mobile-card-row-v665/g, "site-mobile-card-row-v665 site-mobile-card-row-v667")
+    .replace(/site-mobile-more-wrap-v664/g, "site-mobile-more-wrap-v664 site-mobile-more-wrap-v667")
+    .replace(/site-mobile-more-wrap-v665/g, "site-mobile-more-wrap-v665 site-mobile-more-wrap-v667");
+}
+
+if (typeof renderListoneMobileCardV664 === "function") {
+  const renderListoneMobileCardBeforeV667 = renderListoneMobileCardV664;
+  renderListoneMobileCardV664 = function renderListoneMobileCardV667(player, visibleColumns = []) {
+    return addSiteMobileV667Classes(renderListoneMobileCardBeforeV667(player, visibleColumns));
+  };
+  renderListoneMobileCardV663 = renderListoneMobileCardV664;
+}
+
+if (typeof renderRosterPlayerMobileCardV664 === "function") {
+  const renderRosterPlayerMobileCardBeforeV667 = renderRosterPlayerMobileCardV664;
+  renderRosterPlayerMobileCardV664 = function renderRosterPlayerMobileCardV667(player, showMarketColumn, currentSeasonTeamId) {
+    return addSiteMobileV667Classes(renderRosterPlayerMobileCardBeforeV667(player, showMarketColumn, currentSeasonTeamId));
+  };
+  renderRosterPlayerMobileCardV663 = renderRosterPlayerMobileCardV664;
+}
+
+function forceFooterVersionV667() {
+  const footer = document.querySelector('[data-league-footer-v445]');
+  if (!footer) return;
+  const text = footer.textContent || "";
+  if (/V\d+/.test(text)) {
+    footer.textContent = text.replace(/V\d+/, "V667").replace(/Ultimo aggiornamento\s+[^·]+$/i, "Ultimo aggiornamento 14/07/2026");
+  } else {
+    footer.textContent = `${text} · V667`;
+  }
+}
+document.addEventListener("DOMContentLoaded", forceFooterVersionV667);
+window.addEventListener("load", forceFooterVersionV667);
+window.setTimeout(forceFooterVersionV667, 250);
+window.setTimeout(forceFooterVersionV667, 900);
+window.setTimeout(forceFooterVersionV667, 1800);
+
+window.FantaSiteMobileCardsV667 = Object.freeze({
+  version: SITE_MOBILE_CARDS_VERSION_V667,
+  scope: "site-only",
+  listoneGreenBackgroundFixedAtSource: true,
+  playerNamesUppercase: true,
+  bootMessagesExtended: true,
+  iosudoHeaderDateTime: true,
+  dataChanged: false
+});
