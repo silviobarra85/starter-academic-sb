@@ -40614,3 +40614,71 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     dataChanged: false
   });
 })();
+
+
+/* V690 - Profilo squadra mobile: movimenti e comunicati responsive. */
+(function fantaSiteTeamProfileCardsV690() {
+  const VERSION = 'V690';
+  function safeHtml(value) { return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? ''); }
+  function movementType(movement) { return typeof renderFmMovementTypeBadge === 'function' ? renderFmMovementTypeBadge(movement && movement.type) : safeHtml(movement && movement.type || '-'); }
+  function fmValue(value) { return typeof formatFm === 'function' ? formatFm(value || 0) : safeHtml(value || 0); }
+  function teamName(id) { return typeof getSeasonTeamDisplayName === 'function' ? getSeasonTeamDisplayName(id) : String(id || ''); }
+  function newsDate(news) {
+    const raw = typeof getNewsRawDateValueV79 === 'function' ? getNewsRawDateValueV79(news) : (news && (news.publishedAt || news.createdAt) || '');
+    return typeof formatNewsDateTimeV79 === 'function' ? formatNewsDateTimeV79(raw) : String(raw || '');
+  }
+  function newsBody(body) { return typeof renderBoldMarkdown === 'function' ? renderBoldMarkdown(body || '') : safeHtml(body || ''); }
+  function renderMovementCards(snapshot) {
+    const rows = Array.isArray(snapshot && snapshot.recentMovements) ? snapshot.recentMovements : [];
+    if (!rows.length) return '<p class="muted">Nessun movimento recente.</p>';
+    return '<div class="team-profile-movements-list-v690">' + rows.map((movement) => {
+      const target = movement && movement.targetSeasonTeamId ? ' → ' + teamName(movement.targetSeasonTeamId) : '';
+      const player = movement && movement.type === 'INITIAL_BUDGET' ? 'Budget iniziale' : (movement && movement.playerName || '-');
+      return `<article class="team-profile-movement-card-v690">
+        <div class="team-profile-movement-head-v690">
+          <strong>${safeHtml(player)}${target ? `<small class="muted">${safeHtml(target)}</small>` : ''}</strong>
+          ${movementType(movement)}
+        </div>
+        <div class="team-profile-movement-meta-v690">
+          <div class="team-profile-movement-field-v690"><span>Data</span><b>${safeHtml(movement && movement.date || '-')}</b></div>
+          <div class="team-profile-movement-field-v690"><span>FM</span><b>${safeHtml(fmValue(movement && movement.amount || 0))}</b></div>
+          <div class="team-profile-movement-field-v690"><span>Rosa</span><b>${safeHtml(teamName(movement && movement.seasonTeamId))}</b></div>
+          <div class="team-profile-movement-field-v690"><span>Note</span><b>${safeHtml(movement && movement.description || '-')}</b></div>
+        </div>
+      </article>`;
+    }).join('') + '</div>';
+  }
+  function renderNewsCards(snapshot) {
+    const rows = Array.isArray(snapshot && snapshot.recentNews) ? snapshot.recentNews : [];
+    if (!rows.length) return '<p class="muted">Nessun comunicato squadra.</p>';
+    return '<div class="team-profile-news-list team-profile-news-list-v690">' + rows.map((news) => `
+      <article class="compact-card team-profile-news-card team-profile-news-card-v690">
+        <h3>${safeHtml(news && news.title || 'Comunicato')}</h3>
+        <p class="news-body-preserve">${newsBody(news && news.body || '')}</p>
+        <small class="muted">${safeHtml(newsDate(news))}</small>
+      </article>`).join('') + '</div>';
+  }
+  const previousRender = typeof renderTeamProfileContentV42 === 'function' ? renderTeamProfileContentV42 : null;
+  if (previousRender) {
+    renderTeamProfileContentV42 = function renderTeamProfileContentV690(snapshot) {
+      let html = previousRender(snapshot);
+      if (!snapshot || (typeof isSiteMobileCardsEnabledV659 === 'function' && !isSiteMobileCardsEnabledV659())) return html;
+      const movements = `<section class="panel detail-section"><h3>Ultimi movimenti</h3>${renderMovementCards(snapshot)}</section>`;
+      const news = `<section class="panel detail-section"><h3>Ultimi comunicati</h3>${renderNewsCards(snapshot)}</section>`;
+      html = String(html || '').replace(/<section class="panel detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<section class="panel detail-section"><h3>Ultimi comunicati<\/h3>)/, movements);
+      html = String(html || '').replace(/<section class="panel detail-section"><h3>Ultimi comunicati<\/h3>[\s\S]*?(?=<section class="panel detail-section"><h3>Ultime partite<\/h3>)/, news);
+      return html;
+    };
+  }
+  function forceFooterV690() {
+    const nodes = document.querySelectorAll('footer, [data-league-footer-v445], .site-footer, .footer-version');
+    nodes.forEach((node) => {
+      if (!node) return;
+      node.innerHTML = String(node.innerHTML || '').replace(/V\d{3}/g, VERSION).replace(/v\d{3}/g, VERSION.toLowerCase());
+    });
+  }
+  document.addEventListener('DOMContentLoaded', forceFooterV690);
+  window.addEventListener('load', forceFooterV690);
+  [100, 400, 900, 1800, 3600, 6500].forEach((delay) => window.setTimeout(forceFooterV690, delay));
+  window.FantaSiteTeamProfileCardsV690 = Object.freeze({ version: VERSION, mobileMovementsResponsive: true, mobileNewsResponsive: true, desktopChanged: false, iosudoChanged: false });
+})();
