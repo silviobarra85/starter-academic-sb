@@ -1,0 +1,36 @@
+import { readFileSync } from 'node:fs';
+
+const read = (path) => readFileSync(path, 'utf8');
+const index = read('static/iosudo/index.html');
+const sw = read('static/iosudo/sw.js');
+const app = read('static/fanta-engine/js/apps/iosudo-app-v687.js');
+const manifest = JSON.parse(read('static/fanta-engine/data/sudatori/current/manifest.json'));
+const data = JSON.parse(read('static/fanta-engine/data/sudatori/current/sudatori-data.json'));
+function assertOk(condition, message) { if (!condition) throw new Error(message); }
+assertOk(index.includes('iosudo-app-v687.js?v=687'), 'index non punta al JS V687');
+assertOk(index.includes('iosudo-app-v687.css?v=687'), 'index non punta al CSS V687');
+assertOk(index.includes('data-iosudo-version="687"'), 'data-iosudo-version non aggiornato a 687');
+assertOk(sw.includes('iosudo-shell-v687'), 'service worker non usa cache V687');
+assertOk(String(manifest.uiVersion) === '687', 'manifest uiVersion non aggiornato');
+assertOk(String(data.meta.uiVersion) === '687', 'data meta uiVersion non aggiornato');
+assertOk(manifest.sourceFile.includes('v37'), 'manifest non punta al file v37');
+assertOk(manifest.players === 717, 'conteggio giocatori inatteso');
+assertOk(manifest.friendlies === 92, 'conteggio amichevoli inatteso');
+assertOk(manifest.teamTransferTalks === 566, 'conteggio trattative inatteso');
+assertOk(manifest.officialIncoming === 150, 'conteggio ufficialita entrata inatteso');
+assertOk(manifest.officialOutgoing === 158, 'conteggio ufficialita uscita inatteso');
+assertOk(manifest.officialMoves === 308, 'conteggio ufficialita inatteso');
+assertOk(manifest.injuries === 16, 'conteggio SOS inatteso');
+assertOk(manifest.sources === 431, 'conteggio fonti inatteso');
+assertOk(Array.isArray(data.updateLogV687) && data.updateLogV687.length === 13, 'updateLogV687 non coerente');
+assertOk(app.includes('formatDateTime'), 'header data/ora non preservato');
+assertOk(app.includes('groupedMarketRows(kind)'), 'raggruppamento mercato globale mancante');
+assertOk(app.includes('renderTeamMarketPanel(team, summary)'), 'mercato squadra richiudibile mancante');
+assertOk(app.includes('renderMarketSubsection') && app.includes('TRATTATIVE IN USCITA'), 'sottosezioni mercato squadra non aggiornate');
+const liberaliPlayer = (data.playersByTeam.como || []).find((x) => /Liberali/i.test(x.playerName));
+assertOk(liberaliPlayer, 'Mattia Liberali non presente nella rosa Como');
+const liberaliOfficial = (data.officialMovesByTeam.como || []).find((x) => /Liberali/i.test(x.playerName) && x.updatedAt === '2026-07-15');
+assertOk(liberaliOfficial && /comofootball\.com/.test(String(liberaliOfficial.articleUrl || liberaliOfficial.url || '')), 'ufficialita Liberali Como non presente con fonte club');
+const dossena = (data.injuriesByTeam.como || []).find((x) => /Dossena/i.test(x.playerName));
+assertOk(dossena && /comofootball\.com/.test(String(dossena.articleUrl || dossena.url || '')), 'infortunio Dossena Como non aggiornato con fonte club');
+console.log('Audit ioSudo V687 OK', JSON.stringify({version:687, players:manifest.players, talks:manifest.teamTransferTalks, official:manifest.officialMoves, friendlies:manifest.friendlies, injuries:manifest.injuries, sources:manifest.sources, updateRows:data.updateLogV687.length}));
