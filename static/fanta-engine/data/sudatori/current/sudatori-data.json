@@ -1,33 +1,33 @@
 {
   "meta": {
-    "id": "sudatori-iosudo-v683",
-    "label": "ioSudo V683",
+    "id": "sudatori-iosudo-v684",
+    "label": "ioSudo V684",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-15",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-15_aggiornamento_globale_v32.xlsx",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-15_aggiornamento_globale_v33.xlsx",
     "listoneFile": "2026-07-04.json",
     "listoneId": "2026-07-04",
     "teams": 20,
     "players": 714,
     "friendlies": 91,
-    "marketNotes": 527,
-    "teamTransferTalks": 527,
+    "marketNotes": 540,
+    "teamTransferTalks": 540,
     "injuries": 16,
     "formationTeams": 20,
     "formationMissingPlayers": 0,
     "transfermarktRumors": 42,
     "transfermarktRumorPages": 20,
-    "officialIncoming": 144,
+    "officialIncoming": 147,
     "officialOutgoing": 156,
-    "officialMoves": 300,
+    "officialMoves": 303,
     "filteredOfficialTalks": 2,
-    "version": "V683",
+    "version": "V684",
     "marketBadgeMode": "NUOVO_RUMOR_CONFERMATO_FIX_NEUTRAL_TEXT",
     "transferTalkCardsMode": "ONE_CARD_PER_PLAYER_WITH_SOURCES_FILTER_OFFICIAL",
     "marketSummaryMode": "OFFICIAL_IN_OUT_TALKS_IN_OUT",
     "note": "V682: aggiorna ioSudo da Excel globale v29 e raggruppa RUMOR/UFFICIALITA per giocatore.",
     "officialRows": 287,
-    "sources": 349,
+    "sources": 361,
     "liveRosterRuntime": true,
     "liveRosterRuntimeSource": "assets/rose/manifest.json",
     "extraSourcesAddedV619": 7,
@@ -138,13 +138,13 @@
     "sourceBadgeShorteningV654": true,
     "ioSudoPerformanceV654": "Mantiene ottimizzazioni V651-V653 e dati v24; badge fonte compatti.",
     "formationPlayers": 220,
-    "uiVersion": 683,
+    "uiVersion": 684,
     "globalPlayersMarketOnly": false,
     "ioSudoPerformanceV655": "GIOCATORI senza giocatori solo-rumor; rumor-only visibili solo in RUMOR/UFFICIALITA per performance mobile.",
     "extraUpdateRowsV655": 9,
     "friendliesFilteredOutV655": 33,
-    "updatedAtTime": "2026-07-15T13:28:45+02:00",
-    "generatedAt": "2026-07-15T13:28:45+02:00",
+    "updatedAtTime": "2026-07-15T15:35:15+02:00",
+    "generatedAt": "2026-07-15T15:35:15+02:00",
     "extraUpdateRowsV674": 22,
     "friendliesFilteredOutV674": 36,
     "ioSudoPerformanceV674": "Mantiene GIOCATORI leggero e dati v28; header con data/ora.",
@@ -207,7 +207,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 28,
+      "transferTalksCount": 29,
       "transferTalksPreview": [
         "Mikel Amondarain",
         "Lasse Gunther",
@@ -218,7 +218,7 @@
       "injuriesCount": 0,
       "officialIncomingCount": 4,
       "officialOutgoingCount": 11,
-      "talksIncomingCount": 20,
+      "talksIncomingCount": 21,
       "talksOutgoingCount": 8,
       "officialMovesCount": 15,
       "injuriesPreview": [],
@@ -279,7 +279,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 27,
+      "transferTalksCount": 25,
       "transferTalksPreview": [
         "Yannik Engelhardt",
         "Franjo Ivanovic",
@@ -315,7 +315,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 48,
+      "transferTalksCount": 49,
       "transferTalksPreview": [
         "Arnau Martinez",
         "Baroni",
@@ -326,7 +326,7 @@
       "injuriesCount": 1,
       "officialIncomingCount": 11,
       "officialOutgoingCount": 9,
-      "talksIncomingCount": 33,
+      "talksIncomingCount": 34,
       "talksOutgoingCount": 15,
       "officialMovesCount": 20,
       "injuriesPreview": [
@@ -389,7 +389,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 21,
+      "transferTalksCount": 20,
       "transferTalksPreview": [
         "Hamed Traore",
         "Dovbyk",
@@ -398,11 +398,11 @@
         "Tony"
       ],
       "injuriesCount": 0,
-      "officialIncomingCount": 15,
+      "officialIncomingCount": 16,
       "officialOutgoingCount": 10,
       "talksIncomingCount": 17,
       "talksOutgoingCount": 3,
-      "officialMovesCount": 25,
+      "officialMovesCount": 26,
       "injuriesPreview": [],
       "formationModule": "3-5-2 / 3-4-2-1",
       "formationModuleSource": "3-5-2 / 3-4-2-1",
@@ -425,7 +425,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 53,
+      "transferTalksCount": 52,
       "transferTalksPreview": [
         "Jhon Lucumi",
         "Chalobah",
@@ -463,7 +463,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 60,
+      "transferTalksCount": 61,
       "transferTalksPreview": [
         "Randal Kolo Muani",
         "Brahim Diaz",
@@ -474,7 +474,7 @@
       "injuriesCount": 2,
       "officialIncomingCount": 8,
       "officialOutgoingCount": 7,
-      "talksIncomingCount": 53,
+      "talksIncomingCount": 56,
       "talksOutgoingCount": 5,
       "officialMovesCount": 15,
       "injuriesPreview": [
@@ -502,7 +502,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 21,
+      "transferTalksCount": 19,
       "transferTalksPreview": [
         "Luka Stojkovic",
         "Andrea Pinamonti",
@@ -551,11 +551,11 @@
         "Robbie Ure"
       ],
       "injuriesCount": 0,
-      "officialIncomingCount": 5,
+      "officialIncomingCount": 6,
       "officialOutgoingCount": 6,
       "talksIncomingCount": 5,
       "talksOutgoingCount": 1,
-      "officialMovesCount": 11,
+      "officialMovesCount": 12,
       "injuriesPreview": [],
       "formationModule": "4-3-3",
       "formationModuleSource": "4-3-3",
@@ -578,7 +578,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 36,
+      "transferTalksCount": 32,
       "transferTalksPreview": [
         "Samuele Ricci",
         "Antonio Nusa",
@@ -589,8 +589,8 @@
       "injuriesCount": 2,
       "officialIncomingCount": 8,
       "officialOutgoingCount": 3,
-      "talksIncomingCount": 13,
-      "talksOutgoingCount": 17,
+      "talksIncomingCount": 14,
+      "talksOutgoingCount": 18,
       "officialMovesCount": 11,
       "injuriesPreview": [
         "Gimenez",
@@ -689,7 +689,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 10,
+      "transferTalksCount": 9,
       "transferTalksPreview": [
         "Fazzini",
         "Jacopo Fazzini",
@@ -728,7 +728,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 49,
+      "transferTalksCount": 55,
       "transferTalksPreview": [
         "Antonio Nusa",
         "Alajbegovic",
@@ -739,8 +739,8 @@
       "injuriesCount": 1,
       "officialIncomingCount": 2,
       "officialOutgoingCount": 12,
-      "talksIncomingCount": 42,
-      "talksOutgoingCount": 8,
+      "talksIncomingCount": 46,
+      "talksOutgoingCount": 9,
       "officialMovesCount": 14,
       "injuriesPreview": [
         "Wesley"
@@ -766,7 +766,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 17,
+      "transferTalksCount": 16,
       "transferTalksPreview": [
         "Favasuli",
         "Ugresic",
@@ -804,7 +804,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 16,
+      "transferTalksCount": 17,
       "transferTalksPreview": [
         "Ben Nelson",
         "Ben Nelson",
@@ -813,11 +813,11 @@
         "Montipo"
       ],
       "injuriesCount": 0,
-      "officialIncomingCount": 5,
+      "officialIncomingCount": 6,
       "officialOutgoingCount": 15,
-      "talksIncomingCount": 14,
+      "talksIncomingCount": 15,
       "talksOutgoingCount": 2,
-      "officialMovesCount": 20,
+      "officialMovesCount": 21,
       "injuriesPreview": [],
       "formationModule": "4-3-1-2 / 3-4-2-1",
       "formationModuleSource": "4-3-1-2 / 3-4-2-1",
@@ -840,7 +840,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 23,
+      "transferTalksCount": 27,
       "transferTalksPreview": [
         "Rui Modesto",
         "Covic",
@@ -879,7 +879,7 @@
       "coachSource": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "retreatSource": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
       "updatedAt": "2026-07-12",
-      "transferTalksCount": 17,
+      "transferTalksCount": 16,
       "transferTalksPreview": [
         "Akor Adams",
         "Akor Adams",
@@ -66232,7 +66232,7 @@
       "consultedAt": "2026-07-10"
     },
     {
-      "sourceName": "Sky Sport acquisti ufficiali estate 2026",
+      "sourceName": "Sky Sport",
       "label": "Sky Sport acquisti ufficiali estate 2026",
       "url": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
       "use": "Controllo ufficialita rose e movimenti al 10/07/2026.",
@@ -66260,7 +66260,7 @@
       "consultedAt": "2026-07-10"
     },
     {
-      "sourceName": "Sky Sport allenatori",
+      "sourceName": "Sky Sport",
       "label": "Sky Sport allenatori",
       "url": "https://sport.sky.it/calciomercato/allenatori-serie-a-2026-2027-situazione-panchine-squadre",
       "use": "Allenatori Serie A 2026/27 e dettagli panchine.",
@@ -66274,7 +66274,7 @@
       "consultedAt": "2026-07-10"
     },
     {
-      "sourceName": "Sky Sport amichevoli",
+      "sourceName": "Sky Sport",
       "label": "Sky Sport amichevoli",
       "url": "https://sport.sky.it/calcio/serie-a/amichevoli-estive-serie-a-date-2026",
       "use": "Calendario amichevoli con orari e sedi dove disponibili.",
@@ -66288,7 +66288,7 @@
       "consultedAt": "2026-07-11"
     },
     {
-      "sourceName": "SportMediaset",
+      "sourceName": "SportMediaset ritiri",
       "label": "SportMediaset ritiri/amichevoli",
       "url": "https://www.sportmediaset.mediaset.it/calcio/seriea/guida-al-precampionato-di-serie-a-2026-2027-l-elenco-completo-dei-ritiri-e-delle-amichevoli_113221578-202602k.shtml",
       "use": "Fonte di controllo aggiornata 10/07/2026 18:11; usata per Lecce e Burnley-Torino.",
@@ -66309,21 +66309,21 @@
       "consultedAt": "2026-07-11"
     },
     {
-      "sourceName": "Sky tabellone calciomercato",
+      "sourceName": "Sky Sport",
       "label": "Sky tabellone calciomercato",
       "url": "https://sport.sky.it/calciomercato/tabellone",
       "use": "Acquisti, cessioni, trattative, e base per mercato attorno ai giocatori",
       "consultedAt": "2026-07-10"
     },
     {
-      "sourceName": "Sky acquisti ufficiali",
+      "sourceName": "Sky Sport",
       "label": "Sky acquisti ufficiali",
       "url": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
       "use": "Ufficialità più recenti: Gaetano, Oristanio, Rrahmani, Provedel, Dragusin, Unai Gomez ecc.",
       "consultedAt": "2026-07-10"
     },
     {
-      "sourceName": "Sky live 10",
+      "sourceName": "Sky Sport",
       "label": "Sky live 10/07",
       "url": "https://sport.sky.it/calciomercato/calciomercato-news-trattative-live-10-luglio-2026",
       "use": "News calde: Ederson-Manchester United, Khalaili-Inter, Atta-Fiorentina, Gila-Milan",
@@ -66358,14 +66358,14 @@
       "consultedAt": "2026-07-10"
     },
     {
-      "sourceName": "Fanpage",
+      "sourceName": "Fanpage live",
       "label": "Fanpage live",
       "url": "https://www.fanpage.it/sport/live/calciomercato-news-oggi-10-luglio-2026-diretta-ultime-trattative/",
       "use": "Conferme live su Atta, Zeballos, Ndoye, Pellegrini",
       "consultedAt": "2026-07-10"
     },
     {
-      "sourceName": "Sky tabellone trattative Serie A",
+      "sourceName": "Sky Sport",
       "label": "Sky tabellone trattative Serie A",
       "url": "https://sport.sky.it/calciomercato/tabellone",
       "use": "Trattative in corso per squadra; scheda Trattative_Squadre_10_07 e blocchi nelle schede squadra.",
@@ -66904,7 +66904,7 @@
       "consultedAt": "2026-07-12"
     },
     {
-      "sourceName": "SportMediaset",
+      "sourceName": "SportMediaset mercato ora per ora",
       "label": "SportMediaset mercato ora per ora",
       "url": "https://www.sportmediaset.mediaset.it/mercato/mercato-ora-per-ora.shtml",
       "use": "Fonte live per trattative, rinnovi, rescissioni e notizie varie di mercato.",
@@ -66932,7 +66932,7 @@
       "consultedAt": "2026-07-12"
     },
     {
-      "sourceName": "Gianluca Di Marzio live mercato",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio live mercato",
       "url": "https://gianlucadimarzio.com/",
       "use": "Fonte live aggiornata per trattative, visite, accordi e comunicati; utile per controllo quotidiano delle voci.",
@@ -67034,70 +67034,70 @@
       "label": "Bwin News - amichevoli Udinese 2026",
       "url": "https://www.bwin.it/it/news/calcio/amichevoli-estive-udinese-2026",
       "use": "Fonte inviata dall utente: elenco amichevoli Udinese 2026; usata con stato prudente perche club/Sky risultano ancora in attesa di comunicazione.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
       "sourceName": "Udinese.it - riparte la preparazione",
       "label": "Udinese.it - riparte la preparazione",
       "url": "https://www.udinese.it/news/squadra/lunedi-6-luglio-riparte-la-preparazione-dei-bianconeri",
       "use": "Fonte ufficiale club: raduno 6 luglio, ritiro a Lienz dal 22 luglio al 4 agosto, test internazionali da comunicare.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
       "sourceName": "Calcio d Angolo - amichevoli estive Serie A 2026",
       "label": "Calcio d Angolo - amichevoli estive Serie A 2026",
       "url": "https://calciodangolo.com/amichevoli-estive-2026-serie-a/",
       "use": "Fonte fantacalcio per calendario amichevoli; per Udinese indica ancora in attesa di comunicazione.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
-      "sourceName": "Pazzi di Fanta - amichevoli precampionato 26",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - amichevoli precampionato 26/27",
       "url": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
       "use": "Fonte fantacalcio; per Udinese indica in attesa.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
       "sourceName": "TMW",
       "label": "TMW Fantacalcio - acquisti e consigli",
       "url": "https://www.tuttomercatoweb.com/fantacalcio/",
       "use": "Fonte orientata al fantacalcio: statistiche e consigli sui nuovi acquisti.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
-      "sourceName": "Fanpage",
+      "sourceName": "Fanpage live calciomercato 13",
       "label": "Fanpage live calciomercato 13/07/2026",
       "url": "https://www.fanpage.it/sport/live/calciomercato-13-luglio-2026/",
       "use": "Fonte live per trattative aggiornate 13/07: Khalaili, Stones, Moreira, Tomori, Pellegrino, Rabiot, Zaniolo.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
       "sourceName": "Virgilio Sport live mercato 13",
       "label": "Virgilio Sport live mercato 13/07/2026",
       "url": "https://sport.virgilio.it/dirette/live/live-calciomercato-affari-e-trattative-in-diretta-13-luglio-2026-963508",
       "use": "Fonte live secondaria per incrocio notizie 13/07: Khalaili, Doue, Ederson, Pellegrino.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
       "sourceName": "TMW",
       "label": "TMW homepage Serie A 13/07/2026",
       "url": "https://www.tuttomercatoweb.com/",
       "use": "Fonte giornalistica per aggiornamenti Serie A 13/07: Dybala, Kolo Muani, Oulai, Liberali, Muharemovic, Bondo.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
       "sourceName": "Fantacalcio.it",
       "label": "Fantacalcio.it trasferimenti ufficiali Serie A",
       "url": "https://www.fantacalcio.it/calciomercato/trasferimenti",
       "use": "Ricontrollo ufficialita orientato al fantacalcio: lista movimenti ufficiali Serie A squadra per squadra.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
-      "sourceName": "Sky Sport acquisti ufficiali Serie A 2026",
+      "sourceName": "Sky Sport",
       "label": "Sky Sport acquisti ufficiali Serie A 2026",
       "url": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
       "use": "Ricontrollo ufficialita con dettagli formula/contratti e comunicati club.",
-      "consultedAt": "2026-07-13"
+      "consultedAt": "46216"
     },
     {
       "sourceName": "Fantacalcio.it",
@@ -67107,91 +67107,91 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Fantacalcio.it",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta news fantacalcio",
       "url": "https://www.pazzidifanta.com/",
       "use": "Approfondimenti su gestione al fantacalcio, nuovi arrivi, ritiri e convocati; fonte secondaria per impatto asta.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Juventus ufficiale",
+      "sourceName": "Tuttosport mercato Juventus",
       "label": "Tuttosport mercato Juventus/Zaniolo",
       "url": "https://www.tuttosport.com/news/calcio/serie-a/juventus/2026/07/13-149869486/calciomercato_juve_tra_crepe_e_sogni_la_furia_zaniolo_e_il_centrocampista_che_mette_tutti_daccordo/1",
       "use": "Fonte utile su caso Zaniolo-Udinese e riflessi Juventus/Milan/Bologna.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Dybala rinnovo Roma",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Dybala rinnovo Roma",
       "url": "https://www.gianlucadimarzio.com/calciomercato/dybala-rinnovo-roma-calciomercato-news-494737",
       "use": "Fonte puntuale per rinnovo Dybala; sostituisce homepage/live generico.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Cagliari Fazzini visite",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Cagliari Fazzini visite",
       "url": "https://www.gianlucadimarzio.com/news-calcio/cagliari-fazzini-roma-visite-mediche-494736",
       "use": "Fonte puntuale per Fazzini-Cagliari: visite mediche e formula.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Cagliari Winks visite",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Cagliari Winks visite",
       "url": "https://www.gianlucadimarzio.com/news-calcio/cagliari-winks-visite-mediche-494735",
       "use": "Fonte puntuale per Winks-Cagliari: visite mediche e contratto.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Como Liberali visite",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Como Liberali visite",
       "url": "https://www.gianlucadimarzio.com/news-calcio/como-liberali-arrivato-monza-visite-mediche-494740",
       "use": "Fonte puntuale per Liberali-Como.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Lazio Doekhi",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Lazio Doekhi",
       "url": "https://www.gianlucadimarzio.com/calciomercato/lazio-contatti-costanti-danilho-doekhi-494729",
       "use": "Fonte puntuale per Doekhi-Lazio e incontro finale.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Muharemovic estero",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Muharemovic estero",
       "url": "https://www.gianlucadimarzio.com/calciomercato/settimana-decisiva-cessione-muharemovic-scegliere-leeds-bournemouth-sunderland-494734",
       "use": "Fonte puntuale per uscita Muharemovic e club esteri.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Fiorentina Harder Basilea",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Fiorentina Harder Basilea",
       "url": "https://www.gianlucadimarzio.com/calciomercato/fiorentina-harder-basilea-calciomercato-news-13-luglio-494739",
       "use": "Fonte puntuale per Harder-Basilea.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Cagliari Prati Veroli",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Cagliari Prati Veroli",
       "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-cagliari-prati-veroli-12-luglio-2026-494724",
       "use": "Fonte puntuale per Prati e Veroli in uscita.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Fantacalcio.it",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - Doekhi gestione fantacalcio",
       "url": "https://www.pazzidifanta.com/consigli-fantacalcio/lazio-doekhi-ruolo-caratteristiche-gestione-fantacalcio-458021",
       "use": "Fonte fantacalcio per caratteristiche/gerarchie Doekhi.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Pazzi di Fanta - ritiri Serie A",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - ritiri Serie A",
       "url": "https://www.pazzidifanta.com/news/serie-a-tornano-big-date-raduni-ritiri-458019",
       "use": "Fonte fantacalcio per raduni/ritiri Serie A.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Pazzi di Fanta - nuovi arrivi Serie A",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - nuovi arrivi Serie A",
       "url": "https://www.pazzidifanta.com/consigli-fantacalcio/tutti-nuovi-arrivi-serie-a-ruolo-caratteristiche-gestione-fantacalcio-457922",
       "use": "Fonte fantacalcio per nuovi arrivi e gestione asta.",
@@ -67289,7 +67289,7 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "AS Roma ufficiale",
+      "sourceName": "AS Roma ufficiale - Dybala rinnovo 2027",
       "label": "AS Roma ufficiale - Dybala rinnovo 2027",
       "url": "https://www.asroma.com/it/notizie/75584/las-roma-e-paulo-dybala-insieme-fino-al-2027",
       "use": "Fonte primaria ufficiale: rinnovo Paulo Dybala fino al 30/06/2027; usata per Ufficialita e per superare le trattative aperte.",
@@ -67324,7 +67324,7 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Pazzi di Fanta - news 13",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - news 13/07",
       "url": "https://www.pazzidifanta.com/",
       "use": "Fonte fantacalcio per ritiro, indisponibili, gestione asta e impatto rosa.",
@@ -67338,7 +67338,7 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Fanpage",
+      "sourceName": "Fanpage live mercato 13",
       "label": "Fanpage live mercato 13/07",
       "url": "https://www.fanpage.it/sport/live/calciomercato-13-luglio-2026/",
       "use": "Fonte live di controllo per svolte giornaliere come Khalaili/Dybala.",
@@ -67401,28 +67401,28 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Khalaili salta Inter",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Khalaili salta Inter",
       "url": "https://www.gianlucadimarzio.com/calciomercato/interli-idoneita-sportiva-calciomercato-news-494749",
       "use": "Fonte puntuale per trattativa saltata per mancata idoneita CONI.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Marotta conferenza Inter",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Marotta conferenza Inter",
       "url": "https://www.gianlucadimarzio.com/news-calcio/inter-marotta-conferenza-stampa-13-luglio-2026-494747",
       "use": "Fonte primaria dichiarativa: Marotta conferma il mancato superamento delle visite/idoneita Khalaili.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Inter Iddrissou",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Inter Iddrissou",
       "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-inter-iddrissou-news-13-luglio-2026-494752",
       "use": "Fonte puntuale per offerta Colonia rifiutata e interessi Brentford/Wolfsburg.",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio - Frosinone El Azzouzi visite",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio - Frosinone El Azzouzi visite",
       "url": "https://www.gianlucadimarzio.com/news-calcio/frosinone-el-azzouzi-villa-stuart-visite-mediche-foto-video-494744",
       "use": "Fonte puntuale per visite mediche a Villa Stuart.",
@@ -67443,7 +67443,7 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Gianluca Di Marzio live 13",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Gianluca Di Marzio live 13/07",
       "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-live-notizie-giornata-494728",
       "use": "Live puntuale 13/07 con Reita-Monza e Motolese-Bologna.",
@@ -67513,14 +67513,14 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Pazzi di Fanta - Roma raduno",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - Roma raduno",
       "url": "https://www.pazzidifanta.com/news/roma-convocati-raduno-data-rientro-calciatori-mondiale-458024",
       "use": "Fonte puntuale v17 raduno Roma",
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Pazzi di Fanta - Serie A raduni ritiri",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - Serie A raduni ritiri",
       "url": "https://www.pazzidifanta.com/news/serie-a-tornano-big-date-raduni-ritiri-458019",
       "use": "Fonte ritiri/raduni v17",
@@ -67597,56 +67597,56 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Di Marzio - Inter Spence esterno",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Inter Spence esterno",
       "url": "https://www.gianlucadimarzio.com/calciomercato/spence-inter-calciomercato-news-oggi-494775",
       "use": "Articolo puntuale: Inter, Spence e alternative post-Khalaili",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Di Marzio - Roma offerta Garnacho",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Roma offerta Garnacho",
       "url": "https://www.gianlucadimarzio.com/calciomercato/offerta-roma-garnacho-prestito-diritto-riscatto-fissato-494777",
       "use": "Articolo puntuale: offerta Roma per Garnacho",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Juventus ufficiale",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Juventus alternative Kolo Muani",
       "url": "https://www.gianlucadimarzio.com/calciomercato/oyarzabal-balogun-juventus-calciomercato-13-luglio-2026-news-494781",
       "use": "Articolo puntuale: Oyarzabal/Balogun/Sorloth alternative",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Di Marzio - Roma Summerville",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Roma Summerville",
       "url": "https://www.gianlucadimarzio.com/calciomercato/roma-prova-summerville-esterno-piace-giallorossi-494782",
       "use": "Articolo puntuale: Roma prova per Summerville",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Di Marzio - Ederson Atalanta",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Ederson Atalanta",
       "url": "https://www.gianlucadimarzio.com/calciomercato/ederson-atalanta-calciomercato-13-luglio-2026-news-494785",
       "use": "Articolo puntuale: proposta rinnovo Atalanta",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Di Marzio - Valdepenas Fiorentina",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Valdepenas Fiorentina",
       "url": "https://www.gianlucadimarzio.com/calciomercato/valdepenas-fiorentina-calciomercato-news-13-luglio-2026-494786",
       "use": "Articolo puntuale: accordo verbale Fiorentina-Real",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Di Marzio - Curtis Jones Inter",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Curtis Jones Inter",
       "url": "https://www.gianlucadimarzio.com/calciomercato/inter-restano-vivi-contatti-curtis-jones-l-obiettivo-primario-centrocampo-494774",
       "use": "Articolo puntuale: contatti vivi Inter-Curtis Jones",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Fanpage",
+      "sourceName": "Fanpage live mercato 14 luglio",
       "label": "Fanpage live mercato 14 luglio",
       "url": "https://www.fanpage.it/sport/live/calciomercato-14-luglio-2026/",
       "use": "Live di giornata per controllo incrociato su Serie A",
@@ -67933,49 +67933,49 @@
       "consultedAt": "2026-07-13"
     },
     {
-      "sourceName": "Di Marzio - Desplanches Frosinone",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Desplanches Frosinone",
       "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
       "use": "Trattativa Frosinone: Desplanches in chiusura/prestito",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Di Marzio - Traoré visite Genoa",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio - Traoré visite Genoa",
       "url": "https://www.gianlucadimarzio.com/calciomercato/hamed-junior-traore-visite-mediche-genoa-14-luglio-2026-494800",
       "use": "Trattativa Genoa: Hamed Junior Traoré visite mediche e firma attesa",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Di Marzio Caffè - mercato Roma esterni",
+      "sourceName": "Gianluca Di Marzio",
       "label": "Di Marzio Caffè - mercato Roma esterni",
       "url": "https://www.gianlucadimarzio.com/caffe-di-marzio/mercato-roma-agenti-summerville-mendes-garnacho-moreira-494791",
       "use": "Roma: Garnacho, Moreira e Summerville con dettagli offerte/agenti",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Pazzi di Fanta - Chukwueze",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - Chukwueze/Amorim",
       "url": "https://www.pazzidifanta.com/consigli-fantacalcio/milan-chukwueze-amorim-gestione-fantacalcio-serie-a-news-458039",
       "use": "Milan: indicazione tecnica 3-4-2-1 e Chukwueze quarto di destra",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Pazzi di Fanta - nuovi arrivi Serie A",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - nuovi arrivi Serie A",
       "url": "https://www.pazzidifanta.com/consigli-fantacalcio/tutti-nuovi-arrivi-serie-a-ruolo-caratteristiche-gestione-fantacalcio-457922",
       "use": "Fonte fantasy per gestione dei nuovi arrivi Serie A, ruoli e caratteristiche",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Pazzi di Fanta - amichevoli precampionato",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - amichevoli precampionato",
       "url": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
       "use": "Controllo calendario amichevoli delle 20 squadre",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Alfredo Pedulla",
+      "sourceName": "Pedullà Top News",
       "label": "Pedullà Top News",
       "url": "https://www.alfredopedulla.com/news/top-news/",
       "use": "Fonte di controllo quotidiana per top news mercato e sviluppi trattative",
@@ -68031,14 +68031,14 @@
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Pazzi di Fanta Milan Chukwueze 14",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta Milan Chukwueze 14/07",
       "url": "https://www.pazzidifanta.com/consigli-fantacalcio/milan-chukwueze-amorim-gestione-fantacalcio-serie-a-news-458039",
       "use": "Fonte fantacalcio: modulo Amorim e ruolo Chukwueze",
       "consultedAt": "2026-07-14"
     },
     {
-      "sourceName": "Pazzi di Fanta Lazio Doekhi 14",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta Lazio Doekhi 14/07",
       "url": "https://www.pazzidifanta.com/consigli-fantacalcio/lazio-doekhi-ruolo-caratteristiche-gestione-fantacalcio-458021",
       "use": "Fonte fantacalcio: gestione Doekhi",
@@ -68262,21 +68262,21 @@
       "consultedAt": "2026-07-15"
     },
     {
-      "sourceName": "Alfredo Pedulla",
+      "sourceName": "Pedullà - Roma Summerville",
       "label": "Pedullà - Roma Summerville/Tzolis",
       "url": "https://www.alfredopedulla.com/il-retroscena-roma-tutta-la-verita-su-summerville-e-quella-su-tzolis/",
       "use": "Articolo puntuale: tavoli Roma esterni offensivi",
       "consultedAt": "2026-07-15"
     },
     {
-      "sourceName": "Alfredo Pedulla",
+      "sourceName": "Pedullà - Muharemovic Leeds",
       "label": "Pedullà - Muharemovic Leeds/Lucumì",
       "url": "https://www.alfredopedulla.com/muharemovic-svolta-premier-confermata-il-leeds-al-traguardo-e-ora-lucumi/",
       "use": "Articolo puntuale: Muharemovic verso Leeds e Lucumì Juve",
       "consultedAt": "2026-07-15"
     },
     {
-      "sourceName": "Alfredo Pedulla",
+      "sourceName": "Pedullà - Juve attaccanti oltre Kolo",
       "label": "Pedullà - Juve attaccanti oltre Kolo",
       "url": "https://www.alfredopedulla.com/lindiscrezione-juve-gli-attaccanti-oltre-kolo-da-castro-a-mateta-la-posizione-di-pellegrino/",
       "use": "Articolo puntuale: Castro, Mateta, Pellegrino",
@@ -68584,7 +68584,7 @@
       "consultedAt": "2026-07-15"
     },
     {
-      "sourceName": "Pazzi di Fanta - calendario amichevoli Serie A",
+      "sourceName": "Pazzi di Fanta",
       "label": "Pazzi di Fanta - calendario amichevoli Serie A",
       "url": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
       "use": "Fonte di controllo generale v31 per amichevoli precampionato.",
@@ -68595,69 +68595,153 @@
       "label": "TMW - Cagliari rinnovo Malfitano/prestito Barletta",
       "url": "https://www.tuttomercatoweb.com/serie-a/cagliari-rinnovo-centrocampista-malfitano-proseguira-stagione-barletta-2253864",
       "use": "Ufficialità: rinnovo Cagliari + prestito Barletta",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Torino Giorgini/Juve Stabia",
       "url": "https://www.tuttomercatoweb.com/serie-a/petrachi-lavoro-difesa-torino-incontro-juve-stabia-giorgini-2253874",
       "use": "Trattativa difensore Torino",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Frosinone Zerbin/Hasa",
       "url": "https://www.tuttomercatoweb.com/serie-a/frosinone-dialoghi-napoli-tratta-zerbin-allegri-mette-hasa-stand-by-2253797",
       "use": "Trattative asse Frosinone-Napoli",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Sassuolo/Venezia Tomiyasu",
       "url": "https://www.tuttomercatoweb.com/serie-a/sassuolo-contatti-tomiyasu-parametro-zero-venezia-resta-vigile-2253795",
       "use": "Trattativa parametro zero Tomiyasu",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Torino Lucas Perri",
       "url": "https://www.tuttomercatoweb.com/serie-a/torino-crescono-quotazioni-perri-portiere-preferito-petrachi-2253780",
       "use": "Trattativa portiere Torino",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Inter Pavard scenario permanenza",
       "url": "https://www.tuttomercatoweb.com/serie-a/pavard-restasse-inter-dipende-gruppo-mercato-situazione-2253785",
       "use": "Scenario difesa Inter / permanenza Pavard",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Fiorentina uscite difesa",
       "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-scatenata-problema-uscite-partire-difensori-2253453",
       "use": "Monitoraggio uscite difensive Fiorentina",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Roma Summerville incontro agenti",
       "url": "https://www.tuttomercatoweb.com/serie-a/roma-serio-summerville-incontro-agenti-passi-2253779",
       "use": "Trattativa Roma Summerville",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Juventus Dibu Martinez/Aston Villa muro",
       "url": "https://www.tuttomercatoweb.com/serie-a/juventus-dibu-martinez-mirino-l-aston-villa-muro-carnevali-molla-2253663",
       "use": "Scenario portiere Juventus",
-      "consultedAt": "2026-07-15"
+      "consultedAt": "15/07/2026"
     },
     {
       "sourceName": "TMW",
       "label": "TMW - Calciomercato no stop 14 luglio",
       "url": "https://www.tuttomercatoweb.com/serie-a/i-calciomercato-stop-i-indiscrezioni-trattative-retroscena-14-luglio-2253621",
       "use": "Raccolta puntuale TMW 14/07 - mercato Serie A",
+      "consultedAt": "15/07/2026"
+    },
+    {
+      "sourceName": "Genoa Fred Stradiotto",
+      "label": "Genoa Fred Stradiotto",
+      "url": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Lecce Filip Skorb",
+      "label": "Lecce Filip Skorb",
+      "url": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Torino Malidor",
+      "label": "Torino Malidor",
+      "url": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Torino Mascardi visite",
+      "label": "Torino Mascardi visite",
+      "url": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Fiorentina Ruggeri",
+      "label": "Fiorentina Ruggeri",
+      "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Roma rinnovi Celik Cristante Mancini",
+      "label": "Roma rinnovi Celik Cristante Mancini",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Roma Kone United",
+      "label": "Roma Kone United",
+      "url": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Milan Mazraoui",
+      "label": "Milan Mazraoui",
+      "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Gianluca Di Marzio",
+      "label": "Juventus Di Marzio podcast",
+      "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Bologna Tarozzi Ferguson",
+      "label": "Bologna Tarozzi Ferguson",
+      "url": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Pazzi di Fanta",
+      "label": "Pazzi di Fanta amichevoli",
+      "url": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
+      "consultedAt": "2026-07-15"
+    },
+    {
+      "sourceName": "Pazzi di Fanta",
+      "label": "Pazzi di Fanta ritiri",
+      "url": "https://www.pazzidifanta.com/news/serie-a-date-luoghi-ritiri-estivi-20-squadre-457230",
+      "use": "Fonte puntuale/monitoraggio aggiunta in aggiornamento globale v33",
       "consultedAt": "2026-07-15"
     }
   ],
@@ -71319,6 +71403,50 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "Conferenza Tedesco: indicazione tattica.",
             "note": "Tedesco lo sta usando come mezzala destra per carenza a centrocampo, ma lo vede anche tra trequarti, punta ed esterno destro. Impatto Mantra/ruolo da monitorare."
+          }
+        ]
+      },
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "playerName": "Lewis Ferguson",
+        "target": "Lewis Ferguson",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "direction": "incoming",
+        "directionLabel": "Gerarchie",
+        "status": "Fondamentale nel progetto Tedesco",
+        "origin": "Bologna",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Tarozzi definisce Ferguson fondamentale; posizione da trovare tra mediana e trequarti. Nota utile per gerarchie fantacalcio.",
+        "check": "Da monitorare in ritiro",
+        "rule": "Aggiornamento tecnico/gerarchico.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+        "url": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+        "href": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo/intervista",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW conferenza Tarozzi.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+            "url": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+            "href": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Fondamentale nel progetto Tedesco",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo/intervista",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW conferenza Tarozzi.",
+            "note": "Tarozzi definisce Ferguson fondamentale; posizione da trovare tra mediana e trequarti. Nota utile per gerarchie fantacalcio."
           }
         ]
       }
@@ -75285,6 +75413,50 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "Data logica 15/07: scenario uscite aggiornato.",
             "note": "Dopo gli arrivi in difesa la Fiorentina deve piazzare diverse uscite, inclusi Valentini e Moreno."
+          }
+        ]
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "playerName": "Matteo Ruggeri",
+        "target": "Matteo Ruggeri",
+        "roleBrief": "D",
+        "role": "Terzino/esterno sinistro",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Obiettivo monitorato",
+        "origin": "Atletico Madrid",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Ruggeri resta obiettivo viola per la fascia; il giocatore valuta il ritorno in Serie A. Trattativa ancora non avanzata.",
+        "check": "Aggiornare rosa se ufficiale",
+        "rule": "Nuova voce/monitoraggio mercato.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+        "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+        "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW cita La Nazione come fonte interna.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+            "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+            "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Obiettivo monitorato",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW cita La Nazione come fonte interna.",
+            "note": "Ruggeri resta obiettivo viola per la fascia; il giocatore valuta il ritorno in Serie A. Trattativa ancora non avanzata."
           }
         ]
       }
@@ -81543,6 +81715,138 @@
             "note": "Vicario indicato come alternativa monitorata se non si sblocca Dibu Martinez."
           }
         ]
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "playerName": "Randal Kolo Muani",
+        "target": "Randal Kolo Muani",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Trattativa prioritaria ma distanza col PSG",
+        "origin": "PSG",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Di Marzio spiega che la Juve insiste per riportarlo a Torino; il giocatore avrebbe ridotto richieste d ingaggio, resta nodo prezzo PSG.",
+        "check": "Aggiornare rosa se ufficiale",
+        "rule": "Aggiornamento di scenario su trattativa prioritaria.",
+        "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Podcast/articolo puntuale",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Punto Di Marzio via TMW.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Trattativa prioritaria ma distanza col PSG",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Podcast/articolo puntuale",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Punto Di Marzio via TMW.",
+            "note": "Di Marzio spiega che la Juve insiste per riportarlo a Torino; il giocatore avrebbe ridotto richieste d ingaggio, resta nodo prezzo PSG."
+          }
+        ]
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "playerName": "Mateo Pellegrino",
+        "target": "Mateo Pellegrino",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Obiettivo seconda punta / profilo fisico",
+        "origin": "Parma",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "La Juve vuole anche un attaccante con caratteristiche diverse da Kolo Muani; Pellegrino resta il profilo individuato.",
+        "check": "Aggiornare rosa se ufficiale",
+        "rule": "Aggiornamento di scenario.",
+        "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Podcast/articolo puntuale",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Punto Di Marzio via TMW.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Obiettivo seconda punta / profilo fisico",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Podcast/articolo puntuale",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Punto Di Marzio via TMW.",
+            "note": "La Juve vuole anche un attaccante con caratteristiche diverse da Kolo Muani; Pellegrino resta il profilo individuato."
+          }
+        ]
+      },
+      {
+        "teamId": "juventus",
+        "teamName": "Juventus",
+        "playerName": "Franck Kessie",
+        "target": "Franck Kessie",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Obiettivo caldo a centrocampo",
+        "origin": "Svincolato / estero",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Kessié è indicato come nome più caldo per il centrocampo, apprezzato da Spalletti e Massara.",
+        "check": "Aggiornare rosa se ufficiale",
+        "rule": "Aggiornamento di scenario.",
+        "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Podcast/articolo puntuale",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Punto Di Marzio via TMW.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Obiettivo caldo a centrocampo",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Podcast/articolo puntuale",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Punto Di Marzio via TMW.",
+            "note": "Kessié è indicato come nome più caldo per il centrocampo, apprezzato da Spalletti e Massara."
+          }
+        ]
       }
     ],
     "lazio": [
@@ -84319,6 +84623,94 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "TMW rilancia MilanNews.it.",
             "note": "Aggregato al Milan Futuro, ma arrivano sondaggi da Serie A, Serie B ed estero; situazione destinata a evolversi."
+          }
+        ]
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "playerName": "Noussair Mazraoui",
+        "target": "Noussair Mazraoui",
+        "roleBrief": "D",
+        "role": "Terzino destro/sinistro",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Pressing in aumento / preferito di Amorim",
+        "origin": "Manchester United",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Mazraoui è indicato come preferito di Amorim per la fascia; utile anche per doppio ruolo destra/sinistra.",
+        "check": "Aggiornare rosa se ufficiale",
+        "rule": "Stato aggiornato da semplice contatto a pressing/obiettivo prioritario.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW puntuale.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Pressing in aumento / preferito di Amorim",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW puntuale.",
+            "note": "Mazraoui è indicato come preferito di Amorim per la fascia; utile anche per doppio ruolo destra/sinistra."
+          }
+        ]
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "playerName": "Pervis Estupinan",
+        "target": "Pervis Estupinan",
+        "roleBrief": "D",
+        "role": "Terzino sinistro",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "In uscita / trattativa con Aston Villa",
+        "origin": "Aston Villa",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Il Milan lo considera fuori progetto; chiede circa 20 milioni, Aston Villa non vorrebbe superare 15.",
+        "check": "Aggiornare rosa se ufficiale",
+        "rule": "Aggiornamento di stato collegato alla pista Mazraoui.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW puntuale.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "In uscita / trattativa con Aston Villa",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW puntuale.",
+            "note": "Il Milan lo considera fuori progetto; chiede circa 20 milioni, Aston Villa non vorrebbe superare 15."
           }
         ]
       }
@@ -89081,6 +89473,226 @@
             "note": "Primo incontro positivo con gli agenti; ostacolo principale resta la valutazione del cartellino."
           }
         ]
+      },
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "playerName": "Zeki Celik",
+        "target": "Zeki Celik",
+        "roleBrief": "D",
+        "role": "Terzino",
+        "direction": "incoming",
+        "directionLabel": "Rinnovo/contratto",
+        "status": "Scambio documenti prima dell ufficialità",
+        "origin": "Roma",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Dopo Dybala, anche Celik sarebbe agli ultimi passaggi per il rinnovo: scambio documenti tra le parti.",
+        "check": "Aggiornare se ufficiale",
+        "rule": "Data aggiornata per avanzamento concreto del rinnovo.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW riporta Moretto.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Scambio documenti prima dell ufficialità",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW riporta Moretto.",
+            "note": "Dopo Dybala, anche Celik sarebbe agli ultimi passaggi per il rinnovo: scambio documenti tra le parti."
+          }
+        ]
+      },
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "playerName": "Bryan Cristante",
+        "target": "Bryan Cristante",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "direction": "incoming",
+        "directionLabel": "Rinnovo/contratto",
+        "status": "Rinnovo prossimo / permanenza probabile",
+        "origin": "Roma",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento.",
+        "check": "Aggiornare se ufficiale",
+        "rule": "Nuovo avanzamento rinnovo.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW puntuale.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Rinnovo prossimo / permanenza probabile",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW puntuale.",
+            "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento."
+          }
+        ]
+      },
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "playerName": "Gianluca Mancini",
+        "target": "Gianluca Mancini",
+        "roleBrief": "D",
+        "role": "Difensore centrale",
+        "direction": "incoming",
+        "directionLabel": "Rinnovo/contratto",
+        "status": "Rinnovo prossimo / permanenza probabile",
+        "origin": "Roma",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento.",
+        "check": "Aggiornare se ufficiale",
+        "rule": "Nuovo avanzamento rinnovo.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW puntuale.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Rinnovo prossimo / permanenza probabile",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW puntuale.",
+            "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento."
+          }
+        ]
+      },
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "playerName": "Lorenzo Pellegrini",
+        "target": "Lorenzo Pellegrini",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "direction": "incoming",
+        "directionLabel": "Rinnovo/contratto",
+        "status": "Rinnovo più indietro",
+        "origin": "Roma",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Trattativa ancora in corso: Pellegrini resterebbe volentieri, Gasperini lo terrebbe, ma manca ok proprietà.",
+        "check": "Da monitorare",
+        "rule": "Aggiornamento negativo/di rallentamento rispetto agli altri rinnovi Roma.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW puntuale.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Rinnovo più indietro",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW puntuale.",
+            "note": "Trattativa ancora in corso: Pellegrini resterebbe volentieri, Gasperini lo terrebbe, ma manca ok proprietà."
+          }
+        ]
+      },
+      {
+        "teamId": "roma",
+        "teamName": "Roma",
+        "playerName": "Manu Kone",
+        "target": "Manu Kone",
+        "roleBrief": "C",
+        "role": "Centrocampista",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Rumor forte da verificare",
+        "origin": "Manchester United",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Rio Ferdinand sostiene accordo Manchester United-Roma a 53 milioni. Da trattare come rumor forte, non come accordo ufficiale verificato dal club.",
+        "check": "Da monitorare",
+        "rule": "Aggiornamento di scenario: rumor rilevante ma non comunicato ufficiale.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+        "url": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+        "href": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO_RUMOR",
+        "sourceVerificationNote": "Fonte è dichiarazione/indiscrezione, non comunicato.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+            "url": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+            "href": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Rumor forte da verificare",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO_RUMOR",
+            "sourceVerificationNote": "Fonte è dichiarazione/indiscrezione, non comunicato.",
+            "note": "Rio Ferdinand sostiene accordo Manchester United-Roma a 53 milioni. Da trattare come rumor forte, non come accordo ufficiale verificato dal club."
+          }
+        ]
       }
     ],
     "sassuolo": [
@@ -90535,6 +91147,50 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "Data logica 15/07: nuova gerarchia casting portieri.",
             "note": "Perri resta il profilo preferito da Petrachi, ma il Leeds vuole prima trovare un sostituto."
+          }
+        ]
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "playerName": "Diego Mascardi",
+        "target": "Diego Mascardi",
+        "roleBrief": "P",
+        "role": "Portiere",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Visite mediche in corso / firma attesa",
+        "origin": "Spezia",
+        "formula": "",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Passo avanti: visite mediche in corso; intesa a circa 2 milioni più bonus, contratto fino al 30/06/2031. Resta trattativa fino a comunicato ufficiale.",
+        "check": "Aggiornare rosa se ufficiale",
+        "rule": "Data logica aggiornata perché la voce passa da trattativa/accordo a visite mediche.",
+        "source": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+        "url": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+        "href": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW puntuale.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+            "url": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+            "href": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Visite mediche in corso / firma attesa",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW puntuale.",
+            "note": "Passo avanti: visite mediche in corso; intesa a circa 2 milioni più bonus, contratto fino al 30/06/2031. Resta trattativa fino a comunicato ufficiale."
           }
         ]
       }
@@ -100670,6 +101326,50 @@
             "note": "Movimento ufficiale Genoa da ricontrollo Fantacalcio.it."
           }
         ]
+      },
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "playerName": "Frederico Stradiotto de Moraes / Fred",
+        "target": "Frederico Stradiotto de Moraes / Fred",
+        "roleBrief": "D",
+        "role": "D",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Ufficiale",
+        "origin": "Palmeiras",
+        "formula": "Titolo definitivo / contratto depositato",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Colpo in prospettiva per settore giovanile; classe 2008, impatto fantacalcio basso.",
+        "check": "",
+        "rule": "",
+        "source": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+        "url": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+        "href": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+            "url": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+            "href": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Ufficiale",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+            "note": "Colpo in prospettiva per settore giovanile; classe 2008, impatto fantacalcio basso."
+          }
+        ]
       }
     ],
     "inter": [
@@ -102832,6 +103532,50 @@
             "sourceVerification": "OK_ARTICOLO",
             "sourceVerificationNote": "URL articolo/live puntuale",
             "note": "Riga di uscita speculare generata dal controllo Sky ufficialita."
+          }
+        ]
+      },
+      {
+        "teamId": "lecce",
+        "teamName": "Lecce",
+        "playerName": "Filip Skorb",
+        "target": "Filip Skorb",
+        "roleBrief": "A",
+        "role": "A",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Ufficiale",
+        "origin": "Celtic",
+        "formula": "Titolo definitivo",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Attaccante classe 2008 per Primavera 1; impatto fantacalcio basso.",
+        "check": "",
+        "rule": "",
+        "source": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+        "url": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+        "href": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW riporta comunicato ufficiale US Lecce.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+            "url": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+            "href": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Ufficiale",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW riporta comunicato ufficiale US Lecce.",
+            "note": "Attaccante classe 2008 per Primavera 1; impatto fantacalcio basso."
           }
         ]
       }
@@ -106674,6 +107418,50 @@
             "sourceVerification": "OK_AGGREGATO",
             "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
             "note": "Fine prestito ufficiale da lista movimenti."
+          }
+        ]
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "playerName": "Kenjy Malidor",
+        "target": "Kenjy Malidor",
+        "roleBrief": "A",
+        "role": "A",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Ufficiale",
+        "origin": "Bastia",
+        "formula": "Titolo definitivo / primo contratto professionistico triennale",
+        "updatedAt": "2026-07-15",
+        "probability": "",
+        "reliability": "",
+        "note": "Attaccante classe 2009 per settore giovanile; impatto fantacalcio basso.",
+        "check": "",
+        "rule": "",
+        "source": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+        "url": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+        "href": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+        "sourceName": "TMW",
+        "sourceLabel": "TMW",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+        "sources": [
+          {
+            "source": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+            "url": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+            "href": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+            "sourceName": "TMW",
+            "sourceLabel": "TMW",
+            "status": "Ufficiale",
+            "updatedAt": "2026-07-15",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+            "note": "Attaccante classe 2009 per settore giovanile; impatto fantacalcio basso."
           }
         ]
       }
@@ -111405,6 +112193,50 @@
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "Conferenza Tedesco: indicazione tattica.",
               "note": "Tedesco lo sta usando come mezzala destra per carenza a centrocampo, ma lo vede anche tra trequarti, punta ed esterno destro. Impatto Mantra/ruolo da monitorare."
+            }
+          ]
+        },
+        {
+          "teamId": "bologna",
+          "teamName": "Bologna",
+          "playerName": "Lewis Ferguson",
+          "target": "Lewis Ferguson",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "incoming",
+          "directionLabel": "Gerarchie",
+          "status": "Fondamentale nel progetto Tedesco",
+          "origin": "Bologna",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Tarozzi definisce Ferguson fondamentale; posizione da trovare tra mediana e trequarti. Nota utile per gerarchie fantacalcio.",
+          "check": "Da monitorare in ritiro",
+          "rule": "Aggiornamento tecnico/gerarchico.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+          "url": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+          "href": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo/intervista",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW conferenza Tarozzi.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+              "url": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+              "href": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Fondamentale nel progetto Tedesco",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo/intervista",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW conferenza Tarozzi.",
+              "note": "Tarozzi definisce Ferguson fondamentale; posizione da trovare tra mediana e trequarti. Nota utile per gerarchie fantacalcio."
             }
           ]
         }
@@ -117597,6 +118429,50 @@
               "note": "Presentazione: Atta si vede mezzala, adattabile a piu ruoli; ha scelto la Fiorentina nonostante altre big. Possibile numero 14."
             }
           ]
+        },
+        {
+          "teamId": "fiorentina",
+          "teamName": "Fiorentina",
+          "playerName": "Matteo Ruggeri",
+          "target": "Matteo Ruggeri",
+          "roleBrief": "D",
+          "role": "Terzino/esterno sinistro",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Obiettivo monitorato",
+          "origin": "Atletico Madrid",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Ruggeri resta obiettivo viola per la fascia; il giocatore valuta il ritorno in Serie A. Trattativa ancora non avanzata.",
+          "check": "Aggiornare rosa se ufficiale",
+          "rule": "Nuova voce/monitoraggio mercato.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+          "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+          "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW cita La Nazione come fonte interna.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+              "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+              "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Obiettivo monitorato",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW cita La Nazione come fonte interna.",
+              "note": "Ruggeri resta obiettivo viola per la fascia; il giocatore valuta il ritorno in Serie A. Trattativa ancora non avanzata."
+            }
+          ]
         }
       ],
       "talksOutgoing": [
@@ -120030,6 +120906,50 @@
               "sourceVerification": "OK_AGGREGATO",
               "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
               "note": "Movimento ufficiale Genoa da ricontrollo Fantacalcio.it."
+            }
+          ]
+        },
+        {
+          "teamId": "genoa",
+          "teamName": "Genoa",
+          "playerName": "Frederico Stradiotto de Moraes / Fred",
+          "target": "Frederico Stradiotto de Moraes / Fred",
+          "roleBrief": "D",
+          "role": "D",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Ufficiale",
+          "origin": "Palmeiras",
+          "formula": "Titolo definitivo / contratto depositato",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Colpo in prospettiva per settore giovanile; classe 2008, impatto fantacalcio basso.",
+          "check": "",
+          "rule": "",
+          "source": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+          "url": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+          "href": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+              "url": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+              "href": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Ufficiale",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+              "note": "Colpo in prospettiva per settore giovanile; classe 2008, impatto fantacalcio basso."
             }
           ]
         }
@@ -127228,6 +128148,138 @@
               "note": "Vicario indicato come alternativa monitorata se non si sblocca Dibu Martinez."
             }
           ]
+        },
+        {
+          "teamId": "juventus",
+          "teamName": "Juventus",
+          "playerName": "Randal Kolo Muani",
+          "target": "Randal Kolo Muani",
+          "roleBrief": "A",
+          "role": "Attaccante",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Trattativa prioritaria ma distanza col PSG",
+          "origin": "PSG",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Di Marzio spiega che la Juve insiste per riportarlo a Torino; il giocatore avrebbe ridotto richieste d ingaggio, resta nodo prezzo PSG.",
+          "check": "Aggiornare rosa se ufficiale",
+          "rule": "Aggiornamento di scenario su trattativa prioritaria.",
+          "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Podcast/articolo puntuale",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Punto Di Marzio via TMW.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Trattativa prioritaria ma distanza col PSG",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Podcast/articolo puntuale",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Punto Di Marzio via TMW.",
+              "note": "Di Marzio spiega che la Juve insiste per riportarlo a Torino; il giocatore avrebbe ridotto richieste d ingaggio, resta nodo prezzo PSG."
+            }
+          ]
+        },
+        {
+          "teamId": "juventus",
+          "teamName": "Juventus",
+          "playerName": "Mateo Pellegrino",
+          "target": "Mateo Pellegrino",
+          "roleBrief": "A",
+          "role": "Attaccante",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Obiettivo seconda punta / profilo fisico",
+          "origin": "Parma",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "La Juve vuole anche un attaccante con caratteristiche diverse da Kolo Muani; Pellegrino resta il profilo individuato.",
+          "check": "Aggiornare rosa se ufficiale",
+          "rule": "Aggiornamento di scenario.",
+          "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Podcast/articolo puntuale",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Punto Di Marzio via TMW.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Obiettivo seconda punta / profilo fisico",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Podcast/articolo puntuale",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Punto Di Marzio via TMW.",
+              "note": "La Juve vuole anche un attaccante con caratteristiche diverse da Kolo Muani; Pellegrino resta il profilo individuato."
+            }
+          ]
+        },
+        {
+          "teamId": "juventus",
+          "teamName": "Juventus",
+          "playerName": "Franck Kessie",
+          "target": "Franck Kessie",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Obiettivo caldo a centrocampo",
+          "origin": "Svincolato / estero",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Kessié è indicato come nome più caldo per il centrocampo, apprezzato da Spalletti e Massara.",
+          "check": "Aggiornare rosa se ufficiale",
+          "rule": "Aggiornamento di scenario.",
+          "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Podcast/articolo puntuale",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Punto Di Marzio via TMW.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "url": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "articleUrl": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "href": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Obiettivo caldo a centrocampo",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Podcast/articolo puntuale",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Punto Di Marzio via TMW.",
+              "note": "Kessié è indicato come nome più caldo per il centrocampo, apprezzato da Spalletti e Massara."
+            }
+          ]
         }
       ],
       "talksOutgoing": [
@@ -128960,6 +130012,50 @@
               "note": "Difensore centrale destinato alla Primavera; non inserito nella rosa operativa fantacalcio."
             }
           ]
+        },
+        {
+          "teamId": "lecce",
+          "teamName": "Lecce",
+          "playerName": "Filip Skorb",
+          "target": "Filip Skorb",
+          "roleBrief": "A",
+          "role": "A",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Ufficiale",
+          "origin": "Celtic",
+          "formula": "Titolo definitivo",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Attaccante classe 2008 per Primavera 1; impatto fantacalcio basso.",
+          "check": "",
+          "rule": "",
+          "source": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+          "url": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+          "href": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW riporta comunicato ufficiale US Lecce.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+              "url": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+              "href": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Ufficiale",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW riporta comunicato ufficiale US Lecce.",
+              "note": "Attaccante classe 2008 per Primavera 1; impatto fantacalcio basso."
+            }
+          ]
         }
       ],
       "officialOutgoing": [
@@ -130558,6 +131654,50 @@
               "note": "TMW/SportMediaset: Milan ha avviato contatti con Rafaela Pimenta, ma nessuna offerta ufficiale allo United."
             }
           ]
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Noussair Mazraoui",
+          "target": "Noussair Mazraoui",
+          "roleBrief": "D",
+          "role": "Terzino destro/sinistro",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Pressing in aumento / preferito di Amorim",
+          "origin": "Manchester United",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Mazraoui è indicato come preferito di Amorim per la fascia; utile anche per doppio ruolo destra/sinistra.",
+          "check": "Aggiornare rosa se ufficiale",
+          "rule": "Stato aggiornato da semplice contatto a pressing/obiettivo prioritario.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW puntuale.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Pressing in aumento / preferito di Amorim",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW puntuale.",
+              "note": "Mazraoui è indicato come preferito di Amorim per la fascia; utile anche per doppio ruolo destra/sinistra."
+            }
+          ]
         }
       ],
       "talksOutgoing": [
@@ -131306,6 +132446,50 @@
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "TMW rilancia MilanNews.it.",
               "note": "Aggregato al Milan Futuro, ma arrivano sondaggi da Serie A, Serie B ed estero; situazione destinata a evolversi."
+            }
+          ]
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Pervis Estupinan",
+          "target": "Pervis Estupinan",
+          "roleBrief": "D",
+          "role": "Terzino sinistro",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "In uscita / trattativa con Aston Villa",
+          "origin": "Aston Villa",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Il Milan lo considera fuori progetto; chiede circa 20 milioni, Aston Villa non vorrebbe superare 15.",
+          "check": "Aggiornare rosa se ufficiale",
+          "rule": "Aggiornamento di stato collegato alla pista Mazraoui.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW puntuale.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "url": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "href": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "In uscita / trattativa con Aston Villa",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW puntuale.",
+              "note": "Il Milan lo considera fuori progetto; chiede circa 20 milioni, Aston Villa non vorrebbe superare 15."
             }
           ]
         }
@@ -137682,6 +138866,182 @@
               "note": "Primo incontro positivo con gli agenti; ostacolo principale resta la valutazione del cartellino."
             }
           ]
+        },
+        {
+          "teamId": "roma",
+          "teamName": "Roma",
+          "playerName": "Zeki Celik",
+          "target": "Zeki Celik",
+          "roleBrief": "D",
+          "role": "Terzino",
+          "direction": "incoming",
+          "directionLabel": "Rinnovo/contratto",
+          "status": "Scambio documenti prima dell ufficialità",
+          "origin": "Roma",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Dopo Dybala, anche Celik sarebbe agli ultimi passaggi per il rinnovo: scambio documenti tra le parti.",
+          "check": "Aggiornare se ufficiale",
+          "rule": "Data aggiornata per avanzamento concreto del rinnovo.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW riporta Moretto.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Scambio documenti prima dell ufficialità",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW riporta Moretto.",
+              "note": "Dopo Dybala, anche Celik sarebbe agli ultimi passaggi per il rinnovo: scambio documenti tra le parti."
+            }
+          ]
+        },
+        {
+          "teamId": "roma",
+          "teamName": "Roma",
+          "playerName": "Bryan Cristante",
+          "target": "Bryan Cristante",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "incoming",
+          "directionLabel": "Rinnovo/contratto",
+          "status": "Rinnovo prossimo / permanenza probabile",
+          "origin": "Roma",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento.",
+          "check": "Aggiornare se ufficiale",
+          "rule": "Nuovo avanzamento rinnovo.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW puntuale.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Rinnovo prossimo / permanenza probabile",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW puntuale.",
+              "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento."
+            }
+          ]
+        },
+        {
+          "teamId": "roma",
+          "teamName": "Roma",
+          "playerName": "Gianluca Mancini",
+          "target": "Gianluca Mancini",
+          "roleBrief": "D",
+          "role": "Difensore centrale",
+          "direction": "incoming",
+          "directionLabel": "Rinnovo/contratto",
+          "status": "Rinnovo prossimo / permanenza probabile",
+          "origin": "Roma",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento.",
+          "check": "Aggiornare se ufficiale",
+          "rule": "Nuovo avanzamento rinnovo.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW puntuale.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Rinnovo prossimo / permanenza probabile",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW puntuale.",
+              "note": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento."
+            }
+          ]
+        },
+        {
+          "teamId": "roma",
+          "teamName": "Roma",
+          "playerName": "Lorenzo Pellegrini",
+          "target": "Lorenzo Pellegrini",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "incoming",
+          "directionLabel": "Rinnovo/contratto",
+          "status": "Rinnovo più indietro",
+          "origin": "Roma",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Trattativa ancora in corso: Pellegrini resterebbe volentieri, Gasperini lo terrebbe, ma manca ok proprietà.",
+          "check": "Da monitorare",
+          "rule": "Aggiornamento negativo/di rallentamento rispetto agli altri rinnovi Roma.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW puntuale.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "url": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "href": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Rinnovo più indietro",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW puntuale.",
+              "note": "Trattativa ancora in corso: Pellegrini resterebbe volentieri, Gasperini lo terrebbe, ma manca ok proprietà."
+            }
+          ]
         }
       ],
       "talksOutgoing": [
@@ -138034,6 +139394,50 @@
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "Fonte puntuale v29",
               "note": "TMW: Manchester United apprezza Koné e avrebbe chiamato l agente. Serve offerta concreta per cambiare stato."
+            }
+          ]
+        },
+        {
+          "teamId": "roma",
+          "teamName": "Roma",
+          "playerName": "Manu Kone",
+          "target": "Manu Kone",
+          "roleBrief": "C",
+          "role": "Centrocampista",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Rumor forte da verificare",
+          "origin": "Manchester United",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Rio Ferdinand sostiene accordo Manchester United-Roma a 53 milioni. Da trattare come rumor forte, non come accordo ufficiale verificato dal club.",
+          "check": "Da monitorare",
+          "rule": "Aggiornamento di scenario: rumor rilevante ma non comunicato ufficiale.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+          "url": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+          "href": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO_RUMOR",
+          "sourceVerificationNote": "Fonte è dichiarazione/indiscrezione, non comunicato.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+              "url": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+              "href": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Rumor forte da verificare",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO_RUMOR",
+              "sourceVerificationNote": "Fonte è dichiarazione/indiscrezione, non comunicato.",
+              "note": "Rio Ferdinand sostiene accordo Manchester United-Roma a 53 milioni. Da trattare come rumor forte, non come accordo ufficiale verificato dal club."
             }
           ]
         }
@@ -139458,6 +140862,50 @@
               "note": "Operazione in prestito con opzione di acquisto definitivo."
             }
           ]
+        },
+        {
+          "teamId": "torino",
+          "teamName": "Torino",
+          "playerName": "Kenjy Malidor",
+          "target": "Kenjy Malidor",
+          "roleBrief": "A",
+          "role": "A",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Ufficiale",
+          "origin": "Bastia",
+          "formula": "Titolo definitivo / primo contratto professionistico triennale",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Attaccante classe 2009 per settore giovanile; impatto fantacalcio basso.",
+          "check": "",
+          "rule": "",
+          "source": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+          "url": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+          "href": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+              "url": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+              "href": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Ufficiale",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW riporta deposito contratto da canali ufficiali Lega.",
+              "note": "Attaccante classe 2009 per settore giovanile; impatto fantacalcio basso."
+            }
+          ]
         }
       ],
       "officialOutgoing": [
@@ -140736,6 +142184,50 @@
               "sourceVerification": "OK_ARTICOLO",
               "sourceVerificationNote": "Data logica 15/07: nuova gerarchia casting portieri.",
               "note": "Perri resta il profilo preferito da Petrachi, ma il Leeds vuole prima trovare un sostituto."
+            }
+          ]
+        },
+        {
+          "teamId": "torino",
+          "teamName": "Torino",
+          "playerName": "Diego Mascardi",
+          "target": "Diego Mascardi",
+          "roleBrief": "P",
+          "role": "Portiere",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Visite mediche in corso / firma attesa",
+          "origin": "Spezia",
+          "formula": "",
+          "updatedAt": "2026-07-15",
+          "probability": "",
+          "reliability": "",
+          "note": "Passo avanti: visite mediche in corso; intesa a circa 2 milioni più bonus, contratto fino al 30/06/2031. Resta trattativa fino a comunicato ufficiale.",
+          "check": "Aggiornare rosa se ufficiale",
+          "rule": "Data logica aggiornata perché la voce passa da trattativa/accordo a visite mediche.",
+          "source": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+          "url": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+          "href": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+          "sourceName": "TMW",
+          "sourceLabel": "TMW",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "TMW puntuale.",
+          "sources": [
+            {
+              "source": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+              "url": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+              "articleUrl": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+              "href": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+              "sourceName": "TMW",
+              "sourceLabel": "TMW",
+              "status": "Visite mediche in corso / firma attesa",
+              "updatedAt": "2026-07-15",
+              "sourceType": "Articolo specifico",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "TMW puntuale.",
+              "note": "Passo avanti: visite mediche in corso; intesa a circa 2 milioni più bonus, contratto fino al 30/06/2031. Resta trattativa fino a comunicato ufficiale."
             }
           ]
         }
@@ -521911,5 +523403,508 @@
     "visible": "solo partite effettive",
     "filteredOut": 37,
     "keptMatches": 91
+  },
+  "friendliesFilteredOutV684": [
+    {
+      "teamId": "parma",
+      "teamName": "Parma",
+      "event": "Triangolare con Sassuolo e Trento",
+      "date": "2026-07-25",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "sassuolo",
+      "teamName": "Sassuolo",
+      "event": "Triangolare con Parma e Trento",
+      "date": "2026-07-25",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "udinese",
+      "teamName": "Udinese",
+      "event": "Amichevoli non ancora ufficializzate",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamName": "Controllo fonti 12/07",
+      "event": "Ritiri/amichevoli Serie A 26/27",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "SportMediaset guida precampionato 26/27",
+      "date": "2026-07-12",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Corriere guida ritiri e amichevoli",
+      "date": "2026-07-12",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "TMW ritiri/amichevoli aggiornamento 12/07",
+      "date": "2026-07-12",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "TuttoFantacalcio ritiri Serie A 26/27",
+      "date": "2026-07-12",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "SpazioCalcio ritiri Serie A 26/27",
+      "date": "2026-07-12",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "TMW ritiri/amichevoli aggiornati",
+      "date": "2026-07-13",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "CalcioMagazine ritiri Serie A 26/27",
+      "date": "2026-07-13",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Calcio d'Angolo calendario/amichevoli",
+      "date": "2026-07-13",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamId": "udinese",
+      "teamName": "Udinese",
+      "event": "Preparazione estiva - prima fase",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "udinese",
+      "teamName": "Udinese",
+      "event": "Ritiro precampionato",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "udinese",
+      "teamName": "Udinese",
+      "event": "Triangolare con Nottingham Forest e Barcellona",
+      "date": "2026-08-08",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "udinese",
+      "teamName": "Udinese",
+      "event": "Verifica calendario amichevoli Udinese",
+      "date": "2026-07-13",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "udinese",
+      "teamName": "Udinese",
+      "event": "Verifica calendario amichevoli Udinese",
+      "date": "2026-07-13",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "udinese",
+      "teamName": "Udinese",
+      "event": "Verifica calendario amichevoli Udinese",
+      "date": "2026-07-13",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Pazzi di Fanta: oggi tornano le big, date raduni/ritiri club-by-club",
+      "date": "2026-07-13",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamId": "bologna",
+      "teamName": "Bologna",
+      "event": "Convocati ritiro Bologna: Ravaglia assente",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Calendario amichevoli precampionato 20 squadre",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Date raduni e ritiri delle big / Serie A",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamId": "torino",
+      "teamName": "Torino",
+      "event": "Convocati ritiro: Israel assente; Simeone convocato; Pellegri si rivede",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "frosinone",
+      "teamName": "Frosinone",
+      "event": "Tre conferme ufficiali in rosa: Fini, Cittadini, Calvani",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "roma",
+      "teamName": "Roma",
+      "event": "Convocati raduno e rientri post Mondiale",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Oggi tornano le big: date raduni/ritiri",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamId": "bologna",
+      "teamName": "Bologna",
+      "event": "Convocati ritiro; Ravaglia assente",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamId": "inter",
+      "teamName": "Inter",
+      "event": "Conferenza Chivu: modulo e indicazioni Diouf/Stankovic/Pavard",
+      "date": "",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Ritiri e amichevoli Serie A 2026/27",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Nuovi arrivi Serie A - gestione fantacalcio",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Controllo globale ritiri/amichevoli aggiornato",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Controllo globale calendario ritiri/amichevoli 14/07",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Calendario amichevoli precampionato 20 squadre",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Controllo aggiornamento TMW ritiri/amichevoli",
+      "date": "2026-07-15",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Ritiri e amichevoli precampionato - articolo in aggiornamento",
+      "date": "",
+      "reason": "team-out-of-scope-or-control-row"
+    },
+    {
+      "teamId": "juventus",
+      "teamName": "Juventus",
+      "event": "Preparazione intensa sotto Spalletti; messaggio società alla squadra",
+      "date": "2026-07-15",
+      "reason": "not-real-friendly-match"
+    },
+    {
+      "teamName": "Bologna",
+      "event": "Ritiro Bologna - lavoro Tedesco/Tarozzi",
+      "date": "2026-07-15",
+      "status": "Confermata presenza a Valles fino al 25 luglio; note tecnico-gerarchiche su evoluzione del progetto.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+      "reason": "Riga di controllo/ritiro, non partita effettiva"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Controllo calendario amichevoli 20 squadre",
+      "date": "2026-07-15",
+      "status": "Fonte di controllo aggiornata per calendario amichevoli precampionato 2026/27.",
+      "source": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
+      "reason": "Riga di controllo/ritiro, non partita effettiva"
+    }
+  ],
+  "updateLogV684": [
+    {
+      "type": "Ufficialita",
+      "team": "Genoa",
+      "playerName": "Frederico Stradiotto de Moraes / Fred",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Colpo in prospettiva per settore giovanile; classe 2008, impatto fantacalcio basso.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/colpo-prospettiva-genoa-depositato-contratto-fred-stradiotto-2253900",
+      "result": "Inserita"
+    },
+    {
+      "type": "Ufficialita",
+      "team": "Lecce",
+      "playerName": "Filip Skorb",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Attaccante classe 2008 per Primavera 1; impatto fantacalcio basso.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/celtic-attaccante-primavera-lecce-firmato-filip-skorb-2253895",
+      "result": "Inserita"
+    },
+    {
+      "type": "Ufficialita",
+      "team": "Torino",
+      "playerName": "Kenjy Malidor",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Attaccante classe 2009 per settore giovanile; impatto fantacalcio basso.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/torino-rinforza-settore-giovanile-preso-attaccante-malidor-bastia-2253898",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Torino",
+      "playerName": "Diego Mascardi",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Passo avanti: visite mediche in corso; intesa a circa 2 milioni più bonus, contratto fino al 30/06/2031. Resta trattativa fino a comunicato ufficiale.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/torino-visite-mediche-corso-mascardi-arriva-spezia-dettagli-2253907",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Fiorentina",
+      "playerName": "Matteo Ruggeri",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Ruggeri resta obiettivo viola per la fascia; il giocatore valuta il ritorno in Serie A. Trattativa ancora non avanzata.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-ruggeri-resta-obiettivo-terzino-valuta-ritorno-serie-2253897",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Roma",
+      "playerName": "Zeki Celik",
+      "direction": "Rinnovo/contratto",
+      "updatedAt": "2026-07-15",
+      "status": "Dopo Dybala, anche Celik sarebbe agli ultimi passaggi per il rinnovo: scambio documenti tra le parti.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Roma",
+      "playerName": "Bryan Cristante",
+      "direction": "Rinnovo/contratto",
+      "updatedAt": "2026-07-15",
+      "status": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Roma",
+      "playerName": "Gianluca Mancini",
+      "direction": "Rinnovo/contratto",
+      "updatedAt": "2026-07-15",
+      "status": "Rinnovo vicino: a meno di sorprese resterà e firmerà il prolungamento.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Roma",
+      "playerName": "Lorenzo Pellegrini",
+      "direction": "Rinnovo/contratto",
+      "updatedAt": "2026-07-15",
+      "status": "Trattativa ancora in corso: Pellegrini resterebbe volentieri, Gasperini lo terrebbe, ma manca ok proprietà.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/roma-dybala-accordi-rinnovi-celik-cristante-mancini-ultime-2253894",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Roma",
+      "playerName": "Manu Kone",
+      "direction": "Uscita",
+      "updatedAt": "2026-07-15",
+      "status": "Rio Ferdinand sostiene accordo Manchester United-Roma a 53 milioni. Da trattare come rumor forte, non come accordo ufficiale verificato dal club.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/roma-ferdinand-lancia-bomba-il-manchester-united-raggiunto-accordo-kone-2253904",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Milan",
+      "playerName": "Noussair Mazraoui",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Mazraoui è indicato come preferito di Amorim per la fascia; utile anche per doppio ruolo destra/sinistra.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Milan",
+      "playerName": "Pervis Estupinan",
+      "direction": "Uscita",
+      "updatedAt": "2026-07-15",
+      "status": "Il Milan lo considera fuori progetto; chiede circa 20 milioni, Aston Villa non vorrebbe superare 15.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/milan-mazraoui-preferito-amorim-continua-pressing-rossoneri-2253901",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Juventus",
+      "playerName": "Randal Kolo Muani",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Di Marzio spiega che la Juve insiste per riportarlo a Torino; il giocatore avrebbe ridotto richieste d ingaggio, resta nodo prezzo PSG.",
+      "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Juventus",
+      "playerName": "Mateo Pellegrino",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "La Juve vuole anche un attaccante con caratteristiche diverse da Kolo Muani; Pellegrino resta il profilo individuato.",
+      "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Juventus",
+      "playerName": "Franck Kessie",
+      "direction": "Entrata",
+      "updatedAt": "2026-07-15",
+      "status": "Kessié è indicato come nome più caldo per il centrocampo, apprezzato da Spalletti e Massara.",
+      "source": "https://www.tuttomercatoweb.com/podcast-tmw/juve-infinita-trattativa-kolo-muani-ipotesi-pellegrino-obiettivo-kessie-punto-gianluca-marzio-2253854",
+      "result": "Inserita"
+    },
+    {
+      "type": "Trattativa/monitoraggio",
+      "team": "Bologna",
+      "playerName": "Lewis Ferguson",
+      "direction": "Gerarchie",
+      "updatedAt": "2026-07-15",
+      "status": "Tarozzi definisce Ferguson fondamentale; posizione da trovare tra mediana e trequarti. Nota utile per gerarchie fantacalcio.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+      "result": "Inserita"
+    },
+    {
+      "type": "Ritiri/amichevoli",
+      "team": "Bologna",
+      "playerName": "Ritiro Bologna - lavoro Tedesco/Tarozzi",
+      "direction": "-",
+      "updatedAt": "2026-07-15",
+      "status": "Confermata presenza a Valles fino al 25 luglio; note tecnico-gerarchiche su evoluzione del progetto.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/bologna-tarozzi-evoluzione-rivoluzione-ferguson-fondamentale-2253908",
+      "result": "Inserita"
+    },
+    {
+      "type": "Ritiri/amichevoli",
+      "team": "Serie A",
+      "playerName": "Controllo calendario amichevoli 20 squadre",
+      "direction": "-",
+      "updatedAt": "2026-07-15",
+      "status": "Fonte di controllo aggiornata per calendario amichevoli precampionato 2026/27.",
+      "source": "https://www.pazzidifanta.com/news/serie-2026-2027-calendario-amichevoli-precampionato-20-squadre-457520",
+      "result": "Inserita"
+    },
+    {
+      "type": "Fonti",
+      "team": "varie",
+      "playerName": "Fonti puntuali v33",
+      "direction": "-",
+      "updatedAt": "2026-07-15",
+      "status": "Aggiunte fonti TMW/Pazzi di Fanta usate nel changelog",
+      "source": "varie",
+      "result": "Inserite in Fonti"
+    }
+  ],
+  "officialMovesOutOfScopeV684": [
+    {
+      "teamId": "verona",
+      "teamName": "Verona",
+      "playerName": "Leali",
+      "target": "Leali",
+      "roleBrief": "P",
+      "role": "P",
+      "direction": "incoming",
+      "directionLabel": "Entrata",
+      "status": "Ufficiale",
+      "origin": "Genoa",
+      "formula": "Definitivo",
+      "updatedAt": "2026-07-13",
+      "probability": "",
+      "reliability": "",
+      "note": "Movimento ufficiale Verona da ricontrollo Fantacalcio.it.",
+      "check": "",
+      "rule": "",
+      "source": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+      "url": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+      "articleUrl": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+      "href": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+      "sourceName": "Fantacalcio.it",
+      "sourceLabel": "Fantacalcio.it",
+      "sourceType": "Tabellone ufficialita",
+      "sourceVerification": "OK_AGGREGATO",
+      "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
+      "sources": [
+        {
+          "source": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+          "url": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+          "articleUrl": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+          "href": "https://www.fantacalcio.it/calciomercato/trasferimenti",
+          "sourceName": "Fantacalcio.it",
+          "sourceLabel": "Fantacalcio.it",
+          "status": "Ufficiale",
+          "updatedAt": "2026-07-13",
+          "sourceType": "Tabellone ufficialita",
+          "sourceVerification": "OK_AGGREGATO",
+          "sourceVerificationNote": "Pagina ufficialita Fantacalcio.it: aggregatore squadra per squadra",
+          "note": "Movimento ufficiale Verona da ricontrollo Fantacalcio.it."
+        }
+      ]
+    }
+  ],
+  "rulesPlayersV684": {
+    "globalPlayersMarketOnly": false,
+    "note": "GIOCATORI resta leggero: rose Serie A + listone + rose fantasy; i giocatori solo-rumor restano in RUMOR/UFFICIALITA."
+  },
+  "rulesFriendliesV684": {
+    "onlyRealMatches": true,
+    "nonMatchRowsFiltered": 39,
+    "note": "AMICHEVOLI mostra solo partite effettive; righe guida/controllo/ritiro sono filtrate."
   }
 }
