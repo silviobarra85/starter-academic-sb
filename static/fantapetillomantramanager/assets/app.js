@@ -39590,94 +39590,26 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   neutralFptCellBackground: true
 });
 
-/* V671 - Runtime safety: listone mobile cards must not inherit the sticky legacy first column. */
-(function siteMobileCardsFullWidthV671(){
-  const VERSION = "V671";
-  function isMobileLike(){
-    return window.matchMedia?.("(max-width: 900px), (hover: none) and (pointer: coarse)")?.matches || window.innerWidth <= 900;
-  }
-  function apply(){
-    if (!isMobileLike()) return;
-    const tbody = document.getElementById('listoneTableBody');
-    if (!tbody) return;
-    const table = tbody.closest('table');
-    const wrap = table?.closest('[data-player-table-wrap-v584], .mobile-tabular-wrap, .table-wrap, .listone-table-wrap');
-    table?.classList.add('site-mobile-card-table-v671');
-    wrap?.classList.add('site-mobile-card-wrap-v671');
-    if (table) {
-      table.style.setProperty('display', 'block', 'important');
-      table.style.setProperty('width', '100%', 'important');
-      table.style.setProperty('min-width', '0', 'important');
-      table.style.setProperty('max-width', '100%', 'important');
-      table.style.setProperty('table-layout', 'auto', 'important');
-      table.style.setProperty('overflow', 'visible', 'important');
-      table.style.setProperty('background', 'transparent', 'important');
-    }
-    if (wrap) {
-      wrap.style.setProperty('overflow', 'visible', 'important');
-      wrap.style.setProperty('max-height', 'none', 'important');
-      wrap.style.setProperty('background-image', 'none', 'important');
-    }
-    tbody.style.setProperty('display', 'block', 'important');
-    tbody.style.setProperty('width', '100%', 'important');
-    tbody.style.setProperty('max-width', '100%', 'important');
-    tbody.querySelectorAll('tr[class*="site-mobile-card-row-v"]').forEach((tr) => {
-      tr.classList.add('site-mobile-card-row-v671');
-      tr.removeAttribute('data-fpt-v584-role');
-      tr.style.setProperty('display', 'block', 'important');
-      tr.style.setProperty('width', '100%', 'important');
-      tr.style.setProperty('background', 'transparent', 'important');
-      tr.style.setProperty('box-shadow', 'none', 'important');
-      tr.querySelectorAll(':scope > td, :scope > th').forEach((cell) => {
-        cell.classList.add('site-mobile-fullwidth-card-cell-v671');
-        cell.classList.remove('fpt-v584-col-player');
-        cell.style.setProperty('position', 'static', 'important');
-        cell.style.setProperty('left', 'auto', 'important');
-        cell.style.setProperty('display', 'block', 'important');
-        cell.style.setProperty('width', 'min(calc(100dvw - 1.25rem), 48rem)', 'important');
-        cell.style.setProperty('min-width', 'min(calc(100dvw - 1.25rem), 48rem)', 'important');
-        cell.style.setProperty('max-width', 'min(calc(100dvw - 1.25rem), 48rem)', 'important');
-        cell.style.setProperty('margin', '0 auto', 'important');
-        cell.style.setProperty('padding', '0', 'important');
-        cell.style.setProperty('background', 'transparent', 'important');
-        cell.style.setProperty('background-image', 'none', 'important');
-        cell.style.setProperty('box-shadow', 'none', 'important');
-        cell.style.setProperty('overflow', 'visible', 'important');
-      });
-      tr.querySelectorAll('.site-mobile-card-list-v659, .site-mobile-card-list-v662, .site-mobile-card-list-v663, .site-mobile-card-list-v664, .site-mobile-card-list-v667, .site-mobile-card-list-v668, .site-mobile-card-list-v670').forEach((list) => {
-        list.classList.add('site-mobile-card-list-v671');
-        list.style.setProperty('width', '100%', 'important');
-        list.style.setProperty('max-width', '100%', 'important');
-        list.style.setProperty('display', 'grid', 'important');
-        list.style.setProperty('grid-template-columns', 'minmax(0, 1fr)', 'important');
-        list.style.setProperty('background', 'transparent', 'important');
-      });
-      tr.querySelectorAll('.site-mobile-player-card-v659, .site-mobile-player-card-v662, .site-mobile-player-card-v663, .site-mobile-player-card-v664, .site-mobile-player-card-v667, .site-mobile-player-card-v668, .site-mobile-player-card-v670').forEach((card) => {
-        card.classList.add('site-mobile-player-card-v671');
-        card.style.setProperty('width', '100%', 'important');
-        card.style.setProperty('max-width', '100%', 'important');
-        card.style.setProperty('min-width', '0', 'important');
-      });
-    });
-  }
+/* V672 - rollback mirato Listone mobile: mantiene renderer V668 ma ripristina td.fpt-v584-col-player alla resa V667. */
+(function fantaSiteMobileCardsV672(){
+  const VERSION = "V672";
   function forceFooter(){
-    const footer = document.querySelector('[data-league-footer-v445]');
+    const footer = document.querySelector("[data-league-footer-v445]");
     if (!footer) return;
-    const text = footer.textContent || 'Fantacalcio';
-    footer.textContent = /V\d+/.test(text) ? text.replace(/V\d+/, VERSION) : `${text} · ${VERSION}`;
+    const text = footer.textContent || "Fantacalcio";
+    footer.textContent = /V\d+/.test(text)
+      ? text.replace(/V\d+/, VERSION)
+      : `${text} · ${VERSION}`;
   }
-  const run = () => { apply(); forceFooter(); };
-  document.addEventListener('DOMContentLoaded', run);
-  window.addEventListener('load', run);
-  window.addEventListener('resize', run);
-  window.setTimeout(run, 100);
-  window.setTimeout(run, 350);
-  window.setTimeout(run, 900);
-  window.setTimeout(run, 1800);
-  const observer = new MutationObserver(() => window.requestAnimationFrame(run));
-  document.addEventListener('DOMContentLoaded', () => {
-    const tbody = document.getElementById('listoneTableBody');
-    if (tbody) observer.observe(tbody, { childList: true, subtree: true });
+  document.addEventListener("DOMContentLoaded", forceFooter);
+  window.addEventListener("load", forceFooter);
+  window.setTimeout(forceFooter, 100);
+  window.setTimeout(forceFooter, 700);
+  window.setTimeout(forceFooter, 1700);
+  window.FantaSiteMobileCardsV672 = Object.freeze({
+    version: VERSION,
+    listoneCellBackgroundRestoredToV667: true,
+    keepsV668Renderer: true,
+    noV671FullWidthRuntime: true
   });
-  window.FantaSiteMobileCardsV671 = Object.freeze({ version: VERSION, fullWidthRuntime: true, removesLegacyStickyCell: true });
 })();
