@@ -39229,3 +39229,165 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     dataChanged: false
   });
 })();
+
+/* V676 - Listone mobile fuori dalla tabella legacy.
+ * Desktop invariato; mobile usa section/div come le Rose, non tr/td.
+ */
+(function fantaSiteListoneMobileDivV676(){
+  const VERSION = "V676";
+  const previousRenderListonePublic = typeof renderListonePublic === "function" ? renderListonePublic : null;
+
+  function getListonePage(){
+    return document.querySelector('.app-page[data-page="listone"]');
+  }
+
+  function getListoneTableWrap(){
+    return document.querySelector('.app-page[data-page="listone"] .listone-table-wrap');
+  }
+
+  function ensureMobileRoot(){
+    const wrap = getListoneTableWrap();
+    if (!wrap) return null;
+    let root = document.getElementById("listoneMobileCardsV676");
+    if (!root) {
+      root = document.createElement("section");
+      root.id = "listoneMobileCardsV676";
+      root.className = "site-listone-mobile-v676";
+      root.setAttribute("aria-live", "polite");
+      root.setAttribute("data-site-listone-mobile-v676", "true");
+      wrap.insertAdjacentElement("afterend", root);
+    }
+    return root;
+  }
+
+  function setMobileListoneMode(enabled){
+    const wrap = getListoneTableWrap();
+    const root = enabled ? ensureMobileRoot() : document.getElementById("listoneMobileCardsV676");
+    const tbody = document.getElementById("listoneTableBody");
+    if (wrap) {
+      wrap.hidden = Boolean(enabled);
+      wrap.classList.toggle("is-site-listone-table-hidden-v676", Boolean(enabled));
+      wrap.setAttribute("aria-hidden", enabled ? "true" : "false");
+    }
+    if (root) {
+      root.hidden = !enabled;
+      root.setAttribute("aria-hidden", enabled ? "false" : "true");
+      if (!enabled) root.innerHTML = "";
+    }
+    if (tbody && typeof updateSiteMobileTableModeV659 === "function") {
+      updateSiteMobileTableModeV659(tbody, false);
+    }
+    return root;
+  }
+
+  function renderMobileEmpty(message){
+    return `<div class="site-listone-empty-v676">${escapeHtml(message || "Nessun giocatore trovato.")}</div>`;
+  }
+
+  function renderMobileCards(players, visibleColumns){
+    const root = ensureMobileRoot();
+    if (!root) return;
+    if (!players.length) {
+      root.innerHTML = renderMobileEmpty("Nessun giocatore trovato con i filtri selezionati.");
+      return;
+    }
+    const limit = Math.min(siteMobileCardsStateV659.listoneLimit, players.length);
+    const visiblePlayers = players.slice(0, limit);
+    const cardRenderer = typeof renderListoneMobileCardV664 === "function"
+      ? renderListoneMobileCardV664
+      : (typeof renderListoneMobileCardV663 === "function" ? renderListoneMobileCardV663 : renderListoneMobileCardV659);
+    root.innerHTML = `
+      <div class="site-listone-mobile-list-v676 site-mobile-card-list-v659 site-mobile-card-list-v662 site-mobile-card-list-v663 site-mobile-card-list-v664 site-mobile-card-list-v668 site-mobile-card-list-v675" data-site-mobile-list-v659="listone" data-site-mobile-list-v676="listone">
+        ${visiblePlayers.map((player) => cardRenderer(player, visibleColumns)).join("")}
+      </div>
+      <div class="site-listone-mobile-more-v676 site-mobile-more-wrap-v659 site-mobile-more-wrap-v662 site-mobile-more-wrap-v663 site-mobile-more-wrap-v664">
+        ${typeof renderSiteMobileMoreButtonV659 === "function" ? renderSiteMobileMoreButtonV659("listone", players.length - limit) : ""}
+      </div>`;
+  }
+
+  function updateListoneMeta(listone, players, metaText){
+    if (!metaText || !listone) return;
+    const activeRows = Number(listone.activeRows ?? listone.meta?.activeRows ?? 0);
+    const asteriskRows = Number(listone.asteriskRows ?? listone.meta?.asteriskRows ?? 0);
+    const rosteredRows = Number(listone.rosteredRows ?? listone.meta?.rosteredRows ?? 0);
+    const freeAgentRows = Number(listone.freeAgentRows ?? listone.meta?.freeAgentRows ?? 0);
+    metaText.textContent = `Listone ${listone.loadedAt || listone.id} · ${listone.label || ""} · ${players.length} filtrati su ${listone.players.length} giocatori (${activeRows} in listone, ${asteriskRows} asteriscati, ${rosteredRows || "-"} in rosa, ${freeAgentRows || "-"} svincolati)`;
+  }
+
+  function computeListoneSignature(listone, visibleColumns){
+    const selectedRoles = Array.from(getCheckedListoneRoleFilters()).sort().join(",");
+    const selectedStatuses = Array.from(getCheckedListoneStatusFilters()).sort().join(",");
+    return getSiteMobileCardSignatureV659([
+      listone.id,
+      getCurrentSeasonId(),
+      document.getElementById("listoneSearch")?.value || "",
+      selectedRoles,
+      selectedStatuses,
+      state.listoneSort?.key || "",
+      state.listoneSort?.direction || "",
+      visibleColumns.map((column) => column.key).join(","),
+      VERSION
+    ]);
+  }
+
+  function forceFooter(){
+    const footer = document.querySelector("[data-league-footer-v445]");
+    if (!footer) return;
+    const text = footer.textContent || "Fantacalcio";
+    footer.textContent = /V\d+/.test(text) ? text.replace(/V\d+/, VERSION) : `${text} · ${VERSION}`;
+  }
+
+  if (previousRenderListonePublic) {
+    renderListonePublic = function renderListonePublicV676(...args){
+      if (typeof isSiteMobileCardsEnabledV659 !== "function" || !isSiteMobileCardsEnabledV659()) {
+        setMobileListoneMode(false);
+        return previousRenderListonePublic.apply(this, args);
+      }
+
+      const root = setMobileListoneMode(true);
+      const metaText = document.getElementById("listoneMetaText");
+      const listone = getSelectedListone();
+      renderListoneSelect(listone);
+      renderListoneColumnControls();
+      if (!root) return null;
+
+      const visibleColumns = getListoneVisibleColumns();
+      if (!listone) {
+        const seasonName = getSeasonName(getCurrentSeasonId()) || getCurrentSeasonId() || "selezionata";
+        root.innerHTML = renderMobileEmpty(`Nessun listone caricato per la stagione ${seasonName}.`);
+        if (metaText) metaText.textContent = `Nessun listone caricato per la stagione ${seasonName}.`;
+        return null;
+      }
+
+      const players = getFilteredListonePlayers(listone);
+      const signature = computeListoneSignature(listone, visibleColumns);
+      resetSiteMobileLimitIfNeededV659("listone", signature, SITE_MOBILE_CARD_INITIAL_LISTONE_V659);
+      updateListoneMeta(listone, players, metaText);
+      renderMobileCards(players, visibleColumns);
+      return null;
+    };
+  }
+
+  const media = window.matchMedia?.("(max-width: 900px)");
+  if (media?.addEventListener) {
+    media.addEventListener("change", () => {
+      const page = getListonePage();
+      if (page?.classList.contains("is-active")) renderListonePublic?.();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", forceFooter);
+  window.addEventListener("load", forceFooter);
+  window.setTimeout(forceFooter, 100);
+  window.setTimeout(forceFooter, 700);
+
+  window.FantaSiteListoneMobileDivV676 = Object.freeze({
+    version: VERSION,
+    siteOnly: true,
+    mobileListoneLeavesTable: true,
+    desktopUnchanged: true,
+    usesRoseLikeDivLayout: true,
+    iosudoChanged: false,
+    dataChanged: false
+  });
+})();
