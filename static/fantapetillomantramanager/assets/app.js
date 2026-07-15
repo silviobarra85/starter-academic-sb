@@ -39985,3 +39985,216 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     dataChanged: false
   });
 })();
+
+/* V678 - Listone mobile: riparte dalla V676, ma usa card div con tutti i campi del listone.
+ * Scope: solo sito pubblico. Desktop invariato. Non modifica ioSudo o dati JSON. */
+(function fantaSiteListoneMobileCardsV678(){
+  const VERSION = "V678";
+
+  const FIELD_LABEL_OVERRIDES = {
+    classicRole: "Ruolo",
+    realTeam: "Squadra",
+    fantasyRoster: "Rosa",
+    quotationCurrent: "Qt.A",
+    quotationInitial: "Qt.I",
+    quotationDiff: "Diff.",
+    quotationCurrentMantra: "Qt.A M",
+    quotationInitialMantra: "Qt.I M",
+    quotationDiffMantra: "Diff.M",
+    fvm: "FVM",
+    fvmMantra: "FVM M",
+    rosterRole: "Ruolo rosa",
+    rosterCost: "Costo rosa",
+    sourceSheet: "Origine",
+    fantacalcioId: "ID"
+  };
+
+  const FIELD_ORDER = [
+    "classicRole",
+    "realTeam",
+    "fantasyRoster",
+    "quotationCurrent",
+    "quotationInitial",
+    "quotationDiff",
+    "quotationCurrentMantra",
+    "quotationInitialMantra",
+    "quotationDiffMantra",
+    "fvm",
+    "fvmMantra",
+    "rosterRole",
+    "rosterCost",
+    "sourceSheet",
+    "fantacalcioId"
+  ];
+
+  const EXCLUDED_FIELD_KEYS = new Set([
+    "playerName",
+    "name",
+    "status",
+    "statusCode",
+    "historyChange",
+    "statusChange",
+    "diff",
+    "previousListoneId",
+    "historyLastSeenListoneId",
+    "historyLastSeenListoneLabel",
+    "historyLastSeenListoneDate",
+    "removedFromListoneId",
+    "isHistoricalRemovedV270"
+  ]);
+
+  const NUMERIC_FIELD_KEYS = new Set([
+    "quotationCurrent",
+    "quotationInitial",
+    "quotationDiff",
+    "quotationCurrentMantra",
+    "quotationInitialMantra",
+    "quotationDiffMantra",
+    "fvm",
+    "fvmMantra",
+    "rosterCost",
+    "purchaseCost",
+    "auctionCost",
+    "costInRoster",
+    "cost"
+  ]);
+
+  function forceFooter(){
+    const footers = document.querySelectorAll('[data-league-footer-v445], footer p, .footer p, footer');
+    footers.forEach((footer) => {
+      if (!footer) return;
+      const text = footer.textContent || "Fantacalcio";
+      if (!/Fantacalcio|V\d+|Versione|ZonaOrientale|FantaPetillo/i.test(text)) return;
+      footer.textContent = /V\d+/.test(text)
+        ? text.replace(/V\d+/g, VERSION)
+        : `${text} · ${VERSION}`;
+    });
+  }
+
+  function installFooterGuard(){
+    forceFooter();
+    const footer = document.querySelector('[data-league-footer-v445]') || document.querySelector('footer');
+    if (!footer || footer.dataset.footerGuardV678 === "true") return;
+    footer.dataset.footerGuardV678 = "true";
+    const observer = new MutationObserver(() => {
+      window.clearTimeout(installFooterGuard._timer);
+      installFooterGuard._timer = window.setTimeout(forceFooter, 20);
+    });
+    observer.observe(footer, { childList: true, subtree: true, characterData: true });
+  }
+
+  function formatNumber(value){
+    if (typeof formatSiteMobileNumberValueV668 === "function") return formatSiteMobileNumberValueV668(value);
+    if (value === null || value === undefined || value === "") return "";
+    return escapeHtml(typeof formatListoneNumber === "function" ? formatListoneNumber(value) : String(value));
+  }
+
+  function getColumnForKey(key){
+    return LISTONE_COLUMNS.find((column) => column.key === key) || {
+      key,
+      label: FIELD_LABEL_OVERRIDES[key] || key,
+      numeric: NUMERIC_FIELD_KEYS.has(key)
+    };
+  }
+
+  function renderValue(player, key){
+    const column = getColumnForKey(key);
+    if (key === "fantacalcioId") return escapeHtml(player?.fantacalcioId ?? "");
+    if (typeof renderListoneCell === "function") {
+      const html = String(renderListoneCell(player, column) ?? "").trim();
+      if (html && html !== "-" && html !== "&nbsp;") return html;
+    }
+    const raw = typeof getListoneValue === "function" ? getListoneValue(player, key) : player?.[key];
+    if (raw === null || raw === undefined || raw === "") return "";
+    if (NUMERIC_FIELD_KEYS.has(key)) return formatNumber(raw);
+    if (typeof raw === "object") return "";
+    return escapeHtml(String(raw));
+  }
+
+  function renderFixedField(label, valueHtml, options = {}){
+    const raw = String(valueHtml ?? "").trim();
+    const isEmpty = !raw || raw === "-" || raw === "&nbsp;";
+    const keyClass = options.key ? ` listone-col-${escapeHtml(options.key)}` : "";
+    const numberClass = options.numeric ? " is-number" : "";
+    const emptyClass = isEmpty ? " is-empty" : "";
+    return `
+      <div class="site-mobile-card-field-v659 site-mobile-card-field-v662 site-mobile-card-field-v663 site-mobile-card-field-v664 site-mobile-card-field-v668 site-mobile-card-field-v678${keyClass}${numberClass}${emptyClass}">
+        <span>${escapeHtml(label || "Dato")}</span>
+        <strong>${isEmpty ? "&nbsp;" : raw}</strong>
+      </div>`;
+  }
+
+  function getListoneFieldKeys(player){
+    const ordered = FIELD_ORDER.filter((key) => !EXCLUDED_FIELD_KEYS.has(key));
+    const dynamic = Object.keys(player || {})
+      .filter((key) => !EXCLUDED_FIELD_KEYS.has(key))
+      .filter((key) => !ordered.includes(key))
+      .filter((key) => {
+        const value = player?.[key];
+        return value === null || value === undefined || ["string", "number", "boolean"].includes(typeof value);
+      })
+      .filter((key) => !["normalizedName", "searchKey", "teamKey", "roleGroup"].includes(key));
+    return ordered.concat(dynamic);
+  }
+
+  function renderStatusBadge(player){
+    if (typeof renderSiteListoneStatusBadgeV663 === "function") return renderSiteListoneStatusBadgeV663(player);
+    const raw = String(player?.statusCode || player?.status || "In listone").trim();
+    const isAsterisk = raw.toLowerCase().includes("aster") || raw === "ASTERISCATO";
+    const kind = isAsterisk ? "is-asterisk" : "is-in-listone";
+    return `<span class="site-status-badge-v663 ${kind}">${escapeHtml(isAsterisk ? "Asteriscato" : "In listone")}</span>`;
+  }
+
+  if (typeof renderListoneMobileCardV664 === "function") {
+    renderListoneMobileCardV664 = function renderListoneMobileCardV678(player, visibleColumns = []) {
+      const roleRaw = player?.classicRole || player?.role || "";
+      const roleGroup = typeof getSiteRoleGroupV662 === "function" ? getSiteRoleGroupV662(roleRaw) : String(roleRaw || "").toLowerCase();
+      const playerName = typeof renderListoneCell === "function"
+        ? renderListoneCell(player, { key: "playerName", label: "Giocatore" })
+        : escapeHtml(player?.playerName || player?.name || "-");
+      const rosterLabel = typeof getListonePlayerRosterLabelV663 === "function" ? getListonePlayerRosterLabelV663(player) : String(player?.fantasyRoster || "");
+      const rosterChip = typeof renderSiteRosterChipV663 === "function" ? renderSiteRosterChipV663(rosterLabel, { compact: true }) : escapeHtml(rosterLabel);
+      const statusBadge = renderStatusBadge(player);
+      const changeBadge = typeof renderListoneChangeBadgeV664 === "function" ? renderListoneChangeBadgeV664(player) : "";
+      const fieldKeys = getListoneFieldKeys(player);
+      const fields = fieldKeys.map((key) => {
+        const column = getColumnForKey(key);
+        const label = FIELD_LABEL_OVERRIDES[key] || column.label || key;
+        const value = renderValue(player, key);
+        const numeric = Boolean(column.numeric || NUMERIC_FIELD_KEYS.has(key));
+        return renderFixedField(label, value, { key, numeric });
+      }).join("");
+
+      return `
+        <article class="site-mobile-player-card-v659 site-mobile-player-card-v662 site-mobile-player-card-v663 site-mobile-player-card-v664 site-mobile-player-card-v668 site-mobile-player-card-v673 site-mobile-player-card-v675 site-mobile-player-card-v678 site-mobile-roster-player-card-v659 site-mobile-roster-player-card-v662 site-mobile-roster-player-card-v663 site-mobile-roster-player-card-v664 site-mobile-roster-player-card-v668 site-mobile-listone-player-card-v675 site-mobile-listone-player-card-v678 is-role-${escapeHtml(roleGroup)}" data-player-role="${escapeHtml(roleRaw || (typeof getSiteRoleLabelV662 === "function" ? getSiteRoleLabelV662(roleGroup) : roleGroup))}">
+          <header class="site-mobile-card-head-v659 site-mobile-card-head-v662 site-mobile-card-head-v663 site-mobile-card-head-v664 site-mobile-card-head-v668 site-mobile-card-head-v675 site-mobile-card-head-v678">
+            <div class="site-mobile-card-title-wrap-v662 site-mobile-card-title-wrap-v663 site-mobile-card-title-wrap-v664 site-mobile-card-title-wrap-v668 site-mobile-card-title-wrap-v675 site-mobile-card-title-wrap-v678">
+              ${typeof renderSiteMobileTitleLineV663 === "function" ? renderSiteMobileTitleLineV663(playerName, rosterChip) : playerName}
+            </div>
+            <div class="site-mobile-card-badges-v659 site-mobile-card-badges-v662 site-mobile-card-badges-v663 site-mobile-card-badges-v664 site-mobile-card-badges-v668 site-mobile-card-badges-v675 site-mobile-card-badges-v678">${statusBadge}</div>
+          </header>
+          <div class="site-mobile-card-grid-v659 site-mobile-card-grid-v662 site-mobile-card-grid-v663 site-mobile-card-grid-v664 site-mobile-card-grid-v668 site-mobile-card-grid-v675 site-mobile-card-grid-v678">${fields}</div>
+          <div class="site-listone-change-corner-v678">${changeBadge}</div>
+        </article>`;
+    };
+    if (typeof renderListoneMobileCardV663 === "function") renderListoneMobileCardV663 = renderListoneMobileCardV664;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => { forceFooter(); installFooterGuard(); });
+  window.addEventListener("load", () => { forceFooter(); installFooterGuard(); });
+  [100, 700, 1700, 2600, 4200, 6500].forEach((delay) => window.setTimeout(() => { forceFooter(); installFooterGuard(); }, delay));
+
+  window.FantaSiteMobileCardsV678 = Object.freeze({
+    version: VERSION,
+    siteOnly: true,
+    basedOnStableV676: true,
+    listoneMobileDivLayout: true,
+    listoneFieldsFromJson: true,
+    marketFieldRemoved: true,
+    changeBadgeBottomRight: true,
+    footerGuard: true,
+    desktopChanged: false,
+    iosudoChanged: false,
+    dataChanged: false
+  });
+})();
