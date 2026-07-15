@@ -39115,3 +39115,117 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     statusBadgeColors: { inListone: "green", asterisk: "yellow" }
   });
 })();
+
+/* V675 - Listone mobile: usa esattamente la griglia/stile delle card Rose V668.
+ * Scope: solo sito pubblico. Non modifica ioSudo, dati, rose JSON o listoni.
+ */
+(function fantaSiteMobileCardsV675(){
+  const VERSION = "V675";
+
+  function forceFooter(){
+    const footer = document.querySelector("[data-league-footer-v445]");
+    if (!footer) return;
+    const text = footer.textContent || "Fantacalcio";
+    footer.textContent = /V\d+/.test(text)
+      ? text.replace(/V\d+/, VERSION)
+      : `${text} · ${VERSION}`;
+  }
+
+  function formatNumber(value){
+    if (typeof formatSiteMobileNumberValueV668 === "function") return formatSiteMobileNumberValueV668(value);
+    if (value === null || value === undefined || value === "") return "";
+    return escapeHtml(typeof formatListoneNumber === "function" ? formatListoneNumber(value) : String(value));
+  }
+
+  function fixedField(label, valueHtml, options = {}){
+    if (typeof renderSiteMobileFixedFieldV668 === "function") {
+      return renderSiteMobileFixedFieldV668(label, valueHtml, options);
+    }
+    const raw = String(valueHtml ?? "").trim();
+    const isEmpty = !raw || raw === "-" || raw === "&nbsp;";
+    const keyClass = options.key ? ` listone-col-${escapeHtml(options.key)}` : "";
+    const numberClass = options.numeric ? " is-number" : "";
+    const emptyClass = isEmpty ? " is-empty" : "";
+    return `
+      <div class="site-mobile-card-field-v659 site-mobile-card-field-v662 site-mobile-card-field-v663 site-mobile-card-field-v664 site-mobile-card-field-v668${keyClass}${numberClass}${emptyClass}">
+        <span>${escapeHtml(label || "Dato")}</span>
+        <strong>${isEmpty ? "&nbsp;" : valueHtml}</strong>
+      </div>`;
+  }
+
+  function fieldValue(player, key, fallback = {}){
+    if (typeof renderListoneFieldValueV668 === "function") return renderListoneFieldValueV668(player, key, fallback);
+    const column = LISTONE_COLUMNS.find((item) => item.key === key) || { key, label: fallback.label || key, numeric: Boolean(fallback.numeric) };
+    const html = renderListoneCell(player, column);
+    const normalized = String(html ?? "").trim();
+    return normalized && normalized !== "-" ? html : "";
+  }
+
+  function renderMarket(player){
+    const candidates = [
+      player?.market,
+      player?.mercato,
+      player?.marketStatus,
+      player?.transferBadge,
+      player?.transferStatus
+    ];
+    for (const value of candidates) {
+      const text = String(value ?? "").trim();
+      if (text && text !== "-") return escapeHtml(text);
+    }
+    return "";
+  }
+
+  if (typeof renderListoneMobileCardV664 === "function") {
+    renderListoneMobileCardV664 = function renderListoneMobileCardV675(player, visibleColumns = []) {
+      const roleRaw = player?.classicRole || player?.role || "";
+      const roleGroup = getSiteRoleGroupV662(roleRaw);
+      const playerName = renderListoneCell(player, { key: "playerName", label: "Giocatore" });
+      const rosterLabel = getListonePlayerRosterLabelV663(player);
+      const rosterChip = renderSiteRosterChipV663(rosterLabel, { compact: true });
+      const rosterCost = getListonePlayerRosterCostV663(player);
+      const quotationCurrent = player?.quotationCurrent ?? player?.quotation_current ?? getListoneValue(player, "quotationCurrent");
+      const statusBadge = renderSiteListoneStatusBadgeV663(player);
+      const role = fieldValue(player, "classicRole", { label: "Ruolo" });
+      const realTeam = fieldValue(player, "realTeam", { label: "Squadra" });
+      const marketHtml = renderMarket(player);
+
+      const fields = [
+        fixedField("Ruolo", role, { key: "classicRole" }),
+        fixedField("Squadra", realTeam, { key: "realTeam" }),
+        fixedField("Mercato", marketHtml, { key: "market" }),
+        fixedField("Costo", formatNumber(rosterCost), { key: "cost", numeric: true }),
+        fixedField("Qt.A", formatNumber(quotationCurrent), { key: "quotationCurrent", numeric: true })
+      ].join("");
+
+      return `
+        <article class="site-mobile-player-card-v659 site-mobile-player-card-v662 site-mobile-player-card-v663 site-mobile-player-card-v664 site-mobile-player-card-v668 site-mobile-player-card-v675 site-mobile-roster-player-card-v659 site-mobile-roster-player-card-v662 site-mobile-roster-player-card-v663 site-mobile-roster-player-card-v664 site-mobile-roster-player-card-v668 site-mobile-listone-player-card-v675 is-role-${escapeHtml(roleGroup)}" data-player-role="${escapeHtml(roleRaw || getSiteRoleLabelV662(roleGroup))}">
+          <header class="site-mobile-card-head-v659 site-mobile-card-head-v662 site-mobile-card-head-v663 site-mobile-card-head-v664 site-mobile-card-head-v668 site-mobile-card-head-v675">
+            <div class="site-mobile-card-title-wrap-v662 site-mobile-card-title-wrap-v663 site-mobile-card-title-wrap-v664 site-mobile-card-title-wrap-v668 site-mobile-card-title-wrap-v675">
+              ${renderSiteMobileTitleLineV663(playerName, rosterChip)}
+            </div>
+            <div class="site-mobile-card-badges-v659 site-mobile-card-badges-v662 site-mobile-card-badges-v663 site-mobile-card-badges-v664 site-mobile-card-badges-v668 site-mobile-card-badges-v675">${statusBadge}</div>
+          </header>
+          <div class="site-mobile-card-grid-v659 site-mobile-card-grid-v662 site-mobile-card-grid-v663 site-mobile-card-grid-v664 site-mobile-card-grid-v668 site-mobile-card-grid-v675">${fields}</div>
+        </article>`;
+    };
+    if (typeof renderListoneMobileCardV663 === "function") renderListoneMobileCardV663 = renderListoneMobileCardV664;
+  }
+
+  document.addEventListener("DOMContentLoaded", forceFooter);
+  window.addEventListener("load", forceFooter);
+  window.setTimeout(forceFooter, 100);
+  window.setTimeout(forceFooter, 700);
+  window.setTimeout(forceFooter, 1700);
+
+  window.FantaSiteMobileCardsV675 = Object.freeze({
+    version: VERSION,
+    siteOnly: true,
+    listoneUsesExactRosterGrid: true,
+    listoneGridClasses: ["site-mobile-card-grid-v659", "site-mobile-card-grid-v662", "site-mobile-card-grid-v663", "site-mobile-card-grid-v664", "site-mobile-card-grid-v668"],
+    statusBadgeInTopRight: true,
+    statusBadgeColors: { inListone: "green", asterisk: "yellow" },
+    iosudoChanged: false,
+    dataChanged: false
+  });
+})();
