@@ -1,1 +1,26 @@
-{"id":"sudatori-iosudo-v682","label":"ioSudo V682","seasonId":"2026-2027","updatedAt":"2026-07-15","sourceFile":"fantacalcio_serie_a_2026_27_aggiornato_2026-07-15_aggiornamento_globale_v29(1).xlsx","dataFile":"sudatori-data.json","teams":20,"players":714,"friendlies":90,"marketNotes":484,"teamTransferTalks":484,"injuries":14,"formationTeams":20,"transfermarktRumors":42,"transfermarktRumorPages":20,"officialIncoming":144,"officialOutgoing":155,"officialMoves":299,"sources":318,"uiVersion":682,"globalPlayersMarketOnly":false,"generatedAt":"2026-07-15T08:54:46+02:00","updatedAtTime":"2026-07-15T08:54:46+02:00","version":"V682"}
+{
+  "id": "sudatori-iosudo-v683",
+  "label": "ioSudo V683",
+  "seasonId": "2026-2027",
+  "updatedAt": "2026-07-15",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-15_aggiornamento_globale_v32.xlsx",
+  "dataFile": "sudatori-data.json",
+  "teams": 20,
+  "players": 714,
+  "friendlies": 91,
+  "marketNotes": 527,
+  "teamTransferTalks": 527,
+  "injuries": 16,
+  "formationTeams": 20,
+  "transfermarktRumors": 42,
+  "transfermarktRumorPages": 20,
+  "officialIncoming": 144,
+  "officialOutgoing": 156,
+  "officialMoves": 300,
+  "sources": 349,
+  "uiVersion": 683,
+  "globalPlayersMarketOnly": false,
+  "generatedAt": "2026-07-15T13:28:45+02:00",
+  "updatedAtTime": "2026-07-15T13:28:45+02:00",
+  "version": "V683"
+}
