@@ -39019,3 +39019,99 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     noV671FullWidthRuntime: true
   });
 })();
+
+
+/* V673 - Listone mobile: stessa organizzazione delle card Rose, stato in alto a destra. */
+(function fantaSiteMobileCardsV673(){
+  const VERSION = "V673";
+
+  function forceFooter(){
+    const footer = document.querySelector("[data-league-footer-v445]");
+    if (!footer) return;
+    const text = footer.textContent || "Fantacalcio";
+    footer.textContent = /V\d+/.test(text)
+      ? text.replace(/V\d+/, VERSION)
+      : `${text} · ${VERSION}`;
+  }
+
+  function formatNumber(value){
+    if (typeof formatSiteMobileNumberValueV668 === "function") return formatSiteMobileNumberValueV668(value);
+    if (value === null || value === undefined || value === "") return "";
+    return escapeHtml(typeof formatListoneNumber === "function" ? formatListoneNumber(value) : String(value));
+  }
+
+  function renderFixedField(label, valueHtml, options = {}){
+    const html = String(valueHtml ?? "").trim();
+    if (typeof renderSiteMobileFixedFieldV668 === "function") {
+      return renderSiteMobileFixedFieldV668(label, html, options)
+        .replace('site-mobile-card-field-v668', 'site-mobile-card-field-v668 site-mobile-card-field-v673');
+    }
+    const isEmpty = !html || html === "-" || html === "&nbsp;";
+    const numberClass = options.numeric ? " is-number" : "";
+    const emptyClass = isEmpty ? " is-empty" : "";
+    const keyClass = options.key ? ` listone-col-${escapeHtml(options.key)}` : "";
+    return `<div class="site-mobile-card-field-v659 site-mobile-card-field-v662 site-mobile-card-field-v663 site-mobile-card-field-v664 site-mobile-card-field-v673${keyClass}${numberClass}${emptyClass}"><span>${escapeHtml(label || "Dato")}</span><strong>${isEmpty ? "&nbsp;" : html}</strong></div>`;
+  }
+
+  function renderListoneField(player, key, fallback = {}){
+    if (typeof renderListoneFieldValueV668 === "function") return renderListoneFieldValueV668(player, key, fallback);
+    const column = LISTONE_COLUMNS.find((item) => item.key === key) || { key, label: fallback.label || key, numeric: Boolean(fallback.numeric) };
+    return renderListoneCell(player, column);
+  }
+
+  if (typeof renderListoneMobileCardV664 === "function") {
+    renderListoneMobileCardV664 = function renderListoneMobileCardV673(player, visibleColumns = []) {
+      const roleRaw = player?.classicRole || player?.role || "";
+      const roleGroup = getSiteRoleGroupV662(roleRaw);
+      const playerName = renderListoneCell(player, { key: "playerName", label: "Giocatore" });
+      const rosterLabel = getListonePlayerRosterLabelV663(player);
+      const rosterChip = renderSiteRosterChipV663(rosterLabel, { compact: true });
+      const rosterCost = getListonePlayerRosterCostV663(player);
+      const quotationCurrent = player?.quotationCurrent ?? player?.quotation_current ?? getListoneValue(player, "quotationCurrent");
+      const quotationInitial = player?.quotationInitial ?? getListoneValue(player, "quotationInitial");
+      const quotationDiff = player?.quotationDiff ?? getListoneValue(player, "quotationDiff");
+      const fvm = player?.fvm ?? getListoneValue(player, "fvm");
+      const statusBadge = renderSiteListoneStatusBadgeV663(player);
+      const changeBadge = typeof renderListoneChangeBadgeV664 === "function" ? renderListoneChangeBadgeV664(player) : "";
+      const role = renderListoneField(player, "classicRole", { label: "Ruolo" });
+      const realTeam = renderListoneField(player, "realTeam", { label: "Squadra" });
+
+      const fields = [
+        renderFixedField("Ruolo", role, { key: "classicRole" }),
+        renderFixedField("Squadra", realTeam, { key: "realTeam" }),
+        renderFixedField("Costo", formatNumber(rosterCost), { key: "rosterCost", numeric: true }),
+        renderFixedField("Qt.A", formatNumber(quotationCurrent), { key: "quotationCurrent", numeric: true }),
+        renderFixedField("Qt.I", formatNumber(quotationInitial), { key: "quotationInitial", numeric: true }),
+        renderFixedField("Diff.", formatNumber(quotationDiff), { key: "quotationDiff", numeric: true }),
+        renderFixedField("FVM", formatNumber(fvm), { key: "fvm", numeric: true })
+      ].join("");
+
+      return `
+        <article class="site-mobile-player-card-v659 site-mobile-player-card-v662 site-mobile-player-card-v663 site-mobile-player-card-v664 site-mobile-player-card-v668 site-mobile-player-card-v673 site-mobile-listone-player-card-v673 is-role-${escapeHtml(roleGroup)}" data-player-role="${escapeHtml(roleRaw || getSiteRoleLabelV662(roleGroup))}">
+          <header class="site-mobile-card-head-v659 site-mobile-card-head-v662 site-mobile-card-head-v663 site-mobile-card-head-v664 site-mobile-card-head-v668 site-mobile-card-head-v673">
+            <div class="site-mobile-card-title-wrap-v662 site-mobile-card-title-wrap-v663 site-mobile-card-title-wrap-v664 site-mobile-card-title-wrap-v668 site-mobile-card-title-wrap-v673">
+              ${renderSiteMobileTitleLineV663(playerName, rosterChip)}
+            </div>
+            <div class="site-mobile-card-badges-v659 site-mobile-card-badges-v662 site-mobile-card-badges-v663 site-mobile-card-badges-v664 site-mobile-card-badges-v673">${statusBadge}</div>
+          </header>
+          <div class="site-mobile-card-grid-v659 site-mobile-card-grid-v662 site-mobile-card-grid-v663 site-mobile-card-grid-v664 site-mobile-card-grid-v668 site-mobile-card-grid-v673">${fields}</div>
+          ${changeBadge}
+        </article>`;
+    };
+    if (typeof renderListoneMobileCardV663 === "function") renderListoneMobileCardV663 = renderListoneMobileCardV664;
+  }
+
+  document.addEventListener("DOMContentLoaded", forceFooter);
+  window.addEventListener("load", forceFooter);
+  window.setTimeout(forceFooter, 100);
+  window.setTimeout(forceFooter, 700);
+  window.setTimeout(forceFooter, 1700);
+
+  window.FantaSiteMobileCardsV673 = Object.freeze({
+    version: VERSION,
+    siteOnly: true,
+    listoneUsesRosterCardStyle: true,
+    statusBadgeInTopRight: true,
+    statusBadgeColors: { inListone: "green", asterisk: "yellow" }
+  });
+})();
