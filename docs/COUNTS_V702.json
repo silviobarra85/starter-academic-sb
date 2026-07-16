@@ -1,0 +1,6 @@
+{
+  "version": 702,
+  "scope": "iosudo-code-only",
+  "dataChanged": false,
+  "fixes": ["team module fallback from formationsByTeam", "coach fallback from formationsByTeam"]
+}
