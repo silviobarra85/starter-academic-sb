@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+const manifest = JSON.parse(fs.readFileSync('static/fanta-engine/data/sudatori/current/manifest.json','utf8'));
+const index = fs.readFileSync('static/iosudo/index.html','utf8');
+const sw = fs.readFileSync('static/iosudo/sw.js','utf8');
+if (manifest.version !== 'V694') throw new Error('manifest non V694');
+if (!manifest.updatedAtTime) throw new Error('updatedAtTime assente');
+if (!index.includes('iosudo-app-v694.js?v=694')) throw new Error('index non punta al JS V694');
+if (!sw.includes('iosudo-shell-v694')) throw new Error('service worker non V694');
+const data = JSON.parse(fs.readFileSync('static/fanta-engine/data/sudatori/current/sudatori-data.json','utf8'));
+if (!data.marketSummaryByTeam) throw new Error('marketSummaryByTeam assente');
+if (manifest.players < 700 || manifest.officialMoves < 300) throw new Error('conteggi inattesi');
+console.log('Audit ioSudo V694 OK', JSON.stringify({players: manifest.players, officialMoves: manifest.officialMoves, talks: manifest.teamTransferTalks, updatedAtTime: manifest.updatedAtTime}));

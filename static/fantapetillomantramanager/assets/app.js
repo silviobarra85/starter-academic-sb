@@ -40865,7 +40865,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 
 /* V681 - Listone mobile: badge Modifica leggibile e label modifiche esplicite. */
 (function fantaSiteMobileCardsV681(){
-  const VERSION = "V681";
+  const VERSION = "V694";
 
   const LABEL_OVERRIDES = {
     classicRole: "Ruolo",
@@ -41279,8 +41279,8 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 
 /* V691 - Profili squadra mobile: responsive finale e footer version guard robusto. */
 (function fantaSiteProfileResponsiveFooterV691() {
-  const VERSION = 'V692';
-  const VERSION_LABEL = 'Fantacalcio - V692 - Profili mobile responsive';
+  const VERSION = 'V694';
+  const VERSION_LABEL = 'Fantacalcio - V694 - Aggiornato al 16/07/2026';
 
   function safeHtmlV691(value) {
     return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '');
@@ -41395,8 +41395,8 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 
 /* V692 - Rose mobile: movimenti TUTTE LE ROSE fuori dalla table + profilo scuro. */
 (function fantaSiteMobileRostersAndProfileV692() {
-  const VERSION = 'V692';
-  const VERSION_LABEL = 'Fantacalcio - V692 - Profili mobile responsive';
+  const VERSION = 'V694';
+  const VERSION_LABEL = 'Fantacalcio - V694 - Aggiornato al 16/07/2026';
 
   function isMobileV692() {
     return Boolean(window.matchMedia && window.matchMedia('(max-width: 900px)').matches);
@@ -41557,4 +41557,74 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     iosudoChanged: false,
     dataChanged: false
   });
+})();
+
+
+/* V694 - Profilo squadra: movimenti con stesso stile delle card TUTTE LE ROSE + footer definitivo. */
+(function fantaSiteProfileMovementsV694(){
+  const VERSION = 'V694';
+  const VERSION_LABEL = 'Fantacalcio - V694 - Aggiornato al 16/07/2026';
+  function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
+  function safe(value){ return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '').replace(/[&<>"']/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]); }); }
+  function fm(value){ return typeof formatFm === 'function' ? formatFm(value || 0) : safe(value || 0); }
+  function moveType(movement){ return typeof renderFmMovementTypeBadge === 'function' ? renderFmMovementTypeBadge(movement && movement.type) : safe(movement && movement.type || '-'); }
+  function teamName(id){ return typeof getSeasonTeamDisplayName === 'function' ? getSeasonTeamDisplayName(id) : String(id || ''); }
+  function movementCard(movement){
+    const amount = Number(movement && movement.amount || 0);
+    const player = movement && movement.playerName || '-';
+    const date = movement && movement.date || '-';
+    const source = movement && movement.seasonTeamId ? teamName(movement.seasonTeamId) : '';
+    const target = movement && movement.targetSeasonTeamId ? teamName(movement.targetSeasonTeamId) : '';
+    return `<article class="site-mobile-market-movement-card-v692 site-mobile-profile-movement-card-v694">
+      <div class="site-mobile-market-movement-head-v692">
+        <div class="site-mobile-market-movement-title-v692"><strong>${safe(player)}</strong><small>${safe(date)}</small></div>
+        <b class="${amount >= 0 ? 'text-success' : 'text-danger'}">${safe(fm(amount))}</b>
+      </div>
+      <div class="site-mobile-market-movement-grid-v692">
+        <div class="site-mobile-market-movement-field-v692"><span>Rosa</span><strong>${safe(source || '-')}</strong></div>
+        <div class="site-mobile-market-movement-field-v692"><span>Tipo</span><strong>${moveType(movement)}</strong></div>
+        <div class="site-mobile-market-movement-field-v692"><span>Destinazione</span><strong>${safe(target || '-')}</strong></div>
+        <div class="site-mobile-market-movement-field-v692 site-mobile-market-movement-field-wide-v692"><span>Note</span><strong>${safe(movement && movement.description || '-')}</strong></div>
+      </div>
+    </article>`;
+  }
+  function movementCards(snapshot){
+    const rows = Array.isArray(snapshot && snapshot.recentMovements) ? snapshot.recentMovements : [];
+    if (!rows.length) return '<p class="muted">Nessun movimento recente.</p>';
+    return '<div class="site-mobile-market-movement-list-v692 site-mobile-profile-movement-list-v694">' + rows.map(movementCard).join('') + '</div>';
+  }
+  const previous = typeof renderTeamProfileContentV42 === 'function' ? renderTeamProfileContentV42 : null;
+  if (previous) {
+    renderTeamProfileContentV42 = function renderTeamProfileContentV694(snapshot){
+      let html = previous.apply(this, arguments);
+      if (!isMobile()) return html;
+      const movements = `<section class="panel detail-section"><h3>Ultimi movimenti</h3>${movementCards(snapshot)}</section>`;
+      html = String(html || '').replace(/<section class="panel detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<section class="panel detail-section"><h3>Ultimi comunicati<\/h3>)/, movements);
+      html = String(html || '').replace(/<div class="detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<div class="detail-section"><h3>Ultimi comunicati<\/h3>)/, movements.replace('<section class="panel detail-section">','<div class="detail-section">').replace('</section>',''));
+      return html;
+    };
+  }
+  function normalizeFooterText(text){
+    const raw = String(text || '').trim();
+    if (!raw || /Fantacalcio|V\d+|Versione|ZonaOrientale|FantaPetillo/i.test(raw)) return VERSION_LABEL;
+    return raw.replace(/V\d+/g, VERSION).replace(/\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2}/g, '16/07/2026');
+  }
+  function forceFooter(){
+    const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
+    const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
+    targets.forEach(function(node){
+      if (!node) return;
+      node.textContent = normalizeFooterText(node.textContent || node.innerText || '');
+      node.dataset.footerVersionV694 = VERSION;
+    });
+  }
+  try { window.forceFooterVersionV667 = forceFooter; window.forceFooterV681 = forceFooter; } catch (_) {}
+  document.addEventListener('DOMContentLoaded', forceFooter);
+  window.addEventListener('load', forceFooter);
+  [0,50,120,300,700,1500,3000,6500,10000,18000,32000].forEach(function(delay){ window.setTimeout(forceFooter, delay); });
+  if (document.body && window.MutationObserver) {
+    const observer = new MutationObserver(function(){ window.clearTimeout(forceFooter._timer); forceFooter._timer = window.setTimeout(forceFooter, 20); });
+    observer.observe(document.body, {childList:true, subtree:true, characterData:true});
+  }
+  window.FantaSiteProfileMovementsV694 = Object.freeze({ version: VERSION, profileMovementsMatchAllRosters: true, footerFixed: true });
 })();
