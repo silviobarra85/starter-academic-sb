@@ -1,11 +1,12 @@
 {
+  "version": "V697",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-16_aggiornamento_globale_v44(1).xlsx",
+  "updatedAtTime": "2026-07-16T12:12:01+02:00",
   "id": "sudatori-iosudo-v697",
   "label": "ioSudo V697",
   "seasonId": "2026-2027",
   "updatedAt": "2026-07-16",
-  "updatedAtTime": "2026-07-16T12:12:01+02:00",
   "generatedAt": "2026-07-16T12:12:01+02:00",
-  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-16_aggiornamento_globale_v44(1).xlsx",
   "dataFile": "sudatori-data.json",
   "teams": 20,
   "players": 753,
@@ -22,6 +23,5 @@
   "sources": 1539,
   "uiVersion": 697,
   "globalPlayersMarketOnly": false,
-  "version": "V697",
   "dedupVersion": "V696+V697"
 }
