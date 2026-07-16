@@ -1,0 +1,15 @@
+{
+  "version": "V701",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-16_aggiornamento_globale_v48.xlsx",
+  "players": 751,
+  "teamTransferTalks": 601,
+  "officialMoves": 344,
+  "officialIncoming": 166,
+  "officialOutgoing": 178,
+  "friendlies": 92,
+  "friendliesFilteredOut": 41,
+  "injuries": 16,
+  "sources": 932,
+  "updateRows": 7,
+  "dedup": true
+}
