@@ -6,7 +6,7 @@
     "loadedAt": "2026-07-05",
     "sourceFile": "Hand modified by me",
     "teams": 10,
-    "players": 231
+    "players": 230
   },
   "rosters": [
     {
@@ -954,7 +954,7 @@
     },
     {
       "name": "River Plaid",
-      "playerCount": 30,
+      "playerCount": 29,
       "players": [
         {
           "role": "P",
@@ -1081,12 +1081,6 @@
           "playerName": "Gilmour",
           "realTeam": "NAP",
           "cost": 1
-        },
-        {
-          "role": "C",
-          "playerName": "Lovric",
-          "realTeam": "VER",
-          "cost": 7
         },
         {
           "role": "C",
