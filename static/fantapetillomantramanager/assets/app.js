@@ -41279,8 +41279,8 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 
 /* V691 - Profili squadra mobile: responsive finale e footer version guard robusto. */
 (function fantaSiteProfileResponsiveFooterV691() {
-  const VERSION = 'V691';
-  const VERSION_LABEL = 'Fantacalcio - V691 - Profili mobile responsive';
+  const VERSION = 'V692';
+  const VERSION_LABEL = 'Fantacalcio - V692 - Profili mobile responsive';
 
   function safeHtmlV691(value) {
     return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '');
@@ -41390,5 +41390,171 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     footerGuardRobust: true,
     desktopChanged: false,
     iosudoChanged: false
+  });
+})();
+
+/* V692 - Rose mobile: movimenti TUTTE LE ROSE fuori dalla table + profilo scuro. */
+(function fantaSiteMobileRostersAndProfileV692() {
+  const VERSION = 'V692';
+  const VERSION_LABEL = 'Fantacalcio - V692 - Profili mobile responsive';
+
+  function isMobileV692() {
+    return Boolean(window.matchMedia && window.matchMedia('(max-width: 900px)').matches);
+  }
+  function safeHtmlV692(value) {
+    return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '');
+  }
+  function fmValueV692(value) {
+    return typeof formatFm === 'function' ? formatFm(value || 0) : safeHtmlV692(value || 0);
+  }
+  function movementLabelV692(movement) {
+    return typeof getFmMovementLabel === 'function' ? getFmMovementLabel(movement && movement.type) : String(movement && movement.type || '-');
+  }
+  function teamNameV692(id) {
+    return typeof getSeasonTeamDisplayName === 'function' ? getSeasonTeamDisplayName(id) : String(id || '');
+  }
+  function teamLogoNameV692(id) {
+    return typeof renderSeasonTeamNameWithLogo === 'function'
+      ? renderSeasonTeamNameWithLogo(id, { strong: false })
+      : safeHtmlV692(teamNameV692(id));
+  }
+  function getRowsV692() {
+    if (typeof getSiteMovementRowsV659 === 'function') return getSiteMovementRowsV659();
+    return [];
+  }
+  function getStateV692() {
+    if (typeof siteMobileCardsStateV659 === 'object' && siteMobileCardsStateV659) return siteMobileCardsStateV659;
+    return { movementsLimit: 50 };
+  }
+  function moreButtonV692(remaining) {
+    if (remaining <= 0) return '';
+    if (typeof renderSiteMobileMoreButtonV659 === 'function') return renderSiteMobileMoreButtonV659('movements', remaining);
+    return `<button type="button" class="button button-secondary button-small site-mobile-more-v659" data-site-mobile-more-v659="movements">Mostra altre voci (${safeHtmlV692(remaining)})</button>`;
+  }
+  function ensureContainerV692() {
+    const tableBody = document.getElementById('marketActivityTableBody');
+    if (!tableBody) return null;
+    const tableWrap = tableBody.closest('.table-wrap, .mobile-tabular-wrap');
+    let container = document.getElementById('marketActivityMobileCardsV692');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'marketActivityMobileCardsV692';
+      container.className = 'site-mobile-market-activity-v692';
+      if (tableWrap && tableWrap.parentNode) tableWrap.parentNode.insertBefore(container, tableWrap.nextSibling);
+      else tableBody.parentNode?.insertBefore(container, tableBody.nextSibling);
+    }
+    if (tableWrap) {
+      tableWrap.classList.toggle('site-mobile-market-table-hidden-v692', isMobileV692());
+      tableWrap.setAttribute('aria-hidden', isMobileV692() ? 'true' : 'false');
+    }
+    container.hidden = !isMobileV692();
+    return container;
+  }
+  function renderMovementCardV692(movement) {
+    const amount = Number(movement && movement.amount || 0);
+    const player = movement && movement.type === 'INITIAL_BUDGET' ? 'Budget iniziale' : (movement && movement.playerName || '-');
+    const target = movement && movement.targetSeasonTeamId ? teamNameV692(movement.targetSeasonTeamId) : '';
+    return `<article class="site-mobile-market-movement-card-v692">
+      <header class="site-mobile-market-movement-head-v692">
+        <div class="site-mobile-market-movement-title-v692">
+          <strong>${safeHtmlV692(player)}</strong>
+          <small>${safeHtmlV692(movement && movement.date || '-')}</small>
+        </div>
+        <b class="${amount >= 0 ? 'text-success' : 'text-danger'}">${safeHtmlV692(fmValueV692(movement && movement.amount || 0))}</b>
+      </header>
+      <div class="site-mobile-market-movement-grid-v692">
+        <div class="site-mobile-market-movement-field-v692"><span>Rosa</span><strong>${teamLogoNameV692(movement && movement.seasonTeamId)}</strong></div>
+        <div class="site-mobile-market-movement-field-v692"><span>Tipo</span><strong>${safeHtmlV692(movementLabelV692(movement))}</strong></div>
+        <div class="site-mobile-market-movement-field-v692"><span>Destinazione</span><strong>${target ? safeHtmlV692(target) : '&nbsp;'}</strong></div>
+        <div class="site-mobile-market-movement-field-v692 site-mobile-market-movement-field-wide-v692"><span>Note</span><strong>${safeHtmlV692(movement && movement.description || '-')}</strong></div>
+      </div>
+    </article>`;
+  }
+  function renderMarketMovementsMobileV692(movements) {
+    const container = ensureContainerV692();
+    if (!container || !isMobileV692()) return false;
+    const rows = Array.isArray(movements) ? movements : [];
+    if (!rows.length) {
+      container.innerHTML = '<p class="muted">Nessun movimento FM per questa stagione.</p>';
+      return true;
+    }
+    const stateV692 = getStateV692();
+    const initial = 50;
+    const limit = Math.min(Number(stateV692.movementsLimit || initial), rows.length);
+    const visible = rows.slice(0, limit);
+    container.innerHTML = `<div class="site-mobile-market-movement-list-v692" data-site-mobile-list-v659="movements">${visible.map(renderMovementCardV692).join('')}</div><div class="site-mobile-more-wrap-v659 site-mobile-market-more-wrap-v692">${moreButtonV692(rows.length - limit)}</div>`;
+    return true;
+  }
+
+  const previousRenderClubRostersPublicV692 = typeof renderClubRostersPublic === 'function' ? renderClubRostersPublic : null;
+  if (previousRenderClubRostersPublicV692) {
+    renderClubRostersPublic = function renderClubRostersPublicV692(...args) {
+      if (!isMobileV692()) {
+        const tableBody = document.getElementById('marketActivityTableBody');
+        const tableWrap = tableBody?.closest?.('.table-wrap, .mobile-tabular-wrap');
+        tableWrap?.classList.remove('site-mobile-market-table-hidden-v692');
+        tableWrap?.removeAttribute('aria-hidden');
+        const container = document.getElementById('marketActivityMobileCardsV692');
+        if (container) container.hidden = true;
+        return previousRenderClubRostersPublicV692.apply(this, args);
+      }
+      const rows = getRowsV692();
+      if (typeof getSiteMobileCardSignatureV659 === 'function' && typeof resetSiteMobileLimitIfNeededV659 === 'function') {
+        const signature = getSiteMobileCardSignatureV659([
+          typeof getCurrentSeasonId === 'function' ? getCurrentSeasonId() : '',
+          (typeof state === 'object' && state ? state.selectedClubRosterFilter : '') || document.getElementById('marketClubFilter')?.value || 'all',
+          document.getElementById('marketSearch')?.value || '',
+          rows.length
+        ]);
+        resetSiteMobileLimitIfNeededV659('movements', signature, 50);
+      }
+      renderMarketMovementsMobileV692(rows);
+      return null;
+    };
+  }
+
+  document.addEventListener('click', (event) => {
+    const button = event.target?.closest?.('[data-site-mobile-more-v659="movements"]');
+    if (!button || !isMobileV692()) return;
+    window.requestAnimationFrame(() => {
+      try { renderMarketMovementsMobileV692(getRowsV692()); } catch (_) {}
+    });
+  }, true);
+
+  let resizeTimerV692 = null;
+  window.addEventListener('resize', () => {
+    window.clearTimeout(resizeTimerV692);
+    resizeTimerV692 = window.setTimeout(() => {
+      try { if (typeof renderClubRostersPublic === 'function') renderClubRostersPublic(); } catch (_) {}
+    }, 120);
+  });
+
+  function normalizeFooterTextV692(text) {
+    const raw = String(text || '').trim();
+    if (!raw || /^Fantacalcio\s*-\s*V\d+/i.test(raw)) return VERSION_LABEL;
+    return /V\d+/i.test(raw) ? raw.replace(/V\d+/gi, VERSION) : `${raw} · ${VERSION}`;
+  }
+  function forceFooterV692() {
+    const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
+    const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
+    targets.forEach((node) => {
+      if (!node) return;
+      const next = normalizeFooterTextV692(node.textContent || node.innerText || '');
+      if ((node.textContent || '').trim() !== next) node.textContent = next;
+      node.dataset.footerVersionV692 = VERSION;
+    });
+  }
+  document.addEventListener('DOMContentLoaded', forceFooterV692);
+  window.addEventListener('load', forceFooterV692);
+  [0, 80, 180, 350, 700, 1300, 2400, 4200, 7000, 11000, 18000, 30000].forEach((delay) => window.setTimeout(forceFooterV692, delay));
+
+  window.FantaSiteMobileProfileV692 = Object.freeze({
+    version: VERSION,
+    siteOnly: true,
+    allRostersMovementsResponsive: true,
+    profileMovementCardsDark: true,
+    desktopChanged: false,
+    iosudoChanged: false,
+    dataChanged: false
   });
 })();
