@@ -41034,3 +41034,69 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
   window.FantaSiteProfileMovementsV694 = Object.freeze({ version: VERSION, profileMovementsMatchAllRosters: true, footerFixed: true });
 })();
+
+
+/* V698 - Profilo squadra: movimenti con note visibili e footer 16/07/2026. */
+(function fantaSiteProfileMovementsV698(){
+  const VERSION = 'V698';
+  const VERSION_LABEL = 'Fantacalcio - V698 - Aggiornato al 16/07/2026';
+  function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
+  function safe(value){ return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '').replace(/[&<>"']/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]); }); }
+  function fm(value){ return typeof formatFm === 'function' ? formatFm(value || 0) : safe(value || 0); }
+  function moveType(movement){ return typeof renderFmMovementTypeBadge === 'function' ? renderFmMovementTypeBadge(movement && movement.type) : safe(movement && movement.type || '-'); }
+  function teamName(id){ return typeof getSeasonTeamDisplayName === 'function' ? getSeasonTeamDisplayName(id) : String(id || ''); }
+  function movementCard(movement){
+    const amount = Number(movement && movement.amount || 0);
+    const player = movement && movement.playerName || '-';
+    const date = movement && movement.date || '-';
+    const source = movement && movement.seasonTeamId ? teamName(movement.seasonTeamId) : '';
+    const target = movement && movement.targetSeasonTeamId ? teamName(movement.targetSeasonTeamId) : '';
+    const note = movement && (movement.description || movement.note || movement.notes || movement.details) || '';
+    return `<article class="site-mobile-market-movement-card-v692 site-mobile-profile-movement-card-v694 site-mobile-profile-movement-card-v698">
+      <div class="site-mobile-market-movement-head-v692">
+        <div class="site-mobile-market-movement-title-v692"><strong>${safe(player)}</strong><small>${safe(date)}</small></div>
+        <b class="${amount >= 0 ? 'text-success' : 'text-danger'}">${safe(fm(amount))}</b>
+      </div>
+      <div class="site-mobile-market-movement-grid-v692">
+        <div class="site-mobile-market-movement-field-v692"><span>Rosa</span><strong>${safe(source || '-')}</strong></div>
+        <div class="site-mobile-market-movement-field-v692"><span>Tipo</span><strong>${moveType(movement)}</strong></div>
+        <div class="site-mobile-market-movement-field-v692"><span>Destinazione</span><strong>${safe(target || '-')}</strong></div>
+        <div class="site-mobile-market-movement-field-v692 site-mobile-market-movement-field-wide-v692 site-mobile-profile-movement-note-v698"><span>Note</span><strong>${safe(note || '-')}</strong></div>
+      </div>
+    </article>`;
+  }
+  function movementCards(snapshot){
+    const rows = Array.isArray(snapshot && snapshot.recentMovements) ? snapshot.recentMovements : [];
+    if (!rows.length) return '<p class="muted">Nessun movimento recente.</p>';
+    return '<div class="site-mobile-market-movement-list-v692 site-mobile-profile-movement-list-v694 site-mobile-profile-movement-list-v698">' + rows.map(movementCard).join('') + '</div>';
+  }
+  const previous = typeof renderTeamProfileContentV42 === 'function' ? renderTeamProfileContentV42 : null;
+  if (previous) {
+    renderTeamProfileContentV42 = function renderTeamProfileContentV698(snapshot){
+      let html = previous.apply(this, arguments);
+      if (!isMobile()) return html;
+      const movements = `<section class="panel detail-section"><h3>Ultimi movimenti</h3>${movementCards(snapshot)}</section>`;
+      html = String(html || '').replace(/<section class="panel detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<section class="panel detail-section"><h3>Ultimi comunicati<\/h3>)/, movements);
+      html = String(html || '').replace(/<div class="detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<div class="detail-section"><h3>Ultimi comunicati<\/h3>)/, movements.replace('<section class="panel detail-section">','<div class="detail-section">').replace('</section>',''));
+      return html;
+    };
+  }
+  function forceFooter(){
+    const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
+    const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
+    targets.forEach(function(node){
+      if (!node) return;
+      node.textContent = VERSION_LABEL;
+      node.dataset.footerVersionV698 = VERSION;
+    });
+  }
+  try { window.forceFooterVersionV667 = forceFooter; window.forceFooterV681 = forceFooter; window.forceFooterV692 = forceFooter; window.forceFooterV694 = forceFooter; } catch (_) {}
+  document.addEventListener('DOMContentLoaded', forceFooter);
+  window.addEventListener('load', forceFooter);
+  [0,50,120,300,700,1500,3000,6500,10000,18000,32000].forEach(function(delay){ window.setTimeout(forceFooter, delay); });
+  if (document.body && window.MutationObserver) {
+    const observer = new MutationObserver(function(){ window.clearTimeout(forceFooter._timer); forceFooter._timer = window.setTimeout(forceFooter, 20); });
+    observer.observe(document.body, {childList:true, subtree:true, characterData:true});
+  }
+  window.FantaSiteProfileMovementsV698 = Object.freeze({ version: VERSION, profileMovementsNotes: true, footerFixed: true });
+})();
