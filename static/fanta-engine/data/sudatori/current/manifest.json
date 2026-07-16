@@ -1,14 +1,14 @@
 {
-  "id": "sudatori-iosudo-v695",
-  "label": "ioSudo V695",
+  "id": "sudatori-iosudo-v696",
+  "label": "ioSudo V696",
   "seasonId": "2026-2027",
   "updatedAt": "2026-07-16",
-  "updatedAtTime": "2026-07-16T14:30:00+02:00",
-  "generatedAt": "2026-07-16T14:30:00+02:00",
+  "updatedAtTime": "2026-07-16T15:45:00+02:00",
+  "generatedAt": "2026-07-16T15:45:00+02:00",
   "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-16_aggiornamento_globale_v42(1).xlsx",
   "dataFile": "sudatori-data.json",
   "teams": 20,
-  "players": 775,
+  "players": 741,
   "friendlies": 90,
   "marketNotes": 930,
   "teamTransferTalks": 612,
@@ -20,7 +20,7 @@
   "officialOutgoing": 168,
   "officialMoves": 320,
   "sources": 668,
-  "uiVersion": 695,
+  "uiVersion": 696,
   "globalPlayersMarketOnly": false,
-  "version": "V695"
+  "version": "V696"
 }
