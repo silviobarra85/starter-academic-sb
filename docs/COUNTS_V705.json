@@ -23,5 +23,9 @@
   "uiVersion": 705,
   "globalPlayersMarketOnly": false,
   "version": "V705",
-  "dedupVersion": "V696+V697+V698+V700+V701+V704+V705"
+  "dedupVersion": "V696+V697+V698+V700+V701+V704+V705",
+  "updateRows": 11,
+  "friendliesFilteredOut": 14,
+  "outOfScopeOfficialMoves": 1,
+  "duplicateMergesDuringBuild": 0
 }
