@@ -1,0 +1,18 @@
+{
+  "version": "V710",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v64.xlsx",
+  "players": 777,
+  "teams": 20,
+  "officialMoves": 365,
+  "teamTransferTalks": 459,
+  "activeOfficialRumors": 0,
+  "injuries": 22,
+  "friendlies": 117,
+  "friendlyMatchDetails": 1,
+  "friendlyPlayerStats": 26,
+  "sources": 624,
+  "duplicateExact": 0,
+  "duplicateIds": 0,
+  "closedTalksV710": 9,
+  "notes": "V710 aggiornata da Excel v64: ufficiali Hamed Junior Traorè al Genoa e Bruno Galassi alla Lazio; rumor/trattative post-ufficialità chiusi; Buongiorno rafforzato come SOS/infortunato e Patric aggiornato con fonte puntuale Lazio; nessuna nuova amichevole giocata."
+}
