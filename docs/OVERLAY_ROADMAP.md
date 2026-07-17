@@ -13,3 +13,12 @@
 - Le segnalazioni fisiche Transfermarkt possono generare badge SOS prudenziale, ma vanno descritte come non ufficiali se manca comunicato club.
 - Le amichevoli giocate devono avere scheda cliccabile quando l'Excel contiene tabellino giocatori.
 - Ogni overlay deve contenere solo i file modificati.
+
+## V714 - ioSudo Excel V68
+
+- Aggiornato ioSudo da Excel V68.
+- Normalizzato `K. Thuram` in `Khephren Thuram` con badge SOS negli XI.
+- Inserito rinnovo ufficiale Ederson / Atalanta e chiusi rumor collegati.
+- Aggiunte trattative V68 non ufficiali da Di Marzio.
+- Confermato nessun nuovo tabellino amichevoli giocato.
+- Audit V714 superato con 0 duplicati esatti e 0 ID duplicati.
