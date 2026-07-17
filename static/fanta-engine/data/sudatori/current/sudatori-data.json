@@ -12819,11 +12819,11 @@
         "playerName": "Hamed Junior Traorè",
         "role": "C/A",
         "inCurrentRoster": "SI",
-        "status": "Ufficiale / in rosa",
-        "detail": "Genoa ufficiale: titolo temporaneo con opzione di riscatto dall Olympique Marsiglia; contratto pluriennale.",
-        "source": "https://genoacfc.it/2026/07/17/hamed-junior-traore-e-un-giocatore-del-genoa/",
+        "status": "Ufficiale / in rosa / SOS prudenziale",
+        "detail": "Genoa ufficiale: titolo temporaneo con opzione di riscatto dall Olympique Marsiglia; monitoraggio fisico Transfermarkt sugli adduttori da confermare con bollettino club.",
+        "source": "https://genoacfc.it/2026/07/17/hamed-junior-traore-e-un-giocatore-del-genoa/ ; https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
         "updatedAt": "2026-07-17",
-        "note": "Agg v64: trasformato da visite mediche a ufficialità club; rumor/trattative chiusi."
+        "note": "Agg v67: aggiunto badge SOS prudenziale per monitoraggio fisico non ufficiale; rumor già chiusi post-ufficialità."
       }
     ],
     "samuel chukwueze": [
@@ -14836,6 +14836,33 @@
           "sourceVerificationNote": ""
         }
       ]
+    },
+    {
+      "teamId": "genoa",
+      "teamName": "Genoa",
+      "playerName": "Hamed Junior Traorè",
+      "target": "Hamed Junior Traorè",
+      "role": "C/A",
+      "status": "Da monitorare",
+      "injuryStatus": "Da monitorare",
+      "detail": "Transfermarkt segnala problema agli adduttori dal 02/05/2026; nessun bollettino ufficiale Genoa individuato dopo l'ufficialità del trasferimento.",
+      "injuryDetail": "Transfermarkt segnala problema agli adduttori dal 02/05/2026; nessun bollettino ufficiale Genoa individuato dopo l'ufficialità del trasferimento.",
+      "returnDate": "Da verificare durante ritiro/preseason Genoa",
+      "injuryReturn": "Da verificare durante ritiro/preseason Genoa",
+      "impact": "Basso-medio: monitorare condizione e minutaggio nelle amichevoli",
+      "injuryImpact": "Basso-medio: monitorare condizione e minutaggio nelle amichevoli",
+      "updatedAt": "2026-07-17",
+      "date": "2026-07-17",
+      "note": "Aggiunto v67 come monitoraggio non ufficiale: non segnare come stop certo finché il Genoa non pubblica un bollettino.",
+      "source": "Transfermarkt infortunati Serie A",
+      "url": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "articleUrl": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "href": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "sourceName": "Transfermarkt infortunati Serie A",
+      "sourceLabel": "Transfermarkt infortunati Serie A",
+      "sourceType": "Transfermarkt / monitoraggio non ufficiale",
+      "sourceVerification": "OK_TM_MONITORAGGIO",
+      "sourceVerificationNote": "Manca bollettino club: badge SOS prudenziale, non stop certo."
     }
   ],
   "sosFantaUpdateLog": [
@@ -413015,29 +413042,29 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v712",
-    "version": "V712",
+    "id": "sudatori-iosudo-v713",
+    "version": "V713",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-17",
-    "updatedAtTime": "2026-07-17T20:40:00+02:00",
-    "generatedAt": "2026-07-17T20:40:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v66.xlsx",
-    "dedupVersion": "V696+V697+V698+V700+V701+V704+V705+V706+V707+V708+V709+V710+V711+V712",
-    "notes": "V712 aggiornata da Excel v66: nessuna nuova ufficialita o amichevole; aggiunti/aggiornati rumor Transfermarkt 17/07 e rafforzato Vojvoda-Udinese come trattativa non ufficiale; Buongiorno ricontrollato come consulto chirurgico non ancora intervento confermato. XI squadra ora mostra SOS usando il flag/infortunio del giocatore reale.",
+    "updatedAtTime": "2026-07-17T20:55:00+02:00",
+    "generatedAt": "2026-07-17T20:55:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v67.xlsx",
+    "dedupVersion": "V696+V697+V698+V700+V701+V704+V705+V706+V707+V708+V709+V710+V711+V712+V713",
+    "notes": "V713 aggiornata da Excel v67: nessuna nuova ufficialità o amichevole giocata; Hamed Junior Traorè aggiunto ai monitoraggi SOS/infortunati da Transfermarkt come fonte non ufficiale; calendario amichevoli Sky solo come controllo.",
     "teams": 20,
     "players": 777,
     "friendlies": 117,
-    "teamTransferTalks": 459,
-    "injuries": 22,
-    "officialMoves": 365,
-    "sources": 624,
-    "officialTalksFiltered": 151,
+    "teamTransferTalks": 452,
+    "injuries": 23,
+    "officialMoves": 366,
+    "sources": 629,
+    "officialTalksFiltered": 159,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 1,
     "friendlyPlayerStats": 26,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v712-xlsx-v66"
+    "buildTag": "iosudo-v713-xlsx-v67"
   },
   "teams": [
     {
@@ -434186,17 +434213,17 @@
         "formationPosition": "",
         "formationSourcePosition": "",
         "formationLine": "",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalRisk": "Nessuna segnalazione specifica nelle fonti ufficiali consultate.",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti ufficiali consultate.",
-        "injurySeverity": "",
-        "injuryReturn": "",
-        "injurySource": "",
+        "formationPhysicalStatus": "Da monitorare / fonte Transfermarkt",
+        "formationPhysicalRisk": "Problema agli adduttori segnalato da Transfermarkt al 02/05/2026; da confermare con comunicato Genoa dopo l'arrivo ufficiale.",
+        "physicalStatus": "Da monitorare / fonte Transfermarkt",
+        "injuryStatus": "Da monitorare / fonte Transfermarkt",
+        "injuryDetail": "Problema agli adduttori segnalato da Transfermarkt al 02/05/2026; da confermare con comunicato Genoa dopo l'arrivo ufficiale.",
+        "injurySeverity": "Entità non ufficiale / da verificare",
+        "injuryReturn": "Da rivalutare in ritiro e nelle amichevoli; nessun bollettino Genoa trovato.",
+        "injurySource": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
         "injuryUpdatedAt": "2026-07-17",
-        "injuryNote": "",
-        "injuryImpact": "",
+        "injuryNote": "Monitoraggio prudenziale v67: non è fonte club e non cambia lo slot, ma va segnalato per asta e gestione minutaggio.",
+        "injuryImpact": "Medio",
         "formationCheck": "",
         "formationRoleOk": "",
         "formationModuleUsed": "",
@@ -434204,7 +434231,7 @@
         "originalName": "Hamed Junior Traorè",
         "disambiguatedName": "Hamed Junior Traorè",
         "newAcquisition": true,
-        "qualityControl": "",
+        "qualityControl": "OK v67 - monitoraggio fisico TM, non bollettino club",
         "_iosudoMarketRows": [
           {
             "key": "officialIncoming",
@@ -434255,7 +434282,7 @@
             }
           }
         ],
-        "sosFantaFlag": false
+        "sosFantaFlag": true
       }
     ],
     "inter": [
@@ -554264,7 +554291,35 @@
       }
     ],
     "frosinone": [],
-    "genoa": [],
+    "genoa": [
+      {
+        "teamId": "genoa",
+        "teamName": "Genoa",
+        "playerName": "Hamed Junior Traorè",
+        "target": "Hamed Junior Traorè",
+        "role": "C/A",
+        "status": "Da monitorare",
+        "injuryStatus": "Da monitorare",
+        "detail": "Transfermarkt segnala problema agli adduttori dal 02/05/2026; nessun bollettino ufficiale Genoa individuato dopo l'ufficialità del trasferimento.",
+        "injuryDetail": "Transfermarkt segnala problema agli adduttori dal 02/05/2026; nessun bollettino ufficiale Genoa individuato dopo l'ufficialità del trasferimento.",
+        "returnDate": "Da verificare durante ritiro/preseason Genoa",
+        "injuryReturn": "Da verificare durante ritiro/preseason Genoa",
+        "impact": "Basso-medio: monitorare condizione e minutaggio nelle amichevoli",
+        "injuryImpact": "Basso-medio: monitorare condizione e minutaggio nelle amichevoli",
+        "updatedAt": "2026-07-17",
+        "date": "2026-07-17",
+        "note": "Aggiunto v67 come monitoraggio non ufficiale: non segnare come stop certo finché il Genoa non pubblica un bollettino.",
+        "source": "Transfermarkt infortunati Serie A",
+        "url": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+        "articleUrl": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+        "href": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+        "sourceName": "Transfermarkt infortunati Serie A",
+        "sourceLabel": "Transfermarkt infortunati Serie A",
+        "sourceType": "Transfermarkt / monitoraggio non ufficiale",
+        "sourceVerification": "OK_TM_MONITORAGGIO",
+        "sourceVerificationNote": "Manca bollettino club: badge SOS prudenziale, non stop certo."
+      }
+    ],
     "inter": [
       {
         "teamId": "inter",
@@ -563059,6 +563114,18 @@
       "source": "Gianluca Di Marzio - calciomercato 17 luglio",
       "url": "https://m.gianlucadimarzio.com/",
       "usage": "Fonte v66 di supporto: Vojvoda a Villa Stuart per visite mediche con Udinese; trattativa non ufficiale senza comunicato club.",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "source": "Sky Sport - amichevoli estive Serie A 2026 aggiornate",
+      "url": "https://sport.sky.it/calcio/serie-a/amichevoli-estive-serie-a-date-2026",
+      "usage": "Controllo globale v67: calendario amichevoli aggiornato al 17/07/2026 ore 20:17; nessuna nuova gara giocata da compilare con minuti.",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "source": "Transfermarkt - infortunati Serie A dettaglio",
+      "url": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "usage": "Controllo infortuni v67; aggiunto monitoraggio Hamed Junior Traorè come fonte non ufficiale da confermare con club.",
       "updatedAt": "2026-07-17"
     }
   ],
@@ -585046,5 +585113,147 @@
   ],
   "rulesFriendliesV712": [
     "Nessuna nuova amichevole giocata nel V66; mantenere Sassuolo-Alta Anaunia con tabellino giocatori."
+  ],
+  "updateLogV713": [
+    {
+      "area": "Controllo ufficialita",
+      "teamName": "Serie A",
+      "voice": "Global check",
+      "action": "Nessuna nuova ufficialità club aggiunta",
+      "impact": "Rose/Ufficialita/Mercato_Giocatori invariati per movimenti ufficiali",
+      "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
+      "verification": "OK_CONTROLLO",
+      "note": "Traorè, Cuenca, Muharemovic e Celik risultano già gestiti nelle versioni precedenti; nessun nuovo comunicato club individuato.",
+      "version": "V713",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "area": "Infortunati",
+      "teamName": "Genoa",
+      "voice": "Hamed Junior Traorè",
+      "action": "Aggiunto monitoraggio fisico non ufficiale",
+      "impact": "+1 Infortunati; badge SOS prudenziale sul player; nessuna modifica mercato/rosa",
+      "source": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "verification": "OK_TM_MONITORAGGIO",
+      "note": "Transfermarkt segnala problema agli adduttori dal 02/05/2026; manca bollettino Genoa, quindi non è stop ufficiale.",
+      "version": "V713",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "area": "Rose",
+      "teamName": "Genoa",
+      "voice": "Hamed Junior Traorè",
+      "action": "Aggiornato stato fisico prudenziale",
+      "impact": "Nessuna nuova riga Rose; aggiornata riga esistente v64",
+      "source": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "verification": "OK_NO_DUPLICATO",
+      "note": "Da monitorare in ritiro/amichevoli; impatto asta basso-medio finché non emergono comunicati club.",
+      "version": "V713",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "area": "Ritiri_Amichevoli",
+      "teamName": "Serie A",
+      "voice": "Calendario amichevoli Sky",
+      "action": "Rafforzata fonte di controllo aggiornata alle 20:17",
+      "impact": "+1 riga controllo; nessun tabellino nuovo da compilare",
+      "source": "https://sport.sky.it/calcio/serie-a/amichevoli-estive-serie-a-date-2026",
+      "verification": "OK_ARTICOLO",
+      "note": "Sky indica il programma dal 18 luglio; Sassuolo-Alta Anaunia resta unica gara già giocata/compilata.",
+      "version": "V713",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "area": "Rumor",
+      "teamName": "Serie A",
+      "voice": "Controllo post-ufficialità",
+      "action": "Nessun nuovo rumor chiuso",
+      "impact": "0 trattative chiuse: nessuna nuova ufficialità",
+      "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
+      "verification": "OK_CONTROLLO",
+      "note": "Regola confermata: giocatori ufficiali non devono restare con rumor attivi; nessun nuovo caso trovato.",
+      "version": "V713",
+      "updatedAt": "2026-07-17"
+    }
+  ],
+  "playersPatchedV713": [
+    {
+      "teamId": "genoa",
+      "teamName": "Genoa",
+      "playerName": "Hamed Junior Traorè",
+      "action": "Aggiornato blocco fisico SOS prudenziale da Transfermarkt",
+      "oldPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
+      "newPhysicalStatus": "Da monitorare / fonte Transfermarkt",
+      "source": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "updatedAt": "2026-07-17"
+    }
+  ],
+  "injuriesPatchedV713": [
+    {
+      "teamId": "genoa",
+      "teamName": "Genoa",
+      "playerName": "Hamed Junior Traorè",
+      "target": "Hamed Junior Traorè",
+      "role": "C/A",
+      "status": "Da monitorare",
+      "injuryStatus": "Da monitorare",
+      "detail": "Transfermarkt segnala problema agli adduttori dal 02/05/2026; nessun bollettino ufficiale Genoa individuato dopo l'ufficialità del trasferimento.",
+      "injuryDetail": "Transfermarkt segnala problema agli adduttori dal 02/05/2026; nessun bollettino ufficiale Genoa individuato dopo l'ufficialità del trasferimento.",
+      "returnDate": "Da verificare durante ritiro/preseason Genoa",
+      "injuryReturn": "Da verificare durante ritiro/preseason Genoa",
+      "impact": "Basso-medio: monitorare condizione e minutaggio nelle amichevoli",
+      "injuryImpact": "Basso-medio: monitorare condizione e minutaggio nelle amichevoli",
+      "updatedAt": "2026-07-17",
+      "date": "2026-07-17",
+      "note": "Aggiunto v67 come monitoraggio non ufficiale: non segnare come stop certo finché il Genoa non pubblica un bollettino.",
+      "source": "Transfermarkt infortunati Serie A",
+      "url": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "articleUrl": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "href": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "sourceName": "Transfermarkt infortunati Serie A",
+      "sourceLabel": "Transfermarkt infortunati Serie A",
+      "sourceType": "Transfermarkt / monitoraggio non ufficiale",
+      "sourceVerification": "OK_TM_MONITORAGGIO",
+      "sourceVerificationNote": "Manca bollettino club: badge SOS prudenziale, non stop certo."
+    }
+  ],
+  "sourcesAddedV713": [
+    {
+      "source": "Sky Sport - amichevoli estive Serie A 2026 aggiornate",
+      "url": "https://sport.sky.it/calcio/serie-a/amichevoli-estive-serie-a-date-2026",
+      "usage": "Controllo globale v67: calendario amichevoli aggiornato al 17/07/2026 ore 20:17; nessuna nuova gara giocata da compilare con minuti.",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "source": "Transfermarkt - infortunati Serie A dettaglio",
+      "url": "https://www.transfermarkt.it/serie-a/verletztespieler/wettbewerb/IT1/plus/1",
+      "usage": "Controllo infortuni v67; aggiunto monitoraggio Hamed Junior Traorè come fonte non ufficiale da confermare con club.",
+      "updatedAt": "2026-07-17"
+    }
+  ],
+  "friendliesFilteredOutV713": [
+    {
+      "teamName": "Serie A",
+      "event": "Controllo calendario amichevoli Sky aggiornato 17/07 ore 20:17",
+      "date": "2026-07-17",
+      "reason": "Fonte di controllo generale: nessuna nuova amichevole già giocata con tabellino giocatori.",
+      "source": "https://sport.sky.it/calcio/serie-a/amichevoli-estive-serie-a-date-2026"
+    }
+  ],
+  "activeOfficialRumorsAuditV713": [],
+  "playersDuplicateAuditV713": [],
+  "rulesMarketV713": [
+    "I giocatori con ufficialità attiva non devono restare nei rumor/trattative attive.",
+    "Nessuna nuova ufficialità V67: non chiudere rumor se manca comunicato/deposito ufficiale.",
+    "Le note infortunio Transfermarkt sono monitoraggi non ufficiali: badge SOS prudenziale, non stop certo."
+  ],
+  "rulesPlayersV713": [
+    "Aggiornare il player esistente quando cambia solo lo stato fisico: non creare una seconda riga rosa.",
+    "SOS negli XI resta derivato dal player reale quando il badge SOS è attivo.",
+    "Hamed Junior Traorè: ufficiale Genoa già da v64; in V67 cambia solo il monitoraggio fisico."
+  ],
+  "rulesFriendliesV713": [
+    "Nessuna nuova amichevole giocata nel V67; mantenere Sassuolo-Alta Anaunia con tabellino giocatori.",
+    "Le righe di controllo calendario non generano card partita cliccabili se non hanno tabellino/minuti."
   ]
 }
