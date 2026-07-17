@@ -1,0 +1,100 @@
+{
+  "version": "V709",
+  "updatedAt": "2026-07-17",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v63-1.xlsx",
+  "teams": 20,
+  "players": 775,
+  "duplicateExact": 0,
+  "duplicateIds": 0,
+  "officialMoves": 363,
+  "teamTransferTalks": 460,
+  "officialTalksFiltered": 150,
+  "officialTalksClosedV709": 7,
+  "activeOfficialRumors": 0,
+  "transfermarktRumors": 36,
+  "transfermarktRumorsFilteredByOfficial": 6,
+  "injuries": 22,
+  "friendlies": 117,
+  "friendlyMatchDetails": 1,
+  "friendlyPlayerStats": 26,
+  "patchedOfficialRows": [
+    {
+      "teamId": "como",
+      "playerName": "Andres Cuenca",
+      "action": "replaced",
+      "oldPlayerName": "Cuenca"
+    },
+    {
+      "teamId": "torino",
+      "playerName": "Kenjy Malidor",
+      "action": "replaced",
+      "oldPlayerName": "Kenjy Malidor"
+    },
+    {
+      "teamId": "atalanta",
+      "playerName": "Alessandro Tassani",
+      "action": "replaced",
+      "oldPlayerName": "Alessandro Tassani"
+    },
+    {
+      "teamId": "torino",
+      "playerName": "Andrea Dorigo",
+      "action": "replaced",
+      "oldPlayerName": "Andrea Dorigo"
+    },
+    {
+      "teamId": "torino",
+      "playerName": "Yannick Boerleider",
+      "action": "replaced",
+      "oldPlayerName": "Yannick Boerleider"
+    },
+    {
+      "teamId": "fiorentina",
+      "playerName": "Robin Gosens",
+      "action": "added"
+    }
+  ],
+  "closedActiveTalks": [
+    {
+      "teamId": "fiorentina",
+      "playerName": "Robin Gosens",
+      "status": "Ai saluti / escluso dal ritiro, Schalke in pole"
+    },
+    {
+      "teamId": "fiorentina",
+      "playerName": "Robin Gosens",
+      "status": "Ai saluti / non convocato per ritiro"
+    },
+    {
+      "teamId": "fiorentina",
+      "playerName": "Robin Gosens",
+      "status": "Operazione fatta / ufficialità attesa"
+    }
+  ],
+  "newSources": [
+    {
+      "source": "ACF Fiorentina - Gosens ceduto allo Schalke 04",
+      "url": "https://www.acffiorentina.com/en/news/gosens-ceduto-allo-schalke-04",
+      "usage": "Ufficialita/Rose/Mercato/Trattative: cessione Gosens, chiusura rumor v63.",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "source": "FC Schalke 04 - Robin Gosens joins",
+      "url": "https://schalke04.de/en/team/robin-gosens-joins-fc-schalke-04/",
+      "usage": "Fonte club destinazione a supporto cessione Gosens v63.",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "source": "Como 1907 - Andres Cuenca official signing",
+      "url": "https://comofootball.com/en/como-1907-sign-uefa-under-19-european-champion-andres-cuenca/",
+      "usage": "Fonte ufficiale club per rafforzamento Cuenca-Como v63.",
+      "updatedAt": "2026-07-17"
+    },
+    {
+      "source": "Lega Serie A calciomercato - depositi v63",
+      "url": "https://www.legaseriea.it/serie-a/calciomercato",
+      "usage": "Registro ufficiale Lega per rafforzare Tassani, Dorigo, Boerleider, Malidor e controllo depositi.",
+      "updatedAt": "2026-07-17"
+    }
+  ]
+}
