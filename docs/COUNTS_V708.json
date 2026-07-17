@@ -1,0 +1,41 @@
+{
+  "version": "V708",
+  "updatedAt": "2026-07-17",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v62.xlsx",
+  "teams": 20,
+  "players": 775,
+  "duplicateExact": 0,
+  "duplicateIds": 0,
+  "officialMoves": 362,
+  "teamTransferTalks": 463,
+  "officialTalksFiltered": 144,
+  "activeOfficialRumors": 0,
+  "transfermarktRumors": 36,
+  "transfermarktRumorsFilteredByOfficial": 6,
+  "injuries": 22,
+  "friendlies": 117,
+  "friendlyMatchDetails": 1,
+  "friendlyPlayerStats": 26,
+  "romaFriendliesPatched": [
+    {
+      "from": "Cannes-Roma",
+      "to": "Cannes-Roma"
+    },
+    {
+      "from": "Cardiff City-Roma",
+      "to": "Cardiff City-Roma"
+    },
+    {
+      "from": "Newport-Roma",
+      "to": "Newport County-Roma"
+    },
+    {
+      "from": "Brighton-Roma",
+      "to": "Brighton-Roma"
+    },
+    {
+      "from": "Borussia Dortmund-Roma",
+      "to": "Borussia Dortmund-Roma"
+    }
+  ]
+}
