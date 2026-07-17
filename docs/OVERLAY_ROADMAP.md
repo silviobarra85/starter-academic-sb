@@ -2,9 +2,9 @@
 
 ## Stato corrente
 
-- ioSudo corrente: **V710**
-- Ultimo Excel: `fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v64.xlsx`
-- Ultimo intervento: ufficialità Hamed Junior Traorè e Bruno Galassi, chiusura rumor post-ufficialità, Buongiorno SOS/infortunio rafforzato, Patric fonte Lazio puntuale.
+- ioSudo corrente: **V711**
+- Ultimo Excel: `fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v65.xlsx`
+- Ultimo intervento: ufficialità Tarik Muharemovic Sassuolo-Leeds, chiusura rumor post-ufficialità, Probabile XI Sassuolo disattivato.
 
 ## Regole operative
 

@@ -1,0 +1,20 @@
+{
+  "version": "V711",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-17_aggiornamento_globale_v65.xlsx",
+  "players": 777,
+  "teams": 20,
+  "officialMoves": 366,
+  "officialIncoming": 172,
+  "officialOutgoing": 194,
+  "teamTransferTalks": 446,
+  "activeOfficialRumors": 0,
+  "injuries": 22,
+  "friendlies": 117,
+  "friendlyMatchDetails": 1,
+  "friendlyPlayerStats": 26,
+  "sources": 626,
+  "duplicateExact": 0,
+  "duplicateIds": 0,
+  "closedTalksV711": 8,
+  "notes": "V711 aggiornata da Excel v65: Tarik Muharemovic ceduto ufficialmente dal Sassuolo al Leeds United; riga rosa aggiornata senza duplicati, Probabile XI disattivato, rumor/trattative post-ufficialità chiusi. Nessuna nuova amichevole giocata o nuovo infortunio ufficiale."
+}
