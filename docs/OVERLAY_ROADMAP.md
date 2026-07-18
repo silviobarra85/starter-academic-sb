@@ -15,3 +15,7 @@
 
 ## V728
 - Aggiornamento V88, alias confermati, Torino-Pinzolo con tabellino, ordinamento amichevoli per data.
+
+
+## V729
+- Aggiornamento V90: Udinese-NK Istra, Monza-Pro Vercelli, Basilea-Juventus badge risultato, Ederson D.S. dedupe, policy nome+cognome.

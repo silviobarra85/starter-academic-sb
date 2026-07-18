@@ -1,0 +1,18 @@
+{
+  "version": "V729",
+  "players": 1038,
+  "playersRows": 1040,
+  "teams": 20,
+  "officialMoves": 365,
+  "teamTransferTalks": 435,
+  "injuries": 25,
+  "friendlies": 118,
+  "friendlyMatchDetails": 5,
+  "friendlyPlayerStats": 113,
+  "sources": 690,
+  "activeOfficialRumors": 0,
+  "confirmedAliasesV729": 10,
+  "edersonDsMerged": true,
+  "basileaJuventusResultBadge": true,
+  "fullNamePolicy": true
+}
