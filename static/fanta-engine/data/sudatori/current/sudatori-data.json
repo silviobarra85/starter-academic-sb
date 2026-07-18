@@ -747,15 +747,15 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "pobega": {
+    "Tommaso Pobega": {
       "teamId": "bologna",
       "teamName": "Bologna",
-      "playerName": "Pobega",
-      "role": "C",
-      "inCurrentRoster": "SI",
-      "status": "In rosa",
-      "detail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-      "source": "",
+      "playerName": "Tommaso Pobega",
+      "role": "",
+      "inCurrentRoster": "NO - voce/movimento",
+      "status": "Acquisto ufficiale",
+      "detail": "riscatto dal Milan",
+      "source": "https://sport.sky.it/calciomercato/tabellone",
       "updatedAt": "2026-07-10",
       "note": ""
     },
@@ -867,10 +867,10 @@
       "updatedAt": "2026-07-16",
       "note": "Allineamento v46: ufficialità Bologna riflessa in Rose/Mercato; non slot attivo."
     },
-    "karlsson": {
+    "Jesper Karlsson": {
       "teamId": "bologna",
       "teamName": "Bologna",
-      "playerName": "Karlsson",
+      "playerName": "Jesper Karlsson",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -927,10 +927,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "caprile": {
+    "Elia Caprile": {
       "teamId": "cagliari",
       "teamName": "Cagliari",
-      "playerName": "Caprile",
+      "playerName": "Elia Caprile",
       "role": "P",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -1275,10 +1275,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "s esposito": {
+    "Sebastiano Esposito": {
       "teamId": "cagliari",
       "teamName": "Cagliari",
-      "playerName": "S. Esposito",
+      "playerName": "Sebastiano Esposito",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -2228,10 +2228,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "mandragora": {
+    "Rolando Mandragora": {
       "teamId": "fiorentina",
       "teamName": "Fiorentina",
-      "playerName": "Mandragora",
+      "playerName": "Rolando Mandragora",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -2360,10 +2360,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "nzola": {
+    "M’Bala Nzola": {
       "teamId": "fiorentina",
       "teamName": "Fiorentina",
-      "playerName": "Nzola",
+      "playerName": "M’Bala Nzola",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -3470,10 +3470,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "f esposito": {
+    "Francesco Pio Esposito": {
       "teamId": "inter",
       "teamName": "Inter",
-      "playerName": "F. Esposito",
+      "playerName": "Francesco Pio Esposito",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6056,10 +6056,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "lucca": {
+    "Lorenzo Lucca": {
       "teamId": "napoli",
       "teamName": "Napoli",
-      "playerName": "Lucca",
+      "playerName": "Lorenzo Lucca",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -9095,19 +9095,7 @@
       "updatedAt": "2026-07-16",
       "note": "Fonte ufficiale club sostituita/rafforzata v43."
     },
-    "tommaso pobega": {
-      "teamId": "bologna",
-      "teamName": "Bologna",
-      "playerName": "Tommaso Pobega",
-      "role": "",
-      "inCurrentRoster": "NO - voce/movimento",
-      "status": "Acquisto ufficiale",
-      "detail": "riscatto dal Milan",
-      "source": "https://sport.sky.it/calciomercato/tabellone",
-      "updatedAt": "2026-07-10",
-      "note": ""
-    },
-    "michel aebischer": {
+    "Michel Aebischer": {
       "teamId": "bologna",
       "teamName": "Bologna",
       "playerName": "Michel Aebischer",
@@ -17636,8 +17624,8 @@
     {
       "teamId": "inter",
       "teamName": "Inter",
-      "playerName": "Pio Esposito",
-      "target": "Pio Esposito",
+      "playerName": "Francesco Pio Esposito",
+      "target": "Francesco Pio Esposito",
       "direction": "incoming",
       "directionLabel": "Rinnovo/contratto",
       "status": "Rinnovo in lavorazione",
@@ -411378,31 +411366,31 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v718",
-    "version": "V718",
+    "id": "sudatori-iosudo-v719",
+    "version": "V719",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-18",
-    "updatedAtTime": "2026-07-18T12:52:00+02:00",
-    "generatedAt": "2026-07-18T12:52:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v73.xlsx",
-    "dedupVersion": "V718-confirmed-aliases-4",
-    "notes": "V718 aggiornata da Excel V73: alias confermati V718, Engelhardt ufficiale al Friburgo, Ravanelli ufficiale alla Sampdoria, nessun nuovo tabellino/infortunio.",
+    "updatedAtTime": "2026-07-18T13:25:00+02:00",
+    "generatedAt": "2026-07-18T13:25:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v74.xlsx",
+    "dedupVersion": "V719-confirmed-aliases-esposito-disambiguated",
+    "notes": "V719 aggiornata da Excel V74: alias confermati, Esposito disambiguato, Bologna-Arminia parziale 0-3 HT senza tabellino giocatori, nessuna nuova ufficialità/infortunio.",
     "teams": 20,
     "players": 777,
     "friendlies": 118,
     "teamTransferTalks": 439,
     "injuries": 24,
     "officialMoves": 362,
-    "sources": 661,
+    "sources": 664,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 1,
     "friendlyPlayerStats": 26,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v718-xlsx-v73",
-    "versionNumber": 718,
-    "baseVersion": "V717",
+    "buildTag": "iosudo-v719-xlsx-v74",
+    "versionNumber": 719,
+    "baseVersion": "V718",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
@@ -411417,7 +411405,14 @@
     "duplicateCandidatesV718": 10,
     "sourcesAddedV718": 5,
     "friendliesFilteredOutV718": 3,
-    "aliasesNormalizedV718": 333
+    "aliasesNormalizedV718": 333,
+    "confirmedAliasesV719": 9,
+    "teamSpecificAliasesV719": 1,
+    "espositoDisambiguationsV719": 3,
+    "duplicateCandidatesV719": 10,
+    "sourcesAddedV719": 3,
+    "friendliesPatchedV719": 1,
+    "officialTalksClosedV719": 0
   },
   "teams": [
     {
@@ -416522,10 +416517,10 @@
         "listoneMatchMethod": "previous-snapshot"
       },
       {
-        "id": "bologna-pobega",
+        "id": "bologna-tommaso-pobega",
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Pobega",
+        "playerName": "Tommaso Pobega",
         "role": "C",
         "coach": "Domenico Tedesco",
         "module": "3-4-2-1 / 3-4-3 / 4-2-3-1",
@@ -416556,8 +416551,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-2-3-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Pobega",
-        "disambiguatedName": "Pobega",
+        "originalName": "Tommaso Pobega",
+        "disambiguatedName": "Tommaso Pobega",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -416566,8 +416561,8 @@
             "item": {
               "teamId": "bologna",
               "teamName": "Bologna",
-              "playerName": "Pobega",
-              "target": "Pobega",
+              "playerName": "Tommaso Pobega",
+              "target": "Tommaso Pobega",
               "direction": "incoming",
               "directionLabel": "Entrata",
               "status": "Ufficiale",
@@ -416612,7 +416607,7 @@
         ],
         "listone": {
           "fantacalcioId": "5298",
-          "playerName": "Pobega",
+          "playerName": "Tommaso Pobega",
           "classicRole": "C",
           "mantraRoles": "M/C",
           "realTeam": "BOL",
@@ -417198,10 +417193,10 @@
         ]
       },
       {
-        "id": "bologna-karlsson",
+        "id": "bologna-jesper-karlsson",
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Karlsson",
+        "playerName": "Jesper Karlsson",
         "role": "A",
         "coach": "Domenico Tedesco",
         "module": "3-4-2-1 / 3-4-3 / 4-2-3-1",
@@ -417232,14 +417227,14 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Karlsson",
-        "disambiguatedName": "Karlsson",
+        "originalName": "Jesper Karlsson",
+        "disambiguatedName": "Jesper Karlsson",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "6459",
-          "playerName": "Karlsson",
+          "playerName": "Jesper Karlsson",
           "classicRole": "A",
           "mantraRoles": "W/A",
           "realTeam": "BOL",
@@ -418496,10 +418491,10 @@
     ],
     "cagliari": [
       {
-        "id": "cagliari-caprile",
+        "id": "cagliari-elia-caprile",
         "teamId": "cagliari",
         "teamName": "Cagliari",
-        "playerName": "Caprile",
+        "playerName": "Elia Caprile",
         "role": "P",
         "coach": "Fabio Pisacane",
         "module": "3-5-2 / 4-4-2",
@@ -418530,14 +418525,14 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-4-2",
         "formationCorrectionNote": "Sky",
-        "originalName": "Caprile",
-        "disambiguatedName": "Caprile",
+        "originalName": "Elia Caprile",
+        "disambiguatedName": "Elia Caprile",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "4360",
-          "playerName": "Caprile",
+          "playerName": "Elia Caprile",
           "classicRole": "P",
           "mantraRoles": "Por",
           "realTeam": "CAG",
@@ -420597,10 +420592,10 @@
         "_iosudoMarketRows": []
       },
       {
-        "id": "cagliari-s-esposito",
+        "id": "cagliari-sebastiano-esposito",
         "teamId": "cagliari",
         "teamName": "Cagliari",
-        "playerName": "S. Esposito",
+        "playerName": "Sebastiano Esposito",
         "role": "A",
         "coach": "Fabio Pisacane",
         "module": "3-5-2 / 4-4-2",
@@ -420631,8 +420626,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-4-2",
         "formationCorrectionNote": "Sky",
-        "originalName": "S. Esposito",
-        "disambiguatedName": "S. Esposito",
+        "originalName": "Sebastiano Esposito",
+        "disambiguatedName": "Sebastiano Esposito",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -426636,10 +426631,10 @@
         "_iosudoMarketRows": []
       },
       {
-        "id": "fiorentina-mandragora",
+        "id": "fiorentina-rolando-mandragora",
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Mandragora",
+        "playerName": "Rolando Mandragora",
         "role": "C",
         "coach": "Fabio Grosso",
         "module": "4-3-3 / 4-3-2-1",
@@ -426670,14 +426665,14 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-3-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Mandragora",
-        "disambiguatedName": "Mandragora",
+        "originalName": "Rolando Mandragora",
+        "disambiguatedName": "Rolando Mandragora",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "1933",
-          "playerName": "Mandragora",
+          "playerName": "Rolando Mandragora",
           "classicRole": "C",
           "mantraRoles": "M/C",
           "realTeam": "FIO",
@@ -427329,10 +427324,10 @@
         "formationNote": "Modulo adattato a 4-3-2-1 per posizionare correttamente Dodo/Gosens e i tre centrocampisti indicati."
       },
       {
-        "id": "fiorentina-nzola",
+        "id": "fiorentina-m-bala-nzola",
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Nzola",
+        "playerName": "M’Bala Nzola",
         "role": "A",
         "coach": "Fabio Grosso",
         "module": "4-3-3 / 4-3-2-1",
@@ -427363,14 +427358,14 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Nzola",
-        "disambiguatedName": "Nzola",
+        "originalName": "M’Bala Nzola",
+        "disambiguatedName": "M’Bala Nzola",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "5336",
-          "playerName": "Nzola",
+          "playerName": "M’Bala Nzola",
           "classicRole": "A",
           "mantraRoles": "Pc",
           "realTeam": "SAS",
@@ -434759,10 +434754,10 @@
         "fantasyRoster": "River Plaid"
       },
       {
-        "id": "inter-f-esposito",
+        "id": "inter-francesco-pio-esposito",
         "teamId": "inter",
         "teamName": "Inter",
-        "playerName": "F. Esposito",
+        "playerName": "Francesco Pio Esposito",
         "role": "A",
         "coach": "Cristian Chivu",
         "module": "3-5-2",
@@ -434793,8 +434788,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "F. Esposito",
-        "disambiguatedName": "F. Esposito",
+        "originalName": "Francesco Pio Esposito",
+        "disambiguatedName": "Francesco Pio Esposito",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -448240,10 +448235,10 @@
         "formationNote": "Hernani non presente nella rosa file; sostituito con Colpani. Mota Carvalho normalizzato rispetto a Dany Mota."
       },
       {
-        "id": "monza-pessina",
+        "id": "monza-matteo-pessina",
         "teamId": "monza",
         "teamName": "Monza",
-        "playerName": "Pessina",
+        "playerName": "Matteo Pessina",
         "role": "C",
         "coach": "Ivan Juric",
         "module": "3-4-2-1 / 3-4-3",
@@ -448274,8 +448269,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Pessina",
-        "disambiguatedName": "Pessina",
+        "originalName": "Matteo Pessina",
+        "disambiguatedName": "Matteo Pessina",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -452218,10 +452213,10 @@
         ]
       },
       {
-        "id": "napoli-lucca",
+        "id": "napoli-lorenzo-lucca",
         "teamId": "napoli",
         "teamName": "Napoli",
-        "playerName": "Lucca",
+        "playerName": "Lorenzo Lucca",
         "role": "A",
         "coach": "Massimiliano Allegri",
         "module": "3-4-2-1 / 4-3-3",
@@ -452252,14 +452247,14 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Lucca",
-        "disambiguatedName": "Lucca",
+        "originalName": "Lorenzo Lucca",
+        "disambiguatedName": "Lorenzo Lucca",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "6215",
-          "playerName": "Lucca",
+          "playerName": "Lorenzo Lucca",
           "classicRole": "A",
           "mantraRoles": "Pc",
           "realTeam": "NAP",
@@ -475008,8 +475003,8 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Caprile",
-        "target": "Caprile",
+        "playerName": "Elia Caprile",
+        "target": "Elia Caprile",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Primi sondaggi",
@@ -491761,8 +491756,8 @@
       {
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Pobega",
-        "target": "Pobega",
+        "playerName": "Tommaso Pobega",
+        "target": "Tommaso Pobega",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -503954,8 +503949,8 @@
       {
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "Nzola",
-        "target": "Nzola",
+        "playerName": "M’Bala Nzola",
+        "target": "M’Bala Nzola",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "Ufficiale",
@@ -509123,8 +509118,8 @@
         {
           "teamId": "bologna",
           "teamName": "Bologna",
-          "playerName": "Pobega",
-          "target": "Pobega",
+          "playerName": "Tommaso Pobega",
+          "target": "Tommaso Pobega",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Ufficiale",
@@ -516191,8 +516186,8 @@
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
-          "playerName": "Caprile",
-          "target": "Caprile",
+          "playerName": "Elia Caprile",
+          "target": "Elia Caprile",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Primi sondaggi",
@@ -538719,8 +538714,8 @@
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
-          "playerName": "Nzola",
-          "target": "Nzola",
+          "playerName": "M’Bala Nzola",
+          "target": "M’Bala Nzola",
           "direction": "outgoing",
           "directionLabel": "Uscita",
           "status": "Ufficiale",
@@ -545965,19 +545960,19 @@
         "target": "Bologna-Arminia Bielefeld",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Annunciata - fonte ufficiale club",
+        "status": "In corso / parziale 0-3 al primo tempo - non definitivo",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Fonte ufficiale Bologna v50: calendario amichevoli di Valles confermato dal club.",
-        "source": "https://www.bolognafc.it/il-calendario-delle-amichevoli-di-valles/",
-        "url": "https://www.bolognafc.it/il-calendario-delle-amichevoli-di-valles/",
-        "articleUrl": "https://www.bolognafc.it/il-calendario-delle-amichevoli-di-valles/",
+        "note": "V719: al controllo 13:25 CEST Bologna-Arminia Bielefeld risulta 0-3 al primo tempo da fonti live secondarie; nessun minutaggio/gol/infortunio giocatore inserito perché manca tabellino ufficiale completo.",
+        "source": "https://www.bolognafc.it/domani-lamichevole-contro-larminia-bielefeld/",
+        "url": "https://www.bolognafc.it/domani-lamichevole-contro-larminia-bielefeld/",
+        "articleUrl": "https://www.bolognafc.it/domani-lamichevole-contro-larminia-bielefeld/",
         "href": "https://www.bolognafc.it/il-calendario-delle-amichevoli-di-valles/",
-        "sourceName": "https://www.bolognafc.it/il-calendario-delle-amichevoli-di-valles/",
-        "sourceLabel": "https://www.bolognafc.it/il-calendario-delle-amichevoli-di-valles/",
+        "sourceName": "Bologna FC sito ufficiale + Kicker live parziale",
+        "sourceLabel": "Bologna FC / Kicker live",
         "sourceType": "Sito ufficiale club",
-        "sourceVerification": "OK_UFFICIALE_CLUB",
-        "sourceVerificationNote": "Sostituita fonte TMW con comunicato Bologna v50.",
+        "sourceVerification": "PARZIALE_NON_UFFICIALE",
+        "sourceVerificationNote": "Parziale da Kicker/Calciomagazine; attendere tabellino ufficiale per minuti, titolari, gol/autogol, infortuni gara.",
         "sources": [
           {
             "source": "https://www.bolognafc.it/il-calendario-delle-amichevoli-di-valles/",
@@ -545992,6 +545987,33 @@
             "sourceVerification": "OK_UFFICIALE_CLUB",
             "sourceVerificationNote": "Sostituita fonte TMW con comunicato Bologna v50.",
             "note": "Fonte ufficiale Bologna v50: calendario amichevoli di Valles confermato dal club."
+          },
+          {
+            "source": "Bologna FC sito ufficiale",
+            "url": "https://www.bolognafc.it/domani-lamichevole-contro-larminia-bielefeld/",
+            "status": "Annunciata fonte club",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Sito ufficiale club",
+            "sourceVerification": "OK_UFFICIALE_CLUB",
+            "note": "Gara Bologna-Arminia da calendario club."
+          },
+          {
+            "source": "Kicker live Bologna-Arminia",
+            "url": "https://www.kicker.de/bologna-gegen-bielefeld-2026-vereine-freundschaftsspiele-5208298/ticker",
+            "status": "Parziale live 0-3 HT",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Live secondario",
+            "sourceVerification": "PARZIALE_NON_UFFICIALE",
+            "note": "Non sufficiente per tabellino giocatori."
+          },
+          {
+            "source": "Calciomagazine Bologna-Arminia",
+            "url": "https://www.calciomagazine.net/bologna%E2%80%91arminia-bielefeld-diretta-risultato-18-luglio-2026-247727.html",
+            "status": "Conferma parziale live",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Live secondario",
+            "sourceVerification": "PARZIALE_NON_UFFICIALE",
+            "note": "Da sostituire con comunicato/tabellino club."
           }
         ],
         "event": "Bologna-Arminia Bielefeld",
@@ -546001,7 +546023,10 @@
         "venue": "Centro sportivo di Valles",
         "location": "Centro sportivo di Valles",
         "time": "12:00",
-        "matchKey": "bologna 2026 07 18 bologna arminia bielefeld"
+        "matchKey": "bologna 2026 07 18 bologna arminia bielefeld",
+        "partialScore": "0-3 HT",
+        "partialScoreSource": "https://www.kicker.de/bologna-gegen-bielefeld-2026-vereine-freundschaftsspiele-5208298/ticker",
+        "tabellinoStatus": "NON_COMPILATO_PARZIALE_LIVE"
       },
       {
         "teamId": "bologna",
@@ -553086,7 +553111,7 @@
         "module": "4-2-3-1",
         "formationModule": "4-2-3-1",
         "position": "MED",
-        "playerName": "Pobega",
+        "playerName": "Tommaso Pobega",
         "role": "C",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -553202,7 +553227,7 @@
         "module": "4-4-2",
         "formationModule": "4-4-2",
         "position": "P",
-        "playerName": "Caprile",
+        "playerName": "Elia Caprile",
         "role": "P",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -553373,7 +553398,7 @@
         "module": "4-4-2",
         "formationModule": "4-4-2",
         "position": "PC",
-        "playerName": "S. Esposito",
+        "playerName": "Sebastiano Esposito",
         "role": "A",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -553738,7 +553763,7 @@
         "module": "4-3-2-1",
         "formationModule": "4-3-2-1",
         "position": "CC",
-        "playerName": "Mandragora",
+        "playerName": "Rolando Mandragora",
         "role": "C",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -555438,7 +555463,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "CC",
-        "playerName": "Pessina",
+        "playerName": "Matteo Pessina",
         "role": "C",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -561033,6 +561058,33 @@
       "usage": "Controllo amichevoli V718: gara in corso, nessun tabellino completo",
       "updatedAt": "2026-07-18",
       "version": "V718"
+    },
+    {
+      "source": "Kicker live Bologna-Arminia Bielefeld 18/07/2026",
+      "url": "https://www.kicker.de/bologna-gegen-bielefeld-2026-vereine-freundschaftsspiele-5208298/ticker",
+      "usage": "Risultato parziale 0-3 al primo tempo; non usato per minutaggi finali.",
+      "updatedAt": "2026-07-18",
+      "version": "V719",
+      "sourceType": "Live secondario",
+      "note": "Da sostituire con tabellino ufficiale club appena disponibile."
+    },
+    {
+      "source": "Calciomagazine live Bologna-Arminia Bielefeld 18/07/2026",
+      "url": "https://www.calciomagazine.net/bologna%E2%80%91arminia-bielefeld-diretta-risultato-18-luglio-2026-247727.html",
+      "usage": "Conferma secondaria del parziale 0-3 al primo tempo.",
+      "updatedAt": "2026-07-18",
+      "version": "V719",
+      "sourceType": "Live secondario",
+      "note": "Non sufficiente per compilare tabellino giocatori."
+    },
+    {
+      "source": "Gianluca Di Marzio",
+      "url": "https://www.gianlucadimarzio.com/",
+      "usage": "Ricontrollo mercato V74: nessuna nuova ufficialità club dopo V73.",
+      "updatedAt": "2026-07-18",
+      "version": "V719",
+      "sourceType": "Fonte mercato",
+      "note": "Non trasformare rumor in ufficialità senza comunicato club/deposito."
     }
   ],
   "transfermarktRumors": [
@@ -569002,8 +569054,8 @@
     {
       "teamId": "inter",
       "teamName": "Inter",
-      "playerName": "Pio Esposito",
-      "target": "Pio Esposito",
+      "playerName": "Francesco Pio Esposito",
+      "target": "Francesco Pio Esposito",
       "direction": "incoming",
       "directionLabel": "Rinnovo/contratto",
       "status": "Rinnovo in lavorazione",
@@ -576121,8 +576173,8 @@
     {
       "teamId": "inter",
       "teamName": "Inter",
-      "playerName": "Pio Esposito",
-      "target": "Pio Esposito",
+      "playerName": "Francesco Pio Esposito",
+      "target": "Francesco Pio Esposito",
       "direction": "incoming",
       "directionLabel": "Rinnovo/contratto",
       "status": "Rinnovo in lavorazione",
@@ -584545,19 +584597,20 @@
   ],
   "activeOfficialRumorsAuditV714": [],
   "audit": {
-    "v718": {
+    "v719": {
       "duplicateExactPlayers": 0,
       "duplicatePlayerIds": 0,
       "activeOfficialRumors": 0,
-      "officialTalksClosedV718": 4
+      "noGenericEspositoAlias": true,
+      "friendliesPatchedV719": 1
     }
   },
   "manifest": {
-    "version": "V718",
-    "versionNumber": 718,
-    "updatedAt": "2026-07-18T12:52:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v73.xlsx",
-    "baseVersion": "V717",
+    "version": "V719",
+    "versionNumber": 719,
+    "updatedAt": "2026-07-18T13:25:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v74.xlsx",
+    "baseVersion": "V718",
     "teams": 20,
     "players": 777,
     "officialMoves": 362,
@@ -584567,7 +584620,7 @@
     "friendlies": 118,
     "friendlyMatchDetails": 1,
     "friendlyPlayerStats": 26,
-    "sources": 661,
+    "sources": 664,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
     "activeOfficialRumors": 0,
@@ -584583,7 +584636,14 @@
     "sourcesAddedV718": 5,
     "friendliesFilteredOutV718": 3,
     "aliasesNormalizedV718": 333,
-    "officialTalksClosedV718": 4
+    "officialTalksClosedV718": 4,
+    "confirmedAliasesV719": 9,
+    "teamSpecificAliasesV719": 1,
+    "espositoDisambiguationsV719": 3,
+    "duplicateCandidatesV719": 10,
+    "sourcesAddedV719": 3,
+    "friendliesPatchedV719": 1,
+    "officialTalksClosedV719": 0
   },
   "friendliesFilteredOutV715": [
     {
@@ -589054,37 +589114,37 @@
   ],
   "duplicateNameCandidatesV718": [
     {
-      "variantA": "Lucca",
+      "variantA": "Lorenzo Lucca",
       "variantB": "Lorenzo Lucca",
       "where": "Napoli/Udinese rosa, ufficialità e mercato"
     },
     {
-      "variantA": "Taremi",
+      "variantA": "Mehdi Taremi",
       "variantB": "Mehdi Taremi",
       "where": "Inter rosa / mercato"
     },
     {
-      "variantA": "Aebischer",
+      "variantA": "Michel Aebischer",
       "variantB": "Michel Aebischer",
       "where": "Bologna / Pisa mercato"
     },
     {
-      "variantA": "Pobega",
+      "variantA": "Tommaso Pobega",
       "variantB": "Tommaso Pobega",
       "where": "Bologna/Milan rosa-mercato"
     },
     {
-      "variantA": "Karlsson",
+      "variantA": "Jesper Karlsson",
       "variantB": "Jesper Karlsson",
       "where": "Bologna rosa / trattative"
     },
     {
-      "variantA": "Mandragora",
+      "variantA": "Rolando Mandragora",
       "variantB": "Rolando Mandragora",
       "where": "Fiorentina rosa / mercato"
     },
     {
-      "variantA": "Nzola",
+      "variantA": "M’Bala Nzola",
       "variantB": "M’Bala Nzola",
       "where": "Fiorentina/Pisa mercato"
     },
@@ -589099,7 +589159,7 @@
       "where": "Monza rosa / mercato"
     },
     {
-      "variantA": "Caprile",
+      "variantA": "Elia Caprile",
       "variantB": "Elia Caprile",
       "where": "Napoli/Cagliari rosa-mercato"
     }
@@ -589135,5 +589195,843 @@
   },
   "rulesFriendliesV718": {
     "matchStats": "I minutaggi/gol vengono inseriti solo con tabellino ufficiale completo o fonte equivalente."
-  }
+  },
+  "confirmedDuplicateAliasesV719": [
+    {
+      "from": "Lucca",
+      "to": "Lorenzo Lucca",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    },
+    {
+      "from": "Taremi",
+      "to": "Mehdi Taremi",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    },
+    {
+      "from": "Aebischer",
+      "to": "Michel Aebischer",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    },
+    {
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    },
+    {
+      "from": "Karlsson",
+      "to": "Jesper Karlsson",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    },
+    {
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    },
+    {
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    },
+    {
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "note": "Confermato dall’utente; Esposito escluso da alias generico."
+    }
+  ],
+  "teamSpecificDuplicateAliasesV719": [
+    {
+      "teamId": "monza",
+      "from": "Pessina",
+      "to": "Matteo Pessina",
+      "reason": "Pessina Monza confermato come Matteo; non applicare globalmente perché esiste anche Pessina Bologna P."
+    }
+  ],
+  "espositoDisambiguationV719": [
+    {
+      "teamId": "cagliari",
+      "from": "S. Esposito",
+      "to": "Sebastiano Esposito",
+      "note": "Conferma utente: Esposito Cagliari è Sebastiano Esposito."
+    },
+    {
+      "teamId": "inter",
+      "from": "F. Esposito / Pio Esposito",
+      "to": "Francesco Pio Esposito",
+      "note": "Conferma utente: Esposito Inter è Francesco Pio Esposito."
+    },
+    {
+      "rule": "no_generic_esposito_alias",
+      "note": "Il cognome Esposito da solo non viene fuso automaticamente."
+    }
+  ],
+  "neverGlobalAliasV719": [
+    {
+      "name": "Esposito",
+      "reason": "Cagliari: Sebastiano Esposito; Inter: Francesco Pio Esposito. Il cognome da solo non identifica un giocatore unico."
+    },
+    {
+      "name": "Pessina",
+      "reason": "Alias gestito solo per Monza: esiste anche Pessina Bologna portiere nel dataset."
+    }
+  ],
+  "aliasesNormalizedV719": [
+    {
+      "section": "marketNotesByPlayer.pobega",
+      "field": "playerName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer.karlsson",
+      "field": "playerName",
+      "from": "Karlsson",
+      "to": "Jesper Karlsson",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer.caprile",
+      "field": "playerName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer.s esposito",
+      "field": "playerName",
+      "from": "S. Esposito",
+      "to": "Sebastiano Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer.mandragora",
+      "field": "playerName",
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer.nzola",
+      "field": "playerName",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer.f esposito",
+      "field": "playerName",
+      "from": "F. Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer.lucca",
+      "field": "playerName",
+      "from": "Lucca",
+      "to": "Lorenzo Lucca",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialTalksFiltered[70]",
+      "field": "playerName",
+      "from": "Pio Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialTalksFiltered[70]",
+      "field": "target",
+      "from": "Pio Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[22]",
+      "field": "playerName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[22]",
+      "field": "originalName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[22]",
+      "field": "disambiguatedName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[22]._iosudoMarketRows[0].item",
+      "field": "playerName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[22]._iosudoMarketRows[0].item",
+      "field": "target",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[22].listone",
+      "field": "playerName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[32]",
+      "field": "playerName",
+      "from": "Karlsson",
+      "to": "Jesper Karlsson",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[32]",
+      "field": "originalName",
+      "from": "Karlsson",
+      "to": "Jesper Karlsson",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[32]",
+      "field": "disambiguatedName",
+      "from": "Karlsson",
+      "to": "Jesper Karlsson",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.bologna[32].listone",
+      "field": "playerName",
+      "from": "Karlsson",
+      "to": "Jesper Karlsson",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.cagliari[0]",
+      "field": "playerName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.cagliari[0]",
+      "field": "originalName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.cagliari[0]",
+      "field": "disambiguatedName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.cagliari[0].listone",
+      "field": "playerName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.cagliari[29]",
+      "field": "playerName",
+      "from": "S. Esposito",
+      "to": "Sebastiano Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.cagliari[29]",
+      "field": "originalName",
+      "from": "S. Esposito",
+      "to": "Sebastiano Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.cagliari[29]",
+      "field": "disambiguatedName",
+      "from": "S. Esposito",
+      "to": "Sebastiano Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[29]",
+      "field": "playerName",
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[29]",
+      "field": "originalName",
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[29]",
+      "field": "disambiguatedName",
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[29].listone",
+      "field": "playerName",
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[39]",
+      "field": "playerName",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[39]",
+      "field": "originalName",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[39]",
+      "field": "disambiguatedName",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.fiorentina[39].listone",
+      "field": "playerName",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.inter[27]",
+      "field": "playerName",
+      "from": "F. Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.inter[27]",
+      "field": "originalName",
+      "from": "F. Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.inter[27]",
+      "field": "disambiguatedName",
+      "from": "F. Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.napoli[38]",
+      "field": "playerName",
+      "from": "Lucca",
+      "to": "Lorenzo Lucca",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.napoli[38]",
+      "field": "originalName",
+      "from": "Lucca",
+      "to": "Lorenzo Lucca",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.napoli[38]",
+      "field": "disambiguatedName",
+      "from": "Lucca",
+      "to": "Lorenzo Lucca",
+      "mode": "global_alias"
+    },
+    {
+      "section": "playersByTeam.napoli[38].listone",
+      "field": "playerName",
+      "from": "Lucca",
+      "to": "Lorenzo Lucca",
+      "mode": "global_alias"
+    },
+    {
+      "section": "teamTransferTalksByTeam.fiorentina[9]",
+      "field": "playerName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "teamTransferTalksByTeam.fiorentina[9]",
+      "field": "target",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialMovesByTeam.bologna[2]",
+      "field": "playerName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialMovesByTeam.bologna[2]",
+      "field": "target",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialMovesByTeam.sassuolo[8]",
+      "field": "playerName",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialMovesByTeam.sassuolo[8]",
+      "field": "target",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketSummaryByTeam.bologna.officialIncoming[2]",
+      "field": "playerName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketSummaryByTeam.bologna.officialIncoming[2]",
+      "field": "target",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketSummaryByTeam.fiorentina.talksIncoming[10]",
+      "field": "playerName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketSummaryByTeam.fiorentina.talksIncoming[10]",
+      "field": "target",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketSummaryByTeam.sassuolo.officialOutgoing[5]",
+      "field": "playerName",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketSummaryByTeam.sassuolo.officialOutgoing[5]",
+      "field": "target",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "formationsByTeam.bologna[5]",
+      "field": "playerName",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "formationsByTeam.cagliari[0]",
+      "field": "playerName",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "formationsByTeam.cagliari[9]",
+      "field": "playerName",
+      "from": "S. Esposito",
+      "to": "Sebastiano Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "formationsByTeam.fiorentina[6]",
+      "field": "playerName",
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialTalksFilteredV707[70]",
+      "field": "playerName",
+      "from": "Pio Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialTalksFilteredV707[70]",
+      "field": "target",
+      "from": "Pio Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialTalksFilteredV709[70]",
+      "field": "playerName",
+      "from": "Pio Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "officialTalksFilteredV709[70]",
+      "field": "target",
+      "from": "Pio Esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[0]",
+      "field": "variantA",
+      "from": "Lucca",
+      "to": "Lorenzo Lucca",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[1]",
+      "field": "variantA",
+      "from": "Taremi",
+      "to": "Mehdi Taremi",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[2]",
+      "field": "variantA",
+      "from": "Aebischer",
+      "to": "Michel Aebischer",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[3]",
+      "field": "variantA",
+      "from": "Pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[4]",
+      "field": "variantA",
+      "from": "Karlsson",
+      "to": "Jesper Karlsson",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[5]",
+      "field": "variantA",
+      "from": "Mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[6]",
+      "field": "variantA",
+      "from": "Nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias"
+    },
+    {
+      "section": "duplicateNameCandidatesV718[9]",
+      "field": "variantA",
+      "from": "Caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "karlsson",
+      "to": "Jesper Karlsson",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "caprile",
+      "to": "Elia Caprile",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "s esposito",
+      "to": "Sebastiano Esposito",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "mandragora",
+      "to": "Rolando Mandragora",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "nzola",
+      "to": "M’Bala Nzola",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "f esposito",
+      "to": "Francesco Pio Esposito",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "lucca",
+      "to": "Lorenzo Lucca",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "tommaso pobega",
+      "to": "Tommaso Pobega",
+      "mode": "global_alias_key"
+    },
+    {
+      "section": "marketNotesByPlayer",
+      "field": "key",
+      "from": "michel aebischer",
+      "to": "Michel Aebischer",
+      "mode": "global_alias_key"
+    }
+  ],
+  "teamSpecificAliasesAppliedV719": [
+    {
+      "collection": "playersByTeam",
+      "teamId": "monza",
+      "field": "playerName",
+      "from": "Pessina",
+      "to": "Matteo Pessina"
+    },
+    {
+      "collection": "playersByTeam",
+      "teamId": "monza",
+      "field": "originalName",
+      "from": "Pessina",
+      "to": "Matteo Pessina"
+    },
+    {
+      "collection": "playersByTeam",
+      "teamId": "monza",
+      "field": "disambiguatedName",
+      "from": "Pessina",
+      "to": "Matteo Pessina"
+    },
+    {
+      "collection": "formationsByTeam",
+      "teamId": "monza",
+      "field": "playerName",
+      "from": "Pessina",
+      "to": "Matteo Pessina"
+    }
+  ],
+  "playerIdChangesV719": [
+    {
+      "teamId": "bologna",
+      "playerName": "Tommaso Pobega",
+      "from": "bologna-pobega",
+      "to": "bologna-tommaso-pobega"
+    },
+    {
+      "teamId": "bologna",
+      "playerName": "Jesper Karlsson",
+      "from": "bologna-karlsson",
+      "to": "bologna-jesper-karlsson"
+    },
+    {
+      "teamId": "cagliari",
+      "playerName": "Elia Caprile",
+      "from": "cagliari-caprile",
+      "to": "cagliari-elia-caprile"
+    },
+    {
+      "teamId": "cagliari",
+      "playerName": "Sebastiano Esposito",
+      "from": "cagliari-s-esposito",
+      "to": "cagliari-sebastiano-esposito"
+    },
+    {
+      "teamId": "fiorentina",
+      "playerName": "Rolando Mandragora",
+      "from": "fiorentina-mandragora",
+      "to": "fiorentina-rolando-mandragora"
+    },
+    {
+      "teamId": "fiorentina",
+      "playerName": "M’Bala Nzola",
+      "from": "fiorentina-nzola",
+      "to": "fiorentina-m-bala-nzola"
+    },
+    {
+      "teamId": "inter",
+      "playerName": "Francesco Pio Esposito",
+      "from": "inter-f-esposito",
+      "to": "inter-francesco-pio-esposito"
+    },
+    {
+      "teamId": "monza",
+      "playerName": "Matteo Pessina",
+      "from": "monza-pessina",
+      "to": "monza-matteo-pessina"
+    },
+    {
+      "teamId": "napoli",
+      "playerName": "Lorenzo Lucca",
+      "from": "napoli-lucca",
+      "to": "napoli-lorenzo-lucca"
+    }
+  ],
+  "sourcesAddedV719": [
+    {
+      "source": "Kicker live Bologna-Arminia Bielefeld 18/07/2026",
+      "url": "https://www.kicker.de/bologna-gegen-bielefeld-2026-vereine-freundschaftsspiele-5208298/ticker",
+      "usage": "Risultato parziale 0-3 al primo tempo; non usato per minutaggi finali."
+    },
+    {
+      "source": "Calciomagazine live Bologna-Arminia Bielefeld 18/07/2026",
+      "url": "https://www.calciomagazine.net/bologna%E2%80%91arminia-bielefeld-diretta-risultato-18-luglio-2026-247727.html",
+      "usage": "Conferma secondaria del parziale 0-3 al primo tempo."
+    },
+    {
+      "source": "Gianluca Di Marzio",
+      "url": "https://www.gianlucadimarzio.com/",
+      "usage": "Ricontrollo mercato V74: nessuna nuova ufficialità club dopo V73."
+    }
+  ],
+  "friendliesPatchedV719": [
+    {
+      "teamId": "bologna",
+      "event": "Bologna-Arminia Bielefeld",
+      "from": {
+        "status": "Annunciata - fonte ufficiale club",
+        "note": "Fonte ufficiale Bologna v50: calendario amichevoli di Valles confermato dal club."
+      },
+      "to": {
+        "status": "In corso / parziale 0-3 al primo tempo - non definitivo",
+        "note": "V719: al controllo 13:25 CEST Bologna-Arminia Bielefeld risulta 0-3 al primo tempo da fonti live secondarie; nessun minutaggio/gol/infortunio giocatore inserito perché manca tabellino ufficiale completo."
+      }
+    }
+  ],
+  "friendliesFilteredOutV719": [
+    {
+      "teamName": "Bologna",
+      "event": "Bologna-Arminia Bielefeld",
+      "reason": "Parziale live 0-3 al primo tempo; nessun tabellino ufficiale completo per minuti/titolari/gol/autogol/infortuni.",
+      "source": "https://www.kicker.de/bologna-gegen-bielefeld-2026-vereine-freundschaftsspiele-5208298/ticker"
+    },
+    {
+      "teamName": "Serie A",
+      "event": "Amichevoli 18/07",
+      "reason": "Nessun nuovo tabellino giocatori completo nel V74.",
+      "source": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v74.xlsx"
+    }
+  ],
+  "injuriesControlV719": [
+    {
+      "source": "https://www.sosfanta.com/probabili-formazioni/infortunati/",
+      "result": "Nessun nuovo infortunato inserito in V74",
+      "updatedAt": "2026-07-18"
+    }
+  ],
+  "officialityControlV719": [
+    {
+      "source": "https://www.gianlucadimarzio.com/",
+      "result": "Nessuna nuova ufficialità club rispetto a V73; non trasformati rumor in ufficialità.",
+      "updatedAt": "2026-07-18"
+    }
+  ],
+  "duplicateNameCandidatesV719": [
+    {
+      "variantA": "Zeballos",
+      "variantB": "Exequiel Zeballos",
+      "where": "Napoli / trattative"
+    },
+    {
+      "variantA": "Kessie",
+      "variantB": "Franck Kessie",
+      "where": "Juventus / trattative"
+    },
+    {
+      "variantA": "Alajbegovic",
+      "variantB": "Kerim Alajbegovic",
+      "where": "Atalanta / trattative"
+    },
+    {
+      "variantA": "Diao",
+      "variantB": "Assane Diao",
+      "where": "Como rosa / trattative"
+    },
+    {
+      "variantA": "Orsolini",
+      "variantB": "Riccardo Orsolini",
+      "where": "Bologna rosa / trattative"
+    },
+    {
+      "variantA": "Jones",
+      "variantB": "Curtis Jones",
+      "where": "Inter / trattative"
+    },
+    {
+      "variantA": "Moreira",
+      "variantB": "Diego Moreira",
+      "where": "Roma / trattative"
+    },
+    {
+      "variantA": "Solet",
+      "variantB": "Oumar Solet",
+      "where": "Udinese rosa / mercato"
+    },
+    {
+      "variantA": "Vergara",
+      "variantB": "Antonio Vergara",
+      "where": "Napoli rosa / trattative"
+    },
+    {
+      "variantA": "Estupinan",
+      "variantB": "Pervis Estupiñán",
+      "where": "Milan rosa / trattative"
+    }
+  ],
+  "officialTalksClosedV719": []
 }

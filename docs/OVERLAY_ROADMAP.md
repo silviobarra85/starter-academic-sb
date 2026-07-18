@@ -1,3 +1,8 @@
+## V719 - 2026-07-18
+- Esposito disambiguato: Sebastiano/Cagliari e Francesco Pio/Inter, no alias generico.
+- Applicati alias confermati V719 con Pessina solo Monza.
+- Bologna-Arminia aggiornata come parziale live 0-3 HT, senza tabellino giocatori.
+
 ## V718 - 2026-07-18
 - Applicati alias confermati V718.
 - Ufficialità Engelhardt/Freiburg e Ravanelli/Sampdoria.

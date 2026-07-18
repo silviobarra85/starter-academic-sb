@@ -1,9 +1,18 @@
+# ioSudo App V719
+
+Aggiornamento da Excel V74 del 18/07/2026.
+
+## Interventi
+- Applicati 9 alias confermati dalla lista V718: Lucca, Taremi, Aebischer, Pobega, Karlsson, Mandragora, Nzola, Pessina (solo Monza), Caprile.
+- Esposito disambiguato: Cagliari = Sebastiano Esposito; Inter = Francesco Pio Esposito. Nessun alias generico `Esposito`.
+- Bologna-Arminia Bielefeld aggiornata come parziale live 0-3 HT, senza tabellino giocatori.
+- Nessuna nuova ufficialità club e nessun nuovo infortunato inserito.
+
+## Conteggi
+```json
 {
   "version": "V719",
-  "versionNumber": 719,
   "updatedAt": "2026-07-18T13:25:00+02:00",
-  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v74.xlsx",
-  "baseVersion": "V718",
   "teams": 20,
   "players": 777,
   "officialMoves": 362,
@@ -17,19 +26,6 @@
   "duplicateExactPlayers": 0,
   "duplicatePlayerIds": 0,
   "activeOfficialRumors": 0,
-  "confirmedAliasesV717": 10,
-  "duplicateCandidatesV717": 10,
-  "sourcesAddedV717": 3,
-  "friendliesFilteredOutV717": 3,
-  "officialMovesDedupedV717": 8,
-  "aliasesNormalizedV717": 49,
-  "confirmedAliasesV718": 10,
-  "forcedOfficialAliasesV718": 2,
-  "duplicateCandidatesV718": 10,
-  "sourcesAddedV718": 5,
-  "friendliesFilteredOutV718": 3,
-  "aliasesNormalizedV718": 333,
-  "officialTalksClosedV718": 4,
   "confirmedAliasesV719": 9,
   "teamSpecificAliasesV719": 1,
   "espositoDisambiguationsV719": 3,
@@ -38,3 +34,4 @@
   "friendliesPatchedV719": 1,
   "officialTalksClosedV719": 0
 }
+```
