@@ -11,3 +11,7 @@
 
 ## V727
 - Excel V86, alias confermati, tabellino Basilea-Juventus ufficiale, Ekhator SOS rafforzato.
+
+
+## V728
+- Aggiornamento V88, alias confermati, Torino-Pinzolo con tabellino, ordinamento amichevoli per data.

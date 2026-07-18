@@ -1,0 +1,18 @@
+{
+  "version": "V728",
+  "players": 1038,
+  "playersRows": 1040,
+  "teams": 20,
+  "officialMoves": 364,
+  "teamTransferTalks": 435,
+  "injuries": 25,
+  "friendlies": 118,
+  "friendlyMatchDetails": 4,
+  "friendlyPlayerStats": 92,
+  "sources": 686,
+  "activeOfficialRumors": 0,
+  "confirmedAliasesV728": 10,
+  "playersAddedV728": 3,
+  "mergedDuplicatePlayersV728": 1,
+  "friendliesSortedByDateV728": true
+}
