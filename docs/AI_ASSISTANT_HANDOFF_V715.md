@@ -1,4 +1,4 @@
-# AI Assistant Handoff - CURRENT ioSudo V715
+# AI Assistant Handoff - ioSudo V715
 
 ## Stato
 
