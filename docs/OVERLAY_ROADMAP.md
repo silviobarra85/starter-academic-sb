@@ -1,14 +1,22 @@
-# Overlay roadmap
+# Overlay Roadmap
 
 ## Stato corrente
 
-- Versione corrente ioSudo: **V716**
-- Ultimo Excel: `fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v71(1).xlsx`
-- Prossima versione: V717
+- Versione ioSudo corrente: **V717**
+- Fonte: Excel V72 del 18/07/2026
+- Audit: `static/fanta-engine/tools/audit-iosudo-v717.mjs`
 
 ## Regole operative
 
-- Non lasciare rumor attivi per giocatori con ufficialità attiva.
-- Non trasformare visite mediche/firma attesa in ufficialità senza comunicato club/deposito.
-- Per amichevoli future: calendario sì, tabellino giocatori solo dopo minutaggi/gol disponibili.
-- I nuovi alias vanno applicati solo dopo conferma utente.
+- Un solo overlay per tutto il sito.
+- Lo zip deve contenere solo i file effettivamente modificati.
+- Applicazione consigliata:
+
+```bash
+cp -R overlay_iosudo_v717/static/* static/
+cp -R overlay_iosudo_v717/docs/* docs/
+```
+
+## Prossima attività consigliata
+
+Confermare o respingere i 10 nuovi duplicati in `docs/IOSUDO_DUPLICATE_CANDIDATES_V717.md` prima della prossima normalizzazione massiva.
