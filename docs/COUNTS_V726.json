@@ -1,0 +1,21 @@
+{
+  "version": "V726",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v84.xlsx",
+  "excelAliasOutput": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v85_alias_1032.xlsx",
+  "teams": 20,
+  "players": 1032,
+  "playersRowsInData": 1035,
+  "v84AliasRowsBeforeConfirmedDedup": 1035,
+  "confirmedDuplicateRowsMerged": 3,
+  "officialMoves": 362,
+  "teamTransferTalks": 428,
+  "transfermarktRumors": 46,
+  "activeOfficialRumors": 0,
+  "injuries": 25,
+  "friendlies": 118,
+  "friendlyMatchDetails": 2,
+  "friendlyPlayerStats": 47,
+  "sources": 681,
+  "aliasesApplied": 54,
+  "playersAdded": 2
+}
