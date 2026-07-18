@@ -1,3 +1,8 @@
+## V718 - 2026-07-18
+- Applicati alias confermati V718.
+- Ufficialità Engelhardt/Freiburg e Ravanelli/Sampdoria.
+- Nessun nuovo tabellino o infortunio.
+
 # Overlay Roadmap
 
 ## Stato corrente

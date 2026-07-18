@@ -1,9 +1,6 @@
 {
   "version": "V718",
-  "versionNumber": 718,
   "updatedAt": "2026-07-18T12:52:00+02:00",
-  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v73.xlsx",
-  "baseVersion": "V717",
   "teams": 20,
   "players": 777,
   "officialMoves": 362,
@@ -17,17 +14,9 @@
   "duplicateExactPlayers": 0,
   "duplicatePlayerIds": 0,
   "activeOfficialRumors": 0,
-  "confirmedAliasesV717": 10,
-  "duplicateCandidatesV717": 10,
-  "sourcesAddedV717": 3,
-  "friendliesFilteredOutV717": 3,
-  "officialMovesDedupedV717": 8,
-  "aliasesNormalizedV717": 49,
   "confirmedAliasesV718": 10,
   "forcedOfficialAliasesV718": 2,
   "duplicateCandidatesV718": 10,
   "sourcesAddedV718": 5,
-  "friendliesFilteredOutV718": 3,
-  "aliasesNormalizedV718": 333,
   "officialTalksClosedV718": 4
 }

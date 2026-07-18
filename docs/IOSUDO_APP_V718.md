@@ -1,9 +1,19 @@
+# ioSudo App V718
+
+Aggiornamento da Excel V73 del 18/07/2026.
+
+## Interventi
+- Applicati 10 alias/duplicati confermati dall'utente dalla lista V717.
+- Yannik Engelhardt: uscita ufficiale Como -> SC Freiburg; chiuso rumor Como -> Club Bruges.
+- Luca Ravanelli: uscita ufficiale Monza -> Sampdoria.
+- Nessun nuovo infortunio da SOS Fanta.
+- Nessun nuovo tabellino amichevole/minutaggi/gol da inserire.
+
+## Conteggi
+```json
 {
   "version": "V718",
-  "versionNumber": 718,
   "updatedAt": "2026-07-18T12:52:00+02:00",
-  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v73.xlsx",
-  "baseVersion": "V717",
   "teams": 20,
   "players": 777,
   "officialMoves": 362,
@@ -17,17 +27,10 @@
   "duplicateExactPlayers": 0,
   "duplicatePlayerIds": 0,
   "activeOfficialRumors": 0,
-  "confirmedAliasesV717": 10,
-  "duplicateCandidatesV717": 10,
-  "sourcesAddedV717": 3,
-  "friendliesFilteredOutV717": 3,
-  "officialMovesDedupedV717": 8,
-  "aliasesNormalizedV717": 49,
   "confirmedAliasesV718": 10,
   "forcedOfficialAliasesV718": 2,
   "duplicateCandidatesV718": 10,
   "sourcesAddedV718": 5,
-  "friendliesFilteredOutV718": 3,
-  "aliasesNormalizedV718": 333,
   "officialTalksClosedV718": 4
 }
+```
