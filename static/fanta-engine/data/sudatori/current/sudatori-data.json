@@ -1476,17 +1476,28 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "vojvoda": {
+    "mergim vojvoda": {
       "teamId": "como",
       "teamName": "Como",
-      "playerName": "Vojvoda",
+      "playerName": "Mergim Vojvoda",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
       "detail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
       "source": "",
       "updatedAt": "2026-07-10",
-      "note": ""
+      "note": "",
+      "rawEntries": [
+        {
+          "playerName": "Mergim Vojvoda",
+          "canonicalName": "Mergim Vojvoda",
+          "team": "Udinese",
+          "status": "Visite mediche / non ufficiale",
+          "detail": "v69 Sky: visite a Villa Stuart e cifra 1,3M; manca comunicato Udinese/Como.",
+          "url": "https://sport.sky.it/calciomercato/video/2026/07/17/udinese-vojvoda-visite-mediche-calciomercato-video-1112496",
+          "updatedAt": "2026-07-17"
+        }
+      ]
     },
     "braunoder": {
       "teamId": "como",
@@ -4944,10 +4955,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "tomori": {
+    "fikayo tomori": {
       "teamId": "milan",
       "teamName": "Milan",
-      "playerName": "Tomori",
+      "playerName": "Fikayo Tomori",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -5040,10 +5051,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "rabiot": {
+    "adrien rabiot": {
       "teamId": "milan",
       "teamName": "Milan",
-      "playerName": "Rabiot",
+      "playerName": "Adrien Rabiot",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -5052,10 +5063,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "ricci": {
+    "samuele ricci": {
       "teamId": "milan",
       "teamName": "Milan",
-      "playerName": "Ricci",
+      "playerName": "Samuele Ricci",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -5197,10 +5208,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "pulisic": {
+    "christian pulisic": {
       "teamId": "milan",
       "teamName": "Milan",
-      "playerName": "Pulisic",
+      "playerName": "Christian Pulisic",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "Da monitorare - infortunio",
@@ -6622,17 +6633,31 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "celik": {
+    "zeki celik": {
       "teamId": "roma",
       "teamName": "Roma",
-      "playerName": "Celik",
+      "playerName": "Zeki Celik",
       "role": "D",
       "inCurrentRoster": "NO",
       "status": "Uscita confermata / Juventus ufficiale",
       "detail": "Il precedente scenario rinnovo Roma e la voce svincolato sono superati: Celik è ufficiale alla Juventus fino al 2029.",
       "source": "https://www.juventus.com/it/news/articoli/ufficiale-celik-e-un-nuovo-giocatore-della-juventus",
       "updatedAt": "2026-07-16",
-      "note": "Aggiornato v49: rumor Roma chiusi post ufficialità Juventus."
+      "note": "Aggiornato v49: rumor Roma chiusi post ufficialità Juventus.",
+      "rawEntries": [
+        {
+          "teamId": "juventus",
+          "teamName": "Juventus",
+          "playerName": "Zeki Celik",
+          "role": "D",
+          "inCurrentRoster": "SI",
+          "status": "Acquisto ufficiale",
+          "detail": "Juventus comunica contratto fino al 30/06/2029; supera i rumor rinnovo Roma.",
+          "source": "https://www.juventus.com/it/news/articoli/ufficiale-celik-e-un-nuovo-giocatore-della-juventus",
+          "updatedAt": "2026-07-16",
+          "note": "Inserito v49; chiuse trattative/rumor collegati."
+        }
+      ]
     },
     "ghilardi": {
       "teamId": "roma",
@@ -6914,10 +6939,10 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "soule": {
+    "matias soule": {
       "teamId": "roma",
       "teamName": "Roma",
-      "playerName": "Soule",
+      "playerName": "Matias Soulé",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -7456,17 +7481,31 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "pinamonti": {
+    "andrea pinamonti": {
       "teamId": "sassuolo",
       "teamName": "Sassuolo",
-      "playerName": "Pinamonti",
+      "playerName": "Andrea Pinamonti",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "Interesse da altra squadra",
       "detail": "Interesse Lazio: Nome indicato tra le trattative della Lazio.",
       "source": "https://sport.sky.it/calciomercato/tabellone",
       "updatedAt": "2026-07-10",
-      "note": "Da monitorare"
+      "note": "Da monitorare",
+      "rawEntries": [
+        {
+          "teamId": "lazio",
+          "teamName": "Lazio",
+          "playerName": "Andrea Pinamonti",
+          "role": "",
+          "inCurrentRoster": "NO - voce/movimento",
+          "status": "Trattativa",
+          "detail": "Nome indicato tra le trattative della Lazio.",
+          "source": "https://sport.sky.it/calciomercato/tabellone",
+          "updatedAt": "2026-07-10",
+          "note": ""
+        }
+      ]
     },
     "skjellerup": {
       "teamId": "sassuolo",
@@ -8376,17 +8415,28 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "zaniolo": {
+    "nicolo zaniolo": {
       "teamId": "udinese",
       "teamName": "Udinese",
-      "playerName": "Zaniolo",
+      "playerName": "Nicolò Zaniolo",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "Acquisto ufficiale/riscatto",
       "detail": "Udinese comunica acquisto a titolo definitivo dal Galatasaray; fonte club sostituita v52.",
       "source": "https://www.udinese.it/news/squadra/nicolo-zaniolo-e-bianconero-a-titolo-definitivo",
       "updatedAt": "2026-07-17",
-      "note": "Sostituita fonte Sky con fonte ufficiale Udinese v52."
+      "note": "Sostituita fonte Sky con fonte ufficiale Udinese v52.",
+      "rawEntries": [
+        {
+          "playerName": "Nicolò Zaniolo",
+          "canonicalName": "Nicolò Zaniolo",
+          "team": "Udinese",
+          "status": "Monitoraggio contratto",
+          "detail": "v69 SportMediaset: caso contrattuale da risolvere entro il ritiro; nessuna cessione/rinnovo ufficiale.",
+          "url": "https://www.sportmediaset.mediaset.it/mercato/mercato-ora-per-ora.shtml",
+          "updatedAt": "2026-07-17"
+        }
+      ]
     },
     "f stankovic": {
       "teamId": "venezia",
@@ -9116,11 +9166,11 @@
         "note": ""
       }
     ],
-    "valdepenas": [
+    "victor valdepenas": [
       {
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Valdepenas",
+        "playerName": "Victor Valdepeñas",
         "role": "",
         "inCurrentRoster": "NO - voce/movimento",
         "status": "Trattativa",
@@ -9132,7 +9182,7 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Valdepenas",
+        "playerName": "Victor Valdepeñas",
         "role": "",
         "inCurrentRoster": "NO - voce/movimento",
         "status": "Trattativa",
@@ -9215,15 +9265,6 @@
       "source": "https://sport.sky.it/calciomercato/tabellone",
       "updatedAt": "2026-07-10",
       "note": ""
-    },
-    "mergim vojvoda": {
-      "playerName": "Mergim Vojvoda",
-      "canonicalName": "Mergim Vojvoda",
-      "team": "Udinese",
-      "status": "Visite mediche / non ufficiale",
-      "detail": "v69 Sky: visite a Villa Stuart e cifra 1,3M; manca comunicato Udinese/Como.",
-      "url": "https://sport.sky.it/calciomercato/video/2026/07/17/udinese-vojvoda-visite-mediche-calciomercato-video-1112496",
-      "updatedAt": "2026-07-17"
     },
     "milla": {
       "teamId": "como",
@@ -10240,18 +10281,6 @@
       "updatedAt": "2026-07-10",
       "note": ""
     },
-    "andrea pinamonti": {
-      "teamId": "lazio",
-      "teamName": "Lazio",
-      "playerName": "Andrea Pinamonti",
-      "role": "",
-      "inCurrentRoster": "NO - voce/movimento",
-      "status": "Trattativa",
-      "detail": "Nome indicato tra le trattative della Lazio.",
-      "source": "https://sport.sky.it/calciomercato/tabellone",
-      "updatedAt": "2026-07-10",
-      "note": ""
-    },
     "mario gila": {
       "teamId": "milan",
       "teamName": "Milan",
@@ -10857,15 +10886,6 @@
       "source": "https://sport.sky.it/calciomercato/calciomercato-serie-a-estate-2026-acquisti-ufficiali",
       "updatedAt": "2026-07-10",
       "note": ""
-    },
-    "nicolo zaniolo": {
-      "playerName": "Nicolò Zaniolo",
-      "canonicalName": "Nicolò Zaniolo",
-      "team": "Udinese",
-      "status": "Monitoraggio contratto",
-      "detail": "v69 SportMediaset: caso contrattuale da risolvere entro il ritiro; nessuna cessione/rinnovo ufficiale.",
-      "url": "https://www.sportmediaset.mediaset.it/mercato/mercato-ora-per-ora.shtml",
-      "updatedAt": "2026-07-17"
     },
     "razvan sava": {
       "teamId": "udinese",
@@ -11539,18 +11559,6 @@
       "updatedAt": "2026-07-16",
       "note": "Inserito v48 per regola ufficialità -> rosa/mercato."
     },
-    "zeki celik": {
-      "teamId": "juventus",
-      "teamName": "Juventus",
-      "playerName": "Zeki Celik",
-      "role": "D",
-      "inCurrentRoster": "SI",
-      "status": "Acquisto ufficiale",
-      "detail": "Juventus comunica contratto fino al 30/06/2029; supera i rumor rinnovo Roma.",
-      "source": "https://www.juventus.com/it/news/articoli/ufficiale-celik-e-un-nuovo-giocatore-della-juventus",
-      "updatedAt": "2026-07-16",
-      "note": "Inserito v49; chiuse trattative/rumor collegati."
-    },
     "diego mascardi": {
       "teamId": "torino",
       "teamName": "Torino",
@@ -11888,7 +11896,7 @@
         {
           "teamId": "juventus",
           "teamName": "Juventus",
-          "playerName": "K. Thuram",
+          "playerName": "Khephren Thuram",
           "role": "C",
           "inCurrentRoster": "SI",
           "status": "In rosa",
@@ -28790,7 +28798,7 @@
           {
             "teamId": "sassuolo",
             "teamName": "Sassuolo",
-            "playerName": "Pinamonti",
+            "playerName": "Andrea Pinamonti",
             "role": "A",
             "match": "Sassuolo-Alta Anaunia 22-1 | 16/07/2026",
             "event": "Sassuolo-Alta Anaunia",
@@ -411235,31 +411243,31 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v713",
-    "version": "V715",
+    "id": "sudatori-iosudo-v716",
+    "version": "V716",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-18",
-    "updatedAtTime": "2026-07-18T09:05:00+02:00",
-    "generatedAt": "2026-07-18T09:05:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v69.xlsx",
-    "dedupVersion": "V715-confirmed-aliases",
-    "notes": "V714 aggiornata da Excel V68: Ederson rinnovo ufficiale Atalanta, rumor V68 Di Marzio, alias K. Thuram -> Khephren Thuram con SOS negli XI, controllo duplicati.",
+    "updatedAtTime": "2026-07-18T10:30:00+02:00",
+    "generatedAt": "2026-07-18T10:30:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v71(1).xlsx",
+    "dedupVersion": "V716-confirmed-aliases-2",
+    "notes": "V716 aggiornata da Excel V71: alias confermati V716, SOS V70, trattative Sky V71, Atalanta-Athletic Club aggiunta, nessun nuovo tabellino giocatori.",
     "teams": 20,
     "players": 777,
-    "friendlies": 117,
-    "teamTransferTalks": 452,
-    "injuries": 23,
-    "officialMoves": 366,
-    "sources": 629,
-    "officialTalksFiltered": 159,
+    "friendlies": 118,
+    "teamTransferTalks": 442,
+    "injuries": 24,
+    "officialMoves": 367,
+    "sources": 653,
+    "officialTalksFiltered": 166,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 1,
     "friendlyPlayerStats": 26,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v713-xlsx-v67",
-    "versionNumber": 715,
-    "baseVersion": "V714"
+    "buildTag": "iosudo-v716-xlsx-v71",
+    "versionNumber": 716,
+    "baseVersion": "V715"
   },
   "teams": [
     {
@@ -414961,17 +414969,17 @@
         "formationPosition": "",
         "formationSourcePosition": "",
         "formationLine": "",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalRisk": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injurySeverity": "",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
-        "injuryNote": "",
-        "injuryImpact": "",
+        "formationPhysicalStatus": "Da monitorare / ai box",
+        "formationPhysicalRisk": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
+        "physicalStatus": "Da monitorare / ai box",
+        "injuryStatus": "Da monitorare / ai box",
+        "injuryDetail": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
+        "injurySeverity": "Monitoraggio non ufficiale",
+        "injuryReturn": "Da definire; verificare eventuale comunicato Bologna.",
+        "injurySource": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "injuryUpdatedAt": "2026-07-09",
+        "injuryNote": "Aggiunto SOS v716 da Excel V70.",
+        "injuryImpact": "Basso-medio",
         "formationCheck": "",
         "formationRoleOk": "",
         "formationModuleUsed": "",
@@ -415004,7 +415012,9 @@
           "under": "27",
           "outOfList": ""
         },
-        "listoneMatchMethod": "previous-snapshot"
+        "listoneMatchMethod": "previous-snapshot",
+        "sosFantaFlag": true,
+        "updateFlag": "V716"
       },
       {
         "id": "bologna-de-silvestri",
@@ -422043,7 +422053,7 @@
         "id": "como-vojvoda",
         "teamId": "como",
         "teamName": "Como",
-        "playerName": "Vojvoda",
+        "playerName": "Mergim Vojvoda",
         "role": "D",
         "coach": "Cesc Fabregas",
         "module": "4-2-3-1 / 4-3-3",
@@ -422074,14 +422084,14 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-2-3-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Vojvoda",
-        "disambiguatedName": "Vojvoda",
+        "originalName": "Mergim Vojvoda",
+        "disambiguatedName": "Mergim Vojvoda",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "4994",
-          "playerName": "Vojvoda",
+          "playerName": "Mergim Vojvoda",
           "classicRole": "D",
           "mantraRoles": "Dd/E",
           "realTeam": "COM",
@@ -436812,29 +436822,29 @@
         "formationPosition": "CC",
         "formationSourcePosition": "CC",
         "formationLine": "CC",
-        "formationPhysicalStatus": "SOS",
-        "formationPhysicalRisk": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injurySeverity": "",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
-        "injuryNote": "",
-        "injuryImpact": "",
+        "formationPhysicalStatus": "Da monitorare / stop precampionato",
+        "formationPhysicalRisk": "Sindrome femoro-rotulea al ginocchio destro; lavoro a parte e gestione prudenziale.",
+        "physicalStatus": "Da monitorare / stop precampionato",
+        "injuryStatus": "Da monitorare / stop precampionato",
+        "injuryDetail": "Sindrome femoro-rotulea al ginocchio destro; lavoro a parte e gestione prudenziale.",
+        "injurySeverity": "Sindrome femoro-rotulea / gestione prudenziale",
+        "injuryReturn": "Obiettivo settembre / da confermare con eventuale comunicato Juventus.",
+        "injurySource": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+        "injuryUpdatedAt": "2026-07-17",
+        "injuryNote": "Rafforzato SOS v716 con fonte SOS Fanta.",
+        "injuryImpact": "Medio",
         "formationCheck": "OK - in rosa",
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "K. Thuram",
+        "originalName": "Khephren Thuram",
         "disambiguatedName": "Khephren Thuram",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "5562",
-          "playerName": "Thuram K.",
+          "playerName": "Khephren Thuram",
           "classicRole": "C",
           "mantraRoles": "M/C",
           "realTeam": "JUV",
@@ -436861,7 +436871,7 @@
         "formationReliability": "Media",
         "formationNote": "Sky indicava David, ma non e presente nella rosa file; sostituito con Openda, presente in rosa e coerente come punta.",
         "sosFantaFlag": true,
-        "updateFlag": "V714"
+        "updateFlag": "V716"
       },
       {
         "id": "juventus-koopmeiners",
@@ -442702,7 +442712,7 @@
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "4686",
-          "playerName": "Fofana Y.",
+          "playerName": "Youssouf Fofana",
           "classicRole": "C",
           "mantraRoles": "M/C",
           "realTeam": "MIL",
@@ -444505,7 +444515,7 @@
         "id": "milan-tomori",
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "Tomori",
+        "playerName": "Fikayo Tomori",
         "role": "D",
         "coach": "Ruben Amorim",
         "module": "3-4-2-1 / 3-4-3",
@@ -444536,14 +444546,14 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Tomori",
-        "disambiguatedName": "Tomori",
+        "originalName": "Fikayo Tomori",
+        "disambiguatedName": "Fikayo Tomori",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "4751",
-          "playerName": "Tomori",
+          "playerName": "Fikayo Tomori",
           "classicRole": "D",
           "mantraRoles": "Dc",
           "realTeam": "MIL",
@@ -445155,7 +445165,7 @@
         "id": "milan-rabiot",
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "Rabiot",
+        "playerName": "Adrien Rabiot",
         "role": "C",
         "coach": "Ruben Amorim",
         "module": "3-4-2-1 / 3-4-3",
@@ -445186,8 +445196,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Rabiot",
-        "disambiguatedName": "Rabiot",
+        "originalName": "Adrien Rabiot",
+        "disambiguatedName": "Adrien Rabiot",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -445242,7 +445252,7 @@
         ],
         "listone": {
           "fantacalcioId": "2379",
-          "playerName": "Rabiot",
+          "playerName": "Adrien Rabiot",
           "classicRole": "C",
           "mantraRoles": "C/T",
           "realTeam": "MIL",
@@ -445273,7 +445283,7 @@
         "id": "milan-ricci",
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "Ricci",
+        "playerName": "Samuele Ricci",
         "role": "C",
         "coach": "Ruben Amorim",
         "module": "3-4-2-1 / 3-4-3",
@@ -445304,8 +445314,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Ricci",
-        "disambiguatedName": "Ricci",
+        "originalName": "Samuele Ricci",
+        "disambiguatedName": "Samuele Ricci",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -445634,7 +445644,7 @@
         ],
         "listone": {
           "fantacalcioId": "4686",
-          "playerName": "Fofana Y.",
+          "playerName": "Youssouf Fofana",
           "classicRole": "C",
           "mantraRoles": "M/C",
           "realTeam": "MIL",
@@ -446556,7 +446566,7 @@
         "id": "milan-pulisic",
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "Pulisic",
+        "playerName": "Christian Pulisic",
         "role": "A",
         "coach": "Ruben Amorim",
         "module": "3-4-2-1 / 3-4-3",
@@ -446587,8 +446597,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky/SOS monitoraggio",
-        "originalName": "Pulisic",
-        "disambiguatedName": "Pulisic",
+        "originalName": "Christian Pulisic",
+        "disambiguatedName": "Christian Pulisic",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -446643,7 +446653,7 @@
         ],
         "listone": {
           "fantacalcioId": "2423",
-          "playerName": "Pulisic",
+          "playerName": "Christian Pulisic",
           "classicRole": "C",
           "mantraRoles": "T/A",
           "realTeam": "MIL",
@@ -457908,7 +457918,7 @@
         "id": "roma-soule",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Soule",
+        "playerName": "Matias Soulé",
         "role": "A",
         "coach": "Gian Piero Gasperini",
         "module": "3-4-2-1 / 3-4-1-2",
@@ -457939,8 +457949,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Soule",
-        "disambiguatedName": "Soule",
+        "originalName": "Matias Soulé",
+        "disambiguatedName": "Matias Soulé",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -457949,8 +457959,8 @@
             "item": {
               "teamId": "roma",
               "teamName": "Roma",
-              "playerName": "Matias Soule",
-              "target": "Matias Soule",
+              "playerName": "Matias Soulé",
+              "target": "Matias Soulé",
               "direction": "outgoing",
               "directionLabel": "Uscita",
               "status": "News SOS",
@@ -457997,8 +458007,8 @@
             "item": {
               "teamId": "roma",
               "teamName": "Roma",
-              "playerName": "Matias Soule",
-              "target": "Matias Soule",
+              "playerName": "Matias Soulé",
+              "target": "Matias Soulé",
               "direction": "outgoing",
               "directionLabel": "Uscita/Permanenza",
               "status": "Situazione aperta",
@@ -458093,8 +458103,8 @@
             "item": {
               "teamId": "roma",
               "teamName": "Roma",
-              "playerName": "Matias Soule",
-              "target": "Matias Soule",
+              "playerName": "Matias Soulé",
+              "target": "Matias Soulé",
               "direction": "outgoing",
               "directionLabel": "Uscita",
               "status": "Sacrificabile / in attesa novita",
@@ -458141,8 +458151,8 @@
             "item": {
               "teamId": "roma",
               "teamName": "Roma",
-              "playerName": "Matias Soule",
-              "target": "Matias Soule",
+              "playerName": "Matias Soulé",
+              "target": "Matias Soulé",
               "direction": "outgoing",
               "directionLabel": "Uscita",
               "status": "Sacrificabile / contatti inglesi",
@@ -458187,7 +458197,7 @@
         ],
         "listone": {
           "fantacalcioId": "5734",
-          "playerName": "Soulè",
+          "playerName": "Matias Soulé",
           "classicRole": "A",
           "mantraRoles": "A",
           "realTeam": "ROM",
@@ -461094,7 +461104,7 @@
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "7158",
-          "playerName": "Moro L.",
+          "playerName": "Luca Moro",
           "classicRole": "A",
           "mantraRoles": "Pc",
           "realTeam": "SAS",
@@ -461547,7 +461557,7 @@
         "id": "sassuolo-pinamonti",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "Pinamonti",
+        "playerName": "Andrea Pinamonti",
         "role": "A",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
@@ -461578,14 +461588,14 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-2-3-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Pinamonti",
-        "disambiguatedName": "Pinamonti",
+        "originalName": "Andrea Pinamonti",
+        "disambiguatedName": "Andrea Pinamonti",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "2038",
-          "playerName": "Pinamonti",
+          "playerName": "Andrea Pinamonti",
           "classicRole": "A",
           "mantraRoles": "Pc",
           "realTeam": "SAS",
@@ -466801,15 +466811,15 @@
         "formationSourcePosition": "",
         "formationLine": "",
         "formationPhysicalStatus": "Infortunato",
-        "formationPhysicalRisk": "Frattura al terzo metatarso del piede destro",
+        "formationPhysicalRisk": "Frattura al terzo metatarso del piede destro, comunicata ufficialmente dal club e confermata da SOS Fanta.",
         "physicalStatus": "Infortunato",
         "injuryStatus": "Infortunato",
-        "injuryDetail": "Frattura al terzo metatarso del piede destro",
-        "injurySeverity": "Media",
-        "injuryReturn": "Qualche settimana di stop; salta buona parte della preparazione",
-        "injurySource": "https://www.tuttomercatoweb.com/serie-a/brutte-notizie-udinese-infortunato-acquisti-chakvetadze-2252571",
-        "injuryUpdatedAt": "2026-07-12",
-        "injuryNote": "Nuovo acquisto da monitorare per asta e gerarchie.",
+        "injuryDetail": "Frattura al terzo metatarso del piede destro, comunicata ufficialmente dal club e confermata da SOS Fanta.",
+        "injurySeverity": "Frattura terzo metatarso",
+        "injuryReturn": "Tempi da definire; iter riabilitativo in corso.",
+        "injurySource": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
+        "injuryUpdatedAt": "2026-07-18",
+        "injuryNote": "Fonte primaria Udinese mantenuta; SOS come conferma.",
         "injuryImpact": "Medio",
         "formationCheck": "",
         "formationRoleOk": "",
@@ -466916,7 +466926,9 @@
               "rule": ""
             }
           }
-        ]
+        ],
+        "sosFantaFlag": true,
+        "updateFlag": "V716"
       },
       {
         "id": "udinese-karlstrom",
@@ -468044,7 +468056,7 @@
         "id": "udinese-zaniolo",
         "teamId": "udinese",
         "teamName": "Udinese",
-        "playerName": "Zaniolo",
+        "playerName": "Nicolò Zaniolo",
         "role": "A",
         "coach": "Kosta Runjaic",
         "module": "3-5-2 / 3-4-2-1",
@@ -468075,8 +468087,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-5-2",
         "formationCorrectionNote": "Sky",
-        "originalName": "Zaniolo",
-        "disambiguatedName": "Zaniolo",
+        "originalName": "Nicolò Zaniolo",
+        "disambiguatedName": "Nicolò Zaniolo",
         "newAcquisition": true,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -468085,8 +468097,8 @@
             "item": {
               "teamId": "udinese",
               "teamName": "Udinese",
-              "playerName": "Zaniolo",
-              "target": "Zaniolo",
+              "playerName": "Nicolò Zaniolo",
+              "target": "Nicolò Zaniolo",
               "direction": "incoming",
               "directionLabel": "Entrata",
               "status": "Ufficiale",
@@ -468131,7 +468143,7 @@
         ],
         "listone": {
           "fantacalcioId": "2766",
-          "playerName": "Zaniolo",
+          "playerName": "Nicolò Zaniolo",
           "classicRole": "C",
           "mantraRoles": "T/A",
           "realTeam": "UDI",
@@ -472158,8 +472170,8 @@
       {
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Valdepenas",
-        "target": "Valdepenas",
+        "playerName": "Victor Valdepeñas",
+        "target": "Victor Valdepeñas",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Trattativa/Interesse",
@@ -474666,8 +474678,8 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Valdepenas",
-        "target": "Valdepenas",
+        "playerName": "Victor Valdepeñas",
+        "target": "Victor Valdepeñas",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Interesse: il giocatore gradisce Firenze",
@@ -474801,8 +474813,8 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Victor Valdepenas",
-        "target": "Victor Valdepenas",
+        "playerName": "Victor Valdepeñas",
+        "target": "Victor Valdepeñas",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Interesse: il giocatore gradisce Firenze",
@@ -475071,8 +475083,8 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Victor Valdepenas",
-        "target": "Victor Valdepenas",
+        "playerName": "Victor Valdepeñas",
+        "target": "Victor Valdepeñas",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Accordo verbale club-club",
@@ -475116,8 +475128,8 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Victor Valdepenas",
-        "target": "Victor Valdepenas",
+        "playerName": "Victor Valdepeñas",
+        "target": "Victor Valdepeñas",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Operazione definita / dettagli da limare",
@@ -475844,16 +475856,16 @@
         "playerName": "Christ Inao Oulai",
         "role": "Centrocampista",
         "roleFull": "Centrocampista",
-        "status": "Trattativa molto avanzata / visite-firma attese - NON ufficiale",
+        "status": "Trattativa molto avanzata / visite-firma attese - non ufficiale club",
         "statusLabel": "Trattativa molto avanzata / visite-firma attese - NON ufficiale",
         "fromTo": "Trabzonspor",
         "sourceDate": "2026-07-18",
-        "source": "Sky Sport - Fiorentina/Oulai visite",
+        "source": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
         "url": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "note": "v69 Sky/SportMediaset: operazione data come fatta, calciatore atteso per visite/firma; manca comunicato Fiorentina/deposito, quindi Rose invariata.",
+        "note": "v71 Sky: Oulai arrivato in Italia per visite/firma; manca comunicato Fiorentina/deposito, quindi Rose invariata.",
         "verification": "Rumor / non ufficiale",
         "isOfficial": false,
-        "updateFlag": "V715",
+        "updateFlag": "V716",
         "updatedAt": "2026-07-18",
         "target": "Christ Inao Oulai",
         "roleBrief": "C",
@@ -475861,27 +475873,29 @@
         "date": "2026-07-18",
         "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
         "href": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "sourceName": "Sky Sport - Fiorentina/Oulai visite",
-        "sourceLabel": "Sky Sport - Fiorentina/Oulai visite",
-        "sourceType": "Articolo/live puntuale",
-        "sourceVerification": "OK_MONITORAGGIO_v69",
-        "sourceVerificationNote": "Fonte puntuale v69; non ufficialità club",
+        "sourceName": "Sky Sport - Fiorentina/Oulai visite arrivo Italia",
+        "sourceLabel": "Sky Sport",
+        "sourceType": "Sky Sport articolo puntuale",
+        "sourceVerification": "OK_NON_UFFICIALE_v71",
+        "sourceVerificationNote": "Agg v71: arrivato in Italia per visite/firma; non trasformare in ufficialità senza comunicato/deposito.",
         "sources": [
           {
-            "source": "Sky Sport - Fiorentina/Oulai visite",
+            "source": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
             "url": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
             "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
             "href": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-            "sourceName": "Sky Sport - Fiorentina/Oulai visite",
-            "sourceLabel": "Sky Sport - Fiorentina/Oulai visite",
-            "status": "Trattativa molto avanzata / visite-firma attese - NON ufficiale",
+            "sourceName": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+            "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+            "status": "Trattativa molto avanzata / visite-firma attese - non ufficiale club",
             "updatedAt": "2026-07-18",
-            "sourceType": "Articolo/live puntuale",
-            "sourceVerification": "OK_MONITORAGGIO_v69",
-            "sourceVerificationNote": "Fonte puntuale v69; non ufficialità club",
-            "note": "v69 Sky/SportMediaset: operazione data come fatta, calciatore atteso per visite/firma; manca comunicato Fiorentina/deposito, quindi Rose invariata."
+            "sourceType": "Sky Sport articolo puntuale",
+            "sourceVerification": "OK_NON_UFFICIALE_v71",
+            "sourceVerificationNote": "Agg v71: arrivato in Italia per visite/firma; non trasformare in ufficialità senza comunicato/deposito.",
+            "note": "Agg v71: arrivato in Italia per visite/firma; non trasformare in ufficialità senza comunicato/deposito."
           }
-        ]
+        ],
+        "check": "NO_ROSE: attesa ufficialità club/deposito",
+        "rule": "Rumor/visite/firma: non spostare in Ufficialita senza comunicato club"
       }
     ],
     "frosinone": [
@@ -475982,33 +475996,33 @@
         "target": "Sebastiano Desplanches",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Prestito dal Palermo in Serie A",
-        "updatedAt": "2026-07-14",
-        "date": "2026-07-14",
-        "note": "Gazzetta: Desplanches al Frosinone in prestito dal Palermo; dovrebbe partire dietro Palmisani. Attendere ufficialità per rosa.",
-        "source": "Gazzetta.it live",
-        "url": "Gazzetta.it live",
-        "articleUrl": "https://www.gazzetta.it/Calcio/Mondiali/15-07-2026/notizie-calciomercato-il-live-di-oggi-15-luglio.shtml",
-        "href": "https://www.gazzetta.it/Calcio/Mondiali/15-07-2026/notizie-calciomercato-il-live-di-oggi-15-luglio.shtml",
-        "sourceName": "Gazzetta.it live",
-        "sourceLabel": "Gazzetta.it live",
-        "sourceType": "Live mercato",
-        "sourceVerification": "OK_LIVE",
-        "sourceVerificationNote": "v35: fonte Gazzetta live rafforzata.",
+        "status": "Visite mediche iniziate / prestito in chiusura - non ufficiale club",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "note": "v71 Sky live 18/07: Desplanches a Villa Stuart per visite mediche. Resta trattativa fino al comunicato ufficiale Frosinone/Palermo o deposito.",
+        "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "sourceName": "Sky Sport live 18/07",
+        "sourceLabel": "Sky Sport live",
+        "sourceType": "Sky Sport live mercato",
+        "sourceVerification": "OK_NON_UFFICIALE_v71",
+        "sourceVerificationNote": "Agg v71: visite mediche non sufficienti per ufficialità/Rose.",
         "sources": [
           {
-            "source": "Gazzetta.it live",
-            "url": "Gazzetta.it live",
-            "articleUrl": "https://www.gazzetta.it/Calcio/Mondiali/15-07-2026/notizie-calciomercato-il-live-di-oggi-15-luglio.shtml",
-            "href": "https://www.gazzetta.it/Calcio/Mondiali/15-07-2026/notizie-calciomercato-il-live-di-oggi-15-luglio.shtml",
-            "sourceName": "Gazzetta.it live",
-            "sourceLabel": "Gazzetta.it live",
-            "status": "Prestito dal Palermo in Serie A",
-            "updatedAt": "2026-07-14",
-            "sourceType": "Live mercato",
-            "sourceVerification": "OK_LIVE",
-            "sourceVerificationNote": "v35: fonte Gazzetta live rafforzata.",
-            "note": "Gazzetta: Desplanches al Frosinone in prestito dal Palermo; dovrebbe partire dietro Palmisani. Attendere ufficialità per rosa."
+            "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+            "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+            "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+            "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+            "sourceName": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+            "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+            "status": "Visite mediche iniziate / prestito in chiusura - non ufficiale club",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Sky Sport live mercato",
+            "sourceVerification": "OK_NON_UFFICIALE_v71",
+            "sourceVerificationNote": "Agg v71: visite mediche non sufficienti per ufficialità/Rose.",
+            "note": "Agg v71: visite mediche non sufficienti per ufficialità/Rose."
           }
         ],
         "roleBrief": "P",
@@ -476017,8 +476031,9 @@
         "formula": "",
         "probability": "",
         "reliability": "",
-        "check": "Aggiornare solo se ufficiale",
-        "rule": "Non ufficiale / monitoraggio live mercato"
+        "check": "NO_ROSE: non inserire in rosa prima del comunicato ufficiale",
+        "rule": "Visite mediche non sufficienti per Ufficialita",
+        "updateFlag": "V716"
       },
       {
         "teamId": "frosinone",
@@ -480785,17 +480800,42 @@
         "playerName": "Nico Gonzalez",
         "role": "A",
         "roleFull": "Attaccante",
-        "status": "Uscita possibile / dialoghi Atletico Madrid v68",
+        "status": "Scenario uscita Atletico Madrid - non ufficiale",
         "statusLabel": "Uscita possibile / dialoghi Atletico Madrid v68",
         "fromTo": "Atletico Madrid",
         "sourceDate": "2026-07-17",
-        "source": "Gianluca Di Marzio",
-        "url": "https://www.gianlucadimarzio.com/calciomercato/juventus-lavora-uscite-situazioni-aperte-nico-gonzalez-altletico-miretti-porto-cabal-besiktas-494937",
-        "note": "Dialoghi con Atletico Madrid per uscita; non ufficiale.",
+        "source": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "url": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "note": "v71 Sky: rafforzato scenario uscita Atletico Madrid; nessuna modifica Rose.",
         "verification": "Rumor / non ufficiale",
         "isOfficial": false,
-        "updateFlag": "V714",
-        "updatedAt": "2026-07-18T00:30:00+02:00"
+        "updateFlag": "V716",
+        "updatedAt": "2026-07-18",
+        "target": "Nico Gonzalez",
+        "date": "2026-07-18",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "href": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "sourceName": "Sky Sport - Juventus uscite Nico Gonzalez Cabal",
+        "sourceLabel": "Sky Sport",
+        "sourceType": "Sky Sport articolo puntuale",
+        "sourceVerification": "OK_NON_UFFICIALE_v71",
+        "sourceVerificationNote": "Nessun comunicato club.",
+        "sources": [
+          {
+            "source": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "url": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "href": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "sourceName": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "status": "Scenario uscita Atletico Madrid - non ufficiale",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Sky Sport articolo puntuale",
+            "sourceVerification": "OK_NON_UFFICIALE_v71",
+            "sourceVerificationNote": "Nessun comunicato club.",
+            "note": "Nessun comunicato club."
+          }
+        ]
       },
       {
         "id": "juventus-cabal-v714",
@@ -480806,17 +480846,42 @@
         "playerName": "Cabal",
         "role": "D",
         "roleFull": "Difensore",
-        "status": "Uscita possibile / discorsi Besiktas",
+        "status": "Scenario uscita Besiktas - non ufficiale",
         "statusLabel": "Uscita possibile / discorsi Besiktas",
         "fromTo": "Besiktas",
         "sourceDate": "2026-07-17",
-        "source": "Gianluca Di Marzio",
-        "url": "https://www.gianlucadimarzio.com/calciomercato/juventus-lavora-uscite-situazioni-aperte-nico-gonzalez-altletico-miretti-porto-cabal-besiktas-494937",
-        "note": "Discorsi con Besiktas; non ufficiale.",
+        "source": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "url": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "note": "v71 Sky: rafforzato scenario uscita Besiktas; nessuna modifica Rose.",
         "verification": "Rumor / non ufficiale",
         "isOfficial": false,
-        "updateFlag": "V714",
-        "updatedAt": "2026-07-18T00:30:00+02:00"
+        "updateFlag": "V716",
+        "updatedAt": "2026-07-18",
+        "target": "Cabal",
+        "date": "2026-07-18",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "href": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+        "sourceName": "Sky Sport - Juventus uscite Nico Gonzalez Cabal",
+        "sourceLabel": "Sky Sport",
+        "sourceType": "Sky Sport articolo puntuale",
+        "sourceVerification": "OK_NON_UFFICIALE_v71",
+        "sourceVerificationNote": "Nessun comunicato club.",
+        "sources": [
+          {
+            "source": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "url": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "href": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "sourceName": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+            "status": "Scenario uscita Besiktas - non ufficiale",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Sky Sport articolo puntuale",
+            "sourceVerification": "OK_NON_UFFICIALE_v71",
+            "sourceVerificationNote": "Nessun comunicato club.",
+            "note": "Nessun comunicato club."
+          }
+        ]
       }
     ],
     "lazio": [
@@ -480958,8 +481023,8 @@
       {
         "teamId": "lazio",
         "teamName": "Lazio",
-        "playerName": "Pinamonti",
-        "target": "Pinamonti",
+        "playerName": "Andrea Pinamonti",
+        "target": "Andrea Pinamonti",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Trattativa/Interesse",
@@ -483175,17 +483240,44 @@
         "playerName": "Pierre-Emile Hojbjerg",
         "role": "C",
         "roleFull": "Centrocampista",
-        "status": "Idea di mercato Di Marzio",
+        "status": "Idea/monitoraggio mediana - non ufficiale",
         "statusLabel": "Idea di mercato Di Marzio",
         "fromTo": "Marsiglia",
         "sourceDate": "2026-07-17",
-        "source": "Gianluca Di Marzio",
-        "url": "https://www.gianlucadimarzio.com/calciomercato/milan-hojbjerg-calciomercato-news-494940",
-        "note": "Idea di mercato per il centrocampo; non ufficiale.",
+        "source": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+        "url": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+        "note": "v71 Sky: Milan valuta Hojbjerg per il centrocampo; nessun comunicato club, Rose invariata.",
         "verification": "Rumor / non ufficiale",
         "isOfficial": false,
-        "updateFlag": "V714",
-        "updatedAt": "2026-07-18T00:30:00+02:00"
+        "updateFlag": "V716",
+        "updatedAt": "2026-07-18",
+        "target": "Pierre-Emile Hojbjerg",
+        "date": "2026-07-18",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+        "href": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+        "sourceName": "Sky Sport - Milan idea Hojbjerg",
+        "sourceLabel": "Sky Sport",
+        "sourceType": "Sky Sport articolo puntuale",
+        "sourceVerification": "OK_NON_UFFICIALE_v71",
+        "sourceVerificationNote": "Agg v71: resta idea/monitoraggio, non ufficialità.",
+        "check": "NO_ROSE: idea di mercato",
+        "rule": "Monitoraggio mercato",
+        "sources": [
+          {
+            "source": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+            "url": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+            "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+            "href": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+            "sourceName": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+            "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+            "status": "Idea/monitoraggio mediana - non ufficiale",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Sky Sport articolo puntuale",
+            "sourceVerification": "OK_NON_UFFICIALE_v71",
+            "sourceVerificationNote": "Agg v71: resta idea/monitoraggio, non ufficialità.",
+            "note": "Agg v71: resta idea/monitoraggio, non ufficialità."
+          }
+        ]
       }
     ],
     "monza": [
@@ -485180,17 +485272,18 @@
         "playerName": "Walid Cheddira",
         "role": "A",
         "roleFull": "Attaccante",
-        "status": "Trattativa uscita / Padova in pressing",
+        "status": "SUPERATA DA UFFICIALITA / archiviata V716",
         "statusLabel": "Trattativa uscita / Padova in pressing",
         "fromTo": "Padova",
         "sourceDate": "2026-07-17",
         "source": "Gianluca Di Marzio",
         "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-live-notizie-giornata-17-luglio-2026-494905",
-        "note": "Padova in pressing per Cheddira; rumor uscita autonomo, non ufficiale.",
+        "note": "Padova in pressing per Cheddira; rumor uscita autonomo, non ufficiale. | Archiviata in V716: giocatore con ufficialità attiva.",
         "verification": "Rumor / non ufficiale",
         "isOfficial": false,
-        "updateFlag": "V714",
-        "updatedAt": "2026-07-18T00:30:00+02:00"
+        "updateFlag": "V716_OFFICIAL_FILTER",
+        "updatedAt": "2026-07-18T00:30:00+02:00",
+        "previousStatus": "Trattativa uscita / Padova in pressing"
       }
     ],
     "parma": [
@@ -485784,8 +485877,8 @@
       {
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Matias Soule",
-        "target": "Matias Soule",
+        "playerName": "Matias Soulé",
+        "target": "Matias Soulé",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "News SOS",
@@ -485964,8 +486057,8 @@
       {
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Matias Soule",
-        "target": "Matias Soule",
+        "playerName": "Matias Soulé",
+        "target": "Matias Soulé",
         "direction": "outgoing",
         "directionLabel": "Uscita/Permanenza",
         "status": "Situazione aperta",
@@ -486189,8 +486282,8 @@
       {
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Matias Soule",
-        "target": "Matias Soule",
+        "playerName": "Matias Soulé",
+        "target": "Matias Soulé",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "Sacrificabile / in attesa novita",
@@ -486369,8 +486462,8 @@
       {
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Matias Soule",
-        "target": "Matias Soule",
+        "playerName": "Matias Soulé",
+        "target": "Matias Soulé",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "Sacrificabile / contatti inglesi",
@@ -490342,11 +490435,11 @@
         "target": "Nicolò Zaniolo",
         "direction": "monitor",
         "directionLabel": "Permanenza/Uscita",
-        "status": "Caso contratto da risolvere / monitoraggio - NON cessione ufficiale",
+        "status": "SUPERATA DA UFFICIALITA / archiviata V716",
         "updatedAt": "2026-07-17",
         "date": "2026-07-17",
         "sourceDate": "2026-07-17",
-        "note": "v69 SportMediaset: Udinese fiduciosa di risolvere il caso entro il 22/07; nessuna cessione/rinnovo ufficiale, resta in Rose Udinese e in monitoraggio.",
+        "note": "v69 SportMediaset: Udinese fiduciosa di risolvere il caso entro il 22/07; nessuna cessione/rinnovo ufficiale, resta in Rose Udinese e in monitoraggio. | Archiviata in V716: giocatore con ufficialità attiva.",
         "source": "SportMediaset - mercato ora per ora 17/07",
         "url": "https://www.sportmediaset.mediaset.it/mercato/mercato-ora-per-ora.shtml",
         "articleUrl": "https://www.sportmediaset.mediaset.it/mercato/mercato-ora-per-ora.shtml",
@@ -490378,7 +490471,8 @@
         "check": "Monitorare, non aggiornare Rose",
         "rule": "Monitoraggio post-ufficialità: non è nuova ufficialità né cessione depositata.",
         "isOfficial": false,
-        "updateFlag": "V715"
+        "updateFlag": "V716_OFFICIAL_FILTER",
+        "previousStatus": "Caso contratto da risolvere / monitoraggio - NON cessione ufficiale"
       }
     ],
     "venezia": [
@@ -505852,8 +505946,8 @@
       {
         "teamId": "udinese",
         "teamName": "Udinese",
-        "playerName": "Zaniolo",
-        "target": "Zaniolo",
+        "playerName": "Nicolò Zaniolo",
+        "target": "Nicolò Zaniolo",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -545983,6 +546077,53 @@
         "location": "Centro Bortolotti, Zingonia",
         "time": "",
         "matchKey": "atalanta preseason 2026 27 nerazzurri al lavoro al centro bortolotti"
+      },
+      {
+        "teamId": "atalanta",
+        "teamName": "Atalanta",
+        "playerName": "Atalanta-Athletic Club",
+        "target": "Atalanta-Athletic Club",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Annunciata - fonte ufficiale club",
+        "updatedAt": "2026-08-14",
+        "date": "2026-08-14",
+        "note": "Atalanta ufficiale: Trofeo Achille e Cesare Bortolotti il 14 agosto alle 20:45 alla New Balance Arena; aggiunta v716, non è gara già giocata.",
+        "source": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+        "url": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+        "articleUrl": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+        "href": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+        "sourceName": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+        "sourceLabel": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Fonte ufficiale Atalanta v71; da compilare con minutaggi solo dopo tabellino gara.",
+        "sources": [
+          {
+            "source": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+            "url": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+            "articleUrl": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+            "href": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+            "sourceName": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+            "sourceLabel": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+            "status": "Annunciata - fonte ufficiale club",
+            "updatedAt": "2026-08-14",
+            "sourceType": "Sito ufficiale club",
+            "sourceVerification": "OK_UFFICIALE_CLUB",
+            "sourceVerificationNote": "Fonte ufficiale Atalanta v71; da compilare con minutaggi solo dopo tabellino gara.",
+            "note": "Fonte ufficiale Atalanta v71; da compilare con minutaggi solo dopo tabellino gara."
+          }
+        ],
+        "event": "Atalanta-Athletic Club - Trofeo Achille e Cesare Bortolotti",
+        "retreatStart": "2026-07-06",
+        "retreatEnd": "2026-07-26",
+        "retreatPlace": "Bortolotti di Zingonia / Ciserano",
+        "venue": "New Balance Arena",
+        "location": "New Balance Arena, Bergamo",
+        "time": "20:45",
+        "matchKey": "atalanta 2026 08 14 atalanta athletic club trofeo achille e cesare bortolotti",
+        "hasPlayerStats": false,
+        "updateFlag": "V716"
       }
     ],
     "bologna": [
@@ -551727,9 +551868,9 @@
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "In recupero / programma personalizzato",
-        "updatedAt": "2026-07-08",
-        "date": "2026-07-08",
-        "note": "Fonte ufficiale Bologna; aggiunto in v58 perché assente nel foglio Infortunati.",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "note": "Fonte ufficiale Bologna resta primaria; SOS Fanta aggiunta come conferma/contesto v70.",
         "source": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
         "url": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
         "articleUrl": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
@@ -551737,8 +551878,8 @@
         "sourceName": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
         "sourceLabel": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
         "sourceType": "Infortunio/SOS",
-        "sourceVerification": "",
-        "sourceVerificationNote": "",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Fonte ufficiale Bologna resta primaria; SOS Fanta aggiunta come conferma/contesto v70.",
         "sources": [
           {
             "source": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
@@ -551748,22 +551889,23 @@
             "sourceName": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
             "sourceLabel": "https://www.bolognafc.it/ripresa-delle-attivita-test-atletici/",
             "status": "In recupero / programma personalizzato",
-            "updatedAt": "2026-07-08",
+            "updatedAt": "2026-07-18",
             "sourceType": "Infortunio/SOS",
-            "sourceVerification": "",
-            "sourceVerificationNote": "",
-            "note": "Fonte ufficiale Bologna; aggiunto in v58 perché assente nel foglio Infortunati."
+            "sourceVerification": "OK_UFFICIALE_CLUB",
+            "sourceVerificationNote": "Fonte ufficiale Bologna resta primaria; SOS Fanta aggiunta come conferma/contesto v70.",
+            "note": "Fonte ufficiale Bologna resta primaria; SOS Fanta aggiunta come conferma/contesto v70."
           }
         ],
         "role": "D",
         "injuryStatus": "In recupero / programma personalizzato",
-        "injury": "Infortunio al soleo destro patito con la Svezia; programma personalizzato per 3-4 settimane",
-        "injuryDetail": "Infortunio al soleo destro patito con la Svezia; programma personalizzato per 3-4 settimane",
-        "potentialReturn": "3-4 settimane dal comunicato Bologna",
-        "returnDate": "3-4 settimane dal comunicato Bologna",
-        "injuryReturn": "3-4 settimane dal comunicato Bologna",
+        "injury": "Infortunio al soleo destro; Bologna ufficiale indica programma personalizzato 3-4 settimane, SOS conferma lavoro a parte.",
+        "injuryDetail": "Infortunio al soleo destro; Bologna ufficiale indica programma personalizzato 3-4 settimane, SOS conferma lavoro a parte.",
+        "potentialReturn": "3-4 settimane dal comunicato Bologna; da rivalutare nel ritiro.",
+        "returnDate": "3-4 settimane dal comunicato Bologna; da rivalutare nel ritiro.",
+        "injuryReturn": "3-4 settimane dal comunicato Bologna; da rivalutare nel ritiro.",
         "impact": "Medio: rallenta preparazione estiva e possibile gestione minuti",
-        "injuryImpact": "Medio: rallenta preparazione estiva e possibile gestione minuti"
+        "injuryImpact": "Medio: rallenta preparazione estiva e possibile gestione minuti",
+        "updateFlag": "V716"
       },
       {
         "teamId": "bologna",
@@ -551810,6 +551952,53 @@
         "injuryReturn": "Da valutare / monitorare nel ritiro",
         "impact": "Basso-medio: situazione fisica da monitorare, già presente anche come voce mercato",
         "injuryImpact": "Basso-medio: situazione fisica da monitorare, già presente anche come voce mercato"
+      },
+      {
+        "teamId": "bologna",
+        "teamName": "Bologna",
+        "playerName": "Casale",
+        "target": "Casale",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Da monitorare / ai box",
+        "updatedAt": "2026-07-09",
+        "date": "2026-07-09",
+        "note": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
+        "source": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "url": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "articleUrl": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "href": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "sourceName": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "sourceLabel": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "sourceType": "Infortunio/SOS",
+        "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+        "sourceVerificationNote": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
+        "sources": [
+          {
+            "source": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+            "url": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+            "articleUrl": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+            "href": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+            "sourceName": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+            "sourceLabel": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+            "status": "Da monitorare / ai box",
+            "updatedAt": "2026-07-09",
+            "sourceType": "Infortunio/SOS",
+            "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+            "sourceVerificationNote": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
+            "note": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma."
+          }
+        ],
+        "role": "D",
+        "injuryStatus": "Da monitorare / ai box",
+        "injury": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
+        "injuryDetail": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
+        "potentialReturn": "Da definire; verificare eventuale comunicato Bologna.",
+        "returnDate": "Da definire; verificare eventuale comunicato Bologna.",
+        "injuryReturn": "Da definire; verificare eventuale comunicato Bologna.",
+        "impact": "Basso-medio",
+        "injuryImpact": "Basso-medio",
+        "updateFlag": "V716"
       }
     ],
     "cagliari": [],
@@ -551870,43 +552059,44 @@
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Da monitorare",
-        "updatedAt": "2026-07-14",
-        "date": "2026-07-14",
-        "note": "Flag prudenziale: non cambia gerarchia, solo monitoraggio fisico.",
-        "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-        "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-        "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-        "sourceName": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-        "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
+        "updatedAt": "2026-07-15",
+        "date": "2026-07-15",
+        "note": "Rafforzato v716 con SOS Fanta; non cambia la gerarchia Fiorentina, solo flag prudenziale.",
+        "source": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+        "url": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+        "articleUrl": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+        "href": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+        "sourceName": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+        "sourceLabel": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
         "sourceType": "Infortunio/SOS",
-        "sourceVerification": "",
-        "sourceVerificationNote": "",
+        "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+        "sourceVerificationNote": "Rafforzato v716 con SOS Fanta; non cambia la gerarchia Fiorentina, solo flag prudenziale.",
         "sources": [
           {
-            "source": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-            "url": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-            "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-            "sourceName": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
-            "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/fiorentina-piccolo-problema-mano-de-gea-allenamento-grave-2253655",
+            "source": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+            "url": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+            "articleUrl": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+            "href": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+            "sourceName": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+            "sourceLabel": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
             "status": "Da monitorare",
-            "updatedAt": "2026-07-14",
+            "updatedAt": "2026-07-15",
             "sourceType": "Infortunio/SOS",
-            "sourceVerification": "",
-            "sourceVerificationNote": "",
-            "note": "Flag prudenziale: non cambia gerarchia, solo monitoraggio fisico."
+            "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+            "sourceVerificationNote": "Rafforzato v716 con SOS Fanta; non cambia la gerarchia Fiorentina, solo flag prudenziale.",
+            "note": "Rafforzato v716 con SOS Fanta; non cambia la gerarchia Fiorentina, solo flag prudenziale."
           }
         ],
         "role": "P",
         "injuryStatus": "Da monitorare",
-        "injury": "Piccolo problema alla mano in allenamento; club rassicura, niente di grave.",
-        "injuryDetail": "Piccolo problema alla mano in allenamento; club rassicura, niente di grave.",
-        "potentialReturn": "Ripresa immediata / da ricontrollare nel prossimo allenamento",
-        "returnDate": "Ripresa immediata / da ricontrollare nel prossimo allenamento",
-        "injuryReturn": "Ripresa immediata / da ricontrollare nel prossimo allenamento",
+        "injury": "Piccolo problema alla mano nel finale dell allenamento; valutato subito dallo staff medico e da monitorare nelle ore successive.",
+        "injuryDetail": "Piccolo problema alla mano nel finale dell allenamento; valutato subito dallo staff medico e da monitorare nelle ore successive.",
+        "potentialReturn": "Monitoraggio immediato; nessun tempo di stop ufficiale.",
+        "returnDate": "Monitoraggio immediato; nessun tempo di stop ufficiale.",
+        "injuryReturn": "Monitoraggio immediato; nessun tempo di stop ufficiale.",
         "impact": "Basso",
-        "injuryImpact": "Basso"
+        "injuryImpact": "Basso",
+        "updateFlag": "V716"
       }
     ],
     "frosinone": [],
@@ -551995,44 +552185,45 @@
         "target": "Khephren Thuram",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Da monitorare / out Basilea",
+        "status": "Da monitorare / stop precampionato",
         "updatedAt": "2026-07-17",
         "date": "2026-07-17",
-        "note": "Agg v55: aggiornata indisponibilita su Basilea; attendere eventuale bollettino Juventus.",
-        "source": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-        "url": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-        "href": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-        "sourceName": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-        "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
+        "note": "Rafforzato v716 con SOS Fanta; fonte non ufficiale club, evitare tempi certi senza bollettino Juventus.",
+        "source": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+        "url": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+        "articleUrl": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+        "href": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+        "sourceName": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+        "sourceLabel": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
         "sourceType": "Infortunio/SOS",
-        "sourceVerification": "",
-        "sourceVerificationNote": "",
+        "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+        "sourceVerificationNote": "Rafforzato v716 con SOS Fanta; fonte non ufficiale club, evitare tempi certi senza bollettino Juventus.",
         "sources": [
           {
-            "source": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-            "url": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-            "href": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-            "sourceName": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-            "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/juventus-thuram-out-amichevole-basilea-allenato-2254267",
-            "status": "Da monitorare / out Basilea",
+            "source": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+            "url": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+            "articleUrl": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+            "href": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+            "sourceName": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+            "sourceLabel": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+            "status": "Da monitorare / stop precampionato",
             "updatedAt": "2026-07-17",
             "sourceType": "Infortunio/SOS",
-            "sourceVerification": "",
-            "sourceVerificationNote": "",
-            "note": "Agg v55: aggiornata indisponibilita su Basilea; attendere eventuale bollettino Juventus."
+            "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+            "sourceVerificationNote": "Rafforzato v716 con SOS Fanta; fonte non ufficiale club, evitare tempi certi senza bollettino Juventus.",
+            "note": "Rafforzato v716 con SOS Fanta; fonte non ufficiale club, evitare tempi certi senza bollettino Juventus."
           }
         ],
         "role": "C",
-        "injuryStatus": "Da monitorare / out Basilea",
-        "injury": "Sindrome femoro-rotulea al ginocchio; non si e ancora allenato in gruppo e non viene convocato per Basilea.",
-        "injuryDetail": "Sindrome femoro-rotulea al ginocchio; non si e ancora allenato in gruppo e non viene convocato per Basilea.",
-        "potentialReturn": "Da rivalutare prima della tournée Cina/Australia",
-        "returnDate": "Da rivalutare prima della tournée Cina/Australia",
-        "injuryReturn": "Da rivalutare prima della tournée Cina/Australia",
+        "injuryStatus": "Da monitorare / stop precampionato",
+        "injury": "Sindrome femoro-rotulea al ginocchio destro; lavoro a parte e gestione prudenziale. SOS/Tuttosport segnala rischio stop per il precampionato.",
+        "injuryDetail": "Sindrome femoro-rotulea al ginocchio destro; lavoro a parte e gestione prudenziale. SOS/Tuttosport segnala rischio stop per il precampionato.",
+        "potentialReturn": "Obiettivo settembre / da confermare con eventuale comunicato Juventus.",
+        "returnDate": "Obiettivo settembre / da confermare con eventuale comunicato Juventus.",
+        "injuryReturn": "Obiettivo settembre / da confermare con eventuale comunicato Juventus.",
         "impact": "Medio",
-        "injuryImpact": "Medio"
+        "injuryImpact": "Medio",
+        "updateFlag": "V716"
       }
     ],
     "lazio": [
@@ -552227,8 +552418,8 @@
       {
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "Pulisic",
-        "target": "Pulisic",
+        "playerName": "Christian Pulisic",
+        "target": "Christian Pulisic",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Da monitorare",
@@ -552706,9 +552897,9 @@
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Infortunato",
-        "updatedAt": "2026-07-15",
-        "date": "2026-07-15",
-        "note": "Fonte primaria Udinese inserita v36; evitare doppio conteggio operativo.",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "note": "Fonte primaria Udinese mantenuta; SOS Fanta usata come conferma/rafforzamento v70.",
         "source": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
         "url": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
         "articleUrl": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
@@ -552716,8 +552907,8 @@
         "sourceName": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
         "sourceLabel": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
         "sourceType": "Infortunio/SOS",
-        "sourceVerification": "",
-        "sourceVerificationNote": "",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Fonte primaria Udinese mantenuta; SOS Fanta usata come conferma/rafforzamento v70.",
         "sources": [
           {
             "source": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
@@ -552727,22 +552918,23 @@
             "sourceName": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
             "sourceLabel": "https://www.udinese.it/news/squadra/nota-ufficiale-chakvetadze",
             "status": "Infortunato",
-            "updatedAt": "2026-07-15",
+            "updatedAt": "2026-07-18",
             "sourceType": "Infortunio/SOS",
-            "sourceVerification": "",
-            "sourceVerificationNote": "",
-            "note": "Fonte primaria Udinese inserita v36; evitare doppio conteggio operativo."
+            "sourceVerification": "OK_UFFICIALE_CLUB",
+            "sourceVerificationNote": "Fonte primaria Udinese mantenuta; SOS Fanta usata come conferma/rafforzamento v70.",
+            "note": "Fonte primaria Udinese mantenuta; SOS Fanta usata come conferma/rafforzamento v70."
           }
         ],
         "role": "C/A",
         "injuryStatus": "Infortunato",
-        "injury": "Frattura al terzo metatarso del piede destro, comunicata ufficialmente dal club.",
-        "injuryDetail": "Frattura al terzo metatarso del piede destro, comunicata ufficialmente dal club.",
+        "injury": "Frattura al terzo metatarso del piede destro, comunicata ufficialmente dal club e confermata da SOS Fanta.",
+        "injuryDetail": "Frattura al terzo metatarso del piede destro, comunicata ufficialmente dal club e confermata da SOS Fanta.",
         "potentialReturn": "Tempi da definire; iter riabilitativo in corso.",
         "returnDate": "Tempi da definire; iter riabilitativo in corso.",
         "injuryReturn": "Tempi da definire; iter riabilitativo in corso.",
         "impact": "Medio",
-        "injuryImpact": "Medio"
+        "injuryImpact": "Medio",
+        "updateFlag": "V716"
       }
     ],
     "venezia": []
@@ -553409,7 +553601,7 @@
         "module": "4-2-3-1",
         "formationModule": "4-2-3-1",
         "position": "DD",
-        "playerName": "Vojvoda",
+        "playerName": "Mergim Vojvoda",
         "role": "D",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -554433,7 +554625,11 @@
         "reliability": "Media",
         "note": "Thuram resta in XI ma con nota infortuni SOS gia presente nel file.",
         "alternative": "Da monitorare per recupero fisico",
-        "updatedAt": "2026-07-11"
+        "updatedAt": "2026-07-11",
+        "sosFantaFlag": true,
+        "physicalStatus": "In recupero",
+        "physicalNote": "Problema al polpaccio durante il Mondiale; aveva lavorato a parte.",
+        "updateFlag": "V716"
       }
     ],
     "juventus": [
@@ -554570,9 +554766,9 @@
         "alternative": "",
         "updatedAt": "2026-07-18T00:30:00+02:00",
         "sosFantaFlag": true,
-        "physicalStatus": "SOS",
-        "physicalNote": "SOS attivo da scheda infortunati; alias K. Thuram normalizzato in V714.",
-        "updateFlag": "V714"
+        "physicalStatus": "Da monitorare / stop precampionato",
+        "physicalNote": "Sindrome femoro-rotulea al ginocchio destro; lavoro a parte e gestione prudenziale. SOS/Tuttosport segnala rischio stop per il precampionato.",
+        "updateFlag": "V716"
       },
       {
         "teamId": "juventus",
@@ -555120,7 +555316,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "DC",
-        "playerName": "Tomori",
+        "playerName": "Fikayo Tomori",
         "role": "D",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -555196,7 +555392,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "CC",
-        "playerName": "Rabiot",
+        "playerName": "Adrien Rabiot",
         "role": "C",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -555234,7 +555430,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "TQ",
-        "playerName": "Pulisic",
+        "playerName": "Christian Pulisic",
         "role": "A",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -555243,7 +555439,11 @@
         "reliability": "Media",
         "note": "Modric non presente nella rosa file; sostituito con Leao nello spazio da trequarti/offensivo. Pulisic resta da monitorare per infortunio.",
         "alternative": "Da monitorare per condizione fisica",
-        "updatedAt": "2026-07-11"
+        "updatedAt": "2026-07-11",
+        "sosFantaFlag": true,
+        "physicalStatus": "Da monitorare",
+        "physicalNote": "Trauma/distorsione a caviglia e ginocchio; primi contatti con lo staff medico positivi.",
+        "updateFlag": "V716"
       },
       {
         "teamId": "milan",
@@ -555573,7 +555773,9 @@
         "updatedAt": "2026-07-17",
         "sosFantaFlag": true,
         "physicalStatus": "Infortunato / indisponibile - consulto chirurgico",
-        "physicalRisk": "Problema al ginocchio destro: salta il ritiro pre-campionato; consulto per decidere se intervenire chirurgicamente."
+        "physicalRisk": "Problema al ginocchio destro: salta il ritiro pre-campionato; consulto per decidere se intervenire chirurgicamente.",
+        "physicalNote": "Problema al ginocchio destro: salta il ritiro pre-campionato; consulto per decidere se intervenire chirurgicamente.",
+        "updateFlag": "V716"
       },
       {
         "teamId": "napoli",
@@ -556071,7 +556273,11 @@
         "reliability": "Media",
         "note": "XI Sky coerente; Wesley rimane con nota recupero infortuni SOS.",
         "alternative": "",
-        "updatedAt": "2026-07-11"
+        "updatedAt": "2026-07-11",
+        "sosFantaFlag": true,
+        "physicalStatus": "In recupero",
+        "physicalNote": "Lesione muscolare/problema inguine-adduttore; programma specifico di recupero.",
+        "updateFlag": "V716"
       },
       {
         "teamId": "roma",
@@ -556081,7 +556287,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "TQ",
-        "playerName": "Soule",
+        "playerName": "Matias Soulé",
         "role": "A",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -556282,7 +556488,11 @@
         "reliability": "Media",
         "note": "Garcia non presente nella rosa file; sostituito con Doig come terzino sinistro. Schema 4-2-3-1 coerente con profili offensivi.",
         "alternative": "",
-        "updatedAt": "2026-07-11"
+        "updatedAt": "2026-07-11",
+        "sosFantaFlag": true,
+        "physicalStatus": "Infortunato/da valutare",
+        "physicalNote": "Lascia il ritiro per infortunio; comunicato Sassuolo segnalato da SOS Fanta.",
+        "updateFlag": "V716"
       },
       {
         "teamId": "sassuolo",
@@ -556330,7 +556540,7 @@
         "module": "4-2-3-1",
         "formationModule": "4-2-3-1",
         "position": "PC",
-        "playerName": "Pinamonti",
+        "playerName": "Andrea Pinamonti",
         "role": "A",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -556733,7 +556943,7 @@
         "module": "3-5-2",
         "formationModule": "3-5-2",
         "position": "PC",
-        "playerName": "Zaniolo",
+        "playerName": "Nicolò Zaniolo",
         "role": "A",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -560876,6 +561086,69 @@
       "url": "https://sport.sky.it/calciomercato/2026/07/17/cagliari-belotti-calciomercato-news",
       "usage": "Fonte secondaria puntuale v69: Belotti non supera le visite e Cagliari non lo tessera; rafforza uscita/non tesserato già presente, senza nuova Rose.",
       "updatedAt": "2026-07-18"
+    },
+    {
+      "source": "SOS Fanta - Khephren Thuram Juventus ginocchio",
+      "url": "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+      "usage": "Rafforzamento v70: sindrome femoro-rotulea, lavoro a parte e prudenza in precampionato.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "SOS Fanta - Khephren Thuram stop precampionato",
+      "url": "https://www.sosfanta.com/news/juve-prevista-ripartenza-graduale-per-yildiz-thuram-tempi-non-brevi-ecco-quando-tornera/",
+      "usage": "Rafforzamento v70: possibile stop precampionato europeo e rientro da monitorare verso settembre.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "SOS Fanta - De Gea piccolo problema mano",
+      "url": "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+      "usage": "Rafforzamento v70: problema mano in ritiro Fiorentina, monitoraggio prudenziale.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "SOS Fanta - Chakvetadze Udinese",
+      "url": "https://www.sosfanta.com/news/udinese-infortunio-in-nazionale-per-chakvetadze-il-comunicato-del-club-e-le-sue-condizioni/",
+      "usage": "Conferma v70 della nota ufficiale Udinese sulla frattura al terzo metatarso.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "SOS Fanta - Bologna Holm e Casale",
+      "url": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+      "usage": "Rafforzamento v70: Holm a parte e Casale ai box; Casale aggiunto come monitoraggio non ufficiale.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "Sky Sport live 18/07",
+      "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+      "usage": "Live mercato v71: Oulai arrivato, Desplanches visite, riepilogo Traore/Gosens/Cuenca gia gestiti; usato solo come supporto non ufficiale.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "Atalanta sito ufficiale - Trofeo Bortolotti Athletic Club",
+      "url": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+      "usage": "Fonte ufficiale club v71: aggiunta amichevole Atalanta-Athletic Club del 14/08 ore 20:45.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "Sky Sport - Juventus uscite Nico Gonzalez Cabal",
+      "url": "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+      "usage": "Fonte secondaria v71: uscite Juventus da monitorare, senza modifica Rose.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
+    },
+    {
+      "source": "Sky Sport - Milan idea Hojbjerg",
+      "url": "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news",
+      "usage": "Fonte secondaria v71: idea Milan per Hojbjerg, senza modifica Rose.",
+      "updatedAt": "2026-07-18",
+      "updateFlag": "V716"
     }
   ],
   "transfermarktRumors": [
@@ -564076,7 +564349,7 @@
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
-          "playerName": "Pinamonti",
+          "playerName": "Andrea Pinamonti",
           "role": "A",
           "match": "Sassuolo-Alta Anaunia 22-1 | 16/07/2026",
           "event": "Sassuolo-Alta Anaunia",
@@ -564659,7 +564932,7 @@
           {
             "teamId": "sassuolo",
             "teamName": "Sassuolo",
-            "playerName": "Pinamonti",
+            "playerName": "Andrea Pinamonti",
             "role": "A",
             "match": "Sassuolo-Alta Anaunia 22-1 | 16/07/2026",
             "event": "Sassuolo-Alta Anaunia",
@@ -584500,33 +584773,30 @@
     }
   },
   "manifest": {
-    "version": "V715",
-    "versionNumber": 715,
-    "updatedAt": "2026-07-18T09:05:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v69.xlsx",
-    "baseVersion": "V714",
+    "version": "V716",
+    "versionNumber": 716,
+    "updatedAt": "2026-07-18T10:30:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v71(1).xlsx",
+    "baseVersion": "V715",
     "players": 777,
     "teams": 20,
     "officialMoves": 367,
     "teamTransferTalks": 442,
     "transfermarktRumors": 47,
-    "injuries": 23,
-    "friendlies": 117,
+    "injuries": 24,
+    "friendlies": 118,
     "friendlyMatchDetails": 1,
     "friendlyPlayerStats": 26,
-    "sources": 644,
+    "sources": 653,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
     "activeOfficialRumors": 0,
-    "closedTalksV714": 10,
-    "replacedTalksV714": 10,
-    "addedTalksV714": 9,
-    "filteredTransfermarktRumorsV714": 1,
-    "duplicateCandidatesV714": 10,
-    "confirmedAliasesV715": 10,
-    "duplicateCandidatesV715": 10,
-    "sourcesAddedV715": 6,
-    "friendliesFilteredOutV715": 1
+    "confirmedAliasesV716": 10,
+    "duplicateCandidatesV716": 10,
+    "sourcesAddedV716": 9,
+    "friendliesFilteredOutV716": 2,
+    "friendliesAddedV716": 1,
+    "xiSosRows": 6
   },
   "friendliesFilteredOutV715": [
     {
@@ -585328,5 +585598,727 @@
     "Basilea-Juventus aggiornata con convocati ufficiali ma senza tabellino: gara non giocata al controllo mattutino.",
     "Nessun nuovo dettaglio giocatori se mancano minuti/gol/autogol/infortuni gara.",
     "Sassuolo-Alta Anaunia resta l unica scheda con playerStats."
-  ]
+  ],
+  "marketNotesMergedV716": [
+    {
+      "fromKey": "mergim vojvoda",
+      "intoKey": "mergim vojvoda"
+    },
+    {
+      "fromKey": "andrea pinamonti",
+      "intoKey": "andrea pinamonti"
+    },
+    {
+      "fromKey": "nicolo zaniolo",
+      "intoKey": "nicolo zaniolo"
+    },
+    {
+      "fromKey": "zeki celik",
+      "intoKey": "zeki celik"
+    }
+  ],
+  "friendliesFilteredOutV716": [
+    {
+      "team": "Bologna",
+      "event": "Bologna-Arminia Bielefeld",
+      "reason": "Controllo 18/07 10:11: gara non ancora giocata; nessun minutaggio inserito.",
+      "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio"
+    },
+    {
+      "team": "Juventus",
+      "event": "Basilea-Juventus",
+      "reason": "Controllo 18/07 10:11: gara non ancora giocata; nessun minutaggio inserito.",
+      "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio"
+    }
+  ],
+  "activeOfficialRumorsAuditV716": [],
+  "officialTalksFilteredV716": [
+    {
+      "team": "napoli",
+      "player": "Walid Cheddira"
+    },
+    {
+      "team": "udinese",
+      "player": "Nicolò Zaniolo"
+    }
+  ],
+  "duplicateNameCandidatesV716": [
+    {
+      "variantA": "Lucumi",
+      "variantB": "Jhon Lucumi",
+      "where": "Bologna rosa / mercato"
+    },
+    {
+      "variantA": "De Gea",
+      "variantB": "David De Gea",
+      "where": "Fiorentina rosa / SOS"
+    },
+    {
+      "variantA": "Dossena",
+      "variantB": "Alberto Dossena",
+      "where": "Como rosa / SOS"
+    },
+    {
+      "variantA": "Bernabe",
+      "variantB": "Adrian Bernabe",
+      "where": "Parma rosa / mercato"
+    },
+    {
+      "variantA": "Lauriente",
+      "variantB": "Armand Laurienté",
+      "where": "Sassuolo rosa / mercato"
+    },
+    {
+      "variantA": "Chakvetadze",
+      "variantB": "Giorgi Chakvetadze",
+      "where": "Udinese rosa / SOS"
+    },
+    {
+      "variantA": "De Silvestri",
+      "variantB": "Lorenzo De Silvestri",
+      "where": "Bologna rosa / ufficialità"
+    },
+    {
+      "variantA": "Di Gregorio",
+      "variantB": "Michele Di Gregorio",
+      "where": "Juventus rosa / listone"
+    },
+    {
+      "variantA": "Di Lorenzo",
+      "variantB": "Giovanni Di Lorenzo",
+      "where": "Napoli rosa / listone"
+    },
+    {
+      "variantA": "Frattesi",
+      "variantB": "Davide Frattesi",
+      "where": "Inter rosa / Juventus mercato"
+    }
+  ],
+  "confirmedDuplicateAliasesV716": [
+    {
+      "from": "Vojvoda",
+      "to": "Mergim Vojvoda",
+      "scope": "Como rosa / Udinese trattative"
+    },
+    {
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo",
+      "scope": "Udinese ufficialità / rosa / monitoraggio"
+    },
+    {
+      "from": "Celik",
+      "to": "Zeki Celik",
+      "scope": "Juventus ufficialità / mercato"
+    },
+    {
+      "from": "Valdepenas",
+      "to": "Victor Valdepeñas",
+      "scope": "Bologna / Fiorentina mercato"
+    },
+    {
+      "from": "Soulé",
+      "to": "Matias Soulé",
+      "scope": "Roma rosa / mercato"
+    },
+    {
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti",
+      "scope": "Sassuolo rosa / mercato / amichevoli"
+    },
+    {
+      "from": "Pulisic",
+      "to": "Christian Pulisic",
+      "scope": "Milan SOS / mercato"
+    },
+    {
+      "from": "Ricci",
+      "to": "Samuele Ricci",
+      "scope": "Milan / Atalanta mercato"
+    },
+    {
+      "from": "Rabiot",
+      "to": "Adrien Rabiot",
+      "scope": "Milan rosa / mercato"
+    },
+    {
+      "from": "Tomori",
+      "to": "Fikayo Tomori",
+      "scope": "Milan / Juventus mercato"
+    }
+  ],
+  "aliasesNormalizedV716": [
+    {
+      "path": "/playersByTeam/como[14]/playerName",
+      "from": "Vojvoda",
+      "to": "Mergim Vojvoda"
+    },
+    {
+      "path": "/playersByTeam/como[14]/originalName",
+      "from": "Vojvoda",
+      "to": "Mergim Vojvoda"
+    },
+    {
+      "path": "/playersByTeam/como[14]/disambiguatedName",
+      "from": "Vojvoda",
+      "to": "Mergim Vojvoda"
+    },
+    {
+      "path": "/playersByTeam/como[14]/listone/playerName",
+      "from": "Vojvoda",
+      "to": "Mergim Vojvoda"
+    },
+    {
+      "path": "/playersByTeam/juventus[20]/originalName",
+      "from": "K. Thuram",
+      "to": "Khephren Thuram"
+    },
+    {
+      "path": "/playersByTeam/juventus[20]/listone/playerName",
+      "from": "Thuram K.",
+      "to": "Khephren Thuram"
+    },
+    {
+      "path": "/playersByTeam/lecce[26]/listone/playerName",
+      "from": "Fofana Y.",
+      "to": "Youssouf Fofana"
+    },
+    {
+      "path": "/playersByTeam/milan[12]/playerName",
+      "from": "Tomori",
+      "to": "Fikayo Tomori"
+    },
+    {
+      "path": "/playersByTeam/milan[12]/originalName",
+      "from": "Tomori",
+      "to": "Fikayo Tomori"
+    },
+    {
+      "path": "/playersByTeam/milan[12]/disambiguatedName",
+      "from": "Tomori",
+      "to": "Fikayo Tomori"
+    },
+    {
+      "path": "/playersByTeam/milan[12]/listone/playerName",
+      "from": "Tomori",
+      "to": "Fikayo Tomori"
+    },
+    {
+      "path": "/playersByTeam/milan[20]/playerName",
+      "from": "Rabiot",
+      "to": "Adrien Rabiot"
+    },
+    {
+      "path": "/playersByTeam/milan[20]/originalName",
+      "from": "Rabiot",
+      "to": "Adrien Rabiot"
+    },
+    {
+      "path": "/playersByTeam/milan[20]/disambiguatedName",
+      "from": "Rabiot",
+      "to": "Adrien Rabiot"
+    },
+    {
+      "path": "/playersByTeam/milan[20]/listone/playerName",
+      "from": "Rabiot",
+      "to": "Adrien Rabiot"
+    },
+    {
+      "path": "/playersByTeam/milan[21]/playerName",
+      "from": "Ricci",
+      "to": "Samuele Ricci"
+    },
+    {
+      "path": "/playersByTeam/milan[21]/originalName",
+      "from": "Ricci",
+      "to": "Samuele Ricci"
+    },
+    {
+      "path": "/playersByTeam/milan[21]/disambiguatedName",
+      "from": "Ricci",
+      "to": "Samuele Ricci"
+    },
+    {
+      "path": "/playersByTeam/milan[24]/listone/playerName",
+      "from": "Fofana Y.",
+      "to": "Youssouf Fofana"
+    },
+    {
+      "path": "/playersByTeam/milan[33]/playerName",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/playersByTeam/milan[33]/originalName",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/playersByTeam/milan[33]/disambiguatedName",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/playersByTeam/milan[33]/listone/playerName",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/playerName",
+      "from": "Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/originalName",
+      "from": "Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/disambiguatedName",
+      "from": "Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[0]/item/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[0]/item/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[1]/item/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[1]/item/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[3]/item/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[3]/item/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[4]/item/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/_iosudoMarketRows[4]/item/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/roma[25]/listone/playerName",
+      "from": "Soulè",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/playersByTeam/sassuolo[37]/listone/playerName",
+      "from": "Moro L.",
+      "to": "Luca Moro"
+    },
+    {
+      "path": "/playersByTeam/sassuolo[43]/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/playersByTeam/sassuolo[43]/originalName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/playersByTeam/sassuolo[43]/disambiguatedName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/playersByTeam/sassuolo[43]/listone/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/playersByTeam/udinese[38]/playerName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/playersByTeam/udinese[38]/originalName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/playersByTeam/udinese[38]/disambiguatedName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/playersByTeam/udinese[38]/_iosudoMarketRows[0]/item/playerName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/playersByTeam/udinese[38]/_iosudoMarketRows[0]/item/target",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/playersByTeam/udinese[38]/listone/playerName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/formationsByTeam/como[1]/playerName",
+      "from": "Vojvoda",
+      "to": "Mergim Vojvoda"
+    },
+    {
+      "path": "/formationsByTeam/milan[2]/playerName",
+      "from": "Tomori",
+      "to": "Fikayo Tomori"
+    },
+    {
+      "path": "/formationsByTeam/milan[6]/playerName",
+      "from": "Rabiot",
+      "to": "Adrien Rabiot"
+    },
+    {
+      "path": "/formationsByTeam/milan[8]/playerName",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/formationsByTeam/roma[8]/playerName",
+      "from": "Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/formationsByTeam/sassuolo[10]/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/formationsByTeam/udinese[9]/playerName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/injuriesByTeam/milan[1]/playerName",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/injuriesByTeam/milan[1]/target",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/officialMovesByTeam/udinese[5]/playerName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/officialMovesByTeam/udinese[5]/target",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/bologna[4]/playerName",
+      "from": "Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/bologna[4]/target",
+      "from": "Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[4]/playerName",
+      "from": "Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[4]/target",
+      "from": "Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[7]/playerName",
+      "from": "Victor Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[7]/target",
+      "from": "Victor Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[13]/playerName",
+      "from": "Victor Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[13]/target",
+      "from": "Victor Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[14]/playerName",
+      "from": "Victor Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/fiorentina[14]/target",
+      "from": "Victor Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/lazio[3]/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/lazio[3]/target",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[7]/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[7]/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[11]/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[11]/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[16]/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[16]/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[20]/playerName",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/teamTransferTalksByTeam/roma[20]/target",
+      "from": "Matias Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/marketNotesByPlayer/vojvoda/playerName",
+      "from": "Vojvoda",
+      "to": "Mergim Vojvoda"
+    },
+    {
+      "path": "/marketNotesByPlayer/tomori/playerName",
+      "from": "Tomori",
+      "to": "Fikayo Tomori"
+    },
+    {
+      "path": "/marketNotesByPlayer/rabiot/playerName",
+      "from": "Rabiot",
+      "to": "Adrien Rabiot"
+    },
+    {
+      "path": "/marketNotesByPlayer/ricci/playerName",
+      "from": "Ricci",
+      "to": "Samuele Ricci"
+    },
+    {
+      "path": "/marketNotesByPlayer/pulisic/playerName",
+      "from": "Pulisic",
+      "to": "Christian Pulisic"
+    },
+    {
+      "path": "/marketNotesByPlayer/celik/playerName",
+      "from": "Celik",
+      "to": "Zeki Celik"
+    },
+    {
+      "path": "/marketNotesByPlayer/soule/playerName",
+      "from": "Soule",
+      "to": "Matias Soulé"
+    },
+    {
+      "path": "/marketNotesByPlayer/pinamonti/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/marketNotesByPlayer/zaniolo/playerName",
+      "from": "Zaniolo",
+      "to": "Nicolò Zaniolo"
+    },
+    {
+      "path": "/marketNotesByPlayer/valdepenas[0]/playerName",
+      "from": "Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/marketNotesByPlayer/valdepenas[1]/playerName",
+      "from": "Valdepenas",
+      "to": "Victor Valdepeñas"
+    },
+    {
+      "path": "/marketNotesByPlayer/khephren thuram/rawEntries[0]/playerName",
+      "from": "K. Thuram",
+      "to": "Khephren Thuram"
+    },
+    {
+      "path": "/friendlyPlayerStatsByMatch/sassuolo 2026 07 16 sassuolo alta anaunia/players[9]/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/friendlyPlayerStatsByTeam/sassuolo/sassuolo 2026 07 16 sassuolo alta anaunia/players[9]/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    },
+    {
+      "path": "/friendliesMatchLogsByTeam/sassuolo[0]/playerStats[9]/playerName",
+      "from": "Pinamonti",
+      "to": "Andrea Pinamonti"
+    }
+  ],
+  "injuriesPatchedV716": [
+    {
+      "player": "Casale",
+      "action": "added"
+    },
+    {
+      "player": "Khephren Thuram",
+      "action": "updated"
+    },
+    {
+      "player": "David De Gea",
+      "action": "updated"
+    },
+    {
+      "player": "Giorgi Chakvetadze",
+      "action": "updated"
+    },
+    {
+      "player": "Emil Holm",
+      "action": "updated"
+    }
+  ],
+  "playersPatchedV716": [
+    {
+      "player": "Casale",
+      "updated": true
+    },
+    {
+      "player": "Khephren Thuram",
+      "updated": true
+    },
+    {
+      "player": "David De Gea",
+      "updated": false
+    },
+    {
+      "player": "Giorgi Chakvetadze",
+      "updated": true
+    },
+    {
+      "player": "Emil Holm",
+      "updated": false
+    }
+  ],
+  "teamTransferTalksPatchedV716": [
+    {
+      "player": "Christ Inao Oulai",
+      "action": "updated"
+    },
+    {
+      "player": "Sebastiano Desplanches",
+      "action": "updated"
+    },
+    {
+      "player": "Nico Gonzalez",
+      "action": "updated"
+    },
+    {
+      "player": "Cabal",
+      "action": "updated"
+    },
+    {
+      "player": "Pierre-Emile Hojbjerg",
+      "action": "updated"
+    }
+  ],
+  "friendliesPatchedV716": [
+    {
+      "team": "Atalanta",
+      "event": "Atalanta-Athletic Club",
+      "action": "added",
+      "source": "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti"
+    }
+  ],
+  "sourcesAddedV716": [
+    "https://www.sosfanta.com/news/juve-thuram-anche-ieri-a-parte-out-domani-cosa-filtra-verso-lamichevole-successiva/",
+    "https://www.sosfanta.com/news/juve-prevista-ripartenza-graduale-per-yildiz-thuram-tempi-non-brevi-ecco-quando-tornera/",
+    "https://www.sosfanta.com/news/le-ultime-dal-ritiro-della-fiorentina-da-kean-in-gruppo-al-piccolo-infortunio-per-de-gea/",
+    "https://www.sosfanta.com/news/udinese-infortunio-in-nazionale-per-chakvetadze-il-comunicato-del-club-e-le-sue-condizioni/",
+    "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+    "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+    "https://www.atalanta.it/news/atalanta-athletic-club-per-il-trofeo-achille-e-cesare-bortolotti",
+    "https://sport.sky.it/calciomercato/2026/07/17/juve-calciomercato-news-oggi",
+    "https://sport.sky.it/calciomercato/2026/07/17/milan-hojbjerg-calciomercato-news"
+  ],
+  "updateLogV716": [
+    {
+      "area": "Duplicati",
+      "detail": "Applicati 10 alias confermati dall utente: Vojvoda/Zaniolo/Celik/Valdepenas/Soulé/Pinamonti/Pulisic/Ricci/Rabiot/Tomori verso nome canonico."
+    },
+    {
+      "area": "Infortunati/SOS",
+      "detail": "Aggiunto Casale come monitoraggio Bologna; rafforzati Thuram, De Gea, Chakvetadze e Holm dal V70."
+    },
+    {
+      "area": "Trattative",
+      "detail": "Rafforzate Oulai, Desplanches, Nico Gonzalez, Cabal e Hojbjerg da Sky V71; nessuna ufficialità o rosa aggiornata."
+    },
+    {
+      "area": "Amichevoli",
+      "detail": "Aggiunta Atalanta-Athletic Club Trofeo Bortolotti 14/08 20:45; niente tabellino giocatori perché gara futura."
+    }
+  ],
+  "rulesMarketV716": {
+    "officialityPrecedence": "I giocatori con ufficialità attiva non devono restare in rumor/trattative attive; eventuali righe vengono archiviate in officialTalksFilteredV716.",
+    "medicalVisits": "Visite mediche/firma attesa non bastano per spostare in Ufficialita o Rose."
+  },
+  "rulesPlayersV716": {
+    "aliases": "Applicati alias confermati dall utente in V715 e V716; gli altri candidati restano in duplicateNameCandidatesV716 in attesa di conferma."
+  },
+  "rulesFriendliesV716": {
+    "futureMatches": "Le amichevoli future vengono aggiunte al calendario ma senza minutaggi/gol finché non c e tabellino giocatori."
+  }
 }

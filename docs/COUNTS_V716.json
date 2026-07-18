@@ -1,0 +1,142 @@
+{
+  "version": "V716",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v71(1).xlsx",
+  "generatedAt": "2026-07-18T10:30:00+02:00",
+  "counts": {
+    "version": "V716",
+    "versionNumber": 716,
+    "updatedAt": "2026-07-18T10:30:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v71(1).xlsx",
+    "baseVersion": "V715",
+    "players": 777,
+    "teams": 20,
+    "officialMoves": 367,
+    "teamTransferTalks": 442,
+    "transfermarktRumors": 47,
+    "injuries": 24,
+    "friendlies": 118,
+    "friendlyMatchDetails": 1,
+    "friendlyPlayerStats": 26,
+    "sources": 653,
+    "duplicateExactPlayers": 0,
+    "duplicatePlayerIds": 0,
+    "activeOfficialRumors": 0,
+    "confirmedAliasesV716": 10,
+    "duplicateCandidatesV716": 10,
+    "sourcesAddedV716": 9,
+    "friendliesFilteredOutV716": 2,
+    "friendliesAddedV716": 1,
+    "xiSosRows": 6
+  },
+  "checks": {
+    "duplicateExactPlayers": 0,
+    "duplicatePlayerIds": 0,
+    "activeOfficialRumors": 0,
+    "casaleSosAdded": true,
+    "atalantaAthleticAdded": true,
+    "confirmedAliasesV716": [
+      {
+        "from": "Vojvoda",
+        "to": "Mergim Vojvoda",
+        "scope": "Como rosa / Udinese trattative"
+      },
+      {
+        "from": "Zaniolo",
+        "to": "Nicolò Zaniolo",
+        "scope": "Udinese ufficialità / rosa / monitoraggio"
+      },
+      {
+        "from": "Celik",
+        "to": "Zeki Celik",
+        "scope": "Juventus ufficialità / mercato"
+      },
+      {
+        "from": "Valdepenas",
+        "to": "Victor Valdepeñas",
+        "scope": "Bologna / Fiorentina mercato"
+      },
+      {
+        "from": "Soulé",
+        "to": "Matias Soulé",
+        "scope": "Roma rosa / mercato"
+      },
+      {
+        "from": "Pinamonti",
+        "to": "Andrea Pinamonti",
+        "scope": "Sassuolo rosa / mercato / amichevoli"
+      },
+      {
+        "from": "Pulisic",
+        "to": "Christian Pulisic",
+        "scope": "Milan SOS / mercato"
+      },
+      {
+        "from": "Ricci",
+        "to": "Samuele Ricci",
+        "scope": "Milan / Atalanta mercato"
+      },
+      {
+        "from": "Rabiot",
+        "to": "Adrien Rabiot",
+        "scope": "Milan rosa / mercato"
+      },
+      {
+        "from": "Tomori",
+        "to": "Fikayo Tomori",
+        "scope": "Milan / Juventus mercato"
+      }
+    ],
+    "duplicateCandidatesV716": [
+      {
+        "variantA": "Lucumi",
+        "variantB": "Jhon Lucumi",
+        "where": "Bologna rosa / mercato"
+      },
+      {
+        "variantA": "De Gea",
+        "variantB": "David De Gea",
+        "where": "Fiorentina rosa / SOS"
+      },
+      {
+        "variantA": "Dossena",
+        "variantB": "Alberto Dossena",
+        "where": "Como rosa / SOS"
+      },
+      {
+        "variantA": "Bernabe",
+        "variantB": "Adrian Bernabe",
+        "where": "Parma rosa / mercato"
+      },
+      {
+        "variantA": "Lauriente",
+        "variantB": "Armand Laurienté",
+        "where": "Sassuolo rosa / mercato"
+      },
+      {
+        "variantA": "Chakvetadze",
+        "variantB": "Giorgi Chakvetadze",
+        "where": "Udinese rosa / SOS"
+      },
+      {
+        "variantA": "De Silvestri",
+        "variantB": "Lorenzo De Silvestri",
+        "where": "Bologna rosa / ufficialità"
+      },
+      {
+        "variantA": "Di Gregorio",
+        "variantB": "Michele Di Gregorio",
+        "where": "Juventus rosa / listone"
+      },
+      {
+        "variantA": "Di Lorenzo",
+        "variantB": "Giovanni Di Lorenzo",
+        "where": "Napoli rosa / listone"
+      },
+      {
+        "variantA": "Frattesi",
+        "variantB": "Davide Frattesi",
+        "where": "Inter rosa / Juventus mercato"
+      }
+    ]
+  }
+}
