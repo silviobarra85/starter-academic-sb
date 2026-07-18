@@ -63,7 +63,7 @@
     "bakker": {
       "teamId": "atalanta",
       "teamName": "Atalanta",
-      "playerName": "Bakker",
+      "playerName": "Mitchel Bakker",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -1350,7 +1350,7 @@
     "a cuenca": {
       "teamId": "como",
       "teamName": "Como",
-      "playerName": "A. Cuenca",
+      "playerName": "Andres Cuenca",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "Acquisto ufficiale/riscatto",
@@ -1793,7 +1793,7 @@
     "n paz": {
       "teamId": "como",
       "teamName": "Como",
-      "playerName": "N. Paz",
+      "playerName": "Nico Paz",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -2545,7 +2545,7 @@
     "b kone": {
       "teamId": "frosinone",
       "teamName": "Frosinone",
-      "playerName": "B. Kone",
+      "playerName": "Ben Lhassine Kone",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -3293,7 +3293,7 @@
     "a stankovic": {
       "teamId": "inter",
       "teamName": "Inter",
-      "playerName": "A. Stankovic",
+      "playerName": "Aleksandar Stankovic",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -4913,7 +4913,7 @@
     "f terracciano": {
       "teamId": "milan",
       "teamName": "Milan",
-      "playerName": "F. Terracciano",
+      "playerName": "Filippo Terracciano",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -5310,7 +5310,7 @@
     "azzi": {
       "teamId": "monza",
       "teamName": "Monza",
-      "playerName": "Azzi",
+      "playerName": "Paulo Azzi",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6701,7 +6701,7 @@
     "mancini": {
       "teamId": "roma",
       "teamName": "Roma",
-      "playerName": "Mancini",
+      "playerName": "Gianluca Mancini",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6797,7 +6797,7 @@
     "cristante": {
       "teamId": "roma",
       "teamName": "Roma",
-      "playerName": "Cristante",
+      "playerName": "Bryan Cristante",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6933,7 +6933,7 @@
     "r vaz": {
       "teamId": "roma",
       "teamName": "Roma",
-      "playerName": "R. Vaz",
+      "playerName": "Robinio Vaz",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -11894,6 +11894,16 @@
       "detail": "v69 TMW: Summerville in bilico, salgono Philogene ed El Ouahdi; nessun comunicato club.",
       "url": "https://www.tuttomercatoweb.com/",
       "updatedAt": "2026-07-18"
+    },
+    "atalanta|candas fiogbe": {
+      "teamId": "atalanta",
+      "teamName": "Atalanta",
+      "playerName": "Candas Fiogbe",
+      "status": "Ceduto ufficiale / non slot attivo",
+      "detail": "Atalanta comunica la cessione a titolo definitivo di Candas Fiogbe all Athens Kallithea; operazione U23, nessun impatto sulla rosa fantacalcio attiva.",
+      "source": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+      "updatedAt": "2026-07-18",
+      "note": ""
     }
   },
   "teamUpdates": [
@@ -11939,7 +11949,7 @@
       "team": "Atalanta"
     },
     {
-      "playerName": "Bakker",
+      "playerName": "Mitchel Bakker",
       "team": "Atalanta"
     },
     {
@@ -12095,7 +12105,7 @@
       "team": "Como"
     },
     {
-      "playerName": "N. Paz",
+      "playerName": "Nico Paz",
       "team": "Como"
     },
     {
@@ -12218,7 +12228,7 @@
       "team": "Frosinone"
     },
     {
-      "playerName": "B. Kone",
+      "playerName": "Ben Lhassine Kone",
       "team": "Frosinone"
     },
     {
@@ -43080,7 +43090,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": "8",
-      "C1": "Bakker",
+      "C1": "Mitchel Bakker",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -82429,7 +82439,7 @@
       "Codice_squadra": "COM",
       "Origine_scheda": "COM",
       "Riga_origine": "6",
-      "C1": "A. Cuenca",
+      "C1": "Andres Cuenca",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -83320,7 +83330,7 @@
       "C17": "",
       "C18": "",
       "C19": "TQ",
-      "C20": "N. Paz",
+      "C20": "Nico Paz",
       "C21": "A",
       "C22": "OK",
       "C23": "Sky",
@@ -86353,7 +86363,7 @@
       "Codice_squadra": "COM",
       "Origine_scheda": "COM",
       "Riga_origine": "42",
-      "C1": "N. Paz",
+      "C1": "Nico Paz",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -103785,7 +103795,7 @@
       "Categoria": "storico",
       "C1": "Inter",
       "C2": "INT",
-      "C3": "Mancini",
+      "C3": "Gianluca Mancini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Roma",
@@ -106430,8 +106440,8 @@
       "Riga_origine": "5",
       "Categoria": "storico",
       "C1": "Como",
-      "C2": "A. Cuenca",
-      "C3": "A. Cuenca",
+      "C2": "Andres Cuenca",
+      "C3": "Andres Cuenca",
       "C4": "D",
       "C5": "Acquisto ufficiale/riscatto",
       "C6": "Acquisto ufficiale: Acquisto/riscatto indicato nel tabellone Sky.",
@@ -109185,7 +109195,7 @@
       "Categoria": "storico",
       "C1": "Inter",
       "C2": "INT",
-      "C3": "Mancini",
+      "C3": "Gianluca Mancini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Roma",
@@ -123367,7 +123377,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": 8,
-      "C1": "Bakker",
+      "C1": "Mitchel Bakker",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -162716,7 +162726,7 @@
       "Codice_squadra": "COM",
       "Origine_scheda": "COM",
       "Riga_origine": 6,
-      "C1": "A. Cuenca",
+      "C1": "Andres Cuenca",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -163607,7 +163617,7 @@
       "C17": "",
       "C18": "",
       "C19": "TQ",
-      "C20": "N. Paz",
+      "C20": "Nico Paz",
       "C21": "A",
       "C22": "OK",
       "C23": "Sky",
@@ -166640,7 +166650,7 @@
       "Codice_squadra": "COM",
       "Origine_scheda": "COM",
       "Riga_origine": 42,
-      "C1": "N. Paz",
+      "C1": "Nico Paz",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -189748,7 +189758,7 @@
       "Codice_squadra": "FRO",
       "Origine_scheda": "FRO",
       "Riga_origine": 12,
-      "C1": "B. Kone",
+      "C1": "Ben Lhassine Kone",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -216409,7 +216419,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Mancini",
+      "C66": "Gianluca Mancini",
       "C67": "D",
       "C68": "Roma",
       "C69": "Trattativa/Interesse",
@@ -216453,7 +216463,7 @@
       "Codice_squadra": "INT",
       "Origine_scheda": "INT",
       "Riga_origine": 15,
-      "C1": "A. Stankovic",
+      "C1": "Aleksandar Stankovic",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -216913,7 +216923,7 @@
       "C22": "",
       "C23": "",
       "C24": "Entrata",
-      "C25": "Mancini",
+      "C25": "Gianluca Mancini",
       "C26": "D",
       "C27": "Trattativa/Interesse",
       "C28": "Roma",
@@ -268664,7 +268674,7 @@
       "Codice_squadra": "MIL",
       "Origine_scheda": "MIL",
       "Riga_origine": 10,
-      "C1": "F. Terracciano",
+      "C1": "Filippo Terracciano",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -281744,7 +281754,7 @@
       "Codice_squadra": "MON",
       "Origine_scheda": "MON",
       "Riga_origine": 9,
-      "C1": "Azzi",
+      "C1": "Paulo Azzi",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -282199,7 +282209,7 @@
       "C17": "",
       "C18": "",
       "C19": "ES",
-      "C20": "Azzi",
+      "C20": "Paulo Azzi",
       "C21": "D",
       "C22": "OK",
       "C23": "Sky",
@@ -321112,7 +321122,7 @@
       "C17": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
       "C18": "",
       "C19": "DCD",
-      "C20": "Mancini",
+      "C20": "Gianluca Mancini",
       "C21": "D",
       "C22": "OK",
       "C23": "Sky",
@@ -321529,7 +321539,7 @@
       "Codice_squadra": "ROM",
       "Origine_scheda": "ROM",
       "Riga_origine": 11,
-      "C1": "Mancini",
+      "C1": "Gianluca Mancini",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -321548,7 +321558,7 @@
       "C17": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
       "C18": "",
       "C19": "CC",
-      "C20": "Cristante",
+      "C20": "Bryan Cristante",
       "C21": "C",
       "C22": "OK",
       "C23": "Sky",
@@ -322401,7 +322411,7 @@
       "Codice_squadra": "ROM",
       "Origine_scheda": "ROM",
       "Riga_origine": 19,
-      "C1": "Cristante",
+      "C1": "Bryan Cristante",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -323273,7 +323283,7 @@
       "Codice_squadra": "ROM",
       "Origine_scheda": "ROM",
       "Riga_origine": 27,
-      "C1": "R. Vaz",
+      "C1": "Robinio Vaz",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -393352,7 +393362,7 @@
       "Categoria": "storico",
       "C1": "Inter",
       "C2": "INT",
-      "C3": "Mancini",
+      "C3": "Gianluca Mancini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Roma",
@@ -395997,8 +396007,8 @@
       "Riga_origine": 5,
       "Categoria": "storico",
       "C1": "Como",
-      "C2": "A. Cuenca",
-      "C3": "A. Cuenca",
+      "C2": "Andres Cuenca",
+      "C3": "Andres Cuenca",
       "C4": "D",
       "C5": "Acquisto ufficiale/riscatto",
       "C6": "Acquisto ufficiale: Acquisto/riscatto indicato nel tabellone Sky.",
@@ -398752,7 +398762,7 @@
       "Categoria": "storico",
       "C1": "Inter",
       "C2": "INT",
-      "C3": "Mancini",
+      "C3": "Gianluca Mancini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Roma",
@@ -407558,7 +407568,7 @@
     {
       "type": "Trattativa",
       "team": "Roma/Como",
-      "item": "Assane Diao, Cristante, Mancini",
+      "item": "Assane Diao, Bryan Cristante, Gianluca Mancini",
       "direction": "Varie",
       "date": "2026-07-15",
       "status": "Diao monitoraggio uscita; Cristante/Mancini rinnovi vicini",
@@ -411366,31 +411376,31 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v720",
-    "version": "V720",
+    "id": "sudatori-iosudo-v721",
+    "version": "V721",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-18",
-    "updatedAtTime": "2026-07-18T14:20:00+02:00",
-    "generatedAt": "2026-07-18T14:20:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v75.xlsx",
+    "updatedAtTime": "2026-07-18T14:45:00+02:00",
+    "generatedAt": "2026-07-18T14:45:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v76.xlsx",
     "dedupVersion": "V720-confirmed-aliases-v75",
-    "notes": "V720 aggiornata da Excel V75: rinnovi ufficiali Roma Cristante/Mancini, Bologna-Arminia 0-4 con tabellino giocatori, alias confermati V720, Esposito resta disambiguato e non globale.",
+    "notes": "V721 aggiornata da Excel V76: Candas Fiogbe ufficiale U23 Atalanta non slot attivo, Oulai/Desplanches aggiornati come visite terminate non ufficiali, Basilea-Juventus pre-gara senza minutaggi, 10 alias confermati, scheda giocatore con riepilogo amichevoli giocate.",
     "teams": 20,
-    "players": 780,
+    "players": 781,
     "friendlies": 118,
-    "teamTransferTalks": 434,
+    "teamTransferTalks": 432,
     "injuries": 24,
-    "officialMoves": 364,
-    "sources": 667,
+    "officialMoves": 362,
+    "sources": 671,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 2,
     "friendlyPlayerStats": 47,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v720-xlsx-v75",
-    "versionNumber": 720,
-    "baseVersion": "V719",
+    "buildTag": "iosudo-v721-xlsx-v76",
+    "versionNumber": 721,
+    "baseVersion": "V720",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
@@ -411418,7 +411428,16 @@
     "sourcesAddedV720": 3,
     "officialTalksClosedV720": 5,
     "playersAddedV720": 3,
-    "friendliesPatchedV720": 1
+    "friendliesPatchedV720": 1,
+    "updateType": "excel-v76-fiogbe-player-friendlies-summary-aliases-v76",
+    "confirmedAliasesV721": 10,
+    "duplicateCandidatesV721": 10,
+    "sourcesAddedV721": 4,
+    "officialMovesPatchedV721": 1,
+    "playersAddedV721": 1,
+    "teamTransferTalksPatchedV721": 2,
+    "friendliesPatchedV721": 2,
+    "playerFriendliesSummaryEnabled": true
   },
   "teams": [
     {
@@ -411914,7 +411933,7 @@
         "id": "atalanta-bakker",
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Bakker",
+        "playerName": "Mitchel Bakker",
         "role": "D",
         "coach": "Maurizio Sarri",
         "module": "4-3-3",
@@ -411945,8 +411964,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Bakker",
-        "disambiguatedName": "Bakker",
+        "originalName": "Mitchel Bakker",
+        "disambiguatedName": "Mitchel Bakker",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -414766,6 +414785,48 @@
             }
           }
         ]
+      },
+      {
+        "id": "atalanta-candas-fiogbe",
+        "teamId": "atalanta",
+        "teamName": "Atalanta",
+        "playerName": "Candas Fiogbe",
+        "role": "A",
+        "coach": "Maurizio Sarri",
+        "module": "3-4-2-1 / precampionato",
+        "rosterSource": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+        "note": "Atalanta U23: cessione ufficiale a titolo definitivo all Athens Kallithea; inserito solo per coerenza ufficialita, non slot attivo.",
+        "updatedAt": "2026-07-18",
+        "flag": "",
+        "marketStatus": "Ceduto ufficiale / U23 non slot attivo",
+        "marketDetail": "Cessione definitiva Atalanta U23 -> Athens Kallithea; non falsare rosa fantacalcistica prima squadra.",
+        "marketSource": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+        "marketNote": "Non considerare in asta: U23 ceduto all estero.",
+        "probableXi": false,
+        "formationPosition": "",
+        "formationSourcePosition": "",
+        "formationLine": "",
+        "formationPhysicalStatus": "Fuori rosa attiva / ceduto",
+        "formationPhysicalRisk": "Nessuna indisponibilita Serie A da monitorare dopo cessione estera.",
+        "physicalStatus": "Fuori rosa attiva / ceduto",
+        "injuryStatus": "Fuori rosa attiva / ceduto",
+        "injuryDetail": "Nessuna indisponibilita Serie A da monitorare dopo cessione estera.",
+        "injurySeverity": "",
+        "injuryReturn": "",
+        "injurySource": "",
+        "injuryUpdatedAt": "2026-07-18",
+        "injuryNote": "",
+        "injuryImpact": "Non slot attivo",
+        "formationCheck": "OK - ceduto U23",
+        "formationRoleOk": "OK",
+        "formationModuleUsed": "Precampionato",
+        "formationCorrectionNote": "Fonte ufficiale Atalanta U23",
+        "originalName": "Candas Fiogbe",
+        "disambiguatedName": "Candas Fiogbe",
+        "newAcquisition": false,
+        "qualityControl": "Inserito v76 da ufficialita Atalanta U23",
+        "nonActiveFantasySlot": true,
+        "outOfActiveRoster": true
       }
     ],
     "bologna": [
@@ -421404,7 +421465,7 @@
         "id": "como-a-cuenca",
         "teamId": "como",
         "teamName": "Como",
-        "playerName": "A. Cuenca",
+        "playerName": "Andres Cuenca",
         "role": "D",
         "coach": "Cesc Fabregas",
         "module": "4-2-3-1 / 4-3-3",
@@ -421435,8 +421496,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "A. Cuenca",
-        "disambiguatedName": "A. Cuenca",
+        "originalName": "Andres Cuenca",
+        "disambiguatedName": "Andres Cuenca",
         "newAcquisition": true,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -424215,7 +424276,7 @@
         "id": "como-n-paz",
         "teamId": "como",
         "teamName": "Como",
-        "playerName": "N. Paz",
+        "playerName": "Nico Paz",
         "role": "A",
         "coach": "Cesc Fabregas",
         "module": "4-2-3-1 / 4-3-3",
@@ -424246,8 +424307,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-2-3-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "N. Paz",
-        "disambiguatedName": "N. Paz",
+        "originalName": "Nico Paz",
+        "disambiguatedName": "Nico Paz",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -428459,7 +428520,7 @@
         "id": "frosinone-b-kone",
         "teamId": "frosinone",
         "teamName": "Frosinone",
-        "playerName": "B. Kone",
+        "playerName": "Ben Lhassine Kone",
         "role": "C",
         "coach": "Massimiliano Alvini",
         "module": "3-5-2 / 4-3-3",
@@ -428490,8 +428551,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "B. Kone",
-        "disambiguatedName": "B. Kone",
+        "originalName": "Ben Lhassine Kone",
+        "disambiguatedName": "Ben Lhassine Kone",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": []
@@ -433772,7 +433833,7 @@
         "id": "inter-a-stankovic",
         "teamId": "inter",
         "teamName": "Inter",
-        "playerName": "A. Stankovic",
+        "playerName": "Aleksandar Stankovic",
         "role": "C",
         "coach": "Cristian Chivu",
         "module": "3-5-2",
@@ -433803,8 +433864,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "A. Stankovic",
-        "disambiguatedName": "A. Stankovic",
+        "originalName": "Aleksandar Stankovic",
+        "disambiguatedName": "Aleksandar Stankovic",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -444431,7 +444492,7 @@
         "id": "milan-f-terracciano",
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "F. Terracciano",
+        "playerName": "Filippo Terracciano",
         "role": "D",
         "coach": "Ruben Amorim",
         "module": "3-4-2-1 / 3-4-3",
@@ -444462,8 +444523,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "F. Terracciano",
-        "disambiguatedName": "F. Terracciano",
+        "originalName": "Filippo Terracciano",
+        "disambiguatedName": "Filippo Terracciano",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": []
@@ -447605,7 +447666,7 @@
         "id": "monza-azzi",
         "teamId": "monza",
         "teamName": "Monza",
-        "playerName": "Azzi",
+        "playerName": "Paulo Azzi",
         "role": "D",
         "coach": "Ivan Juric",
         "module": "3-4-2-1 / 3-4-3",
@@ -447636,14 +447697,14 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Azzi",
-        "disambiguatedName": "Azzi",
+        "originalName": "Paulo Azzi",
+        "disambiguatedName": "Paulo Azzi",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "6231",
-          "playerName": "Azzi",
+          "playerName": "Paulo Azzi",
           "classicRole": "D",
           "mantraRoles": "Ds/E",
           "realTeam": "CRE",
@@ -456956,7 +457017,7 @@
         "id": "roma-mancini",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Mancini",
+        "playerName": "Gianluca Mancini",
         "role": "D",
         "coach": "Gian Piero Gasperini",
         "module": "3-4-2-1 / 3-4-1-2",
@@ -456987,8 +457048,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Mancini",
-        "disambiguatedName": "Mancini",
+        "originalName": "Gianluca Mancini",
+        "disambiguatedName": "Gianluca Mancini",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -457091,7 +457152,7 @@
         ],
         "listone": {
           "fantacalcioId": "2296",
-          "playerName": "Mancini",
+          "playerName": "Gianluca Mancini",
           "classicRole": "D",
           "mantraRoles": "Dc",
           "realTeam": "ROM",
@@ -457516,7 +457577,7 @@
         "id": "roma-cristante",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Cristante",
+        "playerName": "Bryan Cristante",
         "role": "C",
         "coach": "Gian Piero Gasperini",
         "module": "3-4-2-1 / 3-4-1-2",
@@ -457547,8 +457608,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Cristante",
-        "disambiguatedName": "Cristante",
+        "originalName": "Bryan Cristante",
+        "disambiguatedName": "Bryan Cristante",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -457651,7 +457712,7 @@
         ],
         "listone": {
           "fantacalcioId": "779",
-          "playerName": "Cristante",
+          "playerName": "Bryan Cristante",
           "classicRole": "C",
           "mantraRoles": "M/C",
           "realTeam": "ROM",
@@ -458126,7 +458187,7 @@
         "id": "roma-r-vaz",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "R. Vaz",
+        "playerName": "Robinio Vaz",
         "role": "A",
         "coach": "Gian Piero Gasperini",
         "module": "3-4-2-1 / 3-4-1-2",
@@ -458157,8 +458218,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "R. Vaz",
-        "disambiguatedName": "R. Vaz",
+        "originalName": "Robinio Vaz",
+        "disambiguatedName": "Robinio Vaz",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -475042,51 +475103,6 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Victor Valdepeñas",
-        "target": "Victor Valdepeñas",
-        "direction": "incoming",
-        "directionLabel": "Entrata",
-        "status": "Interesse: il giocatore gradisce Firenze",
-        "updatedAt": "2026-07-12",
-        "date": "2026-07-12",
-        "note": "Idea parallela a Oso: Real vorrebbe tenerlo in ritiro; possibile formula con recompra. | Fonte puntuale TMW: Valdepenas gradisce la Fiorentina; non ufficiale.",
-        "source": "TuttoMercatoWeb",
-        "url": "TuttoMercatoWeb",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-arrivo-oso-valdepenas-vorrebbe-raggiungere-grosso-club-2252846",
-        "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-arrivo-oso-valdepenas-vorrebbe-raggiungere-grosso-club-2252846",
-        "sourceName": "TuttoMercatoWeb",
-        "sourceLabel": "TuttoMercatoWeb",
-        "sourceType": "Articolo TMW puntuale",
-        "sourceVerification": "OK_ARTICOLO_TMW",
-        "sourceVerificationNote": "Articolo TMW puntuale: Valdepenas vorrebbe arrivare alla Fiorentina e avrebbe rifiutato altri club.",
-        "sources": [
-          {
-            "source": "TuttoMercatoWeb",
-            "url": "TuttoMercatoWeb",
-            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/fiorentina-arrivo-oso-valdepenas-vorrebbe-raggiungere-grosso-club-2252846",
-            "href": "https://www.tuttomercatoweb.com/serie-a/fiorentina-arrivo-oso-valdepenas-vorrebbe-raggiungere-grosso-club-2252846",
-            "sourceName": "TuttoMercatoWeb",
-            "sourceLabel": "TuttoMercatoWeb",
-            "status": "Interesse: il giocatore gradisce Firenze",
-            "updatedAt": "2026-07-12",
-            "sourceType": "Articolo TMW puntuale",
-            "sourceVerification": "OK_ARTICOLO_TMW",
-            "sourceVerificationNote": "Articolo TMW puntuale: Valdepenas vorrebbe arrivare alla Fiorentina e avrebbe rifiutato altri club.",
-            "note": "Idea parallela a Oso: Real vorrebbe tenerlo in ritiro; possibile formula con recompra. | Fonte puntuale TMW: Valdepenas gradisce la Fiorentina; non ufficiale."
-          }
-        ],
-        "roleBrief": "D",
-        "role": "Terzino sinistro",
-        "origin": "Real Madrid",
-        "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "Monitorare",
-        "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
-      },
-      {
-        "teamId": "fiorentina",
-        "teamName": "Fiorentina",
         "playerName": "Arokodare",
         "target": "Arokodare",
         "direction": "incoming",
@@ -476081,32 +476097,32 @@
         "team": "Fiorentina",
         "teamId": "fiorentina",
         "section": "Trattative",
-        "direction": "incoming",
+        "direction": "Entrata",
         "playerName": "Christ Inao Oulai",
         "role": "Centrocampista",
         "roleFull": "Centrocampista",
-        "status": "Trattativa molto avanzata / visite-firma attese - non ufficiale club",
+        "status": "Visite mediche terminate / attesa comunicato club - non ufficiale",
         "statusLabel": "Trattativa molto avanzata / visite-firma attese - NON ufficiale",
         "fromTo": "Trabzonspor",
         "sourceDate": "2026-07-18",
-        "source": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "url": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "note": "v71 Sky: Oulai arrivato in Italia per visite/firma; manca comunicato Fiorentina/deposito, quindi Rose invariata.",
+        "source": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+        "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+        "note": "Di Marzio 18/07: Oulai ha terminato le visite mediche con la Fiorentina. Resta trattativa: finche manca comunicato ufficiale Fiorentina/deposito, Rose invariata.",
         "verification": "Rumor / non ufficiale",
         "isOfficial": false,
         "updateFlag": "V716",
         "updatedAt": "2026-07-18",
         "target": "Christ Inao Oulai",
-        "roleBrief": "C",
+        "roleBrief": "Centrocampista",
         "origin": "Trabzonspor",
         "date": "2026-07-18",
-        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "href": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "sourceName": "Sky Sport - Fiorentina/Oulai visite arrivo Italia",
+        "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+        "href": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+        "sourceName": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
         "sourceLabel": "Sky Sport",
-        "sourceType": "Sky Sport articolo puntuale",
-        "sourceVerification": "OK_NON_UFFICIALE_v71",
-        "sourceVerificationNote": "Agg v71: arrivato in Italia per visite/firma; non trasformare in ufficialità senza comunicato/deposito.",
+        "sourceType": "Gianluca Di Marzio",
+        "sourceVerification": "OK_NON_UFFICIALE_v76",
+        "sourceVerificationNote": "Agg v76: rafforzata riga esistente, nessun duplicato.",
         "sources": [
           {
             "source": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
@@ -476124,7 +476140,11 @@
           }
         ],
         "check": "NO_ROSE: attesa ufficialità club/deposito",
-        "rule": "Rumor/visite/firma: non spostare in Ufficialita senza comunicato club"
+        "rule": "",
+        "teamName": "Fiorentina",
+        "directionLabel": "Entrata",
+        "roleDetail": "",
+        "fantasyImpact": ""
       }
     ],
     "frosinone": [
@@ -476133,21 +476153,21 @@
         "teamName": "Frosinone",
         "playerName": "Sebastiano Desplanches",
         "target": "Sebastiano Desplanches",
-        "direction": "incoming",
+        "direction": "Entrata",
         "directionLabel": "Entrata",
-        "status": "Operazione in chiusura",
-        "updatedAt": "2026-07-14",
-        "date": "2026-07-14",
-        "note": "Di Marzio: Frosinone in chiusura a sorpresa per Desplanches in prestito; resta trattativa fino al comunicato ufficiale.",
-        "source": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-        "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-        "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-        "href": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-        "sourceName": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+        "status": "Visite mediche terminate / prestito in chiusura - non ufficiale club",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "note": "Di Marzio 18/07: Desplanches ha terminato le visite mediche con il Frosinone. Resta trattativa fino al comunicato ufficiale Frosinone/Palermo o deposito.",
+        "source": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+        "url": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+        "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+        "href": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+        "sourceName": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
         "sourceLabel": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-        "sourceType": "Articolo specifico",
-        "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "Fonte puntuale Di Marzio v25",
+        "sourceType": "Gianluca Di Marzio",
+        "sourceVerification": "OK_NON_UFFICIALE_v76",
+        "sourceVerificationNote": "Agg v76: aggiornata riga esistente, nessun duplicato.",
         "sources": [
           {
             "source": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
@@ -476164,14 +476184,16 @@
             "note": "Di Marzio: Frosinone in chiusura a sorpresa per Desplanches in prestito; resta trattativa fino al comunicato ufficiale."
           }
         ],
-        "roleBrief": "P",
+        "roleBrief": "Portiere",
         "role": "Portiere",
         "origin": "Palermo",
         "formula": "",
         "probability": "",
         "reliability": "",
         "check": "Aggiornare rosa se ufficiale",
-        "rule": "Data logica 14/07: nuova svolta, operazione in chiusura."
+        "rule": "",
+        "roleDetail": "",
+        "fantasyImpact": ""
       },
       {
         "teamId": "frosinone",
@@ -478362,8 +478384,8 @@
       {
         "teamId": "inter",
         "teamName": "Inter",
-        "playerName": "Trevoh Chalobah / Ordonez / Lucumi / Mancini",
-        "target": "Trevoh Chalobah / Ordonez / Lucumi / Mancini",
+        "playerName": "Trevoh Chalobah / Ordonez / Lucumi / Gianluca Mancini",
+        "target": "Trevoh Chalobah / Ordonez / Lucumi / Gianluca Mancini",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Alternative difesa - Mancini chiuso post-rinnovo Roma",
@@ -482559,51 +482581,6 @@
         "reliability": "",
         "check": "Da monitorare",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita; se fonte live non ufficiale, mantenere in Trattative."
-      },
-      {
-        "teamId": "milan",
-        "teamName": "Milan",
-        "playerName": "Warren Bondo",
-        "target": "Warren Bondo",
-        "direction": "outgoing",
-        "directionLabel": "Uscita",
-        "status": "Sondaggio Stoccarda / mercato in uscita",
-        "updatedAt": "2026-07-16",
-        "date": "2026-07-16",
-        "note": "Bondo resta in uscita/monitoraggio: dopo Wolverhampton, TMW segnala anche sondaggio Stoccarda. Nessun comunicato club, rosa invariata.",
-        "source": "TMW Serie A live",
-        "url": "TMW Serie A live",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/",
-        "href": "https://www.tuttomercatoweb.com/serie-a/",
-        "sourceName": "TMW Serie A live",
-        "sourceLabel": "TMW Serie A live",
-        "sourceType": "Fonte giornalistica mercato",
-        "sourceVerification": "Non ufficialità club",
-        "sourceVerificationNote": "Non modificare Rose.",
-        "sources": [
-          {
-            "source": "TMW Serie A live",
-            "url": "TMW Serie A live",
-            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/",
-            "href": "https://www.tuttomercatoweb.com/serie-a/",
-            "sourceName": "TMW Serie A live",
-            "sourceLabel": "TMW Serie A live",
-            "status": "Sondaggio Stoccarda / mercato in uscita",
-            "updatedAt": "2026-07-16",
-            "sourceType": "Fonte giornalistica mercato",
-            "sourceVerification": "Non ufficialità club",
-            "sourceVerificationNote": "Non modificare Rose.",
-            "note": "Bondo resta in uscita/monitoraggio: dopo Wolverhampton, TMW segnala anche sondaggio Stoccarda. Nessun comunicato club, rosa invariata."
-          }
-        ],
-        "roleBrief": "C",
-        "role": "Centrocampista",
-        "origin": "Milan -> Wolverhampton/Stoccarda",
-        "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "Da monitorare",
-        "rule": "Non aggiornare rosa senza accordo o ufficialita."
       },
       {
         "teamId": "milan",
@@ -491564,6 +491541,52 @@
         "verification": "Fonte ufficiale club",
         "updateFlag": "V714",
         "updatedAt": "2026-07-18T00:30:00+02:00"
+      },
+      {
+        "teamId": "atalanta",
+        "teamName": "Atalanta",
+        "playerName": "Candas Fiogbe",
+        "target": "Candas Fiogbe",
+        "direction": "outgoing",
+        "directionLabel": "Uscita U23",
+        "status": "Ufficiale",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-17",
+        "note": "Operazione Under 23: tracciata per coerenza del master, fuori dagli slot fantacalcistici attivi.",
+        "source": "Atalanta sito ufficiale",
+        "url": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+        "articleUrl": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+        "href": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+        "sourceName": "Atalanta sito ufficiale",
+        "sourceLabel": "Atalanta sito ufficiale",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Agg v76: fonte primaria Atalanta; U23 / non slot attivo.",
+        "sources": [
+          {
+            "source": "Atalanta sito ufficiale",
+            "url": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+            "articleUrl": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+            "href": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+            "sourceName": "Atalanta sito ufficiale",
+            "sourceLabel": "Atalanta sito ufficiale",
+            "sourceType": "Sito ufficiale club",
+            "sourceVerification": "OK_UFFICIALE_CLUB",
+            "sourceVerificationNote": "Agg v76: fonte primaria Atalanta; U23 / non slot attivo.",
+            "note": "Agg v76: fonte primaria Atalanta; U23 / non slot attivo.",
+            "status": "Ufficiale",
+            "updatedAt": "2026-07-18"
+          }
+        ],
+        "roleBrief": "A",
+        "role": "A",
+        "origin": "Atalanta U23",
+        "destination": "Athens Kallithea",
+        "formula": "Cessione a titolo definitivo da Atalanta U23",
+        "probability": "",
+        "reliability": "",
+        "check": "",
+        "rule": "Ufficialita club prevale; tracciato come U23 non slot attivo."
       }
     ],
     "bologna": [
@@ -491757,7 +491780,7 @@
         "status": "Ufficiale",
         "updatedAt": "2026-07-10",
         "date": "2026-07-10",
-        "note": "",
+        "note": "Riga di uscita speculare generata dal controllo Sky ufficialita.",
         "source": "Bologna FC sito ufficiale",
         "url": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
         "articleUrl": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
@@ -491783,10 +491806,10 @@
             "note": ""
           }
         ],
-        "roleBrief": "",
-        "role": "",
+        "roleBrief": "D",
+        "role": "D",
         "origin": "Frosinone",
-        "formula": "",
+        "formula": "Prestito",
         "probability": "",
         "reliability": "",
         "check": "",
@@ -492057,51 +492080,6 @@
         "role": "",
         "origin": "Juventus",
         "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "",
-        "rule": ""
-      },
-      {
-        "teamId": "bologna",
-        "teamName": "Bologna",
-        "playerName": "Wisdom Amey",
-        "target": "Wisdom Amey",
-        "direction": "outgoing",
-        "directionLabel": "Uscita",
-        "status": "Ufficiale",
-        "updatedAt": "2026-07-12",
-        "date": "2026-07-12",
-        "note": "Riga di uscita speculare generata dal controllo Sky ufficialita.",
-        "source": "Bologna FC sito ufficiale",
-        "url": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-        "articleUrl": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-        "href": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-        "sourceName": "Bologna FC sito ufficiale",
-        "sourceLabel": "Bologna FC sito ufficiale",
-        "sourceType": "Club ufficiale",
-        "sourceVerification": "Verificata",
-        "sourceVerificationNote": "Fonte primaria club v43",
-        "sources": [
-          {
-            "source": "Bologna FC sito ufficiale",
-            "url": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-            "articleUrl": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-            "href": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-            "sourceName": "Bologna FC sito ufficiale",
-            "sourceLabel": "Bologna FC sito ufficiale",
-            "status": "Ufficiale",
-            "updatedAt": "2026-07-12",
-            "sourceType": "Club ufficiale",
-            "sourceVerification": "Verificata",
-            "sourceVerificationNote": "Fonte primaria club v43",
-            "note": "Riga di uscita speculare generata dal controllo Sky ufficialita."
-          }
-        ],
-        "roleBrief": "D",
-        "role": "D",
-        "origin": "Frosinone",
-        "formula": "Prestito",
         "probability": "",
         "reliability": "",
         "check": "",
@@ -495458,7 +495436,7 @@
         "status": "Ufficiale",
         "updatedAt": "2026-07-11",
         "date": "2026-07-11",
-        "note": "",
+        "note": "Prestito secco fino al termine della stagione 2026/27.",
         "source": "Bologna FC sito ufficiale",
         "url": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
         "articleUrl": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
@@ -495487,7 +495465,7 @@
         "roleBrief": "D",
         "role": "D",
         "origin": "Bologna",
-        "formula": "",
+        "formula": "Prestito",
         "probability": "",
         "reliability": "",
         "check": "",
@@ -495893,51 +495871,6 @@
         "role": "",
         "origin": "Genoa",
         "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "",
-        "rule": ""
-      },
-      {
-        "teamId": "frosinone",
-        "teamName": "Frosinone",
-        "playerName": "Wisdom Amey",
-        "target": "Wisdom Amey",
-        "direction": "incoming",
-        "directionLabel": "Entrata",
-        "status": "Ufficiale",
-        "updatedAt": "2026-07-12",
-        "date": "2026-07-12",
-        "note": "Prestito secco fino al termine della stagione 2026/27.",
-        "source": "Bologna FC sito ufficiale",
-        "url": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-        "articleUrl": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-        "href": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-        "sourceName": "Bologna FC sito ufficiale",
-        "sourceLabel": "Bologna FC sito ufficiale",
-        "sourceType": "Club ufficiale",
-        "sourceVerification": "Verificata",
-        "sourceVerificationNote": "Fonte primaria club v43",
-        "sources": [
-          {
-            "source": "Bologna FC sito ufficiale",
-            "url": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-            "articleUrl": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-            "href": "https://www.bolognafc.it/prolungamento-per-amey-e-prestito-al-frosinone/",
-            "sourceName": "Bologna FC sito ufficiale",
-            "sourceLabel": "Bologna FC sito ufficiale",
-            "status": "Ufficiale",
-            "updatedAt": "2026-07-12",
-            "sourceType": "Club ufficiale",
-            "sourceVerification": "Verificata",
-            "sourceVerificationNote": "Fonte primaria club v43",
-            "note": "Prestito secco fino al termine della stagione 2026/27."
-          }
-        ],
-        "roleBrief": "D",
-        "role": "D",
-        "origin": "Bologna",
-        "formula": "Prestito",
         "probability": "",
         "reliability": "",
         "check": "",
@@ -500945,51 +500878,6 @@
         "role": "A",
         "origin": "Empoli",
         "formula": "Titolo definitivo / contratto depositato",
-        "probability": "",
-        "reliability": "",
-        "check": "",
-        "rule": ""
-      },
-      {
-        "teamId": "milan",
-        "teamName": "Milan",
-        "playerName": "Edoardo Zanaga",
-        "target": "Edoardo Zanaga",
-        "direction": "incoming",
-        "directionLabel": "Entrata",
-        "status": "Ufficiale/deposito contratto",
-        "updatedAt": "2026-07-14",
-        "date": "2026-07-14",
-        "note": "Giovane rinforzo in attacco dall Empoli; impatto fantacalcio da valutare/giovanili. | Progetto Milan Futuro: fonte club.",
-        "source": "AC Milan sito ufficiale",
-        "url": "https://www.acmilan.com/it/news/articoli/media/2026-07-14/comunicato-ufficiale-edoardo-zanaga",
-        "articleUrl": "https://www.acmilan.com/it/news/articoli/media/2026-07-14/comunicato-ufficiale-edoardo-zanaga",
-        "href": "https://www.acmilan.com/it/news/articoli/media/2026-07-14/comunicato-ufficiale-edoardo-zanaga",
-        "sourceName": "AC Milan sito ufficiale",
-        "sourceLabel": "AC Milan sito ufficiale",
-        "sourceType": "Sito ufficiale club",
-        "sourceVerification": "OK_UFFICIALE_CLUB",
-        "sourceVerificationNote": "Riga aggiunta v27 | v42: fonte ufficiale club prevalente/ricontrollata.",
-        "sources": [
-          {
-            "source": "AC Milan sito ufficiale",
-            "url": "https://www.acmilan.com/it/news/articoli/media/2026-07-14/comunicato-ufficiale-edoardo-zanaga",
-            "articleUrl": "https://www.acmilan.com/it/news/articoli/media/2026-07-14/comunicato-ufficiale-edoardo-zanaga",
-            "href": "https://www.acmilan.com/it/news/articoli/media/2026-07-14/comunicato-ufficiale-edoardo-zanaga",
-            "sourceName": "AC Milan sito ufficiale",
-            "sourceLabel": "AC Milan sito ufficiale",
-            "status": "Ufficiale/deposito contratto",
-            "updatedAt": "2026-07-14",
-            "sourceType": "Sito ufficiale club",
-            "sourceVerification": "OK_UFFICIALE_CLUB",
-            "sourceVerificationNote": "Riga aggiunta v27 | v42: fonte ufficiale club prevalente/ricontrollata.",
-            "note": "Giovane rinforzo in attacco dall Empoli; impatto fantacalcio da valutare/giovanili. | Progetto Milan Futuro: fonte club."
-          }
-        ],
-        "roleBrief": "A",
-        "role": "A",
-        "origin": "Empoli",
-        "formula": "deposito contratto",
         "probability": "",
         "reliability": "",
         "check": "",
@@ -521303,8 +521191,8 @@
         {
           "teamId": "inter",
           "teamName": "Inter",
-          "playerName": "Mancini",
-          "target": "Mancini",
+          "playerName": "Gianluca Mancini",
+          "target": "Gianluca Mancini",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Trattativa/Interesse",
@@ -522383,8 +522271,8 @@
         {
           "teamId": "inter",
           "teamName": "Inter",
-          "playerName": "Trevoh Chalobah / Ordonez / Lucumi / Mancini",
-          "target": "Trevoh Chalobah / Ordonez / Lucumi / Mancini",
+          "playerName": "Trevoh Chalobah / Ordonez / Lucumi / Gianluca Mancini",
+          "target": "Trevoh Chalobah / Ordonez / Lucumi / Gianluca Mancini",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Chalobah in calo / alternative difesa",
@@ -545721,19 +545609,19 @@
         "target": "Atalanta-Atalanta Under 23",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Annunciata / non giocata al controllo",
+        "status": "Annunciata - fonte ufficiale club / da giocare al controllo 11:49",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Comunicato ufficiale Atalanta: amichevole con l Under 23 alle 17 a Clusone. Non giocata al controllo 11:49, quindi nessun minuto/gol inserito.",
-        "source": "Atalanta sito ufficiale",
+        "note": "Fonte ufficiale Atalanta v72: test-match in famiglia con U23 alle 17, diretta YouTube/Bergamo TV; al controllo 11:49 non giocata.",
+        "source": "https://www.atalanta.it/news/preseason-2026-27-alle-17-amichevole-con-l-u23-a-clusone",
         "url": "https://www.atalanta.it/news/preseason-2026-27-alle-17-amichevole-con-l-u23-a-clusone",
         "articleUrl": "https://www.atalanta.it/news/preseason-2026-27-alle-17-amichevole-con-l-u23-a-clusone",
         "href": "https://www.atalanta.it/news/preseason-2026-27-alle-17-amichevole-con-l-u23-a-clusone",
         "sourceName": "Atalanta sito ufficiale",
         "sourceLabel": "Atalanta sito ufficiale",
-        "sourceType": "Club ufficiale",
-        "sourceVerification": "Verificata",
-        "sourceVerificationNote": "Fonte primaria club V717; tabellino non disponibile al controllo",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Agg v72: sostituita/rafforzata fonte TMW con fonte ufficiale club.",
         "sources": [
           {
             "source": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
@@ -545754,14 +545642,15 @@
         "retreatStart": "2026-07-06",
         "retreatEnd": "2026-07-26",
         "retreatPlace": "Bortolotti di Zingonia / Ciserano",
-        "venue": "Centro Bortolotti, Zingonia",
+        "venue": "Centro Sportivo Citta di Clusone",
         "location": "Centro Bortolotti, Zingonia",
         "time": "17:00",
         "matchKey": "atalanta 2026 07 18 atalanta atalanta under 23",
         "hasPlayerStats": false,
         "playerStats": [],
         "updateFlag": "V717",
-        "excelSheet": "Agg_18_07_v72_Globale"
+        "excelSheet": "Agg_18_07_v72_Globale",
+        "friendlyDetailAvailable": false
       },
       {
         "teamId": "atalanta",
@@ -547813,19 +547702,19 @@
         "target": "Basilea-Juventus",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Annunciata",
+        "status": "Pre-gara - formazioni ufficiali / non giocata al controllo 14:36",
         "updatedAt": "2026-07-18",
-        "date": "2026-07-18",
-        "note": "v69: fonte ufficiale Juventus sui convocati per Basilea-Juventus. Al controllo 18/07 ore 08:57 la gara delle 15:30 non era ancora giocata: non inseriti minuti/gol/infortuni gara.",
-        "source": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
-        "url": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
-        "articleUrl": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
-        "href": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
+        "date": "46221",
+        "note": "Agg v76: Sky pubblica le formazioni ufficiali di Basilea-Juventus. Juventus 4-2-3-1: Di Gregorio; Kalulu, Gatti, Kelly, Cambiaso; Locatelli, Douglas Luiz; Zhegrova, Adzic, Boga; Ekhator. Non convocati Thuram e Celik. Partita prevista alle 15:30: niente minuti/gol/infortuni gara finche non esce tabellino post-partita.",
+        "source": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
+        "url": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
+        "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
+        "href": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
         "sourceName": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
         "sourceLabel": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
-        "sourceType": "Sito ufficiale club",
-        "sourceVerification": "OK_UFFICIALE_CLUB",
-        "sourceVerificationNote": "Fonte ufficiale Juventus v69: convocati Basilea-Juventus",
+        "sourceType": "Sky Sport live formazioni",
+        "sourceVerification": "OK_PRE_GARA_NON_TABELLINO",
+        "sourceVerificationNote": "Agg v76: aggiornamento pre-gara, non va compilata Amichevoli_Giocatori.",
         "sources": [
           {
             "source": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
@@ -547850,7 +547739,8 @@
         "location": "St. Jakob-Park, Basilea",
         "time": "15:30",
         "matchKey": "juventus 2026 07 18 basilea juventus",
-        "hasPlayerStats": false
+        "hasPlayerStats": false,
+        "friendlyDetailAvailable": false
       },
       {
         "teamId": "juventus",
@@ -553599,7 +553489,7 @@
         "module": "4-2-3-1",
         "formationModule": "4-2-3-1",
         "position": "TQ",
-        "playerName": "N. Paz",
+        "playerName": "Nico Paz",
         "role": "A",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -555491,7 +555381,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "ES",
-        "playerName": "Azzi",
+        "playerName": "Paulo Azzi",
         "role": "D",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -556015,7 +555905,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "DCD",
-        "playerName": "Mancini",
+        "playerName": "Gianluca Mancini",
         "role": "D",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -556091,7 +555981,7 @@
         "module": "3-4-2-1",
         "formationModule": "3-4-2-1",
         "position": "CC",
-        "playerName": "Cristante",
+        "playerName": "Bryan Cristante",
         "role": "C",
         "inCurrentRoster": "SI",
         "roleCoherent": "OK",
@@ -561111,6 +561001,30 @@
       "source": "Bologna FC - Bologna-Arminia Bielefeld 0-4, tabellino",
       "url": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
       "use": "Fonte ufficiale club per risultato, formazioni, sostituzioni, ammonizione/espulsione e minutaggi amichevole v75.",
+      "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Atalanta - Candas Fiogbe all Athens Kallithea",
+      "url": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+      "use": "",
+      "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Di Marzio - Oulai visite mediche terminate Fiorentina",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "use": "",
+      "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Di Marzio - Desplanches visite mediche terminate Frosinone",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+      "use": "",
+      "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Sky Sport - Basilea-Juventus formazioni ufficiali",
+      "url": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
+      "use": "",
       "consultedAt": "2026-07-18"
     }
   ],
@@ -581284,7 +581198,7 @@
     },
     {
       "teamId": "como",
-      "playerName": "A. Cuenca",
+      "playerName": "Andres Cuenca",
       "action": "rose_updated"
     },
     {
@@ -581312,7 +581226,7 @@
     {
       "key": "a cuenca",
       "teamId": "como",
-      "playerName": "A. Cuenca"
+      "playerName": "Andres Cuenca"
     },
     {
       "key": "gosens",
@@ -585534,31 +585448,31 @@
     }
   },
   "manifest": {
-    "id": "sudatori-iosudo-v720",
-    "version": "V720",
+    "id": "sudatori-iosudo-v721",
+    "version": "V721",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-18",
-    "updatedAtTime": "2026-07-18T14:20:00+02:00",
-    "generatedAt": "2026-07-18T14:20:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v75.xlsx",
+    "updatedAtTime": "2026-07-18T14:45:00+02:00",
+    "generatedAt": "2026-07-18T14:45:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v76.xlsx",
     "dedupVersion": "V720-confirmed-aliases-v75",
-    "notes": "V720 aggiornata da Excel V75: rinnovi ufficiali Roma Cristante/Mancini, Bologna-Arminia 0-4 con tabellino giocatori, alias confermati V720, Esposito resta disambiguato e non globale.",
+    "notes": "V721 aggiornata da Excel V76: Candas Fiogbe ufficiale U23 Atalanta non slot attivo, Oulai/Desplanches aggiornati come visite terminate non ufficiali, Basilea-Juventus pre-gara senza minutaggi, 10 alias confermati, scheda giocatore con riepilogo amichevoli giocate.",
     "teams": 20,
-    "players": 780,
+    "players": 781,
     "friendlies": 118,
-    "teamTransferTalks": 434,
+    "teamTransferTalks": 432,
     "injuries": 24,
-    "officialMoves": 364,
-    "sources": 667,
+    "officialMoves": 362,
+    "sources": 671,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 2,
     "friendlyPlayerStats": 47,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v720-xlsx-v75",
-    "versionNumber": 720,
-    "baseVersion": "V719",
+    "buildTag": "iosudo-v721-xlsx-v76",
+    "versionNumber": 721,
+    "baseVersion": "V720",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
@@ -585586,7 +585500,16 @@
     "sourcesAddedV720": 3,
     "officialTalksClosedV720": 5,
     "playersAddedV720": 3,
-    "friendliesPatchedV720": 1
+    "friendliesPatchedV720": 1,
+    "updateType": "excel-v76-fiogbe-player-friendlies-summary-aliases-v76",
+    "confirmedAliasesV721": 10,
+    "duplicateCandidatesV721": 10,
+    "sourcesAddedV721": 4,
+    "officialMovesPatchedV721": 1,
+    "playersAddedV721": 1,
+    "teamTransferTalksPatchedV721": 2,
+    "friendliesPatchedV721": 2,
+    "playerFriendliesSummaryEnabled": true
   },
   "friendliesFilteredOutV715": [
     {
@@ -591161,8 +591084,8 @@
     {
       "teamId": "inter",
       "teamName": "Inter",
-      "playerName": "Mancini",
-      "target": "Mancini",
+      "playerName": "Gianluca Mancini",
+      "target": "Gianluca Mancini",
       "direction": "incoming",
       "directionLabel": "Entrata",
       "status": "CHIUSA / POST-UFFICIALITA v75",
@@ -591571,7 +591494,7 @@
   "rulesFriendliesV720": "Amichevoli compilate solo con tabellino ufficiale club; Bologna-Arminia 0-4 ha scheda giocatori con minuti/titolare/gol/autogol/infortunio gara.",
   "duplicateNameCandidatesV720": [
     {
-      "from": "Mancini",
+      "from": "Gianluca Mancini",
       "to": "Gianluca Mancini",
       "whereA": [
         "roma/players"
@@ -591581,7 +591504,7 @@
       ]
     },
     {
-      "from": "Cristante",
+      "from": "Bryan Cristante",
       "to": "Bryan Cristante",
       "whereA": [
         "roma/players"
@@ -591591,7 +591514,7 @@
       ]
     },
     {
-      "from": "A. Cuenca",
+      "from": "Andres Cuenca",
       "to": "Andres Cuenca",
       "whereA": [
         "como/players"
@@ -591601,7 +591524,7 @@
       ]
     },
     {
-      "from": "A. Stankovic",
+      "from": "Aleksandar Stankovic",
       "to": "Aleksandar Stankovic",
       "whereA": [
         "inter/players"
@@ -591611,7 +591534,7 @@
       ]
     },
     {
-      "from": "B. Kone",
+      "from": "Ben Lhassine Kone",
       "to": "Ben Lhassine Kone",
       "whereA": [
         "frosinone/players"
@@ -591621,7 +591544,7 @@
       ]
     },
     {
-      "from": "F. Terracciano",
+      "from": "Filippo Terracciano",
       "to": "Filippo Terracciano",
       "whereA": [
         "milan/players"
@@ -591631,7 +591554,7 @@
       ]
     },
     {
-      "from": "N. Paz",
+      "from": "Nico Paz",
       "to": "Nico Paz",
       "whereA": [
         "como/players"
@@ -591641,7 +591564,7 @@
       ]
     },
     {
-      "from": "R. Vaz",
+      "from": "Robinio Vaz",
       "to": "Robinio Vaz",
       "whereA": [
         "roma/players"
@@ -591652,7 +591575,7 @@
       ]
     },
     {
-      "from": "Azzi",
+      "from": "Paulo Azzi",
       "to": "Paulo Azzi",
       "whereA": [
         "monza/players"
@@ -591662,7 +591585,7 @@
       ]
     },
     {
-      "from": "Bakker",
+      "from": "Mitchel Bakker",
       "to": "Mitchel Bakker",
       "whereA": [
         "atalanta/players"
@@ -591679,5 +591602,652 @@
   "officialityControlV720": {
     "activeOfficialRumors": 0,
     "sample": []
+  },
+  "confirmedDuplicateAliasesV721": [
+    {
+      "from": "Mancini",
+      "to": "Gianluca Mancini"
+    },
+    {
+      "from": "Cristante",
+      "to": "Bryan Cristante"
+    },
+    {
+      "from": "A. Cuenca",
+      "to": "Andres Cuenca"
+    },
+    {
+      "from": "A. Stankovic",
+      "to": "Aleksandar Stankovic"
+    },
+    {
+      "from": "B. Kone",
+      "to": "Ben Lhassine Kone"
+    },
+    {
+      "from": "F. Terracciano",
+      "to": "Filippo Terracciano"
+    },
+    {
+      "from": "N. Paz",
+      "to": "Nico Paz"
+    },
+    {
+      "from": "R. Vaz",
+      "to": "Robinio Vaz"
+    },
+    {
+      "from": "Azzi",
+      "to": "Paulo Azzi"
+    },
+    {
+      "from": "Bakker",
+      "to": "Mitchel Bakker"
+    }
+  ],
+  "aliasesNormalizedV721": {
+    "hits": 110,
+    "sample": [
+      {
+        "from": "Bakker",
+        "to": "Mitchel Bakker",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "B. Kone",
+        "to": "Ben Lhassine Kone",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Stankovic",
+        "to": "Aleksandar Stankovic",
+        "mode": "exact"
+      },
+      {
+        "from": "F. Terracciano",
+        "to": "Filippo Terracciano",
+        "mode": "exact"
+      },
+      {
+        "from": "Azzi",
+        "to": "Paulo Azzi",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "exact"
+      },
+      {
+        "from": "R. Vaz",
+        "to": "Robinio Vaz",
+        "mode": "exact"
+      },
+      {
+        "from": "Bakker",
+        "to": "Mitchel Bakker",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "B. Kone",
+        "to": "Ben Lhassine Kone",
+        "mode": "exact"
+      },
+      {
+        "from": "Bakker",
+        "to": "Mitchel Bakker",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Bakker",
+        "to": "Mitchel Bakker",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "B. Kone",
+        "to": "Ben Lhassine Kone",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Stankovic",
+        "to": "Aleksandar Stankovic",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "F. Terracciano",
+        "to": "Filippo Terracciano",
+        "mode": "exact"
+      },
+      {
+        "from": "Azzi",
+        "to": "Paulo Azzi",
+        "mode": "exact"
+      },
+      {
+        "from": "Azzi",
+        "to": "Paulo Azzi",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "exact"
+      },
+      {
+        "from": "R. Vaz",
+        "to": "Robinio Vaz",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "component",
+        "original": "Assane Diao, Cristante, Mancini"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "component",
+        "original": "Assane Diao, Cristante, Mancini"
+      },
+      {
+        "from": "Bakker",
+        "to": "Mitchel Bakker",
+        "mode": "exact"
+      },
+      {
+        "from": "Bakker",
+        "to": "Mitchel Bakker",
+        "mode": "exact"
+      },
+      {
+        "from": "Bakker",
+        "to": "Mitchel Bakker",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Cuenca",
+        "to": "Andres Cuenca",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "N. Paz",
+        "to": "Nico Paz",
+        "mode": "exact"
+      },
+      {
+        "from": "B. Kone",
+        "to": "Ben Lhassine Kone",
+        "mode": "exact"
+      },
+      {
+        "from": "B. Kone",
+        "to": "Ben Lhassine Kone",
+        "mode": "exact"
+      },
+      {
+        "from": "B. Kone",
+        "to": "Ben Lhassine Kone",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Stankovic",
+        "to": "Aleksandar Stankovic",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Stankovic",
+        "to": "Aleksandar Stankovic",
+        "mode": "exact"
+      },
+      {
+        "from": "A. Stankovic",
+        "to": "Aleksandar Stankovic",
+        "mode": "exact"
+      },
+      {
+        "from": "F. Terracciano",
+        "to": "Filippo Terracciano",
+        "mode": "exact"
+      },
+      {
+        "from": "F. Terracciano",
+        "to": "Filippo Terracciano",
+        "mode": "exact"
+      },
+      {
+        "from": "F. Terracciano",
+        "to": "Filippo Terracciano",
+        "mode": "exact"
+      },
+      {
+        "from": "Azzi",
+        "to": "Paulo Azzi",
+        "mode": "exact"
+      },
+      {
+        "from": "Azzi",
+        "to": "Paulo Azzi",
+        "mode": "exact"
+      },
+      {
+        "from": "Azzi",
+        "to": "Paulo Azzi",
+        "mode": "exact"
+      },
+      {
+        "from": "Azzi",
+        "to": "Paulo Azzi",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "exact"
+      },
+      {
+        "from": "Cristante",
+        "to": "Bryan Cristante",
+        "mode": "exact"
+      },
+      {
+        "from": "R. Vaz",
+        "to": "Robinio Vaz",
+        "mode": "exact"
+      },
+      {
+        "from": "R. Vaz",
+        "to": "Robinio Vaz",
+        "mode": "exact"
+      },
+      {
+        "from": "R. Vaz",
+        "to": "Robinio Vaz",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "component",
+        "original": "Trevoh Chalobah / Ordonez / Lucumi / Mancini"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "component",
+        "original": "Trevoh Chalobah / Ordonez / Lucumi / Mancini"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      },
+      {
+        "from": "Mancini",
+        "to": "Gianluca Mancini",
+        "mode": "exact"
+      }
+    ]
+  },
+  "neverGlobalAliasV721": [
+    "Esposito",
+    "F. Esposito",
+    "Pessina",
+    "S. Esposito"
+  ],
+  "playersPatchedV721": [
+    "Candas Fiogbe"
+  ],
+  "officialMovesPatchedV721": [
+    "Candas Fiogbe"
+  ],
+  "teamTransferTalksPatchedV721": [
+    "Christ Inao Oulai/Fiorentina",
+    "Sebastiano Desplanches/Frosinone"
+  ],
+  "friendliesPatchedV721": [
+    "Atalanta-Atalanta Under 23",
+    "Basilea-Juventus"
+  ],
+  "sourcesAddedV721": [
+    {
+      "source": "Atalanta - Candas Fiogbe all Athens Kallithea",
+      "url": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
+      "use": "",
+      "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Di Marzio - Oulai visite mediche terminate Fiorentina",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "use": "",
+      "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Di Marzio - Desplanches visite mediche terminate Frosinone",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+      "use": "",
+      "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Sky Sport - Basilea-Juventus formazioni ufficiali",
+      "url": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
+      "use": "",
+      "consultedAt": "2026-07-18"
+    }
+  ],
+  "officialMovesDedupedV721": [
+    {
+      "team": "bologna",
+      "playerName": "Wisdom Amey",
+      "reason": "same team/direction/player/destination/url"
+    },
+    {
+      "team": "frosinone",
+      "playerName": "Wisdom Amey",
+      "reason": "same team/direction/player/destination/url"
+    },
+    {
+      "team": "milan",
+      "playerName": "Edoardo Zanaga",
+      "reason": "same team/direction/player/destination/url"
+    }
+  ],
+  "teamTransferTalksDedupedV721": [
+    {
+      "team": "fiorentina",
+      "playerName": "Victor Valdepeñas",
+      "status": "Interesse: il giocatore gradisce Firenze"
+    },
+    {
+      "team": "milan",
+      "playerName": "Warren Bondo",
+      "status": "Sondaggio Stoccarda / mercato in uscita"
+    }
+  ],
+  "duplicateNameCandidatesV721": [
+    {
+      "from": "A. Sala",
+      "to": "Alex Sala",
+      "whereA": [
+        "lecce/players"
+      ],
+      "whereB": [
+        "lecce/talks"
+      ]
+    },
+    {
+      "from": "L. Berardi",
+      "to": "Lorenzo Berardi",
+      "whereA": [
+        "venezia/players"
+      ],
+      "whereB": [
+        "venezia/official"
+      ]
+    },
+    {
+      "from": "Akarakiri",
+      "to": "Demi Akarakiri",
+      "whereA": [
+        "cagliari/official"
+      ],
+      "whereB": [
+        "cagliari/players",
+        "cagliari/official"
+      ]
+    },
+    {
+      "from": "Akinsanmiro",
+      "to": "Ebenezer Akinsanmiro",
+      "whereA": [
+        "inter/players"
+      ],
+      "whereB": [
+        "monza/talks"
+      ]
+    },
+    {
+      "from": "Arokodare",
+      "to": "Tolu Arokodare",
+      "whereA": [
+        "fiorentina/talks"
+      ],
+      "whereB": [
+        "fiorentina/talks"
+      ]
+    },
+    {
+      "from": "Atta",
+      "to": "Arthur Atta",
+      "whereA": [
+        "fiorentina/players",
+        "udinese/official"
+      ],
+      "whereB": [
+        "fiorentina/official",
+        "udinese/official"
+      ]
+    },
+    {
+      "from": "Balbo",
+      "to": "Luis Balbo",
+      "whereA": [
+        "fiorentina/players"
+      ],
+      "whereB": [
+        "fiorentina/talks"
+      ]
+    },
+    {
+      "from": "Baldanzi",
+      "to": "Tommaso Baldanzi",
+      "whereA": [
+        "genoa/players",
+        "genoa/official"
+      ],
+      "whereB": [
+        "roma/official",
+        "genoa/official"
+      ]
+    },
+    {
+      "from": "Basic",
+      "to": "Toma Basic",
+      "whereA": [
+        "venezia/players",
+        "lazio/official"
+      ],
+      "whereB": [
+        "venezia/official",
+        "lazio/official"
+      ]
+    },
+    {
+      "from": "Boga",
+      "to": "Jeremie Boga",
+      "whereA": [
+        "juventus/official"
+      ],
+      "whereB": [
+        "juventus/players"
+      ]
+    }
+  ],
+  "playersDuplicateAuditV721": {
+    "duplicateExactPlayers": 0,
+    "duplicatePlayerIds": 0
+  },
+  "officialityControlV721": {
+    "activeOfficialRumors": 0,
+    "sample": []
+  },
+  "playerFriendliesFeatureV721": {
+    "enabled": true,
+    "description": "Cliccando un giocatore, la scheda mostra le amichevoli giocate trovate in friendlyPlayerStatsByMatch con badge minuti/titolare/gol/autogol/infortunio gara."
   }
 }

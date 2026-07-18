@@ -1,0 +1,20 @@
+{
+  "version": "V721",
+  "players": 781,
+  "duplicateExactPlayers": 0,
+  "duplicatePlayerIds": 0,
+  "officialMoves": 362,
+  "teamTransferTalks": 432,
+  "activeOfficialRumors": 0,
+  "injuries": 24,
+  "friendlies": 118,
+  "friendlyMatchDetails": 2,
+  "friendlyPlayerStats": 47,
+  "sources": 671,
+  "officialMovesPatchedV721": 1,
+  "playersAddedV721": 1,
+  "confirmedAliasesV721": 10,
+  "teamTransferTalksPatchedV721": 2,
+  "friendliesPatchedV721": 2,
+  "playerFriendliesSummaryEnabled": true
+}

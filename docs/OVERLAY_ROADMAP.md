@@ -1,3 +1,6 @@
+## V721 - 2026-07-18
+- Excel V76: Candas Fiogbe U23 ufficiale non slot attivo, Oulai/Desplanches non ufficiali, scheda giocatore con riepilogo amichevoli giocate, alias duplicati confermati.
+
 ## V720 - 2026-07-18
 - Excel V75: rinnovi Roma ufficiali, Bologna-Arminia tabellino, alias duplicati confermati.
 
