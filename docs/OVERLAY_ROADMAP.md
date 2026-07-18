@@ -1,3 +1,6 @@
+## V720 - 2026-07-18
+- Excel V75: rinnovi Roma ufficiali, Bologna-Arminia tabellino, alias duplicati confermati.
+
 ## V719 - 2026-07-18
 - Esposito disambiguato: Sebastiano/Cagliari e Francesco Pio/Inter, no alias generico.
 - Applicati alias confermati V719 con Pessina solo Monza.
