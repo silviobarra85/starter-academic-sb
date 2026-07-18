@@ -411376,31 +411376,31 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v721",
-    "version": "V721",
+    "id": "sudatori-iosudo-v722",
+    "version": "V722",
     "seasonId": "2026-2027",
     "updatedAt": "2026-07-18",
-    "updatedAtTime": "2026-07-18T14:45:00+02:00",
-    "generatedAt": "2026-07-18T14:45:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v76.xlsx",
+    "updatedAtTime": "2026-07-18T16:05:00+02:00",
+    "generatedAt": "2026-07-18T16:05:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v78.xlsx",
     "dedupVersion": "V720-confirmed-aliases-v75",
     "notes": "V721 aggiornata da Excel V76: Candas Fiogbe ufficiale U23 Atalanta non slot attivo, Oulai/Desplanches aggiornati come visite terminate non ufficiali, Basilea-Juventus pre-gara senza minutaggi, 10 alias confermati, scheda giocatore con riepilogo amichevoli giocate.",
     "teams": 20,
     "players": 781,
     "friendlies": 118,
-    "teamTransferTalks": 432,
-    "injuries": 24,
+    "teamTransferTalks": 434,
+    "injuries": 23,
     "officialMoves": 362,
-    "sources": 671,
+    "sources": 672,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 2,
     "friendlyPlayerStats": 47,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v721-xlsx-v76",
-    "versionNumber": 721,
-    "baseVersion": "V720",
+    "buildTag": "iosudo-v722-xlsx-v78",
+    "versionNumber": 722,
+    "baseVersion": "V721",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
@@ -411429,7 +411429,7 @@
     "officialTalksClosedV720": 5,
     "playersAddedV720": 3,
     "friendliesPatchedV720": 1,
-    "updateType": "excel-v76-fiogbe-player-friendlies-summary-aliases-v76",
+    "updateType": "excel-v78-casale-rientro-aliases-v78-friendly-player-click-detail",
     "confirmedAliasesV721": 10,
     "duplicateCandidatesV721": 10,
     "sourcesAddedV721": 4,
@@ -411437,7 +411437,14 @@
     "playersAddedV721": 1,
     "teamTransferTalksPatchedV721": 2,
     "friendliesPatchedV721": 2,
-    "playerFriendliesSummaryEnabled": true
+    "playerFriendliesSummaryEnabled": true,
+    "confirmedAliasesV722": 11,
+    "duplicateCandidatesV722": 10,
+    "sourcesAddedV722": 3,
+    "teamTransferTalksPatchedV722": 2,
+    "friendliesPatchedV722": 3,
+    "injuriesClosedV722": 1,
+    "friendlyPlayerClickOpensPlayerDetail": true
   },
   "teams": [
     {
@@ -415181,17 +415188,17 @@
         "formationPosition": "",
         "formationSourcePosition": "",
         "formationLine": "",
-        "formationPhysicalStatus": "Da monitorare / ai box",
+        "formationPhysicalStatus": "Disponibile / rientrato in amichevole",
         "formationPhysicalRisk": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
-        "physicalStatus": "Da monitorare / ai box",
-        "injuryStatus": "Da monitorare / ai box",
-        "injuryDetail": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
-        "injurySeverity": "Monitoraggio non ufficiale",
-        "injuryReturn": "Da definire; verificare eventuale comunicato Bologna.",
-        "injurySource": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-        "injuryUpdatedAt": "2026-07-09",
-        "injuryNote": "Aggiunto SOS v716 da Excel V70.",
-        "injuryImpact": "Basso-medio",
+        "physicalStatus": "Disponibile / rientrato in amichevole",
+        "injuryStatus": "Disponibile / rientrato in amichevole",
+        "injuryDetail": "Monitoraggio ai box chiuso: 45 minuti da titolare in Bologna-Arminia 0-4, nessun infortunio gara segnalato.",
+        "injurySeverity": "",
+        "injuryReturn": "Rientrato il 18/07/2026",
+        "injurySource": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
+        "injuryUpdatedAt": "2026-07-18",
+        "injuryNote": "Agg V722: chiuso monitoraggio SOS/ai box grazie al tabellino ufficiale Bologna-Arminia; giocati 45 minuti da titolare.",
+        "injuryImpact": "Basso",
         "formationCheck": "",
         "formationRoleOk": "",
         "formationModuleUsed": "",
@@ -415225,8 +415232,8 @@
           "outOfList": ""
         },
         "listoneMatchMethod": "previous-snapshot",
-        "sosFantaFlag": true,
-        "updateFlag": "V716"
+        "sosFantaFlag": false,
+        "updateFlag": "V722"
       },
       {
         "id": "bologna-lorenzo-de-silvestri",
@@ -424693,7 +424700,7 @@
         "id": "fiorentina-balbo",
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Balbo",
+        "playerName": "Luis Balbo",
         "role": "D",
         "coach": "Fabio Grosso",
         "module": "4-3-3 / 4-3-2-1",
@@ -424801,7 +424808,8 @@
           "under": "19",
           "outOfList": ""
         },
-        "listoneMatchMethod": "previous-snapshot"
+        "listoneMatchMethod": "previous-snapshot",
+        "aliasAppliedV722": true
       },
       {
         "id": "fiorentina-baroncelli",
@@ -426170,7 +426178,7 @@
         "id": "fiorentina-atta",
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Atta",
+        "playerName": "Arthur Atta",
         "role": "C",
         "coach": "Kosta Runjaic",
         "module": "3-5-2 / 3-4-2-1",
@@ -426279,7 +426287,8 @@
           "outOfList": ""
         },
         "listoneMatchMethod": "previous-snapshot",
-        "fantasyRoster": "real mappine"
+        "fantasyRoster": "real mappine",
+        "aliasAppliedV722": true
       },
       {
         "id": "fiorentina-barak",
@@ -431795,7 +431804,7 @@
         "id": "genoa-baldanzi",
         "teamId": "genoa",
         "teamName": "Genoa",
-        "playerName": "Baldanzi",
+        "playerName": "Tommaso Baldanzi",
         "role": "A",
         "coach": "Daniele De Rossi",
         "module": "3-5-2 / 3-4-2-1",
@@ -431952,7 +431961,8 @@
           "outOfList": ""
         },
         "listoneMatchMethod": "previous-snapshot",
-        "fantasyRoster": "Ac Milan"
+        "fantasyRoster": "Ac Milan",
+        "aliasAppliedV722": true
       },
       {
         "id": "genoa-debenedetti",
@@ -433971,7 +433981,7 @@
         "id": "inter-akinsanmiro",
         "teamId": "inter",
         "teamName": "Inter",
-        "playerName": "Akinsanmiro",
+        "playerName": "Ebenezer Akinsanmiro",
         "role": "C",
         "coach": "Cristian Chivu",
         "module": "3-5-2",
@@ -434030,7 +434040,8 @@
           "under": "21",
           "outOfList": ""
         },
-        "listoneMatchMethod": "previous-snapshot"
+        "listoneMatchMethod": "previous-snapshot",
+        "aliasAppliedV722": true
       },
       {
         "id": "inter-asllani",
@@ -442134,7 +442145,7 @@
         "id": "lecce-a-sala",
         "teamId": "lecce",
         "teamName": "Lecce",
-        "playerName": "A. Sala",
+        "playerName": "Alex Sala",
         "role": "C",
         "coach": "Eusebio Di Francesco",
         "module": "4-3-3",
@@ -442193,7 +442204,8 @@
           "under": "24",
           "outOfList": ""
         },
-        "listoneMatchMethod": "previous-snapshot"
+        "listoneMatchMethod": "previous-snapshot",
+        "aliasAppliedV722": true
       },
       {
         "id": "lecce-berisha",
@@ -469632,7 +469644,7 @@
         "id": "venezia-basic",
         "teamId": "venezia",
         "teamName": "Venezia",
-        "playerName": "Basic",
+        "playerName": "Toma Basic",
         "role": "C",
         "coach": "Giovanni Stroppa",
         "module": "3-5-2 / 3-4-2-1",
@@ -469792,7 +469804,8 @@
         "fantasyRoster": "Beetlejuice",
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-venezia",
         "formationReliability": "Media",
-        "formationNote": "XI Sky coerente con rosa, con Kike Perez normalizzato come K. Perez e Correia come Thierry Rendall Correia."
+        "formationNote": "XI Sky coerente con rosa, con Kike Perez normalizzato come K. Perez e Correia come Thierry Rendall Correia.",
+        "aliasAppliedV722": true
       },
       {
         "id": "venezia-bjarkason",
@@ -470295,7 +470308,7 @@
         "id": "venezia-l-berardi",
         "teamId": "venezia",
         "teamName": "Venezia",
-        "playerName": "L. Berardi",
+        "playerName": "Lorenzo Berardi",
         "role": "C",
         "coach": "Giovanni Stroppa",
         "module": "3-5-2 / 3-4-2-1",
@@ -470404,7 +470417,8 @@
           "outOfList": ""
         },
         "listoneMatchMethod": "previous-snapshot",
-        "fantasyRoster": "Prestige Worldwide"
+        "fantasyRoster": "Prestige Worldwide",
+        "aliasAppliedV722": true
       },
       {
         "id": "venezia-lella",
@@ -475103,8 +475117,8 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Arokodare",
-        "target": "Arokodare",
+        "playerName": "Tolu Arokodare",
+        "target": "Tolu Arokodare",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Offerta presentata, Wolverhampton fa muro",
@@ -475143,7 +475157,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "fiorentina",
@@ -478832,6 +478847,32 @@
         "rule": "Rumor TM normale: senza stretta verde resta trattativa.",
         "excelSheet": "Trattative_Squadre",
         "version": "V712"
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "playerName": "Roberts Apsits",
+        "target": "Roberts Apsits",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Trattativa/arrivo chiuso - non ufficiale",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "role": "P",
+        "fromTo": "Virtus Francavilla -> Inter",
+        "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "sourceName": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+        "sourceType": "Live mercato",
+        "sourceVerification": "MEDIA_NON_UFFICIALE",
+        "note": "Sky live segnala arrivo chiuso del portiere 2006 ex Virtus Francavilla, possibile prestito Serie C. Non aggiornare rosa finche manca comunicato/deposito.",
+        "checkRoster": "Da monitorare: aggiornare rosa solo a ufficialita/deposito.",
+        "officialityRule": "Se diventa ufficiale, spostare in Ufficialita e rimuovere dai rumor attivi.",
+        "updateFlag": "V722",
+        "excelSheet": "Agg_18_07_v77_Globale"
       }
     ],
     "juventus": [
@@ -481677,6 +481718,32 @@
         "rule": "Rumor TM normale: senza stretta verde resta trattativa.",
         "excelSheet": "Trattative_Squadre",
         "version": "V712"
+      },
+      {
+        "teamId": "lazio",
+        "teamName": "Lazio",
+        "playerName": "Lu. Pellegrini",
+        "target": "Lu. Pellegrini",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Monitoraggio Deportivo - non ufficiale",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "role": "D",
+        "fromTo": "Lazio -> Deportivo La Coruna",
+        "source": "https://www.gianlucadimarzio.com/",
+        "url": "https://www.gianlucadimarzio.com/",
+        "articleUrl": "https://www.gianlucadimarzio.com/",
+        "href": "https://www.gianlucadimarzio.com/",
+        "sourceName": "https://www.gianlucadimarzio.com/",
+        "sourceLabel": "https://www.gianlucadimarzio.com/",
+        "sourceType": "Live mercato",
+        "sourceVerification": "MEDIA_NON_UFFICIALE",
+        "note": "Di Marzio live segnala il Deportivo con Luca Pellegrini nella lista per la fascia. Interesse non ufficiale: nessun cambio rosa.",
+        "checkRoster": "Da monitorare: aggiornare rosa solo a ufficialita/deposito.",
+        "officialityRule": "Se diventa ufficiale, spostare in Ufficialita e rimuovere dai rumor attivi.",
+        "updateFlag": "V722",
+        "excelSheet": "Agg_18_07_v77_Globale"
       }
     ],
     "lecce": [
@@ -492803,8 +492870,8 @@
       {
         "teamId": "cagliari",
         "teamName": "Cagliari",
-        "playerName": "Akarakiri",
-        "target": "Akarakiri",
+        "playerName": "Demi Akarakiri",
+        "target": "Demi Akarakiri",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -492843,7 +492910,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "cagliari",
@@ -495202,8 +495270,8 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Atta",
-        "target": "Atta",
+        "playerName": "Arthur Atta",
+        "target": "Arthur Atta",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -495242,7 +495310,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "fiorentina",
@@ -496466,8 +496535,8 @@
       {
         "teamId": "genoa",
         "teamName": "Genoa",
-        "playerName": "Baldanzi",
-        "target": "Baldanzi",
+        "playerName": "Tommaso Baldanzi",
+        "target": "Tommaso Baldanzi",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -496506,7 +496575,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "genoa",
@@ -498405,8 +498475,8 @@
       {
         "teamId": "juventus",
         "teamName": "Juventus",
-        "playerName": "Boga",
-        "target": "Boga",
+        "playerName": "Jeremie Boga",
+        "target": "Jeremie Boga",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -498445,7 +498515,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "juventus",
@@ -499487,8 +499558,8 @@
       {
         "teamId": "lazio",
         "teamName": "Lazio",
-        "playerName": "Basic",
-        "target": "Basic",
+        "playerName": "Toma Basic",
+        "target": "Toma Basic",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "Ufficiale",
@@ -499527,7 +499598,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "lazio",
@@ -505920,8 +505992,8 @@
       {
         "teamId": "udinese",
         "teamName": "Udinese",
-        "playerName": "Atta",
-        "target": "Atta",
+        "playerName": "Arthur Atta",
+        "target": "Arthur Atta",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "Ufficiale",
@@ -505960,7 +506032,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "udinese",
@@ -506147,8 +506220,8 @@
       {
         "teamId": "venezia",
         "teamName": "Venezia",
-        "playerName": "Basic",
-        "target": "Basic",
+        "playerName": "Toma Basic",
+        "target": "Toma Basic",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -506187,7 +506260,8 @@
         "probability": "",
         "reliability": "",
         "check": "",
-        "rule": ""
+        "rule": "",
+        "aliasAppliedV722": true
       },
       {
         "teamId": "venezia",
@@ -511538,8 +511612,8 @@
         {
           "teamId": "cagliari",
           "teamName": "Cagliari",
-          "playerName": "Akarakiri",
-          "target": "Akarakiri",
+          "playerName": "Demi Akarakiri",
+          "target": "Demi Akarakiri",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Ufficiale",
@@ -511578,7 +511652,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "cagliari",
@@ -514984,8 +515059,8 @@
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
-          "playerName": "Atta",
-          "target": "Atta",
+          "playerName": "Arthur Atta",
+          "target": "Arthur Atta",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Ufficiale",
@@ -515024,7 +515099,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "fiorentina",
@@ -515978,8 +516054,8 @@
         {
           "teamId": "fiorentina",
           "teamName": "Fiorentina",
-          "playerName": "Arokodare",
-          "target": "Arokodare",
+          "playerName": "Tolu Arokodare",
+          "target": "Tolu Arokodare",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Offerta presentata, Wolverhampton fa muro",
@@ -516018,7 +516094,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "fiorentina",
@@ -518566,8 +518643,8 @@
         {
           "teamId": "genoa",
           "teamName": "Genoa",
-          "playerName": "Baldanzi",
-          "target": "Baldanzi",
+          "playerName": "Tommaso Baldanzi",
+          "target": "Tommaso Baldanzi",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Ufficiale",
@@ -518606,7 +518683,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "genoa",
@@ -522719,6 +522797,32 @@
           "rule": "Rumor TM normale: senza stretta verde resta trattativa.",
           "excelSheet": "Trattative_Squadre",
           "version": "V712"
+        },
+        {
+          "teamId": "inter",
+          "teamName": "Inter",
+          "playerName": "Roberts Apsits",
+          "target": "Roberts Apsits",
+          "direction": "incoming",
+          "directionLabel": "Entrata",
+          "status": "Trattativa/arrivo chiuso - non ufficiale",
+          "updatedAt": "2026-07-18",
+          "date": "2026-07-18",
+          "role": "P",
+          "fromTo": "Virtus Francavilla -> Inter",
+          "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "sourceName": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "sourceType": "Live mercato",
+          "sourceVerification": "MEDIA_NON_UFFICIALE",
+          "note": "Sky live segnala arrivo chiuso del portiere 2006 ex Virtus Francavilla, possibile prestito Serie C. Non aggiornare rosa finche manca comunicato/deposito.",
+          "checkRoster": "Da monitorare: aggiornare rosa solo a ufficialita/deposito.",
+          "officialityRule": "Se diventa ufficiale, spostare in Ufficialita e rimuovere dai rumor attivi.",
+          "updateFlag": "V722",
+          "excelSheet": "Agg_18_07_v77_Globale"
         }
       ],
       "talksOutgoing": [
@@ -523182,8 +523286,8 @@
         {
           "teamId": "juventus",
           "teamName": "Juventus",
-          "playerName": "Boga",
-          "target": "Boga",
+          "playerName": "Jeremie Boga",
+          "target": "Jeremie Boga",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Ufficiale",
@@ -523222,7 +523326,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "juventus",
@@ -526664,8 +526769,8 @@
         {
           "teamId": "lazio",
           "teamName": "Lazio",
-          "playerName": "Basic",
-          "target": "Basic",
+          "playerName": "Toma Basic",
+          "target": "Toma Basic",
           "direction": "outgoing",
           "directionLabel": "Uscita",
           "status": "Ufficiale",
@@ -526704,7 +526809,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "lazio",
@@ -527566,6 +527672,32 @@
           "reliability": "",
           "check": "Monitorare ritiro e gerarchie Lazio",
           "rule": "Data aggiornata per nuova voce di uscita."
+        },
+        {
+          "teamId": "lazio",
+          "teamName": "Lazio",
+          "playerName": "Lu. Pellegrini",
+          "target": "Lu. Pellegrini",
+          "direction": "outgoing",
+          "directionLabel": "Uscita",
+          "status": "Monitoraggio Deportivo - non ufficiale",
+          "updatedAt": "2026-07-18",
+          "date": "2026-07-18",
+          "role": "D",
+          "fromTo": "Lazio -> Deportivo La Coruna",
+          "source": "https://www.gianlucadimarzio.com/",
+          "url": "https://www.gianlucadimarzio.com/",
+          "articleUrl": "https://www.gianlucadimarzio.com/",
+          "href": "https://www.gianlucadimarzio.com/",
+          "sourceName": "https://www.gianlucadimarzio.com/",
+          "sourceLabel": "https://www.gianlucadimarzio.com/",
+          "sourceType": "Live mercato",
+          "sourceVerification": "MEDIA_NON_UFFICIALE",
+          "note": "Di Marzio live segnala il Deportivo con Luca Pellegrini nella lista per la fascia. Interesse non ufficiale: nessun cambio rosa.",
+          "checkRoster": "Da monitorare: aggiornare rosa solo a ufficialita/deposito.",
+          "officialityRule": "Se diventa ufficiale, spostare in Ufficialita e rimuovere dai rumor attivi.",
+          "updateFlag": "V722",
+          "excelSheet": "Agg_18_07_v77_Globale"
         }
       ],
       "injuries": [
@@ -542287,8 +542419,8 @@
         {
           "teamId": "udinese",
           "teamName": "Udinese",
-          "playerName": "Atta",
-          "target": "Atta",
+          "playerName": "Arthur Atta",
+          "target": "Arthur Atta",
           "direction": "outgoing",
           "directionLabel": "Uscita",
           "status": "Ufficiale",
@@ -542327,7 +542459,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "udinese",
@@ -543431,8 +543564,8 @@
         {
           "teamId": "venezia",
           "teamName": "Venezia",
-          "playerName": "Basic",
-          "target": "Basic",
+          "playerName": "Toma Basic",
+          "target": "Toma Basic",
           "direction": "incoming",
           "directionLabel": "Entrata",
           "status": "Ufficiale",
@@ -543471,7 +543604,8 @@
           "probability": "",
           "reliability": "",
           "check": "",
-          "rule": ""
+          "rule": "",
+          "aliasAppliedV722": true
         },
         {
           "teamId": "venezia",
@@ -545609,10 +545743,10 @@
         "target": "Atalanta-Atalanta Under 23",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Annunciata - fonte ufficiale club / da giocare al controllo 11:49",
+        "status": "Annunciata - fonte ufficiale club / da giocare al controllo 15:43",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Fonte ufficiale Atalanta v72: test-match in famiglia con U23 alle 17, diretta YouTube/Bergamo TV; al controllo 11:49 non giocata.",
+        "note": "Agg V722: fonte ufficiale Atalanta conferma test alle 17 a Clusone con diretta YouTube/Bergamo TV; non ancora giocato al controllo 15:43, nessun minutaggio inserito.",
         "source": "https://www.atalanta.it/news/preseason-2026-27-alle-17-amichevole-con-l-u23-a-clusone",
         "url": "https://www.atalanta.it/news/preseason-2026-27-alle-17-amichevole-con-l-u23-a-clusone",
         "articleUrl": "https://www.atalanta.it/news/preseason-2026-27-alle-17-amichevole-con-l-u23-a-clusone",
@@ -545621,7 +545755,7 @@
         "sourceLabel": "Atalanta sito ufficiale",
         "sourceType": "Sito ufficiale club",
         "sourceVerification": "OK_UFFICIALE_CLUB",
-        "sourceVerificationNote": "Agg v72: sostituita/rafforzata fonte TMW con fonte ufficiale club.",
+        "sourceVerificationNote": "Agg V722: da ricontrollare post-gara.",
         "sources": [
           {
             "source": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
@@ -545846,7 +545980,7 @@
         "status": "Giocata - tabellino ufficiale club / risultato 0-4",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Agg v75: tabellino ufficiale Bologna pubblicato. Bologna: Pessina (46 Happonen), Miranda (46 Papazov), Helland (46 Ilic), Casale (46 Vitik), De Silvestri (46 Zortea), Badori (46 Cambiaghi), Pobega (46 El Azzouzi), Dominguez (46 Bernardeschi), Odgaard (46 Riccardo Orsolini), Rowe, Castro (46 Dallinga). Reti Arminia: Grodowski 8 e 14, Worl 29, Bauer 90. Dominguez ammonito 35, Rowe espulso 40. Minutaggi inseriti in Amichevoli_Giocatori.",
+        "note": "Agg V722: tabellino ufficiale Bologna già presente. Casale ha giocato 45 minuti da titolare senza infortunio gara; monitoraggio Infortunati v70 chiuso/rientrato. Minutaggi Bologna già inseriti in Amichevoli_Giocatori.",
         "source": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
         "url": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
         "articleUrl": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
@@ -547702,10 +547836,10 @@
         "target": "Basilea-Juventus",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Pre-gara - formazioni ufficiali / non giocata al controllo 14:36",
+        "status": "In corso/live 0-0 al 17' - nessun tabellino finale al controllo 15:50",
         "updatedAt": "2026-07-18",
         "date": "46221",
-        "note": "Agg v76: Sky pubblica le formazioni ufficiali di Basilea-Juventus. Juventus 4-2-3-1: Di Gregorio; Kalulu, Gatti, Kelly, Cambiaso; Locatelli, Douglas Luiz; Zhegrova, Adzic, Boga; Ekhator. Non convocati Thuram e Celik. Partita prevista alle 15:30: niente minuti/gol/infortuni gara finche non esce tabellino post-partita.",
+        "note": "Agg V722: Sky live segnala Basilea-Juventus 0-0 al 17' al controllo 15:50. Nessun tabellino finale: non compilati minutaggi/gol/infortuni gara. Conservate formazioni ufficiali Juventus V76/V77.",
         "source": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
         "url": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
         "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
@@ -547713,8 +547847,8 @@
         "sourceName": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
         "sourceLabel": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
         "sourceType": "Sky Sport live formazioni",
-        "sourceVerification": "OK_PRE_GARA_NON_TABELLINO",
-        "sourceVerificationNote": "Agg v76: aggiornamento pre-gara, non va compilata Amichevoli_Giocatori.",
+        "sourceVerification": "LIVE_PARZIALE_NON_TABELLINO",
+        "sourceVerificationNote": "Agg V722: live parziale, ricontrollare post-gara.",
         "sources": [
           {
             "source": "https://www.juventus.com/it/news/articoli/amichevole-i-convocati-per-basilea-juventus",
@@ -551707,53 +551841,6 @@
         "injuryReturn": "Da valutare / monitorare nel ritiro",
         "impact": "Basso-medio: situazione fisica da monitorare, già presente anche come voce mercato",
         "injuryImpact": "Basso-medio: situazione fisica da monitorare, già presente anche come voce mercato"
-      },
-      {
-        "teamId": "bologna",
-        "teamName": "Bologna",
-        "playerName": "Casale",
-        "target": "Casale",
-        "direction": "incoming",
-        "directionLabel": "Entrata",
-        "status": "Da monitorare / ai box",
-        "updatedAt": "2026-07-09",
-        "date": "2026-07-09",
-        "note": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
-        "source": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-        "url": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-        "articleUrl": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-        "href": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-        "sourceName": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-        "sourceLabel": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-        "sourceType": "Infortunio/SOS",
-        "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
-        "sourceVerificationNote": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
-        "sources": [
-          {
-            "source": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-            "url": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-            "articleUrl": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-            "href": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-            "sourceName": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-            "sourceLabel": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
-            "status": "Da monitorare / ai box",
-            "updatedAt": "2026-07-09",
-            "sourceType": "Infortunio/SOS",
-            "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
-            "sourceVerificationNote": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
-            "note": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma."
-          }
-        ],
-        "role": "D",
-        "injuryStatus": "Da monitorare / ai box",
-        "injury": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
-        "injuryDetail": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
-        "potentialReturn": "Da definire; verificare eventuale comunicato Bologna.",
-        "returnDate": "Da definire; verificare eventuale comunicato Bologna.",
-        "injuryReturn": "Da definire; verificare eventuale comunicato Bologna.",
-        "impact": "Basso-medio",
-        "injuryImpact": "Basso-medio",
-        "updateFlag": "V716"
       }
     ],
     "cagliari": [],
@@ -561026,6 +561113,12 @@
       "url": "https://sport.sky.it/calcio/serie-a/2026/07/18/juventus-basilea-amichevole-risultato-gol",
       "use": "",
       "consultedAt": "2026-07-18"
+    },
+    {
+      "source": "Juventus - formazioni ufficiali Basilea-Juventus",
+      "url": "https://www.juventus.com/it/news/articoli/amichevole-2026-2027-basilea-juventus-formazioni-ufficiali",
+      "use": "Fonte formazioni ufficiali pre/live, nessun tabellino finale V722.",
+      "consultedAt": "2026-07-18"
     }
   ],
   "transfermarktRumors": [
@@ -564634,11 +564727,12 @@
           "goals": 0,
           "ownGoals": 0,
           "injuryGame": "NO gara",
-          "note": "Titolare primo tempo",
+          "note": "Titolare primo tempo; rientro confermato, monitoraggio SOS chiuso V722.",
           "source": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
           "url": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
           "articleUrl": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
-          "href": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/"
+          "href": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
+          "rientroSosChiusoV722": true
         },
         {
           "teamId": "bologna",
@@ -564997,7 +565091,8 @@
           "articleUrl": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
           "href": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/"
         }
-      ]
+      ],
+      "totals": {}
     }
   },
   "friendlyPlayerStatsByTeam": {
@@ -592249,5 +592344,522 @@
   "playerFriendliesFeatureV721": {
     "enabled": true,
     "description": "Cliccando un giocatore, la scheda mostra le amichevoli giocate trovate in friendlyPlayerStatsByMatch con badge minuti/titolare/gol/autogol/infortunio gara."
-  }
+  },
+  "injuriesClosedV722": [
+    {
+      "teamId": "bologna",
+      "teamName": "Bologna",
+      "playerName": "Casale",
+      "target": "Casale",
+      "direction": "incoming",
+      "directionLabel": "Entrata",
+      "status": "Da monitorare / ai box",
+      "updatedAt": "2026-07-09",
+      "date": "2026-07-09",
+      "note": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
+      "source": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+      "url": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+      "articleUrl": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+      "href": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+      "sourceName": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+      "sourceLabel": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+      "sourceType": "Infortunio/SOS",
+      "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+      "sourceVerificationNote": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
+      "sources": [
+        {
+          "source": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+          "url": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+          "articleUrl": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+          "href": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+          "sourceName": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+          "sourceLabel": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+          "status": "Da monitorare / ai box",
+          "updatedAt": "2026-07-09",
+          "sourceType": "Infortunio/SOS",
+          "sourceVerification": "OK_MEDIA_NON_UFFICIALE",
+          "sourceVerificationNote": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma.",
+          "note": "Aggiunto v716 da Excel V70: monitoraggio non ufficiale; evitare stop certo finché il club non conferma."
+        }
+      ],
+      "role": "D",
+      "injuryStatus": "Da monitorare / ai box",
+      "injury": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
+      "injuryDetail": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
+      "potentialReturn": "Da definire; verificare eventuale comunicato Bologna.",
+      "returnDate": "Da definire; verificare eventuale comunicato Bologna.",
+      "injuryReturn": "Da definire; verificare eventuale comunicato Bologna.",
+      "impact": "Basso-medio",
+      "injuryImpact": "Basso-medio",
+      "updateFlag": "V716",
+      "closedByV722": true,
+      "closedReason": "Rientrato: 45 minuti da titolare in Bologna-Arminia 0-4, nessun INF gara."
+    }
+  ],
+  "confirmedDuplicateAliasesV722": [
+    {
+      "from": "A. Sala",
+      "to": "Alex Sala",
+      "confirmedByUser": true
+    },
+    {
+      "from": "L. Berardi",
+      "to": "Lorenzo Berardi",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Akarakiri",
+      "to": "Demi Akarakiri",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Akinsanmiro",
+      "to": "Ebenezer Akinsanmiro",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Arokodare",
+      "to": "Tolu Arokodare",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Atta",
+      "to": "Arthur Atta",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Balbo",
+      "to": "Luis Balbo",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Baldanzi",
+      "to": "Tommaso Baldanzi",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Basic",
+      "to": "Toma Basic",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Boga",
+      "to": "Jeremie Boga",
+      "confirmedByUser": true
+    },
+    {
+      "from": "Riccardo Oraolini",
+      "to": "Riccardo Orsolini",
+      "confirmedByUser": true
+    }
+  ],
+  "aliasesNormalizedV722": [
+    {
+      "container": "playersByTeam",
+      "teamId": "fiorentina",
+      "field": "playerName",
+      "from": "Balbo",
+      "to": "Luis Balbo"
+    },
+    {
+      "container": "playersByTeam",
+      "teamId": "fiorentina",
+      "field": "playerName",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "playersByTeam",
+      "teamId": "genoa",
+      "field": "playerName",
+      "from": "Baldanzi",
+      "to": "Tommaso Baldanzi"
+    },
+    {
+      "container": "playersByTeam",
+      "teamId": "inter",
+      "field": "playerName",
+      "from": "Akinsanmiro",
+      "to": "Ebenezer Akinsanmiro"
+    },
+    {
+      "container": "playersByTeam",
+      "teamId": "lecce",
+      "field": "playerName",
+      "from": "A. Sala",
+      "to": "Alex Sala"
+    },
+    {
+      "container": "playersByTeam",
+      "teamId": "venezia",
+      "field": "playerName",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "playersByTeam",
+      "teamId": "venezia",
+      "field": "playerName",
+      "from": "L. Berardi",
+      "to": "Lorenzo Berardi"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "cagliari",
+      "field": "playerName",
+      "from": "Akarakiri",
+      "to": "Demi Akarakiri"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "cagliari",
+      "field": "target",
+      "from": "Akarakiri",
+      "to": "Demi Akarakiri"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "fiorentina",
+      "field": "playerName",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "fiorentina",
+      "field": "target",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "genoa",
+      "field": "playerName",
+      "from": "Baldanzi",
+      "to": "Tommaso Baldanzi"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "genoa",
+      "field": "target",
+      "from": "Baldanzi",
+      "to": "Tommaso Baldanzi"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "juventus",
+      "field": "playerName",
+      "from": "Boga",
+      "to": "Jeremie Boga"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "juventus",
+      "field": "target",
+      "from": "Boga",
+      "to": "Jeremie Boga"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "lazio",
+      "field": "playerName",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "lazio",
+      "field": "target",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "udinese",
+      "field": "playerName",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "udinese",
+      "field": "target",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "venezia",
+      "field": "playerName",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "officialMovesByTeam",
+      "teamId": "venezia",
+      "field": "target",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "teamTransferTalksByTeam",
+      "teamId": "fiorentina",
+      "field": "playerName",
+      "from": "Arokodare",
+      "to": "Tolu Arokodare"
+    },
+    {
+      "container": "teamTransferTalksByTeam",
+      "teamId": "fiorentina",
+      "field": "target",
+      "from": "Arokodare",
+      "to": "Tolu Arokodare"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "cagliari",
+      "field": "playerName",
+      "from": "Akarakiri",
+      "to": "Demi Akarakiri"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "cagliari",
+      "field": "target",
+      "from": "Akarakiri",
+      "to": "Demi Akarakiri"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "fiorentina",
+      "field": "playerName",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "fiorentina",
+      "field": "target",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "fiorentina",
+      "field": "playerName",
+      "from": "Arokodare",
+      "to": "Tolu Arokodare"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "fiorentina",
+      "field": "target",
+      "from": "Arokodare",
+      "to": "Tolu Arokodare"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "genoa",
+      "field": "playerName",
+      "from": "Baldanzi",
+      "to": "Tommaso Baldanzi"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "genoa",
+      "field": "target",
+      "from": "Baldanzi",
+      "to": "Tommaso Baldanzi"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "juventus",
+      "field": "playerName",
+      "from": "Boga",
+      "to": "Jeremie Boga"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "juventus",
+      "field": "target",
+      "from": "Boga",
+      "to": "Jeremie Boga"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "lazio",
+      "field": "playerName",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "lazio",
+      "field": "target",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "udinese",
+      "field": "playerName",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "udinese",
+      "field": "target",
+      "from": "Atta",
+      "to": "Arthur Atta"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "venezia",
+      "field": "playerName",
+      "from": "Basic",
+      "to": "Toma Basic"
+    },
+    {
+      "container": "marketSummaryByTeam",
+      "teamId": "venezia",
+      "field": "target",
+      "from": "Basic",
+      "to": "Toma Basic"
+    }
+  ],
+  "teamTransferTalksPatchedV722": [
+    {
+      "teamId": "inter",
+      "playerName": "Roberts Apsits",
+      "result": "added"
+    },
+    {
+      "teamId": "lazio",
+      "playerName": "Lu. Pellegrini",
+      "result": "added"
+    }
+  ],
+  "friendliesPatchedV722": [
+    {
+      "teamId": "atalanta",
+      "event": "Atalanta-Atalanta Under 23",
+      "action": "Atalanta-U23 aggiornata a controllo 15:43, non giocata"
+    },
+    {
+      "teamId": "bologna",
+      "event": "Bologna-Arminia Bielefeld",
+      "action": "annotato rientro Casale 45 minuti"
+    },
+    {
+      "teamId": "juventus",
+      "event": "Basilea-Juventus",
+      "action": "Basilea-Juventus live parziale 0-0 al 17, nessun tabellino"
+    }
+  ],
+  "playersPatchedV722": [
+    {
+      "teamId": "bologna",
+      "playerName": "Casale",
+      "before": {
+        "playerName": "Casale",
+        "physicalStatus": "Da monitorare / ai box",
+        "injuryStatus": "Da monitorare / ai box",
+        "injuryDetail": "Ai box nel ritiro Bologna secondo SOS Fanta/Resto del Carlino; nessun dettaglio clinico ufficiale club.",
+        "injurySource": "https://www.sosfanta.com/squadra/bologna/bologna-i-tempi-di-recupero-per-holm-ecco-quando-potra-rientrare-out-anche-casale/",
+        "injuryUpdatedAt": "2026-07-09",
+        "injuryNote": "Aggiunto SOS v716 da Excel V70.",
+        "marketStatus": "In rosa"
+      },
+      "after": {
+        "playerName": "Casale",
+        "physicalStatus": "Disponibile / rientrato in amichevole",
+        "injuryStatus": "Disponibile / rientrato in amichevole",
+        "injuryDetail": "Monitoraggio ai box chiuso: 45 minuti da titolare in Bologna-Arminia 0-4, nessun infortunio gara segnalato.",
+        "injurySource": "https://www.bolognafc.it/bologna-arminia-bielefeld-0-4-il-tabellino/",
+        "injuryUpdatedAt": "2026-07-18",
+        "injuryNote": "Agg V722: chiuso monitoraggio SOS/ai box grazie al tabellino ufficiale Bologna-Arminia; giocati 45 minuti da titolare."
+      }
+    }
+  ],
+  "officialityControlV722": {
+    "activeOfficialRumors": 0,
+    "rule": "I giocatori con ufficialita attiva non devono restare nei rumor attivi; controllo V722 OK."
+  },
+  "playerFriendliesFeatureV722": {
+    "enabled": true,
+    "clickFromFriendlyDetailOpensPlayer": true,
+    "summaryInPlayerDetail": true,
+    "description": "Nelle schede amichevoli il click sul giocatore apre la scheda giocatore; nel dettaglio restano visibili tutte le amichevoli giocate con minuti/gol/AG/INF."
+  },
+  "neverGlobalAliasV722": [
+    "Esposito",
+    "F. Esposito",
+    "Pessina",
+    "S. Esposito",
+    "Esposito",
+    "Pessina"
+  ],
+  "duplicateNameCandidatesV722": [
+    {
+      "short": "Brescianini",
+      "full": "Marco Brescianini",
+      "where": "Atalanta rosa / mercato",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Carnesecchi",
+      "full": "Marco Carnesecchi",
+      "where": "Atalanta rosa / listone",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Scalvini",
+      "full": "Giorgio Scalvini",
+      "where": "Atalanta rosa / mercato",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Zappacosta",
+      "full": "Davide Zappacosta",
+      "where": "Atalanta rosa / mercato",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Miranda",
+      "full": "Juan Miranda",
+      "where": "Bologna rosa / amichevoli",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Castro",
+      "full": "Santiago Castro",
+      "where": "Bologna rosa / amichevoli",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Dallinga",
+      "full": "Thijs Dallinga",
+      "where": "Bologna rosa / amichevoli",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Vitik",
+      "full": "Martin Vitik",
+      "where": "Bologna rosa / amichevoli",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Locatelli",
+      "full": "Manuel Locatelli",
+      "where": "Juventus rosa / amichevoli",
+      "action": "Da confermare"
+    },
+    {
+      "short": "Cambiaso",
+      "full": "Andrea Cambiaso",
+      "where": "Juventus rosa / amichevoli",
+      "action": "Da confermare"
+    }
+  ]
 }

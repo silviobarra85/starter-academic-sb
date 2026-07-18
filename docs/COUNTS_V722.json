@@ -1,0 +1,21 @@
+{
+  "version": "V722",
+  "generatedAt": "2026-07-18T16:05:00+02:00",
+  "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v78.xlsx",
+  "teams": 20,
+  "players": 781,
+  "duplicateExactPlayers": 0,
+  "duplicatePlayerIds": 0,
+  "officialMoves": 362,
+  "teamTransferTalks": 434,
+  "activeOfficialRumors": 0,
+  "injuries": 23,
+  "friendlies": 118,
+  "friendlyMatchDetails": 2,
+  "friendlyPlayerStats": 47,
+  "sources": 672,
+  "confirmedAliasesV722": 11,
+  "duplicateCandidatesV722": 10,
+  "injuriesClosedV722": 1,
+  "friendlyPlayerClickOpensPlayerDetail": true
+}

@@ -36,3 +36,6 @@ cp -R overlay_iosudo_v717/docs/* docs/
 ## Prossima attività consigliata
 
 Confermare o respingere i 10 nuovi duplicati in `docs/IOSUDO_DUPLICATE_CANDIDATES_V717.md` prima della prossima normalizzazione massiva.
+
+## V722
+- Excel V78: Casale rientrato, alias confermati, click giocatore da amichevole verso dettaglio giocatore.
