@@ -1,4 +1,4 @@
-# AI Assistant Handoff V730
+# AI Assistant Handoff V731
 
 Base: V729. Input: Excel V92.
 
@@ -8,4 +8,4 @@ Regole mantenute:
 - nuovi giocatori/alias con nome+cognome appena disponibile, tranne visualizzazione XI;
 - Ferguson, Esposito e Thuram restano protetti da fusioni globali.
 
-Output atteso: overlay_iosudo_v730.zip + Excel V93_alias_1040.
+Output atteso: overlay_iosudo_V731.zip + Excel V93_alias_1040.
