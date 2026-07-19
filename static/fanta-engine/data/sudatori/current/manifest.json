@@ -1,28 +1,28 @@
 {
-  "id": "sudatori-iosudo-v733",
-  "version": "V733",
+  "id": "sudatori-iosudo-v734",
+  "version": "V734",
   "seasonId": "2026-27",
   "updatedAt": "2026-07-19",
-  "updatedAtTime": "2026-07-19T10:35:00+02:00",
-  "generatedAt": "2026-07-19T10:35:00+02:00",
-  "sourceFile": "v99_2026-07-19_fantacalcio_serie_a_2026_27_aggiornamento_globale(2).xlsx",
-  "dedupVersion": "V733-confirmed-aliases-v99-roma-primavera",
+  "updatedAtTime": "2026-07-19T13:00:00+02:00",
+  "generatedAt": "2026-07-19T13:00:00+02:00",
+  "sourceFile": "v101_2026-07-19_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
+  "dedupVersion": "V734",
   "notes": "V733 aggiornata da Excel V99: alias confermati, Roma-Roma Primavera 6-0 con tabellino, Parma-Parma Primavera in calendario, Wesley rientrato e monitoraggi Rabiot/Romagnoli.",
   "teams": 20,
-  "players": 1056,
+  "players": 1057,
   "friendlies": 120,
   "teamTransferTalks": 431,
   "injuries": 25,
   "officialMoves": 372,
-  "sources": 706,
+  "sources": 709,
   "officialTalksFiltered": 168,
   "activeOfficialRumors": 0,
-  "friendlyMatchDetails": 8,
-  "friendlyPlayerStats": 162,
+  "friendlyMatchDetails": 9,
+  "friendlyPlayerStats": 186,
   "duplicatesExact": 0,
   "duplicateIds": 0,
-  "buildTag": "iosudo-v723-xlsx-v80",
-  "versionNumber": 733,
+  "buildTag": "iosudo-v734-excel-v101-overlay-time-header",
+  "versionNumber": 734,
   "baseVersion": "V732",
   "transfermarktRumors": 46,
   "duplicateExactPlayers": 0,
@@ -68,7 +68,7 @@
   "friendliesPatchedV722": 3,
   "injuriesClosedV722": 1,
   "friendlyPlayerClickOpensPlayerDetail": true,
-  "playersRows": 1056,
+  "playersRows": 1057,
   "playersCountMode": "alias-sheet-profiles-including-listone-fantasy-extras-and-v92-rumor-profiles",
   "playerKpiUsesExcelDistinctCount": true,
   "listoneOnlyVirtualPlayersExcludedFromPlayerKpi": true,
@@ -118,7 +118,7 @@
   "officialTalksClosedV730": 4,
   "sourcesAddedV730": 4,
   "playersAddedV730": 2,
-  "aliasRows": 1054,
+  "aliasRows": 1056,
   "confirmedAliasesV733": 10,
   "duplicateCandidatesV733": 10,
   "sourcesAddedV733": 5,
@@ -126,5 +126,68 @@
   "friendlyPlayerStatsAddedV733": 16,
   "injuriesClosedV733": 1,
   "playersAddedV733": 2,
-  "fullNamePolicyV733": true
+  "fullNamePolicyV733": true,
+  "overlayGeneratedAt": "2026-07-19T13:00:00+02:00",
+  "overlayGeneratedAtLabel": "19/07/2026 13:00 CEST",
+  "confirmedAliasesV734": [
+    {
+      "alias": "Okolo",
+      "canonical": "Daniel Okolo"
+    },
+    {
+      "alias": "Doekhi",
+      "canonical": "Danilho Doekhi"
+    },
+    {
+      "alias": "Puczka",
+      "canonical": "David Puczka"
+    },
+    {
+      "alias": "Mascardi",
+      "canonical": "Diego Mascardi"
+    },
+    {
+      "alias": "Malen",
+      "canonical": "Donyell Malen"
+    },
+    {
+      "alias": "Luiz",
+      "canonical": "Douglas Luiz"
+    },
+    {
+      "alias": "Zapata",
+      "canonical": "Duvan Zapata"
+    },
+    {
+      "alias": "Havel",
+      "canonical": "Elias Havel"
+    },
+    {
+      "alias": "Kospo",
+      "canonical": "Eman Kospo"
+    },
+    {
+      "alias": "Marchwiński",
+      "canonical": "Filip Marchwiński"
+    }
+  ],
+  "playersAddedV734": [
+    "Dominik Drobnic",
+    "Abdou-Salam Konate"
+  ],
+  "friendliesPatchedV734": [
+    "Parma-Parma Primavera 4-0",
+    "Udinese-NK Istra 2-2 correzioni Okoye/Kristensen/Palma"
+  ],
+  "friendlyPlayerStatsAddedV734": 22,
+  "friendlyPlayerStatsCorrectedV734": {
+    "Udinese-NK Istra": "Okoye 45, Kristensen titolare, Palma aggiunto"
+  },
+  "sourcesAddedV734": [
+    "Sky Sport - amichevoli Serie A 19 luglio",
+    "Parma Calcio - Dominik Drobnic miglior difensore Primavera 1",
+    "Parma Calcio - profilo Abdou-Salam Konate"
+  ],
+  "fullNamePolicyV734": "Alias_Giocatori aggiornato con nome e cognome quando disponibile; XI non normalizzati forzatamente.",
+  "headerOverlayTimestampV734": "2026-07-19T13:00:00+02:00"
 }
