@@ -411376,22 +411376,22 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v729",
-    "version": "V729",
+    "id": "sudatori-iosudo-v730",
+    "version": "V730",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-18",
-    "updatedAtTime": "2026-07-18T21:25:00+02:00",
-    "generatedAt": "2026-07-18T21:25:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v90.xlsx",
-    "dedupVersion": "V723-confirmed-aliases-v80-count-fix",
-    "notes": "V729 aggiornata da Excel V90: Udinese-NK Istra 2-2 con 21 righe giocatore, Monza-Pro Vercelli 4-3, Torino-Pinzolo corretto con fonte ufficiale 13-0, Basilea-Juventus con badge risultato 0-0, Mateusz Kowalski prestito ufficiale, Ederson D.S. consolidato in Ederson, nuovi inserimenti con nome+cognome fuori dagli XI.",
+    "updatedAtTime": "2026-07-18T22:05:00+02:00",
+    "generatedAt": "2026-07-18T22:05:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v92.xlsx",
+    "dedupVersion": "V730-confirmed-aliases-v92-carboni-disambiguation",
+    "notes": "V730 aggiornata da Excel V92: Desplanches ufficiale Frosinone, Filip Marchwiński ceduto ufficialmente al KS Cracovia, Cavani sondaggio Lecce non ufficiale, Carboni disambiguato Andrea/Valentin/Franco, foglio alias con nome+cognome quando disponibile.",
     "teams": 20,
-    "players": 1038,
+    "players": 1040,
     "friendlies": 118,
-    "teamTransferTalks": 435,
+    "teamTransferTalks": 432,
     "injuries": 25,
-    "officialMoves": 365,
-    "sources": 690,
+    "officialMoves": 367,
+    "sources": 694,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 5,
@@ -411399,8 +411399,8 @@
     "duplicatesExact": 0,
     "duplicateIds": 0,
     "buildTag": "iosudo-v723-xlsx-v80",
-    "versionNumber": 729,
-    "baseVersion": "V728",
+    "versionNumber": 730,
+    "baseVersion": "V729",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
@@ -411445,8 +411445,8 @@
     "friendliesPatchedV722": 3,
     "injuriesClosedV722": 1,
     "friendlyPlayerClickOpensPlayerDetail": true,
-    "playersRows": 1040,
-    "playersCountMode": "alias-sheet-profiles-including-listone-fantasy-extras-and-v86-aliases",
+    "playersRows": 1042,
+    "playersCountMode": "alias-sheet-profiles-including-listone-fantasy-extras-and-v92-rumor-profiles",
     "playerKpiUsesExcelDistinctCount": true,
     "listoneOnlyVirtualPlayersExcludedFromPlayerKpi": true,
     "confirmedAliasesV723": 10,
@@ -411482,14 +411482,19 @@
     "friendliesSortedByDateV728": true,
     "dembeleAccentMergedV728": true,
     "zhegrovaDuplicateMergedV728": true,
-    "confirmedAliasesV729": 10,
-    "explicitDuplicateFixesV729": 1,
-    "fullNamePolicyV729": true,
-    "friendlyPlayerStatsAddedV729": 21,
-    "friendliesPatchedV729": 4,
-    "officialMovesPatchedV729": 1,
-    "basileaJuventusResultBadgeV729": true,
-    "edersonDsMergedV729": true
+    "confirmedAliasesV730": 9,
+    "explicitDuplicateFixesV730": 1,
+    "fullNamePolicyV730": true,
+    "friendlyPlayerStatsAddedV730": 21,
+    "friendliesPatchedV730": 4,
+    "officialMovesPatchedV730": 2,
+    "basileaJuventusResultBadgeV730": true,
+    "edersonDsMergedV730": true,
+    "carboniDisambiguatedV730": 3,
+    "duplicateCandidatesV730": 10,
+    "officialTalksClosedV730": 4,
+    "sourcesAddedV730": 4,
+    "playersAddedV730": 2
   },
   "teams": [
     {
@@ -413557,8 +413562,8 @@
         "name": "Ederson",
         "canonicalName": "Ederson",
         "aliases": "Ederson D.S.; Ederson",
-        "aliasNormalizedV729": true,
-        "duplicateMergedV729": true
+        "aliasNormalizedV730": true,
+        "duplicateMergedV730": true
       },
       {
         "id": "atalanta-gianluca-gaetano",
@@ -429121,7 +429126,7 @@
         "name": "Giovanni Fabbian",
         "canonicalName": "Giovanni Fabbian",
         "aliases": "Fabbian; Giovanni Fabbian",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "fiorentina-fagioli",
@@ -432703,6 +432708,47 @@
             }
           }
         ]
+      },
+      {
+        "id": "frosinone-sebastiano-desplanches",
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "playerName": "Sebastiano Desplanches",
+        "role": "P",
+        "coach": "",
+        "module": "",
+        "rosterSource": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+        "note": "Aggiunto V730 da ufficialita V92; chiuse le trattative residue.",
+        "updatedAt": "2026-07-18",
+        "flag": "AGGIUNTO V730",
+        "marketStatus": "Ufficiale / in rosa",
+        "marketDetail": "Frosinone ufficializza il prestito/titolo temporaneo dal Palermo.",
+        "marketSource": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+        "marketNote": "Aggiunto V730 da ufficialita V92; chiuse le trattative residue.",
+        "probableXi": false,
+        "formationPosition": "",
+        "formationSourcePosition": "",
+        "formationLine": "",
+        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "formationPhysicalRisk": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
+        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
+        "injurySeverity": "",
+        "injuryReturn": "",
+        "injurySource": "",
+        "injuryUpdatedAt": "2026-07-18",
+        "injuryNote": "",
+        "injuryImpact": "",
+        "formationCheck": "Non XI / non automatico",
+        "formationRoleOk": "",
+        "formationModuleUsed": "",
+        "formationCorrectionNote": "",
+        "originalName": "Sebastiano Desplanches",
+        "disambiguatedName": "Sebastiano Desplanches",
+        "newAcquisition": true,
+        "qualityControl": "V730 nome+cognome",
+        "_iosudoMarketRows": []
       }
     ],
     "genoa": [
@@ -436233,12 +436279,12 @@
         "virtualMarketRows": []
       },
       {
-        "id": "listone-6106-C",
+        "id": "genoa-valentin-carboni",
         "listoneOnlyPlayer": true,
         "nonActiveSlot": true,
-        "playerName": "Carboni V.",
+        "playerName": "Valentin Carboni",
         "originalName": "Carboni V.",
-        "disambiguatedName": "Carboni V.",
+        "disambiguatedName": "Valentin Carboni",
         "role": "C",
         "teamId": "genoa",
         "teamName": "Genoa",
@@ -436282,9 +436328,11 @@
             "average": 5.7,
             "fantasyAverage": 5.6,
             "outOfList": "*"
-          }
+          },
+          "canonicalPlayerName": "Valentin Carboni"
         },
-        "virtualMarketRows": []
+        "virtualMarketRows": [],
+        "target": "Valentin Carboni"
       },
       {
         "id": "listone-4970-C",
@@ -437282,7 +437330,7 @@
         "name": "Manuel Akanji",
         "canonicalName": "Manuel Akanji",
         "aliases": "Akanji; Manuel Akanji",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "inter-bastoni",
@@ -440677,7 +440725,7 @@
         "name": "Gleison Bremer",
         "canonicalName": "Gleison Bremer",
         "aliases": "Bremer; Gleison Bremer",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "juventus-juan-cabal",
@@ -445071,10 +445119,10 @@
         "sosFantaFlag": true
       },
       {
-        "id": "lazio-pedraza",
+        "id": "lazio-alfonso-pedraza",
         "teamId": "lazio",
         "teamName": "Lazio",
-        "playerName": "Pedraza",
+        "playerName": "Alfonso Pedraza",
         "role": "D",
         "coach": "Gennaro Gattuso",
         "module": "4-3-3 / 4-2-3-1",
@@ -445106,7 +445154,7 @@
         "formationModuleUsed": "4-3-3",
         "formationCorrectionNote": "Sky ufficiale",
         "originalName": "Pedraza",
-        "disambiguatedName": "Pedraza",
+        "disambiguatedName": "Alfonso Pedraza",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -445161,7 +445209,8 @@
         ],
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-lazio",
         "formationReliability": "Media",
-        "formationNote": "Provedel spostato all'Inter nelle fonti ufficiali Sky; Isaksen fuori per pubalgia/sports hernia: sostituiti con Mandas e Cancellieri."
+        "formationNote": "Provedel spostato all'Inter nelle fonti ufficiali Sky; Isaksen fuori per pubalgia/sports hernia: sostituiti con Mandas e Cancellieri.",
+        "target": "Alfonso Pedraza"
       },
       {
         "id": "lazio-provstgaard",
@@ -448888,20 +448937,20 @@
         "listoneMatchMethod": "previous-snapshot"
       },
       {
-        "id": "lecce-marchwinski",
+        "id": "lecce-filip-marchwinski",
         "teamId": "lecce",
         "teamName": "Lecce",
-        "playerName": "Marchwinski",
+        "playerName": "Filip Marchwiński",
         "role": "C",
         "coach": "Eusebio Di Francesco",
         "module": "4-3-3",
         "rosterSource": "https://www.transfermarkt.it/us-lecce/startseite/verein/1005/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
+        "updatedAt": "2026-07-18",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
+        "marketStatus": "Prestito esterno / non slot attivo",
+        "marketDetail": "Ufficiale Lecce: cessione a titolo temporaneo con opzione e percentuale futura vendita al KS Cracovia.",
+        "marketSource": "https://uslecce.it/cessione-marchwinski/",
         "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
         "probableXi": false,
         "formationPosition": "",
@@ -448909,8 +448958,8 @@
         "formationLine": "",
         "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
         "formationPhysicalRisk": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "physicalStatus": "Fuori rosa attiva / prestito esterno",
+        "injuryStatus": "Fuori rosa attiva / prestito esterno",
         "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
         "injurySeverity": "",
         "injuryReturn": "",
@@ -448923,7 +448972,7 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Marchwinski",
-        "disambiguatedName": "Marchwinski",
+        "disambiguatedName": "Filip Marchwiński",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [
@@ -449004,9 +449053,11 @@
             "average": 0,
             "fantasyAverage": 0,
             "outOfList": ""
-          }
+          },
+          "canonicalPlayerName": "Filip Marchwiński"
         },
-        "listoneMatchMethod": "previous-snapshot"
+        "listoneMatchMethod": "previous-snapshot",
+        "target": "Filip Marchwiński"
       },
       {
         "id": "lecce-mcjannet",
@@ -450443,6 +450494,47 @@
           }
         },
         "virtualMarketRows": []
+      },
+      {
+        "id": "lecce-edinson-cavani",
+        "teamId": "lecce",
+        "teamName": "Lecce",
+        "playerName": "Edinson Cavani",
+        "role": "A",
+        "coach": "",
+        "module": "",
+        "rosterSource": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+        "note": "Profilo rumor/non in rosa, aggiunto per coerenza Alias_Giocatori V92.",
+        "updatedAt": "2026-07-18",
+        "flag": "AGGIUNTO V730",
+        "marketStatus": "Sondaggio / contatto esplorativo",
+        "marketDetail": "Lecce valuta lo svincolato ex Boca Juniors; non esiste trattativa vera e propria e manca comunicato club.",
+        "marketSource": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+        "marketNote": "Profilo rumor/non in rosa, aggiunto per coerenza Alias_Giocatori V92.",
+        "probableXi": false,
+        "formationPosition": "",
+        "formationSourcePosition": "",
+        "formationLine": "",
+        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "formationPhysicalRisk": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
+        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
+        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
+        "injurySeverity": "",
+        "injuryReturn": "",
+        "injurySource": "",
+        "injuryUpdatedAt": "2026-07-18",
+        "injuryNote": "",
+        "injuryImpact": "",
+        "formationCheck": "Non XI / non automatico",
+        "formationRoleOk": "",
+        "formationModuleUsed": "",
+        "formationCorrectionNote": "",
+        "originalName": "Edinson Cavani",
+        "disambiguatedName": "Edinson Cavani",
+        "newAcquisition": false,
+        "qualityControl": "V730 nome+cognome",
+        "_iosudoMarketRows": []
       }
     ],
     "milan": [
@@ -453193,7 +453285,7 @@
         "name": "Francesco Camarda",
         "canonicalName": "Francesco Camarda",
         "aliases": "Camarda; Francesco Camarda",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "milan-chukwueze",
@@ -453653,7 +453745,7 @@
         "name": "Rafael Leao",
         "canonicalName": "Rafael Leao",
         "aliases": "Leao; Rafael Leao",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "milan-nkunku",
@@ -454843,10 +454935,10 @@
         "formationNote": "Hernani non presente nella rosa file; sostituito con Colpani. Mota Carvalho normalizzato rispetto a Dany Mota."
       },
       {
-        "id": "monza-a-carboni",
+        "id": "monza-andrea-carboni",
         "teamId": "monza",
         "teamName": "Monza",
-        "playerName": "A. Carboni",
+        "playerName": "Andrea Carboni",
         "role": "D",
         "coach": "Ivan Juric",
         "module": "3-4-2-1 / 3-4-3",
@@ -454878,7 +454970,7 @@
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
         "originalName": "A. Carboni",
-        "disambiguatedName": "A. Carboni",
+        "disambiguatedName": "Andrea Carboni",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -454903,12 +454995,14 @@
           "average": 6,
           "fantasyAverage": 6,
           "under": "22",
-          "outOfList": ""
+          "outOfList": "",
+          "canonicalPlayerName": "Andrea Carboni"
         },
         "listoneMatchMethod": "previous-snapshot",
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-monza",
         "formationReliability": "Media",
-        "formationNote": "Hernani non presente nella rosa file; sostituito con Colpani. Mota Carvalho normalizzato rispetto a Dany Mota."
+        "formationNote": "Hernani non presente nella rosa file; sostituito con Colpani. Mota Carvalho normalizzato rispetto a Dany Mota.",
+        "target": "Andrea Carboni"
       },
       {
         "id": "monza-antov",
@@ -458518,7 +458612,7 @@
         "name": "Stanislav Lobotka",
         "canonicalName": "Stanislav Lobotka",
         "aliases": "Lobotka; Stanislav Lobotka",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "napoli-mctominay",
@@ -459761,7 +459855,7 @@
         "name": "Rasmus Hojlund",
         "canonicalName": "Rasmus Hojlund",
         "aliases": "Hojlund; Rasmus Hojlund",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "napoli-lang",
@@ -463391,7 +463485,7 @@
         "coach": "Carlos Cuesta",
         "module": "4-3-3 / 4-2-3-1",
         "rosterSource": "https://www.transfermarkt.it/parma-calcio-1913/startseite/verein/130/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.; Agg V729/V90: prestito ufficiale alla Dolomiti Bellunesi; fuori rosa attiva fantacalcio.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.; Agg V730/V92: prestito ufficiale alla Dolomiti Bellunesi; fuori rosa attiva fantacalcio.",
         "updatedAt": "2026-07-18",
         "flag": "",
         "marketStatus": "Prestito esterno / non slot attivo",
@@ -463425,7 +463519,7 @@
         "name": "Mateusz Kowalski",
         "canonicalName": "Mateusz Kowalski",
         "aliases": "Kowalski; Mateusz Kowalski",
-        "aliasNormalizedV729": true,
+        "aliasNormalizedV730": true,
         "status": "Prestito esterno / non slot attivo",
         "source": "https://www.parmacalcio1913.com/flash-news/mateusz-kowalski-ceduto-a-titolo-temporaneo-alla-dolomiti-bellunesi/",
         "nonActiveSlot": true
@@ -465423,7 +465517,7 @@
         "name": "Daniele Ghilardi",
         "canonicalName": "Daniele Ghilardi",
         "aliases": "Ghilardi; Daniele Ghilardi",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "roma-hermoso",
@@ -473688,7 +473782,7 @@
         "name": "Cesare Casadei",
         "canonicalName": "Cesare Casadei",
         "aliases": "Casadei; Cesare Casadei",
-        "aliasNormalizedV729": true
+        "aliasNormalizedV730": true
       },
       {
         "id": "torino-ciammaglichella",
@@ -474250,10 +474344,10 @@
         "listoneMatchMethod": "previous-snapshot"
       },
       {
-        "id": "torino-adams",
+        "id": "torino-akor-adams",
         "teamId": "torino",
         "teamName": "Torino",
-        "playerName": "Adams",
+        "playerName": "Akor Adams",
         "role": "A",
         "coach": "Ignazio Abate",
         "module": "4-3-1-2 / 3-4-2-1",
@@ -474285,7 +474379,7 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Adams",
-        "disambiguatedName": "Adams",
+        "disambiguatedName": "Akor Adams",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -474317,10 +474411,12 @@
             "average": 5.98,
             "fantasyAverage": 6.64,
             "outOfList": ""
-          }
+          },
+          "canonicalPlayerName": "Akor Adams"
         },
         "listoneMatchMethod": "previous-snapshot",
-        "fantasyRoster": "Real Pisistrius"
+        "fantasyRoster": "Real Pisistrius",
+        "target": "Akor Adams"
       },
       {
         "id": "torino-cacciamani",
@@ -479917,11 +480013,11 @@
         "role": "A",
         "status": "Primavera / aggregato amichevole / non slot attivo",
         "marketStatus": "Primavera / aggregato amichevole / non slot attivo",
-        "marketDetail": "Entrato e in gol in Udinese-NK Istra 2-2; contratto Udinese fino al 2029 rafforzato nel file V90.",
+        "marketDetail": "Entrato e in gol in Udinese-NK Istra 2-2; contratto Udinese fino al 2029 rafforzato nel file V92.",
         "source": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
         "updatedAt": "2026-07-18",
         "nonActiveSlot": true,
-        "qualityControl": "OK - aggregato amichevole V729"
+        "qualityControl": "OK - aggregato amichevole V730"
       }
     ],
     "venezia": [
@@ -492914,144 +493010,6 @@
       {
         "teamId": "frosinone",
         "teamName": "Frosinone",
-        "playerName": "Sebastiano Desplanches",
-        "target": "Sebastiano Desplanches",
-        "direction": "Entrata",
-        "directionLabel": "Entrata",
-        "status": "Visite mediche terminate / prestito in chiusura - non ufficiale club",
-        "updatedAt": "2026-07-18",
-        "date": "2026-07-18",
-        "note": "Di Marzio 18/07: Desplanches ha terminato le visite mediche con il Frosinone. Resta trattativa fino al comunicato ufficiale Frosinone/Palermo o deposito.",
-        "source": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
-        "url": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
-        "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
-        "href": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
-        "sourceName": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
-        "sourceLabel": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-        "sourceType": "Gianluca Di Marzio",
-        "sourceVerification": "OK_NON_UFFICIALE_v76",
-        "sourceVerificationNote": "Agg v76: aggiornata riga esistente, nessun duplicato.",
-        "sources": [
-          {
-            "source": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-            "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-            "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-            "href": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-            "sourceName": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-            "sourceLabel": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
-            "status": "Operazione in chiusura",
-            "updatedAt": "2026-07-14",
-            "sourceType": "Articolo specifico",
-            "sourceVerification": "OK_ARTICOLO",
-            "sourceVerificationNote": "Fonte puntuale Di Marzio v25",
-            "note": "Di Marzio: Frosinone in chiusura a sorpresa per Desplanches in prestito; resta trattativa fino al comunicato ufficiale."
-          }
-        ],
-        "roleBrief": "Portiere",
-        "role": "Portiere",
-        "origin": "Palermo",
-        "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "Aggiornare rosa se ufficiale",
-        "rule": "",
-        "roleDetail": "",
-        "fantasyImpact": ""
-      },
-      {
-        "teamId": "frosinone",
-        "teamName": "Frosinone",
-        "playerName": "Sebastiano Desplanches",
-        "target": "Sebastiano Desplanches",
-        "direction": "incoming",
-        "directionLabel": "Entrata",
-        "status": "Trattativa in chiusura",
-        "updatedAt": "2026-07-14",
-        "date": "2026-07-14",
-        "note": "Frosinone in chiusura per Desplanches in prestito dal Palermo; possibile impatto su gerarchie portieri con Palmisani.",
-        "source": "SOS Fanta / Sky",
-        "url": "SOS Fanta / Sky",
-        "articleUrl": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
-        "href": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
-        "sourceName": "SOS Fanta / Sky",
-        "sourceLabel": "SOS Fanta / Sky",
-        "sourceType": "Articolo specifico",
-        "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "Riga aggiunta v27",
-        "sources": [
-          {
-            "source": "SOS Fanta / Sky",
-            "url": "SOS Fanta / Sky",
-            "articleUrl": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
-            "href": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
-            "sourceName": "SOS Fanta / Sky",
-            "sourceLabel": "SOS Fanta / Sky",
-            "status": "Trattativa in chiusura",
-            "updatedAt": "2026-07-14",
-            "sourceType": "Articolo specifico",
-            "sourceVerification": "OK_ARTICOLO",
-            "sourceVerificationNote": "Riga aggiunta v27",
-            "note": "Frosinone in chiusura per Desplanches in prestito dal Palermo; possibile impatto su gerarchie portieri con Palmisani."
-          }
-        ],
-        "roleBrief": "P",
-        "role": "Portiere",
-        "origin": "Palermo",
-        "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "Aggiornare rosa se ufficiale",
-        "rule": "Non ufficiale finche manca comunicato."
-      },
-      {
-        "teamId": "frosinone",
-        "teamName": "Frosinone",
-        "playerName": "Sebastiano Desplanches",
-        "target": "Sebastiano Desplanches",
-        "direction": "incoming",
-        "directionLabel": "Entrata",
-        "status": "Visite mediche iniziate / prestito in chiusura - non ufficiale club",
-        "updatedAt": "2026-07-18",
-        "date": "2026-07-18",
-        "note": "v71 Sky live 18/07: Desplanches a Villa Stuart per visite mediche. Resta trattativa fino al comunicato ufficiale Frosinone/Palermo o deposito.",
-        "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-        "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-        "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-        "sourceName": "Sky Sport live 18/07",
-        "sourceLabel": "Sky Sport live",
-        "sourceType": "Sky Sport live mercato",
-        "sourceVerification": "OK_NON_UFFICIALE_v71",
-        "sourceVerificationNote": "Agg v71: visite mediche non sufficienti per ufficialità/Rose.",
-        "sources": [
-          {
-            "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-            "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-            "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-            "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-            "sourceName": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-            "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
-            "status": "Visite mediche iniziate / prestito in chiusura - non ufficiale club",
-            "updatedAt": "2026-07-18",
-            "sourceType": "Sky Sport live mercato",
-            "sourceVerification": "OK_NON_UFFICIALE_v71",
-            "sourceVerificationNote": "Agg v71: visite mediche non sufficienti per ufficialità/Rose.",
-            "note": "Agg v71: visite mediche non sufficienti per ufficialità/Rose."
-          }
-        ],
-        "roleBrief": "P",
-        "role": "Portiere",
-        "origin": "Palermo",
-        "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "NO_ROSE: non inserire in rosa prima del comunicato ufficiale",
-        "rule": "Visite mediche non sufficienti per Ufficialita",
-        "updateFlag": "V716"
-      },
-      {
-        "teamId": "frosinone",
-        "teamName": "Frosinone",
         "playerName": "Luis Hasa",
         "target": "Luis Hasa",
         "direction": "incoming",
@@ -498726,51 +498684,6 @@
       {
         "teamId": "lecce",
         "teamName": "Lecce",
-        "playerName": "Filip Marchwinski",
-        "target": "Filip Marchwinski",
-        "direction": "outgoing",
-        "directionLabel": "Uscita",
-        "status": "Prestito in definizione / non ufficiale",
-        "updatedAt": "2026-07-17",
-        "date": "2026-07-17",
-        "note": "Sky/TMW: operazione da definire; rosa invariata finche manca comunicato club.",
-        "source": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-        "url": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-        "href": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-        "sourceName": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-        "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-        "sourceType": "",
-        "sourceVerification": "",
-        "sourceVerificationNote": "",
-        "sources": [
-          {
-            "source": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-            "url": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-            "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-            "href": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-            "sourceName": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-            "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
-            "status": "Prestito in definizione / non ufficiale",
-            "updatedAt": "2026-07-17",
-            "sourceType": "",
-            "sourceVerification": "",
-            "sourceVerificationNote": "",
-            "note": "Sky/TMW: operazione da definire; rosa invariata finche manca comunicato club."
-          }
-        ],
-        "roleBrief": "C",
-        "role": "Trequartista",
-        "origin": "Wisla Cracovia",
-        "formula": "",
-        "probability": "",
-        "reliability": "",
-        "check": "",
-        "rule": ""
-      },
-      {
-        "teamId": "lecce",
-        "teamName": "Lecce",
         "playerName": "Philip Otele",
         "target": "Philip Otele",
         "direction": "incoming",
@@ -498812,6 +498725,51 @@
         "reliability": "",
         "check": "Aggiornare rosa solo se ufficiale da club/deposito affidabile",
         "rule": "Se fonte Transfermarkt e sulla riga c e stretta di mano verde, spostare in Ufficialita e aggiornare la rosa."
+      },
+      {
+        "teamId": "lecce",
+        "teamName": "Lecce",
+        "playerName": "Edinson Cavani",
+        "target": "Edinson Cavani",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Sondaggio / contatto esplorativo - non ufficiale",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "note": "Fantacalcio.it: sondaggio Lecce per Cavani svincolato; non esiste trattativa vera e propria / nessun comunicato club. Rose invariata.",
+        "source": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+        "url": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+        "articleUrl": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+        "href": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+        "sourceName": "Fantacalcio.it",
+        "sourceLabel": "Fantacalcio.it",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Rumor/sondaggio, non ufficialita",
+        "sources": [
+          {
+            "source": "Fantacalcio.it",
+            "url": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+            "articleUrl": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+            "href": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+            "sourceName": "Fantacalcio.it",
+            "sourceLabel": "Fantacalcio.it",
+            "status": "Sondaggio / non ufficiale",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Articolo specifico",
+            "sourceVerification": "OK_ARTICOLO",
+            "sourceVerificationNote": "Rumor/sondaggio, non ufficialita",
+            "note": "Sondaggio Lecce per svincolato."
+          }
+        ],
+        "role": "A",
+        "roleBrief": "A",
+        "origin": "Svincolato",
+        "formula": "Sondaggio",
+        "probability": "Bassa",
+        "reliability": "Media-bassa",
+        "check": "Non ufficiale",
+        "rule": "Non aggiornare rose senza comunicato/deposito"
       }
     ],
     "milan": [
@@ -509561,8 +509519,8 @@
       {
         "teamId": "cagliari",
         "teamName": "Cagliari",
-        "playerName": "Romano",
-        "target": "Romano",
+        "playerName": "Alessandro Romano",
+        "target": "Alessandro Romano",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -512995,6 +512953,51 @@
         "reliability": "",
         "check": "",
         "rule": ""
+      },
+      {
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "playerName": "Sebastiano Desplanches",
+        "target": "Sebastiano Desplanches",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Ufficiale",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "note": "Comunicato Frosinone: acquisizione dal Palermo a titolo temporaneo.",
+        "source": "Frosinone sito ufficiale",
+        "url": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+        "articleUrl": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+        "href": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+        "sourceName": "Frosinone sito ufficiale",
+        "sourceLabel": "Frosinone sito ufficiale",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Fonte primaria club V92",
+        "sources": [
+          {
+            "source": "Frosinone sito ufficiale",
+            "url": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+            "articleUrl": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+            "href": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+            "sourceName": "Frosinone sito ufficiale",
+            "sourceLabel": "Frosinone sito ufficiale",
+            "status": "Ufficiale",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Sito ufficiale club",
+            "sourceVerification": "OK_UFFICIALE_CLUB",
+            "sourceVerificationNote": "Fonte primaria club V92",
+            "note": "Comunicato Frosinone: acquisizione dal Palermo a titolo temporaneo."
+          }
+        ],
+        "roleBrief": "P",
+        "role": "P",
+        "origin": "Palermo",
+        "formula": "Titolo temporaneo / prestito",
+        "probability": "100%",
+        "reliability": "Ufficiale",
+        "check": "OK",
+        "rule": "Ufficialita prevale su rumor V730"
       }
     ],
     "genoa": [
@@ -514399,8 +514402,8 @@
       {
         "teamId": "inter",
         "teamName": "Inter",
-        "playerName": "Carboni",
-        "target": "Carboni",
+        "playerName": "Valentin Carboni",
+        "target": "Valentin Carboni",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "Ufficiale",
@@ -516204,8 +516207,8 @@
       {
         "teamId": "lazio",
         "teamName": "Lazio",
-        "playerName": "Pedraza",
-        "target": "Pedraza",
+        "playerName": "Alfonso Pedraza",
+        "target": "Alfonso Pedraza",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -517328,6 +517331,51 @@
         "reliability": "",
         "check": "",
         "rule": ""
+      },
+      {
+        "teamId": "lecce",
+        "teamName": "Lecce",
+        "playerName": "Filip Marchwiński",
+        "target": "Filip Marchwiński",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Ufficiale",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "note": "Cessione ufficiale in prestito al KS Cracovia.",
+        "source": "US Lecce sito ufficiale",
+        "url": "https://uslecce.it/cessione-marchwinski/",
+        "articleUrl": "https://uslecce.it/cessione-marchwinski/",
+        "href": "https://uslecce.it/cessione-marchwinski/",
+        "sourceName": "US Lecce sito ufficiale",
+        "sourceLabel": "US Lecce sito ufficiale",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Fonte primaria club V92",
+        "sources": [
+          {
+            "source": "US Lecce sito ufficiale",
+            "url": "https://uslecce.it/cessione-marchwinski/",
+            "articleUrl": "https://uslecce.it/cessione-marchwinski/",
+            "href": "https://uslecce.it/cessione-marchwinski/",
+            "sourceName": "US Lecce sito ufficiale",
+            "sourceLabel": "US Lecce sito ufficiale",
+            "status": "Ufficiale",
+            "updatedAt": "2026-07-18",
+            "sourceType": "Sito ufficiale club",
+            "sourceVerification": "OK_UFFICIALE_CLUB",
+            "sourceVerificationNote": "Fonte primaria club V92",
+            "note": "Cessione ufficiale in prestito al KS Cracovia."
+          }
+        ],
+        "roleBrief": "C/A",
+        "role": "C/A",
+        "origin": "KS Cracovia",
+        "formula": "Titolo temporaneo con opzione e percentuale futura vendita",
+        "probability": "100%",
+        "reliability": "Ufficiale",
+        "check": "OK",
+        "rule": "Ufficialita prevale su rumor V730"
       }
     ],
     "milan": [
@@ -518880,8 +518928,8 @@
       {
         "teamId": "parma",
         "teamName": "Parma",
-        "playerName": "Carboni",
-        "target": "Carboni",
+        "playerName": "Franco Carboni",
+        "target": "Franco Carboni",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -519662,7 +519710,7 @@
         "href": "https://www.parmacalcio1913.com/flash-news/mateusz-kowalski-ceduto-a-titolo-temporaneo-alla-dolomiti-bellunesi/",
         "sourceName": "Parma Calcio 1913",
         "sourceType": "Sito ufficiale club",
-        "sourceVerification": "OK_UFFICIALE_CLUB_v90"
+        "sourceVerification": "OK_UFFICIALE_CLUB_v92"
       }
     ],
     "roma": [
@@ -519849,8 +519897,8 @@
       {
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Romano",
-        "target": "Romano",
+        "playerName": "Alessandro Romano",
+        "target": "Alessandro Romano",
         "direction": "outgoing",
         "directionLabel": "Uscita",
         "status": "Ufficiale",
@@ -523429,8 +523477,8 @@
       {
         "teamId": "venezia",
         "teamName": "Venezia",
-        "playerName": "Furtado",
-        "target": "Furtado",
+        "playerName": "Alejandro Gomes Furtado",
+        "target": "Alejandro Gomes Furtado",
         "direction": "incoming",
         "directionLabel": "Entrata",
         "status": "Ufficiale",
@@ -563510,7 +563558,7 @@
         "status": "Giocata 0-0 / tabellino ufficiale Juventus completo",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Agg V729: aggiunto risultato finale anche sull’oggetto amichevole, così nel dettaglio compare il badge 0-0.",
+        "note": "Agg V730: aggiunto risultato finale anche sull’oggetto amichevole, così nel dettaglio compare il badge 0-0.",
         "source": "https://www.juventus.com/it/news/articoli/amichevole-basilea-juventus-la-partita",
         "url": "https://www.juventus.com/it/news/articoli/amichevole-basilea-juventus-la-partita",
         "articleUrl": "https://www.juventus.com/it/news/articoli/amichevole-basilea-juventus-la-partita",
@@ -564513,10 +564561,10 @@
         "target": "Monza-Pro Vercelli",
         "direction": "incoming",
         "directionLabel": "Entrata",
-        "status": "Giocata 4-3 / risultato e marcatori da fonte ufficiale Monza; minutaggi non disponibili",
+        "status": "Giocata / risultato finale",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Agg V729/V90: fonte ufficiale Monza conferma risultato e marcatori; nessun dato giocatore/minutaggio inserito senza tabellino completo.",
+        "note": "Agg V730/V92: fonte ufficiale Monza conferma risultato e marcatori; nessun dato giocatore/minutaggio inserito senza tabellino completo.",
         "source": "https://www.acmonza.com/it/news/monza-pro-vercelli-4-3-nella-prima-amichevole/",
         "url": "https://www.acmonza.com/it/news/monza-pro-vercelli-4-3-nella-prima-amichevole/",
         "articleUrl": "https://www.acmonza.com/it/news/monza-pro-vercelli-4-3-nella-prima-amichevole/",
@@ -566305,7 +566353,7 @@
         "status": "Giocata 13-0 / tabellino ufficiale Torino",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Agg V729/V90: fonte sostituita/rafforzata con tabellino ufficiale Torino; confermate le 22 righe giocatore già inserite.",
+        "note": "Agg V730/V92: fonte sostituita/rafforzata con tabellino ufficiale Torino; confermate le 22 righe giocatore già inserite.",
         "source": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
         "url": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
         "articleUrl": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
@@ -566638,7 +566686,7 @@
         "status": "Giocata 2-2 / tabellino ufficiale Udinese completo",
         "updatedAt": "2026-07-18",
         "date": "2026-07-18",
-        "note": "Agg V729/V90: tabellino ufficiale inserito con 21 righe giocatore; nessun infortunio gara.",
+        "note": "Agg V730/V92: tabellino ufficiale inserito con 21 righe giocatore; nessun infortunio gara.",
         "source": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
         "url": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
         "articleUrl": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
@@ -577010,7 +577058,7 @@
       "href": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
       "source": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
       "updatedAt": "2026-07-18",
-      "addedBy": "V729"
+      "addedBy": "V730"
     },
     {
       "label": "Monza ufficiale Monza-Pro Vercelli 4-3",
@@ -577018,7 +577066,7 @@
       "href": "https://www.acmonza.com/it/news/monza-pro-vercelli-4-3-nella-prima-amichevole/",
       "source": "https://www.acmonza.com/it/news/monza-pro-vercelli-4-3-nella-prima-amichevole/",
       "updatedAt": "2026-07-18",
-      "addedBy": "V729"
+      "addedBy": "V730"
     },
     {
       "label": "Torino ufficiale Torino-Pinzolo Valrendena 13-0",
@@ -577026,7 +577074,7 @@
       "href": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
       "source": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
       "updatedAt": "2026-07-18",
-      "addedBy": "V729"
+      "addedBy": "V730"
     },
     {
       "label": "Parma ufficiale prestito Mateusz Kowalski",
@@ -577034,7 +577082,31 @@
       "href": "https://www.parmacalcio1913.com/flash-news/mateusz-kowalski-ceduto-a-titolo-temporaneo-alla-dolomiti-bellunesi/",
       "source": "https://www.parmacalcio1913.com/flash-news/mateusz-kowalski-ceduto-a-titolo-temporaneo-alla-dolomiti-bellunesi/",
       "updatedAt": "2026-07-18",
-      "addedBy": "V729"
+      "addedBy": "V730"
+    },
+    {
+      "source": "Frosinone sito ufficiale",
+      "url": "https://www.frosinonecalcio.com/desplanches-e-giallazzurro/",
+      "usage": "Ufficialita V92: Sebastiano Desplanches al Frosinone dal Palermo.",
+      "updatedAt": "2026-07-18"
+    },
+    {
+      "source": "US Lecce sito ufficiale",
+      "url": "https://uslecce.it/cessione-marchwinski/",
+      "usage": "Ufficialita V92: Filip Marchwiński ceduto in prestito al KS Cracovia.",
+      "updatedAt": "2026-07-18"
+    },
+    {
+      "source": "Fantacalcio.it calciomercato",
+      "url": "https://www.fantacalcio.it/calciomercato/18_07_2026/cavani-torna-a-sorpresa-in-serie-a-c-e-il-sondaggio-del-lecce-la-situazione-495464",
+      "usage": "Rumor V92: sondaggio Lecce per Edinson Cavani, senza ufficialita e senza impatto rose.",
+      "updatedAt": "2026-07-18"
+    },
+    {
+      "source": "Monza sito ufficiale",
+      "url": "https://www.acmonza.com/it/news/monza-pro-vercelli-4-3-nella-prima-amichevole/",
+      "usage": "Fonte rafforzata V92: Monza-Pro Vercelli 4-3, senza tabellino minutaggi.",
+      "updatedAt": "2026-07-18"
     }
   ],
   "transfermarktRumors": [
@@ -581523,7 +581595,7 @@
       "status": "Giocata 13-0 / tabellino ufficiale Torino",
       "venue": "Pinzolo",
       "time": "17:30",
-      "note": "Agg V729/V90: fonte ufficiale Torino; risultato corretto in prospettiva Torino 13-0.",
+      "note": "Agg V730/V92: fonte ufficiale Torino; risultato corretto in prospettiva Torino 13-0.",
       "source": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
       "url": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
       "articleUrl": "https://www.torinofc.it/news/18/07/2026/torino-pinzolo-valrendena-13-0_43786",
@@ -582018,7 +582090,7 @@
       "url": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
       "articleUrl": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
       "href": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
-      "note": "Agg V729/V90: inserite 21 righe giocatore da tabellino ufficiale Udinese; marcatori Piotrowski e Giulio Vinciati; nessun infortunio gara segnalato.",
+      "note": "Agg V730/V92: inserite 21 righe giocatore da tabellino ufficiale Udinese; marcatori Piotrowski e Giulio Vinciati; nessun infortunio gara segnalato.",
       "players": [
         {
           "teamId": "udinese",
@@ -584512,7 +584584,7 @@
         "url": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
         "articleUrl": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
         "href": "https://www.udinese.it/news/squadra/udinese-nk-istra-1961-2-2",
-        "note": "Agg V729/V90: inserite 21 righe giocatore da tabellino ufficiale Udinese; marcatori Piotrowski e Giulio Vinciati; nessun infortunio gara segnalato.",
+        "note": "Agg V730/V92: inserite 21 righe giocatore da tabellino ufficiale Udinese; marcatori Piotrowski e Giulio Vinciati; nessun infortunio gara segnalato.",
         "players": [
           {
             "teamId": "udinese",
@@ -604429,7 +604501,7 @@
       "friendlyPlayerStats": 92,
       "friendliesSortedByDate": true
     },
-    "v729": {
+    "v730": {
       "playersDisplayedTarget": 1038,
       "playersRowsInData": 1040,
       "activeOfficialRumors": 0,
@@ -604449,22 +604521,22 @@
     }
   },
   "manifest": {
-    "id": "sudatori-iosudo-v729",
-    "version": "V729",
+    "id": "sudatori-iosudo-v730",
+    "version": "V730",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-18",
-    "updatedAtTime": "2026-07-18T21:25:00+02:00",
-    "generatedAt": "2026-07-18T21:25:00+02:00",
-    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v90.xlsx",
-    "dedupVersion": "V723-confirmed-aliases-v80-count-fix",
-    "notes": "V729 aggiornata da Excel V90: Udinese-NK Istra 2-2 con 21 righe giocatore, Monza-Pro Vercelli 4-3, Torino-Pinzolo corretto con fonte ufficiale 13-0, Basilea-Juventus con badge risultato 0-0, Mateusz Kowalski prestito ufficiale, Ederson D.S. consolidato in Ederson, nuovi inserimenti con nome+cognome fuori dagli XI.",
+    "updatedAtTime": "2026-07-18T22:05:00+02:00",
+    "generatedAt": "2026-07-18T22:05:00+02:00",
+    "sourceFile": "fantacalcio_serie_a_2026_27_aggiornato_2026-07-18_aggiornamento_globale_v92.xlsx",
+    "dedupVersion": "V730-confirmed-aliases-v92-carboni-disambiguation",
+    "notes": "V730 aggiornata da Excel V92: Desplanches ufficiale Frosinone, Filip Marchwiński ceduto ufficialmente al KS Cracovia, Cavani sondaggio Lecce non ufficiale, Carboni disambiguato Andrea/Valentin/Franco, foglio alias con nome+cognome quando disponibile.",
     "teams": 20,
-    "players": 1038,
+    "players": 1040,
     "friendlies": 118,
-    "teamTransferTalks": 435,
+    "teamTransferTalks": 432,
     "injuries": 25,
-    "officialMoves": 365,
-    "sources": 690,
+    "officialMoves": 367,
+    "sources": 694,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 5,
@@ -604472,8 +604544,8 @@
     "duplicatesExact": 0,
     "duplicateIds": 0,
     "buildTag": "iosudo-v723-xlsx-v80",
-    "versionNumber": 729,
-    "baseVersion": "V728",
+    "versionNumber": 730,
+    "baseVersion": "V729",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
@@ -604518,8 +604590,8 @@
     "friendliesPatchedV722": 3,
     "injuriesClosedV722": 1,
     "friendlyPlayerClickOpensPlayerDetail": true,
-    "playersRows": 1040,
-    "playersCountMode": "alias-sheet-profiles-including-listone-fantasy-extras-and-v86-aliases",
+    "playersRows": 1042,
+    "playersCountMode": "alias-sheet-profiles-including-listone-fantasy-extras-and-v92-rumor-profiles",
     "playerKpiUsesExcelDistinctCount": true,
     "listoneOnlyVirtualPlayersExcludedFromPlayerKpi": true,
     "confirmedAliasesV723": 10,
@@ -604555,14 +604627,19 @@
     "friendliesSortedByDateV728": true,
     "dembeleAccentMergedV728": true,
     "zhegrovaDuplicateMergedV728": true,
-    "confirmedAliasesV729": 10,
-    "explicitDuplicateFixesV729": 1,
-    "fullNamePolicyV729": true,
-    "friendlyPlayerStatsAddedV729": 21,
-    "friendliesPatchedV729": 4,
-    "officialMovesPatchedV729": 1,
-    "basileaJuventusResultBadgeV729": true,
-    "edersonDsMergedV729": true
+    "confirmedAliasesV730": 9,
+    "explicitDuplicateFixesV730": 1,
+    "fullNamePolicyV730": true,
+    "friendlyPlayerStatsAddedV730": 21,
+    "friendliesPatchedV730": 4,
+    "officialMovesPatchedV730": 2,
+    "basileaJuventusResultBadgeV730": true,
+    "edersonDsMergedV730": true,
+    "carboniDisambiguatedV730": 3,
+    "duplicateCandidatesV730": 10,
+    "officialTalksClosedV730": 4,
+    "sourcesAddedV730": 4,
+    "playersAddedV730": 2
   },
   "friendliesFilteredOutV715": [
     {
@@ -617551,126 +617628,454 @@
       "where": "Roma / rosa-ufficialità"
     }
   ],
-  "countPolicyV729": {
+  "countPolicyV730": {
     "playersDisplayedTarget": 1038,
-    "inputAliasRowsV90": 1039,
+    "inputAliasRowsV92": 1039,
     "edersonDsMergedIntoEderson": true,
     "giulioVinciatiAddedByInput": true,
-    "explanation": "V90 porta 1039 profili Alias_Giocatori con Giulio Vinciati; V729 consolida Ederson D.S. in Ederson, quindi il conteggio pulito torna 1038."
+    "explanation": "V92 porta 1039 profili Alias_Giocatori con Giulio Vinciati; V730 consolida Ederson D.S. in Ederson, quindi il conteggio pulito torna 1038."
   },
-  "confirmedDuplicateAliasesV729": [
+  "confirmedDuplicateAliasesV730": [
     {
-      "alias": "Akanji",
-      "canonical": "Manuel Akanji",
-      "confirmedByUser": true
+      "from": "Madiq",
+      "to": "Abdelaziz Madiq",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Casadei",
-      "canonical": "Cesare Casadei",
-      "confirmedByUser": true
+      "from": "Licina",
+      "to": "Adin Licina",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Bremer",
-      "canonical": "Gleison Bremer",
-      "confirmedByUser": true
+      "from": "Adams",
+      "to": "Akor Adams",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Camarda",
-      "canonical": "Francesco Camarda",
-      "confirmedByUser": true
+      "from": "Furtado",
+      "to": "Alejandro Gomes Furtado",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Fabbian",
-      "canonical": "Giovanni Fabbian",
-      "confirmedByUser": true
+      "from": "Cardinali",
+      "to": "Alessandro Cardinali",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Ghilardi",
-      "canonical": "Daniele Ghilardi",
-      "confirmedByUser": true
+      "from": "Pietrelli",
+      "to": "Alessandro Pietrelli",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Hojlund",
-      "canonical": "Rasmus Hojlund",
-      "confirmedByUser": true
+      "from": "Romano",
+      "to": "Alessandro Romano",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Leao",
-      "canonical": "Rafael Leao",
-      "confirmedByUser": true
+      "from": "Tassani",
+      "to": "Alessandro Tassani",
+      "scope": "global-confirmed"
     },
     {
-      "alias": "Lobotka",
-      "canonical": "Stanislav Lobotka",
-      "confirmedByUser": true
-    },
-    {
-      "alias": "Dybala",
-      "canonical": "Paulo Dybala",
-      "confirmedByUser": true
+      "from": "Pedraza",
+      "to": "Alfonso Pedraza",
+      "scope": "global-confirmed"
     }
   ],
-  "explicitDuplicateFixesV729": [
+  "explicitDuplicateFixesV730": [
     {
       "alias": "Ederson D.S.",
       "canonical": "Ederson",
       "confirmedByUser": true
     }
   ],
-  "playerNamingPolicyV729": {
-    "rule": "Nuovi giocatori inseriti con nome e cognome, tranne nelle schede XI/formazioni squadra.",
+  "playerNamingPolicyV730": {
+    "rule": "Nuovi giocatori e alias con nome+cognome appena disponibile; eccezione visiva per XI/formazioni squadra.",
     "formationsByTeamTouched": false
   },
-  "duplicateNameCandidatesV729": [
+  "duplicateNameCandidatesV730": [
     {
-      "variantA": "Carboni",
-      "variantB": "A. Carboni",
-      "where": "Monza/Inter/Parma rosa-ufficialità"
+      "from": "Pozzi",
+      "to": "Alessio Pozzi",
+      "where": "Venezia / ufficialità"
     },
     {
-      "variantA": "Madiq",
-      "variantB": "Abdelaziz Madiq",
-      "where": "Parma Primavera / ufficialità"
+      "from": "Romagnoli",
+      "to": "Alessio Romagnoli",
+      "where": "Lazio / rosa-listone"
     },
     {
-      "variantA": "Licina",
-      "variantB": "Adin Licina",
-      "where": "Juventus amichevoli / Next Gen"
+      "from": "Zerbin",
+      "to": "Alessio Zerbin",
+      "where": "Napoli-Frosinone / mercato"
     },
     {
-      "variantA": "Adams",
-      "variantB": "Akor Adams",
-      "where": "Torino/Venezia mercato-rosa"
+      "from": "Jimenez",
+      "to": "Alex Jimenez",
+      "where": "Fiorentina / ufficialità"
     },
     {
-      "variantA": "Furtado",
-      "variantB": "Alejandro Gomes Furtado",
-      "where": "Venezia ufficialità"
+      "from": "Santos",
+      "to": "Alisson Santos",
+      "where": "Napoli / ufficialità"
     },
     {
-      "variantA": "Cardinali",
-      "variantB": "Alessandro Cardinali",
-      "where": "Parma prestito esterno"
+      "from": "Okoro",
+      "to": "Alvin Okoro",
+      "where": "Venezia / rinnovo"
     },
     {
-      "variantA": "Pietrelli",
-      "variantB": "Alessandro Pietrelli",
-      "where": "Juventus Next Gen / ufficialità"
+      "from": "Dorigo",
+      "to": "Andrea Dorigo",
+      "where": "Torino / Lega"
     },
     {
-      "variantA": "Romano",
-      "variantB": "Alessandro Romano",
-      "where": "Cagliari/Roma ufficialità"
+      "from": "Diouf",
+      "to": "Andy Diouf",
+      "where": "Inter / rosa-tattica"
     },
     {
-      "variantA": "Tassani",
-      "variantB": "Alessandro Tassani",
-      "where": "Atalanta Primavera / Lega"
+      "from": "Raimondo",
+      "to": "Antonio Raimondo",
+      "where": "Frosinone-Bologna / ufficialità"
     },
     {
-      "variantA": "Pedraza",
-      "variantB": "Alfonso Pedraza",
-      "where": "Lazio rosa-ufficialità"
+      "from": "Muric",
+      "to": "Arijanet Muric",
+      "where": "Sassuolo / rosa-amichevoli"
     }
+  ],
+  "carboniDisambiguationV730": [
+    {
+      "alias": "A. Carboni",
+      "canonical": "Andrea Carboni",
+      "scope": "Monza/Andrea, non fondere con Valentin o Franco"
+    },
+    {
+      "alias": "Carboni V.",
+      "canonical": "Valentin Carboni",
+      "scope": "Genoa/Inter, non fondere con Andrea o Franco"
+    },
+    {
+      "alias": "Franco Carboni",
+      "canonical": "Franco Carboni",
+      "scope": "Parma/Inter, distinto da Andrea e Valentin"
+    }
+  ],
+  "neverGlobalAliasV730": [
+    "Carboni",
+    "A. Carboni",
+    "Carboni V.",
+    "Valentin Carboni",
+    "Andrea Carboni",
+    "Franco Carboni",
+    "Ferguson",
+    "Esposito",
+    "Thuram"
+  ],
+  "aliasesNormalizedV730": {
+    "hits": 13,
+    "sample": [
+      {
+        "teamId": "genoa",
+        "from": "Carboni V.",
+        "to": "Valentin Carboni",
+        "scope": "playersByTeam"
+      },
+      {
+        "teamId": "lazio",
+        "from": "Pedraza",
+        "to": "Alfonso Pedraza",
+        "scope": "playersByTeam"
+      },
+      {
+        "teamId": "lecce",
+        "from": "Marchwinski",
+        "to": "Filip Marchwiński",
+        "scope": "playersByTeam"
+      },
+      {
+        "teamId": "monza",
+        "from": "A. Carboni",
+        "to": "Andrea Carboni",
+        "scope": "playersByTeam"
+      },
+      {
+        "teamId": "torino",
+        "from": "Adams",
+        "to": "Akor Adams",
+        "scope": "playersByTeam"
+      },
+      {
+        "teamId": "cagliari",
+        "from": "Romano",
+        "to": "Alessandro Romano",
+        "scope": "officialMovesByTeam"
+      },
+      {
+        "teamId": "inter",
+        "from": "Carboni",
+        "to": "Valentin Carboni",
+        "scope": "officialMovesByTeam"
+      },
+      {
+        "teamId": "lazio",
+        "from": "Pedraza",
+        "to": "Alfonso Pedraza",
+        "scope": "officialMovesByTeam"
+      },
+      {
+        "teamId": "parma",
+        "from": "Carboni",
+        "to": "Franco Carboni",
+        "scope": "officialMovesByTeam"
+      },
+      {
+        "teamId": "roma",
+        "from": "Romano",
+        "to": "Alessandro Romano",
+        "scope": "officialMovesByTeam"
+      },
+      {
+        "teamId": "venezia",
+        "from": "Furtado",
+        "to": "Alejandro Gomes Furtado",
+        "scope": "officialMovesByTeam"
+      },
+      {
+        "teamId": "lecce",
+        "from": "Filip Marchwinski",
+        "to": "Filip Marchwiński",
+        "scope": "teamTransferTalksByTeam"
+      },
+      {
+        "teamId": "lecce",
+        "from": "Marchwinski",
+        "to": "Filip Marchwiński",
+        "scope": "playersByTeam"
+      }
+    ]
+  },
+  "playersPatchedV730": [
+    "Sebastiano Desplanches",
+    "Edinson Cavani",
+    "Filip Marchwiński"
+  ],
+  "officialMovesPatchedV730": [
+    "Sebastiano Desplanches",
+    "Filip Marchwiński"
+  ],
+  "officialTalksClosedV730": [
+    {
+      "teamId": "frosinone",
+      "teamName": "Frosinone",
+      "playerName": "Sebastiano Desplanches",
+      "target": "Sebastiano Desplanches",
+      "direction": "Entrata",
+      "directionLabel": "Entrata",
+      "status": "Visite mediche terminate / prestito in chiusura - non ufficiale club",
+      "updatedAt": "2026-07-18",
+      "date": "2026-07-18",
+      "note": "Di Marzio 18/07: Desplanches ha terminato le visite mediche con il Frosinone. Resta trattativa fino al comunicato ufficiale Frosinone/Palermo o deposito.",
+      "source": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+      "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+      "href": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+      "sourceName": "https://www.gianlucadimarzio.com/calciomercato/terminate-visite-mediche-desplanches-frosinone-foto-video-494948",
+      "sourceLabel": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+      "sourceType": "Gianluca Di Marzio",
+      "sourceVerification": "OK_NON_UFFICIALE_v76",
+      "sourceVerificationNote": "Agg v76: aggiornata riga esistente, nessun duplicato.",
+      "sources": [
+        {
+          "source": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+          "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+          "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+          "href": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+          "sourceName": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+          "sourceLabel": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-frosinone-desplanches-news-14-luglio-2026-494802",
+          "status": "Operazione in chiusura",
+          "updatedAt": "2026-07-14",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Fonte puntuale Di Marzio v25",
+          "note": "Di Marzio: Frosinone in chiusura a sorpresa per Desplanches in prestito; resta trattativa fino al comunicato ufficiale."
+        }
+      ],
+      "roleBrief": "Portiere",
+      "role": "Portiere",
+      "origin": "Palermo",
+      "formula": "",
+      "probability": "",
+      "reliability": "",
+      "check": "Aggiornare rosa se ufficiale",
+      "rule": "",
+      "roleDetail": "",
+      "fantasyImpact": "",
+      "closedReason": "SUPERATA DA UFFICIALITA V730",
+      "closedAt": "2026-07-18"
+    },
+    {
+      "teamId": "frosinone",
+      "teamName": "Frosinone",
+      "playerName": "Sebastiano Desplanches",
+      "target": "Sebastiano Desplanches",
+      "direction": "incoming",
+      "directionLabel": "Entrata",
+      "status": "Trattativa in chiusura",
+      "updatedAt": "2026-07-14",
+      "date": "2026-07-14",
+      "note": "Frosinone in chiusura per Desplanches in prestito dal Palermo; possibile impatto su gerarchie portieri con Palmisani.",
+      "source": "SOS Fanta / Sky",
+      "url": "SOS Fanta / Sky",
+      "articleUrl": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
+      "href": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
+      "sourceName": "SOS Fanta / Sky",
+      "sourceLabel": "SOS Fanta / Sky",
+      "sourceType": "Articolo specifico",
+      "sourceVerification": "OK_ARTICOLO",
+      "sourceVerificationNote": "Riga aggiunta v27",
+      "sources": [
+        {
+          "source": "SOS Fanta / Sky",
+          "url": "SOS Fanta / Sky",
+          "articleUrl": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
+          "href": "https://www.sosfanta.com/squadra/frosinone/sky-frosinone-in-chiusura-per-uno-dei-migliori-portieri-della-scorsa-serie-b/",
+          "sourceName": "SOS Fanta / Sky",
+          "sourceLabel": "SOS Fanta / Sky",
+          "status": "Trattativa in chiusura",
+          "updatedAt": "2026-07-14",
+          "sourceType": "Articolo specifico",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Riga aggiunta v27",
+          "note": "Frosinone in chiusura per Desplanches in prestito dal Palermo; possibile impatto su gerarchie portieri con Palmisani."
+        }
+      ],
+      "roleBrief": "P",
+      "role": "Portiere",
+      "origin": "Palermo",
+      "formula": "",
+      "probability": "",
+      "reliability": "",
+      "check": "Aggiornare rosa se ufficiale",
+      "rule": "Non ufficiale finche manca comunicato.",
+      "closedReason": "SUPERATA DA UFFICIALITA V730",
+      "closedAt": "2026-07-18"
+    },
+    {
+      "teamId": "frosinone",
+      "teamName": "Frosinone",
+      "playerName": "Sebastiano Desplanches",
+      "target": "Sebastiano Desplanches",
+      "direction": "incoming",
+      "directionLabel": "Entrata",
+      "status": "Visite mediche iniziate / prestito in chiusura - non ufficiale club",
+      "updatedAt": "2026-07-18",
+      "date": "2026-07-18",
+      "note": "v71 Sky live 18/07: Desplanches a Villa Stuart per visite mediche. Resta trattativa fino al comunicato ufficiale Frosinone/Palermo o deposito.",
+      "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+      "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+      "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+      "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+      "sourceName": "Sky Sport live 18/07",
+      "sourceLabel": "Sky Sport live",
+      "sourceType": "Sky Sport live mercato",
+      "sourceVerification": "OK_NON_UFFICIALE_v71",
+      "sourceVerificationNote": "Agg v71: visite mediche non sufficienti per ufficialità/Rose.",
+      "sources": [
+        {
+          "source": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "url": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "articleUrl": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "href": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "sourceName": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/18/calciomercato-news-trattative-oggi-18-luglio",
+          "status": "Visite mediche iniziate / prestito in chiusura - non ufficiale club",
+          "updatedAt": "2026-07-18",
+          "sourceType": "Sky Sport live mercato",
+          "sourceVerification": "OK_NON_UFFICIALE_v71",
+          "sourceVerificationNote": "Agg v71: visite mediche non sufficienti per ufficialità/Rose.",
+          "note": "Agg v71: visite mediche non sufficienti per ufficialità/Rose."
+        }
+      ],
+      "roleBrief": "P",
+      "role": "Portiere",
+      "origin": "Palermo",
+      "formula": "",
+      "probability": "",
+      "reliability": "",
+      "check": "NO_ROSE: non inserire in rosa prima del comunicato ufficiale",
+      "rule": "Visite mediche non sufficienti per Ufficialita",
+      "updateFlag": "V716",
+      "closedReason": "SUPERATA DA UFFICIALITA V730",
+      "closedAt": "2026-07-18"
+    },
+    {
+      "teamId": "lecce",
+      "teamName": "Lecce",
+      "playerName": "Filip Marchwiński",
+      "target": "Filip Marchwiński",
+      "direction": "outgoing",
+      "directionLabel": "Uscita",
+      "status": "Prestito in definizione / non ufficiale",
+      "updatedAt": "2026-07-17",
+      "date": "2026-07-17",
+      "note": "Sky/TMW: operazione da definire; rosa invariata finche manca comunicato club.",
+      "source": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+      "url": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+      "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+      "href": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+      "sourceName": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+      "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+      "sourceType": "",
+      "sourceVerification": "",
+      "sourceVerificationNote": "",
+      "sources": [
+        {
+          "source": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+          "url": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+          "articleUrl": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+          "href": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+          "sourceName": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+          "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/lecce-uscite-alex-sala-maiorca-marchwinski-torna-polonia-2254436",
+          "status": "Prestito in definizione / non ufficiale",
+          "updatedAt": "2026-07-17",
+          "sourceType": "",
+          "sourceVerification": "",
+          "sourceVerificationNote": "",
+          "note": "Sky/TMW: operazione da definire; rosa invariata finche manca comunicato club."
+        }
+      ],
+      "roleBrief": "C",
+      "role": "Trequartista",
+      "origin": "Wisla Cracovia",
+      "formula": "",
+      "probability": "",
+      "reliability": "",
+      "check": "",
+      "rule": "",
+      "closedReason": "SUPERATA DA UFFICIALITA V730",
+      "closedAt": "2026-07-18"
+    }
+  ],
+  "teamTransferTalksPatchedV730": [
+    "Edinson Cavani sondaggio Lecce aggiunto come rumor non ufficiale"
+  ],
+  "sourcesAddedV730": [
+    "Frosinone ufficiale Desplanches",
+    "US Lecce ufficiale Marchwiński",
+    "Fantacalcio.it Cavani",
+    "Monza ufficiale Pro Vercelli"
+  ],
+  "officialityControlV730": {
+    "activeOfficialRumors": 0,
+    "rule": "Ufficialita club prevale: Desplanches e Marchwiński chiudono rumor residui."
+  },
+  "updateLogV730": [
+    "Applicati 9 alias confermati; Carboni disambiguato, non fuso genericamente.",
+    "Sebastiano Desplanches ufficiale Frosinone; chiuse 3 trattative Frosinone residue.",
+    "Filip Marchwiński ceduto ufficialmente dal Lecce al KS Cracovia; chiuso rumor Lecce residuo.",
+    "Edinson Cavani aggiunto come sondaggio Lecce non ufficiale; Rose invariata.",
+    "Alias_Giocatori aggiornato con nome+cognome appena disponibile."
   ]
 }

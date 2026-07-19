@@ -1,0 +1,19 @@
+{
+  "version": "V730",
+  "teams": 20,
+  "players": 1040,
+  "playersRows": 1042,
+  "officialMoves": 367,
+  "teamTransferTalks": 432,
+  "injuries": 25,
+  "friendlies": 118,
+  "sources": 694,
+  "activeOfficialRumors": 0,
+  "friendlyMatchDetails": 5,
+  "friendlyPlayerStats": 113,
+  "duplicateIds": 0,
+  "confirmedAliasesV730": 9,
+  "officialMovesPatchedV730": 2,
+  "officialTalksClosedV730": 4,
+  "duplicateCandidatesV730": 10
+}
