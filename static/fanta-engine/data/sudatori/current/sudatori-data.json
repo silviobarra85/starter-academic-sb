@@ -303,7 +303,7 @@
     "pasalic": {
       "teamId": "atalanta",
       "teamName": "Atalanta",
-      "playerName": "Pasalic",
+      "playerName": "Mario Pasalic",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -5466,7 +5466,7 @@
     "cutrone": {
       "teamId": "monza",
       "teamName": "Monza",
-      "playerName": "Cutrone",
+      "playerName": "Patrick Cutrone",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6083,7 +6083,7 @@
     "neres": {
       "teamId": "napoli",
       "teamName": "Napoli",
-      "playerName": "Neres",
+      "playerName": "David Neres",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6239,7 +6239,7 @@
     "circati": {
       "teamId": "parma",
       "teamName": "Parma",
-      "playerName": "Circati",
+      "playerName": "Alessandro Circati",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -411376,30 +411376,30 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v734",
-    "version": "V734",
+    "id": "sudatori-iosudo-v735",
+    "version": "V735",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-19",
-    "updatedAtTime": "2026-07-19T13:00:00+02:00",
-    "generatedAt": "2026-07-19T13:00:00+02:00",
-    "sourceFile": "v101_2026-07-19_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
-    "dedupVersion": "V734",
+    "updatedAtTime": "2026-07-19T13:45:00+02:00",
+    "generatedAt": "2026-07-19T13:45:00+02:00",
+    "sourceFile": "v103_2026-07-19_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
+    "dedupVersion": "V735",
     "notes": "V733 aggiornata da Excel V99: alias confermati, Roma-Roma Primavera 6-0 con tabellino, Parma-Parma Primavera in calendario, Wesley rientrato e monitoraggi Rabiot/Romagnoli.",
     "teams": 20,
-    "players": 1057,
+    "players": 1056,
     "friendlies": 120,
-    "teamTransferTalks": 431,
+    "teamTransferTalks": 433,
     "injuries": 25,
-    "officialMoves": 372,
-    "sources": 709,
+    "officialMoves": 374,
+    "sources": 711,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 9,
     "friendlyPlayerStats": 186,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v734-excel-v101-overlay-time-header",
-    "versionNumber": 734,
+    "buildTag": "iosudo-v735-excel-v103-alias-candidate-pairs",
+    "versionNumber": 735,
     "baseVersion": "V732",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
@@ -411445,7 +411445,7 @@
     "friendliesPatchedV722": 3,
     "injuriesClosedV722": 1,
     "friendlyPlayerClickOpensPlayerDetail": true,
-    "playersRows": 1057,
+    "playersRows": 1056,
     "playersCountMode": "alias-sheet-profiles-including-listone-fantasy-extras-and-v92-rumor-profiles",
     "playerKpiUsesExcelDistinctCount": true,
     "listoneOnlyVirtualPlayersExcludedFromPlayerKpi": true,
@@ -411495,7 +411495,7 @@
     "officialTalksClosedV730": 4,
     "sourcesAddedV730": 4,
     "playersAddedV730": 2,
-    "aliasRows": 1056,
+    "aliasRows": 1054,
     "confirmedAliasesV733": 10,
     "duplicateCandidatesV733": 10,
     "sourcesAddedV733": 5,
@@ -411504,8 +411504,8 @@
     "injuriesClosedV733": 1,
     "playersAddedV733": 2,
     "fullNamePolicyV733": true,
-    "overlayGeneratedAt": "2026-07-19T13:00:00+02:00",
-    "overlayGeneratedAtLabel": "19/07/2026 13:00 CEST",
+    "overlayGeneratedAt": "2026-07-19T13:45:00+02:00",
+    "overlayGeneratedAtLabel": "19/07/2026 13:45 CEST",
     "confirmedAliasesV734": [
       {
         "alias": "Okolo",
@@ -411566,7 +411566,122 @@
       "Parma Calcio - profilo Abdou-Salam Konate"
     ],
     "fullNamePolicyV734": "Alias_Giocatori aggiornato con nome e cognome quando disponibile; XI non normalizzati forzatamente.",
-    "headerOverlayTimestampV734": "2026-07-19T13:00:00+02:00"
+    "headerOverlayTimestampV734": "2026-07-19T13:00:00+02:00",
+    "confirmedAliasesV735": [
+      {
+        "alias": "Aduyev",
+        "canonical": "Danil Aduyev"
+      },
+      {
+        "alias": "Bereszynski",
+        "canonical": "Bartosz Bereszynski"
+      },
+      {
+        "alias": "Circati",
+        "canonical": "Alessandro Circati"
+      },
+      {
+        "alias": "Bernabe",
+        "canonical": "Adrian Bernabe"
+      },
+      {
+        "alias": "Lovik",
+        "canonical": "Mathias Lovik"
+      },
+      {
+        "alias": "Cutrone",
+        "canonical": "Patrick Cutrone"
+      },
+      {
+        "alias": "Retegui",
+        "canonical": "Mateo Retegui"
+      },
+      {
+        "alias": "Pasalic",
+        "canonical": "Mario Pasalic"
+      },
+      {
+        "alias": "Ilicic",
+        "canonical": "Josip Ilicic"
+      },
+      {
+        "alias": "Neres",
+        "canonical": "David Neres"
+      }
+    ],
+    "playersPatchedV735": [
+      "Mirko Elia",
+      "Jacopo Antolini"
+    ],
+    "officialMovesPatchedV735": [
+      "Mirko Elia",
+      "Jacopo Antolini"
+    ],
+    "teamTransferTalksPatchedV735": [
+      "Alessio Zerbin Frosinone/Napoli"
+    ],
+    "duplicatePairCandidatesV735": [
+      {
+        "variantA": "Calvani",
+        "variantB": "Gabriele Calvani",
+        "where": "Genoa/Frosinone - profilo difensore/prestito da verificare"
+      },
+      {
+        "variantA": "Fini",
+        "variantB": "Seydou Fini",
+        "where": "Genoa/Frosinone - prestito/extra listone da verificare"
+      },
+      {
+        "variantA": "Isaksen",
+        "variantB": "Gustav Isaksen",
+        "where": "Lazio/Fiorentina - extra listone vs profilo completo"
+      },
+      {
+        "variantA": "Oristanio",
+        "variantB": "Gaetano Oristanio",
+        "where": "Parma/Torino/Venezia - extra listone vs profilo completo"
+      },
+      {
+        "variantA": "Sottil",
+        "variantB": "Riccardo Sottil",
+        "where": "Lecce/Fiorentina - extra listone vs profilo completo"
+      },
+      {
+        "variantA": "Trabucchi",
+        "variantB": "Nicolas Trabucchi",
+        "where": "Parma/Dolomiti Bellunesi - prestito ufficiale"
+      },
+      {
+        "variantA": "Coulibaly",
+        "variantB": "Coulibaly W.",
+        "where": "Lecce/Sassuolo - possibile abbreviazione, ma ruolo diverso"
+      },
+      {
+        "variantA": "Giovane",
+        "variantB": "Giovane (Napoli)",
+        "where": "Napoli - riga generica vs riga disambiguata"
+      },
+      {
+        "variantA": "Pessina",
+        "variantB": "Pessina Mas.",
+        "where": "Bologna/Monza - cognome generico vs profilo portiere"
+      },
+      {
+        "variantA": "Chukwueze",
+        "variantB": "Samuel Chukwueze",
+        "where": "Milan - extra listone/ballottaggio tecnico"
+      }
+    ],
+    "removedDuplicatePlayersV735": [
+      {
+        "teamId": "napoli",
+        "id": "napoli-david-neres",
+        "playerName": "David Neres",
+        "reason": "Duplicato extra listone/fantasy consolidato in David Neres V735"
+      }
+    ],
+    "fullNamePolicyV735": "Alias_Giocatori aggiornato con nome e cognome quando disponibili; XI/Formazioni non forzati.",
+    "excelAliasRowsAfterDedupV735": 1054
   },
   "teams": [
     {
@@ -413967,15 +414082,15 @@
         "_iosudoMarketRows": []
       },
       {
-        "id": "atalanta-pasalic",
+        "id": "atalanta-mario-pasalic",
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Pasalic",
+        "playerName": "Mario Pasalic",
         "role": "C",
         "coach": "Maurizio Sarri",
         "module": "4-3-3",
         "rosterSource": "https://www.transfermarkt.it/atalanta-bergamo/startseite/verein/800/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Alias confermato V735: Pasalic -> Mario Pasalic.",
         "updatedAt": "2026-07-10",
         "flag": "",
         "marketStatus": "In rosa",
@@ -414001,8 +414116,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Pasalic",
-        "disambiguatedName": "Pasalic",
+        "originalName": "Mario Pasalic",
+        "disambiguatedName": "Mario Pasalic",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -414010,7 +414125,7 @@
           "fantacalcioId": "2077",
           "classicRole": "C",
           "mantraRoles": "C/T",
-          "playerName": "Pasalic",
+          "playerName": "Mario Pasalic",
           "realTeam": "ATA",
           "realTeamOriginal": "Atalanta",
           "quotationCurrent": 12,
@@ -427882,21 +427997,21 @@
         "formationNote": "Modulo adattato a 4-3-2-1 per posizionare correttamente Dodo/Gosens e i tre centrocampisti indicati."
       },
       {
-        "id": "fiorentina-elia",
+        "id": "fiorentina-mirko-elia",
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Elia",
+        "playerName": "Mirko Elia",
         "role": "D",
         "coach": "Fabio Grosso",
         "module": "4-3-3 / 4-3-2-1",
-        "rosterSource": "https://www.transfermarkt.it/ac-florenz/startseite/verein/430/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
+        "rosterSource": "https://www.acffiorentina.com/en/news/elia-ceduto-al-bari-190726",
+        "note": "ACF Fiorentina comunica il prestito al Bari con diritto di opzione. Difensore classe 2005; prestito esterno / non slot attivo.",
+        "updatedAt": "2026-07-19",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "marketStatus": "Prestito ufficiale / non slot attivo",
+        "marketDetail": "Cessione temporanea ufficiale al Bari con diritto di opzione; la riga resta tracciata senza incrementare la rosa fantacalcistica attiva.",
+        "marketSource": "https://www.acffiorentina.com/en/news/elia-ceduto-al-bari-190726",
+        "marketNote": "Aggiornato V103/V735 con nome e cognome.",
         "probableXi": false,
         "formationPosition": "",
         "formationSourcePosition": "",
@@ -427916,8 +428031,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Elia",
-        "disambiguatedName": "Elia",
+        "originalName": "Mirko Elia",
+        "disambiguatedName": "Mirko Elia",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": []
@@ -456274,15 +456389,15 @@
         "formationNote": "Hernani non presente nella rosa file; sostituito con Colpani. Mota Carvalho normalizzato rispetto a Dany Mota."
       },
       {
-        "id": "monza-cutrone",
+        "id": "monza-patrick-cutrone",
         "teamId": "monza",
         "teamName": "Monza",
-        "playerName": "Cutrone",
+        "playerName": "Patrick Cutrone",
         "role": "A",
         "coach": "Ivan Juric",
         "module": "3-4-2-1 / 3-4-3",
         "rosterSource": "https://www.transfermarkt.it/ac-monza/startseite/verein/2919/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Alias confermato V735: Cutrone -> Patrick Cutrone.",
         "updatedAt": "2026-07-10",
         "flag": "",
         "marketStatus": "In rosa",
@@ -456308,8 +456423,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Cutrone",
-        "disambiguatedName": "Cutrone",
+        "originalName": "Patrick Cutrone",
+        "disambiguatedName": "Patrick Cutrone",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -456317,7 +456432,7 @@
           "fantacalcioId": "2155",
           "classicRole": "A",
           "mantraRoles": "Pc",
-          "playerName": "Cutrone",
+          "playerName": "Patrick Cutrone",
           "realTeam": "PAR",
           "realTeamOriginal": "Parma",
           "quotationCurrent": 6,
@@ -460663,15 +460778,15 @@
         "fantasyRoster": "River Plaid"
       },
       {
-        "id": "napoli-neres",
+        "id": "napoli-david-neres",
         "teamId": "napoli",
         "teamName": "Napoli",
-        "playerName": "Neres",
+        "playerName": "David Neres",
         "role": "A",
         "coach": "Massimiliano Allegri",
         "module": "3-4-2-1 / 4-3-3",
         "rosterSource": "https://www.transfermarkt.it/ssc-neapel/startseite/verein/6195/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Alias confermato V735: Neres -> David Neres.",
         "updatedAt": "2026-07-10",
         "flag": "",
         "marketStatus": "In rosa",
@@ -460697,14 +460812,14 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Neres",
-        "disambiguatedName": "Neres",
+        "originalName": "David Neres",
+        "disambiguatedName": "David Neres",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "listone": {
           "fantacalcioId": "6831",
-          "playerName": "Neres",
+          "playerName": "David Neres",
           "classicRole": "C",
           "mantraRoles": "W/A",
           "realTeam": "NAP",
@@ -461205,60 +461320,6 @@
             "played": 13,
             "average": 6.35,
             "fantasyAverage": 7.23,
-            "outOfList": ""
-          }
-        },
-        "virtualMarketRows": []
-      },
-      {
-        "id": "napoli-neres-2",
-        "listoneOnlyPlayer": true,
-        "nonActiveSlot": true,
-        "playerName": "Neres",
-        "originalName": "Neres",
-        "disambiguatedName": "Neres",
-        "role": "C",
-        "teamId": "napoli",
-        "teamName": "Napoli",
-        "realTeam": "Napoli",
-        "realTeamOriginal": "Napoli",
-        "updatedAt": "2026-07-18",
-        "marketStatus": "Extra listone/fantasy",
-        "marketDetail": "Profilo extra aggiunto per riallineare il conteggio app/Excel a 1033.",
-        "marketSource": "Listone Fantacalcio 2026-07-04",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "note": "Extra listone/fantasy V724: aggiunto al file Excel e al dataset ioSudo; non sostituisce una ufficialità di rosa.",
-        "flag": "EXTRA_LISTONE",
-        "source": "Listone Fantacalcio 2026-07-04",
-        "listone": {
-          "fantacalcioId": "6831",
-          "classicRole": "C",
-          "mantraRoles": "W/A",
-          "playerName": "Neres",
-          "realTeam": "NAP",
-          "realTeamOriginal": "Napoli",
-          "quotationCurrent": 10,
-          "quotationInitial": "",
-          "quotationDiff": "",
-          "quotationCurrentMantra": "",
-          "quotationInitialMantra": "",
-          "quotationDiffMantra": "",
-          "fvm": 15,
-          "fvmMantra": "",
-          "fantasyRoster": "Beetlejuice ",
-          "rosterRole": "C",
-          "rosterCost": 61,
-          "status": "In listone",
-          "statusCode": "IN_LISTONE",
-          "sourceSheet": "Lista calciatori",
-          "sourceFormat": "CLASSIC_SINGLE_SHEET",
-          "sourceExtra": {
-            "under": "28",
-            "played": 16,
-            "average": 6.19,
-            "fantasyAverage": 6.84,
             "outOfList": ""
           }
         },
@@ -462121,15 +462182,15 @@
         "formationNote": "Estevez e Strefezza non presenti nella rosa aggiornata; sostituiti con Nicolussi Caviglia e Almqvist."
       },
       {
-        "id": "parma-circati",
+        "id": "parma-alessandro-circati",
         "teamId": "parma",
         "teamName": "Parma",
-        "playerName": "Circati",
+        "playerName": "Alessandro Circati",
         "role": "D",
         "coach": "Carlos Cuesta",
         "module": "4-3-3 / 4-2-3-1",
         "rosterSource": "https://www.transfermarkt.it/parma-calcio-1913/startseite/verein/130/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Alias confermato V735: Circati -> Alessandro Circati.",
         "updatedAt": "2026-07-10",
         "flag": "",
         "marketStatus": "In rosa",
@@ -462155,8 +462216,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Circati",
-        "disambiguatedName": "Circati",
+        "originalName": "Alessandro Circati",
+        "disambiguatedName": "Alessandro Circati",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -462164,7 +462225,7 @@
           "fantacalcioId": "6663",
           "classicRole": "D",
           "mantraRoles": "Dc",
-          "playerName": "Circati",
+          "playerName": "Alessandro Circati",
           "realTeam": "PAR",
           "realTeamOriginal": "Parma",
           "quotationCurrent": 8,
@@ -465265,12 +465326,12 @@
         "virtualMarketRows": []
       },
       {
-        "id": "parma-lovik",
+        "id": "parma-mathias-lovik",
         "listoneOnlyPlayer": true,
         "nonActiveSlot": true,
-        "playerName": "Lovik",
-        "originalName": "Lovik",
-        "disambiguatedName": "Lovik",
+        "playerName": "Mathias Lovik",
+        "originalName": "Mathias Lovik",
+        "disambiguatedName": "Mathias Lovik",
         "role": "D",
         "teamId": "parma",
         "teamName": "Parma",
@@ -465283,14 +465344,14 @@
         "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
         "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
         "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "note": "Extra listone/fantasy V724: aggiunto al file Excel e al dataset ioSudo; non sostituisce una ufficialità di rosa.",
+        "note": "Extra listone/fantasy V724: aggiunto al file Excel e al dataset ioSudo; non sostituisce una ufficialità di rosa. Alias confermato V735: Lovik -> Mathias Lovik.",
         "flag": "EXTRA_LISTONE",
         "source": "Listone Fantacalcio 2026-07-04",
         "listone": {
           "fantacalcioId": "6965",
           "classicRole": "D",
           "mantraRoles": "Ds/E",
-          "playerName": "Lovik",
+          "playerName": "Mathias Lovik",
           "realTeam": "PAR",
           "realTeamOriginal": "Parma",
           "quotationCurrent": 2,
@@ -473632,21 +473693,21 @@
         "listoneMatchMethod": "previous-snapshot"
       },
       {
-        "id": "torino-antolini",
+        "id": "torino-jacopo-antolini",
         "teamId": "torino",
         "teamName": "Torino",
-        "playerName": "Antolini",
+        "playerName": "Jacopo Antolini",
         "role": "D",
         "coach": "Ignazio Abate",
         "module": "4-3-1-2 / 3-4-2-1",
-        "rosterSource": "https://www.transfermarkt.it/fc-turin/startseite/verein/416/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
+        "rosterSource": "https://www.torinofc.it/news/18/07/2026/antolini-alla-pergolettese_43783",
+        "note": "Torino FC comunica la cessione definitiva alla Pergolettese. Ex Primavera/prestito esterno / non slot attivo.",
+        "updatedAt": "2026-07-18",
         "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "marketStatus": "Cessione ufficiale / non slot attivo",
+        "marketDetail": "Trasferimento definitivo ufficiale alla Pergolettese; non occupa uno slot della rosa fantacalcistica attiva.",
+        "marketSource": "https://www.torinofc.it/news/18/07/2026/antolini-alla-pergolettese_43783",
+        "marketNote": "Aggiornato V103/V735 con nome e cognome.",
         "probableXi": false,
         "formationPosition": "",
         "formationSourcePosition": "",
@@ -473666,8 +473727,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Antolini",
-        "disambiguatedName": "Antolini",
+        "originalName": "Jacopo Antolini",
+        "disambiguatedName": "Jacopo Antolini",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": []
@@ -493605,6 +493666,35 @@
         "reliability": "",
         "check": "Non aggiornare rosa",
         "rule": "Rumor/monitoraggio; nessuna ufficialita"
+      },
+      {
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "playerName": "Alessio Zerbin",
+        "target": "Alessio Zerbin",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Giocatore bloccato / intesa finale col Napoli da trovare",
+        "updatedAt": "2026-07-19",
+        "date": "2026-07-19",
+        "note": "Il Frosinone ha bloccato Zerbin e cerca l’intesa finale con il Napoli per un acquisto a titolo definitivo. Non ufficiale.",
+        "source": "Sky-Di Marzio / Napoli Magazine",
+        "url": "",
+        "articleUrl": "",
+        "href": "",
+        "sourceName": "Sky-Di Marzio / Napoli Magazine",
+        "sourceLabel": "Sky-Di Marzio / Napoli Magazine",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento V103",
+        "roleBrief": "C/A",
+        "role": "Esterno",
+        "origin": "Napoli",
+        "formula": "",
+        "probability": "",
+        "reliability": "",
+        "check": "Rosa da aggiornare solo a ufficialità/deposito",
+        "rule": "Rumor/trattativa attiva, non ufficialità."
       }
     ],
     "genoa": [
@@ -502674,6 +502764,35 @@
         "reliability": "",
         "check": "Non aggiornare rosa",
         "rule": "Fonte ufficiale Napoli/Catanzaro necessaria per ufficialita."
+      },
+      {
+        "teamId": "napoli",
+        "teamName": "Napoli",
+        "playerName": "Alessio Zerbin",
+        "target": "Alessio Zerbin",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Giocatore bloccato dal Frosinone / intesa finale da trovare",
+        "updatedAt": "2026-07-19",
+        "date": "2026-07-19",
+        "note": "Riga speculare lato Napoli: Frosinone ha bloccato il giocatore e tratta l’acquisto definitivo; accordo finale tra club non ancora raggiunto.",
+        "source": "Sky-Di Marzio / Napoli Magazine",
+        "url": "",
+        "articleUrl": "",
+        "href": "",
+        "sourceName": "Sky-Di Marzio / Napoli Magazine",
+        "sourceLabel": "Sky-Di Marzio / Napoli Magazine",
+        "sourceType": "Articolo specifico",
+        "sourceVerification": "OK_ARTICOLO",
+        "sourceVerificationNote": "Aggiornamento V103",
+        "roleBrief": "C/A",
+        "role": "Esterno",
+        "origin": "Frosinone",
+        "formula": "",
+        "probability": "",
+        "reliability": "",
+        "check": "Rosa da aggiornare solo a ufficialità/deposito",
+        "rule": "Rumor/trattativa attiva, non ufficialità."
       }
     ],
     "parma": [
@@ -512735,6 +512854,31 @@
         "reliability": "",
         "check": "",
         "rule": ""
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "playerName": "Mirko Elia",
+        "target": "Mirko Elia",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Ufficiale",
+        "updatedAt": "2026-07-19",
+        "date": "2026-07-19",
+        "roleBrief": "D",
+        "role": "D",
+        "origin": "SSC Bari",
+        "formula": "Cessione temporanea con diritto di opzione",
+        "source": "ACF Fiorentina sito ufficiale",
+        "url": "https://www.acffiorentina.com/en/news/elia-ceduto-al-bari-190726",
+        "articleUrl": "https://www.acffiorentina.com/en/news/elia-ceduto-al-bari-190726",
+        "href": "https://www.acffiorentina.com/en/news/elia-ceduto-al-bari-190726",
+        "sourceName": "ACF Fiorentina sito ufficiale",
+        "sourceLabel": "ACF Fiorentina sito ufficiale",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Fonte primaria club V103",
+        "note": "Difensore classe 2005; prestito esterno / non slot attivo fantacalcio."
       }
     ],
     "frosinone": [
@@ -523020,6 +523164,31 @@
         "reliability": "",
         "check": "",
         "rule": ""
+      },
+      {
+        "teamId": "torino",
+        "teamName": "Torino",
+        "playerName": "Jacopo Antolini",
+        "target": "Jacopo Antolini",
+        "direction": "outgoing",
+        "directionLabel": "Uscita",
+        "status": "Ufficiale",
+        "updatedAt": "2026-07-18",
+        "date": "2026-07-18",
+        "roleBrief": "D",
+        "role": "D",
+        "origin": "Pergolettese",
+        "formula": "Cessione a titolo definitivo",
+        "source": "Torino FC sito ufficiale",
+        "url": "https://www.torinofc.it/news/18/07/2026/antolini-alla-pergolettese_43783",
+        "articleUrl": "https://www.torinofc.it/news/18/07/2026/antolini-alla-pergolettese_43783",
+        "href": "https://www.torinofc.it/news/18/07/2026/antolini-alla-pergolettese_43783",
+        "sourceName": "Torino FC sito ufficiale",
+        "sourceLabel": "Torino FC sito ufficiale",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Fonte primaria club V103",
+        "note": "Dopo il prestito 2025/26, trasferimento definitivo; ex Primavera/prestito esterno / non slot attivo."
       }
     ],
     "udinese": [
@@ -609386,30 +609555,30 @@
     }
   },
   "manifest": {
-    "id": "sudatori-iosudo-v734",
-    "version": "V734",
+    "id": "sudatori-iosudo-v735",
+    "version": "V735",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-19",
-    "updatedAtTime": "2026-07-19T13:00:00+02:00",
-    "generatedAt": "2026-07-19T13:00:00+02:00",
-    "sourceFile": "v101_2026-07-19_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
-    "dedupVersion": "V734",
+    "updatedAtTime": "2026-07-19T13:45:00+02:00",
+    "generatedAt": "2026-07-19T13:45:00+02:00",
+    "sourceFile": "v103_2026-07-19_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
+    "dedupVersion": "V735",
     "notes": "V733 aggiornata da Excel V99: alias confermati, Roma-Roma Primavera 6-0 con tabellino, Parma-Parma Primavera in calendario, Wesley rientrato e monitoraggi Rabiot/Romagnoli.",
     "teams": 20,
-    "players": 1057,
+    "players": 1056,
     "friendlies": 120,
-    "teamTransferTalks": 431,
+    "teamTransferTalks": 433,
     "injuries": 25,
-    "officialMoves": 372,
-    "sources": 709,
+    "officialMoves": 374,
+    "sources": 711,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 9,
     "friendlyPlayerStats": 186,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v734-excel-v101-overlay-time-header",
-    "versionNumber": 734,
+    "buildTag": "iosudo-v735-excel-v103-alias-candidate-pairs",
+    "versionNumber": 735,
     "baseVersion": "V732",
     "transfermarktRumors": 46,
     "duplicateExactPlayers": 0,
@@ -609455,7 +609624,7 @@
     "friendliesPatchedV722": 3,
     "injuriesClosedV722": 1,
     "friendlyPlayerClickOpensPlayerDetail": true,
-    "playersRows": 1057,
+    "playersRows": 1056,
     "playersCountMode": "alias-sheet-profiles-including-listone-fantasy-extras-and-v92-rumor-profiles",
     "playerKpiUsesExcelDistinctCount": true,
     "listoneOnlyVirtualPlayersExcludedFromPlayerKpi": true,
@@ -609505,7 +609674,7 @@
     "officialTalksClosedV730": 4,
     "sourcesAddedV730": 4,
     "playersAddedV730": 2,
-    "aliasRows": 1056,
+    "aliasRows": 1054,
     "confirmedAliasesV733": 10,
     "duplicateCandidatesV733": 10,
     "sourcesAddedV733": 5,
@@ -609514,8 +609683,8 @@
     "injuriesClosedV733": 1,
     "playersAddedV733": 2,
     "fullNamePolicyV733": true,
-    "overlayGeneratedAt": "2026-07-19T13:00:00+02:00",
-    "overlayGeneratedAtLabel": "19/07/2026 13:00 CEST",
+    "overlayGeneratedAt": "2026-07-19T13:45:00+02:00",
+    "overlayGeneratedAtLabel": "19/07/2026 13:45 CEST",
     "confirmedAliasesV734": [
       {
         "alias": "Okolo",
@@ -609576,7 +609745,122 @@
       "Parma Calcio - profilo Abdou-Salam Konate"
     ],
     "fullNamePolicyV734": "Alias_Giocatori aggiornato con nome e cognome quando disponibile; XI non normalizzati forzatamente.",
-    "headerOverlayTimestampV734": "2026-07-19T13:00:00+02:00"
+    "headerOverlayTimestampV734": "2026-07-19T13:00:00+02:00",
+    "confirmedAliasesV735": [
+      {
+        "alias": "Aduyev",
+        "canonical": "Danil Aduyev"
+      },
+      {
+        "alias": "Bereszynski",
+        "canonical": "Bartosz Bereszynski"
+      },
+      {
+        "alias": "Circati",
+        "canonical": "Alessandro Circati"
+      },
+      {
+        "alias": "Bernabe",
+        "canonical": "Adrian Bernabe"
+      },
+      {
+        "alias": "Lovik",
+        "canonical": "Mathias Lovik"
+      },
+      {
+        "alias": "Cutrone",
+        "canonical": "Patrick Cutrone"
+      },
+      {
+        "alias": "Retegui",
+        "canonical": "Mateo Retegui"
+      },
+      {
+        "alias": "Pasalic",
+        "canonical": "Mario Pasalic"
+      },
+      {
+        "alias": "Ilicic",
+        "canonical": "Josip Ilicic"
+      },
+      {
+        "alias": "Neres",
+        "canonical": "David Neres"
+      }
+    ],
+    "playersPatchedV735": [
+      "Mirko Elia",
+      "Jacopo Antolini"
+    ],
+    "officialMovesPatchedV735": [
+      "Mirko Elia",
+      "Jacopo Antolini"
+    ],
+    "teamTransferTalksPatchedV735": [
+      "Alessio Zerbin Frosinone/Napoli"
+    ],
+    "duplicatePairCandidatesV735": [
+      {
+        "variantA": "Calvani",
+        "variantB": "Gabriele Calvani",
+        "where": "Genoa/Frosinone - profilo difensore/prestito da verificare"
+      },
+      {
+        "variantA": "Fini",
+        "variantB": "Seydou Fini",
+        "where": "Genoa/Frosinone - prestito/extra listone da verificare"
+      },
+      {
+        "variantA": "Isaksen",
+        "variantB": "Gustav Isaksen",
+        "where": "Lazio/Fiorentina - extra listone vs profilo completo"
+      },
+      {
+        "variantA": "Oristanio",
+        "variantB": "Gaetano Oristanio",
+        "where": "Parma/Torino/Venezia - extra listone vs profilo completo"
+      },
+      {
+        "variantA": "Sottil",
+        "variantB": "Riccardo Sottil",
+        "where": "Lecce/Fiorentina - extra listone vs profilo completo"
+      },
+      {
+        "variantA": "Trabucchi",
+        "variantB": "Nicolas Trabucchi",
+        "where": "Parma/Dolomiti Bellunesi - prestito ufficiale"
+      },
+      {
+        "variantA": "Coulibaly",
+        "variantB": "Coulibaly W.",
+        "where": "Lecce/Sassuolo - possibile abbreviazione, ma ruolo diverso"
+      },
+      {
+        "variantA": "Giovane",
+        "variantB": "Giovane (Napoli)",
+        "where": "Napoli - riga generica vs riga disambiguata"
+      },
+      {
+        "variantA": "Pessina",
+        "variantB": "Pessina Mas.",
+        "where": "Bologna/Monza - cognome generico vs profilo portiere"
+      },
+      {
+        "variantA": "Chukwueze",
+        "variantB": "Samuel Chukwueze",
+        "where": "Milan - extra listone/ballottaggio tecnico"
+      }
+    ],
+    "removedDuplicatePlayersV735": [
+      {
+        "teamId": "napoli",
+        "id": "napoli-david-neres",
+        "playerName": "David Neres",
+        "reason": "Duplicato extra listone/fantasy consolidato in David Neres V735"
+      }
+    ],
+    "fullNamePolicyV735": "Alias_Giocatori aggiornato con nome e cognome quando disponibili; XI/Formazioni non forzati.",
+    "excelAliasRowsAfterDedupV735": 1054
   },
   "friendliesFilteredOutV715": [
     {
@@ -623729,5 +624013,143 @@
       "canonical": "David Neres",
       "where": "Napoli/listone"
     }
+  ],
+  "confirmedAliasesV735": [
+    {
+      "alias": "Aduyev",
+      "canonical": "Danil Aduyev"
+    },
+    {
+      "alias": "Bereszynski",
+      "canonical": "Bartosz Bereszynski"
+    },
+    {
+      "alias": "Circati",
+      "canonical": "Alessandro Circati"
+    },
+    {
+      "alias": "Bernabe",
+      "canonical": "Adrian Bernabe"
+    },
+    {
+      "alias": "Lovik",
+      "canonical": "Mathias Lovik"
+    },
+    {
+      "alias": "Cutrone",
+      "canonical": "Patrick Cutrone"
+    },
+    {
+      "alias": "Retegui",
+      "canonical": "Mateo Retegui"
+    },
+    {
+      "alias": "Pasalic",
+      "canonical": "Mario Pasalic"
+    },
+    {
+      "alias": "Ilicic",
+      "canonical": "Josip Ilicic"
+    },
+    {
+      "alias": "Neres",
+      "canonical": "David Neres"
+    }
+  ],
+  "duplicatePairCandidatesV735": [
+    {
+      "variantA": "Calvani",
+      "variantB": "Gabriele Calvani",
+      "where": "Genoa/Frosinone - profilo difensore/prestito da verificare"
+    },
+    {
+      "variantA": "Fini",
+      "variantB": "Seydou Fini",
+      "where": "Genoa/Frosinone - prestito/extra listone da verificare"
+    },
+    {
+      "variantA": "Isaksen",
+      "variantB": "Gustav Isaksen",
+      "where": "Lazio/Fiorentina - extra listone vs profilo completo"
+    },
+    {
+      "variantA": "Oristanio",
+      "variantB": "Gaetano Oristanio",
+      "where": "Parma/Torino/Venezia - extra listone vs profilo completo"
+    },
+    {
+      "variantA": "Sottil",
+      "variantB": "Riccardo Sottil",
+      "where": "Lecce/Fiorentina - extra listone vs profilo completo"
+    },
+    {
+      "variantA": "Trabucchi",
+      "variantB": "Nicolas Trabucchi",
+      "where": "Parma/Dolomiti Bellunesi - prestito ufficiale"
+    },
+    {
+      "variantA": "Coulibaly",
+      "variantB": "Coulibaly W.",
+      "where": "Lecce/Sassuolo - possibile abbreviazione, ma ruolo diverso"
+    },
+    {
+      "variantA": "Giovane",
+      "variantB": "Giovane (Napoli)",
+      "where": "Napoli - riga generica vs riga disambiguata"
+    },
+    {
+      "variantA": "Pessina",
+      "variantB": "Pessina Mas.",
+      "where": "Bologna/Monza - cognome generico vs profilo portiere"
+    },
+    {
+      "variantA": "Chukwueze",
+      "variantB": "Samuel Chukwueze",
+      "where": "Milan - extra listone/ballottaggio tecnico"
+    }
+  ],
+  "aliasesNormalizedV735": [
+    {
+      "field": "playerName",
+      "from": "Pasalic",
+      "to": "Mario Pasalic",
+      "team": "Atalanta"
+    },
+    {
+      "field": "playerName",
+      "from": "Cutrone",
+      "to": "Patrick Cutrone",
+      "team": "Monza"
+    },
+    {
+      "field": "playerName",
+      "from": "Neres",
+      "to": "David Neres",
+      "team": "Napoli"
+    },
+    {
+      "field": "playerName",
+      "from": "Circati",
+      "to": "Alessandro Circati",
+      "team": "Parma"
+    }
+  ],
+  "removedDuplicatePlayersV735": [
+    {
+      "teamId": "napoli",
+      "id": "napoli-david-neres",
+      "playerName": "David Neres",
+      "reason": "Duplicato extra listone/fantasy consolidato in David Neres V735"
+    }
+  ],
+  "officialityControlV735": {
+    "activeOfficialRumors": 0,
+    "rule": "I giocatori con ufficialità attiva non restano nei rumor attivi."
+  },
+  "updateLogV735": [
+    "Applicati 10 alias confermati dalla lista V734.",
+    "Aggiornati Mirko Elia e Jacopo Antolini con nome completo e ufficialità in uscita.",
+    "Aggiornato monitoraggio Alessio Zerbin Frosinone/Napoli da V103.",
+    "Prodotte 10 coppie potenziali di duplicati dalla lista profili."
   ]
 }
