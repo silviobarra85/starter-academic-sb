@@ -1,0 +1,18 @@
+{
+  "version": "V743",
+  "generatedAt": "2026-07-20T16:11:00+02:00",
+  "generatedAtLabel": "20/07/2026 16:11 CEST",
+  "playersKpi": 1049,
+  "playersRows": 1049,
+  "officialMoves": 390,
+  "teamTransferTalks": 331,
+  "transfermarktRumors": 54,
+  "injuries": 28,
+  "friendlies": 150,
+  "friendlyMatchDetails": 14,
+  "friendlyPlayerStats": 294,
+  "activeOfficialRumors": 0,
+  "duplicateIds": 0,
+  "duplicateExactPlayers": 0,
+  "sourceExcel": "v118_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_fuso_v742.xlsx"
+}

@@ -6,3 +6,8 @@
 ## V742 - Excel V115
 - Aggiornato ioSudo da Excel V115.
 - Integrati handoff, deduplica/disambiguazioni e header 20/07/2026 14:15 CEST.
+
+
+## V743 - 20/07/2026 16:11 CEST
+- Integrato Excel V118 fuso come base corrente.
+- Nessuna nuova fonte rispetto a V742; aggiornati metadata, handoff e candidati duplicati.

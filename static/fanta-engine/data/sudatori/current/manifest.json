@@ -1,15 +1,15 @@
 {
-  "id": "sudatori-iosudo-v742",
-  "version": "V742",
+  "id": "sudatori-iosudo-v743",
+  "version": "V743",
   "seasonId": "2026-27",
   "updatedAt": "2026-07-20",
-  "updatedAtTime": "2026-07-20T14:47:00+02:00",
-  "generatedAt": "2026-07-20T14:47:00+02:00",
-  "overlayGeneratedAt": "2026-07-20T14:47:00+02:00",
-  "overlayGeneratedAtLabel": "20/07/2026 14:47 CEST",
-  "sourceFile": "v116_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v741.xlsx + patch UI V742",
-  "dedupVersion": "V742",
-  "notes": "V742: applicati duplicati confermati Pellegrino/Musah/Ekhator/Pugno/Summerville/Ure/Ricci/Gatti/Conceição/Khephren Thuram e Abdulhamid/Ahanor/Bellanova/Beltran/Bernasconi/Bravo/Broja/Calabria/Cannavò/Capolupo. Riparati matchKey/risultati/tabellini amichevoli; schede amichevoli compatte e click apre tabellino. Patch post-audit: matchKey amichevoli normalizzati con logica JS e risultati tabellini completi.",
+  "updatedAtTime": "2026-07-20T16:11:00+02:00",
+  "generatedAt": "2026-07-20T16:11:00+02:00",
+  "overlayGeneratedAt": "2026-07-20T16:11:00+02:00",
+  "overlayGeneratedAtLabel": "20/07/2026 16:11 CEST",
+  "sourceFile": "v118_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_fuso_v742.xlsx",
+  "dedupVersion": "V743",
+  "notes": "V743: Excel V118 fuso integrato come base corrente; nessuna nuova fonte rispetto a V742. Confermati risultati/tabellini amichevoli e schede compatte; duplicati già consolidati in V742 mantenuti; aggiunto set di coppie potenziali da verificare e nuovo handoff AI.",
   "teams": 20,
   "players": 1049,
   "officialMoves": 390,
@@ -23,5 +23,5 @@
   "duplicatesExact": 0,
   "duplicateIds": 0,
   "activeOfficialRumors": 0,
-  "buildTag": "iosudo-v742-ui-friendlies-dedup"
+  "buildTag": "iosudo-v743-v118-fused-dedup-audit"
 }
