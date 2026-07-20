@@ -15,3 +15,10 @@
 
 ## V744 - 20/07/2026 17:05 CEST
 - Excel V120 integrato; dedupliche e disambiguazioni utente; handoff AI aggiornato.
+
+
+## V745 - 20/07/2026 18:11 CEST
+- Integrato Excel V122.
+- Aggiornate trattative non ufficiali Kean/Adams.
+- Disambiguazioni protette Terracciano/Liberali/Paz/Berardi/Vaz.
+- Handoff AI aggiornato.

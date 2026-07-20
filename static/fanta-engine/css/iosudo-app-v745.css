@@ -1,0 +1,1067 @@
+:root {
+  color-scheme: dark;
+  --iosudo-bg: #17030b;
+  --iosudo-bg-soft: #240713;
+  --iosudo-card: rgba(255, 255, 255, 0.08);
+  --iosudo-card-strong: rgba(255, 255, 255, 0.13);
+  --iosudo-border: rgba(255, 255, 255, 0.16);
+  --iosudo-text: #fff7fa;
+  --iosudo-muted: #dfb7c3;
+  --iosudo-accent: #ffcc55;
+  --iosudo-red: #ff4d64;
+  --iosudo-green: #67f0a2;
+  --iosudo-blue: #84b8ff;
+  --iosudo-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  --iosudo-radius: 22px;
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--iosudo-bg); }
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--iosudo-text);
+  background:
+    radial-gradient(circle at top left, rgba(255, 204, 85, 0.16), transparent 34rem),
+    radial-gradient(circle at 80% 0, rgba(255, 77, 100, 0.18), transparent 28rem),
+    linear-gradient(160deg, #120208 0%, #2a0715 52%, #080104 100%);
+}
+
+a { color: inherit; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.hidden { display: none !important; }
+.iosudo-shell { width: min(1120px, 100%); margin: 0 auto; padding: 18px 14px 42px; }
+.iosudo-hero {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 30px;
+  padding: 18px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+  box-shadow: var(--iosudo-shadow);
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+  backdrop-filter: blur(18px);
+}
+.iosudo-hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.iosudo-back, .iosudo-install {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--iosudo-text);
+  padding: 9px 12px;
+  text-decoration: none;
+  font-weight: 800;
+  min-width: 70px;
+  text-align: center;
+}
+.iosudo-install { background: rgba(255, 204, 85, 0.15); color: #fff2c6; }
+.iosudo-eyebrow { margin: 0 0 2px; color: var(--iosudo-accent); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 900; text-align: center; }
+h1 { margin: 0; font-size: clamp(2rem, 14vw, 4rem); line-height: 0.9; text-align: center; letter-spacing: -0.08em; }
+.iosudo-subtitle { margin: 14px 0 0; color: var(--iosudo-muted); line-height: 1.45; text-align: center; }
+.iosudo-status { margin-top: 14px; color: #fff4cf; font-size: 0.9rem; text-align: center; }
+.iosudo-main { padding-top: 16px; }
+.iosudo-search-card, .iosudo-panel, .iosudo-result-card, .iosudo-team-card, .iosudo-player-card {
+  border: 1px solid var(--iosudo-border);
+  background: var(--iosudo-card);
+  border-radius: var(--iosudo-radius);
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.18);
+}
+.iosudo-search-card { padding: 14px; position: sticky; top: 174px; z-index: 9; backdrop-filter: blur(14px); }
+.iosudo-search-label { display: block; color: var(--iosudo-muted); font-weight: 800; font-size: 0.8rem; margin-bottom: 8px; }
+.iosudo-search {
+  width: 100%;
+  border: 1px solid var(--iosudo-border);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.24);
+  color: var(--iosudo-text);
+  padding: 13px 14px;
+  outline: none;
+}
+.iosudo-search:focus { border-color: rgba(255, 204, 85, 0.8); box-shadow: 0 0 0 3px rgba(255, 204, 85, 0.13); }
+.iosudo-filter-row { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; }
+.iosudo-filter {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--iosudo-muted);
+  padding: 8px 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.iosudo-filter.is-active { background: rgba(255, 204, 85, 0.18); color: #fff4cf; border-color: rgba(255, 204, 85, 0.42); }
+.iosudo-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+.iosudo-kpi { border: 1px solid var(--iosudo-border); background: var(--iosudo-card); border-radius: 18px; padding: 13px; }
+.iosudo-kpi strong { display: block; font-size: 1.5rem; line-height: 1.1; }
+.iosudo-kpi span { color: var(--iosudo-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 900; }
+.iosudo-results { display: grid; gap: 12px; }
+.iosudo-team-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.iosudo-team-card { padding: 14px; text-align: left; color: inherit; }
+.iosudo-team-card button { all: unset; display: block; width: 100%; cursor: pointer; }
+.iosudo-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.iosudo-card-title { margin: 0; font-size: 1.2rem; }
+.iosudo-card-subtitle { margin: 4px 0 0; color: var(--iosudo-muted); font-size: 0.9rem; }
+.iosudo-card-meta { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 12px; }
+.iosudo-pill, .iosudo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--iosudo-border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--iosudo-text);
+}
+.iosudo-badge-new { background: rgba(103, 240, 162, 0.17); color: #d7ffe6; border-color: rgba(103, 240, 162, 0.35); }
+.iosudo-badge-rumor { background: rgba(255, 204, 85, 0.17); color: #fff0be; border-color: rgba(255, 204, 85, 0.4); }
+.iosudo-badge-confirmed { color: #e6c8d0; }
+.iosudo-badge-sos, .iosudo-badge-out { background: rgba(255, 77, 100, 0.18); color: #ffd8de; border-color: rgba(255, 77, 100, 0.45); }
+.iosudo-panel { padding: 14px; margin-bottom: 12px; }
+.iosudo-panel-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.iosudo-close { border: 1px solid var(--iosudo-border); border-radius: 999px; background: rgba(0,0,0,0.28); color: var(--iosudo-text); width: 36px; height: 36px; font-size: 1.35rem; }
+.iosudo-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin: 14px 0; }
+.iosudo-tab { border: 1px solid var(--iosudo-border); border-radius: 14px; padding: 9px 6px; background: rgba(0,0,0,0.22); color: var(--iosudo-muted); font-weight: 900; }
+.iosudo-tab.is-active { color: #fff4cf; border-color: rgba(255, 204, 85, 0.42); background: rgba(255, 204, 85, 0.14); }
+.iosudo-tab-panel { display: grid; gap: 12px; }
+.iosudo-pitch {
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 24px;
+  padding: 18px 10px;
+  min-height: 420px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(160deg, rgba(22, 116, 61, 0.72), rgba(15, 70, 45, 0.86));
+  background-size: 48px 48px, 48px 48px, auto;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+.iosudo-pitch-row { display: flex; justify-content: center; align-items: center; gap: 8px; min-height: 70px; }
+.iosudo-pitch-player {
+  min-width: 74px;
+  max-width: 118px;
+  flex: 1 1 0;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 8px 6px;
+  background: rgba(8, 1, 4, 0.58);
+  color: white;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+.iosudo-pitch-role { display: inline-block; color: #ffeaa8; font-weight: 950; font-size: 0.7rem; margin-bottom: 4px; }
+.iosudo-pitch-name { display: block; font-weight: 950; font-size: clamp(0.72rem, 3vw, 0.88rem); line-height: 1.12; overflow-wrap: anywhere; }
+.iosudo-pitch-risk { display: inline-flex; margin-top: 6px; color: #ffd8de; background: rgba(255, 77, 100, 0.35); border: 1px solid rgba(255, 77, 100, 0.55); border-radius: 999px; padding: 3px 7px; font-size: 0.68rem; font-weight: 950; }
+.iosudo-list { display: grid; gap: 8px; }
+.iosudo-list-row { border: 1px solid var(--iosudo-border); border-radius: 16px; padding: 11px; background: rgba(0,0,0,0.16); }
+.iosudo-list-row h4 { margin: 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.iosudo-list-row p { margin: 6px 0 0; color: var(--iosudo-muted); line-height: 1.42; }
+.iosudo-source-link { color: #ffeaa8; font-weight: 850; text-decoration: none; }
+.iosudo-player-grid { display: grid; gap: 10px; }
+.iosudo-player-card { padding: 13px; }
+.iosudo-player-card button { all: unset; cursor: pointer; display: block; width: 100%; }
+.iosudo-player-title { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.iosudo-player-title h3 { margin: 0; font-size: 1rem; }
+.iosudo-empty { color: var(--iosudo-muted); padding: 12px; border: 1px dashed var(--iosudo-border); border-radius: 16px; }
+
+@media (min-width: 780px) {
+  .iosudo-shell { padding-inline: 24px; }
+  .iosudo-summary { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .iosudo-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .iosudo-player-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .iosudo-search-card { top: 158px; }
+}
+
+@media (max-width: 430px) {
+  .iosudo-shell { padding-inline: 10px; }
+  .iosudo-hero { top: 6px; border-radius: 24px; padding: 14px; }
+  .iosudo-search-card { top: 164px; }
+  .iosudo-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .iosudo-tabs { grid-template-columns: repeat(2, 1fr); }
+  .iosudo-pitch { min-height: 390px; padding-inline: 8px; }
+  .iosudo-pitch-row { gap: 5px; }
+  .iosudo-pitch-player { min-width: 0; padding: 7px 4px; border-radius: 13px; }
+}
+
+/* V611 compact app header with sweating fantacalcio logo */
+.iosudo-shell { padding: 10px 14px 42px; }
+.iosudo-topbar {
+  position: sticky;
+  top: 8px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  border: 1px solid var(--iosudo-border);
+  border-radius: 20px;
+  padding: 8px 10px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+}
+.iosudo-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+  background: #3b0619;
+}
+.iosudo-topbar-copy { min-width: 0; flex: 1 1 auto; }
+.iosudo-title-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--iosudo-muted);
+  font-size: 0.9rem;
+  line-height: 1.1;
+  font-weight: 850;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.iosudo-title-line strong {
+  color: var(--iosudo-text);
+  font-size: 1.03rem;
+  letter-spacing: -0.03em;
+}
+.iosudo-site-link {
+  color: #fff2c6;
+  font-weight: 950;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 204, 85, 0.45);
+}
+.iosudo-status {
+  margin: 3px 0 0;
+  color: #fff4cf;
+  font-size: 0.72rem;
+  line-height: 1.15;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.iosudo-install {
+  min-width: 0;
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  font-size: 0.72rem;
+}
+.iosudo-main { padding-top: 10px; }
+.iosudo-search-card { top: 78px; }
+
+@media (min-width: 780px) {
+  .iosudo-search-card { top: 82px; }
+}
+
+@media (max-width: 430px) {
+  .iosudo-shell { padding: 8px 9px 36px; }
+  .iosudo-topbar { top: 6px; border-radius: 18px; padding: 7px 8px; gap: 8px; }
+  .iosudo-logo { width: 38px; height: 38px; border-radius: 13px; }
+  .iosudo-title-line { gap: 4px; font-size: 0.78rem; }
+  .iosudo-title-line strong { font-size: 0.95rem; }
+  .iosudo-status { font-size: 0.66rem; }
+  .iosudo-install { padding: 6px 8px; font-size: 0.66rem; }
+  .iosudo-search-card { top: 70px; }
+}
+
+/* V611 player-detail navigation, role colors and team-open layout */
+.iosudo-shell.is-team-open .iosudo-search-card {
+  display: none;
+}
+
+.iosudo-shell.is-team-open .iosudo-summary {
+  display: none;
+}
+
+.iosudo-shell.is-team-open .iosudo-results {
+  display: none;
+}
+
+.iosudo-tabs {
+  position: sticky;
+  top: 78px;
+  z-index: 18;
+  padding: 8px;
+  margin-inline: -4px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  background: rgba(23, 3, 11, 0.92);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.24);
+}
+
+.iosudo-player-card,
+.iosudo-player-list-row,
+.iosudo-player-detail-card,
+.iosudo-pitch-player {
+  position: relative;
+  overflow: hidden;
+}
+
+.iosudo-player-card::before,
+.iosudo-player-list-row::before,
+.iosudo-player-detail-card::before,
+.iosudo-pitch-player::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  opacity: 0.95;
+}
+
+.iosudo-player-role-p {
+  border-color: rgba(255, 211, 77, 0.58) !important;
+  background: linear-gradient(135deg, rgba(255, 211, 77, 0.28), rgba(0,0,0,0.18)) !important;
+}
+.iosudo-player-role-p::before { background: #ffd34d; }
+
+.iosudo-player-role-d {
+  border-color: rgba(103, 240, 162, 0.55) !important;
+  background: linear-gradient(135deg, rgba(103, 240, 162, 0.23), rgba(0,0,0,0.18)) !important;
+}
+.iosudo-player-role-d::before { background: #67f0a2; }
+
+.iosudo-player-role-c {
+  border-color: rgba(132, 184, 255, 0.58) !important;
+  background: linear-gradient(135deg, rgba(132, 184, 255, 0.24), rgba(0,0,0,0.18)) !important;
+}
+.iosudo-player-role-c::before { background: #84b8ff; }
+
+.iosudo-player-role-a {
+  border-color: rgba(255, 77, 100, 0.58) !important;
+  background: linear-gradient(135deg, rgba(255, 77, 100, 0.24), rgba(0,0,0,0.18)) !important;
+}
+.iosudo-player-role-a::before { background: #ff4d64; }
+
+.iosudo-player-role-x::before { background: rgba(255,255,255,0.28); }
+
+.iosudo-player-row-button,
+.iosudo-pitch-player[type="button"] {
+  appearance: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  width: 100%;
+}
+
+.iosudo-player-row-button {
+  display: block;
+  background: transparent;
+  padding: 0 0 0 2px;
+}
+
+.iosudo-pitch-player[type="button"] {
+  cursor: pointer;
+}
+
+.iosudo-pitch-player[type="button"]:focus-visible,
+.iosudo-player-row-button:focus-visible,
+.iosudo-player-card button:focus-visible {
+  outline: 3px solid rgba(255, 204, 85, 0.55);
+  outline-offset: 3px;
+}
+
+.iosudo-player-detail-card {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 18px;
+  padding: 13px 13px 13px 18px;
+  margin: 12px 0;
+}
+.iosudo-player-detail-card h3 { margin: 0 0 6px; }
+.iosudo-player-detail-card p { margin: 6px 0 0; color: var(--iosudo-muted); }
+
+.iosudo-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.iosudo-back-team {
+  width: auto;
+  min-width: 72px;
+  padding-inline: 12px;
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+@media (min-width: 780px) {
+  .iosudo-tabs { top: 82px; }
+}
+
+@media (max-width: 430px) {
+  .iosudo-tabs { top: 70px; grid-template-columns: repeat(2, 1fr); }
+  .iosudo-panel-actions { flex-direction: column; align-items: flex-end; }
+}
+button.iosudo-pitch-player {
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+}
+
+
+/* V635 team-card stripes by real club colors */
+.iosudo-team-card {
+  isolation: isolate;
+}
+.iosudo-team-card[class*="iosudo-team-theme-"] {
+  background-color: rgba(0,0,0,0.22);
+  background-blend-mode: normal;
+  border-color: rgba(255,255,255,0.32);
+  box-shadow: 0 15px 42px rgba(0,0,0,0.28);
+}
+.iosudo-team-card[class*="iosudo-team-theme-"] .iosudo-card-subtitle {
+  color: currentColor;
+  opacity: 0.82;
+}
+.iosudo-team-card[class*="iosudo-team-theme-"] .iosudo-pill {
+  color: currentColor;
+  border-color: currentColor;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+}
+.iosudo-team-card[class*="iosudo-team-theme-"] .iosudo-card-title,
+.iosudo-team-card[class*="iosudo-team-theme-"] .iosudo-card-subtitle,
+.iosudo-team-card[class*="iosudo-team-theme-"] .iosudo-pill {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.28);
+}
+.iosudo-team-theme-nerazzurro {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #050505 0 19%, #0758a2 19% 38%, #050505 38% 57%, #0758a2 57% 76%) !important;
+}
+.iosudo-team-theme-rossoblu {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #b11226 0 22%, #073b83 22% 44%) !important;
+}
+.iosudo-team-theme-azzurro {
+  color: #070b12;
+  background: repeating-linear-gradient(90deg, #8ed7ff 0 24%, #73c8f7 24% 48%) !important;
+}
+.iosudo-team-theme-como {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #053d70 0 24%, #0b5fa5 24% 48%) !important;
+}
+.iosudo-team-theme-bianconero {
+  color: #c9001f;
+  background: repeating-linear-gradient(90deg, #050505 0 16%, #f7f7f7 16% 32%, #050505 32% 48%, #f7f7f7 48% 64%) !important;
+}
+.iosudo-team-theme-giallorosso {
+  color: #080808;
+  background: repeating-linear-gradient(90deg, #ffd33f 0 24%, #b31220 24% 48%) !important;
+}
+.iosudo-team-theme-frosinone {
+  color: #002b66;
+  background: repeating-linear-gradient(90deg, #ffd833 0 26%, #f4c400 26% 52%) !important;
+}
+.iosudo-team-theme-monza {
+  color: #080808;
+  background: repeating-linear-gradient(90deg, #fafafa 0 23%, #d71920 23% 46%, #fafafa 46% 69%) !important;
+}
+.iosudo-team-theme-fiorentina {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #542583 0 25%, #6f35aa 25% 50%) !important;
+}
+.iosudo-team-theme-milan {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #c4001a 0 20%, #050505 20% 40%) !important;
+}
+.iosudo-team-theme-parma {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #ffd33f 0 20%, #063d8f 20% 40%) !important;
+}
+.iosudo-team-theme-torino {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #5c0b18 0 26%, #721322 26% 52%) !important;
+}
+.iosudo-team-theme-venezia {
+  color: #050505;
+  background: repeating-linear-gradient(90deg, #f28c22 0 25%, #0f6b3e 25% 50%) !important;
+}
+.iosudo-team-theme-sassuolo {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #050505 0 22%, #05813f 22% 44%) !important;
+}
+.iosudo-team-theme-default {
+  color: var(--iosudo-text);
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05)) !important;
+}
+.iosudo-team-theme-azzurro .iosudo-card-title,
+.iosudo-team-theme-azzurro .iosudo-card-subtitle,
+.iosudo-team-theme-azzurro .iosudo-pill,
+.iosudo-team-theme-giallorosso .iosudo-card-title,
+.iosudo-team-theme-giallorosso .iosudo-card-subtitle,
+.iosudo-team-theme-giallorosso .iosudo-pill,
+.iosudo-team-theme-frosinone .iosudo-card-title,
+.iosudo-team-theme-frosinone .iosudo-card-subtitle,
+.iosudo-team-theme-frosinone .iosudo-pill,
+.iosudo-team-theme-monza .iosudo-card-title,
+.iosudo-team-theme-monza .iosudo-card-subtitle,
+.iosudo-team-theme-monza .iosudo-pill,
+.iosudo-team-theme-venezia .iosudo-card-title,
+.iosudo-team-theme-venezia .iosudo-card-subtitle,
+.iosudo-team-theme-venezia .iosudo-pill {
+  text-shadow: none;
+}
+.iosudo-team-theme-bianconero .iosudo-pill {
+  background: rgba(255,255,255,0.62);
+}
+.iosudo-team-theme-giallorosso .iosudo-pill,
+.iosudo-team-theme-frosinone .iosudo-pill,
+.iosudo-team-theme-monza .iosudo-pill,
+.iosudo-team-theme-venezia .iosudo-pill,
+.iosudo-team-theme-azzurro .iosudo-pill {
+  background: rgba(255,255,255,0.38);
+}
+
+/* V635: fonti mercato separate e cliccabili una per una */
+.iosudo-sources {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+}
+.iosudo-sources-label {
+  color: rgba(255, 255, 255, .72);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.iosudo-source-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.iosudo-source-chips .iosudo-source-link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 234, 168, .46);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(255, 234, 168, .12);
+  color: #ffeaa8;
+  line-height: 1;
+}
+.iosudo-source-link-muted {
+  opacity: .78;
+}
+
+
+/* V635: pitch rows for four-value modules and source chips clearer */
+.iosudo-pitch-row {
+  flex: 1 1 0;
+}
+.iosudo-pitch .iosudo-pitch-row:nth-child(1),
+.iosudo-pitch .iosudo-pitch-row:nth-last-child(1) {
+  flex: 0.85 1 0;
+}
+.iosudo-source-chips .iosudo-source-link {
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+/* V635: varianti cromatiche differenziate squadra per squadra */
+.iosudo-team-theme-atalanta {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #050505 0 16%, #0758a2 16% 32%, #050505 32% 48%, #0758a2 48% 64%) !important;
+}
+.iosudo-team-theme-inter {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #0057b8 0 18%, #050505 18% 36%, #0057b8 36% 54%, #050505 54% 72%) !important;
+}
+.iosudo-team-theme-bologna {
+  color: #fff;
+  background: repeating-linear-gradient(135deg, #b11226 0 18%, #073b83 18% 36%) !important;
+}
+.iosudo-team-theme-cagliari {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #073b83 0 23%, #b11226 23% 46%) !important;
+}
+.iosudo-team-theme-genoa {
+  color: #fff;
+  background: linear-gradient(135deg, #b11226 0 50%, #073b83 50% 100%) !important;
+}
+.iosudo-team-theme-lazio {
+  color: #070b12;
+  background: repeating-linear-gradient(0deg, #b9e9ff 0 24%, #87d5ff 24% 48%) !important;
+}
+.iosudo-team-theme-napoli {
+  color: #070b12;
+  background: repeating-linear-gradient(90deg, #50b9f2 0 24%, #8ed7ff 24% 48%) !important;
+}
+.iosudo-team-theme-juventus {
+  color: #c9001f;
+  background: repeating-linear-gradient(90deg, #050505 0 14%, #f7f7f7 14% 28%, #050505 28% 42%, #f7f7f7 42% 56%) !important;
+}
+.iosudo-team-theme-udinese {
+  color: #c9001f;
+  background: repeating-linear-gradient(0deg, #050505 0 18%, #f7f7f7 18% 36%) !important;
+}
+.iosudo-team-theme-lecce {
+  color: #080808;
+  background: repeating-linear-gradient(90deg, #ffd33f 0 22%, #b31220 22% 44%) !important;
+}
+.iosudo-team-theme-roma {
+  color: #080808;
+  background: repeating-linear-gradient(135deg, #f2b705 0 22%, #8f1725 22% 44%) !important;
+}
+.iosudo-team-theme-frosinone {
+  color: #002b66;
+  background: repeating-linear-gradient(90deg, #ffd833 0 26%, #f4c400 26% 52%) !important;
+}
+.iosudo-team-theme-monza {
+  color: #080808;
+  background: linear-gradient(90deg, #fafafa 0 48%, #d71920 48% 52%, #fafafa 52% 100%) !important;
+}
+.iosudo-team-theme-fiorentina {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #542583 0 25%, #6f35aa 25% 50%) !important;
+}
+.iosudo-team-theme-milan {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #c4001a 0 18%, #050505 18% 36%) !important;
+}
+.iosudo-team-theme-parma {
+  color: #fff;
+  background: repeating-linear-gradient(135deg, #ffd33f 0 18%, #063d8f 18% 36%) !important;
+}
+.iosudo-team-theme-torino {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #4a0712 0 28%, #721322 28% 56%) !important;
+}
+.iosudo-team-theme-venezia {
+  color: #050505;
+  background: repeating-linear-gradient(90deg, #f28c22 0 20%, #0f6b3e 20% 40%) !important;
+}
+.iosudo-team-theme-sassuolo {
+  color: #fff;
+  background: repeating-linear-gradient(90deg, #050505 0 22%, #05813f 22% 44%) !important;
+}
+.iosudo-team-theme-lazio .iosudo-card-title,
+.iosudo-team-theme-lazio .iosudo-card-subtitle,
+.iosudo-team-theme-lazio .iosudo-pill,
+.iosudo-team-theme-napoli .iosudo-card-title,
+.iosudo-team-theme-napoli .iosudo-card-subtitle,
+.iosudo-team-theme-napoli .iosudo-pill,
+.iosudo-team-theme-juventus .iosudo-card-title,
+.iosudo-team-theme-juventus .iosudo-card-subtitle,
+.iosudo-team-theme-juventus .iosudo-pill,
+.iosudo-team-theme-udinese .iosudo-card-title,
+.iosudo-team-theme-udinese .iosudo-card-subtitle,
+.iosudo-team-theme-udinese .iosudo-pill,
+.iosudo-team-theme-lecce .iosudo-card-title,
+.iosudo-team-theme-lecce .iosudo-card-subtitle,
+.iosudo-team-theme-lecce .iosudo-pill,
+.iosudo-team-theme-roma .iosudo-card-title,
+.iosudo-team-theme-roma .iosudo-card-subtitle,
+.iosudo-team-theme-roma .iosudo-pill,
+.iosudo-team-theme-frosinone .iosudo-card-title,
+.iosudo-team-theme-frosinone .iosudo-card-subtitle,
+.iosudo-team-theme-frosinone .iosudo-pill,
+.iosudo-team-theme-monza .iosudo-card-title,
+.iosudo-team-theme-monza .iosudo-card-subtitle,
+.iosudo-team-theme-monza .iosudo-pill,
+.iosudo-team-theme-venezia .iosudo-card-title,
+.iosudo-team-theme-venezia .iosudo-card-subtitle,
+.iosudo-team-theme-venezia .iosudo-pill {
+  text-shadow: none;
+}
+.iosudo-team-theme-lazio .iosudo-pill,
+.iosudo-team-theme-napoli .iosudo-pill,
+.iosudo-team-theme-juventus .iosudo-pill,
+.iosudo-team-theme-udinese .iosudo-pill,
+.iosudo-team-theme-lecce .iosudo-pill,
+.iosudo-team-theme-roma .iosudo-pill,
+.iosudo-team-theme-frosinone .iosudo-pill,
+.iosudo-team-theme-monza .iosudo-pill,
+.iosudo-team-theme-venezia .iosudo-pill {
+  background: rgba(255,255,255,0.45);
+}
+
+
+/* V635: tasti rapidi globali funzionanti */
+.iosudo-global-nav .iosudo-filter {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.iosudo-global-view {
+  display: grid;
+  gap: 12px;
+}
+.iosudo-global-head {
+  border: 1px solid var(--iosudo-border);
+  border-radius: var(--iosudo-radius);
+  padding: 14px;
+  background: var(--iosudo-card);
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.18);
+}
+.iosudo-global-list {
+  gap: 9px;
+}
+.iosudo-compact-row h4 {
+  align-items: center;
+}
+.iosudo-compact-row .iosudo-sources {
+  margin-top: 8px;
+}
+
+
+/* V635: vista rapida GIOCATORI */
+.iosudo-player-global-row {
+  padding: 0;
+}
+.iosudo-player-global-row .iosudo-player-row-button {
+  padding: 12px 12px 12px 18px;
+}
+.iosudo-player-global-row h4 {
+  gap: 7px;
+}
+.iosudo-player-global-row .iosudo-pill {
+  vertical-align: middle;
+}
+.iosudo-listone-ok {
+  color: #d7ffe6;
+  border-color: rgba(103, 240, 162, .45);
+  background: rgba(103, 240, 162, .14);
+}
+.iosudo-listone-missing {
+  color: #ffd8de;
+  border-color: rgba(255, 77, 100, .45);
+  background: rgba(255, 77, 100, .14);
+}
+
+/* V635: card giocatore globali sempre cliccabili e leggibili */
+.iosudo-player-global-row .iosudo-player-row-button {
+  cursor: pointer;
+}
+.iosudo-player-global-row .iosudo-player-row-button p {
+  line-height: 1.35;
+}
+
+/* V645: fantasy squadra visibile anche nelle caselle del probabile XI. */
+.iosudo-pitch-fantasy {
+  display: block;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.58rem, 2.35vw, 0.7rem);
+  font-weight: 850;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+/* V651: liste lunghe piu leggere durante lo scroll e navigazione. */
+.iosudo-global-list .iosudo-list-row,
+.iosudo-player-grid .iosudo-player-card,
+.iosudo-team-grid .iosudo-team-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 96px;
+}
+.iosudo-more-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 18px;
+}
+.iosudo-more-button {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: var(--iosudo-text);
+  padding: 11px 18px;
+  font-weight: 850;
+  letter-spacing: .02em;
+  box-shadow: 0 10px 28px rgba(0,0,0,.16);
+}
+.iosudo-more-button:active {
+  transform: translateY(1px);
+}
+
+/* V651: modalita compatta per liste molto grandi di GIOCATORI, RUMOR e UFFICIALITA. */
+.iosudo-market-row-compact .iosudo-sources-compact {
+  margin-top: 8px;
+}
+.iosudo-source-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.76);
+  font-size: .78rem;
+  font-weight: 850;
+}
+.iosudo-global-view .iosudo-card-subtitle {
+  contain: content;
+}
+.iosudo-global-list {
+  content-visibility: auto;
+  contain-intrinsic-size: 620px;
+}
+
+/* V655: badge fonte compatti per URL lunghi */
+.iosudo-source-link{max-width:12rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.iosudo-source-chips{min-width:0;}
+
+
+/* V690: RUMOR/UFFICIALITA raggruppate e mercato squadra richiudibile */
+.iosudo-market-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 9px;
+}
+.iosudo-market-field {
+  min-width: 0;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 12px;
+  padding: 8px 9px;
+  background: rgba(255,255,255,.055);
+}
+.iosudo-market-field span {
+  display: block;
+  color: rgba(255,255,255,.62);
+  font-size: .68rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+.iosudo-market-field strong {
+  display: block;
+  color: var(--iosudo-text);
+  font-size: .86rem;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+}
+.iosudo-market-field-wide { grid-column: 1 / -1; }
+.iosudo-market-section {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 16px;
+  background: rgba(0,0,0,.14);
+  overflow: hidden;
+}
+.iosudo-market-section > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 12px;
+  color: #fff4cf;
+  font-weight: 950;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+.iosudo-market-section > summary::-webkit-details-marker { display: none; }
+.iosudo-market-section > summary::after {
+  content: 'Apri';
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  padding: 5px 9px;
+  color: rgba(255,255,255,.78);
+  background: rgba(255,255,255,.07);
+  font-size: .72rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.iosudo-market-section[open] > summary::after { content: 'Chiudi'; }
+.iosudo-market-section-count {
+  display: inline-flex;
+  min-width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  color: #ffeaa8;
+  background: rgba(255,234,168,.12);
+  border: 1px solid rgba(255,234,168,.26);
+  font-size: .78rem;
+  margin-left: auto;
+}
+.iosudo-team-market-list { padding: 0 10px 10px; gap: 8px; }
+.iosudo-team-market-card-compact { padding: 10px; }
+.iosudo-team-market-card-compact h4 {
+  justify-content: space-between;
+  gap: 8px;
+}
+.iosudo-team-market-card-compact h4 > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.iosudo-empty-compact { padding: 0 12px 12px; margin: 0; }
+@media (max-width: 480px) {
+  .iosudo-market-fields { grid-template-columns: 1fr; }
+  .iosudo-official-fields .iosudo-market-field:not(.iosudo-market-field-wide) { grid-column: auto; }
+}
+
+/* V695: cache-buster ioSudo, nessuna modifica visuale sostanziale. */
+
+/* V701: cache-buster dati ioSudo v48. */
+
+
+/* V712: mercato aggiornato v66, rumor TM 17/07 e badge SOS visibile nel pitch XI quando il giocatore ha SOS attivo. */
+.iosudo-friendly-card { padding: 0; overflow: hidden; }
+.iosudo-friendly-row-button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  padding: 12px;
+  font: inherit;
+  cursor: pointer;
+}
+.iosudo-friendly-row-button h4 { margin: 0 0 6px; }
+.iosudo-friendly-row-button p { margin: 4px 0; }
+.iosudo-friendly-row-button:focus-visible {
+  outline: 2px solid rgba(255,234,168,.9);
+  outline-offset: -3px;
+}
+.iosudo-result-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255,234,168,.16);
+  border: 1px solid rgba(255,234,168,.34);
+  color: #ffeaa8;
+  font-size: .78rem;
+  font-weight: 950;
+  vertical-align: middle;
+}
+.iosudo-friendly-detail-card {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 18px;
+  padding: 12px;
+  background: rgba(255,255,255,.055);
+  margin-bottom: 10px;
+}
+.iosudo-friendly-detail-card p { margin: 6px 0; }
+.iosudo-friendly-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.iosudo-friendly-detail-actions { margin: 0 0 10px; }
+.iosudo-secondary-action {
+  border: 1px solid var(--iosudo-border);
+  background: rgba(255,255,255,.07);
+  color: var(--iosudo-text);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+.iosudo-friendly-stats {
+  display: grid;
+  gap: 8px;
+}
+.iosudo-friendly-stat-row {
+  border: 1px solid var(--iosudo-border);
+  border-radius: 16px;
+  background: rgba(0,0,0,.14);
+  padding: 10px;
+}
+.iosudo-friendly-stat-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 7px;
+}
+.iosudo-friendly-stat-main strong { color: var(--iosudo-text); }
+.iosudo-friendly-role {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: .7rem;
+  font-weight: 950;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.14);
+}
+.iosudo-friendly-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.iosudo-friendly-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: .72rem;
+  font-weight: 900;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.86);
+}
+.iosudo-friendly-goal { color: #ffeaa8; border-color: rgba(255,234,168,.34); background: rgba(255,234,168,.12); }
+.iosudo-friendly-own-goal { color: #ffd3d3; border-color: rgba(255,154,154,.34); background: rgba(255,154,154,.12); }
+.iosudo-friendly-injury { color: #ffd3d3; border-color: rgba(255,154,154,.38); background: rgba(255,154,154,.12); }
+.iosudo-friendly-no-injury { color: rgba(255,255,255,.62); }
+.iosudo-friendly-starter { color: #c9f7df; border-color: rgba(111,255,176,.28); background: rgba(111,255,176,.1); }
+.iosudo-friendly-sub { color: #d8ddff; border-color: rgba(156,172,255,.26); background: rgba(156,172,255,.1); }
+.iosudo-friendly-minutes { color: #ffeaa8; }
+
+/* V713: badge e layout invariati; dataset aggiornato con monitoraggio SOS Hamed Junior Traorè. */
+
+/* V714: dataset V68, alias Khephren Thuram/K. Thuram e audit duplicati. */
+
+/* V721: Excel V72; alias confermati V715+V716+V721, Caccavo prestito ufficiale e fonte Atalanta-U23 ufficiale. */
+
+/* V721: Excel V75, Bologna-Arminia player badges and confirmed duplicate aliases. */
+
+/* V721: riepilogo amichevoli nella scheda giocatore. */
+.iosudo-player-friendly-card .iosudo-friendly-row-button { text-align: left; width: 100%; }
+.iosudo-player-friendly-card .iosudo-friendly-badges { margin-top: .45rem; }
+.iosudo-player-friendly-card h4 { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+
+
+/* V722: link giocatore cliccabile nei tabellini amichevoli. */
+.iosudo-friendly-player-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--iosudo-text);
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.iosudo-friendly-player-link strong {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.iosudo-friendly-player-link:hover strong,
+.iosudo-friendly-player-link:focus-visible strong {
+  text-decoration-thickness: 2px;
+}
+
+/* V742: Excel V107; Liberali/Saelemaekers confermati, Saelemaekers disambiguato da Chukwueze, Milan-Milan Futuro 7-0, nuovi rumor mercato, timestamp header. */
+
+/* V742: Excel V107; Liberali/Saelemaekers confermati, Saelemaekers disambiguato da Chukwueze, Milan-Milan Futuro 7-0, nuovi rumor mercato, timestamp header. */
+
+/* V742: Excel V107; Liberali/Saelemaekers confermati, Saelemaekers disambiguato da Chukwueze, Milan-Milan Futuro 7-0, nuovi rumor mercato, timestamp header. */
+
+/* V742 compact friendlies */
+.iosudo-friendly-card-compact .iosudo-friendly-row-button{gap:.2rem;padding:.75rem .85rem}.iosudo-friendly-card-compact h4{margin-bottom:.15rem}.iosudo-friendly-card-compact p{margin:.15rem 0}.iosudo-friendly-detail-card-compact{display:grid;gap:.35rem}.iosudo-friendly-tabellino-title{font-size:1rem;margin:1rem 0 .5rem}

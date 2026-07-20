@@ -2349,16 +2349,16 @@
       "note": ""
     },
     "kean": {
-      "teamId": "fiorentina",
-      "teamName": "Fiorentina",
+      "teamId": "como",
+      "teamName": "Como",
       "playerName": "Moise Kean",
       "role": "A",
-      "inCurrentRoster": "SI",
-      "status": "In rosa",
-      "detail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-      "source": "",
-      "updatedAt": "2026-07-10",
-      "note": ""
+      "inCurrentRoster": "NO - voce/movimento",
+      "status": "Trattativa non ufficiale",
+      "detail": "Como valuta il giocatore; nessun contatto tra club.",
+      "source": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+      "updatedAt": "2026-07-20",
+      "note": "Aggiornamento V745 da Excel V122; rose invariate."
     },
     "M’Bala Nzola": {
       "teamId": "fiorentina",
@@ -4841,7 +4841,7 @@
     "p terracciano": {
       "teamId": "milan",
       "teamName": "Milan",
-      "playerName": "P. Terracciano",
+      "playerName": "Pietro Terracciano",
       "role": "P",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -7161,7 +7161,7 @@
     "y paz": {
       "teamId": "sassuolo",
       "teamName": "Sassuolo",
-      "playerName": "Y. Paz",
+      "playerName": "Yefferson Paz",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -11006,12 +11006,12 @@
       "teamName": "Venezia",
       "playerName": "Akor Adams",
       "role": "A",
-      "inCurrentRoster": "NO",
-      "status": "Trattativa in corso",
-      "detail": "Offerta 10 mln + 2 bonus; Siviglia chiede almeno 15 mln; distanza ancora presente.",
-      "source": "https://www.tuttomercatoweb.com/serie-a/venezia-incontro-siviglia-akor-adams-distanza-valutazione-punto-2252027",
-      "updatedAt": "2026-07-10",
-      "note": "Monitorare attacco Venezia."
+      "inCurrentRoster": "NO - voce/movimento",
+      "status": "Trattativa non ufficiale",
+      "detail": "Operazione sbloccata; arrivo atteso 21/07 ma non ufficiale.",
+      "source": "https://www.gazzetta.it/Calciomercato/20-07-2026/notizie-calciomercato-live-oggi-18-luglio.shtml",
+      "updatedAt": "2026-07-20",
+      "note": "Aggiornamento V745 da Excel V122; rose invariate."
     },
     "khalaili": {
       "teamId": "inter",
@@ -11905,6 +11905,18 @@
       "note": "Ufficiale Fiorentina a titolo definitivo dal Trabzonspor; rumor chiusi in V742.",
       "source": "ACF Fiorentina sito ufficiale",
       "url": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262"
+    },
+    "moise kean": {
+      "teamId": "como",
+      "teamName": "Como",
+      "playerName": "Moise Kean",
+      "role": "A",
+      "inCurrentRoster": "NO - voce/movimento",
+      "status": "Trattativa non ufficiale",
+      "detail": "Como valuta il giocatore; nessun contatto tra club.",
+      "source": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+      "updatedAt": "2026-07-20",
+      "note": "Aggiornamento V745 da Excel V122; rose invariate."
     }
   },
   "teamUpdates": [
@@ -411377,31 +411389,31 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v743",
-    "version": "V744",
+    "id": "sudatori-iosudo-v745",
+    "version": "V745",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-20",
-    "updatedAtTime": "2026-07-20T16:11:00+02:00",
-    "generatedAt": "2026-07-20T16:11:00+02:00",
-    "overlayGeneratedAt": "2026-07-20T17:05:00+02:00",
-    "overlayGeneratedAtLabel": "20/07/2026 17:05 CEST",
-    "sourceFile": "v118_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_fuso_v742.xlsx",
-    "dedupVersion": "V743",
-    "notes": "V743: Excel V118 fuso integrato come base corrente; nessuna nuova fonte rispetto a V742. Confermati risultati/tabellini amichevoli e schede compatte; duplicati già consolidati in V742 mantenuti; aggiunto set di coppie potenziali da verificare e nuovo handoff AI.",
+    "updatedAtTime": "2026-07-20T18:11:00+02:00",
+    "generatedAt": "2026-07-20T18:11:00+02:00",
+    "overlayGeneratedAt": "2026-07-20T18:11:00+02:00",
+    "overlayGeneratedAtLabel": "20/07/2026 18:11 CEST",
+    "sourceFile": "v122_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v744.xlsx",
+    "dedupVersion": "V745",
+    "notes": "V745: integrato Excel V122; aggiornate trattative non ufficiali Moise Kean/Como-Fiorentina e Akor Adams/Venezia; Lazio-Lazio U20 resta senza tabellino al cutoff; registrate disambiguazioni Terracciano/Liberali/Paz/Berardi/Vaz; mantenuto handoff AI.",
     "teams": 20,
     "players": 1046,
     "officialMoves": 390,
-    "teamTransferTalks": 335,
+    "teamTransferTalks": 336,
     "transfermarktRumors": 54,
     "injuries": 28,
     "friendlies": 150,
     "friendlyMatchDetails": 14,
     "friendlyPlayerStats": 294,
-    "sources": 769,
+    "sources": 772,
     "duplicatesExact": 0,
     "duplicateIds": 0,
     "activeOfficialRumors": 0,
-    "buildTag": "iosudo-v743-v118-fused-dedup-audit"
+    "buildTag": "iosudo-v745-v122-dedup-audit"
   },
   "teams": [
     {
@@ -419294,8 +419306,8 @@
         "id": "como-paz-n",
         "teamId": "como",
         "teamName": "Como",
-        "playerName": "Paz N.",
-        "target": "Paz N.",
+        "playerName": "Nico Paz",
+        "target": "Nico Paz",
         "role": "C",
         "coach": "",
         "module": "",
@@ -419324,8 +419336,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Paz N.",
-        "disambiguatedName": "Paz N.",
+        "originalName": "Nico Paz",
+        "disambiguatedName": "Nico Paz",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
@@ -420068,8 +420080,8 @@
         "id": "como-n-paz",
         "teamId": "como",
         "teamName": "Como",
-        "playerName": "N. Paz",
-        "target": "N. Paz",
+        "playerName": "Nico Paz",
+        "target": "Nico Paz",
         "role": "A",
         "coach": "Cesc Fabregas",
         "module": "4-2-3-1 / 4-3-3",
@@ -420098,8 +420110,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-2-3-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "N. Paz",
-        "disambiguatedName": "N. Paz",
+        "originalName": "Nico Paz",
+        "disambiguatedName": "Nico Paz",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -433999,8 +434011,8 @@
         "id": "milan-p-terracciano",
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "P. Terracciano",
-        "target": "P. Terracciano",
+        "playerName": "Pietro Terracciano",
+        "target": "Pietro Terracciano",
         "role": "P",
         "coach": "Ruben Amorim",
         "module": "3-4-2-1 / 3-4-3",
@@ -434029,8 +434041,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "P. Terracciano",
-        "disambiguatedName": "P. Terracciano",
+        "originalName": "Pietro Terracciano",
+        "disambiguatedName": "Pietro Terracciano",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -434343,8 +434355,8 @@
         "id": "milan-f-terracciano",
         "teamId": "milan",
         "teamName": "Milan",
-        "playerName": "F. Terracciano",
-        "target": "F. Terracciano",
+        "playerName": "Filippo Terracciano",
+        "target": "Filippo Terracciano",
         "role": "D",
         "coach": "Ruben Amorim",
         "module": "3-4-2-1 / 3-4-3",
@@ -434373,8 +434385,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "F. Terracciano",
-        "disambiguatedName": "F. Terracciano",
+        "originalName": "Filippo Terracciano",
+        "disambiguatedName": "Filippo Terracciano",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -443467,8 +443479,8 @@
         "id": "roma-r-vaz",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "R. Vaz",
-        "target": "R. Vaz",
+        "playerName": "Robinio Vaz",
+        "target": "Robinio Vaz",
         "role": "A",
         "coach": "Gian Piero Gasperini",
         "module": "3-4-2-1 / 3-4-1-2",
@@ -443497,8 +443509,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "R. Vaz",
-        "disambiguatedName": "R. Vaz",
+        "originalName": "Robinio Vaz",
+        "disambiguatedName": "Robinio Vaz",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -444544,8 +444556,8 @@
         "id": "sassuolo-y-paz",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "Y. Paz",
-        "target": "Y. Paz",
+        "playerName": "Yefferson Paz",
+        "target": "Yefferson Paz",
         "role": "D",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
@@ -444574,8 +444586,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Y. Paz",
-        "disambiguatedName": "Y. Paz",
+        "originalName": "Yefferson Paz",
+        "disambiguatedName": "Yefferson Paz",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -445576,8 +445588,8 @@
         "id": "sassuolo-d-berardi",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "D. Berardi",
-        "target": "D. Berardi",
+        "playerName": "Domenico Berardi",
+        "target": "Domenico Berardi",
         "role": "A",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
@@ -445606,8 +445618,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-2-3-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "D. Berardi",
-        "disambiguatedName": "D. Berardi",
+        "originalName": "Domenico Berardi",
+        "disambiguatedName": "Domenico Berardi",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -451688,8 +451700,8 @@
         "id": "venezia-l-berardi",
         "teamId": "venezia",
         "teamName": "Venezia",
-        "playerName": "L. Berardi",
-        "target": "L. Berardi",
+        "playerName": "Lorenzo Berardi",
+        "target": "Lorenzo Berardi",
         "role": "C",
         "coach": "Giovanni Stroppa",
         "module": "3-5-2 / 3-4-2-1",
@@ -451718,8 +451730,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "L. Berardi",
-        "disambiguatedName": "L. Berardi",
+        "originalName": "Lorenzo Berardi",
+        "disambiguatedName": "Lorenzo Berardi",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -457496,6 +457508,30 @@
         "href": "3",
         "status": "Rumor Transfermarkt",
         "note": ""
+      },
+      {
+        "teamId": "como",
+        "teamName": "Como",
+        "playerName": "Moise Kean",
+        "target": "Moise Kean",
+        "roleBrief": "A",
+        "role": "Attaccante",
+        "direction": "incoming",
+        "directionLabel": "Entrata",
+        "status": "Valutazione / nessun contatto tra club",
+        "updatedAt": "2026-07-20",
+        "date": "2026-07-20",
+        "note": "Sky V122: il Como valuta Kean, ma non risultano contatti tra club; monitoraggio non ufficiale, rosa invariata.",
+        "source": "Sky Sport",
+        "url": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "href": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "sourceName": "Sky Sport",
+        "sourceLabel": "Sky Sport",
+        "sourceType": "Fonte giornalistica mercato",
+        "sourceVerification": "OK_MONITORAGGIO",
+        "sourceVerificationNote": "V745: aggiornamento V122 non ufficiale; rose invariate.",
+        "origin": "Fiorentina"
       }
     ],
     "fiorentina": [
@@ -457629,25 +457665,25 @@
         "target": "Moise Kean",
         "directionLabel": "Permanenza/uscita",
         "direction": "outgoing",
-        "status": "Clausola scaduta / permanenza rafforzata",
-        "updatedAt": "2026-07-16",
-        "date": "2026-07-16",
-        "note": "La scadenza della clausola riduce lo scenario uscita automatica; resta monitoraggio mercato, nessuna modifica alla rosa perché il giocatore è già in rosa Fiorentina.",
-        "source": "Calciomercato.it",
-        "url": "https://www.calciomercato.it/fiorentina/",
-        "articleUrl": "https://www.calciomercato.it/fiorentina/",
-        "href": "https://www.calciomercato.it/fiorentina/",
+        "status": "Como valuta il giocatore / nessun contatto tra club",
+        "updatedAt": "2026-07-20",
+        "date": "2026-07-20",
+        "note": "Sky V122: il Como valuta Kean, ma non risultano contatti tra club; nessuna modifica alla rosa Fiorentina.",
+        "source": "Sky Sport",
+        "url": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "href": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
         "roleBrief": "A",
         "role": "Attaccante",
         "origin": "Fiorentina",
         "probability": "",
         "check": "",
         "rule": "Se diventa ufficiale, spostare in Ufficialita e aggiornare Rose.",
-        "sourceName": "Calciomercato.it",
-        "sourceLabel": "Calciomercato.it",
+        "sourceName": "Sky Sport",
+        "sourceLabel": "Sky Sport",
         "sourceType": "Fonte giornalistica mercato",
         "sourceVerification": "OK_MONITORAGGIO",
-        "sourceVerificationNote": "v48: monitoraggio senza impatto Rose/Mercato."
+        "sourceVerificationNote": "V745: aggiornamento V122 non ufficiale; rose invariate."
       },
       {
         "teamId": "fiorentina",
@@ -464967,15 +465003,20 @@
         "club": "Venezia",
         "directionLabel": "Entrata",
         "direction": "incoming",
-        "date": "2026-07-10",
-        "updatedAt": "2026-07-10",
-        "probability": "51%",
-        "source": "1",
-        "url": "1",
-        "articleUrl": "1",
-        "href": "1",
-        "status": "Rumor Transfermarkt",
-        "note": ""
+        "date": "2026-07-20",
+        "updatedAt": "2026-07-20",
+        "probability": "Alta ma non ufficiale",
+        "source": "Gazzetta",
+        "url": "https://www.gazzetta.it/Calciomercato/20-07-2026/notizie-calciomercato-live-oggi-18-luglio.shtml",
+        "articleUrl": "https://www.gazzetta.it/Calciomercato/20-07-2026/notizie-calciomercato-live-oggi-18-luglio.shtml",
+        "href": "https://www.gazzetta.it/Calciomercato/20-07-2026/notizie-calciomercato-live-oggi-18-luglio.shtml",
+        "status": "Operazione sbloccata / arrivo atteso 21/07",
+        "note": "Gazzetta V122: operazione indicata come sbloccata, arrivo atteso il 21/07; non ufficiale, rosa Venezia invariata.",
+        "sourceName": "Gazzetta",
+        "sourceLabel": "Gazzetta",
+        "sourceType": "Fonte giornalistica mercato",
+        "sourceVerification": "OK_MONITORAGGIO",
+        "sourceVerificationNote": "V745: aggiornamento V122 non ufficiale; rose invariate."
       }
     ],
     "atalanta": [
@@ -512382,7 +512423,7 @@
         "directionLabel": "Entrata",
         "event": "Lazio-Lazio U20",
         "date": "2026-07-20",
-        "status": "Annunciata - diretta dalle 17:00, calcio d’inizio alle 18:00 (V120)",
+        "status": "Pre-gara / non conclusa al cutoff V122 17:59",
         "result": "",
         "score": "",
         "finalScore": "",
@@ -512398,7 +512439,7 @@
         "sourceType": "Sito ufficiale club - Match Center",
         "sourceVerification": "OK_UFFICIALE_CLUB_v113",
         "sourceVerificationNote": "Deduplicata la precedente riga Lazio-Lazio Primavera; mantenuta una sola voce attiva.",
-        "note": "Match Center ufficiale Lazio: partita del 20/07/2026 alle 16:00. Al controllo mattutino non ancora giocata; compilare minutaggi solo dopo il tabellino.",
+        "note": "V122: calcio d’inizio alle 18:00; tabellino non compilato perché manca risultato finale verificabile al cutoff 17:59.",
         "matchKey": "lazio 2026 07 20 lazio lazio u20",
         "updatedAt": "2026-07-20"
       },
@@ -526357,6 +526398,33 @@
       "usage": "Orario Lazio-Lazio U20",
       "updatedAt": "2026-07-20",
       "sourceType": "Fonte V120/V744"
+    },
+    {
+      "sourceName": "Sky Sport - calciomercato 20/07",
+      "sourceLabel": "Sky Sport - calciomercato 20/07",
+      "url": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+      "href": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+      "usage": "V122/V745: Moise Kean Como-Fiorentina, monitoraggio non ufficiale.",
+      "updatedAt": "2026-07-20",
+      "sourceType": "Fonte V122/V745"
+    },
+    {
+      "sourceName": "Gazzetta - calciomercato live 20/07",
+      "sourceLabel": "Gazzetta - calciomercato live 20/07",
+      "url": "https://www.gazzetta.it/Calciomercato/20-07-2026/notizie-calciomercato-live-oggi-18-luglio.shtml",
+      "href": "https://www.gazzetta.it/Calciomercato/20-07-2026/notizie-calciomercato-live-oggi-18-luglio.shtml",
+      "usage": "V122/V745: Akor Adams-Venezia, operazione sbloccata ma non ufficiale.",
+      "updatedAt": "2026-07-20",
+      "sourceType": "Fonte V122/V745"
+    },
+    {
+      "sourceName": "Lazio amichevole U20",
+      "sourceLabel": "Lazio amichevole U20",
+      "url": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
+      "href": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
+      "usage": "V122/V745: Lazio-Lazio U20 non conclusa al cutoff, niente tabellino.",
+      "updatedAt": "2026-07-20",
+      "sourceType": "Fonte V122/V745"
     }
   ],
   "transfermarktRumors": [
@@ -561543,31 +561611,31 @@
     }
   },
   "manifest": {
-    "id": "sudatori-iosudo-v744",
-    "version": "V744",
+    "id": "sudatori-iosudo-v745",
+    "version": "V745",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-20",
-    "updatedAtTime": "2026-07-20T17:05:00+02:00",
-    "generatedAt": "2026-07-20T17:05:00+02:00",
-    "overlayGeneratedAt": "2026-07-20T17:05:00+02:00",
-    "overlayGeneratedAtLabel": "20/07/2026 17:05 CEST",
-    "sourceFile": "v120_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v743.xlsx",
-    "dedupVersion": "V744",
-    "notes": "V744: integrato Excel V120, applicate dedupliche confermate su Cittadini, Maldini, Benjamin Dominguez, Luca Pellegrini e Sadik Fofana; protette le disambiguazioni Miranda/Moro/Konè/Vasquez/Perez; aggiornati Bastoni, Hojbjerg, Zerbin, Pellegrini, Zaniolo e Lazio-Lazio U20 ore 18:00; mantenuto handoff AI.",
+    "updatedAtTime": "2026-07-20T18:11:00+02:00",
+    "generatedAt": "2026-07-20T18:11:00+02:00",
+    "overlayGeneratedAt": "2026-07-20T18:11:00+02:00",
+    "overlayGeneratedAtLabel": "20/07/2026 18:11 CEST",
+    "sourceFile": "v122_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v744.xlsx",
+    "dedupVersion": "V745",
+    "notes": "V745: integrato Excel V122; aggiornate trattative non ufficiali Moise Kean/Como-Fiorentina e Akor Adams/Venezia; Lazio-Lazio U20 resta senza tabellino al cutoff; registrate disambiguazioni Terracciano/Liberali/Paz/Berardi/Vaz; mantenuto handoff AI.",
     "teams": 20,
     "players": 1046,
     "officialMoves": 390,
-    "teamTransferTalks": 335,
+    "teamTransferTalks": 336,
     "transfermarktRumors": 54,
     "injuries": 28,
     "friendlies": 150,
     "friendlyMatchDetails": 14,
     "friendlyPlayerStats": 294,
-    "sources": 769,
+    "sources": 772,
     "duplicatesExact": 0,
     "duplicateIds": 0,
     "activeOfficialRumors": 0,
-    "buildTag": "iosudo-v744-v120-dedup-audit"
+    "buildTag": "iosudo-v745-v122-dedup-audit"
   },
   "friendliesFilteredOutV715": [
     {
@@ -578001,5 +578069,110 @@
       "context": "Lecce",
       "note": "V744 current"
     }
+  ],
+  "protectedDisambiguationsV745": [
+    {
+      "playerA": "Pietro Terracciano",
+      "playerB": "Filippo Terracciano",
+      "decision": "Non duplicati",
+      "note": "Pietro è il portiere, Filippo è il difensore; iniziali P./F. disambiguate."
+    },
+    {
+      "playerA": "Mattia Liberali",
+      "playerB": "Samuele Liberali",
+      "decision": "Non duplicati",
+      "note": "Due giocatori distinti."
+    },
+    {
+      "playerA": "Nico Paz",
+      "playerB": "Yefferson Paz",
+      "decision": "Non duplicati",
+      "note": "Como: Nico Paz; Sassuolo: Yefferson Paz."
+    },
+    {
+      "playerA": "Domenico Berardi",
+      "playerB": "Lorenzo Berardi",
+      "decision": "Non duplicati",
+      "note": "Sassuolo: Domenico; Venezia: Lorenzo."
+    },
+    {
+      "playerA": "Robinio Vaz",
+      "playerB": "Marcelo Vaz",
+      "decision": "Non duplicati",
+      "note": "Roma: Robinio Vaz; Genoa: Marcelo Vaz."
+    }
+  ],
+  "fullNameClarificationsV745": [
+    {
+      "from": "P. Terracciano",
+      "to": "Pietro Terracciano",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    },
+    {
+      "from": "F. Terracciano",
+      "to": "Filippo Terracciano",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    },
+    {
+      "from": "N. Paz",
+      "to": "Nico Paz",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    },
+    {
+      "from": "Paz N.",
+      "to": "Nico Paz",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    },
+    {
+      "from": "Y. Paz",
+      "to": "Yefferson Paz",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    },
+    {
+      "from": "D. Berardi",
+      "to": "Domenico Berardi",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    },
+    {
+      "from": "L. Berardi",
+      "to": "Lorenzo Berardi",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    },
+    {
+      "from": "R. Vaz",
+      "to": "Robinio Vaz",
+      "type": "nome completo/disambiguazione, non fusione automatica"
+    }
+  ],
+  "teamTransferTalksPatchedV745": [
+    {
+      "team": "Como/Fiorentina",
+      "player": "Moise Kean",
+      "status": "Non ufficiale",
+      "source": "Sky Sport",
+      "impact": "Rose invariate"
+    },
+    {
+      "team": "Venezia",
+      "player": "Akor Adams",
+      "status": "Non ufficiale",
+      "source": "Gazzetta",
+      "impact": "Rose invariate"
+    }
+  ],
+  "friendliesPatchedV745": [
+    {
+      "team": "Lazio",
+      "event": "Lazio-Lazio U20",
+      "status": "Pre-gara/non conclusa al cutoff 17:59",
+      "tabellino": "Non inserito"
+    }
+  ],
+  "duplicatePairCandidatesV745": [],
+  "updateLogV745": [
+    "Integrato Excel V122: Moise Kean/Como-Fiorentina e Akor Adams/Venezia come trattative non ufficiali.",
+    "Aggiornata Lazio-Lazio U20 come pre-gara/non conclusa al cutoff V122; nessun tabellino inserito.",
+    "Registrate disambiguazioni protette: Terracciano, Liberali, Paz, Berardi, Vaz.",
+    "Mantenuto handoff AI e controllo rumor attivi su ufficialità = 0."
   ]
 }
