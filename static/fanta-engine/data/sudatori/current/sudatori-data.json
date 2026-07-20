@@ -603,7 +603,7 @@
     "j miranda": {
       "teamId": "bologna",
       "teamName": "Bologna",
-      "playerName": "J. Miranda",
+      "playerName": "Juan Miranda",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -738,7 +738,7 @@
     "n moro": {
       "teamId": "bologna",
       "teamName": "Bologna",
-      "playerName": "N. Moro",
+      "playerName": "Nikola Moro",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -2801,7 +2801,7 @@
     "j vasquez": {
       "teamId": "genoa",
       "teamName": "Genoa",
-      "playerName": "J. Vasquez",
+      "playerName": "Johan Vasquez",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -4116,7 +4116,7 @@
     "lu pellegrini": {
       "teamId": "lazio",
       "teamName": "Lazio",
-      "playerName": "Lu. Pellegrini",
+      "playerName": "Luca Pellegrini",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -4491,7 +4491,7 @@
     "m perez": {
       "teamId": "lecce",
       "teamName": "Lecce",
-      "playerName": "M. Perez",
+      "playerName": "Matias Perez",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -4733,7 +4733,7 @@
     "s fofana": {
       "teamId": "lecce",
       "teamName": "Lecce",
-      "playerName": "S. Fofana",
+      "playerName": "Sadik Fofana",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6567,7 +6567,7 @@
     "d vasquez": {
       "teamId": "roma",
       "teamName": "Roma",
-      "playerName": "D. Vasquez",
+      "playerName": "Devis Vasquez",
       "role": "P",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -7065,7 +7065,7 @@
     "k miranda": {
       "teamId": "sassuolo",
       "teamName": "Sassuolo",
-      "playerName": "K. Miranda",
+      "playerName": "Kevin Miranda",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -7221,7 +7221,7 @@
     "i kone": {
       "teamId": "sassuolo",
       "teamName": "Sassuolo",
-      "playerName": "I. Kone",
+      "playerName": "Ismaël Konè",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -7957,7 +7957,7 @@
     "a buta": {
       "teamId": "udinese",
       "teamName": "Udinese",
-      "playerName": "A. Buta",
+      "playerName": "Leonardo Daniel Ulineia Buta",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -8065,7 +8065,7 @@
     "l buta": {
       "teamId": "udinese",
       "teamName": "Udinese",
-      "playerName": "L. Buta",
+      "playerName": "Leonardo Daniel Ulineia Buta",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -8744,7 +8744,7 @@
     "k perez": {
       "teamId": "venezia",
       "teamName": "Venezia",
-      "playerName": "K. Perez",
+      "playerName": "Kike Perez",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -23242,7 +23242,7 @@
     {
       "row": 255,
       "team": "Como",
-      "player": "Liberali",
+      "player": "Mattia Liberali",
       "status": "Visite mediche / firma attesa",
       "updatedAt": "2026-07-13",
       "result": "patched_1_card(s)"
@@ -30875,7 +30875,7 @@
     {
       "Tipo controllo": "Uscita ufficiale/svincolato",
       "Squadra": "Fiorentina",
-      "Giocatore": "Beltran",
+      "Giocatore": "Lucas Beltran",
       "Azione nel file": "Rimosso da Rose e dalla scheda squadra",
       "Esito": "Applicato",
       "Fonte": "https://www.tuttomercatoweb.com/serie-a/fiorentina-comunicato-cessione-beltran-river-formula-prestito-obbligo-2249738",
@@ -30901,7 +30901,7 @@
     {
       "Tipo controllo": "Uscita ufficiale/svincolato",
       "Squadra": "Roma",
-      "Giocatore": "Abdulhamid",
+      "Giocatore": "Saud Abdulhamid",
       "Azione nel file": "Rimosso da Rose e dalla scheda squadra",
       "Esito": "Applicato",
       "Fonte": "https://www.corrieredellosport.it/news/calcio/serie-a/roma/2026/06/04-149025562/abdulhamid_saud_saluta_la_roma_il_lens_lo_ha_ufficialmente_riscattato",
@@ -38073,7 +38073,7 @@
       "Data_aggiornamento": "2026-07-13",
       "Riga_origine": "25",
       "C1": "Lazio",
-      "C2": "Dominguez",
+      "C2": "Benjamin Dominguez",
       "C3": "Entrata",
       "C4": "TMW",
       "C5": "2026-07-12",
@@ -38217,7 +38217,7 @@
       "Data_aggiornamento": "2026-07-13",
       "Riga_origine": "34",
       "C1": "Parma",
-      "C2": "Bernabe",
+      "C2": "Adrian Bernabe",
       "C3": "Uscita",
       "C4": "TMW",
       "C5": "2026-07-12",
@@ -38922,7 +38922,7 @@
       "Riga_origine": "20",
       "C1": "Trattativa",
       "C2": "Lazio",
-      "C3": "Dominguez",
+      "C3": "Benjamin Dominguez",
       "C4": "Entrata",
       "C5": "TMW",
       "C6": "2026-07-12",
@@ -39577,7 +39577,7 @@
       "Data_aggiornamento": "2026-07-13",
       "Riga_origine": "3",
       "C1": "Como",
-      "C2": "Liberali",
+      "C2": "Mattia Liberali",
       "C3": "2026-07-13",
       "C4": "Aggiornata riga esistente",
       "C5": "255",
@@ -42709,7 +42709,7 @@
       "C52": "",
       "C53": "Atalanta",
       "C54": "Entrata",
-      "C55": "Maldini",
+      "C55": "Daniel Maldini",
       "C56": "",
       "C57": "Lazio",
       "C58": "",
@@ -42740,7 +42740,7 @@
       "C83": "Trattativa/rumor non ufficiale: non rimuovere dalla rosa finché non ufficiale.",
       "C84": "",
       "C85": "2026-07-11",
-      "C86": "Maldini",
+      "C86": "Daniel Maldini",
       "C87": "",
       "C88": "Lazio",
       "C89": "",
@@ -42859,7 +42859,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-10",
-      "C96": "Musah",
+      "C96": "Yunus Musah",
       "C97": "",
       "C98": "Milan",
       "C99": "",
@@ -42927,7 +42927,7 @@
       "C52": "",
       "C53": "Atalanta",
       "C54": "Entrata",
-      "C55": "Cittadini",
+      "C55": "Giorgio Cittadini",
       "C56": "",
       "C57": "Frosinone",
       "C58": "",
@@ -42958,7 +42958,7 @@
       "C83": "Trattativa/rumor non ufficiale: non rimuovere dalla rosa finché non ufficiale.",
       "C84": "",
       "C85": "2026-07-11",
-      "C86": "Cittadini",
+      "C86": "Giorgio Cittadini",
       "C87": "",
       "C88": "Frosinone",
       "C89": "",
@@ -42982,7 +42982,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": "7",
-      "C1": "Ahanor",
+      "C1": "Honest Ahanor",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -43001,7 +43001,7 @@
       "C17": "",
       "C18": "",
       "C19": "DD",
-      "C20": "Bellanova",
+      "C20": "Raoul Bellanova",
       "C21": "D",
       "C22": "OK",
       "C23": "Sky",
@@ -43200,7 +43200,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": "9",
-      "C1": "Bellanova",
+      "C1": "Raoul Bellanova",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -43254,7 +43254,7 @@
       "C52": "2026-07-11",
       "C53": "Atalanta",
       "C54": "Uscita",
-      "C55": "Musah",
+      "C55": "Yunus Musah",
       "C56": "",
       "C57": "Milan",
       "C58": "",
@@ -43418,7 +43418,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": "11",
-      "C1": "Bernasconi",
+      "C1": "Lorenzo Bernasconi",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -43745,7 +43745,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": "14",
-      "C1": "Cittadini",
+      "C1": "Giorgio Cittadini",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -45380,7 +45380,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": "29",
-      "C1": "Pasalic",
+      "C1": "Mario Pasalic",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -46470,7 +46470,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": "39",
-      "C1": "Maldini",
+      "C1": "Daniel Maldini",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -59005,7 +59005,7 @@
       "Codice_squadra": "BOL",
       "Origine_scheda": "BOL",
       "Riga_origine": "33",
-      "C1": "Dominguez",
+      "C1": "Benjamin Dominguez",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -69207,7 +69207,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Broja",
+      "C66": "Armando Broja",
       "C67": "A",
       "C68": "Burnley",
       "C69": "Trattativa/Interesse",
@@ -69316,7 +69316,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Calabria",
+      "C66": "Davide Calabria",
       "C67": "D",
       "C68": "Panathinaikos",
       "C69": "Trattativa/Interesse",
@@ -69711,7 +69711,7 @@
       "C22": "OK",
       "C23": "Sky",
       "C24": "Entrata",
-      "C25": "Broja",
+      "C25": "Armando Broja",
       "C26": "A",
       "C27": "Trattativa/Interesse",
       "C28": "Burnley",
@@ -69820,7 +69820,7 @@
       "C22": "OK",
       "C23": "Sky",
       "C24": "Entrata",
-      "C25": "Calabria",
+      "C25": "Davide Calabria",
       "C26": "D",
       "C27": "Trattativa/Interesse",
       "C28": "Panathinaikos",
@@ -83050,7 +83050,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Liberali",
+      "C66": "Mattia Liberali",
       "C67": "C",
       "C68": "Catanzaro",
       "C69": "Trattativa/Interesse",
@@ -83554,7 +83554,7 @@
       "C22": "OK",
       "C23": "Sky",
       "C24": "Entrata",
-      "C25": "Liberali",
+      "C25": "Mattia Liberali",
       "C26": "C",
       "C27": "Trattativa/Interesse",
       "C28": "Catanzaro",
@@ -95506,7 +95506,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-10",
-      "C96": "Beltran",
+      "C96": "Lucas Beltran",
       "C97": "",
       "C98": "River Plate",
       "C99": "Prestito con obbligo di riscatto",
@@ -96228,7 +96228,7 @@
       "C52": "2026-07-11",
       "C53": "Fiorentina",
       "C54": "Uscita",
-      "C55": "Beltran",
+      "C55": "Lucas Beltran",
       "C56": "",
       "C57": "River Plate",
       "C58": "Prestito con obbligo di riscatto",
@@ -97657,7 +97657,7 @@
       "Riga_origine": "30",
       "Categoria": "storico",
       "C1": "Genoa",
-      "C2": "Ekhator",
+      "C2": "Jeff Ekhator",
       "C3": "",
       "C4": "Rimosso da vecchia squadra",
       "C5": "Rimosso da Genoa per trasferimento/prestito a Juventus",
@@ -103166,7 +103166,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Calabria",
+      "C3": "Davide Calabria",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Panathinaikos",
@@ -103184,7 +103184,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Broja",
+      "C3": "Armando Broja",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Burnley",
@@ -103328,7 +103328,7 @@
       "Categoria": "storico",
       "C1": "Como",
       "C2": "COM",
-      "C3": "Liberali",
+      "C3": "Mattia Liberali",
       "C4": "C",
       "C5": "Centrocampista",
       "C6": "Catanzaro",
@@ -103580,7 +103580,7 @@
       "Categoria": "storico",
       "C1": "Frosinone",
       "C2": "FRO",
-      "C3": "Cittadini",
+      "C3": "Giorgio Cittadini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Atalanta",
@@ -104048,7 +104048,7 @@
       "Categoria": "storico",
       "C1": "Juventus",
       "C2": "JUV",
-      "C3": "Pellegrino",
+      "C3": "Mateo Pellegrino",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Parma",
@@ -108404,7 +108404,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Broja",
+      "C3": "Armando Broja",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Burnley",
@@ -108422,7 +108422,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Calabria",
+      "C3": "Davide Calabria",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Panathinaikos",
@@ -108620,7 +108620,7 @@
       "Categoria": "storico",
       "C1": "Como",
       "C2": "COM",
-      "C3": "Liberali",
+      "C3": "Mattia Liberali",
       "C4": "C",
       "C5": "Centrocampista",
       "C6": "Catanzaro",
@@ -108908,7 +108908,7 @@
       "Categoria": "storico",
       "C1": "Frosinone",
       "C2": "FRO",
-      "C3": "Cittadini",
+      "C3": "Giorgio Cittadini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Atalanta",
@@ -109394,7 +109394,7 @@
       "Categoria": "storico",
       "C1": "Juventus",
       "C2": "JUV",
-      "C3": "Pellegrino",
+      "C3": "Mateo Pellegrino",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Parma",
@@ -111146,7 +111146,7 @@
     {
       "Tipo controllo": "Uscita ufficiale/svincolato",
       "Squadra": "Fiorentina",
-      "Giocatore": "Beltran",
+      "Giocatore": "Lucas Beltran",
       "Azione nel file": "Rimosso da Rose e dalla scheda squadra",
       "Esito": "Applicato",
       "Fonte": "https://www.tuttomercatoweb.com/serie-a/fiorentina-comunicato-cessione-beltran-river-formula-prestito-obbligo-2249738",
@@ -111172,7 +111172,7 @@
     {
       "Tipo controllo": "Uscita ufficiale/svincolato",
       "Squadra": "Roma",
-      "Giocatore": "Abdulhamid",
+      "Giocatore": "Saud Abdulhamid",
       "Azione nel file": "Rimosso da Rose e dalla scheda squadra",
       "Esito": "Applicato",
       "Fonte": "https://www.corrieredellosport.it/news/calcio/serie-a/roma/2026/06/04-149025562/abdulhamid_saud_saluta_la_roma_il_lens_lo_ha_ufficialmente_riscattato",
@@ -118344,7 +118344,7 @@
       "Data_aggiornamento": "2026-07-13",
       "Riga_origine": 25,
       "C1": "Lazio",
-      "C2": "Dominguez",
+      "C2": "Benjamin Dominguez",
       "C3": "Entrata",
       "C4": "TMW",
       "C5": "2026-07-12",
@@ -118488,7 +118488,7 @@
       "Data_aggiornamento": "2026-07-13",
       "Riga_origine": 34,
       "C1": "Parma",
-      "C2": "Bernabe",
+      "C2": "Adrian Bernabe",
       "C3": "Uscita",
       "C4": "TMW",
       "C5": "2026-07-12",
@@ -119193,7 +119193,7 @@
       "Riga_origine": 20,
       "C1": "Trattativa",
       "C2": "Lazio",
-      "C3": "Dominguez",
+      "C3": "Benjamin Dominguez",
       "C4": "Entrata",
       "C5": "TMW",
       "C6": "2026-07-12",
@@ -119848,7 +119848,7 @@
       "Data_aggiornamento": "2026-07-13",
       "Riga_origine": 3,
       "C1": "Como",
-      "C2": "Liberali",
+      "C2": "Mattia Liberali",
       "C3": "2026-07-13",
       "C4": "Aggiornata riga esistente",
       "C5": "255",
@@ -122996,7 +122996,7 @@
       "C52": "",
       "C53": "Atalanta",
       "C54": "Entrata",
-      "C55": "Maldini",
+      "C55": "Daniel Maldini",
       "C56": "",
       "C57": "Lazio",
       "C58": "",
@@ -123027,7 +123027,7 @@
       "C83": "Trattativa/rumor non ufficiale: non rimuovere dalla rosa finché non ufficiale.",
       "C84": "",
       "C85": "2026-07-11",
-      "C86": "Maldini",
+      "C86": "Daniel Maldini",
       "C87": "",
       "C88": "Lazio",
       "C89": "",
@@ -123146,7 +123146,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-10",
-      "C96": "Musah",
+      "C96": "Yunus Musah",
       "C97": "",
       "C98": "Milan",
       "C99": "",
@@ -123214,7 +123214,7 @@
       "C52": "",
       "C53": "Atalanta",
       "C54": "Entrata",
-      "C55": "Cittadini",
+      "C55": "Giorgio Cittadini",
       "C56": "",
       "C57": "Frosinone",
       "C58": "",
@@ -123245,7 +123245,7 @@
       "C83": "Trattativa/rumor non ufficiale: non rimuovere dalla rosa finché non ufficiale.",
       "C84": "",
       "C85": "2026-07-11",
-      "C86": "Cittadini",
+      "C86": "Giorgio Cittadini",
       "C87": "",
       "C88": "Frosinone",
       "C89": "",
@@ -123269,7 +123269,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": 7,
-      "C1": "Ahanor",
+      "C1": "Honest Ahanor",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -123288,7 +123288,7 @@
       "C17": "",
       "C18": "",
       "C19": "DD",
-      "C20": "Bellanova",
+      "C20": "Raoul Bellanova",
       "C21": "D",
       "C22": "OK",
       "C23": "Sky",
@@ -123487,7 +123487,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": 9,
-      "C1": "Bellanova",
+      "C1": "Raoul Bellanova",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -123541,7 +123541,7 @@
       "C52": "2026-07-11",
       "C53": "Atalanta",
       "C54": "Uscita",
-      "C55": "Musah",
+      "C55": "Yunus Musah",
       "C56": "",
       "C57": "Milan",
       "C58": "",
@@ -123705,7 +123705,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": 11,
-      "C1": "Bernasconi",
+      "C1": "Lorenzo Bernasconi",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -124032,7 +124032,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": 14,
-      "C1": "Cittadini",
+      "C1": "Giorgio Cittadini",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -125667,7 +125667,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": 29,
-      "C1": "Pasalic",
+      "C1": "Mario Pasalic",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -126757,7 +126757,7 @@
       "Codice_squadra": "ATA",
       "Origine_scheda": "ATA",
       "Riga_origine": 39,
-      "C1": "Maldini",
+      "C1": "Daniel Maldini",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -139292,7 +139292,7 @@
       "Codice_squadra": "BOL",
       "Origine_scheda": "BOL",
       "Riga_origine": 33,
-      "C1": "Dominguez",
+      "C1": "Benjamin Dominguez",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -149494,7 +149494,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Broja",
+      "C66": "Armando Broja",
       "C67": "A",
       "C68": "Burnley",
       "C69": "Trattativa/Interesse",
@@ -149603,7 +149603,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Calabria",
+      "C66": "Davide Calabria",
       "C67": "D",
       "C68": "Panathinaikos",
       "C69": "Trattativa/Interesse",
@@ -149998,7 +149998,7 @@
       "C22": "OK",
       "C23": "Sky",
       "C24": "Entrata",
-      "C25": "Broja",
+      "C25": "Armando Broja",
       "C26": "A",
       "C27": "Trattativa/Interesse",
       "C28": "Burnley",
@@ -150107,7 +150107,7 @@
       "C22": "OK",
       "C23": "Sky",
       "C24": "Entrata",
-      "C25": "Calabria",
+      "C25": "Davide Calabria",
       "C26": "D",
       "C27": "Trattativa/Interesse",
       "C28": "Panathinaikos",
@@ -163337,7 +163337,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Liberali",
+      "C66": "Mattia Liberali",
       "C67": "C",
       "C68": "Catanzaro",
       "C69": "Trattativa/Interesse",
@@ -163841,7 +163841,7 @@
       "C22": "OK",
       "C23": "Sky",
       "C24": "Entrata",
-      "C25": "Liberali",
+      "C25": "Mattia Liberali",
       "C26": "C",
       "C27": "Trattativa/Interesse",
       "C28": "Catanzaro",
@@ -175793,7 +175793,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-10",
-      "C96": "Beltran",
+      "C96": "Lucas Beltran",
       "C97": "",
       "C98": "River Plate",
       "C99": "Prestito con obbligo di riscatto",
@@ -176515,7 +176515,7 @@
       "C52": "2026-07-11",
       "C53": "Fiorentina",
       "C54": "Uscita",
-      "C55": "Beltran",
+      "C55": "Lucas Beltran",
       "C56": "",
       "C57": "River Plate",
       "C58": "Prestito con obbligo di riscatto",
@@ -189527,7 +189527,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-10",
-      "C96": "Cittadini",
+      "C96": "Giorgio Cittadini",
       "C97": "",
       "C98": "Atalanta",
       "C99": "",
@@ -189704,7 +189704,7 @@
       "C52": "2026-07-11",
       "C53": "Frosinone",
       "C54": "Uscita",
-      "C55": "Cittadini",
+      "C55": "Giorgio Cittadini",
       "C56": "",
       "C57": "Atalanta",
       "C58": "",
@@ -202062,7 +202062,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-11",
-      "C96": "Ekhator",
+      "C96": "Jeff Ekhator",
       "C97": "",
       "C98": "Juventus",
       "C99": "",
@@ -203002,7 +203002,7 @@
       "C52": "",
       "C53": "Genoa",
       "C54": "Uscita",
-      "C55": "Ekhator",
+      "C55": "Jeff Ekhator",
       "C56": "",
       "C57": "Juventus",
       "C58": "",
@@ -228399,7 +228399,7 @@
       "C52": "",
       "C53": "Juventus",
       "C54": "Entrata",
-      "C55": "Ekhator",
+      "C55": "Jeff Ekhator",
       "C56": "A",
       "C57": "Genoa",
       "C58": "",
@@ -228430,7 +228430,7 @@
       "C83": "Trattativa/rumor non ufficiale: non rimuovere dalla rosa finché non ufficiale.",
       "C84": "",
       "C85": "2026-07-11",
-      "C86": "Ekhator",
+      "C86": "Jeff Ekhator",
       "C87": "A",
       "C88": "Genoa",
       "C89": "",
@@ -228999,7 +228999,7 @@
       "Codice_squadra": "JUV",
       "Origine_scheda": "JUV",
       "Riga_origine": 9,
-      "C1": "Gatti",
+      "C1": "Federico Gatti",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -229345,7 +229345,7 @@
       "C17": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
       "C18": "",
       "C19": "CC",
-      "C20": "K. Thuram",
+      "C20": "Khephren Thuram",
       "C21": "C",
       "C22": "OK",
       "C23": "Sky",
@@ -229563,7 +229563,7 @@
       "C17": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
       "C18": "",
       "C19": "TQ",
-      "C20": "Conceicao",
+      "C20": "Francisco Conceição",
       "C21": "A",
       "C22": "OK",
       "C23": "Sky",
@@ -229827,7 +229827,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-10",
-      "C66": "Pellegrino",
+      "C66": "Mateo Pellegrino",
       "C67": "A",
       "C68": "Parma",
       "C69": "Trattativa/Interesse",
@@ -230331,7 +230331,7 @@
       "C22": "",
       "C23": "",
       "C24": "Entrata",
-      "C25": "Pellegrino",
+      "C25": "Mateo Pellegrino",
       "C26": "A",
       "C27": "Trattativa/Interesse",
       "C28": "Parma",
@@ -230525,7 +230525,7 @@
       "Codice_squadra": "JUV",
       "Origine_scheda": "JUV",
       "Riga_origine": 23,
-      "C1": "K. Thuram",
+      "C1": "Khephren Thuram",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -231179,7 +231179,7 @@
       "Codice_squadra": "JUV",
       "Origine_scheda": "JUV",
       "Riga_origine": 29,
-      "C1": "Conceicao",
+      "C1": "Francisco Conceição",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -241599,7 +241599,7 @@
       "C63": "",
       "C64": "",
       "C65": "2026-07-12",
-      "C66": "Dominguez",
+      "C66": "Benjamin Dominguez",
       "C67": "C",
       "C68": "Dinamo Zagabria",
       "C69": "Obiettivo; distanza con Dinamo Zagabria",
@@ -242103,7 +242103,7 @@
       "C22": "OK",
       "C23": "TMW: Gila in chiusura Milan",
       "C24": "Entrata",
-      "C25": "Dominguez",
+      "C25": "Benjamin Dominguez",
       "C26": "C",
       "C27": "Obiettivo; distanza con Dinamo Zagabria",
       "C28": "Dinamo Zagabria",
@@ -242174,7 +242174,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-11",
-      "C96": "Maldini",
+      "C96": "Daniel Maldini",
       "C97": "",
       "C98": "Atalanta",
       "C99": "",
@@ -242242,7 +242242,7 @@
       "C52": "2026-07-11",
       "C53": "Lazio",
       "C54": "Uscita",
-      "C55": "Maldini",
+      "C55": "Daniel Maldini",
       "C56": "",
       "C57": "Atalanta",
       "C58": "",
@@ -242515,7 +242515,7 @@
       "Codice_squadra": "LAZ",
       "Origine_scheda": "LAZ",
       "Riga_origine": 12,
-      "C1": "Lu. Pellegrini",
+      "C1": "Luca Pellegrini",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -257557,7 +257557,7 @@
       "Codice_squadra": "LEC",
       "Origine_scheda": "LEC",
       "Riga_origine": 29,
-      "C1": "S. Fofana",
+      "C1": "Sadik Fofana",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -268075,7 +268075,7 @@
       "C52": "",
       "C53": "Milan",
       "C54": "Entrata",
-      "C55": "Musah",
+      "C55": "Yunus Musah",
       "C56": "",
       "C57": "Atalanta",
       "C58": "",
@@ -268106,7 +268106,7 @@
       "C83": "Trattativa/rumor non ufficiale: non rimuovere dalla rosa finché non ufficiale.",
       "C84": "",
       "C85": "2026-07-11",
-      "C86": "Musah",
+      "C86": "Yunus Musah",
       "C87": "",
       "C88": "Atalanta",
       "C89": "",
@@ -268694,7 +268694,7 @@
       "C17": "",
       "C18": "",
       "C19": "ED",
-      "C20": "Saelemaekers",
+      "C20": "Alexis Saelemaekers",
       "C21": "C",
       "C22": "OK",
       "C23": "Sky",
@@ -269983,7 +269983,7 @@
       "Codice_squadra": "MIL",
       "Origine_scheda": "MIL",
       "Riga_origine": 22,
-      "C1": "Musah",
+      "C1": "Yunus Musah",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -270201,7 +270201,7 @@
       "Codice_squadra": "MIL",
       "Origine_scheda": "MIL",
       "Riga_origine": 24,
-      "C1": "Ricci",
+      "C1": "Samuele Ricci",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -270310,7 +270310,7 @@
       "Codice_squadra": "MIL",
       "Origine_scheda": "MIL",
       "Riga_origine": 25,
-      "C1": "Saelemaekers",
+      "C1": "Alexis Saelemaekers",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -282191,7 +282191,7 @@
       "Codice_squadra": "MON",
       "Origine_scheda": "MON",
       "Riga_origine": 13,
-      "C1": "Capolupo",
+      "C1": "Samuele Capolupo",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -282537,7 +282537,7 @@
       "C17": "",
       "C18": "",
       "C19": "PC",
-      "C20": "Cutrone",
+      "C20": "Patrick Cutrone",
       "C21": "A",
       "C22": "OK",
       "C23": "Sky",
@@ -283390,7 +283390,7 @@
       "Codice_squadra": "MON",
       "Origine_scheda": "MON",
       "Riga_origine": 24,
-      "C1": "Cutrone",
+      "C1": "Patrick Cutrone",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -295508,7 +295508,7 @@
       "C17": "",
       "C18": "",
       "C19": "TQ",
-      "C20": "Neres",
+      "C20": "David Neres",
       "C21": "A",
       "C22": "OK",
       "C23": "Sky",
@@ -298650,7 +298650,7 @@
       "Codice_squadra": "NAP",
       "Origine_scheda": "NAP",
       "Riga_origine": 43,
-      "C1": "Neres",
+      "C1": "David Neres",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -308242,7 +308242,7 @@
       "Codice_squadra": "PAR",
       "Origine_scheda": "PAR",
       "Riga_origine": 10,
-      "C1": "Circati",
+      "C1": "Alessandro Circati",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -308370,7 +308370,7 @@
       "C17": "",
       "C18": "",
       "C19": "CC",
-      "C20": "Bernabe",
+      "C20": "Adrian Bernabe",
       "C21": "C",
       "C22": "OK",
       "C23": "Sky",
@@ -308915,7 +308915,7 @@
       "C17": "",
       "C18": "",
       "C19": "PC",
-      "C20": "Pellegrino",
+      "C20": "Mateo Pellegrino",
       "C21": "A",
       "C22": "OK",
       "C23": "Sky",
@@ -309114,7 +309114,7 @@
       "Codice_squadra": "PAR",
       "Origine_scheda": "PAR",
       "Riga_origine": 18,
-      "C1": "Bernabe",
+      "C1": "Adrian Bernabe",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -310858,7 +310858,7 @@
       "Codice_squadra": "PAR",
       "Origine_scheda": "PAR",
       "Riga_origine": 34,
-      "C1": "Pellegrino",
+      "C1": "Mateo Pellegrino",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -320872,7 +320872,7 @@
       "C93": "",
       "C94": "",
       "C95": "2026-07-10",
-      "C96": "Abdulhamid",
+      "C96": "Saud Abdulhamid",
       "C97": "",
       "C98": "Lens",
       "C99": "",
@@ -321049,7 +321049,7 @@
       "C52": "",
       "C53": "Roma",
       "C54": "Uscita",
-      "C55": "Abdulhamid",
+      "C55": "Saud Abdulhamid",
       "C56": "",
       "C57": "Lens",
       "C58": "",
@@ -363614,7 +363614,7 @@
       "Codice_squadra": "UDI",
       "Origine_scheda": "UDI",
       "Riga_origine": 34,
-      "C1": "Bravo",
+      "C1": "Iker Bravo",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -377130,7 +377130,7 @@
       "Codice_squadra": "VEN",
       "Origine_scheda": "VEN",
       "Riga_origine": 37,
-      "C1": "Cannavo",
+      "C1": "Kevin Cannavò",
       "C2": "",
       "C3": "",
       "C4": "",
@@ -387224,7 +387224,7 @@
       "Riga_origine": 30,
       "Categoria": "storico",
       "C1": "Genoa",
-      "C2": "Ekhator",
+      "C2": "Jeff Ekhator",
       "C3": "",
       "C4": "Rimosso da vecchia squadra",
       "C5": "Rimosso da Genoa per trasferimento/prestito a Juventus",
@@ -392733,7 +392733,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Calabria",
+      "C3": "Davide Calabria",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Panathinaikos",
@@ -392751,7 +392751,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Broja",
+      "C3": "Armando Broja",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Burnley",
@@ -392895,7 +392895,7 @@
       "Categoria": "storico",
       "C1": "Como",
       "C2": "COM",
-      "C3": "Liberali",
+      "C3": "Mattia Liberali",
       "C4": "C",
       "C5": "Centrocampista",
       "C6": "Catanzaro",
@@ -393147,7 +393147,7 @@
       "Categoria": "storico",
       "C1": "Frosinone",
       "C2": "FRO",
-      "C3": "Cittadini",
+      "C3": "Giorgio Cittadini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Atalanta",
@@ -393615,7 +393615,7 @@
       "Categoria": "storico",
       "C1": "Juventus",
       "C2": "JUV",
-      "C3": "Pellegrino",
+      "C3": "Mateo Pellegrino",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Parma",
@@ -397971,7 +397971,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Broja",
+      "C3": "Armando Broja",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Burnley",
@@ -397989,7 +397989,7 @@
       "Categoria": "storico",
       "C1": "Cagliari",
       "C2": "CAG",
-      "C3": "Calabria",
+      "C3": "Davide Calabria",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Panathinaikos",
@@ -398187,7 +398187,7 @@
       "Categoria": "storico",
       "C1": "Como",
       "C2": "COM",
-      "C3": "Liberali",
+      "C3": "Mattia Liberali",
       "C4": "C",
       "C5": "Centrocampista",
       "C6": "Catanzaro",
@@ -398475,7 +398475,7 @@
       "Categoria": "storico",
       "C1": "Frosinone",
       "C2": "FRO",
-      "C3": "Cittadini",
+      "C3": "Giorgio Cittadini",
       "C4": "D",
       "C5": "Difensore",
       "C6": "Atalanta",
@@ -398961,7 +398961,7 @@
       "Categoria": "storico",
       "C1": "Juventus",
       "C2": "JUV",
-      "C3": "Pellegrino",
+      "C3": "Mateo Pellegrino",
       "C4": "A",
       "C5": "Attaccante",
       "C6": "Parma",
@@ -411378,26 +411378,26 @@
   },
   "meta": {
     "id": "sudatori-iosudo-v743",
-    "version": "V743",
+    "version": "V744",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-20",
     "updatedAtTime": "2026-07-20T16:11:00+02:00",
     "generatedAt": "2026-07-20T16:11:00+02:00",
-    "overlayGeneratedAt": "2026-07-20T16:11:00+02:00",
-    "overlayGeneratedAtLabel": "20/07/2026 16:11 CEST",
+    "overlayGeneratedAt": "2026-07-20T17:05:00+02:00",
+    "overlayGeneratedAtLabel": "20/07/2026 17:05 CEST",
     "sourceFile": "v118_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_fuso_v742.xlsx",
     "dedupVersion": "V743",
     "notes": "V743: Excel V118 fuso integrato come base corrente; nessuna nuova fonte rispetto a V742. Confermati risultati/tabellini amichevoli e schede compatte; duplicati già consolidati in V742 mantenuti; aggiunto set di coppie potenziali da verificare e nuovo handoff AI.",
     "teams": 20,
-    "players": 1049,
+    "players": 1046,
     "officialMoves": 390,
-    "teamTransferTalks": 331,
+    "teamTransferTalks": 335,
     "transfermarktRumors": 54,
     "injuries": 28,
     "friendlies": 150,
     "friendlyMatchDetails": 14,
     "friendlyPlayerStats": 294,
-    "sources": 765,
+    "sources": 769,
     "duplicatesExact": 0,
     "duplicateIds": 0,
     "activeOfficialRumors": 0,
@@ -412061,11 +412061,11 @@
         "formationNote": ""
       },
       {
-        "id": "atalanta-cittadini",
+        "id": "atalanta-giorgio-cittadini",
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Cittadini",
-        "target": "Cittadini",
+        "playerName": "Giorgio Cittadini",
+        "target": "Giorgio Cittadini",
         "role": "D",
         "coach": "Maurizio Sarri",
         "module": "4-3-3",
@@ -412094,8 +412094,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Cittadini",
-        "disambiguatedName": "Cittadini",
+        "originalName": "Giorgio Cittadini",
+        "disambiguatedName": "Giorgio Cittadini",
         "newAcquisition": false,
         "qualityControl": "Audit v42: allineata uscita/fonte ufficiale.",
         "_iosudoMarketRows": [],
@@ -412911,7 +412911,7 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Giovane",
+        "originalName": "Giovane (Napoli)",
         "disambiguatedName": "Giovane (Atalanta)",
         "newAcquisition": false,
         "qualityControl": "OK - omonimo disambiguato",
@@ -413652,11 +413652,11 @@
         "formationNote": ""
       },
       {
-        "id": "atalanta-maldini",
+        "id": "atalanta-daniel-maldini",
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Maldini",
-        "target": "Maldini",
+        "playerName": "Daniel Maldini",
+        "target": "Daniel Maldini",
         "role": "A",
         "coach": "Maurizio Sarri",
         "module": "4-3-3",
@@ -413685,8 +413685,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Maldini",
-        "disambiguatedName": "Maldini",
+        "originalName": "Daniel Maldini",
+        "disambiguatedName": "Daniel Maldini",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -413988,8 +413988,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Pessina",
-        "disambiguatedName": "Pessina",
+        "originalName": "Pessina Mas.",
+        "disambiguatedName": "Pessina Mas.",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -414471,11 +414471,11 @@
         "formationNote": "Corrette due voci non coerenti con la rosa attuale: Joao Mario e Sohm erano nello schema Sky ma non nella rosa aggiornata."
       },
       {
-        "id": "bologna-j-miranda",
+        "id": "bologna-juan-miranda",
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "J. Miranda",
-        "target": "J. Miranda",
+        "playerName": "Juan Miranda",
+        "target": "Juan Miranda",
         "role": "D",
         "coach": "Domenico Tedesco",
         "module": "3-4-2-1 / 3-4-3 / 4-2-3-1",
@@ -414901,7 +414901,7 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-antoine-n-diaye",
+        "id": "bologna-antoine-ndiaye",
         "teamId": "bologna",
         "teamName": "Bologna",
         "playerName": "Antoine N’Diaye",
@@ -415030,7 +415030,7 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-bernardeschi",
+        "id": "bologna-bernardeschi-c-extra-listone-fantasy",
         "teamId": "bologna",
         "teamName": "Bologna",
         "playerName": "Bernardeschi",
@@ -415245,11 +415245,11 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-n-moro",
+        "id": "bologna-nikola-moro",
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "N. Moro",
-        "target": "N. Moro",
+        "playerName": "Nikola Moro",
+        "target": "Nikola Moro",
         "role": "C",
         "coach": "Domenico Tedesco",
         "module": "3-4-2-1 / 3-4-3 / 4-2-3-1",
@@ -415374,7 +415374,7 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-odgaard",
+        "id": "bologna-odgaard-c-extra-listone-fantasy",
         "teamId": "bologna",
         "teamName": "Bologna",
         "playerName": "Odgaard",
@@ -415589,7 +415589,7 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-rowe",
+        "id": "bologna-rowe-c-extra-listone-fantasy",
         "teamId": "bologna",
         "teamName": "Bologna",
         "playerName": "Rowe",
@@ -415675,7 +415675,7 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-bernardeschi-2",
+        "id": "bologna-bernardeschi-a",
         "teamId": "bologna",
         "teamName": "Bologna",
         "playerName": "Bernardeschi",
@@ -415847,11 +415847,11 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-dominguez",
+        "id": "bologna-benjamin-dominguez",
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Dominguez",
-        "target": "Dominguez",
+        "playerName": "Benjamin Dominguez",
+        "target": "Benjamin Dominguez",
         "role": "A",
         "coach": "Domenico Tedesco",
         "module": "3-4-2-1 / 3-4-3 / 4-2-3-1",
@@ -415880,53 +415880,10 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Dominguez",
-        "disambiguatedName": "Dominguez",
+        "originalName": "Benjamin Dominguez",
+        "disambiguatedName": "Benjamin Dominguez",
         "newAcquisition": false,
         "qualityControl": "",
-        "_iosudoMarketRows": [],
-        "formationSource": "",
-        "formationReliability": "",
-        "formationNote": ""
-      },
-      {
-        "id": "bologna-dominguez-b",
-        "teamId": "bologna",
-        "teamName": "Bologna",
-        "playerName": "Dominguez B.",
-        "target": "Dominguez B.",
-        "role": "A",
-        "coach": "",
-        "module": "",
-        "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "updatedAt": "2026-07-18",
-        "flag": "EXTRA_LISTONE",
-        "marketStatus": "Extra listone/fantasy",
-        "marketDetail": "Profilo extra da listone/fantasy",
-        "marketSource": "Listone Fantacalcio 2026-07-04",
-        "marketNote": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "Dominguez B.",
-        "disambiguatedName": "Dominguez B.",
-        "newAcquisition": false,
-        "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
@@ -416062,7 +416019,7 @@
         "formationNote": ""
       },
       {
-        "id": "bologna-odgaard-2",
+        "id": "bologna-odgaard-a",
         "teamId": "bologna",
         "teamName": "Bologna",
         "playerName": "Odgaard",
@@ -416148,7 +416105,7 @@
         "formationNote": "Corrette due voci non coerenti con la rosa attuale: Joao Mario e Sohm erano nello schema Sky ma non nella rosa aggiornata."
       },
       {
-        "id": "bologna-rowe-2",
+        "id": "bologna-rowe-a",
         "teamId": "bologna",
         "teamName": "Bologna",
         "playerName": "Rowe",
@@ -418947,7 +418904,7 @@
         "formationNote": ""
       },
       {
-        "id": "como-baturina",
+        "id": "como-baturina-c-extra-listone-fantasy",
         "teamId": "como",
         "teamName": "Como",
         "playerName": "Baturina",
@@ -419592,7 +419549,7 @@
         "formationNote": ""
       },
       {
-        "id": "como-baturina-2",
+        "id": "como-baturina-a",
         "teamId": "como",
         "teamName": "Como",
         "playerName": "Baturina",
@@ -422551,8 +422508,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Sottil",
-        "disambiguatedName": "Sottil",
+        "originalName": "Riccardo Sottil",
+        "disambiguatedName": "Riccardo Sottil",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -423251,11 +423208,11 @@
         "formationNote": ""
       },
       {
-        "id": "frosinone-b-kone",
+        "id": "frosinone-ben-lhassine-kone",
         "teamId": "frosinone",
         "teamName": "Frosinone",
-        "playerName": "B. Kone",
-        "target": "B. Kone",
+        "playerName": "Ben Lhassine Kone",
+        "target": "Ben Lhassine Kone",
         "role": "C",
         "coach": "Massimiliano Alvini",
         "module": "3-5-2 / 4-3-3",
@@ -423855,7 +423812,7 @@
         "formationNote": "XI Sky compatibilizzato con rosa attuale."
       },
       {
-        "id": "genoa-gabriele-calvani",
+        "id": "genoa-gabriele-calvani-p-uscita-ufficiale-prestit",
         "teamId": "genoa",
         "teamName": "Genoa",
         "playerName": "Gabriele Calvani",
@@ -423888,8 +423845,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Calvani",
-        "disambiguatedName": "Calvani",
+        "originalName": "Gabriele Calvani",
+        "disambiguatedName": "Gabriele Calvani",
         "newAcquisition": false,
         "qualityControl": "Audit v42: allineata uscita/fonte ufficiale.",
         "_iosudoMarketRows": [],
@@ -424156,7 +424113,7 @@
         "formationNote": ""
       },
       {
-        "id": "genoa-gabriele-calvani-2",
+        "id": "genoa-gabriele-calvani-d",
         "teamId": "genoa",
         "teamName": "Genoa",
         "playerName": "Gabriele Calvani",
@@ -424189,8 +424146,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Calvani",
-        "disambiguatedName": "Calvani",
+        "originalName": "Gabriele Calvani",
+        "disambiguatedName": "Gabriele Calvani",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -424242,11 +424199,11 @@
         "formationNote": ""
       },
       {
-        "id": "genoa-j-vasquez",
+        "id": "genoa-johan-vasquez",
         "teamId": "genoa",
         "teamName": "Genoa",
-        "playerName": "J. Vasquez",
-        "target": "J. Vasquez",
+        "playerName": "Johan Vasquez",
+        "target": "Johan Vasquez",
         "role": "D",
         "coach": "Daniele De Rossi",
         "module": "3-5-2 / 3-4-2-1",
@@ -425188,7 +425145,7 @@
         "formationNote": ""
       },
       {
-        "id": "genoa-messias",
+        "id": "genoa-messias-c-extra-listone-fantasy",
         "teamId": "genoa",
         "teamName": "Genoa",
         "playerName": "Messias",
@@ -425317,7 +425274,7 @@
         "formationNote": ""
       },
       {
-        "id": "genoa-seydou-fini",
+        "id": "genoa-seydou-fini-c-extra-listone-fantasy",
         "teamId": "genoa",
         "teamName": "Genoa",
         "playerName": "Seydou Fini",
@@ -425350,8 +425307,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Fini",
-        "disambiguatedName": "Fini",
+        "originalName": "Seydou Fini",
+        "disambiguatedName": "Seydou Fini",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
@@ -425747,7 +425704,7 @@
         "formationNote": ""
       },
       {
-        "id": "genoa-messias-2",
+        "id": "genoa-messias-a",
         "teamId": "genoa",
         "teamName": "Genoa",
         "playerName": "Messias",
@@ -425833,7 +425790,7 @@
         "formationNote": ""
       },
       {
-        "id": "genoa-seydou-fini-2",
+        "id": "genoa-seydou-fini-a-uscita-ufficiale-prestit",
         "teamId": "genoa",
         "teamName": "Genoa",
         "playerName": "Seydou Fini",
@@ -425866,8 +425823,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Fini",
-        "disambiguatedName": "Fini",
+        "originalName": "Seydou Fini",
+        "disambiguatedName": "Seydou Fini",
         "newAcquisition": false,
         "qualityControl": "Audit v42: allineata uscita/fonte ufficiale.",
         "_iosudoMarketRows": [],
@@ -426738,7 +426695,7 @@
         "formationNote": ""
       },
       {
-        "id": "inter-luis-henrique",
+        "id": "inter-luis-henrique-d",
         "teamId": "inter",
         "teamName": "Inter",
         "playerName": "Luis Henrique",
@@ -427297,7 +427254,7 @@
         "formationNote": ""
       },
       {
-        "id": "inter-luis-henrique-2",
+        "id": "inter-luis-henrique-c-extra-listone-fantasy",
         "teamId": "inter",
         "teamName": "Inter",
         "playerName": "Luis Henrique",
@@ -430810,11 +430767,11 @@
         "formationNote": ""
       },
       {
-        "id": "lazio-lu-pellegrini",
+        "id": "lazio-luca-pellegrini",
         "teamId": "lazio",
         "teamName": "Lazio",
-        "playerName": "Lu. Pellegrini",
-        "target": "Lu. Pellegrini",
+        "playerName": "Luca Pellegrini",
+        "target": "Luca Pellegrini",
         "role": "D",
         "coach": "Gennaro Gattuso",
         "module": "4-3-3 / 4-2-3-1",
@@ -430843,8 +430800,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Lu. Pellegrini",
-        "disambiguatedName": "Lu. Pellegrini",
+        "originalName": "Luca Pellegrini",
+        "disambiguatedName": "Luca Pellegrini",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -430976,49 +430933,6 @@
         "disambiguatedName": "Patric",
         "newAcquisition": false,
         "qualityControl": "",
-        "_iosudoMarketRows": [],
-        "formationSource": "",
-        "formationReliability": "",
-        "formationNote": ""
-      },
-      {
-        "id": "lazio-pellegrini-lu",
-        "teamId": "lazio",
-        "teamName": "Lazio",
-        "playerName": "Pellegrini Lu.",
-        "target": "Pellegrini Lu.",
-        "role": "D",
-        "coach": "",
-        "module": "",
-        "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "updatedAt": "2026-07-18",
-        "flag": "EXTRA_LISTONE",
-        "marketStatus": "Extra listone/fantasy",
-        "marketDetail": "Profilo extra da listone/fantasy",
-        "marketSource": "Listone Fantacalcio 2026-07-04",
-        "marketNote": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "Pellegrini Lu.",
-        "disambiguatedName": "Pellegrini Lu.",
-        "newAcquisition": false,
-        "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
@@ -431273,7 +431187,7 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Maldini",
+        "originalName": "Daniel Maldini",
         "disambiguatedName": "Daniel Maldini",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
@@ -431412,7 +431326,7 @@
         "formationNote": ""
       },
       {
-        "id": "lazio-gustav-isaksen",
+        "id": "lazio-gustav-isaksen-c-extra-listone-fantasy",
         "teamId": "lazio",
         "teamName": "Lazio",
         "playerName": "Gustav Isaksen",
@@ -431445,8 +431359,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Isaksen",
-        "disambiguatedName": "Isaksen",
+        "originalName": "Gustav Isaksen",
+        "disambiguatedName": "Gustav Isaksen",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
@@ -431498,7 +431412,7 @@
         "formationNote": ""
       },
       {
-        "id": "lazio-przyborek",
+        "id": "lazio-przyborek-c-extra-listone-fantasy",
         "teamId": "lazio",
         "teamName": "Lazio",
         "playerName": "Przyborek",
@@ -431842,7 +431756,7 @@
         "formationNote": ""
       },
       {
-        "id": "lazio-gustav-isaksen-2",
+        "id": "lazio-gustav-isaksen-a-infortunato",
         "teamId": "lazio",
         "teamName": "Lazio",
         "playerName": "Gustav Isaksen",
@@ -431875,8 +431789,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Isaksen",
-        "disambiguatedName": "Isaksen",
+        "originalName": "Gustav Isaksen",
+        "disambiguatedName": "Gustav Isaksen",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -432014,7 +431928,7 @@
         "formationNote": ""
       },
       {
-        "id": "lazio-przyborek-2",
+        "id": "lazio-przyborek-a",
         "teamId": "lazio",
         "teamName": "Lazio",
         "playerName": "Przyborek",
@@ -432532,11 +432446,11 @@
         "formationNote": ""
       },
       {
-        "id": "lecce-m-perez",
+        "id": "lecce-matias-perez",
         "teamId": "lecce",
         "teamName": "Lecce",
-        "playerName": "M. Perez",
-        "target": "M. Perez",
+        "playerName": "Matias Perez",
+        "target": "Matias Perez",
         "role": "D",
         "coach": "Eusebio Di Francesco",
         "module": "4-3-3",
@@ -432952,8 +432866,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-3-3",
         "formationCorrectionNote": "Sky",
-        "originalName": "Coulibaly",
-        "disambiguatedName": "Coulibaly",
+        "originalName": "Coulibaly W.",
+        "disambiguatedName": "Coulibaly W.",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -432962,11 +432876,11 @@
         "formationNote": ""
       },
       {
-        "id": "lecce-fofana-sa",
+        "id": "lecce-sadik-fofana",
         "teamId": "lecce",
         "teamName": "Lecce",
-        "playerName": "Fofana Sa.",
-        "target": "Fofana Sa.",
+        "playerName": "Sadik Fofana",
+        "target": "Sadik Fofana",
         "role": "C",
         "coach": "",
         "module": "",
@@ -432995,8 +432909,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Fofana Sa.",
-        "disambiguatedName": "Fofana Sa.",
+        "originalName": "Sadik Fofana",
+        "disambiguatedName": "Sadik Fofana",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
@@ -433349,7 +433263,7 @@
         "formationNote": ""
       },
       {
-        "id": "lecce-pierotti",
+        "id": "lecce-pierotti-c-extra-listone-fantasy",
         "teamId": "lecce",
         "teamName": "Lecce",
         "playerName": "Pierotti",
@@ -433554,53 +433468,10 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Sottil",
-        "disambiguatedName": "Sottil",
+        "originalName": "Riccardo Sottil",
+        "disambiguatedName": "Riccardo Sottil",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
-        "_iosudoMarketRows": [],
-        "formationSource": "",
-        "formationReliability": "",
-        "formationNote": ""
-      },
-      {
-        "id": "lecce-s-fofana",
-        "teamId": "lecce",
-        "teamName": "Lecce",
-        "playerName": "S. Fofana",
-        "target": "S. Fofana",
-        "role": "C",
-        "coach": "Eusebio Di Francesco",
-        "module": "4-3-3",
-        "rosterSource": "https://www.transfermarkt.it/us-lecce/startseite/verein/1005/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-10",
-        "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "S. Fofana",
-        "disambiguatedName": "S. Fofana",
-        "newAcquisition": false,
-        "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
@@ -433951,7 +433822,7 @@
         "formationNote": ""
       },
       {
-        "id": "lecce-pierotti-2",
+        "id": "lecce-pierotti-a",
         "teamId": "lecce",
         "teamName": "Lecce",
         "playerName": "Pierotti",
@@ -434889,8 +434760,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Saelemaekers",
-        "disambiguatedName": "Saelemaekers",
+        "originalName": "Alexis Saelemaekers",
+        "disambiguatedName": "Alexis Saelemaekers",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -435276,8 +435147,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Liberali",
-        "disambiguatedName": "Liberali",
+        "originalName": "Mattia Liberali",
+        "disambiguatedName": "Mattia Liberali",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
@@ -435458,7 +435329,7 @@
         "formationNote": ""
       },
       {
-        "id": "milan-samuel-chukwueze",
+        "id": "milan-samuel-chukwueze-c-extra-listone-fantasy",
         "teamId": "milan",
         "teamName": "Milan",
         "playerName": "Samuel Chukwueze",
@@ -435491,8 +435362,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Chukwueze",
-        "disambiguatedName": "Chukwueze",
+        "originalName": "Samuel Chukwueze",
+        "disambiguatedName": "Samuel Chukwueze",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
@@ -436189,7 +436060,7 @@
         "formationNote": "Modric non presente nella rosa file; sostituito con Leao nello spazio da trequarti/offensivo. Pulisic resta da monitorare per infortunio."
       },
       {
-        "id": "milan-samuel-chukwueze-2",
+        "id": "milan-samuel-chukwueze-a",
         "teamId": "milan",
         "teamName": "Milan",
         "playerName": "Samuel Chukwueze",
@@ -436222,8 +436093,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Chukwueze",
-        "disambiguatedName": "Chukwueze",
+        "originalName": "Samuel Chukwueze",
+        "disambiguatedName": "Samuel Chukwueze",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -437170,8 +437041,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "Sky",
-        "originalName": "Pessina",
-        "disambiguatedName": "Pessina",
+        "originalName": "Pessina Mas.",
+        "disambiguatedName": "Pessina Mas.",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -438429,7 +438300,7 @@
         "formationNote": ""
       },
       {
-        "id": "napoli-alisson-santos",
+        "id": "napoli-alisson-santos-c-extra-listone-fantasy",
         "teamId": "napoli",
         "teamName": "Napoli",
         "playerName": "Alisson Santos",
@@ -439074,7 +438945,7 @@
         "formationNote": ""
       },
       {
-        "id": "napoli-alisson-santos-2",
+        "id": "napoli-alisson-santos-a-acquisto-ufficiale-risca",
         "teamId": "napoli",
         "teamName": "Napoli",
         "playerName": "Alisson Santos",
@@ -439322,7 +439193,7 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Giovane",
+        "originalName": "Giovane (Napoli)",
         "disambiguatedName": "Giovane (Napoli)",
         "newAcquisition": false,
         "qualityControl": "OK - omonimo disambiguato",
@@ -440571,8 +440442,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Trabucchi",
-        "disambiguatedName": "Trabucchi",
+        "originalName": "Nicolas Trabucchi",
+        "disambiguatedName": "Nicolas Trabucchi",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -440581,7 +440452,7 @@
         "formationNote": ""
       },
       {
-        "id": "parma-roberto-d-intino",
+        "id": "parma-roberto-dintino",
         "teamId": "parma",
         "teamName": "Parma",
         "playerName": "Roberto D’Intino",
@@ -440958,8 +440829,8 @@
         "formationRoleOk": "",
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
-        "originalName": "Oristanio",
-        "disambiguatedName": "Oristanio",
+        "originalName": "Gaetano Oristanio",
+        "disambiguatedName": "Gaetano Oristanio",
         "newAcquisition": false,
         "qualityControl": "Extra listone/fantasy V724",
         "_iosudoMarketRows": [],
@@ -441183,7 +441054,7 @@
         "formationNote": "Estevez e Strefezza non presenti nella rosa aggiornata; sostituiti con Nicolussi Caviglia e Almqvist."
       },
       {
-        "id": "parma-ondrejka",
+        "id": "parma-ondrejka-c-extra-listone-fantasy",
         "teamId": "parma",
         "teamName": "Parma",
         "playerName": "Ondrejka",
@@ -441828,7 +441699,7 @@
         "formationNote": ""
       },
       {
-        "id": "parma-ondrejka-2",
+        "id": "parma-ondrejka-a",
         "teamId": "parma",
         "teamName": "Parma",
         "playerName": "Ondrejka",
@@ -442088,11 +441959,11 @@
     ],
     "roma": [
       {
-        "id": "roma-d-vasquez",
+        "id": "roma-devis-vasquez",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "D. Vasquez",
-        "target": "D. Vasquez",
+        "playerName": "Devis Vasquez",
+        "target": "Devis Vasquez",
         "role": "P",
         "coach": "Gian Piero Gasperini",
         "module": "3-4-2-1 / 3-4-1-2",
@@ -443034,11 +442905,11 @@
         "formationNote": ""
       },
       {
-        "id": "roma-m-kone",
+        "id": "roma-manu-kone",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "M. Kone",
-        "target": "M. Kone",
+        "playerName": "Manu Konè",
+        "target": "Manu Konè",
         "role": "C",
         "coach": "Gian Piero Gasperini",
         "module": "3-4-2-1 / 3-4-1-2",
@@ -444154,11 +444025,11 @@
         "formationNote": "Garcia non presente nella rosa file; sostituito con Doig come terzino sinistro. Schema 4-2-3-1 coerente con profili offensivi."
       },
       {
-        "id": "sassuolo-k-miranda",
+        "id": "sassuolo-kevin-miranda",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "K. Miranda",
-        "target": "K. Miranda",
+        "playerName": "Kevin Miranda",
+        "target": "Kevin Miranda",
         "role": "D",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
@@ -444713,7 +444584,7 @@
         "formationNote": ""
       },
       {
-        "id": "sassuolo-bakola",
+        "id": "sassuolo-bakola-c-extra-listone-fantasy",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
         "playerName": "Bakola",
@@ -445014,11 +444885,11 @@
         "formationNote": ""
       },
       {
-        "id": "sassuolo-i-kone",
+        "id": "sassuolo-ismael-kone",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "I. Kone",
-        "target": "I. Kone",
+        "playerName": "Ismaël Konè",
+        "target": "Ismaël Konè",
         "role": "C",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
@@ -445358,7 +445229,7 @@
         "formationNote": "Garcia non presente nella rosa file; sostituito con Doig come terzino sinistro. Schema 4-2-3-1 coerente con profili offensivi."
       },
       {
-        "id": "sassuolo-volpato",
+        "id": "sassuolo-volpato-c-extra-listone-fantasy",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
         "playerName": "Volpato",
@@ -445573,7 +445444,7 @@
         "formationNote": ""
       },
       {
-        "id": "sassuolo-bakola-2",
+        "id": "sassuolo-bakola-a",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
         "playerName": "Bakola",
@@ -445917,11 +445788,11 @@
         "formationNote": ""
       },
       {
-        "id": "sassuolo-l-moro",
+        "id": "sassuolo-luca-moro",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "L. Moro",
-        "target": "L. Moro",
+        "playerName": "Luca Moro",
+        "target": "Luca Moro",
         "role": "A",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
@@ -446261,7 +446132,7 @@
         "formationNote": ""
       },
       {
-        "id": "sassuolo-volpato-2",
+        "id": "sassuolo-volpato-a",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
         "playerName": "Volpato",
@@ -448059,8 +447930,8 @@
         "formationRoleOk": "OK",
         "formationModuleUsed": "4-3-1-2",
         "formationCorrectionNote": "Sky ufficiale",
-        "originalName": "Oristanio",
-        "disambiguatedName": "Oristanio",
+        "originalName": "Gaetano Oristanio",
+        "disambiguatedName": "Gaetano Oristanio",
         "newAcquisition": true,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -449791,7 +449662,7 @@
         "formationNote": ""
       },
       {
-        "id": "udinese-pafundi",
+        "id": "udinese-pafundi-c-extra-listone-fantasy",
         "teamId": "udinese",
         "teamName": "Udinese",
         "playerName": "Pafundi",
@@ -450350,7 +450221,7 @@
         "formationNote": ""
       },
       {
-        "id": "udinese-pafundi-2",
+        "id": "udinese-pafundi-a",
         "teamId": "udinese",
         "teamName": "Udinese",
         "playerName": "Pafundi",
@@ -451771,11 +451642,11 @@
         "formationNote": ""
       },
       {
-        "id": "venezia-k-perez",
+        "id": "venezia-kike-perez",
         "teamId": "venezia",
         "teamName": "Venezia",
-        "playerName": "K. Perez",
-        "target": "K. Perez",
+        "playerName": "Kike Perez",
+        "target": "Kike Perez",
         "role": "C",
         "coach": "Giovanni Stroppa",
         "module": "3-5-2 / 3-4-2-1",
@@ -453364,11 +453235,11 @@
         "formationNote": ""
       },
       {
-        "id": "cremonese-vazquez",
+        "id": "cremonese-franco-vazquez",
         "teamId": "cremonese",
         "teamName": "Cremonese",
-        "playerName": "Vazquez",
-        "target": "Vazquez",
+        "playerName": "Franco Vazquez",
+        "target": "Franco Vazquez",
         "role": "C",
         "coach": "",
         "module": "",
@@ -459653,8 +459524,8 @@
       {
         "teamId": "lazio",
         "teamName": "Lazio",
-        "playerName": "Dominguez",
-        "target": "Dominguez",
+        "playerName": "Benjamin Dominguez",
+        "target": "Benjamin Dominguez",
         "directionLabel": "Entrata",
         "direction": "incoming",
         "status": "Obiettivo; distanza con Dinamo Zagabria",
@@ -460589,6 +460460,24 @@
         "sourceType": "Live mercato puntuale",
         "sourceVerification": "OK_MONITORAGGIO_V115",
         "sourceVerificationNote": "Non ufficiale; rose invariate."
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "playerName": "Pierre-Emile Hojbjerg",
+        "target": "Pierre-Emile Hojbjerg",
+        "roleBrief": "C",
+        "role": "C",
+        "directionLabel": "Entrata",
+        "direction": "incoming",
+        "status": "Idea aggiornata",
+        "updatedAt": "2026-07-20",
+        "date": "2026-07-20",
+        "source": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "url": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "href": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "note": "Condizioni economiche favorevoli, nessun accordo. Nessuna modifica rose."
       }
     ],
     "napoli": [
@@ -461703,18 +461592,18 @@
         "teamName": "Roma",
         "playerName": "Lorenzo Pellegrini",
         "target": "Lorenzo Pellegrini",
-        "directionLabel": "Rinnovo/contratto",
-        "direction": "other",
-        "status": "Passi avanti rinnovo",
-        "updatedAt": "2026-07-14",
-        "date": "2026-07-14",
-        "note": "TMW/Corriere: contatti continui; ipotesi biennale da 2,5 milioni netti, Gasperini vorrebbe trattenerlo.",
-        "source": "https://www.tuttomercatoweb.com/serie-a/dybala-roma-passi-trattativa-lorenzo-pellegrini-2253423",
-        "url": "https://www.tuttomercatoweb.com/serie-a/dybala-roma-passi-trattativa-lorenzo-pellegrini-2253423",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/dybala-roma-passi-trattativa-lorenzo-pellegrini-2253423",
-        "href": "https://www.tuttomercatoweb.com/serie-a/dybala-roma-passi-trattativa-lorenzo-pellegrini-2253423",
+        "directionLabel": "Entrata",
+        "direction": "incoming",
+        "status": "Rinnovo vicino",
+        "updatedAt": "2026-07-20",
+        "date": "2026-07-20",
+        "note": "Accordo vicino; resta il nodo tra biennale e triennale. Nessuna ufficialità.",
+        "source": "https://www.sportmediaset.mediaset.it/mercato/roma-vicino-l-accordo-per-il-rinnovo-di-pellegrini-resta-un-solo-nodo-da-sciogliere_114616033-202602k.shtml",
+        "url": "https://www.sportmediaset.mediaset.it/mercato/roma-vicino-l-accordo-per-il-rinnovo-di-pellegrini-resta-un-solo-nodo-da-sciogliere_114616033-202602k.shtml",
+        "articleUrl": "https://www.sportmediaset.mediaset.it/mercato/roma-vicino-l-accordo-per-il-rinnovo-di-pellegrini-resta-un-solo-nodo-da-sciogliere_114616033-202602k.shtml",
+        "href": "https://www.sportmediaset.mediaset.it/mercato/roma-vicino-l-accordo-per-il-rinnovo-di-pellegrini-resta-un-solo-nodo-da-sciogliere_114616033-202602k.shtml",
         "roleBrief": "C",
-        "role": "Centrocampista",
+        "role": "C",
         "origin": "Roma",
         "probability": "",
         "check": "",
@@ -463884,6 +463773,24 @@
         "href": "3",
         "status": "Rumor Transfermarkt",
         "note": ""
+      },
+      {
+        "teamId": "udinese",
+        "teamName": "Udinese",
+        "playerName": "Nicolò Zaniolo",
+        "target": "Nicolò Zaniolo",
+        "roleBrief": "A",
+        "role": "A",
+        "directionLabel": "Entrata",
+        "direction": "incoming",
+        "status": "Adeguamento contrattuale in avanzamento",
+        "updatedAt": "2026-07-20",
+        "date": "2026-07-20",
+        "source": "https://sport.sky.it/calciomercato/2026/07/19/udinese-zaniolo-calciomercato-news",
+        "url": "https://sport.sky.it/calciomercato/2026/07/19/udinese-zaniolo-calciomercato-news",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/19/udinese-zaniolo-calciomercato-news",
+        "href": "https://sport.sky.it/calciomercato/2026/07/19/udinese-zaniolo-calciomercato-news",
+        "note": "Passi avanti per adeguamento salariale e possibile intesa fino al 2029."
       }
     ],
     "inter": [
@@ -464711,6 +464618,24 @@
         "href": "3",
         "status": "Rumor Transfermarkt",
         "note": ""
+      },
+      {
+        "teamId": "inter",
+        "teamName": "Inter",
+        "playerName": "Alessandro Bastoni",
+        "target": "Alessandro Bastoni",
+        "roleBrief": "D",
+        "role": "D",
+        "directionLabel": "Uscita",
+        "direction": "outgoing",
+        "status": "Interesse Al-Hilal aggiornato",
+        "updatedAt": "2026-07-20",
+        "date": "2026-07-20",
+        "source": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "url": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "href": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "note": "Nuovo interesse Al-Hilal; operazione subordinata a slot straniero. Nessuna modifica rose."
       }
     ],
     "parma": [
@@ -465404,6 +465329,24 @@
         "sourceType": "News mercato",
         "sourceVerification": "OK_MONITORAGGIO",
         "sourceVerificationNote": "Riga aggiunta v36."
+      },
+      {
+        "teamId": "frosinone",
+        "teamName": "Frosinone",
+        "playerName": "Alessio Zerbin",
+        "target": "Alessio Zerbin",
+        "roleBrief": "A",
+        "role": "A",
+        "directionLabel": "Entrata",
+        "direction": "incoming",
+        "status": "Intesa finale da trovare",
+        "updatedAt": "2026-07-19",
+        "date": "2026-07-19",
+        "source": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "url": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "href": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+        "note": "Fonte Sky diretta rafforzata; stato invariato, intesa finale ancora da trovare."
       }
     ]
   },
@@ -465434,8 +465377,8 @@
       {
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Maldini",
-        "target": "Maldini",
+        "playerName": "Daniel Maldini",
+        "target": "Daniel Maldini",
         "directionLabel": "Entrata",
         "direction": "incoming",
         "role": "",
@@ -465478,8 +465421,8 @@
       {
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Cittadini",
-        "target": "Cittadini",
+        "playerName": "Giorgio Cittadini",
+        "target": "Giorgio Cittadini",
         "directionLabel": "Entrata",
         "direction": "incoming",
         "role": "",
@@ -467908,8 +467851,8 @@
       {
         "teamId": "frosinone",
         "teamName": "Frosinone",
-        "playerName": "Cittadini",
-        "target": "Cittadini",
+        "playerName": "Giorgio Cittadini",
+        "target": "Giorgio Cittadini",
         "directionLabel": "Uscita",
         "direction": "outgoing",
         "role": "",
@@ -469896,8 +469839,8 @@
       {
         "teamId": "lazio",
         "teamName": "Lazio",
-        "playerName": "Maldini",
-        "target": "Maldini",
+        "playerName": "Daniel Maldini",
+        "target": "Daniel Maldini",
         "directionLabel": "Uscita",
         "direction": "outgoing",
         "role": "",
@@ -492974,8 +492917,8 @@
         {
           "teamId": "lazio",
           "teamName": "Lazio",
-          "playerName": "Lu. Pellegrini",
-          "target": "Lu. Pellegrini",
+          "playerName": "Luca Pellegrini",
+          "target": "Luca Pellegrini",
           "direction": "outgoing",
           "directionLabel": "Uscita",
           "status": "Monitoraggio Deportivo - non ufficiale",
@@ -512439,24 +512382,25 @@
         "directionLabel": "Entrata",
         "event": "Lazio-Lazio U20",
         "date": "2026-07-20",
-        "status": "Annunciata - orario 16:00 confermato dal Match Center v113",
+        "status": "Annunciata - diretta dalle 17:00, calcio d’inizio alle 18:00 (V120)",
         "result": "",
         "score": "",
         "finalScore": "",
         "venue": "Stadio Mirko Fersini, Formello",
         "location": "Stadio Mirko Fersini, Formello",
-        "time": "16:00",
-        "source": "https://www.sslazio.it/it/live/live-match/amichevole-or-lazio-lazio-under-20",
-        "url": "https://www.sslazio.it/it/live/live-match/amichevole-or-lazio-lazio-under-20",
-        "articleUrl": "https://www.sslazio.it/it/live/live-match/amichevole-or-lazio-lazio-under-20",
-        "href": "https://www.sslazio.it/it/live/live-match/amichevole-or-lazio-lazio-under-20",
+        "time": "18:00",
+        "source": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
+        "url": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
+        "articleUrl": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
+        "href": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
         "sourceName": "https://www.sslazio.it/it/live/live-match/amichevole-or-lazio-lazio-under-20",
         "sourceLabel": "https://www.sslazio.it/it/live/live-match/amichevole-or-lazio-lazio-under-20",
         "sourceType": "Sito ufficiale club - Match Center",
         "sourceVerification": "OK_UFFICIALE_CLUB_v113",
         "sourceVerificationNote": "Deduplicata la precedente riga Lazio-Lazio Primavera; mantenuta una sola voce attiva.",
         "note": "Match Center ufficiale Lazio: partita del 20/07/2026 alle 16:00. Al controllo mattutino non ancora giocata; compilare minutaggi solo dopo il tabellino.",
-        "matchKey": "lazio 2026 07 20 lazio lazio u20"
+        "matchKey": "lazio 2026 07 20 lazio lazio u20",
+        "updatedAt": "2026-07-20"
       },
       {
         "teamId": "lazio",
@@ -515973,8 +515917,8 @@
         "teamId": "bologna",
         "teamName": "Bologna",
         "position": "DS",
-        "playerName": "J. Miranda",
-        "target": "J. Miranda",
+        "playerName": "Juan Miranda",
+        "target": "Juan Miranda",
         "role": "D",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -516901,8 +516845,8 @@
         "teamId": "genoa",
         "teamName": "Genoa",
         "position": "DCS",
-        "playerName": "J. Vasquez",
-        "target": "J. Vasquez",
+        "playerName": "Johan Vasquez",
+        "target": "Johan Vasquez",
         "role": "D",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -517708,7 +517652,7 @@
         "teamId": "lecce",
         "teamName": "Lecce",
         "position": "CC",
-        "playerName": "Coulibaly",
+        "playerName": "Coulibaly W.",
         "target": "Coulibaly W.",
         "role": "C",
         "inRoster": "SI",
@@ -518086,7 +518030,7 @@
         "teamId": "monza",
         "teamName": "Monza",
         "position": "CC",
-        "playerName": "Pessina",
+        "playerName": "Pessina Mas.",
         "target": "Pessina Mas.",
         "role": "C",
         "inRoster": "SI",
@@ -518154,8 +518098,8 @@
         "teamId": "monza",
         "teamName": "Monza",
         "position": "PC",
-        "playerName": "Cutrone",
-        "target": "Cutrone",
+        "playerName": "Patrick Cutrone",
+        "target": "Patrick Cutrone",
         "role": "A",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -518309,8 +518253,8 @@
         "teamId": "napoli",
         "teamName": "Napoli",
         "position": "TQ",
-        "playerName": "Neres",
-        "target": "Neres",
+        "playerName": "David Neres",
+        "target": "David Neres",
         "role": "A",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -518447,7 +518391,7 @@
         "teamId": "parma",
         "teamName": "Parma",
         "position": "CC",
-        "playerName": "Bernabe",
+        "playerName": "Adrian Bernabe",
         "target": "Adrian Bernabe",
         "role": "C",
         "inRoster": "SI",
@@ -518653,7 +518597,7 @@
         "teamId": "roma",
         "teamName": "Roma",
         "position": "CC",
-        "playerName": "M. Kone",
+        "playerName": "Manu Konè",
         "target": "Manu Kone",
         "role": "C",
         "inRoster": "SI",
@@ -518825,8 +518769,8 @@
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
         "position": "MED",
-        "playerName": "I. Kone",
-        "target": "I. Kone",
+        "playerName": "Ismaël Konè",
+        "target": "Ismaël Konè",
         "role": "C",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -519099,7 +519043,7 @@
         "teamId": "torino",
         "teamName": "Torino",
         "position": "SP",
-        "playerName": "Oristanio",
+        "playerName": "Gaetano Oristanio",
         "target": "Gaetano Oristanio",
         "role": "A",
         "inRoster": "SI",
@@ -519392,8 +519336,8 @@
         "teamId": "venezia",
         "teamName": "Venezia",
         "position": "CC",
-        "playerName": "K. Perez",
-        "target": "K. Perez",
+        "playerName": "Kike Perez",
+        "target": "Kike Perez",
         "role": "C",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -526377,6 +526321,42 @@
       "usage": "Fonte ufficiale primaria V742: cessione temporanea di Diego Pugno; Next Gen/prestito esterno/non slot.",
       "updatedAt": "2026-07-20",
       "sourceType": "Fonte workbook"
+    },
+    {
+      "sourceName": "Sky calciomercato 20/07",
+      "sourceLabel": "Sky calciomercato 20/07",
+      "url": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+      "href": "https://sport.sky.it/calciomercato/2026/07/20/calciomercato-news-trattative-oggi-20-luglio",
+      "usage": "Bastoni, Hojbjerg, Zerbin",
+      "updatedAt": "2026-07-20",
+      "sourceType": "Fonte V120/V744"
+    },
+    {
+      "sourceName": "SportMediaset Roma Pellegrini",
+      "sourceLabel": "SportMediaset Roma Pellegrini",
+      "url": "https://www.sportmediaset.mediaset.it/mercato/roma-vicino-l-accordo-per-il-rinnovo-di-pellegrini-resta-un-solo-nodo-da-sciogliere_114616033-202602k.shtml",
+      "href": "https://www.sportmediaset.mediaset.it/mercato/roma-vicino-l-accordo-per-il-rinnovo-di-pellegrini-resta-un-solo-nodo-da-sciogliere_114616033-202602k.shtml",
+      "usage": "Rinnovo Lorenzo Pellegrini",
+      "updatedAt": "2026-07-20",
+      "sourceType": "Fonte V120/V744"
+    },
+    {
+      "sourceName": "Sky Udinese Zaniolo 19/07",
+      "sourceLabel": "Sky Udinese Zaniolo 19/07",
+      "url": "https://sport.sky.it/calciomercato/2026/07/19/udinese-zaniolo-calciomercato-news",
+      "href": "https://sport.sky.it/calciomercato/2026/07/19/udinese-zaniolo-calciomercato-news",
+      "usage": "Monitoraggio Nicolò Zaniolo",
+      "updatedAt": "2026-07-20",
+      "sourceType": "Fonte V120/V744"
+    },
+    {
+      "sourceName": "Lazio amichevole U20",
+      "sourceLabel": "Lazio amichevole U20",
+      "url": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
+      "href": "https://www.sslazio.it/it/news/eventi/segui-l-amichevole-di-oggi-contro-la-primavera",
+      "usage": "Orario Lazio-Lazio U20",
+      "updatedAt": "2026-07-20",
+      "sourceType": "Fonte V120/V744"
     }
   ],
   "transfermarktRumors": [
@@ -528896,7 +528876,7 @@
         {
           "teamId": "sassuolo",
           "teamName": "Sassuolo",
-          "playerName": "L. Moro",
+          "playerName": "Luca Moro",
           "role": "A",
           "match": "Sassuolo-Alta Anaunia | 2026-07-16",
           "event": "Sassuolo-Alta Anaunia",
@@ -529218,7 +529198,7 @@
         {
           "teamId": "bologna",
           "teamName": "Bologna",
-          "playerName": "Miranda",
+          "playerName": "Juan Miranda",
           "role": "D",
           "match": "Bologna-Arminia Bielefeld | 2026-07-18",
           "event": "Bologna-Arminia Bielefeld",
@@ -529333,7 +529313,7 @@
         {
           "teamId": "bologna",
           "teamName": "Bologna",
-          "playerName": "Dominguez",
+          "playerName": "Benjamin Dominguez",
           "role": "C",
           "match": "Bologna-Arminia Bielefeld | 2026-07-18",
           "event": "Bologna-Arminia Bielefeld",
@@ -534324,7 +534304,7 @@
         {
           "teamId": "lecce",
           "teamName": "Lecce",
-          "playerName": "S. Fofana",
+          "playerName": "Sadik Fofana",
           "role": "C",
           "match": "Haladas VSE-Lecce | 2026-07-19",
           "event": "Haladas VSE-Lecce",
@@ -534830,7 +534810,7 @@
         {
           "teamId": "venezia",
           "teamName": "Venezia",
-          "playerName": "K. Perez",
+          "playerName": "Kike Perez",
           "role": "C",
           "match": "Venezia-Dolomiti Bellunesi | 2026-07-19",
           "event": "Venezia-Dolomiti Bellunesi",
@@ -536000,7 +535980,7 @@
       {
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "L. Moro",
+        "playerName": "Luca Moro",
         "role": "A",
         "match": "Sassuolo-Alta Anaunia | 2026-07-16",
         "event": "Sassuolo-Alta Anaunia",
@@ -536134,7 +536114,7 @@
       {
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Miranda",
+        "playerName": "Juan Miranda",
         "role": "D",
         "match": "Sassuolo-Alta Anaunia | 2026-07-16",
         "event": "Sassuolo-Alta Anaunia",
@@ -536266,7 +536246,7 @@
       {
         "teamId": "bologna",
         "teamName": "Bologna",
-        "playerName": "Dominguez",
+        "playerName": "Benjamin Dominguez",
         "role": "C",
         "match": "Sassuolo-Alta Anaunia | 2026-07-16",
         "event": "Sassuolo-Alta Anaunia",
@@ -540906,7 +540886,7 @@
       {
         "teamId": "lecce",
         "teamName": "Lecce",
-        "playerName": "S. Fofana",
+        "playerName": "Sadik Fofana",
         "role": "C",
         "match": "Haladas VSE-Lecce | 2026-07-19",
         "event": "Haladas VSE-Lecce",
@@ -541282,7 +541262,7 @@
       {
         "teamId": "venezia",
         "teamName": "Venezia",
-        "playerName": "K. Perez",
+        "playerName": "Kike Perez",
         "role": "C",
         "match": "Venezia-Dolomiti Bellunesi | 2026-07-19",
         "event": "Venezia-Dolomiti Bellunesi",
@@ -559969,14 +559949,14 @@
   "playersPatchedV714": [
     {
       "team": "Juventus",
-      "from": "K. Thuram",
+      "from": "Khephren Thuram",
       "to": "Khephren Thuram",
       "reason": "alias K. Thuram = Khephren Thuram; badge SOS agganciato a XI"
     },
     {
       "team": "Juventus",
       "surface": "formationsByTeam",
-      "from": "K. Thuram",
+      "from": "Khephren Thuram",
       "to": "Khephren Thuram",
       "reason": "badge SOS negli XI"
     },
@@ -561552,34 +561532,42 @@
       "friendlyPlayerStats": 294,
       "candidateDuplicatePairs": 10,
       "overlayGeneratedAt": "2026-07-20T16:11:00+02:00"
+    },
+    "v744": {
+      "players": 1046,
+      "duplicateIds": 0,
+      "duplicatesExact": 0,
+      "friendlyMatchDetails": 14,
+      "friendlyPlayerStats": 294,
+      "activeOfficialRumors": 0
     }
   },
   "manifest": {
-    "id": "sudatori-iosudo-v743",
-    "version": "V743",
+    "id": "sudatori-iosudo-v744",
+    "version": "V744",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-20",
-    "updatedAtTime": "2026-07-20T16:11:00+02:00",
-    "generatedAt": "2026-07-20T16:11:00+02:00",
-    "overlayGeneratedAt": "2026-07-20T16:11:00+02:00",
-    "overlayGeneratedAtLabel": "20/07/2026 16:11 CEST",
-    "sourceFile": "v118_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_fuso_v742.xlsx",
-    "dedupVersion": "V743",
-    "notes": "V743: Excel V118 fuso integrato come base corrente; nessuna nuova fonte rispetto a V742. Confermati risultati/tabellini amichevoli e schede compatte; duplicati già consolidati in V742 mantenuti; aggiunto set di coppie potenziali da verificare e nuovo handoff AI.",
+    "updatedAtTime": "2026-07-20T17:05:00+02:00",
+    "generatedAt": "2026-07-20T17:05:00+02:00",
+    "overlayGeneratedAt": "2026-07-20T17:05:00+02:00",
+    "overlayGeneratedAtLabel": "20/07/2026 17:05 CEST",
+    "sourceFile": "v120_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v743.xlsx",
+    "dedupVersion": "V744",
+    "notes": "V744: integrato Excel V120, applicate dedupliche confermate su Cittadini, Maldini, Benjamin Dominguez, Luca Pellegrini e Sadik Fofana; protette le disambiguazioni Miranda/Moro/Konè/Vasquez/Perez; aggiornati Bastoni, Hojbjerg, Zerbin, Pellegrini, Zaniolo e Lazio-Lazio U20 ore 18:00; mantenuto handoff AI.",
     "teams": 20,
-    "players": 1049,
+    "players": 1046,
     "officialMoves": 390,
-    "teamTransferTalks": 331,
+    "teamTransferTalks": 335,
     "transfermarktRumors": 54,
     "injuries": 28,
     "friendlies": 150,
     "friendlyMatchDetails": 14,
     "friendlyPlayerStats": 294,
-    "sources": 765,
+    "sources": 769,
     "duplicatesExact": 0,
     "duplicateIds": 0,
     "activeOfficialRumors": 0,
-    "buildTag": "iosudo-v743-v118-fused-dedup-audit"
+    "buildTag": "iosudo-v744-v120-dedup-audit"
   },
   "friendliesFilteredOutV715": [
     {
@@ -562514,7 +562502,7 @@
       "scope": "Milan SOS / mercato"
     },
     {
-      "from": "Ricci",
+      "from": "Samuele Ricci",
       "to": "Samuele Ricci",
       "scope": "Milan / Atalanta mercato"
     },
@@ -562552,7 +562540,7 @@
     },
     {
       "path": "/playersByTeam/juventus[20]/originalName",
-      "from": "K. Thuram",
+      "from": "Khephren Thuram",
       "to": "Khephren Thuram"
     },
     {
@@ -562607,17 +562595,17 @@
     },
     {
       "path": "/playersByTeam/milan[21]/playerName",
-      "from": "Ricci",
+      "from": "Samuele Ricci",
       "to": "Samuele Ricci"
     },
     {
       "path": "/playersByTeam/milan[21]/originalName",
-      "from": "Ricci",
+      "from": "Samuele Ricci",
       "to": "Samuele Ricci"
     },
     {
       "path": "/playersByTeam/milan[21]/disambiguatedName",
-      "from": "Ricci",
+      "from": "Samuele Ricci",
       "to": "Samuele Ricci"
     },
     {
@@ -562932,7 +562920,7 @@
     },
     {
       "path": "/marketNotesByPlayer/ricci/playerName",
-      "from": "Ricci",
+      "from": "Samuele Ricci",
       "to": "Samuele Ricci"
     },
     {
@@ -562972,7 +562960,7 @@
     },
     {
       "path": "/marketNotesByPlayer/khephren thuram/rawEntries[0]/playerName",
-      "from": "K. Thuram",
+      "from": "Khephren Thuram",
       "to": "Khephren Thuram"
     },
     {
@@ -563121,7 +563109,7 @@
       "note": "Confermato dall utente nel passaggio V717."
     },
     {
-      "from": "Bernabe",
+      "from": "Adrian Bernabe",
       "to": "Adrian Bernabe",
       "note": "Confermato dall utente nel passaggio V717."
     },
@@ -563210,7 +563198,7 @@
       "section": "playersByTeam",
       "teamId": "parma",
       "field": "playerName",
-      "from": "Bernabe",
+      "from": "Adrian Bernabe",
       "to": "Adrian Bernabe"
     },
     {
@@ -563427,7 +563415,7 @@
       "section": "formationsByTeam",
       "teamId": "parma",
       "field": "playerName",
-      "from": "Bernabe",
+      "from": "Adrian Bernabe",
       "to": "Adrian Bernabe"
     },
     {
@@ -563490,7 +563478,7 @@
       "section": "marketNotesByPlayer",
       "teamId": "parma",
       "field": "playerName",
-      "from": "Bernabe",
+      "from": "Adrian Bernabe",
       "to": "Adrian Bernabe"
     },
     {
@@ -564319,13 +564307,13 @@
     {
       "section": "playersByTeam.parma[15]",
       "field": "originalName",
-      "from": "Bernabe",
+      "from": "Adrian Bernabe",
       "to": "Adrian Bernabe"
     },
     {
       "section": "playersByTeam.parma[15]",
       "field": "disambiguatedName",
-      "from": "Bernabe",
+      "from": "Adrian Bernabe",
       "to": "Adrian Bernabe"
     },
     {
@@ -565303,7 +565291,7 @@
     {
       "section": "duplicateNameCandidatesV715[7]",
       "field": "a",
-      "from": "Ricci",
+      "from": "Samuele Ricci",
       "to": "Samuele Ricci"
     },
     {
@@ -565339,7 +565327,7 @@
     {
       "section": "duplicateNameCandidatesV716[3]",
       "field": "variantA",
-      "from": "Bernabe",
+      "from": "Adrian Bernabe",
       "to": "Adrian Bernabe"
     },
     {
@@ -568711,7 +568699,7 @@
     },
     {
       "teamId": "lazio",
-      "playerName": "Lu. Pellegrini",
+      "playerName": "Luca Pellegrini",
       "result": "added"
     }
   ],
@@ -569448,7 +569436,7 @@
   },
   "duplicateNameCandidatesV723": [
     {
-      "variant": "Cittadini",
+      "variant": "Giorgio Cittadini",
       "canonical": "Giorgio Cittadini",
       "where": "Atalanta/Bologna rosa-ufficialità"
     },
@@ -569458,7 +569446,7 @@
       "where": "Cagliari/Atalanta mercato-rosa"
     },
     {
-      "variant": "Maldini",
+      "variant": "Daniel Maldini",
       "canonical": "Daniel Maldini",
       "where": "Atalanta/mercato"
     },
@@ -569493,14 +569481,14 @@
       "where": "Bologna ufficialità/mercato"
     },
     {
-      "variant": "Dominguez",
+      "variant": "Benjamin Dominguez",
       "canonical": "Sergi Dominguez",
       "where": "Bologna/Venezia-Lazio mercato"
     }
   ],
   "confirmedDuplicateAliasesV724": [
     {
-      "alias": "K. Thuram",
+      "alias": "Khephren Thuram",
       "canonical": "Khephren Thuram"
     },
     {
@@ -569572,7 +569560,7 @@
       "canonical": "Christian Pulisic"
     },
     {
-      "alias": "Ricci",
+      "alias": "Samuele Ricci",
       "canonical": "Samuele Ricci"
     },
     {
@@ -569596,7 +569584,7 @@
       "canonical": "Alberto Dossena"
     },
     {
-      "alias": "Bernabe",
+      "alias": "Adrian Bernabe",
       "canonical": "Adrian Bernabe"
     },
     {
@@ -569880,7 +569868,7 @@
       "canonical": "Andrea Cambiaso"
     },
     {
-      "alias": "Cittadini",
+      "alias": "Giorgio Cittadini",
       "canonical": "Giorgio Cittadini"
     },
     {
@@ -569888,7 +569876,7 @@
       "canonical": "Gianluca Gaetano"
     },
     {
-      "alias": "Maldini",
+      "alias": "Daniel Maldini",
       "canonical": "Daniel Maldini"
     },
     {
@@ -569912,7 +569900,7 @@
       "canonical": "Lorenzo Menegazzo"
     },
     {
-      "alias": "Dominguez",
+      "alias": "Benjamin Dominguez",
       "canonical": "Sergi Dominguez"
     }
   ],
@@ -569924,19 +569912,19 @@
   "aliasesNormalizedV724": [
     {
       "field": "playerName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
     {
       "field": "originalName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
     {
       "field": "disambiguatedName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
@@ -569960,19 +569948,19 @@
     },
     {
       "field": "playerName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
     {
       "field": "originalName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
     {
       "field": "disambiguatedName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
@@ -570068,19 +570056,19 @@
     },
     {
       "field": "playerName",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Bologna"
     },
     {
       "field": "originalName",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Bologna"
     },
     {
       "field": "disambiguatedName",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Bologna"
     },
@@ -570140,13 +570128,13 @@
     },
     {
       "field": "playerName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
     {
       "field": "target",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
@@ -570164,13 +570152,13 @@
     },
     {
       "field": "playerName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
     {
       "field": "target",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
@@ -570200,13 +570188,13 @@
     },
     {
       "field": "playerName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Frosinone"
     },
     {
       "field": "target",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Frosinone"
     },
@@ -570224,25 +570212,25 @@
     },
     {
       "field": "playerName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Lazio"
     },
     {
       "field": "target",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Lazio"
     },
     {
       "field": "playerName",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Lazio"
     },
     {
       "field": "target",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Lazio"
     },
@@ -570351,9 +570339,9 @@
     },
     {
       "team": "Juventus",
-      "player": "Conceicao",
+      "player": "Francisco Conceição",
       "role": "C",
-      "listoneName": "Conceicao",
+      "listoneName": "Francisco Conceição",
       "id": "listone-6884-C"
     },
     {
@@ -570535,7 +570523,7 @@
       "team": "Lazio",
       "player": "Daniel Maldini",
       "role": "C",
-      "listoneName": "Maldini",
+      "listoneName": "Daniel Maldini",
       "id": "listone-4896-C"
     },
     {
@@ -570603,9 +570591,9 @@
     },
     {
       "team": "Napoli",
-      "player": "Neres",
+      "player": "David Neres",
       "role": "C",
-      "listoneName": "Neres",
+      "listoneName": "David Neres",
       "id": "listone-6831-C"
     },
     {
@@ -571149,9 +571137,9 @@
     },
     {
       "team": "Lazio",
-      "player": "Pellegrini Lu.",
+      "player": "Luca Pellegrini",
       "role": "D",
-      "listoneName": "Pellegrini Lu.",
+      "listoneName": "Luca Pellegrini",
       "id": "listone-2728-D"
     },
     {
@@ -571177,9 +571165,9 @@
     },
     {
       "team": "Bologna",
-      "player": "Dominguez B.",
+      "player": "Benjamin Dominguez",
       "role": "A",
-      "listoneName": "Dominguez B.",
+      "listoneName": "Benjamin Dominguez",
       "id": "listone-6895-A"
     },
     {
@@ -571443,9 +571431,9 @@
     },
     {
       "team": "Parma",
-      "player": "Lovik",
+      "player": "Mathias Lovik",
       "role": "D",
-      "listoneName": "Lovik",
+      "listoneName": "Mathias Lovik",
       "id": "listone-6965-D"
     },
     {
@@ -571485,9 +571473,9 @@
     },
     {
       "team": "Lecce",
-      "player": "Fofana Sa.",
+      "player": "Sadik Fofana",
       "role": "C",
-      "listoneName": "Fofana Sa.",
+      "listoneName": "Sadik Fofana",
       "id": "listone-7319-C"
     },
     {
@@ -571856,9 +571844,9 @@
     },
     {
       "team": "Milan",
-      "player": "Liberali",
+      "player": "Mattia Liberali",
       "role": "C",
-      "listoneName": "Liberali",
+      "listoneName": "Mattia Liberali",
       "id": "listone-6678-C"
     },
     {
@@ -571891,9 +571879,9 @@
     },
     {
       "team": "Roma",
-      "player": "Abdulhamid",
+      "player": "Saud Abdulhamid",
       "role": "D",
-      "listoneName": "Abdulhamid",
+      "listoneName": "Saud Abdulhamid",
       "id": "listone-6885-D"
     },
     {
@@ -572091,7 +572079,7 @@
       "where": "Como/listone"
     },
     {
-      "variant": "Conceicao",
+      "variant": "Francisco Conceição",
       "canonical": "Francisco Conceição",
       "where": "Juventus/listone"
     },
@@ -572135,11 +572123,11 @@
       "canonical": "Martin Baturina"
     },
     {
-      "alias": "Conceicao",
+      "alias": "Francisco Conceição",
       "canonical": "Francisco Conceição"
     },
     {
-      "alias": "Conceição",
+      "alias": "Francisco Conceição",
       "canonical": "Francisco Conceição"
     },
     {
@@ -572338,37 +572326,37 @@
     },
     {
       "field": "playerName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
     {
       "field": "originalName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
     {
       "field": "disambiguatedName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
     {
       "field": "playerName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
     {
       "field": "originalName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
     {
       "field": "disambiguatedName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
@@ -572610,7 +572598,7 @@
       "where": "Lazio rosa/listone"
     },
     {
-      "variant": "Gatti",
+      "variant": "Federico Gatti",
       "canonical": "Federico Gatti",
       "where": "Juventus rosa/listone"
     },
@@ -572681,7 +572669,7 @@
     },
     {
       "field": "playerName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
@@ -572705,7 +572693,7 @@
     },
     {
       "field": "playerName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
@@ -572771,7 +572759,7 @@
     },
     {
       "field": "playerName",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Bologna"
     },
@@ -572909,7 +572897,7 @@
     },
     {
       "field": "playerName",
-      "from": "Gatti",
+      "from": "Federico Gatti",
       "to": "Federico Gatti",
       "team": "Juventus"
     },
@@ -572927,7 +572915,7 @@
     },
     {
       "field": "playerName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
@@ -572993,7 +572981,7 @@
     },
     {
       "field": "playerName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": ""
     },
@@ -573095,13 +573083,13 @@
     },
     {
       "field": "playerName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
     {
       "field": "target",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Atalanta"
     },
@@ -573137,19 +573125,19 @@
     },
     {
       "field": "playerName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
     {
       "field": "target",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
     {
       "field": "playerName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Atalanta"
     },
@@ -573557,13 +573545,13 @@
     },
     {
       "field": "playerName",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Frosinone"
     },
     {
       "field": "target",
-      "from": "Cittadini",
+      "from": "Giorgio Cittadini",
       "to": "Giorgio Cittadini",
       "team": "Frosinone"
     },
@@ -573713,7 +573701,7 @@
     },
     {
       "field": "playerName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
@@ -573755,7 +573743,7 @@
     },
     {
       "field": "playerName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
@@ -573767,13 +573755,13 @@
     },
     {
       "field": "originalName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Lazio"
     },
     {
       "field": "playerName",
-      "from": "Maldini",
+      "from": "Daniel Maldini",
       "to": "Daniel Maldini",
       "team": "Lazio"
     },
@@ -574073,7 +574061,7 @@
     },
     {
       "field": "playerName",
-      "from": "Conceicao",
+      "from": "Francisco Conceição",
       "to": "Francisco Conceição",
       "team": "Juventus"
     },
@@ -574121,7 +574109,7 @@
     },
     {
       "field": "playerName",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Bologna"
     },
@@ -574163,7 +574151,7 @@
     },
     {
       "field": "playerName",
-      "from": "Dominguez",
+      "from": "Benjamin Dominguez",
       "to": "Sergi Dominguez",
       "team": "Bologna"
     },
@@ -575683,95 +575671,95 @@
   ],
   "duplicateNameCandidatesV734": [
     {
-      "alias": "Aduyev",
+      "alias": "Danil Aduyev",
       "canonical": "Danil Aduyev",
       "where": "Parma / rosa-listone"
     },
     {
-      "alias": "Bereszynski",
+      "alias": "Bartosz Bereszynski",
       "canonical": "Bartosz Bereszynski",
       "where": "Samp/Parma mercato-listone"
     },
     {
-      "alias": "Circati",
+      "alias": "Alessandro Circati",
       "canonical": "Alessandro Circati",
       "where": "Parma rosa-listone"
     },
     {
-      "alias": "Bernabe",
+      "alias": "Adrian Bernabe",
       "canonical": "Adrian Bernabe",
       "where": "Parma rosa-listone"
     },
     {
-      "alias": "Lovik",
+      "alias": "Mathias Lovik",
       "canonical": "Mathias Lovik",
       "where": "Parma rosa-listone"
     },
     {
-      "alias": "Cutrone",
+      "alias": "Patrick Cutrone",
       "canonical": "Patrick Cutrone",
       "where": "Como-Parma mercato/listone"
     },
     {
-      "alias": "Retegui",
+      "alias": "Mateo Retegui",
       "canonical": "Mateo Retegui",
       "where": "Atalanta/listone-mercato"
     },
     {
-      "alias": "Pasalic",
+      "alias": "Mario Pasalic",
       "canonical": "Mario Pasalic",
       "where": "Atalanta/listone"
     },
     {
-      "alias": "Ilicic",
+      "alias": "Josip Ilicic",
       "canonical": "Josip Ilicic",
       "where": "Atalanta storico/listone"
     },
     {
-      "alias": "Neres",
+      "alias": "David Neres",
       "canonical": "David Neres",
       "where": "Napoli/listone"
     }
   ],
   "confirmedAliasesV735": [
     {
-      "alias": "Aduyev",
+      "alias": "Danil Aduyev",
       "canonical": "Danil Aduyev"
     },
     {
-      "alias": "Bereszynski",
+      "alias": "Bartosz Bereszynski",
       "canonical": "Bartosz Bereszynski"
     },
     {
-      "alias": "Circati",
+      "alias": "Alessandro Circati",
       "canonical": "Alessandro Circati"
     },
     {
-      "alias": "Bernabe",
+      "alias": "Adrian Bernabe",
       "canonical": "Adrian Bernabe"
     },
     {
-      "alias": "Lovik",
+      "alias": "Mathias Lovik",
       "canonical": "Mathias Lovik"
     },
     {
-      "alias": "Cutrone",
+      "alias": "Patrick Cutrone",
       "canonical": "Patrick Cutrone"
     },
     {
-      "alias": "Retegui",
+      "alias": "Mateo Retegui",
       "canonical": "Mateo Retegui"
     },
     {
-      "alias": "Pasalic",
+      "alias": "Mario Pasalic",
       "canonical": "Mario Pasalic"
     },
     {
-      "alias": "Ilicic",
+      "alias": "Josip Ilicic",
       "canonical": "Josip Ilicic"
     },
     {
-      "alias": "Neres",
+      "alias": "David Neres",
       "canonical": "David Neres"
     }
   ],
@@ -575830,25 +575818,25 @@
   "aliasesNormalizedV735": [
     {
       "field": "playerName",
-      "from": "Pasalic",
+      "from": "Mario Pasalic",
       "to": "Mario Pasalic",
       "team": "Atalanta"
     },
     {
       "field": "playerName",
-      "from": "Cutrone",
+      "from": "Patrick Cutrone",
       "to": "Patrick Cutrone",
       "team": "Monza"
     },
     {
       "field": "playerName",
-      "from": "Neres",
+      "from": "David Neres",
       "to": "David Neres",
       "team": "Napoli"
     },
     {
       "field": "playerName",
-      "from": "Circati",
+      "from": "Alessandro Circati",
       "to": "Alessandro Circati",
       "team": "Parma"
     }
@@ -575873,52 +575861,52 @@
   ],
   "confirmedAliasesV736": [
     {
-      "variant": "Calvani",
+      "variant": "Gabriele Calvani",
       "canonical": "Gabriele Calvani",
       "confirmedByUser": true
     },
     {
-      "variant": "Fini",
+      "variant": "Seydou Fini",
       "canonical": "Seydou Fini",
       "confirmedByUser": true
     },
     {
-      "variant": "Isaksen",
+      "variant": "Gustav Isaksen",
       "canonical": "Gustav Isaksen",
       "confirmedByUser": true
     },
     {
-      "variant": "Oristanio",
+      "variant": "Gaetano Oristanio",
       "canonical": "Gaetano Oristanio",
       "confirmedByUser": true
     },
     {
-      "variant": "Sottil",
+      "variant": "Riccardo Sottil",
       "canonical": "Riccardo Sottil",
       "confirmedByUser": true
     },
     {
-      "variant": "Trabucchi",
+      "variant": "Nicolas Trabucchi",
       "canonical": "Nicolas Trabucchi",
       "confirmedByUser": true
     },
     {
-      "variant": "Coulibaly",
+      "variant": "Coulibaly W.",
       "canonical": "Coulibaly W.",
       "confirmedByUser": true
     },
     {
-      "variant": "Giovane",
+      "variant": "Giovane (Napoli)",
       "canonical": "Giovane (Napoli)",
       "confirmedByUser": true
     },
     {
-      "variant": "Pessina",
+      "variant": "Pessina Mas.",
       "canonical": "Pessina Mas.",
       "confirmedByUser": true
     },
     {
-      "variant": "Chukwueze",
+      "variant": "Samuel Chukwueze",
       "canonical": "Samuel Chukwueze",
       "confirmedByUser": true
     }
@@ -575949,7 +575937,7 @@
       "status": "Da confermare"
     },
     {
-      "variantA": "Liberali",
+      "variantA": "Mattia Liberali",
       "variantB": "Mattia Liberali",
       "note": "Milan/Como - cognome vs nome completo",
       "status": "Da confermare"
@@ -575961,7 +575949,7 @@
       "status": "Da confermare"
     },
     {
-      "variantA": "Saelemaekers",
+      "variantA": "Alexis Saelemaekers",
       "variantB": "Alexis Saelemaekers / Samuel Chukwueze",
       "note": "Milan - riga giocatore vs riga aggregata da verificare",
       "status": "Da confermare"
@@ -576040,13 +576028,13 @@
   ],
   "confirmedAliasesV737": [
     {
-      "variant": "Liberali",
+      "variant": "Mattia Liberali",
       "canonical": "Mattia Liberali",
       "note": "solo contesto Milan/Como o riga extra listone; NON fondere Samuele Liberali",
       "confirmedByUser": true
     },
     {
-      "variant": "Saelemaekers",
+      "variant": "Alexis Saelemaekers",
       "canonical": "Alexis Saelemaekers",
       "note": "Chukwueze resta Samuel Chukwueze, giocatore separato",
       "confirmedByUser": true
@@ -576064,7 +576052,7 @@
       "decision": "NON duplicato: Tourè I. distinto da El Bilal Touré"
     },
     {
-      "variantA": "Saelemaekers",
+      "variantA": "Alexis Saelemaekers",
       "variantB": "Samuel Chukwueze",
       "decision": "NON duplicato: ballottaggio/voce aggregata, Chukwueze separato"
     }
@@ -576484,127 +576472,127 @@
   ],
   "confirmedAliasesV742": [
     {
-      "alias": "Pellegrino",
+      "alias": "Mateo Pellegrino",
       "canonical": "Mateo Pellegrino",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Musah",
+      "alias": "Yunus Musah",
       "canonical": "Yunus Musah",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Ekhator",
+      "alias": "Jeff Ekhator",
       "canonical": "Jeff Ekhator",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Pugno",
+      "alias": "Diego Pugno",
       "canonical": "Diego Pugno",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Summerville",
+      "alias": "Crysencio Summerville",
       "canonical": "Crysencio Summerville",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Ure",
+      "alias": "Robbie Ure",
       "canonical": "Robbie Ure",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Ricci",
+      "alias": "Samuele Ricci",
       "canonical": "Samuele Ricci",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Gatti",
+      "alias": "Federico Gatti",
       "canonical": "Federico Gatti",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Conceicao",
+      "alias": "Francisco Conceição",
       "canonical": "Francisco Conceição",
       "team": "",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "K. Thuram",
+      "alias": "Khephren Thuram",
       "canonical": "Khephren Thuram",
       "team": "juventus",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Abdulhamid",
+      "alias": "Saud Abdulhamid",
       "canonical": "Saud Abdulhamid",
       "team": "roma",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Ahanor",
+      "alias": "Honest Ahanor",
       "canonical": "Honest Ahanor",
       "team": "atalanta",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Bellanova",
+      "alias": "Raoul Bellanova",
       "canonical": "Raoul Bellanova",
       "team": "atalanta",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Beltran",
+      "alias": "Lucas Beltran",
       "canonical": "Lucas Beltran",
       "team": "fiorentina",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Bernasconi",
+      "alias": "Lorenzo Bernasconi",
       "canonical": "Lorenzo Bernasconi",
       "team": "atalanta",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Bravo",
+      "alias": "Iker Bravo",
       "canonical": "Iker Bravo",
       "team": "udinese",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Broja",
+      "alias": "Armando Broja",
       "canonical": "Armando Broja",
       "team": "cagliari",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Calabria",
+      "alias": "Davide Calabria",
       "canonical": "Davide Calabria",
       "team": "cagliari",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Cannavo",
+      "alias": "Kevin Cannavò",
       "canonical": "Kevin Cannavò",
       "team": "venezia",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Capolupo",
+      "alias": "Samuele Capolupo",
       "canonical": "Samuele Capolupo",
       "team": "monza",
       "note": "Duplicato confermato utente V742"
     },
     {
-      "alias": "Conceição",
+      "alias": "Francisco Conceição",
       "canonical": "Francisco Conceição",
       "team": "",
       "note": "variante accento"
@@ -576730,52 +576718,52 @@
   "duplicatePairCandidatesV742": [
     {
       "a": "Mateo Pellegrino",
-      "b": "Pellegrino",
+      "b": "Mateo Pellegrino",
       "note": "Parma/Juventus - nome completo vs cognome breve"
     },
     {
       "a": "Yunus Musah",
-      "b": "Musah",
+      "b": "Yunus Musah",
       "note": "Milan/Lazio - nome completo vs cognome breve"
     },
     {
       "a": "Jeff Ekhator",
-      "b": "Ekhator",
+      "b": "Jeff Ekhator",
       "note": "Juventus/Parma - nome completo vs cognome breve"
     },
     {
       "a": "Diego Pugno",
-      "b": "Pugno",
+      "b": "Diego Pugno",
       "note": "Juventus/Ajax - nome completo vs cognome breve"
     },
     {
       "a": "Crysencio Summerville",
-      "b": "Summerville",
+      "b": "Crysencio Summerville",
       "note": "Roma - nome completo vs cognome breve"
     },
     {
       "a": "Robbie Ure",
-      "b": "Ure",
+      "b": "Robbie Ure",
       "note": "Genoa - nome completo vs cognome breve"
     },
     {
       "a": "Samuele Ricci",
-      "b": "Ricci",
+      "b": "Samuele Ricci",
       "note": "Milan/Atalanta - nome completo vs cognome breve"
     },
     {
       "a": "Federico Gatti",
-      "b": "Gatti",
+      "b": "Federico Gatti",
       "note": "Juventus - nome completo vs cognome breve"
     },
     {
       "a": "Francisco Conceição",
-      "b": "Conceicao",
+      "b": "Francisco Conceição",
       "note": "Juventus - accento/nome completo"
     },
     {
       "a": "Khephren Thuram",
-      "b": "K. Thuram",
+      "b": "Khephren Thuram",
       "note": "Juventus - iniziale/nome completo"
     }
   ],
@@ -577292,28 +577280,28 @@
   ],
   "duplicatePairCandidatesV743": [
     {
-      "a": "Cittadini",
+      "a": "Giorgio Cittadini",
       "b": "Giorgio Cittadini",
       "note": "Atalanta/Frosinone - cognome breve vs nome completo"
     },
     {
-      "a": "Maldini",
+      "a": "Daniel Maldini",
       "b": "Daniel Maldini",
       "note": "Atalanta/Lazio - cognome breve vs nome completo"
     },
     {
-      "a": "Dominguez",
-      "b": "Dominguez B.",
+      "a": "Benjamin Dominguez",
+      "b": "Benjamin Dominguez",
       "note": "Bologna - cognome breve vs iniziale"
     },
     {
-      "a": "Lu. Pellegrini",
-      "b": "Pellegrini Lu.",
+      "a": "Luca Pellegrini",
+      "b": "Luca Pellegrini",
       "note": "Lazio - iniziale/cognome invertiti"
     },
     {
-      "a": "Fofana Sa.",
-      "b": "S. Fofana",
+      "a": "Sadik Fofana",
+      "b": "Sadik Fofana",
       "note": "Lecce - iniziale/cognome invertiti"
     },
     {
@@ -577340,6 +577328,678 @@
       "a": "K. Perez",
       "b": "M. Perez",
       "note": "Venezia/Lecce - stesso cognome, iniziali diverse"
+    }
+  ],
+  "confirmedAliasesV744": [
+    {
+      "alias": "Cittadini",
+      "canonical": "Giorgio Cittadini",
+      "note": "Confermato utente V744: Cittadini = Giorgio Cittadini."
+    },
+    {
+      "alias": "Maldini",
+      "canonical": "Daniel Maldini",
+      "note": "Confermato utente V744: Maldini = Daniel Maldini."
+    },
+    {
+      "alias": "Dominguez",
+      "canonical": "Benjamin Dominguez",
+      "note": "Confermato utente V744: Dominguez/Dominguez B. = Benjamin Dominguez."
+    },
+    {
+      "alias": "Dominguez B.",
+      "canonical": "Benjamin Dominguez",
+      "note": "Confermato utente V744: Dominguez/Dominguez B. = Benjamin Dominguez."
+    },
+    {
+      "alias": "Lu. Pellegrini",
+      "canonical": "Luca Pellegrini",
+      "note": "Confermato utente V744: Lu. Pellegrini/Pellegrini Lu. = Luca Pellegrini."
+    },
+    {
+      "alias": "Pellegrini Lu.",
+      "canonical": "Luca Pellegrini",
+      "note": "Confermato utente V744: Lu. Pellegrini/Pellegrini Lu. = Luca Pellegrini."
+    },
+    {
+      "alias": "Fofana Sa.",
+      "canonical": "Sadik Fofana",
+      "note": "Confermato utente V744: Fofana Sa./S. Fofana = Sadik Fofana."
+    },
+    {
+      "alias": "S. Fofana",
+      "canonical": "Sadik Fofana",
+      "note": "Confermato utente V744: Fofana Sa./S. Fofana = Sadik Fofana."
+    }
+  ],
+  "disambiguationsV744": [
+    {
+      "playerA": "Juan Miranda",
+      "playerB": "Kevin Miranda",
+      "decision": "non duplicato/protetto",
+      "note": "Miranda del Bologna = Juan; Miranda del Sassuolo = Kevin. Nessun alias generico Miranda."
+    },
+    {
+      "playerA": "Nikola Moro",
+      "playerB": "Luca Moro",
+      "decision": "non duplicato/protetto",
+      "note": "Moro del Bologna = Nikola; Moro del Sassuolo = Luca. Nessun alias generico Moro."
+    },
+    {
+      "playerA": "Ismaël Konè",
+      "playerB": "Manu Konè",
+      "decision": "non duplicato/protetto",
+      "note": "Konè del Sassuolo = Ismaël; Konè della Roma = Manu; non fondere globalmente."
+    },
+    {
+      "playerA": "Ismaël Konè",
+      "playerB": "Ben Lhassine Kone",
+      "decision": "non duplicato/protetto",
+      "note": "Konè del Sassuolo = Ismaël; Konè del Frosinone = Ben Lhassine; non fondere globalmente."
+    },
+    {
+      "playerA": "Manu Konè",
+      "playerB": "Ben Lhassine Kone",
+      "decision": "non duplicato/protetto",
+      "note": "Konè della Roma = Manu; Konè del Frosinone = Ben Lhassine; non fondere globalmente."
+    },
+    {
+      "playerA": "Johan Vasquez",
+      "playerB": "Franco Vazquez",
+      "decision": "non duplicato/protetto",
+      "note": "Vasquez del Genoa = Johan; Vazquez della Cremonese = Franco."
+    },
+    {
+      "playerA": "Johan Vasquez",
+      "playerB": "Devis Vasquez",
+      "decision": "non duplicato/protetto",
+      "note": "Vasquez del Genoa = Johan; Vasquez della Roma = Devis."
+    },
+    {
+      "playerA": "Franco Vazquez",
+      "playerB": "Devis Vasquez",
+      "decision": "non duplicato/protetto",
+      "note": "Vazquez della Cremonese = Franco; Vasquez della Roma = Devis."
+    },
+    {
+      "playerA": "Matias Perez",
+      "playerB": "Kike Perez",
+      "decision": "non duplicato/protetto",
+      "note": "Perez del Lecce = Matias; Perez del Venezia = Kike."
+    }
+  ],
+  "duplicateNameCandidatesV744": [
+    {
+      "variantA": "P. Terracciano",
+      "variantB": "F. Terracciano",
+      "where": "Milan",
+      "note": "stesso cognome, iniziali diverse; non fusi"
+    },
+    {
+      "variantA": "Mattia Liberali",
+      "variantB": "Samuele Liberali",
+      "where": "Como/Milan/Sassuolo",
+      "note": "stesso cognome; Samuele sembra profilo diverso, da confermare"
+    },
+    {
+      "variantA": "N. Paz",
+      "variantB": "Y. Paz",
+      "where": "Como/Sassuolo",
+      "note": "stesso cognome con iniziali diverse; non fusi"
+    },
+    {
+      "variantA": "D. Berardi",
+      "variantB": "L. Berardi",
+      "where": "Sassuolo/Venezia",
+      "note": "stesso cognome con iniziali diverse; non fusi"
+    },
+    {
+      "variantA": "R. Vaz",
+      "variantB": "Marcelo Vaz",
+      "where": "Roma/Genoa",
+      "note": "cognome breve vs nome+cognome; non fusi"
+    }
+  ],
+  "confirmedAliasesV744_allApplied": [
+    {
+      "alias": "Aduyev",
+      "canonical": "Danil Aduyev",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Bereszynski",
+      "canonical": "Bartosz Bereszynski",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Circati",
+      "canonical": "Alessandro Circati",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Bernabe",
+      "canonical": "Adrian Bernabe",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Lovik",
+      "canonical": "Mathias Lovik",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Cutrone",
+      "canonical": "Patrick Cutrone",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Retegui",
+      "canonical": "Mateo Retegui",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Pasalic",
+      "canonical": "Mario Pasalic",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Ilicic",
+      "canonical": "Josip Ilicic",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Neres",
+      "canonical": "David Neres",
+      "context": "",
+      "note": "Duplicati_Confermati_V735"
+    },
+    {
+      "alias": "Calvani",
+      "canonical": "Gabriele Calvani",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Fini",
+      "canonical": "Seydou Fini",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Isaksen",
+      "canonical": "Gustav Isaksen",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Oristanio",
+      "canonical": "Gaetano Oristanio",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Sottil",
+      "canonical": "Riccardo Sottil",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Trabucchi",
+      "canonical": "Nicolas Trabucchi",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Coulibaly",
+      "canonical": "Coulibaly W.",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Giovane",
+      "canonical": "Giovane (Napoli)",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Pessina",
+      "canonical": "Pessina Mas.",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Chukwueze",
+      "canonical": "Samuel Chukwueze",
+      "context": "",
+      "note": "Confermato dall’utente nel turno V736; alias consolidato."
+    },
+    {
+      "alias": "Liberali",
+      "canonical": "Mattia Liberali",
+      "context": "",
+      "note": "Confermato dall utente nel turno V737; solo contesto Milan/Como o riga extra listone; NON fondere Samuele Liberali"
+    },
+    {
+      "alias": "Saelemaekers",
+      "canonical": "Alexis Saelemaekers",
+      "context": "",
+      "note": "Confermato dall utente nel turno V737; Chukwueze resta Samuel Chukwueze, giocatore separato"
+    },
+    {
+      "alias": "Cuenca H.",
+      "canonical": "H. Cuenca",
+      "context": "Genoa",
+      "note": "Confermato utente V739: stessa persona; mantenuto nome disponibile in file."
+    },
+    {
+      "alias": "Rodriguez Je.",
+      "canonical": "Je. Rodriguez",
+      "context": "Como",
+      "note": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
+    },
+    {
+      "alias": "Rodriguez Ju.",
+      "canonical": "Ju. Rodriguez",
+      "context": "Cagliari",
+      "note": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
+    },
+    {
+      "alias": "Martinez Jo.",
+      "canonical": "J. Martinez",
+      "context": "Inter",
+      "note": "Confermato utente V739: stessa persona; iniziale/cognome compatibile."
+    },
+    {
+      "alias": "A. Buta",
+      "canonical": "Leonardo Daniel Ulineia Buta",
+      "context": "Udinese",
+      "note": "A. Buta probabilmente errore di una fonte; mantenere nome e cognome canonico."
+    },
+    {
+      "alias": "L. Buta",
+      "canonical": "Leonardo Daniel Ulineia Buta",
+      "context": "Udinese",
+      "note": "A. Buta probabilmente errore di una fonte; mantenere nome e cognome canonico."
+    },
+    {
+      "alias": "Baldanzi",
+      "canonical": "Tommaso Baldanzi",
+      "context": "Genoa",
+      "note": "Duplicato confermato utente V741: Baldanzi = Tommaso Baldanzi."
+    },
+    {
+      "alias": "Pulisic",
+      "canonical": "Christian Pulisic",
+      "context": "Milan",
+      "note": "Duplicato confermato utente V741: Pulisic = Christian Pulisic."
+    },
+    {
+      "alias": "Zaniolo",
+      "canonical": "Nicolò Zaniolo",
+      "context": "Udinese",
+      "note": "Duplicato confermato utente V741: Zaniolo = Nicolò Zaniolo."
+    },
+    {
+      "alias": "Bruno",
+      "canonical": "Bruno Galassi",
+      "context": "Lazio",
+      "note": "Duplicato confermato utente V741 solo in contesto Lazio: Bruno = Bruno Galassi."
+    },
+    {
+      "alias": "Pellegrino",
+      "canonical": "Mateo Pellegrino",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Musah",
+      "canonical": "Yunus Musah",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Ekhator",
+      "canonical": "Jeff Ekhator",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Pugno",
+      "canonical": "Diego Pugno",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Summerville",
+      "canonical": "Crysencio Summerville",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Ure",
+      "canonical": "Robbie Ure",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Ricci",
+      "canonical": "Samuele Ricci",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Gatti",
+      "canonical": "Federico Gatti",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Conceicao",
+      "canonical": "Francisco Conceição",
+      "context": "contesto coerente",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "K. Thuram",
+      "canonical": "Khephren Thuram",
+      "context": "juventus",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Abdulhamid",
+      "canonical": "Saud Abdulhamid",
+      "context": "roma",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Ahanor",
+      "canonical": "Honest Ahanor",
+      "context": "atalanta",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Bellanova",
+      "canonical": "Raoul Bellanova",
+      "context": "atalanta",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Beltran",
+      "canonical": "Lucas Beltran",
+      "context": "fiorentina",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Bernasconi",
+      "canonical": "Lorenzo Bernasconi",
+      "context": "atalanta",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Bravo",
+      "canonical": "Iker Bravo",
+      "context": "udinese",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Broja",
+      "canonical": "Armando Broja",
+      "context": "cagliari",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Calabria",
+      "canonical": "Davide Calabria",
+      "context": "cagliari",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Cannavo",
+      "canonical": "Kevin Cannavò",
+      "context": "venezia",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Capolupo",
+      "canonical": "Samuele Capolupo",
+      "context": "monza",
+      "note": "Duplicato confermato utente V742"
+    },
+    {
+      "alias": "Conceição",
+      "canonical": "Francisco Conceição",
+      "context": "contesto coerente",
+      "note": "variante accento"
+    },
+    {
+      "alias": "Kevin Cannavo",
+      "canonical": "Kevin Cannavò",
+      "context": "venezia",
+      "note": "variante accento"
+    },
+    {
+      "alias": "Pellegrino",
+      "canonical": "Mateo Pellegrino",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Musah",
+      "canonical": "Yunus Musah",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Ekhator",
+      "canonical": "Jeff Ekhator",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Pugno",
+      "canonical": "Diego Pugno",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Summerville",
+      "canonical": "Crysencio Summerville",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Ure",
+      "canonical": "Robbie Ure",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Ricci",
+      "canonical": "Samuele Ricci",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Gatti",
+      "canonical": "Federico Gatti",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Conceicao",
+      "canonical": "Francisco Conceição",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "K. Thuram",
+      "canonical": "Khephren Thuram",
+      "context": "",
+      "note": "Confermato utente pre-V742"
+    },
+    {
+      "alias": "Abdulhamid",
+      "canonical": "Saud Abdulhamid",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Ahanor",
+      "canonical": "Honest Ahanor",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Bellanova",
+      "canonical": "Raoul Bellanova",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Beltran",
+      "canonical": "Lucas Beltran",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Bernasconi",
+      "canonical": "Lorenzo Bernasconi",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Bravo",
+      "canonical": "Iker Bravo",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Broja",
+      "canonical": "Armando Broja",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Calabria",
+      "canonical": "Davide Calabria",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Cannavo",
+      "canonical": "Kevin Cannavò",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Capolupo",
+      "canonical": "Samuele Capolupo",
+      "context": "",
+      "note": "Confermato utente V742"
+    },
+    {
+      "alias": "Cittadini",
+      "canonical": "Giorgio Cittadini",
+      "context": "",
+      "note": "Confermato utente V744: Cittadini = Giorgio Cittadini."
+    },
+    {
+      "alias": "Maldini",
+      "canonical": "Daniel Maldini",
+      "context": "",
+      "note": "Confermato utente V744: Maldini = Daniel Maldini."
+    },
+    {
+      "alias": "Dominguez",
+      "canonical": "Benjamin Dominguez",
+      "context": "",
+      "note": "Confermato utente V744: Dominguez/Dominguez B. = Benjamin Dominguez."
+    },
+    {
+      "alias": "Dominguez B.",
+      "canonical": "Benjamin Dominguez",
+      "context": "",
+      "note": "Confermato utente V744: Dominguez/Dominguez B. = Benjamin Dominguez."
+    },
+    {
+      "alias": "Lu. Pellegrini",
+      "canonical": "Luca Pellegrini",
+      "context": "",
+      "note": "Confermato utente V744: Lu. Pellegrini/Pellegrini Lu. = Luca Pellegrini."
+    },
+    {
+      "alias": "Pellegrini Lu.",
+      "canonical": "Luca Pellegrini",
+      "context": "",
+      "note": "Confermato utente V744: Lu. Pellegrini/Pellegrini Lu. = Luca Pellegrini."
+    },
+    {
+      "alias": "Fofana Sa.",
+      "canonical": "Sadik Fofana",
+      "context": "",
+      "note": "Confermato utente V744: Fofana Sa./S. Fofana = Sadik Fofana."
+    },
+    {
+      "alias": "S. Fofana",
+      "canonical": "Sadik Fofana",
+      "context": "",
+      "note": "Confermato utente V744: Fofana Sa./S. Fofana = Sadik Fofana."
+    },
+    {
+      "alias": "Cittadini",
+      "canonical": "Giorgio Cittadini",
+      "context": "",
+      "note": "V744 current"
+    },
+    {
+      "alias": "Maldini",
+      "canonical": "Daniel Maldini",
+      "context": "",
+      "note": "V744 current"
+    },
+    {
+      "alias": "Dominguez",
+      "canonical": "Benjamin Dominguez",
+      "context": "Bologna",
+      "note": "V744 current"
+    },
+    {
+      "alias": "Dominguez B.",
+      "canonical": "Benjamin Dominguez",
+      "context": "Bologna",
+      "note": "V744 current"
+    },
+    {
+      "alias": "Lu. Pellegrini",
+      "canonical": "Luca Pellegrini",
+      "context": "Lazio",
+      "note": "V744 current"
+    },
+    {
+      "alias": "Pellegrini Lu.",
+      "canonical": "Luca Pellegrini",
+      "context": "Lazio",
+      "note": "V744 current"
+    },
+    {
+      "alias": "Fofana Sa.",
+      "canonical": "Sadik Fofana",
+      "context": "Lecce",
+      "note": "V744 current"
+    },
+    {
+      "alias": "S. Fofana",
+      "canonical": "Sadik Fofana",
+      "context": "Lecce",
+      "note": "V744 current"
     }
   ]
 }

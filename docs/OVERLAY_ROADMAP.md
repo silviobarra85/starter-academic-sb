@@ -11,3 +11,7 @@
 ## V743 - 20/07/2026 16:11 CEST
 - Integrato Excel V118 fuso come base corrente.
 - Nessuna nuova fonte rispetto a V742; aggiornati metadata, handoff e candidati duplicati.
+
+
+## V744 - 20/07/2026 17:05 CEST
+- Excel V120 integrato; dedupliche e disambiguazioni utente; handoff AI aggiornato.
