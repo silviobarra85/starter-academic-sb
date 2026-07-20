@@ -1,0 +1,15 @@
+{
+  "teams": 20,
+  "players": 1050,
+  "officialMoves": 390,
+  "teamTransferTalks": 331,
+  "transfermarktRumors": 54,
+  "injuries": 28,
+  "friendlies": 150,
+  "friendlyMatchDetails": 14,
+  "friendlyPlayerStats": 294,
+  "sources": 765,
+  "duplicatesExact": 0,
+  "duplicateIds": 0,
+  "activeOfficialRumors": 0
+}
