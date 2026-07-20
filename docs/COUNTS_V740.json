@@ -1,0 +1,19 @@
+{
+  "version": "V740",
+  "generatedAt": "2026-07-20T10:36:00+02:00",
+  "sourceFile": "v113_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
+  "players": 1052,
+  "officialMoves": 389,
+  "teamTransferTalks": 337,
+  "transfermarktRumors": 54,
+  "injuries": 28,
+  "friendlies": 150,
+  "friendlyMatchDetails": 14,
+  "friendlyPlayerStats": 294,
+  "sources": 762,
+  "duplicatesExact": 0,
+  "duplicateIds": 0,
+  "activeOfficialRumors": 0,
+  "aliasRows": 1053,
+  "playerIdChanges": 36
+}
