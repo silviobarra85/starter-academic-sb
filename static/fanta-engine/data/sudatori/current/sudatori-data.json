@@ -15,7 +15,7 @@
     "rossi": {
       "teamId": "atalanta",
       "teamName": "Atalanta",
-      "playerName": "Rossi",
+      "playerName": "Francesco Rossi",
       "role": "P",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -111,7 +111,7 @@
     "bonfanti": {
       "teamId": "atalanta",
       "teamName": "Atalanta",
-      "playerName": "Bonfanti",
+      "playerName": "Giovanni Bonfanti",
       "role": "D",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -2981,7 +2981,7 @@
     "g rossi": {
       "teamId": "genoa",
       "teamName": "Genoa",
-      "playerName": "G. Rossi",
+      "playerName": "Gianluca Rossi",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -3089,7 +3089,7 @@
     "lo colombo": {
       "teamId": "genoa",
       "teamName": "Genoa",
-      "playerName": "Lo. Colombo",
+      "playerName": "Lorenzo Colombo",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -5454,7 +5454,7 @@
     "le colombo": {
       "teamId": "monza",
       "teamName": "Monza",
-      "playerName": "Le. Colombo",
+      "playerName": "Leonardo Colombo",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -5900,7 +5900,7 @@
     "russo": {
       "teamId": "napoli",
       "teamName": "Napoli",
-      "playerName": "Russo",
+      "playerName": "Lorenzo Russo",
       "role": "C",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -6957,7 +6957,7 @@
     "a russo": {
       "teamId": "sassuolo",
       "teamName": "Sassuolo",
-      "playerName": "A. Russo",
+      "playerName": "Alessandro Russo",
       "role": "P",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -7390,7 +7390,7 @@
     "f russo": {
       "teamId": "sassuolo",
       "teamName": "Sassuolo",
-      "playerName": "F. Russo",
+      "playerName": "Flavio Russo",
       "role": "A",
       "inCurrentRoster": "SI",
       "status": "In rosa",
@@ -9629,15 +9629,6 @@
         "note": ""
       }
     ],
-    "Christ Inao Oulai": {
-      "playerName": "Christ Inao Oulai",
-      "canonicalName": "Christ Inao Oulai",
-      "team": "Fiorentina",
-      "status": "Trattativa avanzata / non ufficiale",
-      "detail": "v69 Sky/SportMediaset: visite/firma attese; manca comunicato Fiorentina/deposito, quindi Rose invariata.",
-      "url": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-      "updatedAt": "2026-07-18"
-    },
     "arthur atta": {
       "teamId": "fiorentina",
       "teamName": "Fiorentina",
@@ -11904,6 +11895,16 @@
       "source": "https://www.atalanta.it/news/u23-candas-fiogbe-all-athens-kallithea",
       "updatedAt": "2026-07-18",
       "note": ""
+    },
+    "Christ Ravynel Inao Oulai": {
+      "playerName": "Christ Ravynel Inao Oulai",
+      "canonicalName": "Christ Ravynel Inao Oulai",
+      "teamName": "Fiorentina",
+      "status": "Acquisto ufficiale",
+      "updatedAt": "2026-07-19",
+      "note": "Ufficiale Fiorentina a titolo definitivo dal Trabzonspor; rumor chiusi in V739.",
+      "source": "ACF Fiorentina sito ufficiale",
+      "url": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262"
     }
   },
   "teamUpdates": [
@@ -411376,31 +411377,31 @@
     "display": "solo partite effettive con almeno una squadra Serie A"
   },
   "meta": {
-    "id": "sudatori-iosudo-v738",
-    "version": "V738",
+    "id": "sudatori-iosudo-v739",
+    "version": "V739",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-20",
-    "updatedAtTime": "2026-07-20T09:00:00+02:00",
-    "generatedAt": "2026-07-20T09:00:00+02:00",
-    "sourceFile": "v109_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
-    "dedupVersion": "V738",
-    "notes": "V738 da Excel V109: nessuna delle 10 coppie V737 fusa, aggiunti tabellini Genoa, Lecce, Venezia, Fiorentina; De Gea rientrato e Baldanzi SOS prudenziale.",
+    "updatedAtTime": "2026-07-20T07:20:00+02:00",
+    "generatedAt": "2026-07-20T07:20:00+02:00",
+    "sourceFile": "v111_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
+    "dedupVersion": "V739",
+    "notes": "V739 da Excel V111: Oulai ufficiale alla Fiorentina, prime 4 coppie V738 confermate e consolidate, Russo/Arena/Bonfanti/Rossi/Colombo disambiguati; header ora usa timestamp reale 07:20 CEST.",
     "teams": 20,
-    "players": 1056,
+    "players": 1053,
     "friendlies": 123,
-    "teamTransferTalks": 452,
+    "teamTransferTalks": 450,
     "injuries": 29,
-    "officialMoves": 386,
-    "sources": 760,
+    "officialMoves": 387,
+    "sources": 761,
     "officialTalksFiltered": 168,
     "activeOfficialRumors": 0,
     "friendlyMatchDetails": 14,
     "friendlyPlayerStats": 294,
     "duplicatesExact": 0,
     "duplicateIds": 0,
-    "buildTag": "iosudo-v738-excel-v109-friendlies-genoa-lecce-venezia-fiorentina-disambiguazioni-v737",
-    "versionNumber": 737,
-    "baseVersion": "V736",
+    "buildTag": "iosudo-v739-excel-v111-oulai-ufficiale-duplicati-v738-header-time-fix",
+    "versionNumber": 739,
+    "baseVersion": "V738",
     "transfermarktRumors": 32,
     "duplicateExactPlayers": 0,
     "duplicatePlayerIds": 0,
@@ -411504,8 +411505,8 @@
     "injuriesClosedV733": 1,
     "playersAddedV733": 2,
     "fullNamePolicyV733": true,
-    "overlayGeneratedAt": "2026-07-20T09:00:00+02:00",
-    "overlayGeneratedAtLabel": "20/07/2026 09:00 CEST",
+    "overlayGeneratedAt": "2026-07-20T07:20:00+02:00",
+    "overlayGeneratedAtLabel": "20/07/2026 07:20 CEST",
     "confirmedAliasesV734": [
       {
         "alias": "Okolo",
@@ -411698,7 +411699,205 @@
     "protectedDisambiguationsV737": 3,
     "duplicatePairCandidatesV737": 10,
     "fullNamePolicyV737": true,
-    "excelRoseRowsV737": 1063
+    "excelRoseRowsV737": 1063,
+    "confirmedAliasesV739": [
+      {
+        "team": "Genoa",
+        "alias": "Cuenca H.",
+        "canonical": "H. Cuenca",
+        "note": "Confermato utente V739: stessa persona; mantenuto nome disponibile in file."
+      },
+      {
+        "team": "Como",
+        "alias": "Rodriguez Je.",
+        "canonical": "Je. Rodriguez",
+        "note": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
+      },
+      {
+        "team": "Cagliari",
+        "alias": "Rodriguez Ju.",
+        "canonical": "Ju. Rodriguez",
+        "note": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
+      },
+      {
+        "team": "Inter",
+        "alias": "Martinez Jo.",
+        "canonical": "J. Martinez",
+        "note": "Confermato utente V739: stessa persona; iniziale/cognome compatibile."
+      }
+    ],
+    "teamSpecificFullNamesV739": [
+      {
+        "team": "Napoli",
+        "alias": "Russo",
+        "canonical": "Lorenzo Russo",
+        "note": "Disambiguazione utente V739: Russo del Napoli = Lorenzo Russo."
+      },
+      {
+        "team": "Sassuolo",
+        "alias": "A. Russo",
+        "canonical": "Alessandro Russo",
+        "note": "Disambiguazione utente V739: Sassuolo ha Alessandro Russo portiere."
+      },
+      {
+        "team": "Sassuolo",
+        "alias": "F. Russo",
+        "canonical": "Flavio Russo",
+        "note": "Disambiguazione utente V739: Sassuolo ha Flavio Russo attaccante."
+      },
+      {
+        "team": "Pisa",
+        "alias": "Arena",
+        "canonical": "Alessandro Arena",
+        "note": "Disambiguazione utente V739: Arena del Pisa = Alessandro Arena."
+      },
+      {
+        "team": "Roma",
+        "alias": "Arena A.",
+        "canonical": "Andrea Arena",
+        "note": "Disambiguazione utente V739: Arena della Roma = Andrea Arena."
+      },
+      {
+        "team": "Pisa",
+        "alias": "Bonfanti N.",
+        "canonical": "Nicholas Bonfanti",
+        "note": "Disambiguazione utente V739: Bonfanti del Pisa = Nicholas."
+      },
+      {
+        "team": "Atalanta",
+        "alias": "Bonfanti",
+        "canonical": "Giovanni Bonfanti",
+        "note": "Disambiguazione utente V739: Bonfanti dell Atalanta = Giovanni."
+      },
+      {
+        "team": "Genoa",
+        "alias": "G. Rossi",
+        "canonical": "Gianluca Rossi",
+        "note": "Disambiguazione utente V739: Rossi del Genoa = Gianluca."
+      },
+      {
+        "team": "Atalanta",
+        "alias": "Rossi",
+        "canonical": "Francesco Rossi",
+        "note": "Disambiguazione utente V739: Rossi dell Atalanta = Francesco."
+      },
+      {
+        "team": "Monza",
+        "alias": "Le. Colombo",
+        "canonical": "Leonardo Colombo",
+        "note": "Disambiguazione utente V739: Colombo del Monza = Leonardo."
+      },
+      {
+        "team": "Genoa",
+        "alias": "Lo. Colombo",
+        "canonical": "Lorenzo Colombo",
+        "note": "Disambiguazione utente V739: Colombo del Genoa = Lorenzo."
+      }
+    ],
+    "protectedDisambiguationsV739": [
+      {
+        "variantA": "Lorenzo Russo",
+        "variantB": "Alessandro Russo / Flavio Russo",
+        "decision": "NON_DUPLICATO",
+        "note": "Napoli e Sassuolo hanno giocatori Russo diversi."
+      },
+      {
+        "variantA": "Alessandro Arena",
+        "variantB": "Andrea Arena",
+        "decision": "NON_DUPLICATO",
+        "note": "Pisa/Roma distinti."
+      },
+      {
+        "variantA": "Nicholas Bonfanti",
+        "variantB": "Giovanni Bonfanti",
+        "decision": "NON_DUPLICATO",
+        "note": "Pisa/Atalanta distinti."
+      },
+      {
+        "variantA": "Gianluca Rossi",
+        "variantB": "Francesco Rossi",
+        "decision": "NON_DUPLICATO",
+        "note": "Genoa/Atalanta distinti."
+      },
+      {
+        "variantA": "Leonardo Colombo",
+        "variantB": "Lorenzo Colombo",
+        "decision": "NON_DUPLICATO",
+        "note": "Monza/Genoa distinti."
+      }
+    ],
+    "duplicatePairCandidatesV739": [
+      {
+        "variantA": "Antoine N’Diaye",
+        "variantB": "Ndiaye",
+        "where": "Bologna/Parma: nome completo vs cognome breve"
+      },
+      {
+        "variantA": "El Azzouzi",
+        "variantB": "Anouar El Azzouzi",
+        "where": "Bologna/Frosinone: cognome composto vs nome completo"
+      },
+      {
+        "variantA": "Lorenzo De Silvestri",
+        "variantB": "Silvestri",
+        "where": "Bologna/Cremonese-listone: cognome breve"
+      },
+      {
+        "variantA": "A. Buta",
+        "variantB": "L. Buta",
+        "where": "Udinese: stesso cognome, iniziali diverse da verificare"
+      },
+      {
+        "variantA": "A. Oyono",
+        "variantB": "J. Oyono",
+        "where": "Frosinone: stesso cognome, iniziali diverse da verificare"
+      },
+      {
+        "variantA": "Aleksandar Stankovic",
+        "variantB": "F. Stankovic",
+        "where": "Inter/Venezia: stesso cognome, possibile extra listone"
+      },
+      {
+        "variantA": "M. Ilic",
+        "variantB": "I. Ilic",
+        "where": "Bologna/Torino: stesso cognome, iniziali da verificare"
+      },
+      {
+        "variantA": "F. Gelli",
+        "variantB": "J. Gelli",
+        "where": "Frosinone: stesso cognome, iniziali diverse"
+      },
+      {
+        "variantA": "Hamed Junior Traore",
+        "variantB": "Omar Traore",
+        "where": "Genoa/Udinese: stesso cognome, da escludere o confermare"
+      },
+      {
+        "variantA": "Ismael Konaté",
+        "variantB": "Abdou-Salam Konate",
+        "where": "Juventus/Parma: cognome con/senza accento, da verificare"
+      }
+    ],
+    "officialMovesPatchedV739": [
+      "Christ Ravynel Inao Oulai"
+    ],
+    "playersPatchedV739": [
+      "Lorenzo Russo",
+      "Alessandro Russo",
+      "Flavio Russo",
+      "Alessandro Arena",
+      "Andrea Arena",
+      "Nicholas Bonfanti",
+      "Giovanni Bonfanti",
+      "Gianluca Rossi",
+      "Francesco Rossi",
+      "Leonardo Colombo",
+      "Lorenzo Colombo",
+      "Christ Ravynel Inao Oulai"
+    ],
+    "teamTransferTalksClosedV739": 2,
+    "headerOverlayTimestampV739": "2026-07-20T07:20:00+02:00",
+    "fullNamePolicyV739": "Nome e cognome usato quando disponibile fuori dagli XI; XI/Formazioni non forzati."
   },
   "teams": [
     {
@@ -411929,16 +412128,16 @@
         "formationNote": "XI ricalibrato su rosa attuale; Hien escluso per stop lungo, Krstovic resta in rosa Atalanta ma in ballottaggio con Scamacca."
       },
       {
-        "id": "atalanta-rossi",
+        "id": "atalanta-francesco-rossi",
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Rossi",
-        "target": "Rossi",
+        "playerName": "Francesco Rossi",
+        "target": "Francesco Rossi",
         "role": "P",
         "coach": "Maurizio Sarri",
         "module": "4-3-3",
         "rosterSource": "https://www.transfermarkt.it/atalanta-bergamo/startseite/verein/800/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Rossi dell Atalanta = Francesco.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -411964,13 +412163,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Rossi",
-        "disambiguatedName": "Rossi",
+        "disambiguatedName": "Francesco Rossi",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Rossi dell Atalanta = Francesco."
       },
       {
         "id": "atalanta-sportiello",
@@ -412281,16 +412481,16 @@
         "formationNote": ""
       },
       {
-        "id": "atalanta-bonfanti",
+        "id": "atalanta-giovanni-bonfanti",
         "teamId": "atalanta",
         "teamName": "Atalanta",
-        "playerName": "Bonfanti",
-        "target": "Bonfanti",
+        "playerName": "Giovanni Bonfanti",
+        "target": "Giovanni Bonfanti",
         "role": "D",
         "coach": "Maurizio Sarri",
         "module": "4-3-3",
         "rosterSource": "https://www.transfermarkt.it/atalanta-bergamo/startseite/verein/800/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Bonfanti dell Atalanta = Giovanni.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -412316,13 +412516,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Bonfanti",
-        "disambiguatedName": "Bonfanti",
+        "disambiguatedName": "Giovanni Bonfanti",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Bonfanti dell Atalanta = Giovanni."
       },
       {
         "id": "atalanta-ceresoli",
@@ -416958,7 +417159,7 @@
         "coach": "Fabio Pisacane",
         "module": "3-5-2 / 4-4-2",
         "rosterSource": "https://www.transfermarkt.it/cagliari-calcio/startseite/verein/1390/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Confermato utente V739: stessa persona; iniziale/cognome invertiti.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -416990,7 +417191,12 @@
         "_iosudoMarketRows": [],
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-cagliari",
         "formationReliability": "Media",
-        "formationNote": "Sulemana non presente nella rosa file; sostituito con esterno offensivo presente in rosa."
+        "formationNote": "Sulemana non presente nella rosa file; sostituito con esterno offensivo presente in rosa.",
+        "aliases": [
+          "Ju. Rodriguez",
+          "Rodriguez Ju."
+        ],
+        "aliasNote": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
       },
       {
         "id": "cagliari-mina",
@@ -418305,50 +418511,6 @@
         "formationCorrectionNote": "",
         "originalName": "Belotti",
         "disambiguatedName": "Belotti",
-        "newAcquisition": false,
-        "qualityControl": "",
-        "_iosudoMarketRows": [],
-        "formationSource": "",
-        "formationReliability": "",
-        "formationNote": ""
-      },
-      {
-        "id": "cagliari-rodriguez-ju",
-        "teamId": "cagliari",
-        "teamName": "Cagliari",
-        "playerName": "Rodriguez Ju.",
-        "target": "Rodriguez Ju.",
-        "role": "D",
-        "coach": "",
-        "module": "",
-        "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "updatedAt": "2026-07-18",
-        "flag": "EXTRA_LISTONE",
-        "marketStatus": "Extra listone/fantasy",
-        "marketDetail": "Profilo extra da listone/fantasy",
-        "marketSource": "Listone Fantacalcio 2026-07-04",
-        "marketNote": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "",
-        "injurySeverity": "",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "Rodriguez Ju.",
-        "disambiguatedName": "Rodriguez Ju.",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -420084,7 +420246,7 @@
         "coach": "Cesc Fabregas",
         "module": "4-2-3-1 / 4-3-3",
         "rosterSource": "https://www.transfermarkt.it/como-1907/startseite/verein/1047/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Confermato utente V739: stessa persona; iniziale/cognome invertiti.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -420116,7 +420278,12 @@
         "_iosudoMarketRows": [],
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-como",
         "formationReliability": "Media",
-        "formationNote": "Alberto Moreno risulta svincolato; Carlos non presente nella rosa file: sostituiti con profili presenti."
+        "formationNote": "Alberto Moreno risulta svincolato; Carlos non presente nella rosa file: sostituiti con profili presenti.",
+        "aliases": [
+          "Je. Rodriguez",
+          "Rodriguez Je."
+        ],
+        "aliasNote": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
       },
       {
         "id": "como-kuhn",
@@ -420463,50 +420630,6 @@
         "formationCorrectionNote": "",
         "originalName": "Baturina",
         "disambiguatedName": "Martin Baturina",
-        "newAcquisition": false,
-        "qualityControl": "",
-        "_iosudoMarketRows": [],
-        "formationSource": "",
-        "formationReliability": "",
-        "formationNote": ""
-      },
-      {
-        "id": "como-rodriguez-je",
-        "teamId": "como",
-        "teamName": "Como",
-        "playerName": "Rodriguez Je.",
-        "target": "Rodriguez Je.",
-        "role": "A",
-        "coach": "",
-        "module": "",
-        "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "updatedAt": "2026-07-18",
-        "flag": "EXTRA_LISTONE",
-        "marketStatus": "Extra listone/fantasy",
-        "marketDetail": "Profilo extra da listone/fantasy",
-        "marketSource": "Listone Fantacalcio 2026-07-04",
-        "marketNote": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "",
-        "injurySeverity": "",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "Rodriguez Je.",
-        "disambiguatedName": "Rodriguez Je.",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -423287,6 +423410,55 @@
         "formationSource": "",
         "formationReliability": "",
         "formationNote": ""
+      },
+      {
+        "id": "fiorentina-christ-ravynel-inao-oulai",
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "playerName": "Christ Ravynel Inao Oulai",
+        "target": "Christ Ravynel Inao Oulai",
+        "role": "C",
+        "coach": "Fabio Grosso",
+        "module": "4-3-3 / 4-3-2-1",
+        "rosterSource": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262",
+        "note": "Acquisto ufficiale Fiorentina v111/v739 dal Trabzonspor; aggiunto in Rose/ioSudo e chiusi i rumor collegati.",
+        "updatedAt": "2026-07-19",
+        "flag": "NUOVO_ACQUISTO_V739",
+        "marketStatus": "Acquisto ufficiale",
+        "marketDetail": "ACF Fiorentina comunica l acquisto a titolo definitivo dal Trabzonspor.",
+        "marketSource": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262",
+        "marketNote": "POST-UFFICIALITA v111; rumor chiusi.",
+        "probableXi": false,
+        "formationPosition": "",
+        "formationSourcePosition": "",
+        "formationLine": "",
+        "formationPhysicalStatus": "Disponibile / nessuna segnalazione ufficiale",
+        "physicalStatus": "Disponibile / nessuna segnalazione ufficiale",
+        "injuryStatus": "Disponibile / nessuna segnalazione ufficiale",
+        "injuryDetail": "",
+        "injurySeverity": "",
+        "injuryReturn": "",
+        "injurySource": "",
+        "injuryUpdatedAt": "",
+        "injuryNote": "",
+        "injuryImpact": "",
+        "formationCheck": "",
+        "formationRoleOk": "",
+        "formationModuleUsed": "",
+        "formationCorrectionNote": "",
+        "originalName": "Oulai",
+        "disambiguatedName": "Christ Ravynel Inao Oulai",
+        "aliases": [
+          "Oulai",
+          "Christ Inao Oulai",
+          "Christ Ravynel Inao Oulai"
+        ],
+        "newAcquisition": true,
+        "qualityControl": "UFFICIALE_CLUB_V739",
+        "_iosudoMarketRows": [],
+        "formationSource": "",
+        "formationReliability": "",
+        "formationNote": ""
       }
     ],
     "frosinone": [
@@ -425449,16 +425621,16 @@
         "formationNote": "XI Sky compatibilizzato con rosa attuale."
       },
       {
-        "id": "genoa-g-rossi",
+        "id": "genoa-gianluca-rossi",
         "teamId": "genoa",
         "teamName": "Genoa",
-        "playerName": "G. Rossi",
-        "target": "G. Rossi",
+        "playerName": "Gianluca Rossi",
+        "target": "Gianluca Rossi",
         "role": "C",
         "coach": "Daniele De Rossi",
         "module": "3-5-2 / 3-4-2-1",
         "rosterSource": "https://www.transfermarkt.it/genua-cfc/startseite/verein/252/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Rossi del Genoa = Gianluca.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -425484,13 +425656,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "G. Rossi",
-        "disambiguatedName": "G. Rossi",
+        "disambiguatedName": "Gianluca Rossi",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Rossi del Genoa = Gianluca."
       },
       {
         "id": "genoa-masini",
@@ -425850,11 +426023,11 @@
         "teamName": "Genoa",
         "playerName": "H. Cuenca",
         "target": "H. Cuenca",
-        "role": "A",
+        "role": "A/C",
         "coach": "Daniele De Rossi",
         "module": "3-5-2 / 3-4-2-1",
         "rosterSource": "https://www.transfermarkt.it/genua-cfc/startseite/verein/252/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Confermato utente V739: stessa persona; mantenuto nome disponibile in file.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "Mercato da verificare",
@@ -425886,19 +426059,24 @@
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliases": [
+          "Cuenca H.",
+          "H. Cuenca"
+        ],
+        "aliasNote": "Confermato utente V739: stessa persona; mantenuto nome disponibile in file."
       },
       {
-        "id": "genoa-lo-colombo",
+        "id": "genoa-lorenzo-colombo",
         "teamId": "genoa",
         "teamName": "Genoa",
-        "playerName": "Lo. Colombo",
-        "target": "Lo. Colombo",
+        "playerName": "Lorenzo Colombo",
+        "target": "Lorenzo Colombo",
         "role": "A",
         "coach": "Daniele De Rossi",
         "module": "3-5-2 / 3-4-2-1",
         "rosterSource": "https://www.transfermarkt.it/genua-cfc/startseite/verein/252/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Colombo del Genoa = Lorenzo.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -425924,13 +426102,14 @@
         "formationModuleUsed": "3-5-2",
         "formationCorrectionNote": "",
         "originalName": "Lo. Colombo",
-        "disambiguatedName": "Lo. Colombo",
+        "disambiguatedName": "Lorenzo Colombo",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-genoa",
         "formationReliability": "Media",
-        "formationNote": "XI Sky compatibilizzato con rosa attuale."
+        "formationNote": "XI Sky compatibilizzato con rosa attuale.",
+        "aliasNote": "Disambiguazione utente V739: Colombo del Genoa = Lorenzo."
       },
       {
         "id": "genoa-messias",
@@ -426637,50 +426816,6 @@
         "formationNote": ""
       },
       {
-        "id": "genoa-cuenca-h",
-        "teamId": "genoa",
-        "teamName": "Genoa",
-        "playerName": "Cuenca H.",
-        "target": "Cuenca H.",
-        "role": "C",
-        "coach": "",
-        "module": "",
-        "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "updatedAt": "2026-07-18",
-        "flag": "EXTRA_LISTONE",
-        "marketStatus": "Extra listone/fantasy",
-        "marketDetail": "Profilo extra da listone/fantasy",
-        "marketSource": "Listone Fantacalcio 2026-07-04",
-        "marketNote": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "",
-        "injurySeverity": "",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "Cuenca H.",
-        "disambiguatedName": "Cuenca H.",
-        "newAcquisition": false,
-        "qualityControl": "",
-        "_iosudoMarketRows": [],
-        "formationSource": "",
-        "formationReliability": "",
-        "formationNote": ""
-      },
-      {
         "id": "genoa-seydou-fini-2",
         "teamId": "genoa",
         "teamName": "Genoa",
@@ -426912,7 +427047,7 @@
         "coach": "Cristian Chivu",
         "module": "3-5-2",
         "rosterSource": "https://www.transfermarkt.it/inter-mailand/startseite/verein/46/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Confermato utente V739: stessa persona; iniziale/cognome compatibile.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -426944,7 +427079,12 @@
         "_iosudoMarketRows": [],
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-inter",
         "formationReliability": "Media",
-        "formationNote": "Thuram resta in XI ma con nota infortuni SOS gia presente nel file."
+        "formationNote": "Thuram resta in XI ma con nota infortuni SOS gia presente nel file.",
+        "aliases": [
+          "J. Martinez",
+          "Martinez Jo."
+        ],
+        "aliasNote": "Confermato utente V739: stessa persona; iniziale/cognome compatibile."
       },
       {
         "id": "inter-manuel-akanji",
@@ -428743,50 +428883,6 @@
         "formationCorrectionNote": "",
         "originalName": "Palacios T.",
         "disambiguatedName": "Palacios T.",
-        "newAcquisition": false,
-        "qualityControl": "",
-        "_iosudoMarketRows": [],
-        "formationSource": "",
-        "formationReliability": "",
-        "formationNote": ""
-      },
-      {
-        "id": "inter-martinez-jo",
-        "teamId": "inter",
-        "teamName": "Inter",
-        "playerName": "Martinez Jo.",
-        "target": "Martinez Jo.",
-        "role": "P",
-        "coach": "",
-        "module": "",
-        "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "updatedAt": "2026-07-18",
-        "flag": "EXTRA_LISTONE",
-        "marketStatus": "Extra listone/fantasy",
-        "marketDetail": "Profilo extra da listone/fantasy",
-        "marketSource": "Listone Fantacalcio 2026-07-04",
-        "marketNote": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "",
-        "injurySeverity": "",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "Martinez Jo.",
-        "disambiguatedName": "Martinez Jo.",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
@@ -438221,16 +438317,16 @@
         "formationNote": ""
       },
       {
-        "id": "monza-le-colombo",
+        "id": "monza-leonardo-colombo",
         "teamId": "monza",
         "teamName": "Monza",
-        "playerName": "Le. Colombo",
-        "target": "Le. Colombo",
+        "playerName": "Leonardo Colombo",
+        "target": "Leonardo Colombo",
         "role": "C",
         "coach": "Ivan Juric",
         "module": "3-4-2-1 / 3-4-3",
         "rosterSource": "https://www.transfermarkt.it/ac-monza/startseite/verein/2919/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Colombo del Monza = Leonardo.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -438256,13 +438352,14 @@
         "formationModuleUsed": "3-4-2-1",
         "formationCorrectionNote": "",
         "originalName": "Le. Colombo",
-        "disambiguatedName": "Le. Colombo",
+        "disambiguatedName": "Leonardo Colombo",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "https://sport.sky.it/calciomercato/serie-a-squadre-calciomercato-monza",
         "formationReliability": "Media",
-        "formationNote": "Hernani non presente nella rosa file; sostituito con Colpani. Mota Carvalho normalizzato rispetto a Dany Mota."
+        "formationNote": "Hernani non presente nella rosa file; sostituito con Colpani. Mota Carvalho normalizzato rispetto a Dany Mota.",
+        "aliasNote": "Disambiguazione utente V739: Colombo del Monza = Leonardo."
       },
       {
         "id": "monza-pessina-mas",
@@ -439807,16 +439904,16 @@
         "formationNote": "XI Sky coerente con rosa e 3-4-2-1."
       },
       {
-        "id": "napoli-russo",
+        "id": "napoli-lorenzo-russo",
         "teamId": "napoli",
         "teamName": "Napoli",
-        "playerName": "Russo",
-        "target": "Russo",
+        "playerName": "Lorenzo Russo",
+        "target": "Lorenzo Russo",
         "role": "C",
         "coach": "Massimiliano Allegri",
         "module": "3-4-2-1 / 4-3-3",
         "rosterSource": "https://www.transfermarkt.it/ssc-neapel/startseite/verein/6195/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Russo del Napoli = Lorenzo Russo.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -439842,13 +439939,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Russo",
-        "disambiguatedName": "Russo",
+        "disambiguatedName": "Lorenzo Russo",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Russo del Napoli = Lorenzo Russo."
       },
       {
         "id": "napoli-saco",
@@ -444827,16 +444925,16 @@
         "formationNote": ""
       },
       {
-        "id": "roma-arena-a",
+        "id": "roma-andrea-arena",
         "teamId": "roma",
         "teamName": "Roma",
-        "playerName": "Arena A.",
-        "target": "Arena A.",
+        "playerName": "Andrea Arena",
+        "target": "Andrea Arena",
         "role": "A",
         "coach": "",
         "module": "",
         "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
+        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa. Disambiguazione utente V739: Arena della Roma = Andrea Arena.",
         "updatedAt": "2026-07-18",
         "flag": "EXTRA_LISTONE",
         "marketStatus": "Extra listone/fantasy",
@@ -444862,13 +444960,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Arena A.",
-        "disambiguatedName": "Arena A.",
+        "disambiguatedName": "Andrea Arena",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Arena della Roma = Andrea Arena."
       },
       {
         "id": "roma-abdulhamid",
@@ -444917,16 +445016,16 @@
     ],
     "sassuolo": [
       {
-        "id": "sassuolo-a-russo",
+        "id": "sassuolo-alessandro-russo",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "A. Russo",
-        "target": "A. Russo",
+        "playerName": "Alessandro Russo",
+        "target": "Alessandro Russo",
         "role": "P",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
         "rosterSource": "https://www.transfermarkt.it/us-sassuolo/startseite/verein/6574/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Sassuolo ha Alessandro Russo portiere.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -444952,13 +445051,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "A. Russo",
-        "disambiguatedName": "A. Russo",
+        "disambiguatedName": "Alessandro Russo",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Sassuolo ha Alessandro Russo portiere."
       },
       {
         "id": "sassuolo-arijanet-muric",
@@ -446457,16 +446557,16 @@
         "formationNote": "Garcia non presente nella rosa file; sostituito con Doig come terzino sinistro. Schema 4-2-3-1 coerente con profili offensivi."
       },
       {
-        "id": "sassuolo-f-russo",
+        "id": "sassuolo-flavio-russo",
         "teamId": "sassuolo",
         "teamName": "Sassuolo",
-        "playerName": "F. Russo",
-        "target": "F. Russo",
+        "playerName": "Flavio Russo",
+        "target": "Flavio Russo",
         "role": "A",
         "coach": "Alberto Aquilani",
         "module": "4-3-3 / 4-2-3-1",
         "rosterSource": "https://www.transfermarkt.it/us-sassuolo/startseite/verein/6574/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
+        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto. Disambiguazione utente V739: Sassuolo ha Flavio Russo attaccante.",
         "updatedAt": "46213",
         "flag": "",
         "marketStatus": "In rosa",
@@ -446492,13 +446592,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "F. Russo",
-        "disambiguatedName": "F. Russo",
+        "disambiguatedName": "Flavio Russo",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Sassuolo ha Flavio Russo attaccante."
       },
       {
         "id": "sassuolo-knezovic",
@@ -457865,16 +457966,16 @@
         "formationNote": ""
       },
       {
-        "id": "pisa-arena",
+        "id": "pisa-alessandro-arena",
         "teamId": "pisa",
         "teamName": "Pisa",
-        "playerName": "Arena",
-        "target": "Arena",
+        "playerName": "Alessandro Arena",
+        "target": "Alessandro Arena",
         "role": "C",
         "coach": "",
         "module": "",
         "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
+        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa. Disambiguazione utente V739: Arena del Pisa = Alessandro Arena.",
         "updatedAt": "2026-07-18",
         "flag": "EXTRA_LISTONE",
         "marketStatus": "Extra listone/fantasy",
@@ -457900,13 +458001,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Arena",
-        "disambiguatedName": "Arena",
+        "disambiguatedName": "Alessandro Arena",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Arena del Pisa = Alessandro Arena."
       },
       {
         "id": "pisa-mateus-lusuardi",
@@ -458129,16 +458231,16 @@
         "formationNote": ""
       },
       {
-        "id": "pisa-bonfanti-n",
+        "id": "pisa-nicholas-bonfanti",
         "teamId": "pisa",
         "teamName": "Pisa",
-        "playerName": "Bonfanti N.",
-        "target": "Bonfanti N.",
+        "playerName": "Nicholas Bonfanti",
+        "target": "Nicholas Bonfanti",
         "role": "A",
         "coach": "",
         "module": "",
         "rosterSource": "Listone Fantacalcio 2026-07-04",
-        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa.",
+        "note": "Extra listone/fantasy V724: aggiunto per riallineare il conteggio Excel/app a 1033; non ufficialità di rosa. Disambiguazione utente V739: Bonfanti del Pisa = Nicholas.",
         "updatedAt": "2026-07-18",
         "flag": "EXTRA_LISTONE",
         "marketStatus": "Extra listone/fantasy",
@@ -458164,13 +458266,14 @@
         "formationModuleUsed": "",
         "formationCorrectionNote": "",
         "originalName": "Bonfanti N.",
-        "disambiguatedName": "Bonfanti N.",
+        "disambiguatedName": "Nicholas Bonfanti",
         "newAcquisition": false,
         "qualityControl": "",
         "_iosudoMarketRows": [],
         "formationSource": "",
         "formationReliability": "",
-        "formationNote": ""
+        "formationNote": "",
+        "aliasNote": "Disambiguazione utente V739: Bonfanti del Pisa = Nicholas."
       },
       {
         "id": "pisa-mbambi",
@@ -460405,33 +460508,6 @@
       {
         "teamId": "fiorentina",
         "teamName": "Fiorentina",
-        "playerName": "Oulai",
-        "target": "Oulai",
-        "directionLabel": "Entrata",
-        "direction": "incoming",
-        "status": "Trattativa molto avanzata / visite-firma attese",
-        "updatedAt": "2026-07-18",
-        "date": "2026-07-18",
-        "note": "v69 Sky/SportMediaset: operazione data come fatta, calciatore atteso per visite/firma; manca comunicato Fiorentina/deposito, quindi Rose invariata.",
-        "source": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "url": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "href": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "roleBrief": "C",
-        "role": "Centrocampista",
-        "origin": "Trabzonspor",
-        "probability": "",
-        "check": "NO_ROSE: attesa ufficialità club/deposito",
-        "rule": "Rumor/visite/firma: non spostare in Ufficialita senza comunicato club",
-        "sourceName": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
-        "sourceType": "Sky Sport / SportMediaset supporto",
-        "sourceVerification": "OK_NON_UFFICIALE",
-        "sourceVerificationNote": "Agg v69: fonte più puntuale, nessun impatto su Rose fino a comunicato ufficiale."
-      },
-      {
-        "teamId": "fiorentina",
-        "teamName": "Fiorentina",
         "playerName": "Kristian Thorstvedt",
         "target": "Kristian Thorstvedt",
         "directionLabel": "Entrata",
@@ -461130,33 +461206,6 @@
         "sourceType": "Live mercato",
         "sourceVerification": "OK - fonte puntuale",
         "sourceVerificationNote": "Rafforzata v34"
-      },
-      {
-        "teamId": "fiorentina",
-        "teamName": "Fiorentina",
-        "playerName": "Christ Inao Oulai",
-        "target": "Christ Inao Oulai",
-        "directionLabel": "Entrata",
-        "direction": "incoming",
-        "status": "Visite mediche terminate / attesa comunicato club - non ufficiale",
-        "updatedAt": "2026-07-18",
-        "date": "2026-07-18",
-        "note": "Di Marzio 18/07: Oulai ha terminato le visite mediche con la Fiorentina. Resta trattativa: finche manca comunicato ufficiale Fiorentina/deposito, Rose invariata.",
-        "source": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
-        "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
-        "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
-        "href": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
-        "roleBrief": "C",
-        "role": "Centrocampista",
-        "origin": "Trabzonspor",
-        "probability": "",
-        "check": "NO_ROSE: visite mediche non bastano",
-        "rule": "Visite/firma attesa non equivalgono a ufficialita",
-        "sourceName": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
-        "sourceLabel": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
-        "sourceType": "Gianluca Di Marzio",
-        "sourceVerification": "OK_NON_UFFICIALE_v76",
-        "sourceVerificationNote": "Agg v76: rafforzata riga esistente, nessun duplicato."
       },
       {
         "teamId": "fiorentina",
@@ -472917,6 +472966,28 @@
         "sourceType": "Sito ufficiale club",
         "sourceVerification": "OK_UFFICIALE_CLUB",
         "sourceVerificationNote": "Inserita v103; Rose, Mercato_Giocatori e Alias aggiornati senza creare duplicati."
+      },
+      {
+        "teamId": "fiorentina",
+        "teamName": "Fiorentina",
+        "playerName": "Christ Ravynel Inao Oulai",
+        "target": "Christ Ravynel Inao Oulai",
+        "directionLabel": "Entrata",
+        "direction": "incoming",
+        "role": "C",
+        "origin": "Trabzonspor",
+        "formula": "Acquisto a titolo definitivo",
+        "status": "Ufficiale",
+        "date": "2026-07-19",
+        "updatedAt": "2026-07-19",
+        "source": "ACF Fiorentina sito ufficiale",
+        "url": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262",
+        "articleUrl": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262",
+        "href": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262",
+        "note": "ACF Fiorentina comunica l acquisto a titolo definitivo dal Trabzonspor; chiuse le trattative/rumor Oulai.",
+        "sourceType": "Sito ufficiale club",
+        "sourceVerification": "OK_UFFICIALE_CLUB",
+        "sourceVerificationNote": "Inserita v739 da Excel V111; regola post-ufficialità applicata."
       }
     ],
     "frosinone": [
@@ -473497,8 +473568,8 @@
       {
         "teamId": "genoa",
         "teamName": "Genoa",
-        "playerName": "Lo. Colombo",
-        "target": "Lo. Colombo",
+        "playerName": "Lorenzo Colombo",
+        "target": "Lorenzo Colombo",
         "directionLabel": "Entrata",
         "direction": "incoming",
         "role": "A",
@@ -521890,8 +521961,8 @@
         "teamId": "genoa",
         "teamName": "Genoa",
         "position": "PC",
-        "playerName": "Lo. Colombo",
-        "target": "Lo. Colombo",
+        "playerName": "Lorenzo Colombo",
+        "target": "Lorenzo Colombo",
         "role": "A",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -523007,8 +523078,8 @@
         "teamId": "monza",
         "teamName": "Monza",
         "position": "TQ",
-        "playerName": "Le. Colombo",
-        "target": "Le. Colombo",
+        "playerName": "Leonardo Colombo",
+        "target": "Leonardo Colombo",
         "role": "C",
         "inRoster": "SI",
         "roleOk": "OK",
@@ -530442,6 +530513,14 @@
       "href": "https://www.violanews.com/partite/amichevoli/amichevoli-estive-tutti-i-risultati-e-i-tabellini-delle-gare-della-fiorentina/",
       "usage": "Risultato, due formazioni e sostituzioni al 41 minuto; marcatori delle due partitelle.",
       "date": "2026-07-19"
+    },
+    {
+      "sourceName": "ACF Fiorentina - Oulai ufficiale",
+      "name": "ACF Fiorentina - Oulai ufficiale",
+      "url": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262",
+      "href": "https://www.acffiorentina.com/news/oulai-e-un-nuovo-calciatore-della-fiorentina-1907262",
+      "usage": "Fonte ufficiale V739: Christ Ravynel Inao Oulai alla Fiorentina; chiusi rumor/trattative.",
+      "consultedAt": "2026-07-20"
     }
   ],
   "transfermarktRumors": [
@@ -537205,7 +537284,7 @@
         {
           "teamId": "genoa",
           "teamName": "Genoa",
-          "playerName": "Lo. Colombo",
+          "playerName": "Lorenzo Colombo",
           "role": "A",
           "match": "Genoa-Trento 2-1 | 19/07/2026",
           "event": "Genoa-Trento",
@@ -540572,7 +540651,7 @@
       {
         "teamId": "genoa",
         "teamName": "Genoa",
-        "playerName": "Lo. Colombo",
+        "playerName": "Lorenzo Colombo",
         "role": "A",
         "match": "Genoa-Trento 2-1 | 19/07/2026",
         "event": "Genoa-Trento",
@@ -564740,34 +564819,45 @@
       "aliasRows": 1042,
       "milanFriendlyPlayers": 22,
       "overlayGeneratedAt": "2026-07-19T14:30:00+02:00"
+    },
+    "v739": {
+      "duplicateExactPlayers": 0,
+      "duplicatePlayerIds": 0,
+      "activeOfficialRumors": 0,
+      "players": 1053,
+      "officialMoves": 387,
+      "teamTransferTalks": 450,
+      "headerOverlayTimestamp": "2026-07-20T07:20:00+02:00",
+      "oulaiOfficial": true,
+      "closedOulaiTalks": 2
     }
   },
   "manifest": {
-    "id": "sudatori-iosudo-v738",
-    "version": "V738",
+    "id": "sudatori-iosudo-v739",
+    "version": "V739",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-20",
-    "updatedAtTime": "2026-07-20T09:00:00+02:00",
-    "generatedAt": "2026-07-20T09:00:00+02:00",
-    "overlayGeneratedAt": "2026-07-20T09:00:00+02:00",
-    "overlayGeneratedAtLabel": "20/07/2026 09:00 CEST",
-    "sourceFile": "v109_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
-    "dedupVersion": "V738",
-    "notes": "V738 da Excel V109: nessuna delle 10 coppie V737 fusa, aggiunti tabellini Genoa, Lecce, Venezia, Fiorentina; De Gea rientrato e Baldanzi SOS prudenziale.",
+    "updatedAtTime": "2026-07-20T07:20:00+02:00",
+    "generatedAt": "2026-07-20T07:20:00+02:00",
+    "overlayGeneratedAt": "2026-07-20T07:20:00+02:00",
+    "overlayGeneratedAtLabel": "20/07/2026 07:20 CEST",
+    "sourceFile": "v111_2026-07-20_fantacalcio_serie_a_2026_27_aggiornamento_globale.xlsx",
+    "dedupVersion": "V739",
+    "notes": "V739 da Excel V111: Oulai ufficiale alla Fiorentina, prime 4 coppie V738 confermate e consolidate, Russo/Arena/Bonfanti/Rossi/Colombo disambiguati; header ora usa timestamp reale 07:20 CEST.",
     "teams": 20,
-    "players": 1056,
-    "officialMoves": 386,
-    "teamTransferTalks": 452,
+    "players": 1053,
+    "officialMoves": 387,
+    "teamTransferTalks": 450,
     "transfermarktRumors": 32,
     "injuries": 29,
     "friendlies": 123,
     "friendlyMatchDetails": 14,
     "friendlyPlayerStats": 294,
-    "sources": 760,
+    "sources": 761,
     "duplicatesExact": 0,
     "duplicateIds": 0,
     "activeOfficialRumors": 0,
-    "buildTag": "iosudo-v738-excel-v109-friendlies-genoa-lecce-venezia-fiorentina-disambiguazioni-v737"
+    "buildTag": "iosudo-v739-excel-v111-oulai-ufficiale-duplicati-v738-header-time-fix"
   },
   "friendliesFilteredOutV715": [
     {
@@ -579611,5 +579701,247 @@
     "closedTalks": 173,
     "rule": "Giocatore con ufficialita attiva escluso dai rumor attivi"
   },
-  "playersDuplicateAuditV738": []
+  "playersDuplicateAuditV738": [],
+  "teamTransferTalksClosedV739": [
+    {
+      "teamId": "fiorentina",
+      "teamName": "Fiorentina",
+      "playerName": "Oulai",
+      "target": "Oulai",
+      "directionLabel": "Entrata",
+      "direction": "incoming",
+      "status": "CHIUSA / POST-UFFICIALITA v739",
+      "updatedAt": "2026-07-18",
+      "date": "2026-07-18",
+      "note": "v69 Sky/SportMediaset: operazione data come fatta, calciatore atteso per visite/firma; manca comunicato Fiorentina/deposito, quindi Rose invariata.",
+      "source": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+      "url": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+      "articleUrl": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+      "href": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+      "roleBrief": "C",
+      "role": "Centrocampista",
+      "origin": "Trabzonspor",
+      "probability": "",
+      "check": "NO_ROSE: attesa ufficialità club/deposito",
+      "rule": "Rumor/visite/firma: non spostare in Ufficialita senza comunicato club",
+      "sourceName": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+      "sourceLabel": "https://sport.sky.it/calciomercato/2026/07/17/fiorentina-oulai-calciomercato-news",
+      "sourceType": "Sky Sport / SportMediaset supporto",
+      "sourceVerification": "OK_UFFICIALE_CHIUSA",
+      "sourceVerificationNote": "Chiusa perché Oulai è ufficiale alla Fiorentina.",
+      "closedAt": "2026-07-20"
+    },
+    {
+      "teamId": "fiorentina",
+      "teamName": "Fiorentina",
+      "playerName": "Christ Inao Oulai",
+      "target": "Christ Inao Oulai",
+      "directionLabel": "Entrata",
+      "direction": "incoming",
+      "status": "CHIUSA / POST-UFFICIALITA v739",
+      "updatedAt": "2026-07-18",
+      "date": "2026-07-18",
+      "note": "Di Marzio 18/07: Oulai ha terminato le visite mediche con la Fiorentina. Resta trattativa: finche manca comunicato ufficiale Fiorentina/deposito, Rose invariata.",
+      "source": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "url": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "articleUrl": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "href": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "roleBrief": "C",
+      "role": "Centrocampista",
+      "origin": "Trabzonspor",
+      "probability": "",
+      "check": "NO_ROSE: visite mediche non bastano",
+      "rule": "Visite/firma attesa non equivalgono a ufficialita",
+      "sourceName": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "sourceLabel": "https://www.gianlucadimarzio.com/calciomercato/calciomercato-fiorentina-oulai-visite-mediche-18-luglio-2026-494950",
+      "sourceType": "Gianluca Di Marzio",
+      "sourceVerification": "OK_UFFICIALE_CHIUSA",
+      "sourceVerificationNote": "Chiusa perché Oulai è ufficiale alla Fiorentina.",
+      "closedAt": "2026-07-20"
+    }
+  ],
+  "confirmedAliasesV739": [
+    {
+      "team": "Genoa",
+      "alias": "Cuenca H.",
+      "canonical": "H. Cuenca",
+      "note": "Confermato utente V739: stessa persona; mantenuto nome disponibile in file."
+    },
+    {
+      "team": "Como",
+      "alias": "Rodriguez Je.",
+      "canonical": "Je. Rodriguez",
+      "note": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
+    },
+    {
+      "team": "Cagliari",
+      "alias": "Rodriguez Ju.",
+      "canonical": "Ju. Rodriguez",
+      "note": "Confermato utente V739: stessa persona; iniziale/cognome invertiti."
+    },
+    {
+      "team": "Inter",
+      "alias": "Martinez Jo.",
+      "canonical": "J. Martinez",
+      "note": "Confermato utente V739: stessa persona; iniziale/cognome compatibile."
+    }
+  ],
+  "teamSpecificFullNamesV739": [
+    {
+      "team": "Napoli",
+      "alias": "Russo",
+      "canonical": "Lorenzo Russo",
+      "note": "Disambiguazione utente V739: Russo del Napoli = Lorenzo Russo."
+    },
+    {
+      "team": "Sassuolo",
+      "alias": "A. Russo",
+      "canonical": "Alessandro Russo",
+      "note": "Disambiguazione utente V739: Sassuolo ha Alessandro Russo portiere."
+    },
+    {
+      "team": "Sassuolo",
+      "alias": "F. Russo",
+      "canonical": "Flavio Russo",
+      "note": "Disambiguazione utente V739: Sassuolo ha Flavio Russo attaccante."
+    },
+    {
+      "team": "Pisa",
+      "alias": "Arena",
+      "canonical": "Alessandro Arena",
+      "note": "Disambiguazione utente V739: Arena del Pisa = Alessandro Arena."
+    },
+    {
+      "team": "Roma",
+      "alias": "Arena A.",
+      "canonical": "Andrea Arena",
+      "note": "Disambiguazione utente V739: Arena della Roma = Andrea Arena."
+    },
+    {
+      "team": "Pisa",
+      "alias": "Bonfanti N.",
+      "canonical": "Nicholas Bonfanti",
+      "note": "Disambiguazione utente V739: Bonfanti del Pisa = Nicholas."
+    },
+    {
+      "team": "Atalanta",
+      "alias": "Bonfanti",
+      "canonical": "Giovanni Bonfanti",
+      "note": "Disambiguazione utente V739: Bonfanti dell Atalanta = Giovanni."
+    },
+    {
+      "team": "Genoa",
+      "alias": "G. Rossi",
+      "canonical": "Gianluca Rossi",
+      "note": "Disambiguazione utente V739: Rossi del Genoa = Gianluca."
+    },
+    {
+      "team": "Atalanta",
+      "alias": "Rossi",
+      "canonical": "Francesco Rossi",
+      "note": "Disambiguazione utente V739: Rossi dell Atalanta = Francesco."
+    },
+    {
+      "team": "Monza",
+      "alias": "Le. Colombo",
+      "canonical": "Leonardo Colombo",
+      "note": "Disambiguazione utente V739: Colombo del Monza = Leonardo."
+    },
+    {
+      "team": "Genoa",
+      "alias": "Lo. Colombo",
+      "canonical": "Lorenzo Colombo",
+      "note": "Disambiguazione utente V739: Colombo del Genoa = Lorenzo."
+    }
+  ],
+  "protectedDisambiguationsV739": [
+    {
+      "variantA": "Lorenzo Russo",
+      "variantB": "Alessandro Russo / Flavio Russo",
+      "decision": "NON_DUPLICATO",
+      "note": "Napoli e Sassuolo hanno giocatori Russo diversi."
+    },
+    {
+      "variantA": "Alessandro Arena",
+      "variantB": "Andrea Arena",
+      "decision": "NON_DUPLICATO",
+      "note": "Pisa/Roma distinti."
+    },
+    {
+      "variantA": "Nicholas Bonfanti",
+      "variantB": "Giovanni Bonfanti",
+      "decision": "NON_DUPLICATO",
+      "note": "Pisa/Atalanta distinti."
+    },
+    {
+      "variantA": "Gianluca Rossi",
+      "variantB": "Francesco Rossi",
+      "decision": "NON_DUPLICATO",
+      "note": "Genoa/Atalanta distinti."
+    },
+    {
+      "variantA": "Leonardo Colombo",
+      "variantB": "Lorenzo Colombo",
+      "decision": "NON_DUPLICATO",
+      "note": "Monza/Genoa distinti."
+    }
+  ],
+  "duplicatePairCandidatesV739": [
+    {
+      "variantA": "Antoine N’Diaye",
+      "variantB": "Ndiaye",
+      "where": "Bologna/Parma: nome completo vs cognome breve"
+    },
+    {
+      "variantA": "El Azzouzi",
+      "variantB": "Anouar El Azzouzi",
+      "where": "Bologna/Frosinone: cognome composto vs nome completo"
+    },
+    {
+      "variantA": "Lorenzo De Silvestri",
+      "variantB": "Silvestri",
+      "where": "Bologna/Cremonese-listone: cognome breve"
+    },
+    {
+      "variantA": "A. Buta",
+      "variantB": "L. Buta",
+      "where": "Udinese: stesso cognome, iniziali diverse da verificare"
+    },
+    {
+      "variantA": "A. Oyono",
+      "variantB": "J. Oyono",
+      "where": "Frosinone: stesso cognome, iniziali diverse da verificare"
+    },
+    {
+      "variantA": "Aleksandar Stankovic",
+      "variantB": "F. Stankovic",
+      "where": "Inter/Venezia: stesso cognome, possibile extra listone"
+    },
+    {
+      "variantA": "M. Ilic",
+      "variantB": "I. Ilic",
+      "where": "Bologna/Torino: stesso cognome, iniziali da verificare"
+    },
+    {
+      "variantA": "F. Gelli",
+      "variantB": "J. Gelli",
+      "where": "Frosinone: stesso cognome, iniziali diverse"
+    },
+    {
+      "variantA": "Hamed Junior Traore",
+      "variantB": "Omar Traore",
+      "where": "Genoa/Udinese: stesso cognome, da escludere o confermare"
+    },
+    {
+      "variantA": "Ismael Konaté",
+      "variantB": "Abdou-Salam Konate",
+      "where": "Juventus/Parma: cognome con/senza accento, da verificare"
+    }
+  ],
+  "updateLogV739": [
+    "Oulai ufficiale Fiorentina: aggiunto in Rose/ioSudo/Ufficialita e rumor attivi chiusi.",
+    "Consolidate le prime 4 coppie V738 confermate dall utente.",
+    "Disambiguati Russo, Arena, Bonfanti, Rossi e Colombo con nome+cognome indicato dall utente.",
+    "Corretto timestamp header overlay da 09:00 a 07:20 CEST."
+  ]
 }
