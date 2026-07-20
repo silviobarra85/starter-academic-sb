@@ -1,3 +1,4 @@
+- V746: aggiornamento V124, fix PWA install button, rimozione amichevole aggregata errata, Lazio-Lazio U20 tabellino.
 # Overlay Roadmap
 
 - V742: Excel V113, consolidamento Buta, disambiguazioni utente, header timestamp da manifest.
