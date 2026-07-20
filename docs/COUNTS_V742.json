@@ -1,0 +1,18 @@
+{
+  "version": "V742",
+  "players": 1049,
+  "teams": 20,
+  "officialMoves": 390,
+  "teamTransferTalks": 331,
+  "transfermarktRumors": 54,
+  "injuries": 28,
+  "friendlies": 150,
+  "friendlyMatchDetails": 14,
+  "friendlyPlayerStats": 294,
+  "sources": 765,
+  "duplicatesExact": 0,
+  "duplicateIds": 0,
+  "repairedFriendlyDetails": 14,
+  "mergedDuplicatesV742": 1,
+  "overlayGeneratedAtLabel": "20/07/2026 14:47 CEST"
+}
