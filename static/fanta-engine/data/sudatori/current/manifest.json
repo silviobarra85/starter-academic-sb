@@ -1,6 +1,6 @@
 {
-  "id": "sudatori-iosudo-v750",
-  "version": "V750",
+  "id": "sudatori-iosudo-v751",
+  "version": "V751",
   "seasonId": "2026-27",
   "updatedAt": "2026-07-21",
   "updatedAtTime": "15:52 CEST",
@@ -8,15 +8,16 @@
   "overlayGeneratedAt": "2026-07-21T15:52:00+02:00",
   "overlayGeneratedAtLabel": "21/07/2026 15:52 CEST",
   "sourceFile": "v132_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v749.xlsx",
-  "dedupVersion": "V750",
+  "dedupVersion": "V751",
   "notes": [
-    "V750: Excel V132 integrato; nessuna nuova ufficialità e rose invariate salvo note informative.",
     "Aggiunti/aggiornati monitoraggi V132: Amondarain, Orsolini, Lucumí, Rowe, Freuler, Akor Adams, Busio, Meret, Banda, Matías Pérez, Piccoli, Lucca, Destiny Elimoghale.",
     "App aggiornata: nella lista giocatori della squadra, i giocatori con rumor/notizie più recenti vengono ordinati più in alto.",
-    "Regola invariata: nessun rumor attivo su giocatori con ufficialità attiva."
+    "Regola invariata: nessun rumor attivo su giocatori con ufficialità attiva.",
+    "V751: KPI Giocatori allineato alla vista GIOCATORI effettiva (1052); le 1054 righe sorgente restano tracciate come playersSourceRows.",
+    "V751: service worker ioSudo reso più tollerante su mobile con precache non bloccante e navigazione network-first."
   ],
   "teams": 20,
-  "players": 1054,
+  "players": 1052,
   "officialMoves": 397,
   "teamTransferTalks": 480,
   "transfermarktRumors": 47,
@@ -28,10 +29,10 @@
   "duplicatesExact": 0,
   "duplicateIds": 0,
   "activeOfficialRumors": 0,
-  "buildTag": "iosudo-v750",
+  "buildTag": "iosudo-v751",
   "dataFile": "sudatori-data.json",
   "counts": {
-    "players": 1054,
+    "players": 1052,
     "officialMoves": 397,
     "talks": 480,
     "transfermarktRumors": 47,
@@ -43,8 +44,12 @@
     "activeOfficialRumors": 0,
     "duplicateIds": 0,
     "duplicatesExact": 0,
-    "teamTransferTalks": 480
+    "teamTransferTalks": 480,
+    "displayPlayers": 1052,
+    "playersSourceRows": 1054
   },
   "sourceWorkbook": "v132_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v749.xlsx",
-  "appVersion": "V750"
+  "appVersion": "V751",
+  "displayPlayers": 1052,
+  "playersSourceRows": 1054
 }

@@ -386,14 +386,14 @@
   window.FantaPetilloAdminCardVisibilityV456 = window.LeagueAdminCardVisibilityV456;
 })();
 
-/* V754 - Hardfix selettore Visibilita Admin desktop.
+/* V755 - Hardfix selettore Visibilita Admin desktop.
  * Intercetta direttamente click su label/input del selettore V456 e aggiorna localStorage.
  * Serve per desktop dove il click nativo sulle checkbox puo' essere bloccato da layer/card.
  */
-(function adminCardSelectorDesktopHardfixV754(){
+(function adminCardSelectorDesktopHardfixV755(){
   'use strict';
-  const VERSION = 'V754';
-  if (window.ZonaOrientaleAdminCardCheckboxHardfixV754) return;
+  const VERSION = 'V755';
+  if (window.ZonaOrientaleAdminCardCheckboxHardfixV755) return;
   const CONTROL_ID = 'adminCardSelectorV456';
   const SLUG = (window.location.pathname.split('/').filter(Boolean)[0] || 'fantalega').toLowerCase();
   const STORAGE_SELECTED = `${SLUG}.adminCardVisibility.v456.selectedCards`;
@@ -479,9 +479,9 @@
   function decorate(){
     const control = document.getElementById(CONTROL_ID);
     if (!control) return;
-    control.dataset.adminCheckboxHardfixV754 = 'true';
+    control.dataset.adminCheckboxHardfixV755 = 'true';
     const eyebrow = control.querySelector('.admin-card-selector-v456__header .eyebrow');
-    if (eyebrow) eyebrow.textContent = 'Visibilità Admin · V754';
+    if (eyebrow) eyebrow.textContent = 'Visibilità Admin · V755';
     control.querySelectorAll('input[type="checkbox"]').forEach((input) => {
       input.style.pointerEvents = 'auto';
       input.style.position = 'relative';
@@ -503,5 +503,5 @@
   else boot();
   try { new MutationObserver(decorate).observe(document.documentElement, { childList: true, subtree: true }); } catch (_) {}
   [50, 250, 800, 2000, 5000].forEach((delay) => window.setTimeout(decorate, delay));
-  window.ZonaOrientaleAdminCardCheckboxHardfixV754 = Object.freeze({ version: VERSION, storageSelected: STORAGE_SELECTED, storageQa: STORAGE_QA, decorate, setAll });
+  window.ZonaOrientaleAdminCardCheckboxHardfixV755 = Object.freeze({ version: VERSION, storageSelected: STORAGE_SELECTED, storageQa: STORAGE_QA, decorate, setAll });
 })();

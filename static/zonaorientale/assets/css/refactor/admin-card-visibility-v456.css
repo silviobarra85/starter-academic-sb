@@ -115,19 +115,19 @@
   .admin-card-selector-v456__grid { grid-template-columns: 1fr; }
 }
 
-/* V754 - Checkbox selector click reliability */
-.admin-card-selector-v456[data-admin-checkbox-hardfix-v754="true"],
-.admin-card-selector-v456[data-admin-checkbox-hardfix-v754="true"] * {
+/* V755 - Checkbox selector click reliability */
+.admin-card-selector-v456[data-admin-checkbox-hardfix-v755="true"],
+.admin-card-selector-v456[data-admin-checkbox-hardfix-v755="true"] * {
   pointer-events: auto !important;
 }
-.admin-card-selector-v456[data-admin-checkbox-hardfix-v754="true"] label.admin-card-selector-v456__option,
-.admin-card-selector-v456[data-admin-checkbox-hardfix-v754="true"] label.admin-card-selector-v456__qa {
+.admin-card-selector-v456[data-admin-checkbox-hardfix-v755="true"] label.admin-card-selector-v456__option,
+.admin-card-selector-v456[data-admin-checkbox-hardfix-v755="true"] label.admin-card-selector-v456__qa {
   position: relative !important;
   z-index: 15 !important;
   cursor: pointer !important;
   user-select: none;
 }
-.admin-card-selector-v456[data-admin-checkbox-hardfix-v754="true"] input[type="checkbox"] {
+.admin-card-selector-v456[data-admin-checkbox-hardfix-v755="true"] input[type="checkbox"] {
   pointer-events: auto !important;
   position: relative !important;
   z-index: 20 !important;

@@ -41220,8 +41220,8 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     event.stopImmediatePropagation();
     const id = toggle.dataset.toggleRosterClub;
     if (!id || !ensureState()) return;
-    if (typeof window.toggleRosterClubSingletonV752 === 'function') {
-      window.toggleRosterClubSingletonV752(id);
+    if (typeof window.toggleRosterClubSingletonV755 === 'function') {
+      window.toggleRosterClubSingletonV755(id);
       return;
     }
     state.expandedRosterClubIds = state.expandedRosterClubIds instanceof Set ? state.expandedRosterClubIds : new Set();
@@ -41244,11 +41244,11 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
         return displayMode !== 'desktop' && window.matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').matches;
       } catch (_) { return window.innerWidth <= 900; }
     })();
-    if (isRosterTableLink && isMobileLike && typeof window.toggleRosterClubSingletonV752 === 'function') {
+    if (isRosterTableLink && isMobileLike && typeof window.toggleRosterClubSingletonV755 === 'function') {
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();
-      window.toggleRosterClubSingletonV752(id);
+      window.toggleRosterClubSingletonV755(id);
       return;
     }
     event.preventDefault();
@@ -41297,12 +41297,12 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 })();
 
 
-/* V752 - Team profile movement descriptions + singleton Tutte le Rose mobile focus. */
-(function fantaSiteRosterNavigationAndMovementDescriptionsV752(){
-  const VERSION = 'V752';
-  const VERSION_LABEL = 'Fantacalcio - V753 - Aggiornato al 21/07/2026';
+/* V755 - Team profile movement descriptions + singleton Tutte le Rose mobile focus. */
+(function fantaSiteRosterNavigationAndMovementDescriptionsV755(){
+  const VERSION = 'V755';
+  const VERSION_LABEL = 'Fantacalcio - V755 - Aggiornato al 21/07/2026';
 
-  function isMobileLikeV752(){
+  function isMobileLikeV755(){
     try {
       const displayMode = localStorage.getItem('zonaOrientaleDisplayMode') || 'auto';
       return displayMode !== 'desktop' && window.matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').matches;
@@ -41311,22 +41311,22 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     }
   }
 
-  function ensureExpandedSetV752(){
+  function ensureExpandedSetV755(){
     if (typeof state !== 'object' || !state) return null;
     state.expandedRosterClubIds = state.expandedRosterClubIds instanceof Set ? state.expandedRosterClubIds : new Set();
     return state.expandedRosterClubIds;
   }
 
-  function cssEscapeV752(value){
+  function cssEscapeV755(value){
     const raw = String(value || '');
     if (window.CSS && typeof window.CSS.escape === 'function') return window.CSS.escape(raw);
     return raw.replace(/[^a-zA-Z0-9_-]/g, '\\$&');
   }
 
-  function scrollToRosterPlayersV752(seasonTeamId){
+  function scrollToRosterPlayersV755(seasonTeamId){
     window.requestAnimationFrame(function(){
       window.requestAnimationFrame(function(){
-        const safeId = cssEscapeV752(seasonTeamId);
+        const safeId = cssEscapeV755(seasonTeamId);
         const toggle = document.querySelector('[data-toggle-roster-club="' + safeId + '"][aria-expanded="true"]');
         let target = null;
         if (toggle) {
@@ -41344,8 +41344,8 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     });
   }
 
-  function toggleRosterClubSingletonV752(seasonTeamId){
-    const set = ensureExpandedSetV752();
+  function toggleRosterClubSingletonV755(seasonTeamId){
+    const set = ensureExpandedSetV755();
     if (!set || !seasonTeamId) return;
     const wasExpanded = set.has(seasonTeamId);
     if (wasExpanded) {
@@ -41353,11 +41353,11 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     } else {
       state.expandedRosterClubIds = new Set([seasonTeamId]);
     }
-    try { if (typeof renderTeamsTable === 'function') renderTeamsTable(); } catch (error) { console.error('[V752] renderTeamsTable failed', error); }
-    if (!wasExpanded) scrollToRosterPlayersV752(seasonTeamId);
+    try { if (typeof renderTeamsTable === 'function') renderTeamsTable(); } catch (error) { console.error('[V755] renderTeamsTable failed', error); }
+    if (!wasExpanded) scrollToRosterPlayersV755(seasonTeamId);
   }
 
-  function findRosterSeasonTeamIdFromClickV752(target){
+  function findRosterSeasonTeamIdFromClickV755(target){
     const toggle = target?.closest?.('[data-toggle-roster-club]');
     if (toggle?.dataset?.toggleRosterClub) return toggle.dataset.toggleRosterClub;
     const link = target?.closest?.('[data-open-team-profile]');
@@ -41369,170 +41369,101 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   window.addEventListener('click', function(event){
-    const id = findRosterSeasonTeamIdFromClickV752(event.target);
+    const id = findRosterSeasonTeamIdFromClickV755(event.target);
     if (!id) return;
 
     const isToggle = !!event.target?.closest?.('[data-toggle-roster-club]');
     const isTeamLink = !!event.target?.closest?.('[data-open-team-profile]');
 
     // Desktop: il nome squadra resta un link alla pagina squadra. Il pulsante Espandi gestisce la lista.
-    if (!isMobileLikeV752() && isTeamLink && !isToggle) return;
+    if (!isMobileLikeV755() && isTeamLink && !isToggle) return;
 
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
-    toggleRosterClubSingletonV752(id);
+    toggleRosterClubSingletonV755(id);
   }, true);
 
-  function repairMovementDescriptionV752(movement){
-    try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('profile-v752'); } catch (_) {}
+  function repairMovementDescriptionV755(movement){
+    try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('profile-v755'); } catch (_) {}
     const text = String(movement?.description || '').trim();
     if (text) return text;
     if (movement?.type === 'INITIAL_BUDGET') return 'Budget iniziale stagione';
     return '';
   }
 
-  function renderProfileMovementRowsV752(snapshot){
+  function renderProfileMovementRowsV755(snapshot){
     const rows = Array.isArray(snapshot?.recentMovements) ? snapshot.recentMovements : [];
     if (!rows.length) return '<tr><td colspan="5" class="muted center">Nessun movimento recente.</td></tr>';
     return rows.map(function(movement){
-      const note = repairMovementDescriptionV752(movement);
+      const note = repairMovementDescriptionV755(movement);
       const player = movement.type === 'INITIAL_BUDGET' ? '-' : (movement.playerName || '-');
       return '<tr>' +
         '<td data-label="Data">' + escapeHtml(movement.date || '-') + '</td>' +
         '<td data-label="Tipo">' + renderFmMovementTypeBadge(movement.type) + '</td>' +
         '<td data-label="Giocatore">' + escapeHtml(player) + '</td>' +
         '<td data-label="FM" class="number">' + formatFm(movement.amount || 0) + '</td>' +
-        '<td data-label="Descrizione" class="team-profile-movement-description-v752">' + escapeHtml(note || '-') + '</td>' +
+        '<td data-label="Descrizione" class="team-profile-movement-description-v755">' + escapeHtml(note || '-') + '</td>' +
       '</tr>';
     }).join('');
   }
 
-  function renderProfileMovementSectionV752(snapshot){
-    return '<section class="panel detail-section team-profile-movements-section-v752"><h3>Ultimi movimenti</h3>' +
+  function renderProfileMovementSectionV755(snapshot){
+    return '<section class="panel detail-section team-profile-movements-section-v755"><h3>Ultimi movimenti</h3>' +
       '<div class="table-wrap mobile-tabular-wrap team-profile-table-wrap">' +
-        '<table class="mobile-tabular team-profile-movements-table team-profile-movements-table-v752">' +
+        '<table class="mobile-tabular team-profile-movements-table team-profile-movements-table-v755">' +
           '<thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th><th>Descrizione</th></tr></thead>' +
-          '<tbody>' + renderProfileMovementRowsV752(snapshot) + '</tbody>' +
+          '<tbody>' + renderProfileMovementRowsV755(snapshot) + '</tbody>' +
         '</table>' +
       '</div></section>';
   }
 
   const previousRenderTeamProfileContent = typeof renderTeamProfileContentV42 === 'function' ? renderTeamProfileContentV42 : null;
-  if (previousRenderTeamProfileContent && !previousRenderTeamProfileContent.__v752Patched) {
-    const patched = function renderTeamProfileContentV752(snapshot){
-      try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('team-profile-v752'); } catch (_) {}
+  if (previousRenderTeamProfileContent && !previousRenderTeamProfileContent.__v755Patched) {
+    const patched = function renderTeamProfileContentV755(snapshot){
+      try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('team-profile-v755'); } catch (_) {}
       let html = previousRenderTeamProfileContent.apply(this, arguments);
-      const movementSection = renderProfileMovementSectionV752(snapshot);
+      const movementSection = renderProfileMovementSectionV755(snapshot);
       html = String(html || '').replace(/<section class="panel detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<section class="panel detail-section"><h3>Ultimi comunicati<\/h3>)/, movementSection);
-      html = String(html || '').replace(/<div class="detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<div class="detail-section"><h3>Ultimi comunicati<\/h3>)/, movementSection.replace('<section class="panel detail-section team-profile-movements-section-v752">','<div class="detail-section team-profile-movements-section-v752">').replace('</section>',''));
+      html = String(html || '').replace(/<div class="detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<div class="detail-section"><h3>Ultimi comunicati<\/h3>)/, movementSection.replace('<section class="panel detail-section team-profile-movements-section-v755">','<div class="detail-section team-profile-movements-section-v755">').replace('</section>',''));
       return html;
     };
-    patched.__v752Patched = true;
+    patched.__v755Patched = true;
     renderTeamProfileContentV42 = patched;
   }
 
-  function injectRosterV752Styles(){
-    if (document.getElementById('roster-v752-styles')) return;
+  function injectRosterV755Styles(){
+    if (document.getElementById('roster-v755-styles')) return;
     const style = document.createElement('style');
-    style.id = 'roster-v752-styles';
-    style.textContent = '.team-profile-movements-table-v752 th:last-child,.team-profile-movements-table-v752 td:last-child{min-width:16rem;white-space:normal}.team-profile-movement-description-v752{line-height:1.35}.roster-detail-row .roster-player-table{scroll-margin-top:1rem}@media (max-width:900px){.team-profile-movements-table-v752 th:last-child,.team-profile-movements-table-v752 td:last-child{min-width:0}.team-profile-movement-description-v752{font-size:.9rem}.roster-detail-row{scroll-margin-top:.75rem}}';
+    style.id = 'roster-v755-styles';
+    style.textContent = '.team-profile-movements-table-v755 th:last-child,.team-profile-movements-table-v755 td:last-child{min-width:16rem;white-space:normal}.team-profile-movement-description-v755{line-height:1.35}.roster-detail-row .roster-player-table{scroll-margin-top:1rem}@media (max-width:900px){.team-profile-movements-table-v755 th:last-child,.team-profile-movements-table-v755 td:last-child{min-width:0}.team-profile-movement-description-v755{font-size:.9rem}.roster-detail-row{scroll-margin-top:.75rem}}';
     document.head.appendChild(style);
   }
 
-  function forceFooterV752(){
+  function forceFooterV755(){
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach(function(node){
       if (!node) return;
       node.textContent = VERSION_LABEL;
-      node.dataset.footerVersionV752 = VERSION;
+      node.dataset.footerVersionV755 = VERSION;
     });
   }
 
-  function bootV752(){
-    try { injectRosterV752Styles(); } catch (_) {}
-    try { forceFooterV752(); } catch (_) {}
-    try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('boot-v752'); } catch (_) {}
+  function bootV755(){
+    try { injectRosterV755Styles(); } catch (_) {}
+    try { forceFooterV755(); } catch (_) {}
+    try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('boot-v755'); } catch (_) {}
   }
 
   try {
-    window.toggleRosterClubSingletonV752 = toggleRosterClubSingletonV752;
-    window.forceFooterV752 = forceFooterV752;
-    window.FantaSiteRosterNavigationV752 = Object.freeze({ version: VERSION, singletonRosterExpansion: true, profileMovementDescriptions: true });
+    window.toggleRosterClubSingletonV755 = toggleRosterClubSingletonV755;
+    window.forceFooterV755 = forceFooterV755;
+    window.FantaSiteRosterNavigationV755 = Object.freeze({ version: VERSION, singletonRosterExpansion: true, profileMovementDescriptions: true });
   } catch (_) {}
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootV752, { once: true });
-  else bootV752();
-  window.addEventListener('load', bootV752, { once: true });
-  [0, 80, 250, 900, 2500, 6500].forEach(function(delay){ window.setTimeout(bootV752, delay); });
-})();
-
-
-/* V753 - Desktop admin checkbox hardfix.
- * Ripristina il toggle delle checkbox nell'area Admin anche quando overlay/card intercettano il click desktop.
- * Non modifica la logica dei form: emette input/change standard dopo il cambio checked.
- */
-(function installAdminDesktopCheckboxHardfixV753(){
-  const VERSION = 'V753';
-  if (window.ZonaOrientaleAdminCheckboxHardfixV753) return;
-  function isAdminCheckbox(input){
-    return input && input.matches && input.matches('#adminPanel input[type="checkbox"], [data-page="admin"] input[type="checkbox"], .admin-collapsible-panel input[type="checkbox"]');
-  }
-  function emit(input){
-    try { input.dispatchEvent(new Event('input', { bubbles: true })); } catch (_) {}
-    try { input.dispatchEvent(new Event('change', { bubbles: true })); } catch (_) {}
-  }
-  function toggle(input){
-    if (!isAdminCheckbox(input) || input.disabled) return false;
-    input.checked = !input.checked;
-    emit(input);
-    return true;
-  }
-  function installCss(){
-    if (document.getElementById('admin-checkbox-hardfix-v753-style')) return;
-    const style = document.createElement('style');
-    style.id = 'admin-checkbox-hardfix-v753-style';
-    style.textContent = `
-      #adminPanel label, [data-page="admin"] label { position: relative; z-index: 2; }
-      #adminPanel input[type="checkbox"], [data-page="admin"] input[type="checkbox"] {
-        pointer-events: auto !important;
-        position: relative !important;
-        z-index: 5 !important;
-        min-width: 18px;
-        min-height: 18px;
-        cursor: pointer;
-      }
-      #adminPanel .checkbox-label, [data-page="admin"] .checkbox-label { cursor: pointer; }
-    `;
-    document.head.appendChild(style);
-  }
-  function decorate(){
-    installCss();
-    document.querySelectorAll('#adminPanel input[type="checkbox"], [data-page="admin"] input[type="checkbox"]').forEach((input)=>{
-      input.style.pointerEvents = 'auto';
-      input.style.position = input.style.position || 'relative';
-      input.style.zIndex = input.style.zIndex || '5';
-    });
-  }
-  document.addEventListener('click', function(event){
-    const target = event.target;
-    if (!target) return;
-    if (isAdminCheckbox(target)) {
-      setTimeout(() => emit(target), 0);
-      return;
-    }
-    const label = target.closest && target.closest('#adminPanel label, [data-page="admin"] label, .admin-collapsible-panel label');
-    if (!label) return;
-    if (target.closest && target.closest('button,a,select,textarea,input:not([type="checkbox"])')) return;
-    const input = label.querySelector('input[type="checkbox"]');
-    if (!input || !isAdminCheckbox(input)) return;
-    event.preventDefault();
-    event.stopPropagation();
-    toggle(input);
-  }, true);
-  document.addEventListener('DOMContentLoaded', decorate);
-  try { new MutationObserver(decorate).observe(document.documentElement, { childList: true, subtree: true }); } catch (_) {}
-  window.ZonaOrientaleAdminCheckboxHardfixV753 = { version: VERSION, decorate, toggle };
-  decorate();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootV755, { once: true });
+  else bootV755();
+  window.addEventListener('load', bootV755, { once: true });
+  [0, 80, 250, 900, 2500, 6500].forEach(function(delay){ window.setTimeout(bootV755, delay); });
 })();
