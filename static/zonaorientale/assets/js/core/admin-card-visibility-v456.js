@@ -385,3 +385,123 @@
   window.ZonaOrientaleAdminCardVisibilityV456 = window.LeagueAdminCardVisibilityV456;
   window.FantaPetilloAdminCardVisibilityV456 = window.LeagueAdminCardVisibilityV456;
 })();
+
+/* V754 - Hardfix selettore Visibilita Admin desktop.
+ * Intercetta direttamente click su label/input del selettore V456 e aggiorna localStorage.
+ * Serve per desktop dove il click nativo sulle checkbox puo' essere bloccato da layer/card.
+ */
+(function adminCardSelectorDesktopHardfixV754(){
+  'use strict';
+  const VERSION = 'V754';
+  if (window.ZonaOrientaleAdminCardCheckboxHardfixV754) return;
+  const CONTROL_ID = 'adminCardSelectorV456';
+  const SLUG = (window.location.pathname.split('/').filter(Boolean)[0] || 'fantalega').toLowerCase();
+  const STORAGE_SELECTED = `${SLUG}.adminCardVisibility.v456.selectedCards`;
+  const STORAGE_QA = `${SLUG}.adminCardVisibility.v456.showQaChecklist`;
+
+  function readSelected(){
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem(STORAGE_SELECTED) || '[]');
+      return Array.isArray(parsed) ? parsed.map(String) : [];
+    } catch (_) { return []; }
+  }
+  function writeSelected(values){
+    try { window.localStorage.setItem(STORAGE_SELECTED, JSON.stringify(Array.from(new Set((values || []).map(String).filter(Boolean))))); } catch (_) {}
+  }
+  function writeQa(enabled){
+    try { window.localStorage.setItem(STORAGE_QA, enabled ? 'true' : 'false'); } catch (_) {}
+  }
+  function api(){ return window.LeagueAdminCardVisibilityV456 || window.ZonaOrientaleAdminCardVisibilityV456 || null; }
+  function applySoon(){
+    window.setTimeout(function(){
+      try { api()?.apply?.(); } catch (_) {}
+      try { decorate(); } catch (_) {}
+    }, 0);
+  }
+  function syncCardInput(input, nextChecked){
+    if (!input || input.disabled) return;
+    input.checked = Boolean(nextChecked);
+    const selected = new Set(readSelected());
+    const value = String(input.value || '');
+    if (input.checked) selected.add(value); else selected.delete(value);
+    writeSelected(Array.from(selected));
+    applySoon();
+  }
+  function syncQaInput(input, nextChecked){
+    if (!input || input.disabled) return;
+    input.checked = Boolean(nextChecked);
+    writeQa(input.checked);
+    applySoon();
+  }
+  function setAll(action){
+    const runtime = api();
+    if (!runtime || typeof runtime.getAdminCards !== 'function') return false;
+    const cards = runtime.getAdminCards() || [];
+    if (action === 'all') {
+      const values = cards.map((card) => String(card?.dataset?.adminCardVisibilityKeyV456 || '')).filter(Boolean);
+      writeSelected(values);
+    } else if (action === 'none') {
+      writeSelected([]);
+    } else return false;
+    applySoon();
+    return true;
+  }
+  function intercept(event){
+    const target = event.target;
+    if (!target || !target.closest) return;
+    const control = target.closest(`#${CONTROL_ID}`);
+    if (!control) return;
+
+    const actionButton = target.closest('[data-admin-card-action-v456]');
+    if (actionButton && control.contains(actionButton)) {
+      const action = actionButton.getAttribute('data-admin-card-action-v456');
+      if (setAll(action)) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+      }
+      return;
+    }
+
+    const label = target.closest('label.admin-card-selector-v456__option, label.admin-card-selector-v456__qa');
+    if (!label || !control.contains(label)) return;
+    const input = label.querySelector('input[type="checkbox"]');
+    if (!input || input.disabled) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+
+    const nextChecked = !input.checked;
+    if (input.matches('[data-admin-card-toggle-v456]')) syncCardInput(input, nextChecked);
+    else if (input.matches('[data-admin-qa-toggle-v456]')) syncQaInput(input, nextChecked);
+  }
+  function decorate(){
+    const control = document.getElementById(CONTROL_ID);
+    if (!control) return;
+    control.dataset.adminCheckboxHardfixV754 = 'true';
+    const eyebrow = control.querySelector('.admin-card-selector-v456__header .eyebrow');
+    if (eyebrow) eyebrow.textContent = 'Visibilità Admin · V754';
+    control.querySelectorAll('input[type="checkbox"]').forEach((input) => {
+      input.style.pointerEvents = 'auto';
+      input.style.position = 'relative';
+      input.style.zIndex = '20';
+      input.style.cursor = 'pointer';
+    });
+    control.querySelectorAll('label.admin-card-selector-v456__option, label.admin-card-selector-v456__qa').forEach((label) => {
+      label.style.pointerEvents = 'auto';
+      label.style.position = 'relative';
+      label.style.zIndex = '15';
+      label.style.cursor = 'pointer';
+      label.setAttribute('role', 'checkbox');
+    });
+  }
+  function boot(){ decorate(); }
+  document.addEventListener('click', intercept, true);
+  document.addEventListener('pointerup', intercept, true);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
+  try { new MutationObserver(decorate).observe(document.documentElement, { childList: true, subtree: true }); } catch (_) {}
+  [50, 250, 800, 2000, 5000].forEach((delay) => window.setTimeout(decorate, delay));
+  window.ZonaOrientaleAdminCardCheckboxHardfixV754 = Object.freeze({ version: VERSION, storageSelected: STORAGE_SELECTED, storageQa: STORAGE_QA, decorate, setAll });
+})();
