@@ -14,7 +14,8 @@
     "App aggiornata: nella lista giocatori della squadra, i giocatori con rumor/notizie più recenti vengono ordinati più in alto.",
     "Regola invariata: nessun rumor attivo su giocatori con ufficialità attiva.",
     "V751: KPI Giocatori allineato alla vista GIOCATORI effettiva (1052); le 1054 righe sorgente restano tracciate come playersSourceRows.",
-    "V751: service worker ioSudo reso più tollerante su mobile con precache non bloccante e navigazione network-first."
+    "V751: service worker ioSudo reso più tollerante su mobile con precache non bloccante e navigazione network-first.",
+    "V759: ioSudo carica un payload runtime compatto; il dataset completo resta disponibile come archivio tecnico."
   ],
   "teams": 20,
   "players": 1052,
@@ -30,7 +31,7 @@
   "duplicateIds": 0,
   "activeOfficialRumors": 0,
   "buildTag": "iosudo-v751",
-  "dataFile": "sudatori-data.json",
+  "dataFile": "sudatori-runtime.json",
   "counts": {
     "players": 1052,
     "officialMoves": 397,
@@ -51,5 +52,9 @@
   "sourceWorkbook": "v132_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v749.xlsx",
   "appVersion": "V751",
   "displayPlayers": 1052,
-  "playersSourceRows": 1054
+  "playersSourceRows": 1054,
+  "runtimePayloadVersion": "V759",
+  "runtimeDataBytes": 3684800,
+  "archiveDataFile": "sudatori-data.json",
+  "archiveDataBytes": 12432411
 }

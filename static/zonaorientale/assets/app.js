@@ -1,27 +1,89 @@
-import {
-  db,
-  auth,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  setDoc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  where,
-  serverTimestamp,
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  updateProfile,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from "./firebase.js";
+let db = null;
+let auth = null;
+let collection = null;
+let doc = null;
+let getDoc = null;
+let getDocs = null;
+let setDoc = null;
+let addDoc = null;
+let updateDoc = null;
+let deleteDoc = null;
+let query = null;
+let where = null;
+let serverTimestamp = null;
+let createUserWithEmailAndPassword = null;
+let sendEmailVerification = null;
+let updateProfile = null;
+let GoogleAuthProvider = null;
+let signInWithPopup = null;
+let signInWithEmailAndPassword = null;
+let signOut = null;
+let onAuthStateChanged = null;
+let firebaseRuntimePromiseV759 = null;
 
+async function ensureFirebaseRuntimeV759() {
+  if (firebaseRuntimePromiseV759) return firebaseRuntimePromiseV759;
+  firebaseRuntimePromiseV759 = import("./firebase.js")
+    .then((api) => {
+      db = api.db;
+      auth = api.auth;
+      collection = api.collection;
+      doc = api.doc;
+      getDoc = api.getDoc;
+      getDocs = api.getDocs;
+      setDoc = api.setDoc;
+      addDoc = api.addDoc;
+      updateDoc = api.updateDoc;
+      deleteDoc = api.deleteDoc;
+      query = api.query;
+      where = api.where;
+      serverTimestamp = api.serverTimestamp;
+      createUserWithEmailAndPassword = api.createUserWithEmailAndPassword;
+      sendEmailVerification = api.sendEmailVerification;
+      updateProfile = api.updateProfile;
+      GoogleAuthProvider = api.GoogleAuthProvider;
+      signInWithPopup = api.signInWithPopup;
+      signInWithEmailAndPassword = api.signInWithEmailAndPassword;
+      signOut = api.signOut;
+      onAuthStateChanged = api.onAuthStateChanged;
+      window.ZonaOrientaleFirebaseRuntimeV759 = Object.freeze({
+        version: "V759",
+        status: "ready",
+        loadedAt: new Date().toISOString(),
+        projectId: api.firebaseRuntimeInfoV499?.projectId || ""
+      });
+      return api;
+    })
+    .catch((error) => {
+      firebaseRuntimePromiseV759 = null;
+      window.ZonaOrientaleFirebaseRuntimeV759 = Object.freeze({
+        version: "V759",
+        status: "unavailable",
+        failedAt: new Date().toISOString(),
+        message: error?.message || String(error)
+      });
+      throw error;
+    });
+  return firebaseRuntimePromiseV759;
+}
+
+async function loadCollection(name) {
+  const api = await ensureFirebaseRuntimeV759();
+  try {
+    const snapshot = await api.getDocs(api.collection(api.db, name));
+    return snapshot.docs.map((documentSnapshot) => ({
+      id: documentSnapshot.id,
+      ...documentSnapshot.data()
+    }));
+  } catch (error) {
+    const code = error?.code ? `${error.code}: ` : "";
+    error.message = `Errore lettura raccolta ${name}. ${code}${error.message || error}`;
+    throw error;
+  }
+}
+
+
+import { createStaticFirstBootstrapV759 } from "../../fanta-engine/js/core/static-first-bootstrap-v759.js?v=759";
 import { installFeatureCardRegistryV497 } from "../../fanta-engine/js/core/feature-card-registry-v497.js?v=497";
 import { installDashboardCardsEngineV504 } from "../../fanta-engine/js/ui/dashboard-cards-engine-v504.js?v=504";
 import { installDashboardRendererHelpersV505, renderCollapsiblePanelV505 } from "../../fanta-engine/js/ui/dashboard-renderer-helpers-v505.js?v=505";
@@ -102,13 +164,12 @@ function createCalciomercatoArchiveAdminV340() {
     setExpanded: () => {}
   };
 }
-import { loadCollection } from "./js/data/firestore-service.js";
 import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=588";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=759";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -4789,6 +4850,7 @@ function makeEmptyRawDataV32() {
 
 async function getDocumentIfExistsV32(collectionName, documentId) {
   try {
+    await ensureFirebaseRuntimeV759();
     const snapshot = await getDoc(doc(db, collectionName, documentId));
     if (!snapshot.exists()) return null;
     return { id: snapshot.id, ...snapshot.data() };
@@ -8774,8 +8836,10 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV100() {
   });
 };
 
-setupAuth = function setupAuthV100() {
+setupAuth = function setupAuthV759() {
   ensureV34Dom();
+  if (state.authRuntimePromiseV759) return state.authRuntimePromiseV759;
+
   const openLoginBtn = document.getElementById("openLoginBtn");
   const logoutBtn = document.getElementById("logoutBtn");
   const loginDialog = document.getElementById("loginDialog");
@@ -8783,144 +8847,197 @@ setupAuth = function setupAuthV100() {
   const closeLoginBtn = document.getElementById("closeLoginBtn");
   const refreshBtn = document.getElementById("refreshBtn");
 
-  openLoginBtn?.addEventListener("click", () => {
-    if (loginDialog?.showModal) loginDialog.showModal();
-  });
-  closeLoginBtn?.addEventListener("click", () => loginDialog?.close());
-  logoutBtn?.addEventListener("click", async () => signOut(auth));
-  refreshBtn?.addEventListener("click", async () => {
-    try {
-      await loadDataForCurrentAuthV100({ render: true });
-    } catch (error) {
-      console.error(error);
-      setError(`Aggiornamento dati non riuscito. ${error?.message || error}`);
-    }
-  });
+  if (!state.authUiBoundV759) {
+    state.authUiBoundV759 = true;
+    openLoginBtn?.addEventListener("click", () => {
+      if (loginDialog?.showModal) loginDialog.showModal();
+    });
+    closeLoginBtn?.addEventListener("click", () => loginDialog?.close());
+    logoutBtn?.addEventListener("click", async () => {
+      await ensureFirebaseRuntimeV759();
+      await signOut(auth);
+    });
+    refreshBtn?.addEventListener("click", async () => {
+      try {
+        await loadDataForCurrentAuthV100({ render: true, reason: "manual-refresh-v759" });
+      } catch (error) {
+        console.error(error);
+        setError(`Aggiornamento dati non riuscito. ${error?.message || error}`);
+      }
+    });
 
-  loginForm?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const email = document.getElementById("loginEmail")?.value.trim();
-    const password = document.getElementById("loginPassword")?.value;
-    showMessage("loginStatus", "Accesso in corso...");
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      loginDialog?.close();
-    } catch (error) {
-      console.error(error);
-      showMessage("loginStatus", "Login non riuscito. Controlla email e password.", true);
-    }
-  });
+    loginForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const email = document.getElementById("loginEmail")?.value.trim();
+      const password = document.getElementById("loginPassword")?.value;
+      showMessage("loginStatus", "Accesso in corso...");
+      try {
+        await ensureFirebaseRuntimeV759();
+        await signInWithEmailAndPassword(auth, email, password);
+        loginDialog?.close();
+      } catch (error) {
+        console.error(error);
+        showMessage("loginStatus", "Login non riuscito. Controlla email e password.", true);
+      }
+    });
 
-  document.getElementById("registerEmailBtn")?.addEventListener("click", async () => {
-    const email = document.getElementById("loginEmail")?.value.trim();
-    const password = document.getElementById("loginPassword")?.value;
-    const displayName = email;
-    if (!email || !password) {
-      showMessage("loginStatus", "Inserisci email e password per registrarti.", true);
-      return;
-    }
-    try {
-      showMessage("loginStatus", "Registrazione in corso...");
-      const credential = await createUserWithEmailAndPassword(auth, email, password);
-      if (displayName) await updateProfile(credential.user, { displayName });
-      await sendEmailVerification(credential.user);
-      await upsertPendingUserV34(credential.user, "EMAIL_NOT_VERIFIED");
-      showMessage("loginStatus", "Registrazione completata. Controlla la mail e verifica l'indirizzo prima dell'approvazione admin.");
-    } catch (error) {
-      console.error(error);
-      showMessage("loginStatus", error?.message || "Registrazione non riuscita.", true);
-    }
-  });
-
-  document.getElementById("sendVerificationAgainBtn")?.addEventListener("click", async () => {
-    try {
-      if (!auth.currentUser) {
-        showMessage("loginStatus", "Accedi prima di richiedere una nuova verifica.", true);
+    document.getElementById("registerEmailBtn")?.addEventListener("click", async () => {
+      const email = document.getElementById("loginEmail")?.value.trim();
+      const password = document.getElementById("loginPassword")?.value;
+      const displayName = email;
+      if (!email || !password) {
+        showMessage("loginStatus", "Inserisci email e password per registrarti.", true);
         return;
       }
-      await sendEmailVerification(auth.currentUser);
-      showMessage("loginStatus", "Email di verifica inviata nuovamente.");
-    } catch (error) {
-      console.error(error);
-      showMessage("loginStatus", "Non riesco a inviare la verifica email.", true);
-    }
-  });
-
-  document.getElementById("loginGoogleBtn")?.addEventListener("click", async () => {
-    try {
-      showMessage("loginStatus", "Accesso Google in corso...");
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      await upsertPendingUserV34(result.user, "PENDING");
-      loginDialog?.close();
-    } catch (error) {
-      console.error(error);
-      showMessage("loginStatus", error?.message || "Accesso Google non riuscito.", true);
-    }
-  });
-
-  if (unsubscribeAuthV100) unsubscribeAuthV100();
-  unsubscribeAuthV100 = onAuthStateChanged(auth, async (user) => {
-    state.user = user;
-    state.isAdmin = false;
-    state.currentTeamUser = null;
-    state.currentPendingUser = null;
-
-    if (user) {
       try {
-        try {
-          const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
-          state.isAdmin = adminSnapshot.exists();
-        } catch (adminError) {
-          if (adminError?.code === "permission-denied") state.isAdmin = false;
-          else throw adminError;
+        showMessage("loginStatus", "Registrazione in corso...");
+        await ensureFirebaseRuntimeV759();
+        const credential = await createUserWithEmailAndPassword(auth, email, password);
+        if (displayName) await updateProfile(credential.user, { displayName });
+        await sendEmailVerification(credential.user);
+        await upsertPendingUserV34(credential.user, "EMAIL_NOT_VERIFIED");
+        showMessage("loginStatus", "Registrazione completata. Controlla la mail e verifica l'indirizzo prima dell'approvazione admin.");
+      } catch (error) {
+        console.error(error);
+        showMessage("loginStatus", error?.message || "Registrazione non riuscita.", true);
+      }
+    });
+
+    document.getElementById("sendVerificationAgainBtn")?.addEventListener("click", async () => {
+      try {
+        await ensureFirebaseRuntimeV759();
+        if (!auth.currentUser) {
+          showMessage("loginStatus", "Accedi prima di richiedere una nuova verifica.", true);
+          return;
         }
+        await sendEmailVerification(auth.currentUser);
+        showMessage("loginStatus", "Email di verifica inviata nuovamente.");
+      } catch (error) {
+        console.error(error);
+        showMessage("loginStatus", "Non riesco a inviare la verifica email.", true);
+      }
+    });
 
-        if (!state.isAdmin) {
-          const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch(() => null);
-          if (teamSnapshot?.exists?.()) state.currentTeamUser = { id: teamSnapshot.id, ...teamSnapshot.data() };
+    document.getElementById("loginGoogleBtn")?.addEventListener("click", async () => {
+      try {
+        showMessage("loginStatus", "Accesso Google in corso...");
+        await ensureFirebaseRuntimeV759();
+        const provider = new GoogleAuthProvider();
+        const result = await signInWithPopup(auth, provider);
+        await upsertPendingUserV34(result.user, "PENDING");
+        loginDialog?.close();
+      } catch (error) {
+        console.error(error);
+        showMessage("loginStatus", error?.message || "Accesso Google non riuscito.", true);
+      }
+    });
+  }
 
-          const pendingSnapshot = await getDoc(doc(db, "pendingUsers", user.uid)).catch(() => null);
-          if (pendingSnapshot?.exists?.()) state.currentPendingUser = { id: pendingSnapshot.id, ...pendingSnapshot.data() };
+  state.authRuntimePromiseV759 = ensureFirebaseRuntimeV759().then(() => {
+    if (unsubscribeAuthV100) unsubscribeAuthV100();
+    unsubscribeAuthV100 = onAuthStateChanged(auth, async (user) => {
+      state.user = user;
+      state.isAdmin = false;
+      state.currentTeamUser = null;
+      state.currentPendingUser = null;
 
-          if (!state.currentTeamUser && !state.currentPendingUser) {
-            if (isEmailPasswordUserV34(user) && !user.emailVerified) await upsertPendingUserV34(user, "EMAIL_NOT_VERIFIED");
-            else await upsertPendingUserV34(user, "PENDING");
-          } else if (state.currentPendingUser?.status === "EMAIL_NOT_VERIFIED" && user.emailVerified) {
-            await upsertPendingUserV34(user, "PENDING");
+      if (user) {
+        try {
+          try {
+            const adminSnapshot = await getDoc(doc(db, "admins", user.uid));
+            state.isAdmin = adminSnapshot.exists();
+          } catch (adminError) {
+            if (adminError?.code === "permission-denied") state.isAdmin = false;
+            else throw adminError;
           }
+
+          if (!state.isAdmin) {
+            const teamSnapshot = await getDoc(doc(db, "teamUsers", user.uid)).catch(() => null);
+            if (teamSnapshot?.exists?.()) state.currentTeamUser = { id: teamSnapshot.id, ...teamSnapshot.data() };
+
+            const pendingSnapshot = await getDoc(doc(db, "pendingUsers", user.uid)).catch(() => null);
+            if (pendingSnapshot?.exists?.()) state.currentPendingUser = { id: pendingSnapshot.id, ...pendingSnapshot.data() };
+
+            if (!state.currentTeamUser && !state.currentPendingUser) {
+              if (isEmailPasswordUserV34(user) && !user.emailVerified) await upsertPendingUserV34(user, "EMAIL_NOT_VERIFIED");
+              else await upsertPendingUserV34(user, "PENDING");
+            } else if (state.currentPendingUser?.status === "EMAIL_NOT_VERIFIED" && user.emailVerified) {
+              await upsertPendingUserV34(user, "PENDING");
+            }
+          }
+        } catch (error) {
+          console.error(error);
+          showMessage("loginStatus", `Controllo account fallito. ${error?.message || error}`, true);
+        }
+      }
+
+      updateAdminVisibility();
+      updateUserVisibilityV34();
+
+      try {
+        const hasPublicData = Boolean(
+          state.usedPublicSnapshots &&
+          (state.raw?.seasonTeams?.length || state.raw?.competitions?.length || state.raw?.rosterEntries?.length)
+        );
+        if (hasPublicData) {
+          renderAll();
+          setError("");
+        } else {
+          await loadDataForCurrentAuthV100({ render: true, reason: "auth-state-v759" });
         }
       } catch (error) {
         console.error(error);
-        showMessage("loginStatus", `Controllo account fallito. ${error?.message || error}`, true);
+        setError(`Non riesco a caricare i dati. ${error?.message || error}`);
       }
-    }
 
-    updateAdminVisibility();
-    updateUserVisibilityV34();
-
-    try {
-      await loadDataForCurrentAuthV100({ render: true });
-    } catch (error) {
-      console.error(error);
-      setError(`Non riesco a caricare i dati. ${error?.message || error}`);
-    }
-
-    updateAdminVisibility();
-    updateUserVisibilityV34();
-    renderUserAreaV34();
-    try {
-      scheduleBootPreloaderReadyV560("auth-data-render-complete");
-    } catch (preloaderError) {
-      console.warn("Boot preloader V560: segnale render non inviato", preloaderError);
-    }
+      updateAdminVisibility();
+      updateUserVisibilityV34();
+      renderUserAreaV34();
+      window.dispatchEvent(new CustomEvent("fanta:auth-state-v759", { detail: { user } }));
+      try {
+        scheduleBootPreloaderReadyV560("auth-state-ready-v759");
+      } catch (preloaderError) {
+        console.warn("Boot preloader V560: segnale render non inviato", preloaderError);
+      }
+    });
+    return true;
+  }).catch((error) => {
+    state.authRuntimePromiseV759 = null;
+    state.firebaseUnavailableV759 = {
+      at: new Date().toISOString(),
+      message: error?.message || String(error)
+    };
+    throw error;
   });
+
+  return state.authRuntimePromiseV759;
 };
 
-initializeAppUi = async function initializeAppUiV100() {
+const zonaStaticFirstBootstrapV759 = createStaticFirstBootstrapV759({
+  loadPublicData: () => loadDataForCurrentAuthV100({ render: true, reason: "startup-static-v759" }),
+  startAuth: () => setupAuth(),
+  hasUsableData: () => Boolean(
+    state.usedPublicSnapshots &&
+    state.raw?.seasons?.length &&
+    (state.raw?.seasonTeams?.length || state.raw?.competitions?.length || state.raw?.rosterEntries?.length)
+  ),
+  onDiagnostic: (diagnostic) => {
+    state.bootstrapV759 = diagnostic;
+    window.ZonaOrientaleBootstrapV759 = diagnostic;
+  },
+  onPublicReady: () => {
+    setError("");
+    try { scheduleBootPreloaderReadyV560("public-static-ready-v759"); } catch (_) {}
+  },
+  onPublicError: (error) => {
+    setError(`Dati pubblici non disponibili. ${error?.message || error}`);
+  },
+  logger: console
+});
+
+initializeAppUi = async function initializeAppUiV759() {
   setupNavigation();
   setupMobileNavigation();
-  setupAuth();
   setupSeasonSelectorEvents();
   setupListoneEvents();
   setupClubRosterEvents();
@@ -8928,14 +9045,20 @@ initializeAppUi = async function initializeAppUiV100() {
 
   const loginHelpText = document.querySelector("#loginDialog .muted");
   if (loginHelpText) loginHelpText.textContent = "Accedi con l'utente creato in Firebase Authentication.";
+
+  return zonaStaticFirstBootstrapV759.start();
 };
 
-function startZonaOrientaleAppV173() {
-  return initializeAppUi().then(() => {
+async function startZonaOrientaleAppV173() {
+  try {
+    await initializeAppUi();
+  } catch (error) {
+    console.error("Bootstrap pubblico V759 non completato", error);
+  } finally {
     setupThemeToggleV89();
     injectDisplayModeToggle();
     updateMobileUxClass();
-  });
+  }
 }
 
 /* V110 - Nomi competizione da JSON statico come fonte primaria. */
@@ -16136,7 +16259,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "569";
+const DEPLOY_EXPECTED_VERSION_V181 = "759";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -16444,7 +16567,8 @@ document.addEventListener("click", (event) => {
   }
 }, true);
 
-onAuthStateChanged(auth, (user) => {
+window.addEventListener("fanta:auth-state-v759", (event) => {
+  const user = event?.detail?.user || null;
   const uid = user?.uid || "";
   const changed = lastAuthUidV182 !== undefined && lastAuthUidV182 !== uid;
   lastAuthUidV182 = uid;
@@ -21632,237 +21756,10 @@ window.ZonaOrientaleMantraRoleFiltersV441 = Object.freeze({
 
 
 
-/* V758 - Emergency static-first data loader.
- * Il sito deve aprirsi anche quando Firebase/Auth non risponde su mobile.
- * Carica subito assets/snapshots statici e poi, solo se possibile, lascia l'admin usare il live.
+/* V759 - Static-first startup is now structural.
+ * The public UI loads from local config/snapshots before Firebase is imported.
+ * Firebase/Auth starts lazily after the first usable render; V758 watchdog overrides removed.
  */
-(function zonaOrientaleStaticDataEmergencyV758(){
-  const VERSION = 'V758';
-  const VERSION_LABEL = 'Fantacalcio - V758 - Aggiornato al 21/07/2026';
-  const CURRENT_SEASON_ID = '2026-2027';
-  const STATIC_BASE = './assets/snapshots';
-  const LOAD_TIMEOUT_MS = 3200;
-
-  function withBust(url){
-    const sep = String(url).includes('?') ? '&' : '?';
-    return `${url}${sep}v=${VERSION}-${Date.now()}`;
-  }
-
-  async function fetchJsonV758(url){
-    const response = await fetch(withBust(url), { cache: 'no-store' });
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText} su ${url}`);
-    return response.json();
-  }
-
-  function timeoutV758(ms, label){
-    return new Promise((_, reject) => window.setTimeout(() => reject(new Error(`${label || 'operazione'} oltre ${ms}ms`)), ms));
-  }
-
-  function safeArray(value){ return Array.isArray(value) ? value : []; }
-
-  function buildRawShellV758(){
-    const raw = (typeof makeEmptyRawDataV34 === 'function') ? makeEmptyRawDataV34() : ((typeof makeEmptyRawDataV32 === 'function') ? makeEmptyRawDataV32() : {});
-    ['leagueSettings','seasons','presidents','teams','seasonTeams','stadiums','competitions','competitionMatches','competitionResults','honorRoll','fifaRankings','rosterEntries','fmMovements','news','pendingUsers','teamUsers','teamRequests','publicTeamSnapshots'].forEach((key) => {
-      if (!Array.isArray(raw[key])) raw[key] = [];
-    });
-    return raw;
-  }
-
-  async function loadManifestV758(){
-    try {
-      const manifest = await fetchJsonV758(`${STATIC_BASE}/seasons/manifest.json`);
-      const rows = safeArray(manifest.snapshots);
-      if (rows.length) return rows;
-    } catch (error) {
-      console.warn('[V758] manifest statico non disponibile, uso stagione corrente', error);
-    }
-    return [{ seasonId: CURRENT_SEASON_ID, file: `${CURRENT_SEASON_ID}.json`, generatedAt: new Date().toISOString() }];
-  }
-
-  function buildSeasonsFromManifestV758(rows){
-    return safeArray(rows).map((item, index) => ({
-      id: String(item.seasonId || item.id || '').trim(),
-      seasonId: String(item.seasonId || item.id || '').trim(),
-      name: String(item.seasonId || item.id || '').trim(),
-      label: String(item.seasonId || item.id || '').trim(),
-      isCurrent: String(item.seasonId || item.id || '') === CURRENT_SEASON_ID || index === 0,
-      generatedAt: item.generatedAt || '',
-      source: 'static-snapshot-v758'
-    })).filter((item) => item.id);
-  }
-
-  async function loadSeasonSnapshotStaticV758(seasonId){
-    const id = String(seasonId || CURRENT_SEASON_ID).trim() || CURRENT_SEASON_ID;
-    return fetchJsonV758(`${STATIC_BASE}/seasons/${encodeURIComponent(id)}.json`);
-  }
-
-  async function loadHonorStaticV758(){
-    try {
-      const honor = await fetchJsonV758(`${STATIC_BASE}/honor.json`);
-      return honor?.snapshot || honor || null;
-    } catch (error) {
-      console.warn('[V758] honor statico non disponibile', error);
-      return null;
-    }
-  }
-
-  function applyHonorStaticV758(raw, honor){
-    if (!honor) return;
-    raw.honorRoll = safeArray(honor.honorRoll || honor.honorRows || honor.rows);
-    raw.fifaRankings = safeArray(honor.fifaRankings || honor.fifaRanking || honor.rankings);
-    try { state.publicHonorSnapshot = honor; } catch (_) {}
-  }
-
-  function patchGenericSvincoliV758(raw){
-    const canon = {
-      '2026_2027_team_001|47': 'SVINCOLI LUGLIO 2026: Malinovskyi (5); Coulibaly L. (13); Fadera (8); Vandeputte (11);',
-      '2026_2027_ft1tqdqi18iuh3l1lakq|87': 'SVINCOLI LUGLIO 2026: Hermoso (13); Tsimikas (3); Terracciano F. (7); Cabal (6); Canestrelli (5); Mandragora (17); Bresciani (10); Helgason (2); Berisha M. (7); Tourè I. (5); Sanabria (4); Spulci (8)',
-      '2026_2027_team_002|142': 'SVINCOLI LUGLIO 2026: Di Gregorio (15); Luperto (8); Caracciolo A. (6); Baschirotto (9); Coco (9); Kempf (16); Thorsby (12); Konè I. (17); Pedro (16); Nzola (10); Banda (15); Ratkov (9)',
-      '2026_2027_y3vmcdwvut0u1tlsg4qc|103': 'SVINCOLI LUGLIO 2026: Mina (9); Lazaro (4); Celik (14); Delprato (10); Sottil (8); Gaetano (13); Fagioli (11); Elmas (7); Zaragoza (4); Kilicsoy (13); Durosinmi (10)',
-      '2026_2027_7bx0cegbxtf4fwh6t0pi|76': 'SVINCOLI LUGLIO 2026: Perin (8); Djimsiti (7); De Winter (6); Maldini (10); Musah (5); Ellertsson (8); Sulemana I. (6); Anjorin (2); Orban G. (14); Dallinga (6); Kulenovic (4)',
-      '2026_2027_h6saek7urqiqnmiztrt7|51': 'SVINCOLI LUGLIO 2026: Sommer (13); Moreno Alb. (9); Mkhitaryan (14); Loyola (5); Fullkrug (10)'
-    };
-    let changed = 0;
-    safeArray(raw.fmMovements).forEach((movement) => {
-      if (String(movement?.type || '').toUpperCase() !== 'SVINCOLO') return;
-      const key = `${movement.seasonTeamId || ''}|${Number(movement.amount || 0)}`;
-      const current = String(movement.description || '').trim();
-      if (canon[key] && (!current || current === 'SVINCOLI LUGLIO 2026')) {
-        movement.description = canon[key];
-        movement.staticRepairV758 = true;
-        changed += 1;
-      }
-    });
-    return changed;
-  }
-
-  async function applyStaticDataV758(options = {}){
-    const reason = options.reason || 'static-first';
-    const render = options.render !== false;
-    const selectedBefore = String(state.selectedSeasonId || '').trim();
-    const manifestRows = await loadManifestV758();
-    const seasons = buildSeasonsFromManifestV758(manifestRows);
-    const seasonId = String(options.seasonId || selectedBefore || CURRENT_SEASON_ID || seasons[0]?.id || '').trim() || CURRENT_SEASON_ID;
-    const [snapshot, honor] = await Promise.all([
-      loadSeasonSnapshotStaticV758(seasonId),
-      loadHonorStaticV758()
-    ]);
-
-    const raw = buildRawShellV758();
-    raw.leagueSettings = [{
-      id: 'main',
-      currentSeasonId: CURRENT_SEASON_ID,
-      name: 'ZonaOrientale Salerno',
-      source: 'static-emergency-v758'
-    }];
-    raw.seasons = seasons.length ? seasons : [{ id: CURRENT_SEASON_ID, seasonId: CURRENT_SEASON_ID, name: CURRENT_SEASON_ID, isCurrent: true }];
-    raw.presidents = safeArray(snapshot.presidents);
-    raw.teams = safeArray(snapshot.teams);
-    raw.seasonTeams = safeArray(snapshot.seasonTeams);
-    raw.stadiums = safeArray(snapshot.stadiums);
-    raw.competitions = safeArray(snapshot.competitions);
-    raw.competitionMatches = safeArray(snapshot.competitionMatches);
-    raw.competitionResults = safeArray(snapshot.competitionResults);
-    raw.rosterEntries = safeArray(snapshot.rosterEntries);
-    raw.fmMovements = safeArray(snapshot.fmMovements);
-    raw.news = safeArray(snapshot.news);
-    applyHonorStaticV758(raw, honor);
-    const repaired = patchGenericSvincoliV758(raw);
-
-    state.raw = raw;
-    state.selectedSeasonId = seasonId;
-    state.hasFullData = false;
-    state.usedPublicSnapshots = true;
-    state.staticEmergencyV758 = { reason, seasonId, at: new Date().toISOString(), repairedSvincoli: repaired };
-
-    try { state.publicSeasonSnapshots = state.publicSeasonSnapshots || {}; state.publicSeasonSnapshots[seasonId] = snapshot; } catch (_) {}
-    try { await zonaDataRepositoryV222.loadStaticAssets(); } catch (error) { console.warn('[V758] asset statici secondari non caricati', error); }
-    try { if (typeof mergeStaticCompetitionCalendarsForSeasonV101 === 'function') mergeStaticCompetitionCalendarsForSeasonV101(seasonId); } catch (error) { console.warn('[V758] merge calendari statici non riuscito', error); }
-    try { sortData(); } catch (error) { console.warn('[V758] sortData non riuscito', error); }
-    if (render) {
-      try { renderAll(); } catch (error) { console.error('[V758] renderAll statico non riuscito', error); throw error; }
-      try { if (typeof setError === 'function') setError(''); } catch (_) {}
-      try { if (typeof scheduleBootPreloaderReadyV560 === 'function') scheduleBootPreloaderReadyV560('static-emergency-v758'); } catch (_) {}
-      try { window.dispatchEvent(new CustomEvent('fanta:app-rendered-v560', { detail: { version: VERSION, source: reason } })); } catch (_) {}
-    }
-    try { window.ZonaOrientaleStaticDataEmergencyV758 = Object.freeze({ version: VERSION, ...state.staticEmergencyV758 }); } catch (_) {}
-    return true;
-  }
-
-  const previousLoadDataForCurrentAuthV100 = typeof loadDataForCurrentAuthV100 === 'function' ? loadDataForCurrentAuthV100 : null;
-  if (previousLoadDataForCurrentAuthV100) {
-    loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV758(options = {}){
-      // Pubblico/mobile: niente attesa Firebase. Render statico immediato.
-      if (!state.isAdmin) return applyStaticDataV758({ ...options, reason: 'public-static-v758' });
-      try {
-        return await Promise.race([
-          previousLoadDataForCurrentAuthV100.call(this, options),
-          timeoutV758(LOAD_TIMEOUT_MS, 'caricamento live admin')
-        ]);
-      } catch (error) {
-        console.warn('[V758] live non disponibile, fallback statico', error);
-        return applyStaticDataV758({ ...options, reason: 'admin-live-fallback-v758' });
-      }
-    };
-  }
-
-  loadData = async function loadDataV758(){
-    return loadDataForCurrentAuthV100({ render: true });
-  };
-
-  const previousSetupSeasonSelectorEvents = typeof setupSeasonSelectorEvents === 'function' ? setupSeasonSelectorEvents : null;
-  setupSeasonSelectorEvents = function setupSeasonSelectorEventsV758(){
-    previousSetupSeasonSelectorEvents?.();
-    const select = document.getElementById('globalSeasonSelect');
-    if (!select || select.dataset.staticV758Bound) return;
-    select.dataset.staticV758Bound = 'true';
-    select.addEventListener('change', (event) => {
-      if (state.isAdmin && state.hasFullData) return;
-      event.stopImmediatePropagation();
-      state.selectedSeasonId = event.target.value;
-      state.selectedListoneId = '';
-      applyStaticDataV758({ seasonId: state.selectedSeasonId, render: true, reason: 'season-change-v758' }).catch((error) => {
-        console.error('[V758] cambio stagione statico fallito', error);
-        try { if (typeof setError === 'function') setError(`Cambio stagione non riuscito. ${error?.message || error}`); } catch (_) {}
-      });
-    }, true);
-  };
-
-  const previousInitializeAppUi = typeof initializeAppUi === 'function' ? initializeAppUi : null;
-  if (previousInitializeAppUi) {
-    initializeAppUi = async function initializeAppUiV758(){
-      const result = await previousInitializeAppUi.apply(this, arguments);
-      window.setTimeout(() => {
-        const hasData = Boolean(state.raw?.seasonTeams?.length || state.raw?.competitions?.length || state.raw?.rosterEntries?.length);
-        if (!hasData || !state.staticEmergencyV758) {
-          applyStaticDataV758({ render: true, reason: 'startup-independent-v758' }).catch((error) => {
-            console.error('[V758] bootstrap statico fallito', error);
-            try { if (typeof setError === 'function') setError(`Dati statici non caricati. ${error?.message || error}`); } catch (_) {}
-          });
-        }
-      }, 0);
-      window.setTimeout(() => {
-        const hasRows = Boolean(state.raw?.seasonTeams?.length || state.raw?.rosterEntries?.length);
-        if (!hasRows) {
-          applyStaticDataV758({ render: true, reason: 'startup-watchdog-v758' }).catch((error) => console.error('[V758] watchdog statico fallito', error));
-        }
-      }, 1800);
-      return result;
-    };
-  }
-
-  function forceFooterV758(){
-    const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
-    const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
-    targets.forEach((node) => { if (node) { node.textContent = VERSION_LABEL; node.dataset.footerVersionV758 = VERSION; } });
-  }
-
-  window.forceStaticDataV758 = () => applyStaticDataV758({ render: true, reason: 'manual-console-v758' });
-  window.forceFooterV758 = forceFooterV758;
-  document.addEventListener('DOMContentLoaded', forceFooterV758, { once: true });
-  window.addEventListener('load', forceFooterV758, { once: true });
-  [0, 250, 1000, 2500, 6000].forEach((delay) => window.setTimeout(forceFooterV758, delay));
-})();
 
 /* V560 - Segnale boot preloader tarato su interfaccia realmente interattiva.
    Non modifica router, Firebase o EmailJS: differisce solo l'evento di chiusura overlay
@@ -40919,7 +40816,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V691 - Profili squadra mobile: responsive finale e footer version guard robusto. */
 (function fantaSiteProfileResponsiveFooterV691() {
   const VERSION = 'V694';
-  const VERSION_LABEL = 'Fantacalcio - V694 - Aggiornato al 16/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
 
   function safeHtmlV691(value) {
     return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '');
@@ -41035,7 +40932,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V692 - Rose mobile: movimenti TUTTE LE ROSE fuori dalla table + profilo scuro. */
 (function fantaSiteMobileRostersAndProfileV692() {
   const VERSION = 'V694';
-  const VERSION_LABEL = 'Fantacalcio - V694 - Aggiornato al 16/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
 
   function isMobileV692() {
     return Boolean(window.matchMedia && window.matchMedia('(max-width: 900px)').matches);
@@ -41202,7 +41099,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V694 - Profilo squadra: movimenti con stesso stile delle card TUTTE LE ROSE + footer definitivo. */
 (function fantaSiteProfileMovementsV694(){
   const VERSION = 'V694';
-  const VERSION_LABEL = 'Fantacalcio - V694 - Aggiornato al 16/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
   function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
   function safe(value){ return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '').replace(/[&<>"']/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]); }); }
   function fm(value){ return typeof formatFm === 'function' ? formatFm(value || 0) : safe(value || 0); }
@@ -41272,7 +41169,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V698 - Profilo squadra: movimenti con note visibili e footer 16/07/2026. */
 (function fantaSiteProfileMovementsV698(){
   const VERSION = 'V698';
-  const VERSION_LABEL = 'Fantacalcio - V698 - Aggiornato al 16/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
   function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
   function safe(value){ return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '').replace(/[&<>"']/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]); }); }
   function fm(value){ return typeof formatFm === 'function' ? formatFm(value || 0) : safe(value || 0); }
@@ -41337,7 +41234,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V751 - Static svincoli canonical repair + robust Tutte le Rose navigation/toggle. */
 (function fantaSiteRosterSvincoliAndNavigationV751(){
   const VERSION = 'V751';
-  const VERSION_LABEL = 'Fantacalcio - V751 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
   const CANONICAL_SVINCOLI = Object.freeze({
     '2026_2027_team_001': { amount: 47, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Malinovskyi (5); Coulibaly L. (13); Fadera (8); Vandeputte (11);' },
     '2026_2027_ft1tqdqi18iuh3l1lakq': { amount: 87, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Hermoso (13); Tsimikas (3); Terracciano F. (7); Cabal (6); Canestrelli (5); Mandragora (17); Bresciani (10); Helgason (2); Berisha M. (7); Tourè I. (5); Sanabria (4); Spulci (8)' },
@@ -41533,7 +41430,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V755 - Team profile movement descriptions + singleton Tutte le Rose mobile focus. */
 (function fantaSiteRosterNavigationAndMovementDescriptionsV755(){
   const VERSION = 'V755';
-  const VERSION_LABEL = 'Fantacalcio - V755 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
 
   function isMobileLikeV755(){
     try {
@@ -41702,94 +41599,17 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 })();
 
 
-/* V756 - Mobile boot hard-fail-safe and footer cache-buster.
-   Il loader e' solo cosmetico: su smartphone non deve mai bloccare la pagina. */
-(function zonaOrientaleMobileBootHardfixV756(){
-  const VERSION = 'V756';
-  const VERSION_LABEL = 'Fantacalcio - V757 - Aggiornato al 21/07/2026';
-  function forceFooter(){
-    try {
-      document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
-        if (!node) return;
-        node.textContent = VERSION_LABEL;
-        node.dataset.footerVersionV756 = VERSION;
-      });
-    } catch (_) {}
+/* V759 - Footer coerente con il bootstrap strutturale.
+   Nessun watchdog: l'HTML contiene gia' la versione corretta. */
+(function zonaOrientaleFooterV759(){
+  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+  function apply(){
+    document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
+      if (!node) return;
+      node.textContent = VERSION_LABEL;
+      node.dataset.footerVersionV759 = 'V759';
+    });
   }
-  function hideBoot(reason){
-    try {
-      if (typeof window.forceHideBootV756 === 'function') return window.forceHideBootV756(reason || 'app-v756');
-      const overlay = document.getElementById('fantaBootPreloader');
-      document.documentElement.classList.remove('fanta-boot-preloader-active');
-      if (overlay) {
-        overlay.classList.add('is-hidden','is-force-hidden-v756');
-        overlay.hidden = true;
-        overlay.setAttribute('aria-hidden','true');
-        overlay.style.setProperty('display','none','important');
-        overlay.style.setProperty('opacity','0','important');
-        overlay.style.setProperty('visibility','hidden','important');
-        overlay.style.setProperty('pointer-events','none','important');
-      }
-    } catch (_) {}
-  }
-  function signalReady(reason){
-    try { window.dispatchEvent(new CustomEvent('fanta:app-rendered-v560', { detail: { version: VERSION, source: reason || 'v756-failsafe' } })); } catch (_) {}
-  }
-  function boot(reason){
-    forceFooter();
-    signalReady(reason || 'boot');
-    window.setTimeout(() => hideBoot(reason || 'boot'), 3500);
-  }
-  try {
-    window.ZonaOrientaleMobileBootHardfixV756 = Object.freeze({ version: VERSION, hideBoot, signalReady, forceFooter });
-  } catch (_) {}
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => boot('domcontentloaded-v756'), { once: true });
-  else boot('already-ready-v756');
-  window.addEventListener('load', () => boot('load-v756'), { once: true });
-  [1200, 2800, 5200, 8500, 12000].forEach((delay) => window.setTimeout(() => { forceFooter(); hideBoot('timer-' + delay); }, delay));
-})();
-
-
-/* V757 - No boot loader emergency fix.
-   Disattiva completamente il caricamento iniziale: il sito deve essere utilizzabile subito,
-   specialmente da mobile. Mantiene compatibilita' con eventuali chiamate legacy V756. */
-(function zonaOrientaleNoBootLoaderV757(){
-  const VERSION = 'V757';
-  const VERSION_LABEL = 'Fantacalcio - V757 - Aggiornato al 21/07/2026';
-  function killBoot(reason){
-    try {
-      document.documentElement.classList.remove('fanta-boot-preloader-active');
-      document.querySelectorAll('#fantaBootPreloader,.fanta-boot-preloader').forEach((overlay) => {
-        if (!overlay) return;
-        overlay.classList.add('is-hidden','is-force-hidden-v757','is-no-boot-v757');
-        overlay.hidden = true;
-        overlay.setAttribute('aria-hidden','true');
-        overlay.style.setProperty('display','none','important');
-        overlay.style.setProperty('opacity','0','important');
-        overlay.style.setProperty('visibility','hidden','important');
-        overlay.style.setProperty('pointer-events','none','important');
-      });
-      document.body && document.body.style && document.body.style.setProperty('overflow','auto','important');
-      window.ZonaOrientaleNoBootLoaderV757 = { version: VERSION, reason: reason || 'manual', at: new Date().toISOString() };
-    } catch (_) {}
-  }
-  function forceFooter(){
-    try {
-      document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
-        if (!node) return;
-        node.textContent = VERSION_LABEL;
-        node.dataset.footerVersionV757 = VERSION;
-      });
-    } catch (_) {}
-  }
-  try {
-    window.forceHideBootV757 = killBoot;
-    window.forceHideBootV756 = killBoot;
-    window.ZonaOrientaleNoBootLoaderApiV757 = Object.freeze({ version: VERSION, killBoot, forceFooter });
-  } catch (_) {}
-  function run(reason){ killBoot(reason); forceFooter(); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => run('domcontentloaded-v757'), { once: true });
-  else run('already-ready-v757');
-  window.addEventListener('load', () => run('load-v757'), { once: true });
-  [0, 50, 150, 500, 1500, 4000, 9000, 15000].forEach((delay) => window.setTimeout(() => run('timer-v757-' + delay), delay));
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, { once: true });
+  else apply();
 })();

@@ -1,6 +1,11 @@
 import { COLLECTIONS } from "../core/constants.js";
 import { state } from "../core/state.js";
-import { loadCollection as defaultLoadCollection } from "./firestore-service.js";
+
+async function defaultLoadCollection(name) {
+  const module = await import("./firestore-service.js");
+  return module.loadCollection(name);
+}
+
 import {
   loadListoniData as defaultLoadListoniData,
   loadRostersData as defaultLoadRostersData,

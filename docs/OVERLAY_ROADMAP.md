@@ -1,3 +1,14 @@
+# Overlay Roadmap
+
+## V759 - 21/07/2026 - Bootstrap static-first duraturo
+- Dati pubblici caricati e renderizzati prima di Firebase/Auth.
+- Firebase e Firestore spostati fuori dal grafo iniziale tramite import dinamico.
+- Rimossi watchdog/override emergenziali V756-V758 del boot.
+- URL del modulo league-config unificata a V759.
+- Cache policy esplicita per JSON mutabili.
+- ioSudo usa payload runtime compatto: -70,4% rispetto al dataset archivio.
+- Aggiunti audit, handoff e report tecnico V759.
+
 - V746: aggiornamento V124, fix PWA install button, rimozione amichevole aggregata errata, Lazio-Lazio U20 tabellino.
 # Overlay Roadmap
 
