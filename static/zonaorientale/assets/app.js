@@ -41473,7 +41473,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
    Il loader e' solo cosmetico: su smartphone non deve mai bloccare la pagina. */
 (function zonaOrientaleMobileBootHardfixV756(){
   const VERSION = 'V756';
-  const VERSION_LABEL = 'Fantacalcio - V756 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V757 - Aggiornato al 21/07/2026';
   function forceFooter(){
     try {
       document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
@@ -41514,4 +41514,49 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   else boot('already-ready-v756');
   window.addEventListener('load', () => boot('load-v756'), { once: true });
   [1200, 2800, 5200, 8500, 12000].forEach((delay) => window.setTimeout(() => { forceFooter(); hideBoot('timer-' + delay); }, delay));
+})();
+
+
+/* V757 - No boot loader emergency fix.
+   Disattiva completamente il caricamento iniziale: il sito deve essere utilizzabile subito,
+   specialmente da mobile. Mantiene compatibilita' con eventuali chiamate legacy V756. */
+(function zonaOrientaleNoBootLoaderV757(){
+  const VERSION = 'V757';
+  const VERSION_LABEL = 'Fantacalcio - V757 - Aggiornato al 21/07/2026';
+  function killBoot(reason){
+    try {
+      document.documentElement.classList.remove('fanta-boot-preloader-active');
+      document.querySelectorAll('#fantaBootPreloader,.fanta-boot-preloader').forEach((overlay) => {
+        if (!overlay) return;
+        overlay.classList.add('is-hidden','is-force-hidden-v757','is-no-boot-v757');
+        overlay.hidden = true;
+        overlay.setAttribute('aria-hidden','true');
+        overlay.style.setProperty('display','none','important');
+        overlay.style.setProperty('opacity','0','important');
+        overlay.style.setProperty('visibility','hidden','important');
+        overlay.style.setProperty('pointer-events','none','important');
+      });
+      document.body && document.body.style && document.body.style.setProperty('overflow','auto','important');
+      window.ZonaOrientaleNoBootLoaderV757 = { version: VERSION, reason: reason || 'manual', at: new Date().toISOString() };
+    } catch (_) {}
+  }
+  function forceFooter(){
+    try {
+      document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
+        if (!node) return;
+        node.textContent = VERSION_LABEL;
+        node.dataset.footerVersionV757 = VERSION;
+      });
+    } catch (_) {}
+  }
+  try {
+    window.forceHideBootV757 = killBoot;
+    window.forceHideBootV756 = killBoot;
+    window.ZonaOrientaleNoBootLoaderApiV757 = Object.freeze({ version: VERSION, killBoot, forceFooter });
+  } catch (_) {}
+  function run(reason){ killBoot(reason); forceFooter(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => run('domcontentloaded-v757'), { once: true });
+  else run('already-ready-v757');
+  window.addEventListener('load', () => run('load-v757'), { once: true });
+  [0, 50, 150, 500, 1500, 4000, 9000, 15000].forEach((delay) => window.setTimeout(() => run('timer-v757-' + delay), delay));
 })();
