@@ -1,14 +1,20 @@
-# AI Assistant Handoff V750
+# AI Assistant Handoff - ioSudo V750
 
-Il sito ZonaOrientale nello zip ricevuto caricava ancora `assets/app.js?v=698` da `index.html`, quindi gli overlay V748/V749 non risultavano effettivamente attivi nel runtime.
+Versione corrente ioSudo: V750.
 
-V750 applica una correzione hard:
+Base dati: Excel V132 del 21/07/2026, cutoff 15:52 CEST.
 
-- `static/zonaorientale/index.html` ora deve caricare `assets/app.js?v=750`;
-- `static/zonaorientale/assets/app.js` contiene un wrapper finale `zonaOrientaleStaticSvincoliV750`;
-- il wrapper legge direttamente `assets/snapshots/seasons/{seasonId}.json` con cache busting;
-- prima del render sostituisce le descrizioni deboli/vuote/generiche dei movimenti `SVINCOLO` con le descrizioni complete presenti nello snapshot statico;
-- funziona anche quando il desktop/admin carica `fmMovements` da Firestore;
-- debug: `window.ZonaOrientaleStaticSvincoliV750`, `window.enforceStaticSvincoliV750()`.
+Regole da preservare:
+- giocatori con ufficialità attiva non devono rimanere nei rumor attivi;
+- mantenere tutte le disambiguazioni protette già confermate dall'utente;
+- non fondere nomi comuni senza contesto squadra/iniziale;
+- Kevin Bruno del Sassuolo è diverso da Bruno Galassi della Lazio;
+- Andrej Kostić del Milan è diverso da Filip Kostic della Juventus;
+- nelle amichevoli mantenere match separati e non ricreare aggregati tipo `Basilea-Juventus / Bologna-Arminia / Atalanta-U23`;
+- nel prossimo overlay includere sempre questo handoff aggiornato.
 
-Controllare sempre che il browser carichi davvero `app.js?v=750` dal pannello Network. Se vede ancora `v=698`, il problema e' copia overlay/deploy/cache, non logica dati.
+Novità V750:
+- aggiunte/aggiornate 13 notizie/rumor V132 non ufficiali;
+- nessuna ufficialità nuova;
+- nessun nuovo tabellino amichevole;
+- nella lista giocatori di squadra, i giocatori con rumor/notizie/SOS più recenti sono ordinati in alto.

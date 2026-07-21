@@ -1,17 +1,20 @@
-# AI Assistant Handoff V754
+# AI Assistant Handoff - ioSudo V750
 
-Correzione mirata alla sezione Admin, blocco `Visibilita Admin`.
+Versione corrente ioSudo: V750.
 
-Problema: da desktop le checkbox del selettore card Admin non cambiavano stato o non applicavano la visibilita'. Il componente e' il vecchio `admin-card-visibility-v456.js`, caricato direttamente da `index.html` con cache-buster dedicato, quindi patchare solo `app.js` non basta.
+Base dati: Excel V132 del 21/07/2026, cutoff 15:52 CEST.
 
-Fix V754:
-- aggiornato `index.html` per caricare `admin-card-visibility-v456.js?v=754` e CSS `?v=754`;
-- patchati sia il file condiviso `static/fanta-engine/.../admin-card-visibility-v456.js` sia il fallback locale `static/zonaorientale/assets/js/core/admin-card-visibility-v456.js`;
-- aggiunto hardfix runtime `window.ZonaOrientaleAdminCardCheckboxHardfixV754` che intercetta direttamente click/pointerup su label e input, aggiorna localStorage `zonaorientale.adminCardVisibility.v456.selectedCards` e richiama `LeagueAdminCardVisibilityV456.apply()`;
-- patchati CSS condiviso e locale per garantire pointer-events/z-index sulle checkbox.
+Regole da preservare:
+- giocatori con ufficialità attiva non devono rimanere nei rumor attivi;
+- mantenere tutte le disambiguazioni protette già confermate dall'utente;
+- non fondere nomi comuni senza contesto squadra/iniziale;
+- Kevin Bruno del Sassuolo è diverso da Bruno Galassi della Lazio;
+- Andrej Kostić del Milan è diverso da Filip Kostic della Juventus;
+- nelle amichevoli mantenere match separati e non ricreare aggregati tipo `Basilea-Juventus / Bologna-Arminia / Atalanta-U23`;
+- nel prossimo overlay includere sempre questo handoff aggiornato.
 
-Verifica console:
-```js
-document.querySelector('script[src*="admin-card-visibility-v456.js"]')?.src
-window.ZonaOrientaleAdminCardCheckboxHardfixV754
-```
+Novità V750:
+- aggiunte/aggiornate 13 notizie/rumor V132 non ufficiali;
+- nessuna ufficialità nuova;
+- nessun nuovo tabellino amichevole;
+- nella lista giocatori di squadra, i giocatori con rumor/notizie/SOS più recenti sono ordinati in alto.
