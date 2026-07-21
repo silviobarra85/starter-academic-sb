@@ -34,3 +34,5 @@
 - Integrato Excel V128.
 - Aggiornati SOS Napoli e trattative non ufficiali V128.
 - Confermati controlli duplicati/amichevoli.
+
+- V749: aggiornamento ioSudo da Excel V130 + hardfix checkbox admin desktop V753.

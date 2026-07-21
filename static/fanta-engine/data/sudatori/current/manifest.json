@@ -1,11 +1,11 @@
 {
-  "id": "sudatori-iosudo-v748",
-  "version": "V748",
+  "id": "sudatori-iosudo-v749",
+  "version": "V749",
   "seasonId": "2026-27",
   "updatedAt": "2026-07-21",
-  "updatedAtTime": "12:36 CEST",
-  "generatedAt": "2026-07-21T12:36:00+02:00",
-  "overlayGeneratedAt": "2026-07-21T12:36:00+02:00",
+  "updatedAtTime": "13:45 CEST",
+  "generatedAt": "2026-07-21T13:45:00+02:00",
+  "overlayGeneratedAt": "2026-07-21T13:45:00+02:00",
   "overlayGeneratedAtLabel": "21/07/2026 12:36 CEST",
   "sourceFile": "v128_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_compattato_alias_v747.xlsx",
   "dedupVersion": "V748",
@@ -31,17 +31,13 @@
   "buildTag": "iosudo-v748",
   "dataFile": "sudatori-data.json",
   "counts": {
-    "players": 1050,
-    "officialMoves": 393,
-    "teamTransferTalks": 451,
-    "transfermarktRumors": 47,
+    "players": 1054,
+    "officialMoves": 397,
+    "talks": 466,
     "injuries": 30,
     "friendlies": 121,
-    "friendlyMatchDetails": 17,
-    "friendlyPlayerStats": 336,
-    "sources": 801,
-    "duplicatesExact": 0,
-    "duplicateIds": 0,
-    "activeOfficialRumors": 0
-  }
+    "sources": 814
+  },
+  "sourceWorkbook": "v130_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v748(1).xlsx",
+  "appVersion": "V749"
 }

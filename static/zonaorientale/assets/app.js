@@ -41300,7 +41300,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V752 - Team profile movement descriptions + singleton Tutte le Rose mobile focus. */
 (function fantaSiteRosterNavigationAndMovementDescriptionsV752(){
   const VERSION = 'V752';
-  const VERSION_LABEL = 'Fantacalcio - V752 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V753 - Aggiornato al 21/07/2026';
 
   function isMobileLikeV752(){
     try {
@@ -41466,4 +41466,73 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   else bootV752();
   window.addEventListener('load', bootV752, { once: true });
   [0, 80, 250, 900, 2500, 6500].forEach(function(delay){ window.setTimeout(bootV752, delay); });
+})();
+
+
+/* V753 - Desktop admin checkbox hardfix.
+ * Ripristina il toggle delle checkbox nell'area Admin anche quando overlay/card intercettano il click desktop.
+ * Non modifica la logica dei form: emette input/change standard dopo il cambio checked.
+ */
+(function installAdminDesktopCheckboxHardfixV753(){
+  const VERSION = 'V753';
+  if (window.ZonaOrientaleAdminCheckboxHardfixV753) return;
+  function isAdminCheckbox(input){
+    return input && input.matches && input.matches('#adminPanel input[type="checkbox"], [data-page="admin"] input[type="checkbox"], .admin-collapsible-panel input[type="checkbox"]');
+  }
+  function emit(input){
+    try { input.dispatchEvent(new Event('input', { bubbles: true })); } catch (_) {}
+    try { input.dispatchEvent(new Event('change', { bubbles: true })); } catch (_) {}
+  }
+  function toggle(input){
+    if (!isAdminCheckbox(input) || input.disabled) return false;
+    input.checked = !input.checked;
+    emit(input);
+    return true;
+  }
+  function installCss(){
+    if (document.getElementById('admin-checkbox-hardfix-v753-style')) return;
+    const style = document.createElement('style');
+    style.id = 'admin-checkbox-hardfix-v753-style';
+    style.textContent = `
+      #adminPanel label, [data-page="admin"] label { position: relative; z-index: 2; }
+      #adminPanel input[type="checkbox"], [data-page="admin"] input[type="checkbox"] {
+        pointer-events: auto !important;
+        position: relative !important;
+        z-index: 5 !important;
+        min-width: 18px;
+        min-height: 18px;
+        cursor: pointer;
+      }
+      #adminPanel .checkbox-label, [data-page="admin"] .checkbox-label { cursor: pointer; }
+    `;
+    document.head.appendChild(style);
+  }
+  function decorate(){
+    installCss();
+    document.querySelectorAll('#adminPanel input[type="checkbox"], [data-page="admin"] input[type="checkbox"]').forEach((input)=>{
+      input.style.pointerEvents = 'auto';
+      input.style.position = input.style.position || 'relative';
+      input.style.zIndex = input.style.zIndex || '5';
+    });
+  }
+  document.addEventListener('click', function(event){
+    const target = event.target;
+    if (!target) return;
+    if (isAdminCheckbox(target)) {
+      setTimeout(() => emit(target), 0);
+      return;
+    }
+    const label = target.closest && target.closest('#adminPanel label, [data-page="admin"] label, .admin-collapsible-panel label');
+    if (!label) return;
+    if (target.closest && target.closest('button,a,select,textarea,input:not([type="checkbox"])')) return;
+    const input = label.querySelector('input[type="checkbox"]');
+    if (!input || !isAdminCheckbox(input)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    toggle(input);
+  }, true);
+  document.addEventListener('DOMContentLoaded', decorate);
+  try { new MutationObserver(decorate).observe(document.documentElement, { childList: true, subtree: true }); } catch (_) {}
+  window.ZonaOrientaleAdminCheckboxHardfixV753 = { version: VERSION, decorate, toggle };
+  decorate();
 })();

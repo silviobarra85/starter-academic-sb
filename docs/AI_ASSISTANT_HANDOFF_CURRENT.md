@@ -1,26 +1,26 @@
-# AI Assistant Handoff - ioSudo V748
+# AI Assistant Handoff V749
 
-Versione corrente: V748, generata da `v128_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_compattato_alias_v747.xlsx`.
+Stato generato il 21/07/2026 13:45 CEST.
 
-## Stato
-- Nessuna nuova ufficialità rispetto a V747.
-- Rose invariate come appartenenza.
-- SOS Napoli aggiornati: Alessandro Buongiorno intervento chirurgico necessario; Spinazzola e Alisson Santos in personalizzato.
-- Trattative non ufficiali V128 integrate: Amondarain, Souttar, Dovbyk, Zirkzee, Rugani, Pinamonti, Lindstrom, Kumbulla, Mbaye, Luka Tomic, Akor Adams.
-- Rafforzata fonte ufficiale Sassuolo per triangolare Trento-Parma del 25/07.
+## ioSudo
+- Versione app: V749.
+- Base precedente: V748.
+- Workbook sorgente: v130_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v748(1).xlsx.
+- Novità: ufficialità giovanili/non slot per Filip Alan Danilowski, Spyridon Petros Zormpas, Giacomo Giacomone; aggiornate trattative V130; nessuna nuova amichevole giocata.
+- Rumor attivi su ufficialità: 0.
+- Duplicati esatti / ID duplicati: 0.
 
-## Regole da mantenere
-- I giocatori con ufficialità attiva non devono restare in rumor/trattative attive.
-- Usare nome+cognome quando disponibile.
-- Non fondere alias generici protetti: Carboni, Esposito, Thuram, Ferguson, Russo, Arena, Bonfanti, Rossi, Colombo, Marin, Moreno, Nicolas, Pedro, David, Kostic/Kostić, Bruno tra squadre diverse.
-- Andrej Kostić Milan e Filip Kostic Juventus sono diversi.
-- Kevin Bruno Sassuolo e Bruno Galassi Lazio sono diversi.
-- Atalanta-Atalanta U23 va mantenuta una sola volta; correggere/filtrare eventuali typo Aralanta.
+## Regole deduplica da preservare
+- Nome+cognome quando disponibile.
+- Non fondere alias generici senza conferma squadra/iniziale.
+- Protette disambiguazioni: Carboni, Esposito, Thuram globalmente, Ferguson, Russo, Arena, Bonfanti, Rossi, Colombo, Marin, Moreno, Nicolas, Pedro, David, Rrahmani, Tourè/El Bilal Touré, Oyono, Stankovic, Ilic/Ilić, Gelli, Traorè, Konaté, Kostic/Kostić.
+- Andrej Kostić del Milan è diverso da Filip Kostic della Juventus.
 
-## Controlli
-Eseguire sempre:
-```bash
-node --check static/fanta-engine/js/apps/iosudo-app-v748.js
-node --check static/iosudo/sw.js
-node static/fanta-engine/tools/audit-iosudo-v748.mjs
-```
+## Sito ZonaOrientale
+- Incluso hardfix V753 per checkbox Admin desktop.
+- Il fix espone window.ZonaOrientaleAdminCheckboxHardfixV753.
+- L'index ZonaOrientale punta ad app.js?v=753.
+
+## Prossimo giro
+- Continuare a includere handoff negli overlay.
+- Controllare sempre rumor attivi su giocatori ufficiali e duplicati.

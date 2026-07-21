@@ -1,34 +1,26 @@
-# AI Assistant Handoff - V749
+# AI Assistant Handoff V749
 
-## Contesto
+Stato generato il 21/07/2026 13:45 CEST.
 
-L'utente segnala che le descrizioni degli svincoli 2026-2027 compaiono correttamente nel JSON statico ma spariscono sul sito dopo deploy/cache/Firebase.
+## ioSudo
+- Versione app: V749.
+- Base precedente: V748.
+- Workbook sorgente: v130_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_alias_v748(1).xlsx.
+- Novità: ufficialità giovanili/non slot per Filip Alan Danilowski, Spyridon Petros Zormpas, Giacomo Giacomone; aggiornate trattative V130; nessuna nuova amichevole giocata.
+- Rumor attivi su ufficialità: 0.
+- Duplicati esatti / ID duplicati: 0.
 
-## Decisione V749
+## Regole deduplica da preservare
+- Nome+cognome quando disponibile.
+- Non fondere alias generici senza conferma squadra/iniziale.
+- Protette disambiguazioni: Carboni, Esposito, Thuram globalmente, Ferguson, Russo, Arena, Bonfanti, Rossi, Colombo, Marin, Moreno, Nicolas, Pedro, David, Rrahmani, Tourè/El Bilal Touré, Oyono, Stankovic, Ilic/Ilić, Gelli, Traorè, Konaté, Kostic/Kostić.
+- Andrej Kostić del Milan è diverso da Filip Kostic della Juventus.
 
-Per i movimenti `SVINCOLO` della stagione corrente, il sito deve usare come fonte autorevole lo snapshot statico:
+## Sito ZonaOrientale
+- Incluso hardfix V753 per checkbox Admin desktop.
+- Il fix espone window.ZonaOrientaleAdminCheckboxHardfixV753.
+- L'index ZonaOrientale punta ad app.js?v=753.
 
-`static/zonaorientale/assets/snapshots/seasons/{seasonId}.json`
-
-La patch in `app.js` aggiunge `window.enforceStaticSvincoliV749()` e sostituisce/aggiunge in `state.raw.fmMovements` i soli movimenti `type=SVINCOLO` presi dallo snapshot statico. Non modifica Firestore e non tocca gli altri movimenti.
-
-## Note operative
-
-- Footer aggiornato a V749.
-- `index.html` carica `app.js?v=749`.
-- `league-config.json.currentVersion = 749`.
-- Nel prossimo overlay mantenere questa regola finché Firestore/publicSnapshots non saranno sicuramente riallineati.
-- Per debug da console: `window.ZonaOrientaleStaticSvincoliRepairV749`.
-
-## Comando applicazione overlay da desktop
-
-Da root progetto, se lo zip è già decompresso in Downloads:
-
-```bash
-cp -R ~/Downloads/overlay_site_v749_static_svincoli_footer/static/* static/
-cp -R ~/Downloads/overlay_site_v749_static_svincoli_footer/docs/* docs/
-git status
-git add static/zonaorientale/assets/app.js static/zonaorientale/index.html static/zonaorientale/assets/league-config.json docs/AI_ASSISTANT_HANDOFF_CURRENT.md docs/AI_ASSISTANT_HANDOFF_V749.md docs/OVERLAY_V749_APPLY.md
-git commit -m "Forza svincoli statici e footer V749"
-git push origin master
-```
+## Prossimo giro
+- Continuare a includere handoff negli overlay.
+- Controllare sempre rumor attivi su giocatori ufficiali e duplicati.
