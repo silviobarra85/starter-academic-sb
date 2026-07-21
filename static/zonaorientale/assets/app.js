@@ -41467,3 +41467,51 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   window.addEventListener('load', bootV755, { once: true });
   [0, 80, 250, 900, 2500, 6500].forEach(function(delay){ window.setTimeout(bootV755, delay); });
 })();
+
+
+/* V756 - Mobile boot hard-fail-safe and footer cache-buster.
+   Il loader e' solo cosmetico: su smartphone non deve mai bloccare la pagina. */
+(function zonaOrientaleMobileBootHardfixV756(){
+  const VERSION = 'V756';
+  const VERSION_LABEL = 'Fantacalcio - V756 - Aggiornato al 21/07/2026';
+  function forceFooter(){
+    try {
+      document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
+        if (!node) return;
+        node.textContent = VERSION_LABEL;
+        node.dataset.footerVersionV756 = VERSION;
+      });
+    } catch (_) {}
+  }
+  function hideBoot(reason){
+    try {
+      if (typeof window.forceHideBootV756 === 'function') return window.forceHideBootV756(reason || 'app-v756');
+      const overlay = document.getElementById('fantaBootPreloader');
+      document.documentElement.classList.remove('fanta-boot-preloader-active');
+      if (overlay) {
+        overlay.classList.add('is-hidden','is-force-hidden-v756');
+        overlay.hidden = true;
+        overlay.setAttribute('aria-hidden','true');
+        overlay.style.setProperty('display','none','important');
+        overlay.style.setProperty('opacity','0','important');
+        overlay.style.setProperty('visibility','hidden','important');
+        overlay.style.setProperty('pointer-events','none','important');
+      }
+    } catch (_) {}
+  }
+  function signalReady(reason){
+    try { window.dispatchEvent(new CustomEvent('fanta:app-rendered-v560', { detail: { version: VERSION, source: reason || 'v756-failsafe' } })); } catch (_) {}
+  }
+  function boot(reason){
+    forceFooter();
+    signalReady(reason || 'boot');
+    window.setTimeout(() => hideBoot(reason || 'boot'), 3500);
+  }
+  try {
+    window.ZonaOrientaleMobileBootHardfixV756 = Object.freeze({ version: VERSION, hideBoot, signalReady, forceFooter });
+  } catch (_) {}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => boot('domcontentloaded-v756'), { once: true });
+  else boot('already-ready-v756');
+  window.addEventListener('load', () => boot('load-v756'), { once: true });
+  [1200, 2800, 5200, 8500, 12000].forEach((delay) => window.setTimeout(() => { forceFooter(); hideBoot('timer-' + delay); }, delay));
+})();
