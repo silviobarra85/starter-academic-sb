@@ -21631,6 +21631,239 @@ window.ZonaOrientaleMantraRoleFiltersV441 = Object.freeze({
 
 
 
+
+/* V758 - Emergency static-first data loader.
+ * Il sito deve aprirsi anche quando Firebase/Auth non risponde su mobile.
+ * Carica subito assets/snapshots statici e poi, solo se possibile, lascia l'admin usare il live.
+ */
+(function zonaOrientaleStaticDataEmergencyV758(){
+  const VERSION = 'V758';
+  const VERSION_LABEL = 'Fantacalcio - V758 - Aggiornato al 21/07/2026';
+  const CURRENT_SEASON_ID = '2026-2027';
+  const STATIC_BASE = './assets/snapshots';
+  const LOAD_TIMEOUT_MS = 3200;
+
+  function withBust(url){
+    const sep = String(url).includes('?') ? '&' : '?';
+    return `${url}${sep}v=${VERSION}-${Date.now()}`;
+  }
+
+  async function fetchJsonV758(url){
+    const response = await fetch(withBust(url), { cache: 'no-store' });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText} su ${url}`);
+    return response.json();
+  }
+
+  function timeoutV758(ms, label){
+    return new Promise((_, reject) => window.setTimeout(() => reject(new Error(`${label || 'operazione'} oltre ${ms}ms`)), ms));
+  }
+
+  function safeArray(value){ return Array.isArray(value) ? value : []; }
+
+  function buildRawShellV758(){
+    const raw = (typeof makeEmptyRawDataV34 === 'function') ? makeEmptyRawDataV34() : ((typeof makeEmptyRawDataV32 === 'function') ? makeEmptyRawDataV32() : {});
+    ['leagueSettings','seasons','presidents','teams','seasonTeams','stadiums','competitions','competitionMatches','competitionResults','honorRoll','fifaRankings','rosterEntries','fmMovements','news','pendingUsers','teamUsers','teamRequests','publicTeamSnapshots'].forEach((key) => {
+      if (!Array.isArray(raw[key])) raw[key] = [];
+    });
+    return raw;
+  }
+
+  async function loadManifestV758(){
+    try {
+      const manifest = await fetchJsonV758(`${STATIC_BASE}/seasons/manifest.json`);
+      const rows = safeArray(manifest.snapshots);
+      if (rows.length) return rows;
+    } catch (error) {
+      console.warn('[V758] manifest statico non disponibile, uso stagione corrente', error);
+    }
+    return [{ seasonId: CURRENT_SEASON_ID, file: `${CURRENT_SEASON_ID}.json`, generatedAt: new Date().toISOString() }];
+  }
+
+  function buildSeasonsFromManifestV758(rows){
+    return safeArray(rows).map((item, index) => ({
+      id: String(item.seasonId || item.id || '').trim(),
+      seasonId: String(item.seasonId || item.id || '').trim(),
+      name: String(item.seasonId || item.id || '').trim(),
+      label: String(item.seasonId || item.id || '').trim(),
+      isCurrent: String(item.seasonId || item.id || '') === CURRENT_SEASON_ID || index === 0,
+      generatedAt: item.generatedAt || '',
+      source: 'static-snapshot-v758'
+    })).filter((item) => item.id);
+  }
+
+  async function loadSeasonSnapshotStaticV758(seasonId){
+    const id = String(seasonId || CURRENT_SEASON_ID).trim() || CURRENT_SEASON_ID;
+    return fetchJsonV758(`${STATIC_BASE}/seasons/${encodeURIComponent(id)}.json`);
+  }
+
+  async function loadHonorStaticV758(){
+    try {
+      const honor = await fetchJsonV758(`${STATIC_BASE}/honor.json`);
+      return honor?.snapshot || honor || null;
+    } catch (error) {
+      console.warn('[V758] honor statico non disponibile', error);
+      return null;
+    }
+  }
+
+  function applyHonorStaticV758(raw, honor){
+    if (!honor) return;
+    raw.honorRoll = safeArray(honor.honorRoll || honor.honorRows || honor.rows);
+    raw.fifaRankings = safeArray(honor.fifaRankings || honor.fifaRanking || honor.rankings);
+    try { state.publicHonorSnapshot = honor; } catch (_) {}
+  }
+
+  function patchGenericSvincoliV758(raw){
+    const canon = {
+      '2026_2027_team_001|47': 'SVINCOLI LUGLIO 2026: Malinovskyi (5); Coulibaly L. (13); Fadera (8); Vandeputte (11);',
+      '2026_2027_ft1tqdqi18iuh3l1lakq|87': 'SVINCOLI LUGLIO 2026: Hermoso (13); Tsimikas (3); Terracciano F. (7); Cabal (6); Canestrelli (5); Mandragora (17); Bresciani (10); Helgason (2); Berisha M. (7); Tourè I. (5); Sanabria (4); Spulci (8)',
+      '2026_2027_team_002|142': 'SVINCOLI LUGLIO 2026: Di Gregorio (15); Luperto (8); Caracciolo A. (6); Baschirotto (9); Coco (9); Kempf (16); Thorsby (12); Konè I. (17); Pedro (16); Nzola (10); Banda (15); Ratkov (9)',
+      '2026_2027_y3vmcdwvut0u1tlsg4qc|103': 'SVINCOLI LUGLIO 2026: Mina (9); Lazaro (4); Celik (14); Delprato (10); Sottil (8); Gaetano (13); Fagioli (11); Elmas (7); Zaragoza (4); Kilicsoy (13); Durosinmi (10)',
+      '2026_2027_7bx0cegbxtf4fwh6t0pi|76': 'SVINCOLI LUGLIO 2026: Perin (8); Djimsiti (7); De Winter (6); Maldini (10); Musah (5); Ellertsson (8); Sulemana I. (6); Anjorin (2); Orban G. (14); Dallinga (6); Kulenovic (4)',
+      '2026_2027_h6saek7urqiqnmiztrt7|51': 'SVINCOLI LUGLIO 2026: Sommer (13); Moreno Alb. (9); Mkhitaryan (14); Loyola (5); Fullkrug (10)'
+    };
+    let changed = 0;
+    safeArray(raw.fmMovements).forEach((movement) => {
+      if (String(movement?.type || '').toUpperCase() !== 'SVINCOLO') return;
+      const key = `${movement.seasonTeamId || ''}|${Number(movement.amount || 0)}`;
+      const current = String(movement.description || '').trim();
+      if (canon[key] && (!current || current === 'SVINCOLI LUGLIO 2026')) {
+        movement.description = canon[key];
+        movement.staticRepairV758 = true;
+        changed += 1;
+      }
+    });
+    return changed;
+  }
+
+  async function applyStaticDataV758(options = {}){
+    const reason = options.reason || 'static-first';
+    const render = options.render !== false;
+    const selectedBefore = String(state.selectedSeasonId || '').trim();
+    const manifestRows = await loadManifestV758();
+    const seasons = buildSeasonsFromManifestV758(manifestRows);
+    const seasonId = String(options.seasonId || selectedBefore || CURRENT_SEASON_ID || seasons[0]?.id || '').trim() || CURRENT_SEASON_ID;
+    const [snapshot, honor] = await Promise.all([
+      loadSeasonSnapshotStaticV758(seasonId),
+      loadHonorStaticV758()
+    ]);
+
+    const raw = buildRawShellV758();
+    raw.leagueSettings = [{
+      id: 'main',
+      currentSeasonId: CURRENT_SEASON_ID,
+      name: 'ZonaOrientale Salerno',
+      source: 'static-emergency-v758'
+    }];
+    raw.seasons = seasons.length ? seasons : [{ id: CURRENT_SEASON_ID, seasonId: CURRENT_SEASON_ID, name: CURRENT_SEASON_ID, isCurrent: true }];
+    raw.presidents = safeArray(snapshot.presidents);
+    raw.teams = safeArray(snapshot.teams);
+    raw.seasonTeams = safeArray(snapshot.seasonTeams);
+    raw.stadiums = safeArray(snapshot.stadiums);
+    raw.competitions = safeArray(snapshot.competitions);
+    raw.competitionMatches = safeArray(snapshot.competitionMatches);
+    raw.competitionResults = safeArray(snapshot.competitionResults);
+    raw.rosterEntries = safeArray(snapshot.rosterEntries);
+    raw.fmMovements = safeArray(snapshot.fmMovements);
+    raw.news = safeArray(snapshot.news);
+    applyHonorStaticV758(raw, honor);
+    const repaired = patchGenericSvincoliV758(raw);
+
+    state.raw = raw;
+    state.selectedSeasonId = seasonId;
+    state.hasFullData = false;
+    state.usedPublicSnapshots = true;
+    state.staticEmergencyV758 = { reason, seasonId, at: new Date().toISOString(), repairedSvincoli: repaired };
+
+    try { state.publicSeasonSnapshots = state.publicSeasonSnapshots || {}; state.publicSeasonSnapshots[seasonId] = snapshot; } catch (_) {}
+    try { await zonaDataRepositoryV222.loadStaticAssets(); } catch (error) { console.warn('[V758] asset statici secondari non caricati', error); }
+    try { if (typeof mergeStaticCompetitionCalendarsForSeasonV101 === 'function') mergeStaticCompetitionCalendarsForSeasonV101(seasonId); } catch (error) { console.warn('[V758] merge calendari statici non riuscito', error); }
+    try { sortData(); } catch (error) { console.warn('[V758] sortData non riuscito', error); }
+    if (render) {
+      try { renderAll(); } catch (error) { console.error('[V758] renderAll statico non riuscito', error); throw error; }
+      try { if (typeof setError === 'function') setError(''); } catch (_) {}
+      try { if (typeof scheduleBootPreloaderReadyV560 === 'function') scheduleBootPreloaderReadyV560('static-emergency-v758'); } catch (_) {}
+      try { window.dispatchEvent(new CustomEvent('fanta:app-rendered-v560', { detail: { version: VERSION, source: reason } })); } catch (_) {}
+    }
+    try { window.ZonaOrientaleStaticDataEmergencyV758 = Object.freeze({ version: VERSION, ...state.staticEmergencyV758 }); } catch (_) {}
+    return true;
+  }
+
+  const previousLoadDataForCurrentAuthV100 = typeof loadDataForCurrentAuthV100 === 'function' ? loadDataForCurrentAuthV100 : null;
+  if (previousLoadDataForCurrentAuthV100) {
+    loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV758(options = {}){
+      // Pubblico/mobile: niente attesa Firebase. Render statico immediato.
+      if (!state.isAdmin) return applyStaticDataV758({ ...options, reason: 'public-static-v758' });
+      try {
+        return await Promise.race([
+          previousLoadDataForCurrentAuthV100.call(this, options),
+          timeoutV758(LOAD_TIMEOUT_MS, 'caricamento live admin')
+        ]);
+      } catch (error) {
+        console.warn('[V758] live non disponibile, fallback statico', error);
+        return applyStaticDataV758({ ...options, reason: 'admin-live-fallback-v758' });
+      }
+    };
+  }
+
+  loadData = async function loadDataV758(){
+    return loadDataForCurrentAuthV100({ render: true });
+  };
+
+  const previousSetupSeasonSelectorEvents = typeof setupSeasonSelectorEvents === 'function' ? setupSeasonSelectorEvents : null;
+  setupSeasonSelectorEvents = function setupSeasonSelectorEventsV758(){
+    previousSetupSeasonSelectorEvents?.();
+    const select = document.getElementById('globalSeasonSelect');
+    if (!select || select.dataset.staticV758Bound) return;
+    select.dataset.staticV758Bound = 'true';
+    select.addEventListener('change', (event) => {
+      if (state.isAdmin && state.hasFullData) return;
+      event.stopImmediatePropagation();
+      state.selectedSeasonId = event.target.value;
+      state.selectedListoneId = '';
+      applyStaticDataV758({ seasonId: state.selectedSeasonId, render: true, reason: 'season-change-v758' }).catch((error) => {
+        console.error('[V758] cambio stagione statico fallito', error);
+        try { if (typeof setError === 'function') setError(`Cambio stagione non riuscito. ${error?.message || error}`); } catch (_) {}
+      });
+    }, true);
+  };
+
+  const previousInitializeAppUi = typeof initializeAppUi === 'function' ? initializeAppUi : null;
+  if (previousInitializeAppUi) {
+    initializeAppUi = async function initializeAppUiV758(){
+      const result = await previousInitializeAppUi.apply(this, arguments);
+      window.setTimeout(() => {
+        const hasData = Boolean(state.raw?.seasonTeams?.length || state.raw?.competitions?.length || state.raw?.rosterEntries?.length);
+        if (!hasData || !state.staticEmergencyV758) {
+          applyStaticDataV758({ render: true, reason: 'startup-independent-v758' }).catch((error) => {
+            console.error('[V758] bootstrap statico fallito', error);
+            try { if (typeof setError === 'function') setError(`Dati statici non caricati. ${error?.message || error}`); } catch (_) {}
+          });
+        }
+      }, 0);
+      window.setTimeout(() => {
+        const hasRows = Boolean(state.raw?.seasonTeams?.length || state.raw?.rosterEntries?.length);
+        if (!hasRows) {
+          applyStaticDataV758({ render: true, reason: 'startup-watchdog-v758' }).catch((error) => console.error('[V758] watchdog statico fallito', error));
+        }
+      }, 1800);
+      return result;
+    };
+  }
+
+  function forceFooterV758(){
+    const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
+    const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
+    targets.forEach((node) => { if (node) { node.textContent = VERSION_LABEL; node.dataset.footerVersionV758 = VERSION; } });
+  }
+
+  window.forceStaticDataV758 = () => applyStaticDataV758({ render: true, reason: 'manual-console-v758' });
+  window.forceFooterV758 = forceFooterV758;
+  document.addEventListener('DOMContentLoaded', forceFooterV758, { once: true });
+  window.addEventListener('load', forceFooterV758, { once: true });
+  [0, 250, 1000, 2500, 6000].forEach((delay) => window.setTimeout(forceFooterV758, delay));
+})();
+
 /* V560 - Segnale boot preloader tarato su interfaccia realmente interattiva.
    Non modifica router, Firebase o EmailJS: differisce solo l'evento di chiusura overlay
    fino a dopo render, frame grafici e idle del main thread. */
