@@ -28,3 +28,9 @@
 ## V747 - 21/07/2026 08:06 CEST
 - Integrato Excel V126.
 - Dedupe Atalanta-Atalanta U23 e protezione Andrej Kostić/Filip Kostic.
+
+
+## V748
+- Integrato Excel V128.
+- Aggiornati SOS Napoli e trattative non ufficiali V128.
+- Confermati controlli duplicati/amichevoli.

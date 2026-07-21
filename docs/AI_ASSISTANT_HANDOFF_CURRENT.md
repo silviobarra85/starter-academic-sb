@@ -1,26 +1,26 @@
-# AI Assistant Handoff - V752
+# AI Assistant Handoff - ioSudo V748
+
+Versione corrente: V748, generata da `v128_2026-07-21_fantacalcio_serie_a_2026_27_aggiornamento_globale_compattato_alias_v747.xlsx`.
 
 ## Stato
-Overlay V752 per il sito ZonaOrientale.
+- Nessuna nuova ufficialità rispetto a V747.
+- Rose invariate come appartenenza.
+- SOS Napoli aggiornati: Alessandro Buongiorno intervento chirurgico necessario; Spinazzola e Alisson Santos in personalizzato.
+- Trattative non ufficiali V128 integrate: Amondarain, Souttar, Dovbyk, Zirkzee, Rugani, Pinamonti, Lindstrom, Kumbulla, Mbaye, Luka Tomic, Akor Adams.
+- Rafforzata fonte ufficiale Sassuolo per triangolare Trento-Parma del 25/07.
 
-## Fix principali
-1. Pagina squadra: nella sezione "Ultimi movimenti" viene mostrata anche la descrizione del movimento, quindi gli svincoli sono visibili anche da desktop.
-2. Sezione "Tutte le Rose": l'espansione delle rose e' singleton. Aprendo una squadra si chiude quella precedentemente aperta.
-3. Smartphone: toccando una squadra in "Tutte le Rose" il focus scorre all'inizio della lista giocatori della squadra aperta.
-4. Mantenuto il fix V751 sugli svincoli statici e sul file `static/zonaorientale/assets/snapshots/seasons/2026-2027.json`.
-5. Footer/versione aggiornati a V752.
+## Regole da mantenere
+- I giocatori con ufficialità attiva non devono restare in rumor/trattative attive.
+- Usare nome+cognome quando disponibile.
+- Non fondere alias generici protetti: Carboni, Esposito, Thuram, Ferguson, Russo, Arena, Bonfanti, Rossi, Colombo, Marin, Moreno, Nicolas, Pedro, David, Kostic/Kostić, Bruno tra squadre diverse.
+- Andrej Kostić Milan e Filip Kostic Juventus sono diversi.
+- Kevin Bruno Sassuolo e Bruno Galassi Lazio sono diversi.
+- Atalanta-Atalanta U23 va mantenuta una sola volta; correggere/filtrare eventuali typo Aralanta.
 
-## Note operative
-- Se il sito continua a mostrare vecchie descrizioni degli svincoli, verificare che `index.html` carichi `app.js?v=752` e che il JSON pubblicato contenga le descrizioni complete.
-- Da console browser:
-
-```js
-document.querySelector('script[src*="app.js"]')?.src
-fetch('/zonaorientale/assets/snapshots/seasons/2026-2027.json?v=' + Date.now()).then(r => r.json()).then(d => d.fmMovements.filter(m => m.type === 'SVINCOLO'))
-window.FantaSiteRosterNavigationV752
+## Controlli
+Eseguire sempre:
+```bash
+node --check static/fanta-engine/js/apps/iosudo-app-v748.js
+node --check static/iosudo/sw.js
+node static/fanta-engine/tools/audit-iosudo-v748.mjs
 ```
-
-## Regole deduplica da conservare
-- Kevin Bruno Sassuolo diverso da Bruno Galassi Lazio.
-- Andrej Kostic Milan diverso da Filip Kostic Juventus.
-- Proteggere le disambiguazioni gia' confermate: Carboni, Esposito, Thuram, Ferguson, Russo, Arena, Bonfanti, Rossi, Colombo, Marin, Moreno, Nicolas, Pedro, David, Rrahmani, Toure/El Bilal Toure, Oyono, Stankovic, Ilic, Gelli, Traore, Konate, Miranda, Moro, Kone, Vasquez, Perez, Terracciano, Liberali, Paz, Berardi, Vaz.
