@@ -41101,236 +41101,179 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   window.FantaSiteProfileMovementsV698 = Object.freeze({ version: VERSION, profileMovementsNotes: true, footerFixed: true });
 })();
 
-/* V750 - Svincoli statici autorevoli + footer/cache realignment.
- * Problema risolto: alcuni runtime desktop/admin caricano fmMovements da Firestore
- * o snapshot pubblico non allineato e perdono la description completa degli SVINCOLI.
- * Da V750 le descrizioni SVINCOLO vengono sempre corrette dalla copia statica
- * assets/snapshots/seasons/{seasonId}.json prima del render.
- */
-(function zonaOrientaleStaticSvincoliV750(){
-  const VERSION = 'V750';
-  const VERSION_LABEL = 'Fantacalcio - V750 - Aggiornato al 21/07/2026';
-  const cache = Object.create(null);
-  const debug = {
-    version: VERSION,
-    lastReason: '',
-    lastSeasonId: '',
-    changed: 0,
-    inspected: 0,
-    loadedFrom: '',
-    lastRunAt: '',
-    errors: []
-  };
+/* V751 - Static svincoli canonical repair + robust Tutte le Rose navigation/toggle. */
+(function fantaSiteRosterSvincoliAndNavigationV751(){
+  const VERSION = 'V751';
+  const VERSION_LABEL = 'Fantacalcio - V751 - Aggiornato al 21/07/2026';
+  const CANONICAL_SVINCOLI = Object.freeze({
+    '2026_2027_team_001': { amount: 47, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Malinovskyi (5); Coulibaly L. (13); Fadera (8); Vandeputte (11);' },
+    '2026_2027_ft1tqdqi18iuh3l1lakq': { amount: 87, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Hermoso (13); Tsimikas (3); Terracciano F. (7); Cabal (6); Canestrelli (5); Mandragora (17); Bresciani (10); Helgason (2); Berisha M. (7); Tourè I. (5); Sanabria (4); Spulci (8)' },
+    '2026_2027_team_002': { amount: 142, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Di Gregorio (15); Luperto (8); Caracciolo A. (6); Baschirotto (9); Coco (9); Kempf (16); Thorsby (12); Konè I. (17); Pedro (16); Nzola (10); Banda (15); Ratkov (9)' },
+    '2026_2027_gdisidfbuselvm64psr3': { amount: 43, date: '2026-07-13', description: 'SVINCOLI LUGLIO 2026: Audero (12); Marcandalli (7); Palestra (16); Adopo (8)' },
+    '2026_2027_ulwtimbi3dyyrq0soesx': { amount: 3, date: '2026-07-16', description: 'SVINCOLI LUGLIO 2026: Lovric (3)' },
+    '2026_2027_wmdzhrrpup8lhvsdwm7w': { amount: 60, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Aebischer (6); Borrelli (11); Vardy (16); Moreo (16); Harrison (11)' },
+    '2026_2027_y3vmcdwvut0u1tlsg4qc': { amount: 103, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Mina (9); Lazaro (4); Celik (14); Delprato (10); Sottil (8); Gaetano (13); Fagioli (11); Elmas (7); Zaragoza (4); Kilicsoy (13); Durosinmi (10)' },
+    '2026_2027_uqsbhtctytbo7kookndm': { amount: 63, date: '2026-07-13', description: 'SVINCOLI LUGLIO 2026: Dumfries (12); Spinazzola (16); Ederson (13); Bonazzoli (22)' },
+    '2026_2027_7bx0cegbxtf4fwh6t0pi': { amount: 76, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Perin (8); Djimsiti (7); De Winter (6); Maldini (10); Musah (5); Ellertsson (8); Sulemana I. (6); Anjorin (2); Orban G. (14); Dallinga (6); Kulenovic (4)' },
+    '2026_2027_h6saek7urqiqnmiztrt7': { amount: 51, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Sommer (13); Moreno Alb. (9); Mkhitaryan (14); Loyola (5); Fullkrug (10)' }
+  });
 
-  function safeString(value){ return String(value == null ? '' : value).trim(); }
-  function normalizeType(value){ return safeString(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase(); }
-  function isSvincolo(movement){ return normalizeType(movement && movement.type) === 'SVINCOLO'; }
-  function isWeakDescription(text){
-    const value = safeString(text);
-    if (!value) return true;
-    const norm = normalizeType(value).replace(/\s+/g, ' ');
-    return norm === 'SVINCOLI LUGLIO 2026' || norm === 'SVINCOLO' || norm === 'SVINCOLI';
+  function isGenericSvincoloDescription(value){
+    const text = String(value || '').trim().replace(/[\s.;:]+$/g, '').toLowerCase();
+    return !text || text === 'svincoli luglio 2026' || text === 'svincolo' || text === 'svincoli';
   }
-  function descriptionScore(text){
-    const value = safeString(text);
-    if (!value) return 0;
-    return value.length + (value.includes(';') ? 1000 : 0) + (value.includes('(') ? 500 : 0);
+
+  function ensureState(){
+    if (typeof state !== 'object' || !state) return null;
+    state.raw = state.raw || {};
+    state.raw.fmMovements = Array.isArray(state.raw.fmMovements) ? state.raw.fmMovements : [];
+    return state;
   }
-  function movementKey(movement){
-    return [
-      safeString(movement && movement.seasonTeamId),
-      safeString(movement && movement.date),
-      String(Number(movement && movement.amount || 0))
-    ].join('|');
-  }
-  function teamDateKey(movement){
-    return [safeString(movement && movement.seasonTeamId), safeString(movement && movement.date)].join('|');
-  }
-  function teamAmountKey(movement){
-    return [safeString(movement && movement.seasonTeamId), String(Number(movement && movement.amount || 0))].join('|');
-  }
-  function getCurrentSeasonIdSafe(){
-    try { if (typeof getCurrentSeasonId === 'function') return getCurrentSeasonId(); } catch (_) {}
-    try { if (state && state.selectedSeasonId) return state.selectedSeasonId; } catch (_) {}
-    return '2026-2027';
-  }
-  function candidateUrls(seasonId){
-    const id = safeString(seasonId || '2026-2027') || '2026-2027';
-    const base = 'assets/snapshots/seasons/';
-    const urls = [];
-    try {
-      if (typeof joinLeagueDataPathV446 === 'function') {
-        urls.push(joinLeagueDataPathV446('seasonSnapshotsBase', `${id}.json`, 'assets/snapshots/seasons/'));
+
+  function repairStaticSvincoliV751(source){
+    const appState = ensureState();
+    if (!appState) return { changed: 0, added: 0, source: source || 'unknown' };
+    let changed = 0;
+    let added = 0;
+    const rows = appState.raw.fmMovements;
+    Object.entries(CANONICAL_SVINCOLI).forEach(function(entry){
+      const seasonTeamId = entry[0];
+      const canonical = entry[1];
+      let candidates = rows.filter(function(row){
+        return row && row.type === 'SVINCOLO' && row.seasonTeamId === seasonTeamId && String(row.seasonId || '') === '2026-2027';
+      });
+      if (!candidates.length) {
+        rows.push({
+          id: 'static_svincolo_v751_' + seasonTeamId,
+          seasonId: '2026-2027',
+          seasonTeamId: seasonTeamId,
+          targetSeasonTeamId: '',
+          playerName: '',
+          realTeam: '',
+          rosterRole: '',
+          mantraRoles: '',
+          type: 'SVINCOLO',
+          date: canonical.date,
+          amount: canonical.amount,
+          description: canonical.description,
+          source: 'static-svincoli-canonical-v751'
+        });
+        added += 1;
+        return;
       }
-    } catch (_) {}
-    urls.push(`${base}${encodeURIComponent(id).replace(/%2D/g, '-')}.json`);
-    urls.push(`${base}${id}.json`);
-    return Array.from(new Set(urls.filter(Boolean)));
-  }
-  async function fetchJsonNoStore(url){
-    const separator = String(url).includes('?') ? '&' : '?';
-    const response = await fetch(`${url}${separator}v=750&t=${Date.now()}`, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText} su ${url}`);
-    return response.json();
-  }
-  async function loadStaticSnapshot(seasonId){
-    const id = safeString(seasonId || getCurrentSeasonIdSafe()) || '2026-2027';
-    if (cache[id]) return cache[id];
-    let lastError = null;
-    for (const url of candidateUrls(id)) {
-      try {
-        const payload = await fetchJsonNoStore(url);
-        const snapshot = payload && payload.snapshot && typeof payload.snapshot === 'object' ? payload.snapshot : payload;
-        if (snapshot && Array.isArray(snapshot.fmMovements)) {
-          cache[id] = snapshot;
-          debug.loadedFrom = url;
-          return snapshot;
+      candidates.sort(function(a, b){
+        const au = Number(a?.updatedAt?.seconds || a?.createdAt?.seconds || 0);
+        const bu = Number(b?.updatedAt?.seconds || b?.createdAt?.seconds || 0);
+        return bu - au;
+      });
+      candidates.forEach(function(row, index){
+        const shouldPatch = isGenericSvincoloDescription(row.description) || String(row.description || '') !== canonical.description;
+        if (shouldPatch) {
+          row.description = canonical.description;
+          row.amount = canonical.amount;
+          row.date = row.date || canonical.date;
+          row.playerName = row.playerName || '';
+          row.targetSeasonTeamId = row.targetSeasonTeamId || '';
+          row.source = row.source || 'static-svincoli-canonical-v751';
+          row.staticSvincoliRepairV751 = true;
+          changed += 1;
         }
-      } catch (error) {
-        lastError = error;
-      }
-    }
-    if (lastError) debug.errors.push(String(lastError && lastError.message || lastError));
-    return null;
-  }
-  function buildIndexes(snapshot){
-    const byExact = new Map();
-    const byTeamDate = new Map();
-    const byTeamAmount = new Map();
-    const rows = Array.isArray(snapshot && snapshot.fmMovements) ? snapshot.fmMovements.filter(isSvincolo) : [];
-    rows.forEach(function(row){
-      if (!safeString(row.description)) return;
-      const exact = movementKey(row);
-      const tDate = teamDateKey(row);
-      const tAmount = teamAmountKey(row);
-      [ [byExact, exact], [byTeamDate, tDate], [byTeamAmount, tAmount] ].forEach(function(pair){
-        const map = pair[0];
-        const key = pair[1];
-        const previous = map.get(key);
-        if (!previous || descriptionScore(row.description) > descriptionScore(previous.description)) map.set(key, row);
+        if (index > 0) row.hiddenDuplicateSvincoloV751 = true;
       });
     });
-    return { byExact, byTeamDate, byTeamAmount, rows };
+    const result = { changed: changed, added: added, source: source || 'unknown', at: new Date().toISOString() };
+    try { window.ZonaOrientaleStaticSvincoliV751 = result; } catch (_) {}
+    return result;
   }
-  function pickStaticRow(indexes, movement){
-    return indexes.byExact.get(movementKey(movement))
-      || indexes.byTeamDate.get(teamDateKey(movement))
-      || indexes.byTeamAmount.get(teamAmountKey(movement))
-      || null;
+
+  function refreshRosterViewsV751(){
+    try { repairStaticSvincoliV751('refresh'); } catch (_) {}
+    try { if (typeof renderTeamsTable === 'function') renderTeamsTable(); } catch (_) {}
+    try { if (typeof renderClubRostersPublic === 'function') renderClubRostersPublic(); } catch (_) {}
   }
-  function applyStaticSvincoliSnapshot(snapshot, reason){
+
+  const previousRenderTeamsTable = typeof renderTeamsTable === 'function' ? renderTeamsTable : null;
+  if (previousRenderTeamsTable && !previousRenderTeamsTable.__v751Patched) {
+    const patched = function renderTeamsTableV751(){
+      try { repairStaticSvincoliV751('renderTeamsTable'); } catch (_) {}
+      return previousRenderTeamsTable.apply(this, arguments);
+    };
+    patched.__v751Patched = true;
+    renderTeamsTable = patched;
+  }
+
+  const previousRenderClubRostersPublic = typeof renderClubRostersPublic === 'function' ? renderClubRostersPublic : null;
+  if (previousRenderClubRostersPublic && !previousRenderClubRostersPublic.__v751Patched) {
+    const patched = function renderClubRostersPublicV751(){
+      try { repairStaticSvincoliV751('renderClubRostersPublic'); } catch (_) {}
+      return previousRenderClubRostersPublic.apply(this, arguments);
+    };
+    patched.__v751Patched = true;
+    renderClubRostersPublic = patched;
+  }
+
+  window.addEventListener('click', function(event){
+    const toggle = event.target && event.target.closest && event.target.closest('[data-toggle-roster-club]');
+    if (!toggle) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    const id = toggle.dataset.toggleRosterClub;
+    if (!id || !ensureState()) return;
+    state.expandedRosterClubIds = state.expandedRosterClubIds instanceof Set ? state.expandedRosterClubIds : new Set();
+    if (state.expandedRosterClubIds.has(id)) state.expandedRosterClubIds.delete(id);
+    else state.expandedRosterClubIds.add(id);
+    try { renderTeamsTable(); } catch (error) { console.error('[V751] toggle rose failed', error); }
+  }, true);
+
+  window.addEventListener('click', function(event){
+    const link = event.target && event.target.closest && event.target.closest('[data-open-team-profile]');
+    if (!link) return;
+    const toggle = event.target.closest('[data-toggle-roster-club]');
+    if (toggle) return;
+    const id = link.dataset.openTeamProfile;
+    if (!id) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
     try {
-      if (!snapshot || !Array.isArray(snapshot.fmMovements) || !window.state && typeof state === 'undefined') return 0;
-    } catch (_) {}
-    try {
-      if (!state || !state.raw || !Array.isArray(state.raw.fmMovements)) return 0;
-      const indexes = buildIndexes(snapshot);
-      if (!indexes.rows.length) return 0;
-      let changed = 0;
-      let inspected = 0;
-      state.raw.fmMovements = state.raw.fmMovements.map(function(movement){
-        if (!isSvincolo(movement)) return movement;
-        inspected += 1;
-        const staticRow = pickStaticRow(indexes, movement);
-        if (!staticRow) return movement;
-        const currentDescription = safeString(movement.description || movement.note || movement.notes || movement.details);
-        const staticDescription = safeString(staticRow.description || staticRow.note || staticRow.notes || staticRow.details);
-        if (!staticDescription) return movement;
-        if (isWeakDescription(currentDescription) || descriptionScore(staticDescription) > descriptionScore(currentDescription)) {
-          changed += 1;
-          return {
-            ...movement,
-            description: staticDescription,
-            note: movement.note || staticDescription,
-            notes: movement.notes || staticDescription,
-            details: movement.details || staticDescription,
-            staticSvincoloDescriptionV750: true,
-            staticSvincoloSourceV750: debug.loadedFrom || 'assets/snapshots/seasons'
-          };
-        }
-        return movement;
-      });
-      debug.lastReason = reason || 'sync';
-      debug.lastSeasonId = safeString(snapshot.seasonId || getCurrentSeasonIdSafe());
-      debug.changed += changed;
-      debug.inspected += inspected;
-      debug.lastRunAt = new Date().toISOString();
-      return changed;
+      if (typeof openTeamProfilePageV42 === 'function') {
+        openTeamProfilePageV42(id, { pushHash: true, scroll: true }).catch(function(error){ console.error('[V751] openTeamProfilePageV42 failed', error); });
+      } else if (typeof openTeamProfileV34 === 'function') {
+        openTeamProfileV34(id);
+      } else if (typeof openTeamProfile === 'function') {
+        openTeamProfile(id);
+      }
     } catch (error) {
-      debug.errors.push(String(error && error.message || error));
-      return 0;
+      console.error('[V751] team profile navigation failed', error);
     }
-  }
-  async function enforceStaticSvincoli(reason){
-    const seasonId = getCurrentSeasonIdSafe();
-    const snapshot = await loadStaticSnapshot(seasonId);
-    const changed = applyStaticSvincoliSnapshot(snapshot, reason || 'manual');
-    if (changed && typeof renderAll === 'function' && !enforceStaticSvincoli._rendering) {
-      enforceStaticSvincoli._rendering = true;
-      try { renderAll(); } finally { enforceStaticSvincoli._rendering = false; }
-    }
-    return { ...debug, changedThisRun: changed };
-  }
-  function syncRepairFromKnownSnapshots(reason){
-    try {
-      const seasonId = getCurrentSeasonIdSafe();
-      const known = cache[seasonId]
-        || (state && state.publicSeasonSnapshots && state.publicSeasonSnapshots[seasonId])
-        || null;
-      if (known) return applyStaticSvincoliSnapshot(known, reason || 'known');
-    } catch (_) {}
-    return 0;
-  }
+  }, true);
 
-  const applyBefore = typeof applyPublicSeasonSnapshotV32 === 'function' ? applyPublicSeasonSnapshotV32 : null;
-  if (applyBefore) {
-    applyPublicSeasonSnapshotV32 = function applyPublicSeasonSnapshotV750(snapshot){
-      const result = applyBefore.apply(this, arguments);
-      applyStaticSvincoliSnapshot(snapshot, 'applyPublicSeasonSnapshot');
-      setTimeout(function(){ enforceStaticSvincoli('after-applyPublicSeasonSnapshot').catch(function(error){ debug.errors.push(String(error && error.message || error)); }); }, 0);
-      return result;
-    };
-  }
-
-  const loadDataBefore = typeof loadData === 'function' ? loadData : null;
-  if (loadDataBefore) {
-    loadData = async function loadDataV750(){
-      const result = await loadDataBefore.apply(this, arguments);
-      await enforceStaticSvincoli('loadData');
-      return result;
-    };
-  }
-
-  const renderClubBefore = typeof renderClubRostersPublic === 'function' ? renderClubRostersPublic : null;
-  if (renderClubBefore) {
-    renderClubRostersPublic = function renderClubRostersPublicV750(){
-      syncRepairFromKnownSnapshots('renderClubRostersPublic');
-      setTimeout(function(){ enforceStaticSvincoli('renderClubRostersPublic-async').catch(function(error){ debug.errors.push(String(error && error.message || error)); }); }, 0);
-      return renderClubBefore.apply(this, arguments);
-    };
-  }
-
-  const getMovementsBefore = typeof getFmMovementsForSeasonTeam === 'function' ? getFmMovementsForSeasonTeam : null;
-  if (getMovementsBefore) {
-    getFmMovementsForSeasonTeam = function getFmMovementsForSeasonTeamV750(){
-      syncRepairFromKnownSnapshots('getFmMovementsForSeasonTeam');
-      return getMovementsBefore.apply(this, arguments);
-    };
-  }
-
-  function forceFooter(){
+  function forceFooterV751(){
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach(function(node){
       if (!node) return;
       node.textContent = VERSION_LABEL;
-      node.dataset.footerVersionV750 = VERSION;
+      node.dataset.footerVersionV751 = VERSION;
     });
   }
-  document.addEventListener('DOMContentLoaded', function(){ forceFooter(); enforceStaticSvincoli('DOMContentLoaded').catch(function(error){ debug.errors.push(String(error && error.message || error)); }); });
-  window.addEventListener('load', function(){ forceFooter(); enforceStaticSvincoli('load').catch(function(error){ debug.errors.push(String(error && error.message || error)); }); });
-  [0,50,120,300,700,1500,3000,6500,10000,18000].forEach(function(delay){ window.setTimeout(forceFooter, delay); });
 
-  window.ZonaOrientaleStaticSvincoliV750 = debug;
-  window.enforceStaticSvincoliV750 = enforceStaticSvincoli;
+  function bootV751(){
+    try { repairStaticSvincoliV751('boot'); } catch (_) {}
+    try { forceFooterV751(); } catch (_) {}
+    setTimeout(refreshRosterViewsV751, 150);
+    setTimeout(refreshRosterViewsV751, 900);
+    setTimeout(refreshRosterViewsV751, 2500);
+  }
+
+  try {
+    window.enforceStaticSvincoliV751 = repairStaticSvincoliV751;
+    window.refreshRosterViewsV751 = refreshRosterViewsV751;
+    window.forceFooterV751 = forceFooterV751;
+  } catch (_) {}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootV751, { once: true });
+  else bootV751();
+  window.addEventListener('load', bootV751, { once: true });
+  [0,50,120,300,700,1500,3000,6500,10000,18000].forEach(function(delay){ window.setTimeout(bootV751, delay); });
 })();

@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "750",
+  "currentVersion": "751",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -214,7 +214,9 @@
     "ioSudoListoneAllPlayersV639": true,
     "ioSudoPlayerSourceLabelsV643": true,
     "ioSudoListoneAllPlayersV643": true,
-    "siteMobileCardsVersion": "V668"
+    "siteMobileCardsVersion": "V668",
+    "staticSvincoliHardfixV751": true,
+    "rosterNavigationFixV751": true
   },
   "guardrails": {
     "configOnly": true,
@@ -679,7 +681,7 @@
     "V590 centralizza nel fanta-engine il resolver della colonna Rosa del Listone.",
     "V667 neutralizza lo sfondo del Listone mobile, mette in maiuscolo i nomi giocatore nelle card e mostra ora aggiornamento in ioSudo."
   ],
-  "version": "750",
+  "version": 548,
   "runtime": {
     "sharedAssetsVersion": "485",
     "sharedAssetsMode": "central-only",
@@ -1871,5 +1873,5 @@
   "ioSudoListoneAllPlayersV639": true,
   "ioSudoPlayerSourceLabelsV643": true,
   "ioSudoListoneAllPlayersV643": true,
-  "updatedAt": "2026-07-21T09:15:00+02:00"
+  "updatedAt": "2026-07-21T09:35:00+02:00"
 }
