@@ -41100,3 +41100,255 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
   window.FantaSiteProfileMovementsV698 = Object.freeze({ version: VERSION, profileMovementsNotes: true, footerFixed: true });
 })();
+
+
+/* V748 - Repair svincoli descriptions from static snapshots + admin checkbox click guard.
+ * Motivo: desktop/admin puo' leggere collection Firebase complete o snapshot pubblici
+ * non allineati; in quel caso alcuni movimenti SVINCOLO hanno descrizione vuota
+ * o generica, mentre il JSON statico assets/snapshots/seasons/2026-2027.json
+ * contiene la descrizione completa. Questa patch usa il JSON statico come fonte
+ * di riparazione runtime, senza scrivere su Firebase.
+ * Inoltre protegge i checkbox dell'area admin da handler/details sovrapposti.
+ */
+(function fantaSiteSvincoliAndAdminCheckboxV748() {
+  const VERSION = 'V748';
+  const DESCRIPTION_REPAIR_CACHE = new Map();
+  const REPAIRING_SEASONS = new Set();
+
+  function normalizeTextV748(value) {
+    return String(value ?? '').trim();
+  }
+
+  function isGenericReleaseDescriptionV748(value) {
+    const text = normalizeTextV748(value);
+    if (!text || text === '-') return true;
+    return /^SVINCOLI\s+LUGLIO\s+2026\s*:?\s*$/i.test(text);
+  }
+
+  function movementKeyV748(movement = {}) {
+    return [
+      normalizeTextV748(movement.seasonId || (typeof getCurrentSeasonId === 'function' ? getCurrentSeasonId() : '')),
+      normalizeTextV748(movement.seasonTeamId),
+      normalizeTextV748(movement.targetSeasonTeamId),
+      normalizeTextV748(movement.type).toUpperCase(),
+      normalizeTextV748(movement.date),
+      String(Number(movement.amount || 0)),
+      normalizeTextV748(movement.playerName)
+    ].join('|');
+  }
+
+  function seasonSnapshotManifestUrlV748() {
+    try {
+      if (typeof getStaticSeasonSnapshotsManifestUrlV446 === 'function') return getStaticSeasonSnapshotsManifestUrlV446();
+    } catch (_) {}
+    return 'assets/snapshots/seasons/manifest.json';
+  }
+
+  function seasonSnapshotBaseUrlV748() {
+    try {
+      if (typeof getStaticSeasonSnapshotsBaseUrlV446 === 'function') return getStaticSeasonSnapshotsBaseUrlV446();
+    } catch (_) {}
+    return 'assets/snapshots/seasons/';
+  }
+
+  function joinUrlV748(base, file) {
+    const cleanBase = String(base || '').replace(/\/?$/, '/');
+    return cleanBase + String(file || '').replace(/^\/+/, '');
+  }
+
+  function cacheBustV748(url) {
+    const sep = String(url || '').includes('?') ? '&' : '?';
+    return `${url}${sep}v=${VERSION}&t=${Date.now()}`;
+  }
+
+  async function fetchJsonNoStoreV748(url) {
+    const response = await fetch(cacheBustV748(url), { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Risorsa non leggibile ${url} (${response.status})`);
+    return response.json();
+  }
+
+  async function loadStaticSeasonSnapshotForRepairV748(seasonId) {
+    const season = normalizeTextV748(seasonId || (typeof getCurrentSeasonId === 'function' ? getCurrentSeasonId() : ''));
+    if (!season) return null;
+    if (DESCRIPTION_REPAIR_CACHE.has(season)) return DESCRIPTION_REPAIR_CACHE.get(season);
+
+    const manifest = await fetchJsonNoStoreV748(seasonSnapshotManifestUrlV748());
+    const entries = Array.isArray(manifest?.snapshots)
+      ? manifest.snapshots
+      : Array.isArray(manifest?.seasons)
+        ? manifest.seasons
+        : [];
+    const entry = entries.find((item) => String(item?.seasonId || item?.id || '') === season);
+    const file = entry?.file || `${season}.json`;
+    const snapshot = await fetchJsonNoStoreV748(joinUrlV748(seasonSnapshotBaseUrlV748(), file));
+    const normalized = snapshot?.snapshot && typeof snapshot.snapshot === 'object' ? snapshot.snapshot : snapshot;
+    DESCRIPTION_REPAIR_CACHE.set(season, normalized || null);
+    return normalized || null;
+  }
+
+  function buildStaticMovementMapV748(snapshot, seasonId) {
+    const map = new Map();
+    const movements = Array.isArray(snapshot?.fmMovements) ? snapshot.fmMovements : [];
+    movements.forEach((movement) => {
+      if (String(movement?.seasonId || seasonId || '') !== String(seasonId || movement?.seasonId || '')) return;
+      if (String(movement?.type || '').toUpperCase() !== 'SVINCOLO') return;
+      const description = normalizeTextV748(movement.description);
+      if (!description || isGenericReleaseDescriptionV748(description)) return;
+      map.set(movementKeyV748(movement), { ...movement, description });
+    });
+    return map;
+  }
+
+  function applyStaticReleaseDescriptionsV748(snapshot, seasonId) {
+    if (!snapshot || !state?.raw) return { changed: 0, added: 0 };
+    const staticByKey = buildStaticMovementMapV748(snapshot, seasonId);
+    if (!staticByKey.size) return { changed: 0, added: 0 };
+
+    const current = Array.isArray(state.raw.fmMovements) ? state.raw.fmMovements : [];
+    const seen = new Set();
+    let changed = 0;
+    current.forEach((movement) => {
+      const key = movementKeyV748(movement);
+      const fromStatic = staticByKey.get(key);
+      if (!fromStatic) return;
+      seen.add(key);
+      const currentDescription = normalizeTextV748(movement.description);
+      const staticDescription = normalizeTextV748(fromStatic.description);
+      if (staticDescription && (isGenericReleaseDescriptionV748(currentDescription) || currentDescription.length < staticDescription.length)) {
+        movement.description = staticDescription;
+        movement.descriptionSourceV748 = 'static-season-snapshot';
+        changed += 1;
+      }
+    });
+
+    let added = 0;
+    staticByKey.forEach((movement, key) => {
+      if (seen.has(key)) return;
+      current.push({ ...movement, source: movement.source || 'static-season-snapshot-v748', descriptionSourceV748: 'static-season-snapshot' });
+      added += 1;
+    });
+    state.raw.fmMovements = current;
+    return { changed, added };
+  }
+
+  async function repairCurrentSeasonReleaseDescriptionsV748(options = {}) {
+    const seasonId = normalizeTextV748(options.seasonId || (typeof getCurrentSeasonId === 'function' ? getCurrentSeasonId() : state?.selectedSeasonId));
+    if (!seasonId || REPAIRING_SEASONS.has(seasonId)) return { changed: 0, added: 0 };
+    REPAIRING_SEASONS.add(seasonId);
+    try {
+      const snapshot = await loadStaticSeasonSnapshotForRepairV748(seasonId);
+      const result = applyStaticReleaseDescriptionsV748(snapshot, seasonId);
+      if ((result.changed || result.added) && options.render !== false && typeof renderClubRostersPublic === 'function') {
+        try { renderClubRostersPublic(); } catch (_) { try { renderAll?.(); } catch (error) { console.warn('Render post-riparazione svincoli V748 non riuscito', error); } }
+      }
+      window.ZonaOrientaleSvincoliRepairV748 = {
+        version: VERSION,
+        seasonId,
+        changed: result.changed,
+        added: result.added,
+        checkedAt: new Date().toISOString(),
+        source: 'assets/snapshots/seasons'
+      };
+      return result;
+    } catch (error) {
+      console.warn('Riparazione descrizioni svincoli V748 non riuscita', error);
+      window.ZonaOrientaleSvincoliRepairV748 = {
+        version: VERSION,
+        seasonId,
+        changed: 0,
+        added: 0,
+        error: error?.message || String(error),
+        checkedAt: new Date().toISOString(),
+        source: 'assets/snapshots/seasons'
+      };
+      return { changed: 0, added: 0 };
+    } finally {
+      REPAIRING_SEASONS.delete(seasonId);
+    }
+  }
+
+  if (typeof loadDataForCurrentAuthV100 === 'function') {
+    const loadDataForCurrentAuthBeforeV748 = loadDataForCurrentAuthV100;
+    loadDataForCurrentAuthV100 = async function loadDataForCurrentAuthV748(options = {}) {
+      const result = await loadDataForCurrentAuthBeforeV748(options);
+      await repairCurrentSeasonReleaseDescriptionsV748({ render: options.render !== false });
+      return result;
+    };
+    loadData = async function loadDataV748() {
+      return loadDataForCurrentAuthV100({ render: true });
+    };
+  }
+
+  if (typeof applyPublicSeasonSnapshotV32 === 'function') {
+    const applyPublicSeasonSnapshotBeforeV748 = applyPublicSeasonSnapshotV32;
+    applyPublicSeasonSnapshotV32 = function applyPublicSeasonSnapshotV748(snapshot) {
+      const result = applyPublicSeasonSnapshotBeforeV748(snapshot);
+      try { applyStaticReleaseDescriptionsV748(snapshot, snapshot?.seasonId || state?.selectedSeasonId); } catch (_) {}
+      return result;
+    };
+  }
+
+  function installAdminCheckboxStyleV748() {
+    if (document.getElementById('adminCheckboxFixStyleV748')) return;
+    const style = document.createElement('style');
+    style.id = 'adminCheckboxFixStyleV748';
+    style.textContent = `
+      #adminPanel label.checkbox-label,
+      #adminPanel .checkbox-label,
+      #adminPanel input[type="checkbox"]{
+        pointer-events:auto !important;
+      }
+      #adminPanel input[type="checkbox"]{
+        appearance:auto !important;
+        -webkit-appearance:checkbox !important;
+        inline-size:18px !important;
+        block-size:18px !important;
+        position:relative !important;
+        z-index:3 !important;
+        cursor:pointer !important;
+      }
+      #adminPanel label.checkbox-label{ cursor:pointer !important; user-select:none; }
+    `;
+    document.head?.appendChild(style);
+  }
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!target?.closest) return;
+    const input = target.closest('#adminPanel input[type="checkbox"]');
+    if (input) {
+      event.stopPropagation();
+      return;
+    }
+    const label = target.closest('#adminPanel label.checkbox-label');
+    if (!label) return;
+    const checkbox = label.querySelector('input[type="checkbox"]');
+    if (!checkbox || checkbox.disabled) return;
+    event.preventDefault();
+    event.stopPropagation();
+    checkbox.checked = !checkbox.checked;
+    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+  }, true);
+
+  document.addEventListener('change', (event) => {
+    const input = event.target?.closest?.('#adminPanel input[type="checkbox"]');
+    if (!input) return;
+    input.setAttribute('aria-checked', input.checked ? 'true' : 'false');
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    installAdminCheckboxStyleV748();
+    window.setTimeout(() => repairCurrentSeasonReleaseDescriptionsV748({ render: true }), 0);
+  });
+  window.addEventListener('load', () => {
+    installAdminCheckboxStyleV748();
+    window.setTimeout(() => repairCurrentSeasonReleaseDescriptionsV748({ render: true }), 250);
+  });
+
+  window.ZonaOrientaleRuntimePatchV748 = Object.freeze({
+    version: VERSION,
+    releaseDescriptionsStaticRepair: true,
+    adminCheckboxClickGuard: true,
+    desktopAndMobileUseSameStaticSnapshotRepair: true
+  });
+})();
