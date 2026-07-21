@@ -41220,9 +41220,13 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     event.stopImmediatePropagation();
     const id = toggle.dataset.toggleRosterClub;
     if (!id || !ensureState()) return;
+    if (typeof window.toggleRosterClubSingletonV752 === 'function') {
+      window.toggleRosterClubSingletonV752(id);
+      return;
+    }
     state.expandedRosterClubIds = state.expandedRosterClubIds instanceof Set ? state.expandedRosterClubIds : new Set();
-    if (state.expandedRosterClubIds.has(id)) state.expandedRosterClubIds.delete(id);
-    else state.expandedRosterClubIds.add(id);
+    if (state.expandedRosterClubIds.has(id)) state.expandedRosterClubIds = new Set();
+    else state.expandedRosterClubIds = new Set([id]);
     try { renderTeamsTable(); } catch (error) { console.error('[V751] toggle rose failed', error); }
   }, true);
 
@@ -41233,6 +41237,20 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     if (toggle) return;
     const id = link.dataset.openTeamProfile;
     if (!id) return;
+    const isRosterTableLink = !!link.closest('#rosterClubCards, .roster-season-table, .roster-table-container');
+    const isMobileLike = (function(){
+      try {
+        const displayMode = localStorage.getItem('zonaOrientaleDisplayMode') || 'auto';
+        return displayMode !== 'desktop' && window.matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').matches;
+      } catch (_) { return window.innerWidth <= 900; }
+    })();
+    if (isRosterTableLink && isMobileLike && typeof window.toggleRosterClubSingletonV752 === 'function') {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      window.toggleRosterClubSingletonV752(id);
+      return;
+    }
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -41276,4 +41294,176 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   else bootV751();
   window.addEventListener('load', bootV751, { once: true });
   [0,50,120,300,700,1500,3000,6500,10000,18000].forEach(function(delay){ window.setTimeout(bootV751, delay); });
+})();
+
+
+/* V752 - Team profile movement descriptions + singleton Tutte le Rose mobile focus. */
+(function fantaSiteRosterNavigationAndMovementDescriptionsV752(){
+  const VERSION = 'V752';
+  const VERSION_LABEL = 'Fantacalcio - V752 - Aggiornato al 21/07/2026';
+
+  function isMobileLikeV752(){
+    try {
+      const displayMode = localStorage.getItem('zonaOrientaleDisplayMode') || 'auto';
+      return displayMode !== 'desktop' && window.matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').matches;
+    } catch (_) {
+      return window.innerWidth <= 900;
+    }
+  }
+
+  function ensureExpandedSetV752(){
+    if (typeof state !== 'object' || !state) return null;
+    state.expandedRosterClubIds = state.expandedRosterClubIds instanceof Set ? state.expandedRosterClubIds : new Set();
+    return state.expandedRosterClubIds;
+  }
+
+  function cssEscapeV752(value){
+    const raw = String(value || '');
+    if (window.CSS && typeof window.CSS.escape === 'function') return window.CSS.escape(raw);
+    return raw.replace(/[^a-zA-Z0-9_-]/g, '\\$&');
+  }
+
+  function scrollToRosterPlayersV752(seasonTeamId){
+    window.requestAnimationFrame(function(){
+      window.requestAnimationFrame(function(){
+        const safeId = cssEscapeV752(seasonTeamId);
+        const toggle = document.querySelector('[data-toggle-roster-club="' + safeId + '"][aria-expanded="true"]');
+        let target = null;
+        if (toggle) {
+          const teamRow = toggle.closest('tr');
+          const detailRow = teamRow && teamRow.nextElementSibling && teamRow.nextElementSibling.classList.contains('roster-detail-row') ? teamRow.nextElementSibling : null;
+          target = detailRow?.querySelector?.('.roster-player-table, table, .table-wrap') || detailRow;
+        }
+        if (!target) target = document.querySelector('.roster-detail-row .roster-player-table, .roster-detail-row table, .roster-detail-row');
+        target?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+        const focusable = target?.querySelector?.('a, button, input, [tabindex]');
+        if (focusable && typeof focusable.focus === 'function') {
+          try { focusable.focus({ preventScroll: true }); } catch (_) { try { focusable.focus(); } catch (__) {} }
+        }
+      });
+    });
+  }
+
+  function toggleRosterClubSingletonV752(seasonTeamId){
+    const set = ensureExpandedSetV752();
+    if (!set || !seasonTeamId) return;
+    const wasExpanded = set.has(seasonTeamId);
+    if (wasExpanded) {
+      state.expandedRosterClubIds = new Set();
+    } else {
+      state.expandedRosterClubIds = new Set([seasonTeamId]);
+    }
+    try { if (typeof renderTeamsTable === 'function') renderTeamsTable(); } catch (error) { console.error('[V752] renderTeamsTable failed', error); }
+    if (!wasExpanded) scrollToRosterPlayersV752(seasonTeamId);
+  }
+
+  function findRosterSeasonTeamIdFromClickV752(target){
+    const toggle = target?.closest?.('[data-toggle-roster-club]');
+    if (toggle?.dataset?.toggleRosterClub) return toggle.dataset.toggleRosterClub;
+    const link = target?.closest?.('[data-open-team-profile]');
+    if (link?.dataset?.openTeamProfile && link.closest('#rosterClubCards, .roster-season-table, .roster-table-container')) return link.dataset.openTeamProfile;
+    const row = target?.closest?.('.roster-team-row');
+    const rowToggle = row?.querySelector?.('[data-toggle-roster-club]');
+    if (rowToggle?.dataset?.toggleRosterClub) return rowToggle.dataset.toggleRosterClub;
+    return '';
+  }
+
+  window.addEventListener('click', function(event){
+    const id = findRosterSeasonTeamIdFromClickV752(event.target);
+    if (!id) return;
+
+    const isToggle = !!event.target?.closest?.('[data-toggle-roster-club]');
+    const isTeamLink = !!event.target?.closest?.('[data-open-team-profile]');
+
+    // Desktop: il nome squadra resta un link alla pagina squadra. Il pulsante Espandi gestisce la lista.
+    if (!isMobileLikeV752() && isTeamLink && !isToggle) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    toggleRosterClubSingletonV752(id);
+  }, true);
+
+  function repairMovementDescriptionV752(movement){
+    try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('profile-v752'); } catch (_) {}
+    const text = String(movement?.description || '').trim();
+    if (text) return text;
+    if (movement?.type === 'INITIAL_BUDGET') return 'Budget iniziale stagione';
+    return '';
+  }
+
+  function renderProfileMovementRowsV752(snapshot){
+    const rows = Array.isArray(snapshot?.recentMovements) ? snapshot.recentMovements : [];
+    if (!rows.length) return '<tr><td colspan="5" class="muted center">Nessun movimento recente.</td></tr>';
+    return rows.map(function(movement){
+      const note = repairMovementDescriptionV752(movement);
+      const player = movement.type === 'INITIAL_BUDGET' ? '-' : (movement.playerName || '-');
+      return '<tr>' +
+        '<td data-label="Data">' + escapeHtml(movement.date || '-') + '</td>' +
+        '<td data-label="Tipo">' + renderFmMovementTypeBadge(movement.type) + '</td>' +
+        '<td data-label="Giocatore">' + escapeHtml(player) + '</td>' +
+        '<td data-label="FM" class="number">' + formatFm(movement.amount || 0) + '</td>' +
+        '<td data-label="Descrizione" class="team-profile-movement-description-v752">' + escapeHtml(note || '-') + '</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  function renderProfileMovementSectionV752(snapshot){
+    return '<section class="panel detail-section team-profile-movements-section-v752"><h3>Ultimi movimenti</h3>' +
+      '<div class="table-wrap mobile-tabular-wrap team-profile-table-wrap">' +
+        '<table class="mobile-tabular team-profile-movements-table team-profile-movements-table-v752">' +
+          '<thead><tr><th>Data</th><th>Tipo</th><th>Giocatore</th><th class="number">FM</th><th>Descrizione</th></tr></thead>' +
+          '<tbody>' + renderProfileMovementRowsV752(snapshot) + '</tbody>' +
+        '</table>' +
+      '</div></section>';
+  }
+
+  const previousRenderTeamProfileContent = typeof renderTeamProfileContentV42 === 'function' ? renderTeamProfileContentV42 : null;
+  if (previousRenderTeamProfileContent && !previousRenderTeamProfileContent.__v752Patched) {
+    const patched = function renderTeamProfileContentV752(snapshot){
+      try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('team-profile-v752'); } catch (_) {}
+      let html = previousRenderTeamProfileContent.apply(this, arguments);
+      const movementSection = renderProfileMovementSectionV752(snapshot);
+      html = String(html || '').replace(/<section class="panel detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<section class="panel detail-section"><h3>Ultimi comunicati<\/h3>)/, movementSection);
+      html = String(html || '').replace(/<div class="detail-section"><h3>Ultimi movimenti<\/h3>[\s\S]*?(?=<div class="detail-section"><h3>Ultimi comunicati<\/h3>)/, movementSection.replace('<section class="panel detail-section team-profile-movements-section-v752">','<div class="detail-section team-profile-movements-section-v752">').replace('</section>',''));
+      return html;
+    };
+    patched.__v752Patched = true;
+    renderTeamProfileContentV42 = patched;
+  }
+
+  function injectRosterV752Styles(){
+    if (document.getElementById('roster-v752-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'roster-v752-styles';
+    style.textContent = '.team-profile-movements-table-v752 th:last-child,.team-profile-movements-table-v752 td:last-child{min-width:16rem;white-space:normal}.team-profile-movement-description-v752{line-height:1.35}.roster-detail-row .roster-player-table{scroll-margin-top:1rem}@media (max-width:900px){.team-profile-movements-table-v752 th:last-child,.team-profile-movements-table-v752 td:last-child{min-width:0}.team-profile-movement-description-v752{font-size:.9rem}.roster-detail-row{scroll-margin-top:.75rem}}';
+    document.head.appendChild(style);
+  }
+
+  function forceFooterV752(){
+    const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
+    const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
+    targets.forEach(function(node){
+      if (!node) return;
+      node.textContent = VERSION_LABEL;
+      node.dataset.footerVersionV752 = VERSION;
+    });
+  }
+
+  function bootV752(){
+    try { injectRosterV752Styles(); } catch (_) {}
+    try { forceFooterV752(); } catch (_) {}
+    try { if (typeof window.enforceStaticSvincoliV751 === 'function') window.enforceStaticSvincoliV751('boot-v752'); } catch (_) {}
+  }
+
+  try {
+    window.toggleRosterClubSingletonV752 = toggleRosterClubSingletonV752;
+    window.forceFooterV752 = forceFooterV752;
+    window.FantaSiteRosterNavigationV752 = Object.freeze({ version: VERSION, singletonRosterExpansion: true, profileMovementDescriptions: true });
+  } catch (_) {}
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootV752, { once: true });
+  else bootV752();
+  window.addEventListener('load', bootV752, { once: true });
+  [0, 80, 250, 900, 2500, 6500].forEach(function(delay){ window.setTimeout(bootV752, delay); });
 })();

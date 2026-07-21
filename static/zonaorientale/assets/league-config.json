@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "751",
+  "currentVersion": "752",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -1873,5 +1873,6 @@
   "ioSudoListoneAllPlayersV639": true,
   "ioSudoPlayerSourceLabelsV643": true,
   "ioSudoListoneAllPlayersV643": true,
-  "updatedAt": "2026-07-21T09:35:00+02:00"
+  "updatedAt": "2026-07-21T09:35:00+02:00",
+  "lastUpdated": "2026-07-21"
 }
