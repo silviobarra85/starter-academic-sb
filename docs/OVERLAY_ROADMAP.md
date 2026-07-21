@@ -23,3 +23,8 @@
 - Aggiornate trattative non ufficiali Kean/Adams.
 - Disambiguazioni protette Terracciano/Liberali/Paz/Berardi/Vaz.
 - Handoff AI aggiornato.
+
+
+## V747 - 21/07/2026 08:06 CEST
+- Integrato Excel V126.
+- Dedupe Atalanta-Atalanta U23 e protezione Andrej Kostić/Filip Kostic.
