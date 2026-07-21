@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "749",
+  "currentVersion": "750",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -679,7 +679,7 @@
     "V590 centralizza nel fanta-engine il resolver della colonna Rosa del Listone.",
     "V667 neutralizza lo sfondo del Listone mobile, mette in maiuscolo i nomi giocatore nelle card e mostra ora aggiornamento in ioSudo."
   ],
-  "version": 548,
+  "version": "750",
   "runtime": {
     "sharedAssetsVersion": "485",
     "sharedAssetsMode": "central-only",
@@ -1871,6 +1871,5 @@
   "ioSudoListoneAllPlayersV639": true,
   "ioSudoPlayerSourceLabelsV643": true,
   "ioSudoListoneAllPlayersV643": true,
-  "lastOverlayVersion": "V749",
-  "lastOverlayDate": "2026-07-21"
+  "updatedAt": "2026-07-21T09:15:00+02:00"
 }
